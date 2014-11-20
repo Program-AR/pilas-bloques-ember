@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Ejemplo</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script>
+      var is_nodewebkit = (typeof process == "object");
+
+      if (is_nodewebkit) {
+        window.node_require = window.require;
+      }
+    </script>
+
+    {{content-for 'head'}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/pilas-engine-bloques.css">
+  </head>
+  <body>
+    {{content-for 'body'}}
+
+    <script src="assets/vendor.js"></script>
+    <script src="assets/pilas-engine-bloques.js"></script>
+
+    <script>
+      var is_nodewebkit = (typeof process == "object");
+
+      if (is_nodewebkit) {
+        window.ember_require = window.require;
+
+        window.require = function(module) {
+          try {
+            return window.ember_require(module);
+          } catch (e) {
+            return window.node_require(module);
+          }
+        }
+      }
+    </script>
+
+    <script src='livereload.js'></script>
+
+  </body>
+</html>
