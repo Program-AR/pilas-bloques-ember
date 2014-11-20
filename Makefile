@@ -4,6 +4,9 @@ all:
 	@echo ""
 
 
-test_mac:
+build:
+	ember build
+
+test_mac: build
 	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
 	open -a /Applications/node-webkit.app dist
