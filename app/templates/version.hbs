@@ -1,3 +1,16 @@
 <h2>Versión</h2>
 
+{{bs-alert message="A warning alert with simple message." type="warning"}}
+{{bs-button icon="fa fa-check" title="Danger Default size button"}}
+
+<p>
+{{bs-progress progress=60}}
+
+{{bs-button title="Show Modal" clicked="show"}}
+
+
+{{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="My Modal"}}
+    <p>Modal content!</p>
+{{/bs-modal}}
+
 {{outlet}}
