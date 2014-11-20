@@ -15,6 +15,13 @@
       }
     </script>
 
+    <script>
+      process.on("uncaughtException", function(e) {
+        console.log(e);
+        document.title = "ERROR: " + e;
+      });
+    </script>
+
     {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">

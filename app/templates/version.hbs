@@ -1,4 +1,4 @@
-<h2>Versión</h2>
+<h1>Versión</h1>
 
 {{bs-alert message="A warning alert with simple message." type="warning"}}
 {{bs-button icon="fa fa-check" title="Danger Default size button"}}
@@ -8,6 +8,13 @@
 
 {{bs-button title="Show Modal" clicked="show"}}
 
+<button type="button" class="btn btn-success btn-default" aria-label="Left Align">
+  <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
+</button>
+
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button>
 
 {{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="My Modal"}}
     <p>Modal content!</p>
