@@ -4,7 +4,6 @@ V=[01;32m
 VERSION=0.0.2
 
 all:
-	@echo ""
 	@echo "Comando disponibles"
 	@echo ""
 	@echo "  $(V)actualizar$(N)  Actualiza el repositorio y pilas-engine."
@@ -36,7 +35,7 @@ test_mac: build
 	open -a /Applications/node-webkit.app dist
 
 version:
-	@bumpversion --current-version ${VERSION} patch package.json src/package.json src/index.html Makefile --list
+	@bumpversion --current-version ${VERSION} package.json public/package.json app/templates/about.hbs Makefile --list
 	make dist
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
@@ -48,8 +47,5 @@ ver_sync:
 	git push
 	git push --all
 	git push --tags
-
-distmac:
-	grunt nodewebkit
 
 .PHONY: dist
