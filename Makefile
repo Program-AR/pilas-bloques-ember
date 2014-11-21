@@ -17,6 +17,7 @@ all:
 	@echo "  $(V)test_mac$(N)    Prueba la aplicación sobre OSX"
 	@echo ""
 	@echo "  $(V)distmac$(N)    Genera la versión compilada para OSX"
+	@echo "  $(V)distwin$(N)    Genera la versión compilada para Window"
 	@echo ""
 
 build:
@@ -35,7 +36,7 @@ test_mac: build
 	open -a /Applications/node-webkit.app dist
 
 version:
-	@bumpversion --current-version ${VERSION} package.json public/package.json app/templates/about.hbs Makefile --list
+	@bumpversion --current-version ${VERSION} package.json public/package.json extras/instalador.nsi app/templates/about.hbs Makefile --list
 	make dist
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
@@ -47,5 +48,8 @@ ver_sync:
 	git push
 	git push --all
 	git push --tags
+
+distwin:
+	@python extras/distwin.py
 
 .PHONY: dist
