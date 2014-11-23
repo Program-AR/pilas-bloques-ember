@@ -8,6 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('about');
   this.route('version');
+  this.route('preferencias');
 });
 
 export default Router;
