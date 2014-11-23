@@ -21,7 +21,7 @@ all:
 	@echo ""
 
 build:
-	ember build
+	ember build 
 
 watch:
 	ember build --watch

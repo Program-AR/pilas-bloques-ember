@@ -16,10 +16,12 @@
     </script>
 
     <script>
-      process.on("uncaughtException", function(e) {
-        console.log(e);
-        document.title = "ERROR: " + e;
-      });
+      if (is_nodewebkit) {
+        process.on("uncaughtException", function(e) {
+          console.log(e);
+          document.title = "ERROR: " + e;
+        });
+      }
     </script>
 
     {{content-for 'head'}}
