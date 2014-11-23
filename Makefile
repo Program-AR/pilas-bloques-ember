@@ -53,4 +53,11 @@ ver_sync:
 distwin:
 	@python extras/distwin.py
 
+distmac:
+	@grunt nodewebkit
+	mv distribuibles/ejemplo/osx/ejemplo.app distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.1.app
+	hdiutil create distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.1.dmg -srcfolder distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.1.app -size 200mb
+	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.1.dmg '/Users/hugoruscitti/Google Drive/'
+	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.1.dmg '/Users/hugoruscitti/shared/'
+
 .PHONY: dist
