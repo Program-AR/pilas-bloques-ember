@@ -77,5 +77,5 @@ copy('extras/instalador.nsi',  DIRECTORIO_WINDOWS + '/')
 
 generar_instalador(DIRECTORIO_WINDOWS + '/instalador.nsi')
 
-copy('distribuibles/ejemplo/win/pilas-engine-bloques_0.1.1.exe', '/Users/hugoruscitti/Google Drive/')
-copy('distribuibles/ejemplo/win/pilas-engine-bloques_0.1.1.exe', '/Users/hugoruscitti/shared/')
+copy('distribuibles/ejemplo/win/pilas-engine-bloques_0.1.2.exe', '/Users/hugoruscitti/Google Drive/')
+copy('distribuibles/ejemplo/win/pilas-engine-bloques_0.1.2.exe', '/Users/hugoruscitti/shared/')

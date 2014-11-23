@@ -1,7 +1,7 @@
 {
   "main": "app://localhost/index.html",
   "name": "ejemplo",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "window": {
     "title": "Ejemplo",
     "width": 800,
