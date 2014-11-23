@@ -9,6 +9,7 @@ Router.map(function() {
   this.route('about');
   this.route('version');
   this.route('preferencias');
+  this.route('editor');
 });
 
 export default Router;
