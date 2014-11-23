@@ -1,6 +1,4 @@
 Blockly.Blocks['move_to'] = {
-  // move turtle to absolute x,y location
-  // for reference 0,0 is top/let and 200,200 is centre
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(160);
@@ -19,20 +17,17 @@ Blockly.Blocks['move_to'] = {
   }
 };
 
-
-
-
 Blockly.JavaScript['move_to'] = function(block) {
-  // Generate JavaScript for moving to absolute position
   var xpos = Blockly.JavaScript.valueToCode(block, 'XPOS', Blockly.JavaScript.ORDER_NONE) || '0';
   var ypos = Blockly.JavaScript.valueToCode(block, 'YPOS', Blockly.JavaScript.ORDER_NONE) || '0';
   return 'bomba.x = [' + xpos + '];\n' +  'bomba.y = [' + ypos +'];\n';
 };
 
 
+/* ============================================== */
+
+
 Blockly.Blocks['decir'] = {
-  // move turtle to absolute x,y location
-  // for reference 0,0 is top/let and 200,200 is centre
   init: function() {
     this.setHelpUrl('http://www.example.com/');
     this.setColour(160);
@@ -47,11 +42,89 @@ Blockly.Blocks['decir'] = {
   }
 };
 
-
-
-
 Blockly.JavaScript['decir'] = function(block) {
-  // Generate JavaScript for moving to absolute position
   var mensaje = Blockly.JavaScript.valueToCode(block, 'MENSAJE', Blockly.JavaScript.ORDER_NONE) || '0';
   return 'bomba.decir(MENSAJE);\n'.replace('MENSAJE', mensaje);
+};
+
+
+/* ============================================== */
+
+Blockly.Blocks['alien-ir_derecha'] = {
+  init: function() {
+    this.setColour(160);
+    this.appendDummyInput()
+        .appendField("ir a la derecha")
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['alien-ir_derecha'] = function(block) {
+  var mensaje = Blockly.JavaScript.valueToCode(block, 'MENSAJE', Blockly.JavaScript.ORDER_NONE) || '0';
+  return 'alien.ir_derecha();\n';
+};
+
+/* ============================================== */
+
+Blockly.Blocks['alien-ir_arriba'] = {
+  init: function() {
+    this.setColour(160);
+    this.appendDummyInput()
+        .appendField("ir a la arriba")
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['alien-ir_arriba'] = function(block) {
+  return 'alien.ir_arriba();\n';
+};
+
+/* ============================================== */
+
+Blockly.Blocks['alien-ir_abajo'] = {
+  init: function() {
+    this.setColour(160);
+    this.appendDummyInput()
+        .appendField("ir a la abajo")
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['alien-ir_abajo'] = function(block) {
+  return 'alien.ir_abajo();\n';
+};
+
+/* ============================================== */
+
+Blockly.Blocks['alien-ir_izquierda'] = {
+  init: function() {
+    this.setColour(160);
+    this.appendDummyInput()
+        .appendField("ir a la izquierda")
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['alien-ir_izquierda'] = function(block) {
+  return 'alien.ir_izquierda();\n';
+};
+
+/* ============================================== */
+
+Blockly.Blocks['alien-recoger'] = {
+  init: function() {
+    this.setColour(160);
+    this.appendDummyInput()
+        .appendField("recoger")
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['alien-recoger'] = function(block) {
+  return 'alien.recoger();\n';
 };
