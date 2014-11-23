@@ -14,14 +14,6 @@ grunt.initConfig({
     './dist/**/*',
     ]
   },
-  copy: {
-    main: {
-      files: [
-      {expand: true, src: ['./pilasweb/public/pilasweb.js'], dest: 'public/libs/', flatten: true},
-      {expand: true, src: ['./pilasweb/public/data/*'], dest: 'public/libs/data/', flatten: true},
-      ],
-    },
-  },
 });
 
 grunt.loadNpmTasks('grunt-contrib-copy');

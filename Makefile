@@ -11,6 +11,7 @@ all:
 	@echo "  $(V)version$(N)     Genera la informacion de versión actualizada."
 	@echo "  $(V)ver_sync$(N)    Sube la nueva version al servidor."
 	@echo ""
+	@echo "  $(V)server$(N)      Prueba la aplicación en el navegador."
 	@echo "  $(V)build$(N)       Genera los archivos compilados."
 	@echo "  $(V)watch$(N)       Genera los archivos compilados de forma contínua."
 	@echo ""
@@ -29,7 +30,8 @@ watch:
 actualizar:
 	git pull
 	npm install
-	grunt copy
+	cp -r -f pilasweb/public/data public/libs/data
+	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 test_mac: build
 	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
@@ -52,6 +54,9 @@ ver_sync:
 
 distwin:
 	@python extras/distwin.py
+
+server:
+	ember server
 
 distmac:
 	@grunt nodewebkit
