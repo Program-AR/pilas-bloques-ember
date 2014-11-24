@@ -1,7 +1,21 @@
 <h1>Editor</h1>
 
-{{pilas-canvas}}
+<p>
+{{#if nombre_escenario}}
+  Escenario: {{nombre_escenario}}
+{{else}}
+  Escenario: <em>Sin definir</em>
+{{/if}}
+</p>
 
-{{pilas-blockly}}
+
+{{pilas-canvas onready="reiniciar"}}
+
+{{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
 
 {{outlet}}
+
+
+<div>
+  Acá un texto que explica el motivo de la actividad
+</div>

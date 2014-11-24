@@ -30,6 +30,10 @@ watch:
 actualizar:
 	git pull
 	npm install
+	make actualizar_pilas
+
+actualizar_pilas:
+	rm -r -f public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 

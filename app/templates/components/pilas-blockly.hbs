@@ -1,12 +1,11 @@
 <xml id="toolbox" style="display: none">
-  <block type="controls_if"></block>
-  <block type="controls_repeat_ext"></block>
-  <block type="logic_compare"></block>
-  <block type="math_number"></block>
-  <block type="math_arithmetic"></block>
-  <block type="text"></block>
-  <block type="text_print"></block>
+    <category name="Control">
+    </category>
 </xml>
+
+<button class='btn btn-warning' {{action 'reiniciar'}}>Reiniciar</button>
+<button class='btn btn-success' {{action 'ejecutar'}}>Ejecutar</button>
+<button class='btn btn-warning' {{action "ver_codigo"}}>Ver Codigo</button>
 
 <div id="contenedor-blockly" style="height: 480px; width: 600px;">
 </div>
