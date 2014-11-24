@@ -10,14 +10,28 @@
       <ul class="nav navbar-nav">
         {{#link-to "index" tagName='li'}}<a href=#>index</a>{{/link-to}}
         {{#link-to "editor" tagName='li'}}<a href=#>editor</a>{{/link-to}}
-        {{#link-to "version" tagName='li'}}<a href=#>versión</a>{{/link-to}}
         {{#link-to "preferencias" tagName='li'}}<a href=#>preferencias</a>{{/link-to}}
-        {{#link-to "about" tagName='li'}}<a href=#>Acerca de...</a>{{/link-to}}
       </ul>
 
+      <div class='header-right'>
+        <button class='btn btn-info btn-xs' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+      </div>
     </div>
   </div>
 </nav>
 
 
 {{outlet}}
+
+
+
+{{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="Acerca de..."}}
+    <p><strong>pilas-engine-bloques</strong> es un prototipo
+    que integra <a href='https://developers.google.com/blockly/' target='_blank'>blockly</a> junto a <a href='http://www.pilas-engine.com.ar/' target='_blank'>pilas-engine</a>.
+
+    El objetivo del prototipo es realizar una aplicación
+    que permita a los jóvenes realizar sus primeros pasos
+    en programación de manera sencilla.</p>
+
+    <p>Estás utilizando la versión <code>0.1.3</code>.
+{{/bs-modal}}
