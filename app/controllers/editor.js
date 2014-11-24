@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
 
       escenarios.alien_laberinto = function() {
         pilas.reiniciar();
+        var fondo = new pilas.fondos.Laberinto1();
         window.alien = new pilas.actores.Alien();
       }
 

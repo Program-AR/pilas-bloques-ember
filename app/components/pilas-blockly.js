@@ -1,6 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  didInsertElement: function() {
+    forzar_redimensionado();
+  },
   actions: {
     ejecutar: function() {
       window.LoopTrap = 1000;

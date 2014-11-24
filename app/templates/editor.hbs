@@ -1,21 +1,49 @@
-<h1>Editor</h1>
+<style>
 
-<p>
-{{#if nombre_escenario}}
-  Escenario: {{nombre_escenario}}
-{{else}}
-  Escenario: <em>Sin definir</em>
-{{/if}}
-</p>
+.contenedor-editor {
+  border: 1px solid green;
+  position: absolute;
+  bottom: 30px;
+  top: 100px;
+  left: 30px;
+  right: 30px;
+}
+
+.panel-derecho {
+  position:absolute;
+  width: 500px;
+  right: 0;
+  border: 1px solid gray;
+  bottom: 0;
+  top: 0;
+}
+</style>
+
+<div class='contenedor-editor'>
 
 
-{{pilas-canvas onready="reiniciar"}}
-
-{{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
-
-{{outlet}}
+<div class='panel-pilas'>
 
 
-<div>
-  Acá un texto que explica el motivo de la actividad
+  <p>
+  {{#if nombre_escenario}}
+    Escenario: {{nombre_escenario}}
+  {{else}}
+    Escenario: <em>Sin definir</em>
+  {{/if}}
+  </p>
+
+
+  {{pilas-canvas onready="reiniciar"}}
+
+
+  <div class='panel-ayuda'>
+    Acá un texto que explica el motivo de la actividad
+  </div>
+</div>
+
+<div class='panel-derecho' id='panel-derecho'>
+  {{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
+</div>
+
 </div>
