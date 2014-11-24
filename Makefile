@@ -1,7 +1,7 @@
 N=[0m
 V=[01;32m
 
-VERSION=0.1.2
+VERSION=0.1.3
 
 all:
 	@echo "Comando disponibles"
@@ -64,9 +64,9 @@ server:
 
 distmac:
 	@grunt nodewebkit
-	mv distribuibles/ejemplo/osx/ejemplo.app distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.2.app
-	hdiutil create distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.2.dmg -srcfolder distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.2.app -size 200mb
-	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.2.dmg '/Users/hugoruscitti/Google Drive/'
-	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.2.dmg '/Users/hugoruscitti/shared/'
+	mv distribuibles/ejemplo/osx/ejemplo.app distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.3.app
+	hdiutil create distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.3.dmg -srcfolder distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.3.app -size 200mb
+	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.3.dmg '/Users/hugoruscitti/Google Drive/'
+	cp distribuibles/ejemplo/osx/pilas-engine-bloques_0.1.3.dmg '/Users/hugoruscitti/shared/'
 
 .PHONY: dist
