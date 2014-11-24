@@ -1,38 +1,7 @@
-<style>
-
-.contenedor-editor {
-  border: 1px solid green;
-  position: absolute;
-  bottom: 30px;
-  top: 100px;
-  left: 30px;
-  right: 30px;
-}
-
-.panel-derecho {
-  position:absolute;
-  width: 500px;
-  right: 0;
-  border: 1px solid gray;
-  bottom: 0;
-  top: 0;
-}
-</style>
-
 <div class='contenedor-editor'>
 
 
 <div class='panel-pilas'>
-
-
-  <p>
-  {{#if nombre_escenario}}
-    Escenario: {{nombre_escenario}}
-  {{else}}
-    Escenario: <em>Sin definir</em>
-  {{/if}}
-  </p>
-
 
   {{pilas-canvas onready="reiniciar"}}
 

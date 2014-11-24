@@ -3,67 +3,54 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Ejemplo</title>
+
+    <title>pilas-engine-bloques</title>
+
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <script>
-      var is_nodewebkit = (typeof process == "object");
-
-      if (is_nodewebkit) {
-        window.node_require = window.require;
-      }
-    </script>
-
-    <script>
-      if (is_nodewebkit) {
-        process.on("uncaughtException", function(e) {
-          console.log(e);
-          document.title = "ERROR: " + e;
-        });
-      }
-    </script>
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script src='reemplazar-require-paso-1.js'></script>
+    <script src='capturar-excepciones.js'></script>
 
     {{content-for 'head'}}
 
+    <!-- AGREGADOS POR EMBERCLI -->
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/pilas-engine-bloques.css">
+
+    <!-- ESTILO PERSONALIZADO DE BOOTSTRAP -->
+    <link rel="stylesheet" href="css/AdminLTE.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estilo-editor.css">
+    <link rel="stylesheet" href="css/ui-layout.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/fuentes.css">
+
+
   </head>
   <body>
+
     {{content-for 'body'}}
 
+    <!-- AGREGADOS POR EMBERCLI -->
     <script src="assets/vendor.js"></script>
     <script src="assets/pilas-engine-bloques.js"></script>
 
-
-    <!-- pilas-engine -->
+    <!-- PILAS-ENGINE -->
     <script src="libs/pilasweb.js"></script>
 
-    <!-- blockly -->
+    <!-- BLOCKLY -->
     <script type="text/javascript" src="libs/blockly/blockly_compressed.js"></script>
     <script type="text/javascript" src="libs/blockly/blocks_compressed.js"></script>
     <script type="text/javascript" src="libs/blockly/javascript_compressed.js"></script>
     <script type="text/javascript" src="libs/blockly/msg/js/es.js"></script>
 
-    <!-- personalizados de blockly -->
+    <!-- PERSONALIZADOS DE BLOCKLY -->
     <script type="text/javascript" src="libs/blockly/mis_bloques.js"></script>
 
-    <script>
-      var is_nodewebkit = (typeof process == "object");
-
-      if (is_nodewebkit) {
-        window.ember_require = window.require;
-
-        window.require = function(module) {
-          try {
-            return window.ember_require(module);
-          } catch (e) {
-            return window.node_require(module);
-          }
-        }
-      }
-    </script>
-
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script src='reemplazar-require-paso-2.js'></script>
     <script src='livereload.js'></script>
 
   </body>
