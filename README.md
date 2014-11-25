@@ -1,6 +1,12 @@
 pilas-engine-bloques
 ====================
 
+Una aplicación experimental para fomentar el aprendizaje
+de la programación usando [pilas-engine](http://www.pilas-engine.com) y blockly.
+
+![](preview/main.png)
+
+
 
 Instalación para desarrolladores
 --------------------------------
