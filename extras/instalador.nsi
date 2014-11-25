@@ -13,7 +13,7 @@
 
   ;Name and file
   Name "pilas-engine-bloques"
-  OutFile "pilas-engine-bloques_0.1.3.exe"
+  OutFile "pilas-engine-bloques_0.1.4.exe"
 
   ;Default installation folder
   InstallDir "c:\pilas-engine-bloques"
