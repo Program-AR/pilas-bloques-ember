@@ -1,4 +1,4 @@
-N=[0m
+/a=[0m
 V=[01;32m
 
 VERSION=0.1.3
@@ -43,7 +43,7 @@ test_mac: build
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} package.json public/package.json extras/instalador.nsi app/templates/about.hbs extras/distwin.py Makefile --list
+	@bumpversion patch --current-version ${VERSION} package.json public/package.json extras/instalador.nsi app/templates/application.hbs extras/distwin.py Makefile --list
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
