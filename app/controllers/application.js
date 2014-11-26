@@ -11,6 +11,9 @@ export default Ember.Controller.extend({
     actions: {
       show: function() {
         return Bootstrap.ModalManager.show('myModal');
+      },
+      mostrar_devtools: function() {
+        require('nw.gui').Window.get().showDevTools();
       }
     }
 

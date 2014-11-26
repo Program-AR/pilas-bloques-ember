@@ -1,3 +1,30 @@
+<script>
+
+window.anterior_altura = 0;
+
+
+function redimensionar() {
+  var panel = document.getElementById('panel-derecho');
+  var altura = panel.getClientRects()[0].height;
+
+  if (window.anterior_altura != altura) {
+    var e = document.getElementById('contenedor-blockly');
+    e.style.height = (altura - 50) + 'px';
+    window.anterior_altura = altura;
+    Blockly.fireUiEvent(window, 'resize');
+  }
+}
+
+function forzar_redimensionado() {
+  window.anterior_altura += 1;
+  redimensionar();
+}
+
+window.onresize = redimensionar;
+
+</script>
+
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -14,7 +41,8 @@
       </ul>
 
       <div class='header-right'>
-        <button class='btn btn-info btn-xs' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+        <button class='btn btn-default btn-xs btn-flat' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
+        <button class='btn btn-default btn-xs btn-flat' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
       </div>
     </div>
   </div>
