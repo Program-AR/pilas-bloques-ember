@@ -5,6 +5,10 @@ window.anterior_altura = 0;
 
 function redimensionar() {
   var panel = document.getElementById('panel-derecho');
+
+  if (!panel)
+    return;
+
   var altura = panel.getClientRects()[0].height;
 
   if (window.anterior_altura != altura) {
@@ -41,6 +45,7 @@ window.onresize = redimensionar;
       </ul>
 
       <div class='header-right'>
+        <button class='btn btn-default btn-xs btn-flat' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
         <button class='btn btn-default btn-xs btn-flat' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
         <button class='btn btn-default btn-xs btn-flat' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
       </div>

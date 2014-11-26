@@ -14,6 +14,9 @@ export default Ember.Controller.extend({
       },
       mostrar_devtools: function() {
         require('nw.gui').Window.get().showDevTools();
+      },
+      actualizar: function() {
+        location.reload(true);
       }
     }
 
