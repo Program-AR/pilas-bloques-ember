@@ -6,10 +6,17 @@
 
   {{pilas-canvas onready="reiniciar"}}
 
-
   <div class='panel-ayuda'>
-    Acá un texto que explica el motivo de la actividad
+
+    {{#if tuercas_recolectadas}}
+      <p>Tienes <strong>{{tuercas_recolectadas}}</strong> tuercas recolectadas</p>
+    {{else}}
+      <p>No has recolectado ninguna tuerca aún</p>
+    {{/if}}
+
+    <p>Acá un texto que explica el motivo de la actividad</p>
   </div>
+
 </div>
 
 <div class='panel-derecho' id='panel-derecho'>

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   didInsertElement: function() {
-    forzar_redimensionado();
+      this.sendAction('redimensionar');
   },
   actions: {
     ejecutar: function() {
@@ -58,7 +58,7 @@ export default Ember.Component.extend({
     }
 
     str_toolbox += '</xml>';
-    console.log(str_toolbox);
+    //console.log(str_toolbox);
     return str_toolbox;
   },
 

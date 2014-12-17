@@ -1,34 +1,3 @@
-<script>
-
-window.anterior_altura = 0;
-
-
-function redimensionar() {
-  var panel = document.getElementById('panel-derecho');
-
-  if (!panel)
-    return;
-
-  var altura = panel.getClientRects()[0].height;
-
-  if (window.anterior_altura != altura) {
-    var e = document.getElementById('contenedor-blockly');
-    e.style.height = (altura - 50) + 'px';
-    window.anterior_altura = altura;
-    Blockly.fireUiEvent(window, 'resize');
-  }
-}
-
-function forzar_redimensionado() {
-  window.anterior_altura += 1;
-  redimensionar();
-}
-
-window.onresize = redimensionar;
-
-</script>
-
-
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
