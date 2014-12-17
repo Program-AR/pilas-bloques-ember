@@ -45,9 +45,9 @@ test_mac: build
 version:
 	# patch || minor
 	@bumpversion patch --current-version ${VERSION} package.json public/package.json extras/instalador.nsi app/templates/application.hbs extras/distwin.py Makefile --list
-	make build
-	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
+	@echo "Es recomendable compilar, generar los tags y sube todo a github:"
 	@echo ""
+	@echo "make build"
 	@echo "make ver_sync"
 
 ver_sync:
