@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-var pilas = window.pilas;
-
 export default Ember.Controller.extend({
   nombre_escenario: "alien_laberinto",
   tuercas_recolectadas: 0,
@@ -26,7 +24,7 @@ export default Ember.Controller.extend({
 
           var fondo = new pilas.fondos.Laberinto1();
           var alien = new pilas.actores.Alien(-175, -180);
-          
+
           window.alien = alien;
           window.fondo = fondo;
 

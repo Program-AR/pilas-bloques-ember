@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 var Bootstrap = window.Bootstrap;
 var Blockly = window.Blockly;
-var require = require || function() {alert("Esta funcionalidad es exclusiva de node-webkit");};
 
 export default Ember.Controller.extend({
   inyectarRedimensionado: function() {
