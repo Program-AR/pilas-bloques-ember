@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var Blockly = window.Blockly;
+
 export default Ember.Component.extend({
   didInsertElement: function() {
       this.sendAction('redimensionar');
@@ -80,10 +82,13 @@ export default Ember.Component.extend({
     }.bind(this);
 
 
-    if (escenario in escenarios)
+    if (escenario in escenarios) {
       escenarios[escenario].call(this);
-    else
+    }
+    else {
       throw new Error("No se puede cargar el escenario {{ESCENARIO}}, al parecer no está declarado en pilas-blockly.js".replace("{{ESCENARIO}}", escenario));
+    }
+
 
   }
 });

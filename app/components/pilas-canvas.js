@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+var pilasengine = window.pilasengine;
+
 export default Ember.Component.extend({
   iniciarPilas: function() {
     var canvas_element = this.$().find('canvas')[0];

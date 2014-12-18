@@ -1,23 +1,24 @@
 import Ember from 'ember';
 
 var Bootstrap = window.Bootstrap;
+var Blockly = window.Blockly;
+var require = require || function() {alert("Esta funcionalidad es exclusiva de node-webkit");};
 
 export default Ember.Controller.extend({
   inyectarRedimensionado: function() {
-
-
 
     window.anterior_altura = 0;
 
     function redimensionar() {
       var panel = document.getElementById('panel-derecho');
 
-      if (!panel)
-      return;
+      if (!panel) {
+        return null;
+      }
 
       var altura = panel.getClientRects()[0].height;
 
-      if (window.anterior_altura != altura) {
+      if (window.anterior_altura !== altura) {
         var e = document.getElementById('contenedor-blockly');
         e.style.height = (altura - 50) + 'px';
         window.anterior_altura = altura;

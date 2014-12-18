@@ -3,7 +3,7 @@ module.exports = function(grunt) {
 grunt.initConfig({
   nodewebkit: {
     options: {
-      version: '0.8.6',
+      version: '0.11.3',
       build_dir: './distribuibles',
       mac: true,
       win: false,
