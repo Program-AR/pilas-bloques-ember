@@ -31,17 +31,18 @@ watch:
 actualizar:
 	git pull
 	npm install
+	bower install
 	make actualizar_pilas
 
 actualizar_pilas:
-	cd pilasweb; make build; cd ..
+	cd pilasweb; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 test_mac: build
 	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
-	open -a /Applications/node-webkit.app dist
+	open -a /Applications/node-webkit.app --args /Users/hugoruscitti/proyectos/pilas-engine-bloques/dist
 
 version:
 	# patch || minor
