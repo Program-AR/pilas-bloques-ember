@@ -72,3 +72,11 @@ canvas {
   position: absolute;
   top: 8px;
 }
+
+[role=treeitem] {
+  cursor: pointer !important;
+}
+
+.blocklyTreeLabel {
+  cursor: pointer !important;
+}
