@@ -128,3 +128,92 @@ Blockly.Blocks['alien-recoger'] = {
 Blockly.JavaScript['alien-recoger'] = function(block) {
   return 'alien.recoger();\n';
 };
+
+/* ============================================== */
+
+Blockly.Blocks['repetir'] = {
+  init: function() {
+    this.setColour(0);
+    this.appendValueInput("count")
+        .setCheck("Number")
+        .appendField("repetir");
+    this.appendStatementInput("block");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['repetir'] = function(block) {
+  var value_count = Blockly.JavaScript.valueToCode(block, 'count', Blockly.JavaScript.ORDER_ATOMIC) || '0' ;
+  var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+  return 'for (var _ind = 0; _ind < {{n}}; _ind++) {\n {{block}}}\n'.replace('{{n}}', value_count).replace('{{block}}', statements_block);
+};
+
+/* ============================================== */
+
+Blockly.Blocks['hasta'] = {
+  init: function() {
+    this.setColour(0);
+    this.appendValueInput("condition")
+        .setCheck("Boolean")
+        .appendField("repetir hasta que");
+    this.appendStatementInput("block");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['hasta'] = function(block) {
+  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'true';
+  var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+  return 'while (!{{condition}}) {\n {{block}}}\n'.replace('{{condition}}', value_condition).replace('{{block}}', statements_block);
+};
+
+/* ============================================== */
+
+Blockly.Blocks['si'] = {
+  init: function() {
+    this.setColour(0);
+    this.appendValueInput("condition")
+        .setCheck("Boolean")
+        .appendField("si");
+    this.appendStatementInput("block");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['si'] = function(block) {
+  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+  var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+  return 'if ({{condition}}) {\n {{block}}}\n'.replace('{{condition}}', value_condition).replace('{{block}}', statements_block);
+};
+
+
+/* ============================================== */
+
+Blockly.Blocks['sino'] = {
+  init: function() {
+    this.setColour(0);
+    this.appendValueInput("condition")
+        .setCheck("Boolean")
+        .appendField("si");
+    this.appendStatementInput("block1");
+    this.appendDummyInput()
+        .appendField("sino");
+    this.appendStatementInput("block2");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+  }
+};
+
+Blockly.JavaScript['sino'] = function(block) {
+  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+  var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
+  var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
+  return 'if ({{condition}}) {\n {{block1}}} else {\n {{block2}}}\n'.replace('{{condition}}', value_condition).replace('{{block1}}', statements_block1).replace('{{block2}}', statements_block2);
+};

@@ -58,7 +58,9 @@ export default Ember.Component.extend({
 
       str_toolbox += '</category>\n';
     }
-
+    
+    str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>'
+    
     str_toolbox += '</xml>';
     //console.log(str_toolbox);
     return str_toolbox;
@@ -75,7 +77,20 @@ export default Ember.Component.extend({
       this.definir_bloques({
         Alien: [ 'alien-ir_derecha', 'alien-ir_izquierda',
                   'alien-ir_arriba', 'alien-ir_abajo',
-                  'alien-recoger',
+                  'alien-recoger'
+               ],
+       Control: [ 'repetir',
+                  'si',     
+                  'sino',  
+                  'hasta',          
+                ],
+       Expresiones: [ 
+                  'math_number',
+                  'math_arithmetic',
+                  'logic_boolean',
+                  'logic_compare',
+                  'logic_operation',
+                  'logic_negate',
                 ],
       });
 
