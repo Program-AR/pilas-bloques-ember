@@ -1,3 +1,8 @@
+function obtener_icono(nombre) {
+  return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
+}
+
+
 Blockly.Blocks['move_to'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
@@ -54,6 +59,7 @@ Blockly.Blocks['alien-ir_derecha'] = {
   init: function() {
     this.setColour(160);
     this.appendDummyInput()
+        .appendField(obtener_icono('derecha.png'))
         .appendField("ir a la derecha")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -71,6 +77,7 @@ Blockly.Blocks['alien-ir_arriba'] = {
   init: function() {
     this.setColour(160);
     this.appendDummyInput()
+        .appendField(obtener_icono('arriba.png'))
         .appendField("ir a la arriba")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -87,6 +94,7 @@ Blockly.Blocks['alien-ir_abajo'] = {
   init: function() {
     this.setColour(160);
     this.appendDummyInput()
+        .appendField(obtener_icono('abajo.png'))
         .appendField("ir a la abajo")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -99,10 +107,12 @@ Blockly.JavaScript['alien-ir_abajo'] = function(block) {
 
 /* ============================================== */
 
+
 Blockly.Blocks['alien-ir_izquierda'] = {
   init: function() {
     this.setColour(160);
     this.appendDummyInput()
+        .appendField(obtener_icono('izquierda.png'))
         .appendField("ir a la izquierda")
     this.setPreviousStatement(true);
     this.setNextStatement(true);
