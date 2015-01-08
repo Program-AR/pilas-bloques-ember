@@ -14,9 +14,11 @@
       </ul>
 
       <div class='header-right'>
-        <button class='btn btn-default btn-xs btn-flat' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
-        <button class='btn btn-default btn-xs btn-flat' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
-        <button class='btn btn-default btn-xs btn-flat' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+        {{nw-zoom}}
+
+        <button class='btn btn-success btn-sm btn-rect' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
+        <button class='btn btn-info btn-sm btn-rect' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
+        <button class='btn btn-warning btn-sm btn-rect' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
       </div>
     </div>
   </div>
