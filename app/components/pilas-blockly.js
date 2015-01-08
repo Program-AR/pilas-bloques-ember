@@ -4,7 +4,8 @@ var Blockly = window.Blockly;
 
 export default Ember.Component.extend({
   didInsertElement: function() {
-      this.sendAction('redimensionar');
+    window.forzar_redimensionado();
+    this.sendAction('redimensionar');
   },
   actions: {
     ejecutar: function() {

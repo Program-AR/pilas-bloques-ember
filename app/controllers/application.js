@@ -41,7 +41,8 @@ export default Ember.Controller.extend({
       redimensionar();
     }
 
-    window.onresize = redimensionar;
+    window.onresize = forzar_redimensionado;
+    window.forzar_redimensionado = forzar_redimensionado;
 
   }.on('init'),
 
