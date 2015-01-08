@@ -17,6 +17,7 @@ html, body {
 
 canvas {
   border: 1px solid gray;
+  margin-top: 3px;
 }
 
 

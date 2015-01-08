@@ -58,9 +58,9 @@ export default Ember.Component.extend({
 
       str_toolbox += '</category>\n';
     }
-    
+
     str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>'
-    
+
     str_toolbox += '</xml>';
     //console.log(str_toolbox);
     return str_toolbox;
@@ -80,11 +80,11 @@ export default Ember.Component.extend({
                   'alien-recoger'
                ],
        Control: [ 'repetir',
-                  'si',     
-                  'sino',  
-                  'hasta',          
+                  'si',
+                  'sino',
+                  'hasta',
                 ],
-       Expresiones: [ 
+       Expresiones: [
                   'math_number',
                   'math_arithmetic',
                   'logic_boolean',

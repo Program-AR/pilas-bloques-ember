@@ -23,8 +23,6 @@ input, textarea /*.contenteditable?*/ {
 }
 
 
-
-
 .nw-zoom {
   display: inline-block;
   margin-right: 20px;
@@ -34,4 +32,10 @@ input, textarea /*.contenteditable?*/ {
 .btn-rect {
   width: 40px;
   height: 34px;
+}
+
+
+.panel-derecho {
+  background-color: white;
+  padding-left: 10px;
 }

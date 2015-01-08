@@ -1,25 +1,24 @@
-<div class='contenedor-editor'>
+<div class='contenedor-editor' id='contenedor-editor'>
 
+  <div class='panel-pilas' id='panel-pilas'>
+    
+    {{pilas-canvas onready="reiniciar"}}
 
-<div class='panel-pilas'>
+    <div class='panel-ayuda'>
 
-  {{pilas-canvas onready="reiniciar"}}
+      {{#if tuercas_recolectadas}}
+        <p>Tienes <strong>{{tuercas_recolectadas}}</strong> tuercas recolectadas</p>
+      {{else}}
+        <p>No has recolectado ninguna tuerca aún</p>
+      {{/if}}
 
-  <div class='panel-ayuda'>
+      <p>Acá un texto que explica el motivo de la actividad</p>
+    </div>
 
-    {{#if tuercas_recolectadas}}
-      <p>Tienes <strong>{{tuercas_recolectadas}}</strong> tuercas recolectadas</p>
-    {{else}}
-      <p>No has recolectado ninguna tuerca aún</p>
-    {{/if}}
-
-    <p>Acá un texto que explica el motivo de la actividad</p>
   </div>
 
-</div>
-
-<div class='panel-derecho' id='panel-derecho'>
-  {{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
-</div>
+  <div class='panel-derecho' id='panel-derecho'>
+    {{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
+  </div>
 
 </div>
