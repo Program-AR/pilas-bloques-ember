@@ -2,7 +2,10 @@
   "predef": [
     "document",
     "window",
-    "-Promise"
+    "-Promise",
+    "pilas",
+    "require",
+    "pilasengine"
   ],
   "browser": true,
   "boss": true,
