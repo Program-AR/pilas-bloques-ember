@@ -24,6 +24,11 @@ export default Ember.Component.extend({
     reiniciar: function() {
       this.sendAction('reiniciar');
     },
+    alternar: function() {
+      //this.sendAction('redimensionar');
+      console.log(this.controllerFor('application'));
+      //.sendAction('redimensionar');
+    },
     ver_codigo: function() {
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = Blockly.JavaScript.workspaceToCode();
@@ -59,7 +64,7 @@ export default Ember.Component.extend({
       str_toolbox += '</category>\n';
     }
 
-    str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>'
+    str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>';
 
     str_toolbox += '</xml>';
     //console.log(str_toolbox);

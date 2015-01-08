@@ -10,8 +10,8 @@ grunt.initConfig({
       linux32: false,
       linux64: false
     },
-    src: [
-    './dist/**/*',
+    src: ['./dist/**/*',
+          'node_modules/nedb/**/*',
     ]
   },
 });
