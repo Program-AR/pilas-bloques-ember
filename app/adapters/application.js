@@ -2,16 +2,19 @@ import Ember from 'ember';
 import DS from 'ember-data';
 import db from '../utils/db';
 
-var db = db('pilas-engine-bloques-v1', ['setup']);
+var db = db('pilas-engine-bloques-v1b', ['setup', 'galeria']);
 
 window.db = db;
+
+function get_id() {
+  return Math.random().toString(36).substr(2, 10);
+}
 
 export default DS.RESTAdapter.extend({
 
   findAll: function(store, type, url) {
     var collection = type.url || type.typeKey;
     var result = {};
-    console.log(url);
 
     var promise = new Ember.RSVP.Promise(function(resolve, reject) {
       db.find(collection, {}, function(err, data) {
@@ -29,7 +32,13 @@ export default DS.RESTAdapter.extend({
 
   createRecord: function (store, type, record) {
     var collection = type.url || type.typeKey;
-    var doc = record.serialize({includeId: true});
+
+
+    var doc = record.serialize();
+
+    if (!record.get('id')) {
+      doc.id = get_id();
+    }
 
     var promise = new Ember.RSVP.Promise(function(resolve, reject) {
       db.insert(collection, doc, function(err, newDoc) {

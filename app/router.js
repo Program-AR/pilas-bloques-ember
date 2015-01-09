@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('version');
   this.route('preferencias');
   this.route('editor');
+  this.route('galeria');
 });
 
 export default Router;

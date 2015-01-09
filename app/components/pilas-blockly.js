@@ -25,6 +25,9 @@ export default Ember.Component.extend({
     reiniciar: function() {
       this.sendAction('reiniciar');
     },
+    guardar: function() {
+      this.sendAction('guardar');
+    },
     alternar: function() {
       //this.sendAction('redimensionar');
       console.log(this.controllerFor('application'));

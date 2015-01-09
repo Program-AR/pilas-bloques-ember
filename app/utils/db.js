@@ -60,6 +60,10 @@ export default function db(application, models, log_enabled) {
       return databases[db_name].insert(record, callback);
     },
 
+    generateIdForRecord: function(store) {
+      alert("ASDASDASD");
+    },
+
     /*
      * Realiza una búsqueda dentro de una colección.
      */
@@ -84,6 +88,15 @@ export default function db(application, models, log_enabled) {
 
     findOne: function(db_name, query, projection, callback) {
       return databases[db_name].findOne(query, projection, callback);
+    },
+
+
+    showAll: function(db_name) {
+      console.log("showing: " + db_name);
+      this.find(db_name, {}, function(err, data) {
+        console.log(err);
+        console.log(data);
+      });
     }
 
   };

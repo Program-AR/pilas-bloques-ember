@@ -5,7 +5,8 @@
     "-Promise",
     "pilas",
     "require",
-    "pilasengine"
+    "pilasengine",
+    "Blockly"
   ],
   "browser": true,
   "boss": true,

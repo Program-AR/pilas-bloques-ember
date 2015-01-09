@@ -1,7 +1,7 @@
 <div class='contenedor-editor' id='contenedor-editor'>
 
   <div class='panel-pilas' id='panel-pilas'>
-    
+
     {{pilas-canvas onready="reiniciar"}}
 
     <div class='panel-ayuda'>
@@ -18,7 +18,12 @@
   </div>
 
   <div class='panel-derecho' id='panel-derecho'>
-    {{pilas-blockly reiniciar="reiniciar" escenario=nombre_escenario}}
+    {{pilas-blockly guardar='guardar' reiniciar="reiniciar" escenario=nombre_escenario}}
   </div>
 
 </div>
+
+{{#bs-modal name="modal-guardar" fade=true footerButtonsBinding="botones-modal-guardar" title="Guardar"}}
+<p>¿Con qué nombre te gustaría guardar tu programa?</p>
+<p>Nombre: {{input value=nombre_al_guardar}}
+{{/bs-modal}}

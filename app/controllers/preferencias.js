@@ -4,9 +4,10 @@ export default Ember.Controller.extend({
   edicion: false,
   actions: {
     guardar: function() {
-      this.set('edicion', false);
-      var c = this.store.find('preferencias');
-      console.log(c.toArray());
+      var model = this.get('model');
+      model.save().then(function() {
+        this.set('edicion', false);
+      });
     },
     editar: function() {
       this.set('edicion', true);
