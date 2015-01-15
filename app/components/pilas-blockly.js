@@ -3,6 +3,8 @@ import Ember from 'ember';
 var Blockly = window.Blockly;
 
 export default Ember.Component.extend({
+  ejecutando: false,
+  
   didInsertElement: function() {
     window.forzar_redimensionado();
     this.sendAction('redimensionar');
@@ -17,12 +19,15 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
       try {
+        this.set('ejecutando', true);
         eval(code);
+        this.sendAction('parar');
       } catch (e) {
         alert(e);
       }
     },
     reiniciar: function() {
+      this.set('ejecutando', false);
       this.sendAction('reiniciar');
     },
     guardar: function() {
