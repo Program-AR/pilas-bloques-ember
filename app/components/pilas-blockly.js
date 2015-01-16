@@ -115,8 +115,8 @@ var Lenguaje = Ember.Object.extend({
          str_toolbox += item.build();
      });
      
-     str_toolbox += '<category name="Variables" custom="VARIABLE"></category>'
-     str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>'
+     str_toolbox += '<category name="Variables" custom="VARIABLE"></category>';
+     str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>';
 
      str_toolbox += '</xml>';
      
