@@ -1,12 +1,23 @@
+{{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="Acerca de..."}}
+    <p><strong>pilas-engine-bloques</strong> es un prototipo
+    que integra <a href='https://developers.google.com/blockly/' target='_blank'>blockly</a> junto a <a href='http://www.pilas-engine.com.ar/' target='_blank'>pilas-engine</a>.
+
+    El objetivo del prototipo es realizar una aplicación
+    que permita a los jóvenes realizar sus primeros pasos
+    en programación de manera sencilla.</p>
+
+    <p>Estás utilizando la versión <code>0.1.6</code>.
+{{/bs-modal}}
+
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
+    <div class="navbar-header navbar-collapse">
       <a class="navbar-brand" href="#">pilas-engine-bloques</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    <div id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         {{#link-to "index" tagName='li'}}<a href=#>index</a>{{/link-to}}
         {{#link-to "editor" tagName='li'}}<a href=#>editor</a>{{/link-to}}
@@ -28,15 +39,3 @@
 
 
 {{outlet}}
-
-
-{{#bs-modal name="myModal" fade=true footerButtonsBinding="myModalButtons" title="Acerca de..."}}
-    <p><strong>pilas-engine-bloques</strong> es un prototipo
-    que integra <a href='https://developers.google.com/blockly/' target='_blank'>blockly</a> junto a <a href='http://www.pilas-engine.com.ar/' target='_blank'>pilas-engine</a>.
-
-    El objetivo del prototipo es realizar una aplicación
-    que permita a los jóvenes realizar sus primeros pasos
-    en programación de manera sencilla.</p>
-
-    <p>Estás utilizando la versión <code>0.1.6</code>.
-{{/bs-modal}}

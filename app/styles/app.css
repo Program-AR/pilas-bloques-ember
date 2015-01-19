@@ -89,6 +89,8 @@ span.url {
   position: absolute;
   top: 51px;
   bottom: 0;
+  left: 0;
+  right: 0;
   overflow-y: scroll;
 }
 
@@ -108,4 +110,13 @@ span.url {
 
 .etiqueta {
   width: 100px !important;
+}
+
+.modal-backdrop {
+  z-index: 5000;
+}
+
+
+.modal {
+  z-index: 20000;
 }
