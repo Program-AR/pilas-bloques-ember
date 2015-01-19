@@ -84,13 +84,13 @@ Section "Dummy Section" SecDummy
 
   SetOutPath "$INSTDIR"
 
-  File "pilas-engine-bloques.exe"
   File "ffmpegsumo.dll"
-  File "icudt.dll"
-  File "libEGL.dll"
-  File "libGLESv2.dll"
+  File "icudtl.dat"
   File "nw.pak"
-  File "nwsnapshot.exe"
+  File "libEGL.dll"
+  File "pilas-engine-bloques.exe"
+  File "libGLESv2.dll"
+  File /r "locales"
 
 
   ;Store installation folder

@@ -8,7 +8,7 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('about');
   this.route('version');
-  this.route('preferencias');
+  this.route('preferencia');
   this.route('editor');
   this.route('galeria');
 });
