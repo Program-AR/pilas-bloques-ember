@@ -1,4 +1,4 @@
-VERSION=0.1.5
+VERSION=0.1.6
 
 # Colores
 N=[0m
@@ -75,18 +75,18 @@ binarios: build
 	make _a_produccion
 	@grunt nodewebkit
 	# osx
-	hdiutil create distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.5.dmg -srcfolder distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques.app -size 400mb
-	rm -r -f distribuibles/0.1.5
-	mkdir distribuibles/0.1.5
-	cp distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.5.dmg distribuibles/0.1.5
+	hdiutil create distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.6.dmg -srcfolder distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques.app -size 400mb
+	rm -r -f distribuibles/0.1.6
+	mkdir distribuibles/0.1.6
+	cp distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.6.dmg distribuibles/0.1.6
 	# windows
 	cp extras/instalador.nsi distribuibles/pilas-engine-bloques/win32/
 	makensis distribuibles/pilas-engine-bloques/win32/instalador.nsi
-	cp distribuibles/pilas-engine-bloques/win32/pilas-engine-bloques_0.1.5.exe distribuibles/0.1.5/
+	cp distribuibles/pilas-engine-bloques/win32/pilas-engine-bloques_0.1.6.exe distribuibles/0.1.6/
 	make _a_desarrollo
 
 subir:
-	mv distribuibles/0.1.5 /Users/hugoruscitti/Dropbox/releases/pilas-engine-bloques/
+	mv distribuibles/0.1.6 /Users/hugoruscitti/Dropbox/releases/pilas-engine-bloques/
 
 _a_desarrollo:
 	@echo "Pasando a desarrollo..."

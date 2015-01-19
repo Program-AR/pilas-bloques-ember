@@ -1,8 +1,15 @@
 Changelog
 =========
 
-(version desarrollo)
---------------------
+0.1.6 (2015-01-19)
+------------------
+
+- Actualizando package. [Hugo Ruscitti]
+
+- Implementando persistencia de datos con localstorage y reparando los
+  scripts para compilar. [Hugo Ruscitti]
+
+- Incorporando gitchangelog. [Hugo Ruscitti]
 
 - Merge pull request #2 from sawady/master. [Hugo Ruscitti]
 
