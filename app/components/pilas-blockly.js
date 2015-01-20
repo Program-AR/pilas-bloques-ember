@@ -219,9 +219,15 @@ export default Ember.Component.extend({
     var toolbox = this.$().find('#toolbox')[0];
 
     Blockly.inject(contenedor, {
+      collapse: false,
       path: './libs/blockly/',
       toolbox: toolbox,
     });
+    
+    // Agrego el bloque 'al empezar a ejecutar' al momento de iniciar Blockly
+    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar'); 
+    main_program_block_def.initSvg(); 
+    Blockly.getMainWorkspace().render();
 
     this.cargar_escenario(this.escenario);
 
