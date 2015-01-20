@@ -1,0 +1,39 @@
+<div class='contenido-principal'>
+
+<h1>Preferencias</h1>
+
+<p>Desde esta sección vas a poder configurar
+y describir tus datos personales.</p>
+
+<p>La información de esta sección servirá para
+  que otros usuarios puedan ver tus códigos
+  publicados.</p>
+
+{{#if edicion}}
+  <p>
+    <button class='btn btn-success' {{action 'guardar'}}>Guardar</button>
+  </p>
+
+  <table class='table table-preferencias'>
+    <tr>
+      <th class='etiqueta'> Tu nombre: </th>
+      <td> {{input type="text" value=model.nombre}} </td>
+    </tr>
+  </table>
+
+{{else}}
+
+  <p>
+    <button disabled class='btn btn-info'{{action 'editar'}}>Editar</button>
+  </p>
+
+  <table class='table table-preferencias'>
+    <tr>
+      <th class='etiqueta'> Tu nombre: </th>
+      <td> sin editar {{model.nombre}} </td>
+    </tr>
+  </table>
+
+{{/if}}
+
+</div>

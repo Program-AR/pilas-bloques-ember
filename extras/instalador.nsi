@@ -13,7 +13,7 @@
 
   ;Name and file
   Name "pilas-engine-bloques"
-  OutFile "pilas-engine-bloques_0.1.5.exe"
+  OutFile "pilas-engine-bloques_0.1.6.exe"
 
   ;Default installation folder
   InstallDir "c:\pilas-engine-bloques"
@@ -84,13 +84,13 @@ Section "Dummy Section" SecDummy
 
   SetOutPath "$INSTDIR"
 
-  File "pilas-engine-bloques.exe"
   File "ffmpegsumo.dll"
-  File "icudt.dll"
-  File "libEGL.dll"
-  File "libGLESv2.dll"
+  File "icudtl.dat"
   File "nw.pak"
-  File "nwsnapshot.exe"
+  File "libEGL.dll"
+  File "pilas-engine-bloques.exe"
+  File "libGLESv2.dll"
+  File /r "locales"
 
 
   ;Store installation folder

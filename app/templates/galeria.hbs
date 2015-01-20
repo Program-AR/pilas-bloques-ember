@@ -5,6 +5,7 @@
 {{#each}}
 
   <div class='galeria-juego'>
+    <div class='galeria-juego-acciones'><button {{action "eliminar" this}} class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></button></div>
     <div class='galeria-juego-preview'><img {{bindAttr src=imagen}}></div>
     <div class='galeria-juego-titulo'>{{nombre}}</div>
   </div>

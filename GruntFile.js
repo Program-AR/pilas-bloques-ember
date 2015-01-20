@@ -1,14 +1,10 @@
-module.exports = function(grunt) {
+var grunt = require('grunt');
 
 grunt.initConfig({
   nodewebkit: {
     options: {
-      version: '0.11.3',
+      platforms: ['win32','osx32'],
       build_dir: './distribuibles',
-      mac: true,
-      win: false,
-      linux32: false,
-      linux64: false
     },
     src: ['./dist/**/*',
           'node_modules/nedb/**/*',
@@ -18,4 +14,3 @@ grunt.initConfig({
 
 grunt.loadNpmTasks('grunt-contrib-copy');
 grunt.loadNpmTasks('grunt-node-webkit-builder');
-}
