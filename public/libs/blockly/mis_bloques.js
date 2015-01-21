@@ -1,3 +1,36 @@
+//Lo pongo para tener los inputs inline en las llamadas a procedimientos
+Blockly.Blocks['procedures_callnoreturn']['init'] = function() {
+    this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL);
+    this.setColour(290);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.PROCEDURES_CALLNORETURN_CALL)
+        .appendField('', 'NAME')
+        .appendField(Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS, 'WITH');
+    this.setPreviousStatement(true);
+    this.setNextStatement(true);
+    this.setInputsInline(true);
+    // Tooltip is set in domToMutation.
+    this.arguments_ = []; 
+    this.quarkConnections_ = null;
+    this.quarkArguments_ = null;
+  }
+
+//Lo pongo para tener los inputs inline en las llamadas a funciones
+Blockly.Blocks['procedures_callreturn']['init'] = function() {
+    this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL);
+    this.setColour(290);
+    this.appendDummyInput()
+        .appendField(Blockly.Msg.PROCEDURES_CALLRETURN_CALL)
+        .appendField('', 'NAME')
+        .appendField(Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS, 'WITH');
+    this.setOutput(true);
+    this.setInputsInline(true);
+    // Tooltip is set in domToMutation.
+    this.arguments_ = [];
+    this.quarkConnections_ = null;
+    this.quarkArguments_ = null;
+  }  
+
 function obtener_icono(nombre) {
   return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
 }
@@ -226,4 +259,23 @@ Blockly.JavaScript['sino'] = function(block) {
   var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
   var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
   return 'if ({{condition}}) {\n {{block1}}} else {\n {{block2}}}\n'.replace('{{condition}}', value_condition).replace('{{block1}}', statements_block1).replace('{{block2}}', statements_block2);
+};
+
+/* ============================================== */
+
+Blockly.Blocks['al_empezar_a_ejecutar'] = {
+  init: function() {
+    this.setColour(130);
+    this.appendDummyInput()
+        .appendField("Al empezar a ejecutar");
+    this.appendStatementInput("program");
+    this.setDeletable(false);
+    this.setEditable(false);
+    this.setMovable(false);
+  }
+};
+
+Blockly.JavaScript['al_empezar_a_ejecutar'] = function(block) {
+  var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
+  return 'function program() {\n{{block}}}\n program();'.replace('{{block}}', statements_program);
 };

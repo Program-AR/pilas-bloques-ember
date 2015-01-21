@@ -51,6 +51,18 @@ var BloqueCategoria = Ember.Object.extend({
    }
 });
 
+var BloqueCategoriaVariables = Ember.Object.extend({
+    build: function() {
+        return '<category name="Variables" custom="VARIABLE"></category>';
+    }
+});
+
+var BloqueCategoriaSubtareas = Ember.Object.extend({
+    build: function() {
+        return '<category name="Subtareas" custom="PROCEDURE"></category>';
+    }
+});
+
 var Bloque = Ember.Object.extend({
    init: function() {
       this.set('parametros', []);
@@ -115,9 +127,6 @@ var Lenguaje = Ember.Object.extend({
          str_toolbox += item.build();
      });
      
-     str_toolbox += '<category name="Variables" custom="VARIABLE"></category>';
-     str_toolbox += '<category name="Subtareas" custom="PROCEDURE"></category>';
-
      str_toolbox += '</xml>';
      
      return str_toolbox;
@@ -166,8 +175,11 @@ alien_expresiones.agregar_simple('logic_compare');
 alien_expresiones.agregar_simple('logic_operation');
 alien_expresiones.agregar_simple('logic_negate');
 
+var alien_variables = new BloqueCategoriaVariables();
+var alien_subtareas = new BloqueCategoriaSubtareas();
+
 var alien_lenguaje = Lenguaje.create({
-   categorias: [alien_primitivas, alien_control, alien_expresiones]
+   categorias: [alien_primitivas, alien_control, alien_expresiones, alien_variables, alien_subtareas]
 });
 
 export default Ember.Component.extend({
@@ -219,9 +231,15 @@ export default Ember.Component.extend({
     var toolbox = this.$().find('#toolbox')[0];
 
     Blockly.inject(contenedor, {
+      collapse: false,
       path: './libs/blockly/',
       toolbox: toolbox,
     });
+    
+    // Agrego el bloque 'al empezar a ejecutar' al momento de iniciar Blockly
+    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar'); 
+    main_program_block_def.initSvg(); 
+    Blockly.getMainWorkspace().render();
 
     this.cargar_escenario(this.escenario);
 
