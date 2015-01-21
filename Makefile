@@ -49,7 +49,7 @@ actualizar_pilas:
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_blockly:
-	cd blockly; git pull; cd ..
+	cd blockly; git pull; python build.py; cd ..
 	cp -f blockly/blockly_compressed.js public/libs/blockly/
 	cp -f blockly/blocks_compressed.js public/libs/blockly/
 	cp -f blockly/javascript_compressed.js public/libs/blockly/
