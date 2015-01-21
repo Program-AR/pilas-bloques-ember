@@ -12,7 +12,7 @@ all:
 	@echo ""
 	@echo "  $(A)De uso para desarrollo: $(N)"
 	@echo ""
-	@echo "    $(V)actualizar$(N)  Actualiza el repositorio y pilas-engine."
+	@echo "    $(V)actualizar$(N)  Actualiza el repositorio, pilas-engine y blockly."
 	@echo ""
 	@echo "    $(V)server$(N)      Prueba la aplicación en el navegador."
 	@echo "    $(V)build$(N)       Genera los archivos compilados."
@@ -40,12 +40,29 @@ actualizar:
 	npm install
 	bower install
 	make actualizar_pilas
+	make actualizar_blockly
+
+bajar_dependencias:
+	cd ..
+	git clone https://github.com/hugoruscitti/pilasweb.git
+	git clone https://github.com/sawady/blockly.git
+	git clone https://github.com/google/closure-library.git
 
 actualizar_pilas:
 	cd pilasweb; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
+
+actualizar_blockly:
+	cd blockly; git pull; python build.py; cd ..
+	cp -f blockly/blockly_compressed.js public/libs/blockly/
+	cp -f blockly/blocks_compressed.js public/libs/blockly/
+	cp -f blockly/javascript_compressed.js public/libs/blockly/
+	rm -r -f public/libs/blockly/media
+	cp -r -f blockly/media public/libs/blockly/
+	rm -r -f public/libs/blockly/msg
+	cp -r -f blockly/msg  public/libs/blockly/
 
 test_mac: build
 	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
