@@ -232,8 +232,10 @@ export default Ember.Component.extend({
 
     Blockly.inject(contenedor, {
       collapse: false,
-      duplicate: true,
+      duplicate: false,
       trashOnlyDelete: true,
+      disable: false,
+      comments: false,
       path: './libs/blockly/',
       toolbox: toolbox,
     });
