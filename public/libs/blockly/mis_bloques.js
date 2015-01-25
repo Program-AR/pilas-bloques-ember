@@ -1,36 +1,3 @@
-//Lo pongo para tener los inputs inline en las llamadas a procedimientos
-Blockly.Blocks['procedures_callnoreturn']['init'] = function() {
-    this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLNORETURN_HELPURL);
-    this.setColour(290);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.PROCEDURES_CALLNORETURN_CALL)
-        .appendField('', 'NAME')
-        .appendField(Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS, 'WITH');
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-    this.setInputsInline(true);
-    // Tooltip is set in domToMutation.
-    this.arguments_ = []; 
-    this.quarkConnections_ = null;
-    this.quarkArguments_ = null;
-  }
-
-//Lo pongo para tener los inputs inline en las llamadas a funciones
-Blockly.Blocks['procedures_callreturn']['init'] = function() {
-    this.setHelpUrl(Blockly.Msg.PROCEDURES_CALLRETURN_HELPURL);
-    this.setColour(290);
-    this.appendDummyInput()
-        .appendField(Blockly.Msg.PROCEDURES_CALLRETURN_CALL)
-        .appendField('', 'NAME')
-        .appendField(Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS, 'WITH');
-    this.setOutput(true);
-    this.setInputsInline(true);
-    // Tooltip is set in domToMutation.
-    this.arguments_ = [];
-    this.quarkConnections_ = null;
-    this.quarkArguments_ = null;
-  }  
-
 function obtener_icono(nombre) {
   return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
 }
