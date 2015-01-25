@@ -87,7 +87,7 @@
 	"LOGIC_OPERATION_AND": "y",
 	"LOGIC_OPERATION_TOOLTIP_OR": "Devuelve verdadero si al menos una de las entradas es verdadera.",
 	"LOGIC_OPERATION_OR": "o",
-	"LOGIC_NEGATE_TITLE": "no %1",
+	"LOGIC_NEGATE_TITLE": "no",
 	"LOGIC_NEGATE_TOOLTIP": "Devuelve verdadero si la entrada es falsa. Devuelve falso si la entrada es verdadera.",
 	"LOGIC_BOOLEAN_TRUE": "verdadero",
 	"LOGIC_BOOLEAN_FALSE": "falso",

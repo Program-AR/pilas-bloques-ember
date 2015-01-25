@@ -236,6 +236,8 @@ export default Ember.Component.extend({
       trashOnlyDelete: true,
       disable: false,
       comments: false,
+      defsOnly: true,
+      defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
       toolbox: toolbox,
     });
