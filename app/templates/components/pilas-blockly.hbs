@@ -9,7 +9,11 @@
 
   <button class='btn btn-warning' {{action "ver_codigo"}}>Ver Codigo</button>
 
-  <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+  {{#if model}}
+    <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+  {{else}}
+    <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+  {{/if}}
 </div>
 
 <xml id="toolbox" style="display: none">

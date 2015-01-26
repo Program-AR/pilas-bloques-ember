@@ -9,7 +9,7 @@ Router.map(function() {
   this.route('about');
   this.route('version');
   this.route('preferencia');
-  this.route('editor');
+  this.resource('editor', {path: '/editor/:galeria_id'});
   this.route('galeria');
 });
 

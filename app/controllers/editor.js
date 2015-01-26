@@ -6,6 +6,8 @@ export default Ember.Controller.extend({
   nombre_escenario: "alien_laberinto",
   tuercas_recolectadas: 0,
   nombre_al_guardar: "mi juego",
+  tmp_codigo_xml: "",
+
 
   inyectarRedimensionado: function() {
 
@@ -56,23 +58,33 @@ export default Ember.Controller.extend({
   ],
 
   actions: {
-    guardar: function() {
+    guardar: function(codigo_xml) {
+      this.set('tmp_codigo_xml', codigo_xml);
       return Bootstrap.ModalManager.show('modal-guardar');
     },
 
     guardarEnGaleriaYRedireccionar: function() {
       this.send('guardarEnGaleria');
-      this.transitionTo('/galeria');
+      this.transitionToRoute('galeria');
     },
 
     guardarEnGaleria: function() {
       var imagen = document.getElementById("canvas");
       var imagen_data = imagen.toDataURL("image/png");
 
-      var juego = this.store.createRecord('galeria', {
-        nombre: this.get('nombre_al_guardar'),
-        imagen: imagen_data
-      });
+      var juego = this.get('model');
+
+      if (juego) {
+        juego.set('nombre', this.get('nombre_al_guardar'));
+        juego.set('imagen', imagen_data);
+        juego.set('codigo', this.get('tmp_codigo_xml'));
+      } else {
+        juego = this.store.createRecord('galeria', {
+          nombre: this.get('nombre_al_guardar'),
+          imagen: imagen_data,
+          codigo: this.get('tmp_codigo_xml')
+        });
+      }
 
       juego.save();
     },

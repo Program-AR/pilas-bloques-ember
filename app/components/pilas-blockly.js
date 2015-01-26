@@ -11,7 +11,7 @@ var BloqueCategoria = Ember.Object.extend({
    init: function() {
       this.set('bloques', []);
    },
-      
+
    agregar_simple: function(blockType) {
      this.get('bloques').pushObject(Bloque.create({
        tipo: blockType
@@ -24,10 +24,10 @@ var BloqueCategoria = Ember.Object.extend({
     });
 
     nuevo_bloque.agregar(params);
-    
+
     this.get('bloques').pushObject(nuevo_bloque);
    },
-   
+
    borrar: function(blockType) {
      this.get('bloques').forEach(function (item) {
        if(item.get('tipo') === blockType) {
@@ -38,15 +38,15 @@ var BloqueCategoria = Ember.Object.extend({
 
    build: function() {
      var str_category = '';
-     
+
      str_category += '<category name="x">\n'.replace("x", this.get('nombre'));
-     
+
      this.get('bloques').forEach(function(item) {
          str_category += item.build();
      });
-     
+
      str_category += '</category>\n';
-     
+
      return str_category;
    }
 });
@@ -67,22 +67,22 @@ var Bloque = Ember.Object.extend({
    init: function() {
       this.set('parametros', []);
    },
-   
+
    agregar: function(params) {
       var yo = this;
       params.forEach( function(item) {
          yo.get('parametros').pushObject(item);
       });
    },
-   
+
    build: function() {
      var str_block = '';
      str_block += '<block type="TIPO">'.replace("TIPO", this.get('tipo'));
-     
+
      this.get('parametros').forEach(function(item) {
          str_block += item.build();
      });
-     
+
      str_block += '</block>';
      return str_block;
    }
@@ -102,17 +102,17 @@ var ParamValor = Ember.Object.extend({
    build: function() {
      var str_block = '';
      str_block += '<value name="NOMBRE">'.replace("NOMBRE", this.get('nombre_param'));
-     
+
      str_block += '<block type="TIPO">'.replace("TIPO", this.get('tipo_bloque'));
-     
+
      str_block += '<field name="TIPO">'.replace("TIPO", this.get('nombre_valor'));
      str_block += this.get('valor');
      str_block += '</field>';
-     
+
      str_block += '</block>';
-     
+
      str_block += '</value>';
-     
+
      return str_block;
    }
 });
@@ -120,15 +120,15 @@ var ParamValor = Ember.Object.extend({
 var Lenguaje = Ember.Object.extend({
    build: function() {
      var str_toolbox = '';
-     
+
      str_toolbox += '<xml>';
-     
+
      this.get('categorias').forEach(function(item) {
          str_toolbox += item.build();
      });
-     
+
      str_toolbox += '</xml>';
-     
+
      return str_toolbox;
    }
 });
@@ -184,7 +184,7 @@ var alien_lenguaje = Lenguaje.create({
 
 export default Ember.Component.extend({
   ejecutando: false,
-  
+
   didInsertElement: function() {
     window.forzar_redimensionado();
     this.sendAction('redimensionar');
@@ -211,7 +211,10 @@ export default Ember.Component.extend({
       this.sendAction('reiniciar');
     },
     guardar: function() {
-      this.sendAction('guardar');
+      var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+      var codigo_xml = Blockly.Xml.domToText(xml);
+
+      this.sendAction('guardar', codigo_xml);
     },
     alternar: function() {
       //this.sendAction('redimensionar');
@@ -241,14 +244,14 @@ export default Ember.Component.extend({
       path: './libs/blockly/',
       toolbox: toolbox,
     });
-    
+
     // Agrego el bloque 'al empezar a ejecutar' al momento de iniciar Blockly
-    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar'); 
-    main_program_block_def.initSvg(); 
+    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar');
+    main_program_block_def.initSvg();
     Blockly.getMainWorkspace().render();
 
     this.cargar_escenario(this.escenario);
-
+    this.cargar_codigo_desde_el_modelo();
   }.on('didInsertElement'),
 
   definir_bloques: function(leng) {
@@ -267,6 +270,18 @@ export default Ember.Component.extend({
     }
     else {
       throw new Error("No se puede cargar el escenario {{ESCENARIO}}, al parecer no está declarado en pilas-blockly.js".replace("{{ESCENARIO}}", escenario));
+    }
+  },
+
+
+  cargar_codigo_desde_el_modelo: function() {
+    if (this.get('model')) {
+      var modelo = this.get('model');
+      var codigo = modelo.get('codigo');
+
+      var xml = Blockly.Xml.textToDom(codigo);
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
     }
   }
 });
