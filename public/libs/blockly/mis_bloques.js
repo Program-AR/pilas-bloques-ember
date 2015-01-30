@@ -68,7 +68,7 @@ Blockly.Blocks['alien-ir_derecha'] = {
 
 Blockly.JavaScript['alien-ir_derecha'] = function(block) {
   var mensaje = Blockly.JavaScript.valueToCode(block, 'MENSAJE', Blockly.JavaScript.ORDER_NONE) || '0';
-  return 'alien.ir_derecha();\n';
+  return 'programa.hacer(MoverHaciaDerecha, {cantidad: 68, tiempo: 1})\n';
 };
 
 /* ============================================== */
@@ -85,7 +85,7 @@ Blockly.Blocks['alien-ir_arriba'] = {
 };
 
 Blockly.JavaScript['alien-ir_arriba'] = function(block) {
-  return 'alien.ir_arriba();\n';
+  return 'programa.hacer(MoverHaciaArriba, {cantidad: 80, tiempo: 1})\n';
 };
 
 /* ============================================== */
@@ -102,7 +102,7 @@ Blockly.Blocks['alien-ir_abajo'] = {
 };
 
 Blockly.JavaScript['alien-ir_abajo'] = function(block) {
-  return 'alien.ir_abajo();\n';
+  return 'programa.hacer(MoverHaciaAbajo, {cantidad: 80, tiempo: 1})\n';
 };
 
 /* ============================================== */
@@ -120,7 +120,7 @@ Blockly.Blocks['alien-ir_izquierda'] = {
 };
 
 Blockly.JavaScript['alien-ir_izquierda'] = function(block) {
-  return 'alien.ir_izquierda();\n';
+  return 'programa.hacer(MoverHaciaIzquierda, {cantidad: 68, tiempo: 1})\n';
 };
 
 /* ============================================== */
@@ -136,7 +136,7 @@ Blockly.Blocks['alien-recoger'] = {
 };
 
 Blockly.JavaScript['alien-recoger'] = function(block) {
-  return 'alien.recoger();\n';
+  return 'programa.hacer(Recoger, {tiempo: 1})\n';
 };
 
 /* ============================================== */
@@ -157,7 +157,10 @@ Blockly.Blocks['repetir'] = {
 Blockly.JavaScript['repetir'] = function(block) {
   var value_count = Blockly.JavaScript.valueToCode(block, 'count', Blockly.JavaScript.ORDER_ATOMIC) || '0' ;
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
-  return 'for (var _ind = 0; _ind < {{n}}; _ind++) {\n {{block}}}\n'.replace('{{n}}', value_count).replace('{{block}}', statements_block);
+  r = 'programa.empezar_secuencia();\n';
+  r += statements_block;
+  r += 'programa.repetirN(function(receptor){ return {{n}}; });\n'.replace('{{n}}', value_count);
+  return r;
 };
 
 /* ============================================== */
@@ -178,7 +181,10 @@ Blockly.Blocks['hasta'] = {
 Blockly.JavaScript['hasta'] = function(block) {
   var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'true';
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
-  return 'while (!{{condition}}) {\n {{block}}}\n'.replace('{{condition}}', value_condition).replace('{{block}}', statements_block);
+  var r = 'programa.empezar_secuencia();\n';
+  r += statements_block + '\n';
+  r += 'programa.repetir_hasta(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  return r;
 };
 
 /* ============================================== */
@@ -199,7 +205,10 @@ Blockly.Blocks['si'] = {
 Blockly.JavaScript['si'] = function(block) {
   var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
-  return 'if ({{condition}}) {\n {{block}}}\n'.replace('{{condition}}', value_condition).replace('{{block}}', statements_block);
+  var r = 'programa.empezar_secuencia();\n';
+  r += statements_block;
+  r += 'programa.alternativa_si(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  return r;
 };
 
 
@@ -225,7 +234,30 @@ Blockly.JavaScript['sino'] = function(block) {
   var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
   var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
   var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
-  return 'if ({{condition}}) {\n {{block1}}} else {\n {{block2}}}\n'.replace('{{condition}}', value_condition).replace('{{block1}}', statements_block1).replace('{{block2}}', statements_block2);
+  var r = 'programa.empezar_secuencia();\n';
+  r += statements_block1;
+  r += 'programa.empezar_secuencia();\n';
+  r += statements_block2;
+  r += 'programa.alternativa_sino(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  return r;
+};
+
+/* ============================================== */
+
+Blockly.JavaScript['variables_get'] = function(block) {
+  // Variable getter.
+  var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
+      Blockly.Variables.NAME_TYPE);
+  return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['variables_set'] = function(block) {
+  // Variable setter.
+  var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',
+      Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+  var varName = Blockly.JavaScript.variableDB_.getName(
+      block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+  return 'programa.cambio_atributo("' + varName + '", function(receptor){ return ' + argument0 + '; } );\n';
 };
 
 /* ============================================== */
@@ -244,5 +276,9 @@ Blockly.Blocks['al_empezar_a_ejecutar'] = {
 
 Blockly.JavaScript['al_empezar_a_ejecutar'] = function(block) {
   var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
-  return 'function program() {\n{{block}}}\n program();'.replace('{{block}}', statements_program);
+  var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
+  r += 'programa.empezar_secuencia();\n';
+  r += statements_program + '\n';
+  r += 'programa.ejecutar(alien);\n';
+  return r;
 };
