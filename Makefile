@@ -12,6 +12,7 @@ all:
 	@echo ""
 	@echo "  $(A)De uso para desarrollo: $(N)"
 	@echo ""
+	@echo "    $(V)bajar_dependencias$(N)"
 	@echo "    $(V)actualizar$(N)  Actualiza el repositorio, pilas-engine y blockly."
 	@echo ""
 	@echo "    $(V)server$(N)      Prueba la aplicación en el navegador."
