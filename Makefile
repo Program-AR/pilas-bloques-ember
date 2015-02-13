@@ -42,11 +42,12 @@ actualizar:
 	make actualizar_pilas
 	make actualizar_blockly
 
+
+
 bajar_dependencias:
-	cd ..
-	git clone https://github.com/hugoruscitti/pilasweb.git
-	git clone https://github.com/sawady/blockly.git
-	git clone https://github.com/google/closure-library.git
+	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
+	cd ..; git clone https://github.com/sawady/blockly.git
+	cd ..; git clone https://github.com/google/closure-library.git
 
 actualizar_pilas:
 	cd pilasweb; git pull; make build; cd ..
