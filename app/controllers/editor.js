@@ -95,6 +95,8 @@ export default Ember.Controller.extend({
       var escenarios = {};
       var nombre_escenario = this.get('nombre_escenario');
 
+      this.set('tuercas_recolectadas', 0);
+
       escenarios.alien_laberinto = function() {
         pilas.reiniciar();
 
