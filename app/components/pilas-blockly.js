@@ -146,6 +146,7 @@ alien_primitivas.agregar_simple('alien-ir_izquierda');
 alien_primitivas.agregar_simple('alien-ir_arriba');
 alien_primitivas.agregar_simple('alien-ir_abajo');
 alien_primitivas.agregar_simple('alien-recoger');
+alien_primitivas.agregar_simple('choca_con_tuerca');
 
 var alien_control = BloqueCategoria.create({
    nombre: 'Control'
