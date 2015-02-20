@@ -2,7 +2,12 @@ import Ember from 'ember';
 
 var Bootstrap = window.Bootstrap;
 
+var Actividad = Ember.Object.extend({
+
+});
+
 export default Ember.Controller.extend({
+  actividad_actual: {},
   nombre_escenario: "alien_laberinto",
   tuercas_recolectadas: 0,
   nombre_al_guardar: "mi juego",
@@ -135,18 +140,21 @@ export default Ember.Controller.extend({
             }
           };
 
-
           var posicion = convertir_posicion_a_coordenada(1, 1);
-          var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+          new pilas.actores.Tuerca(posicion.x, posicion.y);
 
-          posicion = convertir_posicion_a_coordenada(3, 2);
-          tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+          posicion = convertir_posicion_a_coordenada(2, 2);
+          new pilas.actores.Tuerca(posicion.x, posicion.y);
 
-          posicion = convertir_posicion_a_coordenada(5, 3);
-          tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+          posicion = convertir_posicion_a_coordenada(3, 3);
+          new pilas.actores.Tuerca(posicion.x, posicion.y);
 
-          posicion = convertir_posicion_a_coordenada(3, 6);
-          tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+          posicion = convertir_posicion_a_coordenada(4, 4);
+          new pilas.actores.Tuerca(posicion.x, posicion.y);
+
+          posicion = convertir_posicion_a_coordenada(5, 5);
+          new pilas.actores.Tuerca(posicion.x, posicion.y);
+
       };
 
       if (nombre_escenario in escenarios) {
