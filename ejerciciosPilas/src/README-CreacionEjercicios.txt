@@ -1,7 +1,8 @@
 La idea es:
-  -> Crear un nuevo archivo que se llame <nombre del ejercicio>.js
+  -> Crear un nuevo archivo que se llame <nombre del ejercicio>.js.
+  	Por ejemplo, "ejercicioLoco.js".
   -> Definir dentro una función armarEscena()
-  -> En visorEjercicios.html cambiar la línea 
-     <script src='ejercicios/ejercicio1.js'></script> 
-     actualizándola con el nombre del nuevo ejercicio 
-  -> Abrir visorEjercicios.html con el navegador para probar el ejercicio.
+  -> Abrir visorEjercicios.html con el navegador, indicando el ejercicio a
+  	cargar en la URL. Por ejemplo:
+		file:///home/alf/..../visorEjercicios.html?nombre=ejercicioLoco
+	(notar el "?nombre=ejercicioLoco" detrás de la URL).
