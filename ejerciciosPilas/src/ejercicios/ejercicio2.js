@@ -1,7 +1,4 @@
-	pilas = new Pilas();
-	pilas.iniciar({ancho: 320, alto: 240, data_path: 'data'});
-	
-	pilas.onready = function() {
+function armarEscena(objetoPilas) {
 	    var fondo = new pilas.fondos.Tarde();
 	    var rodri = new pilas.actores.Maton();
 	    
@@ -13,5 +10,3 @@
 	    rodri.caminar_derecha();
 	
 	};
-	
-	pilas.ejecutar();

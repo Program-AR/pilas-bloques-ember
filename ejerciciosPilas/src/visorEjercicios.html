@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ejercicio 1</title>
+
+</head>
+<body>
+
+    <div class='container'>
+      <style type="text/css" media="all">
+        canvas#canvas_id2 {
+			margin-top: 20px;
+        	width: 420px;
+        	height: 480px;
+			border: 1px solid #ccc;
+        }
+      </style>
+      
+      <canvas id='canvas_id2'></canvas>
+
+    </div>
+
+  <script src='../../pilasweb/public/pilasweb.js'></script>
+
+  <script src='ejercicios/ejercicio2.js'></script>
+
+  <script>
+	var canvas_element = document.getElementById('canvas_id2');
+    window['canvas'] = canvas_element;
+
+    var obj_pilas = pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: '../../pilasweb/public/data'});
+
+    obj_pilas.onready = function(){armarEscena(obj_pilas)};
+
+    obj_pilas.ejecutar();
+  </script>
+
+
+</body>
+</html>
