@@ -1,7 +1,8 @@
 function armarEscena(){
     var escenaObrero = new Base();
     escenaObrero.iniciar = function(){
-        new pilas.fondos.Pasto();
+        var fondillo = new pilas.fondos.Fondo();
+        fondillo.imagen = 'fondos/fondoObrero.png';
         new pilas.actores.Mono();
     }
     
