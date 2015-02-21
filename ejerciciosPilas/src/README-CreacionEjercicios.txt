@@ -1,5 +1,5 @@
 La idea es:
-  -> Crear un nuevo archivo que se llame <nombre del ejercicio>.js.
+  -> Crear un nuevo archivo en la carpeta src/ejercicios que se llame <nombre del ejercicio>.js.
   	Por ejemplo, "ejercicioLoco.js".
   -> Definir dentro una función armarEscena()
   -> Abrir visorEjercicios.html con el navegador, indicando el ejercicio a
