@@ -6,19 +6,20 @@
 
     <div class='panel-ayuda'>
 
-      {{#if tuercas_recolectadas}}
-        <p>Tienes <strong>{{tuercas_recolectadas}}</strong> tuercas recolectadas</p>
+      {{#if actividad.tuercas_recolectadas}}
+        <p>Tienes <strong>{{actividad.tuercas_recolectadas}}</strong> tuercas recolectadas</p>
       {{else}}
         <p>No has recolectado ninguna tuerca aún</p>
       {{/if}}
 
-      <p>Acá un texto que explica el motivo de la actividad</p>
+      <p>{{actividad.enunciado}}</p>
+
     </div>
 
   </div>
 
   <div class='panel-derecho' id='panel-derecho'>
-    {{pilas-blockly model=model guardar='guardar' reiniciar="reiniciar" escenario=nombre_escenario}}
+    {{pilas-blockly model=model guardar='guardar' reiniciar="reiniciar" actividad=actividad}}
   </div>
 
 </div>
