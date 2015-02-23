@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-var Blockly = window.Blockly;
-
 export default Ember.Component.extend({
   ejecutando: false,
 
@@ -52,32 +50,26 @@ export default Ember.Component.extend({
 
   iniciarBlockly: function() {
     var contenedor = this.$().find('#contenedor-blockly')[0];
-    var toolbox = this.$().find('#toolbox')[0];
+    var actividad = this.get('actividad');
 
     Blockly.inject(contenedor, {
       collapse: false,
-      duplicate: false,
+      duplicate: actividad.get('puedeDuplicar'),
       trashOnlyDelete: true,
-      disable: false,
-      comments: false,
+      disable: actividad.get('puedeDesactivar'),
+      comments: actividad.get('puedeComentar'),
       defsOnly: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
-      toolbox: toolbox,
+      toolbox: Blockly.Xml.textToDom(this.get('actividad').construirLenguaje()),
     });
 
     // Agrego el bloque 'al empezar a ejecutar' al momento de iniciar Blockly
-    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar');
-    main_program_block_def.initSvg();
-    Blockly.getMainWorkspace().render();
+    var main_program_block_def = Blockly.Xml.textToDom('<xml> <block type="al_empezar_a_ejecutar"> </block> </xml>');
+    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), main_program_block_def);
 
-    this.cargar_lenguaje();
     this.cargar_codigo_desde_el_modelo();
   }.on('didInsertElement'),
-
-  cargar_lenguaje: function() {
-    Blockly.updateToolbox(this.get('actividad').getLenguaje());
-  },
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {
