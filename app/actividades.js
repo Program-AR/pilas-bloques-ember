@@ -128,7 +128,7 @@ var Lenguaje = Ember.Object.extend({
 **/
 var Actividad = Ember.Object.extend({
   init: function() {
-    this.set('puedeDuplicar', true);
+    this.set('puedeDuplicar', false);
     this.set('puedeDesactivar', false);
     this.set('puedeComentar', false);
   },
@@ -145,6 +145,7 @@ var Actividad = Ember.Object.extend({
 var ActividadAlien = Actividad.extend({
 
   init: function() {
+    this._super();
     this.set('nombre', 'El alien y las tuercas');
     this.set('enunciado', 'Define un programa para que el alien junte todas las tuercas');
     this.set('tuercas_recolectadas', 0);
