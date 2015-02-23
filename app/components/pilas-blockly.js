@@ -50,7 +50,6 @@ export default Ember.Component.extend({
 
   iniciarBlockly: function() {
     var contenedor = this.$().find('#contenedor-blockly')[0];
-    var toolbox = this.$().find('#toolbox')[0];
     var actividad = this.get('actividad');
 
     Blockly.inject(contenedor, {
@@ -62,21 +61,15 @@ export default Ember.Component.extend({
       defsOnly: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
-      toolbox: toolbox,
+      toolbox: Blockly.Xml.textToDom(this.get('actividad').construirLenguaje()),
     });
 
-    this.cargar_lenguaje();
-
     // Agrego el bloque 'al empezar a ejecutar' al momento de iniciar Blockly
-    var main_program_block_def = Blockly.Block.obtain(Blockly.mainWorkspace, 'al_empezar_a_ejecutar');
-    main_program_block_def.initSvg();
-    this.cargar_codigo_desde_el_modelo();
-    Blockly.getMainWorkspace().render();
-  }.on('didInsertElement'),
+    var main_program_block_def = Blockly.Xml.textToDom('<xml> <block type="al_empezar_a_ejecutar"> </block> </xml>');
+    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), main_program_block_def);
 
-  cargar_lenguaje: function() {
-    Blockly.updateToolbox(this.get('actividad').construirLenguaje());
-  },
+    this.cargar_codigo_desde_el_modelo();
+  }.on('didInsertElement'),
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {
