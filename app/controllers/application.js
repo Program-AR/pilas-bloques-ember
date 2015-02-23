@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 var Bootstrap = window.Bootstrap;
-var Blockly = window.Blockly;
 
 export default Ember.Controller.extend({
   url: '',

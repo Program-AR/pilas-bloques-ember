@@ -131,6 +131,10 @@ var Actividad = Ember.Object.extend({
     this.set('puedeDuplicar', true);
     this.set('puedeDesactivar', false);
     this.set('puedeComentar', false);
+  },
+
+  construirLenguaje: function() {
+    return this.getLenguaje().build();
   }
 
   // definir en subclases
@@ -236,7 +240,7 @@ var ActividadAlien = Actividad.extend({
     leng.bloque('Expresiones', 'logic_operation');
     leng.bloque('Expresiones', 'logic_negate');
 
-    return leng.build();
+    return leng;
 
   }
 });

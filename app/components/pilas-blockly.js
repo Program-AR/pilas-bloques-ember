@@ -1,7 +1,5 @@
 import Ember from 'ember';
 
-var Blockly = window.Blockly;
-
 export default Ember.Component.extend({
   ejecutando: false,
 
@@ -76,7 +74,7 @@ export default Ember.Component.extend({
   }.on('didInsertElement'),
 
   cargar_lenguaje: function() {
-    Blockly.updateToolbox(this.get('actividad').getLenguaje());
+    Blockly.updateToolbox(this.get('actividad').construirLenguaje());
   },
 
   cargar_codigo_desde_el_modelo: function() {
