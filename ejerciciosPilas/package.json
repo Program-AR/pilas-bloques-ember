@@ -30,6 +30,7 @@
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-notify": "^0.4.1",
+    "grunt-open": "^0.2.3",
     "grunt-typescript": "^0.6.1",
     "typescript": "^1.4.1"
   }

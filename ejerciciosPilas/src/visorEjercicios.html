@@ -29,8 +29,12 @@
 		
 		var canvas_element = document.getElementById('canvas');
 		window['canvas'] = canvas_element;
-		pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: 'data'});
-		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + ');');
+		pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: 'data', imagenesExtra: ['fondos/fondoObrero.png']});
+		if(nombreDeClase()){ 
+			eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + '());');
+		}else{
+			pilas.mundo.gestor_escenas.cambiar_escena(new ElObreroCopado());
+		}
 		pilas.ejecutar();
 	 </script>
 

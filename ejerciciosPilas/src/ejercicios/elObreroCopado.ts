@@ -1,22 +1,14 @@
-/// <reference path="../../../pilasweb/src/escenas.ts"/>
+/// <reference path="../../dependencias/pilasweb.d.ts"/>
 
 /**
  * @class ElObreroCopado
- * Es el ejercicio inicial
+ * Es el ejercicio inicialr
  */
 class ElObreroCopado extends Base {
     fondo;
-    pilas;
-    
-    constructor(pila){
-        super();
-        pilas = pila;
-    }
     
     iniciar() {
-        super.iniciar();
-        this.fondo = new pilas.fondos.Fondo();
-        fondo.imagen = 'fondos/fondoObrero.png';
-        new pilas.actores.Mono();
+        this.fondo = new Fondo('fondos/fondoObrero.png',0,0);
+        new Mono(0,0);
       }
 }

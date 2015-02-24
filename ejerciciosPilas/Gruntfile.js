@@ -42,10 +42,16 @@ module.exports = function(grunt) {
         tasks: ['clear', 'typescript', 'concat'],
       }
     },
+    open: {
+        dev: {
+            path: 'src/visorEjercicios.html'
+        }
+    },
   });
 
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-open');
 
   grunt.registerTask('clear', ['clear']);
 
@@ -54,7 +60,7 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('default', ['typescript', 'concat']);
+  grunt.registerTask('default', ['typescript', 'concat', 'open']);
 
   // Load the task
   grunt.loadNpmTasks('grunt-notify');
