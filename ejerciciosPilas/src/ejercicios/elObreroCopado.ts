@@ -13,8 +13,8 @@ class ElObreroCopado extends Base {
         this.fondo = new Fondo('fondos/fondoObrero.png',0,0);
         this.obrero = new Obrero(-160,-100);
         
-//        this.obrero.hacer_luego(CaminaDerecha,{});
-//        this.obrero.hacer_luego(CaminaDerecha,{});
+        this.obrero.hacer_luego(CaminaDerecha,{pasos: 4});
+        this.obrero.hacer_luego(Saltando,{});
 //        this.obrero.hacer_luego(CaminaArriba,{});
 //        this.obrero.hacer_luego(CaminaIzquierda,{});
       }

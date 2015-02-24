@@ -22,6 +22,7 @@ class ActorAnimado extends Actor {
         var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantCuadrosCorrer);
         super(imagen, x, y);
         this._imagen.definir_cuadro(opciones.cuadroEstatico);
+        this.paso = 0;
     }
   
     sanitizarOpciones(ops){
@@ -38,7 +39,7 @@ class ActorAnimado extends Actor {
     }
 
     animacion_correr() {
-        this.paso += .3;
+        this.paso += 0.3;
         if (this.paso>this.opciones.cantCuadrosCorrer) {
             this.paso = 0;
         }
