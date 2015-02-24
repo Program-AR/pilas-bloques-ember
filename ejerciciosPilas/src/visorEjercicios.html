@@ -6,21 +6,6 @@
 
 </head>
 <body>
-	<script>
-		function pathEjercicio()
-		{
-		    var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
-		    var nombre = hash.split('=')[1];
-		    return 'ejercicios/' + nombre + '.js';
-		};
-		
-		var js = document.createElement("script");
-		js.type = "text/javascript";
-		js.src = pathEjercicio();
-		
-		document.body.appendChild(js);
-	</script>
-
     <div class='container'>
       <style type="text/css" media="all">
         canvas#canvas_id2 {
@@ -33,13 +18,19 @@
       <canvas id='canvas'></canvas>
     </div>
 
-	<script src='../../pilasweb/public/pilasweb.js'></script>
-	
+	<script src='../compilados/ejerciciosPilas.js'></script>
+		
 	<script>
+		function nombreDeClase()
+		{
+		    var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
+		    return hash.split('=')[1];
+		};
+		
 		var canvas_element = document.getElementById('canvas');
 		window['canvas'] = canvas_element;
 		pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: 'data'});
-		pilas.mundo.gestor_escenas.cambiar_escena(armarEscena());
+		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + ');');
 		pilas.ejecutar();
 	 </script>
 

@@ -1,0 +1,36 @@
+{
+  "name": "ejerciciosPilas",
+  "version": "1.0.0",
+  "description": "Ejercicios para Program.AR en Pilas Engine (version web)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Program-AR/ejerciciosPilas.git"
+  },
+  "keywords": [
+    "programar",
+    "program.ar",
+    "pilas",
+    "web",
+    "ejercicios",
+    "secundaria"
+  ],
+  "author": "Program.AR",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Program-AR/ejerciciosPilas/issues"
+  },
+  "homepage": "https://github.com/Program-AR/ejerciciosPilas",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-notify": "^0.4.1",
+    "grunt-typescript": "^0.6.1",
+    "typescript": "^1.4.1"
+  }
+}
