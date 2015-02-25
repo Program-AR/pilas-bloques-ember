@@ -11,7 +11,7 @@
  * 
  * Por ejemplo:
  *      @example
- *      miActor = new ActorAnimado(0,0,{grilla: 'miImagen.png', cuadrosCorrer: [3,4,5,6]});
+ *      miActor = new ActorAnimado(0,0,{grilla: 'miImagen.png', cuadros: [3,4,5,6]});
  *      miActor.hacer_luego(CaminaDerecha,{pasos: 2});
  */
 class ActorAnimado extends Actor {
@@ -19,7 +19,7 @@ class ActorAnimado extends Actor {
     opciones;
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
-        var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantCuadrosCorrer);
+        var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantCuadros);
         super(imagen, x, y);
         this._imagen.definir_cuadro(opciones.cuadroEstatico);
         this.paso = 0;
@@ -27,8 +27,8 @@ class ActorAnimado extends Actor {
   
     sanitizarOpciones(ops){
         this.opciones = ops;
-        this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantCuadrosCorrer) || [0];
-        this.opciones.cantCuadrosCorrer = ops.cantCuadrosCorrer || this.opciones.cuadrosCorrer.length;
+        this.opciones.cuadros = ops.cuadros || this.seguidillaHasta(ops.cantCuadros) || [0];
+        this.opciones.cantCuadros = ops.cantCuadros || this.opciones.cuadros.length;
         this.opciones.cuadroEstatico = ops.cuadroEstatico || 0;
     }
     
@@ -40,10 +40,10 @@ class ActorAnimado extends Actor {
 
     animacion_correr() {
         this.paso += 0.3;
-        if (this.paso>this.opciones.cantCuadrosCorrer) {
+        if (this.paso>this.opciones.cantCuadros) {
             this.paso = 0;
         }
-        this._imagen.definir_cuadro(this.opciones.cuadrosCorrer[parseInt(this.paso)]);
+        this._imagen.definir_cuadro(this.opciones.cuadros[parseInt(this.paso)]);
     }
     detener_animacion() {
         this._imagen.definir_cuadro(this.opciones.cuadroEstatico);
