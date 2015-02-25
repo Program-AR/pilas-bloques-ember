@@ -52,6 +52,8 @@ export default Ember.Component.extend({
     var contenedor = this.$().find('#contenedor-blockly')[0];
     var actividad = this.get('actividad');
 
+    this.setScratchStyle();
+
     Blockly.inject(contenedor, {
       collapse: false,
       duplicate: actividad.get('puedeDuplicar'),
@@ -70,6 +72,28 @@ export default Ember.Component.extend({
 
     this.cargar_codigo_desde_el_modelo();
   }.on('didInsertElement'),
+
+  // setea los colores de blockly para ser similares a los de Scratch
+  setScratchStyle: function() {
+    Blockly.HSV_SATURATION = 1;
+    Blockly.HSV_VALUE = 0.5;
+    Blockly.Blocks.logic.HUE = 210;
+    Blockly.Blocks.loops.HUE = 56;
+    Blockly.Blocks.math.HUE = 230;
+    Blockly.Blocks.procedures.HUE = 270;
+    Blockly.Blocks.procedures.params.HUE = 270;
+    Blockly.Blocks.variables.HUE = 330;
+    Blockly.Blocks.texts.HUE = 160;
+    Blockly.Blocks.lists.HUE = 260;
+    Blockly.Blocks.colour.HUE = 20;
+    Blockly.Blocks.primitivas.HUE = 250;
+    Blockly.Blocks.sensores.HUE = 250;
+    Blockly.Blocks.eventos.HUE = 250;
+    Blockly.makeColour = function(hue) {
+      return goog.color.hslToHex(hue, Blockly.HSV_SATURATION,
+          Blockly.HSV_VALUE);
+    };
+  },
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {

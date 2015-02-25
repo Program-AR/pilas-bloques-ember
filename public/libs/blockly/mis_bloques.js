@@ -2,11 +2,14 @@ function obtener_icono(nombre) {
   return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
 }
 
+Blockly.Blocks.primitivas = { HUE: 225 };
+Blockly.Blocks.sensores = { HUE: 225 };
+Blockly.Blocks.eventos = { HUE: 225 };
 
 Blockly.Blocks['move_to'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField('mover a la posición');
     this.appendValueInput('XPOS')
@@ -35,7 +38,7 @@ Blockly.JavaScript['move_to'] = function(block) {
 Blockly.Blocks['decir'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField('saludar');
     this.appendValueInput('MENSAJE')
@@ -57,7 +60,7 @@ Blockly.JavaScript['decir'] = function(block) {
 
 Blockly.Blocks['alien-ir_derecha'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField(obtener_icono('derecha.png'))
         .appendField('ir a la derecha');
@@ -74,7 +77,7 @@ Blockly.JavaScript['alien-ir_derecha'] = function(block) {
 
 Blockly.Blocks['alien-ir_arriba'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField(obtener_icono('arriba.png'))
         .appendField('ir a la arriba');
@@ -91,7 +94,7 @@ Blockly.JavaScript['alien-ir_arriba'] = function(block) {
 
 Blockly.Blocks['alien-ir_abajo'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField(obtener_icono('abajo.png'))
         .appendField('ir a la abajo');
@@ -109,7 +112,7 @@ Blockly.JavaScript['alien-ir_abajo'] = function(block) {
 
 Blockly.Blocks['alien-ir_izquierda'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField(obtener_icono('izquierda.png'))
         .appendField('ir a la izquierda');
@@ -126,7 +129,7 @@ Blockly.JavaScript['alien-ir_izquierda'] = function(block) {
 
 Blockly.Blocks['alien-recoger'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.HUE);
     this.appendDummyInput()
         .appendField('recoger');
     this.setPreviousStatement(true);
@@ -140,7 +143,7 @@ Blockly.JavaScript['alien-recoger'] = function(block) {
 
 Blockly.Blocks['choca_con_tuerca'] = {
   init: function() {
-    this.setColour(225);
+    this.setColour(Blockly.Blocks.sensores.HUE);
     this.appendDummyInput()
         .appendField('choca con')
         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'tuerca'));
@@ -157,7 +160,7 @@ Blockly.JavaScript['choca_con_tuerca'] = function(block) {
 
 Blockly.Blocks['repetir'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('count')
         .setCheck('Number')
         .appendField('repetir');
@@ -181,7 +184,7 @@ Blockly.JavaScript['repetir'] = function(block) {
 
 Blockly.Blocks['hasta'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('repetir hasta que');
@@ -205,7 +208,7 @@ Blockly.JavaScript['hasta'] = function(block) {
 
 Blockly.Blocks['si'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('si');
@@ -230,7 +233,7 @@ Blockly.JavaScript['si'] = function(block) {
 
 Blockly.Blocks['sino'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.HUE);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('si');
@@ -322,7 +325,7 @@ Blockly.JavaScript['param_get'] = function(block) {
 
 Blockly.Blocks['al_empezar_a_ejecutar'] = {
   init: function() {
-    this.setColour(130);
+    this.setColour(Blockly.Blocks.eventos.HUE);
     this.appendDummyInput()
         .appendField('Al empezar a ejecutar');
     this.appendStatementInput('program');
