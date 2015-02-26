@@ -177,7 +177,7 @@ Blockly.JavaScript['repetir'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block;
-  r += 'programa.repetirN(function(receptor){ return {{n}}; });\n'.replace('{{n}}', value_count);
+  r += 'programa.repetirN(function(){ return {{n}}; });\n'.replace('{{n}}', value_count);
   return r;
 };
 
@@ -201,7 +201,7 @@ Blockly.JavaScript['hasta'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block + '\n';
-  r += 'programa.repetir_hasta(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.repetir_hasta(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -225,7 +225,7 @@ Blockly.JavaScript['si'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block;
-  r += 'programa.alternativa_si(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.alternativa_si(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -256,7 +256,7 @@ Blockly.JavaScript['sino'] = function(block) {
   r += statements_block1;
   r += 'programa.empezar_secuencia();\n';
   r += statements_block2;
-  r += 'programa.alternativa_sino(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.alternativa_sino(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -277,7 +277,7 @@ Blockly.JavaScript['variables_set'] = function(block) {
       Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
   var varName = Blockly.JavaScript.variableDB_.getName(
       block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return 'programa.cambio_atributo(' + varName + ', function(receptor){ return ' + argument0 + '; } );\n';
+  return 'programa.cambio_atributo(' + varName + ', function(){ return ' + argument0 + '; } );\n';
 };
 
 /* ============================================== */
@@ -341,6 +341,7 @@ Blockly.JavaScript['al_empezar_a_ejecutar'] = function(block) {
   var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
   r += 'programa.empezar_secuencia();\n';
   r += statements_program + '\n';
+  r += 'var receptor = alien;\n';
   r += 'programa.ejecutar(alien);\n';
   return r;
 };
