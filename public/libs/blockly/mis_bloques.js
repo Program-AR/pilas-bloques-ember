@@ -63,7 +63,7 @@ Blockly.Blocks['alien-ir_derecha'] = {
     this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('derecha.png'))
-        .appendField('ir a la derecha');
+        .appendField('ir derecha');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -80,7 +80,7 @@ Blockly.Blocks['alien-ir_arriba'] = {
     this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('arriba.png'))
-        .appendField('ir a la arriba');
+        .appendField('ir arriba');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -97,7 +97,7 @@ Blockly.Blocks['alien-ir_abajo'] = {
     this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('abajo.png'))
-        .appendField('ir a la abajo');
+        .appendField('ir abajo');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -115,7 +115,7 @@ Blockly.Blocks['alien-ir_izquierda'] = {
     this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('izquierda.png'))
-        .appendField('ir a la izquierda');
+        .appendField('ir izquierda');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -131,7 +131,8 @@ Blockly.Blocks['alien-recoger'] = {
   init: function() {
     this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
-        .appendField('recoger');
+        .appendField('recoger')
+        .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'tuerca'));
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
