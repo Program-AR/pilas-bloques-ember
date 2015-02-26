@@ -154,7 +154,7 @@ Blockly.Blocks['choca_con_tuerca'] = {
 };
 
 Blockly.JavaScript['choca_con_tuerca'] = function(block) {
-  return ['receptor.colisiona_con_item("Tuerca")', Blockly.JavaScript.ORDER_ATOMIC];
+  return ['programa.receptor.colisiona_con_item("Tuerca")', Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 /* ============================================== */
@@ -267,7 +267,7 @@ Blockly.JavaScript['variables_get'] = function(block) {
   // Variable getter.
   var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-  return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+  return ['programa.receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 // PISA EL QUE OFRECE BLOCKLY
@@ -341,7 +341,7 @@ Blockly.JavaScript['al_empezar_a_ejecutar'] = function(block) {
   var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
   r += 'programa.empezar_secuencia();\n';
   r += statements_program + '\n';
-  r += 'var receptor = alien;\n';
+  r += 'programa.receptor = alien;\n'; // pasar esta linea de codigo a pilasweb
   r += 'programa.ejecutar(alien);\n';
   return r;
 };
