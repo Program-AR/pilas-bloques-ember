@@ -61,6 +61,7 @@ export default Ember.Component.extend({
       disable: actividad.get('puedeDesactivar'),
       comments: actividad.get('puedeComentar'),
       defsOnly: true,
+      rgbColours: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
       toolbox: Blockly.Xml.textToDom(this.get('actividad').construirLenguaje()),
@@ -75,24 +76,37 @@ export default Ember.Component.extend({
 
   // setea los colores de blockly para ser similares a los de Scratch
   setScratchStyle: function() {
-    Blockly.HSV_SATURATION = 1;
-    Blockly.HSV_VALUE = 0.5;
-    Blockly.Blocks.logic.HUE = 210;
-    Blockly.Blocks.loops.HUE = 56;
-    Blockly.Blocks.math.HUE = 230;
-    Blockly.Blocks.procedures.HUE = 270;
-    Blockly.Blocks.procedures.params.HUE = 270;
-    Blockly.Blocks.variables.HUE = 330;
-    Blockly.Blocks.texts.HUE = 160;
-    Blockly.Blocks.lists.HUE = 260;
-    Blockly.Blocks.colour.HUE = 20;
-    Blockly.Blocks.primitivas.HUE = 250;
-    Blockly.Blocks.sensores.HUE = 250;
-    Blockly.Blocks.eventos.HUE = 250;
-    Blockly.makeColour = function(hue) {
-      return goog.color.hslToHex(hue, Blockly.HSV_SATURATION,
-          Blockly.HSV_VALUE);
-    };
+
+
+    Blockly.Blocks.primitivas.COLOUR = '#4a6cd4';
+    Blockly.Blocks.sensores.COLOUR = '#2ca5e2';
+    Blockly.Blocks.eventos.COLOUR = '#00a65a'; // del boton ejecutar
+    Blockly.Blocks.math.COLOUR = '#49930e';
+    Blockly.Blocks.logic.COLOUR = '#5cb712';
+    Blockly.Blocks.loops.COLOUR = '#ee7d16';
+
+    Blockly.Blocks.procedures.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.params.COLOUR = '#8a55d7';
+    Blockly.Blocks.variables.COLOUR = '#cc5b22';
+
+    Blockly.Blocks.texts.COLOUR = '#4a6cd4';
+    Blockly.Blocks.lists.COLOUR = '#cc5b22';
+    Blockly.Blocks.colour.COLOUR = '#4a6cd4';
+
+    // 4a6cd4 MOTION
+    // 8a55d7 LOOKS
+    // bb42c3 SOUND
+    // 0e9a6c PEN
+    // ee7d16 DATA Variables
+    // cc5b22 DATA Lists
+    // c88330 EVENTS
+    // e1a91a CONTROL
+    // 2ca5e2 SENSING
+    // 5cb712 OPERATORS
+    // 49930e OPERATORS dark
+    // 632d99 MORE BLOCKS
+    // 5e4db3 PARAMS
+
   },
 
   cargar_codigo_desde_el_modelo: function() {
