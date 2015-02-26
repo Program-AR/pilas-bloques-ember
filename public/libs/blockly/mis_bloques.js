@@ -2,11 +2,14 @@ function obtener_icono(nombre) {
   return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
 }
 
+Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
+Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
+Blockly.Blocks.eventos = { COLOUR: '#4a6cd4' };
 
 Blockly.Blocks['move_to'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField('mover a la posición');
     this.appendValueInput('XPOS')
@@ -35,7 +38,7 @@ Blockly.JavaScript['move_to'] = function(block) {
 Blockly.Blocks['decir'] = {
   init: function() {
     this.setHelpUrl('http://www.example.com/');
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField('saludar');
     this.appendValueInput('MENSAJE')
@@ -57,10 +60,10 @@ Blockly.JavaScript['decir'] = function(block) {
 
 Blockly.Blocks['alien-ir_derecha'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('derecha.png'))
-        .appendField('ir a la derecha');
+        .appendField('ir derecha');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -74,10 +77,10 @@ Blockly.JavaScript['alien-ir_derecha'] = function(block) {
 
 Blockly.Blocks['alien-ir_arriba'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('arriba.png'))
-        .appendField('ir a la arriba');
+        .appendField('ir arriba');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -91,10 +94,10 @@ Blockly.JavaScript['alien-ir_arriba'] = function(block) {
 
 Blockly.Blocks['alien-ir_abajo'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('abajo.png'))
-        .appendField('ir a la abajo');
+        .appendField('ir abajo');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -109,10 +112,10 @@ Blockly.JavaScript['alien-ir_abajo'] = function(block) {
 
 Blockly.Blocks['alien-ir_izquierda'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
         .appendField(obtener_icono('izquierda.png'))
-        .appendField('ir a la izquierda');
+        .appendField('ir izquierda');
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -126,9 +129,10 @@ Blockly.JavaScript['alien-ir_izquierda'] = function(block) {
 
 Blockly.Blocks['alien-recoger'] = {
   init: function() {
-    this.setColour(160);
+    this.setColour(Blockly.Blocks.primitivas.COLOUR);
     this.appendDummyInput()
-        .appendField('recoger');
+        .appendField('recoger')
+        .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'tuerca'));
     this.setPreviousStatement(true);
     this.setNextStatement(true);
   }
@@ -140,7 +144,7 @@ Blockly.JavaScript['alien-recoger'] = function(block) {
 
 Blockly.Blocks['choca_con_tuerca'] = {
   init: function() {
-    this.setColour(225);
+    this.setColour(Blockly.Blocks.sensores.COLOUR);
     this.appendDummyInput()
         .appendField('choca con')
         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'tuerca'));
@@ -150,14 +154,14 @@ Blockly.Blocks['choca_con_tuerca'] = {
 };
 
 Blockly.JavaScript['choca_con_tuerca'] = function(block) {
-  return ['receptor.colisiona_con_item("Tuerca")', Blockly.JavaScript.ORDER_ATOMIC];
+  return ['programa.receptor.colisiona_con_item("Tuerca")', Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 /* ============================================== */
 
 Blockly.Blocks['repetir'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.COLOUR);
     this.appendValueInput('count')
         .setCheck('Number')
         .appendField('repetir');
@@ -173,7 +177,7 @@ Blockly.JavaScript['repetir'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block;
-  r += 'programa.repetirN(function(receptor){ return {{n}}; });\n'.replace('{{n}}', value_count);
+  r += 'programa.repetirN(function(){ return {{n}}; });\n'.replace('{{n}}', value_count);
   return r;
 };
 
@@ -181,7 +185,7 @@ Blockly.JavaScript['repetir'] = function(block) {
 
 Blockly.Blocks['hasta'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.COLOUR);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('repetir hasta que');
@@ -197,7 +201,7 @@ Blockly.JavaScript['hasta'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block + '\n';
-  r += 'programa.repetir_hasta(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.repetir_hasta(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -205,7 +209,7 @@ Blockly.JavaScript['hasta'] = function(block) {
 
 Blockly.Blocks['si'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.COLOUR);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('si');
@@ -221,7 +225,7 @@ Blockly.JavaScript['si'] = function(block) {
   var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
   var r = 'programa.empezar_secuencia();\n';
   r += statements_block;
-  r += 'programa.alternativa_si(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.alternativa_si(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -230,7 +234,7 @@ Blockly.JavaScript['si'] = function(block) {
 
 Blockly.Blocks['sino'] = {
   init: function() {
-    this.setColour(0);
+    this.setColour(Blockly.Blocks.loops.COLOUR);
     this.appendValueInput('condition')
         .setCheck('Boolean')
         .appendField('si');
@@ -252,7 +256,7 @@ Blockly.JavaScript['sino'] = function(block) {
   r += statements_block1;
   r += 'programa.empezar_secuencia();\n';
   r += statements_block2;
-  r += 'programa.alternativa_sino(function(receptor){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+  r += 'programa.alternativa_sino(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
   return r;
 };
 
@@ -263,7 +267,7 @@ Blockly.JavaScript['variables_get'] = function(block) {
   // Variable getter.
   var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
       Blockly.Variables.NAME_TYPE);
-  return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+  return ['programa.receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
 // PISA EL QUE OFRECE BLOCKLY
@@ -273,7 +277,7 @@ Blockly.JavaScript['variables_set'] = function(block) {
       Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
   var varName = Blockly.JavaScript.variableDB_.getName(
       block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-  return 'programa.cambio_atributo(' + varName + ', function(receptor){ return ' + argument0 + '; } );\n';
+  return 'programa.cambio_atributo(' + varName + ', function(){ return ' + argument0 + '; } );\n';
 };
 
 /* ============================================== */
@@ -322,7 +326,7 @@ Blockly.JavaScript['param_get'] = function(block) {
 
 Blockly.Blocks['al_empezar_a_ejecutar'] = {
   init: function() {
-    this.setColour(130);
+    this.setColour(Blockly.Blocks.eventos.COLOUR);
     this.appendDummyInput()
         .appendField('Al empezar a ejecutar');
     this.appendStatementInput('program');
@@ -337,6 +341,7 @@ Blockly.JavaScript['al_empezar_a_ejecutar'] = function(block) {
   var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
   r += 'programa.empezar_secuencia();\n';
   r += statements_program + '\n';
+  r += 'programa.receptor = alien;\n'; // pasar esta linea de codigo a pilasweb
   r += 'programa.ejecutar(alien);\n';
   return r;
 };
