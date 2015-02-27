@@ -1,6 +1,50 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 
 class Animar extends Comportamiento{
-    //TODO
-    //this.hacer_luego(Animar,{grilla: 'cooperativista/trabajando.png', cantCuadros: 2}
+    paso;
+    imagenAnterior;
+    
+    iniciar(receptor) {
+        super.iniciar(receptor);
+        this.sanitizarArgumentos();
+        this.imagenAnterior = this.receptor._imagen;
+        this.receptor.imagen = pilas.imagenes.cargar_grilla(this.argumentos.grilla, this.argumentos.cantCuadros);
+        this.receptor._imagen.definir_cuadro(this.argumentos.cuadroEstatico);
+        this.paso = 0;
+    }
+    
+    actualizar() {
+        this.paso += 0.3;
+        if (this.paso>this.argumentos.cantCuadros) {
+            this.paso = 0;
+            this.argumentos.cantEjecuciones -= 1;
+            if (this.argumentos.cantEjecuciones === 0) {
+                this.terminarrlo();
+                return true;
+            }
+        }
+        this.receptor._imagen.definir_cuadro(this.argumentos.cuadros[parseInt(this.paso)]);
+    }
+    
+    terminarrlo(){
+        this.receptor.imagen = this.imagenAnterior ;
+    }
+    
+    seguidillaHastaCant(){
+        var seguidilla = [];
+        if(this.argumentos.cantCuadros !== undefined) {
+            for(var i = 0; i < this.argumentos.cantCuadros; i++){
+                seguidilla.push(i);
+            }
+        }
+        return seguidilla;
+    }
+    
+    sanitizarArgumentos(){
+        this.argumentos.cantEjecuciones = this.argumentos.cantEjecuciones || 1 ;
+        this.argumentos.velocidad = this.argumentos.velocidad || 2;
+        this.argumentos.cuadros = this.argumentos.cuadros || this.seguidillaHastaCant() || [0];
+        this.argumentos.cantCuadros = this.argumentos.cantCuadros || this.argumentos.cuadros.length;
+        this.argumentos.cuadroEstatico = this.argumentos.cuadroEstatico || 0;
+    }
 }

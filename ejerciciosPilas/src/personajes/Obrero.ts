@@ -5,11 +5,10 @@
 
 class Obrero extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'cooperativista/camina.png', cantCuadros: 4});
-        this.espejado = true;
+        super(x, y, {grilla: 'cooperativista/camina.png', cantCuadros: 4, cuadroEstatico: 3});
     }
     
-    martillar(){
-        this.hacer_luego(Animar,{grilla: 'cooperativista/trabajando.png', cantCuadros: 2});
+    argumentosMartillar(){
+        return {grilla: 'cooperativista/trabajando.png', cantCuadros: 2};
     }
 } 

@@ -1,6 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../personajes/Obrero.ts"/>
-/// <reference path = "../comportamientos/movimientosLibres.ts"/>
 
 /**
  * @class ElObreroCopado
@@ -14,23 +13,23 @@ class ElObreroCopado extends Base {
     
     iniciar() {
         this.fondo = new Fondo('fondos/fondoObrero.png',0,0);
-        this.obrero = new Obrero(-160,-100);
-        
-      }
+        this.obrero = new Obrero(160,-100);
+        this.obrero.aprender(SeMantieneEnPantalla,{});
+    }
 
 /*************** Métodos para que se cuelgue blockly ****************/
 /****** Deben tener sólo una línea, que sea un "hacer_luego" ********/
 /****** El nombre debe ser el que tendrá el bloque en blockly *******/  
     
     avanzar(){
-        this.obrero.hacer_luego(CaminaDerechaSinPasarse,{pasos: 2});
+        this.obrero.hacer_luego(CaminaIzquierda,{pasos: 2});
     }
     
     retroceder(){
-        this.obrero.hacer_luego(CaminaIzquierdaSinPasarse,{pasos: 2});
+        this.obrero.hacer_luego(CaminaDerecha,{pasos: 2});
     }
     
     martillar(){
-        this.obrero.martillar();
+        this.obrero.hacer_luego(Animar,this.obrero.argumentosMartillar());
     }
 }
