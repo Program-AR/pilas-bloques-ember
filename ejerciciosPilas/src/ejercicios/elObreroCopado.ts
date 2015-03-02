@@ -1,5 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../personajes/Obrero.ts"/>
+/// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
 
 /**
  * @class ElObreroCopado
@@ -14,7 +15,7 @@ class ElObreroCopado extends Base {
     iniciar() {
         this.fondo = new Fondo('fondos/fondoObrero.png',0,0);
         this.obrero = new Obrero(160,-100);
-        this.obrero.aprender(SeMantieneEnPantalla,{});
+        this.obrero.aprender(AvisaAlSalirDePantalla,{});
     }
 
 /*************** Métodos para que se cuelgue blockly ****************/

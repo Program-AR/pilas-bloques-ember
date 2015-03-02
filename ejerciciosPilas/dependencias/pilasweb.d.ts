@@ -68,6 +68,7 @@ declare class Actor extends Estudiante {
     callbacks_cuando_hace_click: any;
     callbacks_cuando_mueve_mouse: any;
     etiquetas: any;
+    evto_se_movio: any;
     constructor(imagen: any, x: any, y: any, atributos?: {});
     getClassName(): string;
     iniciar(): void;
@@ -1390,6 +1391,10 @@ declare class Pilas {
      */
     obtener_actores_en(x: any, y: any, con_etiqueta?: any): any[];
     obtener_actores_con_etiqueta(etiqueta: any): any[];
+    izquierda(): number;
+    derecha(): number;
+    arriba(): number;
+    abajo(): number;
 }
 declare class Rutinas {
     lista_de_rutinas: any;
