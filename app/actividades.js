@@ -36,6 +36,17 @@ var Bloque = Ember.Object.extend({
     };
   },
 
+  instanciar_para_workspace: function() {
+    this.registrar_en_blockly();
+
+    var block_dom = Blockly.Xml.textToDom(
+      '<xml>' + this.build() + '</xml>'
+    );
+
+    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), block_dom);
+  },
+
+  // reimplementar si se desean parametros ya aplicados
   get_parametros: function() {
     return [];
   },
@@ -56,6 +67,35 @@ var Bloque = Ember.Object.extend({
     str_block += '</block>';
     return str_block;
   }
+});
+
+var AlEmpezar = Bloque.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'al_empezar_a_ejecutar');
+  },
+
+  block_init: function(block) {
+    block.setColour(Blockly.Blocks.eventos.COLOUR);
+    block.appendDummyInput()
+        .appendField('Al empezar a ejecutar');
+    block.appendStatementInput('program');
+    block.setDeletable(false);
+    block.setEditable(false);
+    block.setMovable(false);
+  },
+
+  block_javascript: function(block) {
+    var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
+    var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
+    r += 'programa.empezar_secuencia();\n';
+    r += statements_program + '\n';
+    r += 'programa.receptor = alien;\n'; // pasar esta linea de codigo a pilasweb
+    r += 'programa.ejecutar(alien);\n';
+    return r;
+  }
+
 });
 
 var Accion = Bloque.extend({
@@ -490,9 +530,14 @@ var Lenguaje = Ember.Object.extend({
   },
 
   bloque: function(b) {
-    var b_instance = b.create();
-    b_instance.registrar_en_blockly();
-    this.get('bloques')[b_instance.get('categoria')].pushObject(b_instance);
+    var block = this.definir_bloque(b);
+    this.get('bloques')[block.get('categoria')].pushObject(block);
+  },
+
+  definir_bloque: function(b) {
+    var block = b.create();
+    block.registrar_en_blockly();
+    return block;
   },
 
   build: function() {
@@ -551,6 +596,7 @@ var Actividad = Ember.Object.extend({
     this.set('puedeComentar', actividad.puedeComentar);
     this.set('puedeDesactivar', actividad.puedeDesactivar);
     this.set('puedeDuplicar', actividad.puedeDuplicar);
+    this.setColours();
   },
 
   iniciarEscena: function () {
@@ -558,7 +604,7 @@ var Actividad = Ember.Object.extend({
     pilas.mundo.gestor_escenas.cambiar_escena(new Esc());
   },
 
-  construirLenguaje: function() {
+  obtenerLenguaje: function() {
     var act = this.get('actividad');
     var leng = Lenguaje.create();
 
@@ -566,14 +612,74 @@ var Actividad = Ember.Object.extend({
     leng.agregar('Sensores', act.sensores);
     leng.agregar('Control', act.control);
     leng.agregar('Expresiones', act.expresiones);
-    leng.agregar('Variables', []);
-    leng.agregar('Subtareas', []);
+    leng.agregar('Variables', act.variables);
+    leng.agregar('Subtareas', act.subtareas);
 
     return leng.build();
+  },
+
+  bloques_iniciales: function() {
+    return [AlEmpezar];
+  },
+
+  crear_bloques_iniciales: function() {
+    this.bloques_iniciales().forEach(function(b){
+      b.create().instanciar_para_workspace();
+    });
+  },
+
+  iniciarBlockly: function(contenedor) {
+    var actividad = this;
+
+    Blockly.inject(contenedor, {
+      collapse: false,
+      duplicate: actividad.get('puedeDuplicar'),
+      trashOnlyDelete: true,
+      disable: actividad.get('puedeDesactivar'),
+      comments: actividad.get('puedeComentar'),
+      rgbColours: true,
+      defsOnly: true,
+      defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
+      path: './libs/blockly/',
+      toolbox: Blockly.Xml.textToDom(actividad.obtenerLenguaje()),
+    });
+
+    this.crear_bloques_iniciales();
+  },
+
+  // Scratch style colours
+  setColours: function() {
+    Blockly.Blocks.primitivas.COLOUR = '#4a6cd4';
+    Blockly.Blocks.sensores.COLOUR = '#2ca5e2';
+    Blockly.Blocks.eventos.COLOUR = '#00a65a'; // == boton ejecutar
+    Blockly.Blocks.math.COLOUR = '#49930e';
+    Blockly.Blocks.logic.COLOUR = '#5cb712';
+    Blockly.Blocks.loops.COLOUR = '#ee7d16';
+
+    Blockly.Blocks.procedures.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.params.COLOUR = '#8a55d7';
+    Blockly.Blocks.variables.COLOUR = '#cc5b22';
+
+    Blockly.Blocks.texts.COLOUR = '#4a6cd4';
+    Blockly.Blocks.lists.COLOUR = '#cc5b22';
+    Blockly.Blocks.colour.COLOUR = '#4a6cd4';
+
+    // IN SCRATCH THE COLOURS ARE
+    // 4a6cd4 MOTION
+    // 8a55d7 LOOKS
+    // bb42c3 SOUND
+    // 0e9a6c PEN
+    // ee7d16 DATA Variables
+    // cc5b22 DATA Lists
+    // c88330 EVENTS
+    // e1a91a CONTROL
+    // 2ca5e2 SENSING
+    // 5cb712 OPERATORS
+    // 49930e OPERATORS dark
+    // 632d99 MORE BLOCKS
+    // 5e4db3 PARAMS
   }
 
-  // definir en subclases
-  // iniciarEscena
 });
 
 
@@ -641,8 +747,8 @@ var actividadAlien = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: true,
-  variables: true,
+  subtareas: [],
+  variables: [],
   control: [Repetir, Si, Sino, Hasta],
   expresiones: [Numero, OpAritmetica, OpComparacion, Booleano, OpLogica, OpNegacion],
   acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, Recoger],
