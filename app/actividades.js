@@ -4,6 +4,8 @@ Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.eventos = { COLOUR: '#4a6cd4' };
 
+/* ============================================== */
+
 /*
  * Representa un bloque
  * para el lenguaje de la actividad
@@ -69,6 +71,131 @@ var Bloque = Ember.Object.extend({
   }
 });
 
+/* ============================================== */
+
+// Pide implementar sólo block_javascript
+// Sirve para pisar el JS que produce blockly
+var CambioDeJSDeBlocky = Bloque.extend({
+
+  registrar_en_blockly: function() {
+    var myThis = this;
+    Blockly.JavaScript[this.get('id')] = function(block) {
+      return myThis.block_javascript(block);
+    };
+  }
+
+});
+
+/* ============================================== */
+
+var VariableGet = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'variables_get');
+  },
+
+  block_javascript: function(block) {
+    // Variable getter.
+    var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
+        Blockly.Variables.NAME_TYPE);
+    return ['programa.receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+  }
+
+});
+
+/* ============================================== */
+
+var VariableSet = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'variables_set');
+  },
+
+  block_javascript: function(block) {
+    // Variable setter.
+    var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',
+        Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+    var varName = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    return 'programa.cambio_atributo(' + varName + ', function(){ return ' + argument0 + '; } );\n';
+  }
+
+});
+
+/* ============================================== */
+
+var CallNoReturn = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'procedures_callnoreturn');
+  },
+
+  block_javascript: function(block) {
+    // Call a procedure with no return value.
+    var funcName = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+    var args = [];
+    for (var x = 0; x < block.arguments_.length; x++) {
+      args[x] = Blockly.JavaScript.valueToCode(block, 'ARG' + x,
+          Blockly.JavaScript.ORDER_COMMA) || 'null';
+      args[x] = 'function(){ return ' + args[x] + '; }';
+    }
+    var code = funcName + '(' + args.join(', ') + ');\n';
+    return code;
+  }
+
+});
+
+/* ============================================== */
+
+var CallReturn = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'procedures_callreturn');
+  },
+
+  block_javascript: function(block) {
+    // Call a procedure with a return value.
+    var funcName = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+    var args = [];
+    for (var x = 0; x < block.arguments_.length; x++) {
+      args[x] = Blockly.JavaScript.valueToCode(block, 'ARG' + x,
+          Blockly.JavaScript.ORDER_COMMA) || 'null';
+      args[x] = 'function(){ return ' + args[x] + '; }';
+    }
+    var code = funcName + '(' + args.join(', ') + ')';
+    return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+  }
+
+});
+
+/* ============================================== */
+
+var ParamGet = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'param_get');
+  },
+
+  block_javascript: function(block) {
+    // Variable getter.
+    var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
+        Blockly.Variables.NAME_TYPE);
+
+    // agrego parentesis para llamar al closure del parametro
+    return [code + '()', Blockly.JavaScript.ORDER_ATOMIC];
+  }
+
+});
+
+/* ============================================== */
+
 var AlEmpezar = Bloque.extend({
 
   init: function() {
@@ -98,6 +225,8 @@ var AlEmpezar = Bloque.extend({
 
 });
 
+/* ============================================== */
+
 var Accion = Bloque.extend({
 
   init: function() {
@@ -117,6 +246,8 @@ var Accion = Bloque.extend({
   }
 
 });
+
+/* ============================================== */
 
 var IrDerecha = Accion.extend({
 
@@ -142,6 +273,8 @@ var IrDerecha = Accion.extend({
 
 });
 
+/* ============================================== */
+
 var IrIzquierda = Accion.extend({
 
   init: function() {
@@ -165,6 +298,8 @@ var IrIzquierda = Accion.extend({
   }
 
 });
+
+/* ============================================== */
 
 var IrArriba = Accion.extend({
 
@@ -190,6 +325,8 @@ var IrArriba = Accion.extend({
 
 });
 
+/* ============================================== */
+
 var IrAbajo = Accion.extend({
 
   init: function() {
@@ -214,6 +351,8 @@ var IrAbajo = Accion.extend({
 
 });
 
+/* ============================================== */
+
 var Recoger = Accion.extend({
 
   init: function() {
@@ -237,6 +376,8 @@ var Recoger = Accion.extend({
   }
 
 });
+
+/* ============================================== */
 
 var Sensor = Bloque.extend({
   init: function() {
@@ -274,6 +415,8 @@ var ChocaConTuerca = Sensor.extend({
   }
 });
 
+/* ============================================== */
+
 var EstructuraDeControl = Bloque.extend({
   init: function() {
     this._super();
@@ -289,6 +432,8 @@ var EstructuraDeControl = Bloque.extend({
   }
 
 });
+
+/* ============================================== */
 
 var Repetir = EstructuraDeControl.extend({
 
@@ -328,6 +473,8 @@ var Repetir = EstructuraDeControl.extend({
 
 });
 
+/* ============================================== */
+
 var Si = EstructuraDeControl.extend({
 
   init: function() {
@@ -353,6 +500,8 @@ var Si = EstructuraDeControl.extend({
   }
 
 });
+
+/* ============================================== */
 
 var Sino = EstructuraDeControl.extend({
 
@@ -385,6 +534,8 @@ var Sino = EstructuraDeControl.extend({
   }
 
 });
+
+/* ============================================== */
 
 var Hasta = EstructuraDeControl.extend({
 
@@ -465,6 +616,8 @@ var OpNegacion = ExpresionDeBlockly.extend({
   },
 });
 
+/* ============================================== */
+
 /*
  * Representa el valor
  * de un campo string de un bloque
@@ -478,6 +631,8 @@ var ParamCampo = Ember.Object.extend({
      return str_block;
    }
 });
+
+/* ============================================== */
 
 /*
  * Representa un valor mas complejo
@@ -501,6 +656,8 @@ var ParamValor = Ember.Object.extend({
      return str_block;
    }
 });
+
+/* ============================================== */
 
 /*
  * Representa el lenguaje que podra utilizarse
@@ -584,6 +741,8 @@ var Lenguaje = Ember.Object.extend({
 
 });
 
+/* ============================================== */
+
 /**
   Modelo de actividad
 **/
@@ -597,6 +756,7 @@ var Actividad = Ember.Object.extend({
     this.set('puedeDesactivar', actividad.puedeDesactivar);
     this.set('puedeDuplicar', actividad.puedeDuplicar);
     this.setColours();
+    this.pisar_bloques_blockly();
   },
 
   iniciarEscena: function () {
@@ -626,6 +786,14 @@ var Actividad = Ember.Object.extend({
     this.bloques_iniciales().forEach(function(b){
       b.create().instanciar_para_workspace();
     });
+  },
+
+  pisar_bloques_blockly: function() {
+    CallReturn.create().registrar_en_blockly();
+    CallNoReturn.create().registrar_en_blockly();
+    ParamGet.create().registrar_en_blockly();
+    VariableGet.create().registrar_en_blockly();
+    VariableSet.create().registrar_en_blockly();
   },
 
   iniciarBlockly: function(contenedor) {
@@ -682,6 +850,7 @@ var Actividad = Ember.Object.extend({
 
 });
 
+/* ============================================== */
 
 var EscenaAlien = (function (_super) {
     __extends(EscenaAlien, _super);
@@ -740,6 +909,8 @@ var EscenaAlien = (function (_super) {
     return EscenaAlien;
 })(Base);
 
+/* ============================================== */
+
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
   enunciado: 'Define un programa para que el alien junte todas las tuercas',
@@ -754,6 +925,8 @@ var actividadAlien = {
   acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, Recoger],
   sensores: [ChocaConTuerca]
 };
+
+/* ============================================== */
 
 var Actividades = {
   Alien: Actividad.create({ actividad: actividadAlien }),
