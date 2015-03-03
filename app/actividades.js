@@ -436,8 +436,8 @@ var Lenguaje = Ember.Object.extend({
   },
   
   agregar: function(c, bs) {
-    this.categoria(c);
-    if(bs) {
+    if(bs !== undefined) {
+      this.categoria(c);
       bs.forEach(function (b) {
         this.bloque(b);
       }.bind(this));
