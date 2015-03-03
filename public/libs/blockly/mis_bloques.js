@@ -1,33 +1,5 @@
 Blockly.Blocks.eventos = { COLOUR: '#4a6cd4' };
 
-Blockly.Blocks['sino'] = {
-  init: function() {
-    this.setColour(Blockly.Blocks.loops.COLOUR);
-    this.appendValueInput('condition')
-        .setCheck('Boolean')
-        .appendField('si');
-    this.appendStatementInput('block1');
-    this.appendDummyInput()
-        .appendField('sino');
-    this.appendStatementInput('block2');
-    this.setInputsInline(true);
-    this.setPreviousStatement(true);
-    this.setNextStatement(true);
-  }
-};
-
-Blockly.JavaScript['sino'] = function(block) {
-  var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
-  var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
-  var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
-  var r = 'programa.empezar_secuencia();\n';
-  r += statements_block1;
-  r += 'programa.empezar_secuencia();\n';
-  r += statements_block2;
-  r += 'programa.alternativa_sino(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
-  return r;
-};
-
 /* ============================================== */
 
 // PISA EL QUE OFRECE BLOCKLY
