@@ -8,7 +8,7 @@
 <body>
     <div class='container'>
       <style type="text/css" media="all">
-        canvas#canvas_id2 {
+        canvas#canvas {
 			margin-top: 20px;
         	width: 420px;
         	height: 480px;
@@ -24,17 +24,20 @@
 		function nombreDeClase()
 		{
 		    var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
-		    return hash.split('=')[1];
+		    var name = hash.split('=')[1];
+		    if (name) {
+		    	return name;
+		    }else{
+		    	return "ElObreroCopado";
+		    }
 		};
 		
 		var canvas_element = document.getElementById('canvas');
 		window['canvas'] = canvas_element;
-		pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: 'data', imagenesExtra: ['fondos/fondoObrero.png']});
-		if(nombreDeClase()){ 
-			eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + '());');
-		}else{
-			pilas.mundo.gestor_escenas.cambiar_escena(new ElObreroCopado());
-		}
+		pilasengine.iniciar({ancho: 420, alto: 480, canvas: canvas_element, data_path: 'data', imagenesExtra: ['fondos/fondoObrero.png', 'fondos/nubes.png']});
+		
+		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + '());');
+		
 		pilas.ejecutar();
 	 </script>
 

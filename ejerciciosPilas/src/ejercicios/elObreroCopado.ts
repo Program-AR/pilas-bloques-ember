@@ -33,4 +33,8 @@ class ElObreroCopado extends Base {
     martillar(){
         this.obrero.hacer_luego(Animar,this.obrero.argumentosMartillar());
     }
+    
+    saltar(){
+        this.obrero.hacer_luego(Saltar);
+    }
 }
