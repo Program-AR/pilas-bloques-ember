@@ -4,7 +4,7 @@ import Actividades from '../actividades';
 var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
-  actividad: Actividades.Alien.create(),
+  actividad: Actividades.Alien,
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
