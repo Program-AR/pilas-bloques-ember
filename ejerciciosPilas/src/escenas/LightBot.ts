@@ -1,5 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../personajes/Obrero.ts"/>
+/// <reference path = "../actores/Obrero.ts"/>
 
 /**
  * @class LightBot

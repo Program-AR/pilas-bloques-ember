@@ -37,6 +37,10 @@ class ActorAnimado extends Actor {
         this.y += y;
         this.animacion_correr();
     }
+    
+    definir_cuadro(nro){
+        this._imagen.definir_cuadro(nro);
+    }
 
     animacion_correr() {
         this.paso += 0.3;

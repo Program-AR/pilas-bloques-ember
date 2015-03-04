@@ -1,3 +1,13 @@
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+
+
+
+
+/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
+/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
+/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
+/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
+
 function convertir_posicion_a_coordenada(fila, columna) {
 	/*
 
@@ -20,11 +30,11 @@ function convertir_posicion_a_coordenada(fila, columna) {
 	return {x: columnas[columna-1], y: filas[fila-1]};
 }
 
-function armarEscena(objeto_pilas){
-	var escenaAlien = new Base();
-	escenaAlien.iniciar = function(){
+class AlienLevantaTuercas extends Base {
+
+    iniciar(){
 	    var fondo = new pilas.fondos.Laberinto1();
-	    var alien = new objeto_pilas.actores.Alien(-175, -180);
+	    var alien = new pilas.actores.Alien(-175, -180);
 	
 	    alien.cuando_busca_recoger = function() {
 	      var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca')
@@ -46,18 +56,18 @@ function armarEscena(objeto_pilas){
 	
 	
 	    var posicion = convertir_posicion_a_coordenada(1, 1);
-	    var tuerca = new objeto_pilas.actores.Tuerca(posicion.x, posicion.y);
+	    var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
 	
 	    var posicion = convertir_posicion_a_coordenada(3, 2);
-	    var tuerca = new objeto_pilas.actores.Tuerca(posicion.x, posicion.y);
+	    var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
 	
 	    var posicion = convertir_posicion_a_coordenada(5, 3);
-	    var tuerca = new objeto_pilas.actores.Tuerca(posicion.x, posicion.y);
+	    var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
 	
 	    var posicion = convertir_posicion_a_coordenada(3, 6);
-	    var tuerca = new objeto_pilas.actores.Tuerca(posicion.x, posicion.y);
+	    var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
 	
-	    window.tuerca = tuerca;
-	}
-	return escenaAlien;
-};
+	    //window.tuerca = tuerca;
+    }
+
+}
