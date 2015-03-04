@@ -411,7 +411,7 @@ var ChocaConTuerca = Sensor.extend({
   },
 
   nombre_sensor: function() {
-    return 'colisiona_con_item("Tuerca")';
+    return 'choca_con_tuerca()';
   }
 });
 
@@ -866,15 +866,21 @@ var EscenaAlien = (function (_super) {
     };
 
     EscenaAlien.prototype.iniciar = function() {
+
       var fondo = new pilas.fondos.Laberinto1();
       var alien = new pilas.actores.Alien(-175, -180);
 
       window.alien = alien;
       window.fondo = fondo;
 
+      // metodo para ver si choca con tuerca
+      alien.choca_con_tuerca = function() {
+        var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca');
+        return actores.length > 0;
+      };
+
       alien.cuando_busca_recoger = function() {
         var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca');
-
         if (actores.length > 0) {
           var mensaje = '';
           actores[0].eliminar();
@@ -886,7 +892,7 @@ var EscenaAlien = (function (_super) {
             mensaje = '¡Nivel completado!';
           }
 
-          alien.decir(mensaje);
+          // alien.decir(mensaje);
         }
       };
 
