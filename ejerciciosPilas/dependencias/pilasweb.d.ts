@@ -68,6 +68,7 @@ declare class Actor extends Estudiante {
     callbacks_cuando_hace_click: any;
     callbacks_cuando_mueve_mouse: any;
     etiquetas: any;
+    evto_se_movio: any;
     constructor(imagen: any, x: any, y: any, atributos?: {});
     getClassName(): string;
     iniciar(): void;
@@ -86,8 +87,8 @@ declare class Actor extends Estudiante {
     escala: any;
     rotacion: any;
     transparencia: number;
-    ancho: any;
-    alto: any;
+    ancho: number;
+    alto: number;
     imagen: any;
     izquierda: number;
     derecha: number;
@@ -1209,6 +1210,8 @@ declare class Grilla extends Imagen {
     cantidad_cuadros: number;
     definir_cuadro(numero_de_cuadro: any): void;
     avanzar(velocidad?: number): boolean;
+    ancho: number;
+    alto: number;
 }
 declare class Animacion extends Grilla {
     animaciones: any;
@@ -1390,6 +1393,10 @@ declare class Pilas {
      */
     obtener_actores_en(x: any, y: any, con_etiqueta?: any): any[];
     obtener_actores_con_etiqueta(etiqueta: any): any[];
+    izquierda(): number;
+    derecha(): number;
+    arriba(): number;
+    abajo(): number;
 }
 declare class Rutinas {
     lista_de_rutinas: any;
