@@ -99,7 +99,7 @@ var VariableGet = CambioDeJSDeBlocky.extend({
     // Variable getter.
     var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
-    return ['programa.receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -126,6 +126,52 @@ var VariableSet = CambioDeJSDeBlocky.extend({
 
 /* ============================================== */
 
+var DefNoReturn = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'procedures_defnoreturn');
+  },
+
+  block_javascript: function(block) {
+    // Define a procedure with a return value.
+    var funcName = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('NAME'), Blockly.Procedures.NAME_TYPE);
+
+    var branch = Blockly.JavaScript.statementToCode(block, 'STACK');
+
+    if (Blockly.JavaScript.STATEMENT_PREFIX) {
+      branch = Blockly.JavaScript.prefixLines(
+          Blockly.JavaScript.STATEMENT_PREFIX.replace(/%1/g,
+          '\'' + block.id + '\''), Blockly.JavaScript.INDENT) + branch;
+    }
+
+    if (Blockly.JavaScript.INFINITE_LOOP_TRAP) {
+      branch = Blockly.JavaScript.INFINITE_LOOP_TRAP.replace(/%1/g,
+          '\'' + block.id + '\'') + branch;
+    }
+
+    var args = [];
+    for (var x = 0; x < block.arguments_.length; x++) {
+      args[x] = Blockly.JavaScript.variableDB_.getName(block.arguments_[x],
+          Blockly.Variables.NAME_TYPE);
+    }
+//    var code = 'function ' + funcName + '(' + args.join(', ') + ') {\n' +
+//        branch + returnValue + '}';
+
+    var code = 'programa.empezar_secuencia();\n' +
+                branch +
+                'programa.def_proc("' + funcName + '");\n';
+
+    code = Blockly.JavaScript.scrub_(block, code);
+    Blockly.JavaScript.definitions_[funcName] = code;
+    return null;
+  }
+
+});
+
+/* ============================================== */
+
 var CallNoReturn = CambioDeJSDeBlocky.extend({
 
   init: function() {
@@ -143,7 +189,8 @@ var CallNoReturn = CambioDeJSDeBlocky.extend({
           Blockly.JavaScript.ORDER_COMMA) || 'null';
       args[x] = 'function(){ return ' + args[x] + '; }';
     }
-    var code = funcName + '(' + args.join(', ') + ');\n';
+    // var code = funcName + '(' + args.join(', ') + ');\n';
+    var code = 'programa.llamada_proc("' + funcName + '");\n';
     return code;
   }
 
@@ -215,11 +262,9 @@ var AlEmpezar = Bloque.extend({
 
   block_javascript: function(block) {
     var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
-    var r = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n';
-    r += 'programa.empezar_secuencia();\n';
+    var r = 'programa.empezar_secuencia();\n';
     r += statements_program + '\n';
-    r += 'programa.receptor = alien;\n'; // pasar esta linea de codigo a pilasweb
-    r += 'programa.ejecutar(alien);\n';
+    r += 'programa.ejecutar(receptor);\n';
     return r;
   }
 
@@ -393,7 +438,7 @@ var Sensor = Bloque.extend({
   },
 
   block_javascript: function(block) {
-    return ['programa.receptor.' + this.nombre_sensor() + '\n', Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.' + this.nombre_sensor() + '\n', Blockly.JavaScript.ORDER_ATOMIC];
   }
 });
 
@@ -411,7 +456,7 @@ var ChocaConTuerca = Sensor.extend({
   },
 
   nombre_sensor: function() {
-    return 'colisiona_con_item("Tuerca")';
+    return 'choca_con_tuerca()';
   }
 });
 
@@ -761,7 +806,9 @@ var Actividad = Ember.Object.extend({
 
   iniciarEscena: function () {
     var Esc = this.get('escena');
-    pilas.mundo.gestor_escenas.cambiar_escena(new Esc());
+    var esc_instance = new Esc();
+    this.set('escena_instanciada', esc_instance);
+    pilas.mundo.gestor_escenas.cambiar_escena(esc_instance);
   },
 
   obtenerLenguaje: function() {
@@ -789,6 +836,7 @@ var Actividad = Ember.Object.extend({
   },
 
   pisar_bloques_blockly: function() {
+    DefNoReturn.create().registrar_en_blockly();
     CallReturn.create().registrar_en_blockly();
     CallNoReturn.create().registrar_en_blockly();
     ParamGet.create().registrar_en_blockly();
@@ -813,6 +861,14 @@ var Actividad = Ember.Object.extend({
     });
 
     this.crear_bloques_iniciales();
+  },
+
+  generarCodigo: function() {
+    // variable global con la que se accede al receptor del programa
+    window.receptor = this.get('escena_instanciada').automata;
+    var comienzo = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n\n';
+    var code = Blockly.JavaScript.workspaceToCode();
+    return comienzo + code;
   },
 
   // Scratch style colours
@@ -866,15 +922,20 @@ var EscenaAlien = (function (_super) {
     };
 
     EscenaAlien.prototype.iniciar = function() {
+
       var fondo = new pilas.fondos.Laberinto1();
       var alien = new pilas.actores.Alien(-175, -180);
 
-      window.alien = alien;
-      window.fondo = fondo;
+      this.automata = alien;
+
+      // metodo para ver si choca con tuerca
+      alien.choca_con_tuerca = function() {
+        var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca');
+        return actores.length > 0;
+      };
 
       alien.cuando_busca_recoger = function() {
         var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca');
-
         if (actores.length > 0) {
           var mensaje = '';
           actores[0].eliminar();
@@ -886,7 +947,7 @@ var EscenaAlien = (function (_super) {
             mensaje = '¡Nivel completado!';
           }
 
-          alien.decir(mensaje);
+          // alien.decir(mensaje);
         }
       };
 
