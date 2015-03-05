@@ -50,4 +50,20 @@ class Casilla extends ActorAnimado {
     actualizarAlto(){
         this.alto = this.cuadricula.opciones.altoCasilla;
     }
+    
+    casillaASuDerecha(){
+        return this.cuadricula.casilla(this.nroFila,this.nroColumna + 1);
+    }
+    casillaASuIzquierda(){
+        return this.cuadricula.casilla(this.nroFila,this.nroColumna - 1);
+    }
+    casillaDeArriba(){
+        return this.cuadricula.casilla(this.nroFila - 1,this.nroColumna);
+    }
+    casillaDeAbajo(){
+        return this.cuadricula.casilla(this.nroFila + 1,this.nroColumna);
+    }
+    sos(nroF,nroC){
+        return nroF == this.nroFila && nroC == this.nroColumna;
+    }
 }

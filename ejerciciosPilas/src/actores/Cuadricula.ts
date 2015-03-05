@@ -95,5 +95,15 @@ class Cuadricula extends Actor {
         }
     }
     
+    altoCasilla(){
+        return this.opciones.altoCasilla();
+    }
+    anchoCasilla(){
+        return this.opciones.anchoCasilla();
+    }
+    
+    casilla(nroF, nroC){
+        return this.casillas.filter(casilla => casilla.sos(nroF,nroC))[0];
+    }
 
 }

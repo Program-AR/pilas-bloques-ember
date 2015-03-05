@@ -17,6 +17,8 @@
 class ActorAnimado extends Actor {
     paso;
     opciones;
+    _casillaActual;
+    
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
         var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantCuadros);
@@ -61,5 +63,15 @@ class ActorAnimado extends Actor {
             }
         }
         return seguidilla;
+    }
+    
+    //TODO poner en otra clase lo q tenga q ver con casillas
+    get casillaActual(){
+        return this._casillaActual;
+    }
+    set casillaActual(c){
+        this._casillaActual = c;
+        this.x = c.x;
+        this.y = c.y;
     }
 } 
