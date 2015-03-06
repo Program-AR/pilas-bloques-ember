@@ -99,7 +99,7 @@ var VariableGet = CambioDeJSDeBlocky.extend({
     // Variable getter.
     var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
-    return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.variable("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -119,7 +119,7 @@ var VariableSet = CambioDeJSDeBlocky.extend({
         Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
     var varName = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return 'programa.cambio_atributo(' + varName + ', function(){ return ' + argument0 + '; } );\n';
+    return 'programa.cambio_atributo("' + varName + '", function(){ return ' + argument0 + '; } );\n';
   }
 
 });
@@ -866,6 +866,8 @@ var Actividad = Ember.Object.extend({
       comments: actividad.get('puedeComentar'),
       rgbColours: true,
       defsOnly: true,
+      globalVariables: false,
+      oneReturnOnly: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
       toolbox: Blockly.Xml.textToDom(actividad.obtenerLenguaje()),
