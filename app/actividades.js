@@ -156,12 +156,15 @@ var DefNoReturn = CambioDeJSDeBlocky.extend({
       args[x] = Blockly.JavaScript.variableDB_.getName(block.arguments_[x],
           Blockly.Variables.NAME_TYPE);
     }
+
 //    var code = 'function ' + funcName + '(' + args.join(', ') + ') {\n' +
 //        branch + returnValue + '}';
 
+    var args_string = args.map(function(i) { return '"' + i + '"'; }).join(', ');
+
     var code = 'programa.empezar_secuencia();\n' +
                 branch +
-                'programa.def_proc("' + funcName + '");\n';
+                'programa.def_proc("' + funcName + '", [' + args_string  + ']);\n';
 
     code = Blockly.JavaScript.scrub_(block, code);
     Blockly.JavaScript.definitions_[funcName] = code;
@@ -189,8 +192,16 @@ var CallNoReturn = CambioDeJSDeBlocky.extend({
           Blockly.JavaScript.ORDER_COMMA) || 'null';
       args[x] = 'function(){ return ' + args[x] + '; }';
     }
+    function juntar_args() {
+      if (args.length > 0) {
+        return '[\n'  +  args.join(', \n')  + '\n]';
+      } else {
+        return '[]';
+      }
+    }
     // var code = funcName + '(' + args.join(', ') + ');\n';
-    var code = 'programa.llamada_proc("' + funcName + '");\n';
+    var code = 'programa.llamada_proc("' + funcName +
+               '", ' + juntar_args() + ');\n';
     return code;
   }
 
@@ -236,7 +247,7 @@ var ParamGet = CambioDeJSDeBlocky.extend({
         Blockly.Variables.NAME_TYPE);
 
     // agrego parentesis para llamar al closure del parametro
-    return [code + '()', Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.identificador("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -500,7 +511,7 @@ var Repetir = EstructuraDeControl.extend({
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
     r += statements_block;
-    r += 'programa.repetirN(function(){ return {{n}}; });\n'.replace('{{n}}', value_count);
+    r += 'programa.repetirN(function(){\nreturn {{n}};\n});\n'.replace('{{n}}', value_count);
     return r;
   },
 
@@ -540,7 +551,7 @@ var Si = EstructuraDeControl.extend({
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
     r += statements_block;
-    r += 'programa.alternativa_si(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+    r += 'programa.alternativa_si(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
     return r;
   }
 
@@ -574,7 +585,7 @@ var Sino = EstructuraDeControl.extend({
     r += statements_block1;
     r += 'programa.empezar_secuencia();\n';
     r += statements_block2;
-    r += 'programa.alternativa_sino(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+    r += 'programa.alternativa_sino(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
     return r;
   }
 
@@ -602,7 +613,7 @@ var Hasta = EstructuraDeControl.extend({
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
     r += statements_block;
-    r += 'programa.repetir_hasta(function(){ return {{condition}}; });\n'.replace('{{condition}}', value_condition);
+    r += 'programa.repetir_hasta(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
     return r;
   }
 
@@ -923,7 +934,7 @@ var EscenaAlien = (function (_super) {
 
     EscenaAlien.prototype.iniciar = function() {
 
-      var fondo = new pilas.fondos.Laberinto1();
+      new pilas.fondos.Laberinto1();
       var alien = new pilas.actores.Alien(-175, -180);
 
       this.automata = alien;
