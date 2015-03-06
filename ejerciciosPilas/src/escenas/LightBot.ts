@@ -16,26 +16,26 @@ class LightBot extends Base {
         this.fondo = new Fondo('fondos/nubes.png',0,0);
         //this.robot.izquierda = pilas.izquierda();
 
-        this.cuadricula = new Cuadricula(0,0,3,4,
-            {grillaCasilla: 'banana.png', 
-            cantCuadrosCasilla: 2})
+        this.cuadricula = new Cuadricula(0,0,1,7,
+            {alto: 70},
+            {grilla: 'casillaLightbot.png', 
+            cantCuadros: 5})
         
         this.robot = new Obrero(0,0);
-        this.robot.casillaActual = this.cuadricula.casilla(3,0);
+        this.robot.setCuadricula(this.cuadricula,0,0);
         //this.robot.aprender(AvisaAlSalirDePantalla,{});
     }
     
     irArriba(){
-        this.robot.hacer_luego(MoverACasillaArriba,{});
+        this.robot.hacer_luego(MoverACasillaArriba);
     }
     irAbajo(){
-        this.robot.hacer_luego(MoverACasillaAbajo,{});
+        this.robot.hacer_luego(MoverACasillaAbajo);
     }
     irDerecha(){
-        this.robot.hacer_luego(MoverACasillaDerecha,{});
+        this.robot.hacer_luego(MoverACasillaDerecha);
     }
-    
     irIzquierda(){
-        this.robot.hacer_luego(MoverACasillaIzquierda,{});
+        this.robot.hacer_luego(MoverACasillaIzquierda);
     }
 }

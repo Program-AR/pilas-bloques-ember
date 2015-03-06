@@ -18,6 +18,7 @@ class ActorAnimado extends Actor {
     paso;
     opciones;
     _casillaActual;
+    cuadricula;
     
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
@@ -66,12 +67,18 @@ class ActorAnimado extends Actor {
     }
     
     //TODO poner en otra clase lo q tenga q ver con casillas
-    get casillaActual(){
+    casillaActual(){
         return this._casillaActual;
     }
-    set casillaActual(c){
+    setCasillaActual(c, moverseAhi=false){
         this._casillaActual = c;
-        this.x = c.x;
-        this.y = c.y;
+        if (moverseAhi){
+            this.x = c.x;
+            this.y = c.y;
+        }
+    }
+    setCuadricula(cuad,nroF,nroC){
+        this.cuadricula = cuad;
+        this.setCasillaActual(cuad.casilla(nroF,nroC),true);
     }
 } 

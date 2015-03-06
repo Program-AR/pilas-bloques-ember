@@ -16,8 +16,7 @@ class Casilla extends ActorAnimado {
         this.nroFila = nroF;
         this.nroColumna = nroC;
         
-        super(0,0,{grilla: this.cuadricula.opciones.grillaCasilla || "invisible.png", 
-                   cantCuadros: this.cuadricula.opciones.cantCuadrosCasilla});
+        super(0,0,cuadricula.getOpcionesCasilla());
         
         this.reubicate();
     }
@@ -44,11 +43,11 @@ class Casilla extends ActorAnimado {
     }
     
     actualizarAncho(){
-        this.ancho = this.cuadricula.opciones.anchoCasilla;
+        this.ancho = this.cuadricula.anchoCasilla();
     }
     
     actualizarAlto(){
-        this.alto = this.cuadricula.opciones.altoCasilla;
+        this.alto = this.cuadricula.altoCasilla();
     }
     
     casillaASuDerecha(){

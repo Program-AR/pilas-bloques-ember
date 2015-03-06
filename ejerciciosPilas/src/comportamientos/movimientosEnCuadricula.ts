@@ -4,11 +4,12 @@ class MovimientoEnCuadricula extends Comportamiento {
     cuadricula;
     movimiento;
     estoyEmpezandoAMoverme;
+    claseQueImita;
     
     iniciar(receptor){
         super.iniciar(receptor);
-        this.cuadricula = receptor.cuadriculaActual();
-        this.movimiento = new this.claseQueImita();
+        this.cuadricula = receptor.cuadricula;
+        this.movimiento = new this.claseQueImita({});
         this.movimiento.iniciar(receptor);
         this.movimiento.velocidad = this.velocidad();
         this.estoyEmpezandoAMoverme = true;
@@ -19,9 +20,9 @@ class MovimientoEnCuadricula extends Comportamiento {
             return true;
         }
     }
-    claseQueImita(){
-        // Template Method. Las subclases deben devolver una clase de comportamiento.
-    }
+//    claseQueImita(){
+//        // Template Method. Las subclases deben devolver una clase de comportamiento.
+//    }
     puedoMovermeEnEsaDireccion(){
         if (this.estoyEmpezandoAMoverme){
             this.estoyEmpezandoAMoverme = false;
@@ -36,10 +37,10 @@ class MovimientoEnCuadricula extends Comportamiento {
     
     // El nro 20 depende del nro 0.05 establecido en CaminaBase
     velocidadHorizontal(){
-        return 20 / this.cuadricula.anchoCasilla();    
+        return this.cuadricula.anchoCasilla() / 20;    
     }
     velocidadVertical(){
-        return 20 / this.cuadricula.altoCasilla();
+        return this.cuadricula.altoCasilla() / 20;
     }
     verificarDireccion(casilla){
         var proximaCasilla = this.proximaCasilla(casilla);
@@ -47,7 +48,7 @@ class MovimientoEnCuadricula extends Comportamiento {
             this.receptor.decir("No puedo ir para " + this.textoAMostrar());
             return false;
         };
-        this.receptor.casillaActual(proximaCasilla);
+        this.receptor.setCasillaActual(proximaCasilla);
         return true
     }
     
@@ -61,9 +62,8 @@ class MovimientoEnCuadricula extends Comportamiento {
 }
 
 class MoverACasillaDerecha extends MovimientoEnCuadricula {
-    claseQueImita(){
-        return CaminaDerecha;
-    }
+    claseQueImita = CaminaDerecha;
+    
     proximaCasilla(casilla){
         return casilla.casillaASuDerecha();
     }
@@ -76,9 +76,8 @@ class MoverACasillaDerecha extends MovimientoEnCuadricula {
 }
 
 class MoverACasillaArriba extends MovimientoEnCuadricula{
-    claseQueImita(){
-        return CaminaArriba;
-    }
+    claseQueImita = CaminaArriba;
+
     proximaCasilla(casilla){
         return casilla.casillaDeArriba();
     }
@@ -86,14 +85,13 @@ class MoverACasillaArriba extends MovimientoEnCuadricula{
         return "arriba";
     }
     velocidad(){
-        return this.velocidadHorizontal();
+        return this.velocidadVertical();
     }
 }
 
 class MoverACasillaAbajo extends MovimientoEnCuadricula{
-    claseQueImita(){
-        return CaminaAbajo;
-    }
+    claseQueImita = CaminaAbajo;
+
     proximaCasilla(casilla){
         return casilla.casillaDeAbajo();
     }
@@ -101,14 +99,13 @@ class MoverACasillaAbajo extends MovimientoEnCuadricula{
         return "abajo";
     }
     velocidad(){
-        return this.velocidadHorizontal();
+        return this.velocidadVertical();
     }
 }
 
 class MoverACasillaIzquierda extends MovimientoEnCuadricula{
-    claseQueImita(){
-        return CaminaIzquierda;
-    }
+    claseQueImita = CaminaIzquierda;
+
     proximaCasilla(casilla){
         return casilla.casillaASuIzquierda();
     }

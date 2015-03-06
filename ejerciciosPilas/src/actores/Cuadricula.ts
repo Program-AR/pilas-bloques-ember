@@ -8,6 +8,9 @@
  * tenga casillas.
  * 
  * Cada casilla tiene la misma grilla (y el cuadro que se muestre puede variar en cada una)
+ * Las opciones del Actor cuadrícula son el 5to parámetro.
+ * Las opciones del CADA CASILLA son el 6to parámetro. Estas opciones son exactamente
+ * las mismas que para cualquier ActorAnimado.
  * 
  * Hay varias maneras de crear la cuadrícula.
  * 
@@ -15,73 +18,79 @@
  *     una banana (sprite de 2 cuadros), ubicada en 0,0, con 3 filas y 4 columnas,
  *     que ocupe toda la pantalla.
  * lo hago así:
- *     new Cuadricula(0,0,3,4,
- *           {grillaCasilla: 'banana.png', 
- *           cantCuadrosCasilla: 2})
+ *     new Cuadricula(0,0,3,4,{}
+ *           {grilla: 'banana.png', 
+ *           cantCuadros: 2})
  * 
  * Si no se especifica ningún tipo de medida, se toma la de toda la pantalla.
  
  * Ahora, si quiero lo mismo pero con casillas de 50 x 100,
  * lo hago así:
- *     new Cuadricula(0,0,3,4,
+ *     new Cuadricula(0,0,3,4,{}
  *           {grillaCasilla: 'banana.png', 
  *           cantCuadrosCasilla: 2, 
- *           anchoCasilla: 50, 
- *           altoCasilla: 100})
+ *           ancho: 50, 
+ *           alto: 100})
  * 
  * Otro ejemplo, si quiero crear una cuadrícula igual que las anteriores, 
  * pero definiendo el ancho y alto totales de la cuadrícula
  *     (y no de cada casilla) como de 300 x 300
  * lo hago así:
  *     new Cuadricula(0,0,3,4,
+ *           {ancho: 300, 
+ *           alto: 300},
  *           {grillaCasilla: 'banana.png', 
- *           cantCuadrosCasilla: 2, 
- *           ancho: 300, 
- *           alto: 300})
+ *           cantCuadrosCasilla: 2})
  *  
+ * Nótese que esta vez las opciones que se eligieron son las de la cuadrícula, y
+ * no las de la casilla.
+ * 
  * IMPORTANTE:
- *   No usar cuadricula.ancho = 3 para cambiar el ancho de la cuadrícula.
- *   Usar en vez de ello cuadricula.setAncho(3);
- *   Idem con el alto.
+ *   No usar cuadricula.ancho = 300 para cambiar el ancho de la cuadrícula.
+ *   Usar en vez de ello cuadricula.setAncho(300);
+ *   Idem con el alto. 
+ *   Aunque claro que lo mejor es crearla directamente con las opciones.
  */
 
 class Cuadricula extends Actor {
-    cantFilas;
-    cantColumnas;
-    casillas: Array<Casilla>;
-    opciones;
+    private cantFilas;
+    private cantColumnas;
+    private casillas: Array<Casilla>;
+    private opcionesCuadricula;
+    private opcionesCasilla;
     
-    constructor(x, y, cantFilas, cantColumnas, opciones){
+    constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla){
         this.cantFilas = cantFilas;
         this.cantColumnas = cantColumnas;
-        super('invisible.png',x,y,this.opciones);
+        super('invisible.png',x,y,opcionesCuadricula);
 
-        this.sanitizarOpciones(opciones);
-        this.ancho = this.cantColumnas * opciones.anchoCasilla;
-        this.alto = this.cantFilas * opciones.altoCasilla;
+        this.sanitizarOpciones(opcionesCuadricula, opcionesCasilla);
+        this.ancho = this.cantColumnas * opcionesCasilla.ancho;
+        this.alto = this.cantFilas * opcionesCasilla.alto;
         
         this.crearCasillas();
     }
     
     //TODO: Podría agregar que tome las dimensiones de la 
     //imagen como último valor de ancho y alto por defecto
-    sanitizarOpciones(opciones){
-        this.opciones = opciones;
-        this.opciones.ancho = this.opciones.ancho || pilas.opciones.ancho;
-        this.opciones.alto = this.opciones.alto || pilas.opciones.alto;
-        this.opciones.anchoCasilla = this.opciones.anchoCasilla || this.opciones.ancho / this.cantColumnas ;
-        this.opciones.altoCasilla = this.opciones.altoCasilla || this.opciones.alto / this.cantFilas;
+    sanitizarOpciones(opcionesCuadricula, opcionesCasilla){
+        this.opcionesCasilla = opcionesCasilla;
+        this.opcionesCuadricula = opcionesCuadricula;
+        this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
+        this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
+        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.opcionesCuadricula.ancho / this.cantColumnas ;
+        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.opcionesCuadricula.alto / this.cantFilas;
     }
     
     setAncho(nuevo){
         this.ancho = nuevo;
-        this.opciones.anchoCasilla = nuevo / this.cantColumnas;
+        this.opcionesCasilla.ancho = nuevo / this.cantColumnas;
         this.casillas.forEach(casilla => {casilla.reubicate()});
     }
     
     setAlto(nuevo){
         this.alto = nuevo;
-        this.opciones.altoCasilla = nuevo / this.cantFilas;
+        this.opcionesCasilla.alto = nuevo / this.cantFilas;
         this.casillas.forEach(casilla => {casilla.reubicate()});
     }
     
@@ -96,10 +105,14 @@ class Cuadricula extends Actor {
     }
     
     altoCasilla(){
-        return this.opciones.altoCasilla();
+        return this.opcionesCasilla.alto;
     }
     anchoCasilla(){
-        return this.opciones.anchoCasilla();
+        return this.opcionesCasilla.ancho;
+    }
+    
+    getOpcionesCasilla(){
+        return this.opcionesCasilla;
     }
     
     casilla(nroF, nroC){
