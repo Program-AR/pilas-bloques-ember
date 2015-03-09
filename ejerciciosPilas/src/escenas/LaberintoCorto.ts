@@ -1,10 +1,9 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 
 
 /**
- * @class 
+ * @class LaberintoCorto
  * 
  */
 class LaberintoCorto extends Base {
@@ -19,7 +18,7 @@ class LaberintoCorto extends Base {
         this.cuadricula = new Cuadricula(0,0,1,7,
             {alto: 70},
             {grilla: 'casillaLightbot.png', 
-            cantCuadros: 5})
+            cantColumnas: 5})
         
         this.perro = new PerroCohete(0,0);
         this.perro.setCuadricula(this.cuadricula,0,0);
