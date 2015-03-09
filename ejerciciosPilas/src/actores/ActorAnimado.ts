@@ -22,7 +22,7 @@ class ActorAnimado extends Actor {
     
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
-        var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantCuadros);
+        var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
         super(imagen, x, y);
         this._imagen.definir_cuadro(opciones.cuadroEstatico);
         this.paso = 0;
@@ -30,8 +30,9 @@ class ActorAnimado extends Actor {
   
     sanitizarOpciones(ops){
         this.opciones = ops;
-        this.opciones.cuadros = ops.cuadros || this.seguidillaHasta(ops.cantCuadros) || [0];
-        this.opciones.cantCuadros = ops.cantCuadros || this.opciones.cuadros.length;
+        this.opciones.cuadros = ops.cuadros || this.seguidillaHasta(ops.cantColumnas) || [0];
+        this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadros.length;
+        this.opciones.cantFilas = ops.cantFilas || 1;
         this.opciones.cuadroEstatico = ops.cuadroEstatico || 0;
     }
     
@@ -47,7 +48,7 @@ class ActorAnimado extends Actor {
 
     animacion_correr() {
         this.paso += 0.3;
-        if (this.paso>this.opciones.cantCuadros) {
+        if (this.paso>this.opciones.cantColumnas) {
             this.paso = 0;
         }
         this._imagen.definir_cuadro(this.opciones.cuadros[parseInt(this.paso)]);

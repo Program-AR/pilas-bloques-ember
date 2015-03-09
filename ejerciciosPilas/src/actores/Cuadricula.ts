@@ -20,15 +20,15 @@
  * lo hago así:
  *     new Cuadricula(0,0,3,4,{}
  *           {grilla: 'banana.png', 
- *           cantCuadros: 2})
+ *           cantColumnas: 2})
  * 
  * Si no se especifica ningún tipo de medida, se toma la de toda la pantalla.
  
  * Ahora, si quiero lo mismo pero con casillas de 50 x 100,
  * lo hago así:
  *     new Cuadricula(0,0,3,4,{}
- *           {grillaCasilla: 'banana.png', 
- *           cantCuadrosCasilla: 2, 
+ *           {grilla: 'banana.png', 
+ *           cantColumnas: 2, 
  *           ancho: 50, 
  *           alto: 100})
  * 
@@ -39,8 +39,8 @@
  *     new Cuadricula(0,0,3,4,
  *           {ancho: 300, 
  *           alto: 300},
- *           {grillaCasilla: 'banana.png', 
- *           cantCuadrosCasilla: 2})
+ *           {grilla: 'banana.png', 
+ *           cantColumnas: 2})
  *  
  * Nótese que esta vez las opciones que se eligieron son las de la cuadrícula, y
  * no las de la casilla.

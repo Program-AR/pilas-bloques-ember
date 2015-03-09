@@ -19,7 +19,7 @@ class LightBot extends Base {
         this.cuadricula = new Cuadricula(0,0,1,7,
             {alto: 70},
             {grilla: 'casillaLightbot.png', 
-            cantCuadros: 5})
+            cantColumnas: 5})
         
         this.robot = new Obrero(0,0);
         this.robot.setCuadricula(this.cuadricula,0,0);
