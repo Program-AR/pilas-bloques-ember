@@ -180,6 +180,11 @@ var Funcion = CambioDeJSDeBlocky.extend({
   init: function() {
     this._super();
     this.set('id', 'procedures_defreturn');
+  },
+
+  registrar_en_blockly: function() {
+    // pisado porque provisoriamente se
+    // usa el que viene con blockly
   }
 
 });
