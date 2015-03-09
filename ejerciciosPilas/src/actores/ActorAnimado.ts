@@ -15,46 +15,46 @@
  *      miActor.hacer_luego(CaminaDerecha,{pasos: 2});
  */
 class ActorAnimado extends Actor {
-    paso;
     opciones;
     _casillaActual;
     cuadricula;
     
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
-        var imagen = pilas.imagenes.cargar_grilla(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
+        var imagen = pilas.imagenes.cargar_animacion(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
         super(imagen, x, y);
-        this._imagen.definir_cuadro(opciones.cuadroEstatico);
-        this.paso = 0;
+        
+        this._imagen.definir_animacion("correr", this.opciones.cuadrosCorrer, 5);
+        this._imagen.definir_animacion("parado", this.opciones.cuadrosParado, 5);
+        
+        this.detener_animacion();
     }
-  
+    
     sanitizarOpciones(ops){
         this.opciones = ops;
-        this.opciones.cuadros = ops.cuadros || this.seguidillaHasta(ops.cantColumnas) || [0];
-        this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadros.length;
+        this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0, 0];
+        this.opciones.cuadrosParado = ops.cuadrosParado || [0, 0];
+        this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
-        this.opciones.cuadroEstatico = ops.cuadroEstatico || 0;
     }
     
     mover(x,y) {
         this.x += x;
         this.y += y;
-        this.animacion_correr();
+        this.pasito_correr();
     }
     
-    definir_cuadro(nro){
-        this._imagen.definir_cuadro(nro);
+    definirAnimacion(nombre, cuadros, velocidad){
+        this._imagen.definir_animacion(nombre, cuadros, velocidad);
     }
 
-    animacion_correr() {
-        this.paso += 0.3;
-        if (this.paso>this.opciones.cantColumnas) {
-            this.paso = 0;
-        }
-        this._imagen.definir_cuadro(this.opciones.cuadros[parseInt(this.paso)]);
+    pasito_correr() {
+        this._imagen.cargar_animacion("correr");
+        this._imagen.avanzar();
     }
+    
     detener_animacion() {
-        this._imagen.definir_cuadro(this.opciones.cuadroEstatico);
+        this._imagen.cargar_animacion("parado");
     }
     
     seguidillaHasta(nro){
