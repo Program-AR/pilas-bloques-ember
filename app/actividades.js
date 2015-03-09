@@ -99,7 +99,7 @@ var VariableGet = CambioDeJSDeBlocky.extend({
     // Variable getter.
     var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
-    return ['receptor.' + code, Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.variable("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -119,14 +119,14 @@ var VariableSet = CambioDeJSDeBlocky.extend({
         Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
     var varName = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
-    return 'programa.cambio_atributo(' + varName + ', function(){ return ' + argument0 + '; } );\n';
+    return 'programa.cambio_atributo("' + varName + '", function(){ return ' + argument0 + '; } );\n';
   }
 
 });
 
 /* ============================================== */
 
-var DefNoReturn = CambioDeJSDeBlocky.extend({
+var Procedimiento = CambioDeJSDeBlocky.extend({
 
   init: function() {
     this._super();
@@ -169,6 +169,22 @@ var DefNoReturn = CambioDeJSDeBlocky.extend({
     code = Blockly.JavaScript.scrub_(block, code);
     Blockly.JavaScript.definitions_[funcName] = code;
     return null;
+  }
+
+});
+
+/* ============================================== */
+
+var Funcion = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'procedures_defreturn');
+  },
+
+  registrar_en_blockly: function() {
+    // pisado porque provisoriamente se
+    // usa el que viene con blockly
   }
 
 });
@@ -284,11 +300,6 @@ var AlEmpezar = Bloque.extend({
 /* ============================================== */
 
 var Accion = Bloque.extend({
-
-  init: function() {
-    this._super();
-    this.set('categoria', 'Acciones');
-  },
 
   block_init: function(block) {
     this._super(block);
@@ -436,10 +447,6 @@ var Recoger = Accion.extend({
 /* ============================================== */
 
 var Sensor = Bloque.extend({
-  init: function() {
-    this._super();
-    this.set('categoria', 'Sensores');
-  },
 
   block_init: function(block) {
     this._super(block);
@@ -474,10 +481,6 @@ var ChocaConTuerca = Sensor.extend({
 /* ============================================== */
 
 var EstructuraDeControl = Bloque.extend({
-  init: function() {
-    this._super();
-    this.set('categoria', 'Control');
-  },
 
   block_init: function(block) {
     this._super(block);
@@ -620,14 +623,12 @@ var Hasta = EstructuraDeControl.extend({
 });
 
 var ExpresionDeBlockly = Bloque.extend({
-  init: function() {
-    this._super();
-    this.set('categoria', 'Expresiones');
-  },
 
   registrar_en_blockly: function() {
     // pisado porque ya viene con blockly
+    // ni tampoco quiero modificar el javascript
   }
+
 });
 
 var Numero = ExpresionDeBlockly.extend({
@@ -730,7 +731,7 @@ var Lenguaje = Ember.Object.extend({
     if(bs !== undefined) {
       this.categoria(c);
       bs.forEach(function (b) {
-        this.bloque(b);
+        this.bloque(c, b);
       }.bind(this));
     }
   },
@@ -742,9 +743,9 @@ var Lenguaje = Ember.Object.extend({
     this.set('bloques', bs);
   },
 
-  bloque: function(b) {
+  bloque: function(c, b) {
     var block = this.definir_bloque(b);
-    this.get('bloques')[block.get('categoria')].pushObject(block);
+    this.get('bloques')[c].pushObject(block);
   },
 
   definir_bloque: function(b) {
@@ -759,10 +760,10 @@ var Lenguaje = Ember.Object.extend({
     str_toolbox += '<xml>';
 
     this.get('categorias').forEach(function(item) {
-      if(item === 'Subtareas') {
-        str_toolbox += this._build_subtareas();
-      } else if (item === 'Variables') {
+      if (item === 'Variables') {
         str_toolbox += this._build_variables();
+      } else if (item === 'Subtareas') {
+        str_toolbox += this._build_procedures();
       } else {
         str_toolbox += this._build_categoria(item);
       }
@@ -774,20 +775,20 @@ var Lenguaje = Ember.Object.extend({
   },
 
   _build_categoria: function(categoria) {
-   var str_category = '';
+    var str_category = '';
 
-   str_category += '<category name="x">\n'.replace('x', categoria);
+    str_category += '<category name="x">\n'.replace('x', categoria);
 
-   this.get('bloques')[categoria].forEach(function(b) {
+    this.get('bloques')[categoria].forEach(function(b) {
        str_category += b.build();
-   });
+    });
 
-   str_category += '</category>\n';
+    str_category += '</category>\n';
 
-   return str_category;
+    return str_category;
   },
 
-  _build_subtareas: function() {
+  _build_procedures: function() {
     return '<category name="Subtareas" custom="PROCEDURE"></category>';
   },
 
@@ -847,12 +848,20 @@ var Actividad = Ember.Object.extend({
   },
 
   pisar_bloques_blockly: function() {
-    DefNoReturn.create().registrar_en_blockly();
     CallReturn.create().registrar_en_blockly();
     CallNoReturn.create().registrar_en_blockly();
     ParamGet.create().registrar_en_blockly();
     VariableGet.create().registrar_en_blockly();
     VariableSet.create().registrar_en_blockly();
+  },
+
+  usa_procedimientos: function() {
+    return this.get('actividad').subtareas.indexOf(Procedimiento) > -1;
+
+  },
+
+  usa_funciones: function() {
+    return this.get('actividad').subtareas.indexOf(Funcion) > -1;
   },
 
   iniciarBlockly: function(contenedor) {
@@ -866,6 +875,10 @@ var Actividad = Ember.Object.extend({
       comments: actividad.get('puedeComentar'),
       rgbColours: true,
       defsOnly: true,
+      def_procedures: actividad.usa_procedimientos(),
+      def_functions: actividad.usa_funciones(),
+      globalVariables: false,
+      oneReturnOnly: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
       toolbox: Blockly.Xml.textToDom(actividad.obtenerLenguaje()),
@@ -990,8 +1003,11 @@ var actividadAlien = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [],
+  subtareas: [Procedimiento, Funcion],
+
+  // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
+
   control: [Repetir, Si, Sino, Hasta],
   expresiones: [Numero, OpAritmetica, OpComparacion, Booleano, OpLogica, OpNegacion],
   acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, Recoger],
