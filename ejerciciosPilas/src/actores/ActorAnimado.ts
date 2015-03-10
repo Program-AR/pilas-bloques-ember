@@ -11,7 +11,7 @@
  * 
  * Por ejemplo:
  *      @example
- *      miActor = new ActorAnimado(0,0,{grilla: 'miImagen.png', cuadros: [3,4,5,6]});
+ *      miActor = new ActorAnimado(0,0,...documentación en ptrogreso...);
  *      miActor.hacer_luego(CaminaDerecha,{pasos: 2});
  */
 class ActorAnimado extends Actor {
