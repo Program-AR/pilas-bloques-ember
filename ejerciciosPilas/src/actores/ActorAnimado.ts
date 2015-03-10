@@ -24,8 +24,8 @@ class ActorAnimado extends Actor {
         var imagen = pilas.imagenes.cargar_animacion(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
         super(imagen, x, y);
         
-        this._imagen.definir_animacion("correr", this.opciones.cuadrosCorrer, 5);
-        this._imagen.definir_animacion("parado", this.opciones.cuadrosParado, 5);
+        this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
+        this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
         
         this.detener_animacion();
     }
@@ -49,12 +49,16 @@ class ActorAnimado extends Actor {
     }
 
     pasito_correr() {
-        this._imagen.cargar_animacion("correr");
+        this.cargarAnimacion("correr");
         this._imagen.avanzar();
     }
     
     detener_animacion() {
-        this._imagen.cargar_animacion("parado");
+        this.cargarAnimacion("parado");
+    }
+    
+    cargarAnimacion(nombre){
+    	this._imagen.cargar_animacion(nombre);
     }
     
     seguidillaHasta(nro){

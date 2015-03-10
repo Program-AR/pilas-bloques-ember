@@ -21,7 +21,7 @@ class Camino extends Cuadricula {
     }
     
     construirCamino(){
-    	this.casillas.forEach(casilla => casilla.desHabilitar());
+    	//this.casillas.forEach(casilla => casilla.desHabilitar());
     	this.puntos.forEach(function(punto){ 
     		punto.cambiarOrigenDeCoordenadas(this.minimoX(),this.maximoY());
     		punto.invertirY();
