@@ -57,8 +57,6 @@ actualizar_pilas:
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_blockly:
-	rm -r -f public/libs/blockly
-	mkdir public/libs/blockly
 	cd blockly; git pull; python build.py; cd ..
 	# CORE
 	cp -f blockly/blockly_compressed.js public/libs/blockly/
@@ -67,25 +65,30 @@ actualizar_blockly:
 	# JS GENERATOR
 	cp -f blockly/javascript_compressed.js public/libs/blockly/
 	# MEDIA
+	rm -r -f public/libs/blockly/media
 	cp -r -f blockly/media public/libs/blockly/
 	# LANG
+	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
 
 copiar_blockly_descomprimido:
-	rm -r -f public/libs/blockly
-	mkdir public/libs/blockly
 	# CORE
 	cp -f blockly/blockly_uncompressed.js public/libs/blockly/
+	rm -r -f public/libs/blockly/core
 	cp -r -f blockly/core public/libs/blockly/
 	# BLOCKS
+	rm -r -f public/libs/blockly/blocks
 	cp -r -f blockly/blocks public/libs/blockly/blocks
 	# JS GENERATOR
+	rm -r -f public/libs/blockly/generators
 	mkdir public/libs/blockly/generators
 	cp -f blockly/generators/javascript.js public/libs/blockly/generators/
 	cp -r -f blockly/generators/javascript public/libs/blockly/generators/
 	# MEDIA
+	rm -r -f public/libs/blockly/media
 	cp -r -f blockly/media public/libs/blockly/
 	# LANG
+	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
 
 test_mac: build
