@@ -1,4 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/ActorAnimado.ts"/>
 
 /**
  * @class Casilla

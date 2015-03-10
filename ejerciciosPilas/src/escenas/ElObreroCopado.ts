@@ -5,8 +5,7 @@
 /**
  * @class ElObreroCopado
  * 
- * Objetivos: Introducir Secuencia. Autómata.
- * Enunciado: Que haga una historia con el obrero. Avanzar dos veces, martillar, volver.
+ * Objetivos: Introducir Secuencia. Autómata, y procedimiento.
  */
 class ElObreroCopado extends Base {
     fondo;
