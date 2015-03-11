@@ -14,4 +14,7 @@ class Obrero extends ActorAnimado {
     argumentosMartillar(){
         return {grilla: 'cooperativista/trabajando.png', cantColumnas: 2};
     }
+    fraseAlSaltar(){
+    	return pilas.escena_actual().fraseAlSaltar();
+    }
 } 
