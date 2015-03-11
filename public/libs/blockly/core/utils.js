@@ -320,6 +320,37 @@ Blockly.createSvgElement = function(name, attrs, opt_parent) {
 };
 
 /**
+ * Get the svg representation of a block
+ * @name {!string} name of the parameter.
+ * @this Blockly.Block
+ */
+Blockly.getBlockSvg = function(workspace, name, f) {
+  var newBlock = new Blockly.Block.obtain(workspace, name);
+  f(newBlock);
+  newBlock.initSvg();
+  newBlock.render();
+
+  // SVG that contains the svg paramater block
+  var svg = Blockly.createSvgElement('svg', {
+    'width': newBlock.width+10,
+    'height': newBlock.height+5
+  });
+
+  var blockSvg = newBlock.getSvgRoot();
+
+  svg.appendChild(blockSvg);
+
+  // to remove all the listeners
+  var clonedBlockSvg = blockSvg.cloneNode(true);
+  blockSvg.parentNode.replaceChild(clonedBlockSvg, blockSvg);
+
+  // remove the block from top blocks
+  workspace.removeTopBlock(newBlock);
+
+  return svg;
+};
+
+/**
  * Is this event a right-click?
  * @param {!Event} e Mouse event.
  * @return {boolean} True if right-click.

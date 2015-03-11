@@ -26,6 +26,7 @@
 
 goog.provide('Blockly.Blocks.variables');
 
+goog.require('Blockly.utils');
 goog.require('Blockly.Blocks');
 
 // HUE VALUE BY DEFAULT
@@ -77,7 +78,12 @@ Blockly.Blocks['variables_get'] = {
   customContextMenu: function(options) {
     var option = {enabled: true};
     var name = this.getFieldValue('VAR');
-    option.text = this.contextMenuMsg_.replace('%1', name);
+                  // this.contextMenuMsg_.replace('%1', name);
+    option.text = Blockly.getBlockSvg(this.workspace, this.contextMenuType_,
+      function(b) {
+        b.setFieldValue(name, 'VAR');
+        b.moveBy(10, 5);
+      });
     var xmlField = goog.dom.createDom('field', null, name);
     xmlField.setAttribute('name', 'VAR');
     var xmlBlock = goog.dom.createDom('block', null, xmlField);
