@@ -99,7 +99,7 @@ var VariableGet = CambioDeJSDeBlocky.extend({
     // Variable getter.
     var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
         Blockly.Variables.NAME_TYPE);
-    return ['receptor.variable("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.atributo("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -120,6 +120,44 @@ var VariableSet = CambioDeJSDeBlocky.extend({
     var varName = Blockly.JavaScript.variableDB_.getName(
         block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
     return 'programa.cambio_atributo("' + varName + '", function(){ return ' + argument0 + '; } );\n';
+  }
+
+});
+
+/* ============================================== */
+
+var VariableLocalGet = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'local_var_get');
+  },
+
+  block_javascript: function(block) {
+    // Variable getter.
+    var code = Blockly.JavaScript.variableDB_.getName(block.getFieldValue('VAR'),
+        Blockly.Variables.NAME_TYPE);
+    return ['receptor.variable("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
+  }
+
+});
+
+/* ============================================== */
+
+var VariableLocalSet = CambioDeJSDeBlocky.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'local_var_set');
+  },
+
+  block_javascript: function(block) {
+    // Variable setter.
+    var argument0 = Blockly.JavaScript.valueToCode(block, 'VALUE',
+        Blockly.JavaScript.ORDER_ASSIGNMENT) || '0';
+    var varName = Blockly.JavaScript.variableDB_.getName(
+        block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
+    return 'programa.cambio_variable("' + varName + '", function(){ return ' + argument0 + '; } );\n';
   }
 
 });
@@ -263,7 +301,7 @@ var ParamGet = CambioDeJSDeBlocky.extend({
         Blockly.Variables.NAME_TYPE);
 
     // agrego parentesis para llamar al closure del parametro
-    return ['receptor.identificador("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
+    return ['receptor.parametro("' + code + '")', Blockly.JavaScript.ORDER_ATOMIC];
   }
 
 });
@@ -853,6 +891,8 @@ var Actividad = Ember.Object.extend({
     ParamGet.create().registrar_en_blockly();
     VariableGet.create().registrar_en_blockly();
     VariableSet.create().registrar_en_blockly();
+    VariableLocalGet.create().registrar_en_blockly();
+    VariableLocalSet.create().registrar_en_blockly();
   },
 
   usa_procedimientos: function() {
@@ -904,8 +944,11 @@ var Actividad = Ember.Object.extend({
     Blockly.Blocks.logic.COLOUR = '#5cb712';
     Blockly.Blocks.loops.COLOUR = '#ee7d16';
 
-    Blockly.Blocks.procedures.COLOUR = '#8a55d7';
-    Blockly.Blocks.procedures.params.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.COLOUR = '#6C52EB';
+    Blockly.Blocks.procedures.vars.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.params.COLOUR = '#6C52EB';
+
+
     Blockly.Blocks.variables.COLOUR = '#cc5b22';
 
     Blockly.Blocks.texts.COLOUR = '#4a6cd4';
