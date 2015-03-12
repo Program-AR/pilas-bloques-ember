@@ -245,7 +245,7 @@ Blockly.Procedures.getCallers = function(name, workspace) {
 Blockly.Procedures.getParamCalls = function(name, workspace) {
   var blocks = workspace.getAllBlocks().filter(function(b) {
     return b.type === 'param_get' &&
-            (!b.parentBlock_ || Blockly.Procedures.isFromDef(name));
+            (!b.parentBlock_ || b.isFromDef(name));
   });
   return blocks;
 };
@@ -277,17 +277,6 @@ Blockly.Procedures.mutateCallers = function(name, workspace,
   for (var x = 0; x < callers.length; x++) {
     callers[x].setProcedureParameters(paramNames, paramIds);
   }
-};
-
-Blockly.Procedures.isFromDef = function (block, procedureName) {
-  var p = block.parentBlock_;
-  while(p) {
-   if(p.type === 'procedures_defnoreturn' || p.type === 'procedures_defreturn') {
-    return p.getFieldValue('NAME') === procedureName;
-   }
-   p = p.parentBlock_;
-  }
-  return false;
 };
 
 /**

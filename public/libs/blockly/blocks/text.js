@@ -242,6 +242,15 @@ Blockly.Blocks['text_append'] = {
           thisBlock.getFieldValue('VAR'));
     });
   },
+
+  getVarType: function() {
+    if(this.isFromAnyDef()) {
+      return 'local';
+    } else {
+      return 'global';
+    }
+  },
+
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.

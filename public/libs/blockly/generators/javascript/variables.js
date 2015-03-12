@@ -44,3 +44,19 @@ Blockly.JavaScript['variables_set'] = function(block) {
       block.getFieldValue('VAR'), Blockly.Variables.NAME_TYPE);
   return varName + ' = ' + argument0 + ';\n';
 };
+
+Blockly.JavaScript['local_var_get'] = function(block) {
+  if(block.isFromAnyDef()) {
+    return Blockly.JavaScript['variables_get'](block);
+  } else {
+    return '';
+  }
+};
+
+Blockly.JavaScript['local_var_set'] = function(block) {
+  if(block.isFromAnyDef()) {
+    return Blockly.JavaScript['variables_set'](block);
+  } else {
+    return '';
+  }
+};

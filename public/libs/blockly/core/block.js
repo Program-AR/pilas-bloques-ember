@@ -1180,3 +1180,36 @@ Blockly.Block.prototype.getRelativeToSurfaceXY = function() {
 Blockly.Block.prototype.moveBy = function(dx, dy) {
   this.xy_.translate(dx, dy);
 };
+
+Blockly.Block.prototype.isFromDef = function (procedureName) {
+  var p = this.parentBlock_;
+  while(p) {
+   if(p.type === 'procedures_defnoreturn' || p.type === 'procedures_defreturn') {
+    return p.getFieldValue('NAME') === procedureName;
+   }
+   p = p.parentBlock_;
+  }
+  return false;
+};
+
+Blockly.Block.prototype.isFromAnyDef = function () {
+  var p = this.parentBlock_;
+  while(p) {
+   if(p.type === 'procedures_defnoreturn' || p.type === 'procedures_defreturn') {
+    return true;
+   }
+   p = p.parentBlock_;
+  }
+  return false;
+};
+
+Blockly.Block.prototype.defBlock = function () {
+  var p = this.parentBlock_;
+  while(p) {
+   if(p.type === 'procedures_defnoreturn' || p.type === 'procedures_defreturn') {
+    return p;
+   }
+   p = p.parentBlock_;
+  }
+  return undefined;
+};

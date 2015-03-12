@@ -131,6 +131,15 @@ Blockly.Blocks['controls_for'] = {
           thisBlock.getFieldValue('VAR'));
     });
   },
+
+  getVarType: function() {
+    if(this.isFromAnyDef()) {
+      return 'local';
+    } else {
+      return 'global';
+    }
+  },
+
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.
@@ -200,6 +209,15 @@ Blockly.Blocks['controls_forEach'] = {
           thisBlock.getFieldValue('VAR'));
     });
   },
+
+  getVarType: function() {
+    if(this.isFromAnyDef()) {
+      return 'local';
+    } else {
+      return 'global';
+    }
+  },
+
   /**
    * Return all variables referenced by this block.
    * @return {!Array.<string>} List of variable names.

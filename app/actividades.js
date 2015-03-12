@@ -130,7 +130,7 @@ var VariableLocalGet = CambioDeJSDeBlocky.extend({
 
   init: function() {
     this._super();
-    this.set('id', 'variables_local_get');
+    this.set('id', 'local_var_get');
   },
 
   block_javascript: function(block) {
@@ -148,7 +148,7 @@ var VariableLocalSet = CambioDeJSDeBlocky.extend({
 
   init: function() {
     this._super();
-    this.set('id', 'variables_local_set');
+    this.set('id', 'local_var_set');
   },
 
   block_javascript: function(block) {
@@ -891,6 +891,8 @@ var Actividad = Ember.Object.extend({
     ParamGet.create().registrar_en_blockly();
     VariableGet.create().registrar_en_blockly();
     VariableSet.create().registrar_en_blockly();
+    VariableLocalGet.create().registrar_en_blockly();
+    VariableLocalSet.create().registrar_en_blockly();
   },
 
   usa_procedimientos: function() {
@@ -942,8 +944,11 @@ var Actividad = Ember.Object.extend({
     Blockly.Blocks.logic.COLOUR = '#5cb712';
     Blockly.Blocks.loops.COLOUR = '#ee7d16';
 
-    Blockly.Blocks.procedures.COLOUR = '#8a55d7';
-    Blockly.Blocks.procedures.params.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.COLOUR = '#6C52EB';
+    Blockly.Blocks.procedures.vars.COLOUR = '#8a55d7';
+    Blockly.Blocks.procedures.params.COLOUR = '#6C52EB';
+
+
     Blockly.Blocks.variables.COLOUR = '#cc5b22';
 
     Blockly.Blocks.texts.COLOUR = '#4a6cd4';

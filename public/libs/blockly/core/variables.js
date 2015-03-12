@@ -42,7 +42,7 @@ Blockly.Variables.NAME_TYPE = 'VARIABLE';
  * @param {!Blockly.Block|!Blockly.Workspace} root Root block or workspace.
  * @return {!Array.<string>} Array of variable names.
  */
-Blockly.Variables.allVariables = function(root) {
+Blockly.Variables.allVariables = function(root, varType) {
   var blocks;
   if (root.getDescendants) {
     // Root is Block.
@@ -56,9 +56,8 @@ Blockly.Variables.allVariables = function(root) {
   var variableHash = Object.create(null);
   // Iterate through every block and add each variable to the hash.
   for (var x = 0; x < blocks.length; x++) {
-    var func = blocks[x].getVars;
-    if (func) {
-      var blockVariables = func.call(blocks[x]);
+    if(blocks[x].getVarType && blocks[x].getVarType() === varType) {
+      var blockVariables = blocks[x].getVars();
       for (var y = 0; y < blockVariables.length; y++) {
         var varName = blockVariables[y];
         // Variable name may be null if the block is only half-built.
@@ -101,13 +100,14 @@ Blockly.Variables.renameVariable = function(oldName, newName, workspace) {
  * @param {!Blockly.Workspace} workspace The flyout's workspace.
  */
 Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
-  var variableList = Blockly.Variables.allVariables(workspace.targetWorkspace);
+  var variableList = Blockly.Variables.allVariables(workspace.targetWorkspace,
+    'global');
   variableList.sort(goog.string.caseInsensitiveCompare);
   // In addition to the user's variables, we also want to display the default
   // variable name at the top.  We also don't want this duplicated if the
   // user has created a variable of the same name.
   variableList.unshift(null);
-  var defaultVariable = undefined;
+  var defaultVariable;
   for (var i = 0; i < variableList.length; i++) {
     if (variableList[i] === defaultVariable) {
       continue;
@@ -142,8 +142,13 @@ Blockly.Variables.flyoutCategory = function(blocks, gaps, margin, workspace) {
  * @param {!Blockly.Workspace} workspace The workspace to be unique in.
 * @return {string} New variable name.
 */
-Blockly.Variables.generateUniqueName = function(workspace) {
-  var variableList = Blockly.Variables.allVariables(workspace);
+Blockly.Variables.generateUniqueName = function(workspace, opt_block_def) {
+  var variableList = Blockly.Variables.allVariables(workspace, 'global');
+
+  if(opt_block_def) {
+    variableList = Blockly.Variables.allVariables(opt_block_def, 'local');
+  }
+
   var newName = '';
   if (variableList.length) {
     var nameSuffix = 1;

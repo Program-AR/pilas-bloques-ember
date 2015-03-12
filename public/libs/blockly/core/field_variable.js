@@ -88,7 +88,7 @@ Blockly.FieldVariable.prototype.init = function(block) {
     } else {
       var workspace = block.workspace;
     }
-    this.setValue(Blockly.Variables.generateUniqueName(workspace));
+    this.setValue(Blockly.Variables.generateUniqueName(workspace, this.sourceBlock_));
   }
   Blockly.FieldVariable.superClass_.init.call(this, block);
 };
@@ -127,12 +127,18 @@ Blockly.FieldVariable.prototype.setValue = function(text) {
  * @this {!Blockly.FieldVariable}
  */
 Blockly.FieldVariable.dropdownCreate = function() {
+  var variableList = [];
+
   if (this.sourceBlock_ && this.sourceBlock_.workspace) {
-    var variableList =
-        Blockly.Variables.allVariables(this.sourceBlock_.workspace);
-  } else {
-    var variableList = [];
+    if(this.sourceBlock_.getVarType() === 'global') {
+      variableList =
+        Blockly.Variables.allVariables(this.sourceBlock_.workspace, 'global');
+    } else {
+      variableList =
+        Blockly.Variables.allVariables(this.sourceBlock_.defBlock(), 'local');
+    }
   }
+
   // Ensure that the currently selected variable is an option.
   var name = this.getText();
   if (name && variableList.indexOf(name) == -1) {

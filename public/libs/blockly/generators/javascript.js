@@ -123,7 +123,7 @@ Blockly.JavaScript.init = function(workspace) {
 
   if(Blockly.globalVariables) {
     var defvars = [];
-    var variables = Blockly.Variables.allVariables(workspace);
+    var variables = Blockly.Variables.allVariables(workspace, 'global');
     for (var x = 0; x < variables.length; x++) {
       defvars[x] = 'var ' +
           Blockly.JavaScript.variableDB_.getName(variables[x],

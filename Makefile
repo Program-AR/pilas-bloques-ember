@@ -58,6 +58,9 @@ actualizar_pilas:
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
+	make copiar_blockly_comprimido
+
+copiar_blockly_comprimido:
 	# CORE
 	cp -f blockly/blockly_compressed.js public/libs/blockly/
 	# BLOCKS
