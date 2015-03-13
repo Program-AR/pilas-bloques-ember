@@ -61,6 +61,10 @@ class ActorAnimado extends Actor {
     	this._imagen.cargar_animacion(nombre);
     }
     
+    avanzar_animacion(){
+    	this._imagen.avanzar();
+    }  
+    
     seguidillaHasta(nro){
         var seguidilla = [];
         if(nro !== undefined) {
