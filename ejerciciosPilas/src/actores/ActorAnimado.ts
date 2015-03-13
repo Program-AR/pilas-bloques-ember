@@ -18,6 +18,7 @@ class ActorAnimado extends Actor {
     opciones;
     _casillaActual;
     cuadricula;
+    objetosRecogidos;
     
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
@@ -28,6 +29,7 @@ class ActorAnimado extends Actor {
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
         
         this.detener_animacion();
+        this.objetosRecogidos = [];
     }
     
     sanitizarOpciones(ops){
@@ -81,9 +83,13 @@ class ActorAnimado extends Actor {
             this.x = c.x;
             this.y = c.y;
         }
-    }
+    } 
     setCuadricula(cuad,nroF,nroC){
         this.cuadricula = cuad;
         this.setCasillaActual(cuad.casilla(nroF,nroC),true);
+    }
+
+    cuando_busca_recoger() {
+        pilas.escenaActual().intentaronRecoger();
     }
 } 
