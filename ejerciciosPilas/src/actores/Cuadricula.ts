@@ -1,5 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-
+/// <reference path = "../actores/Casilla.ts"/>
 
 /**
  * class @Cuadricula
@@ -62,9 +62,9 @@ class Cuadricula extends Actor {
     constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla){
         this.cantFilas = cantFilas;
         this.cantColumnas = cantColumnas;
-        super('invisible.png',x,y,opcionesCuadricula);
-
         this.sanitizarOpciones(opcionesCuadricula, opcionesCasilla);
+        super(this.opcionesCuadricula.imagen,x,y,opcionesCuadricula);
+
         this.ancho = this.cantColumnas * opcionesCasilla.ancho;
         this.alto = this.cantFilas * opcionesCasilla.alto;
         
@@ -76,6 +76,8 @@ class Cuadricula extends Actor {
     sanitizarOpciones(opcionesCuadricula, opcionesCasilla){
         this.opcionesCasilla = opcionesCasilla;
         this.opcionesCuadricula = opcionesCuadricula;
+        
+        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'invisible.png';
         this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
         this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
         this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.opcionesCuadricula.ancho / this.cantColumnas ;

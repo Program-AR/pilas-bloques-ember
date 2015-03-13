@@ -3,5 +3,3 @@
 compilados/*
 /node_modules/
 /compilados/
-*.js
-*.js.map

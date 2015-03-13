@@ -1,7 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
-
+/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
 
 /**
  * @class LightBot

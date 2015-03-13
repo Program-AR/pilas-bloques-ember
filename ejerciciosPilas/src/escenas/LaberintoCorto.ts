@@ -1,5 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
+/// <reference path = "../actores/Camino.ts"/>
+/// <reference path = "../actores/PerroCohete.ts"/>
+/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
 
 
 /**
@@ -15,7 +17,7 @@ class LaberintoCorto extends Base {
         this.fondo = new Fondo('fondos/nubes.png',0,0);
         //this.robot.izquierda = pilas.izquierda();
 
-        this.cuadricula = new Cuadricula(0,0,1,7,
+        this.cuadricula = new Camino(0,0,['->','v','->','->'],
             {alto: 70},
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5})

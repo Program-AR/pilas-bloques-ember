@@ -1,5 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
-// <reference path = "../../comportamientos/SaltarHablando.ts" />
+/// <reference path = "../comportamientos/SaltarHablando.ts" />
+/// <reference path = "../escenas/ElObreroCopado.ts" />
 
 
 /**
