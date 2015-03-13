@@ -64,7 +64,7 @@ class ActorAnimado extends Actor {
     }
     
     avanzar_animacion(){
-    	this._imagen.avanzar();
+    	return this._imagen.avanzar();
     }  
     
     seguidillaHasta(nro){
@@ -94,6 +94,6 @@ class ActorAnimado extends Actor {
     }
 
     cuando_busca_recoger() {
-        pilas.escenaActual().intentaronRecoger();
+        pilas.escena_actual().intentaronRecoger();
     }
 } 
