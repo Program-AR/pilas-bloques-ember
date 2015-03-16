@@ -6,14 +6,14 @@
 
 
 /**
- * @class TresNaranjas
+ * @class TresHuesos
  * 
  */
-class TresNaranjas extends Base {
+class TresHuesos extends Base {
     fondo;
     personaje;
     cuadricula;
-    objetos;
+    objetos = [];
         
     iniciar() {
         this.fondo = new Fondo('fondos/nubes.png',0,0);
@@ -24,35 +24,53 @@ class TresNaranjas extends Base {
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5});
         
-        //se cargan las naranjas
-        this.objetos =  [];
-        for(var i = 0; i < 3; i++) {
-            if (Math.random() < .5) {
-                var objeto = new Hueso(0,0);
-                objeto.setCuadricula(this.cuadricula,0,i+1);
-                this.objetos.push(objeto);
-            }
-        }
-
+        // se crea el personaje
         this.personaje = new PerroCohete(0,0);
         this.personaje.setCuadricula(this.cuadricula,0,0);
         //this.robot.aprender(AvisaAlSalirDePantalla,{});
+
+        //se cargan los huesos
+        var hayAlMenosUno = false;
+        for(var i = 0; i < 3; i++) {
+            if (Math.random() < .5) {
+                hayAlMenosUno = true;
+                this.agregarHueso(i+1);
+            }
+        }
+        if (!hayAlMenosUno) {
+            var columna = 1;
+            var rand = Math.random()
+            if (rand> 0.33 && rand<0.66) {
+                columna = 2;
+            } else if (rand > 0.66) {
+                columna = 3
+            }
+            this.agregarHueso(columna);
+        }
+
+    }
+
+    agregarHueso(columna) {
+        var objeto = new Hueso(0,0);
+        objeto.setCuadricula(this.cuadricula,0,columna);
+        this.objetos.push(objeto);
     }
 
     intentaronRecoger() {
-        if (this.tocandoNaranja()) {
-            var objeto = this.objetos.find(objeto => objeto.colisiona_con(this.personaje));
+        if (this.tocandoHueso()) {
+            var objeto = this.objetos.filter(objeto => objeto.colisiona_con(this.personaje))[0];
+            this.objetos.slice(objeto, 1);
             objeto.eliminar();
         } else {
             this.personaje.decir("¡No hay hueso para comer!")
         }
     }
     
-    comerNaranja() {
+    comerHueso() {
         this.personaje.hacer_luego(Recoger);
     }
 
-    tocandoNaranja() {
+    tocandoHueso() {
         return this.objetos.some(objeto => objeto.colisiona_con(this.personaje));
     }
 
