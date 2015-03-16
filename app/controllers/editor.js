@@ -8,6 +8,10 @@ export default Ember.Controller.extend({
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
+  debeGuardar: function() {
+    var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
+    return codigo_xml !== this.get('tmp_codigo_xml');
+  },
 
   inyectarRedimensionado: function() {
 
@@ -58,7 +62,16 @@ export default Ember.Controller.extend({
   ],
 
   actions: {
-    guardar: function(codigo_xml) {
+    registrarPrimerCodigo: function() {
+      var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
+      this.set('tmp_codigo_xml', codigo_xml);
+      if(this.get('model')) {
+        this.set('nombre_al_guardar', this.get('model').get('nombre'));
+      }
+    },
+
+    guardar: function() {
+      var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
       this.set('tmp_codigo_xml', codigo_xml);
       return Bootstrap.ModalManager.show('modal-guardar');
     },

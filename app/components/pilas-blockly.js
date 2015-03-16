@@ -43,7 +43,7 @@ export default Ember.Component.extend({
       this.sendAction('reiniciar');
     },
     guardar: function() {
-      this.sendAction('guardar', this.obtener_codigo_en_texto());
+      this.sendAction('guardar');
     },
     alternar: function() {
       //this.sendAction('redimensionar');
@@ -97,5 +97,6 @@ export default Ember.Component.extend({
       var codigo = modelo.get('codigo');
       this.restaurar_codigo(codigo);
     }
+    this.sendAction('registrarPrimerCodigo');
   }
 });
