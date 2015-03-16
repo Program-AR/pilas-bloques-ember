@@ -116,3 +116,39 @@ class MoverACasillaIzquierda extends MovimientoEnCuadricula{
         return this.velocidadHorizontal();
     }
 }
+
+class MoverTodoAIzquierda extends MoverACasillaIzquierda{
+   proximaCasilla(casilla){
+        return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,0);
+   }
+   velocidad(){
+        return this.velocidadHorizontal() * this.receptor.casillaActual().nroColumna;
+   }
+}
+
+class MoverTodoADerecha extends MoverACasillaDerecha{
+   proximaCasilla(casilla){
+        return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,this.cuadricula.cantColumnas-1);
+   }
+   velocidad(){
+        return this.velocidadHorizontal() * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna );
+   }
+}
+
+class MoverTodoArriba extends MoverACasillaArriba{
+   proximaCasilla(casilla){
+        return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,0);
+   }
+   velocidad(){
+        return this.velocidadVertical() * this.receptor.casillaActual().nroFila;
+   }
+}
+
+class MoverTodoAbajo extends MoverACasillaAbajo{
+   proximaCasilla(casilla){
+        return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,this.cuadricula.cantFilas-1);
+   }
+   velocidad(){
+        return this.velocidadVertical() * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
+   }
+}
