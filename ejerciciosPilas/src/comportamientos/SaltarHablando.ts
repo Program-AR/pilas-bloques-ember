@@ -3,7 +3,7 @@
 class SaltarHablando extends Saltar {
     actualizar(){
     	if (super.actualizar()){
-     		this.receptor.decir(pilas.receptor().fraseAlSaltar());
+     		this.receptor.decir(this.receptor.fraseAlSaltar());
      		return true;
     	}
   	}
