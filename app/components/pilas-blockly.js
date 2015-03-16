@@ -2,10 +2,23 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   ejecutando: false,
+  cola_deshacer: [],
 
   didInsertElement: function() {
     window.forzar_redimensionado();
     this.sendAction('redimensionar');
+  },
+
+  observarCambiosEnBlocky: function() {
+    var f = this.almacenar_cambio.bind(this);
+    var d = Blockly.addChangeListener(f);
+    this.set('data_observar_blockly', d);
+  },
+
+  noMirarCambiosEnBlockly: function() {
+    if(this.get('data_observar_blockly')) {
+      Blockly.removeChangeListener(this.get('data_observar_blockly'));
+    }
   },
 
   actions: {
@@ -30,10 +43,7 @@ export default Ember.Component.extend({
       this.sendAction('reiniciar');
     },
     guardar: function() {
-      var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-      var codigo_xml = Blockly.Xml.domToText(xml);
-
-      this.sendAction('guardar', codigo_xml);
+      this.sendAction('guardar');
     },
     alternar: function() {
       //this.sendAction('redimensionar');
@@ -44,24 +54,49 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = this.get('actividad').generarCodigo();
       alert(code);
-    }
+    },
+    deshacer_cambio: function() {
+      this.noMirarCambiosEnBlockly();
+      this.get('cola_deshacer').popObject();
+      var c =  this.get('cola_deshacer').popObject();
+      if(c) {
+        console.log("deshacer");
+        this.restaurar_codigo(c);
+      }
+      this.observarCambiosEnBlocky();
+    },
+  },
 
+  almacenar_cambio: function() {
+    this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
+    console.log("guardar");
+  },
+
+  restaurar_codigo: function(codigo) {
+    var xml = Blockly.Xml.textToDom(codigo);
+    Blockly.mainWorkspace.clear();
+    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
+  },
+
+  obtener_codigo_en_texto: function() {
+    var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+    return Blockly.Xml.domToText(xml);
   },
 
   iniciarBlockly: function() {
     var contenedor = this.$().find('#contenedor-blockly')[0];
     this.get('actividad').iniciarBlockly(contenedor);
+    this.set('cola_deshacer', []);
     this.cargar_codigo_desde_el_modelo();
+    this.observarCambiosEnBlocky();
   }.on('didInsertElement'),
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {
       var modelo = this.get('model');
       var codigo = modelo.get('codigo');
-
-      var xml = Blockly.Xml.textToDom(codigo);
-      Blockly.mainWorkspace.clear();
-      Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
+      this.restaurar_codigo(codigo);
     }
+    this.sendAction('registrarPrimerCodigo');
   }
 });
