@@ -24,10 +24,6 @@ class TresHuesos extends Base {
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5});
         
-        // se crea el personaje
-        this.personaje = new PerroCohete(0,0);
-        this.personaje.setCuadricula(this.cuadricula,0,0);
-        //this.robot.aprender(AvisaAlSalirDePantalla,{});
 
         //se cargan los huesos
         var hayAlMenosUno = false;
@@ -48,11 +44,15 @@ class TresHuesos extends Base {
             this.agregarHueso(columna);
         }
 
+        // se crea el personaje
+        this.personaje = new PerroCohete(0,0);
+        this.personaje.setCuadricula(this.cuadricula,0,0);
     }
 
     agregarHueso(columna) {
         var objeto = new Hueso(0,0);
         objeto.setCuadricula(this.cuadricula,0,columna);
+        //objeto.y -= 30;
         this.objetos.push(objeto);
     }
 
