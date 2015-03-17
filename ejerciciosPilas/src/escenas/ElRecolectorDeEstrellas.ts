@@ -16,9 +16,10 @@ class ElRecolectorDeEstrellas extends Base {
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5})
         
-        this.recolector = new RecolectorEstrellas(4,4);
+        this.recolector = new RecolectorEstrellas(0,0);
+        this.recolector.setCuadricula(this.cuadricula,cantidadFilas-1,0);
         // La posición inicial pretende respectar el ejemplo
-        this.recolector.setCuadricula(this.cuadricula,0,0);
+        
         this.objetos=[];
         for (var fila=0;fila<cantidadFilas;fila++){
             for(var columna=1;columna<cantidadColumnas;columna++){
@@ -44,20 +45,24 @@ class ElRecolectorDeEstrellas extends Base {
     }
     
     recogerEstrella(){
-        this.recolector.hacer_luego(RecogerEstrella);
+        this.recolector.hacer_luego(Recoger);
     }
 
     /*A partir de aqui no deberian ser bloques*/
     intentaronRecoger(){
         if (this.tocandoEstrella()) {
-            var objeto = this.objetos.find(objeto => objeto.colisiona_con(this.recolector));
-            objeto.eliminar();
+            
+            var objetos2 = this.objetos.filter(objeto => objeto.colisiona_con(this.recolector));
+            var index = this.objetos.indexOf(objetos2[0]);
+            var objeto = this.objetos.splice(index,1)                    
+            objeto[0].eliminar();
         } else {
-            this.recolector.decir("¡No hay estrella!")
+            this.recolector.decir("¡No hay estrella!");
         }
     }
     
     tocandoEstrella(){
         return this.objetos.some(objeto => objeto.colisiona_con(this.recolector));
+        this.recolector.decir("Estoy toanco")
     }
 }
