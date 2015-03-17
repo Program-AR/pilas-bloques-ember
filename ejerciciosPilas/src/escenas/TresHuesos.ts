@@ -59,10 +59,11 @@ class TresHuesos extends Base {
     intentaronRecoger() {
         if (this.tocandoHueso()) {
             var objeto = this.objetos.filter(objeto => objeto.colisiona_con(this.personaje))[0];
-            this.objetos.slice(objeto, 1);
+            var index = this.objetos.indexOf(objeto);
+            this.objetos.splice(index, 1);
             objeto.eliminar();
         } else {
-            this.personaje.decir("¡No hay hueso para comer!")
+            this.personaje.decir("¡No hay hueso para comer!");
         }
     }
     
