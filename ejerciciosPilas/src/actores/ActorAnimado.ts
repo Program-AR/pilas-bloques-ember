@@ -96,4 +96,13 @@ class ActorAnimado extends Actor {
     cuando_busca_recoger() {
         pilas.escena_actual().intentaronRecoger();
     }
+    recoger(a) {
+        pilas.escena_actual().intentaronRecoger(a);
+    }
+
+    tocandoTipo(tipo){
+        return pilas.escena_actual().objetos.some(objeto => objeto.colisiona_con(this) && objeto.instanceOf==tipo);
+    }
+
+
 } 
