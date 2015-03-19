@@ -8,14 +8,17 @@
 class ComportamientoAnimado extends Comportamiento {
 	animParado = 'parado';
 	
+
 	iniciar(receptor){
 		super.iniciar(receptor);
 		this.receptor.cargarAnimacion(this.nombreAnimacion());
+		this.alIniciarAnimacion();
 	}
 	
 	actualizar(){
 		if(this.receptor.avanzarAnimacion()){
 			this.receptor.cargarAnimacion(this.animParado);
+			this.alFinalizarAnimacion();
 			return true;
 		}
 		return false;
@@ -23,5 +26,10 @@ class ComportamientoAnimado extends Comportamiento {
 	
 	nombreAnimacion(){
 		return this.animParado;
+	}
+	alFinalizarAnimacion(){
+	}
+	alIniciarAnimacion(){
+		
 	}
 } 

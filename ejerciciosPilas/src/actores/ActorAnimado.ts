@@ -101,7 +101,7 @@ class ActorAnimado extends Actor {
     }
 
     tocandoTipo(tipo){
-        return pilas.escena_actual().objetos.some(objeto => objeto.colisiona_con(this) && objeto.instanceOf==tipo);
+        return pilas.escena_actual().objetos.some(objeto => objeto.colisiona_con(this) && objeto.typeOf==tipo);
     }
 
 
