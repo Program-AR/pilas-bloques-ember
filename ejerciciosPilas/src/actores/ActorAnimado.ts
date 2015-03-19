@@ -63,7 +63,7 @@ class ActorAnimado extends Actor {
     	this._imagen.cargar_animacion(nombre);
     }
     
-    avanzar_animacion(){
+    avanzarAnimacion(){
     	return this._imagen.avanzar();
     }  
     
