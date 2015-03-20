@@ -100,9 +100,8 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
-    tocandoTipo(tipo){
-        return pilas.escena_actual().objetos.some(objeto => objeto.colisiona_con(this) && objeto.typeOf==tipo);
-    }
-
+	nombreClase(){
+		return this.getName();
+	}
 
 } 

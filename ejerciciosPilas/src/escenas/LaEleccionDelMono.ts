@@ -1,8 +1,15 @@
-class LaEleccionDelMono extends Base {
+/// <reference path = "EscenaConObjetos.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/BananaAnimada.ts" />
+/// <reference path = "../actores/ManzanaAnimada.ts" />
+/// <reference path = "../actores/MonoAnimado.ts" />}
+/// <reference path = "../comportamientos/RecogerTipoEspecifico.ts" />}
+/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+
+class LaEleccionDelMono extends EscenaConObjetos {
     fondo;
     cuadricula;
     mono;
-    objetos=[];
     esManzana;
     iniciar() {
     	this.fondo = new Fondo('fondos/nubes.png',0,0);

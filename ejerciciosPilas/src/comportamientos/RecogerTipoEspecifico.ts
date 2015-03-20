@@ -6,11 +6,8 @@ class RecogerTipoEspecifico extends ComportamientoAnimado {
 	}
    doActualizar(){
    		if(this.terminoAnimacion){
-	        if (this.receptor.tocandoTipo(this.argumentos['tipoEspecifico'])) {
-	        	var objetosEscena=pilas.escena_actual().objetos;
-	            var objetos2 = objetosEscena.filter(objeto => objeto.colisiona_con(this.receptor));
-	            var index = objetosEscena.indexOf(objetos2[0]);
-	            pilas.escena_actual().eliminarObjeto(index);
+	        if (pilas.escena_actual().tocandoTipo(this.receptor, this.argumentos['tipoEspecifico'])) {
+				this.eliminarObjetoTocado();
 	        } else {
 	            this.receptor.decir(this.argumentos['mensajeError']);
 	        }
@@ -18,6 +15,13 @@ class RecogerTipoEspecifico extends ComportamientoAnimado {
     	return true;
     }
   
+	eliminarObjetoTocado(){
+	    pilas.escena_actual().eliminarObjeto(this.objetoTocando());
+	}
+	
+	objetoTocando(){
+		return pilas.escena_actual().objetoTocandoA(this.receptor);
+	}
 }
 
  
