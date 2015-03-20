@@ -1,7 +1,12 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../actores/Hueso.ts"/>
+/// <reference path = "../actores/HeroeAnimado.ts"/>
+/// <reference path = "../actores/CofreAnimado.ts"/>
+/// <reference path = "../actores/LlaveAnimado.ts"/>
+/// <reference path = "../actores/MagoAnimado.ts"/>
+/// <reference path = "../actores/CaballeroAnimado.ts"/>
+/// <reference path = "../actores/UnicornioAnimado.ts"/>
+/// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
 /// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
 
 
