@@ -5,18 +5,30 @@
  * New typescript file
  */
 class EscenaConObjetos extends Base {
-	objetos = [];
+	objetos = {};
 	
 	eliminarObjeto(unObjeto){
-		this.objetos.splice(this.objetos.indexOf(unObjeto),1);
+		var clave = this.dameClave(unObjeto);
+		this.objetos[clave].splice(this.objetos[clave].indexOf(unObjeto),1);
 		unObjeto.eliminar();
 	}
 	
-	objetoTocandoA(toqueton){
-		return this.objetos.filter(objeto => objeto.colisiona_con(toqueton))[0];
+	objetoTocandoA(toqueton,clave){
+		return this.objetos[clave].filter(objeto => objeto.colisiona_con(toqueton))[0];
 	}
 	
-	tocandoTipo(unActor,tipo){
-        return pilas.escena_actual().objetos.some(objeto => objeto.colisiona_con(unActor) && objeto.nombreClase()==tipo);
+	tocandoTipo(unActor,clave){   
+        return this.objetos[clave].some(objeto => objeto.colisiona_con(unActor));
+    }
+
+    dameClave(unObjeto){
+    	for (var key in this.objetos){
+    		if (this.objetos[key].indexOf(unObjeto)!=-1) {
+    			return key
+    		}
+    			
+    	}
+
+
     }
 }
