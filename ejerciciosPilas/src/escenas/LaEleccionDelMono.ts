@@ -10,6 +10,7 @@ class LaEleccionDelMono extends EscenaConObjetos {
     fondo;
     cuadricula;
     mono;
+    objetos = {'manzanas' : [] , 'bananas' : [] };
     esManzana;
     iniciar() {
     	this.fondo = new Fondo('fondos/nubes.png',0,0);
@@ -33,22 +34,21 @@ class LaEleccionDelMono extends EscenaConObjetos {
     }
 
     agregarManzana(){
-    	this.objetos[0] = new ManzanaAnimada(0,0);
-            this.objetos[0].setCuadricula(this.cuadricula,0,1);
+    	   this.objetos['manzanas'][0] = new ManzanaAnimada(0,0);
+           this.objetos['manzanas'][0].setCuadricula(this.cuadricula,0,1);
     }
 
     agregarBanana(){
-    	this.objetos[0] = new BananaAnimada(0,0);
-    	this.objetos[0].setCuadricula(this.cuadricula,0,1);
-
+    	this.objetos['bananas'][0] = new BananaAnimada(0,0);
+    	this.objetos['bananas'][0].setCuadricula(this.cuadricula,0,1);
     }
 
     comerManzana(){
-        this.mono.hacer_luego(RecogerTipoEspecifico,{tipoEspecifico : ManzanaAnimada});
+        this.mono.hacer_luego(RecogerTipoEspecifico,{'tipoEspecifico' : 'manzanas', 'mensajeError' : 'No hay una manzana aqui' });
 	}
 
 	comerBanana(){
-        this.mono.hacer_luego(RecogerTipoEspecifico,{tipoEspecifico : BananaAnimada});
+        this.mono.hacer_luego(RecogerTipoEspecifico,{'tipoEspecifico' : 'manzanas',  'mensajeError' : 'No hay una banana aqui' });
 	}
 
 	avanzar(){
