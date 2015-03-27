@@ -101,7 +101,7 @@ class ActorAnimado extends Actor {
     }
 
 	nombreClase(){
-		return this.getName();
+		//return this.getName();
 	}
 
 } 
