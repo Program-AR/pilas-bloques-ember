@@ -100,8 +100,5 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
-	nombreClase(){
-		return this.getName();
-	}
 
 } 
