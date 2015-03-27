@@ -19,34 +19,41 @@
  *      nombreAnimacion(){ 
  *			return 'explosion'
  *		};
- *      doActualizar(){
- *			if (this.terminoAnimacion) {
- *				this.receptor.eliminar();
- *				return true;
- *			}
+ *      alFinalizar(){
+ *			this.receptor.eliminar();
  *		}
  */
 
 class ComportamientoAnimado extends Comportamiento {
-	_terminoAnimacion = true;
+	secuenciaActualizar;
 	
 	iniciar(receptor){
 		super.iniciar(receptor);
-		this.receptor.cargarAnimacion(this.nombreAnimacion());
-		this.alIniciarAnimacion();
+		this.secuenciaActualizar = new Array();
+ 		this.secuenciaActualizar.push(function() {
+        	this.receptor.cargarAnimacion(this.nombreAnimacion());
+        	this.alIniciar();
+        	return true;
+   		}.bind(this));
+   		this.secuenciaActualizar.push(function() {
+        	return this.doActualizar(); 
+   		}.bind(this));
+   		this.secuenciaActualizar.push(function() {
+        	this.receptor.cargarAnimacion(this.nombreAnimacionParado());
+        	this.alTerminar();
+        	return true;
+   		}.bind(this));	
 	}
 	
+	/** No se recomienda redefinir. Redefinir en su lugar el doActualizar */
 	actualizar(){
-		this._terminoAnimacion = this.receptor.avanzarAnimacion();
-		if(this.doActualizar()){
-			this.receptor.cargarAnimacion(this.nombreAnimacionParado());
-			return true;
-		}
-		return false;
-	}
-	
-	get terminoAnimacion(){
-		return this._terminoAnimacion;
+		if(this.secuenciaActualizar.length > 0) {
+			if(this.secuenciaActualizar[0]()) {
+				this.secuenciaActualizar.shift();
+			}
+    	} else {
+      		return true;
+    	}
 	}
 	
 	/* Redefinir si corresponde animar el comportamiento. */
@@ -60,14 +67,20 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 	
 	/* Redefinir si corresponde */
-	alIniciarAnimacion(){
+	alIniciar(){
 	}
 	
-	/** Redefinir siempre. 
+	/* Redefinir si corresponde */
+	alFinalizar(){
+	}
+	
+	/** Redefinir si es necesario. 
 	 *  Redefinir sólo este, no el actualizar original.
 	 *  Es lo que hace efectivamente el comportamiento, además de animar.
-	 *  Debe retornar true cuando corresponda terminar el comportamiento */
+	 *  Debe retornar true cuando corresponda terminar el comportamiento.
+	 *  Por defecto termina cuando termina la animación.
+	 *  Al redefinir siempre debe llamarse a super */
 	doActualizar(){
-		return this.terminoAnimacion;
+		return this.receptor.avanzarAnimacion()
 	}
 } 

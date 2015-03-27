@@ -1,17 +1,14 @@
-/// <reference path = "EscenaConObjetos.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />}
-/// <reference path = "../comportamientos/RecogerTipoEspecifico.ts" />}
+/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 /// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
 
-class LaEleccionDelMono extends EscenaConObjetos {
+class LaEleccionDelMono extends Base {
     fondo;
     cuadricula;
     mono;
-    objetos = {'manzanas' : [] , 'bananas' : [] };
-    esManzana;
     iniciar() {
     	this.fondo = new Fondo('fondos/nubes.png',0,0);
         var cantidadFilas=1
@@ -26,29 +23,22 @@ class LaEleccionDelMono extends EscenaConObjetos {
         
 		
 		if (Math.random()< .5)  {
-            this.agregarManzana();
+            this.agregar(ManzanaAnimada);
         }else{
-        	this.agregarBanana();
-
+            this.agregar(BananaAnimada);
         }	    
     }
 
-    agregarManzana(){
-    	   this.objetos['manzanas'][0] = new ManzanaAnimada(0,0);
-           this.objetos['manzanas'][0].setCuadricula(this.cuadricula,0,1);
-    }
-
-    agregarBanana(){
-    	this.objetos['bananas'][0] = new BananaAnimada(0,0);
-    	this.objetos['bananas'][0].setCuadricula(this.cuadricula,0,1);
+    agregar(objeto){
+        new objeto(0,0).setCuadricula(this.cuadricula,0,1);
     }
 
     comerManzana(){
-        this.mono.hacer_luego(RecogerTipoEspecifico,{'tipoEspecifico' : 'manzanas', 'mensajeError' : 'No hay una manzana aqui' });
+        this.mono.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'ManzanaAnimada', 'mensajeError' : 'No hay una manzana aqui' });
 	}
 
 	comerBanana(){
-        this.mono.hacer_luego(RecogerTipoEspecifico,{'tipoEspecifico' : 'manzanas',  'mensajeError' : 'No hay una banana aqui' });
+        this.mono.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'BananaAnimada',  'mensajeError' : 'No hay una banana aqui' });
 	}
 
 	avanzar(){
