@@ -19,9 +19,27 @@
  *      nombreAnimacion(){ 
  *			return 'explosion'
  *		};
- *      alFinalizar(){
+ *      alTerminarAnimacion(){
  *			this.receptor.eliminar();
  *		}
+ *
+ * @example
+ * Otra manera de usarlo es independientemente de la animación
+ * (Para decidir uno cuándo termina el comportamiento)
+ *      actor.hacer_luego(MoverEnX,{destino: 50});
+ * 
+ * Donde MoverEnX es subclase de ComportamientoAnimado y define:
+ * 		nombreAnimacion(){
+ *			return 'correr';
+ *		};
+ *		doActualizar(){
+ *			super.doActualizar();
+ *			this.receptor.x = this.receptor.x + 1;
+ *			if (this.receptor.x = this.argumentos.destino){
+ *				return true;
+ *			}
+ *		}
+ * Mientras, la animación se ejecuta en un loop hasta que doActualizar devuelve true.
  */
 
 class ComportamientoAnimado extends Comportamiento {
@@ -40,7 +58,7 @@ class ComportamientoAnimado extends Comportamiento {
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
         	this.receptor.cargarAnimacion(this.nombreAnimacionParado());
-        	this.alTerminar();
+        	this.alTerminarAnimacion();
         	return true;
    		}.bind(this));	
 	}
@@ -71,7 +89,7 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 	
 	/* Redefinir si corresponde */
-	alFinalizar(){
+	alTerminarAnimacion(){
 	}
 	
 	/** Redefinir si es necesario. 
