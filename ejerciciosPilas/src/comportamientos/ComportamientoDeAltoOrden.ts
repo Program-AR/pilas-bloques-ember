@@ -3,7 +3,7 @@
 	
 class ComportamientoDeAltoOrden extends ComportamientoAnimado {
 	nombreAnimacion(){
-		return 'recoger';
+		return this.argumentos['nombreAnimacion'];
 	}
    
 	alTerminarAnimacion(){

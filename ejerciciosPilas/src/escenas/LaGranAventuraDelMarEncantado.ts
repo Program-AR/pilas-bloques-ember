@@ -75,23 +75,23 @@ class LaGranAventuraDelMarEncantado extends Base {
     }
 
     agarrarLlave() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.agarrarLlave});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.agarrarLlave, 'nombreAnimacion': 'recoger'});
     }
 
     abrirCofre() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.abrirCofre});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.abrirCofre, 'nombreAnimacion': 'recoger'});
     }
 
     darSombrero() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.darSombrero});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.darSombrero, 'nombreAnimacion': 'recoger'});
     }
 
     atacarConEspada() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.atacarConEspada});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.atacarConEspada, 'nombreAnimacion': 'recoger'});
     }
 
     escaparEnUnicornio() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.escaparEnUnicornio});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.escaparEnUnicornio, 'nombreAnimacion': 'recoger'});
     }
 
 }
