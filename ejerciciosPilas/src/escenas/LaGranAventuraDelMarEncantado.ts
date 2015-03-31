@@ -75,24 +75,25 @@ class LaGranAventuraDelMarEncantado extends Base {
     }
 
     agarrarLlave() {
-        this.estado.agarrarLlave();
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.agarrarLlave});
     }
 
     abrirCofre() {
-        this.estado.abrirCofre();
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.abrirCofre});
     }
 
     darSombrero() {
-        this.estado.darSombrero();
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.darSombrero});
     }
 
     atacarConEspada() {
-        this.estado.atacarConEspada();
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.atacarConEspada});
     }
 
     escaparEnUnicornio() {
-        this.estado.escaparEnUnicornio();
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.escaparEnUnicornio});
     }
+
 }
 
 class MarEncantadoState {
@@ -137,6 +138,7 @@ class BuscandoLLaveState extends MarEncantadoState {
             super.agarrarLlave();
         }
     }
+
 }
 
 class BuscandoSombreroState extends MarEncantadoState {
