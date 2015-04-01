@@ -14,6 +14,13 @@
   {{else}}
     <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
   {{/if}}
+
+  {{#if cola_deshacer}}
+    <button class='btn btn-success' {{action "deshacer_cambio"}}>Deshacer</button>
+  {{else}}
+    <button class='btn btn-success disabled'>Deshacer</button>
+  {{/if}}
+
 </div>
 
 <div id="contenedor-blockly" style="height: 300px; width: 500px;"> </div>

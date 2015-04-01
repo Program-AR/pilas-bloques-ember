@@ -969,7 +969,12 @@ var Actividad = Ember.Object.extend({
     // 49930e OPERATORS dark
     // 632d99 MORE BLOCKS
     // 5e4db3 PARAMS
-  }
+  },
+
+  obtener_codigo_en_texto: function() {
+    var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+    return Blockly.Xml.domToText(xml);
+  },
 
 });
 

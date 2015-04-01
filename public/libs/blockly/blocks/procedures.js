@@ -27,8 +27,6 @@
 goog.provide('Blockly.Blocks.procedures');
 
 goog.require('Blockly.Blocks');
-goog.require('Blockly.Variables');
-goog.require('Blockly.utils');
 
 // HUE VALUE BY DEFAULT
 Blockly.Blocks.procedures.COLOUR = 290;

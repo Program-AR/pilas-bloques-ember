@@ -27,6 +27,8 @@
 // Top level object for Blockly.
 goog.provide('Blockly');
 
+goog.require('Blockly.utils');
+
 // Blockly core dependencies.
 goog.require('Blockly.BlockSvg');
 goog.require('Blockly.FieldAngle');
@@ -47,7 +49,6 @@ goog.require('Blockly.Toolbox');
 goog.require('Blockly.WidgetDiv');
 goog.require('Blockly.WorkspaceSvg');
 goog.require('Blockly.inject');
-goog.require('Blockly.utils');
 
 // Closure dependencies.
 goog.require('goog.color');
