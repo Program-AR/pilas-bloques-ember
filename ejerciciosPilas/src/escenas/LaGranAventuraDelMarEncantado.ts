@@ -92,7 +92,7 @@ class LaGranAventuraDelMarEncantado extends Base {
     }
 
     escaparEnUnicornio() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.escaparEnUnicornio, 'nombreAnimacion': 'recoger'});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
     }
     
     doAgarrarLlave() {
