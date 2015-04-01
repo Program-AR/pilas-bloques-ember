@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('preferencia');
   this.resource('editor', {path: '/editor/:galeria_id'});
   this.route('galeria');
+  this.route('iframe');
 });
 
 export default Router;

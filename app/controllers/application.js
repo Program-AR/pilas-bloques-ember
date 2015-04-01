@@ -4,6 +4,8 @@ var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
   url: '',
+  queryParams: ['layout'],
+  layout: true,
 
   mostrar_url: function() {
     var controller = this;
