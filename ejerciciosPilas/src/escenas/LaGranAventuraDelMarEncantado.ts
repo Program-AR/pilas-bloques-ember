@@ -8,6 +8,7 @@
 /// <reference path = "../actores/UnicornioAnimado.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
 /// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/ComportamientoDeAltoOrden.ts"/>
 
 
 /**
@@ -75,23 +76,43 @@ class LaGranAventuraDelMarEncantado extends Base {
     }
 
     agarrarLlave() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.agarrarLlave, 'nombreAnimacion': 'recoger'});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
     }
 
     abrirCofre() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.abrirCofre, 'nombreAnimacion': 'recoger'});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAbrirCofre, 'nombreAnimacion': 'recoger'});
     }
 
     darSombrero() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.darSombrero, 'nombreAnimacion': 'recoger'});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doDarSombrero, 'nombreAnimacion': 'recoger'});
     }
 
     atacarConEspada() {
-        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.atacarConEspada, 'nombreAnimacion': 'recoger'});
+        this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAtacarConEspada, 'nombreAnimacion': 'recoger'});
     }
 
     escaparEnUnicornio() {
         this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this.estado, 'metodo': this.estado.escaparEnUnicornio, 'nombreAnimacion': 'recoger'});
+    }
+    
+    doAgarrarLlave() {
+    	this.estado.agarrarLlave();
+    }
+
+    doAbrirCofre() {
+    	this.estado.abrirCofre();
+    }
+    
+    doDarSombrero() {
+    	this.estado.darSombrero();
+    }
+    
+    doAtacarConEspada() {
+    	this.estado.atacarConEspada();
+    }
+    
+    doEscaparEnUnicornio() {
+    	this.estado.escaparEnUnicornio();
     }
 
 }
