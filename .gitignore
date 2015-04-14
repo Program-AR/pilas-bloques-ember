@@ -23,3 +23,7 @@ public/libs/pilasweb.js
 distribuibles
 cache
 extras/nodewebkit-bins
+
+#Eclipse
+.project
+.settings/
