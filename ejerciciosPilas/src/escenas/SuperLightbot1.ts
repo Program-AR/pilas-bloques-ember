@@ -36,6 +36,8 @@ class SuperLightBot1 extends LightBotRecargado {
              }
           }
       }
+
+     /*hay que permitirles AVANZAR Y ENCENDER LUZ*/
     
     
 }
