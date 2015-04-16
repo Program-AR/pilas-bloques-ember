@@ -60,19 +60,24 @@ class ElMarcianoEnElDesierto extends Base {
 /****** Deben tener sólo una línea, que sea un "hacer_luego" ********/
 /****** El nombre debe ser el que tendrá el bloque en blockly *******/
 
-    avanzar() {
+    irDerecha() {
         this.personaje.hacer_luego(MoverACasillaDerecha);
     }
-    
-    retroceder() {
-        this.personaje.hacer_luego(CaminaDerecha,{pasos: 2});
+
+    irIzquierda() {
+        this.personaje.hacer_luego(MoverACasillaIzquierda);
     }
-    
-    martillar() {
-        this.personaje.hacer_luego(Animar,this.personaje.argumentosMartillar());
+
+    irArriba() {
+        this.personaje.hacer_luego(MoverACasillaArriba);
     }
-    
-    saltar() {
-        this.personaje.hacer_luego(Saltar);
+
+    irAbajo() {
+        this.personaje.hacer_luego(MoverACasillaAbajo);
     }
+
+    comerManzana() {
+        this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'ManzanaAnimada', 'mensajeError' : 'No hay una manzana aqui' });
+    }
+
 }
