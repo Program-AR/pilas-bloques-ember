@@ -21,6 +21,7 @@ var Bloque = Ember.Object.extend({
     // abstracta
   },
 
+  /*jshint unused: vars*/
   block_javascript: function(block) {
     // abstracta
   },
@@ -717,6 +718,7 @@ var OpNegacion = ExpresionDeBlockly.extend({
  * Representa el valor
  * de un campo string de un bloque
  */
+/*exported ParamCampo*/
 var ParamCampo = Ember.Object.extend({
    build: function() {
      var str_block = '';

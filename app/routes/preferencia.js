@@ -1,5 +1,6 @@
 import Ember from 'ember';
 
+/*jshint unused: vars */
 export default Ember.Route.extend({
   model: function() {
     var record = this.store.find('preferencium', {tipo: 'principal'});
