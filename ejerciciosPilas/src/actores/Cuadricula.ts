@@ -54,7 +54,7 @@
 
 class Cuadricula extends Actor {
     private cantFilas;
-    private cantColumnas;
+    cantColumnas;
     protected casillas: Array<Casilla>;
     private opcionesCuadricula;
     private opcionesCasilla;
