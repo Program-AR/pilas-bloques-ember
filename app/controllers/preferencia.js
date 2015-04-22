@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+/*global model*/
 export default Ember.ObjectController.extend({
   edicion: false,
   actions: {
