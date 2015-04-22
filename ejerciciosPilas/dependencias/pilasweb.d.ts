@@ -818,6 +818,62 @@ declare class CambiarAtributo extends Comportamiento {
     actualizar(): boolean;
 }
 /**
+ * @class CambiarVariableLocal
+ *
+ * Representa el cambio de una variable local del procedimiento actual
+ *
+ * Recibe como argumento una funcion cuyo resultado sera guardado como valor del atributo
+ */
+declare class CambiarVariableLocal extends Comportamiento {
+    nombre: any;
+    funcion_valor: any;
+    iniciar(receptor: any): void;
+    actualizar(): boolean;
+}
+/**
+ * @class LlamadaProcedimiento
+ *
+ * Representa una llamada a un procedimiento
+ *
+ * Recibe como argumentos el nombre del procedimiento y el contexto de
+ * definiciones
+ */
+declare class LlamadaProcedimiento extends Comportamiento {
+    nombre: any;
+    procedimientos: any;
+    secuencia: any;
+    iniciar(receptor: any): void;
+    actualizar(): boolean;
+}
+/**
+ * @class Expresion
+ *
+ * Representa la evaluacion de una expresion
+ *
+ * Recibe como argumento la expresión a evaluar
+ */
+declare class Expresion extends Comportamiento {
+    expresion: any;
+    resultado: any;
+    iniciar(receptor: any): void;
+    actualizar(): boolean;
+}
+/**
+ * @class LlamadaFuncion
+ *
+ * Representa una llamada a una funcion
+ *
+ * Recibe como argumentos el nombre de la funcion, el contexto de
+ * definiciones de funciones y la expresión a retornar
+ */
+declare class LlamadaFuncion extends Expresion {
+    nombre: any;
+    funciones: any;
+    secuencia: any;
+    iniciar(receptor: any): void;
+    actualizar(): boolean;
+}
+/**
  * @class ConstructorDePrograma
  *
  * Permite construir un comportamiento que representa un programa
@@ -825,6 +881,8 @@ declare class CambiarAtributo extends Comportamiento {
 **/
 declare class ConstructorDePrograma {
     stack_secuencias: any;
+    procedimientos: any;
+    funciones: any;
     constructor();
     empezar_secuencia(): void;
     hacer(comportamiento: any, argumentos: any): void;
@@ -833,9 +891,17 @@ declare class ConstructorDePrograma {
     alternativa_si(c: any): void;
     alternativa_sino(c: any): void;
     repetirN(n: any): void;
+    def_proc(n: any, params: any): void;
+    llamada_proc(n: any, proc_args: any): void;
+    def_func(n: any): void;
+    llamada_func(n: any, exp: any): void;
     cambio_atributo(n: any, f: any): void;
+    cambio_variable(n: any, f: any): void;
+    inyectar_scopes(actor: any): void;
+    inyectar_parametros(actor: any): void;
+    inyectar_variables_locales(actor: any): void;
+    inyectar_atributos(actor: any): void;
     ejecutar(actor: any): void;
-    obtener_programa(): any;
 }
 declare class Programa extends Comportamiento {
     programa: any;
@@ -1350,6 +1416,7 @@ declare class Alien extends Actor {
     esperar(tiempo?: number): void;
     detener(): void;
     recoger(): void;
+    colisiona_con_item(item_name: any): any;
 }
 declare class Movimiento {
     receptor: any;

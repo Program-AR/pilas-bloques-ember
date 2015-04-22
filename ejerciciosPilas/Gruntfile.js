@@ -1,5 +1,8 @@
+
 module.exports = function(grunt) {
 
+  require('load-grunt-tasks')(grunt);
+  
   grunt.initConfig({
     notify_hooks: {
                     options: {
@@ -47,18 +50,31 @@ module.exports = function(grunt) {
             path: 'src/visorEjercicios.html'
         }
     },
+    shell: {
+    	compilarCabecerasPilas: {
+    		command: ['cd ../pilasweb/', 'grunt', 'tsc -d -t ES5 --out pilasweb.d.ts **/*.ts'].join('&&')
+    	},
+    	copiarCabecerasPilas: {
+		command: 'mv ../pilasweb/pilasweb.d.ts dependencias/pilasweb.d.ts'
+	},
+	clear: {
+		command: 'clear'
+	}
+    }
   });
 
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-open');
 
-  grunt.registerTask('clear', ['clear']);
+  grunt.registerTask('clear', ['shell:clear']);
+  
+  grunt.registerTask('pilas', ['compilarCabecerasPilas', 'copiarCabecerasPilas']);
+  
+  grunt.registerTask('compilarCabecerasPilas', ['shell:compilarCabecerasPilas']);
 
-  grunt.registerTask('clear', "limpia la pantalla", function() {
-    shell.exec('clear');
-  });
-
+  grunt.registerTask('copiarCabecerasPilas', ['shell:copiarCabecerasPilas']);
+  
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('default', ['typescript', 'concat', 'open']);
 
