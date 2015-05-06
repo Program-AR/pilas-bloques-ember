@@ -22,8 +22,8 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
 	@echo ""
-	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
 	@echo "    ${G}bajar_dependencias${N}              Descarga las dependencias pilas y blockly."
+	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
 	@echo "    ${G}actualizar_pilas${N}                Vincula pilasweb."
 	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
 	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
@@ -44,7 +44,7 @@ iniciar:
 	./node_modules/bower/bin/bower install
 
 vincular_dependencias:
-	rm pilasweb
+	rm -f pilasweb
 	ln -s ../pilasweb
 
 bajar_dependencias:
