@@ -1,0 +1,19 @@
+<div class='contenedor-editor' id='contenedor-editor'>
+
+  <div class='panel-pilas' id='panel-pilas'>
+
+    {{pilas-canvas onready="reiniciar"}}
+
+    <div class='panel-ayuda'>
+
+      <p>{{actividad.enunciado}}</p>
+
+    </div>
+
+  </div>
+
+  <div class='panel-derecho' id='panel-derecho'>
+    {{pilas-blockly model=model guardar='guardar' reiniciar='reiniciar' registrarPrimerCodigo='registrarPrimerCodigo' actividad=actividad}}
+  </div>
+
+</div>

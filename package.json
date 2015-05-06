@@ -19,6 +19,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "bower": "1.4.1",
     "broccoli-asset-rev": "^2.0.2",
     "ember-cli": "0.2.3",
     "ember-cli-app-version": "0.3.3",
@@ -32,8 +33,8 @@
     "ember-cli-uglify": "1.0.1",
     "ember-data": "1.0.0-beta.16.1",
     "ember-export-application-global": "^1.0.2",
-    "liquid-fire": "git://github.com/ef4/liquid-fire",
-    "bower": "1.4.1"
+    "ember-idx-button": "^0.1.3",
+    "liquid-fire": "git://github.com/ef4/liquid-fire"
   },
   "dependencies": {
     "ember-localstorage-adapter": "^0.5.2"

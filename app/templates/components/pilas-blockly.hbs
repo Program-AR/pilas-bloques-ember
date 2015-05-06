@@ -1,0 +1,36 @@
+<div class='pilas-blockly-botones'>
+  {{#if mostrarAlternar}}
+    <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
+  {{/if}}
+
+  {{#if ejecutando}}
+      <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
+  {{else}}
+      <button class='btn btn-success' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
+  {{/if}}
+
+  {{#if mostrarVerCodigo}}
+    <button class='btn btn-warning' {{action "ver_codigo"}}>Ver Codigo</button>
+  {{/if}}
+
+
+  {{#if mostrarGuardar}}
+    {{#if model}}
+      <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+    {{else}}
+      <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+    {{/if}}
+  {{/if}}
+
+
+
+
+  {{#if cola_deshacer}}
+    <button class='btn btn-info' {{action "deshacer_cambio"}}><i class='fa fa-undo'></i> Deshacer</button>
+  {{else}}
+    <button class='btn btn-info disabled'><i class='fa fa-undo'></i> Deshacer</button>
+  {{/if}}
+
+</div>
+
+<div id="contenedor-blockly" style="height: 300px; width: 500px;"> </div>

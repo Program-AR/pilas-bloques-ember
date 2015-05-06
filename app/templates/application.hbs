@@ -1,7 +1,31 @@
-<h2 id='title'>Bienvenido a Ember.js</h2>
+{{#if layout}}
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header navbar-collapse">
+      <a class="navbar-brand" href="#">pilas-engine-bloques</a>
+    </div>
 
-<p>
- {{#link-to "index"}}index{{/link-to}} | {{#link-to "tips"}}tips{{/link-to}}
-</p>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        {{#link-to "index" tagName='li'}}<a href=#>index</a>{{/link-to}}
+        {{#link-to "editor" "new" tagName='li'}}<a href=#>editor</a>{{/link-to}}
+        {{#link-to "galeria" tagName='li'}}<a href=#>galeria</a>{{/link-to}}
+        {{#link-to "preferencia" tagName='li'}}<a href=#>preferencias</a>{{/link-to}}
+      </ul>
 
-{{liquid-outlet}}
+      <div class='header-right'>
+
+        {{nw-zoom}}
+
+        <button class='btn btn-success btn-sm btn-rect' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
+        <button class='btn btn-info btn-sm btn-rect' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
+        <button class='btn btn-warning btn-sm btn-rect' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+      </div>
+    </div>
+  </div>
+</nav>
+{{/if}}
+
+{{outlet}}

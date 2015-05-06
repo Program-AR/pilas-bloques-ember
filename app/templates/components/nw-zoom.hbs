@@ -1,0 +1,13 @@
+{{#if canZoomOut}}
+  <button {{action 'zoomOut'}} class='btn btn-success btn-rect'><i class='fa fa-minus'></i></button>
+{{else}}
+  <button disabled class='btn btn-success btn-rect'><i class='fa fa-minus'></i></button>
+{{/if}}
+
+  <span {{action 'zoomRestore'}} class='zoom-label'>{{zoom}}%</span>
+
+{{#if canZoomIn}}
+  <button {{action 'zoomIn'}} class='btn btn-success btn-rect'><i class='fa fa-plus'></i></button>
+{{else}}
+  <button disabled class='btn btn-success btn-rect'><i class='fa fa-plus'></i></button>
+{{/if}}
