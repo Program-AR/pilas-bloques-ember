@@ -1,0 +1,7 @@
+html, body {
+  margin: 20px;
+}
+
+a.active {
+  font-weight: bold;
+}

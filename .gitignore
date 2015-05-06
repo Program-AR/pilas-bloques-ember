@@ -15,15 +15,3 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-
-public/libs/data
-
-public/libs/pilasweb.js
-
-distribuibles
-cache
-extras/nodewebkit-bins
-
-#Eclipse
-.project
-.settings/
