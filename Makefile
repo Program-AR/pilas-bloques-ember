@@ -1,4 +1,4 @@
-VERSION=0.0.1
+VERSION=0.1.6
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -19,6 +19,17 @@ comandos:
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
 	@echo ""
+	@echo ""
+	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
+	@echo ""
+	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
+	@echo "    ${G}bajar_dependencias${N}              Descarga las dependencias pilas y blockly."
+	@echo "    ${G}actualizar_pilas${N}                Vincula pilasweb."
+	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
+	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
+	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
+	@echo ""
+	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
 	@echo "    ${G}version${N}         Genera una nueva versión."
@@ -31,6 +42,60 @@ comandos:
 iniciar:
 	npm install
 	./node_modules/bower/bin/bower install
+
+vincular_dependencias:
+	rm pilasweb
+	ln -s ../pilasweb
+
+bajar_dependencias:
+	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
+	cd ..; git clone https://github.com/sawady/blockly.git
+	cd ..; git clone https://github.com/google/closure-library.git
+
+actualizar_pilas:
+	cd pilasweb; git pull; make build; cd ..
+	rm -r -f public/libs/data
+	cp -r -f pilasweb/public/data public/libs/data
+	cp -r -f pilasweb/public/pilasweb.js public/libs/
+
+actualizar_blockly:
+	cd blockly; git pull; python build.py; cd ..
+	make copiar_blockly_comprimido
+
+
+copiar_blockly_comprimido:
+	# CORE
+	cp -f blockly/blockly_compressed.js public/libs/blockly/
+	# BLOCKS
+	cp -f blockly/blocks_compressed.js public/libs/blockly/
+	# JS GENERATOR
+	cp -f blockly/javascript_compressed.js public/libs/blockly/
+	# MEDIA
+	rm -r -f public/libs/blockly/media
+	cp -r -f blockly/media public/libs/blockly/
+	# LANG
+	rm -r -f public/libs/blockly/msg
+	cp -r -f blockly/msg  public/libs/blockly/
+	    
+copiar_blockly_descomprimido:
+	# CORE
+	cp -f blockly/blockly_uncompressed.js public/libs/blockly/
+	rm -r -f public/libs/blockly/core
+	cp -r -f blockly/core public/libs/blockly/
+	# BLOCKS
+	rm -r -f public/libs/blockly/blocks
+	cp -r -f blockly/blocks public/libs/blockly/blocks
+	# JS GENERATOR
+	rm -r -f public/libs/blockly/generators
+	mkdir public/libs/blockly/generators
+	cp -f blockly/generators/javascript.js public/libs/blockly/generators/
+	cp -r -f blockly/generators/javascript public/libs/blockly/generators/
+	# MEDIA
+	rm -r -f public/libs/blockly/media
+	cp -r -f blockly/media public/libs/blockly/
+	# LANG
+	rm -r -f public/libs/blockly/msg
+	cp -r -f blockly/msg  public/libs/blockly/
 
 dist: compilar
 
