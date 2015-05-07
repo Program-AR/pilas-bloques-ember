@@ -37,6 +37,11 @@ input, textarea /*.contenteditable?*/ {
 .panel-derecho {
   background-color: white;
   padding-left: 10px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 425px;
 }
 
 
@@ -147,4 +152,8 @@ span.url {
 
 .absolute {
   position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  top: 63px;
 }

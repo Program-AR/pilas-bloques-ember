@@ -1,23 +1,15 @@
-<div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span2">
-      <!--Sidebar content-->
-      spoan
-    </div>
-    <div class="span10">
-      <!--Body content-->
-      o=body
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
-      <p>asd</p>
+<div class='contenedor-editor' id='contenedor-editor'>
+
+  <div class='panel-pilas' id='panel-pilas'>
+    {{pilas-canvas actividad=model.actividad}}
+
+    <div class='panel-ayuda'>
+      <p>{{actividad.enunciado}}</p>
     </div>
   </div>
+
+  <div class='panel-derecho' id='panel-derecho'>
+    {{pilas-blockly actividad=model.actividad}}
+  </div>
+
 </div>
