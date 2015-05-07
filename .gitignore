@@ -19,4 +19,5 @@ blockly
 npm-debug.log
 testem.log
 
-public
+public/libs/data
+public/libs/pilasweb.js
