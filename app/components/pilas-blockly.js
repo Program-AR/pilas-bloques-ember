@@ -4,12 +4,23 @@ export default Ember.Component.extend({
   ejecutando: false,
   cola_deshacer: [],
   data_observar_blockly: false,
+  actividad: null,
 
 
-  didInsertElement: function() {
+  adaptarLayout: function() {
     //window.forzar_redimensionado();
     this.sendAction('redimensionar');
-  },
+  }.on('didInsertElement'),
+
+  iniciarBlockly: function() {
+    var contenedor = this.$().find('#contenedor-blockly')[0];
+    //this.get('actividad').iniciarBlockly(contenedor);
+    this.set('cola_deshacer', []);
+    //this.cargar_codigo_desde_el_modelo();
+    //this.observarCambiosEnBlocky();
+  }.on('didInsertElement'),
+
+
 
   /**
    * Se conecta a los eventos y cambios de estado de blockly para implementar
@@ -89,13 +100,7 @@ export default Ember.Component.extend({
     return Blockly.Xml.domToText(xml);
   },
 
-  iniciarBlockly: function() {
-    var contenedor = this.$().find('#contenedor-blockly')[0];
-    //this.get('actividad').iniciarBlockly(contenedor);
-    this.set('cola_deshacer', []);
-    //this.cargar_codigo_desde_el_modelo();
-    //this.observarCambiosEnBlocky();
-  }.on('didInsertElement'),
+
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {

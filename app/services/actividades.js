@@ -849,22 +849,6 @@ var Lenguaje = Ember.Object.extend({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ============================================== */
 
 /**
@@ -974,8 +958,8 @@ var Actividad = Ember.Object.extend({
     Blockly.Blocks.loops.COLOUR = '#ee7d16';
 
     Blockly.Blocks.procedures.COLOUR = '#6C52EB';
-    Blockly.Blocks.procedures.vars.COLOUR = '#8a55d7';
-    Blockly.Blocks.procedures.params.COLOUR = '#6C52EB';
+    //Blockly.Blocks.procedures.vars.COLOUR = '#8a55d7';
+    //Blockly.Blocks.procedures.params.COLOUR = '#6C52EB';
 
 
     Blockly.Blocks.variables.COLOUR = '#cc5b22';
@@ -1073,9 +1057,15 @@ var EscenaAlien = (function (_super) {
 
 /* ============================================== */
 
+
+
+// TODO: BORRRAR
+
+
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
   enunciado: 'Define un programa para que el alien junte todas las tuercas',
+
   escena: EscenaAlien,
   puedeComentar: false,
   puedeDesactivar: false,
@@ -1091,10 +1081,32 @@ var actividadAlien = {
   sensores: [ChocaConTuerca]
 };
 
+
 /* ============================================== */
 
-var Actividades = {
-  Alien: Actividad.create({ actividad: actividadAlien }),
+
+
+var actividad = {
+  nombre: "El alien y las tuercas",
+  enunciado: "Define un programa para que el alien junte todas las tuercas",
+  escena: EscenaAlien,
+
+  puedeComentar: false,
+  puedeDesactivar: false,
+  puedeDuplicar: false,
+
+  init: function() {
+    new pilas.fondos.Laberinto1();
+    var alien = new pilas.actores.Alien(-175, -180);
+  },
+
 };
 
-export default Actividades;
+
+
+
+export default Ember.Service.extend({
+  obtenerPorNombre: function(nombreActividad) {
+    return Actividad.create({ actividad: actividadAlien });
+  }
+});
