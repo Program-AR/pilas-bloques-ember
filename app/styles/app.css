@@ -1,5 +1,4 @@
 html, body {
-  margin: 20px;
 }
 
 [data-ember-action] {
@@ -86,7 +85,6 @@ span.url {
 }
 
 .contenido-principal {
-  position: absolute;
   top: 51px;
   bottom: 0;
   left: 0;

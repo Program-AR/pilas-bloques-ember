@@ -21,8 +21,18 @@
   <body>
     {{content-for 'body'}}
 
+    <!-- AGREGADOS POR EMBERCLI -->
     <script src="assets/vendor.js"></script>
     <script src="assets/pilas-engine-bloques.js"></script>
+    
+    <!-- PILAS-ENGINE -->
+    <script src="libs/pilasweb.js"></script>
+
+    <!-- BLOCKLY -->
+    <script src="libs/blockly/blockly_compressed.js"></script>
+    <script src="libs/blockly/blocks_compressed.js"></script>
+    <script src="libs/blockly/javascript_compressed.js"></script>
+    <script src="libs/blockly/msg/js/es.js"></script>
 
     {{content-for 'body-footer'}}
 
