@@ -5,6 +5,7 @@ N=[0m
 G=[01;32m
 Y=[01;33m
 B=[01;34m
+L=[01;30m
 
 comandos:
 	@echo ""
@@ -29,6 +30,11 @@ comandos:
 	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
 	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
 	@echo ""
+	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar:${N}"
+	@echo "${L}"
+	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
+	@echo "        actualizar_pilas → actualizar_blockly "
+	@echo "${N}"
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
@@ -44,8 +50,9 @@ iniciar:
 	./node_modules/bower/bin/bower install
 
 vincular_dependencias:
-	rm -f pilasweb
+	rm -f pilasweb blockly
 	ln -s ../pilasweb
+	ln -s ../blockly
 
 bajar_dependencias:
 	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
@@ -53,13 +60,15 @@ bajar_dependencias:
 	cd ..; git clone https://github.com/google/closure-library.git
 
 actualizar_pilas:
-	cd pilasweb; git pull; make build; cd ..
+	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
+	rm -r -f public/libs/blockly
+	mkdir -p public/libs/blockly
 	make copiar_blockly_comprimido
 
 
