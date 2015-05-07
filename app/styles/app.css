@@ -118,3 +118,24 @@ span.url {
 .modal {
   z-index: 20000;
 }
+
+.fila-opcion {
+  margin-bottom: 15px;
+}
+
+
+.header-right {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+}
+
+.header-button {
+  color: gray;
+  border: 0;
+  background-color: white;
+}
+
+.header-button:hover {
+  color: black;
+}

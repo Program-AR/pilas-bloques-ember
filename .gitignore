@@ -18,3 +18,5 @@ blockly
 /libpeerconnection.log
 npm-debug.log
 testem.log
+
+public
