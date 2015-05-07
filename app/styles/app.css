@@ -90,6 +90,7 @@ span.url {
   left: 0;
   right: 0;
   overflow-y: scroll;
+  padding: 20px;
 }
 
 .navbar {
@@ -138,4 +139,12 @@ span.url {
 
 .header-button:hover {
   color: black;
+}
+
+.navbar-brand {
+  padding: 5px 0px;
+}
+
+.absolute {
+  position: absolute;
 }
