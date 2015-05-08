@@ -30,7 +30,7 @@ comandos:
 	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
 	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
 	@echo ""
-	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar:${N}"
+	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar (sync):${N}"
 	@echo "${L}"
 	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
 	@echo "        actualizar_pilas → actualizar_blockly "
