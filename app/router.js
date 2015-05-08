@@ -14,7 +14,7 @@ Router.map(function() {
   this.route('iframe');
   this.route('test');
   this.resource('desafios', function() {
-    this.route('numero', {path: ':nombre'});
+    this.route('nombre', {path: ':nombre'});
   });
 });
 

@@ -7,7 +7,7 @@ export default Ember.Component.extend({
 
   actions: {
     abrir: function() {
-      this.transitionToRoute('desafios.numero', this.get('nombre'));
+      this.sendAction('onSelect', this.get('nombre'));
     }
   }
 });

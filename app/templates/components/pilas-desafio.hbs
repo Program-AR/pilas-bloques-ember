@@ -1,1 +1,10 @@
-<img {{action 'abrir'}} src='images/desafios/{{nombre}}.png'>
+{{#if deshabilitado}}
+  <img class='grayscale' src='images/desafios/{{nombre}}.png'>
+
+  <div class="ribbon right gray">
+    <a>Muy pronto</a>
+  </div>
+{{else}}
+
+  <img {{action 'abrir'}} src='images/desafios/{{nombre}}.png'>
+{{/if}}
