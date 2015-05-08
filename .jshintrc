@@ -3,7 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "Blockly"
+    "Blockly",
+    "pilas"
   ],
   "browser": true,
   "boss": true,
