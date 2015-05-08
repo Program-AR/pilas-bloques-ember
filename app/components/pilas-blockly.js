@@ -6,15 +6,51 @@ export default Ember.Component.extend({
   data_observar_blockly: false,
   actividad: null,
 
+  inyectarRedimensionado: function() {
 
-  adaptarLayout: function() {
-    //window.forzar_redimensionado();
-    this.sendAction('redimensionar');
-  }.on('didInsertElement'),
+    window.anterior_altura = 0;
+    window.anterior_ancho = 0;
+    var ancho_canvas = 445;
+
+    function redimensionar() {
+      var panel = document.getElementById('panel-derecho');
+      var contenedorEditor = document.getElementById('contenedor-editor');
+      var panelPilas = document.getElementById('panel-pilas');
+      var e = document.getElementById('contenedor-blockly');
+
+
+      if (!panel) {
+        return null;
+      }
+
+      var altura = panel.getClientRects()[0].height;
+      var ancho_total = contenedorEditor.getClientRects()[0].width;
+
+      if (window.anterior_altura !== altura || window.anterior_ancho !== ancho_total) {
+
+        e.style.width = (ancho_total - ancho_canvas) + 'px';
+        e.style.height = (altura - 50) + 'px';
+        panelPilas.style.width = (ancho_canvas - 20) + 'px';
+
+        window.anterior_altura = altura;
+        window.anterior_ancho = ancho_total;
+
+        Blockly.fireUiEvent(window, 'resize');
+      }
+    }
+
+    function forzar_redimensionado() {
+      window.anterior_altura += 1;
+      redimensionar();
+    }
+
+    window.onresize = redimensionar;
+    window.forzar_redimensionado = forzar_redimensionado;
+
+  }.on('init'),
 
   iniciarBlockly: function() {
     var contenedor = this.$().find('#contenedor-blockly')[0];
-    //this.get('actividad').iniciarBlockly(contenedor);
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
@@ -41,7 +77,7 @@ export default Ember.Component.extend({
   actions: {
     ejecutar: function() {
       window.LoopTrap = 1000;
-      this.sendAction('reiniciar');
+      //this.sendAction('reiniciar');
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
 
       var code = this.get('actividad').generarCodigo();
@@ -99,8 +135,6 @@ export default Ember.Component.extend({
     var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
     return Blockly.Xml.domToText(xml);
   },
-
-
 
   cargar_codigo_desde_el_modelo: function() {
     if (this.get('model')) {
