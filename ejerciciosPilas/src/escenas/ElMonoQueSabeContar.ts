@@ -15,7 +15,7 @@ class ElMonoQueSabeContar extends Base {
 
     puntaje;
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.cantMaxColumnas=10;
 
         this.definidor = new DefinidorColumnasRandom(5,10)

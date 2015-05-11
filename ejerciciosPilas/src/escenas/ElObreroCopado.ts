@@ -12,7 +12,7 @@ class ElObreroCopado extends Base {
     obrero;
     
     iniciar() {
-        this.fondo = new Fondo('fondos/fondoObrero.png',0,0);
+        this.fondo = new Fondo('fondos.obrero.png',0,0);
         this.obrero = new Obrero(160,-100);
         this.obrero.aprender(AvisaAlSalirDePantalla,{});
     }

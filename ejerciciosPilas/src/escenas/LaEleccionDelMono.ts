@@ -10,7 +10,7 @@ class LaEleccionDelMono extends Base {
     cuadricula;
     mono;
     iniciar() {
-    	this.fondo = new Fondo('fondos/nubes.png',0,0);
+    	this.fondo = new Fondo('fondos.nubes.png',0,0);
         var cantidadFilas=1
         var cantidadColumnas=2
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,

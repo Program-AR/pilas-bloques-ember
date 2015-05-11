@@ -16,7 +16,7 @@ class SuperViaje extends Base {
     restantesKM;
         
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.personaje = new PerroCohete(0,0);
         this.restantesKM = this.totalKM;
     }

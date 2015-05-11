@@ -14,7 +14,7 @@ class LaberintoCorto extends Base {
     cuadricula;
         
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
         //this.robot.izquierda = pilas.izquierda();
 
         this.cuadricula = new Camino(0,0,['->','v','->','->'],
