@@ -25,22 +25,27 @@ class ElMonoQueSabeContar extends Base {
         this.cuadricula.completarConObjetosRandom(this.etiquetasDeObjetosAColocar);
         this.mono = new MonoAnimado(0,0);
         this.cuadricula.posicionarObjeto(this.mono,0,0);
-        this.contadorDeEtiquetas= new ContadorDeEtiquetas();
+/*
+        this.conta
+
+        dorDeEtiquetas= new ContadorDeEtiquetas();
         this.contadorDeEtiquetas.agregarEtiqueta('ManzanaAnimada');
         this.contadorDeEtiquetas.agregarEtiqueta('BananaAnimada');
+*/
 
-
-        this.tableroBananas = new Tablero(150,220,"Bananas",0,undefined);
-        this.tableroManzanas = new Tablero(150,230,"Manzanas",0,undefined);
-        this.cantidadManzanas= new ObservadoConAumentar();
-        this.cantidadBananas= new ObservadoConAumentar();
-        this.cantidadManzanas.registrarObservador(this.tableroManzanas);
-        this.cantidadBananas.registrarObservador(this.tableroBananas);
+        this.tableroBananas = new Tablero(150,220,"Bananas",undefined);
+        this.tableroManzanas = new Tablero(150,230,"Manzanas",undefined);
+        this.cantidadManzanas= new ObservadoConAumentar(0);
+        this.cantidadBananas= new ObservadoConAumentar(0);
+        this.cantidadManzanas.registrarObservador(this.tableroManzanas,0);
+        this.cantidadBananas.registrarObservador(this.tableroBananas,0);
 
 
     }
 
-
+    personajePrincipal(){
+      return this.mono;
+    }
     atras() {
         this.mono.hacer_luego(MoverACasillaIzquierda);
     }

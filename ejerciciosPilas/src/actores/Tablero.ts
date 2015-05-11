@@ -1,35 +1,20 @@
 /*Implementa un tablero, que tiene "nombre de equipo" y "puntaje"*/
 /*Notar que aumentar puede tomar valores negativos o positivos*/
-
+/* Para usarlo, hay que construirlo y setearle un observado
+ver clase "observado" */
 class Tablero{
   nombre;
   puntaje;
   observado;
   /*Saco por ahora la observacion de algo, no lo necesito so far.*/
-  constructor(x,y,texto,valorInicialPuntaje,observadop){
+  constructor(x,y,texto){
     //this.observado=observadoP || undefined;
-    this.observado=observadop
     var colorNombre=undefined
     var colorPuntaje=undefined
     this.nombre=new Texto(x,y,texto,colorNombre);
 
-    this.puntaje=new Puntaje(x + 10 ,y,valorInicialPuntaje,colorPuntaje);
-    if(this.observado){
-        this.observado.registrarObservador(this);
-    }
+    this.puntaje=new Puntaje(x + 10 ,y,0,colorPuntaje);
 }
-
-
-  ubicarTexto(x,y){
-    this.nombre.x=x;
-    this.nombre.y=y;
-  }
-
-  ubicarPuntaje(x,y){
-    this.puntaje.x=x;
-    this.puntaje.y=y;
-  }
-
 
 
   dameValor(){
@@ -47,9 +32,8 @@ class Tablero{
         this.puntaje.aumentar(nuevoValor-this.puntaje.obtener())
       }
   }
-
-  tuObservadoCambio(){
-    this.setearValor(this.observado.dameAtributo());
+  tuObservadoCambio(observado){
+    this.setearValor(observado.dameAtributo());
   }
 
 
