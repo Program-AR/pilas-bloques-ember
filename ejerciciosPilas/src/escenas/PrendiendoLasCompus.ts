@@ -39,6 +39,9 @@ class PrendiendoLasCompus extends Base {
         }
 
     }
+    personajePrincipal(){
+      return this.buzo;
+    }
 
     moverDerecha(){
            this.buzo.hacer_luego(MoverACasillaDerecha);
@@ -54,7 +57,7 @@ class PrendiendoLasCompus extends Base {
     }
 
     prenderCompu(){
-          this.buzo.hacer_luego(EncenderPorEtiqueta,{'etiqueta':'compuAnimada','mensajeError': 'Acá no hay una compu para prender'});
+          this.buzo.hacer_luego(EncenderPorEtiqueta,{'etiqueta':'CompuAnimada','mensajeError': 'Acá no hay una compu para prender'});
 
     }
 

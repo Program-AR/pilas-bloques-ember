@@ -33,8 +33,8 @@ class ElMonoQueSabeContar extends Base {
         this.contadorDeEtiquetas.agregarEtiqueta('BananaAnimada');
 */
 
-        this.tableroBananas = new Tablero(150,220,"Bananas",undefined);
-        this.tableroManzanas = new Tablero(150,230,"Manzanas",undefined);
+        this.tableroBananas = new Tablero(150,220,"Bananas");
+        this.tableroManzanas = new Tablero(150,230,"Manzanas");
         this.cantidadManzanas= new ObservadoConAumentar(0);
         this.cantidadBananas= new ObservadoConAumentar(0);
         this.cantidadManzanas.registrarObservador(this.tableroManzanas,0);
