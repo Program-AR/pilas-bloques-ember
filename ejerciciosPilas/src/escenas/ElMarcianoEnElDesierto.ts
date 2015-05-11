@@ -13,7 +13,7 @@ class ElMarcianoEnElDesierto extends Base {
     manzanas;
 
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
         var cantidadFilas=4;
         var cantidadColumnas=5;
 

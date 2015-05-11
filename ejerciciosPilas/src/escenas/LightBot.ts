@@ -13,7 +13,7 @@ class LightBot extends Base {
     cuadricula;
         
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
         //this.robot.izquierda = pilas.izquierda();
 
         this.cuadricula = new Cuadricula(0,0,1,7,

@@ -16,7 +16,7 @@ class LightBotRecargado extends Base {
     objetos = [];
         
     iniciar() {
-        this.fondo = new Fondo('fondos/fondoEstrellas.png',0,0);
+        this.fondo = new Fondo('fondos.estrellas.png',0,0);
         //this.robot.izquierda = pilas.izquierda();
 
         this.cuadricula = new Cuadricula(0,0,1,11,

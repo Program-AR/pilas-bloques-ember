@@ -28,7 +28,7 @@ class LaGranAventuraDelMarEncantado extends Base {
     unicornio;
         
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondos.nubes.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,4,5,
             {alto: 300},

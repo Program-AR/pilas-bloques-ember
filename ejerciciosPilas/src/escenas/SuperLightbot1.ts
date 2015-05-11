@@ -11,7 +11,7 @@ class SuperLightBot1 extends LightBotRecargado {
     }
 
     public inicializarEscenaAleatoriamente(){
-      this.fondo = new Fondo('fondos/fondoEstrellas.png', 0, 0);
+      this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
 
       this.cantidadColumnas = Math.floor((Math.random() * this.cantidadMaxColumnas) +3);
       this.cuadricula = new Cuadricula(-200 + (this.cantidadColumnas / 2) * this.altoCasilla, 0, 1, this.cantidadColumnas,
