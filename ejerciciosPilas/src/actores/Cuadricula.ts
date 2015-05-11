@@ -106,6 +106,12 @@ class Cuadricula extends Actor {
         }
     }
     
+    agregarActor(actor,nroF,nroC){
+        actor.cuadricula = this;
+        actor.escalarProporcionalALimites(this.anchoCasilla() - 5, this.altoCasilla() - 5)
+        actor.setCasillaActual(this.casilla(nroF,nroC),true);
+    }
+    
     altoCasilla(){
         return this.opcionesCasilla.alto;
     }

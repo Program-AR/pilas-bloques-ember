@@ -85,6 +85,7 @@ declare class Actor extends Estudiante {
     escala_x: any;
     escala_y: any;
     escala: any;
+    escalarProporcionalALimites(anchoLimite: any, altoLimite: any): void;
     rotacion: any;
     transparencia: number;
     ancho: number;
@@ -729,6 +730,7 @@ declare class CaminarBase extends Comportamiento {
     pasos: any;
     velocidad: any;
     iniciar(receptor: any): void;
+    redondear(number: any): number;
     actualizar(): boolean;
     mover(): void;
 }
@@ -1259,9 +1261,6 @@ declare class Texto extends Actor {
     crear_texto(): void;
     eliminar_texto(): void;
     eliminar(): void;
-    escala_x: any;
-    escala_y: any;
-    escala: any;
 }
 declare class Bloque extends Actor {
     constructor(x: any, y: any, nombre_imagen: any);

@@ -46,12 +46,12 @@ class TresHuesos extends Base {
 
         // se crea el personaje
         this.personaje = new PerroCohete(0,0);
-        this.personaje.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(this.personaje,0,0);
     }
 
     agregarHueso(columna) {
         var objeto = new Hueso(0,0);
-        objeto.setCuadricula(this.cuadricula,0,columna);
+        this.cuadricula.agregarActor(objeto,0,columna);
         //objeto.y -= 30;
         this.objetos.push(objeto);
     }

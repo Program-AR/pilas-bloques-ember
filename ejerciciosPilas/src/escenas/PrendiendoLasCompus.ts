@@ -21,7 +21,7 @@ class PrendiendoLasCompus extends Base {
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
         this.buzo = new Robot(0, 0);
-        this.buzo.setCuadricula(this.cuadricula,0, 0);
+        this.cuadricula.agregarActor(this.buzo,0, 0);
         this.completarConCompusEnLaterales();
 
     }
@@ -29,13 +29,13 @@ class PrendiendoLasCompus extends Base {
     private completarConCompusEnLaterales(){
         //Completo la primer y ultima fila
         for(var i=1;i<this.cantidadColumnas-1;++i){
-          new CompuAnimada(0,0).setCuadricula(this.cuadricula,0,i);
-          new CompuAnimada(0,0).setCuadricula(this.cuadricula,this.cantidadFilas-1,i);
+          this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
+          this.cuadricula.agregarActor(new CompuAnimada(0,0),this.cantidadFilas-1,i);
         }
         //Completo la primer y ultima columna
         for(var i=1;i<this.cantidadFilas-1;++i){
-          new CompuAnimada(0,0).setCuadricula(this.cuadricula,i,0);
-          new CompuAnimada(0,0).setCuadricula(this.cuadricula,i,this.cantidadColumnas-1);
+          this.cuadricula.agregarActor(new CompuAnimada(0,0),i,0);
+          this.cuadricula.agregarActor(new CompuAnimada(0,0),i,this.cantidadColumnas-1);
         }
 
     }

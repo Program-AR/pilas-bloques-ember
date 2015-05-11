@@ -22,7 +22,7 @@ class LightBot extends Base {
             cantColumnas: 5})
         
         this.robot = new Obrero(0,0);
-        this.robot.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(this.robot,0,0);
         //this.robot.aprender(AvisaAlSalirDePantalla,{});
     }
     

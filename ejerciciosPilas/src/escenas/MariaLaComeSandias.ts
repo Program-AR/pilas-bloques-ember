@@ -14,7 +14,7 @@ class MariaLaComeSandias extends Base {
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
         this.maria = new MariaAnimada(0, 0);
-        this.maria.setCuadricula(this.cuadricula,cantidadFilas-1, 0);
+        this.cuadricula.agregarActor(this.maria,cantidadFilas-1, 0);
         this.maria.escala=0.1;
         this.completarConSandias();
     }
@@ -23,13 +23,13 @@ class MariaLaComeSandias extends Base {
         this.completarFila(0);
         this.completarFila(2);
         this.completarFila(4);
-        new SandiaAnimada(0, 0).setCuadricula(this.cuadricula, 1, 0);
-        new SandiaAnimada(0, 0).setCuadricula(this.cuadricula, 3, 0);
+        this.cuadricula.agregarActor(new SandiaAnimada(0, 0), 1, 0);
+        this.cuadricula.agregarActor(new SandiaAnimada(0, 0), 3, 0);
     }
 
     private completarFila(numeroFila){
         for (var x = 0; x < this.cantidadColumnas;x++){
-            new SandiaAnimada(0, 0).setCuadricula(this.cuadricula, numeroFila, x);
+            this.cuadricula.agregarActor(new SandiaAnimada(0, 0), numeroFila, x);
         }
     }
 

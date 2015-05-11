@@ -34,12 +34,12 @@ class LightBotRecargado extends Base {
 
         // se crea el personaje
         this.personaje = new Robot(0,0);
-        this.personaje.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(this.personaje,0,0);
     }
 
     agregarLuz(columna) {
         var casillaLuminosa = new CasillaConLuz(0,0);
-        casillaLuminosa.setCuadricula(this.cuadricula,0,columna);
+        this.cuadricula.agregarActor(casillaLuminosa,0,columna);
         casillaLuminosa.escala_x = .50;
         casillaLuminosa.escala_y = .50;
         this.objetos.push(casillaLuminosa);

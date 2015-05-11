@@ -18,7 +18,7 @@ class SuperLightBot1 extends LightBotRecargado {
           { alto: this.altoCasilla, ancho: this.altoCasilla * this.cantidadColumnas },
           { grilla: 'casilla_base.png', cantColumnas: 1, alto: 38 })
       this.personaje = new Robot(0, 0);
-      this.personaje.setCuadricula(this.cuadricula, 0, 0)
+      this.cuadricula.agregarActor(this.personaje, 0, 0)
     }
 
     private encenderTodasLasCasillas(){

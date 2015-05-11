@@ -88,19 +88,6 @@ class ActorAnimado extends Actor {
             this.y = c.y;
         }
     } 
-    setCuadricula(cuad,nroF,nroC){
-        this.cuadricula = cuad;
-        var escalaAlto = this.alto / (cuad.altoCasilla() - 5);
-        var escalaAncho = this.ancho / (cuad.anchoCasilla() - 5);
-        var escala = escalaAncho;
-
-        if(escalaAlto > escalaAncho){
-            escala = escalaAlto;
-        }
-
-        this.escala = 1.0 / escala;
-        this.setCasillaActual(cuad.casilla(nroF,nroC),true);
-    }
 
     cuando_busca_recoger() {
         pilas.escena_actual().intentaronRecoger();

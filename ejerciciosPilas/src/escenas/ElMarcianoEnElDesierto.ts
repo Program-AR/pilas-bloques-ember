@@ -25,35 +25,35 @@ class ElMarcianoEnElDesierto extends Base {
 
         this.manzanas=[];
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(objeto,0,0);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,0,2);
+        this.cuadricula.agregarActor(objeto,0,2);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,0,4);
+        this.cuadricula.agregarActor(objeto,0,4);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,1,4);
+        this.cuadricula.agregarActor(objeto,1,4);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,2,4);
+        this.cuadricula.agregarActor(objeto,2,4);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,3,2);
+        this.cuadricula.agregarActor(objeto,3,2);
         this.manzanas.push(objeto);
 
         var objeto= new ManzanaAnimada(0,0);
-        objeto.setCuadricula(this.cuadricula,3,1);
+        this.cuadricula.agregarActor(objeto,3,1);
         this.manzanas.push(objeto);
 
         this.personaje = new Marciano(0,0);
-        this.personaje.setCuadricula(this.cuadricula,cantidadFilas-1,0);
+        this.cuadricula.agregarActor(this.personaje,cantidadFilas-1,0);
     }
 
 /*************** Métodos para que se cuelgue blockly ****************/

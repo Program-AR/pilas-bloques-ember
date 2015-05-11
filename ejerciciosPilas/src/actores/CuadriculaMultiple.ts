@@ -9,7 +9,7 @@
 4. También, dado un definidor de Columnas (ver clase de este archivo), permite inicializar
 esta matriz con objetos de esos tipos de manera aleatoria.
 
-5. Se provee el método posicionar objeto que reemplaza al setCuadricula tradicional
+5. Se provee el método posicionar objeto que reemplaza al agregarActor tradicional
 
 6. Para un ejemplo de utilizacion ver ElMonoQueSabeContar.ts
 
@@ -43,7 +43,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
     public avanzarFila(objeto){
         //TODO: deberia tener en cuenta que se puede ir del tablero????
         if (objeto.casillaActual().nroColumna==0){
-            objeto.setCuadricula(objeto.cuadricula.siguienteFila(),0,0)
+            objeto.cuadricula.siguienteFila().agregarActor(objeto,0,0)
         }else{
             throw "No estoy al inicio de la fila"
         }
@@ -53,7 +53,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
     }
     public posicionarObjeto(objeto,i,j){
         //this.diccionarioFilaObjeto[objeto]=i;
-        objeto.setCuadricula(this.filas[i],0,j)
+        this.filas[i].agregarActor(objeto,0,j)
     }
 
 }
@@ -109,7 +109,7 @@ class Fila extends Cuadricula{
     	// en la primer posicion no se debe guardar ningun objeto
         for (var index = 1; index < this.cantColumnas;index+=1){
             if (Math.random()<0.5) {
-                conjuntoClases.dameUno().setCuadricula(this,0,index)
+                this.agregarActor(conjuntoClases.dameUno(),0,index)
             }
         }
     }

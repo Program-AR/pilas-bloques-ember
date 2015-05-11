@@ -12,20 +12,20 @@ class AlimentandoALosPeces extends Base {
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
         this.buzo = new buzoAnimado(0, 0);
-        this.buzo.setCuadricula(this.cuadricula,cantidadFilas-1, 0);
+        this.cuadricula.agregarActor(this.buzo,cantidadFilas-1, 0);
         this.colocarPeces();
         this.alimento
     }
 
 
     private colocarPeces(){
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,cantidadFilas-1,1);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,cantidadFilas-1,2);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,cantidadFilas-1,3);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,0,0);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,0,1);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,0,2);
-      new PezAnimado(0,0).setCuadricula(this.cuadricula,0,3);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),cantidadFilas-1,1);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),cantidadFilas-1,2);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),cantidadFilas-1,3);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),0,0);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),0,1);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),0,2);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),0,3);
     }
 
     alimentarPez(){

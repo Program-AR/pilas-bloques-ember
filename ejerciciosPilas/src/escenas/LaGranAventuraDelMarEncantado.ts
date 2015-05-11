@@ -37,22 +37,22 @@ class LaGranAventuraDelMarEncantado extends Base {
         
         // se ubican los actores
         this.llave = new LlaveAnimado(0,0);
-        this.llave.setCuadricula(this.cuadricula,1,4)
+        this.cuadricula.agregarActor(this.llave,1,4)
 
         this.cofre = new CofreAnimado(0,0);
-        this.cofre.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(this.cofre,0,0);
 
         this.caballero = new CaballeroAnimado(0,0);
-        this.caballero.setCuadricula(this.cuadricula,1,2);
+        this.cuadricula.agregarActor(this.caballero,1,2);
 
         this.mago = new MagoAnimado(0,0);
-        this.mago.setCuadricula(this.cuadricula,3,1);
+        this.cuadricula.agregarActor(this.mago,3,1);
 
         this.unicornio = new UnicornioAnimado(0,0);
-        this.unicornio.setCuadricula(this.cuadricula,3,4);
+        this.cuadricula.agregarActor(this.unicornio,3,4);
 
         this.heroe = new HeroeAnimado(0,0);
-        this.heroe.setCuadricula(this.cuadricula,3,0);
+        this.cuadricula.agregarActor(this.heroe,3,0);
         this.heroe.aprender(AvisaAlSalirDePantalla,{});
 
         // se carga el estado inicial

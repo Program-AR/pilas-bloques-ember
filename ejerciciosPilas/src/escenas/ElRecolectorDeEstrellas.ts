@@ -17,14 +17,14 @@ class ElRecolectorDeEstrellas extends Base {
             cantColumnas: 5})
         
         this.recolector = new RecolectorEstrellas(0,0);
-        this.recolector.setCuadricula(this.cuadricula,cantidadFilas-1,0);
+        this.cuadricula.agregarActor(this.recolector,cantidadFilas-1,0);
         // La posición inicial pretende respectar el ejemplo
         
         this.objetos=[];
         for (var fila=0;fila<cantidadFilas;fila++){
             for(var columna=1;columna<cantidadColumnas;columna++){
                 var objeto= new Hueso(0,0);
-                objeto.setCuadricula(this.cuadricula,fila,columna);
+                this.cuadricula.agregarActor(objeto,fila,columna);
                 this.objetos.push(objeto)
             }
         }

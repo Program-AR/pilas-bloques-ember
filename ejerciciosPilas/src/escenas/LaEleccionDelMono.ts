@@ -19,7 +19,7 @@ class LaEleccionDelMono extends Base {
             cantColumnas: 5})
 
         this.mono = new MonoAnimado(0,0);
-        this.mono.setCuadricula(this.cuadricula,0,0);
+        this.cuadricula.agregarActor(this.mono,0,0);
         
 		
 		if (Math.random()< .5)  {
@@ -30,7 +30,7 @@ class LaEleccionDelMono extends Base {
     }
 
     agregar(objeto){
-        new objeto(0,0).setCuadricula(this.cuadricula,0,1);
+        this.cuadricula.agregarActor(new objeto(0,0),0,1);
     }
 
     comerManzana(){
