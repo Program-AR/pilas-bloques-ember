@@ -35,12 +35,12 @@ class MovimientoEnCuadricula extends Comportamiento {
         // Template Method. Devuelve la velocidad vertical ú horizontal según corresponda 
     }
     
-    // El nro 20 depende del nro 0.05 establecido en CaminaBase
+    // El nro 0.05 depende del nro 0.05 establecido en CaminaBase
     velocidadHorizontal(){
-        return this.cuadricula.anchoCasilla() / 20;    
+        return this.cuadricula.anchoCasilla() * 0.05;
     }
     velocidadVertical(){
-        return this.cuadricula.altoCasilla() / 20;
+        return this.cuadricula.altoCasilla() * 0.05;
     }
     verificarDireccion(casilla){
         var proximaCasilla = this.proximaCasilla(casilla);

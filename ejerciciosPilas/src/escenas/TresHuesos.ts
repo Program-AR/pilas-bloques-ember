@@ -24,7 +24,7 @@ class TresHuesos extends Base {
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5});
         
-
+/*
         //se cargan los huesos
         var hayAlMenosUno = false;
         for(var i = 0; i < 3; i++) {
@@ -43,19 +43,37 @@ class TresHuesos extends Base {
             }
             this.agregarHueso(columna);
         }
+*/
+
+        var objeto= new Hueso(0,0);
+        objeto.setCuadricula(this.cuadricula,0,0);
+        this.objetos.push(objeto);
+
+        var objeto= new Hueso(0,0);
+        objeto.setCuadricula(this.cuadricula,0,1);
+        this.objetos.push(objeto);
+
+        var objeto= new Hueso(0,0);
+        objeto.setCuadricula(this.cuadricula,0,2);
+        this.objetos.push(objeto);
+
+        var objeto= new Hueso(0,0);
+        objeto.setCuadricula(this.cuadricula,0,3);
+        this.objetos.push(objeto);
 
         // se crea el personaje
         this.personaje = new PerroCohete(0,0);
         this.cuadricula.agregarActor(this.personaje,0,0);
     }
-
+/*
     agregarHueso(columna) {
         var objeto = new Hueso(0,0);
         this.cuadricula.agregarActor(objeto,0,columna);
         //objeto.y -= 30;
         this.objetos.push(objeto);
     }
-
+*/
+/*
     intentaronRecoger() {
         if (this.tocandoHueso()) {
             var objeto = this.objetos.filter(objeto => objeto.colisiona_con(this.personaje))[0];
@@ -66,15 +84,15 @@ class TresHuesos extends Base {
             this.personaje.decir("¡No hay hueso para comer!");
         }
     }
-    
+*/
     comerHueso() {
-        this.personaje.hacer_luego(Recoger);
+        this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'Hueso', 'mensajeError' : 'No hay un hueso aqui' });
     }
-
+/*
     tocandoHueso() {
         return this.objetos.some(objeto => objeto.colisiona_con(this.personaje));
     }
-
+*/
     avanzar() {
         this.personaje.hacer_luego(MoverACasillaDerecha);
     }

@@ -20,8 +20,8 @@ class ElMarcianoEnElDesierto extends Base {
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,{},
             {grilla: 'casillaLightbot.png', 
             cantColumnas: 5, 
-            ancho: 50, 
-            alto: 50})
+            ancho: 60, 
+            alto: 60})
 
         this.manzanas=[];
         var objeto= new ManzanaAnimada(0,0);
@@ -52,8 +52,9 @@ class ElMarcianoEnElDesierto extends Base {
         this.cuadricula.agregarActor(objeto,3,1);
         this.manzanas.push(objeto);
 
-        this.personaje = new Marciano(0,0);
+        this.personaje = new MarcianoAnimado(0,0);
         this.cuadricula.agregarActor(this.personaje,cantidadFilas-1,0);
+
     }
 
 /*************** Métodos para que se cuelgue blockly ****************/

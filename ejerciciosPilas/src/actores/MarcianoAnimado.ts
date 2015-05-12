@@ -1,6 +1,6 @@
 /// <reference path="ActorAnimado.ts"/>
 
-class Marciano extends ActorAnimado {
+class MarcianoAnimado extends ActorAnimado {
     constructor(x, y) {
         super(x, y, {grilla: 'rpg.maton.png', cantColumnas:12, cantFilas: 1});
 
