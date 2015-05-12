@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>pilas-engine-bloques</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script src='reemplazar-require-paso-1.js'></script>
+    <script src='capturar-excepciones.js'></script>
+
+    {{content-for 'head'}}
+
+    <!-- AGREGADOS POR EMBERCLI -->
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/pilas-engine-bloques.css">
+
+    <!-- ESTILO PERSONALIZADO DE BOOTSTRAP -->
+    <link rel="stylesheet" href="css/AdminLTE.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/estilo-editor.css">
+    <link rel="stylesheet" href="css/ui-layout.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/fuentes.css">
+
+    <!-- ESTILO PARA ICONOS -->
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+
+  </head>
+  <body>
+
+    {{content-for 'body'}}
+
+    <!-- AGREGADOS POR EMBERCLI -->
+    <script src="assets/vendor.js"></script>
+    <script src="assets/pilas-engine-bloques.js"></script>
+
+    <!-- PILAS-ENGINE -->
+    <script src="libs/pilasweb.js"></script>
+
+    <!-- BLOCKLY -->
+    <script src="libs/blockly/blockly_compressed.js"></script>
+    <script src="libs/blockly/blocks_compressed.js"></script>
+    <script src="libs/blockly/javascript_compressed.js"></script>
+    <script src="libs/blockly/msg/js/es.js"></script>
+
+    <!-- BLOCKLY FOR TESTING -->
+    <!-- FOR DEVELOP
+    <script src="libs/blockly/blockly_uncompressed.js"></script>
+    <script src="libs/blockly/blocks/logic.js"></script>
+    <script src="libs/blockly/blocks/loops.js"></script>
+    <script src="libs/blockly/blocks/math.js"></script>
+    <script src="libs/blockly/blocks/text.js"></script>
+    <script src="libs/blockly/blocks/lists.js"></script>
+    <script src="libs/blockly/blocks/colour.js"></script>
+    <script src="libs/blockly/blocks/variables.js"></script>
+    <script src="libs/blockly/blocks/procedures.js"></script>
+    <script src="libs/blockly/generators/javascript.js"></script>
+    <script src="libs/blockly/generators/javascript/logic.js"></script>
+    <script src="libs/blockly/generators/javascript/loops.js"></script>
+    <script src="libs/blockly/generators/javascript/math.js"></script>
+    <script src="libs/blockly/generators/javascript/text.js"></script>
+    <script src="libs/blockly/generators/javascript/lists.js"></script>
+    <script src="libs/blockly/generators/javascript/colour.js"></script>
+    <script src="libs/blockly/generators/javascript/variables.js"></script>
+    <script src="libs/blockly/generators/javascript/procedures.js"></script>
+    <script src="libs/blockly/msg/js/es.js"></script>
+    -->
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script src='reemplazar-require-paso-2.js'></script>
+    <script src='livereload.js'></script>
+
+  </body>
+</html>

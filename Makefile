@@ -1,49 +1,58 @@
 VERSION=0.1.6
+NOMBRE="pilas-engine-bloques"
 
-# Colores
 N=[0m
-V=[01;32m
-A=[01;33m
+G=[01;32m
+Y=[01;33m
+B=[01;34m
+L=[01;30m
+
+comandos:
+	@echo ""
+	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N}"
+	@echo ""
+	@echo "  ${Y}Para desarrolladores${N}"
+	@echo ""
+	@echo "    ${G}iniciar${N}         Instala dependencias."
+	@echo "    ${G}compilar${N}        Genera los archivos compilados."
+	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
+	@echo ""
+	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
+	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
+	@echo ""
+	@echo ""
+	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
+	@echo ""
+	@echo "    ${G}bajar_dependencias${N}              Descarga las dependencias pilas y blockly."
+	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
+	@echo "    ${G}actualizar_pilas${N}                Vincula pilasweb."
+	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
+	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
+	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
+	@echo ""
+	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar (sync):${N}"
+	@echo "${L}"
+	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
+	@echo "        actualizar_pilas → actualizar_blockly "
+	@echo "${N}"
+	@echo ""
+	@echo "  ${Y}Para distribuir${N}"
+	@echo ""
+	@echo "    ${G}version${N}         Genera una nueva versión."
+	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
+	@echo "    ${G}publicar${N}        Publica el cambio para el paquete deb."
+	@echo "    ${G}crear_deb${N}       Genera el paquete deb para huayra."
+	@echo ""
 
 
-all:
-	@echo ""
-	@echo "Comandos disponibles"
-	@echo ""
-	@echo "  $(A)De uso para desarrollo: $(N)"
-	@echo ""
-	@echo "    $(V)bajar_dependencias$(N)"
-	@echo "    $(V)actualizar$(N)  Actualiza el repositorio, pilas-engine y blockly."
-	@echo ""
-	@echo "    $(V)server$(N)      Prueba la aplicación en el navegador."
-	@echo "    $(V)build$(N)       Genera los archivos compilados."
-	@echo "    $(V)watch$(N)       Genera los archivos compilados de forma contínua."
-	@echo ""
-	@echo "    $(V)test_mac$(N)    Prueba la aplicación sobre OSX"
-	@echo "    $(V)test_linux$(N)  Prueba la aplicación sobre GNU/Linux"
-	@echo ""
-	@echo "  $(A)Solo para publicar: $(N)"
-	@echo ""
-	@echo "    $(V)version$(N)     Genera la informacion de versión actualizada."
-	@echo "    $(V)ver_sync$(N)    Sube la nueva version al servidor."
-	@echo "    $(V)binarios$(N)    Genera las versiones compilada para Windows y OSX"
-	@echo "    $(V)subir$(N)       Publica en dropbox los binarios generados"
-	@echo ""
-
-build:
-	ember build
-
-watch:
-	ember build --watch
-
-actualizar:
-	git pull
+iniciar:
 	npm install
-	bower install
-	make actualizar_pilas
-	make actualizar_blockly
+	./node_modules/bower/bin/bower install
 
-
+vincular_dependencias:
+	rm -f pilasweb blockly
+	ln -s ../pilasweb
+	ln -s ../blockly
 
 bajar_dependencias:
 	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
@@ -51,14 +60,17 @@ bajar_dependencias:
 	cd ..; git clone https://github.com/google/closure-library.git
 
 actualizar_pilas:
-	cd pilasweb; git pull; make build; cd ..
+	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
+	rm -r -f public/libs/blockly
+	mkdir -p public/libs/blockly
 	make copiar_blockly_comprimido
+
 
 copiar_blockly_comprimido:
 	# CORE
@@ -73,7 +85,7 @@ copiar_blockly_comprimido:
 	# LANG
 	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
-
+	    
 copiar_blockly_descomprimido:
 	# CORE
 	cp -f blockly/blockly_uncompressed.js public/libs/blockly/
@@ -94,58 +106,43 @@ copiar_blockly_descomprimido:
 	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
 
-test_mac: build
-	@echo "Cuidado - se está usando la version de nodewebkit del sistema."
-	make _a_desarrollo
-	open -a /Applications/node-webkit.app --args /Users/hugoruscitti/proyectos/pilas-engine-bloques/dist
+dist: compilar
+
+ejecutar_linux: dist
+	nw dist
+
+ejecutar_mac: dist
+	/Applications/nwjs.app/Contents/MacOS/nwjs dist
+
+test_mac: ejecutar_mac
+
+build: compilar
+
+publicar:
+	dch -i
+
+crear_deb:
+	dpkg-buildpackage -us -uc
+
+compilar:
+	./node_modules/ember-cli/bin/ember build
+
+compilar_live:
+	./node_modules/ember-cli/bin/ember build --watch
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} package.json public/package.json  public/package.produccion.json public/package.desarrollo.json extras/instalador.nsi app/templates/application.hbs extras/distwin.py Makefile --list
-	@echo "Es recomendable compilar, generar los tags y sube todo a github:"
+	@bumpversion patch --current-version ${VERSION} package.json public/package.json Makefile --list
+	make build
+	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
-	@echo "make build"
 	@echo "make ver_sync"
 
-ver_sync:
-	git tag '${VERSION}'
-	make _changelog
+subir_version:
 	git commit -am 'release ${VERSION}'
+	git tag '${VERSION}'
 	git push
 	git push --all
 	git push --tags
-
-server:
-	ember server
-
-binarios: build
-	make _a_produccion
-	@grunt nodewebkit
-	# osx
-	hdiutil create distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.6.dmg -srcfolder distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques.app -size 400mb
-	rm -r -f distribuibles/0.1.6
-	mkdir distribuibles/0.1.6
-	cp distribuibles/pilas-engine-bloques/osx32/pilas-engine-bloques_0.1.6.dmg distribuibles/0.1.6
-	# windows
-	cp extras/instalador.nsi distribuibles/pilas-engine-bloques/win32/
-	makensis distribuibles/pilas-engine-bloques/win32/instalador.nsi
-	cp distribuibles/pilas-engine-bloques/win32/pilas-engine-bloques_0.1.6.exe distribuibles/0.1.6/
-	make _a_desarrollo
-
-subir:
-	mv distribuibles/0.1.6 /Users/hugoruscitti/Dropbox/releases/pilas-engine-bloques/
-
-_a_desarrollo:
-	@echo "Pasando a desarrollo..."
-	cp public/package.desarrollo.json public/package.json
-	cp public/package.desarrollo.json dist/package.json
-
-_a_produccion:
-	@echo "Pasando a produccion..."
-	cp public/package.produccion.json dist/package.json
-	cp public/package.produccion.json public/package.json
-
-_changelog:
-	gitchangelog > CHANGELOG
 
 .PHONY: dist

@@ -1,0 +1,17 @@
+<div class='contenedor-editor' id='contenedor-editor'>
+
+  <div class='panel-pilas' id='panel-pilas'>
+    {{pilas-canvas actividad=model.actividad}}
+
+    <div class='panel-ayuda'>
+      <h4>{{actividad.nombre}}</h4>
+      <p>{{actividad.enunciado}}</p>
+    </div>
+    
+  </div>
+
+  <div class='panel-derecho' id='panel-derecho'>
+    {{pilas-blockly actividad=model.actividad}}
+  </div>
+
+</div>

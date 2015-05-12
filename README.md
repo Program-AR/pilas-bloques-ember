@@ -1,39 +1,26 @@
-pilas-engine-bloques
-====================
+¡Hola, esto es pilas-engine-bloques!
+==========================
 
-Una aplicación experimental para fomentar el aprendizaje
-de la programación usando [pilas-engine](http://www.pilas-engine.com.ar) y
-[blockly](https://developers.google.com/blockly/) (estamos usando una versión propia de [blockly](https://github.com/sawady/blockly)).
+Este proyecto está construido a partir de nwjs-ember-seed,
+un marco de aplicación pensado como punto de partida
+para hacer aplicaciones de escritorio usando javascript.
 
+![](public/preview.png)
 
-![](preview/main.png)
+Esta aplicación integra las herramientas [ember](http://emberjs.com/), [ember-cli](http://www.ember-cli.com/)
+y [nwjs](http://nwjs.io/) junto a unas configuraciones iniciales
+para poder editar código y observar los resultados inmediatamente (livereload).
 
+¿Cómo empezar?
+--------------
 
+Al clonar el repositorio, podrías escribir el comando ``make``
+para ver las tareas disponibles:
 
-Instalación para desarrolladores
---------------------------------
+![](public/make.png)
 
-Antes de comenzar, necesitas tener instalado ``nodejs`` (que
-viene con ``npm`` incluido) y las dependencias ``bower``, ``grunt``, ``grunt-cli`` y ``ember-cli``.
+Si tenes instalado nwjs, lo mejor es lanzar el comando
+``make mac_test`` y en la misma consola ``make watch`` para
+activar el modo livereload.
 
-Para instalar ``nodejs`` podés leer el [siguiente tutorial de instalación](http://examplelab.com.ar/como-instalar-nodejs-en-huayra-linux/), y
-para instalar las otras dependencias podés ejecutar los comandos:
-
-```
-sudo npm install -g bower grunt grunt-cli ember-cli
-```
-
-Luego, para instalar la aplicación en sí:
-
-```
-git clone http://github.com/hugoruscitti/pilas-engine-bloques
-cd pilas-engine-bloques
-npm install
-bower install
-```
-
-Una vez hecho esto, invocando a ``make`` vas a ver los comandos más comunes para
-utilizar, y si algo de lo que querés hacer no está ahí, también vas a poder
-usar los comandos ``ember``, ``npm`` o ``grunt``.
-
-Antes de ejecutar ``make actualizar`` necesitás bajar los repos de Pilasweb y Blockly (este a su vez necesita bajar closure de Google). Haciendo ``make bajar_dependencias`` se clonan los repos correspondientes, que se ubican en el mismo nivel en el que se encuentre la carpeta de Pilas-bloques.
+En cambio, si usas *chrome*, usá el comando ``make server`` y listo :)

@@ -1,0 +1,12 @@
+{{#if deshabilitado}}
+  <img class='grayscale semi-transparente' src='images/desafios/{{nombre}}.png'>
+
+  <div class="ribbon right gray semi-transparente">
+    <a>Muy pronto</a>
+  </div>
+{{else}}
+
+  <img {{action 'abrir'}} src='images/desafios/{{nombre}}.png'>
+{{/if}}
+
+<div class='pilas-desafio-titulo' {{action 'abrir'}}>{{titulo}}</div>

@@ -1,0 +1,122 @@
+html, body {
+  margin: 20px;
+}
+
+[data-ember-action] {
+    cursor: pointer;
+}
+
+* {
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  user-select:none;
+}
+
+input, textarea /*.contenteditable?*/ {
+  -webkit-touch-callout:default;
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+}
+
+
+.nw-zoom {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+
+.btn-rect {
+  width: 40px;
+  height: 34px;
+}
+
+
+.panel-derecho {
+  background-color: white;
+  padding-left: 10px;
+}
+
+
+span.url {
+  color: rgb(180, 180, 180);
+  padding-right: 20px;
+}
+
+
+.spinner {
+  margin: 1em;
+}
+
+
+.galeria-juego {
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  margin: 10px;
+  border: 1px solid gray;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.galeria-juego-preview {
+  max-height: 200px;
+  max-width: 200px;
+}
+
+.galeria-juego-titulo {
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  left: 0;
+  right: 0;
+  z-index: 200;
+  background-color: rgba(247, 247, 247, 0.72);
+  border-top: 1px solid gray;
+}
+
+.galeria-juego-acciones {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.contenido-principal {
+  position: absolute;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-y: scroll;
+}
+
+.navbar {
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.29);
+  z-index: 2000;
+}
+
+
+.modal {
+  top: 70px;
+}
+
+.table-preferencias td, .table-preferencias th {
+  border: 0 !important;
+}
+
+.etiqueta {
+  width: 100px !important;
+}
+
+.modal-backdrop {
+  z-index: 5000;
+}
+
+
+.modal {
+  z-index: 20000;
+}

@@ -4,7 +4,6 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pilas-engine-bloques',
     environment: environment,
-    //baseURL: 'app://localhost/',
     baseURL: '',
     locationType: 'hash',
 
@@ -39,7 +38,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
-
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
@@ -53,6 +51,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+
   }
 
   return ENV;

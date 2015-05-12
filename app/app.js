@@ -8,7 +8,6 @@ Ember.MODEL_FACTORY_INJECTIONS = true;
 var inflector = Ember.Inflector.inflector;
 inflector.irregular("galeria", "galeria");
 
-
 var App = Ember.Application.extend({
   modulePrefix: config.modulePrefix,
   podModulePrefix: config.podModulePrefix,

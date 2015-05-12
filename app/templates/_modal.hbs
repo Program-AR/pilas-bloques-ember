@@ -1,0 +1,28 @@
+<!--id is important, so we can reference it on the toggler component-->
+{{#em-modal configName="bs" id="modal1"}}
+
+  {{#em-modal-title}}
+      {{#em-modal-toggler class="close"}}×{{/em-modal-toggler}}
+      <h4 class="modal-title">Opciones</h4>
+  {{/em-modal-title}}
+
+  {{#em-modal-body}}
+
+    <div class='fila-opcion'>
+      Herramientas de desarrollo:
+      <button class='btn btn-success btn-sm btn-rect' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
+      <button class='btn btn-info btn-sm btn-rect' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
+      <button class='btn btn-warning btn-sm btn-rect' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+    </div>
+
+
+    <div class='fila-opcion'>
+      Tamaño de interfaz: {{nw-zoom}}
+    </div>
+
+  {{/em-modal-body}}
+
+  {{#em-modal-footer}}
+      {{#em-modal-toggler class="btn btn-default"}}Cerrar{{/em-modal-toggler}}
+  {{/em-modal-footer}}
+{{/em-modal}}

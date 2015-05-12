@@ -1,10 +1,8 @@
 import Ember from 'ember';
-import Actividades from '../actividades';
-
-var Bootstrap = window.Bootstrap;
+//import Actividades from '../actividades';
 
 export default Ember.Controller.extend({
-  actividad: Actividades.Alien,
+  //actividad: Actividades.Alien,
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
@@ -82,6 +80,7 @@ export default Ember.Controller.extend({
     },
 
     guardarEnGaleria: function() {
+      //alert("test");
       var imagen = document.getElementById('canvas');
       var imagen_data = imagen.toDataURL('image/png');
 

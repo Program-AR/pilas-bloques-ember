@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header navbar-collapse">
+      <a class="navbar-brand" href="#"><img src='images/logo.png'></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        {{#link-to "index" tagName='li'}}<a href=#>Principal</a>{{/link-to}}
+        {{#link-to "desafios" tagName='li'}}<a href=#>Desafios</a>{{/link-to}}
+        {{#link-to "galeria" tagName='li'}}<a href=#>Galeria</a>{{/link-to}}
+        {{#link-to "preferencia" tagName='li'}}<a href=#>Preferencias</a>{{/link-to}}
+      </ul>
+
+      <div class='header-right'>
+        {{#em-modal-toggler modal-id="modal1" class="header-button"}}{{fa-icon "gear"}}{{/em-modal-toggler}}
+      </div>
+    </div>
+  </div>
+</nav>

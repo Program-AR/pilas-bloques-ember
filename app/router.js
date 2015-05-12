@@ -12,6 +12,10 @@ Router.map(function() {
   this.resource('editor', {path: '/editor/:galeria_id'});
   this.route('galeria');
   this.route('iframe');
+  this.route('test');
+  this.resource('desafios', function() {
+    this.route('nombre', {path: ':nombre'});
+  });
 });
 
 export default Router;

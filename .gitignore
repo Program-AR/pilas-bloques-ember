@@ -7,6 +7,9 @@
 # dependencies
 /node_modules
 /bower_components
+pilasweb
+blockly
+
 
 # misc
 /.sass-cache
@@ -17,13 +20,4 @@ npm-debug.log
 testem.log
 
 public/libs/data
-
 public/libs/pilasweb.js
-
-distribuibles
-cache
-extras/nodewebkit-bins
-
-#Eclipse
-.project
-.settings/

@@ -3,10 +3,8 @@
     "document",
     "window",
     "-Promise",
-    "pilas",
-    "require",
-    "pilasengine",
-    "Blockly"
+    "Blockly",
+    "pilas"
   ],
   "browser": true,
   "boss": true,

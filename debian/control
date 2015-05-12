@@ -1,0 +1,14 @@
+Source: pilas-engine-bloques
+Section: utils
+Priority: extra
+Maintainer: Hugo Ruscitti <hugoruscitti@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.6
+Homepage: https://github.com/HuayraLinux/huayra-caripela
+Vcs-Browser: https://github.com/HuayraLinux/huayra-caripela
+
+Package: pilas-engine-bloques
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, node-webkit (>= 0.11.2.4)
+Description: Descripcion
+ Descripcion larga.
