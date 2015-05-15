@@ -1,3 +1,9 @@
+pilas-engine-bloques (0.1.9) unstable; urgency=low
+
+  * Actualizacion menor. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 15 May 2015 16:48:00 -0300
+
 pilas-engine-bloques (0.1.8) unstable; urgency=low
 
   * modicando la ruta del icono de la aplicación.
