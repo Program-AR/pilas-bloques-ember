@@ -1,3 +1,9 @@
+pilas-engine-bloques (0.1.6) unstable; urgency=low
+
+  * Cambiando nomenclatura.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 15 May 2015 12:49:23 -0300
+
 pilas-engine-bloques (1-0.1.6) unstable; urgency=low
 
   * Refactorizando la estructura de actividades.
