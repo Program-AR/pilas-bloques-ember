@@ -25,22 +25,19 @@ class CuadriculaEsparsa extends Cuadricula{
   }
 
   hayDerecha(casilla){
-    return this.matriz[casilla.nroFila][casilla.nroColumna+1]
-    //si no esta en rango devuelve undefined, lo cual se interpretara
-    //como false
+    return (casilla.nroColumna < this.matriz[casilla.nroFila].length+1)
   }
 
   hayIzquierda(casilla){
-    return this.matriz[casilla.nroFila][casilla.nroColumna-1]
+    return (casilla.nroColumna+1 > 0)
   }
 
   hayAbajo(casilla){
-    return this.matriz[casilla.nroFila+1][casilla.nroColumna]
-
+    return (casilla.nroFila < this.matriz.length+1)
   }
 
   hayArriba(casilla){
-    return this.matriz[casilla.nroFila-1][casilla.nroColumna]
+    return (casilla.nroFila+1 > 0)
   }
 
 }
