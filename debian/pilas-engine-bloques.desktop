@@ -5,5 +5,5 @@ Comment=Comment
 Exec=/usr/bin/pilas-engine-bloques
 Terminal=false
 Type=Application
-Icon=pilas-engine-bloques
+Icon=pilas-engine-bloques-icono
 Categories=GNOME;GTK;Huayra;Network;
