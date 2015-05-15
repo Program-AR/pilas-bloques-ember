@@ -1,3 +1,9 @@
+pilas-engine-bloques (0.1.8) unstable; urgency=low
+
+  * modicando la ruta del icono de la aplicación.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 15 May 2015 16:04:21 -0300
+
 pilas-engine-bloques (0.1.6) unstable; urgency=low
 
   * Cambiando nomenclatura.
