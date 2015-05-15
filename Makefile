@@ -138,6 +138,8 @@ version:
 	@echo ""
 	@echo "make ver_sync"
 
+ver_sync: subir_version
+
 subir_version:
 	git commit -am 'release ${VERSION}'
 	git tag '${VERSION}'
