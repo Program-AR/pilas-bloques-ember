@@ -1,9 +1,9 @@
 [Desktop Entry]
 Version=1.0
-Name=pilas-engine-bloques
+Name=Pilas Engine (bloques)
 Comment=Comment
 Exec=/usr/bin/pilas-engine-bloques
 Terminal=false
 Type=Application
 Icon=pilas-engine-bloques-icono
-Categories=GNOME;GTK;Huayra;Network;
+Categories=GNOME;GTK;Huayra;Development;
