@@ -1,3 +1,11 @@
+pilas-engine-bloques (1-0.1.6) unstable; urgency=low
+
+  * Refactorizando la estructura de actividades.
+  * Reparando el bug de liquid-fire.
+  * Quitando dependencia de closure.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 15 May 2015 11:14:09 -0300
+
 pilas-engine-bloques (0.2-3) unstable; urgency=low
 
   * Actualizando icono. 
