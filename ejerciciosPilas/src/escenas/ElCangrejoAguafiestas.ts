@@ -24,20 +24,15 @@
     moverDerecha(){
       this.mono.hacer_luego(MoverACasillaDerechaEsparsa);
     }
-
-
-        moverIzquierda(){
-          this.mono.hacer_luego(MoverACasillaIzquierdaEsparsa);
-        }
-
-
-            moverArriba(){
-              this.mono.hacer_luego(MoverACasillaArribaEsparsa);
-            }
-
-                moverAbajo(){
-                  this.mono.hacer_luego(MoverACasillaAbajoEsparsa);
-                }
+    moverIzquierda(){
+      this.mono.hacer_luego(MoverACasillaIzquierdaEsparsa);
+    }
+    moverArriba(){
+      this.mono.hacer_luego(MoverACasillaArribaEsparsa);
+    }
+    moverAbajo(){
+      this.mono.hacer_luego(MoverACasillaAbajoEsparsa);
+    }
 
 
 
