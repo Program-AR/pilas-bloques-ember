@@ -1,37 +1,80 @@
+/// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
+/// <reference path="../actores/cuadriculaEsparsa.ts"/>
+/// <reference path="../actores/GloboAnimado.ts"/>
+/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
+
   class ElCangrejoAguafiestas extends Base {
     fondo;
     cuadricula;
-    mono
+    cangrejo;
+    cantidadFilas;
+    cantidadColumnas;
+    globos;
     iniciar() {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
+        this.globos=[];
+        this.cantidadFilas=5;
+        this.cantidadColumnas=6;
+        var matriz= [[true,true,true,true,true,true],[true,false,false,false,false,true],[true,true,true,true,true,true],[true,false,false,false,false,true],[true,true,true,true,true,true]]
+        this.cuadricula = new CuadriculaEsparsa(0,0,this.cantidadFilas,this.cantidadColumnas,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
+        this.completarConGlobos();
+        this.cangrejo = new CangrejoAnimado(0,0);
+        this.cuadricula.agregarActor(this.cangrejo,0,0);
+      }
+
+    private completarConGlobos(){
+      for(var i = 1; i< this.cantidadColumnas; ++i ){
+        var nuevo = new GloboAnimado(0,0);
+        this.globos.push(nuevo);
+        this.cuadricula.agregarActor(nuevo,0,i);
+      }
+
+      for(var i = 0; i< this.cantidadColumnas; ++i ){
+        var nuevo = new GloboAnimado(0,0);
+        this.globos.push(nuevo);
+        this.cuadricula.agregarActor(nuevo,2,i);
+        nuevo = new GloboAnimado(0,0);
+        this.globos.push(nuevo);
+        this.cuadricula.agregarActor(nuevo,4,i);
+      }
 
 
+      nuevo = new GloboAnimado(0,0);
+      this.globos.push(nuevo);
+      this.cuadricula.agregarActor(nuevo,1,0);
 
-        var matriz= [[true,true],[false,true]]
-        this.cuadricula = new CuadriculaEsparsa(0,0,2,2,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
-        this.mono = new BananaAnimada(0,0);
+      nuevo = new GloboAnimado(0,0);
+      this.globos.push(nuevo);
+      this.cuadricula.agregarActor(nuevo,3,0);
 
-        this.cuadricula.agregarActor(this.mono,0,0);
+      nuevo = new GloboAnimado(0,0);
+      this.globos.push(nuevo);
+      this.cuadricula.agregarActor(nuevo,1,this.cantidadColumnas-1);
 
-
-
-
-
+      nuevo = new GloboAnimado(0,0);
+      this.globos.push(nuevo);
+      this.cuadricula.agregarActor(nuevo,3,this.cantidadColumnas-1);
 
 
     }
 
     moverDerecha(){
-      this.mono.hacer_luego(MoverACasillaDerechaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaDerechaEsparsa);
     }
     moverIzquierda(){
-      this.mono.hacer_luego(MoverACasillaIzquierdaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaIzquierdaEsparsa);
     }
     moverArriba(){
-      this.mono.hacer_luego(MoverACasillaArribaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaArribaEsparsa);
     }
     moverAbajo(){
-      this.mono.hacer_luego(MoverACasillaAbajoEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaAbajoEsparsa);
+    }
+
+    explotarGlobo(){
+
+      this.cangrejo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay una banana aqui' });
+
     }
 
 

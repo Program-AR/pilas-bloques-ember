@@ -3,11 +3,11 @@
 
 class RecogerPorEtiqueta extends ComportamientoAnimado {
 	nombreAnimacion(){
-		return 'recoger';
+		return 'parado';
 	}
 
 	alTerminarAnimacion(){
-		
+
    	        if (this.receptorTocandoEtiqueta(this.argumentos['etiqueta'])) {
 
 				this.eliminarObjetoTocadoConEtiqueta(this.argumentos['etiqueta']);
