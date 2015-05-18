@@ -73,7 +73,7 @@
 
     explotarGlobo(){
 
-      this.cangrejo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay una banana aqui' });
+      this.cangrejo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay un globo aqui' });
 
     }
 
