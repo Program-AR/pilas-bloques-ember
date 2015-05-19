@@ -34,6 +34,8 @@ comandos:
 	@echo "${L}"
 	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
 	@echo "        actualizar_pilas → actualizar_blockly "
+	@echo "        "
+	@echo "           (o bien "make full")"
 	@echo "${N}"
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
@@ -62,6 +64,7 @@ bajar_dependencias:
 actualizar_pilas:
 	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
+	mkdir -p public/libs/data
 	cp -r -f pilasweb/public/data public/libs/data
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
@@ -139,6 +142,8 @@ version:
 	@echo "make ver_sync"
 
 ver_sync: subir_version
+
+full: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly
 
 subir_version:
 	git commit -am 'release ${VERSION}'
