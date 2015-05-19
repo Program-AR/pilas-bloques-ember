@@ -111,10 +111,10 @@ copiar_blockly_descomprimido:
 
 dist: compilar
 
-ejecutar_linux: dist
+ejecutar_linux:
 	nw dist
 
-ejecutar_mac: dist
+ejecutar_mac: 
 	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
 test_mac: ejecutar_mac
