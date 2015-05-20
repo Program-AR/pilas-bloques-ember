@@ -21,33 +21,19 @@ class ComportamientoColision extends ComportamientoAnimado {
 	}
 
 	alTerminarAnimacion(){
-		console.log("al terminar animacion")
-			if (pilas.escena_actual().estado==undefined||pilas.escena_actual().estado.admiteTransicion(this.argumentos['idComportamiento'])){
-					console.log("el estado es valido")
-					this.elEstadoEsValido();
-			}else{
-				console.log("error por estado")
-					this.elErrorSeGeneroPorEstado();
+		if(pilas.escena_actual().estado !== undefined){
+			 pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
 			}
-	}
-
-	elErrorSeGeneroPorEstado(){
-
-		pilas.escena_actual().personajePrincipal().decir(pilas.escena_actual().estado.errorAlIntentar(this.argumentos['idComportamiento']));
-
-	}
+}
 
 	elEstadoEsValido(){
   	if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
 							.some(objeto => objeto.colisiona_con(this.receptor))) {
-								console.log("hay objeto colision")
-								if(pilas.escena_actual().estado!=undefined){
-									console.log("etre al if")
-									pilas.escena_actual().estado=pilas.escena_actual().estado.siguiente(this.argumentos['idComportamiento']);
-								}
-            		this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
+				this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
+				return true;
     }else{
     		pilas.escena_actual().personajePrincipal().decir(this.argumentos['mensajeError']);
+				return false;
    	}
   }
 

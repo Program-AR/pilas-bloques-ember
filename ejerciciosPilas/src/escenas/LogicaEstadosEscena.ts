@@ -1,10 +1,27 @@
+class ErrorEnEstados{
+  estadoAlQueVuelve;
+  mensajeError;
+
+  constructor(estado,mensaje){
+    this.estadoAlQueVuelve=estado;
+    this.mensajeError=mensaje;
+  }
+
+  realizarAccion(comportamiento,estadoAnterior){
+    pilas.escena_actual().personajePrincipal().decir(this.mensajeError);
+    console.log(estadoAnterior.identifier)
+    return estadoAnterior;
+
+  }
+}
+
+
 class Estado{
   transiciones;
-  errores;
   identifier;
+
   constructor(idEstado){
     this.identifier=idEstado;
-    this.errores={};
     this.transiciones={};
   }
 
@@ -12,22 +29,18 @@ class Estado{
     this.transiciones[transicion]= estadoEntrada;
   }
 
-  agregarError(transicion,error){
-    this.errores[transicion]=error;
-
+  realizarTransicion(idComportamiento,comportamiento){
+    pilas.escena_actual().estado=this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
   }
 
-  errorAlIntentar(idComportamiento){
-     return this.errores[idComportamiento] || "Esa acción no esta permitida en este momento";
+  realizarAccion(comportamiento,estadoAnterior){
+    if(comportamiento.elEstadoEsValido()){
+      return this
+    }else{
+      return estadoAnterior;
+    }
   }
 
-  admiteTransicion(idComportamiento){
-    return this.transiciones[idComportamiento]!=null;
-  }
-
-  siguiente(idComportamiento){
-    return this.transiciones[idComportamiento];
-  }
 }
 
 class BuilderStatePattern{
@@ -46,28 +59,16 @@ class BuilderStatePattern{
     }
 
     agregarTransicion(estadoSalida,estadoEntrada,transicion){
-
       this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada],transicion);
     }
 
     agregarError(estadoSalida,transicion,error){
-      this.estados[estadoSalida].agregarError(transicion,error);
+      this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida],error),transicion);
     }
 
     estadoInicial(){
       return this.estados[this.idEstadoInicial];
     }
-
-
-}
-
-class estadoDummy extends Estado{
-  admiteTransicion(a){
-    return true;
-  }
-  siguiente(a){
-    return this;
-  }
 
 
 }
