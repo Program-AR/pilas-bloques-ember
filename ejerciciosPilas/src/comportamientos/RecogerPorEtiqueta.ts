@@ -1,6 +1,6 @@
-/// <reference path="ComportamientoAnimado.ts"/>
+/// <reference path="comportamientoColision.ts"/>
 
-
+/*
 class RecogerPorEtiqueta extends ComportamientoAnimado {
 	nombreAnimacion(){
 		return 'parado';
@@ -26,4 +26,10 @@ class RecogerPorEtiqueta extends ComportamientoAnimado {
 		return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this.receptor));
 		}
 
+}*/
+
+class RecogerPorEtiqueta extends ComportamientoColision{
+			metodo(objetoColision){
+				objetoColision.eliminar();
+		}
 }
