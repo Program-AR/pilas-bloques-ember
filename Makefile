@@ -42,8 +42,10 @@ comandos:
 	@echo ""
 	@echo "    ${G}version${N}         Genera una nueva versión."
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
-	@echo "    ${G}publicar${N}        Publica el cambio para el paquete deb."
-	@echo "    ${G}crear_deb${N}       Genera el paquete deb para huayra."
+	@echo ""
+	@echo "    ${G}_compile_win${N}          Genera la aplicación compilada para windows y mac."
+	@echo "    ${G}_compile_osx${N}      Genera la aplicación para osx."
+	@echo "    ${G}upload_to_dropbox${N} Sube los binarios generados a dropbox."
 	@echo ""
 
 
@@ -88,7 +90,7 @@ copiar_blockly_comprimido:
 	# LANG
 	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
-	    
+
 copiar_blockly_descomprimido:
 	# CORE
 	cp -f blockly/blockly_uncompressed.js public/libs/blockly/
@@ -114,18 +116,12 @@ dist: compilar
 ejecutar_linux:
 	nw dist
 
-ejecutar_mac: 
+ejecutar_mac:
 	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
 test_mac: ejecutar_mac
 
 build: compilar
-
-publicar:
-	dch -i
-
-crear_deb:
-	dpkg-buildpackage -us -uc
 
 compilar:
 	./node_modules/ember-cli/bin/ember build
@@ -151,5 +147,49 @@ subir_version:
 	git push
 	git push --all
 	git push --tags
+
+to_production:
+	@echo "pasando a modo produccion".
+	cp public/package.produccion.json public/package.json
+
+to_develop:
+	@echo "pasando a modo develop".
+	cp public/package.desarrollo.json public/package.json
+
+_compile_osx:
+	mkdir -p webkitbuilds
+	rm -r -f tmp
+	mkdir -p tmp
+	cd tmp
+	cp ~/Dropbox/releases/pilas-engine-bloques-template.zip tmp/
+	unzip tmp/pilas-engine-bloques-template.zip -d tmp/ > log_descompresion.log
+	rm -r -f tmp/__*
+	mv tmp/pilas-engine-bloques-template.app tmp/pilas-engine-bloques.app
+	rm tmp/pilas-engine-bloques-template.zip
+	cp -r dist/* tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/
+	hdiutil create tmp/pilas-engine-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-engine-bloques.app -size 200mb
+	mv tmp/pilas-engine-bloques-${VERSION}.dmg webkitbuilds/
+	rm -r -f tmp
+
+_compile_win:
+	mkdir -p webkitbuilds
+	rm -r -f tmp
+	mkdir -p tmp
+	cp ~/Dropbox/releases/pilas-engine-bloques-windows-template.zip tmp/
+	unzip tmp/pilas-engine-bloques-windows-template.zip -d tmp/ > log_descompresion.log
+	rm -r -f tmp/__*
+	cp -r -f dist/* tmp/nwjs
+	cp extras/instalador.nsi tmp/nwjs
+	cd tmp/nwjs; makensis instalador.nsi
+	mv tmp/nwjs/pilas-engine-bloques.exe webkitbuilds/pilas-engine-bloques-${VERSION}.exe
+
+binarios: to_production _compile_osx _compile_win
+	@echo "Mostrando el directorio resultado"
+	@open webkitbuilds
+	make to_develop
+
+upload_to_dropbox:
+	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 
 .PHONY: dist
