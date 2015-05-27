@@ -2,7 +2,7 @@
 
 /**
  * @class ElMarcianoEnElDesierto
- * 
+ *
  * Objetivos: Ejercitarse en el uso de programas para la resolución de problemas.
  * Enunciado: Comer todas las manzanas del tablero.
  */
@@ -11,16 +11,17 @@ class ElMarcianoEnElDesierto extends Base {
     personaje;
     cuadricula;
     manzanas;
-
+    estado;
     iniciar() {
+      this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         var cantidadFilas=4;
         var cantidadColumnas=5;
 
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,{},
-            {grilla: 'casillaLightbot.png', 
-            cantColumnas: 5, 
-            ancho: 60, 
+            {grilla: 'casillaLightbot.png',
+            cantColumnas: 5,
+            ancho: 60,
             alto: 60})
 
         this.manzanas=[];

@@ -10,7 +10,9 @@
     cantidadFilas;
     cantidadColumnas;
     globos;
+    estado;
     iniciar() {
+        this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.globos=[];
         this.cantidadFilas=5;

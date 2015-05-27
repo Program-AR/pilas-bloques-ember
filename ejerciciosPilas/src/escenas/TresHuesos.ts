@@ -7,20 +7,21 @@
 
 /**
  * @class TresHuesos
- * 
+ *
  */
 class TresHuesos extends Base {
     fondo;
     personaje;
     cuadricula;
     objetos = [];
-
+    estado;
     iniciar() {
+        this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,1,4,
             {alto: 70},
-            {grilla: 'casillaLightbot.png', 
+            {grilla: 'casillaLightbot.png',
             cantColumnas: 5});
 
         //se cargan los huesos

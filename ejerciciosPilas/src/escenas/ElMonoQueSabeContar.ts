@@ -12,9 +12,10 @@ class ElMonoQueSabeContar extends Base {
     tableroManzanas;
     cantidadManzanas;
     cantidadBananas;
-
+    estado;
     puntaje;
     iniciar() {
+        this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.cantMaxColumnas=10;
 

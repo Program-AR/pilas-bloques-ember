@@ -9,24 +9,26 @@ class LaEleccionDelMono extends Base {
     fondo;
     cuadricula;
     mono;
+    estado;
     iniciar() {
+      this.estado=undefined;
     	this.fondo = new Fondo('fondos.nubes.png',0,0);
         var cantidadFilas=1
         var cantidadColumnas=2
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
             {alto: 100},
-            {grilla: 'casillaLightbot.png', 
+            {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
 
         this.mono = new MonoAnimado(0,0);
         this.cuadricula.agregarActor(this.mono,0,0);
-        
-		
+
+
 		if (Math.random()< .5)  {
             this.agregar(ManzanaAnimada);
         }else{
             this.agregar(BananaAnimada);
-        }	    
+        }
     }
 
     agregar(objeto){

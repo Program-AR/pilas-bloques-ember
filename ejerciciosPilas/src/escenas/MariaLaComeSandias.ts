@@ -2,9 +2,9 @@ class MariaLaComeSandias extends Base {
     cuadricula;
     maria;
     cantidadColumnas;
-
+    estado;
     iniciar() {
-
+        this.estado=undefined;
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas=5
         this.cantidadColumnas=6
