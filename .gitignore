@@ -21,3 +21,10 @@ testem.log
 
 public/libs/data
 public/libs/pilasweb.js
+
+dist_web
+dist_website
+
+webkitbuilds
+
+log_descompresion.log

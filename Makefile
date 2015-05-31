@@ -16,6 +16,7 @@ comandos:
 	@echo "    ${G}iniciar${N}         Instala dependencias."
 	@echo "    ${G}compilar${N}        Genera los archivos compilados."
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
+	@echo "    ${G}compilar_web${N}    Genera la aplicación para la versión web (desde un iframe)."
 	@echo ""
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
@@ -125,6 +126,9 @@ build: compilar
 
 compilar:
 	./node_modules/ember-cli/bin/ember build
+
+compilar_web:
+	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
