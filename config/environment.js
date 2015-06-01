@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'pilas-engine-bloques',
+    showLayout: true,
     environment: environment,
     baseURL: '',
     locationType: 'hash',
@@ -39,6 +40,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'web') {
+    ENV.showLayout = false;
   }
 
   if (environment === 'test') {

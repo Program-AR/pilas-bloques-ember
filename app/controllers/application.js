@@ -6,6 +6,7 @@ export default Ember.Controller.extend({
   url: '',
   queryParams: ['layout'],
   layout: true,
+  environment: Ember.inject.service(),
 
   mostrar_url: function() {
     var controller = this;
@@ -15,6 +16,8 @@ export default Ember.Controller.extend({
     };
 
     setInterval(actualizar, 100);
+
+    this.set('layout', this.get('environment').get('showLayout'));
 
   }.on('init'),
 
