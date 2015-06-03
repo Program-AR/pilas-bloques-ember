@@ -9,7 +9,7 @@ class AlimentandoALosPeces extends Base {
         this.cantidadFilas=4
         this.cantidadColumnas=5
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
-            {alto: 300,ancho:300},
+            {lalto: 300,ancho:300},
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
         this.buzo = new BuzoAnimado(0, 0);
