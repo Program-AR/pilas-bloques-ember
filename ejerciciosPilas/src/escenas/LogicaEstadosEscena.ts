@@ -8,8 +8,11 @@ class ErrorEnEstados{
   }
 
   realizarAccion(comportamiento,estadoAnterior){
-    pilas.escena_actual().personajePrincipal().decir(this.mensajeError);
-    console.log(estadoAnterior.identifier)
+
+      pilas.escena_actual().personajePrincipal().decir(this.mensajeError);
+      console.log(estadoAnterior.identifier)
+
+
     return estadoAnterior;
 
   }
@@ -30,17 +33,21 @@ class Estado{
   }
 
   realizarTransicion(idComportamiento,comportamiento){
-    pilas.escena_actual().estado=this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
+    if(/*pilas.escena_actual().estado=this.transiciones[idComportamiento]*/this.transiciones[idComportamiento]){
+        pilas.escena_actual().estado=this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
+    }else{
+      pilas.escena_actual().personajePrincipal().decir("¡Ups, ésa no era la opción correcta!");
+    }
+
   }
 
   realizarAccion(comportamiento,estadoAnterior){
     if(comportamiento.elEstadoEsValido()){
-      return this
+        return this
     }else{
-      return estadoAnterior;
+        return estadoAnterior;
     }
-  }
-
+    }
 }
 
 class BuilderStatePattern{
@@ -66,9 +73,56 @@ class BuilderStatePattern{
       this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida],error),transicion);
     }
 
+    agregarErrorAVariosEstadosDeSalida(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida){
+      //agrega un error para varios estados de salida con prefijos.
+      //pre indefFinalSalida>indexInicialSalida
+      var tamano=indexFinalSalida-indexInicialSalida
+
+      for(var index=0;index<=tamano;++index){
+        this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
+      }
+
+
+    }
+
+
+    agregarErroresIterados(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida,indexInicialTransi,indexFinalTransi){
+      //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
+      // NO TERMINADO
+      var range=indexFinalSalida-indexInicialSalida;
+      for(var index=0;index<range;++index){
+          this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
+      }
+
+
+    }
+
     estadoInicial(){
       return this.estados[this.idEstadoInicial];
     }
 
+    agregarEstadosPrefijados(prefix,indexInicial,indexFinal){
+      //prefix debe ser string e indexInicial y final ints
+    for(var i=indexInicial;i<=indexFinal;++i){
+      console.log("Agregando estados")
+      console.log(prefix+i)
+      this.estados[prefix+i]=new Estado(prefix+i);
+    }
+    }
+
+    agregarTransicionesIteradas(estadoSalidaPrefix,estadoEntradaPrefix,transicion ,inicialSalida,finSalida,inicialEntrada,finEntrada){
+      //pre: |estadosSalida|=|estadosEntrada|
+      //implica finSalida-inicialSalida=finEntrada-InicialEntrada
+      console.log("Agregando transiciones")
+      var tamano=finSalida-inicialSalida
+      for(var index=0;index<=tamano;++index){
+                    console.log(estadoSalidaPrefix+(inicialSalida+index))
+                    console.log(estadoEntradaPrefix+(inicialEntrada+index))
+                    this.estados[estadoSalidaPrefix+(inicialSalida+index)].agregarTransicion(this.estados[estadoEntradaPrefix+(inicialEntrada+index)],transicion);
+
+
+      }
+
+    }
 
 }

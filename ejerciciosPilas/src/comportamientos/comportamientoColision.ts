@@ -23,6 +23,8 @@ class ComportamientoColision extends ComportamientoAnimado {
 	alTerminarAnimacion(){
 		if(pilas.escena_actual().estado !== undefined){
 			 pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
+			}else{
+				this.elEstadoEsValido();
 			}
 }
 
