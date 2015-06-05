@@ -8,13 +8,13 @@ class InstalandoJuegos  extends Base{
 
   iniciar() {
 
-    //this.fondo = new Fondo('fondos.nubes.png',0,0);
+      this.fondo = new Fondo('fondos.biblioteca.png',0,0);
 
       var cantidadFilas=1
       var cantidadColumnas=4
       this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
           {alto: 100},
-          {grilla: 'casillaLightbot.png',
+          {grilla: 'invisible.png',
           cantColumnas: 5})
 
       this.instalador = new InstaladorAnimado(0,0);
