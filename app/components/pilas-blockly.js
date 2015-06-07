@@ -171,6 +171,7 @@ export default Ember.Component.extend({
         }).
         catch((err) => {
           alert(err);
+          this.set('envioEnCurso', false);
         })
 
       ;
