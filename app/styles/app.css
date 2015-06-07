@@ -405,3 +405,23 @@ body,
   background-color: rgba(255, 255, 255, 0.75);
   text-align: center;
 }
+
+
+.right {
+  float: right;
+}
+
+.border-rigth {
+  margin-right: 10px;
+}
+
+
+.modal-inline-block {
+  display: inline-block;
+  width: 260px;
+}
+
+.modal-mensaje-compartir {
+  width: 100%;
+  resize: none;
+}

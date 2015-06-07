@@ -1,4 +1,5 @@
 <div class='pilas-blockly-botones'>
+
   {{#if mostrarAlternar}}
     <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
   {{/if}}
@@ -12,7 +13,6 @@
   {{#if mostrarVerCodigo}}
     <button class='btn btn-warning' {{action "ver_codigo"}}>Ver Codigo</button>
   {{/if}}
-
 
   {{#if mostrarGuardar}}
     {{#if model}}
@@ -29,6 +29,12 @@
     <button class='btn btn-info disabled'><i class='fa fa-undo'></i> Deshacer</button>
   {{/if}}
 
+
+  <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir en twitter</button>
+
 </div>
 
 <div id="contenedor-blockly" style="height: 300px; width: 500px;"> </div>
+
+
+{{partial "compartir"}}

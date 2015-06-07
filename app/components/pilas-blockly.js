@@ -1,10 +1,16 @@
 import Ember from 'ember';
 
+
 export default Ember.Component.extend({
   ejecutando: false,
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
+
+  twitter: Ember.inject.service(),
+  previewData: null, // representa la imagen previsualización del dialogo para twittear.
+  mensajeCompartir: 'Comparto mi solución de pilas-engine-bloques @hugoruscitti',
+  compartirEnCurso: false,
 
   inyectarRedimensionado: function() {
 
@@ -74,6 +80,33 @@ export default Ember.Component.extend({
     }
   },
 
+
+    almacenar_cambio: function() {
+      this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
+      console.log("guardar");
+    },
+
+    restaurar_codigo: function(codigo) {
+      var xml = Blockly.Xml.textToDom(codigo);
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
+    },
+
+    obtener_codigo_en_texto: function() {
+      var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
+      return Blockly.Xml.domToText(xml);
+    },
+
+    cargar_codigo_desde_el_modelo: function() {
+      if (this.get('model')) {
+        var modelo = this.get('model');
+        var codigo = modelo.get('codigo');
+        this.restaurar_codigo(codigo);
+      }
+      this.sendAction('registrarPrimerCodigo');
+    },
+
+
   actions: {
     ejecutar: function() {
       window.LoopTrap = 1000;
@@ -118,30 +151,31 @@ export default Ember.Component.extend({
       }
       this.observarCambiosEnBlocky();
     },
-  },
 
-  almacenar_cambio: function() {
-    this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
-    console.log("guardar");
-  },
+    compartir() {
+      this.set('abrirDialogoCompartir', true);
+      let data = canvas.toDataURL('image/png');
+      this.set('previewData', data);
+    },
 
-  restaurar_codigo: function(codigo) {
-    var xml = Blockly.Xml.textToDom(codigo);
-    Blockly.mainWorkspace.clear();
-    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
-  },
+    enviarMensaje() {
+      this.set('envioEnCurso', true);
 
-  obtener_codigo_en_texto: function() {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-    return Blockly.Xml.domToText(xml);
-  },
+      let mensaje = this.get('mensajeCompartir');
+      let imagen = this.get('previewData');
 
-  cargar_codigo_desde_el_modelo: function() {
-    if (this.get('model')) {
-      var modelo = this.get('model');
-      var codigo = modelo.get('codigo');
-      this.restaurar_codigo(codigo);
+      this.get('twitter').compartir(mensaje, imagen).
+        then(() => {
+          this.set('envioEnCurso', false);
+          alert("Listo, tu twit se publicó");
+        }).
+        catch((err) => {
+          alert(err);
+        })
+
+      ;
     }
-    this.sendAction('registrarPrimerCodigo');
-  }
+
+  },
+
 });
