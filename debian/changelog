@@ -1,3 +1,9 @@
+pilas-engine-bloques (0.1.10) unstable; urgency=low
+
+  * Agregando integracion con twitter. 
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 08 Jun 2015 17:29:11 +0200
+
 pilas-engine-bloques (0.1.9) unstable; urgency=low
 
   * Actualizacion menor. 
