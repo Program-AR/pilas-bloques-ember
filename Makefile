@@ -195,5 +195,6 @@ binarios: to_production _compile_osx _compile_win
 upload_to_dropbox:
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 
 .PHONY: dist
