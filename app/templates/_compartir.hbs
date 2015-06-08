@@ -8,7 +8,7 @@
 
   {{#em-modal-body}}
 
-    <div class="modal-inline-block">
+    <div class="modal-inline-block  float-left">
       <img id="preview" src={{previewData}} width=210 height=240>
     </div>
 
@@ -26,12 +26,20 @@
         {{/if}}
       </div>
 
+      {{#if mensajePublicadoURL}}
+      <div class='compartir-mensaje'>
+        Listo, tu mensaje fué publicado en twitter,
+        <a href="" {{action "abrirMensajePublicado"}}>¿querés abrirlo?</a>.
+      </div>
+      {{/if}}
+
     </div>
 
 
   {{/em-modal-body}}
 
-  {{#em-modal-footer}}
+  {{#em-modal-footer style='clear:both'}}
       {{#em-modal-toggler class="btn btn-default"}}Cerrar{{/em-modal-toggler}}
   {{/em-modal-footer}}
+
 {{/em-modal}}

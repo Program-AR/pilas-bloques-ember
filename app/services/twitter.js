@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
-const URL = "http://localhost:3000/sendMessage";
+//const URL = "http://localhost:3000/sendMessage";
+const URL = "http://104.131.245.133:9914/sendMessage";
 
 export default Ember.Service.extend({
   compartir(mensaje, imagen) {
@@ -9,6 +10,7 @@ export default Ember.Service.extend({
         url: URL,
         type: 'POST',
         dataType: 'json',
+        contentType: "application/json",
         data: JSON.stringify({
           message: mensaje,
           media: imagen

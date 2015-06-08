@@ -7,10 +7,12 @@ export default Ember.Component.extend({
   data_observar_blockly: false,
   actividad: null,
 
+
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de pilas-engine-bloques @hugoruscitti',
   compartirEnCurso: false,
+  browser: Ember.inject.service(),
 
   inyectarRedimensionado: function() {
 
@@ -158,6 +160,11 @@ export default Ember.Component.extend({
       this.set('previewData', data);
     },
 
+    abrirMensajePublicado() {
+      let url = this.get('mensajePublicadoURL');
+      this.get('browser').openLink(url);
+    },
+
     enviarMensaje() {
       this.set('envioEnCurso', true);
 
@@ -165,9 +172,9 @@ export default Ember.Component.extend({
       let imagen = this.get('previewData');
 
       this.get('twitter').compartir(mensaje, imagen).
-        then(() => {
+        then((data) => {
           this.set('envioEnCurso', false);
-          alert("Listo, tu twit se publicó");
+          this.set('mensajePublicadoURL', data.url);
         }).
         catch((err) => {
           alert(err);
