@@ -18,7 +18,7 @@ class Observado  {
 
     registrarObservador(observador){
     	this.observadores.push(observador);
-
+      this.changed();
     }
 
     changed(){
@@ -41,6 +41,16 @@ class ObservadoConAumentar extends Observado{
 
   aumentar(valorAumento){
     this.atributo=this.atributo + valorAumento;
+    this.changed();
+  }
+
+}
+
+
+class ObservadoConDisminuir extends Observado{
+
+  disminuir(valorAumento){
+    this.atributo=this.atributo - valorAumento;
     this.changed();
   }
 

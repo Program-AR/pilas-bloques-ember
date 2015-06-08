@@ -27,7 +27,7 @@ class Tablero{
 
   setearValor(nuevoValor){
     if(nuevoValor<=this.puntaje.obtener()){
-      this.puntaje.aumentar(-(this.puntaje.obtener()-nuevoValor()))
+      this.puntaje.aumentar(-(this.puntaje.obtener()-nuevoValor))
       }else{
         this.puntaje.aumentar(nuevoValor-this.puntaje.obtener())
       }

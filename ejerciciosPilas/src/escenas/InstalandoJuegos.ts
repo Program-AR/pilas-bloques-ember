@@ -1,5 +1,4 @@
 class InstalandoJuegos  extends Base{
-  personaje;
   compus;
   instalador;
   fondo;
