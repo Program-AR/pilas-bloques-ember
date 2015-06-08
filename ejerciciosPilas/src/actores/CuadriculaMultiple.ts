@@ -28,7 +28,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
 
     private inicializar(definidorColumnas){
         while(definidorColumnas.hayProxColumnas()){
-            this.filas.push(new Fila(this,definidorColumnas.nroFila(),definidorColumnas.dameProxColumnas()));       
+            this.filas.push(new Fila(this,definidorColumnas.nroFila(),definidorColumnas.dameProxColumnas()));
         }
     }
 
@@ -36,7 +36,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
     	arrayClases = new conjuntoClases(arrayClases)
     	for (var i =0; i < this.filas.length ; i+=1){
     	this.filas[i].completarConObjetosRandom(arrayClases);
-    	//this.filas.foreach(function(fila) {fila.completarConObjetosRandom(arrayClases)});	
+    	//this.filas.foreach(function(fila) {fila.completarConObjetosRandom(arrayClases)});
     	}
     }
 
@@ -61,7 +61,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
 
 class conjuntoClases {
      clases;
-     
+
      constructor(clases){
          this.clases=clases;
      }
@@ -90,17 +90,17 @@ class Fila extends Cuadricula{
 
     */
     //TODO: reemplazar el 200 por algun valor independiente del navegador
-    
+
     public siguienteFila(){
-        
+
             if(this.existeSiguienteFila()){
                 return this.cuadriculaMultiple.filas[this.nroFila+1];
             }else{
-                throw "No hay siguiente fila"}    
-        
+                throw "No hay siguiente fila"}
+
     }
-        
-    
+
+
 
     public existeSiguienteFila(){
         return this.nroFila<this.cuadriculaMultiple.filas.length-1
@@ -145,7 +145,7 @@ class DefinidorColumnasDeUnaFila{
 class DefinidorColumnasRandom extends DefinidorColumnasDeUnaFila{
     constructor(filas,cantidadMaxColumnas){
         super();
-        this.tamanos=Array.apply(null, Array(5)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 1);});
+        this.tamanos=Array.apply(null, Array(filas)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 1);});
     }
 }
 
@@ -155,4 +155,3 @@ class DefinidorColumnasFijo extends DefinidorColumnasDeUnaFila{
         this.tamanos = tamanos;
     }
 }
-
