@@ -17,7 +17,12 @@
         this.globos=[];
         this.cantidadFilas=5;
         this.cantidadColumnas=6;
-        var matriz= [[true,true,true,true,true,true],[true,false,false,false,false,true],[true,true,true,true,true,true],[true,false,false,false,false,true],[true,true,true,true,true,true]]
+        var matriz= [
+          ['T','T','T','T','T','T'],
+          ['T','F','F','F','F','T'],
+          ['T','T','T','T','T','T'],
+          ['T','F','F','F','F','T'],
+          ['T','T','T','T','T','T']]
         this.cuadricula = new CuadriculaEsparsa(0,0,this.cantidadFilas,this.cantidadColumnas,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
         this.completarConGlobos();
         this.cangrejo = new CangrejoAnimado(0,0);
