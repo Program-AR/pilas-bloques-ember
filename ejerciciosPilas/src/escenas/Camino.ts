@@ -23,7 +23,8 @@ class Camino {
 
   dameCamino(){
       var a = new  CuadriculaEsparsa(this.x,this.y,this.cantidadFilas,this.cantidadColumnas,this.opcionesCuadricula,{grilla:'casillaLightbot.png', cantColumnas: 5},this.matriz)
-      return this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla)
+      this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla);
+      return a;
   }
 
   private cambiarImagenesCasillasCamino(direcciones,cuadricula,opcionesCasilla){

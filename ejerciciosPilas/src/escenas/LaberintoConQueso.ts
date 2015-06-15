@@ -2,7 +2,7 @@
 /// <reference path="../actores/cuadriculaEsparsa.ts"/>
 /// <reference path="../actores/RatonAnimado.ts"/>
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path="Camino2.ts"/>
+/// <reference path="Camino.ts"/>
 
 class LaberintoConQueso extends Base {
     estado;
