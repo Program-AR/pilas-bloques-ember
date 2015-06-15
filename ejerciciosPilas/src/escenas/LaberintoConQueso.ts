@@ -29,7 +29,7 @@ class LaberintoConQueso extends Base {
 
     ComerQueso(){
 
-    //  this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay un globo aqui' });
+      this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'QuesoAnimado',  'mensajeError' : 'No hay queso aqui' });
 
     }
 

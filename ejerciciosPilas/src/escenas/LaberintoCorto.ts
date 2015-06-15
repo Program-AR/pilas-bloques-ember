@@ -28,7 +28,7 @@ class LaberintoCorto extends Base {
 
         this.perro = new PerroCohete(0,0);
         this.cuadricula.agregarActor(this.perro,0,0);
-        //this.robot.aprender(AvisaAlSalirDePantalla,{});
+
     }
 
     irArriba(){
