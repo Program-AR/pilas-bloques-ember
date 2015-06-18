@@ -729,8 +729,8 @@ declare class OrbitarSobreActor extends Orbitar {
 declare class CaminarBase extends Comportamiento {
     pasos: any;
     velocidad: any;
+    cantActualizaciones: any;
     iniciar(receptor: any): void;
-    redondear(number: any): number;
     actualizar(): boolean;
     mover(): void;
 }
