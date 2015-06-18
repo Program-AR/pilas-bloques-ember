@@ -9,6 +9,14 @@
 
     {{content-for 'head'}}
 
+    <script>
+      window.onkeypress = function(e) {
+        if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
+          require('nw.gui').Window.get().showDevTools();
+        }
+      }
+    </script>
+
     <!-- AGREGADOS POR EMBERCLI -->
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/pilas-engine-bloques.css">
