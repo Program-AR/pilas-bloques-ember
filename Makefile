@@ -55,9 +55,10 @@ iniciar:
 	./node_modules/bower/bin/bower install
 
 vincular_dependencias:
-	rm -f pilasweb blockly
+	rm -f pilasweb blockly ejerciciosPilas	
 	ln -s ../pilasweb
 	ln -s ../blockly
+	ln -s ../ejerciciosPilas
 
 bajar_dependencias:
 	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
