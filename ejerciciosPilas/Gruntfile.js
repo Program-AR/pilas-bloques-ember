@@ -63,7 +63,7 @@ module.exports = function(grunt) {
   grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:compilarCabecerasPilas', 'shell:copiarCabecerasPilas']);
 
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('default', ['typescript', 'concat', 'open']);
+  grunt.registerTask('default', ['typescript', 'open']);
 
   grunt.loadNpmTasks('grunt-notify');
   grunt.task.run('notify_hooks');
