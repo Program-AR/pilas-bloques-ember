@@ -1104,9 +1104,18 @@ var actividad = {
 
 
 
-
 export default Ember.Service.extend({
   obtenerPorNombre: function(nombreActividad) {
+    let actividades = {
+      alien: actividadAlien,
+    };
+
+    var actividad = actividades[nombreActividad];
+
+    if (!actividad) {
+      return null;
+    }
+
     return Actividad.create({ actividad: actividadAlien });
   }
 });

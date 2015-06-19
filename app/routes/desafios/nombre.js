@@ -5,15 +5,17 @@ export default Ember.Route.extend({
   actividadActual: null,
 
   model: function(param) {
-    var actividad = this.get('actividades').obtenerPorNombre(param.nombre);
-    this.set('actividadActual', actividad);
+    return new Ember.RSVP.Promise((resolve, reject) => {
+      var actividad = this.get('actividades').obtenerPorNombre(param.nombre);
+      this.set('actividadActual', actividad);
 
-    if (!actividad) {
-      alert("ERROR: no existe un desafio con ese nombre");
-      return {};
-    }
+      if (!actividad) {
+        let msg = "ERROR: no existe un desafio con ese nombre";
+        return reject(msg);
+      }
 
-    return {actividad: actividad};
+      return resolve({actividad: actividad});
+    });
   },
 
   actions: {
