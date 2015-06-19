@@ -38,15 +38,12 @@ module.exports = function(grunt) {
         }
     },
     shell: {
-    	compilarCabecerasPilas: {
-    		command: ['cd ../pilasweb/', 'grunt', 'tsc -d -t ES5 --out pilasweb.d.ts **/*.ts ', 'echo "done"'].join(';')
-    	},
       copiarPilasweb: {
         command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js'
 
       },
     	copiarCabecerasPilas: {
-		command: 'mv ../pilasweb/pilasweb.d.ts dependencias/pilasweb.d.ts'
+		command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
 	},
 	clear: {
 		command: 'clear'
@@ -60,7 +57,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('clear', ['shell:clear']);
 
-  grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:compilarCabecerasPilas', 'shell:copiarCabecerasPilas']);
+  grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('default', ['typescript', 'pilas', 'open']);

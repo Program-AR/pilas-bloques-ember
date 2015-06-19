@@ -1,158 +1,158 @@
 declare class Estudiante {
-    habilidades: any;
-    comportamientos: any;
-    comportamiento_actual: any;
+    public habilidades: any;
+    public comportamientos: any;
+    public comportamiento_actual: any;
     constructor();
-    aprender(clase_de_habilidad: any, argumentos?: any): string;
-    agregar_habilidad(clase_de_habilidad: any, argumentos: any): void;
-    actualizar_habilidades(): void;
-    hacer(comportamiento: any, argumentos?: {}): void;
-    hacer_luego(comportamiento: any, argumentos?: {}): void;
-    actualizar_comportamientos(): void;
-    _adoptar_el_siguiente_comportamiento(): void;
+    public aprender(clase_de_habilidad: any, argumentos?: any): string;
+    public agregar_habilidad(clase_de_habilidad: any, argumentos: any): void;
+    public actualizar_habilidades(): void;
+    public hacer(comportamiento: any, argumentos?: {}): void;
+    public hacer_luego(comportamiento: any, argumentos?: {}): void;
+    public actualizar_comportamientos(): void;
+    public _adoptar_el_siguiente_comportamiento(): void;
 }
 /**
- * @class Actor
- *
- * Representa un objeto visible en pantalla, algo que se ve y tiene posicion.
- *
- * {@img actores/actor.png}
- *
- * Un objeto Actor se tiene que crear siempre indicando una imagen. Si no
- * se especifica una imagen, se verá una pila de color gris cómo la que
- * está mas arriba.
- *
- * Una forma de crear el actor con una imagen es:
- *
- *     @example
- *     var protagonista = Actor("protagonista_de_frente.png");
- *
- * incluso, es equivalente hacer lo siguiente:
- *
- *     @example
- *     var imagen = pilas.imagenes.cargar("protagonista_de_frente.png");
- *     var protagonista = Actor(imagen);
- *
- * Luego, una vez que ha sido ejecutada la sentencia aparecerá
- * el nuevo actor para que puedas manipularlo. Por ejemplo
- * alterando sus propiedades:
- *
- *     @example
- *     protagonista.x = 100;
- *     protagonista.escala = 2;
- *     protagonista.rotacion = 30;
- *
- * Estas propiedades también se pueden manipular mediante
- * interpolaciones. Por ejemplo, para aumentar el tamaño del
- * personaje de 1 a 5 en 7 segundos:
- *
- *     @example
- *     protagonista.escala = 1;
- *     protagonista.escala = [5];
- *
- * Si quieres que el actor sea invisible, un truco es crearlo
- * con la imagen ``invisible.png``:
- *
- *     @example
- *     invisible = pilas.actores.Actor('invisible.png');
- *
- */
+* @class Actor
+*
+* Representa un objeto visible en pantalla, algo que se ve y tiene posicion.
+*
+* {@img actores/actor.png}
+*
+* Un objeto Actor se tiene que crear siempre indicando una imagen. Si no
+* se especifica una imagen, se verá una pila de color gris cómo la que
+* está mas arriba.
+*
+* Una forma de crear el actor con una imagen es:
+*
+*     @example
+*     var protagonista = Actor("protagonista_de_frente.png");
+*
+* incluso, es equivalente hacer lo siguiente:
+*
+*     @example
+*     var imagen = pilas.imagenes.cargar("protagonista_de_frente.png");
+*     var protagonista = Actor(imagen);
+*
+* Luego, una vez que ha sido ejecutada la sentencia aparecerá
+* el nuevo actor para que puedas manipularlo. Por ejemplo
+* alterando sus propiedades:
+*
+*     @example
+*     protagonista.x = 100;
+*     protagonista.escala = 2;
+*     protagonista.rotacion = 30;
+*
+* Estas propiedades también se pueden manipular mediante
+* interpolaciones. Por ejemplo, para aumentar el tamaño del
+* personaje de 1 a 5 en 7 segundos:
+*
+*     @example
+*     protagonista.escala = 1;
+*     protagonista.escala = [5];
+*
+* Si quieres que el actor sea invisible, un truco es crearlo
+* con la imagen ``invisible.png``:
+*
+*     @example
+*     invisible = pilas.actores.Actor('invisible.png');
+*
+*/
 declare class Actor extends Estudiante {
-    sprite: any;
-    _imagen: any;
-    vivo: any;
-    radio_de_colision: any;
-    id: any;
-    figura: any;
-    _espejado: any;
-    callbacks_cuando_hace_click: any;
-    callbacks_cuando_mueve_mouse: any;
-    etiquetas: any;
-    evto_se_movio: any;
+    public sprite: any;
+    public _imagen: any;
+    public vivo: any;
+    public radio_de_colision: any;
+    public id: any;
+    public figura: any;
+    public _espejado: any;
+    public callbacks_cuando_hace_click: any;
+    public callbacks_cuando_mueve_mouse: any;
+    public etiquetas: any;
+    public evto_se_movio: any;
     constructor(imagen: any, x: any, y: any, atributos?: {});
-    getClassName(): string;
-    iniciar(): void;
-    tiene_fisica(): boolean;
+    public getClassName(): string;
+    public iniciar(): void;
+    public tiene_fisica(): boolean;
     private _crear_sprite();
-    eliminar(): void;
-    z: any;
-    espejado: any;
-    x: any;
-    y: any;
-    centro: any[];
-    centro_x: any;
-    centro_y: any;
-    escala_x: any;
-    escala_y: any;
-    escala: any;
-    escalarProporcionalALimites(anchoLimite: any, altoLimite: any): void;
-    rotacion: any;
-    transparencia: number;
-    ancho: number;
-    alto: number;
-    imagen: any;
-    izquierda: number;
-    derecha: number;
-    arriba: any;
-    abajo: number;
-    ejecutar_callbacks_clicks(): void;
-    ejecutar_callbacks_over(): void;
-    cuando_hace_click: any;
-    cuando_mueve_mouse: any;
-    recibir(evento: any, tipo: any): void;
-    _cuando_hace_click(click: any): void;
-    _cuando_mueve_mouse(evento: any): void;
+    public eliminar(): void;
+    public z : any;
+    public espejado : any;
+    public x : any;
+    public y : any;
+    public centro : any[];
+    public centro_x : any;
+    public centro_y : any;
+    public escala_x : any;
+    public escala_y : any;
+    public escala : any;
+    public escalarProporcionalALimites(anchoLimite: any, altoLimite: any): void;
+    public rotacion : any;
+    public transparencia : number;
+    public ancho : number;
+    public alto : number;
+    public imagen : any;
+    public izquierda : number;
+    public derecha : number;
+    public arriba : any;
+    public abajo : number;
+    public ejecutar_callbacks_clicks(): void;
+    public ejecutar_callbacks_over(): void;
+    public cuando_hace_click : any;
+    public cuando_mueve_mouse : any;
+    public recibir(evento: any, tipo: any): void;
+    public _cuando_hace_click(click: any): void;
+    public _cuando_mueve_mouse(evento: any): void;
     /**
-     * @method colisiona_con_un_punto
-     *
-     * Determina si un punto colisiona con el area del actor.
-     */
-    colisiona_con_un_punto(x: any, y: any): boolean;
-    decir(mensaje: any): void;
-    imitar(actor_o_figura: any): void;
-    pre_actualizar(): void;
-    actualizar(): void;
-    colisiona_con(otro_actor: any): any;
-    esta_fuera_de_la_pantalla(): boolean;
-    tiene_etiqueta(etiqueta: any): boolean;
+    * @method colisiona_con_un_punto
+    *
+    * Determina si un punto colisiona con el area del actor.
+    */
+    public colisiona_con_un_punto(x: any, y: any): boolean;
+    public decir(mensaje: any): void;
+    public imitar(actor_o_figura: any): void;
+    public pre_actualizar(): void;
+    public actualizar(): void;
+    public colisiona_con(otro_actor: any): any;
+    public esta_fuera_de_la_pantalla(): boolean;
+    public tiene_etiqueta(etiqueta: any): boolean;
 }
 declare var Math: Math;
 declare class Utils {
-    convertir_a_grados(angulo_en_radianes: any): number;
-    convertir_a_radianes(angulo_en_grados: any): number;
-    colisionan(a: any, b: any): boolean;
-    distancia_entre_dos_actores(a: any, b: any): number;
-    distancia_entre_dos_puntos(x1: any, y1: any, x2: any, y2: any): number;
-    obtener_uuid(): any;
-    distancia(a: any, b: any): number;
-    fabricar(clase: any, cantidad?: number, posiciones_al_azar?: boolean): any;
+    public convertir_a_grados(angulo_en_radianes: any): number;
+    public convertir_a_radianes(angulo_en_grados: any): number;
+    public colisionan(a: any, b: any): boolean;
+    public distancia_entre_dos_actores(a: any, b: any): number;
+    public distancia_entre_dos_puntos(x1: any, y1: any, x2: any, y2: any): number;
+    public obtener_uuid(): any;
+    public distancia(a: any, b: any): number;
+    public fabricar(clase: any, cantidad?: number, posiciones_al_azar?: boolean): any;
 }
 declare class grupo {
-    Grupo: any;
+    public Grupo: any;
     constructor();
 }
 declare class HGrupo {
     constructor();
-    pop(): any;
-    push(val: any): number;
-    length: number;
+    public pop(): any;
+    public push(val: any): number;
+    public length: number;
 }
 declare class Grupo extends HGrupo {
     constructor(actor_o_array: any);
-    agregar_grupo(grupo: any): void;
-    agregar_actor(actor: any): void;
-    x: any[];
-    y: any[];
-    escala: any[];
-    rotacion: any[];
-    aprender(habilidad: any, argumentos?: any): void;
-    hacer(comportamiento: any, argumentos?: any): void;
-    hacer_luego(comportamiento: any, argumentos?: any): void;
-    decir(mensaje: any): void;
-    eliminar(): void;
-    __getattr__(attr: any): any[];
-    __setattr__(attr: any, valor: any): void;
-    ejecutar_funcion(id: any, argumentos1?: any, argumentos2?: any): void;
+    public agregar_grupo(grupo: any): void;
+    public agregar_actor(actor: any): void;
+    public x : any[];
+    public y : any[];
+    public escala : any[];
+    public rotacion : any[];
+    public aprender(habilidad: any, argumentos?: any): void;
+    public hacer(comportamiento: any, argumentos?: any): void;
+    public hacer_luego(comportamiento: any, argumentos?: any): void;
+    public decir(mensaje: any): void;
+    public eliminar(): void;
+    public __getattr__(attr: any): any[];
+    public __setattr__(attr: any, valor: any): void;
+    public ejecutar_funcion(id: any, argumentos1?: any, argumentos2?: any): void;
 }
 declare class Fondo extends Actor {
     constructor(imagen: any, x: any, y: any);
@@ -162,128 +162,128 @@ declare class Tarde extends Fondo {
 }
 declare class Plano extends Fondo {
     constructor();
-    crear_sprite(): void;
-    actualizar(): void;
+    public crear_sprite(): void;
+    public actualizar(): void;
 }
 declare class Pasto extends Fondo {
     constructor();
-    crear_sprite(): void;
-    actualizar(): void;
+    public crear_sprite(): void;
+    public actualizar(): void;
 }
 declare class PastoCuadriculado extends Fondo {
     constructor();
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class Laberinto1 extends Fondo {
     constructor();
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class Fondos {
-    Plano: any;
-    Pasto: any;
-    PastoCuadriculado: any;
-    Tarde: any;
-    Laberinto1: any;
+    public Plano: any;
+    public Pasto: any;
+    public PastoCuadriculado: any;
+    public Tarde: any;
+    public Laberinto1: any;
     constructor();
 }
 declare class Imagenes {
-    nombresImagenes: string[];
-    data_path: string;
-    recursos: any;
-    imagenes_solicitadas: any;
-    loader: any;
+    public nombresImagenes: string[];
+    public data_path: string;
+    public recursos: any;
+    public imagenes_solicitadas: any;
+    public loader: any;
     constructor(callback_onready: any, opciones: any);
     private cargar_recursos();
     private cargar_recurso(nombre);
-    cargar(nombre: any): Imagen;
-    cargar_grilla(nombre: any, columnas?: number, filas?: number): Grilla;
-    cargar_animacion(nombre: any, columnas?: number, filas?: number): Animacion;
+    public cargar(nombre: any): Imagen;
+    public cargar_grilla(nombre: any, columnas?: number, filas?: number): Grilla;
+    public cargar_animacion(nombre: any, columnas?: number, filas?: number): Animacion;
 }
 declare class Imagen {
-    ruta: any;
-    imagen: any;
+    public ruta: any;
+    public imagen: any;
     constructor(imagen: any);
-    instanciar(): any;
-    avanzar(velocidad?: number): boolean;
-    ancho: any;
-    alto: any;
+    public instanciar(): any;
+    public avanzar(velocidad?: number): boolean;
+    public ancho : any;
+    public alto : any;
 }
 declare class Grilla extends Imagen {
-    columnas: any;
-    filas: any;
-    sprite: any;
-    cuadro: any;
+    public columnas: any;
+    public filas: any;
+    public sprite: any;
+    public cuadro: any;
     constructor(imagen: any, columnas?: number, filas?: number);
-    instanciar(): any;
-    cantidad_cuadros: number;
-    definir_cuadro(numero_de_cuadro: any): void;
-    avanzar(velocidad?: number): boolean;
-    ancho: number;
-    alto: number;
+    public instanciar(): any;
+    public cantidad_cuadros : number;
+    public definir_cuadro(numero_de_cuadro: any): void;
+    public avanzar(velocidad?: number): boolean;
+    public ancho : number;
+    public alto : number;
 }
 declare class Animacion extends Grilla {
-    animaciones: any;
-    animacion_en_curso: any;
-    cuadro_en_la_animacion: any;
-    _ticks_acumulados: any;
+    public animaciones: any;
+    public animacion_en_curso: any;
+    public cuadro_en_la_animacion: any;
+    public _ticks_acumulados: any;
     constructor(imagen: any, columnas?: number, filas?: number);
-    definir_animacion(nombre: any, cuadros: any, velocidad: any): void;
-    cargar_animacion(nombre: any): void;
-    avanzar(velocidad?: number): boolean;
+    public definir_animacion(nombre: any, cuadros: any, velocidad: any): void;
+    public cargar_animacion(nombre: any): void;
+    public avanzar(velocidad?: number): boolean;
 }
 declare class GestorDeEscenas {
-    escena: any;
+    public escena: any;
     constructor();
-    cambiar_escena(nueva_escena: any): void;
-    actualizar(): void;
-    escena_actual(): any;
+    public cambiar_escena(nueva_escena: any): void;
+    public actualizar(): void;
+    public escena_actual(): any;
 }
 declare class DepuradorDeshabilitado {
-    modos: any;
-    diccionario_modos: any;
+    public modos: any;
+    public diccionario_modos: any;
     constructor();
-    actualizar(): void;
-    definir_modos(modos: any): void;
-    eliminar_todos_los_modos(): void;
-    obtener_modos(): any;
+    public actualizar(): void;
+    public definir_modos(modos: any): void;
+    public eliminar_todos_los_modos(): void;
+    public obtener_modos(): any;
 }
 declare class ModoDeDepuracion {
-    shape: any;
-    container: any;
-    grosor_linea: any;
+    public shape: any;
+    public container: any;
+    public grosor_linea: any;
     constructor();
-    eliminar(): void;
-    actualizar(): void;
+    public eliminar(): void;
+    public actualizar(): void;
 }
 declare class ModoRadiosDeColision extends ModoDeDepuracion {
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class ModoArea extends ModoDeDepuracion {
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class ModoPuntosDeControl extends ModoDeDepuracion {
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class ModoFisica extends ModoDeDepuracion {
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class ModoPosicion extends ModoDeDepuracion {
-    text_coordenada: any;
-    eje: any;
+    public text_coordenada: any;
+    public eje: any;
     constructor();
     private sobre_escribir_dibujado();
-    eliminar(): void;
-    actualizar(): void;
+    public eliminar(): void;
+    public actualizar(): void;
 }
 declare class Mundo {
-    gestor_escenas: any;
-    depurador: any;
+    public gestor_escenas: any;
+    public depurador: any;
     constructor();
-    actualizar(): void;
-    definir_modos(modos: any): void;
-    obtener_modos(): any;
-    agregar_tarea_una_vez(tiempo: any, funcion: any, parametros?: any, parent?: any): void;
-    agregar_tarea_siempre(tiempo: any, funcion: any, parametros?: any, parent?: any): void;
+    public actualizar(): void;
+    public definir_modos(modos: any): void;
+    public obtener_modos(): any;
+    public agregar_tarea_una_vez(tiempo: any, funcion: any, parametros?: any, parent?: any): void;
+    public agregar_tarea_siempre(tiempo: any, funcion: any, parametros?: any, parent?: any): void;
 }
 declare var simbolos: {
     IZQUIERDA: number;
@@ -298,102 +298,102 @@ declare var simbolos: {
     J: number;
 };
 /**
- * @class Control
- *
- * Representa un control de teclado sencillo.
- *
- * Este objeto permite acceder al estado del teclado usando atributos.
- *
- * Por ejemplo, con este objeto, para saber si el usuario está
- * pulsando el direccional hacia la izquierda puedes ejecutar::
- *
- *     @example
- *     if (pilas.escena_actual().control.izquierda) {
- *       console.log('Ha pulsado hacia la izquierda');
- *     }
- *
- * Es decir, si bien Control es una clase, no hace falta
- * instanciarla. Ya existe un objeto que se puede consultar bajo el
- * nombre ``pilas.escena_actual().control``.
- *
- * Entonces, una vez que tienes la referencia para consultar, los
- * atributos que tiene este objeto control son::
- *
- *     @example
- *     izquierda
- *     derecha
- *     arriba
- *     abajo
- *     boton
- *
- * Cada uno de estos atributos te pueden devolver true, o false,
- * indicando si el control está pulsado o no.
- */
+* @class Control
+*
+* Representa un control de teclado sencillo.
+*
+* Este objeto permite acceder al estado del teclado usando atributos.
+*
+* Por ejemplo, con este objeto, para saber si el usuario está
+* pulsando el direccional hacia la izquierda puedes ejecutar::
+*
+*     @example
+*     if (pilas.escena_actual().control.izquierda) {
+*       console.log('Ha pulsado hacia la izquierda');
+*     }
+*
+* Es decir, si bien Control es una clase, no hace falta
+* instanciarla. Ya existe un objeto que se puede consultar bajo el
+* nombre ``pilas.escena_actual().control``.
+*
+* Entonces, una vez que tienes la referencia para consultar, los
+* atributos que tiene este objeto control son::
+*
+*     @example
+*     izquierda
+*     derecha
+*     arriba
+*     abajo
+*     boton
+*
+* Cada uno de estos atributos te pueden devolver true, o false,
+* indicando si el control está pulsado o no.
+*/
 declare class Control {
-    izquierda: any;
-    derecha: any;
-    arriba: any;
-    abajo: any;
-    boton: any;
+    public izquierda: any;
+    public derecha: any;
+    public arriba: any;
+    public abajo: any;
+    public boton: any;
     constructor(escena: any);
-    recibir(evento: any, tipo: any): void;
-    cuando_pulsa_una_tecla(evento: any): void;
-    cuando_suelta_una_tecla(evento: any): void;
+    public recibir(evento: any, tipo: any): void;
+    public cuando_pulsa_una_tecla(evento: any): void;
+    public cuando_suelta_una_tecla(evento: any): void;
 }
 /**
- * @class Camara
- *
- * Representa la cámara que visualiza el escenario y permite hacer movimientos
- * de pantalla.
- *
- * Esta clase también se encarga de transformar el sistema de referencia
- * entre coordenadas de pantalla y coordenadas de escenario.
- */
+* @class Camara
+*
+* Representa la cámara que visualiza el escenario y permite hacer movimientos
+* de pantalla.
+*
+* Esta clase también se encarga de transformar el sistema de referencia
+* entre coordenadas de pantalla y coordenadas de escenario.
+*/
 declare class Camara {
-    escenario: any;
-    centro_x: any;
-    centro_y: any;
+    public escenario: any;
+    public centro_x: any;
+    public centro_y: any;
     constructor(escenario: any);
-    x: any;
-    y: any;
-    zoom: any;
+    public x : any;
+    public y : any;
+    public zoom : any;
     /**
-     * @method obtener_posicion_pantalla
-     *
-     * Convierte una posición del escenario de pilas al formato
-     * de coordenadas del navegador.
-     *
-     * Por ejemplo, el punto (0, 0) es el centro del escenario para
-     * pilas, pero el navegador lo interpreta como el punto (160, 120).
-     */
-    obtener_posicion_pantalla(x: any, y: any): {
+    * @method obtener_posicion_pantalla
+    *
+    * Convierte una posición del escenario de pilas al formato
+    * de coordenadas del navegador.
+    *
+    * Por ejemplo, el punto (0, 0) es el centro del escenario para
+    * pilas, pero el navegador lo interpreta como el punto (160, 120).
+    */
+    public obtener_posicion_pantalla(x: any, y: any): {
         x: any;
         y: number;
     };
     /**
-     * @method obtener_posicion_escenario
-     *
-     * Convierte una posición dada en un sistema de coordenadas
-     * tradicional, en una posición de escenario, donde el punto (0, 0)
-     * es el centro de la pantalla.
-     */
-    obtener_posicion_escenario(x: any, y: any): {
+    * @method obtener_posicion_escenario
+    *
+    * Convierte una posición dada en un sistema de coordenadas
+    * tradicional, en una posición de escenario, donde el punto (0, 0)
+    * es el centro de la pantalla.
+    */
+    public obtener_posicion_escenario(x: any, y: any): {
         x: number;
         y: number;
     };
-    obtener_posicion(): {
+    public obtener_posicion(): {
         x: number;
         y: any;
     };
-    convertir_de_posicion_relativa_a_fisica(x: any, y: any): {
+    public convertir_de_posicion_relativa_a_fisica(x: any, y: any): {
         x: any;
         y: number;
     };
-    convertir_de_posicion_fisica_a_relativa(x: any, y: any): {
+    public convertir_de_posicion_fisica_a_relativa(x: any, y: any): {
         x: any;
         y: number;
     };
-    obtener_area_visible(): {
+    public obtener_area_visible(): {
         izquierda: number;
         derecha: any;
         arriba: any;
@@ -401,76 +401,76 @@ declare class Camara {
     };
 }
 declare class Evento {
-    respuestas: any;
-    nombre: any;
+    public respuestas: any;
+    public nombre: any;
     constructor(nombre: any);
-    emitir(evento: any): void;
-    conectar(respuesta: any): void;
-    desconectar(respuesta: any): void;
+    public emitir(evento: any): void;
+    public conectar(respuesta: any): void;
+    public desconectar(respuesta: any): void;
 }
 declare class ProxyEventos {
-    click_de_mouse: any;
-    cuando_termina_click: any;
-    mueve_mouse: any;
-    actualiza: any;
-    pulsa_tecla: any;
-    suelta_tecla: any;
-    Evento: any;
+    public click_de_mouse: any;
+    public cuando_termina_click: any;
+    public mueve_mouse: any;
+    public actualiza: any;
+    public pulsa_tecla: any;
+    public suelta_tecla: any;
+    public Evento: any;
     constructor();
 }
 declare class escena {
-    Base: any;
-    Normal: any;
+    public Base: any;
+    public Normal: any;
     constructor();
 }
 declare class Base {
-    click_de_mouse: any;
-    cuando_termina_click: any;
-    mueve_mouse: any;
-    actualiza: any;
-    pulsa_tecla: any;
-    suelta_tecla: any;
-    fisica: any;
-    stage: any;
-    camara: any;
-    control: any;
-    actores: any;
-    tareas: any;
+    public click_de_mouse: any;
+    public cuando_termina_click: any;
+    public mueve_mouse: any;
+    public actualiza: any;
+    public pulsa_tecla: any;
+    public suelta_tecla: any;
+    public fisica: any;
+    public stage: any;
+    public camara: any;
+    public control: any;
+    public actores: any;
+    public tareas: any;
     constructor();
-    iniciar(): void;
-    actualizar(): void;
-    necesita_ordenar_actores(): boolean;
-    ordenar_actores_por_valor_z(): void;
-    agregar_actor(actor: any): void;
-    eliminar_actor(actor: any): void;
-    obtener_posicion_pantalla(x: any, y: any): any;
-    obtener_posicion_escenario(x: any, y: any): any;
+    public iniciar(): void;
+    public actualizar(): void;
+    public necesita_ordenar_actores(): boolean;
+    public ordenar_actores_por_valor_z(): void;
+    public agregar_actor(actor: any): void;
+    public eliminar_actor(actor: any): void;
+    public obtener_posicion_pantalla(x: any, y: any): any;
+    public obtener_posicion_escenario(x: any, y: any): any;
 }
 /**
- * @class Normal
- *
- * Escena básica de pilas.
- *
- * Si no se define ninguna escena, cuando se ejecuta:
- *
- *     @example
- *     pilas.iniciar();
- *
- * esta es la escena que se muestra en la pantalla.
- *
- */
+* @class Normal
+*
+* Escena básica de pilas.
+*
+* Si no se define ninguna escena, cuando se ejecuta:
+*
+*     @example
+*     pilas.iniciar();
+*
+* esta es la escena que se muestra en la pantalla.
+*
+*/
 declare class Normal extends Base {
-    fondo: any;
-    iniciar(): void;
+    public fondo: any;
+    public iniciar(): void;
 }
 declare class Interpolaciones {
-    interpolar(objeto: any, atributo: any, valor_o_valores: any, tiempo: any, tipo: any): void;
-    AceleracionGradual(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
-    DesaceleracionGradual(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
-    ReboteInicial(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
-    ReboteFinal(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
-    ElasticoInicial(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
-    ElasticoFinal(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public interpolar(objeto: any, atributo: any, valor_o_valores: any, tiempo: any, tipo: any): void;
+    public AceleracionGradual(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public DesaceleracionGradual(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public ReboteInicial(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public ReboteFinal(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public ElasticoInicial(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
+    public ElasticoFinal(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): void;
 }
 declare var Box2D: any;
 declare var PPM: number;
@@ -489,145 +489,145 @@ declare var box2d: {
 declare function convertir_a_metros(valor: any): number;
 declare function convertir_a_pixels(valor: any): number;
 declare class Figura {
-    cuerpo: any;
-    camara: any;
-    fisica: any;
-    id: any;
+    public cuerpo: any;
+    public camara: any;
+    public fisica: any;
+    public id: any;
     constructor(fisica: any);
-    x: any;
-    y: any;
-    rotacion: number;
-    obtener_posicion(): any;
-    definir_posicion(x: any, y: any): void;
-    obtener_rotacion(): number;
-    definir_rotacion(angulo: any): void;
-    empujar(dx: any, dy: any): void;
-    eliminar(): void;
+    public x : any;
+    public y : any;
+    public rotacion : number;
+    public obtener_posicion(): any;
+    public definir_posicion(x: any, y: any): void;
+    public obtener_rotacion(): number;
+    public definir_rotacion(angulo: any): void;
+    public empujar(dx: any, dy: any): void;
+    public eliminar(): void;
 }
 declare class Rectangulo extends Figura {
     constructor(fisica: any, x: any, y: any, ancho: any, alto: any, opciones: any);
 }
 declare class Circulo extends Figura {
-    _radio: any;
-    _escala: any;
+    public _radio: any;
+    public _escala: any;
     constructor(fisica: any, x: any, y: any, radio: any, opciones: any);
-    definir_radio(): void;
-    radio: any;
-    escala: any;
+    public definir_radio(): void;
+    public radio : any;
+    public escala : any;
 }
 declare class Fisica {
-    mundo: any;
-    Circulo: any;
-    Rectangulo: any;
-    camara: any;
-    velocidad: any;
-    timeStep: any;
+    public mundo: any;
+    public Circulo: any;
+    public Rectangulo: any;
+    public camara: any;
+    public velocidad: any;
+    public timeStep: any;
     constructor(camara: any);
-    actualizar(): void;
-    definir_gravedad(dx: any, dy: any): void;
-    dibujar_figuras_sobre_lienzo(graphics: any): void;
-    convertir_vector_relativo_a_pantalla(cuerpo: any, x: any, y: any, v: any): {
+    public actualizar(): void;
+    public definir_gravedad(dx: any, dy: any): void;
+    public dibujar_figuras_sobre_lienzo(graphics: any): void;
+    public convertir_vector_relativo_a_pantalla(cuerpo: any, x: any, y: any, v: any): {
         x: any;
         y: any;
     };
-    createBox(width: any, height: any, pX: any, pY: any, type: any, data: any): any;
-    crear_rectangulo(x: any, y: any, ancho: any, alto: any, opciones: any): any;
-    crear_circulo(x: any, y: any, radio: any, opciones: any): any;
+    public createBox(width: any, height: any, pX: any, pY: any, type: any, data: any): any;
+    public crear_rectangulo(x: any, y: any, ancho: any, alto: any, opciones: any): any;
+    public crear_circulo(x: any, y: any, radio: any, opciones: any): any;
 }
 declare class ConstanteDeMovimiento {
-    constante: any;
-    cuerpo_enlazado: any;
+    public constante: any;
+    public cuerpo_enlazado: any;
     constructor(figura: any, evento: any);
-    mover(x: any, y: any): void;
-    eliminar(): void;
+    public mover(x: any, y: any): void;
+    public eliminar(): void;
 }
 /**
- * @class Habilidad
- *
- * Representa una habilidad que un actor puede aprender.
- */
+* @class Habilidad
+*
+* Representa una habilidad que un actor puede aprender.
+*/
 declare class Habilidad {
-    receptor: any;
-    argumentos: any;
+    public receptor: any;
+    public argumentos: any;
     constructor(receptor: any, argumentos?: any);
-    actualizar(): void;
-    eliminar(): void;
+    public actualizar(): void;
+    public eliminar(): void;
 }
 declare class Imitar extends Habilidad {
-    objeto_a_imitar: any;
-    con_rotacion: any;
+    public objeto_a_imitar: any;
+    public con_rotacion: any;
     constructor(receptor: any, argumentos: any);
-    actualizar(): void;
+    public actualizar(): void;
 }
 /**
- * @class PuedeExplotar
- *
- * Hace que un actor se pueda hacer explotar invocando al metodo eliminar.
- */
+* @class PuedeExplotar
+*
+* Hace que un actor se pueda hacer explotar invocando al metodo eliminar.
+*/
 declare class PuedeExplotar extends Habilidad {
     constructor(receptor: any);
 }
 /**
- * @class SeguirAlMouse
- *
- * Hace que un actor siga la posición del mouse en todo momento.
- */
+* @class SeguirAlMouse
+*
+* Hace que un actor siga la posición del mouse en todo momento.
+*/
 declare class SeguirAlMouse extends Habilidad {
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
-    mover(evento: any): void;
+    public recibir(evento: any, tipo: any): void;
+    public mover(evento: any): void;
 }
 /**
- * @class SeguirClicks
- *
- * Hace que el actor se coloque la posición del cursor cuando se hace click.
- */
+* @class SeguirClicks
+*
+* Hace que el actor se coloque la posición del cursor cuando se hace click.
+*/
 declare class SeguirClicks extends Habilidad {
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
-    moverse_a_este_punto(evento: any): void;
+    public recibir(evento: any, tipo: any): void;
+    public moverse_a_este_punto(evento: any): void;
 }
 /**
- * @class MoverseConElTeclado
- *
- * Hace que un actor cambie de posición con pulsar el teclado.
- */
+* @class MoverseConElTeclado
+*
+* Hace que un actor cambie de posición con pulsar el teclado.
+*/
 declare class MoverseConElTeclado extends Habilidad {
-    en_movimiento: any;
+    public en_movimiento: any;
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
-    mover(x: any, y: any): void;
+    public recibir(evento: any, tipo: any): void;
+    public mover(x: any, y: any): void;
 }
 declare class MoverseConElTecladoConRotacion extends Habilidad {
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
+    public recibir(evento: any, tipo: any): void;
 }
 /**
- * @class Arrastrable
- *
- * Hace que un objeto se pueda arrastrar con el puntero del mouse.
- *
- * Cuando comienza a mover al actor se llama al metodo
- * ''comienza_a_arrastrar'' y cuando termina llama a
- * ''termina_de_arrastrar''. Estos nombres de metodos se llaman para
- * que puedas personalizar estos eventos, dado que puedes usar
- * polimorfismo para redefinir el comportamiento de estos dos metodos.
- */
+* @class Arrastrable
+*
+* Hace que un objeto se pueda arrastrar con el puntero del mouse.
+*
+* Cuando comienza a mover al actor se llama al metodo
+* ''comienza_a_arrastrar'' y cuando termina llama a
+* ''termina_de_arrastrar''. Estos nombres de metodos se llaman para
+* que puedas personalizar estos eventos, dado que puedes usar
+* polimorfismo para redefinir el comportamiento de estos dos metodos.
+*/
 declare class Arrastrable extends Habilidad {
-    debe_arrastrar: any;
-    constante: any;
+    public debe_arrastrar: any;
+    public constante: any;
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
-    cuando_intenta_arrastrar(evento: any): void;
-    cuando_arrastra(evento: any): void;
-    cuando_termina_de_arrastrar(evento: any): void;
-    comienza_a_arrastrar(evento: any): void;
-    termina_de_arrastrar(): void;
+    public recibir(evento: any, tipo: any): void;
+    public cuando_intenta_arrastrar(evento: any): void;
+    public cuando_arrastra(evento: any): void;
+    public cuando_termina_de_arrastrar(evento: any): void;
+    public comienza_a_arrastrar(evento: any): void;
+    public termina_de_arrastrar(): void;
 }
 declare class Disparar extends Habilidad {
-    contador: any;
+    public contador: any;
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
+    public recibir(evento: any, tipo: any): void;
 }
 declare class RebotarComoPelota extends Habilidad {
     constructor(receptor: any);
@@ -637,382 +637,382 @@ declare class RebotarComoCaja extends Habilidad {
 }
 declare class SeMantieneEnPantalla extends Habilidad {
     constructor(receptor: any);
-    recibir(evento: any, tipo: any): void;
+    public recibir(evento: any, tipo: any): void;
 }
 /**
- * @class Habilidades
- *
- * Representa todas las habilidades conocidas en pilas-engine.
- */
+* @class Habilidades
+*
+* Representa todas las habilidades conocidas en pilas-engine.
+*/
 declare class Habilidades {
-    Arrastrable: any;
-    PuedeExplotar: any;
-    SeguirAlMouse: any;
-    SeguirClicks: any;
-    MoverseConElTeclado: any;
-    MoverseConElTecladoConRotacion: any;
-    SeMantieneEnPantalla: any;
-    Disparar: any;
-    RebotarComoPelota: any;
-    RebotarComoCaja: any;
-    Imitar: any;
+    public Arrastrable: any;
+    public PuedeExplotar: any;
+    public SeguirAlMouse: any;
+    public SeguirClicks: any;
+    public MoverseConElTeclado: any;
+    public MoverseConElTecladoConRotacion: any;
+    public SeMantieneEnPantalla: any;
+    public Disparar: any;
+    public RebotarComoPelota: any;
+    public RebotarComoCaja: any;
+    public Imitar: any;
     constructor();
 }
 /**
- * @class Comportamiento
- *
- * Representa una habilidad que un actor puede aprender.
- */
+* @class Comportamiento
+*
+* Representa una habilidad que un actor puede aprender.
+*/
 declare class Comportamiento {
-    receptor: any;
-    argumentos: any;
+    public receptor: any;
+    public argumentos: any;
     constructor(argumentos: any);
-    iniciar(receptor: any): void;
-    actualizar(): void;
-    eliminar(): void;
+    public iniciar(receptor: any): void;
+    public actualizar(): void;
+    public eliminar(): void;
 }
 declare class AvanzarComoProyectil extends Comportamiento {
-    velocidad: any;
-    dx: any;
-    dy: any;
-    iniciar(receptor: any): void;
-    actualizar(): void;
+    public velocidad: any;
+    public dx: any;
+    public dy: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): void;
 }
 declare class Avanzar extends Comportamiento {
-    pasos: any;
-    velocidad: any;
-    dx: any;
-    dy: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public pasos: any;
+    public velocidad: any;
+    public dx: any;
+    public dy: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 declare class Girar extends Comportamiento {
-    angulo: any;
-    tiempo: any;
-    angulo_aux: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public angulo: any;
+    public tiempo: any;
+    public angulo_aux: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 declare class Saltar extends Comportamiento {
-    cuando_termina: any;
-    suelo: any;
-    velocidad_inicial: any;
-    velocidad: any;
-    velocidad_aux: any;
-    sonido_saltar: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public cuando_termina: any;
+    public suelo: any;
+    public velocidad_inicial: any;
+    public velocidad: any;
+    public velocidad_aux: any;
+    public sonido_saltar: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 declare class Saltando extends Comportamiento {
-    suelo: any;
-    dy: any;
-    cuando_termina: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public suelo: any;
+    public dy: any;
+    public cuando_termina: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 declare class Orbitar extends Comportamiento {
-    punto_de_orbita_x: any;
-    punto_de_orbita_y: any;
-    radio: any;
-    velocidad: any;
-    direccion: any;
-    angulo: any;
-    iniciar(receptor: any): void;
-    actualizar(): void;
-    mover_astro(): void;
+    public punto_de_orbita_x: any;
+    public punto_de_orbita_y: any;
+    public radio: any;
+    public velocidad: any;
+    public direccion: any;
+    public angulo: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): void;
+    public mover_astro(): void;
 }
 declare class OrbitarSobreActor extends Orbitar {
-    actor: any;
-    iniciar(receptor: any): void;
-    actualizar(): void;
+    public actor: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): void;
 }
 declare class CaminarBase extends Comportamiento {
-    pasos: any;
-    velocidad: any;
-    cantActualizaciones: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
-    mover(): void;
+    public pasos: any;
+    public velocidad: any;
+    public cantActualizaciones: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
+    public mover(): void;
 }
 declare class CaminaArriba extends CaminarBase {
-    mover(): void;
+    public mover(): void;
 }
 declare class CaminaAbajo extends CaminarBase {
-    mover(): void;
+    public mover(): void;
 }
 declare class CaminaIzquierda extends CaminarBase {
-    mover(): void;
+    public mover(): void;
 }
 declare class CaminaDerecha extends CaminarBase {
-    mover(): void;
+    public mover(): void;
 }
 /**
- * @class Secuencia
- *
- * Representa una secuencia de comportamientos que un actor realiza de forma ordenada.
- *
- * Espera una lista de comportamientos.
- */
+* @class Secuencia
+*
+* Representa una secuencia de comportamientos que un actor realiza de forma ordenada.
+*
+* Espera una lista de comportamientos.
+*/
 declare class Secuencia extends Comportamiento {
-    secuencia: any;
-    comando_actual: any;
-    reiniciar: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public secuencia: any;
+    public comando_actual: any;
+    public reiniciar: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class Alternativa
- *
- * Representa un if-then-else entre dos comportamientos. Se ejecuta uno u otro dependiendo de una condicion.
- *
- * Recibe como argumentos dos comportamientos de tipo Secuencia y una funcion booleana a evaluar.
- */
+* @class Alternativa
+*
+* Representa un if-then-else entre dos comportamientos. Se ejecuta uno u otro dependiendo de una condicion.
+*
+* Recibe como argumentos dos comportamientos de tipo Secuencia y una funcion booleana a evaluar.
+*/
 declare class Alternativa extends Comportamiento {
-    rama_entonces: any;
-    rama_sino: any;
-    condicion: any;
-    rama_elegida: any;
-    ejecutado: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public rama_entonces: any;
+    public rama_sino: any;
+    public condicion: any;
+    public rama_elegida: any;
+    public ejecutado: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class RepetirHasta
- *
- * Representa un bucle condicional que repite un comportamiento hasta que se cumple cierta condicion.
- *
- * Recibe como argumento un comportamiento de tipo Secuencia y una funcion booleana a evaluar.
- */
+* @class RepetirHasta
+*
+* Representa un bucle condicional que repite un comportamiento hasta que se cumple cierta condicion.
+*
+* Recibe como argumento un comportamiento de tipo Secuencia y una funcion booleana a evaluar.
+*/
 declare class RepetirHasta extends Comportamiento {
-    ejecutado: any;
-    secuencia: any;
-    condicion: any;
-    evaluar_condicion: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public ejecutado: any;
+    public secuencia: any;
+    public condicion: any;
+    public evaluar_condicion: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class RepetirN
- *
- * Representa un bucle que repite una cierta cantidad de veces un comportamiento
- *
- * Recibe como argumento un comportamiento de tipo Secuencia y una funcion booleana a evaluar.
- */
+* @class RepetirN
+*
+* Representa un bucle que repite una cierta cantidad de veces un comportamiento
+*
+* Recibe como argumento un comportamiento de tipo Secuencia y una funcion booleana a evaluar.
+*/
 declare class RepetirN extends Comportamiento {
-    secuencia: any;
-    cantidad: any;
-    cantidad_actual: any;
-    volver_a_evaluar: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public secuencia: any;
+    public cantidad: any;
+    public cantidad_actual: any;
+    public volver_a_evaluar: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class CambiarAtributo
- *
- * Representa el cambio de un atributo del actor
- *
- * Recibe como argumento una funcion cuyo resultado sera guardado como valor del atributo
- */
+* @class CambiarAtributo
+*
+* Representa el cambio de un atributo del actor
+*
+* Recibe como argumento una funcion cuyo resultado sera guardado como valor del atributo
+*/
 declare class CambiarAtributo extends Comportamiento {
-    nombre: any;
-    funcion_valor: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public nombre: any;
+    public funcion_valor: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class CambiarVariableLocal
- *
- * Representa el cambio de una variable local del procedimiento actual
- *
- * Recibe como argumento una funcion cuyo resultado sera guardado como valor del atributo
- */
+* @class CambiarVariableLocal
+*
+* Representa el cambio de una variable local del procedimiento actual
+*
+* Recibe como argumento una funcion cuyo resultado sera guardado como valor del atributo
+*/
 declare class CambiarVariableLocal extends Comportamiento {
-    nombre: any;
-    funcion_valor: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public nombre: any;
+    public funcion_valor: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class LlamadaProcedimiento
- *
- * Representa una llamada a un procedimiento
- *
- * Recibe como argumentos el nombre del procedimiento y el contexto de
- * definiciones
- */
+* @class LlamadaProcedimiento
+*
+* Representa una llamada a un procedimiento
+*
+* Recibe como argumentos el nombre del procedimiento y el contexto de
+* definiciones
+*/
 declare class LlamadaProcedimiento extends Comportamiento {
-    nombre: any;
-    procedimientos: any;
-    secuencia: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public nombre: any;
+    public procedimientos: any;
+    public secuencia: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class Expresion
- *
- * Representa la evaluacion de una expresion
- *
- * Recibe como argumento la expresión a evaluar
- */
+* @class Expresion
+*
+* Representa la evaluacion de una expresion
+*
+* Recibe como argumento la expresión a evaluar
+*/
 declare class Expresion extends Comportamiento {
-    expresion: any;
-    resultado: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public expresion: any;
+    public resultado: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class LlamadaFuncion
- *
- * Representa una llamada a una funcion
- *
- * Recibe como argumentos el nombre de la funcion, el contexto de
- * definiciones de funciones y la expresión a retornar
- */
+* @class LlamadaFuncion
+*
+* Representa una llamada a una funcion
+*
+* Recibe como argumentos el nombre de la funcion, el contexto de
+* definiciones de funciones y la expresión a retornar
+*/
 declare class LlamadaFuncion extends Expresion {
-    nombre: any;
-    funciones: any;
-    secuencia: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public nombre: any;
+    public funciones: any;
+    public secuencia: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class ConstructorDePrograma
- *
- * Permite construir un comportamiento que representa un programa
- *
+* @class ConstructorDePrograma
+*
+* Permite construir un comportamiento que representa un programa
+*
 **/
 declare class ConstructorDePrograma {
-    stack_secuencias: any;
-    procedimientos: any;
-    funciones: any;
+    public stack_secuencias: any;
+    public procedimientos: any;
+    public funciones: any;
     constructor();
-    empezar_secuencia(): void;
-    hacer(comportamiento: any, argumentos: any): void;
-    terminar_secuencia(): void;
-    repetir_hasta(c: any): void;
-    alternativa_si(c: any): void;
-    alternativa_sino(c: any): void;
-    repetirN(n: any): void;
-    def_proc(n: any, params: any): void;
-    llamada_proc(n: any, proc_args: any): void;
-    def_func(n: any): void;
-    llamada_func(n: any, exp: any): void;
-    cambio_atributo(n: any, f: any): void;
-    cambio_variable(n: any, f: any): void;
-    inyectar_scopes(actor: any): void;
-    inyectar_parametros(actor: any): void;
-    inyectar_variables_locales(actor: any): void;
-    inyectar_atributos(actor: any): void;
-    ejecutar(actor: any): void;
+    public empezar_secuencia(): void;
+    public hacer(comportamiento: any, argumentos: any): void;
+    public terminar_secuencia(): void;
+    public repetir_hasta(c: any): void;
+    public alternativa_si(c: any): void;
+    public alternativa_sino(c: any): void;
+    public repetirN(n: any): void;
+    public def_proc(n: any, params: any): void;
+    public llamada_proc(n: any, proc_args: any): void;
+    public def_func(n: any): void;
+    public llamada_func(n: any, exp: any): void;
+    public cambio_atributo(n: any, f: any): void;
+    public cambio_variable(n: any, f: any): void;
+    public inyectar_scopes(actor: any): void;
+    public inyectar_parametros(actor: any): void;
+    public inyectar_variables_locales(actor: any): void;
+    public inyectar_atributos(actor: any): void;
+    public ejecutar(actor: any): void;
 }
 declare class Programa extends Comportamiento {
-    programa: any;
-    iniciar(receptor: any): void;
-    actualizar(): boolean;
+    public programa: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): boolean;
 }
 /**
- * @class Comportamientos
- *
- * Representa todos los comportamientos que puede hacer un actor en pilas-engine.
- */
+* @class Comportamientos
+*
+* Representa todos los comportamientos que puede hacer un actor en pilas-engine.
+*/
 declare class Comportamientos {
-    Subir: any;
-    CaminarBase: any;
-    CaminaArriba: any;
-    CaminaAbajo: any;
-    CaminaIzquierda: any;
-    CaminaDerecha: any;
-    Orbitar: any;
-    OrbitarSobreActor: any;
-    Saltar: any;
-    Girar: any;
-    Avanzar: any;
-    AvanzarComoProyectil: any;
-    Saltando: any;
-    Secuencia: any;
-    Alternativa: any;
-    RepetirHasta: any;
-    RepetirN: any;
-    ConstructorDePrograma: any;
-    Programa: any;
+    public Subir: any;
+    public CaminarBase: any;
+    public CaminaArriba: any;
+    public CaminaAbajo: any;
+    public CaminaIzquierda: any;
+    public CaminaDerecha: any;
+    public Orbitar: any;
+    public OrbitarSobreActor: any;
+    public Saltar: any;
+    public Girar: any;
+    public Avanzar: any;
+    public AvanzarComoProyectil: any;
+    public Saltando: any;
+    public Secuencia: any;
+    public Alternativa: any;
+    public RepetirHasta: any;
+    public RepetirN: any;
+    public ConstructorDePrograma: any;
+    public Programa: any;
     constructor();
 }
 declare class Colisiones {
-    colisiones: any;
+    public colisiones: any;
     constructor();
-    agregar(grupo_a: any, grupo_b: any, funcion_a_llamar: any, parent?: any): void;
-    verificar_colisiones(): void;
-    _verificar_colisiones_en_tupla(tupla: any): void;
+    public agregar(grupo_a: any, grupo_b: any, funcion_a_llamar: any, parent?: any): void;
+    public verificar_colisiones(): void;
+    public _verificar_colisiones_en_tupla(tupla: any): void;
 }
 declare class colores {
-    negro: any;
-    blanco: any;
-    rojo: any;
-    verde: any;
-    azul: any;
-    gris: any;
-    amarillo: any;
-    magenta: any;
-    cyan: any;
-    grisclaro: any;
-    grisoscuro: any;
-    verdeoscuro: any;
-    azuloscuro: any;
-    naranja: any;
-    rosa: any;
-    violeta: any;
-    marron: any;
-    negro_transparente: any;
-    blanco_transparente: any;
-    rojo_transparente: any;
-    verde_transparente: any;
-    azul_transparente: any;
-    gris_transparente: any;
+    public negro: any;
+    public blanco: any;
+    public rojo: any;
+    public verde: any;
+    public azul: any;
+    public gris: any;
+    public amarillo: any;
+    public magenta: any;
+    public cyan: any;
+    public grisclaro: any;
+    public grisoscuro: any;
+    public verdeoscuro: any;
+    public azuloscuro: any;
+    public naranja: any;
+    public rosa: any;
+    public violeta: any;
+    public marron: any;
+    public negro_transparente: any;
+    public blanco_transparente: any;
+    public rojo_transparente: any;
+    public verde_transparente: any;
+    public azul_transparente: any;
+    public gris_transparente: any;
     constructor();
 }
 declare class tareas {
-    Tareas: any;
+    public Tareas: any;
     constructor();
 }
 declare class Tarea {
-    tiempo: any;
-    tiempo_aux: any;
-    funcion: any;
-    una_vez: any;
-    parametros: any;
-    parent: any;
+    public tiempo: any;
+    public tiempo_aux: any;
+    public funcion: any;
+    public una_vez: any;
+    public parametros: any;
+    public parent: any;
     constructor(tiempo: any, funcion: any, una_vez: any, parametros: any, parent: any);
-    ejecutar(): void;
+    public ejecutar(): void;
 }
 declare class Tareas {
-    tareas_planificadas: any;
-    contador_de_tiempo: any;
+    public tareas_planificadas: any;
+    public contador_de_tiempo: any;
     constructor();
-    _agregar_tarea(tarea: any): void;
-    siempre(tiempo: any, funcion: any, parametros: any, parent: any): void;
-    una_vez(tiempo: any, funcion: any, parametros: any, parent: any): void;
-    actualizar(): void;
+    public _agregar_tarea(tarea: any): void;
+    public siempre(tiempo: any, funcion: any, parametros: any, parent: any): void;
+    public una_vez(tiempo: any, funcion: any, parametros: any, parent: any): void;
+    public actualizar(): void;
 }
 declare class Sonidos {
-    recursos: any;
-    preload: any;
+    public recursos: any;
+    public preload: any;
     constructor(data_path: any);
     private cargar_recursos();
     private cargar_recurso(nombre);
-    cargar(nombre: any): Sonido;
+    public cargar(nombre: any): Sonido;
 }
 declare class Sonido {
-    nombre: any;
+    public nombre: any;
     constructor(nombre: any);
-    reproducir(repetir?: boolean): any;
-    detener(): any;
+    public reproducir(repetir?: boolean): any;
+    public detener(): any;
 }
 declare class Rutinas {
-    lista_de_rutinas: any;
+    public lista_de_rutinas: any;
     constructor();
-    observar_tareas(elemento_id: any, intervalo: any): void;
-    agregar(nombre: any, actor: any, init: any, update: any): void;
-    actualizar(): void;
+    public observar_tareas(elemento_id: any, intervalo: any): void;
+    public agregar(nombre: any, actor: any, init: any, update: any): void;
+    public actualizar(): void;
 }
 declare var pilas: any;
 declare var window: Window;
@@ -1020,247 +1020,247 @@ declare var pilasengine: any;
 declare var PxLoader: any;
 declare var createjs: any;
 /**
- * @class Pilas
- * @singleton
- *
- * Módulo pilas
- * ============
- *
- * Pilas es una biblioteca para facilitar el desarrollo de videojuegos. Es útil para
- * programadores principiantes o para el desarrollo de juegos casuales.
- *
- * Este módulo contiene las funciones principales para iniciar y ejecutar la biblioteca.
- * {@img pilas-logo.png}
- *
- *     @example
- *     pilas.iniciar({ancho: 320, alto: 240});
- *     aceituna = new pilas.actores.Aceituna();
- */
+* @class Pilas
+* @singleton
+*
+* Módulo pilas
+* ============
+*
+* Pilas es una biblioteca para facilitar el desarrollo de videojuegos. Es útil para
+* programadores principiantes o para el desarrollo de juegos casuales.
+*
+* Este módulo contiene las funciones principales para iniciar y ejecutar la biblioteca.
+* {@img pilas-logo.png}
+*
+*     @example
+*     pilas.iniciar({ancho: 320, alto: 240});
+*     aceituna = new pilas.actores.Aceituna();
+*/
 declare class Pilas {
-    canvas: any;
-    opciones: any;
-    mundo: any;
-    fondos: any;
-    imagenes: any;
-    actores: any;
-    habilidades: any;
-    comportamientos: any;
-    utils: any;
-    grupo: any;
-    tareas: any;
-    rutinas: any;
-    interpolaciones: any;
-    colisiones: any;
-    colores: any;
-    sonidos: any;
-    escena: any;
-    eventos: any;
-    ready: any;
+    public canvas: any;
+    public opciones: any;
+    public mundo: any;
+    public fondos: any;
+    public imagenes: any;
+    public actores: any;
+    public habilidades: any;
+    public comportamientos: any;
+    public utils: any;
+    public grupo: any;
+    public tareas: any;
+    public rutinas: any;
+    public interpolaciones: any;
+    public colisiones: any;
+    public colores: any;
+    public sonidos: any;
+    public escena: any;
+    public eventos: any;
+    public ready: any;
     /**
-     * @method iniciar
-     *
-     * Inicia la ventana principal del juego con algunos detalles de funcionamiento.
-     *
-     * Ejemplo de invocación:
-     *
-     *     @example
-     *     pilas.iniciar({ancho: 320, alto: 240, data_path: 'data/'});
-     *
-     * Parámetros:
-     *
-     * - data_path: La ruta hacia la carpeta donde están las imágenes de los actores. (Por defecto 'data/')
-     *
-     */
-    iniciar(opciones: any): void;
-    observar_tareas(elemento_id: any, intervalo: any): void;
-    reiniciar(): void;
+    * @method iniciar
+    *
+    * Inicia la ventana principal del juego con algunos detalles de funcionamiento.
+    *
+    * Ejemplo de invocación:
+    *
+    *     @example
+    *     pilas.iniciar({ancho: 320, alto: 240, data_path: 'data/'});
+    *
+    * Parámetros:
+    *
+    * - data_path: La ruta hacia la carpeta donde están las imágenes de los actores. (Por defecto 'data/')
+    *
+    */
+    public iniciar(opciones: any): void;
+    public observar_tareas(elemento_id: any, intervalo: any): void;
+    public reiniciar(): void;
     /**
-     * @method escena_actual
-     * Retorna la escena en curso.
-     */
-    escena_actual(): any;
+    * @method escena_actual
+    * Retorna la escena en curso.
+    */
+    public escena_actual(): any;
     /**
-     * @method inicializar_opciones
-     * @private
-     *
-     * Carga las opciones iniciales y define los valores por omisión si es necesario.
-     */
+    * @method inicializar_opciones
+    * @private
+    *
+    * Carga las opciones iniciales y define los valores por omisión si es necesario.
+    */
     private inicializar_opciones(opciones);
     /**
-     * @method definir_tamano_del_canvas
-     * @private
-     *
-     * Cambia el tamaño del canvas HTML en base a las opciones iniciales.
-     */
+    * @method definir_tamano_del_canvas
+    * @private
+    *
+    * Cambia el tamaño del canvas HTML en base a las opciones iniciales.
+    */
     private definir_tamano_del_canvas();
     /**
-     * @method obtener_codigo_y_texto_desde_evento
-     * @private
-     *
-     * A partir del evento de teclado, obtiene su codigo y el texto de
-     * la tecla presionada.
-     */
+    * @method obtener_codigo_y_texto_desde_evento
+    * @private
+    *
+    * A partir del evento de teclado, obtiene su codigo y el texto de
+    * la tecla presionada.
+    */
     private obtener_codigo_y_texto_desde_evento(event);
     /**
-     * @method conectar_eventos
-     * @private
-     *
-     * Conecta los eventos del mouse y teclado a los métodos manejadores
-     * de eventos de la escena actual.
-     */
+    * @method conectar_eventos
+    * @private
+    *
+    * Conecta los eventos del mouse y teclado a los métodos manejadores
+    * de eventos de la escena actual.
+    */
     private conectar_eventos();
     /**
-     * @method obtener_posicion_desde_evento
-     * @private
-     *
-     * A partir del evento del mouse, obtiene la posicion del puntero en
-     * las coordenadas de Pilas.
-     */
+    * @method obtener_posicion_desde_evento
+    * @private
+    *
+    * A partir del evento del mouse, obtiene la posicion del puntero en
+    * las coordenadas de Pilas.
+    */
     private obtener_posicion_desde_evento(canvas, event);
     /**
-     * @method obtener_canvas
-     * @private
-     *
-     * Obtiene la referencia al elemento HTML canvas usando
-     * el atributo *canvas_id* de las opciones iniciales.
-     */
+    * @method obtener_canvas
+    * @private
+    *
+    * Obtiene la referencia al elemento HTML canvas usando
+    * el atributo *canvas_id* de las opciones iniciales.
+    */
     private obtener_canvas();
     /**
-     * @method onready
-     * Callback que se invoca una vez que pilas puede comenzar a funcionar.
-     */
-    onready(): void;
+    * @method onready
+    * Callback que se invoca una vez que pilas puede comenzar a funcionar.
+    */
+    public onready(): void;
     /**
-     * @method ejecutar
-     * Pone en funcionamiento el bucle principal.
-     */
-    ejecutar(): void;
+    * @method ejecutar
+    * Pone en funcionamiento el bucle principal.
+    */
+    public ejecutar(): void;
     /**
-     * @method actualizar
-     * Se ejecuta automáticamente 60 veces por segundo, para mantener el juego en funcionamiento.
-     */
-    actualizar(): void;
-    interpolar(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): any;
-    definir_modos(modos: any): void;
-    mostrar_posiciones(): string;
-    ocultar_posiciones(): string;
-    mostrar_fisica(): string;
-    ocultar_fisica(): string;
+    * @method actualizar
+    * Se ejecuta automáticamente 60 veces por segundo, para mantener el juego en funcionamiento.
+    */
+    public actualizar(): void;
+    public interpolar(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): any;
+    public definir_modos(modos: any): void;
+    public mostrar_posiciones(): string;
+    public ocultar_posiciones(): string;
+    public mostrar_fisica(): string;
+    public ocultar_fisica(): string;
     /**
-     * @method obtener_actores_en
-     * Se ejecuta para conseguir una lista de todos los actores que estén en una
-     * coordenanda determinada de la pantalla.
-     *
-     * Opcionalmente se puede espeficiar una etiqueta a modo de filtro, con el
-     * parámetro "con_etiqueta".
-     *
-     * ejemplos de invocaciones:
-     *
-     *     >>> pilas.obtener_actores_en(0, 0)
-     *     [Actor, Mono, Fondo]
-     *
-     *     >>> pilas.obtener_actores_en(0, 0, 'Mono')
-     *     [Mono]
-     *
-     */
-    obtener_actores_en(x: any, y: any, con_etiqueta?: any): any[];
-    obtener_actores_con_etiqueta(etiqueta: any): any[];
-    izquierda(): number;
-    derecha(): number;
-    arriba(): number;
-    abajo(): number;
+    * @method obtener_actores_en
+    * Se ejecuta para conseguir una lista de todos los actores que estén en una
+    * coordenanda determinada de la pantalla.
+    *
+    * Opcionalmente se puede espeficiar una etiqueta a modo de filtro, con el
+    * parámetro "con_etiqueta".
+    *
+    * ejemplos de invocaciones:
+    *
+    *     >>> pilas.obtener_actores_en(0, 0)
+    *     [Actor, Mono, Fondo]
+    *
+    *     >>> pilas.obtener_actores_en(0, 0, 'Mono')
+    *     [Mono]
+    *
+    */
+    public obtener_actores_en(x: any, y: any, con_etiqueta?: any): any[];
+    public obtener_actores_con_etiqueta(etiqueta: any): any[];
+    public izquierda(): number;
+    public derecha(): number;
+    public arriba(): number;
+    public abajo(): number;
 }
 declare class Aceituna extends Actor {
-    cuadro_normal: any;
-    cuadro_reir: any;
-    cuadro_burlar: any;
-    cuadro_gritar: any;
+    public cuadro_normal: any;
+    public cuadro_reir: any;
+    public cuadro_burlar: any;
+    public cuadro_gritar: any;
     constructor(x: any, y: any);
-    normal(): void;
-    reir(): void;
-    gritar(): void;
-    burlarse(): void;
-    saltar(): void;
+    public normal(): void;
+    public reir(): void;
+    public gritar(): void;
+    public burlarse(): void;
+    public saltar(): void;
 }
 declare class Bomba extends Actor {
-    paso: any;
+    public paso: any;
     constructor(x: any, y: any);
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class Nave extends Actor {
-    paso: any;
-    teclado_habilitado: any;
-    enemigos: any;
+    public paso: any;
+    public teclado_habilitado: any;
+    public enemigos: any;
     constructor(x: any, y: any);
-    habilitar_teclado(): string;
-    actualizar(): void;
-    disparar(): string;
-    avanzar(velocidad: any): void;
-    definir_enemigos(enemigos: any): string;
+    public habilitar_teclado(): string;
+    public actualizar(): void;
+    public disparar(): string;
+    public avanzar(velocidad: any): void;
+    public definir_enemigos(enemigos: any): string;
 }
 declare class Explosion extends Actor {
-    paso: any;
+    public paso: any;
     constructor(x: any, y: any);
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class Proyectil extends Actor {
-    paso: any;
-    enemigos: any;
+    public paso: any;
+    public enemigos: any;
     constructor(x: any, y: any, atributos: any);
-    actualizar(): void;
-    analizar_colisiones(): void;
+    public actualizar(): void;
+    public analizar_colisiones(): void;
 }
 declare class Piedra extends Actor {
-    dx: any;
-    dy: any;
+    public dx: any;
+    public dy: any;
     constructor(x: any, y: any, tamano: any, dx: any, dy: any);
-    actualizar(): void;
-    empujar(dx: any, dy: any): string;
-    clonar(veces: any): string;
-    obtener_tamano_al_azar(): string;
+    public actualizar(): void;
+    public empujar(dx: any, dy: any): string;
+    public clonar(veces: any): string;
+    public obtener_tamano_al_azar(): string;
 }
 declare class Eje extends Actor {
     constructor(x: any, y: any);
 }
 declare class Maton extends Actor {
-    paso: any;
-    cuadros: any;
-    direccion: any;
-    velocidad: any;
-    animar: any;
-    obstaculos: any;
-    teclado_habilitado: any;
+    public paso: any;
+    public cuadros: any;
+    public direccion: any;
+    public velocidad: any;
+    public animar: any;
+    public obstaculos: any;
+    public teclado_habilitado: any;
     constructor(x: any, y: any);
-    actualizar(): void;
-    iniciar_animacion(): void;
-    detener_animacion(): void;
-    avanzar_animacion(): void;
-    mover(x: any, y: any): void;
-    puede_moverse_a(x: any, y: any): boolean;
-    caminar_arriba(pasos: any): string;
-    caminar_abajo(pasos: any): string;
-    caminar_izquierda(pasos: any): string;
-    caminar_derecha(pasos: any): string;
-    saludar(): string;
-    habilitar_teclado(): string;
-    inspeccionar(): string;
+    public actualizar(): void;
+    public iniciar_animacion(): void;
+    public detener_animacion(): void;
+    public avanzar_animacion(): void;
+    public mover(x: any, y: any): void;
+    public puede_moverse_a(x: any, y: any): boolean;
+    public caminar_arriba(pasos: any): string;
+    public caminar_abajo(pasos: any): string;
+    public caminar_izquierda(pasos: any): string;
+    public caminar_derecha(pasos: any): string;
+    public saludar(): string;
+    public habilitar_teclado(): string;
+    public inspeccionar(): string;
 }
 declare class Globo extends Actor {
-    mensaje: any;
-    actor_texto: any;
+    public mensaje: any;
+    public actor_texto: any;
     constructor(x: any, y: any, mensaje: any);
-    eliminar(): void;
+    public eliminar(): void;
 }
 declare class Texto extends Actor {
-    s: any;
-    container: any;
-    texto: any;
-    color: any;
-    sprite_texto: any;
+    public s: any;
+    public container: any;
+    public texto: any;
+    public color: any;
+    public sprite_texto: any;
     constructor(x: any, y: any, texto: any, color: any);
-    crear_texto(): void;
-    eliminar_texto(): void;
-    eliminar(): void;
+    public crear_texto(): void;
+    public eliminar_texto(): void;
+    public eliminar(): void;
 }
 declare class Bloque extends Actor {
     constructor(x: any, y: any, nombre_imagen: any);
@@ -1269,11 +1269,11 @@ declare class Manzana extends Actor {
     constructor(x: any, y: any);
 }
 declare class Cofre extends Actor {
-    paso: any;
-    esta_abierto: any;
+    public paso: any;
+    public esta_abierto: any;
     constructor(x: any, y: any);
-    abrir(): void;
-    actualizar(): void;
+    public abrir(): void;
+    public actualizar(): void;
 }
 declare class Llave extends Actor {
     constructor(x: any, y: any);
@@ -1282,252 +1282,252 @@ declare class Caja extends Actor {
     constructor(x: any, y: any);
 }
 declare class Cesto extends Actor {
-    figura1: any;
-    figura2: any;
-    figura3: any;
+    public figura1: any;
+    public figura2: any;
+    public figura3: any;
     constructor(x?: number, y?: number);
 }
 declare class Pelota extends Actor {
-    figura: any;
+    public figura: any;
     constructor(x: any, y: any);
-    empujar(dx: any, dy: any): string;
-    posicion(x: any, y: any): void;
+    public empujar(dx: any, dy: any): string;
+    public posicion(x: any, y: any): void;
 }
 declare class Zanahoria extends Actor {
-    cuadro_normal: any;
-    cuadro_sonrie: any;
+    public cuadro_normal: any;
+    public cuadro_sonrie: any;
     constructor(x: any, y: any);
-    normal(): void;
-    sonreir(): void;
-    saltar(): void;
-    decir(): void;
+    public normal(): void;
+    public sonreir(): void;
+    public saltar(): void;
+    public decir(): void;
 }
 declare class Boton extends Actor {
-    ruta_normal: any;
-    ruta_press: any;
-    ruta_over: any;
-    funciones_normal: any;
-    funciones_press: any;
-    funciones_over: any;
-    estado: any;
+    public ruta_normal: any;
+    public ruta_press: any;
+    public ruta_over: any;
+    public funciones_normal: any;
+    public funciones_press: any;
+    public funciones_over: any;
+    public estado: any;
     constructor(x: any, y: any, ruta_normal?: string, ruta_press?: string, ruta_over?: string);
-    recibir(evento: any, tipo: any): void;
-    conectar_normal(funcion: any, args?: any): void;
-    conectar_presionado(funcion: any, args?: any): void;
-    conectar_sobre(funcion: any, args?: any): void;
-    desconectar_normal_todo(): void;
-    desconectar_presionado_todo(): void;
-    desconectar_sobre_todo(): void;
-    desconectar_normal(funcion: any, args: any): void;
-    desconectar_presionado(funcion: any, args: any): void;
-    desconectar_sobre(funcion: any, args: any): void;
-    ejecutar_funciones_normal(): void;
-    ejecutar_funciones_press(): void;
-    ejecutar_funciones_over(): void;
-    activar(): void;
-    desactivar(): void;
-    pintar_normal(): void;
-    pintar_presionado(): void;
-    pintar_sobre(): void;
-    detectar_clic(click: any): void;
-    detectar_movimiento(evento: any): void;
+    public recibir(evento: any, tipo: any): void;
+    public conectar_normal(funcion: any, args?: any): void;
+    public conectar_presionado(funcion: any, args?: any): void;
+    public conectar_sobre(funcion: any, args?: any): void;
+    public desconectar_normal_todo(): void;
+    public desconectar_presionado_todo(): void;
+    public desconectar_sobre_todo(): void;
+    public desconectar_normal(funcion: any, args: any): void;
+    public desconectar_presionado(funcion: any, args: any): void;
+    public desconectar_sobre(funcion: any, args: any): void;
+    public ejecutar_funciones_normal(): void;
+    public ejecutar_funciones_press(): void;
+    public ejecutar_funciones_over(): void;
+    public activar(): void;
+    public desactivar(): void;
+    public pintar_normal(): void;
+    public pintar_presionado(): void;
+    public pintar_sobre(): void;
+    public detectar_clic(click: any): void;
+    public detectar_movimiento(evento: any): void;
 }
 declare class Puntaje extends Texto {
-    valor: any;
+    public valor: any;
     constructor(x: any, y: any, puntaje: any, color: any);
-    aumentar(aumento: any): void;
-    obtener(): any;
+    public aumentar(aumento: any): void;
+    public obtener(): any;
 }
 declare class Mono extends Actor {
-    image_normal: any;
-    image_smile: any;
-    image_shout: any;
-    sound_smile: any;
-    sound_shout: any;
+    public image_normal: any;
+    public image_smile: any;
+    public image_shout: any;
+    public sound_smile: any;
+    public sound_shout: any;
     constructor(x: any, y: any);
-    sonreir(): void;
-    gritar(): void;
-    normal(): void;
-    decir(mensaje: any): void;
-    saltar(): void;
+    public sonreir(): void;
+    public gritar(): void;
+    public normal(): void;
+    public decir(mensaje: any): void;
+    public saltar(): void;
 }
 declare class Banana extends Actor {
     constructor(x?: number, y?: number);
-    cerrar(): void;
-    abrir(): void;
+    public cerrar(): void;
+    public abrir(): void;
 }
 declare class Tortuga extends Actor {
-    anterior_x: any;
-    anterior_y: any;
-    pizarra: any;
-    lapiz_bajo: any;
-    _color: any;
+    public anterior_x: any;
+    public anterior_y: any;
+    public pizarra: any;
+    public lapiz_bajo: any;
+    public _color: any;
     constructor(x?: number, y?: number, dibuja?: boolean);
-    avanzar(pasos: any): void;
-    girarderecha(delta: any): void;
-    girarizquierda(delta: any): void;
-    actualizar(): void;
-    bajalapiz(): void;
-    subelapiz(): void;
-    crear_poligono(lados?: number, escala?: number, sentido?: number): void;
-    crear_circulo(radio: any, sentido?: number): void;
-    color: any;
+    public avanzar(pasos: any): void;
+    public girarderecha(delta: any): void;
+    public girarizquierda(delta: any): void;
+    public actualizar(): void;
+    public bajalapiz(): void;
+    public subelapiz(): void;
+    public crear_poligono(lados?: number, escala?: number, sentido?: number): void;
+    public crear_circulo(radio: any, sentido?: number): void;
+    public color : any;
 }
 declare class Pizarra extends Actor {
-    container: any;
-    lienzo: any;
-    _ancho: any;
-    _alto: any;
+    public container: any;
+    public lienzo: any;
+    public _ancho: any;
+    public _alto: any;
     constructor(x?: number, y?: number);
-    dibujar_punto(x: any, y: any, color?: any): void;
-    linea(x: any, y: any, x2: any, y2: any, color?: any, grosor?: number): void;
-    rectangulo(x: any, y: any, ancho: any, alto: any, color?: any, relleno?: any, grosor?: number): void;
-    poligono(puntos: any, color?: any, grosor?: number): void;
-    limpiar(): void;
-    pintar(color: any): void;
+    public dibujar_punto(x: any, y: any, color?: any): void;
+    public linea(x: any, y: any, x2: any, y2: any, color?: any, grosor?: number): void;
+    public rectangulo(x: any, y: any, ancho: any, alto: any, color?: any, relleno?: any, grosor?: number): void;
+    public poligono(puntos: any, color?: any, grosor?: number): void;
+    public limpiar(): void;
+    public pintar(color: any): void;
 }
 declare class Pingu extends Actor {
-    paso: any;
-    cuadros_correr: any;
-    saltando: any;
+    public paso: any;
+    public cuadros_correr: any;
+    public saltando: any;
     constructor(x?: number, y?: number);
-    actualizar(): void;
-    puede_saltar(): void;
-    mover(x: any, y: any): void;
-    animacion_correr(): void;
-    detener_animacion(): void;
+    public actualizar(): void;
+    public puede_saltar(): void;
+    public mover(x: any, y: any): void;
+    public animacion_correr(): void;
+    public detener_animacion(): void;
 }
 declare class Alien extends Actor {
-    sombra: any;
-    limitar_movimientos: any;
-    sonido_blabla: any;
-    cuando_busca_recoger: any;
+    public sombra: any;
+    public limitar_movimientos: any;
+    public sonido_blabla: any;
+    public cuando_busca_recoger: any;
     constructor(x?: number, y?: number);
-    iniciar(): void;
-    decir(mensaje: any): void;
-    super_decir(mensaje: any): void;
-    actualizar(): void;
-    avanzar_animacion(): any;
-    ir_derecha(): void;
-    ir_izquierda(): void;
-    ir_arriba(): void;
-    ir_abajo(): void;
-    esperar(tiempo?: number): void;
-    detener(): void;
-    recoger(): void;
-    colisiona_con_item(item_name: any): any;
+    public iniciar(): void;
+    public decir(mensaje: any): void;
+    public super_decir(mensaje: any): void;
+    public actualizar(): void;
+    public avanzar_animacion(): any;
+    public ir_derecha(): void;
+    public ir_izquierda(): void;
+    public ir_arriba(): void;
+    public ir_abajo(): void;
+    public esperar(tiempo?: number): void;
+    public detener(): void;
+    public recoger(): void;
+    public colisiona_con_item(item_name: any): any;
 }
 declare class Movimiento {
-    receptor: any;
-    argumentos: any;
-    tiempo: any;
-    cantidad: any;
-    _contador_de_tiempo: any;
-    _velocidad: any;
+    public receptor: any;
+    public argumentos: any;
+    public tiempo: any;
+    public cantidad: any;
+    public _contador_de_tiempo: any;
+    public _velocidad: any;
     constructor(argumentos: any);
-    iniciar(receptor: any): void;
-    iniciar_animacion(): void;
-    supero_el_tiempo(): boolean;
-    al_terminar(): void;
+    public iniciar(receptor: any): void;
+    public iniciar_animacion(): void;
+    public supero_el_tiempo(): boolean;
+    public al_terminar(): void;
 }
 declare class MoverHaciaDerecha extends Movimiento {
-    iniciar_animacion(): void;
-    actualizar(): boolean;
-    realizar_movimiento(): void;
+    public iniciar_animacion(): void;
+    public actualizar(): boolean;
+    public realizar_movimiento(): void;
 }
 declare class MoverHaciaIzquierda extends MoverHaciaDerecha {
-    iniciar_animacion(): void;
-    realizar_movimiento(): void;
+    public iniciar_animacion(): void;
+    public realizar_movimiento(): void;
 }
 declare class MoverHaciaArriba extends MoverHaciaDerecha {
-    iniciar_animacion(): void;
-    realizar_movimiento(): void;
+    public iniciar_animacion(): void;
+    public realizar_movimiento(): void;
 }
 declare class MoverHaciaAbajo extends MoverHaciaDerecha {
-    iniciar_animacion(): void;
-    realizar_movimiento(): void;
+    public iniciar_animacion(): void;
+    public realizar_movimiento(): void;
 }
 declare class Esperar extends MoverHaciaDerecha {
-    iniciar_animacion(): void;
-    realizar_movimiento(): void;
+    public iniciar_animacion(): void;
+    public realizar_movimiento(): void;
 }
 declare class Recoger extends Movimiento {
-    iniciar_animacion(): void;
-    actualizar(): boolean;
+    public iniciar_animacion(): void;
+    public actualizar(): boolean;
 }
 declare class Hablar extends MoverHaciaDerecha {
-    contador: any;
-    iniciar_animacion(): void;
-    realizar_movimiento(): void;
+    public contador: any;
+    public iniciar_animacion(): void;
+    public realizar_movimiento(): void;
 }
 declare class AlienMarron extends Actor {
-    sombra: any;
-    limitar_movimientos: any;
-    sonido_blabla: any;
-    cuando_busca_recoger: any;
+    public sombra: any;
+    public limitar_movimientos: any;
+    public sonido_blabla: any;
+    public cuando_busca_recoger: any;
     constructor(x?: number, y?: number);
-    iniciar(): void;
-    decir(mensaje: any): void;
-    super_decir(mensaje: any): void;
-    actualizar(): void;
-    avanzar_animacion(): any;
-    ir_derecha(): void;
-    ir_izquierda(): void;
-    ir_arriba(): void;
-    ir_abajo(): void;
-    esperar(tiempo?: number): void;
-    detener(): void;
-    recoger(): void;
+    public iniciar(): void;
+    public decir(mensaje: any): void;
+    public super_decir(mensaje: any): void;
+    public actualizar(): void;
+    public avanzar_animacion(): any;
+    public ir_derecha(): void;
+    public ir_izquierda(): void;
+    public ir_arriba(): void;
+    public ir_abajo(): void;
+    public esperar(tiempo?: number): void;
+    public detener(): void;
+    public recoger(): void;
 }
 declare class Tuerca extends Actor {
-    y_original: any;
-    contador: any;
-    sombra: any;
+    public y_original: any;
+    public contador: any;
+    public sombra: any;
     constructor(x: any, y: any);
-    actualizar(): void;
+    public actualizar(): void;
 }
 declare class Sombra extends Actor {
     constructor(x: any, y: any);
 }
 /**
- * @class Actores
- *
- * Módulo Actores
- * ==============
- *
- * Representa todos los actores conocidos en pilas-engine.
- */
+* @class Actores
+*
+* Módulo Actores
+* ==============
+*
+* Representa todos los actores conocidos en pilas-engine.
+*/
 declare class Actores {
-    pilas: any;
-    Aceituna: any;
-    Actor: any;
-    Bomba: any;
-    Explosion: any;
-    Nave: any;
-    Proyectil: any;
-    Piedra: any;
-    Eje: any;
-    Maton: any;
-    Globo: any;
-    Texto: any;
-    Bloque: any;
-    Manzana: any;
-    Cofre: any;
-    Llave: any;
-    Caja: any;
-    Cesto: any;
-    Pelota: any;
-    Zanahoria: any;
-    Boton: any;
-    Puntaje: any;
-    Mono: any;
-    Banana: any;
-    Tortuga: any;
-    Pizarra: any;
-    Pingu: any;
-    Alien: any;
-    AlienMarron: any;
-    Tuerca: any;
-    Sombra: any;
+    public pilas: any;
+    public Aceituna: any;
+    public Actor: any;
+    public Bomba: any;
+    public Explosion: any;
+    public Nave: any;
+    public Proyectil: any;
+    public Piedra: any;
+    public Eje: any;
+    public Maton: any;
+    public Globo: any;
+    public Texto: any;
+    public Bloque: any;
+    public Manzana: any;
+    public Cofre: any;
+    public Llave: any;
+    public Caja: any;
+    public Cesto: any;
+    public Pelota: any;
+    public Zanahoria: any;
+    public Boton: any;
+    public Puntaje: any;
+    public Mono: any;
+    public Banana: any;
+    public Tortuga: any;
+    public Pizarra: any;
+    public Pingu: any;
+    public Alien: any;
+    public AlienMarron: any;
+    public Tuerca: any;
+    public Sombra: any;
     constructor(pilas: any);
 }
