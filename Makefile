@@ -72,6 +72,10 @@ actualizar_pilas:
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
+actualizar_ejercicios_pilas:
+	cd ejerciciosPilas; git pull; npm install; grunt typescript pilas -f; cd ..
+	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
+
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
 	rm -r -f public/libs/blockly
@@ -144,7 +148,7 @@ version:
 
 ver_sync: subir_version
 
-full: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly
+full: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
 
 subir_version:
 	git commit -am 'release ${VERSION}'
