@@ -16,7 +16,7 @@ Luego, para iniciar la compilación y abrir el navegador
 escribir:
 
 ```
-grunt
+grunt -f
 ```
 
 Y si estás desarrollando, es una buena idea iniciar una
