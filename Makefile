@@ -28,13 +28,15 @@ comandos:
 	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
 	@echo "    ${G}actualizar_pilas${N}                Vincula pilasweb."
 	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
+	@echo "    ${G}actualizar_ejercicios_pilas${N}     Actualiza los ejercicios de pilas."
 	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
 	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
 	@echo ""
 	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar (sync):${N}"
 	@echo "${L}"
 	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
-	@echo "        actualizar_pilas → actualizar_blockly "
+	@echo "        actualizar_pilas → actualizar_blockly →"
+	@echo "        actualizar_ejercicios_pilas"
 	@echo "        "
 	@echo "           (o bien "make full")"
 	@echo "${N}"
@@ -75,6 +77,8 @@ actualizar_pilas:
 actualizar_ejercicios_pilas:
 	cd ejerciciosPilas; git pull; npm install; grunt typescript pilas -f; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
+	rm -r -f public/libs/data
+	cp -r -f ejerciciosPilas/src/data public/libs/data
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
