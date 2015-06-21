@@ -2,12 +2,12 @@
 
 <h1>Galería</h1>
 
-{{#each}}
+{{#each juego in model}}
 
   <div class='galeria-juego'>
-    <div class='galeria-juego-acciones'><button {{action "eliminar" this}} class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></button></div>
-    <div class='galeria-juego-preview' {{action "abrir" this}}><img {{bindAttr src=imagen}}></div>
-    <div class='galeria-juego-titulo'>{{nombre}}</div>
+    <div class='galeria-juego-acciones'><button {{action "eliminar" juego}} class='btn btn-danger btn-xs'><i class='fa fa-trash'></i></button></div>
+    <div class='galeria-juego-preview' {{action "abrir" juego}}><img {{bindAttr src=juego.imagen}}></div>
+    <div class='galeria-juego-titulo'>{{juego.nombre}}</div>
   </div>
 
 {{else}}

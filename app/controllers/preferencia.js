@@ -1,6 +1,6 @@
 import Ember from 'ember';
 /*global model*/
-export default Ember.ObjectController.extend({
+export default Ember.Controller.extend({
   edicion: false,
   actions: {
     guardar: function() {
