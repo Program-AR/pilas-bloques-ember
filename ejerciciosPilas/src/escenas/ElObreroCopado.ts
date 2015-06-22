@@ -10,11 +10,13 @@
 class ElObreroCopado extends Base {
     fondo;
     obrero;
+    automata;
     
     iniciar() {
         this.fondo = new Fondo('fondos.obrero.png',0,0);
         this.obrero = new Obrero(160,-100);
         this.obrero.aprender(AvisaAlSalirDePantalla,{});
+        this.automata = this.obrero;
     }
 
 /*************** Métodos para que se cuelgue blockly ****************/
