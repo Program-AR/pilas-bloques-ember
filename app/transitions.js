@@ -5,22 +5,22 @@ export default function(){
   this.transition(
     this.fromRoute('index'),
     this.toRoute('desafios'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
   this.transition(
     this.fromRoute('index'),
     this.toRoute('galeria'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
   this.transition(
     this.fromRoute('index'),
     this.toRoute('preferencia'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
   /* DESAFIOS */
@@ -28,15 +28,15 @@ export default function(){
   this.transition(
     this.fromRoute('desafios'),
     this.toRoute('galeria'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
   this.transition(
     this.fromRoute('desafios'),
     this.toRoute('preferencia'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
   /* GALERIA */
@@ -44,8 +44,8 @@ export default function(){
   this.transition(
     this.fromRoute('galeria'),
     this.toRoute('preferencia'),
-    this.use('toLeft'),
-    this.reverse('toRight')
+    this.use('fade'),
+    this.reverse('fade')
   );
 
 }
