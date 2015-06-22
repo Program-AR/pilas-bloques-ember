@@ -9,18 +9,13 @@ class LaberintoConQueso extends Base {
     personaje;    cuadricula;    queso; secuenciaCaminata; condicion;
     iniciar() {
         this.estado=undefined;
-        this.cuadricula = new CuadriculaParaRaton(0,0,10,10,{alto: 100},{'ancho':50,'alto':50,'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
+        this.cuadricula = new CuadriculaParaRaton(0,0,10,10,{'alto':400,'ancho':300},{'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
 
         this.cuadricula.completarConObjetosRandom(new conjuntoClases([QuesoAnimado]));
-        var a= new RatonAnimado(0,0);
+
         this.personaje=new RatonAnimado(0,0)
-
         this.cuadricula.agregarActor(this.personaje,0,0);
-        this.secuenciaCaminata = new Secuencia({'secuencia':[CaminaArriba]})
-        this.secuenciaCaminata.iniciar(this.personaje);
-        this.condicion = function(){return this.receptor.y > 250;  }
-
-
+  
 
       }
 
@@ -49,9 +44,7 @@ class LaberintoConQueso extends Base {
       this.personaje.hacer_luego();
     }
 
-    Irse2(){
-      this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
-    }
+
 
 
 }

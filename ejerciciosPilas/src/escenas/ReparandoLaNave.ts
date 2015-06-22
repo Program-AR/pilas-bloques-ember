@@ -9,7 +9,8 @@ class ReparandoLaNave  extends Base{
   cantidadCarbon;
   cantidadHierro;
   nave;
-
+  secuenciaCaminata;
+  condicion;
   iniciar() {
       this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
       var cantidadFilas=4
@@ -34,6 +35,12 @@ class ReparandoLaNave  extends Base{
       var builder= new BuilderStatePattern('estoy00');
       this.definirTransiciones(builder);
       this.estado=builder.estadoInicial();
+      this.secuenciaCaminata = new Secuencia({'secuencia':[ new CaminaArriba({})]})
+
+      this.secuenciaCaminata.iniciar(this.personaje);
+
+       this.condicion = () => { return this.personajePrincipal().y > pilas.arriba+10; }
+
 
  }
 
@@ -107,8 +114,10 @@ class ReparandoLaNave  extends Base{
   }
 
   escapar(){
-    
+  this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
+
   }
+
 
 
      }

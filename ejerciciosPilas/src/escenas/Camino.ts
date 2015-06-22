@@ -21,16 +21,38 @@ class Camino {
 
   }
 
+escalarCasillasCuadradas(){
+    this.opcionesCasilla['ancho'] = this.opcionesCuadricula['ancho'] / this.cantidadColumnas;
+    this.opcionesCasilla['alto'] = this.opcionesCuadricula['alto'] / this.cantidadFilas;
+    if(this.opcionesCasilla['ancho']>this.opcionesCasilla['alto']){
+      this.opcionesCasilla['ancho']=this.opcionesCasilla['alto']
+    }else{
+      this.opcionesCasilla['alto']=this.opcionesCasilla['ancho']
+    }
+    this.opcionesCasilla['grilla']='finCamino.png';
+    this.opcionesCasilla['cantColumnas']= 1
+    this.opcionesCuadricula['ancho']=this.opcionesCasilla['ancho']*(this.cantidadColumnas);
+    this.opcionesCuadricula['alto']=this.opcionesCasilla['alto']*(this.cantidadFilas);
+}
+
   dameCamino(){
-      var a = new  CuadriculaEsparsa(this.x,this.y,this.cantidadFilas,this.cantidadColumnas,this.opcionesCuadricula,{grilla:'casillaLightbot.png', cantColumnas: 5},this.matriz)
-      this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla);
+
+    this.escalarCasillasCuadradas();
+
+
+
+
+      var a = new  CuadriculaEsparsa(this.x,this.y,this.cantidadFilas,this.cantidadColumnas,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
+      this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla,this.opcionesCuadricula,this.cantidadFilas,this.cantidadColumnas);
       return a;
   }
 
-  private cambiarImagenesCasillasCamino(direcciones,cuadricula,opcionesCasilla){
-    for(var index=0;index<cuadricula.casillas.length;index++){
+  public cambiarImagenesCasillasCamino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
+    for(var index=0;index<cuadricula.casillas.length-1;index++){
       cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
     }
+      cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
+    //solo por reescalado
   }
 
 
