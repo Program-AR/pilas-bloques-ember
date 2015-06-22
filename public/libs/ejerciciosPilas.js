@@ -678,7 +678,7 @@ var Animar = (function (_super) {
         this.sanitizarArgumentos();
         this.imagenAnterior = this.receptor._imagen;
         this.receptor.imagen = pilas.imagenes.cargar_grilla(this.argumentos.grilla, this.argumentos.cantColumnas);
-        this.receptor._imagen.definir_cuadro(this.argumentos.cuadroEstatico);
+        this.receptor._imagen.definir_cuadro(0);
         this.paso = 0;
     };
     Animar.prototype.actualizar = function () {
@@ -724,6 +724,10 @@ var Obrero = (function (_super) {
         this.definirAnimacion("correr", [0, 1, 2, 3, 2, 1], 15);
         this.definirAnimacion("parado", [3], 5);
     }
+    Obrero.prototype.restaurar = function () {
+        var grilla = pilas.imagenes.cargar_grilla('cooperativista.camina.png', 4);
+        this.imagen = grilla;
+    };
     Obrero.prototype.argumentosMartillar = function () {
         return { grilla: 'cooperativista.trabajando.png', cantColumnas: 2 };
     };
@@ -1373,6 +1377,35 @@ var EncenderLuz = (function (_super) {
     };
     return EncenderLuz;
 })(Comportamiento);
+var Martillar = (function (_super) {
+    __extends(Martillar, _super);
+    function Martillar() {
+        _super.apply(this, arguments);
+    }
+    Martillar.prototype.iniciar = function (receptor) {
+        _super.prototype.iniciar.call(this, receptor);
+        this.vecesRestantes = this.argumentos['veces'];
+        var imagen = pilas.imagenes.cargar_grilla("cooperativista.trabajando.png", 3);
+        this.receptor.imagen = imagen;
+        this.contador = 0;
+    };
+    Martillar.prototype.actualizar = function () {
+        this.contador += 1;
+        if (this.contador > 10) {
+            this.contador = 0;
+            var finaliza = this.receptor._imagen.avanzar();
+            this.imagen = this.receptor._imagen;
+            if (finaliza) {
+                this.vecesRestantes -= 1;
+                if (this.vecesRestantes === 0) {
+                    this.receptor.restaurar();
+                    return true;
+                }
+            }
+        }
+    };
+    return Martillar;
+})(Comportamiento);
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -1981,6 +2014,7 @@ var AvisaAlSalirDePantalla = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
+/// <reference path = "../comportamientos/Martillar.ts"/>
 /**
  * @class ElObreroCopado
  *
@@ -1994,7 +2028,8 @@ var ElObreroCopado = (function (_super) {
     ElObreroCopado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.obrero.png', 0, 0);
         this.obrero = new Obrero(160, -100);
-        this.obrero.aprender(AvisaAlSalirDePantalla, {});
+        //this.obrero.aprender(AvisaAlSalirDePantalla,{});
+        this.automata = this.obrero;
     };
     /*************** Métodos para que se cuelgue blockly ****************/
     /****** Deben tener sólo una línea, que sea un "hacer_luego" ********/
@@ -2006,7 +2041,7 @@ var ElObreroCopado = (function (_super) {
         this.obrero.hacer_luego(CaminaDerecha, { pasos: 2 });
     };
     ElObreroCopado.prototype.martillar = function () {
-        this.obrero.hacer_luego(Animar, this.obrero.argumentosMartillar());
+        this.obrero.hacer_luego(Martillar, { veces: 20 });
     };
     ElObreroCopado.prototype.saltar = function () {
         this.obrero.hacer_luego(Saltar);

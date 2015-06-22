@@ -123,6 +123,7 @@ export default Ember.Component.extend({
         eval(code);
         this.sendAction('parar');
       } catch (e) {
+        console.error(e.stack);
         alert(e);
       }
     },
