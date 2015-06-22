@@ -29,7 +29,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/**'],
-        tasks: ['clear', 'typescript', 'concat'],
+        tasks: ['clear', 'typescript'],
       }
     },
     open: {
@@ -59,7 +59,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
-  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.registerTask('default', ['typescript', 'pilas', 'open']);
 
   grunt.loadNpmTasks('grunt-notify');

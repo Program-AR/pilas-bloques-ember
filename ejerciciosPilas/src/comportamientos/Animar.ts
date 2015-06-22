@@ -9,7 +9,7 @@ class Animar extends Comportamiento{
         this.sanitizarArgumentos();
         this.imagenAnterior = this.receptor._imagen;
         this.receptor.imagen = pilas.imagenes.cargar_grilla(this.argumentos.grilla, this.argumentos.cantColumnas);
-        this.receptor._imagen.definir_cuadro(this.argumentos.cuadroEstatico);
+        this.receptor._imagen.definir_cuadro(0);
         this.paso = 0;
     }
     
