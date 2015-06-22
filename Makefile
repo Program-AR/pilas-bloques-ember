@@ -46,8 +46,7 @@ comandos:
 	@echo "    ${G}version${N}         Genera una nueva versión."
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
 	@echo ""
-	@echo "    ${G}_compile_win${N}          Genera la aplicación compilada para windows y mac."
-	@echo "    ${G}_compile_osx${N}      Genera la aplicación para osx."
+	@echo "    ${G}binarios${N}          Genera los binarios."
 	@echo "    ${G}upload_to_dropbox${N} Sube los binarios generados a dropbox."
 	@echo ""
 
@@ -148,7 +147,7 @@ version:
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
-	@echo "make ver_sync"
+	@echo "make subir_version"
 
 ver_sync: subir_version
 
@@ -170,6 +169,7 @@ to_develop:
 	cp public/package.desarrollo.json public/package.json
 
 _compile_osx:
+	make to_production
 	mkdir -p webkitbuilds
 	rm -r -f tmp
 	mkdir -p tmp
@@ -183,8 +183,10 @@ _compile_osx:
 	hdiutil create tmp/pilas-engine-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-engine-bloques.app -size 200mb
 	mv tmp/pilas-engine-bloques-${VERSION}.dmg webkitbuilds/
 	rm -r -f tmp
+	make to_develop
 
 _compile_win:
+	make to_production
 	mkdir -p webkitbuilds
 	rm -r -f tmp
 	mkdir -p tmp
@@ -195,8 +197,9 @@ _compile_win:
 	cp extras/instalador.nsi tmp/nwjs
 	cd tmp/nwjs; makensis instalador.nsi
 	mv tmp/nwjs/pilas-engine-bloques.exe webkitbuilds/pilas-engine-bloques-${VERSION}.exe
+	make to_develop
 
-binarios: to_production _compile_osx _compile_win
+binarios: to_production build _compile_osx _compile_win
 	@echo "Mostrando el directorio resultado"
 	@open webkitbuilds
 	make to_develop
