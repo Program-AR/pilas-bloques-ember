@@ -29,9 +29,9 @@ class FutbolRobots  extends Base{
     this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple,{'cuadriculaMultiple':this.cuadricula})
   }
 
-  patearPelota(){
+  /*patearPelota(){
     this.robot.hacer_luego(PatearPelota,{})
-  }
+  }*/
 
 
 }
