@@ -1,8 +1,7 @@
-
 module.exports = function(grunt) {
 
   require('load-grunt-tasks')(grunt);
-  
+
   grunt.initConfig({
     notify_hooks: {
                     options: {
@@ -12,18 +11,6 @@ module.exports = function(grunt) {
                                duration: 3
                              }
     },
-    concat: {
-      options: {
-        separator: ';',
-      },
-      dist: {
-        src: [
-            '../pilasweb/public/pilasweb.js',
-            'compilados/ejerciciosPilas.js',
-        ],
-        dest: 'compilados/ejerciciosPilas.js',
-      },
-    },
     typescript: {
       base: {
         src: ['src/**/*.ts'],
@@ -31,7 +18,7 @@ module.exports = function(grunt) {
         options: {
           module: 'commonjs',
           target: 'es5',
-          basePath: 'src',
+          rootDir: 'src',
           sourceMap: false,
           fullSourceMapPath: false,
           declaration: false,
@@ -42,7 +29,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/**'],
-        tasks: ['clear', 'typescript', 'concat'],
+        tasks: ['clear', 'typescript'],
       }
     },
     open: {
@@ -51,11 +38,12 @@ module.exports = function(grunt) {
         }
     },
     shell: {
-    	compilarCabecerasPilas: {
-    		command: ['cd ../pilasweb/', 'grunt', 'tsc -d -t ES5 --out pilasweb.d.ts **/*.ts'].join('&&')
-    	},
+      copiarPilasweb: {
+        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js'
+
+      },
     	copiarCabecerasPilas: {
-		command: 'mv ../pilasweb/pilasweb.d.ts dependencias/pilasweb.d.ts'
+		command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
 	},
 	clear: {
 		command: 'clear'
@@ -68,18 +56,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
 
   grunt.registerTask('clear', ['shell:clear']);
-  
-  grunt.registerTask('pilas', ['compilarCabecerasPilas', 'copiarCabecerasPilas']);
-  
-  grunt.registerTask('compilarCabecerasPilas', ['shell:compilarCabecerasPilas']);
 
-  grunt.registerTask('copiarCabecerasPilas', ['shell:copiarCabecerasPilas']);
-  
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.registerTask('default', ['typescript', 'concat', 'open']);
+  grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
-  // Load the task
+  grunt.registerTask('default', ['typescript', 'pilas', 'open']);
+
   grunt.loadNpmTasks('grunt-notify');
-  // This is required if you use any options.
   grunt.task.run('notify_hooks');
 };

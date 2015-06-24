@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Visor de Ejercicios</title>
 
+<head>
+  <meta charset="UTF-8">
+  <title>Visor de Ejercicios</title>
+  <style>
+    #canvas {
+      margin-top: 20px;
+      width: 420px;
+      height: 480px;
+      border: 1px solid #ccc;
+    }
+  </style>
+
+	<script src='../compilados/pilasweb.js'></script>
+	<script src='../compilados/ejerciciosPilas.js'></script>
 </head>
-<body>
+
+
+<body onload="onload()">
+
     <div class='container'>
-      <style type="text/css" media="all">
-        canvas#canvas {
-			margin-top: 20px;
-        	width: 420px;
-        	height: 480px;
-			border: 1px solid #ccc;
-        }
-      </style>
       <canvas id='canvas'></canvas>
     </div>
 
-	<script src='../compilados/ejerciciosPilas.js'></script>
+    <div class="selectorDeDesafios">
+      <select id='selectDesafio'>
+        <option>ElObreroCopado</option>
+        <option>AlienLevantaTuercas</option>
+        <option>AlimentandoALosPeces</option>
+        <option>Camino</option>
+        <option>ElCangrejoAguafiestas</option>
+        <option>ElMarcianoEnElDesierto</option>
+        <option>ElMonoQueSabeContar</option>
+        <option>ElRecolectorDeEstrellas</option>
+        <option>FutbolRobots</option>
+        <option>InstalandoJuegos</option>
+        <option>LaEleccionDelMono</option>
+        <option>LaGranAventuraDelMarEncantado</option>
+        <option>LaberintoConQueso</option>
+        <option>LaberintoCorto</option>
+        <option>LightBot</option>
+        <option>LightBotRecargado</option>
+        <option>LogicaEstadosEscena</option>
+        <option>MariaLaComeSandias</option>
+        <option>NoMeCansoDeSaltar</option>
+        <option>PrendiendoLasCompus</option>
+        <option>ReparandoLaNave</option>
+        <option>SuperLightbot1</option>
+        <option>SuperLightbot2</option>
+        <option>SuperViaje</option>
+        <option>TresHuesos</option>
+      </select>
+    </div>
 
-	<script>
-		function nombreDeClase()
-		{
-		    var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
-		    var name = hash.split('=')[1];
-		    if (name) {
-		    	return name;
-		    }else{
-		    	return "ElObreroCopado";
-		    }
-		};
 
-		var canvas_element = document.getElementById('canvas');
-		window['canvas'] = canvas_element;
 
-		pilasengine.iniciar({
-			ancho: 420,
-			alto: 480,
-			canvas: canvas_element,
-			data_path: 'data',
-			imagenesExtra: [
+  <script>
+      function iniciar_canvas(nombreDesafio) {
+    		var canvas_element = document.getElementById('canvas');
+    		window['canvas'] = canvas_element;
+
+    		var pilas = pilasengine.iniciar({
+    			ancho: 420,
+    			alto: 480,
+    			canvas: canvas_element,
+    			data_path: 'data',
+    	imagenesExtra: [
 			                'fondos.estrellas.png',
 			                'fondos.obrero.png',
 			                'fondos.nubes.png',
@@ -87,13 +113,45 @@
                       'marcianoVerdeAnimado.png',
                       'carbon_animado.png',
                       'hierro_animado.png',
-			                ]});
+    			                ]});
+
+  		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDesafio + '());');
+      pilas.onready = function() {};
+  		pilas.ejecutar();
+    }
+
+     function nombreDeClaseDesdeURL() {
+         var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
+         var name = hash.split('=')[1];
+         if (name) {
+           return name;
+         } else {
+           return "ElObreroCopado";
+         }
+     }
+
+     function actualizar_url(desafio) {
+       var url = window.location.href.split("?")[0] + "?desafio=" + desafio;
+       window.history.pushState("", "", url);
+     }
+
+     function onload() {
+       var selectDesafio = document.getElementById('selectDesafio');
+
+       iniciar_canvas(nombreDeClaseDesdeURL());
 
 		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + '());');
 
 		pilas.ejecutar();
-	 </script>
 
+       selectDesafio.onchange = function() {
+         var nombre = selectDesafio.value;
+         iniciar_canvas(nombre);
+         actualizar_url(nombre);
+       };
+     }
+
+   </script>
 
 </body>
 </html>
