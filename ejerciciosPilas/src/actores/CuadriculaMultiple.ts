@@ -48,6 +48,11 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
             throw "No estoy al inicio de la fila"
         }
     }
+
+    public avanzarDesdeCualquierLado(objeto){
+      objeto.cuadricula.siguienteFila().agregarActor(objeto,0,0)
+      
+    }
     private dameFila(objeto){
         return this.diccionarioFilaObjeto[objeto];
     }
