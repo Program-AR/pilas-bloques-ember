@@ -8,7 +8,7 @@
     "height": 570,
     "min_width": 850,
     "min_height": 570,
-    "toolbar": true,
+    "toolbar": false,
     "position": "center"
   },
   "webkit": {

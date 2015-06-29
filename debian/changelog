@@ -1,3 +1,19 @@
+pilas-engine-bloques (0.1.11) unstable; urgency=low
+
+  * Agregando bloques al ejercicio del obrero copado
+  * Integrando el desafío del obrero copado
+  * Integrando los ejercicios de pilas para que carguen las imágenes personalizadas.
+  * reparando varios warnings y deprecations.
+  * Agregando un manejador de errores cuando no se puede cargar un desafío.
+  * Agregando comando para incluir ejercicios de pilas.
+  * Merge branch 'master' of https://github.com/hugoruscitti/pilas-engine-bloques
+  * Arreglo menor para que se ajusten los margenes en el estilo cuando se quita el layout.
+  * arreglos menores.
+  * actualizando paquete.'
+  * arreglo menor para publicar los binarios de windows en dropbox.
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Mon, 29 Jun 2015 15:29:51 +0200
+
 pilas-engine-bloques (0.1.10) unstable; urgency=low
 
   * Agregando integracion con twitter. 
