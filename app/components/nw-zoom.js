@@ -13,6 +13,17 @@ export default Ember.Component.extend({
     return this.get('zoom') > 80;
   }.property('zoom'),
 
+  cambiarZoom: function() {
+    var gui = require('nw.gui');
+    var win = gui.Window.get();
+
+    win.zoomLevel = (this.get('zoom') - 100) / 10;
+  }.observes('zoom'),
+
+  onStart: function() {
+    this.cambiarZoom();
+  }.on('init'),
+
   actions: {
     zoomIn: function() {
       this.set('zoom', this.get('zoom') + 10);
@@ -24,10 +35,5 @@ export default Ember.Component.extend({
       this.set('zoom', 100);
     }
   },
-  cambiarZoom: function() {
-    var gui = require('nw.gui');
-    var win = gui.Window.get();
 
-    win.zoomLevel = (this.get('zoom') - 100) / 10;
-  }.observes('zoom')
 });

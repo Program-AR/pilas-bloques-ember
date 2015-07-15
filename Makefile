@@ -21,6 +21,8 @@ comandos:
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
 	@echo ""
+	@echo "    ${G}test${N}            Ejecuta las pruebas de forma continua."
+	@echo ""
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
 	@echo ""
@@ -126,7 +128,10 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	/Applications/nwjs.app/Contents/MacOS/nwjs dist
+	ember nw
+
+test:
+	ember nw:test --server
 
 test_mac: ejecutar_mac
 
