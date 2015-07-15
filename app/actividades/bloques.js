@@ -357,9 +357,97 @@ var Sensor = Bloque.extend({
 });
 
 
+
+/* ============================================== */
+
+var EstructuraDeControl = Bloque.extend({
+
+  block_init: function(block) {
+    this._super(block);
+    block.setColour(Blockly.Blocks.loops.COLOUR);
+    block.setInputsInline(true);
+    block.setPreviousStatement(true);
+    block.setNextStatement(true);
+  }
+
+});
+
+/* ============================================== */
+var Repetir = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'repetir');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('count')
+        .setCheck('Number')
+        .appendField('repetir');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_count = Blockly.JavaScript.valueToCode(block, 'count', Blockly.JavaScript.ORDER_ATOMIC) || '0' ;
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.repetirN(function(){\nreturn {{n}};\n});\n'.replace('{{n}}', value_count);
+    return r;
+  },
+
+  get_parametros: function() {
+    return [
+      ParamValor.create({
+        nombre_param: 'count',
+        tipo_bloque: 'math_number',
+        nombre_valor: 'NUM',
+        valor: '10'
+      })
+    ];
+  }
+
+
+});
+
+
+
+
+
+/* ============================================== */
+
+var Si = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'si');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('si');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.alternativa_si(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
+    return r;
+  }
+
+});
+
+
+
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
-               Sensor};
+               Sensor,Si,Repetir};
 
 export default bloques;
