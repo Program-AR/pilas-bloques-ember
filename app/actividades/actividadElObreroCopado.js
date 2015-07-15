@@ -1,5 +1,34 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
+import Repetir from 'pilas-engine-bloques/actividades';
+
+var {Repetir} = actividades
 var {Accion, Sensor} = bloques;
+
+var miSi = Si.Extend({
+  init: function() {
+    this._super();
+    this.set('id', 'miSi');
+  },
+
+
+})
+/*
+var Si = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'si');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('si');
+    block.appendStatementInput('block');
+
+},*/
+
 
 var Avanzar = Accion.extend({
 
@@ -82,8 +111,7 @@ var actividadElObreroCopado = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-
-  control: [],
+  control: [Repetir],
   expresiones: [],
   acciones: [Avanzar, Retroceder, Martillar],
   sensores: [],
