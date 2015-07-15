@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor} = bloques;
+var {Accion, Sensor,Repetir} = bloques;
 /*
 
 
@@ -127,7 +127,7 @@ var actividadLaEleccionDelMono = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+  control: [Rpetir],
   expresiones: [],
   acciones: [ComerManzana,ComerBanana,Avanzar],
   sensores: [],
