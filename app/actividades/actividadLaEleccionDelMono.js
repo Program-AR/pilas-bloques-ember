@@ -127,7 +127,7 @@ var actividadLaEleccionDelMono = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Rpetir],
+  control: [Repetir],
   expresiones: [],
   acciones: [ComerManzana,ComerBanana,Avanzar],
   sensores: [],

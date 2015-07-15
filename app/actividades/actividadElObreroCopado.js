@@ -1,17 +1,8 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-import Repetir from 'pilas-engine-bloques/actividades';
 
-var {Repetir} = actividades
-var {Accion, Sensor} = bloques;
-
-var miSi = Si.Extend({
-  init: function() {
-    this._super();
-    this.set('id', 'miSi');
-  },
+var {Accion, Sensor,Repetir} = bloques;
 
 
-})
 /*
 var Si = EstructuraDeControl.extend({
 

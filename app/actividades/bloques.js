@@ -360,6 +360,29 @@ var Sensor = Bloque.extend({
 
 /* ============================================== */
 
+
+
+/* ============================================== */
+
+var ParamValor = Ember.Object.extend({
+   build: function() {
+     var str_block = '';
+     str_block += '<value name="NOMBRE">'.replace('NOMBRE', this.get('nombre_param'));
+
+     str_block += '<block type="TIPO">'.replace('TIPO', this.get('tipo_bloque'));
+
+     str_block += '<field name="TIPO">'.replace('TIPO', this.get('nombre_valor'));
+     str_block += this.get('valor');
+     str_block += '</field>';
+
+     str_block += '</block>';
+
+     str_block += '</value>';
+
+     return str_block;
+   }
+});
+
 var EstructuraDeControl = Bloque.extend({
 
   block_init: function(block) {
@@ -372,7 +395,7 @@ var EstructuraDeControl = Bloque.extend({
 
 });
 
-/* ============================================== */
+
 var Repetir = EstructuraDeControl.extend({
 
   init: function() {
@@ -444,10 +467,9 @@ var Si = EstructuraDeControl.extend({
 });
 
 
-
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
-               Sensor,Si,Repetir};
+               Sensor,Repetir};
 
 export default bloques;
