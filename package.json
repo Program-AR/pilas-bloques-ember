@@ -45,7 +45,11 @@
   },
   "main": "dist/index.html",
   "window": {
-    "width": 960,
-    "height": 600
+    "title": "pilas-bloques",
+    "width": 850,
+    "height": 570,
+    "min_width": 850,
+    "min_height": 570,
+    "position": "center"
   }
 }

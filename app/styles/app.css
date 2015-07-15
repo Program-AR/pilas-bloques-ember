@@ -437,3 +437,19 @@ body,
   border-radius: 10px;
   padding: 10px;
 }
+
+.box {
+  font-size: 18px;
+  box-shadow: 0 0 10px rgb(180, 180, 180);
+  margin: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.box p {
+  font-size: 18px;
+}
+
+p {
+  font-size: 16px;
+}
