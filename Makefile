@@ -21,7 +21,7 @@ comandos:
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
 	@echo ""
-	@echo "    ${G}test${N}            Ejecuta las pruebas de forma continua."
+	@echo "    ${G}utest${N}            Ejecuta las pruebas de forma continua."
 	@echo ""
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
@@ -128,10 +128,10 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	ember nw
+	./node_modules/ember-cli/bin/ember nw
 
-test:
-	ember nw:test --server
+utest:
+	./node_modules/ember-cli/bin/ember nw:test --server
 
 test_mac: ejecutar_mac
 
