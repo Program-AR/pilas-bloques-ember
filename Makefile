@@ -148,7 +148,7 @@ compilar_live:
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile --list
+	@bumpversion minor --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile --list
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
