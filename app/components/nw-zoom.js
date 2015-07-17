@@ -15,7 +15,7 @@ export default Ember.Component.extend({
   }.property('zoomValue'),
 
   cambiarZoom: function() {
-    var gui = require('nw.gui');
+    var gui = window.requireNode('nw.gui');
     var win = gui.Window.get();
     this.get('zoom').setValue(this.get('zoomValue'));
 

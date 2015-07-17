@@ -16,7 +16,7 @@ if(isNode) {
 export default Ember.Service.extend({
   openLink: function(url) {
     if (isNodeWebkit) {
-      var gui = require('nw.gui');
+      var gui = window.requireNode('nw.gui');
       gui.Shell.openExternal(url);
     } else {
       window.open(url);
