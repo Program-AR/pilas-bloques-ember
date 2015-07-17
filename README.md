@@ -16,6 +16,15 @@ para ver las tareas disponibles:
 
 ![](public/make.png)
 
+Por ejemplo, luego de clonar podrías completar todo el proceso ejecutando
+estos comandos:
+
+```
+make iniciar
+make full
+make test_mac
+```
+
 
 Tests
 -----
