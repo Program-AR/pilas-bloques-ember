@@ -3,36 +3,39 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'div',
   classNames: ['nw-zoom'],
-  zoom: 100,
+  zoomValue: 100,
+  zoom: Ember.inject.service(),
 
   canZoomIn: function() {
-    return this.get('zoom') < 120;
-  }.property('zoom'),
+    return this.get('zoomValue') < 120;
+  }.property('zoomValue'),
 
   canZoomOut: function() {
-    return this.get('zoom') > 80;
-  }.property('zoom'),
+    return this.get('zoomValue') > 80;
+  }.property('zoomValue'),
 
   cambiarZoom: function() {
     var gui = require('nw.gui');
     var win = gui.Window.get();
+    this.get('zoom').setValue(this.get('zoomValue'));
 
-    win.zoomLevel = (this.get('zoom') - 100) / 10;
-  }.observes('zoom'),
+    win.zoomLevel = (this.get('zoomValue') - 100) / 10;
+  }.observes('zoomValue'),
 
   onStart: function() {
+    this.set('zoomValue', this.get('zoom').getValue());
     this.cambiarZoom();
   }.on('init'),
 
   actions: {
     zoomIn: function() {
-      this.set('zoom', this.get('zoom') + 10);
+      this.set('zoomValue', this.get('zoomValue') + 10);
     },
     zoomOut: function() {
-      this.set('zoom', this.get('zoom') - 10);
+      this.set('zoomValue', this.get('zoomValue') - 10);
     },
     zoomRestore: function() {
-      this.set('zoom', 100);
+      this.set('zoomValue', 100);
     }
   },
 
