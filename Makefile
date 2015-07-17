@@ -67,6 +67,7 @@ bajar_dependencias:
 	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
 	cd ..; git clone https://github.com/sawady/blockly.git
 	cd ..; git clone https://github.com/google/closure-library.git
+	cd ..; git clone https://github.com/hugoruscitti/ejerciciosPilas.git
 
 actualizar_pilas:
 	cd pilasweb; npm install; git pull; make build; cd ..
