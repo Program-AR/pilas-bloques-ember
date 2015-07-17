@@ -10,9 +10,8 @@
 
     <div class='fila-opcion'>
       Herramientas de desarrollo:
-      <button class='btn btn-success btn-sm btn-rect' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i></button>
-      <button class='btn btn-info btn-sm btn-rect' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i></button>
-      <button class='btn btn-warning btn-sm btn-rect' {{action "show"}}><i class='glyphicon glyphicon-star-empty'></i></button>
+      <button class='btn btn-success btn-sm' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i> Actualizar</button>
+      <button class='btn btn-info btn-sm' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i> Mostrar devtools</button>
     </div>
 
 
@@ -21,7 +20,7 @@
     </div>
 
   {{/em-modal-body}}
-  
+
   {{#em-modal-footer}}
       {{#em-modal-toggler class="btn btn-default"}}Cerrar{{/em-modal-toggler}}
   {{/em-modal-footer}}

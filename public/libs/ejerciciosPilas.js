@@ -1394,7 +1394,6 @@ var Martillar = (function (_super) {
         if (this.contador > 10) {
             this.contador = 0;
             var finaliza = this.receptor._imagen.avanzar();
-            this.imagen = this.receptor._imagen;
             if (finaliza) {
                 this.vecesRestantes -= 1;
                 if (this.vecesRestantes === 0) {
