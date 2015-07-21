@@ -6,7 +6,6 @@ class FutbolRobots  extends Base{
   definidor;
 
   iniciar() {
-
       this.estado=undefined;
       this.fondo = new Fondo('fondos.nubes.png',0,0);
       var cantidadFilas=8;
@@ -17,25 +16,22 @@ class FutbolRobots  extends Base{
       for (var fila=0;fila<cantidadFilas;++fila){
         this.cuadricula.posicionarObjeto(new PelotaAnimada(0,0),fila,this.cuadricula.filas[fila].cantidadColumnas-1)
       }
-
    }
-
-atras() {
+   atras() {
     this.robot.hacer_luego(MoverACasillaIzquierda);
-}
+  }
 
-avanzar(){
+  avanzar(){
     this.robot.hacer_luego(MoverACasillaDerecha);
-}
+  }
 
-siguienteFila(){
+  siguienteFila(){
     this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple,{'cuadriculaMultiple':this.cuadricula})
-}
+  }
 
-patearPelota(){
-
-  
-}
+  /*patearPelota(){
+    this.robot.hacer_luego(PatearPelota,{})
+  }*/
 
 
 }

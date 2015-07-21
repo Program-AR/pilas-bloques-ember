@@ -8,7 +8,7 @@
 class LaEleccionDelMono extends Base {
     fondo;
     cuadricula;
-    mono;
+    automata;
     estado;
     iniciar() {
       this.estado=undefined;
@@ -20,8 +20,8 @@ class LaEleccionDelMono extends Base {
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
 
-        this.mono = new MonoAnimado(0,0);
-        this.cuadricula.agregarActor(this.mono,0,0);
+        this.automata = new MonoAnimado(0,0);
+        this.cuadricula.agregarActor(this.automata,0,0);
 
 
 		if (Math.random()< .5)  {
@@ -31,21 +31,14 @@ class LaEleccionDelMono extends Base {
         }
     }
 
-    agregar(objeto){
+      agregar(objeto){
         this.cuadricula.agregarActor(new objeto(0,0),0,1);
     }
 
-    comerManzana(){
-        this.mono.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'ManzanaAnimada', 'mensajeError' : 'No hay una manzana aqui' });
-	}
+    personajePrincipal(){
+      return this.automata;
+    }
 
-	comerBanana(){
-        this.mono.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'BananaAnimada',  'mensajeError' : 'No hay una banana aqui' });
-	}
-
-	avanzar(){
-        this.mono.hacer_luego(MoverACasillaDerecha);
-	}
 
 
 }
