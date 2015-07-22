@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Repetir} = bloques;
+var {Accion, Sensor, Si} = bloques;
 
 var Avanzar = Accion.extend({
   init: function() {

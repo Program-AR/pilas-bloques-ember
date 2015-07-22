@@ -78,7 +78,8 @@ var actividadElMonoYLasBananas = {
   nombre: 'La elección del mono',
   enunciado: 'Ayudá a nuestro obrero',
 
-  escena: ElMonoYLasBananas,
+  // la escena proviene de ejerciciosPilas
+  escena: ElMonoYLasBananas,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
