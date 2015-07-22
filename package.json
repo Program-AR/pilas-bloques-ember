@@ -1,7 +1,7 @@
 {
   "name": "pilas-engine-bloques",
-  "version": "0.1.9",
-  "description": "Small description for pilas-engine-bloques goes here",
+  "vpatchersion": "0.1.9",
+  "description": "Una herramienta para aprender a programar utilizando bloques.",
   "private": true,
   "directories": {
     "doc": "doc",
