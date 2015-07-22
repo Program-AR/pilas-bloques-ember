@@ -1,6 +1,9 @@
 pilas-engine-bloques
 ====================
 
+Master: [![Build Status](https://travis-ci.org/hugoruscitti/pilas-engine-bloques.svg?branch=master)](https://travis-ci.org/hugoruscitti/pilas-engine-bloques)
+Develop:[![Build Status](https://travis-ci.org/hugoruscitti/pilas-engine-bloques.svg?branch=develop)](https://travis-ci.org/hugoruscitti/pilas-engine-bloques)
+
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
