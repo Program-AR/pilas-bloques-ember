@@ -433,10 +433,70 @@ var Repetir = EstructuraDeControl.extend({
 
 });
 
+var Si = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'si');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('si');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.alternativa_si(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
+    return r;
+  }
+
+});
+
+/* ============================================== */
+
+var Sino = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'sino');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('si');
+    block.appendStatementInput('block1');
+    block.appendDummyInput()
+        .appendField('sino');
+    block.appendStatementInput('block2');
+  },
+
+  block_javascript: function(block) {
+    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+    var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
+    var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block1;
+    r += 'programa.empezar_secuencia();\n';
+    r += statements_block2;
+    r += 'programa.alternativa_sino(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
+    return r;
+  }
+
+});
+
 
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
-               Sensor, Repetir};
+               Sensor, Repetir,Si,Sino};
 
 export default bloques;

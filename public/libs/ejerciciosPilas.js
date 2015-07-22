@@ -48,6 +48,11 @@ var ActorAnimado = (function (_super) {
         this.cargarAnimacion("correr");
         this._imagen.avanzar();
     };
+    ActorAnimado.prototype.tocando = function (etiqueta) {
+        var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
+        return actores.length > 0;
+    };
+    ;
     ActorAnimado.prototype.detener_animacion = function () {
         this.cargarAnimacion("parado");
     };
@@ -2356,7 +2361,8 @@ var LaEleccionDelMono = (function (_super) {
         var cantidadColumnas = 2;
         this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        this.automata = new MonoAnimado(0, 0);
+        var aux = new MonoAnimado(0, 0);
+        this.automata = aux;
         this.cuadricula.agregarActor(this.automata, 0, 0);
         if (Math.random() < .5) {
             this.agregar(ManzanaAnimada);

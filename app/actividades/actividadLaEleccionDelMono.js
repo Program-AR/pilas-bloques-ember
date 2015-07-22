@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor,Repetir} = bloques;
+var {Accion, Sensor,Repetir,Si} = bloques;
 
 var Avanzar = Accion.extend({
   init: function() {
@@ -44,7 +44,7 @@ var ComerManzana = Accion.extend({
   },
 
   argumentos: function() {
-    return '{etiqueta : ManzanaAnimada, mensajeError : \'No hay una manzana aqui\'}';
+    return '{\'etiqueta\' : \'ManzanaAnimada\',  \'mensajeError\' : \'No hay una manzana aqui\' }';
   }
 });
 
@@ -75,30 +75,42 @@ var ComerBanana = Accion.extend({
 
 
 
-/*===============================================================*/
-/*var Si = EstructuraDeControl.extend({
+var TocandoManzana = Sensor.extend({
   init: function() {
     this._super();
-    this.set('id', 'si');
+    this.set('id', 'tocandoManzana');
   },
+
   block_init: function(block) {
     this._super(block);
-    block.appendValueInput('condition')
-        .setCheck('Boolean')
-        .appendField('si');
-    block.appendStatementInput('block');
+    block.appendDummyInput()
+         .appendField('Tocando Manzana')
+         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'manzana'));
   },
-  block_javascript: function(block) {
-    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
-    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
-    var r = 'programa.empezar_secuencia();\n';
-    r += statements_block;
-    r += 'programa.alternativa_si(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
-    return r;
+
+  nombre_sensor: function() {
+    return 'tocando(\'ManzanaAnimada\')';
   }
 });
-*/
-/*===========================================*/
+
+
+var TocandoBanana = Sensor.extend({
+  init: function() {
+    this._super();
+    this.set('id', 'tocandoBanana');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Tocando Banana')
+         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'banana'));
+  },
+
+  nombre_sensor: function() {
+    return 'tocando(\'BananaAnimada\')';
+  }
+});
 
 
 
@@ -115,10 +127,10 @@ var actividadLaEleccionDelMono = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Repetir],
+  control: [Repetir,Si],
   expresiones: [],
   acciones: [ComerManzana,ComerBanana,Avanzar],
-  sensores: [],
+  sensores: [TocandoManzana,TocandoBanana],
 };
 
 export default actividadLaEleccionDelMono;
