@@ -33,7 +33,6 @@ test('visiting /', function(assert) {
 
   andThen(() => {
     assert.equal(currentURL(), '/desafios');
-    return pauseTest()
   });
 
 
