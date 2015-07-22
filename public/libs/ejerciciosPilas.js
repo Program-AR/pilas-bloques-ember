@@ -2002,6 +2002,38 @@ var ElMonoQueSabeContar = (function (_super) {
     };
     return ElMonoQueSabeContar;
 })(Base);
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/BananaAnimada.ts" />
+/// <reference path = "../actores/ManzanaAnimada.ts" />
+/// <reference path = "../actores/MonoAnimado.ts" />}
+/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
+/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+var ElMonoYLasBananas = (function (_super) {
+    __extends(ElMonoYLasBananas, _super);
+    function ElMonoYLasBananas() {
+        _super.apply(this, arguments);
+    }
+    ElMonoYLasBananas.prototype.iniciar = function () {
+        this.estado = undefined;
+        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
+        var cantidadFilas = 1;
+        var cantidadColumnas = 2;
+        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'casillaLightbot.png',
+            cantColumnas: 5 });
+        this.automata = new MonoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        if (Math.random() < .5) {
+            this.agregar(BananaAnimada);
+        }
+    };
+    ElMonoYLasBananas.prototype.agregar = function (objeto) {
+        this.cuadricula.agregarActor(new objeto(0, 0), 0, 1);
+    };
+    ElMonoYLasBananas.prototype.personajePrincipal = function () {
+        return this.automata;
+    };
+    return ElMonoYLasBananas;
+})(Base);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 //No sólo avisa al salir de la pantalla, sino que no lo deja irse.
 //Usar en reemplazo de la habilidad SeMantieneEnPantalla
@@ -2361,8 +2393,7 @@ var LaEleccionDelMono = (function (_super) {
         var cantidadColumnas = 2;
         this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        var aux = new MonoAnimado(0, 0);
-        this.automata = aux;
+        this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         if (Math.random() < .5) {
             this.agregar(ManzanaAnimada);

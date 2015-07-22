@@ -25,30 +25,6 @@ var Avanzar = Accion.extend({
 });
 
 
-var ComerManzana = Accion.extend({
-  init: function() {
-    this._super();
-    this.set('id', 'ComerManzana');
-  },
-
-
-  block_init: function(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Comer Manzana');
-  },
-
-  nombre_comportamiento: function() {
-    return 'RecogerPorEtiqueta';
-  },
-
-  argumentos: function() {
-    return '{\'etiqueta\' : \'ManzanaAnimada\',  \'mensajeError\' : \'No hay una manzana aqui\' }';
-  }
-});
-
-
 
 var ComerBanana = Accion.extend({
   init: function() {
@@ -75,23 +51,6 @@ var ComerBanana = Accion.extend({
 
 
 
-var TocandoManzana = Sensor.extend({
-  init: function() {
-    this._super();
-    this.set('id', 'tocandoManzana');
-  },
-
-  block_init: function(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Tocando Manzana')
-         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'manzana'));
-  },
-
-  nombre_sensor: function() {
-    return 'tocando(\'ManzanaAnimada\')';
-  }
-});
 
 
 var TocandoBanana = Sensor.extend({
@@ -115,11 +74,11 @@ var TocandoBanana = Sensor.extend({
 
 
 
-var actividadLaEleccionDelMono = {
+var actividadElMonoYLasBananas = {
   nombre: 'La elección del mono',
   enunciado: 'Ayudá a nuestro obrero',
 
-  escena: LaEleccionDelMono,
+  escena: ElMonoYLasBananas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
@@ -129,8 +88,8 @@ var actividadLaEleccionDelMono = {
   variables: [],
   control: [Si],
   expresiones: [],
-  acciones: [ComerManzana,ComerBanana,Avanzar],
-  sensores: [TocandoManzana,TocandoBanana],
+  acciones: [ComerBanana,Avanzar],
+  sensores: [TocandoBanana],
 };
 
-export default actividadLaEleccionDelMono;
+export default actividadElMonoYLasBananas;
