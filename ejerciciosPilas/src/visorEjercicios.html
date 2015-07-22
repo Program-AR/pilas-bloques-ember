@@ -116,6 +116,10 @@
                       'marcianoVerdeAnimado.png',
                       'carbon_animado.png',
                       'hierro_animado.png',
+                      'monoAnimado.png',
+                      'casillas.violeta.png',
+                      'fondos.selva.png',
+                      'banana-1.png',
     			                ]});
 
   		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDesafio + '());');
@@ -143,7 +147,7 @@
 
        iniciar_canvas(nombreDeClaseDesdeURL());
 
-		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClase() + '());');
+		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClaseDesdeURL() + '());');
 
 		pilas.ejecutar();
 
