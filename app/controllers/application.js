@@ -8,16 +8,7 @@ export default Ember.Controller.extend({
   environment: Ember.inject.service(),
 
   mostrar_url: function() {
-    var controller = this;
-
-    var actualizar = function(){
-      controller.set('url', window.location.href);
-    };
-
-    setInterval(actualizar, 100);
-
     this.set('layout', this.get('environment').get('showLayout'));
-
   }.on('init'),
 
     myModalButtons: [
