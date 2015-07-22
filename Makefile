@@ -65,9 +65,9 @@ vincular_dependencias:
 
 bajar_dependencias:
 	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
-	cd ..; git clone https://github.com/sawady/blockly.git
+	cd ..; git clone https://github.com/Program-AR/blockly.git
 	cd ..; git clone https://github.com/google/closure-library.git
-	cd ..; git clone https://github.com/hugoruscitti/ejerciciosPilas.git
+	cd ..; git clone https://github.com/Program-AR/ejerciciosPilas.git
 
 actualizar_pilas:
 	cd pilasweb; npm install; git pull; make build; cd ..
@@ -76,8 +76,11 @@ actualizar_pilas:
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
-actualizar_ejercicios_pilas:
+actualizar_ejercicios_pilas: 
 	cd ejerciciosPilas; git pull; npm install; grunt typescript pilas -f; cd ..
+	make copiar_ejercicios_pilas
+	
+copiar_ejercicios_pilas:
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 	rm -r -f public/libs/data
 	cp -r -f ejerciciosPilas/src/data public/libs/data
