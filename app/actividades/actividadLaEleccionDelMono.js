@@ -10,8 +10,8 @@ var Avanzar = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Avanzar');
+         .appendField('Avanzar')
+         .appendField(this.obtener_icono('derecha.png'));
   },
 
   nombre_comportamiento: function() {
@@ -34,8 +34,8 @@ var ComerManzana = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Comer Manzana');
+         .appendField('Comer ')
+         .appendField(this.obtener_icono('../libs/data/tuerca.png'));
   },
 
   nombre_comportamiento: function() {
@@ -59,8 +59,8 @@ var ComerBanana = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Comer Banana');
+         .appendField('Comer ')
+         .appendField(this.obtener_icono('../libs/data/iconos.banana.png')); //TODO: Hardcodeo feo de dir de icono
   },
 
   nombre_comportamiento: function() {
@@ -83,8 +83,9 @@ var TocandoManzana = Sensor.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Tocando Manzana')
-         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'manzana'));
+         .appendField('¿Tocando')
+         .appendField(this.obtener_icono('../libs/data/tuerca.png'))
+         .appendField('?');
   },
 
   nombre_sensor: function() {
@@ -102,8 +103,9 @@ var TocandoBanana = Sensor.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Tocando Banana')
-         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'banana'));
+         .appendField('¿Tocando')
+         .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
+         .appendField('?');
   },
 
   nombre_sensor: function() {

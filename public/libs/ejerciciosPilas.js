@@ -103,9 +103,9 @@ var AlimentoAnimado = (function (_super) {
 var BananaAnimada = (function (_super) {
     __extends(BananaAnimada, _super);
     function BananaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'banana.png', cantColumnas: 2, cantFilas: 1 });
-        this.escala_x = 2;
-        this.escala_y = 2;
+        _super.call(this, x, y, { grilla: 'banana-1.png', cantColumnas: 1, cantFilas: 1 });
+        //this.escala_x = 2;
+        //this.escala_y = 2;
     }
     return BananaAnimada;
 })(ActorAnimado);
@@ -661,10 +661,10 @@ var MariaAnimada = (function (_super) {
 var MonoAnimado = (function (_super) {
     __extends(MonoAnimado, _super);
     function MonoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'monkey_normal.png', cantColumnas: 1, cantFilas: 1 });
-        this.definirAnimacion("correr", [0], 15);
-        this.definirAnimacion("parado", [0], 5);
-        this.definirAnimacion("recoger", [0], 10);
+        _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 10, cantFilas: 1 });
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7, 0, 0], 20);
+        this.definirAnimacion("parado", [0, 1, 2, 1, 0], 20);
+        this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 20);
     }
     return MonoAnimado;
 })(ActorAnimado);
@@ -2388,19 +2388,17 @@ var LaEleccionDelMono = (function (_super) {
     }
     LaEleccionDelMono.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        var cantidadFilas = 1;
-        var cantidadColumnas = 2;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
-        this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
+            cantColumnas: 1 });
         if (Math.random() < .5) {
             this.agregar(ManzanaAnimada);
         }
         else {
             this.agregar(BananaAnimada);
         }
+        this.automata = new MonoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
     };
     LaEleccionDelMono.prototype.agregar = function (objeto) {
         this.cuadricula.agregarActor(new objeto(0, 0), 0, 1);

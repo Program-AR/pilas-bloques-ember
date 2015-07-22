@@ -59,6 +59,10 @@ export default Ember.Component.extend({
                 'marcianoVerdeAnimado.png',
                 'carbon_animado.png',
                 'hierro_animado.png',
+                'monoAnimado.png',
+                'casillas.violeta.png',
+                'fondos.selva.png',
+                'banana-1.png',
                 ]
       });
 
