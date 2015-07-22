@@ -1,11 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, Sensor,Repetir} = bloques;
-/*
-avanzar(){
-      this.mono.hacer_luego(MoverACasillaDerecha);
-}
-*/
-
 
 var Avanzar = Accion.extend({
   init: function() {

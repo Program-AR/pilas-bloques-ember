@@ -4,7 +4,11 @@
     "window",
     "-Promise",
     "Blockly",
-    "pilas"
+    "pilas",
+    "Bootstrap",
+    "require",
+    "$",
+    "pilasengine"
   ],
   "browser": true,
   "boss": true,

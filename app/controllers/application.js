@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
   url: '',
