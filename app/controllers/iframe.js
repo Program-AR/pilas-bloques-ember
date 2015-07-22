@@ -1,8 +1,6 @@
 import Ember from 'ember';
 import Actividades from '../actividades';
 
-var Bootstrap = window.Bootstrap;
-
 export default Ember.Controller.extend({
     queryParams: ['layout'],
     layout: true,

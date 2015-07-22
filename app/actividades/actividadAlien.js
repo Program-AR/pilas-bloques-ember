@@ -3,8 +3,8 @@ var {Accion, Sensor, Repetir} = bloques;
 
 
 var EscenaAlien = (function (_super) {
-    __extends(EscenaAlien, _super);
-    function EscenaAlien() {
+    __extends(EscenaAlien, _super);     // jshint ignore:line
+    function EscenaAlien() {            // jshint ignore:line
       _super.apply(this, arguments);
     }
 

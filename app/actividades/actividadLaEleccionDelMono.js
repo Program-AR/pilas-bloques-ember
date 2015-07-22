@@ -1,12 +1,11 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor,Repetir} = bloques;
+var {Accion, Repetir} = bloques;
 
 var Avanzar = Accion.extend({
   init: function() {
     this._super();
     this.set('id', 'Avanzar');
   },
-
 
   block_init: function(block) {
     this._super(block);
@@ -107,7 +106,8 @@ var actividadLaEleccionDelMono = {
   nombre: 'La elección del mono',
   enunciado: 'Ayudá a nuestro obrero',
 
-  escena: LaEleccionDelMono,
+  // la escena proviene de ejerciciosPilas
+  escena: LaEleccionDelMono, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

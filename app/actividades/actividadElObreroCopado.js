@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor} = bloques;
+var {Accion} = bloques;
 
 var Avanzar = Accion.extend({
 
@@ -74,7 +74,8 @@ var actividadElObreroCopado = {
   nombre: 'El Obrero Copado',
   enunciado: 'Ayudá a nuestro obrero',
 
-  escena: ElObreroCopado,
+  // la escena proviene de ejerciciosPilas
+  escena: ElObreroCopado, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

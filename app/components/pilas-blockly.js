@@ -58,7 +58,7 @@ export default Ember.Component.extend({
   }.on('init'),
 
   iniciarBlockly: function() {
-    var contenedor = this.$().find('#contenedor-blockly')[0];
+    //var contenedor = this.$().find('#contenedor-blockly')[0];
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
@@ -157,7 +157,7 @@ export default Ember.Component.extend({
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
-      let data = canvas.toDataURL('image/png');
+      let data = window['canvas'].toDataURL('image/png');
       this.set('previewData', data);
     },
 

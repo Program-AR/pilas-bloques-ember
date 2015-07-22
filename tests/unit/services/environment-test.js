@@ -5,7 +5,7 @@ import {
 
 moduleFor('service:environment', {
   // Specify the other units that are required for this test.
-  // needs: ['service:foo']
+  needs: ['config:environment']
 });
 
 // Replace this with your real tests.
