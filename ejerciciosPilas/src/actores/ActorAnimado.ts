@@ -3,12 +3,12 @@
 
 /**
  * @class ActorAnimado
- * 
+ *
  * Representa un actor que tiene una animación cuando se mueve.
  * Las opciones deben incluir la grilla (imagen) y la cantidad de cuadros que tiene,
  * ó bien la grilla y la lista de cuadros que representan la animación. También puede
  * incluir el cuadroEstatico, que es el cuadro que se muestra al estar parado.
- * 
+ *
  * Por ejemplo:
  *      @example
  *      miActor = new ActorAnimado(0,0,...documentación en ptrogreso...);
@@ -19,19 +19,19 @@ class ActorAnimado extends Actor {
     _casillaActual;
     cuadricula;
     objetosRecogidos;
-    
+
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
         var imagen = pilas.imagenes.cargar_animacion(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
         super(imagen, x, y);
-        
+
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
-        
+
         this.detener_animacion();
         this.objetosRecogidos = [];
     }
-    
+
     sanitizarOpciones(ops){
         this.opciones = ops;
         this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0, 0];
@@ -39,13 +39,13 @@ class ActorAnimado extends Actor {
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
     }
-    
+
     mover(x,y) {
         this.x += x;
         this.y += y;
         this.pasito_correr();
     }
-    
+
     definirAnimacion(nombre, cuadros, velocidad){
         this._imagen.definir_animacion(nombre, cuadros, velocidad);
     }
@@ -54,19 +54,24 @@ class ActorAnimado extends Actor {
         this.cargarAnimacion("correr");
         this._imagen.avanzar();
     }
-    
+
+    tocando(etiqueta){
+      var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
+      return actores.length > 0;
+    };
+
     detener_animacion() {
         this.cargarAnimacion("parado");
     }
-    
+
     cargarAnimacion(nombre){
     	this._imagen.cargar_animacion(nombre);
     }
-    
+
     avanzarAnimacion(){
     	return this._imagen.avanzar();
-    }  
-    
+    }
+
     seguidillaHasta(nro){
         var seguidilla = [];
         if(nro !== undefined) {
@@ -76,7 +81,7 @@ class ActorAnimado extends Actor {
         }
         return seguidilla;
     }
-    
+
     //TODO poner en otra clase lo q tenga q ver con casillas
     casillaActual(){
         return this._casillaActual;
@@ -87,7 +92,7 @@ class ActorAnimado extends Actor {
             this.x = c.x;
             this.y = c.y;
         }
-    } 
+    }
 
     cuando_busca_recoger() {
         pilas.escena_actual().intentaronRecoger();
@@ -97,4 +102,4 @@ class ActorAnimado extends Actor {
     }
 
 
-} 
+}

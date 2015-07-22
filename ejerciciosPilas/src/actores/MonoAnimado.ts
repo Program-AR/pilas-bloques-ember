@@ -9,4 +9,7 @@ class MonoAnimado extends ActorAnimado {
         this.definirAnimacion("recoger",[0],10);
     }
 
-} 
+  
+
+
+}

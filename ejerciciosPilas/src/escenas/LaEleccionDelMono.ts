@@ -20,7 +20,9 @@ class LaEleccionDelMono extends Base {
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
 
-        this.automata = new MonoAnimado(0,0);
+        this.automata =  new  MonoAnimado(0,0);
+
+
         this.cuadricula.agregarActor(this.automata,0,0);
 
 
@@ -41,4 +43,4 @@ class LaEleccionDelMono extends Base {
 
 
 
-}
+  }
