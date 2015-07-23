@@ -16,9 +16,9 @@ class ElMonoYLasBananas extends Base {
         var cantidadFilas=1
         var cantidadColumnas=2
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-            {alto: 100},
+            {alto: 200},
             {grilla: 'casillas.violeta.png',
-            cantColumnas: 5})
+            cantColumnas: 1})
 
 
 
