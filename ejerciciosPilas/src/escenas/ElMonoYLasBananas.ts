@@ -20,6 +20,8 @@ class ElMonoYLasBananas extends Base {
             {grilla: 'casillas.violeta.png',
             cantColumnas: 5})
 
+
+
         this.automata =  new  MonoAnimado(0,0);
 
 
