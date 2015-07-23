@@ -1,6 +1,6 @@
 class LightbotScratch extends Base {
     fondo;
-    personaje;
+    automata;
     cuadricula;
     objetos = [];
 
@@ -37,9 +37,9 @@ class LightbotScratch extends Base {
 
 
 
-        // se crea el personaje
-        this.personaje = new Robot(0,0);
-        this.cuadricula.agregarActor(this.personaje,4,0);
+        // se crea el automata
+        this.automata = new Robot(0,0);
+        this.cuadricula.agregarActor(this.automata,4,0);
     }
 
     agregarLuz(fila,columna) {
@@ -52,19 +52,19 @@ class LightbotScratch extends Base {
 
 
     prenderLuz() {
-        this.personaje.hacer_luego(EncenderLuz);
+        this.automata.hacer_luego(EncenderLuz);
     }
     irArriba(){
-        this.personaje.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     }
     irAbajo(){
-        this.personaje.hacer_luego(MoverACasillaAbajo);
+        this.automata.hacer_luego(MoverACasillaAbajo);
     }
     irDerecha(){
-        this.personaje.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     }
     irIzquierda(){
-        this.personaje.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     }
 
 }
