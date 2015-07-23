@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Si} = bloques;
+var {Accion, Sensor, Si,Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
   init: function() {
@@ -125,7 +125,7 @@ var actividadLaEleccionDelMono = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [],
+  subtareas: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
