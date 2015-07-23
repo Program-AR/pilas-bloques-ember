@@ -36,8 +36,8 @@ var ComerBanana = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Comer Banana');
+          .appendField('Comer ')
+         .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
   nombre_comportamiento: function() {
@@ -62,8 +62,10 @@ var TocandoBanana = Sensor.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Tocando Banana')
-         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'banana'));
+         .appendField('¿Tocando ')
+         .appendField(new Blockly.FieldImage('libs/data/iconos.banana.png', 15, 15, 'banana'))
+         .appendField(' ?');
+
   },
 
   nombre_sensor: function() {

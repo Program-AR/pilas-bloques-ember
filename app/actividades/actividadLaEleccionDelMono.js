@@ -35,7 +35,7 @@ var ComerManzana = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField('Comer ')
-         .appendField(this.obtener_icono('../libs/data/tuerca.png'));
+         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 
   nombre_comportamiento: function() {
@@ -84,7 +84,7 @@ var TocandoManzana = Sensor.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando')
-         .appendField(this.obtener_icono('../libs/data/tuerca.png'))
+         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
          .appendField('?');
   },
 
