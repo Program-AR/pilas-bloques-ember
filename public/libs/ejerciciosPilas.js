@@ -2015,11 +2015,11 @@ var ElMonoYLasBananas = (function (_super) {
     }
     ElMonoYLasBananas.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
         var cantidadFilas = 1;
         var cantidadColumnas = 2;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
+        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 200 }, { grilla: 'casillas.violeta.png',
+            cantColumnas: 1 });
         this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         if (Math.random() < .5) {
@@ -2862,9 +2862,9 @@ var LightbotScratch = (function (_super) {
             col += 1;
             cant += 1;
         }
-        // se crea el personaje
-        this.personaje = new Robot(0, 0);
-        this.cuadricula.agregarActor(this.personaje, 4, 0);
+        // se crea el automata
+        this.automata = new Robot(0, 0);
+        this.cuadricula.agregarActor(this.automata, 4, 0);
     };
     LightbotScratch.prototype.agregarLuz = function (fila, columna) {
         var casillaLuminosa = new CasillaConLuz(0, 0);
@@ -2874,19 +2874,19 @@ var LightbotScratch = (function (_super) {
         this.objetos.push(casillaLuminosa);
     };
     LightbotScratch.prototype.prenderLuz = function () {
-        this.personaje.hacer_luego(EncenderLuz);
+        this.automata.hacer_luego(EncenderLuz);
     };
     LightbotScratch.prototype.irArriba = function () {
-        this.personaje.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     };
     LightbotScratch.prototype.irAbajo = function () {
-        this.personaje.hacer_luego(MoverACasillaAbajo);
+        this.automata.hacer_luego(MoverACasillaAbajo);
     };
     LightbotScratch.prototype.irDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     LightbotScratch.prototype.irIzquierda = function () {
-        this.personaje.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     };
     return LightbotScratch;
 })(Base);
