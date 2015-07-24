@@ -1,6 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
-var {Accion, Sensor,Si,Procedimiento} = bloques;
+var {Accion, Sensor,Si,Repetir,Procedimiento} = bloques;
 var {IrDerecha,IrIzquierda,IrArriba,IrAbajo} = direcciones;
 
 var EncenderLuz = Accion.extend({
@@ -39,7 +39,7 @@ var actividadLightbotEnScratch = {
 
   // TODO: aca irian atributos iniciales que se desean para un automata
   variables: [],
-  control: [Si],
+  control: [Si,Repetir],
   expresiones: [],
   acciones: [EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
   sensores: [],
