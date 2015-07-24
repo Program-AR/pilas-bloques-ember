@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Accion, Sensor,Si,Repetir,Procedimiento} = bloques;
-var {IrDerecha,IrIzquierda,IrArriba,IrAbajo} = direcciones;
+var {Accion, Si, Repetir, Procedimiento} = bloques;
+var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 var EncenderLuz = Accion.extend({
   init: function() {
