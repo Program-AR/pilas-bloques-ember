@@ -1540,6 +1540,21 @@ var SaltarHablando = (function (_super) {
     };
     return SaltarHablando;
 })(Saltar);
+var AvanzarFilaEnCuadriculaMultiple = (function (_super) {
+    __extends(AvanzarFilaEnCuadriculaMultiple, _super);
+    function AvanzarFilaEnCuadriculaMultiple() {
+        _super.apply(this, arguments);
+    }
+    AvanzarFilaEnCuadriculaMultiple.prototype.alTerminarAnimacion = function () {
+        try {
+            this.argumentos['cuadriculaMultiple'].avanzarFila(this.receptor);
+        }
+        catch (err) {
+            this.receptor.decir(err);
+        }
+    };
+    return AvanzarFilaEnCuadriculaMultiple;
+})(ComportamientoAnimado);
 var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     __extends(avanzarFilaEnCuadriculaMultiple, _super);
     function avanzarFilaEnCuadriculaMultiple() {
@@ -2240,20 +2255,20 @@ var FutbolRobots = (function (_super) {
         var cantidadFilas = 8;
         this.definidor = new DefinidorColumnasRandom(cantidadFilas, 10);
         this.cuadricula = new CuadriculaMultiple(this.definidor);
-        this.robot = new RobotAnimado(0, 0);
-        this.cuadricula.posicionarObjeto(this.robot, 0, 0);
+        this.automata = new RobotAnimado(0, 0);
+        this.cuadricula.posicionarObjeto(this.automata, 0, 0);
         for (var fila = 0; fila < cantidadFilas; ++fila) {
             this.cuadricula.posicionarObjeto(new PelotaAnimada(0, 0), fila, this.cuadricula.filas[fila].cantidadColumnas - 1);
         }
     };
     FutbolRobots.prototype.atras = function () {
-        this.robot.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     };
     FutbolRobots.prototype.avanzar = function () {
-        this.robot.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     FutbolRobots.prototype.siguienteFila = function () {
-        this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple, { 'cuadriculaMultiple': this.cuadricula });
+        this.automata.hacer_luego(AvanzarFilaEnCuadriculaMultiple, { 'cuadriculaMultiple': this.cuadricula });
     };
     return FutbolRobots;
 })(Base);
