@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion} = bloques;
 
