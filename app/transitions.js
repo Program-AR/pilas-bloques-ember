@@ -48,4 +48,35 @@ export default function(){
     this.reverse('fade')
   );
 
+
+  /* ACERCA DE ... */
+
+  this.transition(
+    this.fromRoute('acercade'),
+    this.toRoute('desafios'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+
+  this.transition(
+    this.fromRoute('acercade'),
+    this.toRoute('galeria'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+
+  this.transition(
+    this.fromRoute('acercade'),
+    this.toRoute('preferencia'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+
+  this.transition(
+    this.fromRoute('acercade'),
+    this.toRoute('index'),
+    this.use('fade'),
+    this.reverse('fade')
+  );
+
 }
