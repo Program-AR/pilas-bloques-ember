@@ -7,7 +7,6 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('about');
-  this.route('version');
   this.route('preferencia');
   this.resource('editor', {path: '/editor/:galeria_id'});
   this.route('galeria');
@@ -16,6 +15,7 @@ Router.map(function() {
   this.resource('desafios', function() {
     this.route('nombre', {path: ':nombre'});
   });
+  this.route('acercade');
 });
 
 export default Router;
