@@ -56,9 +56,24 @@ class ActorAnimado extends Actor {
     }
 
     tocando(etiqueta){
-      var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
-      return actores.length > 0;
+      return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this))
+      //var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
+      //return actores.length > 0;
     };
+
+
+
+
+      
+    tocandoFin(){
+    return this.casillaActual().casillaASuDerecha()==undefined
+    // return  pilas.escena_actual().cuadricula.tocandoFin(this)
+    // cada cuadricula (multiple,esparsa,etc) implementa su tocandoFin de manera diferente
+    }
+
+    tocandoInicio(){
+      return this.casillaActual().nroColumna==0;
+    }
 
     detener_animacion() {
         this.cargarAnimacion("parado");

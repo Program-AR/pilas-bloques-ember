@@ -32,6 +32,39 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
         }
     }
 
+/*
+    ino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
+    for(var index=0;index<cuadricula.casillas.length-1;index++){
+      cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
+    }
+      cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
+    //solo por reescalado
+  }
+
+  */
+
+    public cambiarImagenCasillas(opcionesCasilla){
+      for (var index = 0; index < this.filas.length; ++index) {
+        for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2){
+          this.filas[index].casillas[index2].imagen=opcionesCasilla;
+        }
+      }
+    }
+
+    public cambiarImagenInicio(opcionesCasilla){
+      for (var index = 0; index < this.filas.length; ++index) {
+          this.filas[index].casillas[0].imagen=opcionesCasilla;
+        }
+      }
+
+    public cambiarImagenFin(opcionesCasilla){
+      for (var index = 0; index < this.filas.length; ++index) {
+        this.filas[index].casillas[this.filas[index].casillas.length-1].imagen=opcionesCasilla;
+  }
+
+    }
+
+
     public completarConObjetosRandom(arrayClases){
     	arrayClases = new conjuntoClases(arrayClases)
     	for (var i =0; i < this.filas.length ; i+=1){
@@ -51,7 +84,7 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
 
     public avanzarDesdeCualquierLado(objeto){
       objeto.cuadricula.siguienteFila().agregarActor(objeto,0,0)
-      
+
     }
     private dameFila(objeto){
         return this.diccionarioFilaObjeto[objeto];
@@ -118,6 +151,7 @@ class Fila extends Cuadricula{
             }
         }
     }
+
 
 
 
