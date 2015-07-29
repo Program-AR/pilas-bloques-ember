@@ -13,7 +13,7 @@ var EncenderLuz = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Encender ')
+          .appendField('encender ')
          .appendField(this.obtener_icono('../libs/data/iconos.lamparita.png'));
   },
 
