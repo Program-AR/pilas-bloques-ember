@@ -7,7 +7,7 @@ class FutbolRobots  extends Base{
 
   iniciar() {
       this.estado=undefined;
-      this.fondo = new Fondo('fondos.selva.png',0,0);
+      this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
 
 
       var cantidadFilas=8;
