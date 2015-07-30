@@ -12,7 +12,7 @@ export default Ember.Component.extend({
       alto: 480,
       canvas: canvas_element,
       data_path: 'libs/data',
-      
+
       imagenesExtra: [
                 'fondos.estrellas.png',
                 'fondos.obrero.png',
@@ -63,6 +63,7 @@ export default Ember.Component.extend({
                 'casillas.violeta.png',
                 'fondos.selva.png',
                 'banana-1.png',
+                'fondos.futbolRobots.png',
                 ]
       });
 
