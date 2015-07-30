@@ -13274,7 +13274,7 @@ var __extends = this.__extends || function (d, b) {
 *
 * Estas propiedades también se pueden manipular mediante
 * interpolaciones. Por ejemplo, para aumentar el tamaño del
-* personaje de 1 a 5 en 7 segundos:
+* automata de 1 a 5 en 7 segundos:
 *
 *     @example
 *     protagonista.escala = 1;
