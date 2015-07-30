@@ -49,10 +49,20 @@ var ActorAnimado = (function (_super) {
         this._imagen.avanzar();
     };
     ActorAnimado.prototype.tocando = function (etiqueta) {
-        var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
-        return actores.length > 0;
+        var _this = this;
+        return pilas.obtener_actores_con_etiqueta(etiqueta).some(function (objeto) { return objeto.colisiona_con(_this); });
+        //var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
+        //return actores.length > 0;
     };
     ;
+    ActorAnimado.prototype.tocandoFin = function () {
+        return this.casillaActual().casillaASuDerecha() == undefined;
+        // return  pilas.escena_actual().cuadricula.tocandoFin(this)
+        // cada cuadricula (multiple,esparsa,etc) implementa su tocandoFin de manera diferente
+    };
+    ActorAnimado.prototype.tocandoInicio = function () {
+        return this.casillaActual().nroColumna == 0;
+    };
     ActorAnimado.prototype.detener_animacion = function () {
         this.cargarAnimacion("parado");
     };
@@ -442,6 +452,33 @@ var CuadriculaMultiple /*extends ActorAnimado*/ = (function () {
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.inicializar = function (definidorColumnas) {
         while (definidorColumnas.hayProxColumnas()) {
             this.filas.push(new Fila(this, definidorColumnas.nroFila(), definidorColumnas.dameProxColumnas()));
+        }
+    };
+    /*
+        ino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
+        for(var index=0;index<cuadricula.casillas.length-1;index++){
+          cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
+        }
+          cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
+        //solo por reescalado
+      }
+    
+      */
+    CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenCasillas = function (opcionesCasilla) {
+        for (var index = 0; index < this.filas.length; ++index) {
+            for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2) {
+                this.filas[index].casillas[index2].imagen = opcionesCasilla;
+            }
+        }
+    };
+    CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenInicio = function (opcionesCasilla) {
+        for (var index = 0; index < this.filas.length; ++index) {
+            this.filas[index].casillas[0].imagen = opcionesCasilla;
+        }
+    };
+    CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenFin = function (opcionesCasilla) {
+        for (var index = 0; index < this.filas.length; ++index) {
+            this.filas[index].casillas[this.filas[index].casillas.length - 1].imagen = opcionesCasilla;
         }
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.completarConObjetosRandom = function (arrayClases) {
@@ -1547,7 +1584,9 @@ var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     }
     avanzarFilaEnCuadriculaMultiple.prototype.alTerminarAnimacion = function () {
         try {
-            this.argumentos['cuadriculaMultiple'].avanzarFila(this.receptor);
+            //this.argumentos['cuadriculaMultiple'].avanzarFila(this.receptor)
+            // se cambio para que pueda ser llamado desde las actividades.
+            pilas.escena_actual().cuadricula.avanzarFila(this.receptor);
         }
         catch (err) {
             this.receptor.decir(err);
@@ -2236,24 +2275,29 @@ var FutbolRobots = (function (_super) {
     }
     FutbolRobots.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
+        this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
         var cantidadFilas = 8;
         this.definidor = new DefinidorColumnasRandom(cantidadFilas, 10);
         this.cuadricula = new CuadriculaMultiple(this.definidor);
-        this.robot = new RobotAnimado(0, 0);
-        this.cuadricula.posicionarObjeto(this.robot, 0, 0);
+        this.cuadricula.cambiarImagenCasillas('casilla.futbolRobots2.png');
+        this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
+        this.automata = new RobotAnimado(0, 0);
+        this.cuadricula.posicionarObjeto(this.automata, 0, 0);
         for (var fila = 0; fila < cantidadFilas; ++fila) {
             this.cuadricula.posicionarObjeto(new PelotaAnimada(0, 0), fila, this.cuadricula.filas[fila].cantidadColumnas - 1);
         }
     };
     FutbolRobots.prototype.atras = function () {
-        this.robot.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     };
     FutbolRobots.prototype.avanzar = function () {
-        this.robot.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     FutbolRobots.prototype.siguienteFila = function () {
-        this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple, { 'cuadriculaMultiple': this.cuadricula });
+        this.automata.hacer_luego(avanzarFilaEnCuadriculaMultiple);
+    };
+    FutbolRobots.prototype.patearPelota = function () {
+        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'PelotaAnimada', 'mensajeError': 'No hay una pelota aquí' });
     };
     return FutbolRobots;
 })(Base);

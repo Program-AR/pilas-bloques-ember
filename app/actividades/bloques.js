@@ -493,10 +493,36 @@ var Sino = EstructuraDeControl.extend({
 
 });
 
+var Hasta = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'hasta');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('repetir hasta que');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'true';
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.repetir_hasta(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
+    return r;
+  }
+
+});
+
 
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
-               Sensor, Repetir,Si,Sino};
+               Sensor, Repetir,Si,Sino,Hasta};
 
 export default bloques;
