@@ -153,9 +153,11 @@ span.url {
 .absolute {
   position: absolute;
   left: 10px;
-  right: 10px;
+  right: 0px;
   bottom: 10px;
   top: 63px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 
