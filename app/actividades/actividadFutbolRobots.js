@@ -93,7 +93,7 @@ var PatearPelota = Accion.extend({
 
   argumentos: function() {
 
-  return '{\'etiqueta\':\'PelotaAnimada\',\'mensajeError\' : \'No hay una pelota aquí\'}'
+  return '{\'etiqueta\':\'PelotaAnimada\',\'mensajeError\' : \'No hay una pelota aquí\'}';
 
 
   }
