@@ -31,7 +31,6 @@ export default Ember.Component.extend({
                 'casillaDerecha.png',
                 'casillaIzquierda.png',
                 'banana.png',
-                'manzana.png',
                 'casilla_base.png',
                 'robot.png',
                 'casilla_con_luz.png',
@@ -52,6 +51,7 @@ export default Ember.Component.extend({
                 'quesoAnimado.png',
                 'naveAnimada.png',
                 'robotAnimado.png',
+                'manzana.png',
                 'pelotaAnimada.png',
                 'fondos.biblioteca.png',
                 'fondos.reparandoLaNave.png',
@@ -64,6 +64,8 @@ export default Ember.Component.extend({
                 'fondos.selva.png',
                 'banana-1.png',
                 'fondos.futbolRobots.png',
+                'casilla.futbolRobots1.png',
+                'casilla.futbolRobots2.png'
                 ]
       });
 
