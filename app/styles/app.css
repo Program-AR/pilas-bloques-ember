@@ -126,7 +126,9 @@ span.url {
 }
 
 .fila-opcion {
-  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 200;
 }
 
 
@@ -155,7 +157,7 @@ span.url {
   left: 10px;
   right: 0px;
   bottom: 10px;
-  top: 63px;
+  top: 55px;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -449,9 +451,27 @@ body,
 }
 
 .box p {
-  font-size: 18px;
+  font-size: 21px;
 }
 
 p {
-  font-size: 16px;
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 200;
+}
+
+h1 {
+  font-family: "Source Sans Pro";
+  font-weight: 500;
+}
+
+
+.navbar {
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  border-bottom: 3px solid rgb(219, 219, 219);
+}
+
+.navbar-nav > li > a {
+  font-family: "Source Sans Pro" !important;
 }
