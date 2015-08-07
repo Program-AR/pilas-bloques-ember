@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   actividad: null,
 
-  iniciarPilas: function() {
+  iniciarPilas: Ember.on('didInsertElement', function() {
     var canvas_element = this.$().find('canvas')[0];
 
     window.pilas = pilasengine.iniciar({
@@ -78,6 +78,6 @@ export default Ember.Component.extend({
 
     window.pilas.ejecutar();
 
-  }.on('didInsertElement'),
+  }),
 
 });

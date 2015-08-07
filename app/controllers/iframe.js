@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
       return codigo_xml !== this.get('tmp_codigo_xml');
     },
 
-    inyectarRedimensionado: function() {
+    inyectarRedimensionado: Ember.on('init', function() {
 
       window.anterior_altura = 0;
       window.anterior_ancho = 0;
@@ -53,7 +53,7 @@ export default Ember.Controller.extend({
       window.onresize = redimensionar;
       window.forzar_redimensionado = forzar_redimensionado;
 
-    }.on('init'),
+    }),
 
     'botones-modal-guardar': [
       Ember.Object.create({title: 'Guardar y ver en la galería', clicked: 'guardarEnGaleriaYRedireccionar'}),

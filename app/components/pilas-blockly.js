@@ -14,7 +14,7 @@ export default Ember.Component.extend({
   compartirEnCurso: false,
   browser: Ember.inject.service(),
 
-  inyectarRedimensionado: function() {
+  inyectarRedimensionado: Ember.on('init', function() {
 
     window.anterior_altura = 0;
     window.anterior_ancho = 0;
@@ -55,14 +55,14 @@ export default Ember.Component.extend({
     window.onresize = redimensionar;
     window.forzar_redimensionado = forzar_redimensionado;
 
-  }.on('init'),
+  }),
 
-  iniciarBlockly: function() {
+  iniciarBlockly: Ember.on('didInsertElement', function() {
     //var contenedor = this.$().find('#contenedor-blockly')[0];
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
-  }.on('didInsertElement'),
+  }),
 
 
 
