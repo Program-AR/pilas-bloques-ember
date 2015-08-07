@@ -38,10 +38,14 @@ input, textarea /*.contenteditable?*/ {
   background-color: white;
   padding-left: 10px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
   bottom: 0;
   left: 425px;
+}
+
+.panel-pilas {
+  padding-top: 10px;
 }
 
 
@@ -129,6 +133,7 @@ span.url {
   font-size: 18px;
   font-family: "Source Sans Pro";
   font-weight: 200;
+  padding: 10px;
 }
 
 
@@ -474,4 +479,8 @@ h1 {
 
 .navbar-nav > li > a {
   font-family: "Source Sans Pro" !important;
+}
+
+.em-modal {
+  background-color: hsla(0, 0%, 0%, 0.44) !important;
 }
