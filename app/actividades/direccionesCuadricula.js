@@ -3,23 +3,23 @@ var {Accion} = bloques;
 
 var IrDerecha = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'MoverACasillaDerecha');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
          .appendField('ir derecha');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 
@@ -28,24 +28,24 @@ var IrDerecha = Accion.extend({
 
 var IrIzquierda = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'MoverACasillaIzquierda');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
          .appendField('ir izquierda');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaIzquierda';
   },
 
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 
@@ -54,24 +54,24 @@ var IrIzquierda = Accion.extend({
 
 var IrArriba = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'MoverACasillaArriba');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('arriba.png'))
          .appendField('ir arriba');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaArriba';
   },
 
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 
@@ -80,24 +80,24 @@ var IrArriba = Accion.extend({
 
 var IrAbajo = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'MoverACasillaAbajo');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('abajo.png'))
          .appendField('ir abajo');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaAbajo';
   },
 
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 

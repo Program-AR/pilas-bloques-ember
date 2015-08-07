@@ -9,7 +9,7 @@ export default Ember.Service.extend({
     this.set('showLayout', this.get('env').showLayout);
   }.on('init'),
 
-  getENV: function() {
+  getENV() {
     return this.get('env');
   }
 });

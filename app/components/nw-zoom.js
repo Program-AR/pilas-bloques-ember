@@ -28,13 +28,13 @@ export default Ember.Component.extend({
   }.on('init'),
 
   actions: {
-    zoomIn: function() {
+    zoomIn() {
       this.set('zoomValue', this.get('zoomValue') + 10);
     },
-    zoomOut: function() {
+    zoomOut() {
       this.set('zoomValue', this.get('zoomValue') - 10);
     },
-    zoomRestore: function() {
+    zoomRestore() {
       this.set('zoomValue', 100);
     }
   },

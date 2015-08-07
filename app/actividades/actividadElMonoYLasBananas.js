@@ -2,24 +2,24 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, Sensor,Si,Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'Avanzar');
   },
 
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
          .appendField('Avanzar');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });
@@ -27,24 +27,24 @@ var Avanzar = Accion.extend({
 
 
 var ComerBanana = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ComerBanana');
   },
 
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
           .appendField('Comer ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'RecogerPorEtiqueta';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{\'etiqueta\' : \'BananaAnimada\',  \'mensajeError\' : \'No hay una banana aqui\' }';
   }
 });
@@ -54,12 +54,12 @@ var ComerBanana = Accion.extend({
 
 
 var TocandoBanana = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'tocandoBanana');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando ')
@@ -68,7 +68,7 @@ var TocandoBanana = Sensor.extend({
 
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'tocando(\'BananaAnimada\')';
   }
 });

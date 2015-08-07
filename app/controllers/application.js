@@ -16,13 +16,13 @@ export default Ember.Controller.extend({
     ],
 
     actions: {
-      mostrar_devtools: function() {
+      mostrar_devtools() {
         window.requireNode('nw.gui').Window.get().showDevTools();
       },
-      actualizar: function() {
+      actualizar() {
         location.reload(true);
       },
-      redimensionar: function() {
+      redimensionar() {
         alert("tengo que redimensionar!");
       }
     }

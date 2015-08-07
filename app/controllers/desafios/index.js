@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
   actions: {
-    onSelect: function(name) {
+    onSelect(name) {
       this.transitionToRoute('desafios.nombre', name);
     }
   }
