@@ -484,3 +484,12 @@ h1 {
 .em-modal {
   background-color: hsla(0, 0%, 0%, 0.44) !important;
 }
+
+
+.page-container {
+  padding-top: 50px;
+}
+
+body, .navbar-fixed-top, .navbar-fixed-bottom {
+  min-width: inherit;
+}
