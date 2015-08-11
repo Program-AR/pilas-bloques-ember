@@ -1,5 +1,5 @@
 class ElPlanetaDeNano extends Base {
-  personaje;
+  automata;
   estado;
   cantidadColumnas;
   cuadricula;
@@ -18,10 +18,12 @@ iniciar() {
         {alto: 300,ancho:300},
         {grilla: 'casillaLightbot.png',
         cantColumnas: 5})
-    this.personaje = new MariaAnimada(0, 0);
-    this.cuadricula.agregarActor(this.personaje,cantidadFilas-1, 0);
+
+    this.automata = new NanoAnimado(0, 0);
+
+    this.cuadricula.agregarActor(this.automata,cantidadFilas-1, 0);
     this.secuenciaCaminata = new Secuencia({'secuencia':[ new MoverACasillaIzquierda({})]})
-    this.secuenciaCaminata.iniciar(this.personaje);
+    this.secuenciaCaminata.iniciar(this.automata);
     this.condicion = () => { return this.personajePrincipal().casillaActual().nroColumna==0;}
     this.tableroBananas = new Tablero(150,220,"Bananas");
     this.cantidadBananas= new ObservadoConAumentar(0);
@@ -30,7 +32,7 @@ iniciar() {
 }
 
   personajePrincipal(){
-    return this.personaje;
+    return this.automata;
   }
 
 
@@ -48,20 +50,20 @@ iniciar() {
     }
 
   volverABordeIzquierdo(){
-    this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
+    this.automata.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
   }
 
 
   comerBanana(){
-    this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'BananaAnimada','mensajeError':'No hay una banana aquí','dondeReflejarValor':this.cantidadBananas});
+    this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'BananaAnimada','mensajeError':'No hay una banana aquí','dondeReflejarValor':this.cantidadBananas});
   }
 
   moverDerecha(){
-    this.personaje.hacer_luego(MoverACasillaDerecha);
+    this.automata.hacer_luego(MoverACasillaDerecha);
   }
 
   moverArriba(){
-    this.personaje.hacer_luego(MoverACasillaArriba);
+    this.automata.hacer_luego(MoverACasillaArriba);
 
   }
 }
