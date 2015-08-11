@@ -114,6 +114,10 @@ class Cuadricula extends Actor {
         actor.setCasillaActual(this.casilla(nroF,nroC),true);
     }
 
+    reubicarActorAlMedio(actor){
+        actor.abajo = actor.casillaActual().abajo + (0.4 * this.altoCasilla())
+    }
+
     altoCasilla(){
         return this.opcionesCasilla.alto;
     }
