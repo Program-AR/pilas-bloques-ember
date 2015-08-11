@@ -705,6 +705,14 @@ var MonoAnimado = (function (_super) {
     }
     return MonoAnimado;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var NanoAnimado = (function (_super) {
+    __extends(NanoAnimado, _super);
+    function NanoAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'nano.png', cantColumnas: 1, cantFilas: 1 });
+    }
+    return NanoAnimado;
+})(ActorAnimado);
 var NaveAnimada = (function (_super) {
     __extends(NaveAnimada, _super);
     function NaveAnimada(x, y) {
@@ -2173,10 +2181,10 @@ var ElPlanetaDeNano = (function (_super) {
         this.cantidadColumnas = 5;
         this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        this.personaje = new MariaAnimada(0, 0);
-        this.cuadricula.agregarActor(this.personaje, cantidadFilas - 1, 0);
+        this.automata = new NanoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
-        this.secuenciaCaminata.iniciar(this.personaje);
+        this.secuenciaCaminata.iniciar(this.automata);
         this.condicion = function () { return _this.personajePrincipal().casillaActual().nroColumna == 0; };
         this.tableroBananas = new Tablero(150, 220, "Bananas");
         this.cantidadBananas = new ObservadoConAumentar(0);
@@ -2184,7 +2192,7 @@ var ElPlanetaDeNano = (function (_super) {
         this.completarConBananas();
     };
     ElPlanetaDeNano.prototype.personajePrincipal = function () {
-        return this.personaje;
+        return this.automata;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
@@ -2199,16 +2207,16 @@ var ElPlanetaDeNano = (function (_super) {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
     };
     ElPlanetaDeNano.prototype.volverABordeIzquierdo = function () {
-        this.personaje.hacer_luego(RepetirHasta, { 'secuencia': this.secuenciaCaminata, 'condicion': this.condicion });
+        this.automata.hacer_luego(RepetirHasta, { 'secuencia': this.secuenciaCaminata, 'condicion': this.condicion });
     };
     ElPlanetaDeNano.prototype.comerBanana = function () {
-        this.personaje.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'BananaAnimada', 'mensajeError': 'No hay una banana aquí', 'dondeReflejarValor': this.cantidadBananas });
+        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'BananaAnimada', 'mensajeError': 'No hay una banana aquí', 'dondeReflejarValor': this.cantidadBananas });
     };
     ElPlanetaDeNano.prototype.moverDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     ElPlanetaDeNano.prototype.moverArriba = function () {
-        this.personaje.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     };
     return ElPlanetaDeNano;
 })(Base);
