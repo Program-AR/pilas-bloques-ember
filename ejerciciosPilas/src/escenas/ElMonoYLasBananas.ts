@@ -10,7 +10,6 @@ class ElMonoYLasBananas extends Base {
     cuadricula;
     automata;
     estado;
-    banana;
     iniciar() {
       this.estado=undefined;
       this.fondo = new Fondo('fondos.selva.png',0,0);
@@ -22,13 +21,10 @@ class ElMonoYLasBananas extends Base {
           cantColumnas: 1})
 
       this.automata =  new  MonoAnimado(0,0);
-      this.cuadricula.agregarActor(this.automata, 0, 0, false);
-      this.cuadricula.reubicarActorAlMedio(this.automata);
+      this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
 
       if (Math.random()< .5)  {
-        this.banana = new BananaAnimada(0, 0);
-        this.cuadricula.agregarActor(this.banana,0,1, false);
-        this.cuadricula.reubicarActorAlMedio(this.banana)
+        this.cuadricula.agregarActorEnPerspectiva(new BananaAnimada(0, 0),0,1, false);
       }
     }
 
