@@ -13,7 +13,7 @@ iniciar() {
     //this.recolector.izquierda = pilas.izquierda();
     var cantidadFilas=4
     this.cantidadColumnas=5
-    makethis.fondo = new Fondo('fondo.elPlanetaDeNano.png',0,0);
+    this.fondo = new Fondo('fondo.elPlanetaDeNano.png',0,0);
 
     this.cuadricula = new Cuadricula(0,0,cantidadFilas,this.cantidadColumnas,
         {alto: 300,ancho:300},
