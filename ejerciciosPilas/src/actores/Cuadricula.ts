@@ -114,6 +114,14 @@ class Cuadricula extends Actor {
         actor.setCasillaActual(this.casilla(nroF,nroC),true);
     }
 
+    agregarActorEnPerspectiva(actor,nroF,nroC,escalarACasilla = true){
+        this.agregarActor(actor, nroF, nroC, false);
+        if (escalarACasilla) {
+            actor.escalarAAncho(actor.casillaActual().ancho * 0.95);
+        }
+        actor.abajo = actor.casillaActual().abajo + (0.4 * this.altoCasilla())
+    }
+
     altoCasilla(){
         return this.opcionesCasilla.alto;
     }

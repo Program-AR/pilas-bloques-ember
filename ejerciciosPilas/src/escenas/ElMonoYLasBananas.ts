@@ -13,31 +13,24 @@ class ElMonoYLasBananas extends Base {
     iniciar() {
       this.estado=undefined;
       this.fondo = new Fondo('fondos.selva.png',0,0);
-        var cantidadFilas=1
-        var cantidadColumnas=2
-        this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-            {alto: 200},
-            {grilla: 'casillas.violeta.png',
-            cantColumnas: 1})
+      var cantidadFilas=1
+      var cantidadColumnas=2
+      this.cuadricula = new Cuadricula(0,-100,cantidadFilas,cantidadColumnas,
+          {alto: 200},
+          {grilla: 'casillas.violeta.png',
+          cantColumnas: 1})
 
+      this.automata =  new  MonoAnimado(0,0);
+      this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
 
-
-        this.automata =  new  MonoAnimado(0,0);
-
-
-        this.cuadricula.agregarActor(this.automata,0,0);
-
-
-    if (Math.random()< .5)  {
-
-
-            this.agregar(BananaAnimada);
+      if (Math.random()< .5)  {
+        this.cuadricula.agregarActorEnPerspectiva(new BananaAnimada(0, 0),0,1, false);
       }
     }
 
 
-      agregar(objeto){
-        this.cuadricula.agregarActor(new objeto(0,0),0,1);
+    agregar(objeto){
+        
     }
 
     personajePrincipal(){

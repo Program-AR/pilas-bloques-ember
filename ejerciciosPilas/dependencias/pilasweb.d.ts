@@ -86,6 +86,8 @@ declare class Actor extends Estudiante {
     public escala_y : any;
     public escala : any;
     public escalarProporcionalALimites(anchoLimite: any, altoLimite: any): void;
+    public escalarAAncho(anchoDeseado: any): void;
+    public escalarAAlto(altoDeseado: any): void;
     public rotacion : any;
     public transparencia : number;
     public ancho : number;
