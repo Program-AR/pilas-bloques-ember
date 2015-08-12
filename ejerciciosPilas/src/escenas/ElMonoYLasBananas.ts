@@ -21,7 +21,7 @@ class ElMonoYLasBananas extends Base {
           cantColumnas: 1})
 
       this.automata =  new  MonoAnimado(0,0);
-      this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
+      this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
 
       if (Math.random()< .5)  {
         this.cuadricula.agregarActorEnPerspectiva(new BananaAnimada(0, 0),0,1, false);
