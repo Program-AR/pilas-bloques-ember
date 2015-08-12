@@ -31,6 +31,7 @@ export default Ember.Component.extend({
                 'casillaDerecha.png',
                 'casillaIzquierda.png',
                 'banana.png',
+                'nano.png',
                 'casilla_base.png',
                 'robot.png',
                 'casilla_con_luz.png',
