@@ -389,12 +389,24 @@ var Actividad = Ember.Object.extend({
     var act = this.get('actividad');
     var leng = Lenguaje.create();
 
-    leng.agregar('Acciones', act.acciones);
-    leng.agregar('Sensores', act.sensores);
-    leng.agregar('Control', act.control);
-    leng.agregar('Expresiones', act.expresiones);
-    leng.agregar('Variables', act.variables);
-    leng.agregar('Subtareas', act.subtareas);
+    var bloques_para_toolbox = {
+      Acciones: 'acciones',
+      Sensores: 'sensores',
+      Control: 'control',
+      Expresiones: 'expresiones',
+      Variables: 'variables',
+      Subtareas: 'subtareas'
+    };
+
+    // Itera por todos los bloques y los agrega al toolbox solamente
+    // si tienen piezas para mostrar.
+    for (let key in bloques_para_toolbox) {
+      let propiedad = bloques_para_toolbox[key];
+
+      if (act[propiedad].length > 0) {
+        leng.agregar(key, act[propiedad]);
+      }
+    }
 
     return leng.build();
   },
