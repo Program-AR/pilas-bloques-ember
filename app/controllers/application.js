@@ -24,6 +24,10 @@ export default Ember.Controller.extend({
       },
       redimensionar() {
         alert("tengo que redimensionar!");
+      },
+
+      abrirPreferencias() {
+        this.set('mostrarDialogoOpciones', true);
       }
     }
 
