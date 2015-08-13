@@ -25,12 +25,12 @@ class LaEleccionDelMono extends Base {
         }
 
         this.automata =  new  MonoAnimado(0,0);
-        this.cuadricula.agregarActor(this.automata,0,0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0,false);
 
     }
 
     agregar(objeto){
-        this.cuadricula.agregarActor(new objeto(0,0),0,1);
+      this.cuadricula.agregarActorEnPerspectiva(new objeto(0,0),0,1, false);
     }
 
     personajePrincipal(){
