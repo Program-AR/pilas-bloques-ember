@@ -493,3 +493,15 @@ h1 {
 body, .navbar-fixed-top, .navbar-fixed-bottom {
   min-width: inherit;
 }
+
+
+
+.modal-body {
+  overflow-y: scroll;
+  height: 370px;
+}
+
+.img-border {
+  border: 2px solid rgb(123, 123, 123);
+  margin: 20px;
+}

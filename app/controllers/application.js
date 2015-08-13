@@ -28,6 +28,10 @@ export default Ember.Controller.extend({
 
       abrirPreferencias() {
         this.set('mostrarDialogoOpciones', true);
+      },
+
+      abrirAyuda() {
+        this.set('mostrarDialogoAyuda', true);
       }
     }
 
