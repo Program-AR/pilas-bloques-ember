@@ -15,10 +15,10 @@ export default Ember.Service.extend({
           message: mensaje,
           media: imagen
         }),
-        success: function (res) {
+        success(res) {
           resolve(res);
         },
-        error: function (xhr) {
+        error(xhr) {
           console.error(xhr.responseText);
           reject(xhr.responseText);
         }

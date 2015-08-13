@@ -4,24 +4,24 @@ var {Accion, Si, Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 var EncenderLuz = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'EncenderLuz');
   },
 
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
           .appendField('encender ')
          .appendField(this.obtener_icono('../libs/data/iconos.lamparita.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'EncenderLuz';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });

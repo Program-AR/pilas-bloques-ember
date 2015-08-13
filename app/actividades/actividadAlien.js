@@ -67,23 +67,23 @@ var EscenaAlien = (function (_super) {
 
 var IrDerecha = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ir_derecha');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
          .appendField('ir derecha');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverHaciaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{cantidad: 68, tiempo: 1}';
   }
 
@@ -91,23 +91,23 @@ var IrDerecha = Accion.extend({
 
 var IrIzquierda = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ir_izquierda');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
          .appendField('ir izquierda');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverHaciaIzquierda';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{cantidad: 68, tiempo: 1}';
   }
 
@@ -116,23 +116,23 @@ var IrIzquierda = Accion.extend({
 
 var IrArriba = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ir_arriba');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('arriba.png'))
          .appendField('ir arriba');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverHaciaArriba';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{cantidad: 80, tiempo: 1}';
   }
 
@@ -141,23 +141,23 @@ var IrArriba = Accion.extend({
 
 var IrAbajo = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ir_abajo');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('abajo.png'))
          .appendField('ir abajo');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverHaciaAbajo';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{cantidad: 80, tiempo: 1}';
   }
 
@@ -165,23 +165,23 @@ var IrAbajo = Accion.extend({
 
 var Recoger = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'recoger');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
         .appendField('recoger')
         .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 16, 16, 'tuerca'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'Recoger';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{tiempo: 1}';
   }
 
@@ -191,19 +191,19 @@ var Recoger = Accion.extend({
 
 
 var ChocaConTuerca = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'choca_con_tuerca');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('choca con')
          .appendField(new Blockly.FieldImage('libs/data/tuerca.png', 15, 15, 'tuerca'));
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'choca_con_tuerca()';
   }
 });

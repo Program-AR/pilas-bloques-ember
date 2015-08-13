@@ -8,11 +8,16 @@ var Router = Ember.Router.extend({
 Router.map(function() {
   this.route('about');
   this.route('preferencia');
-  this.resource('editor', {path: '/editor/:galeria_id'});
+  this.route('editor', {
+    path: '/editor/:galeria_id',
+    resetNamespace: true
+  });
   this.route('galeria');
   this.route('iframe');
   this.route('test');
-  this.resource('desafios', function() {
+  this.route('desafios', {
+    resetNamespace: true
+  }, function() {
     this.route('nombre', {path: ':nombre'});
   });
   this.route('acercade');

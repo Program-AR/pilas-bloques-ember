@@ -5,7 +5,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
   actividades: Ember.inject.service(),
 
-  model: function() {
+  model() {
     var actividad = this.get('actividades').obtenerPorNombre('alien');
 
     return {actividad: actividad};

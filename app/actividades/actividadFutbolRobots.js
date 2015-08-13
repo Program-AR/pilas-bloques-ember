@@ -8,90 +8,90 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, Sensor, Si,Repetir,Procedimiento,Hasta} = bloques;
 
 var Avanzar = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'Avanzar');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('avanzar')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });
 
 var Atras = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'Atras');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
      .appendField('atrás')
      .appendField(this.obtener_icono('izquierda.png'));
    },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaIzquierda';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });
 
 var SiguienteFila = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'SiguienteFila');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('siguiente fila')
          .appendField(this.obtener_icono('abajo.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'avanzarFilaEnCuadriculaMultiple';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });
 
 
 var PatearPelota = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'PatearPelota');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('patear')
          .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'RecogerPorEtiqueta';
   },
 
-  argumentos: function() {
+  argumentos() {
 
   return '{\'etiqueta\':\'PelotaAnimada\',\'mensajeError\' : \'No hay una pelota aquí\'}';
 
@@ -102,12 +102,12 @@ var PatearPelota = Accion.extend({
 
 
 var TocandoInicio = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'tocandoInicio');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('¿tocando inicio?')
@@ -115,18 +115,18 @@ var TocandoInicio = Sensor.extend({
 
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'tocandoInicio()';
   }
 });
 
 var TocandoPelota = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'tocandoPelota');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('¿tocando')
@@ -134,7 +134,7 @@ var TocandoPelota = Sensor.extend({
          .appendField('?');
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'tocando(\'PelotaAnimada\')';
   }
 });

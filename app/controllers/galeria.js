@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
   actions: {
-    eliminar: function(record) {
+    eliminar(record) {
       record.destroyRecord();
     },
 
-    abrir: function(record) {
+    abrir(record) {
       this.transitionToRoute('editor', record);
     },
   }

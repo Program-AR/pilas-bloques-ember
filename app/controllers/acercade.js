@@ -3,9 +3,9 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   version: Ember.inject.service(),
 
-  currentVersion: function() {
+  currentVersion: Ember.computed('version', function() {
     return this.get('version').getVersion();
-  }.property('version'),
+  }),
 
   actions: {
     visitWebsite() {

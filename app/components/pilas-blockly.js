@@ -14,7 +14,7 @@ export default Ember.Component.extend({
   compartirEnCurso: false,
   browser: Ember.inject.service(),
 
-  inyectarRedimensionado: function() {
+  inyectarRedimensionado: Ember.on('init', function() {
 
     window.anterior_altura = 0;
     window.anterior_ancho = 0;
@@ -55,14 +55,14 @@ export default Ember.Component.extend({
     window.onresize = redimensionar;
     window.forzar_redimensionado = forzar_redimensionado;
 
-  }.on('init'),
+  }),
 
-  iniciarBlockly: function() {
+  iniciarBlockly: Ember.on('didInsertElement', function() {
     //var contenedor = this.$().find('#contenedor-blockly')[0];
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
-  }.on('didInsertElement'),
+  }),
 
 
 
@@ -70,36 +70,36 @@ export default Ember.Component.extend({
    * Se conecta a los eventos y cambios de estado de blockly para implementar
    * la funcionalidad de 'deshacer'.
    */
-  observarCambiosEnBlocky: function() {
+  observarCambiosEnBlocky() {
     var f = this.almacenar_cambio.bind(this);
     var d = Blockly.addChangeListener(f);
     this.set('data_observar_blockly', d);
   },
 
-  noMirarCambiosEnBlockly: function() {
+  noMirarCambiosEnBlockly() {
     if(this.get('data_observar_blockly')) {
       Blockly.removeChangeListener(this.get('data_observar_blockly'));
     }
   },
 
 
-    almacenar_cambio: function() {
+    almacenar_cambio() {
       this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
       console.log("guardar");
     },
 
-    restaurar_codigo: function(codigo) {
+    restaurar_codigo(codigo) {
       var xml = Blockly.Xml.textToDom(codigo);
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
     },
 
-    obtener_codigo_en_texto: function() {
+    obtener_codigo_en_texto() {
       var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
       return Blockly.Xml.domToText(xml);
     },
 
-    cargar_codigo_desde_el_modelo: function() {
+    cargar_codigo_desde_el_modelo() {
       if (this.get('model')) {
         var modelo = this.get('model');
         var codigo = modelo.get('codigo');
@@ -110,7 +110,7 @@ export default Ember.Component.extend({
 
 
   actions: {
-    ejecutar: function() {
+    ejecutar() {
       window.LoopTrap = 1000;
       //this.sendAction('reiniciar');
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
@@ -127,24 +127,24 @@ export default Ember.Component.extend({
         alert(e);
       }
     },
-    reiniciar: function() {
+    reiniciar() {
       this.set('ejecutando', false);
       this.sendAction('reiniciar');
     },
-    guardar: function() {
+    guardar() {
       this.sendAction('guardar');
     },
-    alternar: function() {
+    alternar() {
       //this.sendAction('redimensionar');
       console.log(this.controllerFor('application'));
       //.sendAction('redimensionar');
     },
-    ver_codigo: function() {
+    ver_codigo() {
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
       var code = this.get('actividad').generarCodigo();
       alert(code);
     },
-    deshacer_cambio: function() {
+    deshacer_cambio() {
       this.noMirarCambiosEnBlockly();
       this.get('cola_deshacer').popObject();
       var c =  this.get('cola_deshacer').popObject();

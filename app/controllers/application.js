@@ -7,23 +7,31 @@ export default Ember.Controller.extend({
   layout: true,
   environment: Ember.inject.service(),
 
-  mostrar_url: function() {
+  mostrar_url: Ember.on('init', function() {
     this.set('layout', this.get('environment').get('showLayout'));
-  }.on('init'),
+  }),
 
     myModalButtons: [
         Ember.Object.create({title: 'Cerrar', dismiss: 'modal'})
     ],
 
     actions: {
-      mostrar_devtools: function() {
+      mostrar_devtools() {
         window.requireNode('nw.gui').Window.get().showDevTools();
       },
-      actualizar: function() {
+      actualizar() {
         location.reload(true);
       },
-      redimensionar: function() {
+      redimensionar() {
         alert("tengo que redimensionar!");
+      },
+
+      abrirPreferencias() {
+        this.set('mostrarDialogoOpciones', true);
+      },
+
+      abrirAyuda() {
+        this.set('mostrarDialogoAyuda', true);
       }
     }
 

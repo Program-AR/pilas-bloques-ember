@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model: function(params) {
+  model(params) {
     if (params.galeria_id !== 'new') {
       return this.store.find('galeria', params.galeria_id);
     } else {
@@ -9,7 +9,7 @@ export default Ember.Route.extend({
     }
   },
   actions: {
-    willTransition: function(transition) {
+    willTransition(transition) {
       var b = this.controllerFor('editor').debeGuardar();
       if (b) {
         transition.abort();

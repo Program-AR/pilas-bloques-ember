@@ -1,6 +1,7 @@
 {{#if layout}}
   {{partial "navbar"}}
-  {{partial "modal"}}
+  {{partial "modal-preferencias"}}
+  {{partial "modal-ayuda"}}
 {{else}}
   <style>
     .absolute {
@@ -10,5 +11,5 @@
 {{/if}}
 
 <div class="page-container">
-  {{liquid-outlet class='absolute'}}
+  {{outlet class='absolute'}}
 </div>

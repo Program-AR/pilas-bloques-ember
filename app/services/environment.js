@@ -4,12 +4,12 @@ export default Ember.Service.extend({
   env: null,
   showLayout: null,
 
-  loadProperties: function() {
+  loadProperties: Ember.on('init', function() {
     this.set('env', this.container.lookupFactory('config:environment'));
     this.set('showLayout', this.get('env').showLayout);
-  }.on('init'),
+  }),
 
-  getENV: function() {
+  getENV() {
     return this.get('env');
   }
 });

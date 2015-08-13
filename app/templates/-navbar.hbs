@@ -14,8 +14,11 @@
         {{#link-to "acercade" tagName='li'}}<a href=#>Acerca de ...</a>{{/link-to}}
       </ul>
 
+
+
       <div class='header-right'>
-        {{#em-modal-toggler modal-id="modal1" class="header-button"}}{{fa-icon "gear"}}{{/em-modal-toggler}}
+        <button class="header-button" {{action "abrirAyuda"}}>{{fa-icon "question"}}</button>
+        <button class="header-button" {{action "abrirPreferencias"}}>{{fa-icon "gear"}}</button>
       </div>
     </div>
   </div>

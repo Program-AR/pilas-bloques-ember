@@ -39,13 +39,14 @@ input, textarea /*.contenteditable?*/ {
   padding-left: 10px;
   position: absolute;
   right: 10px;
-  top: 10px;
+  top: 60px;
   bottom: 0;
   left: 425px;
 }
 
 .panel-pilas {
   padding-top: 10px;
+  padding-left: 10px;
 }
 
 
@@ -483,4 +484,25 @@ h1 {
 
 .em-modal {
   background-color: hsla(0, 0%, 0%, 0.44) !important;
+}
+
+
+.page-container {
+  padding-top: 50px;
+}
+
+body, .navbar-fixed-top, .navbar-fixed-bottom {
+  min-width: inherit;
+}
+
+
+
+.modal-body {
+  overflow-y: scroll;
+  height: 370px;
+}
+
+.img-border {
+  border: 2px solid rgb(123, 123, 123);
+  margin: 20px;
 }

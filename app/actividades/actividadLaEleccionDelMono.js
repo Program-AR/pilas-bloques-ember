@@ -2,47 +2,47 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, Sensor, Si,Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'Avanzar');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('Avanzar')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'MoverACasillaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{}';
   }
 });
 
 
 var ComerManzana = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ComerManzana');
   },
 
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('Comer ')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'RecogerPorEtiqueta';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{\'etiqueta\' : \'ManzanaAnimada\',  \'mensajeError\' : \'No hay una manzana aqui\' }';
   }
 });
@@ -50,24 +50,24 @@ var ComerManzana = Accion.extend({
 
 
 var ComerBanana = Accion.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'ComerBanana');
   },
 
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('Comer ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png')); //TODO: Hardcodeo feo de dir de icono
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'RecogerPorEtiqueta';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{\'etiqueta\' : \'BananaAnimada\',  \'mensajeError\' : \'No hay una banana aqui\' }';
   }
 });
@@ -75,12 +75,12 @@ var ComerBanana = Accion.extend({
 
 
 var TocandoManzana = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'tocandoManzana');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando')
@@ -88,19 +88,19 @@ var TocandoManzana = Sensor.extend({
          .appendField('?');
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'tocando(\'ManzanaAnimada\')';
   }
 });
 
 
 var TocandoBanana = Sensor.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'tocandoBanana');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando')
@@ -108,7 +108,7 @@ var TocandoBanana = Sensor.extend({
          .appendField('?');
   },
 
-  nombre_sensor: function() {
+  nombre_sensor() {
     return 'tocando(\'BananaAnimada\')';
   }
 });

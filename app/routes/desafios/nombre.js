@@ -4,7 +4,7 @@ export default Ember.Route.extend({
   actividades: Ember.inject.service(),
   actividadActual: null,
 
-  model: function(param) {
+  model(param) {
     return new Ember.RSVP.Promise((resolve, reject) => {
       var actividad = this.get('actividades').obtenerPorNombre(param.nombre);
       this.set('actividadActual', actividad);
@@ -19,7 +19,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    reiniciar: function() {
+    reiniciar() {
       this.get('actividadActual').iniciarEscena();
     }
   }
