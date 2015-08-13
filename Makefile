@@ -73,6 +73,10 @@ actualizar_pilas:
 	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	mkdir -p public/libs/
+	make copiar_pilasweb
+	
+copiar_pilasweb:
+	cd pilasweb; make build; cd ..
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 

@@ -294,6 +294,14 @@ var Cuadricula = (function (_super) {
         }
         actor.setCasillaActual(this.casilla(nroF, nroC), true);
     };
+    Cuadricula.prototype.agregarActorEnPerspectiva = function (actor, nroF, nroC, escalarACasilla) {
+        if (escalarACasilla === void 0) { escalarACasilla = true; }
+        this.agregarActor(actor, nroF, nroC, false);
+        if (escalarACasilla) {
+            actor.escalarAAncho(actor.casillaActual().ancho * 0.95);
+        }
+        actor.abajo = actor.casillaActual().abajo + (0.4 * this.altoCasilla());
+    };
     Cuadricula.prototype.altoCasilla = function () {
         return this.opcionesCasilla.alto;
     };
@@ -2065,16 +2073,15 @@ var ElMonoYLasBananas = (function (_super) {
         this.fondo = new Fondo('fondos.selva.png', 0, 0);
         var cantidadFilas = 1;
         var cantidadColumnas = 2;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 200 }, { grilla: 'casillas.violeta.png',
+        this.cuadricula = new Cuadricula(0, -100, cantidadFilas, cantidadColumnas, { alto: 200 }, { grilla: 'casillas.violeta.png',
             cantColumnas: 1 });
         this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         if (Math.random() < .5) {
-            this.agregar(BananaAnimada);
+            this.cuadricula.agregarActorEnPerspectiva(new BananaAnimada(0, 0), 0, 1, false);
         }
     };
     ElMonoYLasBananas.prototype.agregar = function (objeto) {
-        this.cuadricula.agregarActor(new objeto(0, 0), 0, 1);
     };
     ElMonoYLasBananas.prototype.personajePrincipal = function () {
         return this.automata;
@@ -2179,7 +2186,8 @@ var ElPlanetaDeNano = (function (_super) {
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         this.cantidadColumnas = 5;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
+        this.fondo = new Fondo('fondo.elPlanetaDeNano.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casilla.elPlanetaDeNano.png',
             cantColumnas: 5 });
         this.automata = new NanoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
