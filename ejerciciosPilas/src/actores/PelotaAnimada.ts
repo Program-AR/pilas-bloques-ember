@@ -1,6 +1,6 @@
 class PelotaAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'pelotaAnimada.png', cantColumnas:1});
+        super(x, y, {grilla: 'pelotaAnimada.png', cantColumnas:16});
 
     }
 }

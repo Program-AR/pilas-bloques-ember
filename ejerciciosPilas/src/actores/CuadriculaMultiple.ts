@@ -20,15 +20,15 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
     filas;
     diccionarioFilaObjeto;
     nroFila;
-    constructor(definidorColumnas){
+    constructor(definidorColumnas,altoCasilla){
     	//super(0,0,10);
         this.filas=[];
-        this.inicializar(definidorColumnas)
+        this.inicializar(definidorColumnas,altoCasilla)
     }
 
-    private inicializar(definidorColumnas){
+    private inicializar(definidorColumnas,altoCasilla){
         while(definidorColumnas.hayProxColumnas()){
-            this.filas.push(new Fila(this,definidorColumnas.nroFila(),definidorColumnas.dameProxColumnas()));
+            this.filas.push(new Fila(this,definidorColumnas.nroFila(),definidorColumnas.dameProxColumnas(),altoCasilla));
         }
     }
 
@@ -43,24 +43,35 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
 
   */
 
+    /*public reubicarTodo(){
+      for(var index =0; index < this.filas.length;++index){
+        this.filas[index].aplicarATodasCasillas(function (casilla) {casilla.reubicate()});
+      }
+
+    }
+    */
+
     public cambiarImagenCasillas(opcionesCasilla){
       for (var index = 0; index < this.filas.length; ++index) {
         for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2){
-          this.filas[index].casillas[index2].imagen=opcionesCasilla;
+          this.filas[index].casillas[index2].cambiarImagen(opcionesCasilla);
         }
       }
+    //  this.reubicarTodo();
     }
 
     public cambiarImagenInicio(opcionesCasilla){
       for (var index = 0; index < this.filas.length; ++index) {
-          this.filas[index].casillas[0].imagen=opcionesCasilla;
+          this.filas[index].casillas[0].cambiarImagen(opcionesCasilla);
         }
+      //  this.reubicarTodo();
       }
 
     public cambiarImagenFin(opcionesCasilla){
       for (var index = 0; index < this.filas.length; ++index) {
-        this.filas[index].casillas[this.filas[index].casillas.length-1].imagen=opcionesCasilla;
+        this.filas[index].casillas[this.filas[index].casillas.length-1].cambiarImagen(opcionesCasilla);
   }
+    //this.reubicarTodo();
 
     }
 
@@ -94,6 +105,11 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
         this.filas[i].agregarActor(objeto,0,j)
     }
 
+    public posicionarObjetoEnPerspectiva(objeto,i,j,aux){
+        //this.diccionarioFilaObjeto[objeto]=i;
+        this.filas[i].agregarActorEnPerspectiva(objeto,0,j,aux);
+    }
+
 }
 
 
@@ -114,13 +130,13 @@ class Fila extends Cuadricula{
     cantidadColumnas;
     cuadriculaMultiple;
     nroFila;
-    constructor(cuadriculaMultipleP,nroFilaP,cantidadColumnasP){
+    constructor(cuadriculaMultipleP,nroFilaP,cantidadColumnasP,altoCasilla){
         this.cantidadColumnas = cantidadColumnasP
         this.cuadriculaMultiple =cuadriculaMultipleP
         this.nroFila = nroFilaP
-        super(-200+(this.cantidadColumnas/2)*40, 200-(55*this.nroFila), 1, this.cantidadColumnas,
-            {alto: 40, ancho:40*this.cantidadColumnas},
-            {grilla: 'casillaLightbot.png', cantColumnas:5})
+        super(-200+(this.cantidadColumnas/2)*altoCasilla, 200-(55*this.nroFila), 1, this.cantidadColumnas,
+            {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas},
+            {grilla: 'casillaLightbot.png', cantColumnas:5,ancho: altoCasilla, alto:altoCasilla})
     }
     /*
     El ancho seteado de esa manera permite que todas las casillas tengan el mismo tamano
@@ -129,6 +145,12 @@ class Fila extends Cuadricula{
     */
     //TODO: reemplazar el 200 por algun valor independiente del navegador
 
+    public aplicarATodasCasillas(funcion){
+      for (var index = 0; index < this.casillas.length; ++index) {
+        funcion(this.casillas[index]);
+      }
+
+    }
     public siguienteFila(){
 
             if(this.existeSiguienteFila()){
@@ -184,7 +206,7 @@ class DefinidorColumnasDeUnaFila{
 class DefinidorColumnasRandom extends DefinidorColumnasDeUnaFila{
     constructor(filas,cantidadMaxColumnas){
         super();
-        this.tamanos=Array.apply(null, Array(filas)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 1);});
+        this.tamanos=Array.apply(null, Array(filas)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 2);});
     }
 }
 

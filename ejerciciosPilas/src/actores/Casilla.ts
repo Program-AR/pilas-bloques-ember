@@ -11,46 +11,46 @@ class Casilla extends ActorAnimado {
     cuadricula;
     nroFila;
     nroColumna;
-    
+
     constructor(nroF,nroC,cuadricula){
         this.cuadricula = cuadricula;
         this.nroFila = nroF;
         this.nroColumna = nroC;
-        
+
         super(0,0,cuadricula.getOpcionesCasilla());
-        
+
         this.reubicate();
     }
-    
+
     reubicate(){
        this.actualizarAncho();
        this.actualizarAlto();
        this.reubicarEnX();
        this.reubicarEnY();
     }
-    
+
     reubicarEnX(){
-        this.x = 
-            this.cuadricula.izquierda + 
-            (this.ancho / 2) + 
+        this.x =
+            this.cuadricula.izquierda +
+            (this.ancho / 2) +
             (this.nroColumna * this.ancho);
     }
-    
+
     reubicarEnY(){
-        this.y = 
-            this.cuadricula.arriba - 
-            (this.alto / 2) - 
+        this.y =
+            this.cuadricula.arriba -
+            (this.alto / 2) -
             (this.nroFila * this.alto);
     }
-    
+
     actualizarAncho(){
         this.ancho = this.cuadricula.anchoCasilla();
     }
-    
+
     actualizarAlto(){
         this.alto = this.cuadricula.altoCasilla();
     }
-    
+
     casillaASuDerecha(){
         return this.cuadricula.casilla(this.nroFila,this.nroColumna + 1);
     }
@@ -66,4 +66,9 @@ class Casilla extends ActorAnimado {
     sos(nroF,nroC){
         return nroF == this.nroFila && nroC == this.nroColumna;
     }
+    cambiarImagen(img){
+      this.imagen=img;
+      this.reubicate();
+    }
+
 }
