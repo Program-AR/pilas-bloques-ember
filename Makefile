@@ -1,4 +1,4 @@
-VERSION=0.7.1
+VERSION=0.7.2
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -55,7 +55,7 @@ comandos:
 
 iniciar:
 	npm install
-	bower install
+	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
 	rm -f pilasweb blockly ejerciciosPilas	
