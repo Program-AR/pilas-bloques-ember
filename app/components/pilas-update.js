@@ -36,12 +36,14 @@ export default Ember.Component.extend({
 
             case 1:
               this.definirMensajeDiferido(`Existe una actualización, la versión ${version_del_servidor}.`);
+              this.get('version').descargarActualizacion(version_del_servidor);
               break;
           }
 
 
         }).
-        catch(() => {
+        catch((error) => {
+          console.error(error);
           this.definirMensajeDiferido("No se pudo consultar la versión desde Internet.");
         });
 
