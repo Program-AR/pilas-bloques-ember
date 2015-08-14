@@ -41,7 +41,7 @@ export default Ember.Component.extend({
 
 
         }).
-        catch((error) => {
+        catch(() => {
           this.definirMensajeDiferido("No se pudo consultar la versión desde Internet.");
         });
 
