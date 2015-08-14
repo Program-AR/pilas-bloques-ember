@@ -11,7 +11,7 @@ class LightbotScratch extends Base {
         this.cuadricula = new Cuadricula(0,0,5,6,
             {},
             {grilla: 'casilla_base.png',
-            cantColumnas: 1, alto: 38});
+            cantColumnas: 1, alto: 50, ancho:50});
 
 
         //se cargan las luces

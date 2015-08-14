@@ -15,7 +15,7 @@ iniciar() {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.columnas=[5,6,8,4,7]
         this.definidor = new DefinidorColumnasFijo(5,this.columnas);
-        this.cuadricula = new CuadriculaMultiple(this.definidor)
+        this.cuadricula = new CuadriculaMultiple(this.definidor,{alto: 40, ancho:40*5})
         this.personaje = new PapaNoelAnimado(0,0);
         this.cuadricula.posicionarObjeto(this.personaje,0,0);
         this.completarConRegalos();

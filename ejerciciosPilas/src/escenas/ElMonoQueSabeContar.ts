@@ -21,7 +21,7 @@ class ElMonoQueSabeContar extends Base {
 
         this.definidor = new DefinidorColumnasRandom(5,10)
 
-        this.cuadricula = new CuadriculaMultiple(this.definidor)
+        this.cuadricula = new CuadriculaMultiple(this.definidor,{alto: 40, ancho:40*10})
         this.cuadricula.completarConObjetosRandom(this.etiquetasDeObjetosAColocar);
         this.mono = new MonoAnimado(0,0);
         this.cuadricula.posicionarObjeto(this.mono,0,0);
