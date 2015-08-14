@@ -52,5 +52,8 @@
     "ember-idx-modal": "^0.1.4",
     "ember-localstorage-adapter": "^0.5.2",
     "nw": "0.12.2"
+  },
+  "dependencies": {
+    "compare-version": "^0.1.2"
   }
 }

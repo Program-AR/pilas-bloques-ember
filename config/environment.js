@@ -5,6 +5,7 @@ module.exports = function(environment) {
     modulePrefix: 'pilas-engine-bloques',
     environment: environment,
     baseURL: '/',
+    versionURL: 'http://bloques.pilas-engine.com.ar/version.json',
     locationType: 'hash',
     EmberENV: {
       FEATURES: {
