@@ -47,6 +47,15 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 }
 
+class DesencadenarAnimacionSiColiciona extends ComportamientoColision{
+	metodo(objetoColision){
+		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+	}
+
+
+}
+
+
 class MorderPorEtiqueta extends ComportamientoColision {
 
 
