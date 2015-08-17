@@ -1252,17 +1252,18 @@ declare class Globo extends Actor {
     public actor_texto: any;
     constructor(x: any, y: any, mensaje: any);
     public eliminar(): void;
+    public actualizarMedidas(): void;
 }
 declare class Texto extends Actor {
-    public s: any;
-    public container: any;
-    public texto: any;
+    public spriteCJS: any;
+    public elString: any;
     public color: any;
-    public sprite_texto: any;
-    constructor(x: any, y: any, texto: any, color: any);
+    constructor(x: any, y: any, elString: any, color?: string);
     public crear_texto(): void;
     public eliminar_texto(): void;
     public eliminar(): void;
+    public actualizarMedidas(): void;
+    public anchoMaximo(ancho: any): void;
 }
 declare class Bloque extends Actor {
     constructor(x: any, y: any, nombre_imagen: any);
