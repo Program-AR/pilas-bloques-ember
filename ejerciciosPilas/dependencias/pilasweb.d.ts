@@ -1533,3 +1533,13 @@ declare class Actores {
     public Sombra: any;
     constructor(pilas: any);
 }
+declare class GloboAjustable extends Actor {
+    public mensaje: any;
+    public theText: any;
+    public sprite_globo: any;
+    constructor(x: any, y: any, mensaje: any);
+    public eliminar(): void;
+    public crearGlobo(): void;
+    public reposicionar(): void;
+    public crearTexto(): void;
+}
