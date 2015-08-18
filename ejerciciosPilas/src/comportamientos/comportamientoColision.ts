@@ -47,6 +47,17 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 }
 
+class DesencadenarAnimacionDobleSiColiciona extends ComportamientoColision{
+	metodo(objetoColision){
+		this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
+		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+
+	}
+
+
+}
+
+
 class DesencadenarAnimacionSiColiciona extends ComportamientoColision{
 	metodo(objetoColision){
 		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
