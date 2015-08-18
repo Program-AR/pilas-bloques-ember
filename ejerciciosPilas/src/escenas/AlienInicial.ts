@@ -13,11 +13,11 @@ class AlienInicial extends Base {
     boton;
     iniciar() {
       this.estado=undefined;
-      this.fondo = new Fondo('fondos.selva.png',0,0);
+      this.fondo = new Fondo('fondos.alien-inicial.png',0,0);
       this.cuadricula = new Cuadricula(0,0,1,4,
-        {alto: 200},
-      {grilla: 'casillas.violeta.png',
-      cantColumnas: 1})
+        {alto: 200,separacionEntreCasillas:true},
+      {grilla: 'casillas.alien_inicial.png',
+      cantColumnas: 1, ancho:100, alto:100})
       this.automata = new AlienAnimado(0,0);
       this.cuadricula.agregarActor(this.automata,0,0);
       this.boton =  new BotonAnimado(0,0);
@@ -29,6 +29,12 @@ class AlienInicial extends Base {
       return this.automata;
     }
 
+    avanzar(){
+      this.automata.hacer_luego(MoverACasillaDerecha);
+    }
 
+    apretar(){
+      this.automata.hacer_luego(DesencadenarAnimacionSiColiciona,{'idAnimacion':'apagada','etiqueta':'BotonAnimado','mensajeError': 'No hay un botón aquí'})
+    }
 
   }
