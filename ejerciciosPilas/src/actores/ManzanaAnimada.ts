@@ -2,6 +2,6 @@
 
 class ManzanaAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'manzana.png', cantColumnas:1, cantFilas: 1});
+        super(x, y, {grilla: 'manzana-v2.png', cantColumnas:1, cantFilas: 1});
     }
 } 

@@ -1252,6 +1252,7 @@ declare class Globo extends Actor {
     public actor_texto: any;
     public actor: any;
     public puntita: any;
+    public margen: any;
     constructor(actor: any, mensaje: any);
     public duracion(): number;
     public eliminar(): void;
@@ -1544,14 +1545,4 @@ declare class Actores {
     public Tuerca: any;
     public Sombra: any;
     constructor(pilas: any);
-}
-declare class GloboAjustable extends Actor {
-    public mensaje: any;
-    public theText: any;
-    public sprite_globo: any;
-    constructor(x: any, y: any, mensaje: any);
-    public eliminar(): void;
-    public crearGlobo(): void;
-    public reposicionar(): void;
-    public crearTexto(): void;
 }
