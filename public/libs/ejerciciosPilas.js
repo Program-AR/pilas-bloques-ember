@@ -105,6 +105,8 @@ var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4], 5);
+        this.definirAnimacion("apretar", [5, 6, 7], 3);
     }
     return AlienAnimado;
 })(ActorAnimado);
@@ -129,7 +131,9 @@ var BananaAnimada = (function (_super) {
 var BotonAnimado = (function (_super) {
     __extends(BotonAnimado, _super);
     function BotonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'manzana.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'botonAnimado.png', cantColumnas: 2 });
+        this.definirAnimacion("apagada", [0], 1);
+        this.definirAnimacion("prendida", [1], 1);
     }
     return BotonAnimado;
 })(ActorAnimado);
@@ -1599,6 +1603,17 @@ var ComportamientoColision = (function (_super) {
     };
     return ComportamientoColision;
 })(ComportamientoAnimado);
+var DesencadenarAnimacionDobleSiColiciona = (function (_super) {
+    __extends(DesencadenarAnimacionDobleSiColiciona, _super);
+    function DesencadenarAnimacionDobleSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarAnimacionDobleSiColiciona.prototype.metodo = function (objetoColision) {
+        this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
+        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+    };
+    return DesencadenarAnimacionDobleSiColiciona;
+})(ComportamientoColision);
 var DesencadenarAnimacionSiColiciona = (function (_super) {
     __extends(DesencadenarAnimacionSiColiciona, _super);
     function DesencadenarAnimacionSiColiciona() {
@@ -1717,16 +1732,24 @@ var AlienInicial = (function (_super) {
     }
     AlienInicial.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondos.selva.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 4, { alto: 200 }, { grilla: 'casillas.violeta.png',
-            cantColumnas: 1 });
+        this.fondo = new Fondo('fondos.alien-inicial.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, -200, 1, 4, { alto: 25, ancho: (pilas.opciones.ancho * 0.9) }, { grilla: 'invisible.png', cantColumnas: 1 });
+        this.fondoCuadricula = new Actor("camino-alien-boton.png", 0, this.cuadricula.y);
+        this.fondoCuadricula.ancho = this.cuadricula.ancho;
         this.automata = new AlienAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
         this.boton = new BotonAnimado(0, 0);
-        this.cuadricula.agregarActor(this.boton, 0, 3);
+        this.boton.derecha = this.cuadricula.derecha + 10;
+        this.boton.abajo = this.cuadricula.arriba;
     };
     AlienInicial.prototype.personajePrincipal = function () {
         return this.automata;
+    };
+    AlienInicial.prototype.avanzar = function () {
+        this.automata.hacer_luego(MoverACasillaDerecha);
+    };
+    AlienInicial.prototype.apretar = function () {
+        this.automata.hacer_luego(DesencadenarAnimacionDobleSiColiciona, { 'idAnimacion': 'prendida', 'idAnimacionReceptor': 'apretar', 'etiqueta': 'BotonAnimado', 'mensajeError': 'No hay un botón aquí' });
     };
     return AlienInicial;
 })(Base);

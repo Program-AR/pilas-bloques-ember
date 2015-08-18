@@ -24,7 +24,7 @@ var ApretarBoton = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField('Apretar ')
-         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
+         .appendField(this.obtener_icono('../libs/data/iconos.botonRojo.png'));
   },
 
 
