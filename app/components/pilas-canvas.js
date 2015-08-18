@@ -17,6 +17,8 @@ export default Ember.Component.extend({
                 'fondos.estrellas.png',
                 'fondos.obrero.png',
                 'fondos.nubes.png',
+                'fondo.elPlanetaDeNano.png',
+                'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
                 'perro_cohete.png',
                 'hueso.png',
