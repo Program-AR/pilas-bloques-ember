@@ -1276,7 +1276,6 @@ declare class Texto extends Actor {
     public anchoMaximo(ancho: any): void;
     public reubicar(centro_x: any, centro_y: any): void;
     public cantidadDeLineas(): number;
-    public setString(elString: any): void;
 }
 declare class Bloque extends Actor {
     constructor(x: any, y: any, nombre_imagen: any);
