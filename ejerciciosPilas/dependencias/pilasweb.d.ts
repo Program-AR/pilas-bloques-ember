@@ -1250,9 +1250,18 @@ declare class Maton extends Actor {
 declare class Globo extends Actor {
     public mensaje: any;
     public actor_texto: any;
-    constructor(x: any, y: any, mensaje: any);
+    public actor: any;
+    public puntita: any;
+    constructor(actor: any, mensaje: any);
+    public duracion(): number;
     public eliminar(): void;
+    public crearTexto(): void;
     public actualizarMedidas(): void;
+    public ubicar(): void;
+    public ubicarEnY(): void;
+    public ubicarEnX(): void;
+    public ubicarADerechaDelActor(): void;
+    public ubicarAIzquierdaDelActor(): void;
 }
 declare class Texto extends Actor {
     public spriteCJS: any;
@@ -1264,6 +1273,8 @@ declare class Texto extends Actor {
     public eliminar(): void;
     public actualizarMedidas(): void;
     public anchoMaximo(ancho: any): void;
+    public reubicar(centro_x: any, centro_y: any): void;
+    public cantidadDeLineas(): number;
 }
 declare class Bloque extends Actor {
     constructor(x: any, y: any, nombre_imagen: any);
