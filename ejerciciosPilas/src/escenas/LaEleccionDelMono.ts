@@ -18,14 +18,14 @@ class LaEleccionDelMono extends Base {
             {grilla: 'casillas.violeta.png',
             cantColumnas: 1})
 
-		if (Math.random()< .5)  {
-            this.agregar(ManzanaAnimada);
-        }else{
-            this.agregar(BananaAnimada);
-        }
-
         this.automata =  new  MonoAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0,false);
+
+        if (Math.random() < .5) {
+            this.agregar(ManzanaAnimada);
+        } else {
+            this.agregar(BananaAnimada);
+        }
 
     }
 

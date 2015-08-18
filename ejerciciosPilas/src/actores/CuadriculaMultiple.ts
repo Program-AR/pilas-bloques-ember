@@ -135,7 +135,7 @@ class Fila extends Cuadricula{
         this.cuadriculaMultiple =cuadriculaMultipleP
         this.nroFila = nroFilaP
         super(-200+(this.cantidadColumnas/2)*altoCasilla, 200-(55*this.nroFila), 1, this.cantidadColumnas,
-            {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas},
+            {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas, separacionEntreCasillas: 5},
             {grilla: 'casillaLightbot.png', cantColumnas:5,ancho: altoCasilla, alto:altoCasilla})
     }
     /*

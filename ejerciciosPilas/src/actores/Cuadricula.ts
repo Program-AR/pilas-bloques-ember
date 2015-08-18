@@ -59,41 +59,63 @@ class Cuadricula extends Actor {
     private opcionesCuadricula;
     private opcionesCasilla;
 
-    constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla){
+    constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
         this.cantFilas = cantFilas;
         this.cantColumnas = cantColumnas;
         this.sanitizarOpciones(opcionesCuadricula, opcionesCasilla);
-        super(this.opcionesCuadricula.imagen,x,y,opcionesCuadricula);
+        super(this.opcionesCuadricula.imagen, x, y, opcionesCuadricula);
 
-        this.ancho = this.cantColumnas * opcionesCasilla.ancho;
-        this.alto = this.cantFilas * opcionesCasilla.alto;
+        this.ancho = this.cantColumnas * opcionesCasilla.ancho + (this.separacion() * (this.cantColumnas - 1));
+        this.alto = this.cantFilas * opcionesCasilla.alto + (this.separacion() * (this.cantFilas - 1));
 
         this.crearCasillas();
     }
 
     //TODO: Podría agregar que tome las dimensiones de la
     //imagen como último valor de ancho y alto por defecto
-    sanitizarOpciones(opcionesCuadricula, opcionesCasilla){
+    sanitizarOpciones(opcionesCuadricula, opcionesCasilla) {
         this.opcionesCasilla = opcionesCasilla;
         this.opcionesCuadricula = opcionesCuadricula;
 
         this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'invisible.png';
         this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
         this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
-        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.opcionesCuadricula.ancho / this.cantColumnas ;
-        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.opcionesCuadricula.alto / this.cantFilas;
+        this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;
+        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasilla(this.opcionesCuadricula.ancho);
+        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasilla(this.opcionesCuadricula.alto);
     }
 
-    setAncho(nuevo){
+    separacion(){
+        return this.opcionesCuadricula.separacionEntreCasillas;
+    }
+
+    setAncho(nuevo) {
         this.ancho = nuevo;
-        this.opcionesCasilla.ancho = nuevo / this.cantColumnas;
-        this.casillas.forEach(casilla => {casilla.reubicate()});
+        this.opcionesCasilla.ancho = this.calcularAnchoCasilla(nuevo);
+        this.casillas.forEach(casilla => { casilla.reubicate() });
     }
 
-    setAlto(nuevo){
+    calcularAnchoCasilla(anchoCuad) {
+        // anchoCuad = cols * anchoCas + ((cols-1) * separacion)
+        // anchoCuad - ((cols-1) * separacion) = cols * anchoCas
+        // anchoCas = (anchoCuad - ((cols-1) * separacion)) / cols
+        // anchoCas = anchoCuad / cols - ((cols-1) * separacion) / cols
+        return anchoCuad / this.cantColumnas -
+            (((this.cantColumnas - 1) * this.separacion()) / this.cantColumnas);
+
+    }
+
+    setAlto(nuevo) {
         this.alto = nuevo;
-        this.opcionesCasilla.alto = nuevo / this.cantFilas;
-        this.casillas.forEach(casilla => {casilla.reubicate()});
+        this.opcionesCasilla.alto = this.calcularAltoCasilla(nuevo);
+        this.casillas.forEach(casilla => { casilla.reubicate() });
+    }
+
+    calcularAltoCasilla(altoCuad){
+        var separacion = this.opcionesCuadricula.separacionEntreCasillas;
+        return altoCuad / this.cantFilas - 
+                (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
+
     }
 
     crearCasillas(){

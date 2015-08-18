@@ -9,7 +9,7 @@ class LightbotScratch extends Base {
         //this.robot.izquierda = pilas.izquierda();
 
         this.cuadricula = new Cuadricula(0,0,5,6,
-            {},
+            {separacionEntreCasillas: 5},
             {grilla: 'casilla_base.png',
             cantColumnas: 1, alto: 50, ancho:50});
 
@@ -39,7 +39,8 @@ class LightbotScratch extends Base {
 
         // se crea el automata
         this.automata = new Robot(0,0);
-        this.cuadricula.agregarActor(this.automata,4,0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata,4,0);
+        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
     }
 
     agregarLuz(fila,columna) {

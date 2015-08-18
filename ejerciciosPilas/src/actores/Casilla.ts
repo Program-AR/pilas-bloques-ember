@@ -33,14 +33,14 @@ class Casilla extends ActorAnimado {
         this.x =
             this.cuadricula.izquierda +
             (this.ancho / 2) +
-            (this.nroColumna * this.ancho);
+            (this.nroColumna * (this.ancho + this.cuadricula.separacion()));
     }
 
     reubicarEnY(){
         this.y =
             this.cuadricula.arriba -
             (this.alto / 2) -
-            (this.nroFila * this.alto);
+            (this.nroFila * (this.alto + this.cuadricula.separacion()));
     }
 
     actualizarAncho(){

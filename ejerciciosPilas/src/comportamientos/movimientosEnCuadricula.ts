@@ -37,10 +37,10 @@ class MovimientoEnCuadricula extends Comportamiento {
     
     // El nro 0.05 depende del nro 0.05 establecido en CaminaBase
     velocidadHorizontal(){
-        return this.cuadricula.anchoCasilla() * 0.05;
+        return (this.cuadricula.anchoCasilla() + this.cuadricula.separacion()) * 0.05;
     }
     velocidadVertical(){
-        return this.cuadricula.altoCasilla() * 0.05;
+        return (this.cuadricula.altoCasilla() + this.cuadricula.separacion()) * 0.05;
     }
     verificarDireccion(casilla){
         var proximaCasilla = this.proximaCasilla(casilla);
