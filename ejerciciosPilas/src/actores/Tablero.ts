@@ -9,8 +9,8 @@ class Tablero{
   /*Saco por ahora la observacion de algo, no lo necesito so far.*/
   constructor(x,y,texto){
     //this.observado=observadoP || undefined;
-    var colorNombre=undefined
-    var colorPuntaje=undefined
+    var colorNombre = "black";
+    var colorPuntaje = "red";
     this.nombre=new Texto(x,y,texto,colorNombre);
 
     this.puntaje=new Puntaje(x + 10 ,y,0,colorPuntaje);

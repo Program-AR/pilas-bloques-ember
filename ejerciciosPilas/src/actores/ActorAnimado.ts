@@ -34,8 +34,8 @@ class ActorAnimado extends Actor {
 
     sanitizarOpciones(ops){
         this.opciones = ops;
-        this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0, 0];
-        this.opciones.cuadrosParado = ops.cuadrosParado || [0, 0];
+        this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0];
+        this.opciones.cuadrosParado = ops.cuadrosParado || [0];
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
     }
