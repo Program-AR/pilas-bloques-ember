@@ -101,6 +101,13 @@ var ActorAnimado = (function (_super) {
     };
     return ActorAnimado;
 })(Actor);
+var AlienAnimado = (function (_super) {
+    __extends(AlienAnimado, _super);
+    function AlienAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
+    }
+    return AlienAnimado;
+})(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var AlimentoAnimado = (function (_super) {
     __extends(AlimentoAnimado, _super);
@@ -118,6 +125,13 @@ var BananaAnimada = (function (_super) {
         //this.escala_y = 2;
     }
     return BananaAnimada;
+})(ActorAnimado);
+var BotonAnimado = (function (_super) {
+    __extends(BotonAnimado, _super);
+    function BotonAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'manzana.png', cantColumnas: 1 });
+    }
+    return BotonAnimado;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var BuzoAnimado = (function (_super) {
@@ -191,6 +205,10 @@ var Casilla = (function (_super) {
     };
     Casilla.prototype.sos = function (nroF, nroC) {
         return nroF == this.nroFila && nroC == this.nroColumna;
+    };
+    Casilla.prototype.cambiarImagen = function (img) {
+        this.imagen = img;
+        this.reubicate();
     };
     return Casilla;
 })(ActorAnimado);
@@ -452,14 +470,14 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 
 */
 var CuadriculaMultiple /*extends ActorAnimado*/ = (function () {
-    function CuadriculaMultiple /*extends ActorAnimado*/(definidorColumnas) {
+    function CuadriculaMultiple /*extends ActorAnimado*/(definidorColumnas, altoCasilla) {
         //super(0,0,10);
         this.filas = [];
-        this.inicializar(definidorColumnas);
+        this.inicializar(definidorColumnas, altoCasilla);
     }
-    CuadriculaMultiple /*extends ActorAnimado*/.prototype.inicializar = function (definidorColumnas) {
+    CuadriculaMultiple /*extends ActorAnimado*/.prototype.inicializar = function (definidorColumnas, altoCasilla) {
         while (definidorColumnas.hayProxColumnas()) {
-            this.filas.push(new Fila(this, definidorColumnas.nroFila(), definidorColumnas.dameProxColumnas()));
+            this.filas.push(new Fila(this, definidorColumnas.nroFila(), definidorColumnas.dameProxColumnas(), altoCasilla));
         }
     };
     /*
@@ -472,22 +490,32 @@ var CuadriculaMultiple /*extends ActorAnimado*/ = (function () {
       }
     
       */
+    /*public reubicarTodo(){
+      for(var index =0; index < this.filas.length;++index){
+        this.filas[index].aplicarATodasCasillas(function (casilla) {casilla.reubicate()});
+      }
+
+    }
+    */
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenCasillas = function (opcionesCasilla) {
         for (var index = 0; index < this.filas.length; ++index) {
             for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2) {
-                this.filas[index].casillas[index2].imagen = opcionesCasilla;
+                this.filas[index].casillas[index2].cambiarImagen(opcionesCasilla);
             }
         }
+        //  this.reubicarTodo();
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenInicio = function (opcionesCasilla) {
         for (var index = 0; index < this.filas.length; ++index) {
-            this.filas[index].casillas[0].imagen = opcionesCasilla;
+            this.filas[index].casillas[0].cambiarImagen(opcionesCasilla);
         }
+        //  this.reubicarTodo();
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenFin = function (opcionesCasilla) {
         for (var index = 0; index < this.filas.length; ++index) {
-            this.filas[index].casillas[this.filas[index].casillas.length - 1].imagen = opcionesCasilla;
+            this.filas[index].casillas[this.filas[index].casillas.length - 1].cambiarImagen(opcionesCasilla);
         }
+        //this.reubicarTodo();
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.completarConObjetosRandom = function (arrayClases) {
         arrayClases = new conjuntoClases(arrayClases);
@@ -514,6 +542,10 @@ var CuadriculaMultiple /*extends ActorAnimado*/ = (function () {
         //this.diccionarioFilaObjeto[objeto]=i;
         this.filas[i].agregarActor(objeto, 0, j);
     };
+    CuadriculaMultiple /*extends ActorAnimado*/.prototype.posicionarObjetoEnPerspectiva = function (objeto, i, j, aux) {
+        //this.diccionarioFilaObjeto[objeto]=i;
+        this.filas[i].agregarActorEnPerspectiva(objeto, 0, j, aux);
+    };
     return CuadriculaMultiple /*extends ActorAnimado*/;
 })();
 var conjuntoClases = (function () {
@@ -527,11 +559,11 @@ var conjuntoClases = (function () {
 })();
 var Fila = (function (_super) {
     __extends(Fila, _super);
-    function Fila(cuadriculaMultipleP, nroFilaP, cantidadColumnasP) {
+    function Fila(cuadriculaMultipleP, nroFilaP, cantidadColumnasP, altoCasilla) {
         this.cantidadColumnas = cantidadColumnasP;
         this.cuadriculaMultiple = cuadriculaMultipleP;
         this.nroFila = nroFilaP;
-        _super.call(this, -200 + (this.cantidadColumnas / 2) * 40, 200 - (55 * this.nroFila), 1, this.cantidadColumnas, { alto: 40, ancho: 40 * this.cantidadColumnas }, { grilla: 'casillaLightbot.png', cantColumnas: 5 });
+        _super.call(this, -200 + (this.cantidadColumnas / 2) * altoCasilla, 200 - (55 * this.nroFila), 1, this.cantidadColumnas, { alto: altoCasilla, ancho: altoCasilla * this.cantidadColumnas }, { grilla: 'casillaLightbot.png', cantColumnas: 5, ancho: altoCasilla, alto: altoCasilla });
     }
     /*
     El ancho seteado de esa manera permite que todas las casillas tengan el mismo tamano
@@ -539,6 +571,11 @@ var Fila = (function (_super) {
 
     */
     //TODO: reemplazar el 200 por algun valor independiente del navegador
+    Fila.prototype.aplicarATodasCasillas = function (funcion) {
+        for (var index = 0; index < this.casillas.length; ++index) {
+            funcion(this.casillas[index]);
+        }
+    };
     Fila.prototype.siguienteFila = function () {
         if (this.existeSiguienteFila()) {
             return this.cuadriculaMultiple.filas[this.nroFila + 1];
@@ -583,7 +620,7 @@ var DefinidorColumnasRandom = (function (_super) {
     __extends(DefinidorColumnasRandom, _super);
     function DefinidorColumnasRandom(filas, cantidadMaxColumnas) {
         _super.call(this);
-        this.tamanos = Array.apply(null, Array(filas)).map(function (_, i) { return Math.floor((Math.random() * cantidadMaxColumnas) + 1); });
+        this.tamanos = Array.apply(null, Array(filas)).map(function (_, i) { return Math.floor((Math.random() * cantidadMaxColumnas) + 2); });
     }
     return DefinidorColumnasRandom;
 })(DefinidorColumnasDeUnaFila);
@@ -667,7 +704,7 @@ var MagoAnimado = (function (_super) {
 var ManzanaAnimada = (function (_super) {
     __extends(ManzanaAnimada, _super);
     function ManzanaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'manzana.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'manzana-v2.png', cantColumnas: 1, cantFilas: 1 });
     }
     return ManzanaAnimada;
 })(ActorAnimado);
@@ -858,7 +895,7 @@ var PapaNoelAnimado = (function (_super) {
 var PelotaAnimada = (function (_super) {
     __extends(PelotaAnimada, _super);
     function PelotaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'pelotaAnimada.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'pelotaAnimada.png', cantColumnas: 16 });
     }
     return PelotaAnimada;
 })(ActorAnimado);
@@ -939,7 +976,7 @@ var Robot = (function (_super) {
 var RobotAnimado = (function (_super) {
     __extends(RobotAnimado, _super);
     function RobotAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'robotAnimado.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'robotAnimado.png', cantColumnas: 13 });
     }
     return RobotAnimado;
 })(ActorAnimado);
@@ -1545,6 +1582,16 @@ var ComportamientoColision = (function (_super) {
     };
     return ComportamientoColision;
 })(ComportamientoAnimado);
+var DesencadenarAnimacionSiColiciona = (function (_super) {
+    __extends(DesencadenarAnimacionSiColiciona, _super);
+    function DesencadenarAnimacionSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarAnimacionSiColiciona.prototype.metodo = function (objetoColision) {
+        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+    };
+    return DesencadenarAnimacionSiColiciona;
+})(ComportamientoColision);
 var MorderPorEtiqueta = (function (_super) {
     __extends(MorderPorEtiqueta, _super);
     function MorderPorEtiqueta() {
@@ -1640,6 +1687,32 @@ var ContarPorEtiqueta = (function (_super) {
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/BananaAnimada.ts" />
+/// <reference path = "../actores/ManzanaAnimada.ts" />
+/// <reference path = "../actores/MonoAnimado.ts" />}
+/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
+/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+var AlienInicial = (function (_super) {
+    __extends(AlienInicial, _super);
+    function AlienInicial() {
+        _super.apply(this, arguments);
+    }
+    AlienInicial.prototype.iniciar = function () {
+        this.estado = undefined;
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 4, { alto: 200 }, { grilla: 'casillas.violeta.png',
+            cantColumnas: 1 });
+        this.automata = new AlienAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.boton = new BotonAnimado(0, 0);
+        this.cuadricula.agregarActor(this.boton, 0, 3);
+    };
+    AlienInicial.prototype.personajePrincipal = function () {
+        return this.automata;
+    };
+    return AlienInicial;
+})(Base);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
 /********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
@@ -2019,7 +2092,7 @@ var ElMonoQueSabeContar = (function (_super) {
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
         this.cantMaxColumnas = 10;
         this.definidor = new DefinidorColumnasRandom(5, 10);
-        this.cuadricula = new CuadriculaMultiple(this.definidor);
+        this.cuadricula = new CuadriculaMultiple(this.definidor, { alto: 40, ancho: 40 * 10 });
         this.cuadricula.completarConObjetosRandom(this.etiquetasDeObjetosAColocar);
         this.mono = new MonoAnimado(0, 0);
         this.cuadricula.posicionarObjeto(this.mono, 0, 0);
@@ -2292,13 +2365,13 @@ var FutbolRobots = (function (_super) {
     FutbolRobots.prototype.iniciar = function () {
         this.estado = undefined;
         this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
-        var cantidadFilas = 8;
+        var cantidadFilas = 4;
         this.definidor = new DefinidorColumnasRandom(cantidadFilas, 10);
-        this.cuadricula = new CuadriculaMultiple(this.definidor);
+        this.cuadricula = new CuadriculaMultiple(this.definidor, 50.0);
         this.cuadricula.cambiarImagenCasillas('casilla.futbolRobots2.png');
         this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
         this.automata = new RobotAnimado(0, 0);
-        this.cuadricula.posicionarObjeto(this.automata, 0, 0);
+        this.cuadricula.posicionarObjetoEnPerspectiva(this.automata, 0, 0, false);
         for (var fila = 0; fila < cantidadFilas; ++fila) {
             this.cuadricula.posicionarObjeto(new PelotaAnimada(0, 0), fila, this.cuadricula.filas[fila].cantidadColumnas - 1);
         }
@@ -2458,10 +2531,10 @@ var LaEleccionDelMono = (function (_super) {
             this.agregar(BananaAnimada);
         }
         this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
     };
     LaEleccionDelMono.prototype.agregar = function (objeto) {
-        this.cuadricula.agregarActor(new objeto(0, 0), 0, 1);
+        this.cuadricula.agregarActorEnPerspectiva(new objeto(0, 0), 0, 1, false);
     };
     LaEleccionDelMono.prototype.personajePrincipal = function () {
         return this.automata;
@@ -2902,7 +2975,7 @@ var LightbotScratch = (function (_super) {
         this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
         //this.robot.izquierda = pilas.izquierda();
         this.cuadricula = new Cuadricula(0, 0, 5, 6, {}, { grilla: 'casilla_base.png',
-            cantColumnas: 1, alto: 38 });
+            cantColumnas: 1, alto: 50, ancho: 50 });
         //se cargan las luces
         var cant = 0;
         var fila = 3;
@@ -3301,7 +3374,7 @@ var SalvandoLaNavidad = (function (_super) {
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
         this.columnas = [5, 6, 8, 4, 7];
         this.definidor = new DefinidorColumnasFijo(5, this.columnas);
-        this.cuadricula = new CuadriculaMultiple(this.definidor);
+        this.cuadricula = new CuadriculaMultiple(this.definidor, { alto: 40, ancho: 40 * 5 });
         this.personaje = new PapaNoelAnimado(0, 0);
         this.cuadricula.posicionarObjeto(this.personaje, 0, 0);
         this.completarConRegalos();
