@@ -67,7 +67,9 @@ export default Ember.Component.extend({
                 'manzana-v2.png',
                 'fondos.futbolRobots.png',
                 'casilla.futbolRobots1.png',
-                'casilla.futbolRobots2.png'
+                'casilla.futbolRobots2.png',
+                'fondos.elPlanetaDeNano.png',
+                'casillas.elPlanetaDeNano.png',
                 ]
       });
 
