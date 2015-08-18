@@ -72,6 +72,10 @@ export default Ember.Component.extend({
                 'casilla.futbolRobots2.png',
                 'fondos.elPlanetaDeNano.png',
                 'casillas.elPlanetaDeNano.png',
+                'fondos.alien-inicial.png',
+                'casillas.alien_inicial.png',
+                'botonAnimado.png'
+
                 ]
       });
 

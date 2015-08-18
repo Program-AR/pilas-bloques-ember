@@ -4,13 +4,14 @@ import Ember from 'ember';
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
 
-import actividadElObreroCopado from 'pilas-engine-bloques/actividades/actividadElObreroCopado';
+
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
 import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
+import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
 
 Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
@@ -520,7 +521,7 @@ export default Ember.Service.extend({
 
     let actividades = {
       alien: actividadAlien,
-      ElObreroCopado: actividadElObreroCopado,
+      AlienTocaBoton: actividadAlienTocaBoton,
       LaEleccionDelMono: actividadLaEleccionDelMono,
       ElMonoYLasBananas: actividadElMonoYLasBananas,
       LightbotEnScratch: actividadLightbotEnScratch,
