@@ -77,6 +77,7 @@ export default Ember.Component.extend({
                 'botonAnimado.png',
                 'camino-alien-boton.png',
                 'iconos.botonRojo.png',
+                'casilla.grisoscuro.png'
                 ]
       });
 
