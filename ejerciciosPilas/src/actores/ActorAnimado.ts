@@ -22,8 +22,7 @@ class ActorAnimado extends Actor {
 
     constructor(x, y, opciones) {
         this.sanitizarOpciones(opciones);
-        var imagen = pilas.imagenes.cargar_animacion(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
-        super(imagen, x, y);
+        super(this.animacionPara(this.opciones.grilla), x, y);
 
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
@@ -61,9 +60,13 @@ class ActorAnimado extends Actor {
       //return actores.length > 0;
     };
 
+    cambiarImagen(nombre){
+        this.imagen = this.animacionPara(nombre);
+    }
 
-
-
+    animacionPara(nombre){
+        return pilas.imagenes.cargar_animacion(nombre, this.opciones.cantColumnas, this.opciones.cantFilas);
+    }
       
     tocandoFin(){
     return this.casillaActual().casillaASuDerecha()==undefined

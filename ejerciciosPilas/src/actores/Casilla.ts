@@ -66,9 +66,23 @@ class Casilla extends ActorAnimado {
     sos(nroF,nroC){
         return nroF == this.nroFila && nroC == this.nroColumna;
     }
-    cambiarImagen(img){
-      this.imagen=img;
-      this.reubicate();
+
+    cambiarImagen(nombre){ // TODO: FEOOOOOOO bugfix setter imagen del actor
+        // PARCHEEEEE
+        this.renacer(nombre);
     }
 
+    renacer(nombreImagen){ // TODO: FEOOOOOOO bugfix setter imagen del actor
+        // POR FAVOR YO FUTURO PERDONAME
+        var pos = this.cuadricula.casillas.indexOf(this);
+        this.cuadricula.casillas.slice(pos,pos+1);
+        this.eliminar();
+        
+        var grillaCasilla = this.cuadricula.opcionesCasilla.grilla;
+        this.cuadricula.opcionesCasilla.grilla = nombreImagen;
+        var nuevoYo = new Casilla(this.nroFila,this.nroColumna,this.cuadricula);
+        this.cuadricula.opcionesCasilla.grilla = grillaCasilla;
+
+        this.cuadricula.casillas.push(nuevoYo);
+    }
 }

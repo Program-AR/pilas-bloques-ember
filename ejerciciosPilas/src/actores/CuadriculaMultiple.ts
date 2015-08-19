@@ -52,24 +52,24 @@ class CuadriculaMultiple /*extends ActorAnimado*/{
     */
 
     public cambiarImagenCasillas(opcionesCasilla){
-      for (var index = 0; index < this.filas.length; ++index) {
-        for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2){
-          this.filas[index].casillas[index2].cambiarImagen(opcionesCasilla);
+      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+        for (var nroColumna = 0; nroColumna < this.filas[nroFila].casillas.length; ++nroColumna){
+          this.filas[nroFila].casilla(0,nroColumna).cambiarImagen(opcionesCasilla);
         }
       }
     //  this.reubicarTodo();
     }
 
     public cambiarImagenInicio(opcionesCasilla){
-      for (var index = 0; index < this.filas.length; ++index) {
-          this.filas[index].casillas[0].cambiarImagen(opcionesCasilla);
+      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+          this.filas[nroFila].casilla(0,0).cambiarImagen(opcionesCasilla);
         }
       //  this.reubicarTodo();
       }
 
     public cambiarImagenFin(opcionesCasilla){
-      for (var index = 0; index < this.filas.length; ++index) {
-        this.filas[index].casillas[this.filas[index].casillas.length-1].cambiarImagen(opcionesCasilla);
+      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+        this.filas[nroFila].casilla(0,this.filas[nroFila].casillas.length-1).cambiarImagen(opcionesCasilla);
   }
     //this.reubicarTodo();
 
