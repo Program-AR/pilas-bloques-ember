@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Repetir,Si} = bloques;
+var {Accion, Sensor, Repetir,Si,Procedimientos} = bloques;
 
 
 var EscenaAlien = (function (_super) {
@@ -217,7 +217,7 @@ var actividadAlien = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [],
+  subtareas: [Procedimientos],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
