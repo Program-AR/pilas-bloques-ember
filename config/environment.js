@@ -5,6 +5,8 @@ module.exports = function(environment) {
     modulePrefix: 'pilas-engine-bloques',
     environment: environment,
     baseURL: '/',
+    versionURL: 'http://bloques.pilas-engine.com.ar/version.json',
+    downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-0.7.0.zip',
     locationType: 'hash',
     EmberENV: {
       FEATURES: {
@@ -41,6 +43,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
   }
+
+  ENV.contentSecurityPolicy = {
+    'style-src': "'self' 'unsafe-inline'",
+  };
 
   return ENV;
 };

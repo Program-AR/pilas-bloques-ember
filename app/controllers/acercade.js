@@ -12,8 +12,5 @@ export default Ember.Controller.extend({
       var gui = window.requireNode('nw.gui');
       gui.Shell.openExternal("http://bloques.pilas-engine.com.ar");
     },
-
-    searchUpdates() {
-    }
   }
 });
