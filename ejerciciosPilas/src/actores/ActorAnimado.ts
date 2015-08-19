@@ -84,7 +84,11 @@ class ActorAnimado extends Actor {
     }
 
     avanzarAnimacion(){
-    	return this._imagen.avanzar();
+    	return !this._imagen.avanzar();
+    }
+
+    cantidadDeSprites(){
+        return this._imagen.animacion_en_curso.cuadros.length;
     }
 
     seguidillaHasta(nro){

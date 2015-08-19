@@ -7,13 +7,20 @@
  * 
  * Argumentos:
  *    distancia: la distancia deseada de recorrer
- *    destino: alternativamente se puede proveer un objeto con x e y
- *    cantPasos: Mayor cantidad de pasos, más tarda en llegar. 
- *        Puede pensarse como inversamente proporcional a la velocidad
+ *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino. 
+ *    direccion: Sino, se puede proveer una direccion de movimiento. (instancia de Direc)
+ *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
+ *               Representa la cantidad de ciclos que efectivamente se ejecutan.
+ *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento. 
+ *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
+ *               Como esto juega con la animacion, es preferible no tocarlo.
  */
 class MovimientoAnimado extends ComportamientoAnimado{
 	pasosRestantes;
 	vectorDeAvance;
+	vueltasSinEjecutar;
+	enQueVueltaEjecuto;
+
 	nombreAnimacion(){
         return 'correr';
     }
@@ -21,6 +28,8 @@ class MovimientoAnimado extends ComportamientoAnimado{
     alIniciar(){
 		super.alIniciar();
 		this.sanitizarArgumentos();
+		this.vueltasSinEjecutar = 0;
+		this.enQueVueltaEjecuto = Math.round(100/this.argumentos.velocidad);
 		this.pasosRestantes = this.argumentos.cantPasos;
 		this.vectorDeAvance = this.argumentos.direccion.destinyFrom(
 			{x:0,y:0},
@@ -28,13 +37,24 @@ class MovimientoAnimado extends ComportamientoAnimado{
     }
 
     doActualizar(){
- 		super.doActualizar();
-		this.darUnPaso();
- 		if (this.pasosRestantes <= 0){
+		var terminoAnimacion = super.doActualizar();
+    	if (this.pasosRestantes <= 0) {
 			this.receptor.x = this.argumentos.destino.x;
 			this.receptor.y = this.argumentos.destino.y;
- 			return true;
- 		}
+			return terminoAnimacion;
+		} else if (this.deboEjecutar()) { // para definir la velocidad de movimiento
+			this.darUnPaso();
+		}
+ 	}
+
+ 	deboEjecutar(){ // Aca entra en juego la velocidad
+		  if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto){
+			  this.vueltasSinEjecutar = 0;
+			  return true;
+		  } else {
+ 		      this.vueltasSinEjecutar += 1;
+			  return false;
+		  }
  	}
 
  	darUnPaso(){
@@ -49,7 +69,8 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct)) throw new ArgumentError("Direction should come as an instance of Direct");
 		this.argumentos.direccion = this.argumentos.direccion || this.calcularDireccion();
 		this.argumentos.destino = this.argumentos.destino || this.calcularDestino();
-		this.argumentos.cantPasos = this.argumentos.cantPasos || 20;
+		this.argumentos.cantPasos = this.argumentos.cantPasos || this.receptor.cantidadDeSprites();
+		this.argumentos.velocidad = this.argumentos.velocidad || 50;
     }
 
     calcularDistancia(){
@@ -63,7 +84,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
     }
 
     calcularDestino(){
-		this.argumentos.destino = this.argumentos.direccion.destinyFrom(this.receptor, this.argumentos.distancia);
+		return this.argumentos.direccion.destinyFrom(this.receptor, this.argumentos.distancia);
     }
 }
 
@@ -92,6 +113,7 @@ class ArgumentError implements Error{
 	name;
 	message;
 	constructor(description){
+		this.name = "ArgumentError";
 		this.message = description;
 	}
 }
