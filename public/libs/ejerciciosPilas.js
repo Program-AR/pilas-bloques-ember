@@ -22,8 +22,7 @@ var ActorAnimado = (function (_super) {
     __extends(ActorAnimado, _super);
     function ActorAnimado(x, y, opciones) {
         this.sanitizarOpciones(opciones);
-        var imagen = pilas.imagenes.cargar_animacion(this.opciones.grilla, this.opciones.cantColumnas, this.opciones.cantFilas);
-        _super.call(this, imagen, x, y);
+        _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
         this.detener_animacion();
@@ -55,6 +54,12 @@ var ActorAnimado = (function (_super) {
         //return actores.length > 0;
     };
     ;
+    ActorAnimado.prototype.cambiarImagen = function (nombre) {
+        this.imagen = this.animacionPara(nombre);
+    };
+    ActorAnimado.prototype.animacionPara = function (nombre) {
+        return pilas.imagenes.cargar_animacion(nombre, this.opciones.cantColumnas, this.opciones.cantFilas);
+    };
     ActorAnimado.prototype.tocandoFin = function () {
         return this.casillaActual().casillaASuDerecha() == undefined;
         // return  pilas.escena_actual().cuadricula.tocandoFin(this)
@@ -70,7 +75,10 @@ var ActorAnimado = (function (_super) {
         this._imagen.cargar_animacion(nombre);
     };
     ActorAnimado.prototype.avanzarAnimacion = function () {
-        return this._imagen.avanzar();
+        return !this._imagen.avanzar();
+    };
+    ActorAnimado.prototype.cantidadDeSprites = function () {
+        return this._imagen.animacion_en_curso.cuadros.length;
     };
     ActorAnimado.prototype.seguidillaHasta = function (nro) {
         var seguidilla = [];
@@ -105,8 +113,11 @@ var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4], 5);
-        this.definirAnimacion("apretar", [5, 6, 7], 3);
+        this.definirAnimacion("parado", [11, 12, 6, 12, 13], 5);
+        this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
+        this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 15);
+        this.definirAnimacion("apretar", [12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 12, 13], 3);
     }
     return AlienAnimado;
 })(ActorAnimado);
@@ -210,9 +221,20 @@ var Casilla = (function (_super) {
     Casilla.prototype.sos = function (nroF, nroC) {
         return nroF == this.nroFila && nroC == this.nroColumna;
     };
-    Casilla.prototype.cambiarImagen = function (img) {
-        this.imagen = img;
-        this.reubicate();
+    Casilla.prototype.cambiarImagen = function (nombre) {
+        // PARCHEEEEE
+        this.renacer(nombre);
+    };
+    Casilla.prototype.renacer = function (nombreImagen) {
+        // POR FAVOR YO FUTURO PERDONAME
+        var pos = this.cuadricula.casillas.indexOf(this);
+        this.cuadricula.casillas.slice(pos, pos + 1);
+        this.eliminar();
+        var grillaCasilla = this.cuadricula.opcionesCasilla.grilla;
+        this.cuadricula.opcionesCasilla.grilla = nombreImagen;
+        var nuevoYo = new Casilla(this.nroFila, this.nroColumna, this.cuadricula);
+        this.cuadricula.opcionesCasilla.grilla = grillaCasilla;
+        this.cuadricula.casillas.push(nuevoYo);
     };
     return Casilla;
 })(ActorAnimado);
@@ -519,22 +541,22 @@ var CuadriculaMultiple /*extends ActorAnimado*/ = (function () {
     }
     */
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenCasillas = function (opcionesCasilla) {
-        for (var index = 0; index < this.filas.length; ++index) {
-            for (var index2 = 0; index2 < this.filas[index].casillas.length; ++index2) {
-                this.filas[index].casillas[index2].cambiarImagen(opcionesCasilla);
+        for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+            for (var nroColumna = 0; nroColumna < this.filas[nroFila].casillas.length; ++nroColumna) {
+                this.filas[nroFila].casilla(0, nroColumna).cambiarImagen(opcionesCasilla);
             }
         }
         //  this.reubicarTodo();
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenInicio = function (opcionesCasilla) {
-        for (var index = 0; index < this.filas.length; ++index) {
-            this.filas[index].casillas[0].cambiarImagen(opcionesCasilla);
+        for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+            this.filas[nroFila].casilla(0, 0).cambiarImagen(opcionesCasilla);
         }
         //  this.reubicarTodo();
     };
     CuadriculaMultiple /*extends ActorAnimado*/.prototype.cambiarImagenFin = function (opcionesCasilla) {
-        for (var index = 0; index < this.filas.length; ++index) {
-            this.filas[index].casillas[this.filas[index].casillas.length - 1].cambiarImagen(opcionesCasilla);
+        for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
+            this.filas[nroFila].casilla(0, this.filas[nroFila].casillas.length - 1).cambiarImagen(opcionesCasilla);
         }
         //this.reubicarTodo();
     };
@@ -765,9 +787,9 @@ var MonoAnimado = (function (_super) {
     __extends(MonoAnimado, _super);
     function MonoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 10, cantFilas: 1 });
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7, 0, 0], 20);
-        this.definirAnimacion("parado", [0, 1, 2, 1, 0], 20);
-        this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 20);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8], 6);
+        this.definirAnimacion("parado", [0, 1, 2, 1, 0], 6);
+        this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 6);
     }
     return MonoAnimado;
 })(ActorAnimado);
@@ -1055,27 +1077,232 @@ var UnicornioAnimado = (function (_super) {
     return UnicornioAnimado;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/**
+ * @class ComportamientoAnimado
+ * Esta clase está pensada para ser usada de superclase,
+ * si es que se desea construir un comportamiento que se anime.
+ *
+ * @example
+ * Puede usarse directamente de esta manera:
+ *      actor.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'correr'});
+ * De esta manera el actor se animará sin hacer nada.
+ *
+ * @example
+ * Otra manera de usarlo es así:
+ *      actor.hacer_luego(Explotar);
+ *
+ * Donde Explotar es una subclase y tiene definidos los siguientes métodos:
+ *      nombreAnimacion(){
+ *			return 'explosion'
+ *		};
+ *      alTerminarAnimacion(){
+ *			this.receptor.eliminar();
+ *		}
+ *
+ * @example
+ * Otra manera de usarlo es independientemente de la animación
+ * (Para decidir uno cuándo termina el comportamiento)
+ *      actor.hacer_luego(MoverEnX,{destino: 50});
+ *
+ * Donde MoverEnX es subclase de ComportamientoAnimado y define:
+ * 		nombreAnimacion(){
+ *			return 'correr';
+ *		};
+ *		doActualizar(){
+ *			super.doActualizar();
+ *			this.receptor.x = this.receptor.x + 1;
+ *			if (this.receptor.x = this.argumentos.destino){
+ *				return true;
+ *			}
+ *		}
+ * Mientras, la animación se ejecuta en un loop hasta que doActualizar devuelve true.
+ */
+var ComportamientoAnimado = (function (_super) {
+    __extends(ComportamientoAnimado, _super);
+    function ComportamientoAnimado() {
+        _super.apply(this, arguments);
+    }
+    ComportamientoAnimado.prototype.iniciar = function (receptor) {
+        _super.prototype.iniciar.call(this, receptor);
+        this.secuenciaActualizar = new Array();
+        this.secuenciaActualizar.push(function () {
+            this.receptor.cargarAnimacion(this.nombreAnimacion());
+            this.alIniciar();
+            return true;
+        }.bind(this));
+        this.secuenciaActualizar.push(function () {
+            return this.doActualizar();
+        }.bind(this));
+        this.secuenciaActualizar.push(function () {
+            //this.receptor.cargarAnimacion(this.nombreAnimacionParado());
+            this.alTerminarAnimacion();
+            return true;
+        }.bind(this));
+    };
+    /** No se recomienda redefinir. Redefinir en su lugar el doActualizar */
+    ComportamientoAnimado.prototype.actualizar = function () {
+        if (this.secuenciaActualizar.length > 0) {
+            if (this.secuenciaActualizar[0]()) {
+                this.secuenciaActualizar.shift();
+            }
+        }
+        else {
+            return true;
+        }
+    };
+    /* Redefinir si corresponde animar el comportamiento. */
+    ComportamientoAnimado.prototype.nombreAnimacion = function () {
+        return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
+    };
+    /* Redefinir si corresponde */
+    ComportamientoAnimado.prototype.nombreAnimacionParado = function () {
+        return this.argumentos.nombreAnimacionParado || 'parado';
+    };
+    /* Redefinir si corresponde */
+    ComportamientoAnimado.prototype.alIniciar = function () {
+    };
+    /* Redefinir si corresponde */
+    ComportamientoAnimado.prototype.alTerminarAnimacion = function () {
+    };
+    /** Redefinir si es necesario.
+     *  Redefinir sólo este, no el actualizar original.
+     *  Es lo que hace efectivamente el comportamiento, además de animar.
+     *  Debe retornar true cuando corresponda terminar el comportamiento.
+     *  Por defecto termina cuando termina la animación.
+     *  Al redefinir siempre debe llamarse a super */
+    ComportamientoAnimado.prototype.doActualizar = function () {
+        return this.receptor.avanzarAnimacion();
+    };
+    return ComportamientoAnimado;
+})(Comportamiento);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoAnimado.ts"/>
+/**
+ * @class MovimientoAnimado
+ *
+ * Argumentos:
+ *    distancia: la distancia deseada de recorrer
+ *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino.
+ *    direccion: Sino, se puede proveer una direccion de movimiento. (instancia de Direc)
+ *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
+ *               Representa la cantidad de ciclos que efectivamente se ejecutan.
+ *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento.
+ *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
+ *               Como esto juega con la animacion, es preferible no tocarlo.
+ */
+var MovimientoAnimado = (function (_super) {
+    __extends(MovimientoAnimado, _super);
+    function MovimientoAnimado() {
+        _super.apply(this, arguments);
+    }
+    MovimientoAnimado.prototype.nombreAnimacion = function () {
+        return 'correr';
+    };
+    MovimientoAnimado.prototype.alIniciar = function () {
+        _super.prototype.alIniciar.call(this);
+        this.sanitizarArgumentos();
+        this.vueltasSinEjecutar = 0;
+        this.enQueVueltaEjecuto = Math.round(100 / this.argumentos.velocidad);
+        this.pasosRestantes = this.argumentos.cantPasos;
+        this.vectorDeAvance = this.argumentos.direccion.destinyFrom({ x: 0, y: 0 }, this.argumentos.distancia / this.argumentos.cantPasos);
+    };
+    MovimientoAnimado.prototype.doActualizar = function () {
+        var terminoAnimacion = _super.prototype.doActualizar.call(this);
+        if (this.pasosRestantes <= 0) {
+            this.receptor.x = this.argumentos.destino.x;
+            this.receptor.y = this.argumentos.destino.y;
+            return terminoAnimacion;
+        }
+        else if (this.deboEjecutar()) {
+            this.darUnPaso();
+        }
+    };
+    MovimientoAnimado.prototype.deboEjecutar = function () {
+        if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto) {
+            this.vueltasSinEjecutar = 0;
+            return true;
+        }
+        else {
+            this.vueltasSinEjecutar += 1;
+            return false;
+        }
+    };
+    MovimientoAnimado.prototype.darUnPaso = function () {
+        this.pasosRestantes -= 1;
+        this.receptor.x += this.vectorDeAvance.x;
+        this.receptor.y += this.vectorDeAvance.y;
+    };
+    MovimientoAnimado.prototype.sanitizarArgumentos = function () {
+        if (this.argumentos.distancia !== undefined && this.argumentos.destino !== undefined)
+            throw new ArgumentError("Distance or destiny shouldn't be both arguments");
+        this.argumentos.distancia = this.argumentos.distancia || this.calcularDistancia();
+        if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
+            throw new ArgumentError("Direction should come as an instance of Direct");
+        this.argumentos.direccion = this.argumentos.direccion || this.calcularDireccion();
+        this.argumentos.destino = this.argumentos.destino || this.calcularDestino();
+        this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
+        this.argumentos.velocidad = this.argumentos.velocidad || 20;
+    };
+    MovimientoAnimado.prototype.calcularDistancia = function () {
+        if (!this.argumentos.destino)
+            throw new ArgumentError("Distance or destiny missing");
+        return pilas.utils.distancia_entre_dos_actores(this.receptor, this.argumentos.destino);
+    };
+    MovimientoAnimado.prototype.calcularDireccion = function () {
+        if (!this.argumentos.destino)
+            throw new ArgumentError("Direction or destiny missing");
+        return new Direct(this.receptor, this.argumentos.destino);
+    };
+    MovimientoAnimado.prototype.calcularDestino = function () {
+        return this.argumentos.direccion.destinyFrom(this.receptor, this.argumentos.distancia);
+    };
+    return MovimientoAnimado;
+})(ComportamientoAnimado);
+var Direct = (function () {
+    function Direct(origin, destiny) {
+        if (!origin.x) {
+            this.versor = Direct.versorFor({ x: origin, y: destiny });
+        }
+        else {
+            this.versor = Direct.versorFor({ x: destiny.x - origin.x, y: destiny.y - origin.y });
+        }
+    }
+    Direct.versorFor = function (vector) {
+        var norm = Math.sqrt(Math.pow(vector.x, 2) + Math.pow(vector.y, 2));
+        return { x: vector.x / norm, y: vector.y / norm };
+    };
+    Direct.prototype.destinyFrom = function (point, distance) {
+        return { x: point.x + (this.versor.x * distance),
+            y: point.y + (this.versor.y * distance) };
+    };
+    return Direct;
+})();
+var ArgumentError = (function () {
+    function ArgumentError(description) {
+        this.name = "ArgumentError";
+        this.message = description;
+    }
+    return ArgumentError;
+})();
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "MovimientoAnimado.ts"/>
 var MovimientoEnCuadricula = (function (_super) {
     __extends(MovimientoEnCuadricula, _super);
     function MovimientoEnCuadricula() {
         _super.apply(this, arguments);
     }
-    MovimientoEnCuadricula.prototype.iniciar = function (receptor) {
-        _super.prototype.iniciar.call(this, receptor);
-        this.cuadricula = receptor.cuadricula;
-        this.movimiento = new this.claseQueImita({});
-        this.movimiento.iniciar(receptor);
-        this.movimiento.velocidad = this.velocidad();
+    MovimientoEnCuadricula.prototype.alIniciar = function () {
+        this.cuadricula = this.receptor.cuadricula;
+        this.argumentos.direccion = new Direct(this.vectorDireccion.x, this.vectorDireccion.y);
+        this.argumentos.distancia = this.distancia();
+        _super.prototype.alIniciar.call(this);
         this.estoyEmpezandoAMoverme = true;
     };
-    MovimientoEnCuadricula.prototype.actualizar = function () {
-        if (!this.puedoMovermeEnEsaDireccion() || this.movimiento.actualizar()) {
+    MovimientoEnCuadricula.prototype.doActualizar = function () {
+        if (!this.puedoMovermeEnEsaDireccion() || _super.prototype.doActualizar.call(this)) {
             return true;
         }
     };
-    //    claseQueImita(){
-    //        // Template Method. Las subclases deben devolver una clase de comportamiento.
-    //    }
     MovimientoEnCuadricula.prototype.puedoMovermeEnEsaDireccion = function () {
         if (this.estoyEmpezandoAMoverme) {
             this.estoyEmpezandoAMoverme = false;
@@ -1083,15 +1310,14 @@ var MovimientoEnCuadricula = (function (_super) {
         }
         return true;
     };
-    MovimientoEnCuadricula.prototype.velocidad = function () {
-        // Template Method. Devuelve la velocidad vertical ú horizontal según corresponda 
+    MovimientoEnCuadricula.prototype.distancia = function () {
+        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda 
     };
-    // El nro 0.05 depende del nro 0.05 establecido en CaminaBase
-    MovimientoEnCuadricula.prototype.velocidadHorizontal = function () {
-        return (this.cuadricula.anchoCasilla() + this.cuadricula.separacion()) * 0.05;
+    MovimientoEnCuadricula.prototype.distanciaHorizontal = function () {
+        return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
     };
-    MovimientoEnCuadricula.prototype.velocidadVertical = function () {
-        return (this.cuadricula.altoCasilla() + this.cuadricula.separacion()) * 0.05;
+    MovimientoEnCuadricula.prototype.distanciaVertical = function () {
+        return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
     };
     MovimientoEnCuadricula.prototype.verificarDireccion = function (casilla) {
         var proximaCasilla = this.proximaCasilla(casilla);
@@ -1110,12 +1336,12 @@ var MovimientoEnCuadricula = (function (_super) {
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
     };
     return MovimientoEnCuadricula;
-})(Comportamiento);
+})(MovimientoAnimado);
 var MoverACasillaDerecha = (function (_super) {
     __extends(MoverACasillaDerecha, _super);
     function MoverACasillaDerecha() {
         _super.apply(this, arguments);
-        this.claseQueImita = CaminaDerecha;
+        this.vectorDireccion = { x: 1, y: 0 };
     }
     MoverACasillaDerecha.prototype.proximaCasilla = function (casilla) {
         return casilla.casillaASuDerecha();
@@ -1123,8 +1349,8 @@ var MoverACasillaDerecha = (function (_super) {
     MoverACasillaDerecha.prototype.textoAMostrar = function () {
         return "la derecha";
     };
-    MoverACasillaDerecha.prototype.velocidad = function () {
-        return this.velocidadHorizontal();
+    MoverACasillaDerecha.prototype.distancia = function () {
+        return this.distanciaHorizontal();
     };
     return MoverACasillaDerecha;
 })(MovimientoEnCuadricula);
@@ -1132,7 +1358,7 @@ var MoverACasillaArriba = (function (_super) {
     __extends(MoverACasillaArriba, _super);
     function MoverACasillaArriba() {
         _super.apply(this, arguments);
-        this.claseQueImita = CaminaArriba;
+        this.vectorDireccion = { x: 0, y: 1 };
     }
     MoverACasillaArriba.prototype.proximaCasilla = function (casilla) {
         return casilla.casillaDeArriba();
@@ -1140,8 +1366,8 @@ var MoverACasillaArriba = (function (_super) {
     MoverACasillaArriba.prototype.textoAMostrar = function () {
         return "arriba";
     };
-    MoverACasillaArriba.prototype.velocidad = function () {
-        return this.velocidadVertical();
+    MoverACasillaArriba.prototype.distancia = function () {
+        return this.distanciaVertical();
     };
     return MoverACasillaArriba;
 })(MovimientoEnCuadricula);
@@ -1149,7 +1375,7 @@ var MoverACasillaAbajo = (function (_super) {
     __extends(MoverACasillaAbajo, _super);
     function MoverACasillaAbajo() {
         _super.apply(this, arguments);
-        this.claseQueImita = CaminaAbajo;
+        this.vectorDireccion = { x: 0, y: -1 };
     }
     MoverACasillaAbajo.prototype.proximaCasilla = function (casilla) {
         return casilla.casillaDeAbajo();
@@ -1157,8 +1383,8 @@ var MoverACasillaAbajo = (function (_super) {
     MoverACasillaAbajo.prototype.textoAMostrar = function () {
         return "abajo";
     };
-    MoverACasillaAbajo.prototype.velocidad = function () {
-        return this.velocidadVertical();
+    MoverACasillaAbajo.prototype.distancia = function () {
+        return this.distanciaVertical();
     };
     return MoverACasillaAbajo;
 })(MovimientoEnCuadricula);
@@ -1166,7 +1392,7 @@ var MoverACasillaIzquierda = (function (_super) {
     __extends(MoverACasillaIzquierda, _super);
     function MoverACasillaIzquierda() {
         _super.apply(this, arguments);
-        this.claseQueImita = CaminaIzquierda;
+        this.vectorDireccion = { x: -1, y: 0 };
     }
     MoverACasillaIzquierda.prototype.proximaCasilla = function (casilla) {
         return casilla.casillaASuIzquierda();
@@ -1174,8 +1400,8 @@ var MoverACasillaIzquierda = (function (_super) {
     MoverACasillaIzquierda.prototype.textoAMostrar = function () {
         return "la izquierda";
     };
-    MoverACasillaIzquierda.prototype.velocidad = function () {
-        return this.velocidadHorizontal();
+    MoverACasillaIzquierda.prototype.distancia = function () {
+        return this.distanciaHorizontal();
     };
     return MoverACasillaIzquierda;
 })(MovimientoEnCuadricula);
@@ -1187,8 +1413,9 @@ var MoverTodoAIzquierda = (function (_super) {
     MoverTodoAIzquierda.prototype.proximaCasilla = function (casilla) {
         return this.cuadricula.casilla(this.receptor.casillaActual().nroFila, 0);
     };
-    MoverTodoAIzquierda.prototype.velocidad = function () {
-        return this.velocidadHorizontal() * this.receptor.casillaActual().nroColumna;
+    MoverTodoAIzquierda.prototype.distancia = function () {
+        return this.distanciaHorizontal()
+            * this.receptor.casillaActual().nroColumna;
     };
     return MoverTodoAIzquierda;
 })(MoverACasillaIzquierda);
@@ -1200,8 +1427,9 @@ var MoverTodoADerecha = (function (_super) {
     MoverTodoADerecha.prototype.proximaCasilla = function (casilla) {
         return this.cuadricula.casilla(this.receptor.casillaActual().nroFila, this.cuadricula.cantColumnas - 1);
     };
-    MoverTodoADerecha.prototype.velocidad = function () {
-        return this.velocidadHorizontal() * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna);
+    MoverTodoADerecha.prototype.distancia = function () {
+        return this.distanciaHorizontal()
+            * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna);
     };
     return MoverTodoADerecha;
 })(MoverACasillaDerecha);
@@ -1213,8 +1441,9 @@ var MoverTodoArriba = (function (_super) {
     MoverTodoArriba.prototype.proximaCasilla = function (casilla) {
         return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna, 0);
     };
-    MoverTodoArriba.prototype.velocidad = function () {
-        return this.velocidadVertical() * this.receptor.casillaActual().nroFila;
+    MoverTodoArriba.prototype.distancia = function () {
+        return this.distanciaVertical()
+            * this.receptor.casillaActual().nroFila;
     };
     return MoverTodoArriba;
 })(MoverACasillaArriba);
@@ -1226,8 +1455,9 @@ var MoverTodoAbajo = (function (_super) {
     MoverTodoAbajo.prototype.proximaCasilla = function (casilla) {
         return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna, this.cuadricula.cantFilas - 1);
     };
-    MoverTodoAbajo.prototype.velocidad = function () {
-        return this.velocidadVertical() * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
+    MoverTodoAbajo.prototype.distancia = function () {
+        return this.distanciaVertical()
+            * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
     };
     return MoverTodoAbajo;
 })(MoverACasillaAbajo);
@@ -1330,105 +1560,6 @@ var MoverACasillaAbajoEsparsa = (function (_super) {
     };
     return MoverACasillaAbajoEsparsa;
 })(MoverACasillaAbajo);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/**
- * @class ComportamientoAnimado
- * Esta clase está pensada para ser usada de superclase,
- * si es que se desea construir un comportamiento que se anime.
- *
- * @example
- * Puede usarse directamente de esta manera:
- *      actor.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'correr'});
- * De esta manera el actor se animará sin hacer nada.
- *
- * @example
- * Otra manera de usarlo es así:
- *      actor.hacer_luego(Explotar);
- *
- * Donde Explotar es una subclase y tiene definidos los siguientes métodos:
- *      nombreAnimacion(){
- *			return 'explosion'
- *		};
- *      alTerminarAnimacion(){
- *			this.receptor.eliminar();
- *		}
- *
- * @example
- * Otra manera de usarlo es independientemente de la animación
- * (Para decidir uno cuándo termina el comportamiento)
- *      actor.hacer_luego(MoverEnX,{destino: 50});
- *
- * Donde MoverEnX es subclase de ComportamientoAnimado y define:
- * 		nombreAnimacion(){
- *			return 'correr';
- *		};
- *		doActualizar(){
- *			super.doActualizar();
- *			this.receptor.x = this.receptor.x + 1;
- *			if (this.receptor.x = this.argumentos.destino){
- *				return true;
- *			}
- *		}
- * Mientras, la animación se ejecuta en un loop hasta que doActualizar devuelve true.
- */
-var ComportamientoAnimado = (function (_super) {
-    __extends(ComportamientoAnimado, _super);
-    function ComportamientoAnimado() {
-        _super.apply(this, arguments);
-    }
-    ComportamientoAnimado.prototype.iniciar = function (receptor) {
-        _super.prototype.iniciar.call(this, receptor);
-        this.secuenciaActualizar = new Array();
-        this.secuenciaActualizar.push(function () {
-            this.receptor.cargarAnimacion(this.nombreAnimacion());
-            this.alIniciar();
-            return true;
-        }.bind(this));
-        this.secuenciaActualizar.push(function () {
-            return this.doActualizar();
-        }.bind(this));
-        this.secuenciaActualizar.push(function () {
-            this.receptor.cargarAnimacion(this.nombreAnimacionParado());
-            this.alTerminarAnimacion();
-            return true;
-        }.bind(this));
-    };
-    /** No se recomienda redefinir. Redefinir en su lugar el doActualizar */
-    ComportamientoAnimado.prototype.actualizar = function () {
-        if (this.secuenciaActualizar.length > 0) {
-            if (this.secuenciaActualizar[0]()) {
-                this.secuenciaActualizar.shift();
-            }
-        }
-        else {
-            return true;
-        }
-    };
-    /* Redefinir si corresponde animar el comportamiento. */
-    ComportamientoAnimado.prototype.nombreAnimacion = function () {
-        return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
-    };
-    /* Redefinir si corresponde */
-    ComportamientoAnimado.prototype.nombreAnimacionParado = function () {
-        return this.argumentos.nombreAnimacionParado || 'parado';
-    };
-    /* Redefinir si corresponde */
-    ComportamientoAnimado.prototype.alIniciar = function () {
-    };
-    /* Redefinir si corresponde */
-    ComportamientoAnimado.prototype.alTerminarAnimacion = function () {
-    };
-    /** Redefinir si es necesario.
-     *  Redefinir sólo este, no el actualizar original.
-     *  Es lo que hace efectivamente el comportamiento, además de animar.
-     *  Debe retornar true cuando corresponda terminar el comportamiento.
-     *  Por defecto termina cuando termina la animación.
-     *  Al redefinir siempre debe llamarse a super */
-    ComportamientoAnimado.prototype.doActualizar = function () {
-        return this.receptor.avanzarAnimacion();
-    };
-    return ComportamientoAnimado;
-})(Comportamiento);
 /// <reference path="ComportamientoAnimado.ts"/>
 var ComportamientoDeAltoOrden = (function (_super) {
     __extends(ComportamientoDeAltoOrden, _super);
@@ -1565,8 +1696,7 @@ Caso Contrario:
     El personaje principal ejecuta un mensaje de error.
 
 La escena que lo utiliza debe tener definido
-personajePrincipal()
-
+automata
 
 */
 var ComportamientoColision = (function (_super) {
@@ -1594,7 +1724,7 @@ var ComportamientoColision = (function (_super) {
             return true;
         }
         else {
-            pilas.escena_actual().personajePrincipal().decir(this.argumentos['mensajeError']);
+            pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
             return false;
         }
     };
@@ -1733,13 +1863,13 @@ var AlienInicial = (function (_super) {
     AlienInicial.prototype.iniciar = function () {
         this.estado = undefined;
         this.fondo = new Fondo('fondos.alien-inicial.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, -200, 1, 4, { alto: 25, ancho: (pilas.opciones.ancho * 0.9) }, { grilla: 'invisible.png', cantColumnas: 1 });
-        this.fondoCuadricula = new Actor("camino-alien-boton.png", 0, this.cuadricula.y);
+        this.cuadricula = new Cuadricula(-25, -200, 1, 4, { alto: 25, ancho: (pilas.opciones.ancho * 0.8) }, { grilla: 'invisible.png', cantColumnas: 1 });
+        this.fondoCuadricula = new Actor("camino-alien-boton.png", this.cuadricula.x, this.cuadricula.y);
         this.fondoCuadricula.ancho = this.cuadricula.ancho;
         this.automata = new AlienAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
         this.boton = new BotonAnimado(0, 0);
-        this.boton.derecha = this.cuadricula.derecha + 10;
+        this.boton.derecha = this.cuadricula.derecha + 25;
         this.boton.abajo = this.cuadricula.arriba;
     };
     AlienInicial.prototype.personajePrincipal = function () {
@@ -3013,7 +3143,7 @@ var LightbotScratch = (function (_super) {
     LightbotScratch.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
         //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla_base.png',
+        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, alto: 50, ancho: 50 });
         //se cargan las luces
         var cant = 0;
@@ -3042,8 +3172,6 @@ var LightbotScratch = (function (_super) {
     LightbotScratch.prototype.agregarLuz = function (fila, columna) {
         var casillaLuminosa = new CasillaConLuz(0, 0);
         this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
-        casillaLuminosa.escala_x = .50;
-        casillaLuminosa.escala_y = .50;
         this.objetos.push(casillaLuminosa);
     };
     LightbotScratch.prototype.prenderLuz = function () {
@@ -3069,7 +3197,7 @@ var ErrorEnEstados = (function () {
         this.mensajeError = mensaje;
     }
     ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        pilas.escena_actual().personajePrincipal().decir(this.mensajeError);
+        pilas.escena_actual().automata.decir(this.mensajeError);
         console.log(estadoAnterior.identifier);
         return estadoAnterior;
     };
@@ -3088,7 +3216,7 @@ var Estado = (function () {
             pilas.escena_actual().estado = this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
         }
         else {
-            pilas.escena_actual().personajePrincipal().decir("¡Ups, ésa no era la opción correcta!");
+            pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
         }
     };
     Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
