@@ -10,7 +10,7 @@ class LightbotScratch extends Base {
 
         this.cuadricula = new Cuadricula(0,0,5,6,
             {separacionEntreCasillas: 5},
-            {grilla: 'casilla_base.png',
+            {grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, alto: 50, ancho:50});
 
 
