@@ -46,8 +46,6 @@ class LightbotScratch extends Base {
     agregarLuz(fila,columna) {
         var casillaLuminosa = new CasillaConLuz(0,0);
         this.cuadricula.agregarActor(casillaLuminosa,fila,columna);
-        casillaLuminosa.escala_x = .50;
-        casillaLuminosa.escala_y = .50;
         this.objetos.push(casillaLuminosa);
     }
 

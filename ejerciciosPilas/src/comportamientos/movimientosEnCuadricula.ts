@@ -1,28 +1,25 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "MovimientoAnimado.ts"/>
 
-class MovimientoEnCuadricula extends Comportamiento {
+class MovimientoEnCuadricula extends MovimientoAnimado {
     cuadricula;
-    movimiento;
+    vectorDireccion;
     estoyEmpezandoAMoverme;
-    claseQueImita;
     
-    iniciar(receptor){
-        super.iniciar(receptor);
-        this.cuadricula = receptor.cuadricula;
-        this.movimiento = new this.claseQueImita({});
-        this.movimiento.iniciar(receptor);
-        this.movimiento.velocidad = this.velocidad();
+    alIniciar(){
+        this.cuadricula = this.receptor.cuadricula;
+        this.argumentos.direccion = new Direct(this.vectorDireccion.x,this.vectorDireccion.y);
+        this.argumentos.distancia = this.distancia();
+        super.alIniciar();
         this.estoyEmpezandoAMoverme = true;
     }
-    actualizar(){
-        if (!this.puedoMovermeEnEsaDireccion() || this.movimiento.actualizar()){
-            
+
+    doActualizar(){
+        if (!this.puedoMovermeEnEsaDireccion() || super.doActualizar()){
             return true;
         }
     }
-//    claseQueImita(){
-//        // Template Method. Las subclases deben devolver una clase de comportamiento.
-//    }
+
     puedoMovermeEnEsaDireccion(){
         if (this.estoyEmpezandoAMoverme){
             this.estoyEmpezandoAMoverme = false;
@@ -31,16 +28,15 @@ class MovimientoEnCuadricula extends Comportamiento {
         return true;
     }
     
-    velocidad(){
-        // Template Method. Devuelve la velocidad vertical ú horizontal según corresponda 
+    distancia(){
+        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda 
     }
     
-    // El nro 0.05 depende del nro 0.05 establecido en CaminaBase
-    velocidadHorizontal(){
-        return (this.cuadricula.anchoCasilla() + this.cuadricula.separacion()) * 0.05;
+    distanciaHorizontal(){
+        return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
     }
-    velocidadVertical(){
-        return (this.cuadricula.altoCasilla() + this.cuadricula.separacion()) * 0.05;
+    distanciaVertical(){
+        return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
     }
     verificarDireccion(casilla){
         var proximaCasilla = this.proximaCasilla(casilla);
@@ -62,7 +58,7 @@ class MovimientoEnCuadricula extends Comportamiento {
 }
 
 class MoverACasillaDerecha extends MovimientoEnCuadricula {
-    claseQueImita = CaminaDerecha;
+    vectorDireccion = { x: 1, y: 0 };
     
     proximaCasilla(casilla){
         return casilla.casillaASuDerecha();
@@ -70,13 +66,13 @@ class MoverACasillaDerecha extends MovimientoEnCuadricula {
     textoAMostrar(){
         return "la derecha";
     }
-    velocidad(){
-        return this.velocidadHorizontal();
+    distancia(){
+        return this.distanciaHorizontal();
     }
 }
 
 class MoverACasillaArriba extends MovimientoEnCuadricula{
-    claseQueImita = CaminaArriba;
+    vectorDireccion = { x: 0, y: 1 };
 
     proximaCasilla(casilla){
         return casilla.casillaDeArriba();
@@ -84,13 +80,13 @@ class MoverACasillaArriba extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "arriba";
     }
-    velocidad(){
-        return this.velocidadVertical();
+    distancia(){
+        return this.distanciaVertical();
     }
 }
 
 class MoverACasillaAbajo extends MovimientoEnCuadricula{
-    claseQueImita = CaminaAbajo;
+    vectorDireccion = { x: 0, y: -1 };
 
     proximaCasilla(casilla){
         return casilla.casillaDeAbajo();
@@ -98,13 +94,13 @@ class MoverACasillaAbajo extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "abajo";
     }
-    velocidad(){
-        return this.velocidadVertical();
+    distancia(){
+        return this.distanciaVertical();
     }
 }
 
 class MoverACasillaIzquierda extends MovimientoEnCuadricula{
-    claseQueImita = CaminaIzquierda;
+    vectorDireccion = { x: -1, y: 0 };
 
     proximaCasilla(casilla){
         return casilla.casillaASuIzquierda();
@@ -112,8 +108,8 @@ class MoverACasillaIzquierda extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "la izquierda";
     }
-    velocidad(){
-        return this.velocidadHorizontal();
+    distancia(){
+        return this.distanciaHorizontal();
     }
 }
 
@@ -121,8 +117,9 @@ class MoverTodoAIzquierda extends MoverACasillaIzquierda{
    proximaCasilla(casilla){
         return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,0);
    }
-   velocidad(){
-        return this.velocidadHorizontal() * this.receptor.casillaActual().nroColumna;
+   distancia(){
+        return this.distanciaHorizontal()
+               * this.receptor.casillaActual().nroColumna;
    }
 }
 
@@ -130,8 +127,9 @@ class MoverTodoADerecha extends MoverACasillaDerecha{
    proximaCasilla(casilla){
         return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,this.cuadricula.cantColumnas-1);
    }
-   velocidad(){
-        return this.velocidadHorizontal() * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna );
+   distancia(){
+        return this.distanciaHorizontal() 
+               * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna );
    }
 }
 
@@ -139,8 +137,9 @@ class MoverTodoArriba extends MoverACasillaArriba{
    proximaCasilla(casilla){
         return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,0);
    }
-   velocidad(){
-        return this.velocidadVertical() * this.receptor.casillaActual().nroFila;
+   distancia(){
+        return this.distanciaVertical()
+               * this.receptor.casillaActual().nroFila;
    }
 }
 
@@ -148,7 +147,8 @@ class MoverTodoAbajo extends MoverACasillaAbajo{
    proximaCasilla(casilla){
         return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,this.cuadricula.cantFilas-1);
    }
-   velocidad(){
-        return this.velocidadVertical() * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
+   distancia(){
+        return this.distanciaVertical()
+               * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
    }
 }

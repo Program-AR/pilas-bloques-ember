@@ -69,8 +69,8 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct)) throw new ArgumentError("Direction should come as an instance of Direct");
 		this.argumentos.direccion = this.argumentos.direccion || this.calcularDireccion();
 		this.argumentos.destino = this.argumentos.destino || this.calcularDestino();
-		this.argumentos.cantPasos = this.argumentos.cantPasos || this.receptor.cantidadDeSprites();
-		this.argumentos.velocidad = this.argumentos.velocidad || 50;
+		this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
+		this.argumentos.velocidad = this.argumentos.velocidad || 20;
     }
 
     calcularDistancia(){

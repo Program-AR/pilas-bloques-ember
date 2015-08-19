@@ -9,7 +9,7 @@ class ErrorEnEstados{
 
   realizarAccion(comportamiento,estadoAnterior){
 
-      pilas.escena_actual().personajePrincipal().decir(this.mensajeError);
+      pilas.escena_actual().automata.decir(this.mensajeError);
       console.log(estadoAnterior.identifier)
 
 
@@ -36,7 +36,7 @@ class Estado{
     if(/*pilas.escena_actual().estado=this.transiciones[idComportamiento]*/this.transiciones[idComportamiento]){
         pilas.escena_actual().estado=this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
     }else{
-      pilas.escena_actual().personajePrincipal().decir("¡Ups, ésa no era la opción correcta!");
+      pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
     }
 
   }
