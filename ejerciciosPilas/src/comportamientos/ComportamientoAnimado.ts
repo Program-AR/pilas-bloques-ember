@@ -57,7 +57,7 @@ class ComportamientoAnimado extends Comportamiento {
         	return this.doActualizar(); 
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
-        	this.receptor.cargarAnimacion(this.nombreAnimacionParado());
+        	//this.receptor.cargarAnimacion(this.nombreAnimacionParado());
         	this.alTerminarAnimacion();
         	return true;
    		}.bind(this));	

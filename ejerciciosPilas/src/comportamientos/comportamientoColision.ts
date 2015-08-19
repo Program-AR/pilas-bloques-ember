@@ -8,8 +8,7 @@ Caso Contrario:
 	El personaje principal ejecuta un mensaje de error.
 
 La escena que lo utiliza debe tener definido
-personajePrincipal()
-
+automata
 
 */
 
@@ -34,7 +33,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 				this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
 				return true;
     }else{
-    		pilas.escena_actual().personajePrincipal().decir(this.argumentos['mensajeError']);
+    		pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
 				return false;
    	}
   }
