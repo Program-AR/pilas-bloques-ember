@@ -44,5 +44,9 @@ module.exports = function(environment) {
   if (environment === 'production') {
   }
 
+  ENV.contentSecurityPolicy = {
+    'style-src': "'self' 'unsafe-inline'",
+  };
+
   return ENV;
 };
