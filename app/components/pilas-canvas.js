@@ -17,6 +17,8 @@ export default Ember.Component.extend({
                 'fondos.estrellas.png',
                 'fondos.obrero.png',
                 'fondos.nubes.png',
+                'fondo.elPlanetaDeNano.png',
+                'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
                 'perro_cohete.png',
                 'hueso.png',
@@ -64,9 +66,18 @@ export default Ember.Component.extend({
                 'casillas.violeta.png',
                 'fondos.selva.png',
                 'banana-1.png',
+                'manzana-v2.png',
                 'fondos.futbolRobots.png',
                 'casilla.futbolRobots1.png',
-                'casilla.futbolRobots2.png'
+                'casilla.futbolRobots2.png',
+                'fondos.elPlanetaDeNano.png',
+                'casillas.elPlanetaDeNano.png',
+                'fondos.alien-inicial.png',
+                'casillas.alien_inicial.png',
+                'botonAnimado.png',
+                'camino-alien-boton.png',
+                'iconos.botonRojo.png',
+                'casilla.grisoscuro.png'
                 ]
       });
 
