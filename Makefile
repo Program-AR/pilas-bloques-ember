@@ -54,36 +54,39 @@ comandos:
 
 
 iniciar:
+	@echo "${G}instalando dependencias ...${N}"
 	npm install
 	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
-	rm -f pilasweb blockly ejerciciosPilas	
+	@echo "${G}vinculando depenrencias ...${N}"
+	rm -f pilasweb blockly ejerciciosPilas
 	ln -s ../pilasweb
 	ln -s ../blockly
 	ln -s ../ejerciciosPilas
 
 bajar_dependencias:
-	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
-	cd ..; git clone https://github.com/Program-AR/blockly.git
-	cd ..; git clone https://github.com/google/closure-library.git
-	cd ..; git clone https://github.com/Program-AR/ejerciciosPilas.git
+	python scripts/bajar_dependencias.py
 
 actualizar_pilas:
+	@echo "${G}actualizando pilasweb${N}"
+	@echo " ${L}(esto puede demorar)${N}"
 	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	mkdir -p public/libs/
 	make copiar_pilasweb
-	
+
 copiar_pilasweb:
+	@echo "${G}copiando pilasweb${N}"
 	cd pilasweb; make build; cd ..
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
-actualizar_ejercicios_pilas: 
-	cd ejerciciosPilas; git pull; npm install; cd ..
+actualizar_ejercicios_pilas:
+	@echo "${G}actualizando ejercicios de pilas${N}"
+	cd ejerciciosPilas; git pull; npm install; grunt; cd ..
 	make copiar_ejercicios_pilas
-	
+
 copiar_ejercicios_pilas:
 	cd ejerciciosPilas; grunt typescript pilas -f; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
@@ -175,11 +178,11 @@ subir_version:
 	git push --tags
 
 to_production:
-	@echo "pasando a modo produccion".
+	@echo "${G}pasando a modo produccion${N}"
 	cp public/package.produccion.json public/package.json
 
 to_develop:
-	@echo "pasando a modo develop".
+	@echo "${G}pasando a modo desarrollo.${N}"
 	cp public/package.desarrollo.json public/package.json
 
 _compile_osx:
@@ -223,4 +226,4 @@ upload_to_dropbox:
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 
-.PHONY: dist
+.PHONY: dist bajar_dependencias
