@@ -5,7 +5,7 @@ var http = window.requireNode('http');
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.7.2";
+        return "0.7.3";
     },
 
     obtener_version_del_servidor() {
