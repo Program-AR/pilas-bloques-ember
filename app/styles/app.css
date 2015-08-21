@@ -506,3 +506,18 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
   border: 2px solid rgb(123, 123, 123);
   margin: 20px;
 }
+
+
+.page-container li {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+}
+
+.pilas-update {
+  display: inline-block;
+}
+
+
+.contenedor-acercade {
+}
