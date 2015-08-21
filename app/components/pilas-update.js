@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: ['pilas-update'],
   buscando: false,
   version: Ember.inject.service(),
   mensaje: "",
