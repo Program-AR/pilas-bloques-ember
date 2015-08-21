@@ -5,7 +5,7 @@ var http = window.requireNode('http');
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.7.3";
+        return "0.7.4";
     },
 
     obtener_version_del_servidor() {
@@ -31,7 +31,7 @@ export default Ember.Service.extend({
     descargarActualizacion(version) {
       let url = ENV.downloadURL.replace(/VERSION/gi, version);
 
-      function download(url, callback, encoding) {
+      function download(url) {
         return new Ember.RSVP.Promise((success, reject) => {
 
           var request = http.get(url, function(response) {
