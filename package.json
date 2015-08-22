@@ -22,9 +22,9 @@
   "window": {
     "title": "pilas-bloques",
     "width": 850,
-    "height": 570,
+    "height": 600,
     "min_width": 850,
-    "min_height": 570,
+    "min_height": 600,
     "position": "center"
   },
   "devDependencies": {
