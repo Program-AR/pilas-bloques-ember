@@ -140,14 +140,20 @@ span.url {
 
 .header-right {
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: -1px;
+  top: -1px;
+  padding-top: 12px;
+  padding-right: 27px;
+  background-image: url('../imagenes/beta.png');
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
 .header-button {
   color: gray;
   border: 0;
   background-color: white;
+  z-index: 4000;
 }
 
 .header-button:hover {
@@ -476,6 +482,7 @@ h1 {
   box-shadow: none !important;
   border-radius: 0px !important;
   border-bottom: 3px solid rgb(219, 219, 219);
+  position: fixed !important;
 }
 
 .navbar-nav > li > a {
