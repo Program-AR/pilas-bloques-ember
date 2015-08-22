@@ -29,3 +29,4 @@ dist_website
 webkitbuilds
 
 log_descompresion.log
+*.pyc
