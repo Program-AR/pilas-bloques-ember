@@ -15,100 +15,103 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 
 */
 
+/// <reference path = "../actores/cuadriculaEsparsa.ts"/>
 
-class CuadriculaMultiple /*extends ActorAnimado*/{
-    filas;
-    diccionarioFilaObjeto;
-    nroFila;
-    constructor(definidorColumnas,altoCasilla){
-    	//super(0,0,10);
-        this.filas=[];
-        this.inicializar(definidorColumnas,altoCasilla)
-    }
+class CuadriculaMultiple extends CuadriculaEsparsa{
 
-    private inicializar(definidorColumnas,altoCasilla){
-        while(definidorColumnas.hayProxColumnas()){
-            this.filas.push(new Fila(this,definidorColumnas.nroFila(),definidorColumnas.dameProxColumnas(),altoCasilla));
+    pmatrix;
+    constructor(definidor,x,y,opcionesCuadricula,opcionesCasilla){
+      var max = definidor.dameMaximo();
+      this.pmatrix=[];
+      while(definidor.hayProxFila()){
+        var fila=[];
+        var cantColumnas=definidor.dameProxFila();
+        var cant=0;
+        while(cant<cantColumnas){
+          fila.push('T');
+          cant++;
         }
+        while(cant<max){
+          fila.push('F');
+          cant++;
+        }
+        this.pmatrix.push(fila);
+      }
+      super(x,y,this.pmatrix.length,max,opcionesCuadricula,opcionesCasilla,this.pmatrix);
     }
 
-/*
-    ino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
-    for(var index=0;index<cuadricula.casillas.length-1;index++){
-      cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
+  public cambiarImagenCasillas(imagenNueva){
+    for (var nroFila = 0; nroFila < this.pmatrix.length; ++nroFila) {
+      for (var nroColumna = 0; nroColumna < this.pmatrix[0].length; ++nroColumna){
+        if(this.casilla(nroFila,nroColumna)){
+          this.casilla(nroFila,nroColumna).cambiarImagen(imagenNueva);
+        }
+      }
     }
-      cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
-    //solo por reescalado
+
   }
 
-  */
+  public cambiarImagenInicio(nuevaImagen){
+    for (var nroFila = 0; nroFila < this.pmatrix.length; ++nroFila) {
+      this.casilla(nroFila,0).cambiarImagen(nuevaImagen);
 
-    /*public reubicarTodo(){
-      for(var index =0; index < this.filas.length;++index){
-        this.filas[index].aplicarATodasCasillas(function (casilla) {casilla.reubicate()});
       }
 
     }
-    */
 
-    public cambiarImagenCasillas(opcionesCasilla){
-      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
-        for (var nroColumna = 0; nroColumna < this.filas[nroFila].casillas.length; ++nroColumna){
-          this.filas[nroFila].casilla(0,nroColumna).cambiarImagen(opcionesCasilla);
-        }
-      }
-    //  this.reubicarTodo();
+  public cambiarImagenFin(nuevaImagen){
+    for (var nroFila = 0; nroFila < this.pmatrix.length; ++nroFila) {
+      this.casilla(nroFila,this.dameIndexUltimaPosicion(nroFila)).cambiarImagen(nuevaImagen);
     }
-
-    public cambiarImagenInicio(opcionesCasilla){
-      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
-          this.filas[nroFila].casilla(0,0).cambiarImagen(opcionesCasilla);
-        }
-      //  this.reubicarTodo();
-      }
-
-    public cambiarImagenFin(opcionesCasilla){
-      for (var nroFila = 0; nroFila < this.filas.length; ++nroFila) {
-        this.filas[nroFila].casilla(0,this.filas[nroFila].casillas.length-1).cambiarImagen(opcionesCasilla);
   }
-    //this.reubicarTodo();
 
-    }
+  private dameIndexUltimaPosicion(nroFila){
+    var index=0;
+    while(this.pmatrix[nroFila][index+1]=='T'){
+    index+=1;}
+    return index;
+  }
 
 
-    public completarConObjetosRandom(arrayClases){
-    	arrayClases = new conjuntoClases(arrayClases)
-    	for (var i =0; i < this.filas.length ; i+=1){
-    	this.filas[i].completarConObjetosRandom(arrayClases);
-    	//this.filas.foreach(function(fila) {fila.completarConObjetosRandom(arrayClases)});
-    	}
-    }
+      public completarConObjetosRandom(arrayClases){
+        arrayClases = new conjuntoClases(arrayClases)
+        for (var i =0; i < this.pmatrix.length ; i+=1){
+        this.completarFilaConObjetosRandom(arrayClases,i);
+        //this.filas.foreach(function(fila) {fila.completarConObjetosRandom(arrayClases)});
+        }
+      }
 
-    public avanzarFila(objeto){
-        //TODO: deberia tener en cuenta que se puede ir del tablero????
-        if (objeto.casillaActual().nroColumna==0){
-            objeto.cuadricula.siguienteFila().agregarActor(objeto,0,0)
-        }else{
-            throw "No estoy al inicio de la fila"
+  private completarFilaConObjetosRandom(arrayClases,nroFila){
+    for (var index = 1; index < this.cantidadColumnas(nroFila);index+=1){
+        if (Math.random()<0.5) {
+            this.agregarActor(arrayClases.dameUno(),nroFila,index)
         }
     }
 
-    public avanzarDesdeCualquierLado(objeto){
-      objeto.cuadricula.siguienteFila().agregarActor(objeto,0,0)
+  }
 
-    }
-    private dameFila(objeto){
-        return this.diccionarioFilaObjeto[objeto];
-    }
-    public posicionarObjeto(objeto,i,j){
-        //this.diccionarioFilaObjeto[objeto]=i;
-        this.filas[i].agregarActor(objeto,0,j)
-    }
+  private cantidadColumnas(nroFila){
+    return this.dameIndexUltimaPosicion(nroFila)+1;
+  }
 
-    public posicionarObjetoEnPerspectiva(objeto,i,j,aux){
-        //this.diccionarioFilaObjeto[objeto]=i;
-        this.filas[i].agregarActorEnPerspectiva(objeto,0,j,aux);
-    }
+
+
+      public avanzarFila(objeto){
+          //TODO: deberia tener en cuenta que se puede ir del tablero????
+          var filaActual=objeto.casillaActual().nroFila;
+          if (objeto.casillaActual().nroColumna==0){
+            if(objeto.cuadricula.cantFilas==filaActual+1){
+              throw "No puedo ir para abajo"
+            }
+              objeto.cuadricula.agregarActorEnPerspectiva(objeto,filaActual+1,0)
+          }else{
+              throw "No estoy al inicio de la fila"
+          }
+      }
+
+      public avanzarDesdeCualquierLado(objeto){
+        objeto.cuadricula.agregarActor(objeto,objeto.casillaActual().nroFila+1,0)
+      }
 
 }
 
@@ -187,19 +190,29 @@ class DefinidorColumnasDeUnaFila{
         this.tamanos=[];
     }
 
-    dameProxColumnas(){
+    dameProxFila(){
         var a = this.tamanos[this.index];
         this.index += 1;
         return a;
     }
 
-    hayProxColumnas(){
+    hayProxFila(){
         return this.index < this.tamanos.length
     }
 
     nroFila(){
         //comienza a numerar desde cero
         return this.index;
+    }
+
+    dameMaximo(){
+      var max=this.tamanos[0];
+      for(var index=1;index<this.tamanos.length;index++){
+        if(this.tamanos[index]>max){
+          max=this.tamanos[index];
+        }
+      }
+      return max;
     }
 }
 

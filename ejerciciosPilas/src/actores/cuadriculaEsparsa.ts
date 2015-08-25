@@ -45,6 +45,17 @@ class CuadriculaEsparsa extends Cuadricula{
   hayArriba(casilla){
     return (casilla.nroFila+1 > 0)
   }
+/*
+ cambiarImagenCasillas(opcionesCasilla){
+   for (var index = 0; index < this.matriz.length; ++index) {
+     for (var index2 = 0; index2 < this.matriz[0].length; ++index2){
+       if(this.matriz[index][index2]=='T'){
+         this.casilla(index,index2).cambiarImagen(opcionesCasilla);
+      }
+     }
+    }
+  }
+*/
 
 }
 

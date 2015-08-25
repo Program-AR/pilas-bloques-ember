@@ -1,4 +1,4 @@
-class SalvandoLaNavidad extends Base {
+/*class SalvandoLaNavidad extends Base {
   personaje;
   estado;
   cantidadColumnas;
@@ -50,3 +50,4 @@ iniciar() {
   }
 
 }
+*/

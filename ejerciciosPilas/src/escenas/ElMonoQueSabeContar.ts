@@ -1,4 +1,4 @@
-class ElMonoQueSabeContar extends Base {
+/*class ElMonoQueSabeContar extends Base {
     fondo;
     cuadricula;
     mono;
@@ -25,13 +25,6 @@ class ElMonoQueSabeContar extends Base {
         this.cuadricula.completarConObjetosRandom(this.etiquetasDeObjetosAColocar);
         this.mono = new MonoAnimado(0,0);
         this.cuadricula.posicionarObjeto(this.mono,0,0);
-/*
-        this.conta
-
-        dorDeEtiquetas= new ContadorDeEtiquetas();
-        this.contadorDeEtiquetas.agregarEtiqueta('ManzanaAnimada');
-        this.contadorDeEtiquetas.agregarEtiqueta('BananaAnimada');
-*/
 
         this.tableroBananas = new Tablero(150,220,"Bananas");
         this.tableroManzanas = new Tablero(150,230,"Manzanas");
@@ -68,3 +61,5 @@ class ElMonoQueSabeContar extends Base {
     }
 
 }
+
+*/
