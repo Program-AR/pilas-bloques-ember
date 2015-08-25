@@ -15,6 +15,7 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 
 */
 
+
 /// <reference path = "../actores/cuadriculaEsparsa.ts"/>
 
 class CuadriculaMultiple extends CuadriculaEsparsa{
@@ -103,7 +104,7 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
             if(objeto.cuadricula.cantFilas==filaActual+1){
               throw "No puedo ir para abajo"
             }
-              objeto.cuadricula.agregarActorEnPerspectiva(objeto,filaActual+1,0)
+              objeto.hacer_luego(MoverACasillaAbajo,{})
           }else{
               throw "No estoy al inicio de la fila"
           }
