@@ -110,8 +110,9 @@ var TocandoInicio = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando inicio?')
-         .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
+         .appendField('¿tocando')
+         .appendField(this.obtener_icono('../libs/data/iconos.futbolInicio.png'))
+         .appendField('?');
 
   },
 
