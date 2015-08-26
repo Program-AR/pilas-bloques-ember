@@ -10,7 +10,7 @@ export default Ember.Component.extend({
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
-  mensajeCompartir: 'Comparto mi solución de pilas-engine-bloques',
+  mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
   browser: Ember.inject.service(),
 
