@@ -40,8 +40,9 @@ var ApretarBoton = Accion.extend({
 });
 
 var actividadAlienTocaBoton = {
-  nombre: 'Futbol de robots',
-  enunciado: 'Ayudá a nuestro robot',
+  nombre: 'Alien Toca Boton',
+  enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
+  'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
 
   // la escena proviene de ejerciciosPilas
   escena: AlienInicial, // jshint ignore:line

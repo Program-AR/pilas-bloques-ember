@@ -143,8 +143,10 @@ var TocandoPelota = Sensor.extend({
 
 
 var actividadFutbolRobots = {
-  nombre: 'Futbol de robots',
-  enunciado: 'Ayudá a nuestro robot',
+  nombre: 'Futbol de Robots',
+  enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
+    'Recordá siempre que una buena división en tareas puede ayudarte a encarar '+
+    'mejor el problema.',
 
   // la escena proviene de ejerciciosPilas
   escena: FutbolRobots, // jshint ignore:line

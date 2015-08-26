@@ -72,7 +72,7 @@ var Martillar = Accion.extend({
 
 var actividadElObreroCopado = {
   nombre: 'El Obrero Copado',
-  enunciado: 'Ayudá a nuestro obrero',
+  enunciado: 'Ayudá a nuestro obrero a martillar un poco por allí',
 
   // la escena proviene de ejerciciosPilas
   escena: ElObreroCopado, // jshint ignore:line
