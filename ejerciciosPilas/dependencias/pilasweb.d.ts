@@ -1144,6 +1144,9 @@ declare class Pilas {
     public actualizar(): void;
     public interpolar(objeto: any, atributo: any, valor_o_valores: any, tiempo: any): any;
     public definir_modos(modos: any): void;
+    public mostrar(nombreDelModo: any): string;
+    public ocultar(nombreDelModo: any): string;
+    public actualizar_modo(nombreDelModo: any, bool: any): void;
     public mostrar_posiciones(): string;
     public ocultar_posiciones(): string;
     public mostrar_fisica(): string;

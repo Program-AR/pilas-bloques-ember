@@ -7,7 +7,9 @@
  * 
  * Argumentos:
  *    distancia: la distancia deseada de recorrer
- *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino. 
+ *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino.
+ *       NOTA: Si se proveen ambos distancia y destino, deben concordar, sino no se
+ *              garantiza el comportamiento correcto del Movimiento.
  *    direccion: Sino, se puede proveer una direccion de movimiento. (instancia de Direc)
  *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
  *               Representa la cantidad de ciclos que efectivamente se ejecutan.
@@ -20,6 +22,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
 	vectorDeAvance;
 	vueltasSinEjecutar;
 	enQueVueltaEjecuto;
+	valoresFinales : any = {};
 
 	nombreAnimacion(){
         return 'correr';
@@ -29,18 +32,18 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		super.alIniciar();
 		this.sanitizarArgumentos();
 		this.vueltasSinEjecutar = 0;
-		this.enQueVueltaEjecuto = Math.round(100/this.argumentos.velocidad);
-		this.pasosRestantes = this.argumentos.cantPasos;
-		this.vectorDeAvance = this.argumentos.direccion.destinyFrom(
+		this.enQueVueltaEjecuto = Math.round(100/this.valoresFinales.velocidad);
+		this.pasosRestantes = this.valoresFinales.cantPasos;
+		this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom(
 			{x:0,y:0},
-			this.argumentos.distancia / this.argumentos.cantPasos);
+			this.valoresFinales.distancia / this.valoresFinales.cantPasos);
     }
 
     doActualizar(){
 		var terminoAnimacion = super.doActualizar();
     	if (this.pasosRestantes <= 0) {
-			this.receptor.x = this.argumentos.destino.x;
-			this.receptor.y = this.argumentos.destino.y;
+			this.receptor.x = this.valoresFinales.destino.x;
+			this.receptor.y = this.valoresFinales.destino.y;
 			return terminoAnimacion;
 		} else if (this.deboEjecutar()) { // para definir la velocidad de movimiento
 			this.darUnPaso();
@@ -64,13 +67,12 @@ class MovimientoAnimado extends ComportamientoAnimado{
  	}
 
     sanitizarArgumentos(){
-		if (this.argumentos.distancia !== undefined && this.argumentos.destino !== undefined) throw new ArgumentError("Distance or destiny shouldn't be both arguments");
-		this.argumentos.distancia = this.argumentos.distancia || this.calcularDistancia();
+		this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
 		if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct)) throw new ArgumentError("Direction should come as an instance of Direct");
-		this.argumentos.direccion = this.argumentos.direccion || this.calcularDireccion();
-		this.argumentos.destino = this.argumentos.destino || this.calcularDestino();
-		this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
-		this.argumentos.velocidad = this.argumentos.velocidad || 20;
+		this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
+		this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
+		this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
+		this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
     }
 
     calcularDistancia(){
