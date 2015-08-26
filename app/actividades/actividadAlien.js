@@ -24,7 +24,7 @@ var LevantarTuerca = Accion.extend({
   },
 
   argumentos: function() {
-    return '{\'etiqueta\' : \'TuercaAnimada\',  \'mensajeError\' : \'No hay una tuerca aqui\' }';
+    return '{\'etiqueta\' : \'TuercaAnimada\',  \'mensajeError\' : \'No hay una tuerca aqui\',  \'pasos\' : \'50\'}';
   }
 });
 
