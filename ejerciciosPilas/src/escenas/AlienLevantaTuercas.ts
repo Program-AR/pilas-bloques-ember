@@ -6,16 +6,21 @@ class AlienLevantaTuercas extends Base {
 
 iniciar() {
 		this.estado=undefined;
-		this.fondo = new Fondo('fondos.alienLevantaTuercas.png',0,0);
+		this.fondo = new pilas.fondos.Laberinto1();
 		this.cuadricula = new Cuadricula(0,0,5,6,
-								{alto: 200},
-								{grilla: 'casilla.alienLevantaTuercas.png',
-								cantColumnas: 5})
+								{alto: 400},
+								{grilla: 'invisible.png',
+								cantColumnas: 1})
 	  this.automata = new AlienAnimado(0,0);
-		this.cuadricula.agregarActorEnPerspectiva(this.automata,4,0);
+		this.cuadricula.agregarActor(this.automata,4,0);
 		for(var i = 0;i<5;i++){
-			this.cuadricula.agregarActor(new TuercaAnimada(0,0),i,i);
+			var tuerca = new TuercaAnimada(0,0);
+			this.cuadricula.agregarActor(tuerca,i,i);
+			tuerca.escala=1.0;
 		}
+
+
+
 }
 
 moverIzquierda(){
