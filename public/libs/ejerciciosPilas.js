@@ -1902,13 +1902,13 @@ var AlienLevantaTuercas = (function (_super) {
     AlienLevantaTuercas.prototype.iniciar = function () {
         this.estado = undefined;
         this.fondo = new pilas.fondos.Laberinto1();
-        this.cuadricula = new Cuadricula(0, 0, 5, 6, { alto: 400 }, { grilla: 'invisible.png',
+        this.cuadricula = new Cuadricula(0, -25, 5, 6, { alto: 400 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
         this.automata = new AlienAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 4, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0, false);
         for (var i = 0; i < 5; i++) {
             var tuerca = new TuercaAnimada(0, 0);
-            this.cuadricula.agregarActor(tuerca, i, i);
+            this.cuadricula.agregarActorEnPerspectiva(tuerca, i, i);
             tuerca.escala = 1.0;
         }
     };
