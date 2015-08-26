@@ -100,6 +100,8 @@ class ActorAnimado extends Actor {
             for(var i = 0; i < nro; i++){
                 seguidilla.push(i);
             }
+        } else {
+            seguidilla.push(0);
         }
         return seguidilla;
     }
