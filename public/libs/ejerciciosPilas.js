@@ -21,6 +21,7 @@ var __extends = this.__extends || function (d, b) {
 var ActorAnimado = (function (_super) {
     __extends(ActorAnimado, _super);
     function ActorAnimado(x, y, opciones) {
+        this.desPausar();
         this.sanitizarOpciones(opciones);
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
@@ -28,12 +29,26 @@ var ActorAnimado = (function (_super) {
         this.detener_animacion();
         this.objetosRecogidos = [];
     }
+    ActorAnimado.prototype.pre_actualizar = function () {
+        if (!this.pausado)
+            _super.prototype.pre_actualizar.call(this);
+    };
+    ActorAnimado.prototype.pausar = function () {
+        this.pausado = true;
+    };
+    ActorAnimado.prototype.desPausar = function () {
+        this.pausado = false;
+    };
     ActorAnimado.prototype.sanitizarOpciones = function (ops) {
         this.opciones = ops;
         this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0];
         this.opciones.cuadrosParado = ops.cuadrosParado || [0];
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
+    };
+    ActorAnimado.prototype.decir = function (mensaje) {
+        _super.prototype.decir.call(this, mensaje);
+        this.pausar();
     };
     ActorAnimado.prototype.mover = function (x, y) {
         this.x += x;
