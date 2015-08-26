@@ -29,7 +29,7 @@ var EncenderLuz = Accion.extend({
 var actividadLightbotEnScratch = {
   nombre: 'Lightbot ahora se llama Tito',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: esa diagonal puede ser una gran subtarea',
+    'Pista: esa diagonal puede ser una gran subtarea.',
 
   // la escena proviene de ejerciciosPilas
   escena: LightbotScratch,  // jshint ignore:line
