@@ -438,9 +438,13 @@ declare class Base {
     public control: any;
     public actores: any;
     public tareas: any;
+    public pausada: any;
     constructor();
     public iniciar(): void;
     public actualizar(): void;
+    public doActualizar(): void;
+    public pausar(): void;
+    public desPausar(): void;
     public necesita_ordenar_actores(): boolean;
     public ordenar_actores_por_valor_z(): void;
     public agregar_actor(actor: any): void;

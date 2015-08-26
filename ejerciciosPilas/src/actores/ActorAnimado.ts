@@ -19,8 +19,11 @@ class ActorAnimado extends Actor {
     _casillaActual;
     cuadricula;
     objetosRecogidos;
+    pausado;
+
 
     constructor(x, y, opciones) {
+        this.desPausar();
         this.sanitizarOpciones(opciones);
         super(this.animacionPara(this.opciones.grilla), x, y);
 
@@ -31,12 +34,29 @@ class ActorAnimado extends Actor {
         this.objetosRecogidos = [];
     }
 
+    pre_actualizar(){
+        if (!this.pausado) super.pre_actualizar();
+    }
+
+    pausar(){
+        this.pausado = true;
+    }
+
+    desPausar(){
+        this.pausado = false;
+    }
+
     sanitizarOpciones(ops){
         this.opciones = ops;
         this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0];
         this.opciones.cuadrosParado = ops.cuadrosParado || [0];
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
+    }
+
+    decir(mensaje){
+        super.decir(mensaje);
+        this.pausar();
     }
 
     mover(x,y) {
