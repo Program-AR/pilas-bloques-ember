@@ -1,4 +1,4 @@
-VERSION=0.7.4
+VERSION=0.7.6
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
