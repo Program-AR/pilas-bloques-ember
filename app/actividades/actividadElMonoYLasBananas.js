@@ -77,8 +77,12 @@ var TocandoBanana = Sensor.extend({
 
 
 var actividadElMonoYLasBananas = {
-  nombre: 'La elección del mono',
-  enunciado: 'Ayudá a nuestro obrero',
+  nombre: 'El Mono y las Bananas',
+  enunciado:
+    '¿Podés hacer que el mono avance al casillero de enfrente?'+
+    ' Si hay una banana debe comérsela. Sino, es feliz con sólo llegar. \n '+
+    'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
+    'Pista: Mirá la categoría "Sensores" y la categoría "Control".',
 
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
