@@ -197,6 +197,8 @@ _compile_osx:
 	mv tmp/pilas-engine-bloques-template.app tmp/pilas-engine-bloques.app
 	rm tmp/pilas-engine-bloques-template.zip
 	cp -r dist/* tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/
+	mkdir tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules
+	cp -R node_modules/compare-version tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules/
 	hdiutil create tmp/pilas-engine-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-engine-bloques.app -size 200mb
 	mv tmp/pilas-engine-bloques-${VERSION}.dmg webkitbuilds/
 	rm -r -f tmp
@@ -211,6 +213,8 @@ _compile_win:
 	unzip tmp/pilas-engine-bloques-windows-template.zip -d tmp/ > log_descompresion.log
 	rm -r -f tmp/__*
 	cp -r -f dist/* tmp/nwjs
+	mkdir tmp/nwjs/node_modules
+	cp -R node_modules/compare-version tmp/nwjs/node_modules/
 	cp extras/instalador.nsi tmp/nwjs
 	cd tmp/nwjs; makensis instalador.nsi
 	mv tmp/nwjs/pilas-engine-bloques.exe webkitbuilds/pilas-engine-bloques-${VERSION}.exe
