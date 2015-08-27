@@ -95,25 +95,6 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
     return this.dameIndexUltimaPosicion(nroFila)+1;
   }
 
-
-
-      public avanzarFila(objeto){
-          //TODO: deberia tener en cuenta que se puede ir del tablero????
-          var filaActual=objeto.casillaActual().nroFila;
-          if (objeto.casillaActual().nroColumna==0){
-            if(objeto.cuadricula.cantFilas==filaActual+1){
-              throw "No puedo ir para abajo"
-            }
-              objeto.hacer_luego(MoverACasillaAbajo,{})
-          }else{
-              throw "No estoy al inicio de la fila"
-          }
-      }
-
-      public avanzarDesdeCualquierLado(objeto){
-        objeto.cuadricula.agregarActor(objeto,objeto.casillaActual().nroFila+1,0)
-      }
-
 }
 
 
