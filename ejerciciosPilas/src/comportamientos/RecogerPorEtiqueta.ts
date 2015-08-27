@@ -9,6 +9,10 @@ class RecogerPorEtiqueta extends ComportamientoColision{
 						this.argumentos['dondeReflejarValor'].aumentar(1);
 				}
 		}
+		nombreAnimacion(){
+			// redefinir por subclase
+			return "recoger";
+		}
 
 
 }
