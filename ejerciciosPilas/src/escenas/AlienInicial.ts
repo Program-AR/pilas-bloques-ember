@@ -29,6 +29,7 @@ class AlienInicial extends Base {
       this.boton = new BotonAnimado(0, 0);
       this.boton.derecha = this.cuadricula.derecha + 25;
       this.boton.abajo = this.cuadricula.arriba;
+
     }
 
     personajePrincipal(){

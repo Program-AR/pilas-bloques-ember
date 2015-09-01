@@ -16,6 +16,7 @@ iniciar() {
 		for(var i = 0;i<5;i++){
 			var tuerca = new TuercaAnimada(0,0);
 			this.cuadricula.agregarActorEnPerspectiva(tuerca,i,i);
+			tuerca.aprender(Flotar,{'Desvio':10})
 			tuerca.escala=1.0;
 		}
 
