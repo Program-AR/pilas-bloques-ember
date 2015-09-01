@@ -87,7 +87,7 @@ class ActorAnimado extends Actor {
     animacionPara(nombre){
         return pilas.imagenes.cargar_animacion(nombre, this.opciones.cantColumnas, this.opciones.cantFilas);
     }
-      
+
     tocandoFin(){
     return this.casillaActual().casillaASuDerecha()==undefined
     // return  pilas.escena_actual().cuadricula.tocandoFin(this)
@@ -145,5 +145,13 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
+    colisiona_con(objeto){
+      if(this.cuadricula){
+        return this.cuadricula.colisionan(this,objeto);
+      }else{
+        return super.colisiona_con(objeto)
+      }
+
+    }
 
 }

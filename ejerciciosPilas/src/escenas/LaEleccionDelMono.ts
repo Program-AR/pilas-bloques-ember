@@ -37,6 +37,9 @@ class LaEleccionDelMono extends Base {
       return this.automata;
     }
 
+    moverDerecha(){
+      this.automata.hacer_luego(MoverACasillaDerecha,{});
+    }
 
 
   }

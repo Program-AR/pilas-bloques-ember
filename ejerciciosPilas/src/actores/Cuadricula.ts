@@ -113,7 +113,7 @@ class Cuadricula extends Actor {
 
     calcularAltoCasilla(altoCuad){
         var separacion = this.opcionesCuadricula.separacionEntreCasillas;
-        return altoCuad / this.cantFilas - 
+        return altoCuad / this.cantFilas -
                 (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
 
     }
@@ -157,6 +157,11 @@ class Cuadricula extends Actor {
 
     casilla(nroF, nroC){
         return this.casillas.filter(casilla => casilla.sos(nroF,nroC))[0];
+    }
+
+    colisionan(objeto1,objeto2){
+      return objeto1.casillaActual()==objeto2.casillaActual()
+
     }
 
 }
