@@ -20,10 +20,10 @@ class Flotar extends Habilidad {
 
     actualizar() {
       this.contador += 0.025;
-      this.contador = this.contador % this.desvio;
+      this.contador = this.contador % 256;
       //Esto es para evitar overflow.
       console.log(this.contador)
-      this.receptor.y = this.altura_original + Math.sin(this.contador) * 5
+      this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio
 
       //this.receptor.sombra.x = this.receptor.x;
       //this.receptor.sombra.y = this.receptor.altura_original - 20;
