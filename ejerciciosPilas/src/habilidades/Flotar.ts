@@ -9,14 +9,13 @@ class Flotar extends Habilidad {
         super(receptor);
         this.altura_original=this.receptor.y
         this.contador = Math.random() * 3;
-        this.desvio = argumentos["Desvio"];
+        this.desvio = argumentos["Desvio"] || 1;
     }
 
     actualizar() {
       this.contador += 0.025;
       this.contador = this.contador % 256;
       //Esto es para evitar overflow.
-      console.log(this.contador)
       this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio
     }
 

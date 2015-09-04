@@ -12,14 +12,14 @@ class FutbolRobots  extends Base{
       this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
       var cantidadFilas=8;
       this.definidor = new DefinidorColumnasRandom(cantidadFilas,6)
-      
+
       this.cuadricula = new CuadriculaMultiple(
         this.definidor,
         0,-50,
         {separacionEntreCasillas: 5},
         {grilla:'casilla.futbolRobots2.png', alto:40,ancho:40})
       this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
-      
+
       this.automata = new RobotAnimado(0, 0);
       this.cuadricula.agregarActor(this.automata,0,0);
       var casilla = this.cuadricula.casilla(0, 0);
@@ -28,7 +28,10 @@ class FutbolRobots  extends Base{
       this.automata.radio_de_colision = this.automata.alto / 2.5;
 
       for (var fila=0;fila<cantidadFilas;++fila){
+
+
         this.cuadricula.agregarActor(new PelotaAnimada(0,0),fila,this.cuadricula.dameIndexUltimaPosicion(fila))
+
       }
 
    }
@@ -45,11 +48,9 @@ class FutbolRobots  extends Base{
   }
 
   patearPelota(){
-    this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'PelotaAnimada','mensajeError' : 'No hay una pelota aquí'})
+    this.automata.hacer_luego(DesencadenarHabilidadSiColiciona,{"Habilidad":SerPateado,'etiqueta':'PelotaAnimada','mensajeError': 'No hay una pelota aquí','argumentosHabilidad':{'tiempoEnElAire':25,'aceleracion':0.0025,'elevacionMaxima':25,'gradosDeAumentoStep':-2}})
   }
-  patearPelota2(){
-      this.automata.hacer_luego(DesencadenarAnimacionDobleSiColiciona,{'idAnimacion':'patear','idAnimacionReceptor':'patear','etiqueta':'PelotaAnimada','mensajeError': 'No hay un botón aquí'})
-  }
+
 
 
 

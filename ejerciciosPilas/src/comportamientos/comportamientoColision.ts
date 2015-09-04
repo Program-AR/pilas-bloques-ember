@@ -65,6 +65,14 @@ class DesencadenarAnimacionSiColiciona extends ComportamientoColision{
 
 }
 
+class DesencadenarHabilidadSiColiciona extends ComportamientoColision{
+	metodo(objetoColision){
+		objetoColision.aprender(this.argumentos['Habilidad'],this.argumentos['argumentosHabilidad'])
+	}
+
+
+}
+
 
 class MorderPorEtiqueta extends ComportamientoColision {
 
