@@ -21,7 +21,7 @@ export default Ember.Component.extend({
       this.get('version').obtener_version_del_servidor().
         then((version_del_servidor) => {
 
-          var compareVersion = require('compare-version');
+          var compareVersion = window.requireNode('compare-version');
           var version_local = this.get('version').getVersion();
 
           var comparacion = compareVersion(version_del_servidor, version_local);

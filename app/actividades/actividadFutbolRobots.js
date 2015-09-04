@@ -111,8 +111,9 @@ var TocandoInicio = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando inicio?')
-         .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
+         .appendField('¿tocando')
+         .appendField(this.obtener_icono('../libs/data/iconos.futbolInicio.png'))
+         .appendField('?');
 
   },
 
@@ -143,8 +144,10 @@ var TocandoPelota = Sensor.extend({
 
 
 var actividadFutbolRobots = {
-  nombre: 'Futbol de robots',
-  enunciado: 'Ayudá a nuestro robot',
+  nombre: 'Futbol de Robots',
+  enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
+    'Recordá siempre que una buena división en tareas puede ayudarte a encarar '+
+    'mejor el problema.',
 
   // la escena proviene de ejerciciosPilas
   escena: FutbolRobots, // jshint ignore:line

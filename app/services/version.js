@@ -1,11 +1,10 @@
 import Ember from 'ember';
 import ENV from "pilas-engine-bloques/config/environment";
-var http = window.requireNode('http');
 
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.7.6";
+        return "0.8.0";
     },
 
     obtener_version_del_servidor() {
@@ -30,6 +29,7 @@ export default Ember.Service.extend({
 
     descargarActualizacion(version) {
       let url = ENV.downloadURL.replace(/VERSION/gi, version);
+      var http = window.requireNode('http');
 
       function download(url) {
         return new Ember.RSVP.Promise((success, reject) => {

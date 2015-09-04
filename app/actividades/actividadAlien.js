@@ -1,3 +1,4 @@
+/* globals AlienLevantaTuercas */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
@@ -52,7 +53,7 @@ var TocandoTuerca = Sensor.extend({
 
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
-  enunciado: 'Define un programa para que el alien junte todas las tuercas',
+  enunciado: 'Definí un programa para que el alien junte todas las tuercas.',
 
   escena: AlienLevantaTuercas,
   puedeComentar: false,

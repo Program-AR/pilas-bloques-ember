@@ -21,6 +21,7 @@ var __extends = this.__extends || function (d, b) {
 var ActorAnimado = (function (_super) {
     __extends(ActorAnimado, _super);
     function ActorAnimado(x, y, opciones) {
+        this.desPausar();
         this.sanitizarOpciones(opciones);
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
@@ -28,12 +29,26 @@ var ActorAnimado = (function (_super) {
         this.detener_animacion();
         this.objetosRecogidos = [];
     }
+    ActorAnimado.prototype.pre_actualizar = function () {
+        if (!this.pausado)
+            _super.prototype.pre_actualizar.call(this);
+    };
+    ActorAnimado.prototype.pausar = function () {
+        this.pausado = true;
+    };
+    ActorAnimado.prototype.desPausar = function () {
+        this.pausado = false;
+    };
     ActorAnimado.prototype.sanitizarOpciones = function (ops) {
         this.opciones = ops;
         this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0];
         this.opciones.cuadrosParado = ops.cuadrosParado || [0];
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
+    };
+    ActorAnimado.prototype.decir = function (mensaje) {
+        _super.prototype.decir.call(this, mensaje);
+        this.pausar();
     };
     ActorAnimado.prototype.mover = function (x, y) {
         this.x += x;
@@ -87,6 +102,9 @@ var ActorAnimado = (function (_super) {
                 seguidilla.push(i);
             }
         }
+        else {
+            seguidilla.push(0);
+        }
         return seguidilla;
     };
     //TODO poner en otra clase lo q tenga q ver con casillas
@@ -116,7 +134,7 @@ var AlienAnimado = (function (_super) {
         this.definirAnimacion("parado", [11, 12, 6, 12, 13], 5);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
         this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 15);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 20);
         this.definirAnimacion("apretar", [12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 12, 13], 3);
     }
     return AlienAnimado;
@@ -603,6 +621,8 @@ var ComportamientoAnimado = (function (_super) {
  * Argumentos:
  *    distancia: la distancia deseada de recorrer
  *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino.
+ *       NOTA: Si se proveen ambos distancia y destino, deben concordar, sino no se
+ *              garantiza el comportamiento correcto del Movimiento.
  *    direccion: Sino, se puede proveer una direccion de movimiento. (instancia de Direc)
  *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
  *               Representa la cantidad de ciclos que efectivamente se ejecutan.
@@ -614,6 +634,7 @@ var MovimientoAnimado = (function (_super) {
     __extends(MovimientoAnimado, _super);
     function MovimientoAnimado() {
         _super.apply(this, arguments);
+        this.valoresFinales = {};
     }
     MovimientoAnimado.prototype.nombreAnimacion = function () {
         return 'correr';
@@ -622,15 +643,15 @@ var MovimientoAnimado = (function (_super) {
         _super.prototype.alIniciar.call(this);
         this.sanitizarArgumentos();
         this.vueltasSinEjecutar = 0;
-        this.enQueVueltaEjecuto = Math.round(100 / this.argumentos.velocidad);
-        this.pasosRestantes = this.argumentos.cantPasos;
-        this.vectorDeAvance = this.argumentos.direccion.destinyFrom({ x: 0, y: 0 }, this.argumentos.distancia / this.argumentos.cantPasos);
+        this.enQueVueltaEjecuto = Math.round(100 / this.valoresFinales.velocidad);
+        this.pasosRestantes = this.valoresFinales.cantPasos;
+        this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom({ x: 0, y: 0 }, this.valoresFinales.distancia / this.valoresFinales.cantPasos);
     };
     MovimientoAnimado.prototype.doActualizar = function () {
         var terminoAnimacion = _super.prototype.doActualizar.call(this);
         if (this.pasosRestantes <= 0) {
-            this.receptor.x = this.argumentos.destino.x;
-            this.receptor.y = this.argumentos.destino.y;
+            this.receptor.x = this.valoresFinales.destino.x;
+            this.receptor.y = this.valoresFinales.destino.y;
             return terminoAnimacion;
         }
         else if (this.deboEjecutar()) {
@@ -653,15 +674,13 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.y += this.vectorDeAvance.y;
     };
     MovimientoAnimado.prototype.sanitizarArgumentos = function () {
-        if (this.argumentos.distancia !== undefined && this.argumentos.destino !== undefined)
-            throw new ArgumentError("Distance or destiny shouldn't be both arguments");
-        this.argumentos.distancia = this.argumentos.distancia || this.calcularDistancia();
+        this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
         if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
             throw new ArgumentError("Direction should come as an instance of Direct");
-        this.argumentos.direccion = this.argumentos.direccion || this.calcularDireccion();
-        this.argumentos.destino = this.argumentos.destino || this.calcularDestino();
-        this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
-        this.argumentos.velocidad = this.argumentos.velocidad || 20;
+        this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
+        this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
+        this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
+        this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
     };
     MovimientoAnimado.prototype.calcularDistancia = function () {
         if (!this.argumentos.destino)
@@ -1059,22 +1078,6 @@ var CuadriculaMultiple = (function (_super) {
     };
     CuadriculaMultiple.prototype.cantidadColumnas = function (nroFila) {
         return this.dameIndexUltimaPosicion(nroFila) + 1;
-    };
-    CuadriculaMultiple.prototype.avanzarFila = function (objeto) {
-        //TODO: deberia tener en cuenta que se puede ir del tablero????
-        var filaActual = objeto.casillaActual().nroFila;
-        if (objeto.casillaActual().nroColumna == 0) {
-            if (objeto.cuadricula.cantFilas == filaActual + 1) {
-                throw "No puedo ir para abajo";
-            }
-            objeto.hacer_luego(MoverACasillaAbajo, {});
-        }
-        else {
-            throw "No estoy al inicio de la fila";
-        }
-    };
-    CuadriculaMultiple.prototype.avanzarDesdeCualquierLado = function (objeto) {
-        objeto.cuadricula.agregarActor(objeto, objeto.casillaActual().nroFila + 1, 0);
     };
     return CuadriculaMultiple;
 })(CuadriculaEsparsa);
@@ -1517,7 +1520,7 @@ var RobotAnimado = (function (_super) {
     __extends(RobotAnimado, _super);
     function RobotAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'robotAnimado.png', cantColumnas: 13 });
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 30);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
         this.definirAnimacion("patear", [8, 9, 10, 11, 12, 11, 10, 9, 8], 6);
     }
     return RobotAnimado;
@@ -1565,6 +1568,13 @@ var Tablero = (function () {
     };
     return Tablero;
 })();
+var TuercaAnimada = (function (_super) {
+    __extends(TuercaAnimada, _super);
+    function TuercaAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'tuerca.png', cantColumnas: 1 });
+    }
+    return TuercaAnimada;
+})(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var UnicornioAnimado = (function (_super) {
     __extends(UnicornioAnimado, _super);
@@ -1822,28 +1832,14 @@ var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     function avanzarFilaEnCuadriculaMultiple() {
         _super.apply(this, arguments);
     }
-    avanzarFilaEnCuadriculaMultiple.prototype.alTerminarAnimacion = function () {
-        try {
-            //this.argumentos['cuadriculaMultiple'].avanzarFila(this.receptor)
-            // se cambio para que pueda ser llamado desde las actividades.
-            pilas.escena_actual().cuadricula.avanzarFila(this.receptor);
-        }
-        catch (err) {
-            this.receptor.decir(err);
+    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
+        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
+        if (casAbajo && casAbajo.nroColumna == 0) {
+            return casAbajo;
         }
     };
     return avanzarFilaEnCuadriculaMultiple;
-})(ComportamientoAnimado);
-var avanzarFilaEnCuadriculaMultipleDesdeCualquierLado = (function (_super) {
-    __extends(avanzarFilaEnCuadriculaMultipleDesdeCualquierLado, _super);
-    function avanzarFilaEnCuadriculaMultipleDesdeCualquierLado() {
-        _super.apply(this, arguments);
-    }
-    avanzarFilaEnCuadriculaMultipleDesdeCualquierLado.prototype.alTerminarAnimacion = function () {
-        this.argumentos['cuadriculaMultiple'].avanzarDesdeCualquierLado(this.receptor);
-    };
-    return avanzarFilaEnCuadriculaMultipleDesdeCualquierLado;
-})(ComportamientoAnimado);
+})(MoverACasillaAbajo);
 /// <reference path="ComportamientoAnimado.ts"/>
 /*
 Requiere que la escena tenga como atributo una instancia de la
@@ -1898,63 +1894,97 @@ var AlienInicial = (function (_super) {
     };
     return AlienInicial;
 })(Base);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
-/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
-/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
-/********** POR FAVOR NO MIRAR ESTA CLASE. NO SIRVE DE EJEMPLO *************/
-function convertir_posicion_a_coordenada(fila, columna) {
-    /*
-
-                   columnas
-                      1            2       3       4       5       6
-          filas
-
-            1    [- 175,  140]     []      []      []       []      []
-            2    [- 175,   60]
-            3    [- 175,  -20]
-            4    [- 175, -100]
-            5    [- 175, -180]
-
-     */
-    var columnas = [-175, -105, -35, 35, 105, 175];
-    var filas = [140, 60, -20, -100, -180];
-    return { x: columnas[columna - 1], y: filas[fila - 1] };
-}
 var AlienLevantaTuercas = (function (_super) {
     __extends(AlienLevantaTuercas, _super);
     function AlienLevantaTuercas() {
         _super.apply(this, arguments);
     }
     AlienLevantaTuercas.prototype.iniciar = function () {
-        var fondo = new pilas.fondos.Laberinto1();
-        var alien = new pilas.actores.Alien(-175, -180);
-        alien.cuando_busca_recoger = function () {
-            var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca');
-            if (actores.length > 0) {
-                var mensaje = "";
-                actores[0].eliminar();
-                var restantes = pilas.obtener_actores_con_etiqueta("Tuerca").length;
-                if (restantes > 0)
-                    mensaje = "genial, aún quedan: " + restantes;
-                else
-                    mensaje = "¡Nivel completado!";
-                alien.decir(mensaje);
-                console.log(mensaje);
-            }
-        };
-        var posicion = convertir_posicion_a_coordenada(1, 1);
-        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
-        var posicion = convertir_posicion_a_coordenada(3, 2);
-        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
-        var posicion = convertir_posicion_a_coordenada(5, 3);
-        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
-        var posicion = convertir_posicion_a_coordenada(3, 6);
-        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
-        //window.tuerca = tuerca;
+        this.estado = undefined;
+        this.fondo = new pilas.fondos.Laberinto1();
+        this.cuadricula = new Cuadricula(0, -25, 5, 6, { alto: 400 }, { grilla: 'invisible.png',
+            cantColumnas: 1 });
+        this.automata = new AlienAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0, false);
+        for (var i = 0; i < 5; i++) {
+            var tuerca = new TuercaAnimada(0, 0);
+            this.cuadricula.agregarActorEnPerspectiva(tuerca, i, i);
+            tuerca.escala = 1.0;
+        }
+    };
+    AlienLevantaTuercas.prototype.moverIzquierda = function () {
+        this.automata.hacer_luego(MoverACasillaIzquierda);
+    };
+    AlienLevantaTuercas.prototype.moverDerecha = function () {
+        this.automata.hacer_luego(MoverACasillaDerecha);
+    };
+    AlienLevantaTuercas.prototype.moverAbajo = function () {
+        this.automata.hacer_luego(MoverACasillaAbajo);
+    };
+    AlienLevantaTuercas.prototype.moverArriba = function () {
+        this.automata.hacer_luego(MoverACasillaArriba);
+    };
+    AlienLevantaTuercas.prototype.levantaTuerca = function () {
+        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'TuercaAnimada', 'mensajeError': 'No hay una tuerca aquí' });
     };
     return AlienLevantaTuercas;
 })(Base);
+/*
+
+
+
+function convertir_posicion_a_coordenada(fila, columna) {
+
+
+
+    var columnas = [-175, -105, -35, 35, 105, 175];
+    var filas = [140, 60, -20, -100, -180];
+
+    return {x: columnas[columna-1], y: filas[fila-1]};
+}
+
+class AlienLevantaTuercas extends Base {
+
+    iniciar(){
+        var fondo = new pilas.fondos.Laberinto1();
+        var alien = new pilas.actores.Alien(-175, -180);
+
+        alien.cuando_busca_recoger = function() {
+          var actores = pilas.obtener_actores_en(alien.x, alien.y + 20, 'Tuerca')
+
+          if (actores.length > 0) {
+            var mensaje = "";
+            actores[0].eliminar();
+            var restantes = pilas.obtener_actores_con_etiqueta("Tuerca").length;
+
+            if (restantes > 0)
+              mensaje = "genial, aún quedan: " + restantes;
+            else
+              mensaje = "¡Nivel completado!"
+
+            alien.decir(mensaje);
+            console.log(mensaje);
+          }
+        }
+
+
+        var posicion = convertir_posicion_a_coordenada(1, 1);
+        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+
+        var posicion = convertir_posicion_a_coordenada(3, 2);
+        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+
+        var posicion = convertir_posicion_a_coordenada(5, 3);
+        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+
+        var posicion = convertir_posicion_a_coordenada(3, 6);
+        var tuerca = new pilas.actores.Tuerca(posicion.x, posicion.y);
+
+        //window.tuerca = tuerca;
+    }
+
+}
+*/
 var AlimentandoALosPeces = (function (_super) {
     __extends(AlimentandoALosPeces, _super);
     function AlimentandoALosPeces() {
@@ -2557,6 +2587,7 @@ var ElRecolectorDeEstrellas = (function (_super) {
     };
     return ElRecolectorDeEstrellas;
 })(Base);
+/// <reference path="../actores/ActorAnimado.ts"/>
 var FutbolRobots = (function (_super) {
     __extends(FutbolRobots, _super);
     function FutbolRobots() {
@@ -2567,12 +2598,14 @@ var FutbolRobots = (function (_super) {
         this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
         var cantidadFilas = 8;
         this.definidor = new DefinidorColumnasRandom(cantidadFilas, 6);
-        //this.cuadricula = new CuadriculaMultiple(this.definidor,50.0);
-        this.cuadricula = new CuadriculaMultiple(this.definidor, 0, -10, { separacionEntreCasillas: 5 }, { grilla: 'casillaLightbot.png', cantColumnas: 5, alto: 45, ancho: 45 });
-        this.cuadricula.cambiarImagenCasillas('casilla.futbolRobots2.png');
+        this.cuadricula = new CuadriculaMultiple(this.definidor, 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
         this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
         this.automata = new RobotAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, true);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        var casilla = this.cuadricula.casilla(0, 0);
+        this.automata.escalarAAlto(3.5 * casilla.alto);
+        this.automata.abajo = casilla.y - (0.25 * casilla.alto);
+        this.automata.radio_de_colision = this.automata.alto / 2.5;
         for (var fila = 0; fila < cantidadFilas; ++fila) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
