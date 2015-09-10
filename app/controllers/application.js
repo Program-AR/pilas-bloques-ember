@@ -32,6 +32,14 @@ export default Ember.Controller.extend({
 
       abrirAyuda() {
         this.set('mostrarDialogoAyuda', true);
+      },
+
+      ocultar_boton_codigo() {
+        this.set('environment.debeMostrarBotonCodigoXML', false);
+      },
+
+      mostrar_boton_codigo() {
+        this.set('environment.debeMostrarBotonCodigoXML', true);
       }
     }
 

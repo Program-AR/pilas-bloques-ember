@@ -528,3 +528,7 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 
 .contenedor-acercade {
 }
+
+.margin {
+  margin: 3px;
+}
