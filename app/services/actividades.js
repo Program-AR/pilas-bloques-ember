@@ -473,7 +473,7 @@ var Actividad = Ember.Object.extend({
   },
 
   generarCodigoXML() {
-    var code = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)
+    var code = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
     return code;
   },
 
