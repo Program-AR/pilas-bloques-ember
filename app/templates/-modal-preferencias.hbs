@@ -9,14 +9,27 @@
   {{#em-modal-body}}
 
     <div class='fila-opcion'>
-      Herramientas de desarrollo:
-      <button class='btn btn-success btn-sm' {{action "actualizar"}}><i class='glyphicon glyphicon glyphicon-refresh'></i> Actualizar</button>
-      <button class='btn btn-info btn-sm' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon glyphicon-cog'></i> Mostrar devtools</button>
+
+      <div class="row">
+          <div class="col-md-6">Herramientas de desarrollo:</div>
+          <div class="col-md-6">
+            <button class='btn btn-success btn-sm margin' {{action "actualizar"}}><i class='glyphicon glyphicon-refresh'></i> Actualizar</button>
+            <button class='btn btn-info btn-sm margin' {{action "mostrar_devtools"}}><i class='glyphicon glyphicon-cog'></i> Mostrar devtools</button>
+
+            {{#if environment.debeMostrarBotonCodigoXML}}
+              <button class='btn btn-info btn-sm margin' {{action "ocultar_boton_codigo"}}><i class='glyphicon glyphicon-file'></i> Ocultar botón de código XML</button>
+            {{else}}
+              <button class='btn btn-success btn-sm margin' {{action "mostrar_boton_codigo"}}><i class='glyphicon glyphicon-file'></i> Mostrar botón de código XML</button>
+            {{/if}}
+          </div>
+      </div>
     </div>
 
-
     <div class='fila-opcion'>
-      Tamaño de interfaz: {{nw-zoom}}
+      <div class="row">
+        <div class="col-md-6">Tamaño de interfaz:</div>
+        <div class="col-md-6"> {{nw-zoom}} </div>
+      </div>
     </div>
 
   {{/em-modal-body}}

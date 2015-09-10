@@ -10,8 +10,8 @@
       <button class='btn btn-success' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
   {{/if}}
 
-  {{#if mostrarVerCodigo}}
-    <button class='btn btn-warning' {{action "ver_codigo"}}>Ver Codigo</button>
+  {{#if environment.debeMostrarBotonCodigoXML}}
+    <button class='btn btn-warning' {{action "ver_codigo"}}>Ver Código XML</button>
   {{/if}}
 
   {{#if mostrarGuardar}}
