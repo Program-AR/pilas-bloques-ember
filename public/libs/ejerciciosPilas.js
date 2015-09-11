@@ -125,13 +125,21 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.recoger = function (a) {
         pilas.escena_actual().intentaronRecoger(a);
     };
+    ActorAnimado.prototype.colisiona_con = function (objeto) {
+        if (this.cuadricula) {
+            return this.cuadricula.colisionan(this, objeto);
+        }
+        else {
+            return _super.prototype.colisiona_con.call(this, objeto);
+        }
+    };
     return ActorAnimado;
 })(Actor);
 var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
-        this.definirAnimacion("parado", [11, 12, 6, 12, 13], 5);
+        this.definirAnimacion("parado", [0], 4);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
         this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 20);
@@ -392,6 +400,9 @@ var Cuadricula = (function (_super) {
     };
     Cuadricula.prototype.casilla = function (nroF, nroC) {
         return this.casillas.filter(function (casilla) { return casilla.sos(nroF, nroC); })[0];
+    };
+    Cuadricula.prototype.colisionan = function (objeto1, objeto2) {
+        return objeto1.casillaActual() == objeto2.casillaActual();
     };
     return Cuadricula;
 })(Actor);
@@ -1438,7 +1449,7 @@ var PelotaAnimada = (function (_super) {
     __extends(PelotaAnimada, _super);
     function PelotaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'pelotaAnimada.png', cantColumnas: 16 });
-        this.definirAnimacion("patear", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 30);
+        this.definirAnimacion("patear", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 12);
     }
     return PelotaAnimada;
 })(ActorAnimado);
@@ -1779,6 +1790,16 @@ var DesencadenarAnimacionSiColiciona = (function (_super) {
     };
     return DesencadenarAnimacionSiColiciona;
 })(ComportamientoColision);
+var DesencadenarHabilidadSiColiciona = (function (_super) {
+    __extends(DesencadenarHabilidadSiColiciona, _super);
+    function DesencadenarHabilidadSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarHabilidadSiColiciona.prototype.metodo = function (objetoColision) {
+        objetoColision.aprender(this.argumentos['Habilidad'], this.argumentos['argumentosHabilidad']);
+    };
+    return DesencadenarHabilidadSiColiciona;
+})(ComportamientoColision);
 var MorderPorEtiqueta = (function (_super) {
     __extends(MorderPorEtiqueta, _super);
     function MorderPorEtiqueta() {
@@ -1810,6 +1831,10 @@ var RecogerPorEtiqueta = (function (_super) {
         if (this.argumentos['dondeReflejarValor']) {
             this.argumentos['dondeReflejarValor'].aumentar(1);
         }
+    };
+    RecogerPorEtiqueta.prototype.nombreAnimacion = function () {
+        // redefinir por subclase
+        return "recoger";
     };
     return RecogerPorEtiqueta;
 })(ComportamientoColision);
@@ -1909,6 +1934,7 @@ var AlienLevantaTuercas = (function (_super) {
         for (var i = 0; i < 5; i++) {
             var tuerca = new TuercaAnimada(0, 0);
             this.cuadricula.agregarActorEnPerspectiva(tuerca, i, i);
+            tuerca.aprender(Flotar, { 'Desvio': 10 });
             tuerca.escala = 1.0;
         }
     };
@@ -2620,10 +2646,7 @@ var FutbolRobots = (function (_super) {
         this.automata.hacer_luego(avanzarFilaEnCuadriculaMultiple);
     };
     FutbolRobots.prototype.patearPelota = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'PelotaAnimada', 'mensajeError': 'No hay una pelota aquí' });
-    };
-    FutbolRobots.prototype.patearPelota2 = function () {
-        this.automata.hacer_luego(DesencadenarAnimacionDobleSiColiciona, { 'idAnimacion': 'patear', 'idAnimacionReceptor': 'patear', 'etiqueta': 'PelotaAnimada', 'mensajeError': 'No hay un botón aquí' });
+        this.automata.hacer_luego(DesencadenarHabilidadSiColiciona, { "Habilidad": SerPateado, 'etiqueta': 'PelotaAnimada', 'mensajeError': 'No hay una pelota aquí', 'argumentosHabilidad': { 'tiempoEnElAire': 25, 'aceleracion': 0.0025, 'elevacionMaxima': 25, 'gradosDeAumentoStep': -2 } });
     };
     return FutbolRobots;
 })(Base);
@@ -2775,6 +2798,9 @@ var LaEleccionDelMono = (function (_super) {
     };
     LaEleccionDelMono.prototype.personajePrincipal = function () {
         return this.automata;
+    };
+    LaEleccionDelMono.prototype.moverDerecha = function () {
+        this.automata.hacer_luego(MoverACasillaDerecha, {});
     };
     return LaEleccionDelMono;
 })(Base);
@@ -3803,3 +3829,78 @@ var TresHuesos = (function (_super) {
     };
     return TresHuesos;
 })(Base);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+var Flotar = (function (_super) {
+    __extends(Flotar, _super);
+    function Flotar(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.altura_original = this.receptor.y;
+        this.contador = Math.random() * 3;
+        this.desvio = argumentos["Desvio"] || 1;
+    }
+    Flotar.prototype.actualizar = function () {
+        this.contador += 0.025;
+        this.contador = this.contador % 256;
+        //Esto es para evitar overflow.
+        this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio;
+    };
+    return Flotar;
+})(Habilidad);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/*Si los grados de aumento son positivos gira para la derecha
+caso contrario gira para la izquierda*/
+var Rotar = (function (_super) {
+    __extends(Rotar, _super);
+    function Rotar(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.gradosDeAumentoStep = argumentos['gradosDeAumentoStep'] || 1;
+    }
+    Rotar.prototype.actualizar = function () {
+        this.receptor.rotacion += this.gradosDeAumentoStep;
+    };
+    return Rotar;
+})(Habilidad);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+var SerPateado = (function (_super) {
+    __extends(SerPateado, _super);
+    function SerPateado(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.receptor.cargarAnimacion("patear");
+        this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': argumentos['gradosDeAumentoStep'] || 1 });
+        this.altura_original = this.receptor.y;
+        this.contador = Math.random() * 3;
+        this.aceleracion = argumentos['aceleracion'];
+        this.tiempoEnElAire = argumentos['tiempoEnElAire'] || 10;
+        this.elevacionMaxima = argumentos['elevacionMaxima'] || 10;
+    }
+    SerPateado.prototype.actualizar = function () {
+        //console.log(this.receptor.x)
+        //console.log(this.receptor.y)
+        this.patearConSubidaLineal();
+    };
+    SerPateado.prototype.patearConSubidaLineal = function () {
+        this.contador += this.aceleracion;
+        this.contador = this.contador % 256; // para evitar overflow
+        if (this.receptor.y < this.altura_original + this.elevacionMaxima && this.tiempoEnElAire > 0) {
+            //subiendo
+            this.receptor.y += this.contador;
+        }
+        if (this.tiempoEnElAire > 0) {
+            //en el aire
+            this.tiempoEnElAire -= 1;
+        }
+        if (this.tiempoEnElAire <= 0) {
+            //bajando
+            if (this.receptor.y > this.altura_original) {
+                this.receptor.y -= this.contador;
+            }
+        }
+        this.receptor.x += this.contador;
+    };
+    SerPateado.prototype.patearParaAdelante = function () {
+        this.contador += this.aceleracion;
+        this.contador = this.contador % 256; // para evitar overflow
+        this.receptor.x += this.contador;
+    };
+    return SerPateado;
+})(Habilidad);

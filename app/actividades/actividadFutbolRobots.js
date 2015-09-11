@@ -88,14 +88,11 @@ var PatearPelota = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'RecogerPorEtiqueta';
+    return 'DesencadenarHabilidadSiColiciona';
   },
 
   argumentos() {
-
-  return '{\'etiqueta\':\'PelotaAnimada\',\'mensajeError\' : \'No hay una pelota aquí\'}';
-
-
+    return '{"Habilidad":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'mensajeError\': \'No hay una pelota aquí\',\'argumentosHabilidad\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}';
   }
 });
 
