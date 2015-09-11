@@ -3,7 +3,7 @@
 Ejercicios de programación para los cursos de programación
 a escuelas secundarias en 2015.
 
-[![Build Status](https://travis-ci.org/Program-AR/ejerciciosPilas.svg?branch=master)]
+![Build Status](https://travis-ci.org/Program-AR/ejerciciosPilas.svg?branch=master)
 
 
 
