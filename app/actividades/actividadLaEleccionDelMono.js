@@ -123,6 +123,8 @@ var actividadLaEleccionDelMono = {
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: Ésta vez no alcanza con el bloque "Si".',
 
+  consignaInicial: 'Si el escenario del protagonista varía, nuestro procedimiento debe utilizar alternativas condicionales que ajusten las acciones a estos cambios.',
+  
   // la escena proviene de ejerciciosPilas
   escena: LaEleccionDelMono, // jshint ignore:line
   puedeComentar: false,

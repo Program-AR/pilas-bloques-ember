@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   data_observar_blockly: false,
   actividad: null,
   environment: Ember.inject.service(),
+  abrirConsignaInicial: false,
 
 
   twitter: Ember.inject.service(),
@@ -55,6 +56,14 @@ export default Ember.Component.extend({
 
     window.onresize = redimensionar;
     window.forzar_redimensionado = forzar_redimensionado;
+
+
+    // Muestra el dialogo inicial si está definida la consigna inicial.
+    if (this.get('actividad.actividad.consignaInicial')) {
+      Ember.run.later(() => {
+        this.set('abrirConsignaInicial', true);
+      });
+    }
 
   }),
 

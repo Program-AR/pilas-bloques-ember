@@ -532,3 +532,9 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 .margin {
   margin: 3px;
 }
+
+
+.modal-consigna {
+  font-size: 17px;
+  padding: 1em;
+}

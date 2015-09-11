@@ -1,18 +1,17 @@
 <!--id is important, so we can reference it on the toggler component-->
+--{{abrirConsignaInicial}}--
+
 {{#em-modal configName="bs" open-if=abrirConsignaInicial}}
 
   {{#em-modal-title}}
       {{#em-modal-toggler class="close"}}×{{/em-modal-toggler}}
-      <h4 class="modal-title">Consigna inicial</h4>
+      <h4 class="modal-title">¿Sabías que?</h4>
   {{/em-modal-title}}
 
   {{#em-modal-body}}
 
-    <div class="modal-inline-block">
-
-      <div class='fila-opcion'>
-      </div>
-
+    <div class="modal-consigna">
+      {{actividad.actividad.consignaInicial}}
     </div>
 
   {{/em-modal-body}}

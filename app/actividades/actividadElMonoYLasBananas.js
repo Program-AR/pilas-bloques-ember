@@ -84,6 +84,8 @@ var actividadElMonoYLasBananas = {
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: Mirá la categoría "Sensores" y la categoría "Control".',
 
+  consignaInicial: 'Nuestro procedimiento debe considerar cómo es el escenario del protagonista.  Si no varía, decimos que es un escenario fijo.',
+  
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
   puedeComentar: false,
