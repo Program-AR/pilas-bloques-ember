@@ -11,6 +11,9 @@ module.exports = function(grunt) {
                                duration: 3
                              }
     },
+    qunit: {
+      files: ['test/index.html']
+    },
     typescript: {
       base: {
         src: ['src/**/*.ts'],
@@ -54,6 +57,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-open');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
   grunt.registerTask('clear', ['shell:clear']);
 
@@ -63,4 +67,5 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-notify');
   grunt.task.run('notify_hooks');
+  grunt.registerTask('test', 'qunit');
 };

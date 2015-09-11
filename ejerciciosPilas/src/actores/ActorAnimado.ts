@@ -29,6 +29,7 @@ class ActorAnimado extends Actor {
 
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
+        //this.aprender(SerAnimado,{})
 
         this.detener_animacion();
         this.objetosRecogidos = [];
