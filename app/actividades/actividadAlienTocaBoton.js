@@ -44,6 +44,8 @@ var actividadAlienTocaBoton = {
   enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
   'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!.',
 
+  consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques',
+
   // la escena proviene de ejerciciosPilas
   escena: AlienInicial, // jshint ignore:line
   puedeComentar: false,
