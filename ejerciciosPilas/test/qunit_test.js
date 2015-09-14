@@ -7,5 +7,5 @@ test('basic test', function() {
 test('can access the DOM', function() {
   expect(1);
   var fixture = document.getElementById('qunit-fixture');
-  equal(fixture.innerText, 'this had better work.22222222222222222222222222222222222222222222222222', 'should be able to access the DOM.');
+  equal(fixture.innerText, 'this had better work.', 'should be able to access the DOM.');
 });
