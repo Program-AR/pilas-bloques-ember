@@ -18,35 +18,31 @@ export default Ember.Component.extend({
       this.set('buscando', true);
       this.set('mensaje', '');
 
-      this.get('version').obtener_version_del_servidor().
-        then((version_del_servidor) => {
+      this.get('version').obtener_estado_de_version().then((data) => {
+        var comparacion = data.comparacion;
+        var version_del_servidor = data.version_del_servidor;
 
-          var compareVersion = window.requireNode('compare-version');
-          var version_local = this.get('version').getVersion();
+        switch (comparacion) {
+          case 0:
+            this.definirMensajeDiferido("Tu versión está actualizada.");
+            break;
 
-          var comparacion = compareVersion(version_del_servidor, version_local);
+          case -1:
+            this.definirMensajeDiferido(`Tu versión es más reciente que la del servidor: ${version_del_servidor}.`);
+            break;
 
-          switch (comparacion) {
-            case 0:
-              this.definirMensajeDiferido("Tu versión está actualizada.");
-              break;
+          case 1:
+            this.definirMensajeDiferido(`Existe una actualización, la versión ${version_del_servidor}.`);
+            this.get('version').descargarActualizacion(version_del_servidor);
+            break;
+        }
 
-            case -1:
-              this.definirMensajeDiferido(`Tu versión es más reciente que la del servidor: ${version_del_servidor}.`);
-              break;
+      }, (error) => {
 
-            case 1:
-              this.definirMensajeDiferido(`Existe una actualización, la versión ${version_del_servidor}.`);
-              this.get('version').descargarActualizacion(version_del_servidor);
-              break;
-          }
+        console.error(error);
+        this.definirMensajeDiferido("No se pudo consultar la versión desde Internet.");
 
-
-        }).
-        catch((error) => {
-          console.error(error);
-          this.definirMensajeDiferido("No se pudo consultar la versión desde Internet.");
-        });
+      });
 
     }
   }
