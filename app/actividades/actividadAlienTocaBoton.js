@@ -40,7 +40,7 @@ var ApretarBoton = Accion.extend({
 });
 
 var actividadAlienTocaBoton = {
-  nombre: 'Alien Toca Boton',
+  nombre: 'Alien Toca Botón',
   enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
   'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!.',
 
