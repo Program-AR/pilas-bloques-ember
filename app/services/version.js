@@ -4,7 +4,7 @@ import ENV from "pilas-engine-bloques/config/environment";
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.8.3";
+        return "0.8.4";
     },
 
     obtener_version_del_servidor() {
@@ -26,6 +26,25 @@ export default Ember.Service.extend({
 
       });
     },
+
+    obtener_estado_de_version() {
+
+      return new Ember.RSVP.Promise((resolve, reject) => {
+
+        this.obtener_version_del_servidor().
+          then((version_del_servidor) => {
+            var compareVersion = window.requireNode('compare-version');
+            var version_local = this.getVersion();
+            var comparacion = compareVersion(version_del_servidor, version_local);
+
+            resolve({comparacion: comparacion, version_del_servidor: version_del_servidor});
+          }).
+          catch((error) => {
+            reject(error);
+          });
+      });
+    },
+
 
     descargarActualizacion(version) {
       let url = ENV.downloadURL.replace(/VERSION/gi, version);

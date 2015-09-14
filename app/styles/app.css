@@ -538,3 +538,19 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
   font-size: 17px;
   padding: 1em;
 }
+
+.pilas-automatic-update {
+  display: inline-block;
+  margin-right: 15px;
+  padding-top: 4px;
+}
+
+.pilas-automatic-update a {
+  color: rgb(184, 134, 42) !important;
+  text-decoration: none !important;
+  font-family: "Source Sans Pro" !important;
+}
+
+.pilas-automatic-update a:hover {
+  color: orange !important;
+}
