@@ -53,7 +53,6 @@ testPilas('Colisionan',6, function(assert) {
 });
 
 testPilas('Casilla ',7, function(assert) {
-
       assert.equal(this.cuadricula.casilla(0,0)!=this.cuadricula.casilla(0,1),true,'son distintas');
       assert.equal(this.cuadricula.casilla(0,0).nroFila,0);
       assert.equal(this.cuadricula.casilla(0,0).nroColumna,0);
@@ -61,8 +60,21 @@ testPilas('Casilla ',7, function(assert) {
       assert.equal(this.cuadricula.casilla(0,1).nroColumna,1);
       assert.equal(this.cuadricula.casilla(1,1).nroColumna,1);
       assert.equal(this.cuadricula.casilla(1,1).nroFila,1);
+});
+
+testPilas('Mover a casilla derecha ',1, function(assert) {
+
+      this.cuadricula.agregarActor(this.actor1,0,0);
+      var x= this.actor1.x;
+      var y= this.actor1.y;
+      this.actor1.hacer_luego(MoverACasillaDerecha)
+      assert.equal(this.actor1.x=x+this.cuadricula.casilla(0,0).ancho());
+
 
 });
+
+
+
 
 /*
 testPilas('Constructor',0, function(assert) {
