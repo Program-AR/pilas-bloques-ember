@@ -5,9 +5,9 @@ modulePilas('Cuadricula Test',{
          { alto: 300, ancho: 200 },
          //implica casilla.ancho==40 && casilla.alto==100
          { grilla: 'invisible.png', cantColumnas: 1 });
-         this.actor1 = new AlienAnimado(0,0);
-          this.actor2 = new AlienAnimado(0,0);
-          this.actor3 = new AlienAnimado(0,0);
+    this.actor1 = new AlienAnimado(0,0);
+    this.actor2 = new AlienAnimado(0,0);
+    this.actor3 = new AlienAnimado(0,0);
 
   },
 
@@ -15,8 +15,8 @@ modulePilas('Cuadricula Test',{
   afterEach: function(){
     this.cuadricula.eliminar();
     this.actor1.eliminar();
-     this.actor2.eliminar();
-     this.actor3.eliminar();
+    this.actor2.eliminar();
+    this.actor3.eliminar();
 
   }
 });
@@ -49,7 +49,6 @@ testPilas('Colisionan',6, function(assert) {
       assert.equal(this.cuadricula.colisionan(this.actor3,this.actor2),false);
       assert.equal(this.cuadricula.colisionan(this.actor2,this.actor3),false);
 
-
 });
 
 testPilas('Casilla ',7, function(assert) {
@@ -62,20 +61,15 @@ testPilas('Casilla ',7, function(assert) {
       assert.equal(this.cuadricula.casilla(1,1).nroFila,1);
 });
 
-testPilas('Mover a casilla derecha ',2, function(assert) {
-
+testPilas('Mover a casilla derecha ',3, function(assert) {
       this.cuadricula.agregarActor(this.actor1,0,0);
-      var x= this.actor1.x;
-      console.log(x);
-      var y= this.actor1.y;
-      console.log(y);
-      this.actor1.hacer_luego(MoverACasillaDerecha);
-      done();
-      console.log(this.actor1.x);
-      console.log(this.actor1.y);
-
-      assert.equal(this.actor1.x,x+this.cuadricula.casilla(0,0).ancho);
-                    assert.equal(this.actor1.casillaActual(),this.cuadricula.casilla(0,1));
+      var x = this.actor1.x;
+      var y = this.actor1.y;
+      hacerLuegoConCallback(this.actor1, MoverACasillaDerecha, {}, function(){
+        assert.equal(this.actor1.x, x + this.cuadricula.casilla(0,0).ancho, 'Movi a la derecha bien');
+        assert.equal(this.actor1.y, y, 'Me mantuve en altura');
+        assert.equal(this.actor1.casillaActual(), this.cuadricula.casilla(0,1), 'Mi casillaActual es la correspondiente');
+      });
 });
 
 
