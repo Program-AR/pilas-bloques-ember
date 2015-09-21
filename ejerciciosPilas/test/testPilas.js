@@ -15,6 +15,7 @@ var modulePilas = function(name,objectToRun){
     pilasTestCfg.afterTest = function(){
         if(pilasTestCfg.childs <= 0){
             pilasTestCfg.afterEach();
+            pilasTestCfg.done();
         }
     };
     
@@ -25,7 +26,7 @@ var testPilas = function(nombre,cantidadAsserts,funcion){
   test(nombre, function(assert) {
     pilasTestCfg.pilasTest = funcion;
     pilasTestCfg.assert = assert;
-    var done = assert.async();
+    pilasTestCfg.done = assert.async();
     expect(cantidadAsserts);
 
     pilas = new Pilas();
@@ -33,7 +34,6 @@ var testPilas = function(nombre,cantidadAsserts,funcion){
 
     pilas.onready = function(){
         pilasTestCfg.runTest();
-        done();
     };
 
     pilas.ejecutar();
@@ -61,12 +61,11 @@ ComportamDecorator.prototype = {
 
 var hacerLuegoConCallback = function(actor, claseComport, argumentos, callback){
     pilasTestCfg.childs ++;
-    var done = pilasTestCfg.assert.async();
+    
     var nuevoCallback = function(){
         callback.bind(pilasTestCfg)();
         pilasTestCfg.childs --;
         pilasTestCfg.afterTest();
-        done();
     }
     actor.hacer_luego(ComportamDecorator,
         {comportamiento: claseComport, callback: nuevoCallback, argumentos: argumentos});
