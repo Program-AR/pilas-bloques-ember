@@ -62,20 +62,35 @@ testPilas('Casilla ',7, function(assert) {
       assert.equal(this.cuadricula.casilla(1,1).nroFila,1);
 });
 
-testPilas('Mover a casilla derecha ',1, function(assert) {
+testPilas('Mover a casilla derecha ',2, function(assert) {
 
       this.cuadricula.agregarActor(this.actor1,0,0);
       var x= this.actor1.x;
+      console.log(x);
       var y= this.actor1.y;
-      this.actor1.hacer_luego(MoverACasillaDerecha)
-      assert.equal(this.actor1.x=x+this.cuadricula.casilla(0,0).ancho());
+      console.log(y);
+      this.actor1.hacer_luego(MoverACasillaDerecha);
+      done();
+      console.log(this.actor1.x);
+      console.log(this.actor1.y);
 
-
+      assert.equal(this.actor1.x,x+this.cuadricula.casilla(0,0).ancho);
+                    assert.equal(this.actor1.casillaActual(),this.cuadricula.casilla(0,1));
 });
 
 
 
+/*
+testPilas('Mover a casilla izquierda ',2, function(assert) {
 
+      this.cuadricula.agregarActor(this.actor1,0,1);
+      var x= this.actor1.x;
+      var y= this.actor1.y;
+      this.actor1.hacer_luego(MoverACasillaIzquierda);
+      assert.equal(this.actor1.x,x-this.cuadricula.casilla(0,0).ancho);
+      assert.equal(this.actor1.casillaActual(),this.cuadricula.casilla(0,0));
+});
+*/
 /*
 testPilas('Constructor',0, function(assert) {
       this.cuadricula.setAlto(600);
