@@ -70,6 +70,7 @@ testPilas('Mover a casilla derecha ',3, function(assert) {
         assert.equal(this.actor1.y, y, 'Me mantuve en altura');
         assert.equal(this.actor1.casillaActual(), this.cuadricula.casilla(0,1), 'Mi casillaActual es la correspondiente');
       });
+      
 });
 
 
