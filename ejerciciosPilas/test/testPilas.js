@@ -5,7 +5,7 @@ var modulePilas = function(name,objectToRun){
     pilasTestCfg.beforeEach = objectToRun.beforeEach || function(){};
     pilasTestCfg.afterEach = objectToRun.afterEach || function(){};
     pilasTestCfg.childs = 0;
-    
+
     pilasTestCfg.runTest = function(){
         pilasTestCfg.beforeEach();
         pilasTestCfg.pilasTest(pilasTestCfg.assert);
@@ -18,7 +18,7 @@ var modulePilas = function(name,objectToRun){
             pilasTestCfg.done();
         }
     };
-    
+
     module(name);
 };
 
@@ -61,7 +61,7 @@ ComportamDecorator.prototype = {
 
 var hacerLuegoConCallback = function(actor, claseComport, argumentos, callback){
     pilasTestCfg.childs ++;
-    
+
     var nuevoCallback = function(){
         callback.bind(pilasTestCfg)();
         pilasTestCfg.childs --;

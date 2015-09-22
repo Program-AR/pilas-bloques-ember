@@ -22,5 +22,6 @@ testPilas('Reubicar casilla',6, function(assert) {
       assert.equal(casilla.y,0,'reposiciona y bien cuando es 0');
       assert.equal(casilla2.x,-40,'reposiciona x bien');
       assert.equal(casilla2.y,50,'reposiciona y bien');
-    
+      done();
+
 });
