@@ -9,7 +9,7 @@
  * @class LightBot
  *
  */
-class SuperTito1 extends Base {
+class SuperTito2 extends Base {
     fondo;
     automata;
     cuadricula;
@@ -30,7 +30,11 @@ class SuperTito1 extends Base {
         this.automata = new Robot(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
         for (let i = 1; i < this.cantidadFilas-1; i++) {
-            this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
+            if(Math.random()<0.5){
+                this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
+            }
+            
+
         }
 
     }

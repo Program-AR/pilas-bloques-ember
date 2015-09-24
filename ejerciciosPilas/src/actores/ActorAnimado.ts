@@ -81,6 +81,10 @@ class ActorAnimado extends Actor {
       //return actores.length > 0;
     };
 
+    estoyUltimaFila(){
+      return this.cuadricula.cantFilas-1==this.casillaActual().nroFila;
+    }
+
     cambiarImagen(nombre){
         this.imagen = this.animacionPara(nombre);
     }
