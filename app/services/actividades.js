@@ -3,8 +3,6 @@
 import Ember from 'ember';
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-
-
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
@@ -12,6 +10,28 @@ import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/activid
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
+import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
+//import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
+//import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
+//import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
+//import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
+//import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
+//import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
+//import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
+//import actividadTresNaranjas 'pilas-engine-bloques/actividades/actividadTresNaranjas';
+
+//import actividadLaberintoLargo 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
+//import actividadSuperLightbot2 'pilas-engine-bloques/actividades/actividadSuperLightbot2';
+//import actividadLaberintoConQueso 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
+//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadPrendiendoLasCompus 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
+//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadElMonoQueSabeContar 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
+//import actividadElMonoCuentaDeNuevo'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+
+
+
 
 Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
@@ -531,7 +551,16 @@ export default Ember.Service.extend({
       ElMonoYLasBananas: actividadElMonoYLasBananas,
       LightbotEnScratch: actividadLightbotEnScratch,
       FutbolRobots: actividadFutbolRobots,
-      ElPlanetaDeNano: actividadElPlanetaDeNano
+      //ElPlanetaDeNano: actividadElPlanetaDeNano
+      LightbotRecargado : actividadLightbotRecargado
+      /*MariaLaComeSandias: actividadMariaLaComeSandias
+      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas
+      AlimentandoALosPeces: actividadAlimentandoALosPeces
+      InstalandoJuegos:InstalandoJuegos
+      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+      ReparandoLaNave: actividadReparandoLaNave
+      LaberintoCorto: actividadLaberintoCorto
+      TresNaranjas: actividadTresNaranjas*/
     };
 
     var actividad = actividades[nombreActividad];
