@@ -65,6 +65,43 @@ testPilas('Casilla ',7, function(assert) {
       done();
 });
 
+testPilas('Constructor',2, function(assert) {
+      assert.equal(this.cuadricula.casillas.size,3*5,'tiene la cantidad de casillas que debe');
+
+
+      function estaFueraRango(casillas,index,filas,cols){
+        return casillas[index].nroFila<0 || cantFilascasillas[index].nroFila>=filas || casillas[index].nroColumna<0 && cantFilascasillas[index].nroColumna>=cols;
+      }
+
+      function sonLaMismaCasilla(casillas,i,j) {
+        return casillas[i].nroFila==casillas[j].nroFila&&casillas[i].nroColumna==casillas[j].nroColumna;
+      }
+
+      function todasCoordenadasDistintasEInRange(casillas,cantFilas,cantColumnas) {
+        for (i = 0; i < casillas.size; i++) {
+
+          if(estaFueraRango(casillas,i,cantFilas,cantColumnas){
+            return false;
+          }
+
+          for (j = i; j < casillas.size; j++) {
+            if(sonLaMismaCasilla(casillas,i,j)){
+              return false;
+            }
+          }
+
+        }
+
+        return true;
+      }
+
+      assert.equal(todasCoordenadasDistintasEInRange(this.cuadricula.casillas,3,5),true,'todas las casillas tienen coordenadas distintas e in_range')
+
+
+
+      done();
+});
+/*
 testPilas('Mover a casilla derecha ',3, function(assert) {
       this.cuadricula.agregarActor(this.actor1,0,0);
       var x = this.actor1.x;
@@ -112,3 +149,4 @@ testPilas('Mover a casilla Arriba ',3, function(assert) {
         assert.equal(this.actor1.casillaActual(), this.cuadricula.casilla(0,0), 'Mi casillaActual es la correspondiente');
       });
 });
+*/
