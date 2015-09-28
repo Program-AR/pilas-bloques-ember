@@ -19,7 +19,7 @@ class SuperTito1 extends Base {
     iniciar() {
         this.estado=undefined;
 
-        this.fondo = new Fondo('fondos.estrellas.png',0,0);
+        this.fondo = new Fondo('fondo.superTito1.png',0,0);
         var cantidadMaxFilas=7;
         this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 2)
         this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,

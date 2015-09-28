@@ -19,7 +19,7 @@ class SuperTito2 extends Base {
     iniciar() {
         this.estado=undefined;
 
-        this.fondo = new Fondo('fondos.estrellas.png',0,0);
+        this.fondo = new Fondo('fondo.superTito2.png',0,0);
         var cantidadMaxFilas=7;
         this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 2)
         this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,
@@ -33,7 +33,7 @@ class SuperTito2 extends Base {
             if(Math.random()<0.5){
                 this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
             }
-            
+
 
         }
 

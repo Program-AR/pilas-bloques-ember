@@ -6,7 +6,7 @@ class ElRecolectorDeEstrellas extends Base {
     objetos;
 
     iniciar() {
-        this.fondo = new Fondo('fondos/nubes.png',0,0);
+        this.fondo = new Fondo('fondo.recolector.png',0,0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas=4
         var cantidadColumnas=5
