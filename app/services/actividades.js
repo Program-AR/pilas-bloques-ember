@@ -13,7 +13,7 @@ import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadA
 import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
-//import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
+import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
 //import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 //import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 //import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
@@ -557,8 +557,8 @@ export default Ember.Service.extend({
       LightbotRecargado : actividadLightbotRecargado,
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
-      /*MariaLaComeSandias: actividadMariaLaComeSandias
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas
+      /*MariaLaComeSandias: actividadMariaLaComeSandias
       AlimentandoALosPeces: actividadAlimentandoALosPeces
       InstalandoJuegos:InstalandoJuegos
       LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
