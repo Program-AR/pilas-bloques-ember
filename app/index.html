@@ -5,7 +5,11 @@
     <title>Pilas Bloques</title>
 
     <script>
-    window.requireNode = require;
+    if (window['require'] === undefined) {
+      console.log("Ejecutando desde un navegador ...");
+    } else {
+      window.requireNode = require;
+    }
     </script>
 
     <!-- AGREGADOS PARA NODEWEBKIT -->

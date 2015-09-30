@@ -15,12 +15,23 @@ export default Ember.Component.extend({
   }),
 
   cambiarZoom: Ember.observer('zoomValue', function() {
-    var gui = window.requireNode('nw.gui');
-    var win = gui.Window.get();
     this.get('zoom').setValue(this.get('zoomValue'));
 
-    win.zoomLevel = (this.get('zoomValue') - 100) / 10;
+    this.aplicarZoom((this.get('zoomValue') - 100) / 10);
   }),
+
+
+  aplicarZoom(zoomLevel) {
+    if (window['requireNode'] === undefined) {
+      document.body.style.zoom = (100 + zoomLevel * 10) + "%";
+      console.log("Imposible cambiar el zoom desde el navegador...");
+      return;
+    } else {
+      var gui = window.requireNode('nw.gui');
+      var win = gui.Window.get();
+      win.zoomLevel = zoomLevel;
+    }
+  },
 
   onStart: Ember.on('init', function() {
     this.set('zoomValue', this.get('zoom').getValue());
