@@ -180,7 +180,7 @@ export default Ember.Component.extend({
       this.noMirarCambiosEnBlockly();
       this.get('cola_deshacer').popObject();
       var c =  this.get('cola_deshacer').popObject();
-      if(c) {
+      if (c) {
         console.log("deshacer");
         this.restaurar_codigo(c);
       }

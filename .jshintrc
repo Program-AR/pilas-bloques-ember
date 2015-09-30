@@ -9,7 +9,8 @@
     "require",
     "$",
     "pilasengine",
-    "Base"
+    "Base",
+    "debugger"
   ],
   "browser": true,
   "boss": true,
