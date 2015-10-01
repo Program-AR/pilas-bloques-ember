@@ -168,11 +168,19 @@ export default Ember.Component.extend({
       console.log(codigo_como_string);
       alert(codigo_como_string);
     },
+    ingresar_codigo() {
+      var codigo = prompt("Ingrese el código");
+
+      if (codigo) {
+        this.get('actividad').cargarCodigoDesdeStringXML(codigo);
+      }
+
+    },
     deshacer_cambio() {
       this.noMirarCambiosEnBlockly();
       this.get('cola_deshacer').popObject();
       var c =  this.get('cola_deshacer').popObject();
-      if(c) {
+      if (c) {
         console.log("deshacer");
         this.restaurar_codigo(c);
       }
