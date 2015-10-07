@@ -1,80 +1,81 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor} = bloques;
+var {Accion} = bloques;
 
 var Avanzar = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'avanzar');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
          .appendField('avanzar');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'CaminaIzquierda';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{ pasos: 2 }';
   }
 });
 
 var Retroceder = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'retroceder');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
          .appendField('retroceder');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'CaminaDerecha';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{ pasos: 2 }';
   }
 });
 
 var Martillar = Accion.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'martillar');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('martillar.png'))
          .appendField('martillar');
   },
 
-  nombre_comportamiento: function() {
+  nombre_comportamiento() {
     return 'Martillar';
   },
 
-  argumentos: function() {
+  argumentos() {
     return '{ veces: 20 }';
   }
 });
 
 var actividadElObreroCopado = {
   nombre: 'El Obrero Copado',
-  enunciado: 'Ayudá a nuestro obrero',
+  enunciado: 'Ayudá a nuestro obrero a martillar un poco por allí.',
 
-  escena: ElObreroCopado,
+  // la escena proviene de ejerciciosPilas
+  escena: ElObreroCopado, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

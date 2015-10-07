@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-var Bootstrap = window.Bootstrap;
 
 export default Ember.Controller.extend({
   url: '',
@@ -8,35 +7,39 @@ export default Ember.Controller.extend({
   layout: true,
   environment: Ember.inject.service(),
 
-  mostrar_url: function() {
-    var controller = this;
-
-    var actualizar = function(){
-      controller.set('url', window.location.href);
-    };
-
-    setInterval(actualizar, 100);
-
+  mostrar_url: Ember.on('init', function() {
     this.set('layout', this.get('environment').get('showLayout'));
-
-  }.on('init'),
+  }),
 
     myModalButtons: [
         Ember.Object.create({title: 'Cerrar', dismiss: 'modal'})
     ],
 
     actions: {
-      show: function() {
-        return Bootstrap.ModalManager.show('myModal');
+      mostrar_devtools() {
+        window.requireNode('nw.gui').Window.get().showDevTools();
       },
-      mostrar_devtools: function() {
-        require('nw.gui').Window.get().showDevTools();
-      },
-      actualizar: function() {
+      actualizar() {
         location.reload(true);
       },
-      redimensionar: function() {
+      redimensionar() {
         alert("tengo que redimensionar!");
+      },
+
+      abrirPreferencias() {
+        this.set('mostrarDialogoOpciones', true);
+      },
+
+      abrirAyuda() {
+        this.set('mostrarDialogoAyuda', true);
+      },
+
+      ocultar_boton_codigo() {
+        this.set('environment.debeMostrarBotonCodigoXML', false);
+      },
+
+      mostrar_boton_codigo() {
+        this.set('environment.debeMostrarBotonCodigoXML', true);
       }
     }
 

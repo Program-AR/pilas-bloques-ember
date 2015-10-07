@@ -1,9 +1,17 @@
+/*jshint unused:false*/
+
 import Ember from 'ember';
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
 
-import actividadElObreroCopado from 'pilas-engine-bloques/actividades/actividadElObreroCopado';
+
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
+import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
+import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
+import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
+import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
+import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
+import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
 
 Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
@@ -25,7 +33,7 @@ var {Bloque, CambioDeJSDeBlocky, VariableGet,
 
 var EstructuraDeControl = Bloque.extend({
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.setColour(Blockly.Blocks.loops.COLOUR);
     block.setInputsInline(true);
@@ -39,12 +47,12 @@ var EstructuraDeControl = Bloque.extend({
 
 var Repetir = EstructuraDeControl.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'repetir');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendValueInput('count')
         .setCheck('Number')
@@ -52,7 +60,7 @@ var Repetir = EstructuraDeControl.extend({
     block.appendStatementInput('block');
   },
 
-  block_javascript: function(block) {
+  block_javascript(block) {
     var value_count = Blockly.JavaScript.valueToCode(block, 'count', Blockly.JavaScript.ORDER_ATOMIC) || '0' ;
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
@@ -61,7 +69,7 @@ var Repetir = EstructuraDeControl.extend({
     return r;
   },
 
-  get_parametros: function() {
+  get_parametros() {
     return [
       ParamValor.create({
         nombre_param: 'count',
@@ -79,12 +87,12 @@ var Repetir = EstructuraDeControl.extend({
 
 var Si = EstructuraDeControl.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'si');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
@@ -92,7 +100,7 @@ var Si = EstructuraDeControl.extend({
     block.appendStatementInput('block');
   },
 
-  block_javascript: function(block) {
+  block_javascript(block) {
     var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
@@ -107,12 +115,12 @@ var Si = EstructuraDeControl.extend({
 
 var Sino = EstructuraDeControl.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'sino');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
@@ -123,7 +131,7 @@ var Sino = EstructuraDeControl.extend({
     block.appendStatementInput('block2');
   },
 
-  block_javascript: function(block) {
+  block_javascript(block) {
     var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
     var statements_block1 = Blockly.JavaScript.statementToCode(block, 'block1');
     var statements_block2 = Blockly.JavaScript.statementToCode(block, 'block2');
@@ -141,12 +149,12 @@ var Sino = EstructuraDeControl.extend({
 
 var Hasta = EstructuraDeControl.extend({
 
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'hasta');
   },
 
-  block_init: function(block) {
+  block_init(block) {
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
@@ -154,7 +162,7 @@ var Hasta = EstructuraDeControl.extend({
     block.appendStatementInput('block');
   },
 
-  block_javascript: function(block) {
+  block_javascript(block) {
     var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'true';
     var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
     var r = 'programa.empezar_secuencia();\n';
@@ -167,7 +175,7 @@ var Hasta = EstructuraDeControl.extend({
 
 var ExpresionDeBlockly = Bloque.extend({
 
-  registrar_en_blockly: function() {
+  registrar_en_blockly() {
     // pisado porque ya viene con blockly
     // ni tampoco quiero modificar el javascript
   }
@@ -175,42 +183,42 @@ var ExpresionDeBlockly = Bloque.extend({
 });
 
 var Numero = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'math_number');
   },
 });
 
 var OpAritmetica = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'math_arithmetic');
   },
 });
 
 var Booleano = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'logic_boolean');
   },
 });
 
 var OpComparacion = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'logic_compare');
   },
 });
 
 var OpLogica = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'logic_operation');
   },
 });
 
 var OpNegacion = ExpresionDeBlockly.extend({
-  init: function() {
+  init() {
     this._super();
     this.set('id', 'logic_negate');
   },
@@ -224,7 +232,7 @@ var OpNegacion = ExpresionDeBlockly.extend({
  */
 /*exported ParamCampo*/
 var ParamCampo = Ember.Object.extend({
-   build: function() {
+   build() {
      var str_block = '';
      str_block += '<field name="NOMBRE">'.replace('NOMBRE', this.get('nombre_valor'));
      str_block += this.get('valor');
@@ -240,7 +248,7 @@ var ParamCampo = Ember.Object.extend({
  * de un campo de un bloque
  */
 var ParamValor = Ember.Object.extend({
-   build: function() {
+   build() {
      var str_block = '';
      str_block += '<value name="NOMBRE">'.replace('NOMBRE', this.get('nombre_param'));
 
@@ -266,12 +274,12 @@ var ParamValor = Ember.Object.extend({
  */
 var Lenguaje = Ember.Object.extend({
 
-  init: function() {
+  init() {
     this.set('categorias', []);
     this.set('bloques', {});
   },
 
-  agregar: function(c, bs) {
+  agregar(c, bs) {
     if(bs !== undefined) {
       this.categoria(c);
       bs.forEach(function (b) {
@@ -280,25 +288,25 @@ var Lenguaje = Ember.Object.extend({
     }
   },
 
-  categoria: function(c) {
+  categoria(c) {
     this.get('categorias').pushObject(c);
     var bs = this.get('bloques');
     bs[c] = [];
     this.set('bloques', bs);
   },
 
-  bloque: function(c, b) {
+  bloque(c, b) {
     var block = this.definir_bloque(b);
     this.get('bloques')[c].pushObject(block);
   },
 
-  definir_bloque: function(b) {
+  definir_bloque(b) {
     var block = b.create();
     block.registrar_en_blockly();
     return block;
   },
 
-  build: function() {
+  build() {
     var str_toolbox = '';
 
     str_toolbox += '<xml>';
@@ -318,7 +326,7 @@ var Lenguaje = Ember.Object.extend({
     return str_toolbox;
   },
 
-  _build_categoria: function(categoria) {
+  _build_categoria(categoria) {
     var str_category = '';
 
     str_category += '<category name="x">\n'.replace('x', categoria);
@@ -332,11 +340,11 @@ var Lenguaje = Ember.Object.extend({
     return str_category;
   },
 
-  _build_procedures: function() {
+  _build_procedures() {
     return '<category name="Subtareas" custom="PROCEDURE"></category>';
   },
 
-  _build_variables: function() {
+  _build_variables() {
     return '<category name="Variables" custom="VARIABLE"></category>';
   }
 
@@ -359,7 +367,7 @@ var Lenguaje = Ember.Object.extend({
   Modelo de actividad
 **/
 var Actividad = Ember.Object.extend({
-  init: function() {
+  init() {
     var actividad = this.get('actividad');
     this.set('nombre', actividad.nombre);
     this.set('enunciado', actividad.enunciado);
@@ -371,38 +379,50 @@ var Actividad = Ember.Object.extend({
     this.pisar_bloques_blockly();
   },
 
-  iniciarEscena: function () {
+  iniciarEscena() {
     var Esc = this.get('escena');
     var esc_instance = new Esc();
     this.set('escena_instanciada', esc_instance);
     pilas.mundo.gestor_escenas.cambiar_escena(esc_instance);
   },
 
-  obtenerLenguaje: function() {
+  obtenerLenguaje() {
     var act = this.get('actividad');
     var leng = Lenguaje.create();
 
-    leng.agregar('Acciones', act.acciones);
-    leng.agregar('Sensores', act.sensores);
-    leng.agregar('Control', act.control);
-    leng.agregar('Expresiones', act.expresiones);
-    leng.agregar('Variables', act.variables);
-    leng.agregar('Subtareas', act.subtareas);
+    var bloques_para_toolbox = {
+      Acciones: 'acciones',
+      Sensores: 'sensores',
+      Control: 'control',
+      Expresiones: 'expresiones',
+      Variables: 'variables',
+      Subtareas: 'subtareas'
+    };
+
+    // Itera por todos los bloques y los agrega al toolbox solamente
+    // si tienen piezas para mostrar.
+    for (let key in bloques_para_toolbox) {
+      let propiedad = bloques_para_toolbox[key];
+
+      if (act[propiedad].length > 0) {
+        leng.agregar(key, act[propiedad]);
+      }
+    }
 
     return leng.build();
   },
 
-  bloques_iniciales: function() {
+  bloques_iniciales() {
     return [AlEmpezar];
   },
 
-  crear_bloques_iniciales: function() {
+  crear_bloques_iniciales() {
     this.bloques_iniciales().forEach(function(b){
       b.create().instanciar_para_workspace();
     });
   },
 
-  pisar_bloques_blockly: function() {
+  pisar_bloques_blockly() {
     CallReturn.create().registrar_en_blockly();
     CallNoReturn.create().registrar_en_blockly();
     ParamGet.create().registrar_en_blockly();
@@ -412,16 +432,16 @@ var Actividad = Ember.Object.extend({
     VariableLocalSet.create().registrar_en_blockly();
   },
 
-  usa_procedimientos: function() {
+  usa_procedimientos() {
     return this.get('actividad').subtareas.indexOf(Procedimiento) > -1;
 
   },
 
-  usa_funciones: function() {
+  usa_funciones() {
     return this.get('actividad').subtareas.indexOf(Funcion) > -1;
   },
 
-  iniciarBlockly: function(contenedor) {
+  iniciarBlockly(contenedor) {
     var actividad = this;
 
     Blockly.inject(contenedor, {
@@ -444,7 +464,7 @@ var Actividad = Ember.Object.extend({
     this.crear_bloques_iniciales();
   },
 
-  generarCodigo: function() {
+  generarCodigo() {
     // variable global con la que se accede al receptor del programa
     window.receptor = this.get('escena_instanciada').automata;
     var comienzo = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n\n';
@@ -452,8 +472,20 @@ var Actividad = Ember.Object.extend({
     return comienzo + code;
   },
 
+  generarCodigoXML() {
+    var code = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace);
+    return code;
+  },
+
+  cargarCodigoDesdeStringXML(codigo) {
+    var workspace = Blockly.getMainWorkspace();
+    workspace.clear();
+    var xml = Blockly.Xml.textToDom(codigo);
+    Blockly.Xml.domToWorkspace(workspace, xml);
+  },
+
   // Scratch style colours
-  setColours: function() {
+  setColours() {
     Blockly.Blocks.primitivas.COLOUR = '#4a6cd4';
     Blockly.Blocks.sensores.COLOUR = '#2ca5e2';
     Blockly.Blocks.eventos.COLOUR = '#00a65a'; // == boton ejecutar
@@ -488,7 +520,7 @@ var Actividad = Ember.Object.extend({
     // 5e4db3 PARAMS
   },
 
-  obtener_codigo_en_texto: function() {
+  obtener_codigo_en_texto() {
     var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
     return Blockly.Xml.domToText(xml);
   },
@@ -497,11 +529,16 @@ var Actividad = Ember.Object.extend({
 
 
 export default Ember.Service.extend({
-  obtenerPorNombre: function(nombreActividad) {
+  obtenerPorNombre(nombreActividad) {
 
     let actividades = {
       alien: actividadAlien,
-      ElObreroCopado: actividadElObreroCopado,
+      AlienTocaBoton: actividadAlienTocaBoton,
+      LaEleccionDelMono: actividadLaEleccionDelMono,
+      ElMonoYLasBananas: actividadElMonoYLasBananas,
+      LightbotEnScratch: actividadLightbotEnScratch,
+      FutbolRobots: actividadFutbolRobots,
+      ElPlanetaDeNano: actividadElPlanetaDeNano
     };
 
     var actividad = actividades[nombreActividad];

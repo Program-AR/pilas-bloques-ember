@@ -1,13 +1,13 @@
 {
   "main": "app://localhost/index.html",
   "name": "pilas-engine-bloques",
-  "version": "0.1.11",
+  "version": "0.8.8",
   "window": {
     "title": "pilas-bloques",
     "width": 850,
-    "height": 570,
+    "height": 600,
     "min_width": 850,
-    "min_height": 570,
+    "min_height": 600,
     "toolbar": true,
     "position": "center"
   },

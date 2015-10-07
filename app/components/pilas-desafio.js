@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   deshabilitada: false,
 
   actions: {
-    abrir: function() {
+    abrir() {
       this.sendAction('onSelect', this.get('nombre'));
     }
   }

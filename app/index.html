@@ -2,17 +2,27 @@
 <html lang="es">
   <head>
     <meta charset="utf-8">
-    <title>pilas-engine-bloques</title>
+    <title>Pilas Bloques</title>
+
+    <script>
+    if (window['require'] === undefined) {
+      console.log("Ejecutando desde un navegador ...");
+    } else {
+      window.requireNode = require;
+    }
+    </script>
 
     <!-- AGREGADOS PARA NODEWEBKIT -->
-    <script src='reemplazar-require-paso-1.js'></script>
+    <script src='fix-menu-osx.js'></script>
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
 
     {{content-for 'head'}}
 
     <script>
       window.onkeypress = function(e) {
         if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
-          require('nw.gui').Window.get().showDevTools();
+          window.requireNode('nw.gui').Window.get().showDevTools();
         }
       }
     </script>
@@ -45,10 +55,6 @@
 
     {{content-for 'body-footer'}}
 
-    <!-- AGREGADOS PARA NODEWEBKIT -->
-    <script src='reemplazar-require-paso-2.js'></script>
-    <script src='fix-menu-osx.js'></script>
-    <script src='livereload.js'></script>
 
   </body>
 </html>

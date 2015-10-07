@@ -1,6 +1,10 @@
 pilas-engine-bloques
 ====================
 
+Master: [![Build Status](https://travis-ci.org/hugoruscitti/pilas-engine-bloques.svg?branch=master)](https://travis-ci.org/hugoruscitti/pilas-engine-bloques)
+
+Develop:[![Build Status](https://travis-ci.org/hugoruscitti/pilas-engine-bloques.svg?branch=develop)](https://travis-ci.org/hugoruscitti/pilas-engine-bloques)
+
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
@@ -15,3 +19,29 @@ Al clonar el repositorio, podrías escribir el comando ``make``
 para ver las tareas disponibles:
 
 ![](public/make.png)
+
+Por ejemplo, luego de clonar podrías completar todo el proceso ejecutando
+estos comandos:
+
+```
+make iniciar
+make full
+make test_mac
+```
+
+
+Tests
+-----
+
+Para ejecutar los tests de la aplicación hay dos comandos principales, podemos ejecutar los tests de forma constante con este comando:
+
+```
+  make test
+```
+
+o ejecutar los test una sola vez usando el siguiente comando:
+
+
+```
+  ember nw:test
+```

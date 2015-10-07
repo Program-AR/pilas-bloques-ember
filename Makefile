@@ -1,4 +1,4 @@
-VERSION=0.1.11
+VERSION=0.8.8
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -9,7 +9,7 @@ L=[01;30m
 
 comandos:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N}"
+	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
@@ -20,6 +20,8 @@ comandos:
 	@echo ""
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
+	@echo ""
+	@echo "    ${G}utest${N}            Ejecuta las pruebas de forma continua."
 	@echo ""
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
@@ -52,29 +54,41 @@ comandos:
 
 
 iniciar:
+	@echo "${G}instalando dependencias ...${N}"
 	npm install
-	./node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
-	rm -f pilasweb blockly ejerciciosPilas	
+	@echo "${G}vinculando depenrencias ...${N}"
+	rm -f pilasweb blockly ejerciciosPilas
 	ln -s ../pilasweb
 	ln -s ../blockly
 	ln -s ../ejerciciosPilas
 
 bajar_dependencias:
-	cd ..; git clone https://github.com/hugoruscitti/pilasweb.git
-	cd ..; git clone https://github.com/sawady/blockly.git
-	cd ..; git clone https://github.com/google/closure-library.git
+	python scripts/bajar_dependencias.py
 
 actualizar_pilas:
+	@echo "${G}actualizando pilasweb${N}"
+	@echo " ${L}(esto puede demorar)${N}"
 	cd pilasweb; npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	mkdir -p public/libs/
+	make copiar_pilasweb
+
+copiar_pilasweb:
+	@echo "${G}copiando pilasweb${N}"
+	cd pilasweb; make build; cd ..
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_ejercicios_pilas:
-	cd ejerciciosPilas; git pull; npm install; grunt typescript pilas -f; cd ..
+	@echo "${G}actualizando ejercicios de pilas${N}"
+	cd ejerciciosPilas; git pull; npm install; grunt; cd ..
+	make copiar_ejercicios_pilas
+
+copiar_ejercicios_pilas:
+	cd ejerciciosPilas; grunt typescript pilas -f; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 	rm -r -f public/libs/data
 	cp -r -f ejerciciosPilas/src/data public/libs/data
@@ -126,7 +140,10 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	/Applications/nwjs.app/Contents/MacOS/nwjs dist
+	./node_modules/ember-cli/bin/ember nw
+
+utest:
+	./node_modules/ember-cli/bin/ember nw:test --server
 
 test_mac: ejecutar_mac
 
@@ -143,7 +160,7 @@ compilar_live:
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile --list
+	@bumpversion patch --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile app/services/version.js --list
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
@@ -161,11 +178,11 @@ subir_version:
 	git push --tags
 
 to_production:
-	@echo "pasando a modo produccion".
+	@echo "${G}pasando a modo produccion${N}"
 	cp public/package.produccion.json public/package.json
 
 to_develop:
-	@echo "pasando a modo develop".
+	@echo "${G}pasando a modo desarrollo.${N}"
 	cp public/package.desarrollo.json public/package.json
 
 _compile_osx:
@@ -180,6 +197,8 @@ _compile_osx:
 	mv tmp/pilas-engine-bloques-template.app tmp/pilas-engine-bloques.app
 	rm tmp/pilas-engine-bloques-template.zip
 	cp -r dist/* tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/
+	mkdir tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules
+	cp -R node_modules/compare-version tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules/
 	hdiutil create tmp/pilas-engine-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-engine-bloques.app -size 200mb
 	mv tmp/pilas-engine-bloques-${VERSION}.dmg webkitbuilds/
 	rm -r -f tmp
@@ -194,6 +213,8 @@ _compile_win:
 	unzip tmp/pilas-engine-bloques-windows-template.zip -d tmp/ > log_descompresion.log
 	rm -r -f tmp/__*
 	cp -r -f dist/* tmp/nwjs
+	mkdir tmp/nwjs/node_modules
+	cp -R node_modules/compare-version tmp/nwjs/node_modules/
 	cp extras/instalador.nsi tmp/nwjs
 	cd tmp/nwjs; makensis instalador.nsi
 	mv tmp/nwjs/pilas-engine-bloques.exe webkitbuilds/pilas-engine-bloques-${VERSION}.exe
@@ -209,4 +230,4 @@ upload_to_dropbox:
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 
-.PHONY: dist
+.PHONY: dist bajar_dependencias

@@ -6,12 +6,12 @@ export default Ember.Controller.extend({
   nombre_al_guardar: 'mi actividad',
   tmp_codigo_xml: '',
 
-  debeGuardar: function() {
+  debeGuardar() {
     var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
     return codigo_xml !== this.get('tmp_codigo_xml');
   },
 
-  inyectarRedimensionado: function() {
+  inyectarRedimensionado: Ember.on('init', function() {
 
     window.anterior_altura = 0;
     window.anterior_ancho = 0;
@@ -51,7 +51,7 @@ export default Ember.Controller.extend({
     window.onresize = redimensionar;
     window.forzar_redimensionado = forzar_redimensionado;
 
-  }.on('init'),
+  }),
 
   'botones-modal-guardar': [
     Ember.Object.create({title: 'Guardar y ver en la galería', clicked: 'guardarEnGaleriaYRedireccionar'}),
@@ -60,7 +60,7 @@ export default Ember.Controller.extend({
   ],
 
   actions: {
-    registrarPrimerCodigo: function() {
+    registrarPrimerCodigo() {
       var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
       this.set('tmp_codigo_xml', codigo_xml);
       if(this.get('model')) {
@@ -68,18 +68,18 @@ export default Ember.Controller.extend({
       }
     },
 
-    guardar: function() {
+    guardar() {
       var codigo_xml = this.get('actividad').obtener_codigo_en_texto();
       this.set('tmp_codigo_xml', codigo_xml);
       return Bootstrap.ModalManager.show('modal-guardar');
     },
 
-    guardarEnGaleriaYRedireccionar: function() {
+    guardarEnGaleriaYRedireccionar() {
       this.send('guardarEnGaleria');
       this.transitionToRoute('galeria');
     },
 
-    guardarEnGaleria: function() {
+    guardarEnGaleria() {
       //alert("test");
       var imagen = document.getElementById('canvas');
       var imagen_data = imagen.toDataURL('image/png');
@@ -101,7 +101,7 @@ export default Ember.Controller.extend({
       juego.save();
     },
 
-    reiniciar: function() {
+    reiniciar() {
       this.get('actividad').iniciarEscena();
     }
   }

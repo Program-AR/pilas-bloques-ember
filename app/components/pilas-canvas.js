@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   actividad: null,
 
-  iniciarPilas: function() {
+  iniciarPilas: Ember.on('didInsertElement', function() {
     var canvas_element = this.$().find('canvas')[0];
 
     window.pilas = pilasengine.iniciar({
@@ -12,11 +12,13 @@ export default Ember.Component.extend({
       alto: 480,
       canvas: canvas_element,
       data_path: 'libs/data',
-      
+
       imagenesExtra: [
                 'fondos.estrellas.png',
                 'fondos.obrero.png',
                 'fondos.nubes.png',
+                'fondo.elPlanetaDeNano.png',
+                'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
                 'perro_cohete.png',
                 'hueso.png',
@@ -31,7 +33,7 @@ export default Ember.Component.extend({
                 'casillaDerecha.png',
                 'casillaIzquierda.png',
                 'banana.png',
-                'manzana.png',
+                'nano.png',
                 'casilla_base.png',
                 'robot.png',
                 'casilla_con_luz.png',
@@ -52,6 +54,7 @@ export default Ember.Component.extend({
                 'quesoAnimado.png',
                 'naveAnimada.png',
                 'robotAnimado.png',
+                'manzana.png',
                 'pelotaAnimada.png',
                 'fondos.biblioteca.png',
                 'fondos.reparandoLaNave.png',
@@ -59,6 +62,22 @@ export default Ember.Component.extend({
                 'marcianoVerdeAnimado.png',
                 'carbon_animado.png',
                 'hierro_animado.png',
+                'monoAnimado.png',
+                'casillas.violeta.png',
+                'fondos.selva.png',
+                'banana-1.png',
+                'manzana-v2.png',
+                'fondos.futbolRobots.png',
+                'casilla.futbolRobots1.png',
+                'casilla.futbolRobots2.png',
+                'fondos.elPlanetaDeNano.png',
+                'casillas.elPlanetaDeNano.png',
+                'fondos.alien-inicial.png',
+                'casillas.alien_inicial.png',
+                'botonAnimado.png',
+                'camino-alien-boton.png',
+                'iconos.botonRojo.png',
+                'casilla.grisoscuro.png'
                 ]
       });
 
@@ -71,6 +90,6 @@ export default Ember.Component.extend({
 
     window.pilas.ejecutar();
 
-  }.on('didInsertElement'),
+  }),
 
 });

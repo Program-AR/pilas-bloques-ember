@@ -38,10 +38,15 @@ input, textarea /*.contenteditable?*/ {
   background-color: white;
   padding-left: 10px;
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 60px;
   bottom: 0;
   left: 425px;
+}
+
+.panel-pilas {
+  padding-top: 10px;
+  padding-left: 10px;
 }
 
 
@@ -126,20 +131,29 @@ span.url {
 }
 
 .fila-opcion {
-  margin-bottom: 15px;
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+  padding: 10px;
 }
 
 
 .header-right {
   position: absolute;
-  right: 12px;
-  top: 12px;
+  right: -1px;
+  top: -1px;
+  padding-top: 12px;
+  padding-right: 27px;
+  background-image: url('../imagenes/beta.png');
+  background-repeat: no-repeat;
+  background-position: top right;
 }
 
 .header-button {
   color: gray;
   border: 0;
   background-color: white;
+  z-index: 4000;
 }
 
 .header-button:hover {
@@ -153,9 +167,11 @@ span.url {
 .absolute {
   position: absolute;
   left: 10px;
-  right: 10px;
+  right: 0px;
   bottom: 10px;
-  top: 63px;
+  top: 55px;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 
@@ -436,4 +452,113 @@ body,
   border: 1px solid rgb(255, 255, 103);
   border-radius: 10px;
   padding: 10px;
+}
+
+.box {
+  font-size: 18px;
+  box-shadow: 0 0 10px rgb(180, 180, 180);
+  margin: 30px;
+  padding: 20px;
+  text-align: center;
+}
+
+.box p {
+  font-size: 21px;
+}
+
+p {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+}
+
+h1 {
+  font-family: "Source Sans Pro";
+  font-weight: 500;
+}
+
+
+.navbar {
+  box-shadow: none !important;
+  border-radius: 0px !important;
+  border-bottom: 3px solid rgb(219, 219, 219);
+  position: fixed !important;
+}
+
+.navbar-nav > li > a {
+  font-family: "Source Sans Pro" !important;
+}
+
+.em-modal {
+  background-color: hsla(0, 0%, 0%, 0.44) !important;
+}
+
+
+.page-container {
+  padding-top: 50px;
+}
+
+body, .navbar-fixed-top, .navbar-fixed-bottom {
+  min-width: inherit;
+}
+
+
+
+.modal-body {
+  overflow-y: scroll;
+  height: 370px;
+}
+
+.img-border {
+  border: 2px solid rgb(123, 123, 123);
+  margin: 20px;
+}
+
+
+.page-container li {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+}
+
+.pilas-update {
+  display: inline-block;
+}
+
+
+.contenedor-acercade {
+}
+
+.margin {
+  margin: 3px;
+}
+
+
+.modal-consigna {
+  font-size: 17px;
+  padding: 1em;
+}
+
+.pilas-automatic-update {
+  display: inline-block;
+  margin-right: 15px;
+  padding-top: 4px;
+}
+
+.pilas-automatic-update a {
+  color: rgb(184, 134, 42) !important;
+  text-decoration: none !important;
+  font-family: "Source Sans Pro" !important;
+}
+
+.pilas-automatic-update a:hover {
+  color: orange !important;
+}
+
+
+.tip-block {
+  border: 1px solid rgb(201, 198, 249);
+  background-color: rgb(223, 255, 254);
+  padding: 5px;
+  margin-bottom: 15px;
 }
