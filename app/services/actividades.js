@@ -4,7 +4,6 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 
 import actividadElObreroCopado from 'pilas-engine-bloques/actividades/actividadElObreroCopado';
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
-import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 
 Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
 Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
@@ -22,8 +21,87 @@ var {Bloque, CambioDeJSDeBlocky, VariableGet,
 
 
 
+/* ============================================== */
+
+var EstructuraDeControl = Bloque.extend({
+
+  block_init: function(block) {
+    this._super(block);
+    block.setColour(Blockly.Blocks.loops.COLOUR);
+    block.setInputsInline(true);
+    block.setPreviousStatement(true);
+    block.setNextStatement(true);
+  }
+
+});
+
+/* ============================================== */
+
+var Repetir = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'repetir');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('count')
+        .setCheck('Number')
+        .appendField('repetir');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_count = Blockly.JavaScript.valueToCode(block, 'count', Blockly.JavaScript.ORDER_ATOMIC) || '0' ;
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.repetirN(function(){\nreturn {{n}};\n});\n'.replace('{{n}}', value_count);
+    return r;
+  },
+
+  get_parametros: function() {
+    return [
+      ParamValor.create({
+        nombre_param: 'count',
+        tipo_bloque: 'math_number',
+        nombre_valor: 'NUM',
+        valor: '10'
+      })
+    ];
+  }
 
 
+});
+
+/* ============================================== */
+
+var Si = EstructuraDeControl.extend({
+
+  init: function() {
+    this._super();
+    this.set('id', 'si');
+  },
+
+  block_init: function(block) {
+    this._super(block);
+    block.appendValueInput('condition')
+        .setCheck('Boolean')
+        .appendField('si');
+    block.appendStatementInput('block');
+  },
+
+  block_javascript: function(block) {
+    var value_condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
+    var statements_block = Blockly.JavaScript.statementToCode(block, 'block');
+    var r = 'programa.empezar_secuencia();\n';
+    r += statements_block;
+    r += 'programa.alternativa_si(function(){\nreturn {{condition}};\n});\n'.replace('{{condition}}', value_condition);
+    return r;
+  }
+
+});
 
 /* ============================================== */
 
@@ -155,7 +233,32 @@ var ParamCampo = Ember.Object.extend({
    }
 });
 
+/* ============================================== */
 
+/*
+ * Representa un valor mas complejo
+ * de un campo de un bloque
+ */
+var ParamValor = Ember.Object.extend({
+   build: function() {
+     var str_block = '';
+     str_block += '<value name="NOMBRE">'.replace('NOMBRE', this.get('nombre_param'));
+
+     str_block += '<block type="TIPO">'.replace('TIPO', this.get('tipo_bloque'));
+
+     str_block += '<field name="TIPO">'.replace('TIPO', this.get('nombre_valor'));
+     str_block += this.get('valor');
+     str_block += '</field>';
+
+     str_block += '</block>';
+
+     str_block += '</value>';
+
+     return str_block;
+   }
+});
+
+/* ============================================== */
 
 /*
  * Representa el lenguaje que podra utilizarse
@@ -399,7 +502,6 @@ export default Ember.Service.extend({
     let actividades = {
       alien: actividadAlien,
       ElObreroCopado: actividadElObreroCopado,
-      LaEleccionDelMono: actividadLaEleccionDelMono
     };
 
     var actividad = actividades[nombreActividad];
