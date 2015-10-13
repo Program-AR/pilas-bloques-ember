@@ -21,7 +21,7 @@ class SuperTito1 extends Base {
 
         this.fondo = new Fondo('fondo.superTito1.png',0,0);
         var cantidadMaxFilas=7;
-        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 2)
+        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
         this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,
         {separacionEntreCasillas: 5},
         {grilla: 'casilla.grisoscuro.png',

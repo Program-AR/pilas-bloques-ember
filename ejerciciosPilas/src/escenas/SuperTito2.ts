@@ -21,7 +21,7 @@ class SuperTito2 extends Base {
 
         this.fondo = new Fondo('fondo.superTito2.png',0,0);
         var cantidadMaxFilas=7;
-        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 2)
+        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
         this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,
         {separacionEntreCasillas: 5},
         {grilla: 'casilla.grisoscuro.png',
@@ -29,12 +29,17 @@ class SuperTito2 extends Base {
         this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
         this.automata = new Robot(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
+        var hayAlguna=false;
         for (let i = 1; i < this.cantidadFilas-1; i++) {
             if(Math.random()<0.5){
                 this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
+                hayAlguna=true;
             }
 
 
+        }
+        if (!hayAlguna){
+          this.cuadricula.agregarActor(new CasillaConLuz(0,0),this.cantidadFilas-2,0);
         }
 
     }
