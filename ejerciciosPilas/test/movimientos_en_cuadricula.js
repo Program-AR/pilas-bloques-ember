@@ -1,4 +1,4 @@
-test('Movimientos en cuadricula', function(assert) {
+/*test('Movimientos en cuadricula', function(assert) {
   var done = assert.async();
   expect(8);
 
@@ -19,4 +19,4 @@ test('Movimientos en cuadricula', function(assert) {
       done();
   };
 
- });
+});*/
