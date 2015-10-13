@@ -4,7 +4,7 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 
 var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
-/*
+
 var VolverABordeIzquierdo = Accion.extend({
 
   init() {
@@ -14,8 +14,9 @@ var VolverABordeIzquierdo = Accion.extend({
 
   block_init(block) {
     this._super(block);
-    block.appendField('volver todo a')
-         .appendField(this.obtener_icono('izquierda.png'));
+    block.appendDummyInput()
+    .appendField('volver todo a ')
+    .appendField(this.obtener_icono('izquierda.png'));
 
   },
 
@@ -51,11 +52,11 @@ var TomarEstrella = Accion.extend({
   },
 
   argumentos() {
-    return '{\'etiqueta\':\'EstrellaAnimada\', \'mensajeError\': \'Acá no hay una estrella\'}';
+  return '{\'etiqueta\':\'EstrellaAnimada\', \'mensajeError\': \'Acá no hay una estrella\'}';
 
   }
 });
-*/
+
 var actividadElRecolectorDeEstrellas = {
   nombre: 'El recolector de estrellas',
   enunciado: 'A definir.',
@@ -72,7 +73,7 @@ var actividadElRecolectorDeEstrellas = {
 
   control: [Repetir,Si],
   expresiones: [],
-  acciones: [IrDerecha, IrArriba/*,VolverABordeIzquierdo*/],
+  acciones: [IrDerecha, IrArriba,VolverABordeIzquierdo,TomarEstrella],
   sensores: []
 };
 

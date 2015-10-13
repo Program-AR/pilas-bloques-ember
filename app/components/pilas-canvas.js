@@ -88,7 +88,9 @@ export default Ember.Component.extend({
                 'manzana-v2.png',
                 'botonAnimado.png',
                 'camino-alien-boton.png',
-                'iconos.botonRojo.png'
+                /*--------ICONOS---------*/
+                'iconos.botonRojo.png',
+                'icono.estrella.png'
 
                 ]
       });
