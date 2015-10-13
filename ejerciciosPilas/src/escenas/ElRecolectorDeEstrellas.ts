@@ -1,7 +1,7 @@
 
 class ElRecolectorDeEstrellas extends Base {
     fondo;
-    recolector;
+    automata;
     cuadricula;
     objetos;
 
@@ -11,13 +11,13 @@ class ElRecolectorDeEstrellas extends Base {
         var cantidadFilas=4
         var cantidadColumnas=5
 
-        this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-            {alto: 500},
-            {grilla: 'casillaLightbot.png',
-            cantColumnas: 5})
+        this.cuadricula = new Cuadricula(0,-20,cantidadFilas,cantidadColumnas,
+            {alto: 400},
+            {grilla: 'invisible.png',
+            cantColumnas: 1})
 
-        this.recolector = new RecolectorEstrellas(0,0);
-        this.cuadricula.agregarActor(this.recolector,cantidadFilas-1,0);
+        this.automata = new RecolectorEstrellas(0,0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata,cantidadFilas-1,0);
         // La posición inicial pretende respectar el ejemplo
 
         this.objetos=[];
@@ -33,36 +33,20 @@ class ElRecolectorDeEstrellas extends Base {
 
 
     volverAlBordeIzquierdo(){
-        this.recolector.hacer_luego(MoverTodoAIzquierda);
+        this.automata.hacer_luego(MoverTodoAIzquierda);
     }
 
     irArriba(){
-        this.recolector.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     }
 
     irDerecha(){
-        this.recolector.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     }
 
     recogerEstrella(){
-        this.recolector.hacer_luego(Recoger);
+        this.automata.hacer_luego(Recoger);
     }
 
-    /*A partir de aqui no deberian ser bloques*/
-    intentaronRecoger(){
-        if (this.tocandoEstrella()) {
 
-            var objetos2 = this.objetos.filter(objeto => objeto.colisiona_con(this.recolector));
-            var index = this.objetos.indexOf(objetos2[0]);
-            var objeto = this.objetos.splice(index,1)
-            objeto[0].eliminar();
-        } else {
-            this.recolector.decir("¡No hay estrella!");
-        }
-    }
-
-    tocandoEstrella(){
-        return this.objetos.some(objeto => objeto.colisiona_con(this.recolector));
-        this.recolector.decir("Estoy toanco")
-    }
 }
