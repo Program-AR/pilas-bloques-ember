@@ -61,12 +61,11 @@ ComportamDecorator.prototype = {
 
 var hacerLuegoConCallback = function(actor, claseComport, argumentos, callback){
     pilasTestCfg.childs ++;
-
     var nuevoCallback = function(){
         callback.bind(pilasTestCfg)();
         pilasTestCfg.childs --;
         pilasTestCfg.afterTest();
-    }
+    };
     actor.hacer_luego(ComportamDecorator,
         {comportamiento: claseComport, callback: nuevoCallback, argumentos: argumentos});
 }
