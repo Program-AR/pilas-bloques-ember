@@ -5,7 +5,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     cuadricula;
     vectorDireccion;
     estoyEmpezandoAMoverme;
-    
+
     alIniciar(){
         this.cuadricula = this.receptor.cuadricula;
         this.argumentos.direccion = new Direct(this.vectorDireccion.x,this.vectorDireccion.y);
@@ -27,11 +27,11 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         }
         return true;
     }
-    
+
     distancia(){
-        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda 
+        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
     }
-    
+
     distanciaHorizontal(){
         return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
     }
@@ -47,11 +47,11 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         this.receptor.setCasillaActual(proximaCasilla);
         return true
     }
-    
+
     proximaCasilla(casilla){
         // Template Method. Devolver la casilla a la que se va a avanzar
     }
-    
+
     textoAMostrar(){
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
     }
@@ -59,7 +59,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
 class MoverACasillaDerecha extends MovimientoEnCuadricula {
     vectorDireccion = { x: 1, y: 0 };
-    
+
     proximaCasilla(casilla){
         return casilla.casillaASuDerecha();
     }
@@ -128,7 +128,7 @@ class MoverTodoADerecha extends MoverACasillaDerecha{
         return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,this.cuadricula.cantColumnas-1);
    }
    distancia(){
-        return this.distanciaHorizontal() 
+        return this.distanciaHorizontal()
                * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna );
    }
 }

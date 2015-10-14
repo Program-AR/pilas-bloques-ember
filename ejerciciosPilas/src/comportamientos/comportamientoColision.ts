@@ -14,10 +14,10 @@ automata
 
 
 class ComportamientoColision extends ComportamientoAnimado {
-	nombreAnimacion(){
+	/*nombreAnimacion(){
 		// redefinir por subclase
 		return "parado";
-	}
+	}*/
 
 	alTerminarAnimacion(){
 		if(pilas.escena_actual().estado !== undefined){
