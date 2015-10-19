@@ -17,11 +17,11 @@ class LaberintoLargo extends Base {
     }
 
     moverDerecha(){
-      this.personaje.hacer_luego(MoverACasillaDerechaEsparsa);
+      this.personaje.hacer_luego(MoverACasillaDerecha);
     }
 
     moverAbajo(){
-      this.personaje.hacer_luego(MoverACasillaAbajoEsparsa);
+      this.personaje.hacer_luego(MoverACasillaAbajo);
     }
 
 }

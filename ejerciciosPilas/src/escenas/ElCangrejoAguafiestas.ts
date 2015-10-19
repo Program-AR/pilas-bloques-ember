@@ -66,16 +66,16 @@
     }
 
     moverDerecha(){
-      this.cangrejo.hacer_luego(MoverACasillaDerechaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaDerecha);
     }
     moverIzquierda(){
-      this.cangrejo.hacer_luego(MoverACasillaIzquierdaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaIzquierda);
     }
     moverArriba(){
-      this.cangrejo.hacer_luego(MoverACasillaArribaEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaArriba);
     }
     moverAbajo(){
-      this.cangrejo.hacer_luego(MoverACasillaAbajoEsparsa);
+      this.cangrejo.hacer_luego(MoverACasillaAbajo);
     }
 
     explotarGlobo(){

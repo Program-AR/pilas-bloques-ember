@@ -2,7 +2,7 @@
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/Robot.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 
 /**

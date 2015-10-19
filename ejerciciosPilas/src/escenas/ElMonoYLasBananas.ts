@@ -3,7 +3,7 @@
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />}
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
 
 class ElMonoYLasBananas extends Base {
     fondo;
@@ -30,7 +30,7 @@ class ElMonoYLasBananas extends Base {
 
 
     agregar(objeto){
-        
+
     }
 
     personajePrincipal(){

@@ -7,13 +7,13 @@
 /// <reference path = "../actores/CaballeroAnimado.ts"/>
 /// <reference path = "../actores/UnicornioAnimado.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path = "../comportamientos/ComportamientoDeAltoOrden.ts"/>
 
 
 /**
  * @class LaGranAventuraDelMarEncantado
- * 
+ *
  */
 class LaGranAventuraDelMarEncantado extends Base {
     estado;
@@ -26,15 +26,15 @@ class LaGranAventuraDelMarEncantado extends Base {
     mago;
     caballero;
     unicornio;
-        
+
     iniciar() {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,4,5,
             {alto: 300},
-            {grilla: 'casillaLightbot.png', 
+            {grilla: 'casillaLightbot.png',
             cantColumnas: 5});
-        
+
         // se ubican los actores
         this.llave = new LlaveAnimado(0,0);
         this.cuadricula.agregarActor(this.llave,1,4)
@@ -94,7 +94,7 @@ class LaGranAventuraDelMarEncantado extends Base {
     escaparEnUnicornio() {
         this.heroe.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
     }
-    
+
     doAgarrarLlave() {
     	this.estado.agarrarLlave();
     }
@@ -102,15 +102,15 @@ class LaGranAventuraDelMarEncantado extends Base {
     doAbrirCofre() {
     	this.estado.abrirCofre();
     }
-    
+
     doDarSombrero() {
     	this.estado.darSombrero();
     }
-    
+
     doAtacarConEspada() {
     	this.estado.atacarConEspada();
     }
-    
+
     doEscaparEnUnicornio() {
     	this.estado.escaparEnUnicornio();
     }
@@ -124,23 +124,23 @@ class MarEncantadoState {
         this.escena = escena;
     }
 
-    agarrarLlave() { 
+    agarrarLlave() {
         this.escena.heroe.decir("¡Aquí no está la llave!");
     }
-    
-    abrirCofre() { 
+
+    abrirCofre() {
         this.escena.heroe.decir("¡Tengo que ir al cofre con la llave!");
     }
-    
-    darSombrero() { 
+
+    darSombrero() {
         this.escena.heroe.decir("¡Tengo que darle el sombrero al mago!");
     }
-    
-    atacarConEspada() { 
+
+    atacarConEspada() {
         this.escena.heroe.decir("¡Tengo que atacar con espada al cabellero!");
     }
-    
-    escaparEnUnicornio() { 
+
+    escaparEnUnicornio() {
         this.escena.heroe.decir("¡Tengo que salvar a la princesa y escapar!");
     }
 
@@ -151,7 +151,7 @@ class BuscandoLLaveState extends MarEncantadoState {
         super(escena);
     }
 
-    agarrarLlave() { 
+    agarrarLlave() {
         if (this.escena.heroe.colisiona_con(this.escena.llave)) {
             this.escena.llave.eliminar();
             this.escena.estado = new BuscandoSombreroState(this.escena);
@@ -167,7 +167,7 @@ class BuscandoSombreroState extends MarEncantadoState {
         super(escena);
     }
 
-    abrirCofre() { 
+    abrirCofre() {
         if (this.escena.heroe.colisiona_con(this.escena.cofre)) {
             this.escena.cofre.eliminar();
             this.escena.estado = new BuscandoEspadaState(this.escena);
@@ -182,7 +182,7 @@ class BuscandoEspadaState extends MarEncantadoState {
         super(escena);
     }
 
-    darSombrero() { 
+    darSombrero() {
         if (this.escena.heroe.colisiona_con(this.escena.mago)) {
             this.escena.mago.eliminar();
             this.escena.estado = new IrALucharConCaballeroState(this.escena);
@@ -197,7 +197,7 @@ class IrALucharConCaballeroState extends MarEncantadoState {
         super(escena);
     }
 
-    atacarConEspada() { 
+    atacarConEspada() {
         if (this.escena.heroe.colisiona_con(this.escena.caballero)) {
             this.escena.caballero.eliminar();
             this.escena.estado = new RescatandoPrincesaState(this.escena);
@@ -212,7 +212,7 @@ class RescatandoPrincesaState extends MarEncantadoState {
         super(escena);
     }
 
-    escaparEnUnicornio() { 
+    escaparEnUnicornio() {
         if (this.escena.heroe.colisiona_con(this.escena.unicornio)) {
             this.escena.unicornio.eliminar();
             this.escena.estado = new MarEncantadoState(this.escena);
@@ -221,4 +221,3 @@ class RescatandoPrincesaState extends MarEncantadoState {
         }
     }
 }
-

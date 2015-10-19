@@ -1,4 +1,4 @@
-/// <reference path="comportamientoColision.ts"/>
+/// <reference path="ComportamientoColision.ts"/>
 
 
 

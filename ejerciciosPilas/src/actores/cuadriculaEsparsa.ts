@@ -1,4 +1,4 @@
-/// <reference path="../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path="../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path="Cuadricula.ts"/>
 
 class CuadriculaEsparsa extends Cuadricula{
@@ -56,44 +56,4 @@ class CuadriculaEsparsa extends Cuadricula{
     }
   }
 */
-
-}
-
-
-class MoverACasillaDerechaEsparsa extends MoverACasillaDerecha {
-  proximaCasilla(casilla){
-  if (casilla.cuadricula.hayDerecha(casilla)){
-    return casilla.casillaASuDerecha();
-  }else{
-    return undefined;
-  }
-}
-}
-
-class MoverACasillaIzquierdaEsparsa extends MoverACasillaIzquierda {
-  proximaCasilla(casilla){
-  if (casilla.cuadricula.hayIzquierda(casilla)){
-    return casilla.casillaASuIzquierda();
-  }else{
-    return undefined;
-  }
-}
-}
-class MoverACasillaArribaEsparsa extends MoverACasillaArriba {
-  proximaCasilla(casilla){
-  if (casilla.cuadricula.hayArriba(casilla)){
-    return casilla.casillaDeArriba();
-  }else{
-    return undefined;
-  }
-}
-}
-class MoverACasillaAbajoEsparsa extends MoverACasillaAbajo {
-  proximaCasilla(casilla){
-  if (casilla.cuadricula.hayAbajo(casilla)){
-    return casilla.casillaDeAbajo();
-  }else{
-    return undefined;
-  }
-}
 }

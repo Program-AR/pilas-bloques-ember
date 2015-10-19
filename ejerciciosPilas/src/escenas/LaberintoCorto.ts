@@ -1,7 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 
 /**
