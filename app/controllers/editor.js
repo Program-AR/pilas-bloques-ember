@@ -101,8 +101,5 @@ export default Ember.Controller.extend({
       juego.save();
     },
 
-    reiniciar() {
-      this.get('actividad').iniciarEscena();
-    }
   }
 });
