@@ -72,7 +72,7 @@ export default Ember.Component.extend({
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
 
-    this.get('actividad').finalizaCargarBlockly = () => {
+    window.addEventListener('terminaCargaInicial', () => {
       var solucion = this.get('solucion');
 
       if (solucion) {
@@ -82,7 +82,13 @@ export default Ember.Component.extend({
       if (this.get('autoejecutar')) {
         this.send('ejecutar');
       }
-    }
+    }, false);
+
+
+    window.addEventListener('terminaEjecucion', () => {
+      console.log("EEE TERMINó ejecución");
+    }, false);
+
 
   }),
 

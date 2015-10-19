@@ -462,6 +462,9 @@ var Actividad = Ember.Object.extend({
     });
 
     this.crear_bloques_iniciales();
+
+    var event = new Event('terminaCargaInicial');
+    window.dispatchEvent(event);
   },
 
   generarCodigo() {

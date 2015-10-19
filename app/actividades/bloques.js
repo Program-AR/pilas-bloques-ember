@@ -320,6 +320,30 @@ var AlEmpezar = Bloque.extend({
     var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
     var r = 'programa.empezar_secuencia();\n';
     r += statements_program + '\n';
+
+    var Comportamiento = (function () {
+
+      function Comportamiento(argumentos) {
+          this.argumentos = argumentos;
+      }
+
+      Comportamiento.prototype.iniciar = function (receptor) {
+          this.receptor = receptor;
+      };
+
+      Comportamiento.prototype.actualizar = function () {
+        var event = new Event('terminaEjecucion');
+        window.dispatchEvent(event);
+        return true;
+      };
+
+      return Comportamiento;
+    })();
+
+    window['receptor'].finaliza_tarea = Comportamiento;
+
+    r += 'programa.hacer(receptor.finaliza_tarea, {});\n';
+
     r += 'programa.ejecutar(receptor);\n';
     return r;
   }

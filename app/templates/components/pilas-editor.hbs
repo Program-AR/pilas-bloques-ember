@@ -1,3 +1,4 @@
+{{#if actividad}}
 <div class='contenedor-editor' id='contenedor-editor'>
 
   <div class='panel-pilas' id='panel-pilas'>
@@ -27,3 +28,6 @@
   </div>
 
 </div>
+{{else}}
+  <p>Error: tienes que inicializar este componente con una actividad.</p>
+{{/if}}
