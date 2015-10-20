@@ -1,70 +1,6 @@
 import Ember from 'ember';
 
-/*
- * Representa un bloque
- * para el lenguaje de la actividad
- */
-var Bloque = Ember.Object.extend({
-  init() {
-    // espera:
-    // + id
-    // + categoria
-  },
-
-  block_init() {
-    // abstracta
-  },
-
-  /*jshint unused: vars*/
-  block_javascript(block) {
-    // abstracta
-  },
-
-  registrar_en_blockly() {
-    var myThis = this;
-    Blockly.Blocks[this.get('id')] = {
-      init() {
-        myThis.block_init(this);
-      }
-    };
-
-    Blockly.JavaScript[this.get('id')] = function(block) {
-      return myThis.block_javascript(block);
-    };
-  },
-
-  instanciar_para_workspace() {
-    this.registrar_en_blockly();
-
-    var block_dom = Blockly.Xml.textToDom(
-      '<xml>' + this.build() + '</xml>'
-    );
-
-    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), block_dom);
-  },
-
-  // reimplementar si se desean parametros ya aplicados
-  get_parametros() {
-    return [];
-  },
-
-  obtener_icono(nombre) {
-    return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
-  },
-
-  // Escupe el código que va en el toolbox para el bloque
-  build() {
-    var str_block = '';
-    str_block += '<block type="TIPO">'.replace('TIPO', this.get('id'));
-
-    this.get_parametros().forEach(function(item) {
-       str_block += item.build();
-    });
-
-    str_block += '</block>';
-    return str_block;
-  }
-});
+import Bloque from 'pilas-engine-bloques/actividades/bloque';
 
 /*
  * Pide implementar sólo block_javascript
@@ -360,7 +296,7 @@ var Accion = Bloque.extend({
     block.setNextStatement(true);
   },
 
-  block_javascript(block) {
+  block_javascript(/*block*/) {
     return 'programa.hacer(' + this.nombre_comportamiento() + ', ' + this.argumentos() + ')\n';
   }
 
@@ -375,7 +311,7 @@ var Sensor = Bloque.extend({
     block.setOutput(true);
   },
 
-  block_javascript(block) {
+  block_javascript(/*block*/) {
     return ['receptor.' + this.nombre_sensor() + '\n', Blockly.JavaScript.ORDER_ATOMIC];
   }
 });
@@ -399,6 +335,16 @@ var ParamValor = Ember.Object.extend({
 
      str_block += '</value>';
 
+     return str_block;
+   }
+});
+
+var ParamCampo = Ember.Object.extend({
+   build() {
+     var str_block = '';
+     str_block += '<field name="NOMBRE">'.replace('NOMBRE', this.get('nombre_valor'));
+     str_block += this.get('valor');
+     str_block += '</field>';
      return str_block;
    }
 });
@@ -547,6 +493,6 @@ var Hasta = EstructuraDeControl.extend({
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
-               Sensor, Repetir,Si,Sino,Hasta};
+               Sensor, Repetir,Si,Sino,Hasta, ParamCampo};
 
 export default bloques;

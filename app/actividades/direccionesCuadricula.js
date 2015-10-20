@@ -104,6 +104,6 @@ var IrAbajo = Accion.extend({
 });
 
 
-var direcciones = {IrDerecha,IrIzquierda,IrArriba,IrAbajo};
+var direcciones = {IrDerecha, IrIzquierda, IrArriba, IrAbajo};
 
 export default direcciones;

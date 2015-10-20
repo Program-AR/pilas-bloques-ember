@@ -84,9 +84,9 @@ export default Ember.Component.extend({
       }
     }, false);
 
-
     window.addEventListener('terminaEjecucion', () => {
-      console.log("EEE TERMINó ejecución");
+      //this.sendAction('cuandoTerminaAction');
+      //alert("Terminó la ejecución del código");
     }, false);
 
 
@@ -144,15 +144,17 @@ export default Ember.Component.extend({
       var code = this.get('actividad').generarCodigo();
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
-      try {
-        this.set('ejecutando', true);
-        eval(code);
-        console.log(code);
-        this.sendAction('parar');
-      } catch (e) {
-        console.error(e.stack);
-        alert(e);
-      }
+      Ember.run(() => {
+        try {
+          this.set('ejecutando', true);
+          eval(code);
+          this.sendAction('parar');
+        } catch (e) {
+          console.error(e.stack);
+          alert(e);
+        }
+      });
+
     },
 
     reiniciar() {
