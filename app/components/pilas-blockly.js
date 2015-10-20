@@ -72,26 +72,33 @@ export default Ember.Component.extend({
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
 
-    window.addEventListener('terminaCargaInicial', () => {
-      var solucion = this.get('solucion');
+    this.handlerCargaInicial = this.cuandoTerminaCargaInicial.bind(this);
+    this.handlerTerminaEjecucion = this.cuandoTerminaEjecucion.bind(this);
 
-      if (solucion) {
-        this.get('actividad').cargarCodigoDesdeStringXML(solucion.get('codigoXML'));
-      }
-
-      if (this.get('autoejecutar')) {
-        this.send('ejecutar');
-      }
-    }, false);
-
-    window.addEventListener('terminaEjecucion', () => {
-      //this.sendAction('cuandoTerminaAction');
-      //alert("Terminó la ejecución del código");
-    }, false);
-
+    window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
+    window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
 
   }),
 
+  cuandoTerminaCargaInicial() {
+    var solucion = this.get('solucion');
+
+    if (solucion) {
+      this.get('actividad').cargarCodigoDesdeStringXML(solucion.get('codigoXML'));
+    }
+
+    if (this.get('autoejecutar')) {
+      this.send('ejecutar');
+    }
+  },
+
+  cuandoTerminaEjecucion() {
+  },
+
+  willDestroyElement() {
+    window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
+    window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+  },
 
   /**
    * Se conecta a los eventos y cambios de estado de blockly para implementar
