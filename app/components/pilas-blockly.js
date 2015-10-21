@@ -66,7 +66,7 @@ export default Ember.Component.extend({
 
   }),
 
-  iniciarBlockly: Ember.on('didInsertElement', function() {
+  didInsertElement() {
     //var contenedor = this.$().find('#contenedor-blockly')[0];
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
@@ -78,7 +78,7 @@ export default Ember.Component.extend({
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
 
-  }),
+  },
 
   cuandoTerminaCargaInicial() {
     var solucion = this.get('solucion');

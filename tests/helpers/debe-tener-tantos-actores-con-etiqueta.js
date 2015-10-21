@@ -1,5 +1,3 @@
-import Ember from 'ember';
-
 function contarActoresConEtiqueta(pilas, etiqueta) {
   var escena = pilas.escena_actual();
 
@@ -10,7 +8,7 @@ function contarActoresConEtiqueta(pilas, etiqueta) {
   return escena.actores.filter(tieneEtiquetaBuscada).length;
 }
 
-export default Ember.Test.registerHelper('debeTenerTantosActoresConEtiqueta', function(app, assert, cantidad, etiqueta) {
+export default function debeTenerTantosActoresConEtiqueta(assert, cantidad, etiqueta) {
   var cantidad_de_actores = contarActoresConEtiqueta(window['pilas'], etiqueta);
   assert.equal(cantidad, cantidad_de_actores, `Debe haber ${cantidad} de actores con la etiqueta '${etiqueta}'`);
-});
+}

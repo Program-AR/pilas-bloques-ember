@@ -6,11 +6,11 @@ import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
+import debeTenerTantosActoresConEtiqueta from '../../helpers/debe-tener-tantos-actores-con-etiqueta';
 
 moduleForComponent('pilas-editor', 'component:pilas-editor', {
   integration: true,
 });
-
 
 test('informa error si no tiene actividad', function(assert) {
   assert.expect(1);
@@ -32,6 +32,7 @@ test('puede cargar una actividad y leer el título del desafío', function(asser
   this.render(hbs`
     {{#pilas-editor ocultarModal=true actividad=actividad}}{{/pilas-editor}}
   `);
+
 
   var texto_del_componente = this.$().text().trim();
   var texto_esperado = 'El alien y las tuercas';
@@ -98,14 +99,14 @@ test('puede resolver la actividad del alien y las tuercas', function(assert) {
     `);
 
     window.addEventListener('terminaCargaInicial', () => {
-      debeTenerTantosActoresConEtiqueta(5, "TuercaAnimada");
+      debeTenerTantosActoresConEtiqueta(assert, 5, "TuercaAnimada");
       //debeTenerTantosActoresConEtiqueta
       //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
       //assert.equal(5, cantidad_de_tuercas, "Tienen que haber 5 tuercas al comenzar.");
     }, false);
 
     window.addEventListener('terminaEjecucion', () => {
-      debeTenerTantosActoresConEtiqueta(0, "TuercaAnimada");
+      debeTenerTantosActoresConEtiqueta(assert, 0, "TuercaAnimada");
       //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
       //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
 
