@@ -2,18 +2,20 @@
 /*Notar que aumentar puede tomar valores negativos o positivos*/
 /* Para usarlo, hay que construirlo y setearle un observado
 ver clase "observado" */
+
+
 class Tablero{
   nombre;
   puntaje;
   observado;
   /*Saco por ahora la observacion de algo, no lo necesito so far.*/
-  constructor(x,y,texto){
+  constructor(x,y,argumentos){
     //this.observado=observadoP || undefined;
-    var colorNombre = "black";
-    var colorPuntaje = "red";
-    this.nombre=new Texto(x,y,texto,colorNombre);
 
-    this.puntaje=new Puntaje(x + 10 ,y,0,colorPuntaje);
+
+    this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
+
+    this.puntaje=new Puntaje(x + (argumentos.separacionX||0) ,y + (argumentos.separacionY||0),argumentos.valorInicial||0,(argumentos.colorPuntaje||"black"));
 }
 
 
