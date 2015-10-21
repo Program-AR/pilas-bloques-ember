@@ -10,6 +10,7 @@
     "$",
     "pilasengine",
     "Base",
+    "debeTenerTantosActoresConEtiqueta",
     "debugger"
   ],
   "browser": true,

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Application from '../../app';
 import config from '../../config/environment';
+import debeTenerTantosActoresConEtiqueta from './debe-tener-tantos-actores-con-etiqueta';
 
 export default function startApp(attrs) {
   var application;
