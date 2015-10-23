@@ -9,7 +9,7 @@ import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/activid
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
-import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
+//import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
@@ -83,7 +83,7 @@ export default Ember.Service.extend({
       LightbotEnScratch: actividadLightbotEnScratch,
       FutbolRobots: actividadFutbolRobots,
       //ElPlanetaDeNano: actividadElPlanetaDeNano
-      LightbotRecargado : actividadLightbotRecargado,
+      //LightbotRecargado : actividadLightbotRecargado,
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas
