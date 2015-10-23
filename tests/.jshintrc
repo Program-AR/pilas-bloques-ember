@@ -21,7 +21,13 @@
     "andThen",
     "currentURL",
     "currentPath",
-    "currentRouteName"
+    "currentRouteName",
+    "$",
+    "Blockly",
+    "pilas",
+    "pilasengine",
+    "Base",
+    "debeTenerTantosActoresConEtiqueta"
   ],
   "node": false,
   "browser": false,

@@ -1,4 +1,4 @@
-VERSION=0.8.7
+VERSION=0.8.8
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -9,7 +9,7 @@ L=[01;30m
 
 comandos:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N}"
+	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
