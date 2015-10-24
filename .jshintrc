@@ -10,8 +10,8 @@
     "pilas",
     "pilasengine",
     "Base",
-    "debeTenerTantosActoresConEtiqueta",
-    "debugger"
+    "debugger",
+    "ElRecolectorDeEstrellas"
   ],
   "browser": true,
   "boss": true,

@@ -1,8 +1,7 @@
-/* globals AlienLevantaTuercas */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var {Accion, /*Sensor,*/ Repetir,Si,Procedimiento} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
 
 var VolverABordeIzquierdo = Accion.extend({
