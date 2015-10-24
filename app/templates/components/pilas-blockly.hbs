@@ -41,8 +41,9 @@
 
 <div id="contenedor-blockly" style="height: 300px; width: 500px;"> </div>
 
-{{test}}
+{{#if ocultarModal}}
 
+{{else}}
 
 {{#em-modal configName="bs" open-if=abrirDialogoCompartir}}
 
@@ -88,3 +89,5 @@
   {{/em-modal-footer}}
 
 {{/em-modal}}
+
+{{/if}}

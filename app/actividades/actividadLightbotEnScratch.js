@@ -1,33 +1,13 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Accion, Si, Repetir, Procedimiento} = bloques;
+import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
+var {/*Accion,*/ Si, Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
+var {EncenderLuz} = bloquesTito;
 
-var EncenderLuz = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'EncenderLuz');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-          .appendField('encender ')
-         .appendField(this.obtener_icono('../libs/data/iconos.lamparita.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'EncenderLuz';
-  },
-
-  argumentos() {
-    return '{}';
-  }
-});
 
 var actividadLightbotEnScratch = {
-  nombre: 'Lightbot ahora se llama Tito',
+  nombre: 'Tito enciende las luces',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
     'Pista: esa diagonal puede ser una gran subtarea.',
 

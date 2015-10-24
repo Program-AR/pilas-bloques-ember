@@ -1,4 +1,5 @@
-VERSION=0.8.7
+
+VERSION=0.9.0
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -9,7 +10,7 @@ L=[01;30m
 
 comandos:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N}"
+	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
@@ -140,7 +141,7 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	./node_modules/ember-cli/bin/ember nw
+	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
 utest:
 	./node_modules/ember-cli/bin/ember nw:test --server
@@ -160,7 +161,7 @@ compilar_live:
 
 version:
 	# patch || minor
-	@bumpversion patch --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile app/services/version.js --list
+	@bumpversion minor --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile app/services/version.js --list
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
@@ -168,7 +169,14 @@ version:
 
 ver_sync: subir_version
 
-full: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
+
+limpiar_todo:
+	@echo "Limpiando bibliotecas..."
+	@echo "(se reinstalarán a continuación)"
+	@sleep 5s;
+	@rm -rf node_modules/ bower_components/ 
+
+full: limpiar_todo iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
 
 subir_version:
 	git commit -am 'release ${VERSION}'

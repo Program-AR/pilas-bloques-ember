@@ -3,14 +3,15 @@
     "document",
     "window",
     "-Promise",
-    "Blockly",
-    "pilas",
     "Bootstrap",
     "require",
     "$",
+    "Blockly",
+    "pilas",
     "pilasengine",
     "Base",
-    "debugger"
+    "debugger",
+    "ElRecolectorDeEstrellas"
   ],
   "browser": true,
   "boss": true,
