@@ -1,18 +1,17 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Accion, Si, Repetir, Procedimiento} = bloques;
-var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
-var {EncenderLuz} = bloquesTito;
+var {Si, Repetir, Procedimiento} = bloques;
+var {IrAbajo} = direcciones;
+var {EncenderLuz,TocandoLuz} = bloquesTito;
 
-
-var actividadLightbotEnScratch = {
-  nombre: 'Tito enciende las luces',
+var actividadLightbotRecargado = {
+  nombre: 'Tito recargado',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: esa diagonal puede ser una gran subtarea.',
+    'Consigna.',
 
   // la escena proviene de ejerciciosPilas
-  escena: LightbotScratch,  // jshint ignore:line
+  escena: LightBotRecargado,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
@@ -22,8 +21,8 @@ var actividadLightbotEnScratch = {
   variables: [],
   control: [Si,Repetir],
   expresiones: [],
-  acciones: [EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
-  sensores: [],
+  acciones: [EncenderLuz,IrAbajo],
+  sensores: [TocandoLuz],
 };
 
-export default actividadLightbotEnScratch;
+export default actividadLightbotRecargado;

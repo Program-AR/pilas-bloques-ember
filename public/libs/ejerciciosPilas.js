@@ -26,6 +26,7 @@ var ActorAnimado = (function (_super) {
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
+        //this.aprender(SerAnimado,{})
         this.detener_animacion();
         this.objetosRecogidos = [];
     }
@@ -69,6 +70,9 @@ var ActorAnimado = (function (_super) {
         //return actores.length > 0;
     };
     ;
+    ActorAnimado.prototype.estoyUltimaFila = function () {
+        return this.cuadricula.cantFilas - 1 == this.casillaActual().nroFila;
+    };
     ActorAnimado.prototype.cambiarImagen = function (nombre) {
         this.imagen = this.animacionPara(nombre);
     };
@@ -144,6 +148,7 @@ var AlienAnimado = (function (_super) {
         this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 20);
         this.definirAnimacion("apretar", [12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 12, 13], 3);
+        this.definirAnimacion("SerAnimado", [0, 1, 2, 3, 4, 3, 2, 1], 20);
     }
     return AlienAnimado;
 })(ActorAnimado);
@@ -761,7 +766,7 @@ var MovimientoEnCuadricula = (function (_super) {
         return true;
     };
     MovimientoEnCuadricula.prototype.distancia = function () {
-        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda 
+        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
     };
     MovimientoEnCuadricula.prototype.distanciaHorizontal = function () {
         return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
@@ -911,7 +916,7 @@ var MoverTodoAbajo = (function (_super) {
     };
     return MoverTodoAbajo;
 })(MoverACasillaAbajo);
-/// <reference path="../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path="../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path="Cuadricula.ts"/>
 var CuadriculaEsparsa = (function (_super) {
     __extends(CuadriculaEsparsa, _super);
@@ -950,66 +955,6 @@ var CuadriculaEsparsa = (function (_super) {
     };
     return CuadriculaEsparsa;
 })(Cuadricula);
-var MoverACasillaDerechaEsparsa = (function (_super) {
-    __extends(MoverACasillaDerechaEsparsa, _super);
-    function MoverACasillaDerechaEsparsa() {
-        _super.apply(this, arguments);
-    }
-    MoverACasillaDerechaEsparsa.prototype.proximaCasilla = function (casilla) {
-        if (casilla.cuadricula.hayDerecha(casilla)) {
-            return casilla.casillaASuDerecha();
-        }
-        else {
-            return undefined;
-        }
-    };
-    return MoverACasillaDerechaEsparsa;
-})(MoverACasillaDerecha);
-var MoverACasillaIzquierdaEsparsa = (function (_super) {
-    __extends(MoverACasillaIzquierdaEsparsa, _super);
-    function MoverACasillaIzquierdaEsparsa() {
-        _super.apply(this, arguments);
-    }
-    MoverACasillaIzquierdaEsparsa.prototype.proximaCasilla = function (casilla) {
-        if (casilla.cuadricula.hayIzquierda(casilla)) {
-            return casilla.casillaASuIzquierda();
-        }
-        else {
-            return undefined;
-        }
-    };
-    return MoverACasillaIzquierdaEsparsa;
-})(MoverACasillaIzquierda);
-var MoverACasillaArribaEsparsa = (function (_super) {
-    __extends(MoverACasillaArribaEsparsa, _super);
-    function MoverACasillaArribaEsparsa() {
-        _super.apply(this, arguments);
-    }
-    MoverACasillaArribaEsparsa.prototype.proximaCasilla = function (casilla) {
-        if (casilla.cuadricula.hayArriba(casilla)) {
-            return casilla.casillaDeArriba();
-        }
-        else {
-            return undefined;
-        }
-    };
-    return MoverACasillaArribaEsparsa;
-})(MoverACasillaArriba);
-var MoverACasillaAbajoEsparsa = (function (_super) {
-    __extends(MoverACasillaAbajoEsparsa, _super);
-    function MoverACasillaAbajoEsparsa() {
-        _super.apply(this, arguments);
-    }
-    MoverACasillaAbajoEsparsa.prototype.proximaCasilla = function (casilla) {
-        if (casilla.cuadricula.hayAbajo(casilla)) {
-            return casilla.casillaDeAbajo();
-        }
-        else {
-            return undefined;
-        }
-    };
-    return MoverACasillaAbajoEsparsa;
-})(MoverACasillaAbajo);
 /*
 
 1. La clase implementa una matriz donde cada fila tiene una cantidad distinta de columnas.
@@ -1185,6 +1130,19 @@ var DefinidorColumnasFijo = (function (_super) {
     }
     return DefinidorColumnasFijo;
 })(DefinidorColumnasDeUnaFila);
+/// <reference path="ActorAnimado.ts"/>
+var EstrellaAnimada = (function (_super) {
+    __extends(EstrellaAnimada, _super);
+    function EstrellaAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'estrellaAnimada.png', cantColumnas: 3, cantFilas: 1 });
+        //this.escala_x = 2;
+        //this.escala_y = 2;
+        this.definirAnimacion("serAnimado", [0, 1, 2], 15);
+        this.definirAnimacion("parado", [0, 1, 2], 5);
+        this.definirAnimacion("recoger", [4], 5);
+    }
+    return EstrellaAnimada;
+})(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var GloboAnimado = (function (_super) {
     __extends(GloboAnimado, _super);
@@ -1501,10 +1459,11 @@ var QuesoAnimado = (function (_super) {
 var RecolectorEstrellas = (function (_super) {
     __extends(RecolectorEstrellas, _super);
     function RecolectorEstrellas(x, y) {
-        _super.call(this, x, y, { grilla: 'perro_cohete.png', cantColumnas: 1, cantFilas: 7 });
-        this.definirAnimacion("correr", [4, 5, 6, 5], 15);
-        this.definirAnimacion("parado", [4], 5);
-        this.definirAnimacion("recoger", [4], 5);
+        _super.call(this, x, y, { grilla: 'recolectorAnimado.png', cantColumnas: 14, cantFilas: 1 });
+        this.definirAnimacion("serAnimado", [0, 1, 2], 15);
+        this.definirAnimacion("parado", [0, 1, 2], 15);
+        this.definirAnimacion("correr", [3, 4, 5, 6, 7], 5);
+        this.definirAnimacion("recoger", [7, 8, 9, 10, 11, 12, 13, 7], 60);
     }
     return RecolectorEstrellas;
 })(ActorAnimado);
@@ -1596,6 +1555,117 @@ var UnicornioAnimado = (function (_super) {
     }
     return UnicornioAnimado;
 })(ActorAnimado);
+var avanzarFilaEnCuadriculaMultiple = (function (_super) {
+    __extends(avanzarFilaEnCuadriculaMultiple, _super);
+    function avanzarFilaEnCuadriculaMultiple() {
+        _super.apply(this, arguments);
+    }
+    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
+        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
+        if (casAbajo && casAbajo.nroColumna == 0) {
+            return casAbajo;
+        }
+    };
+    return avanzarFilaEnCuadriculaMultiple;
+})(MoverACasillaAbajo);
+/*
+Es un comportamiento genérico con la idea de ser extendido
+Sus características son
+
+Si se está colisionando con un objeto de etiqueta A:
+    Realizar acciones dependientes de ese objeto
+Caso Contrario:
+    El personaje principal ejecuta un mensaje de error.
+
+La escena que lo utiliza debe tener definido
+automata
+
+*/
+var ComportamientoColision = (function (_super) {
+    __extends(ComportamientoColision, _super);
+    function ComportamientoColision() {
+        _super.apply(this, arguments);
+    }
+    /*nombreAnimacion(){
+        // redefinir por subclase
+        return "parado";
+    }*/
+    ComportamientoColision.prototype.alTerminarAnimacion = function () {
+        if (pilas.escena_actual().estado !== undefined) {
+            pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
+        }
+        else {
+            this.elEstadoEsValido();
+        }
+    };
+    ComportamientoColision.prototype.elEstadoEsValido = function () {
+        var _this = this;
+        if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
+            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); })) {
+            this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0]);
+            return true;
+        }
+        else {
+            pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
+            return false;
+        }
+    };
+    ComportamientoColision.prototype.metodo = function (objetoColision) {
+        //redefinir por subclase
+    };
+    return ComportamientoColision;
+})(ComportamientoAnimado);
+var DesencadenarAnimacionDobleSiColiciona = (function (_super) {
+    __extends(DesencadenarAnimacionDobleSiColiciona, _super);
+    function DesencadenarAnimacionDobleSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarAnimacionDobleSiColiciona.prototype.metodo = function (objetoColision) {
+        this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
+        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+    };
+    return DesencadenarAnimacionDobleSiColiciona;
+})(ComportamientoColision);
+var DesencadenarAnimacionSiColiciona = (function (_super) {
+    __extends(DesencadenarAnimacionSiColiciona, _super);
+    function DesencadenarAnimacionSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarAnimacionSiColiciona.prototype.metodo = function (objetoColision) {
+        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+    };
+    return DesencadenarAnimacionSiColiciona;
+})(ComportamientoColision);
+var DesencadenarHabilidadSiColiciona = (function (_super) {
+    __extends(DesencadenarHabilidadSiColiciona, _super);
+    function DesencadenarHabilidadSiColiciona() {
+        _super.apply(this, arguments);
+    }
+    DesencadenarHabilidadSiColiciona.prototype.metodo = function (objetoColision) {
+        objetoColision.aprender(this.argumentos['Habilidad'], this.argumentos['argumentosHabilidad']);
+    };
+    return DesencadenarHabilidadSiColiciona;
+})(ComportamientoColision);
+var MorderPorEtiqueta = (function (_super) {
+    __extends(MorderPorEtiqueta, _super);
+    function MorderPorEtiqueta() {
+        _super.apply(this, arguments);
+    }
+    MorderPorEtiqueta.prototype.metodo = function (objetoColision) {
+        objetoColision.cargarAnimacion("mordida");
+    };
+    return MorderPorEtiqueta;
+})(ComportamientoColision);
+var EncenderPorEtiqueta = (function (_super) {
+    __extends(EncenderPorEtiqueta, _super);
+    function EncenderPorEtiqueta() {
+        _super.apply(this, arguments);
+    }
+    EncenderPorEtiqueta.prototype.metodo = function (objetoColision) {
+        objetoColision.cargarAnimacion("prendida");
+    };
+    return EncenderPorEtiqueta;
+})(ComportamientoColision);
 /// <reference path="ComportamientoAnimado.ts"/>
 var ComportamientoDeAltoOrden = (function (_super) {
     __extends(ComportamientoDeAltoOrden, _super);
@@ -1610,6 +1680,26 @@ var ComportamientoDeAltoOrden = (function (_super) {
     };
     return ComportamientoDeAltoOrden;
 })(ComportamientoAnimado);
+/// <reference path="ComportamientoAnimado.ts"/>
+/*
+Requiere que la escena tenga como atributo una instancia de la
+clase contadorDeEtiquetas bajo el nombre contadorDeEtiquetas y una
+funcion llamada personajePrincipal que devuelve precisamente dicho
+personaje
+
+
+Ejemplo de uso: ElMonoQueSabeContar.ts
+*/
+var ContarPorEtiqueta = (function (_super) {
+    __extends(ContarPorEtiqueta, _super);
+    function ContarPorEtiqueta() {
+        _super.apply(this, arguments);
+    }
+    ContarPorEtiqueta.prototype.metodo = function (objetoColision) {
+        this.argumentos['dondeReflejarValor'].aumentar(1);
+    };
+    return ContarPorEtiqueta;
+})(ComportamientoColision);
 var EncenderCompu = (function (_super) {
     __extends(EncenderCompu, _super);
     function EncenderCompu() {
@@ -1722,105 +1812,7 @@ var Martillar = (function (_super) {
     };
     return Martillar;
 })(Comportamiento);
-/*
-Es un comportamiento genérico con la idea de ser extendido
-Sus características son
-
-Si se está colisionando con un objeto de etiqueta A:
-    Realizar acciones dependientes de ese objeto
-Caso Contrario:
-    El personaje principal ejecuta un mensaje de error.
-
-La escena que lo utiliza debe tener definido
-automata
-
-*/
-var ComportamientoColision = (function (_super) {
-    __extends(ComportamientoColision, _super);
-    function ComportamientoColision() {
-        _super.apply(this, arguments);
-    }
-    ComportamientoColision.prototype.nombreAnimacion = function () {
-        // redefinir por subclase
-        return "parado";
-    };
-    ComportamientoColision.prototype.alTerminarAnimacion = function () {
-        if (pilas.escena_actual().estado !== undefined) {
-            pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
-        }
-        else {
-            this.elEstadoEsValido();
-        }
-    };
-    ComportamientoColision.prototype.elEstadoEsValido = function () {
-        var _this = this;
-        if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); })) {
-            this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0]);
-            return true;
-        }
-        else {
-            pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
-            return false;
-        }
-    };
-    ComportamientoColision.prototype.metodo = function (objetoColision) {
-        //redefinir por subclase
-    };
-    return ComportamientoColision;
-})(ComportamientoAnimado);
-var DesencadenarAnimacionDobleSiColiciona = (function (_super) {
-    __extends(DesencadenarAnimacionDobleSiColiciona, _super);
-    function DesencadenarAnimacionDobleSiColiciona() {
-        _super.apply(this, arguments);
-    }
-    DesencadenarAnimacionDobleSiColiciona.prototype.metodo = function (objetoColision) {
-        this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
-        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
-    };
-    return DesencadenarAnimacionDobleSiColiciona;
-})(ComportamientoColision);
-var DesencadenarAnimacionSiColiciona = (function (_super) {
-    __extends(DesencadenarAnimacionSiColiciona, _super);
-    function DesencadenarAnimacionSiColiciona() {
-        _super.apply(this, arguments);
-    }
-    DesencadenarAnimacionSiColiciona.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
-    };
-    return DesencadenarAnimacionSiColiciona;
-})(ComportamientoColision);
-var DesencadenarHabilidadSiColiciona = (function (_super) {
-    __extends(DesencadenarHabilidadSiColiciona, _super);
-    function DesencadenarHabilidadSiColiciona() {
-        _super.apply(this, arguments);
-    }
-    DesencadenarHabilidadSiColiciona.prototype.metodo = function (objetoColision) {
-        objetoColision.aprender(this.argumentos['Habilidad'], this.argumentos['argumentosHabilidad']);
-    };
-    return DesencadenarHabilidadSiColiciona;
-})(ComportamientoColision);
-var MorderPorEtiqueta = (function (_super) {
-    __extends(MorderPorEtiqueta, _super);
-    function MorderPorEtiqueta() {
-        _super.apply(this, arguments);
-    }
-    MorderPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion("mordida");
-    };
-    return MorderPorEtiqueta;
-})(ComportamientoColision);
-var EncenderPorEtiqueta = (function (_super) {
-    __extends(EncenderPorEtiqueta, _super);
-    function EncenderPorEtiqueta() {
-        _super.apply(this, arguments);
-    }
-    EncenderPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion("prendida");
-    };
-    return EncenderPorEtiqueta;
-})(ComportamientoColision);
-/// <reference path="comportamientoColision.ts"/>
+/// <reference path="ComportamientoColision.ts"/>
 var RecogerPorEtiqueta = (function (_super) {
     __extends(RecogerPorEtiqueta, _super);
     function RecogerPorEtiqueta() {
@@ -1852,45 +1844,12 @@ var SaltarHablando = (function (_super) {
     };
     return SaltarHablando;
 })(Saltar);
-var avanzarFilaEnCuadriculaMultiple = (function (_super) {
-    __extends(avanzarFilaEnCuadriculaMultiple, _super);
-    function avanzarFilaEnCuadriculaMultiple() {
-        _super.apply(this, arguments);
-    }
-    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
-        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
-        if (casAbajo && casAbajo.nroColumna == 0) {
-            return casAbajo;
-        }
-    };
-    return avanzarFilaEnCuadriculaMultiple;
-})(MoverACasillaAbajo);
-/// <reference path="ComportamientoAnimado.ts"/>
-/*
-Requiere que la escena tenga como atributo una instancia de la
-clase contadorDeEtiquetas bajo el nombre contadorDeEtiquetas y una
-funcion llamada personajePrincipal que devuelve precisamente dicho
-personaje
-
-
-Ejemplo de uso: ElMonoQueSabeContar.ts
-*/
-var ContarPorEtiqueta = (function (_super) {
-    __extends(ContarPorEtiqueta, _super);
-    function ContarPorEtiqueta() {
-        _super.apply(this, arguments);
-    }
-    ContarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        this.argumentos['dondeReflejarValor'].aumentar(1);
-    };
-    return ContarPorEtiqueta;
-})(ComportamientoColision);
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />}
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
 var AlienInicial = (function (_super) {
     __extends(AlienInicial, _super);
     function AlienInicial() {
@@ -1934,7 +1893,9 @@ var AlienLevantaTuercas = (function (_super) {
         for (var i = 0; i < 5; i++) {
             var tuerca = new TuercaAnimada(0, 0);
             this.cuadricula.agregarActorEnPerspectiva(tuerca, i, i);
-            tuerca.aprender(Flotar, { 'Desvio': 10 });
+            //tuerca.aprender(Flotar,{'Desvio':10})
+            //tuerca.aprender(Rotar,{'gradosDeAumentoStep':1})
+            tuerca.aprender(Vibrar, { 'gradosDeAumentoStep': 2, 'tiempoVibracion': 40 });
             tuerca.escala = 1.0;
         }
     };
@@ -2240,16 +2201,16 @@ var ElCangrejoAguafiestas = (function (_super) {
         this.cuadricula.agregarActor(nuevo, 3, this.cantidadColumnas - 1);
     };
     ElCangrejoAguafiestas.prototype.moverDerecha = function () {
-        this.cangrejo.hacer_luego(MoverACasillaDerechaEsparsa);
+        this.cangrejo.hacer_luego(MoverACasillaDerecha);
     };
     ElCangrejoAguafiestas.prototype.moverIzquierda = function () {
-        this.cangrejo.hacer_luego(MoverACasillaIzquierdaEsparsa);
+        this.cangrejo.hacer_luego(MoverACasillaIzquierda);
     };
     ElCangrejoAguafiestas.prototype.moverArriba = function () {
-        this.cangrejo.hacer_luego(MoverACasillaArribaEsparsa);
+        this.cangrejo.hacer_luego(MoverACasillaArriba);
     };
     ElCangrejoAguafiestas.prototype.moverAbajo = function () {
-        this.cangrejo.hacer_luego(MoverACasillaAbajoEsparsa);
+        this.cangrejo.hacer_luego(MoverACasillaAbajo);
     };
     ElCangrejoAguafiestas.prototype.explotarGlobo = function () {
         this.cangrejo.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'GloboAnimado', 'mensajeError': 'No hay un globo aqui' });
@@ -2392,7 +2353,7 @@ var ElMarcianoEnElDesierto = (function (_super) {
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />}
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
 var ElMonoYLasBananas = (function (_super) {
     __extends(ElMonoYLasBananas, _super);
     function ElMonoYLasBananas() {
@@ -2563,53 +2524,35 @@ var ElRecolectorDeEstrellas = (function (_super) {
         _super.apply(this, arguments);
     }
     ElRecolectorDeEstrellas.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/nubes.png', 0, 0);
+        this.fondo = new Fondo('fondo.recolector.png', 0, 0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 500 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
-        this.recolector = new RecolectorEstrellas(0, 0);
-        this.cuadricula.agregarActor(this.recolector, cantidadFilas - 1, 0);
+        this.cuadricula = new Cuadricula(0, -20, cantidadFilas, cantidadColumnas, { alto: 400 }, { grilla: 'invisible.png',
+            cantColumnas: 1 });
+        this.automata = new RecolectorEstrellas(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0);
         // La posición inicial pretende respectar el ejemplo
         this.objetos = [];
         for (var fila = 0; fila < cantidadFilas; fila++) {
             for (var columna = 1; columna < cantidadColumnas; columna++) {
-                var objeto = new Hueso(0, 0);
+                var objeto = new EstrellaAnimada(0, 0);
                 this.cuadricula.agregarActor(objeto, fila, columna);
                 this.objetos.push(objeto);
             }
         }
     };
     ElRecolectorDeEstrellas.prototype.volverAlBordeIzquierdo = function () {
-        this.recolector.hacer_luego(MoverTodoAIzquierda);
+        this.automata.hacer_luego(MoverTodoAIzquierda);
     };
     ElRecolectorDeEstrellas.prototype.irArriba = function () {
-        this.recolector.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     };
     ElRecolectorDeEstrellas.prototype.irDerecha = function () {
-        this.recolector.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     ElRecolectorDeEstrellas.prototype.recogerEstrella = function () {
-        this.recolector.hacer_luego(Recoger);
-    };
-    /*A partir de aqui no deberian ser bloques*/
-    ElRecolectorDeEstrellas.prototype.intentaronRecoger = function () {
-        var _this = this;
-        if (this.tocandoEstrella()) {
-            var objetos2 = this.objetos.filter(function (objeto) { return objeto.colisiona_con(_this.recolector); });
-            var index = this.objetos.indexOf(objetos2[0]);
-            var objeto = this.objetos.splice(index, 1);
-            objeto[0].eliminar();
-        }
-        else {
-            this.recolector.decir("¡No hay estrella!");
-        }
-    };
-    ElRecolectorDeEstrellas.prototype.tocandoEstrella = function () {
-        var _this = this;
-        return this.objetos.some(function (objeto) { return objeto.colisiona_con(_this.recolector); });
-        this.recolector.decir("Estoy toanco");
+        this.automata.hacer_luego(Recoger);
     };
     return ElRecolectorDeEstrellas;
 })(Base);
@@ -2773,7 +2716,7 @@ var EscribirEnCompuAnimada = (function (_super) {
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />}
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts" />}
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
 var LaEleccionDelMono = (function (_super) {
     __extends(LaEleccionDelMono, _super);
     function LaEleccionDelMono() {
@@ -2813,7 +2756,7 @@ var LaEleccionDelMono = (function (_super) {
 /// <reference path = "../actores/CaballeroAnimado.ts"/>
 /// <reference path = "../actores/UnicornioAnimado.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path = "../comportamientos/ComportamientoDeAltoOrden.ts"/>
 /**
  * @class LaGranAventuraDelMarEncantado
@@ -3014,10 +2957,10 @@ var LaberintoConQueso = (function (_super) {
         return this.personaje;
     };
     LaberintoConQueso.prototype.moverDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerechaEsparsa);
+        this.personaje.hacer_luego(MoverACasillaDerecha);
     };
     LaberintoConQueso.prototype.moverAbajo = function () {
-        this.personaje.hacer_luego(MoverACasillaAbajoEsparsa);
+        this.personaje.hacer_luego(MoverACasillaAbajo);
     };
     LaberintoConQueso.prototype.ComerQueso = function () {
         this.personaje.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'QuesoAnimado', 'mensajeError': 'No hay queso aqui' });
@@ -3027,7 +2970,7 @@ var LaberintoConQueso = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class LaberintoCorto
  *
@@ -3077,17 +3020,17 @@ var LaberintoLargo = (function (_super) {
         return this.personaje;
     };
     LaberintoLargo.prototype.moverDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerechaEsparsa);
+        this.personaje.hacer_luego(MoverACasillaDerecha);
     };
     LaberintoLargo.prototype.moverAbajo = function () {
-        this.personaje.hacer_luego(MoverACasillaAbajoEsparsa);
+        this.personaje.hacer_luego(MoverACasillaAbajo);
     };
     return LaberintoLargo;
 })(Base);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class LightBot
  *
@@ -3124,7 +3067,7 @@ var LightBot = (function (_super) {
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/Robot.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class LightBotRecargado
  *
@@ -3138,30 +3081,30 @@ var LightBotRecargado = (function (_super) {
     LightBotRecargado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
         //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 1, 11, {}, { grilla: 'casilla_base.png',
-            cantColumnas: 1, alto: 38 });
+        this.cuadricula = new Cuadricula(0, 0, 8, 1, { separacionEntreCasillas: 5, alto: pilas.opciones.alto - 40 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, ancho: 50, alto: 50 });
         //se cargan las luces
-        for (var i = 0; i < 11; i++) {
+        for (var i = 1; i < 8; i++) {
             if (Math.random() < .5) {
                 this.agregarLuz(i);
             }
         }
-        // se crea el personaje
-        this.personaje = new Robot(0, 0);
-        this.cuadricula.agregarActor(this.personaje, 0, 0);
+        // se crea el automata
+        this.automata = new Robot(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0, true);
     };
-    LightBotRecargado.prototype.agregarLuz = function (columna) {
+    LightBotRecargado.prototype.agregarLuz = function (fila) {
         var casillaLuminosa = new CasillaConLuz(0, 0);
-        this.cuadricula.agregarActor(casillaLuminosa, 0, columna);
+        this.cuadricula.agregarActor(casillaLuminosa, fila, 0);
         casillaLuminosa.escala_x = .50;
         casillaLuminosa.escala_y = .50;
         this.objetos.push(casillaLuminosa);
     };
     LightBotRecargado.prototype.avanzar = function () {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     LightBotRecargado.prototype.prenderLuz = function () {
-        this.personaje.hacer_luego(EncenderLuz);
+        this.automata.hacer_luego(EncenderLuz);
     };
     return LightBotRecargado;
 })(Base);
@@ -3733,10 +3676,75 @@ var SuperLightBot2 = (function (_super) {
     return SuperLightBot2;
 })(SuperLightBot1);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/Obrero.ts"/>
+/// <reference path = "../actores/Cuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/**
+ * @class LightBot
+ *
+ */
+var SuperTito1 = (function (_super) {
+    __extends(SuperTito1, _super);
+    function SuperTito1() {
+        _super.apply(this, arguments);
+    }
+    SuperTito1.prototype.iniciar = function () {
+        this.estado = undefined;
+        this.fondo = new Fondo('fondo.superTito1.png', 0, 0);
+        var cantidadMaxFilas = 7;
+        this.cantidadFilas = Math.floor((Math.random() * cantidadMaxFilas) + 3);
+        this.cuadricula = new Cuadricula(pilas.opciones.arriba - 40, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, ancho: 50, alto: 50 });
+        this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
+        this.automata = new Robot(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        for (var i = 1; i < this.cantidadFilas - 1; i++) {
+            this.cuadricula.agregarActor(new CasillaConLuz(0, 0), i, 0);
+        }
+    };
+    return SuperTito1;
+})(Base);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/Obrero.ts"/>
+/// <reference path = "../actores/Cuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/**
+ * @class LightBot
+ *
+ */
+var SuperTito2 = (function (_super) {
+    __extends(SuperTito2, _super);
+    function SuperTito2() {
+        _super.apply(this, arguments);
+    }
+    SuperTito2.prototype.iniciar = function () {
+        this.estado = undefined;
+        this.fondo = new Fondo('fondo.superTito2.png', 0, 0);
+        var cantidadMaxFilas = 7;
+        this.cantidadFilas = Math.floor((Math.random() * cantidadMaxFilas) + 3);
+        this.cuadricula = new Cuadricula(pilas.opciones.arriba - 40, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, ancho: 50, alto: 50 });
+        this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
+        this.automata = new Robot(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        var hayAlguna = false;
+        for (var i = 1; i < this.cantidadFilas - 1; i++) {
+            if (Math.random() < 0.5) {
+                this.cuadricula.agregarActor(new CasillaConLuz(0, 0), i, 0);
+                hayAlguna = true;
+            }
+        }
+        if (!hayAlguna) {
+            this.cuadricula.agregarActor(new CasillaConLuz(0, 0), this.cantidadFilas - 2, 0);
+        }
+    };
+    return SuperTito2;
+})(Base);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../actores/Hueso.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class SuperViaje
  *
@@ -3777,7 +3785,7 @@ var SuperViaje = (function (_super) {
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../actores/Hueso.ts"/>
-/// <reference path = "../comportamientos/movimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class TresHuesos
  *
@@ -3903,4 +3911,51 @@ var SerPateado = (function (_super) {
         this.receptor.x += this.contador;
     };
     return SerPateado;
+})(Habilidad);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/*Si los grados de aumento son positivos gira para la derecha
+caso contrario gira para la izquierda*/
+var Vibrar = (function (_super) {
+    __extends(Vibrar, _super);
+    function Vibrar(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.gradosDeAumentoStep = argumentos['gradosDeAumentoStep'] || 1;
+        this.tiempoVibracion = argumentos['tiempoVibracion'] || 2;
+        this.izquierda = true;
+        this.tiempoAEmplear = this.tiempoVibracion;
+        this.enPause = true;
+    }
+    Vibrar.prototype.actualizar = function () {
+        /*
+              if(this.tiempoVibracion>0){
+                this.tiempoVibracion--;
+              }*/
+        if (this.enPause) {
+            this.tiempoAEmplear--;
+            if (this.tiempoAEmplear < 0) {
+                this.enPause = false;
+                this.tiempoAEmplear = this.tiempoVibracion;
+            }
+        }
+        else {
+            if (this.izquierda) {
+                this.receptor.rotacion += this.gradosDeAumentoStep;
+                this.tiempoAEmplear--;
+                if (this.tiempoAEmplear < 0) {
+                    this.izquierda = false;
+                    this.tiempoAEmplear = this.tiempoVibracion;
+                }
+            }
+            else {
+                this.receptor.rotacion -= this.gradosDeAumentoStep;
+                this.tiempoAEmplear--;
+                if (this.tiempoAEmplear < 0) {
+                    this.izquierda = true;
+                    this.tiempoAEmplear = this.tiempoVibracion;
+                    this.enPause = true;
+                }
+            }
+        }
+    };
+    return Vibrar;
 })(Habilidad);
