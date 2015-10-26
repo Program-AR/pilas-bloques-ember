@@ -14,6 +14,7 @@ import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/activid
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
+import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
 //import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 //import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 //import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
@@ -28,7 +29,7 @@ import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/a
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 //import actividadPrendiendoLasCompus 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
-//import actividadElMonoQueSabeContar 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
+
 //import actividadElMonoCuentaDeNuevo'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 
@@ -564,7 +565,8 @@ export default Ember.Service.extend({
       LightbotRecargado : actividadLightbotRecargado,
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
-      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas
+      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
+      ElMonoQueSabeContar:actividadElMonoQueSabeContar
       /*MariaLaComeSandias: actividadMariaLaComeSandias
       AlimentandoALosPeces: actividadAlimentandoALosPeces
       InstalandoJuegos:InstalandoJuegos
