@@ -203,6 +203,9 @@ class Fila extends Cuadricula{
 }
 */
 class DefinidorColumnasDeUnaFila{
+  /*TODO refactor de nombres para que quede mejor, dado
+  que se está utilizando como definidor de filas o de columnas
+  segun el caso*/
     index;
     tamanos;
     constructor(){
