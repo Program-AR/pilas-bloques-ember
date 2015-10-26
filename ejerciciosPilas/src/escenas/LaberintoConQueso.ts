@@ -10,7 +10,7 @@ class LaberintoConQueso extends Base {
     iniciar() {
         this.estado=undefined;
         this.cuadricula = new CuadriculaParaRaton(0,0,10,10,{'alto':400,'ancho':300},{'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
-        this.cuadricula.completarConObjetosRandom(new conjuntoClases([QuesoAnimado]));
+        this.cuadricula.completarConObjetosRandom([QuesoAnimado]);
         this.personaje=new RatonAnimado(0,0)
         this.cuadricula.agregarActor(this.personaje,0,0);
     }

@@ -18,28 +18,82 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 
 /// <reference path = "../actores/cuadriculaEsparsa.ts"/>
 
-class CuadriculaMultiple extends CuadriculaEsparsa{
 
-    pmatrix;
-    constructor(definidor,x,y,opcionesCuadricula,opcionesCasilla){
-      var max = definidor.dameMaximo();
-      this.pmatrix=[];
-      while(definidor.hayProxFila()){
-        var fila=[];
-        var cantColumnas=definidor.dameProxFila();
-        var cant=0;
-        while(cant<cantColumnas){
-          fila.push('T');
-          cant++;
+
+class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
+  pmatrix;
+  constructor(definidor,x,y,opcionesCuadricula,opcionesCasilla){
+    var cantidadFilas = definidor.dameMaximo();
+    var cantidadColumnas=definidor.size();
+    this.pmatrix = new Array(cantidadFilas,Array(cantidadColumnas));
+    //this.pmatrix =  String[cantidadFilas][cantidadColumnas];
+    for(var fila=0;fila<cantidadFilas;fila++){
+      this.pmatrix[fila]=[]
+      for(var col=0;col<cantidadColumnas;col++){
+
+
+        if (definidor.at(col)>fila){
+          this.pmatrix[fila][col]='T';
+        }else{
+          this.pmatrix[fila][col]='F';
         }
-        while(cant<max){
-          fila.push('F');
-          cant++;
-        }
-        this.pmatrix.push(fila);
+
+
       }
-      super(x,y,this.pmatrix.length,max,opcionesCuadricula,opcionesCasilla,this.pmatrix);
     }
+
+    super(x,y,cantidadFilas,cantidadColumnas,opcionesCuadricula,opcionesCasilla,this.pmatrix);
+  }
+
+  public cambiarImagenInicio(nuevaImagen){
+    for (var nroColumna=0;nroColumna<this.pmatrix[0].length;nroColumna++){
+      this.casilla(0,nroColumna).cambiarImagen(nuevaImagen);
+    }
+  }
+
+  public cambiarImagenFin(nuevaImagen){
+    for (var fila=0;fila<this.pmatrix.length;fila++){
+      for (var col=0;col<this.pmatrix[0].length;col++){
+        if(this.esLaUltima(fila,col)){
+            this.casilla(fila,col).cambiarImagen(nuevaImagen);
+        }
+      }
+    }
+  }
+
+  private esLaUltima(fila,col){
+    return this.pmatrix[fila][col]=='T'&&(this.pmatrix[fila+1]==undefined||this.pmatrix[fila+1][col]=='F');
+  }
+}
+
+
+
+
+class CuadriculaMultiple extends CuadriculaEsparsa{
+  pmatrix;
+
+  constructor(definidor,x,y,opcionesCuadricula,opcionesCasilla){
+    var max = definidor.dameMaximo();
+    this.pmatrix=[];
+    while(definidor.hayProxFila()){
+      var fila=[];
+      var cantColumnas=definidor.dameProxFila();
+      var cant=0;
+      while(cant<cantColumnas){
+        fila.push('T');
+        cant++;
+      }
+      while(cant<max){
+        fila.push('F');
+        cant++;
+      }
+      this.pmatrix.push(fila);
+    }
+    super(x,y,this.pmatrix.length,max,opcionesCuadricula,opcionesCasilla,this.pmatrix);
+  }
+
+
+
 
   public cambiarImagenCasillas(imagenNueva){
     for (var nroFila = 0; nroFila < this.pmatrix.length; ++nroFila) {
@@ -73,24 +127,6 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
     return index;
   }
 
-
-      public completarConObjetosRandom(arrayClases){
-        arrayClases = new conjuntoClases(arrayClases)
-        for (var i =0; i < this.pmatrix.length ; i+=1){
-        this.completarFilaConObjetosRandom(arrayClases,i);
-        //this.filas.foreach(function(fila) {fila.completarConObjetosRandom(arrayClases)});
-        }
-      }
-
-  private completarFilaConObjetosRandom(arrayClases,nroFila){
-    for (var index = 1; index < this.cantidadColumnas(nroFila);index+=1){
-        if (Math.random()<0.5) {
-            this.agregarActor(arrayClases.dameUno(),nroFila,index)
-        }
-    }
-
-  }
-
   private cantidadColumnas(nroFila){
     return this.dameIndexUltimaPosicion(nroFila)+1;
   }
@@ -98,7 +134,7 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
 }
 
 
-class conjuntoClases {
+class ConjuntoClases {
      clases;
 
      constructor(clases){
@@ -111,6 +147,8 @@ class conjuntoClases {
 
 }
 
+
+/*
 class Fila extends Cuadricula{
     cantidadColumnas;
     cuadriculaMultiple;
@@ -123,12 +161,12 @@ class Fila extends Cuadricula{
             {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas, separacionEntreCasillas: 5},
             {grilla: 'casillaLightbot.png', cantColumnas:5,ancho: altoCasilla, alto:altoCasilla})
     }
-    /*
+
     El ancho seteado de esa manera permite que todas las casillas tengan el mismo tamano
     El x tiene que ver con lograr acomodar todas las casillas sobre el margen izquierdo
 
-    */
-    //TODO: reemplazar el 200 por algun valor independiente del navegador
+
+
 
     public aplicarATodasCasillas(funcion){
       for (var index = 0; index < this.casillas.length; ++index) {
@@ -163,13 +201,21 @@ class Fila extends Cuadricula{
 
 
 }
-
+*/
 class DefinidorColumnasDeUnaFila{
     index;
     tamanos;
     constructor(){
         this.index=0;
         this.tamanos=[];
+    }
+
+    size(){
+      return this.tamanos.length;
+    }
+
+    at(index){
+      return this.tamanos[index]
     }
 
     dameProxFila(){
@@ -201,7 +247,7 @@ class DefinidorColumnasDeUnaFila{
 class DefinidorColumnasRandom extends DefinidorColumnasDeUnaFila{
     constructor(filas,cantidadMaxColumnas){
         super();
-        this.tamanos=Array.apply(null, Array(filas)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 2);});
+        this.tamanos=Array.apply(null, Array(filas)).map(function (_, i) {return Math.floor((Math.random() * cantidadMaxColumnas) + 3);});
     }
 }
 

@@ -3,19 +3,18 @@
 /* Para usarlo, hay que construirlo y setearle un observado
 ver clase "observado" */
 
-
-class Tablero{
+class Tablero extends ActorAnimado{
   nombre;
   puntaje;
   observado;
-  /*Saco por ahora la observacion de algo, no lo necesito so far.*/
-  constructor(x,y,argumentos){
-    //this.observado=observadoP || undefined;
 
+  constructor(x,y,argumentos){
+    super(x, y, {grilla: argumentos.imagen, cantColumnas:1, cantFilas: 1});
 
     this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
 
-    this.puntaje=new Puntaje(x + (argumentos.separacionX||0) ,y + (argumentos.separacionY||0),argumentos.valorInicial||0,(argumentos.colorPuntaje||"black"));
+    this.puntaje=new Puntaje(x+(argumentos.separacionX||0),y+(argumentos.separacionY||0),argumentos.valorInicial||0,argumentos.colorPuntaje||"black");
+
 }
 
 

@@ -9,6 +9,8 @@ class CuadriculaEsparsa extends Cuadricula{
   }
 
   crearCasillas(){
+    /*Crea las casillas definidas por la matriz booleana
+    definida ene l constructor*/
     this.casillas = new Array<Casilla>();
     for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
       for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
@@ -19,18 +21,35 @@ class CuadriculaEsparsa extends Cuadricula{
         }
       }
   }
-  completarConObjetosRandom(conjuntoDeClases){
+
+  completarConObjetosRandom(conjuntoDeClases,argumentos){
+    /*Completa la cuadricula esparsa con objetos random
+    Opcionalmente se le puede pasar a argumentos.condiciones
+    una lista de funciones que seran evaluadas de manera de evitar
+    que en determinadas posiciones de la cuadricula se agreguen objetos.*/
     for(var index=0;index<this.casillas.length;++index){
-      if(Math.random()<0.4){
+      if(Math.random()<0.6&&this.sonTodosTrue(argumentos.condiciones,this.casillas[index].nroFila,this.casillas[index].nroColumna,this.matriz)){
         this.agregarActor(conjuntoDeClases.dameUno(),this.casillas[index].nroFila,this.casillas[index].nroColumna);
       }
-
     }
-
   }
 
+  sonTodosTrue(condiciones,fila,col,pmatrix){
+    /*Toma una lista de funciones y les aplica
+    fila, col. */
+    if (condiciones!=undefined){
+      for(var i =0;i<condiciones.length;++i){
+        if (!condiciones[i](fila,col,pmatrix)){
+          return false;
+        }
+      }
+    }
+    return true;
+  }
 
   hayDerecha(casilla){
+    /*Devuelve true sii existe una casilla
+    a la inmediata derecha de la casilla */
     return (casilla.nroColumna < this.matriz[casilla.nroFila].length+1)
   }
 
