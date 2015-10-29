@@ -1,34 +1,17 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor,Si,Procedimiento} = bloques;
-
-
-
-
-var TocandoBanana = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoBanana');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Tocando ')
-         .appendField(new Blockly.FieldImage('libs/data/iconos.banana.png', 15, 15, 'banana'))
-         .appendField(' ?');
-
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'BananaAnimada\')';
-  }
-});
+import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import tocando from 'pilas-engine-bloques/actividades/tocando';
+import contando from 'pilas-engine-bloques/actividades/contando';
+var {Accion, Sensor,Si,Repetir,Procedimiento} = bloques;
+var {IrArriba,IrAbajo} = direcciones;
+var {TocandoBanana,TocandoManzana} = tocando;
+var {ContandoBanana,ContandoManzana} = contando;
 
 
 
 
 var actividadElMonoQueSabeContar = {
-  nombre: 'El Mono y las Bananas',
+  nombre: 'El Mono que sabe contar',
   enunciado:
     'COMPLETAR'
   ,
@@ -44,10 +27,10 @@ var actividadElMonoQueSabeContar = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+  control: [Si,Repetir],
   expresiones: [],
-  acciones: [],
-  sensores: [],
+  acciones: [IrArriba,IrAbajo,ContandoBanana,ContandoManzana],
+  sensores: [TocandoBanana,TocandoManzana],
 };
 
 export default actividadElMonoQueSabeContar;
