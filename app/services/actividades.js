@@ -15,6 +15,7 @@ import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuper
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
+import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 //import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 //import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
@@ -565,7 +566,9 @@ export default Ember.Service.extend({
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
-      MariaLaComeSandias: actividadMariaLaComeSandias
+      MariaLaComeSandias: actividadMariaLaComeSandias,
+      ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto
+
       /*AlimentandoALosPeces: actividadAlimentandoALosPeces
       InstalandoJuegos:InstalandoJuegos
       LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado

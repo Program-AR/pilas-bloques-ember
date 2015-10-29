@@ -25,6 +25,31 @@ var ComerBanana = Accion.extend({
 
 
 
-var comer= {ComerBanana};
+var ComerManzana = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ComerManzana');
+  },
+
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Comer ')
+         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'RecogerPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'ManzanaAnimada\',  \'mensajeError\' : \'No hay una manzana aqui\' }';
+  }
+});
+
+
+
+var comer= {ComerBanana,ComerManzana};
 
 export default comer;
