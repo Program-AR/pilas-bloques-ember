@@ -12,7 +12,10 @@ Ejemplo de uso: ElMonoQueSabeContar.ts
 
 
 class ContarPorEtiqueta extends ComportamientoColision {
-  
+  nombreAnimacion(){
+    // redefinir por subclase
+    return "contar";
+  }
     metodo(objetoColision){
         this.argumentos['dondeReflejarValor'].aumentar(1);
     }

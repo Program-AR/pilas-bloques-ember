@@ -1,6 +1,6 @@
 class MariaLaComeSandias extends Base {
     cuadricula;
-    maria;
+    automata;
     cantidadColumnas;
     estado;
     iniciar() {
@@ -13,9 +13,9 @@ class MariaLaComeSandias extends Base {
             {alto: 300,ancho:300},
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
-        this.maria = new MariaAnimada(0, 0);
-        this.cuadricula.agregarActor(this.maria,cantidadFilas-1, 0);
-        this.maria.escala=0.1;
+        this.automata = new MariaAnimada(0, 0);
+        this.cuadricula.agregarActor(this.automata,cantidadFilas-1, 0);
+        this.automata.escala=0.1;
         this.completarConSandias();
     }
 
@@ -34,23 +34,23 @@ class MariaLaComeSandias extends Base {
     }
 
     moverDerecha(){
-           this.maria.hacer_luego(MoverACasillaDerecha);
+           this.automata.hacer_luego(MoverACasillaDerecha);
     }
     moverIzquierda(){
-           this.maria.hacer_luego(MoverACasillaIzquierda);
+           this.automata.hacer_luego(MoverACasillaIzquierda);
     }
     moverAbajo(){
-           this.maria.hacer_luego(MoverACasillaAbajo);
+           this.automata.hacer_luego(MoverACasillaAbajo);
     }
     moverArriba(){
-           this.maria.hacer_luego(MoverACasillaArriba);
+           this.automata.hacer_luego(MoverACasillaArriba);
     }
     morderSandia(){
-        this.maria.hacer_luego(MorderPorEtiqueta,{'etiqueta':'SandiaAnimada', 'mensajeError': 'Acá no hay una sandía'})
+        this.automata.hacer_luego(MorderPorEtiqueta,{'etiqueta':'SandiaAnimada', 'mensajeError': 'Acá no hay una sandía'})
     }
 
     personajePrincipal(){
-      return this.maria;
+      return this.automata;
     }
 
 }

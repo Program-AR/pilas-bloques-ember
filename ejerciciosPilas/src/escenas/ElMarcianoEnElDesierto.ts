@@ -8,7 +8,7 @@
  */
 class ElMarcianoEnElDesierto extends Base {
     fondo;
-    personaje;
+    automata;
     cuadricula;
     manzanas;
     estado;
@@ -53,33 +53,9 @@ class ElMarcianoEnElDesierto extends Base {
         this.cuadricula.agregarActor(objeto,3,1);
         this.manzanas.push(objeto);
 
-        this.personaje = new MarcianoAnimado(0,0);
-        this.cuadricula.agregarActor(this.personaje,cantidadFilas-1,0);
+        this.automata = new MarcianoAnimado(0,0);
+        this.cuadricula.agregarActor(this.automata,cantidadFilas-1,0);
 
-    }
-
-/*************** Métodos para que se cuelgue blockly ****************/
-/****** Deben tener sólo una línea, que sea un "hacer_luego" ********/
-/****** El nombre debe ser el que tendrá el bloque en blockly *******/
-
-    irDerecha() {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
-    }
-
-    irIzquierda() {
-        this.personaje.hacer_luego(MoverACasillaIzquierda);
-    }
-
-    irArriba() {
-        this.personaje.hacer_luego(MoverACasillaArriba);
-    }
-
-    irAbajo() {
-        this.personaje.hacer_luego(MoverACasillaAbajo);
-    }
-
-    comerManzana() {
-        this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'ManzanaAnimada', 'mensajeError' : 'No hay una manzana aqui' });
     }
 
 }

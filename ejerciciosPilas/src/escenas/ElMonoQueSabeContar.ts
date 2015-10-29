@@ -50,4 +50,8 @@ class ElMonoQueSabeContar extends Base {
       return this.automata;
     }
 
+  contar(){
+    this.automata.hacer_luego(ContarPorEtiqueta,{etiqueta:BananaAnimada,dondeReflejarValor:this.cantidadManzanas,mensajeError:'a'})
+  }
+
 }
