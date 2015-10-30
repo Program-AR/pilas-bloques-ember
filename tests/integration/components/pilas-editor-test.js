@@ -4,6 +4,8 @@ import Ember from 'ember';
 
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
+import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
+
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 import debeTenerTantosActoresConEtiqueta from '../../helpers/debe-tener-tantos-actores-con-etiqueta';
@@ -11,6 +13,7 @@ import debeTenerTantosActoresConEtiqueta from '../../helpers/debe-tener-tantos-a
 moduleForComponent('pilas-editor', 'component:pilas-editor', {
   integration: true,
 });
+
 
 test('informa error si no tiene actividad', function(assert) {
   assert.expect(1);
@@ -74,6 +77,40 @@ test('puede resolver la actividad alienTocaBoton', function(assert) {
 
 });
 
+test('puede resolver la actividad "El recolector de estrellas"', function(assert) {
+  assert.expect(2);
+
+  var actividad = Actividad.create({actividad: actividadElRecolectorDeEstrellas});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="115" inline="true"><value name="count"><block type="math_number" id="116"><field name="NUM">3</field></block></value><statement name="block"><block type="procedures_callnoreturn" id="107"><mutation name="tomar estellas de la fila completa"></mutation><next><block type="VolverABordeIzquierdo" id="121"><next><block type="MoverACasillaArriba" id="126"></block></next></block></next></block></statement><next><block type="procedures_callnoreturn" id="129"><mutation name="tomar estellas de la fila completa"></mutation></block></next></block></statement></block><block type="procedures_defnoreturn" id="92" x="14" y="268"><mutation></mutation><field name="NAME">tomar estellas de la fila completa</field><statement name="STACK"><block type="repetir" id="89" inline="true"><value name="count"><block type="math_number" id="90"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="97"><next><block type="TomarEstrella" id="102"></block></next></block></statement></block></statement></block></xml>',
+    nombreDesafio: 'ElRecolectorDeEstrellas',
+  });
+
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+
+  /* Como la tarea de ejecutar el código completo de la solución demora
+   * tiempo, retorno una promesa para que ember espere a que finalice.
+   * La promesa termina con la llamada a sucess.
+   */
+  return new Ember.RSVP.Promise((success) => {
+
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 4*4, "EstrellaAnimada");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 0, "EstrellaAnimada");
+      success();
+    }, false);
+  });
+
+});
 
 test('puede resolver la actividad del alien y las tuercas', function(assert) {
   assert.expect(2);

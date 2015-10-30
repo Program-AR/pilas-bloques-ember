@@ -96,6 +96,7 @@ export default Ember.Component.extend({
       });
 
     window.pilas.onready = function() {
+      
       this.get('actividad').iniciarEscena();
       var contenedor = document.getElementById('contenedor-blockly');
       this.get('actividad').iniciarBlockly(contenedor);
