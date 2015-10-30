@@ -77,7 +77,6 @@ export default Ember.Component.extend({
 
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
-
   },
 
   cuandoTerminaCargaInicial() {
