@@ -1,0 +1,34 @@
+{{#if actividad}}
+<div class='contenedor-editor' id='contenedor-editor'>
+
+  <div class='panel-pilas' id='panel-pilas'>
+    {{pilas-canvas actividad=actividad}}
+
+    <div class='panel-ayuda'>
+      <h4>{{actividad.nombre}}</h4>
+      <p>{{actividad.enunciado}}</p>
+
+      {{#if actividad.actividad.consignaInicial}}
+        <div class="tip-block">
+          <p><em>¿Sabías que?</em></p>
+          <p>
+            {{actividad.actividad.consignaInicial}}
+          </p>
+        </div>
+      {{/if}}
+
+    </div>
+
+  </div>
+
+
+  <div class='panel-derecho' id='panel-derecho'>
+    {{pilas-blockly solucion=solucion autoejecutar=autoejecutar
+                    actividad=actividad reiniciar='reiniciar'
+                    ocultarModal=ocultarModal}}
+  </div>
+
+</div>
+{{else}}
+  <p>Error: tienes que inicializar este componente con una actividad.</p>
+{{/if}}

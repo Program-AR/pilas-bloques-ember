@@ -1,4 +1,5 @@
-VERSION=0.8.8
+
+VERSION=0.9.1
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -140,7 +141,7 @@ ejecutar_linux:
 	nw dist
 
 ejecutar_mac:
-	./node_modules/ember-cli/bin/ember nw
+	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
 utest:
 	./node_modules/ember-cli/bin/ember nw:test --server
@@ -168,7 +169,14 @@ version:
 
 ver_sync: subir_version
 
-full: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
+
+limpiar_todo:
+	@echo "Limpiando bibliotecas..."
+	@echo "(se reinstalarán a continuación)"
+	@sleep 5s;
+	@rm -rf node_modules/ bower_components/ 
+
+full: limpiar_todo iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
 
 subir_version:
 	git commit -am 'release ${VERSION}'
