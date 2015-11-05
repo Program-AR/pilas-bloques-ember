@@ -28,8 +28,8 @@ export default Ember.Component.extend({
                 'fondos.reparandoLaNave.png',
                 'fondos.selva.png',
                 'fondo.recolector.png',
-
-
+                'fondo.gatoEnLaCalle.png',
+                'fondo.noMeCansoDeSaltar.png',
                 /*--------CASILLAS---------*/
                 'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
