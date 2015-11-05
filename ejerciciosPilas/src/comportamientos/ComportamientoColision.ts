@@ -11,30 +11,37 @@ La escena que lo utiliza debe tener definido
 automata
 
 */
-
+class SinEstado extends Estado{
+	realizarTransicion(idComport,comportamiento){
+		comportamiento.ejecutarse();
+	}
+}
 
 class ComportamientoColision extends ComportamientoAnimado {
 	/*nombreAnimacion(){
 		// redefinir por subclase
 		return "parado";
 	}*/
+	alIniciar(){
+		if(pilas.escena_actual().estado == undefined){
+			pilas.escena_actual().estado = new SinEstado()
+		}
+	}
 
 	alTerminarAnimacion(){
-		if(pilas.escena_actual().estado !== undefined){
 			 pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
-			}else{
-				this.elEstadoEsValido();
-			}
-}
+  }
 
-	elEstadoEsValido(){
-  	if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-							.some(objeto => objeto.colisiona_con(this.receptor))) {
+	debeEjecutarse(){
+  	return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
+							.some(objeto => objeto.colisiona_con(this.receptor));
+	}
+
+	ejecutarse(){
+		if(this.debeEjecutarse()){
 				this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
-				return true;
     }else{
     		pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
-				return false;
    	}
   }
 

@@ -1,6 +1,6 @@
 class AlimentandoALosPeces extends Base {
     cuadricula;
-    buzo;
+    automata;
     cantidadColumnas;
     cantidadFilas;
     alimento;
@@ -12,8 +12,8 @@ class AlimentandoALosPeces extends Base {
             {lalto: 300,ancho:300},
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
-        this.buzo = new BuzoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.buzo,this.cantidadFilas-1, 0);
+        this.automata = new BuzoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata,this.cantidadFilas-1, 0);
         this.alimento = new AlimentoAnimado(0,0)
         this.cuadricula.agregarActor(this.alimento,1,this.cantidadColumnas-1)
         this.colocarPeces();
@@ -31,7 +31,7 @@ class AlimentandoALosPeces extends Base {
 
 
     personajePrincipal(){
-      return this.buzo;
+      return this.automata;
     }
 
     private colocarPeces(){
@@ -45,25 +45,10 @@ class AlimentandoALosPeces extends Base {
     }
 
     alimentarPez(){
-      this.buzo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'PezAnimado', 'mensajeError' : 'No hay un pez aqui', 'idComportamiento' : 'alimentarPez' })
+      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'PezAnimado', 'mensajeError' : 'No hay un pez aqui', 'idComportamiento' : 'alimentarPez' })
     }
     agarrarComida(){
-      this.buzo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'AlimentoAnimado', 'mensajeError' : 'No hay una alimento aqui', 'idComportamiento' : 'recogerComida' });
+      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'AlimentoAnimado', 'mensajeError' : 'No hay una alimento aqui', 'idComportamiento' : 'recogerComida' });
     }
-
-    moverDerecha(){
-           this.buzo.hacer_luego(MoverACasillaDerecha);
-    }
-    moverIzquierda(){
-           this.buzo.hacer_luego(MoverACasillaIzquierda);
-    }
-    moverAbajo(){
-           this.buzo.hacer_luego(MoverACasillaAbajo);
-    }
-    moverArriba(){
-           this.buzo.hacer_luego(MoverACasillaArriba);
-    }
-
-
 
 }

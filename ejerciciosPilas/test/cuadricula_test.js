@@ -139,7 +139,7 @@ testPilas('Mover a casilla abajo ',3, function(assert) {
 
 });
 
-testPilas('Mover a casilla Arriba ',3, function(assert) {
+testPilas('Mover a casilla arriba ',3, function(assert) {
       this.cuadricula.agregarActor(this.actor1,1,0);
       var x = this.actor1.x;
       var y = this.actor1.y;

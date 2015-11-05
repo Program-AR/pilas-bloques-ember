@@ -1,6 +1,6 @@
 class InstalandoJuegos  extends Base{
   compus;
-  instalador;
+  automata;
   fondo;
   cuadricula;
   estado;
@@ -16,8 +16,8 @@ class InstalandoJuegos  extends Base{
           {grilla: 'invisible.png',
           cantColumnas: 5})
 
-      this.instalador = new InstaladorAnimado(0,0);
-      this.cuadricula.agregarActor(this.instalador,0,0);
+      this.automata = new InstaladorAnimado(0,0);
+      this.cuadricula.agregarActor(this.automata,0,0);
 
       for(var i=1;i<=3;++i){
         this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
@@ -66,30 +66,30 @@ class InstalandoJuegos  extends Base{
    }
 
   personajePrincipal(){
-    return this.instalador;
+    return this.automata;
   }
 
   siguienteCompu(){
-    this.instalador.hacer_luego(MoverACasillaDerecha)
+    this.automata.hacer_luego(MoverACasillaDerecha)
   }
   prenderCompu(){
-    this.instalador.hacer_luego(PrenderPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'prender' });
+    this.automata.hacer_luego(PrenderPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'prender' });
   }
   apagarCompu(){
-    this.instalador.hacer_luego(ApagarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'apagar' });
+    this.automata.hacer_luego(ApagarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'apagar' });
   }
   instalarJuego(){
-    this.instalador.hacer_luego(InstalarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'instalar'})
+    this.automata.hacer_luego(InstalarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'instalar'})
   }
 
   escribirC(){
-    this.instalador.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirC'})
+    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirC'})
   }
   escribirB(){
-    this.instalador.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirB'})
+    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirB'})
   }
   escribirA(){
-    this.instalador.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirA'})
+    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirA'})
     }
 
 
