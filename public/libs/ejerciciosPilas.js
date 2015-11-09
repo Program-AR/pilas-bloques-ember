@@ -1250,7 +1250,7 @@ var Hueso = (function (_super) {
 var InstaladorAnimado = (function (_super) {
     __extends(InstaladorAnimado, _super);
     function InstaladorAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'monkey_normal.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'manzana.png', cantColumnas: 1, cantFilas: 1 });
         this.definirAnimacion("correr", [0], 15);
         this.definirAnimacion("parado", [0], 5);
         this.definirAnimacion("recoger", [0], 10);
@@ -1313,6 +1313,9 @@ var MariaAnimada = (function (_super) {
     __extends(MariaAnimada, _super);
     function MariaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'maria.png', cantColumnas: 1, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 15);
+        this.definirAnimacion("correr", [0], 5);
+        this.definirAnimacion("recoger", [0], 60);
     }
     return MariaAnimada;
 })(ActorAnimado);
@@ -1324,6 +1327,7 @@ var MonoAnimado = (function (_super) {
         this.definirAnimacion("correr", [0, 1, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 8, 8], 6);
         this.definirAnimacion("parado", [0, 1, 2, 1, 0], 6);
         this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 6);
+        this.definirAnimacion("contar", [9, 7, 8, 8, 9], 6);
     }
     return MonoAnimado;
 })(ActorAnimado);
@@ -1632,6 +1636,112 @@ var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     };
     return avanzarFilaEnCuadriculaMultiple;
 })(MoverACasillaAbajo);
+var ErrorEnEstados = (function () {
+    function ErrorEnEstados(estado, mensaje) {
+        this.estadoAlQueVuelve = estado;
+        this.mensajeError = mensaje;
+    }
+    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+        pilas.escena_actual().automata.decir(this.mensajeError);
+    };
+    ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        return estadoAnterior;
+    };
+    return ErrorEnEstados;
+})();
+var Estado = (function () {
+    function Estado(idEstado) {
+        this.identifier = idEstado;
+        this.transiciones = {};
+    }
+    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
+        this.transiciones[transicion] = estadoEntrada;
+    };
+    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
+        if (this.transiciones[idComportamiento]) {
+            pilas.escena_actual().estado = this.transiciones[idComportamiento].estadoSiguiente(comportamiento, this);
+            this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
+        }
+        else {
+            pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
+        }
+    };
+    Estado.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        if (comportamiento.debeEjecutarse()) {
+            return this;
+        }
+        else {
+            return estadoAnterior;
+        }
+    };
+    Estado.prototype.realizarAccion = function (comportamiento, estado) {
+        comportamiento.ejecutarse();
+    };
+    return Estado;
+})();
+var BuilderStatePattern = (function () {
+    function BuilderStatePattern(idEstadoInicialp) {
+        this.idEstadoInicial = idEstadoInicialp;
+        this.estados = {};
+        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
+    }
+    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
+        this.estados[idEstado] = new Estado(idEstado);
+    };
+    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
+        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
+    };
+    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
+        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
+    };
+    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
+        //agrega un error para varios estados de salida con prefijos.
+        //pre indefFinalSalida>indexInicialSalida
+        var tamano = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
+        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
+        // NO TERMINADO
+        var range = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index < range; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.estadoInicial = function () {
+        return this.estados[this.idEstadoInicial];
+    };
+    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
+        //prefix debe ser string e indexInicial y final ints
+        for (var i = indexInicial; i <= indexFinal; ++i) {
+            this.estados[prefix + i] = new Estado(prefix + i);
+        }
+    };
+    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
+        //pre: |estadosSalida|=|estadosEntrada|
+        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
+        var tamano = finSalida - inicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
+        }
+    };
+    return BuilderStatePattern;
+})();
+var SinEstado = (function (_super) {
+    __extends(SinEstado, _super);
+    function SinEstado() {
+        _super.call(this, 'sinEstado');
+    }
+    SinEstado.prototype.realizarTransicion = function (idComport, comportamiento) {
+        comportamiento.ejecutarse();
+    };
+    return SinEstado;
+})(Estado);
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "ComportamientoAnimado.ts" />
+/// <reference path = "../escenas/LogicaEstadosEscena.ts" />
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -1650,28 +1760,26 @@ var ComportamientoColision = (function (_super) {
     function ComportamientoColision() {
         _super.apply(this, arguments);
     }
-    /*nombreAnimacion(){
-        // redefinir por subclase
-        return "parado";
-    }*/
-    ComportamientoColision.prototype.alTerminarAnimacion = function () {
-        if (pilas.escena_actual().estado !== undefined) {
-            pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
-        }
-        else {
-            this.elEstadoEsValido();
+    ComportamientoColision.prototype.alIniciar = function () {
+        if (!pilas.escena_actual().estado) {
+            pilas.escena_actual().estado = new SinEstado();
         }
     };
-    ComportamientoColision.prototype.elEstadoEsValido = function () {
+    ComportamientoColision.prototype.alTerminarAnimacion = function () {
+        pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
+    };
+    ComportamientoColision.prototype.debeEjecutarse = function () {
         var _this = this;
-        if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); })) {
+        return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
+            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
+    };
+    ComportamientoColision.prototype.ejecutarse = function () {
+        var _this = this;
+        if (this.debeEjecutarse()) {
             this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0]);
-            return true;
         }
         else {
             pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
-            return false;
         }
     };
     ComportamientoColision.prototype.metodo = function (objetoColision) {
@@ -1759,6 +1867,10 @@ var ContarPorEtiqueta = (function (_super) {
     function ContarPorEtiqueta() {
         _super.apply(this, arguments);
     }
+    ContarPorEtiqueta.prototype.nombreAnimacion = function () {
+        // redefinir por subclase
+        return "contar";
+    };
     ContarPorEtiqueta.prototype.metodo = function (objetoColision) {
         this.argumentos['dondeReflejarValor'].aumentar(1);
     };
@@ -2046,8 +2158,8 @@ var AlimentandoALosPeces = (function (_super) {
         this.cantidadColumnas = 5;
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { lalto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        this.buzo = new BuzoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.buzo, this.cantidadFilas - 1, 0);
+        this.automata = new BuzoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
         this.alimento = new AlimentoAnimado(0, 0);
         this.cuadricula.agregarActor(this.alimento, 1, this.cantidadColumnas - 1);
         this.colocarPeces();
@@ -2062,7 +2174,7 @@ var AlimentandoALosPeces = (function (_super) {
         return builder.estadoInicial();
     };
     AlimentandoALosPeces.prototype.personajePrincipal = function () {
-        return this.buzo;
+        return this.automata;
     };
     AlimentandoALosPeces.prototype.colocarPeces = function () {
         this.cuadricula.agregarActor(new PezAnimado(0, 0), this.cantidadFilas - 1, 1);
@@ -2074,22 +2186,10 @@ var AlimentandoALosPeces = (function (_super) {
         this.cuadricula.agregarActor(new PezAnimado(0, 0), 0, 3);
     };
     AlimentandoALosPeces.prototype.alimentarPez = function () {
-        this.buzo.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'PezAnimado', 'mensajeError': 'No hay un pez aqui', 'idComportamiento': 'alimentarPez' });
+        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'PezAnimado', 'mensajeError': 'No hay un pez aqui', 'idComportamiento': 'alimentarPez' });
     };
     AlimentandoALosPeces.prototype.agarrarComida = function () {
-        this.buzo.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'AlimentoAnimado', 'mensajeError': 'No hay una alimento aqui', 'idComportamiento': 'recogerComida' });
-    };
-    AlimentandoALosPeces.prototype.moverDerecha = function () {
-        this.buzo.hacer_luego(MoverACasillaDerecha);
-    };
-    AlimentandoALosPeces.prototype.moverIzquierda = function () {
-        this.buzo.hacer_luego(MoverACasillaIzquierda);
-    };
-    AlimentandoALosPeces.prototype.moverAbajo = function () {
-        this.buzo.hacer_luego(MoverACasillaAbajo);
-    };
-    AlimentandoALosPeces.prototype.moverArriba = function () {
-        this.buzo.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'AlimentoAnimado', 'mensajeError': 'No hay una alimento aqui', 'idComportamiento': 'recogerComida' });
     };
     return AlimentandoALosPeces;
 })(Base);
@@ -2324,26 +2424,8 @@ var ElMarcianoEnElDesierto = (function (_super) {
         var objeto = new ManzanaAnimada(0, 0);
         this.cuadricula.agregarActor(objeto, 3, 1);
         this.manzanas.push(objeto);
-        this.personaje = new MarcianoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.personaje, cantidadFilas - 1, 0);
-    };
-    /*************** Métodos para que se cuelgue blockly ****************/
-    /****** Deben tener sólo una línea, que sea un "hacer_luego" ********/
-    /****** El nombre debe ser el que tendrá el bloque en blockly *******/
-    ElMarcianoEnElDesierto.prototype.irDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
-    };
-    ElMarcianoEnElDesierto.prototype.irIzquierda = function () {
-        this.personaje.hacer_luego(MoverACasillaIzquierda);
-    };
-    ElMarcianoEnElDesierto.prototype.irArriba = function () {
-        this.personaje.hacer_luego(MoverACasillaArriba);
-    };
-    ElMarcianoEnElDesierto.prototype.irAbajo = function () {
-        this.personaje.hacer_luego(MoverACasillaAbajo);
-    };
-    ElMarcianoEnElDesierto.prototype.comerManzana = function () {
-        this.personaje.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'ManzanaAnimada', 'mensajeError': 'No hay una manzana aqui' });
+        this.automata = new MarcianoAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
     };
     return ElMarcianoEnElDesierto;
 })(Base);
@@ -2379,6 +2461,9 @@ var ElMonoQueSabeContar = (function (_super) {
     };
     ElMonoQueSabeContar.prototype.personajePrincipal = function () {
         return this.automata;
+    };
+    ElMonoQueSabeContar.prototype.contar = function () {
+        this.automata.hacer_luego(ContarPorEtiqueta, { etiqueta: BananaAnimada, dondeReflejarValor: this.cantidadManzanas, mensajeError: 'a' });
     };
     return ElMonoQueSabeContar;
 })(Base);
@@ -2638,8 +2723,8 @@ var InstalandoJuegos = (function (_super) {
         var cantidadColumnas = 4;
         this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'invisible.png',
             cantColumnas: 5 });
-        this.instalador = new InstaladorAnimado(0, 0);
-        this.cuadricula.agregarActor(this.instalador, 0, 0);
+        this.automata = new InstaladorAnimado(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
         for (var i = 1; i <= 3; ++i) {
             this.cuadricula.agregarActor(new CompuAnimada(0, 0), 0, i);
         }
@@ -2678,28 +2763,28 @@ var InstalandoJuegos = (function (_super) {
         this.estado = builder.estadoInicial();
     };
     InstalandoJuegos.prototype.personajePrincipal = function () {
-        return this.instalador;
+        return this.automata;
     };
     InstalandoJuegos.prototype.siguienteCompu = function () {
-        this.instalador.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     InstalandoJuegos.prototype.prenderCompu = function () {
-        this.instalador.hacer_luego(PrenderPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'prender' });
+        this.automata.hacer_luego(PrenderPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'prender' });
     };
     InstalandoJuegos.prototype.apagarCompu = function () {
-        this.instalador.hacer_luego(ApagarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'apagar' });
+        this.automata.hacer_luego(ApagarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'apagar' });
     };
     InstalandoJuegos.prototype.instalarJuego = function () {
-        this.instalador.hacer_luego(InstalarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'instalar' });
+        this.automata.hacer_luego(InstalarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'instalar' });
     };
     InstalandoJuegos.prototype.escribirC = function () {
-        this.instalador.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirC' });
+        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirC' });
     };
     InstalandoJuegos.prototype.escribirB = function () {
-        this.instalador.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirB' });
+        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirB' });
     };
     InstalandoJuegos.prototype.escribirA = function () {
-        this.instalador.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirA' });
+        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirA' });
     };
     return InstalandoJuegos;
 })(Base);
@@ -3262,99 +3347,6 @@ var LightbotScratch = (function (_super) {
     };
     return LightbotScratch;
 })(Base);
-var ErrorEnEstados = (function () {
-    function ErrorEnEstados(estado, mensaje) {
-        this.estadoAlQueVuelve = estado;
-        this.mensajeError = mensaje;
-    }
-    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        pilas.escena_actual().automata.decir(this.mensajeError);
-        console.log(estadoAnterior.identifier);
-        return estadoAnterior;
-    };
-    return ErrorEnEstados;
-})();
-var Estado = (function () {
-    function Estado(idEstado) {
-        this.identifier = idEstado;
-        this.transiciones = {};
-    }
-    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
-        this.transiciones[transicion] = estadoEntrada;
-    };
-    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
-        if (this.transiciones[idComportamiento]) {
-            pilas.escena_actual().estado = this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
-        }
-        else {
-            pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
-        }
-    };
-    Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        if (comportamiento.elEstadoEsValido()) {
-            return this;
-        }
-        else {
-            return estadoAnterior;
-        }
-    };
-    return Estado;
-})();
-var BuilderStatePattern = (function () {
-    function BuilderStatePattern(idEstadoInicialp) {
-        this.idEstadoInicial = idEstadoInicialp;
-        this.estados = {};
-        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
-    }
-    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new Estado(idEstado);
-    };
-    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
-        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
-    };
-    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
-        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
-    };
-    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
-        //agrega un error para varios estados de salida con prefijos.
-        //pre indefFinalSalida>indexInicialSalida
-        var tamano = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
-        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
-        // NO TERMINADO
-        var range = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index < range; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.estadoInicial = function () {
-        return this.estados[this.idEstadoInicial];
-    };
-    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
-        //prefix debe ser string e indexInicial y final ints
-        for (var i = indexInicial; i <= indexFinal; ++i) {
-            console.log("Agregando estados");
-            console.log(prefix + i);
-            this.estados[prefix + i] = new Estado(prefix + i);
-        }
-    };
-    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
-        //pre: |estadosSalida|=|estadosEntrada|
-        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
-        console.log("Agregando transiciones");
-        var tamano = finSalida - inicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            console.log(estadoSalidaPrefix + (inicialSalida + index));
-            console.log(estadoEntradaPrefix + (inicialEntrada + index));
-            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
-        }
-    };
-    return BuilderStatePattern;
-})();
 var MariaLaComeSandias = (function (_super) {
     __extends(MariaLaComeSandias, _super);
     function MariaLaComeSandias() {
@@ -3367,9 +3359,9 @@ var MariaLaComeSandias = (function (_super) {
         this.cantidadColumnas = 6;
         this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        this.maria = new MariaAnimada(0, 0);
-        this.cuadricula.agregarActor(this.maria, cantidadFilas - 1, 0);
-        this.maria.escala = 0.1;
+        this.automata = new MariaAnimada(0, 0);
+        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
+        this.automata.escala = 0.1;
         this.completarConSandias();
     };
     MariaLaComeSandias.prototype.completarConSandias = function () {
@@ -3385,22 +3377,22 @@ var MariaLaComeSandias = (function (_super) {
         }
     };
     MariaLaComeSandias.prototype.moverDerecha = function () {
-        this.maria.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     };
     MariaLaComeSandias.prototype.moverIzquierda = function () {
-        this.maria.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     };
     MariaLaComeSandias.prototype.moverAbajo = function () {
-        this.maria.hacer_luego(MoverACasillaAbajo);
+        this.automata.hacer_luego(MoverACasillaAbajo);
     };
     MariaLaComeSandias.prototype.moverArriba = function () {
-        this.maria.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     };
     MariaLaComeSandias.prototype.morderSandia = function () {
-        this.maria.hacer_luego(MorderPorEtiqueta, { 'etiqueta': 'SandiaAnimada', 'mensajeError': 'Acá no hay una sandía' });
+        this.automata.hacer_luego(MorderPorEtiqueta, { 'etiqueta': 'SandiaAnimada', 'mensajeError': 'Acá no hay una sandía' });
     };
     MariaLaComeSandias.prototype.personajePrincipal = function () {
-        return this.maria;
+        return this.automata;
     };
     return MariaLaComeSandias;
 })(Base);
