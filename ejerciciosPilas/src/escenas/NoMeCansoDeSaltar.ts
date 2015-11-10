@@ -5,25 +5,37 @@
 
 /**
  * @class NoMeCansoDeSaltar
- * 
+ *
  * Objetivos: Introducir Repetición
  * Enunciado: Repetir salto.
  */
- class NoMeCansoDeSaltar extends ElObreroCopado{
+ class NoMeCansoDeSaltar extends Base {
  	saltosRestantes;
+   automata
+   fondo
+   saltosFaltantes;
+
+
  	iniciar() {
-        this.fondo = new Fondo('fondos.obrero.png',0,0);
-        this.obrero = new Obrero(160,-100);
-        this.obrero.aprender(AvisaAlSalirDePantalla,{});
-        this.saltosRestantes=30;
+        this.fondo = new Fondo('fondo.noMeCansoDeSaltar.png',0,0);
+        this.automata = new GatoAnimado(0,-150);
+        this.saltosFaltantes=30;
+        }
+
+    s(){
+      this.automata.hacer_luego(SaltarHablando,{});
     }
 
-    saltarHablando(){
-        this.obrero.hacer_luego(SaltarHablando)
-    }
     fraseAlSaltar(){
-    	this.saltosRestantes--;
-    	return this.saltosRestantes.toString();
+      if(this.saltosFaltantes==0){
+        return "Ya salte todo lo necesario"
+      }else{
+        this.saltosFaltantes--;
+        return "Faltan " + this.saltosFaltantes + " saltos";
+
+      }
     }
+
+
+
 }
- 

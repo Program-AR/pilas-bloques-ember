@@ -3,7 +3,7 @@
 class Animar extends Comportamiento{
     paso;
     imagenAnterior;
-    
+
     iniciar(receptor) {
         super.iniciar(receptor);
         this.sanitizarArgumentos();
@@ -12,7 +12,7 @@ class Animar extends Comportamiento{
         this.receptor._imagen.definir_cuadro(0);
         this.paso = 0;
     }
-    
+
     actualizar() {
         this.paso += 0.3;
         if (this.paso>this.argumentos.cantColumnas) {
@@ -25,11 +25,11 @@ class Animar extends Comportamiento{
         }
         this.receptor._imagen.definir_cuadro(this.argumentos.cuadros[parseInt(this.paso)]);
     }
-    
+
     terminarrlo(){
         this.receptor.imagen = this.imagenAnterior ;
     }
-    
+
     seguidillaHastaCant(){
         var seguidilla = [];
         if(this.argumentos.cantColumnas !== undefined) {
@@ -39,7 +39,7 @@ class Animar extends Comportamiento{
         }
         return seguidilla;
     }
-    
+
     sanitizarArgumentos(){
         this.argumentos.cantEjecuciones = this.argumentos.cantEjecuciones || 1 ;
         this.argumentos.velocidad = this.argumentos.velocidad || 2;

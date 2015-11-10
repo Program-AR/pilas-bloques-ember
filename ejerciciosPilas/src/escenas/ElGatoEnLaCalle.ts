@@ -7,20 +7,41 @@
 
 class ElGatoEnLaCalle extends Base {
     fondo;
-    cuadricula;
     automata;
-    estado;
+
     boton;
     fondoCuadricula;
+    saltosFaltantes;
 
     iniciar() {
-      this.estado=undefined;
+
       this.fondo = new Fondo('fondo.gatoEnLaCalle.png',0,0);
-      this.automata = new GatoAnimado(0,0);
+      this.automata = new GatoAnimado(0,-150);
     }
 
     personajePrincipal(){
       return this.automata;
     }
 
-  }
+
+    saludar(){
+      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'saludando'});
+    }
+
+    ao(){
+      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'abrirOjos'});
+    }
+
+    co(){
+      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'cerrarOjos'});
+    }
+    avanzar(){
+      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'correr'});
+    }
+
+    volver(){
+    this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'volver'});
+    }
+
+
+}

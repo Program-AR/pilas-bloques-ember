@@ -49,7 +49,7 @@ class Estado{
       }
   }
 
-  realizarAccion(comportamiento,this){
+  realizarAccion(comportamiento,estadoAnterior){
     comportamiento.ejecutarse()
   }
 }

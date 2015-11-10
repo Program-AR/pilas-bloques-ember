@@ -11,7 +11,7 @@ La escena que lo utiliza debe tener definido
 automata
 
 */
-class SinEstado extends Estado{
+class SinEstado {
 	realizarTransicion(idComport,comportamiento){
 		comportamiento.ejecutarse();
 	}
@@ -24,7 +24,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 	}*/
 	alIniciar(){
 		if(pilas.escena_actual().estado == undefined){
-			pilas.escena_actual().estado = new SinEstado()
+			pilas.escena_actual().estado = new SinEstado();
 		}
 	}
 
@@ -54,11 +54,10 @@ class ComportamientoColision extends ComportamientoAnimado {
 }
 
 class DesencadenarAnimacionDobleSiColiciona extends ComportamientoColision{
-	metodo(objetoColision){
-		this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
-		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
-
-	}
+		metodo(objetoColision){
+			this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
+			objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+		}
 
 
 }

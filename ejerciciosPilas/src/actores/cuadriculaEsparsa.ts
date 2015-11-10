@@ -1,11 +1,18 @@
 /// <reference path="../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path="Cuadricula.ts"/>
 
+/*
+
+Implementa una cuadrícula donde no están todas las casillas, permitiendo generar
+diseños más complejos que un cuadrado, pero reutilizando el comportamiento de la
+cuadrícula y sus movimientos.
+
+*/
 class CuadriculaEsparsa extends Cuadricula{
   matriz;
-  constructor(x,y,cantidadFilasMax,cantidadColumnasMax,opcionesCuadricula,opcionesCasilla,matriz){
+  constructor(x,y,opcionesCuadricula,opcionesCasilla,matriz){
     this.matriz=matriz;
-    super(x,y,cantidadFilasMax,cantidadColumnasMax,opcionesCuadricula,opcionesCasilla);
+    super(x,y,matriz.length,matriz[0].length,opcionesCuadricula,opcionesCasilla);
   }
 
   crearCasillas(){
