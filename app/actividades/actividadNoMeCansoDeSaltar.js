@@ -6,6 +6,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
 
 
+
 var actividadNoMeCansoDeSaltar = {
   nombre: 'No me canso de saltar',
   enunciado: 'A definir.',
