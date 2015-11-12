@@ -1,25 +1,29 @@
+
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor,Si,Procedimiento} = bloques;
+
+
+
+var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+
 
 var actividadElGatoEnLaCalle = {
-  nombre: 'El gato en la calle',
-  enunciado: 'to be defined',
+  nombre: 'El marciano en el desierto',
+  enunciado: 'A definir.',
+  consignaInicial: 'A definir.',
 
-  consignaInicial: 'to be defined.',
-
-  // la escena proviene de ejerciciosPilas
-  escena: ElGatoEnLaCalle,  // jshint ignore:line
+  escena: ElGatoEnLaCalle,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  subtareas: [],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+
+  control: [],
   expresiones: [],
   acciones: [],
-  sensores: [],
+  sensores: []
 };
 
 export default actividadElGatoEnLaCalle;
