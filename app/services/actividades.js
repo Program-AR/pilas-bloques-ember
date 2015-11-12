@@ -13,9 +13,13 @@ import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadA
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
-//import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
-//import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
-//import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
+import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
+import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
+import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
+import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
+import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
+import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
+
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
 //import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
 //import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
@@ -86,11 +90,14 @@ export default Ember.Service.extend({
       //LightbotRecargado : actividadLightbotRecargado,
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
-      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas
-      /*MariaLaComeSandias: actividadMariaLaComeSandias
-      AlimentandoALosPeces: actividadAlimentandoALosPeces
-      InstalandoJuegos:InstalandoJuegos
-      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
+      MariaLaComeSandias: actividadMariaLaComeSandias,
+      ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto,
+      AlimentandoALosPeces: actividadAlimentandoALosPeces,
+      InstalandoJuegos: actividadInstalandoJuegos,
+      NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
+      ElGatoEnLaCalle: actividadElGatoEnLaCalle
+      /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
       ReparandoLaNave: actividadReparandoLaNave
       LaberintoCorto: actividadLaberintoCorto
       TresNaranjas: actividadTresNaranjas*/

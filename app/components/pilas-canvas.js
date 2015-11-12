@@ -28,7 +28,8 @@ export default Ember.Component.extend({
                 'fondos.reparandoLaNave.png',
                 'fondos.selva.png',
                 'fondo.recolector.png',
-
+                'fondo.gatoEnLaCalle.png',
+                'fondo.noMeCansoDeSaltar.png',
 
                 /*--------CASILLAS---------*/
                 'casilla.elPlanetaDeNano.png',
@@ -88,6 +89,8 @@ export default Ember.Component.extend({
                 'manzana-v2.png',
                 'botonAnimado.png',
                 'camino-alien-boton.png',
+                'compu_animada.png',
+                'gatoAnimado.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
                 'icono.estrella.png'
