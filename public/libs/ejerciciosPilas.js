@@ -1636,6 +1636,112 @@ var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     };
     return avanzarFilaEnCuadriculaMultiple;
 })(MoverACasillaAbajo);
+var ErrorEnEstados = (function () {
+    function ErrorEnEstados(estado, mensaje) {
+        this.estadoAlQueVuelve = estado;
+        this.mensajeError = mensaje;
+    }
+    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+        pilas.escena_actual().automata.decir(this.mensajeError);
+    };
+    ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        return estadoAnterior;
+    };
+    return ErrorEnEstados;
+})();
+var Estado = (function () {
+    function Estado(idEstado) {
+        this.identifier = idEstado;
+        this.transiciones = {};
+    }
+    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
+        this.transiciones[transicion] = estadoEntrada;
+    };
+    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
+        if (this.transiciones[idComportamiento]) {
+            pilas.escena_actual().estado = this.transiciones[idComportamiento].estadoSiguiente(comportamiento, this);
+            this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
+        }
+        else {
+            pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
+        }
+    };
+    Estado.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        if (comportamiento.debeEjecutarse()) {
+            return this;
+        }
+        else {
+            return estadoAnterior;
+        }
+    };
+    Estado.prototype.realizarAccion = function (comportamiento, estado) {
+        comportamiento.ejecutarse();
+    };
+    return Estado;
+})();
+var BuilderStatePattern = (function () {
+    function BuilderStatePattern(idEstadoInicialp) {
+        this.idEstadoInicial = idEstadoInicialp;
+        this.estados = {};
+        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
+    }
+    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
+        this.estados[idEstado] = new Estado(idEstado);
+    };
+    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
+        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
+    };
+    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
+        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
+    };
+    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
+        //agrega un error para varios estados de salida con prefijos.
+        //pre indefFinalSalida>indexInicialSalida
+        var tamano = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
+        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
+        // NO TERMINADO
+        var range = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index < range; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.estadoInicial = function () {
+        return this.estados[this.idEstadoInicial];
+    };
+    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
+        //prefix debe ser string e indexInicial y final ints
+        for (var i = indexInicial; i <= indexFinal; ++i) {
+            this.estados[prefix + i] = new Estado(prefix + i);
+        }
+    };
+    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
+        //pre: |estadosSalida|=|estadosEntrada|
+        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
+        var tamano = finSalida - inicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
+        }
+    };
+    return BuilderStatePattern;
+})();
+var SinEstado = (function (_super) {
+    __extends(SinEstado, _super);
+    function SinEstado() {
+        _super.call(this, 'sinEstado');
+    }
+    SinEstado.prototype.realizarTransicion = function (idComport, comportamiento) {
+        comportamiento.ejecutarse();
+    };
+    return SinEstado;
+})(Estado);
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "ComportamientoAnimado.ts" />
+/// <reference path = "../escenas/LogicaEstadosEscena.ts" />
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -1654,28 +1760,26 @@ var ComportamientoColision = (function (_super) {
     function ComportamientoColision() {
         _super.apply(this, arguments);
     }
-    /*nombreAnimacion(){
-        // redefinir por subclase
-        return "parado";
-    }*/
-    ComportamientoColision.prototype.alTerminarAnimacion = function () {
-        if (pilas.escena_actual().estado !== undefined) {
-            pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
-        }
-        else {
-            this.elEstadoEsValido();
+    ComportamientoColision.prototype.alIniciar = function () {
+        if (!pilas.escena_actual().estado) {
+            pilas.escena_actual().estado = new SinEstado();
         }
     };
-    ComportamientoColision.prototype.elEstadoEsValido = function () {
+    ComportamientoColision.prototype.alTerminarAnimacion = function () {
+        pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
+    };
+    ComportamientoColision.prototype.debeEjecutarse = function () {
         var _this = this;
-        if (pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); })) {
+        return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
+            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
+    };
+    ComportamientoColision.prototype.ejecutarse = function () {
+        var _this = this;
+        if (this.debeEjecutarse()) {
             this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0]);
-            return true;
         }
         else {
             pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
-            return false;
         }
     };
     ComportamientoColision.prototype.metodo = function (objetoColision) {
@@ -1764,12 +1868,18 @@ var ContarPorEtiqueta = (function (_super) {
         _super.apply(this, arguments);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 46dfe930177b519657da393e5250a3bd6b625141
     ContarPorEtiqueta.prototype.nombreAnimacion = function () {
         // redefinir por subclase
         return "contar";
     };
+<<<<<<< HEAD
 >>>>>>> mariaLaComeSandias
+=======
+>>>>>>> 46dfe930177b519657da393e5250a3bd6b625141
     ContarPorEtiqueta.prototype.metodo = function (objetoColision) {
         this.argumentos['dondeReflejarValor'].aumentar(1);
     };
@@ -2325,6 +2435,7 @@ var ElMarcianoEnElDesierto = (function (_super) {
         this.manzanas.push(objeto);
         this.automata = new MarcianoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
+<<<<<<< HEAD
     };
     return ElMarcianoEnElDesierto;
 })(Base);
@@ -2363,6 +2474,8 @@ var ElMonoQueSabeContar = (function (_super) {
     };
     ElMonoQueSabeContar.prototype.contar = function () {
         this.automata.hacer_luego(ContarPorEtiqueta, { etiqueta: BananaAnimada, dondeReflejarValor: this.cantidadManzanas, mensajeError: 'a' });
+=======
+>>>>>>> 46dfe930177b519657da393e5250a3bd6b625141
     };
     return ElMonoQueSabeContar;
 })(Base);
@@ -2399,6 +2512,9 @@ var ElMonoQueSabeContar = (function (_super) {
     };
     ElMonoQueSabeContar.prototype.personajePrincipal = function () {
         return this.automata;
+    };
+    ElMonoQueSabeContar.prototype.contar = function () {
+        this.automata.hacer_luego(ContarPorEtiqueta, { etiqueta: BananaAnimada, dondeReflejarValor: this.cantidadManzanas, mensajeError: 'a' });
     };
     return ElMonoQueSabeContar;
 })(Base);
@@ -3284,99 +3400,6 @@ var LightbotScratch = (function (_super) {
     };
     return LightbotScratch;
 })(Base);
-var ErrorEnEstados = (function () {
-    function ErrorEnEstados(estado, mensaje) {
-        this.estadoAlQueVuelve = estado;
-        this.mensajeError = mensaje;
-    }
-    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        pilas.escena_actual().automata.decir(this.mensajeError);
-        console.log(estadoAnterior.identifier);
-        return estadoAnterior;
-    };
-    return ErrorEnEstados;
-})();
-var Estado = (function () {
-    function Estado(idEstado) {
-        this.identifier = idEstado;
-        this.transiciones = {};
-    }
-    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
-        this.transiciones[transicion] = estadoEntrada;
-    };
-    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
-        if (this.transiciones[idComportamiento]) {
-            pilas.escena_actual().estado = this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
-        }
-        else {
-            pilas.escena_actual().automata.decir("¡Ups, ésa no era la opción correcta!");
-        }
-    };
-    Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        if (comportamiento.elEstadoEsValido()) {
-            return this;
-        }
-        else {
-            return estadoAnterior;
-        }
-    };
-    return Estado;
-})();
-var BuilderStatePattern = (function () {
-    function BuilderStatePattern(idEstadoInicialp) {
-        this.idEstadoInicial = idEstadoInicialp;
-        this.estados = {};
-        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
-    }
-    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new Estado(idEstado);
-    };
-    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
-        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
-    };
-    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
-        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
-    };
-    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
-        //agrega un error para varios estados de salida con prefijos.
-        //pre indefFinalSalida>indexInicialSalida
-        var tamano = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
-        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
-        // NO TERMINADO
-        var range = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index < range; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.estadoInicial = function () {
-        return this.estados[this.idEstadoInicial];
-    };
-    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
-        //prefix debe ser string e indexInicial y final ints
-        for (var i = indexInicial; i <= indexFinal; ++i) {
-            console.log("Agregando estados");
-            console.log(prefix + i);
-            this.estados[prefix + i] = new Estado(prefix + i);
-        }
-    };
-    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
-        //pre: |estadosSalida|=|estadosEntrada|
-        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
-        console.log("Agregando transiciones");
-        var tamano = finSalida - inicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            console.log(estadoSalidaPrefix + (inicialSalida + index));
-            console.log(estadoEntradaPrefix + (inicialEntrada + index));
-            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
-        }
-    };
-    return BuilderStatePattern;
-})();
 var MariaLaComeSandias = (function (_super) {
     __extends(MariaLaComeSandias, _super);
     function MariaLaComeSandias() {
