@@ -42,7 +42,7 @@ escalarCasillasCuadradas(){
 
 
 
-      var a = new  CuadriculaEsparsa(this.x,this.y,this.cantidadFilas,this.cantidadColumnas,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
+      var a = new  CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
       this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla,this.opcionesCuadricula,this.cantidadFilas,this.cantidadColumnas);
       return a;
   }

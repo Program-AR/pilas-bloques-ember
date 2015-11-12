@@ -42,7 +42,7 @@ class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
       }
     }
 
-    super(x,y,cantidadFilas,cantidadColumnas,opcionesCuadricula,opcionesCasilla,this.pmatrix);
+    super(x,y,opcionesCuadricula,opcionesCasilla,this.pmatrix);
   }
 
   public cambiarImagenInicio(nuevaImagen){
@@ -89,7 +89,7 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
       }
       this.pmatrix.push(fila);
     }
-    super(x,y,this.pmatrix.length,max,opcionesCuadricula,opcionesCasilla,this.pmatrix);
+    super(x,y,opcionesCuadricula,opcionesCasilla,this.pmatrix);
   }
 
 

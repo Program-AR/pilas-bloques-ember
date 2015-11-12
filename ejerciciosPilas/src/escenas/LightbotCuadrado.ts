@@ -20,7 +20,7 @@ iniciar() {
       ['T','F','F','F','F','F','T'],
       ['T','T','T','T','T','T','T']
       ]
-    this.cuadricula = new CuadriculaEsparsa(0,0,this.cantidadFilas,this.cantidadColumnas,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
+    this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
     this.personaje = new Robot(0,0);
     this.cuadricula.agregarActor(this.personaje,0,0);
 
