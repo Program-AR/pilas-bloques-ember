@@ -29,7 +29,7 @@ class SuperTito1 extends Base {
         this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
         this.automata = new Robot(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
-        for (let i = 1; i < this.cantidadFilas-1; i++) {
+        for (let i = 0; i < this.cantidadFilas-1; i++) {
             this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
         }
 
