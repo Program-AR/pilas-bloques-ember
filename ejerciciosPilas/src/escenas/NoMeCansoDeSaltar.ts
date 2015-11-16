@@ -1,6 +1,5 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
+
 /// <reference path = "../comportamientos/SaltarHablando.ts" />
-/// <reference path = "../escenas/ElObreroCopado.ts" />
 
 
 /**
@@ -10,7 +9,6 @@
  * Enunciado: Repetir salto.
  */
  class NoMeCansoDeSaltar extends Base {
- 	saltosRestantes;
    automata
    fondo
    saltosFaltantes;
@@ -22,7 +20,7 @@
         this.saltosFaltantes=30;
         }
 
-    s(){
+  /*  s(){
       this.automata.hacer_luego(SaltarHablando,{});
     }
 
@@ -34,7 +32,7 @@
         return "Faltan " + this.saltosFaltantes + " saltos";
 
       }
-    }
+    }*/
 
 
 

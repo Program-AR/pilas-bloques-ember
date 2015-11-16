@@ -42,7 +42,7 @@ class ElMonoQueSabeContar extends Base {
         this.cantidadManzanas.registrarObservador(this.tableroManzanas,0);
         this.cantidadBananas.registrarObservador(this.tableroBananas,0);
 
-        this.cuadricula.arriba=pilas.arriba()-40
+        this.cuadricula.arriba=200;
 
     }
 
