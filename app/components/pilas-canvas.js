@@ -93,13 +93,19 @@ export default Ember.Component.extend({
                 'gatoAnimado.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
-                'icono.estrella.png'
+                'icono.abrirOjos.png',
+                'icono.cerrarOjos.png',
+                'icono.pararse.png',
+                'icono.acostarse.png',
+                'icono.saludar.png'
+
+
 
                 ]
       });
 
     window.pilas.onready = function() {
-      
+
       this.get('actividad').iniciarEscena();
       var contenedor = document.getElementById('contenedor-blockly');
       this.get('actividad').iniciarBlockly(contenedor);
