@@ -19,9 +19,11 @@ import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/acti
 import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
 import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
 import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
+import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
+
 
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
-//import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
+
 //import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
 //import actividadTresNaranjas 'pilas-engine-bloques/actividades/actividadTresNaranjas';
 
@@ -96,9 +98,10 @@ export default Ember.Service.extend({
       AlimentandoALosPeces: actividadAlimentandoALosPeces,
       InstalandoJuegos: actividadInstalandoJuegos,
       NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
-      ElGatoEnLaCalle: actividadElGatoEnLaCalle
-      /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+      ElGatoEnLaCalle: actividadElGatoEnLaCalle,
       ReparandoLaNave: actividadReparandoLaNave
+      /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+
       LaberintoCorto: actividadLaberintoCorto
       TresNaranjas: actividadTresNaranjas*/
     };
