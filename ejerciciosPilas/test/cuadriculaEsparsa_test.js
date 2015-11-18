@@ -1,13 +1,9 @@
+module('Cuadricula Esparsa Test');
+
+
+
 
 test('Constructor', function(assert) {
-});
-
-
-test('Crear casillas', function(assert) {
-});
-
-
-test('Hay derecha', function(assert) {
   this.cantidadFilas=5;
   this.cantidadColumnas=6;
   var matriz= [
@@ -15,17 +11,67 @@ test('Hay derecha', function(assert) {
     ['T','F','F','F','F','T'],
     ['T','T','T','T','T','T'],
     ['T','F','F','F','F','T'],
-    ['T','T','T','T','T','T']]
-  this.cuadricula = new CuadriculaEsparsa(0,0,this.cantidadFilas,this.cantidadColumnas,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
+    ['T','T','T','T','T','T']];
+
+  this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'invisible.png',cantColumnas: 1},matriz);
+  assert.ok(this.cuadricula.casillas.length==22);
 
 });
 
+test('Direcciones', function(assert) {
+  this.cantidadFilas=5;
+  this.cantidadColumnas=6;
+  var matriz= [
+    ['T','T','T','T','T','T'],
+    ['T','F','F','F','F','T'],
+    ['T','T','T','T','T','T'],
+    ['T','F','F','F','F','T'],
+    ['T','T','T','T','T','T']];
 
-test('Hay izquierda', function(assert) {
-});
+  this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'invisible.png',cantColumnas: 1},matriz);
 
-test('Hay arriba', function(assert) {
-});
+    /*Cuatro esquinas*/
+    //izquierda arriba
+    var casilla=this.cuadricula.casilla(0,0);
+    assert.ok(!this.cuadricula.hayArriba(casilla));
+    assert.ok(this.cuadricula.hayAbajo(casilla));
+    assert.ok(!this.cuadricula.hayIzquierda(casilla));
+    assert.ok(this.cuadricula.hayDerecha(casilla));
 
-test('Hay abajo', function(assert) {
+    //izquierda abajo
+    var casilla=this.cuadricula.casilla(4,0);
+    assert.ok(this.cuadricula.hayArriba(casilla));
+    assert.ok(!this.cuadricula.hayAbajo(casilla));
+    assert.ok(!this.cuadricula.hayIzquierda(casilla));
+    assert.ok(this.cuadricula.hayDerecha(casilla));
+
+    //derecha arriba
+    var casilla=this.cuadricula.casilla(0,5);
+    assert.ok(!this.cuadricula.hayArriba(casilla));
+    assert.ok(this.cuadricula.hayAbajo(casilla));
+    assert.ok(this.cuadricula.hayIzquierda(casilla));
+    assert.ok(!this.cuadricula.hayDerecha(casilla));
+
+    //derecha abajo
+    var casilla=this.cuadricula.casilla(4,5);
+    assert.ok(this.cuadricula.hayArriba(casilla));
+    assert.ok(!this.cuadricula.hayAbajo(casilla));
+    assert.ok(this.cuadricula.hayIzquierda(casilla));
+    assert.ok(!this.cuadricula.hayDerecha(casilla));
+
+
+    var casilla=this.cuadricula.casilla(1,0);
+    //assert.equal(this.cuadricula.hayIzquierda(casilla),false);
+    assert.ok(this.cuadricula.hayArriba(casilla));
+    assert.ok(this.cuadricula.hayAbajo(casilla));
+    assert.ok(!this.cuadricula.hayIzquierda(casilla));
+    assert.ok(!this.cuadricula.hayDerecha(casilla));
+
+    var casilla=this.cuadricula.casilla(2,2);
+    //assert.equal(this.cuadricula.hayIzquierda(casilla),false);
+    assert.ok(!this.cuadricula.hayArriba(casilla));
+    assert.ok(!this.cuadricula.hayAbajo(casilla));
+    assert.ok(this.cuadricula.hayIzquierda(casilla));
+    assert.ok(this.cuadricula.hayDerecha(casilla));
+
 });

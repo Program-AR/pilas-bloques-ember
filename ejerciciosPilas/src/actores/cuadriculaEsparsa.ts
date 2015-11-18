@@ -57,19 +57,19 @@ class CuadriculaEsparsa extends Cuadricula{
   hayDerecha(casilla){
     /*Devuelve true sii existe una casilla
     a la inmediata derecha de la casilla */
-    return (casilla.nroColumna < this.matriz[casilla.nroFila].length+1)
+    return this.casilla(casilla.nroFila,casilla.nroColumna+1)!=undefined;
   }
 
   hayIzquierda(casilla){
-    return (casilla.nroColumna+1 > 0)
+    return this.casilla(casilla.nroFila,casilla.nroColumna-1)!=undefined;
   }
 
   hayAbajo(casilla){
-    return (casilla.nroFila < this.matriz.length+1)
+    return this.casilla(casilla.nroFila+1,casilla.nroColumna)!=undefined;
   }
 
   hayArriba(casilla){
-    return (casilla.nroFila+1 > 0)
+    return this.casilla(casilla.nroFila-1,casilla.nroColumna)!=undefined;
   }
 
 }
