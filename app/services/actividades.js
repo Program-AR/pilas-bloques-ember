@@ -13,7 +13,7 @@ import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadA
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
-<<<<<<< HEAD
+
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
@@ -21,15 +21,9 @@ import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/activida
 import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
 import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
 import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
-
-
-=======
 import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
 
-//import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
-//import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
-//import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
->>>>>>> elMonoQueSabeContar
+
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
 
 //import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
@@ -101,21 +95,16 @@ export default Ember.Service.extend({
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
-<<<<<<< HEAD
+
       MariaLaComeSandias: actividadMariaLaComeSandias,
       ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto,
       AlimentandoALosPeces: actividadAlimentandoALosPeces,
       InstalandoJuegos: actividadInstalandoJuegos,
       NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
       ElGatoEnLaCalle: actividadElGatoEnLaCalle,
-=======
-      ElMonoQueSabeContar:actividadElMonoQueSabeContar
-      /*MariaLaComeSandias: actividadMariaLaComeSandias
-      AlimentandoALosPeces: actividadAlimentandoALosPeces
-      InstalandoJuegos:InstalandoJuegos
-      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
->>>>>>> elMonoQueSabeContar
+      ElMonoQueSabeContar:actividadElMonoQueSabeContar,
       ReparandoLaNave: actividadReparandoLaNave
+
       /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
 
       LaberintoCorto: actividadLaberintoCorto
