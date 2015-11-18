@@ -4,6 +4,13 @@
 /dist
 /tmp
 
+#charly
+.README.md.swp
+.swp
+nwjs-v0.12.2-linux-x64.tar.gz
+nwjs-v0.12.2-linux-x64/
+tests/acceptance/
+
 # dependencies
 /node_modules
 /bower_components

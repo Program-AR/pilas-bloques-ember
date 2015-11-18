@@ -13,6 +13,7 @@ import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadA
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
+<<<<<<< HEAD
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
@@ -22,6 +23,13 @@ import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/activid
 import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
 
 
+=======
+import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
+
+//import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
+//import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
+//import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
+>>>>>>> elMonoQueSabeContar
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
 
 //import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
@@ -33,7 +41,7 @@ import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividad
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 //import actividadPrendiendoLasCompus 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
-//import actividadElMonoQueSabeContar 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
+
 //import actividadElMonoCuentaDeNuevo'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 //import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 
@@ -93,12 +101,20 @@ export default Ember.Service.extend({
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
+<<<<<<< HEAD
       MariaLaComeSandias: actividadMariaLaComeSandias,
       ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto,
       AlimentandoALosPeces: actividadAlimentandoALosPeces,
       InstalandoJuegos: actividadInstalandoJuegos,
       NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
       ElGatoEnLaCalle: actividadElGatoEnLaCalle,
+=======
+      ElMonoQueSabeContar:actividadElMonoQueSabeContar
+      /*MariaLaComeSandias: actividadMariaLaComeSandias
+      AlimentandoALosPeces: actividadAlimentandoALosPeces
+      InstalandoJuegos:InstalandoJuegos
+      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+>>>>>>> elMonoQueSabeContar
       ReparandoLaNave: actividadReparandoLaNave
       /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
 
