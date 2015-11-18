@@ -23,13 +23,13 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
   pmatrix;
   constructor(definidor,x,y,opcionesCuadricula,opcionesCasilla){
-    var cantidadFilas = definidor.dameMaximo();
-    var cantidadColumnas=definidor.size();
-    this.pmatrix = new Array(cantidadFilas,Array(cantidadColumnas));
+    this.cantFilas = definidor.dameMaximo();
+    this.cantColumnas = definidor.size();
+    this.pmatrix = new Array(this.cantFilas,Array(this.cantColumnas));
     //this.pmatrix =  String[cantidadFilas][cantidadColumnas];
-    for(var fila=0;fila<cantidadFilas;fila++){
+    for(var fila=0;fila<this.cantFilas;fila++){
       this.pmatrix[fila]=[]
-      for(var col=0;col<cantidadColumnas;col++){
+      for(var col=0;col<this.cantColumnas;col++){
 
 
         if (definidor.at(col)>fila){
