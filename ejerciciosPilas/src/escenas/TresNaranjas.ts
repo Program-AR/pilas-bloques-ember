@@ -9,7 +9,7 @@
  * @class TresHuesos
  *
  */
-class TresHuesos extends Base {
+class TresNaranajas extends Base {
     fondo;
     personaje;
     cuadricula;
