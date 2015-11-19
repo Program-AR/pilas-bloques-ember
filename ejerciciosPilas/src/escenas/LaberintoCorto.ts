@@ -11,7 +11,7 @@
 
 class LaberintoCorto extends Base {
     fondo;
-    perro;
+    automata;
     cuadricula;
     cuadricula2;
 
@@ -25,21 +25,21 @@ class LaberintoCorto extends Base {
 
         this.cuadricula = this.cuadricula2.dameCamino();
 
-        this.perro = new PerroCohete(0,0);
-        this.cuadricula.agregarActor(this.perro,0,0);
+        this.automata = new PerroCohete(0,0);
+        this.cuadricula.agregarActor(this.automata,0,0);
 
     }
 
     irArriba(){
-        this.perro.hacer_luego(MoverACasillaArriba);
+        this.automata.hacer_luego(MoverACasillaArriba);
     }
     irAbajo(){
-        this.perro.hacer_luego(MoverACasillaAbajo);
+        this.automata.hacer_luego(MoverACasillaAbajo);
     }
     irDerecha(){
-        this.perro.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     }
     irIzquierda(){
-        this.perro.hacer_luego(MoverACasillaIzquierda);
+        this.automata.hacer_luego(MoverACasillaIzquierda);
     }
 }

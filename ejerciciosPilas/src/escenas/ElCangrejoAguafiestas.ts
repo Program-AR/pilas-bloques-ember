@@ -6,7 +6,7 @@
   class ElCangrejoAguafiestas extends Base {
     fondo;
     cuadricula;
-    cangrejo;
+    automata;
     cantidadFilas;
     cantidadColumnas;
     globos;
@@ -25,8 +25,8 @@
           ['T','T','T','T','T','T']]
         this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
         this.completarConGlobos();
-        this.cangrejo = new CangrejoAnimado(0,0);
-        this.cuadricula.agregarActor(this.cangrejo,0,0);
+        this.automata = new CangrejoAnimado(0,0);
+        this.cuadricula.agregarActor(this.automata,0,0);
       }
 
     private completarConGlobos(){
@@ -66,21 +66,21 @@
     }
 
     moverDerecha(){
-      this.cangrejo.hacer_luego(MoverACasillaDerecha);
+      this.automata.hacer_luego(MoverACasillaDerecha);
     }
     moverIzquierda(){
-      this.cangrejo.hacer_luego(MoverACasillaIzquierda);
+      this.automata.hacer_luego(MoverACasillaIzquierda);
     }
     moverArriba(){
-      this.cangrejo.hacer_luego(MoverACasillaArriba);
+      this.automata.hacer_luego(MoverACasillaArriba);
     }
     moverAbajo(){
-      this.cangrejo.hacer_luego(MoverACasillaAbajo);
+      this.automata.hacer_luego(MoverACasillaAbajo);
     }
 
     explotarGlobo(){
 
-      this.cangrejo.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay un globo aqui' });
+      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay un globo aqui' });
 
     }
 

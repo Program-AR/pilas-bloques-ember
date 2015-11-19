@@ -6,13 +6,13 @@
 
 class LaberintoConQueso extends Base {
     estado;
-    personaje;    cuadricula;    queso; secuenciaCaminata; condicion;
+    automata;    cuadricula;    queso; secuenciaCaminata; condicion;
     iniciar() {
         this.estado=undefined;
         this.cuadricula = new CuadriculaParaRaton(0,0,10,10,{'alto':400,'ancho':300},{'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
         this.cuadricula.completarConObjetosRandom([QuesoAnimado]);
-        this.personaje=new RatonAnimado(0,0)
-        this.cuadricula.agregarActor(this.personaje,0,0);
+        this.automata=new RatonAnimado(0,0)
+        this.cuadricula.agregarActor(this.automata,0,0);
     }
 
     valorCondicion(argumentos){
@@ -20,18 +20,18 @@ class LaberintoConQueso extends Base {
     }
 
     personajePrincipal(){
-      return this.personaje;
+      return this.automata;
     }
 
     moverDerecha(){
-      this.personaje.hacer_luego(MoverACasillaDerecha);
+      this.automata.hacer_luego(MoverACasillaDerecha);
     }
 
     moverAbajo(){
-      this.personaje.hacer_luego(MoverACasillaAbajo);
+      this.automata.hacer_luego(MoverACasillaAbajo);
     }
 
     ComerQueso(){
-      this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'QuesoAnimado',  'mensajeError' : 'No hay queso aqui' });
+      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'QuesoAnimado',  'mensajeError' : 'No hay queso aqui' });
     }
 }

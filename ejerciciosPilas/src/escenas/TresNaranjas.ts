@@ -9,9 +9,9 @@
  * @class TresHuesos
  *
  */
-class TresNaranajas extends Base {
+class TresNaranjas extends Base {
     fondo;
-    personaje;
+    automata;
     cuadricula;
     objetos = [];
     estado;
@@ -44,8 +44,8 @@ class TresNaranajas extends Base {
         }
 
         // se crea el personaje
-        this.personaje = new PerroCohete(0,0);
-        this.cuadricula.agregarActor(this.personaje,0,0);
+        this.automata = new PerroCohete(0,0);
+        this.cuadricula.agregarActor(this.automata,0,0);
     }
 
     agregarHueso(columna) {
@@ -55,10 +55,10 @@ class TresNaranajas extends Base {
     }
 
     comerHueso() {
-        this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'Hueso', 'mensajeError' : 'No hay un hueso aqui' });
+        this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'Hueso', 'mensajeError' : 'No hay un hueso aqui' });
     }
 
     avanzar() {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
+        this.automata.hacer_luego(MoverACasillaDerecha);
     }
 }
