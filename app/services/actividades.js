@@ -22,22 +22,19 @@ import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividad
 import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
 import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
 import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
-
+import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTresNaranjas';
+import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
+import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
+import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
+import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
 
 //import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado ;
 
-//import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
-//import actividadTresNaranjas 'pilas-engine-bloques/actividades/actividadTresNaranjas';
-
-//import actividadLaberintoLargo 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
-//import actividadSuperLightbot2 'pilas-engine-bloques/actividades/actividadSuperLightbot2';
-//import actividadLaberintoConQueso 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
-//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
-//import actividadPrendiendoLasCompus 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
-//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
-
-//import actividadElMonoCuentaDeNuevo'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
-//import actividadElDetectiveChaparro 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadElDetectiveChaparro from  'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadPrendiendoLasCompus from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
+//import actividadElDetectiveChaparro from 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadElMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
+//import actividadElDetectiveChaparro from 'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 
 
 
@@ -103,12 +100,14 @@ export default Ember.Service.extend({
       NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
       ElGatoEnLaCalle: actividadElGatoEnLaCalle,
       ElMonoQueSabeContar:actividadElMonoQueSabeContar,
-      ReparandoLaNave: actividadReparandoLaNave
-
+      ReparandoLaNave: actividadReparandoLaNave,
+      TresNaranjas: actividadTresNaranjas,
+      LaberintoCorto: actividadLaberintoCorto,
+      LaberintoLargo: actividadLaberintoLargo,
+      LaberintoConQueso: actividadLaberintoConQueso,
+      ElCangrejoAguafiestas: actividadElCangrejoAguafiestas
       /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
-
-      LaberintoCorto: actividadLaberintoCorto
-      TresNaranjas: actividadTresNaranjas*/
+      */
     };
 
     var actividad = actividades[nombreActividad];
