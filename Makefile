@@ -89,7 +89,6 @@ actualizar_ejercicios_pilas:
 	make copiar_ejercicios_pilas
 
 copiar_ejercicios_pilas:
-	cd ejerciciosPilas; grunt typescript pilas -f; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 	rm -r -f public/libs/data
 	cp -r -f ejerciciosPilas/src/data public/libs/data
