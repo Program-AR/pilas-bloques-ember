@@ -1,9 +1,7 @@
-
+/* globals ElCangrejoAguafiestas */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-
-
-var {Accion,Procedimiento} = bloques;
+var {Procedimiento} = bloques;
 
 
 var actividadElCangrejoAguafiestas = {

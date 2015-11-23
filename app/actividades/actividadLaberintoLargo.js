@@ -1,9 +1,4 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Accion} = bloques;
-
-
-
+/* globals LaberintoLargo */
 
 
 var actividadLaberintoLargo = {

@@ -1,9 +1,7 @@
+/* globals NoMeCansoDeSaltar */
+//import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-
-
-
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+//var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
 
 
 

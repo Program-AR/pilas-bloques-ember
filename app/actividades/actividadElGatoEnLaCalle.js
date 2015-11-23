@@ -1,6 +1,5 @@
-
+/* globals ElGatoEnLaCalle */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-
 
 
 var {Accion,Procedimiento} = bloques;

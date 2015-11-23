@@ -1,21 +1,19 @@
+/* globals ElMonoQueSabeContar */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 import contando from 'pilas-engine-bloques/actividades/contando';
-var {Accion, Sensor,Si,Repetir,Procedimiento} = bloques;
-var {IrArriba,IrAbajo} = direcciones;
-var {TocandoBanana,TocandoManzana} = tocando;
-var {ContandoBanana,ContandoManzana} = contando;
+var {Si, Repetir, Procedimiento} = bloques;
+var {IrArriba, IrAbajo} = direcciones;
+var {TocandoBanana, TocandoManzana} = tocando;
+var {ContandoBanana, ContandoManzana} = contando;
 
 
 
 
 var actividadElMonoQueSabeContar = {
   nombre: 'El Mono que sabe contar',
-  enunciado:
-    'COMPLETAR'
-  ,
-
+  enunciado: 'COMPLETAR',
   consignaInicial: 'COMPLETAR.',
 
   // la escena proviene de ejerciciosPilas

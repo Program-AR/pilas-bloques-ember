@@ -1,7 +1,6 @@
+/* globals InstalandoJuegos */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-//import comer from 'pilas-engine-bloques/actividades/comer';
-var {Accion, Si, Repetir,Hasta, Procedimiento,Funcion} = bloques;
+var {Accion, Si, Repetir, Hasta, Procedimiento} = bloques;
 
 var SiguienteCompu = Accion.extend({
 

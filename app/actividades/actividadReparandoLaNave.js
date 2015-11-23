@@ -1,8 +1,8 @@
-/* globals AlienLevantaTuercas */
+/* globals ReparandoLaNave */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var {Repetir, Si, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 

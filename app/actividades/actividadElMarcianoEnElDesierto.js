@@ -1,11 +1,11 @@
-
+/* globals ElMarcianoEnElDesierto */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import comer from 'pilas-engine-bloques/actividades/comer';
 
 
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
-var {IrDerecha,IrIzquierda, IrArriba,IrAbajo} = direcciones;
+var {Repetir, Si, Procedimiento} = bloques;
+var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var {ComerManzana} = comer;
 
 
