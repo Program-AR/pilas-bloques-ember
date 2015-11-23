@@ -4,7 +4,7 @@ import ENV from "pilas-engine-bloques/config/environment";
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.9.1";
+        return "0.9.2";
     },
 
     obtener_version_del_servidor() {
