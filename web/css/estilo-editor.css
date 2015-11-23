@@ -1,0 +1,14 @@
+.contenedor-editor {
+  position: absolute;
+  bottom: 20px;
+  top: 60px;
+  left: 20px;
+  right: 20px;
+}
+
+.panel-derecho {
+  position:absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
