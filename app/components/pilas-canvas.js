@@ -28,7 +28,8 @@ export default Ember.Component.extend({
                 'fondos.reparandoLaNave.png',
                 'fondos.selva.png',
                 'fondo.recolector.png',
-
+                'fondo.gatoEnLaCalle.png',
+                'fondo.noMeCansoDeSaltar.png',
 
                 /*--------CASILLAS---------*/
                 'casilla.elPlanetaDeNano.png',
@@ -88,18 +89,31 @@ export default Ember.Component.extend({
                 'manzana-v2.png',
                 'botonAnimado.png',
                 'camino-alien-boton.png',
+                'compu_animada.png',
+                'gatoAnimado.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
-                'icono.estrella.png'
+                'icono.abrirOjos.png',
+                'icono.cerrarOjos.png',
+                'icono.pararse.png',
+                'icono.acostarse.png',
+                'icono.saludar.png'
+
+
 
                 ]
       });
 
     window.pilas.onready = function() {
-      this.get('actividad').iniciarEscena();
 
+      this.get('actividad').iniciarEscena();
       var contenedor = document.getElementById('contenedor-blockly');
       this.get('actividad').iniciarBlockly(contenedor);
+
+      if (this.get('actividad')['finalizaCargarBlockly']) {
+        this.get('actividad').finalizaCargarBlockly();
+      }
+
     }.bind(this);
 
     window.pilas.ejecutar();

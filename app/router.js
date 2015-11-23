@@ -21,6 +21,10 @@ Router.map(function() {
     this.route('nombre', {path: ':nombre'});
   });
   this.route('acercade');
+
+  this.resource('solucion', { path: '/solucion' }, function(){
+    this.route('ver', {path: '/:id'});
+  });
 });
 
 export default Router;

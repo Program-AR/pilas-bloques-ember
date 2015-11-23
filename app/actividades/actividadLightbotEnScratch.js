@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Accion, Si, Repetir, Procedimiento} = bloques;
+var {/*Accion,*/ Si, Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var {EncenderLuz} = bloquesTito;
 
