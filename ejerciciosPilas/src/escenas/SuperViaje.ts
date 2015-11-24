@@ -12,26 +12,26 @@
  */
 class SuperViaje extends EscenaActividad {
     fondo;
-    personaje;
+    automata;
     totalKM = 10;
     restantesKM;
 
     iniciar() {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
-        this.personaje = new PerroCohete(0,0);
+        this.automata = new PerroCohete(0,0);
         this.restantesKM = this.totalKM;
     }
 
     volarUnKM() {
         if (this.restantesKM == 0) {
-            this.personaje.decir("¡Llegué!");
+            this.automata.decir("¡Llegué!");
             return;
         }
 
         if (this.restantesKM == 1) {
-            this.personaje.decir("¡Faltan 1 kilometro!");
+            this.automata.decir("¡Faltan 1 kilometro!");
         } else {
-            this.personaje.decir("¡Faltan " + (this.restantesKM-1) + " kilometros!");
+            this.automata.decir("¡Faltan " + (this.restantesKM - 1) + " kilometros!");
         }
         this.restantesKM--;
     }

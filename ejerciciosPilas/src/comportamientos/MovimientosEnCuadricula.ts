@@ -1,5 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
+/// <reference path = "../escenas/Errores.ts" />
+
 
 class MovimientoEnCuadricula extends MovimientoAnimado {
     cuadricula;
@@ -41,7 +43,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     verificarDireccion(casilla){
         var proximaCasilla = this.proximaCasilla(casilla);
         if (!proximaCasilla){
-            this.receptor.decir("No puedo ir para " + this.textoAMostrar());
+            throw new ActividadError("No puedo ir para " + this.textoAMostrar());
             return false;
         };
         this.receptor.setCasillaActual(proximaCasilla);

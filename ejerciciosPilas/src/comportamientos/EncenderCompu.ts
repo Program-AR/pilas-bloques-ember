@@ -1,3 +1,7 @@
+/// <reference path = "../escenas/Errores.ts" />
+/// <reference path = "../habilidades/HabilidadAnimada.ts" />
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+
 class EncenderCompu extends Comportamiento {
 
   actualizar() {
@@ -5,7 +9,7 @@ class EncenderCompu extends Comportamiento {
       var casillaConLuz = this.getCasillaConLuz();
       casillaConLuz.agregar_habilidad(HabilidadAnimada, {nombreAnimacion: 'prendida'});
     } else {
-      this.receptor.decir('¡Aquí no hay compu por prender!');
+      throw new ActividadError('¡Aquí no hay compu por prender!');
     }
     return true;
     }
