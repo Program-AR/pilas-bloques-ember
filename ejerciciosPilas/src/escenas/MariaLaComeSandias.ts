@@ -1,4 +1,6 @@
-class MariaLaComeSandias extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class MariaLaComeSandias extends EscenaActividad {
     cuadricula;
     automata;
     cantidadColumnas;

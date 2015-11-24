@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/HeroeAnimado.ts"/>
@@ -15,7 +16,7 @@
  * @class LaGranAventuraDelMarEncantado
  *
  */
-class LaGranAventuraDelMarEncantado extends Base {
+class LaGranAventuraDelMarEncantado extends EscenaActividad {
     estado;
 
     cuadricula;

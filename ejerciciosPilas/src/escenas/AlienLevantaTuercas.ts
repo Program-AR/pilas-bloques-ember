@@ -1,4 +1,6 @@
-class AlienLevantaTuercas extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class AlienLevantaTuercas extends EscenaActividad {
 	automata;
 	estado;
 	cuadricula;
@@ -100,7 +102,7 @@ function convertir_posicion_a_coordenada(fila, columna) {
 	return {x: columnas[columna-1], y: filas[fila-1]};
 }
 
-class AlienLevantaTuercas extends Base {
+class AlienLevantaTuercas extends EscenaActividad {
 
     iniciar(){
 	    var fondo = new pilas.fondos.Laberinto1();

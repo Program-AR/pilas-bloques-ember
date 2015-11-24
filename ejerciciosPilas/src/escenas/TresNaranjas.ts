@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
@@ -9,7 +10,7 @@
  * @class TresHuesos
  *
  */
-class TresNaranjas extends Base {
+class TresNaranjas extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

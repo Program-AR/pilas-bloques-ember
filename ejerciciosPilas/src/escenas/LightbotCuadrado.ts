@@ -1,4 +1,6 @@
-class LightBotCuadrado extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class LightBotCuadrado extends EscenaActividad {
     fondo;
     personaje;
     cuadricula;

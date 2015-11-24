@@ -1,4 +1,4 @@
-
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/SaltarHablando.ts" />
 
 
@@ -8,7 +8,7 @@
  * Objetivos: Introducir Repetición
  * Enunciado: Repetir salto.
  */
- class NoMeCansoDeSaltar extends Base {
+ class NoMeCansoDeSaltar extends EscenaActividad {
    automata
    fondo
    saltosFaltantes;

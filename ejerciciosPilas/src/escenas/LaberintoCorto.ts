@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
@@ -9,7 +10,7 @@
  *
  */
 
-class LaberintoCorto extends Base {
+class LaberintoCorto extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

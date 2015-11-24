@@ -1,4 +1,6 @@
-class PrendiendoLasCompus extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class PrendiendoLasCompus extends EscenaActividad {
     cuadricula;
     buzo;
     cantidadMaxColumnas;

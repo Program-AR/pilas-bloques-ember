@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
@@ -7,7 +8,7 @@
  * @class LightBot
  *
  */
-class LightBot extends Base {
+class LightBot extends EscenaActividad {
     fondo;
     robot;
     cuadricula;

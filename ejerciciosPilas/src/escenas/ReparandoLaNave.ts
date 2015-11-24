@@ -1,4 +1,6 @@
-class ReparandoLaNave  extends Base{
+/// <reference path = "EscenaActividad.ts" />
+
+class ReparandoLaNave extends EscenaActividad {
   personaje;
   compus;
   fondo;

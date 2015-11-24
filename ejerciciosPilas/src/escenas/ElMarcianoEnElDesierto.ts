@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 
 /**
@@ -6,7 +7,7 @@
  * Objetivos: Ejercitarse en el uso de programas para la resolución de problemas.
  * Enunciado: Comer todas las manzanas del tablero.
  */
-class ElMarcianoEnElDesierto extends Base {
+class ElMarcianoEnElDesierto extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

@@ -1,6 +1,7 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/CuadriculaMultiple.ts"/>
 
-class ElMonoQueSabeContar extends Base {
+class ElMonoQueSabeContar extends EscenaActividad {
     fondo;
     cuadricula;
     automata;

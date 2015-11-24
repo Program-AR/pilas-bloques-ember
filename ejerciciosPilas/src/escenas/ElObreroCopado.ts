@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
@@ -8,7 +9,7 @@
  *
  * Objetivos: Introducir Secuencia. Autómata, y procedimiento.
  */
-class ElObreroCopado extends Base {
+class ElObreroCopado extends EscenaActividad {
     fondo;
     obrero;
     automata;

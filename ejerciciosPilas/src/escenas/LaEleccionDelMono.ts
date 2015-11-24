@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
 /// <reference path = "../actores/ManzanaAnimada.ts" />
@@ -5,7 +6,7 @@
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
 
-class LaEleccionDelMono extends Base {
+class LaEleccionDelMono extends EscenaActividad {
     fondo;
     cuadricula;
     automata;
