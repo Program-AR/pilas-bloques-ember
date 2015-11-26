@@ -1,10 +1,11 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
 /// <reference path="../actores/cuadriculaEsparsa.ts"/>
 /// <reference path="../actores/RatonAnimado.ts"/>
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 /// <reference path="Camino.ts"/>
 
-class LaberintoConQueso extends Base {
+class LaberintoConQueso extends EscenaActividad {
     estado;
     automata;    cuadricula;    queso; secuenciaCaminata; condicion;
     iniciar() {

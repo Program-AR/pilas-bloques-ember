@@ -1,4 +1,6 @@
-class ElPlanetaDeNano extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class ElPlanetaDeNano extends EscenaActividad {
   automata;
   estado;
   cantidadColumnas;

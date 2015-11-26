@@ -1,6 +1,7 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
 
-class FutbolRobots  extends Base{
+class FutbolRobots  extends EscenaActividad{
   automata : ActorAnimado;
   fondo;
   cuadricula;

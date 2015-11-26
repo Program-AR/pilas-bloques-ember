@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/Robot.ts"/>
@@ -9,7 +10,7 @@
  * @class LightBotRecargado
  *
  */
-class LightBotRecargado extends Base {
+class LightBotRecargado extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

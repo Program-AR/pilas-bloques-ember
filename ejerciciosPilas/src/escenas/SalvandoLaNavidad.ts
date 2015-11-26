@@ -1,4 +1,4 @@
-/*class SalvandoLaNavidad extends Base {
+/*class SalvandoLaNavidad extends EscenaActividad {
   personaje;
   estado;
   cantidadColumnas;

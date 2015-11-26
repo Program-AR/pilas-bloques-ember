@@ -1,4 +1,6 @@
-class LaberintoLargo extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class LaberintoLargo extends EscenaActividad {
     estado;
     automata;    cuadricula;    queso; secuenciaCaminata; condicion;
     iniciar() {

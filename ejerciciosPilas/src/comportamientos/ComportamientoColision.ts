@@ -1,3 +1,7 @@
+/// <reference path = "../escenas/Errores.ts" />
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoAnimado.ts" />
+
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -41,7 +45,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 		if(this.debeEjecutarse()){
 				this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
     }else{
-    		pilas.escena_actual().automata.decir(this.argumentos['mensajeError']);
+    		throw new ActividadError(this.argumentos['mensajeError']);
    	}
   }
 

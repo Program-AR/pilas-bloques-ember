@@ -1,5 +1,6 @@
+/// <reference path = "EscenaActividad.ts" />
 
-class ElRecolectorDeEstrellas extends Base {
+class ElRecolectorDeEstrellas extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

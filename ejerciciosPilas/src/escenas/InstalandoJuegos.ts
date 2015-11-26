@@ -1,4 +1,6 @@
-class InstalandoJuegos  extends Base{
+/// <reference path = "EscenaActividad.ts" />
+
+class InstalandoJuegos extends EscenaActividad {
   compus;
   automata;
   fondo;

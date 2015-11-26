@@ -55,11 +55,6 @@ class ActorAnimado extends Actor {
         this.opciones.cantFilas = ops.cantFilas || 1;
     }
 
-    decir(mensaje){
-        super.decir(mensaje);
-        this.pausar();
-    }
-
     mover(x,y) {
         this.x += x;
         this.y += y;

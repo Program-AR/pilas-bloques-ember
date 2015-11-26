@@ -1,4 +1,6 @@
-class LightbotScratch extends Base {
+/// <reference path = "EscenaActividad.ts" />
+
+class LightbotScratch extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

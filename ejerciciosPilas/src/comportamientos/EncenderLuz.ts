@@ -1,6 +1,6 @@
 /// <reference path="ComportamientoAnimado.ts"/>
 /// <reference path="../habilidades/HabilidadAnimada.ts"/>
-
+/// <reference path = "../escenas/Errores.ts" />
 	
 class EncenderLuz extends Comportamiento {
 	
@@ -9,7 +9,7 @@ class EncenderLuz extends Comportamiento {
 			var casillaConLuz = this.getCasillaConLuz();
 			casillaConLuz.agregar_habilidad(HabilidadAnimada, {nombreAnimacion: 'prendida'});
 		} else {
-			this.receptor.decir('¡Aquí no hay una luz por prender!');
+			throw new ActividadError('¡Aquí no hay una luz por prender!');
 		}
 		return true;
     }

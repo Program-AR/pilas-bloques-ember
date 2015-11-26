@@ -1,3 +1,4 @@
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/HeroeAnimado.ts"/>
@@ -15,7 +16,7 @@
  * @class LaGranAventuraDelMarEncantado
  *
  */
-class LaGranAventuraDelMarEncantado extends Base {
+class LaGranAventuraDelMarEncantado extends EscenaActividad {
     estado;
 
     cuadricula;
@@ -125,23 +126,23 @@ class MarEncantadoState {
     }
 
     agarrarLlave() {
-        this.escena.heroe.decir("¡Aquí no está la llave!");
+        throw new ActividadError("¡Aquí no está la llave!");
     }
 
     abrirCofre() {
-        this.escena.heroe.decir("¡Tengo que ir al cofre con la llave!");
+        throw new ActividadError("¡Tengo que ir al cofre con la llave!");
     }
 
     darSombrero() {
-        this.escena.heroe.decir("¡Tengo que darle el sombrero al mago!");
+        throw new ActividadError("¡Tengo que darle el sombrero al mago!");
     }
 
     atacarConEspada() {
-        this.escena.heroe.decir("¡Tengo que atacar con espada al cabellero!");
+        throw new ActividadError("¡Tengo que atacar con espada al cabellero!");
     }
 
     escaparEnUnicornio() {
-        this.escena.heroe.decir("¡Tengo que salvar a la princesa y escapar!");
+        throw new ActividadError("¡Tengo que salvar a la princesa y escapar!");
     }
 
 }
