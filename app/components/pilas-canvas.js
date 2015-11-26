@@ -30,7 +30,8 @@ export default Ember.Component.extend({
                 'fondo.recolector.png',
                 'fondo.gatoEnLaCalle.png',
                 'fondo.noMeCansoDeSaltar.png',
-
+                'fondo.elMarcianoEnElDesierto.png',
+                'fondo.mariaSandia.png',
                 /*--------CASILLAS---------*/
                 'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
@@ -49,6 +50,11 @@ export default Ember.Component.extend({
                 'casilla.reparandoNave.png',
                 'casilla.grisoscuro.png',
                 'casillas.alien_inicial.png',
+                'casilla.mariaSandia.png',
+                'casillafinalmono.png',
+                'casillainiciomono.png',
+                'casillamediomono.png',
+
                 /*--------ACTORES---------*/
                 'perro_cohete.png',
                 'hueso.png',
@@ -97,8 +103,8 @@ export default Ember.Component.extend({
                 'icono.cerrarOjos.png',
                 'icono.pararse.png',
                 'icono.acostarse.png',
-                'icono.saludar.png'
-
+                'icono.saludar.png',
+                'icono.sandia.png'
 
 
                 ]
