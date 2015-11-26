@@ -1,0 +1,40 @@
+
+{{#if abrirDialogoCompartir}}
+  {{#modal-dialog close="ocultarModalTwitter"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+
+  {{modal-title title="Compartir en twitter" close="ocultarModalTwitter"}}
+
+  <div class="modal-body">
+    <div class="modal-inline-block  float-left">
+      <img id="preview" src={{previewData}} width=210 height=240>
+    </div>
+
+    <div class="modal-inline-block">
+
+      <div class='fila-opcion'>
+        Mensaje: {{textarea class='modal-mensaje-compartir' rows=3 value=mensajeCompartir}}
+      </div>
+
+      <div class='fila-opcion'>
+        {{#if envioEnCurso}}
+          <button class="btn btn-info" disabled><i class='fa fa-twitter'></i> Compartiendo ...</button>
+        {{else}}
+          <button class="btn btn-info" {{action "enviarMensaje"}}><i class='fa fa-twitter'></i> Compartir</button>
+        {{/if}}
+      </div>
+
+      {{#if mensajePublicadoURL}}
+        <div class='compartir-mensaje'>
+          Listo, tu mensaje fué publicado en twitter,
+          <a href="" {{action "abrirMensajePublicado"}}>¿querés abrirlo?</a>.
+        </div>
+      {{/if}}
+
+    </div>
+  </div>
+
+
+  {{/modal-dialog}}
+{{/if}}
