@@ -5,13 +5,15 @@ class MariaLaComeSandias extends Base {
     estado;
     iniciar() {
         this.estado=undefined;
+        this.fondo = new Fondo('fondo.mariaSandia.png',0,0);
+
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas=5
         this.cantidadColumnas=6
 
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,this.cantidadColumnas,
             {alto: 300,ancho:300},
-            {grilla: 'casillaLightbot.png',
+            {grilla: 'casilla.mariaSandia.png',
             cantColumnas: 5})
         this.automata = new MariaAnimada(0, 0);
         this.cuadricula.agregarActor(this.automata,cantidadFilas-1, 0);

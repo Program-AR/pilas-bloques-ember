@@ -14,12 +14,12 @@ class ElMarcianoEnElDesierto extends Base {
     estado;
     iniciar() {
       this.estado=undefined;
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
+        this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png',0,0);
         var cantidadFilas=4;
         var cantidadColumnas=5;
 
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,{},
-            {grilla: 'casillaLightbot.png',
+            {grilla: 'invisible.png',
             cantColumnas: 5,
             ancho: 60,
             alto: 60})
