@@ -224,6 +224,10 @@ export default Ember.Component.extend({
       this.set('previewData', data);
     },
 
+    ocultarModalTwitter() {
+      this.set('abrirDialogoCompartir', false);
+    },
+
     abrirMensajePublicado() {
       let url = this.get('mensajePublicadoURL');
       this.get('browser').openLink(url);

@@ -1,13 +1,11 @@
-<!--id is important, so we can reference it on the toggler component-->
-{{#em-modal configName="bs" open-if=mostrarDialogoOpciones}}
+{{#if mostrarDialogoOpciones}}
+  {{#modal-dialog close="ocultarModals"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
 
-  {{#em-modal-title}}
-      {{#em-modal-toggler class="close"}}×{{/em-modal-toggler}}
-      <h4 class="modal-title">Opciones</h4>
-  {{/em-modal-title}}
+  {{modal-title title="Opciones" close="ocultarModals"}}
 
-  {{#em-modal-body}}
-
+  <div class="modal-body">
     <div class='fila-opcion'>
 
       <div class="row">
@@ -31,10 +29,8 @@
         <div class="col-md-6"> {{nw-zoom}} </div>
       </div>
     </div>
+  </div>
 
-  {{/em-modal-body}}
 
-  {{#em-modal-footer}}
-      {{#em-modal-toggler class="btn btn-default"}}Cerrar{{/em-modal-toggler}}
-  {{/em-modal-footer}}
-{{/em-modal}}
+  {{/modal-dialog}}
+{{/if}}
