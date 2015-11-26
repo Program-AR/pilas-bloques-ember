@@ -1,6 +1,6 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
-
+@import "modal.scss";
 
 html, body {
 }
@@ -112,10 +112,6 @@ span.url {
   z-index: 2000;
 }
 
-
-.modal {
-  top: 0px;
-}
 
 .table-preferencias td, .table-preferencias th {
   border: 0 !important;
@@ -518,7 +514,6 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 
 .modal-body {
   overflow-y: scroll;
-  height: 370px;
 }
 
 .img-border {
