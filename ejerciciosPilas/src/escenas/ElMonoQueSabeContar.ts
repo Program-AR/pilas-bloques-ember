@@ -31,8 +31,8 @@ class ElMonoQueSabeContar extends EscenaActividad {
             //no incluye en ultima fila
           ]}
           );
-        this.cuadricula.cambiarImagenInicio('casillainiciomono.png')
-        this.cuadricula.cambiarImagenFin(p'casillafinalmono.png')
+        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
+        this.cuadricula.cambiarImagenFin('casillafinalmono.png');
         this.automata = new MonoAnimado(0,0);
         this.automata.escala=0.5
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0,false);

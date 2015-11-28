@@ -5,6 +5,8 @@ class MariaLaComeSandias extends EscenaActividad {
     automata;
     cantidadColumnas;
     estado;
+    fondo;
+
     iniciar() {
         this.estado=undefined;
         this.fondo = new Fondo('fondo.mariaSandia.png',0,0);
