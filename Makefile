@@ -85,7 +85,8 @@ copiar_pilasweb:
 
 actualizar_ejercicios_pilas:
 	@echo "${G}actualizando ejercicios de pilas${N}"
-	cd ejerciciosPilas; git pull; npm install; grunt; cd ..
+	@cd ejerciciosPilas; git pull; echo "${G}Instalando dependencias de ejerciciosPilas${N}"; npm install; cd ..
+	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	make copiar_ejercicios_pilas
 
 copiar_ejercicios_pilas:
@@ -95,24 +96,24 @@ copiar_ejercicios_pilas:
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
-	rm -r -f public/libs/blockly
-	mkdir -p public/libs/blockly
+	rm -rf vendor/libs/blockly
+	mkdir -p vendor/libs/blockly
 	make copiar_blockly_comprimido
 
 
 copiar_blockly_comprimido:
 	# CORE
-	cp -f blockly/blockly_compressed.js public/libs/blockly/
+	cp -f blockly/blockly_compressed.js vendor/libs/blockly/
 	# BLOCKS
-	cp -f blockly/blocks_compressed.js public/libs/blockly/
+	cp -f blockly/blocks_compressed.js vendor/libs/blockly/
 	# JS GENERATOR
-	cp -f blockly/javascript_compressed.js public/libs/blockly/
+	cp -f blockly/javascript_compressed.js vendor/libs/blockly/
 	# MEDIA
 	rm -r -f public/libs/blockly/media
 	cp -r -f blockly/media public/libs/blockly/
 	# LANG
-	rm -r -f public/libs/blockly/msg
-	cp -r -f blockly/msg  public/libs/blockly/
+	rm -r -f vendor/libs/blockly/msg
+	cp -r -f blockly/msg  vendor/libs/blockly/
 
 copiar_blockly_descomprimido:
 	# CORE

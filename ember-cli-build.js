@@ -27,6 +27,12 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
     destDir: 'assets'
 });
 
+    app.import("vendor/libs/blockly/blockly_compressed.js");
+    app.import("vendor/libs/blockly/blocks_compressed.js");
+    app.import("vendor/libs/blockly/javascript_compressed.js");
+    app.import("vendor/libs/blockly/msg/js/es.js");
+
+
 
     return app.toTree();
 };
