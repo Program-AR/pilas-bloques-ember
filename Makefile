@@ -50,7 +50,7 @@ comandos:
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
 	@echo ""
 	@echo "    ${G}binarios${N}          Genera los binarios."
-	@echo "    ${G}upload_to_dropbox${N} Sube los binarios generados a dropbox."
+	@echo "    ${G}subir_a_dropbox${N}   Sube los binarios generados a dropbox."
 	@echo ""
 
 
@@ -233,7 +233,7 @@ binarios: to_production build _compile_osx _compile_win
 	@open webkitbuilds
 	make to_develop
 
-upload_to_dropbox:
+subir_a_dropbox:
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
