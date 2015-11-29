@@ -58487,13 +58487,12 @@ define("ember/resolver",
     };
   }
 
-  var create = (Object.create || Ember.create);
-  if (!(create && !create(null).hasOwnProperty)) {
+  if (!(Object.create && !Object.create(null).hasOwnProperty)) {
     throw new Error("This browser does not support Object.create(null), please polyfil with es5-sham: http://git.io/yBU2rg");
   }
 
   function makeDictionary() {
-    var cache = create(null);
+    var cache = Object.create(null);
     cache['_dict'] = null;
     delete cache['_dict'];
     return cache;
@@ -58540,7 +58539,7 @@ define("ember/resolver",
 
   function resolveOther(parsedName) {
     /*jshint validthis:true */
-
+    
     // Temporarily disabling podModulePrefix deprecation
     /*
     if (!this._deprecatedPodModulePrefix) {
@@ -58559,22 +58558,23 @@ define("ember/resolver",
     var normalizedModuleName = this.findModuleName(parsedName);
 
     if (normalizedModuleName) {
-      var defaultExport = this._extractDefaultExport(normalizedModuleName, parsedName);
+      var module = require(normalizedModuleName, null, null, true /* force sync */);
 
-      if (defaultExport === undefined) {
+      if (module && module['default']) { module = module['default']; }
+
+      if (module === undefined) {
         throw new Error(" Expected to find: '" + parsedName.fullName + "' within '" + normalizedModuleName + "' but got 'undefined'. Did you forget to `export default` within '" + normalizedModuleName + "'?");
       }
 
-      if (this.shouldWrapInClassFactory(defaultExport, parsedName)) {
-        defaultExport = classFactory(defaultExport);
+      if (this.shouldWrapInClassFactory(module, parsedName)) {
+        module = classFactory(module);
       }
 
-      return defaultExport;
+      return module;
     } else {
       return this._super(parsedName);
     }
   }
-
   // Ember.DefaultResolver docs:
   //   https://github.com/emberjs/ember.js/blob/master/packages/ember-application/lib/system/resolver.js
   var Resolver = Ember.DefaultResolver.extend({
@@ -58780,50 +58780,6 @@ define("ember/resolver",
       }
 
       Ember.Logger.info(symbol, parsedName.fullName, padding, description);
-    },
-
-    knownForType: function(type) {
-      var moduleEntries = requirejs.entries;
-      var moduleKeys = (Object.keys || Ember.keys)(moduleEntries);
-
-      var items = makeDictionary();
-      for (var index = 0, length = moduleKeys.length; index < length; index++) {
-        var moduleName = moduleKeys[index];
-        var fullname = this.translateToContainerFullname(type, moduleName);
-
-        if (fullname) {
-          items[fullname] = true;
-        }
-      }
-
-      return items;
-    },
-
-    translateToContainerFullname: function(type, moduleName) {
-      var prefix = this.prefix({ type: type });
-      var pluralizedType = this.pluralize(type);
-      var nonPodRegExp = new RegExp('^' + prefix + '/' + pluralizedType + '/(.+)$');
-      var podRegExp = new RegExp('^' + prefix + '/(.+)/' + type + '$');
-      var matches;
-
-
-      if ((matches = moduleName.match(podRegExp))) {
-        return type + ':' + matches[1];
-      }
-
-      if ((matches = moduleName.match(nonPodRegExp))) {
-        return type + ':' + matches[1];
-      }
-    },
-
-    _extractDefaultExport: function(normalizedModuleName) {
-      var module = require(normalizedModuleName, null, null, true /* force sync */);
-
-      if (module && module['default']) {
-        module = module['default'];
-      }
-
-      return module;
     }
   });
 
