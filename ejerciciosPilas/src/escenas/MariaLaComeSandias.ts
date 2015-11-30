@@ -16,7 +16,7 @@ class MariaLaComeSandias extends EscenaActividad {
         this.cantidadColumnas=6
 
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,this.cantidadColumnas,
-            {alto: 300,ancho:300},
+            {alto: 300,ancho:300,separacionEntreCasillas: 5},
             {grilla: 'casilla.mariaSandia.png',
             cantColumnas: 5})
         this.automata = new MariaAnimada(0, 0);

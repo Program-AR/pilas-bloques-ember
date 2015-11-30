@@ -20,7 +20,7 @@
         this.saltosFaltantes=30;
         }
 
-  /*  s(){
+  s(){
       this.automata.hacer_luego(SaltarHablando,{});
     }
 
@@ -32,7 +32,7 @@
         return "Faltan " + this.saltosFaltantes + " saltos";
 
       }
-    }*/
+    }
 
 
 
