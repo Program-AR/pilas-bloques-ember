@@ -97,6 +97,7 @@ export default Ember.Component.extend({
                 'camino-alien-boton.png',
                 'compu_animada.png',
                 'gatoAnimado.png',
+                'marcianoAnimado.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
                 'icono.abrirOjos.png',

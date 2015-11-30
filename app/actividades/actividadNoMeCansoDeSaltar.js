@@ -1,8 +1,30 @@
 /* globals NoMeCansoDeSaltar */
-//import bloques from 'pilas-engine-bloques/actividades/bloques';
+import bloques from 'pilas-engine-bloques/actividades/bloques';
+var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
 
-//var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var Saltar = Accion.extend({
 
+  init() {
+    this._super();
+    this.set('id', 'saltar1');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+          .appendField('saltar')
+         .appendField(this.obtener_icono('arriba.png'));
+
+  },
+
+  nombre_comportamiento() {
+    return 'SaltarHablando';
+  },
+
+  argumentos() {
+    return '{  }';
+  }
+});
 
 
 var actividadNoMeCansoDeSaltar = {
@@ -19,9 +41,9 @@ var actividadNoMeCansoDeSaltar = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [],
+  control: [Repetir],
   expresiones: [],
-  acciones: [],
+  acciones: [Saltar],
   sensores: []
 };
 
