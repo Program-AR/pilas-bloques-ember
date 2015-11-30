@@ -152,3 +152,129 @@ test('puede resolver la actividad del alien y las tuercas', function(assert) {
   });
 
 });
+
+
+test('puede resolver la actividad lightbot', function(assert) {
+  assert.expect(2);
+
+  var actividad = Actividad.create({actividad: actividadAlien});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="7" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="16" inline="true"><value name="count"><block type="math_number" id="17"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaArriba" id="23"></block></statement><next><block type="repetir" id="45" inline="true"><value name="count"><block type="math_number" id="46"><field name="NUM">4</field></block></value><statement name="block"><block type="LevantaTuerca" id="29"><next><block type="MoverACasillaAbajo" id="35"><next><block type="MoverACasillaDerecha" id="41"></block></next></block></next></block></statement><next><block type="LevantaTuerca" id="53"></block></next></block></next></block></statement></block></xml>',
+    nombreDesafio: 'alien'
+  });
+
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+
+  /* Como la tarea de ejecutar el código completo de la solución demora
+   * tiempo, retorno una promesa para que ember espere a que finalice.
+   * La promesa termina con la llamada a sucess.
+   */
+  return new Ember.RSVP.Promise((success) => {
+
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 5, "TuercaAnimada");
+      //debeTenerTantosActoresConEtiqueta
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(5, cantidad_de_tuercas, "Tienen que haber 5 tuercas al comenzar.");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 0, "TuercaAnimada");
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
+
+      success(); // indica que los test finalizan para este desafío.
+    }, false);
+  });
+
+});
+test('puede resolver la actividad lightbot', function(assert) {
+  assert.expect(2);
+
+  var actividad = Actividad.create({actividad: actividadAlien});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="7" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="16" inline="true"><value name="count"><block type="math_number" id="17"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaArriba" id="23"></block></statement><next><block type="repetir" id="45" inline="true"><value name="count"><block type="math_number" id="46"><field name="NUM">4</field></block></value><statement name="block"><block type="LevantaTuerca" id="29"><next><block type="MoverACasillaAbajo" id="35"><next><block type="MoverACasillaDerecha" id="41"></block></next></block></next></block></statement><next><block type="LevantaTuerca" id="53"></block></next></block></next></block></statement></block></xml>',
+    nombreDesafio: 'alien'
+  });
+
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+
+  /* Como la tarea de ejecutar el código completo de la solución demora
+   * tiempo, retorno una promesa para que ember espere a que finalice.
+   * La promesa termina con la llamada a sucess.
+   */
+  return new Ember.RSVP.Promise((success) => {
+
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 5, "TuercaAnimada");
+      //debeTenerTantosActoresConEtiqueta
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(5, cantidad_de_tuercas, "Tienen que haber 5 tuercas al comenzar.");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 0, "TuercaAnimada");
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
+
+      success(); // indica que los test finalizan para este desafío.
+    }, false);
+  });
+
+});
+
+
+
+test('puede resolver la actividad eleccion del mono por manzana', function(assert) {
+  assert.expect(2);
+
+  var actividad = Actividad.create({actividad: actividadLaEleccionDelMono});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="16" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Avanzar" id="20"><next><block type="sino" id="22" inline="true"><value name="condition"><block type="tocandoManzana" id="30"></block></value><statement name="block1"><block type="ComerManzana" id="26"></block></statement><statement name="block2"><block type="ComerBanana" id="34"></block></statement></block></next></block></statement></block></xml>',
+    nombreDesafio: 'laEleccionDelMono'
+  });
+
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+
+  /* Como la tarea de ejecutar el código completo de la solución demora
+   * tiempo, retorno una promesa para que ember espere a que finalice.
+   * La promesa termina con la llamada a sucess.
+   */
+  return new Ember.RSVP.Promise((success) => {
+
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 1, "MonoAnimado");
+      //debeTenerTantosActoresConEtiqueta
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(5, cantidad_de_tuercas, "Tienen que haber 5 tuercas al comenzar.");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 0, "ManzanaAnimada");
+      debeTenerTantosActoresConEtiqueta(assert, 0, "BananaAnimada");
+      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
+      //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
+
+      success(); // indica que los test finalizan para este desafío.
+    }, false);
+  });
+
+});
