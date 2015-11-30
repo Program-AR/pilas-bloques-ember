@@ -1,6 +1,6 @@
 /* globals NoMeCansoDeSaltar */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var {Accion, , Repetir} = bloques;
 
 var Saltar = Accion.extend({
 
