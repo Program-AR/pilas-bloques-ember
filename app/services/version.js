@@ -4,7 +4,7 @@ import ENV from "pilas-engine-bloques/config/environment";
 export default Ember.Service.extend({
 
     getVersion() {
-        return "0.9.1";
+        return "0.9.3";
     },
 
     obtener_version_del_servidor() {
@@ -32,7 +32,7 @@ export default Ember.Service.extend({
       return new Ember.RSVP.Promise((resolve, reject) => {
 
         if (window.requireNode === undefined) {
-          console.log("Evitando consultar el número de versión porque no está en nwjs.");
+          //console.log("Evitando consultar el número de versión porque no está en nwjs.");
           resolve({comparacion: 0, version_del_servidor: '0.0.0'});
           return;
         }

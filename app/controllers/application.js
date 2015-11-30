@@ -1,6 +1,5 @@
 import Ember from 'ember';
 
-
 export default Ember.Controller.extend({
   url: '',
   queryParams: ['layout'],
@@ -11,36 +10,37 @@ export default Ember.Controller.extend({
     this.set('layout', this.get('environment').get('showLayout'));
   }),
 
-    myModalButtons: [
-        Ember.Object.create({title: 'Cerrar', dismiss: 'modal'})
-    ],
+  actions: {
+    mostrar_devtools() {
+      window.requireNode('nw.gui').Window.get().showDevTools();
+    },
+    actualizar() {
+      location.reload(true);
+    },
+    redimensionar() {
+      alert("tengo que redimensionar!");
+    },
 
-    actions: {
-      mostrar_devtools() {
-        window.requireNode('nw.gui').Window.get().showDevTools();
-      },
-      actualizar() {
-        location.reload(true);
-      },
-      redimensionar() {
-        alert("tengo que redimensionar!");
-      },
+    abrirPreferencias() {
+      this.set('mostrarDialogoOpciones', true);
+    },
 
-      abrirPreferencias() {
-        this.set('mostrarDialogoOpciones', true);
-      },
+    abrirAyuda() {
+      this.set('mostrarDialogoAyuda', true);
+    },
 
-      abrirAyuda() {
-        this.set('mostrarDialogoAyuda', true);
-      },
+    ocultar_boton_codigo() {
+      this.set('environment.debeMostrarBotonCodigoXML', false);
+    },
 
-      ocultar_boton_codigo() {
-        this.set('environment.debeMostrarBotonCodigoXML', false);
-      },
+    mostrar_boton_codigo() {
+      this.set('environment.debeMostrarBotonCodigoXML', true);
+    },
 
-      mostrar_boton_codigo() {
-        this.set('environment.debeMostrarBotonCodigoXML', true);
-      }
+    ocultarModals() {
+      this.set('mostrarDialogoAyuda', false);
+      this.set('mostrarDialogoOpciones', false);
     }
+  }
 
 });

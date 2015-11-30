@@ -1,5 +1,5 @@
 
-VERSION=0.9.1
+VERSION=0.9.3
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -50,7 +50,7 @@ comandos:
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
 	@echo ""
 	@echo "    ${G}binarios${N}          Genera los binarios."
-	@echo "    ${G}upload_to_dropbox${N} Sube los binarios generados a dropbox."
+	@echo "    ${G}subir_a_dropbox${N}   Sube los binarios generados a dropbox."
 	@echo ""
 
 
@@ -85,7 +85,8 @@ copiar_pilasweb:
 
 actualizar_ejercicios_pilas:
 	@echo "${G}actualizando ejercicios de pilas${N}"
-	cd ejerciciosPilas; git pull; npm install; grunt; cd ..
+	@cd ejerciciosPilas; git pull; echo "${G}Instalando dependencias de ejerciciosPilas${N}"; npm install; cd ..
+	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	make copiar_ejercicios_pilas
 
 copiar_ejercicios_pilas:
@@ -95,24 +96,24 @@ copiar_ejercicios_pilas:
 
 actualizar_blockly:
 	cd blockly; git pull; python build.py; cd ..
-	rm -r -f public/libs/blockly
-	mkdir -p public/libs/blockly
+	rm -rf vendor/libs/blockly
+	mkdir -p vendor/libs/blockly
 	make copiar_blockly_comprimido
 
 
 copiar_blockly_comprimido:
 	# CORE
-	cp -f blockly/blockly_compressed.js public/libs/blockly/
+	cp -f blockly/blockly_compressed.js vendor/libs/blockly/
 	# BLOCKS
-	cp -f blockly/blocks_compressed.js public/libs/blockly/
+	cp -f blockly/blocks_compressed.js vendor/libs/blockly/
 	# JS GENERATOR
-	cp -f blockly/javascript_compressed.js public/libs/blockly/
+	cp -f blockly/javascript_compressed.js vendor/libs/blockly/
 	# MEDIA
 	rm -r -f public/libs/blockly/media
 	cp -r -f blockly/media public/libs/blockly/
 	# LANG
-	rm -r -f public/libs/blockly/msg
-	cp -r -f blockly/msg  public/libs/blockly/
+	rm -r -f vendor/libs/blockly/msg
+	cp -r -f blockly/msg  vendor/libs/blockly/
 
 copiar_blockly_descomprimido:
 	# CORE
@@ -232,7 +233,7 @@ binarios: to_production build _compile_osx _compile_win
 	@open webkitbuilds
 	make to_develop
 
-upload_to_dropbox:
+subir_a_dropbox:
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/

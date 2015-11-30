@@ -15,9 +15,9 @@ tests/acceptance/
 /node_modules
 /bower_components
 pilasweb
-blockly
 ejerciciosPilas
 
+/blockly
 
 # misc
 /.sass-cache
