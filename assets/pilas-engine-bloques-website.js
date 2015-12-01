@@ -206,12 +206,11 @@ define('pilas-engine-bloques-website/routes/index', ['exports', 'ember'], functi
 
   exports['default'] = Ember['default'].Route.extend({
     model: function model() {
-
       return {
         version: "0.8.7",
         fecha: "2015-09-18",
-        link_mac: "https://dl.dropboxusercontent.com/u/1335422/releases/pilas-engine-bloques/0.8.7/pilas-engine-bloques-0.8.7.dmg",
-        link_windows: "https://dl.dropboxusercontent.com/u/1335422/releases/pilas-engine-bloques/0.8.7/pilas-engine-bloques-0.8.7.exe",
+        link_mac: "http://static.pilas-engine.com.ar/pilas-engine-bloques/0.9.3/pilas-engine-bloques-0.9.3.dmg",
+        link_windows: "http://static.pilas-engine.com.ar/pilas-engine-bloques/0.9.3/pilas-engine-bloques-0.9.3.exe",
         link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/" };
     }
   });
@@ -226,8 +225,8 @@ define('pilas-engine-bloques-website/routes/index_template', ['exports', 'ember'
       return {
         version: "VERSION",
         fecha: "FECHA",
-        link_mac: "https://dl.dropboxusercontent.com/u/1335422/releases/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.dmg",
-        link_windows: "https://dl.dropboxusercontent.com/u/1335422/releases/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.exe",
+        link_mac: "http://static.pilas-engine.com.ar/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.dmg",
+        link_windows: "http://static.pilas-engine.com.ar/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.exe",
         link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/" };
     }
   });
@@ -1185,7 +1184,7 @@ catch(err) {
 if (runningTests) {
   require("pilas-engine-bloques-website/tests/test-helper");
 } else {
-  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.2b66683d"});
+  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.5db52fa2"});
 }
 
 /* jshint ignore:end */
