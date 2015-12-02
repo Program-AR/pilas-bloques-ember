@@ -234,9 +234,13 @@ binarios: to_production build _compile_osx _compile_win
 	make to_develop
 
 subir_a_dropbox:
+	@echo "OJO, los archivos no se subirán a dropbox."
+	@echo "Ahora se sube a static.pilas-engine.com.ar"
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	scp ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} hugoruscitti@digitalocean:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
+
 
 .PHONY: dist bajar_dependencias
 
