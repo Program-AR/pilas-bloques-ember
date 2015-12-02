@@ -40,7 +40,6 @@ class Estado{
     }else{
       throw new ActividadError("¡Ups, ésa no era la opción correcta!");
     }
-
   }
 
   estadoSiguiente(comportamiento,estadoAnterior){
@@ -63,7 +62,6 @@ class BuilderStatePattern{
     constructor(idEstadoInicialp){
       this.idEstadoInicial=idEstadoInicialp;
       this.estados={};
-
       this.estados[idEstadoInicialp]= new Estado(idEstadoInicialp);
     }
 
@@ -83,15 +81,10 @@ class BuilderStatePattern{
       //agrega un error para varios estados de salida con prefijos.
       //pre indefFinalSalida>indexInicialSalida
       var tamano=indexFinalSalida-indexInicialSalida
-
       for(var index=0;index<=tamano;++index){
         this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
       }
-
-
     }
-
-
     agregarErroresIterados(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida,indexInicialTransi,indexFinalTransi){
       //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
       // NO TERMINADO
@@ -99,8 +92,6 @@ class BuilderStatePattern{
       for(var index=0;index<range;++index){
           this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
       }
-
-
     }
 
     estadoInicial(){
@@ -110,7 +101,6 @@ class BuilderStatePattern{
     agregarEstadosPrefijados(prefix,indexInicial,indexFinal){
       //prefix debe ser string e indexInicial y final ints
     for(var i=indexInicial;i<=indexFinal;++i){
-
       this.estados[prefix+i]=new Estado(prefix+i);
     }
     }
@@ -122,7 +112,5 @@ class BuilderStatePattern{
       for(var index=0;index<=tamano;++index){
                     this.estados[estadoSalidaPrefix+(inicialSalida+index)].agregarTransicion(this.estados[estadoEntradaPrefix+(inicialEntrada+index)],transicion);
       }
-
     }
-
 }
