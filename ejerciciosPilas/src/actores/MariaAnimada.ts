@@ -2,9 +2,9 @@
 
 class MariaAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'maria.png', cantColumnas:1, cantFilas: 1});
-        this.definirAnimacion("parado",[0],15);
-        this.definirAnimacion("correr",[0],5);
-        this.definirAnimacion("recoger",[0],60);
+        super(x, y, {grilla: 'maria.png', cantColumnas:10, cantFilas: 2});
+        this.definirAnimacion("parado",[0,0,0],15);
+        this.definirAnimacion("correr",[0,1,2,3,4,5],5);
+        this.definirAnimacion("recoger",[11,12,13,14,15,16,17,18,19],60);
     }
 }
