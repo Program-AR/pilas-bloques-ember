@@ -15,7 +15,7 @@ class AlienInicial extends EscenaActividad {
     fondoCuadricula;
 
     iniciar() {
-      this.estado=undefined;
+      this.estado=this.armarEstado();
       this.fondo = new Fondo('fondos.alien-inicial.png',0,0);
       this.cuadricula = new Cuadricula(-25, -200, 1, 4,
         { alto: 25, ancho: (pilas.opciones.ancho * 0.8) },
@@ -33,6 +33,13 @@ class AlienInicial extends EscenaActividad {
 
     }
 
+    private armarEstado(){
+    var a = new BuilderStatePattern('inicial');
+    a.agregarEstadoAceptacion('final');
+    a.agregarTransicion('inicial','final','apretarBoton');
+    return a.estadoInicial();
+    }
+
     personajePrincipal(){
       return this.automata;
     }
@@ -42,7 +49,7 @@ class AlienInicial extends EscenaActividad {
     }
 
     apretar(){
-      this.automata.hacer_luego(DesencadenarAnimacionDobleSiColiciona,{'idAnimacion':'prendida','idAnimacionReceptor':'apretar','etiqueta':'BotonAnimado','mensajeError': 'No hay un botón aquí'})
+
     }
 
   }

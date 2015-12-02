@@ -17,8 +17,8 @@ class ErrorEnEstados{
     return estadoAnterior;
   }
 
-}
 
+}
 
 class Estado{
   transiciones;
@@ -55,6 +55,29 @@ class Estado{
   }
 }
 
+class EstadoAceptacion extends Estado{
+
+  soyAceptacion(){
+    return true;
+  }
+}
+
+class SinEstado {
+  funcionAceptacion;
+
+  constructor(funcionAceptacion){
+    this.funcionAceptacion=funcionAceptacion;
+  }
+
+	realizarTransicion(idComport,comportamiento){
+		comportamiento.ejecutarse();
+	}
+
+  soyAceptacion(){
+    return this.funcionAceptacion(pilas.escena_actual());
+  }
+}
+
 class BuilderStatePattern{
     estados;
     idEstadoInicial;
@@ -67,6 +90,9 @@ class BuilderStatePattern{
 
     agregarEstado(idEstado){
       this.estados[idEstado]= new Estado(idEstado);
+    }
+    agregarEstadoAceptacion(idEstado){
+      this.estados[idEstado] = new EstadoAceptacion(idEstado);
     }
 
     agregarTransicion(estadoSalida,estadoEntrada,transicion){

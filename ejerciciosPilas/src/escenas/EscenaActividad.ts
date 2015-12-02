@@ -5,6 +5,7 @@
 // Toda escena que represente una actividad debe heredar de aquí.
 
 class EscenaActividad extends Base {
+	estado;
 	errorHandler = new ProductionErrorHandler(this);
 
 	actualizar(){
@@ -18,4 +19,10 @@ class EscenaActividad extends Base {
 			}
 		}
 	}
+
+	finalizoCorrectamente(){
+	//ESTO VA ACA?
+	return this.estado.soyAceptacion();
+	}
+
 }
