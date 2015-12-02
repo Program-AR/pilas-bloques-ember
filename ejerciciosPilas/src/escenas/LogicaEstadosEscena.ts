@@ -65,7 +65,7 @@ class EstadoAceptacion extends Estado{
 class SinEstado {
   funcionAceptacion;
 
-  constructor(funcionAceptacion){
+  constructor(funcionAceptacion = function(escena){return false;}){
     this.funcionAceptacion=funcionAceptacion;
   }
 

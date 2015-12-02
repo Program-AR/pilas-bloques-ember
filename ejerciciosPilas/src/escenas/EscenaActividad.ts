@@ -20,9 +20,8 @@ class EscenaActividad extends Base {
 		}
 	}
 
-	finalizoCorrectamente(){
-	//ESTO VA ACA?
-	return this.estado.soyAceptacion();
+	estaResueltoElProblema(){
+		return this.estado.soyAceptacion();
 	}
 
 }
