@@ -24,4 +24,8 @@ class EscenaActividad extends Base {
 		return this.estado.soyAceptacion();
 	}
 
+	cantidadObjetosConEtiqueta(etiqueta){
+	return pilas.obtener_actores_con_etiqueta(etiqueta).length
+	}
+
 }

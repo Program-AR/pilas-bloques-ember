@@ -7,7 +7,7 @@ class AlienLevantaTuercas extends EscenaActividad {
 	fondo;
 
 iniciar() {
-		this.estado=undefined;
+		this.estado=new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('TuercaAnimada')==0;});
 		this.fondo = new pilas.fondos.Laberinto1();
 		this.cuadricula = new Cuadricula(0,-25,5,6,
 								{alto: 400},
@@ -25,9 +25,8 @@ iniciar() {
 			tuerca.escala=1.0;
 		}
 
-
-
 }
+
 
 moverIzquierda(){
 	this.automata.hacer_luego(MoverACasillaIzquierda);

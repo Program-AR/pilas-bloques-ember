@@ -12,7 +12,7 @@ class ElMonoYLasBananas extends EscenaActividad {
     automata;
     estado;
     iniciar() {
-      this.estado=undefined;
+      this.estado= new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('BananaAnimada')==0;});
       this.fondo = new Fondo('fondos.selva.png',0,0);
       var cantidadFilas=1
       var cantidadColumnas=2

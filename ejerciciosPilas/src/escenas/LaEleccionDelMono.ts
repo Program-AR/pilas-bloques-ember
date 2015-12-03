@@ -12,8 +12,8 @@ class LaEleccionDelMono extends EscenaActividad {
     automata;
     estado;
     iniciar() {
-      this.estado=undefined;
-    	this.fondo = new Fondo('fondos.selva.png',0,0);
+        this.estado= new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('BananaAnimada')==0 && escena.cantidadObjetosConEtiqueta('BananaAnimada')==0;});
+        this.fondo = new Fondo('fondos.selva.png',0,0);
         this.cuadricula = new Cuadricula(0,0,1,2,
             {alto: 200},
             {grilla: 'casillas.violeta.png',

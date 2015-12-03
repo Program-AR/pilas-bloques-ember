@@ -14,7 +14,7 @@ class ElMarcianoEnElDesierto extends EscenaActividad {
     manzanas;
     estado;
     iniciar() {
-      this.estado=undefined;
+      this.estado= new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('ManzanaAnimada')==0;});
         this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png',0,0);
         var cantidadFilas=4;
         var cantidadColumnas=5;
