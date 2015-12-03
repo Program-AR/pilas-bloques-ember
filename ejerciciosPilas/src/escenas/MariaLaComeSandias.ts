@@ -34,11 +34,4 @@ class MariaLaComeSandias extends EscenaActividad {
             this.cuadricula.agregarActor(new SandiaAnimada(0, 0), numeroFila, x);
         }
     }
-
-    
-
-    personajePrincipal(){
-      return this.automata;
-    }
-
 }

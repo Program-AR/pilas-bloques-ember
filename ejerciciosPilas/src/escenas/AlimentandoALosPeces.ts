@@ -31,11 +31,6 @@ class AlimentandoALosPeces extends EscenaActividad {
       return builder.estadoInicial();
     }
 
-
-    personajePrincipal(){
-      return this.automata;
-    }
-
     private colocarPeces(){
       this.cuadricula.agregarActor(new PezAnimado(0,0),this.cantidadFilas-1,1);
       this.cuadricula.agregarActor(new PezAnimado(0,0),this.cantidadFilas-1,2);
