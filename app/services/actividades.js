@@ -13,7 +13,7 @@ import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/activid
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
-
+import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado';
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
@@ -105,9 +105,9 @@ export default Ember.Service.extend({
       LaberintoCorto: actividadLaberintoCorto,
       LaberintoLargo: actividadLaberintoLargo,
       LaberintoConQueso: actividadLaberintoConQueso,
-      ElCangrejoAguafiestas: actividadElCangrejoAguafiestas
-      /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
-      */
+      ElCangrejoAguafiestas: actividadElCangrejoAguafiestas,
+      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+
     };
 
     var actividad = actividades[nombreActividad];
