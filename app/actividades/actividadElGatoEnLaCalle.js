@@ -39,7 +39,7 @@ var AbrirOjos = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('abrir ')
+         .appendField('abrir ojos ')
          .appendField(this.obtener_icono('../libs/data/icono.abrirOjos.png'));
   },
 
@@ -63,7 +63,7 @@ var CerrarOjos = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('cerrar ')
+         .appendField('cerrar ojos ')
          .appendField(this.obtener_icono('../libs/data/icono.cerrarOjos.png'));
   },
 

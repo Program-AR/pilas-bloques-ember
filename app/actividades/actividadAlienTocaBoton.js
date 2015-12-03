@@ -34,7 +34,7 @@ var ApretarBoton = Accion.extend({
   },
 
   argumentos() {
-    return '{\'idAnimacion\':\'prendida\',\'idAnimacionReceptor\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\'}';
+    return '{\'idAnimacion\':\'prendida\',\'idAnimacionReceptor\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idComportamiento\':\'apretarBoton\'}';
 
   }
 });
@@ -42,7 +42,7 @@ var ApretarBoton = Accion.extend({
 var actividadAlienTocaBoton = {
   nombre: 'Alien Toca Botón',
   enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
-  'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!.',
+  'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
 
   consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques',
 
