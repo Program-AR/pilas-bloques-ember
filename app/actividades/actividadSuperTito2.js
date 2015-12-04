@@ -11,9 +11,8 @@ var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
 
 var actividadSuperTito2 = {
   nombre: 'Super Tito 2',
-  enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Consigna.',
-
+  enunciado: 'Super Tito debe encender todas las luces, pero a diferencia del desafío anterior, esta vez no están siempre agrupadas. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
+  consignaInicial:  'Identificar procedimientos que permitan identififcar patrones que les permitan ahorrar casilleros.',
   // la escena proviene de ejerciciosPilas
   escena: SuperTito2,  // jshint ignore:line
   puedeComentar: false,

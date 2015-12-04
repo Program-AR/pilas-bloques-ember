@@ -58,9 +58,7 @@ var TomarEstrella = Accion.extend({
 
 var actividadElRecolectorDeEstrellas = {
   nombre: 'El recolector de estrellas',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
-
+  enunciado: 'Ayuda a nuestro personaje a recolectar todas las estrellas. Pista: el bloque "Volver todo a" es de muuuucha ayuda.',
   escena: ElRecolectorDeEstrellas,
   puedeComentar: false,
   puedeDesactivar: false,
