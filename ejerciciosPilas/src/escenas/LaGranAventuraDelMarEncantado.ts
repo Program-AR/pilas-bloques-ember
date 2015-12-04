@@ -14,12 +14,11 @@
  * @class LaGranAventuraDelMarEncantado
  *
  */
-
 class LaGranAventuraDelMarEncantado extends EscenaActividad {
     estado;
     cuadricula;
     fondo;
-    heroe;
+    automata;
     cofre;
     llave;
     mago;
@@ -44,8 +43,6 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.cuadricula.agregarActor(this.unicornio,3,4);
         this.automata = new HeroeAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,3,0);
-
-
         // se carga el estado inicial
         this.estado = new BuscandoLLaveState(this);
     }

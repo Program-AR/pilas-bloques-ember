@@ -7,7 +7,7 @@
 class EscenaActividad extends Base {
 	estado;
 	errorHandler = new ProductionErrorHandler(this);
-
+	automata;
 	actualizar(){
 		try {
 			super.actualizar();
