@@ -1260,27 +1260,36 @@ declare class Globo extends Actor {
     public actor: any;
     public puntita: any;
     public margen: any;
-    constructor(actor: any, mensaje: any);
+    public nombreImagen: any;
+    public anchoMaximo: any;
+    constructor(actor: any, mensaje: any, anchoMaximo?: number);
     public duracion(): number;
     public eliminar(): void;
-    public crearTexto(): void;
+    public crearTexto(x: any, y: any, z: any): void;
     public actualizarMedidas(): void;
-    public ubicar(): void;
-    public ubicarEnY(): void;
-    public ubicarEnX(): void;
-    public ubicarADerechaDelActor(): void;
-    public ubicarAIzquierdaDelActor(): void;
+    public calcularY(): any;
+    public calcularX(): any;
+    public xADerechaDelActor(): any;
+    public xAIzquierdaDelActor(): number;
+    public ponerPuntita(): void;
+    public ponerPuntitaAIzquierda(): void;
+    public ponerPuntitaADerecha(): void;
+    public dimPuntita(): {
+        ancho: number;
+        alto: number;
+    };
+    public voyAIzquierda(): boolean;
 }
 declare class Texto extends Actor {
     public spriteCJS: any;
     public elString: any;
     public color: any;
-    constructor(x: any, y: any, elString: any, color?: string);
-    public crear_texto(): void;
+    constructor(x: any, y: any, elString: any, anchoMaximo?: number, color?: string);
+    public crear_texto(anchoMaximo: any): void;
     public eliminar_texto(): void;
     public eliminar(): void;
     public actualizarMedidas(): void;
-    public anchoMaximo(ancho: any): void;
+    public setAnchoMaximo(ancho: any): void;
     public reubicar(centro_x: any, centro_y: any): void;
     public cantidadDeLineas(): number;
     public setString(elString: any): void;

@@ -25,7 +25,7 @@ class EscenaActividad extends Base {
 	}
 
 	cantidadObjetosConEtiqueta(etiqueta){
-	return pilas.obtener_actores_con_etiqueta(etiqueta).length
+		return pilas.obtener_actores_con_etiqueta(etiqueta).length
 	}
 	personajePrincipal(){
 		return this.automata;
