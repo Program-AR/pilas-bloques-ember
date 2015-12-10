@@ -111,6 +111,7 @@ declare class Actor extends Estudiante {
     */
     public colisiona_con_un_punto(x: any, y: any): boolean;
     public decir(mensaje: any): void;
+    public pensar(mensaje: any): void;
     public imitar(actor_o_figura: any): void;
     public pre_actualizar(): void;
     public actualizar(): void;
@@ -1279,6 +1280,16 @@ declare class Globo extends Actor {
         alto: number;
     };
     public voyAIzquierda(): boolean;
+    public imagenPuntita(): {
+        izquierda: string;
+        derecha: string;
+    };
+}
+declare class GloboPensar extends Globo {
+    public imagenPuntita(): {
+        izquierda: string;
+        derecha: string;
+    };
 }
 declare class Texto extends Actor {
     public spriteCJS: any;
@@ -1541,6 +1552,7 @@ declare class Actores {
     public Eje: any;
     public Maton: any;
     public Globo: any;
+    public GloboPensar: any;
     public Texto: any;
     public Bloque: any;
     public Manzana: any;

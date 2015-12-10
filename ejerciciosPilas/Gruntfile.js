@@ -42,7 +42,7 @@ module.exports = function(grunt) {
     },
     shell: {
       copiarPilasweb: {
-        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js'
+        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js && cp -rf ../pilasweb/public/data/* src/data/'
 
       },
     	copiarCabecerasPilas: {
