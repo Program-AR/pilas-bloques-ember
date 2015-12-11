@@ -20,7 +20,7 @@ var Avanzar = Accion.extend({
   },
 
   argumentos() {
-    return '{}';
+    return '{velocidad: 25}';
   }
 });
 
