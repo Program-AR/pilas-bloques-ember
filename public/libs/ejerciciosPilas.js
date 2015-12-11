@@ -1818,6 +1818,35 @@ var ContarPorEtiqueta = (function (_super) {
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "ComportamientoAnimado.ts" />
+var Decir = (function (_super) {
+    __extends(Decir, _super);
+    function Decir() {
+        _super.apply(this, arguments);
+    }
+    /* Redefinir si corresponde */
+    Decir.prototype.alIniciar = function () {
+        this.globo = this.crearGlobo();
+    };
+    Decir.prototype.doActualizar = function () {
+        return !this.globo.vivo;
+    };
+    Decir.prototype.crearGlobo = function () {
+        return new Globo(this.receptor, this.argumentos.mensaje);
+    };
+    return Decir;
+})(ComportamientoAnimado);
+var Pensar = (function (_super) {
+    __extends(Pensar, _super);
+    function Pensar() {
+        _super.apply(this, arguments);
+    }
+    Pensar.prototype.crearGlobo = function () {
+        return new GloboPensar(this.receptor, this.argumentos.mensaje);
+    };
+    return Pensar;
+})(Decir);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 var HabilidadAnimada = (function (_super) {
     __extends(HabilidadAnimada, _super);

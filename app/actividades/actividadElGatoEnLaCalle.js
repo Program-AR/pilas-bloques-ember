@@ -173,6 +173,30 @@ var Avanzar = Accion.extend({
   }
 });
 
+var Soniar = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'Soniar');
+  },
+
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('soñar ')
+         .appendField(this.obtener_icono('../libs/data/icono.soniar.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'Pensar';
+  },
+
+  argumentos() {
+    return '{\'mensaje\': "ZZzzZzZ..." }';
+
+  }
+});
+
 var actividadElGatoEnLaCalle = {
   nombre: 'El gato en la calle',
   enunciado: 'A definir.',
@@ -189,7 +213,7 @@ var actividadElGatoEnLaCalle = {
 
   control: [],
   expresiones: [],
-  acciones: [Saludar,Avanzar,Volver,AbrirOjos,CerrarOjos,Acostarse,Pararse],
+  acciones: [Saludar,Avanzar,Volver,AbrirOjos,CerrarOjos,Acostarse,Pararse,Soniar],
   sensores: []
 };
 
