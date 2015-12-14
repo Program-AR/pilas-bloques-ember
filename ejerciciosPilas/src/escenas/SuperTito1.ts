@@ -19,17 +19,22 @@ class SuperTito1 extends EscenaActividad {
         this.estado=undefined;
 
         this.fondo = new Fondo('fondo.superTito1.png',0,0);
-        var cantidadMaxFilas=7;
+        var cantidadMaxFilas=5;
         this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
-        this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,
+        this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,1,
         {separacionEntreCasillas: 5},
         {grilla: 'casilla.grisoscuro.png',
-        cantColumnas: 1,  ancho:50, alto:50});
+        cantColumnas: 1,  ancho:100, alto:50});
         this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
         this.automata = new Robot(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
+        this.automata.escala *= 2;
+        this.automata.y += 30;
+        this.automata.x -= 15;
         for (let i = 0; i < this.cantidadFilas-1; i++) {
-            this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
+            var lamparin = new CasillaConLuz(0, 0);
+            this.cuadricula.agregarActor(lamparin,i,0);
+            lamparin.x += 15;
         }
 
     }
