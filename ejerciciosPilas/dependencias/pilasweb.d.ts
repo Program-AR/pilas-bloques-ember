@@ -1275,14 +1275,14 @@ declare class Globo extends Actor {
     public ponerPuntita(): void;
     public ponerPuntitaAIzquierda(): void;
     public ponerPuntitaADerecha(): void;
-    public dimPuntita(): {
-        ancho: number;
-        alto: number;
-    };
     public voyAIzquierda(): boolean;
     public imagenPuntita(): {
         izquierda: string;
         derecha: string;
+    };
+    public dimPuntita(): {
+        ancho: number;
+        alto: number;
     };
 }
 declare class GloboPensar extends Globo {
