@@ -1,47 +1,28 @@
-/// <reference path = "EscenaActividad.ts" />
-
+/// <reference path = "SuperTito1.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 /**
- * @class LightBot
+ * @class SuperTito2
  *
  */
-class SuperTito2 extends EscenaActividad {
-    fondo;
-    automata;
-    cuadricula;
-    cantidadFilas;
-    estado;
+class SuperTito2 extends SuperTito1 {
+    hayLuz;
 
-    iniciar() {
-        this.estado=undefined;
-
-        this.fondo = new Fondo('fondo.superTito2.png',0,0);
-        var cantidadMaxFilas=7;
-        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
-        this.cuadricula = new Cuadricula(pilas.opciones.arriba-40,0,this.cantidadFilas,1,
-        {separacionEntreCasillas: 5},
-        {grilla: 'casilla.grisoscuro.png',
-        cantColumnas: 1,  ancho:50, alto:50});
-        this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
-        this.automata = new Robot(0,0);
-        this.cuadricula.agregarActor(this.automata,0,0);
-        var hayAlguna=false;
-        for (let i = 1; i < this.cantidadFilas-1; i++) {
-            if(Math.random()<0.5){
-                this.cuadricula.agregarActor(new CasillaConLuz(0,0),i,0);
-                hayAlguna=true;
-            }
-
-
-        }
-        if (!hayAlguna){
-          this.cuadricula.agregarActor(new CasillaConLuz(0,0),this.cantidadFilas-2,0);
-        }
-
+    iniciar(){
+        super.iniciar();
+        this.hayLuz = false;
     }
+
+    pathFondo(){
+        return 'fondo.superTito2.png';
+    }
+
+    agregarLamparinEnFila(i){
+        if (Math.random() < 0.5 || (i == this.cantidadFilas - 2 && !this.hayLuz)) {
+            super.agregarLamparinEnFila(i);
+            this.hayLuz = true;
+        }
+    }
+
 
 }
