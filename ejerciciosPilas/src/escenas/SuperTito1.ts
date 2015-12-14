@@ -1,6 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
+/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
@@ -18,7 +19,7 @@ class SuperTito1 extends EscenaActividad {
     iniciar() {
         this.estado=undefined;
 
-        this.fondo = new Fondo('fondo.superTito1.png',0,0);
+        this.fondo = new Fondo(this.pathFondo(),0,0);
         var cantidadMaxFilas=5;
         this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,1,
@@ -32,11 +33,19 @@ class SuperTito1 extends EscenaActividad {
         this.automata.y += 30;
         this.automata.x -= 15;
         for (let i = 0; i < this.cantidadFilas-1; i++) {
-            var lamparin = new CasillaConLuz(0, 0);
-            this.cuadricula.agregarActor(lamparin,i,0);
-            lamparin.x += 15;
+            this.agregarLamparinEnFila(i);
         }
 
+    }
+
+    agregarLamparinEnFila(i){
+        var lamparin = new CasillaConLuz(0, 0);
+        this.cuadricula.agregarActor(lamparin, i, 0);
+        lamparin.x += 15;
+    }
+
+    pathFondo(){
+        return 'fondo.superTito1.png';
     }
 
 }
