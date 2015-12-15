@@ -43,11 +43,13 @@ module.exports = function(grunt) {
     shell: {
       copiarPilasweb: {
         command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js && cp -rf ../pilasweb/public/data/* src/data/'
-
       },
     	copiarCabecerasPilas: {
-		command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
-	},
+		    command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
+    	},
+      compilarPilasweb: {
+        command: 'cd ../pilasweb; make build'
+      },
 	clear: {
 		command: 'clear'
 	}
@@ -64,6 +66,8 @@ module.exports = function(grunt) {
   grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
   grunt.registerTask('default', ['typescript', 'pilas']);
+
+  grunt.registerTask('con_pilasweb', ['shell:compilarPilasweb', 'default']);
 
   grunt.loadNpmTasks('grunt-notify');
   grunt.task.run('notify_hooks');
