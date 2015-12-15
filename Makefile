@@ -79,7 +79,6 @@ actualizar_pilas:
 
 copiar_pilasweb:
 	@echo "${G}copiando pilasweb${N}"
-	cd pilasweb; make build; cd ..
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
@@ -90,6 +89,7 @@ actualizar_ejercicios_pilas:
 	make copiar_ejercicios_pilas
 
 copiar_ejercicios_pilas:
+	@echo "${G}copiando ejerciciosPilas${N}"
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 	rm -r -f public/libs/data
 	cp -r -f ejerciciosPilas/src/data public/libs/data
@@ -150,8 +150,13 @@ test_mac: ejecutar_mac
 
 build: compilar
 
-compilar:
+compilar: copiar_pilasweb copiar_ejercicios_pilas
 	./node_modules/ember-cli/bin/ember build
+
+compilar_todo_pilas:
+	cd ../pilasweb; make build
+	cd ../ejerciciosPilas; grunt
+	make compilar
 
 compilar_web:
 	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web

@@ -22,7 +22,7 @@ var Saltar = Accion.extend({
   },
 
   argumentos() {
-    return '{  }';
+    return '{ gravedad: 0.2 }';
   }
 });
 

@@ -1241,7 +1241,7 @@ var GatoAnimado = (function (_super) {
     function GatoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
         this.definirAnimacion('parado', [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 8, 9, 10, 11, 12], 5);
-        this.definirAnimacion('saltar', [14, 15, 16], 5);
+        this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19], 5);
         this.definirAnimacion('acostado', [4, 6, 4], 5);
         this.definirAnimacion('abrirOjos', [43, 44, 45, 46], 5);
@@ -2000,7 +2000,37 @@ var RecogerPorEtiqueta = (function (_super) {
     };
     return RecogerPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "ComportamientoAnimado.ts"/>
+var SaltarAnimado = (function (_super) {
+    __extends(SaltarAnimado, _super);
+    function SaltarAnimado() {
+        _super.apply(this, arguments);
+    }
+    SaltarAnimado.prototype.alIniciar = function () {
+        this.velocidad_inicial = this.argumentos.velocidad_inicial || 10;
+        this.alTerminar = this.argumentos.alTerminar || function (r) { };
+        this.gravedad = this.argumentos.gravedad || 0.3;
+        this.suelo = this.receptor.y;
+        this.velocidad = this.velocidad_inicial;
+        pilas.sonidos.cargar('saltar.wav').reproducir();
+    };
+    SaltarAnimado.prototype.doActualizar = function () {
+        _super.prototype.doActualizar.call(this);
+        this.receptor.y += this.velocidad;
+        this.velocidad -= this.gravedad;
+        if (this.receptor.y <= this.suelo) {
+            this.receptor.y = this.suelo;
+            this.alTerminar.call(this.receptor);
+            return true;
+        }
+    };
+    SaltarAnimado.prototype.nombreAnimacion = function () {
+        return "saltar";
+    };
+    return SaltarAnimado;
+})(ComportamientoAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "SaltarAnimado.ts"/>
 /*
 Comportamiento que hace saltar al personaje y luego decir una
 frase definida por la escena
@@ -2010,17 +2040,11 @@ var SaltarHablando = (function (_super) {
     function SaltarHablando() {
         _super.apply(this, arguments);
     }
-    SaltarHablando.prototype.iniciar = function (receptor) {
-        _super.prototype.iniciar.call(this, receptor);
-    };
-    SaltarHablando.prototype.actualizar = function () {
-        if (_super.prototype.actualizar.call(this)) {
-            this.receptor.decir(pilas.escena_actual().fraseAlSaltar());
-            return true;
-        }
+    SaltarHablando.prototype.alTerminarAnimacion = function () {
+        this.receptor.decir(pilas.escena_actual().fraseAlSaltar());
     };
     return SaltarHablando;
-})(Saltar);
+})(SaltarAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
 // Esta escena sirve para todas las escenas de Ejercicios Pilas.
@@ -3890,7 +3914,8 @@ var SuperLightBot2 = (function (_super) {
 })(SuperLightBot1);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
+/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
@@ -3904,27 +3929,35 @@ var SuperTito1 = (function (_super) {
     }
     SuperTito1.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondo.superTito1.png', 0, 0);
-        var cantidadMaxFilas = 7;
+        this.fondo = new Fondo(this.pathFondo(), 0, 0);
+        var cantidadMaxFilas = 5;
         this.cantidadFilas = Math.floor((Math.random() * cantidadMaxFilas) + 3);
-        this.cuadricula = new Cuadricula(pilas.opciones.arriba - 40, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
-            cantColumnas: 1, ancho: 50, alto: 50 });
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, ancho: 100, alto: 50 });
         this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
         this.automata = new Robot(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.automata.escala *= 2;
+        this.automata.y += 30;
+        this.automata.x -= 15;
         for (var i = 0; i < this.cantidadFilas - 1; i++) {
-            this.cuadricula.agregarActor(new CasillaConLuz(0, 0), i, 0);
+            this.agregarLamparinEnFila(i);
         }
+    };
+    SuperTito1.prototype.agregarLamparinEnFila = function (i) {
+        var lamparin = new CasillaConLuz(0, 0);
+        this.cuadricula.agregarActor(lamparin, i, 0);
+        lamparin.x += 15;
+    };
+    SuperTito1.prototype.pathFondo = function () {
+        return 'fondo.superTito1.png';
     };
     return SuperTito1;
 })(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "SuperTito1.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
- * @class LightBot
+ * @class SuperTito2
  *
  */
 var SuperTito2 = (function (_super) {
@@ -3933,28 +3966,20 @@ var SuperTito2 = (function (_super) {
         _super.apply(this, arguments);
     }
     SuperTito2.prototype.iniciar = function () {
-        this.estado = undefined;
-        this.fondo = new Fondo('fondo.superTito2.png', 0, 0);
-        var cantidadMaxFilas = 7;
-        this.cantidadFilas = Math.floor((Math.random() * cantidadMaxFilas) + 3);
-        this.cuadricula = new Cuadricula(pilas.opciones.arriba - 40, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
-            cantColumnas: 1, ancho: 50, alto: 50 });
-        this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
-        this.automata = new Robot(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
-        var hayAlguna = false;
-        for (var i = 1; i < this.cantidadFilas - 1; i++) {
-            if (Math.random() < 0.5) {
-                this.cuadricula.agregarActor(new CasillaConLuz(0, 0), i, 0);
-                hayAlguna = true;
-            }
-        }
-        if (!hayAlguna) {
-            this.cuadricula.agregarActor(new CasillaConLuz(0, 0), this.cantidadFilas - 2, 0);
+        _super.prototype.iniciar.call(this);
+        this.hayLuz = false;
+    };
+    SuperTito2.prototype.pathFondo = function () {
+        return 'fondo.superTito2.png';
+    };
+    SuperTito2.prototype.agregarLamparinEnFila = function (i) {
+        if (Math.random() < 0.5 || (i == this.cantidadFilas - 2 && !this.hayLuz)) {
+            _super.prototype.agregarLamparinEnFila.call(this, i);
+            this.hayLuz = true;
         }
     };
     return SuperTito2;
-})(EscenaActividad);
+})(SuperTito1);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
