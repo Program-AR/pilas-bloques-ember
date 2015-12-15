@@ -252,6 +252,36 @@ test('puede resolver la actividad eleccion del mono por banana', function(assert
 
 });
 
+test('puede resolver la actividad alimentando a los peces', function(assert) {
+  assert.expect(2);
+  var actividad = Actividad.create({actividad: actividadAlimentandoALosPeces});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="procedures_callnoreturn" id="109"><mutation name="recoger alimento"></mutation><next><block type="procedures_callnoreturn" id="244"><mutation name="alimentarabajo"></mutation><next><block type="procedures_callnoreturn" id="250"><mutation name="irarriba"></mutation><next><block type="procedures_callnoreturn" id="238"><mutation name="alimentar arriba"></mutation></block></next></block></next></block></next></block></statement></block><block type="local_var_set" id="257" inline="true" x="0" y="0"><field name="VAR">local</field></block><block type="procedures_defnoreturn" id="116" x="240" y="128"><mutation></mutation><field name="NAME">alimentarabajo</field><statement name="STACK"><block type="repetir" id="135" inline="true"><value name="count"><block type="math_number" id="136"><field name="NUM">3</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="123"><next><block type="AlimentarPez" id="130"></block></next></block></statement></block></statement></block><block type="procedures_defnoreturn" id="144" x="522" y="135"><mutation></mutation><field name="NAME">alimentar arriba</field><statement name="STACK"><block type="repetir" id="190" inline="true"><value name="count"><block type="math_number" id="191"><field name="NUM">3</field></block></value><statement name="block"><block type="AlimentarPez" id="202"><next><block type="MoverACasillaIzquierda" id="209"></block></next></block></statement><next><block type="AlimentarPez" id="232"></block></next></block></statement></block><block type="procedures_defnoreturn" id="9" x="30" y="227"><mutation></mutation><field name="NAME">recoger alimento</field><statement name="STACK"><block type="repetir" id="38" inline="true"><value name="count"><block type="math_number" id="39"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="46"></block></statement><next><block type="MoverACasillaArriba" id="53"><next><block type="MoverACasillaArriba" id="64"><next><block type="AgarrarComida" id="71"><next><block type="MoverACasillaAbajo" id="82"><next><block type="MoverACasillaAbajo" id="89"><next><block type="repetir" id="94" inline="true"><value name="count"><block type="math_number" id="95"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaIzquierda" id="102"></block></statement></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="155" x="274" y="300"><mutation></mutation><field name="NAME">irarriba</field><statement name="STACK"><block type="repetir" id="171" inline="true"><value name="count"><block type="math_number" id="172"><field name="NUM">3</field></block></value><statement name="block"><block type="MoverACasillaArriba" id="179"></block></statement></block></statement></block></xml>',
+    nombreDesafio: 'AlimentandoAlosPeces'
+  });
+
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+  return new Ember.RSVP.Promise((success) => {
+
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 1, "BuzoAnimado");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      assert.ok(true,pilas.escena_actual().estaResueltoElProblema());
+      success(); // indica que los test finalizan para este desafío.
+    }, false);
+  });
+
+});
+
+
 /*
 test('puede resolver la actividad tito enciende las luces', function(assert) {
   assert.expect(4);

@@ -1,7 +1,7 @@
 /* globals AlimentandoALosPeces */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Si, Repetir,Hasta, Procedimiento,Funcion,Accion} = bloques;
+var {Si, Repetir,Hasta, Procedimiento,Accion} = bloques;
 var {IrDerecha,IrIzquierda,IrAbajo,IrArriba} = direcciones;
 
 
@@ -18,7 +18,7 @@ var AlimentarPez = Accion.extend({
         block.appendDummyInput()
              .appendField('alimentar pez');
 
-;
+
       },
 
       nombre_comportamiento() {
@@ -48,7 +48,7 @@ var AlimentarPez = Accion.extend({
             block.appendDummyInput()
                  .appendField('agarrar ')
                  .appendField(this.obtener_icono('../libs/data/icono.alimento_pez.png'));
-;
+
           },
 
           nombre_comportamiento() {
@@ -77,7 +77,7 @@ var actividadAlimentandoALosPeces = {
   variables: [],
 
   control: [Si,Repetir,Hasta],
-  expresiones: [Funcion],
+  expresiones: [],
   acciones: [IrDerecha,IrIzquierda,IrAbajo,IrArriba,AlimentarPez,AgarrarComida],
   sensores: [],
 };
