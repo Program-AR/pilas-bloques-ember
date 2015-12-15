@@ -8,6 +8,8 @@ Y=[01;33m
 B=[01;34m
 L=[01;30m
 
+npm_config_loglevel="warn"
+
 comandos:
 	@echo ""
 	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
@@ -56,7 +58,7 @@ comandos:
 
 iniciar:
 	@echo "${G}instalando dependencias ...${N}"
-	npm install
+	@npm install
 	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
