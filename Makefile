@@ -8,6 +8,9 @@ Y=[01;33m
 B=[01;34m
 L=[01;30m
 
+NPM_PREFIX="npm_config_loglevel=warn"
+npm_config_loglevel="warn"
+
 comandos:
 	@echo ""
 	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
@@ -56,7 +59,7 @@ comandos:
 
 iniciar:
 	@echo "${G}instalando dependencias ...${N}"
-	npm install
+	@npm install
 	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
@@ -72,7 +75,7 @@ bajar_dependencias:
 actualizar_pilas:
 	@echo "${G}actualizando pilasweb${N}"
 	@echo " ${L}(esto puede demorar)${N}"
-	cd pilasweb; npm install; git pull; make build; cd ..
+	cd pilasweb; ${NPM_PREFIX} npm install; git pull; make build; cd ..
 	rm -r -f public/libs/data
 	mkdir -p public/libs/
 	make copiar_pilasweb
@@ -85,7 +88,7 @@ copiar_pilasweb:
 
 actualizar_ejercicios_pilas:
 	@echo "${G}actualizando ejercicios de pilas${N}"
-	@cd ejerciciosPilas; git pull; echo "${G}Instalando dependencias de ejerciciosPilas${N}"; npm install; cd ..
+	@cd ejerciciosPilas; git pull; echo "${G}Instalando dependencias de ejerciciosPilas${N}"; ${NPM_PREFIX} npm install; cd ..
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	make copiar_ejercicios_pilas
 
