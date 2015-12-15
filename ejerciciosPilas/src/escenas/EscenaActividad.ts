@@ -1,5 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
+/// <reference path = "../actores/ActorAnimado.ts"/>
 
 // Esta escena sirve para todas las escenas de Ejercicios Pilas.
 // Toda escena que represente una actividad debe heredar de aquí.
@@ -7,7 +8,8 @@
 class EscenaActividad extends Base {
 	estado;
 	errorHandler = new ProductionErrorHandler(this);
-	automata;
+	automata : ActorAnimado;
+	
 	actualizar(){
 		try {
 			super.actualizar();

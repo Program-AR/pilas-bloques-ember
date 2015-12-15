@@ -1,8 +1,10 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/MariaAnimada.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+
 
 class MariaLaComeSandias extends EscenaActividad {
     cuadricula;
-    automata;
     cantidadColumnas;
     estado;
     fondo;
@@ -16,9 +18,11 @@ class MariaLaComeSandias extends EscenaActividad {
             {alto: 300,ancho:300,separacionEntreCasillas: 5},
             {grilla: 'casilla.mariaSandia.png',
             cantColumnas: 5})
-        this.automata = new MariaAnimada(0, 0);
         this.completarConSandias();
+        this.automata = new MariaAnimada(0, 0);
         this.cuadricula.agregarActor(this.automata,cantidadFilas-1, 0);
+        this.automata.escala *= 2
+        this.automata.abajo = this.cuadricula.casilla(cantidadFilas - 1, 0).abajo;
     }
 
     private completarConSandias(){
