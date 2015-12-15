@@ -4,6 +4,7 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 var {Si, Repetir,Hasta, Procedimiento,Funcion} = bloques;
 var {IrDerecha,IrIzquierda,IrAbajo,IrArriba} = direcciones;
 
+//'icono.alimento_pez.png'
 
 var actividadAlimentandoALosPeces = {
   nombre: 'Alimentando a los peces',
