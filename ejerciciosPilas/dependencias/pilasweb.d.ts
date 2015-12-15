@@ -76,9 +76,12 @@ declare class Actor extends Estudiante {
     private _crear_sprite();
     public eliminar(): void;
     public z : any;
+    public setZ(z: any): void;
     public espejado : any;
     public x : any;
+    public setX(x: any): void;
     public y : any;
+    public setY(y: any): void;
     public centro : any[];
     public centro_x : any;
     public centro_y : any;
@@ -566,6 +569,13 @@ declare class Imitar extends Habilidad {
     constructor(receptor: any, argumentos: any);
     public actualizar(): void;
 }
+declare class ImitarPosicion extends Habilidad {
+    public objeto_a_imitar: any;
+    public delta_x: any;
+    public delta_y: any;
+    constructor(receptor: any, argumentos: any);
+    public actualizar(): void;
+}
 /**
 * @class PuedeExplotar
 *
@@ -663,6 +673,7 @@ declare class Habilidades {
     public RebotarComoPelota: any;
     public RebotarComoCaja: any;
     public Imitar: any;
+    public ImitarPosicion: any;
     constructor();
 }
 /**
@@ -1263,7 +1274,7 @@ declare class Globo extends Actor {
     public margen: any;
     public nombreImagen: any;
     public anchoMaximo: any;
-    constructor(actor: any, mensaje: any, anchoMaximo?: number);
+    constructor(actor: any, mensaje: any, eliminarPrevio?: boolean, anchoMaximo?: number);
     public duracion(): number;
     public eliminar(): void;
     public crearTexto(x: any, y: any, z: any): void;
@@ -1301,7 +1312,8 @@ declare class Texto extends Actor {
     public eliminar(): void;
     public actualizarMedidas(): void;
     public setAnchoMaximo(ancho: any): void;
-    public reubicar(centro_x: any, centro_y: any): void;
+    public setX(x: any): void;
+    public setY(y: any): void;
     public cantidadDeLineas(): number;
     public setString(elString: any): void;
 }
