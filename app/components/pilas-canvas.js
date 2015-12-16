@@ -106,6 +106,7 @@ export default Ember.Component.extend({
                 'pez2.png',
                 'pez3.png',
                 'instalador.png',
+                'placacontar.png',
 
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
