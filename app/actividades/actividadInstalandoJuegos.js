@@ -26,9 +26,9 @@ var SiguienteCompu = Accion.extend({
 
 
 });
-/*
-var PrenderCompu = Accion.extend({
 
+
+var PrenderCompu = Accion.extend({
   init() {
     this._super();
     this.set('id', 'PrenderCompu');
@@ -37,16 +37,64 @@ var PrenderCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('prender ');
-         .appendField(this.obtener_icono('derecha.png'));
+         .appendField('prender ')
+         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
   },
 
   nombre_comportamiento() {
-    return 'PrenderPorEtiqueta';
+    return 'DesencadenarAnimacionDobleSiColiciona';
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'prender\' }';
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'prender\',\'idAnimacion\' : \'prendida\',\'idAnimacionReceptor\' : \'escribir\'  }';
+  }
+
+
+});
+
+var ApagarCompu = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ApagarCompu');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('apagar ')
+         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'DesencadenarAnimacionDobleSiColiciona';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'apagar\',\'idAnimacion\' : \'parado\',\'idAnimacionReceptor\' : \'escribir\'  }';
+  }
+
+
+});
+
+var InstalarJuego = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'InstalarJuego');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('instalar juego ');
+
+  },
+
+  nombre_comportamiento() {
+    return 'DesencadenarAnimacionDobleSiColiciona';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'instalar\',\'idAnimacion\' : \'instalado\',\'idAnimacionReceptor\' : \'escribir\'  }';
   }
 
 
@@ -55,25 +103,77 @@ var PrenderCompu = Accion.extend({
 
 
 
+var EscribirC = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'EscribirC');
+  },
 
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('escribir "C"');
 
-apagarCompu(){
-  this.automata.hacer_luego(ApagarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'apagar' });
-}
-instalarJuego(){
-  this.automata.hacer_luego(InstalarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'instalar'})
-}
+  },
 
-escribirC(){
-  this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirC'})
-}
-escribirB(){
-  this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirB'})
-}
-escribirA(){
-  this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirA'})
+  nombre_comportamiento() {
+    return 'EscribirEnCompuAnimada';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'escribirC\'}';
   }
-*/
+
+
+});
+
+var EscribirB = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'EscribirB');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('escribir "B"');
+
+  },
+
+  nombre_comportamiento() {
+    return 'EscribirEnCompuAnimada';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'escribirB\'}';
+  }
+
+
+});
+
+var EscribirA = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'EscribirA');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('escribir "A"');
+
+  },
+
+  nombre_comportamiento() {
+    return 'EscribirEnCompuAnimada';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'escribirA\'}';
+  }
+
+});
+
 
 var actividadInstalandoJuegos = {
   nombre: 'Instalando juegos',
@@ -91,7 +191,7 @@ var actividadInstalandoJuegos = {
 
   control: [Si,Repetir,Hasta],
   expresiones: [],
-  acciones: [SiguienteCompu],
+  acciones: [SiguienteCompu,PrenderCompu,ApagarCompu,EscribirC,EscribirB,EscribirA,InstalarJuego],
   sensores: [],
 };
 
