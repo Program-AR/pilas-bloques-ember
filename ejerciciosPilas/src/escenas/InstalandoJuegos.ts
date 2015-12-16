@@ -8,23 +8,22 @@ class InstalandoJuegos extends EscenaActividad {
   estado;
 
   iniciar() {
-
       this.fondo = new Fondo('fondos.biblioteca.png',0,0);
-
       var cantidadFilas=1
       var cantidadColumnas=4
-      this.cuadricula = new Cuadricula(0,56,cantidadFilas,cantidadColumnas,
-          {},
+      this.cuadricula = new Cuadricula(-50,-50,cantidadFilas,cantidadColumnas,
+          {alto: 100},
           {grilla: 'invisible.png',
           cantColumnas: 1})
-
-      this.automata = new InstaladorAnimado(0,0);
-      this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
-
       for(var i=1;i<=3;++i){
         this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
         }
+      this.colocarAutomata();
+      this.construirFSM();
+   }
 
+
+  private construirFSM(){
     var builder= new BuilderStatePattern('inicial');
     builder.agregarEstadosPrefijados('prendido',1,3);
     builder.agregarEstadosPrefijados('escritoA',1,3);
@@ -63,9 +62,16 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarErrorAVariosEstadosDeSalida('escritoB','escribirA','Esa no es la clave correcta',1,3)
 
     this.estado=builder.estadoInicial();
+  }
+
+   private colocarAutomata(){
+     this.automata = new InstaladorAnimado(0,0);
+     this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
+     this.automata.escala=1;
+     this.automata.y=-95;
+     this.automata.x=-150;
 
    }
-
 
   siguienteCompu(){
     this.automata.hacer_luego(MoverACasillaDerecha)
