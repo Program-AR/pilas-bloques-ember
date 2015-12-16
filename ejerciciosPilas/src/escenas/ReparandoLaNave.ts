@@ -1,7 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 
 class ReparandoLaNave extends EscenaActividad {
-  personaje;
+  automata;
   compus;
   fondo;
   cuadricula;
@@ -21,10 +21,10 @@ class ReparandoLaNave extends EscenaActividad {
           {},
           {grilla: 'invisible.png',
           cantColumnas: 5, alto:50, ancho:50});
-      this.personaje = new MarcianoVerdeAnimado(0,0);
+      this.automata = new MarcianoVerdeAnimado(0,0);
       this.nave= new NaveAnimada(0,0);
       this.cuadricula.agregarActor(this.nave,cantidadFilas-1,0);
-      this.cuadricula.agregarActor(this.personaje,cantidadFilas-1,0);
+      this.cuadricula.agregarActor(this.automata,cantidadFilas-1,0);
       this.cuadricula.agregarActor(new HierroAnimado(0,0),0,0);
       this.cuadricula.agregarActor(new CarbonAnimado(0,0),0,cantidadColumnas-1);
       this.tableroHierro = new Tablero(150,220,"Hierro");
@@ -39,15 +39,15 @@ class ReparandoLaNave extends EscenaActividad {
       this.estado=builder.estadoInicial();
       this.secuenciaCaminata = new Secuencia({'secuencia':[ new CaminaArriba({})]})
 
-      this.secuenciaCaminata.iniciar(this.personaje);
+      this.secuenciaCaminata.iniciar(this.automata);
 
-       this.condicion = () => { return this.personajePrincipal().y > pilas.arriba+10; }
+       this.condicion = () => { return this.automataPrincipal().y > pilas.arriba+10; }
 
 
  }
 
-  personajePrincipal(){
-    return this.personaje;
+  automataPrincipal(){
+    return this.automata;
   }
 
   private definirTransiciones(builder){
@@ -91,32 +91,32 @@ class ReparandoLaNave extends EscenaActividad {
 
 
   moverDerecha(){
-      this.personaje.hacer_luego(MoverACasillaDerecha);
+      this.automata.hacer_luego(MoverACasillaDerecha);
   }
   moverIzquierda(){
-      this.personaje.hacer_luego(MoverACasillaIzquierda);
+      this.automata.hacer_luego(MoverACasillaIzquierda);
   }
   moverArriba(){
-      this.personaje.hacer_luego(MoverACasillaArriba);
+      this.automata.hacer_luego(MoverACasillaArriba);
   }
   moverAbajo(){
-      this.personaje.hacer_luego(MoverACasillaAbajo);
+      this.automata.hacer_luego(MoverACasillaAbajo);
   }
 
   tomarHierro(){
-        this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.cantidadHierro,'idComportamiento' : 'tomarHierro'})
+        this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.cantidadHierro,'idComportamiento' : 'tomarHierro'})
   }
 
   tomarCarbon(){
-    this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.cantidadCarbon,'idComportamiento' : 'tomarCarbon'})
+    this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.cantidadCarbon,'idComportamiento' : 'tomarCarbon'})
   }
 
   depositar(){
-    this.personaje.hacer_luego(Depositar,{'etiqueta':'NaveAnimada','mensajeError':'La nave no está aquí','idComportamiento' : 'depositar'})
+    this.automata.hacer_luego(Depositar,{'etiqueta':'NaveAnimada','mensajeError':'La nave no está aquí','idComportamiento' : 'depositar'})
   }
 
   escapar(){
-  this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
+  this.automata.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
 
   }
 
@@ -126,7 +126,7 @@ class ReparandoLaNave extends EscenaActividad {
 
 class Depositar extends ComportamientoColision{
   metodo(objetoColision){
-      pilas.escena_actual().personajePrincipal().cargarAnimacion("parado");
+      pilas.escena_actual().automataPrincipal().cargarAnimacion("parado");
   }
 }
 
@@ -139,6 +139,6 @@ class TomarYContarPorEtiqueta extends ComportamientoColision {
           objetoColision.eliminar()
         }
 
-        pilas.escena_actual().personajePrincipal().cargarAnimacion("con"+this.argumentos['etiqueta']+"EnMano");
+        pilas.escena_actual().automataPrincipal().cargarAnimacion("con"+this.argumentos['etiqueta']+"EnMano");
     }
 }

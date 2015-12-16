@@ -13,13 +13,13 @@ class InstalandoJuegos extends EscenaActividad {
 
       var cantidadFilas=1
       var cantidadColumnas=4
-      this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-          {alto: 100},
+      this.cuadricula = new Cuadricula(0,56,cantidadFilas,cantidadColumnas,
+          {},
           {grilla: 'invisible.png',
           cantColumnas: 1})
 
       this.automata = new InstaladorAnimado(0,0);
-      this.cuadricula.agregarActor(this.automata,0,0);
+      this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
 
       for(var i=1;i<=3;++i){
         this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);

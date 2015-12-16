@@ -28,8 +28,11 @@ class AlimentandoALosPeces extends EscenaActividad {
     generarEstadoInicial(){
       var builder= new BuilderStatePattern('inicial');
       builder.agregarEstado('tengoLaComida');
-      builder.agregarTransicion('inicial','tengoLaComida','recogerComida')
-      builder.agregarTransicion('tengoLaComida','tengoLaComida','alimentarPez')
+      builder.agregarEstadosPrefijados('alimentado',1,6);
+      builder.agregarEstadoAceptacion('alimentado7');
+      builder.agregarTransicion('inicial','tengoLaComida','recogerComida');
+      builder.agregarTransicion('tengoLaComida','alimentado1','alimentarPez');
+      builder.agregarTransicionesIteradas('alimentado','alimentado','alimentarPez',1,6,2,7);
       builder.agregarError('inicial','alimentarPez','Debés recolectar primero el alimento')
       return builder.estadoInicial();
     }
