@@ -1,8 +1,8 @@
 
 class NaveAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'naveAnimada.png', cantColumnas:2, cantFilas: 1});
-  
+        super(x, y, {grilla: 'naveAnimada.png', cantColumnas:4, cantFilas: 1});
+
 
     }
 }

@@ -16,7 +16,7 @@ class InstalandoJuegos extends EscenaActividad {
       this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
           {alto: 100},
           {grilla: 'invisible.png',
-          cantColumnas: 5})
+          cantColumnas: 1})
 
       this.automata = new InstaladorAnimado(0,0);
       this.cuadricula.agregarActor(this.automata,0,0);
@@ -26,7 +26,6 @@ class InstalandoJuegos extends EscenaActividad {
         }
 
     var builder= new BuilderStatePattern('inicial');
-
     builder.agregarEstadosPrefijados('prendido',1,3);
     builder.agregarEstadosPrefijados('escritoA',1,3);
     builder.agregarEstadosPrefijados('escritoB',1,3);
@@ -67,9 +66,6 @@ class InstalandoJuegos extends EscenaActividad {
 
    }
 
-  personajePrincipal(){
-    return this.automata;
-  }
 
   siguienteCompu(){
     this.automata.hacer_luego(MoverACasillaDerecha)

@@ -18,9 +18,9 @@ class ReparandoLaNave extends EscenaActividad {
       var cantidadFilas=4
       var cantidadColumnas=5
       this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-          {alto: 100},
-          {grilla: 'casilla.reparandoNave.png',
-          cantColumnas: 5})
+          {},
+          {grilla: 'invisible.png',
+          cantColumnas: 5, alto:50, ancho:50});
       this.personaje = new MarcianoVerdeAnimado(0,0);
       this.nave= new NaveAnimada(0,0);
       this.cuadricula.agregarActor(this.nave,cantidadFilas-1,0);

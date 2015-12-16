@@ -46,6 +46,9 @@ class ComportamientoColision extends ComportamientoAnimado {
   }
 
 		metodo(objetoColision){
+
+
+			
 						//redefinir por subclase
 		}
 
