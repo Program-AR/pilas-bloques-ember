@@ -65,7 +65,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
-  grunt.registerTask('default', ['typescript', 'pilas']);
+  grunt.registerTask('default', ['pilas', 'typescript']);
 
   grunt.registerTask('con_pilasweb', ['shell:compilarPilasweb', 'default']);
 

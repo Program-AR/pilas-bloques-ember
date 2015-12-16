@@ -70,13 +70,13 @@ class ActorAnimado extends Actor {
         this._imagen.avanzar();
     }
 
-    tocando(etiqueta){
+    tocando(etiqueta) : Boolean {
       return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this))
       //var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
       //return actores.length > 0;
     };
 
-    estoyUltimaFila(){
+    estoyUltimaFila() : Boolean {
       return this.cuadricula.cantFilas-1==this.casillaActual().nroFila;
     }
 
@@ -84,17 +84,17 @@ class ActorAnimado extends Actor {
         this.imagen = this.animacionPara(nombre);
     }
 
-    animacionPara(nombre){
+    animacionPara(nombre) {
         return pilas.imagenes.cargar_animacion(nombre, this.opciones.cantColumnas, this.opciones.cantFilas);
     }
 
-    tocandoFin(){
+    tocandoFin() : Boolean {
     return this.casillaActual().casillaASuDerecha()==undefined
     // return  pilas.escena_actual().cuadricula.tocandoFin(this)
     // cada cuadricula (multiple,esparsa,etc) implementa su tocandoFin de manera diferente
     }
 
-    tocandoInicio(){
+    tocandoInicio() : Boolean {
       return this.casillaActual().nroColumna==0;
     }
 
@@ -106,11 +106,11 @@ class ActorAnimado extends Actor {
     	this._imagen.cargar_animacion(nombre);
     }
 
-    avanzarAnimacion(){
+    avanzarAnimacion() : Boolean {
     	return !this._imagen.avanzar();
     }
 
-    cantidadDeSprites(){
+    cantidadDeSprites() : Number {
         return this._imagen.animacion_en_curso.cuadros.length;
     }
 
@@ -145,7 +145,7 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
-    colisiona_con(objeto){
+    colisiona_con(objeto) : Boolean {
       if(this.cuadricula){
         return this.cuadricula.colisionan(this,objeto);
       }else{

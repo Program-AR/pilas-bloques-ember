@@ -569,12 +569,19 @@ declare class Imitar extends Habilidad {
     constructor(receptor: any, argumentos: any);
     public actualizar(): void;
 }
-declare class ImitarPosicion extends Habilidad {
+declare class ImitarAtributosNumericos extends Habilidad {
+    public objeto_a_imitar: any;
+    public atributos: any;
+    public setters: any;
+    public deltas: any;
+    constructor(receptor: any, argumentos: any);
+    public actualizar(): void;
+}
+declare class ImitarPosicion extends ImitarAtributosNumericos {
     public objeto_a_imitar: any;
     public delta_x: any;
     public delta_y: any;
     constructor(receptor: any, argumentos: any);
-    public actualizar(): void;
 }
 /**
 * @class PuedeExplotar
@@ -674,6 +681,7 @@ declare class Habilidades {
     public RebotarComoCaja: any;
     public Imitar: any;
     public ImitarPosicion: any;
+    public ImitarAtributosNumericos: any;
     constructor();
 }
 /**
