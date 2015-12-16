@@ -13,9 +13,9 @@ class AlimentandoALosPeces extends EscenaActividad {
         this.cantidadColumnas=5
         this.fondo = new Fondo('fondo.alimentando_peces.png.png',0,0);
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
-            {},
+            {ancho:328,alto:262},
             {grilla: 'invisible.png',
-            cantColumnas: 1,alto: 50,ancho:50})
+            cantColumnas: 1})
 
         this.automata = new BuzoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata,this.cantidadFilas-1, 0);
@@ -28,14 +28,17 @@ class AlimentandoALosPeces extends EscenaActividad {
     generarEstadoInicial(){
       var builder= new BuilderStatePattern('inicial');
       builder.agregarEstado('tengoLaComida');
-      builder.agregarTransicion('inicial','tengoLaComida','recogerComida')
-      builder.agregarTransicion('tengoLaComida','tengoLaComida','alimentarPez')
+      builder.agregarEstadosPrefijados('alimentado',1,6);
+      builder.agregarEstadoAceptacion('alimentado7');
+      builder.agregarTransicion('inicial','tengoLaComida','recogerComida');
+      builder.agregarTransicion('tengoLaComida','alimentado1','alimentarPez');
+      builder.agregarTransicionesIteradas('alimentado','alimentado','alimentarPez',1,6,2,7);
       builder.agregarError('inicial','alimentarPez','Debés recolectar primero el alimento')
       return builder.estadoInicial();
     }
 
     private colocarPeces(){
-      this.cuadricula.agregarActorEnPerspectiva(new PezAnimado(0,0),this.cantidadFilas-1,1);
+      this.cuadricula.agregarActor(new PezAnimado(0,0),this.cantidadFilas-1,1);
       this.cuadricula.agregarActor(new PezAnimado(0,0),this.cantidadFilas-1,2);
       this.cuadricula.agregarActor(new PezAnimado(0,0),this.cantidadFilas-1,3);
       this.cuadricula.agregarActor(new PezAnimado(0,0),0,0);
