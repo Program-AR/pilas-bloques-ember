@@ -1,61 +1,82 @@
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/MarcianoVerdeAnimado.ts" />
+/// <reference path = "../actores/NaveAnimada.ts" />
+/// <reference path = "../actores/CarbonAnimado.ts" />
+/// <reference path = "../actores/HierroAnimado.ts" />
+/// <reference path = "../actores/Tablero.ts" />
+/// <reference path = "../actores/ObservadoAnimado.ts" />
+/// <reference path = "../actores/ActorCompuesto.ts" />
+/// <reference path = "LogicaEstadosEscena.ts" />
 
 class ReparandoLaNave extends EscenaActividad {
-  automata;
   compus;
   fondo;
   cuadricula;
-  estado;
-  tableroHierro;
-  tableroCarbon;
-  cantidadCarbon;
-  cantidadHierro;
+  carbon;
+  hierro;
   nave;
   secuenciaCaminata;
   condicion;
+
   iniciar() {
-      this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
-      var cantidadFilas=4
-      var cantidadColumnas=5
+    this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
+    var cantidadFilas=4
+    var cantidadColumnas=5
 
-      this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
-          {ancho:323,alto:261},
-          {grilla: 'invisible.png',
-          cantColumnas: 1});
+    this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
+        {ancho:323,alto:261},
+        {grilla: 'invisible.png',
+        cantColumnas: 1});
 
-      this.automata = new MarcianoVerdeAnimado(0,0);
-      this.nave= new NaveAnimada(0,0);
+    this.crearActores(cantidadFilas, cantidadColumnas);
+    this.crearTableros();
+    this.crearEstado();
+    this.crearEscape();
+  }
 
-      this.cuadricula.agregarActor(this.nave,cantidadFilas-1,0);
-      this.cuadricula.agregarActorEnPerspectiva(this.automata,cantidadFilas-1,0);
+  private crearActores(cFilas, cColumnas){
+    this.crearAutomata(cFilas, cColumnas);
 
-      this.cuadricula.agregarActor(new HierroAnimado(0,0),0,0);
-      this.cuadricula.agregarActor(new CarbonAnimado(0,0),0,cantidadColumnas-1);
+    this.nave = new NaveAnimada(0, 0);
+    this.cuadricula.agregarActor(this.nave, cFilas - 1, 0);
 
-      this.tableroCarbon= new Tablero(150,220,{texto:"Hierro",separacionX:30,valorInicial:0,imagen:'placacontar.png'});
-      this.tableroHierro = new Tablero(150,190,{texto:"Carbon",separacionX:30,valorInicial:0,imagen:'placacontar.png'});
+    this.hierro = new HierroAnimado(0, 0);
+    this.hierro.cantidad = 3;
+    this.carbon = new CarbonAnimado(0, 0);
+    this.carbon.cantidad = 3;
+    this.cuadricula.agregarActor(this.hierro, 0, 0);
+    this.cuadricula.agregarActor(this.carbon, 0, cColumnas - 1);
+  }
 
-      this.cantidadCarbon= new ObservadoConDisminuir(3);
-      this.cantidadHierro= new ObservadoConDisminuir(3);
+  private crearAutomata(cantidadFilas, cantidadColumnas) {
+    this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoVerdeAnimado(0, 0)]});
+    this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0, false);
+    this.automata.escala = 0.75;
+  }
 
-      this.cantidadCarbon.registrarObservador(this.tableroCarbon);
-      this.cantidadHierro.registrarObservador(this.tableroHierro);
+  private crearTableros() {
+    Trait.toObject(ObservadoConDisminuir, this.carbon);
+    Trait.toObject(ObservadoConDisminuir, this.hierro);
 
-      this.cantidadCarbon.registrarObservador(this.automata);
-      this.cantidadHierro.registrarObservador(this.automata);
+    this.carbon.registrarObservador(
+      new Tablero(150, 220, { texto: "Hierro", separacionX: 30, valorInicial: 0, imagen: 'placacontar.png', atributoObservado: 'cantidad' }));
+    this.hierro.registrarObservador(
+      new Tablero(150, 190, { texto: "Carbon", separacionX: 30, valorInicial: 0, imagen: 'placacontar.png', atributoObservado: 'cantidad' }));
+  }
 
-      var builder= new BuilderStatePattern('estoy00');
-      this.definirTransiciones(builder);
+  private crearEstado() {
+    var builder = new BuilderStatePattern('estoy00');
+    this.definirTransiciones(builder);
+    this.estado = builder.estadoInicial();
+  }
 
-      this.estado=builder.estadoInicial();
-
-      this.secuenciaCaminata = new Secuencia({'secuencia':[ new CaminaArriba({})]})
-
-      this.secuenciaCaminata.iniciar(this.automata);
-       this.condicion = () => { return this.automata.y > pilas.arriba+10; }
-       this.automata.escala=0.75;
-
- }
+  private crearEscape() {
+    this.secuenciaCaminata = new Secuencia({ 'secuencia': [new CaminaArriba({})] });
+    this.secuenciaCaminata.iniciar(this.automata);
+    this.condicion = () => { return this.automata.y > pilas.arriba + 10; }
+  }
 
   private definirTransiciones(builder){
     //modelo estoyCH como cantidad de carbon y de hierro ya depositados,

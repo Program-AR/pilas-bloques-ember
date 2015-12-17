@@ -7,10 +7,12 @@ class Tablero extends ActorAnimado{
   nombre;
   puntaje;
   observado;
+  atributoObservado;
 
   constructor(x,y,argumentos){
     super(x, y, {grilla: argumentos.imagen, cantColumnas:1, cantFilas: 1});
 
+    this.atributoObservado = argumentos.atributoObservado;
     this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
 
     this.puntaje=new Puntaje(x+(argumentos.separacionX||0),y+(argumentos.separacionY||0),argumentos.valorInicial||0,argumentos.colorPuntaje||"black");
@@ -27,14 +29,15 @@ class Tablero extends ActorAnimado{
   }
 
   setearValor(nuevoValor){
-    if(nuevoValor<=this.puntaje.obtener()){
-      this.puntaje.aumentar(-(this.puntaje.obtener()-nuevoValor))
-      }else{
-        this.puntaje.aumentar(nuevoValor-this.puntaje.obtener())
-      }
+    if(nuevoValor <= this.puntaje.obtener()){
+      this.puntaje.aumentar(-(this.puntaje.obtener() - nuevoValor));
+    }else{
+      this.puntaje.aumentar(nuevoValor - this.puntaje.obtener());
+    }
   }
+  
   tuObservadoCambio(observado){
-    this.setearValor(observado.dameAtributo());
+    this.setearValor(observado[this.atributoObservado]);
   }
 
 
