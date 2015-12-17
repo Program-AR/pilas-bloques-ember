@@ -17,27 +17,40 @@ class ReparandoLaNave extends EscenaActividad {
       this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
       var cantidadFilas=4
       var cantidadColumnas=5
+
       this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
           {ancho:323,alto:261},
           {grilla: 'invisible.png',
           cantColumnas: 1});
+
       this.automata = new MarcianoVerdeAnimado(0,0);
       this.nave= new NaveAnimada(0,0);
+
       this.cuadricula.agregarActor(this.nave,cantidadFilas-1,0);
       this.cuadricula.agregarActorEnPerspectiva(this.automata,cantidadFilas-1,0);
+
       this.cuadricula.agregarActor(new HierroAnimado(0,0),0,0);
       this.cuadricula.agregarActor(new CarbonAnimado(0,0),0,cantidadColumnas-1);
 
       this.tableroCarbon= new Tablero(150,220,{texto:"Hierro",separacionX:30,valorInicial:0,imagen:'placacontar.png'});
       this.tableroHierro = new Tablero(150,190,{texto:"Carbon",separacionX:30,valorInicial:0,imagen:'placacontar.png'});
+
       this.cantidadCarbon= new ObservadoConDisminuir(3);
       this.cantidadHierro= new ObservadoConDisminuir(3);
+
       this.cantidadCarbon.registrarObservador(this.tableroCarbon);
       this.cantidadHierro.registrarObservador(this.tableroHierro);
+
+      this.cantidadCarbon.registrarObservador(this.automata);
+      this.cantidadHierro.registrarObservador(this.automata);
+
       var builder= new BuilderStatePattern('estoy00');
       this.definirTransiciones(builder);
+
       this.estado=builder.estadoInicial();
+
       this.secuenciaCaminata = new Secuencia({'secuencia':[ new CaminaArriba({})]})
+
       this.secuenciaCaminata.iniciar(this.automata);
        this.condicion = () => { return this.automata.y > pilas.arriba+10; }
        this.automata.escala=0.75;
