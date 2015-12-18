@@ -25,7 +25,7 @@ class ActorCompuesto extends ActorAnimado {
 		this.apegarActor(actor)
 	}
 
-	apegarActor(actor){
+	private apegarActor(actor){
 		actor.agregar_habilidad(ImitarAtributosNumericos,
 			{
 				objeto_a_imitar: this,
@@ -33,6 +33,15 @@ class ActorCompuesto extends ActorAnimado {
 				setters: { 'x': 'setX', 'y': 'setY' },
 			})
 	}
+
+	eliminarUltimoSubactor(){
+		this.subactores.pop().eliminar();
+	}
+
+
+	///////////////////////////////////////////////////////
+	// A partir de acá son los métodos del composite polimórfico
+	//////////////////////////////////////////////////////
 
 	eliminar(){
 		super.eliminar();

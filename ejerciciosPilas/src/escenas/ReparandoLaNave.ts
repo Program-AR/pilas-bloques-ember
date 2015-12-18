@@ -9,6 +9,8 @@
 /// <reference path = "../actores/ObservadoAnimado.ts" />
 /// <reference path = "../actores/ActorCompuesto.ts" />
 /// <reference path = "LogicaEstadosEscena.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+
 
 class ReparandoLaNave extends EscenaActividad {
   compus;
@@ -108,11 +110,11 @@ class ReparandoLaNave extends EscenaActividad {
 
 }
   tomarHierro(){
-        this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.cantidadHierro,'idComportamiento' : 'tomarHierro'})
+        this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.hierro, 'idComportamiento' : 'tomarHierro'})
   }
 
   tomarCarbon(){
-    this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.cantidadCarbon,'idComportamiento' : 'tomarCarbon'})
+    this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.carbon,'idComportamiento' : 'tomarCarbon'})
   }
 
   depositar(){
@@ -130,7 +132,7 @@ class ReparandoLaNave extends EscenaActividad {
 
 class Depositar extends ComportamientoColision{
   metodo(objetoColision){
-      pilas.escena_actual().automataPrincipal().cargarAnimacion("parado");
+      pilas.escena_actual().automata.eliminarUltimoSubactor();
   }
 }
 
@@ -138,11 +140,17 @@ class Depositar extends ComportamientoColision{
 class TomarYContarPorEtiqueta extends ComportamientoColision {
   //Si es el último del contador, elimina el objeto del cual recoge.
     metodo(objetoColision){
-        this.argumentos['dondeReflejarValor'].disminuir(1);
-        if(this.argumentos['dondeReflejarValor'].dameAtributo()==0){
+      var objetoAgarrado = objetoColision.clonar();
+      objetoAgarrado.escala = objetoColision.escala;
+      objetoAgarrado.y = this.receptor.y;
+      objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
+      this.receptor.agregarSubactor(objetoAgarrado);
+      objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
+
+      this.argumentos['dondeReflejarValor'].disminuir('cantidad',1);
+      if (this.argumentos['dondeReflejarValor']['cantidad'] == 0) {
           objetoColision.eliminar()
         }
 
-        pilas.escena_actual().automataPrincipal().cargarAnimacion("con"+this.argumentos['etiqueta']+"EnMano");
     }
 }

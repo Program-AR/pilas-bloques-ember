@@ -1041,7 +1041,7 @@ declare class Rutinas {
     public actualizar(): void;
 }
 declare var pilas: any;
-declare var Mixin: any;
+declare var Trait: any;
 declare var window: Window;
 declare var pilasengine: any;
 declare var PxLoader: any;
