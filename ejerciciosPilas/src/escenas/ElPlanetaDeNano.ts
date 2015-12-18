@@ -27,10 +27,10 @@ iniciar() {
     this.secuenciaCaminata = new Secuencia({'secuencia':[ new MoverACasillaIzquierda({})]})
     this.secuenciaCaminata.iniciar(this.automata);
     this.condicion = () => { return this.personajePrincipal().casillaActual().nroColumna==0;}
-    this.tableroBananas = new Tablero(150,220,"Bananas");
+    this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
     this.cantidadBananas = new ObservadoConAumentar();
     this.cantidadBananas.cantidad = 0;
-    this.cantidadBananas.registrarObservador(this.tableroBananas,0);
+    this.cantidadBananas.registrarObservador(this.tableroBananas);
     this.completarConBananas();
 }
 

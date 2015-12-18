@@ -62,10 +62,13 @@ class ReparandoLaNave extends EscenaActividad {
     Trait.toObject(ObservadoConDisminuir, this.carbon);
     Trait.toObject(ObservadoConDisminuir, this.hierro);
 
-    this.carbon.registrarObservador(
-      new Tablero(150, 220, { texto: "Hierro", separacionX: 30, valorInicial: 0, imagen: 'placacontar.png', atributoObservado: 'cantidad' }));
     this.hierro.registrarObservador(
-      new Tablero(150, 190, { texto: "Carbon", separacionX: 30, valorInicial: 0, imagen: 'placacontar.png', atributoObservado: 'cantidad' }));
+      new Tablero(150, 220, { texto: "Hierro" }));
+    this.carbon.registrarObservador(
+      new Tablero(150, 190, { texto: "Carbon" }));
+
+    this.carbon.changed();
+    this.hierro.changed();
   }
 
   private crearEstado() {
@@ -139,7 +142,7 @@ class Depositar extends ComportamientoColision{
 
 class TomarYContarPorEtiqueta extends ComportamientoColision {
   //Si es el último del contador, elimina el objeto del cual recoge.
-    metodo(objetoColision){
+    metodo(objetoColision){ // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
       var objetoAgarrado = objetoColision.clonar();
       objetoAgarrado.escala = objetoColision.escala;
       objetoAgarrado.y = this.receptor.y;

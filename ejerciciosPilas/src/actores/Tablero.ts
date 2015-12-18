@@ -10,12 +10,16 @@ class Tablero extends ActorAnimado{
   atributoObservado;
 
   constructor(x,y,argumentos){
-    super(x, y, {grilla: argumentos.imagen, cantColumnas:1, cantFilas: 1});
+    super(x, y, {grilla: argumentos.imagen || 'placacontar.png', cantColumnas:1, cantFilas: 1});
 
-    this.atributoObservado = argumentos.atributoObservado;
+    this.atributoObservado = argumentos.atributoObservado || 'cantidad';
     this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
 
-    this.puntaje=new Puntaje(x+(argumentos.separacionX||0),y+(argumentos.separacionY||0),argumentos.valorInicial||0,argumentos.colorPuntaje||"black");
+    this.puntaje=new Puntaje(
+        this.nombre.derecha + (argumentos.separacionX || 10),
+        this.nombre.y + (argumentos.separacionY || 0),
+        argumentos.valorInicial || 0,
+        argumentos.colorPuntaje || "black");
 
 }
 
