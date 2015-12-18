@@ -9,12 +9,10 @@ class ElMonoQueSabeContar extends EscenaActividad {
     etiquetasDeObjetosAColocar= new ConjuntoClases([ManzanaAnimada,BananaAnimada])
     definidor;
     texto;
-    contador;
-    contadorDeEtiquetas;
     tableroBananas;
     tableroManzanas;
-    cantidadManzanas;
-    cantidadBananas;
+    contadorManzanas;
+    contadorBananas;
     estado;
     puntaje;
     iniciar() {
@@ -36,12 +34,14 @@ class ElMonoQueSabeContar extends EscenaActividad {
         this.automata = new MonoAnimado(0,0);
         this.automata.escala=0.5
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0,false);
-        this.tableroManzanas = new Tablero(120,210,{texto:"Manzanas",separacionX:50,valorInicial:0,imagen:'placacontar.png'});
-        this.tableroBananas = new Tablero(-120,230,{texto:"Bananas",separacionX:50,valorInicial:0,imagen:'placacontar.png'});
-        this.cantidadManzanas= new ObservadoConAumentar(0);
-        this.cantidadBananas= new ObservadoConAumentar(0);
-        this.cantidadManzanas.registrarObservador(this.tableroManzanas,0);
-        this.cantidadBananas.registrarObservador(this.tableroBananas,0);
+        this.tableroManzanas = new Tablero(120,210,{texto:"Manzanas"});
+        this.tableroBananas = new Tablero(-120,230,{texto:"Bananas"});
+        this.contadorManzanas = new ObservadoConAumentar();
+        this.contadorManzanas.cantidad = 0;
+        this.contadorBananas = new ObservadoConAumentar();
+        this.contadorBananas.cantidad = 0;
+        this.contadorManzanas.registrarObservador(this.tableroManzanas);
+        this.contadorBananas.registrarObservador(this.tableroBananas);
 
         this.cuadricula.arriba=200;
         //this.cuadricula.y=pilas.arriba()-this.cuadricula.alto-40;
@@ -53,7 +53,7 @@ class ElMonoQueSabeContar extends EscenaActividad {
     }
 
   contar(){
-    this.automata.hacer_luego(ContarPorEtiqueta,{etiqueta:BananaAnimada,dondeReflejarValor:this.cantidadManzanas,mensajeError:'a'})
+    this.automata.hacer_luego(ContarPorEtiqueta,{etiqueta:BananaAnimada,dondeReflejarValor:this.contadorManzanas,mensajeError:'a'})
   }
 
 }

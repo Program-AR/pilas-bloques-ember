@@ -4,54 +4,41 @@ implementa la interfaz registrarObservador y tuObservadorCambio,
 que avisa a los observadores sobre el cambio
 */
 
+// Pensado para ser Trait.
 class Observado  {
-	//atributo
     observadores;
-   	atributo;
-    constructor(valorInicial) {
-        //super(x, y, {grilla: 'mock_caballero.png', cantColumnas:1});
-        //this.escala_x = 0.05;
-        //this.escala_y = 0.05;
-        this.atributo=valorInicial;
-        this.observadores=[];
+
+    inicializarObservadores() {
+        if(!this.observadores) this.observadores = [];
     }
 
     registrarObservador(observador){
-    	this.observadores.push(observador);
-      this.changed();
+        this.inicializarObservadores();
+        this.observadores.push(observador);
+        this.changed();
     }
 
     changed(){
-    	//TODO:reemplazar con foreach
-
-    	for(var index =0;index<this.observadores.length;index++){
-    		this.observadores[index].tuObservadoCambio(this);
-    	}
-
-    }
-
-    dameAtributo(){
-    	return this.atributo;
+        this.inicializarObservadores();
+    	this.observadores.forEach( o => o.tuObservadoCambio(this) );
     }
 }
 
 
 
 class ObservadoConAumentar extends Observado{
-
-  aumentar(valorAumento){
-    this.atributo=this.atributo + valorAumento;
-    this.changed();
-  }
+    aumentar(atributo,valorAumento) {
+        this[atributo] = this[atributo] + valorAumento;
+        this.changed();
+    }
 
 }
 
 
 class ObservadoConDisminuir extends Observado{
-
-  disminuir(valorAumento){
-    this.atributo=this.atributo - valorAumento;
-    this.changed();
-  }
+    disminuir(atributo,valorDisminucion) {
+        this[atributo] = this[atributo] - valorDisminucion;
+        this.changed();
+    }
 
 }

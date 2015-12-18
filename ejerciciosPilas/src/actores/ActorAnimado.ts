@@ -126,6 +126,16 @@ class ActorAnimado extends Actor {
         return seguidilla;
     }
 
+    clonar(){
+        /*var clon =*/ return new (<any>this).constructor(this.x, this.y, this.opciones);
+        /*for (var attr in this){
+            if(typeof this[attr] != "function"){
+                clon[attr] = this[attr];
+            }
+        }
+        return clon;*/
+    }
+
     //TODO poner en otra clase lo q tenga q ver con casillas
     casillaActual(){
         return this._casillaActual;
