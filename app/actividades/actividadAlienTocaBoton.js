@@ -42,9 +42,9 @@ var ApretarBoton = Accion.extend({
 var actividadAlienTocaBoton = {
   nombre: 'Alien Toca Botón',
   enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
-  'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
+  'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
 
-  consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques',
+  consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
 
   // la escena proviene de ejerciciosPilas
   escena: AlienInicial, // jshint ignore:line

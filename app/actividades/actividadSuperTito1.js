@@ -11,7 +11,7 @@ var {EncenderLuz,TocandoFinal} = bloquesTito;
 
 var actividadSuperTito1 = {
   nombre: 'Super Tito 1 ',
-  enunciado: ' Ayuda a Tito a encender las luces. ¡Ojo! Existen bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!. \n',
+  enunciado: ' Ayudá a Tito a encender las luces. ¡Ojo! Existen bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!. \n',
   
   // la escena proviene de ejerciciosPilas
   escena: SuperTito1,  // jshint ignore:line
