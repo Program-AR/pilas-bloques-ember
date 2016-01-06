@@ -1,6 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
@@ -27,7 +27,7 @@ class SuperTito1 extends EscenaActividad {
         {grilla: 'casilla.grisoscuro.png',
         cantColumnas: 1,  ancho:100, alto:50});
         this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
-        this.automata = new Robot(0,0);
+        this.automata = new Tito(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
         this.automata.escala *= 2;
         this.automata.y += 30;

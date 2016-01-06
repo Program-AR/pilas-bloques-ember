@@ -19,7 +19,7 @@ class Observado  {
     }
 
     changed(){
-        this.inicializarObservadores();
+        this.inicializarObservadores(); // TODO: se puede sacar?
     	this.observadores.forEach( o => o.tuObservadoCambio(this) );
     }
 }

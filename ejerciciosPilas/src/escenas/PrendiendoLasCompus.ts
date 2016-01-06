@@ -23,7 +23,7 @@ class PrendiendoLasCompus extends EscenaActividad {
             {alto: 300,ancho:300},
             {grilla: 'casillaLightbot.png',
             cantColumnas: 5})
-        this.buzo = new Robot(0, 0);
+        this.buzo = new Tito(0, 0);
         this.cuadricula.agregarActor(this.buzo,0, 0);
         this.completarConCompusEnLaterales();
 

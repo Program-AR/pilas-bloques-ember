@@ -1,4 +1,8 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/CuadriculaMultiple.ts" />
+
+
 
 class LightBotCuadrado extends EscenaActividad {
     fondo;
@@ -23,7 +27,7 @@ iniciar() {
       ['T','T','T','T','T','T','T']
       ]
     this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
-    this.personaje = new Robot(0,0);
+    this.personaje = new Tito(0,0);
     this.cuadricula.agregarActor(this.personaje,0,0);
 
     this.agregarLuces();

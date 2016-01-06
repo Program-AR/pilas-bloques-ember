@@ -1,7 +1,7 @@
 /// <reference path = "../escenas/Errores.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts" />
-// <reference path = "../escenas/LogicaEstadosEscena.ts" />
+// <reference path = "../escenas/EstadosDeEscena.ts" />
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son

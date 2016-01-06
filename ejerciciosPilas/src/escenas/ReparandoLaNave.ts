@@ -8,7 +8,7 @@
 /// <reference path = "../actores/Tablero.ts" />
 /// <reference path = "../actores/ObservadoAnimado.ts" />
 /// <reference path = "../actores/ActorCompuesto.ts" />
-/// <reference path = "LogicaEstadosEscena.ts" />
+/// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 

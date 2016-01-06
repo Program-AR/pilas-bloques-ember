@@ -1,4 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
+
 
 class LightbotScratch extends EscenaActividad {
     fondo;
@@ -40,7 +42,7 @@ class LightbotScratch extends EscenaActividad {
 
 
         // se crea el automata
-        this.automata = new Robot(0,0);
+        this.automata = new Tito(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,4,0);
         this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
     }

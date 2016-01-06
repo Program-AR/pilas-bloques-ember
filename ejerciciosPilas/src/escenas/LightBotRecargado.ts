@@ -1,7 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
@@ -32,7 +32,7 @@ class LightBotRecargado extends EscenaActividad {
         }
 
         // se crea el automata
-        this.automata = new Robot(0,0);
+        this.automata = new Tito(0,0);
         this.cuadricula.agregarActor(this.automata,0,0,true);
     }
 

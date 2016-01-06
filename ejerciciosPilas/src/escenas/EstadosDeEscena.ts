@@ -53,6 +53,10 @@ class Estado{
   realizarAccion(comportamiento,estadoAnterior){
     comportamiento.ejecutarse()
   }
+
+  soyAceptacion() {
+    return false;
+  }
 }
 
 class EstadoAceptacion extends Estado{
