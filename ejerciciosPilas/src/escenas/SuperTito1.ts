@@ -6,7 +6,7 @@
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 /**
- * @class LightBot
+ * @class SuperTito1
  *
  */
 class SuperTito1 extends EscenaActividad {
@@ -27,14 +27,14 @@ class SuperTito1 extends EscenaActividad {
         {grilla: 'casilla.grisoscuro.png',
         cantColumnas: 1,  ancho:100, alto:50});
         this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
+        for (let i = 0; i < this.cantidadFilas-1; i++) {
+            this.agregarLamparinEnFila(i);
+        }
         this.automata = new Tito(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
         this.automata.escala *= 2;
         this.automata.y += 30;
         this.automata.x -= 15;
-        for (let i = 0; i < this.cantidadFilas-1; i++) {
-            this.agregarLamparinEnFila(i);
-        }
 
     }
 

@@ -2,7 +2,7 @@
 /// <reference path = "../actores/Tito.ts" />
 
 
-class LightbotScratch extends EscenaActividad {
+class TitoEnciendeLuces extends EscenaActividad {
     fondo;
     automata;
     cuadricula;

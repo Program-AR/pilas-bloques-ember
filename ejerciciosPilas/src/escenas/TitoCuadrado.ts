@@ -4,7 +4,7 @@
 
 
 
-class LightBotCuadrado extends EscenaActividad {
+class TitoCuadrado extends EscenaActividad {
     fondo;
     personaje;
     cuadricula;

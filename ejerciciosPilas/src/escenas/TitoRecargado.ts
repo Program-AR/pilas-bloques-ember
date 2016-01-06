@@ -7,10 +7,10 @@
 
 
 /**
- * @class LightBotRecargado
+ * @class TitoRecargado
  *
  */
-class LightBotRecargado extends EscenaActividad {
+class TitoRecargado extends EscenaActividad {
     fondo;
     automata;
     cuadricula;
