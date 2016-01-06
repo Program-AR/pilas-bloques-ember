@@ -24,6 +24,7 @@ var ActorAnimado = (function (_super) {
         this.desPausar();
         this.sanitizarOpciones(opciones);
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
+        this.z = pilas.escena_actual().maxZ() + 1;
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
         //this.aprender(SerAnimado,{})
@@ -1545,7 +1546,7 @@ var Observado = (function () {
     };
     Observado.prototype.changed = function () {
         var _this = this;
-        this.inicializarObservadores();
+        this.inicializarObservadores(); // TODO: se puede sacar?
         this.observadores.forEach(function (o) { return o.tuObservadoCambio(_this); });
     };
     return Observado;
@@ -1652,16 +1653,6 @@ var RegaloAnimado = (function (_super) {
     return RegaloAnimado;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
-var Robot = (function (_super) {
-    __extends(Robot, _super);
-    function Robot(x, y) {
-        _super.call(this, x, y, { grilla: 'robot.png', cantColumnas: 1, cantFilas: 1 });
-        this.definirAnimacion("caminando", [0], 1);
-        this.definirAnimacion("parado", [0], 1);
-    }
-    return Robot;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
 var RobotAnimado = (function (_super) {
     __extends(RobotAnimado, _super);
     function RobotAnimado(x, y) {
@@ -1713,6 +1704,16 @@ var Tablero = (function (_super) {
     };
     return Tablero;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var Tito = (function (_super) {
+    __extends(Tito, _super);
+    function Tito(x, y) {
+        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 1, cantFilas: 1 });
+        this.definirAnimacion("caminando", [0], 1);
+        this.definirAnimacion("parado", [0], 1);
+    }
+    return Tito;
+})(ActorAnimado);
 var TuercaAnimada = (function (_super) {
     __extends(TuercaAnimada, _super);
     function TuercaAnimada(x, y) {
@@ -1746,7 +1747,7 @@ var avanzarFilaEnCuadriculaMultiple = (function (_super) {
 /// <reference path = "../escenas/Errores.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts" />
-// <reference path = "../escenas/LogicaEstadosEscena.ts" />
+// <reference path = "../escenas/EstadosDeEscena.ts" />
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -2112,9 +2113,133 @@ var SaltarHablando = (function (_super) {
     };
     return SaltarHablando;
 })(SaltarAnimado);
+/// <reference path = "EscenaActividad.ts" />
+var ErrorEnEstados = (function () {
+    function ErrorEnEstados(estado, mensaje) {
+        this.estadoAlQueVuelve = estado;
+        this.mensajeError = mensaje;
+    }
+    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+        throw new ActividadError(this.mensajeError);
+    };
+    ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        return estadoAnterior;
+    };
+    return ErrorEnEstados;
+})();
+var Estado = (function () {
+    function Estado(idEstado) {
+        this.identifier = idEstado;
+        this.transiciones = {};
+    }
+    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
+        this.transiciones[transicion] = estadoEntrada;
+    };
+    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
+        if (this.transiciones[idComportamiento]) {
+            pilas.escena_actual().estado = this.transiciones[idComportamiento].estadoSiguiente(comportamiento, this);
+            this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
+        }
+        else {
+            throw new ActividadError("¡Ups, ésa no era la opción correcta!");
+        }
+    };
+    Estado.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
+        if (comportamiento.debeEjecutarse()) {
+            return this;
+        }
+        else {
+            return estadoAnterior;
+        }
+    };
+    Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+        comportamiento.ejecutarse();
+    };
+    Estado.prototype.soyAceptacion = function () {
+        return false;
+    };
+    return Estado;
+})();
+var EstadoAceptacion = (function (_super) {
+    __extends(EstadoAceptacion, _super);
+    function EstadoAceptacion() {
+        _super.apply(this, arguments);
+    }
+    EstadoAceptacion.prototype.soyAceptacion = function () {
+        return true;
+    };
+    return EstadoAceptacion;
+})(Estado);
+var SinEstado = (function () {
+    function SinEstado(funcionAceptacion) {
+        if (funcionAceptacion === void 0) { funcionAceptacion = function (escena) { return false; }; }
+        this.funcionAceptacion = funcionAceptacion;
+    }
+    SinEstado.prototype.realizarTransicion = function (idComport, comportamiento) {
+        comportamiento.ejecutarse();
+    };
+    SinEstado.prototype.soyAceptacion = function () {
+        return this.funcionAceptacion(pilas.escena_actual());
+    };
+    return SinEstado;
+})();
+var BuilderStatePattern = (function () {
+    function BuilderStatePattern(idEstadoInicialp) {
+        this.idEstadoInicial = idEstadoInicialp;
+        this.estados = {};
+        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
+    }
+    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
+        this.estados[idEstado] = new Estado(idEstado);
+    };
+    BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
+        this.estados[idEstado] = new EstadoAceptacion(idEstado);
+    };
+    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
+        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
+    };
+    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
+        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
+    };
+    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
+        //agrega un error para varios estados de salida con prefijos.
+        //pre indefFinalSalida>indexInicialSalida
+        var tamano = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
+        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
+        // NO TERMINADO
+        var range = indexFinalSalida - indexInicialSalida;
+        for (var index = 0; index < range; ++index) {
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+        }
+    };
+    BuilderStatePattern.prototype.estadoInicial = function () {
+        return this.estados[this.idEstadoInicial];
+    };
+    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
+        //prefix debe ser string e indexInicial y final ints
+        for (var i = indexInicial; i <= indexFinal; ++i) {
+            this.estados[prefix + i] = new Estado(prefix + i);
+        }
+    };
+    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
+        //pre: |estadosSalida|=|estadosEntrada|
+        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
+        var tamano = finSalida - inicialSalida;
+        for (var index = 0; index <= tamano; ++index) {
+            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
+        }
+    };
+    return BuilderStatePattern;
+})();
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
 /// <reference path = "../actores/ActorAnimado.ts"/>
+/// <reference path = "EstadosDeEscena.ts"/>
 // Esta escena sirve para todas las escenas de Ejercicios Pilas.
 // Toda escena que represente una actividad debe heredar de aquí.
 var EscenaActividad = (function (_super) {
@@ -2144,6 +2269,9 @@ var EscenaActividad = (function (_super) {
     };
     EscenaActividad.prototype.personajePrincipal = function () {
         return this.automata;
+    };
+    EscenaActividad.prototype.maxZ = function () {
+        return this.stage.children[0].z;
     };
     return EscenaActividad;
 })(Base);
@@ -3367,7 +3495,7 @@ var LightBot = (function (_super) {
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
@@ -3392,7 +3520,7 @@ var LightBotRecargado = (function (_super) {
             }
         }
         // se crea el automata
-        this.automata = new Robot(0, 0);
+        this.automata = new Tito(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0, true);
     };
     LightBotRecargado.prototype.agregarLuz = function (fila) {
@@ -3411,6 +3539,8 @@ var LightBotRecargado = (function (_super) {
     return LightBotRecargado;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/CuadriculaMultiple.ts" />
 var LightBotCuadrado = (function (_super) {
     __extends(LightBotCuadrado, _super);
     function LightBotCuadrado() {
@@ -3431,7 +3561,7 @@ var LightBotCuadrado = (function (_super) {
             ['T', 'T', 'T', 'T', 'T', 'T', 'T']
         ];
         this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillaLightbot.png', cantColumnas: 5 }, matriz);
-        this.personaje = new Robot(0, 0);
+        this.personaje = new Tito(0, 0);
         this.cuadricula.agregarActor(this.personaje, 0, 0);
         this.agregarLuces();
     };
@@ -3475,6 +3605,7 @@ var LightBotCuadrado = (function (_super) {
     return LightBotCuadrado;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
 var LightbotScratch = (function (_super) {
     __extends(LightbotScratch, _super);
     function LightbotScratch() {
@@ -3506,7 +3637,7 @@ var LightbotScratch = (function (_super) {
             cant += 1;
         }
         // se crea el automata
-        this.automata = new Robot(0, 0);
+        this.automata = new Tito(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0);
         this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
     };
@@ -3532,126 +3663,6 @@ var LightbotScratch = (function (_super) {
     };
     return LightbotScratch;
 })(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-var ErrorEnEstados = (function () {
-    function ErrorEnEstados(estado, mensaje) {
-        this.estadoAlQueVuelve = estado;
-        this.mensajeError = mensaje;
-    }
-    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        throw new ActividadError(this.mensajeError);
-    };
-    ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
-        return estadoAnterior;
-    };
-    return ErrorEnEstados;
-})();
-var Estado = (function () {
-    function Estado(idEstado) {
-        this.identifier = idEstado;
-        this.transiciones = {};
-    }
-    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
-        this.transiciones[transicion] = estadoEntrada;
-    };
-    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
-        if (this.transiciones[idComportamiento]) {
-            pilas.escena_actual().estado = this.transiciones[idComportamiento].estadoSiguiente(comportamiento, this);
-            this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
-        }
-        else {
-            throw new ActividadError("¡Ups, ésa no era la opción correcta!");
-        }
-    };
-    Estado.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
-        if (comportamiento.debeEjecutarse()) {
-            return this;
-        }
-        else {
-            return estadoAnterior;
-        }
-    };
-    Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
-        comportamiento.ejecutarse();
-    };
-    return Estado;
-})();
-var EstadoAceptacion = (function (_super) {
-    __extends(EstadoAceptacion, _super);
-    function EstadoAceptacion() {
-        _super.apply(this, arguments);
-    }
-    EstadoAceptacion.prototype.soyAceptacion = function () {
-        return true;
-    };
-    return EstadoAceptacion;
-})(Estado);
-var SinEstado = (function () {
-    function SinEstado(funcionAceptacion) {
-        if (funcionAceptacion === void 0) { funcionAceptacion = function (escena) { return false; }; }
-        this.funcionAceptacion = funcionAceptacion;
-    }
-    SinEstado.prototype.realizarTransicion = function (idComport, comportamiento) {
-        comportamiento.ejecutarse();
-    };
-    SinEstado.prototype.soyAceptacion = function () {
-        return this.funcionAceptacion(pilas.escena_actual());
-    };
-    return SinEstado;
-})();
-var BuilderStatePattern = (function () {
-    function BuilderStatePattern(idEstadoInicialp) {
-        this.idEstadoInicial = idEstadoInicialp;
-        this.estados = {};
-        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
-    }
-    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new Estado(idEstado);
-    };
-    BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
-        this.estados[idEstado] = new EstadoAceptacion(idEstado);
-    };
-    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
-        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
-    };
-    BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
-        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
-    };
-    BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
-        //agrega un error para varios estados de salida con prefijos.
-        //pre indefFinalSalida>indexInicialSalida
-        var tamano = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
-        //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
-        // NO TERMINADO
-        var range = indexFinalSalida - indexInicialSalida;
-        for (var index = 0; index < range; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
-        }
-    };
-    BuilderStatePattern.prototype.estadoInicial = function () {
-        return this.estados[this.idEstadoInicial];
-    };
-    BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
-        //prefix debe ser string e indexInicial y final ints
-        for (var i = indexInicial; i <= indexFinal; ++i) {
-            this.estados[prefix + i] = new Estado(prefix + i);
-        }
-    };
-    BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
-        //pre: |estadosSalida|=|estadosEntrada|
-        //implica finSalida-inicialSalida=finEntrada-InicialEntrada
-        var tamano = finSalida - inicialSalida;
-        for (var index = 0; index <= tamano; ++index) {
-            this.estados[estadoSalidaPrefix + (inicialSalida + index)].agregarTransicion(this.estados[estadoEntradaPrefix + (inicialEntrada + index)], transicion);
-        }
-    };
-    return BuilderStatePattern;
-})();
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/MariaAnimada.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
@@ -3735,7 +3746,7 @@ var PrendiendoLasCompus = (function (_super) {
         this.cantidadColumnas = Math.floor(Math.random() * this.cantidadMaxColumnas + this.cantidadMinColumnas);
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
             cantColumnas: 5 });
-        this.buzo = new Robot(0, 0);
+        this.buzo = new Tito(0, 0);
         this.cuadricula.agregarActor(this.buzo, 0, 0);
         this.completarConCompusEnLaterales();
     };
@@ -3781,7 +3792,7 @@ var PrendiendoLasCompus = (function (_super) {
 /// <reference path = "../actores/Tablero.ts" />
 /// <reference path = "../actores/ObservadoAnimado.ts" />
 /// <reference path = "../actores/ActorCompuesto.ts" />
-/// <reference path = "LogicaEstadosEscena.ts" />
+/// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 var ReparandoLaNave = (function (_super) {
     __extends(ReparandoLaNave, _super);
@@ -3973,7 +3984,7 @@ var SuperLightBot1 = (function (_super) {
         this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
         this.cantidadColumnas = Math.floor((Math.random() * this.cantidadMaxColumnas) + 3);
         this.cuadricula = new Cuadricula(-200 + (this.cantidadColumnas / 2) * this.altoCasilla, 0, 1, this.cantidadColumnas, { alto: this.altoCasilla, ancho: this.altoCasilla * this.cantidadColumnas }, { grilla: 'casilla_base.png', cantColumnas: 1, alto: 38 });
-        this.personaje = new Robot(0, 0);
+        this.personaje = new Tito(0, 0);
         this.cuadricula.agregarActor(this.personaje, 0, 0);
     };
     SuperLightBot1.prototype.encenderTodasLasCasillas = function () {
@@ -4013,7 +4024,7 @@ var SuperLightBot2 = (function (_super) {
 })(SuperLightBot1);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Robot.ts"/>
+/// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/CasillaConLuz.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
@@ -4034,7 +4045,7 @@ var SuperTito1 = (function (_super) {
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, ancho: 100, alto: 50 });
         this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
-        this.automata = new Robot(0, 0);
+        this.automata = new Tito(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala *= 2;
         this.automata.y += 30;

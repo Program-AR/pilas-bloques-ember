@@ -34,7 +34,6 @@ export default Ember.Component.extend({
                 'fondo.mariaSandia.png',
                 'fondo.alimentando_peces.png.png',
                 /*--------CASILLAS---------*/
-                'casilla.elPlanetaDeNano.png',
                 'casillaLightbot.png',
                 'casillaArriba.png',
                 'casillaAbajo.png',
@@ -68,7 +67,7 @@ export default Ember.Component.extend({
                 'mock_unicornio.png',
                 'banana.png',
                 'nano.png',
-                'robot.png',
+                'tito.png',
                 'invisible.png',
                 'sin_imagen.png',
                 'maria.png',
