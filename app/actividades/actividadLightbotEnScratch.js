@@ -12,7 +12,7 @@ var actividadLightbotEnScratch = {
     'Pista: esa diagonal puede ser una gran subtarea.',
 
   // la escena proviene de ejerciciosPilas
-  escena: LightbotScratch,  // jshint ignore:line
+  escena: TitoEnciendeLuces,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

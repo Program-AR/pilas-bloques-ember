@@ -24,7 +24,7 @@ var ActorAnimado = (function (_super) {
         this.desPausar();
         this.sanitizarOpciones(opciones);
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
-        this.z = pilas.escena_actual().maxZ() + 1;
+        this.z = pilas.escena_actual().minZ() - 1;
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
         //this.aprender(SerAnimado,{})
@@ -1184,60 +1184,6 @@ var ConjuntoClases = (function () {
     };
     return ConjuntoClases;
 })();
-/*
-class Fila extends Cuadricula{
-    cantidadColumnas;
-    cuadriculaMultiple;
-    nroFila;
-    constructor(cuadriculaMultipleP,nroFilaP,cantidadColumnasP,altoCasilla){
-        this.cantidadColumnas = cantidadColumnasP
-        this.cuadriculaMultiple =cuadriculaMultipleP
-        this.nroFila = nroFilaP
-        super(-200+(this.cantidadColumnas/2)*altoCasilla, 200-(55*this.nroFila), 1, this.cantidadColumnas,
-            {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas, separacionEntreCasillas: 5},
-            {grilla: 'casillaLightbot.png', cantColumnas:5,ancho: altoCasilla, alto:altoCasilla})
-    }
-
-    El ancho seteado de esa manera permite que todas las casillas tengan el mismo tamano
-    El x tiene que ver con lograr acomodar todas las casillas sobre el margen izquierdo
-
-
-
-
-    public aplicarATodasCasillas(funcion){
-      for (var index = 0; index < this.casillas.length; ++index) {
-        funcion(this.casillas[index]);
-      }
-
-    }
-    public siguienteFila(){
-
-            if(this.existeSiguienteFila()){
-                return this.cuadriculaMultiple.filas[this.nroFila+1];
-            }else{
-                throw "No hay siguiente fila"}
-
-    }
-
-
-
-    public existeSiguienteFila(){
-        return this.nroFila<this.cuadriculaMultiple.filas.length-1
-    }
-    public completarConObjetosRandom(conjuntoClases){
-        // en la primer posicion no se debe guardar ningun objeto
-        for (var index = 1; index < this.cantColumnas;index+=1){
-            if (Math.random()<0.5) {
-                this.agregarActor(conjuntoClases.dameUno(),0,index)
-            }
-        }
-    }
-
-
-
-
-}
-*/
 var DefinidorColumnasDeUnaFila = (function () {
     function DefinidorColumnasDeUnaFila() {
         this.index = 0;
@@ -2273,6 +2219,9 @@ var EscenaActividad = (function (_super) {
     EscenaActividad.prototype.maxZ = function () {
         return this.stage.children[0].z;
     };
+    EscenaActividad.prototype.minZ = function () {
+        return this.stage.children[this.stage.children.length - 1].z;
+    };
     return EscenaActividad;
 })(Base);
 /// <reference path = "EscenaActividad.ts" />
@@ -2597,7 +2546,7 @@ var ElCangrejoAguafiestas = (function (_super) {
             ['T', 'T', 'T', 'T', 'T', 'T'],
             ['T', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T']];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillaLightbot.png', cantColumnas: 5 }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillas.violeta.png' }, matriz);
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
@@ -3196,8 +3145,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
     }
     LaGranAventuraDelMarEncantado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 300 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 300 }, { grilla: 'casillas.violeta.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActor(this.llave, 1, 4);
         this.cofre = new CofreAnimado(0, 0);
@@ -3456,214 +3404,6 @@ var LaberintoLargo = (function (_super) {
     return LaberintoLargo;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Obrero.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
-/**
- * @class LightBot
- *
- */
-var LightBot = (function (_super) {
-    __extends(LightBot, _super);
-    function LightBot() {
-        _super.apply(this, arguments);
-    }
-    LightBot.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 1, 7, { alto: 70 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
-        this.robot = new Obrero(0, 0);
-        this.cuadricula.agregarActor(this.robot, 0, 0);
-        //this.robot.aprender(AvisaAlSalirDePantalla,{});
-    };
-    LightBot.prototype.irArriba = function () {
-        this.robot.hacer_luego(MoverACasillaArriba);
-    };
-    LightBot.prototype.irAbajo = function () {
-        this.robot.hacer_luego(MoverACasillaAbajo);
-    };
-    LightBot.prototype.irDerecha = function () {
-        this.robot.hacer_luego(MoverACasillaDerecha);
-    };
-    LightBot.prototype.irIzquierda = function () {
-        this.robot.hacer_luego(MoverACasillaIzquierda);
-    };
-    return LightBot;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/CasillaConLuz.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
-/**
- * @class LightBotRecargado
- *
- */
-var LightBotRecargado = (function (_super) {
-    __extends(LightBotRecargado, _super);
-    function LightBotRecargado() {
-        _super.apply(this, arguments);
-        this.objetos = [];
-    }
-    LightBotRecargado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 8, 1, { separacionEntreCasillas: 5, alto: pilas.opciones.alto - 40 }, { grilla: 'casilla.grisoscuro.png',
-            cantColumnas: 1, ancho: 50, alto: 50 });
-        //se cargan las luces
-        for (var i = 1; i < 8; i++) {
-            if (Math.random() < .5) {
-                this.agregarLuz(i);
-            }
-        }
-        // se crea el automata
-        this.automata = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0, true);
-    };
-    LightBotRecargado.prototype.agregarLuz = function (fila) {
-        var casillaLuminosa = new CasillaConLuz(0, 0);
-        this.cuadricula.agregarActor(casillaLuminosa, fila, 0);
-        casillaLuminosa.escala_x = .50;
-        casillaLuminosa.escala_y = .50;
-        this.objetos.push(casillaLuminosa);
-    };
-    LightBotRecargado.prototype.avanzar = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    LightBotRecargado.prototype.prenderLuz = function () {
-        this.automata.hacer_luego(EncenderLuz);
-    };
-    return LightBotRecargado;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Tito.ts" />
-/// <reference path = "../actores/CuadriculaMultiple.ts" />
-var LightBotCuadrado = (function (_super) {
-    __extends(LightBotCuadrado, _super);
-    function LightBotCuadrado() {
-        _super.apply(this, arguments);
-    }
-    LightBotCuadrado.prototype.iniciar = function () {
-        this.estado = undefined;
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cantidadFilas = 7;
-        this.cantidadColumnas = 7;
-        var matriz = [
-            ['T', 'T', 'T', 'T', 'T', 'T', 'T'],
-            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
-            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
-            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
-            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
-            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
-            ['T', 'T', 'T', 'T', 'T', 'T', 'T']
-        ];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillaLightbot.png', cantColumnas: 5 }, matriz);
-        this.personaje = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.personaje, 0, 0);
-        this.agregarLuces();
-    };
-    LightBotCuadrado.prototype.agregarLuces = function () {
-        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
-            if (Math.random() < .5) {
-                this.agregarLuz(0, i);
-            }
-            if (Math.random() < .5) {
-                this.agregarLuz(this.cantidadFilas - 1, i);
-            }
-        }
-        for (var j = 1; j < this.cantidadFilas - 1; j++) {
-            if (Math.random() < .5) {
-                this.agregarLuz(j, 0);
-            }
-            if (Math.random() < .5) {
-                this.agregarLuz(j, this.cantidadColumnas - 1);
-            }
-        }
-    };
-    LightBotCuadrado.prototype.agregarLuz = function (f, c) {
-        this.cuadricula.agregarActor(new CasillaConLuz(0, 0), f, c);
-        //this.objetos.push(casillaLuminosa);
-    };
-    LightBotCuadrado.prototype.moverArriba = function () {
-        this.personaje.hacer_luego(MoverACasillaArriba);
-    };
-    LightBotCuadrado.prototype.moverAbajo = function () {
-        this.personaje.hacer_luego(MoverACasillaAbajo);
-    };
-    LightBotCuadrado.prototype.moverDerecha = function () {
-        this.personaje.hacer_luego(MoverACasillaDerecha);
-    };
-    LightBotCuadrado.prototype.moverIzquierda = function () {
-        this.personaje.hacer_luego(MoverACasillaIzquierda);
-    };
-    LightBotCuadrado.prototype.prenderLuz = function () {
-        this.personaje.hacer_luego(EncenderLuz);
-    };
-    return LightBotCuadrado;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Tito.ts" />
-var LightbotScratch = (function (_super) {
-    __extends(LightbotScratch, _super);
-    function LightbotScratch() {
-        _super.apply(this, arguments);
-        this.objetos = [];
-    }
-    LightbotScratch.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
-            cantColumnas: 1, alto: 50, ancho: 50 });
-        //se cargan las luces
-        var cant = 0;
-        var fila = 3;
-        var col = 0;
-        while (cant < 4) {
-            this.agregarLuz(fila, col);
-            fila -= 1;
-            col += 1;
-            cant += 1;
-        }
-        cant = 0;
-        fila = 4;
-        col = 2;
-        while (cant < 4) {
-            this.agregarLuz(fila, col);
-            fila -= 1;
-            col += 1;
-            cant += 1;
-        }
-        // se crea el automata
-        this.automata = new Tito(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0);
-        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
-    };
-    LightbotScratch.prototype.agregarLuz = function (fila, columna) {
-        var casillaLuminosa = new CasillaConLuz(0, 0);
-        this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
-        this.objetos.push(casillaLuminosa);
-    };
-    LightbotScratch.prototype.prenderLuz = function () {
-        this.automata.hacer_luego(EncenderLuz);
-    };
-    LightbotScratch.prototype.irArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    };
-    LightbotScratch.prototype.irAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    LightbotScratch.prototype.irDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    LightbotScratch.prototype.irIzquierda = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    };
-    return LightbotScratch;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/MariaAnimada.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 var MariaLaComeSandias = (function (_super) {
@@ -3744,8 +3484,7 @@ var PrendiendoLasCompus = (function (_super) {
         this.cantidadMinFilas = 4;
         this.cantidadFilas = Math.floor(Math.random() * this.cantidadMaxFilas + this.cantidadMinFilas);
         this.cantidadColumnas = Math.floor(Math.random() * this.cantidadMaxColumnas + this.cantidadMinColumnas);
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillas.violeta.png' });
         this.buzo = new Tito(0, 0);
         this.cuadricula.agregarActor(this.buzo, 0, 0);
         this.completarConCompusEnLaterales();
@@ -3969,59 +3708,6 @@ iniciar() {
 
 }
 */
-var SuperLightBot1 = (function (_super) {
-    __extends(SuperLightBot1, _super);
-    function SuperLightBot1() {
-        _super.apply(this, arguments);
-        this.cantidadMaxColumnas = 9;
-        this.altoCasilla = 30;
-    }
-    SuperLightBot1.prototype.iniciar = function () {
-        this.inicializarEscenaAleatoriamente();
-        this.encenderTodasLasCasillas();
-    };
-    SuperLightBot1.prototype.inicializarEscenaAleatoriamente = function () {
-        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
-        this.cantidadColumnas = Math.floor((Math.random() * this.cantidadMaxColumnas) + 3);
-        this.cuadricula = new Cuadricula(-200 + (this.cantidadColumnas / 2) * this.altoCasilla, 0, 1, this.cantidadColumnas, { alto: this.altoCasilla, ancho: this.altoCasilla * this.cantidadColumnas }, { grilla: 'casilla_base.png', cantColumnas: 1, alto: 38 });
-        this.personaje = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.personaje, 0, 0);
-    };
-    SuperLightBot1.prototype.encenderTodasLasCasillas = function () {
-        //la primera y la ultima nunca se encienden
-        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
-            this.agregarLuz(i);
-        }
-    };
-    return SuperLightBot1;
-})(LightBotRecargado);
-var SuperLightBot2 = (function (_super) {
-    __extends(SuperLightBot2, _super);
-    function SuperLightBot2() {
-        _super.apply(this, arguments);
-    }
-    /*
-       cantidadMaxColumnas = 9;
-       cuadricula;
-       fondo;
-       personaje;
-       altoCasilla = 30;
-       cantidadColumnas;
-       */
-    SuperLightBot2.prototype.iniciar = function () {
-        this.inicializarEscenaAleatoriamente();
-        this.encenderAlgunasCasillasAleatoriamente();
-    };
-    SuperLightBot2.prototype.encenderAlgunasCasillasAleatoriamente = function () {
-        //la primera y la ultima nunca se encienden
-        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
-            if (Math.random() < .6) {
-                this.agregarLuz(i);
-            }
-        }
-    };
-    return SuperLightBot2;
-})(SuperLightBot1);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
@@ -4029,7 +3715,7 @@ var SuperLightBot2 = (function (_super) {
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
- * @class LightBot
+ * @class SuperTito1
  *
  */
 var SuperTito1 = (function (_super) {
@@ -4045,14 +3731,14 @@ var SuperTito1 = (function (_super) {
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, ancho: 100, alto: 50 });
         this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
+        for (var i = 0; i < this.cantidadFilas - 1; i++) {
+            this.agregarLamparinEnFila(i);
+        }
         this.automata = new Tito(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala *= 2;
         this.automata.y += 30;
         this.automata.x -= 15;
-        for (var i = 0; i < this.cantidadFilas - 1; i++) {
-            this.agregarLamparinEnFila(i);
-        }
     };
     SuperTito1.prototype.agregarLamparinEnFila = function (i) {
         var lamparin = new CasillaConLuz(0, 0);
@@ -4133,6 +3819,177 @@ var SuperViaje = (function (_super) {
     return SuperViaje;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/CuadriculaMultiple.ts" />
+var TitoCuadrado = (function (_super) {
+    __extends(TitoCuadrado, _super);
+    function TitoCuadrado() {
+        _super.apply(this, arguments);
+    }
+    TitoCuadrado.prototype.iniciar = function () {
+        this.estado = undefined;
+        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
+        this.cantidadFilas = 7;
+        this.cantidadColumnas = 7;
+        var matriz = [
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T']
+        ];
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillas.violeta.png' }, matriz);
+        this.personaje = new Tito(0, 0);
+        this.cuadricula.agregarActor(this.personaje, 0, 0);
+        this.agregarLuces();
+    };
+    TitoCuadrado.prototype.agregarLuces = function () {
+        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
+            if (Math.random() < .5) {
+                this.agregarLuz(0, i);
+            }
+            if (Math.random() < .5) {
+                this.agregarLuz(this.cantidadFilas - 1, i);
+            }
+        }
+        for (var j = 1; j < this.cantidadFilas - 1; j++) {
+            if (Math.random() < .5) {
+                this.agregarLuz(j, 0);
+            }
+            if (Math.random() < .5) {
+                this.agregarLuz(j, this.cantidadColumnas - 1);
+            }
+        }
+    };
+    TitoCuadrado.prototype.agregarLuz = function (f, c) {
+        this.cuadricula.agregarActor(new CasillaConLuz(0, 0), f, c);
+        //this.objetos.push(casillaLuminosa);
+    };
+    TitoCuadrado.prototype.moverArriba = function () {
+        this.personaje.hacer_luego(MoverACasillaArriba);
+    };
+    TitoCuadrado.prototype.moverAbajo = function () {
+        this.personaje.hacer_luego(MoverACasillaAbajo);
+    };
+    TitoCuadrado.prototype.moverDerecha = function () {
+        this.personaje.hacer_luego(MoverACasillaDerecha);
+    };
+    TitoCuadrado.prototype.moverIzquierda = function () {
+        this.personaje.hacer_luego(MoverACasillaIzquierda);
+    };
+    TitoCuadrado.prototype.prenderLuz = function () {
+        this.personaje.hacer_luego(EncenderLuz);
+    };
+    return TitoCuadrado;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Tito.ts" />
+var TitoEnciendeLuces = (function (_super) {
+    __extends(TitoEnciendeLuces, _super);
+    function TitoEnciendeLuces() {
+        _super.apply(this, arguments);
+        this.objetos = [];
+    }
+    TitoEnciendeLuces.prototype.iniciar = function () {
+        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
+        //this.robot.izquierda = pilas.izquierda();
+        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, alto: 50, ancho: 50 });
+        //se cargan las luces
+        var cant = 0;
+        var fila = 3;
+        var col = 0;
+        while (cant < 4) {
+            this.agregarLuz(fila, col);
+            fila -= 1;
+            col += 1;
+            cant += 1;
+        }
+        cant = 0;
+        fila = 4;
+        col = 2;
+        while (cant < 4) {
+            this.agregarLuz(fila, col);
+            fila -= 1;
+            col += 1;
+            cant += 1;
+        }
+        // se crea el automata
+        this.automata = new Tito(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0);
+        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
+    };
+    TitoEnciendeLuces.prototype.agregarLuz = function (fila, columna) {
+        var casillaLuminosa = new CasillaConLuz(0, 0);
+        this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
+        this.objetos.push(casillaLuminosa);
+    };
+    TitoEnciendeLuces.prototype.prenderLuz = function () {
+        this.automata.hacer_luego(EncenderLuz);
+    };
+    TitoEnciendeLuces.prototype.irArriba = function () {
+        this.automata.hacer_luego(MoverACasillaArriba);
+    };
+    TitoEnciendeLuces.prototype.irAbajo = function () {
+        this.automata.hacer_luego(MoverACasillaAbajo);
+    };
+    TitoEnciendeLuces.prototype.irDerecha = function () {
+        this.automata.hacer_luego(MoverACasillaDerecha);
+    };
+    TitoEnciendeLuces.prototype.irIzquierda = function () {
+        this.automata.hacer_luego(MoverACasillaIzquierda);
+    };
+    return TitoEnciendeLuces;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/Cuadricula.ts"/>
+/// <reference path = "../actores/Tito.ts"/>
+/// <reference path = "../actores/CasillaConLuz.ts"/>
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/**
+ * @class TitoRecargado
+ *
+ */
+var TitoRecargado = (function (_super) {
+    __extends(TitoRecargado, _super);
+    function TitoRecargado() {
+        _super.apply(this, arguments);
+        this.objetos = [];
+    }
+    TitoRecargado.prototype.iniciar = function () {
+        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
+        //this.robot.izquierda = pilas.izquierda();
+        this.cuadricula = new Cuadricula(0, 0, 8, 1, { separacionEntreCasillas: 5, alto: pilas.opciones.alto - 40 }, { grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1, ancho: 50, alto: 50 });
+        //se cargan las luces
+        for (var i = 1; i < 8; i++) {
+            if (Math.random() < .5) {
+                this.agregarLuz(i);
+            }
+        }
+        // se crea el automata
+        this.automata = new Tito(0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0, true);
+    };
+    TitoRecargado.prototype.agregarLuz = function (fila) {
+        var casillaLuminosa = new CasillaConLuz(0, 0);
+        this.cuadricula.agregarActor(casillaLuminosa, fila, 0);
+        casillaLuminosa.escala_x = .50;
+        casillaLuminosa.escala_y = .50;
+        this.objetos.push(casillaLuminosa);
+    };
+    TitoRecargado.prototype.avanzar = function () {
+        this.automata.hacer_luego(MoverACasillaDerecha);
+    };
+    TitoRecargado.prototype.prenderLuz = function () {
+        this.automata.hacer_luego(EncenderLuz);
+    };
+    return TitoRecargado;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
@@ -4151,8 +4008,7 @@ var TresNaranjas = (function (_super) {
     TresNaranjas.prototype.iniciar = function () {
         this.estado = undefined;
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 4, { alto: 70 }, { grilla: 'casillaLightbot.png',
-            cantColumnas: 5 });
+        this.cuadricula = new Cuadricula(0, 0, 1, 4, { alto: 70 }, { grilla: 'casillas.violeta.png' });
         //se cargan los huesos
         var hayAlMenosUno = false;
         for (var i = 0; i < 3; i++) {

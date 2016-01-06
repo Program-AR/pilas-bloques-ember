@@ -11,7 +11,7 @@ var actividadLightbotRecargado = {
     consignaInicial:'El procedimeinto construido debe considerar el escenario y poder responder a cada cambio propuesto.',
 
   // la escena proviene de ejerciciosPilas
-  escena: LightBotRecargado,  // jshint ignore:line
+  escena: TitoRecargado,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

@@ -34,7 +34,6 @@ export default Ember.Component.extend({
                 'fondo.mariaSandia.png',
                 'fondo.alimentando_peces.png.png',
                 /*--------CASILLAS---------*/
-                'casillaLightbot.png',
                 'casillaArriba.png',
                 'casillaAbajo.png',
                 'recolectorAnimado.png',
