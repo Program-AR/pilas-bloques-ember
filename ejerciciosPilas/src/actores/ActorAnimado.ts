@@ -26,7 +26,7 @@ class ActorAnimado extends Actor {
         this.desPausar();
         this.sanitizarOpciones(opciones);
         super(this.animacionPara(this.opciones.grilla), x, y);
-        this.z = pilas.escena_actual().maxZ() + 1;
+        this.z = pilas.escena_actual().minZ() - 1;
 
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);

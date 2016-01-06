@@ -37,4 +37,8 @@ class EscenaActividad extends Base {
 	maxZ() : Number {
 		return this.stage.children[0].z;
 	}
+
+	minZ(): Number {
+		return this.stage.children[this.stage.children.length - 1].z;
+	}
 }
