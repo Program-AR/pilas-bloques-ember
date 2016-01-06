@@ -10,7 +10,7 @@ var {EncenderLuz,TocandoFinal} = bloquesTito;
 
 
 var actividadSuperTito1 = {
-  nombre: 'Super Tito 1 ',
+  nombre: 'Súper Tito 1 ',
   enunciado: ' Ayudá a Tito a encender las luces. ¡Ojo! Existen bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!. \n',
   
   // la escena proviene de ejerciciosPilas

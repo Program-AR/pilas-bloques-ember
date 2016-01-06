@@ -5,7 +5,7 @@ var {Si, Repetir, Procedimiento} = bloques;
 var {IrAbajo} = direcciones;
 var {EncenderLuz,TocandoLuz} = bloquesTito;
 
-var actividadLightbotRecargado = {
+var actividadTitoRecargado = {
   nombre: 'Tito recargado',
   enunciado: 'Tito necesita encender las luces para poder conocer el camino. ¡Atención! Podés utlizar las subtareas y bloques de control.',
     consignaInicial:'El procedimeinto construido debe considerar el escenario y poder responder a cada cambio propuesto.',
@@ -25,4 +25,4 @@ var actividadLightbotRecargado = {
   sensores: [TocandoLuz],
 };
 
-export default actividadLightbotRecargado;
+export default actividadTitoRecargado;

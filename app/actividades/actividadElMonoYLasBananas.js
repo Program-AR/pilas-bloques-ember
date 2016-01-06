@@ -76,7 +76,7 @@ var TocandoBanana = Sensor.extend({
 
 
 
-var actividadElMonoYLasBananas = {
+export default {
   nombre: 'El Mono y las Bananas',
   enunciado:
     '¿Podés hacer que el mono avance al casillero de enfrente?'+
@@ -100,5 +100,3 @@ var actividadElMonoYLasBananas = {
   acciones: [ComerBanana,Avanzar],
   sensores: [TocandoBanana],
 };
-
-export default actividadElMonoYLasBananas;

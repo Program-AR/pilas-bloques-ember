@@ -5,11 +5,11 @@ import Ember from 'ember';
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
-import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
+import actividadTitoEnciendeLuces from 'pilas-engine-bloques/actividades/actividadTitoEnciendeLuces';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
-import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
+import actividadTitoRecargado from 'pilas-engine-bloques/actividades/actividadTitoRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
@@ -85,10 +85,10 @@ export default Ember.Service.extend({
       AlienTocaBoton: actividadAlienTocaBoton,
       LaEleccionDelMono: actividadLaEleccionDelMono,
       ElMonoYLasBananas: actividadElMonoYLasBananas,
-      LightbotEnScratch: actividadLightbotEnScratch,
+      TitoEnciendeLuces: actividadTitoEnciendeLuces,
       FutbolRobots: actividadFutbolRobots,
       //ElPlanetaDeNano: actividadElPlanetaDeNano
-      LightbotRecargado : actividadLightbotRecargado,
+      TitoRecargado : actividadTitoRecargado,
       SuperTito1: actividadSuperTito1,
       SuperTito2: actividadSuperTito2,
       ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
