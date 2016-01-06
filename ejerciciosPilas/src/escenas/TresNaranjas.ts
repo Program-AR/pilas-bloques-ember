@@ -22,8 +22,7 @@ class TresNaranjas extends EscenaActividad {
 
         this.cuadricula = new Cuadricula(0,0,1,4,
             {alto: 70},
-            {grilla: 'casillaLightbot.png',
-            cantColumnas: 5});
+            {grilla: 'casillas.violeta.png'});
 
         //se cargan los huesos
         var hayAlMenosUno = false;

@@ -148,60 +148,6 @@ class ConjuntoClases {
 }
 
 
-/*
-class Fila extends Cuadricula{
-    cantidadColumnas;
-    cuadriculaMultiple;
-    nroFila;
-    constructor(cuadriculaMultipleP,nroFilaP,cantidadColumnasP,altoCasilla){
-        this.cantidadColumnas = cantidadColumnasP
-        this.cuadriculaMultiple =cuadriculaMultipleP
-        this.nroFila = nroFilaP
-        super(-200+(this.cantidadColumnas/2)*altoCasilla, 200-(55*this.nroFila), 1, this.cantidadColumnas,
-            {alto : altoCasilla, ancho : altoCasilla*this.cantidadColumnas, separacionEntreCasillas: 5},
-            {grilla: 'casillaLightbot.png', cantColumnas:5,ancho: altoCasilla, alto:altoCasilla})
-    }
-
-    El ancho seteado de esa manera permite que todas las casillas tengan el mismo tamano
-    El x tiene que ver con lograr acomodar todas las casillas sobre el margen izquierdo
-
-
-
-
-    public aplicarATodasCasillas(funcion){
-      for (var index = 0; index < this.casillas.length; ++index) {
-        funcion(this.casillas[index]);
-      }
-
-    }
-    public siguienteFila(){
-
-            if(this.existeSiguienteFila()){
-                return this.cuadriculaMultiple.filas[this.nroFila+1];
-            }else{
-                throw "No hay siguiente fila"}
-
-    }
-
-
-
-    public existeSiguienteFila(){
-        return this.nroFila<this.cuadriculaMultiple.filas.length-1
-    }
-    public completarConObjetosRandom(conjuntoClases){
-    	// en la primer posicion no se debe guardar ningun objeto
-        for (var index = 1; index < this.cantColumnas;index+=1){
-            if (Math.random()<0.5) {
-                this.agregarActor(conjuntoClases.dameUno(),0,index)
-            }
-        }
-    }
-
-
-
-
-}
-*/
 class DefinidorColumnasDeUnaFila{
   /*TODO refactor de nombres para que quede mejor, dado
   que se está utilizando como definidor de filas o de columnas

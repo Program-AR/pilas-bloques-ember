@@ -24,7 +24,7 @@
           ['T','T','T','T','T','T'],
           ['T','F','F','F','F','T'],
           ['T','T','T','T','T','T']]
-        this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillaLightbot.png', cantColumnas: 5},matriz)
+        this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillas.violeta.png'},matriz)
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);

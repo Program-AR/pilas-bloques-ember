@@ -29,8 +29,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.cuadricula = new Cuadricula(0,0,4,5,
             {alto: 300},
-            {grilla: 'casillaLightbot.png',
-            cantColumnas: 5});
+            {grilla: 'casillas.violeta.png'});
         this.llave = new LlaveAnimado(0,0);
         this.cuadricula.agregarActor(this.llave,1,4)
         this.cofre = new CofreAnimado(0,0);

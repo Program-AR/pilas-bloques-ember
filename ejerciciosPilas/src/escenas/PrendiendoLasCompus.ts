@@ -21,8 +21,7 @@ class PrendiendoLasCompus extends EscenaActividad {
         this.cantidadColumnas=Math.floor( Math.random() * this.cantidadMaxColumnas+this.cantidadMinColumnas );
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
             {alto: 300,ancho:300},
-            {grilla: 'casillaLightbot.png',
-            cantColumnas: 5})
+            {grilla: 'casillas.violeta.png'})
         this.buzo = new Tito(0, 0);
         this.cuadricula.agregarActor(this.buzo,0, 0);
         this.completarConCompusEnLaterales();
