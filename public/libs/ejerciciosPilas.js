@@ -563,16 +563,6 @@ var CarbonAnimado = (function (_super) {
     return CarbonAnimado;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
-var CasillaConLuz = (function (_super) {
-    __extends(CasillaConLuz, _super);
-    function CasillaConLuz(x, y) {
-        _super.call(this, x, y, { grilla: 'casilla_con_luz.png', cantColumnas: 2, cantFilas: 1 });
-        this.definirAnimacion("apagada", [0], 1);
-        this.definirAnimacion("prendida", [1], 1);
-    }
-    return CasillaConLuz;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
 var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
@@ -1314,6 +1304,16 @@ var InstaladorAnimado = (function (_super) {
     return InstaladorAnimado;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
+var Lamparin = (function (_super) {
+    __extends(Lamparin, _super);
+    function Lamparin(x, y) {
+        _super.call(this, x, y, { grilla: 'lamparin.png', cantColumnas: 2, cantFilas: 1 });
+        this.definirAnimacion("apagada", [0], 1);
+        this.definirAnimacion("prendida", [1], 1);
+    }
+    return Lamparin;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
 var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
@@ -1887,20 +1887,20 @@ var EncenderCompu = (function (_super) {
         _super.apply(this, arguments);
     }
     EncenderCompu.prototype.actualizar = function () {
-        if (this.tocandoLuz()) {
-            var casillaConLuz = this.getCasillaConLuz();
-            casillaConLuz.agregar_habilidad(HabilidadAnimada, { nombreAnimacion: 'prendida' });
+        if (this.tocandoCompu()) {
+            var compu = this.getCompu();
+            compu.agregar_habilidad(HabilidadAnimada, { nombreAnimacion: 'prendida' });
         }
         else {
             throw new ActividadError('¡Aquí no hay compu por prender!');
         }
         return true;
     };
-    EncenderCompu.prototype.tocandoLuz = function () {
+    EncenderCompu.prototype.tocandoCompu = function () {
         var _this = this;
         return pilas.obtener_actores_con_etiqueta('CompuAnimada').some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
     };
-    EncenderCompu.prototype.getCasillaConLuz = function () {
+    EncenderCompu.prototype.getCompu = function () {
         var _this = this;
         return pilas.obtener_actores_con_etiqueta('CompuAnimada').filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0];
     };
@@ -1916,8 +1916,7 @@ var EncenderLuz = (function (_super) {
     }
     EncenderLuz.prototype.actualizar = function () {
         if (this.tocandoLuz()) {
-            var casillaConLuz = this.getCasillaConLuz();
-            casillaConLuz.agregar_habilidad(HabilidadAnimada, { nombreAnimacion: 'prendida' });
+            this.getLuz().agregar_habilidad(HabilidadAnimada, { nombreAnimacion: 'prendida' });
         }
         else {
             throw new ActividadError('¡Aquí no hay una luz por prender!');
@@ -1926,11 +1925,11 @@ var EncenderLuz = (function (_super) {
     };
     EncenderLuz.prototype.tocandoLuz = function () {
         var _this = this;
-        return pilas.obtener_actores_con_etiqueta('CasillaConLuz').some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
+        return pilas.obtener_actores_con_etiqueta('Lamparin').some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
     };
-    EncenderLuz.prototype.getCasillaConLuz = function () {
+    EncenderLuz.prototype.getLuz = function () {
         var _this = this;
-        return pilas.obtener_actores_con_etiqueta('CasillaConLuz').filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0];
+        return pilas.obtener_actores_con_etiqueta('Lamparin').filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0];
     };
     return EncenderLuz;
 })(Comportamiento);
@@ -3711,7 +3710,7 @@ iniciar() {
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/CasillaConLuz.ts"/>
+/// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
@@ -3741,7 +3740,7 @@ var SuperTito1 = (function (_super) {
         this.automata.x -= 15;
     };
     SuperTito1.prototype.agregarLamparinEnFila = function (i) {
-        var lamparin = new CasillaConLuz(0, 0);
+        var lamparin = new Lamparin(0, 0);
         this.cuadricula.agregarActor(lamparin, i, 0);
         lamparin.x += 15;
     };
@@ -3820,6 +3819,7 @@ var SuperViaje = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/Lamparin.ts" />
 /// <reference path = "../actores/CuadriculaMultiple.ts" />
 var TitoCuadrado = (function (_super) {
     __extends(TitoCuadrado, _super);
@@ -3864,7 +3864,7 @@ var TitoCuadrado = (function (_super) {
         }
     };
     TitoCuadrado.prototype.agregarLuz = function (f, c) {
-        this.cuadricula.agregarActor(new CasillaConLuz(0, 0), f, c);
+        this.cuadricula.agregarActor(new Lamparin(0, 0), f, c);
         //this.objetos.push(casillaLuminosa);
     };
     TitoCuadrado.prototype.moverArriba = function () {
@@ -3885,6 +3885,7 @@ var TitoCuadrado = (function (_super) {
     return TitoCuadrado;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Tito.ts" />
 var TitoEnciendeLuces = (function (_super) {
     __extends(TitoEnciendeLuces, _super);
@@ -3922,7 +3923,7 @@ var TitoEnciendeLuces = (function (_super) {
         this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
     };
     TitoEnciendeLuces.prototype.agregarLuz = function (fila, columna) {
-        var casillaLuminosa = new CasillaConLuz(0, 0);
+        var casillaLuminosa = new Lamparin(0, 0);
         this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
         this.objetos.push(casillaLuminosa);
     };
@@ -3947,7 +3948,7 @@ var TitoEnciendeLuces = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/CasillaConLuz.ts"/>
+/// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
  * @class TitoRecargado
@@ -3975,11 +3976,11 @@ var TitoRecargado = (function (_super) {
         this.cuadricula.agregarActor(this.automata, 0, 0, true);
     };
     TitoRecargado.prototype.agregarLuz = function (fila) {
-        var casillaLuminosa = new CasillaConLuz(0, 0);
-        this.cuadricula.agregarActor(casillaLuminosa, fila, 0);
-        casillaLuminosa.escala_x = .50;
-        casillaLuminosa.escala_y = .50;
-        this.objetos.push(casillaLuminosa);
+        var lamparin = new Lamparin(0, 0);
+        this.cuadricula.agregarActor(lamparin, fila, 0);
+        lamparin.escala_x = .50;
+        lamparin.escala_y = .50;
+        this.objetos.push(lamparin);
     };
     TitoRecargado.prototype.avanzar = function () {
         this.automata.hacer_luego(MoverACasillaDerecha);

@@ -41,7 +41,7 @@ export default Ember.Component.extend({
                 'casillaIzquierda.png',
                 'casilla.titoFinalizacion.png',
                 'casilla_base.png',
-                'casilla_con_luz.png',
+                'lamparin.png',
                 'casillas.violeta.png',
                 'casilla.futbolRobots1.png',
                 'casilla.futbolRobots2.png',

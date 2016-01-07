@@ -40,7 +40,7 @@ var TocandoLuz = Sensor.extend({
   },
 
   nombre_sensor() {
-    return 'tocando(\'CasillaConLuz\')';
+    return 'tocando(\'Lamparin\')';
   }
 });
 
