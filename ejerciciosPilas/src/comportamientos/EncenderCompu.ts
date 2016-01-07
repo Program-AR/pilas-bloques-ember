@@ -5,20 +5,20 @@
 class EncenderCompu extends Comportamiento {
 
   actualizar() {
-    if (this.tocandoLuz()) {
-      var casillaConLuz = this.getCasillaConLuz();
-      casillaConLuz.agregar_habilidad(HabilidadAnimada, {nombreAnimacion: 'prendida'});
+    if (this.tocandoCompu()) {
+      var compu = this.getCompu();
+      compu.agregar_habilidad(HabilidadAnimada, {nombreAnimacion: 'prendida'});
     } else {
       throw new ActividadError('¡Aquí no hay compu por prender!');
     }
     return true;
     }
 
-    tocandoLuz() {
+    tocandoCompu() {
       return pilas.obtener_actores_con_etiqueta('CompuAnimada').some(objeto => objeto.colisiona_con(this.receptor));
     }
 
-    getCasillaConLuz() {
+    getCompu() {
       return pilas.obtener_actores_con_etiqueta('CompuAnimada').filter(objeto => objeto.colisiona_con(this.receptor))[0];
     }
 }

@@ -1,5 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/Lamparin.ts" />
 /// <reference path = "../actores/CuadriculaMultiple.ts" />
 
 
@@ -60,7 +61,7 @@ iniciar() {
 
   private agregarLuz(f,c) {
 
-    this.cuadricula.agregarActor(new CasillaConLuz(0,0),f,c);
+    this.cuadricula.agregarActor(new Lamparin(0,0),f,c);
     //this.objetos.push(casillaLuminosa);
   }
 

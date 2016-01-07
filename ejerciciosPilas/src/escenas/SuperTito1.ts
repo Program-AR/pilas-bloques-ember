@@ -1,7 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/CasillaConLuz.ts"/>
+/// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
@@ -39,7 +39,7 @@ class SuperTito1 extends EscenaActividad {
     }
 
     agregarLamparinEnFila(i){
-        var lamparin = new CasillaConLuz(0, 0);
+        var lamparin = new Lamparin(0, 0);
         this.cuadricula.agregarActor(lamparin, i, 0);
         lamparin.x += 15;
     }

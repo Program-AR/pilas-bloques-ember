@@ -1,4 +1,5 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Tito.ts" />
 
 
@@ -48,7 +49,7 @@ class TitoEnciendeLuces extends EscenaActividad {
     }
 
     agregarLuz(fila,columna) {
-        var casillaLuminosa = new CasillaConLuz(0,0);
+        var casillaLuminosa = new Lamparin(0,0);
         this.cuadricula.agregarActor(casillaLuminosa,fila,columna);
         this.objetos.push(casillaLuminosa);
     }

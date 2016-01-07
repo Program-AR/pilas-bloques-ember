@@ -2,7 +2,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/CasillaConLuz.ts"/>
+/// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 
@@ -37,11 +37,11 @@ class TitoRecargado extends EscenaActividad {
     }
 
     agregarLuz(fila) {
-        var casillaLuminosa = new CasillaConLuz(0,0);
-        this.cuadricula.agregarActor(casillaLuminosa,fila,0);
-        casillaLuminosa.escala_x = .50;
-        casillaLuminosa.escala_y = .50;
-        this.objetos.push(casillaLuminosa);
+        var lamparin = new Lamparin(0,0);
+        this.cuadricula.agregarActor(lamparin, fila, 0);
+        lamparin.escala_x = .50;
+        lamparin.escala_y = .50;
+        this.objetos.push(lamparin);
     }
 
     avanzar() {
