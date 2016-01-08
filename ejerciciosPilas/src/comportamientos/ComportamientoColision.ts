@@ -29,31 +29,25 @@ class ComportamientoColision extends ComportamientoAnimado {
 	}
 
 	alTerminarAnimacion(){
-			 pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
-  }
+			pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
+	}
 
 	debeEjecutarse(){
-  	return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-							.some(objeto => objeto.colisiona_con(this.receptor));
+		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
+			.some(objeto => objeto.colisiona_con(this.receptor));
 	}
 
 	ejecutarse(){
 		if(this.debeEjecutarse()){
-				this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
-    }else{
-    		throw new ActividadError(this.argumentos['mensajeError']);
-   	}
-  }
-
-		metodo(objetoColision){
-
-
-			
-						//redefinir por subclase
+			this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
+		}else{
+			throw new ActividadError(this.argumentos['mensajeError']);
 		}
+	}
 
-
-
+	metodo(objetoColision){
+						//redefinir por subclase
+	}
 }
 
 class DesencadenarAnimacionDobleSiColiciona extends ComportamientoColision{
@@ -61,8 +55,6 @@ class DesencadenarAnimacionDobleSiColiciona extends ComportamientoColision{
 			this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
 			objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
 		}
-
-
 }
 
 
@@ -70,32 +62,23 @@ class DesencadenarAnimacionSiColiciona extends ComportamientoColision{
 	metodo(objetoColision){
 		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
 	}
-
-
 }
 
 class DesencadenarHabilidadSiColiciona extends ComportamientoColision{
 	metodo(objetoColision){
 		objetoColision.aprender(this.argumentos['Habilidad'],this.argumentos['argumentosHabilidad'])
 	}
-
-
 }
 
 
 class MorderPorEtiqueta extends ComportamientoColision {
-
-
     metodo(objetoColision){
-			objetoColision.cargarAnimacion("mordida");
+		objetoColision.cargarAnimacion("mordida");
     }
 }
 
 class EncenderPorEtiqueta extends ComportamientoColision{
-
 	metodo(objetoColision){
 		objetoColision.cargarAnimacion("prendida");
-
-
 	}
 }
