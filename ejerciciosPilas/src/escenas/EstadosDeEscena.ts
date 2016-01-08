@@ -1,6 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
 
-class ErrorEnEstados{
+class ErrorEnEstados {
   estadoAlQueVuelve;
   mensajeError;
 
@@ -20,7 +20,7 @@ class ErrorEnEstados{
 
 }
 
-class Estado{
+class Estado {
   transiciones;
   identifier;
 
@@ -38,7 +38,7 @@ class Estado{
         pilas.escena_actual().estado=this.transiciones[idComportamiento].estadoSiguiente(comportamiento,this);
         this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
     }else{
-      throw new ActividadError("¡Ups, ésa no era la opción correcta!");
+      throw new ActividadError("¡Ups, esa no era la opción correcta!");
     }
   }
 
