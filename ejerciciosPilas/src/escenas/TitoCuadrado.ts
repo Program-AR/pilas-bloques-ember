@@ -2,6 +2,7 @@
 /// <reference path = "../actores/Tito.ts" />
 /// <reference path = "../actores/Lamparin.ts" />
 /// <reference path = "../actores/CuadriculaMultiple.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 
 
@@ -84,7 +85,7 @@ iniciar() {
   }
 
   prenderLuz() {
-      this.personaje.hacer_luego(EncenderLuz);
+      this.personaje.hacer_luego(EncenderPorEtiqueta, {etiqueta:'Luz'});
   }
 
 

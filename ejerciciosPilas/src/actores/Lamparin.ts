@@ -6,6 +6,7 @@ class Lamparin extends ActorAnimado {
         
         this.definirAnimacion("apagada",[0],1);
         this.definirAnimacion("prendida",[1],1);
+        this.etiquetas.push('Luz');
 
     }
 } 

@@ -1,7 +1,7 @@
 /// <reference path = "../escenas/Errores.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts" />
-// <reference path = "../escenas/EstadosDeEscena.ts" />
+/// <reference path = "../escenas/EstadosDeEscena.ts" />
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
@@ -32,21 +32,36 @@ class ComportamientoColision extends ComportamientoAnimado {
 			pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
 	}
 
-	debeEjecutarse(){
+	ejecutarse(){
+		this.verificarCondicionesDeEjecucion();
+		this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
+	}
+	
+	// Si se redefine, debe redefinirse también el método debeEjecutarse. 
+	// Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
+	verificarCondicionesDeEjecucion(){
+		if (!this.colisiona()) throw new NoColisionaError(this.argumentos['mensajeError'], this.argumentos['etiqueta']);
+	}
+	// Si se redefine, debe redefinirse también el método verificarCondicionesDeEjecucion. 
+	// Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
+	debeEjecutarse() {
+		return this.colisiona();
+	}
+
+	colisiona() {
 		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
 			.some(objeto => objeto.colisiona_con(this.receptor));
 	}
 
-	ejecutarse(){
-		if(this.debeEjecutarse()){
-			this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
-		}else{
-			throw new ActividadError(this.argumentos['mensajeError']);
-		}
-	}
-
 	metodo(objetoColision){
 						//redefinir por subclase
+	}
+}
+
+class NoColisionaError extends ActividadError{
+	constructor(mensajeError :string, etiqueta :string) {
+		var descripcion = etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
+		super(mensajeError || "¡Acá no hay " + descripcion + "!");
 	}
 }
 

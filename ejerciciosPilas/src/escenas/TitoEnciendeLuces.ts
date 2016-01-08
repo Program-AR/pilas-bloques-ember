@@ -1,7 +1,8 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Tito.ts" />
-
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 class TitoEnciendeLuces extends EscenaActividad {
     fondo;
@@ -56,7 +57,7 @@ class TitoEnciendeLuces extends EscenaActividad {
 
 
     prenderLuz() {
-        this.automata.hacer_luego(EncenderLuz);
+        this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
     }
     irArriba(){
         this.automata.hacer_luego(MoverACasillaArriba);

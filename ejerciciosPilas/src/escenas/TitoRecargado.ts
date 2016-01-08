@@ -4,7 +4,7 @@
 /// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
-
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 /**
  * @class TitoRecargado
@@ -49,7 +49,7 @@ class TitoRecargado extends EscenaActividad {
     }
 
     prenderLuz() {
-        this.automata.hacer_luego(EncenderLuz);
+        this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
     }
 
 }
