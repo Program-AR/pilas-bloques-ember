@@ -115,6 +115,10 @@ class ActorAnimado extends Actor {
         return this._imagen.animacion_en_curso.cuadros.length;
     }
 
+    nombreAnimacionActual() : String {
+        return this._imagen.animacion_en_curso.nombre;
+    }
+
     seguidillaHasta(nro){
         var seguidilla = [];
         if(nro !== undefined) {

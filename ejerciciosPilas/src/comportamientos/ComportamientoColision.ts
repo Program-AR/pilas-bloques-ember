@@ -34,7 +34,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	ejecutarse(){
 		this.verificarCondicionesDeEjecucion();
-		this.metodo(pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0]);
+		this.metodo(this.objetoTocado());
 	}
 	
 	// Si se redefine, debe redefinirse también el método debeEjecutarse. 
@@ -51,6 +51,10 @@ class ComportamientoColision extends ComportamientoAnimado {
 	colisiona() {
 		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
 			.some(objeto => objeto.colisiona_con(this.receptor));
+	}
+
+	objetoTocado(){
+		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0];
 	}
 
 	metodo(objetoColision){
@@ -85,15 +89,30 @@ class DesencadenarHabilidadSiColiciona extends ComportamientoColision{
 	}
 }
 
-
-class MorderPorEtiqueta extends ComportamientoColision {
-    metodo(objetoColision){
-		objetoColision.cargarAnimacion("mordida");
-    }
+class EncenderPorEtiqueta extends ComportamientoColision{
+	nombreAnimacion(){
+		return "recoger";
+	}
+	metodo(objetoColision){
+		objetoColision.cargarAnimacion(this.nombreProximaAnimacion());
+	}
+	nombreProximaAnimacion(){
+		return "prendida"
+	}
+	verificarCondicionesDeEjecucion(){
+		super.verificarCondicionesDeEjecucion();
+		if (this.yaEstaPrendida()) throw new ActividadError("¡Ya está "+ this.nombreProximaAnimacion() +"!");
+	}
+	debeEjecutarse(){
+		return super.debeEjecutarse() && !this.yaEstaPrendida();
+	}
+	yaEstaPrendida(){
+		return this.objetoTocado().nombreAnimacionActual() == this.nombreProximaAnimacion();
+	}
 }
 
-class EncenderPorEtiqueta extends ComportamientoColision{
-	metodo(objetoColision){
-		objetoColision.cargarAnimacion("prendida");
-	}
+class MorderPorEtiqueta extends EncenderPorEtiqueta {
+    nombreProximaAnimacion() {
+		return "mordida";
+    }
 }
