@@ -38,6 +38,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.cofre = new CofreAnimado(0,0);
         this.cuadricula.agregarActor(this.cofre,0,0);
         this.cofre.escala = 2;
+        this.cofre.x += 7;
 
         this.caballero = new CaballeroAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero,1,2);
