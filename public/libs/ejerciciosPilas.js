@@ -252,9 +252,7 @@ var BuzoAnimado = (function (_super) {
 var CaballeroAnimado = (function (_super) {
     __extends(CaballeroAnimado, _super);
     function CaballeroAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_caballero.png', cantColumnas: 1 });
-        //this.escala_x = 0.05;
-        //this.escala_y = 0.05;
+        _super.call(this, x, y, { grilla: 'caballero_oscuro.png', cantColumnas: 3 });
     }
     return CaballeroAnimado;
 })(ActorAnimado);
@@ -569,7 +567,10 @@ var CarbonAnimado = (function (_super) {
 var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_cofre.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'cofre.png', cantColumnas: 4 });
+        this.definirAnimacion("abrir", [0, 1, 2, 3], 15);
+        this.definirAnimacion("parado", [0, 0, 0, 1, 2, 1], 15);
+        this.definirAnimacion("abierto", [3, 3, 3, 2, 1, 2], 15);
     }
     return CofreAnimado;
 })(ActorAnimado);
@@ -1268,10 +1269,12 @@ var GloboAnimado = (function (_super) {
 var HeroeAnimado = (function (_super) {
     __extends(HeroeAnimado, _super);
     function HeroeAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_heroe.png', cantColumnas: 1 });
-        this.definirAnimacion("correr", [0], 15);
-        this.definirAnimacion("parado", [0], 5);
-        this.definirAnimacion("recoger", [0], 10);
+        _super.call(this, x, y, { grilla: 'heroe.png', cantColumnas: 6, cantFilas: 5 });
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
+        this.definirAnimacion("parado", [5, 0, 1, 0], 6);
+        this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
+        this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
+        this.definirAnimacion("atacar", [24, 25, 26, 27, 28, 29], 12);
     }
     return HeroeAnimado;
 })(ActorAnimado);
@@ -1321,9 +1324,7 @@ var Lamparin = (function (_super) {
 var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_llave.png', cantColumnas: 1 });
-        //this.escala_x = 1;
-        //this.escala_y = 1;
+        _super.call(this, x, y, { grilla: 'llave.png', cantColumnas: 1 });
     }
     return LlaveAnimado;
 })(ActorAnimado);
@@ -1331,9 +1332,7 @@ var LlaveAnimado = (function (_super) {
 var MagoAnimado = (function (_super) {
     __extends(MagoAnimado, _super);
     function MagoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_mago.png', cantColumnas: 1 });
-        //this.escala_x = 0.05;
-        //this.escala_y = 0.05;
+        _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
     }
     return MagoAnimado;
 })(ActorAnimado);
@@ -1676,9 +1675,7 @@ var TuercaAnimada = (function (_super) {
 var UnicornioAnimado = (function (_super) {
     __extends(UnicornioAnimado, _super);
     function UnicornioAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'mock_unicornio.png', cantColumnas: 1 });
-        //this.escala_x = 0.05;
-        //this.escala_y = 0.05;
+        _super.call(this, x, y, { grilla: 'unicornio.png', cantColumnas: 5, cantFilas: 2 });
     }
     return UnicornioAnimado;
 })(ActorAnimado);
@@ -3195,7 +3192,7 @@ var BuscandoSombreroState = (function (_super) {
     }
     BuscandoSombreroState.prototype.abrirCofre = function () {
         if (this.escena.automata.colisiona_con(this.escena.cofre)) {
-            this.escena.cofre.eliminar();
+            this.escena.cofre.cargarAnimacion("abrir");
             this.escena.estado = new BuscandoEspadaState(this.escena);
         }
         else {
