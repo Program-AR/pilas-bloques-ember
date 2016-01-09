@@ -2,8 +2,7 @@
 
 class LlaveAnimado extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'mock_llave.png', cantColumnas:1});
-        //this.escala_x = 1;
-        //this.escala_y = 1;
+        super(x, y, {grilla: 'llave.png', cantColumnas:1});
+        this.definirAnimacion("parado", [1], 12);
     }
 } 

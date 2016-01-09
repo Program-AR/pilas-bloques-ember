@@ -156,7 +156,7 @@ class BuscandoSombreroState extends MarEncantadoState {
 
     abrirCofre() {
         if (this.escena.automata.colisiona_con(this.escena.cofre)) {
-            this.escena.cofre.eliminar();
+            this.escena.cofre.cargarAnimacion("abrir");
             this.escena.estado = new BuscandoEspadaState(this.escena);
         } else {
             super.abrirCofre();
