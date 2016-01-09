@@ -22,25 +22,18 @@ class LaEleccionDelMono extends EscenaActividad {
         this.automata =  new  MonoAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0,false);
 
+        this.agregarFruta();
+    }
+
+    agregarFruta(){
         if (Math.random() < .5) {
             this.agregar(ManzanaAnimada);
         } else {
             this.agregar(BananaAnimada);
         }
-
     }
 
     agregar(objeto){
       this.cuadricula.agregarActorEnPerspectiva(new objeto(0,0),0,1, false);
     }
-
-    personajePrincipal(){
-      return this.automata;
-    }
-
-    moverDerecha(){
-      this.automata.hacer_luego(MoverACasillaDerecha,{});
-    }
-
-
   }
