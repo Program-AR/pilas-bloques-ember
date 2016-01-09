@@ -44,11 +44,13 @@
 
 class ComportamientoAnimado extends Comportamiento {
 	secuenciaActualizar;
+	animacionAnterior;
 	
 	iniciar(receptor){
 		super.iniciar(receptor);
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
+			this.animacionAnterior = this.receptor.nombreAnimacionActual();
         	this.receptor.cargarAnimacion(this.nombreAnimacion());
         	this.alIniciar();
         	return true;
@@ -57,7 +59,7 @@ class ComportamientoAnimado extends Comportamiento {
         	return this.doActualizar(); 
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
-        	//this.receptor.cargarAnimacion(this.nombreAnimacionParado());
+        	this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
         	this.alTerminarAnimacion();
         	return true;
    		}.bind(this));	
@@ -82,6 +84,11 @@ class ComportamientoAnimado extends Comportamiento {
 	/* Redefinir si corresponde */
 	nombreAnimacionParado(){
 		return this.argumentos.nombreAnimacionParado || 'parado';
+	}
+
+	/* Redefinir si corresponde */
+	nombreAnimacionSiguiente(){
+		return this.animacionAnterior;
 	}
 	
 	/* Redefinir si corresponde */
