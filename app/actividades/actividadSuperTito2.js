@@ -11,16 +11,14 @@ var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
 
 var actividadSuperTito2 = {
   nombre: 'Súper Tito 2',
-  enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, esta vez no están siempre agrupadas. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
-  consignaInicial:  'Identificar procedimientos que permitan identififcar patrones que les permitan ahorrar casilleros.',
-  // la escena proviene de ejerciciosPilas
+  enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
+
   escena: SuperTito2,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
   subtareas: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un automata
   variables: [],
   control: [Si,Repetir,Hasta],
   expresiones: [],

@@ -34,7 +34,7 @@ var MorderSandia = Accion.extend({
 
 var actividadMariaLaComeSandias = {
   nombre: 'María la come sandias',
-  enunciado: 'María necesita comer de una sola vez todas las sandías. Pensá de qué manera puede hacerlo utlizando los bloques necesarios. Atención: La forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
+  enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Atención: La forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
 
   escena: MariaLaComeSandias,
   puedeComentar: false,

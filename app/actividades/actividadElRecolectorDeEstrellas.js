@@ -14,7 +14,7 @@ var VolverABordeIzquierdo = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField('volver todo a ')
+    .appendField('volver todo a izquierda')
     .appendField(this.obtener_icono('izquierda.png'));
 
   },
@@ -58,7 +58,7 @@ var TomarEstrella = Accion.extend({
 
 var actividadElRecolectorDeEstrellas = {
   nombre: 'El recolector de estrellas',
-  enunciado: 'Ayuda a nuestro personaje a recolectar todas las estrellas. Pista: el bloque "Volver todo a" es de muuuucha ayuda.',
+  enunciado: 'Ayuda a nuestro personaje a recolectar todas las estrellas. Pista: el bloque "Volver todo a izquierda" es de muuuucha ayuda.',
   escena: ElRecolectorDeEstrellas,
   puedeComentar: false,
   puedeDesactivar: false,
