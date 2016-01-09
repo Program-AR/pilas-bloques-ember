@@ -16,11 +16,11 @@ var EncenderLuz = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'EncenderLuz';
+    return 'EncenderPorEtiqueta';
   },
 
   argumentos() {
-    return '{}';
+    return "{'etiqueta':'Luz'}";
   }
 });
 
