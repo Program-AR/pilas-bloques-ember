@@ -1,10 +1,49 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
+// Copyright Alfredo Héctor Sanzo - asanzo@github
+
+// Takes a function, evaluates it "this" times.
+Number.prototype.timesRepeat = function(f){
+	for(var i=0; i<this; i++){
+		f();
+	}
+}
+
+// Takes an object, gives back a list with the object repeated "this" times.
+Number.prototype.times = function(object){
+	var l = [];
+	this.timesRepeat(function(){l.push(object)});
+	return l;
+};/// <reference path = "../../dependencias/pilasweb.d.ts"/>
 var __extends = this.__extends || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+var HabilidadAnimada = (function (_super) {
+    __extends(HabilidadAnimada, _super);
+    function HabilidadAnimada(receptor, argumentos) {
+        _super.call(this, receptor, argumentos);
+        this.setearNombreAnimacion();
+        this.nombreAnimacion = this.nombreAnimacion || this.argumentos.nombreAnimacion;
+        if (this.nombreAnimacion)
+            this.receptor.cargarAnimacion(this.nombreAnimacion());
+    }
+    /* Redefinir si corresponde animar la habilidad. Debe setear this.nombreAnimacion.
+     También se puede pasar por uno de los argumentos el nombre de la animación.*/
+    HabilidadAnimada.prototype.setearNombreAnimacion = function () {
+    };
+    // No redefinir
+    HabilidadAnimada.prototype.actualizar = function () {
+        this.receptor.avanzarAnimacion();
+        this.doActualizar();
+    };
+    HabilidadAnimada.prototype.doActualizar = function () {
+        // Redefinir para agregar comportamiento además de la animación
+    };
+    return HabilidadAnimada;
+})(Habilidad);
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../habilidades/HabilidadAnimada.ts" />
 /**
  * @class ActorAnimado
  *
@@ -27,7 +66,7 @@ var ActorAnimado = (function (_super) {
         this.z = pilas.escena_actual().minZ() - 1;
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
-        //this.aprender(SerAnimado,{})
+        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
         this.detener_animacion();
         this.objetosRecogidos = [];
     }
@@ -53,8 +92,11 @@ var ActorAnimado = (function (_super) {
         this.y += y;
         this.pasito_correr();
     };
-    ActorAnimado.prototype.definirAnimacion = function (nombre, cuadros, velocidad) {
+    ActorAnimado.prototype.definirAnimacion = function (nombre, cuadros, velocidad, cargarla) {
+        if (cargarla === void 0) { cargarla = false; }
         this._imagen.definir_animacion(nombre, cuadros, velocidad);
+        if (cargarla)
+            this.cargarAnimacion(nombre);
     };
     ActorAnimado.prototype.pasito_correr = function () {
         this.cargarAnimacion("correr");
@@ -148,6 +190,23 @@ var ActorAnimado = (function (_super) {
     };
     return ActorAnimado;
 })(Actor);
+// Helper para construir las animaciones:
+var Cuadros = (function () {
+    function Cuadros(nroOLista) {
+        this._lista = (typeof (nroOLista) === "number") ? [nroOLista] : nroOLista;
+    }
+    Cuadros.prototype.repetirVeces = function (veces) {
+        var lOrig = this._lista;
+        for (var i = 0; i < veces - 1; i++) {
+            this._lista = this._lista.concat(lOrig);
+        }
+        return this._lista;
+    };
+    Cuadros.prototype.lista = function () {
+        return this._lista;
+    };
+    return Cuadros;
+})();
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "ActorAnimado.ts" />
 var ActorCompuesto = (function (_super) {
@@ -198,11 +257,12 @@ var ActorCompuesto = (function (_super) {
     };
     return ActorCompuesto;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
 var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
-        this.definirAnimacion("parado", [0], 4);
+        this.definirAnimacion("parado", new Cuadros(13).repetirVeces(50).concat([12, 13, 11, 12, 11, 13]).concat(new Cuadros(13).repetirVeces(30)).concat([9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]), 4, true);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
         this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 20);
@@ -224,8 +284,6 @@ var BananaAnimada = (function (_super) {
     __extends(BananaAnimada, _super);
     function BananaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'banana-1.png', cantColumnas: 1, cantFilas: 1 });
-        //this.escala_x = 2;
-        //this.escala_y = 2;
     }
     return BananaAnimada;
 })(ActorAnimado);
@@ -243,7 +301,7 @@ var BuzoAnimado = (function (_super) {
     __extends(BuzoAnimado, _super);
     function BuzoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'buzo.png', cantColumnas: 8, cantFilas: 1 });
-        this.definirAnimacion("parado", [0, 1, 2], 6);
+        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2], 4, true);
         this.definirAnimacion("recoger", [3, 4, 5, 6, 7], 6);
     }
     return BuzoAnimado;
@@ -253,8 +311,33 @@ var CaballeroAnimado = (function (_super) {
     __extends(CaballeroAnimado, _super);
     function CaballeroAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'caballero_oscuro.png', cantColumnas: 3 });
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(95).concat([1, 2, 1]), 6, true);
+        this.definirAnimacion("defender", [1, 2, 2, 2, 2, 2, 2, 1], 6);
     }
     return CaballeroAnimado;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CangrejoAnimado = (function (_super) {
+    __extends(CangrejoAnimado, _super);
+    function CangrejoAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'cangrejo.png', cantColumnas: 8, cantFilas: 3 });
+        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5, 6, 7], 6, true);
+        this.definirAnimacion("correr", [9, 10, 11, 12, 13], 12);
+        this.definirAnimacion("recoger", [17, 18, 19, 20, 21, 21, 21, 19, 19], 6);
+    }
+    return CangrejoAnimado;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CarbonAnimado = (function (_super) {
+    __extends(CarbonAnimado, _super);
+    function CarbonAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'carbon_animado.png', cantColumnas: 3, cantFilas: 1 });
+        this.definirAnimacion("quedan3", [0], 1);
+        this.definirAnimacion("quedan2", [1], 1);
+        this.definirAnimacion("quedan1", [2], 1);
+        this.definirAnimacion("correr", [2], 1);
+    }
+    return CarbonAnimado;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/ActorAnimado.ts"/>
@@ -327,6 +410,29 @@ var Casilla = (function (_super) {
         this.cuadricula.casillas.push(nuevoYo);
     };
     return Casilla;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CofreAnimado = (function (_super) {
+    __extends(CofreAnimado, _super);
+    function CofreAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'cofre.png', cantColumnas: 4 });
+        this.definirAnimacion("abrir", [0, 1, 2, 3], 6);
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([1, 2, 1]), 4, true);
+        this.definirAnimacion("abierto", new Cuadros(3).repetirVeces(50).concat([2, 1, 2]), 4);
+    }
+    return CofreAnimado;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CompuAnimada = (function (_super) {
+    __extends(CompuAnimada, _super);
+    function CompuAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 5);
+        this.definirAnimacion("prendida", [1], 5);
+        this.definirAnimacion("claveok", [2], 5);
+        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 15);
+    }
+    return CompuAnimada;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Casilla.ts"/>
@@ -470,122 +576,6 @@ var Cuadricula = (function (_super) {
     };
     return Cuadricula;
 })(Actor);
-/// <reference path="Cuadricula.ts"/>
-/// <reference path="Casilla.ts"/>
-/**
- * class @Camino
- * El camino se construye parecido a la cuadrícula, sólo que no se indica
- * la cantidad de filas y ccolumnas, sino directamente las direcciones que
- * lo definen (arriba ^ , abajo v , izquierda <- , derecha ->).
- *
- * Las opciones que recibe son también 2 diccionarios: 1 para el camino, 1 para
- * cada casilla.
- * Las casillas deben tener sí o sí un
- * Esto es hasta que pilas resuelva el bug #
- *
- *
- */
-/*
-class Camino extends Cuadricula {
-    puntos:[Punto];
-    puntoActual;
-
-    constructor(x, y, direcciones:[String], opcionesCuadricula, opcionesCasilla){
-        this.puntoActual = new Punto(0,0);
-        this.puntos = this.puntosPara(direcciones);
-        super(x, y, this.cantFilasCamino(), this.cantColumnasCamino(), opcionesCuadricula, opcionesCasilla);
-
-        this.construirCamino();
-    }
-
-    puntosPara(direcciones){
-        return direcciones.map(dir => this.nuevoPuntoPara(dir));
-    }
-
-    nuevoPuntoPara(dir){
-        this.puntoActual = this.puntoActual.siguienteEn(dir);
-        return this.puntoActual;
-    }
-
-    construirCamino(){
-        var thiss = this;
-        this.puntos.forEach(function(punto){
-            punto.cambiarOrigenDeCoordenadas(thiss.minimoX(),thiss.maximoY());
-            punto.invertirY();
-        });
-
-        this.casillas.slice(0).filter(c => !this.laNecesito(c)).forEach(c => this.eliminarCasilla(c));
-    }
-
-    laNecesito(c:Casilla){
-        return this.puntos.some(p => c.sos(p.x,p.y));
-    }
-
-    eliminarCasilla(c:Casilla){
-        this.casillas = this.casillas.splice(this.casillas.indexOf(c),1);
-        c.eliminar();
-    }
-
-    cantFilasCamino(){
-        return this.maximoY() + this.maximoSegun(punto => 0-punto.y) + 1;
-    }
-    cantColumnasCamino(){
-        return this.maximoSegun(punto => punto.x) - this.minimoX() + 1;
-    }
-    minimoX(){
-        return 0 - this.maximoSegun(punto => 0-punto.x);
-    }
-    maximoY(){
-        return this.maximoSegun(punto => punto.y);
-    }
-
-    maximoSegun(f:(p:Punto) => number){
-        return this.puntos.map(f).reduce((maximo,nro) => Math.max(maximo,nro));
-    }
-}*/
-/// <reference path="ActorAnimado.ts"/>
-var CangrejoAnimado = (function (_super) {
-    __extends(CangrejoAnimado, _super);
-    function CangrejoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'cangrejo.png', cantColumnas: 1, cantFilas: 1 });
-    }
-    return CangrejoAnimado;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
-var CarbonAnimado = (function (_super) {
-    __extends(CarbonAnimado, _super);
-    function CarbonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'carbon_animado.png', cantColumnas: 3, cantFilas: 1 });
-        this.definirAnimacion("quedan3", [0], 1);
-        this.definirAnimacion("quedan2", [1], 1);
-        this.definirAnimacion("quedan1", [2], 1);
-        this.definirAnimacion("correr", [2], 1);
-    }
-    return CarbonAnimado;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
-var CofreAnimado = (function (_super) {
-    __extends(CofreAnimado, _super);
-    function CofreAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'cofre.png', cantColumnas: 4 });
-        this.definirAnimacion("abrir", [0, 1, 2, 3], 15);
-        this.definirAnimacion("parado", [0, 0, 0, 1, 2, 1], 15);
-        this.definirAnimacion("abierto", [3, 3, 3, 2, 1, 2], 15);
-    }
-    return CofreAnimado;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
-var CompuAnimada = (function (_super) {
-    __extends(CompuAnimada, _super);
-    function CompuAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 5);
-        this.definirAnimacion("prendida", [1], 5);
-        this.definirAnimacion("claveok", [2], 5);
-        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 15);
-    }
-    return CompuAnimada;
-})(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /**
  * @class ComportamientoAnimado
@@ -1233,11 +1223,8 @@ var EstrellaAnimada = (function (_super) {
     __extends(EstrellaAnimada, _super);
     function EstrellaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'estrellaAnimada.png', cantColumnas: 3, cantFilas: 1 });
-        //this.escala_x = 2;
-        //this.escala_y = 2;
-        this.definirAnimacion("serAnimado", [0, 1, 2], 15);
-        this.definirAnimacion("parado", [0, 1, 2], 5);
-        this.definirAnimacion("recoger", [4], 5);
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(90).concat([0, 1, 2, 2, 2, 1]), 6, true);
+        this.definirAnimacion("recoger", [0, 1, 2], 4);
     }
     return EstrellaAnimada;
 })(ActorAnimado);
@@ -1246,7 +1233,7 @@ var GatoAnimado = (function (_super) {
     __extends(GatoAnimado, _super);
     function GatoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
-        this.definirAnimacion('parado', [0, 1, 2, 3, 0, 1, 2, 3, 0, 1, 2, 3, 8, 9, 10, 11, 12], 5);
+        this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3]).repetirVeces(10).concat([8, 9, 10, 11, 12, 11, 10, 9, 8]), 6, true);
         this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19], 5);
         this.definirAnimacion('acostado', [4, 6, 4], 5);
@@ -1320,7 +1307,25 @@ var Lamparin = (function (_super) {
     }
     return Lamparin;
 })(ActorAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+var Flotar = (function (_super) {
+    __extends(Flotar, _super);
+    function Flotar(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.altura_original = this.receptor.y;
+        this.contador = Math.random() * 3;
+        this.desvio = argumentos["Desvio"] || 1;
+    }
+    Flotar.prototype.actualizar = function () {
+        this.contador += 0.025;
+        this.contador = this.contador % 256;
+        //Esto es para evitar overflow.
+        this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio;
+    };
+    return Flotar;
+})(Habilidad);
 /// <reference path="ActorAnimado.ts"/>
+/// <reference path="../habilidades/Flotar.ts"/>
 var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
@@ -1333,6 +1338,9 @@ var MagoAnimado = (function (_super) {
     __extends(MagoAnimado, _super);
     function MagoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
+        this.definirAnimacion("parado", [1], 12, true);
+        this.definirAnimacion("darEspada", [1, 2, 3, 5, 5, 6, 6, 7, 7], 6);
+        this.definirAnimacion("paradoConSombrero", [0], 12);
     }
     return MagoAnimado;
 })(ActorAnimado);
@@ -1350,7 +1358,7 @@ var MarcianoAnimado = (function (_super) {
     function MarcianoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'marcianoAnimado.png', cantColumnas: 6, cantFilas: 3 });
         this.definirAnimacion("correr", [7, 8, 9, 10, 11], 15);
-        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 5);
+        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 5, true);
         this.definirAnimacion("recoger", [13, 14, 15], 5);
         this.detener_animacion();
     }
@@ -1361,7 +1369,7 @@ var MarcianoVerdeAnimado = (function (_super) {
     __extends(MarcianoVerdeAnimado, _super);
     function MarcianoVerdeAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'marcianoVerdeAnimado.png', cantColumnas: 6, cantFilas: 6 });
-        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 15);
+        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 15, true);
         this.definirAnimacion("correr", [7, 8, 9, 10, 11], 15);
         this.definirAnimacion("recogerHierro", [13, 14, 15], 15);
         this.definirAnimacion("recogerCarbon", [24, 25, 26], 15);
@@ -1373,7 +1381,7 @@ var MariaAnimada = (function (_super) {
     __extends(MariaAnimada, _super);
     function MariaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'maria.png', cantColumnas: 10, cantFilas: 2 });
-        this.definirAnimacion("parado", [0, 0, 0], 15);
+        this.definirAnimacion("parado", [0, 0, 0], 15, true);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 5);
         this.definirAnimacion("recoger", [11, 12, 13, 14, 15, 16, 17, 18, 19], 10);
     }
@@ -1543,7 +1551,7 @@ var PerroCohete = (function (_super) {
     __extends(PerroCohete, _super);
     function PerroCohete(x, y) {
         _super.call(this, x, y, { grilla: 'perro_cohete.png', cantColumnas: 1, cantFilas: 7 });
-        this.definirAnimacion("correr", [4, 5, 6, 5], 15);
+        this.definirAnimacion("correr", [4, 5, 6, 5], 15, true);
         this.definirAnimacion("parado", [4], 5);
         this.definirAnimacion("recoger", [4, 2, 0, 2, 4], 10);
     }
@@ -1561,7 +1569,7 @@ var PezAnimado = (function (_super) {
             super(x, y, {grilla: 'pez2.png', cantColumnas:4, cantFilas: 1});
           }
         }*/
-        this.definirAnimacion("parado", [0, 1, 2, 3], 6);
+        this.definirAnimacion("parado", [0, 1, 2, 3], 6, true);
         this.definirAnimacion("recoger", [0, 1, 2, 3,], 6);
     }
     return PezAnimado;
@@ -1586,10 +1594,9 @@ var RecolectorEstrellas = (function (_super) {
     __extends(RecolectorEstrellas, _super);
     function RecolectorEstrellas(x, y) {
         _super.call(this, x, y, { grilla: 'recolectorAnimado.png', cantColumnas: 14, cantFilas: 1 });
-        this.definirAnimacion("serAnimado", [0, 1, 2], 15);
-        this.definirAnimacion("parado", [0, 1, 2], 15);
+        this.definirAnimacion("parado", [0, 1, 2, 1], 2);
         this.definirAnimacion("correr", [3, 4, 5, 6, 7], 5);
-        this.definirAnimacion("recoger", [7, 8, 9, 10, 11, 12, 13, 7], 60);
+        this.definirAnimacion("recoger", [7, 8, 9, 10, 11, 12, 13, 7], 30);
     }
     return RecolectorEstrellas;
 })(ActorAnimado);
@@ -1676,6 +1683,8 @@ var UnicornioAnimado = (function (_super) {
     __extends(UnicornioAnimado, _super);
     function UnicornioAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'unicornio.png', cantColumnas: 5, cantFilas: 2 });
+        this.definirAnimacion("parado", [0, 0, 0, 0, 1, 2, 3, 4, 3], 12);
+        this.definirAnimacion("correr", [5, 6, 7, 8, 9], 12);
     }
     return UnicornioAnimado;
 })(ActorAnimado);
@@ -2337,6 +2346,7 @@ var AlimentandoALosPeces = (function (_super) {
             cantColumnas: 1 });
         this.automata = new BuzoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
+        this.automata.aprender(Flotar, { Desvio: 2 });
         this.alimento = new AlimentoAnimado(0, 0);
         this.cuadricula.agregarActor(this.alimento, 1, this.cantidadColumnas - 1);
         this.colocarPeces();
@@ -3088,19 +3098,26 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
     }
     LaGranAventuraDelMarEncantado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 300 }, { grilla: 'casillas.violeta.png' });
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 400, ancho: 380 }, { grilla: 'casillas.violeta.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActor(this.llave, 1, 4);
+        this.llave.escala = 1.5;
+        this.llave.aprender(Flotar, { Desvio: 5 });
         this.cofre = new CofreAnimado(0, 0);
         this.cuadricula.agregarActor(this.cofre, 0, 0);
+        this.cofre.escala = 2;
         this.caballero = new CaballeroAnimado(0, 0);
-        this.cuadricula.agregarActor(this.caballero, 1, 2);
+        this.cuadricula.agregarActorEnPerspectiva(this.caballero, 1, 2);
+        this.caballero.escala *= 1.5;
         this.mago = new MagoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.mago, 3, 1);
+        this.cuadricula.agregarActorEnPerspectiva(this.mago, 3, 1);
+        this.mago.escala *= 1.5;
         this.unicornio = new UnicornioAnimado(0, 0);
-        this.cuadricula.agregarActor(this.unicornio, 3, 4);
+        this.cuadricula.agregarActorEnPerspectiva(this.unicornio, 3, 4);
+        this.unicornio.escala *= 1.5;
         this.automata = new HeroeAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 3, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 3, 0);
+        this.automata.escala *= 1.5;
         // se carga el estado inicial
         this.estado = new BuscandoLLaveState(this);
     };
@@ -3286,7 +3303,7 @@ var LaberintoConQueso = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Camino.ts"/>
+/// <reference path = "Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
@@ -3975,40 +3992,6 @@ var TresNaranjas = (function (_super) {
     };
     return TresNaranjas;
 })(EscenaActividad);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-var Flotar = (function (_super) {
-    __extends(Flotar, _super);
-    function Flotar(receptor, argumentos) {
-        _super.call(this, receptor);
-        this.altura_original = this.receptor.y;
-        this.contador = Math.random() * 3;
-        this.desvio = argumentos["Desvio"] || 1;
-    }
-    Flotar.prototype.actualizar = function () {
-        this.contador += 0.025;
-        this.contador = this.contador % 256;
-        //Esto es para evitar overflow.
-        this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio;
-    };
-    return Flotar;
-})(Habilidad);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-var HabilidadAnimada = (function (_super) {
-    __extends(HabilidadAnimada, _super);
-    function HabilidadAnimada(receptor, argumentos) {
-        _super.call(this, receptor, argumentos);
-        console.log(this);
-        this.receptor.cargarAnimacion(this.nombreAnimacion());
-    }
-    /* Redefinir si corresponde animar la habilidad. */
-    HabilidadAnimada.prototype.nombreAnimacion = function () {
-        return this.argumentos.nombreAnimacion;
-    };
-    HabilidadAnimada.prototype.actualizar = function () {
-        this.receptor.avanzarAnimacion();
-    };
-    return HabilidadAnimada;
-})(Habilidad);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha
 caso contrario gira para la izquierda*/
