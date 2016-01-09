@@ -18,11 +18,9 @@ class SuperTito2 extends SuperTito1 {
     }
 
     agregarLamparinEnFila(i){
-        if (Math.random() < 0.5 || (i == this.cantidadFilas - 2 && !this.hayLuz)) {
+        if (Math.random() < 0.5 || (i == this.cantidadFilas() - 2 && !this.hayLuz)) {
             super.agregarLamparinEnFila(i);
             this.hayLuz = true;
         }
     }
-
-
 }

@@ -13,21 +13,17 @@ class SuperTito1 extends EscenaActividad {
     fondo;
     automata;
     cuadricula;
-    cantidadFilas;
-    estado;
+    cantFilas;
 
     iniciar() {
-        this.estado=undefined;
-
         this.fondo = new Fondo(this.pathFondo(),0,0);
-        var cantidadMaxFilas=5;
-        this.cantidadFilas= Math.floor((Math.random() * cantidadMaxFilas) + 3)
-        this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,1,
-        {separacionEntreCasillas: 5},
-        {grilla: 'casilla.grisoscuro.png',
-        cantColumnas: 1,  ancho:100, alto:50});
-        this.cuadricula.casilla(this.cantidadFilas-1,0).cambiarImagen('casilla.titoFinalizacion.png');
-        for (let i = 0; i < this.cantidadFilas-1; i++) {
+        this.cuadricula = new Cuadricula(0,0,this.cantidadFilas(),1,
+            {separacionEntreCasillas: 5},
+            {grilla: 'casilla.grisoscuro.png',
+            cantColumnas: 1,  ancho:100, alto:50});
+        this.cuadricula.casilla(this.cantidadFilas()-1,0).cambiarImagen('casilla.titoFinalizacion.png');
+        
+        for (let i = 0; i < this.cantidadFilas()-1; i++) {
             this.agregarLamparinEnFila(i);
         }
         this.automata = new Tito(0,0);
@@ -36,6 +32,11 @@ class SuperTito1 extends EscenaActividad {
         this.automata.y += 30;
         this.automata.x -= 15;
 
+    }
+
+    cantidadFilas() { 
+        if (!this.cantFilas) this.cantFilas = Math.floor((Math.random() * 5) + 3);
+        return this.cantFilas;
     }
 
     agregarLamparinEnFila(i){
