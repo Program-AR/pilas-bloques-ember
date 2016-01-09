@@ -28,20 +28,33 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
     iniciar() {
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.cuadricula = new Cuadricula(0,0,4,5,
-            {alto: 300},
+            {alto: 400, ancho: 380},
             {grilla: 'casillas.violeta.png'});
         this.llave = new LlaveAnimado(0,0);
         this.cuadricula.agregarActor(this.llave,1,4)
+        this.llave.escala = 1.5;
+        this.llave.aprender(Flotar, {Desvio:5});
+
         this.cofre = new CofreAnimado(0,0);
         this.cuadricula.agregarActor(this.cofre,0,0);
+        this.cofre.escala = 2;
+
         this.caballero = new CaballeroAnimado(0,0);
-        this.cuadricula.agregarActor(this.caballero,1,2);
+        this.cuadricula.agregarActorEnPerspectiva(this.caballero,1,2);
+        this.caballero.escala *= 1.5;
+        
         this.mago = new MagoAnimado(0,0);
-        this.cuadricula.agregarActor(this.mago,3,1);
+        this.cuadricula.agregarActorEnPerspectiva(this.mago, 3, 1);
+        this.mago.escala *= 1.5;
+        
         this.unicornio = new UnicornioAnimado(0,0);
-        this.cuadricula.agregarActor(this.unicornio,3,4);
+        this.cuadricula.agregarActorEnPerspectiva(this.unicornio, 3, 4);
+        this.unicornio.escala *= 1.5;
+
         this.automata = new HeroeAnimado(0,0);
-        this.cuadricula.agregarActor(this.automata,3,0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 3, 0);
+        this.automata.escala *= 1.5;
+
         // se carga el estado inicial
         this.estado = new BuscandoLLaveState(this);
     }

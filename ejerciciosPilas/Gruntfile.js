@@ -14,6 +14,20 @@ module.exports = function(grunt) {
     qunit: {
       files: ['test/index.html']
     },
+
+    concat: {
+      options: {
+        separator: ';',
+      },
+      dist: {
+        src: [
+            'dependencias/listHelper.js',
+            'compilados/ejerciciosPilas.js',
+        ],
+        dest: 'compilados/ejerciciosPilas.js',
+      },
+    },
+
     typescript: {
       base: {
         src: ['src/**/*.ts'],
@@ -32,7 +46,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/**'],
-        tasks: ['clear', 'typescript'],
+        tasks: ['clear', 'typescript', 'concat'],
       }
     },
     open: {
@@ -58,6 +72,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-typescript');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
@@ -65,7 +80,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
 
-  grunt.registerTask('default', ['pilas', 'typescript']);
+  grunt.registerTask('default', ['pilas', 'typescript', 'concat']);
 
   grunt.registerTask('con_pilasweb', ['shell:compilarPilasweb', 'default']);
 

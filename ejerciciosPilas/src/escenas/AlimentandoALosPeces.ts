@@ -19,6 +19,8 @@ class AlimentandoALosPeces extends EscenaActividad {
 
         this.automata = new BuzoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata,this.cantidadFilas-1, 0);
+        this.automata.aprender(Flotar, { Desvio: 2 });
+        
         this.alimento = new AlimentoAnimado(0,0)
         this.cuadricula.agregarActor(this.alimento,1,this.cantidadColumnas-1)
         this.colocarPeces();

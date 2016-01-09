@@ -1,4 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../habilidades/HabilidadAnimada.ts" />
 
 
 /**
@@ -30,7 +31,7 @@ class ActorAnimado extends Actor {
 
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
-        //this.aprender(SerAnimado,{})
+        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
 
         this.detener_animacion();
         this.objetosRecogidos = [];
@@ -62,8 +63,9 @@ class ActorAnimado extends Actor {
         this.pasito_correr();
     }
 
-    definirAnimacion(nombre, cuadros, velocidad){
+    definirAnimacion(nombre, cuadros, velocidad, cargarla = false){
         this._imagen.definir_animacion(nombre, cuadros, velocidad);
+        if (cargarla) this.cargarAnimacion(nombre);
     }
 
     pasito_correr() {
@@ -169,4 +171,22 @@ class ActorAnimado extends Actor {
 
     }
 
+}
+
+// Helper para construir las animaciones:
+class Cuadros {
+    _lista :Array<Number>;
+    constructor(nroOLista){
+        this._lista = (typeof (nroOLista) === "number") ? [nroOLista] : nroOLista;
+    }
+    repetirVeces(veces){
+        var lOrig = this._lista;
+        for (var i = 0; i < veces-1; i++) {
+            this._lista = this._lista.concat(lOrig);
+        }
+        return this._lista;
+    }
+    lista(){
+        return this._lista;
+    }
 }

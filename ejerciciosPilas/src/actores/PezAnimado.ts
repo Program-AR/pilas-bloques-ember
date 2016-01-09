@@ -14,7 +14,7 @@ class PezAnimado extends ActorAnimado {
         }
       }*/
       
-      this.definirAnimacion("parado",[0,1,2,3],6);
+      this.definirAnimacion("parado",[0,1,2,3],6,true);
       this.definirAnimacion("recoger",[0,1,2,3,],6);
 
 

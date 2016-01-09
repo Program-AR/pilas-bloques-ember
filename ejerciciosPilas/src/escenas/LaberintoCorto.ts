@@ -1,6 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Camino.ts"/>
+/// <reference path = "Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
