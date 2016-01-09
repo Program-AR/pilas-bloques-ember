@@ -2682,31 +2682,47 @@ var ElMonoQueSabeContar = (function (_super) {
 /// <reference path = "../actores/MonoAnimado.ts" />}
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
+var LaEleccionDelMono = (function (_super) {
+    __extends(LaEleccionDelMono, _super);
+    function LaEleccionDelMono() {
+        _super.apply(this, arguments);
+    }
+    LaEleccionDelMono.prototype.iniciar = function () {
+        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0; });
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
+            cantColumnas: 1 });
+        this.automata = new MonoAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
+        this.agregarFruta();
+    };
+    LaEleccionDelMono.prototype.agregarFruta = function () {
+        if (Math.random() < .5) {
+            this.agregar(ManzanaAnimada);
+        }
+        else {
+            this.agregar(BananaAnimada);
+        }
+    };
+    LaEleccionDelMono.prototype.agregar = function (objeto) {
+        this.cuadricula.agregarActorEnPerspectiva(new objeto(0, 0), 0, 1, false);
+    };
+    return LaEleccionDelMono;
+})(EscenaActividad);
+/// <reference path = "LaEleccionDelMono.ts" />
+/// <reference path = "../actores/BananaAnimada.ts" />
 var ElMonoYLasBananas = (function (_super) {
     __extends(ElMonoYLasBananas, _super);
     function ElMonoYLasBananas() {
         _super.apply(this, arguments);
     }
-    ElMonoYLasBananas.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0; });
-        this.fondo = new Fondo('fondos.selva.png', 0, 0);
-        var cantidadFilas = 1;
-        var cantidadColumnas = 2;
-        this.cuadricula = new Cuadricula(0, -100, cantidadFilas, cantidadColumnas, { alto: 200 }, { grilla: 'casillas.violeta.png',
-            cantColumnas: 1 });
-        this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+    ElMonoYLasBananas.prototype.agregarFruta = function () {
         if (Math.random() < .5) {
-            this.cuadricula.agregarActorEnPerspectiva(new BananaAnimada(0, 0), 0, 1, false);
+            this.agregar(BananaAnimada);
         }
     };
-    ElMonoYLasBananas.prototype.agregar = function (objeto) {
-    };
-    ElMonoYLasBananas.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
     return ElMonoYLasBananas;
-})(EscenaActividad);
+})(LaEleccionDelMono);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 //No sólo avisa al salir de la pantalla, sino que no lo deja irse.
 //Usar en reemplazo de la habilidad SeMantieneEnPantalla
@@ -3052,43 +3068,6 @@ var EscribirEnCompuAnimada = (function (_super) {
     };
     return EscribirEnCompuAnimada;
 })(ComportamientoColision);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Cuadricula.ts" />
-/// <reference path = "../actores/BananaAnimada.ts" />
-/// <reference path = "../actores/ManzanaAnimada.ts" />
-/// <reference path = "../actores/MonoAnimado.ts" />}
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
-var LaEleccionDelMono = (function (_super) {
-    __extends(LaEleccionDelMono, _super);
-    function LaEleccionDelMono() {
-        _super.apply(this, arguments);
-    }
-    LaEleccionDelMono.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0; });
-        this.fondo = new Fondo('fondos.selva.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
-            cantColumnas: 1 });
-        this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
-        if (Math.random() < .5) {
-            this.agregar(ManzanaAnimada);
-        }
-        else {
-            this.agregar(BananaAnimada);
-        }
-    };
-    LaEleccionDelMono.prototype.agregar = function (objeto) {
-        this.cuadricula.agregarActorEnPerspectiva(new objeto(0, 0), 0, 1, false);
-    };
-    LaEleccionDelMono.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
-    LaEleccionDelMono.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha, {});
-    };
-    return LaEleccionDelMono;
-})(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
@@ -3691,14 +3670,11 @@ var SuperTito1 = (function (_super) {
         _super.apply(this, arguments);
     }
     SuperTito1.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo(this.pathFondo(), 0, 0);
-        var cantidadMaxFilas = 5;
-        this.cantidadFilas = Math.floor((Math.random() * cantidadMaxFilas) + 3);
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas(), 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, ancho: 100, alto: 50 });
-        this.cuadricula.casilla(this.cantidadFilas - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
-        for (var i = 0; i < this.cantidadFilas - 1; i++) {
+        this.cuadricula.casilla(this.cantidadFilas() - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
+        for (var i = 0; i < this.cantidadFilas() - 1; i++) {
             this.agregarLamparinEnFila(i);
         }
         this.automata = new Tito(0, 0);
@@ -3706,6 +3682,11 @@ var SuperTito1 = (function (_super) {
         this.automata.escala *= 2;
         this.automata.y += 30;
         this.automata.x -= 15;
+    };
+    SuperTito1.prototype.cantidadFilas = function () {
+        if (!this.cantFilas)
+            this.cantFilas = Math.floor((Math.random() * 5) + 3);
+        return this.cantFilas;
     };
     SuperTito1.prototype.agregarLamparinEnFila = function (i) {
         var lamparin = new Lamparin(0, 0);
@@ -3736,7 +3717,7 @@ var SuperTito2 = (function (_super) {
         return 'fondo.superTito2.png';
     };
     SuperTito2.prototype.agregarLamparinEnFila = function (i) {
-        if (Math.random() < 0.5 || (i == this.cantidadFilas - 2 && !this.hayLuz)) {
+        if (Math.random() < 0.5 || (i == this.cantidadFilas() - 2 && !this.hayLuz)) {
             _super.prototype.agregarLamparinEnFila.call(this, i);
             this.hayLuz = true;
         }
@@ -3915,11 +3896,7 @@ var TitoEnciendeLuces = (function (_super) {
     };
     return TitoEnciendeLuces;
 })(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/Tito.ts"/>
-/// <reference path = "../actores/Lamparin.ts"/>
+/// <reference path = "SuperTito2.ts" />
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 /**
@@ -3930,29 +3907,12 @@ var TitoRecargado = (function (_super) {
     __extends(TitoRecargado, _super);
     function TitoRecargado() {
         _super.apply(this, arguments);
-        this.objetos = [];
     }
-    TitoRecargado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula = new Cuadricula(0, 0, 8, 1, { separacionEntreCasillas: 5, alto: pilas.opciones.alto - 40 }, { grilla: 'casilla.grisoscuro.png',
-            cantColumnas: 1, ancho: 50, alto: 50 });
-        //se cargan las luces
-        for (var i = 1; i < 8; i++) {
-            if (Math.random() < .5) {
-                this.agregarLuz(i);
-            }
-        }
-        // se crea el automata
-        this.automata = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0, true);
+    TitoRecargado.prototype.pathFondo = function () {
+        return 'fondos.estrellas.png';
     };
-    TitoRecargado.prototype.agregarLuz = function (fila) {
-        var lamparin = new Lamparin(0, 0);
-        this.cuadricula.agregarActor(lamparin, fila, 0);
-        lamparin.escala_x = .50;
-        lamparin.escala_y = .50;
-        this.objetos.push(lamparin);
+    TitoRecargado.prototype.cantidadFilas = function () {
+        return 7;
     };
     TitoRecargado.prototype.avanzar = function () {
         this.automata.hacer_luego(MoverACasillaDerecha);
@@ -3961,7 +3921,7 @@ var TitoRecargado = (function (_super) {
         this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
     };
     return TitoRecargado;
-})(EscenaActividad);
+})(SuperTito2);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>

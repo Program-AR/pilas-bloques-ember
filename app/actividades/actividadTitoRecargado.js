@@ -7,8 +7,8 @@ var {EncenderLuz,TocandoLuz} = bloquesTito;
 
 var actividadTitoRecargado = {
   nombre: 'Tito recargado',
-  enunciado: 'Tito necesita encender las luces para poder conocer el camino. ¡Atención! Podés utlizar las subtareas y bloques de control.',
-    consignaInicial:'El procedimeinto construido debe considerar el escenario y poder responder a cada cambio propuesto.',
+  enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar las subtareas y bloques de control.',
+    consignaInicial:'El procedimiento construido debe considerar el escenario y poder responder a cada cambio propuesto.',
 
   // la escena proviene de ejerciciosPilas
   escena: TitoRecargado,  // jshint ignore:line
