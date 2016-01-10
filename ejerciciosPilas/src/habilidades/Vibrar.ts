@@ -1,10 +1,11 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 
 /*Si los grados de aumento son positivos gira para la derecha
 caso contrario gira para la izquierda*/
 
 
-class Vibrar extends Habilidad {
+class Vibrar extends HabilidadAnimada {
   gradosDeAumentoStep
   tiempoVibracion
   izquierda

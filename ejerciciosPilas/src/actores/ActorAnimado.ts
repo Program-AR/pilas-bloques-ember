@@ -1,5 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
-/// <reference path = "../habilidades/HabilidadAnimada.ts" />
+/// <reference path = "../habilidades/Animar.ts" />
 
 
 /**
@@ -21,6 +21,7 @@ class ActorAnimado extends Actor {
     cuadricula;
     objetosRecogidos;
     pausado;
+    habilidadesSuspendidas;
 
 
     constructor(x, y, opciones) {
@@ -32,6 +33,7 @@ class ActorAnimado extends Actor {
         this.setupAnimacion();
 
         this.objetosRecogidos = [];
+        this.habilidadesSuspendidas = [];
     }
 
     pre_actualizar(){
@@ -106,11 +108,11 @@ class ActorAnimado extends Actor {
     }
 
     detenerAnimacion(){
-        this.olvidar(HabilidadAnimada);
+        this.olvidar(Animar);
     }
 
     animar(){
-        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
+        this.aprender(Animar, {}); //Hace la magia de animar constantemente.
     }
 
     cargarAnimacion(nombre){
@@ -177,6 +179,19 @@ class ActorAnimado extends Actor {
         return super.colisiona_con(objeto)
       }
 
+    }
+
+    suspenderHabilidadesConMovimiento(){
+        this.habilidadesSuspendidas = this.habilidadesSuspendidas.concat(
+            this.habilidades.filter( hab => hab.implicaMovimiento() ));
+        this.habilidadesSuspendidas.forEach( hab => this.olvidar(hab));
+    }
+    activarHabilidadesConMovimiento(){
+        this.habilidadesSuspendidas.forEach(function(hab) { 
+            hab.actualizarPosicion(); 
+            this.aprender(hab); 
+        }.bind(this));
+        this.habilidadesSuspendidas = [];
     }
 
 }

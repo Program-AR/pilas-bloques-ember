@@ -1,7 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path="ActorAnimado.ts"/>
-/// <reference path = "../comportamientos/Animar.ts"/>
-
 
 class Obrero extends ActorAnimado {
     constructor(x, y) {

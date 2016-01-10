@@ -1,11 +1,11 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-
+/// <reference path = "HabilidadAnimada.ts"/>
 
 //No sólo avisa al salir de la pantalla, sino que no lo deja irse.
 //Usar en reemplazo de la habilidad SeMantieneEnPantalla
 // TODO: Repite código con SeMantieneEnPantalla, modificar pilas para que deje de hacerlo.
 
-class AvisaAlSalirDePantalla extends Habilidad {
+class AvisaAlSalirDePantalla extends HabilidadAnimada {
     
     constructor(receptor) {
         super(receptor);

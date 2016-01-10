@@ -1,6 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 
-class SerPateado extends Habilidad {
+class SerPateado extends HabilidadAnimada {
     altura_original
     contador
     aceleracion
@@ -10,7 +11,7 @@ class SerPateado extends Habilidad {
         super(receptor);
         this.receptor.cargarAnimacion("patear")
         this.receptor.aprender(Rotar,{'gradosDeAumentoStep':argumentos['gradosDeAumentoStep']||1})
-        this.altura_original=this.receptor.y
+        this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.aceleracion=argumentos['aceleracion']
         this.tiempoEnElAire=argumentos['tiempoEnElAire']||10
@@ -30,30 +31,38 @@ class SerPateado extends Habilidad {
 
 
     patearConSubidaLineal(){
-      this.contador += this.aceleracion
+      this.contador += this.aceleracion;
       this.contador = this.contador % 256;// para evitar overflow
       if(this.receptor.y<this.altura_original+this.elevacionMaxima&&this.tiempoEnElAire>0){
         //subiendo
-        this.receptor.y += this.contador}
+        this.receptor.y += this.contador;}
 
       if(this.tiempoEnElAire>0){
         //en el aire
-        this.tiempoEnElAire -=1
+        this.tiempoEnElAire -= 1;
       }
 
       if(this.tiempoEnElAire<=0){
         //bajando
         if(this.receptor.y>this.altura_original){
-            this.receptor.y -= this.contador}
+            this.receptor.y -= this.contador;}
       }
-      this.receptor.x += this.contador
+      this.receptor.x += this.contador;
     }
 
 
     patearParaAdelante(){
-      this.contador += this.aceleracion
+      this.contador += this.aceleracion;
       this.contador = this.contador % 256;// para evitar overflow
-      this.receptor.x += this.contador
+      this.receptor.x += this.contador;
+    }
+
+    implicaMovimiento(){
+      return true;
+    }
+
+    actualizarPosicion(){
+      this.altura_original = this.receptor.y
     }
 
 }

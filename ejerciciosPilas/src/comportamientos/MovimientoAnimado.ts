@@ -37,6 +37,11 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom(
 			{x:0,y:0},
 			this.valoresFinales.distancia / this.valoresFinales.cantPasos);
+		this.receptor.suspenderHabilidadesConMovimiento();
+    }
+
+    alTerminarAnimacion(){
+		this.receptor.activarHabilidadesConMovimiento();
     }
 
     doActualizar(){

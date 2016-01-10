@@ -4,13 +4,16 @@ declare class Estudiante {
     public comportamiento_actual: any;
     constructor();
     public aprender(clase_de_habilidad: any, argumentos?: any): string;
-    public agregar_habilidad(clase_de_habilidad: any, argumentos: any): void;
-    public olvidar(clase_de_habilidad: any): void;
+    public agregar_habilidad(habilidad_o_clase: any, argumentos: any): void;
+    public olvidar(habilidad_o_clase: any): void;
+    public getHabilidad(objetoOClase: any, argumentos: any): any;
+    public isClass(objeto: any): boolean;
     public actualizar_habilidades(): void;
     public hacer(comportamiento: any, argumentos?: {}): void;
     public hacer_luego(comportamiento: any, argumentos?: {}): void;
     public actualizar_comportamientos(): void;
     public _adoptar_el_siguiente_comportamiento(): void;
+    public getClassName(obj?: Estudiante): string;
 }
 /**
 * @class Actor
@@ -71,7 +74,6 @@ declare class Actor extends Estudiante {
     public etiquetas: any;
     public evto_se_movio: any;
     constructor(imagen: any, x: any, y: any, atributos?: {});
-    public getClassName(): string;
     public iniciar(): void;
     public tiene_fisica(): boolean;
     private _crear_sprite();
