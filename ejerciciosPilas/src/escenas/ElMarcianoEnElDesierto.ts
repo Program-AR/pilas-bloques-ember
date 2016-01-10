@@ -19,16 +19,16 @@ class ElMarcianoEnElDesierto extends EscenaActividad {
         var cantidadFilas=4;
         var cantidadColumnas=5;
 
-        this.cuadricula = new Cuadricula(0,-9,cantidadFilas,cantidadColumnas,{},
-            {grilla: 'invisible.png',alto:63.5, ancho:63.5
-            });
+        this.cuadricula = new Cuadricula(0,-9,cantidadFilas,cantidadColumnas,
+            {alto: 262, ancho: 330},
+            {grilla: 'invisible.png'});
 
         this.manzanas=[];
         var posiciones=[[0,0],[0,2],[0,4],[1,4],[2,4],[3,2],[3,1]]
         for (let i = 0; i < posiciones.length; i++) {
             var objeto=new ManzanaAnimada(0,0);posiciones[i];
             this.cuadricula.agregarActor(objeto,posiciones[i][0],posiciones[i][1]);
-            objeto.escala=0.5;
+            objeto.escala *= 0.8;
             this.manzanas.push(objeto);
 
         }
