@@ -19,9 +19,26 @@ var __extends = this.__extends || function (d, b) {
     __.prototype = b.prototype;
     d.prototype = new __();
 };
+/* @class HabilidadAnimada
+ * Es la clase de la que heredan todas en ejerciciosPilas, donde
+ * va el comportamiento en común que no quiero poner en pilasweb
+ *
+*/
 var HabilidadAnimada = (function (_super) {
     __extends(HabilidadAnimada, _super);
-    function HabilidadAnimada(receptor, argumentos) {
+    function HabilidadAnimada() {
+        _super.apply(this, arguments);
+    }
+    HabilidadAnimada.prototype.implicaMovimiento = function () {
+        return false;
+    };
+    return HabilidadAnimada;
+})(Habilidad);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
+var Animar = (function (_super) {
+    __extends(Animar, _super);
+    function Animar(receptor, argumentos) {
         _super.call(this, receptor, argumentos);
         this.setearNombreAnimacion();
         this.nombreAnimacion = this.nombreAnimacion || this.argumentos.nombreAnimacion;
@@ -30,20 +47,20 @@ var HabilidadAnimada = (function (_super) {
     }
     /* Redefinir si corresponde animar la habilidad. Debe setear this.nombreAnimacion.
      También se puede pasar por uno de los argumentos el nombre de la animación.*/
-    HabilidadAnimada.prototype.setearNombreAnimacion = function () {
+    Animar.prototype.setearNombreAnimacion = function () {
     };
     // No redefinir
-    HabilidadAnimada.prototype.actualizar = function () {
+    Animar.prototype.actualizar = function () {
         this.receptor.avanzarAnimacion();
         this.doActualizar();
     };
-    HabilidadAnimada.prototype.doActualizar = function () {
+    Animar.prototype.doActualizar = function () {
         // Redefinir para agregar comportamiento además de la animación
     };
-    return HabilidadAnimada;
-})(Habilidad);
+    return Animar;
+})(HabilidadAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
-/// <reference path = "../habilidades/HabilidadAnimada.ts" />
+/// <reference path = "../habilidades/Animar.ts" />
 /**
  * @class ActorAnimado
  *
@@ -66,6 +83,7 @@ var ActorAnimado = (function (_super) {
         this.z = pilas.escena_actual().minZ() - 1;
         this.setupAnimacion();
         this.objetosRecogidos = [];
+        this.habilidadesSuspendidas = [];
     }
     ActorAnimado.prototype.pre_actualizar = function () {
         if (!this.pausado)
@@ -130,10 +148,10 @@ var ActorAnimado = (function (_super) {
         this.cargarAnimacion("parado");
     };
     ActorAnimado.prototype.detenerAnimacion = function () {
-        this.olvidar(HabilidadAnimada);
+        this.olvidar(Animar);
     };
     ActorAnimado.prototype.animar = function () {
-        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
+        this.aprender(Animar, {}); //Hace la magia de animar constantemente.
     };
     ActorAnimado.prototype.cargarAnimacion = function (nombre) {
         this._imagen.cargar_animacion(nombre);
@@ -194,6 +212,18 @@ var ActorAnimado = (function (_super) {
             return _super.prototype.colisiona_con.call(this, objeto);
         }
     };
+    ActorAnimado.prototype.suspenderHabilidadesConMovimiento = function () {
+        var _this = this;
+        this.habilidadesSuspendidas = this.habilidadesSuspendidas.concat(this.habilidades.filter(function (hab) { return hab.implicaMovimiento(); }));
+        this.habilidadesSuspendidas.forEach(function (hab) { return _this.olvidar(hab); });
+    };
+    ActorAnimado.prototype.activarHabilidadesConMovimiento = function () {
+        this.habilidadesSuspendidas.forEach(function (hab) {
+            hab.actualizarPosicion();
+            this.aprender(hab);
+        }.bind(this));
+        this.habilidadesSuspendidas = [];
+    };
     return ActorAnimado;
 })(Actor);
 // Helper para construir las animaciones:
@@ -207,6 +237,9 @@ var Cuadros = (function () {
             this._lista = this._lista.concat(lOrig);
         }
         return this._lista;
+    };
+    Cuadros.prototype.repetirRandom = function (veces) {
+        return this.repetirVeces(Math.round(Math.random() * veces));
     };
     Cuadros.prototype.lista = function () {
         return this._lista;
@@ -260,6 +293,15 @@ var ActorCompuesto = (function (_super) {
         var parar = false;
         this.subactores.forEach(function (actor) { return parar = parar || actor.avanzarAnimacion(); });
         return parar;
+    };
+    ActorCompuesto.prototype.nombreAnimacionActual = function () {
+        return this.subactores[0].nombreAnimacionActual();
+    };
+    ActorCompuesto.prototype.detenerAnimacion = function () {
+        this.subactores.forEach(function (actor) { return actor.detenerAnimacion(); });
+    };
+    ActorCompuesto.prototype.animar = function () {
+        this.subactores.forEach(function (actor) { return actor.animar(); });
     };
     return ActorCompuesto;
 })(ActorAnimado);
@@ -727,6 +769,10 @@ var MovimientoAnimado = (function (_super) {
         this.enQueVueltaEjecuto = Math.round(100 / this.valoresFinales.velocidad);
         this.pasosRestantes = this.valoresFinales.cantPasos;
         this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom({ x: 0, y: 0 }, this.valoresFinales.distancia / this.valoresFinales.cantPasos);
+        this.receptor.suspenderHabilidadesConMovimiento();
+    };
+    MovimientoAnimado.prototype.alTerminarAnimacion = function () {
+        this.receptor.activarHabilidadesConMovimiento();
     };
     MovimientoAnimado.prototype.doActualizar = function () {
         var terminoAnimacion = _super.prototype.doActualizar.call(this);
@@ -1242,7 +1288,7 @@ var EstrellaAnimada = (function (_super) {
     __extends(EstrellaAnimada, _super);
     function EstrellaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'estrellaAnimada.png', cantColumnas: 3, cantFilas: 1 });
-        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(90).concat([0, 1, 2, 2, 2, 1]), 6, true);
+        this.definirAnimacion("parado", new Cuadros(0).repetirRandom(200).concat([0, 1, 2, 2, 2, 1]), 6, true);
         this.definirAnimacion("recoger", [0, 1, 2], 4);
     }
     return EstrellaAnimada;
@@ -1328,11 +1374,12 @@ var Lamparin = (function (_super) {
     return Lamparin;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 var Flotar = (function (_super) {
     __extends(Flotar, _super);
     function Flotar(receptor, argumentos) {
         _super.call(this, receptor);
-        this.altura_original = this.receptor.y;
+        this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.desvio = argumentos["Desvio"] || 1;
     }
@@ -1342,8 +1389,14 @@ var Flotar = (function (_super) {
         //Esto es para evitar overflow.
         this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio;
     };
+    Flotar.prototype.implicaMovimiento = function () {
+        return true;
+    };
+    Flotar.prototype.actualizarPosicion = function () {
+        this.altura_original = this.receptor.y;
+    };
     return Flotar;
-})(Habilidad);
+})(HabilidadAnimada);
 /// <reference path="ActorAnimado.ts"/>
 /// <reference path="../habilidades/Flotar.ts"/>
 var LlaveAnimado = (function (_super) {
@@ -1411,7 +1464,7 @@ var MariaAnimada = (function (_super) {
     function MariaAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'maria.png', cantColumnas: 10, cantFilas: 2 });
         this.definirAnimacion("parado", [0, 0, 0], 15, true);
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 5);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
         this.definirAnimacion("recoger", [11, 12, 13, 14, 15, 16, 17, 18, 19], 10);
     }
     return MariaAnimada;
@@ -1447,55 +1500,7 @@ var NaveAnimada = (function (_super) {
     return NaveAnimada;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
-var Animar = (function (_super) {
-    __extends(Animar, _super);
-    function Animar() {
-        _super.apply(this, arguments);
-    }
-    Animar.prototype.iniciar = function (receptor) {
-        _super.prototype.iniciar.call(this, receptor);
-        this.sanitizarArgumentos();
-        this.imagenAnterior = this.receptor._imagen;
-        this.receptor.imagen = pilas.imagenes.cargar_grilla(this.argumentos.grilla, this.argumentos.cantColumnas);
-        this.receptor._imagen.definir_cuadro(0);
-        this.paso = 0;
-    };
-    Animar.prototype.actualizar = function () {
-        this.paso += 0.3;
-        if (this.paso > this.argumentos.cantColumnas) {
-            this.paso = 0;
-            this.argumentos.cantEjecuciones -= 1;
-            if (this.argumentos.cantEjecuciones === 0) {
-                this.terminarrlo();
-                return true;
-            }
-        }
-        this.receptor._imagen.definir_cuadro(this.argumentos.cuadros[parseInt(this.paso)]);
-    };
-    Animar.prototype.terminarrlo = function () {
-        this.receptor.imagen = this.imagenAnterior;
-    };
-    Animar.prototype.seguidillaHastaCant = function () {
-        var seguidilla = [];
-        if (this.argumentos.cantColumnas !== undefined) {
-            for (var i = 0; i < this.argumentos.cantColumnas; i++) {
-                seguidilla.push(i);
-            }
-        }
-        return seguidilla;
-    };
-    Animar.prototype.sanitizarArgumentos = function () {
-        this.argumentos.cantEjecuciones = this.argumentos.cantEjecuciones || 1;
-        this.argumentos.velocidad = this.argumentos.velocidad || 2;
-        this.argumentos.cuadros = this.argumentos.cuadros || this.seguidillaHastaCant() || [0];
-        this.argumentos.cantColumnas = this.argumentos.cantColumnas || this.argumentos.cuadros.length;
-        this.argumentos.cuadroEstatico = this.argumentos.cuadroEstatico || 0;
-    };
-    return Animar;
-})(Comportamiento);
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path="ActorAnimado.ts"/>
-/// <reference path = "../comportamientos/Animar.ts"/>
 var Obrero = (function (_super) {
     __extends(Obrero, _super);
     function Obrero(x, y) {
@@ -1593,17 +1598,17 @@ var PerroCohete = (function (_super) {
 var PezAnimado = (function (_super) {
     __extends(PezAnimado, _super);
     function PezAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'pez1.png', cantColumnas: 4, cantFilas: 1 });
-        /*}else{
-          if(Math.random()<0.5){
-            super(x, y, {grilla: 'pez2.png', cantColumnas:4, cantFilas: 1});
-          }else{
-            super(x, y, {grilla: 'pez2.png', cantColumnas:4, cantFilas: 1});
-          }
-        }*/
-        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 3, 2, 1], 6, true);
+        _super.call(this, x, y, { grilla: this.nombrePNG(), cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion("parado", new Cuadros(0).repetirRandom(100).concat([1, 2, 3, 3, 2, 1]), 6, true);
         this.definirAnimacion("recoger", [0, 1, 2, 3, 2, 1], 6);
     }
+    PezAnimado.prototype.nombrePNG = function () {
+        if (Math.random() < 1 / 3)
+            return 'pez1.png';
+        if (Math.random() < 0.5)
+            return 'pez2.png';
+        return 'pez3.png';
+    };
     return PezAnimado;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
@@ -2763,6 +2768,7 @@ var ElMonoYLasBananas = (function (_super) {
     return ElMonoYLasBananas;
 })(LaEleccionDelMono);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 //No sólo avisa al salir de la pantalla, sino que no lo deja irse.
 //Usar en reemplazo de la habilidad SeMantieneEnPantalla
 // TODO: Repite código con SeMantieneEnPantalla, modificar pilas para que deje de hacerlo.
@@ -2811,7 +2817,7 @@ var AvisaAlSalirDePantalla = (function (_super) {
         return this.receptor.abajo < pilas.abajo();
     };
     return AvisaAlSalirDePantalla;
-})(Habilidad);
+})(HabilidadAnimada);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
@@ -4030,6 +4036,7 @@ var TresNaranjas = (function (_super) {
     return TresNaranjas;
 })(EscenaActividad);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha
 caso contrario gira para la izquierda*/
 var Rotar = (function (_super) {
@@ -4042,15 +4049,16 @@ var Rotar = (function (_super) {
         this.receptor.rotacion += this.gradosDeAumentoStep;
     };
     return Rotar;
-})(Habilidad);
+})(HabilidadAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 var SerPateado = (function (_super) {
     __extends(SerPateado, _super);
     function SerPateado(receptor, argumentos) {
         _super.call(this, receptor);
         this.receptor.cargarAnimacion("patear");
         this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': argumentos['gradosDeAumentoStep'] || 1 });
-        this.altura_original = this.receptor.y;
+        this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.aceleracion = argumentos['aceleracion'];
         this.tiempoEnElAire = argumentos['tiempoEnElAire'] || 10;
@@ -4085,9 +4093,16 @@ var SerPateado = (function (_super) {
         this.contador = this.contador % 256; // para evitar overflow
         this.receptor.x += this.contador;
     };
+    SerPateado.prototype.implicaMovimiento = function () {
+        return true;
+    };
+    SerPateado.prototype.actualizarPosicion = function () {
+        this.altura_original = this.receptor.y;
+    };
     return SerPateado;
-})(Habilidad);
+})(HabilidadAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha
 caso contrario gira para la izquierda*/
 var Vibrar = (function (_super) {
@@ -4133,4 +4148,4 @@ var Vibrar = (function (_super) {
         }
     };
     return Vibrar;
-})(Habilidad);
+})(HabilidadAnimada);

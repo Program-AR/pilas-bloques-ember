@@ -115,7 +115,7 @@ export default Ember.Component.extend({
                 'icono.sandia.png',
                 'icono.alimento_pez.png',
                 'icono.computadora.png',
-
+                'icono.pez.png',
 
                 ]
       });
