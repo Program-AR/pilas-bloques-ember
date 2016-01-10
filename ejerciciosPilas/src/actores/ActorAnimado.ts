@@ -209,6 +209,9 @@ class Cuadros {
         }
         return this._lista;
     }
+    repetirRandom(veces){
+        return this.repetirVeces(Math.round(Math.random() * veces));
+    }
     lista(){
         return this._lista;
     }
