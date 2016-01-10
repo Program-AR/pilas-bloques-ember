@@ -50,8 +50,7 @@ class ComportamientoAnimado extends Comportamiento {
 		super.iniciar(receptor);
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
-			this.animacionAnterior = this.receptor.nombreAnimacionActual();
-        	this.receptor.cargarAnimacion(this.nombreAnimacion());
+			this.configuracionInicial();
         	this.alIniciar();
         	return true;
    		}.bind(this));
@@ -59,7 +58,7 @@ class ComportamientoAnimado extends Comportamiento {
         	return this.doActualizar(); 
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
-        	this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
+			this.configuracionFinal();
         	this.alTerminarAnimacion();
         	return true;
    		}.bind(this));	
@@ -74,6 +73,17 @@ class ComportamientoAnimado extends Comportamiento {
     	} else {
       		return true;
     	}
+	}
+
+	private configuracionInicial(){
+		this.receptor.detenerAnimacion(); // Porque hace quilombo
+		this.animacionAnterior = this.receptor.nombreAnimacionActual();
+		this.receptor.cargarAnimacion(this.nombreAnimacion());
+	}
+
+	private configuracionFinal(){
+		this.receptor.animar();
+		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
 	}
 	
 	/* Redefinir si corresponde animar el comportamiento. */

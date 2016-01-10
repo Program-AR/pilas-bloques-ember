@@ -10,6 +10,7 @@
 /// <reference path = "../actores/ActorCompuesto.ts" />
 /// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../habilidades/Flotar.ts" />
 
 
 class ReparandoLaNave extends EscenaActividad {
@@ -49,13 +50,16 @@ class ReparandoLaNave extends EscenaActividad {
     this.carbon = new CarbonAnimado(0, 0);
     this.carbon.cantidad = 3;
     this.cuadricula.agregarActor(this.hierro, 0, 0);
+    this.hierro.aprender(Flotar, { Desvio: 2 });
     this.cuadricula.agregarActor(this.carbon, 0, cColumnas - 1);
+    this.carbon.aprender(Flotar, { Desvio: 2 });
   }
 
   private crearAutomata(cantidadFilas, cantidadColumnas) {
     this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoVerdeAnimado(0, 0)]});
     this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0, false);
     this.automata.escala = 0.75;
+    this.automata.y += 50;
   }
 
   private crearTableros() {

@@ -5,6 +5,7 @@ declare class Estudiante {
     constructor();
     public aprender(clase_de_habilidad: any, argumentos?: any): string;
     public agregar_habilidad(clase_de_habilidad: any, argumentos: any): void;
+    public olvidar(clase_de_habilidad: any): void;
     public actualizar_habilidades(): void;
     public hacer(comportamiento: any, argumentos?: {}): void;
     public hacer_luego(comportamiento: any, argumentos?: {}): void;

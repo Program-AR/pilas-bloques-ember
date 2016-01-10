@@ -29,11 +29,8 @@ class ActorAnimado extends Actor {
         super(this.animacionPara(this.opciones.grilla), x, y);
         this.z = pilas.escena_actual().minZ() - 1;
 
-        this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
-        this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
-        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
+        this.setupAnimacion();
 
-        this.detener_animacion();
         this.objetosRecogidos = [];
     }
 
@@ -101,8 +98,19 @@ class ActorAnimado extends Actor {
       return this.casillaActual().nroColumna==0;
     }
 
-    detener_animacion() {
+    setupAnimacion(){
+        this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
+        this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
+        this.animar();
         this.cargarAnimacion("parado");
+    }
+
+    detenerAnimacion(){
+        this.olvidar(HabilidadAnimada);
+    }
+
+    animar(){
+        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
     }
 
     cargarAnimacion(nombre){
