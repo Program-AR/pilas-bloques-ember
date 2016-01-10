@@ -2660,15 +2660,14 @@ var ElMarcianoEnElDesierto = (function (_super) {
         this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png', 0, 0);
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
-        this.cuadricula = new Cuadricula(0, -9, cantidadFilas, cantidadColumnas, {}, { grilla: 'invisible.png', alto: 63.5, ancho: 63.5
-        });
+        this.cuadricula = new Cuadricula(0, -9, cantidadFilas, cantidadColumnas, { alto: 262, ancho: 330 }, { grilla: 'invisible.png' });
         this.manzanas = [];
         var posiciones = [[0, 0], [0, 2], [0, 4], [1, 4], [2, 4], [3, 2], [3, 1]];
         for (var i = 0; i < posiciones.length; i++) {
             var objeto = new ManzanaAnimada(0, 0);
             posiciones[i];
             this.cuadricula.agregarActor(objeto, posiciones[i][0], posiciones[i][1]);
-            objeto.escala = 0.5;
+            objeto.escala *= 0.8;
             this.manzanas.push(objeto);
         }
         this.automata = new MarcianoAnimado(0, 0);
@@ -3459,13 +3458,12 @@ var NoMeCansoDeSaltar = (function (_super) {
         this.automata.hacer_luego(SaltarHablando, {});
     };
     NoMeCansoDeSaltar.prototype.fraseAlSaltar = function () {
-        if (this.saltosFaltantes == 0) {
-            return "Ya salte todo lo necesario";
-        }
-        else {
-            this.saltosFaltantes--;
+        this.saltosFaltantes--;
+        if (this.saltosFaltantes > 0)
             return "Faltan " + this.saltosFaltantes + " saltos";
-        }
+        if (this.saltosFaltantes == 0)
+            return "¡Ya salté todo lo necesario!";
+        throw new ActividadError("¡Uy! Salté mucho... ¡Me pasé!");
     };
     return NoMeCansoDeSaltar;
 })(EscenaActividad);

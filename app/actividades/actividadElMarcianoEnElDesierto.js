@@ -4,7 +4,7 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 import comer from 'pilas-engine-bloques/actividades/comer';
 
 
-var {Repetir, Si, Procedimiento} = bloques;
+var {Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var {ComerManzana} = comer;
 
@@ -23,10 +23,10 @@ var actividadElMarcianoEnElDesierto = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
-  acciones: [],
-  sensores: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana]
+  acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana],
+  sensores: []
 };
 
 export default actividadElMarcianoEnElDesierto;
