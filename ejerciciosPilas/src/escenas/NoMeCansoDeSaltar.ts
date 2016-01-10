@@ -25,13 +25,10 @@
     }
 
     fraseAlSaltar(){
-      if(this.saltosFaltantes==0){
-        return "Ya salte todo lo necesario"
-      }else{
-        this.saltosFaltantes--;
-        return "Faltan " + this.saltosFaltantes + " saltos";
-
-      }
+      this.saltosFaltantes--;
+      if (this.saltosFaltantes > 0)  return "Faltan " + this.saltosFaltantes + " saltos";
+      if (this.saltosFaltantes == 0) return "¡Ya salté todo lo necesario!";
+      throw new ActividadError("¡Uy! Salté mucho... ¡Me pasé!");
     }
 
 
