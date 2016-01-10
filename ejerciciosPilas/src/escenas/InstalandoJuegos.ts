@@ -1,4 +1,10 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
+/// <reference path = "../actores/InstaladorAnimado.ts" />
+/// <reference path = "../comportamientos/ComportamientoAnimado.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />
 
 class InstalandoJuegos extends EscenaActividad {
   compus;
@@ -9,12 +15,9 @@ class InstalandoJuegos extends EscenaActividad {
 
   iniciar() {
       this.fondo = new Fondo('fondos.biblioteca.png',0,0);
-      var cantidadFilas=1
-      var cantidadColumnas=4
-      this.cuadricula = new Cuadricula(-50,-50,cantidadFilas,cantidadColumnas,
-          {alto: 100},
-          {grilla: 'invisible.png',
-          cantColumnas: 1})
+      this.cuadricula = new Cuadricula(20, -50, 1, 4,
+          { alto: 100, ancho: 400 },
+          { grilla: 'invisible.png', cantColumnas: 1 });
       for(var i=1;i<=3;++i){
         this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
         }
@@ -66,10 +69,10 @@ class InstalandoJuegos extends EscenaActividad {
 
    private colocarAutomata(){
      this.automata = new InstaladorAnimado(0,0);
-     this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
+     this.cuadricula.agregarActor(this.automata,0,0);
      this.automata.escala=1;
-     this.automata.y=-95;
-     this.automata.x=-150;
+     this.automata.y=-75;
+     this.automata.x=-170;
 
    }
 
@@ -107,38 +110,27 @@ class InstalandoJuegos extends EscenaActividad {
 
 
 class ApagarPorEtiqueta extends ComportamientoColision {
-
     metodo(objetoColision){
-
-        objetoColision.cargarAnimacion("apagada");
-
+        objetoColision.hacer_luego(ComportamientoAnimado, {nombreAnimacion: "apagada", mantenerAnimacion: true});
     }
 }
 
-
 class InstalarPorEtiqueta extends ComportamientoColision {
-
     metodo(objetoColision){
-
-        objetoColision.cargarAnimacion("instalado");
-
+        objetoColision.objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true }); 
     }
 }
 
 class PrenderPorEtiqueta extends ComportamientoColision {
-
     metodo(objetoColision){
-
-        objetoColision.cargarAnimacion("prendida");
-
+        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "prendida", mantenerAnimacion: true });
     }
 }
 
 class EscribirEnCompuAnimada extends ComportamientoColision {
-
     metodo(objetoColision){
-      if (this.argumentos['idComportamiento']=='escribirC'){
-        objetoColision.cargarAnimacion("claveok");
+      if (this.argumentos['idComportamiento'] == 'escribirC') {
+          objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
       }
     }
 }

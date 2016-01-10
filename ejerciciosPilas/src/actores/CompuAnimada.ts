@@ -6,6 +6,6 @@ class CompuAnimada extends ActorAnimado {
         this.definirAnimacion("parado",[0],5);
         this.definirAnimacion("prendida",[1],5);
         this.definirAnimacion("claveok",[2],5);
-        this.definirAnimacion("instalado",[3,4,5,6,7],15);
+        this.definirAnimacion("instalado",[3,4,5,6,7],1);
     }
 }

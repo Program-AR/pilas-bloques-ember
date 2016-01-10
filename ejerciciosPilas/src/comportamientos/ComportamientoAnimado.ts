@@ -98,7 +98,8 @@ class ComportamientoAnimado extends Comportamiento {
 
 	/* Redefinir si corresponde */
 	nombreAnimacionSiguiente(){
-		return this.animacionAnterior;
+		if (this.argumentos.mantenerAnimacion) return this.nombreAnimacion();
+		return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
 	}
 	
 	/* Redefinir si corresponde */
