@@ -57,4 +57,16 @@ class ActorCompuesto extends ActorAnimado {
 		this.subactores.forEach(actor => parar = parar || actor.avanzarAnimacion());
 		return parar;
 	}
+
+	nombreAnimacionActual(){
+		return this.subactores[0].nombreAnimacionActual();
+	}
+
+	detenerAnimacion(){
+		this.subactores.forEach(actor => actor.detenerAnimacion());
+	}
+
+	animar(){
+		this.subactores.forEach(actor => actor.animar());
+	}
 }
