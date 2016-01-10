@@ -64,10 +64,7 @@ var ActorAnimado = (function (_super) {
         this.sanitizarOpciones(opciones);
         _super.call(this, this.animacionPara(this.opciones.grilla), x, y);
         this.z = pilas.escena_actual().minZ() - 1;
-        this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
-        this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
-        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
-        this.detener_animacion();
+        this.setupAnimacion();
         this.objetosRecogidos = [];
     }
     ActorAnimado.prototype.pre_actualizar = function () {
@@ -126,8 +123,17 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.tocandoInicio = function () {
         return this.casillaActual().nroColumna == 0;
     };
-    ActorAnimado.prototype.detener_animacion = function () {
+    ActorAnimado.prototype.setupAnimacion = function () {
+        this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
+        this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
+        this.animar();
         this.cargarAnimacion("parado");
+    };
+    ActorAnimado.prototype.detenerAnimacion = function () {
+        this.olvidar(HabilidadAnimada);
+    };
+    ActorAnimado.prototype.animar = function () {
+        this.aprender(HabilidadAnimada, {}); //Hace la magia de animar constantemente.
     };
     ActorAnimado.prototype.cargarAnimacion = function (nombre) {
         this._imagen.cargar_animacion(nombre);
@@ -626,7 +632,7 @@ var ComportamientoAnimado = (function (_super) {
         _super.prototype.iniciar.call(this, receptor);
         this.secuenciaActualizar = new Array();
         this.secuenciaActualizar.push(function () {
-            this.receptor.cargarAnimacion(this.nombreAnimacion());
+            this.configuracionInicial();
             this.alIniciar();
             return true;
         }.bind(this));
@@ -634,7 +640,7 @@ var ComportamientoAnimado = (function (_super) {
             return this.doActualizar();
         }.bind(this));
         this.secuenciaActualizar.push(function () {
-            //this.receptor.cargarAnimacion(this.nombreAnimacionParado());
+            this.configuracionFinal();
             this.alTerminarAnimacion();
             return true;
         }.bind(this));
@@ -650,6 +656,15 @@ var ComportamientoAnimado = (function (_super) {
             return true;
         }
     };
+    ComportamientoAnimado.prototype.configuracionInicial = function () {
+        this.receptor.detenerAnimacion(); // Porque hace quilombo
+        this.animacionAnterior = this.receptor.nombreAnimacionActual();
+        this.receptor.cargarAnimacion(this.nombreAnimacion());
+    };
+    ComportamientoAnimado.prototype.configuracionFinal = function () {
+        this.receptor.animar();
+        this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
+    };
     /* Redefinir si corresponde animar el comportamiento. */
     ComportamientoAnimado.prototype.nombreAnimacion = function () {
         return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
@@ -657,6 +672,10 @@ var ComportamientoAnimado = (function (_super) {
     /* Redefinir si corresponde */
     ComportamientoAnimado.prototype.nombreAnimacionParado = function () {
         return this.argumentos.nombreAnimacionParado || 'parado';
+    };
+    /* Redefinir si corresponde */
+    ComportamientoAnimado.prototype.nombreAnimacionSiguiente = function () {
+        return this.animacionAnterior;
     };
     /* Redefinir si corresponde */
     ComportamientoAnimado.prototype.alIniciar = function () {
@@ -1233,7 +1252,7 @@ var GatoAnimado = (function (_super) {
     __extends(GatoAnimado, _super);
     function GatoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
-        this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3]).repetirVeces(10).concat([8, 9, 10, 11, 12, 11, 10, 9, 8]), 6, true);
+        this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3, 2, 1]).repetirVeces(9).concat([8, 9, 10, 11, 12, 12, 12, 12, 12, 12, 11, 10, 9, 8]), 4, true);
         this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19], 5);
         this.definirAnimacion('acostado', [4, 6, 4], 5);
@@ -1248,7 +1267,8 @@ var GatoAnimado = (function (_super) {
 var GloboAnimado = (function (_super) {
     __extends(GloboAnimado, _super);
     function GloboAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'globoAnimado.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'globoAnimado.png', cantColumnas: 3, cantFilas: 1 });
+        this.definirAnimacion("explotar", [0, 0, 0, 1, 2, 2], 6);
     }
     return GloboAnimado;
 })(ActorAnimado);
@@ -1257,8 +1277,8 @@ var HeroeAnimado = (function (_super) {
     __extends(HeroeAnimado, _super);
     function HeroeAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'heroe.png', cantColumnas: 6, cantFilas: 5 });
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
-        this.definirAnimacion("parado", [5, 0, 1, 0], 6);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
+        this.definirAnimacion("parado", [0], 6, true);
         this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
         this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
         this.definirAnimacion("atacar", [24, 25, 26, 27, 28, 29], 12);
@@ -1356,26 +1376,35 @@ var ManzanaAnimada = (function (_super) {
 var MarcianoAnimado = (function (_super) {
     __extends(MarcianoAnimado, _super);
     function MarcianoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'marcianoAnimado.png', cantColumnas: 6, cantFilas: 3 });
+        _super.call(this, x, y, this.opcionesImagen());
         this.definirAnimacion("correr", [7, 8, 9, 10, 11], 15);
         this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 5, true);
         this.definirAnimacion("recoger", [13, 14, 15], 5);
-        this.detener_animacion();
+        this.animacionesAdicionales();
     }
+    MarcianoAnimado.prototype.opcionesImagen = function () {
+        return { grilla: 'marcianoAnimado.png', cantColumnas: 6, cantFilas: 3 };
+    };
+    MarcianoAnimado.prototype.animacionesAdicionales = function () {
+        // Template method
+    };
     return MarcianoAnimado;
 })(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
+/// <reference path="MarcianoAnimado.ts"/>
 var MarcianoVerdeAnimado = (function (_super) {
     __extends(MarcianoVerdeAnimado, _super);
-    function MarcianoVerdeAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'marcianoVerdeAnimado.png', cantColumnas: 6, cantFilas: 6 });
-        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 15, true);
-        this.definirAnimacion("correr", [7, 8, 9, 10, 11], 15);
-        this.definirAnimacion("recogerHierro", [13, 14, 15], 15);
-        this.definirAnimacion("recogerCarbon", [24, 25, 26], 15);
+    function MarcianoVerdeAnimado() {
+        _super.apply(this, arguments);
     }
+    MarcianoVerdeAnimado.prototype.opcionesImagen = function () {
+        return { grilla: 'marcianoVerdeAnimado.png', cantColumnas: 6, cantFilas: 6 };
+    };
+    MarcianoVerdeAnimado.prototype.animacionesAdicionales = function () {
+        this.definirAnimacion("recogerHierro", [13, 14, 15], 5);
+        this.definirAnimacion("recogerCarbon", [24, 25, 26], 5);
+    };
     return MarcianoVerdeAnimado;
-})(ActorAnimado);
+})(MarcianoAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var MariaAnimada = (function (_super) {
     __extends(MariaAnimada, _super);
@@ -1393,7 +1422,7 @@ var MonoAnimado = (function (_super) {
     function MonoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 10, cantFilas: 1 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7], 12);
-        this.definirAnimacion("parado", [0, 1, 2, 1, 0], 6);
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([0, 1, 2, 3, 4]).concat(new Cuadros(4).repetirVeces(30)).concat([4, 3, 2, 1, 0]), 6, true);
         this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 6);
         this.definirAnimacion("contar", [9, 7, 8, 8, 9], 6);
     }
@@ -1407,10 +1436,13 @@ var NanoAnimado = (function (_super) {
     }
     return NanoAnimado;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
 var NaveAnimada = (function (_super) {
     __extends(NaveAnimada, _super);
     function NaveAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'naveAnimada.png', cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(30).concat([1]), 4, true);
+        this.definirAnimacion("correr", [0, 1, 0, 1, 0, 1, 0, 1, 2, 3, 2, 3, 3, 3, 2], 6);
     }
     return NaveAnimada;
 })(ActorAnimado);
@@ -1569,8 +1601,8 @@ var PezAnimado = (function (_super) {
             super(x, y, {grilla: 'pez2.png', cantColumnas:4, cantFilas: 1});
           }
         }*/
-        this.definirAnimacion("parado", [0, 1, 2, 3], 6, true);
-        this.definirAnimacion("recoger", [0, 1, 2, 3,], 6);
+        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 3, 2, 1], 6, true);
+        this.definirAnimacion("recoger", [0, 1, 2, 3, 2, 1], 6);
     }
     return PezAnimado;
 })(ActorAnimado);
@@ -3106,6 +3138,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.cofre = new CofreAnimado(0, 0);
         this.cuadricula.agregarActor(this.cofre, 0, 0);
         this.cofre.escala = 2;
+        this.cofre.x += 7;
         this.caballero = new CaballeroAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero, 1, 2);
         this.caballero.escala *= 1.5;
@@ -3493,6 +3526,7 @@ var PrendiendoLasCompus = (function (_super) {
 /// <reference path = "../actores/ActorCompuesto.ts" />
 /// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../habilidades/Flotar.ts" />
 var ReparandoLaNave = (function (_super) {
     __extends(ReparandoLaNave, _super);
     function ReparandoLaNave() {
@@ -3518,12 +3552,15 @@ var ReparandoLaNave = (function (_super) {
         this.carbon = new CarbonAnimado(0, 0);
         this.carbon.cantidad = 3;
         this.cuadricula.agregarActor(this.hierro, 0, 0);
+        this.hierro.aprender(Flotar, { Desvio: 2 });
         this.cuadricula.agregarActor(this.carbon, 0, cColumnas - 1);
+        this.carbon.aprender(Flotar, { Desvio: 2 });
     };
     ReparandoLaNave.prototype.crearAutomata = function (cantidadFilas, cantidadColumnas) {
         this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoVerdeAnimado(0, 0)] });
         this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0, false);
         this.automata.escala = 0.75;
+        this.automata.y += 50;
     };
     ReparandoLaNave.prototype.crearTableros = function () {
         Trait.toObject(ObservadoConDisminuir, this.carbon);
