@@ -34,7 +34,7 @@ var ComerManzana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer ')
+         .appendField('Comer manzana ')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 
@@ -59,7 +59,7 @@ var ComerBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer banana')
+         .appendField('Comer banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png')); //TODO: Hardcodeo feo de dir de icono
   },
 

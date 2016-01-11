@@ -1,7 +1,7 @@
 /* globals AlimentandoALosPeces */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Si, Repetir,Hasta, Procedimiento,Accion} = bloques;
+var {Repetir, Procedimiento,Accion} = bloques;
 var {IrDerecha,IrIzquierda,IrAbajo,IrArriba} = direcciones;
 
 
@@ -76,7 +76,7 @@ var actividadAlimentandoALosPeces = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Si,Repetir,Hasta],
+  control: [Repetir],
   expresiones: [],
   acciones: [IrDerecha,IrIzquierda,IrAbajo,IrArriba,AlimentarPez,AgarrarComida],
   sensores: [],

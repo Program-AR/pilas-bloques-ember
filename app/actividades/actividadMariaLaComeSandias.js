@@ -2,7 +2,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Repetir,Si,Procedimiento} = bloques;
+var {Accion, Repetir,Procedimiento} = bloques;
 var {IrDerecha,IrIzquierda, IrArriba,IrAbajo} = direcciones;
 
 
@@ -16,7 +16,7 @@ var MorderSandia = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Morder ')
+         .appendField('Morder sandía ')
          .appendField(this.obtener_icono('../libs/data/sandia.png'));
   },
 
@@ -45,7 +45,7 @@ var actividadMariaLaComeSandias = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
   acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,MorderSandia],
   sensores: []

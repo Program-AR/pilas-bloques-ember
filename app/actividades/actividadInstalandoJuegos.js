@@ -1,6 +1,6 @@
 /* globals InstalandoJuegos */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Si, Repetir, Hasta, Procedimiento} = bloques;
+var {Accion,  Repetir, Procedimiento} = bloques;
 
 var SiguienteCompu = Accion.extend({
 
@@ -189,7 +189,7 @@ var actividadInstalandoJuegos = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Si,Repetir,Hasta],
+  control: [Repetir],
   expresiones: [],
   acciones: [SiguienteCompu,PrenderCompu,ApagarCompu,EscribirC,EscribirB,EscribirA,InstalarJuego],
   sensores: [],
