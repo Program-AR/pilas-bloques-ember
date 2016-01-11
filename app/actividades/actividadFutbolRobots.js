@@ -16,7 +16,7 @@ var Avanzar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('avanzar')
+         .appendField('Avanzar')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
@@ -38,7 +38,7 @@ var Atras = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-     .appendField('atrás')
+     .appendField('Atrás')
      .appendField(this.obtener_icono('izquierda.png'));
    },
 
@@ -60,7 +60,7 @@ var SiguienteFila = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('siguiente fila')
+         .appendField('Siguiente fila')
          .appendField(this.obtener_icono('abajo.png'));
   },
 
@@ -83,7 +83,7 @@ var PatearPelota = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('patear')
+         .appendField('Patear pelota')
          .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
   },
 
@@ -107,7 +107,7 @@ var TocandoInicio = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando')
+         .appendField('¿Tocando inicio ')
          .appendField(this.obtener_icono('../libs/data/iconos.futbolInicio.png'))
          .appendField('?');
 
@@ -127,7 +127,7 @@ var TocandoPelota = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando')
+         .appendField('¿Tocando pelota ')
          .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'))
          .appendField('?');
   },

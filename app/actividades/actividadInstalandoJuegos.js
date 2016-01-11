@@ -12,7 +12,7 @@ var SiguienteCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('siguiente')
+         .appendField('Siguiente')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
@@ -37,7 +37,7 @@ var PrenderCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('prender ')
+         .appendField('Prender compu ')
          .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
   },
 
@@ -61,7 +61,7 @@ var ApagarCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('apagar ')
+         .appendField('Apagar compu')
          .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
   },
 
@@ -85,7 +85,7 @@ var InstalarJuego = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('instalar juego ');
+         .appendField('Instalar juego ');
 
   },
 
@@ -112,7 +112,7 @@ var EscribirC = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('escribir "C"');
+         .appendField('Escribir "C"');
 
   },
 
@@ -136,7 +136,7 @@ var EscribirB = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('escribir "B"');
+         .appendField('Escribir "B"');
 
   },
 
@@ -160,7 +160,7 @@ var EscribirA = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('escribir "A"');
+         .appendField('Escribir "A"');
 
   },
 

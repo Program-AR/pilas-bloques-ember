@@ -14,7 +14,7 @@ var Saludar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('saludar ')
+         .appendField('Saludar ')
          .appendField(this.obtener_icono('../libs/data/icono.saludar.png'));
   },
 
@@ -39,7 +39,7 @@ var AbrirOjos = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('abrir ojos ')
+         .appendField('Abrir ojos ')
          .appendField(this.obtener_icono('../libs/data/icono.abrirOjos.png'));
   },
 
@@ -63,7 +63,7 @@ var CerrarOjos = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('cerrar ojos ')
+         .appendField('Cerrar ojos ')
          .appendField(this.obtener_icono('../libs/data/icono.cerrarOjos.png'));
   },
 
@@ -87,7 +87,7 @@ var Acostarse = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('acostarse ')
+         .appendField('Acostarse ')
          .appendField(this.obtener_icono('../libs/data/icono.acostarse.png'));
   },
 
@@ -111,7 +111,7 @@ var Pararse = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('pararse ')
+         .appendField('Pararse ')
          .appendField(this.obtener_icono('../libs/data/icono.pararse.png'));
   },
 
@@ -135,7 +135,7 @@ var Volver = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('volver ')
+         .appendField('Volver ')
          .appendField(this.obtener_icono('izquierda.png'));
   },
 
@@ -159,7 +159,7 @@ var Avanzar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('avanzar ')
+         .appendField('Avanzar ')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
@@ -183,7 +183,7 @@ var Soniar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('soñar ')
+         .appendField('Soñar ')
          .appendField(this.obtener_icono('../libs/data/icono.soniar.png'));
   },
 

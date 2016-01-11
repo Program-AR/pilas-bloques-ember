@@ -36,7 +36,7 @@ var ComerBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Comer ')
+          .appendField('Comer banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
@@ -62,7 +62,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando ')
+         .appendField('¿Tocando banana ')
          .appendField(new Blockly.FieldImage('libs/data/iconos.banana.png', 15, 15, 'banana'))
          .appendField(' ?');
 

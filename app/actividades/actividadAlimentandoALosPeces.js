@@ -17,7 +17,7 @@ var AlimentarPez = Accion.extend({
         this._super(block);
         block.appendDummyInput()
             .appendField(this.obtener_icono('../libs/data/icono.pez.png'))
-            .appendField('alimentar pez');
+            .appendField('Alimentar pez');
 
 
       },
@@ -48,7 +48,7 @@ var AlimentarPez = Accion.extend({
             this._super(block);
             block.appendDummyInput()
                  .appendField(this.obtener_icono('../libs/data/icono.alimento_pez.png'))
-                 .appendField('agarrar comida');
+                 .appendField('Agarrar comida');
           },
 
           nombre_comportamiento() {

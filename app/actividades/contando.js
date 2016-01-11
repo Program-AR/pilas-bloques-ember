@@ -11,7 +11,7 @@ var ContandoBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Contar ')
+          .appendField('Contar banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
@@ -35,7 +35,7 @@ var ContandoManzana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Contar ')
+          .appendField('Contar manzana')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 

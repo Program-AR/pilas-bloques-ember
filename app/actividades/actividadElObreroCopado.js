@@ -12,7 +12,7 @@ var Avanzar = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('avanzar');
+         .appendField('Avanzar');
   },
 
   nombre_comportamiento() {
@@ -35,7 +35,7 @@ var Retroceder = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('retroceder');
+         .appendField('Retroceder');
   },
 
   nombre_comportamiento() {
@@ -58,7 +58,7 @@ var Martillar = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('martillar.png'))
-         .appendField('martillar');
+         .appendField('Martillar');
   },
 
   nombre_comportamiento() {

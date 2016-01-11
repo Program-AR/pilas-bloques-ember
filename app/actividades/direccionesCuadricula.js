@@ -12,7 +12,7 @@ var IrDerecha = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('ir derecha');
+         .appendField('Ir derecha');
   },
 
   nombre_comportamiento() {
@@ -37,7 +37,7 @@ var IrIzquierda = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('ir izquierda');
+         .appendField('Ir izquierda');
   },
 
   nombre_comportamiento() {
@@ -63,7 +63,7 @@ var IrArriba = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('arriba.png'))
-         .appendField('ir arriba');
+         .appendField('Ir arriba');
   },
 
   nombre_comportamiento() {
@@ -89,7 +89,7 @@ var IrAbajo = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('abajo.png'))
-         .appendField('ir abajo');
+         .appendField('Ir abajo');
   },
 
   nombre_comportamiento() {

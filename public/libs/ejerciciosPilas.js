@@ -312,7 +312,7 @@ var AlienAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
         this.definirAnimacion("parado", new Cuadros(13).repetirVeces(50).concat([12, 13, 11, 12, 11, 13]).concat(new Cuadros(13).repetirVeces(30)).concat([9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]), 4, true);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
-        this.definirAnimacion("recoger", [12, 10, 10, 10, 10, 12], 5);
+        this.definirAnimacion("recoger", [12, 10, 10, 12], 6);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 3, 2, 1], 20);
         this.definirAnimacion("apretar", [12, 6, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 12, 13], 3);
         this.definirAnimacion("SerAnimado", [0, 1, 2, 3, 4, 3, 2, 1], 20);
@@ -349,8 +349,9 @@ var BuzoAnimado = (function (_super) {
     __extends(BuzoAnimado, _super);
     function BuzoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'buzo.png', cantColumnas: 8, cantFilas: 1 });
-        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 2], 4, true);
+        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1], 4, true);
         this.definirAnimacion("recoger", [3, 4, 5, 6, 7], 6);
+        this.definirAnimacion("correr", [1, 0, 2, 1], 10);
     }
     return BuzoAnimado;
 })(ActorAnimado);
