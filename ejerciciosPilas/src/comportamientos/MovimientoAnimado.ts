@@ -38,6 +38,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
 			{x:0,y:0},
 			this.valoresFinales.distancia / this.valoresFinales.cantPasos);
 		this.receptor.suspenderHabilidadesConMovimiento();
+		this.voltearSiCorresponde();
     }
 
     alTerminarAnimacion(){
@@ -78,6 +79,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
 		this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
 		this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
+		this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda || true;
     }
 
     calcularDistancia(){
@@ -93,6 +95,10 @@ class MovimientoAnimado extends ComportamientoAnimado{
     calcularDestino(){
 		return this.argumentos.direccion.destinyFrom(this.receptor, this.argumentos.distancia);
     }
+
+    voltearSiCorresponde() {
+		this.receptor.espejado = this.valoresFinales.voltearAlIrAIzquierda && this.vectorDeAvance.x < 0;
+	}
 }
 
 class Direct{

@@ -117,7 +117,7 @@ class ApagarPorEtiqueta extends ComportamientoColision {
 
 class InstalarPorEtiqueta extends ComportamientoColision {
     metodo(objetoColision){
-        objetoColision.objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true }); 
+        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true }); 
     }
 }
 
