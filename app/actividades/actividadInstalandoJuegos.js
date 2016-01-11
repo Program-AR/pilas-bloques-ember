@@ -42,11 +42,11 @@ var PrenderCompu = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'DesencadenarAnimacionDobleSiColiciona';
+    return 'DesencadenarAnimacionSiColisiona';
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'prender\',\'idAnimacion\' : \'prendida\',\'idAnimacionReceptor\' : \'escribir\'  }';
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'prender\',\'animacionColisionado\' : \'prendida\',\'nombreAnimacion\' : \'escribir\'  }';
   }
 
 
@@ -66,11 +66,11 @@ var ApagarCompu = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'DesencadenarAnimacionDobleSiColiciona';
+    return 'DesencadenarAnimacionSiColisiona';
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'apagar\',\'idAnimacion\' : \'parado\',\'idAnimacionReceptor\' : \'escribir\'  }';
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'apagar\',\'animacionColisionado\' : \'parado\',\'nombreAnimacion\' : \'escribir\'  }';
   }
 
 
@@ -90,11 +90,11 @@ var InstalarJuego = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'DesencadenarAnimacionDobleSiColiciona';
+    return 'DesencadenarAnimacionSiColisiona';
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'instalar\',\'idAnimacion\' : \'instalado\',\'idAnimacionReceptor\' : \'escribir\'  }';
+    return '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idComportamiento\' : \'instalar\',\'animacionColisionado\' : \'instalado\',\'nombreAnimacion\' : \'escribir\'  }';
   }
 
 

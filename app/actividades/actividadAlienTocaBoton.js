@@ -30,11 +30,11 @@ var ApretarBoton = Accion.extend({
 
 
   nombre_comportamiento() {
-    return 'DesencadenarAnimacionDobleSiColiciona';
+    return 'DesencadenarAnimacionSiColisiona';
   },
 
   argumentos() {
-    return '{\'idAnimacion\':\'prendida\',\'idAnimacionReceptor\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idComportamiento\':\'apretarBoton\'}';
+    return '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idComportamiento\':\'apretarBoton\'}';
 
   }
 });

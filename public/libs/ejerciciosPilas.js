@@ -478,7 +478,7 @@ var CompuAnimada = (function (_super) {
         this.definirAnimacion("parado", [0], 5);
         this.definirAnimacion("prendida", [1], 5);
         this.definirAnimacion("claveok", [2], 5);
-        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 15);
+        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
     }
     return CompuAnimada;
 })(ActorAnimado);
@@ -717,7 +717,9 @@ var ComportamientoAnimado = (function (_super) {
     };
     /* Redefinir si corresponde */
     ComportamientoAnimado.prototype.nombreAnimacionSiguiente = function () {
-        return this.animacionAnterior;
+        if (this.argumentos.mantenerAnimacion)
+            return this.nombreAnimacion();
+        return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
     };
     /* Redefinir si corresponde */
     ComportamientoAnimado.prototype.alIniciar = function () {
@@ -1356,9 +1358,9 @@ var InstaladorAnimado = (function (_super) {
     __extends(InstaladorAnimado, _super);
     function InstaladorAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'instalador.png', cantColumnas: 6, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 15);
+        this.definirAnimacion("parado", [0], 15, true);
         this.definirAnimacion("correr", [1, 2, 3], 5);
-        this.definirAnimacion("escribir", [1, 5, 1, 5, 1, 5], 15);
+        this.definirAnimacion("escribir", [1, 5, 1, 5, 1, 5], 6);
     }
     return InstaladorAnimado;
 })(ActorAnimado);
@@ -1974,26 +1976,15 @@ var NoColisionaError = (function (_super) {
     }
     return NoColisionaError;
 })(ActividadError);
-var DesencadenarAnimacionDobleSiColiciona = (function (_super) {
-    __extends(DesencadenarAnimacionDobleSiColiciona, _super);
-    function DesencadenarAnimacionDobleSiColiciona() {
+var DesencadenarAnimacionSiColisiona = (function (_super) {
+    __extends(DesencadenarAnimacionSiColisiona, _super);
+    function DesencadenarAnimacionSiColisiona() {
         _super.apply(this, arguments);
     }
-    DesencadenarAnimacionDobleSiColiciona.prototype.metodo = function (objetoColision) {
-        this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
-        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+    DesencadenarAnimacionSiColisiona.prototype.metodo = function (objetoColision) {
+        objetoColision.cargarAnimacion(this.argumentos['animacionColisionado']);
     };
-    return DesencadenarAnimacionDobleSiColiciona;
-})(ComportamientoColision);
-var DesencadenarAnimacionSiColiciona = (function (_super) {
-    __extends(DesencadenarAnimacionSiColiciona, _super);
-    function DesencadenarAnimacionSiColiciona() {
-        _super.apply(this, arguments);
-    }
-    DesencadenarAnimacionSiColiciona.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
-    };
-    return DesencadenarAnimacionSiColiciona;
+    return DesencadenarAnimacionSiColisiona;
 })(ComportamientoColision);
 var DesencadenarHabilidadSiColiciona = (function (_super) {
     __extends(DesencadenarHabilidadSiColiciona, _super);
@@ -2988,6 +2979,12 @@ var FutbolRobots = (function (_super) {
     return FutbolRobots;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
+/// <reference path = "../actores/InstaladorAnimado.ts" />
+/// <reference path = "../comportamientos/ComportamientoAnimado.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />
 var InstalandoJuegos = (function (_super) {
     __extends(InstalandoJuegos, _super);
     function InstalandoJuegos() {
@@ -2995,10 +2992,7 @@ var InstalandoJuegos = (function (_super) {
     }
     InstalandoJuegos.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.biblioteca.png', 0, 0);
-        var cantidadFilas = 1;
-        var cantidadColumnas = 4;
-        this.cuadricula = new Cuadricula(-50, -50, cantidadFilas, cantidadColumnas, { alto: 100 }, { grilla: 'invisible.png',
-            cantColumnas: 1 });
+        this.cuadricula = new Cuadricula(20, -50, 1, 4, { alto: 100, ancho: 400 }, { grilla: 'invisible.png', cantColumnas: 1 });
         for (var i = 1; i <= 3; ++i) {
             this.cuadricula.agregarActor(new CompuAnimada(0, 0), 0, i);
         }
@@ -3042,10 +3036,10 @@ var InstalandoJuegos = (function (_super) {
     };
     InstalandoJuegos.prototype.colocarAutomata = function () {
         this.automata = new InstaladorAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+        this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala = 1;
-        this.automata.y = -95;
-        this.automata.x = -150;
+        this.automata.y = -75;
+        this.automata.x = -170;
     };
     InstalandoJuegos.prototype.siguienteCompu = function () {
         this.automata.hacer_luego(MoverACasillaDerecha);
@@ -3076,7 +3070,7 @@ var ApagarPorEtiqueta = (function (_super) {
         _super.apply(this, arguments);
     }
     ApagarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion("apagada");
+        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "apagada", mantenerAnimacion: true });
     };
     return ApagarPorEtiqueta;
 })(ComportamientoColision);
@@ -3086,7 +3080,7 @@ var InstalarPorEtiqueta = (function (_super) {
         _super.apply(this, arguments);
     }
     InstalarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion("instalado");
+        objetoColision.objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true });
     };
     return InstalarPorEtiqueta;
 })(ComportamientoColision);
@@ -3096,7 +3090,7 @@ var PrenderPorEtiqueta = (function (_super) {
         _super.apply(this, arguments);
     }
     PrenderPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion("prendida");
+        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "prendida", mantenerAnimacion: true });
     };
     return PrenderPorEtiqueta;
 })(ComportamientoColision);
@@ -3107,7 +3101,7 @@ var EscribirEnCompuAnimada = (function (_super) {
     }
     EscribirEnCompuAnimada.prototype.metodo = function (objetoColision) {
         if (this.argumentos['idComportamiento'] == 'escribirC') {
-            objetoColision.cargarAnimacion("claveok");
+            objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
         }
     };
     return EscribirEnCompuAnimada;
