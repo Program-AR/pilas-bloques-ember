@@ -69,17 +69,9 @@ class NoColisionaError extends ActividadError{
 	}
 }
 
-class DesencadenarAnimacionDobleSiColiciona extends ComportamientoColision{
-		metodo(objetoColision){
-			this.receptor.cargarAnimacion(this.argumentos['idAnimacionReceptor']);
-			objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
-		}
-}
-
-
-class DesencadenarAnimacionSiColiciona extends ComportamientoColision{
+class DesencadenarAnimacionSiColisiona extends ComportamientoColision{
 	metodo(objetoColision){
-		objetoColision.cargarAnimacion(this.argumentos['idAnimacion']);
+		objetoColision.cargarAnimacion(this.argumentos['animacionColisionado']);
 	}
 }
 
