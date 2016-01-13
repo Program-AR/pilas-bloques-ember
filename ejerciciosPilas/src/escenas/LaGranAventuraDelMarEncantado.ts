@@ -43,11 +43,11 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.caballero = new CaballeroAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero,1,2);
         this.caballero.escala *= 1.5;
-        
+
         this.mago = new MagoAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.mago, 3, 1);
         this.mago.escala *= 1.5;
-        
+
         this.unicornio = new UnicornioAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.unicornio, 3, 4);
         this.unicornio.escala *= 1.5;
@@ -57,28 +57,48 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.automata.escala *= 1.5;
 
         // se carga el estado inicial
-        this.estado = new BuscandoLLaveState(this);
+        this.construirFSM();
     }
 
-    moverArriba() {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    }
+      private construirFSM(){
+        var builder= new BuilderStatePattern('inicial');
+        builder.agregarEstado('llaveEnMano');
+        builder.agregarEstado('cofreAbierto');
+        builder.agregarEstado('magoConSombrero');
+        builder.agregarEstado('princesaRescatada');
+        builder.agregarEstadoDeAceptacion('montandoUnicornio');
 
-    moverIzquierda() {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    }
+        builder.agregarTransicion('inicial','llaveEnMano','agarrarLlave');
+        builder.agregarTransicion('llaveEnMano','cofreAbierto','abrirCofre');
+        builder.agregarTransicion('cofreAbierto','magoConSombrero','darSombrero');
+        builder.agregarTransicion('magoConSombrero','princesaRescatada','atacarConEspada');
+        builder.agregarTransicion('princesaRescatada','montandoUnicornio','escaparEnUnicornio');
 
-    moverDerecha() {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    }
+        var estados = ['inicial','llaveEnMano','cofreAbierto','magoConSombrero','princesaRescatada','montandoUnicornio']
 
-    moverAbajo() {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    }
+        for (let i = 0; i < estados.length; i++) {
+          if(estados[i]!='llaveEnMano'){
+            builder.agregarError(estados[i],'abrirCofre','Para abrir el cofre necesitás la llave.');
+          }
+          if(estados[i]!='cofreAbierto'){
+            builder.agregarError(estados[i],'darSombrero','Para darle el sombrero al mago necesitás sacarlo del cofre.');
+          }
+          if(estados[i]!='magoConSombrero'){
+            builder.agregarError(estados[i],'atacarConEspada','Para atacar al caballero, el mago debe darte la espada.');
+          }
+          if(estados[i]!='princesaRescatada'){
+            builder.agregarError(estados[i],'escaparEnUnicornio','Para escapar en unicornio, debés rescatar a la princesa.');
+          }
+        }
+
+        this.estado=builder.estadoInicial();
+      }
 
     agarrarLlave() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
+        this.automata.hacer_luego(RecogerPorEtiqueta, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
     }
+
+
 
     abrirCofre() {
         this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAbrirCofre, 'nombreAnimacion': 'recoger'});
@@ -96,129 +116,6 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
     }
 
-    doAgarrarLlave() {
-    	this.estado.agarrarLlave();
-    }
-
-    doAbrirCofre() {
-    	this.estado.abrirCofre();
-    }
-
-    doDarSombrero() {
-    	this.estado.darSombrero();
-    }
-
-    doAtacarConEspada() {
-    	this.estado.atacarConEspada();
-    }
-
-    doEscaparEnUnicornio() {
-    	this.estado.escaparEnUnicornio();
-    }
-
-}
-
-class MarEncantadoState {
-    escena;
-
-    constructor(escena) {
-        this.escena = escena;
-    }
-
-    agarrarLlave() {
-        throw new ActividadError("¡Aquí no está la llave!");
-    }
-
-    abrirCofre() {
-        throw new ActividadError("¡Tengo que ir al cofre con la llave!");
-    }
-
-    darSombrero() {
-        throw new ActividadError("¡Tengo que darle el sombrero al mago!");
-    }
-
-    atacarConEspada() {
-        throw new ActividadError("¡Tengo que atacar con espada al caballero!");
-    }
-
-    escaparEnUnicornio() {
-        throw new ActividadError("¡Tengo que salvar a la princesa y escapar!");
-    }
 
 
-}
-class BuscandoLLaveState extends MarEncantadoState {
-    constructor(escena) {
-        super(escena);
-    }
-
-    agarrarLlave() {
-        if (this.escena.automata.colisiona_con(this.escena.llave)) {
-            this.escena.llave.eliminar();
-            this.escena.estado = new BuscandoSombreroState(this.escena);
-        } else {
-            super.agarrarLlave();
-        }
-    }
-
-}
-
-class BuscandoSombreroState extends MarEncantadoState {
-    constructor(escena) {
-        super(escena);
-    }
-
-    abrirCofre() {
-        if (this.escena.automata.colisiona_con(this.escena.cofre)) {
-            this.escena.cofre.cargarAnimacion("abrir");
-            this.escena.estado = new BuscandoEspadaState(this.escena);
-        } else {
-            super.abrirCofre();
-        }
-    }
-}
-
-class BuscandoEspadaState extends MarEncantadoState {
-    constructor(escena) {
-        super(escena);
-    }
-
-    darSombrero() {
-        if (this.escena.automata.colisiona_con(this.escena.mago)) {
-            this.escena.mago.eliminar();
-            this.escena.estado = new IrALucharConCaballeroState(this.escena);
-        } else {
-            super.darSombrero();
-        }
-    }
-}
-
-class IrALucharConCaballeroState extends MarEncantadoState {
-    constructor(escena) {
-        super(escena);
-    }
-
-    atacarConEspada() {
-        if (this.escena.automata.colisiona_con(this.escena.caballero)) {
-            this.escena.caballero.eliminar();
-            this.escena.estado = new RescatandoPrincesaState(this.escena);
-        } else {
-            super.atacarConEspada();
-        }
-    }
-}
-
-class RescatandoPrincesaState extends MarEncantadoState {
-    constructor(escena) {
-        super(escena);
-    }
-
-    escaparEnUnicornio() {
-        if (this.escena.automata.colisiona_con(this.escena.unicornio)) {
-            this.escena.unicornio.eliminar();
-            this.escena.estado = new MarEncantadoState(this.escena);
-        } else {
-            super.escaparEnUnicornio();
-        }
-    }
 }

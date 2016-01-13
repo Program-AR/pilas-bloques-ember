@@ -58,6 +58,8 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarErrorAVariosEstadosDeSalida('escritoA','escribirA','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoB','escribirB','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoB','escribirA','Esa no es la clave correcta',1,3);
+    
+
     this.estado=builder.estadoInicial();
   }
 
