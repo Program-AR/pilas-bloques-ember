@@ -66,7 +66,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         builder.agregarEstado('cofreAbierto');
         builder.agregarEstado('magoConSombrero');
         builder.agregarEstado('princesaRescatada');
-        builder.agregarEstadoDeAceptacion('montandoUnicornio');
+        builder.agregarEstadoAceptacion('montandoUnicornio');
 
         builder.agregarTransicion('inicial','llaveEnMano','agarrarLlave');
         builder.agregarTransicion('llaveEnMano','cofreAbierto','abrirCofre');
@@ -94,7 +94,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.estado=builder.estadoInicial();
       }
 
-    agarrarLlave() {
+    /*agarrarLlave() {
         this.automata.hacer_luego(RecogerPorEtiqueta, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
     }
 
@@ -116,6 +116,6 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
     }
 
-
+*/
 
 }
