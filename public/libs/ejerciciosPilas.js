@@ -1670,7 +1670,7 @@ var RobotAnimado = (function (_super) {
 var SandiaAnimada = (function (_super) {
     __extends(SandiaAnimada, _super);
     function SandiaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'sandia.png', cantColumnas: 4, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'sandia.png', cantColumnas: 5, cantFilas: 1 });
         this.definirAnimacion("comerse", [0, 1, 2, 3, 4], 6);
         this.definirAnimacion("mordida", [4], 1);
     }
