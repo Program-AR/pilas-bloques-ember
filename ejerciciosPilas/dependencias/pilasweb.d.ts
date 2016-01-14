@@ -1326,6 +1326,7 @@ declare class Texto extends Actor {
     public setAnchoMaximo(ancho: any): void;
     public setX(x: any): void;
     public setY(y: any): void;
+    public setZ(z: any): void;
     public cantidadDeLineas(): number;
     public setString(elString: any): void;
 }

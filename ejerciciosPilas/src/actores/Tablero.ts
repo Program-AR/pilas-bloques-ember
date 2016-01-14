@@ -14,12 +14,14 @@ class Tablero extends ActorAnimado{
 
     this.atributoObservado = argumentos.atributoObservado || 'cantidad';
     this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
+    this.nombre.setZ(this.z - 1);
 
     this.puntaje=new Puntaje(
         this.nombre.derecha + (argumentos.separacionX || 10),
         this.nombre.y + (argumentos.separacionY || 0),
         argumentos.valorInicial || 0,
         argumentos.colorPuntaje || "black");
+    this.puntaje.setZ(this.z - 2);
 
 }
 
