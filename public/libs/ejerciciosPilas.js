@@ -309,7 +309,7 @@ var ActorCompuesto = (function (_super) {
 var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'alien.png', cantColumnas: 14 });
+        _super.call(this, x, y, { grilla: 'alienAnimado.png', cantColumnas: 14 });
         this.definirAnimacion("parado", new Cuadros(13).repetirVeces(50).concat([12, 13, 11, 12, 11, 13]).concat(new Cuadros(13).repetirVeces(30)).concat([9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]), 4, true);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
         this.definirAnimacion("recoger", [12, 10, 10, 12], 6);
@@ -464,7 +464,7 @@ var Casilla = (function (_super) {
 var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'cofre.png', cantColumnas: 4 });
+        _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
         this.definirAnimacion("abrir", [0, 1, 2, 3], 6);
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([1, 2, 1]), 4, true);
         this.definirAnimacion("abierto", new Cuadros(3).repetirVeces(50).concat([2, 1, 2]), 4);
@@ -1410,7 +1410,7 @@ var Flotar = (function (_super) {
 var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'llave.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'llaveAnimada.png', cantColumnas: 1 });
         this.definirAnimacion("recoger", [1], 12);
         this.definirAnimacion("correr", [1], 12);
     }
@@ -1686,7 +1686,9 @@ var Tablero = (function (_super) {
         _super.call(this, x, y, { grilla: argumentos.imagen || 'placacontar.png', cantColumnas: 1, cantFilas: 1 });
         this.atributoObservado = argumentos.atributoObservado || 'cantidad';
         this.nombre = new Texto(x, y, argumentos.texto, (argumentos.colorNombre || "black"));
+        this.nombre.setZ(this.z - 1);
         this.puntaje = new Puntaje(this.nombre.derecha + (argumentos.separacionX || 10), this.nombre.y + (argumentos.separacionY || 0), argumentos.valorInicial || 0, argumentos.colorPuntaje || "black");
+        this.puntaje.setZ(this.z - 2);
     }
     Tablero.prototype.dameValor = function () {
         this.puntaje.obtener();
@@ -3139,12 +3141,9 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 400, ancho: 380 }, { grilla: 'casillas.violeta.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActor(this.llave, 1, 4);
-        this.llave.escala = 1.5;
         this.llave.aprender(Flotar, { Desvio: 5 });
         this.cofre = new CofreAnimado(0, 0);
         this.cuadricula.agregarActor(this.cofre, 0, 0);
-        this.cofre.escala = 2;
-        this.cofre.x += 7;
         this.caballero = new CaballeroAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero, 1, 2);
         this.caballero.escala *= 1.5;
