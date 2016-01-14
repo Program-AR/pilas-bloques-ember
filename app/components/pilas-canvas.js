@@ -33,6 +33,7 @@ export default Ember.Component.extend({
                 'fondo.elMarcianoEnElDesierto.png',
                 'fondo.mariaSandia.png',
                 'fondo.alimentando_peces.png.png',
+                'fondo.marEncantado.png',
                 /*--------CASILLAS---------*/
                 'casillaArriba.png',
                 'casillaAbajo.png',

@@ -1670,10 +1670,9 @@ var RobotAnimado = (function (_super) {
 var SandiaAnimada = (function (_super) {
     __extends(SandiaAnimada, _super);
     function SandiaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'sandia.png', cantColumnas: 1, cantFilas: 1 });
-        this.escala_x = 2;
-        this.escala_y = 2;
-        this.definirAnimacion("mordida", [1], 1);
+        _super.call(this, x, y, { grilla: 'sandia.png', cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion("comerse", [0, 1, 2, 3, 4], 6);
+        this.definirAnimacion("mordida", [4], 1);
     }
     return SandiaAnimada;
 })(ActorAnimado);
@@ -3144,8 +3143,8 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         _super.apply(this, arguments);
     }
     LaGranAventuraDelMarEncantado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 400, ancho: 380 }, { grilla: 'casillas.violeta.png' });
+        this.fondo = new Fondo('fondo.marEncantado.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 400, ancho: 380 }, { grilla: 'invisible.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActor(this.llave, 1, 4);
         this.llave.escala *= 0.7;
