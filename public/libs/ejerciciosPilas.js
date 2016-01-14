@@ -1641,9 +1641,9 @@ var RecolectorEstrellas = (function (_super) {
     __extends(RecolectorEstrellas, _super);
     function RecolectorEstrellas(x, y) {
         _super.call(this, x, y, { grilla: 'recolectorAnimado.png', cantColumnas: 14, cantFilas: 1 });
-        this.definirAnimacion("parado", [0, 1, 2, 1], 2);
-        this.definirAnimacion("correr", [3, 4, 5, 6, 7], 5);
-        this.definirAnimacion("recoger", [7, 8, 9, 10, 11, 12, 13, 7], 30);
+        this.definirAnimacion("parado", [0], 2);
+        this.definirAnimacion("correr", [0, 1, 8, 1, 5, 6, 6, 6, 6, 6, 6, 2, 2, 0], 12);
+        this.definirAnimacion("recoger", [0, 13, 10, 12, 11, 11, 11, 11, 11, 12, 10, 13, 0], 9);
     }
     return RecolectorEstrellas;
 })(ActorAnimado);
@@ -1713,10 +1713,10 @@ var Tablero = (function (_super) {
 var Tito = (function (_super) {
     __extends(Tito, _super);
     function Tito(x, y) {
-        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 1, cantFilas: 1 });
-        this.definirAnimacion("correr", [0], 60);
-        this.definirAnimacion("parado", [0], 60);
-        this.definirAnimacion("recoger", [0], 60);
+        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 6, cantFilas: 1 });
+        this.definirAnimacion("correr", [1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 3, 2, 5], 12);
+        this.definirAnimacion("parado", [0, 1, 2], 2, true);
+        this.definirAnimacion("recoger", [0, 2, 1, 1, 1, 2, 0], 9);
     }
     return Tito;
 })(ActorAnimado);
@@ -2911,6 +2911,8 @@ var ElPlanetaDeNano = (function (_super) {
     return ElPlanetaDeNano;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/RecolectorEstrellas.ts" />
+/// <reference path = "../habilidades/Flotar.ts" />
 var ElRecolectorDeEstrellas = (function (_super) {
     __extends(ElRecolectorDeEstrellas, _super);
     function ElRecolectorDeEstrellas() {
@@ -2922,16 +2924,20 @@ var ElRecolectorDeEstrellas = (function (_super) {
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
-        this.cuadricula = new Cuadricula(0, -20, cantidadFilas, cantidadColumnas, { alto: 400 }, { grilla: 'invisible.png',
-            cantColumnas: 1 });
+        this.cuadricula = new Cuadricula(0, -20, cantidadFilas, cantidadColumnas, { alto: 400 }, {
+            grilla: 'invisible.png',
+            cantColumnas: 1
+        });
         this.automata = new RecolectorEstrellas(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0);
+        this.automata.aprender(Flotar, {});
         // La posición inicial pretende respectar el ejemplo
         this.objetos = [];
         for (var fila = 0; fila < cantidadFilas; fila++) {
             for (var columna = 1; columna < cantidadColumnas; columna++) {
                 var objeto = new EstrellaAnimada(0, 0);
                 this.cuadricula.agregarActor(objeto, fila, columna);
+                objeto.escala *= 0.7;
                 this.objetos.push(objeto);
             }
         }
@@ -3327,6 +3333,7 @@ var MariaLaComeSandias = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/SaltarHablando.ts" />
+/// <reference path = "../actores/GatoAnimado.ts" />
 /**
  * @class NoMeCansoDeSaltar
  *
@@ -3340,11 +3347,8 @@ var NoMeCansoDeSaltar = (function (_super) {
     }
     NoMeCansoDeSaltar.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.noMeCansoDeSaltar.png', 0, 0);
-        this.automata = new GatoAnimado(0, -150);
+        this.automata = new GatoAnimado(0, -17);
         this.saltosFaltantes = 30;
-    };
-    NoMeCansoDeSaltar.prototype.s = function () {
-        this.automata.hacer_luego(SaltarHablando, {});
     };
     NoMeCansoDeSaltar.prototype.fraseAlSaltar = function () {
         this.saltosFaltantes--;
@@ -3816,7 +3820,7 @@ var TitoEnciendeLuces = (function (_super) {
         // se crea el automata
         this.automata = new Tito(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0);
-        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
+        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.5);
     };
     TitoEnciendeLuces.prototype.agregarLuz = function (fila, columna) {
         var casillaLuminosa = new Lamparin(0, 0);
