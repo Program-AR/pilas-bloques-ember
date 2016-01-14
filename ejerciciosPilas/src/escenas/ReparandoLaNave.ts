@@ -144,7 +144,8 @@ class Depositar extends ComportamientoColision{
 }
 
 
-class TomarYContarPorEtiqueta extends ComportamientoColision {
+class TomarPorEtiqueta extends ComportamientoColision {
+  //TODO: refactor usando agarrar por etiqueta
   //Si es el último del contador, elimina el objeto del cual recoge.
     metodo(objetoColision){ // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
       var objetoAgarrado = objetoColision.clonar();
@@ -154,8 +155,8 @@ class TomarYContarPorEtiqueta extends ComportamientoColision {
       this.receptor.agregarSubactor(objetoAgarrado);
       objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
 
-      this.argumentos['dondeReflejarValor'].disminuir('cantidad',1);
-      if (this.argumentos['dondeReflejarValor']['cantidad'] == 0) {
+      objetoColision.disminuir('cantidad',1);
+      if (objetoColision['cantidad'] == 0) {
           objetoColision.eliminar()
         }
 
