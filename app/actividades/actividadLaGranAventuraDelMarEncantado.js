@@ -38,7 +38,7 @@ var AgarrarLlave = Accion.extend({
     this._super(block);
     block.appendDummyInput()
     .appendField('Agarrar llave')
-    .appendField(this.obtener_icono('llave.png'));
+    .appendField(this.obtener_icono('../libs/data/llave.png'));
   },
 
   nombre_comportamiento() {

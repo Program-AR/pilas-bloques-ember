@@ -465,9 +465,9 @@ var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
-        this.definirAnimacion("abrir", [0, 1, 2, 3], 6);
-        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([1, 2, 1]), 4, true);
-        this.definirAnimacion("abierto", new Cuadros(3).repetirVeces(50).concat([2, 1, 2]), 4);
+        this.definirAnimacion("abrir", [0, 1, 2, 3], 3);
+        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
+        this.definirAnimacion("abierto", [3], 4);
     }
     return CofreAnimado;
 })(ActorAnimado);
@@ -3141,9 +3141,12 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 400, ancho: 380 }, { grilla: 'casillas.violeta.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActor(this.llave, 1, 4);
+        this.llave.escala *= 0.7;
         this.llave.aprender(Flotar, { Desvio: 5 });
         this.cofre = new CofreAnimado(0, 0);
         this.cuadricula.agregarActor(this.cofre, 0, 0);
+        this.cofre.escala * 2;
+        this.cofre.x += 8;
         this.caballero = new CaballeroAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero, 1, 2);
         this.caballero.escala *= 1.5;
