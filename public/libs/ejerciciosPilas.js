@@ -1430,8 +1430,9 @@ var MagoAnimado = (function (_super) {
 /// <reference path="ActorAnimado.ts"/>
 var ManzanaAnimada = (function (_super) {
     __extends(ManzanaAnimada, _super);
-    function ManzanaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'manzana-v2.png', cantColumnas: 1, cantFilas: 1 });
+    function ManzanaAnimada(x, y, conSombra) {
+        if (conSombra === void 0) { conSombra = true; }
+        _super.call(this, x, y, { grilla: conSombra ? 'manzanaConSombra.png' : 'manzanaSinSombra.png', cantColumnas: 1, cantFilas: 1 });
     }
     return ManzanaAnimada;
 })(ActorAnimado);
@@ -2665,7 +2666,7 @@ var ElMarcianoEnElDesierto = (function (_super) {
         this.manzanas = [];
         var posiciones = [[0, 0], [0, 2], [0, 4], [1, 4], [2, 4], [3, 2], [3, 1]];
         for (var i = 0; i < posiciones.length; i++) {
-            var objeto = new ManzanaAnimada(0, 0);
+            var objeto = new ManzanaAnimada(0, 0, false);
             posiciones[i];
             this.cuadricula.agregarActor(objeto, posiciones[i][0], posiciones[i][1]);
             objeto.escala *= 0.8;
