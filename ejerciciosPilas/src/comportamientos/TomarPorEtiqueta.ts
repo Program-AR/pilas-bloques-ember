@@ -3,6 +3,7 @@
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 */
+
 class TomarPorEtiqueta extends ComportamientoColision {
   //TODO: refactor usando agarrar por etiqueta
   //Si es el último del contador, elimina el objeto del cual recoge.
