@@ -26,10 +26,10 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
     unicornio;
 
     iniciar() {
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
+        this.fondo = new Fondo('fondo.marEncantado.png',0,0);
         this.cuadricula = new Cuadricula(0,0,4,5,
             {alto: 400, ancho: 380},
-            {grilla: 'casillas.violeta.png'});
+            {grilla: 'invisible.png'});
         this.llave = new LlaveAnimado(0,0);
         this.cuadricula.agregarActor(this.llave,1,4)
         this.llave.escala *= 0.7;
