@@ -2,8 +2,57 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Repetir, Procedimiento} = bloques;
+var {Repetir, Procedimiento, Accion} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
+
+var TomarHierro = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'TomarHierro');
+      },
+
+
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField(this.obtener_icono('../libs/data/icono.hierro.png'))
+            .appendField('Tomar Hierro');
+      },
+
+      nombre_comportamiento() {
+        return 'TomarYContarPorEtiqueta';
+      },
+
+
+      argumentos() {
+        return '{\'etiqueta\' : \'HierroAnimado\', \'idComportamiento\' : \'tomarHierro\', \'dondeReflejarValor\':pilas.escena_actual().hierro }';
+      }
+    });
+
+var TomarCarbon = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'TomarCarbon');
+      },
+
+
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField(this.obtener_icono('../libs/data/icono.carbon.png'))
+            .appendField('Tomar Carbon');
+      },
+
+      nombre_comportamiento() {
+        return 'TomarYContarPorEtiqueta';
+      },
+
+
+      argumentos() {
+        return '{\'etiqueta\' : \'CarbonAnimado\', \'idComportamiento\' : \'tomarCarbon\', \'dondeReflejarValor\':pilas.escena_actual().carbon }';
+      }
+    });
+
 
 
 /*
@@ -40,7 +89,7 @@ var actividadReparandoLaNave = {
 
   control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon],
   sensores: []
 };
 

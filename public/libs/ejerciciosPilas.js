@@ -773,6 +773,7 @@ var MovimientoAnimado = (function (_super) {
         this.pasosRestantes = this.valoresFinales.cantPasos;
         this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom({ x: 0, y: 0 }, this.valoresFinales.distancia / this.valoresFinales.cantPasos);
         this.receptor.suspenderHabilidadesConMovimiento();
+        this.voltearSiCorresponde();
     };
     MovimientoAnimado.prototype.alTerminarAnimacion = function () {
         this.receptor.activarHabilidadesConMovimiento();
@@ -811,6 +812,7 @@ var MovimientoAnimado = (function (_super) {
         this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
         this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
         this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
+        this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda || true;
     };
     MovimientoAnimado.prototype.calcularDistancia = function () {
         if (!this.argumentos.destino)
@@ -824,6 +826,9 @@ var MovimientoAnimado = (function (_super) {
     };
     MovimientoAnimado.prototype.calcularDestino = function () {
         return this.argumentos.direccion.destinyFrom(this.receptor, this.argumentos.distancia);
+    };
+    MovimientoAnimado.prototype.voltearSiCorresponde = function () {
+        this.receptor.espejado = this.valoresFinales.voltearAlIrAIzquierda && this.vectorDeAvance.x < 0;
     };
     return MovimientoAnimado;
 })(ComportamientoAnimado);
@@ -1406,6 +1411,8 @@ var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'llave.png', cantColumnas: 1 });
+        this.definirAnimacion("recoger", [1], 12);
+        this.definirAnimacion("correr", [1], 12);
     }
     return LlaveAnimado;
 })(ActorAnimado);
@@ -3008,7 +3015,6 @@ var InstalandoJuegos = (function (_super) {
         builder.agregarEstadosPrefijados('escritoC', 1, 3);
         builder.agregarEstadosPrefijados('juegoInstalado', 1, 3);
         builder.agregarEstadosPrefijados('maquinaApagada', 1, 3);
-        builder.agregarTransicionesIteradas('maquinaApagada', 'prendido', 'prender', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('prendido', 'escritoA', 'escribirA', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('escritoA', 'escritoB', 'escribirB', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('escritoB', 'escritoC', 'escribirC', 1, 3, 1, 3);
@@ -3017,16 +3023,16 @@ var InstalandoJuegos = (function (_super) {
         builder.agregarTransicion('inicial', 'prendido1', 'prender');
         builder.agregarTransicion('maquinaApagada1', 'prendido2', 'prender');
         builder.agregarTransicion('maquinaApagada2', 'prendido3', 'prender');
-        //builder.agregarError('inicial','prender','Para prender una compu, hay que estar frente a ella')
-        //No es necesario modelarlo, porque se encarga el comportamiento colision
         builder.agregarError('inicial', 'instalar', 'Primero hay que prender la computadora');
         builder.agregarError('inicial', 'escribirA', 'Primero hay que prender la computadora');
         builder.agregarError('inicial', 'escribirB', 'Primero hay que prender la computadora');
         builder.agregarError('inicial', 'escribirC', 'Primero hay que prender la computadora');
+        builder.agregarError('inicial', 'apagar', 'Primero hay que prender la computadora');
         builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada', 'instalar', 'Primero hay que prender la computadora', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada', 'escribirC', 'Primero hay que prender la computadora', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada', 'escribirA', 'Primero hay que prender la computadora', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada', 'escribirB', 'Primero hay que prender la computadora', 1, 3);
+        builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada', 'apagar', 'Primero hay que prender la computadora', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('prendido', 'escribirC', 'Esa no es la clave correcta', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('prendido', 'escribirB', 'Esa no es la clave correcta', 1, 3);
         builder.agregarErrorAVariosEstadosDeSalida('escritoA', 'escribirC', 'Esa no es la clave correcta', 1, 3);
@@ -3081,7 +3087,7 @@ var InstalarPorEtiqueta = (function (_super) {
         _super.apply(this, arguments);
     }
     InstalarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true });
+        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true });
     };
     return InstalarPorEtiqueta;
 })(ComportamientoColision);
@@ -3152,153 +3158,39 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 3, 0);
         this.automata.escala *= 1.5;
         // se carga el estado inicial
-        this.estado = new BuscandoLLaveState(this);
+        this.construirFSM();
     };
-    LaGranAventuraDelMarEncantado.prototype.moverArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    };
-    LaGranAventuraDelMarEncantado.prototype.moverIzquierda = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    };
-    LaGranAventuraDelMarEncantado.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    LaGranAventuraDelMarEncantado.prototype.moverAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    LaGranAventuraDelMarEncantado.prototype.agarrarLlave = function () {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, { 'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger' });
-    };
-    LaGranAventuraDelMarEncantado.prototype.abrirCofre = function () {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, { 'receptor': this, 'metodo': this.doAbrirCofre, 'nombreAnimacion': 'recoger' });
-    };
-    LaGranAventuraDelMarEncantado.prototype.darSombrero = function () {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, { 'receptor': this, 'metodo': this.doDarSombrero, 'nombreAnimacion': 'recoger' });
-    };
-    LaGranAventuraDelMarEncantado.prototype.atacarConEspada = function () {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, { 'receptor': this, 'metodo': this.doAtacarConEspada, 'nombreAnimacion': 'recoger' });
-    };
-    LaGranAventuraDelMarEncantado.prototype.escaparEnUnicornio = function () {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, { 'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger' });
-    };
-    LaGranAventuraDelMarEncantado.prototype.doAgarrarLlave = function () {
-        this.estado.agarrarLlave();
-    };
-    LaGranAventuraDelMarEncantado.prototype.doAbrirCofre = function () {
-        this.estado.abrirCofre();
-    };
-    LaGranAventuraDelMarEncantado.prototype.doDarSombrero = function () {
-        this.estado.darSombrero();
-    };
-    LaGranAventuraDelMarEncantado.prototype.doAtacarConEspada = function () {
-        this.estado.atacarConEspada();
-    };
-    LaGranAventuraDelMarEncantado.prototype.doEscaparEnUnicornio = function () {
-        this.estado.escaparEnUnicornio();
+    LaGranAventuraDelMarEncantado.prototype.construirFSM = function () {
+        var builder = new BuilderStatePattern('inicial');
+        builder.agregarEstado('llaveEnMano');
+        builder.agregarEstado('cofreAbierto');
+        builder.agregarEstado('magoConSombrero');
+        builder.agregarEstado('princesaRescatada');
+        builder.agregarEstadoAceptacion('montandoUnicornio');
+        builder.agregarTransicion('inicial', 'llaveEnMano', 'agarrarLlave');
+        builder.agregarTransicion('llaveEnMano', 'cofreAbierto', 'abrirCofre');
+        builder.agregarTransicion('cofreAbierto', 'magoConSombrero', 'darSombrero');
+        builder.agregarTransicion('magoConSombrero', 'princesaRescatada', 'atacarConEspada');
+        builder.agregarTransicion('princesaRescatada', 'montandoUnicornio', 'escaparEnUnicornio');
+        var estados = ['inicial', 'llaveEnMano', 'cofreAbierto', 'magoConSombrero', 'princesaRescatada', 'montandoUnicornio'];
+        for (var i = 0; i < estados.length; i++) {
+            if (estados[i] != 'llaveEnMano') {
+                builder.agregarError(estados[i], 'abrirCofre', 'Para abrir el cofre necesitás la llave.');
+            }
+            if (estados[i] != 'cofreAbierto') {
+                builder.agregarError(estados[i], 'darSombrero', 'Para darle el sombrero al mago necesitás sacarlo del cofre.');
+            }
+            if (estados[i] != 'magoConSombrero') {
+                builder.agregarError(estados[i], 'atacarConEspada', 'Para atacar al caballero, el mago debe darte la espada.');
+            }
+            if (estados[i] != 'princesaRescatada') {
+                builder.agregarError(estados[i], 'escaparEnUnicornio', 'Para escapar en unicornio, debés rescatar a la princesa.');
+            }
+        }
+        this.estado = builder.estadoInicial();
     };
     return LaGranAventuraDelMarEncantado;
 })(EscenaActividad);
-var MarEncantadoState = (function () {
-    function MarEncantadoState(escena) {
-        this.escena = escena;
-    }
-    MarEncantadoState.prototype.agarrarLlave = function () {
-        throw new ActividadError("¡Aquí no está la llave!");
-    };
-    MarEncantadoState.prototype.abrirCofre = function () {
-        throw new ActividadError("¡Tengo que ir al cofre con la llave!");
-    };
-    MarEncantadoState.prototype.darSombrero = function () {
-        throw new ActividadError("¡Tengo que darle el sombrero al mago!");
-    };
-    MarEncantadoState.prototype.atacarConEspada = function () {
-        throw new ActividadError("¡Tengo que atacar con espada al caballero!");
-    };
-    MarEncantadoState.prototype.escaparEnUnicornio = function () {
-        throw new ActividadError("¡Tengo que salvar a la princesa y escapar!");
-    };
-    return MarEncantadoState;
-})();
-var BuscandoLLaveState = (function (_super) {
-    __extends(BuscandoLLaveState, _super);
-    function BuscandoLLaveState(escena) {
-        _super.call(this, escena);
-    }
-    BuscandoLLaveState.prototype.agarrarLlave = function () {
-        if (this.escena.automata.colisiona_con(this.escena.llave)) {
-            this.escena.llave.eliminar();
-            this.escena.estado = new BuscandoSombreroState(this.escena);
-        }
-        else {
-            _super.prototype.agarrarLlave.call(this);
-        }
-    };
-    return BuscandoLLaveState;
-})(MarEncantadoState);
-var BuscandoSombreroState = (function (_super) {
-    __extends(BuscandoSombreroState, _super);
-    function BuscandoSombreroState(escena) {
-        _super.call(this, escena);
-    }
-    BuscandoSombreroState.prototype.abrirCofre = function () {
-        if (this.escena.automata.colisiona_con(this.escena.cofre)) {
-            this.escena.cofre.cargarAnimacion("abrir");
-            this.escena.estado = new BuscandoEspadaState(this.escena);
-        }
-        else {
-            _super.prototype.abrirCofre.call(this);
-        }
-    };
-    return BuscandoSombreroState;
-})(MarEncantadoState);
-var BuscandoEspadaState = (function (_super) {
-    __extends(BuscandoEspadaState, _super);
-    function BuscandoEspadaState(escena) {
-        _super.call(this, escena);
-    }
-    BuscandoEspadaState.prototype.darSombrero = function () {
-        if (this.escena.automata.colisiona_con(this.escena.mago)) {
-            this.escena.mago.eliminar();
-            this.escena.estado = new IrALucharConCaballeroState(this.escena);
-        }
-        else {
-            _super.prototype.darSombrero.call(this);
-        }
-    };
-    return BuscandoEspadaState;
-})(MarEncantadoState);
-var IrALucharConCaballeroState = (function (_super) {
-    __extends(IrALucharConCaballeroState, _super);
-    function IrALucharConCaballeroState(escena) {
-        _super.call(this, escena);
-    }
-    IrALucharConCaballeroState.prototype.atacarConEspada = function () {
-        if (this.escena.automata.colisiona_con(this.escena.caballero)) {
-            this.escena.caballero.eliminar();
-            this.escena.estado = new RescatandoPrincesaState(this.escena);
-        }
-        else {
-            _super.prototype.atacarConEspada.call(this);
-        }
-    };
-    return IrALucharConCaballeroState;
-})(MarEncantadoState);
-var RescatandoPrincesaState = (function (_super) {
-    __extends(RescatandoPrincesaState, _super);
-    function RescatandoPrincesaState(escena) {
-        _super.call(this, escena);
-    }
-    RescatandoPrincesaState.prototype.escaparEnUnicornio = function () {
-        if (this.escena.automata.colisiona_con(this.escena.unicornio)) {
-            this.escena.unicornio.eliminar();
-            this.escena.estado = new MarEncantadoState(this.escena);
-        }
-        else {
-            _super.prototype.escaparEnUnicornio.call(this);
-        }
-    };
-    return RescatandoPrincesaState;
-})(MarEncantadoState);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
 /// <reference path="../actores/cuadriculaEsparsa.ts"/>
