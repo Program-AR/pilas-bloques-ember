@@ -1,13 +1,35 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Repetir,Procedimiento} = bloques;
+var {Repetir,Procedimiento,Accion} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
+
+var AgarrarLlave = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'AgarrarLlave');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+    .appendField('Agarrar llave')
+    .appendField(this.obtener_icono('llave.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'TomarPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\':\'LlaveAnimado\'}';
+  }
+});
 
 var actividadLaGranAventuraDelMarEncantado = {
   nombre: 'La gran aventura del mar encantado',
-  enunciado: 'Definí un programa para que el alien junte todas las tuercas.',
-  consignaInicial: 'Una buena estrategia de resolución de este desafío es la división del procedimiento en sub tareas.',
+  enunciado: '',
+  consignaInicial: '',
   escena: LaGranAventuraDelMarEncantado, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
@@ -16,7 +38,7 @@ var actividadLaGranAventuraDelMarEncantado = {
   variables: [],
   control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave],
   sensores: []
 };
 
