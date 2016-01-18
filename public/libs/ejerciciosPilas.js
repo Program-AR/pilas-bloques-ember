@@ -1713,10 +1713,10 @@ var Tablero = (function (_super) {
 var Tito = (function (_super) {
     __extends(Tito, _super);
     function Tito(x, y) {
-        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 6, cantFilas: 1 });
-        this.definirAnimacion("correr", [1, 2, 3, 4, 4, 4, 4, 4, 4, 4, 3, 2, 5], 12);
-        this.definirAnimacion("parado", [0, 1, 2], 2, true);
-        this.definirAnimacion("recoger", [0, 2, 1, 1, 1, 2, 0], 9);
+        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 8, cantFilas: 1 });
+        this.definirAnimacion("correr", [3, 4, 5, 6, 6, 6, 6, 6, 6, 5, 4, 8], 12);
+        this.definirAnimacion("parado", [0, 1, 2, 3, 4], 4, true);
+        this.definirAnimacion("recoger", [0, 1, 2, 2, 2, 2, 2, 2, 3, 4], 9);
     }
     return Tito;
 })(ActorAnimado);
@@ -1737,19 +1737,6 @@ var UnicornioAnimado = (function (_super) {
     }
     return UnicornioAnimado;
 })(ActorAnimado);
-var avanzarFilaEnCuadriculaMultiple = (function (_super) {
-    __extends(avanzarFilaEnCuadriculaMultiple, _super);
-    function avanzarFilaEnCuadriculaMultiple() {
-        _super.apply(this, arguments);
-    }
-    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
-        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
-        if (casAbajo && casAbajo.nroColumna == 0) {
-            return casAbajo;
-        }
-    };
-    return avanzarFilaEnCuadriculaMultiple;
-})(MoverACasillaAbajo);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
 /// <reference path = "../actores/ActorAnimado.ts"/>
@@ -2043,6 +2030,44 @@ var MorderPorEtiqueta = (function (_super) {
     };
     return MorderPorEtiqueta;
 })(EncenderPorEtiqueta);
+/// <reference path="ComportamientoColision.ts"/>
+/*
+Este comportamiento permite tomar un objeto y convertirlo en subactor
+del actor que lo levanta. El subactor acompaña visualmente al actor
+de ahora en adelante.
+*/
+var AgarrarPorEtiqueta = (function (_super) {
+    __extends(AgarrarPorEtiqueta, _super);
+    function AgarrarPorEtiqueta() {
+        _super.apply(this, arguments);
+    }
+    AgarrarPorEtiqueta.prototype.metodo = function (objetoColision) {
+        var objetoAgarrado = objetoColision.clonar();
+        objetoAgarrado.escala = objetoColision.escala;
+        objetoAgarrado.y = this.receptor.y;
+        objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
+        this.receptor.agregarSubactor(objetoAgarrado);
+        objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
+    };
+    AgarrarPorEtiqueta.prototype.nombreAnimacion = function () {
+        // redefinir por subclase
+        return "recoger";
+    };
+    return AgarrarPorEtiqueta;
+})(ComportamientoColision);
+var avanzarFilaEnCuadriculaMultiple = (function (_super) {
+    __extends(avanzarFilaEnCuadriculaMultiple, _super);
+    function avanzarFilaEnCuadriculaMultiple() {
+        _super.apply(this, arguments);
+    }
+    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
+        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
+        if (casAbajo && casAbajo.nroColumna == 0) {
+            return casAbajo;
+        }
+    };
+    return avanzarFilaEnCuadriculaMultiple;
+})(MoverACasillaAbajo);
 /// <reference path="ComportamientoAnimado.ts"/>
 var ComportamientoDeAltoOrden = (function (_super) {
     __extends(ComportamientoDeAltoOrden, _super);
@@ -2235,6 +2260,31 @@ var SaltarHablando = (function (_super) {
     };
     return SaltarHablando;
 })(SaltarAnimado);
+/// <reference path="ComportamientoColision.ts"/>
+/*
+Este comportamiento Agarra al objeto y refleja en un contador
+el valor.
+*/
+var TomarPorEtiqueta = (function (_super) {
+    __extends(TomarPorEtiqueta, _super);
+    function TomarPorEtiqueta() {
+        _super.apply(this, arguments);
+    }
+    TomarPorEtiqueta.prototype.metodo = function (objetoColision) {
+        // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
+        var objetoAgarrado = objetoColision.clonar();
+        objetoAgarrado.escala = objetoColision.escala;
+        objetoAgarrado.y = this.receptor.y;
+        objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
+        this.receptor.agregarSubactor(objetoAgarrado);
+        objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
+        objetoColision.disminuir('cantidad', 1);
+        if (objetoColision['cantidad'] == 0) {
+            objetoColision.eliminar();
+        }
+    };
+    return TomarPorEtiqueta;
+})(ComportamientoColision);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
@@ -3505,18 +3555,6 @@ var ReparandoLaNave = (function (_super) {
             }
         }
     };
-    ReparandoLaNave.prototype.tomarHierro = function () {
-        this.automata.hacer_luego(TomarYContarPorEtiqueta, { 'etiqueta': 'HierroAnimado', 'mensajeError': 'No hay hierro aquí', 'dondeReflejarValor': this.hierro, 'idComportamiento': 'tomarHierro' });
-    };
-    ReparandoLaNave.prototype.tomarCarbon = function () {
-        this.automata.hacer_luego(TomarYContarPorEtiqueta, { 'etiqueta': 'CarbonAnimado', 'mensajeError': 'No hay Carbon aquí', 'dondeReflejarValor': this.carbon, 'idComportamiento': 'tomarCarbon' });
-    };
-    ReparandoLaNave.prototype.depositar = function () {
-        this.automata.hacer_luego(Depositar, { 'etiqueta': 'NaveAnimada', 'mensajeError': 'La nave no está aquí', 'idComportamiento': 'depositar' });
-    };
-    ReparandoLaNave.prototype.escapar = function () {
-        this.automata.hacer_luego(RepetirHasta, { 'secuencia': this.secuenciaCaminata, 'condicion': this.condicion });
-    };
     return ReparandoLaNave;
 })(EscenaActividad);
 var Depositar = (function (_super) {
@@ -3528,26 +3566,6 @@ var Depositar = (function (_super) {
         pilas.escena_actual().automata.eliminarUltimoSubactor();
     };
     return Depositar;
-})(ComportamientoColision);
-var TomarYContarPorEtiqueta = (function (_super) {
-    __extends(TomarYContarPorEtiqueta, _super);
-    function TomarYContarPorEtiqueta() {
-        _super.apply(this, arguments);
-    }
-    //Si es el último del contador, elimina el objeto del cual recoge.
-    TomarYContarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        var objetoAgarrado = objetoColision.clonar();
-        objetoAgarrado.escala = objetoColision.escala;
-        objetoAgarrado.y = this.receptor.y;
-        objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
-        this.receptor.agregarSubactor(objetoAgarrado);
-        objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
-        this.argumentos['dondeReflejarValor'].disminuir('cantidad', 1);
-        if (this.argumentos['dondeReflejarValor']['cantidad'] == 0) {
-            objetoColision.eliminar();
-        }
-    };
-    return TomarYContarPorEtiqueta;
 })(ComportamientoColision);
 /*class SalvandoLaNavidad extends EscenaActividad {
   personaje;
