@@ -1983,15 +1983,15 @@ var DesencadenarAnimacionSiColisiona = (function (_super) {
     };
     return DesencadenarAnimacionSiColisiona;
 })(ComportamientoColision);
-var DesencadenarHabilidadSiColiciona = (function (_super) {
-    __extends(DesencadenarHabilidadSiColiciona, _super);
-    function DesencadenarHabilidadSiColiciona() {
+var DesencadenarComportamientoSiColisiona = (function (_super) {
+    __extends(DesencadenarComportamientoSiColisiona, _super);
+    function DesencadenarComportamientoSiColisiona() {
         _super.apply(this, arguments);
     }
-    DesencadenarHabilidadSiColiciona.prototype.metodo = function (objetoColision) {
-        objetoColision.aprender(this.argumentos['Habilidad'], this.argumentos['argumentosHabilidad']);
+    DesencadenarComportamientoSiColisiona.prototype.metodo = function (objetoColision) {
+        objetoColision.hacer_luego(this.argumentos['comportamiento'], this.argumentos['argumentosComportamiento']);
     };
-    return DesencadenarHabilidadSiColiciona;
+    return DesencadenarComportamientoSiColisiona;
 })(ComportamientoColision);
 var EncenderPorEtiqueta = (function (_super) {
     __extends(EncenderPorEtiqueta, _super);
@@ -2260,6 +2260,58 @@ var SaltarHablando = (function (_super) {
     };
     return SaltarHablando;
 })(SaltarAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoAnimado.ts"/>
+var SerPateado = (function (_super) {
+    __extends(SerPateado, _super);
+    function SerPateado() {
+        _super.apply(this, arguments);
+    }
+    SerPateado.prototype.alIniciar = function () {
+        this.receptor.cargarAnimacion("patear");
+        this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 });
+        this.actualizarPosicion();
+        this.contador = Math.random() * 3;
+        this.aceleracion = this.argumentos['aceleracion'];
+        this.tiempoEnElAire = this.argumentos['tiempoEnElAire'] || 10;
+        this.elevacionMaxima = this.argumentos['elevacionMaxima'] || 10;
+    };
+    SerPateado.prototype.doActualizar = function () {
+        _super.prototype.doActualizar.call(this);
+        this.patearConSubidaLineal();
+    };
+    SerPateado.prototype.patearConSubidaLineal = function () {
+        this.contador += this.aceleracion;
+        this.contador = this.contador % 256; // para evitar overflow
+        if (this.receptor.y < this.altura_original + this.elevacionMaxima && this.tiempoEnElAire > 0) {
+            //subiendo
+            this.receptor.y += this.contador;
+        }
+        if (this.tiempoEnElAire > 0) {
+            //en el aire
+            this.tiempoEnElAire -= 1;
+        }
+        if (this.tiempoEnElAire <= 0) {
+            //bajando
+            if (this.receptor.y > this.altura_original) {
+                this.receptor.y -= this.contador;
+            }
+        }
+        this.receptor.x += this.contador;
+    };
+    SerPateado.prototype.patearParaAdelante = function () {
+        this.contador += this.aceleracion;
+        this.contador = this.contador % 256; // para evitar overflow
+        this.receptor.x += this.contador;
+    };
+    SerPateado.prototype.implicaMovimiento = function () {
+        return true;
+    };
+    SerPateado.prototype.actualizarPosicion = function () {
+        this.altura_original = this.receptor.y;
+    };
+    return SerPateado;
+})(ComportamientoAnimado);
 /// <reference path="ComportamientoColision.ts"/>
 /*
 Este comportamiento Agarra al objeto y refleja en un contador
@@ -3030,18 +3082,6 @@ var FutbolRobots = (function (_super) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
     };
-    FutbolRobots.prototype.atras = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    };
-    FutbolRobots.prototype.avanzar = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    FutbolRobots.prototype.siguienteFila = function () {
-        this.automata.hacer_luego(avanzarFilaEnCuadriculaMultiple);
-    };
-    FutbolRobots.prototype.patearPelota = function () {
-        this.automata.hacer_luego(DesencadenarHabilidadSiColiciona, { "Habilidad": SerPateado, 'etiqueta': 'PelotaAnimada', 'mensajeError': 'No hay una pelota aquí', 'argumentosHabilidad': { 'tiempoEnElAire': 25, 'aceleracion': 0.0025, 'elevacionMaxima': 25, 'gradosDeAumentoStep': -2 } });
-    };
     return FutbolRobots;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
@@ -3474,6 +3514,7 @@ var PrendiendoLasCompus = (function (_super) {
 /// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
+/// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 var ReparandoLaNave = (function (_super) {
     __extends(ReparandoLaNave, _super);
     function ReparandoLaNave() {
@@ -3488,7 +3529,6 @@ var ReparandoLaNave = (function (_super) {
         this.crearActores(cantidadFilas, cantidadColumnas);
         this.crearTableros();
         this.crearEstado();
-        this.crearEscape();
     };
     ReparandoLaNave.prototype.crearActores = function (cFilas, cColumnas) {
         this.crearAutomata(cFilas, cColumnas);
@@ -3521,12 +3561,6 @@ var ReparandoLaNave = (function (_super) {
         var builder = new BuilderStatePattern('estoy00');
         this.definirTransiciones(builder);
         this.estado = builder.estadoInicial();
-    };
-    ReparandoLaNave.prototype.crearEscape = function () {
-        var _this = this;
-        this.secuenciaCaminata = new Secuencia({ 'secuencia': [new CaminaArriba({})] });
-        this.secuenciaCaminata.iniciar(this.automata);
-        this.condicion = function () { return _this.automata.y > pilas.arriba + 10; };
     };
     ReparandoLaNave.prototype.definirTransiciones = function (builder) {
         //modelo estoyCH como cantidad de carbon y de hierro ya depositados,
@@ -3958,57 +3992,6 @@ var Rotar = (function (_super) {
         this.receptor.rotacion += this.gradosDeAumentoStep;
     };
     return Rotar;
-})(HabilidadAnimada);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "HabilidadAnimada.ts"/>
-var SerPateado = (function (_super) {
-    __extends(SerPateado, _super);
-    function SerPateado(receptor, argumentos) {
-        _super.call(this, receptor);
-        this.receptor.cargarAnimacion("patear");
-        this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': argumentos['gradosDeAumentoStep'] || 1 });
-        this.actualizarPosicion();
-        this.contador = Math.random() * 3;
-        this.aceleracion = argumentos['aceleracion'];
-        this.tiempoEnElAire = argumentos['tiempoEnElAire'] || 10;
-        this.elevacionMaxima = argumentos['elevacionMaxima'] || 10;
-    }
-    SerPateado.prototype.actualizar = function () {
-        //console.log(this.receptor.x)
-        //console.log(this.receptor.y)
-        this.patearConSubidaLineal();
-    };
-    SerPateado.prototype.patearConSubidaLineal = function () {
-        this.contador += this.aceleracion;
-        this.contador = this.contador % 256; // para evitar overflow
-        if (this.receptor.y < this.altura_original + this.elevacionMaxima && this.tiempoEnElAire > 0) {
-            //subiendo
-            this.receptor.y += this.contador;
-        }
-        if (this.tiempoEnElAire > 0) {
-            //en el aire
-            this.tiempoEnElAire -= 1;
-        }
-        if (this.tiempoEnElAire <= 0) {
-            //bajando
-            if (this.receptor.y > this.altura_original) {
-                this.receptor.y -= this.contador;
-            }
-        }
-        this.receptor.x += this.contador;
-    };
-    SerPateado.prototype.patearParaAdelante = function () {
-        this.contador += this.aceleracion;
-        this.contador = this.contador % 256; // para evitar overflow
-        this.receptor.x += this.contador;
-    };
-    SerPateado.prototype.implicaMovimiento = function () {
-        return true;
-    };
-    SerPateado.prototype.actualizarPosicion = function () {
-        this.altura_original = this.receptor.y;
-    };
-    return SerPateado;
 })(HabilidadAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
