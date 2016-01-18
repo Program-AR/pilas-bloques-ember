@@ -20,12 +20,12 @@ var TomarHierro = Accion.extend({
       },
 
       nombre_comportamiento() {
-        return 'TomarYContarPorEtiqueta';
+        return 'TomarPorEtiqueta';
       },
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'HierroAnimado\', \'idComportamiento\' : \'tomarHierro\', \'dondeReflejarValor\':pilas.escena_actual().hierro }';
+        return '{\'etiqueta\' : \'HierroAnimado\', \'idComportamiento\' : \'tomarHierro\' }';
       }
     });
 
@@ -44,7 +44,7 @@ var TomarCarbon = Accion.extend({
       },
 
       nombre_comportamiento() {
-        return 'TomarYContarPorEtiqueta';
+        return 'TomarPorEtiqueta';
       },
 
 
