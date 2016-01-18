@@ -116,6 +116,7 @@ class ReparandoLaNave extends EscenaActividad {
 
 
 }
+/*
   tomarHierro(){
         this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.hierro, 'idComportamiento' : 'tomarHierro'})
   }
@@ -132,7 +133,7 @@ class ReparandoLaNave extends EscenaActividad {
   this.automata.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
 
   }
-
+*/
 
 
      }
