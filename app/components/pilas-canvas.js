@@ -33,6 +33,7 @@ export default Ember.Component.extend({
                 'fondo.elMarcianoEnElDesierto.png',
                 'fondo.mariaSandia.png',
                 'fondo.alimentando_peces.png.png',
+                'fondo.marEncantado.png',
                 /*--------CASILLAS---------*/
                 'casillaArriba.png',
                 'casillaAbajo.png',
@@ -93,7 +94,8 @@ export default Ember.Component.extend({
                 'hierro_animado.png',
                 'monoAnimado.png',
                 'banana-1.png',
-                'manzana-v2.png',
+                'manzanaConSombra.png',
+                'manzanaSinSombra.png',
                 'botonAnimado.png',
                 'camino-alien-boton.png',
                 'compu_animada.png',
@@ -104,6 +106,9 @@ export default Ember.Component.extend({
                 'pez3.png',
                 'instalador.png',
                 'placacontar.png',
+                'alienAnimado.png',
+                'llaveAnimada.png',
+                'cofreAnimado.png',
 
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',

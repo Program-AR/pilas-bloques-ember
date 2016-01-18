@@ -22,7 +22,7 @@ var Saltar = Accion.extend({
   },
 
   argumentos() {
-    return '{ gravedad: 0.2 }';
+    return '{ gravedad: 0.13, velocidad_inicial: 7 }';
   }
 });
 
