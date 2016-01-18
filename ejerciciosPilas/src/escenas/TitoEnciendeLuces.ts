@@ -46,7 +46,7 @@ class TitoEnciendeLuces extends EscenaActividad {
         // se crea el automata
         this.automata = new Tito(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,4,0);
-        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.1);
+        this.automata.escalarAAncho(this.cuadricula.anchoCasilla() * 1.5);
     }
 
     agregarLuz(fila,columna) {

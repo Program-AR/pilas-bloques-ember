@@ -1,5 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/SaltarHablando.ts" />
+/// <reference path = "../actores/GatoAnimado.ts" />
 
 
 /**
@@ -16,13 +17,9 @@
 
  	iniciar() {
         this.fondo = new Fondo('fondo.noMeCansoDeSaltar.png',0,0);
-        this.automata = new GatoAnimado(0,-150);
+        this.automata = new GatoAnimado(0,-17);
         this.saltosFaltantes=30;
-        }
-
-  s(){
-      this.automata.hacer_luego(SaltarHablando,{});
-    }
+  }
 
     fraseAlSaltar(){
       this.saltosFaltantes--;

@@ -26,19 +26,19 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
     unicornio;
 
     iniciar() {
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
+        this.fondo = new Fondo('fondo.marEncantado.png',0,0);
         this.cuadricula = new Cuadricula(0,0,4,5,
             {alto: 400, ancho: 380},
-            {grilla: 'casillas.violeta.png'});
+            {grilla: 'invisible.png'});
         this.llave = new LlaveAnimado(0,0);
         this.cuadricula.agregarActor(this.llave,1,4)
-        this.llave.escala = 1.5;
+        this.llave.escala *= 0.7;
         this.llave.aprender(Flotar, {Desvio:5});
 
         this.cofre = new CofreAnimado(0,0);
         this.cuadricula.agregarActor(this.cofre,0,0);
-        this.cofre.escala = 2;
-        this.cofre.x += 7;
+        this.cofre.escala * 2;
+        this.cofre.x += 8;
 
         this.caballero = new CaballeroAnimado(0,0);
         this.cuadricula.agregarActorEnPerspectiva(this.caballero,1,2);
@@ -93,29 +93,5 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
 
         this.estado=builder.estadoInicial();
       }
-
-    /*agarrarLlave() {
-        this.automata.hacer_luego(RecogerPorEtiqueta, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
-    }
-
-
-
-    abrirCofre() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAbrirCofre, 'nombreAnimacion': 'recoger'});
-    }
-
-    darSombrero() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doDarSombrero, 'nombreAnimacion': 'recoger'});
-    }
-
-    atacarConEspada() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAtacarConEspada, 'nombreAnimacion': 'recoger'});
-    }
-
-    escaparEnUnicornio() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
-    }
-
-*/
 
 }

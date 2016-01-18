@@ -26,7 +26,7 @@ class ElMarcianoEnElDesierto extends EscenaActividad {
         this.manzanas=[];
         var posiciones=[[0,0],[0,2],[0,4],[1,4],[2,4],[3,2],[3,1]]
         for (let i = 0; i < posiciones.length; i++) {
-            var objeto=new ManzanaAnimada(0,0);posiciones[i];
+            var objeto=new ManzanaAnimada(0,0,false);posiciones[i];
             this.cuadricula.agregarActor(objeto,posiciones[i][0],posiciones[i][1]);
             objeto.escala *= 0.8;
             this.manzanas.push(objeto);
