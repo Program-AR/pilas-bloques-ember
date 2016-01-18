@@ -53,24 +53,45 @@ var TomarCarbon = Accion.extend({
       }
     });
 
+var Depositar = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'Depositar');
+      },
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField('Depositar');
+      },
+      nombre_comportamiento() {
+        return 'Depositar';
+      },
+      argumentos() {
+        return '{\'idComportamiento\' : \'depositar\'}';
+      }
+});
+
+var Escapar = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'Escapar');
+      },
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField('Escapar');
+      },
+      nombre_comportamiento() {
+          return 'RepetirHasta';
+      },
+
+      argumentos() {
+          return '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion })';
+      }
+});
 
 
-/*
-  tomarHierro(){
-        this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.cantidadHierro,'idComportamiento' : 'tomarHierro'})
-  }
 
-  tomarCarbon(){
-    this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.cantidadCarbon,'idComportamiento' : 'tomarCarbon'})
-  }
-
-  depositar(){
-    this.personaje.hacer_luego(Depositar,{'etiqueta':'NaveAnimada','mensajeError':'La nave no está aquí','idComportamiento' : 'depositar'})
-  }
-
-  escapar(){
-  this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
-}*/
 
 
 var actividadReparandoLaNave = {
@@ -89,7 +110,7 @@ var actividadReparandoLaNave = {
 
   control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon,Depositar,Escapar],
   sensores: []
 };
 
