@@ -36,23 +36,5 @@ class FutbolRobots  extends EscenaActividad{
       }
 
    }
-   atras() {
-    this.automata.hacer_luego(MoverACasillaIzquierda);
-  }
-
-  avanzar(){
-    this.automata.hacer_luego(MoverACasillaDerecha);
-  }
-
-  siguienteFila(){
-    this.automata.hacer_luego(avanzarFilaEnCuadriculaMultiple);
-  }
-
-  patearPelota(){
-    this.automata.hacer_luego(DesencadenarHabilidadSiColiciona,{"Habilidad":SerPateado,'etiqueta':'PelotaAnimada','mensajeError': 'No hay una pelota aquí','argumentosHabilidad':{'tiempoEnElAire':25,'aceleracion':0.0025,'elevacionMaxima':25,'gradosDeAumentoStep':-2}})
-  }
-
-
-
 
 }

@@ -11,6 +11,7 @@
 /// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
+/// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 
 
 class ReparandoLaNave extends EscenaActividad {
@@ -20,8 +21,6 @@ class ReparandoLaNave extends EscenaActividad {
   carbon;
   hierro;
   nave;
-  secuenciaCaminata;
-  condicion;
 
   iniciar() {
     this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
@@ -36,7 +35,6 @@ class ReparandoLaNave extends EscenaActividad {
     this.crearActores(cantidadFilas, cantidadColumnas);
     this.crearTableros();
     this.crearEstado();
-    this.crearEscape();
   }
 
   private crearActores(cFilas, cColumnas){
@@ -79,12 +77,6 @@ class ReparandoLaNave extends EscenaActividad {
     var builder = new BuilderStatePattern('estoy00');
     this.definirTransiciones(builder);
     this.estado = builder.estadoInicial();
-  }
-
-  private crearEscape() {
-    this.secuenciaCaminata = new Secuencia({ 'secuencia': [new CaminaArriba({})] });
-    this.secuenciaCaminata.iniciar(this.automata);
-    this.condicion = () => { return this.automata.y > pilas.arriba + 10; }
   }
 
   private definirTransiciones(builder){

@@ -1,32 +1,31 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "HabilidadAnimada.ts"/>
+/// <reference path = "ComportamientoAnimado.ts"/>
 
-class SerPateado extends HabilidadAnimada {
+class SerPateado extends ComportamientoAnimado {
     altura_original
     contador
     aceleracion
     tiempoEnElAire
     elevacionMaxima
-  constructor(receptor,argumentos) {
-        super(receptor);
+  
+  alIniciar() {
         this.receptor.cargarAnimacion("patear")
-        this.receptor.aprender(Rotar,{'gradosDeAumentoStep':argumentos['gradosDeAumentoStep']||1})
+        this.receptor.aprender(Rotar,{'gradosDeAumentoStep':this.argumentos['gradosDeAumentoStep']||1})
         this.actualizarPosicion();
         this.contador = Math.random() * 3;
-        this.aceleracion=argumentos['aceleracion']
-        this.tiempoEnElAire=argumentos['tiempoEnElAire']||10
-        this.elevacionMaxima=argumentos['elevacionMaxima']||10
+        this.aceleracion=this.argumentos['aceleracion']
+        this.tiempoEnElAire=this.argumentos['tiempoEnElAire']||10
+        this.elevacionMaxima=this.argumentos['elevacionMaxima']||10
 
 
     }
 
 
 
-    actualizar() {
+    doActualizar() {
 
-      //console.log(this.receptor.x)
-      //console.log(this.receptor.y)
-      this.patearConSubidaLineal()
+    super.doActualizar();
+  this.patearConSubidaLineal();
     }
 
 
