@@ -270,7 +270,7 @@ var ActorCompuesto = (function (_super) {
         this.apegarActor(actor);
     };
     ActorCompuesto.prototype.apegarActor = function (actor) {
-        actor.agregar_habilidad(ImitarAtributosNumericos, {
+        actor.agregar_habilidad(ImitarAtributosNumericos2, {
             objeto_a_imitar: this,
             atributos: ['x', 'y', 'escala_x', 'escala_y'],
             setters: { 'x': 'setX', 'y': 'setY' },
@@ -303,8 +303,24 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.animar = function () {
         this.subactores.forEach(function (actor) { return actor.animar(); });
     };
+    ActorCompuesto.prototype.getAncho = function () {
+        return this.subactores[0].getAncho();
+    };
+    ActorCompuesto.prototype.getAlto = function () {
+        return this.subactores[0].getAlto();
+    };
     return ActorCompuesto;
 })(ActorAnimado);
+var ImitarAtributosNumericos2 = (function (_super) {
+    __extends(ImitarAtributosNumericos2, _super);
+    function ImitarAtributosNumericos2() {
+        _super.apply(this, arguments);
+    }
+    ImitarAtributosNumericos2.prototype.implicaMovimiento = function () {
+        return false;
+    };
+    return ImitarAtributosNumericos2;
+})(ImitarAtributosNumericos);
 /// <reference path="ActorAnimado.ts"/>
 var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
@@ -812,7 +828,7 @@ var MovimientoAnimado = (function (_super) {
         this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
         this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
         this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
-        this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda || true;
+        this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda !== false;
     };
     MovimientoAnimado.prototype.calcularDistancia = function () {
         if (!this.argumentos.destino)
@@ -1301,6 +1317,14 @@ var EstrellaAnimada = (function (_super) {
     }
     return EstrellaAnimada;
 })(ActorAnimado);
+/// <reference path = "ActorCompuesto.ts"/>
+var FondoAnimado = (function (_super) {
+    __extends(FondoAnimado, _super);
+    function FondoAnimado(nombre, x, y) {
+        _super.call(this, x, y, { subactores: [new ActorAnimado(x, y, { grilla: nombre })] });
+    }
+    return FondoAnimado;
+})(ActorCompuesto);
 /// <reference path="ActorAnimado.ts"/>
 var GatoAnimado = (function (_super) {
     __extends(GatoAnimado, _super);
@@ -2135,6 +2159,33 @@ var Pensar = (function (_super) {
     };
     return Pensar;
 })(Decir);
+/// <reference path = "MovimientoAnimado.ts"/>
+/// <reference path = "../actores/ActorAnimado.ts"/>
+var GirarMarquesina = (function (_super) {
+    __extends(GirarMarquesina, _super);
+    function GirarMarquesina() {
+        _super.apply(this, arguments);
+    }
+    GirarMarquesina.prototype.alIniciar = function () {
+        this.argumentos.distancia = this.receptor.subactores[0].getAncho();
+        this.argumentos.direccion = new Direct(-1, 0);
+        this.argumentos.voltearAlIrAIzquierda = false;
+        this.posInicial = { x: this.receptor.subactores[0].x, y: this.receptor.subactores[0].y };
+        this.receptor.agregarSubactor(this.espejo());
+        _super.prototype.alIniciar.call(this);
+    };
+    GirarMarquesina.prototype.alTerminarAnimacion = function () {
+        _super.prototype.alTerminarAnimacion.call(this);
+        this.receptor.setX(this.posInicial.x);
+        this.receptor.eliminarUltimoSubactor();
+    };
+    GirarMarquesina.prototype.espejo = function () {
+        var clon = new ActorAnimado(this.posInicial.x + this.receptor.subactores[0].getAncho(), this.posInicial.y, this.receptor.subactores[0].opciones);
+        //clon.z = this.receptor.subactores[0].z;
+        return clon;
+    };
+    return GirarMarquesina;
+})(MovimientoAnimado);
 var IrASiguienteFila = (function (_super) {
     __extends(IrASiguienteFila, _super);
     function IrASiguienteFila() {
@@ -3730,6 +3781,7 @@ var SuperTito2 = (function (_super) {
 /// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../actores/Hueso.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/// <reference path = "../actores/FondoAnimado.ts"/>
 /**
  * @class SuperViaje
  *
@@ -3741,7 +3793,7 @@ var SuperViaje = (function (_super) {
         this.totalKM = 10;
     }
     SuperViaje.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
+        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha, 0);
         this.automata = new PerroCohete(0, 0);
         this.restantesKM = this.totalKM;
     };
