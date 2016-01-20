@@ -26,7 +26,7 @@ class ActorCompuesto extends ActorAnimado {
 	}
 
 	private apegarActor(actor){
-		actor.agregar_habilidad(ImitarAtributosNumericos,
+		actor.agregar_habilidad(ImitarAtributosNumericos2,
 			{
 				objeto_a_imitar: this,
 				atributos: ['x', 'y', 'escala_x', 'escala_y'],
@@ -68,5 +68,19 @@ class ActorCompuesto extends ActorAnimado {
 
 	animar(){
 		this.subactores.forEach(actor => actor.animar());
+	}
+
+	getAncho(){
+		return this.subactores[0].getAncho();
+	}
+
+	getAlto() {
+		return this.subactores[0].getAlto();
+	}
+}
+
+class ImitarAtributosNumericos2 extends ImitarAtributosNumericos{
+	implicaMovimiento(){
+		return false;
 	}
 }

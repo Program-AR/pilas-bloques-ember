@@ -79,7 +79,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();
 		this.valoresFinales.cantPasos = this.argumentos.cantPasos || 10;
 		this.valoresFinales.velocidad = this.argumentos.velocidad || 20;
-		this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda || true;
+		this.valoresFinales.voltearAlIrAIzquierda = this.argumentos.voltearAlIrAIzquierda !== false;
     }
 
     calcularDistancia(){
