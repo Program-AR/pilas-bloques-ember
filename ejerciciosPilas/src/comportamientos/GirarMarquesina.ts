@@ -28,7 +28,7 @@ class GirarMarquesina extends MovimientoAnimado {
 			this.posInicial.x + this.receptor.subactores[0].getAncho(),
 			this.posInicial.y,
 			this.receptor.subactores[0].opciones);
-		//clon.z = this.receptor.subactores[0].z;
+		clon.z = this.receptor.subactores[0].z;
 		return clon;
 	}
 }

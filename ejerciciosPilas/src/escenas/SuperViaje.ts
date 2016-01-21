@@ -18,7 +18,7 @@ class SuperViaje extends EscenaActividad {
     restantesKM;
 
     iniciar() {
-        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha, 0);
+        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
         this.automata = new PerroCohete(0,0);
         this.restantesKM = this.totalKM;
     }
