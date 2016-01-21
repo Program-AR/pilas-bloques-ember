@@ -24,7 +24,7 @@ class ElRecolectorDeEstrellas extends EscenaActividad {
 
         this.automata = new RecolectorEstrellas(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0);
-        this.automata.aprender(Flotar, {});
+        this.automata.aprender(Flotar, {Desvio:5});
         // La posición inicial pretende respectar el ejemplo
 
         this.objetos=[];
@@ -38,23 +38,4 @@ class ElRecolectorDeEstrellas extends EscenaActividad {
         }
 
     }
-
-
-    volverAlBordeIzquierdo(){
-        this.automata.hacer_luego(MoverTodoAIzquierda);
-    }
-
-    irArriba(){
-        this.automata.hacer_luego(MoverACasillaArriba);
-    }
-
-    irDerecha(){
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    }
-
-    recogerEstrella(){
-        this.automata.hacer_luego(Recoger);
-    }
-
-
 }
