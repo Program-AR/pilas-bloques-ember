@@ -86,7 +86,7 @@ var Escapar = Accion.extend({
       },
 
       argumentos() {
-          return '{etiqueta: "NaveAnimada", comportamiento: "MovimientoAnimado", argumentosComportamiento:{destino: {x: pilas.derecha, y: pilas.arriba + 100}, nombreAnimacion: \'correr\', velocidad: 30}, idComportamiento:"escapar"}';
+          return '{etiqueta: "NaveAnimada", comportamiento: "MovimientoAnimado", argumentosComportamiento:{destino: {x: pilas.derecha(), y: pilas.arriba() + 100}, nombreAnimacion: \'correr\', velocidad: 30}, idComportamiento:"escapar"}';
       }
 });
 

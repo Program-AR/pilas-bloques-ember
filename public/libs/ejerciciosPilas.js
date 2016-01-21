@@ -2181,7 +2181,7 @@ var GirarMarquesina = (function (_super) {
     };
     GirarMarquesina.prototype.espejo = function () {
         var clon = new ActorAnimado(this.posInicial.x + this.receptor.subactores[0].getAncho(), this.posInicial.y, this.receptor.subactores[0].opciones);
-        //clon.z = this.receptor.subactores[0].z;
+        clon.z = this.receptor.subactores[0].z;
         return clon;
     };
     return GirarMarquesina;
@@ -3793,7 +3793,7 @@ var SuperViaje = (function (_super) {
         this.totalKM = 10;
     }
     SuperViaje.prototype.iniciar = function () {
-        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha, 0);
+        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
         this.automata = new PerroCohete(0, 0);
         this.restantesKM = this.totalKM;
     };
