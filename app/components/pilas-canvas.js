@@ -34,6 +34,7 @@ export default Ember.Component.extend({
                 'fondo.mariaSandia.png',
                 'fondo.alimentando_peces.png.png',
                 'fondo.marEncantado.png',
+                'fondo.elSuperviaje.png',
                 /*--------CASILLAS---------*/
                 'casillaArriba.png',
                 'casillaAbajo.png',
@@ -109,6 +110,7 @@ export default Ember.Component.extend({
                 'alienAnimado.png',
                 'llaveAnimada.png',
                 'cofreAnimado.png',
+                'princesa.png',
 
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',

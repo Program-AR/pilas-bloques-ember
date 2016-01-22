@@ -86,7 +86,9 @@ var Escapar = Accion.extend({
       },
 
       argumentos() {
-          return '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion })';
+                  //return '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion })';
+          return '{etiqueta: "NaveAnimada", comportamiento: "MovimientoAnimado", argumentosComportamiento:{destino: {x: pilas.derecha(), y: pilas.arriba() + 100}, nombreAnimacion: \'correr\', velocidad: 30}, idComportamiento:"escapar"}';
+
       }
 });
 
