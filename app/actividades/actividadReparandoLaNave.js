@@ -67,7 +67,7 @@ var Depositar = Accion.extend({
         return 'Depositar';
       },
       argumentos() {
-        return '{\'idComportamiento\' : \'depositar\', \'etiqueta\' : \'NaveAnimada\'}';
+        return '{\'idComportamiento\' : \'depositar\'}';
       }
 });
 
@@ -82,11 +82,11 @@ var Escapar = Accion.extend({
             .appendField('Escapar');
       },
       nombre_comportamiento() {
-          return 'DesencadenarComportamientoSiColisiona';
+          return 'RepetirHasta';
       },
 
       argumentos() {
-          return '{etiqueta: "NaveAnimada", comportamiento: "MovimientoAnimado", argumentosComportamiento:{destino: {x: pilas.derecha, y: pilas.arriba + 100}, nombreAnimacion: \'correr\', velocidad: 30}, idComportamiento:"escapar"}';
+          return '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion })';
       }
 });
 
