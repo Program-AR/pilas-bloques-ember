@@ -97,11 +97,7 @@ declare class Actor extends Estudiante {
     public rotacion : any;
     public transparencia : number;
     public ancho : number;
-    public getAncho(): number;
-    public setAncho(a: any): void;
     public alto : number;
-    public getAlto(): number;
-    public setAlto(a: any): void;
     public imagen : any;
     public izquierda : number;
     public derecha : number;

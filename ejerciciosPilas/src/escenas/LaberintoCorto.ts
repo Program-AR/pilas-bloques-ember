@@ -2,45 +2,43 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Camino.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
+/// <reference path = "../escenas/LaberintoLargo.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 
-/**
- * @class LaberintoCorto
- *
- */
 
-class LaberintoCorto extends EscenaActividad {
+class LaberintoCorto extends LaberintoLargo {
     fondo;
     automata;
     cuadricula;
-    cuadricula2;
-
-    iniciar() {
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula2 = new Camino(0,0,['->','v','->','->'],2,4,
-            {'alto':400,'ancho':300},
-            {grilla: 'finCamino.png',cantColumnas: 1   ,'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}
-            )
-
-        this.cuadricula = this.cuadricula2.dameCamino();
-
-        this.automata = new PerroCohete(0,0);
-        this.cuadricula.agregarActor(this.automata,0,0);
-
+    caso;
+    iniciar(){
+      if(Math.random()<0.5){
+          this.caso=true;
+      }else{
+          this.caso=false;
+      }
+      super.iniciar();
     }
 
-    irArriba(){
-        this.automata.hacer_luego(MoverACasillaArriba);
+    cantidadFilas(){
+      if(this.caso){
+        return 1;
+      }else{
+        return 2;
+      }
     }
-    irAbajo(){
-        this.automata.hacer_luego(MoverACasillaAbajo);
+    cantidadColumnas(){
+      if(this.caso){
+        return 2;
+      }else{
+        return 1;
+      }
     }
-    irDerecha(){
-        this.automata.hacer_luego(MoverACasillaDerecha);
+    nombreFondo(){
+      return 'fondo.laberinto.corto.png';
     }
-    irIzquierda(){
-        this.automata.hacer_luego(MoverACasillaIzquierda);
+    dameOpcionesCuadricula(){
+      return {'alto':200,'ancho':200};
     }
 }

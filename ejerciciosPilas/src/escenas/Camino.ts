@@ -63,8 +63,9 @@ escalarCasillasCuadradas(){
       for(var filas=0;filas<this.cantidadFilas;++filas){
         var aux=[]
         for(var cols=0;cols<this.cantidadColumnas;++cols){
-          aux.push('F')
+          aux.push('F');
         }
+        console.log(aux);
         aDevolver.push(aux);
       }
 
@@ -73,6 +74,7 @@ escalarCasillasCuadradas(){
         puntoActual=puntoActual.siguienteEn(this.direcciones[index]);
         aDevolver[puntoActual.y][puntoActual.x]='T';
       }
+
       return aDevolver;
   }
 }
@@ -122,12 +124,8 @@ class CuadriculaParaRaton extends Camino{
 
 
 
-  constructor(x,y,cantMaxX,cantMaxY,opcionesCuadricula, opcionesCasilla){
-      var hastaX=cantMaxX;
-      var hastaY=cantMaxY;
-      //el +2 es para asegurar cuadricula minima
-      super(x, y, this.dameDirecciones(0,0,hastaX,hastaY),hastaY,hastaX , opcionesCuadricula, opcionesCasilla);
-
+  constructor(x,y,hastaX,hastaY,opcionesCuadricula, opcionesCasilla){
+      super(x, y,this.dameDirecciones(0,0,hastaX,hastaY) ,hastaX,hastaY , opcionesCuadricula, opcionesCasilla);
   }
 
   private dameCant(desde,cantMax){

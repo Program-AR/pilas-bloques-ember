@@ -108,7 +108,7 @@ class ActorAnimado extends Actor {
     }
 
     tocandoFin() : Boolean {
-    return this.casillaActual().casillaASuDerecha()==undefined
+      return this.casillaActual().casillaASuDerecha()==undefined
     // return  pilas.escena_actual().cuadricula.tocandoFin(this)
     // cada cuadricula (multiple,esparsa,etc) implementa su tocandoFin de manera diferente
     }
