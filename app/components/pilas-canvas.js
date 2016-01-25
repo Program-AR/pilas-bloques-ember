@@ -35,6 +35,9 @@ export default Ember.Component.extend({
                 'fondo.alimentando_peces.png.png',
                 'fondo.marEncantado.png',
                 'fondo.elSuperviaje.png',
+                'fondo.laberinto.corto.png',
+                'fondo.laberinto.largo.png',
+                'fondo.laberinto.queso.png',
                 /*--------CASILLAS---------*/
                 'casillaArriba.png',
                 'casillaAbajo.png',
@@ -111,7 +114,12 @@ export default Ember.Component.extend({
                 'llaveAnimada.png',
                 'cofreAnimado.png',
                 'princesa.png',
-
+                'finCamino.png',
+                'casillaDerecha.png',
+                'casillaIzquierda.png',
+                'casillaArriba.png',
+                'casillaAbajo.png',
+                'raton.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
                 'icono.abrirOjos.png',
