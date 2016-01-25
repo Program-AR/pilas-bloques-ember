@@ -1,3 +1,5 @@
+/*Builder para una cuadricula esparsa con forma de camino*/
+
 class Camino {
   x;
   y;
@@ -8,7 +10,6 @@ class Camino {
   matriz;
   direcciones;
   constructor(x, y, direcciones,cantidadFilas,cantidadColumnas, opcionesCuadricula, opcionesCasilla){
-
     this.x=x;
     this.y=y;
     this.cantidadFilas=cantidadFilas;
@@ -36,22 +37,22 @@ escalarCasillasCuadradas(){
 }
 
   dameCamino(){
-
-    this.escalarCasillasCuadradas();
-
-
-
-
+      this.escalarCasillasCuadradas();
       var a = new  CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
       this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla,this.opcionesCuadricula,this.cantidadFilas,this.cantidadColumnas);
       return a;
   }
 
+
   public cambiarImagenesCasillasCamino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
     for(var index=0;index<cuadricula.casillas.length-1;index++){
+      var aux=cuadricula.casillas[index].z;
       cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
+      cuadricula.casillas[index].z=aux;
     }
+      var aux= cuadricula.casillas[cuadricula.casillas.length-1].z;
       cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
+      cuadricula.casillas[cuadricula.casillas.length-1].z=aux;
     //solo por reescalado
   }
 
@@ -122,8 +123,8 @@ class CuadriculaParaRaton extends Camino{
 
 
   constructor(x,y,cantMaxX,cantMaxY,opcionesCuadricula, opcionesCasilla){
-      var hastaX=this.dameCant(0,cantMaxX)+2;
-      var hastaY=this.dameCant(0,cantMaxY)+2;
+      var hastaX=cantMaxX;
+      var hastaY=cantMaxY;
       //el +2 es para asegurar cuadricula minima
       super(x, y, this.dameDirecciones(0,0,hastaX,hastaY),hastaY,hastaX , opcionesCuadricula, opcionesCasilla);
 

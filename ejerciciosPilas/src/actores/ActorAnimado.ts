@@ -78,6 +78,23 @@ class ActorAnimado extends Actor {
       //return actores.length > 0;
     };
 
+    hayAbajo():Boolean{
+      return this.cuadricula.hayAbajo(this.casillaActual());
+    }
+    hayArriba():Boolean{
+      return this.cuadricula.hayArriba(this.casillaActual());
+    }
+    hayDerecha():Boolean{
+      return this.cuadricula.hayDerecha(this.casillaActual());
+    }
+    hayIzquierda():Boolean{
+      return this.cuadricula.hayIzquierda(this.casillaActual());
+    }
+
+    alFinalDelCamino():Boolean{
+      return this.casillaActual()==this.cuadricula.casillas[this.cuadricula.casillas.length-1];
+    }
+
     estoyUltimaFila() : Boolean {
       return this.cuadricula.cantFilas-1==this.casillaActual().nroFila;
     }
@@ -187,9 +204,9 @@ class ActorAnimado extends Actor {
         this.habilidadesSuspendidas.forEach( hab => this.olvidar(hab));
     }
     activarHabilidadesConMovimiento(){
-        this.habilidadesSuspendidas.forEach(function(hab) { 
-            hab.actualizarPosicion(); 
-            this.aprender(hab); 
+        this.habilidadesSuspendidas.forEach(function(hab) {
+            hab.actualizarPosicion();
+            this.aprender(hab);
         }.bind(this));
         this.habilidadesSuspendidas = [];
     }

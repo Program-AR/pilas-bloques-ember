@@ -2,7 +2,7 @@
 
 class RatonAnimado extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'ratonAnimado.png', cantColumnas:1, cantFilas: 1});
+        super(x, y, {grilla: 'raton.png', cantColumnas:7, cantFilas: 1});
 
 
 
