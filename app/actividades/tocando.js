@@ -40,6 +40,26 @@ var TocandoBanana = Sensor.extend({
   }
 });
 
+
+var TocandoQueso = Sensor.extend({
+  init() {
+    this._super();
+    this.set('id', 'tocandoQueso');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('¿Tocando queso ')
+         .appendField(this.obtener_icono('../libs/data/queso.png'))
+         .appendField('?');
+  },
+
+  nombre_sensor() {
+    return 'tocando(\'QuesoAnimado\')';
+  }
+});
+
 var TocandoAbajo = Sensor.extend({
   init() {
     this._super();
@@ -99,6 +119,6 @@ var TocandoFinCamino = Sensor.extend({
   }
 });
 
-var tocando = {TocandoBanana,TocandoManzana,TocandoAbajo,TocandoDerecha,TocandoFinCamino};
+var tocando = {TocandoBanana,TocandoManzana,TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso};
 
 export default tocando;

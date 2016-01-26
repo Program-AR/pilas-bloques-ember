@@ -49,7 +49,30 @@ var ComerManzana = Accion.extend({
 });
 
 
+var ComerQueso = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ComerQueso');
+  },
 
-var comer= {ComerBanana,ComerManzana};
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Comer queso')
+         .appendField(this.obtener_icono('../libs/data/queso.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'RecogerPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'QuesoAnimado\',  \'mensajeError\' : \'No hay queso aqui\' }';
+  }
+});
+
+
+var comer= {ComerBanana,ComerManzana,ComerQueso};
 
 export default comer;
