@@ -1,6 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/Lamparin.ts" />
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
@@ -12,7 +13,6 @@ class TitoEnciendeLuces extends EscenaActividad {
 
     iniciar() {
         this.fondo = new Fondo('fondos.estrellas.png',0,0);
-        //this.robot.izquierda = pilas.izquierda();
 
         this.cuadricula = new Cuadricula(0,0,5,6,
             {separacionEntreCasillas: 5},
@@ -54,22 +54,4 @@ class TitoEnciendeLuces extends EscenaActividad {
         this.cuadricula.agregarActor(casillaLuminosa,fila,columna);
         this.objetos.push(casillaLuminosa);
     }
-
-
-    prenderLuz() {
-        this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
-    }
-    irArriba(){
-        this.automata.hacer_luego(MoverACasillaArriba);
-    }
-    irAbajo(){
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    }
-    irDerecha(){
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    }
-    irIzquierda(){
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    }
-
 }

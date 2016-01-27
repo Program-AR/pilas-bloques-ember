@@ -1,10 +1,5 @@
-/// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "Camino.ts"/>
-/// <reference path = "../actores/PerroCohete.ts"/>
 /// <reference path = "../escenas/LaberintoLargo.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
-
 
 
 class LaberintoCorto extends LaberintoLargo {

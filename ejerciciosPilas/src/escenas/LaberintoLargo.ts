@@ -1,4 +1,6 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "Camino.ts" />
+/// <reference path = "../actores/RatonAnimado.ts" />
 
 class LaberintoLargo extends EscenaActividad {
     estado;
