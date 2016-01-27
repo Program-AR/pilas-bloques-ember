@@ -137,6 +137,11 @@ copiar_blockly_descomprimido:
 	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
 
+descartar_todo_cambio:
+	cd pilas; git checkout .
+	cd ejerciciosPilas; git checkout .
+	git checkout .
+
 dist: compilar
 
 ejecutar_linux:

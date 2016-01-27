@@ -124,6 +124,21 @@ var ActorAnimado = (function (_super) {
         //return actores.length > 0;
     };
     ;
+    ActorAnimado.prototype.hayAbajo = function () {
+        return this.cuadricula.hayAbajo(this.casillaActual());
+    };
+    ActorAnimado.prototype.hayArriba = function () {
+        return this.cuadricula.hayArriba(this.casillaActual());
+    };
+    ActorAnimado.prototype.hayDerecha = function () {
+        return this.cuadricula.hayDerecha(this.casillaActual());
+    };
+    ActorAnimado.prototype.hayIzquierda = function () {
+        return this.cuadricula.hayIzquierda(this.casillaActual());
+    };
+    ActorAnimado.prototype.alFinalDelCamino = function () {
+        return this.casillaActual() == this.cuadricula.casillas[this.cuadricula.casillas.length - 1];
+    };
     ActorAnimado.prototype.estoyUltimaFila = function () {
         return this.cuadricula.cantFilas - 1 == this.casillaActual().nroFila;
     };
@@ -1660,7 +1675,7 @@ var Princesa = (function (_super) {
 var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
     function RatonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'ratonAnimado.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 7, cantFilas: 1 });
     }
     return RatonAnimado;
 })(ActorAnimado);
@@ -2581,6 +2596,7 @@ var AlimentandoALosPeces = (function (_super) {
     };
     return AlimentandoALosPeces;
 })(EscenaActividad);
+/*Builder para una cuadricula esparsa con forma de camino*/
 var Camino = (function () {
     function Camino(x, y, direcciones, cantidadFilas, cantidadColumnas, opcionesCuadricula, opcionesCasilla) {
         this.x = x;
@@ -2614,9 +2630,13 @@ var Camino = (function () {
     };
     Camino.prototype.cambiarImagenesCasillasCamino = function (direcciones, cuadricula, opcionesCasilla, opcionesCuadricula, cantFilas, cantColumnas) {
         for (var index = 0; index < cuadricula.casillas.length - 1; index++) {
+            var aux = cuadricula.casillas[index].z;
             cuadricula.casillas[index].imagen = opcionesCasilla[this.direcciones[index]];
+            cuadricula.casillas[index].z = aux;
         }
+        var aux = cuadricula.casillas[cuadricula.casillas.length - 1].z;
         cuadricula.casillas[cuadricula.casillas.length - 1].imagen = 'finCamino.png';
+        cuadricula.casillas[cuadricula.casillas.length - 1].z = aux;
         //solo por reescalado
     };
     Camino.prototype.dameMatriz = function () {
@@ -2627,6 +2647,7 @@ var Camino = (function () {
             for (var cols = 0; cols < this.cantidadColumnas; ++cols) {
                 aux.push('F');
             }
+            console.log(aux);
             aDevolver.push(aux);
         }
         aDevolver[puntoActual.y][puntoActual.x] = 'T';
@@ -2669,11 +2690,8 @@ var Punto = (function () {
 })();
 var CuadriculaParaRaton = (function (_super) {
     __extends(CuadriculaParaRaton, _super);
-    function CuadriculaParaRaton(x, y, cantMaxX, cantMaxY, opcionesCuadricula, opcionesCasilla) {
-        var hastaX = this.dameCant(0, cantMaxX) + 2;
-        var hastaY = this.dameCant(0, cantMaxY) + 2;
-        //el +2 es para asegurar cuadricula minima
-        _super.call(this, x, y, this.dameDirecciones(0, 0, hastaX, hastaY), hastaY, hastaX, opcionesCuadricula, opcionesCasilla);
+    function CuadriculaParaRaton(x, y, hastaX, hastaY, opcionesCuadricula, opcionesCasilla) {
+        _super.call(this, x, y, this.dameDirecciones(0, 0, hastaX, hastaY), hastaX, hastaY, opcionesCuadricula, opcionesCasilla);
     }
     CuadriculaParaRaton.prototype.dameCant = function (desde, cantMax) {
         return Math.floor(Math.random() * cantMax + desde);
@@ -3343,77 +3361,8 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
     return LaGranAventuraDelMarEncantado;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
-/// <reference path="../actores/cuadriculaEsparsa.ts"/>
-/// <reference path="../actores/RatonAnimado.ts"/>
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path="Camino.ts"/>
-var LaberintoConQueso = (function (_super) {
-    __extends(LaberintoConQueso, _super);
-    function LaberintoConQueso() {
-        _super.apply(this, arguments);
-    }
-    LaberintoConQueso.prototype.iniciar = function () {
-        this.estado = undefined;
-        this.cuadricula = new CuadriculaParaRaton(0, 0, 10, 10, { 'alto': 400, 'ancho': 300 }, { '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' }).dameCamino();
-        this.cuadricula.completarConObjetosRandom([QuesoAnimado]);
-        this.automata = new RatonAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
-    };
-    LaberintoConQueso.prototype.valorCondicion = function (argumentos) {
-        return argumentos.receptor.y > 250;
-    };
-    LaberintoConQueso.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
-    LaberintoConQueso.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    LaberintoConQueso.prototype.moverAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    LaberintoConQueso.prototype.ComerQueso = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'QuesoAnimado', 'mensajeError': 'No hay queso aqui' });
-    };
-    return LaberintoConQueso;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "Camino.ts"/>
-/// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
-/**
- * @class LaberintoCorto
- *
- */
-var LaberintoCorto = (function (_super) {
-    __extends(LaberintoCorto, _super);
-    function LaberintoCorto() {
-        _super.apply(this, arguments);
-    }
-    LaberintoCorto.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
-        this.cuadricula2 = new Camino(0, 0, ['->', 'v', '->', '->'], 2, 4, { 'alto': 400, 'ancho': 300 }, { grilla: 'finCamino.png', cantColumnas: 1, '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' });
-        this.cuadricula = this.cuadricula2.dameCamino();
-        this.automata = new PerroCohete(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
-    };
-    LaberintoCorto.prototype.irArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    };
-    LaberintoCorto.prototype.irAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    LaberintoCorto.prototype.irDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    LaberintoCorto.prototype.irIzquierda = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    };
-    return LaberintoCorto;
-})(EscenaActividad);
-/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "Camino.ts" />
+/// <reference path = "../actores/RatonAnimado.ts" />
 var LaberintoLargo = (function (_super) {
     __extends(LaberintoLargo, _super);
     function LaberintoLargo() {
@@ -3421,24 +3370,88 @@ var LaberintoLargo = (function (_super) {
     }
     LaberintoLargo.prototype.iniciar = function () {
         this.estado = undefined;
-        this.cuadricula = new CuadriculaParaRaton(0, 0, 10, 10, { 'alto': 400, 'ancho': 300 }, { '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' }).dameCamino();
+        this.fondo = new Fondo(this.nombreFondo(), 0, 0);
+        this.cuadricula = new CuadriculaParaRaton(0, 0, this.cantidadFilas(), this.cantidadColumnas(), this.dameOpcionesCuadricula(), { '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' }).dameCamino();
         this.automata = new RatonAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+        this.automata.escala *= 1.6;
     };
-    LaberintoLargo.prototype.valorCondicion = function (argumentos) {
-        return argumentos.receptor.y > 250;
+    LaberintoLargo.prototype.dameOpcionesCuadricula = function () {
+        return { 'alto': 440, 'ancho': 400 };
     };
-    LaberintoLargo.prototype.personajePrincipal = function () {
-        return this.automata;
+    LaberintoLargo.prototype.cantidadFilas = function () {
+        return 8;
     };
-    LaberintoLargo.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
+    LaberintoLargo.prototype.cantidadColumnas = function () {
+        return 8;
     };
-    LaberintoLargo.prototype.moverAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
+    LaberintoLargo.prototype.nombreFondo = function () {
+        return 'fondo.laberinto.largo.png';
+    };
+    LaberintoLargo.prototype.estaResueltoElProblema = function () {
+        return this.automata.alFinalDelCamino();
     };
     return LaberintoLargo;
 })(EscenaActividad);
+/// <reference path = "LaberintoLargo.ts" />
+/// <reference path="../actores/RatonAnimado.ts"/>
+var LaberintoConQueso = (function (_super) {
+    __extends(LaberintoConQueso, _super);
+    function LaberintoConQueso() {
+        _super.apply(this, arguments);
+    }
+    LaberintoConQueso.prototype.iniciar = function () {
+        _super.prototype.iniciar.call(this);
+        this.cuadricula.completarConObjetosRandom([QuesoAnimado]);
+    };
+    LaberintoConQueso.prototype.dameOpcionesCuadricula = function () {
+        return { 'alto': 440, 'ancho': 400 };
+    };
+    LaberintoConQueso.prototype.nombreFondo = function () {
+        return 'fondo.laberinto.queso.png';
+    };
+    return LaberintoConQueso;
+})(LaberintoLargo);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../escenas/LaberintoLargo.ts"/>
+var LaberintoCorto = (function (_super) {
+    __extends(LaberintoCorto, _super);
+    function LaberintoCorto() {
+        _super.apply(this, arguments);
+    }
+    LaberintoCorto.prototype.iniciar = function () {
+        if (Math.random() < 0.5) {
+            this.caso = true;
+        }
+        else {
+            this.caso = false;
+        }
+        _super.prototype.iniciar.call(this);
+    };
+    LaberintoCorto.prototype.cantidadFilas = function () {
+        if (this.caso) {
+            return 1;
+        }
+        else {
+            return 2;
+        }
+    };
+    LaberintoCorto.prototype.cantidadColumnas = function () {
+        if (this.caso) {
+            return 2;
+        }
+        else {
+            return 1;
+        }
+    };
+    LaberintoCorto.prototype.nombreFondo = function () {
+        return 'fondo.laberinto.corto.png';
+    };
+    LaberintoCorto.prototype.dameOpcionesCuadricula = function () {
+        return { 'alto': 200, 'ancho': 200 };
+    };
+    return LaberintoCorto;
+})(LaberintoLargo);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/MariaAnimada.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
@@ -3891,6 +3904,7 @@ var TitoCuadrado = (function (_super) {
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/Lamparin.ts" />
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 var TitoEnciendeLuces = (function (_super) {
@@ -3901,7 +3915,6 @@ var TitoEnciendeLuces = (function (_super) {
     }
     TitoEnciendeLuces.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
-        //this.robot.izquierda = pilas.izquierda();
         this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, alto: 50, ancho: 50 });
         //se cargan las luces
@@ -3932,21 +3945,6 @@ var TitoEnciendeLuces = (function (_super) {
         var casillaLuminosa = new Lamparin(0, 0);
         this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
         this.objetos.push(casillaLuminosa);
-    };
-    TitoEnciendeLuces.prototype.prenderLuz = function () {
-        this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
-    };
-    TitoEnciendeLuces.prototype.irArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    };
-    TitoEnciendeLuces.prototype.irAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    TitoEnciendeLuces.prototype.irDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    TitoEnciendeLuces.prototype.irIzquierda = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
     };
     return TitoEnciendeLuces;
 })(EscenaActividad);
