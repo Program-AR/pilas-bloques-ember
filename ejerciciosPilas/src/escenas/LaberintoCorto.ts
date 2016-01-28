@@ -6,17 +6,17 @@ class LaberintoCorto extends LaberintoLargo {
     fondo;
     automata;
     cuadricula;
-    caso;
+    aDerecha;
     iniciar(){
-      this.caso = Math.random() < 0.5;
+      this.aDerecha = Math.random() < 0.5;
       super.iniciar();
     }
 
     cantidadFilas(){
-      return this.caso ? 1 : 2;
+      return this.aDerecha ? 1 : 2;
     }
     cantidadColumnas(){
-      return this.caso ? 2 : 1;
+      return this.aDerecha ? 2 : 1;
     }
 
     nombreFondo(){

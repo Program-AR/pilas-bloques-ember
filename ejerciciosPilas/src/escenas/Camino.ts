@@ -1,3 +1,5 @@
+/// <reference path = "../actores/CuadriculaEsparsa.ts" />
+
 /*Builder para una cuadricula esparsa con forma de camino*/
 
 class Camino {

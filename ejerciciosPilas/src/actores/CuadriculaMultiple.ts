@@ -16,7 +16,7 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 */
 
 
-/// <reference path = "../actores/cuadriculaEsparsa.ts"/>
+/// <reference path = "../actores/CuadriculaEsparsa.ts"/>
 
 // TODO: DEBERIAMOS HACER REFACTOR de manera de mergear constructores/clases.
 
