@@ -72,7 +72,29 @@ var ComerQueso = Accion.extend({
   }
 });
 
+var ComerNaranja = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ComerNaranja');
+  },
 
-var comer= {ComerBanana,ComerManzana,ComerQueso};
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Comer naranja')
+         .appendField(this.obtener_icono('../libs/data/naranja.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'RecogerPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'NaranjaAnimada\'}';
+  }
+});
+
+var comer= {ComerBanana,ComerManzana,ComerQueso,ComerNaranja};
 
 export default comer;
