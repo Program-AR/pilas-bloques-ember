@@ -2,12 +2,10 @@
 
 class RatonAnimado extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'raton.png', cantColumnas:7, cantFilas: 1});
-        this.definirAnimacion("correr",[0,1,2],15);
-        this.definirAnimacion("recoger",[0,1,2],15);
-
-
-
+        super(x, y, {grilla: 'raton.png', cantColumnas:9, cantFilas: 1});
+        this.definirAnimacion("parado", [0, 1], 1, true);
+        this.definirAnimacion("correr",[2,3,4,3,4,3,4],6);
+        this.definirAnimacion("recoger",[5,6,7,8],12);
     }
 }
 

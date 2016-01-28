@@ -8,12 +8,11 @@ class LaberintoLargo extends EscenaActividad {
     cuadricula;
     fondo;
     iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo(this.nombreFondo(),0,0);
         this.cuadricula = new CuadriculaParaRaton(0,0,this.cantidadFilas(),this.cantidadColumnas(),this.dameOpcionesCuadricula(),{'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
         this.automata = new RatonAnimado(0,0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
-        this.automata.escala *= 1.6;
+        this.cuadricula.agregarActor(this.automata,0,0);
+        this.automata.escala *= 2;
     }
 
     dameOpcionesCuadricula(){
