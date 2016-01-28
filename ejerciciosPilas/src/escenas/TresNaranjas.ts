@@ -2,12 +2,12 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../actores/Hueso.ts"/>
+
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 
 
 /**
- * @class TresHuesos
+ * @class TresNaranjas
  *
  */
 class TresNaranjas extends EscenaActividad {
@@ -18,18 +18,18 @@ class TresNaranjas extends EscenaActividad {
     estado;
     iniciar() {
         this.estado=undefined;
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
+        this.fondo = new Fondo('fondo.tresNaranjas.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,1,4,
-            {alto: 70},
-            {grilla: 'casillas.violeta.png'});
+            {separacionEntreCasillas: 5},
+            {grilla: 'casilla.tresNaranjas.png', ancho:100,alto:100});
 
-        //se cargan los huesos
+        //se cargan los Naranjas
         var hayAlMenosUno = false;
         for(var i = 0; i < 3; i++) {
             if (Math.random() < .5) {
                 hayAlMenosUno = true;
-                this.agregarHueso(i+1);
+                this.agregarNaranja(i+1);
             }
         }
         if (!hayAlMenosUno) {
@@ -40,25 +40,23 @@ class TresNaranjas extends EscenaActividad {
             } else if (rand > 0.66) {
                 columna = 3
             }
-            this.agregarHueso(columna);
+            this.agregarNaranja(columna);
         }
 
         // se crea el personaje
-        this.automata = new PerroCohete(0,0);
+        this.automata = new MarcianoAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
     }
 
-    agregarHueso(columna) {
-        var objeto = new Hueso(0,0);
+    agregarNaranja(columna) {
+        var objeto = new NaranjaAnimada(0,0);
         this.cuadricula.agregarActor(objeto,0,columna);
         this.objetos.push(objeto);
     }
 
-    comerHueso() {
-        this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'Hueso', 'mensajeError' : 'No hay un hueso aqui' });
+    estaResueltoElProblema(){
+      return this.contarActoresConEtiqueta('NaranjaAnimada')==0;
     }
 
-    avanzar() {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    }
+
 }
