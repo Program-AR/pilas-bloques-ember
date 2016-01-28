@@ -69,6 +69,8 @@ escalarCasillasCuadradas(){
         aDevolver.push(aux);
       }
 
+      //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
+
       aDevolver[puntoActual.y][puntoActual.x]='T';
       console.log(this.direcciones)
       for(var index=0;index<this.direcciones.length;index++){
@@ -125,20 +127,15 @@ class CuadriculaParaRaton extends Camino{
 
 
 
-  constructor(x,y,hastaX,hastaY,opcionesCuadricula, opcionesCasilla){
-      super(x, y,this.dameDirecciones(0,0,hastaX,hastaY) ,hastaX,hastaY , opcionesCuadricula, opcionesCasilla);
+  constructor(x,y,cantFilas,cantColumnas,opcionesCuadricula, opcionesCasilla){
+      super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
   }
 
-  private dameCant(desde,cantMax){
-    return Math.floor(Math.random() * cantMax + desde)
-  }
-
-
-  private dameDirecciones(posInicialX,posInicialY,posFinalX,posFinalY){
+  private dameDirecciones(filaInicio,colInicio,filaFin,colFin){
     //pre: solo me voy a moder para abajo y derecha. Con lo cual la
     //pos posInicialX<posFinalX posInicialY<posFinalY
-    var cantMovDer=posFinalX-posInicialX-1;
-    var cantMovAbj=posFinalY-posInicialY-1;
+    var cantMovDer=colFin-colInicio;
+    var cantMovAbj=filaFin-filaInicio;
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
