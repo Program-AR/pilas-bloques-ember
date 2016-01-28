@@ -7,7 +7,7 @@
 // Toda escena que represente una actividad debe heredar de aquí.
 
 class EscenaActividad extends Base {
-	estado : Estado;
+	estado = new SinEstado();
 	errorHandler = new ProductionErrorHandler(this);
 	automata : ActorAnimado;
 

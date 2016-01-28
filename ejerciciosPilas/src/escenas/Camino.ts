@@ -40,22 +40,17 @@ escalarCasillasCuadradas(){
 
   dameCamino(){
       this.escalarCasillasCuadradas();
-      var a = new  CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
-      this.cambiarImagenesCasillasCamino(this.direcciones,a,this.opcionesCasilla,this.opcionesCuadricula,this.cantidadFilas,this.cantidadColumnas);
-      return a;
+      var cuadricula = new  CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
+      this.cambiarImagenesCasillasCamino(cuadricula);
+      return cuadricula;
   }
 
 
-  public cambiarImagenesCasillasCamino(direcciones,cuadricula,opcionesCasilla,opcionesCuadricula,cantFilas,cantColumnas){
-    for(var index=0;index<cuadricula.casillas.length-1;index++){
-      var aux=cuadricula.casillas[index].z;
-      cuadricula.casillas[index].imagen=opcionesCasilla[this.direcciones[index]];
-      cuadricula.casillas[index].z=aux;
+  cambiarImagenesCasillasCamino(cuadricula){
+    for(var i = 0; i < cuadricula.casillas.length -1; i++){
+      cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
     }
-      var aux= cuadricula.casillas[cuadricula.casillas.length-1].z;
-      cuadricula.casillas[cuadricula.casillas.length-1].imagen='finCamino.png'
-      cuadricula.casillas[cuadricula.casillas.length-1].z=aux;
-    //solo por reescalado
+    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png');
   }
 
 

@@ -74,8 +74,6 @@ class Casilla extends ActorAnimado {
 
     renacer(nombreImagen){ // TODO: FEOOOOOOO bugfix setter imagen del actor
         // POR FAVOR YO FUTURO PERDONAME
-        var pos = this.cuadricula.casillas.indexOf(this);
-        this.cuadricula.casillas.slice(pos,pos+1);
         this.eliminar();
         
         var grillaCasilla = this.cuadricula.opcionesCasilla.grilla;
@@ -83,6 +81,6 @@ class Casilla extends ActorAnimado {
         var nuevoYo = new Casilla(this.nroFila,this.nroColumna,this.cuadricula);
         this.cuadricula.opcionesCasilla.grilla = grillaCasilla;
 
-        this.cuadricula.casillas.push(nuevoYo);
+        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
     }
 }
