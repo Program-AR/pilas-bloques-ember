@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
-var {Si} = bloques;
+var {Si,Sino} = bloques;
 var {IrDerecha,IrAbajo} = direcciones;
 var {TocandoAbajo,TocandoDerecha} = tocando;
 
@@ -20,7 +20,7 @@ var actividadLaberintoCorto = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+  control: [Si,Sino],
   expresiones: [],
   acciones: [IrDerecha,IrAbajo],
   sensores: [TocandoAbajo,TocandoDerecha],

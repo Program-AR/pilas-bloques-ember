@@ -12,7 +12,7 @@ var SiguienteCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Siguiente')
+         .appendField('Siguiente compu')
          .appendField(this.obtener_icono('derecha.png'));
   },
 

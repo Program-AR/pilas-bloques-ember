@@ -2641,20 +2641,19 @@ var Camino = (function () {
     };
     Camino.prototype.dameMatriz = function () {
         var aDevolver = [];
-        var puntoActual = new Punto(0, 0);
         for (var filas = 0; filas < this.cantidadFilas; ++filas) {
             var aux = [];
             for (var cols = 0; cols < this.cantidadColumnas; ++cols) {
                 aux.push('F');
             }
-            console.log(aux);
             aDevolver.push(aux);
         }
-        aDevolver[puntoActual.y][puntoActual.x] = 'T';
-        for (var index = 0; index < this.direcciones.length; index++) {
-            puntoActual = puntoActual.siguienteEn(this.direcciones[index]);
-            aDevolver[puntoActual.y][puntoActual.x] = 'T';
-        }
+        var puntoActual = new Punto(0, 0);
+        aDevolver[puntoActual.x][puntoActual.y] = 'T';
+        this.direcciones.forEach(function (dir) {
+            puntoActual = puntoActual.siguienteEn(dir);
+            aDevolver[puntoActual.x][puntoActual.y] = 'T';
+        });
         return aDevolver;
     };
     return Camino;
@@ -2683,8 +2682,8 @@ var Punto = (function () {
     Punto.mapa = {
         '->': { x: 1, y: 0 },
         '<-': { x: -1, y: 0 },
-        '^': { x: 0, y: -1 },
-        'v': { x: 0, y: 1 }
+        '^': { x: 0, y: 1 },
+        'v': { x: 0, y: -1 }
     };
     return Punto;
 })();
