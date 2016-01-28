@@ -354,7 +354,8 @@ var AlienAnimado = (function (_super) {
 var AlimentoAnimado = (function (_super) {
     __extends(AlimentoAnimado, _super);
     function AlimentoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'alimento_pez.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'alimento_pez.png', cantColumnas: 2, cantFilas: 1 });
+        this.definirAnimacion("parado", [0, 1], 4, true);
     }
     return AlimentoAnimado;
 })(ActorAnimado);
@@ -480,14 +481,12 @@ var Casilla = (function (_super) {
     };
     Casilla.prototype.renacer = function (nombreImagen) {
         // POR FAVOR YO FUTURO PERDONAME
-        var pos = this.cuadricula.casillas.indexOf(this);
-        this.cuadricula.casillas.slice(pos, pos + 1);
         this.eliminar();
         var grillaCasilla = this.cuadricula.opcionesCasilla.grilla;
         this.cuadricula.opcionesCasilla.grilla = nombreImagen;
         var nuevoYo = new Casilla(this.nroFila, this.nroColumna, this.cuadricula);
         this.cuadricula.opcionesCasilla.grilla = grillaCasilla;
-        this.cuadricula.casillas.push(nuevoYo);
+        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
     };
     return Casilla;
 })(ActorAnimado);
@@ -1461,8 +1460,8 @@ var MagoAnimado = (function (_super) {
     __extends(MagoAnimado, _super);
     function MagoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
-        this.definirAnimacion("parado", [1], 12, true);
-        this.definirAnimacion("darEspada", [1, 2, 3, 5, 5, 6, 6, 7, 7], 6);
+        this.definirAnimacion("parado", new Cuadros(1).repetirVeces(16).concat([2, 2, 2, 2, 2]), 2, true);
+        this.definirAnimacion("darEspada", [1, 3, 4, 5, 5, 6, 6, 7, 7], 6);
         this.definirAnimacion("paradoConSombrero", [0], 12);
     }
     return MagoAnimado;
@@ -1506,6 +1505,7 @@ var MarcianoVerdeAnimado = (function (_super) {
     MarcianoVerdeAnimado.prototype.animacionesAdicionales = function () {
         this.definirAnimacion("recogerHierro", [13, 14, 15], 5);
         this.definirAnimacion("recogerCarbon", [24, 25, 26], 5);
+        this.definirAnimacion("recogerNaranja", [24, 25, 26], 5);
     };
     return MarcianoVerdeAnimado;
 })(MarcianoAnimado);
@@ -1539,6 +1539,16 @@ var NanoAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: 'nano.png', cantColumnas: 1, cantFilas: 1 });
     }
     return NanoAnimado;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var NaranjaAnimada = (function (_super) {
+    __extends(NaranjaAnimada, _super);
+    function NaranjaAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'naranja.png', cantColumnas: 1, cantFilas: 1 });
+        this.definirAnimacion("comerse", [0], 6);
+        this.definirAnimacion("mordida", [0], 1);
+    }
+    return NaranjaAnimada;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var NaveAnimada = (function (_super) {
@@ -1676,9 +1686,10 @@ var Princesa = (function (_super) {
 var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
     function RatonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 7, cantFilas: 1 });
-        this.definirAnimacion("correr", [0, 1, 2], 15);
-        this.definirAnimacion("recoger", [0, 1, 2], 15);
+        _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 9, cantFilas: 1 });
+        this.definirAnimacion("parado", [0, 1], 1, true);
+        this.definirAnimacion("correr", [2, 3, 4, 3, 4, 3, 4], 6);
+        this.definirAnimacion("recoger", [5, 6, 7, 8], 12);
     }
     return RatonAnimado;
 })(ActorAnimado);
@@ -1802,6 +1813,7 @@ var EscenaActividad = (function (_super) {
     __extends(EscenaActividad, _super);
     function EscenaActividad() {
         _super.apply(this, arguments);
+        this.estado = new SinEstado();
         this.errorHandler = new ProductionErrorHandler(this);
     }
     EscenaActividad.prototype.actualizar = function () {
@@ -2634,20 +2646,15 @@ var Camino = (function () {
     };
     Camino.prototype.dameCamino = function () {
         this.escalarCasillasCuadradas();
-        var a = new CuadriculaEsparsa(this.x, this.y, this.opcionesCuadricula, this.opcionesCasilla, this.matriz);
-        this.cambiarImagenesCasillasCamino(this.direcciones, a, this.opcionesCasilla, this.opcionesCuadricula, this.cantidadFilas, this.cantidadColumnas);
-        return a;
+        var cuadricula = new CuadriculaEsparsa(this.x, this.y, this.opcionesCuadricula, this.opcionesCasilla, this.matriz);
+        this.cambiarImagenesCasillasCamino(cuadricula);
+        return cuadricula;
     };
-    Camino.prototype.cambiarImagenesCasillasCamino = function (direcciones, cuadricula, opcionesCasilla, opcionesCuadricula, cantFilas, cantColumnas) {
-        for (var index = 0; index < cuadricula.casillas.length - 1; index++) {
-            var aux = cuadricula.casillas[index].z;
-            cuadricula.casillas[index].imagen = opcionesCasilla[this.direcciones[index]];
-            cuadricula.casillas[index].z = aux;
+    Camino.prototype.cambiarImagenesCasillasCamino = function (cuadricula) {
+        for (var i = 0; i < cuadricula.casillas.length - 1; i++) {
+            cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
         }
-        var aux = cuadricula.casillas[cuadricula.casillas.length - 1].z;
-        cuadricula.casillas[cuadricula.casillas.length - 1].imagen = 'finCamino.png';
-        cuadricula.casillas[cuadricula.casillas.length - 1].z = aux;
-        //solo por reescalado
+        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png');
     };
     Camino.prototype.dameMatriz = function () {
         var aDevolver = [];
@@ -3379,12 +3386,11 @@ var LaberintoLargo = (function (_super) {
         _super.apply(this, arguments);
     }
     LaberintoLargo.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo(this.nombreFondo(), 0, 0);
         this.cuadricula = new CuadriculaParaRaton(0, 0, this.cantidadFilas(), this.cantidadColumnas(), this.dameOpcionesCuadricula(), { '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' }).dameCamino();
         this.automata = new RatonAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
-        this.automata.escala *= 1.6;
+        this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.automata.escala *= 2;
     };
     LaberintoLargo.prototype.dameOpcionesCuadricula = function () {
         return { 'alto': 440, 'ancho': 400 };
@@ -3980,10 +3986,9 @@ var TitoRecargado = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../actores/Hueso.ts"/>
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
 /**
- * @class TresHuesos
+ * @class TresNaranjas
  *
  */
 var TresNaranjas = (function (_super) {
@@ -3994,14 +3999,14 @@ var TresNaranjas = (function (_super) {
     }
     TresNaranjas.prototype.iniciar = function () {
         this.estado = undefined;
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 4, { alto: 70 }, { grilla: 'casillas.violeta.png' });
-        //se cargan los huesos
+        this.fondo = new Fondo('fondo.tresNaranjas.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 4, { separacionEntreCasillas: 5 }, { grilla: 'casilla.tresNaranjas.png', ancho: 100, alto: 100 });
+        //se cargan los Naranjas
         var hayAlMenosUno = false;
         for (var i = 0; i < 3; i++) {
             if (Math.random() < .5) {
                 hayAlMenosUno = true;
-                this.agregarHueso(i + 1);
+                this.agregarNaranja(i + 1);
             }
         }
         if (!hayAlMenosUno) {
@@ -4013,22 +4018,19 @@ var TresNaranjas = (function (_super) {
             else if (rand > 0.66) {
                 columna = 3;
             }
-            this.agregarHueso(columna);
+            this.agregarNaranja(columna);
         }
         // se crea el personaje
-        this.automata = new PerroCohete(0, 0);
+        this.automata = new MarcianoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
     };
-    TresNaranjas.prototype.agregarHueso = function (columna) {
-        var objeto = new Hueso(0, 0);
+    TresNaranjas.prototype.agregarNaranja = function (columna) {
+        var objeto = new NaranjaAnimada(0, 0);
         this.cuadricula.agregarActor(objeto, 0, columna);
         this.objetos.push(objeto);
     };
-    TresNaranjas.prototype.comerHueso = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'Hueso', 'mensajeError': 'No hay un hueso aqui' });
-    };
-    TresNaranjas.prototype.avanzar = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
+    TresNaranjas.prototype.estaResueltoElProblema = function () {
+        return this.contarActoresConEtiqueta('NaranjaAnimada') == 0;
     };
     return TresNaranjas;
 })(EscenaActividad);
