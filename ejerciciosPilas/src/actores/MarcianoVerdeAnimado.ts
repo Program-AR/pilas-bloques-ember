@@ -8,5 +8,7 @@ class MarcianoVerdeAnimado extends MarcianoAnimado {
     animacionesAdicionales(){
 		this.definirAnimacion("recogerHierro", [13, 14, 15], 5);
         this.definirAnimacion("recogerCarbon", [24, 25, 26], 5);
+				this.definirAnimacion("recogerNaranja", [24, 25, 26], 5);
+
     }
 }
