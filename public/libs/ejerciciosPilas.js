@@ -1121,6 +1121,7 @@ var CuadriculaEsparsa = (function (_super) {
         una lista de funciones que seran evaluadas de manera de evitar
         que en determinadas posiciones de la cuadricula se agreguen objetos.*/
         for (var index = 0; index < this.casillas.length; ++index) {
+            argumentos = argumentos || {};
             if (Math.random() < 0.6 && this.sonTodosTrue(argumentos.condiciones, this.casillas[index].nroFila, this.casillas[index].nroColumna, this.matriz)) {
                 this.agregarActor(conjuntoDeClases.dameUno(), this.casillas[index].nroFila, this.casillas[index].nroColumna);
             }
@@ -1170,7 +1171,7 @@ esta matriz con objetos de esos tipos de manera aleatoria.
 6. Para un ejemplo de utilizacion ver ElMonoQueSabeContar.ts
 
 */
-/// <reference path = "../actores/cuadriculaEsparsa.ts"/>
+/// <reference path = "../actores/CuadriculaEsparsa.ts"/>
 // TODO: DEBERIAMOS HACER REFACTOR de manera de mergear constructores/clases.
 var CuadriculaMultipleColumnas = (function (_super) {
     __extends(CuadriculaMultipleColumnas, _super);
@@ -1676,13 +1677,18 @@ var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
     function RatonAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 7, cantFilas: 1 });
+        this.definirAnimacion("correr", [0, 1, 2], 15);
+        this.definirAnimacion("recoger", [0, 1, 2], 15);
     }
     return RatonAnimado;
 })(ActorAnimado);
 var QuesoAnimado = (function (_super) {
     __extends(QuesoAnimado, _super);
     function QuesoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'quesoAnimado.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'queso.png', cantColumnas: 1, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 15, true);
+        this.definirAnimacion("correr", [0], 15);
+        this.definirAnimacion("recoger", [0], 15);
     }
     return QuesoAnimado;
 })(ActorAnimado);
@@ -1764,7 +1770,7 @@ var Tito = (function (_super) {
     function Tito(x, y) {
         _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 8, cantFilas: 1 });
         this.definirAnimacion("correr", [3, 4, 5, 6, 6, 6, 6, 6, 6, 5, 4, 8], 12);
-        this.definirAnimacion("parado", [0, 1, 2, 3, 4], 4, true);
+        this.definirAnimacion("parado", [0, 1, 2, 2, 3, 4], 6, true);
         this.definirAnimacion("recoger", [0, 1, 2, 2, 2, 2, 2, 2, 3, 4], 9);
     }
     return Tito;
@@ -1825,6 +1831,9 @@ var EscenaActividad = (function (_super) {
     };
     EscenaActividad.prototype.minZ = function () {
         return this.stage.children[this.stage.children.length - 1].z;
+    };
+    EscenaActividad.prototype.contarActoresConEtiqueta = function (etiqueta) {
+        return this.actores.filter(function (actor) { return actor.tiene_etiqueta(etiqueta); }).length;
     };
     return EscenaActividad;
 })(Base);
@@ -2596,6 +2605,7 @@ var AlimentandoALosPeces = (function (_super) {
     };
     return AlimentandoALosPeces;
 })(EscenaActividad);
+/// <reference path = "../actores/CuadriculaEsparsa.ts" />
 /*Builder para una cuadricula esparsa con forma de camino*/
 var Camino = (function () {
     function Camino(x, y, direcciones, cantidadFilas, cantidadColumnas, opcionesCuadricula, opcionesCasilla) {
@@ -2641,19 +2651,22 @@ var Camino = (function () {
     };
     Camino.prototype.dameMatriz = function () {
         var aDevolver = [];
+        var puntoActual = new Punto(0, 0);
         for (var filas = 0; filas < this.cantidadFilas; ++filas) {
             var aux = [];
             for (var cols = 0; cols < this.cantidadColumnas; ++cols) {
                 aux.push('F');
             }
+            console.log(aux);
             aDevolver.push(aux);
         }
-        var puntoActual = new Punto(0, 0);
-        aDevolver[puntoActual.x][puntoActual.y] = 'T';
-        this.direcciones.forEach(function (dir) {
-            puntoActual = puntoActual.siguienteEn(dir);
-            aDevolver[puntoActual.x][puntoActual.y] = 'T';
-        });
+        //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
+        aDevolver[puntoActual.y][puntoActual.x] = 'T';
+        console.log(this.direcciones);
+        for (var index = 0; index < this.direcciones.length; index++) {
+            puntoActual = puntoActual.siguienteEn(this.direcciones[index]);
+            aDevolver[puntoActual.y][puntoActual.x] = 'T';
+        }
         return aDevolver;
     };
     return Camino;
@@ -2682,24 +2695,21 @@ var Punto = (function () {
     Punto.mapa = {
         '->': { x: 1, y: 0 },
         '<-': { x: -1, y: 0 },
-        '^': { x: 0, y: 1 },
-        'v': { x: 0, y: -1 }
+        '^': { x: 0, y: -1 },
+        'v': { x: 0, y: 1 }
     };
     return Punto;
 })();
 var CuadriculaParaRaton = (function (_super) {
     __extends(CuadriculaParaRaton, _super);
-    function CuadriculaParaRaton(x, y, hastaX, hastaY, opcionesCuadricula, opcionesCasilla) {
-        _super.call(this, x, y, this.dameDirecciones(0, 0, hastaX, hastaY), hastaX, hastaY, opcionesCuadricula, opcionesCasilla);
+    function CuadriculaParaRaton(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
+        _super.call(this, x, y, this.dameDirecciones(1, 1, cantFilas, cantColumnas), cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla);
     }
-    CuadriculaParaRaton.prototype.dameCant = function (desde, cantMax) {
-        return Math.floor(Math.random() * cantMax + desde);
-    };
-    CuadriculaParaRaton.prototype.dameDirecciones = function (posInicialX, posInicialY, posFinalX, posFinalY) {
+    CuadriculaParaRaton.prototype.dameDirecciones = function (filaInicio, colInicio, filaFin, colFin) {
         //pre: solo me voy a moder para abajo y derecha. Con lo cual la
         //pos posInicialX<posFinalX posInicialY<posFinalY
-        var cantMovDer = posFinalX - posInicialX - 1;
-        var cantMovAbj = posFinalY - posInicialY - 1;
+        var cantMovDer = colFin - colInicio;
+        var cantMovAbj = filaFin - filaInicio;
         var a = Array.apply(null, new Array(cantMovDer)).map(function () { return '->'; });
         var b = Array.apply(null, new Array(cantMovAbj)).map(function () { return 'v'; });
         var aDevolver = a.concat(b);
@@ -2718,8 +2728,9 @@ var CuadriculaParaRaton = (function (_super) {
 })(Camino);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
-/// <reference path="../actores/cuadriculaEsparsa.ts"/>
+/// <reference path="../actores/CuadriculaEsparsa.ts"/>
 /// <reference path="../actores/GloboAnimado.ts"/>
+/// <reference path="../actores/CangrejoAnimado.ts"/>
 /// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 var ElCangrejoAguafiestas = (function (_super) {
     __extends(ElCangrejoAguafiestas, _super);
@@ -3401,13 +3412,20 @@ var LaberintoConQueso = (function (_super) {
     }
     LaberintoConQueso.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
-        this.cuadricula.completarConObjetosRandom([QuesoAnimado]);
+        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [
+                function (fila, col, pmatrix) { return !(fila == 0 && col == 0); },
+                function (fila, col, pmatrix) { return !(pmatrix[fila + 1] == undefined && pmatrix[col + 1] == undefined); }
+            ]
+        });
     };
     LaberintoConQueso.prototype.dameOpcionesCuadricula = function () {
         return { 'alto': 440, 'ancho': 400 };
     };
     LaberintoConQueso.prototype.nombreFondo = function () {
         return 'fondo.laberinto.queso.png';
+    };
+    LaberintoConQueso.prototype.estaResueltoElProblema = function () {
+        return this.automata.alFinalDelCamino() && this.contarActoresConEtiqueta('QuesoAnimado') == 0;
     };
     return LaberintoConQueso;
 })(LaberintoLargo);
@@ -3419,29 +3437,14 @@ var LaberintoCorto = (function (_super) {
         _super.apply(this, arguments);
     }
     LaberintoCorto.prototype.iniciar = function () {
-        if (Math.random() < 0.5) {
-            this.caso = true;
-        }
-        else {
-            this.caso = false;
-        }
+        this.aDerecha = Math.random() < 0.5;
         _super.prototype.iniciar.call(this);
     };
     LaberintoCorto.prototype.cantidadFilas = function () {
-        if (this.caso) {
-            return 1;
-        }
-        else {
-            return 2;
-        }
+        return this.aDerecha ? 1 : 2;
     };
     LaberintoCorto.prototype.cantidadColumnas = function () {
-        if (this.caso) {
-            return 2;
-        }
-        else {
-            return 1;
-        }
+        return this.aDerecha ? 2 : 1;
     };
     LaberintoCorto.prototype.nombreFondo = function () {
         return 'fondo.laberinto.corto.png';
