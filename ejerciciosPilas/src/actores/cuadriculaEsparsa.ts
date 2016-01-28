@@ -35,6 +35,7 @@ class CuadriculaEsparsa extends Cuadricula{
     una lista de funciones que seran evaluadas de manera de evitar
     que en determinadas posiciones de la cuadricula se agreguen objetos.*/
     for(var index=0;index<this.casillas.length;++index){
+      argumentos = argumentos || {};
       if(Math.random()<0.6&&this.sonTodosTrue(argumentos.condiciones,this.casillas[index].nroFila,this.casillas[index].nroColumna,this.matriz)){
         this.agregarActor(conjuntoDeClases.dameUno(),this.casillas[index].nroFila,this.casillas[index].nroColumna);
       }

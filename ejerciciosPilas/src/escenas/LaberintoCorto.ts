@@ -30,6 +30,7 @@ class LaberintoCorto extends LaberintoLargo {
         return 1;
       }
     }
+
     nombreFondo(){
       return 'fondo.laberinto.corto.png';
     }

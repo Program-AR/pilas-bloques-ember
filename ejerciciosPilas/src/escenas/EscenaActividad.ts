@@ -10,7 +10,7 @@ class EscenaActividad extends Base {
 	estado : Estado;
 	errorHandler = new ProductionErrorHandler(this);
 	automata : ActorAnimado;
-	
+
 	actualizar() : void {
 		try {
 			super.actualizar();
@@ -41,4 +41,13 @@ class EscenaActividad extends Base {
 	minZ(): Number {
 		return this.stage.children[this.stage.children.length - 1].z;
 	}
+
+	contarActoresConEtiqueta(etiqueta) : Number{
+			return this.actores.filter(actor=>actor.tiene_etiqueta(etiqueta)).length;
+	}
+
+
+
+
+
 }
