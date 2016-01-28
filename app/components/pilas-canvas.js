@@ -120,6 +120,7 @@ export default Ember.Component.extend({
                 'casillaArriba.png',
                 'casillaAbajo.png',
                 'raton.png',
+                'queso.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
                 'icono.abrirOjos.png',
