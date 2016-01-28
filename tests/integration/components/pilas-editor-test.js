@@ -323,7 +323,7 @@ test('puede resolver la actividad tito enciende las luces', function(assert) {
       success(); // indica que los test finalizan para este desafío.
     }, false);
 });
-});*/t
+});*/
 /*
 test('puede resolver la actividad laberinto corto', function(assert) {
   assert.expect(2);
@@ -448,6 +448,32 @@ test('puede resolver la actividad laberinto con queso', function(assert) {
       //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
 
       success(); // indica que los test finalizan para este desafío.
+    }, false);
+  });
+
+});
+test('puede resolver la actividad tres naranjas', function(assert) {
+  assert.expect(2);
+
+  var actividad = Actividad.create({actividad: actividadTresNaranjas});
+  var solucion = Ember.Object.create({
+    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="8" inline="true"><value name="count"><block type="math_number" id="9"><field name="NUM">3</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="12"><next><block type="si" id="17" inline="true"><value name="condition"><block type="TocandoNaranja" id="19"></block></value><statement name="block"><block type="ComerNaranja" id="22"></block></statement></block></next></block></statement></block></statement></block></xml>',
+    nombreDesafio: 'TresNaranjas'
+  });
+  this.set('actividad', actividad);
+  this.set('solucion', solucion);
+  return new Ember.RSVP.Promise((success) => {
+    this.render(hbs`
+      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
+                      solucion=solucion}}{{/pilas-editor}}
+    `);
+    window.addEventListener('terminaCargaInicial', () => {
+      debeTenerTantosActoresConEtiqueta(assert, 1, "MarcianoAnimado");
+    }, false);
+
+    window.addEventListener('terminaEjecucion', () => {
+      assert.ok(true,pilas.escena_actual().estaResueltoElProblema());
+      success();
     }, false);
   });
 

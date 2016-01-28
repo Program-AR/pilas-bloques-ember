@@ -3,7 +3,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 import comer from 'pilas-engine-bloques/actividades/comer';
-var {Si,Repetir,Procedimiento,Hasta} = bloques;
+var {Si,Repetir,Procedimiento,Hasta,Sino} = bloques;
 var {IrDerecha,IrAbajo} = direcciones;
 var {TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso} = tocando;
 var {ComerQueso} = comer;
@@ -23,7 +23,7 @@ var actividadLaberintoConQueso = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si,Repetir,Hasta],
+  control: [Si,Repetir,Hasta,Sino],
   expresiones: [],
   acciones: [IrDerecha,IrAbajo,ComerQueso],
   sensores: [TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso],
