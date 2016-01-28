@@ -11,6 +11,7 @@ import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/acti
 import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
 import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
 import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
+import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTresNaranjas';
 /*import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
 import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
@@ -26,10 +27,7 @@ import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividad
 import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
 import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
 import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
-import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTresNaranjas';
-import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
 
-import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
 import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
 */
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
