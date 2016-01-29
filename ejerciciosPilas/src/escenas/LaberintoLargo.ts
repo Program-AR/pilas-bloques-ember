@@ -13,6 +13,7 @@ class LaberintoLargo extends EscenaActividad {
         this.automata = new RatonAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
         this.automata.escala *= 2;
+        this.automata.x -= 5;
     }
 
     dameOpcionesCuadricula(){

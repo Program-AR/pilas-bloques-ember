@@ -12,6 +12,7 @@ class LaberintoConQueso extends LaberintoLargo {
             function(fila,col,pmatrix){return !(pmatrix[fila+1]==undefined && pmatrix[col+1]==undefined)}
           ]
         });
+        this.automata.setZ(pilas.escena_actual().minZ() - 1);
     }
 
 
