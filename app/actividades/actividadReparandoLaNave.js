@@ -49,7 +49,7 @@ var TomarCarbon = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'CarbonAnimado\', \'idTransicion\' : \'tomarCarbon\', \'dondeReflejarValor\':pilas.escena_actual().carbon }';
+        return '{\'etiqueta\' : \'CarbonAnimado\', \'idTransicion\' : \'tomarCarbon\'}';
       }
     });
 

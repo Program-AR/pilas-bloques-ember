@@ -37,8 +37,8 @@ var AgarrarLlave = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField(this.obtener_icono('../libs/data/llave.png'));
-    .appendField('Agarrar llave')
+    .appendField(this.obtener_icono('../libs/data/llave.png'))
+    .appendField('Agarrar llave');
   },
 
   nombre_comportamiento() {
@@ -59,8 +59,8 @@ var AbrirCofre = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField(this.obtener_icono('../libs/data/icono.cofre.png'));
-    .appendField('Abrir cofre')
+    .appendField(this.obtener_icono('../libs/data/icono.cofre.png'))
+    .appendField('Abrir cofre');
   },
 
   nombre_comportamiento() {

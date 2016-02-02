@@ -1871,10 +1871,10 @@ var Estado = (function () {
     Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
         this.transiciones[transicion] = estadoEntrada;
     };
-    Estado.prototype.realizarTransicion = function (idComportamiento, comportamiento) {
-        if (this.transiciones[idComportamiento]) {
-            pilas.escena_actual().estado = this.transiciones[idComportamiento].estadoSiguiente(comportamiento, this);
-            this.transiciones[idComportamiento].realizarAccion(comportamiento, this);
+    Estado.prototype.realizarTransicion = function (idTransicion, comportamiento) {
+        if (this.transiciones[idTransicion]) {
+            pilas.escena_actual().estado = this.transiciones[idTransicion].estadoSiguiente(comportamiento, this);
+            this.transiciones[idTransicion].realizarAccion(comportamiento, this);
         }
         else {
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
@@ -2004,7 +2004,7 @@ var ComportamientoColision = (function (_super) {
         }
     };
     ComportamientoColision.prototype.alTerminarAnimacion = function () {
-        pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'], this);
+        pilas.escena_actual().estado.realizarTransicion(this.argumentos['idTransicion'], this);
     };
     ComportamientoColision.prototype.ejecutarse = function () {
         this.verificarCondicionesDeEjecucion();
@@ -2414,12 +2414,12 @@ var SerPateado = (function (_super) {
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 */
-var TomarPorEtiqueta = (function (_super) {
-    __extends(TomarPorEtiqueta, _super);
-    function TomarPorEtiqueta() {
+var Sostener = (function (_super) {
+    __extends(Sostener, _super);
+    function Sostener() {
         _super.apply(this, arguments);
     }
-    TomarPorEtiqueta.prototype.metodo = function (objetoColision) {
+    Sostener.prototype.metodo = function (objetoColision) {
         // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
         var objetoAgarrado = objetoColision.clonar();
         objetoAgarrado.escala = objetoColision.escala;
@@ -2432,7 +2432,7 @@ var TomarPorEtiqueta = (function (_super) {
             objetoColision.eliminar();
         }
     };
-    return TomarPorEtiqueta;
+    return Sostener;
 })(ComportamientoColision);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
@@ -2608,12 +2608,6 @@ var AlimentandoALosPeces = (function (_super) {
         this.cuadricula.agregarActor(new PezAnimado(0, 0), 0, 1);
         this.cuadricula.agregarActor(new PezAnimado(0, 0), 0, 2);
         this.cuadricula.agregarActor(new PezAnimado(0, 0), 0, 3);
-    };
-    AlimentandoALosPeces.prototype.alimentarPez = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'PezAnimado', 'mensajeError': 'No hay un pez aqui', 'idComportamiento': 'alimentarPez' });
-    };
-    AlimentandoALosPeces.prototype.agarrarComida = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'AlimentoAnimado', 'mensajeError': 'No hay una alimento aqui', 'idComportamiento': 'recogerComida' });
     };
     return AlimentandoALosPeces;
 })(EscenaActividad);
@@ -3230,27 +3224,6 @@ var InstalandoJuegos = (function (_super) {
         this.automata.y = -75;
         this.automata.x = -170;
     };
-    InstalandoJuegos.prototype.siguienteCompu = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    InstalandoJuegos.prototype.prenderCompu = function () {
-        this.automata.hacer_luego(PrenderPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'prender' });
-    };
-    InstalandoJuegos.prototype.apagarCompu = function () {
-        this.automata.hacer_luego(ApagarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'apagar' });
-    };
-    InstalandoJuegos.prototype.instalarJuego = function () {
-        this.automata.hacer_luego(InstalarPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'instalar' });
-    };
-    InstalandoJuegos.prototype.escribirC = function () {
-        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirC' });
-    };
-    InstalandoJuegos.prototype.escribirB = function () {
-        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirB' });
-    };
-    InstalandoJuegos.prototype.escribirA = function () {
-        this.automata.hacer_luego(EscribirEnCompuAnimada, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idComportamiento': 'escribirA' });
-    };
     return InstalandoJuegos;
 })(EscenaActividad);
 var ApagarPorEtiqueta = (function (_super) {
@@ -3289,7 +3262,7 @@ var EscribirEnCompuAnimada = (function (_super) {
         _super.apply(this, arguments);
     }
     EscribirEnCompuAnimada.prototype.metodo = function (objetoColision) {
-        if (this.argumentos['idComportamiento'] == 'escribirC') {
+        if (this.argumentos['idTransicion'] == 'escribirC') {
             objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
         }
     };
@@ -3391,6 +3364,7 @@ var LaberintoLargo = (function (_super) {
         this.automata = new RatonAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala *= 2;
+        this.automata.x -= 5;
     };
     LaberintoLargo.prototype.dameOpcionesCuadricula = function () {
         return { 'alto': 440, 'ancho': 400 };
@@ -3423,6 +3397,7 @@ var LaberintoConQueso = (function (_super) {
                 function (fila, col, pmatrix) { return !(pmatrix[fila + 1] == undefined && pmatrix[col + 1] == undefined); }
             ]
         });
+        this.automata.setZ(pilas.escena_actual().minZ() - 1);
     };
     LaberintoConQueso.prototype.dameOpcionesCuadricula = function () {
         return { 'alto': 440, 'ancho': 400 };
