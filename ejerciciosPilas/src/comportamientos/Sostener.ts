@@ -4,7 +4,7 @@
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 */
-class TomarPorEtiqueta extends ComportamientoColision {
+class Sostener extends ComportamientoColision {
 
     metodo(objetoColision){
 			// TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
