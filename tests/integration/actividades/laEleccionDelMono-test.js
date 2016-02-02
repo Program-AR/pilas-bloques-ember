@@ -1,6 +1,6 @@
 import {moduleForComponent} from 'ember-qunit';
-import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadTest from '../../helpers/actividadTest';
+import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 
 moduleForComponent('pilas-editor', "actividad:LaEleccionDelMono", {  integration: true, });
 

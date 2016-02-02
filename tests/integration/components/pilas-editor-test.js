@@ -3,32 +3,13 @@ import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
-import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
 
-import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
 import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
 import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
 import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTresNaranjas';
-/*import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
-import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
-import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
-import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
-import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
-import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
-import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 
-import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
-import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
-import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
-import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
-import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
-import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
-import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
-
-import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
-*/
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 import debeTenerTantosActoresConEtiqueta from '../../helpers/debe-tener-tantos-actores-con-etiqueta';
@@ -60,37 +41,7 @@ test('puede cargar una actividad y leer el título del desafío', function(asser
 });
 
 /*
-test('puede resolver la actividad "El recolector de estrellas"', function(assert) {
-  assert.expect(2);
 
-  var actividad = Actividad.create({actividad: actividadElRecolectorDeEstrellas});
-  var solucion = Ember.Object.create({
-    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="115" inline="true"><value name="count"><block type="math_number" id="116"><field name="NUM">3</field></block></value><statement name="block"><block type="procedures_callnoreturn" id="107"><mutation name="tomar estellas de la fila completa"></mutation><next><block type="VolverABordeIzquierdo" id="121"><next><block type="MoverACasillaArriba" id="126"></block></next></block></next></block></statement><next><block type="procedures_callnoreturn" id="129"><mutation name="tomar estellas de la fila completa"></mutation></block></next></block></statement></block><block type="procedures_defnoreturn" id="92" x="14" y="268"><mutation></mutation><field name="NAME">tomar estellas de la fila completa</field><statement name="STACK"><block type="repetir" id="89" inline="true"><value name="count"><block type="math_number" id="90"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="97"><next><block type="TomarEstrella" id="102"></block></next></block></statement></block></statement></block></xml>',
-    nombreDesafio: 'ElRecolectorDeEstrellas',
-  });
-
-  this.set('actividad', actividad);
-  this.set('solucion', solucion);
-
-  return new Ember.RSVP.Promise((success) => {
-
-    this.render(hbs`
-      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
-                      solucion=solucion}}{{/pilas-editor}}
-    `);
-
-    window.addEventListener('terminaCargaInicial', () => {
-      debeTenerTantosActoresConEtiqueta(assert, 4*4, "EstrellaAnimada");
-    }, false);
-
-    window.addEventListener('terminaEjecucion', () => {
-      assert.ok(true,pilas.escena_actual().estaResueltoElProblema());
-
-        success();
-    }, false);
-  });
-
-});
 
 test('puede resolver la actividad del alien y las tuercas', function(assert) {
   assert.expect(2);
