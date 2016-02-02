@@ -34,7 +34,7 @@ var ApretarBoton = Accion.extend({
   },
 
   argumentos() {
-    return '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idComportamiento\':\'apretarBoton\'}';
+    return '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}';
 
   }
 });

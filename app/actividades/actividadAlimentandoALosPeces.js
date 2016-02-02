@@ -28,7 +28,7 @@ var AlimentarPez = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'PezAnimado\', \'mensajeError\' : \'No hay un pez aqui\', \'idComportamiento\' : \'alimentarPez\' }';
+        return '{\'etiqueta\' : \'PezAnimado\', \'mensajeError\' : \'No hay un pez aqui\', \'idTransicion\' : \'alimentarPez\' }';
 
 
 
@@ -57,7 +57,7 @@ var AlimentarPez = Accion.extend({
 
 
           argumentos() {
-            return   '{\'etiqueta\' : \'AlimentoAnimado\',\'mensajeError\' : \'No hay una alimento aqui\', \'idComportamiento\' : \'recogerComida\' }';
+            return   '{\'etiqueta\' : \'AlimentoAnimado\',\'mensajeError\' : \'No hay una alimento aqui\', \'idTransicion\' : \'recogerComida\' }';
 
 
           }
