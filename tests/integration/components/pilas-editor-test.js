@@ -58,37 +58,7 @@ test('puede cargar una actividad y leer el título del desafío', function(asser
   var incluye_texto = (texto_del_componente.indexOf(texto_esperado) > -1);
   assert.ok(incluye_texto, "Muestra el título del desafío");
 });
-test('puede resolver la actividad "Alien toca boton"', function(assert) {
-    assert.expect(1);
 
-    var actividad = Actividad.create({actividad: actividadAlienTocaBoton});
-    var solucion = Ember.Object.create({
-      codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="MoverACasillaDerecha" id="4"><next><block type="MoverACasillaDerecha" id="7"><next><block type="MoverACasillaDerecha" id="10"><next><block type="ApretarBoton" id="13"></block></next></block></next></block></next></block></statement></block></xml>',
-      nombreDesafio: 'AlienTocaBoton',
-    });
-
-    this.set('actividad', actividad);
-    this.set('solucion', solucion);
-
-    /* Como la tarea de ejecutar el código completo de la solución demora
-     * tiempo, retorno una promesa para que ember espere a que finalice.
-     * La promesa termina con la llamada a sucess.
-     */
-    return new Ember.RSVP.Promise((success) => {
-
-      this.render(hbs`
-        {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
-                        solucion=solucion}}{{/pilas-editor}}
-      `);
-
-
-      window.addEventListener('terminaEjecucion', () => {
-        assert.ok(true,pilas.escena_actual().estaResueltoElProblema());
-        success();
-      }, false);
-    });
-
-  });
 /*
 test('puede resolver la actividad "El recolector de estrellas"', function(assert) {
   assert.expect(2);
