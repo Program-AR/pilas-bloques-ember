@@ -70,36 +70,6 @@ class InstalandoJuegos extends EscenaActividad {
      this.automata.y=-75;
      this.automata.x=-170;
    }
-
-  siguienteCompu(){
-    this.automata.hacer_luego(MoverACasillaDerecha)
-  }
-
-  prenderCompu(){
-    this.automata.hacer_luego(PrenderPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'prender' });
-  }
-
-  apagarCompu(){
-    this.automata.hacer_luego(ApagarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'apagar' });
-  }
-
-  instalarJuego(){
-    this.automata.hacer_luego(InstalarPorEtiqueta,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'instalar'})
-  }
-
-  escribirC(){
-    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirC'})
-  }
-
-  escribirB(){
-    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirB'})
-  }
-
-  escribirA(){
-    this.automata.hacer_luego(EscribirEnCompuAnimada,{'etiqueta' : 'CompuAnimada',  'mensajeError' : 'No hay una compu aqui', 'idComportamiento' : 'escribirA'})
-    }
-
-
 }
 
 
@@ -128,7 +98,7 @@ class PrenderPorEtiqueta extends ComportamientoColision {
 
 class EscribirEnCompuAnimada extends ComportamientoColision {
     metodo(objetoColision){
-      if (this.argumentos['idComportamiento'] == 'escribirC') {
+      if (this.argumentos['idTransicion'] == 'escribirC') {
           objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
       }
     }

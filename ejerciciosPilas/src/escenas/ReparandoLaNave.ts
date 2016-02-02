@@ -89,46 +89,25 @@ class ReparandoLaNave extends EscenaActividad {
             builder.agregarEstado(('estoy'+hierro)+carbon)
             builder.agregarEstado((('estoy'+hierro)+carbon)+'carbon')
             builder.agregarEstado((('estoy'+hierro)+carbon)+'hierro')
-        }}
-        //no unificar los fors, necesito tener creados los estados antes de las transi
-        for(var hierro=0;hierro<=3;hierro++){
-            for(var carbon=0;carbon<=3;carbon++){
-              builder.agregarError('estoy'+hierro+carbon,'depositar','No tengo nada en la mano')
-            if(hierro!=3){
-                builder.agregarTransicion((('estoy'+hierro)+carbon)+'hierro',('estoy'+(hierro+1))+carbon,'depositar')
-                builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'hierro','tomarHierro')
-
-            }
-            if(carbon!=3){
-                builder.agregarTransicion((('estoy'+hierro)+carbon)+'carbon',('estoy'+hierro)+(carbon+1),'depositar')
-                builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'carbon','tomarCarbon')
-            }
-          }
         }
+    }
+    //no unificar los fors, necesito tener creados los estados antes de las transi
+    for(var hierro=0;hierro<=3;hierro++){
+        for(var carbon=0;carbon<=3;carbon++){
+          builder.agregarError('estoy'+hierro+carbon,'depositar','No tengo nada en la mano')
+        if(hierro!=3){
+            builder.agregarTransicion((('estoy'+hierro)+carbon)+'hierro',('estoy'+(hierro+1))+carbon,'depositar')
+            builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'hierro','tomarHierro')
 
-
+        }
+        if(carbon!=3){
+            builder.agregarTransicion((('estoy'+hierro)+carbon)+'carbon',('estoy'+hierro)+(carbon+1),'depositar')
+            builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'carbon','tomarCarbon')
+        }
+      }
+    }
+  }
 }
-/*
-  tomarHierro(){
-        this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.hierro, 'idComportamiento' : 'tomarHierro'})
-  }
-
-  tomarCarbon(){
-    this.automata.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.carbon,'idComportamiento' : 'tomarCarbon'})
-  }
-
-  depositar(){
-    this.automata.hacer_luego(Depositar,{'etiqueta':'NaveAnimada','mensajeError':'La nave no está aquí','idComportamiento' : 'depositar'})
-  }
-
-  escapar(){
-  this.automata.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
-
-  }
-*/
-
-
-     }
 
 class Depositar extends ComportamientoColision{
   metodo(objetoColision){

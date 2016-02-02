@@ -33,10 +33,10 @@ class Estado {
     this.transiciones[transicion]= estadoEntrada;
   }
 
-  realizarTransicion(idComportamiento,comportamiento){
-    if(this.transiciones[idComportamiento]){
-        pilas.escena_actual().estado=this.transiciones[idComportamiento].estadoSiguiente(comportamiento,this);
-        this.transiciones[idComportamiento].realizarAccion(comportamiento,this);
+  realizarTransicion(idTransicion,comportamiento){
+    if(this.transiciones[idTransicion]){
+        pilas.escena_actual().estado=this.transiciones[idTransicion].estadoSiguiente(comportamiento,this);
+        this.transiciones[idTransicion].realizarAccion(comportamiento,this);
     }else{
       throw new ActividadError("¡Ups, esa no era la opción correcta!");
     }

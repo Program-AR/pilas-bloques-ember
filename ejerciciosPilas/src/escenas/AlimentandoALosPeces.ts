@@ -48,12 +48,4 @@ class AlimentandoALosPeces extends EscenaActividad {
       this.cuadricula.agregarActor(new PezAnimado(0,0),0,2);
       this.cuadricula.agregarActor(new PezAnimado(0,0),0,3);
     }
-
-    alimentarPez(){
-      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'PezAnimado', 'mensajeError' : 'No hay un pez aqui', 'idComportamiento' : 'alimentarPez' })
-    }
-    agarrarComida(){
-      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'AlimentoAnimado', 'mensajeError' : 'No hay una alimento aqui', 'idComportamiento' : 'recogerComida' });
-    }
-
 }

@@ -29,7 +29,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 	}
 
 	alTerminarAnimacion(){
-			pilas.escena_actual().estado.realizarTransicion(this.argumentos['idComportamiento'],this)
+			pilas.escena_actual().estado.realizarTransicion(this.argumentos['idTransicion'],this)
 	}
 
 	ejecutarse(){
