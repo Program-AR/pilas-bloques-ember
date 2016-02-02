@@ -42,7 +42,7 @@ var AgarrarLlave = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'TomarPorEtiqueta';
+    return 'Sostener';
   },
 
   argumentos() {
@@ -64,7 +64,7 @@ var AbrirCofre = Accion.extend({
   },
 
   nombre_comportamiento() {
-    return 'TomarPorEtiqueta';
+    return 'Sostener';
   },
 
   argumentos() {

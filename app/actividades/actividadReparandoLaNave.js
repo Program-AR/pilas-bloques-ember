@@ -20,7 +20,7 @@ var TomarHierro = Accion.extend({
       },
 
       nombre_comportamiento() {
-        return 'TomarPorEtiqueta';
+        return 'Sostener';
       },
 
 
@@ -44,7 +44,7 @@ var TomarCarbon = Accion.extend({
       },
 
       nombre_comportamiento() {
-        return 'TomarPorEtiqueta';
+        return 'Sostener';
       },
 
 
