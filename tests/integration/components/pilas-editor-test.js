@@ -2,8 +2,6 @@ import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 
-import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
-
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
 import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
@@ -41,45 +39,6 @@ test('puede cargar una actividad y leer el título del desafío', function(asser
 });
 
 /*
-
-
-test('puede resolver la actividad del alien y las tuercas', function(assert) {
-  assert.expect(2);
-
-  var actividad = Actividad.create({actividad: actividadAlien});
-  var solucion = Ember.Object.create({
-    codigoXML: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="7" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="16" inline="true"><value name="count"><block type="math_number" id="17"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaArriba" id="23"></block></statement><next><block type="repetir" id="45" inline="true"><value name="count"><block type="math_number" id="46"><field name="NUM">4</field></block></value><statement name="block"><block type="LevantaTuerca" id="29"><next><block type="MoverACasillaAbajo" id="35"><next><block type="MoverACasillaDerecha" id="41"></block></next></block></next></block></statement><next><block type="LevantaTuerca" id="53"></block></next></block></next></block></statement></block></xml>',
-    nombreDesafio: 'alien'
-  });
-
-  this.set('actividad', actividad);
-  this.set('solucion', solucion);
-
-  return new Ember.RSVP.Promise((success) => {
-
-    this.render(hbs`
-      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
-                      solucion=solucion}}{{/pilas-editor}}
-    `);
-
-    window.addEventListener('terminaCargaInicial', () => {
-      debeTenerTantosActoresConEtiqueta(assert, 5, "TuercaAnimada");
-      //debeTenerTantosActoresConEtiqueta
-      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
-      //assert.equal(5, cantidad_de_tuercas, "Tienen que haber 5 tuercas al comenzar.");
-    }, false);
-
-    window.addEventListener('terminaEjecucion', () => {
-      assert.ok(true,pilas.escena_actual().estaResueltoElProblema());
-      //var cantidad_de_tuercas = contarActoresConEtiqueta(window['pilas'], "TuercaAnimada");
-      //assert.equal(0, cantidad_de_tuercas, "No tienen que haber tuercas al finalizar");
-
-      success(); // indica que los test finalizan para este desafío.
-    }, false);
-  });
-
-});
-
 test('puede resolver la actividad alimentando a los peces', function(assert) {
   assert.expect(2);
   var actividad = Actividad.create({actividad: actividadAlimentandoALosPeces});
