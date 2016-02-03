@@ -200,8 +200,8 @@ var Soniar = Accion.extend({
 var actividadElGatoEnLaCalle = {
   nombre: 'El gato en la calle',
   id: 'ElGatoEnLaCalle',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
+  consignaInicial: 'Podés crear nuevos bloques definiendo una subtarea que realice varias acciones.',
 
   escena: ElGatoEnLaCalle,
   puedeComentar: false,
