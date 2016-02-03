@@ -8,7 +8,8 @@ var {IrDerecha,IrAbajo} = direcciones;
 var {TocandoAbajo,TocandoDerecha,TocandoFinCamino} = tocando;
 
 var actividadLaberintoLargo = {
-  nombre: 'Laberinto Largo',
+  nombre: 'Laberinto largo',
+  id: 'LaberintoLargo',
   enunciado: 'a!.',
 
   consignaInicial: 'a',

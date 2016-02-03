@@ -117,7 +117,8 @@ var TocandoBanana = Sensor.extend({
 
 
 var actividadLaEleccionDelMono = {
-  nombre: 'La Elección del Mono',
+  nombre: 'La elección del mono',
+  id: 'LaEleccionDelMono',
   enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez siempre tiene '+
      'una fruta para comer. ¡Pero no siempre es la misma! \n'+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +

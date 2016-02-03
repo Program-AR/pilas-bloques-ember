@@ -29,6 +29,7 @@ var Saltar = Accion.extend({
 
 var actividadNoMeCansoDeSaltar = {
   nombre: 'No me canso de saltar',
+  id: 'NoMeCansoDeSaltar',
   enunciado: 'A definir.',
   consignaInicial: 'A definir.',
 

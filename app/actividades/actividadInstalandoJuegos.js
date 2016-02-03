@@ -177,6 +177,7 @@ var EscribirA = Accion.extend({
 
 var actividadInstalandoJuegos = {
   nombre: 'Instalando juegos',
+  id: 'InstalandoJuegos',
   enunciado: 'A definir',
 
   // la escena proviene de ejerciciosPilas

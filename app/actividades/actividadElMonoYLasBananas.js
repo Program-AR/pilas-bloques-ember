@@ -77,7 +77,8 @@ var TocandoBanana = Sensor.extend({
 
 
 export default {
-  nombre: 'El Mono y las Bananas',
+  nombre: 'El mono y las bananas',
+  id: 'ElMonoYLasBananas',
   enunciado:
     '¿Podés hacer que el mono avance al casillero de enfrente?'+
     ' Si hay una banana debe comérsela. Sino, es feliz con sólo llegar. \n '+

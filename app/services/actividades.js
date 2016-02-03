@@ -78,39 +78,38 @@ import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 
 export default Ember.Service.extend({
-  obtenerPorNombre(nombreActividad) {
+  obtenerPorNombre(idActividad) {
 
-    let actividades = {
-      alien: actividadAlien,
-      AlienTocaBoton: actividadAlienTocaBoton,
-      LaEleccionDelMono: actividadLaEleccionDelMono,
-      ElMonoYLasBananas: actividadElMonoYLasBananas,
-      TitoEnciendeLuces: actividadTitoEnciendeLuces,
-      FutbolRobots: actividadFutbolRobots,
-      //ElPlanetaDeNano: actividadElPlanetaDeNano
-      TitoRecargado : actividadTitoRecargado,
-      SuperTito1: actividadSuperTito1,
-      SuperTito2: actividadSuperTito2,
-      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
+    let actividades = [
+      actividadAlien,
+      actividadAlienTocaBoton,
+      actividadLaEleccionDelMono,
+      actividadElMonoYLasBananas,
+      actividadTitoEnciendeLuces,
+      actividadFutbolRobots,
+      actividadElPlanetaDeNano,
+      actividadTitoRecargado,
+      actividadSuperTito1,
+      actividadSuperTito2,
+      actividadElRecolectorDeEstrellas,
+      actividadMariaLaComeSandias,
+      actividadElMarcianoEnElDesierto,
+      actividadAlimentandoALosPeces,
+      actividadInstalandoJuegos,
+      actividadNoMeCansoDeSaltar,
+      actividadElGatoEnLaCalle,
+      actividadElMonoQueSabeContar,
+      actividadReparandoLaNave,
+      actividadTresNaranjas,
+      actividadLaberintoCorto,
+      actividadLaberintoLargo,
+      actividadLaberintoConQueso,
+      actividadElCangrejoAguafiestas,
+      actividadLaGranAventuraDelMarEncantado,
 
-      MariaLaComeSandias: actividadMariaLaComeSandias,
-      ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto,
-      AlimentandoALosPeces: actividadAlimentandoALosPeces,
-      InstalandoJuegos: actividadInstalandoJuegos,
-      NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
-      ElGatoEnLaCalle: actividadElGatoEnLaCalle,
-      ElMonoQueSabeContar:actividadElMonoQueSabeContar,
-      ReparandoLaNave: actividadReparandoLaNave,
-      TresNaranjas: actividadTresNaranjas,
-      LaberintoCorto: actividadLaberintoCorto,
-      LaberintoLargo: actividadLaberintoLargo,
-      LaberintoConQueso: actividadLaberintoConQueso,
-      ElCangrejoAguafiestas: actividadElCangrejoAguafiestas,
-      LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
+    ];
 
-    };
-
-    var actividad = actividades[nombreActividad];
+    var actividad = actividades.findBy('id',idActividad);
 
     if (!actividad) {
       return null;

@@ -3,6 +3,8 @@ import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
 import debeTenerTantosActoresConEtiqueta from './debe-tener-tantos-actores-con-etiqueta';
+import {moduleForComponent} from 'ember-qunit';
+
 
 function descripcionTest(actividad,descripcionAdicional){
 	return 'Puede resolver la actividad '
@@ -18,7 +20,11 @@ function sanitizarOpciones(opciones){
     opciones.assertsPostEjecucion = opciones.assertsPostEjecucion || function(assert){};
 }
 
-export default function actividadTest(nombreDesafio, actividad, opciones){
+export function moduloActividad(actividad){
+	moduleForComponent('pilas-editor','actividad:' + actividad.id,  {  integration: true, });
+};
+
+export function actividadTest(nombreDesafio, actividad, opciones){
 	sanitizarOpciones(opciones);
 
 	test(descripcionTest(actividad,opciones.descripcionAdicional), function(assert) {

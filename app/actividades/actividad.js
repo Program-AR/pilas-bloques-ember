@@ -16,6 +16,7 @@ var Actividad = Ember.Object.extend({
   init() {
     var actividad = this.get('actividad');
     this.set('nombre', actividad.nombre);
+    this.set('id', actividad.id);
     this.set('enunciado', actividad.enunciado);
     this.set('escena', actividad.escena);
     this.set('puedeComentar', actividad.puedeComentar);

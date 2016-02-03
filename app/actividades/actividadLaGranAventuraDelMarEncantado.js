@@ -74,6 +74,7 @@ var AbrirCofre = Accion.extend({
 
 var actividadLaGranAventuraDelMarEncantado = {
   nombre: 'La gran aventura del mar encantado',
+  id: 'LaGranAventuraDelMarEncantado',
   enunciado: '',
   consignaInicial: '',
   escena: LaGranAventuraDelMarEncantado, // jshint ignore:line

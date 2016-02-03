@@ -140,7 +140,8 @@ var TocandoPelota = Sensor.extend({
 
 
 var actividadFutbolRobots = {
-  nombre: 'Fútbol de Robots',
+  nombre: 'Fútbol para robots',
+  id: 'FutbolRobots',
   enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
     'Recordá siempre que una buena división en tareas puede ayudarte a encarar '+
     'mejor el problema.',

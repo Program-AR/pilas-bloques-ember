@@ -12,7 +12,8 @@ var {ContandoBanana, ContandoManzana} = contando;
 
 
 var actividadElMonoQueSabeContar = {
-  nombre: 'El Mono que sabe contar',
+  nombre: 'El mono que sabe contar',
+  id: 'ElMonoQueSabeContar',
   enunciado: 'COMPLETAR',
   consignaInicial: 'COMPLETAR.',
 

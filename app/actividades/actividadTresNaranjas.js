@@ -10,6 +10,7 @@ var {ComerNaranja} = comer;
 var {TocandoNaranja} = tocando;
 var actividadTresNaranjas = {
   nombre: 'Tres naranjas',
+  id: 'TresNaranjas',
   enunciado: 'Definir.',
   consignaInicial: 'definirs.',
 

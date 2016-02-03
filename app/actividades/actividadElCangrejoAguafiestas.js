@@ -6,6 +6,7 @@ var {Procedimiento} = bloques;
 
 var actividadElCangrejoAguafiestas = {
   nombre: 'El cangrejo aguafiestas',
+  id: 'ElCangrejoAguafiestas',
   enunciado: 'A definir.',
   consignaInicial: 'A definir.',
 

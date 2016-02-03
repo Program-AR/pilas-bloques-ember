@@ -11,6 +11,7 @@ var {ComerManzana} = comer;
 
 var actividadElMarcianoEnElDesierto = {
   nombre: 'El marciano en el desierto',
+  id: 'ElMarcianoEnElDesierto',
   enunciado: 'A definir.',
   consignaInicial: 'A definir.',
 

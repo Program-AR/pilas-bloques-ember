@@ -71,7 +71,8 @@ var Martillar = Accion.extend({
 });
 
 var actividadElObreroCopado = {
-  nombre: 'El Obrero Copado',
+  nombre: 'El obrero copado',
+  id: 'ElObreroCopado',
   enunciado: 'Ayudá a nuestro obrero a martillar un poco por allí.',
 
   // la escena proviene de ejerciciosPilas

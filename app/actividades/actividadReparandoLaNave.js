@@ -98,6 +98,7 @@ var Escapar = Accion.extend({
 
 var actividadReparandoLaNave = {
   nombre: 'Reparando la nave',
+  id: 'ReparandoLaNave',
   enunciado: '.',
   consignaInicial: '.',
 

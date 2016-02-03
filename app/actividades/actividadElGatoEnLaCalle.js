@@ -199,6 +199,7 @@ var Soniar = Accion.extend({
 
 var actividadElGatoEnLaCalle = {
   nombre: 'El gato en la calle',
+  id: 'ElGatoEnLaCalle',
   enunciado: 'A definir.',
   consignaInicial: 'A definir.',
 

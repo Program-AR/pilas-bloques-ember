@@ -64,6 +64,7 @@ var AlimentarPez = Accion.extend({
         });
 var actividadAlimentandoALosPeces = {
   nombre: 'Alimentando a los peces',
+  id: 'AlimentandoALosPeces',
   enunciado:'..',
 
   // la escena proviene de ejerciciosPilas

@@ -9,7 +9,8 @@ var {TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso} = tocando;
 var {ComerQueso} = comer;
 
 var actividadLaberintoConQueso = {
-  nombre: 'Laberinto Corto',
+  nombre: 'Laberinto con queso',
+  id: 'LaberintoConQueso',
   enunciado: 'a!.',
 
   consignaInicial: 'a',

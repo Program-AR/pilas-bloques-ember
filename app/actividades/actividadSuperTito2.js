@@ -11,6 +11,7 @@ var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
 
 var actividadSuperTito2 = {
   nombre: 'Súper Tito 2',
+  id: 'SuperTito2',
   enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
 
   escena: SuperTito2,  // jshint ignore:line

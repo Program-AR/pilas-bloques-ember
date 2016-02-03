@@ -8,6 +8,7 @@ var {EncenderLuz} = bloquesTito;
 
 var actividadTitoEnciendeLuces = {
   nombre: 'Tito enciende las luces',
+  id: 'TitoEnciendeLuces',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
     'Pista: esa diagonal puede ser una gran subtarea.',
 
