@@ -24,7 +24,7 @@ export function moduloActividad(actividad){
 	moduleForComponent('pilas-editor','actividad:' + actividad.id,  {  integration: true, });
 };
 
-export function actividadTest(nombreDesafio, actividad, opciones){
+export function actividadTest(actividad, opciones){
 	sanitizarOpciones(opciones);
 
 	test(descripcionTest(actividad,opciones.descripcionAdicional), function(assert) {
@@ -34,7 +34,7 @@ export function actividadTest(nombreDesafio, actividad, opciones){
 	  this.set('actividad', Actividad.create({actividad: actividad}));
 	  this.set('solucion', Ember.Object.create({
 	    codigoXML: opciones.solucion,
-	    nombreDesafio: nombreDesafio,
+	    nombreDesafio: actividad.id,
 	  }));
 
 	  /* Como la tarea de ejecutar el código completo de la solución demora
