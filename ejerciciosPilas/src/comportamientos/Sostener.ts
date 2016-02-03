@@ -26,3 +26,9 @@ class Sostener extends ComportamientoColision {
 
     }
 }
+
+class Soltar extends ComportamientoColision {
+  metodo(objetoColision) {
+    pilas.escena_actual().automata.eliminarUltimoSubactor();
+  }
+}

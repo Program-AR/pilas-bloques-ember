@@ -108,9 +108,3 @@ class ReparandoLaNave extends EscenaActividad {
     }
   }
 }
-
-class Depositar extends ComportamientoColision{
-  metodo(objetoColision){
-      pilas.escena_actual().automata.eliminarUltimoSubactor();
-  }
-}
