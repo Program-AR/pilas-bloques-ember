@@ -7,22 +7,23 @@ import {moduleForComponent} from 'ember-qunit';
 
 
 function descripcionTest(actividad,descripcionAdicional){
-	return 'Puede resolver la actividad '
-		+ actividad.nombre 
-		+ (descripcionAdicional ? ':' + descripcionAdicional : '' );
+	return 'Puede resolver la actividad ' + 
+		actividad.nombre + 
+		(descripcionAdicional ? ':' + descripcionAdicional : '' );
 }
 
 function sanitizarOpciones(opciones){
 	opciones.solucion = opciones.solucion || '';
 	// opciones.descripcionAdicional es opcional
 	opciones.cantAsserts = opciones.cantAsserts || 0;
+	/*jshint unused: vars */
     opciones.assertsPostCargaInicial = opciones.assertsPostCargaInicial || function(assert){};
     opciones.assertsPostEjecucion = opciones.assertsPostEjecucion || function(assert){};
 }
 
 export function moduloActividad(actividad){
 	moduleForComponent('pilas-editor','actividad:' + actividad.id,  {  integration: true, });
-};
+}
 
 export function actividadTest(actividad, opciones){
 	sanitizarOpciones(opciones);
@@ -60,4 +61,4 @@ export function actividadTest(actividad, opciones){
 	  });
 
 	});
-};
+}

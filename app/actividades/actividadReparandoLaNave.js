@@ -64,7 +64,7 @@ var Depositar = Accion.extend({
             .appendField('Depositar');
       },
       nombre_comportamiento() {
-        return 'Depositar';
+        return 'Soltar';
       },
       argumentos() {
         return '{\'idTransicion\' : \'depositar\'}';

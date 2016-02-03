@@ -2434,6 +2434,16 @@ var Sostener = (function (_super) {
     };
     return Sostener;
 })(ComportamientoColision);
+var Soltar = (function (_super) {
+    __extends(Soltar, _super);
+    function Soltar() {
+        _super.apply(this, arguments);
+    }
+    Soltar.prototype.metodo = function (objetoColision) {
+        pilas.escena_actual().automata.eliminarUltimoSubactor();
+    };
+    return Soltar;
+})(ComportamientoColision);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
@@ -3640,16 +3650,6 @@ var ReparandoLaNave = (function (_super) {
     };
     return ReparandoLaNave;
 })(EscenaActividad);
-var Depositar = (function (_super) {
-    __extends(Depositar, _super);
-    function Depositar() {
-        _super.apply(this, arguments);
-    }
-    Depositar.prototype.metodo = function (objetoColision) {
-        pilas.escena_actual().automata.eliminarUltimoSubactor();
-    };
-    return Depositar;
-})(ComportamientoColision);
 /*class SalvandoLaNavidad extends EscenaActividad {
   personaje;
   estado;
