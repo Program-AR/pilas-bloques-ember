@@ -201,7 +201,7 @@ var actividadElGatoEnLaCalle = {
   nombre: 'El gato en la calle',
   id: 'ElGatoEnLaCalle',
   enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
-  consignaInicial: 'Podés crear nuevos bloques definiendo una subtarea que realice varias acciones.',
+  consignaInicial: 'Se pueden crear nuevos bloques definiendo un procedimiento que realice varias acciones.',
 
   escena: ElGatoEnLaCalle,
   puedeComentar: false,

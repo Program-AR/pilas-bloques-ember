@@ -30,8 +30,8 @@ var Saltar = Accion.extend({
 var actividadNoMeCansoDeSaltar = {
   nombre: 'No me canso de saltar',
   id: 'NoMeCansoDeSaltar',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  enunciado: 'Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.',
+  consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones.',
 
   escena: NoMeCansoDeSaltar,
   puedeComentar: false,
