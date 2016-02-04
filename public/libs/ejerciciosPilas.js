@@ -294,6 +294,12 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.eliminarUltimoSubactor = function () {
         this.subactores.pop().eliminar();
     };
+    ActorCompuesto.prototype.cantSubactores = function () {
+        return this.subactores.length;
+    };
+    ActorCompuesto.prototype.tieneAlgoEnLaMano = function () {
+        return this.cantSubactores() >= 2;
+    };
     ///////////////////////////////////////////////////////
     // A partir de acá son los métodos del composite polimórfico
     //////////////////////////////////////////////////////
@@ -703,6 +709,7 @@ var ComportamientoAnimado = (function (_super) {
     }
     ComportamientoAnimado.prototype.iniciar = function (receptor) {
         _super.prototype.iniciar.call(this, receptor);
+        this.receptor = this.argumentos.receptor || this.receptor;
         this.secuenciaActualizar = new Array();
         this.secuenciaActualizar.push(function () {
             this.configuracionInicial();
@@ -737,7 +744,12 @@ var ComportamientoAnimado = (function (_super) {
     ComportamientoAnimado.prototype.configuracionFinal = function () {
         this.receptor.animar();
         this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
+        if (this.argumentos.idTransicion)
+            pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+        pilas.escena_actual().estado.ejecutarComportamiento(this);
     };
+    ComportamientoAnimado.prototype.ejecutarse = function () { };
+    ;
     /* Redefinir si corresponde animar el comportamiento. */
     ComportamientoAnimado.prototype.nombreAnimacion = function () {
         return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
@@ -1855,7 +1867,7 @@ var ErrorEnEstados = (function () {
         this.estadoAlQueVuelve = estado;
         this.mensajeError = mensaje;
     }
-    ErrorEnEstados.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+    ErrorEnEstados.prototype.ejecutarComportamiento = function (comportamiento) {
         throw new ActividadError(this.mensajeError);
     };
     ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
@@ -1868,27 +1880,24 @@ var Estado = (function () {
         this.identifier = idEstado;
         this.transiciones = {};
     }
-    Estado.prototype.agregarTransicion = function (estadoEntrada, transicion) {
-        this.transiciones[transicion] = estadoEntrada;
+    Estado.prototype.agregarTransicion = function (estadoEntrada, idTransicion, condicionTransicion) {
+        if (condicionTransicion === void 0) { condicionTransicion = function () { return true; }; }
+        this.transiciones[idTransicion] = {
+            estadoEntrada: estadoEntrada,
+            condicionTransicion: condicionTransicion,
+        };
     };
     Estado.prototype.realizarTransicion = function (idTransicion, comportamiento) {
-        if (this.transiciones[idTransicion]) {
-            pilas.escena_actual().estado = this.transiciones[idTransicion].estadoSiguiente(comportamiento, this);
-            this.transiciones[idTransicion].realizarAccion(comportamiento, this);
-        }
-        else {
+        if (!this.transiciones[idTransicion])
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
-        }
+        pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
-    Estado.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
-        if (comportamiento.debeEjecutarse()) {
-            return this;
-        }
-        else {
-            return estadoAnterior;
-        }
+    Estado.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
+        return comportamiento.debeEjecutarse() && this.transiciones[idTransicion].condicionTransicion() ?
+            this.transiciones[idTransicion].estadoEntrada :
+            this;
     };
-    Estado.prototype.realizarAccion = function (comportamiento, estadoAnterior) {
+    Estado.prototype.ejecutarComportamiento = function (comportamiento) {
         comportamiento.ejecutarse();
     };
     Estado.prototype.soyAceptacion = function () {
@@ -1911,7 +1920,7 @@ var SinEstado = (function () {
         if (funcionAceptacion === void 0) { funcionAceptacion = function (escena) { return false; }; }
         this.funcionAceptacion = funcionAceptacion;
     }
-    SinEstado.prototype.realizarTransicion = function (idComport, comportamiento) {
+    SinEstado.prototype.ejecutarComportamiento = function (comportamiento) {
         comportamiento.ejecutarse();
     };
     SinEstado.prototype.soyAceptacion = function () {
@@ -1931,8 +1940,9 @@ var BuilderStatePattern = (function () {
     BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
         this.estados[idEstado] = new EstadoAceptacion(idEstado);
     };
-    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion) {
-        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion);
+    BuilderStatePattern.prototype.agregarTransicion = function (estadoSalida, estadoEntrada, transicion, condicionTransicion) {
+        if (condicionTransicion === void 0) { condicionTransicion = function () { return true; }; }
+        this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion, condicionTransicion);
     };
     BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
         this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
@@ -1994,18 +2004,6 @@ var ComportamientoColision = (function (_super) {
     function ComportamientoColision() {
         _super.apply(this, arguments);
     }
-    /*nombreAnimacion(){
-        // redefinir por subclase
-        return "parado";
-    }*/
-    ComportamientoColision.prototype.alIniciar = function () {
-        if (pilas.escena_actual().estado == undefined) {
-            pilas.escena_actual().estado = new SinEstado();
-        }
-    };
-    ComportamientoColision.prototype.alTerminarAnimacion = function () {
-        pilas.escena_actual().estado.realizarTransicion(this.argumentos['idTransicion'], this);
-    };
     ComportamientoColision.prototype.ejecutarse = function () {
         this.verificarCondicionesDeEjecucion();
         this.metodo(this.objetoTocado());
@@ -2413,6 +2411,7 @@ var SerPateado = (function (_super) {
 /*
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
+Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
 var Sostener = (function (_super) {
     __extends(Sostener, _super);
@@ -2432,6 +2431,17 @@ var Sostener = (function (_super) {
             objetoColision.eliminar();
         }
     };
+    Sostener.prototype.verificarCondicionesDeEjecucion = function () {
+        _super.prototype.verificarCondicionesDeEjecucion.call(this);
+        if (!this.puedoSostener())
+            throw new ActividadError("No puedo sostener dos cosas a la vez...");
+    };
+    Sostener.prototype.debeEjecutarse = function () {
+        return _super.prototype.debeEjecutarse.call(this) && this.puedoSostener();
+    };
+    Sostener.prototype.puedoSostener = function () {
+        return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
+    };
     return Sostener;
 })(ComportamientoColision);
 var Soltar = (function (_super) {
@@ -2440,7 +2450,15 @@ var Soltar = (function (_super) {
         _super.apply(this, arguments);
     }
     Soltar.prototype.metodo = function (objetoColision) {
-        pilas.escena_actual().automata.eliminarUltimoSubactor();
+        this.receptor.eliminarUltimoSubactor();
+    };
+    Soltar.prototype.verificarCondicionesDeEjecucion = function () {
+        _super.prototype.verificarCondicionesDeEjecucion.call(this);
+        if (!this.receptor.tieneAlgoEnLaMano())
+            throw new ActividadError("No tengo nada en la mano");
+    };
+    Soltar.prototype.debeEjecutarse = function () {
+        return _super.prototype.debeEjecutarse.call(this) && this.receptor.tieneAlgoEnLaMano();
     };
     return Soltar;
 })(ComportamientoColision);
@@ -3591,8 +3609,9 @@ var ReparandoLaNave = (function (_super) {
     };
     ReparandoLaNave.prototype.crearActores = function (cFilas, cColumnas) {
         this.crearAutomata(cFilas, cColumnas);
-        this.nave = new NaveAnimada(0, 0);
-        this.cuadricula.agregarActor(this.nave, cFilas - 1, 0);
+        var lanave = new NaveAnimada(0, 0);
+        this.cuadricula.agregarActor(lanave, cFilas - 1, 0);
+        this.nave = new ActorCompuesto(0, 0, { subactores: [lanave] });
         this.hierro = new HierroAnimado(0, 0);
         this.hierro.cantidad = 3;
         this.carbon = new CarbonAnimado(0, 0);
@@ -3617,36 +3636,14 @@ var ReparandoLaNave = (function (_super) {
         this.hierro.changed();
     };
     ReparandoLaNave.prototype.crearEstado = function () {
-        var builder = new BuilderStatePattern('estoy00');
-        this.definirTransiciones(builder);
+        var _this = this;
+        var builder = new BuilderStatePattern('faltanMateriales');
+        builder.agregarEstado('naveReparada');
+        builder.agregarEstadoAceptacion('haEscapado');
+        builder.agregarError('faltanMateriales', 'escapar', '¡No puedo escaparme sin antes haber reparado la nave!');
+        builder.agregarTransicion('faltanMateriales', 'naveReparada', 'depositar', function () { return _this.hierro.cantidad == 0 && _this.carbon.cantidad == 0; });
+        builder.agregarTransicion('naveReparada', 'haEscapado', 'escapar');
         this.estado = builder.estadoInicial();
-    };
-    ReparandoLaNave.prototype.definirTransiciones = function (builder) {
-        //modelo estoyCH como cantidad de carbon y de hierro ya depositados,
-        //CestoyCH como tengo carbon en mano
-        // y HestoyCH como tengo hierro en mano.
-        //Estados donde no tengo nada en la mano.
-        for (var hierro = 0; hierro <= 3; hierro++) {
-            for (var carbon = 0; carbon <= 3; carbon++) {
-                builder.agregarEstado(('estoy' + hierro) + carbon);
-                builder.agregarEstado((('estoy' + hierro) + carbon) + 'carbon');
-                builder.agregarEstado((('estoy' + hierro) + carbon) + 'hierro');
-            }
-        }
-        //no unificar los fors, necesito tener creados los estados antes de las transi
-        for (var hierro = 0; hierro <= 3; hierro++) {
-            for (var carbon = 0; carbon <= 3; carbon++) {
-                builder.agregarError('estoy' + hierro + carbon, 'depositar', 'No tengo nada en la mano');
-                if (hierro != 3) {
-                    builder.agregarTransicion((('estoy' + hierro) + carbon) + 'hierro', ('estoy' + (hierro + 1)) + carbon, 'depositar');
-                    builder.agregarTransicion((('estoy' + hierro) + carbon), 'estoy' + (hierro) + carbon + 'hierro', 'tomarHierro');
-                }
-                if (carbon != 3) {
-                    builder.agregarTransicion((('estoy' + hierro) + carbon) + 'carbon', ('estoy' + hierro) + (carbon + 1), 'depositar');
-                    builder.agregarTransicion((('estoy' + hierro) + carbon), 'estoy' + (hierro) + carbon + 'carbon', 'tomarCarbon');
-                }
-            }
-        }
     };
     return ReparandoLaNave;
 })(EscenaActividad);

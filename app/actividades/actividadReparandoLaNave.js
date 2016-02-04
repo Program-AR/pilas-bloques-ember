@@ -25,7 +25,7 @@ var TomarHierro = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'HierroAnimado\', \'idTransicion\' : \'tomarHierro\' }';
+        return '{\'etiqueta\' : \'HierroAnimado\'}';
       }
     });
 
@@ -49,7 +49,7 @@ var TomarCarbon = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'CarbonAnimado\', \'idTransicion\' : \'tomarCarbon\'}';
+        return '{\'etiqueta\' : \'CarbonAnimado\'}';
       }
     });
 
@@ -67,7 +67,7 @@ var Depositar = Accion.extend({
         return 'Soltar';
       },
       argumentos() {
-        return '{\'idTransicion\' : \'depositar\'}';
+        return '{idTransicion: "depositar", etiqueta: "NaveAnimada"}';
       }
 });
 
@@ -82,12 +82,11 @@ var Escapar = Accion.extend({
             .appendField('Escapar');
       },
       nombre_comportamiento() {
-          return 'RepetirHasta';
+          return 'MovimientoAnimado';
       },
 
       argumentos() {
-                  //return '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion })';
-          return '{etiqueta: "NaveAnimada", comportamiento: "MovimientoAnimado", argumentosComportamiento:{destino: {x: pilas.derecha(), y: pilas.arriba() + 100}, nombreAnimacion: \'correr\', velocidad: 30}, idTransicion:"escapar"}';
+          return '{receptor: pilas.escena_actual().nave, direccion: new Direct(1,1), distancia: 700, velocidad: 1, idTransicion: "escapar"}';
 
       }
 });
