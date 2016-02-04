@@ -53,6 +53,7 @@ class ComportamientoAnimado extends Comportamiento {
 		this.receptor = this.argumentos.receptor || this.receptor;
 		this.verificacionesPre = this.argumentos.verificacionesPre || [];
 		this.verificacionesPost = this.argumentos.verificacionesPost || [];
+		this.configurarVerificaciones();
 		
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
@@ -82,7 +83,7 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	private configuracionInicial(){
-		this.verificacionesPreAnimacion();
+		this.realizarVerificacionesPreAnimacion();
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
 		this.receptor.cargarAnimacion(this.nombreAnimacion());
@@ -92,18 +93,16 @@ class ComportamientoAnimado extends Comportamiento {
 		this.receptor.animar();
 		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
 		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
-		this.verificacionesPostAnimacion();
-		pilas.escena_actual().estado.ejecutarComportamiento(this);
+		this.realizarVerificacionesPostAnimacion();
 	}
 
-	ejecutarse() { }; //Polimorfismo con ComportamientoColision
-
-	verificacionesPreAnimacion(){
+	private realizarVerificacionesPreAnimacion(){
 		this.verificacionesPre.forEach(verificacion => verificacion.verificar());
 	}
 
-	verificacionesPostAnimacion() {
+	private realizarVerificacionesPostAnimacion() {
 		this.verificacionesPost.forEach(verificacion => verificacion.verificar());
+		pilas.escena_actual().estado.verificarQuePuedoSeguir();
 	}	
 	
 	/* Redefinir si corresponde animar el comportamiento. */
@@ -120,6 +119,12 @@ class ComportamientoAnimado extends Comportamiento {
 	nombreAnimacionSiguiente(){
 		if (this.argumentos.mantenerAnimacion) return this.nombreAnimacion();
 		return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
+	}
+
+	/* Redefinir si corresponde */
+	configurarVerificaciones() {
+		// son varios llamados a verificacionesPre.push
+		// y a verificacionesPost.push
 	}
 	
 	/* Redefinir si corresponde */

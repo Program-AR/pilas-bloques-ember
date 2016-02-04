@@ -19,20 +19,14 @@ automata
 
 class ComportamientoColision extends ComportamientoAnimado {
 
-	ejecutarse(){
-		this.verificarCondicionesDeEjecucion();
+	configurarVerificaciones() {
+		var descripcion = this.argumentos['etiqueta'].toLowerCase().split("animada")[0].split("animado")[0];
+		var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + descripcion + "!";
+		this.verificacionesPre.push(new Verificacion(() => this.colisiona(), mensajeError));
+	}
+
+	postAnimacion() {
 		this.metodo(this.objetoTocado());
-	}
-	
-	// Si se redefine, debe redefinirse también el método debeEjecutarse. 
-	// Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
-	verificarCondicionesDeEjecucion(){
-		if (!this.colisiona()) throw new NoColisionaError(this.argumentos['mensajeError'], this.argumentos['etiqueta']);
-	}
-	// Si se redefine, debe redefinirse también el método verificarCondicionesDeEjecucion. 
-	// Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
-	debeEjecutarse() {
-		return this.colisiona();
 	}
 
 	colisiona() {
@@ -46,13 +40,6 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	metodo(objetoColision){
 						//redefinir por subclase
-	}
-}
-
-class NoColisionaError extends ActividadError{
-	constructor(mensajeError :string, etiqueta :string) {
-		var descripcion = etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
-		super(mensajeError || "¡Acá no hay " + descripcion + "!");
 	}
 }
 
@@ -78,15 +65,13 @@ class EncenderPorEtiqueta extends ComportamientoColision{
 	nombreProximaAnimacion(){
 		return "prendida"
 	}
-	verificarCondicionesDeEjecucion(){
-		super.verificarCondicionesDeEjecucion();
-		if (this.yaEstaPrendida()) throw new ActividadError("¡Ya está "+ this.nombreProximaAnimacion() +"!");
+	configurarVerificaciones() {
+		super.configurarVerificaciones();
+		this.verificacionesPre.push(
+			new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
 	}
-	debeEjecutarse(){
-		return super.debeEjecutarse() && !this.yaEstaPrendida();
-	}
-	yaEstaPrendida(){
-		return this.objetoTocado().nombreAnimacionActual() == this.nombreProximaAnimacion();
+	estaApagada(){
+		return this.objetoTocado().nombreAnimacionActual() != this.nombreProximaAnimacion();
 	}
 }
 

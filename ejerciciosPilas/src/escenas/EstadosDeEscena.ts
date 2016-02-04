@@ -7,8 +7,7 @@ class Estado {
     this.funcionAceptacion = funcionAceptacion;
   }
 
-  ejecutarComportamiento(comportamiento) {
-    comportamiento.ejecutarse();
+  verificarQuePuedoSeguir() {
   }
 
   soyAceptacion() {
@@ -39,7 +38,7 @@ class EstadoConTransicion extends Estado{
   }
 
   estadoSiguiente(comportamiento, idTransicion) {
-      return comportamiento.debeEjecutarse() && this.transiciones[idTransicion].condicionTransicion() ?
+      return this.transiciones[idTransicion].condicionTransicion() ?
         this.transiciones[idTransicion].estadoEntrada :
         this;
   }
@@ -60,7 +59,7 @@ class EstadoError {
     this.mensajeError = mensaje;
   }
 
-  ejecutarComportamiento(comportamiento) {
+  verificarQuePuedoSeguir() {
     throw new ActividadError(this.mensajeError);
   }
 

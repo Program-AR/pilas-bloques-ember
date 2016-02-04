@@ -23,13 +23,9 @@ class Sostener extends ComportamientoColision {
         }
   }
 
-  verificarCondicionesDeEjecucion() {
-    super.verificarCondicionesDeEjecucion();
-    if (!this.puedoSostener()) throw new ActividadError("No puedo sostener dos cosas a la vez...");
-  }
-
-  debeEjecutarse() {
-    return super.debeEjecutarse() && this.puedoSostener();
+  configurarVerificaciones() {
+    super.configurarVerificaciones();
+    this.verificacionesPre.push(new Verificacion(() => this.puedoSostener(), "No puedo sostener dos cosas a la vez..."));
   }
 
   puedoSostener(){
@@ -42,12 +38,8 @@ class Soltar extends ComportamientoColision {
     this.receptor.eliminarUltimoSubactor();
   }
 
-  verificarCondicionesDeEjecucion(){
-    super.verificarCondicionesDeEjecucion();
-    if (!this.receptor.tieneAlgoEnLaMano()) throw new ActividadError("No tengo nada en la mano");
-  }
-
-  debeEjecutarse(){
-    return super.debeEjecutarse() && this.receptor.tieneAlgoEnLaMano();
+  configurarVerificaciones() {
+    super.configurarVerificaciones();
+    this.verificacionesPre.push(new Verificacion(() => this.receptor.tieneAlgoEnLaMano(), "No tengo nada en la mano"));
   }
 }
