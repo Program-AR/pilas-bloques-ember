@@ -680,7 +680,7 @@ var Cuadricula = (function (_super) {
  *      nombreAnimacion(){
  *			return 'explosion'
  *		};
- *      alTerminarAnimacion(){
+ *      postAnimacion(){
  *			this.receptor.eliminar();
  *		}
  *
@@ -710,10 +710,12 @@ var ComportamientoAnimado = (function (_super) {
     ComportamientoAnimado.prototype.iniciar = function (receptor) {
         _super.prototype.iniciar.call(this, receptor);
         this.receptor = this.argumentos.receptor || this.receptor;
+        this.verificacionesPre = this.argumentos.verificacionesPre || [];
+        this.verificacionesPost = this.argumentos.verificacionesPost || [];
         this.secuenciaActualizar = new Array();
         this.secuenciaActualizar.push(function () {
             this.configuracionInicial();
-            this.alIniciar();
+            this.preAnimacion();
             return true;
         }.bind(this));
         this.secuenciaActualizar.push(function () {
@@ -721,7 +723,7 @@ var ComportamientoAnimado = (function (_super) {
         }.bind(this));
         this.secuenciaActualizar.push(function () {
             this.configuracionFinal();
-            this.alTerminarAnimacion();
+            this.postAnimacion();
             return true;
         }.bind(this));
     };
@@ -737,6 +739,7 @@ var ComportamientoAnimado = (function (_super) {
         }
     };
     ComportamientoAnimado.prototype.configuracionInicial = function () {
+        this.verificacionesPreAnimacion();
         this.receptor.detenerAnimacion(); // Porque hace quilombo
         this.animacionAnterior = this.receptor.nombreAnimacionActual();
         this.receptor.cargarAnimacion(this.nombreAnimacion());
@@ -746,10 +749,17 @@ var ComportamientoAnimado = (function (_super) {
         this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
         if (this.argumentos.idTransicion)
             pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+        this.verificacionesPostAnimacion();
         pilas.escena_actual().estado.ejecutarComportamiento(this);
     };
     ComportamientoAnimado.prototype.ejecutarse = function () { };
     ;
+    ComportamientoAnimado.prototype.verificacionesPreAnimacion = function () {
+        this.verificacionesPre.forEach(function (verificacion) { return verificacion.verificar(); });
+    };
+    ComportamientoAnimado.prototype.verificacionesPostAnimacion = function () {
+        this.verificacionesPost.forEach(function (verificacion) { return verificacion.verificar(); });
+    };
     /* Redefinir si corresponde animar el comportamiento. */
     ComportamientoAnimado.prototype.nombreAnimacion = function () {
         return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
@@ -765,10 +775,10 @@ var ComportamientoAnimado = (function (_super) {
         return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
     };
     /* Redefinir si corresponde */
-    ComportamientoAnimado.prototype.alIniciar = function () {
+    ComportamientoAnimado.prototype.preAnimacion = function () {
     };
     /* Redefinir si corresponde */
-    ComportamientoAnimado.prototype.alTerminarAnimacion = function () {
+    ComportamientoAnimado.prototype.postAnimacion = function () {
     };
     /** Redefinir si es necesario.
      *  Redefinir sólo este, no el actualizar original.
@@ -781,6 +791,20 @@ var ComportamientoAnimado = (function (_super) {
     };
     return ComportamientoAnimado;
 })(Comportamiento);
+var Verificacion = (function () {
+    function Verificacion(condicionEjecucion, mensajeError) {
+        this.condicionEjecucion = condicionEjecucion;
+        this.mensajeError = mensajeError;
+    }
+    Verificacion.prototype.seCumple = function () {
+        return this.condicionEjecucion();
+    };
+    Verificacion.prototype.verificar = function () {
+        if (!this.seCumple())
+            throw new ActividadError(this.mensajeError);
+    };
+    return Verificacion;
+})();
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts"/>
 /**
@@ -807,8 +831,8 @@ var MovimientoAnimado = (function (_super) {
     MovimientoAnimado.prototype.nombreAnimacion = function () {
         return 'correr';
     };
-    MovimientoAnimado.prototype.alIniciar = function () {
-        _super.prototype.alIniciar.call(this);
+    MovimientoAnimado.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
         this.sanitizarArgumentos();
         this.vueltasSinEjecutar = 0;
         this.enQueVueltaEjecuto = Math.round(100 / this.valoresFinales.velocidad);
@@ -817,7 +841,7 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.suspenderHabilidadesConMovimiento();
         this.voltearSiCorresponde();
     };
-    MovimientoAnimado.prototype.alTerminarAnimacion = function () {
+    MovimientoAnimado.prototype.postAnimacion = function () {
         this.receptor.activarHabilidadesConMovimiento();
     };
     MovimientoAnimado.prototype.doActualizar = function () {
@@ -929,11 +953,11 @@ var MovimientoEnCuadricula = (function (_super) {
     function MovimientoEnCuadricula() {
         _super.apply(this, arguments);
     }
-    MovimientoEnCuadricula.prototype.alIniciar = function () {
+    MovimientoEnCuadricula.prototype.preAnimacion = function () {
         this.cuadricula = this.receptor.cuadricula;
         this.argumentos.direccion = new Direct(this.vectorDireccion.x, this.vectorDireccion.y);
         this.argumentos.distancia = this.distancia();
-        _super.prototype.alIniciar.call(this);
+        _super.prototype.preAnimacion.call(this);
         this.estoyEmpezandoAMoverme = true;
     };
     MovimientoEnCuadricula.prototype.doActualizar = function () {
@@ -1825,7 +1849,7 @@ var EscenaActividad = (function (_super) {
     __extends(EscenaActividad, _super);
     function EscenaActividad() {
         _super.apply(this, arguments);
-        this.estado = new SinEstado();
+        this.estado = new Estado();
         this.errorHandler = new ProductionErrorHandler(this);
     }
     EscenaActividad.prototype.actualizar = function () {
@@ -1862,49 +1886,45 @@ var EscenaActividad = (function (_super) {
     return EscenaActividad;
 })(Base);
 /// <reference path = "EscenaActividad.ts" />
-var ErrorEnEstados = (function () {
-    function ErrorEnEstados(estado, mensaje) {
-        this.estadoAlQueVuelve = estado;
-        this.mensajeError = mensaje;
-    }
-    ErrorEnEstados.prototype.ejecutarComportamiento = function (comportamiento) {
-        throw new ActividadError(this.mensajeError);
-    };
-    ErrorEnEstados.prototype.estadoSiguiente = function (comportamiento, estadoAnterior) {
-        return estadoAnterior;
-    };
-    return ErrorEnEstados;
-})();
 var Estado = (function () {
-    function Estado(idEstado) {
+    function Estado(funcionAceptacion) {
+        if (funcionAceptacion === void 0) { funcionAceptacion = function () { return false; }; }
+        this.funcionAceptacion = funcionAceptacion;
+    }
+    Estado.prototype.ejecutarComportamiento = function (comportamiento) {
+        comportamiento.ejecutarse();
+    };
+    Estado.prototype.soyAceptacion = function () {
+        return this.funcionAceptacion();
+    };
+    return Estado;
+})();
+var EstadoConTransicion = (function (_super) {
+    __extends(EstadoConTransicion, _super);
+    function EstadoConTransicion(idEstado) {
+        _super.call(this);
         this.identifier = idEstado;
         this.transiciones = {};
     }
-    Estado.prototype.agregarTransicion = function (estadoEntrada, idTransicion, condicionTransicion) {
+    EstadoConTransicion.prototype.agregarTransicion = function (estadoEntrada, idTransicion, condicionTransicion) {
         if (condicionTransicion === void 0) { condicionTransicion = function () { return true; }; }
         this.transiciones[idTransicion] = {
             estadoEntrada: estadoEntrada,
             condicionTransicion: condicionTransicion,
         };
     };
-    Estado.prototype.realizarTransicion = function (idTransicion, comportamiento) {
+    EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
         if (!this.transiciones[idTransicion])
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
-    Estado.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
+    EstadoConTransicion.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
         return comportamiento.debeEjecutarse() && this.transiciones[idTransicion].condicionTransicion() ?
             this.transiciones[idTransicion].estadoEntrada :
             this;
     };
-    Estado.prototype.ejecutarComportamiento = function (comportamiento) {
-        comportamiento.ejecutarse();
-    };
-    Estado.prototype.soyAceptacion = function () {
-        return false;
-    };
-    return Estado;
-})();
+    return EstadoConTransicion;
+})(Estado);
 var EstadoAceptacion = (function (_super) {
     __extends(EstadoAceptacion, _super);
     function EstadoAceptacion() {
@@ -1914,28 +1934,28 @@ var EstadoAceptacion = (function (_super) {
         return true;
     };
     return EstadoAceptacion;
-})(Estado);
-var SinEstado = (function () {
-    function SinEstado(funcionAceptacion) {
-        if (funcionAceptacion === void 0) { funcionAceptacion = function (escena) { return false; }; }
-        this.funcionAceptacion = funcionAceptacion;
+})(EstadoConTransicion);
+var EstadoError = (function () {
+    function EstadoError(estado, mensaje) {
+        this.estadoAlQueVuelve = estado;
+        this.mensajeError = mensaje;
     }
-    SinEstado.prototype.ejecutarComportamiento = function (comportamiento) {
-        comportamiento.ejecutarse();
+    EstadoError.prototype.ejecutarComportamiento = function (comportamiento) {
+        throw new ActividadError(this.mensajeError);
     };
-    SinEstado.prototype.soyAceptacion = function () {
-        return this.funcionAceptacion(pilas.escena_actual());
+    EstadoError.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
+        return this.estadoAlQueVuelve;
     };
-    return SinEstado;
+    return EstadoError;
 })();
 var BuilderStatePattern = (function () {
     function BuilderStatePattern(idEstadoInicialp) {
         this.idEstadoInicial = idEstadoInicialp;
         this.estados = {};
-        this.estados[idEstadoInicialp] = new Estado(idEstadoInicialp);
+        this.estados[idEstadoInicialp] = new EstadoConTransicion(idEstadoInicialp);
     }
     BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new Estado(idEstado);
+        this.estados[idEstado] = new EstadoConTransicion(idEstado);
     };
     BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
         this.estados[idEstado] = new EstadoAceptacion(idEstado);
@@ -1945,14 +1965,14 @@ var BuilderStatePattern = (function () {
         this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion, condicionTransicion);
     };
     BuilderStatePattern.prototype.agregarError = function (estadoSalida, transicion, error) {
-        this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida], error), transicion);
+        this.estados[estadoSalida].agregarTransicion(new EstadoError(this.estados[estadoSalida], error), transicion);
     };
     BuilderStatePattern.prototype.agregarErrorAVariosEstadosDeSalida = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida) {
         //agrega un error para varios estados de salida con prefijos.
         //pre indefFinalSalida>indexInicialSalida
         var tamano = indexFinalSalida - indexInicialSalida;
         for (var index = 0; index <= tamano; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new EstadoError(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
         }
     };
     BuilderStatePattern.prototype.agregarErroresIterados = function (estadoSalida, transicion, error, indexInicialSalida, indexFinalSalida, indexInicialTransi, indexFinalTransi) {
@@ -1960,7 +1980,7 @@ var BuilderStatePattern = (function () {
         // NO TERMINADO
         var range = indexFinalSalida - indexInicialSalida;
         for (var index = 0; index < range; ++index) {
-            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
+            this.estados[estadoSalida + (indexInicialSalida + index)].agregarTransicion(new EstadoError(this.estados[estadoSalida + (indexInicialSalida + index)], error), transicion);
         }
     };
     BuilderStatePattern.prototype.estadoInicial = function () {
@@ -1969,7 +1989,7 @@ var BuilderStatePattern = (function () {
     BuilderStatePattern.prototype.agregarEstadosPrefijados = function (prefix, indexInicial, indexFinal) {
         //prefix debe ser string e indexInicial y final ints
         for (var i = indexInicial; i <= indexFinal; ++i) {
-            this.estados[prefix + i] = new Estado(prefix + i);
+            this.estados[prefix + i] = new EstadoConTransicion(prefix + i);
         }
     };
     BuilderStatePattern.prototype.agregarTransicionesIteradas = function (estadoSalidaPrefix, estadoEntradaPrefix, transicion, inicialSalida, finSalida, inicialEntrada, finEntrada) {
@@ -2145,7 +2165,7 @@ var ComportamientoDeAltoOrden = (function (_super) {
     ComportamientoDeAltoOrden.prototype.nombreAnimacion = function () {
         return this.argumentos['nombreAnimacion'];
     };
-    ComportamientoDeAltoOrden.prototype.alTerminarAnimacion = function () {
+    ComportamientoDeAltoOrden.prototype.postAnimacion = function () {
         this.argumentos.metodo.apply(this.argumentos['receptor']);
     };
     return ComportamientoDeAltoOrden;
@@ -2182,7 +2202,7 @@ var Decir = (function (_super) {
         _super.apply(this, arguments);
     }
     /* Redefinir si corresponde */
-    Decir.prototype.alIniciar = function () {
+    Decir.prototype.preAnimacion = function () {
         this.globo = this.crearGlobo();
     };
     Decir.prototype.doActualizar = function () {
@@ -2210,16 +2230,16 @@ var GirarMarquesina = (function (_super) {
     function GirarMarquesina() {
         _super.apply(this, arguments);
     }
-    GirarMarquesina.prototype.alIniciar = function () {
+    GirarMarquesina.prototype.preAnimacion = function () {
         this.argumentos.distancia = this.receptor.subactores[0].getAncho();
         this.argumentos.direccion = new Direct(-1, 0);
         this.argumentos.voltearAlIrAIzquierda = false;
         this.posInicial = { x: this.receptor.subactores[0].x, y: this.receptor.subactores[0].y };
         this.receptor.agregarSubactor(this.espejo());
-        _super.prototype.alIniciar.call(this);
+        _super.prototype.preAnimacion.call(this);
     };
-    GirarMarquesina.prototype.alTerminarAnimacion = function () {
-        _super.prototype.alTerminarAnimacion.call(this);
+    GirarMarquesina.prototype.postAnimacion = function () {
+        _super.prototype.postAnimacion.call(this);
         this.receptor.setX(this.posInicial.x);
         this.receptor.eliminarUltimoSubactor();
     };
@@ -2239,7 +2259,7 @@ var IrASiguienteFila = (function (_super) {
         // redefinir por subclase
         return "parado";
     };
-    IrASiguienteFila.prototype.alTerminarAnimacion = function () {
+    IrASiguienteFila.prototype.postAnimacion = function () {
         var nroF = this.argumentos['personaje'].casilla.nroFila + 1;
         this.argumentos['personaje'].casilla = this.argumentos['cuadricula'].casilla(nroF, 0);
     };
@@ -2316,7 +2336,7 @@ var SaltarAnimado = (function (_super) {
     function SaltarAnimado() {
         _super.apply(this, arguments);
     }
-    SaltarAnimado.prototype.alIniciar = function () {
+    SaltarAnimado.prototype.preAnimacion = function () {
         this.velocidad_inicial = this.argumentos.velocidad_inicial || 10;
         this.alTerminar = this.argumentos.alTerminar || function (r) { };
         this.gravedad = this.argumentos.gravedad || 0.3;
@@ -2350,7 +2370,7 @@ var SaltarHablando = (function (_super) {
     function SaltarHablando() {
         _super.apply(this, arguments);
     }
-    SaltarHablando.prototype.alTerminarAnimacion = function () {
+    SaltarHablando.prototype.postAnimacion = function () {
         this.receptor.decir(pilas.escena_actual().fraseAlSaltar());
     };
     return SaltarHablando;
@@ -2362,7 +2382,7 @@ var SerPateado = (function (_super) {
     function SerPateado() {
         _super.apply(this, arguments);
     }
-    SerPateado.prototype.alIniciar = function () {
+    SerPateado.prototype.preAnimacion = function () {
         this.receptor.cargarAnimacion("patear");
         this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 });
         this.actualizarPosicion();
@@ -2509,7 +2529,8 @@ var AlienLevantaTuercas = (function (_super) {
         _super.apply(this, arguments);
     }
     AlienLevantaTuercas.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('TuercaAnimada') == 0; });
+        var _this = this;
+        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('TuercaAnimada') == 0; });
         this.fondo = new pilas.fondos.Laberinto1();
         this.cuadricula = new Cuadricula(0, -25, 5, 6, { alto: 400 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
@@ -2877,7 +2898,8 @@ var ElMarcianoEnElDesierto = (function (_super) {
         _super.apply(this, arguments);
     }
     ElMarcianoEnElDesierto.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0; });
+        var _this = this;
+        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0; });
         this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png', 0, 0);
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
@@ -2952,7 +2974,8 @@ var LaEleccionDelMono = (function (_super) {
         _super.apply(this, arguments);
     }
     LaEleccionDelMono.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && escena.cantidadObjetosConEtiqueta('BananaAnimada') == 0; });
+        var _this = this;
+        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0; });
         this.fondo = new Fondo('fondos.selva.png', 0, 0);
         this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
             cantColumnas: 1 });
@@ -3139,7 +3162,8 @@ var ElRecolectorDeEstrellas = (function (_super) {
         _super.apply(this, arguments);
     }
     ElRecolectorDeEstrellas.prototype.iniciar = function () {
-        this.estado = new SinEstado(function (escena) { return escena.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0; });
+        var _this = this;
+        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0; });
         this.fondo = new Fondo('fondo.recolector.png', 0, 0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
@@ -3717,6 +3741,7 @@ var SuperTito1 = (function (_super) {
     }
     SuperTito1.prototype.iniciar = function () {
         this.fondo = new Fondo(this.pathFondo(), 0, 0);
+        this.objetos = [];
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas(), 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, ancho: 100, alto: 50 });
         this.cuadricula.casilla(this.cantidadFilas() - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
@@ -3736,11 +3761,15 @@ var SuperTito1 = (function (_super) {
     };
     SuperTito1.prototype.agregarLamparinEnFila = function (i) {
         var lamparin = new Lamparin(0, 0);
+        this.objetos.push(lamparin);
         this.cuadricula.agregarActor(lamparin, i, 0);
         lamparin.x += 15;
     };
     SuperTito1.prototype.pathFondo = function () {
         return 'fondo.superTito1.png';
+    };
+    SuperTito1.prototype.estaResueltoElProblema = function () {
+        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
     };
     return SuperTito1;
 })(EscenaActividad);
@@ -3916,6 +3945,7 @@ var TitoEnciendeLuces = (function (_super) {
             col += 1;
             cant += 1;
         }
+        ;
         // se crea el automata
         this.automata = new Tito(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0);
@@ -3925,6 +3955,9 @@ var TitoEnciendeLuces = (function (_super) {
         var casillaLuminosa = new Lamparin(0, 0);
         this.cuadricula.agregarActor(casillaLuminosa, fila, columna);
         this.objetos.push(casillaLuminosa);
+    };
+    TitoEnciendeLuces.prototype.estaResueltoElProblema = function () {
+        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
     };
     return TitoEnciendeLuces;
 })(EscenaActividad);
@@ -3970,7 +4003,6 @@ var TresNaranjas = (function (_super) {
         this.objetos = [];
     }
     TresNaranjas.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondo.tresNaranjas.png', 0, 0);
         this.cuadricula = new Cuadricula(0, 0, 1, 4, { separacionEntreCasillas: 5 }, { grilla: 'casilla.tresNaranjas.png', ancho: 100, alto: 100 });
         //se cargan los Naranjas

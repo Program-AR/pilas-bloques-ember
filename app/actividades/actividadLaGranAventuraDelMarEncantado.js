@@ -85,7 +85,7 @@ var actividadLaGranAventuraDelMarEncantado = {
   variables: [],
   control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave, AbrirCofre],
   sensores: []
 };
 
