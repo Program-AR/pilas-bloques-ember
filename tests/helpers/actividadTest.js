@@ -5,6 +5,17 @@ import Actividad from 'pilas-engine-bloques/actividades/actividad';
 import debeTenerTantosActoresConEtiqueta from './debe-tener-tantos-actores-con-etiqueta';
 import {moduleForComponent} from 'ember-qunit';
 
+var TestingErrorHandler = Ember.Object.extend({
+  init: function() {
+    this.success = this.get('success');
+    this.assert = this.get('assert');
+  },
+  handle: function(error){
+  	pilas.escena_actual().pausar();
+  	this.assert.notOk(true, "Hubo un error inesperado en la actividad: " + error.description());
+  	this.success();
+  },
+});
 
 function descripcionTest(actividad,descripcionAdicional){
 	return 'Puede resolver la actividad ' + 
@@ -50,6 +61,7 @@ export function actividadTest(actividad, opciones){
 	    `);
 
 	    window.addEventListener('terminaCargaInicial', () => {
+	      pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert,}); 
 	      opciones.assertsPostCargaInicial(assert);
 	    }, false);
 

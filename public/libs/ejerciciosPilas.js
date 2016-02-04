@@ -712,6 +712,7 @@ var ComportamientoAnimado = (function (_super) {
         this.receptor = this.argumentos.receptor || this.receptor;
         this.verificacionesPre = this.argumentos.verificacionesPre || [];
         this.verificacionesPost = this.argumentos.verificacionesPost || [];
+        this.configurarVerificaciones();
         this.secuenciaActualizar = new Array();
         this.secuenciaActualizar.push(function () {
             this.configuracionInicial();
@@ -739,7 +740,9 @@ var ComportamientoAnimado = (function (_super) {
         }
     };
     ComportamientoAnimado.prototype.configuracionInicial = function () {
-        this.verificacionesPreAnimacion();
+        if (this.argumentos.idTransicion)
+            pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+        this.realizarVerificacionesPreAnimacion();
         this.receptor.detenerAnimacion(); // Porque hace quilombo
         this.animacionAnterior = this.receptor.nombreAnimacionActual();
         this.receptor.cargarAnimacion(this.nombreAnimacion());
@@ -747,17 +750,13 @@ var ComportamientoAnimado = (function (_super) {
     ComportamientoAnimado.prototype.configuracionFinal = function () {
         this.receptor.animar();
         this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
-        if (this.argumentos.idTransicion)
-            pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
-        this.verificacionesPostAnimacion();
-        pilas.escena_actual().estado.ejecutarComportamiento(this);
+        this.realizarVerificacionesPostAnimacion();
     };
-    ComportamientoAnimado.prototype.ejecutarse = function () { };
-    ;
-    ComportamientoAnimado.prototype.verificacionesPreAnimacion = function () {
+    ComportamientoAnimado.prototype.realizarVerificacionesPreAnimacion = function () {
         this.verificacionesPre.forEach(function (verificacion) { return verificacion.verificar(); });
+        pilas.escena_actual().estado.verificarQuePuedoSeguir();
     };
-    ComportamientoAnimado.prototype.verificacionesPostAnimacion = function () {
+    ComportamientoAnimado.prototype.realizarVerificacionesPostAnimacion = function () {
         this.verificacionesPost.forEach(function (verificacion) { return verificacion.verificar(); });
     };
     /* Redefinir si corresponde animar el comportamiento. */
@@ -773,6 +772,11 @@ var ComportamientoAnimado = (function (_super) {
         if (this.argumentos.mantenerAnimacion)
             return this.nombreAnimacion();
         return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
+    };
+    /* Redefinir si corresponde */
+    ComportamientoAnimado.prototype.configurarVerificaciones = function () {
+        // son varios llamados a verificacionesPre.push
+        // y a verificacionesPost.push
     };
     /* Redefinir si corresponde */
     ComportamientoAnimado.prototype.preAnimacion = function () {
@@ -1891,8 +1895,7 @@ var Estado = (function () {
         if (funcionAceptacion === void 0) { funcionAceptacion = function () { return false; }; }
         this.funcionAceptacion = funcionAceptacion;
     }
-    Estado.prototype.ejecutarComportamiento = function (comportamiento) {
-        comportamiento.ejecutarse();
+    Estado.prototype.verificarQuePuedoSeguir = function () {
     };
     Estado.prototype.soyAceptacion = function () {
         return this.funcionAceptacion();
@@ -1919,7 +1922,7 @@ var EstadoConTransicion = (function (_super) {
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
     EstadoConTransicion.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
-        return comportamiento.debeEjecutarse() && this.transiciones[idTransicion].condicionTransicion() ?
+        return this.transiciones[idTransicion].condicionTransicion() ?
             this.transiciones[idTransicion].estadoEntrada :
             this;
     };
@@ -1940,7 +1943,7 @@ var EstadoError = (function () {
         this.estadoAlQueVuelve = estado;
         this.mensajeError = mensaje;
     }
-    EstadoError.prototype.ejecutarComportamiento = function (comportamiento) {
+    EstadoError.prototype.verificarQuePuedoSeguir = function () {
         throw new ActividadError(this.mensajeError);
     };
     EstadoError.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
@@ -2024,20 +2027,14 @@ var ComportamientoColision = (function (_super) {
     function ComportamientoColision() {
         _super.apply(this, arguments);
     }
-    ComportamientoColision.prototype.ejecutarse = function () {
-        this.verificarCondicionesDeEjecucion();
+    ComportamientoColision.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        var descripcion = this.argumentos['etiqueta'].toLowerCase().split("animada")[0].split("animado")[0];
+        var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + descripcion + "!";
+        this.verificacionesPre.push(new Verificacion(function () { return _this.colisiona(); }, mensajeError));
+    };
+    ComportamientoColision.prototype.postAnimacion = function () {
         this.metodo(this.objetoTocado());
-    };
-    // Si se redefine, debe redefinirse también el método debeEjecutarse. 
-    // Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
-    ComportamientoColision.prototype.verificarCondicionesDeEjecucion = function () {
-        if (!this.colisiona())
-            throw new NoColisionaError(this.argumentos['mensajeError'], this.argumentos['etiqueta']);
-    };
-    // Si se redefine, debe redefinirse también el método verificarCondicionesDeEjecucion. 
-    // Esto es para que pueda ofrecerse mayor granularidad al mostrar errores.
-    ComportamientoColision.prototype.debeEjecutarse = function () {
-        return this.colisiona();
     };
     ComportamientoColision.prototype.colisiona = function () {
         var _this = this;
@@ -2053,14 +2050,6 @@ var ComportamientoColision = (function (_super) {
     };
     return ComportamientoColision;
 })(ComportamientoAnimado);
-var NoColisionaError = (function (_super) {
-    __extends(NoColisionaError, _super);
-    function NoColisionaError(mensajeError, etiqueta) {
-        var descripcion = etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
-        _super.call(this, mensajeError || "¡Acá no hay " + descripcion + "!");
-    }
-    return NoColisionaError;
-})(ActividadError);
 var DesencadenarAnimacionSiColisiona = (function (_super) {
     __extends(DesencadenarAnimacionSiColisiona, _super);
     function DesencadenarAnimacionSiColisiona() {
@@ -2095,16 +2084,13 @@ var EncenderPorEtiqueta = (function (_super) {
     EncenderPorEtiqueta.prototype.nombreProximaAnimacion = function () {
         return "prendida";
     };
-    EncenderPorEtiqueta.prototype.verificarCondicionesDeEjecucion = function () {
-        _super.prototype.verificarCondicionesDeEjecucion.call(this);
-        if (this.yaEstaPrendida())
-            throw new ActividadError("¡Ya está " + this.nombreProximaAnimacion() + "!");
+    EncenderPorEtiqueta.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.estaApagada(); }, "¡Ya está " + this.nombreProximaAnimacion() + "!"));
     };
-    EncenderPorEtiqueta.prototype.debeEjecutarse = function () {
-        return _super.prototype.debeEjecutarse.call(this) && !this.yaEstaPrendida();
-    };
-    EncenderPorEtiqueta.prototype.yaEstaPrendida = function () {
-        return this.objetoTocado().nombreAnimacionActual() == this.nombreProximaAnimacion();
+    EncenderPorEtiqueta.prototype.estaApagada = function () {
+        return this.objetoTocado().nombreAnimacionActual() != this.nombreProximaAnimacion();
     };
     return EncenderPorEtiqueta;
 })(ComportamientoColision);
@@ -2451,13 +2437,10 @@ var Sostener = (function (_super) {
             objetoColision.eliminar();
         }
     };
-    Sostener.prototype.verificarCondicionesDeEjecucion = function () {
-        _super.prototype.verificarCondicionesDeEjecucion.call(this);
-        if (!this.puedoSostener())
-            throw new ActividadError("No puedo sostener dos cosas a la vez...");
-    };
-    Sostener.prototype.debeEjecutarse = function () {
-        return _super.prototype.debeEjecutarse.call(this) && this.puedoSostener();
+    Sostener.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.puedoSostener(); }, "No puedo sostener dos cosas a la vez..."));
     };
     Sostener.prototype.puedoSostener = function () {
         return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
@@ -2472,13 +2455,10 @@ var Soltar = (function (_super) {
     Soltar.prototype.metodo = function (objetoColision) {
         this.receptor.eliminarUltimoSubactor();
     };
-    Soltar.prototype.verificarCondicionesDeEjecucion = function () {
-        _super.prototype.verificarCondicionesDeEjecucion.call(this);
-        if (!this.receptor.tieneAlgoEnLaMano())
-            throw new ActividadError("No tengo nada en la mano");
-    };
-    Soltar.prototype.debeEjecutarse = function () {
-        return _super.prototype.debeEjecutarse.call(this) && this.receptor.tieneAlgoEnLaMano();
+    Soltar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor.tieneAlgoEnLaMano(); }, "No tengo nada en la mano"));
     };
     return Soltar;
 })(ComportamientoColision);
