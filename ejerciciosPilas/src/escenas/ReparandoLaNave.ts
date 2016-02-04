@@ -40,8 +40,9 @@ class ReparandoLaNave extends EscenaActividad {
   private crearActores(cFilas, cColumnas){
     this.crearAutomata(cFilas, cColumnas);
 
-    this.nave = new NaveAnimada(0, 0);
-    this.cuadricula.agregarActor(this.nave, cFilas - 1, 0);
+    var lanave = new NaveAnimada(0, 0);
+    this.cuadricula.agregarActor(lanave, cFilas - 1, 0);
+    this.nave = new ActorCompuesto(0, 0, { subactores: [lanave] });
 
     this.hierro = new HierroAnimado(0, 0);
     this.hierro.cantidad = 3;
@@ -74,37 +75,14 @@ class ReparandoLaNave extends EscenaActividad {
   }
 
   private crearEstado() {
-    var builder = new BuilderStatePattern('estoy00');
-    this.definirTransiciones(builder);
+    var builder = new BuilderStatePattern('faltanMateriales');
+    builder.agregarEstado('naveReparada');
+    builder.agregarEstadoAceptacion('haEscapado');
+    builder.agregarError('faltanMateriales', 'escapar', '¡No puedo escaparme sin antes haber reparado la nave!');
+    builder.agregarTransicion('faltanMateriales', 'naveReparada', 'depositar',
+      () => this.hierro.cantidad == 0 && this.carbon.cantidad == 0);
+    builder.agregarTransicion('naveReparada', 'haEscapado', 'escapar');
     this.estado = builder.estadoInicial();
   }
-
-  private definirTransiciones(builder){
-    //modelo estoyCH como cantidad de carbon y de hierro ya depositados,
-    //CestoyCH como tengo carbon en mano
-    // y HestoyCH como tengo hierro en mano.
-    //Estados donde no tengo nada en la mano.
-    for(var hierro=0;hierro<=3;hierro++){
-        for(var carbon=0;carbon<=3;carbon++){
-            builder.agregarEstado(('estoy'+hierro)+carbon)
-            builder.agregarEstado((('estoy'+hierro)+carbon)+'carbon')
-            builder.agregarEstado((('estoy'+hierro)+carbon)+'hierro')
-        }
-    }
-    //no unificar los fors, necesito tener creados los estados antes de las transi
-    for(var hierro=0;hierro<=3;hierro++){
-        for(var carbon=0;carbon<=3;carbon++){
-          builder.agregarError('estoy'+hierro+carbon,'depositar','No tengo nada en la mano')
-        if(hierro!=3){
-            builder.agregarTransicion((('estoy'+hierro)+carbon)+'hierro',('estoy'+(hierro+1))+carbon,'depositar')
-            builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'hierro','tomarHierro')
-
-        }
-        if(carbon!=3){
-            builder.agregarTransicion((('estoy'+hierro)+carbon)+'carbon',('estoy'+hierro)+(carbon+1),'depositar')
-            builder.agregarTransicion((('estoy'+hierro)+carbon),'estoy'+(hierro)+carbon+'carbon','tomarCarbon')
-        }
-      }
-    }
-  }
 }
+

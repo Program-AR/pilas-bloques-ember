@@ -18,19 +18,6 @@ automata
 
 
 class ComportamientoColision extends ComportamientoAnimado {
-	/*nombreAnimacion(){
-		// redefinir por subclase
-		return "parado";
-	}*/
-	alIniciar(){
-		if(pilas.escena_actual().estado == undefined){
-			pilas.escena_actual().estado = new SinEstado();
-		}
-	}
-
-	alTerminarAnimacion(){
-			pilas.escena_actual().estado.realizarTransicion(this.argumentos['idTransicion'],this)
-	}
 
 	ejecutarse(){
 		this.verificarCondicionesDeEjecucion();

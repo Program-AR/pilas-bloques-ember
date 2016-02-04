@@ -1,13 +1,11 @@
 /// <reference path = "EscenaActividad.ts" />
 
 class AlienLevantaTuercas extends EscenaActividad {
-	automata;
-	estado;
 	cuadricula;
 	fondo;
 
 iniciar() {
-		this.estado=new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('TuercaAnimada')==0;});
+		this.estado = new SinEstado(function(escena){return escena.cantidadObjetosConEtiqueta('TuercaAnimada')==0;});
 		this.fondo = new pilas.fondos.Laberinto1();
 		this.cuadricula = new Cuadricula(0,-25,5,6,
 								{alto: 400},

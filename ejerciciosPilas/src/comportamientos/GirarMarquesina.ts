@@ -17,8 +17,8 @@ class GirarMarquesina extends MovimientoAnimado {
 		super.alIniciar();
 	}
 
-	alTerminarAnimacion(){
-		super.alTerminarAnimacion();
+	postAnimacion(){
+		super.postAnimacion();
 		this.receptor.setX(this.posInicial.x);
 		this.receptor.eliminarUltimoSubactor();
 	}

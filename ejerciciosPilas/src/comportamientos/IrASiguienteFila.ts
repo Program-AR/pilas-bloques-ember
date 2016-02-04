@@ -4,7 +4,7 @@ class IrASiguienteFila extends ComportamientoAnimado {
     return "parado";
   }
 
-  alTerminarAnimacion(){
+  postAnimacion(){
     var nroF=this.argumentos['personaje'].casilla.nroFila+1;
     this.argumentos['personaje'].casilla=this.argumentos['cuadricula'].casilla(nroF,0);
   }

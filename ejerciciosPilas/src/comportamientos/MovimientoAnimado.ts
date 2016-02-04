@@ -41,7 +41,7 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		this.voltearSiCorresponde();
     }
 
-    alTerminarAnimacion(){
+    postAnimacion(){
 		this.receptor.activarHabilidadesConMovimiento();
     }
 

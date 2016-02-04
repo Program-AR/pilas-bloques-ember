@@ -7,7 +7,7 @@ frase definida por la escena
 */
 
 class SaltarHablando extends SaltarAnimado {
-    alTerminarAnimacion(){
+    postAnimacion(){
    		this.receptor.decir(pilas.escena_actual().fraseAlSaltar());
   	}
 }

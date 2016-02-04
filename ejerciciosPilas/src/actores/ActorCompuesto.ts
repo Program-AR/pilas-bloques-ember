@@ -38,6 +38,13 @@ class ActorCompuesto extends ActorAnimado {
 		this.subactores.pop().eliminar();
 	}
 
+	cantSubactores(){
+		return this.subactores.length;
+	}
+
+	tieneAlgoEnLaMano() {
+		return this.cantSubactores() >= 2;
+	}
 
 	///////////////////////////////////////////////////////
 	// A partir de acá son los métodos del composite polimórfico

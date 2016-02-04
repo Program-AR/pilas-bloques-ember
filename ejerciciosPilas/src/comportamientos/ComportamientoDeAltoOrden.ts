@@ -6,7 +6,7 @@ class ComportamientoDeAltoOrden extends ComportamientoAnimado {
 		return this.argumentos['nombreAnimacion'];
 	}
    
-	alTerminarAnimacion(){
+	postAnimacion(){
 			this.argumentos.metodo.apply(this.argumentos['receptor']);
     }
 

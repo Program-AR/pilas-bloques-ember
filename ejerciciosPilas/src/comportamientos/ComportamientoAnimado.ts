@@ -19,7 +19,7 @@
  *      nombreAnimacion(){ 
  *			return 'explosion'
  *		};
- *      alTerminarAnimacion(){
+ *      postAnimacion(){
  *			this.receptor.eliminar();
  *		}
  *
@@ -48,6 +48,8 @@ class ComportamientoAnimado extends Comportamiento {
 	
 	iniciar(receptor){
 		super.iniciar(receptor);
+		this.receptor = this.argumentos.receptor || this.receptor;
+		
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
 			this.configuracionInicial();
@@ -59,7 +61,7 @@ class ComportamientoAnimado extends Comportamiento {
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
 			this.configuracionFinal();
-        	this.alTerminarAnimacion();
+        	this.postAnimacion();
         	return true;
    		}.bind(this));	
 	}
@@ -84,7 +86,11 @@ class ComportamientoAnimado extends Comportamiento {
 	private configuracionFinal(){
 		this.receptor.animar();
 		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
+		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+		pilas.escena_actual().estado.ejecutarComportamiento(this);
 	}
+
+	ejecutarse() { }; //Polimorfismo con ComportamientoColision
 	
 	/* Redefinir si corresponde animar el comportamiento. */
 	nombreAnimacion(){
@@ -107,7 +113,7 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 	
 	/* Redefinir si corresponde */
-	alTerminarAnimacion(){
+	postAnimacion(){
 	}
 	
 	/** Redefinir si es necesario. 

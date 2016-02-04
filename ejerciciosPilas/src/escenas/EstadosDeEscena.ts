@@ -9,7 +9,7 @@ class ErrorEnEstados {
     this.mensajeError=mensaje;
   }
 
-  realizarAccion(comportamiento, estadoAnterior){
+  ejecutarComportamiento(comportamiento) {
     throw new ActividadError(this.mensajeError);
   }
 
@@ -29,29 +29,26 @@ class Estado {
     this.transiciones={};
   }
 
-  agregarTransicion(estadoEntrada,transicion){
-    this.transiciones[transicion]= estadoEntrada;
+  agregarTransicion(estadoEntrada, idTransicion, condicionTransicion = () => true) {
+    this.transiciones[idTransicion] = { 
+      estadoEntrada: estadoEntrada,
+      condicionTransicion: condicionTransicion,
+    };
   }
 
-  realizarTransicion(idTransicion,comportamiento){
-    if(this.transiciones[idTransicion]){
-        pilas.escena_actual().estado=this.transiciones[idTransicion].estadoSiguiente(comportamiento,this);
-        this.transiciones[idTransicion].realizarAccion(comportamiento,this);
-    }else{
-      throw new ActividadError("¡Ups, esa no era la opción correcta!");
-    }
+  realizarTransicion(idTransicion, comportamiento) {
+    if (!this.transiciones[idTransicion]) throw new ActividadError("¡Ups, esa no era la opción correcta!");
+    pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
   }
 
-  estadoSiguiente(comportamiento,estadoAnterior){
-      if(comportamiento.debeEjecutarse()){
-          return this
-      }else{
-          return estadoAnterior;
-      }
+  estadoSiguiente(comportamiento, idTransicion) {
+      return comportamiento.debeEjecutarse() && this.transiciones[idTransicion].condicionTransicion() ?
+        this.transiciones[idTransicion].estadoEntrada :
+        this;
   }
 
-  realizarAccion(comportamiento,estadoAnterior){
-    comportamiento.ejecutarse()
+  ejecutarComportamiento(comportamiento){
+    comportamiento.ejecutarse();
   }
 
   soyAceptacion() {
@@ -73,9 +70,9 @@ class SinEstado {
     this.funcionAceptacion=funcionAceptacion;
   }
 
-	realizarTransicion(idComport,comportamiento){
-		comportamiento.ejecutarse();
-	}
+  ejecutarComportamiento(comportamiento) {
+    comportamiento.ejecutarse();
+  }
 
   soyAceptacion(){
     return this.funcionAceptacion(pilas.escena_actual());
@@ -99,8 +96,8 @@ class BuilderStatePattern{
       this.estados[idEstado] = new EstadoAceptacion(idEstado);
     }
 
-    agregarTransicion(estadoSalida,estadoEntrada,transicion){
-      this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada],transicion);
+    agregarTransicion(estadoSalida, estadoEntrada, transicion, condicionTransicion = () => true ) {
+      this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion, condicionTransicion);
     }
 
     agregarError(estadoSalida,transicion,error){
