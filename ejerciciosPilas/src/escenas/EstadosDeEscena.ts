@@ -1,30 +1,27 @@
 /// <reference path = "EscenaActividad.ts" />
 
-class ErrorEnEstados {
-  estadoAlQueVuelve;
-  mensajeError;
+class Estado {
+  funcionAceptacion;
 
-  constructor(estado,mensaje){
-    this.estadoAlQueVuelve=estado;
-    this.mensajeError=mensaje;
+  constructor(funcionAceptacion = () => false) {
+    this.funcionAceptacion = funcionAceptacion;
   }
 
   ejecutarComportamiento(comportamiento) {
-    throw new ActividadError(this.mensajeError);
+    comportamiento.ejecutarse();
   }
 
-  estadoSiguiente(comportamiento,estadoAnterior){
-    return estadoAnterior;
+  soyAceptacion() {
+    return this.funcionAceptacion();
   }
-
-
 }
 
-class Estado {
+class EstadoConTransicion extends Estado{
   transiciones;
   identifier;
 
   constructor(idEstado){
+    super();
     this.identifier=idEstado;
     this.transiciones={};
   }
@@ -46,36 +43,29 @@ class Estado {
         this.transiciones[idTransicion].estadoEntrada :
         this;
   }
-
-  ejecutarComportamiento(comportamiento){
-    comportamiento.ejecutarse();
-  }
-
-  soyAceptacion() {
-    return false;
-  }
 }
 
-class EstadoAceptacion extends Estado{
-
+class EstadoAceptacion extends EstadoConTransicion{
   soyAceptacion(){
     return true;
   }
 }
 
-class SinEstado {
-  funcionAceptacion;
+class EstadoError {
+  estadoAlQueVuelve;
+  mensajeError;
 
-  constructor(funcionAceptacion = function(escena){return false;}){
-    this.funcionAceptacion=funcionAceptacion;
+  constructor(estado, mensaje) {
+    this.estadoAlQueVuelve = estado;
+    this.mensajeError = mensaje;
   }
 
   ejecutarComportamiento(comportamiento) {
-    comportamiento.ejecutarse();
+    throw new ActividadError(this.mensajeError);
   }
 
-  soyAceptacion(){
-    return this.funcionAceptacion(pilas.escena_actual());
+  estadoSiguiente(comportamiento, estadoAnterior) {
+    return estadoAnterior;
   }
 }
 
@@ -86,11 +76,11 @@ class BuilderStatePattern{
     constructor(idEstadoInicialp){
       this.idEstadoInicial=idEstadoInicialp;
       this.estados={};
-      this.estados[idEstadoInicialp]= new Estado(idEstadoInicialp);
+      this.estados[idEstadoInicialp]= new EstadoConTransicion(idEstadoInicialp);
     }
 
     agregarEstado(idEstado){
-      this.estados[idEstado]= new Estado(idEstado);
+      this.estados[idEstado]= new EstadoConTransicion(idEstado);
     }
     agregarEstadoAceptacion(idEstado){
       this.estados[idEstado] = new EstadoAceptacion(idEstado);
@@ -101,7 +91,7 @@ class BuilderStatePattern{
     }
 
     agregarError(estadoSalida,transicion,error){
-      this.estados[estadoSalida].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida],error),transicion);
+      this.estados[estadoSalida].agregarTransicion(new EstadoError(this.estados[estadoSalida],error),transicion);
     }
 
     agregarErrorAVariosEstadosDeSalida(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida){
@@ -109,7 +99,7 @@ class BuilderStatePattern{
       //pre indefFinalSalida>indexInicialSalida
       var tamano=indexFinalSalida-indexInicialSalida
       for(var index=0;index<=tamano;++index){
-        this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
+        this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new EstadoError(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
       }
     }
     agregarErroresIterados(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida,indexInicialTransi,indexFinalTransi){
@@ -117,7 +107,7 @@ class BuilderStatePattern{
       // NO TERMINADO
       var range=indexFinalSalida-indexInicialSalida;
       for(var index=0;index<range;++index){
-          this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new ErrorEnEstados(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
+          this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new EstadoError(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
       }
     }
 
@@ -128,7 +118,7 @@ class BuilderStatePattern{
     agregarEstadosPrefijados(prefix,indexInicial,indexFinal){
       //prefix debe ser string e indexInicial y final ints
     for(var i=indexInicial;i<=indexFinal;++i){
-      this.estados[prefix+i]=new Estado(prefix+i);
+      this.estados[prefix+i]=new EstadoConTransicion(prefix+i);
     }
     }
 

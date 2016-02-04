@@ -45,10 +45,14 @@
 class ComportamientoAnimado extends Comportamiento {
 	secuenciaActualizar;
 	animacionAnterior;
+	verificacionesPre;
+	verificacionesPost;
 	
 	iniciar(receptor){
 		super.iniciar(receptor);
 		this.receptor = this.argumentos.receptor || this.receptor;
+		this.verificacionesPre = this.argumentos.verificacionesPre || [];
+		this.verificacionesPost = this.argumentos.verificacionesPost || [];
 		
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
@@ -78,6 +82,7 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	private configuracionInicial(){
+		this.verificacionesPreAnimacion();
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
 		this.receptor.cargarAnimacion(this.nombreAnimacion());
@@ -86,11 +91,20 @@ class ComportamientoAnimado extends Comportamiento {
 	private configuracionFinal(){
 		this.receptor.animar();
 		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
+		this.verificacionesPostAnimacion();
 		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
 		pilas.escena_actual().estado.ejecutarComportamiento(this);
 	}
 
 	ejecutarse() { }; //Polimorfismo con ComportamientoColision
+
+	verificacionesPreAnimacion(){
+		this.verificacionesPre.forEach(verificacion => verificacion.verificar());
+	}
+
+	verificacionesPostAnimacion() {
+		this.verificacionesPost.forEach(verificacion => verificacion.verificar());
+	}	
 	
 	/* Redefinir si corresponde animar el comportamiento. */
 	nombreAnimacion(){
@@ -126,3 +140,22 @@ class ComportamientoAnimado extends Comportamiento {
 		return this.receptor.avanzarAnimacion()
 	}
 } 
+
+
+class Verificacion {
+	condicionEjecucion;
+	mensajeError;
+
+	constructor(condicionEjecucion, mensajeError) {
+		this.condicionEjecucion = condicionEjecucion;
+		this.mensajeError = mensajeError;
+	}
+
+	seCumple(){
+		return this.condicionEjecucion();
+	}
+	
+	verificar(){
+		if (!this.seCumple()) throw new ActividadError(this.mensajeError);
+	}
+}

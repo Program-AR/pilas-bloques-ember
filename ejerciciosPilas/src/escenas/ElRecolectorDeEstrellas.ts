@@ -9,7 +9,7 @@ class ElRecolectorDeEstrellas extends EscenaActividad {
     objetos;
     estado;
     iniciar() {
-        this.estado = new SinEstado(function(escena) { return escena.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0; })
+        this.estado = new Estado(() => this.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0);
         this.fondo = new Fondo('fondo.recolector.png', 0, 0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4
