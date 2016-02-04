@@ -24,24 +24,22 @@ class ReparandoLaNave extends EscenaActividad {
 
   iniciar() {
     this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
-    var cantidadFilas=4
-    var cantidadColumnas=5
 
-    this.cuadricula = new Cuadricula(0,0,cantidadFilas,cantidadColumnas,
+    this.cuadricula = new Cuadricula(0,0,4,5,
         {ancho:323,alto:261},
         {grilla: 'invisible.png',
         cantColumnas: 1});
 
-    this.crearActores(cantidadFilas, cantidadColumnas);
+    this.crearActores();
     this.crearTableros();
     this.crearEstado();
   }
 
-  private crearActores(cFilas, cColumnas){
-    this.crearAutomata(cFilas, cColumnas);
+  private crearActores(){
+    this.crearAutomata();
 
     var lanave = new NaveAnimada(0, 0);
-    this.cuadricula.agregarActor(lanave, cFilas - 1, 0);
+    this.cuadricula.agregarActor(lanave, this.cuadricula.cantFilas - 1, 0);
     this.nave = new ActorCompuesto(0, 0, { subactores: [lanave] });
 
     this.hierro = new HierroAnimado(0, 0);
@@ -50,14 +48,14 @@ class ReparandoLaNave extends EscenaActividad {
     this.carbon.cantidad = 3;
     this.cuadricula.agregarActor(this.hierro, 0, 0);
     this.hierro.aprender(Flotar, { Desvio: 2 });
-    this.cuadricula.agregarActor(this.carbon, 0, cColumnas - 1);
+    this.cuadricula.agregarActor(this.carbon, 0, this.cuadricula.cantColumnas - 1);
     this.carbon.aprender(Flotar, { Desvio: 2 });
   }
 
-  private crearAutomata(cantidadFilas, cantidadColumnas) {
-    this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoVerdeAnimado(0, 0)]});
-    this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0, false);
-    this.automata.escala = 0.75;
+  private crearAutomata() {
+    this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoAnimado(0, 0)]});
+    this.cuadricula.agregarActorEnPerspectiva(this.automata, this.cuadricula.cantFilas - 1, 0, false);
+    this.automata.escala = 0.8;
     this.automata.y += 50;
   }
 
