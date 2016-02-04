@@ -5,7 +5,7 @@
 class GirarMarquesina extends MovimientoAnimado {
 	posInicial;
 
-	alIniciar() {
+	preAnimacion() {
 		this.argumentos.distancia = this.receptor.subactores[0].getAncho();
 		this.argumentos.direccion = new Direct(-1, 0);
 		this.argumentos.voltearAlIrAIzquierda = false;
@@ -14,7 +14,7 @@ class GirarMarquesina extends MovimientoAnimado {
 		this.receptor.agregarSubactor(this.espejo());
 
 
-		super.alIniciar();
+		super.preAnimacion();
 	}
 
 	postAnimacion(){

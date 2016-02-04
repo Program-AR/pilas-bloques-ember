@@ -53,7 +53,7 @@ class ComportamientoAnimado extends Comportamiento {
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
 			this.configuracionInicial();
-        	this.alIniciar();
+        	this.preAnimacion();
         	return true;
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
@@ -109,7 +109,7 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 	
 	/* Redefinir si corresponde */
-	alIniciar(){
+	preAnimacion(){
 	}
 	
 	/* Redefinir si corresponde */

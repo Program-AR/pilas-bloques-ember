@@ -8,11 +8,11 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     vectorDireccion;
     estoyEmpezandoAMoverme;
 
-    alIniciar(){
+    preAnimacion(){
         this.cuadricula = this.receptor.cuadricula;
         this.argumentos.direccion = new Direct(this.vectorDireccion.x,this.vectorDireccion.y);
         this.argumentos.distancia = this.distancia();
-        super.alIniciar();
+        super.preAnimacion();
         this.estoyEmpezandoAMoverme = true;
     }
 

@@ -28,8 +28,8 @@ class MovimientoAnimado extends ComportamientoAnimado{
         return 'correr';
     }
 
-    alIniciar(){
-		super.alIniciar();
+    preAnimacion(){
+		super.preAnimacion();
 		this.sanitizarArgumentos();
 		this.vueltasSinEjecutar = 0;
 		this.enQueVueltaEjecuto = Math.round(100/this.valoresFinales.velocidad);

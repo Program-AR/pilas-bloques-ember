@@ -7,7 +7,7 @@ class SaltarAnimado extends ComportamientoAnimado {
 	velocidad;
 	gravedad;
 
-	alIniciar() {
+	preAnimacion() {
 		this.velocidad_inicial = this.argumentos.velocidad_inicial || 10;
 		this.alTerminar = this.argumentos.alTerminar || function(r) { };
 		this.gravedad = this.argumentos.gravedad || 0.3;

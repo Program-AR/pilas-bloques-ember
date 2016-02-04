@@ -5,7 +5,7 @@ class Decir extends ComportamientoAnimado {
 	globo;
 
 	/* Redefinir si corresponde */
-	alIniciar() {
+	preAnimacion() {
 		this.globo = this.crearGlobo()
 	}
 

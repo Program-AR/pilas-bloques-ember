@@ -8,7 +8,7 @@ class SerPateado extends ComportamientoAnimado {
     tiempoEnElAire
     elevacionMaxima
   
-  alIniciar() {
+  preAnimacion() {
         this.receptor.cargarAnimacion("patear")
         this.receptor.aprender(Rotar,{'gradosDeAumentoStep':this.argumentos['gradosDeAumentoStep']||1})
         this.actualizarPosicion();
