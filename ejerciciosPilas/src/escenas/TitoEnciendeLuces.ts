@@ -22,23 +22,23 @@ class TitoEnciendeLuces extends EscenaActividad {
 
         //se cargan las luces
         var cant=0;
-        var fila=3
+        var fila = 3;
         var col=0;
         while(cant <4){
           this.agregarLuz(fila,col);
-          fila-=1
-          col+=1
-          cant+=1
+          fila -= 1;
+          col += 1;
+          cant += 1;
         }
         cant=0;
         fila=4;
-        col=2
+        col = 2;
         while(cant<4){
           this.agregarLuz(fila,col);
-          fila-=1
+          fila -= 1;
           col+=1;
           cant+=1;
-        }
+        };
 
 
 
@@ -53,5 +53,9 @@ class TitoEnciendeLuces extends EscenaActividad {
         var casillaLuminosa = new Lamparin(0,0);
         this.cuadricula.agregarActor(casillaLuminosa,fila,columna);
         this.objetos.push(casillaLuminosa);
+    }
+
+    estaResueltoElProblema(){
+      return this.objetos.every(o => o.nombreAnimacionActual() == 'prendida');
     }
 }

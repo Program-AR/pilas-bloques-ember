@@ -14,9 +14,11 @@ class SuperTito1 extends EscenaActividad {
     automata;
     cuadricula;
     cantFilas;
+    objetos;
 
     iniciar() {
         this.fondo = new Fondo(this.pathFondo(),0,0);
+        this.objetos = [];
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas(),1,
             {separacionEntreCasillas: 5},
             {grilla: 'casilla.grisoscuro.png',
@@ -41,12 +43,17 @@ class SuperTito1 extends EscenaActividad {
 
     agregarLamparinEnFila(i){
         var lamparin = new Lamparin(0, 0);
+        this.objetos.push(lamparin);
         this.cuadricula.agregarActor(lamparin, i, 0);
         lamparin.x += 15;
     }
 
     pathFondo(){
         return 'fondo.superTito1.png';
+    }
+
+    estaResueltoElProblema() {
+        return this.objetos.every(o => o.nombreAnimacionActual() == 'prendida');
     }
 
 }
