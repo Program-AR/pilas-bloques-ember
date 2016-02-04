@@ -7,5 +7,6 @@ class HierroAnimado extends ActorAnimado {
         this.definirAnimacion("quedan2",[1],1);
         this.definirAnimacion("quedan1",[2],1);
         this.definirAnimacion("correr", [2], 1);
+        this.definirAnimacion("parado", [2], 1);
     }
 }

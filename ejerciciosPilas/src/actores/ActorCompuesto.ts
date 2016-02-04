@@ -29,7 +29,8 @@ class ActorCompuesto extends ActorAnimado {
 		actor.agregar_habilidad(ImitarAtributosNumericos2,
 			{
 				objeto_a_imitar: this,
-				atributos: ['x', 'y', 'escala_x', 'escala_y'],
+				conVariacionEntera: ['x', 'y'],
+				conVariacionPorcentual: ['escala_x', 'escala_y'],
 				setters: { 'x': 'setX', 'y': 'setY' },
 			})
 	}

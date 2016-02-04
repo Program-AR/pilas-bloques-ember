@@ -576,11 +576,23 @@ declare class Imitar extends Habilidad {
     constructor(receptor: any, argumentos: any);
     public actualizar(): void;
 }
+declare class AtributoEntero {
+    public nombre: any;
+    public deltaOriginal: any;
+    constructor(nombre: any, victima: any, imitador: any);
+    public nuevoValor(victima: any): number;
+}
+declare class AtributoPorcentual {
+    public nombre: any;
+    public valorOriginalVictima: any;
+    public valorOriginalImitador: any;
+    constructor(nombre: any, victima: any, imitador: any);
+    public nuevoValor(victima: any): number;
+}
 declare class ImitarAtributosNumericos extends Habilidad {
     public objeto_a_imitar: any;
     public atributos: any;
     public setters: any;
-    public deltas: any;
     constructor(receptor: any, argumentos: any);
     public actualizar(): void;
 }
