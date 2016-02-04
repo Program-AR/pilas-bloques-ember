@@ -64,8 +64,8 @@ class EstadoError {
     throw new ActividadError(this.mensajeError);
   }
 
-  estadoSiguiente(comportamiento, estadoAnterior) {
-    return estadoAnterior;
+  estadoSiguiente(comportamiento, idTransicion) {
+    return this.estadoAlQueVuelve;
   }
 }
 

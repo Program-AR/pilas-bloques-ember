@@ -15,9 +15,7 @@ class TresNaranjas extends EscenaActividad {
     automata;
     cuadricula;
     objetos = [];
-    estado;
     iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo('fondo.tresNaranjas.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,1,4,

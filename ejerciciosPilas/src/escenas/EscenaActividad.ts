@@ -45,9 +45,4 @@ class EscenaActividad extends Base {
 	contarActoresConEtiqueta(etiqueta) : Number{
 			return this.actores.filter(actor=>actor.tiene_etiqueta(etiqueta)).length;
 	}
-
-
-
-
-
 }

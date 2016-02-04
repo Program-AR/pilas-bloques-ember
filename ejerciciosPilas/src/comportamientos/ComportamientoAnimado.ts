@@ -91,8 +91,8 @@ class ComportamientoAnimado extends Comportamiento {
 	private configuracionFinal(){
 		this.receptor.animar();
 		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
-		this.verificacionesPostAnimacion();
 		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+		this.verificacionesPostAnimacion();
 		pilas.escena_actual().estado.ejecutarComportamiento(this);
 	}
 
