@@ -61,7 +61,7 @@ var VolverAlBordeIzquierdo = Accion.extend({
 var actividadElPlanetaDeNano = {
   nombre: 'El planeta de Nano',
   enunciado: 'Ayudá a Nano a recoger todas sus estrellas. ¡Cuidado! No se puede bajar...',
-
+  id: 'ElPlanetaDeNano',
   // la escena proviene de ejerciciosPilas
   escena: ElPlanetaDeNano, // jshint ignore:line
   puedeComentar: false,

@@ -1,14 +1,16 @@
 {{#if deshabilitado}}
-  <img class='grayscale semi-transparente' src='images/desafios/{{nombre}}.png'>
+
+  <img class='grayscale semi-transparente' src='images/desafios/{{nombre}}.png' onerror="this.src='images/desafios/proximamente.png'">
 
   <div class="ribbon right gray semi-transparente">
     <a>Muy pronto</a>
   </div>
+  <div class='pilas-desafio-titulo'>{{titulo}}</div>
 
 {{else}}
 
   <img class='desafio-img' {{action 'abrir'}} src='images/desafios/{{nombre}}.png'>
+  <div class='pilas-desafio-titulo' {{action 'abrir'}}>{{titulo}}</div>
 
 {{/if}}
 
-<div class='pilas-desafio-titulo' {{action 'abrir'}}>{{titulo}}</div>

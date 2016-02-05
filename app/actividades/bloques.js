@@ -376,7 +376,7 @@ var Repetir = EstructuraDeControl.extend({
     this._super(block);
     block.appendValueInput('count')
         .setCheck('Number')
-        .appendField('repetir');
+        .appendField('Repetir');
     block.appendStatementInput('block');
   },
 
@@ -414,7 +414,7 @@ var Si = EstructuraDeControl.extend({
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
-        .appendField('si');
+        .appendField('Si');
     block.appendStatementInput('block');
   },
 
@@ -442,7 +442,7 @@ var Sino = EstructuraDeControl.extend({
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
-        .appendField('si');
+        .appendField('Si');
     block.appendStatementInput('block1');
     block.appendDummyInput()
         .appendField('sino');
@@ -474,7 +474,7 @@ var Hasta = EstructuraDeControl.extend({
     this._super(block);
     block.appendValueInput('condition')
         .setCheck('Boolean')
-        .appendField('repetir hasta que');
+        .appendField('Repetir hasta que');
     block.appendStatementInput('block');
   },
 

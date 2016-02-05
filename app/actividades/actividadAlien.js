@@ -16,7 +16,7 @@ var LevantarTuerca = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Levantar ')
+          .appendField('Levantar tuerca')
          .appendField(this.obtener_icono('../libs/data/tuerca.png'));
   },
 
@@ -25,7 +25,7 @@ var LevantarTuerca = Accion.extend({
   },
 
   argumentos: function() {
-    return '{\'etiqueta\' : \'TuercaAnimada\',  \'mensajeError\' : \'No hay una tuerca aqui\',  \'pasos\' : \'50\'}';
+    return '{\'etiqueta\' : \'TuercaAnimada\',  \'mensajeError\' : \'No hay una tuerca aquí\',  \'pasos\' : \'50\'}';
   }
 });
 
@@ -53,8 +53,9 @@ var TocandoTuerca = Sensor.extend({
 
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
+  id: 'ElAlienYLasTuercas',
   enunciado: 'Definí un programa para que el alien junte todas las tuercas.',
-  consignaInicial: 'Una buena estrategia de resolución de este desafío es la división del procedimiento en sub tareas.',
+  consignaInicial: 'Una buena estrategia de resolución de este desafío es la división del procedimiento en subtareas.',
 
   escena: AlienLevantaTuercas,
   puedeComentar: false,

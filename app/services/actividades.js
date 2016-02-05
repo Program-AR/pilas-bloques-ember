@@ -5,15 +5,15 @@ import Ember from 'ember';
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
-import actividadLightbotEnScratch from 'pilas-engine-bloques/actividades/actividadLightbotEnScratch';
+import actividadTitoEnciendeLuces from 'pilas-engine-bloques/actividades/actividadTitoEnciendeLuces';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
-import actividadLightbotRecargado from 'pilas-engine-bloques/actividades/actividadLightbotRecargado';
+import actividadTitoRecargado from 'pilas-engine-bloques/actividades/actividadTitoRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
 import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/actividadElRecolectorDeEstrellas';
-
+import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado';
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
@@ -78,39 +78,38 @@ import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 
 export default Ember.Service.extend({
-  obtenerPorNombre(nombreActividad) {
+  obtenerPorNombre(idActividad) {
 
-    let actividades = {
-      alien: actividadAlien,
-      AlienTocaBoton: actividadAlienTocaBoton,
-      LaEleccionDelMono: actividadLaEleccionDelMono,
-      ElMonoYLasBananas: actividadElMonoYLasBananas,
-      LightbotEnScratch: actividadLightbotEnScratch,
-      FutbolRobots: actividadFutbolRobots,
-      //ElPlanetaDeNano: actividadElPlanetaDeNano
-      LightbotRecargado : actividadLightbotRecargado,
-      SuperTito1: actividadSuperTito1,
-      SuperTito2: actividadSuperTito2,
-      ElRecolectorDeEstrellas: actividadElRecolectorDeEstrellas,
+    let actividades = [
+      actividadAlien,
+      actividadAlienTocaBoton,
+      actividadLaEleccionDelMono,
+      actividadElMonoYLasBananas,
+      actividadTitoEnciendeLuces,
+      actividadFutbolRobots,
+      actividadElPlanetaDeNano,
+      actividadTitoRecargado,
+      actividadSuperTito1,
+      actividadSuperTito2,
+      actividadElRecolectorDeEstrellas,
+      actividadMariaLaComeSandias,
+      actividadElMarcianoEnElDesierto,
+      actividadAlimentandoALosPeces,
+      actividadInstalandoJuegos,
+      actividadNoMeCansoDeSaltar,
+      actividadElGatoEnLaCalle,
+      actividadElMonoQueSabeContar,
+      actividadReparandoLaNave,
+      actividadTresNaranjas,
+      actividadLaberintoCorto,
+      actividadLaberintoLargo,
+      actividadLaberintoConQueso,
+      actividadElCangrejoAguafiestas,
+      actividadLaGranAventuraDelMarEncantado,
 
-      MariaLaComeSandias: actividadMariaLaComeSandias,
-      ElMarcianoEnElDesierto: actividadElMarcianoEnElDesierto,
-      AlimentandoALosPeces: actividadAlimentandoALosPeces,
-      InstalandoJuegos: actividadInstalandoJuegos,
-      NoMeCansoDeSaltar: actividadNoMeCansoDeSaltar,
-      ElGatoEnLaCalle: actividadElGatoEnLaCalle,
-      ElMonoQueSabeContar:actividadElMonoQueSabeContar,
-      ReparandoLaNave: actividadReparandoLaNave,
-      TresNaranjas: actividadTresNaranjas,
-      LaberintoCorto: actividadLaberintoCorto,
-      LaberintoLargo: actividadLaberintoLargo,
-      LaberintoConQueso: actividadLaberintoConQueso,
-      ElCangrejoAguafiestas: actividadElCangrejoAguafiestas
-      /*LaGranAventuraDelMarEncantado: actividadLaGranAventuraDelMarEncantado
-      */
-    };
+    ];
 
-    var actividad = actividades[nombreActividad];
+    var actividad = actividades.findBy('id',idActividad);
 
     if (!actividad) {
       return null;

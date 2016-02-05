@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, /*Sensor,*/ Repetir,Si,Procedimiento} = bloques;
+var {Accion, Repetir,Procedimiento} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
 
 var VolverABordeIzquierdo = Accion.extend({
@@ -14,7 +14,7 @@ var VolverABordeIzquierdo = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField('volver todo a ')
+    .appendField('Volver todo a izquierda')
     .appendField(this.obtener_icono('izquierda.png'));
 
   },
@@ -40,7 +40,7 @@ var TomarEstrella = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('tomar ')
+         .appendField('Tomar ')
          .appendField(this.obtener_icono('../libs/data/icono.estrella.png'));
   },
 
@@ -58,9 +58,8 @@ var TomarEstrella = Accion.extend({
 
 var actividadElRecolectorDeEstrellas = {
   nombre: 'El recolector de estrellas',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
-
+  id: 'ElRecolectorDeEstrellas',
+  enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: el bloque "Volver todo a izquierda" es de muuuucha ayuda.',
   escena: ElRecolectorDeEstrellas,
   puedeComentar: false,
   puedeDesactivar: false,
@@ -70,7 +69,7 @@ var actividadElRecolectorDeEstrellas = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
   acciones: [IrDerecha, IrArriba,VolverABordeIzquierdo,TomarEstrella],
   sensores: []

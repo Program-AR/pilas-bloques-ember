@@ -1,14 +1,16 @@
 /* globals TresNaranjas */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import comer from 'pilas-engine-bloques/actividades/comer';
+import tocando from 'pilas-engine-bloques/actividades/tocando';
 
 var {Repetir,Si,Procedimiento} = bloques;
 var {IrDerecha} = direcciones;
-
-
-
+var {ComerNaranja} = comer;
+var {TocandoNaranja} = tocando;
 var actividadTresNaranjas = {
-  nombre: 'El alien y las tuercas',
+  nombre: 'Tres naranjas',
+  id: 'TresNaranjas',
   enunciado: 'Definir.',
   consignaInicial: 'definirs.',
 
@@ -17,14 +19,10 @@ var actividadTresNaranjas = {
   puedeDesactivar: false,
   puedeDuplicar: false,
   subtareas: [Procedimiento],
-
-  // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-
   control: [Repetir,Si],
   expresiones: [],
-  acciones: [IrDerecha],
-  sensores: []
+  acciones: [IrDerecha,ComerNaranja],
+  sensores: [TocandoNaranja]
 };
-
 export default actividadTresNaranjas;

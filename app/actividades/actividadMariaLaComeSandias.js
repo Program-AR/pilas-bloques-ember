@@ -2,7 +2,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Repetir,Si,Procedimiento} = bloques;
+var {Accion, Repetir,Procedimiento} = bloques;
 var {IrDerecha,IrIzquierda, IrArriba,IrAbajo} = direcciones;
 
 
@@ -16,8 +16,8 @@ var MorderSandia = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('morder ')
-         .appendField(this.obtener_icono('../libs/data/icono.estrella.png'));
+         .appendField('Morder sandía ')
+         .appendField(this.obtener_icono('../libs/data/icono.sandia.png'));
   },
 
   nombre_comportamiento() {
@@ -33,9 +33,9 @@ var MorderSandia = Accion.extend({
 });
 
 var actividadMariaLaComeSandias = {
-  nombre: 'María la come sandias',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  nombre: 'María la come sandías',
+  id: 'MariaLaComeSandias',
+  enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Atención: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
 
   escena: MariaLaComeSandias,
   puedeComentar: false,
@@ -46,7 +46,7 @@ var actividadMariaLaComeSandias = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
   acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,MorderSandia],
   sensores: []

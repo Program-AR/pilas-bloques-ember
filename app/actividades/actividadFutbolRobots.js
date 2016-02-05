@@ -16,7 +16,7 @@ var Avanzar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('avanzar')
+         .appendField('Avanzar')
          .appendField(this.obtener_icono('derecha.png'));
   },
 
@@ -38,7 +38,7 @@ var Atras = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-     .appendField('atrás')
+     .appendField('Atrás')
      .appendField(this.obtener_icono('izquierda.png'));
    },
 
@@ -60,7 +60,7 @@ var SiguienteFila = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('siguiente fila')
+         .appendField('Siguiente fila')
          .appendField(this.obtener_icono('abajo.png'));
   },
 
@@ -83,16 +83,16 @@ var PatearPelota = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('patear')
+         .appendField('Patear pelota')
          .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
   },
 
   nombre_comportamiento() {
-    return 'DesencadenarHabilidadSiColiciona';
+    return 'DesencadenarComportamientoSiColisiona';
   },
 
   argumentos() {
-    return '{"Habilidad":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'mensajeError\': \'No hay una pelota aquí\',\'argumentosHabilidad\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}';
+    return '{"comportamiento":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'argumentosComportamiento\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}';
   }
 });
 
@@ -107,7 +107,7 @@ var TocandoInicio = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando')
+         .appendField('¿Tocando inicio ')
          .appendField(this.obtener_icono('../libs/data/iconos.futbolInicio.png'))
          .appendField('?');
 
@@ -127,7 +127,7 @@ var TocandoPelota = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿tocando')
+         .appendField('¿Tocando pelota ')
          .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'))
          .appendField('?');
   },
@@ -140,7 +140,8 @@ var TocandoPelota = Sensor.extend({
 
 
 var actividadFutbolRobots = {
-  nombre: 'Fútbol de Robots',
+  nombre: 'Fútbol para robots',
+  id: 'FutbolRobots',
   enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
     'Recordá siempre que una buena división en tareas puede ayudarte a encarar '+
     'mejor el problema.',

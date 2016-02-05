@@ -10,18 +10,16 @@ var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
 
 
 var actividadSuperTito2 = {
-  nombre: 'Super Tito 2',
-  enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Consigna.',
+  nombre: 'Súper Tito 2',
+  id: 'SuperTito2',
+  enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
 
-  // la escena proviene de ejerciciosPilas
   escena: SuperTito2,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
   subtareas: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un automata
   variables: [],
   control: [Si,Repetir,Hasta],
   expresiones: [],

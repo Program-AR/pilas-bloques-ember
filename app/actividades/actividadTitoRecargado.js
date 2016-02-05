@@ -5,13 +5,14 @@ var {Si, Repetir, Procedimiento} = bloques;
 var {IrAbajo} = direcciones;
 var {EncenderLuz,TocandoLuz} = bloquesTito;
 
-var actividadLightbotRecargado = {
+var actividadTitoRecargado = {
   nombre: 'Tito recargado',
-  enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Consigna.',
+  id: 'TitoRecargado',
+  enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar las subtareas y bloques de control.',
+    consignaInicial:'El procedimiento construido debe considerar el escenario y poder responder a cada cambio propuesto.',
 
   // la escena proviene de ejerciciosPilas
-  escena: LightBotRecargado,  // jshint ignore:line
+  escena: TitoRecargado,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
@@ -25,4 +26,4 @@ var actividadLightbotRecargado = {
   sensores: [TocandoLuz],
 };
 
-export default actividadLightbotRecargado;
+export default actividadTitoRecargado;

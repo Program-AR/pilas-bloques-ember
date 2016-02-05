@@ -2,32 +2,102 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Repetir, Si, Procedimiento} = bloques;
+var {Repetir, Procedimiento, Accion} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
+var TomarHierro = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'TomarHierro');
+      },
 
-/*
 
-  tomarHierro(){
-        this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'HierroAnimado','mensajeError':'No hay hierro aquí','dondeReflejarValor': this.cantidadHierro,'idComportamiento' : 'tomarHierro'})
-  }
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField(this.obtener_icono('../libs/data/icono.hierro.png'))
+            .appendField('Tomar Hierro');
+      },
 
-  tomarCarbon(){
-    this.personaje.hacer_luego(TomarYContarPorEtiqueta,{'etiqueta':'CarbonAnimado','mensajeError':'No hay Carbon aquí','dondeReflejarValor': this.cantidadCarbon,'idComportamiento' : 'tomarCarbon'})
-  }
+      nombre_comportamiento() {
+        return 'Sostener';
+      },
 
-  depositar(){
-    this.personaje.hacer_luego(Depositar,{'etiqueta':'NaveAnimada','mensajeError':'La nave no está aquí','idComportamiento' : 'depositar'})
-  }
 
-  escapar(){
-  this.personaje.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
+      argumentos() {
+        return '{etiqueta: "HierroAnimado", nombreAnimacion: "recogerHierro"}';
+      }
+    });
 
-}*/
+var TomarCarbon = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'TomarCarbon');
+      },
+
+
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField(this.obtener_icono('../libs/data/icono.carbon.png'))
+            .appendField('Tomar Carbon');
+      },
+
+      nombre_comportamiento() {
+        return 'Sostener';
+      },
+
+
+      argumentos() {
+        return '{etiqueta: "CarbonAnimado", nombreAnimacion: "recogerCarbon"}';
+      }
+    });
+
+var Depositar = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'Depositar');
+      },
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField('Depositar');
+      },
+      nombre_comportamiento() {
+        return 'Soltar';
+      },
+      argumentos() {
+        return '{idTransicion: "depositar", etiqueta: "NaveAnimada"}';
+      }
+});
+
+var Escapar = Accion.extend({
+      init() {
+        this._super();
+        this.set('id', 'Escapar');
+      },
+      block_init(block) {
+        this._super(block);
+        block.appendDummyInput()
+            .appendField('Escapar');
+      },
+      nombre_comportamiento() {
+          return 'MovimientoAnimado';
+      },
+
+      argumentos() {
+          return '{receptor: pilas.escena_actual().nave, direccion: new Direct(1,1), distancia: 600, velocidad: 8, cantPasos: 40, idTransicion: "escapar"}';
+
+      }
+});
+
+
+
 
 
 var actividadReparandoLaNave = {
   nombre: 'Reparando la nave',
+  id: 'ReparandoLaNave',
   enunciado: '.',
   consignaInicial: '.',
 
@@ -40,9 +110,9 @@ var actividadReparandoLaNave = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon,Depositar,Escapar],
   sensores: []
 };
 

@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Sino,Procedimiento} = bloques;
+var {Accion, Sensor, Si, Sino, Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
   init() {
@@ -34,7 +34,7 @@ var ComerManzana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer ')
+         .appendField('Comer manzana ')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 
@@ -59,7 +59,7 @@ var ComerBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer ')
+         .appendField('Comer banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png')); //TODO: Hardcodeo feo de dir de icono
   },
 
@@ -83,7 +83,7 @@ var TocandoManzana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando')
+         .appendField('¿Tocando manzana')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
          .appendField('?');
   },
@@ -103,7 +103,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando')
+         .appendField('¿Tocando banana')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
          .appendField('?');
   },
@@ -117,7 +117,8 @@ var TocandoBanana = Sensor.extend({
 
 
 var actividadLaEleccionDelMono = {
-  nombre: 'La Elección del Mono',
+  nombre: 'La elección del mono',
+  id: 'LaEleccionDelMono',
   enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez siempre tiene '+
      'una fruta para comer. ¡Pero no siempre es la misma! \n'+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
@@ -134,7 +135,7 @@ var actividadLaEleccionDelMono = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Sino],
+  control: [Si,Sino],
   expresiones: [],
   acciones: [ComerManzana,ComerBanana,Avanzar],
   sensores: [TocandoManzana,TocandoBanana],

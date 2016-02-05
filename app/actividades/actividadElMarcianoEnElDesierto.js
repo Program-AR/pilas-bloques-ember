@@ -4,15 +4,16 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 import comer from 'pilas-engine-bloques/actividades/comer';
 
 
-var {Repetir, Si, Procedimiento} = bloques;
+var {Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var {ComerManzana} = comer;
 
 
 var actividadElMarcianoEnElDesierto = {
   nombre: 'El marciano en el desierto',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  id: 'ElMarcianoEnElDesierto',
+  enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a comer las frutas. Pista: se pueden usar varios Repetir.',
+  consignaInicial: 'Conviene pensar una estrategia general de resolución antes de construir el programa. Por ejemplo: comer las manzanas de abajo, luego las del costado y por último las de arriba.',
 
   escena: ElMarcianoEnElDesierto,
   puedeComentar: false,
@@ -23,10 +24,10 @@ var actividadElMarcianoEnElDesierto = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
-  acciones: [],
-  sensores: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana]
+  acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana],
+  sensores: []
 };
 
 export default actividadElMarcianoEnElDesierto;

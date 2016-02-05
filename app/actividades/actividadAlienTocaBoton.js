@@ -23,28 +23,29 @@ var ApretarBoton = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Apretar ')
+         .appendField('Apretar botón')
          .appendField(this.obtener_icono('../libs/data/iconos.botonRojo.png'));
   },
 
 
 
   nombre_comportamiento() {
-    return 'DesencadenarAnimacionDobleSiColiciona';
+    return 'DesencadenarAnimacionSiColisiona';
   },
 
   argumentos() {
-    return '{\'idAnimacion\':\'prendida\',\'idAnimacionReceptor\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\'}';
+    return '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}';
 
   }
 });
 
 var actividadAlienTocaBoton = {
-  nombre: 'Alien Toca Botón',
+  nombre: 'El alien toca el botón',
+  id: 'AlienTocaBoton',
   enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
-  'Pistas: Mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!.',
+  'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
 
-  consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques',
+  consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
 
   // la escena proviene de ejerciciosPilas
   escena: AlienInicial, // jshint ignore:line

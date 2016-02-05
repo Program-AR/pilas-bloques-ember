@@ -1,18 +1,13 @@
-/* globals LaberintoCorto */
-
-/*
-
-siguienteFila(){
- this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple,{'cuadriculaMultiple':this.cuadricula})
-}*/
-
-
-
-//import comer from 'pilas-engine-bloques/actividades/comer';
-
+import bloques from 'pilas-engine-bloques/actividades/bloques';
+import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import tocando from 'pilas-engine-bloques/actividades/tocando';
+var {Si,Sino} = bloques;
+var {IrDerecha,IrAbajo} = direcciones;
+var {TocandoAbajo,TocandoDerecha} = tocando;
 
 var actividadLaberintoCorto = {
-  nombre: 'Laberinto Corto',
+  nombre: 'Laberinto corto',
+  id: 'LaberintoCorto',
   enunciado: 'a!.',
 
   consignaInicial: 'a',
@@ -26,10 +21,10 @@ var actividadLaberintoCorto = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [],
+  control: [Si,Sino],
   expresiones: [],
-  acciones: [],
-  sensores: [],
+  acciones: [IrDerecha,IrAbajo],
+  sensores: [TocandoAbajo,TocandoDerecha],
 };
 
 export default actividadLaberintoCorto;

@@ -10,5 +10,5 @@ function contarActoresConEtiqueta(pilas, etiqueta) {
 
 export default function debeTenerTantosActoresConEtiqueta(assert, cantidad, etiqueta) {
   var cantidad_de_actores = contarActoresConEtiqueta(window['pilas'], etiqueta);
-  assert.equal(cantidad, cantidad_de_actores, `Debe haber ${cantidad} de actores con la etiqueta '${etiqueta}'`);
+  assert.equal(cantidad, cantidad_de_actores, `Hay ${cantidad} actores con la etiqueta '${etiqueta}'`);
 }

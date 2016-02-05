@@ -10,7 +10,7 @@ var ComerBanana = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Comer ')
+          .appendField('Comer banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
@@ -35,7 +35,7 @@ var ComerManzana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer ')
+         .appendField('Comer manzana')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
   },
 
@@ -49,7 +49,52 @@ var ComerManzana = Accion.extend({
 });
 
 
+var ComerQueso = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ComerQueso');
+  },
 
-var comer= {ComerBanana,ComerManzana};
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Comer queso')
+         .appendField(this.obtener_icono('../libs/data/queso.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'RecogerPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'QuesoAnimado\',  \'mensajeError\' : \'No hay queso aqui\' }';
+  }
+});
+
+var ComerNaranja = Accion.extend({
+  init() {
+    this._super();
+    this.set('id', 'ComerNaranja');
+  },
+
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('Comer naranja')
+         .appendField(this.obtener_icono('../libs/data/naranja.png'));
+  },
+
+  nombre_comportamiento() {
+    return 'RecogerPorEtiqueta';
+  },
+
+  argumentos() {
+    return '{\'etiqueta\' : \'NaranjaAnimada\'}';
+  }
+});
+
+var comer= {ComerBanana,ComerManzana,ComerQueso,ComerNaranja};
 
 export default comer;

@@ -20,7 +20,7 @@ var Avanzar = Accion.extend({
   },
 
   argumentos() {
-    return '{}';
+    return '{velocidad: 25}';
   }
 });
 
@@ -36,7 +36,7 @@ var ComerBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Comer ')
+          .appendField('Comer banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'));
   },
 
@@ -62,7 +62,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando ')
+         .appendField('¿Tocando banana ')
          .appendField(new Blockly.FieldImage('libs/data/iconos.banana.png', 15, 15, 'banana'))
          .appendField(' ?');
 
@@ -76,8 +76,9 @@ var TocandoBanana = Sensor.extend({
 
 
 
-var actividadElMonoYLasBananas = {
-  nombre: 'El Mono y las Bananas',
+export default {
+  nombre: 'El mono y las bananas',
+  id: 'ElMonoYLasBananas',
   enunciado:
     '¿Podés hacer que el mono avance al casillero de enfrente?'+
     ' Si hay una banana debe comérsela. Sino, es feliz con sólo llegar. \n '+
@@ -100,5 +101,3 @@ var actividadElMonoYLasBananas = {
   acciones: [ComerBanana,Avanzar],
   sensores: [TocandoBanana],
 };
-
-export default actividadElMonoYLasBananas;

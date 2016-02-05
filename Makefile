@@ -1,5 +1,5 @@
 
-VERSION=0.9.3
+VERSION=0.9.4
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -7,6 +7,8 @@ G=[01;32m
 Y=[01;33m
 B=[01;34m
 L=[01;30m
+
+npm_config_loglevel="warn"
 
 comandos:
 	@echo ""
@@ -56,7 +58,7 @@ comandos:
 
 iniciar:
 	@echo "${G}instalando dependencias ...${N}"
-	npm install
+	@npm install
 	./node_modules/bower/bin/bower install --allow-root
 
 vincular_dependencias:
@@ -79,7 +81,6 @@ actualizar_pilas:
 
 copiar_pilasweb:
 	@echo "${G}copiando pilasweb${N}"
-	cd pilasweb; make build; cd ..
 	cp -r -f pilasweb/public/data public/libs/
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
@@ -90,6 +91,7 @@ actualizar_ejercicios_pilas:
 	make copiar_ejercicios_pilas
 
 copiar_ejercicios_pilas:
+	@echo "${G}copiando ejerciciosPilas${N}"
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 	rm -r -f public/libs/data
 	cp -r -f ejerciciosPilas/src/data public/libs/data
@@ -135,6 +137,11 @@ copiar_blockly_descomprimido:
 	rm -r -f public/libs/blockly/msg
 	cp -r -f blockly/msg  public/libs/blockly/
 
+descartar_todo_cambio:
+	cd pilas; git checkout .
+	cd ejerciciosPilas; git checkout .
+	git checkout .
+
 dist: compilar
 
 ejecutar_linux:
@@ -150,8 +157,13 @@ test_mac: ejecutar_mac
 
 build: compilar
 
-compilar:
+compilar: copiar_pilasweb copiar_ejercicios_pilas
 	./node_modules/ember-cli/bin/ember build
+
+compilar_todo_pilas:
+	cd ../pilasweb; make build
+	cd ../ejerciciosPilas; grunt
+	make compilar
 
 compilar_web:
 	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
@@ -234,9 +246,13 @@ binarios: to_production build _compile_osx _compile_win
 	make to_develop
 
 subir_a_dropbox:
+	@echo "OJO, los archivos no se subirán a dropbox."
+	@echo "Ahora se sube a static.pilas-engine.com.ar"
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	scp ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} hugoruscitti@digitalocean:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
+
 
 .PHONY: dist bajar_dependencias
 

@@ -1,14 +1,37 @@
 /* globals NoMeCansoDeSaltar */
-//import bloques from 'pilas-engine-bloques/actividades/bloques';
+import bloques from 'pilas-engine-bloques/actividades/bloques';
+var {Accion, Repetir} = bloques;
 
-//var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var Saltar = Accion.extend({
 
+  init() {
+    this._super();
+    this.set('id', 'saltar1');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+          .appendField('Saltar')
+         .appendField(this.obtener_icono('arriba.png'));
+
+  },
+
+  nombre_comportamiento() {
+    return 'SaltarHablando';
+  },
+
+  argumentos() {
+    return '{ gravedad: 0.13, velocidad_inicial: 7 }';
+  }
+});
 
 
 var actividadNoMeCansoDeSaltar = {
   nombre: 'No me canso de saltar',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  id: 'NoMeCansoDeSaltar',
+  enunciado: 'Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.',
+  consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones.',
 
   escena: NoMeCansoDeSaltar,
   puedeComentar: false,
@@ -19,9 +42,9 @@ var actividadNoMeCansoDeSaltar = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [],
+  control: [Repetir],
   expresiones: [],
-  acciones: [],
+  acciones: [Saltar],
   sensores: []
 };
 
