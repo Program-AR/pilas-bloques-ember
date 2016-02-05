@@ -800,7 +800,7 @@ define('pilas-engine-bloques-website/templates/index', ['exports'], function (ex
         var el3 = dom.createTextNode("Para obtener más información, ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("a");
-        dom.setAttribute(el3,"href","https://github.com/hugoruscitti/pilas-engine-bloques");
+        dom.setAttribute(el3,"href","https://github.com/Program-AR/pilas-engine-bloques");
         var el4 = dom.createTextNode("visitá nuestro repositorio");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
@@ -1085,7 +1085,7 @@ catch(err) {
 if (runningTests) {
   require("pilas-engine-bloques-website/tests/test-helper");
 } else {
-  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.1434d022"});
+  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.78561e90"});
 }
 
 /* jshint ignore:end */
