@@ -9,9 +9,7 @@ class PrendiendoLasCompus extends EscenaActividad {
     cantidadMinFilas;
     cantidadFilas;
     cantidadColumnas;
-    estado;
     iniciar() {
-        this.estado=undefined;
         this.cantidadMaxColumnas=12;
         this.cantidadMinColumnas=5;
         this.cantidadMaxFilas=7;

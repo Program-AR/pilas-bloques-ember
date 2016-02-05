@@ -6,11 +6,9 @@
 class MariaLaComeSandias extends EscenaActividad {
     cuadricula;
     cantidadColumnas;
-    estado;
     fondo;
 
     iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo('fondo.mariaSandia.png',0,0);
         var cantidadFilas=5
         this.cantidadColumnas=6

@@ -13,10 +13,8 @@ class ElMonoQueSabeContar extends EscenaActividad {
     tableroManzanas;
     contadorManzanas;
     contadorBananas;
-    estado;
     puntaje;
     iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo('fondos.selva.png',0,0);
         this.definidor = new DefinidorColumnasRandom(5,7)
         this.cuadricula = new CuadriculaMultipleColumnas(this.definidor,0,0,{separacionEntreCasillas: 5},{alto:40,ancho:40, grilla: 'casillamediomono.png', cantColumnas: 1 })

@@ -5,11 +5,9 @@ class FutbolRobots  extends EscenaActividad{
   automata : ActorAnimado;
   fondo;
   cuadricula;
-  estado;
   definidor;
 
   iniciar() {
-      this.estado=undefined;
       this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
       var cantidadFilas=8;
       this.definidor = new DefinidorColumnasRandom(cantidadFilas,6)

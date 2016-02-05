@@ -10,12 +10,10 @@ class TitoCuadrado extends EscenaActividad {
     fondo;
     personaje;
     cuadricula;
-    estado;
     cantidadFilas;
     cantidadColumnas;
     objetos;
 iniciar() {
-    this.estado=undefined;
     this.fondo = new Fondo('fondos.nubes.png',0,0);
     this.cantidadFilas=7;
     this.cantidadColumnas=7;

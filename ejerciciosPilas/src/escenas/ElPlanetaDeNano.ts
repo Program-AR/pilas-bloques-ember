@@ -2,7 +2,6 @@
 
 class ElPlanetaDeNano extends EscenaActividad {
   automata;
-  estado;
   cantidadColumnas;
   cuadricula;
   fondo;
@@ -11,7 +10,6 @@ class ElPlanetaDeNano extends EscenaActividad {
   tableroBananas;
   cantidadBananas;
 iniciar() {
-    this.estado=undefined;
     //this.recolector.izquierda = pilas.izquierda();
     var cantidadFilas=4
     this.cantidadColumnas=5

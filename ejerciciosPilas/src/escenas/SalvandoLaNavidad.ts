@@ -1,6 +1,5 @@
 /*class SalvandoLaNavidad extends EscenaActividad {
   personaje;
-  estado;
   cantidadColumnas;
   cuadricula;
   condicion;
@@ -11,7 +10,6 @@
   definidor;
   columnas;
 iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.columnas=[5,6,8,4,7]
         this.definidor = new DefinidorColumnasFijo(5,this.columnas);
