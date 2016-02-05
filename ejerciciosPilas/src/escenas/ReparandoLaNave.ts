@@ -1,7 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
-/// <reference path = "../actores/MarcianoVerdeAnimado.ts" />
+/// <reference path = "../actores/MarcianoAnimado.ts" />
 /// <reference path = "../actores/NaveAnimada.ts" />
 /// <reference path = "../actores/CarbonAnimado.ts" />
 /// <reference path = "../actores/HierroAnimado.ts" />
@@ -38,9 +38,11 @@ class ReparandoLaNave extends EscenaActividad {
   private crearActores(){
     this.crearAutomata();
 
-    var lanave = new NaveAnimada(0, 0);
+    var lanave = new NaveAnimada();
     this.cuadricula.agregarActor(lanave, this.cuadricula.cantFilas - 1, 0);
     this.nave = new ActorCompuesto(0, 0, { subactores: [lanave] });
+    this.nave.escala = 2.5;
+    this.nave.y += 10;
 
     this.hierro = new HierroAnimado(0, 0);
     this.hierro.cantidad = 3;

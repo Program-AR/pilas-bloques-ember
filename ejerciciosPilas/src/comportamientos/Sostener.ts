@@ -6,6 +6,9 @@ el valor.
 Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
 class Sostener extends ComportamientoColision {
+  preAnimacion(){
+    this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
+  }
 
   metodo(objetoColision){
 			// TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
