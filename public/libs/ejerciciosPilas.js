@@ -287,7 +287,8 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.apegarActor = function (actor) {
         actor.agregar_habilidad(ImitarAtributosNumericos2, {
             objeto_a_imitar: this,
-            atributos: ['x', 'y', 'escala_x', 'escala_y'],
+            conVariacionEntera: ['x', 'y'],
+            conVariacionPorcentual: ['escala_x', 'escala_y'],
             setters: { 'x': 'setX', 'y': 'setY' },
         });
     };
@@ -423,6 +424,7 @@ var CarbonAnimado = (function (_super) {
         this.definirAnimacion("quedan2", [1], 1);
         this.definirAnimacion("quedan1", [2], 1);
         this.definirAnimacion("correr", [2], 1);
+        this.definirAnimacion("parado", [2], 1);
     }
     return CarbonAnimado;
 })(ActorAnimado);
@@ -1427,6 +1429,7 @@ var HierroAnimado = (function (_super) {
         this.definirAnimacion("quedan2", [1], 1);
         this.definirAnimacion("quedan1", [2], 1);
         this.definirAnimacion("correr", [2], 1);
+        this.definirAnimacion("parado", [2], 1);
     }
     return HierroAnimado;
 })(ActorAnimado);
@@ -1520,9 +1523,13 @@ var MarcianoAnimado = (function (_super) {
     __extends(MarcianoAnimado, _super);
     function MarcianoAnimado(x, y) {
         _super.call(this, x, y, this.opcionesImagen());
-        this.definirAnimacion("correr", [7, 8, 9, 10, 11], 15);
+        this.definirAnimacion("correr", [7, 8, 9, 10, 11], 12);
         this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5], 5, true);
-        this.definirAnimacion("recoger", [13, 14, 15], 5);
+        this.definirAnimacion("recoger", [11, 12, 12, 11], 5);
+        this.definirAnimacion("recogerHierro", [11, 12, 12, 11, 13, 13, 13], 5);
+        this.definirAnimacion("recogerCarbon", [11, 12, 12, 11, 14, 14, 14], 5);
+        this.definirAnimacion("recogerManzana", [11, 12, 12, 11, 15, 15, 15], 5);
+        this.definirAnimacion("recogerNaranja", [11, 12, 12, 11, 16, 16, 16], 5);
         this.animacionesAdicionales();
     }
     MarcianoAnimado.prototype.opcionesImagen = function () {
@@ -1533,22 +1540,6 @@ var MarcianoAnimado = (function (_super) {
     };
     return MarcianoAnimado;
 })(ActorAnimado);
-/// <reference path="MarcianoAnimado.ts"/>
-var MarcianoVerdeAnimado = (function (_super) {
-    __extends(MarcianoVerdeAnimado, _super);
-    function MarcianoVerdeAnimado() {
-        _super.apply(this, arguments);
-    }
-    MarcianoVerdeAnimado.prototype.opcionesImagen = function () {
-        return { grilla: 'marcianoVerdeAnimado.png', cantColumnas: 6, cantFilas: 6 };
-    };
-    MarcianoVerdeAnimado.prototype.animacionesAdicionales = function () {
-        this.definirAnimacion("recogerHierro", [13, 14, 15], 5);
-        this.definirAnimacion("recogerCarbon", [24, 25, 26], 5);
-        this.definirAnimacion("recogerNaranja", [24, 25, 26], 5);
-    };
-    return MarcianoVerdeAnimado;
-})(MarcianoAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var MariaAnimada = (function (_super) {
     __extends(MariaAnimada, _super);
@@ -1594,6 +1585,8 @@ var NaranjaAnimada = (function (_super) {
 var NaveAnimada = (function (_super) {
     __extends(NaveAnimada, _super);
     function NaveAnimada(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
         _super.call(this, x, y, { grilla: 'naveAnimada.png', cantColumnas: 4, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(30).concat([1]), 4, true);
         this.definirAnimacion("correr", [0, 1, 0, 1, 0, 1, 0, 1, 2, 3, 2, 3, 3, 3, 2], 6);
@@ -2424,6 +2417,9 @@ var Sostener = (function (_super) {
     function Sostener() {
         _super.apply(this, arguments);
     }
+    Sostener.prototype.preAnimacion = function () {
+        this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
+    };
     Sostener.prototype.metodo = function (objetoColision) {
         // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
         var objetoAgarrado = objetoColision.clonar();
@@ -3585,7 +3581,7 @@ var PrendiendoLasCompus = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
-/// <reference path = "../actores/MarcianoVerdeAnimado.ts" />
+/// <reference path = "../actores/MarcianoAnimado.ts" />
 /// <reference path = "../actores/NaveAnimada.ts" />
 /// <reference path = "../actores/CarbonAnimado.ts" />
 /// <reference path = "../actores/HierroAnimado.ts" />
@@ -3603,32 +3599,32 @@ var ReparandoLaNave = (function (_super) {
     }
     ReparandoLaNave.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.reparandoLaNave.png', 0, 0);
-        var cantidadFilas = 4;
-        var cantidadColumnas = 5;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, cantidadColumnas, { ancho: 323, alto: 261 }, { grilla: 'invisible.png',
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { ancho: 323, alto: 261 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
-        this.crearActores(cantidadFilas, cantidadColumnas);
+        this.crearActores();
         this.crearTableros();
         this.crearEstado();
     };
-    ReparandoLaNave.prototype.crearActores = function (cFilas, cColumnas) {
-        this.crearAutomata(cFilas, cColumnas);
-        var lanave = new NaveAnimada(0, 0);
-        this.cuadricula.agregarActor(lanave, cFilas - 1, 0);
+    ReparandoLaNave.prototype.crearActores = function () {
+        this.crearAutomata();
+        var lanave = new NaveAnimada();
+        this.cuadricula.agregarActor(lanave, this.cuadricula.cantFilas - 1, 0);
         this.nave = new ActorCompuesto(0, 0, { subactores: [lanave] });
+        this.nave.escala = 2.5;
+        this.nave.y += 10;
         this.hierro = new HierroAnimado(0, 0);
         this.hierro.cantidad = 3;
         this.carbon = new CarbonAnimado(0, 0);
         this.carbon.cantidad = 3;
         this.cuadricula.agregarActor(this.hierro, 0, 0);
         this.hierro.aprender(Flotar, { Desvio: 2 });
-        this.cuadricula.agregarActor(this.carbon, 0, cColumnas - 1);
+        this.cuadricula.agregarActor(this.carbon, 0, this.cuadricula.cantColumnas - 1);
         this.carbon.aprender(Flotar, { Desvio: 2 });
     };
-    ReparandoLaNave.prototype.crearAutomata = function (cantidadFilas, cantidadColumnas) {
-        this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoVerdeAnimado(0, 0)] });
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, cantidadFilas - 1, 0, false);
-        this.automata.escala = 0.75;
+    ReparandoLaNave.prototype.crearAutomata = function () {
+        this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoAnimado(0, 0)] });
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, this.cuadricula.cantFilas - 1, 0, false);
+        this.automata.escala = 0.8;
         this.automata.y += 50;
     };
     ReparandoLaNave.prototype.crearTableros = function () {

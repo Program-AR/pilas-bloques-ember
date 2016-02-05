@@ -93,7 +93,6 @@ export default Ember.Component.extend({
                 'robotAnimado.png',
                 'manzana.png',
                 'pelotaAnimada.png',
-                'marcianoVerdeAnimado.png',
                 'carbon_animado.png',
                 'hierro_animado.png',
                 'monoAnimado.png',

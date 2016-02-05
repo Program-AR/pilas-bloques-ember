@@ -25,7 +25,7 @@ var TomarHierro = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'HierroAnimado\'}';
+        return '{etiqueta: "HierroAnimado", nombreAnimacion: "recogerHierro"}';
       }
     });
 
@@ -49,7 +49,7 @@ var TomarCarbon = Accion.extend({
 
 
       argumentos() {
-        return '{\'etiqueta\' : \'CarbonAnimado\'}';
+        return '{etiqueta: "CarbonAnimado", nombreAnimacion: "recogerCarbon"}';
       }
     });
 
@@ -86,7 +86,7 @@ var Escapar = Accion.extend({
       },
 
       argumentos() {
-          return '{receptor: pilas.escena_actual().nave, direccion: new Direct(1,1), distancia: 700, velocidad: 1, idTransicion: "escapar"}';
+          return '{receptor: pilas.escena_actual().nave, direccion: new Direct(1,1), distancia: 600, velocidad: 8, cantPasos: 40, idTransicion: "escapar"}';
 
       }
 });
