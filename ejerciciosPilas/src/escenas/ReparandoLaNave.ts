@@ -11,8 +11,6 @@
 /// <reference path = "EstadosDeEscena.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/MovimientoAnimado.ts" />
-
 
 class ReparandoLaNave extends EscenaActividad {
   compus;
@@ -85,4 +83,3 @@ class ReparandoLaNave extends EscenaActividad {
     this.estado = builder.estadoInicial();
   }
 }
-
