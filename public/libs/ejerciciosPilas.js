@@ -2764,7 +2764,6 @@ var ElCangrejoAguafiestas = (function (_super) {
         _super.apply(this, arguments);
     }
     ElCangrejoAguafiestas.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
         this.globos = [];
         this.cantidadFilas = 5;
@@ -2904,7 +2903,6 @@ var ElMonoQueSabeContar = (function (_super) {
         this.etiquetasDeObjetosAColocar = new ConjuntoClases([ManzanaAnimada, BananaAnimada]);
     }
     ElMonoQueSabeContar.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondos.selva.png', 0, 0);
         this.definidor = new DefinidorColumnasRandom(5, 7);
         this.cuadricula = new CuadriculaMultipleColumnas(this.definidor, 0, 0, { separacionEntreCasillas: 5 }, { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 });
@@ -3083,7 +3081,6 @@ var ElPlanetaDeNano = (function (_super) {
     }
     ElPlanetaDeNano.prototype.iniciar = function () {
         var _this = this;
-        this.estado = undefined;
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         this.cantidadColumnas = 5;
@@ -3172,7 +3169,6 @@ var FutbolRobots = (function (_super) {
         _super.apply(this, arguments);
     }
     FutbolRobots.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
         var cantidadFilas = 8;
         this.definidor = new DefinidorColumnasRandom(cantidadFilas, 6);
@@ -3472,7 +3468,6 @@ var MariaLaComeSandias = (function (_super) {
         _super.apply(this, arguments);
     }
     MariaLaComeSandias.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondo.mariaSandia.png', 0, 0);
         var cantidadFilas = 5;
         this.cantidadColumnas = 6;
@@ -3534,7 +3529,6 @@ var PrendiendoLasCompus = (function (_super) {
         _super.apply(this, arguments);
     }
     PrendiendoLasCompus.prototype.iniciar = function () {
-        this.estado = undefined;
         this.cantidadMaxColumnas = 12;
         this.cantidadMinColumnas = 5;
         this.cantidadMaxFilas = 7;
@@ -3649,7 +3643,6 @@ var ReparandoLaNave = (function (_super) {
 })(EscenaActividad);
 /*class SalvandoLaNavidad extends EscenaActividad {
   personaje;
-  estado;
   cantidadColumnas;
   cuadricula;
   condicion;
@@ -3660,7 +3653,6 @@ var ReparandoLaNave = (function (_super) {
   definidor;
   columnas;
 iniciar() {
-        this.estado=undefined;
         this.fondo = new Fondo('fondos.nubes.png',0,0);
         this.columnas=[5,6,8,4,7]
         this.definidor = new DefinidorColumnasFijo(5,this.columnas);
@@ -3829,7 +3821,6 @@ var TitoCuadrado = (function (_super) {
         _super.apply(this, arguments);
     }
     TitoCuadrado.prototype.iniciar = function () {
-        this.estado = undefined;
         this.fondo = new Fondo('fondos.nubes.png', 0, 0);
         this.cantidadFilas = 7;
         this.cantidadColumnas = 7;
