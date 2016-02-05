@@ -10,7 +10,7 @@ var actividadTitoEnciendeLuces = {
   nombre: 'Tito enciende las luces',
   id: 'TitoEnciendeLuces',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: esa diagonal puede ser una gran subtarea.',
+    'Pista: crear un procedimiento para prender todas la diagonal.',
 
   // la escena proviene de ejerciciosPilas
   escena: TitoEnciendeLuces,  // jshint ignore:line
