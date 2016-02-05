@@ -165,6 +165,13 @@ compilar_todo_pilas:
 	cd ../ejerciciosPilas; grunt
 	make compilar
 
+compilar_todo_y_testear:
+	cd ../pilasweb; make build
+	cd ../ejerciciosPilas; grunt
+	make copiar_pilasweb
+	make copiar_ejercicios_pilas
+	./node_modules/ember-cli/bin/ember test --server
+
 compilar_web:
 	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 

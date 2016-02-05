@@ -82,11 +82,11 @@ var Escapar = Accion.extend({
             .appendField('Escapar');
       },
       nombre_comportamiento() {
-          return 'MovimientoAnimado';
+          return 'Escapar';
       },
 
       argumentos() {
-          return '{receptor: pilas.escena_actual().nave, direccion: new Direct(1,1), distancia: 600, velocidad: 8, cantPasos: 40, idTransicion: "escapar"}';
+          return '{receptor: pilas.escena_actual().nave, escaparCon: pilas.escena_actual().automata}';
 
       }
 });
