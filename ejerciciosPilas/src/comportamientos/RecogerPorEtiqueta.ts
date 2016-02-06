@@ -10,8 +10,7 @@ class RecogerPorEtiqueta extends ComportamientoColision{
 				}
 		}
 		nombreAnimacion(){
-			// redefinir por subclase
-			return "recoger";
+			return this.argumentos.nombreAnimacion || "recoger";
 		}
 
 

@@ -67,7 +67,7 @@ class InstalandoJuegos extends EscenaActividad {
      this.automata = new InstaladorAnimado(0,0);
      this.cuadricula.agregarActor(this.automata,0,0);
      this.automata.escala=1;
-     this.automata.y=-75;
+     this.automata.y=-70;
      this.automata.x=-170;
    }
 }
