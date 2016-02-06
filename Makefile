@@ -258,7 +258,7 @@ subir_a_dropbox:
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
-	scp ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} hugoruscitti@digitalocean:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
+	scp -r ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} root@162.243.50.192:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
 
 
 .PHONY: dist bajar_dependencias
