@@ -45,7 +45,7 @@ var ComerBanana = Accion.extend({
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'BananaAnimada\',  \'mensajeError\' : \'No hay una banana aqui\' }';
+    return '{\'etiqueta\' : \'BananaAnimada\', nombreAnimacion: "comerBanana" }';
   }
 });
 

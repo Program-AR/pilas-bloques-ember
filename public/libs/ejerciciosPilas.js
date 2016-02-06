@@ -361,8 +361,8 @@ var AlienAnimado = (function (_super) {
 var AlimentoAnimado = (function (_super) {
     __extends(AlimentoAnimado, _super);
     function AlimentoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'alimento_pez.png', cantColumnas: 2, cantFilas: 1 });
-        this.definirAnimacion("parado", [0, 1], 4, true);
+        _super.call(this, x, y, { grilla: 'alimento_pez.png', cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion("parado", new Cuadros(0).repetirRandom(30).concat([0, 1, 2, 3, 2, 1]), 12, true);
     }
     return AlimentoAnimado;
 })(ActorAnimado);
@@ -1445,10 +1445,10 @@ var Hueso = (function (_super) {
 var InstaladorAnimado = (function (_super) {
     __extends(InstaladorAnimado, _super);
     function InstaladorAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'instalador.png', cantColumnas: 6, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 15, true);
+        _super.call(this, x, y, { grilla: 'instalador.png', cantColumnas: 9, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 1, true);
         this.definirAnimacion("correr", [1, 2, 3], 5);
-        this.definirAnimacion("escribir", [1, 5, 1, 5, 1, 5], 6);
+        this.definirAnimacion("escribir", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
     }
     return InstaladorAnimado;
 })(ActorAnimado);
@@ -1555,11 +1555,11 @@ var MariaAnimada = (function (_super) {
 var MonoAnimado = (function (_super) {
     __extends(MonoAnimado, _super);
     function MonoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 10, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 19, cantFilas: 1 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7], 12);
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([0, 1, 2, 3, 4]).concat(new Cuadros(4).repetirVeces(30)).concat([4, 3, 2, 1, 0]), 6, true);
-        this.definirAnimacion("recoger", [9, 7, 8, 8, 9], 6);
-        this.definirAnimacion("contar", [9, 7, 8, 8, 9], 6);
+        this.definirAnimacion("comerBanana", [8, 9, 10, 11, 12], 6);
+        this.definirAnimacion("comerManzana", [13, 14, 15, 16, 17], 6);
     }
     return MonoAnimado;
 })(ActorAnimado);
@@ -2211,7 +2211,7 @@ var Escapar = (function (_super) {
     }
     Escapar.prototype.preAnimacion = function () {
         this.argumentos.idTransicion = "escapar";
-        this.argumentos.direccion = new Direct(1, 1);
+        this.argumentos.direccion = new Direct(1, 5);
         this.argumentos.distancia = 600;
         this.argumentos.velocidad = 8;
         this.argumentos.cantPasos = 40;
@@ -2323,8 +2323,7 @@ var RecogerPorEtiqueta = (function (_super) {
         }
     };
     RecogerPorEtiqueta.prototype.nombreAnimacion = function () {
-        // redefinir por subclase
-        return "recoger";
+        return this.argumentos.nombreAnimacion || "recoger";
     };
     return RecogerPorEtiqueta;
 })(ComportamientoColision);
@@ -3264,7 +3263,7 @@ var InstalandoJuegos = (function (_super) {
         this.automata = new InstaladorAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala = 1;
-        this.automata.y = -75;
+        this.automata.y = -70;
         this.automata.x = -170;
     };
     return InstalandoJuegos;
