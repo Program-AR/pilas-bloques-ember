@@ -50,7 +50,13 @@ escalarCasillasCuadradas(){
     for(var i = 0; i < cuadricula.casillas.length -1; i++){
       cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
     }
-    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png');
+    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
+    var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
+    llegada.definirAnimacion('->', [0], 1);
+    llegada.definirAnimacion('^', [3], 1);
+    llegada.definirAnimacion('<-', [2], 1);
+    llegada.definirAnimacion('v', [1], 1);
+    llegada.cargarAnimacion(this.direcciones[cuadricula.casillas.length - 2]);
   }
 
 
