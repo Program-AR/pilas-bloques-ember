@@ -178,7 +178,7 @@ var EscribirA = Accion.extend({
 var actividadInstalandoJuegos = {
   nombre: 'Instalando juegos',
   id: 'InstalandoJuegos',
-  enunciado: 'A definir',
+  enunciado: 'Hay que instalar un videojuego en las tres compus. Los pasos a seguir son encender cada compu, ingresar la contraseña "ABC", cargar el juego y apagar la máquina. Pista: pensá cómo aprovechar el hecho de que es un proceso repetitivo.',
 
   // la escena proviene de ejerciciosPilas
   escena: InstalandoJuegos, // jshint ignore:line
