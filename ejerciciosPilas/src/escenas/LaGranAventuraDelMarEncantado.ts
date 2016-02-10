@@ -1,5 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../comportamientos/Sostener.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/HeroeAnimado.ts"/>
 /// <reference path = "../actores/CofreAnimado.ts"/>
@@ -79,7 +80,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         builder.agregarTransicion('llaveEnMano','cofreAbierto','abrirCofre');
         builder.agregarTransicion('cofreAbierto','magoConSombrero','darSombrero');
         builder.agregarTransicion('magoConSombrero','princesaRescatada','atacarConEspada');
-        builder.agregarTransicion('princesaRescatada','montandoUnicornio','escaparEnUnicornio');
+        builder.agregarTransicion('princesaRescatada','montandoUnicornio','escapar');
 
         var estados = ['inicial','llaveEnMano','cofreAbierto','magoConSombrero','princesaRescatada','montandoUnicornio']
 

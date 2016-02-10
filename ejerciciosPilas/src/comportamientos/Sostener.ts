@@ -35,11 +35,25 @@ class Sostener extends ComportamientoColision {
 
 class Soltar extends ComportamientoColision {
   metodo(objetoColision) {
-    this.receptor.eliminarUltimoSubactor();
+    this.receptor.eliminarSubactor(this.argumentos.queSoltar);
   }
 
   configurarVerificaciones() {
     super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => this.receptor.tieneAlgoEnLaMano(), "No tengo nada en la mano"));
+    this.verificacionesPre.push(
+    new Verificacion(
+         () => this.sostieneLoQueCorresponde(), 
+        "No tengo " + this.hacerLegible(this.argumentos.queSoltar) + " en la mano")
+      );
+  }
+
+  sostieneLoQueCorresponde(){
+     return this.argumentos.queSoltar ? 
+       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) : 
+       this.receptor.tieneAlgoEnLaMano();
+  }
+
+  hacerLegible(etiqueta){
+    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
   }
 }

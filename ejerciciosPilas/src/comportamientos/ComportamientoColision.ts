@@ -20,13 +20,15 @@ automata
 class ComportamientoColision extends ComportamientoAnimado {
 
 	configurarVerificaciones() {
-		var descripcion = this.argumentos['etiqueta'].toLowerCase().split("animada")[0].split("animado")[0];
-		var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + descripcion + "!";
+		var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + this.hacerLegible(this.argumentos['etiqueta']) + "!";
 		this.verificacionesPre.push(new Verificacion(() => this.colisiona(), mensajeError));
 	}
 
 	postAnimacion() {
-		this.metodo(this.objetoTocado());
+		var objetoTocado = this.objetoTocado();
+		if (this.argumentos['animacionColisionado']) objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
+		if (this.argumentos['comportamientoAdicional']) objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'],this.argumentos['argumentosComportamiento']);
+		this.metodo(objetoTocado);
 	}
 
 	colisiona() {
@@ -36,6 +38,10 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	objetoTocado(){
 		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0];
+	}
+
+	hacerLegible(etiqueta){
+		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
 	}
 
 	metodo(objetoColision){
