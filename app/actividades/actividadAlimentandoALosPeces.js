@@ -65,7 +65,7 @@ var AlimentarPez = Accion.extend({
 var actividadAlimentandoALosPeces = {
   nombre: 'Alimentando a los peces',
   id: 'AlimentandoALosPeces',
-  enunciado:'..',
+  enunciado:'El buzo debe primero buscar la comida y luego acercarse a cada uno de los peces para alimentarlos. Pista: pensá en una estrategia de 3 partes.',
 
   // la escena proviene de ejerciciosPilas
   escena: AlimentandoALosPeces,
