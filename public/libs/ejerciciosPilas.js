@@ -483,17 +483,29 @@ var Casilla = (function (_super) {
     Casilla.prototype.sos = function (nroF, nroC) {
         return nroF == this.nroFila && nroC == this.nroColumna;
     };
-    Casilla.prototype.cambiarImagen = function (nombre) {
+    Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
+        if (cantFilas === void 0) { cantFilas = 1; }
+        if (cantColumnas === void 0) { cantColumnas = 1; }
         // PARCHEEEEE
-        this.renacer(nombre);
+        this.renacer(nombre, cantFilas, cantColumnas);
     };
-    Casilla.prototype.renacer = function (nombreImagen) {
+    Casilla.prototype.renacer = function (nombreImagen, cantFilas, cantColumnas) {
+        if (cantFilas === void 0) { cantFilas = 1; }
+        if (cantColumnas === void 0) { cantColumnas = 1; }
         // POR FAVOR YO FUTURO PERDONAME
         this.eliminar();
-        var grillaCasilla = this.cuadricula.opcionesCasilla.grilla;
+        var opsCasilla = {
+            grilla: this.cuadricula.opcionesCasilla.grilla,
+            cantFilas: this.cuadricula.opcionesCasilla.cantFilas,
+            cantColumnas: this.cuadricula.opcionesCasilla.cantColumnas,
+        };
         this.cuadricula.opcionesCasilla.grilla = nombreImagen;
+        this.cuadricula.opcionesCasilla.cantFilas = cantFilas;
+        this.cuadricula.opcionesCasilla.cantColumnas = cantColumnas;
         var nuevoYo = new Casilla(this.nroFila, this.nroColumna, this.cuadricula);
-        this.cuadricula.opcionesCasilla.grilla = grillaCasilla;
+        this.cuadricula.opcionesCasilla.grilla = opsCasilla.grilla;
+        this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
+        this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;
         this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
     };
     return Casilla;
@@ -1528,8 +1540,8 @@ var MarcianoAnimado = (function (_super) {
         this.definirAnimacion("recoger", [11, 12, 12, 11], 5);
         this.definirAnimacion("recogerHierro", [11, 12, 12, 11, 13, 13, 13], 5);
         this.definirAnimacion("recogerCarbon", [11, 12, 12, 11, 14, 14, 14], 5);
-        this.definirAnimacion("recogerManzana", [11, 12, 12, 11, 15, 15, 15], 5);
-        this.definirAnimacion("recogerNaranja", [11, 12, 12, 11, 16, 16, 16], 5);
+        this.definirAnimacion("comerManzana", [11, 12, 12, 11, 15, 15, 15], 5);
+        this.definirAnimacion("comerNaranja", [11, 12, 12, 11, 16, 16, 16], 5);
         this.animacionesAdicionales();
     }
     MarcianoAnimado.prototype.opcionesImagen = function () {
@@ -1720,7 +1732,7 @@ var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
     function RatonAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 9, cantFilas: 1 });
-        this.definirAnimacion("parado", [0, 1], 1, true);
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(10).concat([1]), 1, true);
         this.definirAnimacion("correr", [2, 3, 4, 3, 4, 3, 4], 6);
         this.definirAnimacion("recoger", [5, 6, 7, 8], 12);
     }
@@ -2446,10 +2458,10 @@ var Sostener = (function (_super) {
         objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
         this.receptor.agregarSubactor(objetoAgarrado);
         objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
-        objetoColision.disminuir('cantidad', 1);
-        if (objetoColision['cantidad'] == 0) {
+        if (objetoColision.disminuir)
+            objetoColision.disminuir('cantidad', 1);
+        if (!objetoColision['cantidad'])
             objetoColision.eliminar();
-        }
     };
     Sostener.prototype.configurarVerificaciones = function () {
         var _this = this;
@@ -2691,7 +2703,13 @@ var Camino = (function () {
         for (var i = 0; i < cuadricula.casillas.length - 1; i++) {
             cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
         }
-        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png');
+        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
+        var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
+        llegada.definirAnimacion('->', [0], 1);
+        llegada.definirAnimacion('^', [3], 1);
+        llegada.definirAnimacion('<-', [2], 1);
+        llegada.definirAnimacion('v', [1], 1);
+        llegada.cargarAnimacion(this.direcciones[cuadricula.casillas.length - 2]);
     };
     Camino.prototype.dameMatriz = function () {
         var aDevolver = [];

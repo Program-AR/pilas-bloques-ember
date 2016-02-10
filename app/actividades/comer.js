@@ -19,7 +19,7 @@ var ComerBanana = Accion.extend({
   },
 
   argumentos: function() {
-    return '{\'etiqueta\' : \'BananaAnimada\',  \'mensajeError\' : \'No hay una banana aqui\' }';
+    return '{\'etiqueta\' : \'BananaAnimada\', nombreAnimacion: "comerBanana" }';
   }
 });
 
@@ -44,7 +44,7 @@ var ComerManzana = Accion.extend({
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'ManzanaAnimada\',  \'mensajeError\' : \'No hay una manzana aqui\' }';
+    return '{\'etiqueta\' : \'ManzanaAnimada\', nombreAnimacion: "comerManzana" }';
   }
 });
 
@@ -68,7 +68,7 @@ var ComerQueso = Accion.extend({
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'QuesoAnimado\',  \'mensajeError\' : \'No hay queso aqui\' }';
+    return '{\'etiqueta\' : \'QuesoAnimado\' }';
   }
 });
 
@@ -91,7 +91,7 @@ var ComerNaranja = Accion.extend({
   },
 
   argumentos() {
-    return '{\'etiqueta\' : \'NaranjaAnimada\'}';
+    return '{\'etiqueta\' : \'NaranjaAnimada\', nombreAnimacion: "comerNaranja"}';
   }
 });
 

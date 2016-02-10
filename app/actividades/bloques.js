@@ -302,6 +302,40 @@ var Accion = Bloque.extend({
 
 });
 
+// Crea una accion a partir de una descripcion, un icono, comportamiento y argumentos
+// Como la mayoría de los bloques siempre son así, primero un ícono y luego una descripción,
+// Esto me permite rápidamente crear una accion, es casi como un DSL para hacerlo
+var AccionBuilder = {
+  build(opciones){
+    return Accion.extend({
+      init() {
+        this._super();
+        this.set('id', this.toID(opciones.descripcion));
+      },
+
+      block_init(block){
+        this._super(block);
+        block.appendDummyInput()
+          .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+          .appendField(opciones.descripcion);
+      },
+
+      nombre_comportamiento(){
+        return opciones.comportamiento;
+      },
+
+      argumentos(){
+        return opciones.argumentos;
+      },
+
+      toID(descripcion){
+        return descripcion.replace(/[^a-zA-z]/g, "");
+      },
+
+    });
+  },
+};
+
 var Sensor = Bloque.extend({
 
   block_init(block) {
@@ -492,7 +526,7 @@ var Hasta = EstructuraDeControl.extend({
 
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
-               Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion,
+               Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder, 
                Sensor, Repetir,Si,Sino,Hasta, ParamCampo};
 
 export default bloques;

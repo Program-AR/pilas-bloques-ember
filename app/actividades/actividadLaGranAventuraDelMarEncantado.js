@@ -1,78 +1,45 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Repetir,Procedimiento,Accion} = bloques;
+var {Repetir, Procedimiento, AccionBuilder} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
- /*agarrarLlave() {
-        this.automata.hacer_luego(RecogerPorEtiqueta, {'receptor': this, 'metodo': this.doAgarrarLlave, 'nombreAnimacion': 'recoger'});
-    }
-
-
-
-    abrirCofre() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAbrirCofre, 'nombreAnimacion': 'recoger'});
-    }
-
-    darSombrero() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doDarSombrero, 'nombreAnimacion': 'recoger'});
-    }
-
-    atacarConEspada() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doAtacarConEspada, 'nombreAnimacion': 'recoger'});
-    }
-
-    escaparEnUnicornio() {
-        this.automata.hacer_luego(ComportamientoDeAltoOrden, {'receptor': this, 'metodo': this.doEscaparEnUnicornio, 'nombreAnimacion': 'recoger'});
-    }
-
-*/
-
-var AgarrarLlave = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'AgarrarLlave');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-    .appendField(this.obtener_icono('../libs/data/llave.png'))
-    .appendField('Agarrar llave');
-  },
-
-  nombre_comportamiento() {
-    return 'Sostener';
-  },
-
-  argumentos() {
-    return '{etiqueta:\'LlaveAnimado\'}';
-  }
+var AgarrarLlave = AccionBuilder.build({
+  descripcion: 'Agarrar llave',
+  icono: 'llave.png',
+  comportamiento: 'Sostener',
+  argumentos: '{etiqueta:"LlaveAnimado"}',
 });
 
-var AbrirCofre = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'AbrirCofre');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-    .appendField(this.obtener_icono('../libs/data/icono.cofre.png'))
-    .appendField('Abrir cofre');
-  },
-
-  nombre_comportamiento() {
-    return 'Sostener';
-  },
-
-  argumentos() {
-    return '{etiqueta:\'SombreroAnimado\'}';
-  }
+var AbrirCofre = AccionBuilder.build({
+  descripcion: 'Abrir cofre',
+  icono: 'icono.cofre.png',
+  comportamiento: 'Sostener',
+  argumentos: '{etiqueta:"SombreroAnimado"}',
 });
 
-var actividadLaGranAventuraDelMarEncantado = {
+var DarSombrero = AccionBuilder.build({
+  descripcion: 'Dar sombrero',
+  icono: 'icono.sombrero.png',
+  comportamiento: 'Sostener',
+  argumentos: '{etiqueta:"EspadaAnimada"}',
+});
+
+var AtacarConEspada = AccionBuilder.build({
+  descripcion: 'Atacar con espada',
+  icono: 'icono.espada.png',
+  comportamiento: 'Sostener',
+  argumentos: '{etiqueta:"Princesa"}',
+});
+
+var EscaparEnUnicornio = AccionBuilder.build({
+  descripcion: 'Escapar en unicornio',
+  icono: 'icono.unicornio.png',
+  comportamiento: 'Escapar',
+  argumentos: '{escaparCon: pilas.escena_actual().unicornio}',
+});
+
+export default {
   nombre: 'La gran aventura del mar encantado',
   id: 'LaGranAventuraDelMarEncantado',
   enunciado: '',
@@ -85,8 +52,6 @@ var actividadLaGranAventuraDelMarEncantado = {
   variables: [],
   control: [Repetir],
   expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave, AbrirCofre],
+  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave, AbrirCofre, DarSombrero, AtacarConEspada, EscaparEnUnicornio],
   sensores: []
 };
-
-export default actividadLaGranAventuraDelMarEncantado;
