@@ -19,11 +19,8 @@ class Sostener extends ComportamientoColision {
       this.receptor.agregarSubactor(objetoAgarrado);
       objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
 
-
-      objetoColision.disminuir('cantidad',1);
-      if (objetoColision['cantidad'] == 0) {
-          objetoColision.eliminar()
-        }
+      if (objetoColision.disminuir) objetoColision.disminuir('cantidad',1);
+      if (!objetoColision['cantidad']) objetoColision.eliminar();
   }
 
   configurarVerificaciones() {

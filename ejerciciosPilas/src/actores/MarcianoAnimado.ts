@@ -9,8 +9,8 @@ class MarcianoAnimado extends ActorAnimado {
         this.definirAnimacion("recoger",[11,12,12,11],5);
         this.definirAnimacion("recogerHierro", [11, 12, 12, 11, 13, 13, 13], 5);
         this.definirAnimacion("recogerCarbon", [11, 12, 12, 11, 14, 14, 14], 5);
-        this.definirAnimacion("recogerManzana", [11, 12, 12, 11, 15, 15, 15], 5);
-        this.definirAnimacion("recogerNaranja", [11, 12, 12, 11, 16, 16, 16], 5);
+        this.definirAnimacion("comerManzana", [11, 12, 12, 11, 15, 15, 15], 5);
+        this.definirAnimacion("comerNaranja", [11, 12, 12, 11, 16, 16, 16], 5);
         this.animacionesAdicionales();
     }
 
