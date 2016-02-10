@@ -8,28 +8,28 @@ var AgarrarLlave = AccionBuilder.build({
   descripcion: 'Agarrar llave',
   icono: 'llave.png',
   comportamiento: 'Sostener',
-  argumentos: '{etiqueta:"LlaveAnimado"}',
+  argumentos: '{etiqueta:"LlaveAnimado", idTransicion:"agarrarLlave"}',
 });
 
 var AbrirCofre = AccionBuilder.build({
   descripcion: 'Abrir cofre',
   icono: 'icono.cofre.png',
-  comportamiento: 'Sostener',
-  argumentos: '{etiqueta:"SombreroAnimado"}',
+  comportamiento: 'Soltar',
+  argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}',
 });
 
 var DarSombrero = AccionBuilder.build({
   descripcion: 'Dar sombrero',
   icono: 'icono.sombrero.png',
-  comportamiento: 'Sostener',
-  argumentos: '{etiqueta:"EspadaAnimada"}',
+  comportamiento: 'ComportamientoColision',
+  argumentos: '{etiqueta:"MagoAnimado", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
 });
 
 var AtacarConEspada = AccionBuilder.build({
   descripcion: 'Atacar con espada',
   icono: 'icono.espada.png',
-  comportamiento: 'Sostener',
-  argumentos: '{etiqueta:"Princesa"}',
+  comportamiento: 'SecuenciaAnimada',
+  argumentos: '{idTransicion: "atacarConEspada", secuencia: [new ComportamientoColision({etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}), new Sostener({etiqueta:"Princesa"})]}',
 });
 
 var EscaparEnUnicornio = AccionBuilder.build({

@@ -400,7 +400,7 @@ var CaballeroAnimado = (function (_super) {
     function CaballeroAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'caballero_oscuro.png', cantColumnas: 3 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(95).concat([1, 2, 1]), 6, true);
-        this.definirAnimacion("defender", [1, 2, 2, 2, 2, 2, 2, 1], 6);
+        this.definirAnimacion("defender", new Cuadros([0, 1, 2, 2, 2, 2, 1, 0]).repetirVeces(3).concat([0, 0, 1, 1]).concat(new Cuadros(2).repetirVeces(9999)), 6);
     }
     return CaballeroAnimado;
 })(ActorAnimado);
@@ -515,7 +515,7 @@ var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
-        this.definirAnimacion("abrir", [0, 1, 2, 3], 3);
+        this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(99999)), 3);
         this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
         this.definirAnimacion("abierto", [3], 4);
     }
@@ -1516,7 +1516,7 @@ var MagoAnimado = (function (_super) {
     function MagoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
         this.definirAnimacion("parado", new Cuadros(1).repetirVeces(16).concat([2, 2, 2, 2, 2]), 2, true);
-        this.definirAnimacion("darEspada", [1, 3, 4, 5, 5, 6, 6, 7, 7], 6);
+        this.definirAnimacion("darEspada", new Cuadros([1, 3, 4, 5, 5, 6, 6, 7, 7]).repetirVeces(1).concat(new Cuadros(0).repetirVeces(99999)), 6);
         this.definirAnimacion("paradoConSombrero", [0], 12);
     }
     return MagoAnimado;
@@ -2034,12 +2034,16 @@ var ComportamientoColision = (function (_super) {
     }
     ComportamientoColision.prototype.configurarVerificaciones = function () {
         var _this = this;
-        var descripcion = this.argumentos['etiqueta'].toLowerCase().split("animada")[0].split("animado")[0];
-        var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + descripcion + "!";
+        var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + this.hacerLegible(this.argumentos['etiqueta']) + "!";
         this.verificacionesPre.push(new Verificacion(function () { return _this.colisiona(); }, mensajeError));
     };
     ComportamientoColision.prototype.postAnimacion = function () {
-        this.metodo(this.objetoTocado());
+        var objetoTocado = this.objetoTocado();
+        if (this.argumentos['animacionColisionado'])
+            objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
+        if (this.argumentos['comportamientoAdicional'])
+            objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'], this.argumentos['argumentosComportamiento']);
+        this.metodo(objetoTocado);
     };
     ComportamientoColision.prototype.colisiona = function () {
         var _this = this;
@@ -2049,6 +2053,9 @@ var ComportamientoColision = (function (_super) {
     ComportamientoColision.prototype.objetoTocado = function () {
         var _this = this;
         return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0];
+    };
+    ComportamientoColision.prototype.hacerLegible = function (etiqueta) {
+        return etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
     };
     ComportamientoColision.prototype.metodo = function (objetoColision) {
         //redefinir por subclase
@@ -2386,6 +2393,25 @@ var SaltarHablando = (function (_super) {
 })(SaltarAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts"/>
+// Decorator de la Secuencia
+var SecuenciaAnimada = (function (_super) {
+    __extends(SecuenciaAnimada, _super);
+    function SecuenciaAnimada() {
+        _super.apply(this, arguments);
+    }
+    SecuenciaAnimada.prototype.iniciar = function (receptor) {
+        _super.prototype.iniciar.call(this, receptor);
+        this.laSecuenciaPosta = new Secuencia(this.argumentos);
+        this.laSecuenciaPosta.iniciar(receptor);
+    };
+    SecuenciaAnimada.prototype.doActualizar = function () {
+        _super.prototype.doActualizar.call(this);
+        return this.laSecuenciaPosta.actualizar();
+    };
+    return SecuenciaAnimada;
+})(ComportamientoAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoAnimado.ts"/>
 var SerPateado = (function (_super) {
     __extends(SerPateado, _super);
     function SerPateado() {
@@ -2479,12 +2505,20 @@ var Soltar = (function (_super) {
         _super.apply(this, arguments);
     }
     Soltar.prototype.metodo = function (objetoColision) {
-        this.receptor.eliminarUltimoSubactor();
+        this.receptor.eliminarSubactor(this.argumentos.queSoltar);
     };
     Soltar.prototype.configurarVerificaciones = function () {
         var _this = this;
         _super.prototype.configurarVerificaciones.call(this);
-        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor.tieneAlgoEnLaMano(); }, "No tengo nada en la mano"));
+        this.verificacionesPre.push(new Verificacion(function () { return _this.sostieneLoQueCorresponde(); }, "No tengo " + this.hacerLegible(this.argumentos.queSoltar) + " en la mano"));
+    };
+    Soltar.prototype.sostieneLoQueCorresponde = function () {
+        return this.argumentos.queSoltar ?
+            this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
+            this.receptor.tieneAlgoEnLaMano();
+    };
+    Soltar.prototype.hacerLegible = function (etiqueta) {
+        return etiqueta ? _super.prototype.hacerLegible.call(this, etiqueta) : "nada";
     };
     return Soltar;
 })(ComportamientoColision);
@@ -3330,6 +3364,7 @@ var EscribirEnCompuAnimada = (function (_super) {
 })(ComportamientoColision);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../comportamientos/Sostener.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
 /// <reference path = "../actores/HeroeAnimado.ts"/>
 /// <reference path = "../actores/CofreAnimado.ts"/>
@@ -3390,7 +3425,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         builder.agregarTransicion('llaveEnMano', 'cofreAbierto', 'abrirCofre');
         builder.agregarTransicion('cofreAbierto', 'magoConSombrero', 'darSombrero');
         builder.agregarTransicion('magoConSombrero', 'princesaRescatada', 'atacarConEspada');
-        builder.agregarTransicion('princesaRescatada', 'montandoUnicornio', 'escaparEnUnicornio');
+        builder.agregarTransicion('princesaRescatada', 'montandoUnicornio', 'escapar');
         var estados = ['inicial', 'llaveEnMano', 'cofreAbierto', 'magoConSombrero', 'princesaRescatada', 'montandoUnicornio'];
         for (var i = 0; i < estados.length; i++) {
             if (estados[i] != 'llaveEnMano') {
