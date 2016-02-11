@@ -99,7 +99,6 @@ var actividadReparandoLaNave = {
   nombre: 'Reparando la nave',
   id: 'ReparandoLaNave',
   enunciado: 'El marciano debe poner en funcionamiento su nave para poder volar a su hogar. Para lograrlo debe colocar 3 unidades de carbón y 3 de hierro en la nave. Pista: pensá cómo se pueden automatizar las tareas de buscar hierro y carbón.',
-  consignaInicial: '.',
 
   escena: ReparandoLaNave,
   puedeComentar: false,
