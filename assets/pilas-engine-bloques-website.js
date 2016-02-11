@@ -52,58 +52,58 @@ define('pilas-engine-bloques-website/helpers/fa-icon', ['exports', 'ember'], fun
    */
   var faIcon = function faIcon(name, options) {
     if (Ember['default'].typeOf(name) !== 'string') {
-      var message = 'fa-icon: no icon specified';
+      var message = "fa-icon: no icon specified";
       warn(message);
       return Ember['default'].String.htmlSafe(message);
     }
 
     var params = options.hash,
         classNames = [],
-        html = '';
+        html = "";
 
-    classNames.push('fa');
+    classNames.push("fa");
     if (!name.match(FA_PREFIX)) {
-      name = 'fa-' + name;
+      name = "fa-" + name;
     }
     classNames.push(name);
     if (params.spin) {
-      classNames.push('fa-spin');
+      classNames.push("fa-spin");
     }
     if (params.flip) {
-      classNames.push('fa-flip-' + params.flip);
+      classNames.push("fa-flip-" + params.flip);
     }
     if (params.rotate) {
-      classNames.push('fa-rotate-' + params.rotate);
+      classNames.push("fa-rotate-" + params.rotate);
     }
     if (params.lg) {
-      warn('fa-icon: the \'lg\' parameter is deprecated. Use \'size\' instead. I.e. {{fa-icon size="lg"}}');
-      classNames.push('fa-lg');
+      warn("fa-icon: the 'lg' parameter is deprecated. Use 'size' instead. I.e. {{fa-icon size=\"lg\"}}");
+      classNames.push("fa-lg");
     }
     if (params.x) {
-      warn('fa-icon: the \'x\' parameter is deprecated. Use \'size\' instead. I.e. {{fa-icon size="' + params.x + '"}}');
-      classNames.push('fa-' + params.x + 'x');
+      warn("fa-icon: the 'x' parameter is deprecated. Use 'size' instead. I.e. {{fa-icon size=\"" + params.x + "\"}}");
+      classNames.push("fa-" + params.x + "x");
     }
     if (params.size) {
-      if (Ember['default'].typeOf(params.size) === 'string' && params.size.match(/\d+/)) {
+      if (Ember['default'].typeOf(params.size) === "string" && params.size.match(/\d+/)) {
         params.size = Number(params.size);
       }
-      if (Ember['default'].typeOf(params.size) === 'number') {
-        classNames.push('fa-' + params.size + 'x');
+      if (Ember['default'].typeOf(params.size) === "number") {
+        classNames.push("fa-" + params.size + "x");
       } else {
-        classNames.push('fa-' + params.size);
+        classNames.push("fa-" + params.size);
       }
     }
     if (params.fixedWidth) {
-      classNames.push('fa-fw');
+      classNames.push("fa-fw");
     }
     if (params.listItem) {
-      classNames.push('fa-li');
+      classNames.push("fa-li");
     }
     if (params.pull) {
-      classNames.push('pull-' + params.pull);
+      classNames.push("pull-" + params.pull);
     }
     if (params.border) {
-      classNames.push('fa-border');
+      classNames.push("fa-border");
     }
     if (params.classNames && !Ember['default'].isArray(params.classNames)) {
       params.classNames = [params.classNames];
@@ -112,17 +112,17 @@ define('pilas-engine-bloques-website/helpers/fa-icon', ['exports', 'ember'], fun
       Array.prototype.push.apply(classNames, params.classNames);
     }
 
-    html += '<';
+    html += "<";
     var tagName = params.tagName || 'i';
     html += tagName;
-    html += ' class=\'' + classNames.join(' ') + '\'';
+    html += " class='" + classNames.join(" ") + "'";
     if (params.title) {
-      html += ' title=\'' + params.title + '\'';
+      html += " title='" + params.title + "'";
     }
     if (params.ariaHidden === undefined || params.ariaHidden) {
-      html += ' aria-hidden="true"';
+      html += " aria-hidden=\"true\"";
     }
-    html += '></' + tagName + '>';
+    html += "></" + tagName + ">";
     return Ember['default'].String.htmlSafe(html);
   };
 
@@ -156,15 +156,30 @@ define('pilas-engine-bloques-website/initializers/export-application-global', ['
 
   exports.initialize = initialize;
 
-  function initialize(container, application) {
-    var classifiedName = Ember['default'].String.classify(config['default'].modulePrefix);
+  function initialize() {
+    var application = arguments[1] || arguments[0];
+    if (config['default'].exportApplicationGlobal !== false) {
+      var value = config['default'].exportApplicationGlobal;
+      var globalName;
 
-    if (config['default'].exportApplicationGlobal && !window[classifiedName]) {
-      window[classifiedName] = application;
+      if (typeof value === 'string') {
+        globalName = value;
+      } else {
+        globalName = Ember['default'].String.classify(config['default'].modulePrefix);
+      }
+
+      if (!window[globalName]) {
+        window[globalName] = application;
+
+        application.reopen({
+          willDestroy: function willDestroy() {
+            this._super.apply(this, arguments);
+            delete window[globalName];
+          }
+        });
+      }
     }
   }
-
-  ;
 
   exports['default'] = {
     name: 'export-application-global',
@@ -182,7 +197,7 @@ define('pilas-engine-bloques-website/router', ['exports', 'ember', 'pilas-engine
   });
 
   Router.map(function () {
-    this.route('demo', { path: '/demo/:actividad' });
+    this.route('demo', { path: "/demo/:actividad" });
   });
 
   exports['default'] = Router;
@@ -211,7 +226,8 @@ define('pilas-engine-bloques-website/routes/index', ['exports', 'ember'], functi
         fecha: "2015-09-18",
         link_mac: "http://static.pilas-engine.com.ar/pilas-engine-bloques/0.8.7/pilas-engine-bloques-0.8.7.dmg",
         link_windows: "http://static.pilas-engine.com.ar/pilas-engine-bloques/0.8.7/pilas-engine-bloques-0.8.7.exe",
-        link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/" };
+        link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/"
+      };
     }
   });
 
@@ -227,7 +243,8 @@ define('pilas-engine-bloques-website/routes/index_template', ['exports', 'ember'
         fecha: "FECHA",
         link_mac: "http://static.pilas-engine.com.ar/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.dmg",
         link_windows: "http://static.pilas-engine.com.ar/pilas-engine-bloques/VERSION/pilas-engine-bloques-VERSION.exe",
-        link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/" };
+        link_deb: "http://repo.huayra.conectarigualdad.gob.ar/huayra/pool/main/p/pilas-engine-bloques/"
+      };
     }
   });
 
@@ -1011,15 +1028,15 @@ define('pilas-engine-bloques-website/tests/unit/routes/demo-test', ['ember-qunit
 
   'use strict';
 
-  ember_qunit.moduleFor('route:demo', 'Unit | Route | demo', {});
+  ember_qunit.moduleFor('route:demo', 'Unit | Route | demo', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
 
   ember_qunit.test('it exists', function (assert) {
     var route = this.subject();
     assert.ok(route);
   });
-
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
 
 });
 define('pilas-engine-bloques-website/tests/unit/routes/demo-test.jshint', function () {
@@ -1036,15 +1053,15 @@ define('pilas-engine-bloques-website/tests/unit/routes/index-test', ['ember-quni
 
   'use strict';
 
-  ember_qunit.moduleFor('route:index', 'Unit | Route | index', {});
+  ember_qunit.moduleFor('route:index', 'Unit | Route | index', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
 
   ember_qunit.test('it exists', function (assert) {
     var route = this.subject();
     assert.ok(route);
   });
-
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
 
 });
 define('pilas-engine-bloques-website/tests/unit/routes/index-test.jshint', function () {
@@ -1085,7 +1102,7 @@ catch(err) {
 if (runningTests) {
   require("pilas-engine-bloques-website/tests/test-helper");
 } else {
-  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.ee461c54"});
+  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.61c98466"});
 }
 
 /* jshint ignore:end */
