@@ -40,7 +40,7 @@ var TomarCarbon = Accion.extend({
         this._super(block);
         block.appendDummyInput()
             .appendField(this.obtener_icono('../libs/data/icono.carbon.png'))
-            .appendField('Tomar Carbon');
+            .appendField('Tomar Carbón');
       },
 
       nombre_comportamiento() {
@@ -98,7 +98,7 @@ var Escapar = Accion.extend({
 var actividadReparandoLaNave = {
   nombre: 'Reparando la nave',
   id: 'ReparandoLaNave',
-  enunciado: '.',
+  enunciado: 'El marciano debe poner en funcionamiento su nave para poder volar a su hogar. Para lograrlo debe colocar 3 unidades de carbón y 3 de hierro en la nave. Pista: pensá cómo se pueden automatizar las tareas de buscar hierro y carbón.',
   consignaInicial: '.',
 
   escena: ReparandoLaNave,
