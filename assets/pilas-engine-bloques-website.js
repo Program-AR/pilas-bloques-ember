@@ -1102,7 +1102,7 @@ catch(err) {
 if (runningTests) {
   require("pilas-engine-bloques-website/tests/test-helper");
 } else {
-  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.d599de1d"});
+  require("pilas-engine-bloques-website/app")["default"].create({"name":"pilas-engine-bloques-website","version":"0.0.0.7504d986"});
 }
 
 /* jshint ignore:end */
