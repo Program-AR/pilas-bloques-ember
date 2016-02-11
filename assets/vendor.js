@@ -58444,12 +58444,13 @@ define("ember/resolver",
     };
   }
 
-  if (!(Object.create && !Object.create(null).hasOwnProperty)) {
+  var create = (Object.create || Ember.create);
+  if (!(create && !create(null).hasOwnProperty)) {
     throw new Error("This browser does not support Object.create(null), please polyfil with es5-sham: http://git.io/yBU2rg");
   }
 
   function makeDictionary() {
-    var cache = Object.create(null);
+    var cache = create(null);
     cache['_dict'] = null;
     delete cache['_dict'];
     return cache;
@@ -58464,21 +58465,34 @@ define("ember/resolver",
 
     if (fullName.parsedName === true) { return fullName; }
 
-    var prefixParts = fullName.split('@');
-    var prefix;
+    var prefix, type, name;
+    var fullNameParts = fullName.split('@');
 
-    if (prefixParts.length === 2) {
-      if (prefixParts[0].split(':')[0] === 'view') {
-        prefixParts[0] = prefixParts[0].split(':')[1];
-        prefixParts[1] = 'view:' + prefixParts[1];
+    // Htmlbars uses helper:@content-helper which collides
+    // with ember-cli namespace detection.
+    // This will be removed in a future release of Htmlbars.
+    if (fullName !== 'helper:@content-helper' &&
+        fullNameParts.length === 2) {
+      var prefixParts = fullNameParts[0].split(':');
+
+      if (prefixParts.length === 2) {
+        prefix = prefixParts[1];
+        type = prefixParts[0];
+        name = fullNameParts[1];
+      } else {
+        var nameParts = fullNameParts[1].split(':');
+
+        prefix = fullNameParts[0];
+        type = nameParts[0];
+        name = nameParts[1];
       }
-
-      prefix = prefixParts[0];
+    } else {
+      fullNameParts = fullName.split(':');
+      type = fullNameParts[0];
+      name = fullNameParts[1];
     }
 
-    var nameParts = prefixParts[prefixParts.length - 1].split(":");
-    var type = nameParts[0], fullNameWithoutType = nameParts[1];
-    var name = fullNameWithoutType;
+    var fullNameWithoutType = name;
     var namespace = get(this, 'namespace');
     var root = namespace;
 
@@ -58496,7 +58510,7 @@ define("ember/resolver",
 
   function resolveOther(parsedName) {
     /*jshint validthis:true */
-    
+
     // Temporarily disabling podModulePrefix deprecation
     /*
     if (!this._deprecatedPodModulePrefix) {
@@ -58515,23 +58529,22 @@ define("ember/resolver",
     var normalizedModuleName = this.findModuleName(parsedName);
 
     if (normalizedModuleName) {
-      var module = require(normalizedModuleName, null, null, true /* force sync */);
+      var defaultExport = this._extractDefaultExport(normalizedModuleName, parsedName);
 
-      if (module && module['default']) { module = module['default']; }
-
-      if (module === undefined) {
+      if (defaultExport === undefined) {
         throw new Error(" Expected to find: '" + parsedName.fullName + "' within '" + normalizedModuleName + "' but got 'undefined'. Did you forget to `export default` within '" + normalizedModuleName + "'?");
       }
 
-      if (this.shouldWrapInClassFactory(module, parsedName)) {
-        module = classFactory(module);
+      if (this.shouldWrapInClassFactory(defaultExport, parsedName)) {
+        defaultExport = classFactory(defaultExport);
       }
 
-      return module;
+      return defaultExport;
     } else {
       return this._super(parsedName);
     }
   }
+
   // Ember.DefaultResolver docs:
   //   https://github.com/emberjs/ember.js/blob/master/packages/ember-application/lib/system/resolver.js
   var Resolver = Ember.DefaultResolver.extend({
@@ -58737,6 +58750,60 @@ define("ember/resolver",
       }
 
       Ember.Logger.info(symbol, parsedName.fullName, padding, description);
+    },
+
+    knownForType: function(type) {
+      var moduleEntries = requirejs.entries;
+      var moduleKeys = (Object.keys || Ember.keys)(moduleEntries);
+
+      var items = makeDictionary();
+      for (var index = 0, length = moduleKeys.length; index < length; index++) {
+        var moduleName = moduleKeys[index];
+        var fullname = this.translateToContainerFullname(type, moduleName);
+
+        if (fullname) {
+          items[fullname] = true;
+        }
+      }
+
+      return items;
+    },
+
+    translateToContainerFullname: function(type, moduleName) {
+      var prefix = this.prefix({ type: type });
+
+      // Note: using string manipulation here rather than regexes for better performance.
+      // pod modules
+      // '^' + prefix + '/(.+)/' + type + '$'
+      var podPrefix = prefix + '/';
+      var podSuffix = '/' + type;
+      var start = moduleName.indexOf(podPrefix);
+      var end = moduleName.indexOf(podSuffix);
+
+      if (start === 0 && end === (moduleName.length - podSuffix.length) &&
+          moduleName.length > (podPrefix.length + podSuffix.length)) {
+        return type + ':' + moduleName.slice(start + podPrefix.length, end);
+      }
+
+      // non-pod modules
+      // '^' + prefix + '/' + pluralizedType + '/(.+)$'
+      var pluralizedType = this.pluralize(type);
+      var nonPodPrefix = prefix + '/' + pluralizedType + '/';
+
+      if (moduleName.indexOf(nonPodPrefix) === 0 && moduleName.length > nonPodPrefix.length) {
+        return type + ':' + moduleName.slice(nonPodPrefix.length);
+      }
+
+    },
+
+    _extractDefaultExport: function(normalizedModuleName) {
+      var module = require(normalizedModuleName, null, null, true /* force sync */);
+
+      if (module && module['default']) {
+        module = module['default'];
+      }
+
+      return module;
     }
   });
 
@@ -58885,11 +58952,12 @@ define("ember/container-debug-adapter",
   Ember.Application.initializer({
     name: 'container-debug-adapter',
 
-    initialize: function(container, app) {
+    initialize: function() {
+      var app = arguments[1] || arguments[0];
       var ContainerDebugAdapter = require('ember/container-debug-adapter');
       var Resolver = require('ember/resolver');
 
-      container.register('container-debug-adapter:main', ContainerDebugAdapter);
+      app.register('container-debug-adapter:main', ContainerDebugAdapter);
       app.inject('container-debug-adapter:main', 'namespace', 'application:main');
     }
   });
