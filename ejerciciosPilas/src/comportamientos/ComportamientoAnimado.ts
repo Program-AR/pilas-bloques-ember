@@ -83,7 +83,6 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	private configuracionInicial(){
-		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
 		this.realizarVerificacionesPreAnimacion();
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
@@ -99,6 +98,7 @@ class ComportamientoAnimado extends Comportamiento {
 	private realizarVerificacionesPreAnimacion(){
 		this.verificacionesPre.forEach(verificacion => verificacion.verificar());
 		pilas.escena_actual().estado.verificarQuePuedoSeguir();
+		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
 	}
 
 	private realizarVerificacionesPostAnimacion() {

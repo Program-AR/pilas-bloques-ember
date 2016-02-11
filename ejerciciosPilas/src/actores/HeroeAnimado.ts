@@ -7,6 +7,6 @@ class HeroeAnimado extends ActorAnimado {
         this.definirAnimacion("parado",[0],6, true);
         this.definirAnimacion("correrConEspada",[6,7,8,9,10,11],12);
         this.definirAnimacion("correrConSombrero", [12,13,14,15,16,17], 12);
-        this.definirAnimacion("atacar", [24,25,26,27,28,29], 12);
+        this.definirAnimacion("atacar", new Cuadros([24,25,26,27,28,29]).repetirVeces(3), 6);
     }
 }

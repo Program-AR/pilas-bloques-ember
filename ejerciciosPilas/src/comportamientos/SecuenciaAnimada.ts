@@ -12,7 +12,6 @@ class SecuenciaAnimada extends ComportamientoAnimado {
 	}
 
 	doActualizar(){
-		super.doActualizar();
 		return this.laSecuenciaPosta.actualizar();
 	}
 }

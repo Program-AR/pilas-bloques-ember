@@ -39,12 +39,22 @@ class ActorCompuesto extends ActorAnimado {
 		this.subactores.pop().eliminar();
 	}
 
+	eliminarSubactor(etiqueta) {
+		var elQueMuere = this.subactores.find(actor => actor.tiene_etiqueta(etiqueta));
+		elQueMuere.eliminar();
+		this.subactores.splice(this.subactores.indexOf(elQueMuere),1);
+	}
+
 	cantSubactores(){
 		return this.subactores.length;
 	}
 
 	tieneAlgoEnLaMano() {
 		return this.cantSubactores() >= 2;
+	}
+
+	tieneEnLaMano(etiqueta){
+		return this.subactores.some(actor => actor.tiene_etiqueta(etiqueta));
 	}
 
 	///////////////////////////////////////////////////////
