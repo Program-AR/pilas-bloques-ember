@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <title>Pilas Bloques</title>
+
+    <script>
+    if (window['require'] === undefined) {
+      console.log("Ejecutando desde un navegador ...");
+    } else {
+      window.requireNode = require;
+    }
+    </script>
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+    <script src='fix-menu-osx.js'></script>
+
+    <!-- AGREGADOS PARA NODEWEBKIT -->
+
+    
+<meta name="pilas-engine-bloques/config/environment" content="%7B%22modulePrefix%22%3A%22pilas-engine-bloques%22%2C%22environment%22%3A%22web%22%2C%22baseURL%22%3A%22/%22%2C%22versionURL%22%3A%22http%3A//pilasbloques.programar.gob.ar/version.json%22%2C%22downloadURL%22%3A%22http%3A//hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip%22%2C%22locationType%22%3A%22hash%22%2C%22EmberENV%22%3A%7B%22FEATURES%22%3A%7B%7D%7D%2C%22APP%22%3A%7B%22name%22%3A%22pilas-engine-bloques%22%2C%22version%22%3A%220.0.0+11f3266e%22%7D%2C%22contentSecurityPolicy%22%3A%7B%22style-src%22%3A%22%27self%27%20%27unsafe-inline%27%22%7D%2C%22exportApplicationGlobal%22%3Atrue%7D" />
+
+    <script>
+      window.onkeypress = function(e) {
+        if (e.which === 105 && (e.ctrlKey || e.shiftKey || e.metaKey)) {
+          window.requireNode('nw.gui').Window.get().showDevTools();
+        }
+      }
+    </script>
+
+    <!-- AGREGADOS POR EMBERCLI -->
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/pilas-engine-bloques.css">
+    <link rel="stylesheet" href="css/ribbons.css">
+    
+
+  </head>
+  <body>
+    
+
+    <!-- AGREGADOS POR EMBERCLI -->
+    <script src="assets/vendor.js"></script>
+    <script src="assets/pilas-engine-bloques.js"></script>
+
+    <!-- PILAS-ENGINE -->
+    <script src="libs/pilasweb.js"></script>
+
+    <!-- EJERCICIOS-PILASENGINE -->
+    <script src="libs/ejerciciosPilas.js"></script>
+
+
+    
+
+
+  </body>
+</html>

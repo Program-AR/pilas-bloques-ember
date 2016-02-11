@@ -1,0 +1,83 @@
+html, body {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.blocklySvg {
+  height: 100%;
+  width: 100%;
+}
+
+.botonera {
+  margin: 0.5em;
+}
+
+canvas {
+  border: 1px solid gray;
+  margin-top: 3px;
+}
+
+
+.centrado {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.content-header {
+  padding: 0px 15px;
+}
+
+
+.contenido-principal {
+  padding: 20px;
+  padding-top: 0;
+}
+
+
+.navbar {
+  border-radius: 0 !important;
+  margin-bottom: 0 !important;
+  border-top: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+}
+
+
+.pilas-blockly-botones {
+  margin-top: 3px;
+  margin-bottom: 12px;
+}
+
+
+.pilas-canvas-botones {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+
+.panel-pilas {
+  margin-right: 520px;
+}
+
+
+canvas {
+  max-width: 100%;
+}
+
+.header-right {
+  right: 10px;
+  position: absolute;
+  top: 8px;
+}
+
+[role=treeitem] {
+  cursor: pointer !important;
+}
+
+.blocklyTreeLabel {
+  cursor: pointer !important;
+}
