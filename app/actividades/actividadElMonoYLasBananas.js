@@ -83,7 +83,7 @@ export default {
     '¿Podés hacer que el mono avance al casillero de enfrente?'+
     ' Si hay una banana debe comérsela. Sino, es feliz con sólo llegar. \n '+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: Mirá la categoría "Sensores" y la categoría "Control".',
+    'Pista: mirá la categoría "Sensores" y la categoría "Control".',
 
   consignaInicial: 'Nuestro procedimiento debe considerar cómo es el escenario del protagonista.  Si no varía, decimos que es un escenario fijo.',
   

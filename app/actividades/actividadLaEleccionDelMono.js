@@ -122,7 +122,7 @@ var actividadLaEleccionDelMono = {
   enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez siempre tiene '+
      'una fruta para comer. ¡Pero no siempre es la misma! \n'+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: Ésta vez no alcanza con el bloque "Si".',
+    'Pista: ésta vez no alcanza con el bloque "Si".',
 
   consignaInicial: 'Si el escenario del protagonista varía, nuestro procedimiento debe utilizar alternativas condicionales que ajusten las acciones a estos cambios.',
   
