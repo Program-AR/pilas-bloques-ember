@@ -35,7 +35,12 @@ class Sostener extends ComportamientoColision {
 
 class Soltar extends ComportamientoColision {
   metodo(objetoColision) {
-    this.receptor.eliminarSubactor(this.argumentos.queSoltar);
+    if (this.argumentos.queSoltar) {
+      this.receptor.eliminarSubactor(this.argumentos.queSoltar)
+    } else {
+      this.receptor.eliminarUltimoSubactor();
+    };
+
   }
 
   configurarVerificaciones() {

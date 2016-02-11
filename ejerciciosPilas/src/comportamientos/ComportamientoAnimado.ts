@@ -97,8 +97,8 @@ class ComportamientoAnimado extends Comportamiento {
 
 	private realizarVerificacionesPreAnimacion(){
 		this.verificacionesPre.forEach(verificacion => verificacion.verificar());
-		pilas.escena_actual().estado.verificarQuePuedoSeguir();
 		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+		pilas.escena_actual().estado.verificarQuePuedoSeguir();
 	}
 
 	private realizarVerificacionesPostAnimacion() {
