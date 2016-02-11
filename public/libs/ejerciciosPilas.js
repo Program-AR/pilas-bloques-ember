@@ -295,11 +295,19 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.eliminarUltimoSubactor = function () {
         this.subactores.pop().eliminar();
     };
+    ActorCompuesto.prototype.eliminarSubactor = function (etiqueta) {
+        var elQueMuere = this.subactores.find(function (actor) { return actor.tiene_etiqueta(etiqueta); });
+        elQueMuere.eliminar();
+        this.subactores.splice(this.subactores.indexOf(elQueMuere), 1);
+    };
     ActorCompuesto.prototype.cantSubactores = function () {
         return this.subactores.length;
     };
     ActorCompuesto.prototype.tieneAlgoEnLaMano = function () {
         return this.cantSubactores() >= 2;
+    };
+    ActorCompuesto.prototype.tieneEnLaMano = function (etiqueta) {
+        return this.subactores.some(function (actor) { return actor.tiene_etiqueta(etiqueta); });
     };
     ///////////////////////////////////////////////////////
     // A partir de acá son los métodos del composite polimórfico
@@ -400,7 +408,7 @@ var CaballeroAnimado = (function (_super) {
     function CaballeroAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'caballero_oscuro.png', cantColumnas: 3 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(95).concat([1, 2, 1]), 6, true);
-        this.definirAnimacion("defender", new Cuadros([0, 1, 2, 2, 2, 2, 1, 0]).repetirVeces(3).concat([0, 0, 1, 1]).concat(new Cuadros(2).repetirVeces(9999)), 6);
+        this.definirAnimacion("defender", new Cuadros([0, 1, 2, 2, 2, 2, 1, 0]).repetirVeces(3).concat([0, 0, 1, 1]).concat(new Cuadros(2).repetirVeces(999)), 6);
     }
     return CaballeroAnimado;
 })(ActorAnimado);
@@ -515,7 +523,7 @@ var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
-        this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(99999)), 3);
+        this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(999)), 3);
         this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
         this.definirAnimacion("abierto", [3], 4);
     }
@@ -754,8 +762,6 @@ var ComportamientoAnimado = (function (_super) {
         }
     };
     ComportamientoAnimado.prototype.configuracionInicial = function () {
-        if (this.argumentos.idTransicion)
-            pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
         this.realizarVerificacionesPreAnimacion();
         this.receptor.detenerAnimacion(); // Porque hace quilombo
         this.animacionAnterior = this.receptor.nombreAnimacionActual();
@@ -768,6 +774,8 @@ var ComportamientoAnimado = (function (_super) {
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPreAnimacion = function () {
         this.verificacionesPre.forEach(function (verificacion) { return verificacion.verificar(); });
+        if (this.argumentos.idTransicion)
+            pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
         pilas.escena_actual().estado.verificarQuePuedoSeguir();
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPostAnimacion = function () {
@@ -1428,7 +1436,7 @@ var HeroeAnimado = (function (_super) {
         this.definirAnimacion("parado", [0], 6, true);
         this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
         this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
-        this.definirAnimacion("atacar", [24, 25, 26, 27, 28, 29], 12);
+        this.definirAnimacion("atacar", new Cuadros([24, 25, 26, 27, 28, 29]).repetirVeces(3), 6);
     }
     return HeroeAnimado;
 })(ActorAnimado);
@@ -1516,7 +1524,7 @@ var MagoAnimado = (function (_super) {
     function MagoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
         this.definirAnimacion("parado", new Cuadros(1).repetirVeces(16).concat([2, 2, 2, 2, 2]), 2, true);
-        this.definirAnimacion("darEspada", new Cuadros([1, 3, 4, 5, 5, 6, 6, 7, 7]).repetirVeces(1).concat(new Cuadros(0).repetirVeces(99999)), 6);
+        this.definirAnimacion("darEspada", new Cuadros([1, 3, 4, 5, 5, 6, 6, 7, 7]).repetirVeces(1).concat(new Cuadros(0).repetirVeces(999)), 6);
         this.definirAnimacion("paradoConSombrero", [0], 12);
     }
     return MagoAnimado;
@@ -2228,8 +2236,11 @@ var Escapar = (function (_super) {
     function Escapar() {
         _super.apply(this, arguments);
     }
-    Escapar.prototype.preAnimacion = function () {
+    Escapar.prototype.iniciar = function (receptor) {
         this.argumentos.idTransicion = "escapar";
+        _super.prototype.iniciar.call(this, receptor);
+    };
+    Escapar.prototype.preAnimacion = function () {
         this.argumentos.direccion = new Direct(1, 5);
         this.argumentos.distancia = 600;
         this.argumentos.velocidad = 8;
@@ -2405,7 +2416,6 @@ var SecuenciaAnimada = (function (_super) {
         this.laSecuenciaPosta.iniciar(receptor);
     };
     SecuenciaAnimada.prototype.doActualizar = function () {
-        _super.prototype.doActualizar.call(this);
         return this.laSecuenciaPosta.actualizar();
     };
     return SecuenciaAnimada;
@@ -2505,7 +2515,13 @@ var Soltar = (function (_super) {
         _super.apply(this, arguments);
     }
     Soltar.prototype.metodo = function (objetoColision) {
-        this.receptor.eliminarSubactor(this.argumentos.queSoltar);
+        if (this.argumentos.queSoltar) {
+            this.receptor.eliminarSubactor(this.argumentos.queSoltar);
+        }
+        else {
+            this.receptor.eliminarUltimoSubactor();
+        }
+        ;
     };
     Soltar.prototype.configurarVerificaciones = function () {
         var _this = this;

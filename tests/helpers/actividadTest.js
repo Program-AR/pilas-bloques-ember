@@ -9,23 +9,27 @@ var TestingErrorHandler = Ember.Object.extend({
   init: function() {
     this.success = this.get('success');
     this.assert = this.get('assert');
+    this.expectedErrorMsg = this.get('expectedErrorMsg');
   },
   handle: function(error){
   	pilas.escena_actual().pausar();
-  	this.assert.notOk(true, "Hubo un error inesperado en la actividad: " + error.description());
+  	if(error.description() === this.expectedErrorMsg){
+  		this.assert.ok(true, "Ocurrió el error esperado. Bien!");
+  	} else {
+  		this.assert.notOk(true, "Hubo un error inesperado en la actividad: " + error.description());
+  	}
   	this.success();
   },
 });
 
 function descripcionTest(actividad,descripcionAdicional){
-	return 'Puede resolver la actividad ' + 
-		actividad.nombre + 
-		(descripcionAdicional ? ':' + descripcionAdicional : '' );
+	return (descripcionAdicional ? descripcionAdicional : 'Se puede resolver la actividad ' );
 }
 
 function sanitizarOpciones(opciones){
 	opciones.solucion = opciones.solucion || '';
 	// opciones.descripcionAdicional es opcional
+	// opciones.expectedErrorMsg es opcional
 	opciones.cantAsserts = opciones.cantAsserts || 0;
 	/*jshint unused: vars */
     opciones.assertsPostCargaInicial = opciones.assertsPostCargaInicial || function(assert){};
@@ -61,7 +65,7 @@ export function actividadTest(actividad, opciones){
 	    `);
 
 	    window.addEventListener('terminaCargaInicial', () => {
-	      pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert,}); 
+	      pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert, expectedErrorMsg: opciones.expectedErrorMsg}); 
 	      opciones.assertsPostCargaInicial(assert);
 	    }, false);
 
