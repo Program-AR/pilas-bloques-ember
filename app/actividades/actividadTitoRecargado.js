@@ -9,7 +9,7 @@ var actividadTitoRecargado = {
   nombre: 'Tito recargado',
   id: 'TitoRecargado',
   enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
-    consignaInicial:'El procedimiento construido debe considerar el escenario y poder responder a cada cambio propuesto.',
+  //consignaInicial:'El procedimiento construido debe considerar el escenario y poder responder a cada cambio propuesto.',
 
   // la escena proviene de ejerciciosPilas
   escena: TitoRecargado,  // jshint ignore:line

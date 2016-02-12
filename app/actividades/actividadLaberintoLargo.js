@@ -10,9 +10,7 @@ var {TocandoAbajo,TocandoDerecha,TocandoFinCamino} = tocando;
 var actividadLaberintoLargo = {
   nombre: 'Laberinto largo',
   id: 'LaberintoLargo',
-  enunciado: 'a!.',
-
-  consignaInicial: 'a',
+  enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
 
   // la escena proviene de ejerciciosPilas
   escena: LaberintoLargo, // jshint ignore:line
