@@ -124,7 +124,7 @@ var actividadLaEleccionDelMono = {
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: ésta vez no alcanza con el bloque "Si".',
 
-  consignaInicial: 'Con el bloque Si ... si no... podés hacer fácilmente un programa que tenga que elegir entre sólo dos alternativas posibles.',
+  consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
   
   // la escena proviene de ejerciciosPilas
   escena: LaEleccionDelMono, // jshint ignore:line

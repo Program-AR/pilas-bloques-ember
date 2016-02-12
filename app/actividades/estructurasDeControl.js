@@ -95,7 +95,7 @@ var Sino = EstructuraDeControl.extend({
         .appendField('Si');
     block.appendStatementInput('block1');
     block.appendDummyInput()
-        .appendField('sino');
+        .appendField('si no');
     block.appendStatementInput('block2');
   },
 
