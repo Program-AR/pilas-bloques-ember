@@ -49,7 +49,7 @@ var Lenguaje = Ember.Object.extend({
     this.get('categorias').forEach(function(item) {
       if (item === 'Variables') {
         str_toolbox += this._build_variables();
-      } else if (item === 'Subtareas') {
+      } else if (item === 'Procedimientos') {
         str_toolbox += this._build_procedures();
       } else {
         str_toolbox += this._build_categoria(item);
@@ -76,7 +76,7 @@ var Lenguaje = Ember.Object.extend({
   },
 
   _build_procedures() {
-    return '<category name="Subtareas" custom="PROCEDURE"></category>';
+    return '<category name="Procedimientos" custom="PROCEDURE"></category>';
   },
 
   _build_variables() {

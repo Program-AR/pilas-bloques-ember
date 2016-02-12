@@ -185,7 +185,7 @@ var actividadInstalandoJuegos = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],

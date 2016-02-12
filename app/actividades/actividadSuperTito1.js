@@ -19,7 +19,7 @@ var actividadSuperTito1 = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
 
   variables: [],
   control: [Si,Repetir,Hasta],

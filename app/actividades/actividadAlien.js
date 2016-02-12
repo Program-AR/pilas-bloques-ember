@@ -55,13 +55,13 @@ var actividadAlien = {
   nombre: 'El alien y las tuercas',
   id: 'ElAlienYLasTuercas',
   enunciado: 'Definí un programa para que el alien junte todas las tuercas.',
-  consignaInicial: 'Una buena estrategia de resolución de este desafío es la división del procedimiento en subtareas.',
+  consignaInicial: '',
 
   escena: AlienLevantaTuercas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],

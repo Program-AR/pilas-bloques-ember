@@ -8,7 +8,7 @@ var {EncenderLuz,TocandoLuz} = bloquesTito;
 var actividadTitoRecargado = {
   nombre: 'Tito recargado',
   id: 'TitoRecargado',
-  enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar las subtareas y bloques de control.',
+  enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     consignaInicial:'El procedimiento construido debe considerar el escenario y poder responder a cada cambio propuesto.',
 
   // la escena proviene de ejerciciosPilas
@@ -16,7 +16,7 @@ var actividadTitoRecargado = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un automata
   variables: [],

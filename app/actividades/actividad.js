@@ -43,7 +43,7 @@ var Actividad = Ember.Object.extend({
       Control: 'control',
       Expresiones: 'expresiones',
       Variables: 'variables',
-      Subtareas: 'subtareas'
+      Procedimientos: 'procedimientos'
     };
 
     // Itera por todos los bloques y los agrega al toolbox solamente
@@ -80,12 +80,12 @@ var Actividad = Ember.Object.extend({
   },
 
   usa_procedimientos() {
-    return this.get('actividad').subtareas.indexOf(Procedimiento) > -1;
+    return this.get('actividad').procedimientos.indexOf(Procedimiento) > -1;
 
   },
 
   usa_funciones() {
-    return this.get('actividad').subtareas.indexOf(Funcion) > -1;
+    return this.get('actividad').procedimientos.indexOf(Funcion) > -1;
   },
 
   iniciarBlockly(contenedor) {

@@ -201,13 +201,13 @@ var actividadElGatoEnLaCalle = {
   nombre: 'El gato en la calle',
   id: 'ElGatoEnLaCalle',
   enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
-  consignaInicial: 'Se pueden crear nuevos bloques definiendo un procedimiento que realice varias acciones.',
+  consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
 
   escena: ElGatoEnLaCalle,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],

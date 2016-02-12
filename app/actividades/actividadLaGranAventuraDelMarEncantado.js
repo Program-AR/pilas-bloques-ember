@@ -53,7 +53,7 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
   variables: [],
   control: [Repetir],
   expresiones: [],

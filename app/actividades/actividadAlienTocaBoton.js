@@ -52,7 +52,7 @@ var actividadAlienTocaBoton = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [],
+  procedimientos: [],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],

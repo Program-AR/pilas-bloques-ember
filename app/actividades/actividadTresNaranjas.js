@@ -18,7 +18,7 @@ var actividadTresNaranjas = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  subtareas: [Procedimiento],
+  procedimientos: [Procedimiento],
   variables: [],
   control: [Repetir,Si],
   expresiones: [],
