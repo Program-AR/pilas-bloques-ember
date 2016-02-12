@@ -11,7 +11,7 @@ var {TocandoNaranja} = tocando;
 var actividadTresNaranjas = {
   nombre: 'Tres naranjas',
   id: 'TresNaranjas',
-  enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si se que hay.',
+  enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
 
   escena: TresNaranjas,
   puedeComentar: false,
