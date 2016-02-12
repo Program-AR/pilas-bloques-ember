@@ -85,7 +85,7 @@ export default {
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: mirá la categoría "Sensores" y la categoría "Control".',
 
-  consignaInicial: 'Nuestro procedimiento debe considerar cómo es el escenario del protagonista.  Si no varía, decimos que es un escenario fijo.',
+  consignaInicial: 'Con el bloque Si ... Entonces ... podés hacer un programa que funcione bien en cualquier caso.',
   
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
