@@ -2,7 +2,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Sensor, Repetir,Si,Procedimiento} = bloques;
+var {Accion, Sensor, Repetir,Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 
@@ -54,8 +54,7 @@ var TocandoTuerca = Sensor.extend({
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
   id: 'ElAlienYLasTuercas',
-  enunciado: 'Definí un programa para que el alien junte todas las tuercas.',
-  consignaInicial: '',
+  enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
 
   escena: AlienLevantaTuercas,
   puedeComentar: false,
@@ -66,7 +65,7 @@ var actividadAlien = {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
 
-  control: [Repetir,Si],
+  control: [Repetir],
   expresiones: [],
   acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, LevantarTuerca],
   sensores: [TocandoTuerca]
