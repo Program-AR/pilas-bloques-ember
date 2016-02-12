@@ -12,7 +12,7 @@ var {ComerManzana} = comer;
 var actividadElMarcianoEnElDesierto = {
   nombre: 'El marciano en el desierto',
   id: 'ElMarcianoEnElDesierto',
-  enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a comer las frutas. Pista: se pueden usar varios Repetir.',
+  enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a comer las frutas. Pista: Crear un procedimiento (bloque) para cada conjunto de manzanas',
   consignaInicial: 'Conviene pensar una estrategia general de resolución antes de construir el programa. Por ejemplo: comer las manzanas de abajo, luego las del costado y por último las de arriba.',
 
   escena: ElMarcianoEnElDesierto,
