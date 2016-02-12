@@ -1,203 +1,65 @@
 /* globals ElGatoEnLaCalle */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
+var {AccionBuilder,Procedimiento} = bloques;
 
-var {Accion,Procedimiento} = bloques;
-
-var Saludar = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Saludar');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Saludar ')
-         .appendField(this.obtener_icono('../libs/data/icono.saludar.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ComportamientoAnimado';
-  },
-
-
-  argumentos() {
-    return '{\'nombreAnimacion\':\'saludando\'}';
-
-
-  }
-});
-var AbrirOjos = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'AbrirOjos');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Abrir ojos ')
-         .appendField(this.obtener_icono('../libs/data/icono.abrirOjos.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ComportamientoAnimado';
-  },
-
-  argumentos() {
-    return '{\'nombreAnimacion\':\'abrirOjos\'}';
-
-  }
+var Saludar = AccionBuilder.build({
+  descripcion: 'Saludar',
+  icono: 'icono.saludar.png',
+  comportamiento: 'ComportamientoAnimado',
+  argumentos: '{nombreAnimacion: "saludando"}',
 });
 
-var CerrarOjos = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'CerrarOjos');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Cerrar ojos ')
-         .appendField(this.obtener_icono('../libs/data/icono.cerrarOjos.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ComportamientoAnimado';
-  },
-
-  argumentos() {
-    return '{\'nombreAnimacion\':\'cerrarOjos\'}';
-
-  }
+var AbrirOjos = AccionBuilder.build({
+  descripcion: 'Abrir ojos',
+  icono: 'icono.abrirOjos.png',
+  comportamiento: 'ComportamientoAnimado',
+  argumentos: '{nombreAnimacion: "abrirOjos"}',
 });
 
-var Acostarse = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Acostarse');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Acostarse ')
-         .appendField(this.obtener_icono('../libs/data/icono.acostarse.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ModificarRotacionYAltura';
-  },
-
-  argumentos() {
-    return '{\'alturaIr\': -180 ,\'rotacionIr\': 90}';
-
-  }
+var CerrarOjos = AccionBuilder.build({
+  descripcion: 'Cerrar ojos',
+  icono: 'icono.cerrarOjos.png',
+  comportamiento: 'ComportamientoAnimado',
+  argumentos: '{nombreAnimacion: "cerrarOjos"}',
 });
 
-var Pararse = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Pararse');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Pararse ')
-         .appendField(this.obtener_icono('../libs/data/icono.pararse.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ModificarRotacionYAltura';
-  },
-
-  argumentos() {
-  return '{\'alturaIr\': -150 ,\'rotacionIr\': 0}';
-
-  }
+var Acostarse = AccionBuilder.build({
+  descripcion: 'Acostarse',
+  icono: 'icono.acostarse.png',
+  comportamiento: 'ModificarRotacionYAltura',
+  argumentos: '{alturaIr: -180 ,rotacionIr: 90}',
 });
 
-var Volver = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Volver');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Volver ')
-         .appendField(this.obtener_icono('izquierda.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ComportamientoAnimado';
-  },
-
-  argumentos() {
-    return '{\'nombreAnimacion\': \'volver\'}';
-
-  }
+var Pararse = AccionBuilder.build({
+  descripcion: 'Pararse',
+  icono: 'icono.pararse.png',
+  comportamiento: 'ModificarRotacionYAltura',
+  argumentos: '{alturaIr: -150 ,rotacionIr: 0}',
 });
 
-var Avanzar = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Avanzar');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Avanzar ')
-         .appendField(this.obtener_icono('derecha.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'ComportamientoAnimado';
-  },
-
-  argumentos() {
-    return '{\'nombreAnimacion\': \'correr\'}';
-
-  }
+var Volver = AccionBuilder.build({
+  descripcion: 'Volver',
+  icono: 'izquierda.png',
+  comportamiento: 'ComportamientoAnimado',
+  argumentos: '{nombreAnimacion: "volver"}',
 });
 
-var Soniar = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Soniar');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Soñar ')
-         .appendField(this.obtener_icono('../libs/data/icono.soniar.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'Pensar';
-  },
-
-  argumentos() {
-    return '{\'mensaje\': "ZZzzZzZ..." }';
-
-  }
+var Avanzar = AccionBuilder.build({
+  descripcion: 'Avanzar',
+  icono: 'derecha.png',
+  comportamiento: 'ComportamientoAnimado',
+  argumentos: '{nombreAnimacion: "correr"}',
 });
 
-var actividadElGatoEnLaCalle = {
+var Soniar = AccionBuilder.build({
+  descripcion: 'Soñar',
+  icono: 'icono.soniar.png',
+  comportamiento: 'Pensar',
+  argumentos: '{mensaje: "ZZzzZzZ..." }',
+});
+
+export default {
   nombre: 'El gato en la calle',
   id: 'ElGatoEnLaCalle',
   enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
@@ -217,5 +79,3 @@ var actividadElGatoEnLaCalle = {
   acciones: [Saludar,Avanzar,Volver,AbrirOjos,CerrarOjos,Acostarse,Pararse,Soniar],
   sensores: []
 };
-
-export default actividadElGatoEnLaCalle;
