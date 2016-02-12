@@ -60,6 +60,7 @@ var actividadElRecolectorDeEstrellas = {
   nombre: 'El recolector de estrellas',
   id: 'ElRecolectorDeEstrellas',
   enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.',
+  consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
   escena: ElRecolectorDeEstrellas,
   puedeComentar: false,
   puedeDesactivar: false,
