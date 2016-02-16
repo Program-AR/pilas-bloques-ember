@@ -310,7 +310,7 @@ var AccionBuilder = {
     return Accion.extend({
       init() {
         this._super();
-        this.set('id', this.toID(opciones.descripcion));
+        this.set('id', opciones.id || this.toID(opciones.descripcion));
       },
 
       block_init(block){
