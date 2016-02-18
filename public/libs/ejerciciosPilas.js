@@ -3711,7 +3711,7 @@ var ReparandoLaNave = (function (_super) {
         Trait.toObject(ObservadoConDisminuir, this.carbon);
         Trait.toObject(ObservadoConDisminuir, this.hierro);
         this.hierro.registrarObservador(new Tablero(150, 220, { texto: "Hierro" }));
-        this.carbon.registrarObservador(new Tablero(150, 190, { texto: "Carbon" }));
+        this.carbon.registrarObservador(new Tablero(150, 190, { texto: "Carbón" }));
         this.carbon.changed();
         this.hierro.changed();
     };

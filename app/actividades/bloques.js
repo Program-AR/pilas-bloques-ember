@@ -302,6 +302,20 @@ var Accion = Bloque.extend({
 
 });
 
+var Sensor = Bloque.extend({
+
+  block_init(block) {
+    this._super(block);
+    block.setColour(Blockly.Blocks.sensores.COLOUR);
+    block.setInputsInline(true);
+    block.setOutput(true);
+  },
+
+  block_javascript(/*block*/) {
+    return ['receptor.' + this.nombre_sensor() + '\n', Blockly.JavaScript.ORDER_ATOMIC];
+  }
+});
+
 // Crea una accion a partir de una descripcion, un icono, comportamiento y argumentos
 // Como la mayoría de los bloques siempre son así, primero un ícono y luego una descripción,
 // Esto me permite rápidamente crear una accion, es casi como un DSL para hacerlo
@@ -334,21 +348,33 @@ var AccionBuilder = {
 
     });
   },
-};
 
-var Sensor = Bloque.extend({
+  // TODO: Quitar código repetido con build
+  buildSensor(opciones){
+    return Sensor.extend({
+      init() {
+        this._super();
+        this.set('id', opciones.id || this.toID(opciones.descripcion));
+      },
 
-  block_init(block) {
-    this._super(block);
-    block.setColour(Blockly.Blocks.sensores.COLOUR);
-    block.setInputsInline(true);
-    block.setOutput(true);
+      block_init(block){
+        this._super(block);
+        block.appendDummyInput()
+             .appendField('¿' + opciones.descripcion)
+             .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+             .appendField('?');
+      },
+
+      nombre_sensor(){
+        return opciones.funcionSensor;
+      },
+
+      toID(descripcion){
+        return descripcion.replace(/[^a-zA-z]/g, "");
+      },
+    });
   },
-
-  block_javascript(/*block*/) {
-    return ['receptor.' + this.nombre_sensor() + '\n', Blockly.JavaScript.ORDER_ATOMIC];
-  }
-});
+};
 
 /*
  * Representa un valor mas complejo
