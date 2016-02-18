@@ -66,7 +66,7 @@ class ReparandoLaNave extends EscenaActividad {
     this.hierro.registrarObservador(
       new Tablero(150, 220, { texto: "Hierro" }));
     this.carbon.registrarObservador(
-      new Tablero(150, 190, { texto: "Carbon" }));
+      new Tablero(150, 190, { texto: "Carbón" }));
 
     this.carbon.changed();
     this.hierro.changed();
