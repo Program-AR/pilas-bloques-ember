@@ -34,11 +34,13 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarEstadosPrefijados('escritoC',1,3);
     builder.agregarEstadosPrefijados('juegoInstalado',1,3);
     builder.agregarEstadosPrefijados('maquinaApagada',1,3);
+    builder.agregarEstadoAceptacion('todoInstalado');
     builder.agregarTransicionesIteradas('prendido','escritoA','escribirA',1,3,1,3);
     builder.agregarTransicionesIteradas('escritoA','escritoB','escribirB',1,3,1,3);
     builder.agregarTransicionesIteradas('escritoB','escritoC','escribirC',1,3,1,3);
     builder.agregarTransicionesIteradas('escritoC','juegoInstalado','instalar',1,3,1,3);
-    builder.agregarTransicionesIteradas('juegoInstalado','maquinaApagada','apagar',1,3,1,3);
+    builder.agregarTransicionesIteradas('juegoInstalado','maquinaApagada','apagar',1,2,1,2);
+    builder.agregarTransicion('juegoInstalado3', 'todoInstalado', 'apagar');
     builder.agregarTransicion('inicial','prendido1','prender');
     builder.agregarTransicion('maquinaApagada1','prendido2','prender');
     builder.agregarTransicion('maquinaApagada2','prendido3','prender');
