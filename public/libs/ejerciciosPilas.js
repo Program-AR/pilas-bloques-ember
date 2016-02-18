@@ -3301,11 +3301,13 @@ var InstalandoJuegos = (function (_super) {
         builder.agregarEstadosPrefijados('escritoC', 1, 3);
         builder.agregarEstadosPrefijados('juegoInstalado', 1, 3);
         builder.agregarEstadosPrefijados('maquinaApagada', 1, 3);
+        builder.agregarEstadoAceptacion('todoInstalado');
         builder.agregarTransicionesIteradas('prendido', 'escritoA', 'escribirA', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('escritoA', 'escritoB', 'escribirB', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('escritoB', 'escritoC', 'escribirC', 1, 3, 1, 3);
         builder.agregarTransicionesIteradas('escritoC', 'juegoInstalado', 'instalar', 1, 3, 1, 3);
-        builder.agregarTransicionesIteradas('juegoInstalado', 'maquinaApagada', 'apagar', 1, 3, 1, 3);
+        builder.agregarTransicionesIteradas('juegoInstalado', 'maquinaApagada', 'apagar', 1, 2, 1, 2);
+        builder.agregarTransicion('juegoInstalado3', 'todoInstalado', 'apagar');
         builder.agregarTransicion('inicial', 'prendido1', 'prender');
         builder.agregarTransicion('maquinaApagada1', 'prendido2', 'prender');
         builder.agregarTransicion('maquinaApagada2', 'prendido3', 'prender');
@@ -3577,6 +3579,9 @@ var MariaLaComeSandias = (function (_super) {
         for (var x = 0; x < this.cantidadColumnas; x++) {
             this.cuadricula.agregarActor(new SandiaAnimada(0, 0), numeroFila, x);
         }
+    };
+    MariaLaComeSandias.prototype.estaResueltoElProblema = function () {
+        return this.contarActoresConEtiqueta('SandiaAnimada') == 0;
     };
     return MariaLaComeSandias;
 })(EscenaActividad);
