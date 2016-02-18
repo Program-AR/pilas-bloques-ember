@@ -98,7 +98,7 @@ var Escapar = Accion.extend({
 var actividadReparandoLaNave = {
   nombre: 'Reparando la nave',
   id: 'ReparandoLaNave',
-  enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de cárbon y 3 de hierro a la nave, pero no puede cargar más de una unidad.',
+  enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad.',
 
   escena: ReparandoLaNave,
   puedeComentar: false,
