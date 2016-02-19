@@ -2149,6 +2149,22 @@ var AgarrarPorEtiqueta = (function (_super) {
     };
     return AgarrarPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoAnimado.ts"/>
+var AnimarSiNoEstoyYa = (function (_super) {
+    __extends(AnimarSiNoEstoyYa, _super);
+    function AnimarSiNoEstoyYa() {
+        _super.apply(this, arguments);
+    }
+    AnimarSiNoEstoyYa.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor[_this.argumentos.descripcionEstar] !== _this.argumentos.valorEstar; }, "No puedo, ya estoy " + this.argumentos.valorEstar));
+    };
+    AnimarSiNoEstoyYa.prototype.postAnimacion = function () {
+        this.receptor[this.argumentos.descripcionEstar] = this.argumentos.valorEstar;
+    };
+    return AnimarSiNoEstoyYa;
+})(ComportamientoAnimado);
 var avanzarFilaEnCuadriculaMultiple = (function (_super) {
     __extends(avanzarFilaEnCuadriculaMultiple, _super);
     function avanzarFilaEnCuadriculaMultiple() {
@@ -2322,24 +2338,19 @@ var Martillar = (function (_super) {
     return Martillar;
 })(Comportamiento);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../comportamientos/AnimarSiNoEstoyYa.ts" />
 var ModificarRotacionYAltura = (function (_super) {
     __extends(ModificarRotacionYAltura, _super);
     function ModificarRotacionYAltura() {
         _super.apply(this, arguments);
     }
-    ModificarRotacionYAltura.prototype.iniciar = function (receptor) {
-        _super.prototype.iniciar.call(this, receptor);
-    };
-    ModificarRotacionYAltura.prototype.actualizar = function () {
-        if (_super.prototype.actualizar.call(this)) {
-            this.receptor.y = this.argumentos['alturaIr'];
-            this.receptor.rotacion = this.argumentos['rotacionIr'];
-            return true;
-        }
-        return false;
+    ModificarRotacionYAltura.prototype.postAnimacion = function () {
+        _super.prototype.postAnimacion.call(this);
+        this.receptor.y = this.argumentos['alturaIr'];
+        this.receptor.rotacion = this.argumentos['rotacionIr'];
     };
     return ModificarRotacionYAltura;
-})(ComportamientoAnimado);
+})(AnimarSiNoEstoyYa);
 /// <reference path="ComportamientoColision.ts"/>
 var RecogerPorEtiqueta = (function (_super) {
     __extends(RecogerPorEtiqueta, _super);
@@ -2928,20 +2939,8 @@ var ElGatoEnLaCalle = (function (_super) {
     ElGatoEnLaCalle.prototype.personajePrincipal = function () {
         return this.automata;
     };
-    ElGatoEnLaCalle.prototype.saludar = function () {
-        this.automata.hacer_luego(ComportamientoAnimado, { nombreAnimacion: 'saludando' });
-    };
-    ElGatoEnLaCalle.prototype.ao = function () {
-        this.automata.hacer_luego(ComportamientoAnimado, { nombreAnimacion: 'abrirOjos' });
-    };
-    ElGatoEnLaCalle.prototype.co = function () {
-        this.automata.hacer_luego(ComportamientoAnimado, { nombreAnimacion: 'cerrarOjos' });
-    };
-    ElGatoEnLaCalle.prototype.avanzar = function () {
-        this.automata.hacer_luego(ComportamientoAnimado, { nombreAnimacion: 'correr' });
-    };
-    ElGatoEnLaCalle.prototype.volver = function () {
-        this.automata.hacer_luego(ComportamientoAnimado, { nombreAnimacion: 'volver' });
+    ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
+        return true; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
     };
     return ElGatoEnLaCalle;
 })(EscenaActividad);
@@ -3611,6 +3610,9 @@ var NoMeCansoDeSaltar = (function (_super) {
         if (this.saltosFaltantes == 0)
             return "¡Ya salté todo lo necesario!";
         throw new ActividadError("¡Uy! Salté mucho... ¡Me pasé!");
+    };
+    NoMeCansoDeSaltar.prototype.estaResueltoElProblema = function () {
+        return this.saltosFaltantes == 0;
     };
     return NoMeCansoDeSaltar;
 })(EscenaActividad);

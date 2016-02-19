@@ -71,8 +71,12 @@ export function actividadTest(actividad, opciones){
 
 	    window.addEventListener('terminaEjecucion', () => {
 	      opciones.assertsPostEjecucion(assert);
-	      assert.ok(pilas.escena_actual().estaResueltoElProblema(),"Se puede resolver el problema");
-	      success(); // indica que los test finalizan para este desafío.
+	      if(!opciones.expectedErrorMsg){
+	      	assert.ok(pilas.escena_actual().estaResueltoElProblema(),"Se puede resolver el problema");
+	      } else {
+	      	assert.notOk(true,"El error esperado no fue producido: " + opciones.expectedErrorMsg);
+	      }
+	      	success(); // indica que los test finalizan para este desafío.
 	    }, false);
 	  });
 

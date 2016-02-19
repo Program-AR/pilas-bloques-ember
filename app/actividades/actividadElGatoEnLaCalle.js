@@ -13,43 +13,43 @@ var Saludar = AccionBuilder.build({
 var AbrirOjos = AccionBuilder.build({
   descripcion: 'Abrir ojos',
   icono: 'icono.abrirOjos.png',
-  comportamiento: 'ComportamientoAnimado',
-  argumentos: '{nombreAnimacion: "abrirOjos"}',
+  comportamiento: 'AnimarSiNoEstoyYa',
+  argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", arrancoAsi:true}',
 });
 
 var CerrarOjos = AccionBuilder.build({
   descripcion: 'Cerrar ojos',
   icono: 'icono.cerrarOjos.png',
-  comportamiento: 'ComportamientoAnimado',
-  argumentos: '{nombreAnimacion: "cerrarOjos"}',
+  comportamiento: 'AnimarSiNoEstoyYa',
+  argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos"}',
 });
 
 var Acostarse = AccionBuilder.build({
   descripcion: 'Acostarse',
   icono: 'icono.acostarse.png',
   comportamiento: 'ModificarRotacionYAltura',
-  argumentos: '{alturaIr: -180 ,rotacionIr: 90}',
+  argumentos: '{alturaIr: -180 ,rotacionIr: 90, valorEstar: "acostado", descripcionEstar: "posicionCuerpo"}',
 });
 
 var Pararse = AccionBuilder.build({
   descripcion: 'Pararse',
   icono: 'icono.pararse.png',
   comportamiento: 'ModificarRotacionYAltura',
-  argumentos: '{alturaIr: -150 ,rotacionIr: 0}',
+  argumentos: '{alturaIr: -150 ,rotacionIr: 0, valorEstar: "parado", descripcionEstar: "posicionCuerpo", arrancoAsi:true}',
 });
 
 var Volver = AccionBuilder.build({
   descripcion: 'Volver',
-  icono: 'izquierda.png',
-  comportamiento: 'ComportamientoAnimado',
-  argumentos: '{nombreAnimacion: "volver"}',
+  icono: '../../iconos/izquierda.png',
+  comportamiento: 'MovimientoAnimado',
+  argumentos: '{nombreAnimacion: "volver", direccion: new Direct(-1,0), distancia: 50, voltearAlIrAIzquierda: false}',
 });
 
 var Avanzar = AccionBuilder.build({
   descripcion: 'Avanzar',
-  icono: 'derecha.png',
-  comportamiento: 'ComportamientoAnimado',
-  argumentos: '{nombreAnimacion: "correr"}',
+  icono: '../../iconos/derecha.png',
+  comportamiento: 'MovimientoAnimado',
+  argumentos: '{nombreAnimacion: "correr", direccion: new Direct(1,0), distancia: 50}',
 });
 
 var Soniar = AccionBuilder.build({
