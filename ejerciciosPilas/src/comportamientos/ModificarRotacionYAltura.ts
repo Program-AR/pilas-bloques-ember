@@ -1,26 +1,12 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../comportamientos/AnimarSiNoEstoyYa.ts" />
 
-class ModificarRotacionYAltura extends ComportamientoAnimado{
-    receptor;
+class ModificarRotacionYAltura extends AnimarSiNoEstoyYa {
 
-    
-
-    iniciar(receptor) {
-        super.iniciar(receptor);
-
+    postAnimacion() {
+      super.postAnimacion();
+      this.receptor.y=this.argumentos['alturaIr'];
+      this.receptor.rotacion=this.argumentos['rotacionIr'];
     }
-
-    actualizar() {
-
-        if(super.actualizar()){
-              this.receptor.y=this.argumentos['alturaIr'];
-              this.receptor.rotacion=this.argumentos['rotacionIr'];
-              return true;
-          }
-
-
-        return false;
-    }
-
 
 }

@@ -36,4 +36,8 @@ class MariaLaComeSandias extends EscenaActividad {
             this.cuadricula.agregarActor(new SandiaAnimada(0, 0), numeroFila, x);
         }
     }
+
+    estaResueltoElProblema() {
+        return this.contarActoresConEtiqueta('SandiaAnimada')==0;
+    }
 }

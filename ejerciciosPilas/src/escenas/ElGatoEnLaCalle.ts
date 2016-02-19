@@ -24,30 +24,8 @@ class ElGatoEnLaCalle extends EscenaActividad {
       return this.automata;
     }
 
-
-    saludar(){
-      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'saludando'});
+    estaResueltoElProblema(){
+      return true; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
     }
-
-    ao(){
-      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'abrirOjos'});
-    }
-
-    co(){
-      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'cerrarOjos'});
-    }
-    avanzar(){
-      this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'correr'});
-    }
-
-    volver(){
-    this.automata.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'volver'});
-    }
-
-
-
-    
-
-
 
 }

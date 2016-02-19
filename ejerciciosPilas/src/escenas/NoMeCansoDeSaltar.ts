@@ -21,13 +21,15 @@
         this.saltosFaltantes=30;
   }
 
-    fraseAlSaltar(){
-      this.saltosFaltantes--;
-      if (this.saltosFaltantes > 0)  return "Faltan " + this.saltosFaltantes + " saltos";
-      if (this.saltosFaltantes == 0) return "¡Ya salté todo lo necesario!";
-      throw new ActividadError("¡Uy! Salté mucho... ¡Me pasé!");
-    }
+  fraseAlSaltar(){
+    this.saltosFaltantes--;
+    if (this.saltosFaltantes > 0)  return "Faltan " + this.saltosFaltantes + " saltos";
+    if (this.saltosFaltantes == 0) return "¡Ya salté todo lo necesario!";
+    throw new ActividadError("¡Uy! Salté mucho... ¡Me pasé!");
+  }
 
-
+  estaResueltoElProblema() {
+    return this.saltosFaltantes == 0;
+  }
 
 }
