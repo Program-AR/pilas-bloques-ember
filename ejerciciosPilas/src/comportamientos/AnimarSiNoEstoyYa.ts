@@ -6,16 +6,25 @@ class AnimarSiNoEstoyYa extends ComportamientoAnimado {
 	configurarVerificaciones(){
 		this.verificacionesPre.push(
 			new Verificacion(
-				() => this.puedoEmpezarConEsteComportamiento() && !this.estoyYa(),
+				() => this.puedoRealizarAnimacionYCambio(),
 				"No puedo, ya estoy " + this.argumentos.valorEstar));
 	}
 
-	puedoEmpezarConEsteComportamiento(){
-		return this.receptor[this.argumentos.descripcionEstar] || this.argumentos.arrancoAsi;
+	puedoRealizarAnimacionYCambio() {
+		return (this.esElPrimerCambioDeEstado() && !this.arrancoEnEsteEstado()) || // Porque si configuraron para arrancar en este estado, no puedo cambiar al mismo estado.
+			(!this.esElPrimerCambioDeEstado() && !this.yaEstabaEnEsteEstado()); // Porque no puedo cambiar al estado en el que ya estaba.
 	}
 
-	estoyYa(){
+	arrancoEnEsteEstado(){
+		return this.argumentos.arrancoAsi;
+	}
+
+	yaEstabaEnEsteEstado(){
 		return this.receptor[this.argumentos.descripcionEstar] === this.argumentos.valorEstar;
+	}
+
+	esElPrimerCambioDeEstado(){
+		return !this.receptor[this.argumentos.descripcionEstar];
 	}
 
 	postAnimacion(){
