@@ -14,25 +14,25 @@ actividadTest(actividad, {
 
 actividadTest(actividad, {
 	descripcionAdicional: 'da error al intentar cerrar ojos dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="95"><next><block type="Cerrarojos" id="104"></block></next></block></statement></block><block type="procedures_defnoreturn" id="8" x="251" y="64"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Acostarse" id="9"><next><block type="Cerrarojos" id="10"><next><block type="Soar" id="11"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="12" x="254" y="241"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Pararse" id="13"><next><block type="Abrirojos" id="14"></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="39" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="40"><next><block type="Cerrarojos" id="41"></block></next></block></statement></block></xml>',
 	expectedErrorMsg: 'No puedo, ya estoy con los ojos cerrados',
 });
 
 actividadTest(actividad, {
 	descripcionAdicional: 'da error al intentar abrir ojos dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Abrirojos" id="77"><next><block type="Abrirojos" id="86"></block></next></block></statement></block><block type="procedures_defnoreturn" id="8" x="251" y="64"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Acostarse" id="9"><next><block type="Cerrarojos" id="10"><next><block type="Soar" id="11"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="12" x="254" y="241"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Pararse" id="13"><next><block type="Abrirojos" id="14"></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="19" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="38"><next><block type="Abrirojos" id="20"><next><block type="Abrirojos" id="21"></block></next></block></next></block></statement></block></xml>',
 	expectedErrorMsg: 'No puedo, ya estoy con los ojos abiertos',
 });
 
 actividadTest(actividad, {
 	descripcionAdicional: 'da error al intentar pararse dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Pararse" id="59"><next><block type="Pararse" id="68"></block></next></block></statement></block><block type="procedures_defnoreturn" id="8" x="251" y="64"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Acostarse" id="9"><next><block type="Cerrarojos" id="10"><next><block type="Soar" id="11"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="12" x="254" y="241"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Pararse" id="13"><next><block type="Abrirojos" id="14"></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="57" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Acostarse" id="75"><next><block type="Pararse" id="58"><next><block type="Pararse" id="59"></block></next></block></next></block></statement></block></xml>',
 	expectedErrorMsg: 'No puedo, ya estoy parado',
 });
 
 actividadTest(actividad, {
 	descripcionAdicional: 'da error al intentar acostarse dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Acostarse" id="41"><next><block type="Acostarse" id="50"></block></next></block></statement></block><block type="procedures_defnoreturn" id="8" x="251" y="64"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Acostarse" id="9"><next><block type="Cerrarojos" id="10"><next><block type="Soar" id="11"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="12" x="254" y="241"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Pararse" id="13"><next><block type="Abrirojos" id="14"></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="76" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Acostarse" id="77"><next><block type="Acostarse" id="78"></block></next></block></statement></block></xml>',
 	expectedErrorMsg: 'No puedo, ya estoy acostado',
 });
 

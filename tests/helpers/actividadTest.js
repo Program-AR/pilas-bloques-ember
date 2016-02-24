@@ -10,15 +10,26 @@ var TestingErrorHandler = Ember.Object.extend({
     this.success = this.get('success');
     this.assert = this.get('assert');
     this.expectedErrorMsg = this.get('expectedErrorMsg');
+    this.assertedSomething = false;
   },
+
   handle: function(error){
   	pilas.escena_actual().pausar();
   	if(error.description() === this.expectedErrorMsg){
   		this.assert.ok(true, "Ocurrió el error esperado. Bien!");
   	} else {
-  		this.assert.notOk(true, "Hubo un error inesperado en la actividad: " + error.description());
+  		this.assert.equal(error.description(),"", "Hubo un error inesperado en la actividad");
   	}
+  	this.assertedSomething = true;
   	this.success();
+  },
+
+  performAsserts: function(){
+  	if(this.expectedErrorMsg && !this.assertedSomething){
+  		this.assert.equal("", this.expectedErrorMsg, "No ocurrió el error esperado");
+  		this.assertedSomething = true;
+  		this.success();
+  	}
   },
 });
 
@@ -71,12 +82,12 @@ export function actividadTest(actividad, opciones){
 
 	    window.addEventListener('terminaEjecucion', () => {
 	      opciones.assertsPostEjecucion(assert);
-	      if(!opciones.expectedErrorMsg){
+		  var errHandler = pilas.escena_actual().errorHandler;
+		  errHandler.performAsserts();
+	      if(!errHandler.assertedSomething){
 	      	assert.ok(pilas.escena_actual().estaResueltoElProblema(),"Se puede resolver el problema");
-	      } else {
-	      	assert.notOk(true,"El error esperado no fue producido: " + opciones.expectedErrorMsg);
-	      }
 	      	success(); // indica que los test finalizan para este desafío.
+	      }
 	    }, false);
 	  });
 

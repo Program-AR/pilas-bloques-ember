@@ -2158,7 +2158,20 @@ var AnimarSiNoEstoyYa = (function (_super) {
     }
     AnimarSiNoEstoyYa.prototype.configurarVerificaciones = function () {
         var _this = this;
-        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor[_this.argumentos.descripcionEstar] !== _this.argumentos.valorEstar; }, "No puedo, ya estoy " + this.argumentos.valorEstar));
+        this.verificacionesPre.push(new Verificacion(function () { return _this.puedoRealizarAnimacionYCambio(); }, "No puedo, ya estoy " + this.argumentos.valorEstar));
+    };
+    AnimarSiNoEstoyYa.prototype.puedoRealizarAnimacionYCambio = function () {
+        return (this.esElPrimerCambioDeEstado() && !this.arrancoEnEsteEstado()) ||
+            (!this.esElPrimerCambioDeEstado() && !this.yaEstabaEnEsteEstado()); // Porque no puedo cambiar al estado en el que ya estaba.
+    };
+    AnimarSiNoEstoyYa.prototype.arrancoEnEsteEstado = function () {
+        return this.receptor[this.argumentos.arrancoAsi];
+    };
+    AnimarSiNoEstoyYa.prototype.yaEstabaEnEsteEstado = function () {
+        return this.receptor[this.argumentos.descripcionEstar] === this.argumentos.valorEstar;
+    };
+    AnimarSiNoEstoyYa.prototype.esElPrimerCambioDeEstado = function () {
+        return !this.receptor[this.argumentos.descripcionEstar];
     };
     AnimarSiNoEstoyYa.prototype.postAnimacion = function () {
         this.receptor[this.argumentos.descripcionEstar] = this.argumentos.valorEstar;
