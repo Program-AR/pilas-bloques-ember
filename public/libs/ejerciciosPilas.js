@@ -2165,7 +2165,7 @@ var AnimarSiNoEstoyYa = (function (_super) {
             (!this.esElPrimerCambioDeEstado() && !this.yaEstabaEnEsteEstado()); // Porque no puedo cambiar al estado en el que ya estaba.
     };
     AnimarSiNoEstoyYa.prototype.arrancoEnEsteEstado = function () {
-        return this.receptor[this.argumentos.arrancoAsi];
+        return this.argumentos.arrancoAsi;
     };
     AnimarSiNoEstoyYa.prototype.yaEstabaEnEsteEstado = function () {
         return this.receptor[this.argumentos.descripcionEstar] === this.argumentos.valorEstar;
