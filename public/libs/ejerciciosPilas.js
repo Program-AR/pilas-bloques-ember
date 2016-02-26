@@ -3020,7 +3020,7 @@ var ElDetectiveChaparro = (function (_super) {
         this.automata.aprender(Flotar, {});
     };
     ElDetectiveChaparro.prototype.estaResueltoElProblema = function () {
-        return this.automata.casillaActual().nroColumna === this.culpable.casillaActual().nroColumna &&
+        return this.automata.casillaActual() === this.culpable.casillaActual() &&
             this.culpable.teEncontraron();
     };
     return ElDetectiveChaparro;
@@ -3717,6 +3717,9 @@ var NoMeCansoDeSaltar = (function (_super) {
     return NoMeCansoDeSaltar;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/InstaladorAnimado.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
 var PrendiendoLasCompus = (function (_super) {
     __extends(PrendiendoLasCompus, _super);
     function PrendiendoLasCompus() {
@@ -3725,13 +3728,13 @@ var PrendiendoLasCompus = (function (_super) {
     PrendiendoLasCompus.prototype.iniciar = function () {
         this.cantidadMaxColumnas = 12;
         this.cantidadMinColumnas = 5;
-        this.cantidadMaxFilas = 7;
+        this.cantidadMaxFilas = 14;
         this.cantidadMinFilas = 4;
         this.cantidadFilas = Math.floor(Math.random() * this.cantidadMaxFilas + this.cantidadMinFilas);
         this.cantidadColumnas = Math.floor(Math.random() * this.cantidadMaxColumnas + this.cantidadMinColumnas);
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillas.violeta.png' });
-        this.buzo = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.buzo, 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasCompus.png', alto: 30, ancho: 30 });
+        this.automata = new InstaladorAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.completarConCompusEnLaterales();
     };
     PrendiendoLasCompus.prototype.completarConCompusEnLaterales = function () {

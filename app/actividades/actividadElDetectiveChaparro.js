@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder, Si,Procedimiento} = bloques;
+var {AccionBuilder, Si, Procedimiento, Repetir, Hasta} = bloques;
 
 var PrimerSospechoso = AccionBuilder.build({
   descripcion: 'Primer sospechoso',
@@ -23,9 +23,9 @@ var SacarDisfraz = AccionBuilder.build({
 });
 
 var EsCulpable = AccionBuilder.buildSensor({
-  descripcion: 'Es Culpable',
+  descripcion: 'Es culpable',
   icono: 'icono.culpable.png',
-  funcionSensor: 'esCulpable()',
+  funcionSensor: 'colisiona_con(pilas.escena_actual().culpable)',
 });
 
 export default {
@@ -43,7 +43,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+  control: [Si, Repetir, Hasta],
   expresiones: [],
   acciones: [PrimerSospechoso,SiguienteSospechoso,SacarDisfraz],
   sensores: [EsCulpable],
