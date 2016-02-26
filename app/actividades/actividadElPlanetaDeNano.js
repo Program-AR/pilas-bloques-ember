@@ -5,7 +5,7 @@ var {AccionBuilder, Si, Repetir,Hasta, Procedimiento,Funcion} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
 
 var ComerBanana = AccionBuilder.build({
-  descripcion: 'Recoger Bananas',
+  descripcion: 'Comer Banana',
   icono: 'iconos.banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta:"BananaAnimada"}',
@@ -31,6 +31,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
+  usaParametros: true,
 
   control: [Si,Repetir,Hasta],
   expresiones: [Funcion],

@@ -51,12 +51,16 @@ var Actividad = Ember.Object.extend({
     for (let key in bloques_para_toolbox) {
       let propiedad = bloques_para_toolbox[key];
 
-      if (act[propiedad].length > 0) {
+      if (act[propiedad].length > 0 || this.tieneParametros(key)) {
         leng.agregar(key, act[propiedad]);
       }
     }
 
     return leng.build();
+  },
+
+  tieneParametros(key){
+    return key === 'Variables' && this.get('actividad').usaParametros;
   },
 
   bloques_iniciales() {

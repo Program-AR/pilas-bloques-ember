@@ -3183,7 +3183,7 @@ var ElPlanetaDeNano = (function (_super) {
         var cantidadFilas = 4;
         this.cantidadColumnas = 5;
         this.fondo = new Fondo('fondos.elPlanetaDeNano.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300 }, { grilla: 'casillas.elPlanetaDeNano.png' });
+        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
         this.automata = new NanoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
@@ -3209,18 +3209,6 @@ var ElPlanetaDeNano = (function (_super) {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 2);
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 3);
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
-    };
-    ElPlanetaDeNano.prototype.volverABordeIzquierdo = function () {
-        this.automata.hacer_luego(RepetirHasta, { 'secuencia': this.secuenciaCaminata, 'condicion': this.condicion });
-    };
-    ElPlanetaDeNano.prototype.comerBanana = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'BananaAnimada', 'mensajeError': 'No hay una banana aquí', 'dondeReflejarValor': this.cantidadBananas });
-    };
-    ElPlanetaDeNano.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    ElPlanetaDeNano.prototype.moverArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
     };
     return ElPlanetaDeNano;
 })(EscenaActividad);
