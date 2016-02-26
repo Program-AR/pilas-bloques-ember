@@ -1,8 +1,10 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/InstaladorAnimado.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
 
 class PrendiendoLasCompus extends EscenaActividad {
     cuadricula;
-    buzo;
     cantidadMaxColumnas;
     cantidadMaxFilas;
     cantidadMinColumnas;
@@ -12,16 +14,17 @@ class PrendiendoLasCompus extends EscenaActividad {
     iniciar() {
         this.cantidadMaxColumnas=12;
         this.cantidadMinColumnas=5;
-        this.cantidadMaxFilas=7;
+        this.cantidadMaxFilas=14;
         this.cantidadMinFilas=4;
 
         this.cantidadFilas=Math.floor( Math.random() * this.cantidadMaxFilas+this.cantidadMinFilas );
         this.cantidadColumnas=Math.floor( Math.random() * this.cantidadMaxColumnas+this.cantidadMinColumnas );
-        this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
-            {alto: 300,ancho:300},
-            {grilla: 'casillas.violeta.png'})
-        this.buzo = new Tito(0, 0);
-        this.cuadricula.agregarActor(this.buzo,0, 0);
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas,
+            { separacionEntreCasillas: 2 },
+            { grilla: 'casilla.prendiendoLasCompus.png', alto: 30, ancho: 30 });
+
+        this.automata = new InstaladorAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata,0, 0);
         this.completarConCompusEnLaterales();
 
     }

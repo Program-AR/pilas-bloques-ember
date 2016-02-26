@@ -33,7 +33,7 @@
   }
 
   estaResueltoElProblema() {
-    return this.automata.casillaActual().nroColumna === this.culpable.casillaActual().nroColumna && 
+    return this.automata.casillaActual() === this.culpable.casillaActual() && 
       this.culpable.teEncontraron();
   }
 
