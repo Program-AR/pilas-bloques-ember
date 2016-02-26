@@ -39,27 +39,5 @@ class PrendiendoLasCompus extends EscenaActividad {
         }
 
     }
-    personajePrincipal(){
-      return this.buzo;
-    }
-
-    moverDerecha(){
-           this.buzo.hacer_luego(MoverACasillaDerecha);
-    }
-    moverIzquierda(){
-           this.buzo.hacer_luego(MoverACasillaIzquierda);
-    }
-    moverAbajo(){
-           this.buzo.hacer_luego(MoverACasillaAbajo);
-    }
-    moverArriba(){
-           this.buzo.hacer_luego(MoverACasillaArriba);
-    }
-
-    prenderCompu(){
-          this.buzo.hacer_luego(EncenderPorEtiqueta,{'etiqueta':'CompuAnimada','mensajeError': 'Acá no hay una compu para prender'});
-
-    }
-
 
 }
