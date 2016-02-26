@@ -1587,7 +1587,10 @@ var MonoAnimado = (function (_super) {
 var NanoAnimado = (function (_super) {
     __extends(NanoAnimado, _super);
     function NanoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'nano.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'nano.png', cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion('parado', [0], 6, true);
+        this.definirAnimacion('correr', [0, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2], 9);
+        this.definirAnimacion('recoger', [0], 6);
     }
     return NanoAnimado;
 })(ActorAnimado);
@@ -3178,7 +3181,6 @@ var ElPlanetaDeNano = (function (_super) {
         _super.apply(this, arguments);
     }
     ElPlanetaDeNano.prototype.iniciar = function () {
-        var _this = this;
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         this.cantidadColumnas = 5;
@@ -3188,7 +3190,6 @@ var ElPlanetaDeNano = (function (_super) {
         this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
         this.secuenciaCaminata.iniciar(this.automata);
-        this.condicion = function () { return _this.personajePrincipal().casillaActual().nroColumna == 0; };
         this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
         this.cantidadBananas = new ObservadoConAumentar();
         this.cantidadBananas.cantidad = 0;

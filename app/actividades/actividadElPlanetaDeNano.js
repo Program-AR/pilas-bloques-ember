@@ -14,8 +14,8 @@ var ComerBanana = AccionBuilder.build({
 var VolverAlBordeIzquierdo = AccionBuilder.build({
   descripcion: 'Volver al borde izquierdo',
   icono: '../../iconos/izquierda.png',
-  comportamiento: 'RepetirHasta',
-  argumentos: '{\'secuencia\':pilas.escena_actual().secuenciaCaminata, \'condicion\':pilas.escena_actual().condicion }',
+  comportamiento: 'MoverTodoAIzquierda',
+  argumentos: '{}',
 });
 
 export default {
