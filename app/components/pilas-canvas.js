@@ -38,6 +38,10 @@ export default Ember.Component.extend({
                 'fondo.laberinto.corto.png',
                 'fondo.laberinto.largo.png',
                 'fondo.laberinto.queso.png',
+                'fondo.detective.png',
+                'fondo.dibujando.figuras.png',
+                'fondo.monoCuentadeNuevo.png',
+                'fondo.prendiendoLasCompus.png',
                 /*--------CASILLAS---------*/
                 'casillaArriba.png',
                 'casillaAbajo.png',
@@ -123,6 +127,8 @@ export default Ember.Component.extend({
                 'naranja.png',
                 'casilla.tresNaranjas.png',
                 'fondo.tresNaranjas.png',
+                'sospechosos.png',
+                'detective.png',
                 /*--------ICONOS---------*/
                 'iconos.botonRojo.png',
                 'icono.abrirOjos.png',
@@ -137,6 +143,8 @@ export default Ember.Component.extend({
                 'icono.carbon.png',
                 'icono.hierro.png',
                 'icono.nave.png',
+                'icono.culpable.png',
+                'icono.sacar.disfraz.png',
 
                 ]
       });

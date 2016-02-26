@@ -1385,6 +1385,17 @@ var DefinidorColumnasFijo = (function (_super) {
     return DefinidorColumnasFijo;
 })(DefinidorColumnasDeUnaFila);
 /// <reference path="ActorAnimado.ts"/>
+var Detective = (function (_super) {
+    __extends(Detective, _super);
+    function Detective(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'detective.png', cantColumnas: 1 });
+        this.definirAnimacion("parado", [0], 4, true);
+    }
+    return Detective;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
 var EstrellaAnimada = (function (_super) {
     __extends(EstrellaAnimada, _super);
     function EstrellaAnimada(x, y) {
@@ -1797,6 +1808,49 @@ var SandiaAnimada = (function (_super) {
         this.definirAnimacion("mordida", [4], 1);
     }
     return SandiaAnimada;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var Sospechoso = (function (_super) {
+    __extends(Sospechoso, _super);
+    function Sospechoso(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'sospechosos.png', cantColumnas: 8 });
+        this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
+        this.definirAnimacion("culpable", [7], 4);
+    }
+    Sospechoso.reiniciarDisfraces = function () {
+        this.disfracesUsados = [];
+    };
+    Sospechoso.prototype.nroDisfraz = function () {
+        var disfraz = this.disfracesDisponibles()[Math.floor(Math.random() * this.disfracesDisponibles().length)];
+        Sospechoso.disfracesUsados.push(disfraz);
+        return disfraz;
+    };
+    Sospechoso.prototype.disfracesDisponibles = function () {
+        var disponibles = [0, 1, 2, 3, 4, 5, 6];
+        Sospechoso.disfracesUsados.forEach(function (nro) { return disponibles.splice(disponibles.indexOf(nro), 1); });
+        return disponibles;
+    };
+    Sospechoso.prototype.hacerCulpable = function () {
+        this.meaCulpa = true;
+    };
+    Sospechoso.prototype.esCulpable = function () {
+        return this.meaCulpa;
+    };
+    Sospechoso.prototype.sacarDisfraz = function () {
+        if (this.meaCulpa) {
+            this.cargarAnimacion("culpable");
+            this.decir("¡Me rindo!");
+        }
+        else {
+            this.decir("¡No estoy disfrazado, este soy yo!");
+        }
+    };
+    Sospechoso.prototype.teEncontraron = function () {
+        return this.nombreAnimacionActual() === "culpable";
+    };
+    return Sospechoso;
 })(ActorAnimado);
 /*Implementa un tablero, que tiene "nombre de equipo" y "puntaje"*/
 /*Notar que aumentar puede tomar valores negativos o positivos*/
@@ -2937,12 +2991,56 @@ var ElCangrejoAguafiestas = (function (_super) {
     return ElCangrejoAguafiestas;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Detective.ts" />
+/// <reference path = "../actores/Sospechoso.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
-/// <reference path = "../actores/BananaAnimada.ts" />
-/// <reference path = "../actores/ManzanaAnimada.ts" />
-/// <reference path = "../actores/MonoAnimado.ts" />}
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
+/// <reference path = "../habilidades/Flotar.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+var ElDetectiveChaparro = (function (_super) {
+    __extends(ElDetectiveChaparro, _super);
+    function ElDetectiveChaparro() {
+        _super.apply(this, arguments);
+    }
+    ElDetectiveChaparro.prototype.iniciar = function () {
+        var _this = this;
+        this.fondo = new Fondo('fondo.detective.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, -30, 1, 7, { ancho: 400, alto: 400 }, { grilla: 'invisible.png', cantColumnas: 1 });
+        Sospechoso.reiniciarDisfraces();
+        var nroCulpable = Math.floor(Math.random() * 7);
+        [0, 1, 2, 3, 4, 5, 6].forEach(function (pos) {
+            var sospechoso = new Sospechoso();
+            _this.cuadricula.agregarActor(sospechoso, 0, pos, false);
+            if (pos === nroCulpable)
+                _this.culpable = sospechoso;
+        });
+        this.culpable.hacerCulpable();
+        this.automata = new Detective();
+        this.cuadricula.agregarActor(this.automata, 0, Math.floor(Math.random() * 7), false);
+        this.automata.y = -100;
+        this.automata.aprender(Flotar, {});
+    };
+    ElDetectiveChaparro.prototype.estaResueltoElProblema = function () {
+        return this.automata.casillaActual().nroColumna === this.culpable.casillaActual().nroColumna &&
+            this.culpable.teEncontraron();
+    };
+    return ElDetectiveChaparro;
+})(EscenaActividad);
+var SacarDisfraz = (function (_super) {
+    __extends(SacarDisfraz, _super);
+    function SacarDisfraz() {
+        _super.apply(this, arguments);
+    }
+    SacarDisfraz.prototype.iniciar = function (receptor) {
+        this.argumentos.etiqueta = "Sospechoso";
+        _super.prototype.iniciar.call(this, receptor);
+    };
+    SacarDisfraz.prototype.metodo = function (objetoColision) {
+        objetoColision.sacarDisfraz();
+    };
+    return SacarDisfraz;
+})(ComportamientoColision);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/GatoAnimado.ts" />}
 var ElGatoEnLaCalle = (function (_super) {
     __extends(ElGatoEnLaCalle, _super);
     function ElGatoEnLaCalle() {
@@ -3647,24 +3745,6 @@ var PrendiendoLasCompus = (function (_super) {
             this.cuadricula.agregarActor(new CompuAnimada(0, 0), i, 0);
             this.cuadricula.agregarActor(new CompuAnimada(0, 0), i, this.cantidadColumnas - 1);
         }
-    };
-    PrendiendoLasCompus.prototype.personajePrincipal = function () {
-        return this.buzo;
-    };
-    PrendiendoLasCompus.prototype.moverDerecha = function () {
-        this.buzo.hacer_luego(MoverACasillaDerecha);
-    };
-    PrendiendoLasCompus.prototype.moverIzquierda = function () {
-        this.buzo.hacer_luego(MoverACasillaIzquierda);
-    };
-    PrendiendoLasCompus.prototype.moverAbajo = function () {
-        this.buzo.hacer_luego(MoverACasillaAbajo);
-    };
-    PrendiendoLasCompus.prototype.moverArriba = function () {
-        this.buzo.hacer_luego(MoverACasillaArriba);
-    };
-    PrendiendoLasCompus.prototype.prenderCompu = function () {
-        this.buzo.hacer_luego(EncenderPorEtiqueta, { 'etiqueta': 'CompuAnimada', 'mensajeError': 'Acá no hay una compu para prender' });
     };
     return PrendiendoLasCompus;
 })(EscenaActividad);
