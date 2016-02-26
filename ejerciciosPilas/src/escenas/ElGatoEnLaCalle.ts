@@ -1,10 +1,5 @@
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Cuadricula.ts" />
-/// <reference path = "../actores/BananaAnimada.ts" />
-/// <reference path = "../actores/ManzanaAnimada.ts" />
-/// <reference path = "../actores/MonoAnimado.ts" />}
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
+/// <reference path = "../actores/GatoAnimado.ts" />}
 
 class ElGatoEnLaCalle extends EscenaActividad {
     fondo;
