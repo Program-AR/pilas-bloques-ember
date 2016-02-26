@@ -16,7 +16,7 @@ iniciar() {
     this.fondo = new Fondo('fondos.elPlanetaDeNano.png',0,0);
 
     this.cuadricula = new Cuadricula(0,0,cantidadFilas,this.cantidadColumnas,
-        {alto: 300,ancho:300},
+        { alto: 300, ancho: 300, separacionEntreCasillas: 3},
         {grilla: 'casillas.elPlanetaDeNano.png'})
 
     this.automata = new NanoAnimado(0, 0);
@@ -50,21 +50,4 @@ iniciar() {
       this.cuadricula.agregarActor(new BananaAnimada(0,0),3,4);
     }
 
-  volverABordeIzquierdo(){
-    this.automata.hacer_luego(RepetirHasta,{'secuencia':this.secuenciaCaminata, 'condicion':this.condicion });
-  }
-
-
-  comerBanana(){
-    this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'BananaAnimada','mensajeError':'No hay una banana aquí','dondeReflejarValor':this.cantidadBananas});
-  }
-
-  moverDerecha(){
-    this.automata.hacer_luego(MoverACasillaDerecha);
-  }
-
-  moverArriba(){
-    this.automata.hacer_luego(MoverACasillaArriba);
-
-  }
 }
