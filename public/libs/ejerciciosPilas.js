@@ -1809,7 +1809,37 @@ var SandiaAnimada = (function (_super) {
     }
     return SandiaAnimada;
 })(ActorAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "ComportamientoAnimado.ts" />
+var Decir = (function (_super) {
+    __extends(Decir, _super);
+    function Decir() {
+        _super.apply(this, arguments);
+    }
+    /* Redefinir si corresponde */
+    Decir.prototype.preAnimacion = function () {
+        this.globo = this.crearGlobo();
+    };
+    Decir.prototype.doActualizar = function () {
+        return !this.globo.vivo;
+    };
+    Decir.prototype.crearGlobo = function () {
+        return new Globo(this.receptor, this.argumentos.mensaje);
+    };
+    return Decir;
+})(ComportamientoAnimado);
+var Pensar = (function (_super) {
+    __extends(Pensar, _super);
+    function Pensar() {
+        _super.apply(this, arguments);
+    }
+    Pensar.prototype.crearGlobo = function () {
+        return new GloboPensar(this.receptor, this.argumentos.mensaje);
+    };
+    return Pensar;
+})(Decir);
 /// <reference path="ActorAnimado.ts"/>
+/// <reference path="../comportamientos/Decir.ts"/>
 var Sospechoso = (function (_super) {
     __extends(Sospechoso, _super);
     function Sospechoso(x, y) {
@@ -1839,13 +1869,11 @@ var Sospechoso = (function (_super) {
         return this.meaCulpa;
     };
     Sospechoso.prototype.sacarDisfraz = function () {
-        if (this.meaCulpa) {
+        if (this.meaCulpa)
             this.cargarAnimacion("culpable");
-            this.decir("¡Me rindo!");
-        }
-        else {
-            this.decir("¡No estoy disfrazado, este soy yo!");
-        }
+    };
+    Sospechoso.prototype.mensajeAlSacarDisfraz = function () {
+        return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, este soy yo!";
     };
     Sospechoso.prototype.teEncontraron = function () {
         return this.nombreAnimacionActual() === "culpable";
@@ -2286,35 +2314,6 @@ var ContarPorEtiqueta = (function (_super) {
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
-/// <reference path = "ComportamientoAnimado.ts" />
-var Decir = (function (_super) {
-    __extends(Decir, _super);
-    function Decir() {
-        _super.apply(this, arguments);
-    }
-    /* Redefinir si corresponde */
-    Decir.prototype.preAnimacion = function () {
-        this.globo = this.crearGlobo();
-    };
-    Decir.prototype.doActualizar = function () {
-        return !this.globo.vivo;
-    };
-    Decir.prototype.crearGlobo = function () {
-        return new Globo(this.receptor, this.argumentos.mensaje);
-    };
-    return Decir;
-})(ComportamientoAnimado);
-var Pensar = (function (_super) {
-    __extends(Pensar, _super);
-    function Pensar() {
-        _super.apply(this, arguments);
-    }
-    Pensar.prototype.crearGlobo = function () {
-        return new GloboPensar(this.receptor, this.argumentos.mensaje);
-    };
-    return Pensar;
-})(Decir);
 /// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 // Si se pasa por argumento "escaparCon" entonces el receptor debe ser actor compuesto
 var Escapar = (function (_super) {
@@ -2995,7 +2994,7 @@ var ElCangrejoAguafiestas = (function (_super) {
 /// <reference path = "../actores/Sospechoso.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../comportamientos/Decir.ts" />
 var ElDetectiveChaparro = (function (_super) {
     __extends(ElDetectiveChaparro, _super);
     function ElDetectiveChaparro() {
@@ -3031,14 +3030,14 @@ var SacarDisfraz = (function (_super) {
         _super.apply(this, arguments);
     }
     SacarDisfraz.prototype.iniciar = function (receptor) {
-        this.argumentos.etiqueta = "Sospechoso";
+        this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(receptor); })[0];
+        this.argumentos.receptor.sacarDisfraz();
+        this.argumentos.receptor.avanzarAnimacion();
+        this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
         _super.prototype.iniciar.call(this, receptor);
     };
-    SacarDisfraz.prototype.metodo = function (objetoColision) {
-        objetoColision.sacarDisfraz();
-    };
     return SacarDisfraz;
-})(ComportamientoColision);
+})(Decir);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/GatoAnimado.ts" />}
 var ElGatoEnLaCalle = (function (_super) {

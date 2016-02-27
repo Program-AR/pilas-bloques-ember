@@ -23,7 +23,7 @@ var SacarDisfraz = AccionBuilder.build({
 });
 
 var EsCulpable = AccionBuilder.buildSensor({
-  descripcion: 'Es culpable',
+  descripcion: 'Descubrí al culpable',
   icono: 'icono.culpable.png',
   funcionSensor: 'colisiona_con(pilas.escena_actual().culpable)',
 });
