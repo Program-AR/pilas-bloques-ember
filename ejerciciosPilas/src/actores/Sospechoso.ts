@@ -1,4 +1,5 @@
 /// <reference path="ActorAnimado.ts"/>
+/// <reference path="../comportamientos/Decir.ts"/>
 
 class Sospechoso extends ActorAnimado {
 	static disfracesUsados;
@@ -35,12 +36,12 @@ class Sospechoso extends ActorAnimado {
     }
 
     sacarDisfraz(){
-		if (this.meaCulpa) { 
+		if (this.meaCulpa) 
 			this.cargarAnimacion("culpable");
-			this.decir("¡Me rindo!");
-		} else {
-			this.decir("¡No estoy disfrazado, este soy yo!");
-		}
+    }
+
+    mensajeAlSacarDisfraz(){
+		return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, este soy yo!"
     }
 
     teEncontraron(){

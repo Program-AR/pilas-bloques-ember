@@ -3,7 +3,7 @@
 /// <reference path = "../actores/Sospechoso.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/ComportamientoColision.ts" />
+/// <reference path = "../comportamientos/Decir.ts" />
 
 
  class ElDetectiveChaparro extends EscenaActividad {
@@ -39,13 +39,11 @@
 
 }
 
-class SacarDisfraz extends ComportamientoColision {
+class SacarDisfraz extends Decir {
   iniciar(receptor) {
-    this.argumentos.etiqueta = "Sospechoso";
+    this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(s => s.colisiona_con(receptor))[0];
+    this.argumentos.receptor.sacarDisfraz();
+    this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
     super.iniciar(receptor);
-  }
-
-  metodo(objetoColision) {
-    objetoColision.sacarDisfraz();
   }
 }
