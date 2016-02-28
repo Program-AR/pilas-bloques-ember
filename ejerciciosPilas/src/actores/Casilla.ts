@@ -1,5 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/ActorAnimado.ts"/>
+/// <reference path = "ActorAnimado.ts"/>
+/// <reference path = "Cuadricula.ts"/>
 
 /**
  * @class Casilla
@@ -65,6 +66,13 @@ class Casilla extends ActorAnimado {
     }
     sos(nroF, nroC) {
         return nroF == this.nroFila && nroC == this.nroColumna;
+    }
+
+    esEsquina(){
+        return this.sos(0, 0) ||
+            this.sos(0, this.cuadricula.cantColumnas - 1) ||
+            this.sos(this.cuadricula.cantFilas - 1, 0) ||
+            this.sos(this.cuadricula.cantFilas - 1, this.cuadricula.cantColumnas - 1);
     }
 
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor
