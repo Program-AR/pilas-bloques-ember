@@ -437,111 +437,6 @@ var CarbonAnimado = (function (_super) {
     return CarbonAnimado;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/ActorAnimado.ts"/>
-/**
- * @class Casilla
- * Este actor no puede funcionar sólo. Siempre funciona y es creado desde
- * el actor Cuadricula. Todo su comportamiento depende de ella.
- */
-var Casilla = (function (_super) {
-    __extends(Casilla, _super);
-    function Casilla(nroF, nroC, cuadricula) {
-        this.cuadricula = cuadricula;
-        this.nroFila = nroF;
-        this.nroColumna = nroC;
-        _super.call(this, 0, 0, cuadricula.getOpcionesCasilla());
-        this.reubicate();
-    }
-    Casilla.prototype.reubicate = function () {
-        this.actualizarAncho();
-        this.actualizarAlto();
-        this.reubicarEnX();
-        this.reubicarEnY();
-    };
-    Casilla.prototype.reubicarEnX = function () {
-        this.x =
-            this.cuadricula.izquierda +
-                (this.ancho / 2) +
-                (this.nroColumna * (this.ancho + this.cuadricula.separacion()));
-    };
-    Casilla.prototype.reubicarEnY = function () {
-        this.y =
-            this.cuadricula.arriba -
-                (this.alto / 2) -
-                (this.nroFila * (this.alto + this.cuadricula.separacion()));
-    };
-    Casilla.prototype.actualizarAncho = function () {
-        this.ancho = this.cuadricula.anchoCasilla();
-    };
-    Casilla.prototype.actualizarAlto = function () {
-        this.alto = this.cuadricula.altoCasilla();
-    };
-    Casilla.prototype.casillaASuDerecha = function () {
-        return this.cuadricula.casilla(this.nroFila, this.nroColumna + 1);
-    };
-    Casilla.prototype.casillaASuIzquierda = function () {
-        return this.cuadricula.casilla(this.nroFila, this.nroColumna - 1);
-    };
-    Casilla.prototype.casillaDeArriba = function () {
-        return this.cuadricula.casilla(this.nroFila - 1, this.nroColumna);
-    };
-    Casilla.prototype.casillaDeAbajo = function () {
-        return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
-    };
-    Casilla.prototype.sos = function (nroF, nroC) {
-        return nroF == this.nroFila && nroC == this.nroColumna;
-    };
-    Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
-        if (cantFilas === void 0) { cantFilas = 1; }
-        if (cantColumnas === void 0) { cantColumnas = 1; }
-        // PARCHEEEEE
-        this.renacer(nombre, cantFilas, cantColumnas);
-    };
-    Casilla.prototype.renacer = function (nombreImagen, cantFilas, cantColumnas) {
-        if (cantFilas === void 0) { cantFilas = 1; }
-        if (cantColumnas === void 0) { cantColumnas = 1; }
-        // POR FAVOR YO FUTURO PERDONAME
-        this.eliminar();
-        var opsCasilla = {
-            grilla: this.cuadricula.opcionesCasilla.grilla,
-            cantFilas: this.cuadricula.opcionesCasilla.cantFilas,
-            cantColumnas: this.cuadricula.opcionesCasilla.cantColumnas,
-        };
-        this.cuadricula.opcionesCasilla.grilla = nombreImagen;
-        this.cuadricula.opcionesCasilla.cantFilas = cantFilas;
-        this.cuadricula.opcionesCasilla.cantColumnas = cantColumnas;
-        var nuevoYo = new Casilla(this.nroFila, this.nroColumna, this.cuadricula);
-        this.cuadricula.opcionesCasilla.grilla = opsCasilla.grilla;
-        this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
-        this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;
-        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
-    };
-    return Casilla;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
-var CofreAnimado = (function (_super) {
-    __extends(CofreAnimado, _super);
-    function CofreAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
-        this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(999)), 3);
-        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
-        this.definirAnimacion("abierto", [3], 4);
-    }
-    return CofreAnimado;
-})(ActorAnimado);
-/// <reference path="ActorAnimado.ts"/>
-var CompuAnimada = (function (_super) {
-    __extends(CompuAnimada, _super);
-    function CompuAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 5);
-        this.definirAnimacion("prendida", [1], 5);
-        this.definirAnimacion("claveok", [2], 5);
-        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
-    }
-    return CompuAnimada;
-})(ActorAnimado);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Casilla.ts"/>
 /**
  * class @Cuadricula
@@ -683,6 +578,118 @@ var Cuadricula = (function (_super) {
     };
     return Cuadricula;
 })(Actor);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ActorAnimado.ts"/>
+/// <reference path = "Cuadricula.ts"/>
+/**
+ * @class Casilla
+ * Este actor no puede funcionar sólo. Siempre funciona y es creado desde
+ * el actor Cuadricula. Todo su comportamiento depende de ella.
+ */
+var Casilla = (function (_super) {
+    __extends(Casilla, _super);
+    function Casilla(nroF, nroC, cuadricula) {
+        this.cuadricula = cuadricula;
+        this.nroFila = nroF;
+        this.nroColumna = nroC;
+        _super.call(this, 0, 0, cuadricula.getOpcionesCasilla());
+        this.reubicate();
+    }
+    Casilla.prototype.reubicate = function () {
+        this.actualizarAncho();
+        this.actualizarAlto();
+        this.reubicarEnX();
+        this.reubicarEnY();
+    };
+    Casilla.prototype.reubicarEnX = function () {
+        this.x =
+            this.cuadricula.izquierda +
+                (this.ancho / 2) +
+                (this.nroColumna * (this.ancho + this.cuadricula.separacion()));
+    };
+    Casilla.prototype.reubicarEnY = function () {
+        this.y =
+            this.cuadricula.arriba -
+                (this.alto / 2) -
+                (this.nroFila * (this.alto + this.cuadricula.separacion()));
+    };
+    Casilla.prototype.actualizarAncho = function () {
+        this.ancho = this.cuadricula.anchoCasilla();
+    };
+    Casilla.prototype.actualizarAlto = function () {
+        this.alto = this.cuadricula.altoCasilla();
+    };
+    Casilla.prototype.casillaASuDerecha = function () {
+        return this.cuadricula.casilla(this.nroFila, this.nroColumna + 1);
+    };
+    Casilla.prototype.casillaASuIzquierda = function () {
+        return this.cuadricula.casilla(this.nroFila, this.nroColumna - 1);
+    };
+    Casilla.prototype.casillaDeArriba = function () {
+        return this.cuadricula.casilla(this.nroFila - 1, this.nroColumna);
+    };
+    Casilla.prototype.casillaDeAbajo = function () {
+        return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
+    };
+    Casilla.prototype.sos = function (nroF, nroC) {
+        return nroF == this.nroFila && nroC == this.nroColumna;
+    };
+    Casilla.prototype.esEsquina = function () {
+        return this.sos(0, 0) ||
+            this.sos(0, this.cuadricula.cantColumnas - 1) ||
+            this.sos(this.cuadricula.cantFilas - 1, 0) ||
+            this.sos(this.cuadricula.cantFilas - 1, this.cuadricula.cantColumnas - 1);
+    };
+    Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
+        if (cantFilas === void 0) { cantFilas = 1; }
+        if (cantColumnas === void 0) { cantColumnas = 1; }
+        // PARCHEEEEE
+        this.renacer(nombre, cantFilas, cantColumnas);
+    };
+    Casilla.prototype.renacer = function (nombreImagen, cantFilas, cantColumnas) {
+        if (cantFilas === void 0) { cantFilas = 1; }
+        if (cantColumnas === void 0) { cantColumnas = 1; }
+        // POR FAVOR YO FUTURO PERDONAME
+        this.eliminar();
+        var opsCasilla = {
+            grilla: this.cuadricula.opcionesCasilla.grilla,
+            cantFilas: this.cuadricula.opcionesCasilla.cantFilas,
+            cantColumnas: this.cuadricula.opcionesCasilla.cantColumnas,
+        };
+        this.cuadricula.opcionesCasilla.grilla = nombreImagen;
+        this.cuadricula.opcionesCasilla.cantFilas = cantFilas;
+        this.cuadricula.opcionesCasilla.cantColumnas = cantColumnas;
+        var nuevoYo = new Casilla(this.nroFila, this.nroColumna, this.cuadricula);
+        this.cuadricula.opcionesCasilla.grilla = opsCasilla.grilla;
+        this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
+        this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;
+        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
+    };
+    return Casilla;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CofreAnimado = (function (_super) {
+    __extends(CofreAnimado, _super);
+    function CofreAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
+        this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(999)), 3);
+        this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
+        this.definirAnimacion("abierto", [3], 4);
+    }
+    return CofreAnimado;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var CompuAnimada = (function (_super) {
+    __extends(CompuAnimada, _super);
+    function CompuAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 5);
+        this.definirAnimacion("prendida", [1], 5);
+        this.definirAnimacion("claveok", [2], 5);
+        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
+    }
+    return CompuAnimada;
+})(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /**
  * @class ComportamientoAnimado
@@ -3032,7 +3039,6 @@ var SacarDisfraz = (function (_super) {
     SacarDisfraz.prototype.iniciar = function (receptor) {
         this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(receptor); })[0];
         this.argumentos.receptor.sacarDisfraz();
-        this.argumentos.receptor.avanzarAnimacion();
         this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
         _super.prototype.iniciar.call(this, receptor);
     };
@@ -3726,12 +3732,14 @@ var PrendiendoLasCompus = (function (_super) {
     }
     PrendiendoLasCompus.prototype.iniciar = function () {
         this.cantidadMaxColumnas = 12;
-        this.cantidadMinColumnas = 5;
-        this.cantidadMaxFilas = 14;
-        this.cantidadMinFilas = 4;
-        this.cantidadFilas = Math.floor(Math.random() * this.cantidadMaxFilas + this.cantidadMinFilas);
-        this.cantidadColumnas = Math.floor(Math.random() * this.cantidadMaxColumnas + this.cantidadMinColumnas);
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasCompus.png', alto: 30, ancho: 30 });
+        this.cantidadMinColumnas = 4;
+        this.cantidadMaxFilas = 10;
+        this.cantidadMinFilas = 5;
+        this.ladoCasilla = 30;
+        this.fondo = new Fondo('fondo.prendiendoLasCompus.png', 0, 0);
+        this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
+        this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
+        this.cuadricula = new Cuadricula(0, (this.ladoCasilla + 2) * 2, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasCompus.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
         this.automata = new InstaladorAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.completarConCompusEnLaterales();
