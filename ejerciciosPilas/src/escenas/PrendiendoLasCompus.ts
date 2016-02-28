@@ -11,17 +11,20 @@ class PrendiendoLasCompus extends EscenaActividad {
     cantidadMinFilas;
     cantidadFilas;
     cantidadColumnas;
+    ladoCasilla;
     iniciar() {
         this.cantidadMaxColumnas=12;
-        this.cantidadMinColumnas=5;
-        this.cantidadMaxFilas=14;
-        this.cantidadMinFilas=4;
+        this.cantidadMinColumnas=4;
+        this.cantidadMaxFilas=10;
+        this.cantidadMinFilas=5;
+        this.ladoCasilla = 30;
+        this.fondo = new Fondo('fondo.prendiendoLasCompus.png', 0, 0);
 
-        this.cantidadFilas=Math.floor( Math.random() * this.cantidadMaxFilas+this.cantidadMinFilas );
-        this.cantidadColumnas=Math.floor( Math.random() * this.cantidadMaxColumnas+this.cantidadMinColumnas );
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas,
+        this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
+        this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
+        this.cuadricula = new Cuadricula(0, (this.ladoCasilla + 2) * 2, this.cantidadFilas, this.cantidadColumnas,
             { separacionEntreCasillas: 2 },
-            { grilla: 'casilla.prendiendoLasCompus.png', alto: 30, ancho: 30 });
+            { grilla: 'casilla.prendiendoLasCompus.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
 
         this.automata = new InstaladorAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0, 0);
