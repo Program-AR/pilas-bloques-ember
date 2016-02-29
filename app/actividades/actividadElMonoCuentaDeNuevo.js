@@ -3,7 +3,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 import contando from 'pilas-engine-bloques/actividades/contando';
-var {Si, Repetir, Hasta, Procedimiento} = bloques;
+var {Si, Repetir, Hasta, Procedimiento, VariableLocalGet} = bloques;
 var {IrArriba, IrAbajo} = direcciones;
 var {TocandoBanana, TocandoManzana} = tocando;
 var {ContarBanana, ContarManzana} = contando;

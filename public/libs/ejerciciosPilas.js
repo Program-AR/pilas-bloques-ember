@@ -640,6 +640,10 @@ var Casilla = (function (_super) {
             this.sos(this.cuadricula.cantFilas - 1, 0) ||
             this.sos(this.cuadricula.cantFilas - 1, this.cuadricula.cantColumnas - 1);
     };
+    Casilla.prototype.esFin = function () {
+        return this.cuadricula.cantFilas == 1 && this.sos(0, this.cuadricula.cantColumnas - 1) ||
+            this.cuadricula.cantColumnas == 1 && this.sos(this.cuadricula.cantFilas - 1, 0);
+    };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
         if (cantColumnas === void 0) { cantColumnas = 1; }
@@ -2297,7 +2301,8 @@ var ComportamientoDeAltoOrden = (function (_super) {
     };
     return ComportamientoDeAltoOrden;
 })(ComportamientoAnimado);
-/// <reference path="ComportamientoAnimado.ts"/>
+/// <reference path="ComportamientoColision.ts"/>
+/// <reference path="../actores/ObservadoAnimado.ts"/>
 /*
 Requiere que la escena tenga como atributo una instancia de la
 clase contadorDeEtiquetas bajo el nombre contadorDeEtiquetas y una
@@ -2312,12 +2317,22 @@ var ContarPorEtiqueta = (function (_super) {
     function ContarPorEtiqueta() {
         _super.apply(this, arguments);
     }
-    ContarPorEtiqueta.prototype.nombreAnimacion = function () {
-        // redefinir por subclase
-        return "contar";
+    ContarPorEtiqueta.prototype.iniciar = function (receptor) {
+        _super.prototype.iniciar.call(this, receptor);
+        if (!receptor[this.attrName()]) {
+            receptor[this.attrName()] = new ObservadoConAumentar();
+            receptor[this.attrName()].cantidad = 0;
+            receptor[this.attrName()].registrarObservador(pilas.escena_actual().tableros[this.argumentos.etiqueta]);
+        }
+        ;
     };
     ContarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        this.argumentos['dondeReflejarValor'].aumentar(1);
+        this.receptor[this.attrName()].aumentar('cantidad', 1);
+        if (this.argumentos.eliminar)
+            objetoColision.eliminar();
+    };
+    ContarPorEtiqueta.prototype.attrName = function () {
+        return 'cant' + this.argumentos.etiqueta;
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
@@ -3100,45 +3115,53 @@ var ElMarcianoEnElDesierto = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/CuadriculaMultiple.ts"/>
+/// <reference path="../actores/ManzanaAnimada.ts"/>
+/// <reference path="../actores/BananaAnimada.ts"/>
+/// <reference path="../actores/MonoAnimado.ts"/>
+/// <reference path="../actores/Tablero.ts"/>
+/// <reference path="../actores/ObservadoAnimado.ts"/>
 var ElMonoQueSabeContar = (function (_super) {
     __extends(ElMonoQueSabeContar, _super);
     function ElMonoQueSabeContar() {
         _super.apply(this, arguments);
-        this.etiquetasDeObjetosAColocar = new ConjuntoClases([ManzanaAnimada, BananaAnimada]);
     }
     ElMonoQueSabeContar.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.selva.png', 0, 0);
-        this.definidor = new DefinidorColumnasRandom(5, 7);
-        this.cuadricula = new CuadriculaMultipleColumnas(this.definidor, 0, 0, { separacionEntreCasillas: 5 }, { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 });
-        this.cuadricula.completarConObjetosRandom(this.etiquetasDeObjetosAColocar, { condiciones: [
+        this.cuadricula = new CuadriculaMultipleColumnas(new DefinidorColumnasRandom(5, 6), 0, -45, { separacionEntreCasillas: 5 }, { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 });
+        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
+        this.cambiarImagenesFin();
+        this.automata = new MonoAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+        this.automata.escala *= 1.5;
+        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]), { condiciones: [
                 function (fila, col, pmatrix) { return fila != 0; },
                 //no incluye en primera fila
                 function (fila, col, pmatrix) { return pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T'; }
             ] });
-        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
+        this.tableros = {};
+        this.tableros.ManzanaAnimada = new Tablero(120, 210, { texto: "Manzanas" });
+        this.tableros.BananaAnimada = new Tablero(-120, 210, { texto: "Bananas" });
+    };
+    ElMonoQueSabeContar.prototype.cambiarImagenesFin = function () {
         this.cuadricula.cambiarImagenFin('casillafinalmono.png');
-        this.automata = new MonoAnimado(0, 0);
-        this.automata.escala = 0.5;
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
-        this.tableroManzanas = new Tablero(120, 210, { texto: "Manzanas" });
-        this.tableroBananas = new Tablero(-120, 230, { texto: "Bananas" });
-        this.contadorManzanas = new ObservadoConAumentar();
-        this.contadorManzanas.cantidad = 0;
-        this.contadorBananas = new ObservadoConAumentar();
-        this.contadorBananas.cantidad = 0;
-        this.contadorManzanas.registrarObservador(this.tableroManzanas);
-        this.contadorBananas.registrarObservador(this.tableroBananas);
-        this.cuadricula.arriba = 200;
-        //this.cuadricula.y=pilas.arriba()-this.cuadricula.alto-40;
-    };
-    ElMonoQueSabeContar.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
-    ElMonoQueSabeContar.prototype.contar = function () {
-        this.automata.hacer_luego(ContarPorEtiqueta, { etiqueta: BananaAnimada, dondeReflejarValor: this.contadorManzanas, mensajeError: 'a' });
     };
     return ElMonoQueSabeContar;
 })(EscenaActividad);
+/// <reference path="ElMonoQueSabeContar.ts"/>
+var ElMonoCuentaDeNuevo = (function (_super) {
+    __extends(ElMonoCuentaDeNuevo, _super);
+    function ElMonoCuentaDeNuevo() {
+        _super.apply(this, arguments);
+    }
+    ElMonoCuentaDeNuevo.prototype.iniciar = function () {
+        _super.prototype.iniciar.call(this);
+        this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Fila Actual" });
+    };
+    ElMonoCuentaDeNuevo.prototype.cambiarImagenesFin = function () {
+        //No hace nada
+    };
+    return ElMonoCuentaDeNuevo;
+})(ElMonoQueSabeContar);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
