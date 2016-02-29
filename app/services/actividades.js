@@ -30,6 +30,7 @@ import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/act
 import actividadElDetectiveChaparro from  'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 import actividadPrendiendoLasCompus from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
 import actividadElMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElMonoCuentaDeNuevo';
+import actividadElSuperviaje from 'pilas-engine-bloques/actividades/actividadElSuperviaje';
 
 
 /*
@@ -100,6 +101,7 @@ export default Ember.Service.extend({
       actividadElDetectiveChaparro,
       actividadPrendiendoLasCompus,
       actividadElMonoCuentaDeNuevo,
+      actividadElSuperviaje,
     ];
 
     var actividad = actividades.findBy('id',idActividad);
