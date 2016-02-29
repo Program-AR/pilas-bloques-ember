@@ -10,13 +10,14 @@ var EstoyAlFin = AccionBuilder.buildSensor({
 });
 
 var elMonoQueSabeContar = {};
-elMonoQueSabeContar.prototype = elMonoCuentaDeNuevo;
+elMonoQueSabeContar = Object.create(elMonoCuentaDeNuevo);
 
 elMonoQueSabeContar.nombre = 'El mono que sabe contar';
 elMonoQueSabeContar.id = 'ElMonoQueSabeContar';
 elMonoQueSabeContar.enunciado = 'COMPLETAR';
 elMonoQueSabeContar.consignaInicial = 'COMPLETAR';
 elMonoQueSabeContar.escena = ElMonoQueSabeContar;
+elMonoQueSabeContar.sensores = elMonoCuentaDeNuevo.sensores;
 elMonoQueSabeContar.sensores.push(EstoyAlFin);
 elMonoQueSabeContar.variables = [];
 

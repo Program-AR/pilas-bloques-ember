@@ -1,6 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-var {AccionBuilder, Repetir, Si, Hasta, Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Si, Hasta, Procedimiento, VariableLocalGet} = bloques;
 
 var Avanzar1km = AccionBuilder.build({
   descripcion: 'Avanzar 1 Km',
@@ -32,7 +32,7 @@ export default {
   consignaInicial: 'TODO',
   
   // la escena proviene de ejerciciosPilas
-  escena: Superviaje,  // jshint ignore:line
+  escena: SuperViaje,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
