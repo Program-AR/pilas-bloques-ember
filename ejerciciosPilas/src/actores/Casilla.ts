@@ -75,6 +75,11 @@ class Casilla extends ActorAnimado {
             this.sos(this.cuadricula.cantFilas - 1, this.cuadricula.cantColumnas - 1);
     }
 
+    esFin(){
+        return this.cuadricula.cantFilas == 1 && this.sos(0, this.cuadricula.cantColumnas - 1) ||
+            this.cuadricula.cantColumnas == 1 && this.sos(this.cuadricula.cantFilas - 1, 0);
+    }
+
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor
         // PARCHEEEEE
         this.renacer(nombre, cantFilas, cantColumnas);
