@@ -10,7 +10,7 @@ var actividadTitoEnciendeLuces = {
   nombre: 'Tito enciende las luces',
   id: 'TitoEnciendeLuces',
   enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: crear un procedimiento para prender todas la diagonal.',
+    'Pista: creá un procedimiento para prender todas las luces de una diagonal.',
   consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
 
   // la escena proviene de ejerciciosPilas

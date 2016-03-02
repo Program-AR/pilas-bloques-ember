@@ -178,7 +178,7 @@ var EscribirA = Accion.extend({
 var actividadInstalandoJuegos = {
   nombre: 'Instalando juegos',
   id: 'InstalandoJuegos',
-  enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, ingresar la contraseña ("ABC"), cargar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
+  enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, ingresar la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
 
   // la escena proviene de ejerciciosPilas
   escena: InstalandoJuegos, // jshint ignore:line

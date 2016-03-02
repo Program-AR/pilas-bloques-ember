@@ -8,7 +8,7 @@ var {TocandoAbajo,TocandoDerecha} = tocando;
 var actividadLaberintoCorto = {
   nombre: 'Laberinto corto',
   id: 'LaberintoCorto',
-  enunciado: 'Guiá al ratón a llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
+  enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
 
   // la escena proviene de ejerciciosPilas
   escena: LaberintoCorto, // jshint ignore:line
