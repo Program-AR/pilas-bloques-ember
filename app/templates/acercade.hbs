@@ -1,14 +1,11 @@
 <div class='contenido-principal'>
+	<div class='contenedor-acercade'>
+		{{pilas-acerca-de}}
+		<p>Actualmente estás usando la versión <code>{{currentVersion}}</code></p>
 
-  <div class='contenedor-acercade'>
-
-{{pilas-acerca-de}}
-<p>Actualmente estás usando la versión <code>{{currentVersion}}</code></p>
-
-  <button class='btn btn-warning' {{action "visitWebsite"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
-  {{pilas-update}}
-</p>
-
-
-</div>
+		<p>
+		  <button class='btn btn-warning' {{action "visitWebsite"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
+		  {{pilas-update}}
+		</p>
+	</div>
 </div>

@@ -10,12 +10,15 @@
       <ul class="nav navbar-nav">
         {{#link-to "index" tagName='li'}}<a href=#>Principal</a>{{/link-to}}
         {{#link-to "desafios" tagName='li'}}<a href=#>Desafíos</a>{{/link-to}}
-        {{#link-to "acercade" tagName='li'}}<a href=#>Acerca de ...</a>{{/link-to}}
+        {{#link-to "acercade" tagName='li'}}<a href=#>Acerca de</a>{{/link-to}}
       </ul>
 
 
 
       <div class='header-right'>
+        <div class="navbar-header navbar-collapse">
+          <a class="navbar-brand" href="http://program.ar"><img src='imagenes/programar.png'></a>
+        </div>
         {{pilas-automatic-update}}
         <button class="header-button" {{action "abrirAyuda"}}>{{fa-icon "question"}}</button>
         <button class="header-button" {{action "abrirPreferencias"}}>{{fa-icon "gear"}}</button>
