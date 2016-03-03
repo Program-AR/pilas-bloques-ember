@@ -128,7 +128,7 @@ var TocandoFinCamino = Sensor.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando ')
-         .appendField(this.obtener_icono('../libs/data/finCamino.png'))
+         .appendField(this.obtener_icono('../libs/data/icono.finCamino.png'))
          .appendField(' ?');
 
   },
