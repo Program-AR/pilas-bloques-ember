@@ -1,6 +1,6 @@
 {
   "name": "ejerciciosPilas",
-  "version": "1.0.0",
+  "version": "0.10.0",
   "description": "Ejercicios para Program.AR en Pilas Engine (version web)",
   "main": "index.js",
   "scripts": {
