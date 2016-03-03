@@ -20,7 +20,7 @@ class ElGatoEnLaCalle extends EscenaActividad {
     }
 
     estaResueltoElProblema(){
-      return true; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
+      return false; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
     }
 
 }
