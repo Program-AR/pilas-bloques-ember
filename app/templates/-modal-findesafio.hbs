@@ -1,0 +1,15 @@
+{{#if mostrarDialogoFinDesafio}}
+  {{#modal-dialog close="ocultarFinDesafio"
+  				  target="panel-pilas"
+  				  attatchment="middle center"
+                  translucentOverlay=true
+                  container-class="dialogoFinDesafio"}}
+
+  {{modal-title title="Objetivo cumplido" close="ocultarFinDesafio"}}
+
+    <p>El autómata cumplió el objetivo.</p>
+
+    <p><strong>Ojo.</strong> Tu programa puede ser excelente o no estar bien. Discutilo con amigos o docentes para saber si realmente encontraste una idea que también te sirva en otros desafíos.</p>
+
+  {{/modal-dialog}}
+{{/if}}

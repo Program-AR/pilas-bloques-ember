@@ -138,6 +138,10 @@ var Actividad = Ember.Object.extend({
     Blockly.Xml.domToWorkspace(workspace, xml);
   },
 
+  estaResueltoElProblema(){
+    return this.get('escena_instanciada').estaResueltoElProblema();
+  },
+
   // Scratch style colours
   setColours() {
     Blockly.Blocks.primitivas.COLOUR = '#4a6cd4';

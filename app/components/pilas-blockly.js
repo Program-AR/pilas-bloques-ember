@@ -92,6 +92,9 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
+    if(this.get('actividad').estaResueltoElProblema()){
+      this.send('abrirFinDesafio');
+    }
   },
 
   willDestroyElement() {
@@ -226,6 +229,14 @@ export default Ember.Component.extend({
 
     ocultarModalTwitter() {
       this.set('abrirDialogoCompartir', false);
+    },
+
+    abrirFinDesafio(){
+      this.set('mostrarDialogoFinDesafio', true);
+    },
+
+    ocultarFinDesafio(){
+      this.set('mostrarDialogoFinDesafio', false);
     },
 
     abrirMensajePublicado() {

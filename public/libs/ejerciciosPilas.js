@@ -3074,7 +3074,7 @@ var ElGatoEnLaCalle = (function (_super) {
         return this.automata;
     };
     ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
-        return true; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
+        return false; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
     };
     return ElGatoEnLaCalle;
 })(EscenaActividad);
