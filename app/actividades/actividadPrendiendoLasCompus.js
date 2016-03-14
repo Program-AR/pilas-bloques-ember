@@ -21,9 +21,7 @@ export default {
   nombre: 'Prendiendo las compus',
   id: 'PrendiendoLasCompus',
   enunciado:
-    'TODO',
-
-  consignaInicial: 'TODO',
+    'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
   
   // la escena proviene de ejerciciosPilas
   escena: PrendiendoLasCompus,  // jshint ignore:line
