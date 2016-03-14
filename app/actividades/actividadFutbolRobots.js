@@ -143,10 +143,10 @@ var actividadFutbolRobots = {
   nombre: 'Fútbol para robots',
   id: 'FutbolRobots',
   enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
-    'Recordá siempre que una buena división en tareas puede ayudarte a encarar '+
+    'Recordá siempre que una buena división en procedimientos puede ayudarte a encarar '+
     'mejor el problema.',
 
-  consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable del protagonista y ofrecer una solución con la menor cantidad de bloques posibles. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
+  consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
 
   // la escena proviene de ejerciciosPilas
   escena: FutbolRobots, // jshint ignore:line
