@@ -14,8 +14,8 @@ elMonoQueSabeContar = Object.create(elMonoCuentaDeNuevo);
 
 elMonoQueSabeContar.nombre = 'El mono que sabe contar';
 elMonoQueSabeContar.id = 'ElMonoQueSabeContar';
-elMonoQueSabeContar.enunciado = 'COMPLETAR';
-elMonoQueSabeContar.consignaInicial = 'COMPLETAR';
+elMonoQueSabeContar.enunciado = 'El mono debe recorrer todas las casillas del escenario e ir contando cuántas bananas y manzanas hay en total. Pista: primero pensá cómo contarías si hay una manzana o una banana en una casilla determinada. Luego pensá cómo harías para contar todas las frutas de una sola columna.';
+elMonoQueSabeContar.consignaInicial = 'Subdividir un problema grande en problemas más chiquitos ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.';
 elMonoQueSabeContar.escena = ElMonoQueSabeContar;
 elMonoQueSabeContar.sensores = elMonoCuentaDeNuevo.sensores;
 elMonoQueSabeContar.sensores.push(EstoyAlFin);
