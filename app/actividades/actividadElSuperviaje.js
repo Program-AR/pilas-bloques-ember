@@ -26,10 +26,8 @@ var KmsTotales = VariableLocalGet.extend({
 export default {
   nombre: 'El Superviaje',
   id: 'ElSuperviaje',
-  enunciado:
-    'TODO',
-
-  consignaInicial: 'TODO',
+  enunciado: 'El superperro debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 50 y 200 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
+  consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
   
   // la escena proviene de ejerciciosPilas
   escena: SuperViaje,  // jshint ignore:line
