@@ -101,7 +101,6 @@ var Actividad = Ember.Object.extend({
       trashOnlyDelete: true,
       disable: actividad.get('puedeDesactivar'),
       comments: actividad.get('puedeComentar'),
-      rgbColours: true,
       defsOnly: true,
       def_procedures: actividad.usa_procedimientos(),
       def_functions: actividad.usa_funciones(),
@@ -144,23 +143,24 @@ var Actividad = Ember.Object.extend({
 
   // Scratch style colours
   setColours() {
-    Blockly.Blocks.primitivas.COLOUR = '#4a6cd4';
-    Blockly.Blocks.sensores.COLOUR = '#2ca5e2';
-    Blockly.Blocks.eventos.COLOUR = '#00a65a'; // == boton ejecutar
-    Blockly.Blocks.math.COLOUR = '#49930e';
-    Blockly.Blocks.logic.COLOUR = '#5cb712';
-    Blockly.Blocks.loops.COLOUR = '#ee7d16';
+    /*global goog */
+    Blockly.Blocks.primitivas.COLOUR =  goog.color.hexToHsv('#4a6cd4');
+    Blockly.Blocks.sensores.COLOUR = goog.color.hexToHsv('#2ca5e2');
+    Blockly.Blocks.eventos.COLOUR = goog.color.hexToHsv('#00a65a'); // == boton ejecutar
+    Blockly.Blocks.math.COLOUR = goog.color.hexToHsv('#49930e');
+    Blockly.Blocks.logic.COLOUR = goog.color.hexToHsv('#5cb712');
+    Blockly.Blocks.loops.COLOUR = goog.color.hexToHsv('#ee7d16');
 
-    Blockly.Blocks.procedures.COLOUR = '#6C52EB';
+    Blockly.Blocks.procedures.COLOUR = goog.color.hexToHsv('#6C52EB');
     //Blockly.Blocks.procedures.vars.COLOUR = '#8a55d7';
     //Blockly.Blocks.procedures.params.COLOUR = '#6C52EB';
 
 
-    Blockly.Blocks.variables.COLOUR = '#cc5b22';
+    Blockly.Blocks.variables.COLOUR = goog.color.hexToHsv('#cc5b22');
 
-    Blockly.Blocks.texts.COLOUR = '#4a6cd4';
-    Blockly.Blocks.lists.COLOUR = '#cc5b22';
-    Blockly.Blocks.colour.COLOUR = '#4a6cd4';
+    Blockly.Blocks.texts.COLOUR = goog.color.hexToHsv('#4a6cd4');
+    Blockly.Blocks.lists.COLOUR = goog.color.hexToHsv('#cc5b22');
+    Blockly.Blocks.colour.COLOUR = goog.color.hexToHsv('#4a6cd4');
 
     // IN SCRATCH THE COLOURS ARE
     // 4a6cd4 MOTION

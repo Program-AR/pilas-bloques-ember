@@ -1,8 +1,8 @@
 import Ember from 'ember';
 
-Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
-Blockly.Blocks.sensores = { COLOUR: '#4a6cd4' };
-Blockly.Blocks.eventos = { COLOUR: '#4a6cd4' };
+Blockly.Blocks.primitivas = { };
+Blockly.Blocks.sensores = { };
+Blockly.Blocks.eventos = { };
 
 /*
  * Representa un bloque
