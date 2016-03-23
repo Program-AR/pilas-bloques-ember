@@ -46,6 +46,10 @@ iniciar() {
       this.cuadricula.agregarActor(new BananaAnimada(0,0),3,2);
       this.cuadricula.agregarActor(new BananaAnimada(0,0),3,3);
       this.cuadricula.agregarActor(new BananaAnimada(0,0),3,4);
-    }
+  }
+
+  estaResueltoElProblema() {
+      return this.contarActoresConEtiqueta('BananaAnimada') == 0;
+  }
 
 }
