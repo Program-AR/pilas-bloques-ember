@@ -18,4 +18,8 @@ class Rotar extends ComportamientoConVelocidad {
 	setearEstadoFinalDeseado(){
 		this.receptor.rotacion = this.anguloFinal;
 	}
+
+	nombreAnimacion(){
+		return "rotar";
+	}
 }
