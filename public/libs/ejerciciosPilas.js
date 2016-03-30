@@ -842,8 +842,69 @@ var Verificacion = (function () {
     };
     return Verificacion;
 })();
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+var ArgumentError = (function () {
+    function ArgumentError(description) {
+        this.name = "ArgumentError";
+        this.message = description;
+    }
+    return ArgumentError;
+})();
 /// <reference path = "ComportamientoAnimado.ts"/>
+/**
+ * @class ComportamientoConVelocidad
+ *
+ * Argumentos:
+ *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
+ *               Representa la cantidad de ciclos que efectivamente se ejecutan.
+ *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento.
+ *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
+ *               Como esto juega con la animacion, es preferible no tocarlo.
+ */
+var ComportamientoConVelocidad = (function (_super) {
+    __extends(ComportamientoConVelocidad, _super);
+    function ComportamientoConVelocidad() {
+        _super.apply(this, arguments);
+    }
+    ComportamientoConVelocidad.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
+        this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
+        this.argumentos.velocidad = this.argumentos.velocidad || 20;
+        this.vueltasSinEjecutar = 0;
+        this.enQueVueltaEjecuto = Math.round(100 / this.argumentos.velocidad);
+        this.pasosRestantes = this.argumentos.cantPasos;
+    };
+    ComportamientoConVelocidad.prototype.doActualizar = function () {
+        var terminoAnimacion = _super.prototype.doActualizar.call(this);
+        if (this.pasosRestantes <= 0) {
+            this.setearEstadoFinalDeseado();
+            return terminoAnimacion;
+        }
+        else if (this.deboEjecutar()) {
+            this.darUnPaso();
+            this.pasosRestantes -= 1;
+        }
+    };
+    ComportamientoConVelocidad.prototype.deboEjecutar = function () {
+        if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto) {
+            this.vueltasSinEjecutar = 0;
+            return true;
+        }
+        else {
+            this.vueltasSinEjecutar += 1;
+            return false;
+        }
+    };
+    ComportamientoConVelocidad.prototype.darUnPaso = function () {
+        // Debe redefinirse. Es el comportamiento a realizar en cada tick.
+    };
+    ComportamientoConVelocidad.prototype.setearEstadoFinalDeseado = function () {
+        // Debe redefinirse. Sirve para asegurar que al terminar los pasos se llegue al estado deseado
+        // Por ejemplo, si me estoy moviendo a un lugar, setear ese lugar evita problemas de aproximación parcial.
+    };
+    return ComportamientoConVelocidad;
+})(ComportamientoAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "ComportamientoConVelocidad.ts"/>
 /**
  * @class MovimientoAnimado
  *
@@ -871,9 +932,6 @@ var MovimientoAnimado = (function (_super) {
     MovimientoAnimado.prototype.preAnimacion = function () {
         _super.prototype.preAnimacion.call(this);
         this.sanitizarArgumentos();
-        this.vueltasSinEjecutar = 0;
-        this.enQueVueltaEjecuto = Math.round(100 / this.valoresFinales.velocidad);
-        this.pasosRestantes = this.valoresFinales.cantPasos;
         this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom({ x: 0, y: 0 }, this.valoresFinales.distancia / this.valoresFinales.cantPasos);
         this.receptor.suspenderHabilidadesConMovimiento();
         this.voltearSiCorresponde();
@@ -881,31 +939,13 @@ var MovimientoAnimado = (function (_super) {
     MovimientoAnimado.prototype.postAnimacion = function () {
         this.receptor.activarHabilidadesConMovimiento();
     };
-    MovimientoAnimado.prototype.doActualizar = function () {
-        var terminoAnimacion = _super.prototype.doActualizar.call(this);
-        if (this.pasosRestantes <= 0) {
-            this.receptor.x = this.valoresFinales.destino.x;
-            this.receptor.y = this.valoresFinales.destino.y;
-            return terminoAnimacion;
-        }
-        else if (this.deboEjecutar()) {
-            this.darUnPaso();
-        }
-    };
-    MovimientoAnimado.prototype.deboEjecutar = function () {
-        if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto) {
-            this.vueltasSinEjecutar = 0;
-            return true;
-        }
-        else {
-            this.vueltasSinEjecutar += 1;
-            return false;
-        }
-    };
     MovimientoAnimado.prototype.darUnPaso = function () {
-        this.pasosRestantes -= 1;
         this.receptor.x += this.vectorDeAvance.x;
         this.receptor.y += this.vectorDeAvance.y;
+    };
+    MovimientoAnimado.prototype.setearEstadoFinalDeseado = function () {
+        this.receptor.x = this.valoresFinales.destino.x;
+        this.receptor.y = this.valoresFinales.destino.y;
     };
     MovimientoAnimado.prototype.sanitizarArgumentos = function () {
         this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
@@ -934,10 +974,15 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.espejado = this.valoresFinales.voltearAlIrAIzquierda && this.vectorDeAvance.x < 0;
     };
     return MovimientoAnimado;
-})(ComportamientoAnimado);
+})(ComportamientoConVelocidad);
 var Direct = (function () {
     function Direct(origin, destiny) {
-        if (!origin.x) {
+        if (destiny === void 0) { destiny = undefined; }
+        if (!destiny) {
+            var angle = origin * Math.PI / 180;
+            this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
+        }
+        else if (!origin.x) {
             this.versor = Direct.versorFor({ x: origin, y: destiny });
         }
         else {
@@ -953,13 +998,6 @@ var Direct = (function () {
             y: point.y + (this.versor.y * distance) };
     };
     return Direct;
-})();
-var ArgumentError = (function () {
-    function ArgumentError(description) {
-        this.name = "ArgumentError";
-        this.message = description;
-    }
-    return ArgumentError;
 })();
 // Esto es una clara chanchada. No sé cómo usar el Error original desde Typescript
 var ActividadError = (function () {
@@ -1405,6 +1443,19 @@ var Detective = (function (_super) {
         this.definirAnimacion("parado", [0], 4, true);
     }
     return Detective;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var Dibujante = (function (_super) {
+    __extends(Dibujante, _super);
+    function Dibujante(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'dibujante.png', cantColumnas: 5 });
+        this.definirAnimacion("parado", new Cuadros([0, 1, 2, 1]).repetirVeces(4).concat(new Cuadros([0]).repetirVeces(40)), 4, true);
+        this.definirAnimacion("correr", [3, 4, 4, 4, 4, 4], 6);
+        this.definirAnimacion("rotar", [3], 6);
+    }
+    return Dibujante;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var EstrellaAnimada = (function (_super) {
@@ -2336,6 +2387,39 @@ var ContarPorEtiqueta = (function (_super) {
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "MovimientoAnimado.ts"/>
+// Está pensado para iniciar la línea en el centro del receptor.
+// Esto hace que no haya que hacer cálculos ni aprender qué significa Shape.regX ó cómo lo usa pilas.
+// Llámenme cobarde, sí. Perdón.
+var DibujarLinea = (function (_super) {
+    __extends(DibujarLinea, _super);
+    function DibujarLinea() {
+        _super.apply(this, arguments);
+    }
+    DibujarLinea.prototype.iniciar = function (receptor) {
+        _super.prototype.iniciar.call(this, receptor);
+        if (!receptor.pizarra)
+            receptor.pizarra = new pilas.actores.Pizarra();
+    };
+    DibujarLinea.prototype.darUnPaso = function () {
+        var origen = { x: this.receptor.x, y: this.receptor.y };
+        _super.prototype.darUnPaso.call(this);
+        this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.negro, 6);
+    };
+    return DibujarLinea;
+})(MovimientoAnimado);
+var DibujarHaciaAdelante = (function (_super) {
+    __extends(DibujarHaciaAdelante, _super);
+    function DibujarHaciaAdelante() {
+        _super.apply(this, arguments);
+    }
+    DibujarHaciaAdelante.prototype.preAnimacion = function () {
+        this.argumentos.direccion = new Direct(this.receptor.rotacion);
+        _super.prototype.preAnimacion.call(this);
+    };
+    return DibujarHaciaAdelante;
+})(DibujarLinea);
 /// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 // Si se pasa por argumento "escaparCon" entonces el receptor debe ser actor compuesto
 var Escapar = (function (_super) {
@@ -2459,6 +2543,30 @@ var RecogerPorEtiqueta = (function (_super) {
     };
     return RecogerPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path = "ComportamientoConVelocidad.ts"/>
+var Rotar = (function (_super) {
+    __extends(Rotar, _super);
+    function Rotar() {
+        _super.apply(this, arguments);
+    }
+    Rotar.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
+        if (!this.argumentos.angulo)
+            throw new ArgumentError("Angle must be provided for Rotar to work");
+        this.anguloAvance = this.argumentos.angulo / this.argumentos.cantPasos;
+        this.anguloFinal = this.receptor.rotacion + this.argumentos.angulo;
+    };
+    Rotar.prototype.darUnPaso = function () {
+        this.receptor.rotacion += this.anguloAvance;
+    };
+    Rotar.prototype.setearEstadoFinalDeseado = function () {
+        this.receptor.rotacion = this.anguloFinal;
+    };
+    Rotar.prototype.nombreAnimacion = function () {
+        return "rotar";
+    };
+    return Rotar;
+})(ComportamientoConVelocidad);
 /// <reference path = "ComportamientoAnimado.ts"/>
 var SaltarAnimado = (function (_super) {
     __extends(SaltarAnimado, _super);
@@ -2531,7 +2639,7 @@ var SerPateado = (function (_super) {
     }
     SerPateado.prototype.preAnimacion = function () {
         this.receptor.cargarAnimacion("patear");
-        this.receptor.aprender(Rotar, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 });
+        this.receptor.aprender(RotarContinuamente, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 });
         this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.aceleracion = this.argumentos['aceleracion'];
@@ -2698,7 +2806,7 @@ var AlienLevantaTuercas = (function (_super) {
             var tuerca = new TuercaAnimada(0, 0);
             this.cuadricula.agregarActorEnPerspectiva(tuerca, i, i);
             //tuerca.aprender(Flotar,{'Desvio':10})
-            //tuerca.aprender(Rotar,{'gradosDeAumentoStep':1})
+            //tuerca.aprender(RotarContinuamente,{'gradosDeAumentoStep':1})
             tuerca.aprender(Vibrar, { 'gradosDeAumentoStep': 2, 'tiempoVibracion': 40 });
             tuerca.escala = 1.0;
         }
@@ -2940,6 +3048,22 @@ var CuadriculaParaRaton = (function (_super) {
     };
     return CuadriculaParaRaton;
 })(Camino);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Dibujante.ts" />
+var DibujandoFiguras = (function (_super) {
+    __extends(DibujandoFiguras, _super);
+    function DibujandoFiguras() {
+        _super.apply(this, arguments);
+    }
+    DibujandoFiguras.prototype.iniciar = function () {
+        this.fondo = new Fondo('fondo.dibujando.figuras.png', 0, 0);
+        this.automata = new Dibujante();
+        this.automata.escala = 0.5;
+        this.automata.x = -150;
+        this.automata.y = 100;
+    };
+    return DibujandoFiguras;
+})(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
 /// <reference path="../actores/CuadriculaEsparsa.ts"/>
@@ -3336,6 +3460,9 @@ var ElPlanetaDeNano = (function (_super) {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 2);
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 3);
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
+    };
+    ElPlanetaDeNano.prototype.estaResueltoElProblema = function () {
+        return this.contarActoresConEtiqueta('BananaAnimada') == 0;
     };
     return ElPlanetaDeNano;
 })(EscenaActividad);
@@ -4217,16 +4344,16 @@ var TresNaranjas = (function (_super) {
 /// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha
 caso contrario gira para la izquierda*/
-var Rotar = (function (_super) {
-    __extends(Rotar, _super);
-    function Rotar(receptor, argumentos) {
+var RotarContinuamente = (function (_super) {
+    __extends(RotarContinuamente, _super);
+    function RotarContinuamente(receptor, argumentos) {
         _super.call(this, receptor);
         this.gradosDeAumentoStep = argumentos['gradosDeAumentoStep'] || 1;
     }
-    Rotar.prototype.actualizar = function () {
+    RotarContinuamente.prototype.actualizar = function () {
         this.receptor.rotacion += this.gradosDeAumentoStep;
     };
-    return Rotar;
+    return RotarContinuamente;
 })(HabilidadAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
