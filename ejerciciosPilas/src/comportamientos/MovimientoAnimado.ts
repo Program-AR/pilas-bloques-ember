@@ -103,8 +103,11 @@ class MovimientoAnimado extends ComportamientoAnimado{
 
 class Direct{
 	versor;
-	constructor(origin,destiny){
-		if (!origin.x) { //Means I've got numbers
+	constructor(origin, destiny = undefined){
+		if(!destiny){ //Means I've got degrees
+			var angle = origin * Math.PI / 180;
+			this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
+		} else if (!origin.x) { //Means I've got numbers
 			this.versor = Direct.versorFor({ x: origin, y: destiny });
 		} else { //Means i've got points or objects with x and y
 			this.versor = Direct.versorFor({ x: destiny.x - origin.x, y: destiny.y - origin.y });
