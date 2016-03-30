@@ -296,8 +296,8 @@ var Accion = Bloque.extend({
     block.setNextStatement(true);
   },
 
-  block_javascript(/*block*/) {
-    return 'programa.hacer(' + this.nombre_comportamiento() + ', ' + this.argumentos() + ')\n';
+  block_javascript(block) {
+    return 'programa.hacer(' + this.nombre_comportamiento() + ', ' + this.argumentos(block) + ')\n';
   }
 
 });
@@ -553,6 +553,6 @@ var Hasta = EstructuraDeControl.extend({
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder, 
-               Sensor, Repetir,Si,Sino,Hasta, ParamCampo};
+               Sensor, Repetir,Si,Sino,Hasta, ParamCampo, ParamValor};
 
 export default bloques;

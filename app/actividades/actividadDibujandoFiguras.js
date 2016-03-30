@@ -1,6 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-var {Accion, Si, Repetir, Hasta, Procedimiento} = bloques;
+var {Accion, Si, Repetir, Hasta, Procedimiento, ParamValor} = bloques;
 
 var DibujarLado = Accion.extend({
     init() {
@@ -10,7 +10,7 @@ var DibujarLado = Accion.extend({
 
     block_init(block) {
         this._super(block);
-        block.appendValueInput('lado')
+        block.appendValueInput('longitud')
             .setCheck('Number')
             .appendField(this.obtener_icono('../libs/data/derecha.png'))
             .appendField('Dibujar lado de ');
@@ -20,8 +20,20 @@ var DibujarLado = Accion.extend({
         return 'DibujarHaciaAdelante';
     },
     
-    argumentos() {
-        return '{"distancia: 50, voltearAlIrAIzquierda: false"}';
+    argumentos(block) {
+        var longitud = Blockly.JavaScript.valueToCode(block, 'longitud', Blockly.JavaScript.ORDER_ATOMIC);
+        return '{distancia: (' + longitud + '), voltearAlIrAIzquierda: false}';
+    },
+    
+    get_parametros() {
+        return [
+            ParamValor.create({
+                nombre_param: 'longitud',
+                tipo_bloque: 'math_number',
+                nombre_valor: 'NUM',
+                valor: '10'
+            })
+        ];
     }
 });
 
