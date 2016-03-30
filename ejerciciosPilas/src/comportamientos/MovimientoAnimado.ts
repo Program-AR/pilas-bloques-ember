@@ -1,5 +1,5 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoAnimado.ts"/>
+/// <reference path = "ComportamientoConVelocidad.ts"/>
 
 
 /**
@@ -17,11 +17,8 @@
  *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
  *               Como esto juega con la animacion, es preferible no tocarlo.
  */
-class MovimientoAnimado extends ComportamientoAnimado{
-	pasosRestantes;
+class MovimientoAnimado extends ComportamientoConVelocidad {
 	vectorDeAvance;
-	vueltasSinEjecutar;
-	enQueVueltaEjecuto;
 	valoresFinales : any = {};
 
 	nombreAnimacion(){
@@ -31,9 +28,6 @@ class MovimientoAnimado extends ComportamientoAnimado{
     preAnimacion(){
 		super.preAnimacion();
 		this.sanitizarArgumentos();
-		this.vueltasSinEjecutar = 0;
-		this.enQueVueltaEjecuto = Math.round(100/this.valoresFinales.velocidad);
-		this.pasosRestantes = this.valoresFinales.cantPasos;
 		this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom(
 			{x:0,y:0},
 			this.valoresFinales.distancia / this.valoresFinales.cantPasos);
@@ -45,31 +39,14 @@ class MovimientoAnimado extends ComportamientoAnimado{
 		this.receptor.activarHabilidadesConMovimiento();
     }
 
-    doActualizar(){
-		var terminoAnimacion = super.doActualizar();
-    	if (this.pasosRestantes <= 0) {
-			this.receptor.x = this.valoresFinales.destino.x;
-			this.receptor.y = this.valoresFinales.destino.y;
-			return terminoAnimacion;
-		} else if (this.deboEjecutar()) { // para definir la velocidad de movimiento
-			this.darUnPaso();
-		}
- 	}
-
- 	deboEjecutar(){ // Aca entra en juego la velocidad
-		  if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto){
-			  this.vueltasSinEjecutar = 0;
-			  return true;
-		  } else {
- 		      this.vueltasSinEjecutar += 1;
-			  return false;
-		  }
- 	}
-
  	darUnPaso(){
-		  this.pasosRestantes -= 1;
 		  this.receptor.x += this.vectorDeAvance.x;
 		  this.receptor.y += this.vectorDeAvance.y;
+ 	}
+
+ 	setearEstadoFinalDeseado(){
+		  this.receptor.x = this.valoresFinales.destino.x;
+		  this.receptor.y = this.valoresFinales.destino.y;
  	}
 
     sanitizarArgumentos(){
