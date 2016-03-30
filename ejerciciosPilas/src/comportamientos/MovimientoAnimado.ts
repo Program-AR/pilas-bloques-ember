@@ -124,12 +124,3 @@ class Direct{
 				y: point.y + (this.versor.y * distance) }
 	}
 }
-
-class ArgumentError implements Error{
-	name;
-	message;
-	constructor(description){
-		this.name = "ArgumentError";
-		this.message = description;
-	}
-}

@@ -7,6 +7,6 @@ class DibujandoFiguras extends EscenaActividad {
         this.automata = new Dibujante();
         this.automata.escala = 0.5;
         this.automata.x = -150;
-        this.automata.y = 150;
+        this.automata.y = 100;
     }
 }

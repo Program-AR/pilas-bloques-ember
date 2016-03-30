@@ -164,3 +164,12 @@ class Verificacion {
 		if (!this.seCumple()) throw new ActividadError(this.mensajeError);
 	}
 }
+
+class ArgumentError implements Error {
+	name;
+	message;
+	constructor(description) {
+		this.name = "ArgumentError";
+		this.message = description;
+	}
+}
