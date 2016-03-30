@@ -5,7 +5,7 @@
 caso contrario gira para la izquierda*/
 
 
-class Rotar extends HabilidadAnimada {
+class RotarContinuamente extends HabilidadAnimada {
   gradosDeAumentoStep
   constructor(receptor,argumentos) {
         super(receptor);

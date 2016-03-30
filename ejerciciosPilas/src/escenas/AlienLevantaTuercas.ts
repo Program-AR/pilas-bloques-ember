@@ -17,7 +17,7 @@ iniciar() {
 			var tuerca = new TuercaAnimada(0,0);
 			this.cuadricula.agregarActorEnPerspectiva(tuerca,i,i);
 			//tuerca.aprender(Flotar,{'Desvio':10})
-			//tuerca.aprender(Rotar,{'gradosDeAumentoStep':1})
+			//tuerca.aprender(RotarContinuamente,{'gradosDeAumentoStep':1})
 			tuerca.aprender(Vibrar,{'gradosDeAumentoStep':2,'tiempoVibracion':40})
 
 			tuerca.escala=1.0;

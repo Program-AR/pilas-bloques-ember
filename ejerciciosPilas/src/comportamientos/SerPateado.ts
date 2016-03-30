@@ -10,7 +10,7 @@ class SerPateado extends ComportamientoAnimado {
   
   preAnimacion() {
         this.receptor.cargarAnimacion("patear")
-        this.receptor.aprender(Rotar,{'gradosDeAumentoStep':this.argumentos['gradosDeAumentoStep']||1})
+        this.receptor.aprender(RotarContinuamente, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 })
         this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.aceleracion=this.argumentos['aceleracion']
