@@ -1,6 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-var {Accion, Si, Repetir, Hasta, Procedimiento} = bloques;
+var {Accion, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
 
 var DibujarLado = Accion.extend({
     init() {
@@ -19,7 +19,7 @@ var DibujarLado = Accion.extend({
     nombre_comportamiento() {
         return 'DibujarHaciaAdelante';
     },
-    
+
     argumentos() {
         return '{"distancia: 50, voltearAlIrAIzquierda: false"}';
     }
@@ -40,7 +40,7 @@ export default {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
   usaParametros: true,
-  control: [Si,Repetir,Hasta],
+  control: [Repetir,Si,Sino,Hasta],
   expresiones: [],
   acciones: [DibujarLado],
   sensores: [],

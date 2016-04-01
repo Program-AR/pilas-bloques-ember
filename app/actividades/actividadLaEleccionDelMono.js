@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Si, Sino, Procedimiento} = bloques;
+var {Accion, Sensor, Repetir, Si, Sino, Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
   init() {
@@ -125,7 +125,7 @@ var actividadLaEleccionDelMono = {
     'Pista: ésta vez no alcanza con el bloque "Si".',
 
   consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
-  
+
   // la escena proviene de ejerciciosPilas
   escena: LaEleccionDelMono, // jshint ignore:line
   puedeComentar: false,
@@ -135,7 +135,7 @@ var actividadLaEleccionDelMono = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si,Sino],
+  control: [Repetir,Si,Sino],
   expresiones: [],
   acciones: [ComerManzana,ComerBanana,Avanzar],
   sensores: [TocandoManzana,TocandoBanana],

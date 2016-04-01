@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Si, Repetir, Procedimiento} = bloques;
+var {Repetir, Si, Sino, Procedimiento} = bloques;
 var {IrAbajo} = direcciones;
 var {EncenderLuz,TocandoLuz} = bloquesTito;
 
@@ -20,7 +20,7 @@ var actividadTitoRecargado = {
 
   // TODO: aca irian atributos iniciales que se desean para un automata
   variables: [],
-  control: [Si,Repetir],
+  control: [Repetir,Si,Sino],
   expresiones: [],
   acciones: [EncenderLuz,IrAbajo],
   sensores: [TocandoLuz],

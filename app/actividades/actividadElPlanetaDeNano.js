@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 //import comer from 'pilas-engine-bloques/actividades/comer';
-var {AccionBuilder, Si, Repetir,Hasta, Procedimiento,Funcion} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, Funcion} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
 
 var ComerBanana = AccionBuilder.build({
@@ -34,7 +34,7 @@ export default {
   variables: [],
   usaParametros: true,
 
-  control: [Si,Repetir,Hasta],
+  control: [Repetir,Si,Sino,Hasta],
   expresiones: [Funcion],
   acciones: [IrDerecha,IrArriba,VolverAlBordeIzquierdo,ComerBanana],
   sensores: [],
