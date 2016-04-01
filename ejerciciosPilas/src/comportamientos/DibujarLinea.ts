@@ -13,7 +13,7 @@ class DibujarLinea extends MovimientoAnimado {
 	darUnPaso(){
 		var origen = { x: this.receptor.x, y: this.receptor.y };
 		super.darUnPaso();
-		this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.negro, 6);
+		this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
 	}
 }
 
