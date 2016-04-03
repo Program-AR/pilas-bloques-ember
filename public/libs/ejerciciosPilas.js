@@ -2405,7 +2405,7 @@ var DibujarLinea = (function (_super) {
     DibujarLinea.prototype.darUnPaso = function () {
         var origen = { x: this.receptor.x, y: this.receptor.y };
         _super.prototype.darUnPaso.call(this);
-        this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.negro, 6);
+        this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
     };
     return DibujarLinea;
 })(MovimientoAnimado);

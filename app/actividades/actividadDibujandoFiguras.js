@@ -31,7 +31,44 @@ var DibujarLado = Accion.extend({
                 nombre_param: 'longitud',
                 tipo_bloque: 'math_number',
                 nombre_valor: 'NUM',
-                valor: '10'
+                valor: '100'
+            })
+        ];
+    }
+});
+
+var GirarGrados = Accion.extend({
+    init() {
+        this._super();
+        this.set('id', 'GirarGrados');
+    },
+
+    block_init(block) {
+        this._super(block);
+        block.appendValueInput('grados')
+            .setCheck('Number')
+            .appendField(this.obtener_icono('../libs/data/derecha.png'))
+            .appendField('Girar');
+        block.appendDummyInput()
+            .appendField('grados');
+    },
+
+    nombre_comportamiento() {
+        return 'Rotar';
+    },
+    
+    argumentos(block) {
+        var grados = Blockly.JavaScript.valueToCode(block, 'grados', Blockly.JavaScript.ORDER_ATOMIC);
+        return '{angulo: (-' + grados + ')}';
+    },
+    
+    get_parametros() {
+        return [
+            ParamValor.create({
+                nombre_param: 'grados',
+                tipo_bloque: 'math_number',
+                nombre_valor: 'NUM',
+                valor: '45'
             })
         ];
     }
@@ -54,6 +91,6 @@ export default {
   usaParametros: true,
   control: [Si,Repetir,Hasta],
   expresiones: [],
-  acciones: [DibujarLado],
+  acciones: [DibujarLado, GirarGrados],
   sensores: [],
 };
