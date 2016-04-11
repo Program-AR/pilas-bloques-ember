@@ -3,8 +3,8 @@
 class ElMonoCuentaDeNuevo extends ElMonoQueSabeContar {
 	iniciar(){
 		super.iniciar();
-		this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Fila Actual" });
-		
+		this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Columna Actual" });
+
 	}
 	cambiarImagenesFin() {
 		//No hace nada
