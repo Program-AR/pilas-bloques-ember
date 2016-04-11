@@ -1,6 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-var {Accion, Si, Repetir, Hasta, Procedimiento, ParamValor} = bloques;
+var {Accion, Repetir, Si, Sino, Hasta, Procedimiento, ParamValor} = bloques;
 
 var DibujarLado = Accion.extend({
     init() {
@@ -89,7 +89,7 @@ export default {
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
   usaParametros: true,
-  control: [Si,Repetir,Hasta],
+  control: [Repetir,Si,Sino,Hasta],
   expresiones: [],
   acciones: [DibujarLado, GirarGrados],
   sensores: [],

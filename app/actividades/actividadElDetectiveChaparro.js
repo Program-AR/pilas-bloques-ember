@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder, Si, Procedimiento, Repetir, Hasta} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 
 var PrimerSospechoso = AccionBuilder.build({
   descripcion: 'Primer sospechoso',
@@ -33,7 +33,7 @@ export default {
   id: 'ElDetectiveChaparro',
   enunciado: 'El detective debe descubrir al culpable de un crimen, quitándole el disfraz que lo camufla. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!',
   consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
-  
+
   // la escena proviene de ejerciciosPilas
   escena: ElDetectiveChaparro,  // jshint ignore:line
   puedeComentar: false,
@@ -43,7 +43,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si, Repetir, Hasta],
+  control: [Repetir, Si, Sino, Hasta],
   expresiones: [],
   acciones: [PrimerSospechoso,SiguienteSospechoso,SacarDisfraz],
   sensores: [EsCulpable],

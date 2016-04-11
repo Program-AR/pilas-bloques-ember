@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {AccionBuilder, Repetir, Si, Hasta, Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
 var {IrIzquierda, IrDerecha, IrArriba, IrAbajo} = direcciones;
 
 var PrenderCompu = AccionBuilder.build({
@@ -22,7 +22,7 @@ export default {
   id: 'PrendiendoLasCompus',
   enunciado:
     'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
-  
+
   // la escena proviene de ejerciciosPilas
   escena: PrendiendoLasCompus,  // jshint ignore:line
   puedeComentar: false,
@@ -32,7 +32,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Repetir, Si, Hasta],
+  control: [Repetir, Si, Sino, Hasta],
   expresiones: [],
   acciones: [IrDerecha, IrArriba, IrAbajo, IrIzquierda, PrenderCompu],
   sensores: [EstoyEnEsquina],

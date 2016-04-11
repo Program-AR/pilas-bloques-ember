@@ -5,7 +5,7 @@ siguienteFila(){
 }*/
 
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Si,Repetir,Procedimiento,Hasta} = bloques;
+var {Accion, Sensor, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 
 var Avanzar = Accion.extend({
   init() {
@@ -157,7 +157,7 @@ var actividadFutbolRobots = {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si,Repetir,Hasta],
+  control: [Repetir,Si,Sino,Hasta],
   expresiones: [],
   acciones: [Avanzar,Atras,SiguienteFila,PatearPelota],
   sensores: [TocandoInicio,TocandoPelota],

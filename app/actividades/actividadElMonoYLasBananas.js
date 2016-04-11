@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder, Si,Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Si, Procedimiento} = bloques;
 
 var Avanzar = AccionBuilder.build({
   descripcion: 'Avanzar',
@@ -31,7 +31,7 @@ export default {
     'Pista: mirá la categoría "Sensores" y la categoría "Control".',
 
   consignaInicial: 'Con el bloque Si ... Entonces ... podés hacer un programa que funcione bien en cualquier caso.',
-  
+
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
   puedeComentar: false,
@@ -41,7 +41,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [],
-  control: [Si],
+  control: [Repetir,Si],
   expresiones: [],
   acciones: [ComerBanana,Avanzar],
   sensores: [TocandoBanana],

@@ -3,7 +3,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 import contando from 'pilas-engine-bloques/actividades/contando';
-var {Si, Repetir, Hasta, Procedimiento, VariableLocalGet} = bloques;
+var {Repetir, Si, Sino, Hasta, Procedimiento, VariableLocalGet} = bloques;
 var {IrArriba, IrAbajo} = direcciones;
 var {TocandoBanana, TocandoManzana} = tocando;
 var {ContarBanana, ContarManzana} = contando;
@@ -37,7 +37,7 @@ export default {
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [LargoFilaActual],
-  control: [Si, Repetir, Hasta],
+  control: [Repetir, Si, Sino, Hasta],
   expresiones: [],
   acciones: [IrArriba,IrAbajo,ContarBanana,ContarManzana],
   sensores: [TocandoBanana, TocandoManzana],

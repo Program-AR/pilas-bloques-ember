@@ -4,7 +4,7 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 import comer from 'pilas-engine-bloques/actividades/comer';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 
-var {Repetir,Si,Procedimiento} = bloques;
+var {Repetir,Si,Sino,Procedimiento} = bloques;
 var {IrDerecha} = direcciones;
 var {ComerNaranja} = comer;
 var {TocandoNaranja} = tocando;
@@ -19,7 +19,7 @@ var actividadTresNaranjas = {
   puedeDuplicar: false,
   procedimientos: [Procedimiento],
   variables: [],
-  control: [Repetir,Si],
+  control: [Repetir,Si,Sino],
   expresiones: [],
   acciones: [IrDerecha,ComerNaranja],
   sensores: [TocandoNaranja]

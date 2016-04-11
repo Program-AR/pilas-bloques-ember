@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Si, Repetir, Procedimiento,Hasta} = bloques;
+var {Repetir, Si, Sino, Procedimiento,Hasta} = bloques;
 var {IrAbajo} = direcciones;
 var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
 
@@ -22,7 +22,7 @@ var actividadSuperTito2 = {
   procedimientos: [Procedimiento],
 
   variables: [],
-  control: [Si,Repetir,Hasta],
+  control: [Repetir,Si,Sino,Hasta],
   expresiones: [],
   acciones: [EncenderLuz,IrAbajo],
   sensores: [TocandoFinal,TocandoLuz],
