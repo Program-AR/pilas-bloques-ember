@@ -4,7 +4,7 @@
 
 /**
  * @class MovimientoAnimado
- * 
+ *
  * Argumentos:
  *    distancia: la distancia deseada de recorrer
  *    destino: alternativamente se puede proveer un objeto con x e y, que es el destino.
@@ -13,7 +13,7 @@
  *    direccion: Sino, se puede proveer una direccion de movimiento. (instancia de Direc)
  *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
  *               Representa la cantidad de ciclos que efectivamente se ejecutan.
- *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento. 
+ *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento.
  *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
  *               Como esto juega con la animacion, es preferible no tocarlo.
  */
@@ -81,7 +81,7 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
 class Direct{
 	versor;
 	constructor(origin, destiny = undefined){
-		if(!destiny){ //Means I've got degrees
+		if(destiny === undefined){ //Means I've got degrees
 			var angle = origin * Math.PI / 180;
 			this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
 		} else if (!origin.x) { //Means I've got numbers
@@ -97,7 +97,7 @@ class Direct{
 	}
 
 	destinyFrom(point, distance){
-		return {x: point.x + (this.versor.x * distance), 
+		return {x: point.x + (this.versor.x * distance),
 				y: point.y + (this.versor.y * distance) }
 	}
 }
