@@ -978,7 +978,7 @@ var MovimientoAnimado = (function (_super) {
 var Direct = (function () {
     function Direct(origin, destiny) {
         if (destiny === void 0) { destiny = undefined; }
-        if (!destiny) {
+        if (destiny === undefined) {
             var angle = origin * Math.PI / 180;
             this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
         }
@@ -3279,7 +3279,7 @@ var ElMonoCuentaDeNuevo = (function (_super) {
     }
     ElMonoCuentaDeNuevo.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
-        this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Fila Actual" });
+        this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Columna Actual" });
     };
     ElMonoCuentaDeNuevo.prototype.cambiarImagenesFin = function () {
         //No hace nada

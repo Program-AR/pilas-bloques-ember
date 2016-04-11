@@ -11,14 +11,14 @@ var {ContarBanana, ContarManzana} = contando;
 var LargoFilaActual = VariableLocalGet.extend({
   init() {
         this._super();
-        this.set('id', 'LargoFilaActual');
+        this.set('id', 'LargoColumnaActual');
   },
 
   block_init(block){
     this._super(block);
     block.appendDummyInput()
       .appendField(this.obtener_icono('../libs/data/icono.espada.png'))
-      .appendField('Largo de fila actual');
+      .appendField('Largo columna actual');
   },
 });
 
