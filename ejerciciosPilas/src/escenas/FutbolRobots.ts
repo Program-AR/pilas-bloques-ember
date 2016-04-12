@@ -5,15 +5,13 @@ class FutbolRobots  extends EscenaActividad{
   automata : ActorAnimado;
   fondo;
   cuadricula;
-  definidor;
 
   iniciar() {
       this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
       var cantidadFilas=8;
-      this.definidor = new DefinidorColumnasRandom(cantidadFilas,6)
 
       this.cuadricula = new CuadriculaMultiple(
-        this.definidor,
+        new DefinidorColumnasRandom(cantidadFilas,6),
         0,-50,
         {separacionEntreCasillas: 5},
         {grilla:'casilla.futbolRobots2.png', alto:40,ancho:40})
@@ -27,12 +25,13 @@ class FutbolRobots  extends EscenaActividad{
       this.automata.radio_de_colision = this.automata.alto / 2.5;
 
       for (var fila=0;fila<cantidadFilas;++fila){
-
-
         this.cuadricula.agregarActor(new PelotaAnimada(0,0),fila,this.cuadricula.dameIndexUltimaPosicion(fila))
-
       }
 
+   }
+
+   estaResueltoElProblema(){
+     return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 0;
    }
 
 }

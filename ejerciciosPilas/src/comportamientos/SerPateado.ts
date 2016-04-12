@@ -7,7 +7,7 @@ class SerPateado extends ComportamientoAnimado {
     aceleracion
     tiempoEnElAire
     elevacionMaxima
-  
+
   preAnimacion() {
         this.receptor.cargarAnimacion("patear")
         this.receptor.aprender(RotarContinuamente, { 'gradosDeAumentoStep': this.argumentos['gradosDeAumentoStep'] || 1 })
@@ -16,18 +16,12 @@ class SerPateado extends ComportamientoAnimado {
         this.aceleracion=this.argumentos['aceleracion']
         this.tiempoEnElAire=this.argumentos['tiempoEnElAire']||10
         this.elevacionMaxima=this.argumentos['elevacionMaxima']||10
-
-
     }
-
-
 
     doActualizar() {
-
-    super.doActualizar();
-  this.patearConSubidaLineal();
+      super.doActualizar();
+      return this.patearConSubidaLineal();
     }
-
 
     patearConSubidaLineal(){
       this.contador += this.aceleracion;
@@ -47,8 +41,12 @@ class SerPateado extends ComportamientoAnimado {
             this.receptor.y -= this.contador;}
       }
       this.receptor.x += this.contador;
-    }
 
+      if (this.receptor.izquierda >= pilas.derecha()){
+        this.receptor.eliminar();
+        return true;
+      }
+    }
 
     patearParaAdelante(){
       this.contador += this.aceleracion;
