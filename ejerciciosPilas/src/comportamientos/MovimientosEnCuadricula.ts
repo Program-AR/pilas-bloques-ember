@@ -154,3 +154,17 @@ class MoverTodoAbajo extends MoverACasillaAbajo{
                * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
    }
 }
+
+class SiguienteFila extends MoverACasillaAbajo {
+  configurarVerificaciones() {
+    super.configurarVerificaciones();
+    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la fila"));
+  }
+}
+
+class SiguienteColumna extends MoverACasillaDerecha {
+  configurarVerificaciones() {
+    super.configurarVerificaciones();
+    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));  
+  }
+}

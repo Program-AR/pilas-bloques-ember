@@ -68,6 +68,10 @@ class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
   esFin(casilla){
     return this.esLaUltima(casilla.nroFila,casilla.nroColumna);
   }
+
+  esInicio(casilla){
+    return casilla.nroFila === 0;
+  }
 }
 
 
@@ -137,6 +141,10 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
 
   esFin(casilla){
     return this.dameIndexUltimaPosicion(casilla.nroFila) === casilla.nroColumna;
+  }
+
+  esInicio(casilla){
+    return casilla.nroColumna === 0;
   }
 
 }

@@ -164,6 +164,10 @@ class Cuadricula extends Actor {
           this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
     }
 
+    esInicio(casilla){
+      return casilla.sos(0, 0);
+    }
+
     colisionan(objeto1,objeto2){
       return objeto1.casillaActual()==objeto2.casillaActual()
 
