@@ -3543,8 +3543,7 @@ var FutbolRobots = (function (_super) {
     FutbolRobots.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
         var cantidadFilas = 8;
-        this.definidor = new DefinidorColumnasRandom(cantidadFilas, 6);
-        this.cuadricula = new CuadriculaMultiple(this.definidor, 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
+        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasRandom(cantidadFilas, 6), 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
         this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
         this.automata = new RobotAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
@@ -3555,6 +3554,9 @@ var FutbolRobots = (function (_super) {
         for (var fila = 0; fila < cantidadFilas; ++fila) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
+    };
+    FutbolRobots.prototype.estaResueltoElProblema = function () {
+        return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 0;
     };
     return FutbolRobots;
 })(EscenaActividad);

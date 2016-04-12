@@ -3,6 +3,13 @@ import elMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElMon
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder} = bloques;
 
+var EstoyAlInicio = AccionBuilder.buildSensor({
+  id: 'estoyInicio',
+  descripcion: 'Estoy al inicio de la columna',
+  icono: 'casillainiciomono.png',
+  funcionSensor: 'casillaActual().esInicio()',
+});
+
 var EstoyAlFin = AccionBuilder.buildSensor({
   id: 'estoyFinColumna',
   descripcion: 'Estoy al final de la columna',
@@ -20,6 +27,7 @@ elMonoQueSabeContar.consignaInicial = 'Subdividir un problema grande en problema
 elMonoQueSabeContar.escena = ElMonoQueSabeContar;
 elMonoQueSabeContar.sensores = elMonoCuentaDeNuevo.sensores.slice();
 elMonoQueSabeContar.sensores.push(EstoyAlFin);
+elMonoQueSabeContar.sensores.push(EstoyAlInicio);
 elMonoQueSabeContar.variables = [];
 
 export default elMonoQueSabeContar;

@@ -4,7 +4,7 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 import tocando from 'pilas-engine-bloques/actividades/tocando';
 import contando from 'pilas-engine-bloques/actividades/contando';
 var {Repetir, Si, Sino, Hasta, Procedimiento, VariableLocalGet} = bloques;
-var {IrArriba, IrAbajo} = direcciones;
+var {IrArriba, IrAbajo, SiguienteColumna} = direcciones;
 var {TocandoBanana, TocandoManzana} = tocando;
 var {ContarBanana, ContarManzana} = contando;
 
@@ -39,6 +39,6 @@ export default {
   variables: [LargoFilaActual],
   control: [Repetir, Si, Sino, Hasta],
   expresiones: [],
-  acciones: [IrArriba,IrAbajo,ContarBanana,ContarManzana],
+  acciones: [IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana],
   sensores: [TocandoBanana, TocandoManzana],
 };

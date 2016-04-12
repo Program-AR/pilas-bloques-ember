@@ -1,70 +1,29 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direccionesCuadricula from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Accion, Sensor, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 var {IrDerecha, IrIzquierda, SiguienteFila} = direccionesCuadricula;
 
-var PatearPelota = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'PatearPelota');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Patear pelota')
-         .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'DesencadenarComportamientoSiColisiona';
-  },
-
-  argumentos() {
-    return '{"comportamiento":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'argumentosComportamiento\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}';
-  }
+var PatearPelota = AccionBuilder.build({
+  id: 'PatearPelota',
+  descripcion: 'Patear pelota',
+  icono: 'iconos.pelota.png',
+  comportamiento: 'DesencadenarComportamientoSiColisiona',
+  argumentos: '{"comportamiento":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'argumentosComportamiento\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}',
 });
 
-var TocandoInicio = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoInicio');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Tocando inicio ')
-         .appendField(this.obtener_icono('../libs/data/iconos.futbolInicio.png'))
-         .appendField('?');
-
-  },
-
-  nombre_sensor() {
-    return 'tocandoInicio()';
-  }
+var TocandoInicio = AccionBuilder.buildSensor({
+  id: 'tocandoInicio',
+  descripcion: 'Estoy al inicio',
+  icono: 'iconos.futbolInicio.png',
+  funcionSensor: 'tocandoInicio()',
 });
 
-var TocandoPelota = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoPelota');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Tocando pelota ')
-         .appendField(this.obtener_icono('../libs/data/iconos.pelota.png'))
-         .appendField('?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'PelotaAnimada\')';
-  }
+var TocandoPelota = AccionBuilder.buildSensor({
+  id: 'tocandoPelota',
+  descripcion: 'Llegué a la pelota',
+  icono: 'iconos.pelota.png',
+  funcionSensor: 'tocando("PelotaAnimada")',
 });
-
-
 
 export default {
   nombre: 'Fútbol para robots',
