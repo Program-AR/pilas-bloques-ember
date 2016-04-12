@@ -573,6 +573,13 @@ var Cuadricula = (function (_super) {
     Cuadricula.prototype.casilla = function (nroF, nroC) {
         return this.casillas.filter(function (casilla) { return casilla.sos(nroF, nroC); })[0];
     };
+    Cuadricula.prototype.esFin = function (casilla) {
+        return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
+            this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
+    };
+    Cuadricula.prototype.esInicio = function (casilla) {
+        return casilla.sos(0, 0);
+    };
     Cuadricula.prototype.colisionan = function (objeto1, objeto2) {
         return objeto1.casillaActual() == objeto2.casillaActual();
     };
@@ -641,8 +648,10 @@ var Casilla = (function (_super) {
             this.sos(this.cuadricula.cantFilas - 1, this.cuadricula.cantColumnas - 1);
     };
     Casilla.prototype.esFin = function () {
-        return this.cuadricula.cantFilas == 1 && this.sos(0, this.cuadricula.cantColumnas - 1) ||
-            this.cuadricula.cantColumnas == 1 && this.sos(this.cuadricula.cantFilas - 1, 0);
+        return this.cuadricula.esFin(this);
+    };
+    Casilla.prototype.esInicio = function () {
+        return this.cuadricula.esInicio(this);
     };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
@@ -1198,6 +1207,30 @@ var MoverTodoAbajo = (function (_super) {
     };
     return MoverTodoAbajo;
 })(MoverACasillaAbajo);
+var SiguienteFila = (function (_super) {
+    __extends(SiguienteFila, _super);
+    function SiguienteFila() {
+        _super.apply(this, arguments);
+    }
+    SiguienteFila.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor.casillaActual().esInicio(); }, "No puedo ir desde acá, tengo que estar al inicio de la fila"));
+    };
+    return SiguienteFila;
+})(MoverACasillaAbajo);
+var SiguienteColumna = (function (_super) {
+    __extends(SiguienteColumna, _super);
+    function SiguienteColumna() {
+        _super.apply(this, arguments);
+    }
+    SiguienteColumna.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.receptor.casillaActual().esInicio(); }, "No puedo ir desde acá, tengo que estar al inicio de la columna"));
+    };
+    return SiguienteColumna;
+})(MoverACasillaDerecha);
 /// <reference path="../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path="Cuadricula.ts"/>
 /*
@@ -1320,6 +1353,12 @@ var CuadriculaMultipleColumnas = (function (_super) {
     CuadriculaMultipleColumnas.prototype.esLaUltima = function (fila, col) {
         return this.pmatrix[fila][col] == 'T' && (this.pmatrix[fila + 1] == undefined || this.pmatrix[fila + 1][col] == 'F');
     };
+    CuadriculaMultipleColumnas.prototype.esFin = function (casilla) {
+        return this.esLaUltima(casilla.nroFila, casilla.nroColumna);
+    };
+    CuadriculaMultipleColumnas.prototype.esInicio = function (casilla) {
+        return casilla.nroFila === 0;
+    };
     return CuadriculaMultipleColumnas;
 })(CuadriculaEsparsa);
 var CuadriculaMultiple = (function (_super) {
@@ -1371,6 +1410,12 @@ var CuadriculaMultiple = (function (_super) {
     };
     CuadriculaMultiple.prototype.cantidadColumnas = function (nroFila) {
         return this.dameIndexUltimaPosicion(nroFila) + 1;
+    };
+    CuadriculaMultiple.prototype.esFin = function (casilla) {
+        return this.dameIndexUltimaPosicion(casilla.nroFila) === casilla.nroColumna;
+    };
+    CuadriculaMultiple.prototype.esInicio = function (casilla) {
+        return casilla.nroColumna === 0;
     };
     return CuadriculaMultiple;
 })(CuadriculaEsparsa);
@@ -2325,19 +2370,6 @@ var AnimarSiNoEstoyYa = (function (_super) {
     };
     return AnimarSiNoEstoyYa;
 })(ComportamientoAnimado);
-var avanzarFilaEnCuadriculaMultiple = (function (_super) {
-    __extends(avanzarFilaEnCuadriculaMultiple, _super);
-    function avanzarFilaEnCuadriculaMultiple() {
-        _super.apply(this, arguments);
-    }
-    avanzarFilaEnCuadriculaMultiple.prototype.proximaCasilla = function (casillaActual) {
-        var casAbajo = _super.prototype.proximaCasilla.call(this, casillaActual);
-        if (casAbajo && casAbajo.nroColumna == 0) {
-            return casAbajo;
-        }
-    };
-    return avanzarFilaEnCuadriculaMultiple;
-})(MoverACasillaAbajo);
 /// <reference path="ComportamientoAnimado.ts"/>
 var ComportamientoDeAltoOrden = (function (_super) {
     __extends(ComportamientoDeAltoOrden, _super);

@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion} = bloques;
+var {Accion, AccionBuilder} = bloques;
 
 var IrDerecha = Accion.extend({
 
@@ -103,7 +103,12 @@ var IrAbajo = Accion.extend({
 
 });
 
+var SiguienteFila = AccionBuilder.build({
+  id: 'SiguienteFila',
+  descripcion: 'Siguiente fila',
+  icono: 'abajo.png',
+  comportamiento: 'SiguienteFila',
+  argumentos: '{}',
+});
 
-var direcciones = {IrDerecha, IrIzquierda, IrArriba, IrAbajo};
-
-export default direcciones;
+export default {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila};

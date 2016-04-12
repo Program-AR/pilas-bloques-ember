@@ -1,9 +1,3 @@
-/*
-
-siguienteFila(){
- this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple,{'cuadriculaMultiple':this.cuadricula})
-}*/
-
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 var {Accion} = bloques;

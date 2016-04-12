@@ -1,78 +1,7 @@
-/*
-
-siguienteFila(){
- this.robot.hacer_luego(avanzarFilaEnCuadriculaMultiple,{'cuadriculaMultiple':this.cuadricula})
-}*/
-
 import bloques from 'pilas-engine-bloques/actividades/bloques';
+import direccionesCuadricula from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 var {Accion, Sensor, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
-
-var Avanzar = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Avanzar');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Avanzar')
-         .appendField(this.obtener_icono('derecha.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'MoverACasillaDerecha';
-  },
-
-  argumentos() {
-    return '{}';
-  }
-});
-
-var Atras = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Atras');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-     .appendField('Atrás')
-     .appendField(this.obtener_icono('izquierda.png'));
-   },
-
-  nombre_comportamiento() {
-    return 'MoverACasillaIzquierda';
-  },
-
-  argumentos() {
-    return '{}';
-  }
-});
-
-var SiguienteFila = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'SiguienteFila');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Siguiente fila')
-         .appendField(this.obtener_icono('abajo.png'));
-  },
-
-  nombre_comportamiento() {
-    return 'avanzarFilaEnCuadriculaMultiple';
-  },
-
-  argumentos() {
-    return '{}';
-  }
-});
-
+var {IrDerecha, IrIzquierda, SiguienteFila} = direccionesCuadricula;
 
 var PatearPelota = Accion.extend({
   init() {
@@ -95,8 +24,6 @@ var PatearPelota = Accion.extend({
     return '{"comportamiento":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'argumentosComportamiento\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}';
   }
 });
-
-
 
 var TocandoInicio = Sensor.extend({
   init() {
@@ -139,7 +66,7 @@ var TocandoPelota = Sensor.extend({
 
 
 
-var actividadFutbolRobots = {
+export default {
   nombre: 'Fútbol para robots',
   id: 'FutbolRobots',
   enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
@@ -159,8 +86,6 @@ var actividadFutbolRobots = {
   variables: [],
   control: [Repetir,Si,Sino,Hasta],
   expresiones: [],
-  acciones: [Avanzar,Atras,SiguienteFila,PatearPelota],
+  acciones: [IrDerecha,IrIzquierda,SiguienteFila,PatearPelota],
   sensores: [TocandoInicio,TocandoPelota],
 };
-
-export default actividadFutbolRobots;
