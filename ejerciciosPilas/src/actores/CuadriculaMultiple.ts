@@ -64,6 +64,10 @@ class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
   private esLaUltima(fila,col){
     return this.pmatrix[fila][col]=='T'&&(this.pmatrix[fila+1]==undefined||this.pmatrix[fila+1][col]=='F');
   }
+
+  esFin(casilla){
+    return this.esLaUltima(casilla.nroFila,casilla.nroColumna);
+  }
 }
 
 
@@ -129,6 +133,10 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
 
   private cantidadColumnas(nroFila){
     return this.dameIndexUltimaPosicion(nroFila)+1;
+  }
+
+  esFin(casilla){
+    return this.dameIndexUltimaPosicion(casilla.nroFila) === casilla.nroColumna;
   }
 
 }

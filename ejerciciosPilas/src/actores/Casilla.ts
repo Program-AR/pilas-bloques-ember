@@ -76,8 +76,7 @@ class Casilla extends ActorAnimado {
     }
 
     esFin(){
-        return this.cuadricula.cantFilas == 1 && this.sos(0, this.cuadricula.cantColumnas - 1) ||
-            this.cuadricula.cantColumnas == 1 && this.sos(this.cuadricula.cantFilas - 1, 0);
+        return this.cuadricula.esFin(this);
     }
 
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor
@@ -88,19 +87,19 @@ class Casilla extends ActorAnimado {
     renacer(nombreImagen, cantFilas = 1, cantColumnas = 1) { // TODO: FEOOOOOOO bugfix setter imagen del actor
         // POR FAVOR YO FUTURO PERDONAME
         this.eliminar();
-        
+
         var opsCasilla = {
             grilla: this.cuadricula.opcionesCasilla.grilla,
             cantFilas: this.cuadricula.opcionesCasilla.cantFilas,
             cantColumnas: this.cuadricula.opcionesCasilla.cantColumnas,
         };
-        
+
         this.cuadricula.opcionesCasilla.grilla = nombreImagen;
         this.cuadricula.opcionesCasilla.cantFilas = cantFilas;
         this.cuadricula.opcionesCasilla.cantColumnas = cantColumnas;
 
         var nuevoYo = new Casilla(this.nroFila,this.nroColumna,this.cuadricula);
-        
+
         this.cuadricula.opcionesCasilla.grilla = opsCasilla.grilla;
         this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
         this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;

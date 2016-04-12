@@ -159,6 +159,11 @@ class Cuadricula extends Actor {
         return this.casillas.filter(casilla => casilla.sos(nroF,nroC))[0];
     }
 
+    esFin(casilla){
+      return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
+          this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
+    }
+
     colisionan(objeto1,objeto2){
       return objeto1.casillaActual()==objeto2.casillaActual()
 
