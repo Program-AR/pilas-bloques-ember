@@ -27,7 +27,7 @@ class Tablero extends ActorAnimado{
 
 
   dameValor(){
-    this.puntaje.obtener();
+    return this.puntaje.obtener();
   }
 
   aumentar(aumento){
@@ -41,7 +41,7 @@ class Tablero extends ActorAnimado{
       this.puntaje.aumentar(nuevoValor - this.puntaje.obtener());
     }
   }
-  
+
   tuObservadoCambio(observado){
     this.setearValor(observado[this.atributoObservado]);
   }

@@ -15,8 +15,8 @@ class ElMonoQueSabeContar extends EscenaActividad {
         this.fondo = new Fondo('fondos.selva.png',0,0);
         this.cuadricula = new CuadriculaMultipleColumnas(
             new DefinidorColumnasRandom(5, 6),
-            0, -45, 
-            { separacionEntreCasillas: 5 }, 
+            0, -45,
+            { separacionEntreCasillas: 5 },
             { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 })
         this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
         this.cambiarImagenesFin();
@@ -41,6 +41,11 @@ class ElMonoQueSabeContar extends EscenaActividad {
 
     cambiarImagenesFin(){
         this.cuadricula.cambiarImagenFin('casillafinalmono.png');
+    }
+
+    estaResueltoElProblema(){
+      return this.cantidadObjetosConEtiqueta('BananaAnimada') === this.tableros.BananaAnimada.dameValor() &&
+        this.cantidadObjetosConEtiqueta('ManzanaAnimada') === this.tableros.ManzanaAnimada.dameValor();
     }
 
 }
