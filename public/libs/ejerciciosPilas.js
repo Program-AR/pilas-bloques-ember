@@ -2680,7 +2680,7 @@ var SerPateado = (function (_super) {
     };
     SerPateado.prototype.doActualizar = function () {
         _super.prototype.doActualizar.call(this);
-        this.patearConSubidaLineal();
+        return this.patearConSubidaLineal();
     };
     SerPateado.prototype.patearConSubidaLineal = function () {
         this.contador += this.aceleracion;
@@ -2700,6 +2700,10 @@ var SerPateado = (function (_super) {
             }
         }
         this.receptor.x += this.contador;
+        if (this.receptor.izquierda >= pilas.derecha()) {
+            this.receptor.eliminar();
+            return true;
+        }
     };
     SerPateado.prototype.patearParaAdelante = function () {
         this.contador += this.aceleracion;
@@ -3230,7 +3234,7 @@ var ElGatoEnLaCalle = (function (_super) {
         return this.automata;
     };
     ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
-        return false; // TODO: revisar esto. Como este ejercicio es de exploración, cualquier solución sería buena.
+        return true; // Como este ejercicio es de exploración, cualquier solución sería buena.
     };
     return ElGatoEnLaCalle;
 })(EscenaActividad);

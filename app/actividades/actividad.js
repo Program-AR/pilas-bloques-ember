@@ -22,6 +22,7 @@ var Actividad = Ember.Object.extend({
     this.set('puedeComentar', actividad.puedeComentar);
     this.set('puedeDesactivar', actividad.puedeDesactivar);
     this.set('puedeDuplicar', actividad.puedeDuplicar);
+    this.set('esDeExploracion', actividad.esDeExploracion);
     this.setColours();
     this.pisar_bloques_blockly();
   },
@@ -139,6 +140,10 @@ var Actividad = Ember.Object.extend({
 
   estaResueltoElProblema(){
     return this.get('escena_instanciada').estaResueltoElProblema();
+  },
+
+  debeFelicitarse(){
+    return this.estaResueltoElProblema() && !this.get('esDeExploracion');
   },
 
   // Scratch style colours

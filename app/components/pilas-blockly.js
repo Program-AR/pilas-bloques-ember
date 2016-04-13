@@ -92,7 +92,7 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    if(this.get('actividad').estaResueltoElProblema()){
+    if(this.get('actividad').debeFelicitarse()){
       this.send('abrirFinDesafio');
     }
   },
