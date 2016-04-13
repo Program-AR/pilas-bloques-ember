@@ -106,9 +106,17 @@ var IrAbajo = Accion.extend({
 var SiguienteFila = AccionBuilder.build({
   id: 'SiguienteFila',
   descripcion: 'Siguiente fila',
-  icono: 'abajo.png',
+  icono: '../../iconos/abajo.png',
   comportamiento: 'SiguienteFila',
   argumentos: '{}',
 });
 
-export default {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila};
+var SiguienteColumna = AccionBuilder.build({
+  id: 'SiguienteColumna',
+  descripcion: 'Siguiente columna',
+  icono: '../../iconos/derecha.png',
+  comportamiento: 'SiguienteColumna',
+  argumentos: '{}',
+});
+
+export default {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna};

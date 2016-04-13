@@ -17,8 +17,9 @@ var EstoyAlFin = AccionBuilder.buildSensor({
   funcionSensor: 'casillaActual().esFin()',
 });
 
-var elMonoQueSabeContar = {};
-elMonoQueSabeContar = Object.create(elMonoCuentaDeNuevo);
+var ConstructorDeAct = function(){};
+ConstructorDeAct.prototype = elMonoCuentaDeNuevo;
+var elMonoQueSabeContar = new ConstructorDeAct();
 
 elMonoQueSabeContar.nombre = 'El mono que sabe contar';
 elMonoQueSabeContar.id = 'ElMonoQueSabeContar';

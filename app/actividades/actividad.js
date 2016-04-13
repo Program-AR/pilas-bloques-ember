@@ -52,7 +52,7 @@ var Actividad = Ember.Object.extend({
     for (let key in bloques_para_toolbox) {
       let propiedad = bloques_para_toolbox[key];
 
-      if (act[propiedad].length > 0 || this.tieneParametros(key)) {
+      if (act[propiedad] !== undefined && (act[propiedad].length > 0 || this.tieneParametros(key))) {
         leng.agregar(key, act[propiedad]);
       }
     }

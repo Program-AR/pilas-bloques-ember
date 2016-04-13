@@ -35,10 +35,8 @@ export default {
   puedeDuplicar: false,
   procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
   variables: [LargoFilaActual],
   control: [Repetir, Si, Sino, Hasta],
-  expresiones: [],
   acciones: [IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana],
   sensores: [TocandoBanana, TocandoManzana],
 };

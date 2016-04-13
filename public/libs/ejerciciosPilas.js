@@ -3305,6 +3305,9 @@ var ElMonoQueSabeContar = (function (_super) {
     ElMonoQueSabeContar.prototype.cambiarImagenesFin = function () {
         this.cuadricula.cambiarImagenFin('casillafinalmono.png');
     };
+    ElMonoQueSabeContar.prototype.estaResueltoElProblema = function () {
+        return this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0;
+    };
     return ElMonoQueSabeContar;
 })(EscenaActividad);
 /// <reference path="ElMonoQueSabeContar.ts"/>
