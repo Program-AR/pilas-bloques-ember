@@ -2002,7 +2002,7 @@ var Tablero = (function (_super) {
         this.puntaje.setZ(this.z - 2);
     }
     Tablero.prototype.dameValor = function () {
-        this.puntaje.obtener();
+        return this.puntaje.obtener();
     };
     Tablero.prototype.aumentar = function (aumento) {
         this.puntaje.aumentar(aumento);
@@ -3306,7 +3306,8 @@ var ElMonoQueSabeContar = (function (_super) {
         this.cuadricula.cambiarImagenFin('casillafinalmono.png');
     };
     ElMonoQueSabeContar.prototype.estaResueltoElProblema = function () {
-        return this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0;
+        return this.cantidadObjetosConEtiqueta('BananaAnimada') === this.tableros.BananaAnimada.dameValor() &&
+            this.cantidadObjetosConEtiqueta('ManzanaAnimada') === this.tableros.ManzanaAnimada.dameValor();
     };
     return ElMonoQueSabeContar;
 })(EscenaActividad);
