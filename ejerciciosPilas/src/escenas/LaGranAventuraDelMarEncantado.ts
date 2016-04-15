@@ -47,7 +47,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.caballero.x += 19;
         this.caballero.escala *= 1.5;
 
-        this.princesa = new Princesa(0, 0);
+        this.princesa = new Principe(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.princesa, 1, 2);
         this.princesa.x -= 19;
         this.princesa.escala *= 1.5;
@@ -60,7 +60,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
         this.cuadricula.agregarActorEnPerspectiva(this.unicornio, 3, 4);
         this.unicornio.escala *= 1.5;
 
-        this.automata = new ActorCompuesto(0, 0, { subactores: [new HeroeAnimado(0, 0)] });
+        this.automata = new ActorCompuesto(0, 0, { subactores: [new Heroina(0, 0)] });
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 3, 0);
         this.automata.escala *= 0.08;
 
@@ -95,7 +95,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
             builder.agregarError(estados[i],'atacarConEspada','Para atacar al caballero, el mago debe darte la espada.');
           }
           if(estados[i]!='princesaRescatada'){
-            builder.agregarError(estados[i],'escaparEnUnicornio','Para escapar en unicornio, debés rescatar a la princesa.');
+            builder.agregarError(estados[i],'escaparEnUnicornio','Para escapar en unicornio, debés rescatar al príncipe.');
           }
         }
 
