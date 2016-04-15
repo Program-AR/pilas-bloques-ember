@@ -1549,15 +1549,30 @@ var GloboAnimado = (function (_super) {
 var HeroeAnimado = (function (_super) {
     __extends(HeroeAnimado, _super);
     function HeroeAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'heroe.png', cantColumnas: 6, cantFilas: 5 });
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: this.nombreArchivo(), cantColumnas: 6, cantFilas: 5 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
         this.definirAnimacion("parado", [0], 6, true);
         this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
         this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
         this.definirAnimacion("atacar", new Cuadros([24, 25, 26, 27, 28, 29]).repetirVeces(3), 6);
     }
+    HeroeAnimado.prototype.nombreArchivo = function () {
+        return 'heroe.png';
+    };
     return HeroeAnimado;
 })(ActorAnimado);
+var Heroina = (function (_super) {
+    __extends(Heroina, _super);
+    function Heroina() {
+        _super.apply(this, arguments);
+    }
+    Heroina.prototype.nombreArchivo = function () {
+        return 'heroina.png';
+    };
+    return Heroina;
+})(HeroeAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var HierroAnimado = (function (_super) {
     __extends(HierroAnimado, _super);
@@ -1850,12 +1865,25 @@ var PezAnimado = (function (_super) {
 var Princesa = (function (_super) {
     __extends(Princesa, _super);
     function Princesa(x, y) {
-        _super.call(this, x, y, { grilla: 'princesa.png', cantColumnas: 2 });
+        _super.call(this, x, y, { grilla: this.nombreArchivo(), cantColumnas: 2 });
         this.definirAnimacion("parado", new Cuadros(1).repetirVeces(20).concat([0, 0, 0, 0]), 2, true);
         this.definirAnimacion("correr", [0], 6);
     }
+    Princesa.prototype.nombreArchivo = function () {
+        return 'princesa.png';
+    };
     return Princesa;
 })(ActorAnimado);
+var Principe = (function (_super) {
+    __extends(Principe, _super);
+    function Principe() {
+        _super.apply(this, arguments);
+    }
+    Principe.prototype.nombreArchivo = function () {
+        return 'principe.png';
+    };
+    return Principe;
+})(Princesa);
 /// <reference path="ActorAnimado.ts"/>
 var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
@@ -3712,7 +3740,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.cuadricula.agregarActorEnPerspectiva(this.caballero, 1, 2);
         this.caballero.x += 19;
         this.caballero.escala *= 1.5;
-        this.princesa = new Princesa(0, 0);
+        this.princesa = new Principe(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.princesa, 1, 2);
         this.princesa.x -= 19;
         this.princesa.escala *= 1.5;
@@ -3722,7 +3750,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         this.unicornio = new UnicornioAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.unicornio, 3, 4);
         this.unicornio.escala *= 1.5;
-        this.automata = new ActorCompuesto(0, 0, { subactores: [new HeroeAnimado(0, 0)] });
+        this.automata = new ActorCompuesto(0, 0, { subactores: [new Heroina(0, 0)] });
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 3, 0);
         this.automata.escala *= 0.08;
         // se carga el estado inicial
@@ -3752,7 +3780,7 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
                 builder.agregarError(estados[i], 'atacarConEspada', 'Para atacar al caballero, el mago debe darte la espada.');
             }
             if (estados[i] != 'princesaRescatada') {
-                builder.agregarError(estados[i], 'escaparEnUnicornio', 'Para escapar en unicornio, debés rescatar a la princesa.');
+                builder.agregarError(estados[i], 'escaparEnUnicornio', 'Para escapar en unicornio, debés rescatar al príncipe.');
             }
         }
         this.estado = builder.estadoInicial();
