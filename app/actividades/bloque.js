@@ -56,6 +56,12 @@ var Bloque = Ember.Object.extend({
     return new Blockly.FieldImage('iconos/' + nombre, 16, 16, '<');
   },
 
+  categoria(){
+    return this._categoria;
+  },
+
+  _categoria: 'Comandos',
+
   // Escupe el código que va en el toolbox para el bloque
   build() {
     var str_block = '';
@@ -67,6 +73,12 @@ var Bloque = Ember.Object.extend({
 
     str_block += '</block>';
     return str_block;
+  }
+});
+
+Bloque.reopenClass({
+  categoria(){
+    return this.create().categoria();
   }
 });
 

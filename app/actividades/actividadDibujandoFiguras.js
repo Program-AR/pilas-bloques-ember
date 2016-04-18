@@ -19,12 +19,12 @@ var DibujarLado = Accion.extend({
     nombre_comportamiento() {
         return 'DibujarHaciaAdelante';
     },
-    
+
     argumentos(block) {
         var longitud = Blockly.JavaScript.valueToCode(block, 'longitud', Blockly.JavaScript.ORDER_ATOMIC);
         return '{distancia: (' + longitud + '), voltearAlIrAIzquierda: false}';
     },
-    
+
     get_parametros() {
         return [
             ParamValor.create({
@@ -56,12 +56,12 @@ var GirarGrados = Accion.extend({
     nombre_comportamiento() {
         return 'Rotar';
     },
-    
+
     argumentos(block) {
         var grados = Blockly.JavaScript.valueToCode(block, 'grados', Blockly.JavaScript.ORDER_ATOMIC);
         return '{angulo: (-' + grados + ')}';
     },
-    
+
     get_parametros() {
         return [
             ParamValor.create({
@@ -87,7 +87,6 @@ export default {
   procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
   usaParametros: true,
   control: [Repetir,Si,Sino,Hasta],
   expresiones: [],

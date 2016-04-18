@@ -31,7 +31,6 @@ export default {
   procedimientos: [Procedimiento],
 
   // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
   usaParametros: true,
 
   control: [Repetir,Si,Sino,Hasta],

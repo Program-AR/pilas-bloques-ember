@@ -18,6 +18,8 @@ var CambioDeJSDeBlocky = Bloque.extend({
 
 var VariableGet = CambioDeJSDeBlocky.extend({
 
+  _categoria: 'Variables',
+
   init() {
     this._super();
     this.set('id', 'variables_get');
@@ -34,6 +36,8 @@ var VariableGet = CambioDeJSDeBlocky.extend({
 
 
 var VariableSet = CambioDeJSDeBlocky.extend({
+
+  _categoria: 'Variables',
 
   init() {
     this._super();
@@ -55,6 +59,8 @@ var VariableSet = CambioDeJSDeBlocky.extend({
 
 var VariableLocalGet = CambioDeJSDeBlocky.extend({
 
+  _categoria: 'Variables',
+
   init() {
     this._super();
     this.set('id', 'local_var_get');
@@ -72,6 +78,8 @@ var VariableLocalGet = CambioDeJSDeBlocky.extend({
 /* ============================================== */
 
 var VariableLocalSet = CambioDeJSDeBlocky.extend({
+
+  _categoria: 'Variables',
 
   init() {
     this._super();
@@ -92,6 +100,8 @@ var VariableLocalSet = CambioDeJSDeBlocky.extend({
 /* ============================================== */
 
 var Procedimiento = CambioDeJSDeBlocky.extend({
+
+  _categoria: 'Mis procedimientos',
 
   init() {
     this._super();
@@ -142,6 +152,8 @@ var Procedimiento = CambioDeJSDeBlocky.extend({
 
 var Funcion = CambioDeJSDeBlocky.extend({
 
+  _categoria: 'Mis funciones',
+
   init() {
     this._super();
     this.set('id', 'procedures_defreturn');
@@ -157,6 +169,8 @@ var Funcion = CambioDeJSDeBlocky.extend({
 /* ============================================== */
 
 var CallNoReturn = CambioDeJSDeBlocky.extend({
+
+  _categoria: 'Mis procedimientos',
 
   init() {
     this._super();
@@ -192,6 +206,8 @@ var CallNoReturn = CambioDeJSDeBlocky.extend({
 
 var CallReturn = CambioDeJSDeBlocky.extend({
 
+  _categoria: 'Mis funciones',
+
   init() {
     this._super();
     this.set('id', 'procedures_callreturn');
@@ -216,6 +232,8 @@ var CallReturn = CambioDeJSDeBlocky.extend({
 /* ============================================== */
 
 var ParamGet = CambioDeJSDeBlocky.extend({
+
+  _categoria: 'Mis procedimientos',
 
   init() {
     this._super();
@@ -303,6 +321,8 @@ var Accion = Bloque.extend({
 });
 
 var Sensor = Bloque.extend({
+
+  _categoria: 'Sensores',
 
   block_init(block) {
     this._super(block);
@@ -412,6 +432,8 @@ var ParamCampo = Ember.Object.extend({
 /* ============================================== */
 
 var EstructuraDeControl = Bloque.extend({
+
+  _categoria: 'Control',
 
   block_init(block) {
     this._super(block);
@@ -552,7 +574,7 @@ var Hasta = EstructuraDeControl.extend({
 
 var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
-               Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder, 
+               Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder,
                Sensor, Repetir,Si,Sino,Hasta, ParamCampo, ParamValor};
 
 export default bloques;
