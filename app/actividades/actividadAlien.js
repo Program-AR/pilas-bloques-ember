@@ -60,15 +60,8 @@ var actividadAlien = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, LevantarTuerca],
-  sensores: [TocandoTuerca]
+  bloques: [Procedimiento, Repetir, IrDerecha, IrIzquierda, IrArriba, IrAbajo, LevantarTuerca, TocandoTuerca],
 };
 
 export default actividadAlien;

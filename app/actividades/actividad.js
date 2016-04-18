@@ -38,24 +38,7 @@ var Actividad = Ember.Object.extend({
     var act = this.get('actividad');
     var leng = Lenguaje.create();
 
-    var bloques_para_toolbox = {
-      Acciones: 'acciones',
-      Sensores: 'sensores',
-      Control: 'control',
-      Expresiones: 'expresiones',
-      Variables: 'variables',
-      Procedimientos: 'procedimientos'
-    };
-
-    // Itera por todos los bloques y los agrega al toolbox solamente
-    // si tienen piezas para mostrar.
-    for (let key in bloques_para_toolbox) {
-      let nCategoria = bloques_para_toolbox[key];
-
-      if (act[nCategoria] !== undefined && act[nCategoria].length > 0 ) {
-        act[nCategoria].forEach(claseBloque => leng.agregarBloque(claseBloque));
-      }
-    }
+    act.bloques.forEach(claseBloque => leng.agregarBloque(claseBloque));
 
     return leng.build();
   },
@@ -81,12 +64,12 @@ var Actividad = Ember.Object.extend({
   },
 
   usa_procedimientos() {
-    return this.get('actividad').procedimientos.indexOf(Procedimiento) > -1;
+    return this.get('actividad').bloques.indexOf(Procedimiento) > -1;
 
   },
 
   usa_funciones() {
-    return this.get('actividad').procedimientos.indexOf(Funcion) > -1;
+    return this.get('actividad').bloques.indexOf(Funcion) > -1;
   },
 
   iniciarBlockly(contenedor) {
