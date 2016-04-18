@@ -50,10 +50,10 @@ var Actividad = Ember.Object.extend({
     // Itera por todos los bloques y los agrega al toolbox solamente
     // si tienen piezas para mostrar.
     for (let key in bloques_para_toolbox) {
-      let propiedad = bloques_para_toolbox[key];
+      let nCategoria = bloques_para_toolbox[key];
 
-      if (act[propiedad] !== undefined && act[propiedad].length > 0 ) {
-        leng.agregar(act[propiedad][0].categoria(), act[propiedad]);
+      if (act[nCategoria] !== undefined && act[nCategoria].length > 0 ) {
+        act[nCategoria].forEach(claseBloque => leng.agregarBloque(claseBloque));
       }
     }
 

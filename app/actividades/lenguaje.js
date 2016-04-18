@@ -13,28 +13,20 @@ var Lenguaje = Ember.Object.extend({
     this.set('bloques', {});
   },
 
-  agregar(c, bs) {
-    if(bs !== undefined) {
-      this.categoria(c);
-      bs.forEach(function (b) {
-        this.bloque(c, b);
-      }.bind(this));
-    }
-  },
-
-  categoria(c) {
+  agregarCategoria(c) {
     if(this.get('bloques')[c] === undefined){
       this.get('bloques')[c] = [];
     }
   },
 
-  bloque(c, b) {
-    var block = this.definir_bloque(b);
-    this.get('bloques')[c].pushObject(block);
+  agregarBloque(claseBloque) {
+    this.agregarCategoria(claseBloque.categoria());
+    this.get('bloques')[claseBloque.categoria()].pushObject(
+      this.definir_bloque(claseBloque));
   },
 
-  definir_bloque(b) {
-    var block = b.create();
+  definir_bloque(claseBloque) {
+    var block = claseBloque.create();
     block.registrar_en_blockly();
     return block;
   },
