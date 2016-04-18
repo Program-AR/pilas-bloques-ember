@@ -94,22 +94,21 @@ var Actividad = Ember.Object.extend({
   },
 
   iniciarBlockly(contenedor) {
-    var actividad = this;
 
     Blockly.inject(contenedor, {
       collapse: false,
-      duplicate: actividad.get('puedeDuplicar'),
+      duplicate: this.get('puedeDuplicar'),
       trashOnlyDelete: true,
-      disable: actividad.get('puedeDesactivar'),
-      comments: actividad.get('puedeComentar'),
+      disable: this.get('puedeDesactivar'),
+      comments: this.get('puedeComentar'),
       defsOnly: true,
-      def_procedures: actividad.usa_procedimientos(),
-      def_functions: actividad.usa_funciones(),
+      def_procedures: this.usa_procedimientos(),
+      def_functions: this.usa_funciones(),
       globalVariables: false,
       oneReturnOnly: true,
       defsNames: ['al_empezar_a_ejecutar', 'procedures_defnoreturn', 'procedures_defreturn'],
       path: './libs/blockly/',
-      toolbox: Blockly.Xml.textToDom(actividad.obtenerLenguaje()),
+      toolbox: Blockly.Xml.textToDom(this.obtenerLenguaje()),
     });
 
     this.crear_bloques_iniciales();
