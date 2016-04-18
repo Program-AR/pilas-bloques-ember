@@ -13,7 +13,7 @@ var actividadElMarcianoEnElDesierto = {
   nombre: 'El marciano en el desierto',
   id: 'ElMarcianoEnElDesierto',
   enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a comer las frutas. Pista: Crear un procedimiento (bloque) para cada conjunto de manzanas',
-  consignaInicial: 'Conviene pensar una estrategia general de resolución antes de construir el programa. Por ejemplo: comer las manzanas de abajo, luego las del costado y por último las de arriba.',
+  consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
 
   escena: ElMarcianoEnElDesierto,
   puedeComentar: false,
