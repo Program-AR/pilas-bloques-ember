@@ -10,7 +10,6 @@ import Ember from 'ember';
 var Lenguaje = Ember.Object.extend({
 
   init() {
-    this.set('categorias', []);
     this.set('bloques', {});
   },
 
@@ -24,10 +23,9 @@ var Lenguaje = Ember.Object.extend({
   },
 
   categoria(c) {
-    this.get('categorias').pushObject(c);
-    var bs = this.get('bloques');
-    bs[c] = [];
-    this.set('bloques', bs);
+    if(this.get('bloques')[c] === undefined){
+      this.get('bloques')[c] = [];
+    }
   },
 
   bloque(c, b) {
@@ -46,15 +44,15 @@ var Lenguaje = Ember.Object.extend({
 
     str_toolbox += '<xml>';
 
-    this.get('categorias').forEach(function(item) {
-      if (item === 'Variables') {
+    for (var categoria in this.get('bloques')) {
+      if (categoria === 'Variables') {
         str_toolbox += this._build_variables();
-      } else if (item === 'Procedimientos') {
+      } else if (categoria === 'Mis procedimientos') {
         str_toolbox += this._build_procedures();
       } else {
-        str_toolbox += this._build_categoria(item);
+        str_toolbox += this._build_categoria(categoria);
       }
-    }.bind(this));
+    }
 
     str_toolbox += '</xml>';
 
@@ -76,7 +74,7 @@ var Lenguaje = Ember.Object.extend({
   },
 
   _build_procedures() {
-    return '<category name="Procedimientos" custom="PROCEDURE"></category>';
+    return '<category name="Mis procedimientos" custom="PROCEDURE"></category>';
   },
 
   _build_variables() {
