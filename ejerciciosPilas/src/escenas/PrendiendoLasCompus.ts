@@ -12,7 +12,10 @@ class PrendiendoLasCompus extends EscenaActividad {
     cantidadFilas;
     cantidadColumnas;
     ladoCasilla;
+    compus;
+
     iniciar() {
+        this.compus = [];
         this.cantidadMaxColumnas=12;
         this.cantidadMinColumnas=4;
         this.cantidadMaxFilas=10;
@@ -35,15 +38,25 @@ class PrendiendoLasCompus extends EscenaActividad {
     private completarConCompusEnLaterales(){
         //Completo la primer y ultima fila
         for(var i=1;i<this.cantidadColumnas-1;++i){
-          this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
-          this.cuadricula.agregarActor(new CompuAnimada(0,0),this.cantidadFilas-1,i);
+          this.addCompu(0,i);
+          this.addCompu(this.cantidadFilas-1,i);
         }
         //Completo la primer y ultima columna
         for(var i=1;i<this.cantidadFilas-1;++i){
-          this.cuadricula.agregarActor(new CompuAnimada(0,0),i,0);
-          this.cuadricula.agregarActor(new CompuAnimada(0,0),i,this.cantidadColumnas-1);
+          this.addCompu(i,0);
+          this.addCompu(i,this.cantidadColumnas-1);
         }
 
+    }
+
+    addCompu(fila, columna){
+      var compu = new CompuAnimada(0,0);
+      this.cuadricula.agregarActor(compu,fila,columna);
+      this.compus.push(compu);
+    }
+
+    estaResueltoElProblema(){
+      return this.compus.every(compu => compu.nombreAnimacionActual() === 'prendida');
     }
 
 }

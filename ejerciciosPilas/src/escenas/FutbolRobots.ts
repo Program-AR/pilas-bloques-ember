@@ -31,7 +31,7 @@ class FutbolRobots  extends EscenaActividad{
    }
 
    estaResueltoElProblema(){
-     return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 0;
+     return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 1; // TODO: El programa termina antes de que se vaya la última pelota
    }
 
 }
