@@ -95,6 +95,4 @@ var ComerNaranja = Accion.extend({
   }
 });
 
-var comer= {ComerBanana,ComerManzana,ComerQueso,ComerNaranja};
-
-export default comer;
+export {ComerBanana,ComerManzana,ComerQueso,ComerNaranja};

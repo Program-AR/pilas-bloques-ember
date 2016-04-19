@@ -119,4 +119,4 @@ var SiguienteColumna = AccionBuilder.build({
   argumentos: '{}',
 });
 
-export default {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna};
+export {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna};

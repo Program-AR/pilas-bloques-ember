@@ -52,11 +52,7 @@ var OpNegacion = ExpresionDeBlockly.extend({
   },
 });
 
-
-var expresiones = {
+export {
   ExpresionDeBlockly, Numero, OpAritmetica, Booleano,
   OpComparacion, OpLogica, OpNegacion
 };
-
-
-export default expresiones;

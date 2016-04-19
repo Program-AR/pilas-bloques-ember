@@ -570,10 +570,7 @@ var Hasta = EstructuraDeControl.extend({
 
 });
 
-
-var bloques = {Bloque, CambioDeJSDeBlocky, VariableGet,
+export {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder,
                Sensor, Repetir,Si,Sino,Hasta, ParamCampo, ParamValor};
-
-export default bloques;

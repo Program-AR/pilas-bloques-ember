@@ -64,6 +64,5 @@ var TocandoFinal = Sensor.extend({
     return 'estoyUltimaFila()';
   }
 });
-var bloquesTito = {EncenderLuz,TocandoLuz,TocandoFinal};
 
-export default bloquesTito;
+export {EncenderLuz,TocandoLuz,TocandoFinal};

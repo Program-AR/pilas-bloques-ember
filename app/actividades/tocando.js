@@ -138,6 +138,4 @@ var TocandoFinCamino = Sensor.extend({
   }
 });
 
-var tocando = {TocandoBanana,TocandoManzana,TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso,TocandoNaranja};
-
-export default tocando;
+export default {TocandoBanana,TocandoManzana,TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso,TocandoNaranja};

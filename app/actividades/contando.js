@@ -15,4 +15,4 @@ var ContarManzana = AccionBuilder.build({
   argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
 });
 
-export default {ContarBanana,ContarManzana};
+export {ContarBanana,ContarManzana};

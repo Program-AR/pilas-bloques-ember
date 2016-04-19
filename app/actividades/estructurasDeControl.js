@@ -141,7 +141,4 @@ var Hasta = EstructuraDeControl.extend({
 
 });
 
-var estructurasDeControl = {EstructuraDeControl, Repetir, Si,
-  Sino, Hasta};
-
-export default estructurasDeControl;
+export {EstructuraDeControl, Repetir, Si,  Sino, Hasta};
