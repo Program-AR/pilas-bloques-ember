@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import {Comandos} from 'pilas-engine-bloques/actividades/categorias';
 
 Blockly.Blocks.primitivas = { };
 Blockly.Blocks.sensores = { };
@@ -60,7 +61,7 @@ var Bloque = Ember.Object.extend({
     return this._categoria;
   },
 
-  _categoria: 'Comandos',
+  _categoria: Comandos,
 
   // Escupe el código que va en el toolbox para el bloque
   build() {

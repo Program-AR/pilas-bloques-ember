@@ -1,5 +1,5 @@
 import Ember from 'ember';
-
+import {Comandos,MisProcedimientos,Control,Separador,Variables,Sensores,Expresiones,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
 
 /* ============================================== */
 
@@ -10,19 +10,11 @@ import Ember from 'ember';
 var Lenguaje = Ember.Object.extend({
 
   init() {
-    this.set('bloques', {});
-  },
-
-  agregarCategoria(c) {
-    if(this.get('bloques')[c] === undefined){
-      this.get('bloques')[c] = [];
-    }
+    this.set('bloques', []);
   },
 
   agregarBloque(claseBloque) {
-    this.agregarCategoria(claseBloque.categoria());
-    this.get('bloques')[claseBloque.categoria()].pushObject(
-      this.definir_bloque(claseBloque));
+    this.get('bloques').pushObject(this.definir_bloque(claseBloque));
   },
 
   definir_bloque(claseBloque) {
@@ -31,48 +23,35 @@ var Lenguaje = Ember.Object.extend({
     return block;
   },
 
+  ordenCategorias(){
+    return [
+      Comandos,
+      MisProcedimientos,
+      Control,
+      Separador,
+      Variables,
+      Separador,
+      Sensores,
+      Expresiones,
+      MisFunciones,
+    ];
+  },
+
   build() {
     var str_toolbox = '';
 
     str_toolbox += '<xml>';
 
-    for (var categoria in this.get('bloques')) {
-      if (categoria === 'Variables') {
-        str_toolbox += this._build_variables();
-      } else if (categoria === 'Mis procedimientos') {
-        str_toolbox += this._build_procedures();
-      } else {
-        str_toolbox += this._build_categoria(categoria);
-      }
-    }
+    this.ordenCategorias().forEach(categoria => str_toolbox += this.xmlCategoria(categoria));
 
     str_toolbox += '</xml>';
 
     return str_toolbox;
   },
 
-  _build_categoria(categoria) {
-    var str_category = '';
-
-    str_category += '<category name="x">\n'.replace('x', categoria);
-
-    this.get('bloques')[categoria].forEach(function(b) {
-       str_category += b.build();
-    });
-
-    str_category += '</category>\n';
-
-    return str_category;
-  },
-
-  _build_procedures() {
-    return '<category name="Mis procedimientos" custom="PROCEDURE"></category>';
-  },
-
-  _build_variables() {
-    return '<category name="Variables" custom="VARIABLE"></category>';
+  xmlCategoria(categoria) {
+    return categoria.generarXML(this.get('bloques'));
   }
-
 });
 
 

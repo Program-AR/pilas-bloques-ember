@@ -1,7 +1,6 @@
 import Ember from 'ember';
-
 import Bloque from 'pilas-engine-bloques/actividades/bloque';
-
+import {MisProcedimientos,Control,Variables,Sensores,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
 /*
  * Pide implementar sólo block_javascript
  * Sirve para pisar el JS que produce blockly
@@ -18,7 +17,7 @@ var CambioDeJSDeBlocky = Bloque.extend({
 
 var VariableGet = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Variables',
+  _categoria: Variables,
 
   init() {
     this._super();
@@ -37,7 +36,7 @@ var VariableGet = CambioDeJSDeBlocky.extend({
 
 var VariableSet = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Variables',
+  _categoria: Variables,
 
   init() {
     this._super();
@@ -59,7 +58,7 @@ var VariableSet = CambioDeJSDeBlocky.extend({
 
 var VariableLocalGet = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Variables',
+  _categoria: Variables,
 
   init() {
     this._super();
@@ -79,7 +78,7 @@ var VariableLocalGet = CambioDeJSDeBlocky.extend({
 
 var VariableLocalSet = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Variables',
+  _categoria: Variables,
 
   init() {
     this._super();
@@ -101,7 +100,7 @@ var VariableLocalSet = CambioDeJSDeBlocky.extend({
 
 var Procedimiento = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Mis procedimientos',
+  _categoria: MisProcedimientos,
 
   init() {
     this._super();
@@ -152,7 +151,7 @@ var Procedimiento = CambioDeJSDeBlocky.extend({
 
 var Funcion = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Mis funciones',
+  _categoria: MisFunciones,
 
   init() {
     this._super();
@@ -170,7 +169,7 @@ var Funcion = CambioDeJSDeBlocky.extend({
 
 var CallNoReturn = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Mis procedimientos',
+  _categoria: MisProcedimientos,
 
   init() {
     this._super();
@@ -206,7 +205,7 @@ var CallNoReturn = CambioDeJSDeBlocky.extend({
 
 var CallReturn = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Mis funciones',
+  _categoria: MisFunciones,
 
   init() {
     this._super();
@@ -233,7 +232,7 @@ var CallReturn = CambioDeJSDeBlocky.extend({
 
 var ParamGet = CambioDeJSDeBlocky.extend({
 
-  _categoria: 'Mis procedimientos',
+  _categoria: MisProcedimientos,
 
   init() {
     this._super();
@@ -322,7 +321,7 @@ var Accion = Bloque.extend({
 
 var Sensor = Bloque.extend({
 
-  _categoria: 'Sensores',
+  _categoria: Sensores,
 
   block_init(block) {
     this._super(block);
@@ -433,7 +432,7 @@ var ParamCampo = Ember.Object.extend({
 
 var EstructuraDeControl = Bloque.extend({
 
-  _categoria: 'Control',
+  _categoria: Control,
 
   block_init(block) {
     this._super(block);
