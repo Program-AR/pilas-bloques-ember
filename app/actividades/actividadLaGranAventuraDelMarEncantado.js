@@ -53,10 +53,6 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
-  variables: [],
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave, AbrirCofre, DarSombrero, AtacarConEspada, EscaparEnUnicornio],
-  sensores: []
+
+  bloques: [Procedimiento, Repetir, IrDerecha, IrIzquierda, IrArriba, IrAbajo, AgarrarLlave, AbrirCofre, DarSombrero, AtacarConEspada, EscaparEnUnicornio],
 };

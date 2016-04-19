@@ -104,15 +104,8 @@ var actividadReparandoLaNave = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon,Depositar,Escapar],
-  sensores: []
+  bloques: [Procedimiento, Repetir, IrDerecha, IrIzquierda, IrArriba, IrAbajo, TomarHierro, TomarCarbon,Depositar,Escapar],
 };
 
 export default actividadReparandoLaNave;

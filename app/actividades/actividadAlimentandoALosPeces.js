@@ -72,15 +72,8 @@ var actividadAlimentandoALosPeces = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha,IrIzquierda,IrAbajo,IrArriba,AlimentarPez,AgarrarComida],
-  sensores: [],
+  bloques: [Procedimiento,Repetir,IrDerecha,IrIzquierda,IrAbajo,IrArriba,AlimentarPez,AgarrarComida],
 };
 
 export default actividadAlimentandoALosPeces;

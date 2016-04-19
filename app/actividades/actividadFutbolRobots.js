@@ -39,12 +39,6 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [Repetir,Si,Sino,Hasta],
-  expresiones: [],
-  acciones: [IrDerecha,IrIzquierda,SiguienteFila,PatearPelota],
-  sensores: [TocandoInicio,TocandoPelota],
+  bloques: [Procedimiento, IrDerecha,IrIzquierda,SiguienteFila,PatearPelota, TocandoInicio,TocandoPelota, Repetir,Si,Sino,Hasta],
 };

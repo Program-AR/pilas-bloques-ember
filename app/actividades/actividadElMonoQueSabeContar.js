@@ -26,9 +26,8 @@ elMonoQueSabeContar.id = 'ElMonoQueSabeContar';
 elMonoQueSabeContar.enunciado = 'El mono debe recorrer todas las casillas y contar cuántas bananas y manzanas hay en total. Pista: primero pensá cómo contarías si hay una manzana o una banana en una casilla determinada. Luego pensá cómo harías para contar todas las frutas de una sola columna.';
 elMonoQueSabeContar.consignaInicial = 'Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.';
 elMonoQueSabeContar.escena = ElMonoQueSabeContar;
-elMonoQueSabeContar.sensores = elMonoCuentaDeNuevo.sensores.slice();
-elMonoQueSabeContar.sensores.push(EstoyAlFin);
-elMonoQueSabeContar.sensores.push(EstoyAlInicio);
-elMonoQueSabeContar.variables = [];
+elMonoQueSabeContar.bloques = elMonoCuentaDeNuevo.bloques.slice();
+elMonoQueSabeContar.bloques.push(EstoyAlFin);
+elMonoQueSabeContar.bloques.push(EstoyAlInicio);
 
 export default elMonoQueSabeContar;

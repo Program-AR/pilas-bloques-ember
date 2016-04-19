@@ -19,14 +19,8 @@ var actividadLaberintoConQueso = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [Repetir,Si,Sino,Hasta],
-  expresiones: [],
-  acciones: [IrDerecha,IrAbajo,ComerQueso],
-  sensores: [TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso],
+  bloques: [Procedimiento, IrDerecha,IrAbajo,ComerQueso, Repetir,Si,Sino,Hasta, TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso],
 };
 
 export default actividadLaberintoConQueso;

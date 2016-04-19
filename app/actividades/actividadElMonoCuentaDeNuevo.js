@@ -33,10 +33,8 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  variables: [LargoFilaActual],
-  control: [Repetir, Si, Sino, Hasta],
-  acciones: [IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana],
-  sensores: [TocandoBanana, TocandoManzana],
+  bloques: [Procedimiento, IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana,
+    TocandoBanana, TocandoManzana, Repetir, Si, Sino, Hasta, LargoFilaActual],
+
 };

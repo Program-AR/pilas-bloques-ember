@@ -40,12 +40,6 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [Repetir, Si, Sino, Hasta],
-  expresiones: [],
-  acciones: [PrimerSospechoso,SiguienteSospechoso,SacarDisfraz],
-  sensores: [EsCulpable],
+  bloques: [Repetir, Si, Sino, Hasta,Procedimiento,PrimerSospechoso,SiguienteSospechoso,SacarDisfraz,EsCulpable],
 };

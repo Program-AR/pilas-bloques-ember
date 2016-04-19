@@ -17,14 +17,8 @@ var actividadLaberintoLargo = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [Repetir,Si,Sino],
-  expresiones: [],
-  acciones: [IrDerecha,IrAbajo,Hasta],
-  sensores: [TocandoAbajo,TocandoDerecha,TocandoFinCamino],
+  bloques: [Procedimiento, IrDerecha,IrAbajo,Hasta, Repetir,Si,Sino, TocandoAbajo,TocandoDerecha,TocandoFinCamino],
 };
 
 export default actividadLaberintoLargo;

@@ -84,12 +84,7 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
-
-  // TODO: aca irian atributos iniciales que se desean para un personaje
   usaParametros: true,
-  control: [Repetir,Si,Sino,Hasta],
-  expresiones: [],
-  acciones: [DibujarLado, GirarGrados],
-  sensores: [],
+
+  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,DibujarLado, GirarGrados],
 };

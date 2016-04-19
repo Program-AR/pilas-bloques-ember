@@ -1,5 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion} = bloques;
+var {Accion, Procedimiento} = bloques;
 
 var Avanzar = Accion.extend({
 
@@ -80,15 +80,8 @@ var actividadElObreroCopado = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [],
-  expresiones: [],
-  acciones: [Avanzar, Retroceder, Martillar],
-  sensores: [],
+  bloques: [Procedimiento, Avanzar, Retroceder, Martillar],
 };
 
 export default actividadElObreroCopado;

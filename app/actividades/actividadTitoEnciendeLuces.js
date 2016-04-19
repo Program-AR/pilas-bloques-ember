@@ -18,14 +18,8 @@ var actividadTitoEnciendeLuces = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un automata
-  variables: [],
-  control: [Repetir],
-  expresiones: [],
-  acciones: [EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
-  sensores: [],
+  bloques: [Procedimiento, Repetir, EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
 };
 
 export default actividadTitoEnciendeLuces;

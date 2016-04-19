@@ -185,15 +185,8 @@ var actividadInstalandoJuegos = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [SiguienteCompu,PrenderCompu,ApagarCompu,EscribirC,EscribirB,EscribirA,InstalarJuego],
-  sensores: [],
+  bloques: [Procedimiento, Repetir, SiguienteCompu,PrenderCompu,ApagarCompu,EscribirC,EscribirB,EscribirA,InstalarJuego],
 };
 
 export default actividadInstalandoJuegos;

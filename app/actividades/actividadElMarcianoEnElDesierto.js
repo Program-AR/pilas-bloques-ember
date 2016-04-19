@@ -19,15 +19,8 @@ var actividadElMarcianoEnElDesierto = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana],
-  sensores: []
+  bloques: [Repetir, Procedimiento, IrDerecha,IrIzquierda, IrArriba,IrAbajo,ComerManzana],
 };
 
 export default actividadElMarcianoEnElDesierto;

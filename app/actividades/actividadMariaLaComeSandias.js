@@ -41,15 +41,8 @@ var actividadMariaLaComeSandias = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha,IrIzquierda, IrArriba,IrAbajo,MorderSandia],
-  sensores: []
+  bloques: [Procedimiento, Repetir, IrDerecha,IrIzquierda, IrArriba,IrAbajo,MorderSandia],
 };
 
 export default actividadMariaLaComeSandias;

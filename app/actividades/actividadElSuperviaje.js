@@ -34,12 +34,6 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [KmsTotales],
-  control: [Repetir, Si, Sino, Hasta],
-  expresiones: [],
-  acciones: [Avanzar1km],
-  sensores: [],
+  bloques: [Procedimiento, KmsTotales, Avanzar1km, Repetir, Si, Sino, Hasta],
 };

@@ -65,15 +65,8 @@ var actividadElRecolectorDeEstrellas = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [IrDerecha, IrArriba,VolverABordeIzquierdo,TomarEstrella],
-  sensores: []
+  bloques: [Procedimiento, Repetir, IrDerecha, IrArriba,VolverABordeIzquierdo,TomarEstrella],
 };
 
 export default actividadElRecolectorDeEstrellas;

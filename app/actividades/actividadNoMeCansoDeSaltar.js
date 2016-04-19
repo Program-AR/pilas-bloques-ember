@@ -1,6 +1,6 @@
 /* globals NoMeCansoDeSaltar */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Repetir} = bloques;
+var {Accion, Repetir, Procedimiento} = bloques;
 
 var Saltar = Accion.extend({
 
@@ -37,15 +37,8 @@ var actividadNoMeCansoDeSaltar = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [Repetir],
-  expresiones: [],
-  acciones: [Saltar],
-  sensores: []
+  bloques: [Procedimiento, Repetir, Saltar],
 };
 
 export default actividadNoMeCansoDeSaltar;

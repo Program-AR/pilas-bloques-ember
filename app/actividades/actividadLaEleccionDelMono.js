@@ -131,14 +131,8 @@ var actividadLaEleccionDelMono = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [Repetir,Si,Sino],
-  expresiones: [],
-  acciones: [ComerManzana,ComerBanana,Avanzar],
-  sensores: [TocandoManzana,TocandoBanana],
+  bloques: [Procedimiento, ComerManzana,ComerBanana,Avanzar, TocandoManzana,TocandoBanana, Repetir,Si,Sino],
 };
 
 export default actividadLaEleccionDelMono;

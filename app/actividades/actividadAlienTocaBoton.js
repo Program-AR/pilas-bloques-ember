@@ -46,14 +46,8 @@ var actividadAlienTocaBoton = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-  control: [],
-  expresiones: [],
-  acciones: [IrDerecha,ApretarBoton],
-  sensores: [],
+  bloques: [IrDerecha,ApretarBoton],
 };
 
 export default actividadAlienTocaBoton;

@@ -16,14 +16,8 @@ var actividadTitoRecargado = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un automata
-  variables: [],
-  control: [Repetir,Si,Sino],
-  expresiones: [],
-  acciones: [EncenderLuz,IrAbajo],
-  sensores: [TocandoLuz],
+  bloques: [Procedimiento, TocandoLuz, EncenderLuz,IrAbajo, Repetir,Si,Sino],
 };
 
 export default actividadTitoRecargado;

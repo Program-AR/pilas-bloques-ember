@@ -17,11 +17,7 @@ var actividadTresNaranjas = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
-  variables: [],
-  control: [Repetir,Si,Sino],
-  expresiones: [],
-  acciones: [IrDerecha,ComerNaranja],
-  sensores: [TocandoNaranja]
+
+  bloques: [Procedimiento, IrDerecha,ComerNaranja, Repetir,Si,Sino, TocandoNaranja]
 };
 export default actividadTresNaranjas;

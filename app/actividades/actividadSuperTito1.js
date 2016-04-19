@@ -19,13 +19,8 @@ var actividadSuperTito1 = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  variables: [],
-  control: [Repetir,Si,Sino,Hasta],
-  expresiones: [],
-  acciones: [EncenderLuz,IrAbajo],
-  sensores: [TocandoFinal],
+  bloques: [Procedimiento, EncenderLuz,IrAbajo,  TocandoFinal, Repetir,Si,Sino,Hasta],
 };
 
 export default actividadSuperTito1;

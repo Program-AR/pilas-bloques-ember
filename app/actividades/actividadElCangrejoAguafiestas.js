@@ -14,15 +14,8 @@ var actividadElCangrejoAguafiestas = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-  procedimientos: [Procedimiento],
 
-  // TODO: aca irian atributos iniciales que se desean para un personaje
-  variables: [],
-
-  control: [],
-  expresiones: [],
-  acciones: [],
-  sensores: []
+  bloques: [Procedimiento],
 };
 
 export default actividadElCangrejoAguafiestas;
