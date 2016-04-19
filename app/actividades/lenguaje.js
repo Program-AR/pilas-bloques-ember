@@ -38,15 +38,9 @@ var Lenguaje = Ember.Object.extend({
   },
 
   build() {
-    var str_toolbox = '';
-
-    str_toolbox += '<xml>';
-
+    var str_toolbox = '<xml>';
     this.ordenCategorias().forEach(categoria => str_toolbox += this.xmlCategoria(categoria));
-
-    str_toolbox += '</xml>';
-
-    return str_toolbox;
+    return str_toolbox + '</xml>';
   },
 
   xmlCategoria(categoria) {
