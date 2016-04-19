@@ -29,7 +29,7 @@ var AtacarConEspada = AccionBuilder.build({
   descripcion: 'Atacar con espada',
   icono: 'icono.espada.png',
   comportamiento: 'SecuenciaAnimada',
-  argumentos: '{idTransicion: "atacarConEspada", secuencia: [new ComportamientoColision({etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}), new Sostener({etiqueta:"Princesa"})]}',
+  argumentos: '{idTransicion: "atacarConEspada", secuencia: [new ComportamientoColision({etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}), new Sostener({etiqueta:"Principe"})]}',
 });
 
 var EscaparEnUnicornio = AccionBuilder.build({
