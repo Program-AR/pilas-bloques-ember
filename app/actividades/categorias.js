@@ -52,5 +52,4 @@ export {
       Variables,
       Sensores,
       Expresiones,
-      MisFunciones,
-    };
+      MisFunciones  };
