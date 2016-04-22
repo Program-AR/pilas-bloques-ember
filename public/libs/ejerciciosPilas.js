@@ -3642,7 +3642,7 @@ var FutbolRobots = (function (_super) {
         }
     };
     FutbolRobots.prototype.estaResueltoElProblema = function () {
-        return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 0;
+        return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 1; // TODO: El programa termina antes de que se vaya la última pelota
     };
     return FutbolRobots;
 })(EscenaActividad);
@@ -4001,6 +4001,7 @@ var PrendiendoLasCompus = (function (_super) {
         _super.apply(this, arguments);
     }
     PrendiendoLasCompus.prototype.iniciar = function () {
+        this.compus = [];
         this.cantidadMaxColumnas = 12;
         this.cantidadMinColumnas = 4;
         this.cantidadMaxFilas = 10;
@@ -4017,14 +4018,22 @@ var PrendiendoLasCompus = (function (_super) {
     PrendiendoLasCompus.prototype.completarConCompusEnLaterales = function () {
         //Completo la primer y ultima fila
         for (var i = 1; i < this.cantidadColumnas - 1; ++i) {
-            this.cuadricula.agregarActor(new CompuAnimada(0, 0), 0, i);
-            this.cuadricula.agregarActor(new CompuAnimada(0, 0), this.cantidadFilas - 1, i);
+            this.addCompu(0, i);
+            this.addCompu(this.cantidadFilas - 1, i);
         }
         //Completo la primer y ultima columna
         for (var i = 1; i < this.cantidadFilas - 1; ++i) {
-            this.cuadricula.agregarActor(new CompuAnimada(0, 0), i, 0);
-            this.cuadricula.agregarActor(new CompuAnimada(0, 0), i, this.cantidadColumnas - 1);
+            this.addCompu(i, 0);
+            this.addCompu(i, this.cantidadColumnas - 1);
         }
+    };
+    PrendiendoLasCompus.prototype.addCompu = function (fila, columna) {
+        var compu = new CompuAnimada(0, 0);
+        this.cuadricula.agregarActor(compu, fila, columna);
+        this.compus.push(compu);
+    };
+    PrendiendoLasCompus.prototype.estaResueltoElProblema = function () {
+        return this.compus.every(function (compu) { return compu.nombreAnimacionActual() === 'prendida'; });
     };
     return PrendiendoLasCompus;
 })(EscenaActividad);
