@@ -23,6 +23,28 @@ var Lenguaje = Ember.Object.extend({
     return block;
   },
 
+/*
+Ejemplo con subcategorias:
+ordenCategorias(){
+  return [
+    Titulo('Comandos',[
+      Comandos,
+      MisProcedimientos,
+      Control,
+    ]),
+    Separador,
+    Variables,
+    Separador,
+    Titulo('Expresiones',[
+      Valores,
+      Sensores,
+      Operadores,
+      MisFunciones,
+    ]),
+  ];
+},
+*/
+
   ordenCategorias(){
     return [
       Comandos,

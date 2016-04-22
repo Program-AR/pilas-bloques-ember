@@ -50,7 +50,7 @@ Separador.generarXML = function(bloques){ // jshint ignore: line
 var Titulo = function(titulo, categorias) {
   var cat = new Categoria(titulo);
   cat.generarXML = function(bloques){ // jshint ignore: line
-    var str_category = '<category name="x">\n'.replace('x', this.nombre);
+    var str_category = '<category name="x" expanded="true">\n'.replace('x', this.nombre);
     var sinCategorias = str_category;
     categorias.forEach(c => str_category += c.generarXML(bloques));
     // si no se agregaron categorías, no genero nada:
