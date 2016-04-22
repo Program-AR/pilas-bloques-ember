@@ -19,7 +19,7 @@ Categoria.prototype =  {
   }
 };
 
-var Comandos = new Categoria('Comandos');
+var Comandos = new Categoria('Primitivas');
 
 var MisProcedimientos = new Categoria('Mis procedimientos');
 MisProcedimientos.doGenerarXML = function(bloques){ // jshint ignore: line
@@ -35,7 +35,9 @@ Variables.doGenerarXML = function(bloques){ // jshint ignore: line
 
 var Sensores = new Categoria('Sensores');
 
-var Expresiones = new Categoria('Expresiones');
+var Operadores = new Categoria('Operadores');
+
+var Valores = new Categoria('Valores');
 
 var MisFunciones = new Categoria('Mis funciones');
 
@@ -44,12 +46,27 @@ Separador.generarXML = function(bloques){ // jshint ignore: line
     return '<sep></sep>';
 };
 
+// TODO: repite código con Categoria
+var Titulo = function(titulo, categorias) {
+  var cat = new Categoria(titulo);
+  cat.generarXML = function(bloques){ // jshint ignore: line
+    var str_category = '<category name="x">\n'.replace('x', this.nombre);
+    var sinCategorias = str_category;
+    categorias.forEach(c => str_category += c.generarXML(bloques));
+    // si no se agregaron categorías, no genero nada:
+    return sinCategorias !== str_category ? str_category + '</category>\n' : '';
+  };
+  return cat;
+};
+
 export {
       Comandos,
       MisProcedimientos,
       Control,
       Separador,
       Variables,
+      Valores,
       Sensores,
-      Expresiones,
-      MisFunciones  };
+      Operadores,
+      MisFunciones,
+      Titulo };

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {Comandos,MisProcedimientos,Control,Separador,Variables,Sensores,Expresiones,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
+import {Comandos,MisProcedimientos,Control,Separador,Variables,Sensores,Valores,Operadores,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
 
 /* ============================================== */
 
@@ -31,8 +31,9 @@ var Lenguaje = Ember.Object.extend({
       Separador,
       Variables,
       Separador,
+      Valores,
       Sensores,
-      Expresiones,
+      Operadores,
       MisFunciones,
     ];
   },
@@ -47,8 +48,5 @@ var Lenguaje = Ember.Object.extend({
     return categoria.generarXML(this.get('bloques'));
   }
 });
-
-
-
 
 export default Lenguaje;
