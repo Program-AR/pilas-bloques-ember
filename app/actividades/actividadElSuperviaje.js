@@ -1,32 +1,33 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, VariableLocalGet} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} = bloques;
 
 var Avanzar1km = AccionBuilder.build({
   descripcion: 'Avanzar 1 Km',
-  icono: 'icono.computadora.png',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{etiqueta:"CompuAnimada", animacionColisionado:"prendida", nombreAnimacion: "escribir" }',
+  icono: '../../iconos/derecha.png',
+  comportamiento: 'VolarHeroicamente',
+  argumentos: '{}',
 });
 
-var KmsTotales = VariableLocalGet.extend({
+var KmsTotales = VariableEspecificaGet.extend({
   init() {
         this._super();
         this.set('id', 'KmsTotales');
   },
+  
+  nombre_sensor(){
+    return 'kmsTotales()';
+  },
 
-  block_init(block){
-    this._super(block);
-    block.appendDummyInput()
-      .appendField(this.obtener_icono('../libs/data/icono.espada.png'))
-      .appendField('Kms totales');
+  descripcion(){
+    return 'Kilómetros de distancia';
   },
 });
 
 export default {
   nombre: 'El Superviaje',
   id: 'ElSuperviaje',
-  enunciado: 'El superperro debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 50 y 200 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
+  enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 50 y 200 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
   consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
 
   // la escena proviene de ejerciciosPilas

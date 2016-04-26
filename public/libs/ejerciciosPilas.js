@@ -2021,6 +2021,18 @@ var Sospechoso = (function (_super) {
     };
     return Sospechoso;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var Superheroe = (function (_super) {
+    __extends(Superheroe, _super);
+    function Superheroe(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'superheroe.png', cantColumnas: 7 });
+        this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(10).concat([1, 0, 1, 0]), 6, true);
+        this.definirAnimacion('correr', [2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 6, 6], 6);
+    }
+    return Superheroe;
+})(ActorAnimado);
 /*Implementa un tablero, que tiene "nombre de equipo" y "puntaje"*/
 /*Notar que aumentar puede tomar valores negativos o positivos*/
 /* Para usarlo, hay que construirlo y setearle un observado
@@ -2874,6 +2886,27 @@ var Soltar = (function (_super) {
     };
     return Soltar;
 })(ComportamientoColision);
+/// <reference path = "ComportamientoConVelocidad.ts" />
+/// <reference path = "GirarMarquesina.ts" />
+var VolarHeroicamente = (function (_super) {
+    __extends(VolarHeroicamente, _super);
+    function VolarHeroicamente() {
+        _super.apply(this, arguments);
+    }
+    VolarHeroicamente.prototype.nombreAnimacion = function () {
+        return 'correr';
+    };
+    VolarHeroicamente.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
+        pilas.escena_actual().fondo.hacer_luego(GirarMarquesina, {});
+    };
+    VolarHeroicamente.prototype.postAnimacion = function () {
+        _super.prototype.postAnimacion.call(this);
+        if (this.receptor.fraseAlVolar)
+            this.receptor.decir(this.receptor.fraseAlVolar());
+    };
+    return VolarHeroicamente;
+})(ComportamientoConVelocidad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
@@ -4253,12 +4286,9 @@ var SuperTito2 = (function (_super) {
     return SuperTito2;
 })(SuperTito1);
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "../actores/Cuadricula.ts"/>
-/// <reference path = "../actores/PerroCohete.ts"/>
-/// <reference path = "../actores/Hueso.ts"/>
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts"/>
+/// <reference path = "Errores.ts" />
 /// <reference path = "../actores/FondoAnimado.ts"/>
+/// <reference path = "../actores/Superheroe.ts"/>
 /**
  * @class SuperViaje
  *
@@ -4267,31 +4297,26 @@ var SuperViaje = (function (_super) {
     __extends(SuperViaje, _super);
     function SuperViaje() {
         _super.apply(this, arguments);
-        this.totalKM = 10;
     }
     SuperViaje.prototype.iniciar = function () {
         this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
-        this.automata = new PerroCohete(0, 0);
-        this.restantesKM = this.totalKM;
-    };
-    SuperViaje.prototype.volarUnKM = function () {
-        if (this.restantesKM == 0) {
-            this.automata.decir("¡Llegué!");
-            return;
-        }
-        if (this.restantesKM == 1) {
-            this.automata.decir("¡Faltan 1 kilometro!");
-        }
-        else {
-            this.automata.decir("¡Faltan " + (this.restantesKM - 1) + " kilometros!");
-        }
-        this.restantesKM--;
-    };
-    SuperViaje.prototype.getKMFaltantes = function () {
-        return this.totalKM;
-    };
-    SuperViaje.prototype.setKMFaltantes = function (valor) {
-        this.totalKM = valor;
+        this.automata = new Superheroe();
+        this.automata.aprender(Flotar, { Desvio: 10 });
+        this.automata.totalKM = 50 + Math.round(Math.random() * 150);
+        this.automata.restantesKM = this.automata.totalKM;
+        this.automata.kmsTotales = function () {
+            return this.totalKM;
+        };
+        this.automata.fraseAlVolar = function () {
+            this.restantesKM--;
+            if (this.restantesKM == 0)
+                return "¡Llegué!";
+            if (this.restantesKM == 1)
+                return "¡Falta 1 kilometro!";
+            if (this.restantesKM < 0)
+                throw new ActividadError("¡Volé de más!");
+            return "¡Faltan " + this.restantesKM + " kilometros!";
+        };
     };
     return SuperViaje;
 })(EscenaActividad);
