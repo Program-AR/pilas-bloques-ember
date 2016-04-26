@@ -1,24 +1,21 @@
 /* globals ElMonoCuentaDeNuevo */
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import tocando from 'pilas-engine-bloques/actividades/tocando';
-import contando from 'pilas-engine-bloques/actividades/contando';
-var {Repetir, Si, Sino, Hasta, Procedimiento, VariableLocalGet} = bloques;
-var {IrArriba, IrAbajo, SiguienteColumna} = direcciones;
-var {TocandoBanana, TocandoManzana} = tocando;
-var {ContarBanana, ContarManzana} = contando;
+import {Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} from 'pilas-engine-bloques/actividades/bloques';
+import {IrArriba, IrAbajo, SiguienteColumna} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {TocandoBanana, TocandoManzana} from 'pilas-engine-bloques/actividades/tocando';
+import {ContarBanana, ContarManzana} from 'pilas-engine-bloques/actividades/contando';
 
-var LargoFilaActual = VariableLocalGet.extend({
+var LargoColumnaActual = VariableEspecificaGet.extend({
   init() {
         this._super();
         this.set('id', 'LargoColumnaActual');
   },
 
-  block_init(block){
-    this._super(block);
-    block.appendDummyInput()
-      .appendField(this.obtener_icono('../libs/data/icono.espada.png'))
-      .appendField('Largo columna actual');
+  nombre_sensor(){
+    return 'largoColumnaActual()-1';
+  },
+
+  descripcion(){
+    return 'largo de columna actual';
   },
 });
 
@@ -35,6 +32,6 @@ export default {
   puedeDuplicar: false,
 
   bloques: [Procedimiento, IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana,
-    TocandoBanana, TocandoManzana, Repetir, Si, Sino, Hasta, LargoFilaActual],
+    TocandoBanana, TocandoManzana, Repetir, Si, Sino, Hasta, LargoColumnaActual],
 
 };

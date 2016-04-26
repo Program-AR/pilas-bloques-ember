@@ -213,6 +213,9 @@ var ActorAnimado = (function (_super) {
             this.y = c.y;
         }
     };
+    ActorAnimado.prototype.largoColumnaActual = function () {
+        return this.cuadricula.largoColumna(this.casillaActual().nroColumna);
+    };
     ActorAnimado.prototype.cuando_busca_recoger = function () {
         pilas.escena_actual().intentaronRecoger();
     };
@@ -1359,6 +1362,9 @@ var CuadriculaMultipleColumnas = (function (_super) {
     CuadriculaMultipleColumnas.prototype.esInicio = function (casilla) {
         return casilla.nroFila === 0;
     };
+    CuadriculaMultipleColumnas.prototype.largoColumna = function (indice) {
+        return this.pmatrix.filter(function (fila) { return fila[indice] === 'T'; }).length;
+    };
     return CuadriculaMultipleColumnas;
 })(CuadriculaEsparsa);
 var CuadriculaMultiple = (function (_super) {
@@ -2044,7 +2050,13 @@ var Tablero = (function (_super) {
         }
     };
     Tablero.prototype.tuObservadoCambio = function (observado) {
-        this.setearValor(observado[this.atributoObservado]);
+        this.setearValor(this.leerObservado(observado));
+    };
+    Tablero.prototype.leerObservado = function (observado) {
+        if (typeof (observado[this.atributoObservado]) === "function") {
+            return observado[this.atributoObservado]();
+        }
+        return observado[this.atributoObservado];
     };
     return Tablero;
 })(ActorAnimado);
@@ -3397,7 +3409,16 @@ var ElMonoCuentaDeNuevo = (function (_super) {
     }
     ElMonoCuentaDeNuevo.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
-        this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Columna Actual" });
+        this.tableros.largoFila = new Tablero(0, 210, { texto: "Largo Columna Actual", atributoObservado: 'largoColumnaActual2' });
+        Trait.toObject(Observado, this.automata);
+        this.automata.largoColumnaActual2 = function () { return this.largoColumnaActual() - 1; };
+        this.automata.registrarObservador(this.tableros.largoFila);
+        this.automata.setCasillaActualViejo = this.automata.setCasillaActual;
+        this.automata.setCasillaActual = function (c, m) {
+            this.setCasillaActualViejo(c, m);
+            this.changed();
+        };
+        this.automata.changed();
     };
     ElMonoCuentaDeNuevo.prototype.cambiarImagenesFin = function () {
         //No hace nada

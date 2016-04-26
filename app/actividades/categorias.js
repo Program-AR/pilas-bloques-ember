@@ -12,27 +12,34 @@ Categoria.prototype =  {
     return '';
   },
 
-  doGenerarXML(clasesBloques){
-    var str_category = '<category name="x">\n'.replace('x', this.nombre);
+  doGenerarXML(clasesBloques){ //Template method
+    var str_category = ('<category name="x" ' + this.atributosExtra() + '>\n').replace('x', this.nombre);
     clasesBloques.forEach(b => str_category += b.build());
     return str_category + '</category>\n';
+  },
+
+  atributosExtra(){
+    return '';
   }
 };
 
 var Comandos = new Categoria('Primitivas');
 
 var MisProcedimientos = new Categoria('Mis procedimientos');
-MisProcedimientos.doGenerarXML = function(bloques){ // jshint ignore: line
-    return '<category name="'+ this.nombre +'" custom="PROCEDURE"></category>';
+MisProcedimientos.atributosExtra = function(){
+    return 'custom="PROCEDURE"';
 };
 
 var Control = new Categoria('Control');
 
 var Variables = new Categoria('Variables');
-Variables.doGenerarXML = function(bloques){ // jshint ignore: line
-    return '<category name="'+ this.nombre +'" custom="VARIABLE"></category>';
+/* TODO: Desactivado porque blockly trata diferente a estas cosas,
+  y no puedo meter variables ya creadas, con sólo sus getters.
+  Esto está en blockly/core/variables.js en Blockly.Variables.flyoutCategory
+Variables.atributosExtra = function(){
+    return 'custom="VARIABLE"';
 };
-
+*/
 var Sensores = new Categoria('Sensores');
 
 var Operadores = new Categoria('Operadores');

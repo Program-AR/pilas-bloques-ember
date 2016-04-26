@@ -26,13 +26,21 @@ var Bloque = Ember.Object.extend({
   },
 
   registrar_en_blockly() {
+    this.registrarVista();
+    this.registrarGeneracionJS();
+  },
+
+  registrarVista(){
     var myThis = this;
     Blockly.Blocks[this.get('id')] = {
       init() {
         myThis.block_init(this);
       }
     };
+  },
 
+  registrarGeneracionJS(){
+    var myThis = this;
     Blockly.JavaScript[this.get('id')] = function(block) {
       return myThis.block_javascript(block);
     };

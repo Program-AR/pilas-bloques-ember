@@ -6,13 +6,11 @@ import {MisProcedimientos,Control,Variables,Sensores,MisFunciones} from 'pilas-e
  * Sirve para pisar el JS que produce blockly
  */
 var CambioDeJSDeBlocky = Bloque.extend({
-
   registrar_en_blockly() {
-    var myThis = this;
-    Blockly.JavaScript[this.get('id')] = function(block) {
-      return myThis.block_javascript(block);
-    };
-  }
+    // La vista ya está registrada originalmente por el lenguaje Javascript.
+    // Sólo registro la generación diferente de código
+    this.registrarGeneracionJS();
+  },
 });
 
 var VariableGet = CambioDeJSDeBlocky.extend({
@@ -32,7 +30,6 @@ var VariableGet = CambioDeJSDeBlocky.extend({
   }
 
 });
-
 
 var VariableSet = CambioDeJSDeBlocky.extend({
 
@@ -395,6 +392,18 @@ var AccionBuilder = {
   },
 };
 
+var VariableEspecificaGet = Sensor.extend({
+  _categoria: Variables,
+
+  block_init(block){
+    this._super(block);
+    block.setColour(Blockly.Blocks.variables.COLOUR);
+    block.appendDummyInput()
+      .appendField(this.descripcion());
+  },
+
+});
+
 /*
  * Representa un valor mas complejo
  * de un campo de un bloque
@@ -570,7 +579,7 @@ var Hasta = EstructuraDeControl.extend({
 
 });
 
-export {Bloque, CambioDeJSDeBlocky, VariableGet,
+export {Bloque, CambioDeJSDeBlocky, VariableGet, VariableEspecificaGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder,
                Sensor, Repetir,Si,Sino,Hasta, ParamCampo, ParamValor};
