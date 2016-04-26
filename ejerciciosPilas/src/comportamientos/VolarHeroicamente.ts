@@ -1,0 +1,18 @@
+/// <reference path = "ComportamientoConVelocidad.ts" />
+/// <reference path = "GirarMarquesina.ts" />
+
+class VolarHeroicamente extends ComportamientoConVelocidad {
+	nombreAnimacion(){
+		return 'correr';
+	}
+
+	preAnimacion(){
+			super.preAnimacion();
+	    pilas.escena_actual().fondo.hacer_luego(GirarMarquesina,{});
+	}
+
+	postAnimacion(){
+		super.postAnimacion();
+		if(this.receptor.fraseAlVolar) this.receptor.decir(this.receptor.fraseAlVolar());
+	}
+}
