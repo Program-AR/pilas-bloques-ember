@@ -182,6 +182,10 @@ class ActorAnimado extends Actor {
         }
     }
 
+    largoColumnaActual(){
+      return this.cuadricula.largoColumna(this.casillaActual().nroColumna);
+    }
+
     cuando_busca_recoger() {
         pilas.escena_actual().intentaronRecoger();
     }

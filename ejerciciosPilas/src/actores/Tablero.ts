@@ -43,7 +43,14 @@ class Tablero extends ActorAnimado{
   }
 
   tuObservadoCambio(observado){
-    this.setearValor(observado[this.atributoObservado]);
+    this.setearValor(this.leerObservado(observado));
+  }
+
+  leerObservado(observado){
+    if (typeof (observado[this.atributoObservado]) === "function"){
+      return observado[this.atributoObservado]();
+    }
+    return observado[this.atributoObservado];
   }
 
 

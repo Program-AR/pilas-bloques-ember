@@ -72,6 +72,10 @@ class CuadriculaMultipleColumnas extends CuadriculaEsparsa{
   esInicio(casilla){
     return casilla.nroFila === 0;
   }
+
+  largoColumna(indice){
+    return this.pmatrix.filter(fila => fila[indice] === 'T').length;
+  }
 }
 
 
