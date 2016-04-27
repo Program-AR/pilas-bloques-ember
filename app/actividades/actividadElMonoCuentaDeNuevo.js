@@ -1,5 +1,5 @@
 /* globals ElMonoCuentaDeNuevo */
-import {Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} from 'pilas-engine-bloques/actividades/bloques';
+import {Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet, AccionBuilder} from 'pilas-engine-bloques/actividades/bloques';
 import {IrArriba, IrAbajo, SiguienteColumna} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import {TocandoBanana, TocandoManzana} from 'pilas-engine-bloques/actividades/tocando';
 import {ContarBanana, ContarManzana} from 'pilas-engine-bloques/actividades/contando';
@@ -19,6 +19,13 @@ var LargoColumnaActual = VariableEspecificaGet.extend({
   },
 });
 
+var EstoyAlInicio = AccionBuilder.buildSensor({
+  id: 'estoyInicio',
+  descripcion: 'Estoy al inicio de la columna',
+  icono: 'casillainiciomono.png',
+  funcionSensor: 'casillaActual().esInicio()',
+});
+
 export default {
   nombre: 'El mono cuenta de nuevo',
   id: 'ElMonoCuentaDeNuevo',
@@ -32,6 +39,6 @@ export default {
   puedeDuplicar: false,
 
   bloques: [Procedimiento, IrArriba,IrAbajo,SiguienteColumna,ContarBanana,ContarManzana,
-    TocandoBanana, TocandoManzana, Repetir, Si, Sino, Hasta, LargoColumnaActual],
+    TocandoBanana, TocandoManzana, Repetir, Si, Sino, Hasta, LargoColumnaActual, EstoyAlInicio],
 
 };

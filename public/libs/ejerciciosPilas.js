@@ -4330,6 +4330,9 @@ var SuperViaje = (function (_super) {
             return "¡Faltan " + this.restantesKM + " kilometros!";
         };
     };
+    SuperViaje.prototype.estaResueltoElProblema = function () {
+        return this.automata.restantesKM === 0;
+    };
     return SuperViaje;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
