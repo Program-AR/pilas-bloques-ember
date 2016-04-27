@@ -1,10 +1,10 @@
-/// <reference path = "ComportamientoAnimado.ts"/>
+/// <reference path = "ComportamientoConVelocidad.ts"/>
 
-class SaltarAnimado extends ComportamientoAnimado {
+class SaltarAnimado extends ComportamientoConVelocidad {
 	alTerminar;
 	suelo;
 	velocidad_inicial;
-	velocidad;
+	velocidad_vertical;
 	gravedad;
 
 	preAnimacion() {
@@ -12,20 +12,20 @@ class SaltarAnimado extends ComportamientoAnimado {
 		this.alTerminar = this.argumentos.alTerminar || function(r) { };
 		this.gravedad = this.argumentos.gravedad || 0.3;
 		this.suelo = this.receptor.y;
-		this.velocidad = this.velocidad_inicial;
+		this.velocidad_vertical = this.velocidad_inicial;
+		this.argumentos.cantPasos = Math.round(this.velocidad_vertical / this.argumentos.gravedad * 2);
+		super.preAnimacion();
 		pilas.sonidos.cargar('saltar.wav').reproducir();
 	}
 
-	doActualizar() {
-		super.doActualizar();
-		this.receptor.y += this.velocidad;
-		this.velocidad -= this.gravedad;
+	darUnPaso() {
+		this.receptor.y += this.velocidad_vertical;
+		this.velocidad_vertical -= this.gravedad;
+	}
 
-		if (this.receptor.y <= this.suelo) {
-			this.receptor.y = this.suelo;
-			this.alTerminar.call(this.receptor);
-			return true;
-		}
+	setearEstadoFinalDeseado(){
+		this.receptor.y = this.suelo;
+		this.alTerminar.call(this.receptor);
 	}
 
 	nombreAnimacion(){
