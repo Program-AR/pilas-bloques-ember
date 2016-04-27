@@ -2,11 +2,11 @@
 
 /**
  * @class ComportamientoConVelocidad
- * 
+ *
  * Argumentos:
  *    velocidad: Es un porcentaje. 100 significa lo más rápido. Debe ser 1 ó más.
  *               Representa la cantidad de ciclos que efectivamente se ejecutan.
- *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento. 
+ *    cantPasos: Mayor cantidad de pasos implica mayor "definicion" del movimiento.
  *               Tambien tarda mas en completarse. Jugar tambien con la velocidad.
  *               Como esto juega con la animacion, es preferible no tocarlo.
  */
@@ -21,11 +21,15 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 		this.argumentos.velocidad = this.argumentos.velocidad || 20;
 
 		this.vueltasSinEjecutar = 0;
-		this.enQueVueltaEjecuto = Math.round(100 / this.argumentos.velocidad);
+		this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
 		this.pasosRestantes = this.argumentos.cantPasos;
-    }
+  }
 
-    doActualizar(){
+	velocidad(){
+		return this.argumentos.velocidad;
+	}
+
+  doActualizar(){
 		var terminoAnimacion = super.doActualizar();
     	if (this.pasosRestantes <= 0) {
 			this.setearEstadoFinalDeseado();
@@ -54,5 +58,5 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 	    // Debe redefinirse. Sirve para asegurar que al terminar los pasos se llegue al estado deseado
 	    // Por ejemplo, si me estoy moviendo a un lugar, setear ese lugar evita problemas de aproximación parcial.
     }
-	
+
 }
