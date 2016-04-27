@@ -148,6 +148,12 @@ class ActorAnimado extends Actor {
         return this._imagen.animacion_en_curso.nombre;
     }
 
+    ponerMaximaVelocidad(){
+      for (var nombre in this._imagen.animaciones){
+        this._imagen.animaciones[nombre].velocidad = 60;
+      }
+    }
+
     seguidillaHasta(nro){
         var seguidilla = [];
         if(nro !== undefined) {
