@@ -17,7 +17,7 @@ class SuperViaje extends EscenaActividad {
         this.automata = new Superheroe();
         this.automata.aprender(Flotar,{Desvio:  10});
 
-        this.automata.totalKM = 50 + Math.round(Math.random() * 150);
+        this.automata.totalKM = 15 + Math.round(Math.random() * 30);
         this.automata.restantesKM = this.automata.totalKM;
 
         this.automata.kmsTotales = function(){
