@@ -180,6 +180,11 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.nombreAnimacionActual = function () {
         return this._imagen.animacion_en_curso.nombre;
     };
+    ActorAnimado.prototype.ponerMaximaVelocidad = function () {
+        for (var nombre in this._imagen.animaciones) {
+            this._imagen.animaciones[nombre].velocidad = 60;
+        }
+    };
     ActorAnimado.prototype.seguidillaHasta = function (nro) {
         var seguidilla = [];
         if (nro !== undefined) {
@@ -2029,7 +2034,7 @@ var Superheroe = (function (_super) {
         if (y === void 0) { y = 0; }
         _super.call(this, x, y, { grilla: 'superheroe.png', cantColumnas: 7 });
         this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(10).concat([1, 0, 1, 0]), 6, true);
-        this.definirAnimacion('correr', [2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 6, 6], 6);
+        this.definirAnimacion('correr', [2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 6, 6], 15);
     }
     return Superheroe;
 })(ActorAnimado);
@@ -2588,13 +2593,18 @@ var GirarMarquesina = (function (_super) {
         this.argumentos.direccion = new Direct(-1, 0);
         this.argumentos.voltearAlIrAIzquierda = false;
         this.posInicial = { x: this.receptor.subactores[0].x, y: this.receptor.subactores[0].y };
-        this.receptor.agregarSubactor(this.espejo());
+        if (!this.receptor.subactores[1]) {
+            this.receptor.agregarSubactor(this.espejo());
+        }
+        else {
+            this.receptor.subactores[1].x = this.posInicial.x + this.receptor.subactores[0].getAncho();
+        }
+        ;
         _super.prototype.preAnimacion.call(this);
     };
     GirarMarquesina.prototype.postAnimacion = function () {
         _super.prototype.postAnimacion.call(this);
         this.receptor.setX(this.posInicial.x);
-        this.receptor.eliminarUltimoSubactor();
     };
     GirarMarquesina.prototype.espejo = function () {
         var clon = new ActorAnimado(this.posInicial.x + this.receptor.subactores[0].getAncho(), this.posInicial.y, this.receptor.subactores[0].opciones);
@@ -2897,6 +2907,8 @@ var VolarHeroicamente = (function (_super) {
         return 'correr';
     };
     VolarHeroicamente.prototype.preAnimacion = function () {
+        this.argumentos.velocidad = 100;
+        this.argumentos.cantPasos = 1;
         _super.prototype.preAnimacion.call(this);
         pilas.escena_actual().fondo.hacer_luego(GirarMarquesina, {});
     };
@@ -4302,7 +4314,7 @@ var SuperViaje = (function (_super) {
         this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
         this.automata = new Superheroe();
         this.automata.aprender(Flotar, { Desvio: 10 });
-        this.automata.totalKM = 50 + Math.round(Math.random() * 150);
+        this.automata.totalKM = 15 + Math.round(Math.random() * 30);
         this.automata.restantesKM = this.automata.totalKM;
         this.automata.kmsTotales = function () {
             return this.totalKM;
