@@ -887,8 +887,11 @@ var ComportamientoConVelocidad = (function (_super) {
         this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
         this.argumentos.velocidad = this.argumentos.velocidad || 20;
         this.vueltasSinEjecutar = 0;
-        this.enQueVueltaEjecuto = Math.round(100 / this.argumentos.velocidad);
+        this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
         this.pasosRestantes = this.argumentos.cantPasos;
+    };
+    ComportamientoConVelocidad.prototype.velocidad = function () {
+        return this.argumentos.velocidad;
     };
     ComportamientoConVelocidad.prototype.doActualizar = function () {
         var terminoAnimacion = _super.prototype.doActualizar.call(this);
