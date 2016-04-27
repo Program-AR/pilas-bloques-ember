@@ -33,4 +33,8 @@ class SuperViaje extends EscenaActividad {
           return "¡Faltan " + this.restantesKM + " kilometros!";
         }
     }
+
+    estaResueltoElProblema(){
+      return this.automata.restantesKM === 0;
+    }
 }
