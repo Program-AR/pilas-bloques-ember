@@ -9,18 +9,21 @@ class GirarMarquesina extends MovimientoAnimado {
 		this.argumentos.distancia = this.receptor.subactores[0].getAncho();
 		this.argumentos.direccion = new Direct(-1, 0);
 		this.argumentos.voltearAlIrAIzquierda = false;
-		
+
 		this.posInicial = { x: this.receptor.subactores[0].x, y: this.receptor.subactores[0].y };
-		this.receptor.agregarSubactor(this.espejo());
 
-
+		if(!this.receptor.subactores[1]){
+			this.receptor.agregarSubactor(this.espejo());
+		} else {
+			this.receptor.subactores[1].x = this.posInicial.x + this.receptor.subactores[0].getAncho()
+		};
+		
 		super.preAnimacion();
 	}
 
 	postAnimacion(){
 		super.postAnimacion();
 		this.receptor.setX(this.posInicial.x);
-		this.receptor.eliminarUltimoSubactor();
 	}
 
 	espejo(){
