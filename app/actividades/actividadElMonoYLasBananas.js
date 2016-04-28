@@ -30,7 +30,7 @@ export default {
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: mirá la categoría "Sensores" y la categoría "Control".',
 
-  consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "repetición condicional".',
+  consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
 
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
