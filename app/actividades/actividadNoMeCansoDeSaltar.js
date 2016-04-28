@@ -31,7 +31,7 @@ var actividadNoMeCansoDeSaltar = {
   nombre: 'No me canso de saltar',
   id: 'NoMeCansoDeSaltar',
   enunciado: 'Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.',
-  consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones.',
+  consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
 
   escena: NoMeCansoDeSaltar,
   puedeComentar: false,
