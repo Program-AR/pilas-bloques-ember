@@ -13,7 +13,7 @@ var actividadSuperTito2 = {
   nombre: 'Súper Tito 2',
   id: 'SuperTito2',
   enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
-  consignaInicial: 'El bloque "Repetir hasta qué" repite una secuencia de acciones mientras no sea verdad una condición.',
+  consignaInicial: 'El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".',
 
   escena: SuperTito2,  // jshint ignore:line
   puedeComentar: false,
