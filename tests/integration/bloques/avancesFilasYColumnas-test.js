@@ -13,6 +13,6 @@ actividadTest(actConFilas, {
 
 actividadTest(actConColumnas, {
   descripcionAdicional: 'Da error al querer avanzar a la siguiente columna',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="121" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="MoverACasillaAbajo" id="126"></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="3" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="MoverACasillaAbajo" id="49"><next><block type="SiguienteColumna" id="43"></block></next></block></statement></block></xml>',
   expectedErrorMsg: 'No puedo ir desde acá, tengo que estar al inicio de la columna',
 });

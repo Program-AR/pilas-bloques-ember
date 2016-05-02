@@ -17,5 +17,5 @@ test('it renders', function(assert) {
     {{/modal-title}}
   `);
 
-  assert.equal(this.$().text().trim(), 'Cerrar');
+  assert.equal(this.$().text().trim(), '');
 });

@@ -6,21 +6,12 @@ moduleForComponent('pilas-acerca-de', 'Integration | Component | pilas acerca de
 });
 
 test('it renders', function(assert) {
-  assert.expect(2);
+  assert.expect(1);
 
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{pilas-acerca-de}}`);
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#pilas-acerca-de}}
-      template block text
-    {{/pilas-acerca-de}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$().text().indexOf("Pilas Bloques") !== -1);
 });
