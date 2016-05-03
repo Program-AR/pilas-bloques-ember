@@ -21,11 +21,13 @@ class TitoCuadrado extends EscenaActividad {
         ['T','F','F','F','F','F','T'],
         ['T','T','T','T','T','T','T']
         ]
-      this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillas.violeta.png'},matriz)
-      this.automata = new Tito(0,0);
-      this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
+      this.cuadricula = new CuadriculaEsparsa(0,0,{ancho: 400, alto: 400},{grilla:'casillas.violeta.png'},matriz)
 
       this.agregarLuces();
+
+      this.automata = new Tito(0,0);
+      this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
+      this.automata.escala *= 1.7;
     }
 
     private agregarLuces(){
