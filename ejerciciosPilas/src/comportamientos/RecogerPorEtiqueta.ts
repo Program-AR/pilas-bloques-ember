@@ -1,7 +1,5 @@
 /// <reference path="ComportamientoColision.ts"/>
 
-
-
 class RecogerPorEtiqueta extends ComportamientoColision{
 			metodo(objetoColision){
 				objetoColision.eliminar();
@@ -12,6 +10,4 @@ class RecogerPorEtiqueta extends ComportamientoColision{
 		nombreAnimacion(){
 			return this.argumentos.nombreAnimacion || "recoger";
 		}
-
-
 }
