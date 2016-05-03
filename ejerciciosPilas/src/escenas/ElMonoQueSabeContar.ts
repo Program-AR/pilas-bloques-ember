@@ -35,8 +35,8 @@ class ElMonoQueSabeContar extends EscenaActividad {
           );
 
         this.tableros = {};
-        this.tableros.ManzanaAnimada = new Tablero(120,210,{texto:"Manzanas"});
-        this.tableros.BananaAnimada = new Tablero(-120,210,{texto:"Bananas"});
+        this.tableros.ManzanaAnimada = new Tablero(150,210,{texto:"Manzanas"});
+        this.tableros.BananaAnimada = new Tablero(-150,210,{texto:"Bananas"});
     }
 
     cambiarImagenesFin(){

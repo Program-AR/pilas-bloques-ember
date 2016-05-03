@@ -4,27 +4,62 @@
 ver clase "observado" */
 
 class Tablero extends ActorAnimado{
-  nombre;
+  label;
   puntaje;
   observado;
   atributoObservado;
+  colorTxtLabel;
+  colorTxtPuntaje;
+  separacionY;
+  separacionX;
+  margen;
+
+
 
   constructor(x,y,argumentos){
-    super(x, y, {grilla: argumentos.imagen || 'placacontar.png', cantColumnas:1, cantFilas: 1});
+    this.sanitizarArgumentosTablero(argumentos);
+    super(x, y, {grilla: argumentos.imagen, cantColumnas:1, cantFilas: 1});
 
-    this.atributoObservado = argumentos.atributoObservado || 'cantidad';
-    this.nombre=new Texto(x,y,argumentos.texto,(argumentos.colorNombre||"black"));
-    this.nombre.setZ(this.z - 1);
+    this.buildLabel(argumentos);
+    this.buildPuntaje(argumentos);
+    this.updateWidth();
+  }
 
-    this.puntaje=new Puntaje(
-        this.nombre.derecha + (argumentos.separacionX || 10),
-        this.nombre.y + (argumentos.separacionY || 0),
+  // | margen | label | separacion | puntaje | margen |
+  sanitizarArgumentosTablero(args){
+    args.imagen =  args.imagen || 'placacontar.png';
+    this.atributoObservado = args.atributoObservado || 'cantidad';
+    this.colorTxtLabel = args.colorTxtLabel || "black";
+    this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
+    this.separacionX = args.separacionX || 10;
+    this.separacionY = args.separacionY || 0;
+    this.margen = args.margen || 5;
+  }
+
+  buildLabel(argumentos){
+    this.label = new Texto(
+      0, // no importa, luego se actualiza
+      this.y,
+      argumentos.texto,
+      this.colorTxtLabel);
+    this.label.setZ(this.z - 1);
+  }
+
+  buildPuntaje(argumentos){
+    this.puntaje = new Puntaje(
+        0, // no importa, luego se actualiza
+        this.label.y + this.separacionY,
         argumentos.valorInicial || 0,
-        argumentos.colorPuntaje || "black");
+        this.colorTxtPuntaje);
     this.puntaje.setZ(this.z - 2);
+  }
 
-}
-
+  // | margen | label | separacion | puntaje | margen |
+  updateWidth(){
+    this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
+    this.label.izquierda = this.izquierda + this.margen;
+    this.puntaje.izquierda = this.label.derecha + this.separacionX;
+  }
 
   dameValor(){
     return this.puntaje.obtener();
@@ -44,6 +79,7 @@ class Tablero extends ActorAnimado{
 
   tuObservadoCambio(observado){
     this.setearValor(this.leerObservado(observado));
+    this.updateWidth();
   }
 
   leerObservado(observado){
@@ -52,6 +88,5 @@ class Tablero extends ActorAnimado{
     }
     return observado[this.atributoObservado];
   }
-
 
 }
