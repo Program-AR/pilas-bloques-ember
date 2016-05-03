@@ -30,11 +30,6 @@ iniciar() {
     this.completarConBananas();
 }
 
-  personajePrincipal(){
-    return this.automata;
-  }
-
-
   private completarConBananas(){
       this.cuadricula.agregarActor(new BananaAnimada(0,0),0,1);
       this.cuadricula.agregarActor(new BananaAnimada(0,0),1,1);

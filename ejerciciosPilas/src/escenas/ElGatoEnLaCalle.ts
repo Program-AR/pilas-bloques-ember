@@ -14,11 +14,7 @@ class ElGatoEnLaCalle extends EscenaActividad {
       this.fondo = new Fondo('fondo.gatoEnLaCalle.png',0,0);
       this.automata = new GatoAnimado(0,-150);
     }
-
-    personajePrincipal(){
-      return this.automata;
-    }
-
+    
     estaResueltoElProblema(){
       return true; // Como este ejercicio es de exploración, cualquier solución sería buena.
     }

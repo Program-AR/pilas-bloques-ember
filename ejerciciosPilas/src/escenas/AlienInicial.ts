@@ -39,17 +39,4 @@ class AlienInicial extends EscenaActividad {
     a.agregarTransicion('inicial','final','apretarBoton');
     return a.estadoInicial();
     }
-
-    personajePrincipal(){
-      return this.automata;
-    }
-
-    avanzar(){
-      this.automata.hacer_luego(MoverACasillaDerecha);
-    }
-
-    apretar(){
-
-    }
-
   }

@@ -1,5 +1,4 @@
-/*class SalvandoLaNavidad extends EscenaActividad {
-  personaje;
+class SalvandoLaNavidad extends EscenaActividad {
   cantidadColumnas;
   cuadricula;
   condicion;
@@ -14,8 +13,8 @@ iniciar() {
         this.columnas=[5,6,8,4,7]
         this.definidor = new DefinidorColumnasFijo(5,this.columnas);
         this.cuadricula = new CuadriculaMultiple(this.definidor,{alto: 40, ancho:40*5})
-        this.personaje = new PapaNoelAnimado(0,0);
-        this.cuadricula.posicionarObjeto(this.personaje,0,0);
+        this.automata = new PapaNoelAnimado(0,0);
+        this.cuadricula.posicionarObjeto(this.automata,0,0);
         this.completarConRegalos();
 
 
@@ -28,12 +27,6 @@ iniciar() {
     }
 
   }
-
-
-  personajePrincipal(){
-    return this.personaje;
-  }
-
 
   avanzar(){
     this.personaje.hacer_luego(MoverACasillaDerecha);
@@ -48,4 +41,3 @@ iniciar() {
   }
 
 }
-*/
