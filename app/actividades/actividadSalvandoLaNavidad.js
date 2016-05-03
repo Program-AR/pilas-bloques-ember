@@ -11,8 +11,8 @@ var DejarRegalo = AccionBuilder.build({
 export default {
   nombre: 'Salvando la Navidad',
   id: 'SalvandoLaNavidad',
-  enunciado:
-    'TODO',
+  enunciado: 'Ayudá a Papá Noel a dejar un regalo al final de cada fila. ¡Tené en cuenta que el escenario no cambia!',
+
 
   // la escena proviene de ejerciciosPilas
   escena: SalvandoLaNavidad,  // jshint ignore:line
