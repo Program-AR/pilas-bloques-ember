@@ -111,6 +111,16 @@ var SiguienteFila = AccionBuilder.build({
   argumentos: '{}',
 });
 
+var SiguienteFilaTotal =  SiguienteFila.extend({
+  nombre_comportamiento(){
+    return 'SecuenciaAnimada';
+  },
+
+  argumentos(){
+    return '{secuencia: [new MoverTodoAIzquierda({}), new MoverACasillaAbajo({})]}';
+  }
+});
+
 var SiguienteColumna = AccionBuilder.build({
   id: 'SiguienteColumna',
   descripcion: 'Siguiente columna',
@@ -119,4 +129,14 @@ var SiguienteColumna = AccionBuilder.build({
   argumentos: '{}',
 });
 
-export {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna};
+var SiguienteColumnaTotal =  SiguienteColumna.extend({
+  nombre_comportamiento(){
+    return 'SecuenciaAnimada';
+  },
+
+  argumentos(){
+    return '{secuencia: [new MoverTodoArriba({}), new MoverACasillaDerecha({})]}';
+  }
+});
+
+export {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna, SiguienteFilaTotal, SiguienteColumnaTotal};

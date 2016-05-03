@@ -1835,7 +1835,14 @@ var ObservadoConDisminuir = (function (_super) {
 var PapaNoelAnimado = (function (_super) {
     __extends(PapaNoelAnimado, _super);
     function PapaNoelAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 11 });
+        this.definirAnimacion('correr', [0, 1, 2, 3, 2, 1], 6);
+        this.definirAnimacion('parado', new Cuadros([0, 6, 5]).repetirVeces(1).
+            concat(new Cuadros([5]).repetirVeces(20).
+            concat([5, 6, 0]).
+            concat(new Cuadros([0]).repetirVeces(20))), 6, true);
+        this.definirAnimacion('recoger', [7, 8, 9, 10, 11], 6);
+        this.definirAnimacion('depositar', [11, 10, 9, 8, 7], 6);
     }
     return PapaNoelAnimado;
 })(ActorAnimado);
@@ -1934,7 +1941,9 @@ var RecolectorEstrellas = (function (_super) {
 var RegaloAnimado = (function (_super) {
     __extends(RegaloAnimado, _super);
     function RegaloAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'regaloAnimado.png', cantColumnas: 1, cantFilas: 1 });
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'regalo.png', cantColumnas: 1, cantFilas: 1 });
     }
     return RegaloAnimado;
 })(ActorAnimado);
@@ -2553,6 +2562,26 @@ var ContarPorEtiqueta = (function (_super) {
     };
     return ContarPorEtiqueta;
 })(ComportamientoColision);
+/// <reference path="ComportamientoAnimado.ts"/>
+/// <reference path="../actores/RegaloAnimado.ts"/>
+var Depositar = (function (_super) {
+    __extends(Depositar, _super);
+    function Depositar() {
+        _super.apply(this, arguments);
+    }
+    Depositar.prototype.nombreAnimacion = function () {
+        return 'depositar';
+    };
+    Depositar.prototype.postAnimacion = function () {
+        if (this.receptor.cuadricula) {
+            this.receptor.cuadricula.agregarActor(new this.argumentos.claseADepositar(), this.receptor.casillaActual().nroFila, this.receptor.casillaActual().nroColumna);
+        }
+        else {
+            new this.argumentos.claseADepositar(this.receptor.x, this.receptor.y);
+        }
+    };
+    return Depositar;
+})(ComportamientoAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
 // Está pensado para iniciar la línea en el centro del receptor.
@@ -3037,14 +3066,6 @@ var AlienInicial = (function (_super) {
         a.agregarTransicion('inicial', 'final', 'apretarBoton');
         return a.estadoInicial();
     };
-    AlienInicial.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
-    AlienInicial.prototype.avanzar = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    AlienInicial.prototype.apretar = function () {
-    };
     return AlienInicial;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
@@ -3453,9 +3474,6 @@ var ElGatoEnLaCalle = (function (_super) {
         this.fondo = new Fondo('fondo.gatoEnLaCalle.png', 0, 0);
         this.automata = new GatoAnimado(0, -150);
     };
-    ElGatoEnLaCalle.prototype.personajePrincipal = function () {
-        return this.automata;
-    };
     ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
         return true; // Como este ejercicio es de exploración, cualquier solución sería buena.
     };
@@ -3717,9 +3735,6 @@ var ElPlanetaDeNano = (function (_super) {
         this.cantidadBananas.cantidad = 0;
         this.cantidadBananas.registrarObservador(this.tableroBananas);
         this.completarConBananas();
-    };
-    ElPlanetaDeNano.prototype.personajePrincipal = function () {
-        return this.automata;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
@@ -4259,57 +4274,22 @@ var ReparandoLaNave = (function (_super) {
     };
     return ReparandoLaNave;
 })(EscenaActividad);
-/*class SalvandoLaNavidad extends EscenaActividad {
-  personaje;
-  cantidadColumnas;
-  cuadricula;
-  condicion;
-  secuenciaCaminata;
-
-
-  fondo;
-  definidor;
-  columnas;
-iniciar() {
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
-        this.columnas=[5,6,8,4,7]
-        this.definidor = new DefinidorColumnasFijo(5,this.columnas);
-        this.cuadricula = new CuadriculaMultiple(this.definidor,{alto: 40, ancho:40*5})
-        this.personaje = new PapaNoelAnimado(0,0);
-        this.cuadricula.posicionarObjeto(this.personaje,0,0);
-        this.completarConRegalos();
-
-
-
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/PapaNoelAnimado.ts" />
+var SalvandoLaNavidad = (function (_super) {
+    __extends(SalvandoLaNavidad, _super);
+    function SalvandoLaNavidad() {
+        _super.apply(this, arguments);
     }
-
-  private completarConRegalos(){
-    for(var i =0;i<5;i++){
-    this.cuadricula.posicionarObjeto(new RegaloAnimado(0,0),i,this.columnas[i]-1);
-    }
-
-  }
-
-
-  personajePrincipal(){
-    return this.personaje;
-  }
-
-
-  avanzar(){
-    this.personaje.hacer_luego(MoverACasillaDerecha);
-  }
-  siguienteFila(){
-
-    this.personaje.hacer_luego(avanzarFilaEnCuadriculaMultipleDesdeCualquierLado,{'cuadriculaMultiple':this.cuadricula});
-  }
-
-  tomarRegalo(){
-    this.personaje.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'RegaloAnimado','mensajeError':'No hay un regalo aquí'});
-  }
-
-}
-*/
+    SalvandoLaNavidad.prototype.iniciar = function () {
+        this.fondo = new Fondo('fondo.salvandonavidad.png', 0, 0);
+        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasFijo(5, [5, 6, 8, 4, 7]), 0, 0, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
+        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
+        this.automata = new PapaNoelAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+    };
+    return SalvandoLaNavidad;
+})(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
