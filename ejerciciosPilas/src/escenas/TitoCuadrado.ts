@@ -27,7 +27,7 @@ class TitoCuadrado extends EscenaActividad {
 
       this.automata = new Tito(0,0);
       this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
-      this.automata.escala *= 1.7;
+      this.automata.escala *= 1.5;
     }
 
     private agregarLuces(){
