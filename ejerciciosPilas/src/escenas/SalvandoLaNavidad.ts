@@ -12,6 +12,7 @@ class SalvandoLaNavidad extends EscenaActividad {
       {separacionEntreCasillas: 5},
       {grilla:'casilla.futbolRobots2.png', alto:40,ancho:40}
     );
+    this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
     this.automata = new PapaNoelAnimado(0,0);
     this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
   }
