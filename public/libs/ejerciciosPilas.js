@@ -2048,13 +2048,36 @@ ver clase "observado" */
 var Tablero = (function (_super) {
     __extends(Tablero, _super);
     function Tablero(x, y, argumentos) {
-        _super.call(this, x, y, { grilla: argumentos.imagen || 'placacontar.png', cantColumnas: 1, cantFilas: 1 });
-        this.atributoObservado = argumentos.atributoObservado || 'cantidad';
-        this.nombre = new Texto(x, y, argumentos.texto, (argumentos.colorNombre || "black"));
-        this.nombre.setZ(this.z - 1);
-        this.puntaje = new Puntaje(this.nombre.derecha + (argumentos.separacionX || 10), this.nombre.y + (argumentos.separacionY || 0), argumentos.valorInicial || 0, argumentos.colorPuntaje || "black");
-        this.puntaje.setZ(this.z - 2);
+        this.sanitizarArgumentosTablero(argumentos);
+        _super.call(this, x, y, { grilla: argumentos.imagen, cantColumnas: 1, cantFilas: 1 });
+        this.buildLabel(argumentos);
+        this.buildPuntaje(argumentos);
+        this.updateWidth();
     }
+    // | margen | label | separacion | puntaje | margen |
+    Tablero.prototype.sanitizarArgumentosTablero = function (args) {
+        args.imagen = args.imagen || 'placacontar.png';
+        this.atributoObservado = args.atributoObservado || 'cantidad';
+        this.colorTxtLabel = args.colorTxtLabel || "black";
+        this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
+        this.separacionX = args.separacionX || 10;
+        this.separacionY = args.separacionY || 0;
+        this.margen = args.margen || 5;
+    };
+    Tablero.prototype.buildLabel = function (argumentos) {
+        this.label = new Texto(0, this.y, argumentos.texto, this.colorTxtLabel);
+        this.label.setZ(this.z - 1);
+    };
+    Tablero.prototype.buildPuntaje = function (argumentos) {
+        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, this.colorTxtPuntaje);
+        this.puntaje.setZ(this.z - 2);
+    };
+    // | margen | label | separacion | puntaje | margen |
+    Tablero.prototype.updateWidth = function () {
+        this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
+        this.label.izquierda = this.izquierda + this.margen;
+        this.puntaje.izquierda = this.label.derecha + this.separacionX;
+    };
     Tablero.prototype.dameValor = function () {
         return this.puntaje.obtener();
     };
@@ -2071,6 +2094,7 @@ var Tablero = (function (_super) {
     };
     Tablero.prototype.tuObservadoCambio = function (observado) {
         this.setearValor(this.leerObservado(observado));
+        this.updateWidth();
     };
     Tablero.prototype.leerObservado = function (observado) {
         if (typeof (observado[this.atributoObservado]) === "function") {
@@ -3498,8 +3522,8 @@ var ElMonoQueSabeContar = (function (_super) {
                 function (fila, col, pmatrix) { return pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T'; }
             ] });
         this.tableros = {};
-        this.tableros.ManzanaAnimada = new Tablero(120, 210, { texto: "Manzanas" });
-        this.tableros.BananaAnimada = new Tablero(-120, 210, { texto: "Bananas" });
+        this.tableros.ManzanaAnimada = new Tablero(150, 210, { texto: "Manzanas" });
+        this.tableros.BananaAnimada = new Tablero(-150, 210, { texto: "Bananas" });
     };
     ElMonoQueSabeContar.prototype.cambiarImagenesFin = function () {
         this.cuadricula.cambiarImagenFin('casillafinalmono.png');
