@@ -1,5 +1,4 @@
 /// <reference path="ComportamientoAnimado.ts"/>
-/// <reference path="../actores/RegaloAnimado.ts"/>
 
 class Depositar extends ComportamientoAnimado {
 	nombreAnimacion(){
