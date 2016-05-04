@@ -11,10 +11,8 @@
     automata;
     cantidadFilas;
     cantidadColumnas;
-    globos;
     iniciar() {
-        this.fondo = new Fondo('fondos.nubes.png',0,0);
-        this.globos=[];
+        this.fondo = new Fondo('fondo.cangrejo_aguafiestas',0,0);
         this.cantidadFilas=5;
         this.cantidadColumnas=6;
         var matriz= [
@@ -23,67 +21,21 @@
           ['T','T','T','T','T','T'],
           ['T','F','F','F','F','T'],
           ['T','T','T','T','T','T']]
-        this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},{grilla:'casillas.violeta.png'},matriz)
+        this.cuadricula = new CuadriculaEsparsa(0,0,{alto: 400, ancho:400},{grilla:'casilla.cangrejo_aguafiestas.png'},matriz)
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
       }
 
     private completarConGlobos(){
-      for(var i = 1; i< this.cantidadColumnas; ++i ){
-        var nuevo = new GloboAnimado(0,0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo,0,i);
-      }
-
-      for(var i = 0; i< this.cantidadColumnas; ++i ){
-        var nuevo = new GloboAnimado(0,0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo,2,i);
-        nuevo = new GloboAnimado(0,0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo,4,i);
-      }
-
-
-      nuevo = new GloboAnimado(0,0);
-      this.globos.push(nuevo);
-      this.cuadricula.agregarActor(nuevo,1,0);
-
-      nuevo = new GloboAnimado(0,0);
-      this.globos.push(nuevo);
-      this.cuadricula.agregarActor(nuevo,3,0);
-
-      nuevo = new GloboAnimado(0,0);
-      this.globos.push(nuevo);
-      this.cuadricula.agregarActor(nuevo,1,this.cantidadColumnas-1);
-
-      nuevo = new GloboAnimado(0,0);
-      this.globos.push(nuevo);
-      this.cuadricula.agregarActor(nuevo,3,this.cantidadColumnas-1);
-
-
+      this.cuadricula.casillas.forEach(c => this.agregarGlobo(c.nroFila,c.nroColumna));
     }
 
-    moverDerecha(){
-      this.automata.hacer_luego(MoverACasillaDerecha);
+    private agregarGlobo(fila,col){
+      var globo = new GloboAnimado();
+      this.cuadricula.agregarActor(globo,fila,col,false);
+      globo.y += 30;
+      globo.escala *= 0.8;
+      globo.aprender(Flotar,{Desvio:5});
     }
-    moverIzquierda(){
-      this.automata.hacer_luego(MoverACasillaIzquierda);
-    }
-    moverArriba(){
-      this.automata.hacer_luego(MoverACasillaArriba);
-    }
-    moverAbajo(){
-      this.automata.hacer_luego(MoverACasillaAbajo);
-    }
-
-    explotarGlobo(){
-
-      this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta' : 'GloboAnimado',  'mensajeError' : 'No hay un globo aqui' });
-
-    }
-
-
-
 }
