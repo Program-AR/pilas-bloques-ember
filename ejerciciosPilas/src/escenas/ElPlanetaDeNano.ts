@@ -21,6 +21,9 @@ iniciar() {
     this.automata = new NanoAnimado(0, 0);
 
     this.cuadricula.agregarActor(this.automata,cantidadFilas-1, 0);
+    this.automata.escala *= 2;
+    this.automata.y += 15;
+
     this.secuenciaCaminata = new Secuencia({'secuencia':[ new MoverACasillaIzquierda({})]})
     this.secuenciaCaminata.iniciar(this.automata);
     this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
