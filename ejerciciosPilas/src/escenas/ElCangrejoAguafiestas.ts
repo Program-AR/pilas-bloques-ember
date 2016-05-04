@@ -12,7 +12,7 @@
     cantidadFilas;
     cantidadColumnas;
     iniciar() {
-        this.fondo = new Fondo('fondo.cangrejo_aguafiestas',0,0);
+        this.fondo = new Fondo('fondo.cangrejo_aguafiestas.png',0,0);
         this.cantidadFilas=5;
         this.cantidadColumnas=6;
         var matriz= [
