@@ -1554,6 +1554,8 @@ var GatoAnimado = (function (_super) {
 var GloboAnimado = (function (_super) {
     __extends(GloboAnimado, _super);
     function GloboAnimado(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
         _super.call(this, x, y, { grilla: 'globoAnimado.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("explotar", [0, 0, 0, 1, 2, 2], 6);
     }
@@ -3356,8 +3358,7 @@ var ElCangrejoAguafiestas = (function (_super) {
         _super.apply(this, arguments);
     }
     ElCangrejoAguafiestas.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos.nubes.png', 0, 0);
-        this.globos = [];
+        this.fondo = new Fondo('fondo.cangrejo_aguafiestas.png', 0, 0);
         this.cantidadFilas = 5;
         this.cantidadColumnas = 6;
         var matriz = [
@@ -3366,52 +3367,21 @@ var ElCangrejoAguafiestas = (function (_super) {
             ['T', 'T', 'T', 'T', 'T', 'T'],
             ['T', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T']];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 100 }, { grilla: 'casillas.violeta.png' }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 400, ancho: 400 }, { grilla: 'casilla.cangrejo_aguafiestas.png' }, matriz);
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
     };
     ElCangrejoAguafiestas.prototype.completarConGlobos = function () {
-        for (var i = 1; i < this.cantidadColumnas; ++i) {
-            var nuevo = new GloboAnimado(0, 0);
-            this.globos.push(nuevo);
-            this.cuadricula.agregarActor(nuevo, 0, i);
-        }
-        for (var i = 0; i < this.cantidadColumnas; ++i) {
-            var nuevo = new GloboAnimado(0, 0);
-            this.globos.push(nuevo);
-            this.cuadricula.agregarActor(nuevo, 2, i);
-            nuevo = new GloboAnimado(0, 0);
-            this.globos.push(nuevo);
-            this.cuadricula.agregarActor(nuevo, 4, i);
-        }
-        nuevo = new GloboAnimado(0, 0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo, 1, 0);
-        nuevo = new GloboAnimado(0, 0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo, 3, 0);
-        nuevo = new GloboAnimado(0, 0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo, 1, this.cantidadColumnas - 1);
-        nuevo = new GloboAnimado(0, 0);
-        this.globos.push(nuevo);
-        this.cuadricula.agregarActor(nuevo, 3, this.cantidadColumnas - 1);
+        var _this = this;
+        this.cuadricula.casillas.forEach(function (c) { return _this.agregarGlobo(c.nroFila, c.nroColumna); });
     };
-    ElCangrejoAguafiestas.prototype.moverDerecha = function () {
-        this.automata.hacer_luego(MoverACasillaDerecha);
-    };
-    ElCangrejoAguafiestas.prototype.moverIzquierda = function () {
-        this.automata.hacer_luego(MoverACasillaIzquierda);
-    };
-    ElCangrejoAguafiestas.prototype.moverArriba = function () {
-        this.automata.hacer_luego(MoverACasillaArriba);
-    };
-    ElCangrejoAguafiestas.prototype.moverAbajo = function () {
-        this.automata.hacer_luego(MoverACasillaAbajo);
-    };
-    ElCangrejoAguafiestas.prototype.explotarGlobo = function () {
-        this.automata.hacer_luego(RecogerPorEtiqueta, { 'etiqueta': 'GloboAnimado', 'mensajeError': 'No hay un globo aqui' });
+    ElCangrejoAguafiestas.prototype.agregarGlobo = function (fila, col) {
+        var globo = new GloboAnimado();
+        this.cuadricula.agregarActor(globo, fila, col, false);
+        globo.y += 30;
+        globo.escala *= 0.8;
+        globo.aprender(Flotar, { Desvio: 5 });
     };
     return ElCangrejoAguafiestas;
 })(EscenaActividad);
@@ -3923,6 +3893,41 @@ var EscribirEnCompuAnimada = (function (_super) {
     };
     return EscribirEnCompuAnimada;
 })(ComportamientoColision);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/Detective.ts" />
+/// <reference path = "../actores/Sospechoso.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../habilidades/Flotar.ts" />
+/// <reference path = "../comportamientos/Decir.ts" />
+var LaFiestaDeDracula = (function (_super) {
+    __extends(LaFiestaDeDracula, _super);
+    function LaFiestaDeDracula() {
+        _super.apply(this, arguments);
+    }
+    LaFiestaDeDracula.prototype.iniciar = function () {
+        var _this = this;
+        this.fondo = new Fondo('fondo.detective.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, -30, 1, 7, { ancho: 400, alto: 400 }, { grilla: 'invisible.png', cantColumnas: 1 });
+        Sospechoso.reiniciarDisfraces();
+        var nroCulpable = Math.floor(Math.random() * 7);
+        [0, 1, 2, 3, 4, 5, 6].forEach(function (pos) {
+            var sospechoso = new Sospechoso();
+            _this.cuadricula.agregarActor(sospechoso, 0, pos, false);
+            if (pos === nroCulpable)
+                _this.culpable = sospechoso;
+        });
+        this.culpable.hacerCulpable();
+        this.automata = new Detective();
+        this.cuadricula.agregarActor(this.automata, 0, Math.floor(Math.random() * 7), false);
+        this.automata.y = -100;
+        this.automata.aprender(Flotar, {});
+    };
+    LaFiestaDeDracula.prototype.estaResueltoElProblema = function () {
+        return this.automata.casillaActual() === this.culpable.casillaActual() &&
+            this.culpable.teEncontraron();
+    };
+    return LaFiestaDeDracula;
+})(EscenaActividad);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/Sostener.ts"/>

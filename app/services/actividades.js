@@ -34,6 +34,7 @@ import actividadElSuperviaje from 'pilas-engine-bloques/actividades/actividadElS
 import actividadDibujandoFiguras from 'pilas-engine-bloques/actividades/actividadDibujandoFiguras';
 import actividadSalvandoLaNavidad from 'pilas-engine-bloques/actividades/actividadSalvandoLaNavidad';
 import actividadTitoCuadrado from 'pilas-engine-bloques/actividades/actividadTitoCuadrado';
+import actividadLaFiestaDeDracula from 'pilas-engine-bloques/actividades/actividadLaFiestaDeDracula';
 
 /*
  * Representa un valor mas complejo
@@ -107,6 +108,7 @@ export default Ember.Service.extend({
       actividadDibujandoFiguras,
       actividadSalvandoLaNavidad,
       actividadTitoCuadrado,
+      actividadLaFiestaDeDracula,
     ];
 
     var actividad = actividades.findBy('id',idActividad);
