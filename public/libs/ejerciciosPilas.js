@@ -2565,7 +2565,6 @@ var ContarPorEtiqueta = (function (_super) {
     return ContarPorEtiqueta;
 })(ComportamientoColision);
 /// <reference path="ComportamientoAnimado.ts"/>
-/// <reference path="../actores/RegaloAnimado.ts"/>
 var Depositar = (function (_super) {
     __extends(Depositar, _super);
     function Depositar() {
@@ -2617,6 +2616,17 @@ var DibujarHaciaAdelante = (function (_super) {
     };
     return DibujarHaciaAdelante;
 })(DibujarLinea);
+/// <reference path="ComportamientoConVelocidad.ts"/>
+var Eliminar = (function (_super) {
+    __extends(Eliminar, _super);
+    function Eliminar() {
+        _super.apply(this, arguments);
+    }
+    Eliminar.prototype.postAnimacion = function () {
+        this.receptor.eliminar();
+    };
+    return Eliminar;
+})(ComportamientoConVelocidad);
 /// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 // Si se pasa por argumento "escaparCon" entonces el receptor debe ser actor compuesto
 var Escapar = (function (_super) {
@@ -3367,21 +3377,26 @@ var ElCangrejoAguafiestas = (function (_super) {
             ['T', 'T', 'T', 'T', 'T', 'T'],
             ['T', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T']];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { alto: 400, ancho: 400 }, { grilla: 'casilla.cangrejo_aguafiestas.png' }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 15, { alto: 360, ancho: 400 }, { grilla: 'casilla.cangrejo_aguafiestas.png' }, matriz);
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0, 0);
+        this.automata.escala *= 1.2;
         this.cuadricula.agregarActor(this.automata, 0, 0);
     };
     ElCangrejoAguafiestas.prototype.completarConGlobos = function () {
         var _this = this;
-        this.cuadricula.casillas.forEach(function (c) { return _this.agregarGlobo(c.nroFila, c.nroColumna); });
+        this.cuadricula.casillas.forEach(function (c) { if (!c.esEsquina())
+            _this.agregarGlobo(c.nroFila, c.nroColumna); });
     };
     ElCangrejoAguafiestas.prototype.agregarGlobo = function (fila, col) {
         var globo = new GloboAnimado();
         this.cuadricula.agregarActor(globo, fila, col, false);
-        globo.y += 30;
+        globo.y += 20;
         globo.escala *= 0.8;
         globo.aprender(Flotar, { Desvio: 5 });
+    };
+    ElCangrejoAguafiestas.prototype.estaResueltoElProblema = function () {
+        return this.contarActoresConEtiqueta('GloboAnimado') === 1; // porque el programa termina antes de que se elimine el último globo
     };
     return ElCangrejoAguafiestas;
 })(EscenaActividad);

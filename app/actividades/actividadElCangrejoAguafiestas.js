@@ -3,10 +3,10 @@ import {IrDerecha, IrIzquierda, IrArriba, IrAbajo} from 'pilas-engine-bloques/ac
 
 var ExplotarGlobo = AccionBuilder.build({
   id: 'ExplotarGlobo',
-  descripcion: 'Explotar Globo',
+  descripcion: 'Explotar globo',
   icono: 'icono.globo.png',
   comportamiento: 'ComportamientoColision',
-  argumentos: '{etiqueta:"GloboAnimado", animacionColisionado:"explotar", nombreAnimacion:"recoger"}',
+  argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',
 });
 
 export default {
