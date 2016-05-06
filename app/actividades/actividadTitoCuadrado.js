@@ -1,6 +1,8 @@
 import {Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
 import {IrAbajo, IrIzquierda, IrDerecha, IrArriba} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import {EncenderLuz,TocandoLuz} from 'pilas-engine-bloques/actividades/bloquesTito';
+import {Numero,OpComparacion,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
+
 
 export default {
   nombre: 'Tito cuadrado',
@@ -12,5 +14,5 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, Repetir, Si, Sino, Hasta, TocandoLuz, EncenderLuz,IrAbajo,IrArriba,IrIzquierda,IrDerecha],
+  bloques: [Procedimiento, Repetir, Si, Sino, Hasta, TocandoLuz, EncenderLuz,IrAbajo,IrArriba,IrIzquierda,IrDerecha,Numero,OpComparacion,OpAritmetica],
 };

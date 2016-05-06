@@ -1,4 +1,5 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
+import {Numero, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var {Accion, Repetir, Si, Sino, Hasta, Procedimiento, ParamValor} = bloques;
 
@@ -86,5 +87,5 @@ export default {
   puedeDuplicar: false,
   usaParametros: true,
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,DibujarLado, GirarGrados],
+  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,DibujarLado, GirarGrados,Numero, OpAritmetica],
 };

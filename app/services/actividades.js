@@ -29,6 +29,7 @@ import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/activid
 import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
 import actividadElDetectiveChaparro from  'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 import actividadPrendiendoLasCompus from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
+import actividadPrendiendoLasCompusParametrizado from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus-conParametros';
 import actividadElMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElMonoCuentaDeNuevo';
 import actividadElSuperviaje from 'pilas-engine-bloques/actividades/actividadElSuperviaje';
 import actividadDibujandoFiguras from 'pilas-engine-bloques/actividades/actividadDibujandoFiguras';
@@ -109,6 +110,7 @@ export default Ember.Service.extend({
       actividadSalvandoLaNavidad,
       actividadTitoCuadrado,
       actividadLaFiestaDeDracula,
+      actividadPrendiendoLasCompusParametrizado,
     ];
 
     var actividad = actividades.findBy('id',idActividad);

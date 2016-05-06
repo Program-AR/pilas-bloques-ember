@@ -1,5 +1,6 @@
 import {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
 import {IrDerecha, SiguienteFilaTotal} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {Numero,OpComparacion,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var DejarRegalo = AccionBuilder.build({
   descripcion: 'Dejar regalo',
@@ -20,5 +21,5 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, Repetir, Si, Sino, Hasta,  IrDerecha, DejarRegalo, SiguienteFilaTotal],
+  bloques: [Procedimiento, Repetir, Si, Sino, Hasta,  IrDerecha, DejarRegalo, SiguienteFilaTotal,Numero,OpComparacion,OpAritmetica],
 };

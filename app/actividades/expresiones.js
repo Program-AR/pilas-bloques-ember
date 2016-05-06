@@ -1,9 +1,11 @@
 import Bloque from 'pilas-engine-bloques/actividades/bloque';
-import {Operadores, Valores} from 'pilas-engine-bloques/actividades/bloque';
+import {Operadores, Valores} from 'pilas-engine-bloques/actividades/categorias';
 
 
 var ExpresionDeBlockly = Bloque.extend({
+
   _categoria: Operadores,
+
   registrar_en_blockly() {
     // pisado porque ya viene con blockly
     // ni tampoco quiero modificar el javascript
@@ -12,7 +14,9 @@ var ExpresionDeBlockly = Bloque.extend({
 });
 
 var Numero = ExpresionDeBlockly.extend({
+
   _categoria: Valores,
+
   init() {
     this._super();
     this.set('id', 'math_number');

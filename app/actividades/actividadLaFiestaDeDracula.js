@@ -1,4 +1,6 @@
 import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bloques/actividades/bloques';
+import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
+
 
 
 export default {
@@ -13,5 +15,5 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta],
+  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,Numero,OpAritmetica],
 };

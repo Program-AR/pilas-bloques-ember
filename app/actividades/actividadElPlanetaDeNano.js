@@ -1,8 +1,6 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-//import comer from 'pilas-engine-bloques/actividades/comer';
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
-var {IrDerecha, IrArriba} = direcciones;
+import {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
+import {IrDerecha, IrArriba} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {Numero} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ComerBanana = AccionBuilder.build({
   descripcion: 'Comer Banana',
@@ -30,5 +28,5 @@ export default {
   puedeDuplicar: false,
 
   usaParametros: true,
-  bloques: [Procedimiento,IrDerecha,IrArriba,VolverAlBordeIzquierdo,ComerBanana,Repetir,Si,Sino,Hasta],
+  bloques: [Procedimiento,IrDerecha,IrArriba,VolverAlBordeIzquierdo,ComerBanana,Repetir,Si,Sino,Hasta,Numero],
 };
