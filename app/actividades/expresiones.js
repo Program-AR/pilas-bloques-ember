@@ -13,6 +13,16 @@ var ExpresionDeBlockly = Bloque.extend({
 
 });
 
+var Texto = ExpresionDeBlockly.extend({
+
+  _categoria: Valores,
+
+  init() {
+    this._super();
+    this.set('id', 'text');
+  },
+});
+
 var Numero = ExpresionDeBlockly.extend({
 
   _categoria: Valores,
@@ -61,5 +71,5 @@ var OpNegacion = ExpresionDeBlockly.extend({
 
 export {
   ExpresionDeBlockly, Numero, OpAritmetica, Booleano,
-  OpComparacion, OpLogica, OpNegacion
+  OpComparacion, OpLogica, OpNegacion, Texto
 };

@@ -1,6 +1,6 @@
 import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bloques/actividades/bloques';
 import {IrDerecha, IrIzquierda, IrArriba, IrAbajo} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import {Numero,OpComparacion,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
+import {Numero,OpComparacion,OpAritmetica,Texto} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ExplotarGlobo = AccionBuilder.build({
   id: 'ExplotarGlobo',
@@ -22,5 +22,7 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,IrDerecha, IrIzquierda, IrArriba, IrAbajo,ExplotarGlobo,Numero,OpComparacion,OpAritmetica],
+  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,
+    IrDerecha, IrIzquierda, IrArriba, IrAbajo,
+    ExplotarGlobo,Numero,OpComparacion,OpAritmetica,Texto],
 };
