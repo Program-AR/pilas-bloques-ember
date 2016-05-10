@@ -354,7 +354,7 @@ var AccionBuilder = {
         return opciones.comportamiento;
       },
 
-      argumentos(){
+      argumentos(block){ //jshint unused:vars
         return opciones.argumentos;
       },
 
