@@ -8,7 +8,7 @@ var PatearPelota = AccionBuilder.build({
   descripcion: 'Patear pelota',
   icono: 'iconos.pelota.png',
   comportamiento: 'DesencadenarComportamientoSiColisiona',
-  argumentos: '{"comportamiento":SerPateado,\'etiqueta\':\'PelotaAnimada\',\'argumentosComportamiento\':{\'tiempoEnElAire\':25,\'aceleracion\':0.0025,\'elevacionMaxima\':25,\'gradosDeAumentoStep\':-2}}',
+  argumentos: '{"comportamiento":SerPateado, idTransicion:"patear", etiqueta:"PelotaAnimada", argumentosComportamiento: {tiempoEnElAire:25,aceleracion:0.0025,elevacionMaxima:25,gradosDeAumentoStep:-2}}',
 });
 
 var TocandoInicio = AccionBuilder.buildSensor({
