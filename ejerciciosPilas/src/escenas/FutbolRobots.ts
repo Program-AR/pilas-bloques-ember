@@ -14,7 +14,7 @@ class FutbolRobots  extends EscenaActividad{
       this.cantidadFilas=8;
 
       this.cuadricula = new CuadriculaMultiple(
-        new DefinidorColumnasRandom(cantidadFilas,6),
+        new DefinidorColumnasRandom(this.cantidadFilas,6),
         0,-50,
         {separacionEntreCasillas: 5},
         {grilla:'casilla.futbolRobots2.png', alto:40,ancho:40})
@@ -27,9 +27,11 @@ class FutbolRobots  extends EscenaActividad{
       this.automata.abajo = casilla.y - (0.25 * casilla.alto);
       this.automata.radio_de_colision = this.automata.alto / 2.5;
 
-      for (var fila=0;fila<cantidadFilas;++fila){
+      for (var fila=0;fila<this.cantidadFilas;++fila){
         this.cuadricula.agregarActor(new PelotaAnimada(0,0),fila,this.cuadricula.dameIndexUltimaPosicion(fila))
-      }
+      };
+
+      this.crearEstado();
 
    }
 
