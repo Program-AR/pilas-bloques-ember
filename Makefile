@@ -1,5 +1,5 @@
 
-VERSION=0.10.0
+VERSION=0.11.0
 NOMBRE="pilas-engine-bloques"
 
 N=[0m
@@ -194,7 +194,7 @@ limpiar_todo:
 	@echo "Limpiando bibliotecas..."
 	@echo "(se reinstalarán a continuación)"
 	@sleep 5s;
-	@rm -rf node_modules/ bower_components/ 
+	@rm -rf node_modules/ bower_components/
 
 full: limpiar_todo iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
 
@@ -263,4 +263,3 @@ subir_a_dropbox:
 
 
 .PHONY: dist bajar_dependencias
-
