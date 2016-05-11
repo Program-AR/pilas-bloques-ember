@@ -3780,6 +3780,7 @@ var ElRecolectorDeEstrellas = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
+/// <reference path = "EstadosDeEscena.ts" />
 var FutbolRobots = (function (_super) {
     __extends(FutbolRobots, _super);
     function FutbolRobots() {
@@ -3787,8 +3788,8 @@ var FutbolRobots = (function (_super) {
     }
     FutbolRobots.prototype.iniciar = function () {
         this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
-        var cantidadFilas = 8;
-        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasRandom(cantidadFilas, 6), 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
+        this.cantidadFilas = 8;
+        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasRandom(this.cantidadFilas, 6), 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
         this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
         this.automata = new RobotAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
@@ -3796,12 +3797,22 @@ var FutbolRobots = (function (_super) {
         this.automata.escalarAAlto(3.5 * casilla.alto);
         this.automata.abajo = casilla.y - (0.25 * casilla.alto);
         this.automata.radio_de_colision = this.automata.alto / 2.5;
-        for (var fila = 0; fila < cantidadFilas; ++fila) {
+        for (var fila = 0; fila < this.cantidadFilas; ++fila) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
+        ;
+        this.crearEstado();
     };
-    FutbolRobots.prototype.estaResueltoElProblema = function () {
-        return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 1; // TODO: El programa termina antes de que se vaya la última pelota
+    FutbolRobots.prototype.crearEstado = function () {
+        this.cantPateadas = 0;
+        var myThis = this;
+        var builder = new BuilderStatePattern('faltaPatear');
+        builder.agregarEstadoAceptacion('todasPateadas');
+        builder.agregarTransicion('faltaPatear', 'todasPateadas', 'patear', function () {
+            myThis.cantPateadas += 1;
+            return myThis.cantPateadas === myThis.cantidadFilas;
+        });
+        this.estado = builder.estadoInicial();
     };
     return FutbolRobots;
 })(EscenaActividad);

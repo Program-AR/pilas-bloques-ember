@@ -40,7 +40,6 @@ import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
 import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
 import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
-import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
 import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTresNaranjas';
 import debeTenerTantosActoresConEtiqueta from '../../helpers/debe-tener-tantos-actores-con-etiqueta';
 
