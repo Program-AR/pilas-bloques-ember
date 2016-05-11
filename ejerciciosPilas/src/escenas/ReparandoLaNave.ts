@@ -64,7 +64,7 @@ class ReparandoLaNave extends EscenaActividad {
     Trait.toObject(ObservadoConDisminuir, this.hierro);
 
     this.hierro.registrarObservador(
-      new Tablero(150, 220, { texto: "Hierro" }));
+      new Tablero(-150, 190, { texto: "Hierro" }));
     this.carbon.registrarObservador(
       new Tablero(150, 190, { texto: "Carbón" }));
 
