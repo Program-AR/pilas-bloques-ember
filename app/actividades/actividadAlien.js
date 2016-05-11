@@ -2,7 +2,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Sensor, Repetir,Procedimiento} = bloques;
+var {Accion, Repetir,Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 
@@ -29,28 +29,6 @@ var LevantarTuerca = Accion.extend({
   }
 });
 
-
-
-var TocandoTuerca = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoTuerca');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿tocando')
-         .appendField(this.obtener_icono('../libs/data/tuerca.png'))
-         .appendField('?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'TuercaAnimada\')';
-  }
-});
-
-
 var actividadAlien = {
   nombre: 'El alien y las tuercas',
   id: 'ElAlienYLasTuercas',
@@ -61,7 +39,7 @@ var actividadAlien = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, Repetir, IrDerecha, IrIzquierda, IrArriba, IrAbajo, LevantarTuerca, TocandoTuerca],
+  bloques: [Procedimiento, Repetir, IrDerecha, IrIzquierda, IrArriba, IrAbajo, LevantarTuerca],
 };
 
 export default actividadAlien;

@@ -3,7 +3,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import tocando from 'pilas-engine-bloques/actividades/tocando';
-var {Repetir,Si,Sino,Procedimiento,Hasta} = bloques;
+var {Repetir,Si,Sino,Procedimiento} = bloques;
 var {IrDerecha,IrAbajo} = direcciones;
 var {TocandoAbajo,TocandoDerecha,TocandoFinCamino} = tocando;
 
@@ -18,7 +18,7 @@ var actividadLaberintoLargo = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, IrDerecha,IrAbajo,Hasta, Repetir,Si,Sino, TocandoAbajo,TocandoDerecha,TocandoFinCamino],
+  bloques: [Procedimiento, IrDerecha,IrAbajo,Repetir,Si,Sino, TocandoAbajo,TocandoDerecha,TocandoFinCamino],
 };
 
 export default actividadLaberintoLargo;
