@@ -24,6 +24,8 @@ class SuperViaje extends EscenaActividad {
           return this.totalKM
         };
 
+        this.crearTablero();
+
         this.automata.fraseAlVolar = function() {
           this.restantesKM--;
           if (this.restantesKM == 0) return "¡Llegué!";
@@ -34,7 +36,14 @@ class SuperViaje extends EscenaActividad {
         }
     }
 
+    crearTablero(){
+      Trait.toObject(Observado, this.automata);
+      var tablero = new Tablero(0, 210, { texto: "Kilómetros de distancia:" , atributoObservado: 'kmsTotales'});
+      this.automata.registrarObservador(tablero);
+    }
+
     estaResueltoElProblema(){
       return this.automata.restantesKM === 0;
     }
+
 }
