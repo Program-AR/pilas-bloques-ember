@@ -7,7 +7,7 @@ pilas-engine-bloques
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
-![](screenshots/1.png)
+![](screenshots/3.png)
 
 ![](screenshots/2.png)
 
@@ -44,3 +44,18 @@ o ejecutar los test una sola vez usando el siguiente comando:
 ```
   ember nw:test
 ```
+
+Notas de versión
+---------
+* 0.11.0
+ * Incluye todos los desafíos hasta Uso de Variables inclusive.
+ * En "La gran aventura del mar encantado" se optó por una alternativa de personajes
+ con menos prejuicios sociales, intentando abogar por igualdad de géneros.
+ ¡Es la heroína quien debe rescatar al príncipe!
+ * Se cambiaron los nombres de las categorías de bloques, la discusión conceptual
+ continúa.
+ * Se arreglaron los enunciados de los desafíos.
+ * Se arreglaron los tableros que muestran contadores.
+ * Se mejoró la integración con Analytics. Ahora se hace seguimiento por desafío visitado.
+* 0.10.0
+ * Primer versión con todos los desafíos hasta Alternativa Condicional inclusive.
