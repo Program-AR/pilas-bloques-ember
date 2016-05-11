@@ -1,14 +1,17 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
+/// <reference path = "EstadosDeEscena.ts" />
 
 class FutbolRobots  extends EscenaActividad{
   automata : ActorAnimado;
   fondo;
   cuadricula;
+  cantPateadas;
+  cantidadFilas;
 
   iniciar() {
       this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
-      var cantidadFilas=8;
+      this.cantidadFilas=8;
 
       this.cuadricula = new CuadriculaMultiple(
         new DefinidorColumnasRandom(cantidadFilas,6),
@@ -30,8 +33,15 @@ class FutbolRobots  extends EscenaActividad{
 
    }
 
-   estaResueltoElProblema(){
-     return this.cantidadObjetosConEtiqueta('PelotaAnimada') == 1; // TODO: El programa termina antes de que se vaya la última pelota
+   private crearEstado() {
+     this.cantPateadas = 0;
+     var myThis = this;
+     var builder = new BuilderStatePattern('faltaPatear');
+     builder.agregarEstadoAceptacion('todasPateadas');
+     builder.agregarTransicion('faltaPatear', 'todasPateadas', 'patear',
+       function(){
+         myThis.cantPateadas += 1;
+         return myThis.cantPateadas === myThis.cantidadFilas});
+     this.estado = builder.estadoInicial();
    }
-
 }
