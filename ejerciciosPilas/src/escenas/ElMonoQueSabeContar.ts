@@ -21,10 +21,6 @@ class ElMonoQueSabeContar extends EscenaActividad {
         this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
         this.cambiarImagenesFin();
 
-        this.automata = new MonoAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
-        this.automata.escala *= 1.5;
-
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]),
           {condiciones:[
             function(fila,col,pmatrix){return fila!=0;},
@@ -33,6 +29,10 @@ class ElMonoQueSabeContar extends EscenaActividad {
             //no incluye en ultima fila
           ]}
           );
+
+        this.automata = new MonoAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+        this.automata.escala *= 1.5;
 
         this.tableros = {};
         this.tableros.ManzanaAnimada = new Tablero(150,210,{texto:"Manzanas"});
