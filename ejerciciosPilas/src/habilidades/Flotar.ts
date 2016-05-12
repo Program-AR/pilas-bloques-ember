@@ -5,19 +5,21 @@ class Flotar extends HabilidadAnimada {
     altura_original
     contador
     desvio
+    eje
 
     constructor(receptor,argumentos) {
         super(receptor);
-        this.actualizarPosicion();
         this.contador = Math.random() * 3;
         this.desvio = argumentos["Desvio"] || 1;
+        this.eje = argumentos.eje || 'Y';
+        this.actualizarPosicion();
     }
 
     actualizar() {
       this.contador += 0.025;
       this.contador = this.contador % 256;
       //Esto es para evitar overflow.
-      this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio
+      this.receptor['set' + this.eje](this.altura_original + Math.sin(this.contador) * this.desvio);
     }
 
     implicaMovimiento(){
@@ -25,7 +27,7 @@ class Flotar extends HabilidadAnimada {
     }
 
     actualizarPosicion(){
-        this.altura_original = this.receptor.y;
+        this.altura_original = this.receptor['get' + this.eje]();
     }
 
 }
