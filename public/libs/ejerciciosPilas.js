@@ -1526,6 +1526,124 @@ var EstrellaAnimada = (function (_super) {
     }
     return EstrellaAnimada;
 })(ActorAnimado);
+/*Implementa un tablero, que tiene "nombre de equipo" y "puntaje"*/
+/*Notar que aumentar puede tomar valores negativos o positivos*/
+/* Para usarlo, hay que construirlo y setearle un observado
+ver clase "observado" */
+var Tablero = (function (_super) {
+    __extends(Tablero, _super);
+    function Tablero(x, y, argumentos) {
+        this.sanitizarArgumentosTablero(argumentos);
+        _super.call(this, x, y, { grilla: argumentos.imagen, cantColumnas: 1, cantFilas: 1 });
+        this.buildLabel(argumentos);
+        this.buildPuntaje(argumentos);
+        this.updateWidth();
+    }
+    // | margen | label | separacion | puntaje | margen |
+    Tablero.prototype.sanitizarArgumentosTablero = function (args) {
+        args.imagen = args.imagen || 'placacontar.png';
+        this.atributoObservado = args.atributoObservado || 'cantidad';
+        this.colorTxtLabel = args.colorTxtLabel || "black";
+        this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
+        this.separacionX = args.separacionX || 10;
+        this.separacionY = args.separacionY || 0;
+        this.margen = args.margen || 5;
+    };
+    Tablero.prototype.buildLabel = function (argumentos) {
+        this.label = new Texto(0, this.y, argumentos.texto, this.colorTxtLabel);
+        this.label.setZ(this.z - 1);
+    };
+    Tablero.prototype.buildPuntaje = function (argumentos) {
+        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, this.colorTxtPuntaje);
+        this.puntaje.setZ(this.z - 2);
+    };
+    // | margen | label | separacion | puntaje | margen |
+    Tablero.prototype.updateWidth = function () {
+        this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
+        this.label.izquierda = this.izquierda + this.margen;
+        this.puntaje.izquierda = this.label.derecha + this.separacionX;
+    };
+    Tablero.prototype.updateHeight = function () {
+        this.ancho = this.margen * 2 + this.separacionY + this.label.alto;
+        this.label.arriba = this.arriba + this.margen;
+        this.puntaje.arriba = this.label.arriba;
+    };
+    Tablero.prototype.dameValor = function () {
+        return this.puntaje.obtener();
+    };
+    Tablero.prototype.aumentar = function (aumento) {
+        this.puntaje.aumentar(aumento);
+    };
+    Tablero.prototype.setearValor = function (nuevoValor) {
+        if (nuevoValor <= this.puntaje.obtener()) {
+            this.puntaje.aumentar(-(this.puntaje.obtener() - nuevoValor));
+        }
+        else {
+            this.puntaje.aumentar(nuevoValor - this.puntaje.obtener());
+        }
+    };
+    Tablero.prototype.tuObservadoCambio = function (observado) {
+        this.setearValor(this.leerObservado(observado));
+        this.updateWidth();
+    };
+    Tablero.prototype.leerObservado = function (observado) {
+        if (typeof (observado[this.atributoObservado]) === "function") {
+            return observado[this.atributoObservado]();
+        }
+        return observado[this.atributoObservado];
+    };
+    Tablero.prototype.setX = function (x) {
+        _super.prototype.setX.call(this, x);
+        this.updateWidth();
+    };
+    Tablero.prototype.setY = function (y) {
+        _super.prototype.setY.call(this, y);
+        this.updateHeight();
+    };
+    return Tablero;
+})(ActorAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "HabilidadAnimada.ts"/>
+var Flotar = (function (_super) {
+    __extends(Flotar, _super);
+    function Flotar(receptor, argumentos) {
+        _super.call(this, receptor);
+        this.contador = Math.random() * 3;
+        this.desvio = argumentos["Desvio"] || 1;
+        this.eje = argumentos.eje || 'Y';
+        this.actualizarPosicion();
+    }
+    Flotar.prototype.actualizar = function () {
+        this.contador += 0.025;
+        this.contador = this.contador % 256;
+        //Esto es para evitar overflow.
+        this.receptor['set' + this.eje](this.altura_original + Math.sin(this.contador) * this.desvio);
+    };
+    Flotar.prototype.implicaMovimiento = function () {
+        return true;
+    };
+    Flotar.prototype.actualizarPosicion = function () {
+        this.altura_original = this.receptor['get' + this.eje]();
+    };
+    return Flotar;
+})(HabilidadAnimada);
+/// <reference path="Tablero.ts"/>
+/// <reference path="../habilidades/Flotar.ts"/>
+var FlechaEscenarioAleatorio = (function (_super) {
+    __extends(FlechaEscenarioAleatorio, _super);
+    function FlechaEscenarioAleatorio() {
+        _super.call(this, 120, 220, { imagen: 'flechaEscenarioAleatorio.png',
+            texto: "¡Ejecutá varias veces!",
+            separacionX: 0,
+        });
+        this.aprender(Flotar, { eje: 'X', Desvio: 20 });
+        this.setAlto(40);
+    }
+    FlechaEscenarioAleatorio.prototype.buildPuntaje = function (argumentos) {
+        this.puntaje = { ancho: 0 };
+    };
+    return FlechaEscenarioAleatorio;
+})(Tablero);
 /// <reference path = "ActorCompuesto.ts"/>
 var FondoAnimado = (function (_super) {
     __extends(FondoAnimado, _super);
@@ -1632,30 +1750,6 @@ var Lamparin = (function (_super) {
     }
     return Lamparin;
 })(ActorAnimado);
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "HabilidadAnimada.ts"/>
-var Flotar = (function (_super) {
-    __extends(Flotar, _super);
-    function Flotar(receptor, argumentos) {
-        _super.call(this, receptor);
-        this.actualizarPosicion();
-        this.contador = Math.random() * 3;
-        this.desvio = argumentos["Desvio"] || 1;
-    }
-    Flotar.prototype.actualizar = function () {
-        this.contador += 0.025;
-        this.contador = this.contador % 256;
-        //Esto es para evitar overflow.
-        this.receptor.y = this.altura_original + Math.sin(this.contador) * this.desvio;
-    };
-    Flotar.prototype.implicaMovimiento = function () {
-        return true;
-    };
-    Flotar.prototype.actualizarPosicion = function () {
-        this.altura_original = this.receptor.y;
-    };
-    return Flotar;
-})(HabilidadAnimada);
 /// <reference path="ActorAnimado.ts"/>
 /// <reference path="../habilidades/Flotar.ts"/>
 var LlaveAnimado = (function (_super) {
@@ -2054,69 +2148,6 @@ var Superheroe = (function (_super) {
         this.definirAnimacion('correr', [2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 6, 6], 15);
     }
     return Superheroe;
-})(ActorAnimado);
-/*Implementa un tablero, que tiene "nombre de equipo" y "puntaje"*/
-/*Notar que aumentar puede tomar valores negativos o positivos*/
-/* Para usarlo, hay que construirlo y setearle un observado
-ver clase "observado" */
-var Tablero = (function (_super) {
-    __extends(Tablero, _super);
-    function Tablero(x, y, argumentos) {
-        this.sanitizarArgumentosTablero(argumentos);
-        _super.call(this, x, y, { grilla: argumentos.imagen, cantColumnas: 1, cantFilas: 1 });
-        this.buildLabel(argumentos);
-        this.buildPuntaje(argumentos);
-        this.updateWidth();
-    }
-    // | margen | label | separacion | puntaje | margen |
-    Tablero.prototype.sanitizarArgumentosTablero = function (args) {
-        args.imagen = args.imagen || 'placacontar.png';
-        this.atributoObservado = args.atributoObservado || 'cantidad';
-        this.colorTxtLabel = args.colorTxtLabel || "black";
-        this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
-        this.separacionX = args.separacionX || 10;
-        this.separacionY = args.separacionY || 0;
-        this.margen = args.margen || 5;
-    };
-    Tablero.prototype.buildLabel = function (argumentos) {
-        this.label = new Texto(0, this.y, argumentos.texto, this.colorTxtLabel);
-        this.label.setZ(this.z - 1);
-    };
-    Tablero.prototype.buildPuntaje = function (argumentos) {
-        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, this.colorTxtPuntaje);
-        this.puntaje.setZ(this.z - 2);
-    };
-    // | margen | label | separacion | puntaje | margen |
-    Tablero.prototype.updateWidth = function () {
-        this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
-        this.label.izquierda = this.izquierda + this.margen;
-        this.puntaje.izquierda = this.label.derecha + this.separacionX;
-    };
-    Tablero.prototype.dameValor = function () {
-        return this.puntaje.obtener();
-    };
-    Tablero.prototype.aumentar = function (aumento) {
-        this.puntaje.aumentar(aumento);
-    };
-    Tablero.prototype.setearValor = function (nuevoValor) {
-        if (nuevoValor <= this.puntaje.obtener()) {
-            this.puntaje.aumentar(-(this.puntaje.obtener() - nuevoValor));
-        }
-        else {
-            this.puntaje.aumentar(nuevoValor - this.puntaje.obtener());
-        }
-    };
-    Tablero.prototype.tuObservadoCambio = function (observado) {
-        this.setearValor(this.leerObservado(observado));
-        this.updateWidth();
-    };
-    Tablero.prototype.leerObservado = function (observado) {
-        if (typeof (observado[this.atributoObservado]) === "function") {
-            return observado[this.atributoObservado]();
-        }
-        return observado[this.atributoObservado];
-    };
-    return Tablero;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
 var Tito = (function (_super) {
@@ -3568,9 +3599,10 @@ var ElMonoCuentaDeNuevo = (function (_super) {
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/BananaAnimada.ts" />
 /// <reference path = "../actores/ManzanaAnimada.ts" />
-/// <reference path = "../actores/MonoAnimado.ts" />}
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
-/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />}
+/// <reference path = "../actores/MonoAnimado.ts" />
+/// <reference path = "../actores/FlechaEscenarioAleatorio.ts" />
+/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />
+/// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />
 var LaEleccionDelMono = (function (_super) {
     __extends(LaEleccionDelMono, _super);
     function LaEleccionDelMono() {
@@ -3578,13 +3610,14 @@ var LaEleccionDelMono = (function (_super) {
     }
     LaEleccionDelMono.prototype.iniciar = function () {
         var _this = this;
-        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0; });
+        this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0 && _this.automata.casillaActual().sos(0, 1); });
         this.fondo = new Fondo('fondos.selva.png', 0, 0);
         this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
             cantColumnas: 1 });
         this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
         this.agregarFruta();
+        new FlechaEscenarioAleatorio();
     };
     LaEleccionDelMono.prototype.agregarFruta = function () {
         if (Math.random() < .5) {
@@ -4424,6 +4457,7 @@ var SuperViaje = (function (_super) {
         this.automata.kmsTotales = function () {
             return this.totalKM;
         };
+        this.crearTablero();
         this.automata.fraseAlVolar = function () {
             this.restantesKM--;
             if (this.restantesKM == 0)
@@ -4434,6 +4468,11 @@ var SuperViaje = (function (_super) {
                 throw new ActividadError("¡Volé de más!");
             return "¡Faltan " + this.restantesKM + " kilometros!";
         };
+    };
+    SuperViaje.prototype.crearTablero = function () {
+        Trait.toObject(Observado, this.automata);
+        var tablero = new Tablero(0, 210, { texto: "Kilómetros de distancia:", atributoObservado: 'kmsTotales' });
+        this.automata.registrarObservador(tablero);
     };
     SuperViaje.prototype.estaResueltoElProblema = function () {
         return this.automata.restantesKM === 0;
