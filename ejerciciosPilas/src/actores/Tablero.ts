@@ -61,6 +61,12 @@ class Tablero extends ActorAnimado{
     this.puntaje.izquierda = this.label.derecha + this.separacionX;
   }
 
+  updateHeight(){
+    this.ancho = this.margen * 2 + this.separacionY + this.label.alto;
+    this.label.arriba = this.arriba + this.margen;
+    this.puntaje.arriba = this.label.arriba;
+  }
+
   dameValor(){
     return this.puntaje.obtener();
   }
@@ -87,6 +93,16 @@ class Tablero extends ActorAnimado{
       return observado[this.atributoObservado]();
     }
     return observado[this.atributoObservado];
+  }
+
+  setX(x){
+    super.setX(x);
+    this.updateWidth();
+  }
+
+  setY(y){
+    super.setY(y);
+    this.updateHeight();
   }
 
 }

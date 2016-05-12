@@ -82,8 +82,10 @@ declare class Actor extends Estudiante {
     public setZ(z: any): void;
     public espejado : any;
     public x : any;
+    public getX(): any;
     public setX(x: any): void;
     public y : any;
+    public getY(): any;
     public setY(y: any): void;
     public centro : any[];
     public centro_x : any;
