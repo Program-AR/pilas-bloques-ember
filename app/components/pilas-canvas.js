@@ -31,4 +31,8 @@ export default Ember.Component.extend({
 
   }),
 
+  willDestroyElement(){
+    window.pilas.reiniciar();
+  },
+
 });
