@@ -1,6 +1,4 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} = bloques;
+import {AccionBuilder, Repetir, RepetirVacio, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} from 'pilas-engine-bloques/actividades/bloques';
 
 var Avanzar1km = AccionBuilder.build({
   descripcion: 'Avanzar 1 Km',
@@ -36,5 +34,5 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, KmsTotales, Avanzar1km, Repetir, Si, Sino, Hasta],
+  bloques: [Procedimiento, KmsTotales, Avanzar1km, RepetirVacio, Repetir, Si, Sino, Hasta],
 };

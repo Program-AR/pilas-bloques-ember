@@ -31,7 +31,6 @@ export default {
     'Pista: mirá la categoría "Sensores" y la categoría "Control".',
 
   consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
-
   // la escena proviene de ejerciciosPilas
   escena: ElMonoYLasBananas,  // jshint ignore:line
   puedeComentar: false,

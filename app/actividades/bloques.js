@@ -493,6 +493,12 @@ var Repetir = EstructuraDeControl.extend({
 
 });
 
+var RepetirVacio = Repetir.extend({
+  get_parametros(){
+    return [];
+  }
+});
+
 var Si = EstructuraDeControl.extend({
 
   init() {
@@ -582,4 +588,4 @@ var Hasta = EstructuraDeControl.extend({
 export {Bloque, CambioDeJSDeBlocky, VariableGet, VariableEspecificaGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder,
-               Sensor, Repetir,Si,Sino,Hasta, ParamCampo, ParamValor};
+               Sensor, Repetir, RepetirVacio, Si,Sino,Hasta, ParamCampo, ParamValor};
