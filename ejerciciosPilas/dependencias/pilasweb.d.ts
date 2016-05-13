@@ -79,6 +79,7 @@ declare class Actor extends Estudiante {
     private _crear_sprite();
     public eliminar(): void;
     public z : any;
+    public getZ(): any;
     public setZ(z: any): void;
     public espejado : any;
     public x : any;
