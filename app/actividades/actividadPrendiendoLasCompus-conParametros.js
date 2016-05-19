@@ -7,7 +7,7 @@ var prendiendoCompusParam = new ConstructorDeAct();
 
 prendiendoCompusParam.nombre = 'Prendiendo las compus parametrizado';
 prendiendoCompusParam.id = 'PrendiendoLasCompusParametrizado';
-prendiendoCompusParam.enunciado = 'A Definir';  
+prendiendoCompusParam.enunciado = 'Ramiro necesita prender todas las compus de la habitación. Deberá recorrer cada hilera de compus y prenderlas una por una. Pista: la cantidad de compus cambia cada vez, pero el recorrido de Ramiro siempre va a seguir la forma de un rectángulo.';  
 prendiendoCompusParam.consignaInicial = '';
 prendiendoCompusParam.bloques = prendiendoCompus.bloques.slice();
 prendiendoCompusParam.bloques =
