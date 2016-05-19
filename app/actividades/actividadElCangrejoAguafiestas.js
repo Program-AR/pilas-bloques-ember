@@ -13,8 +13,8 @@ var ExplotarGlobo = AccionBuilder.build({
 export default {
   nombre: 'El cangrejo aguafiestas',
   id: 'ElCangrejoAguafiestas',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  enunciado: 'El cangrejo por aguafiestas quiere pinchar todos los globos de la fiesta. Los globos nunca cambian de lugar, pero ¡atención! la hilera del medio lo va a obligar al cangrejo a volver sobre sus pasos. Pista: ¿En vez de un parámetro te ayuda pensar a la cantidad de globos y a la dirección ambos como parámetros?',
+  /*consignaInicial: 'A definir.',*/
 
   /*global ElCangrejoAguafiestas */
   escena: ElCangrejoAguafiestas,
