@@ -30,7 +30,7 @@ class SuperViaje extends EscenaActividad {
           this.restantesKM--;
           if (this.restantesKM == 0) return "¡Llegué!";
           if (this.restantesKM == 1) return "¡Falta 1 kilometro!";
-          if (this.restantesKM < 0) throw new ActividadError("Ya llegué, ¡no debo seguir volando!");
+          if (this.restantesKM > 0) throw new ActividadError("Ya llegué, ¡no debo seguir volando!");
 
           return "¡Faltan " + this.restantesKM + " kilometros!";
         }
