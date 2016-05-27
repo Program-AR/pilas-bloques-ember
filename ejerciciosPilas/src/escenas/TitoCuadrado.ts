@@ -9,7 +9,7 @@ class TitoCuadrado extends EscenaActividad {
   cantidadColumnas;
 
   iniciar() {
-      this.fondo = new Fondo('fondo.superTito1.png',0,0);
+      this.fondo = new Fondo('fondo.tito-cuadrado.png',0,0);
       this.cantidadFilas=7;
       this.cantidadColumnas=7;
       var matriz= [
