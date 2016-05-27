@@ -1,40 +1,85 @@
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Detective.ts" />
-/// <reference path = "../actores/Sospechoso.ts" />
-/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/Frank.ts" />
+/// <reference path = "../actores/Bruja.ts" />
+/// <reference path = "../actores/Dracula.ts" />
+/// <reference path = "../actores/Tito.ts" />
+/// <reference path = "../actores/Murcielago.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/Decir.ts" />
+/// <reference path = "../comportamientos/ComportamientoAnimado.ts" />
+/// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 
  class LaFiestaDeDracula extends EscenaActividad {
-   culpable: Sospechoso;
-   cuadricula: Cuadricula;
+   focos = [];
+   bailarines = [];
 
   iniciar() {
-    this.fondo = new Fondo('fondo.detective.png',0,0);
-    this.cuadricula = new Cuadricula(0, -30, 1, 7,
-      { ancho: 400, alto: 400 },
+    this.fondo = new Fondo('fondo.fiestadracula.png',0,0);
+    this.cuadricula = new Cuadricula(0, 200, 1, 3,
+      { alto: 100 },
       { grilla: 'invisible.png', cantColumnas: 1 });
 
-    Sospechoso.reiniciarDisfraces();
-    var nroCulpable = Math.floor(Math.random() * 7);
-    [0, 1, 2, 3, 4, 5, 6].forEach(pos => {
-      var sospechoso = new Sospechoso();
-      this.cuadricula.agregarActor(sospechoso, 0, pos, false);
-      if (pos === nroCulpable) this.culpable = sospechoso;
-    });
-
-    this.culpable.hacerCulpable();
-
-    this.automata = new Detective();
-    this.cuadricula.agregarActor(this.automata, 0, Math.floor(Math.random() * 7), false);
-    this.automata.y = -100;
-    this.automata.aprender(Flotar,{});
+    this.agregarAutomata();
+    this.agregarFocos();
+    this.agregarBailarines();
   }
 
-  estaResueltoElProblema() {
-    return this.automata.casillaActual() === this.culpable.casillaActual() &&
-      this.culpable.teEncontraron();
+  agregarAutomata(){
+    this.automata = new Murcielago();
+    this.cuadricula.agregarActor(this.automata, 0, 0, false);
+    this.automata.y -= 120;
+    this.automata.aprender(Flotar,{Desvio:10});
   }
 
+  agregarFocos(){
+    this.focos.push(new Foco());
+    this.focos.push(new Foco());
+    this.focos.push(new Foco());
+    this.cuadricula.agregarActor(this.focos[0], 0, 0, false);
+    this.cuadricula.agregarActor(this.focos[1], 0, 1, false);
+    this.cuadricula.agregarActor(this.focos[2], 0, 2, false);
+    this.focos.forEach( f => f.y -= 30 );
+  }
+
+  agregarBailarines(){
+    this.bailarines.push(new Frank(-150,-150));
+    this.bailarines.push(new Bruja(-50,-150));
+    var tito = new Tito(50,-150);
+    tito.definirAnimacion("parado",[0],6, true);
+    this.bailarines.push(tito);
+    this.bailarines.push(new Dracula(150,-150));
+    this.bailarines.forEach( b => b.escala = 0.7 );
+  }
+}
+
+class CambiarColor extends ComportamientoColision {
+
+  sanitizarArgumentos(){
+    this.argumentos.etiqueta = "Foco";
+    super.sanitizarArgumentos();
+  }
+
+	metodo(foco){
+    foco.cambiarColor();
+	}
+}
+
+class EmpezarFiesta extends ComportamientoAnimado {
+  configurarVerificaciones() {
+		super.configurarVerificaciones();
+    this.agregarVerificacionFoco(0,5,"primer");
+    this.agregarVerificacionFoco(1,8,"segundo");
+    this.agregarVerificacionFoco(2,12,"tercer");
+	}
+
+  agregarVerificacionFoco(i,veces,ordinal){
+    this.verificacionesPre.push(
+			new Verificacion(() => pilas.escena_actual().focos[i].nombreAnimacionActual() === "color" + veces,
+        "¡El " + ordinal + " foco debe cambiarse de color " + veces + " veces!"));
+  }
+
+  postAnimacion(){
+    super.postAnimacion();
+    pilas.escena_actual().bailarines.forEach( b => b.cargarAnimacion("bailando"));
+  }
 }
