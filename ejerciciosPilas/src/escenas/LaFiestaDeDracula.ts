@@ -22,6 +22,7 @@
     this.agregarAutomata();
     this.agregarFocos();
     this.agregarBailarines();
+    this.crearEstado();
   }
 
   agregarAutomata(){
@@ -49,6 +50,13 @@
     this.bailarines.push(tito);
     this.bailarines.push(new Dracula(150,-150));
     this.bailarines.forEach( b => b.escala = 0.7 );
+  }
+
+  private crearEstado() {
+    var builder = new BuilderStatePattern('nadieBaila');
+    builder.agregarEstadoAceptacion('todosBailando');
+    builder.agregarTransicion('nadieBaila', 'todosBailando', 'empezarFiesta');
+    this.estado = builder.estadoInicial();
   }
 }
 
