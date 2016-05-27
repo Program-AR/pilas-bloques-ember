@@ -22,7 +22,7 @@ var EmpezarFiesta = AccionBuilder.build({
   id: 'empezarFiesta',
   icono: 'icono.empezar.fiesta.png',
   comportamiento: 'EmpezarFiesta',
-  argumentos: '{}',
+  argumentos: '{idTransicion:"empezarFiesta"}',
 });
 
 export default {

@@ -1,5 +1,5 @@
 import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
-import actividad from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompusParametrizado';
+import actividad from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus-conParametros';
 
 moduloActividad(actividad);
 

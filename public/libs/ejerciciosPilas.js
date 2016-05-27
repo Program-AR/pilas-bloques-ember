@@ -4062,6 +4062,7 @@ var LaFiestaDeDracula = (function (_super) {
         this.agregarAutomata();
         this.agregarFocos();
         this.agregarBailarines();
+        this.crearEstado();
     };
     LaFiestaDeDracula.prototype.agregarAutomata = function () {
         this.automata = new Murcielago();
@@ -4086,6 +4087,12 @@ var LaFiestaDeDracula = (function (_super) {
         this.bailarines.push(tito);
         this.bailarines.push(new Dracula(150, -150));
         this.bailarines.forEach(function (b) { return b.escala = 0.7; });
+    };
+    LaFiestaDeDracula.prototype.crearEstado = function () {
+        var builder = new BuilderStatePattern('nadieBaila');
+        builder.agregarEstadoAceptacion('todosBailando');
+        builder.agregarTransicion('nadieBaila', 'todosBailando', 'empezarFiesta');
+        this.estado = builder.estadoInicial();
     };
     return LaFiestaDeDracula;
 })(EscenaActividad);
@@ -4596,7 +4603,7 @@ var SuperViaje = (function (_super) {
             if (this.restantesKM == 1)
                 return "¡Falta 1 kilometro!";
             if (this.restantesKM < 0)
-                throw new ActividadError("¡Volé de más!");
+                throw new ActividadError("Ya llegué, ¡no debo seguir volando!");
             return "¡Faltan " + this.restantesKM + " kilometros!";
         };
     };
