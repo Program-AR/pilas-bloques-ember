@@ -19,6 +19,11 @@ automata
 
 class ComportamientoColision extends ComportamientoAnimado {
 
+	sanitizarArgumentos(){
+		super.sanitizarArgumentos();
+		if (!this.argumentos['etiqueta']) throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+	}
+
 	configurarVerificaciones() {
 		var mensajeError = this.argumentos['mensajeError'] || "¡Acá no hay " + this.hacerLegible(this.argumentos['etiqueta']) + "!";
 		this.verificacionesPre.push(new Verificacion(() => this.colisiona(), mensajeError));

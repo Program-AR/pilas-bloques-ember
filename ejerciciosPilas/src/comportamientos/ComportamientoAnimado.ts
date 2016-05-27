@@ -5,18 +5,18 @@
  * @class ComportamientoAnimado
  * Esta clase está pensada para ser usada de superclase,
  * si es que se desea construir un comportamiento que se anime.
- * 
+ *
  * @example
  * Puede usarse directamente de esta manera:
  *      actor.hacer_luego(ComportamientoAnimado,{nombreAnimacion: 'correr'});
  * De esta manera el actor se animará sin hacer nada.
- * 
+ *
  * @example
  * Otra manera de usarlo es así:
  *      actor.hacer_luego(Explotar);
  *
  * Donde Explotar es una subclase y tiene definidos los siguientes métodos:
- *      nombreAnimacion(){ 
+ *      nombreAnimacion(){
  *			return 'explosion'
  *		};
  *      postAnimacion(){
@@ -27,7 +27,7 @@
  * Otra manera de usarlo es independientemente de la animación
  * (Para decidir uno cuándo termina el comportamiento)
  *      actor.hacer_luego(MoverEnX,{destino: 50});
- * 
+ *
  * Donde MoverEnX es subclase de ComportamientoAnimado y define:
  * 		nombreAnimacion(){
  *			return 'correr';
@@ -47,14 +47,12 @@ class ComportamientoAnimado extends Comportamiento {
 	animacionAnterior;
 	verificacionesPre;
 	verificacionesPost;
-	
+
 	iniciar(receptor){
 		super.iniciar(receptor);
-		this.receptor = this.argumentos.receptor || this.receptor;
-		this.verificacionesPre = this.argumentos.verificacionesPre || [];
-		this.verificacionesPost = this.argumentos.verificacionesPost || [];
+		this.sanitizarArgumentos();
 		this.configurarVerificaciones();
-		
+
 		this.secuenciaActualizar = new Array();
  		this.secuenciaActualizar.push(function() {
 			this.configuracionInicial();
@@ -62,15 +60,21 @@ class ComportamientoAnimado extends Comportamiento {
         	return true;
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
-        	return this.doActualizar(); 
+        	return this.doActualizar();
    		}.bind(this));
    		this.secuenciaActualizar.push(function() {
 			this.configuracionFinal();
         	this.postAnimacion();
         	return true;
-   		}.bind(this));	
+   		}.bind(this));
 	}
-	
+
+	sanitizarArgumentos(){
+		this.receptor = this.argumentos.receptor || this.receptor;
+		this.verificacionesPre = this.argumentos.verificacionesPre || [];
+		this.verificacionesPost = this.argumentos.verificacionesPost || [];
+	}
+
 	/** No se recomienda redefinir. Redefinir en su lugar el doActualizar */
 	actualizar(){
 		if(this.secuenciaActualizar.length > 0) {
@@ -103,13 +107,13 @@ class ComportamientoAnimado extends Comportamiento {
 
 	private realizarVerificacionesPostAnimacion() {
 		this.verificacionesPost.forEach(verificacion => verificacion.verificar());
-	}	
-	
+	}
+
 	/* Redefinir si corresponde animar el comportamiento. */
 	nombreAnimacion(){
 		return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
 	}
-	
+
 	/* Redefinir si corresponde */
 	nombreAnimacionParado(){
 		return this.argumentos.nombreAnimacionParado || 'parado';
@@ -126,16 +130,16 @@ class ComportamientoAnimado extends Comportamiento {
 		// son varios llamados a verificacionesPre.push
 		// y a verificacionesPost.push
 	}
-	
+
 	/* Redefinir si corresponde */
 	preAnimacion(){
 	}
-	
+
 	/* Redefinir si corresponde */
 	postAnimacion(){
 	}
-	
-	/** Redefinir si es necesario. 
+
+	/** Redefinir si es necesario.
 	 *  Redefinir sólo este, no el actualizar original.
 	 *  Es lo que hace efectivamente el comportamiento, además de animar.
 	 *  Debe retornar true cuando corresponda terminar el comportamiento.
@@ -144,7 +148,7 @@ class ComportamientoAnimado extends Comportamiento {
 	doActualizar(){
 		return this.receptor.avanzarAnimacion()
 	}
-} 
+}
 
 
 class Verificacion {
@@ -159,7 +163,7 @@ class Verificacion {
 	seCumple(){
 		return this.condicionEjecucion();
 	}
-	
+
 	verificar(){
 		if (!this.seCumple()) throw new ActividadError(this.mensajeError);
 	}
@@ -171,5 +175,9 @@ class ArgumentError implements Error {
 	constructor(description) {
 		this.name = "ArgumentError";
 		this.message = description;
+	}
+
+	toString(){
+		return this.name + ': ' + this.message;
 	}
 }

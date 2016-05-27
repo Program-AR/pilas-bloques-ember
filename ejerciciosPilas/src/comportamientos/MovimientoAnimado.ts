@@ -27,7 +27,7 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
 
     preAnimacion(){
 		super.preAnimacion();
-		this.sanitizarArgumentos();
+		this.sanitizarArgumentosMovAn();
 		this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom(
 			{x:0,y:0},
 			this.valoresFinales.distancia / this.valoresFinales.cantPasos);
@@ -49,7 +49,7 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
 		  this.receptor.y = this.valoresFinales.destino.y;
  	}
 
-    sanitizarArgumentos(){
+    sanitizarArgumentosMovAn(){
 		this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
 		if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct)) throw new ArgumentError("Direction should come as an instance of Direct");
 		this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
