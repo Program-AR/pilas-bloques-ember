@@ -4,8 +4,8 @@ import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones'
 var CambiarColor = AccionBuilder.build({
   descripcion: 'Cambiar Color',
   id: 'cambiarColor',
-  icono: '../../iconos/derecha.png',
-  comportamiento: 'SiguienteAnimacion',
+  icono: 'icono.cambiar.color.png',
+  comportamiento: 'CambiarColor',
   argumentos: '{}',
 });
 
@@ -20,9 +20,9 @@ var SiguienteFoco = AccionBuilder.build({
 var EmpezarFiesta = AccionBuilder.build({
   descripcion: 'Empezar Fiesta',
   id: 'empezarFiesta',
-  icono: '../../iconos/derecha.png',
-  comportamiento: 'ComportamientoAnimado',
-  argumentos: '{nombreAnimacion: "Bailando"}',
+  icono: 'icono.empezar.fiesta.png',
+  comportamiento: 'EmpezarFiesta',
+  argumentos: '{}',
 });
 
 export default {
