@@ -210,12 +210,15 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.casillaActual = function () {
         return this._casillaActual;
     };
-    ActorAnimado.prototype.setCasillaActual = function (c, moverseAhi) {
+    ActorAnimado.prototype.setCasillaActual = function (casillaNueva, moverseAhi) {
         if (moverseAhi === void 0) { moverseAhi = false; }
-        this._casillaActual = c;
+        if (this._casillaActual)
+            this._casillaActual.eliminarActor(this);
+        this._casillaActual = casillaNueva;
+        casillaNueva.agregarActor(this);
         if (moverseAhi) {
-            this.x = c.x;
-            this.y = c.y;
+            this.x = casillaNueva.x;
+            this.y = casillaNueva.y;
         }
     };
     ActorAnimado.prototype.largoColumnaActual = function () {
@@ -619,6 +622,7 @@ var Casilla = (function (_super) {
         this.cuadricula = cuadricula;
         this.nroFila = nroF;
         this.nroColumna = nroC;
+        this.actores = [];
         _super.call(this, 0, 0, cuadricula.getOpcionesCasilla());
         this.reubicate();
     }
@@ -672,6 +676,14 @@ var Casilla = (function (_super) {
     };
     Casilla.prototype.esInicio = function () {
         return this.cuadricula.esInicio(this);
+    };
+    // Este método sólo genera una referencia entre la casilla y el actor.
+    // Si quiero generar la relación bidireccional no debo usar este, sino actor.setCasillaActual(c).
+    Casilla.prototype.agregarActor = function (unActor) {
+        this.actores.push(unActor);
+    };
+    Casilla.prototype.eliminarActor = function (unActor) {
+        this.actores.splice(this.actores.indexOf(unActor), 1);
     };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
@@ -2012,11 +2024,9 @@ var PapaNoelAnimado = (function (_super) {
     __extends(PapaNoelAnimado, _super);
     function PapaNoelAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 11 });
-        this.definirAnimacion('correr', [0, 1, 2, 3, 2, 1], 6);
-        this.definirAnimacion('parado', new Cuadros([0, 6, 5]).repetirVeces(1).
-            concat(new Cuadros([5]).repetirVeces(40).
-            concat([5, 6, 0]).
-            concat(new Cuadros([0]).repetirVeces(40))), 6, true);
+        this.definirAnimacion('correr', [0, 1, 2, 3, 4, 5, 6], 6);
+        this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(40).
+            concat(new Cuadros([1]).repetirVeces(40)), 6, true);
         this.definirAnimacion('recoger', [7, 8, 9, 10, 11], 6);
         this.definirAnimacion('depositar', [11, 10, 9, 8, 7], 6);
     }
@@ -2743,6 +2753,17 @@ var Eliminar = (function (_super) {
         this.receptor.eliminar();
     };
     return Eliminar;
+})(ComportamientoConVelocidad);
+var Desaparecer = (function (_super) {
+    __extends(Desaparecer, _super);
+    function Desaparecer() {
+        _super.apply(this, arguments);
+    }
+    Desaparecer.prototype.postAnimacion = function () {
+        this.receptor.suspenderHabilidadesConMovimiento();
+        this.receptor.izquierda = pilas.derecha() + 1;
+    };
+    return Desaparecer;
 })(ComportamientoConVelocidad);
 /// <reference path = "../comportamientos/MovimientoAnimado.ts" />
 // Si se pasa por argumento "escaparCon" entonces el receptor debe ser actor compuesto
@@ -4047,7 +4068,7 @@ var EscribirEnCompuAnimada = (function (_super) {
 /// <reference path = "../actores/Tito.ts" />
 /// <reference path = "../actores/Murcielago.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/ComportamientoAnimado.ts" />
+/// <reference path = "../comportamientos/SecuenciaAnimada.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 var LaFiestaDeDracula = (function (_super) {
     __extends(LaFiestaDeDracula, _super);
@@ -4115,6 +4136,14 @@ var EmpezarFiesta = (function (_super) {
     function EmpezarFiesta() {
         _super.apply(this, arguments);
     }
+    EmpezarFiesta.prototype.sanitizarArgumentos = function () {
+        _super.prototype.sanitizarArgumentos.call(this);
+        var dracula = pilas.escena_actual().bailarines[pilas.escena_actual().bailarines.length - 1];
+        this.argumentos.secuencia = [
+            new Desaparecer({}),
+            new ComportamientoConVelocidad({ receptor: dracula, nombreAnimacion: "aparecer" }),
+        ];
+    };
     EmpezarFiesta.prototype.configurarVerificaciones = function () {
         _super.prototype.configurarVerificaciones.call(this);
         this.agregarVerificacionFoco(0, 5, "primer");
@@ -4129,7 +4158,7 @@ var EmpezarFiesta = (function (_super) {
         pilas.escena_actual().bailarines.forEach(function (b) { return b.cargarAnimacion("bailando"); });
     };
     return EmpezarFiesta;
-})(ComportamientoAnimado);
+})(SecuenciaAnimada);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/Sostener.ts"/>

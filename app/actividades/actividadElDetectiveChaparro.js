@@ -16,7 +16,8 @@ var SiguienteSospechoso = AccionBuilder.build({
 });
 
 var SacarDisfraz = AccionBuilder.build({
-  descripcion: 'Sacar disfraz',
+  descripcion: 'Interrogar sospechoso',
+  id: 'Sacardisfraz',
   icono: 'icono.sacar.disfraz.png',
   comportamiento: 'SacarDisfraz',
   argumentos: '{}',
