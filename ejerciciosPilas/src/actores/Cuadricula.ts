@@ -172,6 +172,4 @@ class Cuadricula extends Actor {
       return objeto1.casillaActual()==objeto2.casillaActual()
 
     }
-
-
 }

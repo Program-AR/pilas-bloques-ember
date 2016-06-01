@@ -12,11 +12,13 @@ class Casilla extends ActorAnimado {
     cuadricula;
     nroFila;
     nroColumna;
+    actores;
 
     constructor(nroF, nroC, cuadricula) {
         this.cuadricula = cuadricula;
         this.nroFila = nroF;
         this.nroColumna = nroC;
+        this.actores = [];
 
         super(0, 0, cuadricula.getOpcionesCasilla());
 
@@ -81,6 +83,16 @@ class Casilla extends ActorAnimado {
 
     esInicio(){
         return this.cuadricula.esInicio(this);
+    }
+
+    // Este método sólo genera una referencia entre la casilla y el actor.
+    // Si quiero generar la relación bidireccional no debo usar este, sino actor.setCasillaActual(c).
+    agregarActor(unActor){
+      this.actores.push(unActor);
+    }
+
+    eliminarActor(unActor){
+      this.actores.splice(this.actores.indexOf(unActor),1);
     }
 
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor

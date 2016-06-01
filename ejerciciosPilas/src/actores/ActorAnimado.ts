@@ -180,11 +180,13 @@ class ActorAnimado extends Actor {
     casillaActual(){
         return this._casillaActual;
     }
-    setCasillaActual(c, moverseAhi=false){
-        this._casillaActual = c;
+    setCasillaActual(casillaNueva, moverseAhi=false){
+        if(this._casillaActual) this._casillaActual.eliminarActor(this);
+        this._casillaActual = casillaNueva;
+        casillaNueva.agregarActor(this);
         if (moverseAhi){
-            this.x = c.x;
-            this.y = c.y;
+            this.x = casillaNueva.x;
+            this.y = casillaNueva.y;
         }
     }
 
