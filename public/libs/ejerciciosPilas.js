@@ -685,6 +685,9 @@ var Casilla = (function (_super) {
     Casilla.prototype.eliminarActor = function (unActor) {
         this.actores.splice(this.actores.indexOf(unActor), 1);
     };
+    Casilla.prototype.tieneActorConEtiqueta = function (unaEtq) {
+        return this.actores.any(function (actor) { return actor.tiene_etiqueta(unaEtq); });
+    };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
         if (cantColumnas === void 0) { cantColumnas = 1; }
@@ -4524,6 +4527,15 @@ var SalvandoLaNavidad = (function (_super) {
         this.automata = new PapaNoelAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.automata.escala *= 1.8;
+    };
+    SalvandoLaNavidad.prototype.estaResueltoElProblema = function () {
+        return this.hayRegalosAlFinalDeLasFilas() && this.cuadricula.cantFilas === this.cantidadObjetosConEtiqueta("RegaloAnimado");
+    };
+    SalvandoLaNavidad.prototype.hayRegalosAlFinalDeLasFilas = function () {
+        return this.ultimasCasillas().every(function (casilla) { return casilla.tieneActorConEtiqueta('RegaloAnimado'); });
+    };
+    SalvandoLaNavidad.prototype.ultimasCasillas = function () {
+        return this.cuadricula.casillas.filter(function (casilla) { return casilla.esFin(); });
     };
     return SalvandoLaNavidad;
 })(EscenaActividad);
