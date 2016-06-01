@@ -17,4 +17,18 @@ class SalvandoLaNavidad extends EscenaActividad {
     this.cuadricula.agregarActorEnPerspectiva(this.automata,0,0);
     this.automata.escala *= 1.8;
   }
+
+  estaResueltoElProblema(){
+    return this.hayRegalosAlFinalDeLasFilas()  && this.cuadricula.cantFilas === this.cantidadObjetosConEtiqueta("RegaloAnimado");
+  }
+
+  hayRegalosAlFinalDeLasFilas(){
+    return this.ultimasCasillas().every( casilla => casilla.tieneActorConEtiqueta('RegaloAnimado') );
+  }
+
+  ultimasCasillas(){
+    return this.cuadricula.casillas.filter( casilla => casilla.esFin() );
+  }
+
+
 }
