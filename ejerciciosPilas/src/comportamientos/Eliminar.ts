@@ -5,3 +5,10 @@ class Eliminar extends ComportamientoConVelocidad {
 		this.receptor.eliminar();
 	}
 }
+
+class Desaparecer extends ComportamientoConVelocidad {
+	postAnimacion(){
+		this.receptor.suspenderHabilidadesConMovimiento();
+		this.receptor.izquierda = pilas.derecha() + 1;
+	}
+}

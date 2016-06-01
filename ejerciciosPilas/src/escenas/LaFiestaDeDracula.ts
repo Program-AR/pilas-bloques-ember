@@ -5,7 +5,7 @@
 /// <reference path = "../actores/Tito.ts" />
 /// <reference path = "../actores/Murcielago.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
-/// <reference path = "../comportamientos/ComportamientoAnimado.ts" />
+/// <reference path = "../comportamientos/SecuenciaAnimada.ts" />
 /// <reference path = "../comportamientos/ComportamientoColision.ts" />
 
 
@@ -72,7 +72,16 @@ class CambiarColor extends ComportamientoColision {
 	}
 }
 
-class EmpezarFiesta extends ComportamientoAnimado {
+class EmpezarFiesta extends SecuenciaAnimada {
+  sanitizarArgumentos(){
+    super.sanitizarArgumentos();
+    var dracula = pilas.escena_actual().bailarines[pilas.escena_actual().bailarines.length - 1];
+    this.argumentos.secuencia = [
+      new Desaparecer({}),
+      new ComportamientoConVelocidad({receptor: dracula, nombreAnimacion:"aparecer"}),
+    ];
+  }
+
   configurarVerificaciones() {
 		super.configurarVerificaciones();
     this.agregarVerificacionFoco(0,5,"primer");
