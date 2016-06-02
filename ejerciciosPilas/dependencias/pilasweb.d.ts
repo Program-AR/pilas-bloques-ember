@@ -1472,6 +1472,15 @@ declare class Pizarra extends Actor {
     public poligono(puntos: any, color?: any, grosor?: number): void;
     public limpiar(): void;
     public pintar(color: any): void;
+    public puntosDeLineas(): any;
+    public cambioCoordenadas(punto: any): any;
+    public mismosPuntosQue(puntos: any): boolean;
+    public tieneIgualDibujoQue(otraPizarra: any): boolean;
+    public puntosSinRepetirDe(puntos: any): any[];
+    public ordenarPuntosDe(puntos: any): any;
+    public compararPuntos(p1: any, p2: any): number;
+    public sacarPuntosRepetidosDe(puntos: any): any[];
+    public estaPuntoEn(pto: any, ptos: any): any;
 }
 declare class Pingu extends Actor {
     public paso: any;
