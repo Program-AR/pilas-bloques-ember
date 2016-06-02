@@ -3494,9 +3494,38 @@ var DibujandoFiguras = (function (_super) {
         this.automata.escala = 0.5;
         this.automata.x = -150;
         this.automata.y = 100;
+        this.dibujarFiguraFantasma();
+    };
+    DibujandoFiguras.prototype.dibujarFiguraFantasma = function () {
+        var _this = this;
+        this.pizarraFantasma = new pilas.actores.Pizarra();
+        var origen = { x: this.automata.x, y: this.automata.y };
+        this.puntosSolucion().forEach(function (destino) {
+            _this.pizarraFantasma.linea(origen.x, origen.y, destino.x, destino.y, pilas.colores.grisclaro, 6);
+            origen = destino;
+        });
+    };
+    DibujandoFiguras.prototype.estaResueltoElProblema = function () {
+        return this.automata.pizarra.tieneIgualDibujoQue(this.pizarraFantasma);
+    };
+    DibujandoFiguras.prototype.puntosSolucion = function () {
+        // abstracto, sobreescribir.
+        // Es un array de puntos que se obtiene haciendo
+        // automata.pizarra.puntosSinRepetir()
+        return [];
     };
     return DibujandoFiguras;
 })(EscenaActividad);
+var DibujandoFiguras1 = (function (_super) {
+    __extends(DibujandoFiguras1, _super);
+    function DibujandoFiguras1() {
+        _super.apply(this, arguments);
+    }
+    DibujandoFiguras1.prototype.puntosSolucion = function () {
+        return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }];
+    };
+    return DibujandoFiguras1;
+})(DibujandoFiguras);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
 /// <reference path="../actores/CuadriculaEsparsa.ts"/>
