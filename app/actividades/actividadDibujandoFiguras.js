@@ -81,7 +81,7 @@ export default {
   consignaInicial: 'TODO',
   id: 'DibujandoFiguras',
   // la escena proviene de ejerciciosPilas
-  escena: DibujandoFiguras1, // jshint ignore:line
+  escena: DibujandoFigurasInicial, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
