@@ -2,7 +2,7 @@
 
 class PapaNoelAnimado extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'papaNoel.png', cantColumnas:11});
+        super(x, y, {grilla: 'papaNoel.png', cantColumnas:12});
         this.definirAnimacion('correr',[4,5,6,7,6,5,4],6);
         this.definirAnimacion('parado',
           new Cuadros([0]).repetirVeces(40).
