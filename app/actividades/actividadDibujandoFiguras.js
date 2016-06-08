@@ -13,7 +13,7 @@ var DibujarLado = Accion.extend({
         this._super(block);
         block.appendValueInput('longitud')
             .setCheck('Number')
-            .appendField(this.obtener_icono('icono.DibujarLinea.png'))
+            .appendField(this.obtener_icono('../libs/data/icono.DibujarLinea.png'))
             .appendField('Dibujar lado de ');
     },
 
@@ -48,7 +48,7 @@ var GirarGrados = Accion.extend({
         this._super(block);
         block.appendValueInput('grados')
             .setCheck('Number')
-            .appendField(this.obtener_icono('icono.Girar.png'))
+            .appendField(this.obtener_icono('../libs/data/icono.Girar.png'))
             .appendField('Girar');
         block.appendDummyInput()
             .appendField('grados');

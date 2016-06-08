@@ -1555,10 +1555,10 @@ var Dracula = (function (_super) {
     function Dracula(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'dracula.png', cantColumnas: 14 });
-        this.definirAnimacion("bailando", [8, 9, 10, 11, 12, 13, 12, 11, 10, 9], 6);
+        _super.call(this, x, y, { grilla: 'dracula.png', cantColumnas: 15 });
+        this.definirAnimacion("bailando", [9, 10, 11, 12, 13, 14, 13, 12, 11, 10], 6);
         this.definirAnimacion("parado", [0], 12, true);
-        this.definirAnimacion("aparecer", [0, 1, 2, 3, 4, 5, 6, 7], 6);
+        this.definirAnimacion("aparecer", [0, 1, 2, 3, 4, 5, 6, 7, 8], 6);
     }
     return Dracula;
 })(ActorAnimado);
@@ -1587,7 +1587,7 @@ var Tablero = (function (_super) {
     }
     // | margen | label | separacion | puntaje | margen |
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
-        args.imagen = args.imagen || 'placacontar.png';
+        args.imagen = args.imagen || 'invisible.png';
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
         this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
@@ -1598,10 +1598,14 @@ var Tablero = (function (_super) {
     Tablero.prototype.buildLabel = function (argumentos) {
         this.label = new Texto(0, this.y, argumentos.texto, this.colorTxtLabel);
         this.label.setZ(this.z - 1);
+        this.label.imagen = "PlacaContarGris.png";
+        this.label.actualizarMedidas();
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
         this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, this.colorTxtPuntaje);
         this.puntaje.setZ(this.z - 2);
+        this.puntaje.imagen = "PlacaContarNegra.png";
+        this.puntaje.actualizarMedidas();
     };
     // | margen | label | separacion | puntaje | margen |
     Tablero.prototype.updateWidth = function () {
@@ -2026,12 +2030,12 @@ var ObservadoConDisminuir = (function (_super) {
 var PapaNoelAnimado = (function (_super) {
     __extends(PapaNoelAnimado, _super);
     function PapaNoelAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 11 });
-        this.definirAnimacion('correr', [0, 1, 2, 3, 4, 5, 6], 6);
+        _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 12 });
+        this.definirAnimacion('correr', [4, 5, 6, 7, 6, 5, 4], 6);
         this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(40).
-            concat(new Cuadros([1]).repetirVeces(40)), 6, true);
-        this.definirAnimacion('recoger', [7, 8, 9, 10, 11], 6);
-        this.definirAnimacion('depositar', [11, 10, 9, 8, 7], 6);
+            concat(new Cuadros([2, 3, 2, 1]).repetirVeces(3)), 6, true);
+        this.definirAnimacion('recoger', [8, 9, 10, 11], 6);
+        this.definirAnimacion('depositar', [11, 10, 9, 8], 6);
     }
     return PapaNoelAnimado;
 })(ActorAnimado);
@@ -3516,15 +3520,15 @@ var DibujandoFiguras = (function (_super) {
     };
     return DibujandoFiguras;
 })(EscenaActividad);
-var DibujandoFiguras1 = (function (_super) {
-    __extends(DibujandoFiguras1, _super);
-    function DibujandoFiguras1() {
+var DibujandoFigurasInicial = (function (_super) {
+    __extends(DibujandoFigurasInicial, _super);
+    function DibujandoFigurasInicial() {
         _super.apply(this, arguments);
     }
-    DibujandoFiguras1.prototype.puntosSolucion = function () {
+    DibujandoFigurasInicial.prototype.puntosSolucion = function () {
         return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }];
     };
-    return DibujandoFiguras1;
+    return DibujandoFigurasInicial;
 })(DibujandoFiguras);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
