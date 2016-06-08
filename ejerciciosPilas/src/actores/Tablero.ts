@@ -23,17 +23,18 @@ class Tablero extends ActorAnimado{
     this.buildLabel(argumentos);
     this.buildPuntaje(argumentos);
     this.updateWidth();
+    this.updateHeight();
   }
 
-  // | margen | label | separacion | puntaje | margen |
+  // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
   sanitizarArgumentosTablero(args){
-    args.imagen =  args.imagen || 'placacontar.png';
+    args.imagen =  args.imagen || 'invisible.png';
     this.atributoObservado = args.atributoObservado || 'cantidad';
     this.colorTxtLabel = args.colorTxtLabel || "black";
-    this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
-    this.separacionX = args.separacionX || 10;
+    this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
+    this.separacionX = args.separacionX || 0;
     this.separacionY = args.separacionY || 0;
-    this.margen = args.margen || 5;
+    this.margen = args.margen || 6;
   }
 
   buildLabel(argumentos){
@@ -41,7 +42,10 @@ class Tablero extends ActorAnimado{
       0, // no importa, luego se actualiza
       this.y,
       argumentos.texto,
-      this.colorTxtLabel);
+      {color: this.colorTxtLabel,
+        imagenFondo: "PlacaContarGris.png",
+        margen: this.margen,
+        });
     this.label.setZ(this.z - 1);
   }
 
@@ -50,20 +54,23 @@ class Tablero extends ActorAnimado{
         0, // no importa, luego se actualiza
         this.label.y + this.separacionY,
         argumentos.valorInicial || 0,
-        this.colorTxtPuntaje);
+        {color: this.colorTxtPuntaje,
+          imagenFondo: "PlacaContarNegra.png",
+          margen: this.margen,
+          });
     this.puntaje.setZ(this.z - 2);
   }
 
-  // | margen | label | separacion | puntaje | margen |
+  // label | separacion | puntaje   (cada uno tiene su margen)
   updateWidth(){
-    this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
-    this.label.izquierda = this.izquierda + this.margen;
+    this.ancho = this.puntaje.ancho + this.separacionX + this.label.ancho;
+    this.label.izquierda = this.izquierda;
     this.puntaje.izquierda = this.label.derecha + this.separacionX;
   }
 
   updateHeight(){
-    this.ancho = this.margen * 2 + this.separacionY + this.label.alto;
-    this.label.arriba = this.arriba + this.margen;
+    this.alto = this.separacionY + this.label.alto;
+    this.label.arriba = this.arriba;
     this.puntaje.arriba = this.label.arriba;
   }
 

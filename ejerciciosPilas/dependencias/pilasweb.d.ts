@@ -1337,12 +1337,15 @@ declare class Texto extends Actor {
     public spriteCJS: any;
     public elString: any;
     public color: any;
-    constructor(x: any, y: any, elString: any, anchoMaximo?: number, color?: string);
+    public margen: any;
+    constructor(x: any, y: any, elString: any, argumentos?: any);
     public crear_texto(anchoMaximo: any): void;
     public eliminar_texto(): void;
     public eliminar(): void;
     public actualizarMedidas(): void;
-    public setAnchoMaximo(ancho: any): void;
+    public anchoString(): number;
+    public altoString(): number;
+    public setAnchoMaximo(anchoMax: any): void;
     public setX(x: any): void;
     public setY(y: any): void;
     public setZ(z: any): void;
@@ -1421,7 +1424,7 @@ declare class Boton extends Actor {
 }
 declare class Puntaje extends Texto {
     public valor: any;
-    constructor(x: any, y: any, puntaje: any, color: any);
+    constructor(x: any, y: any, puntaje: any, argumentos: any);
     public aumentar(aumento: any): void;
     public obtener(): any;
 }
