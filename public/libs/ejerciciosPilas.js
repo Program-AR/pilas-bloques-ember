@@ -1584,38 +1584,41 @@ var Tablero = (function (_super) {
         this.buildLabel(argumentos);
         this.buildPuntaje(argumentos);
         this.updateWidth();
+        this.updateHeight();
     }
-    // | margen | label | separacion | puntaje | margen |
+    // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
         args.imagen = args.imagen || 'invisible.png';
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
-        this.colorTxtPuntaje = args.colorTxtPuntaje || "black";
-        this.separacionX = args.separacionX || 10;
+        this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
+        this.separacionX = args.separacionX || 0;
         this.separacionY = args.separacionY || 0;
-        this.margen = args.margen || 5;
+        this.margen = args.margen || 6;
     };
     Tablero.prototype.buildLabel = function (argumentos) {
-        this.label = new Texto(0, this.y, argumentos.texto, this.colorTxtLabel);
+        this.label = new Texto(0, this.y, argumentos.texto, { color: this.colorTxtLabel,
+            imagenFondo: "PlacaContarGris.png",
+            margen: this.margen,
+        });
         this.label.setZ(this.z - 1);
-        this.label.imagen = "PlacaContarGris.png";
-        this.label.actualizarMedidas();
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
-        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, this.colorTxtPuntaje);
+        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
+            imagenFondo: "PlacaContarNegra.png",
+            margen: this.margen,
+        });
         this.puntaje.setZ(this.z - 2);
-        this.puntaje.imagen = "PlacaContarNegra.png";
-        this.puntaje.actualizarMedidas();
     };
-    // | margen | label | separacion | puntaje | margen |
+    // label | separacion | puntaje   (cada uno tiene su margen)
     Tablero.prototype.updateWidth = function () {
-        this.ancho = this.margen * 2 + this.separacionX + this.puntaje.ancho + this.label.ancho;
-        this.label.izquierda = this.izquierda + this.margen;
+        this.ancho = this.puntaje.ancho + this.separacionX + this.label.ancho;
+        this.label.izquierda = this.izquierda;
         this.puntaje.izquierda = this.label.derecha + this.separacionX;
     };
     Tablero.prototype.updateHeight = function () {
-        this.ancho = this.margen * 2 + this.separacionY + this.label.alto;
-        this.label.arriba = this.arriba + this.margen;
+        this.alto = this.separacionY + this.label.alto;
+        this.label.arriba = this.arriba;
         this.puntaje.arriba = this.label.arriba;
     };
     Tablero.prototype.dameValor = function () {
