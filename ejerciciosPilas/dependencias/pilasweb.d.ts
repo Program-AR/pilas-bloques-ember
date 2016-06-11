@@ -896,6 +896,20 @@ declare class LlamadaProcedimiento extends Comportamiento {
     public actualizar(): boolean;
 }
 /**
+* @class LlamadaProcPrimitivo
+*
+* Representa una llamada a una primitiva.
+*
+* Existe para que se evalúen los parámetros de la primitiva
+* recién al momento de ejecución y no antes.
+* Es decorator de un comportamiento.
+*/
+declare class LlamadaProcPrimitivo extends Comportamiento {
+    public comportamientoInstanciado: any;
+    public iniciar(receptor: any): void;
+    public actualizar(): any;
+}
+/**
 * @class Expresion
 *
 * Representa la evaluacion de una expresion
@@ -943,6 +957,7 @@ declare class ConstructorDePrograma {
     public repetirN(n: any): void;
     public def_proc(n: any, params: any): void;
     public llamada_proc(n: any, proc_args: any): void;
+    public llamada_proc_primitivo(comportamiento: any, argsSinEvaluar: any): void;
     public def_func(n: any): void;
     public llamada_func(n: any, exp: any): void;
     public cambio_atributo(n: any, f: any): void;
