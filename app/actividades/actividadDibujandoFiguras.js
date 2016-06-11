@@ -60,7 +60,7 @@ var GirarGrados = Accion.extend({
 
     argumentos(block) {
         var grados = Blockly.JavaScript.valueToCode(block, 'grados', Blockly.JavaScript.ORDER_ATOMIC);
-        return '{angulo: (-' + grados + ')}';
+        return '{angulo: (-(' + grados + '))}';
     },
 
     get_parametros() {
