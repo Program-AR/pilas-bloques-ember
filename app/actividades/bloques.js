@@ -311,7 +311,8 @@ var Accion = Bloque.extend({
   },
 
   block_javascript(block) {
-    return 'programa.hacer(' + this.nombre_comportamiento() + ', ' + this.argumentos(block) + ')\n';
+    return 'programa.llamada_proc_primitivo(' + this.nombre_comportamiento() +
+      ', function(){\n return ' + this.argumentos(block) + ';\n})\n';
   }
 
 });
