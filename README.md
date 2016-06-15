@@ -1,6 +1,8 @@
 pilas-engine-bloques
 ====================
 
+- Issues planificados para este sprint: [![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-engine-bloques.png?label=ready&title=Ready)](http://waffle.io/Program-AR/pilas-engine-bloques)
+
 - Rama master: [![Build Status](https://travis-ci.org/Program-AR/pilas-engine-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-engine-bloques)
 - Rama develop (principal): [![Build Status](https://travis-ci.org/Program-AR/pilas-engine-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-engine-bloques)
 
