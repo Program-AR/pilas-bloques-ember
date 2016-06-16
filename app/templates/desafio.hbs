@@ -3,9 +3,16 @@
 
   {{outlet}}
 
+  {{pilas-canvas pilas=pilas onReady="cuandoCargaPilas"}}
 
-  <iframe src="game.html"></iframe>
+  <div>
+    Cargando: {{pilas.loading}}
+  </div>
 
+  <div>
 
+    <button {{action "reiniciar"}}>Reiniciar</button>
+
+  </div>
 
 </div>

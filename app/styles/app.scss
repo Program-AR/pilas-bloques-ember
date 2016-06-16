@@ -594,3 +594,15 @@ h2 {
   font-family: "Source Sans Pro";
   font-weight: 300;
 }
+
+.iframe-pilas-canvas {
+  border: 1px solid red;
+}
+
+.pilas-canvas-container {
+  background-color: red;
+  border: 1px solid green;
+  width: 420px;
+  height: 480px;
+  overflow: hidden;
+}
