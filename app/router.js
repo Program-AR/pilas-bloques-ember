@@ -7,6 +7,8 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('acercade');
+  this.route('desafios');
+  this.route('desafio', {path: '/desafio/:desafio_id'});
 });
 
 export default Router;

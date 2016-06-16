@@ -1,6 +1,6 @@
 {
   "name": "pilas-engine-bloques",
-  "version": "0.0.0",
+  "version": "0.11.1",
   "description": "Una herramienta para aprender a programar utilizando bloques.",
   "private": true,
   "directories": {
@@ -29,6 +29,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-inject-live-reload": "^1.4.0",
     "ember-cli-jshint": "^1.0.0",
+    "ember-cli-mirage": "0.2.0",
     "ember-cli-qunit": "^1.4.0",
     "ember-cli-release": "0.2.8",
     "ember-cli-sass": "5.3.1",

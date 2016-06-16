@@ -1,0 +1,18 @@
+{{#if model.deshabilitado}}
+
+  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png' onerror="this.src='images/desafios/proximamente.png'">
+
+  <div class="ribbon right gray semi-transparente">
+    <a>Muy pronto</a>
+  </div>
+
+  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+
+{{else}}
+
+  {{#link-to "desafio" model}}
+    <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
+    <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+  {{/link-to}}
+
+{{/if}}
