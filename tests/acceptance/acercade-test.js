@@ -1,21 +1,12 @@
-import Ember from 'ember';
-import { module, test } from 'qunit';
-import startApp from 'pilas-engine-bloques/tests/helpers/start-app';
+import { test } from 'qunit';
+import moduleForAcceptance from 'pilas-engine-bloques/tests/helpers/module-for-acceptance';
 
-module('Acceptance | acercade', {
-  beforeEach: function() {
-    this.application = startApp();
-  },
-
-  afterEach: function() {
-    Ember.run(this.application, 'destroy');
-  }
-});
+moduleForAcceptance('Acceptance | acercade');
 
 test('visiting /acercade', function(assert) {
-  visit('/');
+  visit('/acercade');
 
   andThen(function() {
-    assert.equal(currentURL(), '/');
+    assert.equal(currentURL(), '/acercade');
   });
 });
