@@ -6,8 +6,8 @@ export default Ember.Service.extend({
   debeMostrarBotonCodigoXML: false,
 
   loadProperties: Ember.on('init', function() {
-    this.set('env', this.container.lookupFactory('config:environment'));
-    this.set('showLayout', this.get('env').showLayout);
+    //this.set('env', this.container.lookupFactory('config:environment'));
+    //this.set('showLayout', this.get('env').showLayout);
   }),
 
   getENV() {

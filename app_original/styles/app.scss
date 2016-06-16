@@ -2,6 +2,8 @@
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "modal.scss";
 
+@import "font-awesome";
+
 html, body {
 }
 
@@ -513,7 +515,7 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 
 
 .modal-body {
-  overflow-y: scroll;
+  //verflow-y: scroll;
 }
 
 .dialogoFinDesafio {
