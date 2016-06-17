@@ -596,13 +596,41 @@ h2 {
 }
 
 .iframe-pilas-canvas {
-  border: 1px solid red;
+  border: 1px solid gray;
 }
 
 .pilas-canvas-container {
-  background-color: red;
-  border: 1px solid green;
+  position: relative;
   width: 420px;
   height: 480px;
   overflow: hidden;
+}
+
+
+.content-spinner {
+  margin: auto;
+}
+
+.spinner {
+  height: 38px;
+  width: 38px;
+  animation: rotate 0.6s infinite linear;
+  border: 3px solid #9C9C9C;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+.spinner-centered {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
 }
