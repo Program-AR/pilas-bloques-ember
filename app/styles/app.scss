@@ -50,12 +50,6 @@ input, textarea /*.contenteditable?*/ {
   left: 430px;
 }
 
-.panel-pilas {
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
-
 span.url {
   color: rgb(180, 180, 180);
   padding-right: 20px;
@@ -586,6 +580,9 @@ h2 {
 
 .contenedor-padding-superior {
   padding-top: 4em;
+  height: 100%;
+  position: absolute;
+  width: 100%;
 }
 
 
@@ -596,7 +593,8 @@ h2 {
 }
 
 .iframe-pilas-canvas {
-  border: 1px solid gray;
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .pilas-canvas-container {
@@ -633,4 +631,37 @@ h2 {
 @keyframes rotate {
   0%    { transform: rotate(0deg); }
   100%  { transform: rotate(360deg); }
+}
+
+
+.desafio-contenedor {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+}
+
+.desafio-panel-izquierdo {
+  width: 500px;
+  outline: 1px solid green;
+  padding: 15px;
+}
+
+.desafio-panel-derecho {
+  outline: 1px solid blue;
+  width: 100%;
+  padding: 15px;
+}
+
+.blocklyTreeSeparator {
+  border-bottom: solid black 0px !important;
+}
+
+
+.puede-seleccionar * {
+  -webkit-touch-callout:default;
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
 }

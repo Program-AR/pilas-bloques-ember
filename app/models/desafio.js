@@ -8,5 +8,6 @@ export default Model.extend({
   deshabilitado: attr('boolean'),
   enunciado: attr('string'),
   consignaInicial: attr('string'),
-  actividad: attr()
+  escena: attr('string'),                 // escena que se tiene que cargar, por ejemplo: 'AlienInicial'
+  actividad: attr()                       // se completa desde el hook del desafío.
 });

@@ -40,8 +40,6 @@ export default Ember.Service.extend({
 
         var pilas = pilasengine.iniciar(opciones);
 
-        new pilas.actores.Mono();
-
         pilas;
       `;
 
@@ -70,23 +68,44 @@ export default Ember.Service.extend({
         }
 
         this.set("loading", false);
-      }
+      };
 
       pilas.ejecutar();
 
     });
   },
 
-  /**
-   * Método privado que se encarga de vincular todas las propiedades
-   * que nos permiten observar el comportamiento de pilas.
-   */
-  _vincular_propiedades(pilas) {
-    this.set('actorCounter', pilas.obtener_cantidad_de_actores());
 
-    pilas.eventos.cambia_coleccion_de_actores.add((data) => {
-      this.set('actorCounter', data.cantidad);
+  inicializarEscena(iframeElement, nombreDeLaEscena) {
+    let codigo = `
+      var escena = new ${nombreDeLaEscena}();
+      pilas.mundo.gestor_escenas.cambiar_escena(escena);
+    `;
+
+    iframeElement.contentWindow.eval(codigo);
+  },
+
+
+  ejecutarCodigo(codigo) {
+    this.reiniciar().then(() => {
+      let iframeElement = this.get("iframe");
+      iframeElement.contentWindow.eval(codigo);
     });
+  },
+
+
+  ejecutarCodigoSinReiniciar(codigo) {
+    if (this.get("loading")) {
+      console.warn("Cuidado, no se puede ejecutar antes de que pilas cargue.");
+      return;
+    }
+
+    let iframeElement = this.get("iframe");
+
+    // reinicia la escena nuevamente
+    //iframeElement.contentWindow.eval("pilas.reiniciar();");
+
+    iframeElement.contentWindow.eval(codigo);
   },
 
   /**
@@ -108,21 +127,9 @@ export default Ember.Service.extend({
       this.set("loading", true);
       this.get("iframe").contentWindow.location.reload(true);
 
-      this.set("temporallyCallback", success); /* Guarda el callback  para
-                                                * que se llame luego de
-                                                * la carga de pilas.
-                                                */
+      /* Guarda el callback  para que se llame luego de la carga de pilas. */
+      this.set("temporallyCallback", success);
     });
   },
-
-  runProject(project) {
-    this.reload().then(() => {
-      this.runProjectWithoutReload(project);
-    });
-  },
-
-  runProjectWithoutReload(project) {
-    this.get("iframe").contentWindow.eval(project.get("code"));
-  }
 
 });

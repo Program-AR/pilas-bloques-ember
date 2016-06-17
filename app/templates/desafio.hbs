@@ -1,18 +1,45 @@
-<div class='contenido-principal'>
-  <p>Viendo la solución {{model.nombre}}</p>
+<div class='contenido-principal desafio-contenedor'>
 
   {{outlet}}
 
-  {{pilas-canvas pilas=pilas onReady="cuandoCargaPilas"}}
+  <div class="desafio-panel-izquierdo">
 
-  <div>
-    Cargando: {{pilas.loading}}
+    {{pilas-canvas pilas=pilas onReady="cuandoCargaPilas" escena=model.escena}}
+
+    <div class='panel-ayuda puede-seleccionar'>
+
+      <h4>{{model.titulo}}</h4>
+
+      <p>{{model.enunciado}}</p>
+
+      {{#if model.consignaInicial}}
+        <div class="tip-block">
+          <p><em>¿Sabías qué...?</em></p>
+
+          <p>{{model.consignaInicial}}</p>
+        </div>
+      {{/if}}
+
+    </div>
+
   </div>
 
-  <div>
 
-    <button {{action "reiniciar"}}>Reiniciar</button>
 
+  <div class="desafio-panel-derecho">
+
+    <div>
+      {{#if pilas.loading}}
+        <button disabled>Reiniciando</button>
+      {{else}}
+        <button {{action "reiniciar"}}>Reiniciar</button>
+      {{/if}}
+    </div>
+
+    {{pilas-blockly guardar='guardar' reiniciar='reiniciar'
+                    registrarPrimerCodigo='registrarPrimerCodigo'
+                    pilas=pilas
+                    actividad=model.actividad}}
   </div>
 
 </div>

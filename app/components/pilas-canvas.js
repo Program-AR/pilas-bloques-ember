@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['pilas-canvas-container'],
   iframeElement: null,
+  escena: null,
 
   didInsertElement() {
     Ember.run.scheduleOnce('afterRender', this, this.initElement);
@@ -18,6 +19,12 @@ export default Ember.Component.extend({
       if (this.get('pilas')) {
         this.get("pilas").inicializarPilas(iframeElement, {width: 420, height: 480}).
           then((pilas) => {
+
+            if (this.get('escena')) {
+              this.get("pilas").inicializarEscena(iframeElement, this.get("escena"));
+            } else {
+              console.warn("No especificó una escena para cargar en pilas-canvas.");
+            }
 
             /*
              * Invoca a la acción "onReady" que envía el objeto pilas listo

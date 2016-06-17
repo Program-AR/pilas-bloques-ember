@@ -1,14 +1,16 @@
 /* jshint unused:false */
 
 import Ember from 'ember';
-
+/*
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
 import actividadTitoEnciendeLuces from 'pilas-engine-bloques/actividades/actividadTitoEnciendeLuces';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
 import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
+*/
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
+/*
 import actividadTitoRecargado from 'pilas-engine-bloques/actividades/actividadTitoRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
 import actividadSuperTito2 from 'pilas-engine-bloques/actividades/actividadSuperTito2';
@@ -16,7 +18,9 @@ import actividadElRecolectorDeEstrellas from 'pilas-engine-bloques/actividades/a
 import actividadLaGranAventuraDelMarEncantado from 'pilas-engine-bloques/actividades/actividadLaGranAventuraDelMarEncantado';
 import actividadMariaLaComeSandias from 'pilas-engine-bloques/actividades/actividadMariaLaComeSandias';
 import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
+*/
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
+/*
 import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
 import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
 import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
@@ -37,6 +41,7 @@ import actividadSalvandoLaNavidad from 'pilas-engine-bloques/actividades/activid
 import actividadTitoCuadrado from 'pilas-engine-bloques/actividades/actividadTitoCuadrado';
 import actividadLaFiestaDeDracula from 'pilas-engine-bloques/actividades/actividadLaFiestaDeDracula';
 
+*/
 
 /*
  * Representa un valor mas complejo
@@ -70,8 +75,9 @@ export default Ember.Service.extend({
   obtenerPorNombre(nombre) {
 
     let actividades = [
-      actividadAlien,
+      /*actividadAlien, */
       actividadAlienTocaBoton,
+      /*
       actividadLaEleccionDelMono,
       actividadElMonoYLasBananas,
       actividadTitoEnciendeLuces,
@@ -83,7 +89,9 @@ export default Ember.Service.extend({
       actividadElRecolectorDeEstrellas,
       actividadMariaLaComeSandias,
       actividadElMarcianoEnElDesierto,
+      */
       actividadAlimentandoALosPeces,
+      /*
       actividadInstalandoJuegos,
       actividadNoMeCansoDeSaltar,
       actividadElGatoEnLaCalle,
@@ -104,11 +112,14 @@ export default Ember.Service.extend({
       actividadTitoCuadrado,
       actividadLaFiestaDeDracula,
       actividadPrendiendoLasCompusParametrizado,
+      */
     ];
+
 
     var actividad = actividades.findBy('id', nombre);
 
     if (!actividad) {
+      console.error(`No se encuentra la actividad de nombre ${nombre}`);
       return null;
     }
 
