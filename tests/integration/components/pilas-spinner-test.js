@@ -10,15 +10,9 @@ test('it renders', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{pilas-spinner}}`);
+  assert.equal(this.$(".spinner")[0].className, 'spinner ', "Deaabe tener las clases normales del spinner");
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{pilas-spinner centered=true}}`);
+  assert.equal(this.$(".spinner")[0].className, 'spinner spinner-centered', "Deaabe tener las clases normales del spinner");
 
-  // Template block usage:
-  this.render(hbs`
-    {{#pilas-spinner}}
-      template block text
-    {{/pilas-spinner}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
 });

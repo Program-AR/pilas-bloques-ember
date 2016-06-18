@@ -7,5 +7,5 @@ moduleForComponent('pilas-cargando', 'Integration | Component | pilas cargando',
 
 test('it renders', function(assert) {
   this.render(hbs`{{pilas-cargando}}`);
-  assert.equal(this.$().text().trim(), 'Cargando ...');
+  assert.equal(this.$().text().trim(), '', "No debe tener texto alguno.");
 });
