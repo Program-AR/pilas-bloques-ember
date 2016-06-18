@@ -271,7 +271,7 @@ var AlEmpezar = Bloque.extend({
     var r = 'programa.empezar_secuencia();\n';
     r += statements_program + '\n';
 
-    var Comportamiento = (function () {
+    var ComportamientoFinalizar = (function () {
 
       function Comportamiento(argumentos) {
           this.argumentos = argumentos;
@@ -290,9 +290,11 @@ var AlEmpezar = Bloque.extend({
       return Comportamiento;
     })();
 
-    window['receptor'].finaliza_tarea = Comportamiento;
+    //window['receptor'].finaliza_tarea = Comportamiento;
 
-    r += 'programa.hacer(receptor.finaliza_tarea, {});\n';
+
+
+    //r += 'programa.hacer(receptor.finaliza_tarea, {});\n';
 
     r += 'programa.ejecutar(receptor);\n';
     return r;

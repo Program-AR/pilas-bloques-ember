@@ -98,8 +98,14 @@ var Actividad = Ember.Object.extend({
 
   generarCodigo() {
     // variable global con la que se accede al receptor del programa
-    window.receptor = this.get('escena_instanciada').automata;
-    var comienzo = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n\n';
+    //window.receptor = this.get('escena_instanciada').automata;
+
+    var comienzo = `
+      var receptor = pilas.escena_actual().automata;
+      var programa = new pilas.comportamientos.ConstructorDePrograma();
+
+
+    `;
     var code = Blockly.JavaScript.workspaceToCode();
     return comienzo + code;
   },

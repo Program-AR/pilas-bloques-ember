@@ -16,48 +16,10 @@ export default Ember.Component.extend({
   compartirEnCurso: false,
   //browser: Ember.inject.service(),
 
-  /*
+  anterior_ancho: -1,
+  anterior_alto: -1,
+
   inyectarRedimensionado: Ember.on('init', function() {
-
-    window.anterior_altura = 0;
-    window.anterior_ancho = 0;
-    var ancho_canvas = 445;
-
-    function redimensionar() {
-      var panel = document.getElementById('panel-derecho');
-      var contenedorEditor = document.getElementById('contenedor-editor');
-      var panelPilas = document.getElementById('panel-pilas');
-      var e = document.getElementById('contenedor-blockly');
-
-
-      if (!panel) {
-        return null;
-      }
-
-      var altura = panel.getClientRects()[0].height;
-      var ancho_total = contenedorEditor.getClientRects()[0].width;
-
-      if (window.anterior_altura !== altura || window.anterior_ancho !== ancho_total) {
-
-        e.style.width = (ancho_total - ancho_canvas) + 'px';
-        e.style.height = (altura - 50) + 'px';
-        panelPilas.style.width = (ancho_canvas - 20) + 'px';
-
-        window.anterior_altura = altura;
-        window.anterior_ancho = ancho_total;
-
-        Blockly.fireUiEvent(window, 'resize');
-      }
-    }
-
-    function forzar_redimensionado() {
-      window.anterior_altura += 1;
-      redimensionar();
-    }
-
-    window.onresize = redimensionar;
-    window.forzar_redimensionado = forzar_redimensionado;
-
 
     // Muestra el dialogo inicial si está definida la consigna inicial.
     if (this.get('actividad.actividad.consignaInicial')) {
@@ -67,9 +29,12 @@ export default Ember.Component.extend({
     }
 
   }),
-  */
 
   didInsertElement() {
+    if (!this.get('actividad')) {
+      return null;
+    }
+
     var contenedor = this.$().find('#contenedor-blockly')[0];
     this.get('actividad').iniciarBlockly(contenedor);
 
