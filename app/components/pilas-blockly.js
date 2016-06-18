@@ -163,11 +163,12 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
 
       var code = this.get('actividad').generarCodigo();
-      console.log(code);
+      //console.log(code);
 
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
 
+      this.set('ejecutando', true);
       this.get('pilas').ejecutarCodigoSinReiniciar(code);
 
       /*
@@ -187,7 +188,7 @@ export default Ember.Component.extend({
 
     reiniciar() {
       this.set('ejecutando', false);
-      this.sendAction('reiniciar');
+      this.get('pilas').reiniciarEscenaCompleta();
     },
 
     guardar() {

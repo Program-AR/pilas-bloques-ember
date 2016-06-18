@@ -28,18 +28,11 @@
 
   <div class="desafio-panel-derecho">
 
-    <div>
-      {{#if pilas.loading}}
-        <button disabled>Reiniciando</button>
-      {{else}}
-        <button {{action "reiniciar"}}>Reiniciar</button>
-      {{/if}}
-    </div>
-
-    {{pilas-blockly guardar='guardar' reiniciar='reiniciar'
+    {{pilas-blockly guardar='guardar'
                     registrarPrimerCodigo='registrarPrimerCodigo'
                     pilas=pilas
                     actividad=model.actividad}}
+                    
   </div>
 
 </div>

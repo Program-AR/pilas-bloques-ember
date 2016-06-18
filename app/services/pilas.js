@@ -6,7 +6,7 @@ export default Ember.Service.extend({
   actorCounter: 0,
   pilas: null,
   loading: true,
-
+  nombreDeLaEscenaActual: null,
   temporallyCallback: null, /* almacena el callback para avisar si pilas
                                se reinició correctamente. */
 
@@ -83,6 +83,7 @@ export default Ember.Service.extend({
     `;
 
     iframeElement.contentWindow.eval(codigo);
+    this.set("nombreDeLaEscenaActual", nombreDeLaEscena);
   },
 
 
@@ -95,6 +96,8 @@ export default Ember.Service.extend({
 
 
   ejecutarCodigoSinReiniciar(codigo) {
+    console.log("Ejecutando codigo", {codigo});
+
     if (this.get("loading")) {
       console.warn("Cuidado, no se puede ejecutar antes de que pilas cargue.");
       return;
@@ -103,9 +106,15 @@ export default Ember.Service.extend({
     let iframeElement = this.get("iframe");
 
     // reinicia la escena nuevamente
-    //iframeElement.contentWindow.eval("pilas.reiniciar();");
-
+    this.reiniciarEscenaCompleta();
     iframeElement.contentWindow.eval(codigo);
+  },
+
+
+  reiniciarEscenaCompleta() {
+    let iframeElement = this.get("iframe");
+    iframeElement.contentWindow.eval("pilas.reiniciar();");
+    this.inicializarEscena(iframeElement, this.get("nombreDeLaEscenaActual"));
   },
 
   /**
