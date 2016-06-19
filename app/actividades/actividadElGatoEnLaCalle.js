@@ -1,4 +1,3 @@
-/* globals ElGatoEnLaCalle */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 
 var {AccionBuilder,Procedimiento} = bloques;
@@ -60,13 +59,13 @@ var Soniar = AccionBuilder.build({
 });
 
 export default {
-  nombre: 'El gato en la calle',
+  // DEPRECATED: nombre: 'El gato en la calle',
   id: 'ElGatoEnLaCalle',
-  enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
-  consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
+  // DEPRECATED: enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
+  // DEPRECATED: consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
   esDeExploracion: true,
 
-  escena: ElGatoEnLaCalle,
+  // DEPRECATED: escena: ElGatoEnLaCalle,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

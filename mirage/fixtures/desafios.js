@@ -19,5 +19,15 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     actividad: null,
+  },
+  {
+    id: 3,
+    grupoId: 1,
+    nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
+    titulo: 'El gato en la calle', // sale de 'nombre' en 'app/actividades/actividadElGatoEnLaCalle.js'
+    enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
+    consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
+    escena: 'ElGatoEnLaCalle',
+    actividad: null,
   }
 ];

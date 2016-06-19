@@ -17,7 +17,7 @@ import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadA
 // import actividadElMarcianoEnElDesierto from 'pilas-engine-bloques/actividades/actividadElMarcianoEnElDesierto';
 import actividadAlimentandoALosPeces from 'pilas-engine-bloques/actividades/actividadAlimentandoALosPeces';
 // import actividadInstalandoJuegos from 'pilas-engine-bloques/actividades/actividadInstalandoJuegos';
-// import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
+import actividadElGatoEnLaCalle from 'pilas-engine-bloques/actividades/actividadElGatoEnLaCalle';
 // import actividadNoMeCansoDeSaltar from 'pilas-engine-bloques/actividades/actividadNoMeCansoDeSaltar';
 // import actividadReparandoLaNave from 'pilas-engine-bloques/actividades/actividadReparandoLaNave';
 // import actividadElMonoQueSabeContar from 'pilas-engine-bloques/actividades/actividadElMonoQueSabeContar';
@@ -85,7 +85,7 @@ export default Ember.Service.extend({
       actividadAlimentandoALosPeces,
       // actividadInstalandoJuegos,
       // actividadNoMeCansoDeSaltar,
-      // actividadElGatoEnLaCalle,
+      actividadElGatoEnLaCalle,
       // actividadElMonoQueSabeContar,
       // actividadReparandoLaNave,
       // actividadTresNaranjas,
