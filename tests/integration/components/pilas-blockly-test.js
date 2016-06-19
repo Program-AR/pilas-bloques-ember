@@ -10,5 +10,6 @@ test('it renders', function(assert) {
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{pilas-blockly}}`);
-  assert.equal(this.$().text().trim(), 'Ejecutar');
+  assert.ok(this.$().text().indexOf("Ejecutar") > -1, "Tiene el botón ejecutar visible");
+  assert.ok(this.$().text().indexOf("Compartir en twitter") > -1, 'Existe un botón para compartir por twitter');
 });
