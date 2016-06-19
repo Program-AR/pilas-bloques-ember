@@ -1,0 +1,15 @@
+{{#if layout}}
+  {{partial "navbar"}}
+  {{partial "modal-preferencias"}}
+  {{partial "modal-ayuda"}}
+{{else}}
+  <style>
+    .absolute {
+      top: 10px;
+    }
+  </style>
+{{/if}}
+
+<div class="page-container">
+  {{outlet class='absolute'}}
+</div>

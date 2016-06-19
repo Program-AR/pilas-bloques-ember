@@ -8,54 +8,18 @@ export default Ember.Component.extend({
   environment: Ember.inject.service(),
   abrirConsignaInicial: false,
   solucion: null,
+  pilas: null,         // Se espera que sea una referencia al servicio pilas.
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
-  browser: Ember.inject.service(),
+  //browser: Ember.inject.service(),
+
+  anterior_ancho: -1,
+  anterior_alto: -1,
 
   inyectarRedimensionado: Ember.on('init', function() {
-
-    window.anterior_altura = 0;
-    window.anterior_ancho = 0;
-    var ancho_canvas = 445;
-
-    function redimensionar() {
-      var panel = document.getElementById('panel-derecho');
-      var contenedorEditor = document.getElementById('contenedor-editor');
-      var panelPilas = document.getElementById('panel-pilas');
-      var e = document.getElementById('contenedor-blockly');
-
-
-      if (!panel) {
-        return null;
-      }
-
-      var altura = panel.getClientRects()[0].height;
-      var ancho_total = contenedorEditor.getClientRects()[0].width;
-
-      if (window.anterior_altura !== altura || window.anterior_ancho !== ancho_total) {
-
-        e.style.width = (ancho_total - ancho_canvas) + 'px';
-        e.style.height = (altura - 50) + 'px';
-        panelPilas.style.width = (ancho_canvas - 20) + 'px';
-
-        window.anterior_altura = altura;
-        window.anterior_ancho = ancho_total;
-
-        Blockly.fireUiEvent(window, 'resize');
-      }
-    }
-
-    function forzar_redimensionado() {
-      window.anterior_altura += 1;
-      redimensionar();
-    }
-
-    window.onresize = redimensionar;
-    window.forzar_redimensionado = forzar_redimensionado;
-
 
     // Muestra el dialogo inicial si está definida la consigna inicial.
     if (this.get('actividad.actividad.consignaInicial')) {
@@ -67,16 +31,40 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement() {
-    //var contenedor = this.$().find('#contenedor-blockly')[0];
+    if (!this.get('actividad')) {
+      return null;
+    }
+
+    var contenedor = this.$().find('#contenedor-blockly')[0];
+    this.get('actividad').iniciarBlockly(contenedor);
+
+
+    if (this.get("codigo")) {
+      this.restaurar_codigo(atob(this.get("codigo")));
+    }
+
+
+    Blockly.addChangeListener(() => {
+      this.guardarEnURL();
+    });
+
+    /*
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
+    alert("hola?");
+    */
 
     this.handlerCargaInicial = this.cuandoTerminaCargaInicial.bind(this);
     this.handlerTerminaEjecucion = this.cuandoTerminaEjecucion.bind(this);
 
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+    window.addEventListener('message', this.handlerTerminaEjecucion, false);
+  },
+
+  guardarEnURL() {
+    let codigo = this.obtener_codigo_en_texto();
+    this.set("codigo", btoa(codigo));
   },
 
   cuandoTerminaCargaInicial() {
@@ -92,7 +80,7 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    if(this.get('actividad').debeFelicitarse()){
+    if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()){
       this.send('abrirFinDesafio');
     }
   },
@@ -103,9 +91,10 @@ export default Ember.Component.extend({
   },
 
   /**
-   * Se conecta a los eventos y cambios de estado de blockly para implementar
-   * la funcionalidad de 'deshacer'.
-   */
+  * Se conecta a los eventos y cambios de estado de blockly para implementar
+  * la funcionalidad de 'deshacer'.
+  */
+  /*
   observarCambiosEnBlocky() {
     var f = this.almacenar_cambio.bind(this);
     var d = Blockly.addChangeListener(f);
@@ -122,6 +111,7 @@ export default Ember.Component.extend({
     this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
     console.log("guardar");
   },
+  */
 
   restaurar_codigo(codigo) {
     var xml = Blockly.Xml.textToDom(codigo);
@@ -134,6 +124,7 @@ export default Ember.Component.extend({
     return Blockly.Xml.domToText(xml);
   },
 
+  /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
       var modelo = this.get('model');
@@ -142,6 +133,7 @@ export default Ember.Component.extend({
     }
     this.sendAction('registrarPrimerCodigo');
   },
+  */
 
 
   actions: {
@@ -151,8 +143,15 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
 
       var code = this.get('actividad').generarCodigo();
+      //console.log(code);
+
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
+
+      this.set('ejecutando', true);
+      this.get('pilas').ejecutarCodigoSinReiniciar(code);
+
+      /*
       Ember.run(() => {
         try {
           this.set('ejecutando', true);
@@ -163,12 +162,13 @@ export default Ember.Component.extend({
           alert(e);
         }
       });
+      */
 
     },
 
     reiniciar() {
       this.set('ejecutando', false);
-      this.sendAction('reiniciar');
+      this.get('pilas').reiniciarEscenaCompleta();
     },
 
     guardar() {
@@ -188,12 +188,12 @@ export default Ember.Component.extend({
 
 
       function xml2string(node) {
-         if (typeof(XMLSerializer) !== 'undefined') {
-            var serializer = new XMLSerializer();
-            return serializer.serializeToString(node);
-         } else if (node.xml) {
-            return node.xml;
-         }
+        if (typeof(XMLSerializer) !== 'undefined') {
+          var serializer = new XMLSerializer();
+          return serializer.serializeToString(node);
+        } else if (node.xml) {
+          return node.xml;
+        }
       }
 
       codigo_como_string = xml2string(code);
@@ -210,6 +210,7 @@ export default Ember.Component.extend({
 
     },
 
+    /*
     deshacer_cambio() {
       this.noMirarCambiosEnBlockly();
       this.get('cola_deshacer').popObject();
@@ -220,10 +221,11 @@ export default Ember.Component.extend({
       }
       this.observarCambiosEnBlocky();
     },
+    */
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
-      let data = window['canvas'].toDataURL('image/png');
+      let data = this.get("pilas").obtenerCapturaDePantalla();
       this.set('previewData', data);
     },
 
@@ -231,11 +233,11 @@ export default Ember.Component.extend({
       this.set('abrirDialogoCompartir', false);
     },
 
-    abrirFinDesafio(){
+    abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
     },
 
-    ocultarFinDesafio(){
+    ocultarFinDesafio() {
       this.set('mostrarDialogoFinDesafio', false);
     },
 
@@ -251,16 +253,14 @@ export default Ember.Component.extend({
       let imagen = this.get('previewData');
 
       this.get('twitter').compartir(mensaje, imagen).
-        then((data) => {
-          this.set('envioEnCurso', false);
-          this.set('mensajePublicadoURL', data.url);
-        }).
-        catch((err) => {
-          alert(err);
-          this.set('envioEnCurso', false);
-        })
-
-      ;
+      then((data) => {
+        this.set('envioEnCurso', false);
+        this.set('mensajePublicadoURL', data.url);
+      }).
+      catch((err) => {
+        alert(err);
+        this.set('envioEnCurso', false);
+      });
     }
 
   },

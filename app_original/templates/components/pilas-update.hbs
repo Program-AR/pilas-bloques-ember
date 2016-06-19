@@ -1,0 +1,6 @@
+{{#if buscando}}
+  <button disabled class='btn btn-success'>{{pilas-icon icon="refresh" spin=true}} Buscando ...</button>
+{{else}}
+  <button class='btn btn-success' {{action "buscar"}}>{{pilas-icon icon="refresh"}} Buscar actualizaciones</button>
+  <span>{{mensaje}}</span>
+{{/if}}

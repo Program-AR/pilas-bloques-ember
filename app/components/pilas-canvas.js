@@ -1,38 +1,77 @@
 import Ember from 'ember';
-import listaImagenes from 'pilas-engine-bloques/components/listaImagenes';
 
 export default Ember.Component.extend({
-  actividad: null,
+  classNames: ['pilas-canvas-container'],
+  iframeElement: null,
+  escena: null,
 
-  iniciarPilas: Ember.on('didInsertElement', function() {
-    var canvas_element = this.$().find('canvas')[0];
+  didInsertElement() {
+    Ember.run.scheduleOnce('afterRender', this, this.initElement);
+  },
 
-    window.pilas = pilasengine.iniciar({
-      ancho: 420,
-      alto: 480,
-      canvas: canvas_element,
-      data_path: 'libs/data',
-      imagenesExtra: listaImagenes,
-      });
+  initElement() {
+    let iframeElement = this.$().find('#innerIframe')[0];
 
-    window.pilas.onready = function() {
+    this.set("iframeElement", iframeElement);
 
-      this.get('actividad').iniciarEscena();
-      var contenedor = document.getElementById('contenedor-blockly');
-      this.get('actividad').iniciarBlockly(contenedor);
 
-      if (this.get('actividad')['finalizaCargarBlockly']) {
-        this.get('actividad').finalizaCargarBlockly();
+    this.get("iframeElement").onload = () => {
+
+      if (this.get('pilas')) {
+        this.get("pilas").inicializarPilas(iframeElement, {width: 420, height: 480}).
+          then((pilas) => {
+
+            if (this.get('escena')) {
+              this.get("pilas").inicializarEscena(iframeElement, this.get("escena"));
+            } else {
+              console.warn("No especificó una escena para cargar en pilas-canvas.");
+            }
+            
+            /*
+             * Invoca a la acción "onReady" que envía el objeto pilas listo
+             * para ser utilizado.
+             *
+             */
+            if (this.get('onReady')) {
+              this.sendAction("onReady", pilas);
+            } else {
+              //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
+            }
+          });
+      } else {
+        console.warn("Se a iniciado el componente pilas-canvas sin referencia a pilas.");
       }
 
-    }.bind(this);
+      // onLoad solo se utiliza dentro de la batería de tests. Este
+      // componente se tendría que usar mediante el servicio "pilas"
+      // en cualquier otro lugar.
+      this.sendAction('onLoad', {iframeElement});
 
-    window.pilas.ejecutar();
+    };
 
-  }),
-
-  willDestroyElement(){
-    window.pilas.reiniciar();
   },
+
+  reloadIframe(onLoadFunction) {
+    this.get("iframeElement").onload = onLoadFunction;
+    this.get("iframeElement").contentWindow.location.reload(true);
+  },
+
+  actions: {
+    execute(code) {
+      this.reloadIframe(() => {
+        alert("Ha cargado el código y está todo listo!");
+        this.get("iframeElement").contentWindow.eval(code);
+      });
+    },
+    clear() {
+      this.reloadIframe();
+    },
+    quitFullscreen() {
+      this.set('inFullScreen', false);
+    },
+    enterFullscreen() {
+      this.set('inFullScreen', true);
+    }
+  }
 
 });

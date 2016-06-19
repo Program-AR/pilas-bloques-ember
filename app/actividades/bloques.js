@@ -271,7 +271,9 @@ var AlEmpezar = Bloque.extend({
     var r = 'programa.empezar_secuencia();\n';
     r += statements_program + '\n';
 
-    var Comportamiento = (function () {
+
+    let codigo_extra = `
+    var ComportamientoFinalizar = (function () {
 
       function Comportamiento(argumentos) {
           this.argumentos = argumentos;
@@ -282,17 +284,17 @@ var AlEmpezar = Bloque.extend({
       };
 
       Comportamiento.prototype.actualizar = function () {
-        var event = new Event('terminaEjecucion');
-        window.dispatchEvent(event);
+        parent.postMessage('terminaEjecucion', window.location.origin);
         return true;
       };
 
       return Comportamiento;
     })();
+    `;
 
-    window['receptor'].finaliza_tarea = Comportamiento;
+    r += codigo_extra;
 
-    r += 'programa.hacer(receptor.finaliza_tarea, {});\n';
+    r += 'programa.hacer(ComportamientoFinalizar, {});\n';
 
     r += 'programa.ejecutar(receptor);\n';
     return r;

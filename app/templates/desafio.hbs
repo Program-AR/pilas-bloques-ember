@@ -1,0 +1,39 @@
+<div class='contenido-principal desafio-contenedor'>
+
+  {{outlet}}
+
+  <div class="desafio-panel-izquierdo">
+
+    {{pilas-canvas pilas=pilas onReady="cuandoCargaPilas" escena=model.escena}}
+
+    <div class='panel-ayuda puede-seleccionar'>
+
+      <h4>{{model.titulo}}</h4>
+
+      <p>{{model.enunciado}}</p>
+
+      {{#if model.consignaInicial}}
+        <div class="tip-block">
+          <p><em>¿Sabías qué...?</em></p>
+
+          <p>{{model.consignaInicial}}</p>
+        </div>
+      {{/if}}
+
+    </div>
+
+  </div>
+
+
+
+  <div class="desafio-panel-derecho">
+
+    {{pilas-blockly guardar='guardar'
+                    registrarPrimerCodigo='registrarPrimerCodigo'
+                    codigo=codigo
+                    pilas=pilas
+                    actividad=model.actividad}}
+
+  </div>
+
+</div>

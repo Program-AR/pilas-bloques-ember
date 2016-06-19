@@ -7,7 +7,9 @@ export default Ember.Controller.extend({
   environment: Ember.inject.service(),
 
   mostrar_url: Ember.on('init', function() {
-    this.set('layout', this.get('environment').get('showLayout'));
+    setTimeout(() => {
+      //this.set('layout', this.get('environment').get('showLayout'));
+    }, 3000);
   }),
 
   actions: {
