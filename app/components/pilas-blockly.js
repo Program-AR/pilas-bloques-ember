@@ -196,7 +196,7 @@ export default Ember.Component.extend({
         }
       }
 
-      codigo_como_string = this.xml2string(code);
+      codigo_como_string = xml2string(code);
       console.log(codigo_como_string);
       alert(codigo_como_string);
     },

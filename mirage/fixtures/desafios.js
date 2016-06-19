@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
+    grupoId: 1,
     nombre: 'AlienTocaBoton',
     titulo: 'El alien toca el botón',
     enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
@@ -9,9 +10,9 @@ export default [
     escena: 'AlienInicial',
     actividad: null   /* Se carga desde un hook en la ruta desafío. */
   },
-
   {
     id: 2,
+    grupoId: 1,
     nombre: 'AlimentandoALosPeces',
     titulo: 'Alimentando a los peces',
     enunciado: 'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: pensá en una estrategia de 3 partes.',
@@ -19,6 +20,4 @@ export default [
     escena: 'AlimentandoALosPeces',
     actividad: null,
   }
-
-
 ];

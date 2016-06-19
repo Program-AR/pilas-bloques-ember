@@ -2,7 +2,7 @@ import { moduleForModel, test } from 'ember-qunit';
 
 moduleForModel('desafio', 'Unit | Model | desafio', {
   // Specify the other units that are required for this test.
-  needs: []
+  needs: ['model:grupo']
 });
 
 test('it exists', function(assert) {

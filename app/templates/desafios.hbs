@@ -1,9 +1,19 @@
 <div class='contenido-principal'>
 
-{{outlet}}
+  <h1>Desafíos</h1>
 
-{{#each model as |desafio|}}
-  {{pilas-desafio model=desafio}}
-{{/each}}
+  <p>Disfrutá de estos desafíos. ¡Muy pronto muchos más!</p>
+
+  {{outlet}}
+
+  {{#each model as |grupo|}}
+
+    <h2>{{grupo.titulo}}</h2>
+
+    {{#each grupo.desafios as |desafio|}}
+      {{pilas-desafio model=desafio}}
+    {{/each}}
+
+  {{/each}}
 
 </div>

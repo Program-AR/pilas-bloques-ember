@@ -1,6 +1,6 @@
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
-// import { belongsTo, hasMany } from 'ember-data/relationships';
+import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
   nombre: attr('string'),
@@ -9,5 +9,6 @@ export default Model.extend({
   enunciado: attr('string'),
   consignaInicial: attr('string'),
   escena: attr('string'),                 // escena que se tiene que cargar, por ejemplo: 'AlienInicial'
-  actividad: attr()                       // se completa desde el hook del desafío.
+  actividad: attr(),                       // se completa desde el hook del desafío.
+  grupo: belongsTo('grupo')
 });
