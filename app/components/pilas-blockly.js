@@ -59,7 +59,7 @@ export default Ember.Component.extend({
     this.handlerTerminaEjecucion = this.cuandoTerminaEjecucion.bind(this);
 
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+    window.addEventListener('message', this.handlerTerminaEjecucion, false);
   },
 
   guardarEnURL() {
@@ -80,7 +80,7 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    if(this.get('actividad').debeFelicitarse()){
+    if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()){
       this.send('abrirFinDesafio');
     }
   },
@@ -233,11 +233,11 @@ export default Ember.Component.extend({
       this.set('abrirDialogoCompartir', false);
     },
 
-    abrirFinDesafio(){
+    abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
     },
 
-    ocultarFinDesafio(){
+    ocultarFinDesafio() {
       this.set('mostrarDialogoFinDesafio', false);
     },
 

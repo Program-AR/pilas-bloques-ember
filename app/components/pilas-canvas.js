@@ -14,6 +14,7 @@ export default Ember.Component.extend({
 
     this.set("iframeElement", iframeElement);
 
+
     this.get("iframeElement").onload = () => {
 
       if (this.get('pilas')) {
@@ -25,7 +26,7 @@ export default Ember.Component.extend({
             } else {
               console.warn("No especificó una escena para cargar en pilas-canvas.");
             }
-
+            
             /*
              * Invoca a la acción "onReady" que envía el objeto pilas listo
              * para ser utilizado.

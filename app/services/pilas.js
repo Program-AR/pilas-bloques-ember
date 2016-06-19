@@ -94,9 +94,19 @@ export default Ember.Service.extend({
     });
   },
 
+  estaResueltoElProblema() {
+    let iframeElement = this.get("iframe");
+    let codigo = `
+      pilas.escena_actual().estaResueltoElProblema();
+    `;
+
+    return iframeElement.contentWindow.eval(codigo);
+  },
+
 
   ejecutarCodigoSinReiniciar(codigo) {
-    console.log("Ejecutando codigo", {codigo});
+    //console.log(codigo.split('\n'));
+    //console.log("Ejecutando codigo", {codigo});
 
     if (this.get("loading")) {
       console.warn("Cuidado, no se puede ejecutar antes de que pilas cargue.");
@@ -107,6 +117,7 @@ export default Ember.Service.extend({
 
     // reinicia la escena nuevamente
     this.reiniciarEscenaCompleta();
+
     iframeElement.contentWindow.eval(codigo);
   },
 

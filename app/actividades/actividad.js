@@ -27,12 +27,14 @@ var Actividad = Ember.Object.extend({
     this.pisar_bloques_blockly();
   },
 
+/*
   iniciarEscena() {
     var Esc = this.get('escena');
     var esc_instance = new Esc();
     this.set('escena_instanciada', esc_instance);
     pilas.mundo.gestor_escenas.cambiar_escena(esc_instance);
   },
+  */
 
   obtenerLenguaje() {
     var act = this.get('actividad');
@@ -122,12 +124,8 @@ var Actividad = Ember.Object.extend({
     Blockly.Xml.domToWorkspace(workspace, xml);
   },
 
-  estaResueltoElProblema(){
-    return this.get('escena_instanciada').estaResueltoElProblema();
-  },
-
   debeFelicitarse(){
-    return this.estaResueltoElProblema() && !this.get('esDeExploracion');
+    return (!this.get('esDeExploracion'));
   },
 
   // Scratch style colours
