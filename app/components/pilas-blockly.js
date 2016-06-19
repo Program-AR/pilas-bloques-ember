@@ -38,6 +38,16 @@ export default Ember.Component.extend({
     var contenedor = this.$().find('#contenedor-blockly')[0];
     this.get('actividad').iniciarBlockly(contenedor);
 
+
+    if (this.get("codigo")) {
+      this.restaurar_codigo(atob(this.get("codigo")));
+    }
+
+
+    Blockly.addChangeListener(() => {
+      this.guardarEnURL();
+    });
+
     /*
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
@@ -50,6 +60,11 @@ export default Ember.Component.extend({
 
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+  },
+
+  guardarEnURL() {
+    let codigo = this.obtener_codigo_en_texto();
+    this.set("codigo", btoa(codigo));
   },
 
   cuandoTerminaCargaInicial() {
@@ -181,7 +196,7 @@ export default Ember.Component.extend({
         }
       }
 
-      codigo_como_string = xml2string(code);
+      codigo_como_string = this.xml2string(code);
       console.log(codigo_como_string);
       alert(codigo_como_string);
     },

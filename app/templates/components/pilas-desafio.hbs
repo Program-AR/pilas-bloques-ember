@@ -10,7 +10,7 @@
 
 {{else}}
 
-  {{#link-to "desafio" model}}
+  {{#link-to "desafio" model (query-params codigo="")}}
     <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
     <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
   {{/link-to}}

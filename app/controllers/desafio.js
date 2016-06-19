@@ -3,11 +3,11 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   pilas: Ember.inject.service(),
   queryParams: ['codigo'],
-  codigo: '',
+  codigo: null,
 
   actions: {
     cuandoCargaPilas(/*pilas*/) {
-      this.set('codigo', 'demo');
+      //this.set('codigo', 'demo');
       //console.log("SE CARGO PILAS !!!");
     }
   }
