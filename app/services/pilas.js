@@ -121,6 +121,10 @@ export default Ember.Service.extend({
     iframeElement.contentWindow.eval(codigo);
   },
 
+  obtenerCapturaDePantalla() {
+    let iframeElement = this.get("iframe");
+    return iframeElement.contentWindow.document.getElementById('canvas').toDataURL('image/png');
+  },
 
   reiniciarEscenaCompleta() {
     let iframeElement = this.get("iframe");

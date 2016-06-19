@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   solucion: null,
   pilas: null,         // Se espera que sea una referencia al servicio pilas.
 
-  //twitter: Ember.inject.service(),
+  twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
@@ -225,7 +225,7 @@ export default Ember.Component.extend({
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
-      let data = window['canvas'].toDataURL('image/png');
+      let data = this.get("pilas").obtenerCapturaDePantalla();
       this.set('previewData', data);
     },
 
