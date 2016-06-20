@@ -2,8 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   classNames: ['pilas-canvas-container'],
+  classNameBindings: ['isMobile:media-mobile'],
   iframeElement: null,
   escena: null,
+  isMobile: Ember.computed('media.isMobile', function() {
+    return this.get("media.isMobile");
+  }),
 
   didInsertElement() {
     Ember.run.scheduleOnce('afterRender', this, this.initElement);
@@ -26,7 +30,7 @@ export default Ember.Component.extend({
             } else {
               console.warn("No especificó una escena para cargar en pilas-canvas.");
             }
-            
+
             /*
              * Invoca a la acción "onReady" que envía el objeto pilas listo
              * para ser utilizado.
