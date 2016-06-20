@@ -15,12 +15,15 @@
       </ul>
 
       <div class='header-right'>
+
         <div class="navbar-header navbar-collapse">
-          <a href="http://program.ar"><img src='imagenes/programar-short.png'/></a>
+          <!-- Haciendo que el logo de programar no se colapse, y desaparezca en mobile. -->
+          {{#unless media.isMobile}}
+            <a href="http://program.ar"><img src='imagenes/programar-short.png'/></a>
+          {{/unless}}
         </div>
+
         {{pilas-automatic-update}}
-
-
 
         <button class="header-button" {{action "abrirAyuda"}}>{{fa-icon "question"}}</button>
         <button class="header-button" {{action "abrirPreferencias"}}>{{fa-icon "gear"}}</button>
