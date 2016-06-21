@@ -1,7 +1,18 @@
 <div class='contenido-principal desafio-contenedor'>
 
+  {{#if debug}}
+
+    {{pilas-debug-bar
+          panelCanvasVisible=panelCanvasVisible
+          panelBlocklyVisible=panelBlocklyVisible
+          panelCodigoVisible=panelCodigoVisible
+    }}
+
+  {{/if}}
+
   {{outlet}}
 
+{{#if panelCanvasVisible}}
   <div class="desafio-panel-izquierdo {{media.classNames}}">
 
 
@@ -24,17 +35,26 @@
     </div>
 
   </div>
+{{/if}}
 
 
-
+{{#if panelBlocklyVisible}}
   <div class="desafio-panel-derecho">
 
     {{pilas-blockly guardar='guardar'
                     registrarPrimerCodigo='registrarPrimerCodigo'
                     codigo=codigo
                     pilas=pilas
+                    codigoJavascript=codigoJavascript
                     actividad=model.actividad}}
 
   </div>
+{{/if}}
+
+{{#if panelCodigoVisible}}
+  <div class="desafio-panel-codigo">
+    <pre>{{prism codigoJavascript}}</pre>
+  </div>
+{{/if}}
 
 </div>

@@ -78,6 +78,7 @@ actualizar_pilas:
 	rm -r -f public/libs/data
 	mkdir -p public/libs/
 	make copiar_pilasweb
+	@echo "${Y}CUIDADO, tienes que llamar a actualizar_ejercicios_pilas también!!!${N}"
 
 copiar_pilasweb:
 	@echo "${G}copiando pilasweb${N}"

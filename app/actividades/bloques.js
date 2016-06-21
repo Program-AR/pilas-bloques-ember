@@ -133,7 +133,7 @@ var Procedimiento = CambioDeJSDeBlocky.extend({
 
     var args_string = args.map(function(i) { return '"' + i + '"'; }).join(', ');
 
-    var code = 'programa.empezar_secuencia();\n' +
+    var code = 'programa.empezar_secuencia(); \n' +
                 branch +
                 'programa.def_proc("' + funcName + '", [' + args_string  + ']);\n';
 
@@ -269,33 +269,33 @@ var AlEmpezar = Bloque.extend({
   block_javascript(block) {
     var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
     var r = 'programa.empezar_secuencia();\n';
-    r += statements_program + '\n';
+    r += statements_program + '\n\n';
 
+    r += "\n";
+    r += "// CIERRE DEL PROGRAMA \n";
+    r += "\n";
 
-    let codigo_extra = `
-    var ComportamientoFinalizar = (function () {
+    r += 'var ComportamientoFinalizar = (function () { \n';
+    r += "\n";
+    r += '  function Comportamiento(argumentos) { \n';
+    r += '    this.argumentos = argumentos; \n';
+    r += '  } \n';
+    r += "\n";
+    r += '  Comportamiento.prototype.iniciar = function (receptor) { \n';
+    r += '    this.receptor = receptor; \n';
+    r += '  }; \n';
+    r += "\n";
+    r += '  Comportamiento.prototype.actualizar = function () { \n';
+    r += '    parent.postMessage("terminaEjecucion", window.location.origin); \n';
+    r += '    return true; \n';
+    r += '  }; \n';
+    r += "\n";
+    r += '  return Comportamiento; \n';
+    r += "\n";
+    r += '})(); \n';
 
-      function Comportamiento(argumentos) {
-          this.argumentos = argumentos;
-      }
-
-      Comportamiento.prototype.iniciar = function (receptor) {
-          this.receptor = receptor;
-      };
-
-      Comportamiento.prototype.actualizar = function () {
-        parent.postMessage('terminaEjecucion', window.location.origin);
-        return true;
-      };
-
-      return Comportamiento;
-    })();
-    `;
-
-    r += codigo_extra;
-
+    r += "\n";
     r += 'programa.hacer(ComportamientoFinalizar, {});\n';
-
     r += 'programa.ejecutar(receptor);\n';
     return r;
   }
@@ -313,8 +313,21 @@ var Accion = Bloque.extend({
   },
 
   block_javascript(block) {
+    let nombre = this.nombre_comportamiento();
+    let argumentos = this.argumentos(block);
+
+    return ['', '',
+            `// BLOQUE: ${nombre}`,
+            `programa.llamada_proc_primitivo(${nombre}, function() {`,
+            `  return ${argumentos};`,
+            `});`,
+          ].join("\n");
+
+
+            /*
     return 'programa.llamada_proc_primitivo(' + this.nombre_comportamiento() +
       ', function(){\n return ' + this.argumentos(block) + ';\n})\n';
+      */
   }
 
 });

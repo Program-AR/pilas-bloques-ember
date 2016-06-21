@@ -663,6 +663,15 @@ h2 {
   padding-left: 5px;
 }
 
+.desafio-panel-codigo {
+  width: 100%;
+  padding: 5px;
+  overflow: scroll;
+}
+
+.desafio-panel-codigo-pre {
+}
+
 .blocklyTreeSeparator {
   border-bottom: solid black 0px !important;
 }
@@ -692,4 +701,15 @@ h2 {
 .main-logo {
   max-width: 100%;
   height: auto;
+}
+
+
+.pilas-debug-bar {
+  position: absolute;
+  top: -1px;
+  z-index: 10000;
+  left: 50%;
+  border: 1px solid gray;
+  background-color: rgba(200, 200, 200, 0.5);
+  padding: 5px;
 }
