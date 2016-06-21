@@ -59,7 +59,7 @@ comandos:
 iniciar:
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
-	./node_modules/bower/bin/bower install --allow-root
+	bower install --allow-root
 
 vincular_dependencias:
 	@echo "${G}vinculando depenrencias ...${N}"
