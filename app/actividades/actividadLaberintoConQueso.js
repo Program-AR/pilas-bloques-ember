@@ -9,13 +9,13 @@ var {TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso} = tocando;
 var {ComerQueso} = comer;
 
 var actividadLaberintoConQueso = {
-  nombre: 'Laberinto con queso',
+  // DEPRECATED: nombre: 'Laberinto con queso',
   id: 'LaberintoConQueso',
-  enunciado: '¡El ratón está más hambriento que nunca! Guialo por el laberinto para que pueda comer todos los trozos de queso. Pista: antes de empezar, apretá varias veces el botón Ejecutar para conocer cómo varía el escenario.',
-  consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
+  // DEPRECATED: enunciado: '¡El ratón está más hambriento que nunca! Guialo por el laberinto para que pueda comer todos los trozos de queso. Pista: antes de empezar, apretá varias veces el botón Ejecutar para conocer cómo varía el escenario.',
+  // DEPRECATED: consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
 
   // la escena proviene de ejerciciosPilas
-  escena: LaberintoConQueso, // jshint ignore:line
+  // DEPRECATED: escena: LaberintoConQueso, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

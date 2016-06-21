@@ -117,17 +117,17 @@ var TocandoBanana = Sensor.extend({
 
 
 var actividadLaEleccionDelMono = {
-  nombre: 'La elección del mono',
+  // DEPRECATED: nombre: 'La elección del mono',
   id: 'LaEleccionDelMono',
-  enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene '+
-     'que elegir qué fruta comer. \n'+
-    'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: ésta vez no alcanza con el bloque "Si".',
+  // DEPRECATED: enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene '+
+  //   'que elegir qué fruta comer. \n'+
+  //  'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
+  //  'Pista: ésta vez no alcanza con el bloque "Si".',
 
-  consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
+  // DEPRECATED: consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
 
   // la escena proviene de ejerciciosPilas
-  escena: LaEleccionDelMono, // jshint ignore:line
+  // DEPRECATED: escena: LaEleccionDelMono, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

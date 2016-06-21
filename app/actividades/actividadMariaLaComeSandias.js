@@ -1,4 +1,3 @@
-/* globals MariaLaComeSandias */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
@@ -33,11 +32,11 @@ var MorderSandia = Accion.extend({
 });
 
 var actividadMariaLaComeSandias = {
-  nombre: 'María la come sandías',
+  // DEPRECATED: nombre: 'María la come sandías',
   id: 'MariaLaComeSandias',
-  enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
+  // DEPRECATED: enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
 
-  escena: MariaLaComeSandias,
+  // DEPRECATED: escena: MariaLaComeSandias,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

@@ -26,16 +26,16 @@ var TocandoPelota = AccionBuilder.buildSensor({
 });
 
 export default {
-  nombre: 'Fútbol para robots',
+  // DEPRECATED: nombre: 'Fútbol para robots',
   id: 'FutbolRobots',
-  enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
-    'Recordá siempre que una buena división en procedimientos puede ayudarte a encarar '+
-    'mejor el problema.',
+  // DEPRECATED: enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
+  //  'Recordá siempre que una buena división en procedimientos puede ayudarte a encarar '+
+  //  'mejor el problema.',
 
-  consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
+  // DEPRECATED: consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
 
   // la escena proviene de ejerciciosPilas
-  escena: FutbolRobots, // jshint ignore:line
+  // DEPRECATED: escena: FutbolRobots, // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
