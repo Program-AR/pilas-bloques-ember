@@ -10,6 +10,9 @@ module.exports = function(defaults) {
 
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 
+app.import('vendor/prism/prism.css');
+app.import('vendor/prism/prism.js');
+
 //app.import('vendor/pilasweb.js');
 
 
