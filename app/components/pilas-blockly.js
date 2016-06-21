@@ -8,7 +8,8 @@ export default Ember.Component.extend({
   environment: Ember.inject.service(),
   abrirConsignaInicial: false,
   solucion: null,
-  pilas: null,         // Se espera que sea una referencia al servicio pilas.
+  pilas: null,          // Se espera que sea una referencia al servicio pilas.
+  codigoJavascript: "", // Se carga como parametro
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -46,6 +47,7 @@ export default Ember.Component.extend({
 
     Blockly.addChangeListener(() => {
       this.guardarEnURL();
+      this.generarCodigoTemporal();
     });
 
     /*
@@ -65,6 +67,11 @@ export default Ember.Component.extend({
   guardarEnURL() {
     let codigo = this.obtener_codigo_en_texto();
     this.set("codigo", btoa(codigo));
+  },
+
+  generarCodigoTemporal() {
+    var codigoJavascript = this.get('actividad').generarCodigo();
+    this.set("codigoJavascript", codigoJavascript);
   },
 
   cuandoTerminaCargaInicial() {

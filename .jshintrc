@@ -11,6 +11,7 @@
     "pilasengine",
     "Base",
     "debugger",
+    "Prism",
     "ElRecolectorDeEstrellas"
   ],
   "browser": true,
