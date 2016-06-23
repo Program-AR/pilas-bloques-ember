@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
+  classNames: 'desafio-panel-derecho',
   ejecutando: false,
   cola_deshacer: [],
   data_observar_blockly: false,
@@ -54,7 +55,6 @@ export default Ember.Component.extend({
     this.set('cola_deshacer', []);
     //this.cargar_codigo_desde_el_modelo();
     //this.observarCambiosEnBlocky();
-    alert("hola?");
     */
 
     this.handlerCargaInicial = this.cuandoTerminaCargaInicial.bind(this);
@@ -62,6 +62,33 @@ export default Ember.Component.extend({
 
     window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.addEventListener('message', this.handlerTerminaEjecucion, false);
+
+    this.conectar_evento_para_ajustar_blocky();
+
+    $(window).trigger('resize');
+
+  },
+
+  conectar_evento_para_ajustar_blocky() {
+    $(window).bind('resize.blockly', function() {
+      var blocklyArea = document.getElementById('blocklyArea');
+      var blocklyDiv = document.getElementById('contenedor-blockly');
+
+      var element = blocklyArea;
+      var x = 0;
+      var y = 0;
+
+      do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+      } while (element);
+
+      blocklyDiv.style.left = x + 'px';
+      blocklyDiv.style.top = y + 'px';
+      blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+      blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+    });
   },
 
   guardarEnURL() {
@@ -95,6 +122,7 @@ export default Ember.Component.extend({
   willDestroyElement() {
     window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+    $(window).unbind('resize.blockly');
   },
 
   /**
