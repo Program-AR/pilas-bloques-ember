@@ -76,10 +76,12 @@ export function actividadTest(actividad, opciones){
 	    `);
 
 	    window.addEventListener('terminaCargaInicial', () => {
-	      pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert, expectedErrorMsg: opciones.expectedErrorMsg});
-        pilas.escena_actual().actores.forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad()); // Para que las animaciones se hagan rápido
-        /*global ComportamientoConVelocidad*/
-        ComportamientoConVelocidad.prototype.velocidad = function(){ return 100; }; // para que los movimientos se hagan rápido
+        pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert, expectedErrorMsg: opciones.expectedErrorMsg});
+        if(!opciones.lento){
+          pilas.escena_actual().actores.forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad()); // Para que las animaciones se hagan rápido
+          /*global ComportamientoConVelocidad*/
+          ComportamientoConVelocidad.prototype.velocidad = function(){ return 100; }; // para que los movimientos se hagan rápido
+        }
 	      opciones.assertsPostCargaInicial(assert);
 	    }, false);
 
