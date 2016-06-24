@@ -109,6 +109,22 @@ var Actividad = Ember.Object.extend({
     return code;
   },
 
+  generarCodigoXMLComoString() {
+    Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+    var codigo = this.generarCodigoXML();
+
+    function xml2string(node) {
+       if (typeof(XMLSerializer) !== 'undefined') {
+          var serializer = new XMLSerializer();
+          return serializer.serializeToString(node);
+       } else if (node.xml) {
+          return node.xml;
+       }
+    }
+
+    return xml2string(codigo);
+  },
+
   cargarCodigoDesdeStringXML(codigo) {
     var workspace = Blockly.getMainWorkspace();
     workspace.clear();
