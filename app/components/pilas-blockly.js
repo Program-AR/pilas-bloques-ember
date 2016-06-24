@@ -250,13 +250,13 @@ export default Ember.Component.extend({
     },
 
     cargarSolucion(archivo, contenido) {
-      let regex_file = /\.act$/;
+      let regex_file = /\.spbq$/;
       let regex_version = /^\d+$/;
       let data = null;
       let solucion = null;
 
       if (!regex_file.test(archivo.name)) {
-        alert("Lo siento, solo se permiten cargar archivos .act");
+        alert("Lo siento, solo se permiten cargar archivos .spbq");
         return;
       }
 
@@ -279,14 +279,13 @@ export default Ember.Component.extend({
         return;
       }
 
+
       if (parseInt(data.version) > VERSION_DEL_FORMATO_DE_ARCHIVO) {
-        alert("Lo siento, el archivo no está soportado por esta versión.");
-        return;
+        alert("Cuidado, el archivo corresponde a otra versión de la aplicación. Se cargará de todas formas, pero puede fallar.");
       }
 
       if (this.get("actividad").id !== data.actividad) {
-        alert(`Lo siento, el archivo indica que es para otra actividad (${data.actividad}).`);
-        return;
+        alert(`Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`);
       }
 
       this.get('actividad').cargarCodigoDesdeStringXML(solucion);
@@ -294,7 +293,7 @@ export default Ember.Component.extend({
 
     guardarSolucion() {
       let nombre_de_la_actividad = this.get("actividad").id;
-      let nombre_surgerido = `${nombre_de_la_actividad}.act`;
+      let nombre_surgerido = `${nombre_de_la_actividad}.spbq`;
       let contenido = {
         version: VERSION_DEL_FORMATO_DE_ARCHIVO,
         actividad: nombre_de_la_actividad,
