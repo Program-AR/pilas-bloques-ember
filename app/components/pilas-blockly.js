@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
+
 export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
   ejecutando: false,
@@ -296,6 +298,70 @@ export default Ember.Component.extend({
         alert(err);
         this.set('envioEnCurso', false);
       });
+    },
+
+    cargarSolucion(archivo, contenido) {
+      let regex_file = /\.act$/;
+      let regex_version = /^\d+$/;
+      let data = null;
+      let solucion = null;
+
+      if (!regex_file.test(archivo.name)) {
+        alert("Lo siento, solo se permiten cargar archivos .act");
+        return;
+      }
+
+      if (archivo.size > 4000) {
+        alert("Lo siento, el archivo es demasiado grande para cargarse.");
+        return;
+      }
+
+      try {
+        data = JSON.parse(contenido);
+        solucion = atob(data.solucion);
+      } catch (e) {
+        console.error(e);
+        alert("Lo siento, el archivo está dañando.");
+        return;
+      }
+
+      if (!regex_version.test(data.version)) {
+        alert("Lo siento, la especificación de versión es incorrecta.");
+        return;
+      }
+
+      if (parseInt(data.version) > VERSION_DEL_FORMATO_DE_ARCHIVO) {
+        alert("Lo siento, el archivo no está soportado por esta versión.");
+        return;
+      }
+
+      if (this.get("actividad").id !== data.actividad) {
+        alert(`Lo siento, el archivo indica que es para otra actividad (${data.actividad}).`);
+        return;
+      }
+
+      this.get('actividad').cargarCodigoDesdeStringXML(solucion);
+    },
+
+    guardarSolucion() {
+      let nombre_de_la_actividad = this.get("actividad").id;
+      let nombre_surgerido = `${nombre_de_la_actividad}.act`;
+      let contenido = {
+        version: VERSION_DEL_FORMATO_DE_ARCHIVO,
+        actividad: nombre_de_la_actividad,
+        solucion: btoa(this.get('actividad').generarCodigoXMLComoString())
+      };
+      let contenido_como_string = JSON.stringify(contenido);
+
+      function descargar(text, name, type) {
+        var a = document.getElementById("placeholder");
+        var file = new Blob([text], {type: type});
+        a.href = URL.createObjectURL(file);
+        a.download = name;
+        a.click();
+      }
+
+      descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
     }
 
   },
