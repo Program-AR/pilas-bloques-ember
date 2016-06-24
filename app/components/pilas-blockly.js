@@ -219,22 +219,7 @@ export default Ember.Component.extend({
     },
 
     ver_codigo() {
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
-      var code = this.get('actividad').generarCodigoXML();
-      var codigo_como_string = null;
-
-
-      function xml2string(node) {
-        if (typeof(XMLSerializer) !== 'undefined') {
-          var serializer = new XMLSerializer();
-          return serializer.serializeToString(node);
-        } else if (node.xml) {
-          return node.xml;
-        }
-      }
-
-      codigo_como_string = xml2string(code);
-      console.log(codigo_como_string);
+      let codigo_como_string = this.get('actividad').generarCodigoXMLComoString();
       alert(codigo_como_string);
     },
 
