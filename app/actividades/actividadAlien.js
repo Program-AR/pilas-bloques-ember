@@ -16,8 +16,8 @@ var LevantarTuerca = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Levantar tuerca')
-         .appendField(this.obtener_icono('../libs/data/tuerca.png'));
+         .appendField(this.obtener_icono('../libs/data/tuerca.png'))
+         .appendField('Levantar tuerca');
   },
 
   nombre_comportamiento: function() {
