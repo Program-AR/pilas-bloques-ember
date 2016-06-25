@@ -17,14 +17,16 @@
             <div class="col-md-6">
               <button class='btn btn-success btn-sm margin' {{action "actualizar"}}>{{fa-icon "refresh"}} Actualizar</button>
               <button class='btn btn-info btn-sm margin' {{action "mostrar_devtools"}}>{{fa-icon "cog"}} Mostrar devtools</button>
-
-              {{#if environment.debeMostrarBotonCodigoXML}}
-                <button class='btn btn-info btn-sm margin' {{action "ocultar_boton_codigo"}}>{{fa-icon "file"}} Ocultar botón de código XML</button>
-              {{else}}
-                <button class='btn btn-success btn-sm margin' {{action "mostrar_boton_codigo"}}>{{fa-icon "file"}} Mostrar botón de código XML</button>
-              {{/if}}
             </div>
+      </div>
+
+        <div class='fila-opcion'>
+          <div class="row">
+            <div class="col-md-6">Tamaño de interfaz:</div>
+            <div class="col-md-6"> {{pilas-botones-zoom}} </div>
+          </div>
         </div>
+
       </div>
 
       <!--
