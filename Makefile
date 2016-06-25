@@ -48,8 +48,7 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
-	@echo "    ${G}version${N}         Genera una nueva versión."
-	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
+	@echo "    ${G}version${N}           Genera una nueva versión / release."
 	@echo ""
 	@echo "    ${G}binarios${N}          Genera los binarios."
 	@echo "    ${G}subir_a_dropbox${N}   Sube los binarios generados a dropbox."
@@ -181,14 +180,9 @@ compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
 version:
-	# patch || minor
-	@bumpversion minor --current-version ${VERSION} public/package.json public/package.desarrollo.json public/package.produccion.json Makefile app/services/version.js --list
-	make build
-	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
-	@echo ""
-	@echo "make subir_version"
+	ember release
 
-ver_sync: subir_version
+release: version
 
 
 limpiar_todo:
@@ -198,13 +192,6 @@ limpiar_todo:
 	@rm -rf node_modules/ bower_components/
 
 full: limpiar_todo iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
-
-subir_version:
-	git commit -am 'release ${VERSION}'
-	git tag '${VERSION}'
-	git push
-	git push --all
-	git push --tags
 
 to_production:
 	@echo "${G}pasando a modo produccion${N}"
