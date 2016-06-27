@@ -10,8 +10,8 @@ var Avanzar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Avanzar')
-         .appendField(this.obtener_icono('derecha.png'));
+         .appendField(this.obtener_icono('derecha.png'))
+         .appendField('Avanzar');
   },
 
   nombre_comportamiento() {
@@ -34,8 +34,8 @@ var ComerManzana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer manzana ')
-         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'));
+         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
+         .appendField('Comer manzana ');
   },
 
   nombre_comportamiento() {
@@ -59,8 +59,8 @@ var ComerBanana = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Comer banana ')
-         .appendField(this.obtener_icono('../libs/data/iconos.banana.png')); //TODO: Hardcodeo feo de dir de icono
+         .appendField(this.obtener_icono('../libs/data/iconos.banana.png')) //TODO: Hardcodeo feo de dir de icono
+         .appendField('Comer banana ');
   },
 
   nombre_comportamiento() {

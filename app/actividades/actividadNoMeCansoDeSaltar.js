@@ -12,8 +12,8 @@ var Saltar = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Saltar')
-         .appendField(this.obtener_icono('arriba.png'));
+         .appendField(this.obtener_icono('arriba.png'))
+         .appendField('Saltar');
 
   },
 

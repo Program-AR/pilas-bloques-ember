@@ -14,9 +14,8 @@ var VolverABordeIzquierdo = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField('Volver todo a izquierda')
-    .appendField(this.obtener_icono('izquierda.png'));
-
+    .appendField(this.obtener_icono('izquierda.png'))
+    .appendField('Volver todo a izquierda');
   },
 
   nombre_comportamiento() {
@@ -40,8 +39,8 @@ var TomarEstrella = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Tomar ')
-         .appendField(this.obtener_icono('../libs/data/icono.estrella.png'));
+         .appendField(this.obtener_icono('../libs/data/icono.estrella.png'))
+         .appendField('Tomar estrella');
   },
 
   nombre_comportamiento() {

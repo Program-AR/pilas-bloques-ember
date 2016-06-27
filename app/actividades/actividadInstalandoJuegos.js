@@ -12,8 +12,8 @@ var SiguienteCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Siguiente compu')
-         .appendField(this.obtener_icono('derecha.png'));
+         .appendField(this.obtener_icono('derecha.png'))
+         .appendField('Siguiente compu');
   },
 
   nombre_comportamiento() {
@@ -37,8 +37,8 @@ var PrenderCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Prender compu ')
-         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
+         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'))
+         .appendField('Prender compu ');
   },
 
   nombre_comportamiento() {
@@ -61,8 +61,8 @@ var ApagarCompu = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Apagar compu')
-         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'));
+         .appendField(this.obtener_icono('../libs/data/icono.computadora.png'))
+         .appendField('Apagar compu');
   },
 
   nombre_comportamiento() {
