@@ -1,0 +1,161 @@
+diff --git a/app/components/pilas-canvas.js b/app/components/pilas-canvas.js
+index 1f8cc14..1dc12f3 100644
+--- a/app/components/pilas-canvas.js
++++ b/app/components/pilas-canvas.js
+@@ -5,6 +5,9 @@ export default Ember.Component.extend({
+   classNameBindings: ['media.isMobile:media-mobile'],
+   iframeElement: null,
+   escena: null,
++  pilas: Ember.inject.service(), /* Se espera que este atributo se defina al
++                                    llamar al componente. Está como servicio
++                                    aquí porque los tests lo necesitan así. */
+ 
+   didInsertElement() {
+     Ember.run.scheduleOnce('afterRender', this, this.initElement);
+@@ -15,7 +18,6 @@ export default Ember.Component.extend({
+ 
+     this.set("iframeElement", iframeElement);
+ 
+-
+     this.get("iframeElement").onload = () => {
+ 
+       if (this.get('pilas')) {
+@@ -39,8 +41,6 @@ export default Ember.Component.extend({
+               //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
+             }
+           });
+-      } else {
+-        console.warn("Se a iniciado el componente pilas-canvas sin referencia a pilas.");
+       }
+ 
+       // onLoad solo se utiliza dentro de la batería de tests. Este
+diff --git a/app/styles/app.scss b/app/styles/app.scss
+index 4e14ad9..7d052f3 100644
+--- a/app/styles/app.scss
++++ b/app/styles/app.scss
+@@ -426,6 +426,8 @@ body,
+   right: 0;
+   background-color: rgba(255, 255, 255, 0.75);
+   text-align: center;
++  color: black;
++  text-shadow: 0px 0px 3px white;
+ }
+ 
+ 
+diff --git a/app/templates/components/pilas-desafio.hbs b/app/templates/components/pilas-desafio.hbs
+index 546745d..960cff6 100644
+--- a/app/templates/components/pilas-desafio.hbs
++++ b/app/templates/components/pilas-desafio.hbs
+@@ -1,6 +1,8 @@
+ {{#if model.deshabilitado}}
+ 
+-  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png' onerror="this.src='images/desafios/proximamente.png'">
++  {{#if model.nombre}}
++    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png' onerror="this.src='images/desafios/proximamente.png'">
++  {{/if}}
+ 
+   <div class="ribbon right gray semi-transparente">
+     <a>Muy pronto</a>
+@@ -15,7 +17,7 @@
+     {{#if model.nombre}}
+       <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
+     {{/if}}
+-    
++
+     <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+   {{/link-to}}
+ 
+diff --git a/tests/helpers/createPilasTest.js b/tests/helpers/createPilasTest.js
+new file mode 100644
+index 0000000..0135842
+--- /dev/null
++++ b/tests/helpers/createPilasTest.js
+@@ -0,0 +1,17 @@
++import Ember from 'ember';
++import hbs from 'htmlbars-inline-precompile';
++
++export default function createPilasTest(context, escena, callback) {
++  // context en este caso es el test en si mismo (this).
++
++  return new Ember.RSVP.Promise((resolve) => {
++
++    context.on('onReady', function(pilas) {
++      callback(pilas, resolve);
++    });
++
++    context.set("escena", escena);
++    
++    context.render(hbs`{{pilas-canvas onReady='onReady' escena=escena}}`);
++  });
++}
+diff --git a/tests/integration/components/pilas-desafio-test.js b/tests/integration/components/pilas-desafio-test.js
+index 83331e5..f49b18b 100644
+--- a/tests/integration/components/pilas-desafio-test.js
++++ b/tests/integration/components/pilas-desafio-test.js
+@@ -6,8 +6,8 @@ moduleForComponent('pilas-desafio', 'Integration | Component | pilas desafio', {
+ });
+ 
+ test('it renders', function(assert) {
+-  this.set("model", {id: 1, titulo: 'demo'});
+-  this.set("modelDeshabilitado", {id: 1, titulo: 'demo', deshabilitado: true});
++  this.set("model", {id: 1, titulo: 'demo', nombre: "AlienTocaBoton", escena: "AlienTocaBoton", });
++  this.set("modelDeshabilitado", {id: 1, titulo: 'demo', nombre: "AlienTocaBoton", escena: "AlienTocaBoton", deshabilitado: true});
+ 
+   this.render(hbs`{{pilas-desafio model=model}}`);
+   assert.equal(this.$().text().trim(), 'demo', "Muestra el Título del desafio.");
+diff --git a/tests/integration/components/pilasweb-actores-test.js b/tests/integration/components/pilasweb-actores-test.js
+new file mode 100644
+index 0000000..5059c7b
+--- /dev/null
++++ b/tests/integration/components/pilasweb-actores-test.js
+@@ -0,0 +1,50 @@
++import { moduleForComponent, test } from 'ember-qunit';
++import createPilasTest from "../../helpers/createPilasTest";
++
++moduleForComponent('pilas-canvas-actores', 'Integration | Component | pilasweb actores', {
++  integration: true
++});
++
++test('it renders', function(assert) {
++
++  return createPilasTest(this, 'AlienInicial', (pilas, resolve) => {
++    /* CREACION DE ACTORES */
++    let actor = new pilas.actores.Mono();
++
++    assert.equal(actor.x, 0, "El actor está en la posición inicial X=0.");
++    assert.equal(actor.y, 0, "El actor está en la posición inicial Y=0.");
++
++    /* POSICIONES */
++    actor.x = 100;
++    assert.equal(actor.x, 100, "El actor puede cambiar de posición.");
++
++    /* ESCALA */
++    actor.escala_x = 2;
++    actor.escala_y = 3;
++
++    assert.equal(actor.escala_x, 2, "El actor puede cambiar de escala x.");
++    assert.equal(actor.escala_y, 3, "El actor puede cambiar de escala y.");
++
++    actor.escala = 1;
++
++    assert.equal(actor.escala, 1, "La escala se guarda correctamente.");
++    assert.equal(actor.escala_x, 1, "El atributo escala impacta en la escala_x.");
++    assert.equal(actor.escala_y, 1, "El atributo escala impacta en la escala_y.");
++
++    /* ROTACION */
++    actor.rotacion = 180;
++    assert.equal(actor.rotacion, 180, "El actor puede cambiar de posición.");
++
++    actor.rotacion = 180 + 181; // 361 grados son equivalentes a 1 grado
++    assert.equal(actor.rotacion, 1, "Los angulos se simplifican.");
++
++    actor.decir("chau!");
++
++    setTimeout(() => {
++      actor.eliminar();
++      setTimeout(resolve, 500);
++    }, 500);
++
++  });
++
++});

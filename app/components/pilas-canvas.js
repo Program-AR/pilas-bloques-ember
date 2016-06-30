@@ -5,6 +5,9 @@ export default Ember.Component.extend({
   classNameBindings: ['media.isMobile:media-mobile'],
   iframeElement: null,
   escena: null,
+  pilas: Ember.inject.service(), /* Se espera que este atributo se defina al
+                                    llamar al componente. Está como servicio
+                                    aquí porque los tests lo necesitan así. */
 
   didInsertElement() {
     Ember.run.scheduleOnce('afterRender', this, this.initElement);
@@ -14,7 +17,6 @@ export default Ember.Component.extend({
     let iframeElement = this.$().find('#innerIframe')[0];
 
     this.set("iframeElement", iframeElement);
-
 
     this.get("iframeElement").onload = () => {
 
@@ -39,8 +41,6 @@ export default Ember.Component.extend({
               //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
             }
           });
-      } else {
-        console.warn("Se a iniciado el componente pilas-canvas sin referencia a pilas.");
       }
 
       // onLoad solo se utiliza dentro de la batería de tests. Este
