@@ -15,4 +15,8 @@ export default [
     id: 4,
     titulo: 'Uso de variables',
   },
+  {
+    id: 5,
+    titulo: 'Parametrización de soluciones',
+  },
 ];
