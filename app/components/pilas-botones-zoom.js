@@ -24,7 +24,6 @@ export default Ember.Component.extend({
   aplicarZoom(zoomLevel) {
     if (window['requireNode'] === undefined) {
       document.body.style.zoom = (100 + zoomLevel * 10) + "%";
-      console.log("Imposible cambiar el zoom desde el navegador...");
       return;
     } else {
       var gui = window.requireNode('nw.gui');
