@@ -23,6 +23,7 @@ comandos:
 	@echo ""
 	@echo "    ${G}ejecutar_linux${N}  Prueba la aplicacion sobre Huayra."
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
+	@echo "    ${G}run${N}    Correr en entorno de desarrollo usando ember serve."
 	@echo ""
 	@echo "    ${G}utest${N}            Ejecuta las pruebas de forma continua."
 	@echo ""
@@ -249,5 +250,8 @@ subir_a_dropbox:
 	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	scp -r ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} root@162.243.50.192:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
 
+run:
+	@echo "${G}Iniciando ember ...${N}"
+	./node_modules/ember-cli/bin/ember serve
 
 .PHONY: dist bajar_dependencias
