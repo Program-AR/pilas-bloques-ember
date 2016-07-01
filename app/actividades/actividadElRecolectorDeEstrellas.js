@@ -15,7 +15,7 @@ var VolverABordeIzquierdo = Accion.extend({
     this._super(block);
     block.appendDummyInput()
     .appendField(this.obtener_icono('izquierda.png'))
-    .appendField('Volver todo a izquierda');
+    .appendField('Ir al borde izquierdo');
   },
 
   nombre_comportamiento() {
@@ -40,7 +40,7 @@ var TomarEstrella = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/icono.estrella.png'))
-         .appendField('Tomar estrella');
+         .appendField('Agarrar estrella');
   },
 
   nombre_comportamiento() {

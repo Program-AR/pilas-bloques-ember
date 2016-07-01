@@ -2,14 +2,14 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 
 var PrimerSospechoso = AccionBuilder.build({
-  descripcion: 'Primer sospechoso',
+  descripcion: 'Ir al primer sospechoso',
   icono: '../../iconos/izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
   argumentos: '{}',
 });
 
 var SiguienteSospechoso = AccionBuilder.build({
-  descripcion: 'Siguiente sospechoso',
+  descripcion: 'Pasar al siguiente sospechoso',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
