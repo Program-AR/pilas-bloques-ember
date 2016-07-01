@@ -18,7 +18,7 @@ var KmsTotales = VariableEspecificaGet.extend({
   },
 
   descripcion(){
-    return 'Kilómetros de distancia';
+    return 'Kilómetros de distancia a recorrer';
   },
 });
 

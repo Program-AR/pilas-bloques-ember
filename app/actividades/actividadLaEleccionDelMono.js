@@ -11,7 +11,7 @@ var Avanzar = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Avanzar');
+         .appendField('Mover a la derecha');
   },
 
   nombre_comportamiento() {
@@ -35,7 +35,7 @@ var ComerManzana = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
-         .appendField('Comer manzana ');
+         .appendField('Comer la manzana ');
   },
 
   nombre_comportamiento() {
@@ -60,7 +60,7 @@ var ComerBanana = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png')) //TODO: Hardcodeo feo de dir de icono
-         .appendField('Comer banana ');
+         .appendField('Comer la banana ');
   },
 
   nombre_comportamiento() {
@@ -83,7 +83,7 @@ var TocandoManzana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando manzana')
+         .appendField('¿Tocando una manzana')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
          .appendField('?');
   },
@@ -103,7 +103,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando banana')
+         .appendField('¿Tocando una banana')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
          .appendField('?');
   },

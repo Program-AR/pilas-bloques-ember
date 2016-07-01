@@ -3,7 +3,7 @@ import {IrDerecha, IrArriba} from 'pilas-engine-bloques/actividades/direccionesC
 import {Numero} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ComerBanana = AccionBuilder.build({
-  descripcion: 'Comer Banana',
+  descripcion: 'Comer la banana',
   icono: 'iconos.banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta:"BananaAnimada"}',

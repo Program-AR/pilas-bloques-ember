@@ -5,28 +5,28 @@ var {Repetir, Procedimiento, AccionBuilder} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 var AgarrarLlave = AccionBuilder.build({
-  descripcion: 'Agarrar llave',
+  descripcion: 'Agarrar la llave',
   icono: 'llave.png',
   comportamiento: 'Sostener',
   argumentos: '{etiqueta:"LlaveAnimado", idTransicion:"agarrarLlave"}',
 });
 
 var AbrirCofre = AccionBuilder.build({
-  descripcion: 'Abrir cofre',
+  descripcion: 'Abrir el cofre',
   icono: 'icono.cofre.png',
   comportamiento: 'Soltar',
   argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}',
 });
 
 var DarSombrero = AccionBuilder.build({
-  descripcion: 'Dar sombrero',
+  descripcion: 'Dar el sombrero',
   icono: 'icono.sombrero.png',
   comportamiento: 'ComportamientoColision',
   argumentos: '{etiqueta:"MagoAnimado", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
 });
 
 var AtacarConEspada = AccionBuilder.build({
-  descripcion: 'Atacar con espada',
+  descripcion: 'Atacar con la espada',
   icono: 'icono.espada.png',
   comportamiento: 'SecuenciaAnimada',
   argumentos: '{idTransicion: "atacarConEspada", secuencia: [new ComportamientoColision({etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}), new Sostener({etiqueta:"Principe"})]}',

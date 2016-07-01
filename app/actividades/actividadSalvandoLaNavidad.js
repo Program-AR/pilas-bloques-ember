@@ -3,7 +3,7 @@ import {IrDerecha, SiguienteFilaTotal} from 'pilas-engine-bloques/actividades/di
 import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var DejarRegalo = AccionBuilder.build({
-  descripcion: 'Dejar regalo',
+  descripcion: 'Dejar un regalo',
   icono: 'icono.regalo.png',
   comportamiento: 'Depositar',
   argumentos: '{claseADepositar: RegaloAnimado}',

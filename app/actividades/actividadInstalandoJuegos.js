@@ -13,7 +13,7 @@ var SiguienteCompu = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Siguiente compu');
+         .appendField('Pasar a la siguiente compu');
   },
 
   nombre_comportamiento() {
@@ -38,7 +38,7 @@ var PrenderCompu = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/icono.computadora.png'))
-         .appendField('Prender compu ');
+         .appendField('Prender la compu ');
   },
 
   nombre_comportamiento() {
@@ -62,7 +62,7 @@ var ApagarCompu = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/icono.computadora.png'))
-         .appendField('Apagar compu');
+         .appendField('Apagar la compu');
   },
 
   nombre_comportamiento() {
@@ -85,7 +85,7 @@ var InstalarJuego = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Instalar juego ');
+         .appendField('Instalar el juego ');
 
   },
 

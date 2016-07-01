@@ -10,7 +10,7 @@ var TocandoManzana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando manzana ')
+         .appendField('¿Tocando una manzana ')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
          .appendField('?');
   },
@@ -29,7 +29,7 @@ var TocandoNaranja = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando naranja ')
+         .appendField('¿Tocando una naranja ')
          .appendField(this.obtener_icono('../libs/data/naranja.png'))
          .appendField('?');
   },
@@ -49,7 +49,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando banana ')
+         .appendField('¿Tocando una banana ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
          .appendField('?');
   },
@@ -107,7 +107,7 @@ var TocandoDerecha = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando derecha ')
+         .appendField('¿Tocando a la derecha ')
          .appendField(this.obtener_icono('derecha.png'))
          .appendField(' ?');
 
