@@ -38,7 +38,7 @@ class SuperViaje extends EscenaActividad {
 
     crearTablero(){
       Trait.toObject(Observado, this.automata);
-      var tablero = new Tablero(0, 210, { texto: "Kilómetros de distancia:" , atributoObservado: 'kmsTotales'});
+      var tablero = new Tablero(0, 210, { texto: "Kilómetros a recorrer" , atributoObservado: 'kmsTotales'});
       this.automata.registrarObservador(tablero);
     }
 
