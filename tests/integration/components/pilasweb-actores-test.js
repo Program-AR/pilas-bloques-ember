@@ -40,10 +40,14 @@ test('it renders', function(assert) {
 
     actor.decir("chau!");
 
+    resolve();
+
+    /*
     setTimeout(() => {
       actor.eliminar();
       setTimeout(resolve, 500);
     }, 500);
+    */
 
   });
 
