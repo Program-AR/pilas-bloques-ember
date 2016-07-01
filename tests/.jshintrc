@@ -23,6 +23,7 @@
     "andThen",
     "currentURL",
     "currentPath",
+    "pilasengine",
     "currentRouteName",
     "Prism"
   ],
