@@ -5,6 +5,7 @@ var {Repetir, Procedimiento, AccionBuilder} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
 var AgarrarLlave = AccionBuilder.build({
+  id:'Agarrarllave',
   descripcion: 'Agarrar la llave',
   icono: 'llave.png',
   comportamiento: 'Sostener',
@@ -12,6 +13,7 @@ var AgarrarLlave = AccionBuilder.build({
 });
 
 var AbrirCofre = AccionBuilder.build({
+  id:'Abrircofre',
   descripcion: 'Abrir el cofre',
   icono: 'icono.cofre.png',
   comportamiento: 'Soltar',
@@ -19,6 +21,7 @@ var AbrirCofre = AccionBuilder.build({
 });
 
 var DarSombrero = AccionBuilder.build({
+  id: 'Darsombrero',
   descripcion: 'Dar el sombrero',
   icono: 'icono.sombrero.png',
   comportamiento: 'ComportamientoColision',
@@ -26,6 +29,7 @@ var DarSombrero = AccionBuilder.build({
 });
 
 var AtacarConEspada = AccionBuilder.build({
+  id: 'Atacarconespada',
   descripcion: 'Atacar con la espada',
   icono: 'icono.espada.png',
   comportamiento: 'SecuenciaAnimada',
@@ -33,6 +37,7 @@ var AtacarConEspada = AccionBuilder.build({
 });
 
 var EscaparEnUnicornio = AccionBuilder.build({
+  id: 'Escaparenunicornio',
   descripcion: 'Escapar en unicornio',
   icono: 'icono.unicornio.png',
   comportamiento: 'Escapar',

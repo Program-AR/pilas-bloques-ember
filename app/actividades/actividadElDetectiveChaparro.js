@@ -2,6 +2,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 
 var PrimerSospechoso = AccionBuilder.build({
+  id:'Primersospechoso',
   descripcion: 'Ir al primer sospechoso',
   icono: '../../iconos/izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
@@ -9,6 +10,7 @@ var PrimerSospechoso = AccionBuilder.build({
 });
 
 var SiguienteSospechoso = AccionBuilder.build({
+  id:'Siguientesospechoso',
   descripcion: 'Pasar al siguiente sospechoso',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',

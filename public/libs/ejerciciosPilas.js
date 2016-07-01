@@ -3978,17 +3978,11 @@ var ElPlanetaDeNano = (function (_super) {
         this.automata.y += 15;
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
         this.secuenciaCaminata.iniciar(this.automata);
+        this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
+        this.cantidadBananas = new ObservadoConAumentar();
+        this.cantidadBananas.cantidad = 0;
+        this.cantidadBananas.registrarObservador(this.tableroBananas);
         this.completarConBananas();
-        this.cantidadInicial = this.contarActoresConEtiqueta('BananaAnimada');
-        this.tablero = new Tablero(150, 220, { texto: "Bananas" });
-    };
-    ElPlanetaDeNano.prototype.actualizar = function () {
-        _super.prototype.actualizar.call(this);
-        this.tablero.setearValor(this.cantidadRecolectadas());
-    };
-    ElPlanetaDeNano.prototype.cantidadRecolectadas = function () {
-        var cantidadActual = this.contarActoresConEtiqueta('BananaAnimada');
-        return this.cantidadInicial - cantidadActual;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
         this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
