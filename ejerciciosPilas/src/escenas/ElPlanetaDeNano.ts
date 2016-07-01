@@ -6,8 +6,9 @@ class ElPlanetaDeNano extends EscenaActividad {
   cuadricula;
   fondo;
   secuenciaCaminata;
-  tableroBananas;
-  cantidadBananas;
+  cantidadInicial: any;
+  tablero;
+
 iniciar() {
     //this.recolector.izquierda = pilas.izquierda();
     var cantidadFilas=4
@@ -26,12 +27,22 @@ iniciar() {
 
     this.secuenciaCaminata = new Secuencia({'secuencia':[ new MoverACasillaIzquierda({})]})
     this.secuenciaCaminata.iniciar(this.automata);
-    this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
-    this.cantidadBananas = new ObservadoConAumentar();
-    this.cantidadBananas.cantidad = 0;
-    this.cantidadBananas.registrarObservador(this.tableroBananas);
+
     this.completarConBananas();
-}
+    this.cantidadInicial = this.contarActoresConEtiqueta('BananaAnimada');
+
+    this.tablero = new Tablero(150, 220, {texto: "Bananas"});
+  }
+
+  actualizar() {
+    super.actualizar();
+    this.tablero.setearValor(this.cantidadRecolectadas());
+  }
+
+  private cantidadRecolectadas() {
+    var cantidadActual: any = this.contarActoresConEtiqueta('BananaAnimada');
+    return this.cantidadInicial - cantidadActual;
+  }
 
   private completarConBananas(){
       this.cuadricula.agregarActor(new BananaAnimada(0,0),0,1);
