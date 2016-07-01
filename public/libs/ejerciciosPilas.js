@@ -4774,7 +4774,7 @@ var SuperViaje = (function (_super) {
     };
     SuperViaje.prototype.crearTablero = function () {
         Trait.toObject(Observado, this.automata);
-        var tablero = new Tablero(0, 210, { texto: "Kilómetros de distancia:", atributoObservado: 'kmsTotales' });
+        var tablero = new Tablero(0, 210, { texto: "Kilómetros a recorrer", atributoObservado: 'kmsTotales' });
         this.automata.registrarObservador(tablero);
     };
     SuperViaje.prototype.estaResueltoElProblema = function () {
