@@ -10,7 +10,7 @@ var TocandoManzana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando manzana ')
+         .appendField('¿Hay manzana acá ')
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
          .appendField('?');
   },
@@ -29,7 +29,7 @@ var TocandoNaranja = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando naranja ')
+         .appendField('¿Hay naranja acá ')
          .appendField(this.obtener_icono('../libs/data/naranja.png'))
          .appendField('?');
   },
@@ -49,7 +49,7 @@ var TocandoBanana = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando banana ')
+         .appendField('¿Hay banana acá ')
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
          .appendField('?');
   },
@@ -69,7 +69,7 @@ var TocandoQueso = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando queso ')
+         .appendField('¿Hay queso acá ')
          .appendField(this.obtener_icono('../libs/data/queso.png'))
          .appendField('?');
   },
@@ -88,7 +88,7 @@ var TocandoAbajo = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando abajo ')
+         .appendField('¿Puede mover abajo ')
          .appendField(this.obtener_icono('abajo.png'))
          .appendField(' ?');
 
@@ -107,7 +107,7 @@ var TocandoDerecha = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando derecha ')
+         .appendField('¿Puede mover a la derecha ')
          .appendField(this.obtener_icono('derecha.png'))
          .appendField(' ?');
 
@@ -127,7 +127,7 @@ var TocandoFinCamino = Sensor.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('¿Tocando ')
+         .appendField('¿Llegó a la meta ')
          .appendField(this.obtener_icono('../libs/data/icono.finCamino.png'))
          .appendField(' ?');
 

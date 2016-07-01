@@ -2,7 +2,7 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder, Repetir, Si, Procedimiento} = bloques;
 
 var Avanzar = AccionBuilder.build({
-  descripcion: 'Avanzar',
+  descripcion: 'Mover a la derecha',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{velocidad: 25}',
@@ -16,7 +16,7 @@ var ComerBanana = AccionBuilder.build({
 });
 
 var TocandoBanana = AccionBuilder.buildSensor({
-  descripcion: 'Tocando banana',
+  descripcion: 'Hay banana acá',
   icono: 'iconos.banana.png',
   funcionSensor: 'tocando("BananaAnimada")',
 });

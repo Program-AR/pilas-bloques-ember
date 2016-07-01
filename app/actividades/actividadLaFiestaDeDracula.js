@@ -2,7 +2,7 @@ import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bl
 import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var CambiarColor = AccionBuilder.build({
-  descripcion: 'Cambiar Color',
+  descripcion: 'Cambiar color del foco',
   id: 'cambiarColor',
   icono: 'icono.cambiar.color.png',
   comportamiento: 'CambiarColor',
@@ -10,7 +10,7 @@ var CambiarColor = AccionBuilder.build({
 });
 
 var SiguienteFoco = AccionBuilder.build({
-  descripcion: 'Siguiente Foco',
+  descripcion: 'Pasar al siguiente foco',
   id: 'siguienteFoco',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
@@ -18,7 +18,7 @@ var SiguienteFoco = AccionBuilder.build({
 });
 
 var EmpezarFiesta = AccionBuilder.build({
-  descripcion: 'Empezar Fiesta',
+  descripcion: 'Empezar fiesta',
   id: 'empezarFiesta',
   icono: 'icono.empezar.fiesta.png',
   comportamiento: 'EmpezarFiesta',

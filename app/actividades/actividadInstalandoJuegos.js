@@ -13,7 +13,7 @@ var SiguienteCompu = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Siguiente compu');
+         .appendField('Pasar a la siguiente compu');
   },
 
   nombre_comportamiento() {

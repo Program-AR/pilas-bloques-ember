@@ -12,7 +12,7 @@ var IrDerecha = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Ir derecha');
+         .appendField('Mover a la derecha');
   },
 
   nombre_comportamiento() {
@@ -37,7 +37,7 @@ var IrIzquierda = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Ir izquierda');
+         .appendField('Mover a la izquierda');
   },
 
   nombre_comportamiento() {
@@ -63,7 +63,7 @@ var IrArriba = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('arriba.png'))
-         .appendField('Ir arriba');
+         .appendField('Mover arriba');
   },
 
   nombre_comportamiento() {
@@ -89,7 +89,7 @@ var IrAbajo = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('abajo.png'))
-         .appendField('Ir abajo');
+         .appendField('Mover abajo');
   },
 
   nombre_comportamiento() {
@@ -105,7 +105,7 @@ var IrAbajo = Accion.extend({
 
 var SiguienteFila = AccionBuilder.build({
   id: 'SiguienteFila',
-  descripcion: 'Siguiente fila',
+  descripcion: 'Pasar a la siguiente fila',
   icono: '../../iconos/abajo.png',
   comportamiento: 'SiguienteFila',
   argumentos: '{}',
@@ -123,7 +123,7 @@ var SiguienteFilaTotal =  SiguienteFila.extend({
 
 var SiguienteColumna = AccionBuilder.build({
   id: 'SiguienteColumna',
-  descripcion: 'Siguiente columna',
+  descripcion: 'Pasar a la siguiente columna',
   icono: '../../iconos/derecha.png',
   comportamiento: 'SiguienteColumna',
   argumentos: '{}',
