@@ -9,11 +9,6 @@ cache:
   directories:
     - node_modules
 
-before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
 install:
   - npm install
   - bower install
@@ -22,6 +17,8 @@ script:
   - npm test
 
 before_install:
+  - npm config set spin false
+  - npm install -g bower
   # https://github.com/travis-ci/travis-ci/issues/3225
   - mkdir travis-phantomjs
   - wget https://github.com/Medium/phantomjs/releases/download/v2.1.1/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.1.1-linux-x86_64.tar.bz2
