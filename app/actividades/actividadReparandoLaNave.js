@@ -16,7 +16,7 @@ var TomarHierro = Accion.extend({
         this._super(block);
         block.appendDummyInput()
             .appendField(this.obtener_icono('../libs/data/icono.hierro.png'))
-            .appendField('Tomar unidad de hierro');
+            .appendField('Tomar Hierro');
       },
 
       nombre_comportamiento() {
@@ -40,7 +40,7 @@ var TomarCarbon = Accion.extend({
         this._super(block);
         block.appendDummyInput()
             .appendField(this.obtener_icono('../libs/data/icono.carbon.png'))
-            .appendField('Tomar unidad de carbón');
+            .appendField('Tomar Carbón');
       },
 
       nombre_comportamiento() {
@@ -61,7 +61,7 @@ var Depositar = Accion.extend({
       block_init(block) {
         this._super(block);
         block.appendDummyInput()
-            .appendField('Depositar unidad en la nave');
+            .appendField('Depositar');
       },
       nombre_comportamiento() {
         return 'Soltar';

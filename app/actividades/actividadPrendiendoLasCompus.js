@@ -5,7 +5,7 @@ var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
 var {IrIzquierda, IrDerecha, IrArriba, IrAbajo} = direcciones;
 
 var PrenderCompu = AccionBuilder.build({
-  descripcion: 'Prender la compu',
+  descripcion: 'Prender compu',
   icono: 'icono.computadora.png',
   comportamiento: 'DesencadenarAnimacionSiColisiona',
   argumentos: '{etiqueta:"CompuAnimada", animacionColisionado:"prendida", nombreAnimacion: "escribir" }',

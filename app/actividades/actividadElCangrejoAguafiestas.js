@@ -4,7 +4,7 @@ import {Numero,OpComparacion,OpAritmetica,Texto} from 'pilas-engine-bloques/acti
 
 var ExplotarGlobo = AccionBuilder.build({
   id: 'ExplotarGlobo',
-  descripcion: 'Explotar el globo',
+  descripcion: 'Explotar globo',
   icono: 'icono.globo.png',
   comportamiento: 'ComportamientoColision',
   argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',

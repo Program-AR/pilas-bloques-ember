@@ -2,14 +2,14 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder} = bloques;
 
 var ContarBanana = AccionBuilder.build({
-  descripcion: 'Contar una banana',
+  descripcion: 'Contar banana',
   icono: 'iconos.banana.png',
   comportamiento: 'ContarPorEtiqueta',
   argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
 });
 
 var ContarManzana = AccionBuilder.build({
-  descripcion: 'Contar una manzana',
+  descripcion: 'Contar manzana',
   icono: 'iconos.manzana.png',
   comportamiento: 'ContarPorEtiqueta',
   argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',

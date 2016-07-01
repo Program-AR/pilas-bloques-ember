@@ -11,7 +11,7 @@ var ComerBanana = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
-          .appendField('Comer una banana ');
+          .appendField('Comer banana ');
   },
 
   nombre_comportamiento: function() {
@@ -36,7 +36,7 @@ var ComerManzana = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
-         .appendField('Comer una manzana');
+         .appendField('Comer manzana');
   },
 
   nombre_comportamiento() {
@@ -83,7 +83,7 @@ var ComerNaranja = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('../libs/data/naranja.png'))
-         .appendField('Comer una naranja');
+         .appendField('Comer naranja');
   },
 
   nombre_comportamiento() {

@@ -15,7 +15,7 @@ var VolverABordeIzquierdo = Accion.extend({
     this._super(block);
     block.appendDummyInput()
     .appendField(this.obtener_icono('izquierda.png'))
-    .appendField('Ir al comienzo de la fila');
+    .appendField('Volver todo a izquierda');
   },
 
   nombre_comportamiento() {

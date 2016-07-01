@@ -11,14 +11,14 @@ var Saludar = AccionBuilder.build({
 });
 
 var AbrirOjos = AccionBuilder.build({
-  descripcion: 'Abrir los ojos',
+  descripcion: 'Abrir ojos',
   icono: 'icono.abrirOjos.png',
   comportamiento: 'AnimarSiNoEstoyYa',
   argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true}',
 });
 
 var CerrarOjos = AccionBuilder.build({
-  descripcion: 'Cerrar los ojos',
+  descripcion: 'Cerrar ojos',
   icono: 'icono.cerrarOjos.png',
   comportamiento: 'AnimarSiNoEstoyYa',
   argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados"}',

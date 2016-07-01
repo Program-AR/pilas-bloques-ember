@@ -5,7 +5,7 @@ var {IrDerecha, IrIzquierda, SiguienteFila} = direccionesCuadricula;
 
 var PatearPelota = AccionBuilder.build({
   id: 'PatearPelota',
-  descripcion: 'Patear la pelota',
+  descripcion: 'Patear pelota',
   icono: 'iconos.pelota.png',
   comportamiento: 'DesencadenarComportamientoSiColisiona',
   argumentos: '{"comportamiento":SerPateado, idTransicion:"patear", etiqueta:"PelotaAnimada", argumentosComportamiento: {tiempoEnElAire:25,aceleracion:0.0025,elevacionMaxima:25,gradosDeAumentoStep:-2}}',
