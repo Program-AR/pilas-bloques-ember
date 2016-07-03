@@ -12,6 +12,7 @@ cache:
 install:
   - npm install
   - bower install
+  - make full
 
 script:
   - npm test
