@@ -12,19 +12,19 @@ class ElPlanetaDeNano extends EscenaActividad {
 
 iniciar() {
     //this.recolector.izquierda = pilas.izquierda();
-    this.cantidadFilas=6
-    this.cantidadColumnas=8
+    this.cantidadFilas=4
+    this.cantidadColumnas=5
     this.fondo = new Fondo('fondos.elPlanetaDeNano.png',0,0);
 
-    this.cuadricula = new Cuadricula(0,-30,this.cantidadFilas,this.cantidadColumnas,
-        { alto: 350, ancho: 350, separacionEntreCasillas: 3},
+    this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
+        { alto: 300, ancho: 300, separacionEntreCasillas: 3},
         {grilla: 'casillas.elPlanetaDeNano.png'})
 
     this.automata = new NanoAnimado(0, 0);
 
     this.cuadricula.agregarActor(this.automata,this.cantidadFilas-1, 0);
-    this.automata.escala *= 1.6
-    this.automata.y += 1;
+    this.automata.escala *= 1.8;
+    this.automata.y += 15;
 
     this.secuenciaCaminata = new Secuencia({'secuencia':[ new MoverACasillaIzquierda({})]})
     this.secuenciaCaminata.iniciar(this.automata);
@@ -46,7 +46,7 @@ iniciar() {
   }
 
   private completarConBananas(){
-      var cantidad = [5, 2, 3, 7, 2, 4];
+      var cantidad = [2, 4, 1, 3];
       for(var i=0; i < this.cantidadFilas; i++)
       {
         for(var j=1; j<= cantidad[i]; j++)
