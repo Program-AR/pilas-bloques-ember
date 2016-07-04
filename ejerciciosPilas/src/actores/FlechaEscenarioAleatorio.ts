@@ -6,6 +6,7 @@ class FlechaEscenarioAleatorio extends Tablero {
         super(120, 220, {imagen: 'flechaEscenarioAleatorio.png',
                      texto: "¡Ejecutá varias veces!" ,
                      separacionX: 0,
+                     imagenLabel: "invisible.png",
                    });
         this.aprender(Flotar,{eje: 'X', Desvio: 20});
         this.setAlto(40);
