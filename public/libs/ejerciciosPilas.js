@@ -1589,6 +1589,8 @@ var Tablero = (function (_super) {
     // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
         args.imagen = args.imagen || 'invisible.png';
+        args.imagenLabel = args.imagenLabel || "PlacaContarGris.png";
+        args.imagenPuntaje = args.imagenPuntaje || "PlacaContarNegra.png";
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
         this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
@@ -1598,14 +1600,14 @@ var Tablero = (function (_super) {
     };
     Tablero.prototype.buildLabel = function (argumentos) {
         this.label = new Texto(0, this.y, argumentos.texto, { color: this.colorTxtLabel,
-            imagenFondo: "PlacaContarGris.png",
+            imagenFondo: argumentos.imagenLabel,
             margen: this.margen,
         });
         this.label.setZ(this.z - 1);
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
         this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
-            imagenFondo: "PlacaContarNegra.png",
+            imagenFondo: argumentos.imagenPuntaje,
             margen: this.margen,
         });
         this.puntaje.setZ(this.z - 2);
@@ -1688,6 +1690,7 @@ var FlechaEscenarioAleatorio = (function (_super) {
         _super.call(this, 120, 220, { imagen: 'flechaEscenarioAleatorio.png',
             texto: "¡Ejecutá varias veces!",
             separacionX: 0,
+            imagenLabel: "invisible.png",
         });
         this.aprender(Flotar, { eje: 'X', Desvio: 20 });
         this.setAlto(40);
