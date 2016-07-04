@@ -1001,7 +1001,7 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.y = this.valoresFinales.destino.y;
     };
     MovimientoAnimado.prototype.sanitizarArgumentosMovAn = function () {
-        this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
+        this.valoresFinales.distancia = this.argumentos.distancia === 0 ? 0 : this.argumentos.distancia || this.calcularDistancia();
         if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
             throw new ArgumentError("Direction should come as an instance of Direct");
         this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
@@ -3971,13 +3971,13 @@ var ElPlanetaDeNano = (function (_super) {
     }
     ElPlanetaDeNano.prototype.iniciar = function () {
         //this.recolector.izquierda = pilas.izquierda();
-        var cantidadFilas = 4;
+        this.cantidadFilas = 4;
         this.cantidadColumnas = 5;
         this.fondo = new Fondo('fondos.elPlanetaDeNano.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
         this.automata = new NanoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
-        this.automata.escala *= 2;
+        this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
+        this.automata.escala *= 1.8;
         this.automata.y += 15;
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
         this.secuenciaCaminata.iniciar(this.automata);
@@ -3994,16 +3994,12 @@ var ElPlanetaDeNano = (function (_super) {
         return this.cantidadInicial - cantidadActual;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
+        var cantidad = [2, 4, 1, 3];
+        for (var i = 0; i < this.cantidadFilas; i++) {
+            for (var j = 1; j <= cantidad[i]; j++) {
+                this.cuadricula.agregarActor(new BananaAnimada(0, 0), i, j);
+            }
+        }
     };
     ElPlanetaDeNano.prototype.estaResueltoElProblema = function () {
         return this.contarActoresConEtiqueta('BananaAnimada') == 0;
