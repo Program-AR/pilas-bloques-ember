@@ -83,7 +83,7 @@ var actividadesDibujando = [
     escena: DibujandoCuadrado, // jshint ignore:line
   },
   { nombre: 'Dibujando: Rayuela robótica',
-    enunciado: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada. Pista: podés usar el procedimiento para dibujar cuadrado que ya te damos hecho.',
+    enunciado: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.',
     id: 'Dibujando5CuadradosHorizontal',
     escena: Dibujando5CuadradosHorizontal, // jshint ignore:line
   },
@@ -99,8 +99,8 @@ var actividadesDibujando = [
     escena: Dibujando4CuadradosInteriores, // jshint ignore:line
   },
   { nombre: 'Dibujando: Escalera cuadrada',
-    enunciado: 'Dibujá 5 cuadros de lado 50 y uno de 100, como muestra la figura sombreada. Pista: podés mirar y usar el procedimiento parametrizado para dibujar un cuadro de cualquier longitud de lado.',
-    consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 150, etc.).',
+    enunciado: 'Dibujá 5 cuadros de lado 50 y uno de 100, como muestra la figura sombreada.',
+    consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     id: 'DibujandoCabezaElefante',
     escena: DibujandoCabezaElefante, // jshint ignore:line
   },
