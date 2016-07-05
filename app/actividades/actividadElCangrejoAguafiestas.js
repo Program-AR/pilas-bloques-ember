@@ -13,8 +13,8 @@ var ExplotarGlobo = AccionBuilder.build({
 export default {
   nombre: 'El cangrejo aguafiestas',
   id: 'ElCangrejoAguafiestas',
-  enunciado: 'El cangrejo por aguafiestas quiere pinchar todos los globos de la fiesta. Los globos nunca cambian de lugar, pero ¡atención! la hilera del medio lo va a obligar al cangrejo a volver sobre sus pasos. Pista: ¿En vez de un parámetro te ayuda pensar a la cantidad de globos y a la dirección ambos como parámetros?',
-  /*consignaInicial: 'A definir.',*/
+  enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
+  consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
 
   /*global ElCangrejoAguafiestas */
   escena: ElCangrejoAguafiestas,
