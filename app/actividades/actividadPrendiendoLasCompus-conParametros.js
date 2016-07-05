@@ -7,8 +7,8 @@ var prendiendoCompusParam = new ConstructorDeAct();
 
 prendiendoCompusParam.nombre = 'Prendiendo las compus parametrizado';
 prendiendoCompusParam.id = 'PrendiendoLasCompusParametrizado';
-prendiendoCompusParam.enunciado = 'Ramiro necesita prender todas las compus de la habitación. Deberá recorrer cada hilera de compus y prenderlas una por una. Pista: la cantidad de compus cambia cada vez, pero el recorrido de Ramiro siempre va a seguir la forma de un rectángulo (de tamaño variable).';  
-prendiendoCompusParam.consignaInicial = '';
+prendiendoCompusParam.enunciado = 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.';  
+prendiendoCompusParam.consignaInicial = 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.';
 prendiendoCompusParam.bloques = prendiendoCompus.bloques.slice();
 prendiendoCompusParam.bloques =
   prendiendoCompusParam.bloques.concat([Numero,OpComparacion,OpAritmetica, Texto]);
