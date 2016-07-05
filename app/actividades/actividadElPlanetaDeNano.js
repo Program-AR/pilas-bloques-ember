@@ -18,7 +18,7 @@ var VolverAlBordeIzquierdo = AccionBuilder.build({
 
 export default {
   nombre: 'El planeta de Nano',
-  enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia! O sea, las bananas están siempre en las mismas casillas!',
+  enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!',
   consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Avanzar 2 casillas", "Avanzar 3 casillas" y "Avanzar 4 casillas", podemos reemplazar a los 3 por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Avanzar [cantidad] casillas".',
   id: 'ElPlanetaDeNano',
   // la escena proviene de ejerciciosPilas
