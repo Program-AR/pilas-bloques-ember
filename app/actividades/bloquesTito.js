@@ -12,7 +12,7 @@ var EncenderLuz = Accion.extend({
     this._super(block);
     block.appendDummyInput()
           .appendField('Encender luz ')
-         .appendField(this.obtener_icono('../libs/data/iconos.lamparita.png'));
+         .appendField(this.obtener_icono('../libs/data/icono.Lamparita.png'));
   },
 
   nombre_comportamiento() {
@@ -34,7 +34,7 @@ var TocandoLuz = Sensor.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField('¿Tocando luz ')
-         .appendField(this.obtener_icono('../libs/data/iconos.lamparita.png'))
+         .appendField(this.obtener_icono('../libs/data/icono.LamparitaApagada.png'))
          .appendField(' ?');
 
   },
