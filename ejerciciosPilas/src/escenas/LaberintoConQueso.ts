@@ -9,7 +9,9 @@ class LaberintoConQueso extends LaberintoLargo {
         {condiciones:
           [
             function(fila,col,pmatrix){return !(fila==0&&col==0)},
-            function(fila,col,pmatrix){return !(pmatrix[fila+1]==undefined && pmatrix[col+1]==undefined)}
+            function(fila,col,pmatrix){return (pmatrix[fila+1] != undefined && pmatrix[fila+1][col] == 'T') ||
+                                              (pmatrix[fila][col+1] == 'T')
+                                      }
           ]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
@@ -17,7 +19,7 @@ class LaberintoConQueso extends LaberintoLargo {
 
 
      dameOpcionesCuadricula(){
-      return {'alto':440,'ancho':400};
+      return {'alto':440,'ancho':400, 'largo_min':3, 'largo_max':15};
     }
 
     nombreFondo(){

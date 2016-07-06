@@ -20,8 +20,6 @@ class Camino {
     this.opcionesCasilla=opcionesCasilla;
     this.direcciones=direcciones;
     this.matriz=this.dameMatriz();
-
-
   }
 
 escalarCasillasCuadradas(){
@@ -44,7 +42,6 @@ escalarCasillasCuadradas(){
       this.cambiarImagenesCasillasCamino(cuadricula);
       return cuadricula;
   }
-
 
   cambiarImagenesCasillasCamino(cuadricula){
     for(var i = 0; i < cuadricula.casillas.length -1; i++){
@@ -131,14 +128,39 @@ class CuadriculaParaRaton extends Camino{
 
 
   constructor(x,y,cantFilas,cantColumnas,opcionesCuadricula, opcionesCasilla){
-      super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
+      super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas,opcionesCuadricula) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
   }
 
-  private dameDirecciones(filaInicio,colInicio,filaFin,colFin){
+  private dameDirecciones(filaInicio,colInicio,filaFin,colFin,opcionesCuadricula){
     //pre: solo me voy a moder para abajo y derecha. Con lo cual la
     //pos posInicialX<posFinalX posInicialY<posFinalY
     var cantMovDer=colFin-colInicio;
     var cantMovAbj=filaFin-filaInicio;
+
+
+    if(opcionesCuadricula['largo_min'] != undefined &&
+        opcionesCuadricula['largo_max'] != undefined)
+    {
+        var largo_min = opcionesCuadricula['largo_min'];
+        if(largo_min > colFin-colInicio+filaFin-filaInicio+1)
+            console.log("El largo minimo supera al maximo posile");
+        
+        var largo_max = opcionesCuadricula['largo_max'];
+        // Elegir al azar un largo entre el min y el max
+        var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
+        // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+        var nMovimientos = largo - 1;
+        // Partir la cantida de movimientos en dos grupos de movimientos: derecha y abajo, teniendo
+        // en cuenta que ninguna parte supere al tamaño maximo para su direccion
+        var particion_max = Math.min(nMovimientos, colFin-colInicio);
+        var particion_min = Math.max(0, nMovimientos-(filaFin-filaInicio));
+        // Partir la cantidad de movimientos en 2 haciendo el corte en una posicion al azar en
+        // [particion_min, particion_max]
+        var particion = particion_min + Math.floor(Math.random() * (particion_max-particion_min+1));
+        cantMovDer = particion;
+        cantMovAbj = nMovimientos-particion;
+    }
+
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
