@@ -141,31 +141,58 @@ class CuadriculaParaRaton extends Camino{
     if(opcionesCuadricula['largo_min'] != undefined &&
         opcionesCuadricula['largo_max'] != undefined)
     {
-        var largo_min = opcionesCuadricula['largo_min'];
-        if(largo_min > colFin-colInicio+filaFin-filaInicio+1)
-            console.log("El largo minimo supera al maximo posile");
+      var largo_min = opcionesCuadricula['largo_min'];
+      var largo_max = opcionesCuadricula['largo_max'];
+
+      if(largo_min < 1)
+      {
+        console.log("El largo debe ser al menos 1");
+        largo_min = 1;
+      }
+
+      if(largo_min > colFin-colInicio+filaFin-filaInicio+1)
+      {
+        console.log("El largo minimo supera al maximo posile");
+        largo_min = colFin-colInicio+filaFin-filaInicio+1;
+      }
         
-        var largo_max = opcionesCuadricula['largo_max'];
-        // Elegir al azar un largo entre el min y el max
-        var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
-        // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
-        var nMovimientos = largo - 1;
-        // Partir la cantida de movimientos en dos grupos de movimientos: derecha y abajo, teniendo
-        // en cuenta que ninguna parte supere al tamaño maximo para su direccion
-        var particion_max = Math.min(nMovimientos, colFin-colInicio);
-        var particion_min = Math.max(0, nMovimientos-(filaFin-filaInicio));
-        // Partir la cantidad de movimientos en 2 haciendo el corte en una posicion al azar en
-        // [particion_min, particion_max]
-        var particion = particion_min + Math.floor(Math.random() * (particion_max-particion_min+1));
-        cantMovDer = particion;
-        cantMovAbj = nMovimientos-particion;
+      if(largo_max < largo_min)
+      {
+        console.log("El largo debe maximo debe ser >= al minimo");
+        largo_max = largo_min;
+      }
+
+      if(largo_max > colFin-colInicio+filaFin-filaInicio+1)
+      {
+        console.log("El largo maximo supera al maximo posile");
+        largo_max = colFin-colInicio+filaFin-filaInicio+1;
+      }
+        
+      // Elegir al azar un largo entre el min y el max
+      var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
+      // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+      var nMovimientos = largo - 1;
+      cantMovDer=0;
+      cantMovAbj=0;
+      // Elegir nMovimientos movimientos al azar, si exceder las dimensiones de la cuadricula
+      for(var i=0;i<nMovimientos;i++)
+      {
+        if(cantMovDer == colFin-colInicio)
+          cantMovAbj++;
+        else if(cantMovAbj == filaFin-filaInicio)
+          cantMovDer++;
+        else if(Math.random() < 0.5)
+          cantMovAbj++;
+        else
+          cantMovDer++;
+      }
     }
 
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
     return this.shuffleArray(aDevolver);
-    }
+  }
 
     private shuffleArray(array) {
 
