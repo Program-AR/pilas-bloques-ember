@@ -21,7 +21,7 @@ class PrendiendoLasFogatas extends EscenaActividad {
         this.cantidadMaxFilas=10;
         this.cantidadMinFilas=5;
         this.ladoCasilla = 30;
-        this.fondo = new Fondo('fondo.prendiendoLasFogatas.png', 0, 0);
+        this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
 
         this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
         this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
