@@ -7,9 +7,9 @@ import {Numero, OpComparacion, OpAritmetica, Texto} from 'pilas-engine-bloques/a
 
 var PrenderFogata = AccionBuilder.build({
   descripcion: 'Prender fogata',
-  icono: 'icono.fogata.png',
+  icono: 'icono.FogataApagada.png',
   comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "escribir" }',
+  argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
 });
 
 
