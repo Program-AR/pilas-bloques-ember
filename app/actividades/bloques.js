@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import Bloque from 'pilas-engine-bloques/actividades/bloque';
-import {MisProcedimientos,Control,Variables,Sensores,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
+import {MisProcedimientos,Control,Variables,Sensores,MisFunciones, Valores} from 'pilas-engine-bloques/actividades/categorias';
 /*
  * Pide implementar sólo block_javascript
  * Sirve para pisar el JS que produce blockly
@@ -388,6 +388,33 @@ var AccionBuilder = {
 
       toID(descripcion){
         return descripcion.replace(/[^a-zA-z]/g, "");
+      },
+    });
+  },
+
+  // TODO: Quitar código repetido con build
+  buildValor(opciones){
+    return Bloque.extend({
+      _categoria: Valores,
+      init() {
+        this._super();
+        this.set('id', opciones.id);
+      },
+
+      block_init(block) {
+        this._super(block);
+
+        block.setColour(Blockly.Blocks.sensores.COLOUR);
+        block.setInputsInline(true);
+        block.setOutput(true);
+
+        block.appendDummyInput()
+             .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+             .appendField(opciones.descripcion);
+      },
+
+      block_javascript() {
+        return [opciones.valor, Blockly.JavaScript.ORDER_ATOMIC];
       },
     });
   },
