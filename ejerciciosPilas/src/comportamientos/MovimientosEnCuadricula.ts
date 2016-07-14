@@ -5,12 +5,13 @@
 
 class MovimientoEnCuadricula extends MovimientoAnimado {
     cuadricula;
-    vectorDireccion;
     estoyEmpezandoAMoverme;
+    direccionCasilla; // Strategy
 
     preAnimacion(){
         this.cuadricula = this.receptor.cuadricula;
-        this.argumentos.direccion = new Direct(this.vectorDireccion.x,this.vectorDireccion.y);
+        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+        this.argumentos.direccion = new Direct(this.vectorDireccion().x,this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         super.preAnimacion();
         this.estoyEmpezandoAMoverme = true;
@@ -32,6 +33,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
     distancia(){
         // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
+        return this.direccionCasilla.distancia(this);
     }
 
     distanciaHorizontal(){
@@ -52,14 +54,20 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
     proximaCasilla(casilla){
         // Template Method. Devolver la casilla a la que se va a avanzar
+        return this.direccionCasilla.proximaCasilla(casilla);
     }
 
     textoAMostrar(){
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
+        return this.direccionCasilla.textoAMostrar();
+    }
+
+    vectorDireccion(){
+        return this.direccionCasilla.vectorDireccion;
     }
 }
 
-class MoverACasillaDerecha extends MovimientoEnCuadricula {
+class DirCasillaDerecha  {
     vectorDireccion = { x: 1, y: 0 };
 
     proximaCasilla(casilla){
@@ -68,12 +76,12 @@ class MoverACasillaDerecha extends MovimientoEnCuadricula {
     textoAMostrar(){
         return "la derecha";
     }
-    distancia(){
-        return this.distanciaHorizontal();
+    distancia(movimiento){
+        return movimiento.distanciaHorizontal();
     }
 }
 
-class MoverACasillaArriba extends MovimientoEnCuadricula{
+class DirCasillaArriba {
     vectorDireccion = { x: 0, y: 1 };
 
     proximaCasilla(casilla){
@@ -82,12 +90,12 @@ class MoverACasillaArriba extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "arriba";
     }
-    distancia(){
-        return this.distanciaVertical();
+    distancia(movimiento){
+        return movimiento.distanciaVertical();
     }
 }
 
-class MoverACasillaAbajo extends MovimientoEnCuadricula{
+class DirCasillaAbajo {
     vectorDireccion = { x: 0, y: -1 };
 
     proximaCasilla(casilla){
@@ -96,12 +104,12 @@ class MoverACasillaAbajo extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "abajo";
     }
-    distancia(){
-        return this.distanciaVertical();
+    distancia(movimiento){
+        return movimiento.distanciaVertical();
     }
 }
 
-class MoverACasillaIzquierda extends MovimientoEnCuadricula{
+class DirCasillaIzquierda {
     vectorDireccion = { x: -1, y: 0 };
 
     proximaCasilla(casilla){
@@ -110,9 +118,22 @@ class MoverACasillaIzquierda extends MovimientoEnCuadricula{
     textoAMostrar(){
         return "la izquierda";
     }
-    distancia(){
-        return this.distanciaHorizontal();
+    distancia(movimiento){
+        return movimiento.distanciaHorizontal();
     }
+}
+
+class MoverACasillaDerecha extends MovimientoEnCuadricula {
+  direccionCasilla = new DirCasillaDerecha();
+}
+class MoverACasillaArriba extends MovimientoEnCuadricula {
+  direccionCasilla = new DirCasillaArriba();
+}
+class MoverACasillaAbajo extends MovimientoEnCuadricula {
+  direccionCasilla = new DirCasillaAbajo();
+}
+class MoverACasillaIzquierda extends MovimientoEnCuadricula {
+  direccionCasilla = new DirCasillaIzquierda();
 }
 
 class MoverTodoAIzquierda extends MoverACasillaIzquierda{
@@ -165,6 +186,6 @@ class SiguienteFila extends MoverACasillaAbajo {
 class SiguienteColumna extends MoverACasillaDerecha {
   configurarVerificaciones() {
     super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));  
+    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
   }
 }
