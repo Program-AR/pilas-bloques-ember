@@ -1001,7 +1001,7 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.y = this.valoresFinales.destino.y;
     };
     MovimientoAnimado.prototype.sanitizarArgumentosMovAn = function () {
-        this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
+        this.valoresFinales.distancia = this.argumentos.distancia === 0 ? 0 : this.argumentos.distancia || this.calcularDistancia();
         if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
             throw new ArgumentError("Direction should come as an instance of Direct");
         this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
@@ -1083,7 +1083,8 @@ var MovimientoEnCuadricula = (function (_super) {
     }
     MovimientoEnCuadricula.prototype.preAnimacion = function () {
         this.cuadricula = this.receptor.cuadricula;
-        this.argumentos.direccion = new Direct(this.vectorDireccion.x, this.vectorDireccion.y);
+        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+        this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         _super.prototype.preAnimacion.call(this);
         this.estoyEmpezandoAMoverme = true;
@@ -1102,6 +1103,7 @@ var MovimientoEnCuadricula = (function (_super) {
     };
     MovimientoEnCuadricula.prototype.distancia = function () {
         // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
+        return this.direccionCasilla.distancia(this);
     };
     MovimientoEnCuadricula.prototype.distanciaHorizontal = function () {
         return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
@@ -1121,78 +1123,107 @@ var MovimientoEnCuadricula = (function (_super) {
     };
     MovimientoEnCuadricula.prototype.proximaCasilla = function (casilla) {
         // Template Method. Devolver la casilla a la que se va a avanzar
+        return this.direccionCasilla.proximaCasilla(casilla);
     };
     MovimientoEnCuadricula.prototype.textoAMostrar = function () {
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
+        return this.direccionCasilla.textoAMostrar();
+    };
+    MovimientoEnCuadricula.prototype.vectorDireccion = function () {
+        return this.direccionCasilla.vectorDireccion;
     };
     return MovimientoEnCuadricula;
 })(MovimientoAnimado);
+var DirCasillaDerecha = (function () {
+    function DirCasillaDerecha() {
+        this.vectorDireccion = { x: 1, y: 0 };
+    }
+    DirCasillaDerecha.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaASuDerecha();
+    };
+    DirCasillaDerecha.prototype.textoAMostrar = function () {
+        return "la derecha";
+    };
+    DirCasillaDerecha.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaHorizontal();
+    };
+    return DirCasillaDerecha;
+})();
+var DirCasillaArriba = (function () {
+    function DirCasillaArriba() {
+        this.vectorDireccion = { x: 0, y: 1 };
+    }
+    DirCasillaArriba.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaDeArriba();
+    };
+    DirCasillaArriba.prototype.textoAMostrar = function () {
+        return "arriba";
+    };
+    DirCasillaArriba.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaVertical();
+    };
+    return DirCasillaArriba;
+})();
+var DirCasillaAbajo = (function () {
+    function DirCasillaAbajo() {
+        this.vectorDireccion = { x: 0, y: -1 };
+    }
+    DirCasillaAbajo.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaDeAbajo();
+    };
+    DirCasillaAbajo.prototype.textoAMostrar = function () {
+        return "abajo";
+    };
+    DirCasillaAbajo.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaVertical();
+    };
+    return DirCasillaAbajo;
+})();
+var DirCasillaIzquierda = (function () {
+    function DirCasillaIzquierda() {
+        this.vectorDireccion = { x: -1, y: 0 };
+    }
+    DirCasillaIzquierda.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaASuIzquierda();
+    };
+    DirCasillaIzquierda.prototype.textoAMostrar = function () {
+        return "la izquierda";
+    };
+    DirCasillaIzquierda.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaHorizontal();
+    };
+    return DirCasillaIzquierda;
+})();
 var MoverACasillaDerecha = (function (_super) {
     __extends(MoverACasillaDerecha, _super);
     function MoverACasillaDerecha() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 1, y: 0 };
+        this.direccionCasilla = new DirCasillaDerecha();
     }
-    MoverACasillaDerecha.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaASuDerecha();
-    };
-    MoverACasillaDerecha.prototype.textoAMostrar = function () {
-        return "la derecha";
-    };
-    MoverACasillaDerecha.prototype.distancia = function () {
-        return this.distanciaHorizontal();
-    };
     return MoverACasillaDerecha;
 })(MovimientoEnCuadricula);
 var MoverACasillaArriba = (function (_super) {
     __extends(MoverACasillaArriba, _super);
     function MoverACasillaArriba() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 0, y: 1 };
+        this.direccionCasilla = new DirCasillaArriba();
     }
-    MoverACasillaArriba.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaDeArriba();
-    };
-    MoverACasillaArriba.prototype.textoAMostrar = function () {
-        return "arriba";
-    };
-    MoverACasillaArriba.prototype.distancia = function () {
-        return this.distanciaVertical();
-    };
     return MoverACasillaArriba;
 })(MovimientoEnCuadricula);
 var MoverACasillaAbajo = (function (_super) {
     __extends(MoverACasillaAbajo, _super);
     function MoverACasillaAbajo() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 0, y: -1 };
+        this.direccionCasilla = new DirCasillaAbajo();
     }
-    MoverACasillaAbajo.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaDeAbajo();
-    };
-    MoverACasillaAbajo.prototype.textoAMostrar = function () {
-        return "abajo";
-    };
-    MoverACasillaAbajo.prototype.distancia = function () {
-        return this.distanciaVertical();
-    };
     return MoverACasillaAbajo;
 })(MovimientoEnCuadricula);
 var MoverACasillaIzquierda = (function (_super) {
     __extends(MoverACasillaIzquierda, _super);
     function MoverACasillaIzquierda() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: -1, y: 0 };
+        this.direccionCasilla = new DirCasillaIzquierda();
     }
-    MoverACasillaIzquierda.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaASuIzquierda();
-    };
-    MoverACasillaIzquierda.prototype.textoAMostrar = function () {
-        return "la izquierda";
-    };
-    MoverACasillaIzquierda.prototype.distancia = function () {
-        return this.distanciaHorizontal();
-    };
     return MoverACasillaIzquierda;
 })(MovimientoEnCuadricula);
 var MoverTodoAIzquierda = (function (_super) {
@@ -1589,6 +1620,8 @@ var Tablero = (function (_super) {
     // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
         args.imagen = args.imagen || 'invisible.png';
+        args.imagenLabel = args.imagenLabel || "PlacaContarGris.png";
+        args.imagenPuntaje = args.imagenPuntaje || "PlacaContarNegra.png";
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
         this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
@@ -1598,14 +1631,14 @@ var Tablero = (function (_super) {
     };
     Tablero.prototype.buildLabel = function (argumentos) {
         this.label = new Texto(0, this.y, argumentos.texto, { color: this.colorTxtLabel,
-            imagenFondo: "PlacaContarGris.png",
+            imagenFondo: argumentos.imagenLabel,
             margen: this.margen,
         });
         this.label.setZ(this.z - 1);
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
         this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
-            imagenFondo: "PlacaContarNegra.png",
+            imagenFondo: argumentos.imagenPuntaje,
             margen: this.margen,
         });
         this.puntaje.setZ(this.z - 2);
@@ -1688,6 +1721,7 @@ var FlechaEscenarioAleatorio = (function (_super) {
         _super.call(this, 120, 220, { imagen: 'flechaEscenarioAleatorio.png',
             texto: "¡Ejecutá varias veces!",
             separacionX: 0,
+            imagenLabel: "invisible.png",
         });
         this.aprender(Flotar, { eje: 'X', Desvio: 20 });
         this.setAlto(40);
@@ -3968,13 +4002,13 @@ var ElPlanetaDeNano = (function (_super) {
     }
     ElPlanetaDeNano.prototype.iniciar = function () {
         //this.recolector.izquierda = pilas.izquierda();
-        var cantidadFilas = 4;
+        this.cantidadFilas = 4;
         this.cantidadColumnas = 5;
         this.fondo = new Fondo('fondos.elPlanetaDeNano.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
         this.automata = new NanoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
-        this.automata.escala *= 2;
+        this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
+        this.automata.escala *= 1.8;
         this.automata.y += 15;
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
         this.secuenciaCaminata.iniciar(this.automata);
@@ -3991,16 +4025,12 @@ var ElPlanetaDeNano = (function (_super) {
         return this.cantidadInicial - cantidadActual;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
+        var cantidad = [2, 4, 1, 3];
+        for (var i = 0; i < this.cantidadFilas; i++) {
+            for (var j = 1; j <= cantidad[i]; j++) {
+                this.cuadricula.agregarActor(new BananaAnimada(0, 0), i, j);
+            }
+        }
     };
     ElPlanetaDeNano.prototype.estaResueltoElProblema = function () {
         return this.contarActoresConEtiqueta('BananaAnimada') == 0;
