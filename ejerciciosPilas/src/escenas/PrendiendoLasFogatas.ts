@@ -31,8 +31,6 @@ class PrendiendoLasFogatas extends EscenaActividad {
 
         this.cuadricula.y = 0;
 
-        window['actor'] = this.cuadricula;
-
         this.automata = new ScoutAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata,0, 0);
         this.completarConFogatasEnLaterales();
