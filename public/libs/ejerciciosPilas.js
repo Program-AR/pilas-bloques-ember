@@ -4641,7 +4641,6 @@ var PrendiendoLasFogatas = (function (_super) {
         this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasFogatas.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
         this.cuadricula.y = 0;
-        window['actor'] = this.cuadricula;
         this.automata = new ScoutAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.completarConFogatasEnLaterales();
