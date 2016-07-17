@@ -5,61 +5,71 @@
 
 class PrendiendoLasFogatas extends EscenaActividad {
     cuadricula;
-    cantidadMaxColumnas;
-    cantidadMaxFilas;
-    cantidadMinColumnas;
-    cantidadMinFilas;
+    ladoCasilla;
+    fogatas;
     cantidadFilas;
     cantidadColumnas;
-    ladoCasilla;
-    compus;
 
     iniciar() {
-        this.compus = [];
-        this.cantidadMaxColumnas=12;
-        this.cantidadMinColumnas=4;
-        this.cantidadMaxFilas=10;
-        this.cantidadMinFilas=5;
+        this.fogatas = [];
+        this.cantidadFilas = 7;
+        this.cantidadColumnas = 7;
+
+        let matriz = [
+          ['T','T','T','T','T','T','T'],
+          ['T','F','F','F','F','F','T'],
+          ['T','F','F','F','F','F','T'],
+          ['T','F','F','F','F','F','T'],
+          ['T','F','F','F','F','F','T'],
+          ['T','F','F','F','F','F','T'],
+          ['T','T','T','T','T','T','T']
+        ];
+
+        this.cuadricula = new CuadriculaEsparsa(0,0, {ancho: 400, alto: 400}, {grilla: 'casillas.violeta.png'}, matriz)
+
         this.ladoCasilla = 30;
         this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
 
-        this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
-        this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas,
-            { separacionEntreCasillas: 2 },
-            { grilla: 'casilla.prendiendoLasFogatas.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
-
-        this.cuadricula.y = 0;
+        this.agregarFogatas();
 
         this.automata = new ScoutAnimado(0, 0);
-        this.cuadricula.agregarActorEnPerspectiva(this.automata,0, 0);
-        this.completarConFogatasEnLaterales();
-
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
     }
 
-    private completarConFogatasEnLaterales(){
-        //Completo la primer y ultima fila
-        for(var i=1; i<this.cantidadColumnas-1; ++i){
+    private agregarFogatas() {
+
+      for (var i=1; i<this.cantidadColumnas-1; i++){
+        if (Math.random() < .5) {
           this.agregarFogata(0, i);
+          //filaSuperior
+        }
+        if (Math.random() < .5) {
           this.agregarFogata(this.cantidadFilas-1, i);
         }
-        //Completo la primer y ultima columna
-        for(var i=1; i<this.cantidadFilas-1; ++i){
-          this.agregarFogata(i, 0);
-          this.agregarFogata(i, this.cantidadColumnas-1);
+        //filaInferior
+      }
+
+      for (var j=1; j<this.cantidadFilas-1; j++){
+
+        if (Math.random() < .5) {
+          this.agregarFogata(j, 0);
         }
 
+        if (Math.random() < .5) {
+          this.agregarFogata(j, this.cantidadColumnas-1);
+        }
+      }
     }
 
-    agregarFogata(fila, columna) {
-      var fogata = new FogataAnimada(0, 0);
+    private agregarFogata(fila, columna) {
+      let fogata = new FogataAnimada(0, 0);
       this.cuadricula.agregarActor(fogata, fila, columna);
-      this.compus.push(fogata);
+      this.fogatas.push(fogata);
     }
 
     estaResueltoElProblema() {
-      return this.compus.every((fogata) => {
-        fogata.nombreAnimacionActual() === 'prendida'
+      return this.fogatas.every((fogata) => {
+        return (fogata.nombreAnimacionActual() === 'prendida');
       });
     }
 
