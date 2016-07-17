@@ -153,7 +153,6 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
 
       var code = this.get('actividad').generarCodigo();
-      console.log(code);
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
       Ember.run(() => {
