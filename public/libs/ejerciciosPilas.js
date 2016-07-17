@@ -4631,30 +4631,40 @@ var PrendiendoLasFogatas = (function (_super) {
     }
     PrendiendoLasFogatas.prototype.iniciar = function () {
         this.compus = [];
-        this.cantidadMaxColumnas = 12;
-        this.cantidadMinColumnas = 4;
-        this.cantidadMaxFilas = 10;
-        this.cantidadMinFilas = 5;
+        this.cantidadFilas = 7;
+        this.cantidadColumnas = 7;
+        var matriz = [
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T']
+        ];
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas.violeta.png' }, matriz);
         this.ladoCasilla = 30;
         this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
-        this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
-        this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasFogatas.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
-        this.cuadricula.y = 0;
+        this.agregarFogatas();
         this.automata = new ScoutAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
-        this.completarConFogatasEnLaterales();
     };
-    PrendiendoLasFogatas.prototype.completarConFogatasEnLaterales = function () {
-        //Completo la primer y ultima fila
-        for (var i = 1; i < this.cantidadColumnas - 1; ++i) {
-            this.agregarFogata(0, i);
-            this.agregarFogata(this.cantidadFilas - 1, i);
+    PrendiendoLasFogatas.prototype.agregarFogatas = function () {
+        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
+            if (Math.random() < .5) {
+                this.agregarFogata(0, i);
+            }
+            if (Math.random() < .5) {
+                this.agregarFogata(this.cantidadFilas - 1, i);
+            }
         }
-        //Completo la primer y ultima columna
-        for (var i = 1; i < this.cantidadFilas - 1; ++i) {
-            this.agregarFogata(i, 0);
-            this.agregarFogata(i, this.cantidadColumnas - 1);
+        for (var j = 1; j < this.cantidadFilas - 1; j++) {
+            if (Math.random() < .5) {
+                this.agregarFogata(j, 0);
+            }
+            if (Math.random() < .5) {
+                this.agregarFogata(j, this.cantidadColumnas - 1);
+            }
         }
     };
     PrendiendoLasFogatas.prototype.agregarFogata = function (fila, columna) {
@@ -4664,7 +4674,7 @@ var PrendiendoLasFogatas = (function (_super) {
     };
     PrendiendoLasFogatas.prototype.estaResueltoElProblema = function () {
         return this.compus.every(function (fogata) {
-            fogata.nombreAnimacionActual() === 'prendida';
+            return (fogata.nombreAnimacionActual() === 'prendida');
         });
     };
     return PrendiendoLasFogatas;
