@@ -2542,6 +2542,20 @@ var BuilderStatePattern = (function () {
     };
     return BuilderStatePattern;
 })();
+var EstadoParaContarBuilder = (function (_super) {
+    __extends(EstadoParaContarBuilder, _super);
+    function EstadoParaContarBuilder(idTransicion, cantidadEsperada) {
+        _super.call(this, 'faltan');
+        this.agregarEstadoAceptacion('llegue');
+        var estado = this.estados['llegue'];
+        estado.cant = 0;
+        this.agregarTransicion('faltan', 'llegue', idTransicion, function () {
+            estado.cant += 1;
+            return estado.cant === cantidadEsperada;
+        });
+    }
+    return EstadoParaContarBuilder;
+})(BuilderStatePattern);
 /// <reference path = "../escenas/Errores.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts" />
@@ -3696,6 +3710,7 @@ var ElCangrejoAguafiestas = (function (_super) {
         this.automata = new CangrejoAnimado(0, 0);
         this.automata.escala *= 1.2;
         this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.estado = new EstadoParaContarBuilder('explotar', 18).estadoInicial();
     };
     ElCangrejoAguafiestas.prototype.completarConGlobos = function () {
         var _this = this;
@@ -3708,9 +3723,6 @@ var ElCangrejoAguafiestas = (function (_super) {
         globo.y += 20;
         globo.escala *= 0.8;
         globo.aprender(Flotar, { Desvio: 5 });
-    };
-    ElCangrejoAguafiestas.prototype.estaResueltoElProblema = function () {
-        return this.contarActoresConEtiqueta('GloboAnimado') === 1; // porque el programa termina antes de que se elimine el último globo
     };
     return ElCangrejoAguafiestas;
 })(EscenaActividad);
@@ -4116,18 +4128,7 @@ var FutbolRobots = (function (_super) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
         ;
-        this.crearEstado();
-    };
-    FutbolRobots.prototype.crearEstado = function () {
-        this.cantPateadas = 0;
-        var myThis = this;
-        var builder = new BuilderStatePattern('faltaPatear');
-        builder.agregarEstadoAceptacion('todasPateadas');
-        builder.agregarTransicion('faltaPatear', 'todasPateadas', 'patear', function () {
-            myThis.cantPateadas += 1;
-            return myThis.cantPateadas === myThis.cantidadFilas;
-        });
-        this.estado = builder.estadoInicial();
+        this.estado = new EstadoParaContarBuilder('patear', this.cantidadFilas).estadoInicial();
     };
     return FutbolRobots;
 })(EscenaActividad);
@@ -4893,6 +4894,7 @@ var TitoCuadrado = (function (_super) {
     }
     TitoCuadrado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.tito-cuadrado.png', 0, 0);
+        this.luces = [];
         this.cantidadFilas = 7;
         this.cantidadColumnas = 7;
         var matriz = [
@@ -4929,7 +4931,12 @@ var TitoCuadrado = (function (_super) {
         }
     };
     TitoCuadrado.prototype.agregarLuz = function (f, c) {
-        this.cuadricula.agregarActor(new Lamparin(0, 0), f, c);
+        var luz = new Lamparin(0, 0);
+        this.luces.push(luz);
+        this.cuadricula.agregarActor(luz, f, c);
+    };
+    TitoCuadrado.prototype.estaResueltoElProblema = function () {
+        return this.luces.every(function (l) { return l.nombreAnimacionActual() == 'prendida'; });
     };
     return TitoCuadrado;
 })(EscenaActividad);
