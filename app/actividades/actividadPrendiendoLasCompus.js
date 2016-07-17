@@ -1,21 +1,9 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {PrenderCompu, EstoyEnEsquina} from 'pilas-engine-bloques/actividades/bloquesCompus';
 
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
+var {Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
 var {IrIzquierda, IrDerecha, IrArriba, IrAbajo} = direcciones;
-
-var PrenderCompu = AccionBuilder.build({
-  descripcion: 'Prender compu',
-  icono: 'icono.computadora.png',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{etiqueta:"CompuAnimada", animacionColisionado:"prendida", nombreAnimacion: "escribir" }',
-});
-
-var EstoyEnEsquina = AccionBuilder.buildSensor({
-  descripcion: 'Estoy en una esquina',
-  icono: 'casilla.prendiendoLasCompus2.png',
-  funcionSensor: 'casillaActual().esEsquina()',
-});
 
 export default {
   nombre: 'Prendiendo las compus',
