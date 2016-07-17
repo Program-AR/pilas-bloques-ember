@@ -31,19 +31,6 @@ class FutbolRobots  extends EscenaActividad{
         this.cuadricula.agregarActor(new PelotaAnimada(0,0),fila,this.cuadricula.dameIndexUltimaPosicion(fila))
       };
 
-      this.crearEstado();
-
-   }
-
-   private crearEstado() {
-     this.cantPateadas = 0;
-     var myThis = this;
-     var builder = new BuilderStatePattern('faltaPatear');
-     builder.agregarEstadoAceptacion('todasPateadas');
-     builder.agregarTransicion('faltaPatear', 'todasPateadas', 'patear',
-       function(){
-         myThis.cantPateadas += 1;
-         return myThis.cantPateadas === myThis.cantidadFilas});
-     this.estado = builder.estadoInicial();
+      this.estado = new EstadoParaContarBuilder('patear', this.cantidadFilas).estadoInicial();
    }
 }

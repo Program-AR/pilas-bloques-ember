@@ -7,9 +7,11 @@ class TitoCuadrado extends EscenaActividad {
   fondo;
   cantidadFilas;
   cantidadColumnas;
+  luces;
 
   iniciar() {
       this.fondo = new Fondo('fondo.tito-cuadrado.png',0,0);
+      this.luces = [];
       this.cantidadFilas=7;
       this.cantidadColumnas=7;
       var matriz= [
@@ -53,7 +55,12 @@ class TitoCuadrado extends EscenaActividad {
   }
 
   private agregarLuz(f,c) {
+    var luz = new Lamparin(0,0);
+    this.luces.push(luz);
+    this.cuadricula.agregarActor(luz,f,c);
+  }
 
-    this.cuadricula.agregarActor(new Lamparin(0,0),f,c);
+  estaResueltoElProblema() {
+      return this.luces.every(l => l.nombreAnimacionActual() == 'prendida');
   }
 }

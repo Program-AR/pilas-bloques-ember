@@ -182,3 +182,17 @@ class BuilderStatePattern{
       }
     }
 }
+
+class EstadoParaContarBuilder extends BuilderStatePattern {
+  constructor(idTransicion,cantidadEsperada){
+    super('faltan');
+    this.agregarEstadoAceptacion('llegue');
+    var estado = this.estados['llegue'];
+    estado.cant = 0;
+    this.agregarTransicion('faltan', 'llegue', idTransicion,
+      function(){
+        estado.cant += 1;
+        return estado.cant === cantidadEsperada
+      });
+  }
+}

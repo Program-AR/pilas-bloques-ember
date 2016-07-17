@@ -26,6 +26,8 @@
         this.automata = new CangrejoAnimado(0,0);
         this.automata.escala *= 1.2;
         this.cuadricula.agregarActor(this.automata,0,0);
+
+        this.estado = new EstadoParaContarBuilder('explotar', 18).estadoInicial();
       }
 
     private completarConGlobos(){
@@ -38,9 +40,5 @@
       globo.y += 20;
       globo.escala *= 0.8;
       globo.aprender(Flotar,{Desvio:5});
-    }
-
-    estaResueltoElProblema(){
-      return this.contarActoresConEtiqueta('GloboAnimado') === 1; // porque el programa termina antes de que se elimine el último globo
     }
 }
