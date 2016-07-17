@@ -260,7 +260,7 @@ export default Ember.Component.extend({
         return;
       }
 
-      if (archivo.size > 4000) {
+      if (archivo.size > 400000) {
         alert("Lo siento, el archivo es demasiado grande para cargarse.");
         return;
       }
