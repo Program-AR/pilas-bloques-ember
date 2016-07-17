@@ -28,8 +28,7 @@ var EmpezarFiesta = AccionBuilder.build({
 export default {
   nombre: 'La fiesta de Drácula',
   id: 'LaFiestaDeDracula',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de las 3 lámparas una cierta cantidad de veces: 5 veces la primera, 8 la segunda y 12 la tercera.',
 
   /*global LaFiestaDeDracula */
   escena: LaFiestaDeDracula,

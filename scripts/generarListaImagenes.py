@@ -9,7 +9,7 @@ imageNames = filter(lambda name: name.endswith('.png'), os.listdir(os.path.join(
 jsContent = '//Autogenerado por scripts/generarListaImagenes.py. Todo cambio se sobreescribira. \n'
 jsContent += 'export default ['
 
-for name in imageNames:
+for name in sorted(imageNames):
 	jsContent += '"' + name + '",\n'
 
 jsContent += '];'
