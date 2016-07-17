@@ -1754,6 +1754,16 @@ var Foco = (function (_super) {
     };
     return Foco;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var FogataAnimada = (function (_super) {
+    __extends(FogataAnimada, _super);
+    function FogataAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'actor.Fogata.png', cantColumnas: 3, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 5);
+        this.definirAnimacion("prendida", [1, 2], 5);
+    }
+    return FogataAnimada;
+})(ActorAnimado);
 /// <reference path = "ActorCompuesto.ts"/>
 var FondoAnimado = (function (_super) {
     __extends(FondoAnimado, _super);
@@ -2196,6 +2206,17 @@ var SandiaAnimada = (function (_super) {
         this.definirAnimacion("mordida", [4], 1);
     }
     return SandiaAnimada;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var ScoutAnimado = (function (_super) {
+    __extends(ScoutAnimado, _super);
+    function ScoutAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'actor.BoyScout.png', cantColumnas: 9, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 1, true);
+        this.definirAnimacion("correr", [1, 2, 3], 5);
+        this.definirAnimacion("prender", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
+    }
+    return ScoutAnimado;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "ComportamientoAnimado.ts" />
@@ -4598,6 +4619,55 @@ var PrendiendoLasCompus = (function (_super) {
         return this.compus.every(function (compu) { return compu.nombreAnimacionActual() === 'prendida'; });
     };
     return PrendiendoLasCompus;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/ScoutAnimado.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
+var PrendiendoLasFogatas = (function (_super) {
+    __extends(PrendiendoLasFogatas, _super);
+    function PrendiendoLasFogatas() {
+        _super.apply(this, arguments);
+    }
+    PrendiendoLasFogatas.prototype.iniciar = function () {
+        this.compus = [];
+        this.cantidadMaxColumnas = 12;
+        this.cantidadMinColumnas = 4;
+        this.cantidadMaxFilas = 10;
+        this.cantidadMinFilas = 5;
+        this.ladoCasilla = 30;
+        this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
+        this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
+        this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasFogatas.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
+        this.cuadricula.y = 0;
+        this.automata = new ScoutAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+        this.completarConFogatasEnLaterales();
+    };
+    PrendiendoLasFogatas.prototype.completarConFogatasEnLaterales = function () {
+        //Completo la primer y ultima fila
+        for (var i = 1; i < this.cantidadColumnas - 1; ++i) {
+            this.agregarFogata(0, i);
+            this.agregarFogata(this.cantidadFilas - 1, i);
+        }
+        //Completo la primer y ultima columna
+        for (var i = 1; i < this.cantidadFilas - 1; ++i) {
+            this.agregarFogata(i, 0);
+            this.agregarFogata(i, this.cantidadColumnas - 1);
+        }
+    };
+    PrendiendoLasFogatas.prototype.agregarFogata = function (fila, columna) {
+        var fogata = new FogataAnimada(0, 0);
+        this.cuadricula.agregarActor(fogata, fila, columna);
+        this.compus.push(fogata);
+    };
+    PrendiendoLasFogatas.prototype.estaResueltoElProblema = function () {
+        return this.compus.every(function (fogata) {
+            fogata.nombreAnimacionActual() === 'prendida';
+        });
+    };
+    return PrendiendoLasFogatas;
 })(EscenaActividad);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "EscenaActividad.ts" />
