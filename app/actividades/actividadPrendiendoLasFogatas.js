@@ -1,7 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, Sensor} = bloques;
 var {IrIzquierda, IrDerecha, IrArriba, IrAbajo} = direcciones;
 import {Numero, OpComparacion, OpAritmetica, Texto} from 'pilas-engine-bloques/actividades/expresiones';
 
@@ -12,18 +12,30 @@ var PrenderFogata = AccionBuilder.build({
   argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
 });
 
+var TocandoFogata = Sensor.extend({
+  init() {
+    this._super();
+    this.set('id', 'tocandoFogata');
+  },
 
-var EstoyEnEsquina = AccionBuilder.buildSensor({
-  descripcion: 'Estoy en una esquina',
-  icono: 'casilla.prendiendoLasFogatas2.png',
-  funcionSensor: 'casillaActual().esEsquina()',
+  block_init(block) {
+    this._super(block);
+    block.appendDummyInput()
+         .appendField('¿Hay fogata acá ')
+         .appendField(this.obtener_icono('../libs/data/icono.FogataApagada.png'))
+         .appendField(' ?');
+  },
+
+  nombre_sensor() {
+    return 'tocando(\'FogataAnimada\')';
+  }
 });
+
 
 export default {
   nombre: 'Prendiendo las fogatas',
   id: 'PrendiendoLasFogatas',
-  enunciado: 'En este caso, debemos prender todas las fogatas. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.',
-  consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
+  enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
 
   // la escena proviene de ejerciciosPilas
   escena: PrendiendoLasFogatas,  // jshint ignore:line
@@ -31,8 +43,6 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, Repetir, Si, Sino, Hasta,  IrDerecha, IrArriba,
-    IrAbajo, IrIzquierda, PrenderFogata, EstoyEnEsquina,
-    Numero,OpComparacion,OpAritmetica, Texto
-  ],
+  bloques: [Procedimiento, Repetir, Si, Sino, Hasta, TocandoFogata, PrenderFogata,
+    IrAbajo,IrArriba,IrIzquierda,IrDerecha,Numero,OpComparacion,OpAritmetica,Texto],
 };
