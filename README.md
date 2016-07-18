@@ -47,6 +47,15 @@ o ejecutar los test una sola vez usando el siguiente comando:
 
 Notas de versión
 ---------
+* 1.0.0
+ * Incluye todos los desafíos hasta Parametrización Inclusive. Entonces, Pilas Bloques abarca todas las actividades del manual para docentes "La programación y su didáctica" sin el último capítulo (Interactividad).
+ * Esto significa... ¡16 nuevas actividades! Con algunas mejoras respecto del manual para docentes. Por ejemplo, una mejora didácticamente importante es que ya no usamos strings.
+ * ¡Ahora se pueden guardar soluciones a un archivo! (Y, por supuesto, cargar una solución desde un archivo)
+ * Además, ahora Pilas Bloques se integra con una plataforma Moodle para dar soporte a cursos online.
+ * Algunas mejoras visuales, como los tableros (en Reparando la nave ó El Superviaje).
+ * Ahora los íconos de los bloques están todos al inicio del bloque.
+ * También se corrigió la redacción de los mismos.
+ * Ahora las dos primeras actividades de "Alternativa condicional" avisan con una flecha que hay que volver a ejecutar para probar en varios escenarios.
 * 0.11.0
  * Incluye todos los desafíos hasta Uso de Variables inclusive.
  * En "La gran aventura del mar encantado" se optó por una alternativa de personajes
