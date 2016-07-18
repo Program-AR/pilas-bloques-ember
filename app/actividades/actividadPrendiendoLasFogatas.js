@@ -1,9 +1,10 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento, Sensor} = bloques;
-var {IrIzquierda, IrDerecha, IrArriba, IrAbajo} = direcciones;
-import {Numero, OpComparacion, OpAritmetica, Texto} from 'pilas-engine-bloques/actividades/expresiones';
+var {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
+var {ParaLaDerecha, ParaLaIzquierda,ParaArriba, ParaAbajo,
+  IrAbajo,IrArriba,IrIzquierda,IrDerecha} = direcciones;
+import {Numero, OpComparacion, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var PrenderFogata = AccionBuilder.build({
   descripcion: 'Prender fogata',
@@ -12,25 +13,12 @@ var PrenderFogata = AccionBuilder.build({
   argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
 });
 
-var TocandoFogata = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoFogata');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Hay fogata acá ')
-         .appendField(this.obtener_icono('../libs/data/icono.FogataApagada.png'))
-         .appendField(' ?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'FogataAnimada\')';
-  }
+var TocandoFogata = AccionBuilder.buildSensor({
+  id: 'tocandoFogata',
+  descripcion: 'Hay fogata acá ',
+  icono: 'icono.FogataApagada.png',
+  funcionSensor: 'tocando(\'FogataAnimada\')',
 });
-
 
 export default {
   nombre: 'Prendiendo las fogatas',
@@ -44,5 +32,6 @@ export default {
   puedeDuplicar: false,
 
   bloques: [Procedimiento, Repetir, Si, Sino, Hasta, TocandoFogata, PrenderFogata,
-    IrAbajo,IrArriba,IrIzquierda,IrDerecha,Numero,OpComparacion,OpAritmetica,Texto],
+    IrAbajo,IrArriba,IrIzquierda,IrDerecha,Numero,OpComparacion,OpAritmetica,
+    ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo],
 };
