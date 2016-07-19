@@ -19,6 +19,9 @@ Router.map(function() {
     resetNamespace: true
   }, function() {
     this.route('nombre', {path: ':nombre'});
+    this.route('cursoAlumno',  {path: "/cursoAlumno/:hash"});
+    this.route('cursoDocente', {path: "/cursoDocente/:hash"});
+    this.route('mensajeGuardado');
   });
   this.route('acercade');
 
