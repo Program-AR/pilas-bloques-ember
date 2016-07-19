@@ -49,9 +49,10 @@ Notas de versión
 ---------
 * 1.0.0
  * Incluye todos los desafíos hasta Parametrización Inclusive. Entonces, Pilas Bloques abarca todas las actividades del manual para docentes "La programación y su didáctica" sin el último capítulo (Interactividad).
- * Esto significa... ¡16 nuevas actividades! Con algunas mejoras respecto del manual para docentes. Por ejemplo, una mejora didácticamente importante es que ya no usamos strings.
+ * Esto significa... ¡16 nuevas actividades! Con algunas mejoras respecto del manual para docentes. Por ejemplo, una mejora didácticamente importante es que no usamos strings.
  * ¡Ahora se pueden guardar soluciones a un archivo! (Y, por supuesto, cargar una solución desde un archivo)
- * Además, ahora Pilas Bloques se integra con una plataforma Moodle para dar soporte a cursos online.
+ * En la versión anterior, se llamaban "variables" a cosas que no eran variables. Corregimos ese error conceptual.
+ * Otra diferencia es que la categoría "Control" fue cambiada por dos categorías, "Repeticiones" y "Alternativas". ¿Por qué? Porque la visión de la programación como control de flujo es una visión _operativa_. Desde Program.AR creemos que la programación puede tener también una visión _declarativa_, que es más importante.
  * Algunas mejoras visuales, como los tableros (en Reparando la nave ó El Superviaje).
  * Ahora los íconos de los bloques están todos al inicio del bloque.
  * También se corrigió la redacción de los mismos.
