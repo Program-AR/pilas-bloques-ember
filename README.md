@@ -51,7 +51,7 @@ Notas de versión
  * Incluye todos los desafíos hasta Parametrización Inclusive. Entonces, Pilas Bloques abarca todas las actividades del manual para docentes "La programación y su didáctica" sin el último capítulo (Interactividad).
  * Esto significa... ¡16 nuevas actividades! Con algunas mejoras respecto del manual para docentes. Por ejemplo, una mejora didácticamente importante es que no usamos strings.
  * ¡Ahora se pueden guardar soluciones a un archivo! (Y, por supuesto, cargar una solución desde un archivo)
- * En la versión anterior, se llamaban "variables" a cosas que no eran variables. Corregimos ese error conceptual.
+ * En la propuesta del manual, se usaban "variables" para denotar funciones a falta de una mejor opción en Scratch. En principio reprodujimos ese modelo y ahora lo modificamos para proveer un nombre apropiado: "Sensores numéricos".
  * Otra diferencia es que la categoría "Control" fue cambiada por dos categorías, "Repeticiones" y "Alternativas". ¿Por qué? Porque la visión de la programación como control de flujo es una visión _operativa_. Desde Program.AR creemos que la programación puede tener también una visión _declarativa_, que es más importante.
  * Algunas mejoras visuales, como los tableros (en Reparando la nave ó El Superviaje).
  * Ahora los íconos de los bloques están todos al inicio del bloque.
