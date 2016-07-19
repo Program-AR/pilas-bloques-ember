@@ -30,7 +30,9 @@ MisProcedimientos.atributosExtra = function(){
     return 'custom="PROCEDURE"';
 };
 
-var Control = new Categoria('Control');
+var Repeticiones = new Categoria('Repeticiones');
+
+var Alternativas = new Categoria('Alternativas');
 
 var Variables = new Categoria('Variables');
 /* TODO: Desactivado porque blockly trata diferente a estas cosas,
@@ -69,7 +71,7 @@ var Titulo = function(titulo, categorias) {
 export {
       Comandos,
       MisProcedimientos,
-      Control,
+      Repeticiones, Alternativas,
       Separador,
       Variables,
       Valores,
