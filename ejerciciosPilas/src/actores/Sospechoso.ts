@@ -36,12 +36,12 @@ class Sospechoso extends ActorAnimado {
     }
 
     sacarDisfraz(){
-		if (this.meaCulpa) 
+		if (this.meaCulpa)
 			this.cargarAnimacion("culpable");
     }
 
     mensajeAlSacarDisfraz(){
-		return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, este soy yo!"
+		return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
     }
 
     teEncontraron(){
