@@ -20,8 +20,6 @@ class Camino {
     this.opcionesCasilla=opcionesCasilla;
     this.direcciones=direcciones;
     this.matriz=this.dameMatriz();
-
-
   }
 
 escalarCasillasCuadradas(){
@@ -44,7 +42,6 @@ escalarCasillasCuadradas(){
       this.cambiarImagenesCasillasCamino(cuadricula);
       return cuadricula;
   }
-
 
   cambiarImagenesCasillasCamino(cuadricula){
     for(var i = 0; i < cuadricula.casillas.length -1; i++){
@@ -127,23 +124,71 @@ class Punto{
 
 
 class CuadriculaParaRaton extends Camino{
-
-
-
   constructor(x,y,cantFilas,cantColumnas,opcionesCuadricula, opcionesCasilla){
-      super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
+      super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas,opcionesCuadricula) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
   }
 
-  private dameDirecciones(filaInicio,colInicio,filaFin,colFin){
+  private validarOpcionesCuadricula(opciones, maxAbj, maxDer)
+  {
+    if(opciones['largo_min'] != undefined &&
+        opciones['largo_max'] != undefined)
+    {
+      var largo_min = opciones['largo_min'];
+      var largo_max = opciones['largo_max'];
+      
+      if(largo_min < 1)
+      {
+        throw new ArgumentError("El largo debe ser al menos 1");
+      }
+
+      if(largo_min > maxAbj+maxDer+1)
+      {
+        throw new ArgumentError("El largo minimo supera al maximo posile");
+      }
+        
+      if(largo_max < largo_min)
+      {
+        throw new ArgumentError("El largo debe maximo debe ser >= al minimo");
+      }
+
+      if(largo_max > maxAbj+maxDer+1)
+      {
+        throw new ArgumentError("El largo maximo supera al maximo posile");
+      }  
+    }
+  }
+
+  private calcularCantidadMovimientos(opciones, maxAbj, maxDer)
+  {
+    var largo_min = maxAbj + maxDer + 1;
+    var largo_max = largo_min;
+    if(opciones['largo_min'] != undefined &&
+        opciones['largo_max'] != undefined)
+    {
+      largo_min = opciones['largo_min'];
+      largo_max = opciones['largo_max'];
+    }
+    // Elegir al azar un largo entre el min y el max
+    var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
+    // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+    return largo - 1;
+  }
+
+  private dameDirecciones(filaInicio,colInicio,filaFin,colFin,opcionesCuadricula){
     //pre: solo me voy a moder para abajo y derecha. Con lo cual la
     //pos posInicialX<posFinalX posInicialY<posFinalY
     var cantMovDer=colFin-colInicio;
     var cantMovAbj=filaFin-filaInicio;
+
+    this.validarOpcionesCuadricula(opcionesCuadricula, cantMovAbj, cantMovDer);
+    var nMovimientos = this.calcularCantidadMovimientos(opcionesCuadricula, cantMovAbj, cantMovDer);
+    
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
-    return this.shuffleArray(aDevolver);
-    }
+    
+    return this.shuffleArray(aDevolver).slice(0, nMovimientos);
+  }
 
     private shuffleArray(array) {
 
