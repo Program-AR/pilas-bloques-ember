@@ -1565,6 +1565,18 @@ var Detective = (function (_super) {
         _super.call(this, x, y, { grilla: 'detective.png', cantColumnas: 1 });
         this.definirAnimacion("parado", [0], 4, true);
     }
+    Detective.prototype.obtenerActorBajoLaLupa = function () {
+        var _this = this;
+        return pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(_this); })[0];
+    };
+    Detective.prototype.colisionaConElCulpable = function () {
+        var sospechoso = this.obtenerActorBajoLaLupa();
+        if (sospechoso.tieneDisflazPuesto) {
+            throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
+            return false;
+        }
+        return sospechoso.esCulpable();
+    };
     return Detective;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
@@ -2257,6 +2269,7 @@ var Sospechoso = (function (_super) {
         _super.call(this, x, y, { grilla: 'sospechosos.png', cantColumnas: 8 });
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
+        this.tieneDisflazPuesto = true;
     }
     Sospechoso.reiniciarDisfraces = function () {
         this.disfracesUsados = [];
@@ -2278,11 +2291,13 @@ var Sospechoso = (function (_super) {
         return this.meaCulpa;
     };
     Sospechoso.prototype.sacarDisfraz = function () {
-        if (this.meaCulpa)
+        if (this.meaCulpa) {
             this.cargarAnimacion("culpable");
+        }
+        this.tieneDisflazPuesto = false; // TODO: podríamos emitir un error si se le quita el disfraz más de una vez.
     };
     Sospechoso.prototype.mensajeAlSacarDisfraz = function () {
-        return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, este soy yo!";
+        return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!";
     };
     Sospechoso.prototype.teEncontraron = function () {
         return this.nombreAnimacionActual() === "culpable";
@@ -3766,11 +3781,11 @@ var SacarDisfraz = (function (_super) {
     function SacarDisfraz() {
         _super.apply(this, arguments);
     }
-    SacarDisfraz.prototype.iniciar = function (receptor) {
-        this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(receptor); })[0];
+    SacarDisfraz.prototype.iniciar = function (receptorDetective) {
+        this.argumentos.receptor = receptorDetective.obtenerActorBajoLaLupa();
         this.argumentos.receptor.sacarDisfraz();
         this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
-        _super.prototype.iniciar.call(this, receptor);
+        _super.prototype.iniciar.call(this, receptorDetective);
     };
     return SacarDisfraz;
 })(Decir);
