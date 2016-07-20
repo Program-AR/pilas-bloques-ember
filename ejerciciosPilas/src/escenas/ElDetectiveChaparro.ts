@@ -9,7 +9,7 @@
  class ElDetectiveChaparro extends EscenaActividad {
    culpable: Sospechoso;
    cuadricula: Cuadricula;
-   
+
   iniciar() {
     this.fondo = new Fondo('fondo.detective.png',0,0);
     this.cuadricula = new Cuadricula(0, -30, 1, 7,
@@ -33,17 +33,17 @@
   }
 
   estaResueltoElProblema() {
-    return this.automata.casillaActual() === this.culpable.casillaActual() && 
+    return this.automata.casillaActual() === this.culpable.casillaActual() &&
       this.culpable.teEncontraron();
   }
 
 }
 
 class SacarDisfraz extends Decir {
-  iniciar(receptor) {
-    this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(s => s.colisiona_con(receptor))[0];
+  iniciar(receptorDetective) {
+    this.argumentos.receptor = receptorDetective.obtenerActorBajoLaLupa();
     this.argumentos.receptor.sacarDisfraz();
     this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
-    super.iniciar(receptor);
+    super.iniciar(receptorDetective);
   }
 }

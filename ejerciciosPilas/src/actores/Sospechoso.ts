@@ -4,6 +4,7 @@
 class Sospechoso extends ActorAnimado {
 	static disfracesUsados;
 	meaCulpa;
+	tieneDisflazPuesto;
 
 	static reiniciarDisfraces(){
 		this.disfracesUsados = [];
@@ -13,6 +14,7 @@ class Sospechoso extends ActorAnimado {
         super(x, y, {grilla: 'sospechosos.png', cantColumnas:8});
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
+				this.tieneDisflazPuesto = true;
     }
 
     nroDisfraz(){
@@ -35,9 +37,12 @@ class Sospechoso extends ActorAnimado {
 		return this.meaCulpa;
     }
 
-    sacarDisfraz(){
-		if (this.meaCulpa)
-			this.cargarAnimacion("culpable");
+    sacarDisfraz() {
+			if (this.meaCulpa) {
+				this.cargarAnimacion("culpable");
+			}
+
+			this.tieneDisflazPuesto = false; // TODO: podríamos emitir un error si se le quita el disfraz más de una vez.
     }
 
     mensajeAlSacarDisfraz(){

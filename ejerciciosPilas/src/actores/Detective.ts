@@ -5,4 +5,19 @@ class Detective extends ActorAnimado {
         super(x, y, {grilla: 'detective.png', cantColumnas:1});
         this.definirAnimacion("parado", [0], 4, true);
     }
+
+    private obtenerActorBajoLaLupa() {
+      return pilas.obtener_actores_con_etiqueta("Sospechoso").filter(s => s.colisiona_con(this))[0];
+    }
+
+    public colisionaConElCulpable() {
+      let sospechoso = this.obtenerActorBajoLaLupa();
+
+      if (sospechoso.tieneDisflazPuesto) {
+        throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
+        return false;
+      }
+
+      return sospechoso.esCulpable();
+    }
 }
