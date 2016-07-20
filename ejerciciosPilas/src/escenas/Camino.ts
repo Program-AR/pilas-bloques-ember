@@ -124,11 +124,54 @@ class Punto{
 
 
 class CuadriculaParaRaton extends Camino{
-
-
-
   constructor(x,y,cantFilas,cantColumnas,opcionesCuadricula, opcionesCasilla){
       super(x, y,this.dameDirecciones(1,1,cantFilas,cantColumnas,opcionesCuadricula) ,cantFilas,cantColumnas , opcionesCuadricula, opcionesCasilla);
+  }
+
+  private validarOpcionesCuadricula(opciones, maxAbj, maxDer)
+  {
+    if(opciones['largo_min'] != undefined &&
+        opciones['largo_max'] != undefined)
+    {
+      var largo_min = opciones['largo_min'];
+      var largo_max = opciones['largo_max'];
+      
+      if(largo_min < 1)
+      {
+        throw new ArgumentError("El largo debe ser al menos 1");
+      }
+
+      if(largo_min > maxAbj+maxDer+1)
+      {
+        throw new ArgumentError("El largo minimo supera al maximo posile");
+      }
+        
+      if(largo_max < largo_min)
+      {
+        throw new ArgumentError("El largo debe maximo debe ser >= al minimo");
+      }
+
+      if(largo_max > maxAbj+maxDer+1)
+      {
+        throw new ArgumentError("El largo maximo supera al maximo posile");
+      }  
+    }
+  }
+
+  private calcularCantidadMovimientos(opciones, maxAbj, maxDer)
+  {
+    var largo_min = maxAbj + maxDer + 1;
+    var largo_max = largo_min;
+    if(opciones['largo_min'] != undefined &&
+        opciones['largo_max'] != undefined)
+    {
+      largo_min = opciones['largo_min'];
+      largo_max = opciones['largo_max'];
+    }
+    // Elegir al azar un largo entre el min y el max
+    var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
+    // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+    return largo - 1;
   }
 
   private dameDirecciones(filaInicio,colInicio,filaFin,colFin,opcionesCuadricula){
@@ -137,61 +180,14 @@ class CuadriculaParaRaton extends Camino{
     var cantMovDer=colFin-colInicio;
     var cantMovAbj=filaFin-filaInicio;
 
-
-    if(opcionesCuadricula['largo_min'] != undefined &&
-        opcionesCuadricula['largo_max'] != undefined)
-    {
-      var largo_min = opcionesCuadricula['largo_min'];
-      var largo_max = opcionesCuadricula['largo_max'];
-
-      if(largo_min < 1)
-      {
-        console.log("El largo debe ser al menos 1");
-        largo_min = 1;
-      }
-
-      if(largo_min > colFin-colInicio+filaFin-filaInicio+1)
-      {
-        console.log("El largo minimo supera al maximo posile");
-        largo_min = colFin-colInicio+filaFin-filaInicio+1;
-      }
-        
-      if(largo_max < largo_min)
-      {
-        console.log("El largo debe maximo debe ser >= al minimo");
-        largo_max = largo_min;
-      }
-
-      if(largo_max > colFin-colInicio+filaFin-filaInicio+1)
-      {
-        console.log("El largo maximo supera al maximo posile");
-        largo_max = colFin-colInicio+filaFin-filaInicio+1;
-      }
-        
-      // Elegir al azar un largo entre el min y el max
-      var largo = largo_min + Math.floor(Math.random() * (largo_max-largo_min + 1));
-      // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
-      var nMovimientos = largo - 1;
-      cantMovDer=0;
-      cantMovAbj=0;
-      // Elegir nMovimientos movimientos al azar, si exceder las dimensiones de la cuadricula
-      for(var i=0;i<nMovimientos;i++)
-      {
-        if(cantMovDer == colFin-colInicio)
-          cantMovAbj++;
-        else if(cantMovAbj == filaFin-filaInicio)
-          cantMovDer++;
-        else if(Math.random() < 0.5)
-          cantMovAbj++;
-        else
-          cantMovDer++;
-      }
-    }
-
+    this.validarOpcionesCuadricula(opcionesCuadricula, cantMovAbj, cantMovDer);
+    var nMovimientos = this.calcularCantidadMovimientos(opcionesCuadricula, cantMovAbj, cantMovDer);
+    
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
-    return this.shuffleArray(aDevolver);
+    
+    return this.shuffleArray(aDevolver).slice(0, nMovimientos);
   }
 
     private shuffleArray(array) {
