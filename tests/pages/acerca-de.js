@@ -1,22 +1,15 @@
 import PageObject from 'pilas-engine-bloques/tests/page-object';
 
 let {
-  visitable
+  visitable,
+  text,
+  count
 } = PageObject;
 
 export default PageObject.create({
-  visit: visitable('/'),
+  scope: '.contenido-principal',
+  visit: visitable('/acercade'),
+  titulo: text("h1"),
 
-  visitar() {
-    visit('/acercade');
-    return this;
-  },
-
-  titulo() {
-    return $(".contenido-principal h1").text();
-  },
-
-  botones() {
-    return $(".contenido-principal button");
-  }
+  cantidadDeBotones: count('button'),
 });
