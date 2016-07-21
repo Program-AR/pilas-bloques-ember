@@ -3549,17 +3549,51 @@ var Punto = (function () {
 var CuadriculaParaRaton = (function (_super) {
     __extends(CuadriculaParaRaton, _super);
     function CuadriculaParaRaton(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
-        _super.call(this, x, y, this.dameDirecciones(1, 1, cantFilas, cantColumnas), cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla);
+        _super.call(this, x, y, this.dameDirecciones(1, 1, cantFilas, cantColumnas, opcionesCuadricula), cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla);
     }
-    CuadriculaParaRaton.prototype.dameDirecciones = function (filaInicio, colInicio, filaFin, colFin) {
+    CuadriculaParaRaton.prototype.validarOpcionesCuadricula = function (opciones, maxAbj, maxDer) {
+        if (opciones['largo_min'] != undefined &&
+            opciones['largo_max'] != undefined) {
+            var largo_min = opciones['largo_min'];
+            var largo_max = opciones['largo_max'];
+            if (largo_min < 1) {
+                throw new ArgumentError("El largo debe ser al menos 1");
+            }
+            if (largo_min > maxAbj + maxDer + 1) {
+                throw new ArgumentError("El largo minimo supera al maximo posile");
+            }
+            if (largo_max < largo_min) {
+                throw new ArgumentError("El largo debe maximo debe ser >= al minimo");
+            }
+            if (largo_max > maxAbj + maxDer + 1) {
+                throw new ArgumentError("El largo maximo supera al maximo posile");
+            }
+        }
+    };
+    CuadriculaParaRaton.prototype.calcularCantidadMovimientos = function (opciones, maxAbj, maxDer) {
+        var largo_min = maxAbj + maxDer + 1;
+        var largo_max = largo_min;
+        if (opciones['largo_min'] != undefined &&
+            opciones['largo_max'] != undefined) {
+            largo_min = opciones['largo_min'];
+            largo_max = opciones['largo_max'];
+        }
+        // Elegir al azar un largo entre el min y el max
+        var largo = largo_min + Math.floor(Math.random() * (largo_max - largo_min + 1));
+        // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+        return largo - 1;
+    };
+    CuadriculaParaRaton.prototype.dameDirecciones = function (filaInicio, colInicio, filaFin, colFin, opcionesCuadricula) {
         //pre: solo me voy a moder para abajo y derecha. Con lo cual la
         //pos posInicialX<posFinalX posInicialY<posFinalY
         var cantMovDer = colFin - colInicio;
         var cantMovAbj = filaFin - filaInicio;
+        this.validarOpcionesCuadricula(opcionesCuadricula, cantMovAbj, cantMovDer);
+        var nMovimientos = this.calcularCantidadMovimientos(opcionesCuadricula, cantMovAbj, cantMovDer);
         var a = Array.apply(null, new Array(cantMovDer)).map(function () { return '->'; });
         var b = Array.apply(null, new Array(cantMovAbj)).map(function () { return 'v'; });
         var aDevolver = a.concat(b);
-        return this.shuffleArray(aDevolver);
+        return this.shuffleArray(aDevolver).slice(0, nMovimientos);
     };
     CuadriculaParaRaton.prototype.shuffleArray = function (array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -4480,13 +4514,16 @@ var LaberintoConQueso = (function (_super) {
         _super.prototype.iniciar.call(this);
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [
                 function (fila, col, pmatrix) { return !(fila == 0 && col == 0); },
-                function (fila, col, pmatrix) { return !(pmatrix[fila + 1] == undefined && pmatrix[col + 1] == undefined); }
+                function (fila, col, pmatrix) {
+                    return (pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T') ||
+                        (pmatrix[fila][col + 1] == 'T');
+                }
             ]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
     };
     LaberintoConQueso.prototype.dameOpcionesCuadricula = function () {
-        return { 'alto': 440, 'ancho': 400 };
+        return { 'alto': 440, 'ancho': 400, 'largo_min': 3, 'largo_max': 15 };
     };
     LaberintoConQueso.prototype.nombreFondo = function () {
         return 'fondo.laberinto.queso.png';
