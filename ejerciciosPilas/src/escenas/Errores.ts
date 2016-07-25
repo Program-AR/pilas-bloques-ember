@@ -18,8 +18,17 @@ class ProductionErrorHandler {
 	constructor(escena) {
 		this.escena = escena;
 	}
+
 	handle(e) {
 		this.escena.automata.decir(e.description());
 		this.escena.pausar();
+
+    if (parent) {
+      let mensaje = {
+        tipo: "errorDeActividad",
+        detalle: e.description()
+      };
+      parent.postMessage(mensaje, window.location.origin);
+    }
 	}
 }
