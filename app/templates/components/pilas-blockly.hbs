@@ -32,7 +32,10 @@
     {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
     <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
-    <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+
+    {{#if mostrarBotonCompartir}}
+      <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+    {{/if}}
 
   {{/if}}
 
