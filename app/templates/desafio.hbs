@@ -1,56 +1,13 @@
-<div class='contenido-principal desafio-contenedor'>
+{{pilas-editor
+  pilas=pilas
+  debug=debug
+  model=model
+  onReady="cuandoCargaPilas"
+  codigo=codigo
+  codigoJavascript=codigoJavascript
+  debeMostrarFinDeDesafio=true
 
-  {{#if debug}}
-
-    {{pilas-debug-bar
-          panelCanvasVisible=panelCanvasVisible
-          panelBlocklyVisible=panelBlocklyVisible
-          panelCodigoVisible=panelCodigoVisible
-    }}
-
-  {{/if}}
-
-  {{outlet}}
-
-{{#if panelCanvasVisible}}
-  <div class="desafio-panel-izquierdo {{media.classNames}}">
-
-
-    {{pilas-canvas pilas=pilas onReady="cuandoCargaPilas" escena=model.escena}}
-
-    <div class='panel-ayuda puede-seleccionar'>
-
-      <h4>{{model.titulo}}</h4>
-
-      <p>{{model.enunciado}}</p>
-
-      {{#if model.consignaInicial}}
-        <div class="tip-block">
-          <p><em>¿Sabías qué...?</em></p>
-
-          <p>{{model.consignaInicial}}</p>
-        </div>
-      {{/if}}
-
-    </div>
-
-  </div>
-{{/if}}
-
-
-{{#if panelBlocklyVisible}}
-    {{pilas-blockly guardar='guardar'
-                    registrarPrimerCodigo='registrarPrimerCodigo'
-                    codigo=codigo
-                    pilas=pilas
-                    codigoJavascript=codigoJavascript
-                    actividad=model.actividad}}
-{{/if}}
-
-{{#if panelCodigoVisible}}
-  <div class="desafio-panel-codigo">
-    <pre>{{prism codigoJavascript}}</pre>
-  </div>
-{{/if}}
-
-</div>
+  panelCanvasVisible=panelCanvasVisible
+  panelBlocklyVisible=panelBlocklyVisible
+  panelCodigoVisible=panelCodigoVisible
+}}

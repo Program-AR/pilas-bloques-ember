@@ -1,0 +1,57 @@
+<div class='contenido-principal desafio-contenedor'>
+
+  {{#if debug}}
+
+    {{pilas-debug-bar
+          panelCanvasVisible=panelCanvasVisible
+          panelBlocklyVisible=panelBlocklyVisible
+          panelCodigoVisible=panelCodigoVisible
+    }}
+
+  {{/if}}
+
+  {{outlet}}
+
+{{#if panelCanvasVisible}}
+  <div class="desafio-panel-izquierdo {{media.classNames}}">
+
+    {{pilas-canvas pilas=pilas onReady="onReady" escena=model.escena}}
+
+    <div class='panel-ayuda puede-seleccionar'>
+
+      <h4>{{model.titulo}}</h4>
+
+      <p>{{model.enunciado}}</p>
+
+      {{#if model.consignaInicial}}
+        <div class="tip-block">
+          <p><em>¿Sabías qué...?</em></p>
+
+          <p>{{model.consignaInicial}}</p>
+        </div>
+      {{/if}}
+
+    </div>
+
+  </div>
+{{/if}}
+
+
+{{#if panelBlocklyVisible}}
+    {{pilas-blockly guardar='guardar'
+                    registrarPrimerCodigo='registrarPrimerCodigo'
+                    codigo=codigo
+                    persistirSolucionEnURL=persistirSolucionEnURL
+                    debeMostrarFinDeDesafio=debeMostrarFinDeDesafio
+                    pilas=pilas
+                    codigoJavascript=codigoJavascript
+                    actividad=model.actividad}}
+{{/if}}
+
+{{#if panelCodigoVisible}}
+  <div class="desafio-panel-codigo">
+    <pre>{{prism codigoJavascript}}</pre>
+  </div>
+{{/if}}
+
+</div>
