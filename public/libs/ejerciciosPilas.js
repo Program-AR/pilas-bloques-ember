@@ -1070,6 +1070,13 @@ var ProductionErrorHandler = (function () {
     ProductionErrorHandler.prototype.handle = function (e) {
         this.escena.automata.decir(e.description());
         this.escena.pausar();
+        if (parent) {
+            var mensaje = {
+                tipo: "errorDeActividad",
+                detalle: e.description()
+            };
+            parent.postMessage(mensaje, window.location.origin);
+        }
     };
     return ProductionErrorHandler;
 })();
