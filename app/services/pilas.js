@@ -1,7 +1,19 @@
 import Ember from 'ember';
 import listaImagenes from 'pilas-engine-bloques/components/listaImagenes';
 
-export default Ember.Service.extend({
+
+/**
+ * Encapsula el acceso a pilasweb, y permite ejecutar código y obtener
+ * eventos desde el contexto de las escena.
+ *
+ * Eventos que soporta:
+ *
+ *       - terminaEjecucion
+ *       - terminaCargaInicial
+ *       - errorDeActividad
+ *
+ */
+export default Ember.Service.extend(Ember.Evented, {
   iframe: null,
   actorCounter: 0,
   pilas: null,
@@ -45,6 +57,9 @@ export default Ember.Service.extend({
 
       let pilas = iframeElement.contentWindow.eval(code);
 
+
+      this.conectarEventos();
+
       pilas.onready = () => {
 
         //this.get('actividad').iniciarEscena();
@@ -68,6 +83,7 @@ export default Ember.Service.extend({
         }
 
         this.set("loading", false);
+
       };
 
       pilas.ejecutar();
@@ -75,6 +91,42 @@ export default Ember.Service.extend({
     });
   },
 
+  liberarRecursos() {
+    this.desconectarEventos();
+  },
+
+  /**
+   * Captura cualquier mensaje desde el iframe y lo propaga
+   * como un evento de ember evented.
+   *
+   * Los eventos que se originan en el iframe tienen la forma:
+   *
+   *    {
+   *       tipo: "tipoDeMensaje"    # Cualquiera de los listados más arriba.
+   *       detalle: [...]           # string con detalles para ese evento.
+   *    }
+   *
+   * Sin embargo esta función separa esa estructura para que sea más
+   * sencillo capturarla dentro de ember.
+   *
+   * Por ejemplo, si queremos capturar un error (como hace la batería de tests),
+   * podemos escribir:
+   *
+   *   pilas.on('errorDeActividad', function(motivoDelError) {
+   *       // etc...
+   *   });
+   *
+   */
+  conectarEventos() {
+    $(window).on("message.fromIframe", (e) => {
+      let datos = e.originalEvent.data;
+      this.trigger(datos.tipo, datos.detalle);
+    });
+  },
+
+  desconectarEventos() {
+    $(window).off("message.fromIframe");
+  },
 
   inicializarEscena(iframeElement, nombreDeLaEscena) {
     let codigo = `
@@ -82,10 +134,9 @@ export default Ember.Service.extend({
       pilas.mundo.gestor_escenas.cambiar_escena(escena);
     `;
 
-    iframeElement.contentWindow.eval(codigo);
+    this.evaluar(codigo);
     this.set("nombreDeLaEscenaActual", nombreDeLaEscena);
   },
-
 
   ejecutarCodigo(codigo) {
     this.reiniciar().then(() => {
@@ -95,15 +146,11 @@ export default Ember.Service.extend({
   },
 
   estaResueltoElProblema() {
-    let iframeElement = this.get("iframe");
-    let codigo = `
-      pilas.escena_actual().estaResueltoElProblema();
-    `;
-
-    return iframeElement.contentWindow.eval(codigo);
+    return this.evaluar(`pilas.escena_actual().estaResueltoElProblema();`);
   },
 
 
+  // TODO: convertir en método privado.
   ejecutarCodigoSinReiniciar(codigo) {
     //console.log(codigo.split('\n'));
     //console.log("Ejecutando codigo", {codigo});
@@ -115,7 +162,7 @@ export default Ember.Service.extend({
 
     let iframeElement = this.get("iframe");
 
-    // reinicia la escena nuevamente
+    // reinicia la escena de manera rápida.
     this.reiniciarEscenaCompleta();
 
     iframeElement.contentWindow.eval(codigo);
@@ -126,10 +173,22 @@ export default Ember.Service.extend({
     return iframeElement.contentWindow.document.getElementById('canvas').toDataURL('image/png');
   },
 
+  /**
+   * Realiza un reinicio rápido de la escena actual.
+   */
   reiniciarEscenaCompleta() {
     let iframeElement = this.get("iframe");
     iframeElement.contentWindow.eval("pilas.reiniciar();");
     this.inicializarEscena(iframeElement, this.get("nombreDeLaEscenaActual"));
+  },
+
+  /**
+   * Modifica la velocidad de las animaciones y la simulación.
+   *
+   * Por omisión pilas utiliza un temporizador a 60 FPS.
+   */
+  cambiarFPS(fps) {
+    this.evaluar(`createjs.Ticker.setFPS(${fps});`);
   },
 
   /**
@@ -155,5 +214,24 @@ export default Ember.Service.extend({
       this.set("temporallyCallback", success);
     });
   },
+
+  contarActoresConEtiqueta(etiqueta) {
+    let codigo = `
+      var actoresEnLaEscena = pilas.escena_actual().actores;
+
+      var actoresConLaEtiqueta = actoresEnLaEscena.filter(function(actor) {
+        return actor.tiene_etiqueta("${etiqueta}");
+      });
+
+      actoresConLaEtiqueta.length;
+    `;
+
+    return this.evaluar(codigo);
+  },
+
+  evaluar(codigo) {
+    let iframeElement = this.get("iframe");
+    return iframeElement.contentWindow.eval(codigo);
+  }
 
 });
