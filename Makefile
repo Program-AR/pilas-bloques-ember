@@ -1,5 +1,5 @@
 
-VERSION=0.12.0
+VERSION=1.0.0
 NOMBRE="pilas-bloques"
 
 N=[0m
