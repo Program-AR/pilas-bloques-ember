@@ -40,7 +40,7 @@ class ActorCompuesto extends ActorAnimado {
 	}
 
 	eliminarSubactor(etiqueta) {
-		var elQueMuere = this.subactores.find(actor => actor.tiene_etiqueta(etiqueta));
+		var elQueMuere = this.subactores.filter(actor => actor.tiene_etiqueta(etiqueta))[0];
 		elQueMuere.eliminar();
 		this.subactores.splice(this.subactores.indexOf(elQueMuere),1);
 	}
