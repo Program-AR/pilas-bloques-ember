@@ -1,6 +1,6 @@
 
 VERSION=0.12.0
-NOMBRE="pilas-engine-bloques"
+NOMBRE="pilas-bloques"
 
 N=[0m
 G=[01;32m
@@ -12,7 +12,7 @@ npm_config_loglevel="warn"
 
 comandos:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}pilas-engine-bloques${N} - ${Y} versión ${VERSION}${N}"
+	@echo "${B}Comandos disponibles para ${G}pilas-bloques${N} - ${Y} versión ${VERSION}${N}"
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
@@ -227,8 +227,9 @@ _compile_osx:
 	cp -r dist/* tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/
 	mkdir tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules
 	cp -R node_modules/compare-version tmp/pilas-engine-bloques.app/Contents/Resources/app.nw/node_modules/
-	hdiutil create tmp/pilas-engine-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-engine-bloques.app -size 200mb
-	mv tmp/pilas-engine-bloques-${VERSION}.dmg webkitbuilds/
+	mv ./tmp/pilas-engine-bloques.app ./tmp/pilas-bloques.app
+	hdiutil create tmp/pilas-bloques-${VERSION}.dmg -srcfolder ./tmp/pilas-bloques.app -size 200mb
+	mv tmp/pilas-bloques-${VERSION}.dmg webkitbuilds/
 	rm -r -f tmp
 	make to_develop
 
@@ -245,7 +246,7 @@ _compile_win:
 	cp -R node_modules/compare-version tmp/nwjs/node_modules/
 	cp extras/instalador.nsi tmp/nwjs
 	cd tmp/nwjs; makensis instalador.nsi
-	mv tmp/nwjs/pilas-engine-bloques.exe webkitbuilds/pilas-engine-bloques-${VERSION}.exe
+	mv tmp/nwjs/pilas-bloques.exe webkitbuilds/pilas-bloques-${VERSION}.exe
 	make to_develop
 
 binarios: to_production build _compile_osx _compile_win
@@ -257,8 +258,8 @@ subir_a_dropbox:
 	@echo "OJO, los archivos no se subirán a dropbox."
 	@echo "Ahora se sube a static.pilas-engine.com.ar"
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
-	mv webkitbuilds/pilas-engine-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
-	mv webkitbuilds/pilas-engine-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	mv webkitbuilds/pilas-bloques-${VERSION}.dmg ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
+	mv webkitbuilds/pilas-bloques-${VERSION}.exe ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
 	scp -r ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION} root@162.243.50.192:/home/hugoruscitti/static.pilas-engine.com.ar/pilas-engine-bloques/
 
 
