@@ -5,7 +5,7 @@ moduleForComponent('pilas-canvas-actores', 'Integration | Component | pilasweb a
   integration: true
 });
 
-test('it renders', function(assert) {
+test('Puede crear un actor y actualizar algunos atributos', function(assert) {
 
   return createPilasTest(this, 'AlienInicial', (pilas, resolve) => {
     /* CREACION DE ACTORES */
@@ -41,13 +41,6 @@ test('it renders', function(assert) {
     actor.decir("chau!");
 
     resolve();
-
-    /*
-    setTimeout(() => {
-      actor.eliminar();
-      setTimeout(resolve, 500);
-    }, 500);
-    */
 
   });
 

@@ -1,0 +1,19 @@
+{
+  "name": "pilas-engine-bloques",
+  "description": "Una herramienta para aprender a programar utilizando bloques.",
+  "version": "0.11.1",
+  "themedir": "node_modules/yuidoc-ember-cli-theme",
+  "helpers": ["node_modules/yuidoc-ember-cli-theme/helpers.js"],
+  "logo": "../public/imagenes/logo.png",
+  "options": {
+    "paths": [
+      "app"
+    ],
+    "exclude": "vendor",
+    "outdir": "docs",
+    "linkNatives": true,
+    "quiet": true,
+    "parseOnly": false,
+    "lint": false
+  }
+}

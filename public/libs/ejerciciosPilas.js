@@ -1001,7 +1001,7 @@ var MovimientoAnimado = (function (_super) {
         this.receptor.y = this.valoresFinales.destino.y;
     };
     MovimientoAnimado.prototype.sanitizarArgumentosMovAn = function () {
-        this.valoresFinales.distancia = this.argumentos.distancia || this.calcularDistancia();
+        this.valoresFinales.distancia = this.argumentos.distancia === 0 ? 0 : this.argumentos.distancia || this.calcularDistancia();
         if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
             throw new ArgumentError("Direction should come as an instance of Direct");
         this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
@@ -1070,6 +1070,13 @@ var ProductionErrorHandler = (function () {
     ProductionErrorHandler.prototype.handle = function (e) {
         this.escena.automata.decir(e.description());
         this.escena.pausar();
+        if (parent) {
+            var mensaje = {
+                tipo: "errorDeActividad",
+                detalle: e.description()
+            };
+            parent.postMessage(mensaje, window.location.origin);
+        }
     };
     return ProductionErrorHandler;
 })();
@@ -1083,7 +1090,8 @@ var MovimientoEnCuadricula = (function (_super) {
     }
     MovimientoEnCuadricula.prototype.preAnimacion = function () {
         this.cuadricula = this.receptor.cuadricula;
-        this.argumentos.direccion = new Direct(this.vectorDireccion.x, this.vectorDireccion.y);
+        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+        this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         _super.prototype.preAnimacion.call(this);
         this.estoyEmpezandoAMoverme = true;
@@ -1102,6 +1110,7 @@ var MovimientoEnCuadricula = (function (_super) {
     };
     MovimientoEnCuadricula.prototype.distancia = function () {
         // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
+        return this.direccionCasilla.distancia(this);
     };
     MovimientoEnCuadricula.prototype.distanciaHorizontal = function () {
         return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
@@ -1121,78 +1130,107 @@ var MovimientoEnCuadricula = (function (_super) {
     };
     MovimientoEnCuadricula.prototype.proximaCasilla = function (casilla) {
         // Template Method. Devolver la casilla a la que se va a avanzar
+        return this.direccionCasilla.proximaCasilla(casilla);
     };
     MovimientoEnCuadricula.prototype.textoAMostrar = function () {
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
+        return this.direccionCasilla.textoAMostrar();
+    };
+    MovimientoEnCuadricula.prototype.vectorDireccion = function () {
+        return this.direccionCasilla.vectorDireccion;
     };
     return MovimientoEnCuadricula;
 })(MovimientoAnimado);
+var DirCasillaDerecha = (function () {
+    function DirCasillaDerecha() {
+        this.vectorDireccion = { x: 1, y: 0 };
+    }
+    DirCasillaDerecha.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaASuDerecha();
+    };
+    DirCasillaDerecha.prototype.textoAMostrar = function () {
+        return "la derecha";
+    };
+    DirCasillaDerecha.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaHorizontal();
+    };
+    return DirCasillaDerecha;
+})();
+var DirCasillaArriba = (function () {
+    function DirCasillaArriba() {
+        this.vectorDireccion = { x: 0, y: 1 };
+    }
+    DirCasillaArriba.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaDeArriba();
+    };
+    DirCasillaArriba.prototype.textoAMostrar = function () {
+        return "arriba";
+    };
+    DirCasillaArriba.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaVertical();
+    };
+    return DirCasillaArriba;
+})();
+var DirCasillaAbajo = (function () {
+    function DirCasillaAbajo() {
+        this.vectorDireccion = { x: 0, y: -1 };
+    }
+    DirCasillaAbajo.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaDeAbajo();
+    };
+    DirCasillaAbajo.prototype.textoAMostrar = function () {
+        return "abajo";
+    };
+    DirCasillaAbajo.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaVertical();
+    };
+    return DirCasillaAbajo;
+})();
+var DirCasillaIzquierda = (function () {
+    function DirCasillaIzquierda() {
+        this.vectorDireccion = { x: -1, y: 0 };
+    }
+    DirCasillaIzquierda.prototype.proximaCasilla = function (casilla) {
+        return casilla.casillaASuIzquierda();
+    };
+    DirCasillaIzquierda.prototype.textoAMostrar = function () {
+        return "la izquierda";
+    };
+    DirCasillaIzquierda.prototype.distancia = function (movimiento) {
+        return movimiento.distanciaHorizontal();
+    };
+    return DirCasillaIzquierda;
+})();
 var MoverACasillaDerecha = (function (_super) {
     __extends(MoverACasillaDerecha, _super);
     function MoverACasillaDerecha() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 1, y: 0 };
+        this.direccionCasilla = new DirCasillaDerecha();
     }
-    MoverACasillaDerecha.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaASuDerecha();
-    };
-    MoverACasillaDerecha.prototype.textoAMostrar = function () {
-        return "la derecha";
-    };
-    MoverACasillaDerecha.prototype.distancia = function () {
-        return this.distanciaHorizontal();
-    };
     return MoverACasillaDerecha;
 })(MovimientoEnCuadricula);
 var MoverACasillaArriba = (function (_super) {
     __extends(MoverACasillaArriba, _super);
     function MoverACasillaArriba() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 0, y: 1 };
+        this.direccionCasilla = new DirCasillaArriba();
     }
-    MoverACasillaArriba.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaDeArriba();
-    };
-    MoverACasillaArriba.prototype.textoAMostrar = function () {
-        return "arriba";
-    };
-    MoverACasillaArriba.prototype.distancia = function () {
-        return this.distanciaVertical();
-    };
     return MoverACasillaArriba;
 })(MovimientoEnCuadricula);
 var MoverACasillaAbajo = (function (_super) {
     __extends(MoverACasillaAbajo, _super);
     function MoverACasillaAbajo() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: 0, y: -1 };
+        this.direccionCasilla = new DirCasillaAbajo();
     }
-    MoverACasillaAbajo.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaDeAbajo();
-    };
-    MoverACasillaAbajo.prototype.textoAMostrar = function () {
-        return "abajo";
-    };
-    MoverACasillaAbajo.prototype.distancia = function () {
-        return this.distanciaVertical();
-    };
     return MoverACasillaAbajo;
 })(MovimientoEnCuadricula);
 var MoverACasillaIzquierda = (function (_super) {
     __extends(MoverACasillaIzquierda, _super);
     function MoverACasillaIzquierda() {
         _super.apply(this, arguments);
-        this.vectorDireccion = { x: -1, y: 0 };
+        this.direccionCasilla = new DirCasillaIzquierda();
     }
-    MoverACasillaIzquierda.prototype.proximaCasilla = function (casilla) {
-        return casilla.casillaASuIzquierda();
-    };
-    MoverACasillaIzquierda.prototype.textoAMostrar = function () {
-        return "la izquierda";
-    };
-    MoverACasillaIzquierda.prototype.distancia = function () {
-        return this.distanciaHorizontal();
-    };
     return MoverACasillaIzquierda;
 })(MovimientoEnCuadricula);
 var MoverTodoAIzquierda = (function (_super) {
@@ -1534,6 +1572,18 @@ var Detective = (function (_super) {
         _super.call(this, x, y, { grilla: 'detective.png', cantColumnas: 1 });
         this.definirAnimacion("parado", [0], 4, true);
     }
+    Detective.prototype.obtenerActorBajoLaLupa = function () {
+        var _this = this;
+        return pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(_this); })[0];
+    };
+    Detective.prototype.colisionaConElCulpable = function () {
+        var sospechoso = this.obtenerActorBajoLaLupa();
+        if (sospechoso.tieneDisflazPuesto) {
+            throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
+            return false;
+        }
+        return sospechoso.esCulpable();
+    };
     return Detective;
 })(ActorAnimado);
 /// <reference path="ActorAnimado.ts"/>
@@ -1589,6 +1639,8 @@ var Tablero = (function (_super) {
     // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
         args.imagen = args.imagen || 'invisible.png';
+        args.imagenLabel = args.imagenLabel || "PlacaContarGris.png";
+        args.imagenPuntaje = args.imagenPuntaje || "PlacaContarNegra.png";
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
         this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
@@ -1598,14 +1650,14 @@ var Tablero = (function (_super) {
     };
     Tablero.prototype.buildLabel = function (argumentos) {
         this.label = new Texto(0, this.y, argumentos.texto, { color: this.colorTxtLabel,
-            imagenFondo: "PlacaContarGris.png",
+            imagenFondo: argumentos.imagenLabel,
             margen: this.margen,
         });
         this.label.setZ(this.z - 1);
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
         this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
-            imagenFondo: "PlacaContarNegra.png",
+            imagenFondo: argumentos.imagenPuntaje,
             margen: this.margen,
         });
         this.puntaje.setZ(this.z - 2);
@@ -1688,6 +1740,7 @@ var FlechaEscenarioAleatorio = (function (_super) {
         _super.call(this, 120, 220, { imagen: 'flechaEscenarioAleatorio.png',
             texto: "¡Ejecutá varias veces!",
             separacionX: 0,
+            imagenLabel: "invisible.png",
         });
         this.aprender(Flotar, { eje: 'X', Desvio: 20 });
         this.setAlto(40);
@@ -1719,6 +1772,16 @@ var Foco = (function (_super) {
         return sgte > 12 ? 0 : sgte;
     };
     return Foco;
+})(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var FogataAnimada = (function (_super) {
+    __extends(FogataAnimada, _super);
+    function FogataAnimada(x, y) {
+        _super.call(this, x, y, { grilla: 'actor.Fogata.png', cantColumnas: 3, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 5);
+        this.definirAnimacion("prendida", [1, 2], 5);
+    }
+    return FogataAnimada;
 })(ActorAnimado);
 /// <reference path = "ActorCompuesto.ts"/>
 var FondoAnimado = (function (_super) {
@@ -2163,6 +2226,17 @@ var SandiaAnimada = (function (_super) {
     }
     return SandiaAnimada;
 })(ActorAnimado);
+/// <reference path="ActorAnimado.ts"/>
+var ScoutAnimado = (function (_super) {
+    __extends(ScoutAnimado, _super);
+    function ScoutAnimado(x, y) {
+        _super.call(this, x, y, { grilla: 'actor.BoyScout.png', cantColumnas: 9, cantFilas: 1 });
+        this.definirAnimacion("parado", [0], 1, true);
+        this.definirAnimacion("correr", [1, 2, 3], 5);
+        this.definirAnimacion("prender", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
+    }
+    return ScoutAnimado;
+})(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "ComportamientoAnimado.ts" />
 var Decir = (function (_super) {
@@ -2202,6 +2276,7 @@ var Sospechoso = (function (_super) {
         _super.call(this, x, y, { grilla: 'sospechosos.png', cantColumnas: 8 });
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
+        this.tieneDisflazPuesto = true;
     }
     Sospechoso.reiniciarDisfraces = function () {
         this.disfracesUsados = [];
@@ -2223,11 +2298,13 @@ var Sospechoso = (function (_super) {
         return this.meaCulpa;
     };
     Sospechoso.prototype.sacarDisfraz = function () {
-        if (this.meaCulpa)
+        if (this.meaCulpa) {
             this.cargarAnimacion("culpable");
+        }
+        this.tieneDisflazPuesto = false; // TODO: podríamos emitir un error si se le quita el disfraz más de una vez.
     };
     Sospechoso.prototype.mensajeAlSacarDisfraz = function () {
-        return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, este soy yo!";
+        return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!";
     };
     Sospechoso.prototype.teEncontraron = function () {
         return this.nombreAnimacionActual() === "culpable";
@@ -2487,6 +2564,20 @@ var BuilderStatePattern = (function () {
     };
     return BuilderStatePattern;
 })();
+var EstadoParaContarBuilder = (function (_super) {
+    __extends(EstadoParaContarBuilder, _super);
+    function EstadoParaContarBuilder(idTransicion, cantidadEsperada) {
+        _super.call(this, 'faltan');
+        this.agregarEstadoAceptacion('llegue');
+        var estado = this.estados['llegue'];
+        estado.cant = 0;
+        this.agregarTransicion('faltan', 'llegue', idTransicion, function () {
+            estado.cant += 1;
+            return estado.cant === cantidadEsperada;
+        });
+    }
+    return EstadoParaContarBuilder;
+})(BuilderStatePattern);
 /// <reference path = "../escenas/Errores.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoAnimado.ts" />
@@ -3465,17 +3556,51 @@ var Punto = (function () {
 var CuadriculaParaRaton = (function (_super) {
     __extends(CuadriculaParaRaton, _super);
     function CuadriculaParaRaton(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
-        _super.call(this, x, y, this.dameDirecciones(1, 1, cantFilas, cantColumnas), cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla);
+        _super.call(this, x, y, this.dameDirecciones(1, 1, cantFilas, cantColumnas, opcionesCuadricula), cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla);
     }
-    CuadriculaParaRaton.prototype.dameDirecciones = function (filaInicio, colInicio, filaFin, colFin) {
+    CuadriculaParaRaton.prototype.validarOpcionesCuadricula = function (opciones, maxAbj, maxDer) {
+        if (opciones['largo_min'] != undefined &&
+            opciones['largo_max'] != undefined) {
+            var largo_min = opciones['largo_min'];
+            var largo_max = opciones['largo_max'];
+            if (largo_min < 1) {
+                throw new ArgumentError("El largo debe ser al menos 1");
+            }
+            if (largo_min > maxAbj + maxDer + 1) {
+                throw new ArgumentError("El largo minimo supera al maximo posile");
+            }
+            if (largo_max < largo_min) {
+                throw new ArgumentError("El largo debe maximo debe ser >= al minimo");
+            }
+            if (largo_max > maxAbj + maxDer + 1) {
+                throw new ArgumentError("El largo maximo supera al maximo posile");
+            }
+        }
+    };
+    CuadriculaParaRaton.prototype.calcularCantidadMovimientos = function (opciones, maxAbj, maxDer) {
+        var largo_min = maxAbj + maxDer + 1;
+        var largo_max = largo_min;
+        if (opciones['largo_min'] != undefined &&
+            opciones['largo_max'] != undefined) {
+            largo_min = opciones['largo_min'];
+            largo_max = opciones['largo_max'];
+        }
+        // Elegir al azar un largo entre el min y el max
+        var largo = largo_min + Math.floor(Math.random() * (largo_max - largo_min + 1));
+        // -1 Porque el largo esta en casillas y necesitamos cantidad de movimientos
+        return largo - 1;
+    };
+    CuadriculaParaRaton.prototype.dameDirecciones = function (filaInicio, colInicio, filaFin, colFin, opcionesCuadricula) {
         //pre: solo me voy a moder para abajo y derecha. Con lo cual la
         //pos posInicialX<posFinalX posInicialY<posFinalY
         var cantMovDer = colFin - colInicio;
         var cantMovAbj = filaFin - filaInicio;
+        this.validarOpcionesCuadricula(opcionesCuadricula, cantMovAbj, cantMovDer);
+        var nMovimientos = this.calcularCantidadMovimientos(opcionesCuadricula, cantMovAbj, cantMovDer);
         var a = Array.apply(null, new Array(cantMovDer)).map(function () { return '->'; });
         var b = Array.apply(null, new Array(cantMovAbj)).map(function () { return 'v'; });
         var aDevolver = a.concat(b);
-        return this.shuffleArray(aDevolver);
+        return this.shuffleArray(aDevolver).slice(0, nMovimientos);
     };
     CuadriculaParaRaton.prototype.shuffleArray = function (array) {
         for (var i = array.length - 1; i > 0; i--) {
@@ -3523,15 +3648,97 @@ var DibujandoFiguras = (function (_super) {
     };
     return DibujandoFiguras;
 })(EscenaActividad);
-var DibujandoFigurasInicial = (function (_super) {
-    __extends(DibujandoFigurasInicial, _super);
-    function DibujandoFigurasInicial() {
+// Puntos obtenidos haciendo:
+// pilas.escena_actual().automata.pizarra.puntosDeLineas().map(p => " {x:" + p.x.toString() +",y:" + p.y.toString() + "}").toString()
+var DibujandoCuadrado = (function (_super) {
+    __extends(DibujandoCuadrado, _super);
+    function DibujandoCuadrado() {
         _super.apply(this, arguments);
     }
-    DibujandoFigurasInicial.prototype.puntosSolucion = function () {
+    DibujandoCuadrado.prototype.puntosSolucion = function () {
         return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }];
     };
-    return DibujandoFigurasInicial;
+    return DibujandoCuadrado;
+})(DibujandoFiguras);
+var Dibujando5CuadradosHorizontal = (function (_super) {
+    __extends(Dibujando5CuadradosHorizontal, _super);
+    function Dibujando5CuadradosHorizontal() {
+        _super.apply(this, arguments);
+    }
+    Dibujando5CuadradosHorizontal.prototype.puntosSolucion = function () {
+        return [{ x: -145, y: 100 }, { x: -140, y: 100 }, { x: -135, y: 100 }, { x: -130, y: 100 }, { x: -125, y: 100 }, { x: -120, y: 100 }, { x: -115, y: 100 }, { x: -110, y: 100 }, { x: -105, y: 100 }, { x: -100, y: 100 }, { x: -100, y: 95 }, { x: -100, y: 90 }, { x: -100, y: 85 }, { x: -100, y: 80 }, { x: -100, y: 75 }, { x: -100, y: 70 }, { x: -100, y: 65 }, { x: -100, y: 60 }, { x: -100, y: 55 }, { x: -100, y: 50 }, { x: -105, y: 50 }, { x: -110, y: 50 }, { x: -115, y: 50 }, { x: -120, y: 50 }, { x: -125, y: 50 }, { x: -130, y: 50 }, { x: -135, y: 50 }, { x: -140, y: 50 }, { x: -145, y: 50 }, { x: -150, y: 50 }, { x: -150, y: 55 }, { x: -150, y: 60 }, { x: -150, y: 65 }, { x: -150, y: 70 }, { x: -150, y: 75 }, { x: -150, y: 80 }, { x: -150, y: 85 }, { x: -150, y: 90 }, { x: -150, y: 95 }, { x: -150, y: 100 }, { x: -145, y: 100 }, { x: -140, y: 100 }, { x: -135, y: 100 }, { x: -130, y: 100 }, { x: -125, y: 100 }, { x: -120, y: 100 }, { x: -115, y: 100 }, { x: -110, y: 100 }, { x: -105, y: 100 }, { x: -100, y: 100 }, { x: -95, y: 100 }, { x: -90, y: 100 }, { x: -85, y: 100 }, { x: -80, y: 100 }, { x: -75, y: 100 }, { x: -70, y: 100 }, { x: -65, y: 100 }, { x: -60, y: 100 }, { x: -55, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 95 }, { x: -50, y: 90 }, { x: -50, y: 85 }, { x: -50, y: 80 }, { x: -50, y: 75 }, { x: -50, y: 70 }, { x: -50, y: 65 }, { x: -50, y: 60 }, { x: -50, y: 55 }, { x: -50, y: 50 }, { x: -55, y: 50 }, { x: -60, y: 50 }, { x: -65, y: 50 }, { x: -70, y: 50 }, { x: -75, y: 50 }, { x: -80, y: 50 }, { x: -85, y: 50 }, { x: -90, y: 50 }, { x: -95, y: 50 }, { x: -100, y: 50 }, { x: -100, y: 55 }, { x: -100, y: 60 }, { x: -100, y: 65 }, { x: -100, y: 70 }, { x: -100, y: 75 }, { x: -100, y: 80 }, { x: -100, y: 85 }, { x: -100, y: 90 }, { x: -100, y: 95 }, { x: -100, y: 100 }, { x: -95, y: 100 }, { x: -90, y: 100 }, { x: -85, y: 100 }, { x: -80, y: 100 }, { x: -75, y: 100 }, { x: -70, y: 100 }, { x: -65, y: 100 }, { x: -60, y: 100 }, { x: -55, y: 100 }, { x: -50, y: 100 }, { x: -45, y: 100 }, { x: -40, y: 100 }, { x: -35, y: 100 }, { x: -30, y: 100 }, { x: -25, y: 100 }, { x: -20, y: 100 }, { x: -15, y: 100 }, { x: -10, y: 100 }, { x: -5, y: 100 }, { x: 0, y: 100 }, { x: 0, y: 95 }, { x: 0, y: 90 }, { x: 0, y: 85 }, { x: 0, y: 80 }, { x: 0, y: 75 }, { x: 0, y: 70 }, { x: 0, y: 65 }, { x: 0, y: 60 }, { x: 0, y: 55 }, { x: 0, y: 50 }, { x: -5, y: 50 }, { x: -10, y: 50 }, { x: -15, y: 50 }, { x: -20, y: 50 }, { x: -25, y: 50 }, { x: -30, y: 50 }, { x: -35, y: 50 }, { x: -40, y: 50 }, { x: -45, y: 50 }, { x: -50, y: 50 }, { x: -50, y: 55 }, { x: -50, y: 60 }, { x: -50, y: 65 }, { x: -50, y: 70 }, { x: -50, y: 75 }, { x: -50, y: 80 }, { x: -50, y: 85 }, { x: -50, y: 90 }, { x: -50, y: 95 }, { x: -50, y: 100 }, { x: -45, y: 100 }, { x: -40, y: 100 }, { x: -35, y: 100 }, { x: -30, y: 100 }, { x: -25, y: 100 }, { x: -20, y: 100 }, { x: -15, y: 100 }, { x: -10, y: 100 }, { x: -5, y: 100 }, { x: 0, y: 100 }, { x: 5, y: 100 }, { x: 10, y: 100 }, { x: 15, y: 100 }, { x: 20, y: 100 }, { x: 25, y: 100 }, { x: 30, y: 100 }, { x: 35, y: 100 }, { x: 40, y: 100 }, { x: 45, y: 100 }, { x: 50, y: 100 }, { x: 50, y: 95 }, { x: 50, y: 90 }, { x: 50, y: 85 }, { x: 50, y: 80 }, { x: 50, y: 75 }, { x: 50, y: 70 }, { x: 50, y: 65 }, { x: 50, y: 60 }, { x: 50, y: 55 }, { x: 50, y: 50 }, { x: 45, y: 50 }, { x: 40, y: 50 }, { x: 35, y: 50 }, { x: 30, y: 50 }, { x: 25, y: 50 }, { x: 20, y: 50 }, { x: 15, y: 50 }, { x: 10, y: 50 }, { x: 5, y: 50 }, { x: 0, y: 50 }, { x: 0, y: 55 }, { x: 0, y: 60 }, { x: 0, y: 65 }, { x: 0, y: 70 }, { x: 0, y: 75 }, { x: 0, y: 80 }, { x: 0, y: 85 }, { x: 0, y: 90 }, { x: 0, y: 95 }, { x: 0, y: 100 }, { x: 5, y: 100 }, { x: 10, y: 100 }, { x: 15, y: 100 }, { x: 20, y: 100 }, { x: 25, y: 100 }, { x: 30, y: 100 }, { x: 35, y: 100 }, { x: 40, y: 100 }, { x: 45, y: 100 }, { x: 50, y: 100 }, { x: 55, y: 100 }, { x: 60, y: 100 }, { x: 65, y: 100 }, { x: 70, y: 100 }, { x: 75, y: 100 }, { x: 80, y: 100 }, { x: 85, y: 100 }, { x: 90, y: 100 }, { x: 95, y: 100 }, { x: 100, y: 100 }, { x: 100, y: 95 }, { x: 100, y: 90 }, { x: 100, y: 85 }, { x: 100, y: 80 }, { x: 100, y: 75 }, { x: 100, y: 70 }, { x: 100, y: 65 }, { x: 100, y: 60 }, { x: 100, y: 55 }, { x: 100, y: 50 }, { x: 95, y: 50 }, { x: 90, y: 50 }, { x: 85, y: 50 }, { x: 80, y: 50 }, { x: 75, y: 50 }, { x: 70, y: 50 }, { x: 65, y: 50 }, { x: 60, y: 50 }, { x: 55, y: 50 }, { x: 50, y: 50 }, { x: 50, y: 55 }, { x: 50, y: 60 }, { x: 50, y: 65 }, { x: 50, y: 70 }, { x: 50, y: 75 }, { x: 50, y: 80 }, { x: 50, y: 85 }, { x: 50, y: 90 }, { x: 50, y: 95 }, { x: 50, y: 100 }, { x: 55, y: 100 }, { x: 60, y: 100 }, { x: 65, y: 100 }, { x: 70, y: 100 }, { x: 75, y: 100 }, { x: 80, y: 100 }, { x: 85, y: 100 }, { x: 90, y: 100 }, { x: 95, y: 100 }, { x: 100, y: 100 }];
+    };
+    return Dibujando5CuadradosHorizontal;
+})(DibujandoFiguras);
+var Dibujando5CuadradosDiagonal = (function (_super) {
+    __extends(Dibujando5CuadradosDiagonal, _super);
+    function Dibujando5CuadradosDiagonal() {
+        _super.apply(this, arguments);
+    }
+    Dibujando5CuadradosDiagonal.prototype.puntosSolucion = function () {
+        return [{ x: -145, y: 100 }, { x: -140, y: 100 }, { x: -135, y: 100 }, { x: -130, y: 100 }, { x: -125, y: 100 }, { x: -120, y: 100 }, { x: -115, y: 100 }, { x: -110, y: 100 }, { x: -105, y: 100 }, { x: -100, y: 100 }, { x: -100, y: 95 }, { x: -100, y: 90 }, { x: -100, y: 85 }, { x: -100, y: 80 }, { x: -100, y: 75 }, { x: -100, y: 70 }, { x: -100, y: 65 }, { x: -100, y: 60 }, { x: -100, y: 55 }, { x: -100, y: 50 }, { x: -105, y: 50 }, { x: -110, y: 50 }, { x: -115, y: 50 }, { x: -120, y: 50 }, { x: -125, y: 50 }, { x: -130, y: 50 }, { x: -135, y: 50 }, { x: -140, y: 50 }, { x: -145, y: 50 }, { x: -150, y: 50 }, { x: -150, y: 55 }, { x: -150, y: 60 }, { x: -150, y: 65 }, { x: -150, y: 70 }, { x: -150, y: 75 }, { x: -150, y: 80 }, { x: -150, y: 85 }, { x: -150, y: 90 }, { x: -150, y: 95 }, { x: -150, y: 100 }, { x: -145, y: 100 }, { x: -140, y: 100 }, { x: -135, y: 100 }, { x: -130, y: 100 }, { x: -125, y: 100 }, { x: -120, y: 100 }, { x: -115, y: 100 }, { x: -110, y: 100 }, { x: -105, y: 100 }, { x: -100, y: 100 }, { x: -100, y: 95 }, { x: -100, y: 90 }, { x: -100, y: 85 }, { x: -100, y: 80 }, { x: -100, y: 75 }, { x: -100, y: 70 }, { x: -100, y: 65 }, { x: -100, y: 60 }, { x: -100, y: 55 }, { x: -100, y: 50 }, { x: -95, y: 50 }, { x: -90, y: 50 }, { x: -85, y: 50 }, { x: -80, y: 50 }, { x: -75, y: 50 }, { x: -70, y: 50 }, { x: -65, y: 50 }, { x: -60, y: 50 }, { x: -55, y: 50 }, { x: -50, y: 50 }, { x: -50, y: 45 }, { x: -50, y: 40 }, { x: -50, y: 35 }, { x: -50, y: 30 }, { x: -50, y: 25 }, { x: -50, y: 20 }, { x: -50, y: 15 }, { x: -50, y: 10 }, { x: -50, y: 5 }, { x: -50, y: 0 }, { x: -55, y: 0 }, { x: -60, y: 0 }, { x: -65, y: 0 }, { x: -70, y: 0 }, { x: -75, y: 0 }, { x: -80, y: 0 }, { x: -85, y: 0 }, { x: -90, y: 0 }, { x: -95, y: 0 }, { x: -100, y: 0 }, { x: -100, y: 5 }, { x: -100, y: 10 }, { x: -100, y: 15 }, { x: -100, y: 20 }, { x: -100, y: 25 }, { x: -100, y: 30 }, { x: -100, y: 35 }, { x: -100, y: 40 }, { x: -100, y: 45 }, { x: -100, y: 50 }, { x: -95, y: 50 }, { x: -90, y: 50 }, { x: -85, y: 50 }, { x: -80, y: 50 }, { x: -75, y: 50 }, { x: -70, y: 50 }, { x: -65, y: 50 }, { x: -60, y: 50 }, { x: -55, y: 50 }, { x: -50, y: 50 }, { x: -50, y: 45 }, { x: -50, y: 40 }, { x: -50, y: 35 }, { x: -50, y: 30 }, { x: -50, y: 25 }, { x: -50, y: 20 }, { x: -50, y: 15 }, { x: -50, y: 10 }, { x: -50, y: 5 }, { x: -50, y: 0 }, { x: -45, y: 0 }, { x: -40, y: 0 }, { x: -35, y: 0 }, { x: -30, y: 0 }, { x: -25, y: 0 }, { x: -20, y: 0 }, { x: -15, y: 0 }, { x: -10, y: 0 }, { x: -5, y: 0 }, { x: 0, y: 0 }, { x: 0, y: -5 }, { x: 0, y: -10 }, { x: 0, y: -15 }, { x: 0, y: -20 }, { x: 0, y: -25 }, { x: 0, y: -30 }, { x: 0, y: -35 }, { x: 0, y: -40 }, { x: 0, y: -45 }, { x: 0, y: -50 }, { x: -5, y: -50 }, { x: -10, y: -50 }, { x: -15, y: -50 }, { x: -20, y: -50 }, { x: -25, y: -50 }, { x: -30, y: -50 }, { x: -35, y: -50 }, { x: -40, y: -50 }, { x: -45, y: -50 }, { x: -50, y: -50 }, { x: -50, y: -45 }, { x: -50, y: -40 }, { x: -50, y: -35 }, { x: -50, y: -30 }, { x: -50, y: -25 }, { x: -50, y: -20 }, { x: -50, y: -15 }, { x: -50, y: -10 }, { x: -50, y: -5 }, { x: -50, y: 0 }, { x: -45, y: 0 }, { x: -40, y: 0 }, { x: -35, y: 0 }, { x: -30, y: 0 }, { x: -25, y: 0 }, { x: -20, y: 0 }, { x: -15, y: 0 }, { x: -10, y: 0 }, { x: -5, y: 0 }, { x: 0, y: 0 }, { x: 0, y: -5 }, { x: 0, y: -10 }, { x: 0, y: -15 }, { x: 0, y: -20 }, { x: 0, y: -25 }, { x: 0, y: -30 }, { x: 0, y: -35 }, { x: 0, y: -40 }, { x: 0, y: -45 }, { x: 0, y: -50 }, { x: 5, y: -50 }, { x: 10, y: -50 }, { x: 15, y: -50 }, { x: 20, y: -50 }, { x: 25, y: -50 }, { x: 30, y: -50 }, { x: 35, y: -50 }, { x: 40, y: -50 }, { x: 45, y: -50 }, { x: 50, y: -50 }, { x: 50, y: -55 }, { x: 50, y: -60 }, { x: 50, y: -65 }, { x: 50, y: -70 }, { x: 50, y: -75 }, { x: 50, y: -80 }, { x: 50, y: -85 }, { x: 50, y: -90 }, { x: 50, y: -95 }, { x: 50, y: -100 }, { x: 45, y: -100 }, { x: 40, y: -100 }, { x: 35, y: -100 }, { x: 30, y: -100 }, { x: 25, y: -100 }, { x: 20, y: -100 }, { x: 15, y: -100 }, { x: 10, y: -100 }, { x: 5, y: -100 }, { x: 0, y: -100 }, { x: 0, y: -95 }, { x: 0, y: -90 }, { x: 0, y: -85 }, { x: 0, y: -80 }, { x: 0, y: -75 }, { x: 0, y: -70 }, { x: 0, y: -65 }, { x: 0, y: -60 }, { x: 0, y: -55 }, { x: 0, y: -50 }, { x: 5, y: -50 }, { x: 10, y: -50 }, { x: 15, y: -50 }, { x: 20, y: -50 }, { x: 25, y: -50 }, { x: 30, y: -50 }, { x: 35, y: -50 }, { x: 40, y: -50 }, { x: 45, y: -50 }, { x: 50, y: -50 }, { x: 50, y: -55 }, { x: 50, y: -60 }, { x: 50, y: -65 }, { x: 50, y: -70 }, { x: 50, y: -75 }, { x: 50, y: -80 }, { x: 50, y: -85 }, { x: 50, y: -90 }, { x: 50, y: -95 }, { x: 50, y: -100 }, { x: 55, y: -100 }, { x: 60, y: -100 }, { x: 65, y: -100 }, { x: 70, y: -100 }, { x: 75, y: -100 }, { x: 80, y: -100 }, { x: 85, y: -100 }, { x: 90, y: -100 }, { x: 95, y: -100 }, { x: 100, y: -100 }, { x: 100, y: -105 }, { x: 100, y: -110 }, { x: 100, y: -115 }, { x: 100, y: -120 }, { x: 100, y: -125 }, { x: 100, y: -130 }, { x: 100, y: -135 }, { x: 100, y: -140 }, { x: 100, y: -145 }, { x: 100, y: -150 }, { x: 95, y: -150 }, { x: 90, y: -150 }, { x: 85, y: -150 }, { x: 80, y: -150 }, { x: 75, y: -150 }, { x: 70, y: -150 }, { x: 65, y: -150 }, { x: 60, y: -150 }, { x: 55, y: -150 }, { x: 50, y: -150 }, { x: 50, y: -145 }, { x: 50, y: -140 }, { x: 50, y: -135 }, { x: 50, y: -130 }, { x: 50, y: -125 }, { x: 50, y: -120 }, { x: 50, y: -115 }, { x: 50, y: -110 }, { x: 50, y: -105 }, { x: 50, y: -100 }, { x: 55, y: -100 }, { x: 60, y: -100 }, { x: 65, y: -100 }, { x: 70, y: -100 }, { x: 75, y: -100 }, { x: 80, y: -100 }, { x: 85, y: -100 }, { x: 90, y: -100 }, { x: 95, y: -100 }, { x: 100, y: -100 }, { x: 100, y: -105 }, { x: 100, y: -110 }, { x: 100, y: -115 }, { x: 100, y: -120 }, { x: 100, y: -125 }, { x: 100, y: -130 }, { x: 100, y: -135 }, { x: 100, y: -140 }, { x: 100, y: -145 }, { x: 100, y: -150 }];
+    };
+    return Dibujando5CuadradosDiagonal;
+})(DibujandoFiguras);
+var Dibujando4CuadradosInteriores = (function (_super) {
+    __extends(Dibujando4CuadradosInteriores, _super);
+    function Dibujando4CuadradosInteriores() {
+        _super.apply(this, arguments);
+    }
+    Dibujando4CuadradosInteriores.prototype.puntosSolucion = function () {
+        return [{ x: -145, y: 100 }, { x: -140, y: 100 }, { x: -135, y: 100 }, { x: -130, y: 100 }, { x: -125, y: 100 }, { x: -120, y: 100 }, { x: -115, y: 100 }, { x: -110, y: 100 }, { x: -105, y: 100 }, { x: -100, y: 100 }, { x: -100, y: 95 }, { x: -100, y: 90 }, { x: -100, y: 85 }, { x: -100, y: 80 }, { x: -100, y: 75 }, { x: -100, y: 70 }, { x: -100, y: 65 }, { x: -100, y: 60 }, { x: -100, y: 55 }, { x: -100, y: 50 }, { x: -105, y: 50 }, { x: -110, y: 50 }, { x: -115, y: 50 }, { x: -120, y: 50 }, { x: -125, y: 50 }, { x: -130, y: 50 }, { x: -135, y: 50 }, { x: -140, y: 50 }, { x: -145, y: 50 }, { x: -150, y: 50 }, { x: -150, y: 55 }, { x: -150, y: 60 }, { x: -150, y: 65 }, { x: -150, y: 70 }, { x: -150, y: 75 }, { x: -150, y: 80 }, { x: -150, y: 85 }, { x: -150, y: 90 }, { x: -150, y: 95 }, { x: -150, y: 100 }, { x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }, { x: -135, y: 100 }, { x: -120, y: 100 }, { x: -105, y: 100 }, { x: -90, y: 100 }, { x: -75, y: 100 }, { x: -60, y: 100 }, { x: -45, y: 100 }, { x: -30, y: 100 }, { x: -15, y: 100 }, { x: 0, y: 100 }, { x: 0, y: 85 }, { x: 0, y: 70 }, { x: 0, y: 55 }, { x: 0, y: 40 }, { x: 0, y: 25 }, { x: 0, y: 10 }, { x: 0, y: -5 }, { x: 0, y: -20 }, { x: 0, y: -35 }, { x: 0, y: -50 }, { x: -15, y: -50 }, { x: -30, y: -50 }, { x: -45, y: -50 }, { x: -60, y: -50 }, { x: -75, y: -50 }, { x: -90, y: -50 }, { x: -105, y: -50 }, { x: -120, y: -50 }, { x: -135, y: -50 }, { x: -150, y: -50 }, { x: -150, y: -35 }, { x: -150, y: -20 }, { x: -150, y: -5 }, { x: -150, y: 10 }, { x: -150, y: 25 }, { x: -150, y: 40 }, { x: -150, y: 55 }, { x: -150, y: 70 }, { x: -150, y: 85 }, { x: -150, y: 100 }, { x: -130, y: 100 }, { x: -110, y: 100 }, { x: -90, y: 100 }, { x: -70, y: 100 }, { x: -50, y: 100 }, { x: -30, y: 100 }, { x: -10, y: 100 }, { x: 10, y: 100 }, { x: 30, y: 100 }, { x: 50, y: 100 }, { x: 50, y: 80 }, { x: 50, y: 60 }, { x: 50, y: 40 }, { x: 50, y: 20 }, { x: 50, y: 0 }, { x: 50, y: -20 }, { x: 50, y: -40 }, { x: 50, y: -60 }, { x: 50, y: -80 }, { x: 50, y: -100 }, { x: 30, y: -100 }, { x: 10, y: -100 }, { x: -10, y: -100 }, { x: -30, y: -100 }, { x: -50, y: -100 }, { x: -70, y: -100 }, { x: -90, y: -100 }, { x: -110, y: -100 }, { x: -130, y: -100 }, { x: -150, y: -100 }, { x: -150, y: -80 }, { x: -150, y: -60 }, { x: -150, y: -40 }, { x: -150, y: -20 }, { x: -150, y: 0 }, { x: -150, y: 20 }, { x: -150, y: 40 }, { x: -150, y: 60 }, { x: -150, y: 80 }, { x: -150, y: 100 }];
+    };
+    return Dibujando4CuadradosInteriores;
+})(DibujandoFiguras);
+var DibujandoCabezaElefante = (function (_super) {
+    __extends(DibujandoCabezaElefante, _super);
+    function DibujandoCabezaElefante() {
+        _super.apply(this, arguments);
+    }
+    DibujandoCabezaElefante.prototype.puntosSolucion = function () {
+        return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }, { x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -50, y: -5 }, { x: -50, y: -10 }, { x: -50, y: -15 }, { x: -50, y: -20 }, { x: -50, y: -25 }, { x: -50, y: -30 }, { x: -50, y: -35 }, { x: -50, y: -40 }, { x: -50, y: -45 }, { x: -50, y: -50 }, { x: -55, y: -50 }, { x: -60, y: -50 }, { x: -65, y: -50 }, { x: -70, y: -50 }, { x: -75, y: -50 }, { x: -80, y: -50 }, { x: -85, y: -50 }, { x: -90, y: -50 }, { x: -95, y: -50 }, { x: -100, y: -50 }, { x: -100, y: -45 }, { x: -100, y: -40 }, { x: -100, y: -35 }, { x: -100, y: -30 }, { x: -100, y: -25 }, { x: -100, y: -20 }, { x: -100, y: -15 }, { x: -100, y: -10 }, { x: -100, y: -5 }, { x: -100, y: 0 }, { x: -95, y: 0 }, { x: -90, y: 0 }, { x: -85, y: 0 }, { x: -80, y: 0 }, { x: -75, y: 0 }, { x: -70, y: 0 }, { x: -65, y: 0 }, { x: -60, y: 0 }, { x: -55, y: 0 }, { x: -50, y: 0 }, { x: -50, y: -5 }, { x: -50, y: -10 }, { x: -50, y: -15 }, { x: -50, y: -20 }, { x: -50, y: -25 }, { x: -50, y: -30 }, { x: -50, y: -35 }, { x: -50, y: -40 }, { x: -50, y: -45 }, { x: -50, y: -50 }, { x: -50, y: -55 }, { x: -50, y: -60 }, { x: -50, y: -65 }, { x: -50, y: -70 }, { x: -50, y: -75 }, { x: -50, y: -80 }, { x: -50, y: -85 }, { x: -50, y: -90 }, { x: -50, y: -95 }, { x: -50, y: -100 }, { x: -55, y: -100 }, { x: -60, y: -100 }, { x: -65, y: -100 }, { x: -70, y: -100 }, { x: -75, y: -100 }, { x: -80, y: -100 }, { x: -85, y: -100 }, { x: -90, y: -100 }, { x: -95, y: -100 }, { x: -100, y: -100 }, { x: -100, y: -95 }, { x: -100, y: -90 }, { x: -100, y: -85 }, { x: -100, y: -80 }, { x: -100, y: -75 }, { x: -100, y: -70 }, { x: -100, y: -65 }, { x: -100, y: -60 }, { x: -100, y: -55 }, { x: -100, y: -50 }, { x: -95, y: -50 }, { x: -90, y: -50 }, { x: -85, y: -50 }, { x: -80, y: -50 }, { x: -75, y: -50 }, { x: -70, y: -50 }, { x: -65, y: -50 }, { x: -60, y: -50 }, { x: -55, y: -50 }, { x: -50, y: -50 }, { x: -50, y: -55 }, { x: -50, y: -60 }, { x: -50, y: -65 }, { x: -50, y: -70 }, { x: -50, y: -75 }, { x: -50, y: -80 }, { x: -50, y: -85 }, { x: -50, y: -90 }, { x: -50, y: -95 }, { x: -50, y: -100 }, { x: -50, y: -105 }, { x: -50, y: -110 }, { x: -50, y: -115 }, { x: -50, y: -120 }, { x: -50, y: -125 }, { x: -50, y: -130 }, { x: -50, y: -135 }, { x: -50, y: -140 }, { x: -50, y: -145 }, { x: -50, y: -150 }, { x: -55, y: -150 }, { x: -60, y: -150 }, { x: -65, y: -150 }, { x: -70, y: -150 }, { x: -75, y: -150 }, { x: -80, y: -150 }, { x: -85, y: -150 }, { x: -90, y: -150 }, { x: -95, y: -150 }, { x: -100, y: -150 }, { x: -100, y: -145 }, { x: -100, y: -140 }, { x: -100, y: -135 }, { x: -100, y: -130 }, { x: -100, y: -125 }, { x: -100, y: -120 }, { x: -100, y: -115 }, { x: -100, y: -110 }, { x: -100, y: -105 }, { x: -100, y: -100 }, { x: -95, y: -100 }, { x: -90, y: -100 }, { x: -85, y: -100 }, { x: -80, y: -100 }, { x: -75, y: -100 }, { x: -70, y: -100 }, { x: -65, y: -100 }, { x: -60, y: -100 }, { x: -55, y: -100 }, { x: -50, y: -100 }, { x: -50, y: -105 }, { x: -50, y: -110 }, { x: -50, y: -115 }, { x: -50, y: -120 }, { x: -50, y: -125 }, { x: -50, y: -130 }, { x: -50, y: -135 }, { x: -50, y: -140 }, { x: -50, y: -145 }, { x: -50, y: -150 }, { x: -50, y: -155 }, { x: -50, y: -160 }, { x: -50, y: -165 }, { x: -50, y: -170 }, { x: -50, y: -175 }, { x: -50, y: -180 }, { x: -50, y: -185 }, { x: -50, y: -190 }, { x: -50, y: -195 }, { x: -50, y: -200 }, { x: -55, y: -200 }, { x: -60, y: -200 }, { x: -65, y: -200 }, { x: -70, y: -200 }, { x: -75, y: -200 }, { x: -80, y: -200 }, { x: -85, y: -200 }, { x: -90, y: -200 }, { x: -95, y: -200 }, { x: -100, y: -200 }, { x: -100, y: -195 }, { x: -100, y: -190 }, { x: -100, y: -185 }, { x: -100, y: -180 }, { x: -100, y: -175 }, { x: -100, y: -170 }, { x: -100, y: -165 }, { x: -100, y: -160 }, { x: -100, y: -155 }, { x: -100, y: -150 }, { x: -95, y: -150 }, { x: -90, y: -150 }, { x: -85, y: -150 }, { x: -80, y: -150 }, { x: -75, y: -150 }, { x: -70, y: -150 }, { x: -65, y: -150 }, { x: -60, y: -150 }, { x: -55, y: -150 }, { x: -50, y: -150 }, { x: -50, y: -155 }, { x: -50, y: -160 }, { x: -50, y: -165 }, { x: -50, y: -170 }, { x: -50, y: -175 }, { x: -50, y: -180 }, { x: -50, y: -185 }, { x: -50, y: -190 }, { x: -50, y: -195 }, { x: -50, y: -200 }];
+    };
+    return DibujandoCabezaElefante;
+})(DibujandoFiguras);
+var DibujandoHexagono = (function (_super) {
+    __extends(DibujandoHexagono, _super);
+    function DibujandoHexagono() {
+        _super.apply(this, arguments);
+    }
+    DibujandoHexagono.prototype.puntosSolucion = function () {
+        return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -45, y: 91 }, { x: -40, y: 83 }, { x: -35, y: 74 }, { x: -30, y: 65 }, { x: -25, y: 57 }, { x: -20, y: 48 }, { x: -15, y: 39 }, { x: -10, y: 31 }, { x: -5, y: 22 }, { x: 0, y: 13 }, { x: -5, y: 5 }, { x: -10, y: -4 }, { x: -15, y: -13 }, { x: -20, y: -21 }, { x: -25, y: -30 }, { x: -30, y: -39 }, { x: -35, y: -47 }, { x: -40, y: -56 }, { x: -45, y: -65 }, { x: -50, y: -73 }, { x: -60, y: -73 }, { x: -70, y: -73 }, { x: -80, y: -73 }, { x: -90, y: -73 }, { x: -100, y: -73 }, { x: -110, y: -73 }, { x: -120, y: -73 }, { x: -130, y: -73 }, { x: -140, y: -73 }, { x: -150, y: -73 }, { x: -155, y: -65 }, { x: -160, y: -56 }, { x: -165, y: -47 }, { x: -170, y: -39 }, { x: -175, y: -30 }, { x: -180, y: -21 }, { x: -185, y: -13 }, { x: -190, y: -4 }, { x: -195, y: 5 }, { x: -200, y: 13 }, { x: -195, y: 22 }, { x: -190, y: 31 }, { x: -185, y: 39 }, { x: -180, y: 48 }, { x: -175, y: 57 }, { x: -170, y: 65 }, { x: -165, y: 74 }, { x: -160, y: 83 }, { x: -155, y: 91 }, { x: -150, y: 100 }];
+    };
+    return DibujandoHexagono;
+})(DibujandoFiguras);
+var DibujandoTrianguloEquilatero = (function (_super) {
+    __extends(DibujandoTrianguloEquilatero, _super);
+    function DibujandoTrianguloEquilatero() {
+        _super.apply(this, arguments);
+    }
+    DibujandoTrianguloEquilatero.prototype.puntosSolucion = function () {
+        return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -55, y: 91 }, { x: -60, y: 83 }, { x: -65, y: 74 }, { x: -70, y: 65 }, { x: -75, y: 57 }, { x: -80, y: 48 }, { x: -85, y: 39 }, { x: -90, y: 31 }, { x: -95, y: 22 }, { x: -100, y: 13 }, { x: -105, y: 22 }, { x: -110, y: 31 }, { x: -115, y: 39 }, { x: -120, y: 48 }, { x: -125, y: 57 }, { x: -130, y: 65 }, { x: -135, y: 74 }, { x: -140, y: 83 }, { x: -145, y: 91 }, { x: -150, y: 100 }];
+    };
+    return DibujandoTrianguloEquilatero;
+})(DibujandoFiguras);
+var DibujandoPoligonosInteriores = (function (_super) {
+    __extends(DibujandoPoligonosInteriores, _super);
+    function DibujandoPoligonosInteriores() {
+        _super.apply(this, arguments);
+    }
+    DibujandoPoligonosInteriores.prototype.puntosSolucion = function () {
+        return [{ x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -55, y: 91 }, { x: -60, y: 83 }, { x: -65, y: 74 }, { x: -70, y: 65 }, { x: -75, y: 57 }, { x: -80, y: 48 }, { x: -85, y: 39 }, { x: -90, y: 31 }, { x: -95, y: 22 }, { x: -100, y: 13 }, { x: -105, y: 22 }, { x: -110, y: 31 }, { x: -115, y: 39 }, { x: -120, y: 48 }, { x: -125, y: 57 }, { x: -130, y: 65 }, { x: -135, y: 74 }, { x: -140, y: 83 }, { x: -145, y: 91 }, { x: -150, y: 100 }, { x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -50, y: 90 }, { x: -50, y: 80 }, { x: -50, y: 70 }, { x: -50, y: 60 }, { x: -50, y: 50 }, { x: -50, y: 40 }, { x: -50, y: 30 }, { x: -50, y: 20 }, { x: -50, y: 10 }, { x: -50, y: 0 }, { x: -60, y: 0 }, { x: -70, y: 0 }, { x: -80, y: 0 }, { x: -90, y: 0 }, { x: -100, y: 0 }, { x: -110, y: 0 }, { x: -120, y: 0 }, { x: -130, y: 0 }, { x: -140, y: 0 }, { x: -150, y: 0 }, { x: -150, y: 10 }, { x: -150, y: 20 }, { x: -150, y: 30 }, { x: -150, y: 40 }, { x: -150, y: 50 }, { x: -150, y: 60 }, { x: -150, y: 70 }, { x: -150, y: 80 }, { x: -150, y: 90 }, { x: -150, y: 100 }, { x: -140, y: 100 }, { x: -130, y: 100 }, { x: -120, y: 100 }, { x: -110, y: 100 }, { x: -100, y: 100 }, { x: -90, y: 100 }, { x: -80, y: 100 }, { x: -70, y: 100 }, { x: -60, y: 100 }, { x: -50, y: 100 }, { x: -47, y: 90 }, { x: -44, y: 81 }, { x: -41, y: 71 }, { x: -38, y: 62 }, { x: -35, y: 52 }, { x: -31, y: 43 }, { x: -28, y: 33 }, { x: -25, y: 24 }, { x: -22, y: 14 }, { x: -19, y: 5 }, { x: -27, y: -1 }, { x: -35, y: -7 }, { x: -43, y: -13 }, { x: -51, y: -19 }, { x: -60, y: -24 }, { x: -68, y: -30 }, { x: -76, y: -36 }, { x: -84, y: -42 }, { x: -92, y: -48 }, { x: -100, y: -54 }, { x: -108, y: -48 }, { x: -116, y: -42 }, { x: -124, y: -36 }, { x: -132, y: -30 }, { x: -140, y: -24 }, { x: -149, y: -19 }, { x: -157, y: -13 }, { x: -165, y: -7 }, { x: -173, y: -1 }, { x: -181, y: 5 }, { x: -178, y: 14 }, { x: -175, y: 24 }, { x: -172, y: 33 }, { x: -169, y: 43 }, { x: -165, y: 52 }, { x: -162, y: 62 }, { x: -159, y: 71 }, { x: -156, y: 81 }, { x: -153, y: 90 }, { x: -150, y: 100 }];
+    };
+    return DibujandoPoligonosInteriores;
+})(DibujandoFiguras);
+var DibujandoCuevaEstalagtitas = (function (_super) {
+    __extends(DibujandoCuevaEstalagtitas, _super);
+    function DibujandoCuevaEstalagtitas() {
+        _super.apply(this, arguments);
+    }
+    DibujandoCuevaEstalagtitas.prototype.puntosSolucion = function () {
+        return [{ x: -130, y: 100 }, { x: -110, y: 100 }, { x: -90, y: 100 }, { x: -70, y: 100 }, { x: -50, y: 100 }, { x: -30, y: 100 }, { x: -10, y: 100 }, { x: 10, y: 100 }, { x: 30, y: 100 }, { x: 50, y: 100 }, { x: 50, y: 80 }, { x: 50, y: 60 }, { x: 50, y: 40 }, { x: 50, y: 20 }, { x: 50, y: 0 }, { x: 50, y: -20 }, { x: 50, y: -40 }, { x: 50, y: -60 }, { x: 50, y: -80 }, { x: 50, y: -100 }, { x: 30, y: -100 }, { x: 10, y: -100 }, { x: -10, y: -100 }, { x: -30, y: -100 }, { x: -50, y: -100 }, { x: -70, y: -100 }, { x: -90, y: -100 }, { x: -110, y: -100 }, { x: -130, y: -100 }, { x: -150, y: -100 }, { x: -150, y: -80 }, { x: -150, y: -60 }, { x: -150, y: -40 }, { x: -150, y: -20 }, { x: -150, y: 0 }, { x: -150, y: 20 }, { x: -150, y: 40 }, { x: -150, y: 60 }, { x: -150, y: 80 }, { x: -150, y: 100 }, { x: -146, y: 100 }, { x: -142, y: 100 }, { x: -138, y: 100 }, { x: -134, y: 100 }, { x: -130, y: 100 }, { x: -126, y: 100 }, { x: -122, y: 100 }, { x: -118, y: 100 }, { x: -114, y: 100 }, { x: -110, y: 100 }, { x: -112, y: 97 }, { x: -114, y: 93 }, { x: -116, y: 90 }, { x: -118, y: 86 }, { x: -120, y: 83 }, { x: -122, y: 79 }, { x: -124, y: 76 }, { x: -126, y: 72 }, { x: -128, y: 69 }, { x: -130, y: 65 }, { x: -132, y: 69 }, { x: -134, y: 72 }, { x: -136, y: 76 }, { x: -138, y: 79 }, { x: -140, y: 83 }, { x: -142, y: 86 }, { x: -144, y: 90 }, { x: -146, y: 93 }, { x: -148, y: 97 }, { x: -150, y: 100 }, { x: -146, y: 100 }, { x: -142, y: 100 }, { x: -138, y: 100 }, { x: -134, y: 100 }, { x: -130, y: 100 }, { x: -126, y: 100 }, { x: -122, y: 100 }, { x: -118, y: 100 }, { x: -114, y: 100 }, { x: -110, y: 100 }, { x: -104, y: 100 }, { x: -98, y: 100 }, { x: -92, y: 100 }, { x: -86, y: 100 }, { x: -80, y: 100 }, { x: -74, y: 100 }, { x: -68, y: 100 }, { x: -62, y: 100 }, { x: -56, y: 100 }, { x: -50, y: 100 }, { x: -53, y: 95 }, { x: -56, y: 90 }, { x: -59, y: 84 }, { x: -62, y: 79 }, { x: -65, y: 74 }, { x: -68, y: 69 }, { x: -71, y: 64 }, { x: -74, y: 58 }, { x: -77, y: 53 }, { x: -80, y: 48 }, { x: -83, y: 53 }, { x: -86, y: 58 }, { x: -89, y: 64 }, { x: -92, y: 69 }, { x: -95, y: 74 }, { x: -98, y: 79 }, { x: -101, y: 84 }, { x: -104, y: 90 }, { x: -107, y: 95 }, { x: -110, y: 100 }, { x: -104, y: 100 }, { x: -98, y: 100 }, { x: -92, y: 100 }, { x: -86, y: 100 }, { x: -80, y: 100 }, { x: -74, y: 100 }, { x: -68, y: 100 }, { x: -62, y: 100 }, { x: -56, y: 100 }, { x: -50, y: 100 }, { x: -40, y: 100 }, { x: -30, y: 100 }, { x: -20, y: 100 }, { x: -10, y: 100 }, { x: 0, y: 100 }, { x: 10, y: 100 }, { x: 20, y: 100 }, { x: 30, y: 100 }, { x: 40, y: 100 }, { x: 50, y: 100 }, { x: 45, y: 91 }, { x: 40, y: 83 }, { x: 35, y: 74 }, { x: 30, y: 65 }, { x: 25, y: 57 }, { x: 20, y: 48 }, { x: 15, y: 39 }, { x: 10, y: 31 }, { x: 5, y: 22 }, { x: 0, y: 13 }, { x: -5, y: 22 }, { x: -10, y: 31 }, { x: -15, y: 39 }, { x: -20, y: 48 }, { x: -25, y: 57 }, { x: -30, y: 65 }, { x: -35, y: 74 }, { x: -40, y: 83 }, { x: -45, y: 91 }, { x: -50, y: 100 }];
+    };
+    return DibujandoCuevaEstalagtitas;
 })(DibujandoFiguras);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
@@ -3559,6 +3766,7 @@ var ElCangrejoAguafiestas = (function (_super) {
         this.automata = new CangrejoAnimado(0, 0);
         this.automata.escala *= 1.2;
         this.cuadricula.agregarActor(this.automata, 0, 0);
+        this.estado = new EstadoParaContarBuilder('explotar', 18).estadoInicial();
     };
     ElCangrejoAguafiestas.prototype.completarConGlobos = function () {
         var _this = this;
@@ -3571,9 +3779,6 @@ var ElCangrejoAguafiestas = (function (_super) {
         globo.y += 20;
         globo.escala *= 0.8;
         globo.aprender(Flotar, { Desvio: 5 });
-    };
-    ElCangrejoAguafiestas.prototype.estaResueltoElProblema = function () {
-        return this.contarActoresConEtiqueta('GloboAnimado') === 1; // porque el programa termina antes de que se elimine el último globo
     };
     return ElCangrejoAguafiestas;
 })(EscenaActividad);
@@ -3617,11 +3822,11 @@ var SacarDisfraz = (function (_super) {
     function SacarDisfraz() {
         _super.apply(this, arguments);
     }
-    SacarDisfraz.prototype.iniciar = function (receptor) {
-        this.argumentos.receptor = pilas.obtener_actores_con_etiqueta("Sospechoso").filter(function (s) { return s.colisiona_con(receptor); })[0];
+    SacarDisfraz.prototype.iniciar = function (receptorDetective) {
+        this.argumentos.receptor = receptorDetective.obtenerActorBajoLaLupa();
         this.argumentos.receptor.sacarDisfraz();
         this.argumentos.mensaje = this.argumentos.receptor.mensajeAlSacarDisfraz();
-        _super.prototype.iniciar.call(this, receptor);
+        _super.prototype.iniciar.call(this, receptorDetective);
     };
     return SacarDisfraz;
 })(Decir);
@@ -3886,33 +4091,35 @@ var ElPlanetaDeNano = (function (_super) {
     }
     ElPlanetaDeNano.prototype.iniciar = function () {
         //this.recolector.izquierda = pilas.izquierda();
-        var cantidadFilas = 4;
+        this.cantidadFilas = 4;
         this.cantidadColumnas = 5;
         this.fondo = new Fondo('fondos.elPlanetaDeNano.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
         this.automata = new NanoAnimado(0, 0);
-        this.cuadricula.agregarActor(this.automata, cantidadFilas - 1, 0);
-        this.automata.escala *= 2;
+        this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
+        this.automata.escala *= 1.8;
         this.automata.y += 15;
         this.secuenciaCaminata = new Secuencia({ 'secuencia': [new MoverACasillaIzquierda({})] });
         this.secuenciaCaminata.iniciar(this.automata);
-        this.tableroBananas = new Tablero(150, 220, { texto: "Bananas" });
-        this.cantidadBananas = new ObservadoConAumentar();
-        this.cantidadBananas.cantidad = 0;
-        this.cantidadBananas.registrarObservador(this.tableroBananas);
         this.completarConBananas();
+        this.cantidadInicial = this.contarActoresConEtiqueta('BananaAnimada');
+        this.tablero = new Tablero(150, 220, { texto: "Bananas" });
+    };
+    ElPlanetaDeNano.prototype.actualizar = function () {
+        _super.prototype.actualizar.call(this);
+        this.tablero.setearValor(this.cantidadRecolectadas());
+    };
+    ElPlanetaDeNano.prototype.cantidadRecolectadas = function () {
+        var cantidadActual = this.contarActoresConEtiqueta('BananaAnimada');
+        return this.cantidadInicial - cantidadActual;
     };
     ElPlanetaDeNano.prototype.completarConBananas = function () {
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 0, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 1, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 2, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 1);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 2);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 3);
-        this.cuadricula.agregarActor(new BananaAnimada(0, 0), 3, 4);
+        var cantidad = [2, 4, 1, 3];
+        for (var i = 0; i < this.cantidadFilas; i++) {
+            for (var j = 1; j <= cantidad[i]; j++) {
+                this.cuadricula.agregarActor(new BananaAnimada(0, 0), i, j);
+            }
+        }
     };
     ElPlanetaDeNano.prototype.estaResueltoElProblema = function () {
         return this.contarActoresConEtiqueta('BananaAnimada') == 0;
@@ -3977,18 +4184,7 @@ var FutbolRobots = (function (_super) {
             this.cuadricula.agregarActor(new PelotaAnimada(0, 0), fila, this.cuadricula.dameIndexUltimaPosicion(fila));
         }
         ;
-        this.crearEstado();
-    };
-    FutbolRobots.prototype.crearEstado = function () {
-        this.cantPateadas = 0;
-        var myThis = this;
-        var builder = new BuilderStatePattern('faltaPatear');
-        builder.agregarEstadoAceptacion('todasPateadas');
-        builder.agregarTransicion('faltaPatear', 'todasPateadas', 'patear', function () {
-            myThis.cantPateadas += 1;
-            return myThis.cantPateadas === myThis.cantidadFilas;
-        });
-        this.estado = builder.estadoInicial();
+        this.estado = new EstadoParaContarBuilder('patear', this.cantidadFilas).estadoInicial();
     };
     return FutbolRobots;
 })(EscenaActividad);
@@ -4325,13 +4521,16 @@ var LaberintoConQueso = (function (_super) {
         _super.prototype.iniciar.call(this);
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [
                 function (fila, col, pmatrix) { return !(fila == 0 && col == 0); },
-                function (fila, col, pmatrix) { return !(pmatrix[fila + 1] == undefined && pmatrix[col + 1] == undefined); }
+                function (fila, col, pmatrix) {
+                    return (pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T') ||
+                        (pmatrix[fila][col + 1] == 'T');
+                }
             ]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
     };
     LaberintoConQueso.prototype.dameOpcionesCuadricula = function () {
-        return { 'alto': 440, 'ancho': 400 };
+        return { 'alto': 440, 'ancho': 400, 'largo_min': 3, 'largo_max': 15 };
     };
     LaberintoConQueso.prototype.nombreFondo = function () {
         return 'fondo.laberinto.queso.png';
@@ -4480,6 +4679,65 @@ var PrendiendoLasCompus = (function (_super) {
         return this.compus.every(function (compu) { return compu.nombreAnimacionActual() === 'prendida'; });
     };
     return PrendiendoLasCompus;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/ScoutAnimado.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
+var PrendiendoLasFogatas = (function (_super) {
+    __extends(PrendiendoLasFogatas, _super);
+    function PrendiendoLasFogatas() {
+        _super.apply(this, arguments);
+    }
+    PrendiendoLasFogatas.prototype.iniciar = function () {
+        this.fogatas = [];
+        this.cantidadFilas = 7;
+        this.cantidadColumnas = 7;
+        var matriz = [
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
+            ['T', 'T', 'T', 'T', 'T', 'T', 'T']
+        ];
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas.violeta.png' }, matriz);
+        this.ladoCasilla = 30;
+        this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
+        this.agregarFogatas();
+        this.automata = new ScoutAnimado(0, 0);
+        this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
+    };
+    PrendiendoLasFogatas.prototype.agregarFogatas = function () {
+        for (var i = 1; i < this.cantidadColumnas - 1; i++) {
+            if (Math.random() < .5) {
+                this.agregarFogata(0, i);
+            }
+            if (Math.random() < .5) {
+                this.agregarFogata(this.cantidadFilas - 1, i);
+            }
+        }
+        for (var j = 1; j < this.cantidadFilas - 1; j++) {
+            if (Math.random() < .5) {
+                this.agregarFogata(j, 0);
+            }
+            if (Math.random() < .5) {
+                this.agregarFogata(j, this.cantidadColumnas - 1);
+            }
+        }
+    };
+    PrendiendoLasFogatas.prototype.agregarFogata = function (fila, columna) {
+        var fogata = new FogataAnimada(0, 0);
+        this.cuadricula.agregarActor(fogata, fila, columna);
+        this.fogatas.push(fogata);
+    };
+    PrendiendoLasFogatas.prototype.estaResueltoElProblema = function () {
+        return this.fogatas.every(function (fogata) {
+            return (fogata.nombreAnimacionActual() === 'prendida');
+        });
+    };
+    return PrendiendoLasFogatas;
 })(EscenaActividad);
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "EscenaActividad.ts" />
@@ -4686,7 +4944,7 @@ var SuperViaje = (function (_super) {
     };
     SuperViaje.prototype.crearTablero = function () {
         Trait.toObject(Observado, this.automata);
-        var tablero = new Tablero(0, 210, { texto: "Kilómetros de distancia:", atributoObservado: 'kmsTotales' });
+        var tablero = new Tablero(0, 210, { texto: "Kilómetros a recorrer", atributoObservado: 'kmsTotales' });
         this.automata.registrarObservador(tablero);
     };
     SuperViaje.prototype.estaResueltoElProblema = function () {
@@ -4705,6 +4963,7 @@ var TitoCuadrado = (function (_super) {
     }
     TitoCuadrado.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.tito-cuadrado.png', 0, 0);
+        this.luces = [];
         this.cantidadFilas = 7;
         this.cantidadColumnas = 7;
         var matriz = [
@@ -4741,7 +5000,12 @@ var TitoCuadrado = (function (_super) {
         }
     };
     TitoCuadrado.prototype.agregarLuz = function (f, c) {
-        this.cuadricula.agregarActor(new Lamparin(0, 0), f, c);
+        var luz = new Lamparin(0, 0);
+        this.luces.push(luz);
+        this.cuadricula.agregarActor(luz, f, c);
+    };
+    TitoCuadrado.prototype.estaResueltoElProblema = function () {
+        return this.luces.every(function (l) { return l.nombreAnimacionActual() == 'prendida'; });
     };
     return TitoCuadrado;
 })(EscenaActividad);

@@ -13,6 +13,8 @@ export default Ember.Component.extend({
   solucion: null,
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
   codigoJavascript: "", // Se carga como parametro
+  persistirSolucionEnURL: true,
+  debeMostrarFinDeDesafio: false,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -35,6 +37,7 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement() {
+
     if (!this.get('actividad')) {
       return null;
     }
@@ -48,26 +51,27 @@ export default Ember.Component.extend({
     }
 
 
-    Blockly.addChangeListener(() => {
-      this.guardarEnURL();
-      this.generarCodigoTemporal();
-    });
+    if (this.get("persistirSolucionEnURL")) {
+      Blockly.addChangeListener(() => {
+        this.guardarEnURL();
+        this.generarCodigoTemporal();
+      });
+    }
 
-    /*
-    this.set('cola_deshacer', []);
-    //this.cargar_codigo_desde_el_modelo();
-    //this.observarCambiosEnBlocky();
-    */
 
-    this.handlerCargaInicial = this.cuandoTerminaCargaInicial.bind(this);
-    this.handlerTerminaEjecucion = this.cuandoTerminaEjecucion.bind(this);
+    if (this.get("debeMostrarFinDeDesafio")) {
+      this.get('pilas').on('terminaEjecucion', () => {
+        this.cuandoTerminaEjecucion();
+      });
+    }
 
-    window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.addEventListener('message', this.handlerTerminaEjecucion, false);
 
-    this.conectar_evento_para_ajustar_blocky();
+    // this.set('cola_deshacer', []);
+    // this.cargar_codigo_desde_el_modelo();
+    // this.observarCambiosEnBlocky();
 
-    $(window).trigger('resize');
+    // this.conectar_evento_para_ajustar_blocky();
+    // $(window).trigger('resize');
 
   },
 
@@ -101,18 +105,6 @@ export default Ember.Component.extend({
   generarCodigoTemporal() {
     var codigoJavascript = this.get('actividad').generarCodigo();
     this.set("codigoJavascript", codigoJavascript);
-  },
-
-  cuandoTerminaCargaInicial() {
-    var solucion = this.get('solucion');
-
-    if (solucion) {
-      this.get('actividad').cargarCodigoDesdeStringXML(solucion.get('codigoXML'));
-    }
-
-    if (this.get('autoejecutar')) {
-      this.send('ejecutar');
-    }
   },
 
   cuandoTerminaEjecucion() {

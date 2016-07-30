@@ -518,8 +518,8 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 }
 
 .dialogoFinDesafio {
-  width: 400px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
 }
 
 .img-border {
@@ -572,8 +572,15 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 .tip-block {
   border: 1px solid rgb(201, 198, 249);
   background-color: rgb(223, 255, 254);
-  padding: 5px;
   margin-bottom: 15px;
+  text-align: justify;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.panel-ayuda p {
+  text-align: justify;
 }
 
 
@@ -709,7 +716,7 @@ h2 {
 
 
 .pilas-debug-bar {
-  position: absolute;
+  position: fixed;
   top: -1px;
   z-index: 10000;
   left: 50%;

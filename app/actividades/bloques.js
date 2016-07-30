@@ -286,7 +286,11 @@ var AlEmpezar = Bloque.extend({
     r += '  }; \n';
     r += "\n";
     r += '  Comportamiento.prototype.actualizar = function () { \n';
-    r += '    parent.postMessage("terminaEjecucion", window.location.origin); \n';
+    r += '    var mensaje = { \n';
+    r += '       tipo: "terminaEjecucion",\n';
+    r += '       detalles: null\n';
+    r += '    };\n';
+    r += '    parent.postMessage(mensaje, window.location.origin); \n';
     r += '    return true; \n';
     r += '  }; \n';
     r += "\n";

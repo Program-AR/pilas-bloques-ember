@@ -13,6 +13,10 @@ export default Ember.Component.extend({
     Ember.run.scheduleOnce('afterRender', this, this.initElement);
   },
 
+  willDestroyElement() {
+    this.get("pilas").liberarRecursos();
+  },
+
   initElement() {
     let iframeElement = this.$().find('#innerIframe')[0];
 
@@ -41,6 +45,8 @@ export default Ember.Component.extend({
               //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
             }
           });
+      } else {
+        console.warn("No has enviado el objeto pilas.");
       }
 
       // onLoad solo se utiliza dentro de la batería de tests. Este
