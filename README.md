@@ -9,9 +9,9 @@ pilas-engine-bloques
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
-![](screenshots/3.png)
-
-![](screenshots/2.png)
+![](screenshots/principal.png)
+![](screenshots/desafios.png)
+![](screenshots/editor.png)
 
 ¿Cómo empezar?
 --------------
@@ -19,7 +19,7 @@ utilizando bloques, javascript y desafíos para aprender a programar.
 Al clonar el repositorio, podrías escribir el comando ``make``
 para ver las tareas disponibles:
 
-![](public/make.png)
+![](screenshots/make.png)
 
 Por ejemplo, luego de clonar podrías completar todo el proceso ejecutando
 estos comandos:
