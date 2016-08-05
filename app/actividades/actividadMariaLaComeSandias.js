@@ -15,8 +15,8 @@ var MorderSandia = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField('Morder sandía ')
-         .appendField(this.obtener_icono('../libs/data/icono.sandia.png'));
+         .appendField(this.obtener_icono('../libs/data/icono.sandia.png'))
+         .appendField('Morder sandía ');
   },
 
   nombre_comportamiento() {
