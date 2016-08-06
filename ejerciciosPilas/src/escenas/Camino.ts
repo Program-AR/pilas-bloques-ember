@@ -71,7 +71,6 @@ escalarCasillasCuadradas(){
       //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
 
       aDevolver[puntoActual.y][puntoActual.x]='T';
-      console.log(this.direcciones)
       for(var index=0;index<this.direcciones.length;index++){
         puntoActual=puntoActual.siguienteEn(this.direcciones[index]);
         aDevolver[puntoActual.y][puntoActual.x]='T';
