@@ -26,7 +26,7 @@ export default {
   consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
 
   // la escena proviene de ejerciciosPilas
-  escena: PrendiendoLasFogatas,  // jshint ignore:line
+  // DEPRECATED: escena: PrendiendoLasFogatas,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
