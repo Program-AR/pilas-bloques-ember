@@ -18,33 +18,12 @@ var MoverA = Accion.extend({
     .appendField('Mover a');
   },
 
-  block_javascript(block) {
-    var direccionDesdeParametro = this.obtenerDireccionDesdeParametro(block);
-    var comportamiento = this.obtenerComportamiento(direccionDesdeParametro);
-
-    if (!comportamiento) {
-      console.error(direccionDesdeParametro);
-      alert("No puedo ir en esa dirección...");
-      return ``;
-    }
-
-    let funcion = "function() {return {};}";
-    return `programa.llamada_proc_primitivo(${comportamiento}, ${funcion});`;
+  nombre_comportamiento() {
+    return 'MovimientoEnCuadricula';
   },
 
-  obtenerComportamiento(direccionDesdeParametro) {
-    let mapaDirecciones = {
-      derecha: "MoverACasillaDerecha",
-      izquierda: "MoverACasillaIzquierda",
-      arriba: "MoverACasillaArriba",
-      abajo: "MoverACasillaAbajo",
-    };
-
-    if (direccionDesdeParametro in mapaDirecciones) {
-      return mapaDirecciones[direccionDesdeParametro];
-    }
-
-    return null;
+  argumentos(block) {
+    return '{claseDirCasilla: ' + Blockly.JavaScript.valueToCode(block, 'direccion', Blockly.JavaScript.ORDER_ATOMIC) + '}';
   },
 
   obtenerDireccionDesdeParametro(block) {
@@ -76,7 +55,7 @@ var LaDerecha = Bloque.extend({
   },
 
   block_javascript() {
-    return ['derecha', Blockly.JavaScript.ORDER_ATOMIC];
+    return ['DirCasillaDerecha', Blockly.JavaScript.ORDER_ATOMIC];
   },
 
 });
