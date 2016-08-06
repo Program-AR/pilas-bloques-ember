@@ -9,6 +9,10 @@ module.exports = function(environment) {
     downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip',
     locationType: 'hash',
     EmberENV: {
+      EXTEND_PROTOTYPES: {
+        Date: false,
+        Array: true,
+      },
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
