@@ -65,7 +65,6 @@ escalarCasillasCuadradas(){
         for(var cols=0;cols<this.cantidadColumnas;++cols){
           aux.push('F');
         }
-        console.log(aux);
         aDevolver.push(aux);
       }
 
