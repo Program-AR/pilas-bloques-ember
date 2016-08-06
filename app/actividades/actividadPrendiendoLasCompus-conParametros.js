@@ -8,8 +8,8 @@ var {Repetir, Si, Sino, Hasta, Procedimiento} = bloques;
 export default {
   nombre: 'Prendiendo las compus parametrizado',
   id: 'PrendiendoLasCompusParametrizado',
-  enunciado:
-    'Ramiro necesita prender todas las compus de la habitación. Deberá recorrer cada hilera de compus y prenderlas una por una. Pista: la cantidad de compus cambia cada vez, pero el recorrido de Ramiro siempre va a seguir la forma de un rectángulo (de tamaño variable).',
+  enunciado: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.',
+  consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
 
   // la escena proviene de ejerciciosPilas
   escena: PrendiendoLasCompus,  // jshint ignore:line

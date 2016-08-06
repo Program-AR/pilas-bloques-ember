@@ -17,7 +17,7 @@ content = [
 	'export default [',
 ]
 
-for name in image_names:
+for name in sorted(image_names):
 	content.append('    "%s",' %(name))
 
 
