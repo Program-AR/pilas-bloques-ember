@@ -307,7 +307,7 @@ var ActorCompuesto = (function (_super) {
         this.subactores.pop().eliminar();
     };
     ActorCompuesto.prototype.eliminarSubactor = function (etiqueta) {
-        var elQueMuere = this.subactores.find(function (actor) { return actor.tiene_etiqueta(etiqueta); });
+        var elQueMuere = this.subactores.filter(function (actor) { return actor.tiene_etiqueta(etiqueta); })[0];
         elQueMuere.eliminar();
         this.subactores.splice(this.subactores.indexOf(elQueMuere), 1);
     };
@@ -3510,12 +3510,10 @@ var Camino = (function () {
             for (var cols = 0; cols < this.cantidadColumnas; ++cols) {
                 aux.push('F');
             }
-            console.log(aux);
             aDevolver.push(aux);
         }
         //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
         aDevolver[puntoActual.y][puntoActual.x] = 'T';
-        console.log(this.direcciones);
         for (var index = 0; index < this.direcciones.length; index++) {
             puntoActual = puntoActual.siguienteEn(this.direcciones[index]);
             aDevolver[puntoActual.y][puntoActual.x] = 'T';
