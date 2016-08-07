@@ -7,7 +7,7 @@ var ExplotarGlobo = AccionBuilder.build({
   descripcion: 'Explotar globo',
   icono: 'icono.globo.png',
   comportamiento: 'ComportamientoColision',
-  argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',
+  argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", idTransicion: "explotar", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',
 });
 
 export default {
