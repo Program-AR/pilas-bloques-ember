@@ -109,8 +109,7 @@ export default Ember.Service.extend({
     var actividad = actividades.findBy('id', nombre);
 
     if (!actividad) {
-      console.error(`No se encuentra la actividad de nombre ${nombre}`);
-      return null;
+      throw new Error(`No se encuentra la actividad de nombre ${nombre}`);
     }
 
     return Actividad.create({actividad});
