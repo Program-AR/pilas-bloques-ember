@@ -11,8 +11,8 @@ var EncenderLuz = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-          .appendField('Prender luz')
-          .appendField(this.obtener_icono('../libs/data/icono.Lamparita.png'));
+          .appendField(this.obtener_icono('../libs/data/icono.Lamparita.png'))
+          .appendField('Prender luz');
   },
 
   nombre_comportamiento() {
