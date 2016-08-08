@@ -158,7 +158,7 @@ test_mac: ejecutar_mac
 
 build: compilar
 
-compilar: copiar_pilasweb copiar_ejercicios_pilas
+compilar: actualizar_pilas actualizar_ejercicios_pilas
 	cd scripts; python generarListaImagenes.py
 	./node_modules/ember-cli/bin/ember build
 
