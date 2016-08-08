@@ -204,6 +204,11 @@ export default Ember.Component.extend({
       this.sendAction('guardar');
     },
 
+    guardar_solucion_en_el_backend() {
+      let codigo_xml = this.get('actividad').generarCodigoXMLComoString();
+      this.sendAction('guardar_solucion_en_el_backend', codigo_xml);
+    },
+
     alternar() {
       //this.sendAction('redimensionar');
       console.log(this.controllerFor('application'));

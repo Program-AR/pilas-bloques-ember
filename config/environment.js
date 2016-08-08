@@ -8,6 +8,7 @@ module.exports = function(environment) {
     versionURL: 'http://pilasbloques.programar.gob.ar/version.json',
     downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip',
     locationType: 'hash',
+    cursoBackendURL: 'http://api.pilasbloques.program.ar',
     EmberENV: {
       EXTEND_PROTOTYPES: {
         Date: false,

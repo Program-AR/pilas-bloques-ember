@@ -11,5 +11,5 @@ actividadTest(nombre, {
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error al querer avanzar hacia la izquierda si no hay camino',
   solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="MoverACasillaIzquierda" id="32"></block></statement></block></xml>',
-	expectedErrorMsg: 'No puedo ir para la izquierda',
+	errorEsperado: 'No puedo ir para la izquierda',
 });

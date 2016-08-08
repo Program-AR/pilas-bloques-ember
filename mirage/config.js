@@ -12,6 +12,7 @@ export default function() {
 
 
   this.passthrough('http://104.131.245.133:9914/**');
+  this.passthrough('http://api.pilasbloques.program.ar/**');
 
   /*
     Shorthand cheatsheet:

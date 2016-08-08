@@ -41,6 +41,11 @@
     {{pilas-blockly guardar='guardar'
                     registrarPrimerCodigo='registrarPrimerCodigo'
                     codigo=codigo
+
+                    modoDocente=modoDocente modoAlumno=modoAlumno
+                    hash=hash idAlumno=idAlumno
+                    guardar_solucion_en_el_backend="guardar_solucion_en_el_backend"
+
                     persistirSolucionEnURL=persistirSolucionEnURL
                     debeMostrarFinDeDesafio=debeMostrarFinDeDesafio
                     pilas=pilas
@@ -52,6 +57,11 @@
   <div class="desafio-panel-codigo">
     <pre>{{prism codigoJavascript}}</pre>
   </div>
+{{/if}}
+
+
+{{#if ningunPanelVisible}}
+  <p>Hey, ningún panel está visible</p>
 {{/if}}
 
 </div>
