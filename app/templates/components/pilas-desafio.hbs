@@ -1,7 +1,9 @@
 {{#if model.deshabilitado}}
 
   {{#if model.nombre}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png' onerror="this.src='images/desafios/proximamente.png'">
+    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
+  {{else}}
+    <img class='grayscale semi-transparente' src='images/desafios/proximamente.png'>
   {{/if}}
 
   <div class="ribbon right gray semi-transparente">

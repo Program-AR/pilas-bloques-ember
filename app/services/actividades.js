@@ -6,7 +6,7 @@ import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/activid
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
 import actividadTitoEnciendeLuces from 'pilas-engine-bloques/actividades/actividadTitoEnciendeLuces';
 import actividadFutbolRobots from 'pilas-engine-bloques/actividades/actividadFutbolRobots';
-// import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
+import actividadElPlanetaDeNano from 'pilas-engine-bloques/actividades/actividadElPlanetaDeNano';
 import actividadAlienTocaBoton from 'pilas-engine-bloques/actividades/actividadAlienTocaBoton';
 import actividadTitoRecargado from 'pilas-engine-bloques/actividades/actividadTitoRecargado';
 import actividadSuperTito1 from 'pilas-engine-bloques/actividades/actividadSuperTito1';
@@ -25,16 +25,16 @@ import actividadTresNaranjas from 'pilas-engine-bloques/actividades/actividadTre
 import actividadLaberintoCorto from 'pilas-engine-bloques/actividades/actividadLaberintoCorto';
 import actividadLaberintoLargo from 'pilas-engine-bloques/actividades/actividadLaberintoLargo';
 import actividadLaberintoConQueso from 'pilas-engine-bloques/actividades/actividadLaberintoConQueso';
-// import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
+import actividadElCangrejoAguafiestas from 'pilas-engine-bloques/actividades/actividadElCangrejoAguafiestas';
 import actividadElDetectiveChaparro from  'pilas-engine-bloques/actividades/actividadElDetectiveChaparro';
 import actividadPrendiendoLasCompus from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus';
-// import actividadPrendiendoLasCompusParametrizado from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus-conParametros';
+import actividadPrendiendoLasCompusParametrizado from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus-conParametros';
 import actividadElMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElMonoCuentaDeNuevo';
 import actividadElSuperviaje from 'pilas-engine-bloques/actividades/actividadElSuperviaje';
 import actividadesDibujandoFiguras from 'pilas-engine-bloques/actividades/actividadesDibujandoFiguras';
-// import actividadSalvandoLaNavidad from 'pilas-engine-bloques/actividades/actividadSalvandoLaNavidad';
-// import actividadTitoCuadrado from 'pilas-engine-bloques/actividades/actividadTitoCuadrado';
-// import actividadLaFiestaDeDracula from 'pilas-engine-bloques/actividades/actividadLaFiestaDeDracula';
+import actividadSalvandoLaNavidad from 'pilas-engine-bloques/actividades/actividadSalvandoLaNavidad';
+import actividadTitoCuadrado from 'pilas-engine-bloques/actividades/actividadTitoCuadrado';
+import actividadLaFiestaDeDracula from 'pilas-engine-bloques/actividades/actividadLaFiestaDeDracula';
 import actividadPrendiendoLasFogatas from 'pilas-engine-bloques/actividades/actividadPrendiendoLasFogatas';
 
 /*
@@ -75,7 +75,7 @@ export default Ember.Service.extend({
       actividadElMonoYLasBananas,
       actividadTitoEnciendeLuces,
       actividadFutbolRobots,
-      // actividadElPlanetaDeNano,
+      actividadElPlanetaDeNano,
       actividadTitoRecargado,
       actividadSuperTito1,
       actividadSuperTito2,
@@ -92,16 +92,16 @@ export default Ember.Service.extend({
       actividadLaberintoCorto,
       actividadLaberintoLargo,
       actividadLaberintoConQueso,
-      // actividadElCangrejoAguafiestas,
+      actividadElCangrejoAguafiestas,
       actividadLaGranAventuraDelMarEncantado,
       actividadElDetectiveChaparro,
       actividadPrendiendoLasCompus,
       actividadElMonoCuentaDeNuevo,
       actividadElSuperviaje,
-      // actividadSalvandoLaNavidad,
-      // actividadTitoCuadrado,
-      // actividadLaFiestaDeDracula,
-      // actividadPrendiendoLasCompusParametrizado,
+      actividadSalvandoLaNavidad,
+      actividadTitoCuadrado,
+      actividadLaFiestaDeDracula,
+      actividadPrendiendoLasCompusParametrizado,
       actividadPrendiendoLasFogatas
     ];
 
