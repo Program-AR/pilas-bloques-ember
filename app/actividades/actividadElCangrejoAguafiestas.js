@@ -11,13 +11,12 @@ var ExplotarGlobo = AccionBuilder.build({
 });
 
 export default {
-  nombre: 'El cangrejo aguafiestas',
+  // DEPRECATED: nombre: 'El cangrejo aguafiestas',
   id: 'ElCangrejoAguafiestas',
-  enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
-  consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
+  // DEPRECATED: enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
+  // DEPRECATED: consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
 
-  /*global ElCangrejoAguafiestas */
-  escena: ElCangrejoAguafiestas,
+  // DEPRECATED: escena: ElCangrejoAguafiestas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

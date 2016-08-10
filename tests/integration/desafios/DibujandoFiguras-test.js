@@ -1,7 +1,5 @@
 import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
 
-const nombre = 'DibujandoFiguras';
-
 moduloActividad('DibujandoCuadrado');
 
 actividadTest('DibujandoCuadrado', {
