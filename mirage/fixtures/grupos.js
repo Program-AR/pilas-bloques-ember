@@ -13,7 +13,7 @@ export default [
   },
   {
     id: 4,
-    titulo: 'Uso de variables',
+    titulo: 'Sensores Numéricos',
   },
   {
     id: 5,

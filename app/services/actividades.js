@@ -31,7 +31,7 @@ import actividadPrendiendoLasCompus from 'pilas-engine-bloques/actividades/activ
 // import actividadPrendiendoLasCompusParametrizado from 'pilas-engine-bloques/actividades/actividadPrendiendoLasCompus-conParametros';
 import actividadElMonoCuentaDeNuevo from 'pilas-engine-bloques/actividades/actividadElMonoCuentaDeNuevo';
 import actividadElSuperviaje from 'pilas-engine-bloques/actividades/actividadElSuperviaje';
-// import actividadDibujandoFiguras from 'pilas-engine-bloques/actividades/actividadDibujandoFiguras';
+import actividadesDibujandoFiguras from 'pilas-engine-bloques/actividades/actividadesDibujandoFiguras';
 // import actividadSalvandoLaNavidad from 'pilas-engine-bloques/actividades/actividadSalvandoLaNavidad';
 // import actividadTitoCuadrado from 'pilas-engine-bloques/actividades/actividadTitoCuadrado';
 // import actividadLaFiestaDeDracula from 'pilas-engine-bloques/actividades/actividadLaFiestaDeDracula';
@@ -98,13 +98,14 @@ export default Ember.Service.extend({
       actividadPrendiendoLasCompus,
       actividadElMonoCuentaDeNuevo,
       actividadElSuperviaje,
-      // actividadDibujandoFiguras,
       // actividadSalvandoLaNavidad,
       // actividadTitoCuadrado,
       // actividadLaFiestaDeDracula,
       // actividadPrendiendoLasCompusParametrizado,
       actividadPrendiendoLasFogatas
     ];
+
+    actividades = actividades.concat(actividadesDibujandoFiguras);
 
     var actividad = actividades.findBy('id', nombre);
 

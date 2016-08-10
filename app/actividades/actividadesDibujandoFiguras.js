@@ -75,17 +75,44 @@ var GirarGrados = Accion.extend({
     }
 });
 
-export default {
-  nombre: 'Dibujando Figuras',
-  enunciado: 'TODO',
-  consignaInicial: 'TODO',
-  id: 'DibujandoFiguras',
-  // la escena proviene de ejerciciosPilas
-  escena: DibujandoFigurasInicial, // jshint ignore:line
-  puedeComentar: false,
-  puedeDesactivar: false,
-  puedeDuplicar: false,
-  usaParametros: true,
+// ---------------------------------------------------------------------------
+var actividadesDibujando = [
+  {
+    id: 'DibujandoCuadrado'
+  },
+  {
+    id: 'Dibujando5CuadradosHorizontal'
+  },
+  {
+    id: 'Dibujando5CuadradosDiagonal'
+  },
+  {
+    id: 'Dibujando4CuadradosInteriores'
+  },
+  {
+    id: 'DibujandoCabezaElefante'
+  },
+  {
+    id: 'DibujandoHexagono'
+  },
+  {
+    id: 'DibujandoTrianguloEquilatero'
+  },
+  {
+    id: 'DibujandoPoligonosInteriores'
+  },
+  {
+    id: 'DibujandoCuevaEstalagtitas'
+  },
+];
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,DibujarLado, GirarGrados,Numero, OpAritmetica],
-};
+
+actividadesDibujando.forEach(function(act){
+  act.puedeComentar = false;
+  act.puedeDesactivar = false;
+  act.puedeDuplicar = false;
+  act.usaParametros = true;
+  act.bloques = [Procedimiento,Repetir,Si,Sino,Hasta,DibujarLado, GirarGrados,Numero, OpAritmetica];
+});
+
+export default actividadesDibujando;
