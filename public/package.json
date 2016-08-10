@@ -1,9 +1,9 @@
 {
   "main": "app://localhost/index.html",
-  "name": "pilas-engine-bloques",
+  "name": "Pilas Bloques",
   "version": "0.11.1",
   "window": {
-    "title": "pilas-bloques",
+    "title": "Pilas Bloques",
     "width": 850,
     "height": 600,
     "min_width": 850,
