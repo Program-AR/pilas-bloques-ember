@@ -131,7 +131,7 @@ export default [
     '¿Podés hacer que el mono avance al casillero de enfrente?'+
     ' Si hay una banana debe comérsela. Si no, es feliz con sólo llegar. \n '+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: mirá la categoría "Sensores" y la categoría "Control".',
+    'Pista: mirá la categoría "Sensores" y la categoría "Alternativas".',
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     actividad: null,

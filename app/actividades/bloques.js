@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Bloque from 'pilas-engine-bloques/actividades/bloque';
-import {MisProcedimientos, Control, Variables, Sensores, MisFunciones, Valores} from 'pilas-engine-bloques/actividades/categorias';
+import {MisProcedimientos, Repeticiones, Alternativas, Variables,Sensores,MisFunciones, Valores} from 'pilas-engine-bloques/actividades/categorias';
+
 /*
  * Pide implementar sólo block_javascript
  * Sirve para pisar el JS que produce blockly
@@ -411,6 +412,30 @@ var AccionBuilder = {
     });
   },
 
+  buildSensorNumerico(opciones){
+      return Sensor.extend({
+        init() {
+          this._super();
+          this.set('id', opciones.id || this.toID(opciones.descripcion));
+        },
+
+        block_init(block){
+          this._super(block);
+          block.appendDummyInput()
+              .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+              .appendField(opciones.descripcion);
+        },
+
+        nombre_sensor(){
+          return opciones.funcionSensor;
+        },
+
+        toID(descripcion){
+          return descripcion.replace(/[^a-zA-z]/g, "");
+        },
+      });
+    },
+
   // TODO: Quitar código repetido con build
   buildValor(opciones){
     return Bloque.extend({
@@ -438,18 +463,6 @@ var AccionBuilder = {
     });
   },
 };
-
-var VariableEspecificaGet = Sensor.extend({
-  _categoria: Variables,
-
-  block_init(block){
-    this._super(block);
-    block.setColour(Blockly.Blocks.variables.COLOUR);
-    block.appendDummyInput()
-      .appendField(this.descripcion());
-  },
-
-});
 
 /*
  * Representa un valor mas complejo
@@ -487,9 +500,6 @@ var ParamCampo = Ember.Object.extend({
 /* ============================================== */
 
 var EstructuraDeControl = Bloque.extend({
-
-  _categoria: Control,
-
   block_init(block) {
     this._super(block);
     block.setColour(Blockly.Blocks.loops.COLOUR);
@@ -503,6 +513,8 @@ var EstructuraDeControl = Bloque.extend({
 /* ============================================== */
 
 var Repetir = EstructuraDeControl.extend({
+
+  _categoria: Repeticiones,
 
   init() {
     this._super();
@@ -548,6 +560,8 @@ var RepetirVacio = Repetir.extend({
 
 var Si = EstructuraDeControl.extend({
 
+  _categoria: Alternativas,
+
   init() {
     this._super();
     this.set('id', 'si');
@@ -575,6 +589,8 @@ var Si = EstructuraDeControl.extend({
 /* ============================================== */
 
 var Sino = EstructuraDeControl.extend({
+
+  _categoria: Alternativas,
 
   init() {
     this._super();
@@ -608,6 +624,8 @@ var Sino = EstructuraDeControl.extend({
 
 var Hasta = EstructuraDeControl.extend({
 
+  _categoria: Repeticiones,
+
   init() {
     this._super();
     this.set('id', 'hasta');
@@ -632,7 +650,7 @@ var Hasta = EstructuraDeControl.extend({
 
 });
 
-export {Bloque, CambioDeJSDeBlocky, VariableGet, VariableEspecificaGet,
+export {Bloque, CambioDeJSDeBlocky, VariableGet,
                VariableSet, VariableLocalGet, VariableLocalSet, Procedimiento,
                Funcion, CallNoReturn, CallReturn, ParamGet, AlEmpezar, Accion, AccionBuilder,
                Sensor, Repetir, RepetirVacio, Si,Sino,Hasta, ParamCampo, ParamValor};

@@ -37,7 +37,7 @@
         { "idActividad": "ElMonoQueSabeContar", "nombreLegible":"El mono que sabe contar"}
       ]
     },
-    { "nombreCategoria": "Uso de valores",
+    { "nombreCategoria": "Sensores numéricos",
       "actividades": [
         { "idActividad": "ElSuperviaje", "nombreLegible":"El Superviaje" },
         { "idActividad": "ElMonoCuentaDeNuevo", "nombreLegible":"El mono cuenta de nuevo" }

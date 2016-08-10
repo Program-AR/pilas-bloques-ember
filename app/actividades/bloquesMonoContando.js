@@ -1,21 +1,13 @@
-import {Repetir, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet, AccionBuilder} from 'pilas-engine-bloques/actividades/bloques';
+import {Repetir, Si, Sino, Hasta, Procedimiento, AccionBuilder} from 'pilas-engine-bloques/actividades/bloques';
 import {IrArriba, IrAbajo, SiguienteColumna} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import {TocandoBanana, TocandoManzana} from 'pilas-engine-bloques/actividades/tocando';
 import {ContarBanana, ContarManzana} from 'pilas-engine-bloques/actividades/contando';
 
-var LargoColumnaActual = VariableEspecificaGet.extend({
-  init() {
-        this._super();
-        this.set('id', 'LargoColumnaActual');
-  },
-
-  nombre_sensor(){
-    return 'largoColumnaActual()-1';
-  },
-
-  descripcion(){
-    return 'largo de columna actual';
-  },
+var LargoColumnaActual = AccionBuilder.buildSensorNumerico({
+  id: 'LargoColumnaActual',
+  descripcion: 'Largo de la columna actual',
+  icono: 'icono.largoCol.png',
+  funcionSensor: 'largoColumnaActual()-1',
 });
 
 var EstoyAlInicio = AccionBuilder.buildSensor({
