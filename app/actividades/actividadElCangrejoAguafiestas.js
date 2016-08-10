@@ -16,7 +16,6 @@ export default {
   // DEPRECATED: enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
   // DEPRECATED: consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
 
-  /*global ElCangrejoAguafiestas */
   // DEPRECATED: escena: ElCangrejoAguafiestas,
   puedeComentar: false,
   puedeDesactivar: false,
