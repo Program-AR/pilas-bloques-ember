@@ -427,6 +427,15 @@ export default [
   {
     id: 135,
     grupoId: 5,
+    nombre: 'PrendiendoLasFogatas',
+    titulo: 'Prendiendo las fogatas',
+    escena: 'PrendiendoLasFogatas',
+    enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
+    actividad: null,
+  },
+  {
+    id: 136,
+    grupoId: 5,
     nombre: '',
     titulo: 'Próximamente: más actividades',
     deshabilitado: true,

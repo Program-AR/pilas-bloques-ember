@@ -21,9 +21,9 @@ var TocandoFogata = AccionBuilder.buildSensor({
 });
 
 export default {
-  nombre: 'Prendiendo las fogatas',
+  // DEPRECATED nombre: 'Prendiendo las fogatas',
   id: 'PrendiendoLasFogatas',
-  enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
+  // DEPRECATED enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
 
   // la escena proviene de ejerciciosPilas
   // DEPRECATED escena: PrendiendoLasFogatas,  // jshint ignore:line
