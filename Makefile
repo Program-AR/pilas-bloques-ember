@@ -1,5 +1,4 @@
-
-VERSION=1.0.0
+VERSION=$(shell scripts/obtenerVersion.sh)
 NOMBRE="pilas-bloques"
 
 N=[0m
