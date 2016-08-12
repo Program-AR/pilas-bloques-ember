@@ -48,7 +48,10 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
-	@echo "    ${G}version${N}           Genera una nueva versión / release."
+	@echo "    ${G}version${N}           Genera una nueva versión (alias de version_patch)."
+	@echo "    ${G}version_patch${N}     Genera una nueva versión (0.0.PATCH)."
+	@echo "    ${G}version_minor${N}     Genera una nueva versión (0.MINOR.0)."
+	@echo "    ${G}version_major${N}     Genera una nueva versión (MAJOR.0.0)."
 	@echo ""
 	@echo "    ${G}binarios${N}          Genera los binarios."
 	@echo "    ${G}subir_a_dropbox${N}   Sube los binarios generados a dropbox."
@@ -179,8 +182,16 @@ compilar_web:
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
-version:
+version: version_patch
+
+version_patch:
 	ember release
+
+version_minor:
+	ember release --minor
+
+version_major:
+	ember release --major
 
 release: version
 
