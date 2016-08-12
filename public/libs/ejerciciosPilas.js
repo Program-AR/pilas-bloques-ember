@@ -686,7 +686,7 @@ var Casilla = (function (_super) {
         this.actores.splice(this.actores.indexOf(unActor), 1);
     };
     Casilla.prototype.tieneActorConEtiqueta = function (unaEtq) {
-        return this.actores.any(function (actor) { return actor.tiene_etiqueta(unaEtq); });
+        return this.actores.some(function (actor) { return actor.tiene_etiqueta(unaEtq); });
     };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
