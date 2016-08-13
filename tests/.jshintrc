@@ -25,7 +25,8 @@
     "currentPath",
     "pilasengine",
     "currentRouteName",
-    "Prism"
+    "Prism",
+    "ga"
   ],
   "node": false,
   "browser": false,
