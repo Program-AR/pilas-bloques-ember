@@ -31,7 +31,8 @@ input, textarea /*.contenteditable?*/ {
 
 .nw-zoom {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 30px;
 }
 
 
@@ -142,6 +143,7 @@ span.url {
   top: -1px;
   padding-top: 12px;
   padding-right: 12px;
+  text-align: right;
 }
 
 .header-button {
