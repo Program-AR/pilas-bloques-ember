@@ -1,5 +1,5 @@
 {
-  "name": "pilas-bloques",
+  "name": "pilas-engine-bloques",
   "version": "1.0.0",
   "description": "Una herramienta para aprender a programar utilizando bloques.",
   "private": true,
