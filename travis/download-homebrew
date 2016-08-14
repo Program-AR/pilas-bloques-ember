@@ -1,0 +1,11 @@
+#!/bin/sh
+
+curl -O https://s3-us-west-2.amazonaws.com/gateblu/travis-cache/homebrew-cache.tar.gz
+if [ -f homebrew-cache.tar.gz ]; then
+  if ! tar tf homebrew-cache.tar.gz &>/dev/null; then
+    rm homebrew-cache.tar.gz
+    exit 0
+  fi
+  tar zxf homebrew-cache.tar.gz --directory /usr/local/Cellar
+  brew link libtool libtiff libicns freetype jpeg libgphoto2 little-cms2 wine
+fi

@@ -53,8 +53,9 @@ comandos:
 	@echo "    ${G}version_minor${N}     Genera una nueva versión (0.MINOR.0)."
 	@echo "    ${G}version_major${N}     Genera una nueva versión (MAJOR.0.0)."
 	@echo ""
-	@echo "    ${G}binarios${N}          Genera los binarios."
-	@echo "    ${G}subir_a_dropbox${N}   Sube los binarios generados a dropbox."
+	@echo "    ${G}binarios_electron${N}          Genera los binarios."
+	@echo "    ${L}_binarios (desuso)${N}         Genera los binarios."
+	@echo "    ${L}_subir_a_dropbox (desuso)${N}  Sube los binarios generados."
 	@echo ""
 
 
@@ -247,12 +248,12 @@ _compile_win:
 	mv tmp/nwjs/pilas-bloques.exe webkitbuilds/pilas-bloques-${VERSION}.exe
 	make to_develop
 
-binarios: to_production build _compile_osx _compile_win
+_binarios: to_production build _compile_osx _compile_win
 	@echo "Mostrando el directorio resultado"
 	@open webkitbuilds
 	make to_develop
 
-subir_a_dropbox:
+_subir_a_dropbox:
 	@echo "OJO, los archivos no se subirán a dropbox."
 	@echo "Ahora se sube a static.pilas-engine.com.ar"
 	mkdir -p ~/Dropbox/Public/releases/pilas-engine-bloques/${VERSION}/
@@ -263,5 +264,36 @@ subir_a_dropbox:
 run:
 	@echo "${G}Iniciando ember ...${N}"
 	./node_modules/ember-cli/bin/ember serve
+
+binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_electron_win32
+	@echo ""
+	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios':${N}"
+	@echo ""
+	@echo "${G}   binarios/pilas-bloques-${VERSION}.dmg${N}"
+	@echo "${G}   binarios/pilas-bloques-${VERSION}.exe${N}"
+	@echo ""
+
+_preparar_electron:
+	@echo "${G}Preparando directorio dist para funcionar con electron...${N}"
+	@cp extras/electron.js dist
+	@cp extras/package.json dist
+
+_compilar_electron_osx:
+	@echo "${G}Iniciando compilación a electron a OSX...${N}"
+	rm -f binarios/pilas-bloques-${VERSION}.dmg
+	node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=darwin --arch=all --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.icns
+	hdiutil create binarios/pilas-bloques-${VERSION}.dmg -srcfolder ./binarios/pilasBloques-darwin-x64/pilasBloques.app -size 200mb
+
+
+_compilar_electron_win32:
+	@echo "${G}Iniciando compilación a electron a Windows...${N}"
+	node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=win32 --arch=ia32 --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.ico
+	@echo "${G}Generando instalador para windows...${N}"
+	cp extras/instalador.nsi binarios/pilasBloques-win32-ia32/
+	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
+	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
+
+
+
 
 .PHONY: dist bajar_dependencias

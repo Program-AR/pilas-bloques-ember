@@ -53,7 +53,7 @@
 
   !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN "$instdir\nw.exe"
+!define MUI_FINISHPAGE_RUN "$instdir\pilasBloques.exe"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW ModifyRunCheckbox
 !insertmacro MUI_PAGE_FINISH
@@ -97,7 +97,7 @@ Section "Dummy Section" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortcut "$SMPROGRAMS\$StartMenuFolder\desinstalar.lnk" "$INSTDIR\desinstalar.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-bloques.lnk" "$INSTDIR\nw.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-bloques.lnk" "$INSTDIR\pilasBloques.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
