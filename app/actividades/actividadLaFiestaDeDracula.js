@@ -2,7 +2,7 @@ import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bl
 import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var CambiarColor = AccionBuilder.build({
-  descripcion: 'Cambiar Color',
+  descripcion: 'Cambiar color del foco',
   id: 'cambiarColor',
   icono: 'icono.cambiar.color.png',
   comportamiento: 'CambiarColor',
@@ -10,7 +10,7 @@ var CambiarColor = AccionBuilder.build({
 });
 
 var SiguienteFoco = AccionBuilder.build({
-  descripcion: 'Siguiente Foco',
+  descripcion: 'Pasar al siguiente foco',
   id: 'siguienteFoco',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
@@ -18,7 +18,7 @@ var SiguienteFoco = AccionBuilder.build({
 });
 
 var EmpezarFiesta = AccionBuilder.build({
-  descripcion: 'Empezar Fiesta',
+  descripcion: 'Empezar fiesta',
   id: 'empezarFiesta',
   icono: 'icono.empezar.fiesta.png',
   comportamiento: 'EmpezarFiesta',
@@ -26,13 +26,11 @@ var EmpezarFiesta = AccionBuilder.build({
 });
 
 export default {
-  nombre: 'La fiesta de Drácula',
+  // DEPRECATED: nombre: 'La fiesta de Drácula',
   id: 'LaFiestaDeDracula',
-  enunciado: 'A definir.',
-  consignaInicial: 'A definir.',
+  // DEPRECATED: enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de las 3 lámparas una cierta cantidad de veces: 5 veces la primera, 8 la segunda y 12 la tercera.',
 
-  /*global LaFiestaDeDracula */
-  escena: LaFiestaDeDracula,
+  // DEPRECATED: escena: LaFiestaDeDracula,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import {Comandos,MisProcedimientos,Control,Separador,Variables,Sensores,Valores,Operadores,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
+import {Comandos,MisProcedimientos,Repeticiones,Alternativas,Separador,Variables,Sensores,Valores,Operadores,MisFunciones} from 'pilas-engine-bloques/actividades/categorias';
 
 /* ============================================== */
 
@@ -30,7 +30,7 @@ ordenCategorias(){
     Titulo('Comandos',[
       Comandos,
       MisProcedimientos,
-      Control,
+      Repeticiones, Alternativas,
     ]),
     Separador,
     Variables,
@@ -49,7 +49,8 @@ ordenCategorias(){
     return [
       Comandos,
       MisProcedimientos,
-      Control,
+      Repeticiones,
+      Alternativas,
       Separador,
       Variables,
       Separador,

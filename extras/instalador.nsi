@@ -12,14 +12,14 @@
 ;General
 
   ;Name and file
-  Name "pilas-engine-bloques"
-  OutFile "pilas-engine-bloques.exe"
+  Name "Pilas Bloques"
+  OutFile "pilas-bloques.exe"
 
   ;Default installation folder
-  InstallDir "c:\pilas-engine-bloques"
+  InstallDir "c:\pilas-bloques"
 
   ;Get installation folder from registry if available
-  InstallDirRegKey HKCU "pilas-engine-bloques\pilas-engine-bloques" ""
+  InstallDirRegKey HKCU "pilas-bloques\pilas-bloques" ""
 
   ;Request application privileges for Windows Vista
   RequestExecutionLevel user
@@ -53,7 +53,7 @@
 
   !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN "$instdir\nw.exe"
+!define MUI_FINISHPAGE_RUN "$instdir\pilasBloques.exe"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW ModifyRunCheckbox
 !insertmacro MUI_PAGE_FINISH
@@ -87,7 +87,7 @@ Section "Dummy Section" SecDummy
   File /r *
 
   ;Store installation folder
-  WriteRegStr HKCU "pilas-engine-bloques\pilas-engine-bloques " "" $INSTDIR
+  WriteRegStr HKCU "pilas-bloques\pilas-bloques " "" $INSTDIR
 
   ;Create uninstaller
   WriteUninstaller "$INSTDIR\desinstalar.exe"
@@ -97,7 +97,7 @@ Section "Dummy Section" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortcut "$SMPROGRAMS\$StartMenuFolder\desinstalar.lnk" "$INSTDIR\desinstalar.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-engine-bloques.lnk" "$INSTDIR\nw.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-bloques.lnk" "$INSTDIR\pilasBloques.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 

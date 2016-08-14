@@ -12,7 +12,7 @@
     "Base",
     "debugger",
     "Prism",
-    "ElRecolectorDeEstrellas"
+    "ga"
   ],
   "browser": true,
   "boss": true,

@@ -22,14 +22,7 @@ export default Ember.Component.extend({
 
 
   aplicarZoom(zoomLevel) {
-    if (window['requireNode'] === undefined) {
-      document.body.style.zoom = (100 + zoomLevel * 10) + "%";
-      return;
-    } else {
-      var gui = window.requireNode('nw.gui');
-      var win = gui.Window.get();
-      win.zoomLevel = zoomLevel;
-    }
+    document.body.style.zoom = (100 + zoomLevel * 10) + "%";
   },
 
   onStart: Ember.on('init', function() {

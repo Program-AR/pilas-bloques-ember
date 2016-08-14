@@ -1,0 +1,5 @@
+{{#if inNWJS}}
+  <a href="" {{action "abrirConNavegadorExterno" href}}>{{yield}}</a>
+{{else}}
+  <a href={{href}} target="_blank">{{yield}}</a>
+{{/if}}

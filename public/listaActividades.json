@@ -1,0 +1,67 @@
+{
+  "categorias": [
+    { "nombreCategoria": "Autómatas, comandos, procedimientos y repetición",
+      "actividades": [
+        { "idActividad": "AlienTocaBoton", "nombreLegible":"El alien toca el botón" },
+        { "idActividad": "ElGatoEnLaCalle", "nombreLegible":"El gato en la calle" },
+        { "idActividad": "NoMeCansoDeSaltar", "nombreLegible":"No me canso de saltar" },
+        { "idActividad": "ElMarcianoEnElDesierto", "nombreLegible":"El marciano en el desierto" },
+        { "idActividad": "TitoEnciendeLuces", "nombreLegible":"Tito enciende las luces" },
+        { "idActividad": "ElAlienYLasTuercas", "nombreLegible":"El alien y las tuercas" },
+        { "idActividad": "ElRecolectorDeEstrellas", "nombreLegible":"El recolector de estrellas" },
+        { "idActividad": "MariaLaComeSandias", "nombreLegible":"María la come sandías" },
+        { "idActividad": "AlimentandoALosPeces", "nombreLegible":"Alimentando a los peces" },
+        { "idActividad": "InstalandoJuegos", "nombreLegible":"Instalando juegos" },
+        { "idActividad": "LaGranAventuraDelMarEncantado", "nombreLegible":"La gran aventura del mar encantado" },
+        { "idActividad": "ReparandoLaNave", "nombreLegible":"Reparando la nave"}
+      ]
+    },
+    { "nombreCategoria": "Alternativa condicional",
+      "actividades": [
+        { "idActividad": "ElMonoYLasBananas", "nombreLegible":"El mono y las bananas" },
+        { "idActividad": "LaEleccionDelMono", "nombreLegible":"La elección del mono" },
+        { "idActividad": "LaberintoCorto", "nombreLegible":"Laberinto corto" },
+        { "idActividad": "TresNaranjas", "nombreLegible":"Tres naranjas" },
+        { "idActividad": "TitoRecargado", "nombreLegible":"Tito recargado" },
+        { "idActividad": "LaberintoLargo", "nombreLegible":"Laberinto largo"}
+      ]
+    },
+    { "nombreCategoria": "Repetición condicional",
+      "actividades": [
+        { "idActividad": "SuperTito1", "nombreLegible":"Súper Tito 1" },
+        { "idActividad": "SuperTito2", "nombreLegible":"Súper Tito 2" },
+        { "idActividad": "LaberintoConQueso", "nombreLegible":"Laberinto con queso" },
+        { "idActividad": "ElDetectiveChaparro", "nombreLegible":"El detective chaparro" },
+        { "idActividad": "FutbolRobots", "nombreLegible":"Fútbol para robots" },
+        { "idActividad": "PrendiendoLasCompus", "nombreLegible":"Prendiendo las compus" },
+        { "idActividad": "ElMonoQueSabeContar", "nombreLegible":"El mono que sabe contar"}
+      ]
+    },
+    { "nombreCategoria": "Sensores numéricos",
+      "actividades": [
+        { "idActividad": "ElSuperviaje", "nombreLegible":"El Superviaje" },
+        { "idActividad": "ElMonoCuentaDeNuevo", "nombreLegible":"El mono cuenta de nuevo" }
+      ]
+    },
+    { "nombreCategoria": "Parametrización de soluciones",
+      "actividades": [
+        { "idActividad": "ElPlanetaDeNano", "nombreLegible":"El planeta de Nano" },
+        { "idActividad": "DibujandoCuadrado", "nombreLegible":"Dibujando: Al cuadrado" },
+        { "idActividad": "Dibujando5CuadradosHorizontal", "nombreLegible":"Dibujando: Rayuela robótica" },
+        { "idActividad": "Dibujando5CuadradosDiagonal", "nombreLegible":"Dibujando: Corto por la diagonal" },
+        { "idActividad": "Dibujando4CuadradosInteriores", "nombreLegible":"Dibujando: Mamushka cuadrada" },
+        { "idActividad": "DibujandoCabezaElefante", "nombreLegible":"Dibujando: Escalera cuadrada" },
+        { "idActividad": "DibujandoHexagono", "nombreLegible":"Dibujando: Hexágono" },
+        { "idActividad": "DibujandoTrianguloEquilatero", "nombreLegible":"Dibujando: Pirámide invertida" },
+        { "idActividad": "DibujandoPoligonosInteriores", "nombreLegible":"Dibujando: Figuras dentro de figuras" },
+        { "idActividad": "DibujandoCuevaEstalagtitas", "nombreLegible":"Dibujando: La cueva de estalagtitas" },
+        { "idActividad": "LaFiestaDeDracula", "nombreLegible":"La fiesta de Drácula" },
+        { "idActividad": "SalvandoLaNavidad", "nombreLegible":"Salvando la Navidad" },
+        { "idActividad": "PrendiendoLasCompusParametrizado", "nombreLegible":"Prendiendo las compus parametrizado" },
+        { "idActividad": "TitoCuadrado", "nombreLegible":"Tito Cuadrado" },
+        { "idActividad": "ElCangrejoAguafiestas", "nombreLegible":"El cangrejo aguafiestas" },
+        { "idActividad": "PrendiendoLasFogatas", "nombreLegible":"Prendiendo las Fogatas" }
+      ]
+    }
+  ]
+}

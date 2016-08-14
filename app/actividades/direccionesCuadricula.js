@@ -12,7 +12,7 @@ var IrDerecha = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Ir derecha');
+         .appendField('Mover a la derecha');
   },
 
   nombre_comportamiento() {
@@ -37,7 +37,7 @@ var IrIzquierda = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Ir izquierda');
+         .appendField('Mover a la izquierda');
   },
 
   nombre_comportamiento() {
@@ -63,7 +63,7 @@ var IrArriba = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('arriba.png'))
-         .appendField('Ir arriba');
+         .appendField('Mover arriba');
   },
 
   nombre_comportamiento() {
@@ -89,7 +89,7 @@ var IrAbajo = Accion.extend({
     this._super(block);
     block.appendDummyInput()
          .appendField(this.obtener_icono('abajo.png'))
-         .appendField('Ir abajo');
+         .appendField('Mover abajo');
   },
 
   nombre_comportamiento() {
@@ -105,7 +105,7 @@ var IrAbajo = Accion.extend({
 
 var SiguienteFila = AccionBuilder.build({
   id: 'SiguienteFila',
-  descripcion: 'Siguiente fila',
+  descripcion: 'Pasar a la siguiente fila',
   icono: '../../iconos/abajo.png',
   comportamiento: 'SiguienteFila',
   argumentos: '{}',
@@ -123,7 +123,7 @@ var SiguienteFilaTotal =  SiguienteFila.extend({
 
 var SiguienteColumna = AccionBuilder.build({
   id: 'SiguienteColumna',
-  descripcion: 'Siguiente columna',
+  descripcion: 'Pasar a la siguiente columna',
   icono: '../../iconos/derecha.png',
   comportamiento: 'SiguienteColumna',
   argumentos: '{}',
@@ -139,4 +139,60 @@ var SiguienteColumnaTotal =  SiguienteColumna.extend({
   }
 });
 
-export {IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna, SiguienteFilaTotal, SiguienteColumnaTotal};
+var MoverA = Accion.extend({
+
+  init() {
+    this._super();
+    this.set('id', 'MoverA');
+  },
+
+  block_init(block) {
+    this._super(block);
+    block.appendValueInput('direccion')
+    .setCheck('Number')
+    .appendField('Mover a');
+  },
+
+  nombre_comportamiento(){
+    return 'MovimientoEnCuadricula';
+  },
+
+  argumentos(block){
+    return '{claseDirCasilla: ' + Blockly.JavaScript.valueToCode(block, 'direccion', Blockly.JavaScript.ORDER_ATOMIC) + '}';
+  },
+
+});
+
+
+var ParaLaDerecha = AccionBuilder.buildValor({
+  id: 'ParaLaDerecha',
+  descripcion: 'la derecha',
+  icono: '../../iconos/derecha.png',
+  valor: 'DirCasillaDerecha',
+});
+
+var ParaLaIzquierda = AccionBuilder.buildValor({
+  id: 'ParaLaIzquierda',
+  descripcion: 'la izquierda',
+  icono: '../../iconos/izquierda.png',
+  valor: 'DirCasillaIzquierda',
+});
+
+var ParaArriba = AccionBuilder.buildValor({
+  id: 'ParaArriba',
+  descripcion: 'arriba',
+  icono: '../../iconos/arriba.png',
+  valor: 'DirCasillaArriba',
+});
+
+var ParaAbajo = AccionBuilder.buildValor({
+  id: 'ParaAbajo',
+  descripcion: 'abajo',
+  icono: '../../iconos/abajo.png',
+  valor: 'DirCasillaAbajo',
+});
+
+export { IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna,
+  SiguienteFilaTotal, SiguienteColumnaTotal, ParaLaDerecha, ParaLaIzquierda,
+  ParaArriba, ParaAbajo, MoverA
+};

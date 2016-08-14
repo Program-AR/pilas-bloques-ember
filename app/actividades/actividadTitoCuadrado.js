@@ -1,19 +1,19 @@
 import {Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
-import {IrAbajo, IrIzquierda, IrDerecha, IrArriba} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import {EncenderLuz,TocandoLuz} from 'pilas-engine-bloques/actividades/bloquesTito';
-import {Numero,OpComparacion,OpAritmetica,Texto} from 'pilas-engine-bloques/actividades/expresiones';
-
+import {ParaLaDerecha, ParaLaIzquierda,ParaArriba, ParaAbajo, MoverA} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {EncenderLuz, TocandoLuz} from 'pilas-engine-bloques/actividades/bloquesTito';
+import {Numero, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 export default {
-  nombre: 'Tito cuadrado',
+  // DEPRECATED: nombre: 'Tito cuadrado',
   id: 'TitoCuadrado',
-  enunciado: 'Tito debe encender todas las luces del cuadrado, en cada ejecución distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
+  // DEPRECATED: enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
 
-  escena: TitoCuadrado,  // jshint ignore:line
+  // DEPRECATED: escena: TitoCuadrado,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, Repetir, Si, Sino, Hasta, TocandoLuz, EncenderLuz,
-    IrAbajo,IrArriba,IrIzquierda,IrDerecha,Numero,OpComparacion,OpAritmetica,Texto],
+  bloques: [ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
+            Procedimiento, Repetir, Si, Sino, Hasta, TocandoLuz, EncenderLuz,
+            Numero, OpAritmetica],
 };

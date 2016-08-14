@@ -31,7 +31,8 @@ input, textarea /*.contenteditable?*/ {
 
 .nw-zoom {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 30px;
 }
 
 
@@ -49,6 +50,7 @@ input, textarea /*.contenteditable?*/ {
   top: 60px;
   bottom: 0;
   left: 430px;
+  height: 100%;
 }
 
 span.url {
@@ -140,10 +142,8 @@ span.url {
   right: -1px;
   top: -1px;
   padding-top: 12px;
-  padding-right: 27px;
-  background-image: url('../imagenes/beta.png');
-  background-repeat: no-repeat;
-  background-position: top right;
+  padding-right: 12px;
+  text-align: right;
 }
 
 .header-button {
@@ -175,15 +175,11 @@ span.url {
 .desafio {
   display:inline-block;
   position:relative;
-  /*
-  width: 200px;
-  height: 180px;
-  */
   width: 180px;
   height: 162px;
   margin: 10px;
   overflow: hidden;
-  box-shadow: 0 0 5px black;
+  border: 1px solid gray;
   background-color: #eee;
 }
 
@@ -597,6 +593,17 @@ h2 {
   width: 100%;
 }
 
+.contenedor-pilas-editor {
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+
+    height: 100%;
+}
 
 .contenedor-acercade li {
   font-size: 18px;
@@ -624,6 +631,23 @@ h2 {
   width: 210px;
   height: 240px;
 }
+
+
+.contenedor-panel-ayuda {
+  overflow-y: scroll;
+  margin-top: 5px;
+  position: absolute;
+  bottom: 3px;
+  margin-right: 5px;
+  margin-top: 5px;
+  top: 480px;
+}
+
+.contenedor-panel-ayuda.media-mobile {
+  top: 240px;
+}
+
+
 
 .content-spinner {
   margin: auto;
@@ -665,6 +689,7 @@ h2 {
 .desafio-panel-izquierdo {
   width: 500px;
   padding: 5px;
+  position: relative;
 }
 
 .desafio-panel-derecho {
@@ -672,6 +697,7 @@ h2 {
   padding: 5px;
   padding-left: 5px;
   min-width: 380px;
+  height: 100%;
 }
 
 .desafio-panel-codigo {
@@ -733,8 +759,16 @@ table {
 #blocklyArea {
     height: 99%;
     text-align: center;
+    position: relative;
 }
 
 .hidden {
   display: none;
+}
+
+#contenedor-blockly {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

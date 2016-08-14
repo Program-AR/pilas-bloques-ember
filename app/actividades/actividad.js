@@ -122,12 +122,12 @@ var Actividad = Ember.Object.extend({
     var codigo = this.generarCodigoXML();
 
     function xml2string(node) {
-       if (typeof(XMLSerializer) !== 'undefined') {
-          var serializer = new XMLSerializer();
-          return serializer.serializeToString(node);
-       } else if (node.xml) {
-          return node.xml;
-       }
+      if (typeof(XMLSerializer) !== 'undefined') {
+        var serializer = new XMLSerializer();
+        return serializer.serializeToString(node);
+      } else if (node.xml) {
+        return node.xml;
+      }
     }
 
     return xml2string(codigo);

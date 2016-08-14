@@ -1,5 +1,7 @@
-{{pilas-header}}
+{{#if layout}}
+  {{pilas-header}}
+{{/if}}
 
-<div class="contenedor-padding-superior">
+<div class={{if layout 'contenedor-padding-superior'}}>
 {{outlet}}
 </div>

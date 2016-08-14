@@ -2,14 +2,16 @@ import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 
 var PrimerSospechoso = AccionBuilder.build({
-  descripcion: 'Primer sospechoso',
+  id: 'Primersospechoso',
+  descripcion: 'Ir al primer sospechoso',
   icono: '../../iconos/izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
   argumentos: '{}',
 });
 
 var SiguienteSospechoso = AccionBuilder.build({
-  descripcion: 'Siguiente sospechoso',
+  id: 'Siguientesospechoso',
+  descripcion: 'Pasar al siguiente sospechoso',
   icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
@@ -27,7 +29,7 @@ var EsCulpable = AccionBuilder.buildSensor({
   id: 'Descubralculpable',
   descripcion: 'Estoy frente al culpable',
   icono: 'icono.culpable.png',
-  funcionSensor: 'colisiona_con(pilas.escena_actual().culpable) && pilas.escena_actual().culpable.teEncontraron()',
+  funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
 });
 
 export default {

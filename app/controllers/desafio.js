@@ -12,8 +12,6 @@ export default Ember.Controller.extend({
 
   actions: {
     cuandoCargaPilas(/*pilas*/) {
-      //this.set('codigo', 'demo');
-      //console.log("SE CARGO PILAS !!!");
     }
   }
 });

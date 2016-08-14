@@ -1,4 +1,4 @@
-import {AccionBuilder, Repetir, RepetirVacio, Si, Sino, Hasta, Procedimiento, VariableEspecificaGet} from 'pilas-engine-bloques/actividades/bloques';
+import {AccionBuilder, Repetir, RepetirVacio, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
 
 var Avanzar1km = AccionBuilder.build({
   descripcion: 'Avanzar 1 Km',
@@ -7,20 +7,12 @@ var Avanzar1km = AccionBuilder.build({
   argumentos: '{}',
 });
 
-var KmsTotales = VariableEspecificaGet.extend({
-  init() {
-        this._super();
-        this.set('id', 'KmsTotales');
-  },
-
-  nombre_sensor(){
-    return 'kmsTotales()';
-  },
-
-  descripcion(){
-    return 'Kilómetros de distancia';
-  },
-});
+var KmsTotales = AccionBuilder.buildSensorNumerico({
+   id: 'KmsTotales',
+   descripcion: 'Kilómetros a recorrer',
+   icono: 'icono.kms.png',
+   funcionSensor: 'kmsTotales()',
+ });
 
 export default {
   // DEPRECATED: nombre: 'El Superviaje',

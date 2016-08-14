@@ -204,6 +204,11 @@ export default Ember.Component.extend({
       this.sendAction('guardar');
     },
 
+    guardar_solucion_en_el_backend() {
+      let codigo_xml = this.get('actividad').generarCodigoXMLComoString();
+      this.sendAction('guardar_solucion_en_el_backend', codigo_xml);
+    },
+
     alternar() {
       //this.sendAction('redimensionar');
       console.log(this.controllerFor('application'));
@@ -285,11 +290,6 @@ export default Ember.Component.extend({
 
       if (!regex_file.test(archivo.name)) {
         alert("Lo siento, solo se permiten cargar archivos .spbq");
-        return;
-      }
-
-      if (archivo.size > 4000) {
-        alert("Lo siento, el archivo es demasiado grande para cargarse.");
         return;
       }
 

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir travis-cache
+if [ ! -f homebrew-cache.tar.gz ]; then
+  tar czf travis-cache/homebrew-cache.tar.gz --directory /usr/local/Cellar wine libtool little-cms2 libtiff libicns freetype jpeg libgphoto2
+fi

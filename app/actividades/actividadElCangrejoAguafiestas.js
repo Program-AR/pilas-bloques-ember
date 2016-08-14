@@ -1,28 +1,27 @@
 import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bloques/actividades/bloques';
-import {IrDerecha, IrIzquierda, IrArriba, IrAbajo} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import {Numero,OpComparacion,OpAritmetica,Texto} from 'pilas-engine-bloques/actividades/expresiones';
+import {ParaLaDerecha, ParaLaIzquierda,ParaArriba, ParaAbajo, MoverA} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
+import {Numero, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ExplotarGlobo = AccionBuilder.build({
   id: 'ExplotarGlobo',
   descripcion: 'Explotar globo',
   icono: 'icono.globo.png',
   comportamiento: 'ComportamientoColision',
-  argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',
+  argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", idTransicion: "explotar", comportamientoAdicional: Eliminar, argumentosComportamiento: {nombreAnimacion:"explotar"}}',
 });
 
 export default {
-  nombre: 'El cangrejo aguafiestas',
+  // DEPRECATED: nombre: 'El cangrejo aguafiestas',
   id: 'ElCangrejoAguafiestas',
-  enunciado: 'El cangrejo por aguafiestas quiere pinchar todos los globos de la fiesta. Los globos nunca cambian de lugar, pero ¡atención! la hilera del medio lo va a obligar al cangrejo a volver sobre sus pasos. Pista: ¿En vez de un parámetro te ayuda pensar a la cantidad de globos y a la dirección ambos como parámetros?',
-  /*consignaInicial: 'A definir.',*/
+  // DEPRECATED: enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
+  // DEPRECATED: consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
 
-  /*global ElCangrejoAguafiestas */
-  escena: ElCangrejoAguafiestas,
+  // DEPRECATED: escena: ElCangrejoAguafiestas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,
-    IrDerecha, IrIzquierda, IrArriba, IrAbajo,
-    ExplotarGlobo,Numero,OpComparacion,OpAritmetica,Texto],
+  bloques: [Procedimiento, Repetir, Si, Sino, Hasta,
+            ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
+            ExplotarGlobo, Numero, OpAritmetica],
 };

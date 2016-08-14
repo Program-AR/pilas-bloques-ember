@@ -1,27 +1,22 @@
-
 {{#if mostrar}}
   {{#modal-dialog close="close"
                   targetAttachment="center"
                   translucentOverlay=true}}
 
   {{modal-title title="Opciones" close="close"}}
-
   <div class="modal-body">
     {{yield}}
 
     <div class="modal-body">
 
         <div class='fila-opcion'>
-          <div class="row">
-            <div class="col-md-5">Tamaño de interfaz:</div>
-            <div class="col-md-7"> {{pilas-botones-zoom}} </div>
-          </div>
+          <p>Tamaño de la interfaz: {{pilas-botones-zoom}}</p>
         </div>
 
       </div>
 
 
   </div>
-    {{/modal-dialog}}
+  {{/modal-dialog}}
 
-  {{/if}}
+{{/if}}
