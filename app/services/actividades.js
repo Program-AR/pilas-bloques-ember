@@ -1,7 +1,6 @@
-/*jshint unused:false*/
+/* jshint unused:false */
 
 import Ember from 'ember';
-
 import actividadAlien from 'pilas-engine-bloques/actividades/actividadAlien';
 import actividadLaEleccionDelMono from 'pilas-engine-bloques/actividades/actividadLaEleccionDelMono';
 import actividadElMonoYLasBananas from 'pilas-engine-bloques/actividades/actividadElMonoYLasBananas';
@@ -62,20 +61,12 @@ var ParamValor = Ember.Object.extend({
 });
 
 
-
-
-
-
-
-
-
-
-
 import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 
 export default Ember.Service.extend({
-  obtenerPorNombre(idActividad) {
+
+  obtenerPorNombre(nombre) {
 
     let actividades = [
       actividadAlien,
@@ -116,10 +107,10 @@ export default Ember.Service.extend({
 
     actividades = actividades.concat(actividadesDibujandoFiguras);
 
-    var actividad = actividades.findBy('id',idActividad);
+    var actividad = actividades.findBy('id', nombre);
 
     if (!actividad) {
-      return null;
+      throw new Error(`No se encuentra la actividad de nombre ${nombre}`);
     }
 
     return Actividad.create({actividad});

@@ -1,0 +1,40 @@
+{{#if mostrar}}
+  {{#modal-dialog close="close"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+
+  {{modal-title title="Ayuda" close="close"}}
+
+  <div class="modal-body">
+    {{yield}}
+
+    <p>Esta aplicación te presentará varios desafíos que se pueden
+      resolver conectando bloques.</p>
+
+    <p>El primer paso es abrir la sección de Desafíos:</p>
+
+    <img src='imagenes/ayuda/seleccionar.gif' class="img-border">
+
+    <p>Los bloques están agrupados en categorías, usá la barra lateral
+      para desplegar los bloques.</p>
+
+    <p>Luego podés arrastrar y soltar los bloques sobre el área
+      de trabajo.</p>
+
+    <img src='imagenes/ayuda/arrastrar.gif' class="img-border">
+
+    <p>Una vez que tengas tu programa listo pulsá el botón ejecutar
+      continuar.</p>
+
+    <img src='imagenes/ayuda/ejecutar.gif' class="img-border">
+
+    <p>Ah, y los bloques se pueden borrar arrastrándolos a la papelera.</p>
+
+    <img src='imagenes/ayuda/borrar.gif' class="img-border">
+
+
+  </div>
+
+  {{/modal-dialog}}
+
+{{/if}}

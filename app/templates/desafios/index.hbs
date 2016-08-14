@@ -1,63 +1,18 @@
 <div class='contenido-principal'>
-<h1>Desafíos</h1>
-<p>Disfrutá de estos desafíos. ¡Muy pronto muchos más!</p>
 
-<!-- Disclaimer: Al modificar esta lista recordar modificar también public/listaActividades.json -->
+  <h1>Desafíos</h1>
 
-<h3>Autómatas, comandos, procedimientos y repetición</h3>
-{{pilas-desafio nombre='AlienTocaBoton' titulo='El alien toca el botón' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElGatoEnLaCalle' titulo='El gato en la calle' onSelect='onSelect'}}
-{{pilas-desafio nombre='NoMeCansoDeSaltar' titulo='No me canso de saltar' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElMarcianoEnElDesierto' titulo='El marciano en el desierto' onSelect='onSelect'}}
-{{pilas-desafio nombre='TitoEnciendeLuces' titulo='Tito enciende las luces' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElAlienYLasTuercas' titulo='El alien y las tuercas' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElRecolectorDeEstrellas' titulo='El recolector de estrellas' onSelect='onSelect'}}
-{{pilas-desafio nombre='MariaLaComeSandias' titulo='María la come sandías' onSelect='onSelect'}}
-{{pilas-desafio nombre='AlimentandoALosPeces' titulo='Alimentando a los peces' onSelect='onSelect'}}
-{{pilas-desafio nombre='InstalandoJuegos' titulo='Instalando juegos' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaGranAventuraDelMarEncantado' titulo='La gran aventura del mar encantado' onSelect='onSelect'}}
-{{pilas-desafio nombre='ReparandoLaNave' titulo='Reparando la nave' onSelect='onSelect'}}
+  <p>Disfrutá de estos desafíos. ¡Muy pronto muchos más!</p>
 
-<h3>Alternativa condicional</h3>
-{{pilas-desafio nombre='ElMonoYLasBananas' titulo='El mono y las bananas' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaEleccionDelMono' titulo='La elección del mono' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaberintoCorto' titulo='Laberinto corto' onSelect='onSelect'}}
-{{pilas-desafio nombre='TresNaranjas' titulo='Tres naranjas' onSelect='onSelect' }}
-{{pilas-desafio nombre='TitoRecargado' titulo='Tito recargado' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaberintoLargo' titulo='Laberinto largo' onSelect='onSelect'}}
 
-<h3>Repetición condicional</h3>
-{{pilas-desafio nombre='SuperTito1' titulo='Súper Tito 1' onSelect='onSelect'}}
-{{pilas-desafio nombre='SuperTito2' titulo='Súper Tito 2' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaberintoConQueso' titulo='Laberinto con queso' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElDetectiveChaparro' titulo='El detective chaparro' onSelect='onSelect'}}
-{{pilas-desafio nombre='FutbolRobots' titulo='Fútbol para robots' onSelect='onSelect'}}
-{{pilas-desafio nombre='PrendiendoLasCompus' titulo='Prendiendo las compus' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElMonoQueSabeContar' titulo='El mono que sabe contar' onSelect='onSelect'}}
+  {{#each model as |grupo|}}
 
-<h3>Sensores Numéricos</h3>
-{{pilas-desafio nombre='ElSuperviaje' titulo='El Superviaje' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElMonoCuentaDeNuevo' titulo='El mono cuenta de nuevo' onSelect='onSelect'}}
+    <h2>{{grupo.titulo}}</h2>
 
-<h3>Parametrización de soluciones</h3>
-{{pilas-desafio nombre='ElPlanetaDeNano' titulo='El planeta de Nano' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoCuadrado' titulo='Dibujando: Al cuadrado' onSelect='onSelect'}}
-{{pilas-desafio nombre='Dibujando5CuadradosHorizontal' titulo='Dibujando: Rayuela robótica' onSelect='onSelect'}}
-{{pilas-desafio nombre='Dibujando5CuadradosDiagonal' titulo='Dibujando: Corto por la diagonal' onSelect='onSelect'}}
-{{pilas-desafio nombre='Dibujando4CuadradosInteriores' titulo='Dibujando: Mamushka cuadrada' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoCabezaElefante' titulo='Dibujando: Escalera cuadrada' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoHexagono' titulo='Dibujando: Hexágono' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoTrianguloEquilatero' titulo='Dibujando: Pirámide invertida' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoPoligonosInteriores' titulo='Dibujando: Figuras dentro de figuras' onSelect='onSelect'}}
-{{pilas-desafio nombre='DibujandoCuevaEstalagtitas' titulo='Dibujando: La cueva de estalagtitas' onSelect='onSelect'}}
-{{pilas-desafio nombre='LaFiestaDeDracula' titulo='La fiesta de Drácula' onSelect='onSelect'}}
-{{pilas-desafio nombre='SalvandoLaNavidad' titulo='Salvando la Navidad' onSelect='onSelect'}}
-{{pilas-desafio nombre='PrendiendoLasCompusParametrizado' titulo='Prendiendo las compus parametrizado' onSelect='onSelect'}}
-{{pilas-desafio nombre='TitoCuadrado' titulo='Tito Cuadrado' onSelect='onSelect'}}
-{{pilas-desafio nombre='ElCangrejoAguafiestas' titulo='El cangrejo aguafiestas' onSelect='onSelect'}}
-{{pilas-desafio nombre='PrendiendoLasFogatas' titulo='Prendiendo las Fogatas' onSelect='onSelect'}}
+    {{#each grupo.desafios as |desafio|}}
+      {{pilas-desafio model=desafio}}
+    {{/each}}
 
-<!-- Disclaimer: Al modificar esta lista recordar modificar también public/listaActividades.json -->
+  {{/each}}
 
-{{pilas-desafio nombre='proximamente' titulo='Próximamente: más actividades' deshabilitado=true}}
 </div>

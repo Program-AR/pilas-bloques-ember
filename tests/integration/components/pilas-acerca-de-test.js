@@ -6,12 +6,11 @@ moduleForComponent('pilas-acerca-de', 'Integration | Component | pilas acerca de
 });
 
 test('it renders', function(assert) {
-  assert.expect(1);
-
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
   this.render(hbs`{{pilas-acerca-de}}`);
 
-  assert.ok(this.$().text().indexOf("Pilas Bloques") !== -1);
+  assert.ok(this.$().text(), "Incluye texto");
+
 });

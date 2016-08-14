@@ -1,6 +1,9 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import "modal.scss";
+@import "ribbons.scss";
+
+@import "font-awesome";
 
 html, body {
 }
@@ -28,7 +31,8 @@ input, textarea /*.contenteditable?*/ {
 
 .nw-zoom {
   display: inline-block;
-  margin-right: 20px;
+  margin-right: 10px;
+  margin-left: 30px;
 }
 
 
@@ -46,13 +50,8 @@ input, textarea /*.contenteditable?*/ {
   top: 60px;
   bottom: 0;
   left: 430px;
+  height: 100%;
 }
-
-.panel-pilas {
-  padding-top: 10px;
-  padding-left: 10px;
-}
-
 
 span.url {
   color: rgb(180, 180, 180);
@@ -144,6 +143,7 @@ span.url {
   top: -1px;
   padding-top: 12px;
   padding-right: 12px;
+  text-align: right;
 }
 
 .header-button {
@@ -175,19 +175,17 @@ span.url {
 .desafio {
   display:inline-block;
   position:relative;
-  /*
-  width: 200px;
-  height: 180px;
-  */
   width: 180px;
   height: 162px;
   margin: 10px;
   overflow: hidden;
-  box-shadow: 0 0 5px black;
+  border: 1px solid gray;
+  background-color: #eee;
 }
 
 .desafio-img {
-  width: 100%;
+  width: 180px;
+  height: 162px;
 }
 
 
@@ -425,6 +423,8 @@ body,
   right: 0;
   background-color: rgba(255, 255, 255, 0.75);
   text-align: center;
+  color: black;
+  text-shadow: 0px 0px 3px white;
 }
 
 
@@ -510,12 +510,12 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 
 
 .modal-body {
-  overflow-y: scroll;
+  //verflow-y: scroll;
 }
 
 .dialogoFinDesafio {
-  width: 400px;
-  height: 200px;
+  width: 500px;
+  height: 300px;
 }
 
 .img-border {
@@ -568,6 +568,207 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
 .tip-block {
   border: 1px solid rgb(201, 198, 249);
   background-color: rgb(223, 255, 254);
-  padding: 5px;
   margin-bottom: 15px;
+  text-align: justify;
+  padding: 10px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.panel-ayuda p {
+  text-align: justify;
+}
+
+
+h2 {
+  font-size: 24px;
+  margin-top: 38px;
+  font-weight: 200;
+}
+
+.contenedor-padding-superior {
+  padding-top: 4em;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
+.contenedor-pilas-editor {
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+
+    height: 100%;
+}
+
+.contenedor-acercade li {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+}
+
+.iframe-pilas-canvas {
+  border: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pilas-canvas-container {
+  position: relative;
+  width: 420px;
+  height: 480px;
+  overflow: hidden;
+}
+
+.desafio-panel-izquierdo.media-mobile {
+  width: 250px;
+}
+
+.pilas-canvas-container.media-mobile {
+  width: 210px;
+  height: 240px;
+}
+
+
+.contenedor-panel-ayuda {
+  overflow-y: scroll;
+  margin-top: 5px;
+  position: absolute;
+  bottom: 3px;
+  margin-right: 5px;
+  margin-top: 5px;
+  top: 480px;
+}
+
+.contenedor-panel-ayuda.media-mobile {
+  top: 240px;
+}
+
+
+
+.content-spinner {
+  margin: auto;
+}
+
+.spinner {
+  height: 38px;
+  width: 38px;
+  animation: rotate 0.6s infinite linear;
+  border: 3px solid #9C9C9C;
+  border-right-color: transparent;
+  border-radius: 50%;
+}
+
+.spinner-centered {
+  position: absolute;
+  text-align: center;
+  left: 50%;
+  top: 50%;
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: -1;
+}
+
+@keyframes rotate {
+  0%    { transform: rotate(0deg); }
+  100%  { transform: rotate(360deg); }
+}
+
+
+.desafio-contenedor {
+  display: -ms-flex;
+  display: -webkit-flex;
+  display: flex;
+  height: 100%;
+  padding: 5px;
+}
+
+.desafio-panel-izquierdo {
+  width: 500px;
+  padding: 5px;
+  position: relative;
+}
+
+.desafio-panel-derecho {
+  width: 100%;
+  padding: 5px;
+  padding-left: 5px;
+  min-width: 380px;
+  height: 100%;
+}
+
+.desafio-panel-codigo {
+  width: 100%;
+  padding: 5px;
+  overflow: scroll;
+}
+
+.desafio-panel-codigo-pre {
+}
+
+.blocklyTreeSeparator {
+  border-bottom: solid black 0px !important;
+}
+
+
+.puede-seleccionar * {
+  -webkit-touch-callout:default;
+  -webkit-user-select:text;
+  -moz-user-select:text;
+  -ms-user-select:text;
+  user-select:text;
+}
+
+.text-center {
+  text-align: center;
+}
+
+
+.pilas-cargando-container {
+  width: 110px;
+  margin: auto;
+  padding-left: -50px;
+  margin-top: 2em;
+}
+
+
+.main-logo {
+  max-width: 100%;
+  height: auto;
+}
+
+
+.pilas-debug-bar {
+  position: fixed;
+  top: -1px;
+  z-index: 10000;
+  left: 50%;
+  border: 1px solid gray;
+  background-color: rgba(200, 200, 200, 0.5);
+  padding: 5px;
+}
+
+table {
+    height: 100%;
+    width: 100%;
+}
+
+#blocklyArea {
+    height: 99%;
+    text-align: center;
+    position: relative;
+}
+
+.hidden {
+  display: none;
+}
+
+#contenedor-blockly {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import Bloque from 'pilas-engine-bloques/actividades/bloque';
 import {MisProcedimientos, Repeticiones, Alternativas, Variables,Sensores,MisFunciones, Valores} from 'pilas-engine-bloques/actividades/categorias';
+
 /*
  * Pide implementar sólo block_javascript
  * Sirve para pisar el JS que produce blockly
@@ -133,7 +134,7 @@ var Procedimiento = CambioDeJSDeBlocky.extend({
 
     var args_string = args.map(function(i) { return '"' + i + '"'; }).join(', ');
 
-    var code = 'programa.empezar_secuencia();\n' +
+    var code = 'programa.empezar_secuencia(); \n' +
                 branch +
                 'programa.def_proc("' + funcName + '", [' + args_string  + ']);\n';
 
@@ -269,31 +270,37 @@ var AlEmpezar = Bloque.extend({
   block_javascript(block) {
     var statements_program = Blockly.JavaScript.statementToCode(block, 'program');
     var r = 'programa.empezar_secuencia();\n';
-    r += statements_program + '\n';
+    r += statements_program + '\n\n';
 
-    var Comportamiento = (function () {
+    r += "\n";
+    r += "// CIERRE DEL PROGRAMA \n";
+    r += "\n";
 
-      function Comportamiento(argumentos) {
-          this.argumentos = argumentos;
-      }
+    r += 'var ComportamientoFinalizar = (function () { \n';
+    r += "\n";
+    r += '  function Comportamiento(argumentos) { \n';
+    r += '    this.argumentos = argumentos; \n';
+    r += '  } \n';
+    r += "\n";
+    r += '  Comportamiento.prototype.iniciar = function (receptor) { \n';
+    r += '    this.receptor = receptor; \n';
+    r += '  }; \n';
+    r += "\n";
+    r += '  Comportamiento.prototype.actualizar = function () { \n';
+    r += '    var mensaje = { \n';
+    r += '       tipo: "terminaEjecucion",\n';
+    r += '       detalles: null\n';
+    r += '    };\n';
+    r += '    parent.postMessage(mensaje, window.location.origin); \n';
+    r += '    return true; \n';
+    r += '  }; \n';
+    r += "\n";
+    r += '  return Comportamiento; \n';
+    r += "\n";
+    r += '})(); \n';
 
-      Comportamiento.prototype.iniciar = function (receptor) {
-          this.receptor = receptor;
-      };
-
-      Comportamiento.prototype.actualizar = function () {
-        var event = new Event('terminaEjecucion');
-        window.dispatchEvent(event);
-        return true;
-      };
-
-      return Comportamiento;
-    })();
-
-    window['receptor'].finaliza_tarea = Comportamiento;
-
-    r += 'programa.hacer(receptor.finaliza_tarea, {});\n';
-
+    r += "\n";
+    r += 'programa.hacer(ComportamientoFinalizar, {});\n';
     r += 'programa.ejecutar(receptor);\n';
     return r;
   }
@@ -311,8 +318,21 @@ var Accion = Bloque.extend({
   },
 
   block_javascript(block) {
+    let nombre = this.nombre_comportamiento();
+    let argumentos = this.argumentos(block);
+
+    return ['', '',
+            `// BLOQUE: ${nombre}`,
+            `programa.llamada_proc_primitivo(${nombre}, function() {`,
+            `  return ${argumentos};`,
+            `});`,
+          ].join("\n");
+
+
+            /*
     return 'programa.llamada_proc_primitivo(' + this.nombre_comportamiento() +
       ', function(){\n return ' + this.argumentos(block) + ';\n})\n';
+      */
   }
 
 });
@@ -392,30 +412,29 @@ var AccionBuilder = {
     });
   },
 
-  // TODO: Quitar código repetido con build
   buildSensorNumerico(opciones){
-    return Sensor.extend({
-      init() {
-        this._super();
-        this.set('id', opciones.id || this.toID(opciones.descripcion));
-      },
+      return Sensor.extend({
+        init() {
+          this._super();
+          this.set('id', opciones.id || this.toID(opciones.descripcion));
+        },
 
-      block_init(block){
-        this._super(block);
-        block.appendDummyInput()
-            .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
-            .appendField(opciones.descripcion);
-      },
+        block_init(block){
+          this._super(block);
+          block.appendDummyInput()
+              .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+              .appendField(opciones.descripcion);
+        },
 
-      nombre_sensor(){
-        return opciones.funcionSensor;
-      },
+        nombre_sensor(){
+          return opciones.funcionSensor;
+        },
 
-      toID(descripcion){
-        return descripcion.replace(/[^a-zA-z]/g, "");
-      },
-    });
-  },
+        toID(descripcion){
+          return descripcion.replace(/[^a-zA-z]/g, "");
+        },
+      });
+    },
 
   // TODO: Quitar código repetido con build
   buildValor(opciones){
@@ -434,8 +453,8 @@ var AccionBuilder = {
         block.setOutput(true);
 
         block.appendDummyInput()
-             .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
-             .appendField(opciones.descripcion);
+        .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
+        .appendField(opciones.descripcion);
       },
 
       block_javascript() {
@@ -481,7 +500,6 @@ var ParamCampo = Ember.Object.extend({
 /* ============================================== */
 
 var EstructuraDeControl = Bloque.extend({
-
   block_init(block) {
     this._super(block);
     block.setColour(Blockly.Blocks.loops.COLOUR);

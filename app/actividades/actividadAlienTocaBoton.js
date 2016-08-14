@@ -41,12 +41,12 @@ var actividadAlienTocaBoton = {
   consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
 
   // la escena proviene de ejerciciosPilas
-  escena: AlienInicial, // jshint ignore:line
+  // DEPRECATED: escena: 'AlienInicial', // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [IrDerecha,ApretarBoton],
+  bloques: [IrDerecha, ApretarBoton],
 };
 
 export default actividadAlienTocaBoton;

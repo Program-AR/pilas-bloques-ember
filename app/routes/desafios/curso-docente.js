@@ -7,11 +7,7 @@ export default CursoAlumnoRoute.extend({
 
     return this.get("cursoAPI").obtener_solucion_xml_desde_hash(model.hash).
       then((solucion_xml) => {
-
-        model.solucion = this.store.createRecord("solucion", {
-          codigoXML: solucion_xml
-        });
-
+        model.set("solucion", btoa(solucion_xml));
       });
   },
 });

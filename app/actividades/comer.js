@@ -10,7 +10,7 @@ var ComerBanana = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
+          .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
           .appendField('Comer banana ');
   },
 

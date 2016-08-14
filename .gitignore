@@ -37,3 +37,5 @@ webkitbuilds
 
 log_descompresion.log
 *.pyc
+/docs/
+/binarios/

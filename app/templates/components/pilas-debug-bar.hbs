@@ -1,0 +1,5 @@
+<button {{action (toggle "panelCanvasVisible" this)}} class="btn btn-default {{if panelCanvasVisible 'active'}}">1</button>
+<button {{action (toggle "panelBlocklyVisible" this)}} class="btn btn-default {{if panelBlocklyVisible 'active'}}">2</button>
+<button {{action (toggle "panelCodigoVisible" this)}} class="btn btn-default {{if panelCodigoVisible 'active'}}">3</button>
+
+<span class="hidden">{{layout}}</span>

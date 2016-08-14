@@ -1,19 +1,20 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-  actividad: null,
-  solucion: null,
+  classNames: ['contenedor-pilas-editor'],
+  persistirSolucionEnURL: true,
+  ningunPanelVisible: Ember.computed.none('panelCanvasVisible', 'panelBlocklyVisible', 'panelCodigoVisible'),
 
   actions: {
-    reiniciar() {
-      this.get('actividad').iniciarEscena();
+    onReady(pilas) {
+      this.sendAction("onReady", pilas);
     },
     guardar_solucion_en_el_backend(codigo_xml) {
-      let hash = this.get("hash");
-      let idAlumno = this.get("idAlumno");
-      let actividad = this.get('actividad').id;
+       let hash = this.get("hash");
+       let idAlumno = this.get("idAlumno");
+       let actividad = this.get("model.actividad").id;
 
-      this.sendAction("guardar_solucion_en_el_backend", {hash, idAlumno, actividad, codigo_xml});
-    }
+       this.sendAction("guardar_solucion_en_el_backend", {hash, idAlumno, actividad, codigo_xml});
+     }
   }
 });

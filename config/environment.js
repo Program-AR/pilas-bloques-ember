@@ -10,6 +10,10 @@ module.exports = function(environment) {
     locationType: 'hash',
     cursoBackendURL: 'http://api.pilasbloques.program.ar',
     EmberENV: {
+      EXTEND_PROTOTYPES: {
+        Date: false,
+        Array: true,
+      },
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -28,6 +32,10 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
   }
 
   if (environment === 'test') {
@@ -40,9 +48,19 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
+
   }
 
   if (environment === 'production') {
+
+    ENV['ember-cli-mirage'] = {
+      enabled: true
+    };
+
   }
 
   ENV.contentSecurityPolicy = {

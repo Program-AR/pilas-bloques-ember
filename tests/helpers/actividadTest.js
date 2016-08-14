@@ -1,100 +1,223 @@
 import { test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import Actividad from 'pilas-engine-bloques/actividades/actividad';
-import debeTenerTantosActoresConEtiqueta from './debe-tener-tantos-actores-con-etiqueta';
 import {moduleForComponent} from 'ember-qunit';
+import startMirage from './start-mirage';
 
-var TestingErrorHandler = Ember.Object.extend({
-  init: function() {
-    this.success = this.get('success');
-    this.assert = this.get('assert');
-    this.expectedErrorMsg = this.get('expectedErrorMsg');
-    this.assertedSomething = false;
-  },
+/**
+ * Inicia los tests de la actividad definiendo un grupo para qunit.
+ */
+export function moduloActividad(nombre) {
+  let titulo = `Integration | Actividad | ${nombre}`;
 
-  handle: function(error){
-  	pilas.escena_actual().pausar();
-  	if(error.description() === this.expectedErrorMsg){
-  		this.assert.ok(true, "Ocurrió el error esperado. Bien!");
-  	} else {
-  		this.assert.equal(error.description(),"", "Hubo un error inesperado en la actividad");
-  	}
-  	this.assertedSomething = true;
-  	this.success();
-  },
+  let opciones = {
+    integration: true,
 
-  performAsserts: function(){
-  	if(this.expectedErrorMsg && !this.assertedSomething){
-  		this.assert.equal("", this.expectedErrorMsg, "No ocurrió el error esperado");
-  		this.assertedSomething = true;
-  		this.success();
-  	}
-  },
-});
+    setup() {
+      startMirage(this.container);
+    }
+  };
 
-function descripcionTest(actividad,descripcionAdicional){
-	return (descripcionAdicional ? descripcionAdicional : 'Se puede resolver la actividad ' );
+	moduleForComponent('pilas-editor', titulo, opciones);
 }
 
-function sanitizarOpciones(opciones){
-	opciones.solucion = opciones.solucion || '';
-	// opciones.descripcionAdicional es opcional
-	// opciones.expectedErrorMsg es opcional
-	opciones.cantAsserts = opciones.cantAsserts || 0;
-	/*jshint unused: vars */
-    opciones.assertsPostCargaInicial = opciones.assertsPostCargaInicial || function(assert){};
-    opciones.assertsPostEjecucion = opciones.assertsPostEjecucion || function(assert){};
+/**
+ * Realiza una validación en la cantidad de actores, este función se utiliza
+ * como helper para aquellos tests que intentan contar actores antes y
+ * después de realizar una actividad.
+ */
+function validarCantidadDeActores(actoresEsperadosPorEtiqueta, assert, pilas) {
+  $.each(actoresEsperadosPorEtiqueta, (etiqueta, cantidadEsperada) => {
+    let mensaje = `Hay ${cantidadEsperada} actores con la etiqueta ${etiqueta}.`;
+    assert.equal(pilas.contarActoresConEtiqueta(etiqueta), cantidadEsperada, mensaje);
+  });
 }
 
-export function moduloActividad(actividad){
-	moduleForComponent('pilas-editor','actividad:' + actividad.id,  {  integration: true, });
+/**
+ * Valida las opciones enviadas al test de la actividad para detectar
+ * errores o inconsistencias en las opciones antes de iniciar cualquier
+ * test.
+ *
+ * Retorna True si alguna de las opciones enviadas es incorrecta.
+ */
+function validarOpciones(opciones) {
+  let listaDeOpciones = Object.keys(opciones);
+  let opcionesValidas = [
+    'solucion',
+    'descripcionAdicional',
+    'errorEsperado',
+    'cantidadDeActoresAlComenzar',
+    'cantidadDeActoresAlTerminar',
+    'fps',
+  ];
+
+  function esOpcionInvalida(opcion) {
+    return (opcionesValidas.indexOf(opcion) === -1);
+  }
+
+  let opcionesInvalidas = $.grep(listaDeOpciones, esOpcionInvalida);
+
+  $.map(opcionesInvalidas, (opcionInvalida) => {
+    let error = `La opcion enviada al test (${opcionInvalida}) es inválida.`;
+    throw new Error(error);
+  });
+
+  if (opciones.errorEsperado && opciones.cantidadDeActoresAlTerminar) {
+    let error = `Es inválido escribir un test que incluya un errorEsperado y conteo de actores al terminar.`;
+    throw new Error(error);
+  }
+
+  return (opcionesInvalidas.length > 0);
 }
 
-export function actividadTest(actividad, opciones){
-	sanitizarOpciones(opciones);
+/**
+ * Permite realizar una prueba sobre una actividad y su comportamiento.
+ *
+ * Argumentos:
+ *
+ *  - nombre: El identificador de la actividad, por ejemplo "AlienTocaBoton".
+ *  - opciones: Un diccionario de opciones, con las siguientes claves:
+ *
+ *        - solucion (obligatorio): El código xml de la solución en base64.
+ *        - descripcionAdicional: Un string con un detalle del objetivo del test.
+ *        - errorEsperado: El string que debería llevar una excepción esperada.
+ *        - cantidadDeActoresAlComenzar: Un diccionario para validar la cantidad de actores en la escena.
+ *        - cantidadDeActoresAlTerminar: Un diccionario para validar la cantidad de actores en la escena.
+ *        - fps: Los cuadros por segundo esperados (por omisión 200 en los test y 60 normalmente).
+ *
+ * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
+ */
+export function actividadTest(nombre, opciones) {
 
-	test(descripcionTest(actividad,opciones.descripcionAdicional), function(assert) {
-	  assert.expect(1 + opciones.cantAsserts);
-	  assert.cantActores = (etiqueta,cant) => debeTenerTantosActoresConEtiqueta(assert,cant,etiqueta);
+  if (validarOpciones(opciones)) {
+    throw new Error(`Se ha iniciado el tests ${nombre} con opciones inválidas.`);
+  }
 
-	  this.set('actividad', Actividad.create({actividad: actividad}));
-	  this.set('solucion', Ember.Object.create({
-	    codigoXML: opciones.solucion,
-	    nombreDesafio: actividad.id,
-	  }));
+  let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
-	  /* Como la tarea de ejecutar el código completo de la solución demora
-	   * tiempo, retorno una promesa para que ember espere a que finalice.
-	   * La promesa termina con la llamada a sucess.
-	   */
+	test(descripcion, function(assert) {
+
+    let store = this.container.lookup('service:store');
+    let pilas = this.container.lookup('service:pilas');
+    let actividades = this.container.lookup('service:actividades');
+
 	  return new Ember.RSVP.Promise((success) => {
 
-	    this.render(hbs`
-	      {{#pilas-editor ocultarModal=true autoejecutar=true actividad=actividad
-	                      solucion=solucion}}{{/pilas-editor}}
-	    `);
+      Ember.run(() => {
 
-	    window.addEventListener('terminaCargaInicial', () => {
-        pilas.escena_actual().errorHandler = TestingErrorHandler.create({success: success, assert: assert, expectedErrorMsg: opciones.expectedErrorMsg});
-        if(!opciones.lento){
-          pilas.escena_actual().actores.forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad()); // Para que las animaciones se hagan rápido
-          /*global ComportamientoConVelocidad*/
-          ComportamientoConVelocidad.prototype.velocidad = function(){ return 100; }; // para que los movimientos se hagan rápido
-        }
-	      opciones.assertsPostCargaInicial(assert);
-	    }, false);
+        // Simula el model hook del router desafío.
+        store.findAll("desafio").then((data) => {
+          // TODO: reemplazar la linea anterior (findAll) y la siguiente
+          //       por una consulta a ember-data más específica, como la que
+          //       realiza findRecord, que solo debería traer un solo registro.
+          //
+          //       (esto está así ahora porque se debe corregir mirage antes).
+          let model = data.findBy('nombre', nombre);
 
-	    window.addEventListener('terminaEjecucion', () => {
-	      opciones.assertsPostEjecucion(assert);
-		  var errHandler = pilas.escena_actual().errorHandler;
-		  errHandler.performAsserts();
-	      if(!errHandler.assertedSomething){
-	      	assert.ok(pilas.escena_actual().estaResueltoElProblema(),"Se puede resolver el problema");
-	      	success(); // indica que los test finalizan para este desafío.
-	      }
-	    }, false);
-	  });
+          if (!model) {
+            throw new Error(`No existe una actividad con el nombre ${nombre}`);
+          }
+
+          this.set('model', model);
+          this.set('pilas', pilas);
+
+
+          // TODO:
+          // Simula el método afterModel del router. Este código se quitará
+          // cuando migremos completamente a ember-data.
+          let actividad = actividades.obtenerPorNombre(model.get("nombre"));
+          this.set('model.actividad', actividad);
+
+          // Carga la solución en base64, el formato que espera el componente.
+          this.set('solucion', window.btoa(opciones.solucion));
+
+          // Captura el evento de inicialización de pilas:
+          this.on('onReady', function(/*instanciaPilas*/) {
+            var code = actividad.generarCodigo();
+            pilas.ejecutarCodigoSinReiniciar(code);
+
+
+            // Intenta usar la velocidad de ejecución indicada por
+            // las opciones del test.
+            // Por omisión los tests se ejecutarán muy rápido.
+            if (opciones.fps) {
+              pilas.cambiarFPS(opciones.fps);
+            } else {
+              pilas.cambiarFPS(200);
+            }
+
+            if (opciones.cantidadDeActoresAlComenzar) {
+              validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
+            }
+
+          });
+
+          /**
+           * Si hay un error en la actividad intenta determinar
+           * si es un error esperado o no. Y en cualquiera de los
+           * dos casos finaliza el test.
+           */
+          pilas.on("errorDeActividad", function(motivoDelError) {
+            let errorEsperado = opciones.errorEsperado;
+
+            if (errorEsperado) {
+              assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
+            } else {
+              assert.notOk(`Ocurrió un error inesperado: '${errorEsperado}'`);
+            }
+
+            success();
+
+          });
+
+          pilas.on("terminaEjecucion", function(/*data*/) {
+
+            if (opciones.cantidadDeActoresAlTerminar) {
+              validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
+            }
+
+
+            // Los errores esperados no deberían llegar a este punto, así
+            // que se emite un error.
+            let errorEsperado = opciones.errorEsperado;
+
+            if (errorEsperado) {
+              assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
+            } else {
+              assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
+            }
+
+            success();
+
+          });
+
+          /**
+           * Se instancia el componente pilas-editor con los paneles que
+           * observará el usuario y una solución pre-cargada, tal y como se
+           * hace dentro de la aplicación.
+           */
+  	      this.render(hbs`
+            {{pilas-editor
+              debug=false
+              pilas=pilas
+              model=model
+              onReady="onReady"
+              codigo=solucion
+              codigoJavascript=""
+
+              persistirSolucionEnURL=false
+
+              panelCanvasVisible=true
+              panelBlocklyVisible=true
+              panelCodigoVisible=false
+            }}
+          `);
+
+        });
+
+      });
+
+    });
 
 	});
 }

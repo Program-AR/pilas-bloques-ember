@@ -1,53 +1,133 @@
-<div class='pilas-blockly-botones'>
+{{yield}}
 
-  {{#if mostrarAlternar}}
-    <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
-  {{/if}}
 
-  {{#if ejecutando}}
-      <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
-  {{else}}
-      <button class='btn btn-success' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
-  {{/if}}
+<table>
 
-  {{#if modoAlumno}}
-      <button class='btn btn-info pull-right' {{action "guardar_solucion_en_el_backend"}}>Guardar mi solución</button>
-  {{else if modoDocente}}
+  <tbody>
+    <tr>
+      <td>
+          <div class='pilas-blockly-botones'>
 
-  {{else}}
+            {{#if mostrarAlternar}}
+              <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
+            {{/if}}
 
-    {{#if environment.debeMostrarBotonCodigoXML}}
-      <button class='btn btn-warning' {{action "ver_codigo"}}>Ver código XML</button>
-      <button class='btn btn-warning' {{action "ingresar_codigo"}}>Ingresar código XML</button>
-    {{/if}}
+            {{#if ejecutando}}
+                <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
+            {{else}}
+                <button class='btn btn-success' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
+            {{/if}}
 
-    {{#if mostrarGuardar}}
-      {{#if model}}
-        <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
-      {{else}}
-        <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
-      {{/if}}
-    {{/if}}
+            {{#if modoAlumno}}
+              <button class='btn btn-info pull-right' {{action "guardar_solucion_en_el_backend"}}>Guardar mi solución</button>
+            {{else if modoDocente}}
 
-    {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
+            {{else}}
 
-    <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+              {{#if environment.debeMostrarBotonCodigoXML}}
+                <button class='btn btn-warning' {{action "ver_codigo"}}>Ver código XML</button>
+                <button class='btn btn-warning' {{action "ingresar_codigo"}}>Ingresar código XML</button>
+              {{/if}}
 
-    {{#if mostrarBotonCompartir}}
-      <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
-    {{/if}}
+              {{#if mostrarGuardar}}
+                {{#if model}}
+                  <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+                {{else}}
+                  <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+                {{/if}}
+              {{/if}}
 
-  {{/if}}
 
-</div>
+              {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
-<div id="contenedor-blockly" style="height: 300px; width: 500px;"> </div>
+              <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+
+
+              {{#if mostrarCompartir}}
+                <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+              {{/if}}
+
+            {{/if}}
+
+          </div>
+
+      </td>
+    </tr>
+
+    <tr>
+      <td id="blocklyArea">
+
+        <div id="contenedor-blockly" style="position: absolute;"> </div>
+
+      </td>
+    </tr>
+  </tbody>
+
+</table>
+
+
+
 
 {{#if ocultarModal}}
 
 {{else}}
 
-  {{partial "modal-twitter"}}
-  {{partial "modal-findesafio"}}
+
+{{#if mostrarDialogoFinDesafio}}
+  {{#modal-dialog close="ocultarFinDesafio"
+                  target="panel-pilas"
+                  attatchment="middle center"
+                  translucentOverlay=true
+                  container-class="dialogoFinDesafio"}}
+
+  {{modal-title title="Objetivo cumplido" close="ocultarFinDesafio"}}
+
+    <p>El autómata cumplió el objetivo.</p>
+
+    <p><strong>Ojo.</strong> Tu programa puede ser excelente o no estar bien. Discutilo con amigos o docentes para saber si realmente encontraste una idea que también te sirva en otros desafíos.</p>
+
+  {{/modal-dialog}}
+{{/if}}
+
+
+  {{#if abrirDialogoCompartir}}
+    {{#modal-dialog close="ocultarModalTwitter"
+                    targetAttachment="center"
+                    translucentOverlay=true}}
+
+    {{modal-title title="Compartir en twitter" close="ocultarModalTwitter"}}
+
+    <div class="modal-body">
+      <div class="modal-inline-block  float-left">
+        <img id="preview" src={{previewData}} width=210 height=240>
+      </div>
+
+      <div class="modal-inline-block">
+
+        <div class='fila-opcion'>
+          Mensaje: {{textarea class='modal-mensaje-compartir' rows=3 value=mensajeCompartir}}
+        </div>
+
+        <div class='fila-opcion'>
+          {{#if envioEnCurso}}
+            <button class="btn btn-info" disabled><i class='fa fa-twitter'></i> Compartiendo ...</button>
+          {{else}}
+            <button class="btn btn-info" {{action "enviarMensaje"}}><i class='fa fa-twitter'></i> Compartir</button>
+          {{/if}}
+        </div>
+
+        {{#if mensajePublicadoURL}}
+          <div class='compartir-mensaje'>
+            Listo, tu mensaje fué publicado en twitter,
+            <a href="" {{action "abrirMensajePublicado"}}>¿querés abrirlo?</a>.
+          </div>
+        {{/if}}
+
+      </div>
+    </div>
+
+
+    {{/modal-dialog}}
+  {{/if}}
 
 {{/if}}

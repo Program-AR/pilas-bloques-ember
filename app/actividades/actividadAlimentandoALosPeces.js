@@ -1,4 +1,3 @@
-/* globals AlimentandoALosPeces */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 var {Repetir, Procedimiento,Accion} = bloques;
@@ -68,7 +67,7 @@ var actividadAlimentandoALosPeces = {
   enunciado:'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: pensá en una estrategia de 3 partes.',
 
   // la escena proviene de ejerciciosPilas
-  escena: AlimentandoALosPeces,
+  // DEPRECATED: escena: AlimentandoALosPeces,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

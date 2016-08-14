@@ -2,12 +2,23 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
     var app = new EmberApp(defaults, {
-        // Any other options
+      'ember-font-awesome': {
+        useScss: true,
+        includeFontFiles: true
+      }
     });
 
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
-app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 
+app.import('vendor/prism/prism.css');
+app.import('vendor/prism/prism.js');
+
+//app.import('vendor/pilasweb.js');
+
+
+//app.import('bower_components/bootstrap/dist/js/bootstrap.js');
+
+/*
 app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot', {
     destDir: 'fonts'
 });
@@ -26,13 +37,14 @@ app.import('bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.w
 app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
     destDir: 'assets'
 });
+*/
 
     app.import("vendor/libs/blockly/blockly_compressed.js");
     app.import("vendor/libs/blockly/blocks_compressed.js");
     app.import("vendor/libs/blockly/javascript_compressed.js");
     app.import("vendor/libs/blockly/msg/js/es.js");
 
-
-
+    process.setMaxListeners(1000);
     return app.toTree();
 };
+

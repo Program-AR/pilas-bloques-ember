@@ -1,28 +1,45 @@
 ---
-language: node_js
-node_js:
-  - "0.12"
-
+language: objective-c
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
-before_install:
-  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
-  - "npm config set spin false"
-  - "npm install -g npm@^2"
-
+  - node_modules
+  - $HOME/.npm
+  - $HOME/.cache # includes bowers cache
+  - cache
 install:
-  - npm install -g bower
-  - npm install
-  - bower install
-  - mkdir travis-phantomjs
-  - wget https://s3.amazonaws.com/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -O $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2
-  - tar -xvf $PWD/travis-phantomjs/phantomjs-2.0.0-ubuntu-12.04.tar.bz2 -C $PWD/travis-phantomjs
-  - export PATH=$PWD/travis-phantomjs:$PATH
-  
-
+- npm install
+- bower install
+- make full
 script:
-  - npm test
+- npm test
+before_install:
+- brew update
+- brew install curl
+- brew install makensis
+- cd $TRAVIS_BUILD_DIR && travis/download-homebrew
+- rm -rf ~/.nvm
+- git clone https://github.com/creationix/nvm.git ~/.nvm
+- source ~/.nvm/nvm.sh
+- nvm install 4.2
+- nvm use 4.2
+- npm config set spin false
+- npm install -g bower
+- npm install -g phantomjs-prebuilt
+- npm install -g grunt-cli
+- npm install -g node-gyp
+before_deploy:
+- VERSION=$(sh scripts/obtenerVersion.sh)
+- echo "Detectando version $VERSION para compilar"
+- make binarios_electron
+deploy:
+  skip_cleanup: true
+  provider: releases
+  api_key:
+    secure: WRybyac4M4SnnGP8Av/EXKV8hproOv27mBNCnwENVle2vOgXDsoAOd/c0QCIRPjd/rmq/7fU+PYqGjRvIa6+Osy1DdX8VSP6Shp9f+/i3WCO9yhCd0c1RbsKbE/qyVKKQkJYG039Y+9udmEat7pnNY7KVDv1h5TU4aCDwRpflZXBUN7ncpuvmBEdStnk7wMAdhTwaeRoGN3TXh5MCW1AS1TBrXZWPM41K6kidxxs9oPaU/7K43X/4sFB//9G3Qs5VNhKhTsJUwJDPKw5jx3KzFdnaS04fM2MJnEaBK6NO5SCbjxT545ZtTllxcRe47TF4/+5sP0qYZVLAQUeOff2Src6U5NWmbcSYeIJCYiZGlBubXXKlQOVrjxzi58qFo4TBSnAqHohnSRQfLW5E38yUto3C9ob1FMl7VnBYyBVrh9rHDQ7BcwOuCSS4T3g8n1J8QBycuJG3DXZreZ31cD72ncDe/FMYOLTOO7hkatwYE03ILhQFvHnl1fvq9upZF+K3h7U7MZ06v39M2bnY01UcOmAqXB4V3X6V16phlOBL8nbY5ENkzmU2QoRUAvOjfOXJkDd5p5txza6181ouutSNM2wzmaSeCIclqoclgPOjyJHjfZOKg8M3qOdihdXkMkdwpA6B9fzVNycX0McNg6HMBHAf5fFIV4oIemUc18ti3Q=
+  file:
+    - "binarios/pilas-bloques-${VERSION}.dmg"
+    - "binarios/pilas-bloques-${VERSION}.exe"
+  on:
+    tags: true
+    all_branches: true

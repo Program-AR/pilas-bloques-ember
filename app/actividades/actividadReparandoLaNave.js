@@ -1,4 +1,3 @@
-/* globals ReparandoLaNave */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
@@ -96,11 +95,11 @@ var Escapar = Accion.extend({
 
 
 var actividadReparandoLaNave = {
-  nombre: 'Reparando la nave',
+  // DEPRECATED: nombre: 'Reparando la nave',
   id: 'ReparandoLaNave',
-  enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
+  // DEPRECATED: enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
 
-  escena: ReparandoLaNave,
+  // DEPRECATED: escena: ReparandoLaNave,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

@@ -27,12 +27,14 @@ var Actividad = Ember.Object.extend({
     this.pisar_bloques_blockly();
   },
 
+/*
   iniciarEscena() {
     var Esc = this.get('escena');
     var esc_instance = new Esc();
     this.set('escena_instanciada', esc_instance);
     pilas.mundo.gestor_escenas.cambiar_escena(esc_instance);
   },
+  */
 
   obtenerLenguaje() {
     var act = this.get('actividad');
@@ -98,8 +100,14 @@ var Actividad = Ember.Object.extend({
 
   generarCodigo() {
     // variable global con la que se accede al receptor del programa
-    window.receptor = this.get('escena_instanciada').automata;
-    var comienzo = 'var programa = new pilas.comportamientos.ConstructorDePrograma();\n\n';
+    //window.receptor = this.get('escena_instanciada').automata;
+
+    var comienzo = [
+      'var receptor = pilas.escena_actual().automata;                      // generarCodigo()',
+      'var programa = new pilas.comportamientos.ConstructorDePrograma();   // generarCodigo()',
+      '', '']
+      .join('\n');
+
     var code = Blockly.JavaScript.workspaceToCode();
     return comienzo + code;
   },
@@ -114,12 +122,12 @@ var Actividad = Ember.Object.extend({
     var codigo = this.generarCodigoXML();
 
     function xml2string(node) {
-       if (typeof(XMLSerializer) !== 'undefined') {
-          var serializer = new XMLSerializer();
-          return serializer.serializeToString(node);
-       } else if (node.xml) {
-          return node.xml;
-       }
+      if (typeof(XMLSerializer) !== 'undefined') {
+        var serializer = new XMLSerializer();
+        return serializer.serializeToString(node);
+      } else if (node.xml) {
+        return node.xml;
+      }
     }
 
     return xml2string(codigo);
@@ -132,12 +140,8 @@ var Actividad = Ember.Object.extend({
     Blockly.Xml.domToWorkspace(workspace, xml);
   },
 
-  estaResueltoElProblema(){
-    return this.get('escena_instanciada').estaResueltoElProblema();
-  },
-
   debeFelicitarse(){
-    return this.estaResueltoElProblema() && !this.get('esDeExploracion');
+    return (!this.get('esDeExploracion'));
   },
 
   // Scratch style colours

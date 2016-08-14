@@ -141,25 +141,25 @@ var SiguienteColumnaTotal =  SiguienteColumna.extend({
 
 var MoverA = Accion.extend({
 
-    init() {
-        this._super();
-        this.set('id', 'MoverA');
-    },
+  init() {
+    this._super();
+    this.set('id', 'MoverA');
+  },
 
-    block_init(block) {
-        this._super(block);
-        block.appendValueInput('direccion')
-            .setCheck('Number')
-            .appendField('Mover a');
-    },
+  block_init(block) {
+    this._super(block);
+    block.appendValueInput('direccion')
+    .setCheck('Number')
+    .appendField('Mover a');
+  },
 
-    nombre_comportamiento(){
-      return 'MovimientoEnCuadricula';
-    },
+  nombre_comportamiento(){
+    return 'MovimientoEnCuadricula';
+  },
 
-    argumentos(block){
-      return '{claseDirCasilla: ' + Blockly.JavaScript.valueToCode(block, 'direccion', Blockly.JavaScript.ORDER_ATOMIC) + '}';
-    },
+  argumentos(block){
+    return '{claseDirCasilla: ' + Blockly.JavaScript.valueToCode(block, 'direccion', Blockly.JavaScript.ORDER_ATOMIC) + '}';
+  },
 
 });
 

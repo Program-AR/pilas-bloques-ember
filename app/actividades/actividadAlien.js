@@ -1,4 +1,3 @@
-/* globals AlienLevantaTuercas */
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
@@ -16,8 +15,8 @@ var LevantarTuerca = Accion.extend({
   block_init: function(block) {
     this._super(block);
     block.appendDummyInput()
-         .appendField(this.obtener_icono('../libs/data/tuerca.png'))
-         .appendField('Levantar tuerca');
+          .appendField(this.obtener_icono('../libs/data/tuerca.png'))
+          .appendField('Levantar tuerca');
   },
 
   nombre_comportamiento: function() {
@@ -30,11 +29,11 @@ var LevantarTuerca = Accion.extend({
 });
 
 var actividadAlien = {
-  nombre: 'El alien y las tuercas',
+  // DEPRECATED: nombre: 'El alien y las tuercas',
   id: 'ElAlienYLasTuercas',
-  enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
+  // DEPRECATED: enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
 
-  escena: AlienLevantaTuercas,
+  // DEPRECATED: escena: AlienLevantaTuercas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

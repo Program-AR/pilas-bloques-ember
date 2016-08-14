@@ -1,0 +1,39 @@
+{{yield}}
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header navbar-collapse">
+      <a class="navbar-brand" href="#"><img src='imagenes/logo.png'></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        {{#link-to "index" tagName='li'}}<a href=#>Principal</a>{{/link-to}}
+        {{#link-to "desafios" tagName='li'}}<a href=#>Desafíos</a>{{/link-to}}
+        {{#link-to "acercade" tagName='li'}}<a href=#>Acerca de</a>{{/link-to}}
+      </ul>
+
+      <div class='header-right'>
+
+        <div class="navbar-header navbar-collapse">
+          <!-- Haciendo que el logo de programar no se colapse, y desaparezca en mobile. -->
+          {{#unless media.isMobile}}
+            {{#pilas-link href="http://program.ar"}}<img src='imagenes/programar-short.png'/>{{/pilas-link}}
+          {{/unless}}
+        </div>
+
+        {{pilas-automatic-update}}
+
+        <button class="header-button" id="abrir-ayuda" {{action "abrirAyuda"}}>{{fa-icon "question"}}</button>
+        <button class="header-button" id="abrir-opciones" {{action "abrirPreferencias"}}>{{fa-icon "gear"}}</button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+
+{{modal-ayuda mostrar=mostrarDialogoAyuda}}
+{{modal-preferencias mostrar=mostrarDialogoOpciones}}

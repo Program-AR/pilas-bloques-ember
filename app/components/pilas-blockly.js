@@ -3,6 +3,7 @@ import Ember from 'ember';
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 
 export default Ember.Component.extend({
+  classNames: 'desafio-panel-derecho',
   ejecutando: false,
   cola_deshacer: [],
   data_observar_blockly: false,
@@ -10,54 +11,21 @@ export default Ember.Component.extend({
   environment: Ember.inject.service(),
   abrirConsignaInicial: false,
   solucion: null,
+  pilas: null,          // Se espera que sea una referencia al servicio pilas.
+  codigoJavascript: "", // Se carga como parametro
+  persistirSolucionEnURL: true,
+  debeMostrarFinDeDesafio: false,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
-  browser: Ember.inject.service(),
+  //browser: Ember.inject.service(),
+
+  anterior_ancho: -1,
+  anterior_alto: -1,
 
   inyectarRedimensionado: Ember.on('init', function() {
-
-    window.anterior_altura = 0;
-    window.anterior_ancho = 0;
-    var ancho_canvas = 445;
-
-    function redimensionar() {
-      var panel = document.getElementById('panel-derecho');
-      var contenedorEditor = document.getElementById('contenedor-editor');
-      var panelPilas = document.getElementById('panel-pilas');
-      var e = document.getElementById('contenedor-blockly');
-
-
-      if (!panel) {
-        return null;
-      }
-
-      var altura = panel.getClientRects()[0].height;
-      var ancho_total = contenedorEditor.getClientRects()[0].width;
-
-      if (window.anterior_altura !== altura || window.anterior_ancho !== ancho_total) {
-
-        e.style.width = (ancho_total - ancho_canvas) + 'px';
-        e.style.height = (altura - 50) + 'px';
-        panelPilas.style.width = (ancho_canvas - 20) + 'px';
-
-        window.anterior_altura = altura;
-        window.anterior_ancho = ancho_total;
-
-        Blockly.fireUiEvent(window, 'resize');
-      }
-    }
-
-    function forzar_redimensionado() {
-      window.anterior_altura += 1;
-      redimensionar();
-    }
-
-    window.onresize = redimensionar;
-    window.forzar_redimensionado = forzar_redimensionado;
-
 
     // Muestra el dialogo inicial si está definida la consigna inicial.
     if (this.get('actividad.actividad.consignaInicial')) {
@@ -69,32 +37,78 @@ export default Ember.Component.extend({
   }),
 
   didInsertElement() {
-    //var contenedor = this.$().find('#contenedor-blockly')[0];
-    this.set('cola_deshacer', []);
-    //this.cargar_codigo_desde_el_modelo();
-    //this.observarCambiosEnBlocky();
 
-    this.handlerCargaInicial = this.cuandoTerminaCargaInicial.bind(this);
-    this.handlerTerminaEjecucion = this.cuandoTerminaEjecucion.bind(this);
+    if (!this.get('actividad')) {
+      return null;
+    }
 
-    window.addEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.addEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+    var contenedor = this.$().find('#contenedor-blockly')[0];
+    this.get('actividad').iniciarBlockly(contenedor);
+
+
+    if (this.get("codigo")) {
+      this.restaurar_codigo(atob(this.get("codigo")));
+    }
+
+
+    if (this.get("persistirSolucionEnURL")) {
+      Blockly.addChangeListener(() => {
+        this.guardarEnURL();
+        this.generarCodigoTemporal();
+      });
+    }
+
+
+    if (this.get("debeMostrarFinDeDesafio")) {
+      this.get('pilas').on('terminaEjecucion', () => {
+        this.cuandoTerminaEjecucion();
+      });
+    }
+
+
+    // this.set('cola_deshacer', []);
+    // this.cargar_codigo_desde_el_modelo();
+    // this.observarCambiosEnBlocky();
+
+    // this.conectar_evento_para_ajustar_blocky();
+    // $(window).trigger('resize');
+
   },
 
-  cuandoTerminaCargaInicial() {
-    var solucion = this.get('solucion');
+  conectar_evento_para_ajustar_blocky() {
+    $(window).bind('resize.blockly', function() {
+      var blocklyArea = document.getElementById('blocklyArea');
+      var blocklyDiv = document.getElementById('contenedor-blockly');
 
-    if (solucion) {
-      this.get('actividad').cargarCodigoDesdeStringXML(solucion.get('codigoXML'));
-    }
+      var element = blocklyArea;
+      var x = 0;
+      var y = 0;
 
-    if (this.get('autoejecutar')) {
-      this.send('ejecutar');
-    }
+      do {
+        x += element.offsetLeft;
+        y += element.offsetTop;
+        element = element.offsetParent;
+      } while (element);
+
+      blocklyDiv.style.left = x + 'px';
+      blocklyDiv.style.top = y + 'px';
+      blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
+      blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
+    });
+  },
+
+  guardarEnURL() {
+    let codigo = this.obtener_codigo_en_texto();
+    this.set("codigo", btoa(codigo));
+  },
+
+  generarCodigoTemporal() {
+    var codigoJavascript = this.get('actividad').generarCodigo();
+    this.set("codigoJavascript", codigoJavascript);
   },
 
   cuandoTerminaEjecucion() {
-    if(this.get('actividad').debeFelicitarse()){
+    if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()){
       this.send('abrirFinDesafio');
     }
   },
@@ -102,12 +116,14 @@ export default Ember.Component.extend({
   willDestroyElement() {
     window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
+    $(window).unbind('resize.blockly');
   },
 
   /**
-   * Se conecta a los eventos y cambios de estado de blockly para implementar
-   * la funcionalidad de 'deshacer'.
-   */
+  * Se conecta a los eventos y cambios de estado de blockly para implementar
+  * la funcionalidad de 'deshacer'.
+  */
+  /*
   observarCambiosEnBlocky() {
     var f = this.almacenar_cambio.bind(this);
     var d = Blockly.addChangeListener(f);
@@ -124,6 +140,7 @@ export default Ember.Component.extend({
     this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
     console.log("guardar");
   },
+  */
 
   restaurar_codigo(codigo) {
     var xml = Blockly.Xml.textToDom(codigo);
@@ -136,6 +153,7 @@ export default Ember.Component.extend({
     return Blockly.Xml.domToText(xml);
   },
 
+  /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
       var modelo = this.get('model');
@@ -144,6 +162,7 @@ export default Ember.Component.extend({
     }
     this.sendAction('registrarPrimerCodigo');
   },
+  */
 
 
   actions: {
@@ -153,8 +172,15 @@ export default Ember.Component.extend({
       Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
 
       var code = this.get('actividad').generarCodigo();
+      //console.log(code);
+
       Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
 
+
+      this.set('ejecutando', true);
+      this.get('pilas').ejecutarCodigoSinReiniciar(code);
+
+      /*
       Ember.run(() => {
         try {
           this.set('ejecutando', true);
@@ -165,12 +191,13 @@ export default Ember.Component.extend({
           alert(e);
         }
       });
+      */
 
     },
 
     reiniciar() {
       this.set('ejecutando', false);
-      this.sendAction('reiniciar');
+      this.get('pilas').reiniciarEscenaCompleta();
     },
 
     guardar() {
@@ -182,7 +209,6 @@ export default Ember.Component.extend({
       this.sendAction('guardar_solucion_en_el_backend', codigo_xml);
     },
 
-
     alternar() {
       //this.sendAction('redimensionar');
       console.log(this.controllerFor('application'));
@@ -191,7 +217,6 @@ export default Ember.Component.extend({
 
     ver_codigo() {
       let codigo_como_string = this.get('actividad').generarCodigoXMLComoString();
-      console.log(codigo_como_string);
       alert(codigo_como_string);
     },
 
@@ -204,6 +229,7 @@ export default Ember.Component.extend({
 
     },
 
+    /*
     deshacer_cambio() {
       this.noMirarCambiosEnBlockly();
       this.get('cola_deshacer').popObject();
@@ -214,10 +240,11 @@ export default Ember.Component.extend({
       }
       this.observarCambiosEnBlocky();
     },
+    */
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
-      let data = window['canvas'].toDataURL('image/png');
+      let data = this.get("pilas").obtenerCapturaDePantalla();
       this.set('previewData', data);
     },
 
@@ -225,11 +252,11 @@ export default Ember.Component.extend({
       this.set('abrirDialogoCompartir', false);
     },
 
-    abrirFinDesafio(){
+    abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
     },
 
-    ocultarFinDesafio(){
+    ocultarFinDesafio() {
       this.set('mostrarDialogoFinDesafio', false);
     },
 
@@ -245,14 +272,14 @@ export default Ember.Component.extend({
       let imagen = this.get('previewData');
 
       this.get('twitter').compartir(mensaje, imagen).
-        then((data) => {
-          this.set('envioEnCurso', false);
-          this.set('mensajePublicadoURL', data.url);
-        }).
-        catch((err) => {
-          alert(err);
-          this.set('envioEnCurso', false);
-        });
+      then((data) => {
+        this.set('envioEnCurso', false);
+        this.set('mensajePublicadoURL', data.url);
+      }).
+      catch((err) => {
+        alert(err);
+        this.set('envioEnCurso', false);
+      });
     },
 
     cargarSolucion(archivo, contenido) {

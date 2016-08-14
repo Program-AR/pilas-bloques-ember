@@ -7,14 +7,14 @@ var {EncenderLuz} = bloquesTito;
 
 
 var actividadTitoEnciendeLuces = {
-  nombre: 'Tito enciende las luces',
+  // DEPRECATED: nombre: 'Tito enciende las luces',
   id: 'TitoEnciendeLuces',
-  enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: creá un procedimiento para prender todas las luces de una diagonal.',
-  consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
+  // DEPRECATED: enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
+  //  'Pista: creá un procedimiento para prender todas las luces de una diagonal.',
+  // DEPRECATED: consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
 
   // la escena proviene de ejerciciosPilas
-  escena: TitoEnciendeLuces,  // jshint ignore:line
+  // DEPRECATED: escena: TitoEnciendeLuces,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

@@ -1,6 +1,6 @@
 import {AccionBuilder,Procedimiento,Repetir,Si,Sino,Hasta} from 'pilas-engine-bloques/actividades/bloques';
 import {ParaLaDerecha, ParaLaIzquierda,ParaArriba, ParaAbajo, MoverA} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
+import {Numero, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ExplotarGlobo = AccionBuilder.build({
   id: 'ExplotarGlobo',
@@ -11,18 +11,17 @@ var ExplotarGlobo = AccionBuilder.build({
 });
 
 export default {
-  nombre: 'El cangrejo aguafiestas',
+  // DEPRECATED: nombre: 'El cangrejo aguafiestas',
   id: 'ElCangrejoAguafiestas',
-  enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
-  consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
+  // DEPRECATED: enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
+  // DEPRECATED: consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
 
-  /*global ElCangrejoAguafiestas */
-  escena: ElCangrejoAguafiestas,
+  // DEPRECATED: escena: ElCangrejoAguafiestas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento,Repetir,Si,Sino,Hasta,
-    ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
-    ExplotarGlobo, Numero, OpAritmetica],
+  bloques: [Procedimiento, Repetir, Si, Sino, Hasta,
+            ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
+            ExplotarGlobo, Numero, OpAritmetica],
 };

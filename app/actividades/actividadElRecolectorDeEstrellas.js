@@ -14,8 +14,9 @@ var VolverABordeIzquierdo = Accion.extend({
   block_init(block) {
     this._super(block);
     block.appendDummyInput()
-    .appendField(this.obtener_icono('izquierda.png'))
-    .appendField('Ir al borde izquierdo');
+        .appendField(this.obtener_icono('izquierda.png'))
+        .appendField('Ir al borde izquierdo');
+
   },
 
   nombre_comportamiento() {
@@ -56,11 +57,11 @@ var TomarEstrella = Accion.extend({
 });
 
 var actividadElRecolectorDeEstrellas = {
-  nombre: 'El recolector de estrellas',
+  // DEPRECATED: nombre: 'El recolector de estrellas',
   id: 'ElRecolectorDeEstrellas',
-  enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.',
-  consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
-  escena: ElRecolectorDeEstrellas,
+  // DEPRECATED: enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.',
+  // DEPRECATED: consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
+  // DEPRECATED: escena: ElRecolectorDeEstrellas,
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

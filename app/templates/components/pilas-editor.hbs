@@ -1,36 +1,70 @@
-{{#if actividad}}
-<div class='contenedor-editor' id='contenedor-editor'>
+<div class='contenido-principal desafio-contenedor'>
 
-  <div class='panel-pilas' id='panel-pilas'>
-    {{pilas-canvas actividad=actividad}}
+  {{#if debug}}
 
-    <div class='panel-ayuda'>
-      <h4>{{actividad.nombre}}</h4>
-      <p>{{actividad.enunciado}}</p>
+    {{pilas-debug-bar
+          panelCanvasVisible=panelCanvasVisible
+          panelBlocklyVisible=panelBlocklyVisible
+          panelCodigoVisible=panelCodigoVisible
+    }}
 
-      {{#if actividad.actividad.consignaInicial}}
-        <div class="tip-block">
-          <p><em>¿Sabías qué...?</em></p>
-          <p>
-            {{actividad.actividad.consignaInicial}}
-          </p>
-        </div>
-      {{/if}}
+  {{/if}}
 
+  {{outlet}}
+
+{{#if panelCanvasVisible}}
+  <div class="desafio-panel-izquierdo {{media.classNames}}">
+
+    {{pilas-canvas pilas=pilas onReady="onReady" escena=model.escena}}
+
+    <div class='contenedor-panel-ayuda {{media.classNames}}'>
+      <div class='panel-ayuda puede-seleccionar'>
+
+        <h4>{{model.titulo}}</h4>
+
+        <p>{{model.enunciado}}</p>
+
+        {{#if model.consignaInicial}}
+          <div class="tip-block">
+            <p><em>¿Sabías qué...?</em></p>
+
+            <p>{{model.consignaInicial}}</p>
+          </div>
+        {{/if}}
+
+      </div>
     </div>
 
+
   </div>
+{{/if}}
 
 
-  <div class='panel-derecho' id='panel-derecho'>
-    {{pilas-blockly solucion=solucion autoejecutar=autoejecutar
-                    modoDocente=modoDocente modoAlumno=modoAlumno hash=hash idAlumno=idAlumno
+{{#if panelBlocklyVisible}}
+    {{pilas-blockly guardar='guardar'
+                    registrarPrimerCodigo='registrarPrimerCodigo'
+                    codigo=codigo
+
+                    modoDocente=modoDocente modoAlumno=modoAlumno
+                    hash=hash idAlumno=idAlumno
                     guardar_solucion_en_el_backend="guardar_solucion_en_el_backend"
-                    actividad=actividad reiniciar='reiniciar'
-                    ocultarModal=ocultarModal}}
+
+                    persistirSolucionEnURL=persistirSolucionEnURL
+                    debeMostrarFinDeDesafio=debeMostrarFinDeDesafio
+                    pilas=pilas
+                    codigoJavascript=codigoJavascript
+                    actividad=model.actividad}}
+{{/if}}
+
+{{#if panelCodigoVisible}}
+  <div class="desafio-panel-codigo">
+    <pre>{{prism codigoJavascript}}</pre>
   </div>
+{{/if}}
+
+
+{{#if ningunPanelVisible}}
+  <p>Hey, ningún panel está visible</p>
+{{/if}}
 
 </div>
-{{else}}
-  <p>Error: tienes que inicializar este componente con una actividad.</p>
-{{/if}}

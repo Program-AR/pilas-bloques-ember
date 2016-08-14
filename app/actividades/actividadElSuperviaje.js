@@ -8,20 +8,20 @@ var Avanzar1km = AccionBuilder.build({
 });
 
 var KmsTotales = AccionBuilder.buildSensorNumerico({
-  id: 'KmsTotales',
-  descripcion: 'Kilómetros a recorrer',
-  icono: 'icono.kms.png',
-  funcionSensor: 'kmsTotales()',
-});
+   id: 'KmsTotales',
+   descripcion: 'Kilómetros a recorrer',
+   icono: 'icono.kms.png',
+   funcionSensor: 'kmsTotales()',
+ });
 
 export default {
-  nombre: 'El Superviaje',
+  // DEPRECATED: nombre: 'El Superviaje',
   id: 'ElSuperviaje',
-  enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
-  consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
+  // DEPRECATED: enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
+  // DEPRECATED: consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
 
   // la escena proviene de ejerciciosPilas
-  escena: SuperViaje,  // jshint ignore:line
+  // DEPRECATED: escena: SuperViaje,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,

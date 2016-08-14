@@ -1,0 +1,22 @@
+{{#if mostrar}}
+  {{#modal-dialog close="close"
+                  targetAttachment="center"
+                  translucentOverlay=true}}
+
+  {{modal-title title="Opciones" close="close"}}
+  <div class="modal-body">
+    {{yield}}
+
+    <div class="modal-body">
+
+        <div class='fila-opcion'>
+          <p>Tamaño de la interfaz: {{pilas-botones-zoom}}</p>
+        </div>
+
+      </div>
+
+
+  </div>
+  {{/modal-dialog}}
+
+{{/if}}
