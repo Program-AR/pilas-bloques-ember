@@ -1,6 +1,6 @@
 {
   "name": "pilas-engine-bloques",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Una herramienta para aprender a programar utilizando bloques.",
   "private": true,
   "directories": {
