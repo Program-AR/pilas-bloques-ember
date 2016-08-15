@@ -20,9 +20,7 @@ let mainWindow = null;
 // });
 
 app.on('window-all-closed', function onWindowAllClosed() {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
+    app.quit();
 });
 
 app.on('ready', function onReady() {
