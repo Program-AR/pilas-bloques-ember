@@ -44,5 +44,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
     app.import("vendor/libs/blockly/javascript_compressed.js");
     app.import("vendor/libs/blockly/msg/js/es.js");
 
+    process.setMaxListeners(1000);
     return app.toTree();
 };
+

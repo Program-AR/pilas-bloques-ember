@@ -6,5 +6,5 @@ import {
 } from 'ember-qunit';
 /* global QUnit */
 
-QUnit.config.testTimeout = 5 * 60 * 1000; // 60000 es el valor por omisión = 
+QUnit.config.testTimeout = 10 * 60 * 1000; // 60000 es el valor por omisión = 
 setResolver(resolver);

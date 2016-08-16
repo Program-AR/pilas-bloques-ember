@@ -36,7 +36,6 @@ var TocandoLuz = Sensor.extend({
          .appendField('¿Hay lamparita acá ')
          .appendField(this.obtener_icono('../libs/data/icono.LamparitaApagada.png'))
          .appendField(' ?');
-
   },
 
   nombre_sensor() {
@@ -56,8 +55,7 @@ var TocandoFinal = Sensor.extend({
     block.appendDummyInput()
          .appendField('¿Llegué al final ')
          .appendField(this.obtener_icono('../libs/data/casilla.titoFinalizacion.png'))
-         .appendField(' ?');
-
+         .appendField('?');
   },
 
   nombre_sensor() {
