@@ -14,7 +14,6 @@ install:
 script:
 - npm test
 before_install:
-- brew update
 - brew install curl
 - brew install makensis
 - cd $TRAVIS_BUILD_DIR && travis/download-homebrew
