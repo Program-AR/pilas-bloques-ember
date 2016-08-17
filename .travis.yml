@@ -11,7 +11,7 @@ cache:
 install:
 - make full_travis
 script:
-- npm test
+- make test_travis
 before_install:
 - git clone https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh

@@ -24,7 +24,7 @@ comandos:
 	@echo "    ${G}ejecutar_mac${N}    Prueba la aplicacion sobre OSX."
 	@echo "    ${G}run${N}    Correr en entorno de desarrollo usando ember serve."
 	@echo ""
-	@echo "    ${G}utest${N}            Ejecuta las pruebas de forma continua."
+	@echo "    ${G}test_travis${N}     Ejecuta las pruebas como esperamos en travis (en paralelo)."
 	@echo ""
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
@@ -158,8 +158,6 @@ ejecutar_linux:
 ejecutar_mac:
 	/Applications/nwjs.app/Contents/MacOS/nwjs dist
 
-utest:
-	./node_modules/ember-cli/bin/ember nw:test --server
 
 test_mac: ejecutar_mac
 
@@ -300,6 +298,8 @@ _compilar_electron_win32:
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
 
 
+test_travis:
+	time ember exam --split=10 --parallel --random
 
 
 .PHONY: dist bajar_dependencias
