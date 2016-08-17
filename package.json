@@ -12,7 +12,7 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "",
+  "repository": "https://github.com/Program-AR/pilas-engine-bloques",
   "engines": {
     "node": ">= 0.10.0"
   },
