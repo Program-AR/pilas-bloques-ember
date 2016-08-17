@@ -66,7 +66,7 @@ comandos:
 iniciar:
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
-	bower install --allow-root
+	@bower install --allow-root
 
 vincular_dependencias:
 	@echo "${G}vinculando depenrencias ...${N}"
@@ -207,7 +207,9 @@ limpiar_todo:
 	@sleep 5s;
 	@rm -rf node_modules/ bower_components/
 
-full: limpiar_todo iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
+full: limpiar_todo full_travis
+
+full_travis: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
 
 to_production:
 	@echo "${G}pasando a modo produccion${N}"

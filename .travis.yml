@@ -4,13 +4,12 @@ sudo: false
 cache:
   directories:
   - node_modules
+  - bower_components
   - $HOME/.npm
   - $HOME/.cache # includes bowers cache
   - cache
 install:
-- npm install
-- bower install
-- make full
+- make full_travis
 script:
 - npm test
 before_install:
