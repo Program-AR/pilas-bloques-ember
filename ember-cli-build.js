@@ -1,4 +1,5 @@
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
     var app = new EmberApp(defaults, {
@@ -45,6 +46,14 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
     app.import("vendor/libs/blockly/msg/js/es.js");
 
     process.setMaxListeners(1000);
-    return app.toTree();
+
+
+    var extraAssets = new Funnel('bower_components/pilasweb', {
+       srcDir: '/dist',
+       include: ['**'],
+       destDir: '/'
+    });
+    
+    return app.toTree(extraAssets);
 };
 
