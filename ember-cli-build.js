@@ -51,7 +51,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', {
     var extraAssets = new Funnel('bower_components/pilasweb', {
        srcDir: '/dist',
        include: ['**'],
-       destDir: '/'
+       destDir: '/libs/'
     });
     
     return app.toTree(extraAssets);
