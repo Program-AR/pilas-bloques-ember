@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Visor de Ejercicios</title>
+  <style>
+    #canvas {
+      margin-top: 20px;
+      width: 420px;
+      height: 480px;
+      border: 1px solid #ccc;
+    }
+  </style>
+
+	<script src='../compilados/pilasweb.js'></script>
+	<script src='../compilados/ejerciciosPilas.js'></script>
+</head>
+
+
+<body onload="onload()">
+
+    <div class='container'>
+      <canvas id='canvas'></canvas>
+    </div>
+
+    <div class="selectorDeDesafios">
+      <select id='selectDesafio'>
+        <option>NoMeCansoDeSaltar</option>
+        <option>ElGatoEnLaCalle</option>
+        <option>SuperTito1</option>
+        <option>SuperTito2</option>
+        <option>ElObreroCopado</option>
+        <option>AlienInicial</option>
+        <option>AlienLevantaTuercas</option>
+        <option>AlimentandoALosPeces</option>
+        <option>Camino</option>
+        <option>ElCangrejoAguafiestas</option>
+        <option>ElMarcianoEnElDesierto</option>
+        <option>ElMonoQueSabeContar</option>
+        <option>ElRecolectorDeEstrellas</option>
+        <option>FutbolRobots</option>
+        <option>TitoEnciendeLuces</option>
+        <option>InstalandoJuegos</option>
+        <option>LaEleccionDelMono</option>
+        <option>LaGranAventuraDelMarEncantado</option>
+        <option>LaberintoConQueso</option>
+        <option>LaberintoCorto</option>
+        <option>TitoRecargado</option>
+        <option>MariaLaComeSandias</option>
+        <option>NoMeCansoDeSaltar</option>
+        <option>PrendiendoLasCompus</option>
+        <option>PrendiendoLasFogatas</option>
+        <option>ReparandoLaNave</option>
+        <option>SuperViaje</option>
+        <option>TresHuesos</option>
+      </select>
+    </div>
+
+
+
+  <script>
+      function iniciar_canvas(nombreDesafio) {
+    		var canvas_element = document.getElementById('canvas');
+    		window['canvas'] = canvas_element;
+
+    		var pilas = pilasengine.iniciar({
+    			ancho: 420,
+    			alto: 480,
+    			canvas: canvas_element,
+    			data_path: 'data',
+    	imagenesExtra: [
+			                'fondos.estrellas.png',
+			                'fondos.obrero.png',
+			                'fondos.nubes.png',
+			                'perro_cohete.png',
+			                'hueso.png',
+			                'llave.png',
+			                'caballero_oscuro.png',
+                      'regaloAnimado.png',
+			                'heroe.png',
+                      'finCamino.png',
+			                'mago.png',
+                      'robotAnimado.png',
+			                'unicornio.png',
+                      'casillaArriba.png',
+                      'casillaAbajo.png',
+                      'casillaDerecha.png',
+                      'casillaIzquierda.png',
+                      'fondos.navidad.png',
+                      'papaNoel.png',
+			                'banana.png',
+			                'casilla_base.png',
+			                'tito.png',
+			                'lamparin.png',
+                      'casilla.grisoscuro.png',
+                      'casilla.titoFinalizacion.png',
+			                'invisible.png',
+			                'sin_imagen.png',
+			                'maria.png',
+                      'casilla.futbolRobots1.png',
+                      'casilla.futbolRobots2.png',
+                      'fondos.selva.png',
+                      'casillas.violeta.png',
+			                'sandia.png',
+			                'compu_animada.png',
+                      'globoAnimado.png',
+                      'cangrejo.png',
+                      'buzo.png',
+                      'fondos.mar.png',
+                      'pez1.png',
+                      'pez2.png',
+                      'pez3.png',
+                      'alimento_pez.png',
+                      'ratonAnimado.png',
+                      'quesoAnimado.png',
+                      'naveAnimada.png',
+                      'robotAnimado.png',
+                      'pelotaAnimada.png',
+                      'fondos.biblioteca.png',
+                      'fondos.reparandoLaNave.png',
+                      'fondos.futbolRobots.png',
+                      'casilla.reparandoNave.png',
+                      'carbon_animado.png',
+                      'hierro_animado.png',
+                      'monoAnimado.png',
+                      'casillas.violeta.png',
+                      'fondos.selva.png',
+                      'banana-1.png',
+                      'manzanaConSombra.png',
+                      'manzanaSinSombra.png',
+                      //'fondos.elPlanetaDeNano.png',
+                      //'casillas.elPlanetaDeNano.png',
+                      'botonAnimado.png',
+                      'fondos.alien-inicial.png',
+                      'casillas.alien_inicial.png',
+                      'camino-alien-boton.png',
+                      'tuerca.png',
+                      'fondos.alienLevantaTuercas.png',
+                      'casilla.alienLevantaTuercas.png',
+                      'fondo.gatoEnLaCalle.png',
+                      'gatoAnimado.png',
+                      'fondo.noMeCansoDeSaltar.png',
+                      'fondo.superTito1.png',
+                      'fondo.superTito2.png',
+                      'fondo.mariaSandia.png',
+                      'maria.png',
+                      'casilla.mariaSandia.png',
+                      'sandia.png',
+                      'fondo.marEncantado.png',
+                      'fondo.elSuperviaje.png',
+                      'princesa.png',
+                      'fondo.detective.png',
+                      'detective.png',
+                      'sospechosos.png',
+                      'fondo.dibujando.figuras.png',
+                      'dibujante.png',
+
+    			                ]});
+
+  		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDesafio + '());');
+      pilas.onready = function() {};
+  		pilas.ejecutar();
+    }
+
+     function nombreDeClaseDesdeURL() {
+         var hash = window.location.href.slice(window.location.href.indexOf('?') + 1);
+         var name = hash.split('=')[1];
+         if (name) {
+           return name;
+         } else {
+           return "ElObreroCopado";
+         }
+     }
+
+     function actualizar_url(desafio) {
+       var url = window.location.href.split("?")[0] + "?desafio=" + desafio;
+       window.history.pushState("", "", url);
+     }
+
+     function onload() {
+       var selectDesafio = document.getElementById('selectDesafio');
+
+       iniciar_canvas(nombreDeClaseDesdeURL());
+
+		eval('pilas.mundo.gestor_escenas.cambiar_escena(new ' + nombreDeClaseDesdeURL() + '());');
+
+		pilas.ejecutar();
+
+       selectDesafio.onchange = function() {
+         var nombre = selectDesafio.value;
+         iniciar_canvas(nombre);
+         actualizar_url(nombre);
+       };
+     }
+
+   </script>
+
+</body>
+</html>
