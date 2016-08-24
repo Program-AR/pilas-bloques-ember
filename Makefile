@@ -31,7 +31,6 @@ comandos:
 	@echo ""
 	@echo "    ${G}bajar_dependencias${N}              Descarga las dependencias pilas y blockly."
 	@echo "    ${G}vincular_dependencias${N}           Vincula las dependencias."
-	@echo "    ${G}actualizar_pilas${N}                Vincula pilasweb."
 	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
 	@echo "    ${G}actualizar_ejercicios_pilas${N}     Actualiza los ejercicios de pilas."
 	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
@@ -40,8 +39,7 @@ comandos:
 	@echo "    ${L}Estos suelen ser los comandos iniciales a ejecutar (sync):${N}"
 	@echo "${L}"
 	@echo "        iniciar → bajar_dependencias → vincular_dependencias → "
-	@echo "        actualizar_pilas → actualizar_blockly →"
-	@echo "        actualizar_ejercicios_pilas"
+	@echo "        actualizar_blockly → actualizar_ejercicios_pilas"
 	@echo "        "
 	@echo "           (o bien "make full")"
 	@echo "${N}"
@@ -70,27 +68,12 @@ iniciar:
 
 vincular_dependencias:
 	@echo "${G}vinculando depenrencias ...${N}"
-	rm -f pilasweb blockly ejerciciosPilas
-	ln -s ../pilasweb
+	rm -f blockly ejerciciosPilas
 	ln -s ../blockly
 	ln -s ../ejerciciosPilas
 
 bajar_dependencias:
 	python scripts/bajar_dependencias.py
-
-actualizar_pilas:
-	@echo "${G}actualizando pilasweb${N}"
-	@echo " ${L}(esto puede demorar)${N}"
-	cd pilasweb; npm install; git pull; make build; cd ..
-	rm -r -f public/libs/data
-	mkdir -p public/libs/
-	make copiar_pilasweb
-	@echo "${Y}CUIDADO, tienes que llamar a actualizar_ejercicios_pilas también!!!${N}"
-
-copiar_pilasweb:
-	@echo "${G}copiando pilasweb${N}"
-	cp -r -f pilasweb/public/data public/libs/
-	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 actualizar_ejercicios_pilas:
 	@echo "${G}actualizando ejercicios de pilas${N}"
@@ -146,7 +129,6 @@ copiar_blockly_descomprimido:
 	cp -r -f blockly/msg  public/libs/blockly/
 
 descartar_todo_cambio:
-	cd pilas; git checkout .
 	cd ejerciciosPilas; git checkout .
 	git checkout .
 
@@ -163,19 +145,16 @@ test_mac: ejecutar_mac
 
 build: compilar
 
-compilar: actualizar_pilas actualizar_ejercicios_pilas
+compilar: actualizar_ejercicios_pilas
 	cd scripts; python generarListaImagenes.py
 	./node_modules/ember-cli/bin/ember build
 
 compilar_todo_pilas:
-	cd ../pilasweb; make build
 	cd ../ejerciciosPilas; grunt
 	make compilar
 
 compilar_todo_y_testear:
-	cd ../pilasweb; make build
 	cd ../ejerciciosPilas; grunt
-	make copiar_pilasweb
 	make copiar_ejercicios_pilas
 	./node_modules/ember-cli/bin/ember test --server
 
@@ -207,7 +186,7 @@ limpiar_todo:
 
 full: limpiar_todo full_travis
 
-full_travis: iniciar bajar_dependencias vincular_dependencias actualizar_pilas actualizar_blockly actualizar_ejercicios_pilas
+full_travis: iniciar bajar_dependencias vincular_dependencias actualizar_blockly actualizar_ejercicios_pilas
 
 to_production:
 	@echo "${G}pasando a modo produccion${N}"
