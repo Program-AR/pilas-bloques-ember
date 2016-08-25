@@ -15,4 +15,3 @@ def clonar_repositorio(directorio, url):
 clonar_repositorio('pilasweb', 'https://github.com/hugoruscitti/pilasweb.git')
 clonar_repositorio('blockly', 'https://github.com/Program-AR/blockly.git')
 clonar_repositorio('closure-library', 'https://github.com/google/closure-library.git')
-clonar_repositorio('ejerciciosPilas', 'https://github.com/Program-AR/ejerciciosPilas.git')
