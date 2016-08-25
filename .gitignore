@@ -15,7 +15,6 @@ tests/acceptance/
 /node_modules
 /bower_components
 pilasweb
-ejerciciosPilas
 
 /blockly
 
@@ -27,7 +26,6 @@ ejerciciosPilas
 npm-debug.log
 testem.log
 
-public/libs/data
 public/libs/pilasweb.js
 
 dist_web
