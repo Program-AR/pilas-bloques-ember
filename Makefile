@@ -95,9 +95,7 @@ copiar_pilasweb:
 	cp -r -f pilasweb/public/pilasweb.js public/libs/
 
 compilar_ejercicios_pilas:
-	@echo "${G}actualizando ejercicios de pilas${N}"
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
-	make copiar_ejercicios_pilas
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
 actualizar_blockly:

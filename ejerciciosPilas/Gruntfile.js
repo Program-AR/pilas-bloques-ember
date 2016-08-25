@@ -56,7 +56,7 @@ module.exports = function(grunt) {
     },
     shell: {
       copiarPilasweb: {
-        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js && cp -rf ../pilasweb/public/data/* src/data/'
+        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js'
       },
     	copiarCabecerasPilas: {
 		    command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
