@@ -46,7 +46,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/**'],
-        tasks: ['clear', 'typescript', 'concat'],
+        tasks: ['typescript', 'concat'],
       }
     },
     open: {
@@ -54,20 +54,6 @@ module.exports = function(grunt) {
             path: 'src/visorEjercicios.html'
         }
     },
-    shell: {
-      copiarPilasweb: {
-        command: 'cp ../pilasweb/public/pilasweb.js compilados/pilasweb.js'
-      },
-    	copiarCabecerasPilas: {
-		    command: 'cp ../pilasweb/public/pilasweb.d.ts dependencias/pilasweb.d.ts'
-    	},
-      compilarPilasweb: {
-        command: 'cd ../pilasweb; make build'
-      },
-	clear: {
-		command: 'clear'
-	}
-    }
   });
 
   grunt.loadNpmTasks('grunt-typescript');
@@ -76,13 +62,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-qunit');
 
-  grunt.registerTask('clear', ['shell:clear']);
-
-  grunt.registerTask('pilas', ['shell:copiarPilasweb', 'shell:copiarCabecerasPilas']);
-
-  grunt.registerTask('default', ['pilas', 'typescript', 'concat']);
-
-  grunt.registerTask('con_pilasweb', ['shell:compilarPilasweb', 'default']);
+  grunt.registerTask('default', ['typescript', 'concat']);
 
   grunt.loadNpmTasks('grunt-notify');
   grunt.task.run('notify_hooks');
