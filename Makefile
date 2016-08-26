@@ -85,7 +85,6 @@ actualizar_pilas:
 	@echo "${G}actualizando pilasweb${N}"
 	@echo " ${L}(esto puede demorar)${N}"
 	cd pilasweb; npm install; git pull; make build; cd ..
-	rm -r -f public/libs/data
 	mkdir -p public/libs/
 	make copiar_pilasweb
 
