@@ -71,7 +71,7 @@ iniciar_ejercicios:
 	cd ejerciciosPilas; npm install
 
 vincular_dependencias:
-	@echo "${G}vinculando depenrencias ...${N}"
+	@echo "${G}vinculando dependencias ...${N}"
 	rm -f blockly
 	ln -s ../blockly
 
