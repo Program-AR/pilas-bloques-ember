@@ -1,20 +1,12 @@
-# See http://help.github.com/ignore-files/ for more about ignoring files.
-
 # compiled output
 /dist
 /tmp
 
-#charly
-.README.md.swp
-.swp
-nwjs-v0.12.2-linux-x64.tar.gz
-nwjs-v0.12.2-linux-x64/
-tests/acceptance/
+*.swp
 
 # dependencies
 /node_modules
 /bower_components
-pilasweb
 
 /blockly
 
@@ -30,8 +22,6 @@ public/libs/pilasweb.js
 
 dist_web
 dist_website
-
-webkitbuilds
 
 log_descompresion.log
 *.pyc
