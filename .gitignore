@@ -8,7 +8,8 @@
 /node_modules
 /bower_components
 
-/blockly
+/blockly/
+/closure-library/
 
 # misc
 /.sass-cache
