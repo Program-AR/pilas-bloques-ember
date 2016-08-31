@@ -4,21 +4,15 @@ sudo: false
 cache:
   directories:
   - node_modules
+  - bower_components
   - $HOME/.npm
   - $HOME/.cache # includes bowers cache
   - cache
 install:
-- npm install
-- bower install
-- make full
+- make full_travis
 script:
-- npm test
+- make test_travis
 before_install:
-- brew update
-- brew install curl
-- brew install makensis
-- cd $TRAVIS_BUILD_DIR && travis/download-homebrew
-- rm -rf ~/.nvm
 - git clone https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
 - nvm install 4.2
@@ -28,7 +22,12 @@ before_install:
 - npm install -g phantomjs-prebuilt
 - npm install -g grunt-cli
 - npm install -g node-gyp
+- npm install -g ember-cli
 before_deploy:
+- brew install curl
+- brew install makensis
+- cd $TRAVIS_BUILD_DIR && travis/download-homebrew
+- rm -rf ~/.nvm
 - VERSION=$(sh scripts/obtenerVersion.sh)
 - echo "Detectando version $VERSION para compilar"
 - make binarios_electron

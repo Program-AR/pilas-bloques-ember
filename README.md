@@ -21,35 +21,56 @@ para ver las tareas disponibles:
 
 ![](screenshots/make.png)
 
-Por ejemplo, luego de clonar podrías completar todo el proceso ejecutando
-estos comandos:
+Generalmente, lo que se suele hacer inmeditamente después de clonar
+el repositorio es instalar todas las dependencias y poner a funcionar
+la aplicación así:
 
 ```
 make iniciar
 make full
-make test_mac
+ember serve
 ```
 
 
 Tests
 -----
 
-Para ejecutar los tests de la aplicación hay dos comandos principales, podemos ejecutar los tests de forma constante con este comando:
+Para ejecutar los tests de la aplicación hay 3 opciones:
+
+1. Ejecutar los test una sola vez:
 
 ```
-  make test
+  ember test
 ```
 
-o ejecutar los test una sola vez usando el siguiente comando:
+2. Ejecutar los tests de forma contínua:
 
 
 ```
-  ember nw:test
+  ember test --watch
 ```
+
+3. Ejecutar los tests lo más rápido posible, usando ejecución en
+paralelo:
+
+```
+  make test_travis
+```
+
+De todas formas, aunque no ejecutes los tests en forma local, en este
+proyecto estamos usando travis para que los test se ejecuten siempre
+después de cada "push":
+
+https://travis-ci.org/Program-AR/pilas-engine-bloques
 
 
 Notas de versión
 ---------
+
+* 1.0.1
+ * Migramos la aplicación offline de node-webkit a electron.
+ * Mejoras generales en links externos y la integración con el sistema.
+ * Haciendo adaptable el diseño visual de la aplicación.
 
 * 1.0.0
  * Incluye todos los desafíos hasta Parametrización Inclusive. Entonces, Pilas Bloques abarca todas las actividades del manual para docentes "La programación y su didáctica" sin el último capítulo (Interactividad).

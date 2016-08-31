@@ -1,6 +1,6 @@
 import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
 
-const nombre = 'PrendiendoLasCompus';
+const nombre = 'PrendiendoLasCompusParametrizado';
 
 moduloActividad(nombre);
 
