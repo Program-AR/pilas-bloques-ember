@@ -61,6 +61,9 @@ iniciar_ejercicios:
 	@echo "${G}instalando dependencias de ejerciciosPilas...${N}"
 	cd ejerciciosPilas; npm install
 
+
+blockly/blocks_compressed.js: bajar_dependencias
+
 bajar_dependencias:
 	python scripts/bajar_dependencias.py
 
@@ -68,7 +71,7 @@ compilar_ejercicios_pilas:
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
-actualizar_blockly:
+actualizar_blockly: blockly/blocks_compressed.js
 	cd blockly; git pull; python build.py; cd ..
 	rm -rf vendor/libs/blockly
 	mkdir -p vendor/libs/blockly
