@@ -1,10 +1,10 @@
-pilas-engine-bloques
-====================
+Pilas Bloques
+=============
 
-- Issues planificados para este sprint: [![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-engine-bloques.png?label=ready&title=Ready)](http://waffle.io/Program-AR/pilas-engine-bloques)
+- Issues planificados para este sprint: [![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-bloques.png?label=ready&title=Ready)](http://waffle.io/Program-AR/pilas-bloques)
 
-- Rama master: [![Build Status](https://travis-ci.org/Program-AR/pilas-engine-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-engine-bloques)
-- Rama develop (principal): [![Build Status](https://travis-ci.org/Program-AR/pilas-engine-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-engine-bloques)
+- Rama master: [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-bloques)
+- Rama develop (principal): [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-bloques)
 
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
@@ -61,7 +61,7 @@ De todas formas, aunque no ejecutes los tests en forma local, en este
 proyecto estamos usando travis para que los test se ejecuten siempre
 después de cada "push":
 
-https://travis-ci.org/Program-AR/pilas-engine-bloques
+https://travis-ci.org/Program-AR/pilas-bloques
 
 
 Notas de versión
