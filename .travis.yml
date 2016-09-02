@@ -28,7 +28,6 @@ before_deploy:
 - brew install curl
 - brew install makensis
 - cd $TRAVIS_BUILD_DIR && travis/download-homebrew
-- rm -rf ~/.nvm
 - VERSION=$(sh scripts/obtenerVersion.sh)
 - echo "Detectando version $VERSION para compilar"
 - make binarios_electron
