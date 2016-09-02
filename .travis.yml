@@ -26,8 +26,8 @@ before_install:
 - npm install -g ember-cli
 before_deploy:
 - brew install curl
-- brew install makensis
 - cd $TRAVIS_BUILD_DIR && travis/download-homebrew
+- brew install makensis
 - VERSION=$(sh scripts/obtenerVersion.sh)
 - echo "Detectando version $VERSION para compilar"
 - make binarios_electron
