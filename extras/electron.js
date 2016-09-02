@@ -9,8 +9,6 @@ var BrowserWindow = electron.BrowserWindow;
 
 var fs = require('fs');
 
-electron.crashReporter.start();
-
 app.on('window-all-closed', function onWindowAllClosed() {
   app.quit();
 });
