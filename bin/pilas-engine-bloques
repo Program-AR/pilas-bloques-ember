@@ -1,2 +1,2 @@
 #!/bin/bash
-nw /usr/share/pilas-engine-bloques/dist
+electron /usr/share/pilas-engine-bloques/dist
