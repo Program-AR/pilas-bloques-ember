@@ -13,11 +13,11 @@
   {{outlet}}
 
 {{#if panelCanvasVisible}}
-  <div class="desafio-panel-izquierdo {{media.classNames}}">
+  <div class="desafio-panel-izquierdo" id='panel-izquierdo'>
 
     {{pilas-canvas pilas=pilas onReady="onReady" escena=model.escena}}
 
-    <div class='contenedor-panel-ayuda {{media.classNames}}'>
+    <div class='contenedor-panel-ayuda' id="panel-ayuda">
       <div class='panel-ayuda puede-seleccionar'>
 
         <h4>{{model.titulo}}</h4>
@@ -35,10 +35,10 @@
       </div>
     </div>
 
-
   </div>
 {{/if}}
 
+{{pilas-splitter panel="#panel-izquierdo" iframe="iframe" ayuda="#panel-ayuda"}}
 
 {{#if panelBlocklyVisible}}
     {{pilas-blockly guardar='guardar'
