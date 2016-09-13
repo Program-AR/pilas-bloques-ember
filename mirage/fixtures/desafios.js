@@ -74,7 +74,7 @@ export default [
     id: 8,
     grupoId: 1,
     nombre: 'MariaLaComeSandias',
-    titulo: 'María la come sandías',
+    titulo: 'María, la come sandías',
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     actividad: null,
