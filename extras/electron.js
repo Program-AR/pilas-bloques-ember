@@ -27,16 +27,10 @@ app.on('ready', function onReady() {
   delete mainWindow.module;
 
   mainWindow.loadURL('file://' + __dirname + '/index.html');
+  mainWindow.setMenu(null);
 
   mainWindow.on('closed', function onClosed() {
     mainWindow = null;
   });
-
-  /* Detecta cambios y reinicia automáticamente en modo desarrollo */
-  if (fs.existsSync(__dirname)) {
-    fs.watch(__dirname, {recursive: true}, function() {
-      mainWindow.reload();
-    });
-  }
 
 });
