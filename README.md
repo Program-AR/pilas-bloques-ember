@@ -21,6 +21,9 @@ para ver las tareas disponibles:
 
 ![](screenshots/make.png)
 
+Te recomendamos usar una versión estable de node de la rama 4, como 4.5 por ejemplo, ya
+que usamos la versión estable de emberjs y [eso recomiendan sus desarrolladores](http://emberjs.com/blog/2016/09/07/ember-node-lts-support.html).
+
 Generalmente, lo que se suele hacer inmeditamente después de clonar
 el repositorio es instalar todas las dependencias y poner a funcionar
 la aplicación así:
