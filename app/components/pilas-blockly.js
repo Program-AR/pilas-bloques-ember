@@ -70,28 +70,21 @@ export default Ember.Component.extend({
     // this.cargar_codigo_desde_el_modelo();
     // this.observarCambiosEnBlocky();
 
-    // this.conectar_evento_para_ajustar_blocky();
-    // $(window).trigger('resize');
-
+    this.conectar_evento_para_ajustar_blocky();
+    $(window).trigger('resize');
   },
 
   conectar_evento_para_ajustar_blocky() {
     $(window).bind('resize.blockly', function() {
+
+      let newWidth = window.innerWidth - $("#panel-izquierdo").width();
+      $('.desafio-panel-derecho').width(newWidth - 35);
+
       var blocklyArea = document.getElementById('blocklyArea');
       var blocklyDiv = document.getElementById('contenedor-blockly');
 
-      var element = blocklyArea;
-      var x = 0;
-      var y = 0;
-
-      do {
-        x += element.offsetLeft;
-        y += element.offsetTop;
-        element = element.offsetParent;
-      } while (element);
-
-      blocklyDiv.style.left = x + 'px';
-      blocklyDiv.style.top = y + 'px';
+      blocklyDiv.style.left = 0 + 'px';
+      blocklyDiv.style.top = 0 + 'px';
       blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
       blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
     });
