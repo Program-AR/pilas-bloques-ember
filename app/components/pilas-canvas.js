@@ -5,9 +5,8 @@ export default Ember.Component.extend({
   classNameBindings: ['media.isMobile:media-mobile'],
   iframeElement: null,
   escena: null,
-  pilas: Ember.inject.service(), /* Se espera que este atributo se defina al
-                                    llamar al componente. Está como servicio
-                                    aquí porque los tests lo necesitan así. */
+  pilas: null,       /* Se espera que este atributo se defina al
+                      * llamar al componente y es obligatorio. */
 
   didInsertElement() {
     Ember.run.scheduleOnce('afterRender', this, this.initElement);

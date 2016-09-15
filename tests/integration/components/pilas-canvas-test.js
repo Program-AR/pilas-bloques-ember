@@ -9,13 +9,15 @@ test('it renders', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{pilas-canvas}}`);
+  this.inject.service('pilas');
+
+  this.render(hbs`{{pilas-canvas pilas=pilas}}`);
 
   assert.equal(this.$().text().trim(), '');
 
   // Template block usage:
   this.render(hbs`
-    {{#pilas-canvas}}
+    {{#pilas-canvas pilas=pilas}}
       template block text
     {{/pilas-canvas}}
   `);
