@@ -1,66 +1,24 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-var {Repetir, Procedimiento,Accion} = bloques;
+var {Repetir, Procedimiento, AccionBuilder} = bloques;
 var {IrDerecha,IrIzquierda,IrAbajo,IrArriba} = direcciones;
 
+var AlimentarPez = AccionBuilder.build({
+  descripcion: 'Alimentar pez',
+  id: 'AlimentarPez',
+  icono: 'icono.pez.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
+});
 
+var AgarrarComida = AccionBuilder.build({
+  descripcion: 'Agarrar comida',
+  id: 'AgarrarComida',
+  icono: 'icono.alimento_pez.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
+});
 
-var AlimentarPez = Accion.extend({
-      init() {
-        this._super();
-        this.set('id', 'AlimentarPez');
-      },
-
-
-      block_init(block) {
-        this._super(block);
-        block.appendDummyInput()
-            .appendField(this.obtener_icono('../libs/data/icono.pez.png'))
-            .appendField('Alimentar pez');
-
-
-      },
-
-      nombre_comportamiento() {
-        return 'RecogerPorEtiqueta';
-      },
-
-
-      argumentos() {
-        return '{etiqueta: "PezAnimado", idTransicion: "alimentarPez" }';
-
-
-
-
-      }
-    });
-
-
-    var AgarrarComida = Accion.extend({
-          init() {
-            this._super();
-            this.set('id', 'AgarrarComida');
-          },
-
-
-          block_init(block) {
-            this._super(block);
-            block.appendDummyInput()
-                 .appendField(this.obtener_icono('../libs/data/icono.alimento_pez.png'))
-                 .appendField('Agarrar comida');
-          },
-
-          nombre_comportamiento() {
-            return 'RecogerPorEtiqueta';
-          },
-
-
-          argumentos() {
-            return   '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida" }';
-
-
-          }
-        });
 var actividadAlimentandoALosPeces = {
   nombre: 'Alimentando a los peces',
   id: 'AlimentandoALosPeces',

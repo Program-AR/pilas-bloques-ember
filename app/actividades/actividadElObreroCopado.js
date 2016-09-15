@@ -1,73 +1,29 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Procedimiento} = bloques;
+var {AccionBuilder, Procedimiento} = bloques;
 
-var Avanzar = Accion.extend({
 
-  init() {
-    this._super();
-    this.set('id', 'avanzar');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('izquierda.png'))
-         .appendField('Avanzar');
-  },
-
-  nombre_comportamiento() {
-    return 'CaminaIzquierda';
-  },
-
-  argumentos() {
-    return '{ pasos: 2 }';
-  }
+var Avanzar = AccionBuilder.build({
+  descripcion: 'Avanzar',
+  id: 'avanzar',
+  icono: 'izquierda.png',
+  comportamiento: 'CaminaIzquierda',
+  argumentos: '{pasos: 2}',
 });
 
-var Retroceder = Accion.extend({
-
-  init() {
-    this._super();
-    this.set('id', 'retroceder');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Retroceder');
-  },
-
-  nombre_comportamiento() {
-    return 'CaminaDerecha';
-  },
-
-  argumentos() {
-    return '{ pasos: 2 }';
-  }
+var Retroceder = AccionBuilder.build({
+  descripcion: 'Retroceder',
+  id: 'retroceder',
+  icono: 'derecha.png',
+  comportamiento: 'CaminaDerecha',
+  argumentos: '{pasos: 2}',
 });
 
-var Martillar = Accion.extend({
-
-  init() {
-    this._super();
-    this.set('id', 'martillar');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('martillar.png'))
-         .appendField('Martillar');
-  },
-
-  nombre_comportamiento() {
-    return 'Martillar';
-  },
-
-  argumentos() {
-    return '{ veces: 20 }';
-  }
+var Martillar = AccionBuilder.build({
+  descripcion: 'Martillar',
+  id: 'martillar',
+  icono: 'martillar.png',
+  comportamiento: 'Martillar',
+  argumentos: '{veces: 20}',
 });
 
 var actividadElObreroCopado = {

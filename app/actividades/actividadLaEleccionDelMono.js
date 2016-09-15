@@ -1,119 +1,43 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion, Sensor, Repetir, Si, Sino, Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Si, Sino, Procedimiento} = bloques;
 
-var Avanzar = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'Avanzar');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('derecha.png'))
-         .appendField('Mover a la derecha');
-  },
-
-  nombre_comportamiento() {
-    return 'MoverACasillaDerecha';
-  },
-
-  argumentos() {
-    return '{}';
-  }
+var Avanzar = AccionBuilder.build({
+  descripcion: 'Mover a la derecha',
+  id: 'Avanzar',
+  icono: '../../iconos/derecha.png',
+  comportamiento: 'MoverACasillaDerecha',
+  argumentos: '{}',
 });
 
-
-var ComerManzana = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'ComerManzana');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
-         .appendField('Comer manzana ');
-  },
-
-  nombre_comportamiento() {
-    return 'RecogerPorEtiqueta';
-  },
-
-  argumentos() {
-    return '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}';
-  }
+var ComerManzana = AccionBuilder.build({
+  descripcion: 'Comer manzana',
+  id: 'ComerManzana',
+  icono: 'iconos.manzana.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
 });
 
-
-
-var ComerBanana = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'ComerBanana');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('../libs/data/iconos.banana.png')) //TODO: Hardcodeo feo de dir de icono
-         .appendField('Comer banana ');
-  },
-
-  nombre_comportamiento() {
-    return 'RecogerPorEtiqueta';
-  },
-
-  argumentos() {
-    return '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}';
-  }
+var ComerBanana = AccionBuilder.build({
+  descripcion: 'Comer banana',
+  id: 'ComerBanana',
+  icono: 'iconos.banana.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
 });
 
-
-
-var TocandoManzana = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoManzana');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Hay una manzana acá')
-         .appendField(this.obtener_icono('../libs/data/iconos.manzana.png'))
-         .appendField('?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'ManzanaAnimada\')';
-  }
+var TocandoManzana = AccionBuilder.buildSensor({
+  descripcion: 'Hay una manzana acá',
+  id: 'tocandoManzana',
+  icono: 'iconos.manzana.png',
+  funcionSensor: 'tocando("ManzanaAnimada")',
 });
 
-
-var TocandoBanana = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoBanana');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('Hay una banana acá')
-         .appendField(this.obtener_icono('../libs/data/iconos.banana.png'))
-         .appendField('?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'BananaAnimada\')';
-  }
+var TocandoBanana = AccionBuilder.buildSensor({
+  descripcion: 'Hay una banana acá',
+  id: 'tocandoBanana',
+  icono: 'iconos.banana.png',
+  funcionSensor: 'tocando("BananaAnimada")',
 });
-
-
 
 
 var actividadLaEleccionDelMono = {

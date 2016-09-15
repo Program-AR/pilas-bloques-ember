@@ -1,31 +1,15 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Repetir,Procedimiento} = bloques;
+var {AccionBuilder, Repetir, Procedimiento} = bloques;
 var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 
-
-var LevantarTuerca = Accion.extend({
-  init: function() {
-    this._super();
-    this.set('id', 'LevantaTuerca');
-  },
-
-
-  block_init: function(block) {
-    this._super(block);
-    block.appendDummyInput()
-          .appendField(this.obtener_icono('../libs/data/tuerca.png'))
-          .appendField('Levantar tuerca');
-  },
-
-  nombre_comportamiento: function() {
-    return 'RecogerPorEtiqueta';
-  },
-
-  argumentos: function() {
-    return '{\'etiqueta\' : \'TuercaAnimada\',  \'mensajeError\' : \'No hay una tuerca aquí\',  \'pasos\' : \'50\'}';
-  }
+var LevantarTuerca = AccionBuilder.build({
+  descripcion: 'Levantar tuerca',
+  id: 'LevantaTuerca',
+  icono: 'tuerca.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
 });
 
 var actividadAlien = {

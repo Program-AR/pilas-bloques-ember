@@ -4160,6 +4160,16 @@ var ElRecolectorDeEstrellas = (function (_super) {
     return ElRecolectorDeEstrellas;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+var EscenaTests = (function (_super) {
+    __extends(EscenaTests, _super);
+    function EscenaTests() {
+        _super.apply(this, arguments);
+    }
+    EscenaTests.prototype.iniciar = function () {
+    };
+    return EscenaTests;
+})(EscenaActividad);
+/// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
 /// <reference path = "EstadosDeEscena.ts" />
 var FutbolRobots = (function (_super) {
