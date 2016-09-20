@@ -6,12 +6,13 @@ export default function createPilasTest(context, escena, callback) {
 
   return new Ember.RSVP.Promise((resolve) => {
 
+    context.inject.service('pilas');
+    context.set("escena", escena);
+
     context.on('onReady', function(pilas) {
-      callback(pilas, resolve);
+      callback(pilas, resolve, context.get('pilas'));
     });
 
-    context.set("escena", escena);
-    
-    context.render(hbs`{{pilas-canvas onReady='onReady' escena=escena}}`);
+    context.render(hbs`{{pilas-canvas pilas=pilas onReady='onReady' escena=escena}}`);
   });
 }

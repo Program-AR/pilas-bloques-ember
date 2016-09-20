@@ -1,59 +1,23 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 
-var {Accion, Repetir,Procedimiento} = bloques;
+var {AccionBuilder, Repetir,Procedimiento} = bloques;
 var {IrDerecha, IrArriba} = direcciones;
 
-var VolverABordeIzquierdo = Accion.extend({
-
-  init() {
-    this._super();
-    this.set('id', 'VolverABordeIzquierdo');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-        .appendField(this.obtener_icono('izquierda.png'))
-        .appendField('Ir al borde izquierdo');
-
-  },
-
-  nombre_comportamiento() {
-    return 'MoverTodoAIzquierda';
-  },
-
-
-  argumentos() {
-    return '{}';
-  }
-
+var VolverABordeIzquierdo = AccionBuilder.build({
+  descripcion: 'Ir al borde izquierdo',
+  id: 'VolverABordeIzquierdo',
+  icono: '../../iconos/izquierda.png',
+  comportamiento: 'MoverTodoAIzquierda',
+  argumentos: '{}',
 });
 
-var TomarEstrella = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'TomarEstrella');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField(this.obtener_icono('../libs/data/icono.estrella.png'))
-         .appendField('Agarrar estrella');
-  },
-
-  nombre_comportamiento() {
-    return 'RecogerPorEtiqueta';
-
-
-  },
-
-  argumentos() {
-  return '{\'etiqueta\':\'EstrellaAnimada\', \'mensajeError\': \'Acá no hay una estrella\'}';
-
-  }
+var TomarEstrella = AccionBuilder.build({
+  descripcion: 'Agarrar estrella',
+  id: 'TomarEstrella',
+  icono: 'icono.estrella.png',
+  comportamiento: 'RecogerPorEtiqueta',
+  argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
 });
 
 var actividadElRecolectorDeEstrellas = {

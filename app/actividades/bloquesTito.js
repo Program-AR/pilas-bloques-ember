@@ -1,66 +1,27 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {Accion,Sensor} = bloques;
+var {AccionBuilder} = bloques;
 
-var EncenderLuz = Accion.extend({
-  init() {
-    this._super();
-    this.set('id', 'EncenderLuz');
-  },
-
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-          .appendField(this.obtener_icono('../libs/data/icono.Lamparita.png'))
-          .appendField('Prender luz');
-  },
-
-  nombre_comportamiento() {
-    return 'EncenderPorEtiqueta';
-  },
-
-  argumentos() {
-    return "{'etiqueta':'Luz'}";
-  }
+var EncenderLuz = AccionBuilder.build({
+  descripcion: 'Prender la luz',
+  id: 'EncenderLuz',
+  icono: 'icono.Lamparita.png',
+  comportamiento: 'EncenderPorEtiqueta',
+  argumentos: "{'etiqueta':'Luz'}",
 });
 
-var TocandoLuz = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoLuz');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Hay lamparita acá ')
-         .appendField(this.obtener_icono('../libs/data/icono.LamparitaApagada.png'))
-         .appendField(' ?');
-  },
-
-  nombre_sensor() {
-    return 'tocando(\'Lamparin\')';
-  }
+var TocandoLuz = AccionBuilder.buildSensor({
+  descripcion: 'Hay lamparita acá',
+  id: 'tocandoLuz',
+  icono: 'icono.LamparitaApagada.png',
+  funcionSensor: 'tocando("Lamparin")',
 });
 
 
-var TocandoFinal = Sensor.extend({
-  init() {
-    this._super();
-    this.set('id', 'tocandoFinal');
-  },
-
-  block_init(block) {
-    this._super(block);
-    block.appendDummyInput()
-         .appendField('¿Llegué al final ')
-         .appendField(this.obtener_icono('../libs/data/casilla.titoFinalizacion.png'))
-         .appendField('?');
-  },
-
-  nombre_sensor() {
-    return 'estoyUltimaFila()';
-  }
+var TocandoFinal = AccionBuilder.buildSensor({
+  descripcion: 'Llegué al final',
+  id: 'tocandoFinal',
+  icono: 'casilla.titoFinalizacion.png',
+  funcionSensor: 'estoyUltimaFila()',
 });
 
 export {EncenderLuz,TocandoLuz,TocandoFinal};

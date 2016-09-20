@@ -3,8 +3,8 @@ var Categoria = function(nombre){
   this.nombre = nombre;
 };
 Categoria.prototype =  {
-  generarXML: function(clasesBloques){
-    var misBloques = clasesBloques.filter(b => b.categoria() === this);
+  generarXML: function(bloques){
+    var misBloques = bloques.filter(b => b.categoria() === this);
     if(misBloques.length > 0) {
       return this.doGenerarXML(misBloques);
     }
@@ -12,9 +12,9 @@ Categoria.prototype =  {
     return '';
   },
 
-  doGenerarXML(clasesBloques){ //Template method
+  doGenerarXML(bloques){ //Template method
     var str_category = ('<category name="x" ' + this.atributosExtra() + '>\n').replace('x', this.nombre);
-    clasesBloques.forEach(b => str_category += b.build());
+    bloques.forEach(b => str_category += b.build());
     return str_category + '</category>\n';
   },
 

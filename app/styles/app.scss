@@ -618,33 +618,16 @@ h2 {
 
 .pilas-canvas-container {
   position: relative;
-  width: 420px;
-  height: 480px;
   overflow: hidden;
-}
-
-.desafio-panel-izquierdo.media-mobile {
-  width: 250px;
-}
-
-.pilas-canvas-container.media-mobile {
-  width: 210px;
-  height: 240px;
 }
 
 
 .contenedor-panel-ayuda {
-  overflow-y: scroll;
-  margin-top: 5px;
+  overflow-y: auto;
   position: absolute;
   bottom: 3px;
-  margin-right: 5px;
   margin-top: 5px;
   top: 480px;
-}
-
-.contenedor-panel-ayuda.media-mobile {
-  top: 240px;
 }
 
 
@@ -687,21 +670,21 @@ h2 {
 }
 
 .desafio-panel-izquierdo {
-  width: 500px;
+  width: 426px;
+  min-width: 206px;
   padding: 5px;
   position: relative;
+  padding-right: 1px;
 }
 
 .desafio-panel-derecho {
-  width: 100%;
   padding: 5px;
-  padding-left: 5px;
+  padding-left: 1px;
   min-width: 380px;
   height: 100%;
 }
 
 .desafio-panel-codigo {
-  width: 100%;
   padding: 5px;
   overflow: scroll;
 }
@@ -767,6 +750,31 @@ table {
 }
 
 #contenedor-blockly {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pilas-splitter {
+  display: flex;
+}
+
+.splitter {
+  cursor: ew-resize;
+  width: 6px;
+  min-width: 6px;
+}
+
+.splitter:hover {
+  background-color: #ccc;
+}
+
+.over-splitter {
+  cursor: ew-resize;
+  display: none;
+  z-index: 3000;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;

@@ -366,9 +366,12 @@ var AccionBuilder = {
 
       block_init(block){
         this._super(block);
-        block.appendDummyInput()
-          .appendField(this.obtener_icono('../libs/data/' + opciones.icono))
-          .appendField(opciones.descripcion);
+        block = block.appendDummyInput();
+        if(opciones.icono !== undefined)
+        {
+          block = block.appendField(this.obtener_icono('../libs/data/' + opciones.icono));
+        }
+        block = block.appendField(opciones.descripcion);
       },
 
       nombre_comportamiento(){
