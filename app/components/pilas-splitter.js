@@ -8,8 +8,8 @@ export default Ember.Component.extend({
         this.fixLayout();
       });
 
-      this.$('#splitter').on("mousedown", (e) => {
-        e.preventDefault();
+      this.$('#splitter').on("mousedown", (event) => {
+        event.preventDefault();
 
         $('#over-splitter').show();
 
