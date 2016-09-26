@@ -159,8 +159,8 @@ binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_ele
 
 _preparar_electron:
 	@echo "${G}Preparando directorio dist para funcionar con electron...${N}"
+	@sed 's/VERSION/${VERSION}/g' extras/package.json > dist/package.json
 	@cp extras/electron.js dist
-	@cp extras/package.json dist
 
 _compilar_electron_osx:
 	@echo "${G}Iniciando compilación a electron a OSX...${N}"

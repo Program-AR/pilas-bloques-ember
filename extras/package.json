@@ -1,6 +1,6 @@
 {
-  "name": "pilas-bloques",
-  "version": "1.0.0",
-  "description": "Una herramienta para aprender a programar utilizando bloques.",
+  "name": "pilasBloques",
+  "version": "VERSION",
+  "description": "Una herramienta para aprender a programar con bloques.",
   "main": "electron.js"
 }
