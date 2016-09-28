@@ -31,6 +31,8 @@ before_deploy:
 - VERSION=$(sh scripts/obtenerVersion.sh)
 - echo "Detectando version $VERSION para compilar"
 - make binarios_electron
+after_success:
+  - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --domain develop-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases
