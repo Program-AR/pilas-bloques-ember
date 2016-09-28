@@ -593,6 +593,12 @@ h2 {
   width: 100%;
 }
 
+.contenedor-sin-padding {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+
 .contenedor-pilas-editor {
     display: flex;
     flex-direction: column;
