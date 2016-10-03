@@ -1,6 +1,10 @@
 import Ember from 'ember';
+import environment from '../config/environment';
 
 export default Ember.Service.extend({
+  ajax: Ember.inject.service(),
+  hayActualizacion: false,
+  versionActual: null,
 
   /**
    * Compara dos versiones y retorna 1 si v2 es mas reciente que v1, en
@@ -34,5 +38,28 @@ export default Ember.Service.extend({
     }
 
     return false;
+  },
+
+  /**
+   * Consulta contra la API de github si existe una versión nueva de la
+   * aplicación para actualizar.
+   */
+  consultar() {
+    let versionActual = environment.APP.version;
+    let url = environment['versionURL'];
+
+    return this.get('ajax').request(url).then((data) => {
+      let versionDesdeElServidor = data.tag_name;
+
+
+      if (this.comparar(versionActual, versionDesdeElServidor) === 1) {
+        this.set('hayActualizacion', true);
+        this.set('versionActual', data.tag_name);
+        return {hayActualizacion: true, version: data.tag_name};
+      } else {
+        return {hayActualizacion: false, version: data.tag_name};
+      }
+
+    });
   }
 });
