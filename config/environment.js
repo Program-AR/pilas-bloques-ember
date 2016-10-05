@@ -9,7 +9,7 @@ module.exports = function(environment) {
     downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
-    cursoBackendURL: 'http://api.pilasbloques.program.ar',
+    cursoBackendURL: null,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     EmberENV: {
       EXTEND_PROTOTYPES: {
@@ -36,7 +36,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-
+    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
@@ -60,6 +60,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
+    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
 
 
     ENV['ember-cli-mirage'] = {
