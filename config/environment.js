@@ -60,7 +60,8 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
+    // ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
+    ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
 
 
     ENV['ember-cli-mirage'] = {

@@ -33,8 +33,8 @@ before_deploy:
 - echo "Detectando version $VERSION para compilar"
 - make binarios_electron
 after_success:
-  - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
-  - test $TRAVIS_BRANCH = "master" && ember surge --environment development --new-domain master-pilas-bloques.surge.sh
+  - test $TRAVIS_BRANCH = "develop" && echo "develop-pilas-bloques.surge.sh" > CNAME && ember surge --environment development
+  - test $TRAVIS_BRANCH = "master" &&  echo "master-pilas-bloques.surge.sh" > CNAME && ember surge --environment development
 deploy:
   skip_cleanup: true
   provider: releases
