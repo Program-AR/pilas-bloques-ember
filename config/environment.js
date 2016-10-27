@@ -10,6 +10,7 @@ module.exports = function(environment) {
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     cursoBackendURL: null,
+    consultarVersion: true,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     EmberENV: {
       EXTEND_PROTOTYPES: {
@@ -52,6 +53,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+    ENV.consultarVersion = false;
 
     ENV['ember-cli-mirage'] = {
       enabled: true
