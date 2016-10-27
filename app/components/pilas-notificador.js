@@ -9,9 +9,13 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     if (this.get('servicioNotificador')) {
-      setTimeout(() => {
-        this.consultarSiExisteVersionNueva();
-      }, 5000);
+
+      if (environment.consultarVersion) {
+        setTimeout(() => {
+          this.consultarSiExisteVersionNueva();
+        }, 5000);
+      }
+
     }
   },
 
