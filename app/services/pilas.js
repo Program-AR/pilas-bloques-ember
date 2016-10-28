@@ -59,6 +59,7 @@ export default Ember.Service.extend(Ember.Evented, {
                         canvas: canvasElement,
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
+                        cargar_imagenes_estandar: false,
                       };
 
         var pilas = pilasengine.iniciar(opciones);
