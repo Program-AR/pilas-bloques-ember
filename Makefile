@@ -24,16 +24,11 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
 	@echo ""
-	@echo "    ${G}bajar_dependencias${N}              Descarga las dependencias como blockly."
-	@echo "    ${G}actualizar_blockly${N}              Actualiza blockly."
 	@echo "    ${G}compilar_ejercicios_pilas${N}       Compilar los ejercicios de pilas."
-	@echo "    ${G}copiar_blockly_comprimido${N}       Vincula blockly al proyecto."
-	@echo "    ${G}copiar_blockly_descomprimido${N}    Vincula blockly al proyecto."
 	@echo ""
 	@echo "    ${L}El comando full es equivalente a realizar estos pasos en orden:${N}"
 	@echo "${L}"
-	@echo "       → iniciar → bajar_dependencias "
-	@echo "       → actualizar_blockly → compilar_ejercicios_pilas"
+	@echo "       → iniciar → compilar_ejercicios_pilas"
 	@echo "${N}"
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
@@ -61,55 +56,10 @@ iniciar_ejercicios:
 	@echo "${G}instalando dependencias de ejerciciosPilas...${N}"
 	cd ejerciciosPilas; npm install
 
-
-blockly/blocks_compressed.js: bajar_dependencias
-
-bajar_dependencias:
-	python scripts/bajar_dependencias.py
-
 compilar_ejercicios_pilas:
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
-actualizar_blockly: blockly/blocks_compressed.js
-	cd blockly; git pull; python build.py; cd ..
-	rm -rf vendor/libs/blockly
-	mkdir -p vendor/libs/blockly
-	make copiar_blockly_comprimido
-
-copiar_blockly_comprimido:
-	# CORE
-	cp -f blockly/blockly_compressed.js vendor/libs/blockly/
-	# BLOCKS
-	cp -f blockly/blocks_compressed.js vendor/libs/blockly/
-	# JS GENERATOR
-	cp -f blockly/javascript_compressed.js vendor/libs/blockly/
-	# MEDIA
-	rm -r -f public/libs/blockly/media
-	cp -r -f blockly/media public/libs/blockly/
-	# LANG
-	rm -r -f vendor/libs/blockly/msg
-	cp -r -f blockly/msg vendor/libs/blockly/
-
-copiar_blockly_descomprimido:
-	# CORE
-	cp -f blockly/blockly_uncompressed.js public/libs/blockly/
-	rm -r -f public/libs/blockly/core
-	cp -r -f blockly/core public/libs/blockly/
-	# BLOCKS
-	rm -r -f public/libs/blockly/blocks
-	cp -r -f blockly/blocks public/libs/blockly/blocks
-	# JS GENERATOR
-	rm -r -f public/libs/blockly/generators
-	mkdir public/libs/blockly/generators
-	cp -f blockly/generators/javascript.js public/libs/blockly/generators/
-	cp -r -f blockly/generators/javascript public/libs/blockly/generators/
-	# MEDIA
-	rm -r -f public/libs/blockly/media
-	cp -r -f blockly/media public/libs/blockly/
-	# LANG
-	rm -r -f public/libs/blockly/msg
-	cp -r -f blockly/msg  public/libs/blockly/
 
 dist: compilar
 
@@ -141,13 +91,11 @@ limpiar_todo:
 	@sleep 1s;
 	@echo "Borrando node_modules y bower_components ..."
 	@rm -rf node_modules/ bower_components/
-	@echo "Borrando blockly y closure-library ..."
-	@rm -rf blockly closure-library
 	@sleep 1s;
 
 full: limpiar_todo full_travis
 
-full_travis: iniciar bajar_dependencias actualizar_blockly compilar_ejercicios_pilas
+full_travis: iniciar compilar_ejercicios_pilas
 
 binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_electron_win32
 	@echo ""
@@ -180,4 +128,4 @@ _compilar_electron_win32:
 test_travis:
 	time ember exam --split=10 --parallel --random
 
-.PHONY: dist bajar_dependencias
+.PHONY: dist

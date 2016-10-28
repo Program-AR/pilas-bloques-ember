@@ -53,7 +53,7 @@ var Bloque = Ember.Object.extend({
       '<xml>' + this.build() + '</xml>'
     );
 
-    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), block_dom);
+    Blockly.Xml.domToWorkspace(block_dom, Blockly.getMainWorkspace());
   },
 
   // reimplementar si se desean parametros ya aplicados

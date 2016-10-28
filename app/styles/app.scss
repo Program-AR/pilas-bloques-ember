@@ -688,6 +688,8 @@ h2 {
   padding-left: 1px;
   min-width: 380px;
   height: 100%;
+  flex: 1;
+  display: flex;
 }
 
 .desafio-panel-codigo {
@@ -860,4 +862,29 @@ a:hover {
   margin: 40px;
   margin-left: 1em;
   width: 400px;
+}
+
+.ember-blockly-container {
+  min-height: 400px;
+  height: 100%;
+  width: 100%;
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.contenedor-para-componente-blocky {
+  flex: 1;
+}
+
+.nota {
+  background-color: rgba(255, 255, 0, 0.15);
+  border: 1px solid #ffb300;
+  padding: 1em;
+  margin: 1px;
+  color: hsla(29,65%,50%,1);
+  border-radius: 6px;
 }

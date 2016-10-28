@@ -1,11 +1,7 @@
 {{yield}}
 
+<div class="vbox">
 
-<table>
-
-  <tbody>
-    <tr>
-      <td>
           <div class='pilas-blockly-botones'>
 
             {{#if mostrarAlternar}}
@@ -51,21 +47,17 @@
 
           </div>
 
-      </td>
-    </tr>
 
-    <tr>
-      <td id="blocklyArea">
+          <div class="contenedor-para-componente-blocky">
+            {{ember-blockly blocks=blockly_toolbox workspace=blockly_workspace
+              withZoom=true withTrash=true
+              comments=blockly_comments
+              disable=blockly_disable
+              duplicate=blockly_duplicate
+            }}
+          </div>
 
-        <div id="contenedor-blockly" style="position: absolute;"> </div>
-
-      </td>
-    </tr>
-  </tbody>
-
-</table>
-
-
+</div>
 
 
 {{#if ocultarModal}}

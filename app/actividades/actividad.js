@@ -137,7 +137,7 @@ var Actividad = Ember.Object.extend({
     var workspace = Blockly.getMainWorkspace();
     workspace.clear();
     var xml = Blockly.Xml.textToDom(codigo);
-    Blockly.Xml.domToWorkspace(workspace, xml);
+    Blockly.Xml.domToWorkspace(xml, workspace);
   },
 
   debeFelicitarse(){

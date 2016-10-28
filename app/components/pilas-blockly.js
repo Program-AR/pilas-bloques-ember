@@ -25,6 +25,29 @@ export default Ember.Component.extend({
   anterior_ancho: -1,
   anterior_alto: -1,
 
+  blockly_toolbox:    [ {
+      category: '...',
+      blocks: []
+  }],
+
+  blockly_workspace: Ember.computed(function() {
+
+    let workspace_inicial = `
+      <xml xmlns="http://www.w3.org/1999/xhtml">
+        <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
+        </block>
+      </xml>';
+    `;
+
+    if (this.get('codigo')) {
+      return atob(this.get('codigo'));
+    } else {
+      return workspace_inicial;
+    }
+
+  }),
+
+
   inyectarRedimensionado: Ember.on('init', function() {
 
     // Muestra el dialogo inicial si está definida la consigna inicial.
@@ -36,28 +59,38 @@ export default Ember.Component.extend({
 
   }),
 
+
   didInsertElement() {
 
     if (!this.get('actividad')) {
       return null;
     }
 
-    var contenedor = this.$().find('#contenedor-blockly')[0];
-    this.get('actividad').iniciarBlockly(contenedor);
+    this.get('actividad').crear_bloques_iniciales();
+
+    var event = new Event('terminaCargaInicial');
+    window.dispatchEvent(event);
 
 
-    if (this.get("codigo")) {
-      this.restaurar_codigo(atob(this.get("codigo")));
-    }
+    Ember.run.scheduleOnce('afterRender', () => {
+      this.set('blockly_toolbox', this.get('actividad').obtenerLenguaje());
+      this.set('blockly_comments', this.get('actividad.puedeComentar'));
+      this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
+      this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+    });
 
 
     if (this.get("persistirSolucionEnURL")) {
-      Blockly.addChangeListener(() => {
+      Blockly.getMainWorkspace().addChangeListener(() => {
         this.guardarEnURL();
         this.generarCodigoTemporal();
       });
     }
 
+    if (this.get("codigo")) {
+      console.log(atob(this.get('codigo')));
+      //this.restaurar_codigo(atob(this.get("codigo")));
+    }
 
     if (this.get("debeMostrarFinDeDesafio")) {
       this.get('pilas').on('terminaEjecucion', () => {
@@ -65,29 +98,11 @@ export default Ember.Component.extend({
       });
     }
 
-
     // this.set('cola_deshacer', []);
     // this.cargar_codigo_desde_el_modelo();
     // this.observarCambiosEnBlocky();
 
-    this.conectar_evento_para_ajustar_blocky();
     $(window).trigger('resize');
-  },
-
-  conectar_evento_para_ajustar_blocky() {
-    $(window).bind('resize.blockly', function() {
-
-      let newWidth = window.innerWidth - $("#panel-izquierdo").width();
-      $('.desafio-panel-derecho').width(newWidth - 35);
-
-      var blocklyArea = document.getElementById('blocklyArea');
-      var blocklyDiv = document.getElementById('contenedor-blockly');
-
-      blocklyDiv.style.left = 0 + 'px';
-      blocklyDiv.style.top = 0 + 'px';
-      blocklyDiv.style.width = blocklyArea.offsetWidth + 'px';
-      blocklyDiv.style.height = blocklyArea.offsetHeight + 'px';
-    });
   },
 
   guardarEnURL() {
@@ -109,7 +124,6 @@ export default Ember.Component.extend({
   willDestroyElement() {
     window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
     window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
-    $(window).unbind('resize.blockly');
   },
 
   /**
@@ -137,8 +151,11 @@ export default Ember.Component.extend({
 
   restaurar_codigo(codigo) {
     var xml = Blockly.Xml.textToDom(codigo);
-    Blockly.mainWorkspace.clear();
-    Blockly.Xml.domToWorkspace(Blockly.getMainWorkspace(), xml);
+
+    if (Blockly.mainWorkspace) {
+      Blockly.mainWorkspace.clear();
+      Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
+    }
   },
 
   obtener_codigo_en_texto() {
