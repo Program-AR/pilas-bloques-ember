@@ -35,6 +35,7 @@ before_deploy:
 after_success:
   - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
   - test $TRAVIS_BRANCH = "master"  && ember surge --environment development --new-domain master-pilas-bloques.surge.sh
+  - test $TRAVIS_BRANCH = "feature/actualizar-blockly"  && ember surge --environment development --new-domain experimental-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases
