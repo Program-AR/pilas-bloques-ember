@@ -74,6 +74,7 @@ var Actividad = Ember.Object.extend({
     return this.get('actividad').bloques.indexOf(Funcion) > -1;
   },
 
+  /*
   iniciarBlockly(contenedor) {
 
     Blockly.inject(contenedor, {
@@ -97,6 +98,7 @@ var Actividad = Ember.Object.extend({
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
   },
+  */
 
   generarCodigo() {
     // variable global con la que se accede al receptor del programa
@@ -108,7 +110,9 @@ var Actividad = Ember.Object.extend({
       '', '']
       .join('\n');
 
-    var code = Blockly.JavaScript.workspaceToCode();
+    let workspace = Blockly.getMainWorkspace();
+    var code = Blockly.JavaScript.workspaceToCode(workspace);
+
     return comienzo + code;
   },
 

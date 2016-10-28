@@ -87,11 +87,6 @@ export default Ember.Component.extend({
       });
     }
 
-    if (this.get("codigo")) {
-      console.log(atob(this.get('codigo')));
-      //this.restaurar_codigo(atob(this.get("codigo")));
-    }
-
     if (this.get("debeMostrarFinDeDesafio")) {
       this.get('pilas').on('terminaEjecucion', () => {
         this.cuandoTerminaEjecucion();

@@ -10,10 +10,6 @@ export default [
     escena: 'AlienInicial',
     actividad: null   /* Se carga desde un hook en la ruta desafío. */
   },
-
-];
-
-/*
   {
     id: 2,
     grupoId: 1,
@@ -446,5 +442,3 @@ export default [
     actividad: null,
   },
 ];
-
-*/
