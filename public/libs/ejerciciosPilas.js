@@ -666,8 +666,8 @@ var Casilla = (function (_super) {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     };
     Casilla.prototype.sos = function (nroF, nroC) {
-        return (nroC === null || nroF === this.nroFila) &&
-            (nroF === null || nroC === this.nroColumna);
+        return (nroF === null || nroF === this.nroFila) &&
+            (nroC === null || nroC === this.nroColumna);
     };
     Casilla.prototype.esEsquina = function () {
         return this.sos(0, 0) ||

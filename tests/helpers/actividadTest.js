@@ -164,7 +164,7 @@ export function actividadTest(nombre, opciones) {
             if (errorEsperado) {
               assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
             } else {
-              assert.notOk(`Ocurrió un error inesperado: '${errorEsperado}'`);
+              assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
             }
 
             success();
