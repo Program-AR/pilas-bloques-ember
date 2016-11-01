@@ -108,7 +108,7 @@ export default [
               '2) Abrir el cofre con la llave y tomar el sombrero mágico que está dentro.\n'+
               '3) Entregarle el sombrero al mago para recibir la espada a cambio.\n'+
               '4) Luchar con la espada contra el caballero oscuro.\n'+
-              '5) Ir con el príncipe hasta el unicornio y escapar.',
+              '5) Escapar en unicornio.',
     consignaInicial: '',
     escena: 'LaGranAventuraDelMarEncantado',
     actividad: null,
