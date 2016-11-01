@@ -221,6 +221,9 @@ var ActorAnimado = (function (_super) {
             this.y = casillaNueva.y;
         }
     };
+    ActorAnimado.prototype.estaEnCasilla = function (nroFila, nroColumna) {
+        return this.casillaActual().sos(nroFila, nroColumna);
+    };
     ActorAnimado.prototype.largoColumnaActual = function () {
         return this.cuadricula.largoColumna(this.casillaActual().nroColumna);
     };
@@ -663,7 +666,8 @@ var Casilla = (function (_super) {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     };
     Casilla.prototype.sos = function (nroF, nroC) {
-        return nroF == this.nroFila && nroC == this.nroColumna;
+        return (nroC === null || nroF === this.nroFila) &&
+            (nroF === null || nroC === this.nroColumna);
     };
     Casilla.prototype.esEsquina = function () {
         return this.sos(0, 0) ||
@@ -5141,7 +5145,7 @@ var TresNaranjas = (function (_super) {
         this.objetos.push(objeto);
     };
     TresNaranjas.prototype.estaResueltoElProblema = function () {
-        return this.contarActoresConEtiqueta('NaranjaAnimada') == 0;
+        return this.contarActoresConEtiqueta('NaranjaAnimada') == 0 && this.automata.estaEnCasilla(null, 3);
     };
     return TresNaranjas;
 })(EscenaActividad);

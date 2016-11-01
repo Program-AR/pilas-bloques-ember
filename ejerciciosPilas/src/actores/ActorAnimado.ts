@@ -189,6 +189,9 @@ class ActorAnimado extends Actor {
             this.y = casillaNueva.y;
         }
     }
+    estaEnCasilla(nroFila,nroColumna){
+      return this.casillaActual().sos(nroFila,nroColumna);
+    }
 
     largoColumnaActual(){
       return this.cuadricula.largoColumna(this.casillaActual().nroColumna);
