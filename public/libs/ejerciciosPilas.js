@@ -739,7 +739,14 @@ var CompuAnimada = (function (_super) {
         this.definirAnimacion("prendida", [1], 5);
         this.definirAnimacion("claveok", [2], 5);
         this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
+        this.yaFuePrendida = false;
     }
+    CompuAnimada.prototype.cargarAnimacion = function (nombre) {
+        _super.prototype.cargarAnimacion.call(this, nombre);
+        if (nombre === "prendida") {
+            this.yaFuePrendida = true;
+        }
+    };
     return CompuAnimada;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
@@ -4266,6 +4273,18 @@ var InstalandoJuegos = (function (_super) {
     };
     return InstalandoJuegos;
 })(EscenaActividad);
+var PrenderCompuParaInstalar = (function (_super) {
+    __extends(PrenderCompuParaInstalar, _super);
+    function PrenderCompuParaInstalar() {
+        _super.apply(this, arguments);
+    }
+    PrenderCompuParaInstalar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return !_this.objetoTocado().yaFuePrendida; }, "Esta compu ya la prendiste antes"));
+    };
+    return PrenderCompuParaInstalar;
+})(DesencadenarAnimacionSiColisiona);
 var ApagarPorEtiqueta = (function (_super) {
     __extends(ApagarPorEtiqueta, _super);
     function ApagarPorEtiqueta() {
