@@ -17,6 +17,9 @@ Router.map(function() {
     this.route('mensajeGuardado');
   });
 
+  this.route('libros', function() {
+    this.route('verLibro', {path: "/libro/:libro_id"});
+  });
 });
 
 Router.reopen({

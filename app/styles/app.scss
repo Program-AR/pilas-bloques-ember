@@ -827,3 +827,28 @@ table {
 a:hover {
   cursor: pointer;
 }
+
+.pilas-libro-contenedor {
+  display: inline-block;
+  background-image: url('../imagenes/pilas-libro.png');
+  background-repeat: no-repeat;
+  width: 388px;
+  height: 244px;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.pilas-libro-contenedor h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.pilas-libro-contenedor img {
+  margin: auto;
+  display: block;
+}
+
+.pilas-libro-contenedor p {
+  padding-top: 3px;
+  color: gray;
+}

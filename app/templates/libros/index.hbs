@@ -1,0 +1,13 @@
+<div class='contenido-principal'>
+
+  <h1>Desafíos disponibles</h1>
+
+  <p>Te presentamos los desafíos catalogados en libros, ¡elegí el mas adecuado para vos!:</p>
+
+  {{#each model as |libro|}}
+
+    {{pilas-libro libro=libro}}
+
+  {{/each}}
+
+</div>
