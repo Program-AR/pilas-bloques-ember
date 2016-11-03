@@ -855,6 +855,7 @@ var ComportamientoAnimado = (function (_super) {
     };
     ComportamientoAnimado.prototype.sanitizarArgumentos = function () {
         this.receptor = this.argumentos.receptor || this.receptor;
+        this.hayQueAnimar = this.argumentos.hayQueAnimar !== false;
         this.verificacionesPre = this.argumentos.verificacionesPre || [];
         this.verificacionesPost = this.argumentos.verificacionesPost || [];
     };
@@ -873,7 +874,8 @@ var ComportamientoAnimado = (function (_super) {
         this.realizarVerificacionesPreAnimacion();
         this.receptor.detenerAnimacion(); // Porque hace quilombo
         this.animacionAnterior = this.receptor.nombreAnimacionActual();
-        this.receptor.cargarAnimacion(this.nombreAnimacion());
+        if (this.hayQueAnimar)
+            this.receptor.cargarAnimacion(this.nombreAnimacion());
     };
     ComportamientoAnimado.prototype.configuracionFinal = function () {
         this.receptor.animar();

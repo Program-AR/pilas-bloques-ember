@@ -55,7 +55,7 @@ var Soniar = AccionBuilder.build({
   descripcion: 'Soñar',
   icono: 'icono.soniar.png',
   comportamiento: 'Pensar',
-  argumentos: '{mensaje: "ZZzzZzZ..." }',
+  argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false}',
 });
 
 export default {
