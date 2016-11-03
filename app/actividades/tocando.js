@@ -33,14 +33,14 @@ var TocandoAbajo = AccionBuilder.buildSensor({
   descripcion: 'Puedo mover abajo',
   id: 'TocandoAbajo',
   icono: '../../iconos/abajo.png',
-  funcionSensor: 'hayAbajo()',
+  funcionSensor: 'tocandoFlechaAbajo()',
 });
 
 var TocandoDerecha = AccionBuilder.buildSensor({
   descripcion: 'Puedo mover a la derecha',
   id: 'TocandoDerecha',
   icono: '../../iconos/derecha.png',
-  funcionSensor: 'hayDerecha()',
+  funcionSensor: 'tocandoFlechaDerecha()',
 });
 
 var TocandoFinCamino = AccionBuilder.buildSensor({

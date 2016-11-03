@@ -59,8 +59,37 @@ var Animar = (function (_super) {
     };
     return Animar;
 })(HabilidadAnimada);
+// Esto es una clara chanchada. No sé cómo usar el Error original desde Typescript
+var ActividadError = (function () {
+    function ActividadError(message) {
+        this.message = message || "";
+    }
+    ;
+    ActividadError.prototype.description = function () {
+        return this.message;
+    };
+    return ActividadError;
+})();
+var ProductionErrorHandler = (function () {
+    function ProductionErrorHandler(escena) {
+        this.escena = escena;
+    }
+    ProductionErrorHandler.prototype.handle = function (e) {
+        this.escena.automata.decir(e.description());
+        this.escena.pausar();
+        if (parent) {
+            var mensaje = {
+                tipo: "errorDeActividad",
+                detalle: e.description()
+            };
+            parent.postMessage(mensaje, window.location.origin);
+        }
+    };
+    return ProductionErrorHandler;
+})();
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "../habilidades/Animar.ts" />
+/// <reference path = "../escenas/Errores.ts" />
 /**
  * @class ActorAnimado
  *
@@ -135,6 +164,16 @@ var ActorAnimado = (function (_super) {
     };
     ActorAnimado.prototype.hayIzquierda = function () {
         return this.cuadricula.hayIzquierda(this.casillaActual());
+    };
+    ActorAnimado.prototype.tocandoFlechaAbajo = function () {
+        if (this.alFinalDelCamino())
+            throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+        return this.hayAbajo();
+    };
+    ActorAnimado.prototype.tocandoFlechaDerecha = function () {
+        if (this.alFinalDelCamino())
+            throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+        return this.hayDerecha();
     };
     ActorAnimado.prototype.alFinalDelCamino = function () {
         return this.casillaActual() == this.cuadricula.casillas[this.cuadricula.casillas.length - 1];
@@ -1062,34 +1101,6 @@ var Direct = (function () {
             y: point.y + (this.versor.y * distance) };
     };
     return Direct;
-})();
-// Esto es una clara chanchada. No sé cómo usar el Error original desde Typescript
-var ActividadError = (function () {
-    function ActividadError(message) {
-        this.message = message || "";
-    }
-    ;
-    ActividadError.prototype.description = function () {
-        return this.message;
-    };
-    return ActividadError;
-})();
-var ProductionErrorHandler = (function () {
-    function ProductionErrorHandler(escena) {
-        this.escena = escena;
-    }
-    ProductionErrorHandler.prototype.handle = function (e) {
-        this.escena.automata.decir(e.description());
-        this.escena.pausar();
-        if (parent) {
-            var mensaje = {
-                tipo: "errorDeActividad",
-                detalle: e.description()
-            };
-            parent.postMessage(mensaje, window.location.origin);
-        }
-    };
-    return ProductionErrorHandler;
 })();
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
