@@ -1,0 +1,10 @@
+{{yield}}
+
+{{#link-to "libros.verLibro" libro}}
+
+  <img src="imagenes/libros/{{libro.nombre}}.png"/>
+
+  <h2>{{libro.titulo}}</h2>
+{{/link-to}}
+
+<p>{{libro.descripcion}}</p>
