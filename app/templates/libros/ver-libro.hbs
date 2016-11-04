@@ -15,11 +15,11 @@
     {{/each}}
 
   {{else}}
-    <p>Lo siento, no hay desafíos para este manual aún.</p>
+    <p class="mensaje-sin-desafios">Lo siento, no hay desafíos para este manual aún.</p>
   {{/each}}
 
   {{#if model.grupos.isSettled}}
-  
+
   {{else}}
     {{pilas-cargando}}
   {{/if}}
