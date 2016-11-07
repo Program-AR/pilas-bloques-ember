@@ -2500,7 +2500,7 @@ var EstadoConTransicion = (function (_super) {
         };
     };
     EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
-        if (!this.transiciones[idTransicion])
+        if (!this.puedoTransicionarA(idTransicion))
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
@@ -2509,8 +2509,30 @@ var EstadoConTransicion = (function (_super) {
             this.transiciones[idTransicion].estadoEntrada :
             this;
     };
+    EstadoConTransicion.prototype.puedoTransicionarA = function (idTransicion) {
+        return this.transiciones[idTransicion];
+    };
     return EstadoConTransicion;
 })(Estado);
+// Sirve para que no tire error para salirse del camino
+var EstadoTransicionSinError = (function (_super) {
+    __extends(EstadoTransicionSinError, _super);
+    function EstadoTransicionSinError() {
+        _super.apply(this, arguments);
+    }
+    EstadoTransicionSinError.prototype.puedoTransicionarA = function (idTransicion) {
+        return true; //Siempre me deja
+    };
+    EstadoTransicionSinError.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
+        if (!_super.prototype.puedoTransicionarA.call(this, idTransicion)) {
+            return new EstadoTransicionSinError('meFuiDelCamino');
+        }
+        else {
+            return _super.prototype.estadoSiguiente.call(this, comportamiento, idTransicion);
+        }
+    };
+    return EstadoTransicionSinError;
+})(EstadoConTransicion);
 var EstadoAceptacion = (function (_super) {
     __extends(EstadoAceptacion, _super);
     function EstadoAceptacion() {
@@ -2535,13 +2557,15 @@ var EstadoError = (function () {
     return EstadoError;
 })();
 var BuilderStatePattern = (function () {
-    function BuilderStatePattern(idEstadoInicialp) {
+    function BuilderStatePattern(idEstadoInicialp, tiraErrorSiSeVaDelCamino) {
+        if (tiraErrorSiSeVaDelCamino === void 0) { tiraErrorSiSeVaDelCamino = true; }
         this.idEstadoInicial = idEstadoInicialp;
         this.estados = {};
-        this.estados[idEstadoInicialp] = new EstadoConTransicion(idEstadoInicialp);
+        this.estados[idEstadoInicialp] = tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstadoInicialp) : new EstadoTransicionSinError(idEstadoInicialp);
     }
-    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new EstadoConTransicion(idEstado);
+    BuilderStatePattern.prototype.agregarEstado = function (idEstado, tiraErrorSiSeVaDelCamino) {
+        if (tiraErrorSiSeVaDelCamino === void 0) { tiraErrorSiSeVaDelCamino = true; }
+        this.estados[idEstado] = tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstado) : new EstadoTransicionSinError(idEstado);
     };
     BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
         this.estados[idEstado] = new EstadoAceptacion(idEstado);
@@ -3862,9 +3886,34 @@ var ElGatoEnLaCalle = (function (_super) {
     ElGatoEnLaCalle.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.gatoEnLaCalle.png', 0, 0);
         this.automata = new GatoAnimado(0, -150);
+        this.construirFSM();
     };
-    ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
-        return true; // Como este ejercicio es de exploración, cualquier solución sería buena.
+    ElGatoEnLaCalle.prototype.construirFSM = function () {
+        // ver https://github.com/Program-AR/pilas-bloques/issues/187
+        var builder = new BuilderStatePattern('inicial', false);
+        builder.agregarEstado('posCorrecta', false);
+        builder.agregarEstado('semiDormido1', false);
+        builder.agregarEstado('semiDormido2', false);
+        builder.agregarEstado('dormido', false);
+        builder.agregarEstado('semiDespierto1', false);
+        builder.agregarEstado('semiDespierto2', false);
+        builder.agregarEstado('despierto', false);
+        builder.agregarEstado('saludado', false);
+        builder.agregarEstado('noResuelve', false);
+        builder.agregarEstadoAceptacion('fin');
+        builder.agregarTransicion('inicial', 'posCorrecta', 'avanzar');
+        builder.agregarTransicion('posCorrecta', 'semiDormido1', 'acostarse');
+        builder.agregarTransicion('posCorrecta', 'semiDormido2', 'cerrarOjos');
+        builder.agregarTransicion('semiDormido1', 'dormido', 'cerrarOjos');
+        builder.agregarTransicion('semiDormido2', 'dormido', 'acostarse');
+        builder.agregarTransicion('dormido', 'dormido', 'soniar');
+        builder.agregarTransicion('dormido', 'semiDespierto1', 'abrirOjos');
+        builder.agregarTransicion('dormido', 'semiDespierto2', 'levantarse');
+        builder.agregarTransicion('semiDespierto1', 'despierto', 'levantarse');
+        builder.agregarTransicion('semiDespierto2', 'despierto', 'abrirOjos');
+        builder.agregarTransicion('despierto', 'saludado', 'saludar');
+        builder.agregarTransicion('saludado', 'fin', 'volver');
+        this.estado = builder.estadoInicial();
     };
     return ElGatoEnLaCalle;
 })(EscenaActividad);

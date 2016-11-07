@@ -96,7 +96,7 @@ class EstadoConTransicion extends Estado{
   }
 
   puedoTransicionarA(idTransicion){
-    return transiciones[idTransicion];
+    return this.transiciones[idTransicion];
   }
 }
 
