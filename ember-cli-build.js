@@ -3,6 +3,9 @@ var Funnel = require('broccoli-funnel');
 
 module.exports = function(defaults) {
     var app = new EmberApp(defaults, {
+      fingerprint: {
+		      exclude: ['favicon']
+	    },
       'ember-font-awesome': {
         useScss: true,
         includeFontFiles: true
@@ -27,7 +30,6 @@ app.import('vendor/prism/prism.js');
        include: ['**'],
        destDir: '/libs/'
     });
-    
+
     return app.toTree(extraAssets);
 };
-
