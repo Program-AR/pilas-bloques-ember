@@ -1,6 +1,6 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "../habilidades/Animar.ts" />
-
+/// <reference path = "../escenas/Errores.ts" />
 
 /**
  * @class ActorAnimado
@@ -89,6 +89,14 @@ class ActorAnimado extends Actor {
     }
     hayIzquierda():Boolean{
       return this.cuadricula.hayIzquierda(this.casillaActual());
+    }
+    tocandoFlechaAbajo():Boolean {
+      if (this.alFinalDelCamino()) throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+      return this.hayAbajo();
+    }
+    tocandoFlechaDerecha():Boolean {
+      if (this.alFinalDelCamino()) throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+      return this.hayDerecha();
     }
 
     alFinalDelCamino():Boolean{
@@ -188,6 +196,9 @@ class ActorAnimado extends Actor {
             this.x = casillaNueva.x;
             this.y = casillaNueva.y;
         }
+    }
+    estaEnCasilla(nroFila,nroColumna){
+      return this.casillaActual().sos(nroFila,nroColumna);
     }
 
     largoColumnaActual(){

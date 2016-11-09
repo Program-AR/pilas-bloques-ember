@@ -53,7 +53,7 @@ class TresNaranjas extends EscenaActividad {
     }
 
     estaResueltoElProblema(){
-      return this.contarActoresConEtiqueta('NaranjaAnimada')==0;
+      return this.contarActoresConEtiqueta('NaranjaAnimada')==0 && this.automata.estaEnCasilla(null,3);
     }
 
 

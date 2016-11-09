@@ -13,7 +13,7 @@ var PrenderCompu = AccionBuilder.build({
   descripcion: 'Prender compu',
   id: 'PrenderCompu',
   icono: 'icono.computadora.png',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
+  comportamiento: 'PrenderCompuParaInstalar',
   argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'prender\',\'animacionColisionado\' : \'prendida\',\'nombreAnimacion\' : \'escribir\'  }',
 });
 

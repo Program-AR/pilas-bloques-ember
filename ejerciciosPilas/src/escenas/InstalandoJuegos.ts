@@ -60,7 +60,7 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarErrorAVariosEstadosDeSalida('escritoA','escribirA','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoB','escribirB','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoB','escribirA','Esa no es la clave correcta',1,3);
-    
+
 
     this.estado=builder.estadoInicial();
   }
@@ -75,7 +75,13 @@ class InstalandoJuegos extends EscenaActividad {
 }
 
 
-
+class PrenderCompuParaInstalar extends DesencadenarAnimacionSiColisiona {
+  configurarVerificaciones(){
+    super.configurarVerificaciones();
+    this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
+      "Esta compu ya la prendiste antes"))
+  }
+}
 
 
 

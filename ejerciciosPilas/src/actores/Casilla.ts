@@ -67,7 +67,8 @@ class Casilla extends ActorAnimado {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     }
     sos(nroF, nroC) {
-        return nroF == this.nroFila && nroC == this.nroColumna;
+        return (nroF === null || nroF === this.nroFila) &&
+          (nroC === null || nroC === this.nroColumna);
     }
 
     esEsquina(){

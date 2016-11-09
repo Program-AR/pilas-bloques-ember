@@ -46,6 +46,7 @@ function validarOpciones(opciones) {
     'solucion',
     'descripcionAdicional',
     'errorEsperado',
+    'resuelveDesafio',
     'cantidadDeActoresAlComenzar',
     'cantidadDeActoresAlTerminar',
     'fps',
@@ -163,7 +164,7 @@ export function actividadTest(nombre, opciones) {
             if (errorEsperado) {
               assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
             } else {
-              assert.notOk(`Ocurrió un error inesperado: '${errorEsperado}'`);
+              assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
             }
 
             success();
@@ -183,6 +184,8 @@ export function actividadTest(nombre, opciones) {
 
             if (errorEsperado) {
               assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
+            } else if (opciones.resuelveDesafio === false) {
+              assert.ok(!pilas.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
             } else {
               assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
             }

@@ -59,8 +59,37 @@ var Animar = (function (_super) {
     };
     return Animar;
 })(HabilidadAnimada);
+// Esto es una clara chanchada. No sé cómo usar el Error original desde Typescript
+var ActividadError = (function () {
+    function ActividadError(message) {
+        this.message = message || "";
+    }
+    ;
+    ActividadError.prototype.description = function () {
+        return this.message;
+    };
+    return ActividadError;
+})();
+var ProductionErrorHandler = (function () {
+    function ProductionErrorHandler(escena) {
+        this.escena = escena;
+    }
+    ProductionErrorHandler.prototype.handle = function (e) {
+        this.escena.automata.decir(e.description());
+        this.escena.pausar();
+        if (parent) {
+            var mensaje = {
+                tipo: "errorDeActividad",
+                detalle: e.description()
+            };
+            parent.postMessage(mensaje, window.location.origin);
+        }
+    };
+    return ProductionErrorHandler;
+})();
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 /// <reference path = "../habilidades/Animar.ts" />
+/// <reference path = "../escenas/Errores.ts" />
 /**
  * @class ActorAnimado
  *
@@ -135,6 +164,16 @@ var ActorAnimado = (function (_super) {
     };
     ActorAnimado.prototype.hayIzquierda = function () {
         return this.cuadricula.hayIzquierda(this.casillaActual());
+    };
+    ActorAnimado.prototype.tocandoFlechaAbajo = function () {
+        if (this.alFinalDelCamino())
+            throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+        return this.hayAbajo();
+    };
+    ActorAnimado.prototype.tocandoFlechaDerecha = function () {
+        if (this.alFinalDelCamino())
+            throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
+        return this.hayDerecha();
     };
     ActorAnimado.prototype.alFinalDelCamino = function () {
         return this.casillaActual() == this.cuadricula.casillas[this.cuadricula.casillas.length - 1];
@@ -220,6 +259,9 @@ var ActorAnimado = (function (_super) {
             this.x = casillaNueva.x;
             this.y = casillaNueva.y;
         }
+    };
+    ActorAnimado.prototype.estaEnCasilla = function (nroFila, nroColumna) {
+        return this.casillaActual().sos(nroFila, nroColumna);
     };
     ActorAnimado.prototype.largoColumnaActual = function () {
         return this.cuadricula.largoColumna(this.casillaActual().nroColumna);
@@ -663,7 +705,8 @@ var Casilla = (function (_super) {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     };
     Casilla.prototype.sos = function (nroF, nroC) {
-        return nroF == this.nroFila && nroC == this.nroColumna;
+        return (nroF === null || nroF === this.nroFila) &&
+            (nroC === null || nroC === this.nroColumna);
     };
     Casilla.prototype.esEsquina = function () {
         return this.sos(0, 0) ||
@@ -735,7 +778,14 @@ var CompuAnimada = (function (_super) {
         this.definirAnimacion("prendida", [1], 5);
         this.definirAnimacion("claveok", [2], 5);
         this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
+        this.yaFuePrendida = false;
     }
+    CompuAnimada.prototype.cargarAnimacion = function (nombre) {
+        _super.prototype.cargarAnimacion.call(this, nombre);
+        if (nombre === "prendida") {
+            this.yaFuePrendida = true;
+        }
+    };
     return CompuAnimada;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
@@ -805,6 +855,7 @@ var ComportamientoAnimado = (function (_super) {
     };
     ComportamientoAnimado.prototype.sanitizarArgumentos = function () {
         this.receptor = this.argumentos.receptor || this.receptor;
+        this.hayQueAnimar = this.argumentos.hayQueAnimar !== false;
         this.verificacionesPre = this.argumentos.verificacionesPre || [];
         this.verificacionesPost = this.argumentos.verificacionesPost || [];
     };
@@ -823,7 +874,8 @@ var ComportamientoAnimado = (function (_super) {
         this.realizarVerificacionesPreAnimacion();
         this.receptor.detenerAnimacion(); // Porque hace quilombo
         this.animacionAnterior = this.receptor.nombreAnimacionActual();
-        this.receptor.cargarAnimacion(this.nombreAnimacion());
+        if (this.hayQueAnimar)
+            this.receptor.cargarAnimacion(this.nombreAnimacion());
     };
     ComportamientoAnimado.prototype.configuracionFinal = function () {
         this.receptor.animar();
@@ -1051,34 +1103,6 @@ var Direct = (function () {
             y: point.y + (this.versor.y * distance) };
     };
     return Direct;
-})();
-// Esto es una clara chanchada. No sé cómo usar el Error original desde Typescript
-var ActividadError = (function () {
-    function ActividadError(message) {
-        this.message = message || "";
-    }
-    ;
-    ActividadError.prototype.description = function () {
-        return this.message;
-    };
-    return ActividadError;
-})();
-var ProductionErrorHandler = (function () {
-    function ProductionErrorHandler(escena) {
-        this.escena = escena;
-    }
-    ProductionErrorHandler.prototype.handle = function (e) {
-        this.escena.automata.decir(e.description());
-        this.escena.pausar();
-        if (parent) {
-            var mensaje = {
-                tipo: "errorDeActividad",
-                detalle: e.description()
-            };
-            parent.postMessage(mensaje, window.location.origin);
-        }
-    };
-    return ProductionErrorHandler;
 })();
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
@@ -4262,6 +4286,18 @@ var InstalandoJuegos = (function (_super) {
     };
     return InstalandoJuegos;
 })(EscenaActividad);
+var PrenderCompuParaInstalar = (function (_super) {
+    __extends(PrenderCompuParaInstalar, _super);
+    function PrenderCompuParaInstalar() {
+        _super.apply(this, arguments);
+    }
+    PrenderCompuParaInstalar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return !_this.objetoTocado().yaFuePrendida; }, "Esta compu ya la prendiste antes"));
+    };
+    return PrenderCompuParaInstalar;
+})(DesencadenarAnimacionSiColisiona);
 var ApagarPorEtiqueta = (function (_super) {
     __extends(ApagarPorEtiqueta, _super);
     function ApagarPorEtiqueta() {
@@ -5141,7 +5177,7 @@ var TresNaranjas = (function (_super) {
         this.objetos.push(objeto);
     };
     TresNaranjas.prototype.estaResueltoElProblema = function () {
-        return this.contarActoresConEtiqueta('NaranjaAnimada') == 0;
+        return this.contarActoresConEtiqueta('NaranjaAnimada') == 0 && this.automata.estaEnCasilla(null, 3);
     };
     return TresNaranjas;
 })(EscenaActividad);
