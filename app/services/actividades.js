@@ -65,6 +65,7 @@ import Actividad from 'pilas-engine-bloques/actividades/actividad';
 
 
 export default Ember.Service.extend({
+  blocksGallery: Ember.inject.service(),
 
   obtenerPorNombre(nombre) {
 
@@ -108,6 +109,7 @@ export default Ember.Service.extend({
     actividades = actividades.concat(actividadesDibujandoFiguras);
 
     var actividad = actividades.findBy('id', nombre);
+    this.get('blocksGallery').start();
 
     if (!actividad) {
       throw new Error(`No se encuentra la actividad de nombre ${nombre}`);

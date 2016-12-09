@@ -20,6 +20,7 @@ comandos:
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
 	@echo "    ${G}compilar_web${N}    Genera la aplicación para la versión web (desde un iframe)."
 	@echo "    ${G}test_travis${N}     Ejecuta las pruebas como esperamos en travis (en paralelo)."
+	@echo "    ${G}actualizar_imagenes${N}  Actualiza imagenes como iconos."
 	@echo ""
 	@echo ""
 	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
@@ -124,6 +125,8 @@ _compilar_electron_win32:
 	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
 
+actualizar_imagenes:
+	cd scripts; python generarListaImagenes.py
 
 test_travis:
 	time ember exam --split=10 --parallel --random

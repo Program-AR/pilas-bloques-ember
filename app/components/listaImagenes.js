@@ -118,7 +118,6 @@ export default [
     "icono.carbon.png",
     "icono.cerrarOjos.png",
     "icono.cofre.png",
-    "icono.computadora.png",
     "icono.culpable.png",
     "icono.empezar.fiesta.png",
     "icono.espada.png",

@@ -24,7 +24,7 @@ var Actividad = Ember.Object.extend({
     this.set('puedeDuplicar', actividad.puedeDuplicar);
     this.set('esDeExploracion', actividad.esDeExploracion);
     this.setColours();
-    this.pisar_bloques_blockly();
+    //this.pisar_bloques_blockly();
   },
 
 /*
@@ -36,6 +36,7 @@ var Actividad = Ember.Object.extend({
   },
   */
 
+  /*
   obtenerLenguaje() {
     var act = this.get('actividad');
     var leng = Lenguaje.create();
@@ -44,6 +45,9 @@ var Actividad = Ember.Object.extend({
 
     return leng.build();
   },
+  */
+
+  /*
 
   bloques_iniciales() {
     return [AlEmpezar];
@@ -55,6 +59,10 @@ var Actividad = Ember.Object.extend({
     });
   },
 
+  */
+
+  /*
+
   pisar_bloques_blockly() {
     CallReturn.create().registrar_en_blockly();
     CallNoReturn.create().registrar_en_blockly();
@@ -64,6 +72,7 @@ var Actividad = Ember.Object.extend({
     VariableLocalGet.create().registrar_en_blockly();
     VariableLocalSet.create().registrar_en_blockly();
   },
+  */
 
   usa_procedimientos() {
     return this.get('actividad').bloques.indexOf(Procedimiento) > -1;
@@ -137,12 +146,12 @@ var Actividad = Ember.Object.extend({
     return xml2string(codigo);
   },
 
-  cargarCodigoDesdeStringXML(codigo) {
-    var workspace = Blockly.getMainWorkspace();
-    workspace.clear();
-    var xml = Blockly.Xml.textToDom(codigo);
-    Blockly.Xml.domToWorkspace(xml, workspace);
-  },
+  //  cargarCodigoDesdeStringXML(codigo) {
+  //    var workspace = Blockly.getMainWorkspace();
+  //    workspace.clear();
+  //    var xml = Blockly.Xml.textToDom(codigo);
+  //    Blockly.Xml.domToWorkspace(xml, workspace);
+  //  },
 
   debeFelicitarse(){
     return (!this.get('esDeExploracion'));

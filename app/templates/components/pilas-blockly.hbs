@@ -51,13 +51,16 @@
           <div class="contenedor-para-componente-blocky">
             {{ember-blockly
               media="blockly-package/media/"
-              blocks=blockly_toolbox workspace=blockly_workspace
-              withZoom=true withTrash=true
+              blocks=blockly_toolbox
+              workspace=blockly_initial_workspace
+              withZoom=true
+              withTrash=true
               comments=blockly_comments
               disable=blockly_disable
               duplicate=blockly_duplicate
               help=false
               disableBlock=false
+              showCode=true
               comment=false
             }}
           </div>

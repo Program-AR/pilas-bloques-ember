@@ -404,6 +404,8 @@ export default [
     enunciado: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.',
     consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
     actividad: null,
+    deshabilitado: false,
+    bloques: ['PrenderCompu'],
   },
   {
     id: 133,

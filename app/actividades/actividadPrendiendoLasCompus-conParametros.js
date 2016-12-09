@@ -17,7 +17,14 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
+  /*
+  DEPRECATED
   bloques: [ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA, Procedimiento,
     Repetir, Si, Sino, Hasta, PrenderCompu, EstoyEnEsquina,
     Numero, OpAritmetica],
+
+ ]
+
+  */
+
 };

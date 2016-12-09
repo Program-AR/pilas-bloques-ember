@@ -21,23 +21,25 @@ export default Ember.Component.extend({
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
   //browser: Ember.inject.service(),
+  bloques: [],
 
   anterior_ancho: -1,
   anterior_alto: -1,
 
-  blockly_toolbox:    [ {
+  blockly_toolbox: [ {
       category: '...',
       blocks: []
   }],
 
-  blockly_workspace: Ember.computed(function() {
-
-    let workspace_inicial = `
+  blockly_initial_workspace: `pepepe
       <xml xmlns="http://www.w3.org/1999/xhtml">
-        <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
+        <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="100" y="100">
         </block>
       </xml>';
-    `;
+  `,
+
+  /*
+    ;
 
     if (this.get('codigo')) {
       return atob(this.get('codigo'));
@@ -46,6 +48,7 @@ export default Ember.Component.extend({
     }
 
   }),
+  */
 
 
   inyectarRedimensionado: Ember.on('init', function() {
@@ -66,14 +69,14 @@ export default Ember.Component.extend({
       return null;
     }
 
-    this.get('actividad').crear_bloques_iniciales();
+    //this.get('actividad').crear_bloques_iniciales();
 
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
 
 
     Ember.run.scheduleOnce('afterRender', () => {
-      this.set('blockly_toolbox', this.get('actividad').obtenerLenguaje());
+      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.get('bloques')));
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
@@ -81,10 +84,12 @@ export default Ember.Component.extend({
 
 
     if (this.get("persistirSolucionEnURL")) {
+      /*
       Blockly.getMainWorkspace().addChangeListener(() => {
         this.guardarEnURL();
         this.generarCodigoTemporal();
       });
+      */
     }
 
     if (this.get("debeMostrarFinDeDesafio")) {
@@ -98,6 +103,21 @@ export default Ember.Component.extend({
     // this.observarCambiosEnBlocky();
 
     $(window).trigger('resize');
+  },
+
+  obtenerToolboxDesdeListaDeBloques(bloques) {
+    console.log(bloques);
+
+    if (bloques === undefined) {
+      throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
+    }
+
+    return [
+      {
+        category: 'bloques',
+        blocks: bloques,
+      }
+    ];
   },
 
   guardarEnURL() {

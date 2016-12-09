@@ -10,7 +10,7 @@ module.exports = function(environment) {
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     cursoBackendURL: null,
-    consultarVersion: true,
+    consultarVersion: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     EmberENV: {
       EXTEND_PROTOTYPES: {
