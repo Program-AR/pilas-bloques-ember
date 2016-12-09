@@ -21,7 +21,17 @@ export default Ember.Service.extend({
       comportamiento: 'PrenderCompuParaInstalar',
       argumentos: `{'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idTransicion': 'prender', 'animacionColisionado': 'prendida', 'nombreAnimacion': 'escribir'}`,
     });
+
+    blockly.createCustomBlockWithHelper('ApretarBoton', {
+      descripcion: 'Apretar botón',
+      icono: 'iconos.botonRojo.png',
+
+      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
+    });
+
   },
+
 
 
   _definirBloqueAlIniciar() {

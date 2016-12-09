@@ -8,7 +8,8 @@ export default [
                'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
     consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
     escena: 'AlienInicial',
-    actividad: null   /* Se carga desde un hook en la ruta desafío. */
+    actividad: null,   /* Se carga desde un hook en la ruta desafío. */
+    bloques: ['ApretarBoton']
   },
   {
     id: 2,

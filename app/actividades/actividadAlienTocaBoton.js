@@ -3,13 +3,16 @@ import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula'
 
 var {IrDerecha} = direcciones;
 
-var ApretarBoton = AccionBuilder.build({
-  descripcion: 'Apretar botón',
-  id: 'ApretarBoton',
-  icono: 'iconos.botonRojo.png',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
-});
+
+// DEPRECATED
+// var ApretarBoton = AccionBuilder.build({
+//   descripcion: 'Apretar botón',
+//   id: 'ApretarBoton',
+//   icono: 'iconos.botonRojo.png',
+//   comportamiento: 'DesencadenarAnimacionSiColisiona',
+//   argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
+// });
+
 
 var actividadAlienTocaBoton = {
   nombre: 'El alien toca el botón',
@@ -25,7 +28,8 @@ var actividadAlienTocaBoton = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [IrDerecha, ApretarBoton],
+  // DEPRECATED
+  // bloques: [IrDerecha, ApretarBoton],
 };
 
 export default actividadAlienTocaBoton;
