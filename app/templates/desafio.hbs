@@ -1,8 +1,8 @@
 {{pilas-editor
   pilas=pilas
   model=model
-  onReady="cuandoCargaPilas"
   codigo=codigo
-  codigoJavascript=codigoJavascript
+  onReady=(action 'cuandoCargaPilas')
   debeMostrarFinDeDesafio=true
+  onChangeWorkspace=(action 'onChangeWorkspace')
 }}

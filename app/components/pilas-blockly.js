@@ -15,6 +15,7 @@ export default Ember.Component.extend({
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: true,
   debeMostrarFinDeDesafio: false,
+  codigo: null,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -31,7 +32,7 @@ export default Ember.Component.extend({
       blocks: []
   }],
 
-  blockly_initial_workspace: `
+  initial_workspace: `
       <xml xmlns="http://www.w3.org/1999/xhtml">
         <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
         </block>
@@ -80,14 +81,24 @@ export default Ember.Component.extend({
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+
+      if (this.get('codigo')) {
+        let codigoSerializado = this.get('codigo');
+        let codigoXML = atob(codigoSerializado);
+
+        this.set('initial_workspace', codigoXML);
+      }
+
     });
 
 
     if (this.get("persistirSolucionEnURL")) {
+      /*
       Blockly.getMainWorkspace().addChangeListener(() => {
         this.guardarEnURL();
         this.generarCodigoTemporal();
       });
+      */
     }
 
     if (this.get("debeMostrarFinDeDesafio")) {
@@ -100,11 +111,11 @@ export default Ember.Component.extend({
     // this.cargar_codigo_desde_el_modelo();
     // this.observarCambiosEnBlocky();
 
+
     $(window).trigger('resize');
   },
 
   obtenerToolboxDesdeListaDeBloques(bloques) {
-    console.log(bloques);
 
     if (bloques === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
@@ -118,15 +129,7 @@ export default Ember.Component.extend({
     ];
   },
 
-  guardarEnURL() {
-    let codigo = this.obtener_codigo_en_texto();
-    this.set("codigo", btoa(codigo));
-  },
 
-  generarCodigoTemporal() {
-    var codigoJavascript = this.get('actividad').generarCodigo();
-    this.set("codigoJavascript", codigoJavascript);
-  },
 
   cuandoTerminaEjecucion() {
     if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()){
@@ -169,11 +172,6 @@ export default Ember.Component.extend({
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
     }
-  },
-
-  obtener_codigo_en_texto() {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-    return Blockly.Xml.domToText(xml);
   },
 
   /*

@@ -4,10 +4,15 @@ export default Ember.Controller.extend({
   pilas: Ember.inject.service(),
   queryParams: ['codigo'],
   codigo: null,
-  codigoJavascript: '',
 
   actions: {
+
     cuandoCargaPilas(/*pilas*/) {
+    },
+
+    onChangeWorkspace(codigoDelWorkspace) {
+      this.set("codigo", btoa(codigoDelWorkspace));
     }
+
   }
 });

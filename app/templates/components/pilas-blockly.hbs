@@ -48,7 +48,7 @@
             {{ember-blockly
               mediaFolder="blockly-package/media/"
               blocks=blockly_toolbox
-              workspace=blockly_initial_workspace
+              workspace=initial_workspace
               withZoom=true
               withTrash=true
               comments=blockly_comments
@@ -58,6 +58,7 @@
               disableBlock=false
               showCode=true
               comment=false
+              onChangeWorkspace=(action onChangeWorkspace)
             }}
           </div>
 

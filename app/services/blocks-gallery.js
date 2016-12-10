@@ -98,8 +98,8 @@ export default Ember.Service.extend({
     Blockly.MyLanguage['al_empezar_a_ejecutar'] = function(block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
       let codigo = `
-      out_mensajes_configurados();
-      ${programa}`;
+        ${programa}
+      `;
 
       return codigo;
     };
