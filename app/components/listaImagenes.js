@@ -139,7 +139,6 @@ export default [
     "icono.unicornio.png",
     "iconos.futbolInicio.png",
     "iconos.lamparita.png",
-    "iconos.manzana.png",
     "iconos.pelota.png",
     "instalador.png",
     "invisible.png",

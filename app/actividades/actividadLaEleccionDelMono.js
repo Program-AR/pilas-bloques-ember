@@ -9,14 +9,6 @@ var Avanzar = AccionBuilder.build({
   argumentos: '{}',
 });
 
-var ComerManzana = AccionBuilder.build({
-  descripcion: 'Comer manzana',
-  id: 'ComerManzana',
-  icono: 'iconos.manzana.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
-});
-
 var TocandoManzana = AccionBuilder.buildSensor({
   descripcion: 'Hay una manzana acá',
   id: 'tocandoManzana',

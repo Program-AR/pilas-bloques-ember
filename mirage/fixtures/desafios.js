@@ -40,6 +40,7 @@ export default [
     consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
     escena: 'ElMarcianoEnElDesierto',
     actividad: null,
+    bloques: ['ComerManzana']
   },
   {
     id: 5,
@@ -151,7 +152,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     actividad: null,
-    bloques: ['ComerBanana']
+    bloques: ['ComerBanana', 'ComerManzana']
   },
   {
     id: 15,
