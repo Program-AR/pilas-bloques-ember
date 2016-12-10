@@ -1,0 +1,140 @@
+.blocklyDisabled text {
+  transform: translate(-10px, 4px) !important;
+  cursor: default !important;
+}
+
+g.blocklyDisabled path.blocklyPath {
+  fill: #000 !important;
+  transform: translateX(-25px) !important;
+  cursor: default !important;
+}
+
+pre {
+  border: 1px solid gray;
+  padding: 10px;
+}
+
+.ember-blockly-container {
+  width: 100%;
+  min-height: 400px;
+  height: 100%;
+}
+
+.flexbox-container {
+  display: flex;
+}
+
+.flexbox-direction-row {
+  flex-direction: row;
+}
+
+.flexbox-direction-column {
+  flex-direction: column;
+}
+
+.column {
+  flex-grow: 1;
+  border: 1px solid black;
+  text-align:center;
+}
+
+.yellow {
+  background-color: green;
+  color: white;
+}
+
+.red {
+  background-color: red;
+}
+
+.blue {
+  background-color: blue;
+  color: white;
+}
+
+table {
+  border: 1px solid black;
+  margin-top: 1em;
+}
+
+table th {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #bbb;
+}
+
+table td {
+  border: 1px solid #bbb;
+  padding: 10px;
+}
+
+.active {
+  background-color: #2196f3 !important;
+  color: white !important;
+}
+
+
+.c-button {
+  line-height: 3 !important;
+}
+
+
+.list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 200px;
+  border: 1px solid gray;
+}
+
+.list li {
+  cursor: pointer;
+  margin: 4px;
+}
+
+.list li:hover {
+  background-color: yellow;
+}
+
+.code-preview {
+  position: absolute;
+  left: 350px;
+  height: 135px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  right: 20px;
+
+}
+
+.code-preview span {
+  color: rgba(0, 0, 255, 0.43)
+}
+
+.core-preview-in-blockly {
+  z-index: 8;
+  position: relative;
+  background-color: rgba(175, 175, 175, 0.14);
+  border: 1px solid rgba(128, 128, 128, 0.1);
+  margin-left: 50%;
+}
+
+.ember-blockly-list {
+  height: 300px;
+  overflow: scroll;
+  border: 1px solid gray;
+  margin-top: 5px;
+}
+
+.ember-blockly-list-item {
+  border: 1px solid #eee;
+  padding: 2px;
+  padding-left: 5px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+.ember-blockly-list-item.selected {
+  background-color: #d6e8ff;
+  border: 1px solid #a3b1c3;
+}
