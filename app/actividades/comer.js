@@ -1,14 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder} = bloques;
 
-var ComerBanana = AccionBuilder.build({
-  descripcion: 'Comer banana',
-  id: 'ComerBanana',
-  icono: 'iconos.banana.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
-});
-
 var ComerManzana = AccionBuilder.build({
   descripcion: 'Comer manzana',
   id: 'ComerManzana',
@@ -34,4 +26,4 @@ var ComerNaranja = AccionBuilder.build({
 });
 
 
-export {ComerBanana,ComerManzana,ComerQueso,ComerNaranja};
+export {ComerManzana,ComerQueso,ComerNaranja};

@@ -137,7 +137,6 @@ export default [
     "icono.sombrero.png",
     "icono.soniar.png",
     "icono.unicornio.png",
-    "iconos.banana.png",
     "iconos.futbolInicio.png",
     "iconos.lamparita.png",
     "iconos.manzana.png",

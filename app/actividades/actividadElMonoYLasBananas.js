@@ -9,14 +9,6 @@ var Avanzar = AccionBuilder.build({
   argumentos: '{velocidad: 25}',
 });
 
-var ComerBanana = AccionBuilder.build({
-  id: 'Comerbanana',
-  descripcion: 'Comer banana',
-  icono: 'iconos.banana.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana" }',
-});
-
 var TocandoBanana = AccionBuilder.buildSensor({
   id: 'Tocandobanana',
   descripcion: 'Hay banana acá',
@@ -40,5 +32,5 @@ export default {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, ComerBanana,Avanzar, TocandoBanana, Repetir,Si],
+//  bloques: [Procedimiento, ComerBanana,Avanzar, TocandoBanana, Repetir,Si],
 };

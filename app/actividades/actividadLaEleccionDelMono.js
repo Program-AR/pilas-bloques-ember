@@ -17,14 +17,6 @@ var ComerManzana = AccionBuilder.build({
   argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
 });
 
-var ComerBanana = AccionBuilder.build({
-  descripcion: 'Comer banana',
-  id: 'ComerBanana',
-  icono: 'iconos.banana.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
-});
-
 var TocandoManzana = AccionBuilder.buildSensor({
   descripcion: 'Hay una manzana acá',
   id: 'tocandoManzana',
@@ -56,7 +48,7 @@ var actividadLaEleccionDelMono = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, ComerManzana,ComerBanana,Avanzar, TocandoManzana,TocandoBanana, Repetir,Si,Sino],
+  //bloques: [Procedimiento, ComerManzana,ComerBanana,Avanzar, TocandoManzana,TocandoBanana, Repetir,Si,Sino],
 };
 
 export default actividadLaEleccionDelMono;

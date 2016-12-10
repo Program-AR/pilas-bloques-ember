@@ -37,6 +37,13 @@ export default Ember.Service.extend({
       comportamiento: 'EncenderPorEtiqueta',
       argumentos: "{'etiqueta':'Luz'}"
     });
+
+    blockly.createCustomBlockWithHelper('ComerBanana', {
+      descripcion: 'Comer banana',
+      icono: 'iconos.banana.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
+    });
   },
 
   _definirBloquesAlias() {

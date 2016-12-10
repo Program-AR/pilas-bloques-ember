@@ -137,6 +137,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     actividad: null,
+    bloques: ['ComerBanana']
   },
   {
     id: 14,
@@ -150,6 +151,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     actividad: null,
+    bloques: ['ComerBanana']
   },
   {
     id: 15,
@@ -291,6 +293,7 @@ export default [
     enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!',
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Avanzar 2 casillas", "Avanzar 3 casillas" y "Avanzar 4 casillas", podemos reemplazar a los 3 por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Avanzar [cantidad] casillas".',
     actividad: null,
+    bloques: ['ComerBanana']
   },
   {
     id: 29,

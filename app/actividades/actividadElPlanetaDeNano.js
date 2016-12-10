@@ -2,13 +2,6 @@ import {AccionBuilder, Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engi
 import {IrDerecha, IrArriba} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
 import {Numero} from 'pilas-engine-bloques/actividades/expresiones';
 
-var ComerBanana = AccionBuilder.build({
-  descripcion: 'Comer Banana',
-  icono: 'iconos.banana.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{etiqueta:"BananaAnimada"}',
-});
-
 var VolverAlBordeIzquierdo = AccionBuilder.build({
   descripcion: 'Volver al borde izquierdo',
   icono: '../../iconos/izquierda.png',
@@ -28,5 +21,5 @@ export default {
   puedeDuplicar: false,
 
   usaParametros: true,
-  bloques: [Procedimiento,IrDerecha,IrArriba,VolverAlBordeIzquierdo,ComerBanana,Repetir,Si,Sino,Hasta,Numero],
+  //bloques: [Procedimiento,IrDerecha,IrArriba,VolverAlBordeIzquierdo,ComerBanana,Repetir,Si,Sino,Hasta,Numero],
 };
