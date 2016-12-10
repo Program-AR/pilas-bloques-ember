@@ -31,9 +31,9 @@ export default Ember.Component.extend({
       blocks: []
   }],
 
-  blockly_initial_workspace: `pepepe
+  blockly_initial_workspace: `
       <xml xmlns="http://www.w3.org/1999/xhtml">
-        <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="100" y="100">
+        <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
         </block>
       </xml>';
   `,
@@ -84,12 +84,10 @@ export default Ember.Component.extend({
 
 
     if (this.get("persistirSolucionEnURL")) {
-      /*
       Blockly.getMainWorkspace().addChangeListener(() => {
         this.guardarEnURL();
         this.generarCodigoTemporal();
       });
-      */
     }
 
     if (this.get("debeMostrarFinDeDesafio")) {
