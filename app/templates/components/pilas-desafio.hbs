@@ -26,7 +26,9 @@
 
 {{else}}
 
-  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
+  {{#if model.nombre}}
+    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
+  {{/if}}
 
   <div class="ribbon right gray semi-transparente">
     <a>Falta migrar</a>
