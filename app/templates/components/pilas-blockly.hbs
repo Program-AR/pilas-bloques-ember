@@ -4,10 +4,6 @@
 
           <div class='pilas-blockly-botones'>
 
-            {{#if mostrarAlternar}}
-              <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
-            {{/if}}
-
             {{#if ejecutando}}
                 <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
             {{else}}
