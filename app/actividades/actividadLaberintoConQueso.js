@@ -1,13 +1,3 @@
-
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import tocando from 'pilas-engine-bloques/actividades/tocando';
-import comer from 'pilas-engine-bloques/actividades/comer';
-var {Repetir,Si,Sino,Procedimiento,Hasta} = bloques;
-var {IrDerecha,IrAbajo} = direcciones;
-var {TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso} = tocando;
-var {ComerQueso} = comer;
-
 var actividadLaberintoConQueso = {
   // DEPRECATED: nombre: 'Laberinto con queso',
   id: 'LaberintoConQueso',
@@ -20,7 +10,7 @@ var actividadLaberintoConQueso = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, IrDerecha,IrAbajo,ComerQueso, Repetir,Si,Sino,Hasta, TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso],
+  //bloques: [Procedimiento, IrDerecha,IrAbajo,ComerQueso, Repetir,Si,Sino,Hasta, TocandoAbajo,TocandoDerecha,TocandoFinCamino,TocandoQueso],
 };
 
 export default actividadLaberintoConQueso;

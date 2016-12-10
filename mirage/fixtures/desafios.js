@@ -222,6 +222,7 @@ export default [
     consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
     escena: 'LaberintoConQueso',
     actividad: null,
+    bloques: ['ComerQueso']
   },
   {
     id: 22,

@@ -168,7 +168,6 @@ export default [
     "portada.nano.png",
     "princesa.png",
     "principe.png",
-    "queso.png",
     "quesoAnimado.png",
     "raton.png",
     "ratonAnimado.png",
