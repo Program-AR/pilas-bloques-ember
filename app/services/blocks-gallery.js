@@ -9,6 +9,7 @@ export default Ember.Service.extend({
     this._generarLenguaje();
     this._definirBloqueAlIniciar();
     this._definirBloques();
+    this._definirBloquesAlias();
   },
 
   _definirBloques() {
@@ -38,7 +39,11 @@ export default Ember.Service.extend({
     });
   },
 
+  _definirBloquesAlias() {
+    let blockly = this.get('blockly');
 
+    blockly.createAlias('Si', 'controls_if');
+  },
 
   _definirBloqueAlIniciar() {
 
