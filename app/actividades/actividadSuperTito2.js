@@ -1,14 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Repetir, Si, Sino, Procedimiento,Hasta} = bloques;
-var {IrAbajo} = direcciones;
-var {EncenderLuz,TocandoLuz,TocandoFinal} = bloquesTito;
-
-
-
-
-
 var actividadSuperTito2 = {
   // DEPRECATED: nombre: 'Súper Tito 2',
   id: 'SuperTito2',
@@ -18,9 +7,8 @@ var actividadSuperTito2 = {
   // DEPRECATED: escena: SuperTito2,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
-  puedeDuplicar: false,
-
-  bloques: [Procedimiento, TocandoFinal,TocandoLuz, EncenderLuz,IrAbajo, Repetir,Si,Sino,Hasta],
+  puedeDuplicar: false
+  //bloques: [Procedimiento, TocandoFinal,TocandoLuz, EncenderLuz,IrAbajo, Repetir,Si,Sino,Hasta],
 };
 
 export default actividadSuperTito2;

@@ -30,6 +30,12 @@ export default Ember.Service.extend({
       argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
     });
 
+    blockly.createCustomBlockWithHelper('EncenderLuz', {
+      descripcion: 'Prender la luz',
+      icono: 'icono.Lamparita.png',
+      comportamiento: 'EncenderPorEtiqueta',
+      argumentos: "{'etiqueta':'Luz'}"
+    });
   },
 
 

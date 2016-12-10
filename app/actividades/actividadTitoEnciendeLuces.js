@@ -1,11 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import bloquesTito from 'pilas-engine-bloques/actividades/bloquesTito';
-var {Repetir, Procedimiento} = bloques;
-var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
-var {EncenderLuz} = bloquesTito;
-
-
 var actividadTitoEnciendeLuces = {
   // DEPRECATED: nombre: 'Tito enciende las luces',
   id: 'TitoEnciendeLuces',
@@ -17,9 +9,8 @@ var actividadTitoEnciendeLuces = {
   // DEPRECATED: escena: TitoEnciendeLuces,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
-  puedeDuplicar: false,
-
-  bloques: [Procedimiento, Repetir, EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
+  puedeDuplicar: false
+  //bloques: [Procedimiento, Repetir, EncenderLuz,IrDerecha,IrArriba,IrAbajo,IrIzquierda],
 };
 
 export default actividadTitoEnciendeLuces;

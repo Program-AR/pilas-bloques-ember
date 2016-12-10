@@ -51,6 +51,7 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 6,
@@ -176,6 +177,7 @@ export default [
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     escena: 'TitoRecargado',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 18,
@@ -195,6 +197,7 @@ export default [
     consignaInicial: 'Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!',
     escena: 'SuperTito1',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 20,
@@ -205,6 +208,7 @@ export default [
     consignaInicial: 'El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".',
     escena: 'SuperTito2',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 21,
@@ -416,6 +420,7 @@ export default [
     escena: 'TitoCuadrado',
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 134,

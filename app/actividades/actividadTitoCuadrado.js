@@ -1,8 +1,3 @@
-import {Repetir, Si, Sino, Hasta, Procedimiento} from 'pilas-engine-bloques/actividades/bloques';
-import {ParaLaDerecha, ParaLaIzquierda,ParaArriba, ParaAbajo, MoverA} from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import {EncenderLuz, TocandoLuz} from 'pilas-engine-bloques/actividades/bloquesTito';
-import {Numero, OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones';
-
 export default {
   // DEPRECATED: nombre: 'Tito cuadrado',
   id: 'TitoCuadrado',
@@ -11,9 +6,9 @@ export default {
   // DEPRECATED: escena: TitoCuadrado,  // jshint ignore:line
   puedeComentar: false,
   puedeDesactivar: false,
-  puedeDuplicar: false,
+  puedeDuplicar: false
 
-  bloques: [ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
+/*  bloques: [ParaLaDerecha, ParaLaIzquierda, ParaArriba, ParaAbajo, MoverA,
             Procedimiento, Repetir, Si, Sino, Hasta, TocandoLuz, EncenderLuz,
-            Numero, OpAritmetica],
+            Numero, OpAritmetica],*/
 };

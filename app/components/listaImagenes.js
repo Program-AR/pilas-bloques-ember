@@ -109,7 +109,6 @@ export default [
     "icono.DibujarLinea.png",
     "icono.FogataApagada.png",
     "icono.Girar.png",
-    "icono.Lamparita.png",
     "icono.LamparitaApagada.png",
     "icono.abrirOjos.png",
     "icono.acostarse.png",

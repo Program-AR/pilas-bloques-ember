@@ -1,14 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {AccionBuilder} = bloques;
 
-var EncenderLuz = AccionBuilder.build({
-  descripcion: 'Prender la luz',
-  id: 'EncenderLuz',
-  icono: 'icono.Lamparita.png',
-  comportamiento: 'EncenderPorEtiqueta',
-  argumentos: "{'etiqueta':'Luz'}",
-});
-
 var TocandoLuz = AccionBuilder.buildSensor({
   descripcion: 'Hay lamparita acá',
   id: 'tocandoLuz',
@@ -24,4 +16,4 @@ var TocandoFinal = AccionBuilder.buildSensor({
   funcionSensor: 'estoyUltimaFila()',
 });
 
-export {EncenderLuz,TocandoLuz,TocandoFinal};
+export {TocandoLuz,TocandoFinal};
