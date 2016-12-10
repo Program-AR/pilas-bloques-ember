@@ -9,6 +9,9 @@ export default function() {
   this.get('/libros');
   this.get('/libros/:id');
 
+	// Deshabilita los console log que emite mirage.
+	this.logging = false;
+
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
   // this.namespace = '';    // make this `api`, for example, if your API is namespaced
   this.timing = 500;      // delay for each request, automatically set to 0 during testing
