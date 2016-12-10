@@ -58,8 +58,15 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'QuesoAnimado\'}',
     });
+
+    blockly.createCustomBlockWithHelper('ComerNaranja', {
+      descripcion: 'Comer naranja',
+      icono: 'naranja.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
+    });
   },
-  
+
   _definirBloquesAlias() {
     let blockly = this.get('blockly');
 

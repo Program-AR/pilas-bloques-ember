@@ -1,12 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-import comer from 'pilas-engine-bloques/actividades/comer';
-import tocando from 'pilas-engine-bloques/actividades/tocando';
-
-var {Repetir,Si,Sino,Procedimiento} = bloques;
-var {IrDerecha} = direcciones;
-var {ComerNaranja} = comer;
-var {TocandoNaranja} = tocando;
 var actividadTresNaranjas = {
   // DEPRECATED: nombre: 'Tres naranjas',
   id: 'TresNaranjas',
@@ -17,6 +8,6 @@ var actividadTresNaranjas = {
   puedeDesactivar: false,
   puedeDuplicar: false,
 
-  bloques: [Procedimiento, IrDerecha,ComerNaranja, Repetir,Si,Sino, TocandoNaranja]
+//  bloques: [Procedimiento, IrDerecha,ComerNaranja, Repetir,Si,Sino, TocandoNaranja]
 };
 export default actividadTresNaranjas;
