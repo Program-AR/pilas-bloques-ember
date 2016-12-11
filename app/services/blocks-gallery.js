@@ -63,6 +63,14 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
     });
+
+    blockly.createCustomBlockWithHelper('IrDerecha', {
+      descripcion: 'Mover a la derecha',
+      icono: 'derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{}',
+    });
+
   },
 
   _definirBloquesAlias() {

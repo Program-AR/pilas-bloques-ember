@@ -1,6 +1,7 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, AccionBuilder} = bloques;
 
+/* DEPRECATED */
 var IrDerecha = AccionBuilder.build({
   descripcion: 'Mover a la derecha',
   id: 'MoverACasillaDerecha',
