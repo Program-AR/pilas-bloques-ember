@@ -1,13 +1,8 @@
 {{pilas-editor
   pilas=pilas
-  debug=debug
   model=model
-  onReady="cuandoCargaPilas"
   codigo=codigo
-  codigoJavascript=codigoJavascript
+  onReady=(action 'cuandoCargaPilas')
   debeMostrarFinDeDesafio=true
-
-  panelCanvasVisible=panelCanvasVisible
-  panelBlocklyVisible=panelBlocklyVisible
-  panelCodigoVisible=panelCodigoVisible
+  onChangeWorkspace=(action 'onChangeWorkspace')
 }}

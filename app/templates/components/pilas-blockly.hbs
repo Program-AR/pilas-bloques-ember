@@ -4,10 +4,6 @@
 
           <div class='pilas-blockly-botones'>
 
-            {{#if mostrarAlternar}}
-              <button disabled class='btn btn-info' {{action 'alternar'}}><i class='fa fa-arrows-h'></i> Alterar</button>
-            {{/if}}
-
             {{#if ejecutando}}
                 <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
             {{else}}
@@ -50,9 +46,9 @@
 
           <div class="contenedor-para-componente-blocky">
             {{ember-blockly
-              media="blockly-package/media/"
+              mediaFolder="blockly-package/media/"
               blocks=blockly_toolbox
-              workspace=blockly_initial_workspace
+              workspace=initial_workspace
               withZoom=true
               withTrash=true
               comments=blockly_comments
@@ -60,8 +56,10 @@
               duplicate=blockly_duplicate
               help=false
               disableBlock=false
+              javascriptCode=javascriptCode
               showCode=true
               comment=false
+              onChangeWorkspace=(action onChangeWorkspace)
             }}
           </div>
 

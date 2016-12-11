@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['contenedor-pilas-editor'],
   persistirSolucionEnURL: true,
-  ningunPanelVisible: Ember.computed.none('panelCanvasVisible', 'panelBlocklyVisible', 'panelCodigoVisible'),
 
   actions: {
     onReady(pilas) {

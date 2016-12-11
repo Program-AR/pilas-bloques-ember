@@ -13,6 +13,8 @@ module.exports = function(defaults) {
     });
 
 app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+    app.import('vendor/acorn_interpreter.js');
+    app.import('vendor/beautify.js');
 
     process.setMaxListeners(1000);
 

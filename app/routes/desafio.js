@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  queryParams: {
+    codigo: {
+      replace: true
+    }
+  },
   pilas: Ember.inject.service(),
   actividades: Ember.inject.service(),
 
@@ -9,5 +14,5 @@ export default Ember.Route.extend({
   afterModel(model) {
     let actividad = this.get("actividades").obtenerPorNombre(model.get('nombre'));
     model.set('actividad', actividad);
-  }
+  },
 });

@@ -146,12 +146,12 @@ var Actividad = Ember.Object.extend({
     return xml2string(codigo);
   },
 
-  //  cargarCodigoDesdeStringXML(codigo) {
-  //    var workspace = Blockly.getMainWorkspace();
-  //    workspace.clear();
-  //    var xml = Blockly.Xml.textToDom(codigo);
-  //    Blockly.Xml.domToWorkspace(xml, workspace);
-  //  },
+  cargarCodigoDesdeStringXML(codigo) {
+    var workspace = Blockly.getMainWorkspace();
+    workspace.clear();
+    var xml = Blockly.Xml.textToDom(codigo);
+    Blockly.Xml.domToWorkspace(xml, workspace);
+  },
 
   debeFelicitarse(){
     return (!this.get('esDeExploracion'));

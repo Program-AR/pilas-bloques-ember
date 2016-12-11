@@ -9,12 +9,14 @@ export default Ember.Component.extend({
   data_observar_blockly: false,
   actividad: null,
   environment: Ember.inject.service(),
+  interpreterFactory: Ember.inject.service(),
   abrirConsignaInicial: false,
   solucion: null,
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: true,
   debeMostrarFinDeDesafio: false,
+  codigo: null,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -31,25 +33,14 @@ export default Ember.Component.extend({
       blocks: []
   }],
 
-  blockly_initial_workspace: `pepepe
+  initial_workspace: `
       <xml xmlns="http://www.w3.org/1999/xhtml">
-        <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="100" y="100">
+        <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
         </block>
       </xml>';
   `,
 
-  /*
-    ;
-
-    if (this.get('codigo')) {
-      return atob(this.get('codigo'));
-    } else {
-      return workspace_inicial;
-    }
-
-  }),
-  */
-
+  javascriptCode: null,
 
   inyectarRedimensionado: Ember.on('init', function() {
 
@@ -69,8 +60,6 @@ export default Ember.Component.extend({
       return null;
     }
 
-    //this.get('actividad').crear_bloques_iniciales();
-
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
 
@@ -80,16 +69,22 @@ export default Ember.Component.extend({
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+
+
+      // Si el código está serializado en la URL, lo intenta colocar en el
+      // workspace.
+      if (this.get('codigo')) {
+        let codigoSerializado = this.get('codigo');
+        let codigoXML = atob(codigoSerializado);
+
+        this.set('initial_workspace', codigoXML);
+      }
+
     });
 
 
     if (this.get("persistirSolucionEnURL")) {
-      /*
-      Blockly.getMainWorkspace().addChangeListener(() => {
-        this.guardarEnURL();
-        this.generarCodigoTemporal();
-      });
-      */
+      // TODO: puede que esto quede en desuso.
     }
 
     if (this.get("debeMostrarFinDeDesafio")) {
@@ -98,36 +93,19 @@ export default Ember.Component.extend({
       });
     }
 
-    // this.set('cola_deshacer', []);
-    // this.cargar_codigo_desde_el_modelo();
-    // this.observarCambiosEnBlocky();
-
     $(window).trigger('resize');
   },
 
   obtenerToolboxDesdeListaDeBloques(bloques) {
-    console.log(bloques);
 
     if (bloques === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
-    return [
-      {
+    return [{
         category: 'bloques',
         blocks: bloques,
-      }
-    ];
-  },
-
-  guardarEnURL() {
-    let codigo = this.obtener_codigo_en_texto();
-    this.set("codigo", btoa(codigo));
-  },
-
-  generarCodigoTemporal() {
-    var codigoJavascript = this.get('actividad').generarCodigo();
-    this.set("codigoJavascript", codigoJavascript);
+    }];
   },
 
   cuandoTerminaEjecucion() {
@@ -141,29 +119,6 @@ export default Ember.Component.extend({
     window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
   },
 
-  /**
-  * Se conecta a los eventos y cambios de estado de blockly para implementar
-  * la funcionalidad de 'deshacer'.
-  */
-  /*
-  observarCambiosEnBlocky() {
-    var f = this.almacenar_cambio.bind(this);
-    var d = Blockly.addChangeListener(f);
-    this.set('data_observar_blockly', d);
-  },
-
-  noMirarCambiosEnBlockly() {
-    if(this.get('data_observar_blockly')) {
-      Blockly.removeChangeListener(this.get('data_observar_blockly'));
-    }
-  },
-
-  almacenar_cambio() {
-    this.get('cola_deshacer').pushObject(this.obtener_codigo_en_texto());
-    console.log("guardar");
-  },
-  */
-
   restaurar_codigo(codigo) {
     var xml = Blockly.Xml.textToDom(codigo);
 
@@ -171,11 +126,6 @@ export default Ember.Component.extend({
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
     }
-  },
-
-  obtener_codigo_en_texto() {
-    var xml = Blockly.Xml.workspaceToDom(Blockly.getMainWorkspace());
-    return Blockly.Xml.domToText(xml);
   },
 
   /*
@@ -189,35 +139,81 @@ export default Ember.Component.extend({
   },
   */
 
+  cuandoEjecutaBloque(bloque) {
+    console.log("Ejecutando bloque " + bloque);
+  },
 
   actions: {
     ejecutar() {
-      window.LoopTrap = 1000;
-      //this.sendAction('reiniciar');
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = 'if (--window.LoopTrap == 0) throw "Infinite loop.";\n';
+      let codigoDesdeWorkspace = this.get('javascriptCode');
+      let factory = this.get('interpreterFactory');
+      let codigoCompleto = js_beautify(`
+        var actor_id = 'demo'; // se asume el actor receptor de la escena.
 
-      var code = this.get('actividad').generarCodigo();
-      //console.log(code);
+        function hacer(id, comportamiento, params) {
+          out_hacer(comportamiento, JSON.stringify(params));
+        }
 
-      Blockly.JavaScript.INFINITE_LOOP_TRAP = null;
+        function main() {
+          ${codigoDesdeWorkspace}
+        }
+
+        main();
+      `);
+
+
+      console.log(codigoCompleto);
+
+      let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
+        this.cuando_ejecuta_bloque(bloque);
+      });
+
+
+      function ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte) {
+
+        return new Ember.RSVP.Promise((success, reject) => {
+
+          function execInterpreterUntilEnd(interpreter) {
+            let running;
+
+            // Si el usuario solicitó terminar el programa deja
+            // de ejecutar el intérprete.
+            if (condicion_de_corte()) {
+              success();
+              return;
+            }
+
+            try {
+              running = interpreter.run();
+            } catch(e) {
+              reject(e);
+            }
+
+            if (running) {
+              setTimeout(execInterpreterUntilEnd, 10, interpreter);
+            } else {
+              success();
+            }
+          }
+
+          execInterpreterUntilEnd(interprete);
+
+        });
+      }
+
 
 
       this.set('ejecutando', true);
-      this.get('pilas').ejecutarCodigoSinReiniciar(code);
 
-      /*
-      Ember.run(() => {
-        try {
-          this.set('ejecutando', true);
-          eval(code);
-          this.sendAction('parar');
-        } catch (e) {
-          console.error(e.stack);
-          alert(e);
-        }
+      let condicion_de_corte = () => {
+        return (! this.get("ejecutando"));
+      };
+
+      let ejecucion = ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte);
+
+      ejecucion.then(() => {
+        this.set('ejecutando', false);
       });
-      */
-
     },
 
     reiniciar() {
@@ -234,12 +230,6 @@ export default Ember.Component.extend({
       this.sendAction('guardar_solucion_en_el_backend', codigo_xml);
     },
 
-    alternar() {
-      //this.sendAction('redimensionar');
-      console.log(this.controllerFor('application'));
-      //.sendAction('redimensionar');
-    },
-
     ver_codigo() {
       let codigo_como_string = this.get('actividad').generarCodigoXMLComoString();
       alert(codigo_como_string);
@@ -253,19 +243,6 @@ export default Ember.Component.extend({
       }
 
     },
-
-    /*
-    deshacer_cambio() {
-      this.noMirarCambiosEnBlockly();
-      this.get('cola_deshacer').popObject();
-      var c =  this.get('cola_deshacer').popObject();
-      if (c) {
-        console.log("deshacer");
-        this.restaurar_codigo(c);
-      }
-      this.observarCambiosEnBlocky();
-    },
-    */
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
