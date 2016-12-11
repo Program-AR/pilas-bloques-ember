@@ -145,6 +145,7 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar() {
+      this.get('pilas').reiniciarEscenaCompleta();
       let codigoDesdeWorkspace = this.get('javascriptCode');
       let factory = this.get('interpreterFactory');
       let codigoCompleto = js_beautify(`
