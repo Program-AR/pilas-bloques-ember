@@ -17,6 +17,7 @@ export default Ember.Component.extend({
   persistirSolucionEnURL: true,
   debeMostrarFinDeDesafio: false,
   codigo: null,
+  highlightedBlock: null, // bloque a resaltar.
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -139,10 +140,6 @@ export default Ember.Component.extend({
   },
   */
 
-  cuandoEjecutaBloque(bloque) {
-    console.log("Ejecutando bloque " + bloque);
-  },
-
   actions: {
     ejecutar() {
       this.get('pilas').reiniciarEscenaCompleta();
@@ -166,7 +163,7 @@ export default Ember.Component.extend({
       console.log(codigoCompleto);
 
       let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
-        this.cuando_ejecuta_bloque(bloque);
+        this.set('highlightedBlock', bloque);
       });
 
 
