@@ -99,6 +99,7 @@ export default Ember.Service.extend(Ember.Evented, {
       };
 
       pilas.ejecutar();
+      this.cambiarFPS(100);
 
     });
   },
