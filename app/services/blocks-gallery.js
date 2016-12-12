@@ -10,10 +10,32 @@ export default Ember.Service.extend({
     this._definirBloquesAlias();
   },
 
+  crearBloqueAccion(nombre, opciones) {
+    let blockly = this.get('blockly');
+    let opcionesObligatorias = ['descripcion',
+                                'icono',
+                                'comportamiento',
+                                'argumentos'];
+
+    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
+    return blockly.createCustomBlockWithHelper(nombre, opciones);
+  },
+
+  /*
+   * Lanza una exception si un diccionario no presenta alguna clave obligatoria.
+   */
+  _validar_opciones_obligatorias(nombre, opciones, listaDeOpcionesObligatorias) {
+    listaDeOpcionesObligatorias.forEach((opcion) => {
+      if (!(opcion in opciones)) {
+        throw new Error(`No se puede crear el bloque ${nombre} porque no se indicó un valor para la opción ${opcion}.`);
+      }
+    });
+  },
+
   _definirBloques() {
     let blockly = this.get('blockly');
 
-    blockly.createCustomBlockWithHelper('PrenderCompu', {
+    this.crearBloqueAccion('PrenderCompu', {
       descripcion: 'Prender compu',
       icono: 'icono.computadora.png',
 
