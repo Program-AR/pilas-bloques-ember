@@ -8,6 +8,7 @@ export default Ember.Service.extend({
     this._definirBloqueAlIniciar();
     this._definirBloques();
     this._definirBloquesAlias();
+    this._definirBloquesSensores();
   },
 
   /*
@@ -42,6 +43,42 @@ export default Ember.Service.extend({
   crearBloqueAlias(nombre, nombreDelBloqueOriginal) {
     let blockly = this.get('blockly');
     blockly.createAlias(nombre, nombreDelBloqueOriginal);
+  },
+
+  /*
+   * Método auxiliar para crear un bloque que sirva como sensor.
+   *
+   * El argumento 'opciones' tiene que definir estas propiedades:
+   *
+   *   - descripcion
+   *   - icono
+   *   - funcionSensor
+   *
+   */
+  crearBloqueSensor(nombre, opciones) {
+    let blockly = this.get('blockly');
+    let opcionesObligatorias = ['descripcion',
+                                'icono',
+                                'funcionSensor'];
+
+    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
+    let descripcion = `¿${opciones.descripcion}?`;
+
+    return blockly.createCustomBlock(nombre, {
+      message0: `%1 ¿${opciones.descripcion}?`,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          type: "field_image",
+          src: `iconos/${opciones.icono}`,
+          width: 16,
+          height: 16,
+          alt: "*"
+        }
+      ],
+      code: `receptor.${opciones.funcionSensor}`
+    });
   },
 
   /*
@@ -118,6 +155,17 @@ export default Ember.Service.extend({
 
   _definirBloquesAlias() {
     this.crearBloqueAlias('Si', 'controls_if');
+  },
+
+  _definirBloquesSensores() {
+
+    this.crearBloqueSensor('TocandoBanana', {
+      id: 'Tocandobanana',
+      descripcion: 'Hay banana acá',
+      icono: 'iconos.banana.png',
+      funcionSensor: 'tocando("BananaAnimada")',
+    });
+
   },
 
   _definirBloqueAlIniciar() {
