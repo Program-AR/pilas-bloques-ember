@@ -10,6 +10,17 @@ export default Ember.Service.extend({
     this._definirBloquesAlias();
   },
 
+  /*
+   * Método auxiliar para crear un bloque acción.
+   *
+   * El argumento 'opciones' tiene que definir estas propiedades:
+   *
+   *   - descripcion
+   *   - icono
+   *   - comportamiento
+   *   - argumentos
+   *
+   */
   crearBloqueAccion(nombre, opciones) {
     let blockly = this.get('blockly');
     let opcionesObligatorias = ['descripcion',
@@ -19,6 +30,18 @@ export default Ember.Service.extend({
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
     return blockly.createCustomBlockWithHelper(nombre, opciones);
+  },
+
+  /*
+   * Método auxiliar para crear un bloque nuevo a partir de otro original.
+   *
+   * Este método sirve para crear bloques como 'Si', 'Repetir' etc... ya que
+   * esos bloques en realidad se generan a partir de los bloques estándar
+   * como 'controls_if'.
+   */
+  crearBloqueAlias(nombre, nombreDelBloqueOriginal) {
+    let blockly = this.get('blockly');
+    blockly.createAlias(nombre, nombreDelBloqueOriginal);
   },
 
   /*
@@ -38,7 +61,6 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderCompu', {
       descripcion: 'Prender compu',
       icono: 'icono.computadora.png',
-
       comportamiento: 'PrenderCompuParaInstalar',
       argumentos: `{'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idTransicion': 'prender', 'animacionColisionado': 'prendida', 'nombreAnimacion': 'escribir'}`,
     });
@@ -46,7 +68,6 @@ export default Ember.Service.extend({
     blockly.createCustomBlockWithHelper('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
-
       comportamiento: 'DesencadenarAnimacionSiColisiona',
       argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
     });
@@ -96,9 +117,7 @@ export default Ember.Service.extend({
   },
 
   _definirBloquesAlias() {
-    let blockly = this.get('blockly');
-
-    blockly.createAlias('Si', 'controls_if');
+    this.crearBloqueAlias('Si', 'controls_if');
   },
 
   _definirBloqueAlIniciar() {
