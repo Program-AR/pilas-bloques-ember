@@ -87,13 +87,6 @@ export default Ember.Component.extend({
     if (this.get("persistirSolucionEnURL")) {
       // TODO: puede que esto quede en desuso.
     }
-
-    if (this.get("debeMostrarFinDeDesafio")) {
-      this.get('pilas').on('terminaEjecucion', () => {
-        this.cuandoTerminaEjecucion();
-      });
-    }
-
     $(window).trigger('resize');
   },
 
@@ -110,8 +103,11 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()){
-      this.send('abrirFinDesafio');
+    this.sendAction('onTerminoEjecucion');
+    if (this.get("debeMostrarFinDeDesafio")) {
+      if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()) {
+        this.send('abrirFinDesafio');
+      }
     }
   },
 
@@ -163,7 +159,10 @@ export default Ember.Component.extend({
       console.log(codigoCompleto);
 
       let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
-        this.set('highlightedBlock', bloque);
+        var me = this;
+        Ember.run(function () {
+          me.set('highlightedBlock', bloque);
+        });
       });
 
 
@@ -211,6 +210,7 @@ export default Ember.Component.extend({
 
       ejecucion.then(() => {
         this.set('ejecutando', false);
+        this.cuandoTerminaEjecucion();
       });
     },
 
@@ -338,8 +338,7 @@ export default Ember.Component.extend({
       }
 
       descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
-    }
-
+    },
   },
 
 });

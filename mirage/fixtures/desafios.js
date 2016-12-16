@@ -9,7 +9,7 @@ export default [
     consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
     escena: 'AlienInicial',
     actividad: null,   /* Se carga desde un hook en la ruta desafío. */
-    bloques: ['IrDerecha', 'ApretarBoton']
+    bloques: ['MoverACasillaDerecha', 'ApretarBoton']
   },
   {
     id: 2,
