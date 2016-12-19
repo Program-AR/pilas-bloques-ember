@@ -166,6 +166,12 @@ export default Ember.Service.extend({
 
   _definirBloquesAlias() {
     this.crearBloqueAlias('Si', 'controls_if');
+    this.crearBloqueAlias('Numero', 'math_number');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
+    this.crearBloqueAlias('OpComparacion', 'logic_compare');
+    this.crearBloqueAlias('Booleano', 'logic_boolean');
+
+
   },
 
   _definirBloquesSensores() {
