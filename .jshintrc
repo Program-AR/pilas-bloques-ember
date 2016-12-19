@@ -12,7 +12,8 @@
     "Base",
     "debugger",
     "ga",
-	"Interpreter",
+    "Interpreter",
+    "goog",
     "js_beautify"
   ],
   "browser": true,

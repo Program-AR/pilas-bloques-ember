@@ -31,7 +31,9 @@ export default Ember.Service.extend({
                                 'argumentos'];
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
-    return blockly.createCustomBlockWithHelper(nombre, opciones);
+    opciones.color = '#4a6cd4';
+    let bloque = blockly.createCustomBlockWithHelper(nombre, opciones);
+    return bloque;
   },
 
   /*
@@ -113,49 +115,49 @@ export default Ember.Service.extend({
       argumentos: `{'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idTransicion': 'prender', 'animacionColisionado': 'prendida', 'nombreAnimacion': 'escribir'}`,
     });
 
-    blockly.createCustomBlockWithHelper('ApretarBoton', {
+    this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
       comportamiento: 'DesencadenarAnimacionSiColisiona',
       argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
     });
 
-    blockly.createCustomBlockWithHelper('EncenderLuz', {
+    this.crearBloqueAccion('EncenderLuz', {
       descripcion: 'Prender la luz',
       icono: 'icono.Lamparita.png',
       comportamiento: 'EncenderPorEtiqueta',
       argumentos: "{'etiqueta':'Luz'}"
     });
 
-    blockly.createCustomBlockWithHelper('ComerBanana', {
+    this.crearBloqueAccion('ComerBanana', {
       descripcion: 'Comer banana',
       icono: 'iconos.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
     });
 
-    blockly.createCustomBlockWithHelper('ComerManzana', {
+    this.crearBloqueAccion('ComerManzana', {
       descripcion: 'Comer manzana',
       icono: 'iconos.manzana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
     });
 
-    blockly.createCustomBlockWithHelper('ComerQueso', {
+    this.crearBloqueAccion('ComerQueso', {
       descripcion: 'Comer queso',
       icono: 'queso.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'QuesoAnimado\'}',
     });
 
-    blockly.createCustomBlockWithHelper('ComerNaranja', {
+    this.crearBloqueAccion('ComerNaranja', {
       descripcion: 'Comer naranja',
       icono: 'naranja.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
     });
 
-    blockly.createCustomBlockWithHelper('MoverACasillaDerecha', {
+    this.crearBloqueAccion('MoverACasillaDerecha', {
       descripcion: 'Mover a la derecha',
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
@@ -217,7 +219,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['al_empezar_a_ejecutar'] = {
       init: function() {
-        this.setColour(200);
+        this.setColour('#00a65a');
 
         this.appendDummyInput().appendField('Al empezar a ejecutar');
 
