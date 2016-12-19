@@ -157,7 +157,7 @@ export default Ember.Service.extend({
 
     blockly.createCustomBlockWithHelper('MoverACasillaDerecha', {
       descripcion: 'Mover a la derecha',
-      icono: 'derecha.png',
+      icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
