@@ -9,6 +9,7 @@ export default Ember.Service.extend({
     this._definirBloques();
     this._definirBloquesAlias();
     this._definirBloquesSensores();
+    this._definirBloquesQueRepresentanValores();
   },
 
   /*
@@ -62,7 +63,6 @@ export default Ember.Service.extend({
                                 'funcionSensor'];
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
-    let descripcion = `¿${opciones.descripcion}?`;
 
     return blockly.createCustomBlock(nombre, {
       message0: `%1 ¿${opciones.descripcion}?`,
@@ -79,6 +79,17 @@ export default Ember.Service.extend({
       ],
       code: `receptor.${opciones.funcionSensor}`
     });
+  },
+
+  crearBloqueValor(nombre, opciones) {
+    let blockly = this.get('blockly');
+    let opcionesObligatorias = ['descripcion',
+                                'icono',
+                                'valor'];
+
+    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
+
+    return blockly.createBlockValue(nombre, opciones);
   },
 
   /*
@@ -162,8 +173,36 @@ export default Ember.Service.extend({
     this.crearBloqueSensor('TocandoBanana', {
       id: 'Tocandobanana',
       descripcion: 'Hay banana acá',
-      icono: 'iconos.banana.png',
+      icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
+    });
+
+  },
+
+  _definirBloquesQueRepresentanValores() {
+
+    this.crearBloqueValor("ParaLaDerecha", {
+      descripcion: 'la derecha',
+      icono: 'icono.derecha.png',
+      valor: 'DirCasillaDerecha',
+    });
+
+    this.crearBloqueValor('ParaLaIzquierda', {
+      descripcion: 'la izquierda',
+      icono: 'icono.izquierda.png',
+      valor: 'DirCasillaIzquierda',
+    });
+
+    this.crearBloqueValor('ParaArriba', {
+      descripcion: 'arriba',
+      icono: 'icono.arriba.png',
+      valor: 'DirCasillaArriba',
+    });
+
+    this.crearBloqueValor('ParaAbajo', {
+      descripcion: 'abajo',
+      icono: 'icono.abajo.png',
+      valor: 'DirCasillaAbajo',
     });
 
   },
