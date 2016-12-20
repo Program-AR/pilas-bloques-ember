@@ -62,6 +62,7 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     actividad: null,
+    bloques: ['Procedimiento', 'repetir', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'LevantaTuerca']
   },
   {
     id: 7,

@@ -1,39 +1,6 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
 var {Accion, AccionBuilder} = bloques;
 
-/* DEPRECATED */
-var IrDerecha = AccionBuilder.build({
-  descripcion: 'Mover a la derecha',
-  id: 'MoverACasillaDerecha',
-  icono: '../../iconos/derecha.png',
-  comportamiento: 'MoverACasillaDerecha',
-  argumentos: '{}',
-});
-
-var IrIzquierda = AccionBuilder.build({
-  descripcion: 'Mover a la izquierda',
-  id: 'MoverACasillaIzquierda',
-  icono: '../../iconos/izquierda.png',
-  comportamiento: 'MoverACasillaIzquierda',
-  argumentos: '{}',
-});
-
-var IrArriba = AccionBuilder.build({
-  descripcion: 'Mover arriba',
-  id: 'MoverACasillaArriba',
-  icono: '../../iconos/arriba.png',
-  comportamiento: 'MoverACasillaArriba',
-  argumentos: '{}',
-});
-
-var IrAbajo = AccionBuilder.build({
-  descripcion: 'Mover abajo',
-  id: 'MoverACasillaAbajo',
-  icono: '../../iconos/abajo.png',
-  comportamiento: 'MoverACasillaAbajo',
-  argumentos: '{}',
-});
-
 var SiguienteFila = AccionBuilder.build({
   id: 'SiguienteFila',
   descripcion: 'Pasar a la siguiente fila',
@@ -123,7 +90,7 @@ var ParaAbajo = AccionBuilder.buildValor({
   valor: 'DirCasillaAbajo',
 });
 
-export { IrDerecha, IrIzquierda, IrArriba, IrAbajo, SiguienteFila, SiguienteColumna,
+export { SiguienteFila, SiguienteColumna,
   SiguienteFilaTotal, SiguienteColumnaTotal, ParaLaDerecha, ParaLaIzquierda,
   ParaArriba, ParaAbajo, MoverA
 };

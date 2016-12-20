@@ -177,6 +177,33 @@ export default Ember.Service.extend({
       argumentos: '{}',
     });
 
+    this.crearBloqueAccion('MoverACasillaIzquierda', {
+      descripcion: 'Mover a la izquierda',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MoverACasillaIzquierda',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('MoverACasillaArriba', {
+      descripcion: 'Mover arriba',
+      icono: 'icono.arriba.png',
+      comportamiento: 'MoverACasillaArriba',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('MoverACasillaAbajo', {
+      descripcion: 'Mover abajo',
+      icono: 'icono.abajo.png',
+      comportamiento: 'MoverACasillaAbajo',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('LevantaTuerca', {
+      descripcion: 'Levantar tuerca',
+      icono: 'tuerca.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
+    });
   },
 
   _definirBloquesAlias() {
@@ -185,6 +212,11 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
     this.crearBloqueAlias('Booleano', 'logic_boolean');
+    let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
+    bloque_procedimiento.categoria = 'Procedimientos';
+    bloque_procedimiento.categoria_custom = 'PROCEDURE';
+
+    this.crearBloqueAlias('repetir', 'controls_repeat_ext');
   },
 
   _definirBloquesSensores() {
