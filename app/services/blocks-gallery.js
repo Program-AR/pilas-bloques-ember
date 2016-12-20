@@ -6,7 +6,7 @@ export default Ember.Service.extend({
   start() {
     this._generarLenguaje();
     this._definirBloqueAlIniciar();
-    this._definirBloques();
+    this._definirBloquesAccion();
     this._definirBloquesAlias();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
@@ -32,7 +32,9 @@ export default Ember.Service.extend({
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
     opciones.color = '#4a6cd4';
+
     let bloque = blockly.createCustomBlockWithHelper(nombre, opciones);
+    bloque.categoria = "Primitivas";
     return bloque;
   },
 
@@ -45,7 +47,10 @@ export default Ember.Service.extend({
    */
   crearBloqueAlias(nombre, nombreDelBloqueOriginal) {
     let blockly = this.get('blockly');
-    blockly.createAlias(nombre, nombreDelBloqueOriginal);
+    let bloque = blockly.createAlias(nombre, nombreDelBloqueOriginal);
+    bloque.categoria = "Valores";
+
+    return bloque;
   },
 
   /*
@@ -65,11 +70,13 @@ export default Ember.Service.extend({
                                 'funcionSensor'];
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
+    opciones.color = "#2ba3e0";
 
-    return blockly.createCustomBlock(nombre, {
+    let bloque = blockly.createCustomBlock(nombre, {
       message0: `%1 ¿${opciones.descripcion}?`,
-      previousStatement: true,
-      nextStatement: true,
+      colour: opciones.color,
+      inputsInline: true,
+      output: null,
       args0: [
         {
           type: "field_image",
@@ -81,6 +88,9 @@ export default Ember.Service.extend({
       ],
       code: `receptor.${opciones.funcionSensor}`
     });
+
+    bloque.categoria = "Sensores";
+    return bloque;
   },
 
   crearBloqueValor(nombre, opciones) {
@@ -90,8 +100,12 @@ export default Ember.Service.extend({
                                 'valor'];
 
     this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
+    opciones.color = "#2ba3e0";
 
-    return blockly.createBlockValue(nombre, opciones);
+    let bloque = blockly.createBlockValue(nombre, opciones);
+    bloque.categoria = "Valores";
+
+    return bloque;
   },
 
   /*
@@ -105,8 +119,7 @@ export default Ember.Service.extend({
     });
   },
 
-  _definirBloques() {
-    let blockly = this.get('blockly');
+  _definirBloquesAccion() {
 
     this.crearBloqueAccion('PrenderCompu', {
       descripcion: 'Prender compu',
@@ -172,8 +185,6 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
     this.crearBloqueAlias('Booleano', 'logic_boolean');
-
-
   },
 
   _definirBloquesSensores() {

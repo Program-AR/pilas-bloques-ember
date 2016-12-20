@@ -416,7 +416,8 @@ export default [
     consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
     actividad: null,
     deshabilitado: false,
-    bloques: ['PrenderCompu'],
+    bloques: ['PrenderCompu',
+              'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo']
   },
   {
     id: 133,

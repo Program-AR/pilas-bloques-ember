@@ -87,19 +87,84 @@ export default Ember.Component.extend({
     if (this.get("persistirSolucionEnURL")) {
       // TODO: puede que esto quede en desuso.
     }
+
     $(window).trigger('resize');
   },
 
+  /**
+   * Genera el toolbox como lista de categorias con bloques a partir
+   * de una lista de bloques simples.
+   *
+   * Por ejemplo:
+   *
+   *  >> obtenerToolboxDesdeListaDeBloques(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
+   *
+   * [
+   *    {
+   *      category: 'Primitivas',
+   *      blocks: ['MoverDerecha']
+   *    },
+   *    {
+   *      category: 'Sensores',
+   *      blocks: ['TocaSensor', 'TocaEnemigo']
+   *    },
+   * ]
+   *
+   */
   obtenerToolboxDesdeListaDeBloques(bloques) {
 
     if (bloques === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
-    return [{
-        category: 'bloques',
-        blocks: bloques,
-    }];
+    let toolbox = [];
+
+    bloques.forEach((bloque) => {
+      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
+
+      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoria) {
+        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoria, bloque);
+      } else {
+        this._agregar_bloque_a_categoria(toolbox, 'SIN CATEGORÍA', bloque);
+      }
+
+    });
+
+    return toolbox;
+  },
+
+  /**
+   * Permite obtener el bloque desde blockly a partir de su nombre simple.
+   *
+   * TODO: Mover a ember-blockly. Debería estar dentro del servicio blockly.
+   */
+  _obtenerBloqueDesdeBlockly(bloqueComoString) {
+    return Blockly.Blocks[bloqueComoString];
+  },
+
+  /**
+   * Método auxiliar de "obtenerToolboxDesdeListaDeBloques". Este método
+   * permite agregar un bloque a una categoría dentro del toolbox.
+   */
+  _agregar_bloque_a_categoria(toolbox, categoria, bloque) {
+
+    function obtenerOCrearCategoria(toolbox, categoria) {
+      for (let i=0; i<toolbox.length; i++) {
+        if (toolbox[i].category === categoria) {
+          return toolbox[i];
+        }
+      }
+
+      toolbox.push({
+        category: categoria,
+        blocks: []
+      });
+
+      return toolbox[toolbox.length-1];
+    }
+
+    let categoriaEnElToolbox = obtenerOCrearCategoria(toolbox, categoria);
+    categoriaEnElToolbox.blocks.push(bloque);
   },
 
   cuandoTerminaEjecucion() {
