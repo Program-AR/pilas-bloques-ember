@@ -10,6 +10,7 @@ export default Ember.Service.extend({
     this._definirBloquesAlias();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
+    this._definirBloquesEstructurasDeControl();
   },
 
   /*
@@ -215,8 +216,6 @@ export default Ember.Service.extend({
     let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
     bloque_procedimiento.categoria = 'Procedimientos';
     bloque_procedimiento.categoria_custom = 'PROCEDURE';
-
-    this.crearBloqueAlias('repetir', 'controls_repeat_ext');
   },
 
   _definirBloquesSensores() {
@@ -276,6 +275,23 @@ export default Ember.Service.extend({
 
   },
 
+  _definirBloquesEstructurasDeControl() {
+    Blockly.Blocks['repetir'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.setInputsInline(true);
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+        this.appendValueInput('count')
+          .setCheck('Number')
+          .appendField('Repetir');
+        this.appendStatementInput('block');
+      },
+      categoria: 'Repeticiones',
+      toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
+    };
+  },
+
   _generarLenguaje() {
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer');
@@ -284,6 +300,29 @@ export default Ember.Service.extend({
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
       let codigo = `${programa}`;
       return codigo;
+    };
+
+    Blockly.MyLanguage['repetir'] = function(block) {
+      var repeats = Blockly.MyLanguage.valueToCode(block, 'count',
+      Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
+
+      var branch = Blockly.MyLanguage.statementToCode(block, 'block');
+      branch = Blockly.MyLanguage.addLoopTrap(branch, block.id);
+      var code = '';
+
+      var loopVar = Blockly.JavaScript.variableDB_.getDistinctName(
+        'count', Blockly.Variables.NAME_TYPE);
+      var endVar = repeats;
+      if (!repeats.match(/^\w+$/) && !Blockly.isNumber(repeats)) {
+        endVar = Blockly.MyLanguage.variableDB_.getDistinctName(
+          'repeat_end', Blockly.Variables.NAME_TYPE);
+        code += 'var ' + endVar + ' = ' + repeats + ';\n';
+      }
+      code += 'for (var ' + loopVar + ' = 0; ' +
+        loopVar + ' < ' + endVar + '; ' +
+        loopVar + '++) {\n' +
+        branch + '}\n';
+      return code;
     };
 
     Blockly.MyLanguage.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
