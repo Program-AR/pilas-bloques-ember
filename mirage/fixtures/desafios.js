@@ -31,6 +31,7 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     actividad: null,
+    bloques:  ['saltar1', 'Procedimiento', 'repetir']
   },
   {
     id: 4,

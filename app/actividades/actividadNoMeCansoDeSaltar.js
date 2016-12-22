@@ -1,14 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder, Repetir, Procedimiento} = bloques;
-
-var Saltar = AccionBuilder.build({
-  descripcion: 'Saltar',
-  id: 'saltar1',
-  icono: '../../iconos/arriba.png',
-  comportamiento: 'SaltarHablando',
-  argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
-});
-
 var actividadNoMeCansoDeSaltar = {
   // DEPRECATED: nombre: 'No me canso de saltar',
   id: 'NoMeCansoDeSaltar',
@@ -19,8 +8,6 @@ var actividadNoMeCansoDeSaltar = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-
-  bloques: [Procedimiento, Repetir, Saltar],
 };
 
 export default actividadNoMeCansoDeSaltar;

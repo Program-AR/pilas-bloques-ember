@@ -261,6 +261,13 @@ export default Ember.Service.extend({
       comportamiento: 'Pensar',
       argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
     });
+
+    this.crearBloqueAccion('saltar1', {
+      descripcion: 'Saltar',
+      icono: 'icono.arriba.png',
+      comportamiento: 'SaltarHablando',
+      argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
+    });
   },
 
   _definirBloquesAlias() {
