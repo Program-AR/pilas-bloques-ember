@@ -40,7 +40,7 @@ export default [
     consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
     escena: 'ElMarcianoEnElDesierto',
     actividad: null,
-    bloques: ['ComerManzana']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'repetir']
   },
   {
     id: 5,
@@ -52,7 +52,7 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     actividad: null,
-    bloques: ['EncenderLuz', 'Procedimiento', 'repetir', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo']
+    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'repetir']
   },
   {
     id: 6,
@@ -62,7 +62,7 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     actividad: null,
-    bloques: ['Procedimiento', 'repetir', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'LevantaTuerca']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'LevantaTuerca', 'Procedimiento', 'repetir']
   },
   {
     id: 7,
