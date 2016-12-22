@@ -213,9 +213,6 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
     this.crearBloqueAlias('Booleano', 'logic_boolean');
-    let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
-    bloque_procedimiento.categoria = 'Procedimientos';
-    bloque_procedimiento.categoria_custom = 'PROCEDURE';
   },
 
   _definirBloquesSensores() {
@@ -290,6 +287,12 @@ export default Ember.Service.extend({
       categoria: 'Repeticiones',
       toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
     };
+
+    let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
+    bloque_procedimiento.categoria = 'Mis procedimientos';
+    bloque_procedimiento.categoria_custom = 'PROCEDURE';
+    delete Blockly.Blocks.procedures_defreturn;
+    delete Blockly.Blocks.procedures_ifreturn;
   },
 
   _generarLenguaje() {

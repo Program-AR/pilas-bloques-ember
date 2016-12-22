@@ -52,7 +52,7 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     actividad: null,
-    bloques: ['EncenderLuz']
+    bloques: ['EncenderLuz', 'Procedimiento', 'repetir', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo']
   },
   {
     id: 6,

@@ -123,7 +123,7 @@ export default Ember.Component.extend({
       let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
 
       if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoria) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoria, bloque);
+        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoria, bloque, bloqueDesdeBlockly.categoria_custom);
       } else {
         this._agregar_bloque_a_categoria(toolbox, 'SIN CATEGORÍA', bloque);
       }
@@ -146,7 +146,7 @@ export default Ember.Component.extend({
    * Método auxiliar de "obtenerToolboxDesdeListaDeBloques". Este método
    * permite agregar un bloque a una categoría dentro del toolbox.
    */
-  _agregar_bloque_a_categoria(toolbox, categoria, bloque) {
+  _agregar_bloque_a_categoria(toolbox, categoria, bloque, categoria_custom) {
 
     function obtenerOCrearCategoria(toolbox, categoria) {
       for (let i=0; i<toolbox.length; i++) {
@@ -164,6 +164,9 @@ export default Ember.Component.extend({
     }
 
     let categoriaEnElToolbox = obtenerOCrearCategoria(toolbox, categoria);
+    if(categoria_custom) {
+      categoriaEnElToolbox.custom = categoria_custom;
+    }
     categoriaEnElToolbox.blocks.push(bloque);
   },
 
