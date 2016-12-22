@@ -51,6 +51,9 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
 
     sanitizarArgumentosMovAn(){
 		this.valoresFinales.distancia = this.argumentos.distancia === 0 ? 0 : this.argumentos.distancia || this.calcularDistancia();
+        if (Array.isArray(this.argumentos.direccion) && this.argumentos.direccion.length === 2) {
+            this.argumentos.direccion = new Direct(this.argumentos.direccion[0], this.argumentos.direccion[1]);
+        }
 		if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct)) throw new ArgumentError("Direction should come as an instance of Direct");
 		this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
 		this.valoresFinales.destino = this.argumentos.destino || this.calcularDestino();

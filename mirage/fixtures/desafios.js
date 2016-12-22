@@ -20,6 +20,7 @@ export default [
     consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
     escena: 'ElGatoEnLaCalle',
     actividad: null,
+    bloques: ['Saludar', 'Avanzar', 'Volver', 'Abrirojos', 'Cerrarojos', 'Acostarse', 'Pararse', 'Soar', 'Procedimiento']
   },
   {
     id: 3,

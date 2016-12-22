@@ -205,6 +205,62 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
     });
+
+    this.crearBloqueAccion('Saludar', {
+      descripcion: 'Saludar',
+      icono: 'icono.saludar.png',
+      comportamiento: 'ComportamientoAnimado',
+      argumentos: '{nombreAnimacion: "saludando", idTransicion: "saludar"}',
+    });
+
+    this.crearBloqueAccion('Abrirojos', {
+      descripcion: 'Abrir ojos',
+      icono: 'icono.abrirOjos.png',
+      comportamiento: 'AnimarSiNoEstoyYa',
+      argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true, idTransicion: "abrirOjos"}',
+    });
+
+    this.crearBloqueAccion('Cerrarojos', {
+      descripcion: 'Cerrar ojos',
+      icono: 'icono.cerrarOjos.png',
+      comportamiento: 'AnimarSiNoEstoyYa',
+      argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados", idTransicion: "cerrarOjos"}',
+    });
+
+    this.crearBloqueAccion('Acostarse', {
+      descripcion: 'Acostarse',
+      icono: 'icono.acostarse.png',
+      comportamiento: 'ModificarRotacionYAltura',
+      argumentos: '{alturaIr: -180 ,rotacionIr: 90, nombreAnimacion:"acostado", valorEstar: "acostado", descripcionEstar: "posicionCuerpo", idTransicion: "acostarse"}',
+    });
+
+    this.crearBloqueAccion('Pararse', {
+      descripcion: 'Pararse',
+      icono: 'icono.pararse.png',
+      comportamiento: 'ModificarRotacionYAltura',
+      argumentos: '{alturaIr: -150 ,rotacionIr: 0, nombreAnimacion:"acostado", valorEstar: "parado", descripcionEstar: "posicionCuerpo", arrancoAsi:true, idTransicion: "levantarse"}',
+    });
+
+    this.crearBloqueAccion('Volver', {
+      descripcion: 'Volver',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MovimientoAnimado',
+      argumentos: '{direccion: [-1,0], distancia: 50, idTransicion: "volver"}',
+    });
+
+    this.crearBloqueAccion('Avanzar', {
+      descripcion: 'Avanzar',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MovimientoAnimado',
+      argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
+    });
+
+    this.crearBloqueAccion('Soar', {
+      descripcion: 'Soñar',
+      icono: 'icono.soniar.png',
+      comportamiento: 'Pensar',
+      argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
+    });
   },
 
   _definirBloquesAlias() {
