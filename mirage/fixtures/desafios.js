@@ -85,6 +85,7 @@ export default [
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'MorderSandia', 'Procedimiento', 'repetir']
   },
   {
     id: 9,

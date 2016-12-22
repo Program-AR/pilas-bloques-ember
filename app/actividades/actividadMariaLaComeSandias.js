@@ -1,17 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-import direcciones from 'pilas-engine-bloques/actividades/direccionesCuadricula';
-
-var {AccionBuilder, Repetir,Procedimiento} = bloques;
-var {IrDerecha,IrIzquierda, IrArriba,IrAbajo} = direcciones;
-
-var MorderSandia = AccionBuilder.build({
-  descripcion: 'Morder sandía',
-  id: 'MorderSandia',
-  icono: 'icono.sandia.png',
-  comportamiento: 'RecogerPorEtiqueta',
-  argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
-});
-
 var actividadMariaLaComeSandias = {
   // DEPRECATED: nombre: 'María la come sandías',
   id: 'MariaLaComeSandias',
@@ -21,8 +7,6 @@ var actividadMariaLaComeSandias = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-
-  bloques: [Procedimiento, Repetir, IrDerecha,IrIzquierda, IrArriba,IrAbajo,MorderSandia],
 };
 
 export default actividadMariaLaComeSandias;

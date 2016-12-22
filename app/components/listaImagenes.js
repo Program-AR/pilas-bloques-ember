@@ -127,7 +127,6 @@ export default [
     "icono.pez.png",
     "icono.regalo.png",
     "icono.sacar.disfraz.png",
-    "icono.sandia.png",
     "icono.sombrero.png",
     "icono.unicornio.png",
     "iconos.futbolInicio.png",

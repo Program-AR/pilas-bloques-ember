@@ -282,6 +282,13 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
     });
+
+    this.crearBloqueAccion('MorderSandia', {
+      descripcion: 'Morder sandía',
+      icono: 'icono.sandia.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
+    });
   },
 
   _definirBloquesAlias() {
