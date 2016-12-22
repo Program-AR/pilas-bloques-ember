@@ -117,7 +117,6 @@ export default [
     "icono.culpable.png",
     "icono.empezar.fiesta.png",
     "icono.espada.png",
-    "icono.estrella.png",
     "icono.finCamino.png",
     "icono.globo.png",
     "icono.hierro.png",

@@ -268,6 +268,20 @@ export default Ember.Service.extend({
       comportamiento: 'SaltarHablando',
       argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
     });
+
+    this.crearBloqueAccion('VolverABordeIzquierdo', {
+      descripcion: 'Ir al borde izquierdo',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MoverTodoAIzquierda',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('TomarEstrella', {
+      descripcion: 'Agarrar estrella',
+      icono: 'icono.estrella.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
+    });
   },
 
   _definirBloquesAlias() {

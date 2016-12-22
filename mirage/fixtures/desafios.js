@@ -75,6 +75,7 @@ export default [
     consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
     escena: 'ElRecolectorDeEstrellas',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'repetir']
   },
   {
     id: 8,
