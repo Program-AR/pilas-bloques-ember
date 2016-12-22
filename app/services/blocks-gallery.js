@@ -289,6 +289,20 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
     });
+
+    this.crearBloqueAccion('AlimentarPez', {
+      descripcion: 'Alimentar pez',
+      icono: 'icono.pez.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
+    });
+
+    this.crearBloqueAccion('AgarrarComida', {
+      descripcion: 'Agarrar comida',
+      icono: 'icono.alimento_pez.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
+    });
   },
 
   _definirBloquesAlias() {

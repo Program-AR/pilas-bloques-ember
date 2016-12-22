@@ -96,6 +96,7 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'repetir']
   },
   {
     id: 10,
