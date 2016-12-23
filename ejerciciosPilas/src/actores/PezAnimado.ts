@@ -8,8 +8,8 @@ class PezAnimado extends ActorAnimado {
     }
 
     nombrePNG() {
-        if (Math.random() < 1 / 3) return 'pez1.png';
-        if (Math.random() < 0.5) return 'pez2.png';
-        return 'pez3.png';
+        if (Math.random() < 1 / 3) return 'actores/actor.Pez1.png';
+        if (Math.random() < 0.5) return 'actores/actor.Pez2.png';
+        return 'actores/actor.Pez3.png';
     }
 }

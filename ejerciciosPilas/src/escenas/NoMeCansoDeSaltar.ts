@@ -16,7 +16,7 @@
 
 
  	iniciar() {
-        this.fondo = new Fondo('fondo.noMeCansoDeSaltar.png',0,0);
+        this.fondo = new Fondo('fondos/fondo.NoMeCansoDeSaltar.png',0,0);
         this.automata = new GatoAnimado(0,-17);
         this.saltosFaltantes=30;
   }

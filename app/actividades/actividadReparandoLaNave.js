@@ -7,7 +7,7 @@ var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var TomarHierro = AccionBuilder.build({
   descripcion: 'Agarrar hierro',
   id: 'TomarHierro',
-  icono: 'icono.hierro.png',
+  icono: 'iconos/icono.Hierro.png',
   comportamiento: 'Sostener',
   argumentos: '{etiqueta: "HierroAnimado", nombreAnimacion: "recogerHierro"}',
 });
@@ -15,7 +15,7 @@ var TomarHierro = AccionBuilder.build({
 var TomarCarbon = AccionBuilder.build({
   descripcion: 'Agarrar carbón',
   id: 'TomarCarbon',
-  icono: 'icono.carbon.png',
+  icono: 'iconos/icono.Carbon.png',
   comportamiento: 'Sostener',
   argumentos: '{etiqueta: "CarbonAnimado", nombreAnimacion: "recogerCarbon"}',
 });

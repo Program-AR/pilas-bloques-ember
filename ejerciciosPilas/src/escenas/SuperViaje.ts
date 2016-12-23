@@ -13,7 +13,7 @@ class SuperViaje extends EscenaActividad {
     automata;
 
     iniciar() {
-        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
+        this.fondo = new FondoAnimado('fondos/fondo.ElSuperViaje.png', pilas.derecha(), 0);
         this.automata = new Superheroe();
         this.automata.aprender(Flotar,{Desvio:  10});
 

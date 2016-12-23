@@ -4,7 +4,7 @@ var {AccionBuilder} = bloques;
 var ComerBanana = AccionBuilder.build({
   descripcion: 'Comer banana',
   id: 'ComerBanana',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
 });
@@ -12,7 +12,7 @@ var ComerBanana = AccionBuilder.build({
 var ComerManzana = AccionBuilder.build({
   descripcion: 'Comer manzana',
   id: 'ComerManzana',
-  icono: 'iconos.manzana.png',
+  icono: 'iconos/icono.Manzana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
 });
@@ -20,7 +20,7 @@ var ComerManzana = AccionBuilder.build({
 var ComerQueso = AccionBuilder.build({
   descripcion: 'Comer queso',
   id: 'ComerQueso',
-  icono: 'queso.png',
+  icono: 'iconos/icono.Queso.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'QuesoAnimado\'}',
 });
@@ -28,7 +28,7 @@ var ComerQueso = AccionBuilder.build({
 var ComerNaranja = AccionBuilder.build({
   descripcion: 'Comer naranja',
   id: 'ComerNaranja',
-  icono: 'naranja.png',
+  icono: 'iconos/icono.Naranja.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
 });

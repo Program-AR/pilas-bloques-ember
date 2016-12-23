@@ -2,7 +2,7 @@
 
 class Detective extends ActorAnimado {
     constructor(x = 0, y = 0) {
-        super(x, y, {grilla: 'detective.png', cantColumnas:1});
+        super(x, y, {grilla: 'actores/actor.Detective.png', cantColumnas:1});
         this.definirAnimacion("parado", [0], 4, true);
     }
 

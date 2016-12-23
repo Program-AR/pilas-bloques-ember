@@ -5,7 +5,7 @@ class ActorCompuesto extends ActorAnimado {
 	subactores;
 
 	constructor(x,y,opciones){
-		opciones.grilla = 'invisible.png';
+		opciones.grilla = 'casillas/casilla.Invisible.png';
 		super(x, y, opciones);
 		this.inicializarSubactores();
 	}

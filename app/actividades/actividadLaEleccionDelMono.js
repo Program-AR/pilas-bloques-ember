@@ -4,7 +4,7 @@ var {AccionBuilder, Repetir, Si, Sino, Procedimiento} = bloques;
 var Avanzar = AccionBuilder.build({
   descripcion: 'Mover a la derecha',
   id: 'Avanzar',
-  icono: '../../iconos/derecha.png',
+  icono: 'iconos/icono.Derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
 });
@@ -12,7 +12,7 @@ var Avanzar = AccionBuilder.build({
 var ComerManzana = AccionBuilder.build({
   descripcion: 'Comer manzana',
   id: 'ComerManzana',
-  icono: 'iconos.manzana.png',
+  icono: 'iconos/icono.Manzana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
 });
@@ -20,7 +20,7 @@ var ComerManzana = AccionBuilder.build({
 var ComerBanana = AccionBuilder.build({
   descripcion: 'Comer banana',
   id: 'ComerBanana',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
 });
@@ -28,14 +28,14 @@ var ComerBanana = AccionBuilder.build({
 var TocandoManzana = AccionBuilder.buildSensor({
   descripcion: 'Hay una manzana acá',
   id: 'tocandoManzana',
-  icono: 'iconos.manzana.png',
+  icono: 'iconos/icono.Manzana.png',
   funcionSensor: 'tocando("ManzanaAnimada")',
 });
 
 var TocandoBanana = AccionBuilder.buildSensor({
   descripcion: 'Hay una banana acá',
   id: 'tocandoBanana',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   funcionSensor: 'tocando("BananaAnimada")',
 });
 

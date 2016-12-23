@@ -15,7 +15,7 @@ class ElMarcianoEnElDesierto extends EscenaActividad {
     estado;
     iniciar() {
       this.estado= new Estado(()=> this.cantidadObjetosConEtiqueta('ManzanaAnimada')==0);
-        this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png',0,0);
+        this.fondo = new Fondo('fondos/fondo.ElMarcianoEnElDesierto.png',0,0);
         var cantidadFilas=4;
         var cantidadColumnas=5;
 

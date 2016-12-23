@@ -4,7 +4,7 @@ var {Accion, AccionBuilder} = bloques;
 var IrDerecha = AccionBuilder.build({
   descripcion: 'Mover a la derecha',
   id: 'MoverACasillaDerecha',
-  icono: '../../iconos/derecha.png',
+  icono: 'iconos/icono.Derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
 });
@@ -12,7 +12,7 @@ var IrDerecha = AccionBuilder.build({
 var IrIzquierda = AccionBuilder.build({
   descripcion: 'Mover a la izquierda',
   id: 'MoverACasillaIzquierda',
-  icono: '../../iconos/izquierda.png',
+  icono: 'iconos/icono.Izquierda.png',
   comportamiento: 'MoverACasillaIzquierda',
   argumentos: '{}',
 });
@@ -20,7 +20,7 @@ var IrIzquierda = AccionBuilder.build({
 var IrArriba = AccionBuilder.build({
   descripcion: 'Mover arriba',
   id: 'MoverACasillaArriba',
-  icono: '../../iconos/arriba.png',
+  icono: 'iconos/icono.Arriba.png',
   comportamiento: 'MoverACasillaArriba',
   argumentos: '{}',
 });
@@ -28,7 +28,7 @@ var IrArriba = AccionBuilder.build({
 var IrAbajo = AccionBuilder.build({
   descripcion: 'Mover abajo',
   id: 'MoverACasillaAbajo',
-  icono: '../../iconos/abajo.png',
+  icono: 'iconos/icono.Abajo.png',
   comportamiento: 'MoverACasillaAbajo',
   argumentos: '{}',
 });
@@ -36,7 +36,7 @@ var IrAbajo = AccionBuilder.build({
 var SiguienteFila = AccionBuilder.build({
   id: 'SiguienteFila',
   descripcion: 'Pasar a la siguiente fila',
-  icono: '../../iconos/abajo.png',
+  icono: 'iconos/icono.Abajo.png',
   comportamiento: 'SiguienteFila',
   argumentos: '{}',
 });
@@ -54,7 +54,7 @@ var SiguienteFilaTotal =  SiguienteFila.extend({
 var SiguienteColumna = AccionBuilder.build({
   id: 'SiguienteColumna',
   descripcion: 'Pasar a la siguiente columna',
-  icono: '../../iconos/derecha.png',
+  icono: 'iconos/icono.Derecha.png',
   comportamiento: 'SiguienteColumna',
   argumentos: '{}',
 });
@@ -111,14 +111,14 @@ var ParaLaIzquierda = AccionBuilder.buildValor({
 var ParaArriba = AccionBuilder.buildValor({
   id: 'ParaArriba',
   descripcion: 'arriba',
-  icono: '../../iconos/arriba.png',
+  icono: 'iconos/icono.Arriba.png',
   valor: 'DirCasillaArriba',
 });
 
 var ParaAbajo = AccionBuilder.buildValor({
   id: 'ParaAbajo',
   descripcion: 'abajo',
-  icono: '../../iconos/abajo.png',
+  icono: 'iconos/icono.Abajo.png',
   valor: 'DirCasillaAbajo',
 });
 

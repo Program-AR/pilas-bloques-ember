@@ -12,13 +12,13 @@ class ElMonoQueSabeContar extends EscenaActividad {
     tableros;
 
     iniciar() {
-        this.fondo = new Fondo('fondos.selva.png',0,0);
+        this.fondo = new Fondo('fondos/fondo.Selva.png',0,0);
         this.cuadricula = new CuadriculaMultipleColumnas(
             new DefinidorColumnasRandom(5, 6),
             0, -45,
             { separacionEntreCasillas: 5 },
-            { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 })
-        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
+            { alto: 40, ancho: 40, grilla: 'casillas/casilla.MonoMedio.png', cantColumnas: 1 })
+        this.cuadricula.cambiarImagenInicio('casillas/casilla.MonoInicio.png');
         this.cambiarImagenesFin();
 
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]),
@@ -40,7 +40,7 @@ class ElMonoQueSabeContar extends EscenaActividad {
     }
 
     cambiarImagenesFin(){
-        this.cuadricula.cambiarImagenFin('casillafinalmono.png');
+        this.cuadricula.cambiarImagenFin('casillas/casilla.MonoFinal.png');
     }
 
     estaResueltoElProblema(){

@@ -10,7 +10,7 @@ class ElRecolectorDeEstrellas extends EscenaActividad {
     estado;
     iniciar() {
         this.estado = new Estado(() => this.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0);
-        this.fondo = new Fondo('fondo.recolector.png', 0, 0);
+        this.fondo = new Fondo('fondos/fondo.Constelaciones.png', 0, 0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4
         var cantidadColumnas = 5
@@ -18,7 +18,7 @@ class ElRecolectorDeEstrellas extends EscenaActividad {
         this.cuadricula = new Cuadricula(0, -20, cantidadFilas, cantidadColumnas,
             { alto: 400 },
             {
-                grilla: 'invisible.png',
+                grilla: 'casillas/casilla.Invisible.png',
                 cantColumnas: 1
             })
 

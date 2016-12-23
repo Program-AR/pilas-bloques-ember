@@ -5,7 +5,7 @@ var {AccionBuilder, Procedimiento} = bloques;
 var Avanzar = AccionBuilder.build({
   descripcion: 'Avanzar',
   id: 'avanzar',
-  icono: 'izquierda.png',
+  icono: 'iconos/icono.Izquierda.png',
   comportamiento: 'CaminaIzquierda',
   argumentos: '{pasos: 2}',
 });
@@ -13,7 +13,7 @@ var Avanzar = AccionBuilder.build({
 var Retroceder = AccionBuilder.build({
   descripcion: 'Retroceder',
   id: 'retroceder',
-  icono: 'derecha.png',
+  icono: 'iconos/icono.Derecha.png',
   comportamiento: 'CaminaDerecha',
   argumentos: '{pasos: 2}',
 });

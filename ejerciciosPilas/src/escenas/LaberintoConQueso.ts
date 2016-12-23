@@ -23,7 +23,7 @@ class LaberintoConQueso extends LaberintoLargo {
     }
 
     nombreFondo(){
-      return 'fondo.laberinto.queso.png';
+      return 'fondos/fondo.LaberintoConQueso.png';
     }
 
     estaResueltoElProblema(){

@@ -28,9 +28,9 @@ class Tablero extends ActorAnimado{
 
   // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
   sanitizarArgumentosTablero(args){
-    args.imagen =  args.imagen || 'invisible.png';
-    args.imagenLabel = args.imagenLabel || "PlacaContarGris.png";
-    args.imagenPuntaje = args.imagenPuntaje || "PlacaContarNegra.png";
+    args.imagen =  args.imagen || 'casillas/casilla.Invisible.png';
+    args.imagenLabel = args.imagenLabel || "casillas/casilla.PlacaContarGris.png";
+    args.imagenPuntaje = args.imagenPuntaje || "casillas/casilla.PlacaContarNegra.png";
     this.atributoObservado = args.atributoObservado || 'cantidad';
     this.colorTxtLabel = args.colorTxtLabel || "black";
     this.colorTxtPuntaje = args.colorTxtPuntaje || "white";

@@ -77,7 +77,7 @@ class Cuadricula extends Actor {
         this.opcionesCasilla = opcionesCasilla;
         this.opcionesCuadricula = opcionesCuadricula;
 
-        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'invisible.png';
+        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'casillas/casilla.Invisible.png';
         this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
         this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
         this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;

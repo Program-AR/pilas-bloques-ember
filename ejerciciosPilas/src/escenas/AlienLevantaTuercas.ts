@@ -9,7 +9,7 @@ iniciar() {
 		this.fondo = new pilas.fondos.Laberinto1();
 		this.cuadricula = new Cuadricula(0,-25,5,6,
 								{alto: 400},
-								{grilla: 'invisible.png',
+								{grilla: 'casillas/casilla.Invisible.png',
 								cantColumnas: 1})
 	  this.automata = new AlienAnimado(0,0);
 		this.cuadricula.agregarActorEnPerspectiva(this.automata,4,0,false);

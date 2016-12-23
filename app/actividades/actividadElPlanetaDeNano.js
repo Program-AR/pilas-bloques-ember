@@ -4,14 +4,14 @@ import {Numero} from 'pilas-engine-bloques/actividades/expresiones';
 
 var ComerBanana = AccionBuilder.build({
   descripcion: 'Comer Banana',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta:"BananaAnimada"}',
 });
 
 var VolverAlBordeIzquierdo = AccionBuilder.build({
   descripcion: 'Volver al borde izquierdo',
-  icono: '../../iconos/izquierda.png',
+  icono: 'iconos/icono.Izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
   argumentos: '{}',
 });

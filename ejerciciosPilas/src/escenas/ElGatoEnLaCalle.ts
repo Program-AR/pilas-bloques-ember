@@ -4,7 +4,7 @@
 class ElGatoEnLaCalle extends EscenaActividad {
 
     iniciar() {
-      this.fondo = new Fondo('fondo.gatoEnLaCalle.png',0,0);
+      this.fondo = new Fondo('fondos/fondo.ElGatoEnLaCalle.png',0,0);
       this.automata = new GatoAnimado(0,-150);
       this.construirFSM();
     }

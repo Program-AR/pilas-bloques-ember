@@ -6,7 +6,7 @@ var {IrDerecha, IrIzquierda, SiguienteFila} = direccionesCuadricula;
 var PatearPelota = AccionBuilder.build({
   id: 'PatearPelota',
   descripcion: 'Patear pelota',
-  icono: 'iconos.pelota.png',
+  icono: 'iconos/icono.Pelota.png',
   comportamiento: 'DesencadenarComportamientoSiColisiona',
   argumentos: '{"comportamiento":SerPateado, idTransicion:"patear", etiqueta:"PelotaAnimada", argumentosComportamiento: {tiempoEnElAire:25,aceleracion:0.0025,elevacionMaxima:25,gradosDeAumentoStep:-2}}',
 });
@@ -14,14 +14,14 @@ var PatearPelota = AccionBuilder.build({
 var TocandoInicio = AccionBuilder.buildSensor({
   id: 'tocandoInicio',
   descripcion: 'Estoy al inicio',
-  icono: 'iconos.futbolInicio.png',
+  icono: 'iconos/icono.FutbolParaRobotsInicio.png',
   funcionSensor: 'tocandoInicio()',
 });
 
 var TocandoPelota = AccionBuilder.buildSensor({
   id: 'tocandoPelota',
   descripcion: 'Llegué a la pelota',
-  icono: 'iconos.pelota.png',
+  icono: 'iconos/icono.Pelota.png',
   funcionSensor: 'tocando("PelotaAnimada")',
 });
 

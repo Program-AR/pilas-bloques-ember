@@ -25,10 +25,10 @@ class PrendiendoLasFogatas extends EscenaActividad {
           ['T','T','T','T','T','T','T']
         ];
 
-        this.cuadricula = new CuadriculaEsparsa(0,0, {ancho: 400, alto: 400}, {grilla: 'casillas.violeta.png'}, matriz)
+        this.cuadricula = new CuadriculaEsparsa(0,0, {ancho: 400, alto: 400}, {grilla: 'casillas/casilla.Violeta.png'}, matriz)
 
         this.ladoCasilla = 30;
-        this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
+        this.fondo = new Fondo('fondos/fondo.BosqueDeNoche2.png', 0, 0);
 
         this.agregarFogatas();
 
