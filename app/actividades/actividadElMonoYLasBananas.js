@@ -4,7 +4,7 @@ var {AccionBuilder, Repetir, Si, Procedimiento} = bloques;
 var Avanzar = AccionBuilder.build({
   id: 'Avanzar',
   descripcion: 'Mover a la derecha',
-  icono: '../../iconos/derecha.png',
+  icono: 'iconos/icono.Derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{velocidad: 25}',
 });
@@ -12,7 +12,7 @@ var Avanzar = AccionBuilder.build({
 var ComerBanana = AccionBuilder.build({
   id: 'Comerbanana',
   descripcion: 'Comer banana',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana" }',
 });
@@ -20,7 +20,7 @@ var ComerBanana = AccionBuilder.build({
 var TocandoBanana = AccionBuilder.buildSensor({
   id: 'Tocandobanana',
   descripcion: 'Hay banana acá',
-  icono: 'iconos.banana.png',
+  icono: 'iconos/icono.Banana.png',
   funcionSensor: 'tocando("BananaAnimada")',
 });
 

@@ -15,7 +15,7 @@ class MarcianoAnimado extends ActorAnimado {
     }
 
     opcionesImagen(){
-		return { grilla: 'marcianoAnimado.png', cantColumnas: 6, cantFilas: 3 };
+		return { grilla: 'actores/actor.MarcianoAnimado.png', cantColumnas: 6, cantFilas: 3 };
     }
 
     animacionesAdicionales(){

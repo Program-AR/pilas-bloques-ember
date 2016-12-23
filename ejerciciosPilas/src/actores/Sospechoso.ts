@@ -11,7 +11,7 @@ class Sospechoso extends ActorAnimado {
 	}
 
     constructor(x = 0, y = 0) {
-        super(x, y, {grilla: 'sospechosos.png', cantColumnas:8});
+        super(x, y, {grilla: 'actores/actor.Sospechosos.png', cantColumnas:8});
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
 				this.tieneDisflazPuesto = true;

@@ -10,7 +10,7 @@ class TitoCuadrado extends EscenaActividad {
   luces;
 
   iniciar() {
-      this.fondo = new Fondo('fondo.tito-cuadrado.png',0,0);
+      this.fondo = new Fondo('fondos/fondo.TitoCuadrado.png',0,0);
       this.luces = [];
       this.cantidadFilas=7;
       this.cantidadColumnas=7;
@@ -23,7 +23,7 @@ class TitoCuadrado extends EscenaActividad {
         ['T','F','F','F','F','F','T'],
         ['T','T','T','T','T','T','T']
         ]
-      this.cuadricula = new CuadriculaEsparsa(0,0,{ancho: 400, alto: 400},{grilla:'casillas.violeta.png'},matriz)
+      this.cuadricula = new CuadriculaEsparsa(0,0,{ancho: 400, alto: 400},{grilla:'casillas/casilla.Violeta.png'},matriz)
 
       this.agregarLuces();
 

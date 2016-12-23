@@ -9,7 +9,7 @@ class LaberintoLargo extends EscenaActividad {
     fondo;
     iniciar() {
         this.fondo = new Fondo(this.nombreFondo(),0,0);
-        this.cuadricula = new CuadriculaParaRaton(0,0,this.cantidadFilas(),this.cantidadColumnas(),this.dameOpcionesCuadricula(),{'->':'casillaDerecha.png','<-':'casillaIzquierda.png','v':'casillaAbajo.png','^':'casillaArriba.png'}).dameCamino();
+        this.cuadricula = new CuadriculaParaRaton(0,0,this.cantidadFilas(),this.cantidadColumnas(),this.dameOpcionesCuadricula(),{'->':'casillas/casilla.Derecha.png','<-':'casillas/casilla.Izquierda.png','v':'casillas/casilla.Abajo.png','^':'casillas/casilla.Arriba.png'}).dameCamino();
         this.automata = new RatonAnimado(0,0);
         this.cuadricula.agregarActor(this.automata,0,0);
         this.automata.escala *= 2;
@@ -27,7 +27,7 @@ class LaberintoLargo extends EscenaActividad {
       return 8;
     }
     nombreFondo(){
-      return 'fondo.laberinto.largo.png';
+      return 'fondos/fondo.LaberintoLargo.png';
     }
 
     estaResueltoElProblema(){

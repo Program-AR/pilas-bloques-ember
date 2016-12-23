@@ -6,7 +6,7 @@ var {IrDerecha} = direcciones;
 var ApretarBoton = AccionBuilder.build({
   descripcion: 'Apretar botón',
   id: 'ApretarBoton',
-  icono: 'iconos.botonRojo.png',
+  icono: 'iconos/icono.BotonRojo.png',
   comportamiento: 'DesencadenarAnimacionSiColisiona',
   argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
 });

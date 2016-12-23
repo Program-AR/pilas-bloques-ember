@@ -12,7 +12,7 @@
     cantidadFilas;
     cantidadColumnas;
     iniciar() {
-        this.fondo = new Fondo('fondo.cangrejo_aguafiestas.png',0,0);
+        this.fondo = new Fondo('fondos/fondo.ElCangrejoAguafiestas.png',0,0);
         this.cantidadFilas=5;
         this.cantidadColumnas=6;
         var matriz= [
@@ -21,7 +21,7 @@
           ['T','T','T','T','T','T'],
           ['T','F','F','F','F','T'],
           ['T','T','T','T','T','T']]
-        this.cuadricula = new CuadriculaEsparsa(0,15,{alto: 360, ancho:400},{grilla:'casilla.cangrejo_aguafiestas.png'},matriz)
+        this.cuadricula = new CuadriculaEsparsa(0,15,{alto: 360, ancho:400},{grilla:'casillas/casilla.ElCangrejoAguafiestas.png'},matriz)
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0,0);
         this.automata.escala *= 1.2;
