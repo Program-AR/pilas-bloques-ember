@@ -24,7 +24,7 @@ class SuperTito1 extends EscenaActividad {
             {grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1,  ancho:100, alto:50});
         this.cuadricula.casilla(this.cantidadFilas()-1,0).cambiarImagen('casilla.titoFinalizacion.png');
-        
+
         for (let i = 0; i < this.cantidadFilas()-1; i++) {
             this.agregarLamparinEnFila(i);
         }
@@ -36,7 +36,7 @@ class SuperTito1 extends EscenaActividad {
 
     }
 
-    cantidadFilas() { 
+    cantidadFilas() {
         if (!this.cantFilas) this.cantFilas = Math.floor((Math.random() * 5) + 3);
         return this.cantFilas;
     }
@@ -53,7 +53,7 @@ class SuperTito1 extends EscenaActividad {
     }
 
     estaResueltoElProblema() {
-        return this.objetos.every(o => o.nombreAnimacionActual() == 'prendida');
+        return this.objetos.every(o => o.nombreAnimacionActual() == 'prendida') && this.automata.alFinalDelCamino();
     }
 
 }

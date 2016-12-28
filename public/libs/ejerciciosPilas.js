@@ -4982,7 +4982,7 @@ var SuperTito1 = (function (_super) {
         return 'fondo.superTito1.png';
     };
     SuperTito1.prototype.estaResueltoElProblema = function () {
-        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
+        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; }) && this.automata.alFinalDelCamino();
     };
     return SuperTito1;
 })(EscenaActividad);
