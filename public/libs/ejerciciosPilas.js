@@ -392,6 +392,9 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.getAlto = function () {
         return this.subactores[0].getAlto();
     };
+    ActorCompuesto.prototype.colisiona_con = function (objeto) {
+        return this.subactores[0].colisiona_con(objeto);
+    };
     return ActorCompuesto;
 })(ActorAnimado);
 var ImitarAtributosNumericos2 = (function (_super) {
@@ -2933,6 +2936,14 @@ var Escapar = (function (_super) {
         if (this.argumentos.escaparCon)
             this.receptor.agregarSubactor(this.argumentos.escaparCon);
         _super.prototype.preAnimacion.call(this);
+    };
+    Escapar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.estaEnTransporte(); }, "Para escapar hace falta un transporte"));
+    };
+    Escapar.prototype.estaEnTransporte = function () {
+        return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
     };
     return Escapar;
 })(MovimientoAnimado);

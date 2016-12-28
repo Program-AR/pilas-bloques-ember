@@ -16,4 +16,13 @@ class Escapar extends MovimientoAnimado {
 	    if (this.argumentos.escaparCon) this.receptor.agregarSubactor(this.argumentos.escaparCon);
 	    super.preAnimacion();
 	}
+
+	configurarVerificaciones() {
+		super.configurarVerificaciones();
+		this.verificacionesPre.push(new Verificacion(() => this.estaEnTransporte(), "Para escapar hace falta un transporte"));
+	}
+
+	estaEnTransporte(){
+		return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
+	}
 }
