@@ -14,11 +14,11 @@ iniciar() {
     //this.recolector.izquierda = pilas.izquierda();
     this.cantidadFilas=4
     this.cantidadColumnas=5
-    this.fondo = new Fondo('fondos/fondo.ElPlanetaDeNano.png',0,0);
+    this.fondo = new Fondo('fondos.elPlanetaDeNano.png',0,0);
 
     this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
         { alto: 300, ancho: 300, separacionEntreCasillas: 3},
-        {grilla: 'casillas/casilla.ElPlanetaDeNano.png'})
+        {grilla: 'casillas.elPlanetaDeNano.png'})
 
     this.automata = new NanoAnimado(0, 0);
 

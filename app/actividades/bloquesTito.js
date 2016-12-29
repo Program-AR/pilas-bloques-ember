@@ -4,7 +4,7 @@ var {AccionBuilder} = bloques;
 var EncenderLuz = AccionBuilder.build({
   descripcion: 'Prender la luz',
   id: 'EncenderLuz',
-  icono: 'iconos/icono.Lamparita.png',
+  icono: 'icono.Lamparita.png',
   comportamiento: 'EncenderPorEtiqueta',
   argumentos: "{'etiqueta':'Luz'}",
 });
@@ -12,7 +12,7 @@ var EncenderLuz = AccionBuilder.build({
 var TocandoLuz = AccionBuilder.buildSensor({
   descripcion: 'Hay lamparita acá',
   id: 'tocandoLuz',
-  icono: 'iconos/icono.LamparitaApagada.png',
+  icono: 'icono.LamparitaApagada.png',
   funcionSensor: 'tocando("Lamparin")',
 });
 
@@ -20,7 +20,7 @@ var TocandoLuz = AccionBuilder.buildSensor({
 var TocandoFinal = AccionBuilder.buildSensor({
   descripcion: 'Llegué al final',
   id: 'tocandoFinal',
-  icono: 'iconos/icono.SuperTitoTocandoFin.png',
+  icono: 'casilla.titoFinalizacion.png',
   funcionSensor: 'estoyUltimaFila()',
 });
 

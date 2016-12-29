@@ -7,7 +7,7 @@ var {IrDerecha, IrArriba} = direcciones;
 var VolverABordeIzquierdo = AccionBuilder.build({
   descripcion: 'Ir al borde izquierdo',
   id: 'VolverABordeIzquierdo',
-  icono: '.iconos/icono.Izquierda.png',
+  icono: '../../iconos/izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
   argumentos: '{}',
 });
@@ -15,7 +15,7 @@ var VolverABordeIzquierdo = AccionBuilder.build({
 var TomarEstrella = AccionBuilder.build({
   descripcion: 'Agarrar estrella',
   id: 'TomarEstrella',
-  icono: 'iconos/icono.Estrella.png',
+  icono: 'icono.estrella.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
 });

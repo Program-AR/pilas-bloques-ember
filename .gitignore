@@ -20,7 +20,6 @@
 /libpeerconnection.log
 npm-debug.log
 testem.log
-.directory
 
 public/libs/pilasweb.js
 

@@ -4,49 +4,49 @@ var {AccionBuilder} = bloques;
 var TocandoManzana = AccionBuilder.buildSensor({
   descripcion: 'Hay una manzana acá',
   id: 'tocandoManzana',
-  icono: 'iconos/icono.Manzana.png',
+  icono: 'iconos.manzana.png',
   funcionSensor: 'tocando("ManzanaAnimada")',
 });
 
 var TocandoBanana = AccionBuilder.buildSensor({
   descripcion: 'Hay una banana acá',
   id: 'tocandoBanana',
-  icono: 'iconos/icono.Banana.png',
+  icono: 'iconos.banana.png',
   funcionSensor: 'tocando("BananaAnimada")',
 });
 
 var TocandoNaranja = AccionBuilder.buildSensor({
   descripcion: 'Hay una naranja acá',
   id: 'TocandoNaranja',
-  icono: 'iconos/icono.Naranja.png',
+  icono: 'naranja.png',
   funcionSensor: 'tocando("NaranjaAnimada")',
 });
 
 var TocandoQueso = AccionBuilder.buildSensor({
   descripcion: 'Hay queso acá',
   id: 'tocandoQueso',
-  icono: 'iconos/icono.Queso.png',
+  icono: 'queso.png',
   funcionSensor: 'tocando("QuesoAnimado")',
 });
 
 var TocandoAbajo = AccionBuilder.buildSensor({
   descripcion: 'Puedo mover abajo',
   id: 'TocandoAbajo',
-  icono: 'iconos/icono.Abajo.png',
+  icono: '../../iconos/abajo.png',
   funcionSensor: 'tocandoFlechaAbajo()',
 });
 
 var TocandoDerecha = AccionBuilder.buildSensor({
   descripcion: 'Puedo mover a la derecha',
   id: 'TocandoDerecha',
-  icono: 'iconos/icono.Derecha.png',
+  icono: '../../iconos/derecha.png',
   funcionSensor: 'tocandoFlechaDerecha()',
 });
 
 var TocandoFinCamino = AccionBuilder.buildSensor({
   descripcion: 'Llegó a la meta',
   id: 'TocandoFinCamino',
-  icono: 'iconos/icono.FinCamino.png',
+  icono: 'icono.finCamino.png',
   funcionSensor: 'alFinalDelCamino()',
 });
 

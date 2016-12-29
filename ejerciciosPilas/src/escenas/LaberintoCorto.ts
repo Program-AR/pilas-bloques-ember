@@ -20,7 +20,7 @@ class LaberintoCorto extends LaberintoLargo {
     }
 
     nombreFondo(){
-      return 'fondos/fondo.LaberintoCorto.png';
+      return 'fondo.laberinto.corto.png';
     }
     dameOpcionesCuadricula(){
       return {'alto':200,'ancho':200};

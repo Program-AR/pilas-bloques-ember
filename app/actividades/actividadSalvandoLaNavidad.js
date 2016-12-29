@@ -5,7 +5,7 @@ import {Numero,OpAritmetica} from 'pilas-engine-bloques/actividades/expresiones'
 var DejarRegalo = AccionBuilder.build({
   id: 'Dejarregalo',
   descripcion: 'Dejar un regalo',
-  icono: 'iconos/icono.Regalo.png',
+  icono: 'icono.regalo.png',
   comportamiento: 'Depositar',
   argumentos: '{claseADepositar: RegaloAnimado}',
 });

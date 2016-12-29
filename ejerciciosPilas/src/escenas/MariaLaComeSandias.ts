@@ -9,12 +9,12 @@ class MariaLaComeSandias extends EscenaActividad {
     fondo;
 
     iniciar() {
-        this.fondo = new Fondo('fondos/fondo.MariaLaComeSandias.png',0,0);
+        this.fondo = new Fondo('fondo.mariaSandia.png',0,0);
         var cantidadFilas=5
         this.cantidadColumnas=6
         this.cuadricula = new Cuadricula(0,0,cantidadFilas,this.cantidadColumnas,
             {alto: 300,ancho:300,separacionEntreCasillas: 5},
-            {grilla: 'casillas/casilla.MariaSandia.png',
+            {grilla: 'casilla.mariaSandia.png',
             cantColumnas: 5})
         this.completarConSandias();
         this.automata = new MariaAnimada(0, 0);

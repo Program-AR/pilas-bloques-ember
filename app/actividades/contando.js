@@ -4,7 +4,7 @@ var {AccionBuilder} = bloques;
 var ContarBanana = AccionBuilder.build({
   id:'Contarbanana',
   descripcion: 'Contar una banana',
-  icono: 'iconos/icono.Banana.png',
+  icono: 'iconos.banana.png',
   comportamiento: 'ContarPorEtiqueta',
   argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
 });
@@ -12,7 +12,7 @@ var ContarBanana = AccionBuilder.build({
 var ContarManzana = AccionBuilder.build({
   id: 'Contarmanzana',
   descripcion: 'Contar una manzana',
-  icono: 'iconos/icono.Manzana.png',
+  icono: 'iconos.manzana.png',
   comportamiento: 'ContarPorEtiqueta',
   argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
 });

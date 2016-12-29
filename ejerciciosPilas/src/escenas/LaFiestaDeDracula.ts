@@ -14,10 +14,10 @@
    bailarines = [];
 
   iniciar() {
-    this.fondo = new Fondo('fondos/fondo.LaFiestaDeDracula.png',0,0);
+    this.fondo = new Fondo('fondo.fiestadracula.png',0,0);
     this.cuadricula = new Cuadricula(0, 200, 1, 3,
       { alto: 100 },
-      { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+      { grilla: 'invisible.png', cantColumnas: 1 });
 
     this.agregarAutomata();
     this.agregarFocos();

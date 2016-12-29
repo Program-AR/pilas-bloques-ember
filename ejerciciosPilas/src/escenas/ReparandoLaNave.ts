@@ -21,11 +21,11 @@ class ReparandoLaNave extends EscenaActividad {
   nave;
 
   iniciar() {
-    this.fondo = new Fondo('fondos/fondo.ReparandoLaNave.png',0,0);
+    this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
 
     this.cuadricula = new Cuadricula(0,0,4,5,
         {ancho:323,alto:261},
-        {grilla: 'casillas/casilla.Invisible.png',
+        {grilla: 'invisible.png',
         cantColumnas: 1});
 
     this.crearActores();

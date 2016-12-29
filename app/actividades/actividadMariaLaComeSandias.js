@@ -7,7 +7,7 @@ var {IrDerecha,IrIzquierda, IrArriba,IrAbajo} = direcciones;
 var MorderSandia = AccionBuilder.build({
   descripcion: 'Morder sandía',
   id: 'MorderSandia',
-  icono: 'iconos/icono.Sandia.png',
+  icono: 'icono.sandia.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
 });

@@ -8,7 +8,7 @@ import {Numero, OpComparacion, OpAritmetica} from 'pilas-engine-bloques/activida
 
 var PrenderFogata = AccionBuilder.build({
   descripcion: 'Prender fogata',
-  icono: 'iconos/icono.FogataApagada.png',
+  icono: 'icono.FogataApagada.png',
   comportamiento: 'DesencadenarAnimacionSiColisiona',
   argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
 });
@@ -16,7 +16,7 @@ var PrenderFogata = AccionBuilder.build({
 var TocandoFogata = AccionBuilder.buildSensor({
   id: 'tocandoFogata',
   descripcion: 'Hay fogata acá ',
-  icono: 'iconos/icono.FogataApagada.png',
+  icono: 'icono.FogataApagada.png',
   funcionSensor: 'tocando(\'FogataAnimada\')',
 });
 

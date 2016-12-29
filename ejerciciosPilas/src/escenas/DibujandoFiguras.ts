@@ -4,7 +4,7 @@
 class DibujandoFiguras extends EscenaActividad {
     pizarraFantasma;
     iniciar() {
-        this.fondo = new Fondo('fondos/fondo.DibujandoFiguras.png',0,0);
+        this.fondo = new Fondo('fondo.dibujando.figuras.png',0,0);
         this.automata = new Dibujante();
         this.automata.escala = 0.5;
         this.automata.x = -150;

@@ -4,7 +4,7 @@ var {AccionBuilder, Repetir, Procedimiento} = bloques;
 var Saltar = AccionBuilder.build({
   descripcion: 'Saltar',
   id: 'saltar1',
-  icono: 'iconos/icono.Arriba.png',
+  icono: '../../iconos/arriba.png',
   comportamiento: 'SaltarHablando',
   argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
 });

@@ -16,11 +16,11 @@ class TresNaranjas extends EscenaActividad {
     cuadricula;
     objetos = [];
     iniciar() {
-        this.fondo = new Fondo('fondos/fondo.TresNaranjas.png',0,0);
+        this.fondo = new Fondo('fondo.tresNaranjas.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,1,4,
             {separacionEntreCasillas: 5},
-            {grilla: 'casillas/casilla.TresNaranjas.png', ancho:100,alto:100});
+            {grilla: 'casilla.tresNaranjas.png', ancho:100,alto:100});
 
         //se cargan los Naranjas
         var hayAlMenosUno = false;

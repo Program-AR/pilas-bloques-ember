@@ -4,56 +4,56 @@ var {AccionBuilder,Procedimiento} = bloques;
 
 var Saludar = AccionBuilder.build({
   descripcion: 'Saludar',
-  icono: 'iconos/icono.Saludar.png',
+  icono: 'icono.saludar.png',
   comportamiento: 'ComportamientoAnimado',
   argumentos: '{nombreAnimacion: "saludando", idTransicion: "saludar"}',
 });
 
 var AbrirOjos = AccionBuilder.build({
   descripcion: 'Abrir ojos',
-  icono: 'iconos/icono.AbrirOjos.png',
+  icono: 'icono.abrirOjos.png',
   comportamiento: 'AnimarSiNoEstoyYa',
   argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true, idTransicion: "abrirOjos"}',
 });
 
 var CerrarOjos = AccionBuilder.build({
   descripcion: 'Cerrar ojos',
-  icono: 'iconos/icono.CerrarOjos.png',
+  icono: 'icono.cerrarOjos.png',
   comportamiento: 'AnimarSiNoEstoyYa',
   argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados", idTransicion: "cerrarOjos"}',
 });
 
 var Acostarse = AccionBuilder.build({
   descripcion: 'Acostarse',
-  icono: 'iconos/icono.Acostarse.png',
+  icono: 'icono.acostarse.png',
   comportamiento: 'ModificarRotacionYAltura',
   argumentos: '{alturaIr: -180 ,rotacionIr: 90, nombreAnimacion:"acostado", valorEstar: "acostado", descripcionEstar: "posicionCuerpo", idTransicion: "acostarse"}',
 });
 
 var Pararse = AccionBuilder.build({
   descripcion: 'Pararse',
-  icono: 'iconos/icono.Pararse.png',
+  icono: 'icono.pararse.png',
   comportamiento: 'ModificarRotacionYAltura',
   argumentos: '{alturaIr: -150 ,rotacionIr: 0, nombreAnimacion:"acostado", valorEstar: "parado", descripcionEstar: "posicionCuerpo", arrancoAsi:true, idTransicion: "levantarse"}',
 });
 
 var Volver = AccionBuilder.build({
   descripcion: 'Volver',
-  icono: 'iconos/icono.Izquierda.png',
+  icono: '../../iconos/izquierda.png',
   comportamiento: 'MovimientoAnimado',
   argumentos: '{direccion: new Direct(-1,0), distancia: 50, idTransicion: "volver"}',
 });
 
 var Avanzar = AccionBuilder.build({
   descripcion: 'Avanzar',
-  icono: 'iconos/icono.Derecha.png',
+  icono: '../../iconos/derecha.png',
   comportamiento: 'MovimientoAnimado',
   argumentos: '{direccion: new Direct(1,0), distancia: 50, idTransicion: "avanzar"}',
 });
 
 var Soniar = AccionBuilder.build({
   descripcion: 'Soñar',
-  icono: 'iconos/icono.Soniar.png',
+  icono: 'icono.soniar.png',
   comportamiento: 'Pensar',
   argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
 });

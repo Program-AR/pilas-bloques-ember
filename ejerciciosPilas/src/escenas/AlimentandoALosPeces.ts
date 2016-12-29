@@ -11,7 +11,7 @@ class AlimentandoALosPeces extends EscenaActividad {
     iniciar() {
         this.cantidadFilas=4
         this.cantidadColumnas=5
-        this.fondo = new Fondo('fondos/fondo.AlimentandoLosPeces.png',0,0);
+        this.fondo = new Fondo('fondo.alimentando_peces.png.png',0,0);
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas,this.cantidadColumnas,
             {ancho:328,alto:262},
             {grilla: 'invisible.png',
@@ -20,7 +20,7 @@ class AlimentandoALosPeces extends EscenaActividad {
         this.automata = new BuzoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata,this.cantidadFilas-1, 0);
         this.automata.aprender(Flotar, { Desvio: 2 });
-
+        
         this.alimento = new AlimentoAnimado(0,0)
         this.cuadricula.agregarActor(this.alimento,1,this.cantidadColumnas-1)
         this.colocarPeces();

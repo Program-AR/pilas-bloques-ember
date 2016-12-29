@@ -12,10 +12,10 @@ class LaEleccionDelMono extends EscenaActividad {
     cuadricula;
     iniciar() {
         this.estado = new Estado(() => this.cantidadObjetosConEtiqueta('BananaAnimada')==0 && this.cantidadObjetosConEtiqueta('ManzanaAnimada')==0 && this.automata.casillaActual().sos(0,1));
-        this.fondo = new Fondo('fondos/fondo.Selva.png',0,0);
+        this.fondo = new Fondo('fondos.selva.png',0,0);
         this.cuadricula = new Cuadricula(0,0,1,2,
             {alto: 200},
-            {grilla: 'casillas/casilla.Violeta.png',
+            {grilla: 'casillas.violeta.png',
             cantColumnas: 1})
 
         this.automata =  new  MonoAnimado(0,0);

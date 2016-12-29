@@ -12,11 +12,11 @@ class TitoEnciendeLuces extends EscenaActividad {
     objetos = [];
 
     iniciar() {
-        this.fondo = new Fondo('fondos/fondo.Estrellas.png',0,0);
+        this.fondo = new Fondo('fondos.estrellas.png',0,0);
 
         this.cuadricula = new Cuadricula(0,0,5,6,
             {separacionEntreCasillas: 5},
-            {grilla: 'casillas/casilla.GrisOscuro.png',
+            {grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, alto: 50, ancho:50});
 
 

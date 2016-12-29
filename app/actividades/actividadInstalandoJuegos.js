@@ -4,7 +4,7 @@ var {AccionBuilder,  Repetir, Procedimiento} = bloques;
 var SiguienteCompu = AccionBuilder.build({
   descripcion: 'Pasar a la siguiente compu',
   id: 'SiguienteCompu',
-  icono: 'iconos/icono.Derecha.png',
+  icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
 });
@@ -12,7 +12,7 @@ var SiguienteCompu = AccionBuilder.build({
 var PrenderCompu = AccionBuilder.build({
   descripcion: 'Prender compu',
   id: 'PrenderCompu',
-  icono: 'iconos/icono.Computadora.png',
+  icono: 'icono.computadora.png',
   comportamiento: 'PrenderCompuParaInstalar',
   argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'prender\',\'animacionColisionado\' : \'prendida\',\'nombreAnimacion\' : \'escribir\'  }',
 });
@@ -20,7 +20,7 @@ var PrenderCompu = AccionBuilder.build({
 var ApagarCompu = AccionBuilder.build({
   descripcion: 'Apagar compu',
   id: 'ApagarCompu',
-  icono: 'iconos/icono.Computadora.png',
+  icono: 'icono.computadora.png',
   comportamiento: 'DesencadenarAnimacionSiColisiona',
   argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'apagar\',\'animacionColisionado\' : \'parado\',\'nombreAnimacion\' : \'escribir\'  }',
 });

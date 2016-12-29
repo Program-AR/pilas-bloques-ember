@@ -10,15 +10,15 @@ class FutbolRobots  extends EscenaActividad{
   cantidadFilas;
 
   iniciar() {
-      this.fondo = new Fondo('fondos/fondo.FutbolParaRobots.png',0,0);
+      this.fondo = new Fondo('fondos.futbolRobots.png',0,0);
       this.cantidadFilas=8;
 
       this.cuadricula = new CuadriculaMultiple(
         new DefinidorColumnasRandom(this.cantidadFilas,6),
         0,-50,
         {separacionEntreCasillas: 5},
-        {grilla:'casillas/casilla.FutbolParaRobots2.png', alto:40,ancho:40})
-      this.cuadricula.cambiarImagenInicio('casillas/casilla.FutbolParaRobots1.png');
+        {grilla:'casilla.futbolRobots2.png', alto:40,ancho:40})
+      this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
 
       this.automata = new RobotAnimado(0, 0);
       this.cuadricula.agregarActor(this.automata,0,0);

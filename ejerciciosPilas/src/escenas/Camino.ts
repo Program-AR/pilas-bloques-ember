@@ -30,7 +30,7 @@ escalarCasillasCuadradas(){
     }else{
       this.opcionesCasilla['alto']=this.opcionesCasilla['ancho']
     }
-    this.opcionesCasilla['grilla']='casillas/casilla.FinCamino.png';
+    this.opcionesCasilla['grilla']='finCamino.png';
     this.opcionesCasilla['cantColumnas']= 1
     this.opcionesCuadricula['ancho']=this.opcionesCasilla['ancho']*(this.cantidadColumnas);
     this.opcionesCuadricula['alto']=this.opcionesCasilla['alto']*(this.cantidadFilas);
@@ -47,7 +47,7 @@ escalarCasillasCuadradas(){
     for(var i = 0; i < cuadricula.casillas.length -1; i++){
       cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
     }
-    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('casillas/casilla.FinCamino.png', 1, 4);
+    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
     var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
     llegada.definirAnimacion('->', [0], 1);
     llegada.definirAnimacion('^', [3], 1);
@@ -133,7 +133,7 @@ class CuadriculaParaRaton extends Camino{
     {
       var largo_min = opciones['largo_min'];
       var largo_max = opciones['largo_max'];
-
+      
       if(largo_min < 1)
       {
         throw new ArgumentError("El largo debe ser al menos 1");
@@ -143,7 +143,7 @@ class CuadriculaParaRaton extends Camino{
       {
         throw new ArgumentError("El largo minimo supera al maximo posile");
       }
-
+        
       if(largo_max < largo_min)
       {
         throw new ArgumentError("El largo debe maximo debe ser >= al minimo");
@@ -152,7 +152,7 @@ class CuadriculaParaRaton extends Camino{
       if(largo_max > maxAbj+maxDer+1)
       {
         throw new ArgumentError("El largo maximo supera al maximo posile");
-      }
+      }  
     }
   }
 
@@ -180,11 +180,11 @@ class CuadriculaParaRaton extends Camino{
 
     this.validarOpcionesCuadricula(opcionesCuadricula, cantMovAbj, cantMovDer);
     var nMovimientos = this.calcularCantidadMovimientos(opcionesCuadricula, cantMovAbj, cantMovDer);
-
+    
     var a=Array.apply(null, new Array(cantMovDer)).map(function(){return '->'})
     var b=Array.apply(null, new Array(cantMovAbj)).map(function(){return 'v'})
     var aDevolver = a.concat(b);
-
+    
     return this.shuffleArray(aDevolver).slice(0, nMovimientos);
   }
 

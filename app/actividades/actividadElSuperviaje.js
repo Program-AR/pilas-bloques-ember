@@ -2,7 +2,7 @@ import {AccionBuilder, Repetir, RepetirVacio, Si, Sino, Hasta, Procedimiento} fr
 
 var Avanzar1km = AccionBuilder.build({
   descripcion: 'Avanzar 1 Km',
-  icono: 'iconos/icono.Derecha.png',
+  icono: '../../iconos/derecha.png',
   comportamiento: 'VolarHeroicamente',
   argumentos: '{}',
 });
@@ -10,7 +10,7 @@ var Avanzar1km = AccionBuilder.build({
 var KmsTotales = AccionBuilder.buildSensorNumerico({
    id: 'KmsTotales',
    descripcion: 'Kilómetros a recorrer',
-   icono: 'iconos/icono.Kms.png',
+   icono: 'icono.kms.png',
    funcionSensor: 'kmsTotales()',
  });
 

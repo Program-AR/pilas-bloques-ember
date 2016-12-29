@@ -4,7 +4,7 @@ var {AccionBuilder, Repetir, Si, Sino, Procedimiento, Hasta} = bloques;
 var PrimerSospechoso = AccionBuilder.build({
   id: 'Primersospechoso',
   descripcion: 'Ir al primer sospechoso',
-  icono: 'iconos/icono.Izquierda.png',
+  icono: '../../iconos/izquierda.png',
   comportamiento: 'MoverTodoAIzquierda',
   argumentos: '{}',
 });
@@ -12,7 +12,7 @@ var PrimerSospechoso = AccionBuilder.build({
 var SiguienteSospechoso = AccionBuilder.build({
   id: 'Siguientesospechoso',
   descripcion: 'Pasar al siguiente sospechoso',
-  icono: 'iconos/icono.Derecha.png',
+  icono: '../../iconos/derecha.png',
   comportamiento: 'MoverACasillaDerecha',
   argumentos: '{}',
 });
@@ -20,7 +20,7 @@ var SiguienteSospechoso = AccionBuilder.build({
 var SacarDisfraz = AccionBuilder.build({
   descripcion: 'Interrogar sospechoso',
   id: 'Sacardisfraz',
-  icono: 'iconos/icono.SacarDisfraz.png',
+  icono: 'icono.sacar.disfraz.png',
   comportamiento: 'SacarDisfraz',
   argumentos: '{}',
 });
@@ -28,7 +28,7 @@ var SacarDisfraz = AccionBuilder.build({
 var EsCulpable = AccionBuilder.buildSensor({
   id: 'Descubralculpable',
   descripcion: 'Estoy frente al culpable',
-  icono: 'iconos/icono.Culpable.png',
+  icono: 'icono.culpable.png',
   funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
 });
 

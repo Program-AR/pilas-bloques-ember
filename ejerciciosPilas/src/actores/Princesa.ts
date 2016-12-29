@@ -8,12 +8,12 @@ class Princesa extends ActorAnimado {
     }
 
     nombreArchivo(){
-        return 'actores/actor.Princesa.png';
+        return 'princesa.png';
     }
 }
 
 class Principe extends Princesa {
   nombreArchivo(){
-    return 'actores/actor.Principe.png';
+    return 'principe.png';
   }
 }

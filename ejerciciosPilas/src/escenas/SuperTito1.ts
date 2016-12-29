@@ -21,10 +21,10 @@ class SuperTito1 extends EscenaActividad {
         this.objetos = [];
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas(),1,
             {separacionEntreCasillas: 5},
-            {grilla: 'casillas/casilla.GrisOscuro.png',
+            {grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1,  ancho:100, alto:50});
-        this.cuadricula.casilla(this.cantidadFilas()-1,0).cambiarImagen('casillas/casilla.TitoFinalizacion.png');
-
+        this.cuadricula.casilla(this.cantidadFilas()-1,0).cambiarImagen('casilla.titoFinalizacion.png');
+        
         for (let i = 0; i < this.cantidadFilas()-1; i++) {
             this.agregarLamparinEnFila(i);
         }
@@ -36,7 +36,7 @@ class SuperTito1 extends EscenaActividad {
 
     }
 
-    cantidadFilas() {
+    cantidadFilas() { 
         if (!this.cantFilas) this.cantFilas = Math.floor((Math.random() * 5) + 3);
         return this.cantFilas;
     }
@@ -49,7 +49,7 @@ class SuperTito1 extends EscenaActividad {
     }
 
     pathFondo(){
-        return 'fondos/fondo.SuperTito1.png';
+        return 'fondo.superTito1.png';
     }
 
     estaResueltoElProblema() {

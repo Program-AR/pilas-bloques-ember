@@ -7,7 +7,7 @@ var {IrDerecha, IrIzquierda, IrArriba, IrAbajo} = direcciones;
 var LevantarTuerca = AccionBuilder.build({
   descripcion: 'Levantar tuerca',
   id: 'LevantaTuerca',
-  icono: 'iconos/icono.Tuerca.png',
+  icono: 'tuerca.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
 });

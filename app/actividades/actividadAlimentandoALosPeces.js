@@ -6,7 +6,7 @@ var {IrDerecha,IrIzquierda,IrAbajo,IrArriba} = direcciones;
 var AlimentarPez = AccionBuilder.build({
   descripcion: 'Alimentar pez',
   id: 'AlimentarPez',
-  icono: 'iconos/icono.Pez.png',
+  icono: 'icono.pez.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
 });
@@ -14,7 +14,7 @@ var AlimentarPez = AccionBuilder.build({
 var AgarrarComida = AccionBuilder.build({
   descripcion: 'Agarrar comida',
   id: 'AgarrarComida',
-  icono: 'iconos/icono.AlimentoPez.png',
+  icono: 'icono.alimento_pez.png',
   comportamiento: 'RecogerPorEtiqueta',
   argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
 });
