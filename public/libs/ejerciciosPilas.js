@@ -392,6 +392,9 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.getAlto = function () {
         return this.subactores[0].getAlto();
     };
+    ActorCompuesto.prototype.colisiona_con = function (objeto) {
+        return this.subactores[0].colisiona_con(objeto);
+    };
     return ActorCompuesto;
 })(ActorAnimado);
 var ImitarAtributosNumericos2 = (function (_super) {
@@ -2934,6 +2937,14 @@ var Escapar = (function (_super) {
             this.receptor.agregarSubactor(this.argumentos.escaparCon);
         _super.prototype.preAnimacion.call(this);
     };
+    Escapar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.estaEnTransporte(); }, "Para escapar hace falta un transporte"));
+    };
+    Escapar.prototype.estaEnTransporte = function () {
+        return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
+    };
     return Escapar;
 })(MovimientoAnimado);
 /// <reference path = "MovimientoAnimado.ts"/>
@@ -4971,7 +4982,7 @@ var SuperTito1 = (function (_super) {
         return 'fondo.superTito1.png';
     };
     SuperTito1.prototype.estaResueltoElProblema = function () {
-        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
+        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; }) && this.automata.alFinalDelCamino();
     };
     return SuperTito1;
 })(EscenaActividad);
