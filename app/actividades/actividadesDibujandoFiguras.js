@@ -69,7 +69,7 @@ var GirarGrados = Accion.extend({
                 nombre_param: 'grados',
                 tipo_bloque: 'math_number',
                 nombre_valor: 'NUM',
-                valor: '45'
+                valor: '90'
             })
         ];
     }
