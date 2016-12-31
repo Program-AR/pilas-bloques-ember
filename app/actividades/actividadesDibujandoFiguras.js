@@ -78,31 +78,31 @@ var GirarGrados = Accion.extend({
 // ---------------------------------------------------------------------------
 var actividadesDibujando = [
   {
-    id: 'DibujandoCuadrado'
+    id: 'DibujandoAlCuadrado'
   },
   {
-    id: 'Dibujando5CuadradosHorizontal'
+    id: 'DibujandoRayuelaRobotica'
   },
   {
-    id: 'Dibujando5CuadradosDiagonal'
+    id: 'DibujandoCortoPorLaDiagonal'
   },
   {
-    id: 'Dibujando4CuadradosInteriores'
+    id: 'DibujandoMamushkaCuadrada'
   },
   {
-    id: 'DibujandoCabezaElefante'
+    id: 'DibujandoEscaleraCuadrada'
   },
   {
     id: 'DibujandoHexagono'
   },
   {
-    id: 'DibujandoTrianguloEquilatero'
+    id: 'DibujandoPiramideInvertida'
   },
   {
-    id: 'DibujandoPoligonosInteriores'
+    id: 'DibujandoFigurasDentroDeFiguras'
   },
   {
-    id: 'DibujandoCuevaEstalagtitas'
+    id: 'DibujandoLaCuevaDeEstalagtitas'
   },
 ];
 
