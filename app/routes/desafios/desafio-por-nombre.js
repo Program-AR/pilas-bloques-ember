@@ -13,7 +13,7 @@ export default Ember.Route.extend({
       let model = data.findBy('nombre', params.nombreDelDesafio);
 
       if (!model) {
-        throw new Error(`No existe una actividad con el nombre ${params.nombre}`);
+        throw new Error(`No existe una actividad con el nombre ${params.nombreDelDesafio}`);
       }
 
       return this.transitionTo("desafio", model);

@@ -290,7 +290,7 @@ export default [
   {
     id: 29,
     grupoId: 5,
-    nombre: 'DibujandoCuadrado',
+    nombre: 'DibujandoAlCuadrado',
     titulo: 'Dibujando: Al cuadrado',
     enunciado: 'Dibujá un cuadrado que tenga 100 de lado.',
     consignaInicial: '',
@@ -300,7 +300,7 @@ export default [
   {
     id: 30,
     grupoId: 5,
-    nombre: 'Dibujando5CuadradosHorizontal',
+    nombre: 'DibujandoRayuelaRobotica',
     titulo: 'Dibujando: Rayuela robótica',
     enunciado: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.',
     consignaInicial: '',
@@ -310,7 +310,7 @@ export default [
   {
     id: 31,
     grupoId: 5,
-    nombre: 'Dibujando5CuadradosDiagonal',
+    nombre: 'DibujandoCortoPorLaDiagonal',
     titulo: 'Dibujando: Corto por la diagonal',
     enunciado: 'Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.',
     consignaInicial: '',
@@ -320,7 +320,7 @@ export default [
   {
     id: 32,
     grupoId: 5,
-    nombre: 'Dibujando4CuadradosInteriores',
+    nombre: 'DibujandoMamushkaCuadrada',
     titulo: 'Dibujando: Mamushka cuadrada',
     enunciado: 'Dibujá 4 cuadrados de lados 50, 100, 150 y 200, como muestra la figura sombreada. Pista: creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado.',
     consignaInicial: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.',
@@ -330,7 +330,7 @@ export default [
   {
     id: 33,
     grupoId: 5,
-    nombre: 'DibujandoCabezaElefante',
+    nombre: 'DibujandoEscaleraCuadrada',
     titulo: 'Dibujando: Escalera cuadrada',
     enunciado: 'Dibujá 5 cuadros de lado 50 y uno de 100, como muestra la figura sombreada.',
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
@@ -350,7 +350,7 @@ export default [
   {
     id: 35,
     grupoId: 5,
-    nombre: 'DibujandoTrianguloEquilatero',
+    nombre: 'DibujandoPiramideInvertida',
     titulo: 'Dibujando: Pirámide invertida',
     enunciado: 'Dibujá un triángulo equilátero de lado 100, como muestra la figura sombreada. Pista: pensá si existe una relación entre los ángulos y la cantidad de lados.',
     consignaInicial: 'En los polígonos, la suma de todos los ángulos externos es 360',
@@ -360,7 +360,7 @@ export default [
   {
     id: 36,
     grupoId: 5,
-    nombre: 'DibujandoPoligonosInteriores',
+    nombre: 'DibujandoFigurasDentroDeFiguras',
     titulo: 'Dibujando: Figuras dentro de figuras',
     enunciado: 'Dibujá un triángulo, un cuadrado y un hexágono de lados 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados.',
     consignaInicial: 'Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
@@ -370,7 +370,7 @@ export default [
   {
     id: 37,
     grupoId: 5,
-    nombre: 'DibujandoCuevaEstalagtitas',
+    nombre: 'DibujandoLaCuevaDeEstalagtitas',
     titulo: 'Dibujando: La cueva de estalagtitas',
     enunciado: 'Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.',
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',

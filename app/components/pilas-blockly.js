@@ -53,11 +53,12 @@ export default Ember.Component.extend({
 
     if (this.get("persistirSolucionEnURL")) {
       Blockly.addChangeListener(() => {
-        this.guardarEnURL();
-        this.generarCodigoTemporal();
+        Ember.run(this, function() {
+          this.guardarEnURL();
+          this.generarCodigoTemporal();
+        });
       });
     }
-
 
     if (this.get("debeMostrarFinDeDesafio")) {
       this.get('pilas').on('terminaEjecucion', () => {
