@@ -69,11 +69,33 @@ https://travis-ci.org/Program-AR/pilas-bloques
 
 Notas de versión
 ---------
-
+* 1.1.0
+ * Se agregó un notificador de nueva versión para descargar.
+ * Se hicieron arreglos sobre las animaciones y chequeos de actividad completada en: El gato en la calle, Tres naranjas, La gran aventura del mar encantado, Instalando Juegos, Tito (en todos sus sabores) y más.
+* 1.0.9
+ * Para testeo se deployan automáticamente en Travis dos ramas: master y develop.
+* 1.0.8
+  * Se unifica la creación interna de bloques utilizando siempre AccionBuilder
+  * Se migran tests unitarios de ejerciciosPilas
+* 1.0.7
+  * Se agrega un deslizador para que se pueda ajustar manualmente el tamaño de la escena.
+* 1.0.4
+  * Se realizan las primeras pruebas en Travis.
+* 1.0.3
+  * Se agrega pilasweb como dependencia de Bower.
+  * Correcciones al Detective Chaparro y a Laberinto Con Queso.
+  * Se integra a Git toda la historia del repositorio ejerciciosPilas.
 * 1.0.1
- * Migramos la aplicación offline de node-webkit a electron.
- * Mejoras generales en links externos y la integración con el sistema.
- * Haciendo adaptable el diseño visual de la aplicación.
+ * Se migró la aplicación offline de Node-Webkit a Electron.
+ * Se cambiaron las actividades de Parametrización para que usen valores direcciones en vez de comparar por Strings.
+ * Se realizaron mejoras generales en links externos y la integración con el sistema.
+ * Se hizo adaptable el diseño visual de la aplicación
+ * Se agrega el código actual a la URL para que en un refresh no se pierda lo programado.
+ * Se hizo que Pilas Web esté contenido en un iframe, lo que hace más prolijo el estado de Javascript de la página.
+ * Se comenzó la migración de actividades a models de ember (usando mirage).
+ * Se mejoró el framework de testeo de integración.
+ * Se actualizó el Acerca De.
+ * Cambio a NodeJS 4
 
 * 1.0.0
  * Incluye todos los desafíos hasta Parametrización Inclusive. Entonces, Pilas Bloques abarca todas las actividades del manual para docentes "La programación y su didáctica" sin el último capítulo (Interactividad).
