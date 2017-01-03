@@ -7,6 +7,7 @@ Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por de
 */
 class Sostener extends ComportamientoColision {
   preAnimacion(){
+    super.preAnimacion();
     this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
   }
 
@@ -47,14 +48,14 @@ class Soltar extends ComportamientoColision {
     super.configurarVerificaciones();
     this.verificacionesPre.push(
     new Verificacion(
-         () => this.sostieneLoQueCorresponde(), 
+         () => this.sostieneLoQueCorresponde(),
         "No tengo " + this.hacerLegible(this.argumentos.queSoltar) + " en la mano")
       );
   }
 
   sostieneLoQueCorresponde(){
-     return this.argumentos.queSoltar ? 
-       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) : 
+     return this.argumentos.queSoltar ?
+       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
        this.receptor.tieneAlgoEnLaMano();
   }
 

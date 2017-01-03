@@ -1866,6 +1866,8 @@ var HeroeAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: this.nombreArchivo(), cantColumnas: 6, cantFilas: 5 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
         this.definirAnimacion("parado", [0], 6, true);
+        this.definirAnimacion("agarrarSombrero", [15, 14, 13, 12, 12, 12, 12], 6);
+        this.definirAnimacion("cambiarSombreroPorEspada", [12, 13, 14, 15, 4, 4, 4, 4, 4, 4, 9, 8, 7, 6], 6);
         this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
         this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
         this.definirAnimacion("atacar", new Cuadros([24, 25, 26, 27, 28, 29]).repetirVeces(3), 6);
@@ -1936,6 +1938,7 @@ var LlaveAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: 'llaveAnimada.png', cantColumnas: 1 });
         this.definirAnimacion("recoger", [1], 12);
         this.definirAnimacion("correr", [1], 12);
+        this.definirAnimacion("parado", [1], 12, true);
     }
     return LlaveAnimado;
 })(ActorAnimado);
@@ -2505,6 +2508,7 @@ var EstadoConTransicion = (function (_super) {
     EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
         if (!this.puedoTransicionarA(idTransicion))
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
+        console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
     EstadoConTransicion.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
@@ -2663,11 +2667,14 @@ var ComportamientoColision = (function (_super) {
     };
     ComportamientoColision.prototype.postAnimacion = function () {
         var objetoTocado = this.objetoTocado();
-        if (this.argumentos['animacionColisionado'])
-            objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
         if (this.argumentos['comportamientoAdicional'])
             objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'], this.argumentos['argumentosComportamiento']);
         this.metodo(objetoTocado);
+    };
+    ComportamientoColision.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
+        if (this.argumentos['animacionColisionado'])
+            this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionado']);
     };
     ComportamientoColision.prototype.colisiona = function () {
         var _this = this;
@@ -3269,6 +3276,7 @@ var Sostener = (function (_super) {
         _super.apply(this, arguments);
     }
     Sostener.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
         this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
     };
     Sostener.prototype.metodo = function (objetoColision) {

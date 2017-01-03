@@ -17,7 +17,7 @@ var AbrirCofre = AccionBuilder.build({
   descripcion: 'Abrir el cofre',
   icono: 'icono.cofre.png',
   comportamiento: 'Soltar',
-  argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}',
+  argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}', //nombreAnimacion:"agarrarSombrero"
 });
 
 var DarSombrero = AccionBuilder.build({
@@ -25,7 +25,7 @@ var DarSombrero = AccionBuilder.build({
   descripcion: 'Dar el sombrero',
   icono: 'icono.sombrero.png',
   comportamiento: 'ComportamientoColision',
-  argumentos: '{etiqueta:"MagoAnimado", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
+  argumentos: '{etiqueta:"MagoAnimado", nombreAnimacion:"cambiarSombreroPorEspada", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
 });
 
 var AtacarConEspada = AccionBuilder.build({
