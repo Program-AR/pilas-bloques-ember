@@ -213,5 +213,6 @@ class EstadoParaContarBuilder extends BuilderStatePattern {
         estado.cant += 1;
         return estado.cant === cantidadEsperada
       });
+    this.agregarError('llegue',idTransicion,'Ya no hay más para ' + idTransicion);
   }
 }

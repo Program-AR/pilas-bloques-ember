@@ -2508,7 +2508,7 @@ var EstadoConTransicion = (function (_super) {
     EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
         if (!this.puedoTransicionarA(idTransicion))
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
-        console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
+        //console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
     EstadoConTransicion.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
@@ -2630,6 +2630,7 @@ var EstadoParaContarBuilder = (function (_super) {
             estado.cant += 1;
             return estado.cant === cantidadEsperada;
         });
+        this.agregarError('llegue', idTransicion, 'Ya no hay más para ' + idTransicion);
     }
     return EstadoParaContarBuilder;
 })(BuilderStatePattern);
