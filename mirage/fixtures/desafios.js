@@ -119,9 +119,9 @@ export default [
               '3) Entregarle el sombrero al mago para recibir la espada a cambio.\n'+
               '4) Luchar con la espada contra el caballero oscuro.\n'+
               '5) Escapar en unicornio.',
-    consignaInicial: '',
     escena: 'LaGranAventuraDelMarEncantado',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'Escaparenunicornio', 'repetir', 'Procedimiento'],
   },
   {
     id: 12,

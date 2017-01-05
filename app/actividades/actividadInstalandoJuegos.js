@@ -1,5 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-
 var actividadInstalandoJuegos = {
   // DEPRECATED: nombre: 'Instalando juegos',
   id: 'InstalandoJuegos',

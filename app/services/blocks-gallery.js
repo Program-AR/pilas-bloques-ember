@@ -341,6 +341,52 @@ export default Ember.Service.extend({
       argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirA\'}',
     });
 
+    this.crearBloqueAccion('Agarrarllave', {
+      descripcion: 'Agarrar la llave',
+      icono: 'icono.llave.png',
+      comportamiento: 'Sostener',
+      argumentos: '{etiqueta:"LlaveAnimado", idTransicion:"agarrarLlave"}',
+    });
+
+    this.crearBloqueAccion('Abrircofre', {
+      descripcion: 'Abrir el cofre',
+      icono: 'icono.cofre.png',
+      comportamiento: 'Soltar',
+      argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}',
+    });
+
+    this.crearBloqueAccion('Darsombrero', {
+      descripcion: 'Dar el sombrero',
+      icono: 'icono.sombrero.png',
+      comportamiento: 'ComportamientoColision',
+      argumentos: '{etiqueta:"MagoAnimado", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
+    });
+
+    this.crearBloqueAccion('Atacarconespada', {
+      id: 'Atacarconespada',
+      descripcion: 'Atacar con la espada',
+      icono: 'icono.espada.png',
+      comportamiento: 'SecuenciaAnimada',
+      argumentos: `{idTransicion: "atacarConEspada", secuencia: [
+        {
+          comportamiento: "ComportamientoColision",
+          argumentos: {etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}
+        },
+        {
+          comportamiento: "Sostener",
+          argumentos: {etiqueta:"Principe"}
+        }
+      ]}`,
+    });
+
+    this.crearBloqueAccion('Escaparenunicornio', {
+      descripcion: 'Escapar en unicornio',
+      icono: 'icono.unicornio.png',
+      comportamiento: 'Escapar',
+      argumentos: '{escaparCon: "unicornio"}',
+    });
+
+
   },
 
   _definirBloquesAlias() {

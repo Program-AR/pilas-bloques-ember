@@ -2933,8 +2933,12 @@ var Escapar = (function (_super) {
         this.argumentos.distancia = 600;
         this.argumentos.velocidad = 8;
         this.argumentos.cantPasos = 40;
-        if (this.argumentos.escaparCon)
+        if (this.argumentos.escaparCon) {
+            if (typeof this.argumentos.escaparCon == 'string') {
+                this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
+            }
             this.receptor.agregarSubactor(this.argumentos.escaparCon);
+        }
         _super.prototype.preAnimacion.call(this);
     };
     return Escapar;
@@ -3184,6 +3188,13 @@ var SecuenciaAnimada = (function (_super) {
         _super.apply(this, arguments);
     }
     SecuenciaAnimada.prototype.iniciar = function (receptor) {
+        // Ver bloques de la gran aventura del mar encantado
+        for (var i in this.argumentos.secuencia) {
+            if (this.argumentos.secuencia[i].comportamiento) {
+                var comportamiento = eval(this.argumentos.secuencia[i].comportamiento);
+                this.argumentos.secuencia[i] = new comportamiento(this.argumentos.secuencia[i].argumentos);
+            }
+        }
         _super.prototype.iniciar.call(this, receptor);
         this.laSecuenciaPosta = new Secuencia(this.argumentos);
         this.laSecuenciaPosta.iniciar(receptor);
