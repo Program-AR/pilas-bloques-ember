@@ -27,7 +27,6 @@ export default Ember.Service.extend({
   crearBloqueAccion(nombre, opciones) {
     let blockly = this.get('blockly');
     let opcionesObligatorias = ['descripcion',
-                                'icono',
                                 'comportamiento',
                                 'argumentos'];
 
@@ -303,6 +302,45 @@ export default Ember.Service.extend({
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
+
+    this.crearBloqueAccion('SiguienteCompu', {
+      descripcion: 'Pasar a la siguiente compu',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('ApagarCompu', {
+      descripcion: 'Apagar compu',
+      icono: 'icono.computadora.png',
+      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'apagar\',\'animacionColisionado\' : \'parado\',\'nombreAnimacion\' : \'escribir\'  }',
+    });
+
+    this.crearBloqueAccion('InstalarJuego', {
+      descripcion: 'Instalar juego',
+      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'instalar\',\'animacionColisionado\' : \'instalado\',\'nombreAnimacion\' : \'escribir\'  }',
+    });
+
+    this.crearBloqueAccion('EscribirC', {
+      descripcion: 'Escribir "C"',
+      comportamiento: 'EscribirEnCompuAnimada',
+      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirC\'}',
+    });
+
+    this.crearBloqueAccion('EscribirB', {
+      descripcion: 'Escribir "B"',
+      comportamiento: 'EscribirEnCompuAnimada',
+      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirB\'}',
+    });
+
+    this.crearBloqueAccion('EscribirA', {
+      descripcion: 'Escribir "A"',
+      comportamiento: 'EscribirEnCompuAnimada',
+      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirA\'}',
+    });
+
   },
 
   _definirBloquesAlias() {

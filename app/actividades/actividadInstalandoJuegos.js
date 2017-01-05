@@ -1,57 +1,4 @@
 import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder,  Repetir, Procedimiento} = bloques;
-
-var SiguienteCompu = AccionBuilder.build({
-  descripcion: 'Pasar a la siguiente compu',
-  id: 'SiguienteCompu',
-  icono: '../../iconos/derecha.png',
-  comportamiento: 'MoverACasillaDerecha',
-  argumentos: '{}',
-});
-
-var PrenderCompu = AccionBuilder.build({
-  descripcion: 'Prender compu',
-  id: 'PrenderCompu',
-  icono: 'icono.computadora.png',
-  comportamiento: 'PrenderCompuParaInstalar',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'prender\',\'animacionColisionado\' : \'prendida\',\'nombreAnimacion\' : \'escribir\'  }',
-});
-
-var ApagarCompu = AccionBuilder.build({
-  descripcion: 'Apagar compu',
-  id: 'ApagarCompu',
-  icono: 'icono.computadora.png',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'apagar\',\'animacionColisionado\' : \'parado\',\'nombreAnimacion\' : \'escribir\'  }',
-});
-
-var InstalarJuego = AccionBuilder.build({
-  descripcion: 'Instalar juego',
-  id: 'InstalarJuego',
-  comportamiento: 'DesencadenarAnimacionSiColisiona',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'instalar\',\'animacionColisionado\' : \'instalado\',\'nombreAnimacion\' : \'escribir\'  }',
-});
-
-var EscribirC = AccionBuilder.build({
-  descripcion: 'Escribir "C"',
-  id: 'EscribirC',
-  comportamiento: 'EscribirEnCompuAnimada',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirC\'}',
-});
-
-var EscribirB = AccionBuilder.build({
-  descripcion: 'Escribir "B"',
-  id: 'EscribirB',
-  comportamiento: 'EscribirEnCompuAnimada',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirB\'}',
-});
-
-var EscribirA = AccionBuilder.build({
-  descripcion: 'Escribir "A"',
-  id: 'EscribirA',
-  comportamiento: 'EscribirEnCompuAnimada',
-  argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirA\'}',
-});
 
 var actividadInstalandoJuegos = {
   // DEPRECATED: nombre: 'Instalando juegos',
@@ -63,8 +10,6 @@ var actividadInstalandoJuegos = {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-
-  bloques: [Procedimiento, Repetir, SiguienteCompu,PrenderCompu,ApagarCompu,EscribirC,EscribirB,EscribirA,InstalarJuego],
 };
 
 export default actividadInstalandoJuegos;
