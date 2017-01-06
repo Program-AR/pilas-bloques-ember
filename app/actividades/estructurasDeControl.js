@@ -53,6 +53,7 @@ var Repetir = EstructuraDeControl.extend({
 
 /* ============================================== */
 
+/*
 var Si = EstructuraDeControl.extend({
 
   init() {
@@ -78,9 +79,11 @@ var Si = EstructuraDeControl.extend({
   }
 
 });
+*/
 
 /* ============================================== */
 
+/*
 var Sino = EstructuraDeControl.extend({
 
   init() {
@@ -112,6 +115,7 @@ var Sino = EstructuraDeControl.extend({
   }
 
 });
+*/
 
 /* ============================================== */
 
