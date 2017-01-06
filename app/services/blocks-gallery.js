@@ -537,8 +537,10 @@ export default Ember.Service.extend({
       },
       categoria: 'Alternativas',
     };
-    this.crearBloqueAlias('si', 'Si');
     
+    this.crearBloqueAlias('si', 'Si');
+    Blockly.Blocks['si'].categoria = 'Alternativas';
+
     Blockly.Blocks['SiNo'] = {
       init: function() {
         this.setColour('#ee7d16');
