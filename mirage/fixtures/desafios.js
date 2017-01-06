@@ -146,7 +146,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     actividad: null,
-    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'Si']
+    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'si']
   },
   {
     id: 14,
@@ -455,7 +455,7 @@ export default [
     escena: 'PrendiendoLasFogatas',
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
-    bloques: ['Procedimiento', 'repetir', 'Si', 'SiNo', 'Hasta',
+    bloques: ['Procedimiento', 'repetir', 'si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
       'Numero', 'OpComparacion', 'OpAritmetica',

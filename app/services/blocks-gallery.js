@@ -437,7 +437,6 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
     this.crearBloqueAlias('Booleano', 'logic_boolean');
-    this.crearBloqueAlias('si', 'Si');
   },
 
   _definirBloquesSensores() {
@@ -538,7 +537,8 @@ export default Ember.Service.extend({
       },
       categoria: 'Alternativas',
     };
-
+    this.crearBloqueAlias('si', 'Si');
+    
     Blockly.Blocks['SiNo'] = {
       init: function() {
         this.setColour('#ee7d16');
