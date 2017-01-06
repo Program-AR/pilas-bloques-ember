@@ -2926,7 +2926,7 @@ var Escapar = (function (_super) {
     }
     Escapar.prototype.iniciar = function (receptor) {
         this.argumentos.idTransicion = "escapar";
-        _super.prototype.iniciar.call(this, receptor);
+        _super.prototype.iniciar.call(this, this.receptor);
     };
     Escapar.prototype.preAnimacion = function () {
         this.argumentos.direccion = new Direct(1, 5);

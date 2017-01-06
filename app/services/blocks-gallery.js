@@ -386,7 +386,32 @@ export default Ember.Service.extend({
       argumentos: '{escaparCon: "unicornio"}',
     });
 
+    this.crearBloqueAccion('TomarHierro', {
+      descripcion: 'Agarrar hierro',
+      icono: 'icono.hierro.png',
+      comportamiento: 'Sostener',
+      argumentos: '{etiqueta: "HierroAnimado", nombreAnimacion: "recogerHierro"}',
+    });
 
+    this.crearBloqueAccion('TomarCarbon', {
+      descripcion: 'Agarrar carbón',
+      id: 'TomarCarbon',
+      icono: 'icono.carbon.png',
+      comportamiento: 'Sostener',
+      argumentos: '{etiqueta: "CarbonAnimado", nombreAnimacion: "recogerCarbon"}',
+    });
+
+    this.crearBloqueAccion('Depositar', {
+      descripcion: 'Poner en la nave',
+      comportamiento: 'Soltar',
+      argumentos: '{idTransicion: "depositar", etiqueta: "NaveAnimada"}',
+    });
+
+    this.crearBloqueAccion('Escapar', {
+      descripcion: 'Escapar',
+      comportamiento: 'Escapar',
+      argumentos: '{receptor: "nave", escaparCon: "automata"}',
+    });
   },
 
   _definirBloquesAlias() {
