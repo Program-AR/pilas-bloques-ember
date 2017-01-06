@@ -89,6 +89,10 @@ export default Ember.Service.extend({
       code: `receptor.${opciones.funcionSensor}`
     });
 
+    Blockly.MyLanguage[nombre] = function() {
+      return [`receptor.${opciones.funcionSensor}`, Blockly.JavaScript.ORDER_ATOMIC];
+    };
+
     bloque.categoria = "Sensores";
     return bloque;
   },
