@@ -12,9 +12,10 @@ module.exports = function(defaults) {
       }
     });
 
-app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+    app.import('bower_components/bootstrap/dist/css/bootstrap.css');
     app.import('vendor/acorn_interpreter.js');
     app.import('vendor/beautify.js');
+    app.import('vendor/utilidades_de_depuracion.js');
 
     process.setMaxListeners(1000);
 
