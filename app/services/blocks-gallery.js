@@ -45,10 +45,10 @@ export default Ember.Service.extend({
    * esos bloques en realidad se generan a partir de los bloques estándar
    * como 'controls_if'.
    */
-  crearBloqueAlias(nombre, nombreDelBloqueOriginal) {
+  crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria) {
     let blockly = this.get('blockly');
     let bloque = blockly.createAlias(nombre, nombreDelBloqueOriginal);
-    bloque.categoria = "Valores";
+    bloque.categoria = categoria || "Valores";
 
     return bloque;
   },
@@ -433,10 +433,10 @@ export default Ember.Service.extend({
   },
 
   _definirBloquesAlias() {
-    this.crearBloqueAlias('Numero', 'math_number');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
-    this.crearBloqueAlias('OpComparacion', 'logic_compare');
-    this.crearBloqueAlias('Booleano', 'logic_boolean');
+    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Valores');
+    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Valores');
+    this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
   },
 
   _definirBloquesSensores() {
@@ -524,6 +524,7 @@ export default Ember.Service.extend({
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
+    this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
 
     Blockly.Blocks['Si'] = {
       init: function() {
@@ -537,9 +538,8 @@ export default Ember.Service.extend({
       },
       categoria: 'Alternativas',
     };
-    
-    this.crearBloqueAlias('si', 'Si');
-    Blockly.Blocks['si'].categoria = 'Alternativas';
+
+    this.crearBloqueAlias('si', 'Si', 'Alternativas');
 
     Blockly.Blocks['SiNo'] = {
       init: function() {
@@ -556,6 +556,8 @@ export default Ember.Service.extend({
       },
       categoria: 'Alternativas',
     };
+
+    this.crearBloqueAlias('Sino', 'Sino', 'Alternativas');
 
     Blockly.Blocks['Hasta'] = {
       init: function() {
