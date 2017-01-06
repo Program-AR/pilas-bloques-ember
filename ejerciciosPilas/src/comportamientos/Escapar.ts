@@ -5,11 +5,11 @@ class Escapar extends MovimientoAnimado {
 
 	iniciar(receptor){
 		this.argumentos.idTransicion = "escapar";
-		super.iniciar(receptor);
+		super.iniciar(this.receptor);
 	}
 
 	preAnimacion(){
-	    this.argumentos.direccion = new Direct(1, 5);
+      this.argumentos.direccion = new Direct(1, 5);
 	    this.argumentos.distancia = 600;
 	    this.argumentos.velocidad = 8;
 	    this.argumentos.cantPasos = 40;

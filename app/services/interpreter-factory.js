@@ -85,6 +85,10 @@ export default Ember.Service.extend({
         comportamiento;
       `);
 
+      if(typeof params.receptor == 'string') {
+        params.receptor = pilasService.evaluar(`pilas.escena_actual().${params.receptor}`);
+      }
+
       actor.hacer_luego(clase_comportamiento, params);
       actor.hacer_luego(ComportamientoLlamarCallback, {callback});
     };
