@@ -505,6 +505,20 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
+    Blockly.Blocks['Hasta'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.setInputsInline(true);
+        this.appendValueInput('condition')
+            .setCheck('Boolean')
+            .appendField('Repetir hasta que');
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
   },
 
   _generarLenguaje() {
@@ -559,6 +573,15 @@ export default Ember.Service.extend({
         ${bloque_2}
       }`;
     };
+
+    Blockly.MyLanguage['Hasta'] = function(block) {
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
+      return `while (${condition}) {
+        ${contenido}
+      }`;
+    };
+
 
     Blockly.MyLanguage.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.MyLanguage.addReservedWords('highlightBlock');
