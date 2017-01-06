@@ -489,6 +489,22 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
+    Blockly.Blocks['SiNo'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.appendValueInput('condition')
+            .setCheck('Boolean')
+            .appendField('Si');
+        this.appendStatementInput('block1');
+        this.appendDummyInput()
+            .appendField('si no');
+        this.appendStatementInput('block2');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
   },
 
   _generarLenguaje() {
@@ -525,10 +541,22 @@ export default Ember.Service.extend({
     };
 
     Blockly.MyLanguage['Si'] = function(block) {
-      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `if (${condition}) {
         ${contenido}
+      }`;
+    };
+
+    Blockly.MyLanguage['SiNo'] = function(block) {
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var bloque_1 = Blockly.JavaScript.statementToCode(block, 'block1');
+      var bloque_2 = Blockly.JavaScript.statementToCode(block, 'block2');
+
+      return `if (${condition}) {
+        ${bloque_1}
+      } else {
+        ${bloque_2}
       }`;
     };
 
