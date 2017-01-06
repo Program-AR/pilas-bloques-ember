@@ -146,7 +146,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     actividad: null,
-    bloques: ['ComerBanana']
+    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'Si']
   },
   {
     id: 14,

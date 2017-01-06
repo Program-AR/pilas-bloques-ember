@@ -86,10 +86,14 @@ export default Ember.Service.extend({
           alt: "*"
         }
       ],
-      code: `receptor.${opciones.funcionSensor}`
+      code: ``
     });
-
+    // TODO: Arreglar generacion de codigo
     bloque.categoria = "Sensores";
+    Blockly.MyLanguage[nombre] = function(block) {
+      let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
+      return [codigo, Blockly.MyLanguage.ORDER_ATOM];
+    };
     return bloque;
   },
 
@@ -144,7 +148,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('ComerBanana', {
       descripcion: 'Comer banana',
-      icono: 'iconos.banana.png',
+      icono: 'icono.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
     });
@@ -412,6 +416,13 @@ export default Ember.Service.extend({
       comportamiento: 'Escapar',
       argumentos: '{receptor: "nave", escaparCon: "automata"}',
     });
+
+    this.crearBloqueAccion('AvanzarMono', {
+      descripcion: 'Mover a la derecha',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{velocidad: 25}',
+    });
   },
 
   _definirBloquesAlias() {
@@ -419,12 +430,12 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
     this.crearBloqueAlias('Booleano', 'logic_boolean');
+    this.crearBloqueAlias('si', 'Si');
   },
 
   _definirBloquesSensores() {
 
-    this.crearBloqueSensor('TocandoBanana', {
-      id: 'Tocandobanana',
+    this.crearBloqueSensor('Tocandobanana', {
       descripcion: 'Hay banana acá',
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
@@ -548,7 +559,7 @@ export default Ember.Service.extend({
 
   _generarLenguaje() {
     Blockly.MyLanguage = Blockly.JavaScript;
-    Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer');
+    Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
 
     Blockly.MyLanguage['al_empezar_a_ejecutar'] = function(block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');

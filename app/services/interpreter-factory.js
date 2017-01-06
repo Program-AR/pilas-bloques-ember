@@ -85,7 +85,7 @@ export default Ember.Service.extend({
         comportamiento;
       `);
 
-      if(typeof params.receptor == 'string') {
+      if(typeof params.receptor === 'string') {
         params.receptor = pilasService.evaluar(`pilas.escena_actual().${params.receptor}`);
       }
 
@@ -94,6 +94,16 @@ export default Ember.Service.extend({
     };
 
     interpreter.setProperty(scope, 'out_hacer', interpreter.createAsyncFunction(hacer_wrapper));
+
+    /**
+     * Llama a callback_cuando_ejecuta_bloque con el id del bloque en ejecucion.
+     */
+    function out_evaluar(expr) {
+      expr = expr ? expr.toString() : '';
+      return interpreter.createPrimitive(pilasService.evaluar("pilas.escena_actual().automata." + expr));
+    }
+
+    interpreter.setProperty(scope, 'evaluar', interpreter.createNativeFunction(out_evaluar));
 
     /**
      * Llama a callback_cuando_ejecuta_bloque con el id del bloque en ejecucion.

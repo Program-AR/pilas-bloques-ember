@@ -1,21 +1,3 @@
-import bloques from 'pilas-engine-bloques/actividades/bloques';
-var {AccionBuilder, Repetir, Si, Procedimiento} = bloques;
-
-var Avanzar = AccionBuilder.build({
-  id: 'Avanzar',
-  descripcion: 'Mover a la derecha',
-  icono: '../../iconos/derecha.png',
-  comportamiento: 'MoverACasillaDerecha',
-  argumentos: '{velocidad: 25}',
-});
-
-var TocandoBanana = AccionBuilder.buildSensor({
-  id: 'Tocandobanana',
-  descripcion: 'Hay banana acá',
-  icono: 'iconos.banana.png',
-  funcionSensor: 'tocando("BananaAnimada")',
-});
-
 export default {
   // DEPRECATED: nombre: 'El mono y las bananas',
   id: 'ElMonoYLasBananas',
@@ -31,6 +13,4 @@ export default {
   puedeComentar: false,
   puedeDesactivar: false,
   puedeDuplicar: false,
-
-//  bloques: [Procedimiento, ComerBanana,Avanzar, TocandoBanana, Repetir,Si],
 };
