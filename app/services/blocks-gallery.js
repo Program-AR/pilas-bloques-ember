@@ -86,7 +86,6 @@ export default Ember.Service.extend({
           alt: "*"
         }
       ],
-      code: `receptor.${opciones.funcionSensor}`
     });
 
     Blockly.MyLanguage[nombre] = function() {
@@ -390,6 +389,12 @@ export default Ember.Service.extend({
       argumentos: '{escaparCon: "unicornio"}',
     });
 
+    this.crearBloqueAccion('PrenderFogata', {
+      descripcion: 'Prender fogata',
+      icono: 'icono.FogataApagada.png',
+      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
+    });
 
   },
 
@@ -407,6 +412,13 @@ export default Ember.Service.extend({
       descripcion: 'Hay banana acá',
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
+    });
+
+    this.crearBloqueSensor('TocandoFogata', {
+      id: 'tocandoFogata',
+      descripcion: 'Hay fogata acá',
+      icono: 'icono.FogataApagada.png',
+      funcionSensor: 'tocando("FogataAnimada")',
     });
 
   },
@@ -559,7 +571,7 @@ export default Ember.Service.extend({
     };
 
     Blockly.MyLanguage['Si'] = function(block) {
-      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `if (${condition}) {
         ${contenido}
