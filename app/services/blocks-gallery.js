@@ -415,7 +415,6 @@ export default Ember.Service.extend({
   },
 
   _definirBloquesAlias() {
-    this.crearBloqueAlias('Si', 'controls_if');
     this.crearBloqueAlias('Numero', 'math_number');
     this.crearBloqueAlias('OpAritmetica', 'math_arithmetic');
     this.crearBloqueAlias('OpComparacion', 'logic_compare');
@@ -500,6 +499,51 @@ export default Ember.Service.extend({
     bloque_procedimiento.categoria_custom = 'PROCEDURE';
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
+
+
+    Blockly.Blocks['Si'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.appendValueInput('condition')
+            .setCheck('Boolean')
+            .appendField('Si');
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
+    Blockly.Blocks['SiNo'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.appendValueInput('condition')
+            .setCheck('Boolean')
+            .appendField('Si');
+        this.appendStatementInput('block1');
+        this.appendDummyInput()
+            .appendField('si no');
+        this.appendStatementInput('block2');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
+    Blockly.Blocks['Hasta'] = {
+      init: function() {
+        this.setColour('#ee7d16');
+        this.setInputsInline(true);
+        this.appendValueInput('condition')
+            .setCheck('Boolean')
+            .appendField('Repetir hasta que');
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
   },
 
   _generarLenguaje() {
@@ -534,6 +578,35 @@ export default Ember.Service.extend({
         branch + '}\n';
       return code;
     };
+
+    Blockly.MyLanguage['Si'] = function(block) {
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
+      return `if (${condition}) {
+        ${contenido}
+      }`;
+    };
+
+    Blockly.MyLanguage['SiNo'] = function(block) {
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var bloque_1 = Blockly.JavaScript.statementToCode(block, 'block1');
+      var bloque_2 = Blockly.JavaScript.statementToCode(block, 'block2');
+
+      return `if (${condition}) {
+        ${bloque_1}
+      } else {
+        ${bloque_2}
+      }`;
+    };
+
+    Blockly.MyLanguage['Hasta'] = function(block) {
+      var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
+      var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
+      return `while (${condition}) {
+        ${contenido}
+      }`;
+    };
+
 
     Blockly.MyLanguage.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.MyLanguage.addReservedWords('highlightBlock');
