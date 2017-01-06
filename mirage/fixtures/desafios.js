@@ -455,6 +455,12 @@ export default [
     escena: 'PrendiendoLasFogatas',
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
+    bloques: ['Procedimiento', 'repetir', 'Si', 'SiNo', 'Hasta',
+      'TocandoFogata', 'PrenderFogata',
+      'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
+      'Numero', 'OpComparacion', 'OpAritmetica',
+      'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
+    ]
   },
   {
     id: 136,
