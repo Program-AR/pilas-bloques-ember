@@ -90,7 +90,7 @@ export default Ember.Service.extend({
     });
     // TODO: Arreglar generacion de codigo
     bloque.categoria = "Sensores";
-    Blockly.MyLanguage[nombre] = function(block) {
+    Blockly.MyLanguage[nombre] = function() {
       let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
