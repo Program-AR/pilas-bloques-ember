@@ -160,7 +160,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     actividad: null,
-    bloques: ['ComerBanana', 'ComerManzana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'repetir', 'si', 'sino', 'tocandoManzana', 'tocandoBanana']
   },
   {
     id: 15,

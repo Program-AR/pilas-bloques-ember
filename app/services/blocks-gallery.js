@@ -48,7 +48,7 @@ export default Ember.Service.extend({
   crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria) {
     let blockly = this.get('blockly');
     let bloque = blockly.createAlias(nombre, nombreDelBloqueOriginal);
-    bloque.categoria = categoria || "Valores";
+    bloque.categoria = categoria ||  Blockly.Blocks[nombreDelBloqueOriginal].categoria || "Valores";
 
     return bloque;
   },
@@ -446,6 +446,14 @@ export default Ember.Service.extend({
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
     });
+    this.crearBloqueAlias('tocandoBanana', 'Tocandobanana');
+
+    this.crearBloqueSensor('Tocandomanzana', {
+      descripcion: 'Hay manzana acá',
+      icono: 'iconos.manzana.png',
+      funcionSensor: 'tocando("ManzanaAnimada")',
+    });
+    this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
 
     this.crearBloqueSensor('TocandoFogata', {
       id: 'tocandoFogata',
@@ -557,7 +565,8 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
-    this.crearBloqueAlias('Sino', 'Sino', 'Alternativas');
+    this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
+    this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
 
     Blockly.Blocks['Hasta'] = {
       init: function() {
