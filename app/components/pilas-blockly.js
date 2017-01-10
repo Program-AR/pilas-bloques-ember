@@ -13,7 +13,7 @@ export default Ember.Component.extend({
   solucion: null,
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
   codigoJavascript: "", // Se carga como parametro
-  persistirSolucionEnURL: true,
+  persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
 
   twitter: Ember.inject.service(),
