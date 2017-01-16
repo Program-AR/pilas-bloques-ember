@@ -527,8 +527,28 @@ export default Ember.Service.extend({
     };
 
     let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
+
+
+    let init_base_callnoreturn = Blockly.Blocks['procedures_callnoreturn'].init;
+
+    Blockly.Blocks['procedures_callnoreturn'].init = function() {
+      this.setInputsInline(true);
+      init_base_callnoreturn.call(this);
+    };
+
+
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
+    let init_base_procedimiento = Blockly.Blocks['procedures_defnoreturn'].init;
+
+    Blockly.Blocks['procedures_defnoreturn'].init = function() {
+      init_base_procedimiento.call(this);
+    };
+
+    this.crearBloqueAlias('param_get', 'variables_get');
+
     bloque_procedimiento.categoria = 'Mis procedimientos';
     bloque_procedimiento.categoria_custom = 'PROCEDURE';
+
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
