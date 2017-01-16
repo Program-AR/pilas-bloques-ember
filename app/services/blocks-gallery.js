@@ -455,6 +455,30 @@ export default Ember.Service.extend({
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{velocidad: 25}',
     });
+
+    this.crearBloqueAccion('DejarRegalo', {
+      descripcion: 'Dejar un regalo',
+      icono: 'icono.regalo.png',
+      comportamiento: 'Depositar',
+      argumentos: '{claseADepositar: RegaloAnimado}',
+    });
+
+    this.crearBloqueAlias('Dejarregalo', 'DejarRegalo');
+
+    this.crearBloqueAccion('SiguienteFila', {
+      descripcion: 'Pasar a la siguiente fila',
+      icono: '../../iconos/abajo.png',
+      comportamiento: 'SiguienteFila',
+      argumentos: '{}'
+    });
+
+    this.crearBloqueAccion('SiguienteFilaTotal', {
+      descripcion: 'Pasar a la siguiente fila',
+      icono: '../../iconos/abajo.png',
+      comportamiento: 'SecuenciaAnimada',
+      argumentos: '{secuencia: [new MoverTodoAIzquierda({}), new MoverACasillaAbajo({})]}'
+    });
+
   },
 
   _definirBloquesAlias() {
