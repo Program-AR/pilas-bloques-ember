@@ -2853,11 +2853,19 @@ var Depositar = (function (_super) {
         return 'depositar';
     };
     Depositar.prototype.postAnimacion = function () {
+        this.validarQueLaClaseADepositarSeaString();
+        var clase = window[this.argumentos.claseADepositar];
         if (this.receptor.cuadricula) {
-            this.receptor.cuadricula.agregarActor(new this.argumentos.claseADepositar(), this.receptor.casillaActual().nroFila, this.receptor.casillaActual().nroColumna);
+            this.receptor.cuadricula.agregarActor(new clase(), this.receptor.casillaActual().nroFila, this.receptor.casillaActual().nroColumna);
         }
         else {
-            new this.argumentos.claseADepositar(this.receptor.x, this.receptor.y);
+            new clase(this.receptor.x, this.receptor.y);
+        }
+    };
+    Depositar.prototype.validarQueLaClaseADepositarSeaString = function () {
+        var tipo = typeof this.argumentos.claseADepositar;
+        if (tipo !== "string") {
+            throw new Error("Se esperaba que la claseADepositar sea un string, pero se encont\u00F3 " + tipo + ".");
         }
     };
     return Depositar;
