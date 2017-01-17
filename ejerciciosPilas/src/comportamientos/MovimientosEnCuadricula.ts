@@ -10,7 +10,12 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
     preAnimacion(){
         this.cuadricula = this.receptor.cuadricula;
-        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+
+        if (!this.direccionCasilla) {
+          let clase:any = window[this.argumentos.claseDirCasilla];
+          this.direccionCasilla = new clase();
+        }
+
         this.argumentos.direccion = new Direct(this.vectorDireccion().x,this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         super.preAnimacion();

@@ -487,8 +487,34 @@ export default Ember.Service.extend({
           argumentos: {}
         }
       ]}`,
-      
+
     });
+
+    this.crearBloqueAccion('ExplotarGlobo', {
+      descripcion: 'Explotar globo',
+      icono: 'icono.globo.png',
+      comportamiento: 'ComportamientoColision',
+      argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", idTransicion: "explotar", comportamientoAdicional: "Eliminar", argumentosComportamiento: {nombreAnimacion:"explotar"}}',
+    });
+
+    let blockly = this.get('blockly');
+
+    let bloque = blockly.createCustomBlock('MoverA', {
+      message0: "Mover a %1",
+      colour: '#4a6cd4',
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "input_value",
+          "name": "direccion",
+        }
+      ],
+      code: 'hacer(actor_id, "MovimientoEnCuadricula", {claseDirCasilla: $direccion});'
+    });
+
+    bloque.categoria = "Primitivas";
 
   },
 

@@ -447,6 +447,9 @@ export default [
     enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
     consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
+              'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
   {
     id: 135,
