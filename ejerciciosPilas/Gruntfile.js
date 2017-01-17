@@ -3,14 +3,6 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
-    notify_hooks: {
-                    options: {
-                               enabled: true,
-                               max_jshint_notifications: 5,
-                               success: false,
-                               duration: 3
-                             }
-    },
     qunit: {
       files: ['test/index.html']
     },
@@ -64,7 +56,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['typescript', 'concat']);
 
-  grunt.loadNpmTasks('grunt-notify');
-  grunt.task.run('notify_hooks');
   grunt.registerTask('test', 'qunit');
 };
