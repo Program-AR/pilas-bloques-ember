@@ -170,6 +170,8 @@ export default [
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
     escena: 'LaberintoCorto',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'MoverACasillaDerecha',
+              'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 16,
@@ -199,6 +201,8 @@ export default [
     enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
     escena: 'LaberintoLargo',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+              'Repetir', 'Si', 'Sino', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 19,
@@ -231,7 +235,9 @@ export default [
     consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
     escena: 'LaberintoConQueso',
     actividad: null,
-    bloques: ['ComerQueso']
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+              'ComerQueso', 'Repetir', 'Si', 'Sino', 'Hasta', 'TocandoAbajo',
+              'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
   },
   {
     id: 22,
@@ -254,6 +260,9 @@ export default [
     consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
     escena: 'FutbolRobots',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
+              'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
+              'Sino', 'Hasta'],
   },
   {
     id: 24,
@@ -264,6 +273,10 @@ export default [
     'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
     escena: 'PrendiendoLasCompus',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'MoverACasillaDerecha', 'MoverACasillaArriba',
+              'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+              'PrenderCompuConColision', 'EstoyEnEsquina'],
   },
   {
     id: 25,
@@ -274,6 +287,10 @@ export default [
     consignaInicial: 'Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.',
     escena: 'ElMonoQueSabeContar',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+              'SiguienteColumna', 'ContarBanana', 'ContarManzana',
+              'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'Sino',
+              'Hasta', 'EstoyAlInicio', 'EstoyAlFin']
   },
   {
     id: 26,
@@ -284,6 +301,8 @@ export default [
     consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
     escena: 'SuperViaje',
     actividad: null,
+    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
+              'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 27,
@@ -294,6 +313,11 @@ export default [
     consignaInicial: 'Una variable nos permite guardar información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.',
     escena: 'ElMonoCuentaDeNuevo',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+              'SiguienteColumna',
+              'ContarBanana', 'ContarManzana', 'TocandoBanana',
+              'TocandoManzana', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'EstoyAlInicio', 'RepetirVacio', 'LargoColumnaActual']
   },
   {
     id: 28,
@@ -404,6 +428,8 @@ export default [
     escena: 'LaFiestaDeDracula',
     enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de las 3 lámparas una cierta cantidad de veces: 5 veces la primera, 8 la segunda y 12 la tercera.',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
+              'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
     id: 131,

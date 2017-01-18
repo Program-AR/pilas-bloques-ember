@@ -33,7 +33,7 @@ export default Ember.Service.extend({
         console.error(`El bloque idenficiado como '${a.type}' no existe, ¿tal vez sea un bloque no migrado o con minúsculas y mayúsculas que no coinciden.?`);
         throw Error(e);
       }
-    }
+    };
   },
 
   /*
@@ -70,6 +70,11 @@ export default Ember.Service.extend({
    */
   crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria) {
     let blockly = this.get('blockly');
+
+    if (!Blockly.Blocks[nombreDelBloqueOriginal]) {
+      throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
+    }
+
     let bloque = blockly.createAlias(nombre, nombreDelBloqueOriginal);
     bloque.categoria = categoria ||  Blockly.Blocks[nombreDelBloqueOriginal].categoria || "Valores";
 
@@ -155,6 +160,13 @@ export default Ember.Service.extend({
       argumentos: `{'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idTransicion': 'prender', 'animacionColisionado': 'prendida', 'nombreAnimacion': 'escribir'}`,
     });
 
+    this.crearBloqueAccion('PrenderCompuConColision', {
+      descripcion: 'Prender compu',
+      icono: 'icono.computadora.png',
+      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      argumentos: '{etiqueta: "CompuAnimada", animacionColisionado: "prendida", nombreAnimacion: "escribir" }',
+    });
+
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
@@ -187,7 +199,7 @@ export default Ember.Service.extend({
       descripcion: 'Comer queso',
       icono: 'queso.png',
       comportamiento: 'RecogerPorEtiqueta',
-      argumentos: '{\'etiqueta\' : \'QuesoAnimado\'}',
+      argumentos: '{etiqueta: "QuesoAnimado"}',
     });
 
     this.crearBloqueAccion('ComerNaranja', {
@@ -490,6 +502,31 @@ export default Ember.Service.extend({
 
     });
 
+    this.crearBloqueAccion('SiguienteColumna', {
+      descripcion: 'Pasar a la siguiente columna',
+      icono: 'icono.derecha.png',
+      comportamiento: 'SiguienteColumna',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('ContarBanana', {
+      descripcion: 'Contar una banana',
+      icono: 'icono.banana.png',
+      comportamiento: 'ContarPorEtiqueta',
+      argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
+    });
+
+    this.crearBloqueAlias('Contarbanana', 'ContarBanana');
+
+    this.crearBloqueAccion('ContarManzana', {
+      descripcion: 'Contar una manzana',
+      icono: 'icono.manzana.png',
+      comportamiento: 'ContarPorEtiqueta',
+      argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
+    });
+
+    this.crearBloqueAlias('Contarmanzana', 'ContarManzana');
+
     this.crearBloqueAccion('ExplotarGlobo', {
       descripcion: 'Explotar globo',
       icono: 'icono.globo.png',
@@ -516,6 +553,49 @@ export default Ember.Service.extend({
 
     bloque.categoria = "Primitivas";
 
+
+    this.crearBloqueAccion('PatearPelota', {
+      descripcion: 'Patear pelota',
+      icono: 'icono.pelota.png',
+      comportamiento: 'DesencadenarComportamientoSiColisiona',
+      argumentos: '{"comportamiento": "SerPateado", idTransicion: "patear", etiqueta: "PelotaAnimada", argumentosComportamiento: {tiempoEnElAire:25, aceleracion:0.0025, elevacionMaxima:25, gradosDeAumentoStep:-2}}',
+    });
+
+    this.crearBloqueAccion('Avanzar1km', {
+      descripcion: 'Avanzar 1 Km',
+      icono: 'icono.derecha.png',
+      comportamiento: 'VolarHeroicamente',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('AvanzarKm', 'Avanzar1km');
+
+    this.crearBloqueAccion('CambiarColor', {
+      descripcion: 'Cambiar color del foco',
+      icono: 'icono.cambiar.color.png',
+      comportamiento: 'CambiarColor',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('cambiarColor', 'CambiarColor');
+
+    this.crearBloqueAccion('SiguienteFoco', {
+      descripcion: 'Pasar al siguiente foco',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('siguienteFoco', 'SiguienteFoco');
+
+    this.crearBloqueAccion('EmpezarFiesta', {
+      descripcion: 'Empezar fiesta',
+      icono: 'icono.empezar.fiesta.png',
+      comportamiento: 'EmpezarFiesta',
+      argumentos: '{idTransicion: "empezarFiesta"}',
+    });
+
+    this.crearBloqueAlias('empezarFiesta', 'EmpezarFiesta');
   },
 
   _definirBloquesAlias() {
@@ -539,6 +619,7 @@ export default Ember.Service.extend({
       icono: 'iconos.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
     });
+
     this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
 
     this.crearBloqueSensor('TocandoFogata', {
@@ -548,6 +629,102 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAlias('tocandoFogata', 'TocandoFogata');
+
+    this.crearBloqueSensor('TocandoInicio', {
+      descripcion: 'Estoy al inicio',
+      icono: 'icono.futbolInicio.png',
+      funcionSensor: 'tocandoInicio()',
+    });
+
+    this.crearBloqueAlias('tocandoInicio', 'TocandoInicio');
+
+    this.crearBloqueSensor('TocandoPelota', {
+      descripcion: 'Llegué a la pelota',
+      icono: 'icono.pelota.png',
+      funcionSensor: 'tocando("PelotaAnimada")',
+    });
+
+
+    this.crearBloqueAlias('tocandoPelota', 'TocandoPelota');
+
+    this.crearBloqueSensor('KmsTotales', {
+      descripcion: 'Kilómetros a recorrer',
+      icono: 'icono.kms.png',
+      funcionSensor: 'kmsTotales()',
+    });
+
+    this.crearBloqueSensor('EstoyEnEsquina', {
+      descripcion: 'Estoy en una esquina',
+      icono: 'casilla.prendiendoLasCompus2.png',
+      funcionSensor: 'casillaActual().esEsquina()',
+    });
+
+    this.crearBloqueAlias('Estoyenunaesquina', 'EstoyEnEsquina');
+
+
+    this.crearBloqueSensor('TocandoManzana', {
+      descripcion: 'Hay una manzana acá',
+      icono: 'icono.manzana.png',
+      funcionSensor: 'tocando("ManzanaAnimada")',
+    });
+
+    this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
+
+    this.crearBloqueSensor('TocandoBanana', {
+      descripcion: 'Hay una banana acá',
+      icono: 'icono.banana.png',
+      funcionSensor: 'tocando("BananaAnimada")',
+    });
+
+    this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
+
+    this.crearBloqueSensor('EstoyAlInicio', {
+      descripcion: 'Estoy al inicio de la columna',
+      icono: 'icono.casillainiciomono.png',
+      funcionSensor: 'casillaActual().esInicio()',
+    });
+
+    this.crearBloqueAlias('estoyInicio', 'EstoyAlInicio');
+
+    this.crearBloqueSensor('EstoyAlFin', {
+      descripcion: 'Estoy al final de la columna',
+      icono: 'icono.casillafinalmono.png',
+      funcionSensor: 'casillaActual().esFin()',
+    });
+
+    this.crearBloqueAlias('estoyFinColumna', 'EstoyAlFin');
+
+    this.crearBloqueSensor('LargoColumnaActual', {
+      descripcion: 'Largo de la columna actual',
+      icono: 'icono.largoCol.png',
+      funcionSensor: 'largoColumnaActual()-1',
+    });
+
+    this.crearBloqueSensor('TocandoAbajo', {
+      descripcion: 'Puedo mover abajo',
+      icono: 'icono.abajo.png',
+      funcionSensor: 'tocandoFlechaAbajo()',
+    });
+
+    this.crearBloqueSensor('TocandoDerecha', {
+      descripcion: 'Puedo mover a la derecha',
+      icono: 'icono.derecha.png',
+      funcionSensor: 'tocandoFlechaDerecha()',
+    });
+
+    this.crearBloqueSensor('TocandoFinCamino', {
+      descripcion: 'Llegó a la meta',
+      icono: 'icono.finCamino.png',
+      funcionSensor: 'alFinalDelCamino()',
+    });
+
+    this.crearBloqueSensor('TocandoQueso', {
+      descripcion: 'Hay queso acá',
+      icono: 'queso.png',
+      funcionSensor: 'tocando("QuesoAnimado")',
+    });
+
+    this.crearBloqueAlias('tocandoQueso', 'TocandoQueso')
 
   },
 
@@ -598,7 +775,8 @@ export default Ember.Service.extend({
   },
 
   _definirBloquesEstructurasDeControl() {
-    Blockly.Blocks['repetir'] = {
+
+    Blockly.Blocks['RepetirVacio'] = {
       init: function() {
         this.setColour('#ee7d16');
         this.setInputsInline(true);
@@ -610,6 +788,11 @@ export default Ember.Service.extend({
         this.appendStatementInput('block');
       },
       categoria: 'Repeticiones',
+    };
+
+    Blockly.Blocks['repetir'] = {
+      init: Blockly.Blocks['RepetirVacio'].init,
+      categoria: Blockly.Blocks['RepetirVacio'].categoria,
       toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
     };
 
@@ -689,6 +872,8 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
+    this.crearBloqueAlias('hasta', 'Hasta');
+
   },
 
   _generarLenguaje() {
@@ -701,7 +886,7 @@ export default Ember.Service.extend({
       return codigo;
     };
 
-    Blockly.MyLanguage['repetir'] = function(block) {
+    Blockly.MyLanguage['RepetirVacio'] = function(block) {
       var repeats = Blockly.MyLanguage.valueToCode(block, 'count',
       Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
 
@@ -723,6 +908,8 @@ export default Ember.Service.extend({
         branch + '}\n';
       return code;
     };
+
+    Blockly.MyLanguage['repetir'] = Blockly.MyLanguage['RepetirVacio'];
 
     Blockly.MyLanguage['Si'] = function(block) {
       var condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
@@ -747,7 +934,7 @@ export default Ember.Service.extend({
     Blockly.MyLanguage['Hasta'] = function(block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
-      return `while (${condition}) {
+      return `while (!${condition}) {
         ${contenido}
       }`;
     };

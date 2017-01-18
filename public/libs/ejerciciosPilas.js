@@ -1117,7 +1117,10 @@ var MovimientoEnCuadricula = (function (_super) {
     }
     MovimientoEnCuadricula.prototype.preAnimacion = function () {
         this.cuadricula = this.receptor.cuadricula;
-        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+        if (!this.direccionCasilla) {
+            var clase = window[this.argumentos.claseDirCasilla];
+            this.direccionCasilla = new clase();
+        }
         this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         _super.prototype.preAnimacion.call(this);
@@ -2663,10 +2666,13 @@ var ComportamientoColision = (function (_super) {
     };
     ComportamientoColision.prototype.postAnimacion = function () {
         var objetoTocado = this.objetoTocado();
-        if (this.argumentos['animacionColisionado'])
+        if (this.argumentos['animacionColisionado']) {
             objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
-        if (this.argumentos['comportamientoAdicional'])
-            objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'], this.argumentos['argumentosComportamiento']);
+        }
+        if (this.argumentos['comportamientoAdicional']) {
+            var claseComportamiento = window[this.argumentos['comportamientoAdicional']];
+            objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
+        }
         this.metodo(objetoTocado);
     };
     ComportamientoColision.prototype.colisiona = function () {
@@ -2702,7 +2708,8 @@ var DesencadenarComportamientoSiColisiona = (function (_super) {
         _super.apply(this, arguments);
     }
     DesencadenarComportamientoSiColisiona.prototype.metodo = function (objetoColision) {
-        objetoColision.hacer_luego(this.argumentos['comportamiento'], this.argumentos['argumentosComportamiento']);
+        var claseComportamiento = window[this.argumentos['comportamiento']];
+        objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
     };
     return DesencadenarComportamientoSiColisiona;
 })(ComportamientoColision);

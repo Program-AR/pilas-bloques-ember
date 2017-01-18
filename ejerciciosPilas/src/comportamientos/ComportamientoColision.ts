@@ -71,7 +71,9 @@ class DesencadenarAnimacionSiColisiona extends ComportamientoColision{
 
 class DesencadenarComportamientoSiColisiona extends ComportamientoColision{
 	metodo(objetoColision){
-		objetoColision.hacer_luego(this.argumentos['comportamiento'],this.argumentos['argumentosComportamiento'])
+		let claseComportamiento:any = window[this.argumentos['comportamiento']];
+
+		objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento'])
 	}
 }
 
