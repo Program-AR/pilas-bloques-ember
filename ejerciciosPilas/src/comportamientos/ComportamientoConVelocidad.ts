@@ -31,7 +31,7 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 
   doActualizar(){
 		var terminoAnimacion = super.doActualizar();
-    	if (this.pasosRestantes <= 1) {
+		if (this.pasosRestantes <= 0) {
 			this.setearEstadoFinalDeseado();
 			return terminoAnimacion;
 		} else if (this.deboEjecutar()) { // para definir la velocidad de tick

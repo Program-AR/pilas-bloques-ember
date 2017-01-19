@@ -33,7 +33,8 @@ class SaltarAnimado extends ComportamientoConVelocidad {
 		var cps = this.argumentos.cantPasos / 2;
 		var v = this.argumentos.velocidad_inicial;
 		var h = this.argumentos.alturaDeseada;
-		return (cps * v - h) / ((cps-1) * cps/2);
+		return Math.floor((cps * v - h) / ((cps-1) * cps/2)); //Es preferible manejar siempre enteros.
+		                    //Redondear para abajo se compensa con setearEstadoFinalDeseado
 	}
 
 	calcularVInicial(){
@@ -49,7 +50,8 @@ class SaltarAnimado extends ComportamientoConVelocidad {
 		if (v < 0)
 			throw new ArgumentError('Gravedad insuficiente para llegar a la altura deseada en los pasos indicados');
 
-		return v;
+		return Math.floor(v); //Es preferible manejar siempre enteros.
+		                    //Redondear para abajo se compensa con setearEstadoFinalDeseado
 	}
 		/* Fumata:
 
