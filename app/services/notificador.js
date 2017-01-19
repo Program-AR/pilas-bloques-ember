@@ -6,11 +6,7 @@ export default Ember.Service.extend({
   hayActualizacion: false,
   versionActual: null,
 
-  /**
-   * Compara dos versiones y retorna 1 si v2 es mas reciente que v1, en
-   * cualquier otro caso va a retornar 0.
-   */
-  comparar(v1, v2) {
+  esVersionAnterior(stringV1, stringV2) {
 
     function parseVersionString (str) {
       if (typeof(str) !== 'string') {
@@ -26,18 +22,12 @@ export default Ember.Service.extend({
       return {major: maj, minor: min, patch: pat};
     }
 
-    var running_version = parseVersionString(v1);
-    var latest_version = parseVersionString(v2);
+    var v1 = parseVersionString(stringV1);
+    var v2 = parseVersionString(stringV2);
 
-    if (running_version.major < latest_version.major) {
-      return 1;
-    } else if (running_version.minor < latest_version.minor || running_version.patch < latest_version.patch) {
-      return 1;
-    } else {
-      return 0;
-    }
-
-    return false;
+    return v1.major < v2.major ||
+        (v1.major === v2.major && v1.minor < v2.minor) ||
+        (v1.major === v2.major && v1.minor === v2.minor && v1.patch < v2.patch);
   },
 
   /**
@@ -52,7 +42,7 @@ export default Ember.Service.extend({
       let versionDesdeElServidor = data.tag_name;
 
 
-      if (this.comparar(versionActual, versionDesdeElServidor) === 1) {
+      if (this.esVersionAnterior(versionActual, versionDesdeElServidor)) {
         this.set('hayActualizacion', true);
         this.set('versionActual', data.tag_name);
         return {hayActualizacion: true, version: data.tag_name};
