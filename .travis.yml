@@ -1,9 +1,11 @@
 ---
-language: c
+language: node_js
 os:
   - linux
   - osx
 sudo: false
+node_js:
+- '4.2'
 cache:
   directories:
   - node_modules
