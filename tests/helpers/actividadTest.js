@@ -100,7 +100,7 @@ export function actividadTest(nombre, opciones) {
 
     let store = this.container.lookup('service:store');
     let pilas = this.container.lookup('service:pilas');
-    let actividades = this.container.lookup('service:actividades');
+    //let actividades = this.container.lookup('service:actividades');
 
 	  return new Ember.RSVP.Promise((success) => {
 
@@ -122,15 +122,10 @@ export function actividadTest(nombre, opciones) {
           this.set('model', model);
           this.set('pilas', pilas);
 
-          // TODO:
-          // Simula el método afterModel del router. Este código se quitará
-          // cuando migremos completamente a ember-data.
-          let actividad = actividades.obtenerPorNombre(model.get("nombre"));
-          this.set('model.actividad', actividad);
+          this.set('model.actividad', "deasdasdasdasdasdmo");
 
           // Carga la solución en base64, el formato que espera el componente.
           this.set('solucion', window.btoa(opciones.solucion));
-
           // Captura el evento de inicialización de pilas:
           this.on('onReady', function(/*instanciaPilas*/) {
             if (opciones.fps) {

@@ -76,7 +76,7 @@ var ProductionErrorHandler = (function () {
     }
     ProductionErrorHandler.prototype.handle = function (e) {
         this.escena.automata.decir(e.description());
-        this.escena.pausar();
+        this.escena.pausarDiferido();
         if (parent) {
             var mensaje = {
                 tipo: "errorDeActividad",
@@ -883,9 +883,12 @@ var ComportamientoAnimado = (function (_super) {
         this.realizarVerificacionesPostAnimacion();
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPreAnimacion = function () {
-        this.verificacionesPre.forEach(function (verificacion) { return verificacion.verificar(); });
-        if (this.argumentos.idTransicion)
+        this.verificacionesPre.forEach(function (verificacion) {
+            verificacion.verificar();
+        });
+        if (this.argumentos.idTransicion) {
             pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+        }
         pilas.escena_actual().estado.verificarQuePuedoSeguir();
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPostAnimacion = function () {
@@ -2942,7 +2945,7 @@ var Escapar = (function (_super) {
     }
     Escapar.prototype.iniciar = function (receptor) {
         this.argumentos.idTransicion = "escapar";
-        _super.prototype.iniciar.call(this, this.receptor);
+        _super.prototype.iniciar.call(this, receptor);
     };
     Escapar.prototype.preAnimacion = function () {
         this.argumentos.direccion = new Direct(1, 5);
@@ -3100,7 +3103,7 @@ var SaltarAnimado = (function (_super) {
         this.sanitizarArgumentosSaltar();
         this.suelo = this.receptor.y;
         this.velocidad_vertical = this.velocidad_inicial;
-        pilas.sonidos.cargar('saltar.wav').reproducir();
+        pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
     };
     SaltarAnimado.prototype.sanitizarArgumentosSaltar = function () {
         this.alTerminar = this.argumentos.alTerminar || function (r) { };

@@ -107,7 +107,7 @@ export default Ember.Service.extend({
           var escena = pilas.escena_actual();
 
           escena.automata.decir(e.description());
-          escena.pausar();
+          escena.pausarDiferido();
 
             if (parent) {
               let mensaje = {

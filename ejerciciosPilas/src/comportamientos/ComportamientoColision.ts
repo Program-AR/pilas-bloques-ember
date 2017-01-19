@@ -92,8 +92,7 @@ class EncenderPorEtiqueta extends ComportamientoColision{
 	}
 	configurarVerificaciones() {
 		super.configurarVerificaciones();
-		this.verificacionesPre.push(
-			new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
+		this.verificacionesPre.push(new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
 	}
 	estaApagada(){
 		return this.objetoTocado().nombreAnimacionActual() != this.nombreProximaAnimacion();

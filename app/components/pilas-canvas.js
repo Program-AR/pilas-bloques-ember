@@ -13,7 +13,9 @@ export default Ember.Component.extend({
   },
 
   willDestroyElement() {
-    this.get("pilas").liberarRecursos();
+    if (this.get('pilas')) {
+      this.get("pilas").liberarRecursos();
+    }
   },
 
   initElement() {

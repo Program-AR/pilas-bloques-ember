@@ -229,8 +229,6 @@ export default Ember.Component.extend({
       `);
 
 
-      console.log(codigoCompleto);
-
       let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
         var me = this;
         Ember.run(function () {

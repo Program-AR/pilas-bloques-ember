@@ -3,6 +3,11 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   classNames: ['contenedor-pilas-editor'],
   persistirSolucionEnURL: true,
+  blocksGallery: Ember.inject.service(),
+
+  didInsertElement() {
+    this.get('blocksGallery').start();
+  },
 
   actions: {
     onReady(pilas) {

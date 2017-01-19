@@ -118,10 +118,12 @@ export default Ember.Service.extend({
     });
     // TODO: Arreglar generacion de codigo
     bloque.categoria = "Sensores";
+
     Blockly.MyLanguage[nombre] = function() {
       let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
+
     return bloque;
   },
 
@@ -157,21 +159,39 @@ export default Ember.Service.extend({
       descripcion: 'Prender compu',
       icono: 'icono.computadora.png',
       comportamiento: 'PrenderCompuParaInstalar',
-      argumentos: `{'etiqueta': 'CompuAnimada', 'mensajeError': 'No hay una compu aqui', 'idTransicion': 'prender', 'animacionColisionado': 'prendida', 'nombreAnimacion': 'escribir'}`,
+      argumentos: `{
+        etiqueta: 'CompuAnimada',
+        mensajeError: 'No hay una compu aqui',
+        idTransicion: 'prender',
+        animacionColisionado: 'prendida',
+        nombreAnimacion: 'escribir'
+      }`,
     });
+
+    this.crearBloqueAlias('Prendercompu', 'PrenderCompu');
 
     this.crearBloqueAccion('PrenderCompuConColision', {
       descripcion: 'Prender compu',
       icono: 'icono.computadora.png',
       comportamiento: 'DesencadenarAnimacionSiColisiona',
-      argumentos: '{etiqueta: "CompuAnimada", animacionColisionado: "prendida", nombreAnimacion: "escribir" }',
+      argumentos: `{
+        etiqueta: "CompuAnimada",
+        animacionColisionado: "prendida",
+        nombreAnimacion: "escribir"
+      }`,
     });
 
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
       comportamiento: 'DesencadenarAnimacionSiColisiona',
-      argumentos: '{\'animacionColisionado\':\'prendida\',\'nombreAnimacion\':\'apretar\',\'etiqueta\':\'BotonAnimado\',\'mensajeError\': \'No hay un botón aquí\',\'idTransicion\':\'apretarBoton\'}',
+      argumentos: `{
+        animacionColisionado: 'prendida',
+        nombreAnimacion: 'apretar',
+        etiqueta: 'BotonAnimado',
+        mensajeError: 'No hay un botón aquí',
+        idTransicion: 'apretarBoton'
+      }`,
     });
 
     this.crearBloqueAccion('EncenderLuz', {
@@ -185,12 +205,19 @@ export default Ember.Service.extend({
       descripcion: 'Comer banana',
       icono: 'icono.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
-      argumentos: '{\'etiqueta\' : \'BananaAnimada\',  nombreAnimacion: "comerBanana"}',
+      argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
+    });
+
+    this.crearBloqueAccion('ComerBananaNano', {
+      descripcion: 'Comer banana',
+      icono: 'icono.banana.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta: "BananaAnimada"}',
     });
 
     this.crearBloqueAccion('ComerManzana', {
       descripcion: 'Comer manzana',
-      icono: 'iconos.manzana.png',
+      icono: 'icono.manzana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
     });
@@ -418,12 +445,16 @@ export default Ember.Service.extend({
       ]}`,
     });
 
-    this.crearBloqueAccion('Escaparenunicornio', {
+    this.crearBloqueAccion('EscaparEnUnicornio', {
       descripcion: 'Escapar en unicornio',
       icono: 'icono.unicornio.png',
       comportamiento: 'Escapar',
-      argumentos: '{escaparCon: "unicornio"}',
+      argumentos: `{
+        escaparCon: "unicornio"
+      }`,
     });
+
+    this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
 
     this.crearBloqueAccion('TomarHierro', {
       descripcion: 'Agarrar hierro',
@@ -596,6 +627,118 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAlias('empezarFiesta', 'EmpezarFiesta');
+
+    this.crearBloqueAccion('VolverAlBordeIzquierdo', {
+      descripcion: 'Volver al borde izquierdo',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MoverTodoAIzquierda',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
+
+    this.crearBloqueAccion('PrimerSospechoso', {
+      descripcion: 'Ir al primer sospechoso',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MoverTodoAIzquierda',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('Primersospechoso', 'PrimerSospechoso');
+
+    this.crearBloqueAccion('SiguienteSospechoso', {
+      descripcion: 'Pasar al siguiente sospechoso',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('Siguientesospechoso', 'SiguienteSospechoso');
+
+    this.crearBloqueAccion('SacarDisfraz', {
+      descripcion: 'Interrogar sospechoso',
+      icono: 'icono.sacar.disfraz.png',
+      comportamiento: 'SacarDisfraz',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
+
+    blockly.createCustomBlock('DibujarLado', {
+      message0: "%1 Dibujar lado de %2",
+      colour: '#4a6cd4',
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "field_image",
+          "src": `iconos/icono.DibujarLinea.png`,
+          "width": 16,
+          "height": 16,
+          "alt": "*"
+        },
+        {
+          "type": "input_value",
+          "name": "longitud",
+        }
+      ],
+      code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false});'
+    });
+
+    Blockly.Blocks['DibujarLado'].toolbox = `
+      <block type="DibujarLado">
+        <value name="longitud">
+          <block type="math_number"><field name="NUM">100</field></block></value>
+      </block>
+    `;
+
+    Blockly.Blocks['DibujarLado'].categoria = 'Primitivas';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    blockly.createCustomBlock('GirarGrados', {
+      message0: "%1 Dibujar lado de %2",
+      colour: '#4a6cd4',
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "field_image",
+          "src": `iconos/icono.Girar.png`,
+          "width": 16,
+          "height": 16,
+          "alt": "*"
+        },
+        {
+          "type": "input_value",
+          "name": "grados",
+        }
+      ],
+      code: 'hacer(actor_id, "Rotar", {angulo: - $grados, voltearAlIrAIzquierda: false});'
+    });
+
+    Blockly.Blocks['GirarGrados'].toolbox = `
+      <block type="GirarGrados">
+        <value name="grados">
+          <block type="math_number"><field name="NUM">90</field></block></value>
+      </block>
+    `;
+
+    Blockly.Blocks['GirarGrados'].categoria = 'Primitivas';
+
   },
 
   _definirBloquesAlias() {
@@ -616,11 +759,17 @@ export default Ember.Service.extend({
 
     this.crearBloqueSensor('Tocandomanzana', {
       descripcion: 'Hay manzana acá',
-      icono: 'iconos.manzana.png',
+      icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
     });
 
     this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
+
+    this.crearBloqueSensor('TocandoNaranja', {
+      descripcion: 'Hay una naranja acá',
+      icono: 'icono.naranja.png',
+      funcionSensor: 'tocando("NaranjaAnimada")',
+    });
 
     this.crearBloqueSensor('TocandoFogata', {
       descripcion: 'Hay fogata acá',
@@ -644,6 +793,14 @@ export default Ember.Service.extend({
       funcionSensor: 'tocando("PelotaAnimada")',
     });
 
+    this.crearBloqueSensor('TocandoFinal', {
+      descripcion: 'Llegué al final',
+      icono: 'icono.titoFinalizacion.png',
+      funcionSensor: 'estoyUltimaFila()',
+    });
+
+    this.crearBloqueAlias('tocandoFinal', 'TocandoFinal');
+
 
     this.crearBloqueAlias('tocandoPelota', 'TocandoPelota');
 
@@ -655,7 +812,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueSensor('EstoyEnEsquina', {
       descripcion: 'Estoy en una esquina',
-      icono: 'casilla.prendiendoLasCompus2.png',
+      icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
     });
 
@@ -724,8 +881,24 @@ export default Ember.Service.extend({
       funcionSensor: 'tocando("QuesoAnimado")',
     });
 
-    this.crearBloqueAlias('tocandoQueso', 'TocandoQueso')
+    this.crearBloqueAlias('tocandoQueso', 'TocandoQueso');
 
+    this.crearBloqueSensor('TocandoLuz', {
+      descripcion: 'Hay lamparita acá',
+      icono: 'icono.LamparitaApagada.png',
+      funcionSensor: 'tocando("Lamparin")',
+    });
+
+    this.crearBloqueAlias('tocandoLuz', 'TocandoLuz');
+
+    this.crearBloqueSensor('EsCulpable',  {
+      id: 'Descubralculpable',
+      descripcion: 'Estoy frente al culpable',
+      icono: 'icono.culpable.png',
+      funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
+    });
+
+    this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
   },
 
   _definirBloquesQueRepresentanValores() {

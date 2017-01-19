@@ -12,7 +12,7 @@ class SaltarAnimado extends ComportamientoConVelocidad {
 		this.sanitizarArgumentosSaltar();
 		this.suelo = this.receptor.y;
 		this.velocidad_vertical = this.velocidad_inicial;
-		pilas.sonidos.cargar('saltar.wav').reproducir();
+		pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
 	}
 
 	sanitizarArgumentosSaltar(){

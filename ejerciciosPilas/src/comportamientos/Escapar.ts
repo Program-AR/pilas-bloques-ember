@@ -5,7 +5,7 @@ class Escapar extends MovimientoAnimado {
 
 	iniciar(receptor){
 		this.argumentos.idTransicion = "escapar";
-		super.iniciar(this.receptor);
+		super.iniciar(receptor);
 	}
 
 	preAnimacion(){
@@ -13,10 +13,12 @@ class Escapar extends MovimientoAnimado {
 	    this.argumentos.distancia = 600;
 	    this.argumentos.velocidad = 8;
 	    this.argumentos.cantPasos = 40;
+
 	    if (this.argumentos.escaparCon) {
-        if(typeof this.argumentos.escaparCon == 'string') {
+        if (typeof this.argumentos.escaparCon == 'string') {
           this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
         }
+
         this.receptor.agregarSubactor(this.argumentos.escaparCon);
       }
 	    super.preAnimacion();

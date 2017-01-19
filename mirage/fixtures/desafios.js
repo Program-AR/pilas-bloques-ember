@@ -8,7 +8,7 @@ export default [
                'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
     consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
     escena: 'AlienInicial',
-    actividad: null,   /* Se carga desde un hook en la ruta desafío. */
+    //actividad: null,   /* Se carga desde un hook en la ruta desafío. */
     bloques: ['MoverACasillaDerecha', 'ApretarBoton']
   },
   {
@@ -181,7 +181,7 @@ export default [
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
     escena: 'TresNaranjas',
     actividad: null,
-    bloques: ['ComerNaranja']
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'Sino', 'TocandoNaranja']
   },
   {
     id: 17,
@@ -213,7 +213,7 @@ export default [
     consignaInicial: 'Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!',
     escena: 'SuperTito1',
     actividad: null,
-    bloques: ['EncenderLuz']
+    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo', 'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 20,
@@ -331,7 +331,9 @@ export default [
     enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!',
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Avanzar 2 casillas", "Avanzar 3 casillas" y "Avanzar 4 casillas", podemos reemplazar a los 3 por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Avanzar [cantidad] casillas".',
     actividad: null,
-    bloques: ['ComerBanana']
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
+              'VolverAlBordeIzquierdo', 'ComerBananaNano', 'Repetir', 'Si',
+              'Sino', 'Hasta', 'Numero'],
   },
   {
     id: 29,
@@ -342,6 +344,8 @@ export default [
     consignaInicial: '',
     escena: 'DibujandoCuadrado',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 30,
@@ -352,6 +356,8 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosHorizontal',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 31,
@@ -362,6 +368,8 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosDiagonal',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 32,
@@ -372,6 +380,8 @@ export default [
     consignaInicial: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.',
     escena: 'Dibujando4CuadradosInteriores',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 33,
@@ -382,6 +392,8 @@ export default [
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     escena: 'DibujandoCabezaElefante',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 34,
@@ -392,6 +404,8 @@ export default [
     consignaInicial: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.',
     escena: 'DibujandoHexagono',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 35,
@@ -402,6 +416,8 @@ export default [
     consignaInicial: 'En los polígonos, la suma de todos los ángulos externos es 360',
     escena: 'DibujandoTrianguloEquilatero',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 36,
@@ -412,6 +428,8 @@ export default [
     consignaInicial: 'Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
     escena: 'DibujandoPoligonosInteriores',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 37,
@@ -422,6 +440,8 @@ export default [
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',
     escena: 'DibujandoCuevaEstalagtitas',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 130,
@@ -454,8 +474,10 @@ export default [
     consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
     actividad: null,
     deshabilitado: false,
-    bloques: ['PrenderCompu',
-              'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo']
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
+              'OpAritmetica'],
   },
   {
     id: 133,
@@ -465,7 +487,9 @@ export default [
     escena: 'TitoCuadrado',
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
-    bloques: ['EncenderLuz']
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
     id: 134,

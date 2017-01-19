@@ -23,7 +23,7 @@ class ProductionErrorHandler {
 
 	handle(e) {
 		this.escena.automata.decir(e.description());
-		this.escena.pausar();
+		this.escena.pausarDiferido();
 
     if (parent) {
       let mensaje = {
