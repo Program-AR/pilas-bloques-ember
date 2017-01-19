@@ -106,8 +106,6 @@ export default [
     "hierro_animado.png",
     "hueso.png",
     "icono.ComputadoraPrendida.png",
-    "icono.DibujarLinea.png",
-    "icono.Girar.png",
     "iconos.lamparita.png",
     "instalador.png",
     "invisible.png",
