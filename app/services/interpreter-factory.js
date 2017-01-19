@@ -100,7 +100,26 @@ export default Ember.Service.extend({
      */
     function out_evaluar(expr) {
       expr = expr ? expr.toString() : '';
-      return interpreter.createPrimitive(pilasService.evaluar("pilas.escena_actual().automata." + expr));
+      return interpreter.createPrimitive(pilasService.evaluar(`
+        try {
+          var value = pilas.escena_actual().automata.${expr}
+        } catch (e) {
+          var escena = pilas.escena_actual();
+
+          escena.automata.decir(e.description());
+          escena.pausar();
+
+            if (parent) {
+              let mensaje = {
+                tipo: "errorDeActividad",
+                detalle: e.message,
+              };
+              parent.postMessage(mensaje, window.location.origin);
+            }
+
+        }
+
+        value`));
     }
 
     interpreter.setProperty(scope, 'evaluar', interpreter.createNativeFunction(out_evaluar));

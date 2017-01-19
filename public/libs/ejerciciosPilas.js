@@ -936,8 +936,9 @@ var Verificacion = (function () {
         return this.condicionEjecucion();
     };
     Verificacion.prototype.verificar = function () {
-        if (!this.seCumple())
+        if (!this.seCumple()) {
             throw new ActividadError(this.mensajeError);
+        }
     };
     return Verificacion;
 })();
@@ -1610,7 +1611,6 @@ var Detective = (function (_super) {
         var sospechoso = this.obtenerActorBajoLaLupa();
         if (sospechoso.tieneDisflazPuesto) {
             throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
-            return false;
         }
         return sospechoso.esCulpable();
     };
@@ -2656,8 +2656,9 @@ var ComportamientoColision = (function (_super) {
     }
     ComportamientoColision.prototype.sanitizarArgumentos = function () {
         _super.prototype.sanitizarArgumentos.call(this);
-        if (!this.argumentos['etiqueta'])
+        if (!this.argumentos['etiqueta']) {
             throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+        }
     };
     ComportamientoColision.prototype.configurarVerificaciones = function () {
         var _this = this;

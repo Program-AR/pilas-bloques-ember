@@ -15,7 +15,6 @@ class Detective extends ActorAnimado {
 
       if (sospechoso.tieneDisflazPuesto) {
         throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
-        return false;
       }
 
       return sospechoso.esCulpable();

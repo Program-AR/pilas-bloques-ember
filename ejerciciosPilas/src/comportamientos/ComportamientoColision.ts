@@ -21,7 +21,10 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	sanitizarArgumentos(){
 		super.sanitizarArgumentos();
-		if (!this.argumentos['etiqueta']) throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+
+		if (!this.argumentos['etiqueta']) {
+			throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+		}
 	}
 
 	configurarVerificaciones() {

@@ -88,6 +88,11 @@ export default Ember.Component.extend({
       // TODO: puede que esto quede en desuso.
     }
 
+    this.get('pilas').on("errorDeActividad", (motivoDelError) => {
+      var receptor = this.get('pilas').evaluar('pilas.escena_actual().automata');
+      receptor.decir(motivoDelError);
+    });
+
     $(window).trigger('resize');
   },
 

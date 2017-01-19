@@ -30,11 +30,11 @@ class Sospechoso extends ActorAnimado {
     }
 
     hacerCulpable(){
-		this.meaCulpa = true;
+			this.meaCulpa = true;
     }
 
     esCulpable(){
-		return this.meaCulpa;
+			return this.meaCulpa;
     }
 
     sacarDisfraz() {
@@ -46,10 +46,10 @@ class Sospechoso extends ActorAnimado {
     }
 
     mensajeAlSacarDisfraz(){
-		return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
+			return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
     }
 
     teEncontraron(){
-		return this.nombreAnimacionActual() === "culpable";
+			return this.nombreAnimacionActual() === "culpable";
     }
 }

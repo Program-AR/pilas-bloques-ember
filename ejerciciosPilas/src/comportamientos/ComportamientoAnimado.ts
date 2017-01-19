@@ -168,7 +168,9 @@ class Verificacion {
 	}
 
 	verificar(){
-		if (!this.seCumple()) throw new ActividadError(this.mensajeError);
+		if (!this.seCumple()) {
+			throw new ActividadError(this.mensajeError);
+		}
 	}
 }
 

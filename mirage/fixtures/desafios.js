@@ -248,6 +248,9 @@ export default [
     consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
     escena: 'ElDetectiveChaparro',
     actividad: null,
+    bloques: ['Repetir', 'Si', 'Sino', 'Hasta', 'Procedimiento',
+              'PrimerSospechoso', 'SiguienteSospechoso', 'SacarDisfraz',
+              'EsCulpable'],
   },
   {
     id: 23,
