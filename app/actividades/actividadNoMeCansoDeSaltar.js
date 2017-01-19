@@ -6,7 +6,7 @@ var Saltar = AccionBuilder.build({
   id: 'saltar1',
   icono: '../../iconos/arriba.png',
   comportamiento: 'SaltarHablando',
-  argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
+  argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20, velocidad:50 }',
 });
 
 var actividadNoMeCansoDeSaltar = {

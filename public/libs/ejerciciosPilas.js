@@ -983,7 +983,7 @@ var ComportamientoConVelocidad = (function (_super) {
     };
     ComportamientoConVelocidad.prototype.doActualizar = function () {
         var terminoAnimacion = _super.prototype.doActualizar.call(this);
-        if (this.pasosRestantes <= 0) {
+        if (this.pasosRestantes <= 1) {
             this.setearEstadoFinalDeseado();
             return terminoAnimacion;
         }
@@ -1836,7 +1836,7 @@ var GatoAnimado = (function (_super) {
     function GatoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
         this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3, 2, 1]).repetirVeces(9).concat([8, 9, 10, 11, 12, 12, 12, 12, 12, 12, 11, 10, 9, 8]), 4, true);
-        this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
+        this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 46, 46, 46, 45, 44, 43], 15);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19, 16, 15], 5);
         this.definirAnimacion('acostado', [8, 9, 10, 11, 12, 11, 10, 9, 8], 5);
         this.definirAnimacion('abrirOjos', [39, 38, 37, 36], 5);
