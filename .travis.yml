@@ -1,4 +1,7 @@
 ---
+matrix:
+  allow_failures:
+    - os: osx
 env:
   - CXX=g++-4.8
 addons:
