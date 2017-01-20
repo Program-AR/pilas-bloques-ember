@@ -4,39 +4,45 @@
 
           <div class='pilas-blockly-botones'>
 
-            {{#if ejecutando}}
-                <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
-            {{else}}
-                <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
-            {{/if}}
-
-            {{#if modoAlumno}}
-              <button class='btn btn-info pull-right' {{action "guardar_solucion_en_el_backend"}}>Guardar mi solución</button>
-            {{else if modoDocente}}
-
+            {{#if cargando}}
+              <button class='btn btn-default btn-ejecutar' disabled><i class='fa fa-play'></i> Ejecutar</button>
             {{else}}
 
-              {{#if environment.debeMostrarBotonCodigoXML}}
-                <button class='btn btn-warning' {{action "ver_codigo"}}>Ver código XML</button>
-                <button class='btn btn-warning' {{action "ingresar_codigo"}}>Ingresar código XML</button>
+              {{#if ejecutando}}
+                  <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
+              {{else}}
+                  <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
               {{/if}}
 
-              {{#if mostrarGuardar}}
-                {{#if model}}
-                  <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
-                {{else}}
-                  <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+              {{#if modoAlumno}}
+                <button class='btn btn-info pull-right' {{action "guardar_solucion_en_el_backend"}}>Guardar mi solución</button>
+              {{else if modoDocente}}
+
+              {{else}}
+
+                {{#if environment.debeMostrarBotonCodigoXML}}
+                  <button class='btn btn-warning' {{action "ver_codigo"}}>Ver código XML</button>
+                  <button class='btn btn-warning' {{action "ingresar_codigo"}}>Ingresar código XML</button>
                 {{/if}}
-              {{/if}}
+
+                {{#if mostrarGuardar}}
+                  {{#if model}}
+                    <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+                  {{else}}
+                    <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+                  {{/if}}
+                {{/if}}
 
 
-              {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
+                {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
-              <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+                <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
 
 
-              {{#if mostrarCompartir}}
-                <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+                {{#if mostrarCompartir}}
+                  <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+                {{/if}}
+
               {{/if}}
 
             {{/if}}
@@ -45,24 +51,30 @@
 
 
           <div class="contenedor-para-componente-blocky">
-            {{ember-blockly
-              mediaFolder="blockly-package/media/"
-              blocks=blockly_toolbox
-              workspace=initial_workspace
-              withZoom=true
-              withTrash=true
-              comments=blockly_comments
-              disable=blockly_disable
-              duplicate=blockly_duplicate
-              help=false
-              disableBlock=false
-              javascriptCode=javascriptCode
-              showCode=true
-              highlightedBlock=highlightedBlock
-              comment=false
-              onChangeWorkspace=onChangeWorkspace
-              disableNotConnectedToMainBlock=true
-            }}
+            {{#if cargando}}
+              {{pilas-cargando}}
+            {{else}}
+
+              {{ember-blockly
+                mediaFolder="blockly-package/media/"
+                blocks=blockly_toolbox
+                workspace=initial_workspace
+                withZoom=true
+                withTrash=true
+                comments=blockly_comments
+                disable=blockly_disable
+                duplicate=blockly_duplicate
+                help=false
+                disableBlock=false
+                javascriptCode=javascriptCode
+                showCode=true
+                highlightedBlock=highlightedBlock
+                comment=false
+                onChangeWorkspace=onChangeWorkspace
+                disableNotConnectedToMainBlock=true
+              }}
+
+            {{/if}}
           </div>
 
 </div>

@@ -57,16 +57,12 @@ export default Ember.Component.extend({
 
   didInsertElement() {
 
-    if (!this.get('actividad')) {
-      return null;
-    }
-
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
 
-
     Ember.run.scheduleOnce('afterRender', () => {
       this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.get('bloques')));
+
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
@@ -178,6 +174,7 @@ export default Ember.Component.extend({
   cuandoTerminaEjecucion() {
     this.sendAction('onTerminoEjecucion');
     if (this.get("debeMostrarFinDeDesafio")) {
+      // TODO: Acá falla porque no existe la actividad.
       if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()) {
         this.send('abrirFinDesafio');
       }

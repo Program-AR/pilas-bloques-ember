@@ -1,15 +1,23 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Ember from 'ember';
 
 moduleForComponent('pilas-editor', 'Integration | Component | pilas editor', {
   integration: true
 });
 
 test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{pilas-editor}}`);
+  this.set('pilas', {
+    on: () => {},
+    liberarRecursos: () => {}
+  });
+
+  this.set('model', Ember.Object.extend({
+    bloques: ['controls_if']
+  }).create());
+
+  this.render(hbs`{{pilas-editor pilas=pilas model=model}}`);
 
   assert.ok(this.$().text().trim());
 });

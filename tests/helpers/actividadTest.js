@@ -122,7 +122,6 @@ export function actividadTest(nombre, opciones) {
           this.set('model', model);
           this.set('pilas', pilas);
 
-          this.set('model.actividad', "deasdasdasdasdasdmo");
 
           // Carga la solución en base64, el formato que espera el componente.
           this.set('solucion', window.btoa(opciones.solucion));
@@ -131,14 +130,17 @@ export function actividadTest(nombre, opciones) {
             if (opciones.fps) {
               pilas.cambiarFPS(opciones.fps);
             } else {
-              pilas.cambiarFPS(200);
+              pilas.cambiarFPS(300);
             }
 
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
 
+            setTimeout(() => {
              this.$('.btn-ejecutar').click();
+            }, 1000);
+
           });
 
           /**
