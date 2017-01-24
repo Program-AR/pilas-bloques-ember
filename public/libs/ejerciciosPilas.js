@@ -3113,7 +3113,8 @@ var SaltarAnimado = (function (_super) {
         var cps = this.argumentos.cantPasos / 2;
         var v = this.argumentos.velocidad_inicial;
         var h = this.argumentos.alturaDeseada;
-        return Math.floor((cps * v - h) / ((cps - 1) * cps / 2));
+        return Math.floor((cps * v - h) / ((cps - 1) * cps / 2)); //Es preferible manejar siempre enteros.
+        //Redondear para abajo se compensa con setearEstadoFinalDeseado
     };
     SaltarAnimado.prototype.calcularVInicial = function () {
         if (!this.argumentos.alturaDeseada)
@@ -3125,7 +3126,8 @@ var SaltarAnimado = (function (_super) {
         var v = g / 2 * (cps - 1) + (h / cps);
         if (v < 0)
             throw new ArgumentError('Gravedad insuficiente para llegar a la altura deseada en los pasos indicados');
-        return Math.floor(v);
+        return Math.floor(v); //Es preferible manejar siempre enteros.
+        //Redondear para abajo se compensa con setearEstadoFinalDeseado
     };
     /* Fumata:
 
