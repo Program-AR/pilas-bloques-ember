@@ -69,6 +69,11 @@ https://travis-ci.org/Program-AR/pilas-bloques
 
 Notas de versión
 ---------
+* 1.1.2
+ * El notificador de versiones ahora sólo funciona en la versión descargable/offline (y se arregló un bug de comparación que hacía que avisara aún cuando la versión instalada fuera nueva).
+ * Se elimininó el feature de que la solución persista en la URL. Esto se hizo para que al compartir la URL no vaya por defecto con la solución asociada.
+ * Las categorías vuelven a estar alineadas a izquierda.
+ * En "No me canso de saltar", el salto se hace más rápido, y no tiene un pequeño bug visual.
 * 1.1.0
  * Se agregó un notificador de nueva versión para descargar.
  * Se hicieron arreglos sobre las animaciones y chequeos de actividad completada en: El gato en la calle, Tres naranjas, La gran aventura del mar encantado, Instalando Juegos, Tito (en todos sus sabores) y más.
@@ -86,13 +91,13 @@ Notas de versión
   * Correcciones al Detective Chaparro y a Laberinto Con Queso.
   * Se integra a Git toda la historia del repositorio ejerciciosPilas.
 * 1.0.1
- * Se migró la aplicación offline de Node-Webkit a Electron.
+ * Se migró la aplicación offline de Node-Webkit a Electron. Esto hace que 1) ya no se soporte Windows XP y 2) se pueda instalar más fácilmente en otras versiones de Debian no-Huayra.
  * Se cambiaron las actividades de Parametrización para que usen valores direcciones en vez de comparar por Strings.
  * Se realizaron mejoras generales en links externos y la integración con el sistema.
  * Se hizo adaptable el diseño visual de la aplicación
  * Se agrega el código actual a la URL para que en un refresh no se pierda lo programado.
  * Se hizo que Pilas Web esté contenido en un iframe, lo que hace más prolijo el estado de Javascript de la página.
- * Se comenzó la migración de actividades a models de ember (usando mirage).
+ * Se comenzó la migración de actividades a models de ember (usando mirage). Ahora las actividades también se acceden por id numérico (es el default).
  * Se mejoró el framework de testeo de integración.
  * Se actualizó el Acerca De.
  * Cambio a NodeJS 4
