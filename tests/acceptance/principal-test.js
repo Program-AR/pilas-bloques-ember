@@ -20,11 +20,6 @@ test('visiting /', function(assert) {
   });
 
   principal.
-    cerrarDialogo().
-    abrirOpciones();
-
-  andThen(() => {
-    assert.equal(principal.tituloModal(), "Opciones", "El modal de opciones está visible");
-  });
+    cerrarDialogo();
 
 });

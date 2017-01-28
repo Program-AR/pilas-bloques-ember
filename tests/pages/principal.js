@@ -24,9 +24,4 @@ export default PageObject.create({
     return this;
   },
 
-  abrirOpciones() {
-    click("button#abrir-opciones");
-    return this;
-  }
-
 });
