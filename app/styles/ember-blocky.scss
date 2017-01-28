@@ -90,12 +90,21 @@ table td {
 }
 
 .core-preview-in-blockly {
+  overflow: auto;
   z-index: 8;
-  position: relative;
+  position: absolute;;
   background-color: rgba(175, 175, 175, 0.14);
   border: 1px solid rgba(128, 128, 128, 0.1);
   margin-left: 50%;
+  width: 400px;
+  height: 300px;
+  margin-top: 10px;
+  margin-right: 20px;
+  opacity: 0.8;
+  right: 10px;
+  font-size: x-small;
 }
+
 
 .ember-blockly-list {
   height: 300px;
