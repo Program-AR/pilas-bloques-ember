@@ -35,10 +35,9 @@ export default Ember.Component.extend({
   }],
 
   initial_workspace: `
-      <xml xmlns="http://www.w3.org/1999/xhtml">
-        <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
-        </block>
-      </xml>';
+    <xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" editable="false" movable="false" x="15" y="15"></block>
+    </xml>
   `,
 
   javascriptCode: null,
