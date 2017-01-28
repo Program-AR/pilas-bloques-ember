@@ -76,7 +76,7 @@ var ProductionErrorHandler = (function () {
     }
     ProductionErrorHandler.prototype.handle = function (e) {
         this.escena.automata.decir(e.description());
-        this.escena.pausarDiferido();
+        this.escena.pausar();
         if (parent) {
             var mensaje = {
                 tipo: "errorDeActividad",
