@@ -12,15 +12,10 @@ module.exports = function(defaults) {
       }
     });
 
-app.import('bower_components/bootstrap/dist/css/bootstrap.css');
-
-app.import('vendor/prism/prism.css');
-app.import('vendor/prism/prism.js');
-
-    app.import("vendor/libs/blockly/blockly_compressed.js");
-    app.import("vendor/libs/blockly/blocks_compressed.js");
-    app.import("vendor/libs/blockly/javascript_compressed.js");
-    app.import("vendor/libs/blockly/msg/js/es.js");
+    app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+    app.import('vendor/acorn_interpreter.js');
+    app.import('vendor/beautify.js');
+    app.import('vendor/utilidades_de_depuracion.js');
 
     process.setMaxListeners(1000);
 

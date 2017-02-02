@@ -8,7 +8,8 @@ export default [
                'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
     consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
     escena: 'AlienInicial',
-    actividad: null   /* Se carga desde un hook en la ruta desafío. */
+    //actividad: null,   /* Se carga desde un hook en la ruta desafío. */
+    bloques: ['MoverACasillaDerecha', 'ApretarBoton']
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ export default [
     consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
     escena: 'ElGatoEnLaCalle',
     actividad: null,
+    bloques: ['Saludar', 'Avanzar', 'Volver', 'Abrirojos', 'Cerrarojos', 'Acostarse', 'Pararse', 'Soar', 'Procedimiento']
   },
   {
     id: 3,
@@ -29,6 +31,7 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     actividad: null,
+    bloques:  ['saltar1', 'Procedimiento', 'repetir']
   },
   {
     id: 4,
@@ -39,6 +42,7 @@ export default [
     consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
     escena: 'ElMarcianoEnElDesierto',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'repetir']
   },
   {
     id: 5,
@@ -50,6 +54,7 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     actividad: null,
+    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'repetir']
   },
   {
     id: 6,
@@ -59,6 +64,7 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'LevantaTuerca', 'Procedimiento', 'repetir']
   },
   {
     id: 7,
@@ -69,6 +75,7 @@ export default [
     consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
     escena: 'ElRecolectorDeEstrellas',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'repetir']
   },
   {
     id: 8,
@@ -78,6 +85,7 @@ export default [
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'MorderSandia', 'Procedimiento', 'repetir']
   },
   {
     id: 9,
@@ -88,6 +96,7 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'repetir']
   },
   {
     id: 10,
@@ -97,6 +106,7 @@ export default [
     enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, ingresar la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
     escena: 'InstalandoJuegos',
     actividad: null,
+    bloques: ['SiguienteCompu', 'PrenderCompu', 'ApagarCompu', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'repetir', 'Procedimiento'],
   },
   {
     id: 11,
@@ -109,9 +119,9 @@ export default [
               '3) Entregarle el sombrero al mago para recibir la espada a cambio.\n'+
               '4) Luchar con la espada contra el caballero oscuro.\n'+
               '5) Escapar en unicornio.',
-    consignaInicial: '',
     escena: 'LaGranAventuraDelMarEncantado',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'Escaparenunicornio', 'repetir', 'Procedimiento'],
   },
   {
     id: 12,
@@ -121,6 +131,7 @@ export default [
     enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
     escena: 'ReparandoLaNave',
     actividad: null,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'repetir', 'Procedimiento'],
   },
   {
     id: 13,
@@ -135,6 +146,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     actividad: null,
+    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'si']
   },
   {
     id: 14,
@@ -148,6 +160,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     actividad: null,
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'repetir', 'si', 'sino', 'tocandoManzana', 'tocandoBanana']
   },
   {
     id: 15,
@@ -157,6 +170,8 @@ export default [
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
     escena: 'LaberintoCorto',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'MoverACasillaDerecha',
+              'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 16,
@@ -166,6 +181,7 @@ export default [
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
     escena: 'TresNaranjas',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'Sino', 'TocandoNaranja']
   },
   {
     id: 17,
@@ -175,6 +191,7 @@ export default [
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     escena: 'TitoRecargado',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 18,
@@ -184,6 +201,8 @@ export default [
     enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
     escena: 'LaberintoLargo',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+              'Repetir', 'Si', 'Sino', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 19,
@@ -194,6 +213,7 @@ export default [
     consignaInicial: 'Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!',
     escena: 'SuperTito1',
     actividad: null,
+    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo', 'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 20,
@@ -204,6 +224,7 @@ export default [
     consignaInicial: 'El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".',
     escena: 'SuperTito2',
     actividad: null,
+    bloques: ['EncenderLuz']
   },
   {
     id: 21,
@@ -214,6 +235,9 @@ export default [
     consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
     escena: 'LaberintoConQueso',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+              'ComerQueso', 'Repetir', 'Si', 'Sino', 'Hasta', 'TocandoAbajo',
+              'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
   },
   {
     id: 22,
@@ -224,6 +248,9 @@ export default [
     consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
     escena: 'ElDetectiveChaparro',
     actividad: null,
+    bloques: ['Repetir', 'Si', 'Sino', 'Hasta', 'Procedimiento',
+              'PrimerSospechoso', 'SiguienteSospechoso', 'SacarDisfraz',
+              'EsCulpable'],
   },
   {
     id: 23,
@@ -236,6 +263,9 @@ export default [
     consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
     escena: 'FutbolRobots',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
+              'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
+              'Sino', 'Hasta'],
   },
   {
     id: 24,
@@ -246,6 +276,10 @@ export default [
     'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
     escena: 'PrendiendoLasCompus',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'MoverACasillaDerecha', 'MoverACasillaArriba',
+              'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+              'PrenderCompuConColision', 'EstoyEnEsquina'],
   },
   {
     id: 25,
@@ -256,6 +290,10 @@ export default [
     consignaInicial: 'Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.',
     escena: 'ElMonoQueSabeContar',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+              'SiguienteColumna', 'ContarBanana', 'ContarManzana',
+              'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'Sino',
+              'Hasta', 'EstoyAlInicio', 'EstoyAlFin']
   },
   {
     id: 26,
@@ -266,6 +304,8 @@ export default [
     consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
     escena: 'SuperViaje',
     actividad: null,
+    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
+              'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 27,
@@ -276,6 +316,11 @@ export default [
     consignaInicial: 'Una variable nos permite guardar información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.',
     escena: 'ElMonoCuentaDeNuevo',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+              'SiguienteColumna',
+              'ContarBanana', 'ContarManzana', 'TocandoBanana',
+              'TocandoManzana', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'EstoyAlInicio', 'RepetirVacio', 'LargoColumnaActual']
   },
   {
     id: 28,
@@ -286,6 +331,9 @@ export default [
     enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!',
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Avanzar 2 casillas", "Avanzar 3 casillas" y "Avanzar 4 casillas", podemos reemplazar a los 3 por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Avanzar [cantidad] casillas".',
     actividad: null,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
+              'VolverAlBordeIzquierdo', 'ComerBananaNano', 'Repetir', 'Si',
+              'Sino', 'Hasta', 'Numero'],
   },
   {
     id: 29,
@@ -296,6 +344,8 @@ export default [
     consignaInicial: '',
     escena: 'DibujandoCuadrado',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 30,
@@ -306,6 +356,8 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosHorizontal',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 31,
@@ -316,6 +368,8 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosDiagonal',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 32,
@@ -326,6 +380,8 @@ export default [
     consignaInicial: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.',
     escena: 'Dibujando4CuadradosInteriores',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 33,
@@ -336,6 +392,8 @@ export default [
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     escena: 'DibujandoCabezaElefante',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 34,
@@ -346,6 +404,8 @@ export default [
     consignaInicial: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.',
     escena: 'DibujandoHexagono',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 35,
@@ -356,6 +416,8 @@ export default [
     consignaInicial: 'En los polígonos, la suma de todos los ángulos externos es 360',
     escena: 'DibujandoTrianguloEquilatero',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 36,
@@ -366,6 +428,8 @@ export default [
     consignaInicial: 'Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
     escena: 'DibujandoPoligonosInteriores',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 37,
@@ -376,6 +440,8 @@ export default [
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',
     escena: 'DibujandoCuevaEstalagtitas',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
     id: 130,
@@ -385,6 +451,8 @@ export default [
     escena: 'LaFiestaDeDracula',
     enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de las 3 lámparas una cierta cantidad de veces: 5 veces la primera, 8 la segunda y 12 la tercera.',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
+              'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
     id: 131,
@@ -394,6 +462,7 @@ export default [
     escena: 'SalvandoLaNavidad',
     enunciado: 'Ayudá a Papá Noel a dejar un regalo al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías?',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
     id: 132,
@@ -404,6 +473,11 @@ export default [
     enunciado: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.',
     consignaInicial: 'Los parámetros pueden ser de texto además de numéricos. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.',
     actividad: null,
+    deshabilitado: false,
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
+              'OpAritmetica'],
   },
   {
     id: 133,
@@ -413,6 +487,9 @@ export default [
     escena: 'TitoCuadrado',
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
     id: 134,
@@ -423,6 +500,9 @@ export default [
     enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
     consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
     actividad: null,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
+              'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
   {
     id: 135,
@@ -432,6 +512,12 @@ export default [
     escena: 'PrendiendoLasFogatas',
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     actividad: null,
+    bloques: ['Procedimiento', 'repetir', 'si', 'SiNo', 'Hasta',
+      'TocandoFogata', 'PrenderFogata',
+      'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
+      'Numero', 'OpComparacion', 'OpAritmetica',
+      'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
+    ]
   },
   {
     id: 136,

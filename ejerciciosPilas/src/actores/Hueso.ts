@@ -2,6 +2,6 @@
 
 class Hueso extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'actores/actor.Hueso.png', cantColumnas:1, cantFilas: 1});
+        super(x, y, {grilla: 'hueso.png', cantColumnas:1, cantFilas: 1});
     }
-}
+} 

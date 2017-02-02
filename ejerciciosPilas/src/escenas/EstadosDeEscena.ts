@@ -85,7 +85,7 @@ class EstadoConTransicion extends Estado{
   }
 
   realizarTransicion(idTransicion, comportamiento) {
-    if (!this.transiciones[idTransicion]) throw new ActividadError("¡Ups, esa no era la opción correcta!");
+    if (!this.puedoTransicionarA(idTransicion)) throw new ActividadError("¡Ups, esa no era la opción correcta!");
     pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
   }
 
@@ -93,6 +93,24 @@ class EstadoConTransicion extends Estado{
       return this.transiciones[idTransicion].condicionTransicion() ?
         this.transiciones[idTransicion].estadoEntrada :
         this;
+  }
+
+  puedoTransicionarA(idTransicion){
+    return this.transiciones[idTransicion];
+  }
+}
+
+// Sirve para que no tire error para salirse del camino
+class EstadoTransicionSinError extends EstadoConTransicion {
+  puedoTransicionarA(idTransicion){
+    return true; //Siempre me deja
+  }
+  estadoSiguiente(comportamiento, idTransicion) {
+    if (!super.puedoTransicionarA(idTransicion)){
+      return new EstadoTransicionSinError('meFuiDelCamino');
+    } else {
+      return super.estadoSiguiente(comportamiento,idTransicion);
+    }
   }
 }
 
@@ -124,14 +142,14 @@ class BuilderStatePattern{
     estados;
     idEstadoInicial;
 
-    constructor(idEstadoInicialp){
+    constructor(idEstadoInicialp,tiraErrorSiSeVaDelCamino = true){
       this.idEstadoInicial=idEstadoInicialp;
       this.estados={};
-      this.estados[idEstadoInicialp]= new EstadoConTransicion(idEstadoInicialp);
+      this.estados[idEstadoInicialp]= tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstadoInicialp) : new EstadoTransicionSinError(idEstadoInicialp);
     }
 
-    agregarEstado(idEstado){
-      this.estados[idEstado]= new EstadoConTransicion(idEstado);
+    agregarEstado(idEstado,tiraErrorSiSeVaDelCamino = true){
+      this.estados[idEstado]= tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstado) : new EstadoTransicionSinError(idEstado);
     }
     agregarEstadoAceptacion(idEstado){
       this.estados[idEstado] = new EstadoAceptacion(idEstado);

@@ -5,14 +5,26 @@ class Depositar extends ComportamientoAnimado {
 		return 'depositar';
 	}
 
-	postAnimacion(){
-		if(this.receptor.cuadricula){
+	postAnimacion() {
+		this.validarQueLaClaseADepositarSeaString();
+		let clase: any = window[this.argumentos.claseADepositar];
+
+		if (this.receptor.cuadricula) {
 			this.receptor.cuadricula.agregarActor(
-				new this.argumentos.claseADepositar(),
+				new clase(),
 				this.receptor.casillaActual().nroFila,
 				this.receptor.casillaActual().nroColumna);
 		} else {
-				new this.argumentos.claseADepositar(this.receptor.x, this.receptor.y);
+				new clase(this.receptor.x, this.receptor.y);
 		}
 	}
+
+	validarQueLaClaseADepositarSeaString() {
+		let tipo = typeof this.argumentos.claseADepositar;
+
+		if (tipo !== "string") {
+			throw new Error(`Se esperaba que la claseADepositar sea un string, pero se encontó ${tipo}.`)
+		}
+	}
+
 }

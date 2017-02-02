@@ -11,12 +11,12 @@ class HeroeAnimado extends ActorAnimado {
     }
 
     nombreArchivo(){
-      return 'actores/actor.Heroe.png';
+      return 'heroe.png';
     }
 }
 
 class Heroina extends HeroeAnimado {
   nombreArchivo(){
-    return 'actores/actor.Heroina.png';
+    return 'heroina.png';
   }
 }

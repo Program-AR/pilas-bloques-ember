@@ -2,14 +2,16 @@
 
 class ActividadError{
 	//Modificar el message, etc.
-    public name: string;
-    public message: string;
-    constructor(message?: string) {
+	public name: string;
+	public message: string;
+
+	constructor(message?: string) {
 		this.message = message || "";
-    };
-    description(){
+	};
+
+	description(){
 		return this.message;
-    }
+	}
 }
 
 class ProductionErrorHandler {

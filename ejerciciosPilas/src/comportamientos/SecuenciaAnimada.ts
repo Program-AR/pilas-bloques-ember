@@ -6,6 +6,13 @@ class SecuenciaAnimada extends ComportamientoAnimado {
 	laSecuenciaPosta;
 
 	iniciar(receptor){
+    // Ver bloques de la gran aventura del mar encantado
+    for(var i in this.argumentos.secuencia) {
+      if(this.argumentos.secuencia[i].comportamiento) {
+        var comportamiento = eval(this.argumentos.secuencia[i].comportamiento);
+        this.argumentos.secuencia[i] = new comportamiento(this.argumentos.secuencia[i].argumentos);
+      }
+    }
 		super.iniciar(receptor);
 		this.laSecuenciaPosta = new Secuencia(this.argumentos);
 		this.laSecuenciaPosta.iniciar(receptor);

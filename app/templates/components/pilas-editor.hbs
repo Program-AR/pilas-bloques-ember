@@ -1,18 +1,7 @@
 <div class='contenido-principal desafio-contenedor'>
 
-  {{#if debug}}
-
-    {{pilas-debug-bar
-          panelCanvasVisible=panelCanvasVisible
-          panelBlocklyVisible=panelBlocklyVisible
-          panelCodigoVisible=panelCodigoVisible
-    }}
-
-  {{/if}}
-
   {{outlet}}
 
-{{#if panelCanvasVisible}}
   <div class="desafio-panel-izquierdo" id='panel-izquierdo'>
 
     {{pilas-canvas pilas=pilas onReady="onReady" escena=model.escena}}
@@ -36,35 +25,26 @@
     </div>
 
   </div>
-{{/if}}
 
 {{pilas-splitter panel="#panel-izquierdo" iframe="iframe" ayuda="#panel-ayuda"}}
 
-{{#if panelBlocklyVisible}}
     {{pilas-blockly guardar='guardar'
                     registrarPrimerCodigo='registrarPrimerCodigo'
-                    codigo=codigo
 
                     modoDocente=modoDocente modoAlumno=modoAlumno
                     hash=hash idAlumno=idAlumno
                     guardar_solucion_en_el_backend="guardar_solucion_en_el_backend"
+                    codigo=codigo
+
+                    cargando=cargando
 
                     persistirSolucionEnURL=persistirSolucionEnURL
                     debeMostrarFinDeDesafio=debeMostrarFinDeDesafio
                     pilas=pilas
-                    codigoJavascript=codigoJavascript
-                    actividad=model.actividad}}
-{{/if}}
-
-{{#if panelCodigoVisible}}
-  <div class="desafio-panel-codigo">
-    <pre>{{prism codigoJavascript}}</pre>
-  </div>
-{{/if}}
-
-
-{{#if ningunPanelVisible}}
-  <p>Hey, ningún panel está visible</p>
-{{/if}}
+                    bloques=model.bloques
+                    actividad=model.actividad
+                    onChangeWorkspace=onChangeWorkspace
+                    onTerminoEjecucion=onTerminoEjecucion
+                }}
 
 </div>

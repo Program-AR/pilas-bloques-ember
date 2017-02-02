@@ -11,8 +11,10 @@
     "pilasengine",
     "Base",
     "debugger",
-    "Prism",
-    "ga"
+    "ga",
+    "Interpreter",
+    "goog",
+    "js_beautify"
   ],
   "browser": true,
   "boss": true,

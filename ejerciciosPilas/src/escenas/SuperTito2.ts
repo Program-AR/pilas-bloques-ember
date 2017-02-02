@@ -14,7 +14,7 @@ class SuperTito2 extends SuperTito1 {
     }
 
     pathFondo(){
-        return 'fondos/fondo.SuperTito2.png';
+        return 'fondo.superTito2.png';
     }
 
     agregarLamparinEnFila(i){

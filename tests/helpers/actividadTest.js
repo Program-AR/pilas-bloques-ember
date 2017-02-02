@@ -100,7 +100,7 @@ export function actividadTest(nombre, opciones) {
 
     let store = this.container.lookup('service:store');
     let pilas = this.container.lookup('service:pilas');
-    let actividades = this.container.lookup('service:actividades');
+    //let actividades = this.container.lookup('service:actividades');
 
 	  return new Ember.RSVP.Promise((success) => {
 
@@ -123,33 +123,23 @@ export function actividadTest(nombre, opciones) {
           this.set('pilas', pilas);
 
 
-          // TODO:
-          // Simula el método afterModel del router. Este código se quitará
-          // cuando migremos completamente a ember-data.
-          let actividad = actividades.obtenerPorNombre(model.get("nombre"));
-          this.set('model.actividad', actividad);
-
           // Carga la solución en base64, el formato que espera el componente.
           this.set('solucion', window.btoa(opciones.solucion));
-
           // Captura el evento de inicialización de pilas:
           this.on('onReady', function(/*instanciaPilas*/) {
-            var code = actividad.generarCodigo();
-            pilas.ejecutarCodigoSinReiniciar(code);
-
-
-            // Intenta usar la velocidad de ejecución indicada por
-            // las opciones del test.
-            // Por omisión los tests se ejecutarán muy rápido.
             if (opciones.fps) {
               pilas.cambiarFPS(opciones.fps);
             } else {
-              pilas.cambiarFPS(200);
+              pilas.cambiarFPS(300);
             }
 
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
+
+            setTimeout(() => {
+             this.$('.btn-ejecutar').click();
+            }, 1000);
 
           });
 
@@ -159,6 +149,7 @@ export function actividadTest(nombre, opciones) {
            * dos casos finaliza el test.
            */
           pilas.on("errorDeActividad", function(motivoDelError) {
+            console.log("error detectado!");
             let errorEsperado = opciones.errorEsperado;
 
             if (errorEsperado) {
@@ -171,12 +162,10 @@ export function actividadTest(nombre, opciones) {
 
           });
 
-          pilas.on("terminaEjecucion", function(/*data*/) {
-
+          this.set('onTerminoEjecucion', () => {
             if (opciones.cantidadDeActoresAlTerminar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
             }
-
 
             // Los errores esperados no deberían llegar a este punto, así
             // que se emite un error.
@@ -191,14 +180,14 @@ export function actividadTest(nombre, opciones) {
             }
 
             success();
-
-          });
+           });
 
           /**
            * Se instancia el componente pilas-editor con los paneles que
            * observará el usuario y una solución pre-cargada, tal y como se
            * hace dentro de la aplicación.
            */
+
   	      this.render(hbs`
             {{pilas-editor
               debug=false
@@ -207,15 +196,14 @@ export function actividadTest(nombre, opciones) {
               onReady="onReady"
               codigo=solucion
               codigoJavascript=""
-
               persistirSolucionEnURL=false
-
               panelCanvasVisible=true
               panelBlocklyVisible=true
               panelCodigoVisible=false
+              onTerminoEjecucion=onTerminoEjecucion
+              debeMostrarFinDeDesafio=false
             }}
           `);
-
         });
 
       });

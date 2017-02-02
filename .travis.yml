@@ -1,6 +1,24 @@
 ---
-language: objective-c
+matrix:
+  allow_failures:
+    - os: osx
+env:
+  - CXX=g++-4.8
+addons:
+  firefox: latest
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+    - gcc-4.8
+language: node_js
+os:
+  - linux
+  - osx
 sudo: false
+node_js:
+- '4.2'
 cache:
   directories:
   - node_modules
@@ -13,6 +31,8 @@ install:
 script:
 - node -v
 - make test_travis
+before_script:
+  - export DISPLAY=:99; sh -e /etc/init.d/xvfb start; sleep 3
 before_install:
 - rm -rf ~/.nvm
 - git clone https://github.com/creationix/nvm.git ~/.nvm
@@ -26,15 +46,19 @@ before_install:
 - npm install -g node-gyp
 - npm install -g ember-cli
 before_deploy:
-- brew install curl
-- cd $TRAVIS_BUILD_DIR && travis/download-homebrew
-- brew install makensis
-- VERSION=$(sh scripts/obtenerVersion.sh)
-- echo "Detectando version $VERSION para compilar"
-- make binarios_electron
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; cd $TRAVIS_BUILD_DIR && travis/download-homebrew        ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; brew install makensis                                   ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; VERSION=$(sh scripts/obtenerVersion.sh)                 ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; echo "Detectando version $VERSION para compilar"        ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; make binarios_electron                                  ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; echo "Evitando hacer binarios en linux...."           ; fi
 after_success:
   - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
   - test $TRAVIS_BRANCH = "master"  && ember surge --environment development --new-domain master-pilas-bloques.surge.sh
+  - test $TRAVIS_BRANCH = "feature/actualizar-blockly" && ember surge --environment development --new-domain experimental-pilas-bloques.surge.sh
+after_failure:
+  - test $TRAVIS_BRANCH = "feature/actualizar-blockly" && ember surge --environment development --new-domain experimental-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases

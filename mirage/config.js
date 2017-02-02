@@ -9,11 +9,15 @@ export default function() {
   this.get('/libros');
   this.get('/libros/:id');
 
+	// Deshabilita los console log que emite mirage.
+	this.logging = false;
+
   // this.urlPrefix = '';    // make this `http://localhost:8080`, for example, if your API is on a different server
   // this.namespace = '';    // make this `api`, for example, if your API is namespaced
-  this.timing = 500;      // delay for each request, automatically set to 0 during testing
+  this.timing = 50;      // delay for each request, automatically set to 0 during testing
 
 
+  this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('http://104.131.245.133:9914/**');
   this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');

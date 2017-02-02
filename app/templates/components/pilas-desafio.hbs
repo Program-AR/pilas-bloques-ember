@@ -12,7 +12,8 @@
 
   <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
 
-{{else}}
+{{else if model.bloques}}
+
 
   {{#link-to "desafio" model (query-params codigo="")}}
 
@@ -22,5 +23,13 @@
 
     <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
   {{/link-to}}
+
+{{else}}
+
+  {{#if model.nombre}}
+    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
+  {{/if}}
+
+  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
 
 {{/if}}

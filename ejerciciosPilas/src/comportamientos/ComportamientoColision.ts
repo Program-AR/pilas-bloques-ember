@@ -21,7 +21,10 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	sanitizarArgumentos(){
 		super.sanitizarArgumentos();
-		if (!this.argumentos['etiqueta']) throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+
+		if (!this.argumentos['etiqueta']) {
+			throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+		}
 	}
 
 	configurarVerificaciones() {
@@ -31,8 +34,17 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	postAnimacion() {
 		var objetoTocado = this.objetoTocado();
-		if (this.argumentos['animacionColisionado']) objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
-		if (this.argumentos['comportamientoAdicional']) objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'],this.argumentos['argumentosComportamiento']);
+
+		if (this.argumentos['animacionColisionado']) {
+			objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
+		}
+
+		if (this.argumentos['comportamientoAdicional']) {
+			let claseComportamiento: any = window[this.argumentos['comportamientoAdicional']];
+
+			objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
+		}
+
 		this.metodo(objetoTocado);
 	}
 
@@ -62,7 +74,9 @@ class DesencadenarAnimacionSiColisiona extends ComportamientoColision{
 
 class DesencadenarComportamientoSiColisiona extends ComportamientoColision{
 	metodo(objetoColision){
-		objetoColision.hacer_luego(this.argumentos['comportamiento'],this.argumentos['argumentosComportamiento'])
+		let claseComportamiento:any = window[this.argumentos['comportamiento']];
+
+		objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento'])
 	}
 }
 
@@ -78,8 +92,7 @@ class EncenderPorEtiqueta extends ComportamientoColision{
 	}
 	configurarVerificaciones() {
 		super.configurarVerificaciones();
-		this.verificacionesPre.push(
-			new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
+		this.verificacionesPre.push(new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
 	}
 	estaApagada(){
 		return this.objetoTocado().nombreAnimacionActual() != this.nombreProximaAnimacion();

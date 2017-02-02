@@ -8,7 +8,6 @@ import Ember from 'ember';
  */
 export default Ember.Route.extend({
   cursoAPI: Ember.inject.service(),
-  actividades: Ember.inject.service(),
 
   model(params) {
     params.nombre = this.decodificarHash(params.hash).actividad;
@@ -35,8 +34,7 @@ export default Ember.Route.extend({
     let hash = this.obtener_hash_desde_transition(transition);
     let valores = this.decodificarHash(hash);
 
-    let actividad = this.get("actividades").obtenerPorNombre(valores.actividad);
-    model.set('actividad', actividad);
+    model.set('actividad', "DEMO");
 
     model.idAlumno = valores.idAlumno;
     model.hash = valores.hashCompleto;

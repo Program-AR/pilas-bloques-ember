@@ -3,6 +3,7 @@
 @import "modal.scss";
 @import "ribbons.scss";
 
+
 @import "font-awesome";
 
 html, body {
@@ -688,6 +689,8 @@ h2 {
   padding-left: 1px;
   min-width: 380px;
   height: 100%;
+  flex: 1;
+  display: flex;
 }
 
 .desafio-panel-codigo {
@@ -729,16 +732,6 @@ h2 {
   height: auto;
 }
 
-
-.pilas-debug-bar {
-  position: fixed;
-  top: -1px;
-  z-index: 10000;
-  left: 50%;
-  border: 1px solid gray;
-  background-color: rgba(200, 200, 200, 0.5);
-  padding: 5px;
-}
 
 table {
     height: 100%;
@@ -860,4 +853,38 @@ a:hover {
   margin: 40px;
   margin-left: 1em;
   width: 400px;
+}
+
+.ember-blockly-container {
+  min-height: 400px;
+  height: 100%;
+  width: 100%;
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.contenedor-para-componente-blocky {
+  flex: 1;
+}
+
+.nota {
+  background-color: rgba(255, 255, 0, 0.15);
+  border: 1px solid #ffb300;
+  padding: 1em;
+  margin: 1px;
+  color: hsla(29,65%,50%,1);
+  border-radius: 6px;
+}
+
+
+
+@import "ember-blocky.scss";
+
+
+.pilas-libro-contenedor a:hover {
+  text-decoration: none;
 }

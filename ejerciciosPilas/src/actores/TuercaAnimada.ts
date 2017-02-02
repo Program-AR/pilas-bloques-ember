@@ -1,6 +1,6 @@
 class TuercaAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'actores/actor.Tuerca.png', cantColumnas:1});
+        super(x, y, {grilla: 'tuerca.png', cantColumnas:1});
 
 
     }

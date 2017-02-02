@@ -319,7 +319,7 @@ var Cuadros = (function () {
 var ActorCompuesto = (function (_super) {
     __extends(ActorCompuesto, _super);
     function ActorCompuesto(x, y, opciones) {
-        opciones.grilla = 'casillas/casilla.Invisible.png';
+        opciones.grilla = 'invisible.png';
         _super.call(this, x, y, opciones);
         this.inicializarSubactores();
     }
@@ -408,7 +408,7 @@ var ImitarAtributosNumericos2 = (function (_super) {
 var AlienAnimado = (function (_super) {
     __extends(AlienAnimado, _super);
     function AlienAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.AlienAnimado.png', cantColumnas: 14 });
+        _super.call(this, x, y, { grilla: 'alienAnimado.png', cantColumnas: 14 });
         this.definirAnimacion("parado", new Cuadros(13).repetirVeces(50).concat([12, 13, 11, 12, 11, 13]).concat(new Cuadros(13).repetirVeces(30)).concat([9, 9, 9, 9, 8, 8, 8, 8, 8, 8, 8, 8, 8, 8]), 4, true);
         this.definirAnimacion("hablar", [12, 13, 11, 12, 11, 13], 15);
         this.definirAnimacion("recoger", [12, 10, 10, 12], 6);
@@ -422,7 +422,7 @@ var AlienAnimado = (function (_super) {
 var AlimentoAnimado = (function (_super) {
     __extends(AlimentoAnimado, _super);
     function AlimentoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.AlimentoPez.png', cantColumnas: 4, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'alimento_pez.png', cantColumnas: 4, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirRandom(30).concat([0, 1, 2, 3, 2, 1]), 12, true);
     }
     return AlimentoAnimado;
@@ -431,14 +431,14 @@ var AlimentoAnimado = (function (_super) {
 var BananaAnimada = (function (_super) {
     __extends(BananaAnimada, _super);
     function BananaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'banana-1.png', cantColumnas: 1, cantFilas: 1 });
     }
     return BananaAnimada;
 })(ActorAnimado);
 var BotonAnimado = (function (_super) {
     __extends(BotonAnimado, _super);
     function BotonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.BotonAnimado.png', cantColumnas: 2 });
+        _super.call(this, x, y, { grilla: 'botonAnimado.png', cantColumnas: 2 });
         this.definirAnimacion("apagada", [0], 1);
         this.definirAnimacion("prendida", [1], 1);
     }
@@ -450,7 +450,7 @@ var Bruja = (function (_super) {
     function Bruja(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Bruja.png', cantColumnas: 16 });
+        _super.call(this, x, y, { grilla: 'bruja.png', cantColumnas: 16 });
         this.definirAnimacion("bailando", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 6);
         this.definirAnimacion("parado", new Cuadros([0]).repetirVeces(30).concat([1, 5, 5, 5, 5, 1]), 6, true);
     }
@@ -460,7 +460,7 @@ var Bruja = (function (_super) {
 var BuzoAnimado = (function (_super) {
     __extends(BuzoAnimado, _super);
     function BuzoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Buzo.png', cantColumnas: 8, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'buzo.png', cantColumnas: 8, cantFilas: 1 });
         this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 2, 1], 4, true);
         this.definirAnimacion("recoger", [3, 4, 5, 6, 7], 6);
         this.definirAnimacion("correr", [1, 0, 2, 1], 10);
@@ -471,7 +471,7 @@ var BuzoAnimado = (function (_super) {
 var CaballeroAnimado = (function (_super) {
     __extends(CaballeroAnimado, _super);
     function CaballeroAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.CaballeroOscuro.png', cantColumnas: 3 });
+        _super.call(this, x, y, { grilla: 'caballero_oscuro.png', cantColumnas: 3 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(95).concat([1, 2, 1]), 6, true);
         this.definirAnimacion("defender", new Cuadros([0, 1, 2, 2, 2, 2, 1, 0]).repetirVeces(3).concat([0, 0, 1, 1]).concat(new Cuadros(2).repetirVeces(999)), 6);
     }
@@ -481,7 +481,7 @@ var CaballeroAnimado = (function (_super) {
 var CangrejoAnimado = (function (_super) {
     __extends(CangrejoAnimado, _super);
     function CangrejoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Cangrejo.png', cantColumnas: 8, cantFilas: 3 });
+        _super.call(this, x, y, { grilla: 'cangrejo.png', cantColumnas: 8, cantFilas: 3 });
         this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5, 6, 7], 6, true);
         this.definirAnimacion("correr", [9, 10, 11, 12, 13], 12);
         this.definirAnimacion("recoger", [17, 18, 19, 20, 21, 21, 21, 19, 19], 6);
@@ -492,7 +492,7 @@ var CangrejoAnimado = (function (_super) {
 var CarbonAnimado = (function (_super) {
     __extends(CarbonAnimado, _super);
     function CarbonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.CarbonAnimado.png', cantColumnas: 3, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'carbon_animado.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("quedan3", [0], 1);
         this.definirAnimacion("quedan2", [1], 1);
         this.definirAnimacion("quedan1", [2], 1);
@@ -569,7 +569,7 @@ var Cuadricula = (function (_super) {
     Cuadricula.prototype.sanitizarOpciones = function (opcionesCuadricula, opcionesCasilla) {
         this.opcionesCasilla = opcionesCasilla;
         this.opcionesCuadricula = opcionesCuadricula;
-        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'casillas/casilla.Invisible.png';
+        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'invisible.png';
         this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
         this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
         this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;
@@ -762,7 +762,7 @@ var Casilla = (function (_super) {
 var CofreAnimado = (function (_super) {
     __extends(CofreAnimado, _super);
     function CofreAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.CofreAnimado.png', cantColumnas: 4 });
+        _super.call(this, x, y, { grilla: 'cofreAnimado.png', cantColumnas: 4 });
         this.definirAnimacion("abrir", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(999)), 3);
         this.definirAnimacion("parado", [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], 1, true);
         this.definirAnimacion("abierto", [3], 4);
@@ -773,7 +773,7 @@ var CofreAnimado = (function (_super) {
 var CompuAnimada = (function (_super) {
     __extends(CompuAnimada, _super);
     function CompuAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.CompuAnimada.png', cantColumnas: 8, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 5);
         this.definirAnimacion("prendida", [1], 5);
         this.definirAnimacion("claveok", [2], 5);
@@ -883,9 +883,12 @@ var ComportamientoAnimado = (function (_super) {
         this.realizarVerificacionesPostAnimacion();
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPreAnimacion = function () {
-        this.verificacionesPre.forEach(function (verificacion) { return verificacion.verificar(); });
-        if (this.argumentos.idTransicion)
+        this.verificacionesPre.forEach(function (verificacion) {
+            verificacion.verificar();
+        });
+        if (this.argumentos.idTransicion) {
             pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+        }
         pilas.escena_actual().estado.verificarQuePuedoSeguir();
     };
     ComportamientoAnimado.prototype.realizarVerificacionesPostAnimacion = function () {
@@ -936,8 +939,9 @@ var Verificacion = (function () {
         return this.condicionEjecucion();
     };
     Verificacion.prototype.verificar = function () {
-        if (!this.seCumple())
+        if (!this.seCumple()) {
             throw new ActividadError(this.mensajeError);
+        }
     };
     return Verificacion;
 })();
@@ -1054,6 +1058,9 @@ var MovimientoAnimado = (function (_super) {
     };
     MovimientoAnimado.prototype.sanitizarArgumentosMovAn = function () {
         this.valoresFinales.distancia = this.argumentos.distancia === 0 ? 0 : this.argumentos.distancia || this.calcularDistancia();
+        if (Array.isArray(this.argumentos.direccion) && this.argumentos.direccion.length === 2) {
+            this.argumentos.direccion = new Direct(this.argumentos.direccion[0], this.argumentos.direccion[1]);
+        }
         if (this.argumentos.direccion !== undefined && !(this.argumentos.direccion instanceof Direct))
             throw new ArgumentError("Direction should come as an instance of Direct");
         this.valoresFinales.direccion = this.argumentos.direccion || this.calcularDireccion();
@@ -1114,7 +1121,10 @@ var MovimientoEnCuadricula = (function (_super) {
     }
     MovimientoEnCuadricula.prototype.preAnimacion = function () {
         this.cuadricula = this.receptor.cuadricula;
-        this.direccionCasilla = this.direccionCasilla || new this.argumentos.claseDirCasilla();
+        if (!this.direccionCasilla) {
+            var clase = window[this.argumentos.claseDirCasilla];
+            this.direccionCasilla = new clase();
+        }
         this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
         _super.prototype.preAnimacion.call(this);
@@ -1593,7 +1603,7 @@ var Detective = (function (_super) {
     function Detective(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Detective.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'detective.png', cantColumnas: 1 });
         this.definirAnimacion("parado", [0], 4, true);
     }
     Detective.prototype.obtenerActorBajoLaLupa = function () {
@@ -1604,7 +1614,6 @@ var Detective = (function (_super) {
         var sospechoso = this.obtenerActorBajoLaLupa();
         if (sospechoso.tieneDisflazPuesto) {
             throw new ActividadError("No puedo saber si es el culpable, no lo he interrogado antes.");
-            return false;
         }
         return sospechoso.esCulpable();
     };
@@ -1616,7 +1625,7 @@ var Dibujante = (function (_super) {
     function Dibujante(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Dibujante.png', cantColumnas: 5 });
+        _super.call(this, x, y, { grilla: 'dibujante.png', cantColumnas: 5 });
         this.definirAnimacion("parado", new Cuadros([0, 1, 2, 1]).repetirVeces(4).concat(new Cuadros([0]).repetirVeces(40)), 4, true);
         this.definirAnimacion("correr", [3, 4, 4, 4, 4, 4], 6);
         this.definirAnimacion("rotar", [3], 6);
@@ -1629,7 +1638,7 @@ var Dracula = (function (_super) {
     function Dracula(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Dracula.png', cantColumnas: 15 });
+        _super.call(this, x, y, { grilla: 'dracula.png', cantColumnas: 15 });
         this.definirAnimacion("bailando", [9, 10, 11, 12, 13, 14, 13, 12, 11, 10], 6);
         this.definirAnimacion("parado", [0], 12, true);
         this.definirAnimacion("aparecer", [0, 1, 2, 3, 4, 5, 6, 7, 8], 6);
@@ -1640,7 +1649,7 @@ var Dracula = (function (_super) {
 var EstrellaAnimada = (function (_super) {
     __extends(EstrellaAnimada, _super);
     function EstrellaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.EstrellaAnimada.png', cantColumnas: 3, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'estrellaAnimada.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirRandom(200).concat([0, 1, 2, 2, 2, 1]), 6, true);
         this.definirAnimacion("recoger", [0, 1, 2], 4);
     }
@@ -1662,9 +1671,9 @@ var Tablero = (function (_super) {
     }
     // label | separacion | puntaje     (el margen es igual tanto para el label como para el puntaje)
     Tablero.prototype.sanitizarArgumentosTablero = function (args) {
-        args.imagen = args.imagen || 'casillas/casilla.Invisible.png';
-        args.imagenLabel = args.imagenLabel || "casillas/casilla.PlacaContarGris.png";
-        args.imagenPuntaje = args.imagenPuntaje || "casillas/casilla.PlacaContarNegra.png";
+        args.imagen = args.imagen || 'invisible.png';
+        args.imagenLabel = args.imagenLabel || "PlacaContarGris.png";
+        args.imagenPuntaje = args.imagenPuntaje || "PlacaContarNegra.png";
         this.atributoObservado = args.atributoObservado || 'cantidad';
         this.colorTxtLabel = args.colorTxtLabel || "black";
         this.colorTxtPuntaje = args.colorTxtPuntaje || "white";
@@ -1761,7 +1770,7 @@ var Flotar = (function (_super) {
 var FlechaEscenarioAleatorio = (function (_super) {
     __extends(FlechaEscenarioAleatorio, _super);
     function FlechaEscenarioAleatorio() {
-        _super.call(this, 120, 220, { imagen: 'actores/actor.FlechaEscenarioAleatorio.png',
+        _super.call(this, 120, 220, { imagen: 'flechaEscenarioAleatorio.png',
             texto: "¡Ejecutá varias veces!",
             separacionX: 0,
             imagenLabel: "invisible.png",
@@ -1781,7 +1790,7 @@ var Foco = (function (_super) {
         var _this = this;
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.FocosColor.png', cantColumnas: 13 });
+        _super.call(this, x, y, { grilla: 'focos.color.png', cantColumnas: 13 });
         this.colores = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         this.colores.forEach(function (nro) {
             return _this.definirAnimacion("color" + nro, [nro], 1);
@@ -1801,9 +1810,9 @@ var Foco = (function (_super) {
 var FogataAnimada = (function (_super) {
     __extends(FogataAnimada, _super);
     function FogataAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Fogata2.png', cantColumnas: 12, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'actor.Fogata.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 5);
-        this.definirAnimacion("prendida", [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 5);
+        this.definirAnimacion("prendida", [1, 2], 5);
     }
     return FogataAnimada;
 })(ActorAnimado);
@@ -1821,7 +1830,7 @@ var Frank = (function (_super) {
     function Frank(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Frank.png', cantColumnas: 10 });
+        _super.call(this, x, y, { grilla: 'frank.png', cantColumnas: 10 });
         this.definirAnimacion("bailando", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1], 6);
         this.definirAnimacion("parado", new Cuadros([0]).repetirVeces(20).concat([1, 2, 2, 1]), 6, true);
     }
@@ -1831,7 +1840,7 @@ var Frank = (function (_super) {
 var GatoAnimado = (function (_super) {
     __extends(GatoAnimado, _super);
     function GatoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.GatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
+        _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
         this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3, 2, 1]).repetirVeces(9).concat([8, 9, 10, 11, 12, 12, 12, 12, 12, 12, 11, 10, 9, 8]), 4, true);
         this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19, 16, 15], 5);
@@ -1849,7 +1858,7 @@ var GloboAnimado = (function (_super) {
     function GloboAnimado(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.GloboAnimado.png', cantColumnas: 3, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'globoAnimado.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("explotar", [0, 0, 0, 1, 2, 2], 6);
     }
     return GloboAnimado;
@@ -1868,7 +1877,7 @@ var HeroeAnimado = (function (_super) {
         this.definirAnimacion("atacar", new Cuadros([24, 25, 26, 27, 28, 29]).repetirVeces(3), 6);
     }
     HeroeAnimado.prototype.nombreArchivo = function () {
-        return 'actores/actor.Heroe.png';
+        return 'heroe.png';
     };
     return HeroeAnimado;
 })(ActorAnimado);
@@ -1878,7 +1887,7 @@ var Heroina = (function (_super) {
         _super.apply(this, arguments);
     }
     Heroina.prototype.nombreArchivo = function () {
-        return 'actores/actor.Heroina.png';
+        return 'heroina.png';
     };
     return Heroina;
 })(HeroeAnimado);
@@ -1886,7 +1895,7 @@ var Heroina = (function (_super) {
 var HierroAnimado = (function (_super) {
     __extends(HierroAnimado, _super);
     function HierroAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.HierroAnimado.png', cantColumnas: 3, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'hierro_animado.png', cantColumnas: 3, cantFilas: 1 });
         this.definirAnimacion("quedan3", [0], 1);
         this.definirAnimacion("quedan2", [1], 1);
         this.definirAnimacion("quedan1", [2], 1);
@@ -1899,7 +1908,7 @@ var HierroAnimado = (function (_super) {
 var Hueso = (function (_super) {
     __extends(Hueso, _super);
     function Hueso(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Hueso.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'hueso.png', cantColumnas: 1, cantFilas: 1 });
     }
     return Hueso;
 })(ActorAnimado);
@@ -1907,7 +1916,7 @@ var Hueso = (function (_super) {
 var InstaladorAnimado = (function (_super) {
     __extends(InstaladorAnimado, _super);
     function InstaladorAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Instalador.png', cantColumnas: 9, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'instalador.png', cantColumnas: 9, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 1, true);
         this.definirAnimacion("correr", [1, 2, 3], 5);
         this.definirAnimacion("escribir", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
@@ -1918,7 +1927,7 @@ var InstaladorAnimado = (function (_super) {
 var Lamparin = (function (_super) {
     __extends(Lamparin, _super);
     function Lamparin(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Lamparin.png', cantColumnas: 2, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'lamparin.png', cantColumnas: 2, cantFilas: 1 });
         this.definirAnimacion("apagada", [0], 1);
         this.definirAnimacion("prendida", [1], 1);
         this.etiquetas.push('Luz');
@@ -1930,7 +1939,7 @@ var Lamparin = (function (_super) {
 var LlaveAnimado = (function (_super) {
     __extends(LlaveAnimado, _super);
     function LlaveAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.LlaveAnimada.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'llaveAnimada.png', cantColumnas: 1 });
         this.definirAnimacion("recoger", [1], 12);
         this.definirAnimacion("correr", [1], 12);
     }
@@ -1940,7 +1949,7 @@ var LlaveAnimado = (function (_super) {
 var MagoAnimado = (function (_super) {
     __extends(MagoAnimado, _super);
     function MagoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Mago.png', cantColumnas: 4, cantFilas: 2 });
+        _super.call(this, x, y, { grilla: 'mago.png', cantColumnas: 4, cantFilas: 2 });
         this.definirAnimacion("parado", new Cuadros(1).repetirVeces(16).concat([2, 2, 2, 2, 2]), 2, true);
         this.definirAnimacion("darEspada", new Cuadros([1, 3, 4, 5, 5, 6, 6, 7, 7]).repetirVeces(1).concat(new Cuadros(0).repetirVeces(999)), 6);
         this.definirAnimacion("paradoConSombrero", [0], 12);
@@ -1952,7 +1961,7 @@ var ManzanaAnimada = (function (_super) {
     __extends(ManzanaAnimada, _super);
     function ManzanaAnimada(x, y, conSombra) {
         if (conSombra === void 0) { conSombra = true; }
-        _super.call(this, x, y, { grilla: conSombra ? 'actores/actor.ManzanaConSombra.png' : 'actores/actor.ManzanaSinSombra.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: conSombra ? 'manzanaConSombra.png' : 'manzanaSinSombra.png', cantColumnas: 1, cantFilas: 1 });
     }
     return ManzanaAnimada;
 })(ActorAnimado);
@@ -1971,7 +1980,7 @@ var MarcianoAnimado = (function (_super) {
         this.animacionesAdicionales();
     }
     MarcianoAnimado.prototype.opcionesImagen = function () {
-        return { grilla: 'actores/actor.MarcianoAnimado.png', cantColumnas: 6, cantFilas: 3 };
+        return { grilla: 'marcianoAnimado.png', cantColumnas: 6, cantFilas: 3 };
     };
     MarcianoAnimado.prototype.animacionesAdicionales = function () {
         // Template method
@@ -1982,7 +1991,7 @@ var MarcianoAnimado = (function (_super) {
 var MariaAnimada = (function (_super) {
     __extends(MariaAnimada, _super);
     function MariaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Maria.png', cantColumnas: 10, cantFilas: 2 });
+        _super.call(this, x, y, { grilla: 'maria.png', cantColumnas: 10, cantFilas: 2 });
         this.definirAnimacion("parado", [0, 0, 0], 15, true);
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
         this.definirAnimacion("recoger", [11, 12, 13, 14, 15, 16, 17, 18, 19], 10);
@@ -1993,7 +2002,7 @@ var MariaAnimada = (function (_super) {
 var MonoAnimado = (function (_super) {
     __extends(MonoAnimado, _super);
     function MonoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.MonoAnimado.png', cantColumnas: 19, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'monoAnimado.png', cantColumnas: 19, cantFilas: 1 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7], 12);
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(50).concat([0, 1, 2, 3, 4]).concat(new Cuadros(4).repetirVeces(30)).concat([4, 3, 2, 1, 0]), 6, true);
         this.definirAnimacion("comerBanana", [8, 9, 10, 11, 12], 6);
@@ -2007,7 +2016,7 @@ var Murcielago = (function (_super) {
     function Murcielago(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Murcielago.png', cantColumnas: 4 });
+        _super.call(this, x, y, { grilla: 'murcielago.png', cantColumnas: 4 });
         this.definirAnimacion("parado", [0, 1, 2, 3, 2, 1], 12, true);
     }
     return Murcielago;
@@ -2016,7 +2025,7 @@ var Murcielago = (function (_super) {
 var NanoAnimado = (function (_super) {
     __extends(NanoAnimado, _super);
     function NanoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Nano.png', cantColumnas: 14 });
+        _super.call(this, x, y, { grilla: 'nano.png', cantColumnas: 14 });
         this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(30).
             concat([1, 1, 2, 2]).
             concat(new Cuadros([2]).repetirVeces(15)).
@@ -2030,7 +2039,7 @@ var NanoAnimado = (function (_super) {
 var NaranjaAnimada = (function (_super) {
     __extends(NaranjaAnimada, _super);
     function NaranjaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Naranja.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'naranja.png', cantColumnas: 1, cantFilas: 1 });
         this.definirAnimacion("comerse", [0], 6);
         this.definirAnimacion("mordida", [0], 1);
     }
@@ -2042,7 +2051,7 @@ var NaveAnimada = (function (_super) {
     function NaveAnimada(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.NaveAnimada.png', cantColumnas: 4, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'naveAnimada.png', cantColumnas: 4, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(30).concat([1]), 4, true);
         this.definirAnimacion("correr", new Cuadros([0, 1, 2]).repetirVeces(1).concat(new Cuadros(3).repetirVeces(100)), 6);
     }
@@ -2053,16 +2062,16 @@ var NaveAnimada = (function (_super) {
 var Obrero = (function (_super) {
     __extends(Obrero, _super);
     function Obrero(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.CooperativistaCamina.png', cantColumnas: 4 });
+        _super.call(this, x, y, { grilla: 'cooperativista.camina.png', cantColumnas: 4 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 2, 1], 15);
         this.definirAnimacion("parado", [3], 5);
     }
     Obrero.prototype.restaurar = function () {
-        var grilla = pilas.imagenes.cargar_grilla('actores/actor.CooperativistaCamina.png', 4);
+        var grilla = pilas.imagenes.cargar_grilla('cooperativista.camina.png', 4);
         this.imagen = grilla;
     };
     Obrero.prototype.argumentosMartillar = function () {
-        return { grilla: 'actores/actor.CooperativistaTrabajando.png', cantColumnas: 2 };
+        return { grilla: 'cooperativista.trabajando.png', cantColumnas: 2 };
     };
     Obrero.prototype.fraseAlSaltar = function () {
         return pilas.escena_actual().fraseAlSaltar();
@@ -2120,7 +2129,7 @@ var ObservadoConDisminuir = (function (_super) {
 var PapaNoelAnimado = (function (_super) {
     __extends(PapaNoelAnimado, _super);
     function PapaNoelAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.PapaNoel.png', cantColumnas: 12 });
+        _super.call(this, x, y, { grilla: 'papaNoel.png', cantColumnas: 12 });
         this.definirAnimacion('correr', [4, 5, 6, 7, 6, 5, 4], 6);
         this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(40).
             concat(new Cuadros([2, 3, 2, 1]).repetirVeces(3)), 6, true);
@@ -2132,7 +2141,7 @@ var PapaNoelAnimado = (function (_super) {
 var PelotaAnimada = (function (_super) {
     __extends(PelotaAnimada, _super);
     function PelotaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.PelotaAnimada.png', cantColumnas: 16 });
+        _super.call(this, x, y, { grilla: 'pelotaAnimada.png', cantColumnas: 16 });
         this.definirAnimacion("patear", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], 12);
     }
     return PelotaAnimada;
@@ -2141,7 +2150,7 @@ var PelotaAnimada = (function (_super) {
 var PerroCohete = (function (_super) {
     __extends(PerroCohete, _super);
     function PerroCohete(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.PerroCohete.png', cantColumnas: 1, cantFilas: 7 });
+        _super.call(this, x, y, { grilla: 'perro_cohete.png', cantColumnas: 1, cantFilas: 7 });
         this.definirAnimacion("correr", [4, 5, 6, 5], 15, true);
         this.definirAnimacion("parado", [4], 5);
         this.definirAnimacion("recoger", [4, 2, 0, 2, 4], 10);
@@ -2158,10 +2167,10 @@ var PezAnimado = (function (_super) {
     }
     PezAnimado.prototype.nombrePNG = function () {
         if (Math.random() < 1 / 3)
-            return 'actores/actor.Pez1.png';
+            return 'pez1.png';
         if (Math.random() < 0.5)
-            return 'actores/actor.Pez2.png';
-        return 'actores/actor.Pez3.png';
+            return 'pez2.png';
+        return 'pez3.png';
     };
     return PezAnimado;
 })(ActorAnimado);
@@ -2174,7 +2183,7 @@ var Princesa = (function (_super) {
         this.definirAnimacion("correr", [0], 6);
     }
     Princesa.prototype.nombreArchivo = function () {
-        return 'actores/actor.Princesa.png';
+        return 'princesa.png';
     };
     return Princesa;
 })(ActorAnimado);
@@ -2184,7 +2193,7 @@ var Principe = (function (_super) {
         _super.apply(this, arguments);
     }
     Principe.prototype.nombreArchivo = function () {
-        return 'actores/actor.Principe.png';
+        return 'principe.png';
     };
     return Principe;
 })(Princesa);
@@ -2192,7 +2201,7 @@ var Principe = (function (_super) {
 var RatonAnimado = (function (_super) {
     __extends(RatonAnimado, _super);
     function RatonAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Raton.png', cantColumnas: 9, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'raton.png', cantColumnas: 9, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(10).concat([1]), 1, true);
         this.definirAnimacion("correr", [2, 3, 4, 3, 4, 3, 4], 6);
         this.definirAnimacion("recoger", [5, 6, 7, 8], 12);
@@ -2202,7 +2211,7 @@ var RatonAnimado = (function (_super) {
 var QuesoAnimado = (function (_super) {
     __extends(QuesoAnimado, _super);
     function QuesoAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Queso.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'queso.png', cantColumnas: 1, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 15, true);
         this.definirAnimacion("correr", [0], 15);
         this.definirAnimacion("recoger", [0], 15);
@@ -2213,7 +2222,7 @@ var QuesoAnimado = (function (_super) {
 var RecolectorEstrellas = (function (_super) {
     __extends(RecolectorEstrellas, _super);
     function RecolectorEstrellas(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.RecolectorAnimado.png', cantColumnas: 5, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'recolectorAnimado.png', cantColumnas: 5, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 2);
         this.definirAnimacion("correr", [0, 1, 2, 3, 3, 3, 4, 0], 9);
         this.definirAnimacion("recoger", [4, 3, 3, 3, 3, 3, 3, 4], 9);
@@ -2226,7 +2235,7 @@ var RegaloAnimado = (function (_super) {
     function RegaloAnimado(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Regalo.png', cantColumnas: 1, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'regalo.png', cantColumnas: 1, cantFilas: 1 });
     }
     return RegaloAnimado;
 })(ActorAnimado);
@@ -2234,7 +2243,7 @@ var RegaloAnimado = (function (_super) {
 var RobotAnimado = (function (_super) {
     __extends(RobotAnimado, _super);
     function RobotAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.RobotAnimado.png', cantColumnas: 13 });
+        _super.call(this, x, y, { grilla: 'robotAnimado.png', cantColumnas: 13 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
         this.definirAnimacion("patear", [8, 9, 10, 11, 12, 11, 10, 9, 8], 6);
     }
@@ -2244,7 +2253,7 @@ var RobotAnimado = (function (_super) {
 var SandiaAnimada = (function (_super) {
     __extends(SandiaAnimada, _super);
     function SandiaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Sandia.png', cantColumnas: 5, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'sandia.png', cantColumnas: 5, cantFilas: 1 });
         this.definirAnimacion("comerse", [0, 1, 2, 3, 4], 6);
         this.definirAnimacion("mordida", [4], 1);
     }
@@ -2254,7 +2263,7 @@ var SandiaAnimada = (function (_super) {
 var ScoutAnimado = (function (_super) {
     __extends(ScoutAnimado, _super);
     function ScoutAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.BoyScout.png', cantColumnas: 9, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'actor.BoyScout.png', cantColumnas: 9, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 1, true);
         this.definirAnimacion("correr", [1, 2, 3], 5);
         this.definirAnimacion("prender", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
@@ -2297,7 +2306,7 @@ var Sospechoso = (function (_super) {
     function Sospechoso(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Sospechosos.png', cantColumnas: 8 });
+        _super.call(this, x, y, { grilla: 'sospechosos.png', cantColumnas: 8 });
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
         this.tieneDisflazPuesto = true;
@@ -2341,7 +2350,7 @@ var Superheroe = (function (_super) {
     function Superheroe(x, y) {
         if (x === void 0) { x = 0; }
         if (y === void 0) { y = 0; }
-        _super.call(this, x, y, { grilla: 'actores/actor.Superheroe.png', cantColumnas: 7 });
+        _super.call(this, x, y, { grilla: 'superheroe.png', cantColumnas: 7 });
         this.definirAnimacion('parado', new Cuadros([0]).repetirVeces(10).concat([1, 0, 1, 0]), 6, true);
         this.definirAnimacion('correr', [2, 3, 4, 5, 4, 5, 4, 5, 4, 3, 2, 6, 6], 15);
     }
@@ -2351,7 +2360,7 @@ var Superheroe = (function (_super) {
 var Tito = (function (_super) {
     __extends(Tito, _super);
     function Tito(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Tito.png', cantColumnas: 8, cantFilas: 1 });
+        _super.call(this, x, y, { grilla: 'tito.png', cantColumnas: 8, cantFilas: 1 });
         this.definirAnimacion("correr", [3, 4, 5, 6, 6, 6, 6, 6, 6, 5, 4, 8], 12);
         this.definirAnimacion("parado", [0, 1, 2, 2, 3, 4], 6, true);
         this.definirAnimacion("bailando", [0, 1, 2, 2, 3, 4], 6);
@@ -2362,7 +2371,7 @@ var Tito = (function (_super) {
 var TuercaAnimada = (function (_super) {
     __extends(TuercaAnimada, _super);
     function TuercaAnimada(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Tuerca.png', cantColumnas: 1 });
+        _super.call(this, x, y, { grilla: 'tuerca.png', cantColumnas: 1 });
     }
     return TuercaAnimada;
 })(ActorAnimado);
@@ -2370,7 +2379,7 @@ var TuercaAnimada = (function (_super) {
 var UnicornioAnimado = (function (_super) {
     __extends(UnicornioAnimado, _super);
     function UnicornioAnimado(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Unicornio.png', cantColumnas: 5, cantFilas: 2 });
+        _super.call(this, x, y, { grilla: 'unicornio.png', cantColumnas: 5, cantFilas: 2 });
         this.definirAnimacion("parado", [0, 0, 0, 0, 1, 2, 3, 4, 3], 12);
         this.definirAnimacion("correr", [5, 6, 7, 8, 9], 12);
     }
@@ -2500,7 +2509,7 @@ var EstadoConTransicion = (function (_super) {
         };
     };
     EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
-        if (!this.transiciones[idTransicion])
+        if (!this.puedoTransicionarA(idTransicion))
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
@@ -2509,8 +2518,30 @@ var EstadoConTransicion = (function (_super) {
             this.transiciones[idTransicion].estadoEntrada :
             this;
     };
+    EstadoConTransicion.prototype.puedoTransicionarA = function (idTransicion) {
+        return this.transiciones[idTransicion];
+    };
     return EstadoConTransicion;
 })(Estado);
+// Sirve para que no tire error para salirse del camino
+var EstadoTransicionSinError = (function (_super) {
+    __extends(EstadoTransicionSinError, _super);
+    function EstadoTransicionSinError() {
+        _super.apply(this, arguments);
+    }
+    EstadoTransicionSinError.prototype.puedoTransicionarA = function (idTransicion) {
+        return true; //Siempre me deja
+    };
+    EstadoTransicionSinError.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
+        if (!_super.prototype.puedoTransicionarA.call(this, idTransicion)) {
+            return new EstadoTransicionSinError('meFuiDelCamino');
+        }
+        else {
+            return _super.prototype.estadoSiguiente.call(this, comportamiento, idTransicion);
+        }
+    };
+    return EstadoTransicionSinError;
+})(EstadoConTransicion);
 var EstadoAceptacion = (function (_super) {
     __extends(EstadoAceptacion, _super);
     function EstadoAceptacion() {
@@ -2535,13 +2566,15 @@ var EstadoError = (function () {
     return EstadoError;
 })();
 var BuilderStatePattern = (function () {
-    function BuilderStatePattern(idEstadoInicialp) {
+    function BuilderStatePattern(idEstadoInicialp, tiraErrorSiSeVaDelCamino) {
+        if (tiraErrorSiSeVaDelCamino === void 0) { tiraErrorSiSeVaDelCamino = true; }
         this.idEstadoInicial = idEstadoInicialp;
         this.estados = {};
-        this.estados[idEstadoInicialp] = new EstadoConTransicion(idEstadoInicialp);
+        this.estados[idEstadoInicialp] = tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstadoInicialp) : new EstadoTransicionSinError(idEstadoInicialp);
     }
-    BuilderStatePattern.prototype.agregarEstado = function (idEstado) {
-        this.estados[idEstado] = new EstadoConTransicion(idEstado);
+    BuilderStatePattern.prototype.agregarEstado = function (idEstado, tiraErrorSiSeVaDelCamino) {
+        if (tiraErrorSiSeVaDelCamino === void 0) { tiraErrorSiSeVaDelCamino = true; }
+        this.estados[idEstado] = tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstado) : new EstadoTransicionSinError(idEstado);
     };
     BuilderStatePattern.prototype.agregarEstadoAceptacion = function (idEstado) {
         this.estados[idEstado] = new EstadoAceptacion(idEstado);
@@ -2626,8 +2659,9 @@ var ComportamientoColision = (function (_super) {
     }
     ComportamientoColision.prototype.sanitizarArgumentos = function () {
         _super.prototype.sanitizarArgumentos.call(this);
-        if (!this.argumentos['etiqueta'])
+        if (!this.argumentos['etiqueta']) {
             throw new ArgumentError("Debe proveerse una etiqueta para verificar colisión");
+        }
     };
     ComportamientoColision.prototype.configurarVerificaciones = function () {
         var _this = this;
@@ -2636,10 +2670,13 @@ var ComportamientoColision = (function (_super) {
     };
     ComportamientoColision.prototype.postAnimacion = function () {
         var objetoTocado = this.objetoTocado();
-        if (this.argumentos['animacionColisionado'])
+        if (this.argumentos['animacionColisionado']) {
             objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
-        if (this.argumentos['comportamientoAdicional'])
-            objetoTocado.hacer_luego(this.argumentos['comportamientoAdicional'], this.argumentos['argumentosComportamiento']);
+        }
+        if (this.argumentos['comportamientoAdicional']) {
+            var claseComportamiento = window[this.argumentos['comportamientoAdicional']];
+            objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
+        }
         this.metodo(objetoTocado);
     };
     ComportamientoColision.prototype.colisiona = function () {
@@ -2675,7 +2712,8 @@ var DesencadenarComportamientoSiColisiona = (function (_super) {
         _super.apply(this, arguments);
     }
     DesencadenarComportamientoSiColisiona.prototype.metodo = function (objetoColision) {
-        objetoColision.hacer_luego(this.argumentos['comportamiento'], this.argumentos['argumentosComportamiento']);
+        var claseComportamiento = window[this.argumentos['comportamiento']];
+        objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
     };
     return DesencadenarComportamientoSiColisiona;
 })(ComportamientoColision);
@@ -2826,11 +2864,19 @@ var Depositar = (function (_super) {
         return 'depositar';
     };
     Depositar.prototype.postAnimacion = function () {
+        this.validarQueLaClaseADepositarSeaString();
+        var clase = window[this.argumentos.claseADepositar];
         if (this.receptor.cuadricula) {
-            this.receptor.cuadricula.agregarActor(new this.argumentos.claseADepositar(), this.receptor.casillaActual().nroFila, this.receptor.casillaActual().nroColumna);
+            this.receptor.cuadricula.agregarActor(new clase(), this.receptor.casillaActual().nroFila, this.receptor.casillaActual().nroColumna);
         }
         else {
-            new this.argumentos.claseADepositar(this.receptor.x, this.receptor.y);
+            new clase(this.receptor.x, this.receptor.y);
+        }
+    };
+    Depositar.prototype.validarQueLaClaseADepositarSeaString = function () {
+        var tipo = typeof this.argumentos.claseADepositar;
+        if (tipo !== "string") {
+            throw new Error("Se esperaba que la claseADepositar sea un string, pero se encont\u00F3 " + tipo + ".");
         }
     };
     return Depositar;
@@ -2906,8 +2952,12 @@ var Escapar = (function (_super) {
         this.argumentos.distancia = 600;
         this.argumentos.velocidad = 8;
         this.argumentos.cantPasos = 40;
-        if (this.argumentos.escaparCon)
+        if (this.argumentos.escaparCon) {
+            if (typeof this.argumentos.escaparCon == 'string') {
+                this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
+            }
             this.receptor.agregarSubactor(this.argumentos.escaparCon);
+        }
         _super.prototype.preAnimacion.call(this);
     };
     return Escapar;
@@ -2967,7 +3017,7 @@ var Martillar = (function (_super) {
     Martillar.prototype.iniciar = function (receptor) {
         _super.prototype.iniciar.call(this, receptor);
         this.vecesRestantes = this.argumentos['veces'];
-        var imagen = pilas.imagenes.cargar_grilla("actores/actor.CooperativistaTrabajando.png", 3);
+        var imagen = pilas.imagenes.cargar_grilla("cooperativista.trabajando.png", 3);
         this.receptor.imagen = imagen;
         this.contador = 0;
     };
@@ -3053,7 +3103,7 @@ var SaltarAnimado = (function (_super) {
         this.sanitizarArgumentosSaltar();
         this.suelo = this.receptor.y;
         this.velocidad_vertical = this.velocidad_inicial;
-        pilas.sonidos.cargar('saltar.wav').reproducir();
+        pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
     };
     SaltarAnimado.prototype.sanitizarArgumentosSaltar = function () {
         this.alTerminar = this.argumentos.alTerminar || function (r) { };
@@ -3157,6 +3207,13 @@ var SecuenciaAnimada = (function (_super) {
         _super.apply(this, arguments);
     }
     SecuenciaAnimada.prototype.iniciar = function (receptor) {
+        // Ver bloques de la gran aventura del mar encantado
+        for (var i in this.argumentos.secuencia) {
+            if (this.argumentos.secuencia[i].comportamiento) {
+                var comportamiento = eval(this.argumentos.secuencia[i].comportamiento);
+                this.argumentos.secuencia[i] = new comportamiento(this.argumentos.secuencia[i].argumentos);
+            }
+        }
         _super.prototype.iniciar.call(this, receptor);
         this.laSecuenciaPosta = new Secuencia(this.argumentos);
         this.laSecuenciaPosta.iniciar(receptor);
@@ -3325,9 +3382,9 @@ var AlienInicial = (function (_super) {
     }
     AlienInicial.prototype.iniciar = function () {
         this.estado = this.armarEstado();
-        this.fondo = new Fondo('fondos/fondo.AlienTocaElBoton.png', 0, 0);
-        this.cuadricula = new Cuadricula(-25, -200, 1, 4, { alto: 25, ancho: (pilas.opciones.ancho * 0.8) }, { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
-        this.fondoCuadricula = new Actor("actores/actor.CaminoAlienBoton.png", this.cuadricula.x, this.cuadricula.y);
+        this.fondo = new Fondo('fondos.alien-inicial.png', 0, 0);
+        this.cuadricula = new Cuadricula(-25, -200, 1, 4, { alto: 25, ancho: (pilas.opciones.ancho * 0.8) }, { grilla: 'invisible.png', cantColumnas: 1 });
+        this.fondoCuadricula = new Actor("camino-alien-boton.png", this.cuadricula.x, this.cuadricula.y);
         this.fondoCuadricula.ancho = this.cuadricula.ancho;
         this.automata = new AlienAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
@@ -3353,7 +3410,7 @@ var AlienLevantaTuercas = (function (_super) {
         var _this = this;
         this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('TuercaAnimada') == 0; });
         this.fondo = new pilas.fondos.Laberinto1();
-        this.cuadricula = new Cuadricula(0, -25, 5, 6, { alto: 400 }, { grilla: 'casillas/casilla.Invisible.png',
+        this.cuadricula = new Cuadricula(0, -25, 5, 6, { alto: 400 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
         this.automata = new AlienAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 4, 0, false);
@@ -3448,7 +3505,7 @@ var AlimentandoALosPeces = (function (_super) {
     AlimentandoALosPeces.prototype.iniciar = function () {
         this.cantidadFilas = 4;
         this.cantidadColumnas = 5;
-        this.fondo = new Fondo('fondos/fondo.AlimentandoLosPeces.png', 0, 0);
+        this.fondo = new Fondo('fondo.alimentando_peces.png.png', 0, 0);
         this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { ancho: 328, alto: 262 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
         this.automata = new BuzoAnimado(0, 0);
@@ -3503,7 +3560,7 @@ var Camino = (function () {
         else {
             this.opcionesCasilla['alto'] = this.opcionesCasilla['ancho'];
         }
-        this.opcionesCasilla['grilla'] = 'casillas/casilla.FinCamino.png';
+        this.opcionesCasilla['grilla'] = 'finCamino.png';
         this.opcionesCasilla['cantColumnas'] = 1;
         this.opcionesCuadricula['ancho'] = this.opcionesCasilla['ancho'] * (this.cantidadColumnas);
         this.opcionesCuadricula['alto'] = this.opcionesCasilla['alto'] * (this.cantidadFilas);
@@ -3518,7 +3575,7 @@ var Camino = (function () {
         for (var i = 0; i < cuadricula.casillas.length - 1; i++) {
             cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
         }
-        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('casillas/casilla.FinCamino.png', 1, 4);
+        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
         var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
         llegada.definirAnimacion('->', [0], 1);
         llegada.definirAnimacion('^', [3], 1);
@@ -3643,7 +3700,7 @@ var DibujandoFiguras = (function (_super) {
         _super.apply(this, arguments);
     }
     DibujandoFiguras.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.DibujandoFiguras.png', 0, 0);
+        this.fondo = new Fondo('fondo.dibujando.figuras.png', 0, 0);
         this.automata = new Dibujante();
         this.automata.escala = 0.5;
         this.automata.x = -150;
@@ -3774,7 +3831,7 @@ var ElCangrejoAguafiestas = (function (_super) {
         _super.apply(this, arguments);
     }
     ElCangrejoAguafiestas.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.ElCangrejoAguafiestas.png', 0, 0);
+        this.fondo = new Fondo('fondo.cangrejo_aguafiestas.png', 0, 0);
         this.cantidadFilas = 5;
         this.cantidadColumnas = 6;
         var matriz = [
@@ -3783,7 +3840,7 @@ var ElCangrejoAguafiestas = (function (_super) {
             ['T', 'T', 'T', 'T', 'T', 'T'],
             ['T', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T']];
-        this.cuadricula = new CuadriculaEsparsa(0, 15, { alto: 360, ancho: 400 }, { grilla: 'casillas/casilla.ElCangrejoAguafiestas.png' }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 15, { alto: 360, ancho: 400 }, { grilla: 'casilla.cangrejo_aguafiestas.png' }, matriz);
         this.completarConGlobos();
         this.automata = new CangrejoAnimado(0, 0);
         this.automata.escala *= 1.2;
@@ -3817,7 +3874,7 @@ var ElDetectiveChaparro = (function (_super) {
     }
     ElDetectiveChaparro.prototype.iniciar = function () {
         var _this = this;
-        this.fondo = new Fondo('fondos/fondo.ElDetectiveChaparro.png', 0, 0);
+        this.fondo = new Fondo('fondo.detective.png', 0, 0);
         this.cuadricula = new Cuadricula(0, -30, 1, 7, { ancho: 400, alto: 400 }, { grilla: 'invisible.png', cantColumnas: 1 });
         Sospechoso.reiniciarDisfraces();
         var nroCulpable = Math.floor(Math.random() * 7);
@@ -3860,11 +3917,36 @@ var ElGatoEnLaCalle = (function (_super) {
         _super.apply(this, arguments);
     }
     ElGatoEnLaCalle.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.ElGatoEnLaCalle.png', 0, 0);
+        this.fondo = new Fondo('fondo.gatoEnLaCalle.png', 0, 0);
         this.automata = new GatoAnimado(0, -150);
+        this.construirFSM();
     };
-    ElGatoEnLaCalle.prototype.estaResueltoElProblema = function () {
-        return true; // Como este ejercicio es de exploración, cualquier solución sería buena.
+    ElGatoEnLaCalle.prototype.construirFSM = function () {
+        // ver https://github.com/Program-AR/pilas-bloques/issues/187
+        var builder = new BuilderStatePattern('inicial', false);
+        builder.agregarEstado('posCorrecta', false);
+        builder.agregarEstado('semiDormido1', false);
+        builder.agregarEstado('semiDormido2', false);
+        builder.agregarEstado('dormido', false);
+        builder.agregarEstado('semiDespierto1', false);
+        builder.agregarEstado('semiDespierto2', false);
+        builder.agregarEstado('despierto', false);
+        builder.agregarEstado('saludado', false);
+        builder.agregarEstado('noResuelve', false);
+        builder.agregarEstadoAceptacion('fin');
+        builder.agregarTransicion('inicial', 'posCorrecta', 'avanzar');
+        builder.agregarTransicion('posCorrecta', 'semiDormido1', 'acostarse');
+        builder.agregarTransicion('posCorrecta', 'semiDormido2', 'cerrarOjos');
+        builder.agregarTransicion('semiDormido1', 'dormido', 'cerrarOjos');
+        builder.agregarTransicion('semiDormido2', 'dormido', 'acostarse');
+        builder.agregarTransicion('dormido', 'dormido', 'soniar');
+        builder.agregarTransicion('dormido', 'semiDespierto1', 'abrirOjos');
+        builder.agregarTransicion('dormido', 'semiDespierto2', 'levantarse');
+        builder.agregarTransicion('semiDespierto1', 'despierto', 'levantarse');
+        builder.agregarTransicion('semiDespierto2', 'despierto', 'abrirOjos');
+        builder.agregarTransicion('despierto', 'saludado', 'saludar');
+        builder.agregarTransicion('saludado', 'fin', 'volver');
+        this.estado = builder.estadoInicial();
     };
     return ElGatoEnLaCalle;
 })(EscenaActividad);
@@ -3884,7 +3966,7 @@ var ElMarcianoEnElDesierto = (function (_super) {
     ElMarcianoEnElDesierto.prototype.iniciar = function () {
         var _this = this;
         this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0; });
-        this.fondo = new Fondo('fondos/fondo.ElMarcianoEnElDesierto.png', 0, 0);
+        this.fondo = new Fondo('fondo.elMarcianoEnElDesierto.png', 0, 0);
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
         this.cuadricula = new Cuadricula(0, -9, cantidadFilas, cantidadColumnas, { alto: 262, ancho: 330 }, { grilla: 'invisible.png' });
@@ -3916,9 +3998,9 @@ var ElMonoQueSabeContar = (function (_super) {
         _super.apply(this, arguments);
     }
     ElMonoQueSabeContar.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.Selva.png', 0, 0);
-        this.cuadricula = new CuadriculaMultipleColumnas(new DefinidorColumnasRandom(5, 6), 0, -45, { separacionEntreCasillas: 5 }, { alto: 40, ancho: 40, grilla: 'casillas/casilla.MonoMedio.png', cantColumnas: 1 });
-        this.cuadricula.cambiarImagenInicio('casillas/casilla.MonoInicio.png');
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
+        this.cuadricula = new CuadriculaMultipleColumnas(new DefinidorColumnasRandom(5, 6), 0, -45, { separacionEntreCasillas: 5 }, { alto: 40, ancho: 40, grilla: 'casillamediomono.png', cantColumnas: 1 });
+        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
         this.cambiarImagenesFin();
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]), { condiciones: [
                 function (fila, col, pmatrix) { return fila != 0; },
@@ -3933,7 +4015,7 @@ var ElMonoQueSabeContar = (function (_super) {
         this.tableros.BananaAnimada = new Tablero(-150, 210, { texto: "Bananas" });
     };
     ElMonoQueSabeContar.prototype.cambiarImagenesFin = function () {
-        this.cuadricula.cambiarImagenFin('casillas/casilla.MonoFinal.png');
+        this.cuadricula.cambiarImagenFin('casillafinalmono.png');
     };
     ElMonoQueSabeContar.prototype.estaResueltoElProblema = function () {
         return this.cantidadObjetosConEtiqueta('BananaAnimada') === this.tableros.BananaAnimada.dameValor() &&
@@ -3981,8 +4063,8 @@ var LaEleccionDelMono = (function (_super) {
     LaEleccionDelMono.prototype.iniciar = function () {
         var _this = this;
         this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('BananaAnimada') == 0 && _this.cantidadObjetosConEtiqueta('ManzanaAnimada') == 0 && _this.automata.casillaActual().sos(0, 1); });
-        this.fondo = new Fondo('fondos/fondo.Selva.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas/casilla.Violeta.png',
+        this.fondo = new Fondo('fondos.selva.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 2, { alto: 200 }, { grilla: 'casillas.violeta.png',
             cantColumnas: 1 });
         this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0, false);
@@ -4083,7 +4165,7 @@ var ElObreroCopado = (function (_super) {
         _super.apply(this, arguments);
     }
     ElObreroCopado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.ElObreroCopado.png', 0, 0);
+        this.fondo = new Fondo('fondos.obrero.png', 0, 0);
         this.obrero = new Obrero(160, -100);
         //this.obrero.aprender(AvisaAlSalirDePantalla,{});
         this.automata = this.obrero;
@@ -4115,8 +4197,8 @@ var ElPlanetaDeNano = (function (_super) {
         //this.recolector.izquierda = pilas.izquierda();
         this.cantidadFilas = 4;
         this.cantidadColumnas = 5;
-        this.fondo = new Fondo('fondos/fondo.ElPlanetaDeNano.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas/casilla.ElPlanetaDeNano.png' });
+        this.fondo = new Fondo('fondos.elPlanetaDeNano.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 3 }, { grilla: 'casillas.elPlanetaDeNano.png' });
         this.automata = new NanoAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, this.cantidadFilas - 1, 0);
         this.automata.escala *= 1.8;
@@ -4159,12 +4241,12 @@ var ElRecolectorDeEstrellas = (function (_super) {
     ElRecolectorDeEstrellas.prototype.iniciar = function () {
         var _this = this;
         this.estado = new Estado(function () { return _this.cantidadObjetosConEtiqueta('EstrellaAnimada') == 0; });
-        this.fondo = new Fondo('fondos/fondo.Constelaciones.png', 0, 0);
+        this.fondo = new Fondo('fondo.recolector.png', 0, 0);
         //this.recolector.izquierda = pilas.izquierda();
         var cantidadFilas = 4;
         var cantidadColumnas = 5;
         this.cuadricula = new Cuadricula(0, -20, cantidadFilas, cantidadColumnas, { alto: 400 }, {
-            grilla: 'casillas/casilla.Invisible.png',
+            grilla: 'invisible.png',
             cantColumnas: 1
         });
         this.automata = new RecolectorEstrellas(0, 0);
@@ -4202,10 +4284,10 @@ var FutbolRobots = (function (_super) {
         _super.apply(this, arguments);
     }
     FutbolRobots.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.FutbolParaRobots.png', 0, 0);
+        this.fondo = new Fondo('fondos.futbolRobots.png', 0, 0);
         this.cantidadFilas = 8;
-        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasRandom(this.cantidadFilas, 6), 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.FutbolParaRobots2.png', alto: 40, ancho: 40 });
-        this.cuadricula.cambiarImagenInicio('casillas/casilla.FutbolParaRobots1.png');
+        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasRandom(this.cantidadFilas, 6), 0, -50, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
+        this.cuadricula.cambiarImagenInicio('casilla.futbolRobots1.png');
         this.automata = new RobotAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         var casilla = this.cuadricula.casilla(0, 0);
@@ -4233,8 +4315,8 @@ var InstalandoJuegos = (function (_super) {
         _super.apply(this, arguments);
     }
     InstalandoJuegos.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.Biblioteca.png', 0, 0);
-        this.cuadricula = new Cuadricula(20, -50, 1, 4, { alto: 100, ancho: 400 }, { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+        this.fondo = new Fondo('fondos.biblioteca.png', 0, 0);
+        this.cuadricula = new Cuadricula(20, -50, 1, 4, { alto: 100, ancho: 400 }, { grilla: 'invisible.png', cantColumnas: 1 });
         for (var i = 1; i <= 3; ++i) {
             this.cuadricula.agregarActor(new CompuAnimada(0, 0), 0, i);
         }
@@ -4357,8 +4439,8 @@ var LaFiestaDeDracula = (function (_super) {
         this.bailarines = [];
     }
     LaFiestaDeDracula.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.LaFiestaDeDracula.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 200, 1, 3, { alto: 100 }, { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+        this.fondo = new Fondo('fondo.fiestadracula.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 200, 1, 3, { alto: 100 }, { grilla: 'invisible.png', cantColumnas: 1 });
         this.agregarAutomata();
         this.agregarFocos();
         this.agregarBailarines();
@@ -4460,8 +4542,8 @@ var LaGranAventuraDelMarEncantado = (function (_super) {
         _super.apply(this, arguments);
     }
     LaGranAventuraDelMarEncantado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.LaGranAventuraDelMarEncantado.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 376, ancho: 380 }, { grilla: 'casillas/casilla.Invisible.png' });
+        this.fondo = new Fondo('fondo.marEncantado.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { alto: 376, ancho: 380 }, { grilla: 'invisible.png' });
         this.llave = new LlaveAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.llave, 1, 4);
         this.llave.escala *= 0.5;
@@ -4531,7 +4613,7 @@ var LaberintoLargo = (function (_super) {
     }
     LaberintoLargo.prototype.iniciar = function () {
         this.fondo = new Fondo(this.nombreFondo(), 0, 0);
-        this.cuadricula = new CuadriculaParaRaton(0, 0, this.cantidadFilas(), this.cantidadColumnas(), this.dameOpcionesCuadricula(), { '->': 'casillas/casilla.Derecha.png', '<-': 'casillas/casilla.Izquierda.png', 'v': 'casillas/casilla.Abajo.png', '^': 'casillas/casilla.Arriba.png' }).dameCamino();
+        this.cuadricula = new CuadriculaParaRaton(0, 0, this.cantidadFilas(), this.cantidadColumnas(), this.dameOpcionesCuadricula(), { '->': 'casillaDerecha.png', '<-': 'casillaIzquierda.png', 'v': 'casillaAbajo.png', '^': 'casillaArriba.png' }).dameCamino();
         this.automata = new RatonAnimado(0, 0);
         this.cuadricula.agregarActor(this.automata, 0, 0);
         this.automata.escala *= 2;
@@ -4547,7 +4629,7 @@ var LaberintoLargo = (function (_super) {
         return 8;
     };
     LaberintoLargo.prototype.nombreFondo = function () {
-        return 'fondos/fondo.LaberintoLargo.png';
+        return 'fondo.laberinto.largo.png';
     };
     LaberintoLargo.prototype.estaResueltoElProblema = function () {
         return this.automata.alFinalDelCamino();
@@ -4577,7 +4659,7 @@ var LaberintoConQueso = (function (_super) {
         return { 'alto': 440, 'ancho': 400, 'largo_min': 3, 'largo_max': 15 };
     };
     LaberintoConQueso.prototype.nombreFondo = function () {
-        return 'fondos/fondo.LaberintoConQueso.png';
+        return 'fondo.laberinto.queso.png';
     };
     LaberintoConQueso.prototype.estaResueltoElProblema = function () {
         return this.automata.alFinalDelCamino() && this.contarActoresConEtiqueta('QuesoAnimado') == 0;
@@ -4602,7 +4684,7 @@ var LaberintoCorto = (function (_super) {
         return this.aDerecha ? 2 : 1;
     };
     LaberintoCorto.prototype.nombreFondo = function () {
-        return 'fondos/fondo.LaberintoCorto.png';
+        return 'fondo.laberinto.corto.png';
     };
     LaberintoCorto.prototype.dameOpcionesCuadricula = function () {
         return { 'alto': 200, 'ancho': 200 };
@@ -4618,10 +4700,10 @@ var MariaLaComeSandias = (function (_super) {
         _super.apply(this, arguments);
     }
     MariaLaComeSandias.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.MariaLaComeSandias.png', 0, 0);
+        this.fondo = new Fondo('fondo.mariaSandia.png', 0, 0);
         var cantidadFilas = 5;
         this.cantidadColumnas = 6;
-        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.MariaSandia.png',
+        this.cuadricula = new Cuadricula(0, 0, cantidadFilas, this.cantidadColumnas, { alto: 300, ancho: 300, separacionEntreCasillas: 5 }, { grilla: 'casilla.mariaSandia.png',
             cantColumnas: 5 });
         this.completarConSandias();
         this.automata = new MariaAnimada(0, 0);
@@ -4661,7 +4743,7 @@ var NoMeCansoDeSaltar = (function (_super) {
         _super.apply(this, arguments);
     }
     NoMeCansoDeSaltar.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.NoMeCansoDeSaltar.png', 0, 0);
+        this.fondo = new Fondo('fondo.noMeCansoDeSaltar.png', 0, 0);
         this.automata = new GatoAnimado(0, -17);
         this.saltosFaltantes = 30;
     };
@@ -4694,10 +4776,10 @@ var PrendiendoLasCompus = (function (_super) {
         this.cantidadMaxFilas = 10;
         this.cantidadMinFilas = 5;
         this.ladoCasilla = 30;
-        this.fondo = new Fondo('fondos/fondo.PrendiendoLasCompus.png', 0, 0);
+        this.fondo = new Fondo('fondo.prendiendoLasCompus.png', 0, 0);
         this.cantidadFilas = Math.floor(this.cantidadMinFilas + (Math.random() * (this.cantidadMaxFilas - this.cantidadMinFilas)));
         this.cantidadColumnas = Math.floor(this.cantidadMinColumnas + (Math.random() * (this.cantidadMaxColumnas - this.cantidadMinColumnas)));
-        this.cuadricula = new Cuadricula(0, (this.ladoCasilla + 2) * 2, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casillas/casilla.PrendiendoLasCompus.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
+        this.cuadricula = new Cuadricula(0, (this.ladoCasilla + 2) * 2, this.cantidadFilas, this.cantidadColumnas, { separacionEntreCasillas: 2 }, { grilla: 'casilla.prendiendoLasCompus.png', alto: this.ladoCasilla, ancho: this.ladoCasilla });
         this.automata = new InstaladorAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.completarConCompusEnLaterales();
@@ -4746,9 +4828,9 @@ var PrendiendoLasFogatas = (function (_super) {
             ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T', 'T']
         ];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas/casilla.Violeta.png' }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas.violeta.png' }, matriz);
         this.ladoCasilla = 30;
-        this.fondo = new Fondo('fondos/fondo.BosqueDeNoche2.png', 0, 0);
+        this.fondo = new Fondo('fondo.BosqueDeNoche.png', 0, 0);
         this.agregarFogatas();
         this.automata = new ScoutAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
@@ -4802,8 +4884,8 @@ var ReparandoLaNave = (function (_super) {
         _super.apply(this, arguments);
     }
     ReparandoLaNave.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.ReparandoLaNave.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 4, 5, { ancho: 323, alto: 261 }, { grilla: 'casillas/casilla.Invisible.png',
+        this.fondo = new Fondo('fondos.reparandoLaNave.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 4, 5, { ancho: 323, alto: 261 }, { grilla: 'invisible.png',
             cantColumnas: 1 });
         this.crearActores();
         this.crearTableros();
@@ -4859,9 +4941,9 @@ var SalvandoLaNavidad = (function (_super) {
         _super.apply(this, arguments);
     }
     SalvandoLaNavidad.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.SalvandoLaNavidad.png', 0, 0);
-        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasFijo(5, [5, 6, 8, 4, 7]), 0, 0, { separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.FutbolParaRobots2.png', alto: 40, ancho: 40 });
-        this.cuadricula.cambiarImagenInicio('casillas/casilla.MonoInicio.png');
+        this.fondo = new Fondo('fondo.salvandonavidad.png', 0, 0);
+        this.cuadricula = new CuadriculaMultiple(new DefinidorColumnasFijo(5, [5, 6, 8, 4, 7]), 0, 0, { separacionEntreCasillas: 5 }, { grilla: 'casilla.futbolRobots2.png', alto: 40, ancho: 40 });
+        this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
         this.automata = new PapaNoelAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
         this.automata.escala *= 1.8;
@@ -4895,9 +4977,9 @@ var SuperTito1 = (function (_super) {
     SuperTito1.prototype.iniciar = function () {
         this.fondo = new Fondo(this.pathFondo(), 0, 0);
         this.objetos = [];
-        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas(), 1, { separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.GrisOscuro.png',
+        this.cuadricula = new Cuadricula(0, 0, this.cantidadFilas(), 1, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, ancho: 100, alto: 50 });
-        this.cuadricula.casilla(this.cantidadFilas() - 1, 0).cambiarImagen('casillas/casilla.TitoFinalizacion.png');
+        this.cuadricula.casilla(this.cantidadFilas() - 1, 0).cambiarImagen('casilla.titoFinalizacion.png');
         for (var i = 0; i < this.cantidadFilas() - 1; i++) {
             this.agregarLamparinEnFila(i);
         }
@@ -4919,7 +5001,7 @@ var SuperTito1 = (function (_super) {
         lamparin.x += 15;
     };
     SuperTito1.prototype.pathFondo = function () {
-        return 'fondos/fondo.SuperTito1.png';
+        return 'fondo.superTito1.png';
     };
     SuperTito1.prototype.estaResueltoElProblema = function () {
         return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
@@ -4942,7 +5024,7 @@ var SuperTito2 = (function (_super) {
         this.hayLuz = false;
     };
     SuperTito2.prototype.pathFondo = function () {
-        return 'fondos/fondo.SuperTito2.png';
+        return 'fondo.superTito2.png';
     };
     SuperTito2.prototype.agregarLamparinEnFila = function (i) {
         if (Math.random() < 0.5 || (i == this.cantidadFilas() - 2 && !this.hayLuz)) {
@@ -4966,7 +5048,7 @@ var SuperViaje = (function (_super) {
         _super.apply(this, arguments);
     }
     SuperViaje.prototype.iniciar = function () {
-        this.fondo = new FondoAnimado('fondos/fondo.ElSuperViaje.png', pilas.derecha(), 0);
+        this.fondo = new FondoAnimado('fondo.elSuperviaje.png', pilas.derecha(), 0);
         this.automata = new Superheroe();
         this.automata.aprender(Flotar, { Desvio: 10 });
         this.automata.totalKM = 15 + Math.round(Math.random() * 30);
@@ -5006,7 +5088,7 @@ var TitoCuadrado = (function (_super) {
         _super.apply(this, arguments);
     }
     TitoCuadrado.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.TitoCuadrado.png', 0, 0);
+        this.fondo = new Fondo('fondo.tito-cuadrado.png', 0, 0);
         this.luces = [];
         this.cantidadFilas = 7;
         this.cantidadColumnas = 7;
@@ -5019,7 +5101,7 @@ var TitoCuadrado = (function (_super) {
             ['T', 'F', 'F', 'F', 'F', 'F', 'T'],
             ['T', 'T', 'T', 'T', 'T', 'T', 'T']
         ];
-        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas/casilla.Violeta.png' }, matriz);
+        this.cuadricula = new CuadriculaEsparsa(0, 0, { ancho: 400, alto: 400 }, { grilla: 'casillas.violeta.png' }, matriz);
         this.agregarLuces();
         this.automata = new Tito(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
@@ -5066,8 +5148,8 @@ var TitoEnciendeLuces = (function (_super) {
         this.objetos = [];
     }
     TitoEnciendeLuces.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.Estrellas.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.GrisOscuro.png',
+        this.fondo = new Fondo('fondos.estrellas.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 5, 6, { separacionEntreCasillas: 5 }, { grilla: 'casilla.grisoscuro.png',
             cantColumnas: 1, alto: 50, ancho: 50 });
         //se cargan las luces
         var cant = 0;
@@ -5117,7 +5199,7 @@ var TitoRecargado = (function (_super) {
         _super.apply(this, arguments);
     }
     TitoRecargado.prototype.pathFondo = function () {
-        return 'fondos/fondo.Estrellas.png';
+        return 'fondos.estrellas.png';
     };
     TitoRecargado.prototype.cantidadFilas = function () {
         return 7;
@@ -5146,8 +5228,8 @@ var TresNaranjas = (function (_super) {
         this.objetos = [];
     }
     TresNaranjas.prototype.iniciar = function () {
-        this.fondo = new Fondo('fondos/fondo.TresNaranjas.png', 0, 0);
-        this.cuadricula = new Cuadricula(0, 0, 1, 4, { separacionEntreCasillas: 5 }, { grilla: 'casillas/casilla.TresNaranjas.png', ancho: 100, alto: 100 });
+        this.fondo = new Fondo('fondo.tresNaranjas.png', 0, 0);
+        this.cuadricula = new Cuadricula(0, 0, 1, 4, { separacionEntreCasillas: 5 }, { grilla: 'casilla.tresNaranjas.png', ancho: 100, alto: 100 });
         //se cargan los Naranjas
         var hayAlMenosUno = false;
         for (var i = 0; i < 3; i++) {

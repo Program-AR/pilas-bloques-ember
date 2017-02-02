@@ -14,10 +14,10 @@ class InstalandoJuegos extends EscenaActividad {
   estado;
 
   iniciar() {
-      this.fondo = new Fondo('fondos/fondo.Biblioteca.png',0,0);
+      this.fondo = new Fondo('fondos.biblioteca.png',0,0);
       this.cuadricula = new Cuadricula(20, -50, 1, 4,
           { alto: 100, ancho: 400 },
-          { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+          { grilla: 'invisible.png', cantColumnas: 1 });
       for(var i=1;i<=3;++i){
         this.cuadricula.agregarActor(new CompuAnimada(0,0),0,i);
         }

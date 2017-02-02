@@ -2,6 +2,6 @@
 
 class BananaAnimada extends ActorAnimado {
     constructor(x, y) {
-        super(x, y, {grilla: 'actores/actor.Banana.png', cantColumnas:1, cantFilas: 1});
+        super(x, y, {grilla: 'banana-1.png', cantColumnas:1, cantFilas: 1});
     }
 }

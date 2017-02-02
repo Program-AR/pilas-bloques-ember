@@ -11,7 +11,7 @@
    cuadricula: Cuadricula;
 
   iniciar() {
-    this.fondo = new Fondo('fondos/fondo.ElDetectiveChaparro.png',0,0);
+    this.fondo = new Fondo('fondo.detective.png',0,0);
     this.cuadricula = new Cuadricula(0, -30, 1, 7,
       { ancho: 400, alto: 400 },
       { grilla: 'invisible.png', cantColumnas: 1 });

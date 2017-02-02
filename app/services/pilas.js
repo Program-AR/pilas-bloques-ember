@@ -60,6 +60,7 @@ export default Ember.Service.extend(Ember.Evented, {
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
                         cargar_imagenes_estandar: false,
+                        silenciar_advertencia_de_multiples_ejecutar: true
                       };
 
         var pilas = pilasengine.iniciar(opciones);
@@ -99,7 +100,7 @@ export default Ember.Service.extend(Ember.Evented, {
       };
 
       pilas.ejecutar();
-
+      this.cambiarFPS(100);
     });
   },
 

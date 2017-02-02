@@ -8,12 +8,12 @@
  */
 class TitoRecargado extends SuperTito2 {
     pathFondo() {
-        return 'fondos/fondo.Estrellas.png';
+        return 'fondos.estrellas.png';
     }
 
     cantidadFilas(){
         return 7;
-    }
+    }   
 
     avanzar() {
         this.automata.hacer_luego(MoverACasillaDerecha);

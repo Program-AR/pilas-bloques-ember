@@ -6,7 +6,7 @@ class Martillar extends Comportamiento {
     super.iniciar(receptor);
     this.vecesRestantes = this.argumentos['veces'];
 
-    var imagen = pilas.imagenes.cargar_grilla("actores/actor.CooperativistaTrabajando.png", 3);
+    var imagen = pilas.imagenes.cargar_grilla("cooperativista.trabajando.png", 3);
     this.receptor.imagen = imagen;
     this.contador = 0;
   }
@@ -16,7 +16,7 @@ class Martillar extends Comportamiento {
 
     if (this.contador > 10) {
       this.contador = 0;
-
+      
       var finaliza = this.receptor._imagen.avanzar();
 
       if (finaliza) {

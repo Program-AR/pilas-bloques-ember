@@ -90,6 +90,7 @@ class ComportamientoAnimado extends Comportamiento {
 
 	private configuracionInicial(){
 		this.realizarVerificacionesPreAnimacion();
+
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
 		if (this.hayQueAnimar)
@@ -103,8 +104,14 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	private realizarVerificacionesPreAnimacion(){
-		this.verificacionesPre.forEach(verificacion => verificacion.verificar());
-		if (this.argumentos.idTransicion) pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+		this.verificacionesPre.forEach(verificacion => {
+			verificacion.verificar();
+		});
+
+		if (this.argumentos.idTransicion) {
+			pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+		}
+
 		pilas.escena_actual().estado.verificarQuePuedoSeguir();
 	}
 
@@ -168,7 +175,9 @@ class Verificacion {
 	}
 
 	verificar(){
-		if (!this.seCumple()) throw new ActividadError(this.mensajeError);
+		if (!this.seCumple()) {
+			throw new ActividadError(this.mensajeError);
+		}
 	}
 }
 

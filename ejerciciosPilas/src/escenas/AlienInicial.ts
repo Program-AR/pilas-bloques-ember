@@ -16,12 +16,12 @@ class AlienInicial extends EscenaActividad {
 
     iniciar() {
       this.estado=this.armarEstado();
-      this.fondo = new Fondo('fondos/fondo.AlienTocaElBoton.png',0,0);
+      this.fondo = new Fondo('fondos.alien-inicial.png',0,0);
       this.cuadricula = new Cuadricula(-25, -200, 1, 4,
         { alto: 25, ancho: (pilas.opciones.ancho * 0.8) },
-        { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+        { grilla: 'invisible.png', cantColumnas: 1 });
 
-      this.fondoCuadricula = new Actor("actores/actor.CaminoAlienBoton.png", this.cuadricula.x, this.cuadricula.y);
+      this.fondoCuadricula = new Actor("camino-alien-boton.png", this.cuadricula.x, this.cuadricula.y);
       this.fondoCuadricula.ancho = this.cuadricula.ancho;
 
       this.automata = new AlienAnimado(0,0);
@@ -33,10 +33,10 @@ class AlienInicial extends EscenaActividad {
 
     }
 
-    private armarEstado(){
-    var a = new BuilderStatePattern('inicial');
-    a.agregarEstadoAceptacion('final');
-    a.agregarTransicion('inicial','final','apretarBoton');
-    return a.estadoInicial();
+    private armarEstado() {
+      var a = new BuilderStatePattern('inicial');
+      a.agregarEstadoAceptacion('final');
+      a.agregarTransicion('inicial', 'final', 'apretarBoton');
+      return a.estadoInicial();
     }
   }

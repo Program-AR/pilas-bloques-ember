@@ -11,7 +11,7 @@ class Sospechoso extends ActorAnimado {
 	}
 
     constructor(x = 0, y = 0) {
-        super(x, y, {grilla: 'actores/actor.Sospechosos.png', cantColumnas:8});
+        super(x, y, {grilla: 'sospechosos.png', cantColumnas:8});
         this.definirAnimacion("parado", [this.nroDisfraz()], 4, true);
         this.definirAnimacion("culpable", [7], 4);
 				this.tieneDisflazPuesto = true;
@@ -30,11 +30,11 @@ class Sospechoso extends ActorAnimado {
     }
 
     hacerCulpable(){
-		this.meaCulpa = true;
+			this.meaCulpa = true;
     }
 
     esCulpable(){
-		return this.meaCulpa;
+			return this.meaCulpa;
     }
 
     sacarDisfraz() {
@@ -46,10 +46,10 @@ class Sospechoso extends ActorAnimado {
     }
 
     mensajeAlSacarDisfraz(){
-		return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
+			return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
     }
 
     teEncontraron(){
-		return this.nombreAnimacionActual() === "culpable";
+			return this.nombreAnimacionActual() === "culpable";
     }
 }
