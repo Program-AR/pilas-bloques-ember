@@ -392,6 +392,9 @@ var ActorCompuesto = (function (_super) {
     ActorCompuesto.prototype.getAlto = function () {
         return this.subactores[0].getAlto();
     };
+    ActorCompuesto.prototype.colisiona_con = function (objeto) {
+        return this.subactores[0].colisiona_con(objeto);
+    };
     return ActorCompuesto;
 })(ActorAnimado);
 var ImitarAtributosNumericos2 = (function (_super) {
@@ -646,7 +649,7 @@ var Cuadricula = (function (_super) {
         return casilla.sos(0, 0);
     };
     Cuadricula.prototype.colisionan = function (objeto1, objeto2) {
-        return objeto1.casillaActual() == objeto2.casillaActual();
+        return (objeto1.casillaActual() == objeto2.casillaActual());
     };
     return Cuadricula;
 })(Actor);
@@ -1842,7 +1845,7 @@ var GatoAnimado = (function (_super) {
     function GatoAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'gatoAnimado.png', cantColumnas: 7, cantFilas: 7 });
         this.definirAnimacion('parado', new Cuadros([0, 1, 2, 3, 2, 1]).repetirVeces(9).concat([8, 9, 10, 11, 12, 12, 12, 12, 12, 12, 11, 10, 9, 8]), 4, true);
-        this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 45, 44, 43], 5);
+        this.definirAnimacion('saltar', [43, 44, 45, 46, 46, 46, 46, 46, 45, 44, 43], 15);
         this.definirAnimacion('saludando', [15, 16, 16, 17, 18, 19, 19, 18, 17, 16, 16, 16, 16, 17, 18, 19, 19, 16, 15], 5);
         this.definirAnimacion('acostado', [8, 9, 10, 11, 12, 11, 10, 9, 8], 5);
         this.definirAnimacion('abrirOjos', [39, 38, 37, 36], 5);
@@ -1872,6 +1875,8 @@ var HeroeAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: this.nombreArchivo(), cantColumnas: 6, cantFilas: 5 });
         this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 6);
         this.definirAnimacion("parado", [0], 6, true);
+        this.definirAnimacion("agarrarSombrero", [15, 14, 13, 12, 12, 12, 12], 6);
+        this.definirAnimacion("cambiarSombreroPorEspada", [12, 13, 14, 15, 4, 4, 4, 4, 4, 4, 9, 8, 7, 6], 6);
         this.definirAnimacion("correrConEspada", [6, 7, 8, 9, 10, 11], 12);
         this.definirAnimacion("correrConSombrero", [12, 13, 14, 15, 16, 17], 12);
         this.definirAnimacion("atacar", new Cuadros([24, 25, 26, 27, 28, 29]).repetirVeces(3), 6);
@@ -1942,6 +1947,7 @@ var LlaveAnimado = (function (_super) {
         _super.call(this, x, y, { grilla: 'llaveAnimada.png', cantColumnas: 1 });
         this.definirAnimacion("recoger", [1], 12);
         this.definirAnimacion("correr", [1], 12);
+        this.definirAnimacion("parado", [1], 12, true);
     }
     return LlaveAnimado;
 })(ActorAnimado);
@@ -2509,8 +2515,10 @@ var EstadoConTransicion = (function (_super) {
         };
     };
     EstadoConTransicion.prototype.realizarTransicion = function (idTransicion, comportamiento) {
-        if (!this.puedoTransicionarA(idTransicion))
+        if (!this.puedoTransicionarA(idTransicion)) {
             throw new ActividadError("¡Ups, esa no era la opción correcta!");
+        }
+        //console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
         pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
     };
     EstadoConTransicion.prototype.estadoSiguiente = function (comportamiento, idTransicion) {
@@ -2630,8 +2638,9 @@ var EstadoParaContarBuilder = (function (_super) {
         estado.cant = 0;
         this.agregarTransicion('faltan', 'llegue', idTransicion, function () {
             estado.cant += 1;
-            return estado.cant === cantidadEsperada;
+            return (estado.cant === cantidadEsperada);
         });
+        this.agregarError('llegue', idTransicion, 'Ya no hay más para ' + idTransicion);
     }
     return EstadoParaContarBuilder;
 })(BuilderStatePattern);
@@ -2678,6 +2687,11 @@ var ComportamientoColision = (function (_super) {
             objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
         }
         this.metodo(objetoTocado);
+    };
+    ComportamientoColision.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
+        if (this.argumentos['animacionColisionado'])
+            this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionado']);
     };
     ComportamientoColision.prototype.colisiona = function () {
         var _this = this;
@@ -2960,6 +2974,14 @@ var Escapar = (function (_super) {
         }
         _super.prototype.preAnimacion.call(this);
     };
+    Escapar.prototype.configurarVerificaciones = function () {
+        var _this = this;
+        _super.prototype.configurarVerificaciones.call(this);
+        this.verificacionesPre.push(new Verificacion(function () { return _this.estaEnTransporte(); }, "Para escapar hace falta un transporte"));
+    };
+    Escapar.prototype.estaEnTransporte = function () {
+        return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
+    };
     return Escapar;
 })(MovimientoAnimado);
 /// <reference path = "MovimientoAnimado.ts"/>
@@ -3120,7 +3142,8 @@ var SaltarAnimado = (function (_super) {
         var cps = this.argumentos.cantPasos / 2;
         var v = this.argumentos.velocidad_inicial;
         var h = this.argumentos.alturaDeseada;
-        return (cps * v - h) / ((cps - 1) * cps / 2);
+        return Math.floor((cps * v - h) / ((cps - 1) * cps / 2)); //Es preferible manejar siempre enteros.
+        //Redondear para abajo se compensa con setearEstadoFinalDeseado
     };
     SaltarAnimado.prototype.calcularVInicial = function () {
         if (!this.argumentos.alturaDeseada)
@@ -3132,7 +3155,8 @@ var SaltarAnimado = (function (_super) {
         var v = g / 2 * (cps - 1) + (h / cps);
         if (v < 0)
             throw new ArgumentError('Gravedad insuficiente para llegar a la altura deseada en los pasos indicados');
-        return v;
+        return Math.floor(v); //Es preferible manejar siempre enteros.
+        //Redondear para abajo se compensa con setearEstadoFinalDeseado
     };
     /* Fumata:
 
@@ -3291,6 +3315,7 @@ var Sostener = (function (_super) {
         _super.apply(this, arguments);
     }
     Sostener.prototype.preAnimacion = function () {
+        _super.prototype.preAnimacion.call(this);
         this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
     };
     Sostener.prototype.metodo = function (objetoColision) {
@@ -5004,7 +5029,7 @@ var SuperTito1 = (function (_super) {
         return 'fondo.superTito1.png';
     };
     SuperTito1.prototype.estaResueltoElProblema = function () {
-        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; });
+        return this.objetos.every(function (o) { return o.nombreAnimacionActual() == 'prendida'; }) && this.automata.alFinalDelCamino();
     };
     return SuperTito1;
 })(EscenaActividad);

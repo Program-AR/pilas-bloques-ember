@@ -331,7 +331,12 @@ export default Ember.Service.extend({
       descripcion: 'Saltar',
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarHablando',
-      argumentos: '{ velocidad_inicial: 30, alturaDeseada: 150, cantPasos: 20 }',
+      argumentos: `{
+        velocidad_inicial: 30,
+        alturaDeseada: 150,
+        cantPasos: 20,
+        velocidad: 50
+      }`,
     });
 
     this.crearBloqueAccion('VolverABordeIzquierdo', {
@@ -418,14 +423,24 @@ export default Ember.Service.extend({
       descripcion: 'Abrir el cofre',
       icono: 'icono.cofre.png',
       comportamiento: 'Soltar',
-      argumentos: '{etiqueta:"CofreAnimado", queSoltar:"LlaveAnimado", animacionColisionado:"abrir", idTransicion:"abrirCofre"}',
+      argumentos: `{
+        etiqueta: "CofreAnimado",
+        queSoltar: "LlaveAnimado",
+        animacionColisionado: "abrir",
+        idTransicion: "abrirCofre"
+      }`,
     });
 
     this.crearBloqueAccion('Darsombrero', {
       descripcion: 'Dar el sombrero',
       icono: 'icono.sombrero.png',
       comportamiento: 'ComportamientoColision',
-      argumentos: '{etiqueta:"MagoAnimado", animacionColisionado:"darEspada", idTransicion:"darSombrero"}',
+      argumentos: `{
+        etiqueta: "MagoAnimado",
+        nombreAnimacion: "cambiarSombreroPorEspada",
+        animacionColisionado: "darEspada",
+        idTransicion: "darSombrero"
+      }`,
     });
 
     this.crearBloqueAccion('Atacarconespada', {
@@ -483,7 +498,10 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('Depositar', {
       descripcion: 'Poner en la nave',
       comportamiento: 'Soltar',
-      argumentos: '{idTransicion: "depositar", etiqueta: "NaveAnimada"}',
+      argumentos: `{
+        idTransicion: "depositar",
+        etiqueta: "NaveAnimada"
+      }`,
     });
 
     this.crearBloqueAccion('Escapar', {
@@ -562,7 +580,15 @@ export default Ember.Service.extend({
       descripcion: 'Explotar globo',
       icono: 'icono.globo.png',
       comportamiento: 'ComportamientoColision',
-      argumentos: '{etiqueta:"GloboAnimado", nombreAnimacion:"recoger", idTransicion: "explotar", comportamientoAdicional: "Eliminar", argumentosComportamiento: {nombreAnimacion:"explotar"}}',
+
+      argumentos: `{
+        etiqueta: "GloboAnimado",
+        nombreAnimacion: "recoger",
+        idTransicion: "explotar",
+        comportamientoAdicional: 'Eliminar',
+        argumentosComportamiento: {
+          nombreAnimacion: "explotar"
+        }}`,
     });
 
     let blockly = this.get('blockly');

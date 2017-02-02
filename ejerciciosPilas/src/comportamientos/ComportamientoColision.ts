@@ -41,11 +41,16 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 		if (this.argumentos['comportamientoAdicional']) {
 			let claseComportamiento: any = window[this.argumentos['comportamientoAdicional']];
-
+			
 			objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
 		}
 
 		this.metodo(objetoTocado);
+	}
+
+	preAnimacion(){
+		super.preAnimacion();
+		if (this.argumentos['animacionColisionado'])  this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionado']);
 	}
 
 	colisiona() {

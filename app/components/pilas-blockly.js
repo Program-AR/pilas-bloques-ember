@@ -14,10 +14,11 @@ export default Ember.Component.extend({
   solucion: null,
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
   codigoJavascript: "", // Se carga como parametro
-  persistirSolucionEnURL: true,
+  persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
   codigo: null,
   highlightedBlock: null, // bloque a resaltar.
+  modelActividad: null,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -78,14 +79,32 @@ export default Ember.Component.extend({
 
     });
 
+    if (this.get("persistirSolucionEnURL")) {
+      Blockly.addChangeListener(() => {
+        Ember.run(this, function() {
+          this.guardarEnURL();
+          this.generarCodigoTemporal();
+        });
+      });
+    }
+
+    if (this.get("debeMostrarFinDeDesafio")) {
+      this.get('pilas').on('terminaEjecucion', () => {
+        Ember.run(this, function() {
+          this.cuandoTerminaEjecucion();
+        });
+      });
+    }
 
     if (this.get("persistirSolucionEnURL")) {
       // TODO: puede que esto quede en desuso.
     }
 
     this.get('pilas').on("errorDeActividad", (motivoDelError) => {
-      var receptor = this.get('pilas').evaluar('pilas.escena_actual().automata');
-      receptor.decir(motivoDelError);
+      Ember.run(this, function() {
+        var receptor = this.get('pilas').evaluar('pilas.escena_actual().automata');
+        receptor.decir(motivoDelError);
+      });
     });
 
     $(window).trigger('resize');
@@ -171,13 +190,16 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    this.sendAction('onTerminoEjecucion');
-    if (this.get("debeMostrarFinDeDesafio")) {
-      // TODO: Acá falla porque no existe la actividad.
-      if (this.get('pilas').estaResueltoElProblema() && this.get('actividad').debeFelicitarse()) {
-        this.send('abrirFinDesafio');
+    Ember.run(this, function() {
+      this.sendAction('onTerminoEjecucion');
+
+      if (this.get("debeMostrarFinDeDesafio")) {
+        if (this.get('pilas').estaResueltoElProblema() && this.get('modelActividad').get('debeFelicitarse')) {
+          this.send('abrirFinDesafio');
+        }
       }
-    }
+
+    });
   },
 
   willDestroyElement() {

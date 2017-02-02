@@ -5,6 +5,7 @@ export default Ember.Component.extend({
   persistirSolucionEnURL: true,
   blocksGallery: Ember.inject.service(),
   cargando: true,
+  showCode: true,
 
   didInsertElement() {
     this.get('blocksGallery').start();

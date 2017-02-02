@@ -193,13 +193,11 @@ export function actividadTest(nombre, opciones) {
               debug=false
               pilas=pilas
               model=model
+              showCode=true
               onReady="onReady"
               codigo=solucion
               codigoJavascript=""
               persistirSolucionEnURL=false
-              panelCanvasVisible=true
-              panelBlocklyVisible=true
-              panelCodigoVisible=false
               onTerminoEjecucion=onTerminoEjecucion
               debeMostrarFinDeDesafio=false
             }}

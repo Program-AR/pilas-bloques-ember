@@ -168,8 +168,7 @@ class Cuadricula extends Actor {
       return casilla.sos(0, 0);
     }
 
-    colisionan(objeto1,objeto2){
-      return objeto1.casillaActual()==objeto2.casillaActual()
-
+    colisionan(objeto1, objeto2) {
+      return (objeto1.casillaActual() == objeto2.casillaActual());
     }
 }

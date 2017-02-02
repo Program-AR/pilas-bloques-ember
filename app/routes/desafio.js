@@ -6,9 +6,5 @@ export default Ember.Route.extend({
       replace: true
     }
   },
-  pilas: Ember.inject.service(),
-
-  afterModel(model) {
-    model.set('actividad', "Asasdasd");
-  },
+  pilas: Ember.inject.service()
 });

@@ -8,14 +8,16 @@ export default Ember.Component.extend({
   linkDescarga: environment.linkDeDescarga,
 
   didInsertElement() {
-    if (this.get('servicioNotificador')) {
+    const inElectron = (typeof process !== "undefined");
 
-      if (environment.consultarVersion) {
-        setTimeout(() => {
+    if (this.get('servicioNotificador')) {
+      if (inElectron) {
+        /* Solo si está en la versión offline, sobre electron, espera 5 segundos
+         * y consulta si existe una versión nueva para descargar. */
+        Ember.run.later(this, function() {
           this.consultarSiExisteVersionNueva();
         }, 5000);
       }
-
     }
   },
 

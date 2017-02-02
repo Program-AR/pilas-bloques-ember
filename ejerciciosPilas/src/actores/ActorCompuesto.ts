@@ -95,6 +95,10 @@ class ActorCompuesto extends ActorAnimado {
 	getAlto() {
 		return this.subactores[0].getAlto();
 	}
+
+	colisiona_con(objeto) : Boolean {
+		return this.subactores[0].colisiona_con(objeto);
+	}
 }
 
 class ImitarAtributosNumericos2 extends ImitarAtributosNumericos{

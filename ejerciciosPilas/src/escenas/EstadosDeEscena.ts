@@ -85,7 +85,10 @@ class EstadoConTransicion extends Estado{
   }
 
   realizarTransicion(idTransicion, comportamiento) {
-    if (!this.puedoTransicionarA(idTransicion)) throw new ActividadError("¡Ups, esa no era la opción correcta!");
+    if (!this.puedoTransicionarA(idTransicion)) {
+      throw new ActividadError("¡Ups, esa no era la opción correcta!");
+    }
+    //console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
     pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
   }
 
@@ -207,10 +210,12 @@ class EstadoParaContarBuilder extends BuilderStatePattern {
     this.agregarEstadoAceptacion('llegue');
     var estado = this.estados['llegue'];
     estado.cant = 0;
-    this.agregarTransicion('faltan', 'llegue', idTransicion,
-      function(){
-        estado.cant += 1;
-        return estado.cant === cantidadEsperada
-      });
+
+    this.agregarTransicion('faltan', 'llegue', idTransicion, function() {
+      estado.cant += 1;
+      return (estado.cant === cantidadEsperada);
+    });
+
+    this.agregarError('llegue', idTransicion, 'Ya no hay más para ' + idTransicion);
   }
 }

@@ -130,6 +130,5 @@ actualizar_imagenes:
 
 test_travis:
 	ember test
-	#ember exam --split=10 --parallel --random
 
 .PHONY: dist
