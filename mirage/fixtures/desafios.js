@@ -213,7 +213,8 @@ export default [
     consignaInicial: 'Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!',
     escena: 'SuperTito1',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo', 'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
+    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
+              'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 20,
@@ -224,7 +225,8 @@ export default [
     consignaInicial: 'El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".',
     escena: 'SuperTito2',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz']
+    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
+              'MoverACasillaAbajo', 'Repetir', 'Si', 'Sino', 'Hasta']
   },
   {
     id: 21,
