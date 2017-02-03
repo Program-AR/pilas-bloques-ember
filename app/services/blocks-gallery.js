@@ -416,7 +416,10 @@ export default Ember.Service.extend({
       descripcion: 'Agarrar la llave',
       icono: 'icono.llave.png',
       comportamiento: 'Sostener',
-      argumentos: '{etiqueta:"LlaveAnimado", idTransicion:"agarrarLlave"}',
+      argumentos: `{
+        etiqueta: "LlaveAnimado",
+        idTransicion: "agarrarLlave"
+      }`,
     });
 
     this.crearBloqueAccion('Abrircofre', {
@@ -448,17 +451,28 @@ export default Ember.Service.extend({
       descripcion: 'Atacar con la espada',
       icono: 'icono.espada.png',
       comportamiento: 'SecuenciaAnimada',
-      argumentos: `{idTransicion: "atacarConEspada", secuencia: [
-        {
-          comportamiento: "ComportamientoColision",
-          argumentos: {etiqueta: "CaballeroAnimado", animacionColisionado: "defender", nombreAnimacion:"atacar"}
-        },
-        {
-          comportamiento: "Sostener",
-          argumentos: {etiqueta:"Principe"}
-        }
-      ]}`,
+      argumentos: `{
+        idTransicion: "atacarConEspada",
+        secuencia: [
+          {
+            comportamiento: "ComportamientoColision",
+            argumentos: {
+              etiqueta: "CaballeroAnimado",
+              animacionColisionado: "defender",
+              nombreAnimacion:"atacar"
+            }
+          },
+          {
+            comportamiento: "Sostener",
+            argumentos: {
+              etiqueta:"Principe"
+            }
+          }
+        ]
+      }`,
     });
+
+    /* NUEVA */
 
     this.crearBloqueAccion('EscaparEnUnicornio', {
       descripcion: 'Escapar en unicornio',
@@ -470,6 +484,15 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
+
+    this.crearBloqueAccion('Escapar', {
+      descripcion: 'Escapar',
+      comportamiento: 'Escapar',
+      argumentos: `{
+        receptor: "nave",
+        escaparCon: "automata"
+      }`,
+    });
 
     this.crearBloqueAccion('TomarHierro', {
       descripcion: 'Agarrar hierro',
@@ -504,11 +527,6 @@ export default Ember.Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Escapar', {
-      descripcion: 'Escapar',
-      comportamiento: 'Escapar',
-      argumentos: '{receptor: "nave", escaparCon: "automata"}',
-    });
 
     this.crearBloqueAccion('AvanzarMono', {
       descripcion: 'Mover a la derecha',

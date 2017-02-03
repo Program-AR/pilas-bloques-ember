@@ -149,7 +149,6 @@ export function actividadTest(nombre, opciones) {
            * dos casos finaliza el test.
            */
           pilas.on("errorDeActividad", function(motivoDelError) {
-            console.log("error detectado!");
             let errorEsperado = opciones.errorEsperado;
 
             if (errorEsperado) {
@@ -159,7 +158,6 @@ export function actividadTest(nombre, opciones) {
             }
 
             success();
-
           });
 
           this.set('onTerminoEjecucion', () => {

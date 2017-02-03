@@ -10,9 +10,11 @@ moduleForAcceptance('Acceptance | puede ingresar en actividades');
  * panel de consigna sea exacamente el título el esperado.
  */
 function validar_que_se_muestra_el_titulo(assert, tituloEsperado) {
+
   andThen(function() {
     let tituloVisibleEnPantalla = $(".contenedor-panel-ayuda h4").text();
     assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama efectivamente " + tituloEsperado);
+    visit('/');
   });
 }
 

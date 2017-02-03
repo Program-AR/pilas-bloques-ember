@@ -2977,10 +2977,17 @@ var Escapar = (function (_super) {
     Escapar.prototype.configurarVerificaciones = function () {
         var _this = this;
         _super.prototype.configurarVerificaciones.call(this);
-        this.verificacionesPre.push(new Verificacion(function () { return _this.estaEnTransporte(); }, "Para escapar hace falta un transporte"));
+        this.verificacionesPre.push(new Verificacion(function () {
+            return _this.estaEnTransporte();
+        }, "Para escapar hace falta un transporte"));
     };
     Escapar.prototype.estaEnTransporte = function () {
-        return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
+        if (typeof this.argumentos.escaparCon == 'string') {
+            this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
+        }
+        var noTieneQueEscaparConNingunActor = (!this.argumentos.escaparCon);
+        var colisionaConElActorParaEscapar = this.receptor.colisiona_con(this.argumentos.escaparCon);
+        return (noTieneQueEscaparConNingunActor || colisionaConElActorParaEscapar);
     };
     return Escapar;
 })(MovimientoAnimado);

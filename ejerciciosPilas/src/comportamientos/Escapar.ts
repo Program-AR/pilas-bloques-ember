@@ -15,6 +15,7 @@ class Escapar extends MovimientoAnimado {
 	    this.argumentos.cantPasos = 40;
 
 	    if (this.argumentos.escaparCon) {
+
         if (typeof this.argumentos.escaparCon == 'string') {
           this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
         }
@@ -26,10 +27,19 @@ class Escapar extends MovimientoAnimado {
 
 	configurarVerificaciones() {
 		super.configurarVerificaciones();
-		this.verificacionesPre.push(new Verificacion(() => this.estaEnTransporte(), "Para escapar hace falta un transporte"));
+		this.verificacionesPre.push(new Verificacion(() => {
+			return this.estaEnTransporte();
+		}, "Para escapar hace falta un transporte"));
 	}
 
 	estaEnTransporte(){
-		return !this.argumentos.escaparCon || this.receptor.colisiona_con(this.argumentos.escaparCon);
+		if (typeof this.argumentos.escaparCon == 'string') {
+			this.argumentos.escaparCon = eval("pilas.escena_actual()." + this.argumentos.escaparCon);
+		}
+
+		let noTieneQueEscaparConNingunActor = (!this.argumentos.escaparCon);
+		let colisionaConElActorParaEscapar = this.receptor.colisiona_con(this.argumentos.escaparCon);
+
+		return (noTieneQueEscaparConNingunActor || colisionaConElActorParaEscapar);
 	}
 }
