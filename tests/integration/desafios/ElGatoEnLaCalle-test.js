@@ -5,12 +5,116 @@ const nombre = "ElGatoEnLaCalle";
 moduloActividad(nombre);
 
 actividadTest(nombre, {
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Avanzar" id="33"><next><block type="procedures_callnoreturn" id="53"><mutation name="dormirse"></mutation><next><block type="procedures_callnoreturn" id="99"><mutation name="despertarse"></mutation><next><block type="Saludar" id="117"><next><block type="Volver" id="126"></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="74" x="476" y="134"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Abrirojos" id="83"><next><block type="Pararse" id="108"></block></next></block></statement></block><block type="procedures_defnoreturn" id="3" x="209" y="190"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Acostarse" id="42"><next><block type="Cerrarojos" id="62"><next><block type="Soar" id="71"></block></next></block></next></block></statement></block></xml>',
+	solucion: `
+	<xml xmlns="http://www.w3.org/1999/xhtml">
+		<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
+			<statement name="program">
+				<block type="Avanzar" id="33">
+					<next>
+						<block type="procedures_callnoreturn" id="53">
+							<mutation name="dormirse"></mutation>
+							<next>
+								<block type="procedures_callnoreturn" id="99">
+									<mutation name="despertarse"></mutation>
+									<next>
+										<block type="Saludar" id="117">
+											<next>
+												<block type="Volver" id="126"></block>
+											</next>
+										</block>
+									</next>
+								</block>
+							</next>
+						</block>
+					</next>
+				</block>
+			</statement>
+		</block>
+		<block type="procedures_defnoreturn" id="74" x="476" y="134">
+			<mutation></mutation>
+			<field name="NAME">despertarse</field>
+			<statement name="STACK">
+				<block type="Abrirojos" id="83">
+					<next>
+						<block type="Pararse" id="108"></block>
+					</next>
+				</block>
+			</statement>
+		</block>
+		<block type="procedures_defnoreturn" id="3" x="209" y="190">
+			<mutation></mutation>
+			<field name="NAME">dormirse</field>
+			<statement name="STACK">
+				<block type="Acostarse" id="42">
+					<next>
+						<block type="Cerrarojos" id="62">
+							<next>
+								<block type="Soar" id="71"></block>
+							</next>
+						</block>
+					</next>
+				</block>
+			</statement>
+		</block>
+	</xml>
+	`,
 });
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Invirtiendo acciones sigue funcionando la solución',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="16" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Avanzar" id="17"><next><block type="procedures_callnoreturn" id="18"><mutation name="dormirse"></mutation><next><block type="procedures_callnoreturn" id="19"><mutation name="despertarse"></mutation><next><block type="Saludar" id="20"><next><block type="Volver" id="21"></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="22" x="476" y="134"><mutation></mutation><field name="NAME">despertarse</field><statement name="STACK"><block type="Pararse" id="24"><next><block type="Abrirojos" id="23"></block></next></block></statement></block><block type="procedures_defnoreturn" id="25" x="209" y="190"><mutation></mutation><field name="NAME">dormirse</field><statement name="STACK"><block type="Cerrarojos" id="27"><next><block type="Acostarse" id="26"><next><block type="Soar" id="28"></block></next></block></next></block></statement></block></xml>'
+	solucion: `
+	<xml xmlns="http://www.w3.org/1999/xhtml">
+	<block type="al_empezar_a_ejecutar" id="16" deletable="false" movable="false" editable="false" x="0" y="0">
+		<statement name="program">
+			<block type="Avanzar" id="17">
+				<next>
+					<block type="procedures_callnoreturn" id="18">
+						<mutation name="dormirse"></mutation>
+						<next>
+							<block type="procedures_callnoreturn" id="19">
+								<mutation name="despertarse"></mutation>
+								<next>
+									<block type="Saludar" id="20">
+										<next>
+											<block type="Volver" id="21"></block>
+										</next>
+									</block>
+								</next>
+							</block>
+						</next>
+					</block>
+				</next>
+			</block>
+		</statement>
+	</block>
+	<block type="procedures_defnoreturn" id="22" x="476" y="134">
+		<mutation></mutation>
+		<field name="NAME">despertarse</field>
+		<statement name="STACK">
+			<block type="Pararse" id="24">
+				<next>
+					<block type="Abrirojos" id="23"></block>
+				</next>
+			</block>
+		</statement>
+	</block>
+	<block type="procedures_defnoreturn" id="25" x="209" y="190">
+		<mutation></mutation>
+		<field name="NAME">dormirse</field>
+		<statement name="STACK">
+			<block type="Cerrarojos" id="27">
+				<next>
+					<block type="Acostarse" id="26">
+						<next>
+							<block type="Soar" id="28"></block>
+						</next>
+					</block>
+				</next>
+			</block>
+		</statement>
+	</block>
+</xml>
+`
 });
 
 actividadTest(nombre, {
