@@ -1086,7 +1086,7 @@ export default Ember.Service.extend({
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Alternativas',
+      categoria: 'Repeticiones',
     };
 
     this.crearBloqueAlias('hasta', 'Hasta');
