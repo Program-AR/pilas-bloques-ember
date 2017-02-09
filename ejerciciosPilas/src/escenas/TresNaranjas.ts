@@ -43,13 +43,18 @@ class TresNaranjas extends EscenaActividad {
 
         // se crea el personaje
         this.automata = new MarcianoAnimado(0,0);
-        this.cuadricula.agregarActor(this.automata,0,0);
+        this.cuadricula.agregarActor(this.automata,0,0,false);
+				this.automata.y += 20;
+				this.automata.x -= 20;
     }
 
     agregarNaranja(columna) {
-        var objeto = new NaranjaAnimada(0,0);
-        this.cuadricula.agregarActor(objeto,0,columna);
-        this.objetos.push(objeto);
+        var naranja = new NaranjaAnimada(0,0);
+        this.cuadricula.agregarActor(naranja,0,columna,false);
+				naranja.escala = 0.5;
+				naranja.x += 20;
+				naranja.y -= 20;
+        this.objetos.push(naranja);
     }
 
     estaResueltoElProblema(){
