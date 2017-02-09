@@ -521,11 +521,12 @@ export default [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
   },
-  {
+/*  {
     id: 136,
     grupoId: 5,
     nombre: '',
     titulo: 'Próximamente: más actividades',
     deshabilitado: true,
-  },
+  },*/
+	
 ];
