@@ -73,10 +73,12 @@ class ActorAnimado extends Actor {
     }
 
     tocando(etiqueta) : Boolean {
-      return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this))
-      //var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
-      //return actores.length > 0;
-    };
+      return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this));
+    }
+
+		objetoTocado(etiqueta) {
+			return pilas.obtener_actores_con_etiqueta(etiqueta).filter(objeto => objeto.colisiona_con(this))[0];
+		}
 
     hayAbajo():Boolean{
       return this.cuadricula.hayAbajo(this.casillaActual());

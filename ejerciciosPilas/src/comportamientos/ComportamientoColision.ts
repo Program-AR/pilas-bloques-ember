@@ -14,6 +14,14 @@ Caso Contrario:
 La escena que lo utiliza debe tener definido
 automata
 
+Respecto de los argumentos:
+ - etiqueta: Es obligatorio, es la etiqueta del actor con el que busca condicional.
+ - mensajeError: Es el mensaje que aparece cuando no hay colisión objeto de esa etiqueta.
+ - animacionColisionadoPost: Es la animación que se gatilla en el objeto colisionado justo luego de terminar el comportamiento actual.
+ - animacionColisionadoMientras: Es la animación que se gatilla en el objeto colisionado mientras se realiza el comportamiento actual.
+ - comportamientoAdicional y argumentosComportamiento: Es el comportamiento que se gatilla
+       en el objeto colisionado justo luego de terminar el comportamiento actual.
+			 Este comportamiento finaliza, y el comportamiento adicional en el objeto colisionado continúa.
 */
 
 
@@ -35,13 +43,13 @@ class ComportamientoColision extends ComportamientoAnimado {
 	postAnimacion() {
 		var objetoTocado = this.objetoTocado();
 
-		if (this.argumentos['animacionColisionado']) {
-			objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
+		if (this.argumentos['animacionColisionadoPost']) {
+			objetoTocado.cargarAnimacion(this.argumentos['animacionColisionadoPost']);
 		}
 
 		if (this.argumentos['comportamientoAdicional']) {
 			let claseComportamiento: any = window[this.argumentos['comportamientoAdicional']];
-			
+
 			objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
 		}
 
@@ -50,16 +58,15 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	preAnimacion(){
 		super.preAnimacion();
-		if (this.argumentos['animacionColisionado'])  this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionado']);
+		if (this.argumentos['animacionColisionadoMientras'])  this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionadoMientras']);
 	}
 
 	colisiona() {
-		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-			.some(objeto => objeto.colisiona_con(this.receptor));
+		return this.receptor.tocando(this.argumentos['etiqueta']);
 	}
 
 	objetoTocado(){
-		return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(objeto => objeto.colisiona_con(this.receptor))[0];
+		return this.receptor.objetoTocado(this.argumentos['etiqueta']);
 	}
 
 	hacerLegible(etiqueta){
@@ -68,12 +75,6 @@ class ComportamientoColision extends ComportamientoAnimado {
 
 	metodo(objetoColision){
 						//redefinir por subclase
-	}
-}
-
-class DesencadenarAnimacionSiColisiona extends ComportamientoColision{
-	metodo(objetoColision){
-		objetoColision.cargarAnimacion(this.argumentos['animacionColisionado']);
 	}
 }
 

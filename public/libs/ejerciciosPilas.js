@@ -149,10 +149,11 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.tocando = function (etiqueta) {
         var _this = this;
         return pilas.obtener_actores_con_etiqueta(etiqueta).some(function (objeto) { return objeto.colisiona_con(_this); });
-        //var actores = pilas.obtener_actores_en(this.x, this.y + 20, etiqueta);
-        //return actores.length > 0;
     };
-    ;
+    ActorAnimado.prototype.objetoTocado = function (etiqueta) {
+        var _this = this;
+        return pilas.obtener_actores_con_etiqueta(etiqueta).filter(function (objeto) { return objeto.colisiona_con(_this); })[0];
+    };
     ActorAnimado.prototype.hayAbajo = function () {
         return this.cuadricula.hayAbajo(this.casillaActual());
     };
@@ -777,10 +778,11 @@ var CompuAnimada = (function (_super) {
     __extends(CompuAnimada, _super);
     function CompuAnimada(x, y) {
         _super.call(this, x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 5);
+        this.definirAnimacion("parado", [0], 5, true);
         this.definirAnimacion("prendida", [1], 5);
         this.definirAnimacion("claveok", [2], 5);
-        this.definirAnimacion("instalado", [3, 4, 5, 6, 7], 1);
+        this.definirAnimacion("instalando", [3, 4, 5, 6, 7], 6);
+        this.definirAnimacion("yaInstalado", [7], 1);
         this.yaFuePrendida = false;
     }
     CompuAnimada.prototype.cargarAnimacion = function (nombre) {
@@ -791,6 +793,138 @@ var CompuAnimada = (function (_super) {
     };
     return CompuAnimada;
 })(ActorAnimado);
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/Casilla.ts"/>
+/**
+ * class @CuadriculaConCamino
+ *
+ * Este actor sirve para dibujar una cuadrícula en pantalla, con un camino
+ * al estilo de las actividades iniciales de code.org
+ *
+*/
+/*
+class Cuadricula extends Actor {
+    cantFilas;
+    cantColumnas;
+    protected casillas: Array<Casilla>;
+    private opcionesCuadricula;
+    private opcionesCasilla;
+
+    constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
+        this.cantFilas = cantFilas;
+        this.cantColumnas = cantColumnas;
+        this.sanitizarOpciones(opcionesCuadricula, opcionesCasilla);
+        super(this.opcionesCuadricula.imagen, x, y, opcionesCuadricula);
+
+        this.ancho = this.cantColumnas * opcionesCasilla.ancho + (this.separacion() * (this.cantColumnas - 1));
+        this.alto = this.cantFilas * opcionesCasilla.alto + (this.separacion() * (this.cantFilas - 1));
+
+        this.crearCasillas();
+    }
+
+    //TODO: Podría agregar que tome las dimensiones de la
+    //imagen como último valor de ancho y alto por defecto
+    sanitizarOpciones(opcionesCuadricula, opcionesCasilla) {
+        this.opcionesCasilla = opcionesCasilla;
+        this.opcionesCuadricula = opcionesCuadricula;
+
+        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'casillas/casilla.Invisible.png';
+        this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
+        this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
+        this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;
+        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasilla(this.opcionesCuadricula.ancho);
+        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasilla(this.opcionesCuadricula.alto);
+    }
+
+    separacion(){
+        return this.opcionesCuadricula.separacionEntreCasillas;
+    }
+
+    setAncho(nuevo) {
+        this.ancho = nuevo;
+        this.opcionesCasilla.ancho = this.calcularAnchoCasilla(nuevo);
+        this.casillas.forEach(casilla => { casilla.reubicate() });
+    }
+
+    calcularAnchoCasilla(anchoCuad) {
+        // anchoCuad = cols * anchoCas + ((cols-1) * separacion)
+        // anchoCuad - ((cols-1) * separacion) = cols * anchoCas
+        // anchoCas = (anchoCuad - ((cols-1) * separacion)) / cols
+        // anchoCas = anchoCuad / cols - ((cols-1) * separacion) / cols
+        return anchoCuad / this.cantColumnas -
+            (((this.cantColumnas - 1) * this.separacion()) / this.cantColumnas);
+
+    }
+
+    setAlto(nuevo) {
+        this.alto = nuevo;
+        this.opcionesCasilla.alto = this.calcularAltoCasilla(nuevo);
+        this.casillas.forEach(casilla => { casilla.reubicate() });
+    }
+
+    calcularAltoCasilla(altoCuad){
+        var separacion = this.opcionesCuadricula.separacionEntreCasillas;
+        return altoCuad / this.cantFilas -
+                (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
+
+    }
+
+    crearCasillas(){
+        this.casillas = new Array<Casilla>();
+        for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
+            for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
+                this.casillas.push(
+                    new Casilla(nroFila,nroColumna, this));
+            }
+        }
+    }
+
+    agregarActor(actor,nroF,nroC,escalarACasilla = true){
+        actor.cuadricula = this;
+        if(escalarACasilla){
+            actor.escalarProporcionalALimites(this.anchoCasilla() - 5, this.altoCasilla() - 5);
+        }
+        actor.setCasillaActual(this.casilla(nroF,nroC),true);
+    }
+
+    agregarActorEnPerspectiva(actor,nroF,nroC,escalarACasilla = true){
+        this.agregarActor(actor, nroF, nroC, false);
+        if (escalarACasilla) {
+            actor.escalarAAncho(actor.casillaActual().ancho * 0.95);
+        }
+        actor.abajo = actor.casillaActual().abajo + (0.4 * this.altoCasilla())
+    }
+
+    altoCasilla(){
+        return this.opcionesCasilla.alto;
+    }
+    anchoCasilla(){
+        return this.opcionesCasilla.ancho;
+    }
+
+    getOpcionesCasilla(){
+        return this.opcionesCasilla;
+    }
+
+    casilla(nroF, nroC){
+        return this.casillas.filter(casilla => casilla.sos(nroF,nroC))[0];
+    }
+
+    esFin(casilla){
+      return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
+          this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
+    }
+
+    esInicio(casilla){
+      return casilla.sos(0, 0);
+    }
+
+    colisionan(objeto1,objeto2){
+      return objeto1.casillaActual()==objeto2.casillaActual()
+
+    }
+}
+*/
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /**
  * @class ComportamientoAnimado
@@ -1923,8 +2057,8 @@ var InstaladorAnimado = (function (_super) {
     function InstaladorAnimado(x, y) {
         _super.call(this, x, y, { grilla: 'instalador.png', cantColumnas: 9, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 1, true);
-        this.definirAnimacion("correr", [1, 2, 3], 5);
-        this.definirAnimacion("escribir", [3, 4, 5, 6, 7, 8, 7, 8, 7, 8, 7, 8], 9);
+        this.definirAnimacion("correr", [0, 3, 2, 1, 2, 3], 10);
+        this.definirAnimacion("escribir", [3, 4, 5, 6, 7, 8, 7, 8, 7, 6, 5, 4], 9);
     }
     return InstaladorAnimado;
 })(ActorAnimado);
@@ -2391,6 +2525,30 @@ var UnicornioAnimado = (function (_super) {
     }
     return UnicornioAnimado;
 })(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+var Automata1 = (function (_super) {
+    __extends(Automata1, _super);
+    function Automata1(x, y) {
+        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
+    }
+    return Automata1;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+var Automata2 = (function (_super) {
+    __extends(Automata2, _super);
+    function Automata2(x, y) {
+        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
+    }
+    return Automata2;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+var CasillaRelleno = (function (_super) {
+    __extends(CasillaRelleno, _super);
+    function CasillaRelleno(x, y) {
+        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
+    }
+    return CasillaRelleno;
+})(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
 /// <reference path = "../actores/ActorAnimado.ts"/>
@@ -2660,6 +2818,14 @@ Caso Contrario:
 La escena que lo utiliza debe tener definido
 automata
 
+Respecto de los argumentos:
+ - etiqueta: Es obligatorio, es la etiqueta del actor con el que busca condicional.
+ - mensajeError: Es el mensaje que aparece cuando no hay colisión objeto de esa etiqueta.
+ - animacionColisionadoPost: Es la animación que se gatilla en el objeto colisionado justo luego de terminar el comportamiento actual.
+ - animacionColisionadoMientras: Es la animación que se gatilla en el objeto colisionado mientras se realiza el comportamiento actual.
+ - comportamientoAdicional y argumentosComportamiento: Es el comportamiento que se gatilla
+       en el objeto colisionado justo luego de terminar el comportamiento actual.
+             Este comportamiento finaliza, y el comportamiento adicional en el objeto colisionado continúa.
 */
 var ComportamientoColision = (function (_super) {
     __extends(ComportamientoColision, _super);
@@ -2679,8 +2845,8 @@ var ComportamientoColision = (function (_super) {
     };
     ComportamientoColision.prototype.postAnimacion = function () {
         var objetoTocado = this.objetoTocado();
-        if (this.argumentos['animacionColisionado']) {
-            objetoTocado.cargarAnimacion(this.argumentos['animacionColisionado']);
+        if (this.argumentos['animacionColisionadoPost']) {
+            objetoTocado.cargarAnimacion(this.argumentos['animacionColisionadoPost']);
         }
         if (this.argumentos['comportamientoAdicional']) {
             var claseComportamiento = window[this.argumentos['comportamientoAdicional']];
@@ -2690,17 +2856,14 @@ var ComportamientoColision = (function (_super) {
     };
     ComportamientoColision.prototype.preAnimacion = function () {
         _super.prototype.preAnimacion.call(this);
-        if (this.argumentos['animacionColisionado'])
-            this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionado']);
+        if (this.argumentos['animacionColisionadoMientras'])
+            this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionadoMientras']);
     };
     ComportamientoColision.prototype.colisiona = function () {
-        var _this = this;
-        return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta'])
-            .some(function (objeto) { return objeto.colisiona_con(_this.receptor); });
+        return this.receptor.tocando(this.argumentos['etiqueta']);
     };
     ComportamientoColision.prototype.objetoTocado = function () {
-        var _this = this;
-        return pilas.obtener_actores_con_etiqueta(this.argumentos['etiqueta']).filter(function (objeto) { return objeto.colisiona_con(_this.receptor); })[0];
+        return this.receptor.objetoTocado(this.argumentos['etiqueta']);
     };
     ComportamientoColision.prototype.hacerLegible = function (etiqueta) {
         return etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
@@ -2710,16 +2873,6 @@ var ComportamientoColision = (function (_super) {
     };
     return ComportamientoColision;
 })(ComportamientoAnimado);
-var DesencadenarAnimacionSiColisiona = (function (_super) {
-    __extends(DesencadenarAnimacionSiColisiona, _super);
-    function DesencadenarAnimacionSiColisiona() {
-        _super.apply(this, arguments);
-    }
-    DesencadenarAnimacionSiColisiona.prototype.metodo = function (objetoColision) {
-        objetoColision.cargarAnimacion(this.argumentos['animacionColisionado']);
-    };
-    return DesencadenarAnimacionSiColisiona;
-})(ComportamientoColision);
 var DesencadenarComportamientoSiColisiona = (function (_super) {
     __extends(DesencadenarComportamientoSiColisiona, _super);
     function DesencadenarComportamientoSiColisiona() {
@@ -2991,6 +3144,21 @@ var Escapar = (function (_super) {
     };
     return Escapar;
 })(MovimientoAnimado);
+/// <reference path="ComportamientoConVelocidad.ts"/>
+// El objetivo de este comportamiento es poder encolar en
+// la cola de comportamientos DEL RECEPTOR un comportamiento que ejecute
+// EN EL OBJETO TOCADO, para que ejecute antes de que el receptor siga su camino.
+var EsperarAnimacionTocado = (function (_super) {
+    __extends(EsperarAnimacionTocado, _super);
+    function EsperarAnimacionTocado() {
+        _super.apply(this, arguments);
+    }
+    EsperarAnimacionTocado.prototype.iniciar = function (receptor) {
+        this.argumentos.receptor = receptor.objetoTocado(this.argumentos.etiqueta);
+        _super.prototype.iniciar.call(this, receptor);
+    };
+    return EsperarAnimacionTocado;
+})(ComportamientoConVelocidad);
 /// <reference path = "MovimientoAnimado.ts"/>
 /// <reference path = "../actores/ActorAnimado.ts"/>
 var GirarMarquesina = (function (_super) {
@@ -4411,7 +4579,7 @@ var PrenderCompuParaInstalar = (function (_super) {
         this.verificacionesPre.push(new Verificacion(function () { return !_this.objetoTocado().yaFuePrendida; }, "Esta compu ya la prendiste antes"));
     };
     return PrenderCompuParaInstalar;
-})(DesencadenarAnimacionSiColisiona);
+})(ComportamientoColision);
 var ApagarPorEtiqueta = (function (_super) {
     __extends(ApagarPorEtiqueta, _super);
     function ApagarPorEtiqueta() {
@@ -4421,16 +4589,6 @@ var ApagarPorEtiqueta = (function (_super) {
         objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "apagada", mantenerAnimacion: true });
     };
     return ApagarPorEtiqueta;
-})(ComportamientoColision);
-var InstalarPorEtiqueta = (function (_super) {
-    __extends(InstalarPorEtiqueta, _super);
-    function InstalarPorEtiqueta() {
-        _super.apply(this, arguments);
-    }
-    InstalarPorEtiqueta.prototype.metodo = function (objetoColision) {
-        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true });
-    };
-    return InstalarPorEtiqueta;
 })(ComportamientoColision);
 var PrenderPorEtiqueta = (function (_super) {
     __extends(PrenderPorEtiqueta, _super);
@@ -4447,6 +4605,12 @@ var EscribirEnCompuAnimada = (function (_super) {
     function EscribirEnCompuAnimada() {
         _super.apply(this, arguments);
     }
+    EscribirEnCompuAnimada.prototype.iniciar = function (receptor) {
+        this.argumentos.etiqueta = "CompuAnimada";
+        this.argumentos.mensajeError = "No hay una compu aqui";
+        this.argumentos.nombreAnimacion = "escribir";
+        _super.prototype.iniciar.call(this, receptor);
+    };
     EscribirEnCompuAnimada.prototype.metodo = function (objetoColision) {
         if (this.argumentos['idTransicion'] == 'escribirC') {
             objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
@@ -5295,6 +5459,108 @@ var TresNaranjas = (function (_super) {
     };
     return TresNaranjas;
 })(EscenaActividad);
+/// <reference path = "../EscenaActividad.ts" />
+/// <reference path = "../../actores/Frank.ts" />
+/// <reference path = "../../actores/Bruja.ts" />
+/// <reference path = "../../actores/Dracula.ts" />
+/// <reference path = "../../actores/Tito.ts" />
+/// <reference path = "../../actores/Murcielago.ts" />
+/// <reference path = "../../habilidades/Flotar.ts" />
+/// <reference path = "../../comportamientos/SecuenciaAnimada.ts" />
+/// <reference path = "../../comportamientos/ComportamientoColision.ts" />
+/*
+ class LaFiestaDeDracula extends EscenaActividad {
+   focos = [];
+   bailarines = [];
+
+  iniciar() {
+    this.fondo = new Fondo('fondos/fondo.LaFiestaDeDracula.png',0,0);
+    this.cuadricula = new Cuadricula(0, 200, 1, 3,
+      { alto: 100 },
+      { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
+
+    this.agregarAutomata();
+    this.agregarFocos();
+    this.agregarBailarines();
+    this.crearEstado();
+  }
+
+  agregarAutomata(){
+    this.automata = new Murcielago();
+    this.cuadricula.agregarActor(this.automata, 0, 0, false);
+    this.automata.y -= 120;
+    this.automata.aprender(Flotar,{Desvio:10});
+  }
+
+  agregarFocos(){
+    this.focos.push(new Foco());
+    this.focos.push(new Foco());
+    this.focos.push(new Foco());
+    this.cuadricula.agregarActor(this.focos[0], 0, 0, false);
+    this.cuadricula.agregarActor(this.focos[1], 0, 1, false);
+    this.cuadricula.agregarActor(this.focos[2], 0, 2, false);
+    this.focos.forEach( f => f.y -= 30 );
+  }
+
+  agregarBailarines(){
+    this.bailarines.push(new Frank(-150,-150));
+    this.bailarines.push(new Bruja(-50,-150));
+    var tito = new Tito(50,-150);
+    tito.definirAnimacion("parado",[0],6, true);
+    this.bailarines.push(tito);
+    this.bailarines.push(new Dracula(150,-150));
+    this.bailarines.forEach( b => b.escala = 0.7 );
+  }
+
+  private crearEstado() {
+    var builder = new BuilderStatePattern('nadieBaila');
+    builder.agregarEstadoAceptacion('todosBailando');
+    builder.agregarTransicion('nadieBaila', 'todosBailando', 'empezarFiesta');
+    this.estado = builder.estadoInicial();
+  }
+}
+
+class CambiarColor extends ComportamientoColision {
+
+  sanitizarArgumentos(){
+    this.argumentos.etiqueta = "Foco";
+    super.sanitizarArgumentos();
+  }
+
+    metodo(foco){
+    foco.cambiarColor();
+    }
+}
+
+class EmpezarFiesta extends SecuenciaAnimada {
+  sanitizarArgumentos(){
+    super.sanitizarArgumentos();
+    var dracula = pilas.escena_actual().bailarines[pilas.escena_actual().bailarines.length - 1];
+    this.argumentos.secuencia = [
+      new Desaparecer({}),
+      new ComportamientoConVelocidad({receptor: dracula, nombreAnimacion:"aparecer"}),
+    ];
+  }
+
+  configurarVerificaciones() {
+        super.configurarVerificaciones();
+    this.agregarVerificacionFoco(0,5,"primer");
+    this.agregarVerificacionFoco(1,8,"segundo");
+    this.agregarVerificacionFoco(2,12,"tercer");
+    }
+
+  agregarVerificacionFoco(i,veces,ordinal){
+    this.verificacionesPre.push(
+            new Verificacion(() => pilas.escena_actual().focos[i].nombreAnimacionActual() === "color" + veces,
+        "¡El " + ordinal + " foco debe cambiarse de color " + veces + " veces!"));
+  }
+
+  postAnimacion(){
+    super.postAnimacion();
+    pilas.escena_actual().bailarines.forEach( b => b.cargarAnimacion("bailando"));
+  }
+}
+*/
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha

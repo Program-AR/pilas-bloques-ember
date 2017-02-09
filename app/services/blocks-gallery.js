@@ -163,7 +163,7 @@ export default Ember.Service.extend({
         etiqueta: 'CompuAnimada',
         mensajeError: 'No hay una compu aqui',
         idTransicion: 'prender',
-        animacionColisionado: 'prendida',
+        animacionColisionadoPost: 'prendida',
         nombreAnimacion: 'escribir'
       }`,
     });
@@ -173,10 +173,10 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderCompuConColision', {
       descripcion: 'Prender compu',
       icono: 'icono.computadora.png',
-      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      comportamiento: 'ComportamientoColision',
       argumentos: `{
         etiqueta: "CompuAnimada",
-        animacionColisionado: "prendida",
+        animacionColisionadoPost: "prendida",
         nombreAnimacion: "escribir"
       }`,
     });
@@ -184,9 +184,9 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
-      comportamiento: 'DesencadenarAnimacionSiColisiona',
+      comportamiento: 'ComportamientoColision',
       argumentos: `{
-        animacionColisionado: 'prendida',
+        animacionColisionadoPost: 'prendida',
         nombreAnimacion: 'apretar',
         etiqueta: 'BotonAnimado',
         mensajeError: 'No hay un botón aquí',
@@ -384,32 +384,58 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ApagarCompu', {
       descripcion: 'Apagar compu',
       icono: 'icono.computadora.png',
-      comportamiento: 'DesencadenarAnimacionSiColisiona',
-      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'apagar\',\'animacionColisionado\' : \'parado\',\'nombreAnimacion\' : \'escribir\'  }',
+      comportamiento: 'ComportamientoColision',
+      argumentos: `{
+				etiqueta: "CompuAnimada",
+				mensajeError: "No hay una compu aqui",
+				idTransicion: "apagar",
+				animacionColisionadoPost: "parado",
+				nombreAnimacion: "escribir"
+			}`
     });
 
     this.crearBloqueAccion('InstalarJuego', {
       descripcion: 'Instalar juego',
-      comportamiento: 'DesencadenarAnimacionSiColisiona',
-      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'instalar\',\'animacionColisionado\' : \'instalado\',\'nombreAnimacion\' : \'escribir\'  }',
+			comportamiento: 'SecuenciaAnimada',
+			argumentos:  `{
+        idTransicion: "instalar",
+        secuencia: [
+          {
+            comportamiento: "ComportamientoColision",
+            argumentos: {
+              etiqueta: "CompuAnimada",
+							mensajeError: "No hay una compu aqui",
+							nombreAnimacion: "escribir",
+            }
+          },
+          {
+            comportamiento: "EsperarAnimacionTocado",
+            argumentos: {
+							etiqueta: "CompuAnimada",
+							nombreAnimacion: "instalando",
+							nombreAnimacionSiguiente: "yaInstalado"
+            }
+          }
+        ]
+      }`
     });
 
     this.crearBloqueAccion('EscribirC', {
       descripcion: 'Escribir "C"',
       comportamiento: 'EscribirEnCompuAnimada',
-      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirC\'}',
+      argumentos: '{idTransicion : "escribirC"}',
     });
 
     this.crearBloqueAccion('EscribirB', {
       descripcion: 'Escribir "B"',
       comportamiento: 'EscribirEnCompuAnimada',
-      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirB\'}',
+      argumentos: '{idTransicion: "escribirB"}',
     });
 
     this.crearBloqueAccion('EscribirA', {
       descripcion: 'Escribir "A"',
       comportamiento: 'EscribirEnCompuAnimada',
-      argumentos: '{\'etiqueta\' : \'CompuAnimada\',  \'mensajeError\' : \'No hay una compu aqui\', \'idTransicion\' : \'escribirA\'}',
+      argumentos: '{idTransicion: "escribirA"}',
     });
 
     this.crearBloqueAccion('Agarrarllave', {
@@ -429,7 +455,7 @@ export default Ember.Service.extend({
       argumentos: `{
         etiqueta: "CofreAnimado",
         queSoltar: "LlaveAnimado",
-        animacionColisionado: "abrir",
+        animacionColisionadoPost: "abrir",
         idTransicion: "abrirCofre"
       }`,
     });
@@ -441,7 +467,7 @@ export default Ember.Service.extend({
       argumentos: `{
         etiqueta: "MagoAnimado",
         nombreAnimacion: "cambiarSombreroPorEspada",
-        animacionColisionado: "darEspada",
+        animacionColisionadoMientras: "darEspada",
         idTransicion: "darSombrero"
       }`,
     });
@@ -458,7 +484,7 @@ export default Ember.Service.extend({
             comportamiento: "ComportamientoColision",
             argumentos: {
               etiqueta: "CaballeroAnimado",
-              animacionColisionado: "defender",
+              animacionColisionadoMientras: "defender",
               nombreAnimacion:"atacar"
             }
           },
@@ -512,8 +538,8 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderFogata', {
       descripcion: 'Prender fogata',
       icono: 'icono.FogataApagada.png',
-      comportamiento: 'DesencadenarAnimacionSiColisiona',
-      argumentos: '{etiqueta: "FogataAnimada", animacionColisionado: "prendida", nombreAnimacion: "prender" }',
+      comportamiento: 'ComportamientoColision',
+      argumentos: '{etiqueta: "FogataAnimada", animacionColisionadoPost: "prendida", nombreAnimacion: "prender" }',
     });
 
     this.crearBloqueAlias('Prenderfogata', 'PrenderFogata');

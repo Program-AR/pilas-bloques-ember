@@ -75,7 +75,7 @@ class InstalandoJuegos extends EscenaActividad {
 }
 
 
-class PrenderCompuParaInstalar extends DesencadenarAnimacionSiColisiona {
+class PrenderCompuParaInstalar extends ComportamientoColision {
   configurarVerificaciones(){
     super.configurarVerificaciones();
     this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
@@ -83,18 +83,9 @@ class PrenderCompuParaInstalar extends DesencadenarAnimacionSiColisiona {
   }
 }
 
-
-
-
 class ApagarPorEtiqueta extends ComportamientoColision {
     metodo(objetoColision){
         objetoColision.hacer_luego(ComportamientoAnimado, {nombreAnimacion: "apagada", mantenerAnimacion: true});
-    }
-}
-
-class InstalarPorEtiqueta extends ComportamientoColision {
-    metodo(objetoColision){
-        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "instalado", mantenerAnimacion: true });
     }
 }
 
@@ -105,6 +96,12 @@ class PrenderPorEtiqueta extends ComportamientoColision {
 }
 
 class EscribirEnCompuAnimada extends ComportamientoColision {
+	iniciar(receptor){
+		this.argumentos.etiqueta = "CompuAnimada";
+		this.argumentos.mensajeError = "No hay una compu aqui";
+		this.argumentos.nombreAnimacion = "escribir";
+		super.iniciar(receptor);
+	}
     metodo(objetoColision){
       if (this.argumentos['idTransicion'] == 'escribirC') {
           objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
