@@ -753,7 +753,7 @@ export default Ember.Service.extend({
           "name": "longitud",
         }
       ],
-      code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false});'
+      code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
     });
 
     Blockly.Blocks['DibujarLado'].toolbox = `
@@ -797,7 +797,7 @@ export default Ember.Service.extend({
           "name": "grados",
         }
       ],
-      code: 'hacer(actor_id, "Rotar", {angulo: - $grados, voltearAlIrAIzquierda: false});'
+      code: 'hacer(actor_id, "Rotar", {angulo: - $grados, voltearAlIrAIzquierda: false, velocidad: 60});'
     });
 
     Blockly.Blocks['GirarGrados'].toolbox = `
