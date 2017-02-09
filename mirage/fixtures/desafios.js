@@ -191,7 +191,7 @@ export default [
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     escena: 'TitoRecargado',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz']
+    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'TocandoLuz']
   },
   {
     id: 18,
