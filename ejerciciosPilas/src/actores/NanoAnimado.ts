@@ -8,7 +8,7 @@ class NanoAnimado extends ActorAnimado {
                                           concat(new Cuadros([2]).repetirVeces(15)).
                                           concat([2,2,1,1])
                                           , 6, true);
-        this.definirAnimacion('correr', [3,4,5,6,7,8,9,10], 9);
-        this.definirAnimacion('recoger', [12,13,14,15,15,15,15,14,13,12], 6);
+        this.definirAnimacion('correr', [7,9,7,9], 12);
+        this.definirAnimacion('recoger', [10,11,12,13,13,12,11,10], 30);
     }
 }
