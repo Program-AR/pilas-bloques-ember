@@ -303,7 +303,7 @@ export default [
     nombre: 'ElSuperviaje',
     titulo: 'El Superviaje',
     enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino!',
-    consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de una variable. Esto permite repetir una secuencia de código la cantidad de veces que indique la variable.',
+    consignaInicial: 'Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor',
     escena: 'SuperViaje',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
@@ -528,5 +528,5 @@ export default [
     titulo: 'Próximamente: más actividades',
     deshabilitado: true,
   },*/
-	
+
 ];
