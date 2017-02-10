@@ -45,8 +45,14 @@ class Sospechoso extends ActorAnimado {
 			this.tieneDisflazPuesto = false; // TODO: podríamos emitir un error si se le quita el disfraz más de una vez.
     }
 
-    mensajeAlSacarDisfraz(){
-			return this.meaCulpa ? "¡Me rindo!" : "¡No estoy disfrazado, éste soy yo!"
+		mensajeAlSacarDisfraz(){
+			if (this.meaCulpa) return "¡ME RINDO!";
+
+			function randomDe(lista){
+				 return lista[Math.floor(Math.random()*lista.length)];
+			};
+
+			return randomDe(["¡Yo no fui!","¡No me mires a mí!","¡Fue él, a él, muchachos!","Estaba así cuando llegué..."]);
     }
 
     teEncontraron(){
