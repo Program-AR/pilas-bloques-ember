@@ -4841,13 +4841,10 @@ var LaberintoConQueso = (function (_super) {
     }
     LaberintoConQueso.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
-        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [
-                function (fila, col, pmatrix) { return !(fila == 0 && col == 0); },
-                function (fila, col, pmatrix) {
-                    return (pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T') ||
-                        (pmatrix[fila][col + 1] == 'T');
-                }
-            ]
+        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [function (fila, col, pmatrix) {
+                    return pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T' ||
+                        pmatrix[fila][col + 1] == 'T';
+                }]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
     };
