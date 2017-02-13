@@ -1073,6 +1073,7 @@ export default Ember.Service.extend({
         this.appendValueInput('condition')
             .setCheck('Boolean')
             .appendField('Si');
+				this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1089,6 +1090,7 @@ export default Ember.Service.extend({
             .setCheck('Boolean')
             .appendField('Si');
         this.appendStatementInput('block1');
+				this.setInputsInline(true);
         this.appendDummyInput()
             .appendField('si no');
         this.appendStatementInput('block2');
