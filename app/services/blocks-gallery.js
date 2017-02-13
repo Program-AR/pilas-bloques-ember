@@ -779,7 +779,7 @@ export default Ember.Service.extend({
 
 
     blockly.createCustomBlock('GirarGrados', {
-      message0: "%1 Dibujar lado de %2",
+      message0: "%1 Girar %2 grados",
       colour: '#4a6cd4',
       inputsInline: true,
       previousStatement: true,
