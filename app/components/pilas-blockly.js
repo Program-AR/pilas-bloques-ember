@@ -26,6 +26,7 @@ export default Ember.Component.extend({
   compartirEnCurso: false,
   //browser: Ember.inject.service(),
   bloques: [],
+  codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
   anterior_ancho: -1,
   anterior_alto: -1,
@@ -361,6 +362,7 @@ export default Ember.Component.extend({
       let imagen = this.get('previewData');
 
       this.get('twitter').compartir(mensaje, imagen).
+
       then((data) => {
         this.set('envioEnCurso', false);
         this.set('mensajePublicadoURL', data.url);
@@ -401,21 +403,23 @@ export default Ember.Component.extend({
         alert("Cuidado, el archivo corresponde a otra versión de la aplicación. Se cargará de todas formas, pero puede fallar.");
       }
 
-      if (this.get("actividad").id !== data.actividad) {
+      if (this.get("modelActividad.nombre") !== data.actividad) {
         alert(`Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`);
       }
 
-      this.get('actividad').cargarCodigoDesdeStringXML(solucion);
+      this.set('initial_workspace', solucion);
     },
 
     guardarSolucion() {
-      let nombre_de_la_actividad = this.get("actividad").id;
+      let nombre_de_la_actividad = this.get("modelActividad.nombre");
       let nombre_surgerido = `${nombre_de_la_actividad}.spbq`;
+
       let contenido = {
         version: VERSION_DEL_FORMATO_DE_ARCHIVO,
         actividad: nombre_de_la_actividad,
-        solucion: btoa(this.get('actividad').generarCodigoXMLComoString())
+        solucion: btoa(this.get('codigoActualEnFormatoXML'))
       };
+
       let contenido_como_string = JSON.stringify(contenido);
 
       function descargar(text, name, type) {
@@ -428,6 +432,11 @@ export default Ember.Component.extend({
 
       descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
     },
+
+    onChangeWorkspace(xml) {
+      this.set('codigoActualEnFormatoXML', xml);
+      this.sendAction('onChangeWorkspace', xml);
+    }
   },
 
 });
