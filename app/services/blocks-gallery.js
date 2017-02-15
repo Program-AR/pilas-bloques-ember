@@ -779,7 +779,7 @@ export default Ember.Service.extend({
 
 
     blockly.createCustomBlock('GirarGrados', {
-      message0: "%1 Dibujar lado de %2",
+      message0: "%1 Girar %2 grados",
       colour: '#4a6cd4',
       inputsInline: true,
       previousStatement: true,
@@ -1073,6 +1073,7 @@ export default Ember.Service.extend({
         this.appendValueInput('condition')
             .setCheck('Boolean')
             .appendField('Si');
+				this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1089,6 +1090,7 @@ export default Ember.Service.extend({
             .setCheck('Boolean')
             .appendField('Si');
         this.appendStatementInput('block1');
+				this.setInputsInline(true);
         this.appendDummyInput()
             .appendField('si no');
         this.appendStatementInput('block2');
