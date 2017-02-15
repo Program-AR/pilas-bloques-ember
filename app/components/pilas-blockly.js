@@ -200,6 +200,9 @@ export default Ember.Component.extend({
         }
       }
 
+      this.set('ejecutando', false);
+      this.set('highlightedBlock', null);
+
     });
   },
 
@@ -299,12 +302,12 @@ export default Ember.Component.extend({
       let ejecucion = ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte);
 
       ejecucion.then(() => {
-        this.set('ejecutando', false);
         this.cuandoTerminaEjecucion();
       });
     },
 
     reiniciar() {
+      this.set('highlightedBlock', null);
       this.set('ejecutando', false);
       this.get('pilas').reiniciarEscenaCompleta();
     },
@@ -434,6 +437,7 @@ export default Ember.Component.extend({
     },
 
     onChangeWorkspace(xml) {
+
       if (this.isDestroyed) {
         return;
       }
