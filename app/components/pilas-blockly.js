@@ -434,6 +434,10 @@ export default Ember.Component.extend({
     },
 
     onChangeWorkspace(xml) {
+      if (this.isDestroyed) {
+        return;
+      }
+
       this.set('codigoActualEnFormatoXML', xml);
       this.sendAction('onChangeWorkspace', xml);
     }
