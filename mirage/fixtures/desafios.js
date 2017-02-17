@@ -513,6 +513,7 @@ export default [
     titulo: 'Prendiendo las fogatas',
     escena: 'PrendiendoLasFogatas',
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
+		consignaInicial: 'Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'repetir', 'si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
