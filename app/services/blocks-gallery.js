@@ -579,7 +579,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('SiguienteFilaTotal', {
       descripcion: 'Pasar a la siguiente fila',
-      icono: 'icono.abajo.png',
+      icono: 'icono.izquierdaAbajo.png',
       comportamiento: 'SecuenciaAnimada',
 
       argumentos: `{secuencia: [
