@@ -537,7 +537,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('PrenderFogata', {
       descripcion: 'Prender fogata',
-      icono: 'icono.FogataApagada.png',
+      icono: 'icono.FogataPrendida.png',
       comportamiento: 'ComportamientoColision',
       argumentos: '{etiqueta: "FogataAnimada", animacionColisionadoPost: "prendida", nombreAnimacion: "prender" }',
     });
