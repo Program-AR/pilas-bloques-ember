@@ -20,11 +20,6 @@
 
               {{else}}
 
-                {{#if environment.debeMostrarBotonCodigoXML}}
-                  <button class='btn btn-warning' {{action "ver_codigo"}}>Ver código XML</button>
-                  <button class='btn btn-warning' {{action "ingresar_codigo"}}>Ingresar código XML</button>
-                {{/if}}
-
                 {{#if mostrarGuardar}}
                   {{#if model}}
                     <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
@@ -33,11 +28,9 @@
                   {{/if}}
                 {{/if}}
 
-
                 {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
                 <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
-
 
                 {{#if mostrarCompartir}}
                   <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
