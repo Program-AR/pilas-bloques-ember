@@ -19,7 +19,7 @@ export default [
     enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
     consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
     escena: 'ElGatoEnLaCalle',
-    debeFelicitarse: false,
+    debeFelicitarse: true,
     bloques: ['Saludar', 'Avanzar', 'Volver', 'Abrirojos', 'Cerrarojos', 'Acostarse', 'Pararse', 'Soar', 'Procedimiento']
   },
   {
