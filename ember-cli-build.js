@@ -4,7 +4,7 @@ var Funnel = require('broccoli-funnel');
 module.exports = function(defaults) {
     var app = new EmberApp(defaults, {
       fingerprint: {
-		      exclude: ['favicon']
+        enabled: false,
 	    },
       'ember-font-awesome': {
         useScss: true,
