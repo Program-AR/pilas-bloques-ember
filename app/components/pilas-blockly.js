@@ -80,6 +80,7 @@ export default Ember.Component.extend({
 
     });
 
+    /*
     if (this.get("persistirSolucionEnURL")) {
       Blockly.addChangeListener(() => {
         Ember.run(this, function() {
@@ -88,6 +89,7 @@ export default Ember.Component.extend({
         });
       });
     }
+    */
 
     if (this.get("debeMostrarFinDeDesafio")) {
       this.get('pilas').on('terminaEjecucion', () => {
@@ -234,6 +236,12 @@ export default Ember.Component.extend({
   actions: {
     ejecutar() {
       this.get('pilas').reiniciarEscenaCompleta();
+
+      if (this.get('cuandoEjecuta')) {
+        let codigo_xml = this.get('codigoActualEnFormatoXML');
+        this.get('cuandoEjecuta')(codigo_xml);
+      }
+
       let codigoDesdeWorkspace = this.get('javascriptCode');
       let factory = this.get('interpreterFactory');
       let codigoCompleto = js_beautify(`
@@ -314,11 +322,6 @@ export default Ember.Component.extend({
 
     guardar() {
       this.sendAction('guardar');
-    },
-
-    guardar_solucion_en_el_backend() {
-      let codigo_xml = this.get('actividad').generarCodigoXMLComoString();
-      this.sendAction('guardar_solucion_en_el_backend', codigo_xml);
     },
 
     ver_codigo() {
@@ -437,7 +440,6 @@ export default Ember.Component.extend({
     },
 
     onChangeWorkspace(xml) {
-
       if (this.isDestroyed) {
         return;
       }

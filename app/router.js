@@ -14,7 +14,6 @@ Router.map(function() {
     this.route('cursoAlumno',  {path: "/cursoAlumno/:hash"});
     this.route('cursoDocente', {path: "/cursoDocente/:hash"});
     this.route('desafioPorNombre', {path: '/:nombreDelDesafio'});
-    this.route('mensajeGuardado');
   });
 
   this.route('libros', function() {

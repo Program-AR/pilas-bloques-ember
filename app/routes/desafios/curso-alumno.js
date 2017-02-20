@@ -34,8 +34,6 @@ export default Ember.Route.extend({
     let hash = this.obtener_hash_desde_transition(transition);
     let valores = this.decodificarHash(hash);
 
-    model.set('actividad', "DEMO");
-
     model.idAlumno = valores.idAlumno;
     model.hash = valores.hashCompleto;
 
@@ -78,18 +76,20 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    guardar_solucion_en_el_backend(parametros) {
+    cuandoEjecuta(codigoXML) {
+      let nombre = this.get('currentModel.nombre')
+      let hash = this.get('currentModel.hash')
+      let idAlumno = this.get('currentModel.idAlumno')
+
+      let parametros = {actividad: nombre, hash, idAlumno, codigo_xml: codigoXML};
 
       this.get("cursoAPI").guardar(parametros).
-      then(() => {
-        this.transitionTo("desafios.mensajeGuardado");
-      }).
-      catch((reason) => {
-        console.error(reason);
-        alert("Se a producido un error al guardar, por favor volvé a intentar.");
-      });
-
+        catch((reason) => {
+          console.error(reason);
+          alert("Se a producido un error al guardar, por favor volvé a intentar.");
+        });
     },
+
   }
 
 
