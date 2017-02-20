@@ -77,9 +77,9 @@ export default Ember.Route.extend({
 
   actions: {
     cuandoEjecuta(codigoXML) {
-      let nombre = this.get('currentModel.nombre')
-      let hash = this.get('currentModel.hash')
-      let idAlumno = this.get('currentModel.idAlumno')
+      let nombre = this.get('currentModel.nombre');
+      let hash = this.get('currentModel.hash');
+      let idAlumno = this.get('currentModel.idAlumno');
 
       let parametros = {actividad: nombre, hash, idAlumno, codigo_xml: codigoXML};
 
