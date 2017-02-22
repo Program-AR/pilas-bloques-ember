@@ -5,7 +5,7 @@ import desafios from '../pages/desafios';
 moduleForAcceptance('Acceptance | desafios');
 
 test('visiting /desafios', function(assert) {
-  let cantidadDesafiosEsperada = 43;
+  let cantidadDesafiosEsperada = 50;
 
   desafios.
     visit();

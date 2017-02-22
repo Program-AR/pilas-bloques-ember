@@ -539,6 +539,163 @@ export default [
 		debeFelicitarse: true,
 		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco']
 	},
+	{
+		id: 138,
+		grupoId: 6,
+		nombre: '3.1.3',
+		titulo: 'Plantilla 3.1.3',
+		escena: `new EscenaDuba([
+				['O','O',' ','O'],
+				[' ','A',' ','O'],
+				[' ','O','O','O'],
+				['P','O','O','O'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco']
+	},
+	{
+		id: 139,
+		grupoId: 6,
+		nombre: '3.1.5',
+		titulo: 'Plantilla 3.1.5',
+		escena: `new EscenaDuba([
+				['O',' ','P'],
+				['A',' ','O'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco']
+	},
+	{
+		id: 140,
+		grupoId: 6,
+		nombre: '3.1.6a',
+		titulo: 'Plantilla 3.1.6a',
+		escena: `new EscenaDuba([
+				['O','O','O','O'],
+				['A',' ',' ','P'],
+				['O','O','O','O'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco'],
+		debugging: true,
+		solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaDerecha" id="$+(u9Z\`8KfC!R((hL.w{">
+        <next>
+          <block type="MoverACasillaDerecha" id="-6kA~P)o\`|UHDjh@s}N6"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
+	},
+	{
+		id: 141,
+		grupoId: 6,
+		nombre: '3.1.6b',
+		titulo: 'Plantilla 3.1.6b',
+		escena: `new EscenaDuba([
+				['P','O','O'],
+				[' ','O','O'],
+				[' ',' ','A'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco'],
+		debugging: true,
+		solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaIzquierda" id=",tZ$Z0.AREObzlD(jfR9">
+        <next>
+          <block type="MoverACasillaArriba" id="DzQgaQjM_L~N(QWu]8ZX">
+            <next>
+              <block type="MoverACasillaArriba" id="h3k]x1%HZw\`s6#2CKR*o"></block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
+	},
+	{
+		id: 142,
+		grupoId: 6,
+		nombre: '3.1.6c',
+		titulo: 'Plantilla 3.1.6c',
+		escena: `new EscenaDuba([
+				['O','P','O'],
+				['A',' ',' '],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco'],
+		debugging: true,
+		solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaDerecha" id="c_)n.H7DGlOUdh,we50f">
+        <next>
+          <block type="MoverACasillaDerecha" id="4:71|5d%!jUgO)-l{/!a">
+            <next>
+              <block type="MoverACasillaDerecha" id="XLLjx{e!r(wnkp:XCSek">
+                <next>
+                  <block type="MoverACasillaArriba" id="tXtIEwdRR6-joI]9CnG-"></block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
+	},
+	{
+		id: 143,
+		grupoId: 6,
+		nombre: '3.1.6d',
+		titulo: 'Plantilla 3.1.d',
+		escena: `new EscenaDuba([
+				['P','O','A'],
+				[' ','O',' '],
+				[' ',' ',' '],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco'],
+		debugging: true,
+		solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaAbajo" id="E#]BS2g8~]}Uq^$ntIRY">
+        <next>
+          <block type="MoverACasillaAbajo" id="BuDGr#1Y-VOXt_q;#S[R">
+            <next>
+              <block type="MoverACasillaIzquierda" id="G2V}ax1DRa9A[j4o7RM5">
+                <next>
+                  <block type="MoverACasillaArriba" id="9rud9^gmZw0]6e)3t_Q:"></block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
+	},
 /*  {
     id: 136,
     grupoId: 5,
