@@ -1119,6 +1119,13 @@ export default Ember.Service.extend({
 
     this.crearBloqueAlias('hasta', 'Hasta');
 
+		this.crearBloqueAccion('ComerChurrasco', {
+      descripcion: 'Comer Churrasco',
+      icono: 'icono.churrasco.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco"}',
+    });
+
   },
 
   _generarLenguaje() {
