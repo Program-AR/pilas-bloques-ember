@@ -53,6 +53,10 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
             throw new ActividadError("No puedo ir para " + this.textoAMostrar());
             return false;
         };
+				if (proximaCasilla.tieneActorConEtiqueta('Obstaculo')){
+            throw new ActividadError("Hay un obstáculo para " + this.textoAMostrar());
+            return false;
+        };
         this.receptor.setCasillaActual(proximaCasilla);
         return true
     }

@@ -1211,6 +1211,11 @@ var MovimientoEnCuadricula = (function (_super) {
             return false;
         }
         ;
+        if (proximaCasilla.tieneActorConEtiqueta('Obstaculo')) {
+            throw new ActividadError("Hay un obstáculo para " + this.textoAMostrar());
+            return false;
+        }
+        ;
         this.receptor.setCasillaActual(proximaCasilla);
         return true;
     };
