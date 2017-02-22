@@ -24,4 +24,9 @@ export default [
     libroId: 1,
     titulo: 'Parametrización de soluciones',
   },
+	{
+		id: 6,
+		libroId: 2,
+		titulo: 'Secuencia 1',
+	},
 ];

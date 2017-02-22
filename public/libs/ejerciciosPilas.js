@@ -606,13 +606,22 @@ var Cuadricula = (function (_super) {
         return altoCuad / this.cantFilas -
             (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
     };
-    Cuadricula.prototype.crearCasillas = function () {
-        this.casillas = new Array();
+    Cuadricula.prototype.forEachFilaCol = function (func) {
         for (var nroFila = 0; nroFila < this.cantFilas; nroFila++) {
             for (var nroColumna = 0; nroColumna < this.cantColumnas; nroColumna++) {
-                this.casillas.push(new Casilla(nroFila, nroColumna, this));
+                func(nroFila, nroColumna);
             }
         }
+    };
+    Cuadricula.prototype.crearCasillas = function () {
+        var _this = this;
+        this.casillas = new Array();
+        this.forEachFilaCol(function (fila, col) {
+            return _this.agregarCasilla(fila, col);
+        });
+    };
+    Cuadricula.prototype.agregarCasilla = function (fila, col) {
+        this.casillas.push(new Casilla(fila, col, this));
     };
     Cuadricula.prototype.agregarActor = function (actor, nroF, nroC, escalarACasilla) {
         if (escalarACasilla === void 0) { escalarACasilla = true; }
@@ -796,135 +805,38 @@ var CompuAnimada = (function (_super) {
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "../actores/Casilla.ts"/>
 /**
- * class @CuadriculaConCamino
+ * class @CuadriculaAutoLlenante
  *
- * Este actor sirve para dibujar una cuadrícula en pantalla, con un camino
- * al estilo de las actividades iniciales de code.org
+ * Este actor sirve para dibujar una cuadrícula en pantalla, llenándola de elementos
+ * a partir de una matriz que la describe.
+ * Se pensó originalmente para realizar un camino
+ * al estilo de las actividades iniciales de code.org, con varios obstáculos.
+ *
+ * La matrizContenido en el constructor es una matriz de 2 dimensiones.
+ * Cada contenido puede ser un string, que es el identificador del actor que irá en cada casilla.
+ * Por ejemplo se puede usar una letra 'A' para identificar al autómata.
+ * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
+
+ * El diccionarioContenido mapea cada identificador con la función que obtiene a cada actor.
+ *
  *
 */
-/*
-class Cuadricula extends Actor {
-    cantFilas;
-    cantColumnas;
-    protected casillas: Array<Casilla>;
-    private opcionesCuadricula;
-    private opcionesCasilla;
-
-    constructor(x, y, cantFilas, cantColumnas, opcionesCuadricula, opcionesCasilla) {
-        this.cantFilas = cantFilas;
-        this.cantColumnas = cantColumnas;
-        this.sanitizarOpciones(opcionesCuadricula, opcionesCasilla);
-        super(this.opcionesCuadricula.imagen, x, y, opcionesCuadricula);
-
-        this.ancho = this.cantColumnas * opcionesCasilla.ancho + (this.separacion() * (this.cantColumnas - 1));
-        this.alto = this.cantFilas * opcionesCasilla.alto + (this.separacion() * (this.cantFilas - 1));
-
-        this.crearCasillas();
+var CuadriculaAutoLlenante = (function (_super) {
+    __extends(CuadriculaAutoLlenante, _super);
+    function CuadriculaAutoLlenante(x, y, matrizContenido, diccionarioContenido, opsCuadricula, opsCasilla) {
+        this.matrizContenido = matrizContenido;
+        this.diccionarioContenido = diccionarioContenido;
+        _super.call(this, x, y, matrizContenido.length, matrizContenido[0].length, opsCuadricula, opsCasilla);
     }
-
-    //TODO: Podría agregar que tome las dimensiones de la
-    //imagen como último valor de ancho y alto por defecto
-    sanitizarOpciones(opcionesCuadricula, opcionesCasilla) {
-        this.opcionesCasilla = opcionesCasilla;
-        this.opcionesCuadricula = opcionesCuadricula;
-
-        this.opcionesCuadricula.imagen = this.opcionesCuadricula.imagen || 'casillas/casilla.Invisible.png';
-        this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
-        this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
-        this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;
-        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasilla(this.opcionesCuadricula.ancho);
-        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasilla(this.opcionesCuadricula.alto);
-    }
-
-    separacion(){
-        return this.opcionesCuadricula.separacionEntreCasillas;
-    }
-
-    setAncho(nuevo) {
-        this.ancho = nuevo;
-        this.opcionesCasilla.ancho = this.calcularAnchoCasilla(nuevo);
-        this.casillas.forEach(casilla => { casilla.reubicate() });
-    }
-
-    calcularAnchoCasilla(anchoCuad) {
-        // anchoCuad = cols * anchoCas + ((cols-1) * separacion)
-        // anchoCuad - ((cols-1) * separacion) = cols * anchoCas
-        // anchoCas = (anchoCuad - ((cols-1) * separacion)) / cols
-        // anchoCas = anchoCuad / cols - ((cols-1) * separacion) / cols
-        return anchoCuad / this.cantColumnas -
-            (((this.cantColumnas - 1) * this.separacion()) / this.cantColumnas);
-
-    }
-
-    setAlto(nuevo) {
-        this.alto = nuevo;
-        this.opcionesCasilla.alto = this.calcularAltoCasilla(nuevo);
-        this.casillas.forEach(casilla => { casilla.reubicate() });
-    }
-
-    calcularAltoCasilla(altoCuad){
-        var separacion = this.opcionesCuadricula.separacionEntreCasillas;
-        return altoCuad / this.cantFilas -
-                (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
-
-    }
-
-    crearCasillas(){
-        this.casillas = new Array<Casilla>();
-        for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
-            for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
-                this.casillas.push(
-                    new Casilla(nroFila,nroColumna, this));
-            }
+    CuadriculaAutoLlenante.prototype.agregarCasilla = function (nroFila, nroColumna) {
+        _super.prototype.agregarCasilla.call(this, nroFila, nroColumna);
+        var codigo = this.matrizContenido[nroFila][nroColumna];
+        if (codigo !== '' && codigo != ' ') {
+            this.agregarActor(this.diccionarioContenido[codigo](), nroFila, nroColumna, true);
         }
-    }
-
-    agregarActor(actor,nroF,nroC,escalarACasilla = true){
-        actor.cuadricula = this;
-        if(escalarACasilla){
-            actor.escalarProporcionalALimites(this.anchoCasilla() - 5, this.altoCasilla() - 5);
-        }
-        actor.setCasillaActual(this.casilla(nroF,nroC),true);
-    }
-
-    agregarActorEnPerspectiva(actor,nroF,nroC,escalarACasilla = true){
-        this.agregarActor(actor, nroF, nroC, false);
-        if (escalarACasilla) {
-            actor.escalarAAncho(actor.casillaActual().ancho * 0.95);
-        }
-        actor.abajo = actor.casillaActual().abajo + (0.4 * this.altoCasilla())
-    }
-
-    altoCasilla(){
-        return this.opcionesCasilla.alto;
-    }
-    anchoCasilla(){
-        return this.opcionesCasilla.ancho;
-    }
-
-    getOpcionesCasilla(){
-        return this.opcionesCasilla;
-    }
-
-    casilla(nroF, nroC){
-        return this.casillas.filter(casilla => casilla.sos(nroF,nroC))[0];
-    }
-
-    esFin(casilla){
-      return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
-          this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
-    }
-
-    esInicio(casilla){
-      return casilla.sos(0, 0);
-    }
-
-    colisionan(objeto1,objeto2){
-      return objeto1.casillaActual()==objeto2.casillaActual()
-
-    }
-}
-*/
+    };
+    return CuadriculaAutoLlenante;
+})(Cuadricula);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /**
  * @class ComportamientoAnimado
@@ -1499,16 +1411,11 @@ var CuadriculaEsparsa = (function (_super) {
         this.matriz = matriz;
         _super.call(this, x, y, matriz.length, matriz[0].length, opcionesCuadricula, opcionesCasilla);
     }
-    CuadriculaEsparsa.prototype.crearCasillas = function () {
+    CuadriculaEsparsa.prototype.agregarCasilla = function (nroFila, nroColumna) {
         /*Crea las casillas definidas por la matriz booleana
         definida ene l constructor*/
-        this.casillas = new Array();
-        for (var nroFila = 0; nroFila < this.cantFilas; nroFila++) {
-            for (var nroColumna = 0; nroColumna < this.cantColumnas; nroColumna++) {
-                if (this.matriz[nroFila][nroColumna] == 'T') {
-                    this.casillas.push(new Casilla(nroFila, nroColumna, this));
-                }
-            }
+        if (this.matriz[nroFila][nroColumna] == 'T') {
+            _super.prototype.agregarCasilla.call(this, nroFila, nroColumna);
         }
     };
     CuadriculaEsparsa.prototype.completarConObjetosRandom = function (conjuntoDeClases, argumentos) {
@@ -2532,14 +2439,6 @@ var UnicornioAnimado = (function (_super) {
     return UnicornioAnimado;
 })(ActorAnimado);
 /// <reference path="../ActorAnimado.ts"/>
-var Automata1 = (function (_super) {
-    __extends(Automata1, _super);
-    function Automata1(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
-    }
-    return Automata1;
-})(ActorAnimado);
-/// <reference path="../ActorAnimado.ts"/>
 var Automata2 = (function (_super) {
     __extends(Automata2, _super);
     function Automata2(x, y) {
@@ -2548,12 +2447,39 @@ var Automata2 = (function (_super) {
     return Automata2;
 })(ActorAnimado);
 /// <reference path="../ActorAnimado.ts"/>
-var CasillaRelleno = (function (_super) {
-    __extends(CasillaRelleno, _super);
-    function CasillaRelleno(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
+var Churrasco = (function (_super) {
+    __extends(Churrasco, _super);
+    function Churrasco() {
+        _super.call(this, 0, 0, { grilla: 'actor.Churrasco.png', cantColumnas: 5 });
+        this.definirAnimacion("parado", [0], 6, true);
     }
-    return CasillaRelleno;
+    return Churrasco;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+var Duba = (function (_super) {
+    __extends(Duba, _super);
+    function Duba() {
+        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 10, cantFilas: 2 });
+        this.definirAnimacion("parado", [0, 0, 0], 15, true);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
+        this.definirAnimacion("comerChurrasco", [11, 12, 13, 14, 15, 16, 17, 18, 19], 10);
+    }
+    return Duba;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+/**
+ * El objetivo es que cualquier obstáculo de una cuadrícula tenga la misma forma
+*/
+var Obstaculo = (function (_super) {
+    __extends(Obstaculo, _super);
+    function Obstaculo(imagenes) {
+        _super.call(this, 0, 0, { grilla: this.randomDe(imagenes), cantColumnas: 4, cantFilas: 1 });
+        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(100).concat([1, 2, 3, 3, 2, 1]), 6, true);
+    }
+    Obstaculo.prototype.randomDe = function (lista) {
+        return lista[Math.floor(Math.random() * lista.length)];
+    };
+    return Obstaculo;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
@@ -5468,107 +5394,66 @@ var TresNaranjas = (function (_super) {
     return TresNaranjas;
 })(EscenaActividad);
 /// <reference path = "../EscenaActividad.ts" />
-/// <reference path = "../../actores/Frank.ts" />
-/// <reference path = "../../actores/Bruja.ts" />
-/// <reference path = "../../actores/Dracula.ts" />
-/// <reference path = "../../actores/Tito.ts" />
-/// <reference path = "../../actores/Murcielago.ts" />
-/// <reference path = "../../habilidades/Flotar.ts" />
-/// <reference path = "../../comportamientos/SecuenciaAnimada.ts" />
-/// <reference path = "../../comportamientos/ComportamientoColision.ts" />
-/*
- class LaFiestaDeDracula extends EscenaActividad {
-   focos = [];
-   bailarines = [];
-
-  iniciar() {
-    this.fondo = new Fondo('fondos/fondo.LaFiestaDeDracula.png',0,0);
-    this.cuadricula = new Cuadricula(0, 200, 1, 3,
-      { alto: 100 },
-      { grilla: 'casillas/casilla.Invisible.png', cantColumnas: 1 });
-
-    this.agregarAutomata();
-    this.agregarFocos();
-    this.agregarBailarines();
-    this.crearEstado();
-  }
-
-  agregarAutomata(){
-    this.automata = new Murcielago();
-    this.cuadricula.agregarActor(this.automata, 0, 0, false);
-    this.automata.y -= 120;
-    this.automata.aprender(Flotar,{Desvio:10});
-  }
-
-  agregarFocos(){
-    this.focos.push(new Foco());
-    this.focos.push(new Foco());
-    this.focos.push(new Foco());
-    this.cuadricula.agregarActor(this.focos[0], 0, 0, false);
-    this.cuadricula.agregarActor(this.focos[1], 0, 1, false);
-    this.cuadricula.agregarActor(this.focos[2], 0, 2, false);
-    this.focos.forEach( f => f.y -= 30 );
-  }
-
-  agregarBailarines(){
-    this.bailarines.push(new Frank(-150,-150));
-    this.bailarines.push(new Bruja(-50,-150));
-    var tito = new Tito(50,-150);
-    tito.definirAnimacion("parado",[0],6, true);
-    this.bailarines.push(tito);
-    this.bailarines.push(new Dracula(150,-150));
-    this.bailarines.forEach( b => b.escala = 0.7 );
-  }
-
-  private crearEstado() {
-    var builder = new BuilderStatePattern('nadieBaila');
-    builder.agregarEstadoAceptacion('todosBailando');
-    builder.agregarTransicion('nadieBaila', 'todosBailando', 'empezarFiesta');
-    this.estado = builder.estadoInicial();
-  }
-}
-
-class CambiarColor extends ComportamientoColision {
-
-  sanitizarArgumentos(){
-    this.argumentos.etiqueta = "Foco";
-    super.sanitizarArgumentos();
-  }
-
-    metodo(foco){
-    foco.cambiarColor();
-    }
-}
-
-class EmpezarFiesta extends SecuenciaAnimada {
-  sanitizarArgumentos(){
-    super.sanitizarArgumentos();
-    var dracula = pilas.escena_actual().bailarines[pilas.escena_actual().bailarines.length - 1];
-    this.argumentos.secuencia = [
-      new Desaparecer({}),
-      new ComportamientoConVelocidad({receptor: dracula, nombreAnimacion:"aparecer"}),
-    ];
-  }
-
-  configurarVerificaciones() {
-        super.configurarVerificaciones();
-    this.agregarVerificacionFoco(0,5,"primer");
-    this.agregarVerificacionFoco(1,8,"segundo");
-    this.agregarVerificacionFoco(2,12,"tercer");
-    }
-
-  agregarVerificacionFoco(i,veces,ordinal){
-    this.verificacionesPre.push(
-            new Verificacion(() => pilas.escena_actual().focos[i].nombreAnimacionActual() === "color" + veces,
-        "¡El " + ordinal + " foco debe cambiarse de color " + veces + " veces!"));
-  }
-
-  postAnimacion(){
-    super.postAnimacion();
-    pilas.escena_actual().bailarines.forEach( b => b.cargarAnimacion("bailando"));
-  }
-}
+/// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
+/**
+* @class EscenaConObstaculos
+* Abstracta. Sirve para crear escenas con caminos a'la code.org.
+* Al construirla, recibe una matriz que describe el contenido.
 */
+var EscenaConObstaculos = (function (_super) {
+    __extends(EscenaConObstaculos, _super);
+    function EscenaConObstaculos(mapaEscena) {
+        _super.call(this);
+        this.mapaEscena = mapaEscena;
+    }
+    EscenaConObstaculos.prototype.iniciar = function () {
+        var _this = this;
+        this.fondo = new Fondo(this.archivoFondo(), 0, 0);
+        this.automata = this.crearAutomata();
+        this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena, {
+            'A': function () { return _this.automata; },
+            'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
+            'P': this.premioBuscado,
+        }, {}, { grilla: 'invisible.png' });
+    };
+    EscenaConObstaculos.prototype.crearAutomata = function () {
+        //abstracto, retorna una nueva instancia del autómata.
+        return new ActorAnimado(0, 0, {});
+    };
+    EscenaConObstaculos.prototype.archivoFondo = function () {
+        //abstracto, retorna el nombre del archivo para el fondo.
+    };
+    EscenaConObstaculos.prototype.archivosObstaculos = function () {
+        //abstracto, retorna una lista de nombres de archivo de obstáculos con los que
+        //se llenará la pantalla.
+    };
+    EscenaConObstaculos.prototype.premioBuscado = function () {
+        //abstracto, retorna una nueva instancia del premio a conseguir.
+    };
+    return EscenaConObstaculos;
+})(EscenaActividad);
+/// <reference path = "EscenaConObstaculos.ts" />
+/// <reference path = "../../actores/libroPrimaria/Duba.ts" />
+/// <reference path = "../../actores/libroPrimaria/Churrasco.ts" />
+var EscenaDuba = (function (_super) {
+    __extends(EscenaDuba, _super);
+    function EscenaDuba() {
+        _super.apply(this, arguments);
+    }
+    EscenaDuba.prototype.crearAutomata = function () {
+        return new Duba();
+    };
+    EscenaDuba.prototype.archivosObstaculos = function () {
+        return ["obstaculo.charco.png", "obstaculo.cardo.png"];
+    };
+    EscenaDuba.prototype.archivoFondo = function () {
+        return "fondo.duba.png";
+    };
+    EscenaDuba.prototype.premioBuscado = function () {
+        return new Churrasco();
+    };
+    return EscenaDuba;
+})(EscenaConObstaculos);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha

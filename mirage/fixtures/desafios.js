@@ -522,6 +522,26 @@ export default [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
   },
+	{
+		id: 137,
+		grupoId: 6,
+		nombre: '3.1.2',
+		titulo: 'Plantilla 3.1.2',
+		escena: `new EscenaDuba([
+				['O','O','O','O','O','O','O','O'],
+				['O','O','O','O','O','O','O','O'],
+				['O','O','O','O','O','O','O','O'],
+				['O','O','A',' ',' ','P','O','O'],
+				['O','O','O','O','O','O','O','O'],
+				['O','O','O','O','O','O','O','O'],
+				['O','O','O','O','O','O','O','O'],
+				['O','O','O','O','O','O','O','O'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco']
+	},
 /*  {
     id: 136,
     grupoId: 5,
