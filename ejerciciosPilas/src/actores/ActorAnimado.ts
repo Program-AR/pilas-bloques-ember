@@ -235,6 +235,9 @@ class ActorAnimado extends Actor {
         }.bind(this));
         this.habilidadesSuspendidas = [];
     }
+		enviarAlFrente(){
+			this.setZ(Math.min.apply(Math,pilas.escena_actual().actores.map(act => act.getZ()))-1);
+		}
 
 }
 

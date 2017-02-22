@@ -293,6 +293,9 @@ var ActorAnimado = (function (_super) {
         }.bind(this));
         this.habilidadesSuspendidas = [];
     };
+    ActorAnimado.prototype.enviarAlFrente = function () {
+        this.setZ(Math.min.apply(Math, pilas.escena_actual().actores.map(function (act) { return act.getZ(); })) - 1);
+    };
     return ActorAnimado;
 })(Actor);
 // Helper para construir las animaciones:
@@ -2437,14 +2440,6 @@ var UnicornioAnimado = (function (_super) {
         this.definirAnimacion("correr", [5, 6, 7, 8, 9], 12);
     }
     return UnicornioAnimado;
-})(ActorAnimado);
-/// <reference path="../ActorAnimado.ts"/>
-var Automata2 = (function (_super) {
-    __extends(Automata2, _super);
-    function Automata2(x, y) {
-        _super.call(this, x, y, { grilla: 'actores/actor.Banana.png', cantColumnas: 1, cantFilas: 1 });
-    }
-    return Automata2;
 })(ActorAnimado);
 /// <reference path="../ActorAnimado.ts"/>
 var Churrasco = (function (_super) {
@@ -5415,6 +5410,7 @@ var EscenaConObstaculos = (function (_super) {
             'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
             'P': this.premioBuscado,
         }, {}, { grilla: 'invisible.png' });
+        this.automata.enviarAlFrente();
     };
     EscenaConObstaculos.prototype.crearAutomata = function () {
         //abstracto, retorna una nueva instancia del autómata.

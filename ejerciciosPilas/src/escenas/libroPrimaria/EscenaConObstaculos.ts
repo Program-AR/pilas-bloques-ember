@@ -23,6 +23,7 @@
 				'O': () => new Obstaculo(this.archivosObstaculos()),
 				'P': this.premioBuscado,
 			}, {}, {grilla: 'invisible.png'});
+		this.automata.enviarAlFrente();
 	}
 
 	crearAutomata() : ActorAnimado{
