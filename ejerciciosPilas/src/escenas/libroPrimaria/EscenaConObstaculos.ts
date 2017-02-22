@@ -30,6 +30,10 @@
 		this.premio.aprender(Flotar,{Desvio:5});
 	}
 
+	estaResueltoElProblema(){
+		return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0])===0
+	}
+
 	crearAutomata() : ActorAnimado{
 		//abstracto, retorna una nueva instancia del autómata.
 		return new ActorAnimado(0,0,{});

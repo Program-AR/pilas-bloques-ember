@@ -2470,6 +2470,7 @@ var Obstaculo = (function (_super) {
     function Obstaculo(imagenes) {
         _super.call(this, 0, 0, { grilla: this.randomDe(imagenes), cantColumnas: 4, cantFilas: 1 });
         this.definirAnimacion("parado", new Cuadros(0).repetirVeces(100).concat([1, 2, 3, 3, 2, 1]), 6, true);
+        this.esObstaculo = true;
     }
     Obstaculo.prototype.randomDe = function (lista) {
         return lista[Math.floor(Math.random() * lista.length)];
@@ -5414,6 +5415,9 @@ var EscenaConObstaculos = (function (_super) {
         }, {}, { grilla: 'invisible.png' });
         this.automata.enviarAlFrente();
         this.premio.aprender(Flotar, { Desvio: 5 });
+    };
+    EscenaConObstaculos.prototype.estaResueltoElProblema = function () {
+        return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0]) === 0;
     };
     EscenaConObstaculos.prototype.crearAutomata = function () {
         //abstracto, retorna una nueva instancia del autómata.
