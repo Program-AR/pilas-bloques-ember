@@ -15,18 +15,12 @@ class CuadriculaEsparsa extends Cuadricula{
     super(x,y,matriz.length,matriz[0].length,opcionesCuadricula,opcionesCasilla);
   }
 
-  crearCasillas(){
+  agregarCasilla(nroFila,nroColumna){
     /*Crea las casillas definidas por la matriz booleana
     definida ene l constructor*/
-    this.casillas = new Array<Casilla>();
-    for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
-      for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
-        if(this.matriz[nroFila][nroColumna]=='T'){
-          this.casillas.push(
-            new Casilla(nroFila,nroColumna, this));
-          }
-        }
-      }
+    if(this.matriz[nroFila][nroColumna]=='T'){
+			super.agregarCasilla(nroFila,nroColumna);
+		}
   }
 
   completarConObjetosRandom(conjuntoDeClases,argumentos){

@@ -118,15 +118,24 @@ class Cuadricula extends Actor {
 
     }
 
+    forEachFilaCol(func){
+			for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
+					for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
+							func(nroFila,nroColumna);
+					}
+			}
+		}
+
     crearCasillas(){
         this.casillas = new Array<Casilla>();
-        for(var nroFila=0; nroFila < this.cantFilas; nroFila++){
-            for(var nroColumna=0; nroColumna < this.cantColumnas; nroColumna++){
-                this.casillas.push(
-                    new Casilla(nroFila,nroColumna, this));
-            }
-        }
+				this.forEachFilaCol( (fila, col) =>
+					this.agregarCasilla(fila,col)
+				);
     }
+
+		agregarCasilla(fila,col){
+			this.casillas.push(new Casilla(fila,col, this));
+		}
 
     agregarActor(actor,nroF,nroC,escalarACasilla = true){
         actor.cuadricula = this;
