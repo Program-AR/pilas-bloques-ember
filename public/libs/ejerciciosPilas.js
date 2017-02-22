@@ -2445,7 +2445,7 @@ var UnicornioAnimado = (function (_super) {
 var Churrasco = (function (_super) {
     __extends(Churrasco, _super);
     function Churrasco() {
-        _super.call(this, 0, 0, { grilla: 'actor.Churrasco.png', cantColumnas: 5 });
+        _super.call(this, 0, 0, { grilla: 'actor.Churrasco.png' });
         this.definirAnimacion("parado", [0], 6, true);
     }
     return Churrasco;
@@ -5389,6 +5389,7 @@ var TresNaranjas = (function (_super) {
     return TresNaranjas;
 })(EscenaActividad);
 /// <reference path = "../EscenaActividad.ts" />
+/// <reference path = "../../habilidades/Flotar.ts" />
 /// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
 /**
 * @class EscenaConObstaculos
@@ -5405,12 +5406,14 @@ var EscenaConObstaculos = (function (_super) {
         var _this = this;
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.crearAutomata();
+        this.premio = this.premioBuscado();
         this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena, {
             'A': function () { return _this.automata; },
             'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
-            'P': this.premioBuscado,
+            'P': function () { return _this.premio; },
         }, {}, { grilla: 'invisible.png' });
         this.automata.enviarAlFrente();
+        this.premio.aprender(Flotar, { Desvio: 5 });
     };
     EscenaConObstaculos.prototype.crearAutomata = function () {
         //abstracto, retorna una nueva instancia del autómata.
