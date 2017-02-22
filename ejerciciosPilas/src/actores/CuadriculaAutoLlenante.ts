@@ -1,0 +1,39 @@
+/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../actores/Casilla.ts"/>
+
+/**
+ * class @CuadriculaAutoLlenante
+ *
+ * Este actor sirve para dibujar una cuadrícula en pantalla, llenándola de elementos
+ * a partir de una matriz que la describe.
+ * Se pensó originalmente para realizar un camino
+ * al estilo de las actividades iniciales de code.org, con varios obstáculos.
+ *
+ * La matrizContenido en el constructor es una matriz de 2 dimensiones.
+ * Cada contenido puede ser un string, que es el identificador del actor que irá en cada casilla.
+ * Por ejemplo se puede usar una letra 'A' para identificar al autómata.
+ * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
+
+ * El diccionarioContenido mapea cada identificador con la función que obtiene a cada actor.
+ *
+ *
+*/
+
+class CuadriculaAutoLlenante extends Cuadricula {
+	matrizContenido;
+	diccionarioContenido;
+
+	constructor(x, y, matrizContenido, diccionarioContenido, opsCuadricula, opsCasilla){
+		this.matrizContenido = matrizContenido;
+		this.diccionarioContenido = diccionarioContenido;
+		super(x, y, matrizContenido.length, matrizContenido[0].length, opsCuadricula, opsCasilla);
+	}
+
+	agregarCasilla(nroFila,nroColumna){
+		super.agregarCasilla(nroFila,nroColumna);
+		var codigo = this.matrizContenido[nroFila][nroColumna];
+		if(codigo !== '' && codigo != ' '){ // si no es casilla libre
+			this.agregarActor(this.diccionarioContenido[codigo](),nroFila,nroColumna,true);
+		}
+	}
+}
