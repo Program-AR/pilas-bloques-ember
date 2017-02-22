@@ -27,7 +27,7 @@ export default Ember.Service.extend(Ember.Evented, {
   actorCounter: 0,
   pilas: null,
   loading: true,
-  nombreDeLaEscenaActual: null,
+  inicializadorDeLaEscenaActual: null,
   temporallyCallback: null, /* almacena el callback para avisar si pilas
                                se reinició correctamente. */
 
@@ -156,14 +156,19 @@ export default Ember.Service.extend(Ember.Evented, {
     $(window).off("message.fromIframe");
   },
 
-  inicializarEscena(iframeElement, nombreDeLaEscena) {
+  inicializarEscena(iframeElement, nombreOInicializador) {
+		var inicializador = nombreOInicializador;
+		if(inicializador.indexOf('new') === -1) {
+			//Significa que vino un nombre de escena.
+			inicializador = `new ${inicializador}()`;
+		}
     let codigo = `
-      var escena = new ${nombreDeLaEscena}();
+      var escena = ${inicializador};
       pilas.mundo.gestor_escenas.cambiar_escena(escena);
     `;
 
     this.evaluar(codigo);
-    this.set("nombreDeLaEscenaActual", nombreDeLaEscena);
+    this.set("inicializadorDeLaEscenaActual", inicializador);
   },
 
   /**
@@ -233,7 +238,7 @@ export default Ember.Service.extend(Ember.Evented, {
   reiniciarEscenaCompleta() {
     let iframeElement = this.get("iframe");
     iframeElement.contentWindow.eval("pilas.reiniciar();");
-    this.inicializarEscena(iframeElement, this.get("nombreDeLaEscenaActual"));
+    this.inicializarEscena(iframeElement, this.get("inicializadorDeLaEscenaActual"));
   },
 
   /**
