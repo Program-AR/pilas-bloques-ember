@@ -11,5 +11,7 @@ export default Model.extend({
   escena: attr('string'),
   debeFelicitarse: attr(),
   grupo: belongsTo('grupo'),
-  bloques: attr()
+  bloques: attr(),
+	solucionInicial: attr('string'),
+	debugging: attr('boolean')
 });

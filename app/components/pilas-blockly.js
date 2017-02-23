@@ -76,7 +76,9 @@ export default Ember.Component.extend({
         let codigoXML = atob(codigoSerializado);
 
         this.set('initial_workspace', codigoXML);
-      }
+      } else if (this.get('modelActividad').get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
+				this.set('initial_workspace', this.get('modelActividad').get('solucionInicial'));
+			}
 
     });
 
