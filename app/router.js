@@ -17,7 +17,7 @@ Router.map(function() {
   });
 
   this.route('libros', function() {
-    this.route('verLibro', {path: "/libro/:libro_id"});
+    this.route('verLibro', {path: ":libro_id"});
   });
   this.route('galeria');
 });

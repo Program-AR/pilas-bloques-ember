@@ -82,5 +82,8 @@ module.exports = function(environment) {
     'style-src': "'self' 'unsafe-inline'",
   };
 
+
+  ENV.ocultar_seccion_libros = true;
+
   return ENV;
 };
