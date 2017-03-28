@@ -154,7 +154,39 @@ export default Ember.Component.extend({
 
     });
 
+
+    toolbox = this.ordenar_toolbox(toolbox);
+
     return toolbox;
+  },
+
+  ordenar_toolbox(toolbox) {
+    let orden_inicial = {  // Orden inicial para la lista de categorias.
+      'Primitivas': 1,
+      'Mis procedimientos': 2,
+      'Mis Procedimientos': 2,
+      'Repeticiones': 3,
+      'Alternativas': 4,
+      'Variables': 5,
+      'Valores': 6,
+      'Sensores': 7,
+      'Operadores': 8,
+      'Mis Funciones': 9,
+      'Mis funciones': 10,
+    };
+
+    /* Agrega un indicador de orden a la lista de categorías para el toolbox. */
+    let toolbox_con_indicador_de_orden = toolbox.map((e) => {
+      e.indice = orden_inicial[e.category] || 99;
+      return e;
+    });
+
+
+    let toolbox_ordenado = toolbox_con_indicador_de_orden.sort((a, b) => {
+      return (a.indice > b.indice);
+    });
+
+    return toolbox_ordenado;
   },
 
   /**
