@@ -11,6 +11,7 @@ module.exports = function(environment) {
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     cursoBackendURL: null,
     consultarVersion: false,
+    googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     EmberENV: {
       EXTEND_PROTOTYPES: {
@@ -65,6 +66,8 @@ module.exports = function(environment) {
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
+
+    ENV['googleAnalyticsEnabled'] = true;
   }
 
   if (environment === 'production') {
@@ -76,6 +79,7 @@ module.exports = function(environment) {
       enabled: true
     };
 
+    ENV['googleAnalyticsEnabled'] = true;
   }
 
   ENV.contentSecurityPolicy = {
