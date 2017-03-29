@@ -2459,10 +2459,10 @@ var Churrasco = (function (_super) {
 var Duba = (function (_super) {
     __extends(Duba, _super);
     function Duba() {
-        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 10, cantFilas: 2 });
-        this.definirAnimacion("parado", [0, 0, 0], 15, true);
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5], 12);
-        this.definirAnimacion("comerChurrasco", [11, 12, 13, 14, 15, 16, 17, 18, 19], 10);
+        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 2, cantFilas: 6 });
+        this.definirAnimacion("parado", [0], 5, true);
+        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1], 60);
+        this.definirAnimacion("comerChurrasco", [8, 9, 10, 11, 11, 11, 10, 9], 12);
     }
     return Duba;
 })(ActorAnimado);
