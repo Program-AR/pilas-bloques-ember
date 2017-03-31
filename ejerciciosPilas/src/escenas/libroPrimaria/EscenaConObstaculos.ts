@@ -19,16 +19,20 @@
 	iniciar() {
 		this.fondo = new Fondo(this.archivoFondo(),0,0);
 		this.automata = this.crearAutomata();
-		this.premio = this.premioBuscado();
 		this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena,
 			{
 				'A': () => this.automata,
 				'O': () => new Obstaculo(this.archivosObstaculos()),
-				'P': () => this.premio,
+				'P': () => this.getPremio(),
 			}, {}, {grilla: 'invisible.png'});
 		this.automata.enviarAlFrente();
 		this.premio.aprender(Flotar,{Desvio:5});
 	}
+
+  getPremio(){ // Lazy initializer
+    this.premio = this.premioBuscado();
+    return this.premio;
+  }
 
 	estaResueltoElProblema(){
 		return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0])===0

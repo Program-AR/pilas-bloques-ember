@@ -2,7 +2,10 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 let nombre = "4.1.6";
 
+// No tiene sentido testear, no hay objetivo claro.
+/*
 moduloActividad(nombre);
+
 
 actividadTest(nombre, {
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -28,4 +31,4 @@ actividadTest(nombre, {
     </statement>
   </block>
 </xml>`,
-});
+});*/

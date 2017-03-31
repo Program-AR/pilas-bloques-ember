@@ -15,6 +15,7 @@
  * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
 
  * El diccionarioContenido mapea cada identificador con la función que obtiene a cada actor.
+ * Importante: el actor debe crearse AL LLAMAR A ESA FUNCION, y no antes.
  *
  *
 */

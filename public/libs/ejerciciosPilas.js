@@ -821,6 +821,7 @@ var CompuAnimada = (function (_super) {
  * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
 
  * El diccionarioContenido mapea cada identificador con la función que obtiene a cada actor.
+ * Importante: el actor debe crearse AL LLAMAR A ESA FUNCION, y no antes.
  *
  *
 */
@@ -5411,14 +5412,17 @@ var EscenaConObstaculos = (function (_super) {
         var _this = this;
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.crearAutomata();
-        this.premio = this.premioBuscado();
         this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena, {
             'A': function () { return _this.automata; },
             'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
-            'P': function () { return _this.premio; },
+            'P': function () { return _this.getPremio(); },
         }, {}, { grilla: 'invisible.png' });
         this.automata.enviarAlFrente();
         this.premio.aprender(Flotar, { Desvio: 5 });
+    };
+    EscenaConObstaculos.prototype.getPremio = function () {
+        this.premio = this.premioBuscado();
+        return this.premio;
     };
     EscenaConObstaculos.prototype.estaResueltoElProblema = function () {
         return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0]) === 0;

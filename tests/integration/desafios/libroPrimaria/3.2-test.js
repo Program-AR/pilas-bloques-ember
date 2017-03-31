@@ -20,13 +20,9 @@ actividadTest(nombre, {
                         <next>
                           <block type="MoverACasillaDerecha" id="K}RvbrXcxq]L_RNC%W|M">
                             <next>
-                              <block type="MoverACasillaDerecha" id="P%R}QxM^u~1U6M2EWGqK">
+                              <block type="MoverACasillaAbajo" id="nv2_d\`RHPsvMxku;d9);">
                                 <next>
-                                  <block type="MoverACasillaAbajo" id="nv2_d\`RHPsvMxku;d9);">
-                                    <next>
-                                      <block type="ComerChurrasco" id="q0H59/0i3~da-2vjO5V,"></block>
-                                    </next>
-                                  </block>
+                                  <block type="ComerChurrasco" id="q0H59/0i3~da-2vjO5V,"></block>
                                 </next>
                               </block>
                             </next>
