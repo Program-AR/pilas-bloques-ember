@@ -696,6 +696,75 @@ export default [
   </block>
 </xml>`
 	},
+  {
+		id: 144,
+		grupoId: 6,
+		nombre: '3.2',
+		titulo: 'Evaluación 3.2',
+		escena: `new EscenaDuba([
+				[' ',' ','A'],
+				[' ','O','O'],
+        [' ',' ',' '],
+        ['O','O','P'],
+		])`,
+		enunciado: 'COMPLETAR 1',
+		consignaInicial: 'COMPLETAR 2',
+		debeFelicitarse: true,
+		bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco']
+	},
+  {
+    id: 145,
+    grupoId: 7,
+    nombre: '4.1.3',
+    titulo: 'Plantilla 4.1.3',
+    escena: `new EscenaDuba([
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+        ['A',' ',' ',' ',' ','P'],
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir']
+  },
+  {
+    id: 146,
+    grupoId: 7,
+    nombre: '4.1.4a',
+    titulo: 'Plantilla 4.1.4a',
+    escena: `new EscenaDuba([
+      ['P','O','O','O','O'],
+      [' ','O','O','O','O'],
+      [' ','O','O','O','O'],
+      [' ','O','O','O','O'],
+      [' ','A','O','O','O'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir']
+  },
+  {
+    id: 147,
+    grupoId: 7,
+    nombre: '4.1.4b',
+    titulo: 'Plantilla 4.1.4b',
+    escena: `new EscenaDuba([
+        ['P','O','O','O','O'],
+        [' ','O','O','O','O'],
+        [' ','O','O','O','O'],
+        [' ','O','O','O','O'],
+        [' ',' ',' ',' ','A'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir']
+  },
 /*  {
     id: 136,
     grupoId: 5,
