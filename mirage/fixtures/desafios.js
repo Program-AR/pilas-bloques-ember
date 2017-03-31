@@ -776,11 +776,11 @@ export default [
         ['O','O',' ',' ','O','O'],
         ['O','O','O',' ',' ','O'],
         ['O','O','O','O',' ',' '],
-        ['O','O','O','O','O','P'],
+        ['O','O','O','O','O',' '],
     ])`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: false,
     bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -901,7 +901,7 @@ export default [
   </block>
 </xml>`
   },
-  
+
 /*  {
     id: 136,
     grupoId: 5,
