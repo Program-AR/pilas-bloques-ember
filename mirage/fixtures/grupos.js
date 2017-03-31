@@ -27,6 +27,11 @@ export default [
 	{
 		id: 6,
 		libroId: 2,
-		titulo: 'Secuencia 1',
+		titulo: 'Capítulo 3',
+	},
+  {
+		id: 7,
+		libroId: 2,
+		titulo: 'Capítulo 4',
 	},
 ];
