@@ -526,7 +526,7 @@ export default [
 		id: 137,
 		grupoId: 6,
 		nombre: '3.1.2',
-		titulo: 'Plantilla 3.1.2',
+		titulo: 'Desafío 3.1.2',
 		escena: `new EscenaDuba([
 				['O','O','O','O'],
 				['O','O','O','O'],
@@ -543,7 +543,7 @@ export default [
 		id: 138,
 		grupoId: 6,
 		nombre: '3.1.3',
-		titulo: 'Plantilla 3.1.3',
+		titulo: 'Desafío 3.1.3',
 		escena: `new EscenaDuba([
 				['O','O',' ','O'],
 				[' ','A',' ','O'],
@@ -559,7 +559,7 @@ export default [
 		id: 139,
 		grupoId: 6,
 		nombre: '3.1.5',
-		titulo: 'Plantilla 3.1.5',
+		titulo: 'Desafío 3.1.5',
 		escena: `new EscenaDuba([
 				['O',' ','P'],
 				['A',' ','O'],
@@ -573,7 +573,7 @@ export default [
 		id: 140,
 		grupoId: 6,
 		nombre: '3.1.6a',
-		titulo: 'Plantilla 3.1.6a',
+		titulo: 'Desafío 3.1.6a',
 		escena: `new EscenaDuba([
 				['O','O','O','O'],
 				['A',' ',' ','P'],
@@ -600,7 +600,7 @@ export default [
 		id: 141,
 		grupoId: 6,
 		nombre: '3.1.6b',
-		titulo: 'Plantilla 3.1.6b',
+		titulo: 'Desafío 3.1.6b',
 		escena: `new EscenaDuba([
 				['P','O','O'],
 				[' ','O','O'],
@@ -631,7 +631,7 @@ export default [
 		id: 142,
 		grupoId: 6,
 		nombre: '3.1.6c',
-		titulo: 'Plantilla 3.1.6c',
+		titulo: 'Desafío 3.1.6c',
 		escena: `new EscenaDuba([
 				['O','P','O'],
 				['A',' ',' '],
@@ -665,7 +665,7 @@ export default [
 		id: 143,
 		grupoId: 6,
 		nombre: '3.1.6d',
-		titulo: 'Plantilla 3.1.d',
+		titulo: 'Desafío 3.1.d',
 		escena: `new EscenaDuba([
 				['P','O','A'],
 				[' ','O',' '],
@@ -716,7 +716,7 @@ export default [
     id: 145,
     grupoId: 7,
     nombre: '4.1.3',
-    titulo: 'Plantilla 4.1.3',
+    titulo: 'Desafío 4.1.3',
     escena: `new EscenaDuba([
         ['O','O','O','O','O','O'],
         ['O','O','O','O','O','O'],
@@ -735,7 +735,7 @@ export default [
     id: 146,
     grupoId: 7,
     nombre: '4.1.4a',
-    titulo: 'Plantilla 4.1.4a',
+    titulo: 'Desafío 4.1.4a',
     escena: `new EscenaDuba([
       ['P','O','O','O','O'],
       [' ','O','O','O','O'],
@@ -752,7 +752,7 @@ export default [
     id: 147,
     grupoId: 7,
     nombre: '4.1.4b',
-    titulo: 'Plantilla 4.1.4b',
+    titulo: 'Desafío 4.1.4b',
     escena: `new EscenaDuba([
         ['P','O','O','O','O'],
         [' ','O','O','O','O'],
@@ -764,6 +764,51 @@ export default [
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir']
+  },
+  {
+    id: 148,
+    grupoId: 7,
+    nombre: '4.1.6',
+    titulo: 'Desafío 4.1.6',
+    escena: `new EscenaDuba([
+        ['A',' ','O','O','O','O'],
+        ['O',' ',' ','O','O','O'],
+        ['O','O',' ',' ','O','O'],
+        ['O','O','O',' ',' ','O'],
+        ['O','O','O','O',' ',' '],
+        ['O','O','O','O','O','P'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="repetir" id="|KneHL[}QuG.8DM_bHtq">
+        <value name="count">
+          <block type="math_number" id="K/^RF-kMoU2vQeYQdh7-">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="MoverACasillaDerecha" id="5X41a:-!K0TyfUB~F=H]">
+            <next>
+              <block type="MoverACasillaAbajo" id="5:_E9$oi#WB(Yxo:MmG7"></block>
+            </next>
+          </block>
+        </statement>
+        <next>
+        <block type="MoverACasillaDerecha" id="5X41a:-!K0sdgfUB~F=H]">
+          <next>
+            <block type="ComerChurrasco" id="d4y{D[O3OmG$%MA/{qk9"></block>
+          </next>
+        </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
   },
 /*  {
     id: 136,
