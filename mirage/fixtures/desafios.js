@@ -810,6 +810,98 @@ export default [
   </block>
 </xml>`
   },
+  {
+    id: 149,
+    grupoId: 7,
+    nombre: '4.1.7a',
+    titulo: 'Desafío 4.1.7a',
+    escena: `new EscenaDuba([
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+        ['P',' ',' ',' ',' ',' '],
+        ['O','O','O','O','O','A'],
+        ['O','O','O','O','O','O'],
+        ['O','O','O','O','O','O'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaArriba" id="SI4=l3z@.Re/}/Axao*X">
+        <next>
+          <block type="repetir" id="|KneHL[}QuG.8DM_bHtq">
+            <value name="count">
+              <block type="math_number" id="K/^RF-kMoU2vQeYQdh7-">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+            <statement name="block">
+              <block type="MoverACasillaIzquierda" id="o=|VymUssynr0IA01}a?"></block>
+            </statement>
+            <next>
+              <block type="MoverACasillaArriba" id="56P3;Q*s!bJV%P.DZELG">
+                <next>
+                  <block type="ComerChurrasco" id="d4y{D[O3OmG$%MA/{qk9"></block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`,
+  },
+  {
+    id: 150,
+    grupoId: 7,
+    nombre: '4.1.7b',
+    titulo: 'Desafío 4.1.7b',
+    escena: `new EscenaDuba([
+        ['A',' ','O','O','O','O'],
+        ['O',' ',' ','O','O','O'],
+        ['O','O',' ',' ','O','O'],
+        ['O','O','O',' ',' ','O'],
+        ['O','O','O','O',' ',' '],
+        ['O','O','O','O','O','P'],
+    ])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="repetir" id="|KneHL[}QuG.8DM_bHtq">
+        <value name="count">
+          <block type="math_number" id="K/^RF-kMoU2vQeYQdh7-">
+            <field name="NUM">4</field>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="MoverACasillaDerecha" id="5X41a:-!K0TyfUB~F=H]">
+            <next>
+              <block type="MoverACasillaAbajo" id="5:_E9$oi#WB(Yxo:MmG7"></block>
+            </next>
+          </block>
+        </statement>
+        <next>
+        <block type="MoverACasillaDerecha" id="5X41a:-!K0sdgfUB~F=H]">
+          <next>
+            <block type="ComerChurrasco" id="d4y{D[O3OmG$%MA/{qk9"></block>
+          </next>
+        </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
+  },
+  
 /*  {
     id: 136,
     grupoId: 5,
