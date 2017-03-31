@@ -61,13 +61,17 @@ compilar_ejercicios_pilas:
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
+pre_ember_build: compilar_ejercicios_pilas
+	cd scripts; python generarListaImagenes.py
 
 dist: compilar
 
 build: compilar
 
-compilar: compilar_ejercicios_pilas
-	cd scripts; python generarListaImagenes.py
+serve: pre_ember_build
+	./node_modules/ember-cli/bin/ember serve
+
+compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build
 
 compilar_web:
@@ -132,4 +136,3 @@ test_travis:
 	ember test
 
 .PHONY: dist
-
