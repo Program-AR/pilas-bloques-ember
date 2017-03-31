@@ -1,10 +1,10 @@
-import { test } from 'qunit';
+import { skip } from 'qunit';
 import moduleForAcceptance from 'pilas-engine-bloques/tests/helpers/module-for-acceptance';
 import desafios from '../pages/desafios';
 
 moduleForAcceptance('Acceptance | desafios');
 
-test('visiting /desafios', function(assert) {
+skip('visiting /desafios', function(assert) {
   let cantidadDesafiosEsperada = 50;
 
   desafios.
