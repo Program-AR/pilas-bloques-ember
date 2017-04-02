@@ -1,9 +1,10 @@
+/*
 import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 let nombre = "4.1.6";
 
-// No tiene sentido testear, no hay objetivo claro.
-/*
+// Habría que testear simplemente que carga.
+
 moduloActividad(nombre);
 
 
