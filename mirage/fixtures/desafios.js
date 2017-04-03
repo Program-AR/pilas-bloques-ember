@@ -901,6 +901,17 @@ export default [
   </block>
 </xml>`
   },
+  {
+    id: 151,
+    grupoId: 6,
+    nombre: '3.2.1a',
+    titulo: 'Desafío 3.2.1a',
+    escena: `new EscenaCoty([])`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
+  },
 
 /*  {
     id: 136,

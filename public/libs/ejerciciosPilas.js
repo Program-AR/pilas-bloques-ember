@@ -2457,6 +2457,21 @@ var Churrasco = (function (_super) {
     return Churrasco;
 })(ActorAnimado);
 /// <reference path="../ActorAnimado.ts"/>
+var Coty = (function (_super) {
+    __extends(Coty, _super);
+    function Coty() {
+        _super.call(this, 0, 0, { grilla: 'actor.coty.png', cantColumnas: 6, cantFilas: 3 });
+        this.definirAnimacion("parado", [7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8], 12, true);
+        this.definirAnimacion("arriba", [3, 4, 5, 4], 12);
+        this.definirAnimacion("correr", [9, 10, 11, 10], 12);
+        this.definirAnimacion("abajo", [3, 4, 5, 4], 12);
+        this.definirAnimacion("arribaDibujando", [0, 1, 2, 1], 12);
+        this.definirAnimacion("correrDibujando", [6, 7, 8, 7], 12);
+        this.definirAnimacion("abajoDibujando", [12, 13, 14, 13], 12);
+    }
+    return Coty;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
 var Duba = (function (_super) {
     __extends(Duba, _super);
     function Duba() {
@@ -3013,6 +3028,50 @@ var DibujarHaciaAdelante = (function (_super) {
         _super.prototype.preAnimacion.call(this);
     };
     return DibujarHaciaAdelante;
+})(DibujarLinea);
+var DibujarHaciaArriba = (function (_super) {
+    __extends(DibujarHaciaArriba, _super);
+    function DibujarHaciaArriba() {
+        _super.apply(this, arguments);
+    }
+    DibujarHaciaArriba.prototype.preAnimacion = function () {
+        this.argumentos.direccion = new Direct(0, 1);
+        _super.prototype.preAnimacion.call(this);
+    };
+    return DibujarHaciaArriba;
+})(DibujarLinea);
+var DibujarHaciaAbajo = (function (_super) {
+    __extends(DibujarHaciaAbajo, _super);
+    function DibujarHaciaAbajo() {
+        _super.apply(this, arguments);
+    }
+    DibujarHaciaAbajo.prototype.preAnimacion = function () {
+        this.argumentos.direccion = new Direct(0, -1);
+        _super.prototype.preAnimacion.call(this);
+    };
+    return DibujarHaciaAbajo;
+})(DibujarLinea);
+var DibujarHaciaLaDerecha = (function (_super) {
+    __extends(DibujarHaciaLaDerecha, _super);
+    function DibujarHaciaLaDerecha() {
+        _super.apply(this, arguments);
+    }
+    DibujarHaciaLaDerecha.prototype.preAnimacion = function () {
+        this.argumentos.direccion = new Direct(1, 0);
+        _super.prototype.preAnimacion.call(this);
+    };
+    return DibujarHaciaLaDerecha;
+})(DibujarLinea);
+var DibujarHaciaLaIzquierda = (function (_super) {
+    __extends(DibujarHaciaLaIzquierda, _super);
+    function DibujarHaciaLaIzquierda() {
+        _super.apply(this, arguments);
+    }
+    DibujarHaciaLaIzquierda.prototype.preAnimacion = function () {
+        this.argumentos.direccion = new Direct(-1, 0);
+        _super.prototype.preAnimacion.call(this);
+    };
+    return DibujarHaciaLaIzquierda;
 })(DibujarLinea);
 /// <reference path="ComportamientoConVelocidad.ts"/>
 var Eliminar = (function (_super) {
@@ -3834,11 +3893,14 @@ var DibujandoFiguras = (function (_super) {
     }
     DibujandoFiguras.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.dibujando.figuras.png', 0, 0);
+        this.crearAutomata();
+        this.dibujarFiguraFantasma();
+    };
+    DibujandoFiguras.prototype.crearAutomata = function () {
         this.automata = new Dibujante();
         this.automata.escala = 0.5;
         this.automata.x = -150;
         this.automata.y = 100;
-        this.dibujarFiguraFantasma();
     };
     DibujandoFiguras.prototype.dibujarFiguraFantasma = function () {
         var _this = this;
@@ -5443,6 +5505,26 @@ var EscenaConObstaculos = (function (_super) {
     };
     return EscenaConObstaculos;
 })(EscenaActividad);
+/// <reference path = "../DibujandoFiguras.ts" />
+/// <reference path = "../../actores/libroPrimaria/Coty.ts" />
+var EscenaCoty = (function (_super) {
+    __extends(EscenaCoty, _super);
+    function EscenaCoty(puntosSolucion) {
+        if (puntosSolucion === void 0) { puntosSolucion = []; }
+        _super.call(this);
+        this.ptosSolucionParametrizados = puntosSolucion;
+    }
+    EscenaCoty.prototype.crearAutomata = function () {
+        this.automata = new Coty();
+        this.automata.escala = 3;
+        //this.automata.x = -150;
+        //this.automata.y = 100;
+    };
+    EscenaCoty.prototype.puntosSolucion = function () {
+        return this.ptosSolucionParametrizados;
+    };
+    return EscenaCoty;
+})(DibujandoFiguras);
 /// <reference path = "EscenaConObstaculos.ts" />
 /// <reference path = "../../actores/libroPrimaria/Duba.ts" />
 /// <reference path = "../../actores/libroPrimaria/Churrasco.ts" />

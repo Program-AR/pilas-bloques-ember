@@ -23,3 +23,31 @@ class DibujarHaciaAdelante extends DibujarLinea {
 		super.preAnimacion();
 	}
 }
+
+class DibujarHaciaArriba extends DibujarLinea {
+	preAnimacion(){
+		this.argumentos.direccion = new Direct(0,1);
+		super.preAnimacion();
+	}
+}
+
+class DibujarHaciaAbajo extends DibujarLinea {
+	preAnimacion(){
+		this.argumentos.direccion = new Direct(0,-1);
+		super.preAnimacion();
+	}
+}
+
+class DibujarHaciaLaDerecha extends DibujarLinea {
+	preAnimacion(){
+		this.argumentos.direccion = new Direct(1,0);
+		super.preAnimacion();
+	}
+}
+
+class DibujarHaciaLaIzquierda extends DibujarLinea {
+	preAnimacion(){
+		this.argumentos.direccion = new Direct(-1,0);
+		super.preAnimacion();
+	}
+}

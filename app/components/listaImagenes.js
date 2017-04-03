@@ -6,6 +6,7 @@ export default [
     "actor.BoyScout.png",
     "actor.Churrasco.png",
     "actor.Fogata.png",
+    "actor.coty.png",
     "actor.duba.png",
     "alienAnimado.png",
     "alimento_pez.png",
