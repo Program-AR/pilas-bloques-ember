@@ -22,7 +22,7 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
 	valoresFinales : any = {};
 
 	nombreAnimacion(){
-        return 'correr';
+        return this.argumentos.nombreAnimacion || 'correr';
     }
 
     preAnimacion(){

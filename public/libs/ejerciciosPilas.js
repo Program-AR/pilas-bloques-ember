@@ -1089,7 +1089,7 @@ var MovimientoAnimado = (function (_super) {
         this.valoresFinales = {};
     }
     MovimientoAnimado.prototype.nombreAnimacion = function () {
-        return 'correr';
+        return this.argumentos.nombreAnimacion || 'correr';
     };
     MovimientoAnimado.prototype.preAnimacion = function () {
         _super.prototype.preAnimacion.call(this);
