@@ -914,7 +914,18 @@ export default [
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir']
+    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
+  },
+  {
+    id: 152,
+    grupoId: 6,
+    nombre: 'CotyDibujoLibre',
+    titulo: '¡Coty dibuja libre!',
+    escena: `new EscenaCoty(-50,50,[],[])`,
+    enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
+    consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
 
 /*  {
