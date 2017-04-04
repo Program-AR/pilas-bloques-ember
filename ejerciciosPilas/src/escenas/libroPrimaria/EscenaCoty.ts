@@ -17,7 +17,14 @@
 
    iniciar(){
      super.iniciar();
-     this.dibujarFigura('dibujoFijo',this.ptosDibujoFijo[0],this.ptosDibujoFijo, pilas.colores.azuloscuro);
+     if(this.ptosDibujoFijo.length > 0 && !this.ptosDibujoFijo[0].length){
+       // Convierto a lista de listas
+       this.ptosDibujoFijo = [this.ptosDibujoFijo];
+     }
+     // Como el dibujarFigura figura sólo con líneas continuas, tengo que hacer esta chanchada
+     this.ptosDibujoFijo.forEach(
+       (ptos, i) => this.dibujarFigura('dibujoFijo'+i,ptos[0],ptos, pilas.colores.azuloscuro)
+     );
    }
 
    crearAutomata(){

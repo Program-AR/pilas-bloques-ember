@@ -5533,8 +5533,14 @@ var EscenaCoty = (function (_super) {
         this.yCoty = yCoty;
     }
     EscenaCoty.prototype.iniciar = function () {
+        var _this = this;
         _super.prototype.iniciar.call(this);
-        this.dibujarFigura('dibujoFijo', this.ptosDibujoFijo[0], this.ptosDibujoFijo, pilas.colores.azuloscuro);
+        if (this.ptosDibujoFijo.length > 0 && !this.ptosDibujoFijo[0].length) {
+            // Convierto a lista de listas
+            this.ptosDibujoFijo = [this.ptosDibujoFijo];
+        }
+        // Como el dibujarFigura figura sólo con líneas continuas, tengo que hacer esta chanchada
+        this.ptosDibujoFijo.forEach(function (ptos, i) { return _this.dibujarFigura('dibujoFijo' + i, ptos[0], ptos, pilas.colores.azuloscuro); });
     };
     EscenaCoty.prototype.crearAutomata = function () {
         this.automata = new Coty(this.xCoty, this.yCoty);
