@@ -3281,18 +3281,24 @@ var Rotar = (function (_super) {
     };
     return Rotar;
 })(ComportamientoConVelocidad);
-/// <reference path = "ComportamientoConVelocidad.ts"/>
+/// <reference path = "MovimientoAnimado.ts"/>
 var SaltarAnimado = (function (_super) {
     __extends(SaltarAnimado, _super);
     function SaltarAnimado() {
         _super.apply(this, arguments);
     }
     SaltarAnimado.prototype.preAnimacion = function () {
+        if (this.argumentos.distancia === undefined && this.argumentos.direccion === undefined) {
+            // Significa que me llamaron sin los parámetros del movimiento.
+            this.argumentos.distancia = 0;
+            this.argumentos.direccion = new Direct(0, 1); // No importa
+        }
+        ;
         _super.prototype.preAnimacion.call(this);
         this.sanitizarArgumentosSaltar();
-        this.suelo = this.receptor.y;
         this.velocidad_vertical = this.velocidad_inicial;
         pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
+        this.vectorDeAvanceOriginal = { x: this.vectorDeAvance.x, y: this.vectorDeAvance.y };
     };
     SaltarAnimado.prototype.sanitizarArgumentosSaltar = function () {
         this.alTerminar = this.argumentos.alTerminar || function (r) { };
@@ -3361,18 +3367,19 @@ var SaltarAnimado = (function (_super) {
     g/2 * (cps-1) + h / cps = v -> -> de acá sale la velocidad a partir de altura y gravedad
     */
     SaltarAnimado.prototype.darUnPaso = function () {
-        this.receptor.y += this.velocidad_vertical;
+        this.vectorDeAvance.y = this.vectorDeAvanceOriginal.y + this.velocidad_vertical;
+        _super.prototype.darUnPaso.call(this);
         this.velocidad_vertical -= this.gravedad;
     };
     SaltarAnimado.prototype.setearEstadoFinalDeseado = function () {
-        this.receptor.y = this.suelo;
+        _super.prototype.setearEstadoFinalDeseado.call(this);
         this.alTerminar.call(this.receptor);
     };
     SaltarAnimado.prototype.nombreAnimacion = function () {
-        return "saltar";
+        return this.argumentos.nombreAnimacion || "saltar";
     };
     return SaltarAnimado;
-})(ComportamientoConVelocidad);
+})(MovimientoAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "SaltarAnimado.ts"/>
 /*

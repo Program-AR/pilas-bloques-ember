@@ -1,18 +1,23 @@
-/// <reference path = "ComportamientoConVelocidad.ts"/>
+/// <reference path = "MovimientoAnimado.ts"/>
 
-class SaltarAnimado extends ComportamientoConVelocidad {
+class SaltarAnimado extends MovimientoAnimado {
 	alTerminar;
-	suelo;
 	velocidad_inicial;
 	velocidad_vertical;
 	gravedad;
+	vectorDeAvanceOriginal;
 
 	preAnimacion() {
+		if(this.argumentos.distancia === undefined && this.argumentos.direccion === undefined){
+			// Significa que me llamaron sin los parámetros del movimiento.
+			this.argumentos.distancia = 0;
+			this.argumentos.direccion = new Direct(0,1); // No importa
+		};
 		super.preAnimacion();
 		this.sanitizarArgumentosSaltar();
-		this.suelo = this.receptor.y;
 		this.velocidad_vertical = this.velocidad_inicial;
 		pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
+		this.vectorDeAvanceOriginal = {x: this.vectorDeAvance.x, y: this.vectorDeAvance.y};
 	}
 
 	sanitizarArgumentosSaltar(){
@@ -91,16 +96,17 @@ class SaltarAnimado extends ComportamientoConVelocidad {
 
 
 	darUnPaso() {
-		this.receptor.y += this.velocidad_vertical;
+		this.vectorDeAvance.y = this.vectorDeAvanceOriginal.y + this.velocidad_vertical;
+		super.darUnPaso();
 		this.velocidad_vertical -= this.gravedad;
 	}
 
 	setearEstadoFinalDeseado(){
-		this.receptor.y = this.suelo;
+		super.setearEstadoFinalDeseado();
 		this.alTerminar.call(this.receptor);
 	}
 
 	nombreAnimacion(){
-		return "saltar";
+		return this.argumentos.nombreAnimacion || "saltar";
 	}
 }
