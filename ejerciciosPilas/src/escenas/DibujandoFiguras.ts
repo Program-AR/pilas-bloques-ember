@@ -6,7 +6,7 @@ class DibujandoFiguras extends EscenaActividad {
     iniciar() {
         this.fondo = new Fondo('fondo.dibujando.figuras.png',0,0);
         this.crearAutomata();
-        this.dibujarFiguraFantasma();
+        this.dibujarFigura('pizarraFantasma',this.automata, this.puntosSolucion());
     }
 
     crearAutomata(){
@@ -16,12 +16,12 @@ class DibujandoFiguras extends EscenaActividad {
       this.automata.y = 100;
     }
 
-    dibujarFiguraFantasma(){
-      this.pizarraFantasma = new pilas.actores.Pizarra();
+    dibujarFigura(nombre, orig, puntos, color = pilas.colores.grisclaro){
+      this[nombre] = new pilas.actores.Pizarra();
 
-      var origen = {x: this.automata.x, y: this.automata.y};
-      this.puntosSolucion().forEach( destino => {
-        this.pizarraFantasma.linea(origen.x, origen.y, destino.x, destino.y, pilas.colores.grisclaro, 6);
+      var origen = orig;
+      puntos.forEach( destino => {
+        this[nombre].linea(origen.x, origen.y, destino.x, destino.y, color, 6);
         origen = destino;
       });
     }

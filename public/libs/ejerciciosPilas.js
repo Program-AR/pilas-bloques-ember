@@ -2459,8 +2459,10 @@ var Churrasco = (function (_super) {
 /// <reference path="../ActorAnimado.ts"/>
 var Coty = (function (_super) {
     __extends(Coty, _super);
-    function Coty() {
-        _super.call(this, 0, 0, { grilla: 'actor.coty.png', cantColumnas: 6, cantFilas: 3 });
+    function Coty(x, y) {
+        if (x === void 0) { x = 0; }
+        if (y === void 0) { y = 0; }
+        _super.call(this, x, y, { grilla: 'actor.coty.png', cantColumnas: 6, cantFilas: 3 });
         this.definirAnimacion("parado", [7, 7, 7, 7, 7, 7, 7, 7, 7, 8, 8], 12, true);
         this.definirAnimacion("arriba", [3, 4, 5, 4], 12);
         this.definirAnimacion("correr", [9, 10, 11, 10], 12);
@@ -3901,7 +3903,7 @@ var DibujandoFiguras = (function (_super) {
     DibujandoFiguras.prototype.iniciar = function () {
         this.fondo = new Fondo('fondo.dibujando.figuras.png', 0, 0);
         this.crearAutomata();
-        this.dibujarFiguraFantasma();
+        this.dibujarFigura('pizarraFantasma', this.automata, this.puntosSolucion());
     };
     DibujandoFiguras.prototype.crearAutomata = function () {
         this.automata = new Dibujante();
@@ -3909,12 +3911,13 @@ var DibujandoFiguras = (function (_super) {
         this.automata.x = -150;
         this.automata.y = 100;
     };
-    DibujandoFiguras.prototype.dibujarFiguraFantasma = function () {
+    DibujandoFiguras.prototype.dibujarFigura = function (nombre, orig, puntos, color) {
         var _this = this;
-        this.pizarraFantasma = new pilas.actores.Pizarra();
-        var origen = { x: this.automata.x, y: this.automata.y };
-        this.puntosSolucion().forEach(function (destino) {
-            _this.pizarraFantasma.linea(origen.x, origen.y, destino.x, destino.y, pilas.colores.grisclaro, 6);
+        if (color === void 0) { color = pilas.colores.grisclaro; }
+        this[nombre] = new pilas.actores.Pizarra();
+        var origen = orig;
+        puntos.forEach(function (destino) {
+            _this[nombre].linea(origen.x, origen.y, destino.x, destino.y, color, 6);
             origen = destino;
         });
     };
@@ -5516,13 +5519,21 @@ var EscenaConObstaculos = (function (_super) {
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 var EscenaCoty = (function (_super) {
     __extends(EscenaCoty, _super);
-    function EscenaCoty(puntosSolucion) {
+    function EscenaCoty(xCoty, yCoty, puntosDibujoFijo, puntosSolucion) {
+        if (puntosDibujoFijo === void 0) { puntosDibujoFijo = []; }
         if (puntosSolucion === void 0) { puntosSolucion = []; }
         _super.call(this);
         this.ptosSolucionParametrizados = puntosSolucion;
+        this.ptosDibujoFijo = puntosDibujoFijo;
+        this.xCoty = xCoty;
+        this.yCoty = yCoty;
     }
+    EscenaCoty.prototype.iniciar = function () {
+        _super.prototype.iniciar.call(this);
+        this.dibujarFigura('dibujoFijo', this.ptosDibujoFijo[0], this.ptosDibujoFijo, pilas.colores.azuloscuro);
+    };
     EscenaCoty.prototype.crearAutomata = function () {
-        this.automata = new Coty();
+        this.automata = new Coty(this.xCoty, this.yCoty);
         this.automata.escala = 3;
         //this.automata.x = -150;
         //this.automata.y = 100;

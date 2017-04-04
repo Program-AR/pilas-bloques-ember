@@ -1,8 +1,8 @@
 /// <reference path="../ActorAnimado.ts"/>
 
 class Coty extends ActorAnimado {
-    constructor() {
-				super(0, 0, {grilla: 'actor.coty.png', cantColumnas:6, cantFilas: 3});
+    constructor(x=0,y=0) {
+				super(x, y, {grilla: 'actor.coty.png', cantColumnas:6, cantFilas: 3});
 				this.definirAnimacion("parado",[7,7,7,7,7,7,7,7,7,8,8],12, true);
 				this.definirAnimacion("arriba",[3,4,5,4],12);
         this.definirAnimacion("correr",[9,10,11,10],12);
