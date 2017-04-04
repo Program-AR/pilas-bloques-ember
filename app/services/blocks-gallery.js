@@ -811,30 +811,58 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('MoverArribaDibujando', {
       descripcion: 'Mover arriba dibujando',
-      icono: 'icono.arriba.png',
+      icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarHaciaArriba',
       argumentos: '{distancia: 50, nombreAnimacion: "arribaDibujando"}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
       descripcion: 'Mover abajo dibujando',
-      icono: 'icono.abajo.png',
+      icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarHaciaAbajo',
       argumentos: '{distancia: 50, nombreAnimacion: "abajoDibujando"}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
       descripcion: 'Mover derecha dibujando',
-      icono: 'icono.derecha.png',
+      icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarHaciaLaDerecha',
       argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', {
       descripcion: 'Mover izquierda dibujando',
-      icono: 'icono.izquierda.png',
+      icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarHaciaLaIzquierda',
       argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
+    });
+
+    this.crearBloqueAccion('SaltarArriba', {
+      descripcion: 'Saltar arriba',
+      icono: 'icono.arriba.png',
+      comportamiento: 'SaltarAnimado',
+      argumentos: '{direccion: [0,1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "arriba"}',
+    });
+
+    this.crearBloqueAccion('SaltarAbajo', {
+      descripcion: 'Saltar abajo',
+      icono: 'icono.abajo.png',
+      comportamiento: 'SaltarAnimado',
+      argumentos: '{direccion: [0,-1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "abajo"}',
+    });
+
+    this.crearBloqueAccion('SaltarDerecha', {
+      descripcion: 'Saltar derecha',
+      icono: 'icono.derecha.png',
+      comportamiento: 'SaltarAnimado',
+      argumentos: '{direccion: [1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
+    });
+
+    this.crearBloqueAccion('SaltarIzquierda', {
+      descripcion: 'Saltar izquierda',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'SaltarAnimado',
+      argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
     });
 
   },
