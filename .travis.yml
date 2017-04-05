@@ -37,6 +37,8 @@ before_install:
 - rm -rf ~/.nvm
 - git clone https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
+- nvm install 6.9.2
+- nvm use 6.9.2
 - npm config set spin false
 - npm install -g bower
 - npm install -g phantomjs-prebuilt
