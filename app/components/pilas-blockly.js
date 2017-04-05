@@ -36,6 +36,9 @@ export default Ember.Component.extend({
       blocks: []
   }],
 
+  pasoAPasoHabilitado: false,
+  pausadoEnBreakpoint: false,
+
   initial_workspace: `
     <xml xmlns="http://www.w3.org/1999/xhtml">
       <block type="al_empezar_a_ejecutar" id="1" deletable="false" editable="false" movable="false" x="15" y="15"></block>
@@ -268,9 +271,12 @@ export default Ember.Component.extend({
   */
 
   actions: {
-    ejecutar() {
+    ejecutar(pasoAPaso=false) {
       this.get('pilas').reiniciarEscenaCompleta();
 
+      // Permite obtener el código xml al momento de ejecutar. Se utiliza
+      // cuando se accede a la ruta curso/alumno para guardar la solución
+      // del usuario en cada momento de ejecución.
       if (this.get('cuandoEjecuta')) {
         let codigo_xml = this.get('codigoActualEnFormatoXML');
         this.get('cuandoEjecuta')(codigo_xml);
@@ -292,6 +298,7 @@ export default Ember.Component.extend({
         main();
       `);
 
+      this.set('pausadoEnBreakpoint', false);
 
       let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
         var me = this;
@@ -300,13 +307,20 @@ export default Ember.Component.extend({
         });
       });
 
+      let estaPausadoEnBreakpoint = () => {
+        return this.get('pausadoEnBreakpoint');
+      };
+
+      let pausarInterprete = () => {
+        this.set('pausadoEnBreakpoint', true);
+      };
 
       function ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte) {
 
         return new Ember.RSVP.Promise((success, reject) => {
+          let running;
 
           function execInterpreterUntilEnd(interpreter) {
-            let running;
 
             // Si el usuario solicitó terminar el programa deja
             // de ejecutar el intérprete.
@@ -316,7 +330,27 @@ export default Ember.Component.extend({
             }
 
             try {
-              running = interpreter.run();
+
+              if (pasoAPaso) {
+
+                // Si está activado el modo depurador, intentará suspender
+                // la llamada a interpreter.run() hasta que el usuario pulse
+                // el botón step.
+
+                if (interpreter.paused_ === false) {
+                  if (estaPausadoEnBreakpoint()) {
+
+                  } else {
+                    running = interpreter.run();
+                    pausarInterprete();
+                  }
+
+                }
+
+              } else {
+                running = interpreter.run();
+              }
+
             } catch(e) {
               reject(e);
             }
@@ -471,6 +505,10 @@ export default Ember.Component.extend({
       }
 
       descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
+    },
+
+    step() {
+      this.set('pausadoEnBreakpoint', false);
     },
 
     onChangeWorkspace(xml) {

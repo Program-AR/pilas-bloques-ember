@@ -2,11 +2,25 @@
 
 <div class="vbox">
 
+
           <div class='pilas-blockly-botones'>
 
             {{#if cargando}}
-              <button class='btn btn-default btn-ejecutar' disabled><i class='fa fa-play'></i> Ejecutar</button>
+              <p class="center"> cargando ... </p>
             {{else}}
+
+              {{#if pasoAPasoHabilitado}}
+                {{#if ejecutando}}
+                  {{#if pausadoEnBreakpoint}}
+                    <button class='btn btn-default btn-info' {{action "step"}}><i class='fa fa-step-forward'></i> Avanzar un paso</button>
+                  {{else}}
+                    <button class='btn btn-default btn-info' disabled><i class='fa fa-step-forward'></i> Avanzar un paso</button>
+                  {{/if}}
+                {{else}}
+                  <button class='btn btn-success btn-info' {{action 'ejecutar' true}}><i class='fa fa-play'></i> Ejecutar paso a paso</button>
+                {{/if}}
+              {{/if}}
+
 
               {{#if ejecutando}}
                   <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
@@ -15,7 +29,7 @@
               {{/if}}
 
               {{#if modoAlumno}}
-              
+
               {{else if modoDocente}}
 
               {{else}}
