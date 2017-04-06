@@ -829,6 +829,7 @@ export default [
     debeFelicitarse: true,
     bloques: [
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
+    debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -874,6 +875,7 @@ export default [
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: ['MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'Repetir'],
+    debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
