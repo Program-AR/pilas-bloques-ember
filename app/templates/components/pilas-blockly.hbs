@@ -46,6 +46,12 @@
 
                 <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
 
+
+                {{#if debeMostarRegresarAlLibro}}
+                  {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}Regresar al libro{{/link-to}}
+                {{/if}}
+
+
                 {{#if mostrarCompartir}}
                   <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
                 {{/if}}

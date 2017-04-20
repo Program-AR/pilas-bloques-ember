@@ -1,5 +1,6 @@
-import { Model, hasMany } from 'ember-cli-mirage';
+import { Model, hasMany, belongsTo } from 'ember-cli-mirage';
 
 export default Model.extend({
-  desafios: hasMany('desafio',  {inverseOf: 'grupo'})
+  desafios: hasMany('desafio',  {inverseOf: 'grupo'}),
+  libro: belongsTo('libro')
 });
