@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import ENV from '../config/environment';
 
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 
@@ -61,7 +60,7 @@ export default Ember.Component.extend({
   }),
 
   debeMostarRegresarAlLibro: Ember.computed('model', function() {
-    return (! ENV.ocultar_seccion_libros);
+    return true;
   }),
 
   didInsertElement() {
