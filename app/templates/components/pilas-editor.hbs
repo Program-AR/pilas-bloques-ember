@@ -1,5 +1,5 @@
-<div class='contenido-principal desafio-contenedor'>
-
+<div class="contenido-principal desafio-contenedor {{if model.grupo.libro.modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+  
   {{outlet}}
 
   <div class="desafio-panel-izquierdo" id='panel-izquierdo'>
