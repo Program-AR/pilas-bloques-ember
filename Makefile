@@ -176,6 +176,12 @@ _compilar_electron_win32:
 	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
 
+_compilar_electron_linux64:
+	@echo "${G}Iniciando compilación a electron a Linux...${N}"
+	rm -rf binarios/pilasBloques-linux-x64/
+	node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=linux --arch=x64 --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.icns
+	node_modules/.bin/electron-installer-flatpak --config=config/linux64-flatpak.json
+	mv binarios/io.atom.electron.pilasBloques_master_x64.flatpak binarios/io.atom.electron.pilasBloques_${VERSION}_x64.flatpak
 
 test_travis:
 	time ember exam --split=10 --parallel
