@@ -51,14 +51,14 @@ comandos:
 iniciar: iniciar_ejercicios
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
-	@bower install --allow-root
+	@node_modules/bower/bin/bower install --allow-root
 
 iniciar_ejercicios:
 	@echo "${G}instalando dependencias de ejerciciosPilas...${N}"
 	cd ejerciciosPilas; npm install
 
 compilar_ejercicios_pilas:
-	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; grunt; cd ..
+	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
 pre_ember_build: compilar_ejercicios_pilas
