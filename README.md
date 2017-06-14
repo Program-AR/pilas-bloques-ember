@@ -69,6 +69,16 @@ https://travis-ci.org/Program-AR/pilas-bloques
 
 Notas de versión
 ---------
+* 1.2.0
+ * El mayor cambio es la estructura interna: Existe la idea internamente (aunque por ahora oculta) de "libro" que agrupa un conjunto de actividades. Cada actividad y cada "libro" (manual) tienen un número, que se refleja en la URL (las url anteriores siguen siendo compatibles). Por ahora sigue habiendo un solo libro: el del Manual de Didactica de Programación y estamos trabajando en las actividades de un segundo libro.
+ * Además, ahora blockly está actualizado y es actualizable. Por ejemplo, tenemos deshacer y rehacer, y zoom sobre los bloques, y mejoras al redimensionado.
+ * Otro cambio interno: la forma de definir una actividad cambia: ahora la definición principal de una actividad es a través de un JSON, además de la escena hecha en Typescript usando PilasEngine Web, y una definición de los bloques centralizada en una biblioteca de bloques.
+ * En La gran aventura, corregido el Escapar para que requiera estar en la misma casilla que el unicornio. Además, las animaciones ocurren solapadas en los lugares que debería.
+ * Esta nueva versión de blockly agrega deshacer y rehacer al workspace, y también zoom y foco cuando el workspace es chico/grande.
+ * Ahora todas las actividades tienen highlight de instrucciones con la ejecución.
+ * En Instalando Juegos, se corrigieron las animaciones de cada comando para que se distingan entre sí.
+ * Varios arreglos menores como alguna velocidad de ejecución, íconos, enunciados, y toolboxes incompletos.
+ * Laberinto con queso ahora pone un queso al principio para forzar una estrategia en particular.
 * 1.1.2
  * El notificador de versiones ahora sólo funciona en la versión descargable/offline (y se arregló un bug de comparación que hacía que avisara aún cuando la versión instalada fuera nueva).
  * Se elimininó el feature de que la solución persista en la URL. Esto se hizo para que al compartir la URL no vaya por defecto con la solución asociada.
