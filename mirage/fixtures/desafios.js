@@ -521,7 +521,7 @@ export default [
       'Numero', 'OpComparacion', 'OpAritmetica',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
-  },
+  },/*
 	{
 		id: 137,
 		grupoId: 6,
@@ -960,7 +960,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
-
+*/
 
 /*  {
     id: 136,
