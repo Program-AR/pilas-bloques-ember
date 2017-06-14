@@ -81,13 +81,13 @@ compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
 version_patch:
-	ember release
+	./node_modules/ember-cli/bin/emberember release
 
 version_minor:
-	ember release --minor
+	./node_modules/ember-cli/bin/emberember release --minor
 
 version_major:
-	ember release --major
+	./node_modules/ember-cli/bin/emberember release --major
 
 
 limpiar_todo:
