@@ -81,13 +81,13 @@ compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
 version_patch:
-	./node_modules/ember-cli/bin/emberember release
+	./node_modules/ember-cli/bin/ember release
 
 version_minor:
-	./node_modules/ember-cli/bin/emberember release --minor
+	./node_modules/ember-cli/bin/ember release --minor
 
 version_major:
-	./node_modules/ember-cli/bin/emberember release --major
+	./node_modules/ember-cli/bin/ember release --major
 
 
 limpiar_todo:
@@ -133,6 +133,6 @@ actualizar_imagenes:
 	cd scripts; python generarListaImagenes.py
 
 test_travis:
-	ember test
+	./node_modules/ember-cli/bin/ember test
 
 .PHONY: dist
