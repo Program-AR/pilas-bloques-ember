@@ -47,12 +47,12 @@ before_install:
 - npm install -g ember-cli
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; cd $TRAVIS_BUILD_DIR && travis/download-homebrew        ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; brew install makensis                                   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; VERSION=$(sh scripts/obtenerVersion.sh)                 ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; echo "Detectando version $VERSION para compilar"        ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; make binarios_electron                                  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; echo "Evitando hacer binarios en linux...."           ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis                              ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para compilar"   ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make binarios_electron                             ; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ; fi
 after_success:
   - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
   - test $TRAVIS_BRANCH = "master"  && ember surge --environment development --new-domain master-pilas-bloques.surge.sh
