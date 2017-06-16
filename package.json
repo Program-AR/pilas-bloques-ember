@@ -52,6 +52,7 @@
     "ember-font-awesome": "2.1.1",
     "ember-fontface-source-sans-pro": "0.1.1",
     "ember-inspector": "1.10.0",
+    "ember-inflector": "2.0.1",
     "ember-load-initializers": "^0.5.1",
     "ember-localstorage-adapter": "1.0.0-rc.1",
     "ember-modal-dialog": "0.8.4",
