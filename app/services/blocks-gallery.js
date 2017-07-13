@@ -341,7 +341,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('VolverABordeIzquierdo', {
       descripcion: 'Ir al borde izquierdo',
-      icono: 'icono.izquierda.png',
+      icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
@@ -700,7 +700,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('VolverAlBordeIzquierdo', {
       descripcion: 'Volver al borde izquierdo',
-      icono: 'icono.izquierda.png',
+      icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
