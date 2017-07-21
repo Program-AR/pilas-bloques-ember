@@ -38,5 +38,29 @@ export default Ember.Service.extend({
       }).
       fail(reject);
     });
+  },
+
+  calificar(nota) {
+
+    new Ember.RSVP.Promise((success, reject) => {
+
+      let dataCalificacion = { //TODO: Gise, esto decidilo vos.
+        nota: nota,
+        desafio: '',
+        usuario: '',
+        xml: '',
+      };
+
+      $.ajax({
+        url: `${config.ltiBackendURL}/grade/`,
+        contentType: 'application/json',
+        type: "post",
+        data: JSON.stringify(dataCalificacion)
+      }).done(success).fail(reject);
+    }).catch((reason) => {
+          console.error(reason);
+          alert("Se a producido un error al enviar la calificación, por favor volvé a intentar.");
+    });
+
   }
 });

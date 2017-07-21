@@ -88,6 +88,8 @@ export default Ember.Route.extend({
           console.error(reason);
           alert("Se a producido un error al guardar, por favor volvé a intentar.");
         });
+
+      this.get("cursoAPI").calificar(0.5);
     },
 
   }

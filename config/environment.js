@@ -39,6 +39,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
+    ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
+    
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
@@ -67,17 +69,8 @@ module.exports = function(environment) {
       enabled: true
     };
 
-    ENV['googleAnalyticsEnabled'] = true;
-  }
-
-  if (environment === 'production') {
-    // ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
-    ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
-
-
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
+    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
+    ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
 
     ENV['googleAnalyticsEnabled'] = true;
   }

@@ -69,7 +69,7 @@ dist: compilar
 build: compilar
 
 serve: pre_ember_build
-	./node_modules/ember-cli/bin/ember serve
+	./node_modules/ember-cli/bin/ember serve --environment=development
 
 compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build
