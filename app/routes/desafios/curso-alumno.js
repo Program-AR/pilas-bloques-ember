@@ -86,7 +86,7 @@ export default Ember.Route.extend({
       this.get("cursoAPI").guardar(parametros).
         catch((reason) => {
           console.error(reason);
-          alert("Se a producido un error al guardar, por favor volvé a intentar.");
+          alert("Se ha producido un error al guardar, por favor volvé a intentar.");
         });
 
       this.get("cursoAPI").calificar(0.5);

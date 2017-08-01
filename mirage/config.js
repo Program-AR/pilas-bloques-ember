@@ -1,3 +1,5 @@
+import config from "../config/environment";
+
 export default function() {
 
   this.get('/desafios');
@@ -22,6 +24,8 @@ export default function() {
   this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');
   this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
+  //this.passthrough('${config.ltiBackendURL}/**');
+  this.passthrough('http://0.0.0.0:5000/**');
 
   /*
     Shorthand cheatsheet:

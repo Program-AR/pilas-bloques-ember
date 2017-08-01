@@ -39,7 +39,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
-    ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
+    //ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
+    ENV['ltiBackendURL'] = 'http://0.0.0.0:5000';
     
     ENV['ember-cli-mirage'] = {
       enabled: true

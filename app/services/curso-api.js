@@ -43,7 +43,8 @@ export default Ember.Service.extend({
   calificar(nota) {
 
     new Ember.RSVP.Promise((success, reject) => {
-
+      var a = document.cookie;
+      console.log(a);
       let dataCalificacion = { //TODO: Gise, esto decidilo vos.
         nota: nota,
         desafio: '',
@@ -55,11 +56,18 @@ export default Ember.Service.extend({
         url: `${config.ltiBackendURL}/grade/`,
         contentType: 'application/json',
         type: "post",
-        data: JSON.stringify(dataCalificacion)
+        data: JSON.stringify(dataCalificacion),
+        // xhrFields: {
+        //   withCredentials = true
+        // },
+        beforeSend: function(xhr){
+           xhr.withCredentials = true;
+        },
+        crossDomain: true
       }).done(success).fail(reject);
     }).catch((reason) => {
           console.error(reason);
-          alert("Se a producido un error al enviar la calificación, por favor volvé a intentar.");
+          alert("Se ha producido un error al enviar la calificación, por favor volvé a intentar.");
     });
 
   }
