@@ -331,7 +331,7 @@ export default [
     titulo: 'El planeta de Nano',
     escena: 'ElPlanetaDeNano',
     enunciado: 'Ayudá a Nano a recoger todas sus frutas. ¡Cuidado! No se puede bajar... \n ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!',
-    consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Avanzar 2 casillas", "Avanzar 3 casillas" y "Avanzar 4 casillas", podemos reemplazar a los 3 por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Avanzar estas veces: [cantidad]".',
+    consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de casillas que queremos avanzar: "Comer a la derecha esta cantidad: [cantidad]".',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
               'VolverAlBordeIzquierdo', 'ComerBananaNano', 'Repetir', 'Si',
