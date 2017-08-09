@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import config from "../config/environment";
-import OAuth from 'oauth-1.0a';
+import OAuth from 'npm:oauth-1.0a';
 //import sign from 'oauth-sign'
 
 export default Ember.Service.extend({
