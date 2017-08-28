@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import config from "../config/environment";
 import OAuth from 'npm:oauth-1.0a';
+import crypto from 'npm:crypto';
 //import sign from 'oauth-sign'
 
 export default Ember.Service.extend({
@@ -70,21 +71,22 @@ export default Ember.Service.extend({
       var request_data = {
           url: `${config.ltiBackendURL}/grade/`,
           method: 'POST',
-          data: JSON.stringify(dataCalificacion),
+          //data: JSON.stringify(dataCalificacion),
+          data: dataCalificacion
       };
 
       $.ajax({
         url: request_data.url,
-        //contentType: 'application/json',
+        contentType: 'application/json',
         type: request_data.method,
-        data: oauth.authorize(request_data)
+        data: oauth.authorize(request_data),
         // xhrFields: {
         //   withCredentials = true
         // },
-        // beforeSend: function(xhr){
-        //    xhr.withCredentials = true;
-        // },
-        // crossDomain: true
+        beforeSend: function(xhr){
+           xhr.withCredentials = true;
+        },
+        crossDomain: true
       }).done(success).fail(reject);
     }).catch((reason) => {
           console.error(reason);

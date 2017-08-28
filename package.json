@@ -62,6 +62,7 @@
     "loader.js": "^4.0.1"
   },
   "dependencies": {
+    "crypto": "0.0.3",
     "oauth-1.0a": "^2.2.1",
     "yuidoc-ember-cli-theme": "^1.0.2"
   },
