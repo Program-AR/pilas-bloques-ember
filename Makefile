@@ -49,16 +49,17 @@ comandos:
 
 
 iniciar: iniciar_ejercicios
-	@echo "${G}instalando dependencias ...${N}"
+	@echo "${G}Instalando dependencias...${N}"
 	@npm install
 	@node_modules/bower/bin/bower install --allow-root
 
 iniciar_ejercicios:
-	@echo "${G}instalando dependencias de ejerciciosPilas...${N}"
+	@echo "${G}Instalando dependencias de ejerciciosPilas...${N}"
 	cd ejerciciosPilas; npm install
 
 compilar_ejercicios_pilas:
-	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt; cd ..
+	@echo "${G}Compilando ejerciciosPilas...${N}"
+	@cd ejerciciosPilas; node_modules/grunt-cli/bin/grunt; cd ..
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
 pre_ember_build: compilar_ejercicios_pilas
@@ -91,11 +92,10 @@ version_major:
 
 
 limpiar_todo:
-	@echo "Limpiando bibliotecas..."
-	@echo "(se reinstalarán a continuación)"
+	@echo "${G}Limpiando bibliotecas...${N}"
 	@sleep 1s;
 	@echo "Borrando node_modules y bower_components ..."
-	@rm -rf node_modules/ bower_components/
+	@rm -rf node_modules/ bower_components/ ejerciciosPilas/node_modules/
 	@sleep 1s;
 
 full: limpiar_todo full_travis
