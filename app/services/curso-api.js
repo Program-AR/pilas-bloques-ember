@@ -2,7 +2,6 @@ import Ember from 'ember';
 import config from "../config/environment";
 import OAuth from 'npm:oauth-1.0a';
 import crypto from 'npm:crypto';
-//import sign from 'oauth-sign'
 
 export default Ember.Service.extend({
   guardar(parametros) {
@@ -46,9 +45,6 @@ export default Ember.Service.extend({
   calificar(nota) {
 
     new Ember.RSVP.Promise((success, reject) => {
-      // Esto probablemente debería ir en otro lado...
-//      var OAuth   = require('../node_modules/oauth-1.0a/oauth-1.0a'); // Error: Could not find module `oauth-1.0a` imported from `(require)`
-      //var crypto  = require('crypto');
       // Esto seguramente deba ir en otro lado...
       var oauth = OAuth({
           consumer: {
