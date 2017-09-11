@@ -53,7 +53,7 @@ export default Ember.Service.extend({
       });
 
       // Esto seguramente deba ir en otro lado...
-      var oauth = OAuth({
+      var oauth = new OAuth({
           consumer: {
               key: 'otrakey',
               secret: 'estesecret'
