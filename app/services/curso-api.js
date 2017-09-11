@@ -45,6 +45,13 @@ export default Ember.Service.extend({
   calificar(nota) {
 
     new Ember.RSVP.Promise((success, reject) => {
+
+      Ember.$.ajaxSetup({ // Sin esto no se envían las cookies al server. Me falta saber un lugar mejor para ponerlo.
+        xhrFields: {
+          withCredentials: true,
+        },
+      });
+
       // Esto seguramente deba ir en otro lado...
       var oauth = OAuth({
           consumer: {
@@ -67,7 +74,6 @@ export default Ember.Service.extend({
       var request_data = {
           url: `${config.ltiBackendURL}/grade/`,
           method: 'POST',
-          //data: JSON.stringify(dataCalificacion),
           data: dataCalificacion
       };
 
@@ -75,14 +81,7 @@ export default Ember.Service.extend({
         url: request_data.url,
         contentType: 'application/json',
         type: request_data.method,
-        data: oauth.authorize(request_data),
-        // xhrFields: {
-        //   withCredentials = true
-        // },
-        beforeSend: function(xhr){
-           xhr.withCredentials = true;
-        },
-        crossDomain: true
+        data: oauth.authorize(request_data)
       }).done(success).fail(reject);
     }).catch((reason) => {
           console.error(reason);
