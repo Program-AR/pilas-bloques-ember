@@ -92,7 +92,7 @@ export default [
     grupoId: 1,
     nombre: 'AlimentandoALosPeces',
     titulo: 'Alimentando a los peces',
-    enunciado: 'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: pensá en una estrategia de 3 partes.',
+    enunciado: 'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: ¿Cuántas partes debería tener tu estrategia?',
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     debeFelicitarse: true,
@@ -154,7 +154,7 @@ export default [
     nombre: 'LaEleccionDelMono',
     titulo: 'La elección del mono',
     enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene '+
-     'que elegir qué fruta comer. \n'+
+     'que comer la fruta que aparece, ya sea banana ó manzana. \n'+
     'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
     'Pista: ésta vez no alcanza con el bloque "Si".',
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
