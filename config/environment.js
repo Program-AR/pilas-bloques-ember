@@ -9,7 +9,7 @@ module.exports = function(environment) {
     downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
-    cursoBackendURL: null,
+    backendURL: null,
     consultarVersion: false,
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
@@ -38,9 +38,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
-    //ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
-    ENV['ltiBackendURL'] = 'http://0.0.0.0:5000';
+    ENV['backendURL'] = 'http://0.0.0.0:5000';
     
     ENV['ember-cli-mirage'] = {
       enabled: true
@@ -59,6 +57,8 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
     ENV.consultarVersion = false;
 
+    ENV['backendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
+
     ENV['ember-cli-mirage'] = {
       enabled: true
     };
@@ -70,8 +70,7 @@ module.exports = function(environment) {
       enabled: true
     };
 
-    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
-    ENV['ltiBackendURL'] = ENV['cursoBackendURL']; 
+    ENV['backendURL'] = 'http://api.pilasbloques.program.ar';
 
     ENV['googleAnalyticsEnabled'] = true;
   }

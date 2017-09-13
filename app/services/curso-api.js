@@ -16,7 +16,7 @@ export default Ember.Service.extend({
       };
 
       $.ajax({
-        url: `${config.cursoBackendURL}/soluciones/`,
+        url: `${config.backendURL}/soluciones/`,
         contentType: 'application/json',
         type: "post",
         data: JSON.stringify(data)
@@ -31,7 +31,7 @@ export default Ember.Service.extend({
 
     return new Ember.RSVP.Promise((success, reject) => {
       $.ajax({
-        url: `${config.cursoBackendURL}/soluciones/${hash}`,
+        url: `${config.backendURL}/soluciones/${hash}`,
         contentType: 'application/json',
         type: "get",
       }).
@@ -72,7 +72,7 @@ export default Ember.Service.extend({
       };
 
       var request_data = {
-          url: `${config.ltiBackendURL}/grade/`,
+          url: `${config.backendURL}/grade/`,
           method: 'POST',
           data: dataCalificacion
       };

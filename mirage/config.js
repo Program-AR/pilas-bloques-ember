@@ -21,11 +21,8 @@ export default function() {
 
   this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('http://104.131.245.133:9914/**');
-  this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');
-  this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
-  //this.passthrough('${config.ltiBackendURL}/**');
-  this.passthrough('http://0.0.0.0:5000/**');
+  this.passthrough(config.backendURL + '/**');
 
   /*
     Shorthand cheatsheet:
