@@ -58,7 +58,7 @@ Tests
 
 Para ejecutar los tests de la aplicación hay 3 opciones:
 
-1. Ejecutar los test una sola vez:
+1. Levantar el server de test:
 
 ```
   make test
