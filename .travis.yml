@@ -27,7 +27,7 @@ cache:
   - $HOME/.cache # includes bowers cache
   - cache
 install:
-- make full_travis
+- travis_wait make full_travis
 script:
 - node -v
 - make test_travis
