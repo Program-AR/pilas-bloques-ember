@@ -132,7 +132,7 @@ _compilar_electron_win32:
 actualizar_imagenes:
 	cd scripts; python generarListaImagenes.py
 
-test_travis:
+test:
 	./node_modules/ember-cli/bin/ember test
 
 .PHONY: dist

@@ -16,23 +16,41 @@ utilizando bloques, javascript y desafíos para aprender a programar.
 ¿Cómo empezar?
 --------------
 
-Al clonar el repositorio, podrías escribir el comando ``make``
-para ver las tareas disponibles:
+Generalmente, lo que se suele hacer inmeditamente después de clonar el repositorio es instalar lo necesario:
+
+Para la dependencia node-gyp es necesario g++, si no lo tenés:
+```
+sudo apt-get install g++
+
+```
+
+Y también hay que asegurarse de tener node (actualmente compilamos con node 6)
+
+Podemos lograrlo con nvm, para lo cual hay que instalarlo:
+```
+git clone https://github.com/creationix/nvm.git ~/.nvm
+source ~/.nvm/nvm.sh
+```
+
+Y luego elegir la versión de node:
+
+```
+nvm install 6.11.3
+nvm use 6.11.3
+```
+
+Luego, se puede escribir el comando ``make`` para ver las tareas disponibles:
 
 ![](screenshots/make.png)
 
-Te recomendamos usar una versión estable de node de la rama 4, como 4.5 por ejemplo, ya
-que usamos la versión estable de emberjs y [eso recomiendan sus desarrolladores](http://emberjs.com/blog/2016/09/07/ember-node-lts-support.html).
-
-Generalmente, lo que se suele hacer inmeditamente después de clonar
-el repositorio es instalar todas las dependencias y poner a funcionar
-la aplicación así:
+Luego, para instalar las dependencias, compilar el módulo ejercicios_pilas y correr la aplicación, sencillamente:
 
 ```
-make iniciar
 make full
-ember serve
+make serve
 ```
+
+En general, para compilar diariamente, con `make serve` ya es suficiente.
 
 
 Tests
@@ -43,7 +61,7 @@ Para ejecutar los tests de la aplicación hay 3 opciones:
 1. Ejecutar los test una sola vez:
 
 ```
-  ember test
+  make test
 ```
 
 2. Ejecutar los tests de forma contínua:
@@ -51,13 +69,6 @@ Para ejecutar los tests de la aplicación hay 3 opciones:
 
 ```
   ember test --watch
-```
-
-3. Ejecutar los tests lo más rápido posible, usando ejecución en
-paralelo:
-
-```
-  make test_travis
 ```
 
 De todas formas, aunque no ejecutes los tests en forma local, en este
