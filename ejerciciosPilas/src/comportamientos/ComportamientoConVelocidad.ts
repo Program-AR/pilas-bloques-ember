@@ -11,7 +11,7 @@
  *               Como esto juega con la animacion, es preferible no tocarlo.
  */
 class ComportamientoConVelocidad extends ComportamientoAnimado {
-	pasosRestantes;
+	_pasosRestantes;
 	vueltasSinEjecutar;
 	enQueVueltaEjecuto;
 
@@ -22,21 +22,29 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 
 		this.vueltasSinEjecutar = 0;
 		this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
-		this.pasosRestantes = this.argumentos.cantPasos;
+		this._pasosRestantes = this.argumentos.cantPasos;
   }
 
 	velocidad(){
 		return this.argumentos.velocidad;
 	}
 
+	deboCortarAnimacion(){
+		return false;
+	}
+
+	pasosRestantes(){
+		return this._pasosRestantes;
+	}
+
   doActualizar(){
 		var terminoAnimacion = super.doActualizar();
-		if (this.pasosRestantes <= 0) {
+		if (this.pasosRestantes() <= 0) {
 			this.setearEstadoFinalDeseado();
-			return terminoAnimacion;
+			return this.deboCortarAnimacion() || terminoAnimacion;
 		} else if (this.deboEjecutar()) { // para definir la velocidad de tick
 			this.darUnPaso();
-			this.pasosRestantes -= 1;
+			this._pasosRestantes -= 1;
 		}
  	}
 
