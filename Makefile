@@ -96,6 +96,8 @@ limpiar_todo:
 	@sleep 1s;
 	@echo "Borrando node_modules y bower_components ..."
 	@rm -rf node_modules/ bower_components/
+	@echo "Borrando node_modules de ejerciciosPilas..."
+	@rm -rf ejerciciosPilas/node_modules/
 	@sleep 1s;
 
 full: limpiar_todo full_travis
