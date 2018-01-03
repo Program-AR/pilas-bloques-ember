@@ -74,7 +74,7 @@ serve: pre_ember_build
 compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build
 
-compilar_web:
+compilar_web: pre_ember_build
 	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 
 compilar_live:
