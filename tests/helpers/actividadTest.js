@@ -135,7 +135,7 @@ export function actividadTest(nombre, opciones) {
 
             pilas.evaluar('pilas.escena_actual().actores').forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad()); // Para que las animaciones se hagan rápido
             pilas.evaluar('ComportamientoConVelocidad').prototype.velocidad = function(){ return 100; }; // para que los movimientos se hagan rápido
-            pilas.evaluar('ComportamientoConVelocidad').prototype.pasosRestantes = function(){ return 0; }; // para que los movimientos se hagan rápido
+            pilas.evaluar('ComportamientoConVelocidad').prototype.pasosRestantes = function(){ return 1; }; // para que los movimientos se hagan rápido
             pilas.evaluar('ComportamientoConVelocidad').prototype.deboCortarAnimacion = function(){ return true; }; // para que los movimientos sean instantáneos
 
             if (opciones.cantidadDeActoresAlComenzar) {
