@@ -5,7 +5,6 @@ module.exports = function(environment) {
     modulePrefix: 'pilas-engine-bloques',
     environment: environment,
     baseURL: '/',
-    versionURL: 'http://pilasbloques.programar.gob.ar/version.json',
     downloadURL: 'http://hugoruscitti.github.io/pilas-engine-bloques/descargas/pilas-engine-bloques-VERSION.zip',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
@@ -13,6 +12,10 @@ module.exports = function(environment) {
     consultarVersion: false,
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
+    'ember-cli-mirage': { enabled: true },
+    contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
+    ocultar_seccion_libros: true,
+    
     EmberENV: {
       EXTEND_PROTOTYPES: {
         Date: false,
@@ -39,9 +42,6 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
   }
 
   if (environment === 'test') {
@@ -55,39 +55,12 @@ module.exports = function(environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.consultarVersion = false;
-
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-
   }
 
-  if (environment === 'web') {
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-
+  if (environment === 'web' || environment === 'production') {
+    ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
     ENV['googleAnalyticsEnabled'] = true;
   }
-
-  if (environment === 'production') {
-    // ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
-    ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
-
-
-    ENV['ember-cli-mirage'] = {
-      enabled: true
-    };
-
-    ENV['googleAnalyticsEnabled'] = true;
-  }
-
-  ENV.contentSecurityPolicy = {
-    'style-src': "'self' 'unsafe-inline'",
-  };
-
-
-  ENV.ocultar_seccion_libros = true;
 
   return ENV;
 };
