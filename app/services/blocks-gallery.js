@@ -347,14 +347,14 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('TomarEstrella', {
-      descripcion: 'Agarrar estrella',
+      descripcion: 'Tomar estrella',
       icono: 'icono.estrella.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
     });
 
     this.crearBloqueAccion('MorderSandia', {
-      descripcion: 'Morder sandía',
+      descripcion: 'Comer sandía',
       icono: 'icono.sandia.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
@@ -439,7 +439,7 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('Agarrarllave', {
-      descripcion: 'Agarrar la llave',
+      descripcion: 'Tomar la llave',
       icono: 'icono.llave.png',
       comportamiento: 'Sostener',
       argumentos: `{

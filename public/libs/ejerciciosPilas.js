@@ -1030,20 +1030,26 @@ var ComportamientoConVelocidad = (function (_super) {
         this.argumentos.velocidad = this.argumentos.velocidad || 20;
         this.vueltasSinEjecutar = 0;
         this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
-        this.pasosRestantes = this.argumentos.cantPasos;
+        this._pasosRestantes = this.argumentos.cantPasos;
     };
     ComportamientoConVelocidad.prototype.velocidad = function () {
         return this.argumentos.velocidad;
     };
+    ComportamientoConVelocidad.prototype.deboCortarAnimacion = function () {
+        return false;
+    };
+    ComportamientoConVelocidad.prototype.pasosRestantes = function () {
+        return this._pasosRestantes;
+    };
     ComportamientoConVelocidad.prototype.doActualizar = function () {
         var terminoAnimacion = _super.prototype.doActualizar.call(this);
-        if (this.pasosRestantes <= 0) {
+        if (this.pasosRestantes() <= 0) {
             this.setearEstadoFinalDeseado();
-            return terminoAnimacion;
+            return this.deboCortarAnimacion() || terminoAnimacion;
         }
         else if (this.deboEjecutar()) {
             this.darUnPaso();
-            this.pasosRestantes -= 1;
+            this._pasosRestantes -= 1;
         }
     };
     ComportamientoConVelocidad.prototype.deboEjecutar = function () {
