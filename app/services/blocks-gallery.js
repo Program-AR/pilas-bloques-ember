@@ -11,29 +11,6 @@ export default Ember.Service.extend({
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
-
-    this._capturarErroresDeBloquesConNombreIncorrecto();
-  },
-
-  /*
-   * Este método se encarga de inyectar código en la función de conversión
-   * de bloques a código para detectar problemas de nombres o iconsistencias
-   * en la migración.
-   *
-   * TODO: este método se tiene que eliminar una vez realizada la migración a
-   *       la nueva versión de blockly.
-   */
-  _capturarErroresDeBloquesConNombreIncorrecto() {
-    let blockToCodeBase = Blockly.Generator.prototype.blockToCode;
-
-    Blockly.Generator.prototype.blockToCode = function(a) {
-      try {
-        return blockToCodeBase.call(this, a);
-      } catch (e) {
-        console.error(`El bloque idenficiado como '${a.type}' no existe, ¿tal vez sea un bloque no migrado o con minúsculas y mayúsculas que no coinciden.?`);
-        throw Error(e);
-      }
-    };
   },
 
   /*
