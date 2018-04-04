@@ -5,6 +5,7 @@ export default Ember.Service.extend({
 
   start() {
     this._generarLenguaje();
+    this._definirColores();
     this._definirBloqueAlIniciar();
     this._definirBloquesAccion();
     this._definirBloquesAlias();
@@ -25,15 +26,10 @@ export default Ember.Service.extend({
    *
    */
   crearBloqueAccion(nombre, opciones) {
-    let blockly = this.get('blockly');
-    let opcionesObligatorias = ['descripcion',
-                                'comportamiento',
-                                'argumentos'];
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','comportamiento','argumentos']);
+    opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
-    opciones.color = '#4a6cd4';
-
-    let bloque = blockly.createCustomBlockWithHelper(nombre, opciones);
+    let bloque = this.get('blockly').createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
     return bloque;
   },
@@ -46,14 +42,12 @@ export default Ember.Service.extend({
    * como 'controls_if'.
    */
   crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria) {
-    let blockly = this.get('blockly');
-
     if (!Blockly.Blocks[nombreDelBloqueOriginal]) {
       throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
     }
 
-    let bloque = blockly.createAlias(nombre, nombreDelBloqueOriginal);
-    bloque.categoria = categoria ||  Blockly.Blocks[nombreDelBloqueOriginal].categoria || "Valores";
+    let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal); 
+    bloque.categoria = categoria ||  Blockly.Blocks[nombreDelBloqueOriginal].categoria;
 
     return bloque;
   },
@@ -69,17 +63,12 @@ export default Ember.Service.extend({
    *
    */
   crearBloqueSensor(nombre, opciones) {
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','icono','funcionSensor']);
+    
     let blockly = this.get('blockly');
-    let opcionesObligatorias = ['descripcion',
-                                'icono',
-                                'funcionSensor'];
-
-    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
-    opciones.color = "#2ba3e0";
-
     let bloque = blockly.createCustomBlock(nombre, {
       message0: `%1 ¿${opciones.descripcion}?`,
-      colour: opciones.color,
+      colour: opciones.colour || Blockly.Blocks.sensores.COLOUR,
       inputsInline: true,
       output: null,
       args0: [
@@ -105,15 +94,10 @@ export default Ember.Service.extend({
   },
 
   crearBloqueValor(nombre, opciones) {
-    let blockly = this.get('blockly');
-    let opcionesObligatorias = ['descripcion',
-                                'icono',
-                                'valor'];
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','icono','valor']);
+    opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    this._validar_opciones_obligatorias(nombre, opciones, opcionesObligatorias);
-    opciones.color = "#2ba3e0";
-
-    let bloque = blockly.createBlockValue(nombre, opciones);
+    let bloque = this.get('blockly').createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
 
     return bloque;
@@ -128,6 +112,38 @@ export default Ember.Service.extend({
         throw new Error(`No se puede crear el bloque ${nombre} porque no se indicó un valor para la opción ${opcion}.`);
       }
     });
+  },
+
+  _definirColores(){
+    // Pisar las globales de Blockly es necesario pues usamos algunos bloques de Blockly como aliases.
+    Blockly.Blocks.math.HUE =  94; // En PB 1.1.2 era '#48930e'
+    Blockly.Blocks.logic.HUE = 210; // En PB 1.1.2 era '#5cb712'
+    Blockly.Blocks.procedures.HUE = 290; // En PB 1.1.2 era '#6C52EB'
+    Blockly.Blocks.variables.HUE =  330; // En PB 1.1.2 era '#cc5b22'
+    Blockly.Blocks.texts.HUE = 160; // En PB 1.1.2 era '#4a6cd4'
+    Blockly.Blocks.lists.HUE = 206; // En PB 1.1.2 era '#cc5b22'
+
+    // Para los bloques propios
+    Blockly.Blocks.primitivas = {COLOUR: '#4a6cd4'};
+    Blockly.Blocks.control = {COLOUR: '#ee7d16'};
+    Blockly.Blocks.sensores = {COLOUR: '#2ca5e2'};
+    Blockly.Blocks.direcciones = {COLOUR: '#2ba4e2'};
+    Blockly.Blocks.eventos = {COLOUR: '#00a65a'}; // == boton ejecutar
+
+    // IN SCRATCH THE COLOURS ARE
+    // 4a6cd4 MOTION
+    // 8a55d7 LOOKS
+    // bb42c3 SOUND
+    // 0e9a6c PEN
+    // ee7d16 DATA Variables
+    // cc5b22 DATA Lists
+    // c88330 EVENTS
+    // e1a91a CONTROL
+    // 2ca5e2 SENSING
+    // 5cb712 OPERATORS
+    // 49930e OPERATORS dark
+    // 632d99 MORE BLOCKS
+    // 5e4db3 PARAMS
   },
 
   _definirBloquesAccion() {
@@ -616,7 +632,7 @@ export default Ember.Service.extend({
 
     let bloque = blockly.createCustomBlock('MoverA', {
       message0: "Mover a %1",
-      colour: '#4a6cd4',
+      colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
       nextStatement: true,
@@ -713,7 +729,7 @@ export default Ember.Service.extend({
 
     blockly.createCustomBlock('DibujarLado', {
       message0: "%1 Dibujar lado de %2",
-      colour: '#4a6cd4',
+      colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
       nextStatement: true,
@@ -757,7 +773,7 @@ export default Ember.Service.extend({
 
     blockly.createCustomBlock('GirarGrados', {
       message0: "%1 Girar %2 grados",
-      colour: '#4a6cd4',
+      colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
       nextStatement: true,
@@ -846,8 +862,8 @@ export default Ember.Service.extend({
 
   _definirBloquesAlias() {
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Valores');
-    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Valores');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
+    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
     this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
   },
 
@@ -1010,24 +1026,28 @@ export default Ember.Service.extend({
       descripcion: 'la derecha',
       icono: 'icono.derecha.png',
       valor: 'DirCasillaDerecha',
+      colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaLaIzquierda', {
       descripcion: 'la izquierda',
       icono: 'icono.izquierda.png',
       valor: 'DirCasillaIzquierda',
+      colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaArriba', {
       descripcion: 'arriba',
       icono: 'icono.arriba.png',
       valor: 'DirCasillaArriba',
+      colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaAbajo', {
       descripcion: 'abajo',
       icono: 'icono.abajo.png',
       valor: 'DirCasillaAbajo',
+      colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
   },
@@ -1036,7 +1056,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['al_empezar_a_ejecutar'] = {
       init: function() {
-        this.setColour('#00a65a');
+        this.setColour(Blockly.Blocks.eventos.COLOUR);
 
         this.appendDummyInput().appendField('Al empezar a ejecutar');
 
@@ -1054,7 +1074,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['RepetirVacio'] = {
       init: function() {
-        this.setColour('#ee7d16');
+        this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1102,7 +1122,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['Si'] = {
       init: function() {
-        this.setColour('#ee7d16');
+        this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
             .setCheck('Boolean')
             .appendField('Si');
@@ -1118,7 +1138,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['SiNo'] = {
       init: function() {
-        this.setColour('#ee7d16');
+        this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
             .setCheck('Boolean')
             .appendField('Si');
@@ -1138,7 +1158,7 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['Hasta'] = {
       init: function() {
-        this.setColour('#ee7d16');
+        this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
         this.appendValueInput('condition')
             .setCheck('Boolean')
