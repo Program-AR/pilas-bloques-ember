@@ -347,7 +347,7 @@ export default [
     escena: 'DibujandoCuadrado',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero']
   },
   {
     id: 30,
@@ -359,7 +359,7 @@ export default [
     escena: 'Dibujando5CuadradosHorizontal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero']
   },
   {
     id: 31,
@@ -371,7 +371,7 @@ export default [
     escena: 'Dibujando5CuadradosDiagonal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero']
   },
   {
     id: 32,
@@ -383,7 +383,7 @@ export default [
     escena: 'Dibujando4CuadradosInteriores',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero']
   },
   {
     id: 33,
@@ -395,7 +395,7 @@ export default [
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero']
   },
   {
     id: 34,
