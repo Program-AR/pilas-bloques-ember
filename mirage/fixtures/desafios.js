@@ -334,7 +334,7 @@ export default [
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]". \n Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
-              'VolverAlBordeIzquierdo', 'ComerBananaNano', 'Repetir', 'Si',
+              'VolverAlBordeIzquierdo', 'ComerBananaNano', 'RepetirVacio', 'Repetir', 'Si',
               'Sino', 'Hasta', 'Numero'],
   },
   {
@@ -346,7 +346,7 @@ export default [
     consignaInicial: '',
     escena: 'DibujandoCuadrado',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero']
   },
   {
@@ -358,7 +358,7 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosHorizontal',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero']
   },
   {
@@ -370,7 +370,7 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosDiagonal',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero']
   },
   {
@@ -382,7 +382,7 @@ export default [
     consignaInicial: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.',
     escena: 'Dibujando4CuadradosInteriores',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero']
   },
   {
@@ -394,7 +394,7 @@ export default [
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero']
   },
   {
@@ -406,7 +406,7 @@ export default [
     consignaInicial: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.',
     escena: 'DibujandoHexagono',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
@@ -418,7 +418,7 @@ export default [
     consignaInicial: 'En los polígonos, la suma de todos los ángulos externos es 360',
     escena: 'DibujandoTrianguloEquilatero',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
@@ -430,7 +430,7 @@ export default [
     consignaInicial: 'Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?',
     escena: 'DibujandoPoligonosInteriores',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
@@ -442,7 +442,7 @@ export default [
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',
     escena: 'DibujandoCuevaEstalagtitas',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
               'GirarGrados', 'Numero', 'OpAritmetica']
   },
   {
@@ -453,7 +453,7 @@ export default [
     escena: 'LaFiestaDeDracula',
     enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de los 3 focos una cierta cantidad de veces: 5 veces el primero, 8 el segundo y 12 el tercero.',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
               'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
@@ -464,7 +464,7 @@ export default [
     escena: 'SalvandoLaNavidad',
     enunciado: 'Ayudá a Papá Noel a dejar un regalo al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
     id: 132,
@@ -477,7 +477,7 @@ export default [
     deshabilitado: false,
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
               'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
               'OpAritmetica'],
   },
@@ -490,7 +490,7 @@ export default [
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-              'MoverA', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
               'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
@@ -502,7 +502,7 @@ export default [
     enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
     consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
               'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
               'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
@@ -515,7 +515,7 @@ export default [
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
 		consignaInicial: 'Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'repetir', 'si', 'SiNo', 'Hasta',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
       'Numero', 'OpComparacion', 'OpAritmetica',
