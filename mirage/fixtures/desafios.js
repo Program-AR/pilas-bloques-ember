@@ -321,8 +321,8 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
               'SiguienteColumna',
               'ContarBanana', 'ContarManzana', 'TocandoBanana',
-              'TocandoManzana', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'EstoyAlInicio', 'RepetirVacio', 'LargoColumnaActual']
+              'TocandoManzana','RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+              'EstoyAlInicio',  'LargoColumnaActual']
   },
   {
     id: 28,

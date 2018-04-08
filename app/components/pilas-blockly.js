@@ -161,39 +161,34 @@ export default Ember.Component.extend({
 
     });
 
+    toolbox.push({category: 'Separator', isSeparator: true});
 
-    toolbox = this.ordenar_toolbox(toolbox);
-
-    return toolbox;
+    return this.ordenar_toolbox(toolbox);
   },
 
+  /**
+   * Ordena la lista de ítems de un toolbox (usualmente categorias), por el orden
+   * establecido en Pilas Bloques. 
+   * Las categorías que no están en la lista definida por Pilas Bloques, quedan al final.
+   * @param {*} toolbox 
+   */
   ordenar_toolbox(toolbox) {
-    let orden_inicial = {  // Orden inicial para la lista de categorias.
-      'Primitivas': 1,
-      'Mis procedimientos': 2,
-      'Mis Procedimientos': 2,
-      'Repeticiones': 3,
-      'Alternativas': 4,
-      'Variables': 5,
-      'Valores': 6,
-      'Sensores': 7,
-      'Operadores': 8,
-      'Mis Funciones': 9,
-      'Mis funciones': 10,
-    };
+    let orden_inicial = [ // Orden inicial para la lista de categorias.
+      'Primitivas',
+      'Mis procedimientos',
+      'Repeticiones',
+      'Alternativas',
+      'Variables',
+      'Separator',
+      'Valores',
+      'Sensores',
+      'Operadores',
+      'Mis funciones'
+    ];
 
-    /* Agrega un indicador de orden a la lista de categorías para el toolbox. */
-    let toolbox_con_indicador_de_orden = toolbox.map((e) => {
-      e.indice = orden_inicial[e.category] || 99;
-      return e;
-    });
-
-
-    let toolbox_ordenado = toolbox_con_indicador_de_orden.sort((a, b) => {
-      return (a.indice > b.indice);
-    });
-
-    return toolbox_ordenado;
+    return toolbox.sort((cat1, cat2) => 
+      orden_inicial.indexOf(cat1.category) >= orden_inicial.indexOf(cat2.category)
+    );
   },
 
   /**
