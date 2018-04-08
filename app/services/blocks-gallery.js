@@ -1081,6 +1081,8 @@ export default Ember.Service.extend({
         this.appendValueInput('count')
           .setCheck('Number')
           .appendField('Repetir');
+        this.appendDummyInput()
+          .appendField('veces');
         this.appendStatementInput('block');
       },
       categoria: 'Repeticiones',
