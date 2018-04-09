@@ -104,12 +104,13 @@ full: limpiar_todo full_travis
 
 full_travis: iniciar compilar_ejercicios_pilas
 
-binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_electron_win32
+binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_electron_win32 _compilar_electron_linux64
 	@echo ""
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios':${N}"
 	@echo ""
 	@echo "${G}   binarios/pilas-bloques-${VERSION}.dmg${N}"
 	@echo "${G}   binarios/pilas-bloques-${VERSION}.exe${N}"
+	@echo "${G}   binarios/pilas-bloques-${VERSION}-linux-x64.zip${N}"
 	@echo ""
 
 _preparar_electron:
@@ -130,6 +131,12 @@ _compilar_electron_win32:
 	cp extras/instalador.nsi binarios/pilasBloques-win32-ia32/
 	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
+
+_compilar_electron_linux64:
+	rm -rf binarios/pilasBloques-linux-x64
+	rm -f binarios/pilas-bloques-${VERSION}-linux-x64.zip
+	node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=linux --arch=x64 --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.icns
+	cd binarios; zip -r pilas-bloques-${VERSION}-linux-x64.zip pilasBloques-linux-x64/
 
 actualizar_imagenes:
 	cd scripts; python generarListaImagenes.py
