@@ -1041,4 +1041,28 @@ export default [
       'ComerChurrasco'
     ]
   },
+  	{
+		id: 204,
+		grupoId: 11,
+		nombre: '2.1.2d',
+		titulo: 'Desafío 2.1.2d (Duba)',
+		escena: `new EscenaDuba([
+      ['O', 'O', 'O', 'O', 'O', 'O'],
+      ['O', ' ', 'A', 'O', 'O', 'O'],
+      ['O', 'O', ' ', 'O', 'O', 'O'],
+      ['O', 'O', ' ', ' ', ' ', 'O'],
+      ['O', 'O', 'O', 'P', ' ', 'O'],
+      ['O', 'O', 'O', 'O', 'O', 'O'],      
+		])`,
+		enunciado: '[Completar]',
+		consignaInicial: '[Completar]',
+		debeFelicitarse: true,
+		bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco'
+    ]
+  },
 ];
