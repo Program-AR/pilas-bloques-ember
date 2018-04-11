@@ -61,6 +61,7 @@ deploy:
     - "binarios/pilas-bloques-${VERSION}.dmg"
     - "binarios/pilas-bloques-${VERSION}.exe"
     - "binarios/pilas-bloques-${VERSION}-linux-x64.zip"
+    - "binarios/pilas-bloques-${VERSION}-linux-ia32.zip"
   on:
     tags: true
     all_branches: true
