@@ -970,4 +970,27 @@ export default [
     deshabilitado: true,
   },*/
 
+	{
+		id: 201,
+		grupoId: 11,
+		nombre: '2.1.2a',
+		titulo: 'Desafío 2.1.2a (Duba)',
+		escena: `new EscenaDuba([
+      ['O', 'O', 'O', 'O', 'O', 'O'],
+      ['O', ' ', ' ', ' ', 'O', ' '],
+      [' ', 'A', ' ', ' ', 'P', ' '],
+      [' ', ' ', ' ', 'O', ' ', ' '],
+      ['O', 'O', 'O', 'O', ' ', 'O'],      
+		])`,
+		enunciado: '[Completar]',
+		consignaInicial: '[Completar]',
+		debeFelicitarse: true,
+		bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco'
+    ]
+	},
 ];
