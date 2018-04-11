@@ -1173,5 +1173,50 @@ export default [
     </statement>
     </block>
   </xml>`,
+  },
+  {
+		id: 208,
+		grupoId: 11,
+		nombre: '2.2.3b',
+		titulo: 'Desafío 2.2.3b (Duba)',
+		escena: `new EscenaDuba([
+      ['O', 'O', 'O', 'O', 'O', 'O'],
+      ['O', ' ', ' ', 'O', 'O', 'O'],
+      ['O', ' ', 'P', 'O', 'O', 'O'],
+      ['O', ' ', ' ', 'O', 'O', 'O'],
+      ['O', ' ', ' ', ' ', 'A', 'O'],
+      ['O', 'O', 'O', 'O', 'O', 'O'],      
+		])`,
+		enunciado: '[Completar]',
+		consignaInicial: '[Completar]',
+		debeFelicitarse: true,
+		bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaIzquierda">
+      <next>
+      <block type="MoverACasillaArriba">
+      <next>
+      <block type="MoverACasillaArriba">
+      <next>
+      <block type="ComerChurrasco">
+      </block>
+      </next>
+      </block>
+      </next>
+      </block>
+      </next>
+      </block>
+    </statement>
+    </block>
+  </xml>`,
 	},
 ];

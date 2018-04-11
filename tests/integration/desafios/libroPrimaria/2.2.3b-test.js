@@ -1,0 +1,32 @@
+import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
+
+let nombre = "2.2.3b";
+
+moduloActividad(nombre);
+
+actividadTest(nombre, {
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaIzquierda">
+      <next>
+      <block type="MoverACasillaIzquierda">
+      <next>
+      <block type="MoverACasillaArriba">
+      <next>
+      <block type="MoverACasillaArriba">
+      <next>
+      <block type="ComerChurrasco">
+      </block>
+      </next>
+      </block>
+      </next>
+      </block>
+      </next>
+      </block>
+      </next>
+      </block>
+    </statement>
+    </block>
+  </xml>`,
+});
