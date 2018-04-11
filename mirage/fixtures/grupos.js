@@ -33,5 +33,20 @@ export default [
 		id: 7,
 		libroId: 2,
 		titulo: 'Capítulo 4',
-	},
+  },
+  {
+    id: 11,
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 12,
+    libroId: 2,
+    titulo: 'Capítulo 3: Repetición'
+  },
+  {
+    id: 13,
+    libroId: 2,
+    titulo: 'Capítulo 4: Alternativa condicional'
+  }
 ];
