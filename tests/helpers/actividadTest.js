@@ -85,7 +85,8 @@ function validarOpciones(opciones) {
  *        - cantidadDeActoresAlComenzar: Un diccionario para validar la cantidad de actores en la escena.
  *        - cantidadDeActoresAlTerminar: Un diccionario para validar la cantidad de actores en la escena.
  *        - fps: Los cuadros por segundo esperados (por omisión 200 en los test y 60 normalmente).
- *
+ *        - resuelveDesafio: Si es false, verifica que la solución NO resuelva el problema.
+ * 
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
 export function actividadTest(nombre, opciones) {
