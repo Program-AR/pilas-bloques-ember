@@ -5655,6 +5655,14 @@ var EscenaDuba = (function (_super) {
     function EscenaDuba() {
         _super.apply(this, arguments);
     }
+    EscenaDuba.prototype.iniciar = function () {
+        _super.prototype.iniciar.call(this);
+        this.automata.escala *= 1.5;
+        this.automata.setY(this.automata.getY() + this.automata.getAlto() / 4);
+        pilas.obtener_actores_con_etiqueta('Obstaculo').forEach(function (obstaculo) {
+            obstaculo.escala *= 1.2;
+        });
+    };
     EscenaDuba.prototype.crearAutomata = function () {
         return new Duba();
     };

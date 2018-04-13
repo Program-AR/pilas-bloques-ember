@@ -3,6 +3,15 @@
 /// <reference path = "../../actores/libroPrimaria/Churrasco.ts" />
 
  class EscenaDuba extends EscenaConObstaculos {
+
+	iniciar(){
+		super.iniciar();
+		this.automata.escala *= 1.5;
+		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 4);
+		pilas.obtener_actores_con_etiqueta('Obstaculo').forEach(obstaculo => {
+			obstaculo.escala *= 1.2;
+		});
+	}
 	crearAutomata(){
 		return new Duba();
 	}
