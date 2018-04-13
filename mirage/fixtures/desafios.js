@@ -1206,4 +1206,78 @@ export default [
       'HayChurrasco'
     ],
   },
+  {
+    id: 218,
+    grupoId: 13,
+    nombre: '4.1.4b',
+    titulo: 'Desafío 4.1.4b (Duba)',
+    escena: `new EscenaDuba([
+      [
+        ['O', 'O', 'O', 'O', 'O'],
+        ['O', 'A', ' ', 'P', 'O'],
+        ['O', 'O', 'O', 'O', 'O'],
+        ['O', 'O', 'O', 'O', 'O'],
+        ['O', 'O', 'O', 'O', 'O'],
+      ],
+      [
+        ['O', 'O', 'O', 'O', 'O'],
+        ['O', 'A', 'O', 'O', 'O'],
+        ['O', ' ', 'O', 'O', 'O'],
+        ['O', 'P', 'O', 'O', 'O'],
+        ['O', 'O', 'O', 'O', 'O'],
+      ],
+		], true)`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'sino',
+      'HayObstaculoArriba',
+      'HayObstaculoAbajo',
+      'HayObstaculoIzquierda',
+      'HayObstaculoDerecha'                  
+    ],
+  },
+  {
+    id: 219,
+    grupoId: 13,
+    nombre: '4.1.4c',
+    titulo: 'Desafío 4.1.4c (Duba)',
+    escena: `new EscenaDuba([
+      [
+        ['O', 'O', 'O', 'O', 'O'],
+        [' ', ' ', 'O', ' ', ' '],
+        ['A', ' ', ' ', ' ', 'P'],
+        ['O', 'O', 'O', 'O', 'O'],
+      ],
+      [
+        ['O', 'O', 'O', 'O', 'O'],
+        [' ', ' ', ' ', ' ', ' '],
+        ['A', ' ', 'O', ' ', 'P'],
+        ['O', 'O', 'O', 'O', 'O'],
+      ],
+		], true)`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'sino',
+      'HayObstaculoArriba',
+      'HayObstaculoAbajo',
+      'HayObstaculoIzquierda',
+      'HayObstaculoDerecha'
+    ],
+  },
 ];
