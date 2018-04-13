@@ -15,4 +15,16 @@
 	 premioBuscado(){
 		 return new Churrasco();
 	 }
+	cuadriculaX() {
+		return 0;
+	}
+	cuadriculaY() {
+		return 0;
+	}
+	opsCuadricula(){
+		return {};
+	}
+	opsCasilla(){
+		return {grilla: 'invisible.png'};
+	}
 }

@@ -19,12 +19,12 @@
 	iniciar() {
 		this.fondo = new Fondo(this.archivoFondo(),0,0);
 		this.automata = this.crearAutomata();
-		this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena,
+		this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), this.mapaEscena,
 			{
 				'A': () => this.automata,
 				'O': () => new Obstaculo(this.archivosObstaculos()),
 				'P': () => this.getPremio(),
-			}, {}, {grilla: 'invisible.png'});
+			}, this.opsCuadricula(), this.opsCasilla());
 		this.automata.enviarAlFrente();
 		this.premio.aprender(Flotar,{Desvio:5});
 	}
@@ -54,5 +54,21 @@
 
 	premioBuscado(){
 		//abstracto, retorna una nueva instancia del premio a conseguir.
+	}
+
+	cuadriculaX() {
+		// abstracto; devuelve la posición X en que irá la cuadrícula
+	}
+
+	cuadriculaY() {
+		// abstracto; devuelve la posición Y en que irá la cuadrícula
+	}
+
+	opsCuadricula() {
+		// abstracto; devuelve las opciones para crear la cuadrícula
+	}
+
+	opsCasilla() {
+		// abstracto; devuelve las opciones para las casillas de la cuadrícula
 	}
 }
