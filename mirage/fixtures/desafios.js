@@ -1352,4 +1352,31 @@ export default [
       'repetir'
     ]
   },
+  {
+    id: 212,
+    grupoId: 12,
+    nombre: '3.1.3b',
+    titulo: 'Desafío 3.1.3b (Duba)',
+    escena: `new EscenaDuba([
+      ['O', 'O', ' ', 'O', 'O', ' ', ' ', ' '],
+      ['O', 'P', ' ', 'O', 'O', ' ', ' ', ' '],
+      ['O', ' ', ' ', 'O', ' ', ' ', ' ', ' '],
+      ['O', ' ', 'O', 'O', ' ', ' ', ' ', ' '],
+      ['O', ' ', 'O', 'O', 'O', ' ', ' ', ' '],
+      [' ', ' ', 'O', 'O', 'O', 'O', ' ', ' '],
+      [' ', ' ', 'O', 'O', 'O', 'O', 'O', 'O'],
+      [' ', ' ', 'A', 'O', 'O', 'O', 'O', 'O'],
+		])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'repetir'
+    ]
+  },
 ];
