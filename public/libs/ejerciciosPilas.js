@@ -2510,7 +2510,7 @@ var UnicornioAnimado = (function (_super) {
 var Churrasco = (function (_super) {
     __extends(Churrasco, _super);
     function Churrasco() {
-        _super.call(this, 0, 0, { grilla: 'actor.Churrasco.png' });
+        _super.call(this, 0, 0, { grilla: 'actor.churrasco.png' });
         this.definirAnimacion("parado", [0], 6, true);
     }
     return Churrasco;
@@ -2540,10 +2540,10 @@ var Coty = (function (_super) {
 var Duba = (function (_super) {
     __extends(Duba, _super);
     function Duba() {
-        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 2, cantFilas: 6 });
+        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 1, cantFilas: 1 });
         this.definirAnimacion("parado", [0], 5, true);
-        this.definirAnimacion("correr", [0, 1, 2, 3, 4, 5, 6, 7, 6, 5, 4, 3, 2, 1], 60);
-        this.definirAnimacion("comerChurrasco", [8, 9, 10, 11, 11, 11, 10, 9], 12);
+        this.definirAnimacion("correr", [0], 60);
+        this.definirAnimacion("comerChurrasco", [0], 12);
     }
     return Duba;
 })(ActorAnimado);
@@ -2554,8 +2554,7 @@ var Duba = (function (_super) {
 var Obstaculo = (function (_super) {
     __extends(Obstaculo, _super);
     function Obstaculo(imagenes) {
-        _super.call(this, 0, 0, { grilla: this.randomDe(imagenes), cantColumnas: 4, cantFilas: 1 });
-        this.definirAnimacion("parado", new Cuadros(0).repetirVeces(100).concat([1, 2, 3, 3, 2, 1]), 6, true);
+        _super.call(this, 0, 0, { grilla: this.randomDe(imagenes) });
     }
     Obstaculo.prototype.randomDe = function (lista) {
         return lista[Math.floor(Math.random() * lista.length)];
@@ -5657,7 +5656,7 @@ var EscenaDuba = (function (_super) {
         return new Duba();
     };
     EscenaDuba.prototype.archivosObstaculos = function () {
-        return ["obstaculo.charco.png", "obstaculo.cardo.png"];
+        return ["obstaculo.duba1.png", "obstaculo.duba2.png", "obstaculo.duba3.png", "obstaculo.duba4.png"];
     };
     EscenaDuba.prototype.archivoFondo = function () {
         return "fondo.duba.png";
@@ -5672,10 +5671,10 @@ var EscenaDuba = (function (_super) {
         return 0;
     };
     EscenaDuba.prototype.cuadriculaY = function () {
-        return 0;
+        return -20;
     };
     EscenaDuba.prototype.opsCuadricula = function () {
-        return {};
+        return { ancho: 300, alto: 300 };
     };
     EscenaDuba.prototype.opsCasilla = function () {
         return { grilla: 'invisible.png' };
