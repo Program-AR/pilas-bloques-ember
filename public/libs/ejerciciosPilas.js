@@ -166,6 +166,38 @@ var ActorAnimado = (function (_super) {
     ActorAnimado.prototype.hayIzquierda = function () {
         return this.cuadricula.hayIzquierda(this.casillaActual());
     };
+    ActorAnimado.prototype.tieneEnLaCasillaDeArriba = function (etiqueta) {
+        if (this.hayArriba()) {
+            return this.casillaActual().casillaDeArriba().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver arriba!");
+        }
+    };
+    ActorAnimado.prototype.tieneEnLaCasillaDeAbajo = function (etiqueta) {
+        if (this.hayAbajo()) {
+            return this.casillaActual().casillaDeAbajo().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver abajo!");
+        }
+    };
+    ActorAnimado.prototype.tieneEnLaCasillaASuIzquierda = function (etiqueta) {
+        if (this.hayIzquierda()) {
+            return this.casillaActual().casillaASuIzquierda().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver a la izquierda!");
+        }
+    };
+    ActorAnimado.prototype.tieneEnLaCasillaASuDerecha = function (etiqueta) {
+        if (this.hayDerecha()) {
+            return this.casillaActual().casillaASuDerecha().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver a la derecha!");
+        }
+    };
     ActorAnimado.prototype.tocandoFlechaAbajo = function () {
         if (this.alFinalDelCamino())
             throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
@@ -663,6 +695,18 @@ var Cuadricula = (function (_super) {
     };
     Cuadricula.prototype.colisionan = function (objeto1, objeto2) {
         return (objeto1.casillaActual() == objeto2.casillaActual());
+    };
+    Cuadricula.prototype.hayArriba = function (casilla) {
+        return !(casilla.sos(0, null));
+    };
+    Cuadricula.prototype.hayAbajo = function (casilla) {
+        return !(casilla.sos(this.cantFilas - 1, null));
+    };
+    Cuadricula.prototype.hayIzquierda = function (casilla) {
+        return !(casilla.sos(null, 0));
+    };
+    Cuadricula.prototype.hayDerecha = function (casilla) {
+        return !(casilla.sos(null, this.cantColumnas - 1));
     };
     return Cuadricula;
 })(Actor);

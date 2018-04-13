@@ -1018,6 +1018,36 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
+
+    this.crearBloqueSensor('HayChurrasco', {
+      descripcion: 'Hay un churrasco',
+      icono: 'icono.churrasco.png',
+      funcionSensor: 'tocando("Churrasco")',
+    });
+  
+    this.crearBloqueSensor('HayObstaculoArriba', {
+      descripcion: 'Hay un obstáculo arriba',
+      icono: 'icono.arriba.png',
+      funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
+    });
+  
+    this.crearBloqueSensor('HayObstaculoAbajo', {
+      descripcion: 'Hay un obstáculo abajo',
+      icono: 'icono.abajo.png',
+      funcionSensor: 'tieneEnLaCasillaDeAbajo("Obstaculo")',
+    });
+
+    this.crearBloqueSensor('HayObstaculoIzquierda', {
+      descripcion: 'Hay un obstáculo a la izquierda',
+      icono: 'icono.izquierda.png',
+      funcionSensor: 'tieneEnLaCasillaASuIzquierda("Obstaculo")',
+    });
+
+    this.crearBloqueSensor('HayObstaculoDerecha', {
+      descripcion: 'Hay un obstáculo a la derecha',
+      icono: 'icono.derecha.png',
+      funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
+    });
   },
 
   _definirBloquesQueRepresentanValores() {

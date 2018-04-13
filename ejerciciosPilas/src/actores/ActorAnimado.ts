@@ -92,6 +92,40 @@ class ActorAnimado extends Actor {
     hayIzquierda():Boolean{
       return this.cuadricula.hayIzquierda(this.casillaActual());
     }
+
+    tieneEnLaCasillaDeArriba(etiqueta : String) : Boolean {
+        if (this.hayArriba()) {
+            return this.casillaActual().casillaDeArriba().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver arriba!")
+        }
+    }
+    tieneEnLaCasillaDeAbajo(etiqueta: String): Boolean {
+        if (this.hayAbajo()) {
+            return this.casillaActual().casillaDeAbajo().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver abajo!")
+        }
+    }
+    tieneEnLaCasillaASuIzquierda(etiqueta : String) : Boolean {
+        if (this.hayIzquierda()) {
+            return this.casillaActual().casillaASuIzquierda().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver a la izquierda!")
+        }
+    }
+    tieneEnLaCasillaASuDerecha(etiqueta : String) : Boolean {
+        if (this.hayDerecha()) {
+            return this.casillaActual().casillaASuDerecha().tieneActorConEtiqueta(etiqueta);
+        }
+        else {
+            throw new ActividadError("¡No hay nada para ver a la derecha!")
+        }
+    }            
+
     tocandoFlechaAbajo():Boolean {
       if (this.alFinalDelCamino()) throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
       return this.hayAbajo();

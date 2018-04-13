@@ -180,4 +180,20 @@ class Cuadricula extends Actor {
     colisionan(objeto1, objeto2) {
       return (objeto1.casillaActual() == objeto2.casillaActual());
     }
+
+    hayArriba(casilla : Casilla) : Boolean {
+        return !(casilla.sos(0, null));
+    }
+
+    hayAbajo(casilla: Casilla): Boolean {
+        return !(casilla.sos(this.cantFilas - 1, null));
+    }
+
+    hayIzquierda(casilla: Casilla): Boolean {
+        return !(casilla.sos(null, 0));
+    }
+
+    hayDerecha(casilla : Casilla) : Boolean {
+        return !(casilla.sos(null, this.cantColumnas - 1));
+    }
 }
