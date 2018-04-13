@@ -1160,4 +1160,50 @@ export default [
     </block>
   </xml>`,
   },
+  {
+    id: 216,
+    grupoId: 13,
+    nombre: '4.1.3a',
+    titulo: 'Desafío 4.1.3a (Duba)',
+    escena: `new EscenaDuba([
+      [
+        ['A', 'P?'], 
+      ],
+		],true, 0, 1)`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'HayChurrasco'
+    ],
+  },
+  {
+    id: 217,
+    grupoId: 13,
+    nombre: '4.1.3b',
+    titulo: 'Desafío 4.1.3b (Duba)',
+    escena: `new EscenaDuba([
+      [
+        ['A', 'P?', 'P?'], 
+      ],
+		], true, 0, 2)`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'HayChurrasco'
+    ],
+  },
 ];
