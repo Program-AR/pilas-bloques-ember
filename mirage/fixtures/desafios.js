@@ -1041,7 +1041,7 @@ export default [
       'ComerChurrasco'
     ]
   },
-  	{
+  {
 		id: 204,
 		grupoId: 11,
 		nombre: '2.1.2d',
@@ -1324,7 +1324,7 @@ export default [
     </statement>
     </block>
   </xml>`,
-	},
+  },
   {
     id: 211,
     grupoId: 12,
@@ -1452,6 +1452,59 @@ export default [
       <block type="ComerChurrasco">
       </block>
       </next>
+      </block>
+      </next>
+      </block>
+    </statement>
+    </block>
+  </xml>`,
+  },
+  {
+    id: 215,
+    grupoId: 12,
+    nombre: '3.2.3b',
+    titulo: 'Desafío 3.2.3b (Duba)',
+    escena: `new EscenaDuba([
+      ['O', ' ', ' ', ' ', 'O', 'O', 'O', 'O'],
+      [' ', 'A', ' ', ' ', ' ', ' ', 'O', ' '],
+      ['O', 'O', ' ', ' ', ' ', ' ', ' ', ' '],
+      ['O', 'O', 'O', ' ', ' ', ' ', ' ', ' '],
+      ['O', 'O', 'O', ' ', ' ', ' ', ' ', ' '],
+      ['O', 'O', 'O', 'O', 'O', ' ', 'P', ' '],
+      ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
+      ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
+		])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="MoverACasillaDerecha">
+          <next>
+          <block type="MoverACasillaAbajo">
+          </block>
+          </next>
+          </block>
+        </statement>
+      <next>
+      <block type="ComerChurrasco">
       </block>
       </next>
       </block>
