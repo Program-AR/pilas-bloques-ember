@@ -884,11 +884,11 @@ var CuadriculaAutoLlenante = (function (_super) {
         if (codigo !== '' && codigo != ' ') {
             if (codigo.slice(-1) == '?') {
                 if (Math.random() < .5) {
-                    this.agregarActor(this.diccionarioContenido[codigo.slice(0, -1)](), nroFila, nroColumna, true);
+                    this.agregarActor(this.diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna), nroFila, nroColumna, true);
                 }
             }
             else {
-                this.agregarActor(this.diccionarioContenido[codigo](), nroFila, nroColumna, true);
+                this.agregarActor(this.diccionarioContenido[codigo](nroFila, nroColumna), nroFila, nroColumna, true);
             }
         }
     };
@@ -2553,11 +2553,14 @@ var Duba = (function (_super) {
 */
 var Obstaculo = (function (_super) {
     __extends(Obstaculo, _super);
-    function Obstaculo(imagenes) {
-        _super.call(this, 0, 0, { grilla: this.randomDe(imagenes) });
+    function Obstaculo(imagenes, semilla) {
+        _super.call(this, 0, 0, { grilla: this.randomDe(imagenes, semilla) });
     }
-    Obstaculo.prototype.randomDe = function (lista) {
-        return lista[Math.floor(Math.random() * lista.length)];
+    Obstaculo.prototype.randomDe = function (lista, semilla) {
+        // magia matemática para elegir un elemento random usando un seed
+        var x = Math.sin(semilla) * 10000;
+        var index = Math.floor((x - Math.floor(x)) * lista.length);
+        return lista[index];
     };
     return Obstaculo;
 })(ActorAnimado);
@@ -5556,9 +5559,9 @@ var EscenaConObstaculos = (function (_super) {
         this.automata = this.crearAutomata();
         var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
         this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido, {
-            'A': function () { return _this.automata; },
-            'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
-            'P': function () { return _this.getPremio(); },
+            'A': function (x, y) { return _this.automata; },
+            'O': function (x, y) { return new Obstaculo(_this.archivosObstaculos(), (x + 1) + (x + 1) * (y + 1)); },
+            'P': function (x, y) { return _this.getPremio(); },
         }, this.opsCuadricula(), this.opsCasilla());
         this.automata.enviarAlFrente();
         this.premios.forEach(function (premio) {

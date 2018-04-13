@@ -38,10 +38,10 @@ class CuadriculaAutoLlenante extends Cuadricula {
 		if (codigo !== '' && codigo != ' ') { // si no es casilla libre
 			if (codigo.slice(-1) == '?') { // si debe ser randomizado 
 				if (Math.random() < .5) {
-					this.agregarActor(this.diccionarioContenido[codigo.slice(0,-1)](),nroFila,nroColumna,true);
+					this.agregarActor(this.diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna),nroFila,nroColumna,true);
 				}
 			} else {
-				this.agregarActor(this.diccionarioContenido[codigo](),nroFila,nroColumna,true);
+				this.agregarActor(this.diccionarioContenido[codigo](nroFila, nroColumna),nroFila,nroColumna,true);
 			}
 		}
 	}

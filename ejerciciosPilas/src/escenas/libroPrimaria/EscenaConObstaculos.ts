@@ -30,9 +30,9 @@
 		var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
 		this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido,
 			{
-				'A': () => this.automata,
-				'O': () => new Obstaculo(this.archivosObstaculos()),
-				'P': () => this.getPremio(),
+				'A': (x,y) => this.automata,
+				'O': (x,y) => new Obstaculo(this.archivosObstaculos(), (x+1)+(x+1)*(y+1)),
+				'P': (x,y) => this.getPremio(),
 			}, this.opsCuadricula(), this.opsCasilla());
 		this.automata.enviarAlFrente();
 		this.premios.forEach(premio => {
