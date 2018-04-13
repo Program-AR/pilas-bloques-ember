@@ -15,6 +15,9 @@
 	 premioBuscado(){
 		 return new Churrasco();
 	 }
+	etiquetaPremio() {
+		return "Churrasco";
+	}
 	cuadriculaX() {
 		return 0;
 	}

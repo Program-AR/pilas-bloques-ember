@@ -819,6 +819,8 @@ var CompuAnimada = (function (_super) {
  * Cada contenido puede ser un string, que es el identificador del actor que irá en cada casilla.
  * Por ejemplo se puede usar una letra 'A' para identificar al autómata.
  * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
+ * Si el string finaliza en un signo de interrogación ('?'),
+ * el actor se colocará con una probabilidad de 0.5.
 
  * El diccionarioContenido mapea cada identificador con la función que obtiene a cada actor.
  * Importante: el actor debe crearse AL LLAMAR A ESA FUNCION, y no antes.
@@ -836,7 +838,14 @@ var CuadriculaAutoLlenante = (function (_super) {
         _super.prototype.agregarCasilla.call(this, nroFila, nroColumna);
         var codigo = this.matrizContenido[nroFila][nroColumna];
         if (codigo !== '' && codigo != ' ') {
-            this.agregarActor(this.diccionarioContenido[codigo](), nroFila, nroColumna, true);
+            if (codigo.slice(-1) == '?') {
+                if (Math.random() < .5) {
+                    this.agregarActor(this.diccionarioContenido[codigo.slice(0, -1)](), nroFila, nroColumna, true);
+                }
+            }
+            else {
+                this.agregarActor(this.diccionarioContenido[codigo](), nroFila, nroColumna, true);
+            }
         }
     };
     return CuadriculaAutoLlenante;
@@ -5482,32 +5491,48 @@ var TresNaranjas = (function (_super) {
 /**
 * @class EscenaConObstaculos
 * Abstracta. Sirve para crear escenas con caminos a'la code.org.
-* Al construirla, recibe una matriz que describe el contenido.
+* Al construirla, recibe una array de matrices, cada una de las cuales describe
+* una disposición posible para el tablero.
 */
 var EscenaConObstaculos = (function (_super) {
     __extends(EscenaConObstaculos, _super);
-    function EscenaConObstaculos(mapaEscena) {
+    function EscenaConObstaculos(mapasEscena, aleatorio, xFinal, yFinal) {
+        if (aleatorio === void 0) { aleatorio = false; }
+        if (xFinal === void 0) { xFinal = false; }
+        if (yFinal === void 0) { yFinal = false; }
         _super.call(this);
-        this.mapaEscena = mapaEscena;
+        this.mapasEscena = mapasEscena;
+        this.premios = [];
+        this.aleatorio = aleatorio;
+        this.xFinal = xFinal;
+        this.yFinal = yFinal;
     }
     EscenaConObstaculos.prototype.iniciar = function () {
         var _this = this;
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.crearAutomata();
-        this.cuadricula = new CuadriculaAutoLlenante(0, 0, this.mapaEscena, {
+        var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
+        this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido, {
             'A': function () { return _this.automata; },
             'O': function () { return new Obstaculo(_this.archivosObstaculos()); },
             'P': function () { return _this.getPremio(); },
-        }, {}, { grilla: 'invisible.png' });
+        }, this.opsCuadricula(), this.opsCasilla());
         this.automata.enviarAlFrente();
-        this.premio.aprender(Flotar, { Desvio: 5 });
+        this.premios.forEach(function (premio) {
+            premio.aprender(Flotar, { Desvio: 5 });
+        });
+        if (this.aleatorio) {
+            new FlechaEscenarioAleatorio();
+        }
     };
     EscenaConObstaculos.prototype.getPremio = function () {
-        this.premio = this.premioBuscado();
-        return this.premio;
+        var premio = this.premioBuscado();
+        this.premios.push(premio);
+        return premio;
     };
     EscenaConObstaculos.prototype.estaResueltoElProblema = function () {
-        return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0]) === 0;
+        return this.cantidadObjetosConEtiqueta(this.etiquetaPremio()) === 0 &&
+            (this.xFinal === false || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
     };
     EscenaConObstaculos.prototype.crearAutomata = function () {
         //abstracto, retorna una nueva instancia del autómata.
@@ -5522,6 +5547,23 @@ var EscenaConObstaculos = (function (_super) {
     };
     EscenaConObstaculos.prototype.premioBuscado = function () {
         //abstracto, retorna una nueva instancia del premio a conseguir.
+        return new ActorAnimado(0, 0, {});
+    };
+    EscenaConObstaculos.prototype.etiquetaPremio = function () {
+        // abstracto; devuelve la etiqueta que identifica el premio a conseguir
+        return "";
+    };
+    EscenaConObstaculos.prototype.cuadriculaX = function () {
+        // abstracto; devuelve la posición X en que irá la cuadrícula
+    };
+    EscenaConObstaculos.prototype.cuadriculaY = function () {
+        // abstracto; devuelve la posición Y en que irá la cuadrícula
+    };
+    EscenaConObstaculos.prototype.opsCuadricula = function () {
+        // abstracto; devuelve las opciones para crear la cuadrícula
+    };
+    EscenaConObstaculos.prototype.opsCasilla = function () {
+        // abstracto; devuelve las opciones para las casillas de la cuadrícula
     };
     return EscenaConObstaculos;
 })(EscenaActividad);
@@ -5578,6 +5620,21 @@ var EscenaDuba = (function (_super) {
     };
     EscenaDuba.prototype.premioBuscado = function () {
         return new Churrasco();
+    };
+    EscenaDuba.prototype.etiquetaPremio = function () {
+        return "Churrasco";
+    };
+    EscenaDuba.prototype.cuadriculaX = function () {
+        return 0;
+    };
+    EscenaDuba.prototype.cuadriculaY = function () {
+        return 0;
+    };
+    EscenaDuba.prototype.opsCuadricula = function () {
+        return {};
+    };
+    EscenaDuba.prototype.opsCasilla = function () {
+        return { grilla: 'invisible.png' };
     };
     return EscenaDuba;
 })(EscenaConObstaculos);

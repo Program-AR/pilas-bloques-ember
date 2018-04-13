@@ -5,37 +5,53 @@
 /**
 * @class EscenaConObstaculos
 * Abstracta. Sirve para crear escenas con caminos a'la code.org.
-* Al construirla, recibe una matriz que describe el contenido.
+* Al construirla, recibe una array de matrices, cada una de las cuales describe
+* una disposición posible para el tablero.
 */
  class EscenaConObstaculos extends EscenaActividad {
-	 mapaEscena;
-	 premio;
+	mapasEscena;
+	premios;
+	aleatorio;
+	xFinal;
+	yFinal;
 
-	 constructor(mapaEscena){
-		 super();
-		 this.mapaEscena = mapaEscena;
+	 constructor(mapasEscena, aleatorio = false, xFinal = false, yFinal = false){
+		super();
+		this.mapasEscena = mapasEscena;
+		this.premios = [];
+		this.aleatorio = aleatorio;
+		this.xFinal = xFinal
+		this.yFinal = yFinal;
 	 }
 
 	iniciar() {
 		this.fondo = new Fondo(this.archivoFondo(),0,0);
 		this.automata = this.crearAutomata();
-		this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), this.mapaEscena,
+		var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
+		this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido,
 			{
 				'A': () => this.automata,
 				'O': () => new Obstaculo(this.archivosObstaculos()),
 				'P': () => this.getPremio(),
 			}, this.opsCuadricula(), this.opsCasilla());
 		this.automata.enviarAlFrente();
-		this.premio.aprender(Flotar,{Desvio:5});
+		this.premios.forEach(premio => {
+			premio.aprender(Flotar, {Desvio: 5});
+		});
+		if (this.aleatorio) {
+			new FlechaEscenarioAleatorio();
+		}
 	}
 
-  getPremio(){ // Lazy initializer
-    this.premio = this.premioBuscado();
-    return this.premio;
-  }
+	getPremio(){ // Lazy initializer
+		let premio = this.premioBuscado();
+		this.premios.push(premio);
+		return premio;
+	}
 
 	estaResueltoElProblema(){
-		return this.cantidadObjetosConEtiqueta(this.premio.etiquetas[0])===0
+		return this.cantidadObjetosConEtiqueta(this.etiquetaPremio()) === 0 &&
+			(this.xFinal === false || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
 	}
 
 	crearAutomata() : ActorAnimado{
@@ -52,8 +68,14 @@
 		//se llenará la pantalla.
 	}
 
-	premioBuscado(){
+	premioBuscado() : ActorAnimado{
 		//abstracto, retorna una nueva instancia del premio a conseguir.
+		return new ActorAnimado(0, 0, {});
+	}
+
+	etiquetaPremio() : String {
+		// abstracto; devuelve la etiqueta que identifica el premio a conseguir
+		return "";
 	}
 
 	cuadriculaX() {
