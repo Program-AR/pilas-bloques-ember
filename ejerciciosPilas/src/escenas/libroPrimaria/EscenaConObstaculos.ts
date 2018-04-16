@@ -11,15 +11,13 @@
  class EscenaConObstaculos extends EscenaActividad {
 	mapasEscena;
 	premios;
-	aleatorio;
 	xFinal;
 	yFinal;
 
-	 constructor(mapasEscena, aleatorio = false, xFinal = false, yFinal = false){
+	 constructor(mapasEscena, xFinal = false, yFinal = false){
 		super();
 		this.mapasEscena = mapasEscena;
 		this.premios = [];
-		this.aleatorio = aleatorio;
 		this.xFinal = xFinal
 		this.yFinal = yFinal;
 	 }
@@ -38,8 +36,11 @@
 		this.premios.forEach(premio => {
 			premio.aprender(Flotar, {Desvio: 5});
 		});
-		if (this.aleatorio) {
+		if (this.mapasEscena.length > 1 ||
+			this.mapasEscena[0].some(fila => fila.some(item => item.slice(-1) == '?'))
+		) {
 			new FlechaEscenarioAleatorio();
+			console.log
 		}
 	}
 

@@ -1169,7 +1169,7 @@ export default [
       [
         ['A', 'P?'], 
       ],
-		],true, 0, 1)`,
+		], 0, 1)`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1192,7 +1192,7 @@ export default [
       [
         ['A', 'P?', 'P?'], 
       ],
-		], true, 0, 2)`,
+		], 0, 2)`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1226,7 +1226,7 @@ export default [
         ['O', 'P', 'O', 'O', 'O'],
         ['O', 'O', 'O', 'O', 'O'],
       ],
-		], true)`,
+		])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1262,7 +1262,7 @@ export default [
         ['A', ' ', 'O', ' ', 'P'],
         ['O', 'O', 'O', 'O', 'O'],
       ],
-		], true)`,
+		])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1289,7 +1289,7 @@ export default [
       [
         ['A', ' ', ' ', ' ', ' ', ' ', ' ', 'P?'], 
       ],
-    ], true, 0, 7)`,
+    ], 0, 7)`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1314,7 +1314,7 @@ export default [
       [
         ['A', 'P?', 'P?', 'P?', 'P?', 'P?', 'P?', 'P?'], 
       ]
-    ], true, 0, 7)`,
+    ], 0, 7)`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,

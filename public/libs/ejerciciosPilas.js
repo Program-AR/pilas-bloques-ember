@@ -5542,14 +5542,12 @@ var TresNaranjas = (function (_super) {
 */
 var EscenaConObstaculos = (function (_super) {
     __extends(EscenaConObstaculos, _super);
-    function EscenaConObstaculos(mapasEscena, aleatorio, xFinal, yFinal) {
-        if (aleatorio === void 0) { aleatorio = false; }
+    function EscenaConObstaculos(mapasEscena, xFinal, yFinal) {
         if (xFinal === void 0) { xFinal = false; }
         if (yFinal === void 0) { yFinal = false; }
         _super.call(this);
         this.mapasEscena = mapasEscena;
         this.premios = [];
-        this.aleatorio = aleatorio;
         this.xFinal = xFinal;
         this.yFinal = yFinal;
     }
@@ -5567,8 +5565,10 @@ var EscenaConObstaculos = (function (_super) {
         this.premios.forEach(function (premio) {
             premio.aprender(Flotar, { Desvio: 5 });
         });
-        if (this.aleatorio) {
+        if (this.mapasEscena.length > 1 ||
+            this.mapasEscena[0].some(function (fila) { return fila.some(function (item) { return item.slice(-1) == '?'; }); })) {
             new FlechaEscenarioAleatorio();
+            console.log;
         }
     };
     EscenaConObstaculos.prototype.getPremio = function () {
