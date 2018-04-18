@@ -6023,6 +6023,17 @@ var EscenaTotoLector = (function (_super) {
     };
     return EscenaTotoLector;
 })(EscenaActividad);
+/// <reference path = "EscenaTotoLector.ts" />
+var EscenaTotoEscritor = (function (_super) {
+    __extends(EscenaTotoEscritor, _super);
+    function EscenaTotoEscritor(mapaEscena) {
+        _super.call(this, mapaEscena);
+    }
+    EscenaTotoEscritor.prototype.iniciar = function () {
+        _super.prototype.iniciar.call(this);
+    };
+    return EscenaTotoEscritor;
+})(EscenaTotoLector);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha

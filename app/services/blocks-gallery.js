@@ -63,11 +63,16 @@ export default Ember.Service.extend({
    *
    */
   crearBloqueSensor(nombre, opciones) {
-    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','icono','funcionSensor']);
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'funcionSensor']);
     
+    var formaDelBloque = opciones.icono ? "%1 " : ""; 
+    formaDelBloque += opciones.esBool ? "¿" : "";
+    formaDelBloque += opciones.descripcion;
+    formaDelBloque += opciones.esBool ? "?" : "";
+
     let blockly = this.get('blockly');
     let bloque = blockly.createCustomBlock(nombre, {
-      message0: `%1 ¿${opciones.descripcion}?`,
+      message0: formaDelBloque,
       colour: opciones.colour || Blockly.Blocks.sensores.COLOUR,
       inputsInline: true,
       output: null,
@@ -758,9 +763,57 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['DibujarLado'].categoria = 'Primitivas';
 
+    // Para los desafíos de escribir y leer letras
+    
+    blockly.createCustomBlock('EscribirEnCuadricula', {
+      message0: "%1 Escribir %2",
+      colour: Blockly.Blocks.primitivas.COLOUR,
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "field_image",
+          "src": `iconos/icono.DibujarLinea.png`,
+          "width": 16,
+          "height": 16,
+          "alt": "*"
+        },
+        {
+          "type": "input_value",
+          "name": "texto",
+        }
+      ],
+      code: 'hacer(actor_id, "EscribirEnCuadricula", {texto: $texto});'
+    });
 
+    Blockly.Blocks['EscribirEnCuadricula'].categoria = 'Primitivas';
 
+    Blockly.Blocks['EscribirLetraActual'] = {
+      init: Blockly.Blocks['EscribirEnCuadricula'].init,
+      categoria: Blockly.Blocks['EscribirEnCuadricula'].categoria,
+      toolbox: `
+      <block type="EscribirEnCuadricula">
+        <value name="texto">
+          <block type="letraActual"></block>
+        </value>
+      </block>
+    `
+    };
 
+    Blockly.Blocks['EscribirTexto'] = {
+      init: Blockly.Blocks['EscribirEnCuadricula'].init,
+      categoria: Blockly.Blocks['EscribirEnCuadricula'].categoria,
+      toolbox: `
+      <block type="EscribirEnCuadricula">
+        <value name="texto">
+          <block type="Texto"></block>
+        </value>
+      </block>
+    `
+    };
+
+    
 
 
 
@@ -901,6 +954,7 @@ export default Ember.Service.extend({
       descripcion: 'Hay banana acá',
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
+      esBool: true
     });
     this.crearBloqueAlias('tocandoBanana', 'Tocandobanana');
 
@@ -908,6 +962,7 @@ export default Ember.Service.extend({
       descripcion: 'Hay manzana acá',
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
@@ -916,12 +971,14 @@ export default Ember.Service.extend({
       descripcion: 'Hay una naranja acá',
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
+      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFogata', {
       descripcion: 'Hay fogata acá',
       icono: 'icono.FogataApagada.png',
       funcionSensor: 'tocando("FogataAnimada")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoFogata', 'TocandoFogata');
@@ -930,6 +987,7 @@ export default Ember.Service.extend({
       descripcion: 'Estoy al inicio',
       icono: 'icono.futbolInicio.png',
       funcionSensor: 'tocandoInicio()',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoInicio', 'TocandoInicio');
@@ -938,12 +996,14 @@ export default Ember.Service.extend({
       descripcion: 'Llegué a la pelota',
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
+      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinal', {
       descripcion: 'Llegué al final',
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoFinal', 'TocandoFinal');
@@ -961,6 +1021,7 @@ export default Ember.Service.extend({
       descripcion: 'Estoy en una esquina',
       icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
+      esBool: true
     });
 
     this.crearBloqueAlias('Estoyenunaesquina', 'EstoyEnEsquina');
@@ -970,6 +1031,7 @@ export default Ember.Service.extend({
       descripcion: 'Hay una manzana acá',
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
@@ -978,6 +1040,7 @@ export default Ember.Service.extend({
       descripcion: 'Hay una banana acá',
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
@@ -986,6 +1049,7 @@ export default Ember.Service.extend({
       descripcion: 'Estoy al inicio de la columna',
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
+      esBool: true
     });
 
     this.crearBloqueAlias('estoyInicio', 'EstoyAlInicio');
@@ -994,6 +1058,7 @@ export default Ember.Service.extend({
       descripcion: 'Estoy al final de la columna',
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
+      esBool: true
     });
 
     this.crearBloqueAlias('estoyFinColumna', 'EstoyAlFin');
@@ -1008,24 +1073,28 @@ export default Ember.Service.extend({
       descripcion: 'Puedo mover abajo',
       icono: 'icono.abajo.png',
       funcionSensor: 'tocandoFlechaAbajo()',
+      esBool: true
     });
 
     this.crearBloqueSensor('TocandoDerecha', {
       descripcion: 'Puedo mover a la derecha',
       icono: 'icono.derecha.png',
       funcionSensor: 'tocandoFlechaDerecha()',
+      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinCamino', {
       descripcion: 'Llegó a la meta',
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
+      esBool: true
     });
 
     this.crearBloqueSensor('TocandoQueso', {
       descripcion: 'Hay queso acá',
       icono: 'queso.png',
       funcionSensor: 'tocando("QuesoAnimado")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoQueso', 'TocandoQueso');
@@ -1034,6 +1103,7 @@ export default Ember.Service.extend({
       descripcion: 'Hay lamparita acá',
       icono: 'icono.LamparitaApagada.png',
       funcionSensor: 'tocando("Lamparin")',
+      esBool: true
     });
 
     this.crearBloqueAlias('tocandoLuz', 'TocandoLuz');
@@ -1043,6 +1113,7 @@ export default Ember.Service.extend({
       descripcion: 'Estoy frente al culpable',
       icono: 'icono.culpable.png',
       funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
+      esBool: true
     });
 
     this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
@@ -1051,30 +1122,40 @@ export default Ember.Service.extend({
       descripcion: 'Hay un churrasco',
       icono: 'icono.churrasco.png',
       funcionSensor: 'tocando("Churrasco")',
+      esBool: true
     });
   
     this.crearBloqueSensor('HayObstaculoArriba', {
       descripcion: 'Hay un obstáculo arriba',
       icono: 'icono.arriba.png',
       funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
+      esBool: true
     });
   
     this.crearBloqueSensor('HayObstaculoAbajo', {
       descripcion: 'Hay un obstáculo abajo',
       icono: 'icono.abajo.png',
       funcionSensor: 'tieneEnLaCasillaDeAbajo("Obstaculo")',
+      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoIzquierda', {
       descripcion: 'Hay un obstáculo a la izquierda',
       icono: 'icono.izquierda.png',
       funcionSensor: 'tieneEnLaCasillaASuIzquierda("Obstaculo")',
+      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoDerecha', {
       descripcion: 'Hay un obstáculo a la derecha',
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
+      esBool: true
+    });
+
+    this.crearBloqueSensor('letraActual', {
+      descripcion: 'letra que estoy leyendo',
+      funcionSensor: 'letraActual().elString()',
     });
   },
 
@@ -1107,6 +1188,8 @@ export default Ember.Service.extend({
       valor: 'DirCasillaAbajo',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
+
+    this.crearBloqueAlias('Texto', 'text','Valores');
 
   },
 
