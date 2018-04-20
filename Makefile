@@ -16,9 +16,9 @@ comandos:
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
 	@echo "    ${G}iniciar${N}         Instala dependencias."
-	@echo "    ${G}compilar${N}        Genera los archivos compilados."
+	@echo "    ${G}compilar${N}        Genera los archivos compilados (para desarrolladores)."
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
-	@echo "    ${G}compilar_web${N}    Genera la aplicación para la versión web (desde un iframe)."
+	@echo "    ${G}compilar_prod${N}    Genera la aplicación para deploy (minificada, reducida, etc.)."
 	@echo "    ${G}test_travis${N}     Ejecuta las pruebas como esperamos en travis (en paralelo)."
 	@echo "    ${G}actualizar_imagenes${N}  Actualiza imagenes como iconos."
 	@echo ""
@@ -74,8 +74,8 @@ serve: pre_ember_build
 compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build
 
-compilar_web: pre_ember_build
-	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
+compilar_prod: pre_ember_build
+	./node_modules/ember-cli/bin/ember build --environment=production --output-path dist_prod
 
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch

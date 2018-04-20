@@ -24,7 +24,7 @@ testem.log
 
 public/libs/pilasweb.js
 
-dist_web
+dist_prod
 dist_website
 
 log_descompresion.log

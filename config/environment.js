@@ -57,7 +57,7 @@ module.exports = function(environment) {
     ENV.consultarVersion = false;
   }
 
-  if (environment === 'web' || environment === 'production') {
+  if (environment === 'production') {
     ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
     ENV['googleAnalyticsEnabled'] = true;
   }
