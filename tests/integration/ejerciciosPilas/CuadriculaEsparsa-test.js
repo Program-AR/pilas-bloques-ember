@@ -20,7 +20,7 @@ test('Constructor', function(assert) {
     let cuadricula = new CuadriculaEsparsa(0,0,{alto: 100},
       {grilla:'invisible.png',cantColumnas: 1},
       matriz);
-    assert.ok(cuadricula.casillas.length===22);
+    assert.ok(cuadricula.cantidadCasillas()===22);
     resolve();
   });
 });

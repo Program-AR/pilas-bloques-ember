@@ -209,7 +209,7 @@ var ActorAnimado = (function (_super) {
         return this.hayDerecha();
     };
     ActorAnimado.prototype.alFinalDelCamino = function () {
-        return this.casillaActual() == this.cuadricula.casillas[this.cuadricula.casillas.length - 1];
+        return !this.casillaActual().hayAbajo() && !this.casillaActual().hayDerecha();
     };
     ActorAnimado.prototype.estoyUltimaFila = function () {
         return this.cuadricula.cantFilas - 1 == this.casillaActual().nroFila;
@@ -621,7 +621,7 @@ var Cuadricula = (function (_super) {
     Cuadricula.prototype.setAncho = function (nuevo) {
         this.ancho = nuevo;
         this.opcionesCasilla.ancho = this.calcularAnchoCasilla(nuevo);
-        this.casillas.forEach(function (casilla) { casilla.reubicate(); });
+        this.forEachCasilla(function (casilla) { casilla.reubicate(); });
     };
     Cuadricula.prototype.calcularAnchoCasilla = function (anchoCuad) {
         // anchoCuad = cols * anchoCas + ((cols-1) * separacion)
@@ -634,19 +634,49 @@ var Cuadricula = (function (_super) {
     Cuadricula.prototype.setAlto = function (nuevo) {
         this.alto = nuevo;
         this.opcionesCasilla.alto = this.calcularAltoCasilla(nuevo);
-        this.casillas.forEach(function (casilla) { casilla.reubicate(); });
+        this.forEachCasilla(function (casilla) { casilla.reubicate(); });
     };
     Cuadricula.prototype.calcularAltoCasilla = function (altoCuad) {
         var separacion = this.opcionesCuadricula.separacionEntreCasillas;
         return altoCuad / this.cantFilas -
             (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
     };
-    Cuadricula.prototype.forEachFilaCol = function (func) {
+    Cuadricula.prototype.forEachFila = function (func) {
         for (var nroFila = 0; nroFila < this.cantFilas; nroFila++) {
-            for (var nroColumna = 0; nroColumna < this.cantColumnas; nroColumna++) {
-                func(nroFila, nroColumna);
-            }
+            func(nroFila);
         }
+    };
+    Cuadricula.prototype.forEachCol = function (func) {
+        for (var nroCol = 0; nroCol < this.cantColumnas; nroCol++) {
+            func(nroCol);
+        }
+    };
+    Cuadricula.prototype.forEachFilaCol = function (func) {
+        var _this = this;
+        this.forEachFila(function (nroFila) {
+            return _this.forEachCol(function (nroCol) {
+                return func(nroFila, nroCol);
+            });
+        });
+    };
+    Cuadricula.prototype.forEachCasilla = function (func) {
+        var _this = this;
+        var i = 0;
+        this.forEachFilaCol(function (nroFila, nroCol) {
+            if (_this.casilla(nroFila, nroCol) !== undefined) {
+                func(_this.casilla(nroFila, nroCol), i);
+                i += 1;
+            }
+        });
+    };
+    Cuadricula.prototype.filterCasillas = function (pred) {
+        var cumplen = [];
+        this.forEachCasilla(function (casilla) {
+            if (pred(casilla)) {
+                cumplen.push(casilla);
+            }
+        });
+        return cumplen;
     };
     Cuadricula.prototype.crearCasillas = function () {
         var _this = this;
@@ -656,15 +686,25 @@ var Cuadricula = (function (_super) {
         });
     };
     Cuadricula.prototype.agregarCasilla = function (fila, col) {
-        this.casillas.push(new Casilla(fila, col, this));
+        if (this.casillas[fila] === undefined) {
+            this.casillas[fila] = new Array();
+        }
+        this.casillas[fila][col] = new Casilla(fila, col, this);
+    };
+    Cuadricula.prototype.reemplazarCasilla = function (casillaVieja, casillaNueva) {
+        this.casillas[casillaVieja.nroFila][casillaVieja.nroCol] = casillaNueva;
     };
     Cuadricula.prototype.agregarActor = function (actor, nroF, nroC, escalarACasilla) {
+        if (escalarACasilla === void 0) { escalarACasilla = true; }
+        this.agregarActorEnCasilla(actor, this.casilla(nroF, nroC), escalarACasilla);
+    };
+    Cuadricula.prototype.agregarActorEnCasilla = function (actor, casilla, escalarACasilla) {
         if (escalarACasilla === void 0) { escalarACasilla = true; }
         actor.cuadricula = this;
         if (escalarACasilla) {
             actor.escalarProporcionalALimites(this.anchoCasilla() - 5, this.altoCasilla() - 5);
         }
-        actor.setCasillaActual(this.casilla(nroF, nroC), true);
+        actor.setCasillaActual(casilla, true);
     };
     Cuadricula.prototype.agregarActorEnPerspectiva = function (actor, nroF, nroC, escalarACasilla) {
         if (escalarACasilla === void 0) { escalarACasilla = true; }
@@ -683,8 +723,17 @@ var Cuadricula = (function (_super) {
     Cuadricula.prototype.getOpcionesCasilla = function () {
         return this.opcionesCasilla;
     };
+    /**
+     * Devuelve la casilla de la cuadrícula ubicada en la posición (nroF, nroC).
+     * Si tal casilla no existe, devuelve undefined.
+     */
     Cuadricula.prototype.casilla = function (nroF, nroC) {
-        return this.casillas.filter(function (casilla) { return casilla.sos(nroF, nroC); })[0];
+        if (this.casillas[nroF] !== undefined) {
+            return this.casillas[nroF][nroC];
+        }
+        else {
+            return undefined;
+        }
     };
     Cuadricula.prototype.esFin = function (casilla) {
         return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
@@ -707,6 +756,11 @@ var Cuadricula = (function (_super) {
     };
     Cuadricula.prototype.hayDerecha = function (casilla) {
         return !(casilla.sos(null, this.cantColumnas - 1));
+    };
+    Cuadricula.prototype.cantidadCasillas = function () {
+        var cant = 0;
+        this.forEachCasilla(function (casilla) { return cant += 1; });
+        return cant;
     };
     return Cuadricula;
 })(Actor);
@@ -764,6 +818,18 @@ var Casilla = (function (_super) {
     Casilla.prototype.casillaDeAbajo = function () {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     };
+    Casilla.prototype.hayArriba = function () {
+        return this.cuadricula.hayArriba(this);
+    };
+    Casilla.prototype.hayAbajo = function () {
+        return this.cuadricula.hayAbajo(this);
+    };
+    Casilla.prototype.hayIzquierda = function () {
+        return this.cuadricula.hayIzquierda(this);
+    };
+    Casilla.prototype.hayDerecha = function () {
+        return this.cuadricula.hayDerecha(this);
+    };
     Casilla.prototype.sos = function (nroF, nroC) {
         return (nroF === null || nroF === this.nroFila) &&
             (nroC === null || nroC === this.nroColumna);
@@ -814,7 +880,7 @@ var Casilla = (function (_super) {
         this.cuadricula.opcionesCasilla.grilla = opsCasilla.grilla;
         this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
         this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;
-        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
+        this.cuadricula.reemplazarCasilla(this, nuevoYo);
     };
     return Casilla;
 })(ActorAnimado);
@@ -1487,28 +1553,20 @@ var CuadriculaEsparsa = (function (_super) {
         }
     };
     CuadriculaEsparsa.prototype.completarConObjetosRandom = function (conjuntoDeClases, argumentos) {
+        var _this = this;
+        if (argumentos === void 0) { argumentos = { condiciones: [] }; }
         /*Completa la cuadricula esparsa con objetos random
         Opcionalmente se le puede pasar a argumentos.condiciones
         una lista de funciones que seran evaluadas de manera de evitar
         que en determinadas posiciones de la cuadricula se agreguen objetos.*/
-        for (var index = 0; index < this.casillas.length; ++index) {
-            argumentos = argumentos || {};
-            if (Math.random() < 0.6 && this.sonTodosTrue(argumentos.condiciones, this.casillas[index].nroFila, this.casillas[index].nroColumna, this.matriz)) {
-                this.agregarActor(conjuntoDeClases.dameUno(), this.casillas[index].nroFila, this.casillas[index].nroColumna);
-            }
+        if (argumentos.condiciones === undefined) {
+            argumentos.condiciones = [];
         }
-    };
-    CuadriculaEsparsa.prototype.sonTodosTrue = function (condiciones, fila, col, pmatrix) {
-        /*Toma una lista de funciones y les aplica
-        fila, col. */
-        if (condiciones != undefined) {
-            for (var i = 0; i < condiciones.length; ++i) {
-                if (!condiciones[i](fila, col, pmatrix)) {
-                    return false;
-                }
+        this.forEachCasilla(function (casilla) {
+            if (Math.random() < 0.6 && argumentos.condiciones.every(function (condicion) { return condicion(casilla); })) {
+                _this.agregarActor(conjuntoDeClases.dameUno(), casilla.nroFila, casilla.nroColumna);
             }
-        }
-        return true;
+        });
     };
     CuadriculaEsparsa.prototype.hayDerecha = function (casilla) {
         /*Devuelve true sii existe una casilla
@@ -3815,6 +3873,7 @@ var Camino = (function () {
         this.opcionesCuadricula = opcionesCuadricula;
         this.opcionesCasilla = opcionesCasilla;
         this.direcciones = direcciones;
+        this.puntos = [];
         this.matriz = this.dameMatriz();
     }
     Camino.prototype.escalarCasillasCuadradas = function () {
@@ -3838,20 +3897,22 @@ var Camino = (function () {
         return cuadricula;
     };
     Camino.prototype.cambiarImagenesCasillasCamino = function (cuadricula) {
-        for (var i = 0; i < cuadricula.casillas.length - 1; i++) {
-            cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
-        }
-        cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
-        var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
+        var _this = this;
+        this.puntos.slice(0, -1).forEach(function (punto, i) {
+            cuadricula.casilla(punto.y, punto.x).cambiarImagen(_this.opcionesCasilla[_this.direcciones[i]]);
+        });
+        var ultimoPunto = this.puntos.slice(-1)[0];
+        cuadricula.casilla(ultimoPunto.y, ultimoPunto.x).cambiarImagen('finCamino.png', 1, 4);
+        var llegada = cuadricula.casilla(ultimoPunto.y, ultimoPunto.x); // Porque el cambiarImagen rompe integridad referencial
         llegada.definirAnimacion('->', [0], 1);
         llegada.definirAnimacion('^', [3], 1);
         llegada.definirAnimacion('<-', [2], 1);
         llegada.definirAnimacion('v', [1], 1);
-        llegada.cargarAnimacion(this.direcciones[cuadricula.casillas.length - 2]);
+        llegada.cargarAnimacion(this.direcciones[cuadricula.cantidadCasillas() - 2]);
     };
     Camino.prototype.dameMatriz = function () {
+        var _this = this;
         var aDevolver = [];
-        var puntoActual = new Punto(0, 0);
         for (var filas = 0; filas < this.cantidadFilas; ++filas) {
             var aux = [];
             for (var cols = 0; cols < this.cantidadColumnas; ++cols) {
@@ -3859,12 +3920,14 @@ var Camino = (function () {
             }
             aDevolver.push(aux);
         }
-        //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
+        var puntoActual = new Punto(0, 0);
+        this.puntos.push(puntoActual);
         aDevolver[puntoActual.y][puntoActual.x] = 'T';
-        for (var index = 0; index < this.direcciones.length; index++) {
-            puntoActual = puntoActual.siguienteEn(this.direcciones[index]);
+        this.direcciones.forEach(function (direccion) {
+            puntoActual = puntoActual.siguienteEn(direccion);
+            _this.puntos.push(puntoActual);
             aDevolver[puntoActual.y][puntoActual.x] = 'T';
-        }
+        });
         return aDevolver;
     };
     return Camino;
@@ -4119,12 +4182,12 @@ var ElCangrejoAguafiestas = (function (_super) {
     };
     ElCangrejoAguafiestas.prototype.completarConGlobos = function () {
         var _this = this;
-        this.cuadricula.casillas.forEach(function (c) { if (!c.esEsquina())
-            _this.agregarGlobo(c.nroFila, c.nroColumna); });
+        this.cuadricula.forEachCasilla(function (c) { if (!c.esEsquina())
+            _this.agregarGlobo(c); });
     };
-    ElCangrejoAguafiestas.prototype.agregarGlobo = function (fila, col) {
+    ElCangrejoAguafiestas.prototype.agregarGlobo = function (casilla) {
         var globo = new GloboAnimado();
-        this.cuadricula.agregarActor(globo, fila, col, false);
+        this.cuadricula.agregarActorEnCasilla(globo, casilla, false);
         globo.y += 20;
         globo.escala *= 0.8;
         globo.aprender(Flotar, { Desvio: 5 });
@@ -4273,9 +4336,8 @@ var ElMonoQueSabeContar = (function (_super) {
         this.cuadricula.cambiarImagenInicio('casillainiciomono.png');
         this.cambiarImagenesFin();
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]), { condiciones: [
-                function (fila, col, pmatrix) { return fila != 0; },
-                //no incluye en primera fila
-                function (fila, col, pmatrix) { return pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T'; }
+                function (casilla) { return casilla.hayArriba(); },
+                function (casilla) { return casilla.hayAbajo(); } //no incluye en ultima fila
             ] });
         this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
@@ -4911,10 +4973,9 @@ var LaberintoConQueso = (function (_super) {
     }
     LaberintoConQueso.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
-        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [function (fila, col, pmatrix) {
-                    return pmatrix[fila + 1] != undefined && pmatrix[fila + 1][col] == 'T' ||
-                        pmatrix[fila][col + 1] == 'T';
-                }]
+        this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]), { condiciones: [
+                function (casilla) { return casilla.hayAbajo() || casilla.hayDerecha(); }
+            ]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
     };
@@ -5218,7 +5279,7 @@ var SalvandoLaNavidad = (function (_super) {
         return this.ultimasCasillas().every(function (casilla) { return casilla.tieneActorConEtiqueta('RegaloAnimado'); });
     };
     SalvandoLaNavidad.prototype.ultimasCasillas = function () {
-        return this.cuadricula.casillas.filter(function (casilla) { return casilla.esFin(); });
+        return this.cuadricula.filterCasillas(function (casilla) { return casilla.esFin(); });
     };
     return SalvandoLaNavidad;
 })(EscenaActividad);

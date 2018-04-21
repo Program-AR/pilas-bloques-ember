@@ -7,9 +7,9 @@ class LaberintoConQueso extends LaberintoLargo {
         super.iniciar();
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([QuesoAnimado]),
         {condiciones:
-          [ function(fila,col,pmatrix){return pmatrix[fila+1] != undefined && pmatrix[fila+1][col] == 'T' ||
-                                              pmatrix[fila][col+1] == 'T'
-          }]
+          [
+            (casilla) => casilla.hayAbajo() || casilla.hayDerecha()
+          ]
         });
         this.automata.setZ(pilas.escena_actual().minZ() - 1);
     }

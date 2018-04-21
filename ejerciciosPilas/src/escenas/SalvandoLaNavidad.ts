@@ -27,7 +27,7 @@ class SalvandoLaNavidad extends EscenaActividad {
   }
 
   ultimasCasillas(){
-    return this.cuadricula.casillas.filter( casilla => casilla.esFin() );
+    return this.cuadricula.filterCasillas(casilla => casilla.esFin());
   }
 
 

@@ -31,12 +31,12 @@
       }
 
     private completarConGlobos(){
-      this.cuadricula.casillas.forEach(c => {if(!c.esEsquina()) this.agregarGlobo(c.nroFila,c.nroColumna)});
+      this.cuadricula.forEachCasilla(c => {if(!c.esEsquina()) this.agregarGlobo(c)});
     }
 
-    private agregarGlobo(fila,col){
+    private agregarGlobo(casilla){
       var globo = new GloboAnimado();
-      this.cuadricula.agregarActor(globo,fila,col,false);
+      this.cuadricula.agregarActorEnCasilla(globo,casilla,false);
       globo.y += 20;
       globo.escala *= 0.8;
       globo.aprender(Flotar,{Desvio:5});

@@ -84,42 +84,42 @@ test('Casilla', function(assert) {
   });
 });
 
-test('Constructor', function(assert) {
-  return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-    let escena = prepararEscena(pilas, pilasService);
+// test('Constructor', function(assert) {
+//   return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
+//     let escena = prepararEscena(pilas, pilasService);
 
-    assert.equal(escena.cuadricula.casillas.length,3*5,'tiene la cantidad de casillas que debe');
+//     assert.equal(escena.cuadricula.cantidadCasillas(),3*5,'tiene la cantidad de casillas que debe');
 
-    function estaFueraRango(casillas,index,filas,cols){
-      return casillas[index].nroFila<0 || casillas[index].nroFila>=filas || casillas[index].nroColumna<0 && casillas[index].nroColumna>=cols;
-    }
+//     function estaFueraRango(casillas,index,filas,cols){
+//       return casillas[index].nroFila<0 || casillas[index].nroFila>=filas || casillas[index].nroColumna<0 && casillas[index].nroColumna>=cols;
+//     }
 
-    function sonLaMismaCasilla(casillas,i,j) {
-      return casillas[i].nroFila===casillas[j].nroFila&&casillas[i].nroColumna===casillas[j].nroColumna;
-    }
+//     function sonLaMismaCasilla(casillas,i,j) {
+//       return casillas[i].nroFila===casillas[j].nroFila&&casillas[i].nroColumna===casillas[j].nroColumna;
+//     }
 
-    function todasCoordenadasDistintasEInRange(casillas,cantFilas,cantColumnas) {
-      for (var i = 0; i < casillas.size; i++) {
+//     function todasCoordenadasDistintasEInRange(casillas,cantFilas,cantColumnas) {
+//       for (var i = 0; i < casillas.size; i++) {
 
-        if(estaFueraRango(casillas,i,cantFilas,cantColumnas)){
-          return false;
-        }
+//         if(estaFueraRango(casillas,i,cantFilas,cantColumnas)){
+//           return false;
+//         }
 
-        for (var j = i; j < casillas.size; j++) {
-          if(sonLaMismaCasilla(casillas,i,j)){
-            return false;
-          }
-        }
+//         for (var j = i; j < casillas.size; j++) {
+//           if(sonLaMismaCasilla(casillas,i,j)){
+//             return false;
+//           }
+//         }
 
-      }
+//       }
 
-      return true;
-    }
+//       return true;
+//     }
 
-    assert.equal(todasCoordenadasDistintasEInRange(escena.cuadricula.casillas,3,5),true,'todas las casillas tienen coordenadas distintas e in_range');
-    resolve();
-  });
-});
+//     assert.equal(todasCoordenadasDistintasEInRange(escena.cuadricula.casillas,3,5),true,'todas las casillas tienen coordenadas distintas e in_range');
+//     resolve();
+//   });
+// });
 
 test('Mover a la casilla derecha', function(assert) {
   return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {

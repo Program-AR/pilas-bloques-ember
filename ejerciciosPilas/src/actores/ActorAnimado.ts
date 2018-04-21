@@ -136,7 +136,7 @@ class ActorAnimado extends Actor {
     }
 
     alFinalDelCamino():Boolean{
-      return this.casillaActual()==this.cuadricula.casillas[this.cuadricula.casillas.length-1];
+        return ! this.casillaActual().hayAbajo() && ! this.casillaActual().hayDerecha();
     }
 
     estoyUltimaFila() : Boolean {

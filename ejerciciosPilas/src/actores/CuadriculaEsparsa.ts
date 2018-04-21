@@ -23,30 +23,19 @@ class CuadriculaEsparsa extends Cuadricula{
 		}
   }
 
-  completarConObjetosRandom(conjuntoDeClases,argumentos){
+  completarConObjetosRandom(conjuntoDeClases, argumentos = {condiciones: []}){
     /*Completa la cuadricula esparsa con objetos random
     Opcionalmente se le puede pasar a argumentos.condiciones
     una lista de funciones que seran evaluadas de manera de evitar
     que en determinadas posiciones de la cuadricula se agreguen objetos.*/
-    for(var index=0;index<this.casillas.length;++index){
-      argumentos = argumentos || {};
-      if(Math.random()<0.6&&this.sonTodosTrue(argumentos.condiciones,this.casillas[index].nroFila,this.casillas[index].nroColumna,this.matriz)){
-        this.agregarActor(conjuntoDeClases.dameUno(),this.casillas[index].nroFila,this.casillas[index].nroColumna);
-      }
+    if (argumentos.condiciones === undefined) {
+      argumentos.condiciones = [];
     }
-  }
-
-  sonTodosTrue(condiciones,fila,col,pmatrix){
-    /*Toma una lista de funciones y les aplica
-    fila, col. */
-    if (condiciones!=undefined){
-      for(var i =0;i<condiciones.length;++i){
-        if (!condiciones[i](fila,col,pmatrix)){
-          return false;
-        }
+    this.forEachCasilla((casilla) => {
+      if (Math.random() < 0.6 && argumentos.condiciones.every((condicion) => condicion(casilla))) {
+        this.agregarActor(conjuntoDeClases.dameUno(), casilla.nroFila, casilla.nroColumna);
       }
-    }
-    return true;
+    });
   }
 
   hayDerecha(casilla){

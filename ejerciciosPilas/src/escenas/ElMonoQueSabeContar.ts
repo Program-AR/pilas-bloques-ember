@@ -23,10 +23,8 @@ class ElMonoQueSabeContar extends EscenaActividad {
 
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]),
           {condiciones:[
-            function(fila,col,pmatrix){return fila!=0;},
-            //no incluye en primera fila
-            function(fila,col,pmatrix){return pmatrix[fila+1]!=undefined && pmatrix[fila+1][col]=='T';}
-            //no incluye en ultima fila
+              (casilla) => casilla.hayArriba(), //no incluye en primera fila
+              (casilla) => casilla.hayAbajo() //no incluye en ultima fila
           ]}
           );
 

@@ -11,6 +11,7 @@ class Camino {
   opcionesCasilla;
   matriz;
   direcciones;
+  puntos;
   constructor(x, y, direcciones,cantidadFilas,cantidadColumnas, opcionesCuadricula, opcionesCasilla){
     this.x=x;
     this.y=y;
@@ -19,6 +20,7 @@ class Camino {
     this.opcionesCuadricula=opcionesCuadricula;
     this.opcionesCasilla=opcionesCasilla;
     this.direcciones=direcciones;
+    this.puntos = [];
     this.matriz=this.dameMatriz();
   }
 
@@ -38,45 +40,48 @@ escalarCasillasCuadradas(){
 
   dameCamino(){
       this.escalarCasillasCuadradas();
-      var cuadricula = new  CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
+      var cuadricula = new CuadriculaEsparsa(this.x,this.y,this.opcionesCuadricula,this.opcionesCasilla,this.matriz)
       this.cambiarImagenesCasillasCamino(cuadricula);
       return cuadricula;
   }
 
   cambiarImagenesCasillasCamino(cuadricula){
-    for(var i = 0; i < cuadricula.casillas.length -1; i++){
-      cuadricula.casillas[i].cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
-    }
-    cuadricula.casillas[cuadricula.casillas.length - 1].cambiarImagen('finCamino.png', 1, 4);
-    var llegada = cuadricula.casillas[cuadricula.casillas.length - 1]; // Porque el cambiarImagen rompe integridad referencial
+    this.puntos.slice(0,-1).forEach((punto, i) => {
+      cuadricula.casilla(punto.y,punto.x).cambiarImagen(this.opcionesCasilla[this.direcciones[i]]);
+    });
+    let ultimoPunto = this.puntos.slice(-1)[0];
+    cuadricula.casilla(ultimoPunto.y, ultimoPunto.x).cambiarImagen('finCamino.png', 1, 4);
+    var llegada = cuadricula.casilla(ultimoPunto.y, ultimoPunto.x); // Porque el cambiarImagen rompe integridad referencial
     llegada.definirAnimacion('->', [0], 1);
     llegada.definirAnimacion('^', [3], 1);
     llegada.definirAnimacion('<-', [2], 1);
     llegada.definirAnimacion('v', [1], 1);
-    llegada.cargarAnimacion(this.direcciones[cuadricula.casillas.length - 2]);
+    llegada.cargarAnimacion(this.direcciones[cuadricula.cantidadCasillas() - 2]);
   }
 
 
   dameMatriz(){
-      var aDevolver=[];
-      var puntoActual= new Punto(0,0);
-      for(var filas=0;filas<this.cantidadFilas;++filas){
-        var aux=[]
-        for(var cols=0;cols<this.cantidadColumnas;++cols){
-          aux.push('F');
-        }
-        aDevolver.push(aux);
+    let aDevolver = [];
+
+    for (var filas = 0; filas < this.cantidadFilas; ++filas) {
+      let aux = [];
+      for (var cols = 0; cols < this.cantidadColumnas; ++cols){
+        aux.push('F');
       }
-
-      //var aDevolver = Array(this.cantidadFilas).fill(Array(this.cantidadColumnas).fill('F'));
-
+      aDevolver.push(aux);
+    }
+  
+    let puntoActual = new Punto(0,0);
+    this.puntos.push(puntoActual);
+    aDevolver[puntoActual.y][puntoActual.x] = 'T';
+  
+    this.direcciones.forEach(direccion => {
+      puntoActual = puntoActual.siguienteEn(direccion);
+      this.puntos.push(puntoActual);
       aDevolver[puntoActual.y][puntoActual.x]='T';
-      for(var index=0;index<this.direcciones.length;index++){
-        puntoActual=puntoActual.siguienteEn(this.direcciones[index]);
-        aDevolver[puntoActual.y][puntoActual.x]='T';
-      }
-
-      return aDevolver;
+    })
+  
+    return aDevolver;
   }
 }
 

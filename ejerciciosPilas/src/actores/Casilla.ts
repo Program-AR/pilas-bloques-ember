@@ -66,6 +66,24 @@ class Casilla extends ActorAnimado {
     casillaDeAbajo() {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     }
+
+
+    hayArriba() : Boolean {
+        return this.cuadricula.hayArriba(this);
+    }
+
+    hayAbajo() : Boolean {
+        return this.cuadricula.hayAbajo(this);
+    }
+
+    hayIzquierda() : Boolean {
+        return this.cuadricula.hayIzquierda(this);
+    }
+
+    hayDerecha() : Boolean {
+        return this.cuadricula.hayDerecha(this);
+    }
+
     sos(nroF, nroC) {
         return (nroF === null || nroF === this.nroFila) &&
           (nroC === null || nroC === this.nroColumna);
@@ -115,6 +133,7 @@ class Casilla extends ActorAnimado {
             cantColumnas: this.cuadricula.opcionesCasilla.cantColumnas,
         };
 
+
         this.cuadricula.opcionesCasilla.grilla = nombreImagen;
         this.cuadricula.opcionesCasilla.cantFilas = cantFilas;
         this.cuadricula.opcionesCasilla.cantColumnas = cantColumnas;
@@ -125,6 +144,6 @@ class Casilla extends ActorAnimado {
         this.cuadricula.opcionesCasilla.cantFilas = opsCasilla.cantFilas;
         this.cuadricula.opcionesCasilla.cantColumnas = opsCasilla.cantColumnas;
 
-        this.cuadricula.casillas[this.cuadricula.casillas.indexOf(this)] = nuevoYo;
+        this.cuadricula.reemplazarCasilla(this, nuevoYo);
     }
 }
