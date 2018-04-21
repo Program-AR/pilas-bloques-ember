@@ -5613,6 +5613,9 @@ var TresNaranjas = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "../EscenaActividad.ts" />
 /// <reference path = "../../habilidades/Flotar.ts" />
+/// <reference path = "../../actores/Cuadricula.ts" />
+/// <reference path = "../../actores/FlechaEscenarioAleatorio.ts" />
+/// <reference path = "../../actores/libroPrimaria/Obstaculo.ts" />
 /**
 * @class EscenaConObstaculos
 * Abstracta. Sirve para crear escenas con caminos a'la code.org.
@@ -5622,8 +5625,8 @@ var TresNaranjas = (function (_super) {
 var EscenaConObstaculos = (function (_super) {
     __extends(EscenaConObstaculos, _super);
     function EscenaConObstaculos(mapasEscena, xFinal, yFinal) {
-        if (xFinal === void 0) { xFinal = false; }
-        if (yFinal === void 0) { yFinal = false; }
+        if (xFinal === void 0) { xFinal = undefined; }
+        if (yFinal === void 0) { yFinal = undefined; }
         _super.call(this);
         this.mapasEscena = mapasEscena;
         this.premios = [];
@@ -5637,28 +5640,31 @@ var EscenaConObstaculos = (function (_super) {
         var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
         this.cuadricula = new Cuadricula(this.cuadriculaX(), this.cuadriculaY(), mapaElegido.length, mapaElegido[0].length, this.opsCuadricula(), this.opsCasilla());
         this.cuadricula.autollenar(mapaElegido, {
-            'A': function (x, y) { return _this.automata; },
-            'O': function (x, y) { return new Obstaculo(_this.archivosObstaculos(), (x + 1) + (x + 1) * (y + 1)); },
-            'P': function (x, y) { return _this.getPremio(); },
+            'A': function (fila, col) { return _this.automata; },
+            'O': function (fila, col) { return _this.obtenerObstaculo(fila, col); },
+            'P': function (fila, col) { return _this.obtenerPremio(); },
         });
         this.automata.enviarAlFrente();
         this.premios.forEach(function (premio) {
             premio.aprender(Flotar, { Desvio: 5 });
         });
-        if (this.mapasEscena.length > 1 ||
-            this.mapasEscena[0].some(function (fila) { return fila.some(function (item) { return item.slice(-1) == '?'; }); })) {
+        if (this.tieneAleatoriedad()) {
             new FlechaEscenarioAleatorio();
-            console.log;
         }
     };
-    EscenaConObstaculos.prototype.getPremio = function () {
+    EscenaConObstaculos.prototype.obtenerPremio = function () {
         var premio = this.premioBuscado();
         this.premios.push(premio);
         return premio;
     };
+    EscenaConObstaculos.prototype.obtenerObstaculo = function (fila, col) {
+        // TODO: Definir si la tarea de elegir un obstáculo al azar no le corresponde a la escena.
+        // TODO: Definir si está bien que la semilla dependa de (fila, columna).
+        return new Obstaculo(this.archivosObstaculos(), (fila + 1) + (fila + 1) * (col + 1));
+    };
     EscenaConObstaculos.prototype.estaResueltoElProblema = function () {
         return this.cantidadObjetosConEtiqueta(this.etiquetaPremio()) === 0 &&
-            (this.xFinal === false || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
+            (this.xFinal === undefined || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
     };
     EscenaConObstaculos.prototype.crearAutomata = function () {
         //abstracto, retorna una nueva instancia del autómata.
@@ -5690,6 +5696,10 @@ var EscenaConObstaculos = (function (_super) {
     };
     EscenaConObstaculos.prototype.opsCasilla = function () {
         // abstracto; devuelve las opciones para las casillas de la cuadrícula
+    };
+    EscenaConObstaculos.prototype.tieneAleatoriedad = function () {
+        return this.mapasEscena.length > 1 ||
+            this.mapasEscena[0].some(function (fila) { return fila.some(function (item) { return item.slice(-1) == '?'; }); });
     };
     return EscenaConObstaculos;
 })(EscenaActividad);

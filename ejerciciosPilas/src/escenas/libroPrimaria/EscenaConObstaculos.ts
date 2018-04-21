@@ -1,5 +1,8 @@
 /// <reference path = "../EscenaActividad.ts" />
 /// <reference path = "../../habilidades/Flotar.ts" />
+/// <reference path = "../../actores/Cuadricula.ts" />
+/// <reference path = "../../actores/FlechaEscenarioAleatorio.ts" />
+/// <reference path = "../../actores/libroPrimaria/Obstaculo.ts" />
 
 /**
 * @class EscenaConObstaculos
@@ -13,7 +16,7 @@
 	xFinal;
 	yFinal;
 
-	 constructor(mapasEscena, xFinal = false, yFinal = false){
+	 constructor(mapasEscena, xFinal = undefined, yFinal = undefined){
 		super();
 		this.mapasEscena = mapasEscena;
 		this.premios = [];
@@ -30,32 +33,35 @@
 		this.cuadricula.autollenar(
 			mapaElegido,
 			{
-				'A': (x, y) => this.automata,
-				'O': (x, y) => new Obstaculo(this.archivosObstaculos(), (x + 1) + (x + 1) * (y + 1)),
-				'P': (x, y) => this.getPremio(),
+				'A': (fila, col) => this.automata,
+				'O': (fila, col) => this.obtenerObstaculo(fila, col),
+				'P': (fila, col) => this.obtenerPremio(),
 			}
 		)
 		this.automata.enviarAlFrente();
 		this.premios.forEach(premio => {
 			premio.aprender(Flotar, {Desvio: 5});
 		});
-		if (this.mapasEscena.length > 1 ||
-			this.mapasEscena[0].some(fila => fila.some(item => item.slice(-1) == '?'))
-		) {
+		if (this.tieneAleatoriedad()) {
 			new FlechaEscenarioAleatorio();
-			console.log
 		}
 	}
 
-	getPremio(){ // Lazy initializer
+	obtenerPremio(){ // Lazy initializer
 		let premio = this.premioBuscado();
 		this.premios.push(premio);
 		return premio;
 	}
 
+	obtenerObstaculo(fila, col) {
+		// TODO: Definir si la tarea de elegir un obstáculo al azar no le corresponde a la escena.
+		// TODO: Definir si está bien que la semilla dependa de (fila, columna).
+		return new Obstaculo(this.archivosObstaculos(), (fila + 1) + (fila + 1) * (col + 1));
+	}
+
 	estaResueltoElProblema(){
 		return this.cantidadObjetosConEtiqueta(this.etiquetaPremio()) === 0 &&
-			(this.xFinal === false || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
+			(this.xFinal === undefined || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
 	}
 
 	crearAutomata() : ActorAnimado{
@@ -77,7 +83,7 @@
 		return new ActorAnimado(0, 0, {});
 	}
 
-	etiquetaPremio() : String {
+	etiquetaPremio() : string {
 		// abstracto; devuelve la etiqueta que identifica el premio a conseguir
 		return "";
 	}
@@ -96,5 +102,10 @@
 
 	opsCasilla() {
 		// abstracto; devuelve las opciones para las casillas de la cuadrícula
+	}
+
+	tieneAleatoriedad() : boolean {
+		return this.mapasEscena.length > 1 ||
+			this.mapasEscena[0].some(fila => fila.some(item => item.slice(-1) == '?'));
 	}
 }
