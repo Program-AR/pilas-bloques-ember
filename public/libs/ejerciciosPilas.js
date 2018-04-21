@@ -762,6 +762,25 @@ var Cuadricula = (function (_super) {
         this.forEachCasilla(function (casilla) { return cant += 1; });
         return cant;
     };
+    Cuadricula.prototype.autollenar = function (matrizContenido, diccionarioContenido, proba) {
+        var _this = this;
+        if (proba === void 0) { proba = 0.5; }
+        this.forEachCasilla(function (casilla) {
+            var nroFila = casilla.nroFila;
+            var nroColumna = casilla.nroColumna;
+            var codigo = matrizContenido[nroFila][nroColumna];
+            if (codigo !== '' && codigo != ' ') {
+                if (codigo.slice(-1) == '?') {
+                    if (Math.random() < proba) {
+                        _this.agregarActorEnCasilla(diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna), casilla, true);
+                    }
+                }
+                else {
+                    _this.agregarActorEnCasilla(diccionarioContenido[codigo](nroFila, nroColumna), casilla, true);
+                }
+            }
+        });
+    };
     return Cuadricula;
 })(Actor);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
@@ -5594,7 +5613,6 @@ var TresNaranjas = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "../EscenaActividad.ts" />
 /// <reference path = "../../habilidades/Flotar.ts" />
-/// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
 /**
 * @class EscenaConObstaculos
 * Abstracta. Sirve para crear escenas con caminos a'la code.org.
@@ -5617,11 +5635,12 @@ var EscenaConObstaculos = (function (_super) {
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.crearAutomata();
         var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
-        this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido, {
+        this.cuadricula = new Cuadricula(this.cuadriculaX(), this.cuadriculaY(), mapaElegido.length, mapaElegido[0].length, this.opsCuadricula(), this.opsCasilla());
+        this.cuadricula.autollenar(mapaElegido, {
             'A': function (x, y) { return _this.automata; },
             'O': function (x, y) { return new Obstaculo(_this.archivosObstaculos(), (x + 1) + (x + 1) * (y + 1)); },
             'P': function (x, y) { return _this.getPremio(); },
-        }, this.opsCuadricula(), this.opsCasilla());
+        });
         this.automata.enviarAlFrente();
         this.premios.forEach(function (premio) {
             premio.aprender(Flotar, { Desvio: 5 });

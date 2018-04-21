@@ -1,6 +1,5 @@
 /// <reference path = "../EscenaActividad.ts" />
 /// <reference path = "../../habilidades/Flotar.ts" />
-/// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
 
 /**
 * @class EscenaConObstaculos
@@ -25,13 +24,17 @@
 	iniciar() {
 		this.fondo = new Fondo(this.archivoFondo(),0,0);
 		this.automata = this.crearAutomata();
-		var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
-		this.cuadricula = new CuadriculaAutoLlenante(this.cuadriculaX(), this.cuadriculaY(), mapaElegido,
+		let mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
+		this.cuadricula = new Cuadricula(this.cuadriculaX(), this.cuadriculaY(), mapaElegido.length,
+			mapaElegido[0].length, this.opsCuadricula(), this.opsCasilla());
+		this.cuadricula.autollenar(
+			mapaElegido,
 			{
-				'A': (x,y) => this.automata,
-				'O': (x,y) => new Obstaculo(this.archivosObstaculos(), (x+1)+(x+1)*(y+1)),
-				'P': (x,y) => this.getPremio(),
-			}, this.opsCuadricula(), this.opsCasilla());
+				'A': (x, y) => this.automata,
+				'O': (x, y) => new Obstaculo(this.archivosObstaculos(), (x + 1) + (x + 1) * (y + 1)),
+				'P': (x, y) => this.getPremio(),
+			}
+		)
 		this.automata.enviarAlFrente();
 		this.premios.forEach(premio => {
 			premio.aprender(Flotar, {Desvio: 5});

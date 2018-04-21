@@ -254,4 +254,21 @@ class Cuadricula extends Actor {
         this.forEachCasilla(casilla => cant += 1);
         return cant;
     }
+
+    autollenar(matrizContenido : Array<Array<string>>, diccionarioContenido, proba : number = 0.5) : void {
+        this.forEachCasilla((casilla : Casilla) => {
+            let nroFila = casilla.nroFila;
+            let nroColumna = casilla.nroColumna;
+            let codigo = matrizContenido[nroFila][nroColumna];
+            if (codigo !== '' && codigo != ' ') { // si no es casilla libre
+                if (codigo.slice(-1) == '?') { // si debe ser randomizado 
+                    if (Math.random() < proba) {
+                        this.agregarActorEnCasilla(diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna), casilla, true);
+                    }
+                } else {
+                    this.agregarActorEnCasilla(diccionarioContenido[codigo](nroFila, nroColumna), casilla, true);
+                }
+            }
+        });
+    }
 }
