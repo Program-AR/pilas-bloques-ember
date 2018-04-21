@@ -13,11 +13,10 @@ Number.prototype.times = function(object){
 	this.timesRepeat(function(){l.push(object)});
 	return l;
 };/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-var __extends = this.__extends || function (d, b) {
+var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 /* @class HabilidadAnimada
  * Es la clase de la que heredan todas en ejerciciosPilas, donde
@@ -659,6 +658,14 @@ var Cuadricula = (function (_super) {
             });
         });
     };
+    /**
+     * Itera sobre todas las casillas de la cuadrícula y aplica la función
+     * recibida por parámetro. Las casillas se recorren *ordenadamente*,
+     * de izquierda a derecha y de arriba hacia abajo.
+     * @param func Función que se aplica a cada casilla. Recibe hasta
+     * dos parámetros: la casilla sobre la que se está iterando y un
+     * índice que se incrementa con cada casilla.
+     */
     Cuadricula.prototype.forEachCasilla = function (func) {
         var _this = this;
         var i = 0;
@@ -706,6 +713,16 @@ var Cuadricula = (function (_super) {
         }
         actor.setCasillaActual(casilla, true);
     };
+    Cuadricula.prototype.agregarActorEnProximaCasillaLibre = function (actor, escalarACasilla) {
+        if (escalarACasilla === void 0) { escalarACasilla = true; }
+        var casillaDestino = this.proximaCasillaLibre();
+        if (casillaDestino) {
+            this.agregarActorEnCasilla(actor, this.proximaCasillaLibre(), escalarACasilla);
+        }
+        else {
+            throw Error("Ya no quedan casillas libres");
+        }
+    };
     Cuadricula.prototype.agregarActorEnPerspectiva = function (actor, nroF, nroC, escalarACasilla) {
         if (escalarACasilla === void 0) { escalarACasilla = true; }
         this.agregarActor(actor, nroF, nroC, false);
@@ -735,6 +752,9 @@ var Cuadricula = (function (_super) {
             return undefined;
         }
     };
+    Cuadricula.prototype.proximaCasillaLibre = function () {
+        return this.filterCasillas(function (casilla) { return casilla.estaLibre(); })[0];
+    };
     Cuadricula.prototype.esFin = function (casilla) {
         return this.cantFilas == 1 && casilla.sos(0, this.cantColumnas - 1) ||
             this.cantColumnas == 1 && casilla.sos(this.cantFilas - 1, 0);
@@ -762,6 +782,28 @@ var Cuadricula = (function (_super) {
         this.forEachCasilla(function (casilla) { return cant += 1; });
         return cant;
     };
+    /**
+     * Este método sirve para llenar una cuadrícula de elementos
+     * a partir de una matriz que la describe.
+     * Se pensó originalmente para realizar un camino al estilo de
+     * las actividades iniciales de code.org, con varios obstáculos.
+     * @param matrizContenido Es una matriz de 2 dimensiones.
+     * Cada contenido puede ser un string, que es el identificador del actor que irá en cada casilla.
+     * Por ejemplo se puede usar una letra 'A' para identificar al autómata.
+     * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".
+     * Si el string finaliza en un signo de interrogación ('?'), se decidirá si
+     * colocar o no el actor de manera aleatoria.
+     * @param diccionarioContenido Diccionario que mapea cada identificador con la función que obtiene a cada actor.
+     * Importante: el actor debe crearse AL LLAMAR A ESA FUNCION, y no antes.
+     * La función recibirá dos parámetros: el número de fila y el número de columna
+     * de la casilla donde se colocará el actor, respectivamente.
+     * Se puede usar el identificador 'default' para brindar una función a utilizar
+     * cuando la matriz contiene un código que no está presente en el diccionario. La función
+     * recibirá dicho código como primer parámetro.
+     * @param proba Número entre 0 y 1.
+     * Indica la probabilidad con la que se colocan los actores indicados como aleatorios.
+     * El valor por defecto es 0.5.
+     */
     Cuadricula.prototype.autollenar = function (matrizContenido, diccionarioContenido, proba) {
         var _this = this;
         if (proba === void 0) { proba = 0.5; }
@@ -769,16 +811,24 @@ var Cuadricula = (function (_super) {
             var nroFila = casilla.nroFila;
             var nroColumna = casilla.nroColumna;
             var codigo = matrizContenido[nroFila][nroColumna];
-            if (codigo !== '' && codigo != ' ') {
-                if (codigo.slice(-1) == '?') {
-                    if (Math.random() < proba) {
-                        _this.agregarActorEnCasilla(diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna), casilla, true);
-                    }
-                }
-                else {
-                    _this.agregarActorEnCasilla(diccionarioContenido[codigo](nroFila, nroColumna), casilla, true);
-                }
+            if (codigo == '' || codigo == ' ')
+                return; // si es casilla libre
+            if (codigo.slice(-1) == '?') {
+                codigo = codigo.slice(0, -1);
+                if (Math.random() > proba)
+                    return;
             }
+            var actor;
+            if (codigo in diccionarioContenido) {
+                actor = diccionarioContenido[codigo](nroFila, nroColumna);
+            }
+            else if ('default' in diccionarioContenido) {
+                actor = diccionarioContenido['default'](codigo, nroFila, nroColumna);
+            }
+            else {
+                throw Error("Código de actor no definido en diccionarioContenido");
+            }
+            _this.agregarActorEnCasilla(actor, casilla, true);
         });
     };
     return Cuadricula;
@@ -873,8 +923,14 @@ var Casilla = (function (_super) {
     Casilla.prototype.eliminarActor = function (unActor) {
         this.actores.splice(this.actores.indexOf(unActor), 1);
     };
+    Casilla.prototype.estaLibre = function () {
+        return this.actores.length == 0;
+    };
     Casilla.prototype.tieneActorConEtiqueta = function (unaEtq) {
         return this.actores.some(function (actor) { return actor.tiene_etiqueta(unaEtq); });
+    };
+    Casilla.prototype.actoresConEtiqueta = function (unaEtq) {
+        return this.actores.filter(function (actor) { return actor.tiene_etiqueta(unaEtq); });
     };
     Casilla.prototype.cambiarImagen = function (nombre, cantFilas, cantColumnas) {
         if (cantFilas === void 0) { cantFilas = 1; }
@@ -1308,9 +1364,57 @@ var Direct = (function () {
     };
     return Direct;
 })();
+/// <reference path = "../../../dependencias/pilasweb.d.ts" />
+/**
+ * Actor que representa una letra en una cuadrícula.
+ */
+var Letra = (function (_super) {
+    __extends(Letra, _super);
+    /**
+     * @param unString Indica la letra que será representada por el actor (case insensitive).
+     */
+    function Letra(unString) {
+        var caracter = Letra.primerLetraDeString(unString);
+        _super.call(this, 0, 0, {
+            grilla: "actor.letra.png",
+            cantColumnas: 26,
+            cantFilas: 1,
+            cuadrosParado: [Letra.indiceDeCaracter(caracter)]
+        });
+        this._caracter = caracter;
+    }
+    /**
+     * Devuelve la letra representada por el actor (en mayúsculas).
+     */
+    Letra.prototype.caracter = function () {
+        return this._caracter;
+    };
+    /**
+     * Auxiliar para recuperar la primer letra de un string, en mayúsculas.
+     * Falla si no es una letra.
+     */
+    Letra.primerLetraDeString = function (unString) {
+        var caracter = unString[0].toUpperCase();
+        if (caracter.charCodeAt(0) >= 65 && caracter.charCodeAt(0) <= 90) {
+            return caracter;
+        }
+        else {
+            throw Error("El caracter proporcionado no es una letra");
+        }
+    };
+    /**
+     * Convierte una letra en mayúsculas a un código numérico.
+     * A => 0, B => 1, C => 2 y así sucesivamente.
+     */
+    Letra.indiceDeCaracter = function (unString) {
+        return unString.charCodeAt(0) - 65;
+    };
+    return Letra;
+})(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
 /// <reference path = "../escenas/Errores.ts" />
+/// <reference path = "../actores/libroPrimaria/Letra.ts" />
 var MovimientoEnCuadricula = (function (_super) {
     __extends(MovimientoEnCuadricula, _super);
     function MovimientoEnCuadricula() {
@@ -1549,6 +1653,71 @@ var SiguienteColumna = (function (_super) {
     };
     return SiguienteColumna;
 })(MoverACasillaDerecha);
+/**
+ * Comportamiento que extiende un movimiento por la cuadrícula
+ * con una lectura. El actor receptor debe tener definida la propiedad
+ * 'cuadriculaLectura'. Si en la casilla de llegada hay un actor Letra,
+ * su contenido se registra en la cuadrícula de lectura del receptor.
+ */
+var MovimientoConLectura = (function (_super) {
+    __extends(MovimientoConLectura, _super);
+    function MovimientoConLectura() {
+        _super.apply(this, arguments);
+    }
+    MovimientoConLectura.prototype.postAnimacion = function () {
+        _super.prototype.postAnimacion.call(this);
+        var casilla = this.receptor.casillaActual();
+        if (this.hayLetra(casilla)) {
+            var caracter = this.caracterEnCasilla(casilla);
+            var casillaLectura = this.receptor.cuadriculaLectura.proximaCasillaLibre();
+            if (casillaLectura) {
+                this.receptor.cuadriculaLectura.agregarActorEnProximaCasillaLibre(new Letra(caracter));
+            }
+            else {
+                throw new ActividadError("Ya leí mucho, ¡estoy cansado!");
+            }
+        }
+    };
+    MovimientoConLectura.prototype.hayLetra = function (casilla) {
+        return casilla.tieneActorConEtiqueta('Letra');
+    };
+    MovimientoConLectura.prototype.caracterEnCasilla = function (casilla) {
+        return casilla.actoresConEtiqueta('Letra')[0].caracter();
+    };
+    return MovimientoConLectura;
+})(MovimientoEnCuadricula);
+var MoverLeyendoDerecha = (function (_super) {
+    __extends(MoverLeyendoDerecha, _super);
+    function MoverLeyendoDerecha() {
+        _super.apply(this, arguments);
+        this.direccionCasilla = new DirCasillaDerecha();
+    }
+    return MoverLeyendoDerecha;
+})(MovimientoConLectura);
+var MoverLeyendoArriba = (function (_super) {
+    __extends(MoverLeyendoArriba, _super);
+    function MoverLeyendoArriba() {
+        _super.apply(this, arguments);
+        this.direccionCasilla = new DirCasillaArriba();
+    }
+    return MoverLeyendoArriba;
+})(MovimientoConLectura);
+var MoverLeyendoAbajo = (function (_super) {
+    __extends(MoverLeyendoAbajo, _super);
+    function MoverLeyendoAbajo() {
+        _super.apply(this, arguments);
+        this.direccionCasilla = new DirCasillaAbajo();
+    }
+    return MoverLeyendoAbajo;
+})(MovimientoConLectura);
+var MoverLeyendoIzquierda = (function (_super) {
+    __extends(MoverLeyendoIzquierda, _super);
+    function MoverLeyendoIzquierda() {
+        _super.apply(this, arguments);
+        this.direccionCasilla = new DirCasillaIzquierda();
+    }
+    return MoverLeyendoIzquierda;
+})(MovimientoConLectura);
 /// <reference path="../comportamientos/MovimientosEnCuadricula.ts"/>
 /// <reference path="Cuadricula.ts"/>
 /*
@@ -1709,6 +1878,8 @@ var CuadriculaMultiple = (function (_super) {
             this.casilla(nroFila, this.dameIndexUltimaPosicion(nroFila)).cambiarImagen(nuevaImagen);
         }
     };
+    // Este método era privado, pero se lo usa desde 'FutbolDeRobots'.
+    // Cambiado a público.
     CuadriculaMultiple.prototype.dameIndexUltimaPosicion = function (nroFila) {
         var index = 0;
         while (this.pmatrix[nroFila][index + 1] == 'T') {
@@ -1871,14 +2042,16 @@ var Tablero = (function (_super) {
         this.margen = args.margen || 6;
     };
     Tablero.prototype.buildLabel = function (argumentos) {
-        this.label = new Texto(0, this.y, argumentos.texto, { color: this.colorTxtLabel,
+        this.label = new Texto(0, // no importa, luego se actualiza
+        this.y, argumentos.texto, { color: this.colorTxtLabel,
             imagenFondo: argumentos.imagenLabel,
             margen: this.margen,
         });
         this.label.setZ(this.z - 1);
     };
     Tablero.prototype.buildPuntaje = function (argumentos) {
-        this.puntaje = new Puntaje(0, this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
+        this.puntaje = new Puntaje(0, // no importa, luego se actualiza
+        this.label.y + this.separacionY, argumentos.valorInicial || 0, { color: this.colorTxtPuntaje,
             imagenFondo: argumentos.imagenPuntaje,
             margen: this.margen,
         });
@@ -2640,6 +2813,15 @@ var Obstaculo = (function (_super) {
         return lista[index];
     };
     return Obstaculo;
+})(ActorAnimado);
+/// <reference path="../ActorAnimado.ts"/>
+var Toto = (function (_super) {
+    __extends(Toto, _super);
+    function Toto() {
+        _super.call(this, 0, 0, { grilla: 'actor.toto.png', cantFilas: 1, cantColumnas: 1 });
+    }
+    ;
+    return Toto;
 })(ActorAnimado);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "Errores.ts"/>
@@ -4357,6 +4539,7 @@ var ElMonoQueSabeContar = (function (_super) {
         this.cuadricula.completarConObjetosRandom(new ConjuntoClases([ManzanaAnimada, BananaAnimada]), { condiciones: [
                 function (casilla) { return casilla.hayArriba(); },
                 function (casilla) { return casilla.hayAbajo(); } //no incluye en ultima fila
+                 //no incluye en ultima fila
             ] });
         this.automata = new MonoAnimado(0, 0);
         this.cuadricula.agregarActorEnPerspectiva(this.automata, 0, 0);
@@ -4628,6 +4811,7 @@ var EscenaTests = (function (_super) {
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
+/// <reference path="../actores/CuadriculaMultiple.ts"/>
 /// <reference path = "EstadosDeEscena.ts" />
 var FutbolRobots = (function (_super) {
     __extends(FutbolRobots, _super);
@@ -5277,6 +5461,7 @@ var ReparandoLaNave = (function (_super) {
     return ReparandoLaNave;
 })(EscenaActividad);
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/CuadriculaMultiple.ts" />
 /// <reference path = "../actores/PapaNoelAnimado.ts" />
 var SalvandoLaNavidad = (function (_super) {
     __extends(SalvandoLaNavidad, _super);
@@ -5640,9 +5825,9 @@ var EscenaConObstaculos = (function (_super) {
         var mapaElegido = this.mapasEscena[Math.floor(Math.random() * this.mapasEscena.length)];
         this.cuadricula = new Cuadricula(this.cuadriculaX(), this.cuadriculaY(), mapaElegido.length, mapaElegido[0].length, this.opsCuadricula(), this.opsCasilla());
         this.cuadricula.autollenar(mapaElegido, {
-            'A': function (fila, col) { return _this.automata; },
-            'O': function (fila, col) { return _this.obtenerObstaculo(fila, col); },
-            'P': function (fila, col) { return _this.obtenerPremio(); },
+            'A': function () { return _this.automata; },
+            'O': function (f, c) { return _this.obtenerObstaculo(f, c); },
+            'P': function () { return _this.obtenerPremio(); },
         });
         this.automata.enviarAlFrente();
         this.premios.forEach(function (premio) {
@@ -5782,6 +5967,62 @@ var EscenaDuba = (function (_super) {
     };
     return EscenaDuba;
 })(EscenaConObstaculos);
+/// <reference path = "../EscenaActividad.ts" />
+/// <reference path = "../../actores/libroPrimaria/Toto.ts" />
+/// <reference path = "../../actores/libroPrimaria/Letra.ts" />
+/// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
+/**
+ * En esta escena, el zorro Toto se mueve por una cuadrícula de letras y las va leyendo.
+ * A medida que el zorro lee las letras, estas van apareciendo en otra cuadrícula.
+ */
+var EscenaTotoLector = (function (_super) {
+    __extends(EscenaTotoLector, _super);
+    /**
+     * @param mapaEscena Matriz bidimensional de strings a partir de la cual se crea la escena.
+     * Toto se representa con una 'A' mayúscula. Las letras a leer van en minúscula
+     * ('a', 'b', etc.). Los strings ' ' y '' representan casillas vacías.
+     * @param textoObjetivo El texto que Toto debe leer.
+     * @param topeDeLetras Cantidad máxima de letras que Toto puede leer. Es opcional; por defecto
+     * se toma la longitud de `textoObjetivo`.
+     */
+    function EscenaTotoLector(mapaEscena, textoObjetivo, topeDeLetras) {
+        if (topeDeLetras === void 0) { topeDeLetras = 0; }
+        _super.call(this);
+        this.mapaEscena = mapaEscena;
+        this.textoObjetivo = textoObjetivo;
+        this.topeDeLetras = topeDeLetras > 0 ? topeDeLetras : this.textoObjetivo.length;
+    }
+    EscenaTotoLector.prototype.iniciar = function () {
+        var _this = this;
+        this.fondo = new Fondo("fondo.totoLector.png", 0, 0);
+        this.automata = new Toto();
+        this.cuadricula = new Cuadricula(0, 80, this.mapaEscena.length, this.mapaEscena[0].length, { ancho: 400, alto: 300 }, { grilla: 'casillas.violeta.png' });
+        this.cuadricula.autollenar(this.mapaEscena, {
+            'A': function () { return _this.automata; },
+            'default': function (codigo) { return new Letra(codigo); }
+        });
+        this.automata.enviarAlFrente();
+        this.cuadriculaLectura = new Cuadricula(-20, -170, 1, this.topeDeLetras, { alto: 60 }, { ancho: 40, grilla: 'invisible.png' });
+        // Toto debe conocer la cuadrícula de lectura (ver comportamiento 'MovimientoConLectura').
+        this.automata.cuadriculaLectura = this.cuadriculaLectura;
+    };
+    /**
+     * Devuelve en forma de string el contenido actual de la cuadrícula de lectura.
+     */
+    EscenaTotoLector.prototype.textoLeido = function () {
+        var texto = "";
+        this.cuadriculaLectura
+            .filterCasillas(function (casilla) { return casilla.tieneActorConEtiqueta("Letra"); })
+            .forEach(function (casilla) {
+            return texto += casilla.actoresConEtiqueta("Letra")[0].caracter();
+        });
+        return texto;
+    };
+    EscenaTotoLector.prototype.estaResueltoElProblema = function () {
+        return this.textoLeido() == this.textoObjetivo.toUpperCase();
+    };
+    return EscenaTotoLector;
+})(EscenaActividad);
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 /*Si los grados de aumento son positivos gira para la derecha

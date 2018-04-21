@@ -1,6 +1,7 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
 /// <reference path = "../escenas/Errores.ts" />
+/// <reference path = "../actores/libroPrimaria/Letra.ts" />
 
 
 class MovimientoEnCuadricula extends MovimientoAnimado {
@@ -197,4 +198,48 @@ class SiguienteColumna extends MoverACasillaDerecha {
     super.configurarVerificaciones();
     this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
   }
+}
+
+/**
+ * Comportamiento que extiende un movimiento por la cuadrícula
+ * con una lectura. El actor receptor debe tener definida la propiedad
+ * 'cuadriculaLectura'. Si en la casilla de llegada hay un actor Letra,
+ * su contenido se registra en la cuadrícula de lectura del receptor.
+ */
+class MovimientoConLectura extends MovimientoEnCuadricula {
+    postAnimacion() {
+        super.postAnimacion();
+        let casilla = this.receptor.casillaActual();
+        if (this.hayLetra(casilla)) {
+            let caracter = this.caracterEnCasilla(casilla);
+            let casillaLectura = this.receptor.cuadriculaLectura.proximaCasillaLibre();
+            if (casillaLectura) {
+                this.receptor.cuadriculaLectura.agregarActorEnProximaCasillaLibre(new Letra(caracter));
+            }
+            else {
+                throw new ActividadError("Ya leí mucho, ¡estoy cansado!");
+            }
+        }
+    }
+
+    hayLetra(casilla) {
+        return casilla.tieneActorConEtiqueta('Letra');
+    }
+
+    caracterEnCasilla(casilla) {
+        return casilla.actoresConEtiqueta('Letra')[0].caracter();
+    }
+}
+
+class MoverLeyendoDerecha extends MovimientoConLectura {
+    direccionCasilla = new DirCasillaDerecha();
+}
+class MoverLeyendoArriba extends MovimientoConLectura {
+    direccionCasilla = new DirCasillaArriba();
+}
+class MoverLeyendoAbajo extends MovimientoConLectura {
+    direccionCasilla = new DirCasillaAbajo();
+}
+class MoverLeyendoIzquierda extends MovimientoConLectura {
+    direccionCasilla = new DirCasillaIzquierda();
 }

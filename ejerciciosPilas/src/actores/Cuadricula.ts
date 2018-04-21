@@ -55,7 +55,8 @@
 class Cuadricula extends Actor {
     cantFilas;
     cantColumnas;
-    protected casillas: Array<Array<Casilla>>;
+    private casillas: Array<Array<Casilla>>;
+    private primeraCasillaLibre : [number, number];
     private opcionesCuadricula;
     private opcionesCasilla;
 
@@ -136,17 +137,25 @@ class Cuadricula extends Actor {
                 func(nroFila, nroCol)
             )    
         );
-					}
+    }
     
-    forEachCasilla(func) {
+    /**
+     * Itera sobre todas las casillas de la cuadrícula y aplica la función
+     * recibida por parámetro. Las casillas se recorren *ordenadamente*,
+     * de izquierda a derecha y de arriba hacia abajo.
+     * @param func Función que se aplica a cada casilla. Recibe hasta
+     * dos parámetros: la casilla sobre la que se está iterando y un
+     * índice que se incrementa con cada casilla.
+     */
+    forEachCasilla(func : (Casilla, number) => any) {
         let i = 0;
         this.forEachFilaCol((nroFila, nroCol) => {
             if (this.casilla(nroFila,nroCol) !== undefined) {
                 func(this.casilla(nroFila, nroCol), i);
                 i += 1;
-			}
+            }
         });
-		}
+    }
 
     filterCasillas(pred) {
         let cumplen = [];
@@ -162,7 +171,7 @@ class Cuadricula extends Actor {
         this.casillas = new Array<Array<Casilla>>();
         this.forEachFilaCol((fila, col) =>
             this.agregarCasilla(fila, col)
-				);
+        );
     }
 
     agregarCasilla(fila, col) {
@@ -178,7 +187,7 @@ class Cuadricula extends Actor {
 
     agregarActor(actor, nroF, nroC, escalarACasilla = true){
         this.agregarActorEnCasilla(actor, this.casilla(nroF, nroC), escalarACasilla);
-		}
+    }
 
     agregarActorEnCasilla(actor, casilla, escalarACasilla = true) {
         actor.cuadricula = this;
@@ -186,6 +195,16 @@ class Cuadricula extends Actor {
         	actor.escalarProporcionalALimites(this.anchoCasilla() - 5, this.altoCasilla() - 5);
         }
         actor.setCasillaActual(casilla, true);
+    }
+
+    agregarActorEnProximaCasillaLibre(actor, escalarACasilla = true) {
+        let casillaDestino = this.proximaCasillaLibre();
+        if (casillaDestino) {
+            this.agregarActorEnCasilla(actor, this.proximaCasillaLibre(), escalarACasilla);
+        }
+        else {
+            throw Error("Ya no quedan casillas libres");
+        }
     }
 
     agregarActorEnPerspectiva(actor,nroF,nroC,escalarACasilla = true){
@@ -218,6 +237,10 @@ class Cuadricula extends Actor {
         else {
             return undefined;
         }
+    }
+
+    proximaCasillaLibre() : Casilla {
+        return this.filterCasillas(casilla => casilla.estaLibre())[0];
     }
 
     esFin(casilla){
@@ -255,20 +278,53 @@ class Cuadricula extends Actor {
         return cant;
     }
 
+    /**
+     * Este método sirve para llenar una cuadrícula de elementos 
+     * a partir de una matriz que la describe.  
+     * Se pensó originalmente para realizar un camino al estilo de
+     * las actividades iniciales de code.org, con varios obstáculos.
+     * @param matrizContenido Es una matriz de 2 dimensiones.
+     * Cada contenido puede ser un string, que es el identificador del actor que irá en cada casilla.  
+     * Por ejemplo se puede usar una letra 'A' para identificar al autómata.  
+     * Los strings vacíos y el caracter espacio ' ' significa "casilla libre".  
+     * Si el string finaliza en un signo de interrogación ('?'), se decidirá si
+     * colocar o no el actor de manera aleatoria.
+     * @param diccionarioContenido Diccionario que mapea cada identificador con la función que obtiene a cada actor.
+     * Importante: el actor debe crearse AL LLAMAR A ESA FUNCION, y no antes.  
+     * La función recibirá dos parámetros: el número de fila y el número de columna
+     * de la casilla donde se colocará el actor, respectivamente.  
+     * Se puede usar el identificador 'default' para brindar una función a utilizar
+     * cuando la matriz contiene un código que no está presente en el diccionario. La función
+     * recibirá dicho código como primer parámetro.
+     * @param proba Número entre 0 y 1.
+     * Indica la probabilidad con la que se colocan los actores indicados como aleatorios.
+     * El valor por defecto es 0.5.
+     */
     autollenar(matrizContenido : Array<Array<string>>, diccionarioContenido, proba : number = 0.5) : void {
         this.forEachCasilla((casilla : Casilla) => {
             let nroFila = casilla.nroFila;
             let nroColumna = casilla.nroColumna;
             let codigo = matrizContenido[nroFila][nroColumna];
-            if (codigo !== '' && codigo != ' ') { // si no es casilla libre
-                if (codigo.slice(-1) == '?') { // si debe ser randomizado 
-                    if (Math.random() < proba) {
-                        this.agregarActorEnCasilla(diccionarioContenido[codigo.slice(0, -1)](nroFila, nroColumna), casilla, true);
-                    }
-                } else {
-                    this.agregarActorEnCasilla(diccionarioContenido[codigo](nroFila, nroColumna), casilla, true);
-                }
+
+            if (codigo == '' || codigo == ' ') return; // si es casilla libre
+    
+            if (codigo.slice(-1) == '?') { // si debe ser randomizado 
+                codigo = codigo.slice(0, -1);
+                if (Math.random() > proba) return;
             }
+
+            let actor;
+            if (codigo in diccionarioContenido) {
+                actor = diccionarioContenido[codigo](nroFila, nroColumna);
+            }
+            else if ('default' in diccionarioContenido) {
+                actor = diccionarioContenido['default'](codigo, nroFila, nroColumna);
+            }
+            else {
+                throw Error("Código de actor no definido en diccionarioContenido");
+            }
+            
+            this.agregarActorEnCasilla(actor, casilla, true);
         });
     }
 }

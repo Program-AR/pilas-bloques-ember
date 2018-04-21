@@ -858,6 +858,34 @@ export default Ember.Service.extend({
       argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
     });
 
+    this.crearBloqueAccion('MoverLeyendoDerecha', {
+      descripcion: 'Mover a la derecha',
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverLeyendoDerecha',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('MoverLeyendoIzquierda', {
+      descripcion: 'Mover a la izquierda',
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MoverLeyendoIzquierda',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('MoverLeyendoArriba', {
+      descripcion: 'Mover arriba',
+      icono: 'icono.arriba.png',
+      comportamiento: 'MoverLeyendoArriba',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('MoverLeyendoAbajo', {
+      descripcion: 'Mover abajo',
+      icono: 'icono.abajo.png',
+      comportamiento: 'MoverLeyendoAbajo',
+      argumentos: '{}',
+    });
+
   },
 
   _definirBloquesAlias() {

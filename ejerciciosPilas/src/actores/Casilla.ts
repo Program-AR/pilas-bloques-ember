@@ -114,8 +114,16 @@ class Casilla extends ActorAnimado {
       this.actores.splice(this.actores.indexOf(unActor),1);
     }
 
+    estaLibre() : boolean {
+        return this.actores.length == 0;
+    }
+
     tieneActorConEtiqueta(unaEtq){
       return this.actores.some( actor => actor.tiene_etiqueta(unaEtq))
+    }
+
+    actoresConEtiqueta(unaEtq) {
+        return this.actores.filter(actor => actor.tiene_etiqueta(unaEtq));
     }
 
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor

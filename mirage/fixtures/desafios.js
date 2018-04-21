@@ -1330,4 +1330,129 @@ export default [
       'HayChurrasco'
     ],
   },
+  {
+    id: 222,
+    grupoId: 11,
+    nombre: '2.I1a',
+    titulo: 'Desafío 2.I1a (Toto)',
+    escena: `new EscenaTotoLector([
+        ['A', ' ', ' '],
+        ['h', 'o', ' '],
+        [' ', 'l', 'a'],
+    ], "hola")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
+  {
+    id: 225,
+    grupoId: 11,
+    nombre: '2.I1d',
+    titulo: 'Desafío 2.I1d (Toto)',
+    escena: `new EscenaTotoLector([
+        ['A', 'c', 'a', 'b'],
+        ['o', 'l', 'l', 'e'],
+    ], "caballo")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoAbajo">
+        <next>
+        <block type="MoverLeyendoIzquierda">
+        <next>
+        <block type="MoverLeyendoIzquierda">
+        <next>
+        <block type="MoverLeyendoIzquierda">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
+      </block>
+    </xml>`,
+  },
+  {
+    id: 226,
+    grupoId: 11,
+    nombre: '2.I1e',
+    titulo: 'Desafío 2.I1e (Toto)',
+    escena: `new EscenaTotoLector([
+        ['w', 'a', 'r'],
+        ['u', 'n', 'e'],
+        ['l', 'A', 's'],
+    ], "lunes", 7)`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverLeyendoIzquierda">
+        <next>
+        <block type="MoverLeyendoArriba">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoArriba">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoAbajo">
+        <next>
+        <block type="MoverLeyendoAbajo">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
+      </block>
+    </xml>`,
+  },
 ];
