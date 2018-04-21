@@ -10,7 +10,7 @@ class EscenaActividad extends Base {
 	estado = new Estado();
 	errorHandler = new ProductionErrorHandler(this);
 	automata : ActorAnimado;
-	cuadricula;
+	cuadricula : Cuadricula;
 	fondo;
 
 	actualizar() : void {

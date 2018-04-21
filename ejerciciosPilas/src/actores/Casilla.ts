@@ -68,19 +68,19 @@ class Casilla extends ActorAnimado {
     }
 
 
-    hayArriba() : Boolean {
+    hayArriba() : boolean {
         return this.cuadricula.hayArriba(this);
     }
 
-    hayAbajo() : Boolean {
+    hayAbajo() : boolean {
         return this.cuadricula.hayAbajo(this);
     }
 
-    hayIzquierda() : Boolean {
+    hayIzquierda() : boolean {
         return this.cuadricula.hayIzquierda(this);
     }
 
-    hayDerecha() : Boolean {
+    hayDerecha() : boolean {
         return this.cuadricula.hayDerecha(this);
     }
 

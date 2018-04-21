@@ -1,11 +1,12 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path="../actores/ActorAnimado.ts"/>
+/// <reference path="../actores/CuadriculaMultiple.ts"/>
 /// <reference path = "EstadosDeEscena.ts" />
 
 class FutbolRobots  extends EscenaActividad{
   automata : ActorAnimado;
   fondo;
-  cuadricula;
+  cuadricula : CuadriculaMultiple;
   cantPateadas;
   cantidadFilas;
 

@@ -132,7 +132,9 @@ class CuadriculaMultiple extends CuadriculaEsparsa{
     }
   }
 
-  private dameIndexUltimaPosicion(nroFila){
+  // Este método era privado, pero se lo usa desde 'FutbolDeRobots'.
+  // Cambiado a público.
+  dameIndexUltimaPosicion(nroFila){
     var index=0;
     while(this.pmatrix[nroFila][index+1]=='T'){
     index+=1;}

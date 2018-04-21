@@ -8,7 +8,7 @@
 
 class ElMonoQueSabeContar extends EscenaActividad {
     fondo;
-    cuadricula;
+    cuadricula : CuadriculaMultipleColumnas;
     tableros;
 
     iniciar() {

@@ -33,9 +33,9 @@
 		this.cuadricula.autollenar(
 			mapaElegido,
 			{
-				'A': (fila, col) => this.automata,
-				'O': (fila, col) => this.obtenerObstaculo(fila, col),
-				'P': (fila, col) => this.obtenerPremio(),
+				'A': ()     => this.automata,
+				'O': (f, c) => this.obtenerObstaculo(f, c),
+				'P': ()     => this.obtenerPremio(),
 			}
 		)
 		this.automata.enviarAlFrente();

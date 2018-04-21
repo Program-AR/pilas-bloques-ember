@@ -1,7 +1,9 @@
 /// <reference path = "EscenaActividad.ts" />
+/// <reference path = "../actores/CuadriculaMultiple.ts" />
 /// <reference path = "../actores/PapaNoelAnimado.ts" />
 
 class SalvandoLaNavidad extends EscenaActividad {
+  cuadricula : CuadriculaMultiple;
   cantidadColumnas;
 
   iniciar() {
