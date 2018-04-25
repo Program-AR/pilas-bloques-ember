@@ -34,13 +34,10 @@ class EscenaTotoLector extends EscenaActividad {
     }
 
     iniciar() {
-        this.fondo = new Fondo("fondo.totoLector.png", 0, 0);
+        this.fondo = new Fondo(this.pathFondo(), 0, 0);
         this.automata = new Toto();
 
-        this.cuadricula = new Cuadricula(
-            0, 80, this.mapaEscena.length, this.mapaEscena[0].length,
-            { ancho: 400, alto: 300 }, { grilla: 'casillas.violeta.png' }
-        );
+        this.cuadricula = this.construirCuadricula();
         this.cuadricula.autollenar(
             this.mapaEscena,
             {
@@ -50,12 +47,27 @@ class EscenaTotoLector extends EscenaActividad {
         );
         this.automata.enviarAlFrente();
 
-        this.cuadriculaLectura = new Cuadricula(
+        this.cuadriculaLectura = this.construirCuadriculaLectura();
+        // Toto debe conocer la cuadrícula de lectura (ver comportamiento 'MovimientoConLectura').
+        this.automata.cuadriculaLectura = this.cuadriculaLectura;
+    }
+
+    construirCuadricula() : Cuadricula {
+        return new Cuadricula(
+            0, 80, this.mapaEscena.length, this.mapaEscena[0].length,
+            { ancho: 400, alto: 300 }, { grilla: 'casillas.violeta.png' }
+        );
+    }
+
+    construirCuadriculaLectura() : Cuadricula {
+        return new Cuadricula(
             -20, -170, 1, this.topeDeLetras,
             { alto: 60 }, { ancho: 40, grilla: 'invisible.png' }
         );
-        // Toto debe conocer la cuadrícula de lectura (ver comportamiento 'MovimientoConLectura').
-        this.automata.cuadriculaLectura = this.cuadriculaLectura;
+    }
+
+    pathFondo(){
+        return "fondo.totoLector.png";
     }
 
     /**

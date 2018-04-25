@@ -1455,4 +1455,30 @@ export default [
       </block>
     </xml>`,
   },
+
+  {
+    id: 333,
+    grupoId: 13,
+    nombre: 'TotoEscritor',
+    titulo: 'El Zorro Toto Escrive',
+    escena: `new EscenaTotoEscritor(
+        [['A','p', 'a', 'n', 'c', 'i', 't', 'a']],
+        "pancita",
+        7
+    )`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActual',
+      'EscribirTexto',
+      'repetir',
+      'si',
+      'sino'
+    ],
+}
 ];
