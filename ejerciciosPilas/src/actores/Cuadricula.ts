@@ -90,10 +90,24 @@ class Cuadricula extends Actor {
         return this.opcionesCuadricula.separacionEntreCasillas;
     }
 
+    reubicarCasillas() : void {
+        this.forEachCasilla(casilla => { casilla.reubicate() });
+    }
+
+    setX(x) {
+        super.setX(x);
+        this.reubicarCasillas();
+    }
+
+    setY(y) {
+        super.setY(y);
+        this.reubicarCasillas();
+    }
+
     setAncho(nuevo) {
         this.ancho = nuevo;
         this.opcionesCasilla.ancho = this.calcularAnchoCasilla(nuevo);
-        this.forEachCasilla(casilla => { casilla.reubicate() });
+        this.reubicarCasillas();
     }
 
     calcularAnchoCasilla(anchoCuad) {
@@ -109,7 +123,7 @@ class Cuadricula extends Actor {
     setAlto(nuevo) {
         this.alto = nuevo;
         this.opcionesCasilla.alto = this.calcularAltoCasilla(nuevo);
-        this.forEachCasilla(casilla => { casilla.reubicate() });
+        this.reubicarCasillas();
     }
 
     calcularAltoCasilla(altoCuad){
