@@ -31,3 +31,4 @@ log_descompresion.log
 *.pyc
 /docs/
 /binarios/
+/public/libs/ejerciciosPilas.js
