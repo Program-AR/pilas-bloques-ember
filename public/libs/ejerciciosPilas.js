@@ -2790,8 +2790,8 @@ var Coty = (function (_super) {
 var Duba = (function (_super) {
     __extends(Duba, _super);
     function Duba() {
-        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 1, cantFilas: 1 });
-        this.definirAnimacion("parado", [0], 5, true);
+        _super.call(this, 0, 0, { grilla: 'actor.duba.png', cantColumnas: 5, cantFilas: 4 });
+        this.definirAnimacion("parado", [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1], 10, true);
         this.definirAnimacion("correr", [0], 60);
         this.definirAnimacion("comerChurrasco", [0], 12);
     }
@@ -5933,9 +5933,9 @@ var EscenaDuba = (function (_super) {
     EscenaDuba.prototype.iniciar = function () {
         _super.prototype.iniciar.call(this);
         this.automata.escala *= 1.5;
-        this.automata.setY(this.automata.getY() + this.automata.getAlto() / 4);
+        this.automata.setY(this.automata.getY() + this.automata.getAlto() / 8);
         pilas.obtener_actores_con_etiqueta('Obstaculo').forEach(function (obstaculo) {
-            obstaculo.escala *= 1.2;
+            obstaculo.escala *= 1.1;
         });
     };
     EscenaDuba.prototype.crearAutomata = function () {

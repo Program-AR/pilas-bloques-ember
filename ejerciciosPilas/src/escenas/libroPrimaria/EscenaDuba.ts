@@ -7,9 +7,9 @@
 	iniciar(){
 		super.iniciar();
 		this.automata.escala *= 1.5;
-		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 4);
+		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 8);
 		pilas.obtener_actores_con_etiqueta('Obstaculo').forEach(obstaculo => {
-			obstaculo.escala *= 1.2;
+			obstaculo.escala *= 1.1;
 		});
 	}
 	crearAutomata(){
