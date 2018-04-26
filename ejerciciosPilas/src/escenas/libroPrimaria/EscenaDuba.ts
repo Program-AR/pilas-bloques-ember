@@ -37,6 +37,6 @@
 		return {ancho: 300, alto: 300};
 	}
 	opsCasilla() {
-		return {grilla: 'invisible.png'};
+		return { grilla: 'casillas.duba.png', cantFilas: 1, cantColumnas: 16, bordesDecorados: true };
 	}
 }

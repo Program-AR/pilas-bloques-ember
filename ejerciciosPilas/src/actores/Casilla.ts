@@ -20,7 +20,13 @@ class Casilla extends ActorAnimado {
         this.nroColumna = nroC;
         this.actores = [];
 
-        super(0, 0, cuadricula.getOpcionesCasilla());
+        let opciones = cuadricula.getOpcionesCasilla();
+        if (opciones.bordesDecorados) {
+            opciones.cuadrosParado = [this.cuadroSegunPosicion()];
+            opciones.cuadrosCorrer = opciones.cuadrosParado;
+        }
+
+        super(0, 0, opciones);
 
         this.reubicate();
     }
@@ -124,6 +130,13 @@ class Casilla extends ActorAnimado {
 
     actoresConEtiqueta(unaEtq) {
         return this.actores.filter(actor => actor.tiene_etiqueta(unaEtq));
+    }
+
+    cuadroSegunPosicion() : number {
+        return 8 * Number(! this.hayArriba())
+            + 4 * Number(! this.hayIzquierda())
+            + 2 * Number(! this.hayAbajo())
+            + Number(! this.hayDerecha());
     }
 
     cambiarImagen(nombre, cantFilas = 1, cantColumnas = 1){ // TODO: FEOOOOOOO bugfix setter imagen del actor
