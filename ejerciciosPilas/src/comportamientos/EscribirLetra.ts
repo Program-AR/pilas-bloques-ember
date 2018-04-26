@@ -1,8 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
-/// <reference path = "MovimientoAnimado.ts"/>
-/// <reference path = "../escenas/Errores.ts" />
-/// <reference path = "../actores/libroPrimaria/Letra.ts" />
-
+/// <reference path = "ComportamientoConVelocidad.ts"/>
 /**
  * Comportamiento que escribe una letra en la casilla actual.
  */
