@@ -765,8 +765,15 @@ export default Ember.Service.extend({
 
     // Para los desafíos de escribir y leer letras
     
-    blockly.createCustomBlock('EscribirEnCuadricula', {
-      message0: "%1 Escribir %2",
+    this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
+      descripcion: 'Escribir letra que estoy tocando',
+      icono: 'icono.DibujarLinea.png',
+      comportamiento: 'EscribirTextoDadoEnOtraCuadricula',
+      argumentos: '{}',
+    });
+
+    blockly.createCustomBlock('EscribirTextoDadoEnOtraCuadricula', {
+      message0: "%1 Escribir: %2",
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -780,47 +787,15 @@ export default Ember.Service.extend({
           "alt": "*"
         },
         {
-          "type": "input_value",
+          "type": "field_input",
           "name": "texto",
+          "text": ""
         }
       ],
-      code: 'hacer(actor_id, "EscribirEnCuadricula", {texto: $texto});'
+      code: 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "$texto"});'
     });
 
-    Blockly.Blocks['EscribirEnCuadricula'].categoria = 'Primitivas';
-
-    Blockly.Blocks['EscribirLetraActual'] = {
-      init: Blockly.Blocks['EscribirEnCuadricula'].init,
-      categoria: Blockly.Blocks['EscribirEnCuadricula'].categoria,
-      toolbox: `
-      <block type="EscribirEnCuadricula">
-        <value name="texto">
-          <block type="letraActual"></block>
-        </value>
-      </block>
-    `
-    };
-
-    Blockly.Blocks['EscribirTexto'] = {
-      init: Blockly.Blocks['EscribirEnCuadricula'].init,
-      categoria: Blockly.Blocks['EscribirEnCuadricula'].categoria,
-      toolbox: `
-      <block type="EscribirEnCuadricula">
-        <value name="texto">
-          <block type="Texto"></block>
-        </value>
-      </block>
-    `
-    };
-
-    
-
-
-
-
-
-
-
+    Blockly.Blocks['EscribirTextoDadoEnOtraCuadricula'].categoria = 'Primitivas';
 
 
 
@@ -1153,10 +1128,6 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    this.crearBloqueSensor('letraActual', {
-      descripcion: 'letra que estoy leyendo',
-      funcionSensor: 'letraActual().elString()',
-    });
   },
 
   _definirBloquesQueRepresentanValores() {

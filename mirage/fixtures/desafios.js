@@ -1474,8 +1474,8 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'EscribirLetraActual',
-      'EscribirTexto',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
       'repetir',
       'si',
       'sino'

@@ -29,3 +29,13 @@ class EscenaTotoEscritor extends EscenaTotoLector {
         return "fondo.totoEscritor.png";
     }
 }
+
+
+class EscribirTextoDadoEnOtraCuadricula extends EscribirTexto {
+
+    iniciar(receptor){
+        this.argumentos.texto = this.argumentos.texto || pilas.escena_actual().automata.caracterActual();
+        this.argumentos.receptor = pilas.escena_actual().manoQueEscribe;
+        super.iniciar(this.argumentos.receptor);
+    }
+}
