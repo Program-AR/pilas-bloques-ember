@@ -1464,7 +1464,7 @@ export default [
     escena: `new EscenaTotoEscritor(
         [['A','p', 'a', 'n', 'c', 'i', 't', 'a']],
         "pancita",
-        7
+        8
     )`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
