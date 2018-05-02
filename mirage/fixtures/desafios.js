@@ -1459,11 +1459,36 @@ export default [
   {
     id: 333,
     grupoId: 13,
-    nombre: 'TotoEscritor',
-    titulo: 'El Zorro Toto Escrive',
+    nombre: '4.I1a',
+    titulo: 'Desafío 4.I1a',
     escena: `new EscenaTotoEscritor(
         [['A','p', 'a', 'n', 'c', 'i', 't', 'a']],
         "pancita",
+        8
+    )`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino'
+    ],
+  },
+
+  {
+    id: 334,
+    grupoId: 13,
+    nombre: '4.I1b',
+    titulo: 'Desafío 4.I1b',
+    escena: `new EscenaTotoEscritor(
+        [['A','s', 'i', 'e', 'm', 'p', 'r', 'x']],
+        "xxxxxxx",
         8
     )`,
     enunciado: '[Completar]',
@@ -1480,5 +1505,57 @@ export default [
       'si',
       'sino'
     ],
-}
+  },
+
+  {
+    id: 335,
+    grupoId: 13,
+    nombre: '4.I1c',
+    titulo: 'Desafío 4.I1c',
+    escena: `new EscenaTotoEscritor(
+        [['A','t', 'o', 'm', 'a', 'm', 'o', 's']],
+        "tomichamichos",
+        13
+    )`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino'
+    ],
+  },
+
+  {
+    id: 336,
+    grupoId: 13,
+    nombre: '4.I1d',
+    titulo: 'Desafío 4.I1d',
+    escena: `new EscenaTotoEscritor(
+        [['A','m', 'a', 'r', 'm', 'o', 't', 'a']],
+        "maparmopotapa",
+        13
+    )`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino'
+    ],
+  },
 ];
