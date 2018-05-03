@@ -1236,7 +1236,7 @@ export default Ember.Service.extend({
       descripcion: 'Comer Churrasco',
       icono: 'icono.churrasco.png',
       comportamiento: 'RecogerPorEtiqueta',
-      argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco"}',
+      argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionColisionadoMientras: "desaparecer"}',
     });
 
   },
