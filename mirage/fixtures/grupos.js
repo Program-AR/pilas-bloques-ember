@@ -25,15 +25,10 @@ export default [
     titulo: 'Parametrización de soluciones',
   },
 	{
-		id: 6,
+		id: 99,
 		libroId: 2,
-		titulo: 'Capítulo 3',
+		titulo: 'Otros',
 	},
-  {
-		id: 7,
-		libroId: 2,
-		titulo: 'Capítulo 4',
-  },
   {
     id: 11,
     libroId: 2,
