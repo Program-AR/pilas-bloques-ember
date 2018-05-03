@@ -44,7 +44,16 @@ class EscenaActividad extends Base {
 		return this.stage.children[this.stage.children.length - 1].z;
 	}
 
-	contarActoresConEtiqueta(etiqueta) : Number{
+	contarActoresConEtiqueta(etiqueta) : number{
 			return this.actores.filter(actor=>actor.tiene_etiqueta(etiqueta)).length;
+	}
+
+	/**
+	 * Computa un multiplicador que crece según la cantidad de filas y columnas de la cuadrícula.
+	 * El multiplicador es 1 si la cuadrícula es de 1x1, y crece acotado por maxRatio.
+	 * Es útil para aplicar un factor de escala a los elementos cuando las casillas son muy pequeñas.
+	 */
+	escalaSegunCuadricula(maxRatio : number) : number {
+		return maxRatio - ((maxRatio - 1) / Math.max(this.cuadricula.cantFilas, this.cuadricula.cantColumnas))
 	}
 }

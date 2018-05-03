@@ -6,10 +6,13 @@
 
 	iniciar(){
 		super.iniciar();
-		this.automata.escala *= 1.5;
+		this.automata.escala *= this.escalaSegunCuadricula(1.6);
 		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 8);
+		this.premios.forEach(premio => {
+			premio.escala *= this.escalaSegunCuadricula(1.2) * 0.85;			
+		});
 		pilas.obtener_actores_con_etiqueta('Obstaculo').forEach(obstaculo => {
-			obstaculo.escala *= 1.1;
+			obstaculo.escala *= this.escalaSegunCuadricula(1.1);
 		});
 	}
 	crearAutomata(){
@@ -34,9 +37,15 @@
 		return -20;
 	}
 	opsCuadricula() {
-		return {ancho: 300, alto: 300};
+		return {ancho: 340, alto: 380};
 	}
 	opsCasilla() {
-		return { grilla: 'casillas.duba.png', cantFilas: 1, cantColumnas: 16, bordesDecorados: true };
+		return {
+			grilla: 'casillas.duba.png',
+			cantFilas: 1,
+			cantColumnas: 16,
+			bordesDecorados: true,
+			relAspecto: 1,
+		};
 	}
 }

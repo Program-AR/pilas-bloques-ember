@@ -44,6 +44,18 @@
  *
  * Nótese que esta vez las opciones que se eligieron son las de la cuadrícula, y
  * no las de la casilla.
+ * 
+ * Por último, en lugar de especificar el ancho y el alto de las casillas,
+ * se puede indicar una relación de aspecto deseada para las casillas.
+ * Debe ser un número que indique el cociente anchoCasilla/altoCasilla deseado.
+ * Por ejemplo, para crear una cuadrícula con casillas cuadradas de a lo sumo
+ * 300 píxeles de ancho y 300 píxeles de alto:
+ *     new Cuadricula(0,0,3,4,
+ *           {ancho: 300,
+ *           alto: 300},
+ *           {grilla: 'banana.png',
+ *           cantColumnas: 2,
+ *           relAspecto: 1})
  *
  * IMPORTANTE:
  *   No usar cuadricula.ancho = 300 para cambiar el ancho de la cuadrícula.
@@ -82,8 +94,14 @@ class Cuadricula extends Actor {
         this.opcionesCuadricula.ancho = this.opcionesCuadricula.ancho || pilas.opciones.ancho;
         this.opcionesCuadricula.alto = this.opcionesCuadricula.alto || pilas.opciones.alto;
         this.opcionesCuadricula.separacionEntreCasillas = this.opcionesCuadricula.separacionEntreCasillas || 0;
-        this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasilla(this.opcionesCuadricula.ancho);
-        this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasilla(this.opcionesCuadricula.alto);
+        if (this.opcionesCasilla.relAspecto) {
+            this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasillaConRelAspecto(this.opcionesCasilla.relAspecto, this.opcionesCuadricula.ancho, this.opcionesCuadricula.alto);
+            this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasillaConRelAspecto(this.opcionesCasilla.relAspecto, this.opcionesCuadricula.ancho, this.opcionesCuadricula.alto);
+        }
+        else {
+            this.opcionesCasilla.ancho = this.opcionesCasilla.ancho || this.calcularAnchoCasilla(this.opcionesCuadricula.ancho);
+            this.opcionesCasilla.alto = this.opcionesCasilla.alto || this.calcularAltoCasilla(this.opcionesCuadricula.alto);
+        }
     }
 
     separacion(){
@@ -126,11 +144,18 @@ class Cuadricula extends Actor {
         this.reubicarCasillas();
     }
 
-    calcularAltoCasilla(altoCuad){
-        var separacion = this.opcionesCuadricula.separacionEntreCasillas;
+    calcularAltoCasilla(altoCuad) {
         return altoCuad / this.cantFilas -
                 (((this.cantFilas - 1) * this.separacion()) / this.cantFilas);
 
+    }
+
+    calcularAnchoCasillaConRelAspecto(relAspecto, anchoCuad, altoCuad) : number {
+        return Math.min(this.calcularAnchoCasilla(anchoCuad), this.calcularAltoCasilla(altoCuad) * relAspecto)
+    }
+
+    calcularAltoCasillaConRelAspecto(relAspecto, anchoCuad, altoCuad) : number {
+        return Math.min(this.calcularAltoCasilla(altoCuad), this.calcularAnchoCasilla(anchoCuad) / relAspecto)
     }
 
     forEachFila(func) {
