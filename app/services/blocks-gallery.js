@@ -1128,6 +1128,37 @@ export default Ember.Service.extend({
       esBool: true
     });
 
+    let sensorHayVocal = this.get('blockly').createCustomBlock('hayVocalRMT', {
+      "type": "block_type",
+      "message0": "%1 ¿La letra actual es una %2 ?",
+      "args0": [
+        {
+          type: "field_image",
+          src: `iconos/icono.DibujarLinea.png`,
+          width: 16,
+          height: 16,
+          alt: "*"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "letra",
+          "options": [
+            ["R","r"],["M","m"],["T","t"],["A","a"],["E","e"],["I","i"],["O","o"],["U","u"]
+          ]
+        }
+      ],
+      "output": null,
+      "colour": Blockly.Blocks.sensores.COLOUR,
+      "tooltip": "Es cierto cuando estoy leyendo esta letra ahora",
+      "helpUrl": ""
+    });
+    sensorHayVocal.categoria = "Sensores";
+
+    Blockly.MyLanguage['hayVocalRMT'] = function(block) {
+      let codigo = `evaluar("leyendoCaracter('${block.getFieldValue('letra')}')")`;
+      return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
+    };
+
   },
 
   _definirBloquesQueRepresentanValores() {

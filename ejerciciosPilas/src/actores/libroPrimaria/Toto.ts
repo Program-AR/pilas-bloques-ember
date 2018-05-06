@@ -12,4 +12,8 @@ class Toto extends ActorAnimado {
     if(!letra) throw new ActividadError("No hay una letra aquí");
     return letra.caracter();
   }
+
+  leyendoCaracter(caracter){
+    return this.caracterActual() == caracter.toUpperCase();
+  }
 }

@@ -1515,7 +1515,7 @@ export default [
     escena: `new EscenaTotoEscritor(
         [['A','t', 'o', 'm', 'a', 'm', 'o', 's']],
         "tomichamichos",
-        13
+        14
     )`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
@@ -1529,7 +1529,8 @@ export default [
       'EscribirTextoDadoEnOtraCuadricula',
       'repetir',
       'si',
-      'sino'
+      'sino',
+      'hayVocalRMT'
     ],
   },
 
@@ -1541,7 +1542,7 @@ export default [
     escena: `new EscenaTotoEscritor(
         [['A','m', 'a', 'r', 'm', 'o', 't', 'a']],
         "maparmopotapa",
-        13
+        14
     )`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
@@ -1555,7 +1556,8 @@ export default [
       'EscribirTextoDadoEnOtraCuadricula',
       'repetir',
       'si',
-      'sino'
+      'sino',
+      'hayVocalRMT'
     ],
   },
 ];
