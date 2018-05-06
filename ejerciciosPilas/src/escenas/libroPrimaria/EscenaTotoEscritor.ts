@@ -21,7 +21,7 @@ class EscenaTotoEscritor extends EscenaTotoLector {
     construirCuadriculaLectura() : Cuadricula {
         return new Cuadricula(
             0, 50, 1, this.topeDeLetras,
-            { alto: 60 }, { ancho: 40, grilla: 'invisible.png' }
+            { alto: 60, ancho: 380 }, { grilla: 'invisible.png' }
         );
     }
 

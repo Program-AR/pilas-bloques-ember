@@ -11,7 +11,7 @@ class EscribirTexto extends SecuenciaAnimada {
         this.argumentos.secuencia = []
         // Por cada letra, debo moverme a la derecha y escribirla
         this.argumentos.texto.split("").forEach(caracter => {
-            this.argumentos.secuencia.push(new EscribirLetra({caracter: caracter}));
+            this.argumentos.secuencia.push(new EscribirLetra({caracter: caracter, cantPasos: 5}));
             this.argumentos.secuencia.push(this.comportamientoMoverDerecha(receptor));
         });
         super.iniciar(receptor);
@@ -19,7 +19,7 @@ class EscribirTexto extends SecuenciaAnimada {
 
     comportamientoMoverDerecha(receptor){
         return new MoverACasillaDerecha({
-            velocidad: 40,
+            cantPasos: 5,
             verificacionesPre: [new Verificacion(() => receptor.casillaActual().hayDerecha(), "¡Estoy cansado! No quiero escribir más...")]
         });
     }
