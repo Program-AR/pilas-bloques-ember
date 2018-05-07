@@ -5,19 +5,19 @@
  */
 class Letra extends ActorAnimado {
     private _caracter : string;
+    private static _caracteresValidos: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ";
 
     /**
      * @param unString Indica la letra que será representada por el actor (case insensitive).
      */
     constructor(unString : string) {
-        let caracter = Letra.primerLetraDeString(unString);
         super(0, 0, {
             grilla: "actor.letra.png",
-            cantColumnas: 26,
+            cantColumnas: Letra._caracteresValidos.length,
             cantFilas: 1,
-            cuadrosParado: [Letra.indiceDeCaracter(caracter)]
+            cuadrosParado: [Letra.indiceDeCaracter(Letra.primerLetraDeString(unString))]
         });
-        this._caracter = caracter;
+        this._caracter = Letra.primerLetraDeString(unString);
     }
 
     /**
@@ -33,7 +33,7 @@ class Letra extends ActorAnimado {
      */
     private static primerLetraDeString(unString: string) : string {
         let caracter = unString[0].toUpperCase();
-        if (caracter.charCodeAt(0) >= 65 && caracter.charCodeAt(0) <= 90) {
+        if (this.indiceDeCaracter(caracter)>=0) {
             return caracter;
         }
         else {
@@ -46,6 +46,6 @@ class Letra extends ActorAnimado {
      * A => 0, B => 1, C => 2 y así sucesivamente.
      */
     private static indiceDeCaracter(unString : string) : number {
-        return unString.charCodeAt(0) - 65;
+        return this._caracteresValidos.indexOf(unString);
     }
 }
