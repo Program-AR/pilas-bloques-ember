@@ -1489,11 +1489,7 @@ export default [
     grupoId: 13,
     nombre: '4.I1a',
     titulo: 'Desafío 4.I1a',
-    escena: `new EscenaTotoEscritor(
-        [['A','p', 'a', 'n', 'c', 'i', 't', 'a']],
-        "pancita",
-        8
-    )`,
+    escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1514,11 +1510,7 @@ export default [
     grupoId: 13,
     nombre: '4.I1b',
     titulo: 'Desafío 4.I1b',
-    escena: `new EscenaTotoEscritor(
-        [['A','s', 'i', 'e', 'm', 'p', 'r', 'x']],
-        "xxxxxxx",
-        8
-    )`,
+    escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1540,11 +1532,7 @@ export default [
     grupoId: 13,
     nombre: '4.I1c',
     titulo: 'Desafío 4.I1c',
-    escena: `new EscenaTotoEscritor(
-        [['A','t', 'o', 'm', 'a', 'm', 'o', 's']],
-        "tomichamichos",
-        14
-    )`,
+    escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1567,11 +1555,7 @@ export default [
     grupoId: 13,
     nombre: '4.I1d',
     titulo: 'Desafío 4.I1d',
-    escena: `new EscenaTotoEscritor(
-        [['A','m', 'a', 'r', 'm', 'o', 't', 'a']],
-        "maparmopotapa",
-        14
-    )`,
+    escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
