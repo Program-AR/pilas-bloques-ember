@@ -1485,7 +1485,7 @@ export default [
   },
 
   {
-    id: 333,
+    id: 227,
     grupoId: 13,
     nombre: '4.I1a',
     titulo: 'Desafío 4.I1a',
@@ -1506,7 +1506,7 @@ export default [
   },
 
   {
-    id: 334,
+    id: 228,
     grupoId: 13,
     nombre: '4.I1b',
     titulo: 'Desafío 4.I1b',
@@ -1528,7 +1528,7 @@ export default [
   },
 
   {
-    id: 335,
+    id: 229,
     grupoId: 13,
     nombre: '4.I1c',
     titulo: 'Desafío 4.I1c',
@@ -1551,7 +1551,7 @@ export default [
   },
 
   {
-    id: 336,
+    id: 230,
     grupoId: 13,
     nombre: '4.I1d',
     titulo: 'Desafío 4.I1d',
