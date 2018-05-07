@@ -1,5 +1,5 @@
 function utils_obtener_xml() {
-  return Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace));
+return Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)).replace(/ id="[^"]*"/g,"");
 }
 
 function utils_cargar_xml(codigo) {
