@@ -23,6 +23,7 @@ testem.log
 */**/.directory
 
 public/libs/pilasweb.js
+public/libs/ejerciciosPilas.js
 
 dist_web
 dist_website
