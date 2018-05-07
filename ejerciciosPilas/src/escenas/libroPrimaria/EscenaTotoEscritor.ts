@@ -1,38 +1,28 @@
-/// <reference path = "EscenaTotoLector.ts" />
+/// <reference path = "EscenaToto.ts" />
 
-class EscenaTotoEscritor extends EscenaTotoLector {
+class EscenaTotoEscritor extends EscenaToto {
     manoQueEscribe : Actor;
 
     iniciar(){
         super.iniciar();
         this.manoQueEscribe = new ActorAnimado(0,0,{grilla: "manoToto.png"});
-        this.cuadriculaLectura.agregarActor(this.manoQueEscribe,0,0,false);
-        this.manoQueEscribe.escalarAAncho(100);
-        this.manoQueEscribe.setY(this.manoQueEscribe.getY()+100);
+        this.cuadriculaSecundaria.agregarActor(this.manoQueEscribe,0,0,false);
+        this.manoQueEscribe.escalarAAncho(150);
+        this.manoQueEscribe.setY(this.manoQueEscribe.getY()+40);
+        this.manoQueEscribe.setX(this.manoQueEscribe.getX()+70);
     }
 
-    construirCuadricula() : Cuadricula {
-        return new Cuadricula(
-            0, -150, this.mapaEscena.length, this.mapaEscena[0].length,
-            { ancho: 400, alto: 70 }, { grilla: 'casilla.mono.contar.png' }
-        );
+    pathCuadriculaSecundaria() : string {
+        return "libroToto.png";
     }
 
-    construirCuadriculaLectura() : Cuadricula {
-        return new Cuadricula(
-            0, 50, 1, this.topeDeLetras,
-            { alto: 60, ancho: 380 }, { grilla: 'invisible.png' }
-        );
-    }
-
-    pathFondo(){
-        return "fondo.totoEscritor.png";
+    pathGrillaCasilla() : string {
+        return 'casilla.mono.contar.png';
     }
 }
 
 
 class EscribirTextoDadoEnOtraCuadricula extends EscribirTexto {
-
     iniciar(receptor){
         this.argumentos.texto = this.argumentos.texto || pilas.escena_actual().automata.caracterActual();
         this.argumentos.receptor = pilas.escena_actual().manoQueEscribe;

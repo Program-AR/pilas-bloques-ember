@@ -31,11 +31,11 @@
     "grunt-contrib-concat": "^0.5.1",
     "grunt-contrib-watch": "^0.6.1",
     "grunt-open": "^0.2.3",
-    "grunt-typescript": "^0.6.1",
+    "grunt-typescript": "^0.8.0",
     "load-grunt-tasks": "^3.1.0",
     "mocha-phantomjs": "3.1.2",
     "phantomjs-polyfill": "0.0.1",
-    "typescript": "^1.4.1"
+    "typescript": "^1.8.10"
   },
   "dependencies": {
     "grunt-contrib-qunit": "^1.2.0"
