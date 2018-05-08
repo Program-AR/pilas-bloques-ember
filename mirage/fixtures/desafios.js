@@ -1427,7 +1427,7 @@ export default [
     escena: `new EscenaTotoLector([
         ['A', 'c', 'a', 'b'],
         ['o', 'l', 'l', 'e'],
-    ], "caballo")`,
+    ], "cabello")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
