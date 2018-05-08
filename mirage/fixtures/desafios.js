@@ -1426,8 +1426,8 @@ export default [
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['A', 'c', 'a', 'b'],
-        ['o', 'l', 'l', 'e'],
-    ], "cabello")`,
+        ['o', 'l', 'l', 'a'],
+    ], "caballo")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
