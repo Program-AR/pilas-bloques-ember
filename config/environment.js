@@ -9,7 +9,6 @@ module.exports = function(environment) {
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     cursoBackendURL: null,
-    consultarVersion: false,
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
@@ -54,7 +53,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.consultarVersion = false;
   }
 
   if (environment === 'web' || environment === 'production') {

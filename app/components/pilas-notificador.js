@@ -10,14 +10,12 @@ export default Ember.Component.extend({
   didInsertElement() {
     const inElectron = (typeof process !== "undefined");
 
-    if (this.get('servicioNotificador')) {
-      if (inElectron) {
-        /* Solo si está en la versión offline, sobre electron, espera 5 segundos
-         * y consulta si existe una versión nueva para descargar. */
-        Ember.run.later(this, function() {
-          this.consultarSiExisteVersionNueva();
-        }, 5000);
-      }
+    if (this.get('servicioNotificador') && inElectron) {
+      /* Solo si está en la versión offline, sobre electron, espera 5 segundos
+        * y consulta si existe una versión nueva para descargar. */
+      Ember.run.later(this, function() {
+        this.consultarSiExisteVersionNueva();
+      }, 5000);
     }
   },
 
