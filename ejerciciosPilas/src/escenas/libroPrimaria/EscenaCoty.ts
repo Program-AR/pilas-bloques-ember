@@ -24,12 +24,12 @@
      // Como el dibujarFigura figura sólo con líneas continuas, tengo que hacer esta chanchada
      this.ptosDibujoFijo.forEach(
        (ptos, i) => this.dibujarFigura('dibujoFijo'+i,ptos[0],ptos, pilas.colores.azuloscuro)
-     );
+     ); 
    }
 
    crearAutomata(){
      this.automata = new Coty(this.xCoty,this.yCoty);
-     this.automata.escala = 3;
+     this.automata.escala = 0.6;
      //this.automata.x = -150;
      //this.automata.y = 100;
    }
