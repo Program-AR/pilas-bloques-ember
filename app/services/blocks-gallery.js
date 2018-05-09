@@ -834,14 +834,14 @@ export default Ember.Service.extend({
       descripcion: 'Mover arriba dibujando',
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarHaciaArriba',
-      argumentos: '{distancia: 50, nombreAnimacion: "arribaDibujando"}',
+      argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
       descripcion: 'Mover abajo dibujando',
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarHaciaAbajo',
-      argumentos: '{distancia: 50, nombreAnimacion: "abajoDibujando"}',
+      argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
