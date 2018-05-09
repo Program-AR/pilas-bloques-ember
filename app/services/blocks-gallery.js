@@ -862,28 +862,28 @@ export default Ember.Service.extend({
       descripcion: 'Saltar arriba',
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarAnimado',
-      argumentos: '{direccion: [0,1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "arriba"}',
+      argumentos: '{direccion: [0,1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarAbajo', {
       descripcion: 'Saltar abajo',
       icono: 'icono.abajo.png',
       comportamiento: 'SaltarAnimado',
-      argumentos: '{direccion: [0,-1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "abajo"}',
+      argumentos: '{direccion: [0,-1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarDerecha', {
       descripcion: 'Saltar derecha',
       icono: 'icono.derecha.png',
       comportamiento: 'SaltarAnimado',
-      argumentos: '{direccion: [1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
+      argumentos: '{direccion: [1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarIzquierda', {
       descripcion: 'Saltar izquierda',
       icono: 'icono.izquierda.png',
       comportamiento: 'SaltarAnimado',
-      argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
+      argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('MoverLeyendoDerecha', {
