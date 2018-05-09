@@ -87,9 +87,9 @@ actividadTest("2.I1d", {
 			  <next>
 				<block type=\"MoverLeyendoDerecha\">
 				  <next>
-					<block type=\"MoverLeyendoAbajo\">
+					<block type=\"MoverLeyendoIzquierda\">
 					  <next>
-						<block type=\"MoverLeyendoIzquierda\">
+						<block type=\"MoverLeyendoAbajo\">
 						  <next>
 							<block type=\"MoverLeyendoIzquierda\">
 							  <next>
