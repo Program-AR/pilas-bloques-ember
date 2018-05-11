@@ -1,83 +1,119 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "MovimientoAnimado.ts"/>
 /// <reference path = "../escenas/Errores.ts" />
-/// <reference path = "../actores/libroPrimaria/Letra.ts" />
+/// <reference path = "../actores/Cuadricula.ts" />
+/// <reference path = "../actores/Casilla.ts" />
 
+type vectorDireccion = {x: number, y: number};
 
 class MovimientoEnCuadricula extends MovimientoAnimado {
-    cuadricula;
-    estoyEmpezandoAMoverme;
-    direccionCasilla; // Strategy
+    cuadricula : Cuadricula;
+    casillaOrigen : Casilla;
+    casillaDestino : Casilla;
+    direccionCasilla : DireccionCasilla ; // Strategy
 
-    preAnimacion(){
+    iniciar(receptor : ActorAnimado) : void {
+        super.iniciar(receptor);
+        
         this.cuadricula = this.receptor.cuadricula;
-
+    
         if (!this.direccionCasilla) {
           let clase:any = window[this.argumentos.claseDirCasilla];
           this.direccionCasilla = new clase();
         }
+        
+        this.casillaOrigen = this.casillaActual();
+        this.casillaDestino = this.proximaCasilla(this.casillaOrigen) || this.casillaOrigen;
 
-        this.argumentos.direccion = new Direct(this.vectorDireccion().x,this.vectorDireccion().y);
+        this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
-        super.preAnimacion();
-        this.estoyEmpezandoAMoverme = true;
     }
 
-    doActualizar(){
-        if (!this.puedoMovermeEnEsaDireccion() || super.doActualizar()){
-            return true;
-        }
+    casillaActual() : Casilla {
+        return this.receptor.casillaActual();
     }
 
-    puedoMovermeEnEsaDireccion(){
-        if (this.estoyEmpezandoAMoverme){
-            this.estoyEmpezandoAMoverme = false;
-            return this.verificarDireccion(this.receptor.casillaActual());
-        }
-        return true;
-    }
-
-    distancia(){
-        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
-        return this.direccionCasilla.distancia(this);
-    }
-
-    distanciaHorizontal(){
-        return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
-    }
-    distanciaVertical(){
-        return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
-    }
-    verificarDireccion(casilla){
-        var proximaCasilla = this.proximaCasilla(casilla);
-        if (!proximaCasilla){
-            throw new ActividadError("No puedo ir para " + this.textoAMostrar());
-            return false;
-        };
-        if (proximaCasilla.tieneActorConEtiqueta('Obstaculo')){
-            throw new ActividadError("Hay un obstáculo para " + this.textoAMostrar());
-            return false;
-        };
-        this.receptor.setCasillaActual(proximaCasilla);
-        return true
-    }
-
-    proximaCasilla(casilla){
+    proximaCasilla(casilla : Casilla) : Casilla {
         // Template Method. Devolver la casilla a la que se va a avanzar
         return this.direccionCasilla.proximaCasilla(casilla);
     }
 
-    textoAMostrar(){
+    vectorDireccion() : vectorDireccion {
+        return this.direccionCasilla.vectorDireccion;
+    }
+
+    distancia() : number {
+        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
+        return this.direccionCasilla.distancia(this) - (
+            this.hayObstaculo(this.casillaDestino)
+                ? this.direccionCasilla.distanciaUnaCasilla(this) * 0.3
+                : 0
+            );
+    }
+
+    distanciaHorizontal() : number {
+        return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
+    }
+
+    distanciaVertical() : number {
+        return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
+    }
+
+    hayObstaculo(casilla : Casilla) : boolean {
+        return casilla.tieneActorConEtiqueta('Obstaculo');
+    }
+
+
+    configurarVerificaciones() : void {
+        super.configurarVerificaciones();
+        this.verificacionesPre.push(new Verificacion(
+            () => this.verificarDireccion(),
+            "No puedo ir para " + this.textoAMostrar()
+        ));
+        this.verificacionesPost.push(new Verificacion(
+            () => ! this.hayObstaculo(this.casillaDestino),
+            "¡Hay un obstáculo!"
+        ));
+    }
+
+    verificarDireccion() : boolean {
+        return this.proximaCasilla(this.casillaOrigen) !== undefined;
+    }
+
+    textoAMostrar() : string {
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
         return this.direccionCasilla.textoAMostrar();
     }
 
-    vectorDireccion(){
-        return this.direccionCasilla.vectorDireccion;
+
+    postAnimacion() : void {
+        this.receptor.setCasillaActual(this.casillaDestino);
+    }
+
+
+    nombreAnimacion() : string {
+        return this.hayObstaculo(this.casillaDestino)
+            ? "correrChocando"
+            : super.nombreAnimacion();        
+    }
+
+    nombreAnimacionSiguiente() : string {
+        return this.hayObstaculo(this.casillaDestino)
+            ? "chocado"
+            : super.nombreAnimacionSiguiente();
     }
 }
 
-class DirCasillaDerecha  {
+interface DireccionCasilla {
+    vectorDireccion : vectorDireccion;
+    proximaCasilla(casilla : Casilla) : Casilla;
+    textoAMostrar() : string;
+    distanciaUnaCasilla(movimiento : MovimientoEnCuadricula) : number;
+    distancia(movimiento : MovimientoEnCuadricula) : number;
+}
+
+
+class DirCasillaDerecha implements DireccionCasilla {
     vectorDireccion = { x: 1, y: 0 };
 
     proximaCasilla(casilla){
@@ -86,12 +122,15 @@ class DirCasillaDerecha  {
     textoAMostrar(){
         return "la derecha";
     }
-    distancia(movimiento){
+    distanciaUnaCasilla(movimiento){
         return movimiento.distanciaHorizontal();
+    }
+    distancia(movimiento) {
+        return this.distanciaUnaCasilla(movimiento);
     }
 }
 
-class DirCasillaArriba {
+class DirCasillaArriba implements DireccionCasilla {
     vectorDireccion = { x: 0, y: 1 };
 
     proximaCasilla(casilla){
@@ -100,12 +139,15 @@ class DirCasillaArriba {
     textoAMostrar(){
         return "arriba";
     }
-    distancia(movimiento){
+    distanciaUnaCasilla(movimiento){
         return movimiento.distanciaVertical();
+    }
+    distancia(movimiento) {
+        return this.distanciaUnaCasilla(movimiento);
     }
 }
 
-class DirCasillaAbajo {
+class DirCasillaAbajo implements DireccionCasilla {
     vectorDireccion = { x: 0, y: -1 };
 
     proximaCasilla(casilla){
@@ -114,12 +156,15 @@ class DirCasillaAbajo {
     textoAMostrar(){
         return "abajo";
     }
-    distancia(movimiento){
+    distanciaUnaCasilla(movimiento){
         return movimiento.distanciaVertical();
+    }
+    distancia(movimiento) {
+        return this.distanciaUnaCasilla(movimiento);
     }
 }
 
-class DirCasillaIzquierda {
+class DirCasillaIzquierda implements DireccionCasilla {
     vectorDireccion = { x: -1, y: 0 };
 
     proximaCasilla(casilla){
@@ -128,8 +173,11 @@ class DirCasillaIzquierda {
     textoAMostrar(){
         return "la izquierda";
     }
-    distancia(movimiento){
+    distanciaUnaCasilla(movimiento){
         return movimiento.distanciaHorizontal();
+    }
+    distancia(movimiento) {
+        return this.distanciaUnaCasilla(movimiento);
     }
 }
 
@@ -146,45 +194,58 @@ class MoverACasillaIzquierda extends MovimientoEnCuadricula {
   direccionCasilla = new DirCasillaIzquierda();
 }
 
-class MoverTodoAIzquierda extends MoverACasillaIzquierda{
-   proximaCasilla(casilla){
-        return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,0);
-   }
-   distancia(){
-        return this.distanciaHorizontal()
-               * this.receptor.casillaActual().nroColumna;
-   }
+
+class DirTodoADerecha extends DirCasillaDerecha {
+    proximaCasilla(casilla) {
+        return casilla.casillaTodoADerecha();
+    }
+    distancia(movimiento) {
+        return movimiento.distanciaHorizontal()
+               * (movimiento.cuadricula.cantColumnas - 1 - movimiento.casillaActual().nroColumna);
+    }
 }
 
-class MoverTodoADerecha extends MoverACasillaDerecha{
-   proximaCasilla(casilla){
-        return this.cuadricula.casilla(this.receptor.casillaActual().nroFila,this.cuadricula.cantColumnas-1);
-   }
-   distancia(){
-        return this.distanciaHorizontal()
-               * (this.cuadricula.cantColumnas - 1 - this.receptor.casillaActual().nroColumna );
-   }
+class DirTodoArriba extends DirCasillaArriba {
+    proximaCasilla(casilla) {
+        return casilla.casillaTodoArriba();
+    }
+    distancia(movimiento) {
+        return movimiento.distanciaVertical() * movimiento.casillaActual().nroFila;
+    }
 }
 
-class MoverTodoArriba extends MoverACasillaArriba{
-   proximaCasilla(casilla){
-        return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,0);
-   }
-   distancia(){
-        return this.distanciaVertical()
-               * this.receptor.casillaActual().nroFila;
-   }
+class DirTodoAbajo extends DirCasillaAbajo {
+    proximaCasilla(casilla) {
+        return casilla.casillaTodoAbajo();
+    }
+    distancia(movimiento) {
+        return movimiento.distanciaVertical()
+               * (movimiento.cuadricula.cantFilas - 1 - movimiento.casillaActual().nroColumna);
+    }
 }
 
-class MoverTodoAbajo extends MoverACasillaAbajo{
-   proximaCasilla(casilla){
-        return this.cuadricula.casilla(this.receptor.casillaActual().nroColumna,this.cuadricula.cantFilas-1);
-   }
-   distancia(){
-        return this.distanciaVertical()
-               * (this.cuadricula.cantFilas - 1 - this.receptor.casillaActual().nroColumna);
-   }
+class DirTodoAIzquierda extends DirCasillaIzquierda {
+    proximaCasilla(casilla) {
+        return casilla.casillaTodoAIzquierda();
+    }
+    distancia(movimiento) {
+        return movimiento.distanciaHorizontal() * movimiento.casillaActual().nroColumna;
+    }
 }
+
+class MoverTodoADerecha extends MovimientoEnCuadricula {
+    direccionCasilla = new DirTodoADerecha();
+}
+class MoverTodoArriba extends MovimientoEnCuadricula {
+    direccionCasilla = new DirTodoArriba();
+}
+class MoverTodoAbajo extends MovimientoEnCuadricula {
+    direccionCasilla = new DirTodoAbajo();
+}
+class MoverTodoAIzquierda extends MovimientoEnCuadricula {
+    direccionCasilla = new DirTodoAIzquierda();
+}
+
 
 class SiguienteFila extends MoverACasillaAbajo {
   configurarVerificaciones() {
@@ -198,48 +259,4 @@ class SiguienteColumna extends MoverACasillaDerecha {
     super.configurarVerificaciones();
     this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
   }
-}
-
-/**
- * Comportamiento que extiende un movimiento por la cuadrícula
- * con una lectura. El actor receptor debe tener definida la propiedad
- * 'cuadriculaLectura'. Si en la casilla de llegada hay un actor Letra,
- * su contenido se registra en la cuadrícula de lectura del receptor.
- */
-class MovimientoConLectura extends MovimientoEnCuadricula {
-    postAnimacion() {
-        super.postAnimacion();
-        let casilla = this.receptor.casillaActual();
-        if (this.hayLetra(casilla)) {
-            let caracter = this.caracterEnCasilla(casilla);
-            let casillaLectura = this.receptor.cuadriculaLectura.proximaCasillaLibre();
-            if (casillaLectura) {
-                this.receptor.cuadriculaLectura.agregarActorEnProximaCasillaLibre(new Letra(caracter));
-            }
-            else {
-                throw new ActividadError("Ya leí mucho, ¡estoy cansado!");
-            }
-        }
-    }
-
-    hayLetra(casilla) {
-        return casilla.tieneActorConEtiqueta('Letra');
-    }
-
-    caracterEnCasilla(casilla) {
-        return casilla.actoresConEtiqueta('Letra')[0].caracter();
-    }
-}
-
-class MoverLeyendoDerecha extends MovimientoConLectura {
-    direccionCasilla = new DirCasillaDerecha();
-}
-class MoverLeyendoArriba extends MovimientoConLectura {
-    direccionCasilla = new DirCasillaArriba();
-}
-class MoverLeyendoAbajo extends MovimientoConLectura {
-    direccionCasilla = new DirCasillaAbajo();
-}
-class MoverLeyendoIzquierda extends MovimientoConLectura {
-    direccionCasilla = new DirCasillaIzquierda();
 }

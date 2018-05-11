@@ -162,19 +162,19 @@ class ComportamientoAnimado extends Comportamiento {
 
 
 class Verificacion {
-	condicionEjecucion;
-	mensajeError;
+	condicionEjecucion : () => boolean;
+	mensajeError : string;
 
-	constructor(condicionEjecucion, mensajeError) {
+	constructor(condicionEjecucion : () => boolean, mensajeError : string) {
 		this.condicionEjecucion = condicionEjecucion;
 		this.mensajeError = mensajeError;
 	}
 
-	seCumple(){
+	seCumple() : boolean {
 		return this.condicionEjecucion();
 	}
 
-	verificar(){
+	verificar() : void {
 		if (!this.seCumple()) {
 			throw new ActividadError(this.mensajeError);
 		}
