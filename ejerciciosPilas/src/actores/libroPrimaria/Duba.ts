@@ -22,10 +22,10 @@ class Duba extends ActorAnimado {
 		this.definirAnimacion("error",[129,130,131,132,133,134,135,136,137,138,139,140,141,142,142,142,142], 12)
 	}
 	
-	informarError(error, escena) {
-		this.decir(error.description());
-		if (error.description() !== "¡Hay un obstáculo!") {
-			this.hacer(ComportamientoAnimado, {nombreAnimacion: "error", postAnimacion: () => escena.pausar()});
+	informarError(descripcion: string) {
+		super.informarError(descripcion);
+		if (descripcion !== "¡Hay un obstáculo!") {
+			this.hacer(ComportamientoAnimado, {nombreAnimacion: "error", nombreAnimacionSiguiente: "error"});
 		}
 	}
 }
