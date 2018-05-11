@@ -248,6 +248,16 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
+    informarError(descripcion: string){
+        this.decir(descripcion);
+    }
+
+    // TODO: Esto debería estar en Estudiante, en pilasweb.
+    eliminar_comportamientos(){
+        this.comportamiento_actual = undefined;
+        this.comportamientos = [];
+    }
+    
     colisiona_con(objeto) : Boolean {
       if(this.cuadricula){
         return this.cuadricula.colisionan(this,objeto);
@@ -269,9 +279,9 @@ class ActorAnimado extends Actor {
         }.bind(this));
         this.habilidadesSuspendidas = [];
     }
-		enviarAlFrente(){
-			this.setZ(Math.min.apply(Math,pilas.escena_actual().actores.map(act => act.getZ()))-1);
-		}
+    enviarAlFrente(){
+        this.setZ(Math.min.apply(Math,pilas.escena_actual().actores.map(act => act.getZ()))-1);
+    }
 
 }
 

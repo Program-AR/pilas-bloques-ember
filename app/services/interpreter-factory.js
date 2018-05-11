@@ -96,7 +96,7 @@ export default Ember.Service.extend({
     interpreter.setProperty(scope, 'out_hacer', interpreter.createAsyncFunction(hacer_wrapper));
 
     /**
-     * Llama a callback_cuando_ejecuta_bloque con el id del bloque en ejecucion.
+     * Es el código que se ejecuta con una expresión (sensor, operación, etc.)
      */
     function out_evaluar(expr) {
       expr = expr ? expr.toString() : '';
@@ -104,19 +104,7 @@ export default Ember.Service.extend({
         try {
           var value = pilas.escena_actual().automata.${expr}
         } catch (e) {
-          var escena = pilas.escena_actual();
-
-          escena.automata.decir(e.description());
-          escena.pausar();
-
-            if (parent) {
-              let mensaje = {
-                tipo: "errorDeActividad",
-                detalle: e.message,
-              };
-              parent.postMessage(mensaje, window.location.origin);
-            }
-
+          pilas.escena_actual().errorHandler.handle(e);
         }
 
         value`));

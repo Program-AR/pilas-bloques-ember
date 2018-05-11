@@ -21,9 +21,17 @@ class ProductionErrorHandler {
 		this.escena = escena;
 	}
 
-	handle(e) {
-		this.escena.automata.decir(e.description());
-		this.escena.pausar();
+	handle(e: Error){
+		if(e instanceof ActividadError){
+				this.handleActividadError(e);
+		} else {
+			throw e;
+		}
+	}
+
+	handleActividadError(e: ActividadError) {
+		this.escena.automata.eliminar_comportamientos();
+		this.escena.automata.informarError(e.description());
 
     if (parent) {
       let mensaje = {

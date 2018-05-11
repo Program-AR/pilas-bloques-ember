@@ -17,11 +17,7 @@ class EscenaActividad extends Base {
 		try {
 			super.actualizar();
 		} catch (e) {
-			if(e instanceof ActividadError){
-				this.errorHandler.handle(e);
-			} else {
-				throw e;
-			}
+			this.errorHandler.handle(e);
 		}
 	}
 

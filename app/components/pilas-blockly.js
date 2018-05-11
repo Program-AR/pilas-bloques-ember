@@ -114,8 +114,8 @@ export default Ember.Component.extend({
 
     this.get('pilas').on("errorDeActividad", (motivoDelError) => {
       Ember.run(this, function() {
-        var receptor = this.get('pilas').evaluar('pilas.escena_actual().automata');
-        receptor.decir(motivoDelError);
+        // TODO: Este es un hook para luego agregar a la interfaz 
+        // el informe deseado al ocurrir un error.
       });
     });
 
