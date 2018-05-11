@@ -73,6 +73,20 @@ class Casilla extends ActorAnimado {
         return this.cuadricula.casilla(this.nroFila + 1, this.nroColumna);
     }
 
+    
+    casillaTodoADerecha() {
+        return this.cuadricula.casilla(this.nroFila, this.cuadricula.cantColumnas - 1);
+    }
+    casillaTodoAIzquierda() {
+        return this.cuadricula.casilla(this.nroFila, 0);
+    }
+    casillaTodoArriba() {
+        return this.cuadricula.casilla(0, this.nroColumna);
+    }
+    casillaTodoAbajo() {
+        return this.cuadricula.casilla(this.cuadricula.cantFilas - 1, this.nroColumna);
+    }
+
 
     hayArriba() : boolean {
         return this.cuadricula.hayArriba(this);

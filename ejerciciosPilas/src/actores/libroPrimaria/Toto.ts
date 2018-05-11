@@ -1,7 +1,8 @@
 /// <reference path="../ActorAnimado.ts"/>
+/// <reference path="../Cuadricula.ts"/>
 
 class Toto extends ActorAnimado {
-  cuadriculaLectura : Cuadricula;
+  cuadriculaSecundaria : Cuadricula;
 
   constructor() {
     super(0, 0, {grilla: 'actor.toto.png', cantFilas: 1, cantColumnas: 1});

@@ -51,8 +51,8 @@ abstract class EscenaToto extends EscenaActividad {
         this.automata.enviarAlFrente();
 
         this.cuadriculaSecundaria = this.construirCuadriculaSecundaria();
-        // Toto debe conocer la cuadrícula de lectura (ver comportamiento 'MovimientoConLectura').
-        this.automata.cuadriculaLectura = this.cuadriculaSecundaria;
+        // Toto debe conocer la cuadrícula secundaria (ver comportamiento 'MovimientoConLectura').
+        this.automata.cuadriculaSecundaria = this.cuadriculaSecundaria;
     }
 
     construirCuadricula() : Cuadricula {
