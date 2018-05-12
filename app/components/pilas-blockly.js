@@ -112,12 +112,13 @@ export default Ember.Component.extend({
       // TODO: puede que esto quede en desuso.
     }
 
-    this.get('pilas').on("errorDeActividad", (motivoDelError) => {
-      Ember.run(this, function() {
-        // TODO: Este es un hook para luego agregar a la interfaz 
-        // el informe deseado al ocurrir un error.
-      });
-    });
+    // TODO: Este es un hook para luego agregar a la interfaz 
+    // el informe deseado al ocurrir un error.
+    // this.get('pilas').on("errorDeActividad", (motivoDelError) => {
+    //   Ember.run(this, function() {
+    //     // TODO
+    //   });
+    // });
 
     $(window).trigger('resize');
   },

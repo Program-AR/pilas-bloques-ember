@@ -13,15 +13,17 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     direccionCasilla : DireccionCasilla ; // Strategy
 
     iniciar(receptor : ActorAnimado) : void {
+        // La dirección puede ya venir predefinida mediante herencia o bien definirse
+        // dinámicamente mediante un string que se pasa por parámetro
+        if (!this.direccionCasilla) {
+            let factory = new DireccionCasillaFactory();
+            this.direccionCasilla = factory.obtenerDireccionCasilla(this.argumentos.direccionCasilla);
+        }
+
         super.iniciar(receptor);
         
-        this.cuadricula = this.receptor.cuadricula;
-    
-        if (!this.direccionCasilla) {
-          let clase:any = window[this.argumentos.claseDirCasilla];
-          this.direccionCasilla = new clase();
-        }
-        
+        this.cuadricula = this.receptor.cuadricula;  
+
         this.casillaOrigen = this.casillaActual();
         this.casillaDestino = this.proximaCasilla(this.casillaOrigen) || this.casillaOrigen;
 
@@ -254,4 +256,22 @@ class SiguienteColumna extends MoverACasillaDerecha {
     super.configurarVerificaciones();
     this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
   }
+}
+
+
+class DireccionCasillaFactory {
+    obtenerDireccionCasilla(direccion : string) : DireccionCasilla {
+        if (direccion == "derecha") {
+            return new DirCasillaDerecha();
+        }
+        else if (direccion == "arriba") {
+            return new DirCasillaArriba();
+        }
+        else if (direccion == "abajo") {
+            return new DirCasillaAbajo();
+        }
+        else if (direccion == "izquierda") {
+            return new DirCasillaIzquierda();
+        }
+    }
 }

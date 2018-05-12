@@ -647,7 +647,7 @@ export default Ember.Service.extend({
           "name": "direccion",
         }
       ],
-      code: 'hacer(actor_id, "MovimientoEnCuadricula", {claseDirCasilla: $direccion});'
+      code: 'hacer(actor_id, "MovimientoEnCuadricula", {direccionCasilla: $direccion});'
     });
 
     bloque.categoria = "Primitivas";
@@ -1166,28 +1166,28 @@ export default Ember.Service.extend({
     this.crearBloqueValor("ParaLaDerecha", {
       descripcion: 'la derecha',
       icono: 'icono.derecha.png',
-      valor: 'DirCasillaDerecha',
+      valor: 'derecha',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaLaIzquierda', {
       descripcion: 'la izquierda',
       icono: 'icono.izquierda.png',
-      valor: 'DirCasillaIzquierda',
+      valor: 'izquierda',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaArriba', {
       descripcion: 'arriba',
       icono: 'icono.arriba.png',
-      valor: 'DirCasillaArriba',
+      valor: 'arriba',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaAbajo', {
       descripcion: 'abajo',
       icono: 'icono.abajo.png',
-      valor: 'DirCasillaAbajo',
+      valor: 'abajo',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
