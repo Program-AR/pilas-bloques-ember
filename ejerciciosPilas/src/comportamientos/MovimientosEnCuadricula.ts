@@ -45,7 +45,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     distancia() : number {
         // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
         return this.direccionCasilla.distancia(this) - (
-            this.hayObstaculo(this.casillaDestino)
+            this.hayObstaculo(this.casillaDestino) // La idea es que si hay un obstáculo no logre llegar al final.
                 ? this.direccionCasilla.distanciaUnaCasilla(this) * 0.3
                 : 0
             );
@@ -72,7 +72,8 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         ));
         this.verificacionesPost.push(new Verificacion(
             () => ! this.hayObstaculo(this.casillaDestino),
-            "¡Hay un obstáculo!"
+            "¡Hay un obstáculo!",
+            "chocado"
         ));
     }
 
@@ -95,12 +96,6 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         return this.hayObstaculo(this.casillaDestino)
             ? "correrChocando"
             : super.nombreAnimacion();        
-    }
-
-    nombreAnimacionSiguiente() : string {
-        return this.hayObstaculo(this.casillaDestino)
-            ? "chocado"
-            : super.nombreAnimacionSiguiente();
     }
 }
 

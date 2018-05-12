@@ -21,11 +21,4 @@ class Duba extends ActorAnimado {
 		this.definirAnimacion("chocado", [91,92,93,94,95,96,97,98,99,100,101,102,103,104,105,106,107,108,109,110,111,112,113,114,115,116,117,118,119,120,121,122,123,124,125,126,127,128,128,128,128,128], 12)
 		this.definirAnimacion("error",[129,130,131,132,133,134,135,136,137,138,139,140,141,142,142,142,142], 12)
 	}
-	
-	informarError(descripcion: string) {
-		super.informarError(descripcion);
-		if (descripcion !== "¡Hay un obstáculo!") {
-			this.hacer(ComportamientoAnimado, {nombreAnimacion: "error", nombreAnimacionSiguiente: "error"});
-		}
-	}
 }

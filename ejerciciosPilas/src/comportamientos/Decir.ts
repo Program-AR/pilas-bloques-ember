@@ -6,16 +6,17 @@ class Decir extends ComportamientoAnimado {
 
 	/* Redefinir si corresponde */
 	preAnimacion() {
-		this.globo = this.crearGlobo()
+		this.globo = this.crearGlobo();
 	}
 
 	doActualizar() {
+		super.doActualizar();
 		return !this.globo.vivo;
-    }
+  }
 
-    crearGlobo(){
-    	return new Globo(this.receptor, this.argumentos.mensaje)
-    }
+	crearGlobo(){
+		return new Globo(this.receptor, this.argumentos.mensaje, {autoEliminar: this.argumentos.autoEliminar} )
+	}
 
 }
 
