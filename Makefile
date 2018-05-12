@@ -80,6 +80,11 @@ compilar_web: pre_ember_build
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
+compilar_pilasweb:
+	cd ../pilasweb; make build
+	cp -rf ../pilasweb/dist bower_components/pilasweb/
+	cp -f ../pilasweb/dist/pilasweb.d.ts ejerciciosPilas/dependencias/
+
 version_patch:
 	./node_modules/ember-cli/bin/ember release
 
