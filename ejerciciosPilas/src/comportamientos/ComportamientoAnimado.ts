@@ -164,10 +164,12 @@ class ComportamientoAnimado extends Comportamiento {
 class Verificacion {
 	condicionEjecucion : () => boolean;
 	mensajeError : string;
+	nombreAnimacion : string;
 
-	constructor(condicionEjecucion : () => boolean, mensajeError : string) {
+	constructor(condicionEjecucion : () => boolean, mensajeError: string, nombreAnimacion?: string) {
 		this.condicionEjecucion = condicionEjecucion;
 		this.mensajeError = mensajeError;
+		this.nombreAnimacion = nombreAnimacion;
 	}
 
 	seCumple() : boolean {
@@ -176,7 +178,7 @@ class Verificacion {
 
 	verificar() : void {
 		if (!this.seCumple()) {
-			throw new ActividadError(this.mensajeError);
+			throw new ActividadError(this.mensajeError, this.nombreAnimacion);
 		}
 	}
 }

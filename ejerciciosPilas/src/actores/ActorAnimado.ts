@@ -52,6 +52,7 @@ class ActorAnimado extends Actor {
         this.opciones = ops;
         this.opciones.cuadrosCorrer = ops.cuadrosCorrer || this.seguidillaHasta(ops.cantColumnas) || [0];
         this.opciones.cuadrosParado = ops.cuadrosParado || [0];
+        this.opciones.cuadrosError = ops.cuadrosError || this.opciones.cuadrosParado;
         this.opciones.cantColumnas = ops.cantColumnas || this.opciones.cuadrosCorrer.length;
         this.opciones.cantFilas = ops.cantFilas || 1;
     }
@@ -164,6 +165,7 @@ class ActorAnimado extends Actor {
     setupAnimacion(){
         this.definirAnimacion("correr", this.opciones.cuadrosCorrer, 5);
         this.definirAnimacion("parado", this.opciones.cuadrosParado, 5);
+        this.definirAnimacion("error", this.opciones.cuadrosError, 5);
         this.animar();
         this.cargarAnimacion("parado");
     }
@@ -248,8 +250,8 @@ class ActorAnimado extends Actor {
         pilas.escena_actual().intentaronRecoger(a);
     }
 
-    informarError(descripcion: string){
-        this.decir(descripcion);
+    informarError(error: ActividadError){
+        this.hacer(Decir, {mensaje: error.message, nombreAnimacion: error.nombreAnimacion, autoEliminar: false});
     }
 
     // TODO: Esto debería estar en Estudiante, en pilasweb.
