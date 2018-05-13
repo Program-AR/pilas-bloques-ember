@@ -39,7 +39,7 @@ actividadTest(nombre, {
     </statement>
 	</block>
 	</xml>`,
-	errorEsperado: 'Hay un obstáculo para arriba',
+	errorEsperado: '¡Hay un obstáculo!',
 });
 
 actividadTest(nombre, {
@@ -56,7 +56,7 @@ actividadTest(nombre, {
   </block >
 	<block type="MoverACasillaIzquierda" id="sUjx|1FMK-$Qk*M]r+v0" disabled="true" x="180" y="412"></block>
 	</xml>`,
-	errorEsperado: 'Hay un obstáculo para abajo',
+	errorEsperado: '¡Hay un obstáculo!',
 });
 
 actividadTest(nombre, {
@@ -72,7 +72,7 @@ actividadTest(nombre, {
     </statement>
   </block>
 	</xml>`,
-	errorEsperado: 'Hay un obstáculo para la izquierda',
+	errorEsperado: '¡Hay un obstáculo!',
 });
 
 actividadTest(nombre, {
@@ -93,5 +93,5 @@ actividadTest(nombre, {
     </statement >
   </block >
 	</xml>`,
-	errorEsperado: 'Hay un obstáculo para la derecha',
+	errorEsperado: '¡Hay un obstáculo!',
 });

@@ -31,7 +31,7 @@ actividadTest(nombre, {
     </statement>
     </block>
   </xml>`,
-  errorEsperado: "Hay un obstáculo para abajo"
+  errorEsperado: "¡Hay un obstáculo!"
 });
 
 actividadTest(nombre, {
