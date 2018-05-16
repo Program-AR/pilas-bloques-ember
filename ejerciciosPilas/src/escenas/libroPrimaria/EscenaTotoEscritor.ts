@@ -17,6 +17,10 @@ class EscenaTotoEscritor extends EscenaToto {
         this.manoQueEscribe.setX(this.manoQueEscribe.getX()+70);
     }
 
+    crearAutomata() : TotoEscritor {
+        return new TotoEscritor();
+    }
+
     pathCuadriculaSecundaria() : string {
         return "libroToto.png";
     }

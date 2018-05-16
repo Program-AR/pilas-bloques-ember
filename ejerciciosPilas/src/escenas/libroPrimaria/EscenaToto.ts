@@ -38,8 +38,8 @@ abstract class EscenaToto extends EscenaActividad {
 
     iniciar() {
         this.fondo = new Fondo('fondo.toto.png', 0, 0);
-        this.automata = new Toto();
-
+        this.automata = this.crearAutomata();
+        
         this.cuadricula = this.construirCuadricula();
         this.cuadricula.autollenar(
             this.mapaEscena,
@@ -49,6 +49,7 @@ abstract class EscenaToto extends EscenaActividad {
             }
         );
         this.automata.enviarAlFrente();
+        this.automata.escala *= this.escalaSegunCuadricula(1.8);
 
         this.cuadriculaSecundaria = this.construirCuadriculaSecundaria();
         // Toto debe conocer la cuadrícula secundaria (ver comportamiento 'MovimientoConLectura').
@@ -59,7 +60,7 @@ abstract class EscenaToto extends EscenaActividad {
         return new Cuadricula(
             0, 80, this.mapaEscena.length, this.mapaEscena[0].length,
             { ancho: 400, alto: 300 }, 
-            { grilla: this.pathGrillaCasilla(), alto: this.mapaEscena.length === 1 ? 70 : undefined }
+            { grilla: this.pathGrillaCasilla(), alto: this.mapaEscena.length === 1 ? 70 : undefined, relAspecto: 1 }
         );
     }
 
@@ -69,6 +70,11 @@ abstract class EscenaToto extends EscenaActividad {
             { alto: 160 , ancho: 380, imagen: this.pathCuadriculaSecundaria()}, { grilla: 'invisible.png' }
         );
     }
+
+    /**
+     * Crea y devuelve el autómata de la actividad
+     */
+    abstract crearAutomata() : Toto;
 
     /**
      * Retorna el nombre de la imagen correspondiente al fondo de la cuadrícula secundaria.

@@ -8,6 +8,10 @@
  * A medida que el zorro lee las letras, estas van apareciendo en otra cuadrícula.
  */
 class EscenaTotoLector extends EscenaToto {
+    crearAutomata() : TotoLector {
+        return new TotoLector();
+    }
+
     pathCuadriculaSecundaria(){
         return "pensamientoToto.png";
     }
