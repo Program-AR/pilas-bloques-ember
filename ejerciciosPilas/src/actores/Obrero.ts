@@ -19,6 +19,6 @@ class Obrero extends ActorAnimado {
     }
 
     fraseAlSaltar(){
-    	return pilas.escena_actual().fraseAlSaltar();
+    	return this.escena.fraseAlSaltar();
     }
 } 

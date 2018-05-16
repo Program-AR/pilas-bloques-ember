@@ -10,7 +10,7 @@ class VolarHeroicamente extends ComportamientoConVelocidad {
 			this.argumentos.velocidad = 100;
 			this.argumentos.cantPasos = 1;
 			super.preAnimacion();
-	    pilas.escena_actual().fondo.hacer_luego(GirarMarquesina,{});
+	    this.receptor.escena.fondo.hacer_luego(GirarMarquesina,{});
 	}
 
 	postAnimacion(){

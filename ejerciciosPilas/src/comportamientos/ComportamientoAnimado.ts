@@ -109,10 +109,10 @@ class ComportamientoAnimado extends Comportamiento {
 		});
 
 		if (this.argumentos.idTransicion) {
-			pilas.escena_actual().estado.realizarTransicion(this.argumentos.idTransicion, this);
+			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion, this);
 		}
 
-		pilas.escena_actual().estado.verificarQuePuedoSeguir();
+		this.receptor.escena.estado.verificarQuePuedoSeguir();
 	}
 
 	private realizarVerificacionesPostAnimacion() {

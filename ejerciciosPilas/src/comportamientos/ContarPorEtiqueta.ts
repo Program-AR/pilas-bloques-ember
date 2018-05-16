@@ -19,7 +19,7 @@ class ContarPorEtiqueta extends ComportamientoColision {
 		if (!receptor[this.attrName()]) { 
 			receptor[this.attrName()] = new ObservadoConAumentar();
 			receptor[this.attrName()].cantidad = 0;
-			receptor[this.attrName()].registrarObservador(pilas.escena_actual().tableros[this.argumentos.etiqueta]);
+			receptor[this.attrName()].registrarObservador(this.receptor.escena.tableros[this.argumentos.etiqueta]);
 		};
 	}
 

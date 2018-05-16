@@ -28,7 +28,7 @@ class ActorAnimado extends Actor {
         this.desPausar();
         this.sanitizarOpciones(opciones);
         super(this.animacionPara(this.opciones.grilla), x, y);
-        this.z = pilas.escena_actual().minZ() - 1;
+        this.z = pilas.escena.minZ() - 1;
 
         this.setupAnimacion();
 
@@ -222,6 +222,11 @@ class ActorAnimado extends Actor {
         return clon;*/
     }
 
+    get escena() {
+        // Se asume que todos los actores animados están en la escena actual
+        return pilas.escena_actual();
+    }
+
     //TODO poner en otra clase lo q tenga q ver con casillas
     casillaActual(){
         return this._casillaActual;
@@ -244,10 +249,10 @@ class ActorAnimado extends Actor {
     }
 
     cuando_busca_recoger() {
-        pilas.escena_actual().intentaronRecoger();
+        this.escena.intentaronRecoger();
     }
     recoger(a) {
-        pilas.escena_actual().intentaronRecoger(a);
+        this.escena.intentaronRecoger(a);
     }
 
     informarError(error: ActividadError){
@@ -282,7 +287,7 @@ class ActorAnimado extends Actor {
         this.habilidadesSuspendidas = [];
     }
     enviarAlFrente(){
-        this.setZ(Math.min.apply(Math,pilas.escena_actual().actores.map(act => act.getZ()))-1);
+        this.setZ(Math.min.apply(Math,this.escena.actores.map(act => act.getZ()))-1);
     }
 
 }
