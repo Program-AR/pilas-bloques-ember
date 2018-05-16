@@ -23,4 +23,12 @@ class EscribirTexto extends SecuenciaAnimada {
             verificacionesPre: [new Verificacion(() => receptor.casillaActual().hayDerecha(), "¡Estoy cansado! No quiero escribir más...")]
         });
     }
+
+    preAnimacion() {
+        this.receptor.escena.automata.cargarAnimacionTemporalmente("escribir");
+    }
+
+    postAnimacion() {
+        this.receptor.escena.automata.restaurarAnimacionAnterior();
+    }
 }

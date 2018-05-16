@@ -22,6 +22,7 @@ class ActorAnimado extends Actor {
     objetosRecogidos;
     pausado;
     habilidadesSuspendidas;
+    pilaAnimaciones;
 
 
     constructor(x, y, opciones) {
@@ -34,6 +35,7 @@ class ActorAnimado extends Actor {
 
         this.objetosRecogidos = [];
         this.habilidadesSuspendidas = [];
+        this.pilaAnimaciones = [];
     }
 
     pre_actualizar(){
@@ -180,6 +182,25 @@ class ActorAnimado extends Actor {
 
     cargarAnimacion(nombre){
     	this._imagen.cargar_animacion(nombre);
+    }
+
+    /**
+     * Permite cargar una animación recordando el nombre de la animación en curso.
+     * Luego, se puede volver a la animación anterior mediante .restaurarAnimacionAnterior().
+     */
+    cargarAnimacionTemporalmente(nombre : string) {
+        this.pilaAnimaciones.push(this._imagen.animacion_en_curso.nombre);
+        this.cargarAnimacion(nombre);
+    }
+
+    /**
+     * Vuelve a cargar la animación que estaba en curso la última vez que se ejecutó
+     * .cargarAnimacionTemporalmente().
+     */
+    restaurarAnimacionAnterior() {
+        if (this.pilaAnimaciones.length > 0) {
+            this.cargarAnimacion(this.pilaAnimaciones.pop());
+        }
     }
 
     avanzarAnimacion() : Boolean {

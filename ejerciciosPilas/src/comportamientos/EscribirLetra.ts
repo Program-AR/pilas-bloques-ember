@@ -1,4 +1,5 @@
 /// <reference path = "ComportamientoConVelocidad.ts"/>
+/// <reference path = "../actores/libroPrimaria/Letra.ts"/>
 /**
  * Comportamiento que escribe una letra en la casilla actual.
  */
@@ -9,6 +10,7 @@ class EscribirLetra extends ComportamientoConVelocidad {
         super.preAnimacion();
         this.xInicial = this.receptor.getX();
     }
+
     darUnPaso(){
         var variacion = this.estoyEnElCuarto(1) || this.estoyEnElCuarto(4) ? 10 : -10
         this.receptor.setX(this.receptor.getX() + variacion);
