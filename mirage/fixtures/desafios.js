@@ -1627,8 +1627,10 @@ export default [
     escena: `new EscenaLita([
      [
        ['O', 'O', 'O', 'O', 'O', 'O'],
+       ['O', 'O', 'O', 'O', 'O', 'O'],
        ['O', 'A', ' ', 'T', 'L', ' '],
        ['O', 'O', 'O', 'O', 'O', 'E'],
+       ['O', 'O', 'O', 'O', 'O', 'O'],
        ['O', 'O', 'O', 'O', 'O', 'O']
      ] 
     ])`,
@@ -1640,6 +1642,38 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 232,
+    grupoId: 11,
+    nombre: '2.1.4b',
+    titulo: 'Desafio 2.1.4b',
+    imagen: 'Lita',
+    escena: `new EscenaLita([
+     [
+       ['O', 'O', 'O', 'O', 'O'],
+       ['O', 'O', 'O', 'O', 'O'],
+       [' ', ' ', 'T', ' ', ' '],
+       [' ', ' ', 'L', ' ', ' '],
+       ['A', 'O', 'O', 'O', 'E'],
+       ['O', 'O', 'O', 'O', 'O']
+     ] 
+    ])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
     ],
   }
 ];
