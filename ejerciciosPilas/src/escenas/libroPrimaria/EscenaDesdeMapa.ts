@@ -41,6 +41,7 @@ abstract class EscenaDesdeMapa extends EscenaActividad {
         this.automata = this.obtenerAutomata();
         this.mapaEscena = this.generadorDeMapas.obtenerMapa();
         this.cuadricula = this.construirCuadricula(this.mapaEscena);
+		this.automata.enviarAlFrente();
         if (this.tieneAleatoriedad()) this.indicarAleatoriedad();
         this.ajustarGraficos();
     }
@@ -126,7 +127,7 @@ abstract class EscenaDesdeMapa extends EscenaActividad {
     opsCuadricula() : any { return {}; }
 
     /** Devuelve las opciones que se usarán para crear la casilla. Se puede sobreescribir. */
-    opsCasilla(): any { return {}; }
+    opsCasilla(): any { return { grilla: 'invisible.png' }; }
 }
 
 

@@ -16,7 +16,6 @@ class EscenaDuba extends EscenaDesdeMapa {
 	}
 	
 	ajustarGraficos() {
-		this.automata.enviarAlFrente();
 		this.automata.escala *= this.escalaSegunCuadricula(1.6);
 		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 8);
 
@@ -33,13 +32,13 @@ class EscenaDuba extends EscenaDesdeMapa {
 	mapeoCuadricula() : MapeoCuadricula {
 		return {
 			'A': () => this.automata,
-			'O': (f : number, c : number) => this.obtenerObstaculo(f, c),
+			'O': (f, c) => this.obtenerObstaculo(f, c),
 			'P': () => new Churrasco(),
 		}
 	}
 
 	obtenerAutomata(): Duba {
-		return new Duba;
+		return new Duba();
 	}
 
 	obtenerObstaculo(fila: number, columna: number): Obstaculo {

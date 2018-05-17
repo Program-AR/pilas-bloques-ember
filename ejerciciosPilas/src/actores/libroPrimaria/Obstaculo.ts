@@ -5,11 +5,16 @@
 */
 class Obstaculo extends ActorAnimado {
 
-		constructor(imagenes, semilla) {
-			super(0, 0, {grilla: this.randomDe(imagenes, semilla)});
+		constructor(imagen : string | Array<string>, semilla? : number) {
+			if (Array.isArray(imagen)) {
+				super(0, 0, {grilla: Obstaculo.randomDe(imagen, semilla)});
+			}
+			else {
+				super(0, 0, imagen);
+			}
 		}
 
-		randomDe(lista, semilla){
+		static randomDe(lista : Array<string>, semilla) {
 			// magia matemática para elegir un elemento random usando un seed
 			var x = Math.sin(semilla) * 10000;
 			var index = Math.floor((x - Math.floor(x)) * lista.length);

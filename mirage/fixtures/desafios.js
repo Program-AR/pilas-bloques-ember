@@ -1618,4 +1618,28 @@ export default [
       'hayVocalRMT'
     ],
   },
+  {
+    id: 231,
+    grupoId: 11,
+    nombre: '2.1.4a',
+    titulo: 'Desafio 2.1.4a',
+    imagen: 'Lita',
+    escena: `new EscenaLita([
+     [
+       ['O', 'O', 'O', 'O', 'O', 'O'],
+       ['O', 'A', ' ', 'T', 'L', ' '],
+       ['O', 'O', 'O', 'O', 'O', 'E'],
+       ['O', 'O', 'O', 'O', 'O', 'O']
+     ] 
+    ])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+    ],
+  }
 ];
