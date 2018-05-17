@@ -3,9 +3,6 @@
 /// <reference path = "../../actores/libroPrimaria/Letra.ts" />
 /// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
 
-// TODO: Llevarlo a otro lado en el que sea compartido por las escenas de tandil
-type MapaEscena = Array<Array<string>>;
-
 /**
  * En esta escena, el zorro Toto se mueve por una cuadrícula de letras y las va leyendo.
  * A medida que el zorro lee las letras, estas van apareciendo en otra cuadrícula.

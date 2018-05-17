@@ -25,6 +25,7 @@ class EscenaActividad extends Base {
 		return this.estado.soyAceptacion();
 	}
 
+	// TODO: Deprecar, reemplazar por contarActoresConEtiqueta.
 	cantidadObjetosConEtiqueta(etiqueta : String) : Number{
 		return pilas.obtener_actores_con_etiqueta(etiqueta).length
 	}
@@ -40,8 +41,12 @@ class EscenaActividad extends Base {
 		return this.stage.children[this.stage.children.length - 1].z;
 	}
 
-	contarActoresConEtiqueta(etiqueta) : number{
-			return this.actores.filter(actor=>actor.tiene_etiqueta(etiqueta)).length;
+	obtenerActoresConEtiqueta(etiqueta : string) : Array<ActorAnimado> {
+		return this.actores.filter(actor => actor.tiene_etiqueta(etiqueta));
+	}
+
+	contarActoresConEtiqueta(etiqueta : string) : number {
+		return this.obtenerActoresConEtiqueta(etiqueta).length;
 	}
 
 	/**
