@@ -42,7 +42,11 @@ class EscenaActividad extends Base {
 	}
 
 	obtenerActoresConEtiqueta(etiqueta : string) : Array<ActorAnimado> {
-		return this.actores.filter(actor => actor.tiene_etiqueta(etiqueta));
+		return this.obtenerActoresConEtiquetas([etiqueta]);
+	}
+
+	obtenerActoresConEtiquetas(etiquetas : Array<string>) : Array<ActorAnimado> {
+		return this.actores.filter(actor => etiquetas.some(etiqueta => actor.tiene_etiqueta(etiqueta)));
 	}
 
 	contarActoresConEtiqueta(etiqueta : string) : number {

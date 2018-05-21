@@ -763,6 +763,57 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['DibujarLado'].categoria = 'Primitivas';
 
+		this.crearBloqueAccion('ComerChurrasco', {
+      descripcion: 'Comer churrasco',
+      icono: 'icono.churrasco.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionColisionadoMientras: "desaparecer"}',
+    });
+
+		this.crearBloqueAccion('AgarrarTomate', {
+      descripcion: 'Agarrar tomate',
+      icono: 'icono.tomate.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: `{
+        etiqueta: "Tomate",
+        nombreAnimacion: "agarrarTomate",
+        animacionColisionadoMientras: "desaparecer",
+        idTransicion: "agarrarTomate"
+        
+      }`,
+    });
+
+		this.crearBloqueAccion('AgarrarLechuga', {
+      descripcion: 'Agarrar lechuga',
+      icono: 'icono.lechuga.png',
+      comportamiento: 'RecogerPorEtiqueta',
+      argumentos: `{
+        etiqueta: "Lechuga",
+        nombreAnimacion: "agarrarLechuga",
+        animacionColisionadoMientras: "desaparecer",
+        idTransicion: "agarrarLechuga"
+      }`,
+    });
+
+		this.crearBloqueAccion('PrepararEnsalada', {
+      descripcion: 'Preparar ensalada',
+      icono: 'icono.ensaladera.png',
+      comportamiento: 'ComportamientoColision',
+      argumentos: `{
+        etiqueta: "Ensaladera",
+        nombreAnimacion: "prepararEnsalada",
+        animacionColisionadoMientras: "preparando",
+        animacionColisionadoPost: "llena",
+        idTransicion: "prepararEnsalada"
+      }`
+      // comportamientoAdicional: 'Eliminar',
+      // argumentosComportamiento: {
+      //   nombreAnimacion: "explotar"
+      // }
+    });
+
+
+
     // Para los desafíos de escribir y leer letras
     
     this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
@@ -1316,13 +1367,6 @@ export default Ember.Service.extend({
     };
 
     this.crearBloqueAlias('hasta', 'Hasta');
-
-		this.crearBloqueAccion('ComerChurrasco', {
-      descripcion: 'Comer Churrasco',
-      icono: 'icono.churrasco.png',
-      comportamiento: 'RecogerPorEtiqueta',
-      argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionColisionadoMientras: "desaparecer"}',
-    });
 
   },
 
