@@ -29,4 +29,8 @@
    dibujoEsperado(){
      return this._dibujoEsperado;
    }
+
+   pathFondo(): string {
+    return 'fondo.coty.png';
+  }
 }
