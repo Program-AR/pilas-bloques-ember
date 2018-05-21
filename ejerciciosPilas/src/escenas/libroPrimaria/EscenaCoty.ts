@@ -2,12 +2,12 @@
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 
  class EscenaCoty extends DibujandoFiguras {
-   ptosSolucionParametrizados;
-   ptosDibujoFijo;
-   xCoty;
-   yCoty;
+   ptosSolucionParametrizados: number[][];
+   ptosDibujoFijo: number[][];
+   xCoty: number;
+   yCoty: number;
 
-   constructor(xCoty, yCoty, puntosDibujoFijo = [], puntosSolucion = []){
+   constructor(xCoty: number, yCoty: number, puntosDibujoFijo: number[][] = [], puntosSolucion: number[][] = []){
      super();
      this.ptosSolucionParametrizados = puntosSolucion;
      this.ptosDibujoFijo = puntosDibujoFijo;
@@ -19,19 +19,17 @@
      super.iniciar();
      if(this.ptosDibujoFijo.length > 0 && !this.ptosDibujoFijo[0].length){
        // Convierto a lista de listas
-       this.ptosDibujoFijo = [this.ptosDibujoFijo];
+       this.ptosDibujoFijo = [<any>this.ptosDibujoFijo];
      }
-     // Como el dibujarFigura figura sólo con líneas continuas, tengo que hacer esta chanchada
+     // Como el dibujarFigura figura sólo con líneas continuas, recorro la lista de listas de puntos. Cada sublista es un dibujo continuo.
      this.ptosDibujoFijo.forEach(
-       (ptos, i) => this.dibujarFigura('dibujoFijo'+i,ptos[0],ptos, pilas.colores.azuloscuro)
+       ptos => this.dibujarFigura(ptos[0],ptos, pilas.colores.azuloscuro)
      ); 
    }
 
    crearAutomata(){
      this.automata = new Coty(this.xCoty,this.yCoty);
      this.automata.escala = 0.6;
-     //this.automata.x = -150;
-     //this.automata.y = 100;
    }
 
    puntosSolucion(){

@@ -1,12 +1,14 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../actores/Dibujante.ts" />
+/// <reference path = "../../dependencias/pilasweb.d.ts" />
 
 class DibujandoFiguras extends EscenaActividad {
-    pizarraFantasma;
+    pizarraFantasma: Pizarra;
     iniciar() {
         this.fondo = new Fondo('fondo.dibujando.figuras.png',0,0);
         this.crearAutomata();
-        this.dibujarFigura('pizarraFantasma',this.automata, this.puntosSolucion());
+        this.pizarraFantasma = new pilas.actores.Pizarra();
+        this.dibujarFigura(this.automata, this.puntosSolucion());
     }
 
     crearAutomata(){
@@ -16,12 +18,10 @@ class DibujandoFiguras extends EscenaActividad {
       this.automata.y = 100;
     }
 
-    dibujarFigura(nombre, orig, puntos, color = pilas.colores.grisclaro){
-      this[nombre] = new pilas.actores.Pizarra();
-
+    dibujarFigura(orig, puntos, color = pilas.colores.grisclaro){
       var origen = orig;
       puntos.forEach( destino => {
-        this[nombre].linea(origen.x, origen.y, destino.x, destino.y, color, 6);
+        this.pizarraFantasma.linea(origen.x, origen.y, destino.x, destino.y, color, 6);
         origen = destino;
       });
     }
