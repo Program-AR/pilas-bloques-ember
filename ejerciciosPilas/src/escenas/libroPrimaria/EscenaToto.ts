@@ -1,15 +1,13 @@
-/// <reference path = "../EscenaActividad.ts" />
+/// <reference path = "EscenaDesdeMapa.ts" />
 /// <reference path = "../../actores/libroPrimaria/Toto.ts" />
 /// <reference path = "../../actores/libroPrimaria/Letra.ts" />
-/// <reference path = "../../actores/CuadriculaAutoLlenante.ts" />
 
 /**
  * En esta escena, el zorro Toto se mueve por una cuadrícula de letras y las va leyendo.
  * A medida que el zorro lee las letras, estas van apareciendo en otra cuadrícula.
  */
-abstract class EscenaToto extends EscenaActividad {
+abstract class EscenaToto extends EscenaDesdeMapa {
     automata : Toto;
-    mapaEscena : Array<Array<string>>;
     textoObjetivo : string;
     topeDeLetras : number;
     cuadriculaSecundaria : Cuadricula; // En esta cuadrícula van apareciendo las letras a medida que Toto lee.
@@ -27,38 +25,47 @@ abstract class EscenaToto extends EscenaActividad {
         textoObjetivo : string,
         topeDeLetras : number = 0
     ) {
-        super();
-        this.mapaEscena = mapaEscena;
+        super(new GeneradorDeMapasSimple(mapaEscena));
         this.textoObjetivo = textoObjetivo;
         this.topeDeLetras = topeDeLetras > 0 ? topeDeLetras : this.textoObjetivo.length;
     }
 
     iniciar() {
-        this.fondo = new Fondo('fondo.toto.png', 0, 0);
-        this.automata = this.crearAutomata();
-        
-        this.cuadricula = this.construirCuadricula();
-        this.cuadricula.autollenar(
-            this.mapaEscena,
-            {
-                'A' : () => this.automata,
-                'default': codigo => new Letra(codigo)
-            }
-        );
-        this.automata.enviarAlFrente();
-        this.automata.escala *= this.escalaSegunCuadricula(1.8);
+        super.iniciar();
 
         this.cuadriculaSecundaria = this.construirCuadriculaSecundaria();
         // Toto debe conocer la cuadrícula secundaria (ver comportamiento 'MovimientoConLectura').
         this.automata.cuadriculaSecundaria = this.cuadriculaSecundaria;
     }
 
-    construirCuadricula() : Cuadricula {
-        return new Cuadricula(
-            0, 80, this.mapaEscena.length, this.mapaEscena[0].length,
-            { ancho: 400, alto: 300 }, 
-            { grilla: this.pathGrillaCasilla(), alto: this.mapaEscena.length === 1 ? 70 : undefined, relAspecto: 1 }
-        );
+    ajustarGraficos() {
+        this.automata.enviarAlFrente();
+        this.automata.escala *= this.escalaSegunCuadricula(1.8);
+    }
+
+    mapeoCuadricula(): MapeoCuadricula {
+        return {
+            'A': () => this.automata,
+            'default': (f, c, codigo) => new Letra(codigo)
+        }
+    }
+
+    abstract obtenerAutomata() : Toto;
+
+    archivoFondo() {
+        return "fondo.toto.png";
+    }
+    cuadriculaX() {
+        return 0;
+    }
+    cuadriculaY() {
+        return 80;
+    }
+    opsCuadricula() {
+        return { ancho: 400, alto: 300 };
+    }
+    opsCasilla() {
+        return { grilla: this.pathGrillaCasilla(), alto: this.mapaEscena.length === 1 ? 70 : undefined, relAspecto: 1 };
     }
 
     construirCuadriculaSecundaria() : Cuadricula {
@@ -67,11 +74,6 @@ abstract class EscenaToto extends EscenaActividad {
             { alto: 160 , ancho: 380, imagen: this.pathCuadriculaSecundaria()}, { grilla: 'invisible.png' }
         );
     }
-
-    /**
-     * Crea y devuelve el autómata de la actividad
-     */
-    abstract crearAutomata() : Toto;
 
     /**
      * Retorna el nombre de la imagen correspondiente al fondo de la cuadrícula secundaria.
@@ -96,7 +98,7 @@ abstract class EscenaToto extends EscenaActividad {
         return texto;
     }
 
-    estaResueltoElProblema() {
+    estaResueltoElProblema() : boolean {
         return this.textoEnCuadriculaSecundaria() == this.textoObjetivo.toUpperCase();
     }
 }

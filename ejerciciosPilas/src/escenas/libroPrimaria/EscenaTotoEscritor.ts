@@ -17,7 +17,7 @@ class EscenaTotoEscritor extends EscenaToto {
         this.manoQueEscribe.setX(this.manoQueEscribe.getX()+70);
     }
 
-    crearAutomata() : TotoEscritor {
+    obtenerAutomata() : TotoEscritor {
         return new TotoEscritor();
     }
 
