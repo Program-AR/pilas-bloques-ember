@@ -2,29 +2,23 @@
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 
  class EscenaCoty extends DibujandoFiguras {
-   ptosSolucionParametrizados: number[][];
-   ptosDibujoFijo: number[][];
+   _dibujoEsperado: DibujoLineal;
+   dibujoPreexistente: DibujoLineal;
    xCoty: number;
    yCoty: number;
 
-   constructor(xCoty: number, yCoty: number, puntosDibujoFijo: number[][] = [], puntosSolucion: number[][] = []){
+   constructor(xCoty: number, yCoty: number, dibujoPreexistente: DibujoLineal = [], dibujoEsperado: DibujoLineal = []){
      super();
-     this.ptosSolucionParametrizados = puntosSolucion;
-     this.ptosDibujoFijo = puntosDibujoFijo;
+     this._dibujoEsperado = dibujoEsperado;
+     this.dibujoPreexistente = dibujoPreexistente;
      this.xCoty = xCoty;
      this.yCoty = yCoty;
    }
 
    iniciar(){
      super.iniciar();
-     if(this.ptosDibujoFijo.length > 0 && !this.ptosDibujoFijo[0].length){
-       // Convierto a lista de listas
-       this.ptosDibujoFijo = [<any>this.ptosDibujoFijo];
-     }
-     // Como el dibujarFigura figura sólo con líneas continuas, recorro la lista de listas de puntos. Cada sublista es un dibujo continuo.
-     this.ptosDibujoFijo.forEach(
-       ptos => this.dibujarFigura(ptos[0],ptos, pilas.colores.azuloscuro)
-     ); 
+     // la pizarra sobre la que se hace el dibujo preexistente no se guarda porque no se usa para comparar
+     this.dibujar(new Pizarra(), this.dibujoPreexistente, pilas.colores.azuloscuro);
    }
 
    crearAutomata(){
@@ -32,7 +26,7 @@
      this.automata.escala = 0.6;
    }
 
-   puntosSolucion(){
-     return this.ptosSolucionParametrizados;
+   dibujoEsperado(){
+     return this._dibujoEsperado;
    }
 }
