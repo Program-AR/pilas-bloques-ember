@@ -11,7 +11,7 @@ class ElGatoEnLaCalle extends EscenaActividad {
 
     private construirFSM(){
       // ver https://github.com/Program-AR/pilas-bloques/issues/187
-      var builder= new BuilderStatePattern('inicial',false);
+      var builder= new BuilderStatePattern(this, 'inicial',false);
       builder.agregarEstado('posCorrecta',false);
       builder.agregarEstado('semiDormido1',false);
       builder.agregarEstado('semiDormido2',false);

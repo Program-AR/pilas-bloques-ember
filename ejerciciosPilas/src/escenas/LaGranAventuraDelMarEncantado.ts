@@ -69,7 +69,7 @@ class LaGranAventuraDelMarEncantado extends EscenaActividad {
     }
 
       private construirFSM(){
-        var builder= new BuilderStatePattern('inicial');
+        var builder= new BuilderStatePattern(this, 'inicial');
         builder.agregarEstado('llaveEnMano');
         builder.agregarEstado('cofreAbierto');
         builder.agregarEstado('magoConSombrero');

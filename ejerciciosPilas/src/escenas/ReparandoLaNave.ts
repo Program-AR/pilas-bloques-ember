@@ -73,7 +73,7 @@ class ReparandoLaNave extends EscenaActividad {
   }
 
   private crearEstado() {
-    var builder = new BuilderStatePattern('faltanMateriales');
+    var builder = new BuilderStatePattern(this, 'faltanMateriales');
     builder.agregarEstado('naveReparada');
     builder.agregarEstadoAceptacion('haEscapado');
     builder.agregarError('faltanMateriales', 'escapar', '¡No puedo escaparme sin antes haber reparado la nave!');

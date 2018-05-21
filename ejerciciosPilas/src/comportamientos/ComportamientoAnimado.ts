@@ -109,10 +109,9 @@ class ComportamientoAnimado extends Comportamiento {
 		});
 
 		if (this.argumentos.idTransicion) {
-			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion, this);
+			// Si la transición que se intenta realizar no es válida, explota acá
+			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion);
 		}
-
-		this.receptor.escena.estado.verificarQuePuedoSeguir();
 	}
 
 	private realizarVerificacionesPostAnimacion() {

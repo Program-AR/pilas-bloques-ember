@@ -27,7 +27,7 @@
         this.automata.escala *= 1.2;
         this.cuadricula.agregarActor(this.automata,0,0);
 
-        this.estado = new EstadoParaContarBuilder('explotar', 18).estadoInicial();
+        this.estado = new EstadoParaContarBuilder(this, 'explotar', 18).estadoInicial();
       }
 
     private completarConGlobos(){

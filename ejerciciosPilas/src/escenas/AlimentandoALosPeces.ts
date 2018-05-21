@@ -28,7 +28,7 @@ class AlimentandoALosPeces extends EscenaActividad {
     }
 
     generarEstadoInicial(){
-      var builder= new BuilderStatePattern('inicial');
+      var builder= new BuilderStatePattern(this, 'inicial');
       builder.agregarEstado('tengoLaComida');
       builder.agregarEstadosPrefijados('alimentado',1,6);
       builder.agregarEstadoAceptacion('alimentado7');

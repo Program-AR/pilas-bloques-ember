@@ -27,7 +27,7 @@ class InstalandoJuegos extends EscenaActividad {
 
 
   private construirFSM(){
-    var builder= new BuilderStatePattern('inicial');
+    var builder= new BuilderStatePattern(this, 'inicial');
     builder.agregarEstadosPrefijados('prendido',1,3);
     builder.agregarEstadosPrefijados('escritoA',1,3);
     builder.agregarEstadosPrefijados('escritoB',1,3);

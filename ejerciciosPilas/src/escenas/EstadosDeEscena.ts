@@ -53,167 +53,154 @@ En estos casos, se debe pensar bien si es necesaria la FSM, y cuáles son las tr
 
 
 class Estado {
-  funcionAceptacion;
+  funcionAceptacion : () => boolean;
 
-  constructor(funcionAceptacion = () => false) {
+  constructor(funcionAceptacion : () => boolean = () => false) {
     this.funcionAceptacion = funcionAceptacion;
   }
 
-  verificarQuePuedoSeguir() {
-  }
-
-  soyAceptacion() {
+  soyAceptacion() : boolean {
     return this.funcionAceptacion();
   }
 }
 
-class EstadoConTransicion extends Estado{
-  transiciones;
-  identifier;
+class EstadoConTransicion extends Estado {
+  escena : EscenaActividad;
+  identifier : string;
+  datos : { [id : string] : any } = {};
+  transiciones : { [id : string] : { estadoEntrada : Estado, condicionTransicion: () => boolean } } ;
+  errores : { [id : string] : string }
 
-  constructor(idEstado){
-    super();
-    this.identifier=idEstado;
-    this.transiciones={};
+  constructor(escena : EscenaActividad, idEstado : string, soyAceptacion : boolean = false) {
+    super(() => soyAceptacion);
+    this.escena = escena;
+    this.identifier = idEstado;
+    this.transiciones = {};
+    this.errores = {};
   }
 
-  agregarTransicion(estadoEntrada, idTransicion, condicionTransicion = () => true) {
+  agregarTransicion(estadoEntrada : Estado, idTransicion : string, condicionTransicion : () => boolean = () => true) {
     this.transiciones[idTransicion] = {
       estadoEntrada: estadoEntrada,
       condicionTransicion: condicionTransicion,
     };
   }
 
-  realizarTransicion(idTransicion, comportamiento) {
-    if (!this.puedoTransicionarA(idTransicion)) {
-      throw new ActividadError("¡Ups, esa no era la opción correcta!");
-    }
-    //console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
-    pilas.escena_actual().estado = this.estadoSiguiente(comportamiento, idTransicion);
+  agregarError(idTransicion : string, mensajeError : string) {
+    this.errores[idTransicion] = mensajeError;
   }
 
-  estadoSiguiente(comportamiento, idTransicion) {
+  realizarTransicion(idTransicion : string) {
+    if (this.puedoTransicionarA(idTransicion)) {
+      // console.log("Transicion:" + idTransicion + ", self:" + this.identifier + ", estado escena:" + pilas.escena_actual().estado.identifier + ", al estado:" + this.estadoSiguiente(comportamiento, idTransicion).identifier + ", comportamiento:" + comportamiento.constructor.name + ", receptor:" + comportamiento.receptor.constructor.name);
+      this.escena.estado = this.estadoSiguiente(idTransicion);
+    }
+    else if (idTransicion in this.errores) {
+      throw new ActividadError(this.errores[idTransicion]);
+    }
+    else {
+      throw new ActividadError("¡Ups, esa no era la opción correcta!");
+    }
+  }
+
+  puedoTransicionarA(idTransicion : string) : boolean {
+    return idTransicion in this.transiciones;
+  }
+
+  estadoSiguiente(idTransicion : string) : Estado {
       return this.transiciones[idTransicion].condicionTransicion() ?
         this.transiciones[idTransicion].estadoEntrada :
         this;
-  }
-
-  puedoTransicionarA(idTransicion){
-    return this.transiciones[idTransicion];
   }
 }
 
 // Sirve para que no tire error para salirse del camino
 class EstadoTransicionSinError extends EstadoConTransicion {
-  puedoTransicionarA(idTransicion){
-    return true; //Siempre me deja
+  puedoTransicionarA(idTransicion) : boolean {
+    return ! (idTransicion in this.errores); // Siempre que no haya error definido me deja
   }
-  estadoSiguiente(comportamiento, idTransicion) {
+
+  estadoSiguiente(idTransicion : string) {
     if (!super.puedoTransicionarA(idTransicion)){
-      return new EstadoTransicionSinError('meFuiDelCamino');
+      return new EstadoTransicionSinError(this.escena, 'meFuiDelCamino');
     } else {
-      return super.estadoSiguiente(comportamiento,idTransicion);
+      return super.estadoSiguiente(idTransicion);
     }
   }
 }
 
-class EstadoAceptacion extends EstadoConTransicion{
-  soyAceptacion(){
-    return true;
-  }
-}
+class BuilderStatePattern {
+  estados : { [id : string] : EstadoConTransicion };
+  idEstadoInicial : string;
+  escena : EscenaActividad;
 
-class EstadoError {
-  estadoAlQueVuelve;
-  mensajeError;
-
-  constructor(estado, mensaje) {
-    this.estadoAlQueVuelve = estado;
-    this.mensajeError = mensaje;
-  }
-
-  verificarQuePuedoSeguir() {
-    throw new ActividadError(this.mensajeError);
+  constructor(escena : EscenaActividad, idEstadoInicial : string, tiraErrorSiSeVaDelCamino : boolean = true){
+    this.idEstadoInicial = idEstadoInicial;
+    this.estados = {};
+    this.escena = escena;
+    this.estados[idEstadoInicial] = tiraErrorSiSeVaDelCamino
+      ? new EstadoConTransicion(this.escena, idEstadoInicial)
+      : new EstadoTransicionSinError(this.escena, idEstadoInicial);
   }
 
-  estadoSiguiente(comportamiento, idTransicion) {
-    return this.estadoAlQueVuelve;
+  estadoInicial(): EstadoConTransicion {
+    return this.estados[this.idEstadoInicial];
   }
-}
 
-class BuilderStatePattern{
-    estados;
-    idEstadoInicial;
+  agregarEstado(idEstado : string, tiraErrorSiSeVaDelCamino : boolean = true){
+    this.estados[idEstado] = tiraErrorSiSeVaDelCamino
+      ? new EstadoConTransicion(this.escena, idEstado)
+      : new EstadoTransicionSinError(this.escena, idEstado);
+  }
 
-    constructor(idEstadoInicialp,tiraErrorSiSeVaDelCamino = true){
-      this.idEstadoInicial=idEstadoInicialp;
-      this.estados={};
-      this.estados[idEstadoInicialp]= tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstadoInicialp) : new EstadoTransicionSinError(idEstadoInicialp);
-    }
+  agregarEstadoAceptacion(idEstado : string){
+    this.estados[idEstado] = new EstadoConTransicion(this.escena, idEstado, true);
+  }
 
-    agregarEstado(idEstado,tiraErrorSiSeVaDelCamino = true){
-      this.estados[idEstado]= tiraErrorSiSeVaDelCamino ? new EstadoConTransicion(idEstado) : new EstadoTransicionSinError(idEstado);
-    }
-    agregarEstadoAceptacion(idEstado){
-      this.estados[idEstado] = new EstadoAceptacion(idEstado);
-    }
+  agregarTransicion(estadoSalida : string, estadoEntrada : string, transicion : string, condicionTransicion : () => boolean = () => true ) {
+    this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion, condicionTransicion);
+  }
 
-    agregarTransicion(estadoSalida, estadoEntrada, transicion, condicionTransicion = () => true ) {
-      this.estados[estadoSalida].agregarTransicion(this.estados[estadoEntrada], transicion, condicionTransicion);
-    }
+  agregarError(estadoSalida : string, transicion : string, mensajeError : string){
+    this.estados[estadoSalida].agregarError(transicion, mensajeError);
+  }
 
-    agregarError(estadoSalida,transicion,error){
-      this.estados[estadoSalida].agregarTransicion(new EstadoError(this.estados[estadoSalida],error),transicion);
+  agregarErrorAVariosEstadosDeSalida(estadoSalida : string, transicion : string, error : string, indexInicialSalida : number, indexFinalSalida : number){
+    //agrega un error para varios estados de salida con prefijos.
+    //pre indexFinalSalida>indexInicialSalida
+    var tamano = indexFinalSalida - indexInicialSalida;
+    for (var index = 0; index <= tamano; ++index) {
+      this.agregarError(estadoSalida + (indexInicialSalida + index), transicion, error);
     }
+  }
 
-    agregarErrorAVariosEstadosDeSalida(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida){
-      //agrega un error para varios estados de salida con prefijos.
-      //pre indefFinalSalida>indexInicialSalida
-      var tamano=indexFinalSalida-indexInicialSalida
-      for(var index=0;index<=tamano;++index){
-        this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new EstadoError(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
-      }
+  agregarEstadosPrefijados(prefix : string, indexInicial : number, indexFinal : number) {
+    //prefix debe ser string e indexInicial y final ints
+    for (var i = indexInicial; i <= indexFinal; ++i) {
+      this.agregarEstado(prefix + i);
     }
-    agregarErroresIterados(estadoSalida,transicion,error,indexInicialSalida,indexFinalSalida,indexInicialTransi,indexFinalTransi){
-      //pre: indexFinalSalida-indexInicialSalida= indexFinalTransi-indexInicialTransi
-      // NO TERMINADO
-      var range=indexFinalSalida-indexInicialSalida;
-      for(var index=0;index<range;++index){
-          this.estados[estadoSalida+(indexInicialSalida+index)].agregarTransicion(new EstadoError(this.estados[estadoSalida+(indexInicialSalida+index)],error),transicion);
-      }
-    }
+  }
 
-    estadoInicial(){
-      return this.estados[this.idEstadoInicial];
+  agregarTransicionesIteradas(estadoSalidaPrefix,estadoEntradaPrefix,transicion ,inicialSalida,finSalida,inicialEntrada,finEntrada){
+    //pre: |estadosSalida|=|estadosEntrada|
+    //implica finSalida-inicialSalida=finEntrada-InicialEntrada
+    var tamano = finSalida - inicialSalida;
+    for (var index = 0; index <= tamano; ++index) {
+      this.agregarTransicion(estadoSalidaPrefix + (inicialSalida + index), estadoEntradaPrefix + (inicialEntrada + index), transicion);
     }
-
-    agregarEstadosPrefijados(prefix,indexInicial,indexFinal){
-      //prefix debe ser string e indexInicial y final ints
-    for(var i=indexInicial;i<=indexFinal;++i){
-      this.estados[prefix+i]=new EstadoConTransicion(prefix+i);
-    }
-    }
-
-    agregarTransicionesIteradas(estadoSalidaPrefix,estadoEntradaPrefix,transicion ,inicialSalida,finSalida,inicialEntrada,finEntrada){
-      //pre: |estadosSalida|=|estadosEntrada|
-      //implica finSalida-inicialSalida=finEntrada-InicialEntrada
-      var tamano=finSalida-inicialSalida
-      for(var index=0;index<=tamano;++index){
-                    this.estados[estadoSalidaPrefix+(inicialSalida+index)].agregarTransicion(this.estados[estadoEntradaPrefix+(inicialEntrada+index)],transicion);
-      }
-    }
+  }
 }
 
 class EstadoParaContarBuilder extends BuilderStatePattern {
-  constructor(idTransicion,cantidadEsperada){
-    super('faltan');
+  constructor(escena : EscenaActividad, idTransicion : string, cantidadEsperada : number) {
+    super(escena, 'faltan');
     this.agregarEstadoAceptacion('llegue');
     var estado = this.estados['llegue'];
-    estado.cant = 0;
+    estado.datos['cant'] = 0;
 
-    this.agregarTransicion('faltan', 'llegue', idTransicion, function() {
-      estado.cant += 1;
-      return (estado.cant === cantidadEsperada);
+    this.agregarTransicion('faltan', 'llegue', idTransicion, () => {
+      estado.datos['cant'] += 1;
+      return (estado.datos['cant'] === cantidadEsperada);
     });
 
     this.agregarError('llegue', idTransicion, 'Ya no hay más para ' + idTransicion);

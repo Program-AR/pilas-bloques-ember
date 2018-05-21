@@ -32,6 +32,6 @@ class FutbolRobots  extends EscenaActividad{
         this.cuadricula.agregarActor(new PelotaAnimada(0,0),fila,this.cuadricula.dameIndexUltimaPosicion(fila))
       };
 
-      this.estado = new EstadoParaContarBuilder('patear', this.cantidadFilas).estadoInicial();
+      this.estado = new EstadoParaContarBuilder(this, 'patear', this.cantidadFilas).estadoInicial();
    }
 }

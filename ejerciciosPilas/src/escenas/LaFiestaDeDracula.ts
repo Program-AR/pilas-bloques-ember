@@ -53,7 +53,7 @@
   }
 
   private crearEstado() {
-    var builder = new BuilderStatePattern('nadieBaila');
+    var builder = new BuilderStatePattern(this, 'nadieBaila');
     builder.agregarEstadoAceptacion('todosBailando');
     builder.agregarTransicion('nadieBaila', 'todosBailando', 'empezarFiesta');
     this.estado = builder.estadoInicial();

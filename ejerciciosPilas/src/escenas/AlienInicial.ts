@@ -34,7 +34,7 @@ class AlienInicial extends EscenaActividad {
     }
 
     private armarEstado() {
-      var a = new BuilderStatePattern('inicial');
+      var a = new BuilderStatePattern(this, 'inicial');
       a.agregarEstadoAceptacion('final');
       a.agregarTransicion('inicial', 'final', 'apretarBoton');
       return a.estadoInicial();
