@@ -598,15 +598,13 @@ export default [
 		nombre: '2.1.2a',
     titulo: 'Desafío 2.1.2a (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', ' ', ' ', ' ', 'O', ' '],
-        [' ', 'A', ' ', ' ', 'P', ' '],
-        [' ', ' ', ' ', 'O', ' ', ' '],
-        ['O', 'O', 'O', 'O', ' ', 'O'],      
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,-,-,-,O,-],\
+      [-,A,-,-,P,-],\
+      [-,-,-,O,-,-],\
+      [O,O,O,O,-,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -624,16 +622,14 @@ export default [
 		nombre: '2.1.2b',
     titulo: 'Desafío 2.1.2b (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', ' ', 'O', ' ', 'P', 'O'],
-        ['O', ' ', 'A', ' ', 'O', 'O'],
-        ['O', 'O', ' ', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+        [O,O,O,O,O,O],\
+        [O,O,O,O,O,O],\
+        [O,-,O,-,P,O],\
+        [O,-,A,-,O,O],\
+        [O,O,-,O,O,O],\
+        [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -651,16 +647,14 @@ export default [
 		nombre: '2.1.2c',
     titulo: 'Desafío 2.1.2c (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'A', 'O', ' ', ' ', 'O'],
-        ['O', ' ', ' ', ' ', 'P', 'O'],
-        ['O', ' ', 'O', ' ', ' ', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O],\
+      [O,A,O,-,-,O],\
+      [O,-,-,-,P,O],\
+      [O,-,O,-,-,O],\
+      [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -678,16 +672,14 @@ export default [
 		nombre: '2.1.2d',
     titulo: 'Desafío 2.1.2d (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', ' ', 'A', 'O', 'O', 'O'],
-        ['O', 'O', ' ', 'O', 'O', 'O'],
-        ['O', 'O', ' ', ' ', ' ', 'O'],
-        ['O', 'O', 'O', 'P', ' ', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],      
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,-,A,O,O,O],\
+      [O,O,-,O,O,O],\
+      [O,O,-,-,-,O],\
+      [O,O,O,P,-,O],\
+      [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -705,16 +697,14 @@ export default [
 		nombre: '2.1.2e',
     titulo: 'Desafío 2.1.2e (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', ' ', 'O', ' ', 'O'],
-        ['O', ' ', 'A', ' ', ' ', 'O'],
-        ['O', ' ', ' ', 'O', ' ', 'O'],
-        ['O', 'O', ' ', ' ', 'P', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ]
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,O,-,O,-,O],\
+      [O,-,A,-,-,O],\
+      [O,-,-,O,-,O],\
+      [O,O,-,-,P,O],\
+      [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -732,16 +722,14 @@ export default [
 		nombre: '2.1.2f',
     titulo: 'Desafío 2.1.2f (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', ' ', ' ', ' ', ' ', 'O'],
-        ['O', ' ', 'O', 'P', ' ', 'O'],
-        ['O', 'A', 'O', ' ', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,-,-,-,-,O],\
+      [O,-,O,P,-,O],\
+      [O,A,O,-,O,O],\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -759,16 +747,14 @@ export default [
 		nombre: '2.2.3a',
     titulo: 'Desafío 2.2.3a (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'P', 'O', ' ', ' ', 'O'],
-        ['O', ' ', 'O', ' ', ' ', ' '],
-        ['O', ' ', ' ', ' ', 'O', 'A'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+      [O,O,O,O,O,O],\
+      [O,P,O,-,-,O],\
+      [O,-,O,-,-,-],\
+      [O,-,-,-,O,A],\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -823,16 +809,14 @@ export default [
 		nombre: '2.2.3b',
     titulo: 'Desafío 2.2.3b (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', ' ', ' ', 'O', 'O', 'O'],
-        ['O', ' ', 'P', 'O', 'O', 'O'],
-        ['O', ' ', ' ', 'O', 'O', 'O'],
-        ['O', ' ', ' ', ' ', 'A', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],      
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+        [O,O,O,O,O,O],\
+        [O,-,-,O,O,O],\
+        [O,-,P,O,O,O],\
+        [O,-,-,O,O,O],\
+        [O,-,-,-,A,O],\
+        [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -871,16 +855,14 @@ export default [
 		nombre: '2.2.3c',
     titulo: 'Desafío 2.2.3c (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'P', 'O', 'A', 'O', 'O'],
-        ['O', ' ', 'O', ' ', 'O', 'O'],
-        ['O', ' ', ' ', ' ', 'O', 'O'],
-        ['O', ' ', ' ', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+        [O,O,O,O,O,O],\
+        [O,P,O,A,O,O],\
+        [O,-,O,-,O,O],\
+        [O,-,-,-,O,O],\
+        [O,-,-,O,O,O],\
+        [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -923,16 +905,14 @@ export default [
 		nombre: '2.2.3d',
     titulo: 'Desafío 2.2.3d (Duba)',
     imagen: 'Duba',
-		escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', ' ', ' ', ' ', 'O'],
-        ['O', ' ', 'P', ' ', ' ', 'O'],
-        ['O', ' ', 'O', 'O', 'O', 'O'],
-        ['O', ' ', ' ', 'A', ' ', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O'],  
-      ],
-		])`,
+		escena: `new EscenaDuba("\
+        [O,O,O,O,O,O],\
+        [O,O,-,-,-,O],\
+        [O,-,P,-,-,O],\
+        [O,-,O,O,O,O],\
+        [O,-,-,A,-,O],\
+        [O,O,O,O,O,O],\
+		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
 		debeFelicitarse: true,
@@ -983,18 +963,16 @@ export default [
     nombre: '3.1.3a',
     titulo: 'Desafío 3.1.3a (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        [' ', 'O', 'O', 'O', ' ', ' ', ' ', ' '],
-        [' ', 'O', 'O', 'O', 'O', ' ', ' ', ' '],
-        ['O', 'O', ' ', 'O', 'O', ' ', ' ', ' '],
-        ['O', 'O', ' ', ' ', ' ', ' ', ' ', ' '],
-        ['A', ' ', ' ', ' ', ' ', ' ', ' ', 'P'],
-        [' ', ' ', 'O', ' ', 'O', ' ', ' ', ' '],
-        [' ', ' ', 'O', 'O', 'O', 'O', 'O', 'O'],
-        [' ', ' ', ' ', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+        [-,O,O,O,-,-,-,-],\
+        [-,O,O,O,O,-,-,-],\
+        [O,O,-,O,O,-,-,-],\
+        [O,O,-,-,-,-,-,-],\
+        [A,-,-,-,-,-,-,P],\
+        [-,-,O,-,O,-,-,-],\
+        [-,-,O,O,O,O,O,O],\
+        [-,-,-,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1013,18 +991,16 @@ export default [
     nombre: '3.1.3b',
     titulo: 'Desafío 3.1.3b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['O', 'O', ' ', 'O', 'O', ' ', ' ', ' '],
-        ['O', 'P', ' ', 'O', 'O', ' ', ' ', ' '],
-        ['O', ' ', ' ', 'O', ' ', ' ', ' ', ' '],
-        ['O', ' ', 'O', 'O', ' ', ' ', ' ', ' '],
-        ['O', ' ', 'O', 'O', 'O', ' ', ' ', ' '],
-        [' ', ' ', 'O', 'O', 'O', 'O', ' ', ' '],
-        [' ', ' ', 'O', 'O', 'O', 'O', 'O', 'O'],
-        [' ', ' ', 'A', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+        [O,O,-,O,O,-,-,-],\
+        [O,P,-,O,O,-,-,-],\
+        [O,-,-,O,-,-,-,-],\
+        [O,-,O,O,-,-,-,-],\
+        [O,-,O,O,O,-,-,-],\
+        [-,-,O,O,O,O,-,-],\
+        [-,-,O,O,O,O,O,O],\
+        [-,-,A,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1043,18 +1019,16 @@ export default [
     nombre: '3.1.3c',
     titulo: 'Desafío 3.1.3c (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        [' ', ' ', ' ', 'O', 'O', ' ', ' ', 'O'],
-        ['O', 'O', ' ', 'O', ' ', ' ', ' ', 'O'],
-        ['A', 'O', 'O', 'O', ' ', ' ', 'O', 'O'],
-        [' ', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-        [' ', 'O', 'O', 'O', ' ', 'O', 'O', 'O'],
-        [' ', ' ', ' ', ' ', ' ', ' ', 'P', 'O'],
-        ['O', 'O', ' ', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', ' ', ' ', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+      [-,-,-,O,O,-,-,O],\
+      [O,O,-,O,-,-,-,O],\
+      [A,O,O,O,-,-,O,O],\
+      [-,O,O,O,O,O,O,O],\
+      [-,O,O,O,-,O,O,O],\
+      [-,-,-,-,-,-,P,O],\
+      [O,O,-,O,O,O,O,O],\
+      [O,O,-,-,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1073,18 +1047,16 @@ export default [
     nombre: '3.2.3a',
     titulo: 'Desafío 3.2.3a (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        [' ', ' ', ' ', ' ', 'O', 'O', 'O', 'O'],
-        [' ', ' ', ' ', ' ', ' ', ' ', ' ', 'O'],
-        [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-        [' ', 'P', ' ', ' ', ' ', ' ', ' ', ' '],
-        [' ', ' ', ' ', ' ', ' ', 'O', 'A', ' '],
-        [' ', ' ', ' ', ' ', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'], 
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+      [-,-,-,-,O,O,O,O],\
+      [-,-,-,-,-,-,-,O],\
+      [-,-,-,-,-,-,-,-],\
+      [-,P,-,-,-,-,-,-],\
+      [-,-,-,-,-,O,A,-],\
+      [-,-,-,-,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1129,18 +1101,16 @@ export default [
     nombre: '3.2.3b',
     titulo: 'Desafío 3.2.3b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['O', ' ', ' ', ' ', 'O', 'O', 'O', 'O'],
-        [' ', 'A', ' ', ' ', ' ', ' ', 'O', ' '],
-        ['O', 'O', ' ', ' ', ' ', ' ', ' ', ' '],
-        ['O', 'O', 'O', ' ', ' ', ' ', ' ', ' '],
-        ['O', 'O', 'O', ' ', ' ', ' ', ' ', ' '],
-        ['O', 'O', 'O', 'O', 'O', ' ', 'P', ' '],
-        ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+      [O,-,-,-,O,O,O,O],\
+      [-,A,-,-,-,-,O,-],\
+      [O,O,-,-,-,-,-,-],\
+      [O,O,O,-,-,-,-,-],\
+      [O,O,O,-,-,-,-,-],\
+      [O,O,O,O,O,-,P,-],\
+      [O,O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1185,11 +1155,7 @@ export default [
     nombre: '4.1.3a',
     titulo: 'Desafío 4.1.3a (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['A', 'P?'], 
-      ],
-		], 0, 1)`,
+    escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1209,11 +1175,7 @@ export default [
     nombre: '4.1.3b',
     titulo: 'Desafío 4.1.3b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['A', 'P?', 'P?'], 
-      ],
-		], 0, 2)`,
+    escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1233,22 +1195,19 @@ export default [
     nombre: '4.1.4b',
     titulo: 'Desafío 4.1.4b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O'],
-        ['O', 'A', ' ', 'P', 'O'],
-        ['O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O'],
-      ],
-      [
-        ['O', 'O', 'O', 'O', 'O'],
-        ['O', 'A', 'O', 'O', 'O'],
-        ['O', ' ', 'O', 'O', 'O'],
-        ['O', 'P', 'O', 'O', 'O'],
-        ['O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba(["\
+      [O,O,O,O,O],\
+      [O,A,-,P,O],\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+    ","\
+      [O,O,O,O,O],\
+      [O,A,O,O,O],\
+      [O,-,O,O,O],\
+      [O,P,O,O,O],\
+      [O,O,O,O,O],\
+		"])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1272,20 +1231,12 @@ export default [
     nombre: '4.1.4c',
     titulo: 'Desafío 4.1.4c (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['O', 'O', 'O', 'O', 'O'],
-        [' ', ' ', 'O', ' ', ' '],
-        ['A', ' ', ' ', ' ', 'P'],
-        ['O', 'O', 'O', 'O', 'O'],
-      ],
-      [
-        ['O', 'O', 'O', 'O', 'O'],
-        [' ', ' ', ' ', ' ', ' '],
-        ['A', ' ', 'O', ' ', 'P'],
-        ['O', 'O', 'O', 'O', 'O'],
-      ],
-		])`,
+    escena: `new EscenaDuba("\
+      [O,O,O,O,O],\
+      [-,-,*,-,-],\
+      [A,-,*,-,P],\
+      [O,O,O,O,O],\
+		", { coleccion: ["O"] })`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1309,11 +1260,7 @@ export default [
     nombre: '4.2.1a',
     titulo: 'Desafío 4.2.1a (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['A', ' ', ' ', ' ', ' ', ' ', ' ', 'P?'], 
-      ],
-    ], 0, 7)`,
+    escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1335,11 +1282,7 @@ export default [
     nombre: '4.2.1b',
     titulo: 'Desafío 4.2.1b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba([
-      [
-        ['A', 'P?', 'P?', 'P?', 'P?', 'P?', 'P?', 'P?'], 
-      ]
-    ], 0, 7)`,
+    escena: `new EscenaDuba("[A,*,*,*,*,*,*,*]", { coleccion: ["P","P","P","P"] }, [0,7])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
