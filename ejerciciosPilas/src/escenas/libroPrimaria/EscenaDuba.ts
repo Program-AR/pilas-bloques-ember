@@ -10,14 +10,8 @@ class EscenaDuba extends EscenaDesdeMapa {
 	yFinal: number;
 
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal? : [number, number]) {
-		if (Array.isArray(especificacion)) {
-			var generadores: Array<GeneradorDeMapasAleatorios>
-				= especificacion.map(s => new GeneradorDeMapasAleatorios(s, opciones));
-			super(new GeneradorDeMapasArray(generadores));
-		}
-		else {
-			super(new GeneradorDeMapasAleatorios(especificacion, opciones));
-		}
+		super();
+		this.initDesdeUnaOVariasDescripciones(especificacion, opciones);
 
 		if (posFinal) {
 			this.xFinal = posFinal[0];

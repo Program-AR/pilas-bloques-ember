@@ -29,17 +29,50 @@ abstract class EscenaDesdeMapa extends EscenaActividad {
     /**
      * @param generadorDeMapas El generador que se utilizará para obtener mapas para la actividad.
      */
-    constructor(generadorDeMapas : GeneradorDeMapas) {
+    constructor(generadorDeMapas? : GeneradorDeMapas) {
         super();
         this.generadorDeMapas = generadorDeMapas;
+    }
+
+    initDesdeMapa(mapa : MapaEscena) {
+        this.generadorDeMapas = new GeneradorDeMapasSimple(mapa);
+    }
+
+    initDesdeArrayDeMapas(mapas : Array<MapaEscena>) {
+        var generadores : Array<GeneradorDeMapasSimple>
+            = mapas.map(m => new GeneradorDeMapasSimple(m));
+        this.generadorDeMapas = new GeneradorDeMapasArray(generadores);
+    }
+
+    initDesdeDescripcion(descripcion : string, opciones?: opcionesMapaAleatorio) {
+        this.generadorDeMapas = new GeneradorDeMapasAleatorios(descripcion, opciones);
+    }
+
+    initDesdeArrayDeDescripciones(descripciones : Array<string>, opciones?: opcionesMapaAleatorio) {
+        var generadores: Array<GeneradorDeMapasAleatorios>
+            = descripciones.map(d => new GeneradorDeMapasAleatorios(d, opciones));
+        this.generadorDeMapas = new GeneradorDeMapasArray(generadores);
+    }
+
+    initDesdeUnaOVariasDescripciones(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio) {
+        if (Array.isArray(especificacion))
+            this.initDesdeArrayDeDescripciones(especificacion, opciones);
+        else
+            this.initDesdeDescripcion(especificacion, opciones);
     }
 
     iniciar() : void {
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.obtenerAutomata();
-        this.mapaEscena = this.generadorDeMapas.obtenerMapa();
+
+        if (this.generadorDeMapas)
+            this.mapaEscena = this.generadorDeMapas.obtenerMapa();
+        else
+            throw Error("Esta escena no fue correctamente inicializada con un generador de mapas");
+
         this.cuadricula = this.construirCuadricula(this.mapaEscena);
-		this.automata.enviarAlFrente();
+
+        this.automata.enviarAlFrente();
         if (this.tieneAleatoriedad()) this.indicarAleatoriedad();
         this.ajustarGraficos();
     }
