@@ -1,4 +1,6 @@
 /// <reference path = "EscenaToto.ts" />
+/// <reference path = "../../actores/libroPrimaria/Toto.ts" />
+/// <reference path = "../../actores/libroPrimaria/Letra.ts" />
 
 /**
  * En esta escena, el zorro Toto se mueve por una cuadrícula de letras y las va leyendo.

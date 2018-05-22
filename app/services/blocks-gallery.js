@@ -1145,7 +1145,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
 
     this.crearBloqueSensor('HayChurrasco', {
-      descripcion: 'Hay un churrasco',
+      descripcion: 'Hay un churrasco acá',
       icono: 'icono.churrasco.png',
       funcionSensor: 'tocando("Churrasco")',
       esBool: true

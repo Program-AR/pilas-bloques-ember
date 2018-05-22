@@ -13,6 +13,7 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
+            'dependencias/helpers.js',
             'dependencias/listHelper.js',
             'compilados/ejerciciosPilas.js',
         ],

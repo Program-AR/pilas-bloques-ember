@@ -1,3 +1,4 @@
+/// <reference path = "../../actores/ActorAnimado.ts" />
 /// <reference path = "../../../dependencias/pilasweb.d.ts" />
 
 /**
@@ -33,7 +34,7 @@ class Letra extends ActorAnimado {
      */
     private static primerLetraDeString(unString: string) : string {
         let caracter = unString[0].toUpperCase();
-        if (this.indiceDeCaracter(caracter)>=0) {
+        if (Letra.esCaracterValido(caracter)) {
             return caracter;
         }
         else {
@@ -47,5 +48,9 @@ class Letra extends ActorAnimado {
      */
     private static indiceDeCaracter(unString : string) : number {
         return this._caracteresValidos.indexOf(unString);
+    }
+
+    private static esCaracterValido(unString : string) : boolean {
+        return unString.length == 1 && Letra._caracteresValidos.indexOf(unString) >= 0;
     }
 }
