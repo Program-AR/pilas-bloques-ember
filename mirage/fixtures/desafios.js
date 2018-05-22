@@ -1671,5 +1671,263 @@ export default [
       'AgarrarLechuga',
       'PrepararEnsalada',
     ],
-  }
+  },
+  {
+    id: 233,
+    grupoId: 11,
+    nombre: '2.2.2',
+    titulo: 'Desafio 2.2.2',
+    imagen: 'Lita',
+    escena: `new EscenaLita(["\
+      [-,-,-],\
+      [-,L,-],\
+      [A,-,E],\
+      [-,T,-]\
+    ","\
+      [-,-,-,-],\
+      [-,L,T,-],\
+      [A,-,-,E],\
+      [-,-,-,-]\
+    ","\
+      [-,A,-],\
+      [L,E,T],\
+      [-,-,-],\
+      [-,-,-]\
+    ","\
+      [-,-,A],\
+      [-,L,T],\
+      [-,-,E]\
+    "])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 234,
+    grupoId: 11,
+    nombre: '2.2.3e',
+    titulo: 'Desafio 2.2.3e',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,-,T,O],\
+      [O,A,-,-,L,E,O],\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O]\
+    ")`,
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="AgarrarLechuga">
+        <next>
+        <block type="MoverACasillaArriba">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaAbajo">
+        <next>
+        <block type="PrepararEnsalada">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
+      </block>
+    </xml>`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 235,
+    grupoId: 12,
+    nombre: '3.I1a',
+    titulo: 'Desafio 3.I1a',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [O,-,-,-,O,-,A],\
+      [-,-,-,O,O,-,O],\
+      [O,O,O,O,-,-,O],\
+      [O,O,O,O,-,O,O],\
+      [O,-,O,-,-,O,O],\
+      [-,-,O,-,O,O,O],\
+      [E,L,T,-,O,O,O]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+    ],
+  },
+  {
+    id: 236,
+    grupoId: 12,
+    nombre: '3.I1b',
+    titulo: 'Desafio 3.I1b',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [L,-,-,-,-,T,E],\
+      [-,O,-,-,O,-,O],\
+      [-,O,O,O,O,-,O],\
+      [-,O,O,O,-,-,O],\
+      [-,-,-,O,-,-,-],\
+      [A,-,-,-,-,-,-],\
+      [-,O,O,-,-,O,O]\
+    ")`,
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="repetir">
+          <value name="count">
+            <block type="math_number">
+              <field name="NUM">4</field>
+            </block>
+          </value>
+          <statement name="block">
+            <block type="MoverACasillaArriba">
+            </block>
+          </statement>
+        <next>
+        <block type="AgarrarLechuga">
+        <next>
+        <block type="repetir">
+          <value name="count">
+            <block type="math_number">
+              <field name="NUM">5</field>
+            </block>
+          </value>
+          <statement name="block">
+            <block type="MoverACasillaDerecha">
+            <next>
+            <block type="AgarrarTomate">
+            </block>
+            </next>
+            </block>
+          </statement>
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="PrepararEnsalada">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
+      </block>
+    </xml>`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+    ],
+  },
+  {
+    id: 237,
+    grupoId: 13,
+    nombre: '4.1.4a',
+    titulo: 'Desafio 4.1.4a',
+    imagen: 'Lita',
+    escena: `new EscenaLita("[A,-,L|T]")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+      'si',
+      'sino',
+      'HayTomate',
+      'HayLechuga',
+    ],
+  },
+  {
+    id: 238,
+    grupoId: 13,
+    nombre: '4.2.1c',
+    titulo: 'Desafio 4.2.1c',
+    imagen: 'Lita',
+    escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+      'si',
+      'sino',
+      'HayTomate',
+      'HayLechuga',
+    ],
+  },
 ];

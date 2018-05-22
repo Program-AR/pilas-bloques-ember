@@ -1210,6 +1210,20 @@ export default Ember.Service.extend({
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
 
+    this.crearBloqueSensor('HayLechuga', {
+      descripcion: 'Hay lechuga acá',
+      icono: 'icono.lechuga.png',
+      funcionSensor: 'tocando("Lechuga")',
+      esBool: true
+    });
+
+    this.crearBloqueSensor('HayTomate', {
+      descripcion: 'Hay tomate acá',
+      icono: 'icono.tomate.png',
+      funcionSensor: 'tocando("Tomate")',
+      esBool: true
+    });
+
   },
 
   _definirBloquesQueRepresentanValores() {
