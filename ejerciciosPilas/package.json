@@ -4,7 +4,8 @@
   "description": "Ejercicios para Program.AR en Pilas Engine (version web)",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha-phantomjs test/index.html"
+    "test": "./node_modules/.bin/mocha-phantomjs test/index.html",
+    "compilarGramaticaAleatoria": "./node_modules/.bin/nearleyc ./src/gramaticaAleatoria.ne -o ./compilados/gramaticaAleatoria.js"
   },
   "repository": {
     "type": "git",
@@ -35,7 +36,9 @@
     "load-grunt-tasks": "^3.1.0",
     "mocha-phantomjs": "3.1.2",
     "phantomjs-polyfill": "0.0.1",
-    "typescript": "^1.8.10"
+    "typescript": "^1.8.10",
+    "nearley": "~2.12.1",
+    "grunt-run": "^0.8.1"
   },
   "dependencies": {
     "grunt-contrib-qunit": "^1.2.0"

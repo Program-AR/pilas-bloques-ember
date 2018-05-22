@@ -7,10 +7,12 @@
 class EscenaLita extends EscenaDesdeMapa {
     automata : Lita;
 
-    constructor(mapas: Array<MapaEscena>) {
-        super(new GeneradorDeMapasArray(mapas));
+	constructor(mapas: Array<MapaEscena>) {
+		var generadores: Array<GeneradorDeMapasSimple>
+			= mapas.map(mapa => new GeneradorDeMapasSimple(mapa));
+		super(new GeneradorDeMapasArray(generadores));
 	}
-	
+
 	iniciar() {
 		super.iniciar();
 		this.construirFSM();
@@ -35,13 +37,15 @@ class EscenaLita extends EscenaDesdeMapa {
 		});
     }
 
-    mapeoCuadricula() : MapeoCuadricula {
-        return {
-            'A': () => this.automata,
-            'L': () => new Lechuga(),
-            'T': () => new Tomate(),
-            'E': () => new Ensaladera(),
-            'O': (f, c) => this.obtenerObstaculo(f,c)
+    mapearIdentificadorAActor(id, nroFila, nroColumna) : ActorAnimado {
+        switch(id) {
+            case 'A': return this.automata;
+            case 'L': return new Lechuga();
+            case 'T': return new Tomate();
+            case 'E': return new Ensaladera();
+			case 'O': return this.obtenerObstaculo(nroFila, nroColumna);
+			default: throw new Error("El identificador '" + id +
+				"' no es válido en una escena de Lita.");
         }
     }
 

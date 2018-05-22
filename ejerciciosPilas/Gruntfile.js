@@ -15,6 +15,8 @@ module.exports = function(grunt) {
         src: [
             'dependencias/helpers.js',
             'dependencias/listHelper.js',
+            'node_modules/nearley/lib/nearley.js',
+            'compilados/gramaticaAleatoria.js',
             'compilados/ejerciciosPilas.js',
         ],
         dest: 'compilados/ejerciciosPilas.js',
@@ -47,6 +49,15 @@ module.exports = function(grunt) {
             path: 'src/visorEjercicios.html'
         }
     },
+    run: {
+      compilarGramaticaAleatoria: {
+        cmd: 'npm',
+        args: [
+          'run',
+          'compilarGramaticaAleatoria'
+        ]
+      }
+    }
   });
 
   grunt.loadNpmTasks('grunt-typescript');
@@ -54,8 +65,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-qunit');
+  grunt.loadNpmTasks('grunt-run');
 
-  grunt.registerTask('default', ['typescript', 'concat']);
+  grunt.registerTask('default', ['typescript', 'run:compilarGramaticaAleatoria', 'concat']);
 
   grunt.registerTask('test', 'qunit');
 };

@@ -43,10 +43,10 @@ abstract class EscenaToto extends EscenaDesdeMapa {
         this.automata.escala *= this.escalaSegunCuadricula(1.8);
     }
 
-    mapeoCuadricula(): MapeoCuadricula {
-        return {
-            'A': () => this.automata,
-            'default': (f, c, codigo) => new Letra(codigo)
+    mapearIdentificadorAActor(id, nroFila, nroColumna): ActorAnimado {
+        switch(id) {
+            case 'A': return this.automata;
+            default: return new Letra(id);
         }
     }
 

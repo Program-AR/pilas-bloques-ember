@@ -10,11 +10,13 @@ class EscenaDuba extends EscenaDesdeMapa {
 	yFinal: number;
 
 	constructor(mapas: Array<MapaEscena>, xFinal = undefined, yFinal = undefined) {
-		super(new GeneradorDeMapasArray(mapas));
+		var generadores : Array<GeneradorDeMapasSimple>
+			= mapas.map(mapa => new GeneradorDeMapasSimple(mapa)); 
+		super(new GeneradorDeMapasArray(generadores));
 		this.xFinal = xFinal;
 		this.yFinal = yFinal;
 	}
-	
+
 	ajustarGraficos() {
 		this.automata.escala *= this.escalaSegunCuadricula(1.6);
 		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 8);
@@ -29,11 +31,13 @@ class EscenaDuba extends EscenaDesdeMapa {
 		});
 	}
 
-	mapeoCuadricula() : MapeoCuadricula {
-		return {
-			'A': () => this.automata,
-			'O': (f, c) => this.obtenerObstaculo(f, c),
-			'P': () => new Churrasco(),
+	mapearIdentificadorAActor(id, nroFila, nroColumna) : ActorAnimado {
+		switch(id) {
+			case 'A': return this.automata;
+			case 'O': return this.obtenerObstaculo(nroFila, nroColumna);
+			case 'P': return new Churrasco();
+			default: throw new Error("El identificador '" + id +
+				"' no es válido en una escena de Duba.");
 		}
 	}
 
