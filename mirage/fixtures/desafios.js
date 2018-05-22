@@ -1624,16 +1624,14 @@ export default [
     nombre: '2.1.4a',
     titulo: 'Desafio 2.1.4a',
     imagen: 'Lita',
-    escena: `new EscenaLita([
-     [
-       ['O', 'O', 'O', 'O', 'O', 'O'],
-       ['O', 'O', 'O', 'O', 'O', 'O'],
-       ['O', 'A', ' ', 'T', 'L', ' '],
-       ['O', 'O', 'O', 'O', 'O', 'E'],
-       ['O', 'O', 'O', 'O', 'O', 'O'],
-       ['O', 'O', 'O', 'O', 'O', 'O']
-     ] 
-    ])`,
+    escena: `new EscenaLita("\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O],\
+      [O,A,-,T,L,-],\
+      [O,O,O,O,O,E],\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O]\
+    ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1653,16 +1651,14 @@ export default [
     nombre: '2.1.4b',
     titulo: 'Desafio 2.1.4b',
     imagen: 'Lita',
-    escena: `new EscenaLita([
-     [
-       ['O', 'O', 'O', 'O', 'O'],
-       ['O', 'O', 'O', 'O', 'O'],
-       [' ', ' ', 'T', ' ', ' '],
-       [' ', ' ', 'L', ' ', ' '],
-       ['A', 'O', 'O', 'O', 'E'],
-       ['O', 'O', 'O', 'O', 'O']
-     ] 
-    ])`,
+    escena: `new EscenaLita("\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+      [-,-,T,-,-],\
+      [-,-,L,-,-],\
+      [A,O,O,O,E],\
+      [O,O,O,O,O]\
+    ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,

@@ -7,10 +7,15 @@
 class EscenaLita extends EscenaDesdeMapa {
     automata : Lita;
 
-	constructor(mapas: Array<MapaEscena>) {
-		var generadores: Array<GeneradorDeMapasSimple>
-			= mapas.map(mapa => new GeneradorDeMapasSimple(mapa));
-		super(new GeneradorDeMapasArray(generadores));
+    constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio) {
+		if (Array.isArray(especificacion)) {
+			var generadores: Array<GeneradorDeMapasAleatorios>
+				= especificacion.map(s => new GeneradorDeMapasAleatorios(s, opciones));
+			super(new GeneradorDeMapasArray(generadores));
+		}
+		else {
+			super(new GeneradorDeMapasAleatorios(especificacion, opciones));
+		}
 	}
 
 	iniciar() {
