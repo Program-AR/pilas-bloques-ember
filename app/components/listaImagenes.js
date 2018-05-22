@@ -140,8 +140,6 @@ export default [
     "nano.png",
     "naranja.png",
     "naveAnimada.png",
-    "obstaculo.cardo.png",
-    "obstaculo.charco.png",
     "obstaculo.duba1.png",
     "obstaculo.duba2.png",
     "obstaculo.duba3.png",
