@@ -65,8 +65,9 @@ abstract class EscenaDesdeMapa extends EscenaActividad {
         this.fondo = new Fondo(this.archivoFondo(), 0, 0);
         this.automata = this.obtenerAutomata();
 
-        if (this.generadorDeMapas)
+        if (this.generadorDeMapas) {
             this.mapaEscena = this.generadorDeMapas.obtenerMapa();
+        }
         else
             throw Error("Esta escena no fue correctamente inicializada con un generador de mapas");
 
@@ -205,6 +206,8 @@ class GeneradorDeMapasArray implements GeneradorDeMapas {
  * - Puede indicarse que una casilla se intente llenar con determinado contenido y,
  *   de quedar vacía, se pruebe con un contenido distinto, de la forma
  *   `opcion1>opcion2>...>opcionN`.
+ * - Pueden usarse macros, de la forma `#identificador`, que serán expandidas a la
+ *   string indicada en la opción `macros`.
  */
 class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
     generadoresDeSemillas : Array<Array<GeneradorDeCasilla>>;
@@ -213,6 +216,7 @@ class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
     bolsas: { [id : string] : Array<string> };
     coleccion : Array<string>;
     colecciones: { [id : string] : Array<string> };
+    macros : { [id : string] : string };
 
     // Se usan durante la generación de un mapa
     _anotadosParaColeccion : Array<SemillaDeCasilla>; 
@@ -231,10 +235,7 @@ class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
      */
     constructor(descripcionDeMapa : string, opciones : opcionesMapaAleatorio = {}) {
         this.configurar(opciones);
-        var parser : nearley.Parser
-            = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
-        parser.feed(descripcionDeMapa);
-        this.generadoresDeSemillas = parser.results[0];
+        this.generadoresDeSemillas = <GeneradorDeCasilla[][]>GeneradorDeMapasAleatorios.parsear(descripcionDeMapa);
     }
 
     private configurar(opciones : opcionesMapaAleatorio) {
@@ -243,6 +244,7 @@ class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
         this.bolsas = opciones.bolsas || {};
         this.coleccion = opciones.coleccion || [];
         this.colecciones = opciones.colecciones || {};
+        this.macros = opciones.macros || {};
         this._anotadosParaColeccion = [];
         for (const id in this.colecciones) {
             this._anotadosParaColecciones[id] = [];
@@ -252,9 +254,9 @@ class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
     obtenerMapa() {
         // Primera pasada
         var semillas : Array<Array<SemillaDeCasilla>> =
-        this.generadoresDeSemillas.map(fila => fila.map(
-            semilla => semilla.generarSemillaDeCasilla(this)
-        ));
+            this.generadoresDeSemillas.map(fila => fila.map(
+                semilla => semilla.generarSemillaDeCasilla(this)
+            ));
         this.repartirElementosDeColecciones();
         // Segunda pasada
         var mapa : MapaEscena = semillas.map((fila, i) => fila.map(
@@ -319,6 +321,17 @@ class GeneradorDeMapasAleatorios implements GeneradorDeMapas {
             this._anotadosParaColecciones[id].splice(0);
         }
     }
+
+    obtenerGeneradorParaMacro(idMacro : string) {
+        return <GeneradorDeCasilla>GeneradorDeMapasAleatorios.parsear(this.macros[idMacro]);
+    }
+
+    static parsear(string): Array<Array<GeneradorDeCasilla>> | GeneradorDeCasilla {
+        var parser: nearley.Parser
+            = new nearley.Parser(nearley.Grammar.fromCompiled(grammar));
+        parser.feed(string);
+        return parser.results[0];
+    }
 }
 
 type opcionesMapaAleatorio = {
@@ -327,6 +340,7 @@ type opcionesMapaAleatorio = {
     bolsas?: { [id: string]: Array<string> },
     coleccion?: Array<string>,
     colecciones?: { [id: string]: Array<string> },
+    macros?: { [id : string] : string },
 }
 
 /**
@@ -449,5 +463,15 @@ class GeneradorDeCasillaSucesion implements GeneradorDeCasilla {
     }
     esAleatorioPara(generador: GeneradorDeMapasAleatorios) {
         return this.opciones[0].esAleatorioPara(generador);
+    }
+}
+
+class GeneradorDeCasillaMacro implements GeneradorDeCasilla {
+    constructor(private id : string) {}
+    generarSemillaDeCasilla(generador: GeneradorDeMapasAleatorios): SemillaDeCasilla {
+        return generador.obtenerGeneradorParaMacro(this.id).generarSemillaDeCasilla(generador);
+    }
+    esAleatorioPara(generador : GeneradorDeMapasAleatorios) {
+        return generador.obtenerGeneradorParaMacro(this.id).esAleatorioPara(generador);
     }
 }

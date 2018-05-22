@@ -1282,7 +1282,7 @@ export default [
     nombre: '4.2.1b',
     titulo: 'Desafío 4.2.1b (Duba)',
     imagen: 'Duba',
-    escena: `new EscenaDuba("[A,*,*,*,*,*,*,*]", { coleccion: ["P","P","P","P"] }, [0,7])`,
+    escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,

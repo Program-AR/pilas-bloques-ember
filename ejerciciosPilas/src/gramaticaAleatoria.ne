@@ -16,6 +16,7 @@ Row      -> Term               {% d => [d[0]] %}
 
 Term     -> Subterm1           {% id %}
           | Suc                {% d => new GeneradorDeCasillaSucesion(d[0]) %}
+          | Macro              {% id %}
           | "\"" _ Term _ "\"" {% d => d[2] %}
           | "'" _ Term _ "'"   {% d => d[2] %}
 Suc      -> Subterm1 _ ">" _ Subterm1
@@ -23,7 +24,7 @@ Suc      -> Subterm1 _ ">" _ Subterm1
           | Subterm1 _ ">" _ Suc
                                {% d => [d[0]].concat(d[4]) %}
 
-Subterm1 -> Subterm2
+Subterm1 -> Subterm2           {% id %}
           | Option             {% d => new GeneradorDeCasillaOpcion(d[0]) %}
 Option   -> Subterm2 _ "|" _ Subterm2
                                {% d => [d[0],d[4]] %}
@@ -47,3 +48,5 @@ Bag      -> "$"                {% d => new GeneradorDeCasillaBolsa() %}
 Col      -> "*"                {% d => new GeneradorDeCasillaColeccion() %}
           | "*" _ Id           {% d => new GeneradorDeCasillaColeccion(d[2]) %}
 Nil      -> "-"                {% d => new GeneradorDeCasillaVacia() %}
+
+Macro    -> "#" _ Id           {% d => new GeneradorDeCasillaMacro(d[2]) %}
