@@ -1,10 +1,9 @@
 /// <reference path = "../DibujandoFiguras.ts" />
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
-/// <reference path = "../../actores/ActorCompuesto.ts" />
 
  class EscenaCoty extends DibujandoFiguras {
-   _dibujoEsperado: DibujoLineal;
+   _puntosEsperados: PuntosDibujo;
    dibujoPreexistente: DibujoLineal;
    pizarraDibujoPreexistente: Pizarra;
    xCoty: number;
@@ -12,10 +11,10 @@
    charco: Charco;
    puedeHaberCharco: boolean;
 
-   constructor(xCoty: number, yCoty: number, dibujoPreexistente: DibujoLineal = [], dibujoEsperado: DibujoLineal = [], puedeHaberCharco: boolean = false){
+   constructor(xCoty: number, yCoty: number, dibujoPreexistente: PuntosDibujo = [], puntosEsperados: PuntosDibujo = [], puedeHaberCharco: boolean = false){
      super();
-     this._dibujoEsperado = dibujoEsperado;
-     this.dibujoPreexistente = dibujoPreexistente;
+     this._puntosEsperados = puntosEsperados;
+     this.dibujoPreexistente = DibujoLineal.nuevo(dibujoPreexistente);
      this.xCoty = xCoty;
      this.yCoty = yCoty;
      this.puedeHaberCharco = puedeHaberCharco;
@@ -31,7 +30,7 @@
 
    hacerDibujoPreexistente(){
     this.pizarraDibujoPreexistente = new Pizarra();
-    this.dibujar(this.pizarraDibujoPreexistente, this.dibujoPreexistente, pilas.colores.azuloscuro);
+    this.dibujoPreexistente.dibujarEn(this.pizarraDibujoPreexistente, pilas.colores.azuloscuro, this.anchoLinea);
    }
 
    colocarCharco(){
@@ -54,8 +53,8 @@
      this.automata.escala = 0.6;
    }
 
-   dibujoEsperado(){
-     return this._dibujoEsperado;
+   puntosEsperados(){
+     return this._puntosEsperados;
    }
 
    pathFondo(): string {
@@ -71,7 +70,7 @@ class EscenaCotySonrisa extends EscenaCoty {
 
   hacerDibujoPreexistente(){
     super.hacerDibujoPreexistente();
-    this.pizarraDibujoPreexistente.circulo(0,0,150,pilas.colores.azuloscuro,6);
-    this.pizarraDibujoPreexistente.arco(25,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,6);
+    this.pizarraDibujoPreexistente.circulo(0,0,150,pilas.colores.azuloscuro,this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(25,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,this.anchoLinea);
   }
 }
