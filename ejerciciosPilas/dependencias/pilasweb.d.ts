@@ -1551,10 +1551,14 @@ declare class Pizarra extends Actor {
     _ancho: any;
     _alto: any;
     constructor(x?: number, y?: number);
+    setX(x: any): void;
+    setY(y: any): void;
     dibujar_punto(x: any, y: any, color?: any): void;
     linea(x: any, y: any, x2: any, y2: any, color?: any, grosor?: number): void;
     rectangulo(x: any, y: any, ancho: any, alto: any, color?: any, relleno?: any, grosor?: number): void;
     poligono(puntos: any, color?: any, grosor?: number): void;
+    circulo(x: any, y: any, radio: any, color?: any, grosor?: number): void;
+    arco(x: any, y: any, radio: any, anguloInicial: any, anguloFinal: any, color?: any, grosor?: number): void;
     limpiar(): void;
     pintar(color: any): void;
     puntosDeLineas(): any;
