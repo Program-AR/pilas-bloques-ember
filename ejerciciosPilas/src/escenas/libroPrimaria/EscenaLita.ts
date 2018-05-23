@@ -5,18 +5,47 @@
 /// <reference path = "../../actores/libroPrimaria/Ensalada.ts" />
 
 class EscenaLita extends EscenaDesdeMapa {
-    automata : Lita;
+	automata : Lita;
+	xFinal : number;
+	yFinal : number;
 
-    constructor(especificacion: string | Array<string>, opciones? : opcionesMapaAleatorio) {
+	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal?: [number, number]) {
 		super();
 		this.initDesdeUnaOVariasDescripciones(especificacion, opciones);
+
+		if (posFinal) {
+			this.xFinal = posFinal[0];
+			this.yFinal = posFinal[1];
+		}
 	}
 
 	iniciar() {
 		super.iniciar();
-		this.construirFSM();
+
+		// Existen dos ligeras variantes para el objetivo de esta escena.
+		// Si en el mapa hay una ensaladera, el objetivo es que Lita prepare correctamente
+		// la ensalada. Para verificarlo usamos una máquina de estados finitos.
+		if (this.contarActoresConEtiqueta("Ensaladera") > 0) {
+			this.construirFSM();
+		}
+		// Si en el mapa no hay ensaladera, el objetivo es simplemente que Lita
+		// recoga del mapa todas las lechugas y todos los tomates.
+		else {
+			this.estado = new Estado(() =>
+				this.contarActoresConEtiqueta("Lechuga") === 0 &&
+				this.contarActoresConEtiqueta("Tomate") === 0
+			);
+		}
 	}
-	
+
+	estaResueltoElProblema() : boolean {
+		// Además de verificar que Lita haya cumplido el objetivo de la escena,
+		// en el caso de que se haya proporcionado una posición final,
+		// queremos verificar que Lita esté ahí.
+		return super.estaResueltoElProblema() &&
+			(this.xFinal === undefined || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
+	}
+
 	ajustarGraficos() {
 		this.automata.escala *= this.escalaSegunCuadricula(1.9);
 		this.automata.setY(this.automata.getY() + this.automata.getAlto() / 4);

@@ -62,6 +62,9 @@ class Estado {
   soyAceptacion() : boolean {
     return this.funcionAceptacion();
   }
+
+  // Para que sea polimórfico con EstadoConTransicion
+  realizarTransicion(idTransicion : string) {}
 }
 
 class EstadoConTransicion extends Estado {
