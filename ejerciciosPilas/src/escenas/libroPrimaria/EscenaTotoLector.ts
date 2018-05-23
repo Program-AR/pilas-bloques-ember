@@ -14,8 +14,4 @@ class EscenaTotoLector extends EscenaToto {
     pathCuadriculaSecundaria(){
         return "pensamientoToto.png";
     }
-
-    pathGrillaCasilla(){
-        return 'casillas.violeta.png';
-    }
 }

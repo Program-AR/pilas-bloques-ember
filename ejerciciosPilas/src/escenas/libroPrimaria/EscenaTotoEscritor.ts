@@ -24,10 +24,6 @@ class EscenaTotoEscritor extends EscenaToto {
     pathCuadriculaSecundaria() : string {
         return "libroToto.png";
     }
-
-    pathGrillaCasilla() : string {
-        return 'casilla.mono.contar.png';
-    }
 }
 
 

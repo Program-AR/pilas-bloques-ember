@@ -65,7 +65,7 @@ abstract class EscenaToto extends EscenaDesdeMapa {
         return { ancho: 400, alto: 300 };
     }
     opsCasilla() {
-        return { grilla: this.pathGrillaCasilla(), alto: this.mapaEscena.length === 1 ? 70 : undefined, relAspecto: 1 };
+        return { grilla: "casillas.toto.png", alto: this.mapaEscena.length === 1 ? 70 : undefined, cantColumnas: 16, bordesDecorados: true, relAspecto: 1 };
     }
 
     construirCuadriculaSecundaria() : Cuadricula {
@@ -79,11 +79,6 @@ abstract class EscenaToto extends EscenaDesdeMapa {
      * Retorna el nombre de la imagen correspondiente al fondo de la cuadrícula secundaria.
      */
     abstract pathCuadriculaSecundaria() : string;
-
-    /**
-     * Retorna el nombre de la imagen correspondiente a las casillas sobre las que camina Toto.
-     */
-    abstract pathGrillaCasilla() : string
 
     /**
      * Devuelve en forma de string el contenido actual de la cuadrícula secundaria.

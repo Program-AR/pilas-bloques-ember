@@ -97,7 +97,7 @@ class EscenaLita extends EscenaDesdeMapa {
 	}
 	opsCasilla() {
 		return {
-			grilla: 'casillas.duba.png',
+			grilla: 'casillas.lita.png',
 			cantFilas: 1,
 			cantColumnas: 16,
 			bordesDecorados: true,
