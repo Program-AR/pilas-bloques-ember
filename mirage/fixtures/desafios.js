@@ -1618,29 +1618,15 @@ export default [
   {
     id: 233,
     grupoId: 11,
-    nombre: '2.2.2',
-    titulo: 'Desafio 2.2.2',
+    nombre: '2.2.2a',
+    titulo: 'Desafio 2.2.2a',
     imagen: 'Lita',
-    escena: `new EscenaLita(["\
+    escena: `new EscenaLita("\
       [-,-,-],\
       [-,L,-],\
       [A,-,E],\
       [-,T,-]\
-    ","\
-      [-,-,-,-],\
-      [-,L,T,-],\
-      [A,-,-,E],\
-      [-,-,-,-]\
-    ","\
-      [-,A,-],\
-      [L,E,T],\
-      [-,-,-],\
-      [-,-,-]\
-    ","\
-      [-,-,A],\
-      [-,L,T],\
-      [-,-,E]\
-    "])`,
+    ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
@@ -1656,6 +1642,80 @@ export default [
   },
   {
     id: 234,
+    grupoId: 11,
+    nombre: '2.2.2b',
+    titulo: 'Desafio 2.2.2b',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,-,-,-],\
+      [-,L,T,-],\
+      [A,-,-,E],\
+      [-,-,-,-]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 235,
+    grupoId: 11,
+    nombre: '2.2.2c',
+    titulo: 'Desafio 2.2.2c',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,A,-],\
+      [L,E,T],\
+      [-,-,-],\
+      [-,-,-]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 236,
+    grupoId: 11,
+    nombre: '2.2.2d',
+    titulo: 'Desafio 2.2.2d',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,-,A],\
+      [-,L,T],\
+      [-,-,E]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 237,
     grupoId: 11,
     nombre: '2.2.3e',
     titulo: 'Desafio 2.2.3e',
@@ -1719,7 +1779,7 @@ export default [
     ],
   },
   {
-    id: 235,
+    id: 238,
     grupoId: 12,
     nombre: '3.I1a',
     titulo: 'Desafio 3.I1a',
@@ -1748,7 +1808,7 @@ export default [
     ],
   },
   {
-    id: 236,
+    id: 239,
     grupoId: 12,
     nombre: '3.I1b',
     titulo: 'Desafio 3.I1b',
@@ -1824,7 +1884,7 @@ export default [
     ],
   },
   {
-    id: 237,
+    id: 240,
     grupoId: 13,
     nombre: '4.1.4a',
     titulo: 'Desafio 4.1.4a',
@@ -1849,7 +1909,7 @@ export default [
     ],
   },
   {
-    id: 238,
+    id: 241,
     grupoId: 13,
     nombre: '4.2.1c',
     titulo: 'Desafio 4.2.1c',
