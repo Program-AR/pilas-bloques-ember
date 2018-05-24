@@ -1,6 +1,5 @@
-/// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../actores/Dibujante.ts" />
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../Direct.ts" />
 
 /**
  * Aquí se proveen algunas abstracciones que sirven para dibujar en una Pizarra.
@@ -29,12 +28,6 @@ type PuntosDibujo = PuntoDibujo[] | PuntoDibujo[][];
  */
 abstract class DibujoLineal {
   /**
-   * El método a llamar para crear una pizarra.
-   * @param pizarra La pizarra en la que se dibujará
-   */
-  abstract dibujarEn(pizarra:Pizarra, color?, grosor?);
-
-  /**
    * El método principal para crear un dibujo a partir de puntos.
    * @param puntos Lista ó lista de lista de puntos
    */
@@ -46,6 +39,27 @@ abstract class DibujoLineal {
       return new DibujoCompuesto(<PuntoDibujo[][]>puntos);
     }
   }
+
+  /**
+   * El método a llamar para crear una pizarra.
+   * @param pizarra La pizarra en la que se dibujará
+   */
+  abstract dibujarEn(pizarra:Pizarra, color?, grosor?);
+
+  /**
+   * Traslada el dibujo en la dirección indicada
+   */
+  abstract trasladar(vector: TranslationVector): DibujoLineal;
+
+  /**
+   * Retorna los puntos que conforman el dibujo.
+   */
+  abstract puntos(): PuntosDibujo;
+
+  /**
+   * Da los puntos en string. Es útil para crear desafíos.
+   */
+  abstract stringPuntos(): string;
 }
 
 class DibujoConexo extends DibujoLineal {
@@ -56,12 +70,24 @@ class DibujoConexo extends DibujoLineal {
     this._puntos = puntos;
   }
 
+  puntos(): PuntosDibujo {
+    return this._puntos;
+  }
+
   dibujarEn(pizarra: Pizarra, color?, grosor?){
     var origen = this._puntos[0];
     this._puntos.forEach( destino => {
       pizarra.linea(origen.x, origen.y, destino.x, destino.y, color, grosor);
         origen = destino;
     });
+  }
+
+  trasladar(vector: TranslationVector): DibujoLineal {
+    return new DibujoConexo(this._puntos.map( pto => {return {x: pto.x + vector.x, y: pto.y + vector.y}}));
+  }
+
+  stringPuntos(): string{
+    return "[" + this._puntos.map(p => "{x:" + p.x.toString() +",y:" + p.y.toString() + "}").toString() + "]";
   }
 }
 
@@ -73,7 +99,19 @@ class DibujoCompuesto extends DibujoLineal {
       this._subdibujos = dibujos.map( ptos => DibujoLineal.nuevo(ptos) );
     }
 
+    puntos(): PuntosDibujo {
+      return this._subdibujos.map( dibujo => <PuntoDibujo[]>dibujo.puntos() );
+    }
+
     dibujarEn(pizarra: Pizarra, color?, grosor?){
       this._subdibujos.forEach( dibujo => dibujo.dibujarEn(pizarra, color, grosor) );
+    }
+
+    trasladar(vector: TranslationVector): DibujoLineal {
+      return new DibujoCompuesto(<PuntoDibujo[][]>this._subdibujos.map( dibujo => dibujo.trasladar(vector).puntos() ));
+    }
+
+    stringPuntos(): string{
+      return "[" + this._subdibujos.map(dibujo => dibujo.stringPuntos()).toString() + "]";
     }
 }
