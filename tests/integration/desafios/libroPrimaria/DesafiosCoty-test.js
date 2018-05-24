@@ -76,7 +76,7 @@ actividadTest("2.1.3c", {
           </block>
         </value>
         <statement name=\"block\">
-          <block type=\"MoverDerechaDibujando\">
+          <block type=\"MoverIzquierdaDibujando\">
             <next>
               <block type=\"SaltarDerecha\"></block>
             </next>
@@ -132,12 +132,54 @@ actividadTest("2.1.3g", {
 
 actividadTest("3.1.4a", {
   descripcionAdicional: 'Coty-3.1.4a',
-	solucion: ``,
+	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+    <statement name=\"program\">
+      <block type=\"repetir\">
+        <value name=\"count\">
+          <block type=\"math_number\">
+            <field name=\"NUM\">4</field>
+          </block>
+        </value>
+        <statement name=\"block\">
+          <block type=\"MoverDerechaDibujando\">
+            <next>
+              <block type=\"SaltarDerecha\"></block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>`,
 });
 
 actividadTest("3.1.4b", {
   descripcionAdicional: 'Coty-3.1.4b',
-	solucion: ``,
+	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+    <statement name=\"program\">
+      <block type=\"repetir\">
+        <value name=\"count\">
+          <block type=\"math_number\">
+            <field name=\"NUM\">4</field>
+          </block>
+        </value>
+        <statement name=\"block\">
+          <block type=\"MoverDerechaDibujando\">
+            <next>
+              <block type=\"SaltarDerecha\"></block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type=\"MoverAbajoDibujando\">
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`,
 });
 
 actividadTest("3.1.4c", {
