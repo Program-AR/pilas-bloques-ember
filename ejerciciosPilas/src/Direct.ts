@@ -29,6 +29,7 @@ class Direct {
  *    - Tou can provide an origin and a destiny (two objects with x and y)
  *    - You can just provide the destiny, which in fact will be taken as a vector starting at (0,0).
  */
+/*
 class TranslationVector {
     x: number;
     y: number;
@@ -67,3 +68,4 @@ class TranslationVector {
 		return this.args.direction.destinyFrom(this.args.origin, this.args.distance);
     }
 }
+*/

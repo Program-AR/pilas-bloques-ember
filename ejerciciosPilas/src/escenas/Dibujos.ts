@@ -49,7 +49,7 @@ abstract class DibujoLineal {
   /**
    * Traslada el dibujo en la dirección indicada
    */
-  abstract trasladar(vector: TranslationVector): DibujoLineal;
+  abstract trasladar(vector: PuntoDibujo): DibujoLineal;
 
   /**
    * Retorna los puntos que conforman el dibujo.
@@ -82,7 +82,7 @@ class DibujoConexo extends DibujoLineal {
     });
   }
 
-  trasladar(vector: TranslationVector): DibujoLineal {
+  trasladar(vector: PuntoDibujo): DibujoLineal {
     return new DibujoConexo(this._puntos.map( pto => {return {x: pto.x + vector.x, y: pto.y + vector.y}}));
   }
 
@@ -107,7 +107,7 @@ class DibujoCompuesto extends DibujoLineal {
       this._subdibujos.forEach( dibujo => dibujo.dibujarEn(pizarra, color, grosor) );
     }
 
-    trasladar(vector: TranslationVector): DibujoLineal {
+    trasladar(vector: PuntoDibujo): DibujoLineal {
       return new DibujoCompuesto(<PuntoDibujo[][]>this._subdibujos.map( dibujo => dibujo.trasladar(vector).puntos() ));
     }
 
