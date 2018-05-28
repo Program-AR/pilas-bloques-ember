@@ -1,7 +1,7 @@
 class Direct {
 	versor;
 	constructor(origin, destiny = undefined){
-        if(!origin) throw new Error("Origin of versor or degrees must be provided.");
+        if(!origin && origin !== 0) throw new Error("Origin of versor or degrees must be provided.");
 		if(destiny === undefined){ //Means I've got degrees
 			var angle = origin * Math.PI / 180;
 			this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
