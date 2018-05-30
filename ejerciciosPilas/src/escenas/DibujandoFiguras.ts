@@ -11,7 +11,7 @@ abstract class DibujandoFiguras extends EscenaActividad {
         this.fondo = new Fondo(this.pathFondo(),0,0);
         this.crearAutomata();
         this.pizarraFantasma = new pilas.actores.Pizarra();
-        DibujoLineal.nuevo(this.puntosEsperados()).dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
+        DibujoLineal.desdePuntosSimples(this.puntosEsperados()).dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
     }
 
     crearAutomata(){
@@ -22,14 +22,22 @@ abstract class DibujandoFiguras extends EscenaActividad {
     }
 
     estaResueltoElProblema(){
-      return (<any>this.automata).pizarra.tieneIgualDibujoQue(this.pizarraFantasma);
+      var dibujoRealizado: DibujoLineal;
+      if ((this.automata as any).pizarra) {
+        dibujoRealizado = DibujoLineal.desdePizarra((this.automata as any).pizarra);
+      }
+      else {
+        dibujoRealizado = new DibujoLineal([]);
+      }
+      var dibujoEsperado: DibujoLineal = DibujoLineal.desdePizarra(this.pizarraFantasma);
+      return dibujoRealizado.igualA(dibujoEsperado);
     }
 
     pathFondo(): string {
       return 'fondo.dibujando.figuras.png';
     }
 
-    abstract puntosEsperados(): PuntosDibujo;
+    abstract puntosEsperados(): PuntoSimple[] | PuntoSimple[][];
 }
 
 // Puntos obtenidos haciendo:

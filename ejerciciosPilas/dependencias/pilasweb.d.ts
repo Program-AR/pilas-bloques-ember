@@ -1545,6 +1545,14 @@ declare class Tortuga extends Actor {
     crear_circulo(radio: any, sentido?: number): void;
     color: any;
 }
+declare type punto = {
+    x: number;
+    y: number;
+};
+declare type segmento = {
+    inicio: punto;
+    fin: punto;
+};
 declare class Pizarra extends Actor {
     container: any;
     lienzo: any;
@@ -1561,10 +1569,8 @@ declare class Pizarra extends Actor {
     arco(x: any, y: any, radio: any, anguloInicial: any, anguloFinal: any, color?: any, grosor?: number): void;
     limpiar(): void;
     pintar(color: any): void;
-    puntosDeLineas(): any;
+    segmentosDeDibujoLineal(): segmento[];
     cambioCoordenadas(punto: any): any;
-    mismosPuntosQue(puntos: any): boolean;
-    tieneIgualDibujoQue(otraPizarra: any): boolean;
     puntosSinRepetirDe(puntos: any): any[];
     ordenarPuntosDe(puntos: any): any;
     compararPuntos(p1: any, p2: any): number;

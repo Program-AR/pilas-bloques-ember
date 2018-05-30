@@ -3,7 +3,7 @@
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
 
  class EscenaCoty extends DibujandoFiguras {
-   _puntosEsperados: PuntosDibujo;
+   _puntosEsperados: PuntoSimple[] | PuntoSimple[][];
    dibujoPreexistente: DibujoLineal;
    pizarraDibujoPreexistente: Pizarra;
    xCoty: number;
@@ -11,10 +11,10 @@
    charco: Charco;
    puedeHaberCharco: boolean;
 
-   constructor(xCoty: number, yCoty: number, dibujoPreexistente: PuntosDibujo = [], puntosEsperados: PuntosDibujo = [], puedeHaberCharco: boolean = false){
+   constructor(xCoty: number, yCoty: number, dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], puedeHaberCharco: boolean = false){
      super();
      this._puntosEsperados = puntosEsperados;
-     this.dibujoPreexistente = DibujoLineal.nuevo(dibujoPreexistente);
+     this.dibujoPreexistente = DibujoLineal.desdePuntosSimples(dibujoPreexistente);
      this.xCoty = xCoty;
      this.yCoty = yCoty;
      this.puedeHaberCharco = puedeHaberCharco;

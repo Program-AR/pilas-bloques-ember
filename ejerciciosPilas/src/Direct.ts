@@ -5,7 +5,7 @@ class Direct {
 		if(destiny === undefined){ //Means I've got degrees
 			var angle = origin * Math.PI / 180;
 			this.versor = { x: Math.cos(angle), y: Math.sin(angle) };
-		} else if (!origin.x) { //Means I've got numbers
+		} else if (!origin.x && origin.x !== 0) { //Means I've got numbers
 			this.versor = Direct.versorFor({ x: origin, y: destiny });
 		} else { //Means i've got points or objects with x and y
 			this.versor = Direct.versorFor({ x: destiny.x - origin.x, y: destiny.y - origin.y });
@@ -14,12 +14,25 @@ class Direct {
 
 	static versorFor(vector){
 		var norm = Math.sqrt(Math.pow(vector.x,2) + Math.pow(vector.y,2));
-		return { x: vector.x/norm, y: vector.y/norm };
+		if (norm > 0) {
+			return { x: vector.x/norm, y: vector.y/norm };
+		}
+		else {
+			return { x: 0, y: 0 };
+		}
 	}
 
 	destinyFrom(point, distance){
 		return {x: point.x + (this.versor.x * distance),
 				y: point.y + (this.versor.y * distance) }
+	}
+
+	isNull() {
+		return this.versor.x == 0 && this.versor.y == 0;
+	}
+
+	equals(other: Direct) {
+		return this.isNull() || other.isNull() || this.versor.x == other.versor.x && this.versor.y == other.versor.y;
 	}
 }
 

@@ -17,101 +17,264 @@
 /**
  * El tipo de un punto (tiene x e y, es una coordenada)
  */
-type PuntoDibujo = {x:number, y:number};
+class PuntoDibujo {
+  x: number;
+  y: number;
 
-type PuntosDibujo = PuntoDibujo[] | PuntoDibujo[][];
+  constructor(x: number, y: number) {
+    this.x = x;
+    this.y = y;
+  }
 
-/**
- * Es la clase que debe conocer el que utiliza los dibujos.
- * Sirve tanto para aunar los tipos de dibujos (conexos ó no conexos) como para crear y
- * dibujar de forma homogénea y sin importar si es lista ó lista de listas.
- */
-abstract class DibujoLineal {
-  /**
-   * El método principal para crear un dibujo a partir de puntos.
-   * @param puntos Lista ó lista de lista de puntos
-   */
-  static nuevo(puntos:PuntosDibujo): DibujoLineal{
-    //Si vino un dibujo conexo, creo un conexo:
-    if(puntos.length === 0 || !(<any>puntos)[0].length){
-      return new DibujoConexo(<PuntoDibujo[]>puntos);
-    } else {
-      return new DibujoCompuesto(<PuntoDibujo[][]>puntos);
+  static desdePunto(punto: PuntoDibujo) {
+    return new PuntoDibujo(punto.x, punto.y);
+  }
+
+  igualA(otroPunto: PuntoDibujo): boolean {
+    return this.x == otroPunto.x && this.y == otroPunto.y;
+  }
+
+  norma(): number {
+    return Math.sqrt(Math.pow(this.x, 2) + Math.pow(this.y, 2))
+  }
+
+  static suma(p1: PuntoDibujo, p2: PuntoDibujo): PuntoDibujo {
+    return new PuntoDibujo(p1.x + p2.x, p1.y + p2.y);
+  }
+
+  sumar(otroPunto: PuntoDibujo): PuntoDibujo {
+    return PuntoDibujo.suma(this, otroPunto);
+  }
+
+  static comparar(p1: PuntoDibujo, p2: PuntoDibujo): number {
+    if (p1.x == p2.x) return p1.y - p2.y;
+    else return p1.x - p2.x;
+  }
+}
+
+
+class SegmentoDibujo {
+  inicio: PuntoDibujo;
+  fin: PuntoDibujo;
+
+  constructor(inicio: PuntoDibujo, fin: PuntoDibujo) {
+    this.inicio = inicio;
+    this.fin = fin;
+  }
+
+  direccion(): Direct {
+    return new Direct(this.inicio, this.fin);
+  }
+
+  longitud(): number {
+    return new PuntoDibujo(this.fin.x - this.inicio.x, this.fin.y - this.inicio.y).norma();
+  }
+
+  igualA(otroSegmento: SegmentoDibujo): boolean {
+    return this.inicio.igualA(otroSegmento.inicio) &&
+      this.fin.igualA(otroSegmento.fin);
+  }
+
+  contieneA(unPunto: PuntoDibujo): boolean {
+    var aux: SegmentoDibujo = new SegmentoDibujo(this.inicio, unPunto);
+    return this.paraleloA(aux) && aux.longitud() <= this.longitud();
+  }
+
+  paraleloA(otroSegmento: SegmentoDibujo): boolean {
+    return this.direccion().equals(otroSegmento.direccion());
+  }
+
+  adyacenteA(otroSegmento: SegmentoDibujo): boolean {
+    return this.fin.igualA(otroSegmento.inicio);
+  }
+
+  contiguoA(otroSegmento: SegmentoDibujo): boolean {
+    return this.paraleloA(otroSegmento) && this.adyacenteA(otroSegmento);
+  }
+
+  unificarConContiguo(otroSegmento: SegmentoDibujo): SegmentoDibujo {
+    return new SegmentoDibujo(this.inicio, otroSegmento.fin)
+  }
+
+  static unificarContiguos(segmentos: SegmentoDibujo[]): SegmentoDibujo[] {
+    segmentos = segmentos
+    var segmentosUnificados: SegmentoDibujo[] = segmentos.slice(0,1);
+    segmentos.slice(1).forEach((s2: SegmentoDibujo) => {
+      var s1: SegmentoDibujo = segmentosUnificados.pop();
+      if (s1.contiguoA(s2)) {
+        segmentosUnificados.push(s1.unificarConContiguo(s2));
+      }
+      else {
+        segmentosUnificados.push(s1, s2);
+      }
+    });
+    return segmentosUnificados;
+  }
+
+  unificableCon(otroSegmento: SegmentoDibujo): boolean {
+    return this.paraleloA(otroSegmento) && (this.contieneA(otroSegmento.inicio) || this.contieneA(otroSegmento.fin) || otroSegmento.contieneA(this.inicio));
+  }
+
+  unificarCon(otroSegmento: SegmentoDibujo): SegmentoDibujo {
+    var puntos = [this.inicio, this.fin, otroSegmento.inicio, otroSegmento.fin];
+    puntos.sort(PuntoDibujo.comparar);
+    return new SegmentoDibujo(puntos[0], puntos[3]);
+  }
+
+  trasladar(vector: PuntoDibujo): SegmentoDibujo {
+    return new SegmentoDibujo(this.inicio.sumar(vector), this.fin.sumar(vector));
+  }
+
+  static unificarMuchos(segmentos: SegmentoDibujo[]): SegmentoDibujo[] {
+    var segmentosUnificados: SegmentoDibujo[] = [];
+    segmentos.forEach((s1: SegmentoDibujo) => {
+      segmentosUnificados.forEach((s2: SegmentoDibujo, index: number, array: SegmentoDibujo[]) => {
+        if (s1.unificableCon(s2)) {
+          s1 = s1.unificarCon(s2);
+          array.splice(index, 1);
+        }
+      });
+      segmentosUnificados.push(s1);
+    });
+    return segmentosUnificados;
+  }
+
+  static desdePuntos(puntos: PuntoDibujo[]): SegmentoDibujo[] {
+    var segmentos: SegmentoDibujo[] = [];
+    var inicio: PuntoDibujo = puntos[0];
+    puntos.slice(1).forEach(fin => {
+      segmentos.push(new SegmentoDibujo(inicio, fin));
+      inicio = fin;
+    });
+    return segmentos;
+  }
+  
+  static comparar(s1: SegmentoDibujo, s2: SegmentoDibujo): number {
+    if (PuntoDibujo.comparar(s1.inicio, s2.inicio) == 0) return PuntoDibujo.comparar(s1.fin, s2.fin);
+    else return PuntoDibujo.comparar(s1.inicio, s2.inicio);
+  }
+
+  ordenarExtremos(): SegmentoDibujo {
+    if (PuntoDibujo.comparar(this.inicio, this.fin) > 0) {
+      return new SegmentoDibujo(this.fin, this.inicio);
     }
+    else {
+      return new SegmentoDibujo(this.inicio, this.fin);
+    }
+  }
+}
+
+type PuntoSimple = { x: number, y: number };
+type SegmentoSimple = { inicio: PuntoSimple, fin: PuntoSimple };
+
+class DibujoLineal {
+  _segmentos: SegmentoDibujo[];
+
+  /**
+   * Para crear un dibujo a partir de segmentos, unificando previamente
+   * todos los segmentos que sea posible, es decir, que tengan la misma
+   * dirección y que compartan como mínimo un punto.
+   * @param segmentos Lista de segmentos.
+   */
+  constructor(segmentos: SegmentoDibujo[]) {
+    segmentos = SegmentoDibujo.unificarContiguos(segmentos);
+    segmentos = SegmentoDibujo.unificarMuchos(segmentos);
+    this._segmentos = segmentos;
+  }
+
+  static desdeSegmentosSimples(segmentosSimples: SegmentoSimple[]): DibujoLineal {
+    var segmentos: SegmentoDibujo[] = segmentosSimples.map((s: SegmentoSimple) =>
+      new SegmentoDibujo(new PuntoDibujo(s.inicio.x, s.inicio.y), new PuntoDibujo(s.fin.x, s.fin.y))
+    );
+    return new DibujoLineal(segmentos);
+  }
+
+  /**
+   * Para crear un dibujo a partir de puntos.
+   * @param puntos Lista o lista de lista de puntos.
+   */
+  static desdePuntos(puntos: PuntoDibujo[] | PuntoDibujo[][]): DibujoLineal {
+    // Si vino un dibujo conexo, creo un conexo:
+    var segmentos: SegmentoDibujo[];
+    if (puntos.length > 0 && Array.isArray(puntos[0])) {
+      var aux: SegmentoDibujo[][] = (puntos as PuntoDibujo[][]).map(p => SegmentoDibujo.desdePuntos(p));
+      segmentos = aux.reduce((acum, actual) => acum.concat(actual));
+    }
+    else {
+      segmentos = SegmentoDibujo.desdePuntos(puntos as PuntoDibujo[]);
+    }
+    return new DibujoLineal(segmentos);
+  }
+
+  static desdePuntosSimples(puntosSimples: PuntoSimple[] | PuntoSimple[][]): DibujoLineal {
+    var puntos: PuntoDibujo[] | PuntoDibujo[][];
+    if (puntosSimples.length > 0 && Array.isArray(puntosSimples[0])) {
+      puntos = (puntosSimples as PuntoSimple[][]).map(array =>
+        array.map(puntoSimple =>
+          new PuntoDibujo(puntoSimple.x, puntoSimple.y)
+        )
+      );
+    }
+    else {
+      puntos = (puntosSimples as PuntoSimple[]).map(puntoSimple =>
+        new PuntoDibujo(puntoSimple.x, puntoSimple.y)
+      );
+    }
+    return DibujoLineal.desdePuntos(puntos);
+  }
+
+  /**
+   * Para crear un dibujo a partir de lo que aparece representado en una pizarra.
+   */
+  static desdePizarra(pizarra: Pizarra) {
+    var segmentos: SegmentoSimple[] = pizarra.segmentosDeDibujoLineal()
+    return DibujoLineal.desdeSegmentosSimples(segmentos);
   }
 
   /**
    * El método a llamar para crear una pizarra.
    * @param pizarra La pizarra en la que se dibujará
    */
-  abstract dibujarEn(pizarra:Pizarra, color?, grosor?);
+  dibujarEn(pizarra: Pizarra, color?, grosor?) {
+    this._segmentos.forEach(segmento =>
+      pizarra.linea(segmento.inicio.x, segmento.inicio.y, segmento.fin.x, segmento.fin.y, color, grosor)
+    );
+  }
 
   /**
    * Traslada el dibujo en la dirección indicada
    */
-  abstract trasladar(vector: PuntoDibujo): DibujoLineal;
-
-  /**
-   * Retorna los puntos que conforman el dibujo.
-   */
-  abstract puntos(): PuntosDibujo;
-
-  /**
-   * Da los puntos en string. Es útil para crear desafíos.
-   */
-  abstract stringPuntos(): string;
-}
-
-class DibujoConexo extends DibujoLineal {
-  _puntos: PuntoDibujo[];
-
-  constructor(puntos:PuntoDibujo[]){
-    super();
-    this._puntos = puntos;
-  }
-
-  puntos(): PuntosDibujo {
-    return this._puntos;
-  }
-
-  dibujarEn(pizarra: Pizarra, color?, grosor?){
-    var origen = this._puntos[0];
-    this._puntos.forEach( destino => {
-      pizarra.linea(origen.x, origen.y, destino.x, destino.y, color, grosor);
-        origen = destino;
-    });
-  }
-
   trasladar(vector: PuntoDibujo): DibujoLineal {
-    return new DibujoConexo(this._puntos.map( pto => {return {x: pto.x + vector.x, y: pto.y + vector.y}}));
+    return new DibujoLineal(this._segmentos.map(segmento => segmento.trasladar(vector)));
   }
 
-  stringPuntos(): string{
-    return "[" + this._puntos.map(p => "{x:" + p.x.toString() +",y:" + p.y.toString() + "}").toString() + "]";
+  /**
+   * Retorna los segmentos que conforman el dibujo.
+   */
+  segmentos(): SegmentoDibujo[] {
+    return this._segmentos;
   }
-}
 
-class DibujoCompuesto extends DibujoLineal {
-    _subdibujos: DibujoLineal[];
+  segmentosOrdenados(): SegmentoDibujo[] {
+    return this._segmentos.map(segmento => segmento.ordenarExtremos()).sort(SegmentoDibujo.comparar);
+  }
 
-    constructor(dibujos: PuntoDibujo[][]){
-      super();
-      this._subdibujos = dibujos.map( ptos => DibujoLineal.nuevo(ptos) );
-    }
+  igualA(otroDibujo: DibujoLineal) {
+    var misSegmentos = this.segmentosOrdenados();
+    var otrosSegmentos = otroDibujo.segmentosOrdenados();
+    return misSegmentos.length == otrosSegmentos.length &&
+      misSegmentos.every((s, index) => s.igualA(otrosSegmentos[index]));
+  }
 
-    puntos(): PuntosDibujo {
-      return this._subdibujos.map( dibujo => <PuntoDibujo[]>dibujo.puntos() );
-    }
+  // /**
+  //  * Retorna los puntos que conforman el dibujo.
+  //  */
+  // puntos(): PuntoDibujo[] | PuntoDibujo[][] {
 
-    dibujarEn(pizarra: Pizarra, color?, grosor?){
-      this._subdibujos.forEach( dibujo => dibujo.dibujarEn(pizarra, color, grosor) );
-    }
+  // }
 
-    trasladar(vector: PuntoDibujo): DibujoLineal {
-      return new DibujoCompuesto(<PuntoDibujo[][]>this._subdibujos.map( dibujo => dibujo.trasladar(vector).puntos() ));
-    }
-
-    stringPuntos(): string{
-      return "[" + this._subdibujos.map(dibujo => dibujo.stringPuntos()).toString() + "]";
-    }
+  // /**
+  //  * Da los puntos en string. Es útil para crear desafíos.
+  //  */
+  // stringPuntos(): string;
 }
