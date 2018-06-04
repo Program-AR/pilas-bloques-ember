@@ -31,8 +31,16 @@ class Direct {
 		return this.versor.x == 0 && this.versor.y == 0;
 	}
 
+	inverse(): Direct {
+		return new Direct(this.versor.x * -1, this.versor.y * -1);
+	}
+	
 	equals(other: Direct) {
 		return this.isNull() || other.isNull() || this.versor.x == other.versor.x && this.versor.y == other.versor.y;
+	}
+
+	isParallelTo(other: Direct) {
+		return this.equals(other) || this.equals(other.inverse())
 	}
 }
 

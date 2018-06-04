@@ -14,10 +14,14 @@
  *    [[{x:-5,y:0},{x:0,y:0}],[{x:5,y:0},{x:10,y:0}]]
  */
 
+type PuntoSimple = { x: number, y: number };
+type SegmentoSimple = { inicio: PuntoSimple, fin: PuntoSimple };
+
 /**
  * El tipo de un punto (tiene x e y, es una coordenada)
  */
 class PuntoDibujo {
+  static epsilon = Math.pow(2, -52);
   x: number;
   y: number;
 
@@ -31,7 +35,7 @@ class PuntoDibujo {
   }
 
   igualA(otroPunto: PuntoDibujo): boolean {
-    return this.x == otroPunto.x && this.y == otroPunto.y;
+    return Math.abs(this.x - otroPunto.x) < PuntoDibujo.epsilon && Math.abs(this.y - otroPunto.y) < PuntoDibujo.epsilon;
   }
 
   norma(): number {
@@ -50,16 +54,22 @@ class PuntoDibujo {
     if (p1.x == p2.x) return p1.y - p2.y;
     else return p1.x - p2.x;
   }
+
+  static desdePuntoSimple(p: PuntoSimple): PuntoDibujo {
+    return new PuntoDibujo(p.x, p.y);
+  }
 }
 
 
 class SegmentoDibujo {
   inicio: PuntoDibujo;
   fin: PuntoDibujo;
+  origen: number[];
 
-  constructor(inicio: PuntoDibujo, fin: PuntoDibujo) {
+  constructor(inicio: PuntoDibujo, fin: PuntoDibujo, origen: number[] = [-1]) {
     this.inicio = inicio;
     this.fin = fin;
+    this.origen = origen;
   }
 
   direccion(): Direct {
@@ -81,7 +91,7 @@ class SegmentoDibujo {
   }
 
   paraleloA(otroSegmento: SegmentoDibujo): boolean {
-    return this.direccion().equals(otroSegmento.direccion());
+    return this.direccion().isParallelTo(otroSegmento.direccion());
   }
 
   adyacenteA(otroSegmento: SegmentoDibujo): boolean {
@@ -118,7 +128,20 @@ class SegmentoDibujo {
   unificarCon(otroSegmento: SegmentoDibujo): SegmentoDibujo {
     var puntos = [this.inicio, this.fin, otroSegmento.inicio, otroSegmento.fin];
     puntos.sort(PuntoDibujo.comparar);
-    return new SegmentoDibujo(puntos[0], puntos[3]);
+    return new SegmentoDibujo(puntos[0], puntos[3], this.origen.concat(otroSegmento.origen));
+  }
+
+  unificarConMuchos(segmentos: SegmentoDibujo[]): SegmentoDibujo {
+    let s1: SegmentoDibujo = this;
+    for (let j = 0; j < segmentos.length; j++) {
+      let s2 = segmentos[j];
+      if (s1.unificableCon(s2)) {
+        s1 = this.unificarCon(s2);
+        segmentos.splice(j, 1);
+        j--;
+      }
+    }
+    return s1;
   }
 
   trasladar(vector: PuntoDibujo): SegmentoDibujo {
@@ -127,17 +150,13 @@ class SegmentoDibujo {
 
   static unificarMuchos(segmentos: SegmentoDibujo[]): SegmentoDibujo[] {
     var segmentosUnificados: SegmentoDibujo[] = [];
-    segmentos.forEach((s1: SegmentoDibujo) => {
-      segmentosUnificados.forEach((s2: SegmentoDibujo, index: number, array: SegmentoDibujo[]) => {
-        if (s1.unificableCon(s2)) {
-          s1 = s1.unificarCon(s2);
-          array.splice(index, 1);
-        }
-      });
-      segmentosUnificados.push(s1);
-    });
+    segmentos.forEach(segmento =>
+      segmentosUnificados.push(segmento.unificarConMuchos(segmentosUnificados))
+    )
     return segmentosUnificados;
   }
+
+  
 
   static desdePuntos(puntos: PuntoDibujo[]): SegmentoDibujo[] {
     var segmentos: SegmentoDibujo[] = [];
@@ -162,10 +181,11 @@ class SegmentoDibujo {
       return new SegmentoDibujo(this.inicio, this.fin);
     }
   }
-}
 
-type PuntoSimple = { x: number, y: number };
-type SegmentoSimple = { inicio: PuntoSimple, fin: PuntoSimple };
+  static desdeSegmentoSimple(s: SegmentoSimple): SegmentoDibujo {
+    return new SegmentoDibujo(PuntoDibujo.desdePuntoSimple(s.inicio), PuntoDibujo.desdePuntoSimple(s.fin));
+  }
+}
 
 class DibujoLineal {
   _segmentos: SegmentoDibujo[];
@@ -184,7 +204,7 @@ class DibujoLineal {
 
   static desdeSegmentosSimples(segmentosSimples: SegmentoSimple[]): DibujoLineal {
     var segmentos: SegmentoDibujo[] = segmentosSimples.map((s: SegmentoSimple) =>
-      new SegmentoDibujo(new PuntoDibujo(s.inicio.x, s.inicio.y), new PuntoDibujo(s.fin.x, s.fin.y))
+      SegmentoDibujo.desdeSegmentoSimple(s)
     );
     return new DibujoLineal(segmentos);
   }
