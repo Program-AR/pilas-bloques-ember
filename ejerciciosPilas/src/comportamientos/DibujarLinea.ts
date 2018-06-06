@@ -34,6 +34,7 @@ class DibujarLinea extends MovimientoAnimado {
 class DibujarHaciaAdelante extends DibujarLinea {
 	preAnimacion(){
 		this.argumentos.direccion = new Direct(this.receptor.rotacion);
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 	}
 }
@@ -41,6 +42,7 @@ class DibujarHaciaAdelante extends DibujarLinea {
 class DibujarHaciaArriba extends DibujarLinea {
 	preAnimacion(){
 		this.argumentos.direccion = new Direct(0,1);
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 	}
 }
@@ -48,6 +50,7 @@ class DibujarHaciaArriba extends DibujarLinea {
 class DibujarHaciaAbajo extends DibujarLinea {
 	preAnimacion(){
 		this.argumentos.direccion = new Direct(0,-1);
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 	}
 }
@@ -55,6 +58,7 @@ class DibujarHaciaAbajo extends DibujarLinea {
 class DibujarHaciaLaDerecha extends DibujarLinea {
 	preAnimacion(){
 		this.argumentos.direccion = new Direct(1,0);
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 	}
 }

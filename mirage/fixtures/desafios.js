@@ -1879,9 +1879,10 @@ export default [
     nombre: '2.1.3a',
     titulo: 'Desafío 2.1.3a',
     imagen: 'Coty',
-    escena: `new EscenaCoty(25,75,
+    escena: `new EscenaCoty(
       [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
-      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}]
+      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
+      {xCoty: 25, yCoty: 75}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1896,7 +1897,8 @@ export default [
     imagen: 'Coty',
     escena: `new EscenaCoty(-50,25,
       [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
-      [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}]
+      [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
+      {xCoty: -50, yCoty: 25}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1911,7 +1913,8 @@ export default [
     imagen: 'Coty',
     escena: `new EscenaCoty(125,0,
       [],
-      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]]
+      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
+      {xCoty: 125, yCoty: 0}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1928,7 +1931,16 @@ export default [
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
   },
   {
     id: 246,
@@ -1936,14 +1948,24 @@ export default [
     nombre: '2.1.3e',
     titulo: 'Desafío 2.1.3e',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-50,0,
+    escena: `new EscenaCoty(
       [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
-      [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}]
+      [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
+      {xCoty: -50, yCoty: 100}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
   },
   {
     id: 247,
@@ -1951,9 +1973,10 @@ export default [
     nombre: '2.1.3f',
     titulo: 'Desafío 2.1.3f - FALTA',
     imagen: 'Coty',
-    escena: `new EscenaCoty(0,100,
+    escena: `new EscenaCoty(
       [],
-      []
+      [],
+      {}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1966,9 +1989,10 @@ export default [
     nombre: '2.1.3g',
     titulo: 'Desafío 2.1.3g - FALTA',
     imagen: 'Coty',
-    escena: `new EscenaCoty(0,100,
+    escena: `new EscenaCoty(
       [],
-      []
+      [],
+      {}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1981,22 +2005,23 @@ export default [
     nombre: '3.1.4a',
     titulo: 'Desafío 3.1.4a',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-130,20,
+    escena: `new EscenaCoty(
       [],
-      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]]
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: [
-      'MoverArribaDibujandoCorto',
-      'MoverAbajoDibujandoCorto',
-      'MoverDerechaDibujandoCorto',
-      'MoverIzquierdaDibujandoCorto',
-      'SaltarAbajoCorto',
-      'SaltarArribaCorto',
-      'SaltarDerechaCorto',
-      'SaltarIzquierdaCorto',
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
       'repetir'
     ]
   },
@@ -2006,22 +2031,23 @@ export default [
     nombre: '3.1.4b',
     titulo: 'Desafío 3.1.4b',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-130,20,
+    escena: `new EscenaCoty(
       [],
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]]
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: [
-      'MoverArribaDibujandoCorto',
-      'MoverAbajoDibujandoCorto',
-      'MoverDerechaDibujandoCorto',
-      'MoverIzquierdaDibujandoCorto',
-      'SaltarAbajoCorto',
-      'SaltarArribaCorto',
-      'SaltarDerechaCorto',
-      'SaltarIzquierdaCorto',
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
       'repetir'
     ]
   },
@@ -2031,22 +2057,23 @@ export default [
     nombre: '3.1.4c',
     titulo: 'Desafío 3.1.4c',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-120,-60,
+    escena: `new EscenaCoty(
       [],
-      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]]
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: [
-      'MoverArribaDibujandoCorto',
-      'MoverAbajoDibujandoCorto',
-      'MoverDerechaDibujandoCorto',
-      'MoverIzquierdaDibujandoCorto',
-      'SaltarAbajoCorto',
-      'SaltarArribaCorto',
-      'SaltarDerechaCorto',
-      'SaltarIzquierdaCorto',
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
       'repetir'
     ]
   },
@@ -2056,9 +2083,10 @@ export default [
     nombre: '3.2.3d',
     titulo: 'Desafío 3.2.3d',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-100,-100,
+    escena: `new EscenaCoty(
       [],
       [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]]
+      {xCoty: -100, yCoty: -100}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -2110,9 +2138,10 @@ export default [
     nombre: '3.2.3e',
     titulo: 'Desafío 3.2.3e',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-120,-60,
+    escena: `new EscenaCoty(
       [],
-      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]]
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
+      {xCoty: -120, yCoty: -60}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -2180,10 +2209,10 @@ export default [
     nombre: '4.1.3b',
     titulo: 'Desafío 4.1.3b - FALTA',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-50,50,
+    escena: `new EscenaCoty(
       [],
       [{x:-50,y:50},{x:0,y:50},{x:50,y:50},{x:50,y:0},{x:50,y:-50},{x:0,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:-50,y:50}],
-      true
+      {xCoty: -50, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 120}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -2197,7 +2226,7 @@ export default [
     nombre: 'CotyDibujoLibre',
     titulo: '¡Coty dibuja libre!',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-50,50,[],[])`,
+    escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
     debeFelicitarse: true,

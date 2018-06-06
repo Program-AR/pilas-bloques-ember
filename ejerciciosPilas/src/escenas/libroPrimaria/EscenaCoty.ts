@@ -2,6 +2,8 @@
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
 
+type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number, puedeHaberCharco?: boolean}
+
  class EscenaCoty extends DibujandoFiguras {
    _puntosEsperados: PuntoSimple[] | PuntoSimple[][];
    dibujoPreexistente: DibujoLineal;
@@ -10,14 +12,21 @@
    yCoty: number;
    charco: Charco;
    puedeHaberCharco: boolean;
+   longitudSegmento: number;
 
-   constructor(xCoty: number, yCoty: number, dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], puedeHaberCharco: boolean = false){
+   constructor(dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], argumentos: ArgumentosCoty){
      super();
      this._puntosEsperados = puntosEsperados;
      this.dibujoPreexistente = DibujoLineal.desdePuntosSimples(dibujoPreexistente);
-     this.xCoty = xCoty;
-     this.yCoty = yCoty;
-     this.puedeHaberCharco = puedeHaberCharco;
+     this.sanitizarArgumentos(argumentos);
+   }
+
+    sanitizarArgumentos(argumentos: ArgumentosCoty) {
+      this.xCoty = argumentos.xCoty || 0;
+      this.yCoty = argumentos.yCoty || 0;
+      this.longitudSegmento = argumentos.longitudSegmento || 50;
+      console.log(this.longitudSegmento);
+      this.puedeHaberCharco = Boolean(this.puedeHaberCharco);
    }
 
    iniciar(){
@@ -68,8 +77,8 @@
 
 class EscenaCotySonrisa extends EscenaCoty {
   constructor(){
-    super(-25,10,[[{x:-25,y:10},{x:-25,y:60},{x:-75,y:60},{x:-75,y:10},{x:-25,y:10}]],
-      [[{x:25,y:10},{x:25,y:60},{x:75,y:60},{x:75,y:10},{x:25,y:10}]]);
+    super([[{x:-25,y:10},{x:-25,y:60},{x:-75,y:60},{x:-75,y:10},{x:-25,y:10}]],
+      [[{x:25,y:10},{x:25,y:60},{x:75,y:60},{x:75,y:10},{x:25,y:10}]],{xCoty: -25, yCoty: 10});
   }
 
   hacerDibujoPreexistente(){

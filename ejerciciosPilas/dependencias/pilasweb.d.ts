@@ -1571,11 +1571,6 @@ declare class Pizarra extends Actor {
     pintar(color: any): void;
     segmentosDeDibujoLineal(): segmento[];
     cambioCoordenadas(punto: any): any;
-    puntosSinRepetirDe(puntos: any): any[];
-    ordenarPuntosDe(puntos: any): any;
-    compararPuntos(p1: any, p2: any): number;
-    sacarPuntosRepetidosDe(puntos: any): any[];
-    estaPuntoEn(pto: any, ptos: any): any;
 }
 declare class Pingu extends Actor {
     paso: any;
