@@ -4,14 +4,16 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts" />
 
 abstract class DibujandoFiguras extends EscenaActividad {
+    dibujoEsperado: DibujoLineal;
     pizarraFantasma: Pizarra;
     anchoLinea = 6;
 
     iniciar() {
         this.fondo = new Fondo(this.pathFondo(),0,0);
         this.crearAutomata();
-        this.pizarraFantasma = new pilas.actores.Pizarra();
-        DibujoLineal.desdePuntosSimples(this.puntosEsperados()).dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
+        this.dibujoEsperado = DibujoLineal.desdePuntosSimples(this.puntosEsperados());
+        this.hacerDibujoPreexistente();
+        this.hacerDibujoEsperado();
     }
 
     crearAutomata(){
@@ -21,15 +23,19 @@ abstract class DibujandoFiguras extends EscenaActividad {
       this.automata.y = 100;
     }
 
+    /** Se puede completar en subclases para realizar un dibujo antes de trazar el dibujo esperado */
+    hacerDibujoPreexistente() {}
+
+    hacerDibujoEsperado() {
+      this.pizarraFantasma = new Pizarra();
+      this.dibujoEsperado.dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
+    }
+
     estaResueltoElProblema(){
-      var dibujoRealizado: DibujoLineal;
-      if ((this.automata as any).pizarra) {
-        dibujoRealizado = DibujoLineal.desdePizarra((this.automata as any).pizarra);
-      }
-      else {
-        dibujoRealizado = new DibujoLineal([]);
-      }
-      var dibujoEsperado: DibujoLineal = DibujoLineal.desdePizarra(this.pizarraFantasma);
+      var dibujoRealizado: DibujoLineal = (this.automata as any).pizarra ?
+        DibujoLineal.desdePizarra((this.automata as any).pizarra, true) :
+        new DibujoLineal([]);
+      var dibujoEsperado: DibujoLineal = DibujoLineal.desdePizarra(this.pizarraFantasma, true);
       return dibujoRealizado.igualA(dibujoEsperado);
     }
 

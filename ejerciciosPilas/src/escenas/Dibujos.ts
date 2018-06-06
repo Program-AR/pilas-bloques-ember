@@ -192,29 +192,32 @@ class DibujoLineal {
   _segmentos: SegmentoDibujo[];
 
   /**
-   * Para crear un dibujo a partir de segmentos, unificando previamente
-   * todos los segmentos que sea posible, es decir, que tengan la misma
-   * dirección y que compartan como mínimo un punto.
+   * Para crear un dibujo a partir de segmentos.
    * @param segmentos Lista de segmentos.
+   * @param unificar Determina si se unificarán previamente
+   * todos los segmentos que sea posible, es decir, que tengan la misma
+   * dirección y que compartan como mínimo un punto. Falso por defecto.
    */
-  constructor(segmentos: SegmentoDibujo[]) {
+  constructor(segmentos: SegmentoDibujo[], unificar: boolean = false) {
+    if (unificar) {
     segmentos = SegmentoDibujo.unificarContiguos(segmentos);
     segmentos = SegmentoDibujo.unificarMuchos(segmentos);
+    }
     this._segmentos = segmentos;
   }
 
-  static desdeSegmentosSimples(segmentosSimples: SegmentoSimple[]): DibujoLineal {
+  static desdeSegmentosSimples(segmentosSimples: SegmentoSimple[], unificar?: boolean): DibujoLineal {
     var segmentos: SegmentoDibujo[] = segmentosSimples.map((s: SegmentoSimple) =>
       SegmentoDibujo.desdeSegmentoSimple(s)
     );
-    return new DibujoLineal(segmentos);
+    return new DibujoLineal(segmentos, unificar);
   }
 
   /**
    * Para crear un dibujo a partir de puntos.
    * @param puntos Lista o lista de lista de puntos.
    */
-  static desdePuntos(puntos: PuntoDibujo[] | PuntoDibujo[][]): DibujoLineal {
+  static desdePuntos(puntos: PuntoDibujo[] | PuntoDibujo[][], unificar?: boolean): DibujoLineal {
     // Si vino un dibujo conexo, creo un conexo:
     var segmentos: SegmentoDibujo[];
     if (puntos.length > 0 && Array.isArray(puntos[0])) {
@@ -224,10 +227,10 @@ class DibujoLineal {
     else {
       segmentos = SegmentoDibujo.desdePuntos(puntos as PuntoDibujo[]);
     }
-    return new DibujoLineal(segmentos);
+    return new DibujoLineal(segmentos, unificar);
   }
 
-  static desdePuntosSimples(puntosSimples: PuntoSimple[] | PuntoSimple[][]): DibujoLineal {
+  static desdePuntosSimples(puntosSimples: PuntoSimple[] | PuntoSimple[][], unificar?: boolean): DibujoLineal {
     var puntos: PuntoDibujo[] | PuntoDibujo[][];
     if (puntosSimples.length > 0 && Array.isArray(puntosSimples[0])) {
       puntos = (puntosSimples as PuntoSimple[][]).map(array =>
@@ -241,25 +244,29 @@ class DibujoLineal {
         new PuntoDibujo(puntoSimple.x, puntoSimple.y)
       );
     }
-    return DibujoLineal.desdePuntos(puntos);
+    return DibujoLineal.desdePuntos(puntos, unificar);
   }
 
   /**
    * Para crear un dibujo a partir de lo que aparece representado en una pizarra.
    */
-  static desdePizarra(pizarra: Pizarra) {
+  static desdePizarra(pizarra: Pizarra, unificar?: boolean) {
     var segmentos: SegmentoSimple[] = pizarra.segmentosDeDibujoLineal()
-    return DibujoLineal.desdeSegmentosSimples(segmentos);
+    return DibujoLineal.desdeSegmentosSimples(segmentos, unificar);
   }
 
   /**
    * El método a llamar para crear una pizarra.
    * @param pizarra La pizarra en la que se dibujará
    */
-  dibujarEn(pizarra: Pizarra, color?, grosor?) {
-    this._segmentos.forEach(segmento =>
-      pizarra.linea(segmento.inicio.x, segmento.inicio.y, segmento.fin.x, segmento.fin.y, color, grosor)
-    );
+  dibujarEn(pizarra: Pizarra, color?, grosor?, dibujarPuntos: boolean = false) {
+    this.segmentos().forEach(segmento => {
+      if (dibujarPuntos)
+        pizarra.dibujar_punto(segmento.inicio.x, segmento.inicio.y, color, grosor);
+      pizarra.linea(segmento.inicio.x, segmento.inicio.y, segmento.fin.x, segmento.fin.y, color, grosor);
+      if (dibujarPuntos)
+        pizarra.dibujar_punto(segmento.fin.x, segmento.fin.y, color, grosor);
+    });
   }
 
   /**

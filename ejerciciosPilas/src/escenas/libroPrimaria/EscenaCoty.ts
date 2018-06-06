@@ -22,10 +22,14 @@
 
    iniciar(){
      super.iniciar();
-     this.hacerDibujoPreexistente();
      if(this.puedeHaberCharco && Math.random()>=0.5){
        this.colocarCharco();
      }
+   }
+
+   hacerDibujoEsperado() {
+     this.pizarraFantasma = new Pizarra();
+     this.dibujoEsperado.dibujarEn(this.pizarraFantasma, pilas.colores.gris, this.anchoLinea, true);
    }
 
    hacerDibujoPreexistente(){

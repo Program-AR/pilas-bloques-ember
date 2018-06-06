@@ -15,6 +15,20 @@ class DibujarLinea extends MovimientoAnimado {
 		super.darUnPaso();
 		this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
 	}
+
+	preAnimacion() {
+		super.preAnimacion();
+		if (this.argumentos.dibujarPuntos) {
+			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+		}
+	}
+
+	postAnimacion() {
+		super.postAnimacion();
+		if (this.argumentos.dibujarPuntos) {
+			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+		}
+	}
 }
 
 class DibujarHaciaAdelante extends DibujarLinea {
