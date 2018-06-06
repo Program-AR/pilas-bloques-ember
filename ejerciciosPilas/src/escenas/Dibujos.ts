@@ -64,12 +64,10 @@ class PuntoDibujo {
 class SegmentoDibujo {
   inicio: PuntoDibujo;
   fin: PuntoDibujo;
-  origen: number[];
 
-  constructor(inicio: PuntoDibujo, fin: PuntoDibujo, origen: number[] = [-1]) {
+  constructor(inicio: PuntoDibujo, fin: PuntoDibujo) {
     this.inicio = inicio;
     this.fin = fin;
-    this.origen = origen;
   }
 
   direccion(): Direct {
@@ -87,11 +85,15 @@ class SegmentoDibujo {
 
   contieneA(unPunto: PuntoDibujo): boolean {
     var aux: SegmentoDibujo = new SegmentoDibujo(this.inicio, unPunto);
-    return this.paraleloA(aux) && aux.longitud() <= this.longitud();
+    return this.mismaDireccionYSentidoQue(aux) && aux.longitud() <= this.longitud();
   }
 
   paraleloA(otroSegmento: SegmentoDibujo): boolean {
     return this.direccion().isParallelTo(otroSegmento.direccion());
+  }
+
+  mismaDireccionYSentidoQue(otroSegmento: SegmentoDibujo): boolean {
+    return this.direccion().equals(otroSegmento.direccion());
   }
 
   adyacenteA(otroSegmento: SegmentoDibujo): boolean {
@@ -99,7 +101,7 @@ class SegmentoDibujo {
   }
 
   contiguoA(otroSegmento: SegmentoDibujo): boolean {
-    return this.paraleloA(otroSegmento) && this.adyacenteA(otroSegmento);
+    return this.mismaDireccionYSentidoQue(otroSegmento) && this.adyacenteA(otroSegmento);
   }
 
   unificarConContiguo(otroSegmento: SegmentoDibujo): SegmentoDibujo {
@@ -107,7 +109,6 @@ class SegmentoDibujo {
   }
 
   static unificarContiguos(segmentos: SegmentoDibujo[]): SegmentoDibujo[] {
-    segmentos = segmentos
     var segmentosUnificados: SegmentoDibujo[] = segmentos.slice(0,1);
     segmentos.slice(1).forEach((s2: SegmentoDibujo) => {
       var s1: SegmentoDibujo = segmentosUnificados.pop();
@@ -128,7 +129,7 @@ class SegmentoDibujo {
   unificarCon(otroSegmento: SegmentoDibujo): SegmentoDibujo {
     var puntos = [this.inicio, this.fin, otroSegmento.inicio, otroSegmento.fin];
     puntos.sort(PuntoDibujo.comparar);
-    return new SegmentoDibujo(puntos[0], puntos[3], this.origen.concat(otroSegmento.origen));
+    return new SegmentoDibujo(puntos[0], puntos[3]);
   }
 
   unificarConMuchos(segmentos: SegmentoDibujo[]): SegmentoDibujo {
