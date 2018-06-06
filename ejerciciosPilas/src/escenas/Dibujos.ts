@@ -294,15 +294,28 @@ class DibujoLineal {
       misSegmentos.every((s, index) => s.igualA(otrosSegmentos[index]));
   }
 
-  // /**
-  //  * Retorna los puntos que conforman el dibujo.
-  //  */
-  // puntos(): PuntoDibujo[] | PuntoDibujo[][] {
+  /**
+   * Retorna los puntos que conforman el dibujo.
+   */
+  puntos(): PuntoDibujo[][] {
+    let puntos: PuntoDibujo[][] = [];
+    let ultimoPunto: PuntoDibujo;
+    this.segmentos().forEach(segmento => {
+      if (ultimoPunto && ultimoPunto.igualA(segmento.inicio)) {
+        puntos[puntos.length - 1].push(segmento.fin);
+      }
+      else {
+        puntos.push([segmento.inicio, segmento.fin]);
+      }
+      ultimoPunto = segmento.fin;
+    })
+    return puntos;
+  }
 
-  // }
-
-  // /**
-  //  * Da los puntos en string. Es útil para crear desafíos.
-  //  */
-  // stringPuntos(): string;
+  /**
+   * Da los puntos en string. Es útil para crear desafíos.
+   */
+  stringPuntos(): string {
+    return "[" + this.puntos().map(array => "[" + array.map(p => "{x:" + p.x.toString() + ",y:" + p.y.toString() + "}").toString() + "]").toString() + "]";
+  };
 }

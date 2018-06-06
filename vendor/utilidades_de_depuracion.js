@@ -18,7 +18,6 @@ function utils_guardar_solucion_en_url() {
 
 
 // Por ejemplo utils_obtener_puntos("pizarraFantasma") ó bien utils_obtener_puntos("automata.pizarra")
-function utils_obtener_puntos(pizarra){
-  var puntos = PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`pilas.escena_actual().${pizarra}.puntosDeLineas();`);
-  return puntos.map( pto => '{x:' + pto.x + ',y:' + pto.y + '}').join();
+function utils_obtener_puntos(pizarra, unificar = false){
+  return PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`DibujoLineal.desdePizarra(pilas.escena_actual().${pizarra}, ${unificar});`).stringPuntos();
 }
