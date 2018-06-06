@@ -17,6 +17,7 @@ class DibujarLinea extends MovimientoAnimado {
 	}
 
 	preAnimacion() {
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 		if (this.argumentos.dibujarPuntos) {
 			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
@@ -34,38 +35,6 @@ class DibujarLinea extends MovimientoAnimado {
 class DibujarHaciaAdelante extends DibujarLinea {
 	preAnimacion(){
 		this.argumentos.direccion = new Direct(this.receptor.rotacion);
-		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
-		super.preAnimacion();
-	}
-}
-
-class DibujarHaciaArriba extends DibujarLinea {
-	preAnimacion(){
-		this.argumentos.direccion = new Direct(0,1);
-		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
-		super.preAnimacion();
-	}
-}
-
-class DibujarHaciaAbajo extends DibujarLinea {
-	preAnimacion(){
-		this.argumentos.direccion = new Direct(0,-1);
-		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
-		super.preAnimacion();
-	}
-}
-
-class DibujarHaciaLaDerecha extends DibujarLinea {
-	preAnimacion(){
-		this.argumentos.direccion = new Direct(1,0);
-		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
-		super.preAnimacion();
-	}
-}
-
-class DibujarHaciaLaIzquierda extends DibujarLinea {
-	preAnimacion(){
-		this.argumentos.direccion = new Direct(-1,0);
 		super.preAnimacion();
 	}
 }

@@ -2212,7 +2212,7 @@ export default [
     escena: `new EscenaCoty(
       [],
       [{x:-50,y:50},{x:0,y:50},{x:50,y:50},{x:50,y:0},{x:50,y:-50},{x:0,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:-50,y:50}],
-      {xCoty: -50, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 120}
+      {xCoty: -50, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 150}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',

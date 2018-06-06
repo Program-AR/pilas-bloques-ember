@@ -25,9 +25,8 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
       this.xCoty = argumentos.xCoty || 0;
       this.yCoty = argumentos.yCoty || 0;
       this.longitudSegmento = argumentos.longitudSegmento || 50;
-      console.log(this.longitudSegmento);
       this.puedeHaberCharco = Boolean(this.puedeHaberCharco);
-   }
+    }
 
    iniciar(){
      super.iniciar();
@@ -56,9 +55,9 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
      this.charco.setX(this.automata.getX() + (longSalto / 2));
      this.charco.setY(this.automata.getY());
 
-     [this.pizarraDibujoPreexistente,this.pizarraFantasma].forEach(
-       pizarra => pizarra.setX(pizarra.getX() + longSalto)
-     );
+    //  [this.pizarraDibujoPreexistente,this.pizarraFantasma].forEach(
+    //    pizarra => pizarra.setX(pizarra.getX() + longSalto)
+    //  );
    }
 
    crearAutomata(){
