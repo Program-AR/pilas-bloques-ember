@@ -85,7 +85,6 @@ class ObjetivoJeringozo extends EstiloTotoEscritor {
     }
     
     esVocal(letra: string): boolean {
-        console.log(letra);
         return letra === "a" || letra === "e" || letra === "i" || letra === "o" || letra === "u";
     }
 
