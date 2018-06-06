@@ -64,13 +64,13 @@
 
 class EscenaCotySonrisa extends EscenaCoty {
   constructor(){
-    super(0,0,[[{x:0,y:0},{x:0,y:50},{x:-50,y:50},{x:-50,y:0},{x:0,y:0}]],
-      [[{x:50,y:0},{x:50,y:5},{x:50,y:10},{x:50,y:15},{x:50,y:20},{x:50,y:25},{x:50,y:30},{x:50,y:35},{x:50,y:40},{x:50,y:45},{x:50,y:50},{x:55,y:50},{x:60,y:50},{x:65,y:50},{x:70,y:50},{x:75,y:50},{x:80,y:50},{x:85,y:50},{x:90,y:50},{x:95,y:50},{x:100,y:50},{x:100,y:45},{x:100,y:40},{x:100,y:35},{x:100,y:30},{x:100,y:25},{x:100,y:20},{x:100,y:15},{x:100,y:10},{x:100,y:5},{x:100,y:0},{x:95,y:0},{x:90,y:0},{x:85,y:0},{x:80,y:0},{x:75,y:0},{x:70,y:0},{x:65,y:0},{x:60,y:0},{x:55,y:0},{x:50,y:0}]]);
+    super(-25,10,[[{x:-25,y:10},{x:-25,y:60},{x:-75,y:60},{x:-75,y:10},{x:-25,y:10}]],
+      [[{x:25,y:10},{x:25,y:60},{x:75,y:60},{x:75,y:10},{x:25,y:10}]]);
   }
 
   hacerDibujoPreexistente(){
     super.hacerDibujoPreexistente();
     this.pizarraDibujoPreexistente.circulo(0,0,150,pilas.colores.azuloscuro,this.anchoLinea);
-    this.pizarraDibujoPreexistente.arco(25,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(0,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,this.anchoLinea);
   }
 }
