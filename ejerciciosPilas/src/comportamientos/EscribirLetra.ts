@@ -34,7 +34,7 @@ class EscribirLetra extends ComportamientoConVelocidad {
 
     postAnimacion() {
         super.postAnimacion();
-        this.receptor.cuadricula.agregarActorEnCasilla(new Letra(this.argumentos.caracter),this.receptor.casillaActual());
+        this.receptor.cuadricula.agregarActorEnCasilla(new LetraManuscrita(this.argumentos.caracter),this.receptor.casillaActual());
     }
 
 }

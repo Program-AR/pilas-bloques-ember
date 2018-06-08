@@ -11,6 +11,8 @@ export default [
     "actor.ensaladera.png",
     "actor.lechuga.png",
     "actor.letra.png",
+    "actor.letra.secundaria.png",
+    "actor.letra.tablero.png",
     "actor.lita.png",
     "actor.tomate.png",
     "actor.toto.png",

@@ -46,7 +46,7 @@ abstract class EscenaToto extends EscenaDesdeMapa {
     mapearIdentificadorAActor(id, nroFila, nroColumna): ActorAnimado {
         switch(id) {
             case 'A': return this.automata;
-            default: return new Letra(id);
+            default: return new LetraTablero(id);
         }
     }
 

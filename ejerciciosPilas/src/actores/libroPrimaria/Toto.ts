@@ -10,7 +10,7 @@ class Toto extends ActorAnimado {
   }
 
   caracterActual() : string {
-    let letra : Letra = this.casillaActual().actoresConEtiqueta('Letra')[0];
+    let letra : Letra = this.casillaActual().actoresConEtiqueta('LetraTablero')[0];
     if(!letra) throw new ActividadError("No hay una letra aquí");
     return letra.caracter();
   }

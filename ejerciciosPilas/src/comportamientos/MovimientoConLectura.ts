@@ -15,7 +15,7 @@ class MovimientoConLectura extends MovimientoEnCuadricula {
             let caracter = this.caracterEnCasilla(casilla);
             let casillaLectura = this.receptor.cuadriculaSecundaria.proximaCasillaLibre();
             if (casillaLectura) {
-                this.receptor.cuadriculaSecundaria.agregarActorEnProximaCasillaLibre(new Letra(caracter));
+                this.receptor.cuadriculaSecundaria.agregarActorEnProximaCasillaLibre(new LetraLeida(caracter));
             }
             else {
                 throw new ActividadError("Ya leí mucho, ¡estoy cansado!");
@@ -24,11 +24,11 @@ class MovimientoConLectura extends MovimientoEnCuadricula {
     }
 
     hayLetra(casilla) {
-        return casilla.tieneActorConEtiqueta('Letra');
+        return casilla.tieneActorConEtiqueta('LetraTablero');
     }
 
     caracterEnCasilla(casilla) {
-        return casilla.actoresConEtiqueta('Letra')[0].caracter();
+        return casilla.actoresConEtiqueta('LetraTablero')[0].caracter();
     }
 }
 
