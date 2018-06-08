@@ -122,12 +122,80 @@ actividadTest("2.1.3e", {
 
 actividadTest("2.1.3f", {
   descripcionAdicional: 'Coty-2.1.3f',
-	solucion: ``,
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="SaltarIzquierda">
+        <next>
+          <block type="MoverAbajoDibujando">
+            <next>
+              <block type="MoverAbajoDibujando">
+                <next>
+                  <block type="SaltarDerecha">
+                    <next>
+                      <block type="SaltarDerecha">
+                        <next>
+                          <block type="MoverArribaDibujando">
+                            <next>
+                              <block type="MoverArribaDibujando"></block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`,
 });
 
 actividadTest("2.1.3g", {
   descripcionAdicional: 'Coty-2.1.3g',
-	solucion: ``,
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverArribaDibujando">
+          <next>
+            <block type="SaltarArriba">
+              <next>
+                <block type="MoverDerechaDibujando">
+                  <next>
+                    <block type="MoverDerechaDibujando">
+                      <next>
+                        <block type="MoverDerechaDibujando">
+                          <next>
+                            <block type="SaltarArriba">
+                              <next>
+                                <block type="SaltarArriba">
+                                  <next>
+                                    <block type="MoverArribaDibujando">
+                                      <next>
+                                        <block type="MoverDerechaDibujando"></block>
+                                      </next>
+                                    </block>
+                                  </next>
+                                </block>
+                              </next>
+                            </block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
 });
 
 actividadTest("3.1.4a", {

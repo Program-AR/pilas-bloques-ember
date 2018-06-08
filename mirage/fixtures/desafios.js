@@ -1895,10 +1895,10 @@ export default [
     nombre: '2.1.3b',
     titulo: 'Desafío 2.1.3b',
     imagen: 'Coty',
-    escena: `new EscenaCoty(-50,25,
+    escena: `new EscenaCoty(
       [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
       [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
-      {xCoty: -50, yCoty: 25}      
+      {xCoty: -50, yCoty: 25}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -1911,7 +1911,7 @@ export default [
     nombre: '2.1.3c',
     titulo: 'Desafío 2.1.3c',
     imagen: 'Coty',
-    escena: `new EscenaCoty(125,0,
+    escena: `new EscenaCoty(
       [],
       [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
       {xCoty: 125, yCoty: 0}
@@ -1971,13 +1971,9 @@ export default [
     id: 247,
     grupoId: 11,
     nombre: '2.1.3f',
-    titulo: 'Desafío 2.1.3f - FALTA',
+    titulo: 'Desafío 2.1.3f',
     imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [],
-      {}
-    )`,
+    escena: `new EscenaCotyCactus()`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
@@ -1987,13 +1983,9 @@ export default [
     id: 248,
     grupoId: 11,
     nombre: '2.1.3g',
-    titulo: 'Desafío 2.1.3g - FALTA',
+    titulo: 'Desafío 2.1.3g',
     imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [],
-      {}      
-    )`,
+    escena: `new EscenaCotyMate()`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,

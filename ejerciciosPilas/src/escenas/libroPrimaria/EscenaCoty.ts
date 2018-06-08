@@ -90,3 +90,64 @@ class EscenaCotySonrisa extends EscenaCoty {
     this.pizarraDibujoPreexistente.arco(0,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,this.anchoLinea);
   }
 }
+
+class EscenaCotyCactus extends EscenaCoty {
+  constructor() {
+    super(
+      [],
+      [[{ x: -50, y: 50 }, { x: -50, y: 0 }, { x: -50, y: -50 }], [{ x: 50, y: -50 }, { x: 50, y: 0 }, { x: 50, y: 50 }]],
+      { xCoty: 0, yCoty: 50 }
+    )
+  }
+
+  hacerDibujoPreexistente() {
+    super.hacerDibujoPreexistente();
+    // Cabeza grande
+    this.pizarraDibujoPreexistente.arco(0, 100, 50, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea);    
+    this.pizarraDibujoPreexistente.linea(-50, 50, -50, 100, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(50, 50, 50, 100, pilas.colores.azuloscuro, this.anchoLinea);
+
+    // Líneas cuerpo central
+    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(50, -150, 50, -200, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-50, -100, -50, -200, pilas.colores.azuloscuro, this.anchoLinea);
+
+    // Bracito 1
+    this.pizarraDibujoPreexistente.arco(-50, 0, 50, Math.PI * 1/2, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(-50, 0, 100, Math.PI * 1 / 2, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);
+  
+    // Cabeza chica 1
+    this.pizarraDibujoPreexistente.arco(-125, 25, 25, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea)
+    this.pizarraDibujoPreexistente.linea(-150, 0, -150, 25, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-100, 0, -100, 25, pilas.colores.azuloscuro, this.anchoLinea);
+
+    // Bracito 2
+    this.pizarraDibujoPreexistente.arco(50, -50, 50, 0, Math.PI * 1 / 2, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(50, -50, 100, 0, Math.PI * 1 / 2, pilas.colores.azuloscuro, this.anchoLinea);
+  
+    // Cabeza chica 2
+    this.pizarraDibujoPreexistente.arco(125, -25, 25, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea)
+    this.pizarraDibujoPreexistente.linea(150, -50, 150, -25, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(100, -50, 100, -25, pilas.colores.azuloscuro, this.anchoLinea);
+  }
+}
+
+class EscenaCotyMate extends EscenaCoty {
+  constructor() {
+    super(
+      [],
+      [[{ x: -100, y: -50 }, { x: -100, y: -100 }], [{ x: -100, y: 0 }, { x: -50, y: 0 }, { x: 0, y: 0 }, { x: 50, y: 0 }], [{ x: 50, y: 100 }, { x: 50, y: 150 }, { x: 100, y: 150 }]],
+      { xCoty: -100, yCoty: -100 }
+    )
+  }
+
+  hacerDibujoPreexistente() {
+    super.hacerDibujoPreexistente();
+    this.pizarraDibujoPreexistente.arco(-100, -25, 25, Math.PI / 2, - Math.PI / 2, pilas.colores.azuloscuro, this.anchoLinea);    
+    this.pizarraDibujoPreexistente.arco(50, -25, 25, - Math.PI / 2, Math.PI / 2, pilas.colores.azuloscuro, this.anchoLinea);    
+    this.pizarraDibujoPreexistente.arco(-25, -100, 75, 0, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);    
+    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-10, 0, 50, 100, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(10, 0, 100, 150, pilas.colores.azuloscuro, this.anchoLinea);
+  }
+}
