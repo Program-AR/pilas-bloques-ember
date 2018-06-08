@@ -937,7 +937,7 @@ export default Ember.Service.extend({
       argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
-    this.crearBloqueAccion('MoverLeyendoDerechaCorto', {
+    this.crearBloqueAccion('MoverLeyendoDerecha', {
       descripcion: 'Mover a la derecha',
       icono: 'icono.derecha.png',
       comportamiento: 'MoverLeyendoDerecha',
