@@ -96,7 +96,7 @@ class ActorCompuesto extends ActorAnimado {
 		return this.subactores[0].getAlto();
 	}
 
-	colisiona_con(objeto) : Boolean {
+	colisiona_con(objeto) : boolean {
 		return this.subactores[0].colisiona_con(objeto);
 	}
 }

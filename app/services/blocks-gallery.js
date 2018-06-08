@@ -1179,6 +1179,13 @@ export default Ember.Service.extend({
       esBool: true
     });
 
+    this.crearBloqueSensor('HayCharco', {
+      descripcion: 'Hay un charco',
+      icono: 'icono.charco.png',
+      funcionSensor: 'hayEnEscena("Charco")',
+      esBool: true
+    });
+
     let sensorHayVocal = this.get('blockly').createCustomBlock('hayVocalRMT', {
       "type": "block_type",
       "message0": "%1 ¿La letra actual es una %2 ?",

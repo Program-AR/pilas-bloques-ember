@@ -2,7 +2,7 @@
 
 class Coty extends ActorAnimado {
     constructor(x=0,y=0) {
-        super(x, y, {grilla: 'actor.coty.png', cantColumnas: 10, cantFilas: 11});
+        super(x, y, {grilla: 'actor.coty.png', cantColumnas: 10, cantFilas: 10});
         this.definirAnimacion("parado",
             new Cuadros(0).repetirVeces(16)
                 .concat([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])

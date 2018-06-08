@@ -29,11 +29,13 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
     }
 
    iniciar(){
-     super.iniciar();
-     if(this.puedeHaberCharco && Math.random()>=0.5){
-       this.colocarCharco();
-       this.automata.enviarAlFrente();
-     }
+      if (this.puedeHaberCharco && Math.random()>=0.5) {
+        this.crearCharco()
+      }
+      super.iniciar();
+      if (this.charco) { 
+        this.ubicarCharco();
+      }
    }
 
    hacerDibujoEsperado() {
@@ -46,16 +48,20 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
     this.dibujoPreexistente.dibujarEn(this.pizarraDibujoPreexistente, pilas.colores.azuloscuro, this.anchoLinea);
    }
 
-   colocarCharco(){
+   crearCharco() {
      this.charco = new Charco();
-     this.charco.escala = this.automata.escala;
+   }
+
+   ubicarCharco(){
+     this.charco.escala = this.automata.escala * 0.85;
 
      this.charco.setX(this.automata.getX() + (this.longitudSegmento / 2));
-     this.charco.setY(this.automata.getY());
+     this.charco.setY(this.automata.getY() - this.automata.alto * 0.04);
 
      [this.pizarraDibujoPreexistente,this.pizarraFantasma].forEach(
        pizarra => pizarra.setX(pizarra.getX() + this.longitudSegmento)
      );
+     this.dibujoEsperado = this.dibujoEsperado.trasladar(new PuntoDibujo(this.longitudSegmento, 0));
    }
 
    crearAutomata(){

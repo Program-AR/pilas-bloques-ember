@@ -75,7 +75,7 @@ class ActorAnimado extends Actor {
         this._imagen.avanzar();
     }
 
-    tocando(etiqueta) : Boolean {
+    tocando(etiqueta) : boolean {
       return pilas.obtener_actores_con_etiqueta(etiqueta).some(objeto => objeto.colisiona_con(this));
     }
 
@@ -83,20 +83,20 @@ class ActorAnimado extends Actor {
 			return pilas.obtener_actores_con_etiqueta(etiqueta).filter(objeto => objeto.colisiona_con(this))[0];
 		}
 
-    hayAbajo():Boolean{
+    hayAbajo():boolean{
       return this.cuadricula.hayAbajo(this.casillaActual());
     }
-    hayArriba():Boolean{
+    hayArriba():boolean{
       return this.cuadricula.hayArriba(this.casillaActual());
     }
-    hayDerecha():Boolean{
+    hayDerecha():boolean{
       return this.cuadricula.hayDerecha(this.casillaActual());
     }
-    hayIzquierda():Boolean{
+    hayIzquierda():boolean{
       return this.cuadricula.hayIzquierda(this.casillaActual());
     }
 
-    tieneEnLaCasillaDeArriba(etiqueta : String) : Boolean {
+    tieneEnLaCasillaDeArriba(etiqueta : string) : boolean {
         if (this.hayArriba()) {
             return this.casillaActual().casillaDeArriba().tieneActorConEtiqueta(etiqueta);
         }
@@ -104,7 +104,7 @@ class ActorAnimado extends Actor {
             throw new ActividadError("¡No hay nada para ver arriba!")
         }
     }
-    tieneEnLaCasillaDeAbajo(etiqueta: String): Boolean {
+    tieneEnLaCasillaDeAbajo(etiqueta: string): boolean {
         if (this.hayAbajo()) {
             return this.casillaActual().casillaDeAbajo().tieneActorConEtiqueta(etiqueta);
         }
@@ -112,7 +112,7 @@ class ActorAnimado extends Actor {
             throw new ActividadError("¡No hay nada para ver abajo!")
         }
     }
-    tieneEnLaCasillaASuIzquierda(etiqueta : String) : Boolean {
+    tieneEnLaCasillaASuIzquierda(etiqueta : string) : boolean {
         if (this.hayIzquierda()) {
             return this.casillaActual().casillaASuIzquierda().tieneActorConEtiqueta(etiqueta);
         }
@@ -120,29 +120,33 @@ class ActorAnimado extends Actor {
             throw new ActividadError("¡No hay nada para ver a la izquierda!")
         }
     }
-    tieneEnLaCasillaASuDerecha(etiqueta : String) : Boolean {
+    tieneEnLaCasillaASuDerecha(etiqueta : string) : boolean {
         if (this.hayDerecha()) {
             return this.casillaActual().casillaASuDerecha().tieneActorConEtiqueta(etiqueta);
         }
         else {
             throw new ActividadError("¡No hay nada para ver a la derecha!")
         }
-    }            
+    }
 
-    tocandoFlechaAbajo():Boolean {
+    hayEnEscena(etiqueta: string) : boolean {
+        return this.escena.contarActoresConEtiqueta(etiqueta) > 0;
+    }
+
+    tocandoFlechaAbajo():boolean {
       if (this.alFinalDelCamino()) throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
       return this.hayAbajo();
     }
-    tocandoFlechaDerecha():Boolean {
+    tocandoFlechaDerecha():boolean {
       if (this.alFinalDelCamino()) throw new ActividadError("No se puede preguntar más, ya estoy al final del camino");
       return this.hayDerecha();
     }
 
-    alFinalDelCamino():Boolean{
+    alFinalDelCamino():boolean{
         return ! this.casillaActual().hayAbajo() && ! this.casillaActual().hayDerecha();
     }
 
-    estoyUltimaFila() : Boolean {
+    estoyUltimaFila() : boolean {
       return this.cuadricula.cantFilas-1==this.casillaActual().nroFila;
     }
 
@@ -154,13 +158,13 @@ class ActorAnimado extends Actor {
         return pilas.imagenes.cargar_animacion(nombre, this.opciones.cantColumnas, this.opciones.cantFilas);
     }
 
-    tocandoFin() : Boolean {
+    tocandoFin() : boolean {
       return this.casillaActual().casillaASuDerecha()==undefined
     // return  pilas.escena_actual().cuadricula.tocandoFin(this)
     // cada cuadricula (multiple,esparsa,etc) implementa su tocandoFin de manera diferente
     }
 
-    tocandoInicio() : Boolean {
+    tocandoInicio() : boolean {
       return this.casillaActual().nroColumna==0;
     }
 
@@ -203,7 +207,7 @@ class ActorAnimado extends Actor {
         }
     }
 
-    avanzarAnimacion() : Boolean {
+    avanzarAnimacion() : boolean {
     	return !this._imagen.avanzar();
     }
 
@@ -211,7 +215,7 @@ class ActorAnimado extends Actor {
         return this._imagen.animacion_en_curso.cuadros.length;
     }
 
-    nombreAnimacionActual() : String {
+    nombreAnimacionActual() : string {
         return this._imagen.animacion_en_curso.nombre;
     }
 
@@ -286,7 +290,7 @@ class ActorAnimado extends Actor {
         this.comportamientos = [];
     }
     
-    colisiona_con(objeto) : Boolean {
+    colisiona_con(objeto) : boolean {
       if(this.cuadricula){
         return this.cuadricula.colisionan(this,objeto);
       }else{

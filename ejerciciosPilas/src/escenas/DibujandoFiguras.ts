@@ -31,12 +31,14 @@ abstract class DibujandoFiguras extends EscenaActividad {
       this.dibujoEsperado.dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
     }
 
-    estaResueltoElProblema(){
-      var dibujoRealizado: DibujoLineal = (this.automata as any).pizarra ?
+    dibujoRealizado(): DibujoLineal {
+      return (this.automata as any).pizarra ?
         DibujoLineal.desdePizarra((this.automata as any).pizarra, true) :
         new DibujoLineal([]);
-      var dibujoEsperado: DibujoLineal = DibujoLineal.desdePizarra(this.pizarraFantasma, true);
-      return dibujoRealizado.igualA(dibujoEsperado);
+    }
+
+    estaResueltoElProblema(){
+      return this.dibujoRealizado().igualA(this.dibujoEsperado);
     }
 
     pathFondo(): string {
