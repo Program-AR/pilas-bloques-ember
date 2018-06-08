@@ -1,11 +1,99 @@
 import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
-let nombre = "4.I1d";
+moduloActividad("Toto escritor");
 
-moduloActividad(nombre);
-
-actividadTest(nombre, {
+actividadTest("4.I1a", {
+  descripcionAdicional: '4.I1a: Se puede resolver',
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+      <statement name=\"program\">
+        <block type=\"repetir\" id=\"W/=#q%TdW3T9g|?6uW?U\">
+          <value name=\"count\">
+            <block type=\"math_number\" id=\"H$bkq5pKO5:\`tv}7!DEx\">
+              <field name=\"NUM\">7</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <block type=\"MoverACasillaDerecha\" id=\"6o$rpc;m$\`T.hXx?v:JA\">
+              <next>
+                <block type=\"EscribirLetraActualEnOtraCuadricula\" id=\"?z6L8/qSbr{QpJk/$VYd\"></block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+});
+
+actividadTest("4.I1b", {
+  descripcionAdicional: '4.I1b: Se puede resolver',
+  solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+      <statement name=\"program\">
+        <block type=\"repetir\" id=\"A|*9%tGgGiIX%!v/PT^7\">
+          <value name=\"count\">
+            <block type=\"math_number\" id=\"A)Np+o{I=:uU[AVqmbte\">
+              <field name=\"NUM\">7</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <block type=\"MoverACasillaDerecha\" id=\"^LGb}9Z#IsyCg;haF05n\">
+              <next>
+                <block type=\"EscribirTextoDadoEnOtraCuadricula\" id=\"qkqTBU1ZmkhL1zbYF\`H\`\">
+                  <field name=\"texto\">x</field>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+});
+
+actividadTest("4.I1c", {
+  descripcionAdicional: '4.I1c: Se puede resolver',
+  solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+      <statement name=\"program\">
+        <block type=\"repetir\" id=\"=\`!2uFmT)%OBNkt,W=h1\">
+          <value name=\"count\">
+            <block type=\"math_number\" id=\")t=\`~,E:an(Tus#%m_GZ\">
+              <field name=\"NUM\">7</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <block type=\"MoverACasillaDerecha\" id=\"6^-5XndAQRkx(TLB%YKl\">
+              <next>
+                <block type=\"EscribirLetraActualEnOtraCuadricula\" id=\":!bE-zPnu1(c=6O6*Ays\">
+                  <next>
+                    <block type=\"si\" id=\"{oFR|aUP_ZGas]TL0#O-\">
+                      <value name=\"condition\">
+                        <block type=\"hayVocalRMT\" id=\"(gJIHo6/pol2SElr(hWU\">
+                          <field name=\"letra\">m</field>
+                        </block>
+                      </value>
+                      <statement name=\"block\">
+                        <block type=\"EscribirTextoDadoEnOtraCuadricula\" id=\"!69:l%t)\`lAkWGqoV3/L\">
+                          <field name=\"texto\">ICH</field>
+                        </block>
+                      </statement>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+});
+
+actividadTest("4.I1d", {
+  descripcionAdicional: '4.I1d: Se puede resolver',
+  solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
       <statement name=\"program\">
         <block type=\"repetir\" id=\"=!2uFmT)%OBNkt,W=h1\">
