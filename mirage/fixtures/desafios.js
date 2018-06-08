@@ -2147,10 +2147,10 @@ export default [
     consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true,
     bloques: [
-      'MoverArribaDibujandoCorto',
-      'MoverAbajoDibujandoCorto',
-      'MoverDerechaDibujandoCorto',
-      'MoverIzquierdaDibujandoCorto',
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
       'SaltarAbajoCorto',
       'SaltarArribaCorto',
       'SaltarDerechaCorto',
@@ -2168,9 +2168,9 @@ export default [
               </block>
             </value>
             <statement name="block">
-              <block type="MoverArribaDibujandoCorto">
+              <block type="MoverArribaDibujando">
                 <next>
-                  <block type="MoverDerechaDibujandoCorto"></block>
+                  <block type="MoverDerechaDibujando"></block>
                 </next>
               </block>
             </statement>
@@ -2182,7 +2182,7 @@ export default [
                   </block>
                 </value>
                 <statement name="block">
-                  <block type="MoverDerechaDibujandoCorto"></block>
+                  <block type="MoverDerechaDibujando"></block>
                 </statement>
                 <next>
                   <block type="repetir">
@@ -2192,7 +2192,7 @@ export default [
                       </block>
                     </value>
                     <statement name="block">
-                      <block type="MoverAbajoDibujandoCorto"></block>
+                      <block type="MoverAbajoDibujando"></block>
                     </statement>
                   </block>
                 </next>
@@ -2211,8 +2211,8 @@ export default [
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
-      [{x:-50,y:50},{x:0,y:50},{x:50,y:50},{x:50,y:0},{x:50,y:-50},{x:0,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:-50,y:50}],
-      {xCoty: -50, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 150}
+      [{x:-120,y:50},{x:20,y:50},{x:20,y:-90},{x:-120,y:-90},{x:-120,y:50}],
+      {xCoty: -120, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 140}
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',

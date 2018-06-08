@@ -1,3 +1,6 @@
+type PuntoSimple = { x: number, y: number };
+type SegmentoSimple = { inicio: PuntoSimple, fin: PuntoSimple };
+
 class Direct {
 	versor;
 	constructor(origin, destiny = undefined){

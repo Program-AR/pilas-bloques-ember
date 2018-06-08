@@ -25,13 +25,14 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
       this.xCoty = argumentos.xCoty || 0;
       this.yCoty = argumentos.yCoty || 0;
       this.longitudSegmento = argumentos.longitudSegmento || 50;
-      this.puedeHaberCharco = Boolean(this.puedeHaberCharco);
+      this.puedeHaberCharco = Boolean(argumentos.puedeHaberCharco);
     }
 
    iniciar(){
      super.iniciar();
      if(this.puedeHaberCharco && Math.random()>=0.5){
        this.colocarCharco();
+       this.automata.enviarAlFrente();
      }
    }
 
@@ -49,15 +50,12 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
      this.charco = new Charco();
      this.charco.escala = this.automata.escala;
 
-     // 50 pixeles es lo que salta el salto a la derecha
-     const longSalto = 50;
-
-     this.charco.setX(this.automata.getX() + (longSalto / 2));
+     this.charco.setX(this.automata.getX() + (this.longitudSegmento / 2));
      this.charco.setY(this.automata.getY());
 
-    //  [this.pizarraDibujoPreexistente,this.pizarraFantasma].forEach(
-    //    pizarra => pizarra.setX(pizarra.getX() + longSalto)
-    //  );
+     [this.pizarraDibujoPreexistente,this.pizarraFantasma].forEach(
+       pizarra => pizarra.setX(pizarra.getX() + this.longitudSegmento)
+     );
    }
 
    crearAutomata(){

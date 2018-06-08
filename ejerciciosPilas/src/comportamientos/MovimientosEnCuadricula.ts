@@ -29,6 +29,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
         this.argumentos.direccion = new Direct(this.vectorDireccion().x, this.vectorDireccion().y);
         this.argumentos.distancia = this.distancia();
+        this.argumentos.distanciaConObstaculo = this.distanciaConObstaculo();
     }
 
     casillaActual() : Casilla {
@@ -45,12 +46,8 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     }
 
     distancia() : number {
-        // Template Method. Devuelve la distancia vertical ú horizontal según corresponda
-        return this.direccionCasilla.distancia(this) - (
-            this.hayObstaculo(this.casillaDestino) // La idea es que si hay un obstáculo no logre llegar al final.
-                ? this.direccionCasilla.distanciaUnaCasilla(this) * 0.3
-                : 0
-            );
+        // Template Method. Devuelve la distancia vertical u horizontal según corresponda
+        return this.direccionCasilla.distancia(this);
     }
 
     distanciaHorizontal() : number {
@@ -61,8 +58,13 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
     }
 
-    hayObstaculo(casilla : Casilla) : boolean {
-        return casilla.tieneActorConEtiqueta('Obstaculo');
+    hayObstaculo() : boolean {
+        return this.casillaDestino.tieneActorConEtiqueta('Obstaculo');
+    }
+
+    distanciaConObstaculo(): number {
+        // Si hay obstáculo solo recorre el 30% del camino.
+        return this.distancia() - this.direccionCasilla.distanciaUnaCasilla(this) * 0.3;
     }
 
 
@@ -71,11 +73,6 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         this.verificacionesPre.push(new Verificacion(
             () => this.verificarDireccion(),
             "No puedo ir para " + this.textoAMostrar()
-        ));
-        this.verificacionesPost.push(new Verificacion(
-            () => ! this.hayObstaculo(this.casillaDestino),
-            "¡Hay un obstáculo!",
-            "chocado"
         ));
     }
 
@@ -95,7 +92,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
 
 
     nombreAnimacion() : string {
-        return this.hayObstaculo(this.casillaDestino)
+        return this.hayObstaculo()
             ? "correrChocando"
             : super.nombreAnimacion();        
     }

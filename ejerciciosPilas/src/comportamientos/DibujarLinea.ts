@@ -5,6 +5,8 @@
 // Esto hace que no haya que hacer cálculos ni aprender qué significa Shape.regX ó cómo lo usa pilas.
 // Llámenme cobarde, sí. Perdón.
 class DibujarLinea extends MovimientoAnimado {
+	_hayObstaculo: boolean;
+
 	iniciar(receptor){
 		super.iniciar(receptor);
 		if (!receptor.pizarra) receptor.pizarra = new pilas.actores.Pizarra();
@@ -13,13 +15,16 @@ class DibujarLinea extends MovimientoAnimado {
 	darUnPaso(){
 		var origen = { x: this.receptor.x, y: this.receptor.y };
 		super.darUnPaso();
-		this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+		if (!this.hayObstaculo()) {
+			this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+		}
 	}
 
 	preAnimacion() {
 		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
+		this.argumentos.distanciaConObstaculo = this.argumentos.distancia / 2;
 		super.preAnimacion();
-		if (this.argumentos.dibujarPuntos) {
+		if (this.argumentos.dibujarPuntos && !this.hayObstaculo()) {
 			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
 		}
 	}
@@ -29,6 +34,26 @@ class DibujarLinea extends MovimientoAnimado {
 		if (this.argumentos.dibujarPuntos) {
 			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
 		}
+	}
+
+	hayObstaculo(): boolean {
+		if (this._hayObstaculo === undefined) {
+			this._hayObstaculo = this.receptor.escena.obtenerActoresConEtiqueta("Charco").some(charco =>
+				charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y)
+			);
+		}
+		return this._hayObstaculo; 
+	}
+
+	/**
+	 * Punto medio entre la posición actual del actor que realiza el comportamiento
+	 * y el destino del movimiento.
+	 */
+	puntoMedio(): PuntoSimple {
+		return {
+			x: (this.destino().x + this.receptor.x) / 2,
+			y: (this.destino().y + this.receptor.y) / 2
+		};
 	}
 }
 

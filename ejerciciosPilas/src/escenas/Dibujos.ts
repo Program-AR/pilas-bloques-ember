@@ -14,8 +14,6 @@
  *    [[{x:-5,y:0},{x:0,y:0}],[{x:5,y:0},{x:10,y:0}]]
  */
 
-type PuntoSimple = { x: number, y: number };
-type SegmentoSimple = { inicio: PuntoSimple, fin: PuntoSimple };
 
 /**
  * El tipo de un punto (tiene x e y, es una coordenada)
