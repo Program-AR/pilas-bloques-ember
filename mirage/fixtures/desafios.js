@@ -2077,7 +2077,7 @@ export default [
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
-      [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]]
+      [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
       {xCoty: -100, yCoty: -100}      
     )`,
     enunciado: 'COMPLETAR 1',
@@ -2133,7 +2133,7 @@ export default [
     escena: `new EscenaCoty(
       [],
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
-      {xCoty: -120, yCoty: -60}      
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
@@ -2143,10 +2143,10 @@ export default [
       'MoverAbajoDibujando',
       'MoverDerechaDibujando',
       'MoverIzquierdaDibujando',
-      'SaltarAbajoCorto',
-      'SaltarArribaCorto',
-      'SaltarDerechaCorto',
-      'SaltarIzquierdaCorto',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
       'repetir'
     ],
     debugging: true,
@@ -2199,7 +2199,7 @@ export default [
     id: 254,
     grupoId: 13,
     nombre: '4.1.3b',
-    titulo: 'Desafío 4.1.3b - FALTA',
+    titulo: 'Desafío 4.1.3b',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
