@@ -19,6 +19,7 @@ abstract class Letra extends ActorAnimado {
             cuadrosParado: [Letra.indiceDeCaracter(Letra.primerLetraDeString(unString))]
         });
         this._caracter = Letra.primerLetraDeString(unString);
+        this.agregarEtiqueta("Letra");
     }
 
     /**

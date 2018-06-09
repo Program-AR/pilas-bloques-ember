@@ -24,11 +24,11 @@ class MovimientoConLectura extends MovimientoEnCuadricula {
     }
 
     hayLetra(casilla) {
-        return casilla.tieneActorConEtiqueta('LetraTablero');
+        return casilla.tieneActorConEtiqueta('Letra');
     }
 
     caracterEnCasilla(casilla) {
-        return casilla.actoresConEtiqueta('LetraTablero')[0].caracter();
+        return casilla.actoresConEtiqueta('Letra')[0].caracter();
     }
 }
 
