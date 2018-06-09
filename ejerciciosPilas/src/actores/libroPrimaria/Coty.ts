@@ -2,7 +2,7 @@
 
 class Coty extends ActorAnimado {
     constructor(x=0,y=0) {
-        super(x, y, {grilla: 'actor.coty.png', cantColumnas: 10, cantFilas: 11});
+        super(x, y, {grilla: 'actor.coty.png', cantColumnas: 10, cantFilas: 10});
         this.definirAnimacion("parado",
             new Cuadros(0).repetirVeces(16)
                 .concat([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19])
@@ -16,7 +16,7 @@ class Coty extends ActorAnimado {
             12, true);
         this.definirAnimacion("correrDibujando", [50,51,52,53,54,55,56,57,58,59,60,61,62], 12);
         this.definirAnimacion("saltar", [63,64,65,66,67,68,69,69,69,70,71,72,73,74,75,76,77], 14);
-        this.definirAnimacion("ahogarse", [78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], 12);
+        this.definirAnimacion("obstaculo", [78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100], 12);
         this.definirAnimacion("rotar", [0], 1);
     }
 }

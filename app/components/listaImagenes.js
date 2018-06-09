@@ -5,6 +5,7 @@ export default [
     "PlacaContarNegra.png",
     "actor.BoyScout.png",
     "actor.Fogata.png",
+    "actor.charco.png",
     "actor.churrasco.png",
     "actor.coty.png",
     "actor.duba.png",

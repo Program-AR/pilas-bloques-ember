@@ -525,9 +525,7 @@ export default Ember.Component.extend({
 
 Ember.onerror = function (e) {
   console.error(
-    "Excepción en " + e.fileName + ":" + e.lineNumber + ":" + e.columnNumber + "\n" +
-    "\n" +
-    e.message + "\n" +
+    "Exception: " + e.message + "\n" +
     "\n" +
     "Stack trace:\n" + e.stack
   );

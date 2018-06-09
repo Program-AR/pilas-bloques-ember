@@ -531,109 +531,6 @@ export default [
     deshabilitado: true,
   },*/
 
-  {
-    id: 151,
-    grupoId: 99,
-    nombre: '2.1.3a',
-    titulo: 'Desafío 2.1.3a',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(0,100,
-      [{x:100,y:95},{x:100,y:90},{x:100,y:85},{x:100,y:80},{x:100,y:75},{x:100,y:70},{x:100,y:65},{x:100,y:60},{x:100,y:55},{x:100,y:50},{x:100,y:45},{x:100,y:40},{x:100,y:35},{x:100,y:30},{x:100,y:25},{x:100,y:20},{x:100,y:15},{x:100,y:10},{x:100,y:5},{x:100,y:0},{x:100,y:-5},{x:100,y:-10},{x:100,y:-15},{x:100,y:-20},{x:100,y:-25},{x:100,y:-30},{x:100,y:-35},{x:100,y:-40},{x:100,y:-45},{x:100,y:-50},{x:100,y:-55},{x:100,y:-60},{x:100,y:-65},{x:100,y:-70},{x:100,y:-75},{x:100,y:-80},{x:100,y:-85},{x:100,y:-90},{x:100,y:-95},{x:100,y:-100},{x:100,y:-105},{x:100,y:-110},{x:100,y:-115},{x:100,y:-120},{x:100,y:-125},{x:100,y:-130},{x:100,y:-135},{x:100,y:-140},{x:100,y:-145},{x:100,y:-150},{x:95,y:-150},{x:90,y:-150},{x:85,y:-150},{x:80,y:-150},{x:75,y:-150},{x:70,y:-150},{x:65,y:-150},{x:60,y:-150},{x:55,y:-150},{x:50,y:-150},{x:45,y:-150},{x:40,y:-150},{x:35,y:-150},{x:30,y:-150},{x:25,y:-150},{x:20,y:-150},{x:15,y:-150},{x:10,y:-150},{x:5,y:-150},{x:0,y:-150},{x:-5,y:-150},{x:-10,y:-150},{x:-15,y:-150},{x:-20,y:-150},{x:-25,y:-150},{x:-30,y:-150},{x:-35,y:-150},{x:-40,y:-150},{x:-45,y:-150},{x:-50,y:-150},{x:-50,y:-145},{x:-50,y:-140},{x:-50,y:-135},{x:-50,y:-130},{x:-50,y:-125},{x:-50,y:-120},{x:-50,y:-115},{x:-50,y:-110},{x:-50,y:-105},{x:-50,y:-100},{x:-50,y:-95},{x:-50,y:-90},{x:-50,y:-85},{x:-50,y:-80},{x:-50,y:-75},{x:-50,y:-70},{x:-50,y:-65},{x:-50,y:-60},{x:-50,y:-55},{x:-50,y:-50},{x:-45,y:-50},{x:-40,y:-50},{x:-35,y:-50},{x:-30,y:-50},{x:-25,y:-50},{x:-20,y:-50},{x:-15,y:-50},{x:-10,y:-50},{x:-5,y:-50},{x:0,y:-50},{x:0,y:-55},{x:0,y:-60},{x:0,y:-65},{x:0,y:-70},{x:0,y:-75},{x:0,y:-80},{x:0,y:-85},{x:0,y:-90},{x:0,y:-95},{x:0,y:-100},{x:0,y:-105},{x:0,y:-110},{x:0,y:-115},{x:0,y:-120},{x:0,y:-125},{x:0,y:-130},{x:0,y:-135},{x:0,y:-140},{x:0,y:-145},{x:0,y:-150},{x:-5,y:-150},{x:-10,y:-150},{x:-15,y:-150},{x:-20,y:-150},{x:-25,y:-150},{x:-30,y:-150},{x:-35,y:-150},{x:-40,y:-150},{x:-45,y:-150},{x:-50,y:-150},{x:-55,y:-150},{x:-60,y:-150},{x:-65,y:-150},{x:-70,y:-150},{x:-75,y:-150},{x:-80,y:-150},{x:-85,y:-150},{x:-90,y:-150},{x:-95,y:-150},{x:-100,y:-150},{x:-105,y:-150},{x:-110,y:-150},{x:-115,y:-150},{x:-120,y:-150},{x:-125,y:-150},{x:-130,y:-150},{x:-135,y:-150},{x:-140,y:-150},{x:-145,y:-150},{x:-150,y:-150},{x:-150,y:-145},{x:-150,y:-140},{x:-150,y:-135},{x:-150,y:-130},{x:-150,y:-125},{x:-150,y:-120},{x:-150,y:-115},{x:-150,y:-110},{x:-150,y:-105},{x:-150,y:-100},{x:-150,y:-95},{x:-150,y:-90},{x:-150,y:-85},{x:-150,y:-80},{x:-150,y:-75},{x:-150,y:-70},{x:-150,y:-65},{x:-150,y:-60},{x:-150,y:-55},{x:-150,y:-50},{x:-150,y:-45},{x:-150,y:-40},{x:-150,y:-35},{x:-150,y:-30},{x:-150,y:-25},{x:-150,y:-20},{x:-150,y:-15},{x:-150,y:-10},{x:-150,y:-5},{x:-150,y:0},{x:-150,y:5},{x:-150,y:10},{x:-150,y:15},{x:-150,y:20},{x:-150,y:25},{x:-150,y:30},{x:-150,y:35},{x:-150,y:40},{x:-150,y:45},{x:-150,y:50},{x:-150,y:55},{x:-150,y:60},{x:-150,y:65},{x:-150,y:70},{x:-150,y:75},{x:-150,y:80},{x:-150,y:85},{x:-150,y:90},{x:-150,y:95},{x:-150,y:100},{x:-150,y:105},{x:-150,y:110},{x:-150,y:115},{x:-150,y:120},{x:-150,y:125},{x:-150,y:130},{x:-150,y:135},{x:-150,y:140},{x:-150,y:145},{x:-150,y:150},{x:-145,y:150},{x:-140,y:150},{x:-135,y:150},{x:-130,y:150},{x:-125,y:150},{x:-120,y:150},{x:-115,y:150},{x:-110,y:150},{x:-105,y:150},{x:-100,y:150},{x:-100,y:145},{x:-100,y:140},{x:-100,y:135},{x:-100,y:130},{x:-100,y:125},{x:-100,y:120},{x:-100,y:115},{x:-100,y:110},{x:-100,y:105},{x:-100,y:100},{x:-95,y:100},{x:-90,y:100},{x:-85,y:100},{x:-80,y:100},{x:-75,y:100},{x:-70,y:100},{x:-65,y:100},{x:-60,y:100},{x:-55,y:100},{x:-50,y:100},{x:-50,y:105},{x:-50,y:110},{x:-50,y:115},{x:-50,y:120},{x:-50,y:125},{x:-50,y:130},{x:-50,y:135},{x:-50,y:140},{x:-50,y:145},{x:-50,y:150},{x:-45,y:150},{x:-40,y:150},{x:-35,y:150},{x:-30,y:150},{x:-25,y:150},{x:-20,y:150},{x:-15,y:150},{x:-10,y:150},{x:-5,y:150},{x:0,y:150},{x:0,y:145},{x:0,y:140},{x:0,y:135},{x:0,y:130},{x:0,y:125},{x:0,y:120},{x:0,y:115},{x:0,y:110},{x:0,y:105},{x:0,y:100}],
-      [{x:5,y:100},{x:10,y:100},{x:15,y:100},{x:20,y:100},{x:25,y:100},{x:30,y:100},{x:35,y:100},{x:40,y:100},{x:45,y:100},{x:50,y:100},{x:50,y:105},{x:50,y:110},{x:50,y:115},{x:50,y:120},{x:50,y:125},{x:50,y:130},{x:50,y:135},{x:50,y:140},{x:50,y:145},{x:50,y:150},{x:55,y:150},{x:60,y:150},{x:65,y:150},{x:70,y:150},{x:75,y:150},{x:80,y:150},{x:85,y:150},{x:90,y:150},{x:95,y:150},{x:100,y:150},{x:100,y:145},{x:100,y:140},{x:100,y:135},{x:100,y:130},{x:100,y:125},{x:100,y:120},{x:100,y:115},{x:100,y:110},{x:100,y:105},{x:100,y:100}]
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
-  },
-  {
-    id: 152,
-    grupoId: 99,
-    nombre: '2.1.3b',
-    titulo: 'Desafío 2.1.3b',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(-50,50,
-      [{x:-50,y:50},{x:0,y:125},{x:50,y:50}],
-      [{x:-50,y:50},{x:-45,y:50},{x:-40,y:50},{x:-35,y:50},{x:-30,y:50},{x:-25,y:50},{x:-20,y:50},{x:-15,y:50},{x:-10,y:50},{x:-5,y:50},{x:0,y:50},{x:5,y:50},{x:10,y:50},{x:15,y:50},{x:20,y:50},{x:25,y:50},{x:30,y:50},{x:35,y:50},{x:40,y:50},{x:45,y:50},{x:50,y:50},{x:50,y:45},{x:50,y:40},{x:50,y:35},{x:50,y:30},{x:50,y:25},{x:50,y:20},{x:50,y:15},{x:50,y:10},{x:50,y:5},{x:50,y:0},{x:50,y:-5},{x:50,y:-10},{x:50,y:-15},{x:50,y:-20},{x:50,y:-25},{x:50,y:-30},{x:50,y:-35},{x:50,y:-40},{x:50,y:-45},{x:50,y:-50},{x:45,y:-50},{x:40,y:-50},{x:35,y:-50},{x:30,y:-50},{x:25,y:-50},{x:20,y:-50},{x:15,y:-50},{x:10,y:-50},{x:5,y:-50},{x:0,y:-50},{x:-5,y:-50},{x:-10,y:-50},{x:-15,y:-50},{x:-20,y:-50},{x:-25,y:-50},{x:-30,y:-50},{x:-35,y:-50},{x:-40,y:-50},{x:-45,y:-50},{x:-50,y:-50},{x:-50,y:-45},{x:-50,y:-40},{x:-50,y:-35},{x:-50,y:-30},{x:-50,y:-25},{x:-50,y:-20},{x:-50,y:-15},{x:-50,y:-10},{x:-50,y:-5},{x:-50,y:0},{x:-50,y:5},{x:-50,y:10},{x:-50,y:15},{x:-50,y:20},{x:-50,y:25},{x:-50,y:30},{x:-50,y:35},{x:-50,y:40},{x:-50,y:45},{x:-50,y:50}]
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
-  },
-  {
-    id: 153,
-    grupoId: 99,
-    nombre: '2.1.3c',
-    titulo: 'Desafío 2.1.3c',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(-100,0,
-      [],
-      [{x:-45,y:50},{x:-40,y:50},{x:-35,y:50},{x:-30,y:50},{x:-25,y:50},{x:-20,y:50},{x:-15,y:50},{x:-10,y:50},{x:-5,y:50},{x:0,y:50},{x:55,y:50},{x:60,y:50},{x:65,y:50},{x:70,y:50},{x:75,y:50},{x:80,y:50},{x:85,y:50},{x:90,y:50},{x:95,y:50},{x:100,y:50},{x:155,y:50},{x:160,y:50},{x:165,y:50},{x:170,y:50},{x:175,y:50},{x:180,y:50},{x:185,y:50},{x:190,y:50},{x:195,y:50},{x:200,y:50}]
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
-  },
-  {
-    id: 154,
-    grupoId: 99,
-    nombre: '2.1.3d',
-    titulo: 'Desafío 2.1.3d',
-    imagen: 'Coty',
-    escena: `new EscenaCotySonrisa()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
-  },
-  {
-    id: 159,
-    grupoId: 99,
-    nombre: '3.2.1b',
-    titulo: 'Desafío 3.2.1b',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(-50,0,
-      [ [{x:-55,y:50},{x:-60,y:50},{x:-65,y:50},{x:-70,y:50},{x:-75,y:50},{x:-80,y:50},{x:-85,y:50},{x:-90,y:50},{x:-95,y:50},{x:-100,y:50},{x:-105,y:50},{x:-110,y:50},{x:-115,y:50},{x:-120,y:50},{x:-125,y:50},{x:-130,y:50},{x:-135,y:50},{x:-140,y:50},{x:-145,y:50},{x:-150,y:50},{x:-150,y:45},{x:-150,y:40},{x:-150,y:35},{x:-150,y:30},{x:-150,y:25},{x:-150,y:20},{x:-150,y:15},{x:-150,y:10},{x:-150,y:5},{x:-150,y:0},{x:-145,y:0},{x:-140,y:0},{x:-135,y:0},{x:-130,y:0},{x:-125,y:0},{x:-120,y:0},{x:-115,y:0},{x:-110,y:0},{x:-105,y:0},{x:-100,y:0},{x:-95,y:0},{x:-90,y:0},{x:-85,y:0},{x:-80,y:0},{x:-75,y:0},{x:-70,y:0},{x:-65,y:0},{x:-60,y:0},{x:-55,y:0},{x:-50,y:0},{x:-102,y:0},{x:-105,y:0},{x:-107,y:0},{x:-110,y:0},{x:-112,y:0},{x:-115,y:0},{x:-117,y:0},{x:-120,y:0},{x:-122,y:0},{x:-125,y:0},{x:-120,y:0},{x:-115,y:0},{x:-110,y:0},{x:-105,y:0},{x:-100,y:0},{x:-95,y:0},{x:-90,y:0},{x:-85,y:0},{x:-80,y:0},{x:-75,y:0},{x:-75,y:-5},{x:-75,y:-10},{x:-75,y:-15},{x:-75,y:-20},{x:-75,y:-25},{x:-75,y:-30},{x:-75,y:-35},{x:-75,y:-40},{x:-75,y:-45},{x:-75,y:-50},{x:-75,y:-55},{x:-75,y:-60},{x:-75,y:-65},{x:-75,y:-70},{x:-75,y:-75},{x:-75,y:-80},{x:-75,y:-85},{x:-75,y:-90},{x:-75,y:-95},{x:-75,y:-100},{x:-80,y:-100},{x:-85,y:-100},{x:-90,y:-100},{x:-95,y:-100},{x:-100,y:-100},{x:-105,y:-100},{x:-110,y:-100},{x:-115,y:-100},{x:-120,y:-100},{x:-125,y:-100},{x:-125,y:-95},{x:-125,y:-90},{x:-125,y:-85},{x:-125,y:-80},{x:-125,y:-75},{x:-125,y:-70},{x:-125,y:-65},{x:-125,y:-60},{x:-125,y:-55},{x:-125,y:-50},{x:-125,y:-45},{x:-125,y:-40},{x:-125,y:-35},{x:-125,y:-30},{x:-125,y:-25},{x:-125,y:-20},{x:-125,y:-15},{x:-125,y:-10},{x:-125,y:-5},{x:-125,y:0}],
-        [{x:-25,y:0},{x:-20,y:0},{x:-15,y:0},{x:-10,y:0},{x:-5,y:0},{x:0,y:0},{x:5,y:0},{x:10,y:0},{x:15,y:0},{x:20,y:0},{x:25,y:0},{x:25,y:-5},{x:25,y:-10},{x:25,y:-15},{x:25,y:-20},{x:25,y:-25},{x:25,y:-30},{x:25,y:-35},{x:25,y:-40},{x:25,y:-45},{x:25,y:-50},{x:25,y:-55},{x:25,y:-60},{x:25,y:-65},{x:25,y:-70},{x:25,y:-75},{x:25,y:-80},{x:25,y:-85},{x:25,y:-90},{x:25,y:-95},{x:25,y:-100},{x:20,y:-100},{x:15,y:-100},{x:10,y:-100},{x:5,y:-100},{x:0,y:-100},{x:-5,y:-100},{x:-10,y:-100},{x:-15,y:-100},{x:-20,y:-100},{x:-25,y:-100},{x:-25,y:-95},{x:-25,y:-90},{x:-25,y:-85},{x:-25,y:-80},{x:-25,y:-75},{x:-25,y:-70},{x:-25,y:-65},{x:-25,y:-60},{x:-25,y:-55},{x:-25,y:-50},{x:-25,y:-45},{x:-25,y:-40},{x:-25,y:-35},{x:-25,y:-30},{x:-25,y:-25},{x:-25,y:-20},{x:-25,y:-15},{x:-25,y:-10},{x:-25,y:-5},{x:-25,y:0}],
-        [{x:80,y:0},{x:85,y:0},{x:90,y:0},{x:95,y:0},{x:100,y:0},{x:105,y:0},{x:110,y:0},{x:115,y:0},{x:120,y:0},{x:125,y:0},{x:125,y:-5},{x:125,y:-10},{x:125,y:-15},{x:125,y:-20},{x:125,y:-25},{x:125,y:-30},{x:125,y:-35},{x:125,y:-40},{x:125,y:-45},{x:125,y:-50},{x:125,y:-55},{x:125,y:-60},{x:125,y:-65},{x:125,y:-70},{x:125,y:-75},{x:125,y:-80},{x:125,y:-85},{x:125,y:-90},{x:125,y:-95},{x:125,y:-100},{x:120,y:-100},{x:115,y:-100},{x:110,y:-100},{x:105,y:-100},{x:100,y:-100},{x:95,y:-100},{x:90,y:-100},{x:85,y:-100},{x:80,y:-100},{x:75,y:-100},{x:75,y:-95},{x:75,y:-90},{x:75,y:-85},{x:75,y:-80},{x:75,y:-75},{x:75,y:-70},{x:75,y:-65},{x:75,y:-60},{x:75,y:-55},{x:75,y:-50},{x:75,y:-45},{x:75,y:-40},{x:75,y:-35},{x:75,y:-30},{x:75,y:-25},{x:75,y:-20},{x:75,y:-15},{x:75,y:-10},{x:75,y:-5},{x:75,y:0},{x:73,y:0},{x:70,y:0},{x:68,y:0},{x:65,y:0},{x:63,y:0},{x:60,y:0},{x:58,y:0},{x:55,y:0},{x:53,y:0},{x:50,y:0},{x:55,y:0},{x:60,y:0},{x:65,y:0},{x:70,y:0},{x:75,y:0},{x:80,y:0},{x:85,y:0},{x:90,y:0},{x:95,y:0},{x:100,y:0},{x:105,y:0},{x:110,y:0},{x:115,y:0},{x:120,y:0},{x:125,y:0},{x:130,y:0},{x:135,y:0},{x:140,y:0},{x:145,y:0},{x:150,y:0},{x:150,y:5},{x:150,y:10},{x:150,y:15},{x:150,y:20},{x:150,y:25},{x:150,y:30},{x:150,y:35},{x:150,y:40},{x:150,y:45},{x:150,y:50},{x:145,y:50},{x:140,y:50},{x:135,y:50},{x:130,y:50},{x:125,y:50},{x:120,y:50},{x:115,y:50},{x:110,y:50},{x:105,y:50},{x:100,y:50},{x:95,y:50},{x:90,y:50},{x:85,y:50},{x:80,y:50},{x:75,y:50},{x:70,y:50},{x:65,y:50},{x:60,y:50},{x:55,y:50},{x:50,y:50}]
-      ],
-      [{x:-45,y:0},{x:-40,y:0},{x:-35,y:0},{x:-30,y:0},{x:-25,y:0},{x:-20,y:0},{x:-15,y:0},{x:-10,y:0},{x:-5,y:0},{x:0,y:0},{x:5,y:0},{x:10,y:0},{x:15,y:0},{x:20,y:0},{x:25,y:0},{x:30,y:0},{x:35,y:0},{x:40,y:0},{x:45,y:0},{x:50,y:0},{x:50,y:5},{x:50,y:10},{x:50,y:15},{x:50,y:20},{x:50,y:25},{x:50,y:30},{x:50,y:35},{x:50,y:40},{x:50,y:45},{x:50,y:50},{x:45,y:50},{x:40,y:50},{x:35,y:50},{x:30,y:50},{x:25,y:50},{x:20,y:50},{x:15,y:50},{x:10,y:50},{x:5,y:50},{x:0,y:50},{x:-5,y:50},{x:-10,y:50},{x:-15,y:50},{x:-20,y:50},{x:-25,y:50},{x:-30,y:50},{x:-35,y:50},{x:-40,y:50},{x:-45,y:50},{x:-50,y:50},{x:-50,y:45},{x:-50,y:40},{x:-50,y:35},{x:-50,y:30},{x:-50,y:25},{x:-50,y:20},{x:-50,y:15},{x:-50,y:10},{x:-50,y:5},{x:-50,y:0}]
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando']
-  },
-  {
-    id: 160,
-    grupoId: 99,
-    nombre: '3.2.2a',
-    titulo: 'Desafío 3.2.2a',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(0,100,
-      [],
-      []
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
-  },
-  {
-    id: 156,
-    grupoId: 99,
-    nombre: 'CotyDibujoLibre',
-    titulo: '¡Coty dibuja libre!',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(-50,50,[],[])`,
-    enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
-    consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
-    debeFelicitarse: true,
-    bloques: ['MoverArribaDibujando','MoverAbajoDibujando','MoverDerechaDibujando','MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
-  },
-
 	{
 		id: 201,
 		grupoId: 11,
@@ -1974,5 +1871,369 @@ export default [
       'HayTomate',
       'HayLechuga',
     ],
+  },
+
+  {
+    id: 242,
+    grupoId: 11,
+    nombre: '2.1.3a',
+    titulo: 'Desafío 2.1.3a',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
+      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
+      {xCoty: 25, yCoty: 75}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+  },
+  {
+    id: 243,
+    grupoId: 11,
+    nombre: '2.1.3b',
+    titulo: 'Desafío 2.1.3b',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
+      [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
+      {xCoty: -50, yCoty: 25}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+  },
+  {
+    id: 244,
+    grupoId: 11,
+    nombre: '2.1.3c',
+    titulo: 'Desafío 2.1.3c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
+      {xCoty: 125, yCoty: 0}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 245,
+    grupoId: 11,
+    nombre: '2.1.3d',
+    titulo: 'Desafío 2.1.3d',
+    imagen: 'Coty',
+    escena: `new EscenaCotySonrisa()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
+  },
+  {
+    id: 246,
+    grupoId: 11,
+    nombre: '2.1.3e',
+    titulo: 'Desafío 2.1.3e',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
+      [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
+      {xCoty: -50, yCoty: 100}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
+  },
+  {
+    id: 247,
+    grupoId: 11,
+    nombre: '2.1.3f',
+    titulo: 'Desafío 2.1.3f',
+    imagen: 'Coty',
+    escena: `new EscenaCotyCactus()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 248,
+    grupoId: 11,
+    nombre: '2.1.3g',
+    titulo: 'Desafío 2.1.3g',
+    imagen: 'Coty',
+    escena: `new EscenaCotyMate()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 249,
+    grupoId: 12,
+    nombre: '3.1.4a',
+    titulo: 'Desafío 3.1.4a',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 250,
+    grupoId: 12,
+    nombre: '3.1.4b',
+    titulo: 'Desafío 3.1.4b',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 251,
+    grupoId: 12,
+    nombre: '3.1.4c',
+    titulo: 'Desafío 3.1.4c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 252,
+    grupoId: 12,
+    nombre: '3.2.3d',
+    titulo: 'Desafío 3.2.3d',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
+      {xCoty: -100, yCoty: -100}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+        <statement name="program">
+          <block type="repetir">
+            <value name="count">
+              <block type="math_number">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+            <statement name="block">
+              <block type="MoverArribaDibujando"></block>
+            </statement>
+            <next>
+              <block type="repetir">
+                <value name="count">
+                  <block type="math_number">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+                <statement name="block">
+                  <block type="MoverDerechaDibujando"></block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </xml>`
+  },
+  {
+    id: 253,
+    grupoId: 12,
+    nombre: '3.2.3e',
+    titulo: 'Desafío 3.2.3e',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+        <statement name="program">
+          <block type="repetir">
+            <value name="count">
+              <block type="math_number">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+            <statement name="block">
+              <block type="MoverArribaDibujando">
+                <next>
+                  <block type="MoverDerechaDibujando"></block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="repetir">
+                <value name="count">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <statement name="block">
+                  <block type="MoverDerechaDibujando"></block>
+                </statement>
+                <next>
+                  <block type="repetir">
+                    <value name="count">
+                      <block type="math_number">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <statement name="block">
+                      <block type="MoverAbajoDibujando"></block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </xml>`
+  },
+  {
+    id: 254,
+    grupoId: 13,
+    nombre: '4.1.3c',
+    titulo: 'Desafío 4.1.3c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [{x:-120,y:50},{x:20,y:50},{x:20,y:-90},{x:-120,y:-90},{x:-120,y:50}],
+      {xCoty: -120, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 140}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'si',
+      'HayCharco'
+    ]
+  },
+
+  {
+    id: 255,
+    grupoId: 99,
+    nombre: 'CotyDibujoLibre',
+    titulo: '¡Coty dibuja libre!',
+    imagen: 'Coty',
+    escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
+    enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
+    consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
+    debeFelicitarse: true,
+    bloques: [
+      'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
 ];

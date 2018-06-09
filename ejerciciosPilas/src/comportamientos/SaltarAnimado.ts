@@ -13,6 +13,7 @@ class SaltarAnimado extends MovimientoAnimado {
 			this.argumentos.distancia = 0;
 			this.argumentos.direccion = new Direct(0,1); // No importa
 		};
+		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
 		super.preAnimacion();
 		this.sanitizarArgumentosSaltar();
 		this.velocidad_vertical = this.velocidad_inicial;

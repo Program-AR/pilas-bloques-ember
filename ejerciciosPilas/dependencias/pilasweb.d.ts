@@ -1545,6 +1545,14 @@ declare class Tortuga extends Actor {
     crear_circulo(radio: any, sentido?: number): void;
     color: any;
 }
+declare type punto = {
+    x: number;
+    y: number;
+};
+declare type segmento = {
+    inicio: punto;
+    fin: punto;
+};
 declare class Pizarra extends Actor {
     container: any;
     lienzo: any;
@@ -1553,7 +1561,7 @@ declare class Pizarra extends Actor {
     constructor(x?: number, y?: number);
     setX(x: any): void;
     setY(y: any): void;
-    dibujar_punto(x: any, y: any, color?: any): void;
+    dibujar_punto(x: any, y: any, color?: any, grosor?: any): void;
     linea(x: any, y: any, x2: any, y2: any, color?: any, grosor?: number): void;
     rectangulo(x: any, y: any, ancho: any, alto: any, color?: any, relleno?: any, grosor?: number): void;
     poligono(puntos: any, color?: any, grosor?: number): void;
@@ -1561,15 +1569,8 @@ declare class Pizarra extends Actor {
     arco(x: any, y: any, radio: any, anguloInicial: any, anguloFinal: any, color?: any, grosor?: number): void;
     limpiar(): void;
     pintar(color: any): void;
-    puntosDeLineas(): any;
+    segmentosDeDibujoLineal(): segmento[];
     cambioCoordenadas(punto: any): any;
-    mismosPuntosQue(puntos: any): boolean;
-    tieneIgualDibujoQue(otraPizarra: any): boolean;
-    puntosSinRepetirDe(puntos: any): any[];
-    ordenarPuntosDe(puntos: any): any;
-    compararPuntos(p1: any, p2: any): number;
-    sacarPuntosRepetidosDe(puntos: any): any[];
-    estaPuntoEn(pto: any, ptos: any): any;
 }
 declare class Pingu extends Actor {
     paso: any;

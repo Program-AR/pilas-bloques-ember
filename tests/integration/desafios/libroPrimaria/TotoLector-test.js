@@ -1,6 +1,6 @@
 import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
-moduloActividad("2.I1");
+moduloActividad("Toto lector");
 
 actividadTest("2.I1a", {
   descripcionAdicional: '2.I1a: Se puede resolver',
