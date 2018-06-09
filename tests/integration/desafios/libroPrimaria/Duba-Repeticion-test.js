@@ -1,6 +1,6 @@
 import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
-moduloActividad("Duba - Repeticion");
+moduloActividad("Duba - Repetición");
 
 actividadTest("3.1.3a", {
   descripcionAdicional: "3.1.3a: La solución sin repetición resuelve el problema",
