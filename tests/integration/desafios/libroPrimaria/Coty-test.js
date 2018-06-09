@@ -1,6 +1,6 @@
 import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
-moduloActividad("DesafiosCoty");
+moduloActividad("Coty");
 
 actividadTest("2.1.3a", {
   descripcionAdicional: 'Coty-2.1.3a',
@@ -66,22 +66,29 @@ actividadTest("2.1.3b", {
 
 actividadTest("2.1.3c", {
   descripcionAdicional: 'Coty-2.1.3c',
-	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
-  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
-    <statement name=\"program\">
-      <block type=\"repetir\">
-        <value name=\"count\">
-          <block type=\"math_number\">
-            <field name=\"NUM\">3</field>
-          </block>
-        </value>
-        <statement name=\"block\">
-          <block type=\"MoverIzquierdaDibujando\">
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverIzquierdaDibujando">
+        <next>
+          <block type="SaltarIzquierda">
             <next>
-              <block type=\"SaltarDerecha\"></block>
+              <block type="MoverIzquierdaDibujando">
+                <next>
+                  <block type="SaltarIzquierda">
+                    <next>
+                      <block type="MoverIzquierdaDibujando">
+                        <next>
+                          <block type="SaltarIzquierda"></block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
             </next>
           </block>
-        </statement>
+        </next>
       </block>
     </statement>
   </block>
@@ -254,24 +261,35 @@ actividadTest("3.1.4a", {
 
 actividadTest("3.1.4b", {
   descripcionAdicional: 'Coty-3.1.4b',
-	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
-  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
-    <statement name=\"program\">
-      <block type=\"repetir\">
-        <value name=\"count\">
-          <block type=\"math_number\">
-            <field name=\"NUM\">4</field>
-          </block>
-        </value>
-        <statement name=\"block\">
-          <block type=\"MoverDerechaDibujando\">
-            <next>
-              <block type=\"SaltarDerecha\"></block>
-            </next>
-          </block>
-        </statement>
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverDerechaDibujando">
         <next>
-          <block type=\"MoverAbajoDibujando\">
+          <block type="SaltarDerecha">
+            <next>
+              <block type="MoverDerechaDibujando">
+                <next>
+                  <block type="SaltarDerecha">
+                    <next>
+                      <block type="MoverDerechaDibujando">
+                        <next>
+                          <block type="SaltarDerecha">
+                            <next>
+                              <block type="MoverDerechaDibujando">
+                                <next>
+                                  <block type="MoverAbajoDibujando"></block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
           </block>
         </next>
       </block>
@@ -372,8 +390,8 @@ actividadTest("3.2.3e", {
 </xml>`,
 });
 
-actividadTest("4.1.3b", {
-  descripcionAdicional: 'Coty-4.1.3b',
+actividadTest("4.1.3c", {
+  descripcionAdicional: 'Coty-4.1.3c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">

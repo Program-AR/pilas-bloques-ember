@@ -38,7 +38,7 @@ abstract class DibujandoFiguras extends EscenaActividad {
     }
 
     estaResueltoElProblema(){
-      return this.dibujoRealizado().igualA(this.dibujoEsperado);
+      return this.dibujoRealizado().igualA(this.dibujoEsperado.unificado());
     }
 
     pathFondo(): string {

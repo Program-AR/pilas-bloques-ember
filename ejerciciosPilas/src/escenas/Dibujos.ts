@@ -275,6 +275,13 @@ class DibujoLineal {
   }
 
   /**
+   * Unifica los segmentos eliminando puntos intermedios. Devuelve un dibujo nuevo.
+   */
+  unificado(): DibujoLineal {
+    return new DibujoLineal(this._segmentos,true);
+  }
+
+  /**
    * Retorna los segmentos que conforman el dibujo.
    */
   segmentos(): SegmentoDibujo[] {

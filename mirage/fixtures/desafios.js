@@ -2025,7 +2025,7 @@ export default [
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
-      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]]
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
     enunciado: 'COMPLETAR 1',
@@ -2198,8 +2198,8 @@ export default [
   {
     id: 254,
     grupoId: 13,
-    nombre: '4.1.3b',
-    titulo: 'Desafío 4.1.3b',
+    nombre: '4.1.3c',
+    titulo: 'Desafío 4.1.3c',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
