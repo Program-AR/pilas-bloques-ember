@@ -29,6 +29,9 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
     }
 
    iniciar(){
+      if (this.puedeHaberCharco) {
+        new FlechaEscenarioAleatorio();       
+      }
       if (this.puedeHaberCharco && Math.random()>=0.5) {
         this.crearCharco()
       }
