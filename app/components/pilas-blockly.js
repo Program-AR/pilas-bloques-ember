@@ -164,7 +164,26 @@ export default Ember.Component.extend({
 
     toolbox.push({category: 'Separator', isSeparator: true});
 
-    return this.ordenar_toolbox(toolbox);
+    return this._aplanarSiEsNecesario(this.ordenar_toolbox(toolbox));
+  },
+
+  /**
+   * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
+   * sino directamente los bloques en el toolbox 
+   */
+  _aplanarSiEsNecesario(toolbox){
+    var aplanado = toolbox;
+    if(this.get('modelActividad').get('toolboxSinCategorias')){
+      aplanado = [];
+      toolbox.forEach(bloque => {
+        if(bloque.isSeparator || !bloque.category){
+          aplanado.push(bloque); //un separador ó un id de bloque van directo
+        } else {
+          aplanado = aplanado.concat(this._aplanarSiEsNecesario(bloque.blocks));
+        }
+      });
+    }
+    return aplanado;
   },
 
   /**

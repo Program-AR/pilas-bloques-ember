@@ -11,6 +11,7 @@ export default Model.extend({
   consignaInicial: attr('string'),
   escena: attr('string'),
   debeFelicitarse: attr(),
+  toolboxSinCategorias: attr('boolean'),
   grupo: belongsTo('grupo'),
   bloques: attr(),
 	solucionInicial: attr('string'),

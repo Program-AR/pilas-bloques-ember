@@ -546,7 +546,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+    debeFelicitarse: true,
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -571,7 +572,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -596,7 +598,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -621,7 +624,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -646,7 +650,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -671,7 +676,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -696,7 +702,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -758,7 +765,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -804,7 +812,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -854,7 +863,8 @@ export default [
 		")`,
 		enunciado: '[Completar]',
 		consignaInicial: '[Completar]',
-		debeFelicitarse: true,
+		debeFelicitarse: true, 
+    toolboxSinCategorias: true,
 		bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -914,7 +924,8 @@ export default [
 		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -942,7 +953,8 @@ export default [
 		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -970,7 +982,8 @@ export default [
 		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -998,7 +1011,8 @@ export default [
 		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1052,7 +1066,8 @@ export default [
 		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1097,7 +1112,8 @@ export default [
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1117,7 +1133,8 @@ export default [
     escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1149,7 +1166,8 @@ export default [
 		"])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1178,7 +1196,8 @@ export default [
 		", { coleccion: ["O"] })`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1202,7 +1221,8 @@ export default [
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1224,7 +1244,8 @@ export default [
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1250,7 +1271,8 @@ export default [
     ], "toto")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverLeyendoAbajo',
       'MoverLeyendoArriba',
@@ -1271,7 +1293,8 @@ export default [
     ], "llama")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverLeyendoAbajo',
       'MoverLeyendoArriba',
@@ -1292,7 +1315,8 @@ export default [
     ], "puma")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverLeyendoAbajo',
       'MoverLeyendoArriba',
@@ -1312,7 +1336,8 @@ export default [
     ], "caballo")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverLeyendoAbajo',
       'MoverLeyendoArriba',
@@ -1366,7 +1391,8 @@ export default [
     ], "lunes", 7)`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverLeyendoAbajo',
       'MoverLeyendoArriba',
@@ -1417,7 +1443,8 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1439,7 +1466,8 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1462,7 +1490,8 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1486,7 +1515,8 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1516,7 +1546,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1543,7 +1574,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1568,7 +1600,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1593,7 +1626,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1618,7 +1652,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1642,7 +1677,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1706,7 +1742,8 @@ export default [
     </xml>`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1734,7 +1771,8 @@ export default [
     ")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1810,7 +1848,8 @@ export default [
     </xml>`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1831,7 +1870,8 @@ export default [
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1856,7 +1896,8 @@ export default [
     escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
@@ -1886,7 +1927,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
   {
@@ -1902,7 +1944,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
   {
@@ -1918,7 +1961,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
@@ -1930,7 +1974,8 @@ export default [
     escena: `new EscenaCotySonrisa()`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -1955,7 +2000,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -1976,7 +2022,8 @@ export default [
     escena: `new EscenaCotyCactus()`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
@@ -1988,7 +2035,8 @@ export default [
     escena: `new EscenaCotyMate()`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
@@ -2004,7 +2052,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2030,7 +2079,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2056,7 +2106,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2082,7 +2133,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2137,7 +2189,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2208,7 +2261,8 @@ export default [
     )`,
     enunciado: 'COMPLETAR 1',
     consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando',
       'MoverAbajoDibujando',
@@ -2232,7 +2286,8 @@ export default [
     escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
-    debeFelicitarse: true,
+    debeFelicitarse: true, 
+    toolboxSinCategorias: true,
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
