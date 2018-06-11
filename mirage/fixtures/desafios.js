@@ -1247,7 +1247,7 @@ export default [
         ['A', 'r', 'e'],
         ['t', 'o', 'j'],
         ['i', 't', 'o'],
-    ], "coty")`,
+    ], "toto")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true,
