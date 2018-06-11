@@ -1244,9 +1244,9 @@ export default [
     titulo: 'Desafío 2.I1a (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
-        ['A', ' ', ' '],
-        ['c', 'o', ' '],
-        [' ', 't', 'y'],
+        ['A', 'r', 'e'],
+        ['t', 'o', 'j'],
+        ['i', 't', 'o'],
     ], "coty")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
