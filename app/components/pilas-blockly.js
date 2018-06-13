@@ -40,12 +40,6 @@ export default Ember.Component.extend({
   pasoAPasoHabilitado: false,
   pausadoEnBreakpoint: false,
 
-  initial_workspace: `
-    <xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" id="1" deletable="false" editable="false" movable="false" x="15" y="15"></block>
-    </xml>
-  `,
-
   javascriptCode: null,
 
   inyectarRedimensionado: Ember.on('init', function() {
@@ -75,6 +69,11 @@ export default Ember.Component.extend({
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
 
+      // Elijo el estilo default de toolbox si es que no viene indicado en el desafio
+      if(!this.get('modelActividad').get('estiloToolbox')){
+        this.get('modelActividad').set('estiloToolbox','desplegable');
+      }
+
 
       // Si el código está serializado en la URL, lo intenta colocar en el
       // workspace.
@@ -85,7 +84,9 @@ export default Ember.Component.extend({
         this.set('initial_workspace', codigoXML);
       } else if (this.get('modelActividad').get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
 				this.set('initial_workspace', this.get('modelActividad').get('solucionInicial'));
-			}
+			} else { //Sino, el código por defecto es el empezar a ejecutar
+        this.set('initial_workspace', this._xmlBloqueEmpezarAEjecutar());
+      }
 
     });
 
@@ -121,6 +122,20 @@ export default Ember.Component.extend({
     // });
 
     $(window).trigger('resize');
+  },
+
+  _xmlBloqueEmpezarAEjecutar(){
+    // Resuelve el problema de blockly: la posición inicial de los bloques se comporta distinto
+    // dependiendo de si el toolbox es ó no desplegable.
+    // Issue: https://github.com/google/blockly/issues/1924
+    var pos = this._hayToolboxDesplegable() ? {x:15,y:15} : {x:250,y:15};
+    return `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" x="${pos.x}" y="${pos.y}"></block>
+    </xml>`;
+  },
+
+  _hayToolboxDesplegable(){
+    return this.get('modelActividad').get('estiloToolbox') == "desplegable";
   },
 
   /**
@@ -164,26 +179,32 @@ export default Ember.Component.extend({
 
     toolbox.push({category: 'Separator', isSeparator: true});
 
-    return this._aplanarSiEsNecesario(this.ordenar_toolbox(toolbox));
+    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox));
   },
 
   /**
    * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
-   * sino directamente los bloques en el toolbox 
+   * sino directamente los bloques en el toolbox.
+   * 
+   * TODO: Falta implementar el estilo "desplegado"
    */
-  _aplanarSiEsNecesario(toolbox){
+  _aplicarEstiloAToolbox(toolbox){
     var aplanado = toolbox;
-    if(this.get('modelActividad').get('toolboxSinCategorias')){
+    if(!this._debeHaberCategoriasEnToolbox()){
       aplanado = [];
       toolbox.forEach(bloque => {
         if(bloque.isSeparator || !bloque.category){
           aplanado.push(bloque); //un separador ó un id de bloque van directo
         } else {
-          aplanado = aplanado.concat(this._aplanarSiEsNecesario(bloque.blocks));
+          aplanado = aplanado.concat(this._aplicarEstiloAToolbox(bloque.blocks));
         }
       });
     }
     return aplanado;
+  },
+
+  _debeHaberCategoriasEnToolbox(){
+    return this.get('modelActividad').get('estiloToolbox') != "sinCategorias";
   },
 
   /**
