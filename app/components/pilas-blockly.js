@@ -196,7 +196,7 @@ export default Ember.Component.extend({
   },
 
   _debeHaberCategoriasEnToolbox(){
-    return this.get('modelActividad').get('estiloToolbox') != "sinCategorias";
+    return this.get('modelActividad').get('estiloToolbox') !== "sinCategorias";
   },
 
   /**
