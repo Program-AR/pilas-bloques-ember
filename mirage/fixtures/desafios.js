@@ -704,6 +704,290 @@ export default [
     ]
   },
   {
+    id: 242,
+    grupoId: 11,
+    nombre: '2.1.3a',
+    titulo: 'Desafío 2.1.3a',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
+      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
+      {xCoty: 25, yCoty: 75}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+  },
+  {
+    id: 243,
+    grupoId: 11,
+    nombre: '2.1.3b',
+    titulo: 'Desafío 2.1.3b',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
+      [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
+      {xCoty: -50, yCoty: 25}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+  },
+  {
+    id: 244,
+    grupoId: 11,
+    nombre: '2.1.3c',
+    titulo: 'Desafío 2.1.3c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
+      {xCoty: 125, yCoty: 0}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 245,
+    grupoId: 11,
+    nombre: '2.1.3d',
+    titulo: 'Desafío 2.1.3d',
+    imagen: 'Coty',
+    escena: `new EscenaCotySonrisa()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
+  },
+  {
+    id: 246,
+    grupoId: 11,
+    nombre: '2.1.3e',
+    titulo: 'Desafío 2.1.3e',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
+      [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
+      {xCoty: -50, yCoty: 100}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda'
+    ]
+  },
+  {
+    id: 247,
+    grupoId: 11,
+    nombre: '2.1.3f',
+    titulo: 'Desafío 2.1.3f',
+    imagen: 'Coty',
+    escena: `new EscenaCotyCactus()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 248,
+    grupoId: 11,
+    nombre: '2.1.3g',
+    titulo: 'Desafío 2.1.3g',
+    imagen: 'Coty',
+    escena: `new EscenaCotyMate()`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 231,
+    grupoId: 11,
+    nombre: '2.1.4a',
+    titulo: 'Desafio 2.1.4a',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O],\
+      [O,A,-,T,L,-],\
+      [O,O,O,O,O,E],\
+      [O,O,O,O,O,O],\
+      [O,O,O,O,O,O]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 232,
+    grupoId: 11,
+    nombre: '2.1.4b',
+    titulo: 'Desafio 2.1.4b',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+      [-,-,T,-,-],\
+      [-,-,L,-,-],\
+      [A,O,O,O,E],\
+      [O,O,O,O,O]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 233,
+    grupoId: 11,
+    nombre: '2.2.2a',
+    titulo: 'Desafio 2.2.2a',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,-,-],\
+      [-,L,-],\
+      [A,-,E],\
+      [-,T,-]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 234,
+    grupoId: 11,
+    nombre: '2.2.2b',
+    titulo: 'Desafio 2.2.2b',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,-,-,-],\
+      [-,L,T,-],\
+      [A,-,-,E],\
+      [-,-,-,-]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 235,
+    grupoId: 11,
+    nombre: '2.2.2c',
+    titulo: 'Desafio 2.2.2c',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,A,-],\
+      [L,E,T],\
+      [-,-,-],\
+      [-,-,-]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
+    id: 236,
+    grupoId: 11,
+    nombre: '2.2.2d',
+    titulo: 'Desafio 2.2.2d',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [-,-,A],\
+      [-,L,T],\
+      [-,-,E]\
+    ")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+    ],
+  },
+  {
 		id: 207,
 		grupoId: 11,
 		nombre: '2.2.3a',
@@ -924,163 +1208,56 @@ export default [
   </xml>`,
   },
   {
-    id: 211,
-    grupoId: 12,
-    nombre: '3.1.3a',
-    titulo: 'Desafío 3.1.3a (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-        [-,O,O,O,-,-,-,-],\
-        [-,O,O,O,O,-,-,-],\
-        [O,O,-,O,O,-,-,-],\
-        [O,O,-,-,-,-,-,-],\
-        [A,-,-,-,-,-,-,P],\
-        [-,-,O,-,O,-,-,-],\
-        [-,-,O,O,O,O,O,O],\
-        [-,-,-,O,O,O,O,O],\
-		")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir'
-    ]
-  },
-  {
-    id: 212,
-    grupoId: 12,
-    nombre: '3.1.3b',
-    titulo: 'Desafío 3.1.3b (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-        [O,O,-,O,O,-,-,-],\
-        [O,P,-,O,O,-,-,-],\
-        [O,-,-,O,-,-,-,-],\
-        [O,-,O,O,-,-,-,-],\
-        [O,-,O,O,O,-,-,-],\
-        [-,-,O,O,O,O,-,-],\
-        [-,-,O,O,O,O,O,O],\
-        [-,-,A,O,O,O,O,O],\
-		")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir'
-    ]
-  },
-  {
-    id: 213,
-    grupoId: 12,
-    nombre: '3.1.3c',
-    titulo: 'Desafío 3.1.3c (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-      [-,-,-,O,O,-,-,O],\
-      [O,O,-,O,-,-,-,O],\
-      [A,O,O,O,-,-,O,O],\
-      [-,O,O,O,O,O,O,O],\
-      [-,O,O,O,-,O,O,O],\
-      [-,-,-,-,-,-,P,O],\
-      [O,O,-,O,O,O,O,O],\
-      [O,O,-,-,O,O,O,O],\
-		")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir'
-    ]
-  },
-  {
-    id: 214,
-    grupoId: 12,
-    nombre: '3.2.3a',
-    titulo: 'Desafío 3.2.3a (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-      [-,-,-,-,O,O,O,O],\
-      [-,-,-,-,-,-,-,O],\
-      [-,-,-,-,-,-,-,-],\
-      [-,P,-,-,-,-,-,-],\
-      [-,-,-,-,-,O,A,-],\
-      [-,-,-,-,O,O,O,O],\
-      [O,O,O,O,O,O,O,O],\
-      [O,O,O,O,O,O,O,O],\
-		")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir'
-    ],
+    id: 237,
+    grupoId: 11,
+    nombre: '2.2.3e',
+    titulo: 'Desafio 2.2.3e',
+    imagen: 'Lita',
+    escena: `new EscenaLita("\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,-,T,O],\
+      [O,A,-,-,L,E,O],\
+      [O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O]\
+    ")`,
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
-    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
-    <statement name="program">
-      <block type="MoverACasillaArriba">
-      <next>
-      <block type="repetir">
-        <value name="count">
-          <block type="math_number">
-            <field name="NUM">4</field>
-          </block>
-        </value>
-        <statement name="block">
-          <block type="MoverACasillaIzquierda">
-          </block>
-        </statement>
-      <next>
-      <block type="ComerChurrasco">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="AgarrarLechuga">
+        <next>
+        <block type="MoverACasillaArriba">
+        <next>
+        <block type="MoverACasillaDerecha">
+        <next>
+        <block type="MoverACasillaAbajo">
+        <next>
+        <block type="PrepararEnsalada">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
       </block>
-      </next>
-      </block>
-      </next>
-      </block>
-    </statement>
-    </block>
-  </xml>`,
-  },
-  {
-    id: 215,
-    grupoId: 12,
-    nombre: '3.2.3b',
-    titulo: 'Desafío 3.2.3b (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-      [O,-,-,-,O,O,O,O],\
-      [-,A,-,-,-,-,O,-],\
-      [O,O,-,-,-,-,-,-],\
-      [O,O,O,-,-,-,-,-],\
-      [O,O,O,-,-,-,-,-],\
-      [O,O,O,O,O,-,P,-],\
-      [O,O,O,O,O,O,O,O],\
-      [O,O,O,O,O,O,O,O],\
-		")`,
+    </xml>`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1090,189 +1267,9 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir'
-    ],
-    debugging: true,
-    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
-    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
-    <statement name="program">
-      <block type="repetir">
-        <value name="count">
-          <block type="math_number">
-            <field name="NUM">5</field>
-          </block>
-        </value>
-        <statement name="block">
-          <block type="MoverACasillaDerecha">
-          <next>
-          <block type="MoverACasillaAbajo">
-          </block>
-          </next>
-          </block>
-        </statement>
-      <next>
-      <block type="ComerChurrasco">
-      </block>
-      </next>
-      </block>
-    </statement>
-    </block>
-  </xml>`,
-  },
-  {
-    id: 216,
-    grupoId: 13,
-    nombre: '4.1.3a',
-    titulo: 'Desafío 4.1.3a (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'si',
-      'HayChurrasco'
-    ],
-  },
-  {
-    id: 217,
-    grupoId: 13,
-    nombre: '4.1.3b',
-    titulo: 'Desafío 4.1.3b (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'si',
-      'HayChurrasco'
-    ],
-  },
-  {
-    id: 218,
-    grupoId: 13,
-    nombre: '4.1.4b',
-    titulo: 'Desafío 4.1.4b (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba(["\
-      [O,O,O,O,O],\
-      [O,A,-,P,O],\
-      [O,O,O,O,O],\
-      [O,O,O,O,O],\
-      [O,O,O,O,O],\
-    ","\
-      [O,O,O,O,O],\
-      [O,A,O,O,O],\
-      [O,-,O,O,O],\
-      [O,P,O,O,O],\
-      [O,O,O,O,O],\
-		"])`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'si',
-      'sino',
-      'HayObstaculoArriba',
-      'HayObstaculoAbajo',
-      'HayObstaculoIzquierda',
-      'HayObstaculoDerecha'                  
-    ],
-  },
-  {
-    id: 219,
-    grupoId: 13,
-    nombre: '4.1.4c',
-    titulo: 'Desafío 4.1.4c (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("\
-      [O,O,O,O,O],\
-      [-,-,*,-,-],\
-      [A,-,*,-,P],\
-      [O,O,O,O,O],\
-		", { coleccion: ["O"] })`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'si',
-      'sino',
-      'HayObstaculoArriba',
-      'HayObstaculoAbajo',
-      'HayObstaculoIzquierda',
-      'HayObstaculoDerecha'
-    ],
-  },
-  {
-    id: 220,
-    grupoId: 13,
-    nombre: '4.2.1a',
-    titulo: 'Desafío 4.2.1a (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir',
-      'si',
-      'sino',
-      'HayChurrasco'
-    ],
-  },
-  {
-    id: 221,
-    grupoId: 13,
-    nombre: '4.2.1b',
-    titulo: 'Desafío 4.2.1b (Duba)',
-    imagen: 'Duba',
-    escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'ComerChurrasco',
-      'repetir',
-      'si',
-      'sino',
-      'HayChurrasco'
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
     ],
   },
   {
@@ -1450,14 +1447,22 @@ export default [
       </block>
     </xml>`,
   },
-
   {
-    id: 227,
-    grupoId: 13,
-    nombre: '4.I1a',
-    titulo: 'Desafío 4.I1a',
-    imagen: 'Toto',
-    escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
+    id: 211,
+    grupoId: 12,
+    nombre: '3.1.3a',
+    titulo: 'Desafío 3.1.3a (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+        [-,O,O,O,-,-,-,-],\
+        [-,O,O,O,O,-,-,-],\
+        [O,O,-,O,O,-,-,-],\
+        [O,O,-,-,-,-,-,-],\
+        [A,-,-,-,-,-,-,P],\
+        [-,-,O,-,O,-,-,-],\
+        [-,-,O,O,O,O,O,O],\
+        [-,-,-,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1467,20 +1472,26 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'EscribirLetraActualEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino'
-    ],
+      'ComerChurrasco',
+      'repetir'
+    ]
   },
-
   {
-    id: 228,
-    grupoId: 13,
-    nombre: '4.I1b',
-    titulo: 'Desafío 4.I1b',
-    imagen: 'Toto',
-    escena: `new EscenaTotoEscritor(new ObjetivoX())`,
+    id: 212,
+    grupoId: 12,
+    nombre: '3.1.3b',
+    titulo: 'Desafío 3.1.3b (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+        [O,O,-,O,O,-,-,-],\
+        [O,P,-,O,O,-,-,-],\
+        [O,-,-,O,-,-,-,-],\
+        [O,-,O,O,-,-,-,-],\
+        [O,-,O,O,O,-,-,-],\
+        [-,-,O,O,O,O,-,-],\
+        [-,-,O,O,O,O,O,O],\
+        [-,-,A,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1490,21 +1501,26 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'EscribirLetraActualEnOtraCuadricula',
-      'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino'
-    ],
+      'ComerChurrasco',
+      'repetir'
+    ]
   },
-
   {
-    id: 229,
-    grupoId: 13,
-    nombre: '4.I1c',
-    titulo: 'Desafío 4.I1c',
-    imagen: 'Toto',
-    escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
+    id: 213,
+    grupoId: 12,
+    nombre: '3.1.3c',
+    titulo: 'Desafío 3.1.3c (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+      [-,-,-,O,O,-,-,O],\
+      [O,O,-,O,-,-,-,O],\
+      [A,O,O,O,-,-,O,O],\
+      [-,O,O,O,O,O,O,O],\
+      [-,O,O,O,-,O,O,O],\
+      [-,-,-,-,-,-,P,O],\
+      [O,O,-,O,O,O,O,O],\
+      [O,O,-,-,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1514,22 +1530,107 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'EscribirLetraActualEnOtraCuadricula',
-      'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino',
-      'hayVocalRMT'
-    ],
+      'ComerChurrasco',
+      'repetir'
+    ]
   },
-
   {
-    id: 230,
-    grupoId: 13,
-    nombre: '4.I1d',
-    titulo: 'Desafío 4.I1d',
-    imagen: 'Toto',
-    escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
+    id: 249,
+    grupoId: 12,
+    nombre: '3.1.4a',
+    titulo: 'Desafío 3.1.4a',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 250,
+    grupoId: 12,
+    nombre: '3.1.4b',
+    titulo: 'Desafío 3.1.4b',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 251,
+    grupoId: 12,
+    nombre: '3.1.4c',
+    titulo: 'Desafío 3.1.4c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ]
+  },
+  {
+    id: 214,
+    grupoId: 12,
+    nombre: '3.2.3a',
+    titulo: 'Desafío 3.2.3a (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+      [-,-,-,-,O,O,O,O],\
+      [-,-,-,-,-,-,-,O],\
+      [-,-,-,-,-,-,-,-],\
+      [-,P,-,-,-,-,-,-],\
+      [-,-,-,-,-,O,A,-],\
+      [-,-,-,-,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1539,224 +1640,52 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'EscribirLetraActualEnOtraCuadricula',
-      'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino',
-      'hayVocalRMT'
+      'ComerChurrasco',
+      'repetir'
     ],
-  },
-  {
-    id: 231,
-    grupoId: 11,
-    nombre: '2.1.4a',
-    titulo: 'Desafio 2.1.4a',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [O,O,O,O,O,O],\
-      [O,O,O,O,O,O],\
-      [O,A,-,T,L,-],\
-      [O,O,O,O,O,E],\
-      [O,O,O,O,O,O],\
-      [O,O,O,O,O,O]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 232,
-    grupoId: 11,
-    nombre: '2.1.4b',
-    titulo: 'Desafio 2.1.4b',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [O,O,O,O,O],\
-      [O,O,O,O,O],\
-      [-,-,T,-,-],\
-      [-,-,L,-,-],\
-      [A,O,O,O,E],\
-      [O,O,O,O,O]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 233,
-    grupoId: 11,
-    nombre: '2.2.2a',
-    titulo: 'Desafio 2.2.2a',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [-,-,-],\
-      [-,L,-],\
-      [A,-,E],\
-      [-,T,-]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 234,
-    grupoId: 11,
-    nombre: '2.2.2b',
-    titulo: 'Desafio 2.2.2b',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [-,-,-,-],\
-      [-,L,T,-],\
-      [A,-,-,E],\
-      [-,-,-,-]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 235,
-    grupoId: 11,
-    nombre: '2.2.2c',
-    titulo: 'Desafio 2.2.2c',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [-,A,-],\
-      [L,E,T],\
-      [-,-,-],\
-      [-,-,-]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 236,
-    grupoId: 11,
-    nombre: '2.2.2d',
-    titulo: 'Desafio 2.2.2d',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [-,-,A],\
-      [-,L,T],\
-      [-,-,E]\
-    ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverACasillaAbajo',
-      'MoverACasillaArriba',
-      'MoverACasillaIzquierda',
-      'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-    ],
-  },
-  {
-    id: 237,
-    grupoId: 11,
-    nombre: '2.2.3e',
-    titulo: 'Desafio 2.2.3e',
-    imagen: 'Lita',
-    escena: `new EscenaLita("\
-      [O,O,O,O,O,O,O],\
-      [O,O,O,O,O,O,O],\
-      [O,O,O,O,-,T,O],\
-      [O,A,-,-,L,E,O],\
-      [O,O,O,O,O,O,O],\
-      [O,O,O,O,O,O,O]\
-    ")`,
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
-      <statement name="program">
-        <block type="MoverACasillaDerecha">
-        <next>
-        <block type="MoverACasillaDerecha">
-        <next>
-        <block type="MoverACasillaDerecha">
-        <next>
-        <block type="AgarrarLechuga">
-        <next>
-        <block type="MoverACasillaArriba">
-        <next>
-        <block type="MoverACasillaDerecha">
-        <next>
-        <block type="MoverACasillaAbajo">
-        <next>
-        <block type="PrepararEnsalada">
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-        </next>
-        </block>
-      </statement>
+    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="MoverACasillaArriba">
+      <next>
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number">
+            <field name="NUM">4</field>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="MoverACasillaIzquierda">
+          </block>
+        </statement>
+      <next>
+      <block type="ComerChurrasco">
       </block>
-    </xml>`,
+      </next>
+      </block>
+      </next>
+      </block>
+    </statement>
+    </block>
+  </xml>`,
+  },
+  {
+    id: 215,
+    grupoId: 12,
+    nombre: '3.2.3b',
+    titulo: 'Desafío 3.2.3b (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+      [O,-,-,-,O,O,O,O],\
+      [-,A,-,-,-,-,O,-],\
+      [O,O,-,-,-,-,-,-],\
+      [O,O,O,-,-,-,-,-],\
+      [O,O,O,-,-,-,-,-],\
+      [O,O,O,O,O,-,P,-],\
+      [O,O,O,O,O,O,O,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1766,10 +1695,163 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
+      'ComerChurrasco',
+      'repetir'
     ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number">
+            <field name="NUM">5</field>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="MoverACasillaDerecha">
+          <next>
+          <block type="MoverACasillaAbajo">
+          </block>
+          </next>
+          </block>
+        </statement>
+      <next>
+      <block type="ComerChurrasco">
+      </block>
+      </next>
+      </block>
+    </statement>
+    </block>
+  </xml>`,
+  },
+  {
+    id: 252,
+    grupoId: 12,
+    nombre: '3.2.3c',
+    titulo: 'Desafío 3.2.3c',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
+      {xCoty: -100, yCoty: -100}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+        <statement name="program">
+          <block type="repetir">
+            <value name="count">
+              <block type="math_number">
+                <field name="NUM">4</field>
+              </block>
+            </value>
+            <statement name="block">
+              <block type="MoverArribaDibujando"></block>
+            </statement>
+            <next>
+              <block type="repetir">
+                <value name="count">
+                  <block type="math_number">
+                    <field name="NUM">4</field>
+                  </block>
+                </value>
+                <statement name="block">
+                  <block type="MoverDerechaDibujando"></block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </xml>`
+  },
+  {
+    id: 253,
+    grupoId: 12,
+    nombre: '3.2.3d',
+    titulo: 'Desafío 3.2.3d',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
+    )`,
+    enunciado: 'COMPLETAR 1',
+    consignaInicial: 'COMPLETAR 2',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+        <statement name="program">
+          <block type="repetir">
+            <value name="count">
+              <block type="math_number">
+                <field name="NUM">3</field>
+              </block>
+            </value>
+            <statement name="block">
+              <block type="MoverArribaDibujando">
+                <next>
+                  <block type="MoverDerechaDibujando"></block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="repetir">
+                <value name="count">
+                  <block type="math_number">
+                    <field name="NUM">3</field>
+                  </block>
+                </value>
+                <statement name="block">
+                  <block type="MoverDerechaDibujando"></block>
+                </statement>
+                <next>
+                  <block type="repetir">
+                    <value name="count">
+                      <block type="math_number">
+                        <field name="NUM">3</field>
+                      </block>
+                    </value>
+                    <statement name="block">
+                      <block type="MoverAbajoDibujando"></block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </xml>`
   },
   {
     id: 238,
@@ -1879,12 +1961,12 @@ export default [
     ],
   },
   {
-    id: 240,
+    id: 216,
     grupoId: 13,
-    nombre: '4.1.4a',
-    titulo: 'Desafio 4.1.4a',
-    imagen: 'Lita',
-    escena: `new EscenaLita("[A,-,L|T]")`,
+    nombre: '4.1.3a',
+    titulo: 'Desafío 4.1.3a (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1894,23 +1976,18 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-      'repetir',
+      'ComerChurrasco',
       'si',
-      'sino',
-      'HayTomate',
-      'HayLechuga',
+      'HayChurrasco'
     ],
   },
   {
-    id: 241,
+    id: 217,
     grupoId: 13,
-    nombre: '4.2.1c',
-    titulo: 'Desafio 4.2.1c',
-    imagen: 'Lita',
-    escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
+    nombre: '4.1.3b',
+    titulo: 'Desafío 4.1.3b (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
     enunciado: '[Completar]',
     consignaInicial: '[Completar]',
     debeFelicitarse: true, 
@@ -1920,350 +1997,10 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
-      'AgarrarTomate',
-      'AgarrarLechuga',
-      'PrepararEnsalada',
-      'repetir',
+      'ComerChurrasco',
       'si',
-      'sino',
-      'HayTomate',
-      'HayLechuga',
+      'HayChurrasco'
     ],
-  },
-
-  {
-    id: 242,
-    grupoId: 11,
-    nombre: '2.1.3a',
-    titulo: 'Desafío 2.1.3a',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
-      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
-      {xCoty: 25, yCoty: 75}
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
-  },
-  {
-    id: 243,
-    grupoId: 11,
-    nombre: '2.1.3b',
-    titulo: 'Desafío 2.1.3b',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
-      [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
-      {xCoty: -50, yCoty: 25}
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
-  },
-  {
-    id: 244,
-    grupoId: 11,
-    nombre: '2.1.3c',
-    titulo: 'Desafío 2.1.3c',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
-      {xCoty: 125, yCoty: 0}
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
-  },
-  {
-    id: 245,
-    grupoId: 11,
-    nombre: '2.1.3d',
-    titulo: 'Desafío 2.1.3d',
-    imagen: 'Coty',
-    escena: `new EscenaCotySonrisa()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda'
-    ]
-  },
-  {
-    id: 246,
-    grupoId: 11,
-    nombre: '2.1.3e',
-    titulo: 'Desafío 2.1.3e',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
-      [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
-      {xCoty: -50, yCoty: 100}      
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda'
-    ]
-  },
-  {
-    id: 247,
-    grupoId: 11,
-    nombre: '2.1.3f',
-    titulo: 'Desafío 2.1.3f',
-    imagen: 'Coty',
-    escena: `new EscenaCotyCactus()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
-  },
-  {
-    id: 248,
-    grupoId: 11,
-    nombre: '2.1.3g',
-    titulo: 'Desafío 2.1.3g',
-    imagen: 'Coty',
-    escena: `new EscenaCotyMate()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
-  },
-  {
-    id: 249,
-    grupoId: 12,
-    nombre: '3.1.4a',
-    titulo: 'Desafío 3.1.4a',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
-      {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda',
-      'repetir'
-    ]
-  },
-  {
-    id: 250,
-    grupoId: 12,
-    nombre: '3.1.4b',
-    titulo: 'Desafío 3.1.4b',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
-      {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda',
-      'repetir'
-    ]
-  },
-  {
-    id: 251,
-    grupoId: 12,
-    nombre: '3.1.4c',
-    titulo: 'Desafío 3.1.4c',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
-      {xCoty: -120, yCoty: -60, longitudSegmento: 40}
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda',
-      'repetir'
-    ]
-  },
-  {
-    id: 252,
-    grupoId: 12,
-    nombre: '3.2.3d',
-    titulo: 'Desafío 3.2.3d',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
-      {xCoty: -100, yCoty: -100}      
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda',
-      'repetir'
-    ],
-    debugging: true,
-    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
-        <statement name="program">
-          <block type="repetir">
-            <value name="count">
-              <block type="math_number">
-                <field name="NUM">4</field>
-              </block>
-            </value>
-            <statement name="block">
-              <block type="MoverArribaDibujando"></block>
-            </statement>
-            <next>
-              <block type="repetir">
-                <value name="count">
-                  <block type="math_number">
-                    <field name="NUM">4</field>
-                  </block>
-                </value>
-                <statement name="block">
-                  <block type="MoverDerechaDibujando"></block>
-                </statement>
-              </block>
-            </next>
-          </block>
-        </statement>
-      </block>
-    </xml>`
-  },
-  {
-    id: 253,
-    grupoId: 12,
-    nombre: '3.2.3e',
-    titulo: 'Desafío 3.2.3e',
-    imagen: 'Coty',
-    escena: `new EscenaCoty(
-      [],
-      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
-      {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
-    )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
-    debeFelicitarse: true, 
-    estiloToolbox: 'sinCategorias',
-    bloques: [
-      'MoverArribaDibujando',
-      'MoverAbajoDibujando',
-      'MoverDerechaDibujando',
-      'MoverIzquierdaDibujando',
-      'SaltarAbajo',
-      'SaltarArriba',
-      'SaltarDerecha',
-      'SaltarIzquierda',
-      'repetir'
-    ],
-    debugging: true,
-    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
-        <statement name="program">
-          <block type="repetir">
-            <value name="count">
-              <block type="math_number">
-                <field name="NUM">3</field>
-              </block>
-            </value>
-            <statement name="block">
-              <block type="MoverArribaDibujando">
-                <next>
-                  <block type="MoverDerechaDibujando"></block>
-                </next>
-              </block>
-            </statement>
-            <next>
-              <block type="repetir">
-                <value name="count">
-                  <block type="math_number">
-                    <field name="NUM">3</field>
-                  </block>
-                </value>
-                <statement name="block">
-                  <block type="MoverDerechaDibujando"></block>
-                </statement>
-                <next>
-                  <block type="repetir">
-                    <value name="count">
-                      <block type="math_number">
-                        <field name="NUM">3</field>
-                      </block>
-                    </value>
-                    <statement name="block">
-                      <block type="MoverAbajoDibujando"></block>
-                    </statement>
-                  </block>
-                </next>
-              </block>
-            </next>
-          </block>
-        </statement>
-      </block>
-    </xml>`
   },
   {
     id: 254,
@@ -2292,6 +2029,267 @@ export default [
       'si',
       'HayCharco'
     ]
+  },
+  {
+    id: 240,
+    grupoId: 13,
+    nombre: '4.1.4a',
+    titulo: 'Desafio 4.1.4a',
+    imagen: 'Lita',
+    escena: `new EscenaLita("[A,-,L|T]")`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+      'si',
+      'sino',
+      'HayTomate',
+      'HayLechuga',
+    ],
+  },
+  {
+    id: 218,
+    grupoId: 13,
+    nombre: '4.1.4b',
+    titulo: 'Desafío 4.1.4b (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba(["\
+      [O,O,O,O,O],\
+      [O,A,-,P,O],\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+      [O,O,O,O,O],\
+    ","\
+      [O,O,O,O,O],\
+      [O,A,O,O,O],\
+      [O,-,O,O,O],\
+      [O,P,O,O,O],\
+      [O,O,O,O,O],\
+		"])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'sino',
+      'HayObstaculoArriba',
+      'HayObstaculoAbajo',
+      'HayObstaculoIzquierda',
+      'HayObstaculoDerecha'                  
+    ],
+  },
+  {
+    id: 219,
+    grupoId: 13,
+    nombre: '4.1.4c',
+    titulo: 'Desafío 4.1.4c (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("\
+      [O,O,O,O,O],\
+      [-,-,*,-,-],\
+      [A,-,*,-,P],\
+      [O,O,O,O,O],\
+		", { coleccion: ["O"] })`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'si',
+      'sino',
+      'HayObstaculoArriba',
+      'HayObstaculoAbajo',
+      'HayObstaculoIzquierda',
+      'HayObstaculoDerecha'
+    ],
+  },
+  {
+    id: 220,
+    grupoId: 13,
+    nombre: '4.2.1a',
+    titulo: 'Desafío 4.2.1a (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'repetir',
+      'si',
+      'sino',
+      'HayChurrasco'
+    ],
+  },
+  {
+    id: 221,
+    grupoId: 13,
+    nombre: '4.2.1b',
+    titulo: 'Desafío 4.2.1b (Duba)',
+    imagen: 'Duba',
+    escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'repetir',
+      'si',
+      'sino',
+      'HayChurrasco'
+    ],
+  },
+  {
+    id: 241,
+    grupoId: 13,
+    nombre: '4.2.1c',
+    titulo: 'Desafio 4.2.1c',
+    imagen: 'Lita',
+    escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'repetir',
+      'si',
+      'sino',
+      'HayTomate',
+      'HayLechuga',
+    ],
+  },
+  {
+    id: 227,
+    grupoId: 13,
+    nombre: '4.I1a',
+    titulo: 'Desafío 4.I1a',
+    imagen: 'Toto',
+    escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino'
+    ],
+  },
+
+  {
+    id: 228,
+    grupoId: 13,
+    nombre: '4.I1b',
+    titulo: 'Desafío 4.I1b',
+    imagen: 'Toto',
+    escena: `new EscenaTotoEscritor(new ObjetivoX())`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino'
+    ],
+  },
+
+  {
+    id: 229,
+    grupoId: 13,
+    nombre: '4.I1c',
+    titulo: 'Desafío 4.I1c',
+    imagen: 'Toto',
+    escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino',
+      'hayVocalRMT'
+    ],
+  },
+
+  {
+    id: 230,
+    grupoId: 13,
+    nombre: '4.I1d',
+    titulo: 'Desafío 4.I1d',
+    imagen: 'Toto',
+    escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
+    enunciado: '[Completar]',
+    consignaInicial: '[Completar]',
+    debeFelicitarse: true, 
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'EscribirLetraActualEnOtraCuadricula',
+      'EscribirTextoDadoEnOtraCuadricula',
+      'repetir',
+      'si',
+      'sino',
+      'hayVocalRMT'
+    ],
   },
 
   {

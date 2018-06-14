@@ -326,8 +326,8 @@ actividadTest("3.1.4c", {
 </xml>`,
 });
 
-actividadTest("3.2.3d", {
-  descripcionAdicional: 'Coty-3.2.3d',
+actividadTest("3.2.3c", {
+  descripcionAdicional: 'Coty-3.2.3c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -350,8 +350,8 @@ actividadTest("3.2.3d", {
 </xml>`,
 });
 
-actividadTest("3.2.3e", {
-  descripcionAdicional: 'Coty-3.2.3e',
+actividadTest("3.2.3d", {
+  descripcionAdicional: 'Coty-3.2.3d',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
