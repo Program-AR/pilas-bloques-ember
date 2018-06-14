@@ -24,24 +24,95 @@ export default [
     libroId: 1,
     titulo: 'Parametrización de soluciones',
   },
-	{
-		id: 99,
-		libroId: 2,
-		titulo: 'Otros',
-	},
+
   {
-    id: 11,
+    id: 'manual2cPrimaria2',
     libroId: 2,
     titulo: 'Capítulo 2: Programando en la computadora'
   },
   {
-    id: 12,
+    id: 'manual2cPrimaria2.1.2',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria2.1.3',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria2.1.4',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria2.2.2',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria2.2.3',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria2.I',
+    libroId: 2,
+    titulo: 'Capítulo 2: Programando en la computadora'
+  },
+  {
+    id: 'manual2cPrimaria3',
     libroId: 2,
     titulo: 'Capítulo 3: Repetición'
   },
   {
-    id: 13,
+    id: 'manual2cPrimaria3.1.3',
+    libroId: 2,
+    titulo: 'Capítulo 3: Repetición'
+  },
+  {
+    id: 'manual2cPrimaria3.1.4',
+    libroId: 2,
+    titulo: 'Capítulo 3: Repetición'
+  },
+  {
+    id: 'manual2cPrimaria3.2.3',
+    libroId: 2,
+    titulo: 'Capítulo 3: Repetición'
+  },
+  {
+    id: 'manual2cPrimaria3.I',
+    libroId: 2,
+    titulo: 'Capítulo 3: Repetición'
+  },
+  {
+    id: 'manual2cPrimaria4',
     libroId: 2,
     titulo: 'Capítulo 4: Alternativa condicional'
-  }
+  },
+  {
+    id: 'manual2cPrimaria4.1.3',
+    libroId: 2,
+    titulo: 'Capítulo 4: Alternativa condicional'
+  },
+  {
+    id: 'manual2cPrimaria4.1.4',
+    libroId: 2,
+    titulo: 'Capítulo 4: Alternativa condicional'
+  },
+  {
+    id: 'manual2cPrimaria4.2.1',
+    libroId: 2,
+    titulo: 'Capítulo 4: Alternativa condicional'
+  },
+  {
+    id: 'manual2cPrimaria4.I',
+    libroId: 2,
+    titulo: 'Capítulo 4: Alternativa condicional'
+  },
+  {
+		id: 'manual2cPrimariaOtros',
+		libroId: 2,
+		titulo: 'Otros',
+	}
 ];

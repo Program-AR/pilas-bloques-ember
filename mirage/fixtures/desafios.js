@@ -550,7 +550,7 @@ export default [
 
 	{
 		id: 201,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2a',
     titulo: 'Desafío 2.1.2a (Duba)',
     imagen: 'Duba',
@@ -575,7 +575,7 @@ export default [
 	},
 	{
 		id: 202,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2b',
     titulo: 'Desafío 2.1.2b (Duba)',
     imagen: 'Duba',
@@ -601,7 +601,7 @@ export default [
 	},
 	{
 		id: 203,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2c',
     titulo: 'Desafío 2.1.2c (Duba)',
     imagen: 'Duba',
@@ -627,7 +627,7 @@ export default [
   },
   {
 		id: 204,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2d',
     titulo: 'Desafío 2.1.2d (Duba)',
     imagen: 'Duba',
@@ -653,7 +653,7 @@ export default [
   },
   {
 		id: 205,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2e',
     titulo: 'Desafío 2.1.2e (Duba)',
     imagen: 'Duba',
@@ -679,7 +679,7 @@ export default [
   },
   {
 		id: 206,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.1.2',
 		nombre: '2.1.2f',
     titulo: 'Desafío 2.1.2f (Duba)',
     imagen: 'Duba',
@@ -705,7 +705,7 @@ export default [
   },
   {
     id: 207,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3a',
     titulo: 'Desafío 2.1.3a',
     imagen: 'Coty',
@@ -722,7 +722,7 @@ export default [
   },
   {
     id: 208,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3b',
     titulo: 'Desafío 2.1.3b',
     imagen: 'Coty',
@@ -739,7 +739,7 @@ export default [
   },
   {
     id: 209,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3c',
     titulo: 'Desafío 2.1.3c',
     imagen: 'Coty',
@@ -756,7 +756,7 @@ export default [
   },
   {
     id: 210,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3d',
     titulo: 'Desafío 2.1.3d',
     imagen: 'Coty',
@@ -778,7 +778,7 @@ export default [
   },
   {
     id: 211,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3e',
     titulo: 'Desafío 2.1.3e',
     imagen: 'Coty',
@@ -804,7 +804,7 @@ export default [
   },
   {
     id: 212,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3f',
     titulo: 'Desafío 2.1.3f',
     imagen: 'Coty',
@@ -817,7 +817,7 @@ export default [
   },
   {
     id: 213,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.3',
     nombre: '2.1.3g',
     titulo: 'Desafío 2.1.3g',
     imagen: 'Coty',
@@ -830,7 +830,7 @@ export default [
   },
   {
     id: 214,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.4',
     nombre: '2.1.4a',
     titulo: 'Desafio 2.1.4a',
     imagen: 'Lita',
@@ -858,7 +858,7 @@ export default [
   },
   {
     id: 215,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.1.4',
     nombre: '2.1.4b',
     titulo: 'Desafio 2.1.4b',
     imagen: 'Lita',
@@ -886,7 +886,7 @@ export default [
   },
   {
     id: 216,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.2.2',
     nombre: '2.2.2a',
     titulo: 'Desafio 2.2.2a',
     imagen: 'Lita',
@@ -912,7 +912,7 @@ export default [
   },
   {
     id: 217,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.2.2',
     nombre: '2.2.2b',
     titulo: 'Desafio 2.2.2b',
     imagen: 'Lita',
@@ -938,7 +938,7 @@ export default [
   },
   {
     id: 218,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.2.2',
     nombre: '2.2.2c',
     titulo: 'Desafio 2.2.2c',
     imagen: 'Lita',
@@ -964,7 +964,7 @@ export default [
   },
   {
     id: 219,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.2.2',
     nombre: '2.2.2d',
     titulo: 'Desafio 2.2.2d',
     imagen: 'Lita',
@@ -989,7 +989,7 @@ export default [
   },
   {
 		id: 220,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.2.3',
 		nombre: '2.2.3a',
     titulo: 'Desafío 2.2.3a (Duba)',
     imagen: 'Duba',
@@ -1052,7 +1052,7 @@ export default [
   },
   {
 		id: 221,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.2.3',
 		nombre: '2.2.3b',
     titulo: 'Desafío 2.2.3b (Duba)',
     imagen: 'Duba',
@@ -1099,7 +1099,7 @@ export default [
   },
   {
 		id: 222,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.2.3',
 		nombre: '2.2.3c',
     titulo: 'Desafío 2.2.3c (Duba)',
     imagen: 'Duba',
@@ -1150,7 +1150,7 @@ export default [
   },
   {
 		id: 223,
-		grupoId: 11,
+		grupoId: 'manual2cPrimaria2.2.3',
 		nombre: '2.2.3d',
     titulo: 'Desafío 2.2.3d (Duba)',
     imagen: 'Duba',
@@ -1209,7 +1209,7 @@ export default [
   },
   {
     id: 224,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.2.3',
     nombre: '2.2.3e',
     titulo: 'Desafio 2.2.3e',
     imagen: 'Lita',
@@ -1274,7 +1274,7 @@ export default [
   },
   {
     id: 225,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.I',
     nombre: '2.I1a',
     titulo: 'Desafío 2.I1a (Toto)',
     imagen: 'Toto',
@@ -1296,7 +1296,7 @@ export default [
   },
   {
     id: 226,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.I',
     nombre: '2.I1b',
     titulo: 'Desafío 2.I1b (Toto)',
     imagen: 'Toto',
@@ -1318,7 +1318,7 @@ export default [
   },
   {
     id: 227,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.I',
     nombre: '2.I1c',
     titulo: 'Desafío 2.I1c (Toto)',
     imagen: 'Toto',
@@ -1340,7 +1340,7 @@ export default [
   },
   {
     id: 228,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.I',
     nombre: '2.I1d',
     titulo: 'Desafío 2.I1d (Toto)',
     imagen: 'Toto',
@@ -1394,7 +1394,7 @@ export default [
   },
   {
     id: 229,
-    grupoId: 11,
+    grupoId: 'manual2cPrimaria2.I',
     nombre: '2.I1e',
     titulo: 'Desafío 2.I1e (Toto)',
     imagen: 'Toto',
@@ -1449,7 +1449,7 @@ export default [
   },
   {
     id: 230,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3a',
     titulo: 'Desafío 3.1.3a (Duba)',
     imagen: 'Duba',
@@ -1478,7 +1478,7 @@ export default [
   },
   {
     id: 231,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3b',
     titulo: 'Desafío 3.1.3b (Duba)',
     imagen: 'Duba',
@@ -1507,7 +1507,7 @@ export default [
   },
   {
     id: 232,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3c',
     titulo: 'Desafío 3.1.3c (Duba)',
     imagen: 'Duba',
@@ -1536,7 +1536,7 @@ export default [
   },
   {
     id: 233,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4a',
     titulo: 'Desafío 3.1.4a',
     imagen: 'Coty',
@@ -1563,7 +1563,7 @@ export default [
   },
   {
     id: 234,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4b',
     titulo: 'Desafío 3.1.4b',
     imagen: 'Coty',
@@ -1590,7 +1590,7 @@ export default [
   },
   {
     id: 235,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4c',
     titulo: 'Desafío 3.1.4c',
     imagen: 'Coty',
@@ -1617,7 +1617,7 @@ export default [
   },
   {
     id: 236,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3a',
     titulo: 'Desafío 3.2.3a (Duba)',
     imagen: 'Duba',
@@ -1672,7 +1672,7 @@ export default [
   },
   {
     id: 237,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3b',
     titulo: 'Desafío 3.2.3b (Duba)',
     imagen: 'Duba',
@@ -1727,7 +1727,7 @@ export default [
   },
   {
     id: 238,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3c',
     titulo: 'Desafío 3.2.3c',
     imagen: 'Coty',
@@ -1783,7 +1783,7 @@ export default [
   },
   {
     id: 239,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3d',
     titulo: 'Desafío 3.2.3d',
     imagen: 'Coty',
@@ -1855,7 +1855,7 @@ export default [
   },
   {
     id: 240,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.I',
     nombre: '3.I1a',
     titulo: 'Desafio 3.I1a',
     imagen: 'Lita',
@@ -1885,7 +1885,7 @@ export default [
   },
   {
     id: 241,
-    grupoId: 12,
+    grupoId: 'manual2cPrimaria3.I',
     nombre: '3.I1b',
     titulo: 'Desafio 3.I1b',
     imagen: 'Lita',
@@ -1962,7 +1962,7 @@ export default [
   },
   {
     id: 242,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3a',
     titulo: 'Desafío 4.1.3a (Duba)',
     imagen: 'Duba',
@@ -1983,7 +1983,7 @@ export default [
   },
   {
     id: 243,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3b',
     titulo: 'Desafío 4.1.3b (Duba)',
     imagen: 'Duba',
@@ -2004,7 +2004,7 @@ export default [
   },
   {
     id: 244,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3c',
     titulo: 'Desafío 4.1.3c',
     imagen: 'Coty',
@@ -2032,7 +2032,7 @@ export default [
   },
   {
     id: 245,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4a',
     titulo: 'Desafio 4.1.4a',
     imagen: 'Lita',
@@ -2058,7 +2058,7 @@ export default [
   },
   {
     id: 246,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4b',
     titulo: 'Desafío 4.1.4b (Duba)',
     imagen: 'Duba',
@@ -2095,7 +2095,7 @@ export default [
   },
   {
     id: 247,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4c',
     titulo: 'Desafío 4.1.4c (Duba)',
     imagen: 'Duba',
@@ -2125,7 +2125,7 @@ export default [
   },
   {
     id: 248,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.2.1',
     nombre: '4.2.1a',
     titulo: 'Desafío 4.2.1a (Duba)',
     imagen: 'Duba',
@@ -2148,7 +2148,7 @@ export default [
   },
   {
     id: 249,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.2.1',
     nombre: '4.2.1b',
     titulo: 'Desafío 4.2.1b (Duba)',
     imagen: 'Duba',
@@ -2171,7 +2171,7 @@ export default [
   },
   {
     id: 250,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.2.1',
     nombre: '4.2.1c',
     titulo: 'Desafio 4.2.1c',
     imagen: 'Lita',
@@ -2197,7 +2197,7 @@ export default [
   },
   {
     id: 251,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1a',
     titulo: 'Desafío 4.I1a',
     imagen: 'Toto',
@@ -2220,7 +2220,7 @@ export default [
 
   {
     id: 252,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1b',
     titulo: 'Desafío 4.I1b',
     imagen: 'Toto',
@@ -2244,7 +2244,7 @@ export default [
 
   {
     id: 253,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1c',
     titulo: 'Desafío 4.I1c',
     imagen: 'Toto',
@@ -2269,7 +2269,7 @@ export default [
 
   {
     id: 254,
-    grupoId: 13,
+    grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1d',
     titulo: 'Desafío 4.I1d',
     imagen: 'Toto',
@@ -2294,7 +2294,7 @@ export default [
 
   {
     id: 255,
-    grupoId: 99,
+    grupoId: 'manual2cPrimariaOtros',
     nombre: 'CotyDibujoLibre',
     titulo: '¡Coty dibuja libre!',
     imagen: 'Coty',
