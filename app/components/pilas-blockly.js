@@ -125,17 +125,9 @@ export default Ember.Component.extend({
   },
 
   _xmlBloqueEmpezarAEjecutar(){
-    // Resuelve el problema de blockly: la posición inicial de los bloques se comporta distinto
-    // dependiendo de si el toolbox es ó no desplegable.
-    // Issue: https://github.com/google/blockly/issues/1924
-    var pos = this._hayToolboxDesplegable() ? {x:15,y:15} : {x:250,y:15};
     return `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" x="${pos.x}" y="${pos.y}"></block>
+      <block type="al_empezar_a_ejecutar" x="15" y="15"></block>
     </xml>`;
-  },
-
-  _hayToolboxDesplegable(){
-    return this.get('modelActividad').get('estiloToolbox') == "desplegable";
   },
 
   /**
