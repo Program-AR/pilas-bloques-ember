@@ -33,32 +33,32 @@ export default [
   {
     id: 'manual2cPrimaria2.1.2',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: 'A trabajar con la computadora'
   },
   {
     id: 'manual2cPrimaria2.1.3',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: 'Coty empieza a dibujar'
   },
   {
     id: 'manual2cPrimaria2.1.4',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: 'Lita prepara una rica ensalada'
   },
   {
     id: 'manual2cPrimaria2.2.2',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: 'La ensalada secreta'
   },
   {
     id: 'manual2cPrimaria2.2.3',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: '¡Problemas para comer!'
   },
   {
     id: 'manual2cPrimaria2.I',
     libroId: 2,
-    titulo: 'Capítulo 2: Programando en la computadora'
+    titulo: 'Las palabras de Toto'
   },
   {
     id: 'manual2cPrimaria3',
@@ -68,22 +68,22 @@ export default [
   {
     id: 'manual2cPrimaria3.1.3',
     libroId: 2,
-    titulo: 'Capítulo 3: Repetición'
+    titulo: 'Más churrascos para Duba'
   },
   {
     id: 'manual2cPrimaria3.1.4',
     libroId: 2,
-    titulo: 'Capítulo 3: Repetición'
+    titulo: 'Las líneas de Coty'
   },
   {
     id: 'manual2cPrimaria3.2.3',
     libroId: 2,
-    titulo: 'Capítulo 3: Repetición'
+    titulo: 'Corregimos programas'
   },
   {
     id: 'manual2cPrimaria3.I',
     libroId: 2,
-    titulo: 'Capítulo 3: Repetición'
+    titulo: 'Lita y Toto se preparan para el picnic'
   },
   {
     id: 'manual2cPrimaria4',
@@ -93,22 +93,22 @@ export default [
   {
     id: 'manual2cPrimaria4.1.3',
     libroId: 2,
-    titulo: 'Capítulo 4: Alternativa condicional'
+    titulo: 'Duba todavía tiene hambre'
   },
   {
     id: 'manual2cPrimaria4.1.4',
     libroId: 2,
-    titulo: 'Capítulo 4: Alternativa condicional'
+    titulo: '¿Qué encontrará Lita?'
   },
   {
     id: 'manual2cPrimaria4.2.1',
     libroId: 2,
-    titulo: 'Capítulo 4: Alternativa condicional'
+    titulo: 'Duba, más hambrienta que nunca'
   },
   {
     id: 'manual2cPrimaria4.I',
     libroId: 2,
-    titulo: 'Capítulo 4: Alternativa condicional'
+    titulo: 'Agente Secreto Topotopo'
   },
   {
 		id: 'manual2cPrimariaOtros',
