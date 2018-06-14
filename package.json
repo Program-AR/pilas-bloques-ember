@@ -26,7 +26,7 @@
     "electron": "1.8.4",
     "electron-rebuild": "1.7.3",
     "ember-ajax": "^2.0.1",
-    "ember-blockly": "0.1.47",
+    "ember-blockly": "0.1.48",
     "ember-cli": "2.6.0",
     "ember-cli-app-version": "^1.0.0",
     "ember-cli-babel": "^5.1.6",
