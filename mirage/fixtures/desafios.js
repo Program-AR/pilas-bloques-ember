@@ -704,7 +704,7 @@ export default [
     ]
   },
   {
-    id: 242,
+    id: 207,
     grupoId: 11,
     nombre: '2.1.3a',
     titulo: 'Desafío 2.1.3a',
@@ -721,7 +721,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
   {
-    id: 243,
+    id: 208,
     grupoId: 11,
     nombre: '2.1.3b',
     titulo: 'Desafío 2.1.3b',
@@ -738,7 +738,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
   {
-    id: 244,
+    id: 209,
     grupoId: 11,
     nombre: '2.1.3c',
     titulo: 'Desafío 2.1.3c',
@@ -755,7 +755,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
-    id: 245,
+    id: 210,
     grupoId: 11,
     nombre: '2.1.3d',
     titulo: 'Desafío 2.1.3d',
@@ -777,7 +777,7 @@ export default [
     ]
   },
   {
-    id: 246,
+    id: 211,
     grupoId: 11,
     nombre: '2.1.3e',
     titulo: 'Desafío 2.1.3e',
@@ -803,7 +803,7 @@ export default [
     ]
   },
   {
-    id: 247,
+    id: 212,
     grupoId: 11,
     nombre: '2.1.3f',
     titulo: 'Desafío 2.1.3f',
@@ -816,7 +816,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
-    id: 248,
+    id: 213,
     grupoId: 11,
     nombre: '2.1.3g',
     titulo: 'Desafío 2.1.3g',
@@ -829,7 +829,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
   {
-    id: 231,
+    id: 214,
     grupoId: 11,
     nombre: '2.1.4a',
     titulo: 'Desafio 2.1.4a',
@@ -857,7 +857,7 @@ export default [
     ],
   },
   {
-    id: 232,
+    id: 215,
     grupoId: 11,
     nombre: '2.1.4b',
     titulo: 'Desafio 2.1.4b',
@@ -885,7 +885,7 @@ export default [
     ],
   },
   {
-    id: 233,
+    id: 216,
     grupoId: 11,
     nombre: '2.2.2a',
     titulo: 'Desafio 2.2.2a',
@@ -911,7 +911,7 @@ export default [
     ],
   },
   {
-    id: 234,
+    id: 217,
     grupoId: 11,
     nombre: '2.2.2b',
     titulo: 'Desafio 2.2.2b',
@@ -937,7 +937,7 @@ export default [
     ],
   },
   {
-    id: 235,
+    id: 218,
     grupoId: 11,
     nombre: '2.2.2c',
     titulo: 'Desafio 2.2.2c',
@@ -963,7 +963,7 @@ export default [
     ],
   },
   {
-    id: 236,
+    id: 219,
     grupoId: 11,
     nombre: '2.2.2d',
     titulo: 'Desafio 2.2.2d',
@@ -988,7 +988,7 @@ export default [
     ],
   },
   {
-		id: 207,
+		id: 220,
 		grupoId: 11,
 		nombre: '2.2.3a',
     titulo: 'Desafío 2.2.3a (Duba)',
@@ -1051,7 +1051,7 @@ export default [
   </xml>`,
   },
   {
-		id: 208,
+		id: 221,
 		grupoId: 11,
 		nombre: '2.2.3b',
     titulo: 'Desafío 2.2.3b (Duba)',
@@ -1098,7 +1098,7 @@ export default [
   </xml>`,
   },
   {
-		id: 209,
+		id: 222,
 		grupoId: 11,
 		nombre: '2.2.3c',
     titulo: 'Desafío 2.2.3c (Duba)',
@@ -1149,7 +1149,7 @@ export default [
   </xml>`,
   },
   {
-		id: 210,
+		id: 223,
 		grupoId: 11,
 		nombre: '2.2.3d',
     titulo: 'Desafío 2.2.3d (Duba)',
@@ -1208,7 +1208,7 @@ export default [
   </xml>`,
   },
   {
-    id: 237,
+    id: 224,
     grupoId: 11,
     nombre: '2.2.3e',
     titulo: 'Desafio 2.2.3e',
@@ -1273,7 +1273,7 @@ export default [
     ],
   },
   {
-    id: 222,
+    id: 225,
     grupoId: 11,
     nombre: '2.I1a',
     titulo: 'Desafío 2.I1a (Toto)',
@@ -1295,7 +1295,7 @@ export default [
     ],
   },
   {
-    id: 223,
+    id: 226,
     grupoId: 11,
     nombre: '2.I1b',
     titulo: 'Desafío 2.I1b (Toto)',
@@ -1317,7 +1317,7 @@ export default [
     ],
   },
   {
-    id: 224,
+    id: 227,
     grupoId: 11,
     nombre: '2.I1c',
     titulo: 'Desafío 2.I1c (Toto)',
@@ -1339,7 +1339,7 @@ export default [
     ],
   },
   {
-    id: 225,
+    id: 228,
     grupoId: 11,
     nombre: '2.I1d',
     titulo: 'Desafío 2.I1d (Toto)',
@@ -1393,7 +1393,7 @@ export default [
     </xml>`,
   },
   {
-    id: 226,
+    id: 229,
     grupoId: 11,
     nombre: '2.I1e',
     titulo: 'Desafío 2.I1e (Toto)',
@@ -1448,7 +1448,7 @@ export default [
     </xml>`,
   },
   {
-    id: 211,
+    id: 230,
     grupoId: 12,
     nombre: '3.1.3a',
     titulo: 'Desafío 3.1.3a (Duba)',
@@ -1477,7 +1477,7 @@ export default [
     ]
   },
   {
-    id: 212,
+    id: 231,
     grupoId: 12,
     nombre: '3.1.3b',
     titulo: 'Desafío 3.1.3b (Duba)',
@@ -1506,7 +1506,7 @@ export default [
     ]
   },
   {
-    id: 213,
+    id: 232,
     grupoId: 12,
     nombre: '3.1.3c',
     titulo: 'Desafío 3.1.3c (Duba)',
@@ -1535,7 +1535,7 @@ export default [
     ]
   },
   {
-    id: 249,
+    id: 233,
     grupoId: 12,
     nombre: '3.1.4a',
     titulo: 'Desafío 3.1.4a',
@@ -1562,7 +1562,7 @@ export default [
     ]
   },
   {
-    id: 250,
+    id: 234,
     grupoId: 12,
     nombre: '3.1.4b',
     titulo: 'Desafío 3.1.4b',
@@ -1589,7 +1589,7 @@ export default [
     ]
   },
   {
-    id: 251,
+    id: 235,
     grupoId: 12,
     nombre: '3.1.4c',
     titulo: 'Desafío 3.1.4c',
@@ -1616,7 +1616,7 @@ export default [
     ]
   },
   {
-    id: 214,
+    id: 236,
     grupoId: 12,
     nombre: '3.2.3a',
     titulo: 'Desafío 3.2.3a (Duba)',
@@ -1671,7 +1671,7 @@ export default [
   </xml>`,
   },
   {
-    id: 215,
+    id: 237,
     grupoId: 12,
     nombre: '3.2.3b',
     titulo: 'Desafío 3.2.3b (Duba)',
@@ -1726,7 +1726,7 @@ export default [
   </xml>`,
   },
   {
-    id: 252,
+    id: 238,
     grupoId: 12,
     nombre: '3.2.3c',
     titulo: 'Desafío 3.2.3c',
@@ -1782,7 +1782,7 @@ export default [
     </xml>`
   },
   {
-    id: 253,
+    id: 239,
     grupoId: 12,
     nombre: '3.2.3d',
     titulo: 'Desafío 3.2.3d',
@@ -1854,7 +1854,7 @@ export default [
     </xml>`
   },
   {
-    id: 238,
+    id: 240,
     grupoId: 12,
     nombre: '3.I1a',
     titulo: 'Desafio 3.I1a',
@@ -1884,7 +1884,7 @@ export default [
     ],
   },
   {
-    id: 239,
+    id: 241,
     grupoId: 12,
     nombre: '3.I1b',
     titulo: 'Desafio 3.I1b',
@@ -1961,7 +1961,7 @@ export default [
     ],
   },
   {
-    id: 216,
+    id: 242,
     grupoId: 13,
     nombre: '4.1.3a',
     titulo: 'Desafío 4.1.3a (Duba)',
@@ -1982,7 +1982,7 @@ export default [
     ],
   },
   {
-    id: 217,
+    id: 243,
     grupoId: 13,
     nombre: '4.1.3b',
     titulo: 'Desafío 4.1.3b (Duba)',
@@ -2003,7 +2003,7 @@ export default [
     ],
   },
   {
-    id: 254,
+    id: 244,
     grupoId: 13,
     nombre: '4.1.3c',
     titulo: 'Desafío 4.1.3c',
@@ -2031,7 +2031,7 @@ export default [
     ]
   },
   {
-    id: 240,
+    id: 245,
     grupoId: 13,
     nombre: '4.1.4a',
     titulo: 'Desafio 4.1.4a',
@@ -2057,7 +2057,7 @@ export default [
     ],
   },
   {
-    id: 218,
+    id: 246,
     grupoId: 13,
     nombre: '4.1.4b',
     titulo: 'Desafío 4.1.4b (Duba)',
@@ -2094,7 +2094,7 @@ export default [
     ],
   },
   {
-    id: 219,
+    id: 247,
     grupoId: 13,
     nombre: '4.1.4c',
     titulo: 'Desafío 4.1.4c (Duba)',
@@ -2124,7 +2124,7 @@ export default [
     ],
   },
   {
-    id: 220,
+    id: 248,
     grupoId: 13,
     nombre: '4.2.1a',
     titulo: 'Desafío 4.2.1a (Duba)',
@@ -2147,7 +2147,7 @@ export default [
     ],
   },
   {
-    id: 221,
+    id: 249,
     grupoId: 13,
     nombre: '4.2.1b',
     titulo: 'Desafío 4.2.1b (Duba)',
@@ -2170,7 +2170,7 @@ export default [
     ],
   },
   {
-    id: 241,
+    id: 250,
     grupoId: 13,
     nombre: '4.2.1c',
     titulo: 'Desafio 4.2.1c',
@@ -2196,7 +2196,7 @@ export default [
     ],
   },
   {
-    id: 227,
+    id: 251,
     grupoId: 13,
     nombre: '4.I1a',
     titulo: 'Desafío 4.I1a',
@@ -2219,7 +2219,7 @@ export default [
   },
 
   {
-    id: 228,
+    id: 252,
     grupoId: 13,
     nombre: '4.I1b',
     titulo: 'Desafío 4.I1b',
@@ -2243,7 +2243,7 @@ export default [
   },
 
   {
-    id: 229,
+    id: 253,
     grupoId: 13,
     nombre: '4.I1c',
     titulo: 'Desafío 4.I1c',
@@ -2268,7 +2268,7 @@ export default [
   },
 
   {
-    id: 230,
+    id: 254,
     grupoId: 13,
     nombre: '4.I1d',
     titulo: 'Desafío 4.I1d',
