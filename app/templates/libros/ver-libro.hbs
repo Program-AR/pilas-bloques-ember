@@ -2,9 +2,7 @@
 
   <h1>Desafíos del {{model.titulo}}</h1>
 
-  {{#unless debeOcultarLibros}}
-    <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
-  {{/unless}}
+  <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
 
   {{#each model.grupos as |grupo|}}
 

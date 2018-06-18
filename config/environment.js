@@ -13,7 +13,6 @@ module.exports = function(environment) {
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
-    ocultar_seccion_libros: false,
     
     EmberENV: {
       EXTEND_PROTOTYPES: {
@@ -58,7 +57,6 @@ module.exports = function(environment) {
   if (environment === 'web' || environment === 'production') {
     ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
     ENV['googleAnalyticsEnabled'] = true;
-    ENV['ocultar_seccion_libros'] = true;
   }
 
   return ENV;
