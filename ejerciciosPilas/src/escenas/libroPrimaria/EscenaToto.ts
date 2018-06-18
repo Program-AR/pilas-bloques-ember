@@ -40,7 +40,8 @@ abstract class EscenaToto extends EscenaDesdeMapa {
 
     ajustarGraficos() {
         this.automata.enviarAlFrente();
-        this.automata.escala *= this.escalaSegunCuadricula(1.8);
+        this.automata.escala *= this.escalaSegunCuadricula(1.6);
+        this.automata.setY(this.automata.getY() + this.automata.alto * 0.1)
     }
 
     mapearIdentificadorAActor(id, nroFila, nroColumna): ActorAnimado {
@@ -62,16 +63,17 @@ abstract class EscenaToto extends EscenaDesdeMapa {
         return 80;
     }
     opsCuadricula() {
-        return { ancho: 400, alto: 300 };
+        return { ancho: 360, alto: 280 };
     }
     opsCasilla() {
-        return { grilla: "casillas.toto.png", alto: this.mapaEscena.length === 1 ? 70 : undefined, cantColumnas: 16, bordesDecorados: true, relAspecto: 1 };
+        return { grilla: "casillas.toto.png", cantColumnas: 16, bordesDecorados: true, relAspecto: 1 };
     }
 
     construirCuadriculaSecundaria() : Cuadricula {
+        new ActorAnimado(0, -160, { grilla: this.pathCuadriculaSecundaria() })
         return new Cuadricula(
-            0, -170, 1, this.topeDeLetras,
-            { alto: 160 , ancho: 380, imagen: this.pathCuadriculaSecundaria()}, { grilla: 'invisible.png' }
+            70, -160, 1, this.topeDeLetras,
+            { alto: 160 , ancho: 210, imagen: 'invisible.png', separacionEntreCasillas: -24}, { grilla: 'invisible.png', relAspecto: 1 }
         );
     }
 

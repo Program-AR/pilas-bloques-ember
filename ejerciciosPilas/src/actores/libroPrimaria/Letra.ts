@@ -67,12 +67,12 @@ class LetraTablero extends Letra {
 
 class LetraLeida extends Letra {
     pathImagen(): string {
-        return "actor.letra.secundaria.png";
+        return "actor.letra.leida.png";
     }
 }
 
 class LetraManuscrita extends Letra {
     pathImagen(): string {
-        return "actor.letra.secundaria.png";
+        return "actor.letra.manuscrita.png";
     }
 }
