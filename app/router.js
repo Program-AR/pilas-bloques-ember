@@ -24,13 +24,9 @@ Router.map(function() {
 
 Router.reopen({
   notifyGoogleAnalytics: Ember.on("didTransition", function() {
-    if (ga) {
-
-      if (config.googleAnalyticsEnabled) {
-        let url = this.get('url');
-        ga('send', 'pageview', {page: url, title: url});
-      }
-
+    if (ga && config.googleAnalyticsEnabled) {
+      let url = this.get('url');
+      ga('send', 'pageview', {page: url, title: url});
     }
   })
 });
