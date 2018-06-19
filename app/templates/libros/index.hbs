@@ -1,7 +1,6 @@
 <div class='contenido-principal'>
 
-  <h1>Desafíos disponibles</h1>
-
+  <div class="box">
   <p>Te presentamos los desafíos catalogados en libros, ¡elegí el mas adecuado para vos!:</p>
 
   {{#each model as |libro|}}
@@ -9,5 +8,27 @@
     {{pilas-libro libro=libro}}
 
   {{/each}}
+
+      <p><img class='main-logo' src='images/main-logo.png' width="468" height="262"></p>
+
+    <p>
+      ¡Hola! Te damos la bienvenida a <strong>Pilas Bloques</strong>,
+      una herramienta para aprender a programar.
+    </p>
+
+    <p>
+      Aquí están dos series de actividades para resolver.
+    </p>
+
+    <p>
+      Visitá la sección {{#link-to "acercade"}}<strong>Acerca de</strong>{{/link-to}}
+      para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
+    </p>
+
+    <p>
+      Si necesitás ayuda, presioná ({{fa-icon "question"}}) ubicado en la parte superior derecha
+      de la pantalla.
+    </p>
+  </div>
 
 </div>
