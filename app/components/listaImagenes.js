@@ -13,8 +13,6 @@ export default [
     "actor.lechuga.png",
     "actor.letra.leida.png",
     "actor.letra.manuscrita.png",
-    "actor.letra.png",
-    "actor.letra.secundaria.png",
     "actor.letra.tablero.png",
     "actor.lita.png",
     "actor.tomate.png",

@@ -9,7 +9,7 @@ test('visiting /', function(assert) {
     visit();
 
   andThen(() => {
-    assert.equal(principal.cantidadDeLinks(), 2, "Hay dos links en pantalla.");
+    assert.equal(principal.cantidadDeLinks(), 3, "Hay tres links en pantalla.");
   });
 
   principal.abrirAyuda();
