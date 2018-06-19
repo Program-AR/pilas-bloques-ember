@@ -11,7 +11,11 @@ class EscenaTotoLector extends EscenaToto {
         return new TotoLector();
     }
 
-    pathCuadriculaSecundaria(){
-        return "pensamientoToto.png";
+    construirCuadriculaSecundaria(): Cuadricula {
+        new ActorAnimado(0, -160, { grilla: "pensamientoToto.png" })
+        return new Cuadricula(
+            70, -160, 1, this.topeDeLetras,
+            { alto: 160, ancho: 210, imagen: 'invisible.png', separacionEntreCasillas: -24 }, { grilla: 'invisible.png', relAspecto: 1 }
+        );
     }
 }

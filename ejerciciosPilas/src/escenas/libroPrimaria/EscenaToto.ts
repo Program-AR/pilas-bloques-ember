@@ -69,18 +69,7 @@ abstract class EscenaToto extends EscenaDesdeMapa {
         return { grilla: "casillas.toto.png", cantColumnas: 16, bordesDecorados: true, relAspecto: 1 };
     }
 
-    construirCuadriculaSecundaria() : Cuadricula {
-        new ActorAnimado(0, -160, { grilla: this.pathCuadriculaSecundaria() })
-        return new Cuadricula(
-            70, -160, 1, this.topeDeLetras,
-            { alto: 160 , ancho: 210, imagen: 'invisible.png', separacionEntreCasillas: -24}, { grilla: 'invisible.png', relAspecto: 1 }
-        );
-    }
-
-    /**
-     * Retorna el nombre de la imagen correspondiente al fondo de la cuadrícula secundaria.
-     */
-    abstract pathCuadriculaSecundaria() : string;
+    abstract construirCuadriculaSecundaria() : Cuadricula;
 
     /**
      * Devuelve en forma de string el contenido actual de la cuadrícula secundaria.
