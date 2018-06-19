@@ -9,7 +9,6 @@ test('visiting /', function(assert) {
     visit();
 
   andThen(() => {
-    assert.equal(principal.cantidadDeImagenes(), 1, "Tiene solo una imagen, la del logotipo.");
     assert.equal(principal.cantidadDeLinks(), 2, "Hay dos links en pantalla.");
   });
 
