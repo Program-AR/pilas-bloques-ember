@@ -16,7 +16,7 @@ class DibujarLinea extends MovimientoAnimado {
 		var origen = { x: this.receptor.x, y: this.receptor.y };
 		super.darUnPaso();
 		if (!this.hayObstaculo()) {
-			this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+			this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
 		}
 	}
 
@@ -25,14 +25,14 @@ class DibujarLinea extends MovimientoAnimado {
 		this.argumentos.distanciaConObstaculo = this.argumentos.distancia / 2;
 		super.preAnimacion();
 		if (this.argumentos.dibujarPuntos && !this.hayObstaculo()) {
-			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
 		}
 	}
 
 	postAnimacion() {
 		super.postAnimacion();
 		if (this.argumentos.dibujarPuntos) {
-			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, pilas.colores.azuloscuro, 6);
+			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
 		}
 	}
 

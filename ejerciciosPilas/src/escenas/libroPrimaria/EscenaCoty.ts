@@ -43,12 +43,12 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
 
    hacerDibujoEsperado() {
      this.pizarraFantasma = new Pizarra();
-     this.dibujoEsperado.dibujarEn(this.pizarraFantasma, pilas.colores.gris, this.anchoLinea, true);
+     this.dibujoEsperado.dibujarEn(this.pizarraFantasma, this.colorDibujoEsperado(), this.anchoLinea, true);
    }
 
    hacerDibujoPreexistente(){
     this.pizarraDibujoPreexistente = new Pizarra();
-    this.dibujoPreexistente.dibujarEn(this.pizarraDibujoPreexistente, pilas.colores.azuloscuro, this.anchoLinea);
+    this.dibujoPreexistente.dibujarEn(this.pizarraDibujoPreexistente, createjs.Graphics.getRGB(41, 105, 165), this.anchoLinea);
    }
 
    crearCharco() {
@@ -79,6 +79,14 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
    pathFondo(): string {
     return 'fondo.coty.png';
   }
+
+  colorDibujo() {
+    return pilas.colores.rgb(35, 105, 166);
+  }
+
+  colorDibujoEsperado() {
+    return pilas.colores.gris;
+  }
 }
 
 class EscenaCotySonrisa extends EscenaCoty {
@@ -89,8 +97,8 @@ class EscenaCotySonrisa extends EscenaCoty {
 
   hacerDibujoPreexistente(){
     super.hacerDibujoPreexistente();
-    this.pizarraDibujoPreexistente.circulo(0,0,150,pilas.colores.azuloscuro,this.anchoLinea);
-    this.pizarraDibujoPreexistente.arco(0,0,100,Math.PI*0.25, Math.PI*0.75,pilas.colores.azuloscuro,this.anchoLinea);
+    this.pizarraDibujoPreexistente.circulo(0,0,150,this.colorDibujo(),this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(0,0,100,Math.PI*0.25, Math.PI*0.75,this.colorDibujo(),this.anchoLinea);
   }
 }
 
@@ -106,32 +114,32 @@ class EscenaCotyCactus extends EscenaCoty {
   hacerDibujoPreexistente() {
     super.hacerDibujoPreexistente();
     // Cabeza grande
-    this.pizarraDibujoPreexistente.arco(0, 100, 50, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea);    
-    this.pizarraDibujoPreexistente.linea(-50, 50, -50, 100, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(50, 50, 50, 100, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(0, 100, 50, Math.PI, 0, this.colorDibujo(), this.anchoLinea);    
+    this.pizarraDibujoPreexistente.linea(-50, 50, -50, 100, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(50, 50, 50, 100, this.colorDibujo(), this.anchoLinea);
 
     // Líneas cuerpo central
-    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(50, -150, 50, -200, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(-50, -100, -50, -200, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(50, -150, 50, -200, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-50, -100, -50, -200, this.colorDibujo(), this.anchoLinea);
 
     // Bracito 1
-    this.pizarraDibujoPreexistente.arco(-50, 0, 50, Math.PI * 1/2, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.arco(-50, 0, 100, Math.PI * 1 / 2, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(-50, 0, 50, Math.PI * 1/2, Math.PI, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(-50, 0, 100, Math.PI * 1 / 2, Math.PI, this.colorDibujo(), this.anchoLinea);
   
     // Cabeza chica 1
-    this.pizarraDibujoPreexistente.arco(-125, 25, 25, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea)
-    this.pizarraDibujoPreexistente.linea(-150, 0, -150, 25, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(-100, 0, -100, 25, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(-125, 25, 25, Math.PI, 0, this.colorDibujo(), this.anchoLinea)
+    this.pizarraDibujoPreexistente.linea(-150, 0, -150, 25, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-100, 0, -100, 25, this.colorDibujo(), this.anchoLinea);
 
     // Bracito 2
-    this.pizarraDibujoPreexistente.arco(50, -50, 50, 0, Math.PI * 1 / 2, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.arco(50, -50, 100, 0, Math.PI * 1 / 2, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(50, -50, 50, 0, Math.PI * 1 / 2, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(50, -50, 100, 0, Math.PI * 1 / 2, this.colorDibujo(), this.anchoLinea);
   
     // Cabeza chica 2
-    this.pizarraDibujoPreexistente.arco(125, -25, 25, Math.PI, 0, pilas.colores.azuloscuro, this.anchoLinea)
-    this.pizarraDibujoPreexistente.linea(150, -50, 150, -25, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(100, -50, 100, -25, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(125, -25, 25, Math.PI, 0, this.colorDibujo(), this.anchoLinea)
+    this.pizarraDibujoPreexistente.linea(150, -50, 150, -25, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(100, -50, 100, -25, this.colorDibujo(), this.anchoLinea);
   }
 }
 
@@ -146,11 +154,11 @@ class EscenaCotyMate extends EscenaCoty {
 
   hacerDibujoPreexistente() {
     super.hacerDibujoPreexistente();
-    this.pizarraDibujoPreexistente.arco(-100, -25, 25, Math.PI / 2, - Math.PI / 2, pilas.colores.azuloscuro, this.anchoLinea);    
-    this.pizarraDibujoPreexistente.arco(50, -25, 25, - Math.PI / 2, Math.PI / 2, pilas.colores.azuloscuro, this.anchoLinea);    
-    this.pizarraDibujoPreexistente.arco(-25, -100, 75, 0, Math.PI, pilas.colores.azuloscuro, this.anchoLinea);    
-    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(-10, 0, 50, 100, pilas.colores.azuloscuro, this.anchoLinea);
-    this.pizarraDibujoPreexistente.linea(10, 0, 100, 150, pilas.colores.azuloscuro, this.anchoLinea);
+    this.pizarraDibujoPreexistente.arco(-100, -25, 25, Math.PI / 2, - Math.PI / 2, this.colorDibujo(), this.anchoLinea);    
+    this.pizarraDibujoPreexistente.arco(50, -25, 25, - Math.PI / 2, Math.PI / 2, this.colorDibujo(), this.anchoLinea);    
+    this.pizarraDibujoPreexistente.arco(-25, -100, 75, 0, Math.PI, this.colorDibujo(), this.anchoLinea);    
+    this.pizarraDibujoPreexistente.linea(50, -50, 50, -100, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(-10, 0, 50, 100, this.colorDibujo(), this.anchoLinea);
+    this.pizarraDibujoPreexistente.linea(10, 0, 100, 150, this.colorDibujo(), this.anchoLinea);
   }
 }

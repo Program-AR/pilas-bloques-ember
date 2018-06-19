@@ -1059,6 +1059,7 @@ declare class colores {
     azul_transparente: any;
     gris_transparente: any;
     constructor();
+    rgb(r: number, g: number, b: number, a?: number): any;
 }
 declare class tareas {
     Tareas: any;
