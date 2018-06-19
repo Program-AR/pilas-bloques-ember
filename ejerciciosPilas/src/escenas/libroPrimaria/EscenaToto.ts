@@ -40,8 +40,8 @@ abstract class EscenaToto extends EscenaDesdeMapa {
 
     ajustarGraficos() {
         this.automata.enviarAlFrente();
-        this.automata.escala *= this.escalaSegunCuadricula(1.6);
-        this.automata.setY(this.automata.getY() + this.automata.alto * 0.1)
+        this.automata.setY(this.automata.getY() + this.automata.alto * 0.15);
+        this.automata.escala *= this.escalaSegunCuadricula(1.55);
     }
 
     mapearIdentificadorAActor(id, nroFila, nroColumna): ActorAnimado {
