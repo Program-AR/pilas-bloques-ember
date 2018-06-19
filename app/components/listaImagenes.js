@@ -131,7 +131,7 @@ export default [
     "instalador.png",
     "invisible.png",
     "lamparin.png",
-    "libroToto.png",
+    "libretaToto.png",
     "llaveAnimada.png",
     "mago.png",
     "manoToto.png",

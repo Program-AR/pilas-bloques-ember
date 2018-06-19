@@ -28,7 +28,7 @@ abstract class DibujandoFiguras extends EscenaActividad {
 
     hacerDibujoEsperado() {
       this.pizarraFantasma = new Pizarra();
-      this.dibujoEsperado.dibujarEn(this.pizarraFantasma, pilas.colores.grisclaro, this.anchoLinea);
+      this.dibujoEsperado.dibujarEn(this.pizarraFantasma, this.colorDibujoEsperado(), this.anchoLinea);
     }
 
     dibujoRealizado(): DibujoLineal {
@@ -43,6 +43,14 @@ abstract class DibujandoFiguras extends EscenaActividad {
 
     pathFondo(): string {
       return 'fondo.dibujando.figuras.png';
+    }
+
+    colorDibujo() {
+      return pilas.colores.azuloscuro;
+    }
+
+    colorDibujoEsperado() {
+      return pilas.colores.grisclaro;
     }
 
     abstract puntosEsperados(): PuntoSimple[] | PuntoSimple[][];

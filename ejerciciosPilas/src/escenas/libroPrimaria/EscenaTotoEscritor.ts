@@ -12,17 +12,25 @@ class EscenaTotoEscritor extends EscenaToto {
         super.iniciar();
         this.manoQueEscribe = new ActorAnimado(0,0,{grilla: "manoToto.png"});
         this.cuadriculaSecundaria.agregarActor(this.manoQueEscribe,0,0,false);
-        this.manoQueEscribe.escalarAAncho(150);
-        this.manoQueEscribe.setY(this.manoQueEscribe.getY()+40);
-        this.manoQueEscribe.setX(this.manoQueEscribe.getX()+70);
+        this.manoQueEscribe.escalarAAncho(190);
+        this.manoQueEscribe.setY(this.manoQueEscribe.getY()-25);
+        this.manoQueEscribe.setX(this.manoQueEscribe.getX()+85);
     }
 
     obtenerAutomata() : TotoEscritor {
         return new TotoEscritor();
     }
 
-    pathCuadriculaSecundaria() : string {
-        return "libroToto.png";
+    opsCuadricula() {
+        return { ancho: 400, alto: 280 };
+    }
+
+    construirCuadriculaSecundaria(): Cuadricula {
+        new ActorAnimado(-30, -170, { grilla: "libretaToto.png" })
+        return new Cuadricula(
+            30, -140, 1, this.topeDeLetras,
+            { alto: 160, ancho: 300, imagen: 'invisible.png', separacionEntreCasillas: -20 }, { grilla: 'invisible.png', relAspecto: 1 }
+        );
     }
 }
 
