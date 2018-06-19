@@ -21,6 +21,10 @@ class EscenaTotoEscritor extends EscenaToto {
         return new TotoEscritor();
     }
 
+    opsCuadricula() {
+        return { ancho: 400, alto: 280 };
+    }
+
     construirCuadriculaSecundaria(): Cuadricula {
         new ActorAnimado(-30, -170, { grilla: "libretaToto.png" })
         return new Cuadricula(
