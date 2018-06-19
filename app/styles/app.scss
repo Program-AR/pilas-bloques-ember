@@ -825,8 +825,8 @@ a:hover {
   display: inline-block;
   background-image: url('../imagenes/pilas-libro.png');
   background-repeat: no-repeat;
+  background-position: center top;
   width: 388px;
-  height: 244px;
   text-align: center;
   padding-top: 20px;
 }
@@ -843,7 +843,7 @@ a:hover {
 
 .pilas-libro-contenedor p {
   padding-top: 3px;
-  color: gray;
+  font-style: italic;
 }
 
 .mensaje-sin-desafios {
