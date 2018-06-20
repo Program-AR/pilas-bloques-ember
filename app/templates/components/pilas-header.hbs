@@ -10,7 +10,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        {{#link-to "libros" tagName='li'}}<a href=#><i class='fa fa-book'></i> Desafíos</a>{{/link-to}}
+        {{#link-to "libros" tagName='li'}}<a href=#><i class='fa fa-home'></i> Principal</a>{{/link-to}}
+        {{#link-to "libros.verLibro" 1 tagName='li'}}<a href=#><i class='fa fa-book'></i> 1er Ciclo</a>{{/link-to}}
+        {{#link-to "libros.verLibro" 2 tagName='li'}}<a href=#><i class='fa fa-book'></i> 2do Ciclo</a>{{/link-to}}
         {{#link-to "acercade" tagName='li'}}<a href=#><i class='fa fa-info-circle'></i> Acerca de</a>{{/link-to}}
       </ul>
 
