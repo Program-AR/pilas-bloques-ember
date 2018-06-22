@@ -2411,8 +2411,8 @@ export default [
   {
     id: 308,
     grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.I1 b',
-    titulo: 'Cap. 2 / Integradora / A1 b',
+    nombre: '2.I1 a',
+    titulo: 'Cap. 2 / Integradora / A1 a',
     imagen: 'Toto',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaTotoLectorFondoBlanco([
@@ -2438,6 +2438,36 @@ export default [
   },
   {
     id: 310,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.I1 a',
+    titulo: 'Cap. 2 / Integradora / A1 a V2',
+    imagen: 'Toto',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaTotoLectorFondoBlanco([
+      ['a', 'v', 'u'],
+      ['j', 'n', 'A'],
+      ['n', 'a', 'b'],
+      ['a', 'r', 'e'],
+    ], "banana")`,
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+  },
+  {
+    id: 311,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.I1 b',
+    titulo: 'Cap. 2 / Integradora / A1 b V2',
+    imagen: 'Toto',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaTotoLectorFondoBlanco([
+      ['f', 'A', 'p'],
+      ['a', 'h', 'e'],
+      ['m', 'u', 'o'],
+      ['c', 'a', 'j'],
+    ], "humahuaca")`,
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+  },
+  {
+    id: 312,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1a',
     titulo: 'Cap. 3 / SD2 / A1 a',
@@ -2453,7 +2483,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 311,
+    id: 313,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1b',
     titulo: 'Cap. 3 / SD2 / A1 b',
@@ -2469,7 +2499,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 312,
+    id: 314,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1c',
     titulo: 'Cap. 3 / SD2 / A1 c',
@@ -2485,7 +2515,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 313,
+    id: 315,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.2a',
     titulo: 'Cap. 3 / SD2 / A1 a',
@@ -2504,7 +2534,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 314,
+    id: 316,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.2b',
     titulo: 'Cap. 3 / SD2 / A1 b',
@@ -2523,7 +2553,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 315,
+    id: 317,
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.2c',
     titulo: 'Cap. 3 / SD2 / A1 c',
