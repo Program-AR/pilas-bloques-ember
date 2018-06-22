@@ -2436,4 +2436,109 @@ export default [
     ], "humahuaca")`,
     bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
   },
+  {
+    id: 310,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1a',
+    titulo: 'Cap. 3 / SD2 / A1 a',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,-,-,A,O],\
+      [O,O,O,-,O],\
+      [O,-,-,-,-],\
+      [O,-,-,-,-],\
+      [O,O,-,P,-],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 311,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1b',
+    titulo: 'Cap. 3 / SD2 / A1 b',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,A],\
+      [-,-,O,O,-],\
+      [-,-,O,O,-],\
+      [-,-,O,-,-],\
+      [A,O,O,-,O],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 312,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1c',
+    titulo: 'Cap. 3 / SD2 / A1 c',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [A,O,O,O,O],\
+      [-,-,O,O,O],\
+      [-,-,-,O,-],\
+      [O,-,-,-,-],\
+      [O,-,O,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 313,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.2a',
+    titulo: 'Cap. 3 / SD2 / A1 a',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-,O,O,O],\
+      [-,A,-,-,-,-,O,O],\
+      [-,-,-,-,-,-,-,O],\
+      [O,O,-,-,P,-,-,O],\
+      [O,-,-,-,-,-,-,O],\
+      [O,-,-,-,-,-,-,-],\
+      [O,O,-,-,-,O,-,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 314,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.2b',
+    titulo: 'Cap. 3 / SD2 / A1 b',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,O,-,-,-,-,-,-],\
+      [O,-,-,-,-,-,-,-],\
+      [-,-,P,-,-,-,-,-],\
+      [-,-,-,-,-,-,-,-],\
+      [-,-,O,O,-,-,-,-],\
+      [O,-,O,O,-,-,-,-],\
+      [O,O,O,O,-,A,-,O],\
+      [O,O,O,O,O,O,O,O],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 315,
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.2c',
+    titulo: 'Cap. 3 / SD2 / A1 c',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,P,-,-,-,O],\
+      [-,-,-,-,-,-,-,-],\
+      [-,-,-,-,-,-,-,-],\
+      [-,-,-,-,-,-,-,-],\
+      [O,O,O,-,-,-,-,-],\
+      [O,O,O,O,-,-,-,-],\
+      [O,O,O,O,-,O,-,A],\
+      [O,O,O,O,O,O,-,-],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
 ];
