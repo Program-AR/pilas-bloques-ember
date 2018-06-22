@@ -2306,4 +2306,134 @@ export default [
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
+
+  // Los desafíos a partir de acá (id 3**) se crearon únicamente para tomar capturas
+  // para el manual de Tandil y deben ser removidos a futuro.
+  {
+    id: 301,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1a',
+    titulo: 'Cap. 2 / SD2 / A1 a',
+    imagen: 'Duba',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,O,O,O],\
+      [O,-,A,O],\
+      [O,P,O,O],\
+      [O,O,O,O],\
+		")`,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['repetir','si','sino','MoverACasillaAbajo','MoverACasillaArriba','MoverACasillaIzquierda','MoverACasillaDerecha','ComerChurrasco','HayChurrasco']
+  },
+  {
+    id: 302,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1b-1',
+    titulo: 'Cap. 2 / SD2 / A1 b-1',
+    imagen: 'Duba',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,O,O],\
+      [O,P,O],\
+      [A,-,O],\
+		")`,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 303,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1b-2',
+    titulo: 'Cap. 2 / SD2 / A1 b-2',
+    imagen: 'Duba',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,O,O],\
+      [O,-,P],\
+      [A,-,O],\
+		")`,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 304,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1b-3',
+    titulo: 'Cap. 2 / SD2 / A1 b-3',
+    imagen: 'Duba',
+    escena: `new EscenaDubaFondoBlanco("\
+      [O,O,O],\
+      [P,-,A],\
+      [O,O,O],\
+		")`,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 305,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1b-4',
+    titulo: 'Cap. 2 / SD2 / A1 b-4',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,A,O],\
+      [-,O,O],\
+      [P,O,O],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+  },
+  {
+    id: 306,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1 c',
+    titulo: 'Cap. 2 / SD2 / A1 c',
+    imagen: 'Coty',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaCotyFondoBlanco(
+      [],
+      [[{x:-30,y:60},{x:30,y:60},{x:30,y:0},{x:30,y:-60}]],
+      {xCoty: -30, yCoty: 60, longitudSegmento: 60}
+    )`,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
+  },
+  {
+    id: 307,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.2.1 d',
+    titulo: 'Cap. 2 / SD2 / A1 d',
+    imagen: 'Coty',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaCotyFondoBlanco(
+      [],
+      [[{x:-40,y:-40},{x:-40,y:40},{x:40,y:40},{x:40,y:-40},{x:-40,y:-40}]],
+      {xCoty: -40, yCoty: -40, longitudSegmento: 80}
+    )`,
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
+  },
+  {
+    id: 308,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.I1 b',
+    titulo: 'Cap. 2 / Integradora / A1 b',
+    imagen: 'Toto',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaTotoLectorFondoBlanco([
+      ['n', 'A'],
+      ['a', 'b'],
+    ], "banana")`,
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+  },
+  {
+    id: 309,
+    grupoId: 'manual2cPrimariaCapturasCap2',
+    nombre: '2.I1 b',
+    titulo: 'Cap. 2 / Integradora / A1 b',
+    imagen: 'Toto',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaTotoLectorFondoBlanco([
+      ['f', 'A'],
+      ['a', 'h'],
+      ['m', 'u'],
+      ['c', 'a'],
+    ], "humahuaca")`,
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+  },
 ];

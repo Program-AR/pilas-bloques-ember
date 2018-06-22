@@ -77,6 +77,7 @@ export default [
     "focos.color.png",
     "fondo.BosqueDeNoche.png",
     "fondo.alimentando_peces.png.png",
+    "fondo.blanco.png",
     "fondo.cangrejo_aguafiestas.png",
     "fondo.coty.png",
     "fondo.detective.png",
