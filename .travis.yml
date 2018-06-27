@@ -31,7 +31,6 @@ script:
 before_script:
   - export DISPLAY=:99; sh -e /etc/init.d/xvfb start; sleep 3
 before_install:
-- npm install npm@3
 - npm --version
 - npm config set spin false
 - npm install -g bower
