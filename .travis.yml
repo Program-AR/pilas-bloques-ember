@@ -31,6 +31,7 @@ script:
 before_script:
   - export DISPLAY=:99; sh -e /etc/init.d/xvfb start; sleep 3
 before_install:
+- if [[ `npm -v` != 3* ]]; then npm i -g npm@3; fi # Npm versions previous to 3 seem to fail with emberInflector peerDependencies
 - npm config set spin false
 - npm install -g bower
 - npm install -g phantomjs-prebuilt
