@@ -14,8 +14,7 @@
   },
   "repository": "https://github.com/Program-AR/pilas-engine-bloques",
   "engines": {
-    "node": "6.11.3",
-    "npm": ">= 3.10.10"
+    "node": ">= 0.10.0"
   },
   "author": "",
   "license": "MIT",
