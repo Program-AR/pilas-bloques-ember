@@ -898,5 +898,9 @@ a:hover {
 }
 
 .aplicar-modo-lectura-simple {
-  font-variant: small-caps !important;
+  text-transform: uppercase !important;
+}
+
+.blocklyText {
+  font-family: Arial, sans-serif !important;
 }
