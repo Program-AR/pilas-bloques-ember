@@ -2,8 +2,8 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 moduloActividad("Duba - Alternativa condicional");
 
-actividadTest("4.1.3a", {
-  descripcionAdicional: "4.1.3a: Se puede resolver",
+actividadTest("5.1.3a", {
+  descripcionAdicional: "5.1.3a: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -25,8 +25,8 @@ actividadTest("4.1.3a", {
   </xml>`
 });
 
-actividadTest("4.1.3b", {
-  descripcionAdicional: "4.1.3b: Se puede resolver",
+actividadTest("5.1.3b", {
+  descripcionAdicional: "5.1.3b: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -63,8 +63,8 @@ actividadTest("4.1.3b", {
   </xml>`
 });
 
-actividadTest("4.1.4b", {
-  descripcionAdicional: "4.1.4b: Se puede resolver (solución 1)",
+actividadTest("5.1.4b", {
+  descripcionAdicional: "5.1.4b: Se puede resolver (solución 1)",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -98,8 +98,8 @@ actividadTest("4.1.4b", {
   </xml>`
 });
 
-actividadTest("4.1.4b", {
-  descripcionAdicional: "4.1.4b: Se puede resolver (solución 2)",
+actividadTest("5.1.4b", {
+  descripcionAdicional: "5.1.4b: Se puede resolver (solución 2)",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -133,8 +133,8 @@ actividadTest("4.1.4b", {
   </xml>`
 });
 
-actividadTest("4.1.4c", {
-  descripcionAdicional: "4.1.4c: Se puede resolver",
+actividadTest("5.1.4c", {
+  descripcionAdicional: "5.1.4c: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -184,8 +184,8 @@ actividadTest("4.1.4c", {
   </xml>`
 });
 
-actividadTest("4.2.1a", {
-  descripcionAdicional: "4.2.1a: Se puede resolver",
+actividadTest("5.2.1a", {
+  descripcionAdicional: "5.2.1a: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -216,8 +216,8 @@ actividadTest("4.2.1a", {
   </xml>`
 });
 
-actividadTest("4.2.1b", {
-  descripcionAdicional: "4.2.1b: Se puede resolver",
+actividadTest("5.2.1b", {
+  descripcionAdicional: "5.2.1b: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">

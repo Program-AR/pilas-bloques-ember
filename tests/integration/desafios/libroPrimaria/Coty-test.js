@@ -2,8 +2,8 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 moduloActividad("Coty");
 
-actividadTest("2.1.3a", {
-  descripcionAdicional: 'Coty-2.1.3a',
+actividadTest("3.1.3a", {
+  descripcionAdicional: 'Coty-3.1.3a',
 	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
   <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
     <statement name=\"program\">
@@ -25,8 +25,8 @@ actividadTest("2.1.3a", {
 </xml>`,
 });
 
-actividadTest("2.1.3b", {
-  descripcionAdicional: 'Coty-2.1.3b',
+actividadTest("3.1.3b", {
+  descripcionAdicional: 'Coty-3.1.3b',
 	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
   <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
     <statement name=\"program\">
@@ -64,8 +64,8 @@ actividadTest("2.1.3b", {
 </xml>`,
 });
 
-actividadTest("2.1.3c", {
-  descripcionAdicional: 'Coty-2.1.3c',
+actividadTest("3.1.3c", {
+  descripcionAdicional: 'Coty-3.1.3c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -95,8 +95,8 @@ actividadTest("2.1.3c", {
 </xml>`,
 });
 
-actividadTest("2.1.3d", {
-  descripcionAdicional: 'Coty-2.1.3d',
+actividadTest("3.1.3d", {
+  descripcionAdicional: 'Coty-3.1.3d',
 	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
   <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
     <statement name=\"program\">
@@ -122,8 +122,8 @@ actividadTest("2.1.3d", {
 </xml>`,
 });
 
-actividadTest("2.1.3e", {
-  descripcionAdicional: 'Coty-2.1.3e',
+actividadTest("3.1.3e", {
+  descripcionAdicional: 'Coty-3.1.3e',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -157,8 +157,8 @@ actividadTest("2.1.3e", {
 </xml>`,
 });
 
-actividadTest("2.1.3f", {
-  descripcionAdicional: 'Coty-2.1.3f',
+actividadTest("3.1.3f", {
+  descripcionAdicional: 'Coty-3.1.3f',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -192,8 +192,8 @@ actividadTest("2.1.3f", {
 </xml>`,
 });
 
-actividadTest("2.1.3g", {
-  descripcionAdicional: 'Coty-2.1.3g',
+actividadTest("3.1.3g", {
+  descripcionAdicional: 'Coty-3.1.3g',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -235,8 +235,8 @@ actividadTest("2.1.3g", {
   </xml>`,
 });
 
-actividadTest("3.1.4a", {
-  descripcionAdicional: 'Coty-3.1.4a',
+actividadTest("4.1.4a", {
+  descripcionAdicional: 'Coty-4.1.4a',
 	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
   <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
     <statement name=\"program\">
@@ -259,8 +259,8 @@ actividadTest("3.1.4a", {
 </xml>`,
 });
 
-actividadTest("3.1.4b", {
-  descripcionAdicional: 'Coty-3.1.4b',
+actividadTest("4.1.4b", {
+  descripcionAdicional: 'Coty-4.1.4b',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -298,8 +298,8 @@ actividadTest("3.1.4b", {
 </xml>`,
 });
 
-actividadTest("3.1.4c", {
-  descripcionAdicional: 'Coty-3.1.4c',
+actividadTest("4.1.4c", {
+  descripcionAdicional: 'Coty-4.1.4c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -326,8 +326,8 @@ actividadTest("3.1.4c", {
 </xml>`,
 });
 
-actividadTest("3.2.3c", {
-  descripcionAdicional: 'Coty-3.2.3c',
+actividadTest("4.2.3c", {
+  descripcionAdicional: 'Coty-4.2.3c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -350,8 +350,8 @@ actividadTest("3.2.3c", {
 </xml>`,
 });
 
-actividadTest("3.2.3d", {
-  descripcionAdicional: 'Coty-3.2.3d',
+actividadTest("4.2.3d", {
+  descripcionAdicional: 'Coty-4.2.3d',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -390,8 +390,8 @@ actividadTest("3.2.3d", {
 </xml>`,
 });
 
-actividadTest("4.1.3c", {
-  descripcionAdicional: 'Coty-4.1.3c',
+actividadTest("5.1.3c", {
+  descripcionAdicional: 'Coty-5.1.3c',
 	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">

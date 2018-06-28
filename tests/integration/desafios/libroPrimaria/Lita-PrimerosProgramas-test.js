@@ -2,8 +2,8 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 moduloActividad("Lita - Primeros programas");
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: '2.1.4a: Se puede resolver',
+actividadTest("3.1.4a", {
+  descripcionAdicional: '3.1.4a: Se puede resolver',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -41,8 +41,8 @@ actividadTest("2.1.4a", {
   </xml>`,
 });
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Da error al chocarse un obstáculo",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Da error al chocarse un obstáculo",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -53,8 +53,8 @@ actividadTest("2.1.4a", {
   errorEsperado: "¡Hay un obstáculo!"
 });
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Hacen falta tomate y lechuga",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Hacen falta tomate y lechuga",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -85,8 +85,8 @@ actividadTest("2.1.4a", {
   errorEsperado: "¡Todavía no tengo tomate ni lechuga!"
 });
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Hace falta tomate",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Hace falta tomate",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -121,8 +121,8 @@ actividadTest("2.1.4a", {
   errorEsperado: "¡Todavía no tengo tomate!"
 });
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Hace falta lechuga",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Hace falta lechuga",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -157,8 +157,8 @@ actividadTest("2.1.4a", {
   errorEsperado: "¡Todavía no tengo lechuga!"
 });
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Solo se puede preparar ensalada si hay ensaladera",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Solo se puede preparar ensalada si hay ensaladera",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -170,8 +170,8 @@ actividadTest("2.1.4a", {
 });
 
 
-actividadTest("2.1.4a", {
-  descripcionAdicional: "2.1.4a: Se chequea que se haya preparado la ensalada",
+actividadTest("3.1.4a", {
+  descripcionAdicional: "3.1.4a: Se chequea que se haya preparado la ensalada",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -207,8 +207,8 @@ actividadTest("2.1.4a", {
 });
 
 
-actividadTest("2.1.4b", {
-  descripcionAdicional: '2.1.4b: Se puede resolver',
+actividadTest("3.1.4b", {
+  descripcionAdicional: '3.1.4b: Se puede resolver',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -259,8 +259,8 @@ actividadTest("2.1.4b", {
 });
 
 
-actividadTest("2.2.2a", {
-  descripcionAdicional: '2.2.2a: Se puede resolver (solución 1)',
+actividadTest("3.2.2a", {
+  descripcionAdicional: '3.2.2a: Se puede resolver (solución 1)',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -302,8 +302,8 @@ actividadTest("2.2.2a", {
   </xml>`,
 });
 
-actividadTest("2.2.2a", {
-  descripcionAdicional: '2.2.2a: Se puede resolver (solución 2)',
+actividadTest("3.2.2a", {
+  descripcionAdicional: '3.2.2a: Se puede resolver (solución 2)',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -346,8 +346,8 @@ actividadTest("2.2.2a", {
 });
 
 
-actividadTest("2.2.2b", {
-  descripcionAdicional: '2.2.3b: Se puede resolver',
+actividadTest("3.2.2b", {
+  descripcionAdicional: '3.2.3b: Se puede resolver',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -386,8 +386,8 @@ actividadTest("2.2.2b", {
 });
 
 
-actividadTest("2.2.2c", {
-  descripcionAdicional: '2.2.3c: Se puede resolver',
+actividadTest("3.2.2c", {
+  descripcionAdicional: '3.2.3c: Se puede resolver',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -426,8 +426,8 @@ actividadTest("2.2.2c", {
 });
 
 
-actividadTest("2.2.2d", {
-  descripcionAdicional: '2.2.3d: Se puede resolver',
+actividadTest("3.2.2d", {
+  descripcionAdicional: '3.2.3d: Se puede resolver',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -462,8 +462,8 @@ actividadTest("2.2.2d", {
 });
 
 
-actividadTest("2.2.3e", {
-  descripcionAdicional: '2.2.3e: La solución provista no resuelve el problema',
+actividadTest("3.2.3e", {
+  descripcionAdicional: '3.2.3e: La solución provista no resuelve el problema',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -502,8 +502,8 @@ actividadTest("2.2.3e", {
   errorEsperado: "¡Todavía no tengo tomate!"
 });
 
-actividadTest("2.2.3e", {
-  descripcionAdicional: '2.2.3e: La solución correcta resuelve el problema',
+actividadTest("3.2.3e", {
+  descripcionAdicional: '3.2.3e: La solución correcta resuelve el problema',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">

@@ -2,8 +2,8 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 moduloActividad("Lita - Alternativa condicional");
 
-actividadTest("4.1.4a", {
-  descripcionAdicional: '4.1.4a: Se puede resolver (solución 1)',
+actividadTest("5.1.4a", {
+  descripcionAdicional: '5.1.4a: Se puede resolver (solución 1)',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -31,8 +31,8 @@ actividadTest("4.1.4a", {
   </xml>`,
 });
 
-actividadTest("4.1.4a", {
-  descripcionAdicional: '4.1.4a: Se puede resolver (solución 2)',
+actividadTest("5.1.4a", {
+  descripcionAdicional: '5.1.4a: Se puede resolver (solución 2)',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -60,8 +60,8 @@ actividadTest("4.1.4a", {
   </xml>`,
 });
 
-actividadTest("4.1.4a", {
-  descripcionAdicional: '4.1.4a: Se puede resolver (solución 3)',
+actividadTest("5.1.4a", {
+  descripcionAdicional: '5.1.4a: Se puede resolver (solución 3)',
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
@@ -97,8 +97,8 @@ actividadTest("4.1.4a", {
 });
 
 
-actividadTest("4.2.1c", {
-  descripcionAdicional: "4.2.1c: Se puede resolver",
+actividadTest("5.2.1c", {
+  descripcionAdicional: "5.2.1c: Se puede resolver",
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">

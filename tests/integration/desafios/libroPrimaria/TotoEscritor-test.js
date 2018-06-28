@@ -2,8 +2,8 @@ import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
 
 moduloActividad("Toto escritor");
 
-actividadTest("4.I1a", {
-  descripcionAdicional: '4.I1a: Se puede resolver',
+actividadTest("5.I1a", {
+  descripcionAdicional: '5.I1a: Se puede resolver',
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
       <statement name=\"program\">
@@ -26,8 +26,8 @@ actividadTest("4.I1a", {
   </xml>`
 });
 
-actividadTest("4.I1b", {
-  descripcionAdicional: '4.I1b: Se puede resolver',
+actividadTest("5.I1b", {
+  descripcionAdicional: '5.I1b: Se puede resolver',
   solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
       <statement name=\"program\">
@@ -52,8 +52,8 @@ actividadTest("4.I1b", {
   </xml>`
 });
 
-actividadTest("4.I1c", {
-  descripcionAdicional: '4.I1c: Se puede resolver',
+actividadTest("5.I1c", {
+  descripcionAdicional: '5.I1c: Se puede resolver',
   solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
       <statement name=\"program\">
@@ -91,8 +91,8 @@ actividadTest("4.I1c", {
   </xml>`
 });
 
-actividadTest("4.I1d", {
-  descripcionAdicional: '4.I1d: Se puede resolver',
+actividadTest("5.I1d", {
+  descripcionAdicional: '5.I1d: Se puede resolver',
   solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <block type=\"al_empezar_a_ejecutar\" id=\"1\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
       <statement name=\"program\">
