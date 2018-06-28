@@ -550,9 +550,9 @@ export default [
 
 	{
 		id: 201,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2a',
-    titulo: 'Desafío 2.1.2a (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2a',
+    titulo: 'Desafío 3.1.2a (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -575,9 +575,9 @@ export default [
 	},
 	{
 		id: 202,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2b',
-    titulo: 'Desafío 2.1.2b (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2b',
+    titulo: 'Desafío 3.1.2b (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
@@ -601,9 +601,9 @@ export default [
 	},
 	{
 		id: 203,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2c',
-    titulo: 'Desafío 2.1.2c (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2c',
+    titulo: 'Desafío 3.1.2c (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -627,9 +627,9 @@ export default [
   },
   {
 		id: 204,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2d',
-    titulo: 'Desafío 2.1.2d (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2d',
+    titulo: 'Desafío 3.1.2d (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -653,9 +653,9 @@ export default [
   },
   {
 		id: 205,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2e',
-    titulo: 'Desafío 2.1.2e (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2e',
+    titulo: 'Desafío 3.1.2e (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -679,9 +679,9 @@ export default [
   },
   {
 		id: 206,
-		grupoId: 'manual2cPrimaria2.1.2',
-		nombre: '2.1.2f',
-    titulo: 'Desafío 2.1.2f (Duba)',
+		grupoId: 'manual2cPrimaria3.1.2',
+		nombre: '3.1.2f',
+    titulo: 'Desafío 3.1.2f (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -705,9 +705,9 @@ export default [
   },
   {
     id: 207,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3a',
-    titulo: 'Desafío 2.1.3a',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3a',
+    titulo: 'Desafío 3.1.3a',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
@@ -722,9 +722,9 @@ export default [
   },
   {
     id: 208,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3b',
-    titulo: 'Desafío 2.1.3b',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3b',
+    titulo: 'Desafío 3.1.3b',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
@@ -739,9 +739,9 @@ export default [
   },
   {
     id: 209,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3c',
-    titulo: 'Desafío 2.1.3c',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3c',
+    titulo: 'Desafío 3.1.3c',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -756,9 +756,9 @@ export default [
   },
   {
     id: 210,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3d',
-    titulo: 'Desafío 2.1.3d',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3d',
+    titulo: 'Desafío 3.1.3d',
     imagen: 'Coty',
     escena: `new EscenaCotySonrisa()`,
     enunciado: 'COMPLETAR 1',
@@ -778,9 +778,9 @@ export default [
   },
   {
     id: 211,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3e',
-    titulo: 'Desafío 2.1.3e',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3e',
+    titulo: 'Desafío 3.1.3e',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
@@ -804,9 +804,9 @@ export default [
   },
   {
     id: 212,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3f',
-    titulo: 'Desafío 2.1.3f',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3f',
+    titulo: 'Desafío 3.1.3f',
     imagen: 'Coty',
     escena: `new EscenaCotyCactus()`,
     enunciado: 'COMPLETAR 1',
@@ -817,9 +817,9 @@ export default [
   },
   {
     id: 213,
-    grupoId: 'manual2cPrimaria2.1.3',
-    nombre: '2.1.3g',
-    titulo: 'Desafío 2.1.3g',
+    grupoId: 'manual2cPrimaria3.1.3',
+    nombre: '3.1.3g',
+    titulo: 'Desafío 3.1.3g',
     imagen: 'Coty',
     escena: `new EscenaCotyMate()`,
     enunciado: 'COMPLETAR 1',
@@ -830,8 +830,8 @@ export default [
   },
   {
     id: 214,
-    grupoId: 'manual2cPrimaria2.1.4',
-    nombre: '2.1.4a',
+    grupoId: 'manual2cPrimaria3.1.4',
+    nombre: '3.1.4a',
     titulo: 'Desafio 2.1.4a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -858,8 +858,8 @@ export default [
   },
   {
     id: 215,
-    grupoId: 'manual2cPrimaria2.1.4',
-    nombre: '2.1.4b',
+    grupoId: 'manual2cPrimaria3.1.4',
+    nombre: '3.1.4b',
     titulo: 'Desafio 2.1.4b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -886,8 +886,8 @@ export default [
   },
   {
     id: 216,
-    grupoId: 'manual2cPrimaria2.2.2',
-    nombre: '2.2.2a',
+    grupoId: 'manual2cPrimaria3.2.2',
+    nombre: '3.2.2a',
     titulo: 'Desafio 2.2.2a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -912,8 +912,8 @@ export default [
   },
   {
     id: 217,
-    grupoId: 'manual2cPrimaria2.2.2',
-    nombre: '2.2.2b',
+    grupoId: 'manual2cPrimaria3.2.2',
+    nombre: '3.2.2b',
     titulo: 'Desafio 2.2.2b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -938,8 +938,8 @@ export default [
   },
   {
     id: 218,
-    grupoId: 'manual2cPrimaria2.2.2',
-    nombre: '2.2.2c',
+    grupoId: 'manual2cPrimaria3.2.2',
+    nombre: '3.2.2c',
     titulo: 'Desafio 2.2.2c',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -964,8 +964,8 @@ export default [
   },
   {
     id: 219,
-    grupoId: 'manual2cPrimaria2.2.2',
-    nombre: '2.2.2d',
+    grupoId: 'manual2cPrimaria3.2.2',
+    nombre: '3.2.2d',
     titulo: 'Desafio 2.2.2d',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -989,9 +989,9 @@ export default [
   },
   {
 		id: 220,
-		grupoId: 'manual2cPrimaria2.2.3',
-		nombre: '2.2.3a',
-    titulo: 'Desafío 2.2.3a (Duba)',
+		grupoId: 'manual2cPrimaria3.2.3',
+		nombre: '3.2.3a',
+    titulo: 'Desafío 3.2.3a (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
@@ -1052,9 +1052,9 @@ export default [
   },
   {
 		id: 221,
-		grupoId: 'manual2cPrimaria2.2.3',
-		nombre: '2.2.3b',
-    titulo: 'Desafío 2.2.3b (Duba)',
+		grupoId: 'manual2cPrimaria3.2.3',
+		nombre: '3.2.3b',
+    titulo: 'Desafío 3.2.3b (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
@@ -1099,9 +1099,9 @@ export default [
   },
   {
 		id: 222,
-		grupoId: 'manual2cPrimaria2.2.3',
-		nombre: '2.2.3c',
-    titulo: 'Desafío 2.2.3c (Duba)',
+		grupoId: 'manual2cPrimaria3.2.3',
+		nombre: '3.2.3c',
+    titulo: 'Desafío 3.2.3c (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
@@ -1150,9 +1150,9 @@ export default [
   },
   {
 		id: 223,
-		grupoId: 'manual2cPrimaria2.2.3',
-		nombre: '2.2.3d',
-    titulo: 'Desafío 2.2.3d (Duba)',
+		grupoId: 'manual2cPrimaria3.2.3',
+		nombre: '3.2.3d',
+    titulo: 'Desafío 3.2.3d (Duba)',
     imagen: 'Duba',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
@@ -1209,8 +1209,8 @@ export default [
   },
   {
     id: 224,
-    grupoId: 'manual2cPrimaria2.2.3',
-    nombre: '2.2.3e',
+    grupoId: 'manual2cPrimaria3.2.3',
+    nombre: '3.2.3e',
     titulo: 'Desafio 2.2.3e',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -1274,9 +1274,9 @@ export default [
   },
   {
     id: 225,
-    grupoId: 'manual2cPrimaria2.I',
-    nombre: '2.I1a',
-    titulo: 'Desafío 2.I1a (Toto)',
+    grupoId: 'manual2cPrimaria3.I',
+    nombre: '3.I1a',
+    titulo: 'Desafío 3.I1a (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['A', 'r', 'e'],
@@ -1296,9 +1296,9 @@ export default [
   },
   {
     id: 226,
-    grupoId: 'manual2cPrimaria2.I',
-    nombre: '2.I1b',
-    titulo: 'Desafío 2.I1b (Toto)',
+    grupoId: 'manual2cPrimaria3.I',
+    nombre: '3.I1b',
+    titulo: 'Desafío 3.I1b (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['r', 'h', 'j', 'a'],
@@ -1318,9 +1318,9 @@ export default [
   },
   {
     id: 227,
-    grupoId: 'manual2cPrimaria2.I',
-    nombre: '2.I1c',
-    titulo: 'Desafío 2.I1c (Toto)',
+    grupoId: 'manual2cPrimaria3.I',
+    nombre: '3.I1c',
+    titulo: 'Desafío 3.I1c (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['a', 'm', 'A'],
@@ -1340,9 +1340,9 @@ export default [
   },
   {
     id: 228,
-    grupoId: 'manual2cPrimaria2.I',
-    nombre: '2.I1d',
-    titulo: 'Desafío 2.I1d (Toto)',
+    grupoId: 'manual2cPrimaria3.I',
+    nombre: '3.I1d',
+    titulo: 'Desafío 3.I1d (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['A', 'c', 'a', 'b'],
@@ -1394,9 +1394,9 @@ export default [
   },
   {
     id: 229,
-    grupoId: 'manual2cPrimaria2.I',
-    nombre: '2.I1e',
-    titulo: 'Desafío 2.I1e (Toto)',
+    grupoId: 'manual2cPrimaria3.I',
+    nombre: '3.I1e',
+    titulo: 'Desafío 3.I1e (Toto)',
     imagen: 'Toto',
     escena: `new EscenaTotoLector([
         ['w', 'a', 'r'],
@@ -1449,9 +1449,9 @@ export default [
   },
   {
     id: 230,
-    grupoId: 'manual2cPrimaria3.1.3',
-    nombre: '3.1.3a',
-    titulo: 'Desafío 3.1.3a (Duba)',
+    grupoId: 'manual2cPrimaria4.1.3',
+    nombre: '4.1.3a',
+    titulo: 'Desafío 4.1.3a (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
         [-,O,O,O,-,-,-,-],\
@@ -1478,9 +1478,9 @@ export default [
   },
   {
     id: 231,
-    grupoId: 'manual2cPrimaria3.1.3',
-    nombre: '3.1.3b',
-    titulo: 'Desafío 3.1.3b (Duba)',
+    grupoId: 'manual2cPrimaria4.1.3',
+    nombre: '4.1.3b',
+    titulo: 'Desafío 4.1.3b (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
         [O,O,-,O,O,-,-,-],\
@@ -1507,9 +1507,9 @@ export default [
   },
   {
     id: 232,
-    grupoId: 'manual2cPrimaria3.1.3',
-    nombre: '3.1.3c',
-    titulo: 'Desafío 3.1.3c (Duba)',
+    grupoId: 'manual2cPrimaria4.1.3',
+    nombre: '4.1.3c',
+    titulo: 'Desafío 4.1.3c (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,O,O,-,-,O],\
@@ -1536,9 +1536,9 @@ export default [
   },
   {
     id: 233,
-    grupoId: 'manual2cPrimaria3.1.4',
-    nombre: '3.1.4a',
-    titulo: 'Desafío 3.1.4a',
+    grupoId: 'manual2cPrimaria4.1.4',
+    nombre: '4.1.4a',
+    titulo: 'Desafío 4.1.4a',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1563,9 +1563,9 @@ export default [
   },
   {
     id: 234,
-    grupoId: 'manual2cPrimaria3.1.4',
-    nombre: '3.1.4b',
-    titulo: 'Desafío 3.1.4b',
+    grupoId: 'manual2cPrimaria4.1.4',
+    nombre: '4.1.4b',
+    titulo: 'Desafío 4.1.4b',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1590,9 +1590,9 @@ export default [
   },
   {
     id: 235,
-    grupoId: 'manual2cPrimaria3.1.4',
-    nombre: '3.1.4c',
-    titulo: 'Desafío 3.1.4c',
+    grupoId: 'manual2cPrimaria4.1.4',
+    nombre: '4.1.4c',
+    titulo: 'Desafío 4.1.4c',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1617,9 +1617,9 @@ export default [
   },
   {
     id: 236,
-    grupoId: 'manual2cPrimaria3.2.3',
-    nombre: '3.2.3a',
-    titulo: 'Desafío 3.2.3a (Duba)',
+    grupoId: 'manual2cPrimaria4.2.3',
+    nombre: '4.2.3a',
+    titulo: 'Desafío 4.2.3a (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,-,O,O,O,O],\
@@ -1672,9 +1672,9 @@ export default [
   },
   {
     id: 237,
-    grupoId: 'manual2cPrimaria3.2.3',
-    nombre: '3.2.3b',
-    titulo: 'Desafío 3.2.3b (Duba)',
+    grupoId: 'manual2cPrimaria4.2.3',
+    nombre: '4.2.3b',
+    titulo: 'Desafío 4.2.3b (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,-,-,-,O,O,O,O],\
@@ -1727,9 +1727,9 @@ export default [
   },
   {
     id: 238,
-    grupoId: 'manual2cPrimaria3.2.3',
-    nombre: '3.2.3c',
-    titulo: 'Desafío 3.2.3c',
+    grupoId: 'manual2cPrimaria4.2.3',
+    nombre: '4.2.3c',
+    titulo: 'Desafío 4.2.3c',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1783,9 +1783,9 @@ export default [
   },
   {
     id: 239,
-    grupoId: 'manual2cPrimaria3.2.3',
-    nombre: '3.2.3d',
-    titulo: 'Desafío 3.2.3d',
+    grupoId: 'manual2cPrimaria4.2.3',
+    nombre: '4.2.3d',
+    titulo: 'Desafío 4.2.3d',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1814,7 +1814,7 @@ export default [
           <block type="repetir">
             <value name="count">
               <block type="math_number">
-                <field name="NUM">3</field>
+                <field name="NUM">2</field>
               </block>
             </value>
             <statement name="block">
@@ -1855,8 +1855,8 @@ export default [
   },
   {
     id: 240,
-    grupoId: 'manual2cPrimaria3.I',
-    nombre: '3.I1a',
+    grupoId: 'manual2cPrimaria4.I',
+    nombre: '4.I1a',
     titulo: 'Desafio 3.I1a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -1885,8 +1885,8 @@ export default [
   },
   {
     id: 241,
-    grupoId: 'manual2cPrimaria3.I',
-    nombre: '3.I1b',
+    grupoId: 'manual2cPrimaria4.I',
+    nombre: '4.I1b',
     titulo: 'Desafio 3.I1b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
@@ -1962,9 +1962,9 @@ export default [
   },
   {
     id: 242,
-    grupoId: 'manual2cPrimaria4.1.3',
-    nombre: '4.1.3a',
-    titulo: 'Desafío 4.1.3a (Duba)',
+    grupoId: 'manual2cPrimaria5.1.3',
+    nombre: '5.1.3a',
+    titulo: 'Desafío 5.1.3a (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
@@ -1983,9 +1983,9 @@ export default [
   },
   {
     id: 243,
-    grupoId: 'manual2cPrimaria4.1.3',
-    nombre: '4.1.3b',
-    titulo: 'Desafío 4.1.3b (Duba)',
+    grupoId: 'manual2cPrimaria5.1.3',
+    nombre: '5.1.3b',
+    titulo: 'Desafío 5.1.3b (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
     enunciado: '[Completar]',
@@ -2004,9 +2004,9 @@ export default [
   },
   {
     id: 244,
-    grupoId: 'manual2cPrimaria4.1.3',
-    nombre: '4.1.3c',
-    titulo: 'Desafío 4.1.3c',
+    grupoId: 'manual2cPrimaria5.1.3',
+    nombre: '5.1.3c',
+    titulo: 'Desafío 5.1.3c',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -2032,8 +2032,8 @@ export default [
   },
   {
     id: 245,
-    grupoId: 'manual2cPrimaria4.1.4',
-    nombre: '4.1.4a',
+    grupoId: 'manual2cPrimaria5.1.4',
+    nombre: '5.1.4a',
     titulo: 'Desafio 4.1.4a',
     imagen: 'Lita',
     escena: `new EscenaLita("[A,-,L|T]")`,
@@ -2058,9 +2058,9 @@ export default [
   },
   {
     id: 246,
-    grupoId: 'manual2cPrimaria4.1.4',
-    nombre: '4.1.4b',
-    titulo: 'Desafío 4.1.4b (Duba)',
+    grupoId: 'manual2cPrimaria5.1.4',
+    nombre: '5.1.4b',
+    titulo: 'Desafío 5.1.4b (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba(["\
       [O,O,O,O,O],\
@@ -2095,9 +2095,9 @@ export default [
   },
   {
     id: 247,
-    grupoId: 'manual2cPrimaria4.1.4',
-    nombre: '4.1.4c',
-    titulo: 'Desafío 4.1.4c (Duba)',
+    grupoId: 'manual2cPrimaria5.1.4',
+    nombre: '5.1.4c',
+    titulo: 'Desafío 5.1.4c (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,O,O,O,O],\
@@ -2125,9 +2125,9 @@ export default [
   },
   {
     id: 248,
-    grupoId: 'manual2cPrimaria4.2.1',
-    nombre: '4.2.1a',
-    titulo: 'Desafío 4.2.1a (Duba)',
+    grupoId: 'manual2cPrimaria5.2.1',
+    nombre: '5.2.1a',
+    titulo: 'Desafío 5.2.1a (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: '[Completar]',
@@ -2148,9 +2148,9 @@ export default [
   },
   {
     id: 249,
-    grupoId: 'manual2cPrimaria4.2.1',
-    nombre: '4.2.1b',
-    titulo: 'Desafío 4.2.1b (Duba)',
+    grupoId: 'manual2cPrimaria5.2.1',
+    nombre: '5.2.1b',
+    titulo: 'Desafío 5.2.1b (Duba)',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '[Completar]',
@@ -2171,8 +2171,8 @@ export default [
   },
   {
     id: 250,
-    grupoId: 'manual2cPrimaria4.2.1',
-    nombre: '4.2.1c',
+    grupoId: 'manual2cPrimaria5.2.1',
+    nombre: '5.2.1c',
     titulo: 'Desafio 4.2.1c',
     imagen: 'Lita',
     escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
@@ -2197,9 +2197,9 @@ export default [
   },
   {
     id: 251,
-    grupoId: 'manual2cPrimaria4.I',
-    nombre: '4.I1a',
-    titulo: 'Desafío 4.I1a',
+    grupoId: 'manual2cPrimaria5.I',
+    nombre: '5.I1a',
+    titulo: 'Desafío 5.I1a',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '[Completar]',
@@ -2220,9 +2220,9 @@ export default [
 
   {
     id: 252,
-    grupoId: 'manual2cPrimaria4.I',
-    nombre: '4.I1b',
-    titulo: 'Desafío 4.I1b',
+    grupoId: 'manual2cPrimaria5.I',
+    nombre: '5.I1b',
+    titulo: 'Desafío 5.I1b',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: '[Completar]',
@@ -2244,9 +2244,9 @@ export default [
 
   {
     id: 253,
-    grupoId: 'manual2cPrimaria4.I',
-    nombre: '4.I1c',
-    titulo: 'Desafío 4.I1c',
+    grupoId: 'manual2cPrimaria5.I',
+    nombre: '5.I1c',
+    titulo: 'Desafío 5.I1c',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: '[Completar]',
@@ -2269,9 +2269,9 @@ export default [
 
   {
     id: 254,
-    grupoId: 'manual2cPrimaria4.I',
-    nombre: '4.I1d',
-    titulo: 'Desafío 4.I1d',
+    grupoId: 'manual2cPrimaria5.I',
+    nombre: '5.I1d',
+    titulo: 'Desafío 5.I1d',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: '[Completar]',
@@ -2311,9 +2311,9 @@ export default [
   // para el manual de Tandil y deben ser removidos a futuro.
   {
     id: 301,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1a',
-    titulo: 'Cap. 2 / SD2 / A1 a',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1a',
+    titulo: 'Cap. 3 / SD2 / A1 a',
     imagen: 'Duba',
     escena: `new EscenaDubaFondoBlanco("\
       [O,O,O,O],\
@@ -2326,9 +2326,9 @@ export default [
   },
   {
     id: 302,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1b-1',
-    titulo: 'Cap. 2 / SD2 / A1 b-1',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1b-1',
+    titulo: 'Cap. 3 / SD2 / A1 b-1',
     imagen: 'Duba',
     escena: `new EscenaDubaFondoBlanco("\
       [O,O,O],\
@@ -2340,9 +2340,9 @@ export default [
   },
   {
     id: 303,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1b-2',
-    titulo: 'Cap. 2 / SD2 / A1 b-2',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1b-2',
+    titulo: 'Cap. 3 / SD2 / A1 b-2',
     imagen: 'Duba',
     escena: `new EscenaDubaFondoBlanco("\
       [O,O,O],\
@@ -2354,9 +2354,9 @@ export default [
   },
   {
     id: 304,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1b-3',
-    titulo: 'Cap. 2 / SD2 / A1 b-3',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1b-3',
+    titulo: 'Cap. 3 / SD2 / A1 b-3',
     imagen: 'Duba',
     escena: `new EscenaDubaFondoBlanco("\
       [O,O,O],\
@@ -2368,9 +2368,9 @@ export default [
   },
   {
     id: 305,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1b-4',
-    titulo: 'Cap. 2 / SD2 / A1 b-4',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1b-4',
+    titulo: 'Cap. 3 / SD2 / A1 b-4',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
@@ -2382,9 +2382,9 @@ export default [
   },
   {
     id: 306,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1 c',
-    titulo: 'Cap. 2 / SD2 / A1 c',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1 c',
+    titulo: 'Cap. 3 / SD2 / A1 c',
     imagen: 'Coty',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaCotyFondoBlanco(
@@ -2396,9 +2396,9 @@ export default [
   },
   {
     id: 307,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.2.1 d',
-    titulo: 'Cap. 2 / SD2 / A1 d',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.2.1 d',
+    titulo: 'Cap. 3 / SD2 / A1 d',
     imagen: 'Coty',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaCotyFondoBlanco(
@@ -2410,9 +2410,9 @@ export default [
   },
   {
     id: 308,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.I1 a',
-    titulo: 'Cap. 2 / Integradora / A1 a',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.I1 a',
+    titulo: 'Cap. 3 / Integradora / A1 a',
     imagen: 'Toto',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaTotoLectorFondoBlanco([
@@ -2423,9 +2423,9 @@ export default [
   },
   {
     id: 309,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.I1 b',
-    titulo: 'Cap. 2 / Integradora / A1 b',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.I1 b',
+    titulo: 'Cap. 3 / Integradora / A1 b',
     imagen: 'Toto',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaTotoLectorFondoBlanco([
@@ -2438,9 +2438,9 @@ export default [
   },
   {
     id: 310,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.I1 a',
-    titulo: 'Cap. 2 / Integradora / A1 a V2',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.I1 a',
+    titulo: 'Cap. 3 / Integradora / A1 a V2',
     imagen: 'Toto',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaTotoLectorFondoBlanco([
@@ -2453,9 +2453,9 @@ export default [
   },
   {
     id: 311,
-    grupoId: 'manual2cPrimariaCapturasCap2',
-    nombre: '2.I1 b',
-    titulo: 'Cap. 2 / Integradora / A1 b V2',
+    grupoId: 'manual2cPrimariaCapturasCap3',
+    nombre: '3.I1 b',
+    titulo: 'Cap. 3 / Integradora / A1 b V2',
     imagen: 'Toto',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaTotoLectorFondoBlanco([
@@ -2468,9 +2468,9 @@ export default [
   },
   {
     id: 312,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.1a',
-    titulo: 'Cap. 3 / SD2 / A1 a',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.1a',
+    titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
@@ -2484,13 +2484,13 @@ export default [
   },
   {
     id: 313,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.1b',
-    titulo: 'Cap. 3 / SD2 / A1 b',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.1b',
+    titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
-      [-,-,-,-,A],\
+      [-,-,-,-,P],\
       [-,-,O,O,-],\
       [-,-,O,O,-],\
       [-,-,O,-,-],\
@@ -2500,9 +2500,9 @@ export default [
   },
   {
     id: 314,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.1c',
-    titulo: 'Cap. 3 / SD2 / A1 c',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.1c',
+    titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
@@ -2516,9 +2516,9 @@ export default [
   },
   {
     id: 315,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.2a',
-    titulo: 'Cap. 3 / SD2 / A1 a',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.2a',
+    titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
@@ -2535,9 +2535,9 @@ export default [
   },
   {
     id: 316,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.2b',
-    titulo: 'Cap. 3 / SD2 / A1 b',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.2b',
+    titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
@@ -2554,9 +2554,9 @@ export default [
   },
   {
     id: 317,
-    grupoId: 'manual2cPrimariaCapturasCap3',
-    nombre: '3.2.2c',
-    titulo: 'Cap. 3 / SD2 / A1 c',
+    grupoId: 'manual2cPrimariaCapturasCap4',
+    nombre: '4.2.2c',
+    titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
