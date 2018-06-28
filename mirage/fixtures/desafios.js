@@ -832,7 +832,7 @@ export default [
     id: 214,
     grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4a',
-    titulo: 'Desafio 2.1.4a',
+    titulo: 'Desafío 3.1.4a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,O,O,O,O,O],\
@@ -860,7 +860,7 @@ export default [
     id: 215,
     grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4b',
-    titulo: 'Desafio 2.1.4b',
+    titulo: 'Desafío 3.1.4b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,O,O,O,O],\
@@ -888,7 +888,7 @@ export default [
     id: 216,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2a',
-    titulo: 'Desafio 2.2.2a',
+    titulo: 'Desafío 3.2.2a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [-,-,-],\
@@ -914,7 +914,7 @@ export default [
     id: 217,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2b',
-    titulo: 'Desafio 2.2.2b',
+    titulo: 'Desafío 3.2.2b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [-,-,-,-],\
@@ -940,7 +940,7 @@ export default [
     id: 218,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2c',
-    titulo: 'Desafio 2.2.2c',
+    titulo: 'Desafío 3.2.2c',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [-,A,-],\
@@ -966,7 +966,7 @@ export default [
     id: 219,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2d',
-    titulo: 'Desafio 2.2.2d',
+    titulo: 'Desafío 3.2.2d',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [-,-,A],\
@@ -1211,7 +1211,7 @@ export default [
     id: 224,
     grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3e',
-    titulo: 'Desafio 2.2.3e',
+    titulo: 'Desafío 3.2.3e',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,O,O,O,O,O,O],\
@@ -1857,7 +1857,7 @@ export default [
     id: 240,
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1a',
-    titulo: 'Desafio 3.I1a',
+    titulo: 'Desafío 4.I1a',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,-,-,-,O,-,A],\
@@ -1887,7 +1887,7 @@ export default [
     id: 241,
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1b',
-    titulo: 'Desafio 3.I1b',
+    titulo: 'Desafío 4.I1b',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [L,-,-,-,-,T,E],\
@@ -2034,7 +2034,7 @@ export default [
     id: 245,
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4a',
-    titulo: 'Desafio 4.1.4a',
+    titulo: 'Desafío 5.1.4a',
     imagen: 'Lita',
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: '[Completar]',
@@ -2173,7 +2173,7 @@ export default [
     id: 250,
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1c',
-    titulo: 'Desafio 4.2.1c',
+    titulo: 'Desafío 5.2.1c',
     imagen: 'Lita',
     escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '[Completar]',
