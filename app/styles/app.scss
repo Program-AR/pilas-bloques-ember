@@ -897,7 +897,9 @@ a:hover {
   text-align: center;
 }
 
-.aplicar-modo-lectura-simple {
+.aplicar-modo-lectura-simple,
+.aplicar-modo-lectura-simple button // esta regla es necesaria para evitar que la sobreescriba Bootstrap
+{
   text-transform: uppercase !important;
 }
 
