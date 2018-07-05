@@ -1393,7 +1393,7 @@ export default [
     id: 230,
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3a',
-    titulo: 'Desafío 4.1.3a (Duba)',
+    titulo: 'Desafío 1',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
         [-,O,O,O,-,-,-,-],\
@@ -1406,7 +1406,6 @@ export default [
         [-,-,-,O,O,O,O,O],\
 		")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1422,7 +1421,7 @@ export default [
     id: 231,
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3b',
-    titulo: 'Desafío 4.1.3b (Duba)',
+    titulo: 'Desafío 2',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
         [O,O,-,O,O,-,-,-],\
@@ -1435,7 +1434,6 @@ export default [
         [-,-,A,O,O,O,O,O],\
 		")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1451,7 +1449,7 @@ export default [
     id: 232,
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3c',
-    titulo: 'Desafío 4.1.3c (Duba)',
+    titulo: 'Desafío 3',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,O,O,-,-,O],\
@@ -1464,7 +1462,6 @@ export default [
       [O,O,-,-,O,O,O,O],\
 		")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1480,7 +1477,7 @@ export default [
     id: 233,
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4a',
-    titulo: 'Desafío 4.1.4a',
+    titulo: 'Desafío 1',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1488,7 +1485,6 @@ export default [
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1507,7 +1503,7 @@ export default [
     id: 234,
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4b',
-    titulo: 'Desafío 4.1.4b',
+    titulo: 'Desafío 2',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1515,7 +1511,6 @@ export default [
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1534,7 +1529,7 @@ export default [
     id: 235,
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4c',
-    titulo: 'Desafío 4.1.4c',
+    titulo: 'Desafío 3',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1542,7 +1537,6 @@ export default [
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1561,7 +1555,7 @@ export default [
     id: 236,
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3a',
-    titulo: 'Desafío 4.2.3a (Duba)',
+    titulo: 'Desafío 1',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,-,O,O,O,O],\
@@ -1574,7 +1568,6 @@ export default [
       [O,O,O,O,O,O,O,O],\
 		")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1616,7 +1609,7 @@ export default [
     id: 237,
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3b',
-    titulo: 'Desafío 4.2.3b (Duba)',
+    titulo: 'Desafío 2',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,-,-,-,O,O,O,O],\
@@ -1629,7 +1622,6 @@ export default [
       [O,O,O,O,O,O,O,O],\
 		")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1671,7 +1663,7 @@ export default [
     id: 238,
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3c',
-    titulo: 'Desafío 4.2.3c',
+    titulo: 'Desafío 3',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1679,7 +1671,6 @@ export default [
       {xCoty: -100, yCoty: -100}      
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1727,7 +1718,7 @@ export default [
     id: 239,
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3d',
-    titulo: 'Desafío 4.2.3d',
+    titulo: 'Desafío 4',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1735,7 +1726,6 @@ export default [
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1799,7 +1789,7 @@ export default [
     id: 240,
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1a',
-    titulo: 'Desafío 4.I1a',
+    titulo: 'Desafío 1',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,-,-,-,O,-,A],\
@@ -1811,7 +1801,6 @@ export default [
       [E,L,T,-,O,O,O]\
     ")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1829,7 +1818,7 @@ export default [
     id: 241,
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1b',
-    titulo: 'Desafío 4.I1b',
+    titulo: 'Desafío 2',
     imagen: 'Lita',
     escena: `new EscenaLita("\
       [L,-,-,-,-,T,E],\
@@ -1888,7 +1877,6 @@ export default [
       </block>
     </xml>`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
