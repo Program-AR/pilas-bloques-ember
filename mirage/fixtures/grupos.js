@@ -28,7 +28,7 @@ export default [
   {
     id: 'manual2cPrimaria3',
     libroId: 1,
-    titulo: 'Capítulo 3: Programando en la computadora'
+    titulo: 'Programando en la computadora'
   },
   {
     id: 'manual2cPrimaria3.1.2',
@@ -63,7 +63,7 @@ export default [
   {
     id: 'manual2cPrimaria4',
     libroId: 1,
-    titulo: 'Capítulo 4: Repetición'
+    titulo: 'Repetición'
   },
   {
     id: 'manual2cPrimaria4.1.3',
@@ -88,7 +88,7 @@ export default [
   {
     id: 'manual2cPrimaria5',
     libroId: 1,
-    titulo: 'Capítulo 5: Alternativa condicional'
+    titulo: 'Alternativa condicional'
   },
   {
     id: 'manual2cPrimaria5.1.3',
