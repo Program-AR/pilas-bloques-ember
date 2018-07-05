@@ -1975,7 +1975,6 @@ export default [
       'AgarrarTomate',
       'AgarrarLechuga',
       'PrepararEnsalada',
-      'repetir',
       'si',
       'sino',
       'HayTomate',
