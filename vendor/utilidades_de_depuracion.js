@@ -62,7 +62,8 @@ var pbUtils = {
   },
 
   eliminarFondo: function() {
-    PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`pilas.escena_actual().fondo = new Fondo('fondo.blanco.png', 0, 0);`);
+    PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`pilas.escena_actual().fondo.eliminar();`);
+    document.getElementsByClassName("content-spinner")[0].innerHTML = '';
   },
 
   obtenerEscenaPng: function() {
