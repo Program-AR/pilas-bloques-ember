@@ -552,8 +552,7 @@ export default [
 		id: 201,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2a',
-    titulo: 'Desafío 3.1.2a (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 1',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,-,-,O,-],\
@@ -561,8 +560,7 @@ export default [
       [-,-,-,O,-,-],\
       [O,O,O,O,-,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Ayudá a la puma Duba a comer su churrasco. Evitá los obstáculos.',
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -577,8 +575,7 @@ export default [
 		id: 202,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2b',
-    titulo: 'Desafío 3.1.2b (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 2',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,O,O,O,O,O],\
@@ -587,8 +584,7 @@ export default [
         [O,O,-,O,O,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Duba quiere comer su churrasco. ¡Ayudala!',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -603,8 +599,7 @@ export default [
 		id: 203,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2c',
-    titulo: 'Desafío 3.1.2c (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 3',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
@@ -613,8 +608,7 @@ export default [
       [O,-,O,-,-,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: '¿Ayudás a la puma a comer su churrasco? Evitá los obstáculos.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -629,8 +623,7 @@ export default [
 		id: 204,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2d',
-    titulo: 'Desafío 3.1.2d (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 4',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,A,O,O,O],\
@@ -639,8 +632,7 @@ export default [
       [O,O,O,P,-,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Duba quiere comer churrasco. ¿Cómo lo puede hacer sin chocarse con los obstáculos?',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -655,8 +647,7 @@ export default [
 		id: 205,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2e',
-    titulo: 'Desafío 3.1.2e (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 5',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,O,-,O,-,O],\
@@ -665,8 +656,7 @@ export default [
       [O,O,-,-,P,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Ayudá a la puma Duba a saciar su hambre, evitando los obstáculos.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -681,8 +671,7 @@ export default [
 		id: 206,
 		grupoId: 'manual2cPrimaria3.1.2',
 		nombre: '3.1.2f',
-    titulo: 'Desafío 3.1.2f (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 6',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,-,-,-,O],\
@@ -691,8 +680,7 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Duba quiere devorar su churrasco. ¿Cómo lo puede lograr?',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [

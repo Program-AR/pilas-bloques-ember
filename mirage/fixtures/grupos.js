@@ -33,7 +33,7 @@ export default [
   {
     id: 'manual2cPrimaria3.1.2',
     libroId: 1,
-    titulo: 'A trabajar con la computadora'
+    titulo: 'Dieta a base de churrascos'
   },
   {
     id: 'manual2cPrimaria3.1.3',
@@ -43,7 +43,7 @@ export default [
   {
     id: 'manual2cPrimaria3.1.4',
     libroId: 1,
-    titulo: 'Lita prepara una rica ensalada'
+    titulo: '¡Marche una de lechuga y tomate!'
   },
   {
     id: 'manual2cPrimaria3.2.2',
