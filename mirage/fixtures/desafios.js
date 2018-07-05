@@ -1916,7 +1916,7 @@ export default [
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
     imagen: 'Duba',
-    escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
+    escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
