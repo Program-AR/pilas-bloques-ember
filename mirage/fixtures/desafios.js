@@ -2484,7 +2484,7 @@ export default [
     estiloToolbox: 'sinCategorias',
     escena: `new EscenaDubaFondoBlanco("\
       [-,-,-,-,-],\
-      [A,-,O,-,P],\
+      [A,-,-,O,P],\
 		")`,
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
