@@ -2462,4 +2462,160 @@ export default [
 		")`,
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
+  {
+    id: 318,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2a',
+    titulo: 'Cap. 5 / SD2 / A2 a',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-],\
+      [A,O,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 319,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2b',
+    titulo: 'Cap. 5 / SD2 / A2 b',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-],\
+      [A,-,O,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 320,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2c',
+    titulo: 'Cap. 5 / SD2 / A2 c',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,O,-,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 321,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2d',
+    titulo: 'Cap. 5 / SD2 / A2 d',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,O,-,-,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 322,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2e',
+    titulo: 'Cap. 5 / SD2 / A2 e',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,O],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 323,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2f',
+    titulo: 'Cap. 5 / SD2 / A2 f',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,O,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 324,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2g',
+    titulo: 'Cap. 5 / SD2 / A2 g',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,O,-,-,-],\
+      [A,-,-,O,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 325,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2h',
+    titulo: 'Cap. 5 / SD2 / A2 h',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-],\
+      [A,-,O,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 326,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2i',
+    titulo: 'Cap. 5 / SD2 / A2 i',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,O,-,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 327,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2j',
+    titulo: 'Cap. 5 / SD2 / A2 j',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-],\
+      [A,O,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 328,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2k',
+    titulo: 'Cap. 5 / SD2 / A2 k',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,O,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 329,
+    grupoId: 'manual2cPrimariaCapturasCap5',
+    nombre: '5SD2A2l',
+    titulo: 'Cap. 5 / SD2 / A2 l',
+    imagen: 'Duba',
+    estiloToolbox: 'sinCategorias',
+    escena: `new EscenaDubaFondoBlanco("\
+      [-,-,-,-,-],\
+      [A,-,-,-,P],\
+		")`,
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
 ];
