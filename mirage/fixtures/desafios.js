@@ -1394,7 +1394,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3a',
     titulo: 'Desafío 1',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
         [-,O,O,O,-,-,-,-],\
         [-,O,O,O,O,-,-,-],\
@@ -1422,7 +1421,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3b',
     titulo: 'Desafío 2',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
         [O,O,-,O,O,-,-,-],\
         [O,P,-,O,O,-,-,-],\
@@ -1450,7 +1448,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.3',
     nombre: '4.1.3c',
     titulo: 'Desafío 3',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,O,O,-,-,O],\
       [O,O,-,O,-,-,-,O],\
@@ -1478,7 +1475,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4a',
     titulo: 'Desafío 1',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
@@ -1504,7 +1500,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4b',
     titulo: 'Desafío 2',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
@@ -1530,7 +1525,6 @@ export default [
     grupoId: 'manual2cPrimaria4.1.4',
     nombre: '4.1.4c',
     titulo: 'Desafío 3',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
@@ -1556,7 +1550,6 @@ export default [
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3a',
     titulo: 'Desafío 1',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
       [-,-,-,-,O,O,O,O],\
       [-,-,-,-,-,-,-,O],\
@@ -1610,7 +1603,6 @@ export default [
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3b',
     titulo: 'Desafío 2',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,-,-,-,O,O,O,O],\
       [-,A,-,-,-,-,O,-],\
@@ -1664,7 +1656,6 @@ export default [
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3c',
     titulo: 'Desafío 3',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
@@ -1719,7 +1710,6 @@ export default [
     grupoId: 'manual2cPrimaria4.2.3',
     nombre: '4.2.3d',
     titulo: 'Desafío 4',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
@@ -1790,7 +1780,6 @@ export default [
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1a',
     titulo: 'Desafío 1',
-    imagen: 'Lita',
     escena: `new EscenaLita("\
       [O,-,-,-,O,-,A],\
       [-,-,-,O,O,-,O],\
@@ -1819,7 +1808,6 @@ export default [
     grupoId: 'manual2cPrimaria4.I',
     nombre: '4.I1b',
     titulo: 'Desafío 2',
-    imagen: 'Lita',
     escena: `new EscenaLita("\
       [L,-,-,-,-,T,E],\
       [-,O,-,-,O,-,O],\
@@ -1895,7 +1883,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3a',
     titulo: 'Desafío 1',
-    imagen: 'Duba',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -1915,7 +1902,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
-    imagen: 'Duba',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -1935,7 +1921,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3c',
     titulo: 'Desafío 3',
-    imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
       [{x:-120,y:50},{x:20,y:50},{x:20,y:-90},{x:-120,y:-90},{x:-120,y:50}],
@@ -1962,7 +1947,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4a',
     titulo: 'Desafío 1',
-    imagen: 'Lita',
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -1986,7 +1970,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4b',
     titulo: 'Desafío 2',
-    imagen: 'Duba',
     escena: `new EscenaDuba(["\
       [O,O,O,O,O],\
       [O,A,-,P,O],\
@@ -2022,7 +2005,6 @@ export default [
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4c',
     titulo: 'Desafío 3',
-    imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,O,O,O,O],\
       [-,-,*,-,-],\
@@ -2051,7 +2033,6 @@ export default [
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1a',
     titulo: 'Desafío 1',
-    imagen: 'Duba',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2073,7 +2054,6 @@ export default [
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1b',
     titulo: 'Desafío 2',
-    imagen: 'Duba',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2095,7 +2075,6 @@ export default [
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1c',
     titulo: 'Desafío 3',
-    imagen: 'Lita',
     escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2120,7 +2099,6 @@ export default [
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1a',
     titulo: 'Desafío 1',
-    imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2142,7 +2120,6 @@ export default [
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1b',
     titulo: 'Desafío 2',
-    imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2165,7 +2142,6 @@ export default [
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1c',
     titulo: 'Desafío 3',
-    imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
@@ -2189,7 +2165,6 @@ export default [
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1d',
     titulo: 'Desafío 4',
-    imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
