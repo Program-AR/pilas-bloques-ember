@@ -806,8 +806,7 @@ export default [
     id: 214,
     grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4a',
-    titulo: 'Desafío 3.1.4a',
-    imagen: 'Lita',
+    titulo: 'Desafío 1',
     escena: `new EscenaLita("\
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
@@ -816,8 +815,7 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: 'Ayudá a la mulita a preparar la ensalada mixta.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -834,8 +832,7 @@ export default [
     id: 215,
     grupoId: 'manual2cPrimaria3.1.4',
     nombre: '3.1.4b',
-    titulo: 'Desafío 3.1.4b',
-    imagen: 'Lita',
+    titulo: 'Desafío 2',
     escena: `new EscenaLita("\
       [O,O,O,O,O],\
       [O,O,O,O,O],\
@@ -844,8 +841,7 @@ export default [
       [A,O,O,O,E],\
       [O,O,O,O,O]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: 'Hoy Lita quiere comer una ensaladita. ¡Ayudala a prepararla!',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
