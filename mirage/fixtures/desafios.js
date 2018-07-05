@@ -695,15 +695,13 @@ export default [
     id: 207,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3a',
-    titulo: 'Desafío 3.1.3a',
-    imagen: 'Coty',
+    titulo: 'Desafío 1',
     escena: `new EscenaCoty(
       [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
       [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
       {xCoty: 25, yCoty: 75}
     )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: 'Ayudá a la llama a completar la torre.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
@@ -712,15 +710,13 @@ export default [
     id: 208,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3b',
-    titulo: 'Desafío 3.1.3b',
-    imagen: 'Coty',
+    titulo: 'Desafío 2',
     escena: `new EscenaCoty(
       [{x:-50,y:25},{x:0,y:100},{x:50,y:25}],
       [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
       {xCoty: -50, yCoty: 25}
     )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: '¡Coty quiere pintar la casa! ¿La ayudás?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
@@ -729,15 +725,13 @@ export default [
     id: 209,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3c',
-    titulo: 'Desafío 3.1.3c',
-    imagen: 'Coty',
+    titulo: 'Desafío 3',
     escena: `new EscenaCoty(
       [],
       [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
       {xCoty: 125, yCoty: 0}
     )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: 'La llama quiere solo dibujar tres rayas. ¿Cómo puede hacerlo?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
@@ -746,11 +740,9 @@ export default [
     id: 210,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3d',
-    titulo: 'Desafío 3.1.3d',
-    imagen: 'Coty',
+    titulo: 'Desafío 4',
     escena: `new EscenaCotySonrisa()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: '¿Ayudás a la llama a completar la carita feliz?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -768,15 +760,13 @@ export default [
     id: 211,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3e',
-    titulo: 'Desafío 3.1.3e',
-    imagen: 'Coty',
+    titulo: 'Desafío 5',
     escena: `new EscenaCoty(
       [[{x:-55,y:50},{x:-150,y:50},{x:-150,y:0},{x:-50,y:0}],[{x:-75,y:0},{x:-75,y:-100},{x:-125,y:-100},{x:-125,y:0}],[{x:-25,y:0},{x:25,y:0},{x:25,y:-100},{x:-25,y:-100},{x:-25,y:0}],[{x:125,y:0},{x:125,y:-100},{x:75,y:-100},{x:75,y:0}],[{x:50,y:0},{x:150,y:0},{x:150,y:50},{x:50,y:50}]],
       [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
       {xCoty: -50, yCoty: 100}      
     )`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: '¿Cómo puede hacer la llama para terminar de dibujar el puente?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -794,11 +784,9 @@ export default [
     id: 212,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3f',
-    titulo: 'Desafío 3.1.3f',
-    imagen: 'Coty',
+    titulo: 'Desafío 6',
     escena: `new EscenaCotyCactus()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: '¿Cómo puede hacer la llama para completar el cardo?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
@@ -807,11 +795,9 @@ export default [
     id: 213,
     grupoId: 'manual2cPrimaria3.1.3',
     nombre: '3.1.3g',
-    titulo: 'Desafío 3.1.3g',
-    imagen: 'Coty',
+    titulo: 'Desafío 7',
     escena: `new EscenaCotyMate()`,
-    enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
+    enunciado: 'Es hora de un buen mate. Ayudá a la llama a terminar de pintarlo.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
