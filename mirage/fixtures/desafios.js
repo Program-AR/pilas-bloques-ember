@@ -858,16 +858,14 @@ export default [
     id: 216,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2a',
-    titulo: 'Desafío 3.2.2a',
-    imagen: 'Lita',
+    titulo: 'Desafío 1',
     escena: `new EscenaLita("\
       [-,-,-],\
       [-,L,-],\
       [A,-,E],\
       [-,T,-]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: 'Tomate, lechuga y listo. Ayudá a Lita a preparar su ensalada.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -884,16 +882,14 @@ export default [
     id: 217,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2b',
-    titulo: 'Desafío 3.2.2b',
-    imagen: 'Lita',
+    titulo: 'Desafío 2',
     escena: `new EscenaLita("\
       [-,-,-,-],\
       [-,L,T,-],\
       [A,-,-,E],\
       [-,-,-,-]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: 'Ayudá a Lita a preparar su plato favorito.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -910,16 +906,14 @@ export default [
     id: 218,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2c',
-    titulo: 'Desafío 3.2.2c',
-    imagen: 'Lita',
+    titulo: 'Desafío 3',
     escena: `new EscenaLita("\
       [-,A,-],\
       [L,E,T],\
       [-,-,-],\
       [-,-,-]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: '¿Agarra primero el tomate o la lechuga? Ayudá a Lita a preparar su plato predilecto.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -936,15 +930,13 @@ export default [
     id: 219,
     grupoId: 'manual2cPrimaria3.2.2',
     nombre: '3.2.2d',
-    titulo: 'Desafío 3.2.2d',
-    imagen: 'Lita',
+    titulo: 'Desafío 4',
     escena: `new EscenaLita("\
       [-,-,A],\
       [-,L,T],\
       [-,-,E]\
     ")`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: '¿Qué pasos puede dar la mulita para preparar su plato favorito?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
