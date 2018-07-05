@@ -953,8 +953,7 @@ export default [
 		id: 220,
 		grupoId: 'manual2cPrimaria3.2.3',
 		nombre: '3.2.3a',
-    titulo: 'Desafío 3.2.3a (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 1',
 		escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,P,O,-,-,O],\
@@ -963,8 +962,7 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: '¿Cuál es el error de problema? Encontralo y ayudá a Duba a comer su churrasco.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -1016,8 +1014,7 @@ export default [
 		id: 221,
 		grupoId: 'manual2cPrimaria3.2.3',
 		nombre: '3.2.3b',
-    titulo: 'Desafío 3.2.3b (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 2',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,-,-,O,O,O],\
@@ -1026,8 +1023,7 @@ export default [
         [O,-,-,-,A,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: '¿Qué pasa con Duba que no logra comer su comida? Corregí el programa para que la puma sacie su hambre.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -1063,8 +1059,7 @@ export default [
 		id: 222,
 		grupoId: 'manual2cPrimaria3.2.3',
 		nombre: '3.2.3c',
-    titulo: 'Desafío 3.2.3c (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 3',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,P,O,A,O,O],\
@@ -1073,8 +1068,7 @@ export default [
         [O,-,-,O,O,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: 'Descubrí el problema del programa y corregilo así Duba puede comer su churrasco.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -1114,8 +1108,7 @@ export default [
 		id: 223,
 		grupoId: 'manual2cPrimaria3.2.3',
 		nombre: '3.2.3d',
-    titulo: 'Desafío 3.2.3d (Duba)',
-    imagen: 'Duba',
+    titulo: 'Desafío 4',
 		escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,O,-,-,-,O],\
@@ -1124,8 +1117,7 @@ export default [
         [O,-,-,A,-,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '[Completar]',
-		consignaInicial: '[Completar]',
+		enunciado: '¿Hay instrucciones de más o falta alguna? Mirá el programa, descubrí el error y ayudá a Duba a comer su plato predilecto.',
 		debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
 		bloques: [
@@ -1173,8 +1165,7 @@ export default [
     id: 224,
     grupoId: 'manual2cPrimaria3.2.3',
     nombre: '3.2.3e',
-    titulo: 'Desafío 3.2.3e',
-    imagen: 'Lita',
+    titulo: 'Desafío 5',
     escena: `new EscenaLita("\
       [O,O,O,O,O,O,O],\
       [O,O,O,O,O,O,O],\
@@ -1220,8 +1211,7 @@ export default [
       </statement>
       </block>
     </xml>`,
-    enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
+    enunciado: '¿Qué error encontrás en este programa? Corregilo y ayudá a la mulita a preparar su almuerzo.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
