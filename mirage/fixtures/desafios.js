@@ -2075,7 +2075,7 @@ export default [
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1c',
     titulo: 'Desafío 3',
-    escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
+    escena: `new EscenaLita("[A],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
