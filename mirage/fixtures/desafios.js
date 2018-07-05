@@ -1894,11 +1894,10 @@ export default [
     id: 242,
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3a',
-    titulo: 'Desafío 5.1.3a (Duba)',
+    titulo: 'Desafío 1',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1915,11 +1914,10 @@ export default [
     id: 243,
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3b',
-    titulo: 'Desafío 5.1.3b (Duba)',
+    titulo: 'Desafío 2',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,*,*]", { coleccion: ["P"] }, [0,2])`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1936,7 +1934,7 @@ export default [
     id: 244,
     grupoId: 'manual2cPrimaria5.1.3',
     nombre: '5.1.3c',
-    titulo: 'Desafío 5.1.3c',
+    titulo: 'Desafío 3',
     imagen: 'Coty',
     escena: `new EscenaCoty(
       [],
@@ -1944,7 +1942,6 @@ export default [
       {xCoty: -120, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 140}
     )`,
     enunciado: 'COMPLETAR 1',
-    consignaInicial: 'COMPLETAR 2',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1964,11 +1961,10 @@ export default [
     id: 245,
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4a',
-    titulo: 'Desafío 5.1.4a',
+    titulo: 'Desafío 1',
     imagen: 'Lita',
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1990,7 +1986,7 @@ export default [
     id: 246,
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4b',
-    titulo: 'Desafío 5.1.4b (Duba)',
+    titulo: 'Desafío 2',
     imagen: 'Duba',
     escena: `new EscenaDuba(["\
       [O,O,O,O,O],\
@@ -2006,7 +2002,6 @@ export default [
       [O,O,O,O,O],\
 		"])`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2027,7 +2022,7 @@ export default [
     id: 247,
     grupoId: 'manual2cPrimaria5.1.4',
     nombre: '5.1.4c',
-    titulo: 'Desafío 5.1.4c (Duba)',
+    titulo: 'Desafío 3',
     imagen: 'Duba',
     escena: `new EscenaDuba("\
       [O,O,O,O,O],\
@@ -2036,7 +2031,6 @@ export default [
       [O,O,O,O,O],\
 		", { coleccion: ["O"] })`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2057,11 +2051,10 @@ export default [
     id: 248,
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1a',
-    titulo: 'Desafío 5.2.1a (Duba)',
+    titulo: 'Desafío 1',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2080,11 +2073,10 @@ export default [
     id: 249,
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1b',
-    titulo: 'Desafío 5.2.1b (Duba)',
+    titulo: 'Desafío 2',
     imagen: 'Duba',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2103,11 +2095,10 @@ export default [
     id: 250,
     grupoId: 'manual2cPrimaria5.2.1',
     nombre: '5.2.1c',
-    titulo: 'Desafío 5.2.1c',
+    titulo: 'Desafío 3',
     imagen: 'Lita',
     escena: `new EscenaLita("[A],[*],[*],[*],[*],[*],[*],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2129,11 +2120,10 @@ export default [
     id: 251,
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1a',
-    titulo: 'Desafío 5.I1a',
+    titulo: 'Desafío 1',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2152,11 +2142,10 @@ export default [
     id: 252,
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1b',
-    titulo: 'Desafío 5.I1b',
+    titulo: 'Desafío 2',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2176,11 +2165,10 @@ export default [
     id: 253,
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1c',
-    titulo: 'Desafío 5.I1c',
+    titulo: 'Desafío 3',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2201,11 +2189,10 @@ export default [
     id: 254,
     grupoId: 'manual2cPrimaria5.I',
     nombre: '5.I1d',
-    titulo: 'Desafío 5.I1d',
+    titulo: 'Desafío 4',
     imagen: 'Toto',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: '[Completar]',
-    consignaInicial: '[Completar]',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
