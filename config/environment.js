@@ -9,12 +9,10 @@ module.exports = function(environment) {
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     cursoBackendURL: null,
-    consultarVersion: false,
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
-    ocultar_seccion_libros: true,
     
     EmberENV: {
       EXTEND_PROTOTYPES: {
@@ -33,6 +31,9 @@ module.exports = function(environment) {
     }
   };
 
+  ENV.i18n = {
+    defaultLocale: 'en'
+  };
 
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
@@ -54,7 +55,6 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    ENV.consultarVersion = false;
   }
 
   if (environment === 'web' || environment === 'production') {
