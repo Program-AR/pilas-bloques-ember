@@ -64,6 +64,7 @@ var pbUtils = {
   eliminarFondo: function() {
     PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`pilas.escena_actual().fondo.eliminar();`);
     document.getElementsByClassName("content-spinner")[0].innerHTML = '';
+    document.getElementsByClassName("iframe-pilas-canvas")[0].style['background-color'] = 'white';
   },
 
   obtenerEscenaPng: function() {
