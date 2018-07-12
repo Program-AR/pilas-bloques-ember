@@ -9,15 +9,15 @@
     <div class='contenedor-panel-ayuda' id="panel-ayuda">
       <div class='panel-ayuda puede-seleccionar'>
 
-        <h4>{{model.titulo}}</h4>
+        <h4>{{t model.titulo}}</h4>
 
-        <p>{{model.enunciado}}</p>
+        <p>{{t model.enunciado}}</p>
 
         {{#if model.consignaInicial}}
           <div class="tip-block">
-            <p><em>¿Sabías qué...?</em></p>
+            <p><em> {{t "sabias"}}</em></p>
 
-            <p>{{model.consignaInicial}}</p>
+            <p>{{t model.consignaInicial}}</p>
           </div>
         {{/if}}
 

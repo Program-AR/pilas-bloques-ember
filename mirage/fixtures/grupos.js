@@ -2,36 +2,36 @@ export default [
   {
     id: 1,
     libroId: 1,
-    titulo: 'Autómatas, comandos, procedimientos y repetición',
+    titulo: 'automatas',
   },
   {
     id: 2,
     libroId: 1,
-    titulo: 'Alternativa condicional',
+    titulo: 'alternativa-condicional',
   },
   {
     id: 3,
     libroId: 1,
-    titulo: 'Repetición condicional',
+    titulo: 'repeticion',
   },
   {
     id: 4,
     libroId: 1,
-    titulo: 'Sensores Numéricos',
+    titulo: 'sensores',
   },
   {
     id: 5,
     libroId: 1,
-    titulo: 'Parametrización de soluciones',
+    titulo: 'parametrizacion',
   },
 	{
 		id: 6,
 		libroId: 2,
-		titulo: 'Capítulo 3',
+		titulo: 'capitulo3',
 	},
   {
 		id: 7,
 		libroId: 2,
-		titulo: 'Capítulo 4',
+		titulo: 'capitulo4',
 	},
 ];

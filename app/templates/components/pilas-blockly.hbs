@@ -6,26 +6,26 @@
           <div class='pilas-blockly-botones'>
 
             {{#if cargando}}
-              <p class="center"> cargando ... </p>
+              <p class="center"> {{ t "cargando"}} </p>
             {{else}}
 
               {{#if pasoAPasoHabilitado}}
                 {{#if ejecutando}}
                   {{#if pausadoEnBreakpoint}}
-                    <button class='btn btn-default btn-info' {{action "step"}}><i class='fa fa-step-forward'></i> Avanzar un paso</button>
+                    <button class='btn btn-default btn-info' {{action "step"}}><i class='fa fa-step-forward'></i> {{t "avanzar"}}</button>
                   {{else}}
-                    <button class='btn btn-default btn-info' disabled><i class='fa fa-step-forward'></i> Avanzar un paso</button>
+                    <button class='btn btn-default btn-info' disabled><i class='fa fa-step-forward'></i> {{t "avanzar"}}</button>
                   {{/if}}
                 {{else}}
-                  <button class='btn btn-success btn-info' {{action 'ejecutar' true}}><i class='fa fa-play'></i> Ejecutar paso a paso</button>
+                  <button class='btn btn-success btn-info' {{action 'ejecutar' true}}><i class='fa fa-play'></i> {{ t "ejecutar-paso-a-paso"}}</button>
                 {{/if}}
               {{/if}}
 
 
               {{#if ejecutando}}
-                  <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
+                  <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> {{t "reiniciar"}}</button>
               {{else}}
-                  <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
+                  <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> {{t "ejecutar"}}</button>
               {{/if}}
 
               {{#if modoAlumno}}
@@ -36,24 +36,24 @@
 
                 {{#if mostrarGuardar}}
                   {{#if model}}
-                    <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
+                    <button class='btn btn-success' {{action "guardar"}}> {{t "guardar"}}</button>
                   {{else}}
-                    <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
+                    <button class='btn btn-success' {{action "guardar"}}>{{t "crear-y-guardar"}}</button>
                   {{/if}}
                 {{/if}}
 
                 {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
-                <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+                <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> {{t "guardar"}}</button>
 
 
                 {{#if debeMostarRegresarAlLibro}}
-                  {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
+                  {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> {{t "volver-al-libro"}} {{/link-to}}
                 {{/if}}
 
 
                 {{#if mostrarCompartir}}
-                  <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
+                  <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> {{t "compartir"}}</button>
                 {{/if}}
 
               {{/if}}
@@ -107,9 +107,9 @@
 
   {{modal-title title="Objetivo cumplido" close="ocultarFinDesafio"}}
 
-    <p>El autómata cumplió el objetivo.</p>
+    <p>{{t "automata-cumplio"}}</p>
 
-    <p><strong>Ojo.</strong> Tu programa puede ser excelente o no estar bien. Discutilo con amigos o docentes para saber si realmente encontraste una idea que también te sirva en otros desafíos.</p>
+    <p>{{t "discutir-solucion"}}</p>
 
   {{/modal-dialog}}
 {{/if}}
@@ -130,14 +130,14 @@
       <div class="modal-inline-block">
 
         <div class='fila-opcion'>
-          Mensaje: {{textarea class='modal-mensaje-compartir' rows=3 value=mensajeCompartir}}
+          {{t "mensaje"}} {{textarea class='modal-mensaje-compartir' rows=3 value=mensajeCompartir}}
         </div>
 
         <div class='fila-opcion'>
           {{#if envioEnCurso}}
-            <button class="btn btn-info" disabled><i class='fa fa-twitter'></i> Compartiendo ...</button>
+            <button class="btn btn-info" disabled><i class='fa fa-twitter'></i> {{t "compartiendo"}}</button>
           {{else}}
-            <button class="btn btn-info" {{action "enviarMensaje"}}><i class='fa fa-twitter'></i> Compartir</button>
+            <button class="btn btn-info" {{action "enviarMensaje"}}><i class='fa fa-twitter'></i> {{t "compartir"}}</button>
           {{/if}}
         </div>
 

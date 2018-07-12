@@ -8,23 +8,19 @@
     {{outlet}}
 
     <p>
-      ¡Hola! Te damos la bienvenida a <strong>Pilas Bloques</strong>,
-      una herramienta para aprender a programar.
+      {{t "bienvenida"}}
     </p>
 
     <p>
-      Ingresá en la sección {{#link-to "libros"}} <strong>Desafíos</strong>{{/link-to}}
-      para comenzar a resolver los retos disponibles.
+      {{t "ingresar-a-desafios" link=(to-link 'desafios' 'libros')}}
     </p>
 
     <p>
-      Visitá la sección {{#link-to "acercade"}}<strong>Acerca de</strong>{{/link-to}}
-      para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
+      {{ t "ingresar-acercade" link=(to-link 'acerca-de' 'acercade')}} 
     </p>
 
     <p>
-      Si necesitás ayuda, presioná ({{fa-icon "question"}}) ubicado en la parte superior derecha
-      de la pantalla.
+      {{t "ayuda" icono=(to-icon 'question')}}
     </p>
 
 

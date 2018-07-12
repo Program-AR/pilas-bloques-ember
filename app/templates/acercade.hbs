@@ -3,14 +3,14 @@
 	<div class='contenedor-acercade'>
 		{{pilas-acerca-de}}
 
-		<p>Actualmente estás usando la versión <code>{{app-version}}</code>
+		<p> {{t "version-actual"}} <code>{{app-version}}</code>
 			{{#if hayActualizacion}}
-			 	(y se puede actualizar a la versión {{versionMasReciente}})
+			 	({{t "actualizar"}} {{versionMasReciente}})
 			{{/if}}
 			</p>
 
 		<p>
-		  <button class='btn btn-warning' {{action "visitarWeb"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
+		  <button class='btn btn-warning' {{action "visitarWeb"}}>{{fa-icon "globe"}} {{t "visitar-web"}}</button>
 		  {{pilas-update}}
 		</p>
 	</div>

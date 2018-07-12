@@ -7,10 +7,10 @@
   {{/if}}
 
   <div class="ribbon right gray semi-transparente">
-    <a>Muy pronto</a>
+    <a>{{t "muy-pronto"}}</a>
   </div>
 
-  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+  <div class='pilas-desafio-titulo'>{{t model.titulo}}</div>
 
 {{else if model.bloques}}
 
@@ -21,7 +21,7 @@
       <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
     {{/if}}
 
-    <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+    <div class='pilas-desafio-titulo'>{{t model.titulo}}</div>
   {{/link-to}}
 
 {{else}}
@@ -30,6 +30,6 @@
     <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
   {{/if}}
 
-  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+  <div class='pilas-desafio-titulo'>{{t model.titulo}}</div>
 
 {{/if}}

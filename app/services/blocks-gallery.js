@@ -1,8 +1,9 @@
 import Ember from 'ember';
+import { translationMacro as t } from "ember-i18n";
 
 export default Ember.Service.extend({
   blockly: Ember.inject.service(),
-
+  i18n: Ember.inject.service(),
   start() {
     this._generarLenguaje();
     this._definirColores();
@@ -30,7 +31,7 @@ export default Ember.Service.extend({
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
     let bloque = this.get('blockly').createCustomBlockWithHelper(nombre, opciones);
-    bloque.categoria = "Primitivas";
+    bloque.categoria = this.get('i18n').t("Primitivas").toString();
     return bloque;
   },
 
@@ -83,7 +84,7 @@ export default Ember.Service.extend({
       code: ``
     });
     // TODO: Arreglar generacion de codigo
-    bloque.categoria = "Sensores";
+    bloque.categoria = this.get('i18n').t("Sensores").toString();
 
     Blockly.MyLanguage[nombre] = function() {
       let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
@@ -98,7 +99,7 @@ export default Ember.Service.extend({
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
     let bloque = this.get('blockly').createBlockValue(nombre, opciones);
-    bloque.categoria = "Valores";
+    bloque.categoria = this.get('i18n').t("Valores").toString();
 
     return bloque;
   },
@@ -149,7 +150,7 @@ export default Ember.Service.extend({
   _definirBloquesAccion() {
 
     this.crearBloqueAccion('PrenderCompu', {
-      descripcion: 'Prender compu',
+      descripcion: this.get('i18n').t('PrenderCompu'),
       icono: 'icono.computadora.png',
       comportamiento: 'PrenderCompuParaInstalar',
       argumentos: `{
@@ -164,7 +165,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Prendercompu', 'PrenderCompu');
 
     this.crearBloqueAccion('PrenderCompuConColision', {
-      descripcion: 'Prender compu',
+      descripcion: this.get('i18n').t('PrenderCompu'),
       icono: 'icono.computadora.png',
       comportamiento: 'ComportamientoColision',
       argumentos: `{
@@ -175,7 +176,7 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('ApretarBoton', {
-      descripcion: 'Apretar botón',
+      descripcion: this.get('i18n').t('ApretarBoton'),
       icono: 'iconos.botonRojo.png',
       comportamiento: 'ComportamientoColision',
       argumentos: `{
@@ -188,140 +189,140 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('EncenderLuz', {
-      descripcion: 'Prender la luz',
+      descripcion: this.get('i18n').t('PrenderLaLuz'),
       icono: 'icono.Lamparita.png',
       comportamiento: 'EncenderPorEtiqueta',
       argumentos: "{'etiqueta':'Luz'}"
     });
 
     this.crearBloqueAccion('ComerBanana', {
-      descripcion: 'Comer banana',
+      descripcion: this.get('i18n').t('ComerBanana'),
       icono: 'icono.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
     });
 
     this.crearBloqueAccion('ComerBananaNano', {
-      descripcion: 'Comer banana',
+      descripcion: this.get('i18n').t('ComerBanana'),
       icono: 'icono.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "BananaAnimada"}',
     });
 
     this.crearBloqueAccion('ComerManzana', {
-      descripcion: 'Comer manzana',
+      descripcion: this.get('i18n').t('ComerManzana'),
       icono: 'icono.manzana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'ManzanaAnimada\',  nombreAnimacion: "comerManzana"}',
     });
 
     this.crearBloqueAccion('ComerQueso', {
-      descripcion: 'Comer queso',
+      descripcion: this.get('i18n').t('ComerQueso'),
       icono: 'queso.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "QuesoAnimado"}',
     });
 
     this.crearBloqueAccion('ComerNaranja', {
-      descripcion: 'Comer naranja',
+      descripcion: this.get('i18n').t('ComerNaranja'),
       icono: 'naranja.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
     });
 
     this.crearBloqueAccion('MoverACasillaDerecha', {
-      descripcion: 'Mover a la derecha',
+      descripcion: this.get('i18n').t('MoverDerecha'),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaIzquierda', {
-      descripcion: 'Mover a la izquierda',
+      descripcion: this.get('i18n').t('MoverIzquierda'),
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverACasillaIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaArriba', {
-      descripcion: 'Mover arriba',
+      descripcion: this.get('i18n').t('MoverArriba'),
       icono: 'icono.arriba.png',
       comportamiento: 'MoverACasillaArriba',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaAbajo', {
-      descripcion: 'Mover abajo',
+      descripcion: this.get('i18n').t('MoverAbajo'),
       icono: 'icono.abajo.png',
       comportamiento: 'MoverACasillaAbajo',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('LevantaTuerca', {
-      descripcion: 'Levantar tuerca',
+      descripcion: this.get('i18n').t('LevantarTuerca'),
       icono: 'tuerca.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
     });
 
     this.crearBloqueAccion('Saludar', {
-      descripcion: 'Saludar',
+      descripcion: this.get('i18n').t('Saludar'),
       icono: 'icono.saludar.png',
       comportamiento: 'ComportamientoAnimado',
       argumentos: '{nombreAnimacion: "saludando", idTransicion: "saludar"}',
     });
 
     this.crearBloqueAccion('Abrirojos', {
-      descripcion: 'Abrir ojos',
+      descripcion: this.get('i18n').t('AbrirOjos'),
       icono: 'icono.abrirOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true, idTransicion: "abrirOjos"}',
     });
 
     this.crearBloqueAccion('Cerrarojos', {
-      descripcion: 'Cerrar ojos',
+      descripcion: this.get('i18n').t('CerrarOjos'),
       icono: 'icono.cerrarOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados", idTransicion: "cerrarOjos"}',
     });
 
     this.crearBloqueAccion('Acostarse', {
-      descripcion: 'Acostarse',
+      descripcion: this.get('i18n').t('Acostarse'),
       icono: 'icono.acostarse.png',
       comportamiento: 'ModificarRotacionYAltura',
       argumentos: '{alturaIr: -180 ,rotacionIr: 90, nombreAnimacion:"acostado", valorEstar: "acostado", descripcionEstar: "posicionCuerpo", idTransicion: "acostarse"}',
     });
 
     this.crearBloqueAccion('Pararse', {
-      descripcion: 'Pararse',
+      descripcion: this.get('i18n').t('Pararse'),
       icono: 'icono.pararse.png',
       comportamiento: 'ModificarRotacionYAltura',
       argumentos: '{alturaIr: -150 ,rotacionIr: 0, nombreAnimacion:"acostado", valorEstar: "parado", descripcionEstar: "posicionCuerpo", arrancoAsi:true, idTransicion: "levantarse"}',
     });
 
     this.crearBloqueAccion('Volver', {
-      descripcion: 'Volver',
+      descripcion: this.get('i18n').t('Volver'),
       icono: 'icono.izquierda.png',
       comportamiento: 'MovimientoAnimado',
       argumentos: '{direccion: [-1,0], distancia: 50, idTransicion: "volver"}',
     });
 
     this.crearBloqueAccion('Avanzar', {
-      descripcion: 'Avanzar',
+      descripcion: this.get('i18n').t('Avanzar'),
       icono: 'icono.derecha.png',
       comportamiento: 'MovimientoAnimado',
       argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
     });
 
     this.crearBloqueAccion('Soar', {
-      descripcion: 'Soñar',
+      descripcion: this.get('i18n').t('Soñar'),
       icono: 'icono.soniar.png',
       comportamiento: 'Pensar',
       argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
     });
 
     this.crearBloqueAccion('saltar1', {
-      descripcion: 'Saltar',
+      descripcion: this.get('i18n').t('Saltar'),
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarHablando',
       argumentos: `{
@@ -333,80 +334,80 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('VolverABordeIzquierdo', {
-      descripcion: 'Ir al borde izquierdo',
+      descripcion: this.get('i18n').t('IrBordeIzquierdo'),
       icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('TomarEstrella', {
-      descripcion: 'Tomar estrella',
+      descripcion: this.get('i18n').t('TomarEstrella'),
       icono: 'icono.estrella.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
     });
 
     this.crearBloqueAccion('MorderSandia', {
-      descripcion: 'Comer sandía',
+      descripcion: this.get('i18n').t('ComerSandia'),
       icono: 'icono.sandia.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
     });
 
     this.crearBloqueAccion('AlimentarPez', {
-      descripcion: 'Alimentar pez',
+      descripcion: this.get('i18n').t('AlimentarPez'),
       icono: 'icono.pez.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
     });
 
     this.crearBloqueAccion('AgarrarComida', {
-      descripcion: 'Agarrar comida',
+      descripcion: this.get('i18n').t('AgarrarComida'),
       icono: 'icono.alimento_pez.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
 
     this.crearBloqueAccion('SiguienteCompu', {
-      descripcion: 'Pasar a la siguiente compu',
+      descripcion: this.get('i18n').t('PasarSiguienteCompu'),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('ApagarCompu', {
-      descripcion: 'Apagar compu',
+      descripcion: this.get('i18n').t('ApagarCompu'),
       icono: 'icono.computadora.png',
       comportamiento: 'ComportamientoColision',
       argumentos: `{
-				etiqueta: "CompuAnimada",
-				mensajeError: "No hay una compu aqui",
-				idTransicion: "apagar",
-				animacionColisionadoPost: "parado",
-				nombreAnimacion: "escribir"
-			}`
+        etiqueta: "CompuAnimada",
+        mensajeError: "No hay una compu aqui",
+        idTransicion: "apagar",
+        animacionColisionadoPost: "parado",
+        nombreAnimacion: "escribir"
+      }`
     });
 
     this.crearBloqueAccion('InstalarJuego', {
-      descripcion: 'Instalar juego',
-			comportamiento: 'SecuenciaAnimada',
-			argumentos:  `{
+      descripcion: this.get('i18n').t('InstalarJuego'),
+      comportamiento: 'SecuenciaAnimada',
+      argumentos:  `{
         idTransicion: "instalar",
         secuencia: [
           {
             comportamiento: "ComportamientoColision",
             argumentos: {
               etiqueta: "CompuAnimada",
-							mensajeError: "No hay una compu aqui",
-							nombreAnimacion: "escribir",
+              mensajeError: "No hay una compu aqui",
+              nombreAnimacion: "escribir",
             }
           },
           {
             comportamiento: "EsperarAnimacionTocado",
             argumentos: {
-							etiqueta: "CompuAnimada",
-							nombreAnimacion: "instalando",
-							nombreAnimacionSiguiente: "yaInstalado"
+              etiqueta: "CompuAnimada",
+              nombreAnimacion: "instalando",
+              nombreAnimacionSiguiente: "yaInstalado"
             }
           }
         ]
@@ -414,25 +415,25 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('EscribirC', {
-      descripcion: 'Escribir "C"',
+      descripcion: this.get('i18n').t('EscribirC'),
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion : "escribirC"}',
     });
 
     this.crearBloqueAccion('EscribirB', {
-      descripcion: 'Escribir "B"',
+      descripcion: this.get('i18n').t('EscribirB'),
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion: "escribirB"}',
     });
 
     this.crearBloqueAccion('EscribirA', {
-      descripcion: 'Escribir "A"',
+      descripcion: this.get('i18n').t('EscribirA'),
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion: "escribirA"}',
     });
 
     this.crearBloqueAccion('Agarrarllave', {
-      descripcion: 'Tomar la llave',
+      descripcion: this.get('i18n').t('TomarLlave'),
       icono: 'icono.llave.png',
       comportamiento: 'Sostener',
       argumentos: `{
@@ -442,7 +443,7 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('Abrircofre', {
-      descripcion: 'Abrir el cofre',
+      descripcion: this.get('i18n').t('AbrirCofre'),
       icono: 'icono.cofre.png',
       comportamiento: 'Soltar',
       argumentos: `{
@@ -454,7 +455,7 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('Darsombrero', {
-      descripcion: 'Dar el sombrero',
+      descripcion: this.get('i18n').t('DarSombrero'),
       icono: 'icono.sombrero.png',
       comportamiento: 'ComportamientoColision',
       argumentos: `{
@@ -467,7 +468,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('Atacarconespada', {
       id: 'Atacarconespada',
-      descripcion: 'Atacar con la espada',
+      descripcion: this.get('i18n').t('AtacarConEspada'),
       icono: 'icono.espada.png',
       comportamiento: 'SecuenciaAnimada',
       argumentos: `{
@@ -494,7 +495,7 @@ export default Ember.Service.extend({
     /* NUEVA */
 
     this.crearBloqueAccion('EscaparEnUnicornio', {
-      descripcion: 'Escapar en unicornio',
+      descripcion: this.get('i18n').t('EscaparUnicornio'),
       icono: 'icono.unicornio.png',
       comportamiento: 'Escapar',
       argumentos: `{
@@ -505,7 +506,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
 
     this.crearBloqueAccion('Escapar', {
-      descripcion: 'Escapar',
+      descripcion: this.get('i18n').t('Escapar'),
       comportamiento: 'Escapar',
       argumentos: `{
         receptor: "nave",
@@ -514,14 +515,14 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('TomarHierro', {
-      descripcion: 'Agarrar hierro',
+      descripcion: this.get('i18n').t('AgarrarHierro'),
       icono: 'icono.hierro.png',
       comportamiento: 'Sostener',
       argumentos: '{etiqueta: "HierroAnimado", nombreAnimacion: "recogerHierro"}',
     });
 
     this.crearBloqueAccion('TomarCarbon', {
-      descripcion: 'Agarrar carbón',
+      descripcion: this.get('i18n').t('AgarrarCarbon'),
       id: 'TomarCarbon',
       icono: 'icono.carbon.png',
       comportamiento: 'Sostener',
@@ -529,7 +530,7 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('PrenderFogata', {
-      descripcion: 'Prender fogata',
+      descripcion: this.get('i18n').t('PrenderFogata'),
       icono: 'icono.FogataPrendida.png',
       comportamiento: 'ComportamientoColision',
       argumentos: '{etiqueta: "FogataAnimada", animacionColisionadoPost: "prendida", nombreAnimacion: "prender" }',
@@ -538,7 +539,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Prenderfogata', 'PrenderFogata');
 
     this.crearBloqueAccion('Depositar', {
-      descripcion: 'Poner en la nave',
+      descripcion: this.get('i18n').t('PonerEnNave'),
       comportamiento: 'Soltar',
       argumentos: `{
         idTransicion: "depositar",
@@ -548,14 +549,14 @@ export default Ember.Service.extend({
 
 
     this.crearBloqueAccion('AvanzarMono', {
-      descripcion: 'Mover a la derecha',
+      descripcion: this.get('i18n').t('MoverDerecha'),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{velocidad: 25}',
     });
 
     this.crearBloqueAccion('DejarRegalo', {
-      descripcion: 'Dejar un regalo',
+      descripcion: this.get('i18n').t('DejarRegalo'),
       icono: 'icono.regalo.png',
       comportamiento: 'Depositar',
       argumentos: '{claseADepositar: "RegaloAnimado"}',
@@ -564,14 +565,14 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Dejarregalo', 'DejarRegalo');
 
     this.crearBloqueAccion('SiguienteFila', {
-      descripcion: 'Pasar a la siguiente fila',
+      descripcion: this.get('i18n').t('PasarSiguienteFila'),
       icono: 'icono.abajo.png',
       comportamiento: 'SiguienteFila',
       argumentos: '{}'
     });
 
     this.crearBloqueAccion('SiguienteFilaTotal', {
-      descripcion: 'Pasar a la siguiente fila',
+      descripcion: this.get('i18n').t('PasarSiguienteFila'),
       icono: 'icono.izquierdaAbajo.png',
       comportamiento: 'SecuenciaAnimada',
 
@@ -589,14 +590,14 @@ export default Ember.Service.extend({
     });
 
     this.crearBloqueAccion('SiguienteColumna', {
-      descripcion: 'Pasar a la siguiente columna',
+      descripcion: this.get('i18n').t('PasarSiguienteColumna'),
       icono: 'icono.derecha.png',
       comportamiento: 'SiguienteColumna',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('ContarBanana', {
-      descripcion: 'Contar una banana',
+      descripcion: this.get('i18n').t('ContarBanana'),
       icono: 'icono.banana.png',
       comportamiento: 'ContarPorEtiqueta',
       argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
@@ -605,7 +606,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Contarbanana', 'ContarBanana');
 
     this.crearBloqueAccion('ContarManzana', {
-      descripcion: 'Contar una manzana',
+      descripcion: this.get('i18n').t('ContarManzana'),
       icono: 'icono.manzana.png',
       comportamiento: 'ContarPorEtiqueta',
       argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
@@ -614,7 +615,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Contarmanzana', 'ContarManzana');
 
     this.crearBloqueAccion('ExplotarGlobo', {
-      descripcion: 'Explotar globo',
+      descripcion: this.get('i18n').t('ExplotarGlobo'),
       icono: 'icono.globo.png',
       comportamiento: 'ComportamientoColision',
 
@@ -649,14 +650,14 @@ export default Ember.Service.extend({
 
 
     this.crearBloqueAccion('PatearPelota', {
-      descripcion: 'Patear pelota',
+      descripcion: this.get('i18n').t('PatearPelota'),
       icono: 'icono.pelota.png',
       comportamiento: 'DesencadenarComportamientoSiColisiona',
       argumentos: '{"comportamiento": "SerPateado", idTransicion: "patear", etiqueta: "PelotaAnimada", argumentosComportamiento: {tiempoEnElAire:25, aceleracion:0.0025, elevacionMaxima:25, gradosDeAumentoStep:-2}}',
     });
 
     this.crearBloqueAccion('Avanzar1km', {
-      descripcion: 'Avanzar 1 Km',
+      descripcion: this.get('i18n').t('Avanzar1Km'),
       icono: 'icono.derecha.png',
       comportamiento: 'VolarHeroicamente',
       argumentos: '{}',
@@ -665,7 +666,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('AvanzarKm', 'Avanzar1km');
 
     this.crearBloqueAccion('CambiarColor', {
-      descripcion: 'Cambiar color del foco',
+      descripcion: this.get('i18n').t('CambiarColorFoco'),
       icono: 'icono.cambiar.color.png',
       comportamiento: 'CambiarColor',
       argumentos: '{}',
@@ -674,7 +675,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('cambiarColor', 'CambiarColor');
 
     this.crearBloqueAccion('SiguienteFoco', {
-      descripcion: 'Pasar al siguiente foco',
+      descripcion: this.get('i18n').t('PasarSiguienteFoco'),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
@@ -683,7 +684,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('siguienteFoco', 'SiguienteFoco');
 
     this.crearBloqueAccion('EmpezarFiesta', {
-      descripcion: 'Empezar fiesta',
+      descripcion: this.get('i18n').t('EmpezarFiesta'),
       icono: 'icono.empezar.fiesta.png',
       comportamiento: 'EmpezarFiesta',
       argumentos: '{idTransicion: "empezarFiesta"}',
@@ -692,7 +693,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('empezarFiesta', 'EmpezarFiesta');
 
     this.crearBloqueAccion('VolverAlBordeIzquierdo', {
-      descripcion: 'Volver al borde izquierdo',
+      descripcion: this.get('i18n').t('VolverBordeIzquierdo'),
       icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
@@ -701,7 +702,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
 
     this.crearBloqueAccion('PrimerSospechoso', {
-      descripcion: 'Ir al primer sospechoso',
+      descripcion: this.get('i18n').t('IrPrimerSospechoso'),
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
@@ -710,7 +711,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Primersospechoso', 'PrimerSospechoso');
 
     this.crearBloqueAccion('SiguienteSospechoso', {
-      descripcion: 'Pasar al siguiente sospechoso',
+      descripcion: this.get('i18n').t('PasarSospechoso'),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
@@ -719,7 +720,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Siguientesospechoso', 'SiguienteSospechoso');
 
     this.crearBloqueAccion('SacarDisfraz', {
-      descripcion: 'Interrogar sospechoso',
+      descripcion: this.get('i18n').t('InterrogarSospechoso'),
       icono: 'icono.sacar.disfraz.png',
       comportamiento: 'SacarDisfraz',
       argumentos: '{}',
@@ -727,8 +728,9 @@ export default Ember.Service.extend({
 
     this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
 
+    const dibujarLado = this.get('i18n').t('DibujarLado').toString()
     blockly.createCustomBlock('DibujarLado', {
-      message0: "%1 Dibujar lado de %2",
+      message0: "%1" + dibujarLado + "%2",
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -770,9 +772,9 @@ export default Ember.Service.extend({
 
 
 
-
+    const girarGrados = this.get('i18n').t('GirarGrados').toString()
     blockly.createCustomBlock('GirarGrados', {
-      message0: "%1 Girar %2 grados",
+      message0: "%1" + girarGrados +"%2",
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -803,56 +805,56 @@ export default Ember.Service.extend({
     Blockly.Blocks['GirarGrados'].categoria = 'Primitivas';
 
     this.crearBloqueAccion('MoverArribaDibujando', {
-      descripcion: 'Mover arriba dibujando',
+      descripcion: this.get('i18n').t('MoverArribaDibujando'),
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarHaciaArriba',
       argumentos: '{distancia: 50, nombreAnimacion: "arribaDibujando"}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
-      descripcion: 'Mover abajo dibujando',
+      descripcion: this.get('i18n').t('MoverAbajoDibujando'),
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarHaciaAbajo',
       argumentos: '{distancia: 50, nombreAnimacion: "abajoDibujando"}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
-      descripcion: 'Mover derecha dibujando',
+      descripcion: this.get('i18n').t('MoverDerechaDibujando'),
       icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarHaciaLaDerecha',
       argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', {
-      descripcion: 'Mover izquierda dibujando',
+      descripcion: this.get('i18n').t('MoverIzquierdaDibujando'),
       icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarHaciaLaIzquierda',
       argumentos: '{distancia: 50, nombreAnimacion: "correrDibujando"}',
     });
 
     this.crearBloqueAccion('SaltarArriba', {
-      descripcion: 'Saltar arriba',
+      descripcion: this.get('i18n').t('SaltarArriba'),
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [0,1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "arriba"}',
     });
 
     this.crearBloqueAccion('SaltarAbajo', {
-      descripcion: 'Saltar abajo',
+      descripcion: this.get('i18n').t('SaltarAbajo'),
       icono: 'icono.abajo.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [0,-1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "abajo"}',
     });
 
     this.crearBloqueAccion('SaltarDerecha', {
-      descripcion: 'Saltar derecha',
+      descripcion: this.get('i18n').t('SaltarDerecha'),
       icono: 'icono.derecha.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
     });
 
     this.crearBloqueAccion('SaltarIzquierda', {
-      descripcion: 'Saltar izquierda',
+      descripcion: this.get('i18n').t('SaltarIzquierda'),
       icono: 'icono.izquierda.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "correr"}',
@@ -870,14 +872,14 @@ export default Ember.Service.extend({
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('Tocandobanana', {
-      descripcion: 'Hay banana acá',
+      descripcion: this.get('i18n').t('HayBanana'),
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
     });
     this.crearBloqueAlias('tocandoBanana', 'Tocandobanana');
 
     this.crearBloqueSensor('Tocandomanzana', {
-      descripcion: 'Hay manzana acá',
+      descripcion: this.get('i18n').t('HayManzana'),
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
     });
@@ -885,13 +887,13 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
 
     this.crearBloqueSensor('TocandoNaranja', {
-      descripcion: 'Hay una naranja acá',
+      descripcion: this.get('i18n').t('HayNaranja'),
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
     });
 
     this.crearBloqueSensor('TocandoFogata', {
-      descripcion: 'Hay fogata acá',
+      descripcion: this.get('i18n').t('HayFogata'),
       icono: 'icono.FogataApagada.png',
       funcionSensor: 'tocando("FogataAnimada")',
     });
@@ -899,7 +901,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoFogata', 'TocandoFogata');
 
     this.crearBloqueSensor('TocandoInicio', {
-      descripcion: 'Estoy al inicio',
+      descripcion: this.get('i18n').t('EstoyInicio'),
       icono: 'icono.futbolInicio.png',
       funcionSensor: 'tocandoInicio()',
     });
@@ -907,13 +909,13 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoInicio', 'TocandoInicio');
 
     this.crearBloqueSensor('TocandoPelota', {
-      descripcion: 'Llegué a la pelota',
+      descripcion: this.get('i18n').t('LleguePelota'),
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
     });
 
     this.crearBloqueSensor('TocandoFinal', {
-      descripcion: 'Llegué al final',
+      descripcion: this.get('i18n').t('LlegueFinal'),
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
     });
@@ -924,13 +926,13 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoPelota', 'TocandoPelota');
 
     this.crearBloqueSensor('KmsTotales', {
-      descripcion: 'Kilómetros a recorrer',
+      descripcion: this.get('i18n').t('KilometrosRecorrer'),
       icono: 'icono.kms.png',
       funcionSensor: 'kmsTotales()',
     });
 
     this.crearBloqueSensor('EstoyEnEsquina', {
-      descripcion: 'Estoy en una esquina',
+      descripcion: this.get('i18n').t('EstoyEsquina'),
       icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
     });
@@ -939,7 +941,7 @@ export default Ember.Service.extend({
 
 
     this.crearBloqueSensor('TocandoManzana', {
-      descripcion: 'Hay una manzana acá',
+      descripcion: this.get('i18n').t('HayManzana'),
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
     });
@@ -947,7 +949,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
 
     this.crearBloqueSensor('TocandoBanana', {
-      descripcion: 'Hay una banana acá',
+      descripcion: this.get('i18n').t('HayBanana'),
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
     });
@@ -955,7 +957,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
 
     this.crearBloqueSensor('EstoyAlInicio', {
-      descripcion: 'Estoy al inicio de la columna',
+      descripcion: this.get('i18n').t('EstoyInicioColumna'),
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
     });
@@ -963,7 +965,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('estoyInicio', 'EstoyAlInicio');
 
     this.crearBloqueSensor('EstoyAlFin', {
-      descripcion: 'Estoy al final de la columna',
+      descripcion: this.get('i18n').t('EstoyFinalColumna'),
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
     });
@@ -971,31 +973,31 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('estoyFinColumna', 'EstoyAlFin');
 
     this.crearBloqueSensor('LargoColumnaActual', {
-      descripcion: 'Largo de la columna actual',
+      descripcion: this.get('i18n').t('LargoColumnaActual'),
       icono: 'icono.largoCol.png',
       funcionSensor: 'largoColumnaActual()-1',
     });
 
     this.crearBloqueSensor('TocandoAbajo', {
-      descripcion: 'Puedo mover abajo',
+      descripcion: this.get('i18n').t('PuedoMoverAbajo'),
       icono: 'icono.abajo.png',
       funcionSensor: 'tocandoFlechaAbajo()',
     });
 
     this.crearBloqueSensor('TocandoDerecha', {
-      descripcion: 'Puedo mover a la derecha',
+      descripcion: this.get('i18n').t('PuedoMoverDerecha'),
       icono: 'icono.derecha.png',
       funcionSensor: 'tocandoFlechaDerecha()',
     });
 
     this.crearBloqueSensor('TocandoFinCamino', {
-      descripcion: 'Llegó a la meta',
+      descripcion: this.get('i18n').t('LlegoAMeta'),
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
     });
 
     this.crearBloqueSensor('TocandoQueso', {
-      descripcion: 'Hay queso acá',
+      descripcion: this.get('i18n').t('HayQueso'),
       icono: 'queso.png',
       funcionSensor: 'tocando("QuesoAnimado")',
     });
@@ -1003,7 +1005,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('tocandoQueso', 'TocandoQueso');
 
     this.crearBloqueSensor('TocandoLuz', {
-      descripcion: 'Hay lamparita acá',
+      descripcion: this.get('i18n').t('HayLamparita'),
       icono: 'icono.LamparitaApagada.png',
       funcionSensor: 'tocando("Lamparin")',
     });
@@ -1012,7 +1014,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueSensor('EsCulpable',  {
       id: 'Descubralculpable',
-      descripcion: 'Estoy frente al culpable',
+      descripcion: this.get('i18n').t('EstoyFrenteAlCulpable'),
       icono: 'icono.culpable.png',
       funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
     });
@@ -1023,42 +1025,43 @@ export default Ember.Service.extend({
   _definirBloquesQueRepresentanValores() {
 
     this.crearBloqueValor("ParaLaDerecha", {
-      descripcion: 'la derecha',
+      descripcion: this.get('i18n').t('laDerecha'),
       icono: 'icono.derecha.png',
       valor: 'DirCasillaDerecha',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaLaIzquierda', {
-      descripcion: 'la izquierda',
+      descripcion: this.get('i18n').t('laIzquierda'),
       icono: 'icono.izquierda.png',
       valor: 'DirCasillaIzquierda',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaArriba', {
-      descripcion: 'arriba',
+      descripcion: this.get('i18n').t('arriba'),
       icono: 'icono.arriba.png',
       valor: 'DirCasillaArriba',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaAbajo', {
-      descripcion: 'abajo',
+      descripcion: this.get('i18n').t('abajo'),
       icono: 'icono.abajo.png',
       valor: 'DirCasillaAbajo',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
   },
-
+    
   _definirBloqueAlIniciar() {
-
+    const tooltipText = this.get('i18n').t('AlEmpezar').toString();
     Blockly.Blocks['al_empezar_a_ejecutar'] = {
       init: function() {
+        
         this.setColour(Blockly.Blocks.eventos.COLOUR);
 
-        this.appendDummyInput().appendField('Al empezar a ejecutar');
+        this.appendDummyInput().appendField(tooltipText);
 
         this.appendStatementInput('program');
         this.setDeletable(false);
@@ -1071,7 +1074,8 @@ export default Ember.Service.extend({
   },
 
   _definirBloquesEstructurasDeControl() {
-
+    const repetir = this.get('i18n').t('Repetir').toString();
+    const veces = this.get('i18n').t('Veces').toString();
     Blockly.Blocks['RepetirVacio'] = {
       init: function() {
         this.setColour(Blockly.Blocks.control.COLOUR);
@@ -1080,12 +1084,12 @@ export default Ember.Service.extend({
         this.setNextStatement(true);
         this.appendValueInput('count')
           .setCheck('Number')
-          .appendField('Repetir');
+          .appendField(repetir);
         this.appendDummyInput()
-          .appendField('veces');
+          .appendField(veces);
         this.appendStatementInput('block');
       },
-      categoria: 'Repeticiones',
+      categoria: this.get('i18n').t('Repeticiones').toString(),
     };
 
     Blockly.Blocks['repetir'] = {
@@ -1114,68 +1118,70 @@ export default Ember.Service.extend({
 
     this.crearBloqueAlias('param_get', 'variables_get');
 
-    bloque_procedimiento.categoria = 'Mis procedimientos';
+    bloque_procedimiento.categoria = this.get('i18n').t('MisProcedimientos');
     bloque_procedimiento.categoria_custom = 'PROCEDURE';
 
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
-    this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
-
+    this.crearBloqueAlias('Repetir', 'repetir', this.get('i18n').t('Repeticiones').toString());
+    const si = this.get('i18n').t('Si').toString();
     Blockly.Blocks['Si'] = {
+      
       init: function() {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
             .setCheck('Boolean')
-            .appendField('Si');
-				this.setInputsInline(true);
+            .appendField(si);
+        this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Alternativas',
+      categoria: this.get('i18n').t('Alternativas').toString(),
     };
 
-    this.crearBloqueAlias('si', 'Si', 'Alternativas');
-
+    this.crearBloqueAlias('si', 'Si', this.get('i18n').t('Alternativas').toString());
+    const sino = this.get('i18n').t('SiNo').toString();
     Blockly.Blocks['SiNo'] = {
       init: function() {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
             .setCheck('Boolean')
-            .appendField('Si');
+            .appendField(si);
         this.appendStatementInput('block1');
-				this.setInputsInline(true);
+        this.setInputsInline(true);
         this.appendDummyInput()
-            .appendField('si no');
+            .appendField(sino);
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Alternativas',
+      categoria: this.get('i18n').t('Alternativas').toString(),
     };
 
-    this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
-    this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
+    this.crearBloqueAlias('Sino', 'SiNo', this.get('i18n').t('Alternativas').toString());
+    this.crearBloqueAlias('sino', 'SiNo', this.get('i18n').t('Alternativas').toString());
 
+    const repetirhasta = this.get('i18n').t('RepetirHasta').toString();
     Blockly.Blocks['Hasta'] = {
       init: function() {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
         this.appendValueInput('condition')
             .setCheck('Boolean')
-            .appendField('Repetir hasta que');
+            .appendField(repetirhasta);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Repeticiones',
+      categoria: this.get('i18n').t('Repeticiones').toString(),
     };
 
     this.crearBloqueAlias('hasta', 'Hasta');
 
-		this.crearBloqueAccion('ComerChurrasco', {
-      descripcion: 'Comer Churrasco',
+    this.crearBloqueAccion('ComerChurrasco', {
+      descripcion: this.get('i18n').t('ComerChurrasco'),
       icono: 'icono.churrasco.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco"}',

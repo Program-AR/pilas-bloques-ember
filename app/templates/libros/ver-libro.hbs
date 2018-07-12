@@ -1,21 +1,21 @@
 <div class="contenido-principal {{if model.modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
 
-  <h1>Desafíos del {{model.titulo}}</h1>
+  <h1>{{t "desafios-del"}} {{t model.titulo}}</h1>
 
   {{#unless debeOcultarLibros}}
-    <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
+    <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> {{t "volver-libros"}} {{/link-to}}</p>
   {{/unless}}
 
   {{#each model.grupos as |grupo|}}
 
-    <h2>{{grupo.titulo}}</h2>
+    <h2>{{t grupo.titulo}}</h2>
 
     {{#each grupo.desafios as |desafio|}}
       {{pilas-desafio model=desafio}}
     {{/each}}
 
   {{else}}
-    <p class="mensaje-sin-desafios">Lo siento, no hay desafíos para este manual aún.</p>
+    <p class="mensaje-sin-desafios">{{t "sin-desafios"}}</p>
   {{/each}}
 
   {{#if model.grupos.isSettled}}
