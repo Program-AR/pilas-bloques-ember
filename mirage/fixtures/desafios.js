@@ -1404,7 +1404,8 @@ export default [
         [-,-,O,O,O,O,O,O],\
         [-,-,-,O,O,O,O,O],\
 		")`,
-    enunciado: '[Completar]',
+    enunciado: '¿Puede la puma llegar al churrasco usando solo una vez el bloque mover?',
+    consignaInicial: 'Podés usar el nuevo bloque “Repetir”',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1431,7 +1432,7 @@ export default [
         [-,-,O,O,O,O,O,O],\
         [-,-,A,O,O,O,O,O],\
 		")`,
-    enunciado: '[Completar]',
+    enunciado: 'La puma tiene hambre y está lejos del churrasco. Pero no importa, ¿verdad?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1458,7 +1459,7 @@ export default [
       [O,O,-,O,O,O,O,O],\
       [O,O,-,-,O,O,O,O],\
 		")`,
-    enunciado: '[Completar]',
+    enunciado: '¿Cómo puede hacer la puma para llegar a su comida sin tener que usar muchos bloques mover?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1480,7 +1481,8 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
-    enunciado: 'COMPLETAR 1',
+    enunciado: 'La llama quiere pintar cuatro líneas. ¿Qué es lo que se repite esta vez?',
+    consignaInicial: 'Puede haber más de un bloque dentro del Repetir',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1505,7 +1507,7 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
-    enunciado: 'COMPLETAR 1',
+    enunciado: 'Mirá con atención las líneas grises que la llama quiere dibujar. ¿Hay algunas acciones que se reiteran? ¿Qué sucede al final de la obra de Coty? Ayudala a resolver esta pintura.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1530,7 +1532,7 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
-    enunciado: 'COMPLETAR 1',
+    enunciado: 'La llama tiene ganas de pintar una especie de escalerita. ¿Le podés mostrar qué pasos le conviene dar para evitar hacer muchas veces la misma acción?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1560,7 +1562,7 @@ export default [
       [O,O,O,O,O,O,O,O],\
       [O,O,O,O,O,O,O,O],\
 		")`,
-    enunciado: '[Completar]',
+    enunciado: '¿Cuál es el error que impide que Duba coma su churrasco? Encontralo y corregilo. ¡La puma tiene hambre!',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1613,7 +1615,7 @@ export default [
       [O,O,O,O,O,O,O,O],\
       [O,O,O,O,O,O,O,O],\
 		")`,
-    enunciado: '[Completar]',
+    enunciado: '¿Qué pasa que Duba no llega a comer su plato preferido? Sacá, modificá y/o agregá los bloques que falten para que logre su cometido.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1661,7 +1663,7 @@ export default [
       [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
       {xCoty: -100, yCoty: -100}      
     )`,
-    enunciado: 'COMPLETAR 1',
+    enunciado: 'Coty está desconcentrada. Corregí los errores para que la llama pueda pintar las líneas grises que corresponde.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1715,7 +1717,7 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
     )`,
-    enunciado: 'COMPLETAR 1',
+    enunciado: '¡Otra vez Coty está en cualquiera! ¿Podés encontrar los errores y corregirlos? La llama te lo va a agradecer.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
