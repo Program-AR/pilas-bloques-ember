@@ -78,12 +78,12 @@ export default [
   {
     id: 'manual2cPrimaria4.2.3',
     libroId: 1,
-    titulo: 'Corregimos programas'
+    titulo: 'Corregimos los programas'
   },
   {
     id: 'manual2cPrimaria4.I',
     libroId: 1,
-    titulo: 'Lita y Toto se preparan para el picnic'
+    titulo: 'Lita, a puro vegetal'
   },
   {
     id: 'manual2cPrimaria5',
