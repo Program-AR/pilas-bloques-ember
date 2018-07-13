@@ -25,7 +25,7 @@ var pbUtils = {
   },
 
   guardarSolucionEnUrl: function() {
-    var xml = utils_obtener_xml();
+    var xml = this.obtenerSolucionXml();
     var codigo = btoa(xml);
     window.location.href = window.location.href.split("?")[0] + "?codigo=" + encodeURIComponent(codigo);
     console.log("Se guardó correctamente la solución, ahora se puede recargar la página sin perder el workspace.");
