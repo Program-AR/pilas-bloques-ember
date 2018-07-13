@@ -306,7 +306,7 @@ export default {
     "Veces" : "times",
     "RepetirHasta" : "Repeat until",
     "SiNo"  :   "else",
-    "Si"    :   "Yes",
+    "Si"    :   "If",
     "IrBordeIzquierdo": "Go to the left corner",
     "DibujarLado": "Draw side of",
     "GirarGrados": "Rotate degrees"
