@@ -22,6 +22,7 @@
     "broccoli-asset-rev": "^2.4.2",
     "broccoli-funnel": "^1.0.6",
     "devtron": "1.3.0",
+    "electron-installer-flatpak": "0.6.0",
     "electron-packager": "12.0.0",
     "electron": "1.8.4",
     "electron-rebuild": "1.7.3",

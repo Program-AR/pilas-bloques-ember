@@ -42,7 +42,7 @@ comandos:
 	@echo "    ${L}      y solamente las versiones minor y major serán distribuidas${N}"
 	@echo "    ${L}      oficialmente. Las versiones patch son internas o de prueba.${N}"
 	@echo ""
-	@echo "    ${G}binarios_electron${N}          Genera los binarios de forma local."
+	@echo "    ${G}empaquetar${N}          Genera los binarios de forma local."
 	@echo ""
 	@echo ""
 	@echo ""
@@ -109,7 +109,7 @@ full: limpiar_todo full_travis
 
 full_travis: iniciar compilar_ejercicios_pilas
 
-binarios_electron: build _preparar_electron _compilar_electron_osx _compilar_electron_win32 _compilar_electron_linux_x64 _compilar_electron_linux_ia32
+empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo ""
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios':${N}"
 	@echo ""
@@ -123,33 +123,38 @@ _preparar_electron:
 	@sed 's/VERSION/${VERSION}/g' extras/package.json > dist/package.json
 	@cp extras/electron.js dist
 
-compilar = node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
 
-_compilar_electron_osx:
-	@echo "${G}Iniciando compilación a electron a OSX...${N}"
+_empaquetar_osx:
 	rm -f binarios/pilas-bloques-${VERSION}.dmg
-	$(call compilar,darwin,all,icns)
+	$(call empaquetar,darwin,all,icns)
 	hdiutil create binarios/pilas-bloques-${VERSION}.dmg -srcfolder ./binarios/pilasBloques-darwin-x64/pilasBloques.app -size 200mb
 
-_compilar_electron_win32:
-	@echo "${G}Iniciando compilación a electron a Windows...${N}"
-	$(call compilar,win32,ia32,ico)
+_empaquetar_win32:
+	$(call empaquetar,win32,ia32,ico)
 	@echo "${G}Generando instalador para windows...${N}"
 	cp extras/instalador.nsi binarios/pilasBloques-win32-ia32/
 	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
 
-_compilar_electron_linux_x64:
-	rm -rf binarios/pilasBloques-linux-x64
-	rm -f binarios/pilas-bloques-${VERSION}-linux-x64.zip
-	$(call compilar,linux,x64,icns)
+_empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_flatpak_linux_64
+
+_borrar_binarios_linux:
+	rm -rf binarios/pilasBloques-linux-*
+	rm -f binarios/pilas-bloques-${VERSION}-linux-*
+
+_empaquetar_zip_linux_x64:
+	$(call empaquetar,linux,x64,icns)
 	cd binarios; zip -r pilas-bloques-${VERSION}-linux-x64.zip pilasBloques-linux-x64/
 
-_compilar_electron_linux_ia32:
-	rm -rf binarios/pilasBloques-linux-ia32
-	rm -f binarios/pilas-bloques-${VERSION}-linux-ia32.zip
-	$(call compilar,linux,ia32,icns)
+_empaquetar_zip_linux_ia32:
+	$(call empaquetar,linux,ia32,icns)
 	cd binarios; zip -r pilas-bloques-${VERSION}-linux-ia32.zip pilasBloques-linux-ia32/
+
+_empaquetar_flatpak_linux_64:
+	$(call empaquetar,linux,x64,icns)
+	node_modules/.bin/electron-installer-flatpak --config=config/linux64-flatpak.json
+	mv binarios/io.atom.electron.pilasBloques_master_x64.flatpak binarios/pilas-bloques-${VERSION}-linux-x64.flatpak
 
 actualizar_imagenes:
 	cd scripts; python generarListaImagenes.py

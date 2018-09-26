@@ -44,7 +44,7 @@ before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis                              ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para compilar"   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make binarios_electron                             ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make empaquetar                                    ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ; fi
 after_success:
   - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
