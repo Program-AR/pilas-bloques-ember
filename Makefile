@@ -58,7 +58,7 @@ iniciar_ejercicios:
 	cd ejerciciosPilas; npm install
 
 compilar_ejercicios_pilas:
-	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt; cd ..
+	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt
 	cp -r -f ejerciciosPilas/compilados/ejerciciosPilas.js public/libs/
 
 pre_ember_build: compilar_ejercicios_pilas
@@ -116,6 +116,7 @@ empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquet
 	@echo "${G}   binarios/pilas-bloques-${VERSION}.dmg${N}"
 	@echo "${G}   binarios/pilas-bloques-${VERSION}.exe${N}"
 	@echo "${G}   binarios/pilas-bloques-${VERSION}-linux-x64.zip${N}"
+	@echo "${G}   binarios/pilas-bloques-${VERSION}-linux-ia32.zip${N}"
 	@echo ""
 
 _preparar_electron:
@@ -137,11 +138,11 @@ _empaquetar_win32:
 	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
 	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
 
-_empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_flatpak_linux_64
+_empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32
 
 _borrar_binarios_linux:
 	rm -rf binarios/pilasBloques-linux-*
-	rm -f binarios/pilas-bloques-${VERSION}-linux-*
+	rm -f binarios/pilas-bloques-*linux*
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)
@@ -151,7 +152,9 @@ _empaquetar_zip_linux_ia32:
 	$(call empaquetar,linux,ia32,icns)
 	cd binarios; zip -r pilas-bloques-${VERSION}-linux-ia32.zip pilasBloques-linux-ia32/
 
-_empaquetar_flatpak_linux_64:
+# Antes de correr este comando leer Requirements en
+# https://www.npmjs.com/package/electron-installer-flatpak
+empaquetar_flatpak_linux_64:
 	$(call empaquetar,linux,x64,icns)
 	node_modules/.bin/electron-installer-flatpak --config=config/linux64-flatpak.json
 	mv binarios/io.atom.electron.pilasBloques_master_x64.flatpak binarios/pilas-bloques-${VERSION}-linux-x64.flatpak
