@@ -1,5 +1,7 @@
 VERSION=$(shell scripts/obtenerVersion.sh)
-NOMBRE="pilas-bloques"
+# El NOMBRE es el que figura en el package.json.
+# Lo usa el empaquetador para crear archivos y carpetas y para darle nombre a los binarios
+NOMBRE=pilasbloques
 
 N=[0m
 G=[01;32m
@@ -124,46 +126,46 @@ _preparar_electron:
 	@cp package.json dist/package.json
 	@cp extras/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
 
 _empaquetar_osx:
-	rm -f binarios/pilas-bloques-${VERSION}.dmg
+	rm -f binarios/${NOMBRE}-${VERSION}.dmg
 	$(call empaquetar,darwin,all,icns)
-	hdiutil create binarios/pilas-bloques-${VERSION}.dmg -srcfolder ./binarios/pilasBloques-darwin-x64/pilasBloques.app -size 200mb
+	hdiutil create binarios/${NOMBRE}-${VERSION}.dmg -srcfolder ./binarios/${NOMBRE}-darwin-x64/${NOMBRE}.app -size 200mb
 
 _empaquetar_win32:
 	$(call empaquetar,win32,ia32,ico)
 	@echo "${G}Generando instalador para windows...${N}"
-	cp extras/instalador.nsi binarios/pilasBloques-win32-ia32/
-	cd binarios/pilasBloques-win32-ia32/; makensis instalador.nsi
-	@mv binarios/pilasBloques-win32-ia32/pilas-bloques.exe binarios/pilas-bloques-${VERSION}.exe
+	cp extras/instalador.nsi binarios/${NOMBRE}-win32-ia32/
+	cd binarios/${NOMBRE}-win32-ia32/; makensis instalador.nsi
+	@mv binarios/${NOMBRE}-win32-ia32/${NOMBRE}.exe binarios/${NOMBRE}-${VERSION}.exe
 
-_empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32
+_empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64
 
 _borrar_binarios_linux:
-	rm -rf binarios/pilasBloques-linux-*
-	rm -f binarios/pilas-bloques-*linux*
+	rm -rf binarios/${NOMBRE}-*linux*
+	rm -rf binarios/*.deb
 
-# Este empaquetado tiene el problema de que NO reemplaza la aplicación vieja.
-# Además, el package generado tiene nombre diferente (mas lindo: pilasbloques)
+# Este empaquetado tiene el problema de que NO reemplaza la aplicación vieja de Huayra.
+# Además, el package debian generado tiene nombre diferente al viejo.
 _empaquetar_deb_linux_x64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-debian --src binarios/pilasBloques-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns --productName='Pilas Bloques'
+	node_modules/.bin/electron-installer-debian --src binarios/${NOMBRE}-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns --productName='Pilas Bloques'
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)
-	cd binarios; zip -r pilas-bloques-${VERSION}-linux-x64.zip pilasBloques-linux-x64/
+	cd binarios; zip -r ${NOMBRE}-${VERSION}-linux-x64.zip ${NOMBRE}-linux-x64/
 
 _empaquetar_zip_linux_ia32:
 	$(call empaquetar,linux,ia32,icns)
-	cd binarios; zip -r pilas-bloques-${VERSION}-linux-ia32.zip pilasBloques-linux-ia32/
+	cd binarios; zip -r ${NOMBRE}-${VERSION}-linux-ia32.zip ${NOMBRE}-linux-ia32/
 
 # Antes de correr este comando leer Requirements en
 # https://www.npmjs.com/package/electron-installer-flatpak
-empaquetar_flatpak_linux_64:
+_empaquetar_flatpak_linux_64:
 	$(call empaquetar,linux,x64,icns)
 	node_modules/.bin/electron-installer-flatpak --config=config/linux64-flatpak.json
-	mv binarios/io.atom.electron.pilasBloques_master_x64.flatpak binarios/pilas-bloques-${VERSION}-linux-x64.flatpak
+	mv binarios/io.atom.electron.${NOMBRE}_master_x64.flatpak binarios/${NOMBRE}-${VERSION}-x64.flatpak
 
 actualizar_imagenes:
 	cd scripts; python generarListaImagenes.py

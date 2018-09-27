@@ -13,7 +13,7 @@
 
   ;Name and file
   Name "Pilas Bloques"
-  OutFile "pilas-bloques.exe"
+  OutFile "pilasbloques.exe"
 
   ;Default installation folder
   InstallDir "c:\pilas-bloques"
@@ -53,7 +53,7 @@
 
   !insertmacro MUI_PAGE_INSTFILES
 
-!define MUI_FINISHPAGE_RUN "$instdir\pilasBloques.exe"
+!define MUI_FINISHPAGE_RUN "$instdir\pilasbloques.exe"
 
 !define MUI_PAGE_CUSTOMFUNCTION_SHOW ModifyRunCheckbox
 !insertmacro MUI_PAGE_FINISH
@@ -97,7 +97,7 @@ Section "Dummy Section" SecDummy
     ;Create shortcuts
     CreateDirectory "$SMPROGRAMS\$StartMenuFolder"
     CreateShortcut "$SMPROGRAMS\$StartMenuFolder\desinstalar.lnk" "$INSTDIR\desinstalar.exe"
-    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-bloques.lnk" "$INSTDIR\pilasBloques.exe"
+    CreateShortCut "$SMPROGRAMS\$StartMenuFolder\pilas-bloques.lnk" "$INSTDIR\pilasbloques.exe"
 
   !insertmacro MUI_STARTMENU_WRITE_END
 
