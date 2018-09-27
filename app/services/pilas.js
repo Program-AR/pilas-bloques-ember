@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import listaImagenes from 'pilas-engine-bloques/components/listaImagenes';
+import listaImagenes from 'pilasbloques/components/listaImagenes';
 
 /**
  * Provee acceso a pilasweb y sus eventos.

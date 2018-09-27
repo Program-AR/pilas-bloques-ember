@@ -1,5 +1,5 @@
 import { skip } from 'qunit';
-import moduleForAcceptance from 'pilas-engine-bloques/tests/helpers/module-for-acceptance';
+import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
 import desafios from '../pages/desafios';
 
 moduleForAcceptance('Acceptance | desafios');

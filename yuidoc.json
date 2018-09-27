@@ -1,5 +1,5 @@
 {
-  "name": "pilas-engine-bloques",
+  "name": "pilasbloques",
   "description": "Una herramienta para aprender a programar utilizando bloques.",
   "version": "0.11.1",
   "themedir": "node_modules/yuidoc-ember-cli-theme",

@@ -1,4 +1,4 @@
-import PageObject from 'pilas-engine-bloques/tests/page-object';
+import PageObject from 'pilasbloques/tests/page-object';
 
 let {
   visitable,

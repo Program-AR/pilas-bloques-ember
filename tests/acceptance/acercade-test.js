@@ -1,5 +1,5 @@
 import { test } from 'qunit';
-import moduleForAcceptance from 'pilas-engine-bloques/tests/helpers/module-for-acceptance';
+import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
 import acercaDe from '../pages/acerca-de';
 
 moduleForAcceptance('Acceptance | acercade');
