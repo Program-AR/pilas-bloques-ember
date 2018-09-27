@@ -41,7 +41,7 @@ before_install:
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis                              ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para compilar"   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make empaquetar                                    ; fi

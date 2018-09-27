@@ -121,7 +121,7 @@ empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquet
 
 _preparar_electron:
 	@echo "${G}Preparando directorio dist para funcionar con electron...${N}"
-	@sed 's/VERSION/${VERSION}/g' extras/package.json > dist/package.json
+	@cp package.json dist/package.json
 	@cp extras/electron.js dist
 
 empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist "pilasBloques" --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
@@ -143,6 +143,12 @@ _empaquetar_linux: _borrar_binarios_linux _empaquetar_zip_linux_x64 _empaquetar_
 _borrar_binarios_linux:
 	rm -rf binarios/pilasBloques-linux-*
 	rm -f binarios/pilas-bloques-*linux*
+
+# Este empaquetado tiene el problema de que NO reemplaza la aplicación vieja.
+# Además, el package generado tiene nombre diferente (mas lindo: pilasbloques)
+_empaquetar_deb_linux_x64:
+	$(call empaquetar,linux,x64,icns)
+	node_modules/.bin/electron-installer-debian --src binarios/pilasBloques-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns --productName='Pilas Bloques'
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)
