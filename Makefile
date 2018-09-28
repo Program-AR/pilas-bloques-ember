@@ -1,7 +1,7 @@
+# El version y nombre son los que figuran en el package.json.
 VERSION=$(shell scripts/obtenerVersion.sh)
-# El NOMBRE es el que figura en el package.json.
-# Lo usa el empaquetador para crear archivos y carpetas y para darle nombre a los binarios
-NOMBRE=pilasbloques
+# El NOMBRE lo usa el empaquetador para crear archivos y carpetas y para darle nombre a los binarios
+NOMBRE=$(shell scripts/obtenerNombre.sh)
 
 N=[0m
 G=[01;32m
@@ -126,7 +126,7 @@ _preparar_electron:
 	@cp package.json dist/package.json
 	@cp extras/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
 
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
@@ -150,7 +150,7 @@ _borrar_binarios_linux:
 # Además, el package debian generado tiene nombre diferente al viejo.
 _empaquetar_deb_linux_x64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-debian --src binarios/${NOMBRE}-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns --productName='Pilas Bloques'
+	node_modules/.bin/electron-installer-debian --src binarios/${NOMBRE}-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)

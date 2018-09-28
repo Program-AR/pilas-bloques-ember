@@ -1,7 +1,21 @@
 {
   "name": "pilasbloques",
+  "productName": "Pilas Bloques",
+  "genericName": "Programacion con bloques",
+  "description": "Una herramienta para aprender a programar utilizando bloques",
   "version": "1.3.3",
-  "description": "Una herramienta para aprender a programar utilizando bloques.",
+  "homepage": "http://pilasbloques.program.ar",
+  "author": {
+    "name": "Program.AR",
+    "email": "info@program.ar",
+    "url": "http://program.ar"
+  },
+  "license": "MIT",
+  "repository": "https://github.com/Program-AR/pilas-bloques",
+  "categories": [
+    "Education",
+    "Development"
+  ],
   "private": true,
   "directories": {
     "doc": "doc",
@@ -12,12 +26,9 @@
     "start": "ember server",
     "test": "ember test"
   },
-  "repository": "https://github.com/Program-AR/pilas-engine-bloques",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
-  "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.4.2",
     "broccoli-funnel": "^1.0.6",

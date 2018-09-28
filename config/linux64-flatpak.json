@@ -1,5 +1,5 @@
 {
-  "src": "binarios/pilasBloques-linux-x64/",
+  "src": "binarios/pilasbloques-linux-x64/",
   "arch": "x64",
   "dest": "binarios/",
   "icon": "extras/icono.icns",
