@@ -3,6 +3,14 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.4.0 (12 de Octubre de 2018)
+  * Se publican los dos libros existentes, cada libro con un conjunto de desafíos.
+  * El nuevo "libro" del Primer Ciclo de primaria incluye 50 nuevas actividades, incluyendo conceptos de repetición simple y alternativa condicional.
+  * Agregada una compilación secundaria de .deb. Crea una nueva aplicación, no reemplaza al anterior paquete de Debian. El paquete que genera se llama "pilasbloques", en lugar de "pilas-engine-bloques" como antes.
+  * Se proveen nuevos comportamientos: (Escribir, Leer) que acompañan a los nuevos actores Letra.
+  * Ahora existe una escena denominada EscenaDesdeMapa, que permite construir escenas a partir de una especificación hecha en un DSL (lenguaje de dominio específico).
+  * 
+
 * 1.3.3 (09 de Abril de 2018)
   * Se corrigen colores y enunciados después del primer betatest de 1.3.2.
   * Ahora se compilan versiones portables para Linux (alternativas a la instalación del .deb).
