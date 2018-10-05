@@ -9,7 +9,10 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
   * Agregada una compilación secundaria de .deb. Crea una nueva aplicación, no reemplaza al anterior paquete de Debian. El paquete que genera se llama "pilasbloques", en lugar de "pilas-engine-bloques" como antes.
   * Se proveen nuevos comportamientos: (Escribir, Leer) que acompañan a los nuevos actores Letra.
   * Ahora existe una escena denominada EscenaDesdeMapa, que permite construir escenas a partir de una especificación hecha en un DSL (lenguaje de dominio específico).
-  * 
+  * Se revisó el mecanismo de precarga de imágenes de Pilas Engine Web para que no se pre-carguen todas las imágenes.
+  * Se realizó un refactor completo de los dibujos, para poder hacer una comparación más certera entre el dibujo esperado y el realizado.
+  * Ahora no se pausa Pilas Web ante un error, para permitir las animaciones de errores.
+  * Todos los cambios [aquí](https://github.com/program-ar/pilas-bloques/compare/1.3.3...1.4.0)
 
 * 1.3.3 (09 de Abril de 2018)
   * Se corrigen colores y enunciados después del primer betatest de 1.3.2.
@@ -25,6 +28,7 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
   * En Instalando Juegos, se corrigieron las animaciones de cada comando para que se distingan entre sí.
   * Laberinto con queso ahora pone un queso al principio para forzar una estrategia en particular.
   * Varios arreglos menores como alguna velocidad de ejecución, íconos, enunciados, y toolboxes incompletos.
+  * Todos los cambios [aquí](https://github.com/program-ar/pilas-bloques/compare/1.1.2...1.3.3)
 
 
 * 1.1.2 (24 de Enero de 2017)
