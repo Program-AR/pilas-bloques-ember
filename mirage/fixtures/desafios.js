@@ -550,7 +550,7 @@ export default [
 
 	{
 		id: 201,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2a',
     titulo: 'Desafío 1',
 		escena: `new EscenaDuba("\
@@ -573,7 +573,7 @@ export default [
 	},
 	{
 		id: 202,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2b',
     titulo: 'Desafío 2',
 		escena: `new EscenaDuba("\
@@ -597,7 +597,7 @@ export default [
 	},
 	{
 		id: 203,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2c',
     titulo: 'Desafío 3',
 		escena: `new EscenaDuba("\
@@ -621,7 +621,7 @@ export default [
   },
   {
 		id: 204,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2d',
     titulo: 'Desafío 4',
 		escena: `new EscenaDuba("\
@@ -645,7 +645,7 @@ export default [
   },
   {
 		id: 205,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2e',
     titulo: 'Desafío 5',
 		escena: `new EscenaDuba("\
@@ -669,7 +669,7 @@ export default [
   },
   {
 		id: 206,
-		grupoId: 'manual2cPrimaria3.1.2',
+		grupoId: 'manual1cPrimaria3.1.2',
 		nombre: '3.1.2f',
     titulo: 'Desafío 6',
 		escena: `new EscenaDuba("\
@@ -693,7 +693,7 @@ export default [
   },
   {
     id: 207,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaCoty(
@@ -708,7 +708,7 @@ export default [
   },
   {
     id: 208,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaCoty(
@@ -723,7 +723,7 @@ export default [
   },
   {
     id: 209,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -738,7 +738,7 @@ export default [
   },
   {
     id: 210,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3d',
     titulo: 'Desafío 4',
     escena: `new EscenaCotySonrisa()`,
@@ -758,7 +758,7 @@ export default [
   },
   {
     id: 211,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3e',
     titulo: 'Desafío 5',
     escena: `new EscenaCoty(
@@ -782,7 +782,7 @@ export default [
   },
   {
     id: 212,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3f',
     titulo: 'Desafío 6',
     escena: `new EscenaCotyCactus()`,
@@ -793,7 +793,7 @@ export default [
   },
   {
     id: 213,
-    grupoId: 'manual2cPrimaria3.1.3',
+    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3g',
     titulo: 'Desafío 7',
     escena: `new EscenaCotyMate()`,
@@ -804,7 +804,7 @@ export default [
   },
   {
     id: 214,
-    grupoId: 'manual2cPrimaria3.1.4',
+    grupoId: 'manual1cPrimaria3.1.4',
     nombre: '3.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -830,7 +830,7 @@ export default [
   },
   {
     id: 215,
-    grupoId: 'manual2cPrimaria3.1.4',
+    grupoId: 'manual1cPrimaria3.1.4',
     nombre: '3.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -856,7 +856,7 @@ export default [
   },
   {
     id: 216,
-    grupoId: 'manual2cPrimaria3.2.2',
+    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -880,7 +880,7 @@ export default [
   },
   {
     id: 217,
-    grupoId: 'manual2cPrimaria3.2.2',
+    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -904,7 +904,7 @@ export default [
   },
   {
     id: 218,
-    grupoId: 'manual2cPrimaria3.2.2',
+    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2c',
     titulo: 'Desafío 3',
     escena: `new EscenaLita("\
@@ -928,7 +928,7 @@ export default [
   },
   {
     id: 219,
-    grupoId: 'manual2cPrimaria3.2.2',
+    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2d',
     titulo: 'Desafío 4',
     escena: `new EscenaLita("\
@@ -951,7 +951,7 @@ export default [
   },
   {
 		id: 220,
-		grupoId: 'manual2cPrimaria3.2.3',
+		grupoId: 'manual1cPrimaria3.2.3',
 		nombre: '3.2.3a',
     titulo: 'Desafío 1',
 		escena: `new EscenaDuba("\
@@ -1012,7 +1012,7 @@ export default [
   },
   {
 		id: 221,
-		grupoId: 'manual2cPrimaria3.2.3',
+		grupoId: 'manual1cPrimaria3.2.3',
 		nombre: '3.2.3b',
     titulo: 'Desafío 2',
 		escena: `new EscenaDuba("\
@@ -1057,7 +1057,7 @@ export default [
   },
   {
 		id: 222,
-		grupoId: 'manual2cPrimaria3.2.3',
+		grupoId: 'manual1cPrimaria3.2.3',
 		nombre: '3.2.3c',
     titulo: 'Desafío 3',
 		escena: `new EscenaDuba("\
@@ -1106,7 +1106,7 @@ export default [
   },
   {
 		id: 223,
-		grupoId: 'manual2cPrimaria3.2.3',
+		grupoId: 'manual1cPrimaria3.2.3',
 		nombre: '3.2.3d',
     titulo: 'Desafío 4',
 		escena: `new EscenaDuba("\
@@ -1163,7 +1163,7 @@ export default [
   },
   {
     id: 224,
-    grupoId: 'manual2cPrimaria3.2.3',
+    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3e',
     titulo: 'Desafío 5',
     escena: `new EscenaLita("\
@@ -1226,7 +1226,7 @@ export default [
   },
   {
     id: 225,
-    grupoId: 'manual2cPrimaria3.I',
+    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaTotoLector([
@@ -1246,7 +1246,7 @@ export default [
   },
   {
     id: 226,
-    grupoId: 'manual2cPrimaria3.I',
+    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaTotoLector([
@@ -1266,7 +1266,7 @@ export default [
   },
   {
     id: 227,
-    grupoId: 'manual2cPrimaria3.I',
+    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1c',
     titulo: 'Desafío 3',
     escena: `new EscenaTotoLector([
@@ -1286,7 +1286,7 @@ export default [
   },
   {
     id: 228,
-    grupoId: 'manual2cPrimaria3.I',
+    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1d',
     titulo: 'Desafío 4',
     escena: `new EscenaTotoLector([
@@ -1338,7 +1338,7 @@ export default [
   },
   {
     id: 229,
-    grupoId: 'manual2cPrimaria3.I',
+    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1e',
     titulo: 'Desafío 5',
     escena: `new EscenaTotoLector([
@@ -1391,7 +1391,7 @@ export default [
   },
   {
     id: 230,
-    grupoId: 'manual2cPrimaria4.1.3',
+    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -1419,7 +1419,7 @@ export default [
   },
   {
     id: 231,
-    grupoId: 'manual2cPrimaria4.1.3',
+    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -1446,7 +1446,7 @@ export default [
   },
   {
     id: 232,
-    grupoId: 'manual2cPrimaria4.1.3',
+    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -1473,7 +1473,7 @@ export default [
   },
   {
     id: 233,
-    grupoId: 'manual2cPrimaria4.1.4',
+    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaCoty(
@@ -1499,7 +1499,7 @@ export default [
   },
   {
     id: 234,
-    grupoId: 'manual2cPrimaria4.1.4',
+    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaCoty(
@@ -1524,7 +1524,7 @@ export default [
   },
   {
     id: 235,
-    grupoId: 'manual2cPrimaria4.1.4',
+    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1549,7 +1549,7 @@ export default [
   },
   {
     id: 236,
-    grupoId: 'manual2cPrimaria4.2.3',
+    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -1603,7 +1603,7 @@ export default [
   },
   {
     id: 237,
-    grupoId: 'manual2cPrimaria4.2.3',
+    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -1656,7 +1656,7 @@ export default [
   },
   {
     id: 238,
-    grupoId: 'manual2cPrimaria4.2.3',
+    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1710,7 +1710,7 @@ export default [
   },
   {
     id: 239,
-    grupoId: 'manual2cPrimaria4.2.3',
+    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3d',
     titulo: 'Desafío 4',
     escena: `new EscenaCoty(
@@ -1780,7 +1780,7 @@ export default [
   },
   {
     id: 240,
-    grupoId: 'manual2cPrimaria4.I',
+    grupoId: 'manual1cPrimaria4.I',
     nombre: '4.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -1808,7 +1808,7 @@ export default [
   },
   {
     id: 241,
-    grupoId: 'manual2cPrimaria4.I',
+    grupoId: 'manual1cPrimaria4.I',
     nombre: '4.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -1883,7 +1883,7 @@ export default [
   },
   {
     id: 242,
-    grupoId: 'manual2cPrimaria5.1.3',
+    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
@@ -1903,7 +1903,7 @@ export default [
   },
   {
     id: 243,
-    grupoId: 'manual2cPrimaria5.1.3',
+    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
@@ -1922,7 +1922,7 @@ export default [
   },
   {
     id: 244,
-    grupoId: 'manual2cPrimaria5.1.3',
+    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1948,7 +1948,7 @@ export default [
   },
   {
     id: 245,
-    grupoId: 'manual2cPrimaria5.1.4',
+    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("[A,-,L|T]")`,
@@ -1972,7 +1972,7 @@ export default [
   },
   {
     id: 246,
-    grupoId: 'manual2cPrimaria5.1.4',
+    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["\
@@ -2008,7 +2008,7 @@ export default [
   },
   {
     id: 247,
-    grupoId: 'manual2cPrimaria5.1.4',
+    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -2036,7 +2036,7 @@ export default [
   },
   {
     id: 248,
-    grupoId: 'manual2cPrimaria5.2.1',
+    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
@@ -2058,7 +2058,7 @@ export default [
   },
   {
     id: 249,
-    grupoId: 'manual2cPrimaria5.2.1',
+    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
@@ -2080,7 +2080,7 @@ export default [
   },
   {
     id: 250,
-    grupoId: 'manual2cPrimaria5.2.1',
+    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1c',
     titulo: 'Desafío 3',
     escena: `new EscenaLita("[A],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[E]", { coleccion: ["T", "L"] })`,
@@ -2104,7 +2104,7 @@ export default [
   },
   {
     id: 251,
-    grupoId: 'manual2cPrimaria5.I',
+    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
@@ -2126,7 +2126,7 @@ export default [
 
   {
     id: 252,
-    grupoId: 'manual2cPrimaria5.I',
+    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
@@ -2149,7 +2149,7 @@ export default [
 
   {
     id: 253,
-    grupoId: 'manual2cPrimaria5.I',
+    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1c',
     titulo: 'Desafío 3',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
@@ -2173,7 +2173,7 @@ export default [
 
   {
     id: 254,
-    grupoId: 'manual2cPrimaria5.I',
+    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1d',
     titulo: 'Desafío 4',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
@@ -2197,7 +2197,7 @@ export default [
 
   {
     id: 255,
-    grupoId: 'manual2cPrimariaOtros',
+    grupoId: 'manual1cPrimariaOtros',
     nombre: 'CotyDibujoLibre',
     titulo: '¡Coty dibuja libre!',
     imagen: 'Coty',
@@ -2214,7 +2214,7 @@ export default [
   // para el manual de Tandil y no están pensados para ser usados por los alumnos.
   {
     id: 'paracaptura01',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1a',
     titulo: 'Cap. 3 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2229,7 +2229,7 @@ export default [
   },
   {
     id: 'paracaptura02',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-1',
     titulo: 'Cap. 3 / SD2 / A1 b-1',
     imagen: 'Duba',
@@ -2243,7 +2243,7 @@ export default [
   },
   {
     id: 'paracaptura03',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-2',
     titulo: 'Cap. 3 / SD2 / A1 b-2',
     imagen: 'Duba',
@@ -2257,7 +2257,7 @@ export default [
   },
   {
     id: 'paracaptura04',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-3',
     titulo: 'Cap. 3 / SD2 / A1 b-3',
     imagen: 'Duba',
@@ -2271,7 +2271,7 @@ export default [
   },
   {
     id: 'paracaptura05',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-4',
     titulo: 'Cap. 3 / SD2 / A1 b-4',
     imagen: 'Duba',
@@ -2285,7 +2285,7 @@ export default [
   },
   {
     id: 'paracaptura06',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1 c',
     titulo: 'Cap. 3 / SD2 / A1 c',
     imagen: 'Coty',
@@ -2299,7 +2299,7 @@ export default [
   },
   {
     id: 'paracaptura07',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1 d',
     titulo: 'Cap. 3 / SD2 / A1 d',
     imagen: 'Coty',
@@ -2313,7 +2313,7 @@ export default [
   },
   {
     id: 'paracaptura08',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a',
     imagen: 'Toto',
@@ -2326,7 +2326,7 @@ export default [
   },
   {
     id: 'paracaptura09',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b',
     imagen: 'Toto',
@@ -2341,7 +2341,7 @@ export default [
   },
   {
     id: 'paracaptura10',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a V2',
     imagen: 'Toto',
@@ -2356,7 +2356,7 @@ export default [
   },
   {
     id: 'paracaptura11',
-    grupoId: 'manual2cPrimariaCapturasCap3',
+    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b V2',
     imagen: 'Toto',
@@ -2371,7 +2371,7 @@ export default [
   },
   {
     id: 'paracaptura12',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1a',
     titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2387,7 +2387,7 @@ export default [
   },
   {
     id: 'paracaptura13',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1b',
     titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
@@ -2403,7 +2403,7 @@ export default [
   },
   {
     id: 'paracaptura14',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1c',
     titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
@@ -2419,7 +2419,7 @@ export default [
   },
   {
     id: 'paracaptura15',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2a',
     titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2438,7 +2438,7 @@ export default [
   },
   {
     id: 'paracaptura16',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2b',
     titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
@@ -2457,7 +2457,7 @@ export default [
   },
   {
     id: 'paracaptura17',
-    grupoId: 'manual2cPrimariaCapturasCap4',
+    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2c',
     titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
@@ -2476,7 +2476,7 @@ export default [
   },
   {
     id: 'paracaptura18',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2a',
     titulo: 'Cap. 5 / SD2 / A2 a',
     imagen: 'Duba',
@@ -2489,7 +2489,7 @@ export default [
   },
   {
     id: 'paracaptura19',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2b',
     titulo: 'Cap. 5 / SD2 / A2 b',
     imagen: 'Duba',
@@ -2502,7 +2502,7 @@ export default [
   },
   {
     id: 'paracaptura20',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2c',
     titulo: 'Cap. 5 / SD2 / A2 c',
     imagen: 'Duba',
@@ -2515,7 +2515,7 @@ export default [
   },
   {
     id: 'paracaptura21',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2d',
     titulo: 'Cap. 5 / SD2 / A2 d',
     imagen: 'Duba',
@@ -2528,7 +2528,7 @@ export default [
   },
   {
     id: 'paracaptura22',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2e',
     titulo: 'Cap. 5 / SD2 / A2 e',
     imagen: 'Duba',
@@ -2541,7 +2541,7 @@ export default [
   },
   {
     id: 'paracaptura23',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2f',
     titulo: 'Cap. 5 / SD2 / A2 f',
     imagen: 'Duba',
@@ -2554,7 +2554,7 @@ export default [
   },
   {
     id: 'paracaptura24',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2g',
     titulo: 'Cap. 5 / SD2 / A2 g',
     imagen: 'Duba',
@@ -2567,7 +2567,7 @@ export default [
   },
   {
     id: 'paracaptura25',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2h',
     titulo: 'Cap. 5 / SD2 / A2 h',
     imagen: 'Duba',
@@ -2580,7 +2580,7 @@ export default [
   },
   {
     id: 'paracaptura26',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2i',
     titulo: 'Cap. 5 / SD2 / A2 i',
     imagen: 'Duba',
@@ -2593,7 +2593,7 @@ export default [
   },
   {
     id: 'paracaptura27',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2j',
     titulo: 'Cap. 5 / SD2 / A2 j',
     imagen: 'Duba',
@@ -2606,7 +2606,7 @@ export default [
   },
   {
     id: 'paracaptura28',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2k',
     titulo: 'Cap. 5 / SD2 / A2 k',
     imagen: 'Duba',
@@ -2619,7 +2619,7 @@ export default [
   },
   {
     id: 'paracaptura29',
-    grupoId: 'manual2cPrimariaCapturasCap5',
+    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2l',
     titulo: 'Cap. 5 / SD2 / A2 l',
     imagen: 'Duba',
