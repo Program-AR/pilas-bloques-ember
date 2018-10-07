@@ -1,20 +1,5 @@
 <div class='contenido-principal'>
 
-  <h1>Desafíos</h1>
-
-  {{#each model as |grupo|}}
-
-    {{#if grupo.desafios}}
-      <h2>{{grupo.titulo}}</h2>
-    {{/if}}
-
-    {{#each grupo.desafios as |desafio|}}
-      {{pilas-desafio model=desafio}}
-    {{/each}}
-
-  {{/each}}
-
-  <div class="nota">Nota: El resto de los desafíos está deshabilitado temporalmente porque
-    estamos en fase de pruebas y renovación de blockly.</div>
+  <p>Elegí uno de los libros de la barra superior</p>
 
 </div>
