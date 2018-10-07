@@ -15,4 +15,13 @@ export default [
     titulo: 'Segundo Ciclo',
     descripcion: 'Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR"  Para 2° ciclo de primaria en adelante.',
   },
+
+  // Libro invisible, exclusivo para hacer capturas:
+  {
+    id: 'capturas1c',
+    titulo: 'Primer ciclo para hacer capturas',
+    modoLecturaSimple: true,
+    desafiosCortos: true,
+    oculto: true
+  }
 ];

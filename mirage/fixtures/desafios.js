@@ -2210,10 +2210,10 @@ export default [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
 
-  // Los desafíos a partir de acá (id 3**) se crearon únicamente para tomar capturas
-  // para el manual de Tandil y deben ser removidos a futuro.
+  // Los desafíos a partir de acá (id paracapturaXX) se crearon únicamente para tomar capturas
+  // para el manual de Tandil y no están pensados para ser usados por los alumnos.
   {
-    id: 301,
+    id: 'paracaptura01',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1a',
     titulo: 'Cap. 3 / SD2 / A1 a',
@@ -2228,7 +2228,7 @@ export default [
     bloques: ['repetir','si','sino','MoverACasillaAbajo','MoverACasillaArriba','MoverACasillaIzquierda','MoverACasillaDerecha','ComerChurrasco','HayChurrasco']
   },
   {
-    id: 302,
+    id: 'paracaptura02',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1b-1',
     titulo: 'Cap. 3 / SD2 / A1 b-1',
@@ -2242,7 +2242,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 303,
+    id: 'paracaptura03',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1b-2',
     titulo: 'Cap. 3 / SD2 / A1 b-2',
@@ -2256,7 +2256,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 304,
+    id: 'paracaptura04',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1b-3',
     titulo: 'Cap. 3 / SD2 / A1 b-3',
@@ -2270,7 +2270,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 305,
+    id: 'paracaptura05',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1b-4',
     titulo: 'Cap. 3 / SD2 / A1 b-4',
@@ -2284,7 +2284,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 306,
+    id: 'paracaptura06',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1 c',
     titulo: 'Cap. 3 / SD2 / A1 c',
@@ -2298,7 +2298,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
   },
   {
-    id: 307,
+    id: 'paracaptura07',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.2.1 d',
     titulo: 'Cap. 3 / SD2 / A1 d',
@@ -2312,7 +2312,7 @@ export default [
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
   },
   {
-    id: 308,
+    id: 'paracaptura08',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a',
@@ -2325,7 +2325,7 @@ export default [
     bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
   },
   {
-    id: 309,
+    id: 'paracaptura09',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b',
@@ -2340,7 +2340,7 @@ export default [
     bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
   },
   {
-    id: 310,
+    id: 'paracaptura10',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a V2',
@@ -2355,7 +2355,7 @@ export default [
     bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
   },
   {
-    id: 311,
+    id: 'paracaptura11',
     grupoId: 'manual2cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b V2',
@@ -2370,7 +2370,7 @@ export default [
     bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
   },
   {
-    id: 312,
+    id: 'paracaptura12',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.1a',
     titulo: 'Cap. 4 / SD2 / A1 a',
@@ -2386,7 +2386,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 313,
+    id: 'paracaptura13',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.1b',
     titulo: 'Cap. 4 / SD2 / A1 b',
@@ -2402,7 +2402,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 314,
+    id: 'paracaptura14',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.1c',
     titulo: 'Cap. 4 / SD2 / A1 c',
@@ -2418,7 +2418,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 315,
+    id: 'paracaptura15',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.2a',
     titulo: 'Cap. 4 / SD2 / A1 a',
@@ -2437,7 +2437,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 316,
+    id: 'paracaptura16',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.2b',
     titulo: 'Cap. 4 / SD2 / A1 b',
@@ -2456,7 +2456,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 317,
+    id: 'paracaptura17',
     grupoId: 'manual2cPrimariaCapturasCap4',
     nombre: '4.2.2c',
     titulo: 'Cap. 4 / SD2 / A1 c',
@@ -2475,7 +2475,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
-    id: 318,
+    id: 'paracaptura18',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2a',
     titulo: 'Cap. 5 / SD2 / A2 a',
@@ -2488,7 +2488,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 319,
+    id: 'paracaptura19',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2b',
     titulo: 'Cap. 5 / SD2 / A2 b',
@@ -2501,7 +2501,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 320,
+    id: 'paracaptura20',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2c',
     titulo: 'Cap. 5 / SD2 / A2 c',
@@ -2514,7 +2514,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 321,
+    id: 'paracaptura21',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2d',
     titulo: 'Cap. 5 / SD2 / A2 d',
@@ -2527,7 +2527,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 322,
+    id: 'paracaptura22',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2e',
     titulo: 'Cap. 5 / SD2 / A2 e',
@@ -2540,7 +2540,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 323,
+    id: 'paracaptura23',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2f',
     titulo: 'Cap. 5 / SD2 / A2 f',
@@ -2553,7 +2553,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 324,
+    id: 'paracaptura24',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2g',
     titulo: 'Cap. 5 / SD2 / A2 g',
@@ -2566,7 +2566,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 325,
+    id: 'paracaptura25',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2h',
     titulo: 'Cap. 5 / SD2 / A2 h',
@@ -2579,7 +2579,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 326,
+    id: 'paracaptura26',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2i',
     titulo: 'Cap. 5 / SD2 / A2 i',
@@ -2592,7 +2592,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 327,
+    id: 'paracaptura27',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2j',
     titulo: 'Cap. 5 / SD2 / A2 j',
@@ -2605,7 +2605,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 328,
+    id: 'paracaptura28',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2k',
     titulo: 'Cap. 5 / SD2 / A2 k',
@@ -2618,7 +2618,7 @@ export default [
     bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
-    id: 329,
+    id: 'paracaptura29',
     grupoId: 'manual2cPrimariaCapturasCap5',
     nombre: '5SD2A2l',
     titulo: 'Cap. 5 / SD2 / A2 l',

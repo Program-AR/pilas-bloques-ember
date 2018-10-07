@@ -7,5 +7,6 @@ export default DS.Model.extend({
   descripcion: DS.attr('string'),
   grupos: hasMany('grupo'),
   modoLecturaSimple: DS.attr('boolean'),
-  desafiosCortos: DS.attr('boolean')
+  desafiosCortos: DS.attr('boolean'),
+  oculto: DS.attr('boolean')
 });

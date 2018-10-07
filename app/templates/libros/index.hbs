@@ -12,7 +12,9 @@
     </p>
 
     {{#each model as |libro|}}
-      {{pilas-libro libro=libro}}
+      {{#unless libro.oculto}}
+        {{pilas-libro libro=libro}}
+      {{/unless}}
     {{/each}}
 
     <hr>

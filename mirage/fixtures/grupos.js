@@ -117,17 +117,17 @@ export default [
   },
   {
     id: 'manual2cPrimariaCapturasCap3',
-    libroId: 1,
+    libroId:'capturas1c',
     titulo: 'Desafíos para hacer capturas / Capítulo 3',
   },
   {
     id: 'manual2cPrimariaCapturasCap4',
-    libroId: 1,
+    libroId: 'capturas1c',
     titulo: 'Desafíos para hacer capturas / Capítulo 4',
   },
   {
     id: 'manual2cPrimariaCapturasCap5',
-    libroId: 1,
+    libroId: 'capturas1c',
     titulo: 'Desafíos para hacer capturas / Capítulo 5',
   }
 ];
