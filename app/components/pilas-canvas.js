@@ -26,7 +26,7 @@ export default Ember.Component.extend({
     this.get("iframeElement").onload = () => {
 
       if (this.get('pilas')) {
-        this.get("pilas").inicializarPilas(iframeElement, {width: 420, height: 480}).
+        this.get("pilas").inicializarPilas(iframeElement, {width: 420, height: 480},this.get("escena")).
           then((pilas) => {
 
             if (this.get('escena')) {

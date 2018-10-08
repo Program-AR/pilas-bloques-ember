@@ -42,14 +42,14 @@ export default Ember.Service.extend(Ember.Evented, {
    *
    * @public
    */
-  inicializarPilas(iframeElement, options) {
+  inicializarPilas(iframeElement, options, nombreOInicializadorDeEscena) {
     this.set("iframe", iframeElement);
     this.set("loading", true);
 
     return new Ember.RSVP.Promise((success) => {
       let width = options.width;
       let height = options.height;
-      let listaImagenesSerializada = listaImagenes.join("|");
+      let listaImagenesSerializada = this.imagenesParaPrecargar(nombreOInicializadorDeEscena).join("|");
 
       var code = `
         var canvasElement = document.getElementById('canvas');
@@ -102,6 +102,26 @@ export default Ember.Service.extend(Ember.Evented, {
       pilas.ejecutar();
       this.cambiarFPS(100);
     });
+  },
+
+  imagenesParaPrecargar(nombreOInicializadorDeEscena){
+    //Le pregunto a la escena qué imágenes va a necesitar
+    var imagenes = this.evaluar(`${this.nombreDeEscena(nombreOInicializadorDeEscena)}.imagenesPreCarga()`);
+    console.log(imagenes);
+    //Si la escena no las sabe, cargo todas:
+    return imagenes.length ? imagenes : listaImagenes;
+  },
+
+  nombreDeEscena(nombreOInicializadorDeEscena){
+    if(nombreOInicializadorDeEscena.indexOf('new') === -1){
+      // Significa que vino el nombre.
+      return nombreOInicializadorDeEscena;
+    } else {
+      // Significa que hay una construcción en el string.
+      // La expresión regular captura el nombre de la clase (\w+)
+      // y el [1] accede al primer grupo de captura.
+      return nombreOInicializadorDeEscena.match(/new\s+(\w+)\s*\(/)[1]
+    }
   },
 
   /**

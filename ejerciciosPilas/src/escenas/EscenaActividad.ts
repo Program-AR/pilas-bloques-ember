@@ -13,6 +13,10 @@ class EscenaActividad extends Base {
 	cuadricula : Cuadricula;
 	fondo;
 
+	static imagenesPreCarga(): string[]{
+		return [];
+	}
+
 	actualizar() : void {
 		try {
 			super.actualizar();
