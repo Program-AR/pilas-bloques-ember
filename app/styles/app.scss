@@ -517,10 +517,20 @@ body, .navbar-fixed-top, .navbar-fixed-bottom {
   //verflow-y: scroll;
 }
 
-.dialogoFinDesafio {
+.dialogoFinDesafio, .dialogoAjustado {
   width: 500px;
   height: 390px;
   max-height: 85%;
+}
+
+.dialogoAjustado {
+  height: 250px;
+}
+
+#preguntaPorProblemas {
+  font-size: small;
+  text-align: right;
+  color: #1f629c;
 }
 
 .img-border {

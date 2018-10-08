@@ -89,6 +89,8 @@
     {{/if}}
   </div>
 
+  <div id="preguntaPorProblemas" {{action 'abrirReporteProblemas'}}>{{fa-icon "question-circle"}} ¿Algún problema con este ejercicio? </div>
+
 </div>
 
 
@@ -106,6 +108,16 @@
     <p>Si tenés <strong>procedimientos</strong>, usalos para escribir tu <strong>estrategia</strong>. Si tenés patrones repetidos... ¡Usá <strong>repetición</strong>! Y si el escenario cambia... ¡Usá alternativas y repeticiones <strong>condicionales</strong>!</p>
     <p>¿Estás usando los conceptos bien?</p>
 
+  {{/modal-dialog}}
+{{/if}}
+
+{{#if mostrarDialogoReporteProblemas}}
+  {{#modal-dialog close='cerrarReporteProblemas'
+                  targetAttachment="center"
+                  translucentOverlay=true
+                  container-class="dialogoAjustado"}}
+    {{modal-title title="Reportar un problema" close='cerrarReporteProblemas'}}
+    {{info-reportar-problema}}
   {{/modal-dialog}}
 {{/if}}
 

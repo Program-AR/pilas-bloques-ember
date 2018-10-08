@@ -461,6 +461,14 @@ export default Ember.Component.extend({
       this.get('browser').openLink(url);
     },
 
+    abrirReporteProblemas() {
+      this.set('mostrarDialogoReporteProblemas', true);
+    },
+
+    cerrarReporteProblemas() {
+      this.set('mostrarDialogoReporteProblemas', false);
+    },
+
     enviarMensaje() {
       this.set('envioEnCurso', true);
 
