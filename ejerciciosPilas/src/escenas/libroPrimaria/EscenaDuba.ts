@@ -9,6 +9,10 @@ class EscenaDuba extends EscenaDesdeMapa {
 	xFinal: number;
 	yFinal: number;
 
+	static imagenesPreCarga() : string[] {
+		return ["actor.duba.png", "fondo.duba.png", "actor.churrasco.png", 'casillas.duba.png', "obstaculo.duba1.png", "obstaculo.duba2.png", "obstaculo.duba3.png", "obstaculo.duba4.png"]
+	}
+
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal? : [number, number]) {
 		super();
 		this.initDesdeUnaOVariasDescripciones(especificacion, opciones);

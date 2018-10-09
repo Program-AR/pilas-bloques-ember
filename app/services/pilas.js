@@ -49,6 +49,9 @@ export default Ember.Service.extend(Ember.Evented, {
     return new Ember.RSVP.Promise((success) => {
       let width = options.width;
       let height = options.height;
+
+      // Cuidado: esto hace que no se pueda cargar una escena diferente en esta instancia de pilas.
+      // La razón es que se le pregunta a la escena qué imágenes precargar.
       let listaImagenesSerializada = this.imagenesParaPrecargar(nombreOInicializadorDeEscena).join("|");
 
       var code = `
@@ -59,7 +62,7 @@ export default Ember.Service.extend(Ember.Evented, {
                         canvas: canvasElement,
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
-                        cargar_imagenes_estandar: false,
+                        cargar_imagenes_estandar: true,
                         silenciar_advertencia_de_multiples_ejecutar: true
                       };
 
