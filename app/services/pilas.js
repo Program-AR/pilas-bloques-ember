@@ -123,7 +123,7 @@ export default Ember.Service.extend(Ember.Evented, {
       // Significa que hay una construcción en el string.
       // La expresión regular captura el nombre de la clase (\w+)
       // y el [1] accede al primer grupo de captura.
-      return nombreOInicializadorDeEscena.match(/new\s+(\w+)\s*\(/)[1]
+      return nombreOInicializadorDeEscena.match(/new\s+(\w+)\s*\(/)[1];
     }
   },
 
