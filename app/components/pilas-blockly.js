@@ -564,9 +564,13 @@ export default Ember.Component.extend({
 });
 
 Ember.onerror = function (e) {
-  console.error(
-    "Exception: " + e.message + "\n" +
-    "\n" +
-    "Stack trace:\n" + e.stack
-  );
+  if(e.message | e.stack){
+    console.error(
+      "Exception: " + e.message + "\n" +
+      "\n" +
+      "Stack trace:\n" + e.stack
+    );
+  } else {
+    console.error(e);
+  }
 };
