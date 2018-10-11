@@ -14,6 +14,10 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
    puedeHaberCharco: boolean;
    longitudSegmento: number;
 
+  static clasesDeActoresInvolucrados() : typeof ActorAnimado[] {
+		return [Coty, Charco]
+	}
+
    constructor(dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], argumentos: ArgumentosCoty){
      super();
      this._puntosEsperados = puntosEsperados;
@@ -76,7 +80,7 @@ type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number
      return this._puntosEsperados;
    }
 
-   pathFondo(): string {
+   static pathFondo(): string {
     return 'fondo.coty.png';
   }
 
