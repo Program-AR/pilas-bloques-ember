@@ -13,7 +13,7 @@ class SuperTito2 extends SuperTito1 {
         this.hayLuz = false;
     }
 
-    pathFondo(){
+    static pathFondo(){
         return 'fondo.superTito2.png';
     }
 

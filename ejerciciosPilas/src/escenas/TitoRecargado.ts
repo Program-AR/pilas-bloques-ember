@@ -7,7 +7,7 @@
  *
  */
 class TitoRecargado extends SuperTito2 {
-    pathFondo() {
+    static pathFondo() {
         return 'fondos.estrellas.png';
     }
 
