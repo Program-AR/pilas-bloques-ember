@@ -9,7 +9,7 @@ abstract class DibujandoFiguras extends EscenaActividad {
     anchoLinea = 6;
 
     iniciar() {
-        this.fondo = new Fondo(this.pathFondo(),0,0);
+        this.fondo = new Fondo((<typeof DibujandoFiguras>this.constructor).pathFondo(),0,0);
         this.crearAutomata();
         this.dibujoEsperado = DibujoLineal.desdePuntosSimples(this.puntosEsperados());
         this.hacerDibujoPreexistente();
@@ -41,7 +41,7 @@ abstract class DibujandoFiguras extends EscenaActividad {
       return this.dibujoRealizado().igualA(this.dibujoEsperado.unificado());
     }
 
-    pathFondo(): string {
+    static pathFondo(): string {
       return 'fondo.dibujando.figuras.png';
     }
 
