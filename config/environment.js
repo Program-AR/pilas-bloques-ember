@@ -39,6 +39,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV['backendURL'] = 'http://0.0.0.0:5000';
+    //ENV['backendURL'] = 'http://pilasbloques-staging.sadosky.net:5001';
     
     ENV['ember-cli-mirage'] = {
       enabled: true
@@ -77,6 +78,7 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'style-src': "'self' 'unsafe-inline'",
+    'connect-src': "'self' http://pilasbloques-staging.sadosky.net:5001"
   };
 
 
