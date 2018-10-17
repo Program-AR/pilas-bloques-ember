@@ -41,8 +41,9 @@ export default Ember.Route.extend({
       then((solucion_xml) => {
         model.set("solucion", btoa(solucion_xml));
       }).
-      catch(() => {
-        console.warn("Ha fallado solicitar la solución al servidor, esto es porque el alumno no hay guardado nunca.");
+      catch((reason) => {
+        console.warn("Ha fallado solicitar la solución al servidor, esto puede ser porque el alumno no hay guardado nunca. Más información:");
+        console.warn(reason);
         return null;
       });
   },

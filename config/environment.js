@@ -38,8 +38,8 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
-    ENV['backendURL'] = 'http://0.0.0.0:5000';
-    //ENV['backendURL'] = 'http://pilasbloques-staging.sadosky.net:5001';
+    //ENV['backendURL'] = 'http://0.0.0.0:5000';
+    ENV['backendURL'] = 'http://api.pilasbloques-staging.sadosky.net:8000';
     
     ENV['ember-cli-mirage'] = {
       enabled: true

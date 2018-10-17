@@ -135,4 +135,8 @@ actualizar_imagenes:
 test_travis:
 	ember test
 
+deploy_staging: compilar
+	ssh pilas@pilasbloques-staging.sadosky.net 'rm -rf /opt/pilas/pilas-bloques-frontend/*'
+	scp -r dist/. pilas@pilasbloques-staging.sadosky.net:/opt/pilas/pilas-bloques-frontend/
+
 .PHONY: dist
