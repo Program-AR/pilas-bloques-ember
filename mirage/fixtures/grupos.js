@@ -93,12 +93,12 @@ export default [
   {
     id: 'manual1cPrimaria5.1.3',
     libroId: 1,
-    titulo: 'Duba todavía tiene hambre'
+    titulo: 'Sólo en ciertas ocasiones'
   },
   {
     id: 'manual1cPrimaria5.1.4',
     libroId: 1,
-    titulo: '¿Qué encontrará Lita?'
+    titulo: '¿Y si no?'
   },
   {
     id: 'manual1cPrimaria5.2.1',
