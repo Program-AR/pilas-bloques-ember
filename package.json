@@ -16,6 +16,13 @@
     "Education",
     "Development"
   ],
+  "contributors": [
+    "Federico Sawady O'Connor <sawady.faso@gmail.com> (https://www.linkedin.com/in/federico-agustín-sawady-o-connor-93356578/)",
+    "Hugo Ruscitti <hugoruscitti@gmail.com> (http://www.examplelab.com.ar/)",
+    "Alfredo Sanzo <alfredo.sanzo@gmail.com> (https://www.linkedin.com/in/alfredo-sanzo-13a9785/)",
+    "Miguel Garcia  <miguel.garcia@gmail.com> (https://github.com/miguelgarcia)",
+    "Franco Frizzo <ffrizzo@dc.uba.ar> (https://francofrizzo.com/)"
+  ],
   "private": true,
   "directories": {
     "doc": "doc",
