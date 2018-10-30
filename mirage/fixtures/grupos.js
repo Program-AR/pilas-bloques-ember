@@ -103,7 +103,7 @@ export default [
   {
     id: 'manual1cPrimaria5.2.1',
     libroId: 1,
-    titulo: 'Duba, más hambrienta que nunca'
+    titulo: 'Más churrascos y ensaladas'
   },
   {
     id: 'manual1cPrimaria5.I',
