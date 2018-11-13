@@ -6,7 +6,7 @@
  */
 abstract class Letra extends ActorAnimado {
     private _caracter : string;
-    private static _caracteresValidos: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ";
+    private static _caracteresValidos: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ ";
 
     /**
      * @param unString Indica la letra que será representada por el actor (case insensitive).
