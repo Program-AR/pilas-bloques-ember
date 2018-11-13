@@ -30,6 +30,14 @@ abstract class Letra extends ActorAnimado {
     }
 
     /**
+     * Permite verificar de antemano si es posible crear una instancia de Letra
+     * a partir de cierto string
+     */
+    static esArgumentoValido(unString : string) : boolean {
+        return Letra.esCaracterValido(unString[0].toUpperCase());
+    }
+
+    /**
      * Auxiliar para recuperar la primer letra de un string, en mayúsculas.
      * Falla si no es una letra.
      */
@@ -39,7 +47,7 @@ abstract class Letra extends ActorAnimado {
             return caracter;
         }
         else {
-            throw Error("El caracter proporcionado no es una letra");
+            throw Error("El cáracter proporcionado no es una letra");
         }
     }
 
