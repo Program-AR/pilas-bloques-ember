@@ -819,7 +819,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
       descripcion: 'Escribir letra que estoy tocando',
       icono: 'icono.DibujarLinea.png',
-      comportamiento: 'EscribirTextoDadoEnOtraCuadricula',
+      comportamiento: 'EscribirLetraActualEnOtraCuadricula',
       argumentos: '{}',
     });
 
@@ -843,11 +843,13 @@ export default Ember.Service.extend({
           "text": ""
         }
       ],
-      code: 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "$texto"});'
     });
-
+    
     Blockly.Blocks['EscribirTextoDadoEnOtraCuadricula'].categoria = 'Primitivas';
-
+    
+    Blockly.MyLanguage['EscribirTextoDadoEnOtraCuadricula'] = function(block) {
+      return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
+    };
 
 
     blockly.createCustomBlock('GirarGrados', {

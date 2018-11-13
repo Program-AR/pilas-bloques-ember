@@ -34,13 +34,22 @@ class EscenaTotoEscritor extends EscenaToto {
     }
 }
 
-
-class EscribirTextoDadoEnOtraCuadricula extends EscribirTexto {
+abstract class EscribirTextoEnOtraCuadricula extends EscribirTexto {
     iniciar(receptor){
-        this.argumentos.texto = this.argumentos.texto || pilas.escena_actual().automata.caracterActual();
+        this.argumentos.texto = this.obtenerTexto();
         this.argumentos.receptor = pilas.escena_actual().manoQueEscribe;
         super.iniciar(this.argumentos.receptor);
     }
+
+    abstract obtenerTexto(): string;
+}
+
+class EscribirLetraActualEnOtraCuadricula extends EscribirTextoEnOtraCuadricula {
+    obtenerTexto(): string { return pilas.escena_actual().automata.caracterActual(); }
+}
+
+class EscribirTextoDadoEnOtraCuadricula extends EscribirTextoEnOtraCuadricula {
+    obtenerTexto(): string { return this.argumentos.texto; }
 }
 
 
