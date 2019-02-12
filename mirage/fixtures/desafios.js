@@ -540,13 +540,20 @@ export default [
     ]
   },
 
-/*  {
-    id: 136,
+
+  {
+    id:136,
     grupoId: 5,
-    nombre: '',
-    titulo: 'Próximamente: más actividades',
-    deshabilitado: true,
-  },*/
+    nombre: 'DibujoLibre',
+    titulo:'¡Dibujo libre!',
+    imagen: 'DibujoLibre',
+    escena: `new DibujandoLibremente()`,
+    enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
+    consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
+    debeFelicitarse: false, 
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+              'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
 
 	{
 		id: 201,
@@ -2204,7 +2211,7 @@ export default [
     escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
-    debeFelicitarse: true, 
+    debeFelicitarse: false, 
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']

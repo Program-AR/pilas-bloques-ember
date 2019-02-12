@@ -1,6 +1,7 @@
 /// <reference path = "../DibujandoFiguras.ts" />
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
+/// <reference path = "../../actores/FlechaEscenarioAleatorio.ts" />
 
 type ArgumentosCoty = {xCoty?: number, yCoty?: number, longitudSegmento?: number, puedeHaberCharco?: boolean}
 
