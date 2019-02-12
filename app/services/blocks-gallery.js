@@ -742,7 +742,7 @@ export default Ember.Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.saltar.png`,
+          "src": `iconos/icono.arriba.png`,
           "width": 16,
           "height": 20,
           "alt": "*"
