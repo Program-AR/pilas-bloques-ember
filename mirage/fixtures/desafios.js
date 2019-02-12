@@ -376,7 +376,7 @@ export default [
     escena: 'Dibujando5CuadradosHorizontal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+              'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 31,
@@ -388,7 +388,7 @@ export default [
     escena: 'Dibujando5CuadradosDiagonal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+              'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 32,
@@ -400,7 +400,7 @@ export default [
     escena: 'Dibujando4CuadradosInteriores',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+              'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 33,
@@ -412,7 +412,7 @@ export default [
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+              'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 34,
@@ -424,7 +424,7 @@ export default [
     escena: 'DibujandoHexagono',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 35,
@@ -436,7 +436,7 @@ export default [
     escena: 'DibujandoTrianguloEquilatero',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 36,
@@ -448,7 +448,7 @@ export default [
     escena: 'DibujandoPoligonosInteriores',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 37,
@@ -460,7 +460,7 @@ export default [
     escena: 'DibujandoCuevaEstalagtitas',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+              'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 130,

@@ -732,6 +732,40 @@ export default Ember.Service.extend({
 
     this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
 
+
+    blockly.createCustomBlock('SaltarHaciaAdelante', {
+      message0: "%1 Saltar hacia adelante %2",
+      colour: Blockly.Blocks.primitivas.COLOUR,
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "field_image",
+          "src": `iconos/icono.saltar.png`,
+          "width": 16,
+          "height": 20,
+          "alt": "*"
+        },
+        {
+          "type": "input_value",
+          "name": "longitud",
+        }
+      ],
+      code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
+    });
+
+    Blockly.Blocks['SaltarHaciaAdelante'].toolbox = `
+    <block type="SaltarHaciaAdelante">
+      <value name="longitud">
+        <block type="math_number"><field name="NUM">100</field></block></value>
+    </block>
+  `;
+
+    Blockly.Blocks['SaltarHaciaAdelante'].categoria = 'Primitivas';
+
+
+
     blockly.createCustomBlock('DibujarLado', {
       message0: "%1 Dibujar lado de %2",
       colour: Blockly.Blocks.primitivas.COLOUR,
