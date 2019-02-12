@@ -111,3 +111,10 @@ class SaltarAnimado extends MovimientoAnimado {
 		return this.argumentos.nombreAnimacion || "saltar";
 	}
 }
+
+class SaltarHaciaAdelante extends SaltarAnimado{
+	preAnimacion(){
+		this.argumentos.direccion = new Direct(this.receptor.rotacion);
+		super.preAnimacion();
+	}
+}
