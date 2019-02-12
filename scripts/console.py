@@ -48,16 +48,16 @@ def color(text, **user_styles):
 
 
 def error(text):
-    print color(text, bold=True, fg_red=True)
+    print(color(text, bold=True, fg_red=True))
 
 def warning(text):
-    print color(text, bold=True, fg_orange=True)
+    print(color(text, bold=True, fg_orange=True))
 
 def success(text):
-    print color(text, fg_green=True)
+    print(color(text, fg_green=True))
 
 def info(text):
-    print color(text, fg_yellow=True)
+    print(color(text, fg_yellow=True))
 
 def log(text):
-    print color(text, fg_dark_grey=True)
+    print(color(text, fg_dark_grey=True))
