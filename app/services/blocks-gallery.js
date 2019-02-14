@@ -921,28 +921,28 @@ export default Ember.Service.extend({
       descripcion: 'Mover arriba dibujando',
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
       descripcion: 'Mover abajo dibujando',
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
       descripcion: 'Mover derecha dibujando',
       icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', {
       descripcion: 'Mover izquierda dibujando',
       icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('SaltarArriba', {

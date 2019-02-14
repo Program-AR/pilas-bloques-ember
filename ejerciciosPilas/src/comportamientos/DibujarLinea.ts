@@ -21,7 +21,7 @@ class DibujarLinea extends MovimientoAnimado {
 	}
 
 	preAnimacion() {
-		this.argumentos.distancia = this.receptor.escena.longitudSegmento || this.argumentos.distancia;
+		this.argumentos.distancia = this.argumentos.distancia || this.receptor.escena.longitudSegmento ;
 		this.argumentos.distanciaConObstaculo = this.argumentos.distancia / 2;
 		super.preAnimacion();
 		if (this.argumentos.dibujarPuntos && !this.hayObstaculo()) {
