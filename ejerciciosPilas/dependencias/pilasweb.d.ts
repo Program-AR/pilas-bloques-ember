@@ -1127,7 +1127,7 @@ declare class Mensajes {
      */
     desconectar_mensajes(actor_id: any): void;
 }
-declare var pilas: any;
+declare var pilas: Pilas;
 declare var Trait: any;
 declare var window: Window;
 declare var pilasengine: any;

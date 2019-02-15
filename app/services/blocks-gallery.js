@@ -832,7 +832,8 @@ export default Ember.Service.extend({
 		this.crearBloqueAccion('PrepararEnsalada', {
       descripcion: 'Preparar ensalada',
       icono: 'icono.ensaladera.png',
-      comportamiento: 'ComportamientoColision',
+      // comportamiento: 'ComportamientoColision',
+      comportamiento: 'PrepararEnsalada',
       argumentos: `{
         etiqueta: "Ensaladera",
         nombreAnimacion: "prepararEnsalada",
