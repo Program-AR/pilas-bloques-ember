@@ -32,17 +32,21 @@ class EscenaLita extends EscenaDesdeMapa {
 		// recoga del mapa todas las lechugas y todos los tomates.
 		else {
 			this.estado = new Estado(() =>
-				this.contarActoresConEtiqueta("Lechuga") === 0 &&
-				this.contarActoresConEtiqueta("Tomate") === 0
+			this.noHayMasIngredientes()
 			);
 		}
 	}
+
+	noHayMasIngredientes() {
+		return this.contarActoresConEtiqueta("Lechuga") === 0 &&
+		this.contarActoresConEtiqueta("Tomate") === 0;
+	}	
 
 	estaResueltoElProblema() : boolean {
 		// Además de verificar que Lita haya cumplido el objetivo de la escena,
 		// en el caso de que se haya proporcionado una posición final,
 		// queremos verificar que Lita esté ahí.
-		return super.estaResueltoElProblema() &&
+		return super.estaResueltoElProblema() && this.noHayMasIngredientes() &&
 			(this.xFinal === undefined || this.automata.casillaActual().sos(this.xFinal, this.yFinal));
 	}
 
