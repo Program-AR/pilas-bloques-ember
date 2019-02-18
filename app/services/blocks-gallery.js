@@ -832,22 +832,13 @@ export default Ember.Service.extend({
 		this.crearBloqueAccion('PrepararEnsalada', {
       descripcion: 'Preparar ensalada',
       icono: 'icono.ensaladera.png',
-      // comportamiento: 'ComportamientoColision',
       comportamiento: 'PrepararEnsalada',
-      argumentos: `{
-        etiqueta: "Ensaladera",
-        nombreAnimacion: "prepararEnsalada",
-        animacionColisionadoMientras: "preparando",
-        animacionColisionadoPost: "llena",
-        idTransicion: "prepararEnsalada"
-      }`
+      argumentos: `{}`,
       // comportamientoAdicional: 'Eliminar',
       // argumentosComportamiento: {
       //   nombreAnimacion: "explotar"
       // }
     });
-
-
 
     // Para los desafíos de escribir y leer letras
     
