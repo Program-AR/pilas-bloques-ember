@@ -82,7 +82,8 @@ actividadTest("3.1.4a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Todavía no tengo tomate ni lechuga!"
+  // errorEsperado: "¡Todavía no tengo tomate ni lechuga!"
+  errorEsperado: "¡Todavía me quedan ingredientes por recoger!"
 });
 
 actividadTest("3.1.4a", {
@@ -118,7 +119,8 @@ actividadTest("3.1.4a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Todavía no tengo tomate!"
+  // errorEsperado: "¡Todavía no tengo tomate!"
+  errorEsperado: "¡Todavía me queda tomate por recoger!"
 });
 
 actividadTest("3.1.4a", {
@@ -154,7 +156,8 @@ actividadTest("3.1.4a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Todavía no tengo lechuga!"
+  // errorEsperado: "¡Todavía no tengo lechuga!"
+  errorEsperado: '¡Todavía me queda lechuga por recoger!'
 });
 
 actividadTest("3.1.4a", {
@@ -499,7 +502,8 @@ actividadTest("3.2.3e", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Todavía no tengo tomate!"
+  // errorEsperado: "¡Todavía no tengo tomate!"
+  errorEsperado:  '¡Todavía me queda tomate por recoger!'
 });
 
 actividadTest("3.2.3e", {
