@@ -8,7 +8,6 @@ class EscenaLita extends EscenaDesdeMapa {
 	automata: Lita;
 	xFinal: number;
 	yFinal: number;
-	// resuelve: boolean;
 
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal?: [number, number]) {
 		super();
@@ -48,10 +47,6 @@ class EscenaLita extends EscenaDesdeMapa {
 
 	hayMuchosIngredientes() {
 		return this.contarActoresConEtiqueta("Tomate") > 1 && this.contarActoresConEtiqueta("Lechuga") > 1;
-	}
-
-	haySolamenteUnTomateYUnaLechuga() {
-		return this.contarActoresConEtiqueta("Tomate") === 1 && this.contarActoresConEtiqueta("Lechuga") === 1;
 	}
 
 	estaResueltoElProblema(): boolean {
@@ -101,32 +96,6 @@ class EscenaLita extends EscenaDesdeMapa {
 		let archivosObstaculos = ["obstaculo.lita1.png", "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png"];
 		return new Obstaculo(archivosObstaculos, (fila + 1) + (fila + 1) * (columna + 1));
 	}
-
-	// construirFSM() {
-	// 	let builder = new BuilderStatePattern(this, 'inicial');
-	// 	builder.agregarEstado('tengoTomate');
-	// 	builder.agregarEstado('tengoLechuga');
-	// 	builder.agregarEstado('tengoTomateYLechuga');
-	// 	builder.agregarEstadoAceptacion('ensaladaLista');
-
-	// 	builder.agregarTransicion('inicial', 'tengoTomate', 'agarrarTomate');
-	// 	builder.agregarTransicion('inicial', 'tengoLechuga', 'agarrarLechuga');
-	// 	builder.agregarError('inicial', 'prepararEnsalada', '¡Todavía no tengo tomate ni lechuga!');
-
-	// 	builder.agregarTransicion('tengoTomate', 'tengoTomate', 'agarrarTomate');
-	// 	builder.agregarTransicion('tengoTomate', 'tengoTomateYLechuga', 'agarrarLechuga');
-	// 	builder.agregarError('tengoTomate', 'prepararEnsalada', '¡Todavía no tengo lechuga!');
-
-	// 	builder.agregarTransicion('tengoLechuga', 'tengoTomateYLechuga', 'agarrarTomate');
-	// 	builder.agregarTransicion('tengoLechuga', 'tengoLechuga', 'agarrarLechuga');
-	// 	builder.agregarError('tengoLechuga', 'prepararEnsalada', '¡Todavía no tengo tomate!');
-
-	// 	builder.agregarTransicion('tengoTomateYLechuga', 'tengoTomateYLechuga', 'agarrarTomate');
-	// 	builder.agregarTransicion('tengoTomateYLechuga', 'tengoTomateYLechuga', 'agarrarLechuga');
-	// 	builder.agregarTransicion('tengoTomateYLechuga', 'ensaladaLista', 'prepararEnsalada');
-
-	// 	this.estado = builder.estadoInicial();
-	// }
 
 	archivoFondo() {
 		return "fondo.lita.png";

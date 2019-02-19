@@ -5,15 +5,13 @@ class PrepararEnsalada extends ComportamientoColision {
 
     constructor() {
 
-        const argumentos = {
+        super({
             etiqueta: "Ensaladera",
             nombreAnimacion: "prepararEnsalada",
             animacionColisionadoMientras: "preparando",
             animacionColisionadoPost: "llena",
             idTransicion: "prepararEnsalada"
-        };
-
-        super(argumentos);
+        });
     }
 
     configurarVerificaciones() {
@@ -21,11 +19,8 @@ class PrepararEnsalada extends ComportamientoColision {
 
         const escena = pilas.escena_actual();
 
-        this.verificacionesPre.push(new Verificacion(() => !escena.haySolamenteUnTomateYUnaLechuga(),
-            '¡Todavía me quedan ingredientes por recoger!'));
-
-        this.verificacionesPre.push(new Verificacion(() => !escena.hayMuchosIngredientes(),
-            '¡Todavía me quedan ingredientes por recoger!'));
+        this.verificacionesPre.push(new Verificacion(() => !escena.hayDeLosDosIngredientes(),
+            '¡Todavía me quedan ingredientes por recoger!'))
 
         this.verificacionesPre.push(new Verificacion(() => escena.noHayMasTomates(),
             '¡Todavía me queda tomate por recoger!'));
