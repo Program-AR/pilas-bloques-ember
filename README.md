@@ -24,12 +24,20 @@ sudo apt-get install g++
 
 ```
 
+Al igual que make:
+```
+sudo apt-get install make
+
+```
+
+
 Y también hay que asegurarse de tener node (actualmente compilamos con node 6)
 
 Podemos lograrlo con nvm, para lo cual hay que instalarlo:
 ```
 git clone https://github.com/creationix/nvm.git ~/.nvm
 source ~/.nvm/nvm.sh
+source ~/.nvm/install.sh
 ```
 
 Y luego elegir la versión de node:
