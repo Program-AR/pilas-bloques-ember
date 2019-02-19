@@ -18,9 +18,30 @@ class PrepararEnsalada extends ComportamientoColision {
 
     configurarVerificaciones() {
         super.configurarVerificaciones();
-        this.verificacionesPre.push(new Verificacion(() => pilas.escena_actual().noHayMasIngredientes(),
-            "Necesito todos los ingredientes"
-        ));
+
+        const escena = pilas.escena_actual();
+
+        this.verificacionesPre.push(new Verificacion(() => !escena.haySolamenteUnTomateYUnaLechuga(),
+            '¡Todavía me quedan ingredientes por recoger!'));
+
+        this.verificacionesPre.push(new Verificacion(() => !escena.hayMuchosIngredientes(),
+            '¡Todavía me quedan ingredientes por recoger!'));
+
+        this.verificacionesPre.push(new Verificacion(() => escena.noHayMasTomates(),
+            '¡Todavía me queda tomate por recoger!'));
+
+        this.verificacionesPre.push(new Verificacion(() => escena.noHayMasLechugas(),
+            '¡Todavía me queda lechuga por recoger!'));
+
+    }
+
+    postAnimacion() {
+        super.postAnimacion();
+        if (pilas.escena_actual().noHayMasIngredientes()) {
+            pilas.escena_actual().estado = new Estado(() =>
+                true
+            );
+        }
     }
 
 }
