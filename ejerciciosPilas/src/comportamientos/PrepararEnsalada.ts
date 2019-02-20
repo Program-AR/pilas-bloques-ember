@@ -11,15 +11,6 @@ class PrepararEnsalada extends ComportamientoColision {
         idTransicion: "prepararEnsalada"
     }) {
 
-
-        // super({
-        //     etiqueta: "Ensaladera",
-        //     nombreAnimacion: "prepararEnsalada",
-        //     animacionColisionadoMientras: "preparando",
-        //     animacionColisionadoPost: "llena",
-        //     idTransicion: "prepararEnsalada"
-        // });
-
         super(argumentos);
     }
 
