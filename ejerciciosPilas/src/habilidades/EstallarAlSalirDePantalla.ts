@@ -5,7 +5,7 @@
 // Usar en reemplazo de la habilidad SeMantieneEnPantalla
 // TODO: Repite código con SeMantieneEnPantalla, modificar pilas para que deje de hacerlo.
 
-class AvisaAlSalirDePantalla extends HabilidadAnimada {
+class EstallarAlSalirDePantalla extends HabilidadAnimada {
 
     constructor(receptor) {
         super(receptor);
@@ -15,50 +15,30 @@ class AvisaAlSalirDePantalla extends HabilidadAnimada {
     recibir(evento, tipo) {
         if (tipo == this.receptor.evto_se_movio &&
             this.seSalioDeLaPantalla()) {
-            this.meterActorEnPantalla();
-            this.accionLuegoDeMeterEnPantalla();
+            throw new ActividadError("¡Me salgo de la pantalla!")
         }
     }
 
-    accionLuegoDeMeterEnPantalla() {
-        this.receptor.decir("¡Me salgo de la pantalla!");
-    }
-
-    meterActorEnPantalla() {
-        if (this.meFuiDerecha())
-            this.receptor.x = pilas.derecha();
-
-        if (this.meFuiIzquierda())
-            this.receptor.x = pilas.izquierda();
-
-        if (this.meFuiArriba())
-            this.receptor.y = pilas.arriba();
-
-        if (this.meFuiAbajo())
-            this.receptor.y = pilas.abajo();
-
-    }
-
     seSalioDeLaPantalla() {
-        return this.meFuiDerecha() ||
-            this.meFuiIzquierda() ||
-            this.meFuiArriba() ||
-            this.meFuiAbajo();
+        return this.seFuePorDerecha() ||
+            this.seFuePorIzquierda() ||
+            this.seFuePorArriba() ||
+            this.seFuePorAbajo();
     }
 
-    meFuiIzquierda() {
+    seFuePorIzquierda() {
         return this.receptor.x < pilas.izquierda();
     }
 
-    meFuiDerecha() {
+    seFuePorDerecha() {
         return this.receptor.x > pilas.derecha();
     }
 
-    meFuiArriba() {
+    seFuePorArriba() {
         return this.receptor.y > pilas.arriba();
     }
 
-    meFuiAbajo() {
+    seFuePorAbajo() {
         return this.receptor.y < pilas.abajo();
     }
 }

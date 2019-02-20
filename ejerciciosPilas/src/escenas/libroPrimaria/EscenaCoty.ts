@@ -40,7 +40,7 @@ class EscenaCoty extends DibujandoFiguras {
     if (this.charco) {
       this.ubicarCharco();
     }
-    this.automata.aprender(AvisaAlSalirDePantalla, {});
+    this.automata.aprender(EstallarAlSalirDePantalla, {});
   }
 
   hacerDibujoEsperado() {
