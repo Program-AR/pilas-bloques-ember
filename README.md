@@ -24,6 +24,12 @@ sudo apt-get install g++
 
 ```
 
+Y lo mismo con python:
+```
+sudo apt install python
+
+```
+
 Y también hay que asegurarse de tener node (actualmente compilamos con node 6)
 
 Podemos lograrlo con nvm, para lo cual hay que instalarlo:
