@@ -45,8 +45,8 @@ class EscenaLita extends EscenaDesdeMapa {
 		return this.noHayMasLechugas() && this.noHayMasTomates();
 	}
 
-	hayMuchosIngredientes() {
-		return this.contarActoresConEtiqueta("Tomate") > 1 && this.contarActoresConEtiqueta("Lechuga") > 1;
+	hayDeLosDosIngredientes() {
+		return this.contarActoresConEtiqueta("Tomate") >= 1 && this.contarActoresConEtiqueta("Lechuga") >= 1;
 	}
 
 	estaResueltoElProblema(): boolean {
