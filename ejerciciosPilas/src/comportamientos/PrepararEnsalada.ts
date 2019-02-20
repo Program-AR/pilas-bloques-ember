@@ -3,15 +3,24 @@
 
 class PrepararEnsalada extends ComportamientoColision {
 
-    constructor() {
+    constructor(argumentos: any = {
+        etiqueta: "Ensaladera",
+        nombreAnimacion: "prepararEnsalada",
+        animacionColisionadoMientras: "preparando",
+        animacionColisionadoPost: "llena",
+        idTransicion: "prepararEnsalada"
+    }) {
 
-        super({
-            etiqueta: "Ensaladera",
-            nombreAnimacion: "prepararEnsalada",
-            animacionColisionadoMientras: "preparando",
-            animacionColisionadoPost: "llena",
-            idTransicion: "prepararEnsalada"
-        });
+
+        // super({
+        //     etiqueta: "Ensaladera",
+        //     nombreAnimacion: "prepararEnsalada",
+        //     animacionColisionadoMientras: "preparando",
+        //     animacionColisionadoPost: "llena",
+        //     idTransicion: "prepararEnsalada"
+        // });
+
+        super(argumentos);
     }
 
     configurarVerificaciones() {
