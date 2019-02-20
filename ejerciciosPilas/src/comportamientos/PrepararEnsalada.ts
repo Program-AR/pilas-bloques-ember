@@ -3,15 +3,16 @@
 
 class PrepararEnsalada extends ComportamientoColision {
 
-    constructor(argumentos: any = {
-        etiqueta: "Ensaladera",
-        nombreAnimacion: "prepararEnsalada",
-        animacionColisionadoMientras: "preparando",
-        animacionColisionadoPost: "llena",
-        idTransicion: "prepararEnsalada"
-    }) {
 
-        super(argumentos);
+    constructor() {
+
+        super({
+            etiqueta: "Ensaladera",
+            nombreAnimacion: "prepararEnsalada",
+            animacionColisionadoMientras: "preparando",
+            animacionColisionadoPost: "llena",
+            idTransicion: "prepararEnsalada"
+        });
     }
 
     configurarVerificaciones() {
