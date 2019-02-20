@@ -1,5 +1,5 @@
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "../actores/Obrero.ts"/>
 /// <reference path = "../habilidades/AvisaAlSalirDePantalla.ts"/>
 /// <reference path = "../comportamientos/Martillar.ts"/>

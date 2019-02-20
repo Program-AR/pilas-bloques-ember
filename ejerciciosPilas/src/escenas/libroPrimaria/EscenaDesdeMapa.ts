@@ -1,4 +1,4 @@
-/// <reference path = "../../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts" />
 /// <reference path = "../../../dependencias/helpers.d.ts" />
 //// <reference types = "nearley" /> // Requiere TypeScript ^2.0.0. Solución por ahora:
 /// <reference path = "../../../dependencias/nearley.d.ts" />
