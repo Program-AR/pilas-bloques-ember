@@ -423,7 +423,7 @@ actividadTest("5.1.3c", {
 </xml>`,
 });
 
-actividadTest("Coty-Dibuja-Libre", {
+actividadTest("CotyDibujoLibre", {
   descripcionAdicional: 'Dibujar de lado debe utilizar el argumento proveniente del bloque',
   solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="z]I_.b!dcu|1J=@|1T9~" deletable="false" movable="false" editable="false" x="325" y="15"><statement name="program"><block type="DibujarLado" id="/*fS@eM|ud8bthJ-An@P"><value name="longitud"><block type="math_number" id="_nVE{R7YB:6R6@_wVGh3"><field name="NUM">100</field></block></value><next><block type="MoverAbajoDibujando" id="tkOmc`_a2T@OBMMIc2e}"><next><block type="MoverAbajoDibujando" id="4Ms{N#sWk[d8w6Yw-0q|"><next><block type="MoverIzquierdaDibujando" id="?/D{K{1C=DkW*2fF8C@y"><next><block type="MoverIzquierdaDibujando" id="o1JXJ]2sl2#gY^m]yN-d"><next><block type="GirarGrados" id="igLgk25ZFq1tG,Ybax}T"><value name="grados"><block type="math_number" id="/z_N]T1+,OLAv7Ar5N8;"><field name="NUM">270</field></block></value><next><block type="DibujarLado" id="4yJ18jVY+,ylFr.lmH}C"><value name="longitud"><block type="math_number" id="rnp{X#qu-SVX/IuSZx:Y"><field name="NUM">100</field></block></value></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>',
   resuelveDesafio: false,

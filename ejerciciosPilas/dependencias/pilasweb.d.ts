@@ -129,7 +129,6 @@ declare class Actor extends Estudiante {
     pre_actualizar(): void;
     actualizar(): void;
     colisiona_con(otro_actor: any): any;
-    esta_fuera_de_la_pantalla(): boolean;
     agregarEtiqueta(etiqueta: any): void;
     tiene_etiqueta(etiqueta: any): boolean;
     notificar_evento_comienza_a_mover_un_actor(actor: any): void;
@@ -1127,7 +1126,7 @@ declare class Mensajes {
      */
     desconectar_mensajes(actor_id: any): void;
 }
-declare var pilas: any;
+declare var pilas: Pilas;
 declare var Trait: any;
 declare var window: Window;
 declare var pilasengine: any;
