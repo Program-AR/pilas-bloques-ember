@@ -1,63 +1,64 @@
 /// <reference path = "../../dependencias/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 
-//No sólo avisa al salir de la pantalla, sino que no lo deja irse.
-//Usar en reemplazo de la habilidad SeMantieneEnPantalla
+// No sólo avisa al salir de la pantalla, sino que no lo deja irse.
+// Usar en reemplazo de la habilidad SeMantieneEnPantalla
 // TODO: Repite código con SeMantieneEnPantalla, modificar pilas para que deje de hacerlo.
 
 class AvisaAlSalirDePantalla extends HabilidadAnimada {
-    
+
     constructor(receptor) {
         super(receptor);
         this.receptor.evto_se_movio.conectar(this);
     }
-    
+
     recibir(evento, tipo) {
-      if (tipo == this.receptor.evto_se_movio && 
+        if (tipo == this.receptor.evto_se_movio &&
             this.seSalioDeLaPantalla()) {
-         this.meterActorEnPantalla();
-         this.accionLuegoDeMeterEnPantalla();
-      }
+            this.meterActorEnPantalla();
+            this.accionLuegoDeMeterEnPantalla();
+        }
     }
-    
-    accionLuegoDeMeterEnPantalla(){
+
+    accionLuegoDeMeterEnPantalla() {
         this.receptor.decir("¡Me salgo de la pantalla!");
     }
-   
-    meterActorEnPantalla(){
+
+    meterActorEnPantalla() {
         if (this.meFuiDerecha())
-            this.receptor.derecha = pilas.derecha();
-        
+            this.receptor.x = pilas.derecha();
+
         if (this.meFuiIzquierda())
-            this.receptor.izquierda = pilas.izquierda();
-        
+            this.receptor.x = pilas.izquierda();
+
         if (this.meFuiArriba())
-            this.receptor.arriba = pilas.arriba();
-        
+            this.receptor.y = pilas.arriba();
+
         if (this.meFuiAbajo())
-            this.receptor.abajo = pilas.abajo();
+            this.receptor.y = pilas.abajo();
+
     }
-    
-    seSalioDeLaPantalla(){
-        return  this.meFuiDerecha() ||
-                this.meFuiIzquierda() ||
-                this.meFuiArriba() ||
-                this.meFuiAbajo();
+
+    seSalioDeLaPantalla() {
+        return this.meFuiDerecha() ||
+            this.meFuiIzquierda() ||
+            this.meFuiArriba() ||
+            this.meFuiAbajo();
     }
-    
-    meFuiIzquierda(){
-        return this.receptor.izquierda < pilas.izquierda();
+
+    meFuiIzquierda() {
+        return this.receptor.x < pilas.izquierda();
     }
-    
-    meFuiDerecha(){
-        return this.receptor.derecha > pilas.derecha();
+
+    meFuiDerecha() {
+        return this.receptor.x > pilas.derecha();
     }
-    
-    meFuiArriba(){
-        return this.receptor.arriba > pilas.arriba();
+
+    meFuiArriba() {
+        return this.receptor.y > pilas.arriba();
     }
-    
-    meFuiAbajo(){
-        return this.receptor.abajo < pilas.abajo(); 
+
+    meFuiAbajo() {
+        return this.receptor.y < pilas.abajo();
     }
 }
