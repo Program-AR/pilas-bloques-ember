@@ -5,9 +5,9 @@
 /// <reference path = "../../actores/libroPrimaria/Ensalada.ts" />
 
 class EscenaLita extends EscenaDesdeMapa {
-	automata : Lita;
-	xFinal : number;
-	yFinal : number;
+	automata: Lita;
+	xFinal: number;
+	yFinal: number;
 
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal?: [number, number]) {
 		super();
@@ -22,23 +22,34 @@ class EscenaLita extends EscenaDesdeMapa {
 	iniciar() {
 		super.iniciar();
 
-		// Existen dos ligeras variantes para el objetivo de esta escena.
-		// Si en el mapa hay una ensaladera, el objetivo es que Lita prepare correctamente
-		// la ensalada. Para verificarlo usamos una máquina de estados finitos.
-		if (this.contarActoresConEtiqueta("Ensaladera") > 0) {
-			this.construirFSM();
-		}
-		// Si en el mapa no hay ensaladera, el objetivo es simplemente que Lita
-		// recoga del mapa todas las lechugas y todos los tomates.
-		else {
+		if (!this.hayEnsaladera()) {
 			this.estado = new Estado(() =>
-				this.contarActoresConEtiqueta("Lechuga") === 0 &&
-				this.contarActoresConEtiqueta("Tomate") === 0
+				this.noHayMasIngredientes()
 			);
 		}
 	}
 
-	estaResueltoElProblema() : boolean {
+	hayEnsaladera() {
+		return this.contarActoresConEtiqueta("Ensaladera") > 0;
+	}
+
+	noHayMasTomates() {
+		return this.contarActoresConEtiqueta("Tomate") === 0;
+	}
+
+	noHayMasLechugas() {
+		return this.contarActoresConEtiqueta("Lechuga") === 0;
+	}
+
+	noHayMasIngredientes() {
+		return this.noHayMasLechugas() && this.noHayMasTomates();
+	}
+
+	hayDeLosDosIngredientes() {
+		return this.contarActoresConEtiqueta("Tomate") >= 1 && this.contarActoresConEtiqueta("Lechuga") >= 1;
+	}
+
+	estaResueltoElProblema(): boolean {
 		// Además de verificar que Lita haya cumplido el objetivo de la escena,
 		// en el caso de que se haya proporcionado una posición final,
 		// queremos verificar que Lita esté ahí.
@@ -63,65 +74,39 @@ class EscenaLita extends EscenaDesdeMapa {
 		this.obtenerActoresConEtiqueta("Obstaculo").forEach(obstaculo => {
 			obstaculo.escala *= this.escalaSegunCuadricula(1.1);
 		});
-    }
+	}
 
-    mapearIdentificadorAActor(id, nroFila, nroColumna) : ActorAnimado {
-        switch(id) {
-            case 'A': return this.automata;
-            case 'L': return new Lechuga();
-            case 'T': return new Tomate();
-            case 'E': return new Ensaladera();
+	mapearIdentificadorAActor(id, nroFila, nroColumna): ActorAnimado {
+		switch (id) {
+			case 'A': return this.automata;
+			case 'L': return new Lechuga();
+			case 'T': return new Tomate();
+			case 'E': return new Ensaladera();
 			case 'O': return this.obtenerObstaculo(nroFila, nroColumna);
 			default: throw new Error("El identificador '" + id +
 				"' no es válido en una escena de Lita.");
-        }
-    }
-
-    obtenerAutomata() : Lita {
-        return new Lita();
-    }
-    
-    obtenerObstaculo(fila: number, columna: number): Obstaculo {
-		let archivosObstaculos = ["obstaculo.lita1.png", "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png"];
-		return new Obstaculo(archivosObstaculos, (fila + 1) + (fila + 1) * (columna + 1));
-    }
-
-	construirFSM() {
-		let builder = new BuilderStatePattern(this, 'inicial');
-		builder.agregarEstado('tengoTomate');
-		builder.agregarEstado('tengoLechuga');
-		builder.agregarEstado('tengoTomateYLechuga');
-		builder.agregarEstadoAceptacion('ensaladaLista');
-
-		builder.agregarTransicion('inicial', 'tengoTomate', 'agarrarTomate');
-		builder.agregarTransicion('inicial', 'tengoLechuga', 'agarrarLechuga');
-		builder.agregarError('inicial', 'prepararEnsalada', '¡Todavía no tengo tomate ni lechuga!');
-
-		builder.agregarTransicion('tengoTomate', 'tengoTomate', 'agarrarTomate');
-		builder.agregarTransicion('tengoTomate', 'tengoTomateYLechuga', 'agarrarLechuga');
-		builder.agregarError('tengoTomate', 'prepararEnsalada', '¡Todavía no tengo lechuga!');
-
-		builder.agregarTransicion('tengoLechuga', 'tengoTomateYLechuga', 'agarrarTomate');
-		builder.agregarTransicion('tengoLechuga', 'tengoLechuga', 'agarrarLechuga');
-		builder.agregarError('tengoLechuga', 'prepararEnsalada', '¡Todavía no tengo tomate!');
-
-		builder.agregarTransicion('tengoTomateYLechuga', 'tengoTomateYLechuga', 'agarrarTomate');
-		builder.agregarTransicion('tengoTomateYLechuga', 'tengoTomateYLechuga', 'agarrarLechuga');
-		builder.agregarTransicion('tengoTomateYLechuga', 'ensaladaLista', 'prepararEnsalada');
-
-		this.estado = builder.estadoInicial();
+		}
 	}
 
-    archivoFondo() {
-        return "fondo.lita.png";
-    }
-    cuadriculaX() {
+	obtenerAutomata(): Lita {
+		return new Lita();
+	}
+
+	obtenerObstaculo(fila: number, columna: number): Obstaculo {
+		let archivosObstaculos = ["obstaculo.lita1.png", "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png"];
+		return new Obstaculo(archivosObstaculos, (fila + 1) + (fila + 1) * (columna + 1));
+	}
+
+	archivoFondo() {
+		return "fondo.lita.png";
+	}
+	cuadriculaX() {
 		return 0;
 	}
 	cuadriculaY() {
 		return -20;
 	}
-    opsCuadricula() {
+	opsCuadricula() {
 		return { ancho: 340, alto: 380 };
 	}
 	opsCasilla() {
