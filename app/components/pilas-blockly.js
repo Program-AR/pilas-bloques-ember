@@ -6,6 +6,7 @@ let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
   ejecutando: false,
+  debeReiniciar: false,
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
@@ -271,9 +272,11 @@ export default Ember.Component.extend({
         }
       }
 
-      this.set('ejecutando', false);
-      this.set('highlightedBlock', null);
-
+      if (this.get('ejecutando')) {
+        this.set('ejecutando', false);
+        this.set('debeReiniciar', true);
+        this.set('highlightedBlock', null);
+      }
     });
   },
 
@@ -399,9 +402,8 @@ export default Ember.Component.extend({
         });
       }
 
-
-
       this.set('ejecutando', true);
+      this.set('debeReiniciar', true);
 
       let condicion_de_corte = () => {
         return (! this.get("ejecutando"));
@@ -417,6 +419,7 @@ export default Ember.Component.extend({
     reiniciar() {
       this.set('highlightedBlock', null);
       this.set('ejecutando', false);
+      this.set('debeReiniciar', false);
       this.get('pilas').reiniciarEscenaCompleta();
     },
 
