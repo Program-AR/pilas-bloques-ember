@@ -85,7 +85,6 @@ compilar_live:
 compilar_pilasweb:
 	cd ../pilasweb; make build
 	cp -rf ../pilasweb/dist bower_components/pilasweb/
-	cp -f ../pilasweb/dist/pilasweb.d.ts ejerciciosPilas/dependencias/
 
 version_patch:
 	./node_modules/ember-cli/bin/ember release

@@ -1,4 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "HabilidadAnimada.ts"/>
 
 class Flotar extends HabilidadAnimada {

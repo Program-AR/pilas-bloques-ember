@@ -1,7 +1,7 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "Dibujos.ts" />
 /// <reference path = "../actores/Dibujante.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts" />
 
 abstract class DibujandoFiguras extends EscenaActividad {
     dibujoEsperado: DibujoLineal;

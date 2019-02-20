@@ -1,4 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "../comportamientos/Sostener.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
