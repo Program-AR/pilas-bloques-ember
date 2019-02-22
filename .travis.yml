@@ -53,7 +53,6 @@ after_success:
   - ember build --environment=development
   - test $TRAVIS_BRANCH = "develop" && surge ./dist/ develop-pilas-bloques.surge.sh
   - test $TRAVIS_BRANCH = "master"  && surge ./dist/ master-pilas-bloques.surge.sh
-  - test $TRAVIS_BRANCH = "ember-surge-hangs-travis" && surge ./dist/ develop-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases
