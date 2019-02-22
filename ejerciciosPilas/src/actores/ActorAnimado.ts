@@ -281,7 +281,7 @@ class ActorAnimado extends Actor {
     }
 
     informarError(error: ActividadError){
-        this.hacer(Decir, {mensaje: error.message, nombreAnimacion: error.nombreAnimacion, autoEliminar: false});
+        this.hacer(Decir, {mensaje: error.message, nombreAnimacion: error.nombreAnimacion, autoEliminarGlobo: false});
     }
 
     // TODO: Esto debería estar en Estudiante, en pilasweb.
