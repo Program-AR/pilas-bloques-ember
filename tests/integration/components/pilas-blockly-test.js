@@ -5,7 +5,6 @@ import Ember from 'ember';
 moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
   integration: true,
   setup() { //TODO: Mover a un lugar más general
-    this.set('cargando', false);
     this.set('bloques', ['repetir']);
     
     let pilasMock = { reiniciarEscenaCompleta(){ } };
@@ -42,16 +41,30 @@ test('Cuando el componente está listo para ser usado', function(assert) {
   assert.ok(existeBoton("Guardar"), 'Existe un botón para guardar una solución');
 });
 
-test('Cuando ejecuta un ejercicio', function(assert) {
+test('Mientras se ejecuta un ejercicio', function(assert) {
+  this.set("ejecutando", true);
   this.render(pilasBlockly());
-  
-  this.$("button:contains('Ejecutar')").click();
-  
   assert.ok(existeBoton("Reiniciar"), "Tiene el botón reiniciar visible");
 });
 
+test('Cuando se termina de ejecutar un ejercicio', function(assert) {
+  this.set("terminoDeEjecutar", true);
+  this.render(pilasBlockly());
+  assert.ok(existeBoton("Reiniciar"), "Tiene el botón reiniciar visible");
+});
+
+test('Al reiniciar', function(assert) {
+  this.set("terminoDeEjecutar", true);
+  this.render(pilasBlockly());
+
+  this.$("button:contains('Reiniciar')").click();
+
+  assert.ok(existeBoton("Ejecutar"), "Tiene el botón ejecutar visible");
+  assert.notOk(existeBoton("Reiniciar"), "Desaparece el botón reiniciar");
+});
+
 function pilasBlockly() {
-  return hbs`{{pilas-blockly cargando=cargando pilas=pilas bloques=bloques model=model modelActividad=model}}`;
+  return hbs`{{ pilas-blockly cargando=cargando ejecutando=ejecutando terminoDeEjecutar=terminoDeEjecutar pilas=pilas bloques=bloques model=model modelActividad=model }}`;
 }
 
 function existeElementoConTexto(elemento, texto) {
