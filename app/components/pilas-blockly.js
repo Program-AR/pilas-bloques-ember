@@ -58,7 +58,7 @@ export default Ember.Component.extend({
     return true;
   }),
 
-  debeReiniciar: Ember.computed('ejecutando', 'terminoDeEjecutar', function() {
+  puedeReiniciar: Ember.computed('ejecutando', 'terminoDeEjecutar', function() {
     return this.get('ejecutando') || this.get('terminoDeEjecutar');
   }),
 
