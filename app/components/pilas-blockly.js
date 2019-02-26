@@ -436,6 +436,7 @@ export default Ember.Component.extend({
       this.set('highlightedBlock', null);
       this.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
+      this.set('errorDeActividad', null);
       this.get('pilas').reiniciarEscenaCompleta();
     },
 
