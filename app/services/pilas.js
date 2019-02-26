@@ -110,7 +110,6 @@ export default Ember.Service.extend(Ember.Evented, {
   imagenesParaPrecargar(nombreOInicializadorDeEscena){
     //Le pregunto a la escena qué imágenes va a necesitar
     var imagenes = this.evaluar(`${this.nombreDeEscena(nombreOInicializadorDeEscena)}.imagenesPreCarga()`);
-    console.log(imagenes);
     //Si la escena no las sabe, cargo todas:
     return imagenes.length ? imagenes : listaImagenes;
   },
