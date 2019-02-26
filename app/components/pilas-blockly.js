@@ -6,6 +6,8 @@ let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
   ejecutando: false,
+  terminoDeEjecutar: false,
+  errorDeActividad: null,
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
@@ -57,6 +59,10 @@ export default Ember.Component.extend({
     return true;
   }),
 
+  debeMostarReiniciar: Ember.computed('ejecutando', 'terminoDeEjecutar', function() {
+    return this.get('ejecutando') || this.get('terminoDeEjecutar');
+  }),
+
   didInsertElement() {
 
     var event = new Event('terminaCargaInicial');
@@ -94,13 +100,13 @@ export default Ember.Component.extend({
       // TODO: puede que esto quede en desuso.
     }
 
-    // TODO: Este es un hook para luego agregar a la interfaz 
+    // Este es un hook para luego agregar a la interfaz 
     // el informe deseado al ocurrir un error.
-    // this.get('pilas').on("errorDeActividad", (motivoDelError) => {
-    //   Ember.run(this, function() {
-    //     // TODO
-    //   });
-    // });
+    this.get('pilas').on("errorDeActividad", (motivoDelError) => {
+      Ember.run(this, function() {
+        this.set('errorDeActividad', motivoDelError);
+      });
+    });
 
     $(window).trigger('resize');
   },
@@ -246,7 +252,7 @@ export default Ember.Component.extend({
     // Se abre una promise que termina cuando:
     //     o bien se llega al último comando escrito en el workspace
     //     o bien el usuario frena la ejecución
-    //     o bien existe un error
+    //     o bien existe un error en la escena de pilas web
     return new Ember.RSVP.Promise((success, reject) => {
       let hayMasParaEjecutarDespues;
 
@@ -256,6 +262,11 @@ export default Ember.Component.extend({
         // de ejecutar el intérprete.
         if (!this.get("ejecutando")) {
           success();
+          return;
+        }
+
+        if (this.get("errorDeActividad")) {
+          reject(this.get("errorDeActividad"));
           return;
         }
 
@@ -298,9 +309,11 @@ export default Ember.Component.extend({
         }
       }
 
-      this.set('ejecutando', false);
-      this.set('highlightedBlock', null);
-
+      if (this.get('ejecutando')) {
+        this.set('ejecutando', false);
+        this.set('terminoDeEjecutar', true);
+        this.set('highlightedBlock', null);
+      }
     });
   },
 
@@ -351,14 +364,16 @@ export default Ember.Component.extend({
       this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
 
-      this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso).then(() => {
-        this.cuandoTerminaEjecucion();
-      });
+      this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso)
+        .then(() => this.cuandoTerminaEjecucion())
+        .catch(err => console.error(err)); //Es un error dentro de la actividad, no debería burbujear
     },
 
     reiniciar() {
       this.set('highlightedBlock', null);
       this.set('ejecutando', false);
+      this.set('terminoDeEjecutar', false);
+      this.set('errorDeActividad', null);
       this.get('pilas').reiniciarEscenaCompleta();
     },
 
@@ -506,7 +521,7 @@ export default Ember.Component.extend({
 });
 
 Ember.onerror = function (e) {
-  if(e.message | e.stack){
+  if(e || e.message || e.stack){
     console.error(
       "Exception: " + e.message + "\n" +
       "\n" +
