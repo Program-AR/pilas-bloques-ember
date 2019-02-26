@@ -90,25 +90,6 @@ export default Ember.Component.extend({
 
     });
 
-    /*
-    if (this.get("persistirSolucionEnURL")) {
-      Blockly.addChangeListener(() => {
-        Ember.run(this, function() {
-          this.guardarEnURL();
-          this.generarCodigoTemporal();
-        });
-      });
-    }
-    */
-
-    if (this.get("debeMostrarFinDeDesafio")) {
-      this.get('pilas').on('terminaEjecucion', () => {
-        Ember.run(this, function() {
-          this.cuandoTerminaEjecucion();
-        });
-      });
-    }
-
     if (this.get("persistirSolucionEnURL")) {
       // TODO: puede que esto quede en desuso.
     }
@@ -279,7 +260,6 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
   },
 
   restaurar_codigo(codigo) {

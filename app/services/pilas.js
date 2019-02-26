@@ -15,7 +15,6 @@ import listaImagenes from 'pilasbloques/components/listaImagenes';
  *
  * Estos son los eventos que puede reportar el servicio:
  *
- * - terminaEjecucion
  * - terminaCargaInicial
  * - errorDeActividad
  *
