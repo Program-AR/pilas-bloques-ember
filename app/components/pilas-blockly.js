@@ -242,6 +242,52 @@ export default Ember.Component.extend({
     categoriaEnElToolbox.blocks.push(bloque);
   },
 
+  ejecutarInterpreteHastaTerminar(interprete,pasoAPaso){
+    // Se abre una promise que termina cuando:
+    //     o bien se llega al último comando escrito en el workspace
+    //     o bien el usuario frena la ejecución
+    //     o bien existe un error
+    return new Ember.RSVP.Promise((success, reject) => {
+      let hayMasParaEjecutarDespues;
+
+      let execInterpreterUntilEnd = (interpreter) => {
+
+        // Si el usuario solicitó terminar el programa deja
+        // de ejecutar el intérprete.
+        if (!this.get("ejecutando")) {
+          success();
+          return;
+        }
+
+        try {
+          if (pasoAPaso) {
+            // Si está activado el modo depurador, intentará suspender
+            // la llamada a interpreter.run() hasta que el usuario pulse
+            // el botón step.
+            if (interpreter.paused_ === false && !this.get('pausadoEnBreakpoint')) {  
+              hayMasParaEjecutarDespues = interpreter.run(); 
+              this.set('pausadoEnBreakpoint', true);
+            }
+          } else {
+            hayMasParaEjecutarDespues = interpreter.run();
+          }
+        } catch(e) {
+          reject(e);
+        }
+
+        if (hayMasParaEjecutarDespues) {
+          // Llama recursivamente, abriendo thread en cada llamada.
+          setTimeout(execInterpreterUntilEnd, 10, interpreter);
+        } else {
+          success();
+        }
+      };
+
+      execInterpreterUntilEnd(interprete);
+
+    });
+  },
+
   cuandoTerminaEjecucion() {
     Ember.run(this, function() {
       this.sendAction('onTerminoEjecucion');
@@ -294,77 +340,18 @@ export default Ember.Component.extend({
         this.get('cuandoEjecuta')(codigo_xml);
       }
 
-      let codigoDesdeWorkspace = this.get('javascriptCode');
       let factory = this.get('interpreterFactory');
-      let codigoCompleto = js_beautify(`
-        var actor_id = 'demo'; // se asume el actor receptor de la escena.
-
-        function hacer(id, comportamiento, params) {
-          out_hacer(comportamiento, JSON.stringify(params));
-        }
-
-        function main() {
-          ${codigoDesdeWorkspace}
-        }
-
-        main();
-      `);
-
-      this.set('pausadoEnBreakpoint', false);
-
-      let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
+      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloque) => {
         var me = this;
         Ember.run(function () {
           me.set('highlightedBlock', bloque);
         });
       });
-
-      let ejecutarInterpreteHastaTerminar = (interprete) => {
-
-        return new Ember.RSVP.Promise((success, reject) => {
-          let hayMasParaEjecutarDespues;
-
-          let execInterpreterUntilEnd = (interpreter) => {
-
-            // Si el usuario solicitó terminar el programa deja
-            // de ejecutar el intérprete.
-            if (!this.get("ejecutando")) {
-              success();
-              return;
-            }
-
-            try {
-              if (pasoAPaso) {
-                // Si está activado el modo depurador, intentará suspender
-                // la llamada a interpreter.run() hasta que el usuario pulse
-                // el botón step.
-                if (interpreter.paused_ === false && !this.get('pausadoEnBreakpoint')) {  
-                  hayMasParaEjecutarDespues = interpreter.run(); 
-                  this.set('pausadoEnBreakpoint', true);
-                }
-              } else {
-                hayMasParaEjecutarDespues = interpreter.run();
-              }
-            } catch(e) {
-              reject(e);
-            }
-
-            if (hayMasParaEjecutarDespues) {
-              // Llama recursivamente, abriendo thread en cada llamada.
-              setTimeout(execInterpreterUntilEnd, 10, interpreter);
-            } else {
-              success();
-            }
-          };
-
-          execInterpreterUntilEnd(interprete);
-
-        });
-      };
-
+      
+      this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
 
-      ejecutarInterpreteHastaTerminar(interprete).then(() => {
+      this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso).then(() => {
         this.cuandoTerminaEjecucion();
       });
     },
