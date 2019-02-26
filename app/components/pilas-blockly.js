@@ -339,77 +339,52 @@ export default Ember.Component.extend({
         });
       });
 
-      let estaPausadoEnBreakpoint = () => {
-        return this.get('pausadoEnBreakpoint');
-      };
-
-      let pausarInterprete = () => {
-        this.set('pausadoEnBreakpoint', true);
-      };
-
-      function ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte) {
+      let ejecutarInterpreteHastaTerminar = (interprete) => {
 
         return new Ember.RSVP.Promise((success, reject) => {
-          let running;
+          let hayMasParaEjecutarDespues;
 
-          function execInterpreterUntilEnd(interpreter) {
+          let execInterpreterUntilEnd = (interpreter) => {
 
             // Si el usuario solicitó terminar el programa deja
             // de ejecutar el intérprete.
-            if (condicion_de_corte()) {
+            if (!this.get("ejecutando")) {
               success();
               return;
             }
 
             try {
-
               if (pasoAPaso) {
-
                 // Si está activado el modo depurador, intentará suspender
                 // la llamada a interpreter.run() hasta que el usuario pulse
                 // el botón step.
-
-                if (interpreter.paused_ === false) {
-                  if (estaPausadoEnBreakpoint()) {
-
-                  } else {
-                    running = interpreter.run();
-                    pausarInterprete();
-                  }
-
+                if (interpreter.paused_ === false && !this.get('pausadoEnBreakpoint')) {  
+                  hayMasParaEjecutarDespues = interpreter.run(); 
+                  this.set('pausadoEnBreakpoint', true);
                 }
-
               } else {
-                running = interpreter.run();
+                hayMasParaEjecutarDespues = interpreter.run();
               }
-
             } catch(e) {
               reject(e);
             }
 
-            if (running) {
+            if (hayMasParaEjecutarDespues) {
+              // Llama recursivamente, abriendo thread en cada llamada.
               setTimeout(execInterpreterUntilEnd, 10, interpreter);
             } else {
               success();
             }
-          }
+          };
 
           execInterpreterUntilEnd(interprete);
 
         });
-      }
-
-
+      };
 
       this.set('ejecutando', true);
 
-      let condicion_de_corte = () => {
-        return (! this.get("ejecutando"));
-      };
-
-      let ejecucion = ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte);
-
-      ejecucion.then(() => {
+      ejecutarInterpreteHastaTerminar(interprete).then(() => {
         this.cuandoTerminaEjecucion();
       });
     },
