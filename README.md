@@ -30,6 +30,11 @@ sudo apt-get install make
 
 ```
 
+Y lo mismo con python:
+```
+sudo apt install python
+
+```
 
 Y también hay que asegurarse de tener node (actualmente compilamos con node 6)
 
