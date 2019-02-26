@@ -7,6 +7,7 @@ export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
   ejecutando: false,
   terminoDeEjecutar: false,
+  errorDeActividad: null,
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
@@ -118,13 +119,13 @@ export default Ember.Component.extend({
       // TODO: puede que esto quede en desuso.
     }
 
-    // TODO: Este es un hook para luego agregar a la interfaz 
+    // Este es un hook para luego agregar a la interfaz 
     // el informe deseado al ocurrir un error.
-    // this.get('pilas').on("errorDeActividad", (motivoDelError) => {
-    //   Ember.run(this, function() {
-    //     // TODO
-    //   });
-    // });
+    this.get('pilas').on("errorDeActividad", (motivoDelError) => {
+      Ember.run(this, function() {
+        this.set('errorDeActividad', motivoDelError);
+      });
+    });
 
     $(window).trigger('resize');
   },
@@ -360,11 +361,15 @@ export default Ember.Component.extend({
           let running;
 
           function execInterpreterUntilEnd(interpreter) {
-
             // Si el usuario solicitó terminar el programa deja
             // de ejecutar el intérprete.
             if (condicion_de_corte()) {
               success();
+              return;
+            }
+
+            if (error_de_actividad()) {
+              reject(error_de_actividad());
               return;
             }
 
@@ -409,13 +414,21 @@ export default Ember.Component.extend({
       this.set('ejecutando', true);
 
       let condicion_de_corte = () => {
-        return (! this.get("ejecutando"));
+        return !this.get("ejecutando");
+      };
+
+      let error_de_actividad = () => {
+        return this.get("errorDeActividad");
       };
 
       let ejecucion = ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte);
 
-      ejecucion.then(() => {
+      ejecucion
+      .then(() => {
         this.cuandoTerminaEjecucion();
+      })
+      .catch((err) => {
+        console.error(err); //Es un error dentro de la actividad, no debería burbujear
       });
     },
 
@@ -570,7 +583,7 @@ export default Ember.Component.extend({
 });
 
 Ember.onerror = function (e) {
-  if(e.message | e.stack){
+  if(e || e.message || e.stack){
     console.error(
       "Exception: " + e.message + "\n" +
       "\n" +
