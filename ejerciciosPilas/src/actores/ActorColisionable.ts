@@ -21,6 +21,4 @@ abstract class ActorColisionable extends ActorAnimado {
 
     abstract provocaEnMi(): any[];
 
-
-
 }
