@@ -5,16 +5,22 @@ abstract class ActorColisionable extends ActorAnimado {
 
     pre_actualizar() {
         super.pre_actualizar();
-        const automata = pilas.obtener_actores_con_etiqueta("Automata")[0];
+        this.afecta().forEach(actor => this.provocarAlTocar(actor));
+    }
 
-        if (automata && this.colisiona_con_un_punto(automata.x, automata.y)) {
-            this.provocarEnAutomata().forEach(comportamiento => automata.hacer_luego(comportamiento));
-            this.provocarEnMi().forEach(comportamiento => this.hacer_luego(comportamiento));
+    provocarAlTocar(actor) {
+        if (this.colisiona_con_un_punto(actor.x, actor.y)) {
+            this.provoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
+            this.provocaEnMi().forEach(comportamiento => this.hacer_luego(comportamiento));
         }
     }
 
-    abstract provocarEnAutomata(): any[];
+    abstract afecta(): any[]
 
-    abstract provocarEnMi(): any[];
+    abstract provoca(): any[];
+
+    abstract provocaEnMi(): any[];
+
+
 
 }

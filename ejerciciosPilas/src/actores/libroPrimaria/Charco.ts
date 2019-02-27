@@ -1,3 +1,4 @@
+/// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path="../ActorColisionable.ts"/>
 /// <reference path="../../comportamientos/Hundir.ts"/>
 
@@ -8,12 +9,15 @@ class Charco extends ActorColisionable {
         this.definirAnimacion("parado", [0], 6, true);
     }
 
-    provocarEnAutomata() {
+    afecta() {
+        return pilas.obtener_actores_con_etiqueta("Coty");
+    };
+
+    provoca() {
         return [Hundir];
     };
 
-
-    provocarEnMi() {
+    provocaEnMi() {
         return [];
     };
 
