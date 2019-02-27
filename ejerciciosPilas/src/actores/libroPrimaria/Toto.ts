@@ -3,10 +3,11 @@
 /// <reference path="../Cuadricula.ts"/>
 
 class Toto extends ActorAnimado {
+  static _grilla = 'actor.toto.png'
   cuadriculaSecundaria : Cuadricula;
 
   constructor() {
-    super(0, 0, {grilla: 'actor.toto.png', cantFilas: 24, cantColumnas: 10});
+    super(0, 0, {cantFilas: 24, cantColumnas: 10});
   }
 
   caracterActual() : string {

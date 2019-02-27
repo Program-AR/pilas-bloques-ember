@@ -22,6 +22,10 @@ class EscenaCoty extends DibujandoFiguras {
     this.sanitizarArgumentos(argumentos);
   }
 
+  static clasesDeActoresInvolucrados(): typeof ActorAnimado[] {
+    return [Coty, Charco]
+  }
+
   sanitizarArgumentos(argumentos: ArgumentosCoty) {
     this.xCoty = argumentos.xCoty || 0;
     this.yCoty = argumentos.yCoty || 0;
@@ -40,7 +44,7 @@ class EscenaCoty extends DibujandoFiguras {
     if (this.charco) {
       this.ubicarCharco();
     }
-    this.automata.aprender(EstallarAlSalirDePantalla, {});
+    // this.automata.aprender(EstallarAlSalirDePantalla, {});
   }
 
   hacerDibujoEsperado() {
@@ -78,7 +82,7 @@ class EscenaCoty extends DibujandoFiguras {
     return this._puntosEsperados;
   }
 
-  pathFondo(): string {
+  static pathFondo(): string {
     return 'fondo.coty.png';
   }
 

@@ -13,7 +13,6 @@ abstract class Letra extends ActorAnimado {
      */
     constructor(unString : string) {
         super(0, 0, {
-            grilla: this.pathImagen(),
             cantColumnas: Letra._caracteresValidos.length,
             cantFilas: 1,
             cuadrosParado: [Letra.indiceDeCaracter(Letra.primerLetraDeString(unString))]
@@ -63,24 +62,17 @@ abstract class Letra extends ActorAnimado {
         return unString.length == 1 && Letra._caracteresValidos.indexOf(unString) >= 0;
     }
 
-    abstract pathImagen(): string; 
 }
 
 
 class LetraTablero extends Letra {
-    pathImagen(): string {
-        return "actor.letra.tablero.png";
-    }
+    static _grilla = 'actor.letra.tablero.png'
 }
 
 class LetraLeida extends Letra {
-    pathImagen(): string {
-        return "actor.letra.leida.png";
-    }
+    static _grilla = 'actor.letra.leida.png'
 }
 
 class LetraManuscrita extends Letra {
-    pathImagen(): string {
-        return "actor.letra.manuscrita.png";
-    }
+    static _grilla = 'actor.letra.manuscrita.png'
 }

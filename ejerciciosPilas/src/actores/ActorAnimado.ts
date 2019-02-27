@@ -23,12 +23,16 @@ class ActorAnimado extends Actor {
     pausado;
     habilidadesSuspendidas;
     pilaAnimaciones;
+    static _grilla; //Para que la imagen exista antes que las instancias del actor
+    
+    static imagenesPreCarga() : string[] {
+        return this._grilla ? [this._grilla] : [];
+    }
 
-
-    constructor(x, y, opciones) {
+    constructor(x, y, opciones = {}) {
         this.desPausar();
         this.sanitizarOpciones(opciones);
-        super(this.animacionPara(this.opciones.grilla), x, y);
+        super(this.animacionPara(this.opciones.grilla || (<typeof ActorAnimado>this.constructor)._grilla), x, y);
         this.z = this.escena.minZ() - 1;
 
         this.setupAnimacion();

@@ -13,7 +13,37 @@ class EscenaActividad extends Base {
 	cuadricula : Cuadricula;
 	fondo;
 
+	/**
+	 * Devuelve todos los nombres de archivo de imagen necesarios para
+	 * poder correr la escena. De esta forma sólo se precargarán esas imágenes
+	 * y no todas las existentes de todas las escenas. 
+	 * Es estático porque es necesario antes de la creación de la escena ó sus objetos.
+	 */
 	static imagenesPreCarga(): string[]{
+		var imgsPrecargar = this.pathFondo() ? [this.pathFondo()] : [];
+		this.clasesDeActoresInvolucrados().forEach(c => imgsPrecargar = imgsPrecargar.concat(c.imagenesPreCarga()));
+		return imgsPrecargar.concat(this.imagenesAdicionales());
+	}
+
+	/**
+	 * Devuelve las clases de los actores que hay en escena. Se le preguntará la imagen a precargar
+	 * a cada una de esas clases.
+	 * Pensado para redefinirse por escena.
+	 */
+	static clasesDeActoresInvolucrados() :typeof ActorAnimado[] {
+		return [];
+	};
+
+	static pathFondo() : string {
+		return '';
+	}
+
+	/**
+	 * Además de definir las clases de actores involucradas, las escenas pueden agregar 
+	 * nombres de archivo de imagen adicionales con este método.
+	 * Pensado para redefinirse por escena.
+	 */
+	static imagenesAdicionales() : string[]{
 		return [];
 	}
 
