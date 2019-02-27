@@ -2,6 +2,7 @@
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
 /// <reference path = "../../actores/FlechaEscenarioAleatorio.ts" />
+/// <reference path = "../../habilidades/EstallarAlSalirDePantalla.ts"/>
 
 type ArgumentosCoty = { xCoty?: number, yCoty?: number, longitudSegmento?: number, puedeHaberCharco?: boolean }
 
@@ -44,7 +45,7 @@ class EscenaCoty extends DibujandoFiguras {
     if (this.charco) {
       this.ubicarCharco();
     }
-    // this.automata.aprender(EstallarAlSalirDePantalla, {});
+    this.automata.aprender(EstallarAlSalirDePantalla, {});
   }
 
   hacerDibujoEsperado() {
