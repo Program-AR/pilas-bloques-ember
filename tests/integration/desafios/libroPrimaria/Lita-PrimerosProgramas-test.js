@@ -82,8 +82,7 @@ actividadTest("3.1.4a", {
       </statement>
     </block>
   </xml>`,
-  // errorEsperado: "¡Todavía me quedan ingredientes por recoger!"
-  errorEsperado: "¡Todavía me queda tomate por recoger!"
+  errorEsperado: "¡Todavía me quedan ingredientes por recoger!"
 });
 
 actividadTest("3.1.4a", {

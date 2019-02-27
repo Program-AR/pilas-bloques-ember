@@ -20,6 +20,9 @@ class PrepararEnsalada extends ComportamientoColision {
 
         const escena = pilas.escena_actual();
 
+        this.verificacionesPre.push(new Verificacion(() => !escena.hayDeLosDosIngredientes(),
+            '¡Todavía me quedan ingredientes por recoger!'))
+
         this.verificacionesPre.push(new Verificacion(() => escena.noHayMasTomates(),
             '¡Todavía me queda tomate por recoger!'));
 
