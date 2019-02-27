@@ -3,14 +3,17 @@
 
 class ActorColisionable extends ActorAnimado {
 
+    colisionoPreviamente = false;
+
     pre_actualizar() {
         super.pre_actualizar();
         this.actoresQueAfecta().forEach(actor => this.provocarAlTocar(actor));
     }
 
     provocarAlTocar(actor) {
-        if (!this.deboIgnorarColision(actor) && this.colisiona_con_un_punto(actor.x, actor.y)) {
+        if (!this.colisionoPreviamente && !this.deboIgnorarColision(actor) && this.colisiona_con_un_punto(actor.x, actor.y)) {
             this.provoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
+            this.colisionoPreviamente = true;
         }
     }
 
