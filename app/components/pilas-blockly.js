@@ -265,8 +265,9 @@ export default Ember.Component.extend({
           return;
         }
 
-        if (this.get("errorDeActividad")) {
-          reject(this.get("errorDeActividad"));
+        let err = this.get("errorDeActividad"); 
+        if (err) {
+          reject(new ErrorDeActividad(err));
           return;
         }
 
@@ -366,7 +367,10 @@ export default Ember.Component.extend({
 
       this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso)
         .then(() => this.cuandoTerminaEjecucion())
-        .catch(err => console.error(err)); //Es un error dentro de la actividad, no debería burbujear
+        .catch(err => {
+          if (!(err instanceof ErrorDeActividad)) { throw err; }
+          //Los errores de la actividad no deberían burbujear
+        }); 
     },
 
     reiniciar() {
@@ -531,3 +535,9 @@ Ember.onerror = function (e) {
     console.error(e);
   }
 };
+
+class ErrorDeActividad extends Error {
+  constructor(exception) {
+    super(exception);
+  }
+}
