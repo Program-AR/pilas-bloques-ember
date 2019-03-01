@@ -1,16 +1,12 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
+import { pilasMock, interpreterFactoryMock } from './mocks';
 
 moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
   integration: true,
   setup() { //TODO: Mover a un lugar más general
     this.set('bloques', ['repetir']);
-    
-    let pilasMock = { 
-      on() { },
-      reiniciarEscenaCompleta() { } 
-    };
     this.set('pilas', pilasMock);
 
     let modelMock = { 
@@ -19,8 +15,6 @@ moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
     };
     this.set('model', modelMock);
 
-    let interpreteMock = { run() { return false; }};
-    let interpreterFactoryMock = Ember.Service.extend({ crearInterprete(){ return interpreteMock; }});
     this.register('service:interpreterFactory', interpreterFactoryMock);
 
     let environmentMock = Ember.Service.extend({ });
