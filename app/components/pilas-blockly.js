@@ -1,7 +1,7 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
-
 
 export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
@@ -253,7 +253,7 @@ export default Ember.Component.extend({
     //     o bien se llega al último comando escrito en el workspace
     //     o bien el usuario frena la ejecución
     //     o bien existe un error en la escena de pilas web
-    return new Ember.RSVP.Promise((success, reject) => {
+    return new Promise((success, reject) => {
       let hayMasParaEjecutarDespues;
 
       let execInterpreterUntilEnd = (interpreter) => {
@@ -367,10 +367,7 @@ export default Ember.Component.extend({
 
       this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso)
         .then(() => this.cuandoTerminaEjecucion())
-        .catch(err => {
-          if (!(err instanceof ErrorDeActividad)) { throw err; }
-          //Los errores de la actividad no deberían burbujear
-        }); 
+        .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ }); 
     },
 
     reiniciar() {
@@ -541,3 +538,4 @@ class ErrorDeActividad extends Error {
     super(exception);
   }
 }
+/* jshint ignore:end */
