@@ -7,10 +7,16 @@ moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
   setup() { //TODO: Mover a un lugar más general
     this.set('bloques', ['repetir']);
     
-    let pilasMock = { reiniciarEscenaCompleta(){ } };
+    let pilasMock = { 
+      on() { },
+      reiniciarEscenaCompleta() { } 
+    };
     this.set('pilas', pilasMock);
 
-    let modelMock = { get(attr) { return this[attr]; }, estiloToolbox: 'aplanado' };
+    let modelMock = { 
+      get(attr) { return this[attr]; }, 
+      estiloToolbox: 'aplanado' 
+    };
     this.set('model', modelMock);
 
     let interpreteMock = { run() { return false; }};
