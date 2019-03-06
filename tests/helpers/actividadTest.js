@@ -128,20 +128,14 @@ export function actividadTest(nombre, opciones) {
           this.set('solucion', window.btoa(opciones.solucion));
           // Captura el evento de inicialización de pilas:
           this.on('onReady', function(/*instanciaPilas*/) {
-            if (opciones.fps) {
-              pilas.cambiarFPS(opciones.fps);
-            } else {
-              pilas.cambiarFPS(300);
-            }
-
-            pilas.habilitarModoTurbo();
 
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
 
             setTimeout(() => {
-             this.$('.btn-ejecutar').click();
+              this.$('#modoTuboHabilitado').click();
+              this.$('.btn-ejecutar').click();
             }, 1000);
 
           });
