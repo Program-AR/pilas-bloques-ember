@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   codigo: null,
   highlightedBlock: null, // bloque a resaltar.
   modelActividad: null,
+  modoTuboHabilitado: false,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -312,7 +313,16 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar(pasoAPaso=false) {
+
       this.get('pilas').reiniciarEscenaCompleta();
+
+      if (this.modoTuboHabilitado) {
+        this.get('pilas').habilitarModoTurbo();
+      }
+
+      else {
+        this.get('pilas').deshabilitarModoTurbo();
+      }
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución
@@ -578,8 +588,9 @@ export default Ember.Component.extend({
 
       this.set('codigoActualEnFormatoXML', xml);
       this.sendAction('onChangeWorkspace', xml);
-    }
-  },
+    },
+
+  }
 
 });
 
