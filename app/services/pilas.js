@@ -334,6 +334,18 @@ export default Ember.Service.extend(Ember.Evented, {
   evaluar(codigo) {
     let iframeElement = this.get("iframe");
     return iframeElement.contentWindow.eval(codigo);
+  },
+
+  habilitarModoTurbo() {
+    this.cambiarFPS(120);
+    this.evaluar('ComportamientoConVelocidad').prototype.velocidad = function () { return 100; };
+    this.evaluar('ComportamientoConVelocidad').prototype.deboCortarAnimacion = function () { return true; };
+  },
+
+  deshabilitarModoTurbo() {
+    this.cambiarFPS(60);
+    this.evaluar('ComportamientoConVelocidad').prototype.velocidad = function () { return this.argumentos.velocidad; };
+    this.evaluar('ComportamientoConVelocidad').prototype.deboCortarAnimacion = function () { return false; };
   }
 
 });

@@ -41,15 +41,22 @@
           {{/if}}
         {{/if}}
 
+        
+
         {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
         <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+              
+
+          <label class="switch" title="Modo Turbo">
+            <{{input type="checkbox" name="modoTuboHabilitado" checked=this.modoTuboHabilitado}}>
+              <span class="slider round"><i class="slider-icon fa fa-bolt"></i></span>
+          </label>
 
 
         {{#if debeMostarRegresarAlLibro}}
           {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
         {{/if}}
-
 
         {{#if mostrarCompartir}}
           <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
