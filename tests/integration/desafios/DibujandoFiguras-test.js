@@ -187,3 +187,68 @@ actividadTest('DibujandoLaCuevaDeEstalagtitas', {
   solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables><variable type="" id="l]e|T{U$pC%5S@a|9H`4">x</variable><variable type="" id="yd2]Tx-`eIbJbB/NJu8v">cantidad de lados</variable><variable type="" id="kJIbvmiGNlG*Y.#3c)jX">longitud</variable></variables><block type="al_empezar_a_ejecutar" id="){hzjyxad9}}A~(wiZvd" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><block type="procedures_callnoreturn" id="SwKK|!wY%-1h}cmzqfFC"><mutation name="Dibujar  figura"><arg name="cantidad de lados"></arg><arg name="longitud"></arg></mutation><value name="ARG0"><block type="Numero" id="/c.]LuN=Q2Q$_J`C::6-"><field name="NUM">4</field></block></value><value name="ARG1"><block type="Numero" id="a8cJXc~:xN||r$y`U_Xt"><field name="NUM">200</field></block></value><next><block type="procedures_callnoreturn" id="s6V3)CTii0#Z+phW8WK."><mutation name="Dibujar  figura"><arg name="cantidad de lados"></arg><arg name="longitud"></arg></mutation><value name="ARG0"><block type="Numero" id="hL8z{,@s@^G*h#wg;(O1"><field name="NUM">3</field></block></value><value name="ARG1"><block type="Numero" id="e2nQ5Re-#Gc_}s_3969x"><field name="NUM">40</field></block></value><next><block type="SaltarHaciaAdelante" id="6.7kc[7/stXq2jDqf/pD"><value name="longitud"><block type="math_number" id="olkq!R!#!uvfJbGFfotR"><field name="NUM">40</field></block></value><next><block type="procedures_callnoreturn" id="kdh;V^.c|XC,6PpS[.ub"><mutation name="Dibujar  figura"><arg name="cantidad de lados"></arg><arg name="longitud"></arg></mutation><value name="ARG0"><block type="Numero" id="OMsh(w04-|9^D=Ep[;Uo"><field name="NUM">3</field></block></value><value name="ARG1"><block type="Numero" id="^,GjP-U2G9}c_8e}HUy8"><field name="NUM">60</field></block></value><next><block type="SaltarHaciaAdelante" id="1mIzs%;$ArS8-2zRHbuI"><value name="longitud"><block type="math_number" id="Z$HXjRHS_;ksF3kc1`Z#"><field name="NUM">60</field></block></value><next><block type="procedures_callnoreturn" id="+WTH{f;@uSvi|AD$*[j0"><mutation name="Dibujar  figura"><arg name="cantidad de lados"></arg><arg name="longitud"></arg></mutation><value name="ARG0"><block type="Numero" id="p9Lvf-s[,`(gsuyP#+lU"><field name="NUM">3</field></block></value><value name="ARG1"><block type="Numero" id="oD/]cLZ#A2I:`6/N0d10"><field name="NUM">100</field></block></value></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="}/y|d}fM}@f!%LNbblh+" x="212" y="276"><mutation><arg name="cantidad de lados"></arg><arg name="longitud"></arg></mutation><field name="NAME">Dibujar  figura</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="repetir" id="Z:Eckn~eDU8Of(+Css_~"><value name="count"><block type="variables_get" id="bKbIhx0By6{^ak%r-vO)"><field name="VAR" id="yd2]Tx-`eIbJbB/NJu8v" variabletype="">cantidad de lados</field></block></value><statement name="block"><block type="DibujarLado" id="G%OP!$j*K0XLV6v{CW4`"><value name="longitud"><block type="variables_get" id="_nVl4L/4*-Wx|tNjolso"><field name="VAR" id="kJIbvmiGNlG*Y.#3c)jX" variabletype="">longitud</field></block></value><next><block type="GirarGrados" id="-~m0=FrP`B2FUt=)03Y%"><value name="grados"><block type="OpAritmetica" id="{$Gf}XrBI._0:J}i;-o{"><field name="OP">DIVIDE</field><value name="A"><block type="math_number" id="?cRP~7R4l?z+:f+5$AWF"><field name="NUM">360</field></block></value><value name="B"><block type="variables_get" id=":%y`{J^,Wf,Zrw3y(4Bt"><field name="VAR" id="yd2]Tx-`eIbJbB/NJu8v" variabletype="">cantidad de lados</field></block></value></block></value></block></next></block></statement></block></statement></block><block type="math_number" id="FzSP^eJI~1oz,GuABI[5" disabled="true" x="424" y="365"><field name="NUM">100</field></block></xml>',
   resuelveDesafio: true,
 });
+
+
+moduloActividad('DibujoLibre');
+
+actividadTest('DibujoLibre', {
+  descripcionAdicional: 'Se tiene que poder dibujar libremente.',
+  solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+  <variables></variables>
+  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+    <statement name=\"program\">
+      <block type=\"repetir\">
+        <value name=\"count\">
+          <block type=\"math_number\">
+            <field name=\"NUM\">2</field>
+          </block>
+        </value>
+        <statement name=\"block\">
+          <block type=\"DibujarLado\">
+            <value name=\"longitud\">
+              <block type=\"math_number\">
+                <field name=\"NUM\">75</field>
+              </block>
+            </value>
+            <next>
+              <block type=\"GirarGrados\">
+                <value name=\"grados\">
+                  <block type=\"math_number\">
+                    <field name=\"NUM\">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type=\"SaltarHaciaAdelante\">
+                    <value name=\"longitud\">
+                      <block type=\"math_number\">
+                        <field name=\"NUM\">100</field>
+                      </block>
+                    </value>
+                    <next>
+                      <block type=\"GirarGrados\">
+                        <value name=\"grados\">
+                          <block type=\"math_number\">
+                            <field name=\"NUM\">90</field>
+                          </block>
+                        </value>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type=\"GirarGrados\" disabled=\"true\" x=\"58\" y=\"134\">
+    <value name=\"grados\">
+      <block type=\"math_number\">
+        <field name=\"NUM\">90</field>
+      </block>
+    </value>
+  </block>
+</xml>`,
+  resuelveDesafio: false,
+});
