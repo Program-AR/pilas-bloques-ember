@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import { pilasMock, interpreterFactoryMock } from './mocks';
+import { pilasMock, interpreterFactoryMock } from '../../helpers/mocks';
 
 moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
   integration: true,
