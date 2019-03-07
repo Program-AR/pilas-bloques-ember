@@ -62,6 +62,10 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         return this.casillaDestino.tieneActorConEtiqueta('Obstaculo');
     }
 
+    obstaculo() {
+        return undefined;
+    }
+
     distanciaConObstaculo(): number {
         // Si hay obstáculo solo recorre el 30% del camino.
         return this.distancia() - this.direccionCasilla.distanciaUnaCasilla(this) * 0.3;
