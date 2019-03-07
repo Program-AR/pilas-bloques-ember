@@ -12,9 +12,9 @@ class DibujarLinea extends MovimientoAnimado {
 	}
 
 	darUnPaso() {
-		const { x, y } = { x: this.receptor.x, y: this.receptor.y };
+		const origen = { x: this.receptor.x, y: this.receptor.y };
 		super.darUnPaso();
-		this.dibujarLinea(x, y);
+		this.dibujarLinea(origen.x, origen.y);
 	}
 
 	dibujarLinea(x: number, y: number) {
@@ -44,6 +44,11 @@ class DibujarLinea extends MovimientoAnimado {
 	hayObstaculo(): boolean {
 		return this.receptor.escena.obtenerActoresConEtiqueta("Charco").some(charco =>
 			charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y));
+	}
+
+	obstaculo() {
+		return this.receptor.escena.obtenerActoresConEtiqueta("Charco").filter(charco =>
+			charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y))[0];
 	}
 
 	/**

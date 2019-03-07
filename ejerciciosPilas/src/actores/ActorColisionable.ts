@@ -1,26 +1,16 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path="ActorAnimado.ts"/>
 
-class ActorColisionable extends ActorAnimado {
+class ActorColisionable {
 
-    colisionoPreviamente = false;
-
-    pre_actualizar() {
-        super.pre_actualizar();
-        this.actoresQueAfecta().forEach(actor => this.provocarAlTocar(actor));
-    }
-
-    provocarAlTocar(actor) {
-        if (!this.colisionoPreviamente && !this.deboIgnorarColision(actor) && this.colisiona_con_un_punto(actor.x, actor.y)) {
-            this.provoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
-            this.colisionoPreviamente = true;
+    teEstoyPorColisionar(actor): void {
+        if (this.participaraEnLaColision(actor) && !this.deboIgnorarColision(actor)) {
+            this.ComportamientosQueProvoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
         }
     }
 
-    actoresQueAfecta() {
-        return this.afecta().map(actor =>
-            pilas.obtener_actores_en_la_escena().filter(actorEnEscena => actorEnEscena instanceof actor))
-            .reduce((unosActores, otrosActores) => unosActores.concat(otrosActores));
+    participaraEnLaColision(actor): boolean {
+        return this.etiquetasDeLosActoresAfectados().some(etiqueta => actor.tiene_etiqueta(etiqueta))
     }
 
     deboIgnorarColision(actor): boolean {
@@ -29,19 +19,19 @@ class ActorColisionable extends ActorAnimado {
     }
 
     debeIgnorarComportamiento(comportamiento): boolean {
-        return this.ignora().some(comportamientoAIgnorar => comportamiento instanceof comportamientoAIgnorar);
+        return this.comportamientosAIgnorar().some(comportamientoAIgnorar => comportamiento instanceof comportamientoAIgnorar)
     }
 
-    afecta() {
-        return [];
+    etiquetasDeLosActoresAfectados(): String[] {
+        return []
     };
 
-    ignora() {
-        return [];
+    comportamientosAIgnorar() {
+        return []
     };
 
-    provoca() {
-        return [];
+    ComportamientosQueProvoca() {
+        return []
     };
 
 }
