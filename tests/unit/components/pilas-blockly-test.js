@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import { pilasMock, interpreterFactoryMock, actividadMock } from '../../helpers/mocks';
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock } from '../../helpers/mocks';
+import sinon from 'sinon';
 
 moduleFor('component:pilas-blockly', 'Unit | Components | pilas-blockly', {
   // Specify the other units that are required for this test.
@@ -8,8 +9,9 @@ moduleFor('component:pilas-blockly', 'Unit | Components | pilas-blockly', {
   setup() {
     this.register('service:interpreterFactory', interpreterFactoryMock);
     let ctrl = this.subject();
-    ctrl.pilas = pilasMock;
-    ctrl.set('modelActividad', actividadMock)
+    ctrl.pilas = pilasMock; //TODO: Injectar como service
+    ctrl.descargar = sinon.spy();
+    ctrl.set('modelActividad', actividadMock);
   }
 });
 
@@ -19,7 +21,7 @@ test('Al ejecutar se encuentra ejecutando y ejecuta el intérprete', function(as
 
   assert.ok(ctrl.get('ejecutando'));
   assert.notOk(ctrl.get('pausadoEnBreakpoint'));
-  //TODO: testing sobre interprete.run() (spy)
+  assert.ok(interpreteMock.run.called);
 });
 
 test('Ejecutar paso a paso bloquea la ejecución', function(assert) {
@@ -28,7 +30,7 @@ test('Ejecutar paso a paso bloquea la ejecución', function(assert) {
   //TODO: Test 'step'
   
   Ember.run.later(() => {
-    //TODO: testing sobre interprete.run() (spy)
+    assert.ok(interpreteMock.run.calledOnce);
     assert.ok(ctrl.get('pausadoEnBreakpoint'));
   });
 });
@@ -62,16 +64,17 @@ test('Al reiniciar settea flags y reinicia la escena de pilas', function(assert)
   assert.notOk(ctrl.get('ejecutando'));
   assert.notOk(ctrl.get('terminoDeEjecutar'));
   assert.notOk(ctrl.get('errorDeActividad'));
-  //TODO: testing sobre mock pilas.reiniciarEscenaCompleta() (spy)
+  assert.ok(pilasMock.reiniciarEscenaCompleta.called);
 });
 
 
 test('Al guardar solución hace una descarga con la solución', function(assert) {
   let ctrl = this.subject();
-  ctrl.descargar = (text, name, type) => { 
-    assert.equal(text, JSON.stringify({version:1, actividad:"Actividad_Mock", solucion:""}));
-    assert.equal(name, 'Actividad_Mock.spbq');
-    assert.equal(type, 'application/octet-stream');
-  };
   ctrl.send('guardarSolucion');
+
+  assert.ok(ctrl.descargar.calledWith(
+    JSON.stringify({version:1, actividad:"Actividad_Mock", solucion:""}),
+    'Actividad_Mock.spbq',
+    'application/octet-stream'
+  ));
 });
