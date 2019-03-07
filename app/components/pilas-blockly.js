@@ -330,6 +330,14 @@ export default Ember.Component.extend({
       Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
     }
   },
+  
+  descargar(text, name, type) {
+    var a = document.getElementById("placeholder");
+    var file = new Blob([text], {type: type});
+    a.href = URL.createObjectURL(file);
+    a.download = name;
+    a.click();
+  },
 
   /*
   cargar_codigo_desde_el_modelo() {
@@ -445,6 +453,7 @@ export default Ember.Component.extend({
       });
     },
 
+    //TODO: Mover la creación y cargado del archivo a otro objeto y testear
     cargarSolucion(archivo, contenido) {
       let regex_file = /\.spbq$/;
       let regex_version = /^\d+$/;
@@ -494,15 +503,7 @@ export default Ember.Component.extend({
 
       let contenido_como_string = JSON.stringify(contenido);
 
-      function descargar(text, name, type) {
-        var a = document.getElementById("placeholder");
-        var file = new Blob([text], {type: type});
-        a.href = URL.createObjectURL(file);
-        a.download = name;
-        a.click();
-      }
-
-      descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
+      this.descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
     },
 
     step() {
