@@ -1,7 +1,7 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import Ember from 'ember';
-import { pilasMock } from './mocks';
+import { pilasMock } from '../../helpers/mocks';
 
 moduleForComponent('pilas-editor', 'Integration | Component | pilas editor', {
   integration: true
