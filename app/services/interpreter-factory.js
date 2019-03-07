@@ -14,7 +14,7 @@ export default Ember.Service.extend({
    * en la función _initFunction, que aparece más abajo.
    */
   crearInterprete(codigo, callback_cuando_ejecuta_bloque) {
-    return new Interpreter(codigo, (interpreter, scope) => {
+    return new Interpreter(this.wrappearCodigo(codigo), (interpreter, scope) => {
       return this._initFunction(interpreter, scope, callback_cuando_ejecuta_bloque);
     });
   },
@@ -121,5 +121,21 @@ export default Ember.Service.extend({
     }
 
     interpreter.setProperty(scope, 'highlightBlock', interpreter.createNativeFunction(out_highlightBlock));
+  },
+
+  wrappearCodigo(codigo){
+    return js_beautify(`
+        var actor_id = 'demo'; // se asume el actor receptor de la escena.
+
+        function hacer(id, comportamiento, params) {
+          out_hacer(comportamiento, JSON.stringify(params));
+        }
+
+        function main() {
+          ${codigo}
+        }
+
+        main();
+      `);
   }
 });
