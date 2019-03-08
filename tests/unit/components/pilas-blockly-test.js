@@ -29,11 +29,21 @@ test('Al ejecutar se encuentra ejecutando y ejecuta el intérprete', function(as
 test('Ejecutar paso a paso bloquea la ejecución', function(assert) {
   let ctrl = this.subject();
   ctrl.send('ejecutar', true);
-  //TODO: Test 'step'
   
   Ember.run.later(() => {
     assert.ok(interpreteMock.run.calledOnce);
     assert.ok(ctrl.get('pausadoEnBreakpoint'));
+  });
+});
+
+test('Step desbloquea el breakpoint', function(assert) {
+  let ctrl = this.subject();
+  ctrl.send('ejecutar', true);
+  
+  Ember.run.later(() => {
+    assert.ok(ctrl.get('pausadoEnBreakpoint'));
+    ctrl.send('step');
+    assert.notOk(ctrl.get('pausadoEnBreakpoint'));
   });
 });
 
