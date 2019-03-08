@@ -4,13 +4,9 @@
 abstract class Colisionable {
 
     teEstoyPorColisionar(actor: Actor): void {
-        if (this.mePuedeColisionar(actor) && !this.puedoIgnorarLoQueEstaHaciendo(actor)) {
+        if (!this.puedoIgnorarLoQueEstaHaciendo(actor)) {
             this.comportamientosQueProvoco().forEach((clazz: Function) => actor.hacer_luego(clazz));
         }
-    }
-
-    mePuedeColisionar(actor: Actor): boolean {
-        return this.etiquetasDeLosActoresAfectados().some((etiqueta: string) => actor.tiene_etiqueta(etiqueta))
     }
 
     puedoIgnorarLoQueEstaHaciendo(actor: Actor): boolean {
@@ -21,8 +17,6 @@ abstract class Colisionable {
     debeIgnorarComportamiento(comportamiento: Comportamiento): boolean {
         return this.comportamientosQueNoMeColisionan().some((clazz: Function) => comportamiento.constructor == clazz)
     }
-
-    abstract etiquetasDeLosActoresAfectados(): string[]
 
     abstract comportamientosQueNoMeColisionan(): Function[]
 
