@@ -3,29 +3,29 @@
 
 abstract class Colisionar {
 
-    teEstoyPorColisionar(actor): void {
-        if (this.participaraEnLaColision(actor) && !this.deboIgnorarColision(actor)) {
-            this.comportamientosQueProvoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
+    teEstoyPorColisionar(actor: Actor): void {
+        if (this.colisionaria(actor) && !this.deboIgnorarColision(actor)) {
+            this.comportamientosQueProvoco().forEach((clazz: Function) => actor.hacer_luego(clazz));
         }
     }
 
-    participaraEnLaColision(actor): boolean {
-        return this.etiquetasDeLosActoresAfectados().some(etiqueta => actor.tiene_etiqueta(etiqueta))
+    colisionaria(actor: Actor): boolean {
+        return this.etiquetasDeLosActoresAfectados().some((etiqueta: string) => actor.tiene_etiqueta(etiqueta))
     }
 
-    deboIgnorarColision(actor): boolean {
+    deboIgnorarColision(actor: Actor): boolean {
         return actor.comportamiento_actual &&
-            actor.comportamiento_actual.some(comportamiento => this.debeIgnorarComportamiento(comportamiento))
+            actor.comportamiento_actual.some((comportamiento: Comportamiento) => this.debeIgnorarComportamiento(comportamiento))
     }
 
-    debeIgnorarComportamiento(comportamiento): boolean {
-        return this.comportamientosAIgnorar().some(comportamientoAIgnorar => comportamiento instanceof comportamientoAIgnorar)
+    debeIgnorarComportamiento(comportamiento: Comportamiento): boolean {
+        return this.comportamientosQueNoMeColisionan().some((clazz: Function) => comportamiento.constructor == clazz)
     }
 
-    abstract etiquetasDeLosActoresAfectados()
+    abstract etiquetasDeLosActoresAfectados(): string[]
 
-    abstract comportamientosAIgnorar()
+    abstract comportamientosQueNoMeColisionan(): Function[]
 
-    abstract comportamientosQueProvoca()
+    abstract comportamientosQueProvoco(): Function[]
 
 }

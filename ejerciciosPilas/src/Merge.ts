@@ -7,7 +7,7 @@ function mergeWith(origin: Function): Function {
     }
 }
 
-function mergeProperty(name, origin, target) {
+function mergeProperty(name: string, origin: Function, target: Function) {
     if (!target.prototype[name]) {
         target.prototype[name] = origin.prototype[name]
     }
