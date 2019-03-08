@@ -10,20 +10,20 @@
 class Charco extends ActorAnimado {
 
     constructor() {
-        super(0, 0, { grilla: 'actor.charco.png' });
-        this.definirAnimacion("parado", [0], 6, true);
+        super(0, 0, { grilla: 'actor.charco.png' })
+        this.definirAnimacion("parado", [0], 6, true)
     }
 
-    etiquetasDeLosActoresAfectados() {
-        return ["Coty"];
-    };
+    etiquetasDeLosActoresAfectados(): string[] {
+        return ["Coty"]
+    }
 
-    comportamientosAIgnorar() {
-        return [SaltarAnimado];
-    };
+    comportamientosQueNoMeColisionan(): Function[] {
+        return [SaltarAnimado]
+    }
 
-    comportamientosQueProvoca() {
-        return [Hundir];
-    };
+    comportamientosQueProvoco(): Function[] {
+        return [Hundir]
+    }
 
 }
