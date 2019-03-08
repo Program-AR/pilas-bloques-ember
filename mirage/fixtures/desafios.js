@@ -709,6 +709,7 @@ export default [
       {xCoty: 25, yCoty: 75}
     )`,
     enunciado: 'Ayudá a la llama a completar la torre.',
+    consignaInicial: 'Para completar el dibujo, Coty debe dibujar sobre las líneas grises.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
@@ -723,7 +724,7 @@ export default [
       [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
       {xCoty: -50, yCoty: 25}
     )`,
-    enunciado: '¡Coty quiere pintar la casa! ¿La ayudás?',
+    enunciado: '¡Coty quiere dibujar la casa! ¿La ayudás?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
@@ -804,7 +805,7 @@ export default [
     nombre: '3.1.3g',
     titulo: 'Desafío 7',
     escena: `new EscenaCotyMate()`,
-    enunciado: 'Es hora de un buen mate. Ayudá a la llama a terminar de pintarlo.',
+    enunciado: 'Es hora de un buen mate. Ayudá a la llama a terminar de dibujarlo.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
@@ -1241,7 +1242,8 @@ export default [
         ['t', 'o', 'j'],
         ['i', 't', 'o'],
     ], "toto")`,
-    enunciado: 'Ayudá al zorro a escribir su nombre: TOTO.',
+    enunciado: 'Ayudá al zorro a leer su nombre: TOTO.',
+    consignaInicial: 'TOTO lee las letras por las que se mueve.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1261,7 +1263,7 @@ export default [
         ['z', 'A', 'a', 'm'],
         ['y', 'l', 'l', 'q']
     ], "llama")`,
-    enunciado: 'El zorro está pensando en su amiga de la Puna, Coty. Ayudalo a escribir LLAMA.',
+    enunciado: 'El zorro está pensando en su amiga de la Puna, Coty. Ayudalo a leer LLAMA.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1301,6 +1303,7 @@ export default [
         ['o', 'l', 'l', 'e'],
     ], "caballo")`,
     enunciado: '¿Qué quiso decir el zorro y qué terminó escribiendo? ¡Descubrí el error y corregilo!',
+    consignaInicial: 'Toto está volviendo, va a demorar un poco porque está andando a ...',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1353,7 +1356,7 @@ export default [
         ['u', 'n', 'e'],
         ['l', 'A', 's'],
     ], "lunes", 7)`,
-    enunciado: 'El zorro está distraído. Ayudalo a escribir correctamente lo que quiere decir.',
+    enunciado: 'El zorro está distraído. Ayudalo a escribir correctamente qué día llega a Humahuaca.',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1488,7 +1491,7 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
-    enunciado: 'La llama quiere pintar cuatro líneas. ¿Qué es lo que se repite esta vez?',
+    enunciado: 'La llama quiere dibujar cuatro líneas. ¿Qué es lo que se repite esta vez?',
     consignaInicial: 'Puede haber más de un bloque dentro del Repetir',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
@@ -1514,7 +1517,7 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
-    enunciado: '¡Ahora además hay que mover para abajo! ¿Será tan fácil como agregar un bloque a lo que hiciste antes? ¿Cuántas repeticiones son necesarias ahora?',
+    enunciado: '¡Ahora además hay que dibujar para abajo! ¿Será tan fácil como agregar un bloque a lo que hiciste antes? ¿Cuántas repeticiones son necesarias ahora?',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1539,7 +1542,7 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
-    enunciado: 'La llama tiene ganas de pintar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite? ',
+    enunciado: 'La llama tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite? ',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1894,8 +1897,8 @@ export default [
     nombre: '5.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
-    enunciado: '¡A veces no hay churrasco! ¿Podés hacer un solo programa para que Duba avance siempre y coma solo si hay un churrasco?',
-    consignaInicial: 'El bloque "Si" sirve para a veces hacer algo y a veces no. ¡Sabe preguntar!',
+    enunciado: '¡A veces hay churrasco y a veces no! ¿Podés hacer un solo programa para que Duba avance siempre y coma solo si hay un churrasco?',
+    consignaInicial: 'El bloque "Si" sirve para a veces hacer algo y a veces no. ¡Sirve para preguntar!',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1914,7 +1917,7 @@ export default [
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
-    enunciado: 'Ahora Duba debe avanzar dos veces. Pero ¡tiene que comerse todos los churrascos que aparecen! (pero sólo si aparecen)',
+    enunciado: 'Ahora Duba debe avanzar dos veces. ¡tiene que comerse todos los churrascos que aparecen! ...Pero sólo si aparecen',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -1960,7 +1963,7 @@ export default [
     titulo: 'Desafío 1',
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: 'Lita quiere agarrar cualquier verdura. ¡Pero debe ser la correcta!',
-    consignaInicial: 'El bloque Si/Sino me permite elegir entre dos alternativas. Sólo hay que elegir bien la pregunta',
+    consignaInicial: 'El bloque Si/Sino permite elegir entre dos alternativas. Sólo hay que elegir bien la pregunta',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
@@ -2185,7 +2188,7 @@ export default [
     titulo: 'Desafío 4',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: 'Hacé que Toto copie la palabra hablando en Jeringozo. Si la palabra fuera "DUBA" él tiene que copiar "DUPUBAPA"',
-    consignaInicial: 'El idioma Jeringozo agrega "MA" después de una A, "ME" después de una E, y así con todas las vocales',
+    consignaInicial: 'El idioma Jeringozo agrega "PA" después de una A, "PE" después de una E, y así con todas las vocales',
     debeFelicitarse: true, 
     estiloToolbox: 'sinCategorias',
     bloques: [
