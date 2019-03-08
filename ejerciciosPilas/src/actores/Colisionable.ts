@@ -1,19 +1,19 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path="../../src/actores/ActorAnimado.ts"/>
 
-abstract class Colisionar {
+abstract class Colisionable {
 
     teEstoyPorColisionar(actor: Actor): void {
-        if (this.colisionaria(actor) && !this.deboIgnorarColision(actor)) {
+        if (this.mePuedeColisionar(actor) && !this.puedoIgnorarLoQueEstaHaciendo(actor)) {
             this.comportamientosQueProvoco().forEach((clazz: Function) => actor.hacer_luego(clazz));
         }
     }
 
-    colisionaria(actor: Actor): boolean {
+    mePuedeColisionar(actor: Actor): boolean {
         return this.etiquetasDeLosActoresAfectados().some((etiqueta: string) => actor.tiene_etiqueta(etiqueta))
     }
 
-    deboIgnorarColision(actor: Actor): boolean {
+    puedoIgnorarLoQueEstaHaciendo(actor: Actor): boolean {
         return actor.comportamiento_actual &&
             actor.comportamiento_actual.some((comportamiento: Comportamiento) => this.debeIgnorarComportamiento(comportamiento))
     }
