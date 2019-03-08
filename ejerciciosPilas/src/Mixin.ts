@@ -1,6 +1,6 @@
 /// <reference path = "../node_modules/reflect-metadata/Reflect.d.ts"/>
 
-function Mixin(mixin: Function): Function {
+function MergeWith(mixin: Function): Function {
     return function (target: Function) {
         Object.getOwnPropertyNames(mixin.prototype).forEach(name => mergeProperty(name, mixin, target))
         return target;

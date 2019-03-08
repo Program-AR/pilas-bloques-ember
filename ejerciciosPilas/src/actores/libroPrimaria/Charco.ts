@@ -6,7 +6,7 @@
 /// <reference path="../../comportamientos/SaltarAnimado.ts"/>
 /// <reference path="../../comportamientos/Hundir.ts"/>
 
-@Mixin(Colisionar)
+@MergeWith(Colisionar)
 class Charco extends ActorAnimado {
 
     constructor() {
