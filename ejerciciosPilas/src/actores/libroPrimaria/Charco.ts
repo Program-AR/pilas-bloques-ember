@@ -1,12 +1,12 @@
 /// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "../../../node_modules/reflect-metadata/Reflect.d.ts"/>
 /// <reference path="../../Merge.ts"/>
-/// <reference path="../../comportamientos/Colisionar.ts"/>
+/// <reference path="../Colisionable.ts"/>
 /// <reference path="../../actores/libroPrimaria/Coty.ts"/>
 /// <reference path="../../comportamientos/SaltarAnimado.ts"/>
 /// <reference path="../../comportamientos/Hundir.ts"/>
 
-@mergeWith(Colisionar)
+@mergeWith(Colisionable)
 class Charco extends ActorAnimado {
 
     constructor() {
