@@ -1,24 +1,18 @@
 /// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
+/// <reference path = "../../../node_modules/reflect-metadata/Reflect.d.ts"/>
 /// <reference path="../../Mixin.ts"/>
-/// <reference path="../ActorColisionable.ts"/>
+/// <reference path="../../comportamientos/Colisionar.ts"/>
 /// <reference path="../../actores/libroPrimaria/Coty.ts"/>
 /// <reference path="../../comportamientos/SaltarAnimado.ts"/>
 /// <reference path="../../comportamientos/Hundir.ts"/>
 
-class Charco extends ActorAnimado implements ActorColisionable {
+@Mixin(Colisionar)
+class Charco extends ActorAnimado {
 
     constructor() {
         super(0, 0, { grilla: 'actor.charco.png' });
         this.definirAnimacion("parado", [0], 6, true);
     }
-
-    teEstoyPorColisionar: (actor) => void
-
-    participaraEnLaColision: (actor) => boolean
-
-    deboIgnorarColision: (actor) => boolean
-
-    debeIgnorarComportamiento: (comportamiento) => boolean
 
     etiquetasDeLosActoresAfectados() {
         return ["Coty"];
@@ -28,10 +22,8 @@ class Charco extends ActorAnimado implements ActorColisionable {
         return [SaltarAnimado];
     };
 
-    ComportamientosQueProvoca() {
+    comportamientosQueProvoca() {
         return [Hundir];
     };
 
 }
-
-applyMixins(ActorAnimado, [ActorColisionable]);
