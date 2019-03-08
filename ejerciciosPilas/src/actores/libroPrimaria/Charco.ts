@@ -1,6 +1,6 @@
 /// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "../../../node_modules/reflect-metadata/Reflect.d.ts"/>
-/// <reference path="../../Mixin.ts"/>
+/// <reference path="../../Merge.ts"/>
 /// <reference path="../../comportamientos/Colisionar.ts"/>
 /// <reference path="../../actores/libroPrimaria/Coty.ts"/>
 /// <reference path="../../comportamientos/SaltarAnimado.ts"/>
