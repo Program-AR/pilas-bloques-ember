@@ -14,10 +14,6 @@ class Charco extends ActorAnimado {
         this.definirAnimacion("parado", [0], 6, true)
     }
 
-    comportamientosQueNoMeColisionan(): Function[] {
-        return [SaltarAnimado]
-    }
-
     comportamientosQueProvoco(): Function[] {
         return [Hundir]
     }
