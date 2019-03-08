@@ -1,11 +1,11 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path="ActorAnimado.ts"/>
+/// <reference path="../../src/actores/ActorAnimado.ts"/>
 
-class ActorColisionable {
+abstract class Colisionar {
 
     teEstoyPorColisionar(actor): void {
         if (this.participaraEnLaColision(actor) && !this.deboIgnorarColision(actor)) {
-            this.ComportamientosQueProvoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
+            this.comportamientosQueProvoca().forEach(comportamiento => actor.hacer_luego(comportamiento));
         }
     }
 
@@ -22,16 +22,10 @@ class ActorColisionable {
         return this.comportamientosAIgnorar().some(comportamientoAIgnorar => comportamiento instanceof comportamientoAIgnorar)
     }
 
-    etiquetasDeLosActoresAfectados(): String[] {
-        return []
-    };
+    abstract etiquetasDeLosActoresAfectados()
 
-    comportamientosAIgnorar() {
-        return []
-    };
+    abstract comportamientosAIgnorar()
 
-    ComportamientosQueProvoca() {
-        return []
-    };
+    abstract comportamientosQueProvoca()
 
 }

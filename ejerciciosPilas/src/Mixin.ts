@@ -1,7 +1,14 @@
-function applyMixins(derivedCtor: any, baseCtors: any[]) {
-    baseCtors.forEach(baseCtor => {
-        Object.getOwnPropertyNames(baseCtor.prototype).forEach(name => {
-            derivedCtor.prototype[name] = baseCtor.prototype[name];
-        });
-    });
+/// <reference path = "../node_modules/reflect-metadata/Reflect.d.ts"/>
+
+function Mixin(mixin: Function): Function {
+    return function (target: Function) {
+        Object.getOwnPropertyNames(mixin.prototype).forEach(name => mergeProperty(name, mixin, target))
+        return target;
+    }
+}
+
+function mergeProperty(name, mixin, target) {
+    if (!target.prototype[name]) {
+        target.prototype[name] = mixin.prototype[name]
+    }
 }
