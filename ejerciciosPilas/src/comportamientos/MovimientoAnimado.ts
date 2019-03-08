@@ -93,7 +93,9 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
       this.argumentos.cantPasos = Math.ceil(this.argumentos.cantPasos * (this.valoresFinales.distancia / distanciaOriginal));
       this.valoresFinales.destino = this.calcularDestino();
 
-      this.obstaculo().teEstoyPorColisionar(this.receptor);
+      if (this.obstaculo() !== undefined) {
+        this.obstaculo().teEstoyPorColisionar(this.receptor);
+      }
     }
   }
 
