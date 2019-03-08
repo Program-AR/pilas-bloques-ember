@@ -14,10 +14,7 @@ export const interpreteMock = {
 };
 
 export const interpreterFactoryMock = Ember.Service.extend({ 
-    crearInterprete(){
-        interpreteMock.run.resetHistory();
-        return interpreteMock; 
-    }
+    crearInterprete(){ return interpreteMock; }
 });
 
 export const actividadMock = { 

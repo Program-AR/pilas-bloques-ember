@@ -12,9 +12,11 @@ moduleFor('component:pilas-blockly', 'Unit | Components | pilas-blockly', {
     ctrl.pilas = pilasMock; //TODO: Injectar como service
     ctrl.descargar = sinon.spy();
     ctrl.set('modelActividad', actividadMock);
+    sinon.resetHistory();
   }
 });
 
+//TODO: Ver de agrupar en modules
 test('Al ejecutar se encuentra ejecutando y ejecuta el intérprete', function(assert) {
   let ctrl = this.subject();
   ctrl.send('ejecutar');
