@@ -23,6 +23,7 @@ class ActorAnimado extends Actor {
     pausado;
     habilidadesSuspendidas;
     pilaAnimaciones;
+    velocidadesDeLasAnimaciones;
 
 
     constructor(x, y, opciones) {
@@ -36,6 +37,15 @@ class ActorAnimado extends Actor {
         this.objetosRecogidos = [];
         this.habilidadesSuspendidas = [];
         this.pilaAnimaciones = [];
+        this.velocidadesDeLasAnimaciones = [];
+        this.resguardarVelocidades();
+    }
+
+    resguardarVelocidades() {
+        for (var nombre in this._imagen.animaciones) {
+            this.velocidadesDeLasAnimaciones[nombre] = this._imagen.animaciones[nombre].velocidad;
+        }
+
     }
 
     pre_actualizar(){
@@ -219,10 +229,19 @@ class ActorAnimado extends Actor {
         return this._imagen.animacion_en_curso.nombre;
     }
 
-    ponerMaximaVelocidad(){
-      for (var nombre in this._imagen.animaciones){
-        this._imagen.animaciones[nombre].velocidad = 60;
-      }
+    ponerMaximaVelocidad() {
+        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
+        for (var nombre in this._imagen.animaciones) {
+            this._imagen.animaciones[nombre].velocidad = 60;
+        }
+    }
+
+
+    normalizarVelocidad() {
+        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
+        for (var nombre in this._imagen.animaciones) {
+            this._imagen.animaciones[nombre].velocidad = this.velocidadesDeLasAnimaciones[nombre];
+        }
     }
 
     seguidillaHasta(nro){
