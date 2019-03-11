@@ -11,33 +11,37 @@
  *               Como esto juega con la animacion, es preferible no tocarlo.
  */
 class ComportamientoConVelocidad extends ComportamientoAnimado {
+
+	static modoTurbo = false
+
 	_pasosRestantes;
 	vueltasSinEjecutar;
 	enQueVueltaEjecuto;
 
-	preAnimacion(){
+	preAnimacion() {
 		super.preAnimacion();
 		this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
-		this.argumentos.velocidad = this.argumentos.velocidad || 20;
+		this.argumentos.velocidad = (ComportamientoConVelocidad.modoTurbo) ? 100 : this.argumentos.velocidad || 20;
+		this.argumentos.deboCortarAnimaciones = (ComportamientoConVelocidad.modoTurbo) ? true : this.argumentos.deboCortarAnimaciones || false;
 
 		this.vueltasSinEjecutar = 0;
 		this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
 		this._pasosRestantes = this.argumentos.cantPasos;
-  }
+	}
 
-	velocidad(){
+	velocidad() {
 		return this.argumentos.velocidad;
 	}
 
-	deboCortarAnimacion(){
-		return false;
+	deboCortarAnimacion() {
+		return this.argumentos.deboCortarAnimaciones;
 	}
 
-	pasosRestantes(){
+	pasosRestantes() {
 		return this._pasosRestantes;
 	}
 
-  doActualizar(){
+	doActualizar() {
 		var terminoAnimacion = super.doActualizar();
 		if (this.pasosRestantes() <= 0) {
 			this.setearEstadoFinalDeseado();
@@ -46,25 +50,25 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 			this.darUnPaso();
 			this._pasosRestantes -= 1;
 		}
- 	}
+	}
 
- 	deboEjecutar(){ // Aca entra en juego la velocidad
-		  if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto){
-			  this.vueltasSinEjecutar = 0;
-			  return true;
-		  } else {
- 		      this.vueltasSinEjecutar += 1;
-			  return false;
-		  }
- 	}
+	deboEjecutar() { // Aca entra en juego la velocidad
+		if (this.vueltasSinEjecutar + 1 == this.enQueVueltaEjecuto) {
+			this.vueltasSinEjecutar = 0;
+			return true;
+		} else {
+			this.vueltasSinEjecutar += 1;
+			return false;
+		}
+	}
 
- 	darUnPaso(){
+	darUnPaso() {
 		// Debe redefinirse. Es el comportamiento a realizar en cada tick.
- 	}
+	}
 
-    setearEstadoFinalDeseado(){
-	    // Debe redefinirse. Sirve para asegurar que al terminar los pasos se llegue al estado deseado
-	    // Por ejemplo, si me estoy moviendo a un lugar, setear ese lugar evita problemas de aproximación parcial.
-    }
+	setearEstadoFinalDeseado() {
+		// Debe redefinirse. Sirve para asegurar que al terminar los pasos se llegue al estado deseado
+		// Por ejemplo, si me estoy moviendo a un lugar, setear ese lugar evita problemas de aproximación parcial.
+	}
 
 }
