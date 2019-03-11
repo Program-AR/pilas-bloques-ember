@@ -133,6 +133,8 @@ export function actividadTest(nombre, opciones) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
 
+            pilas.cambiarFPS(300);
+
             setTimeout(() => {
               this.$('#modoTuboHabilitado').click();
               this.$('.btn-ejecutar').click();
