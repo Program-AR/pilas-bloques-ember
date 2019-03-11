@@ -1,7 +1,7 @@
+/* jshint ignore:start */
 import Ember from 'ember';
 
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
-
 
 export default Ember.Component.extend({
   classNames: 'desafio-panel-derecho',
@@ -95,25 +95,6 @@ export default Ember.Component.extend({
       }
 
     });
-
-    /*
-    if (this.get("persistirSolucionEnURL")) {
-      Blockly.addChangeListener(() => {
-        Ember.run(this, function() {
-          this.guardarEnURL();
-          this.generarCodigoTemporal();
-        });
-      });
-    }
-    */
-
-    if (this.get("debeMostrarFinDeDesafio")) {
-      this.get('pilas').on('terminaEjecucion', () => {
-        Ember.run(this, function() {
-          this.cuandoTerminaEjecucion();
-        });
-      });
-    }
 
     if (this.get("persistirSolucionEnURL")) {
       // TODO: puede que esto quede en desuso.
@@ -267,6 +248,58 @@ export default Ember.Component.extend({
     categoriaEnElToolbox.blocks.push(bloque);
   },
 
+  ejecutarInterpreteHastaTerminar(interprete,pasoAPaso){
+    // Se abre una promise que termina cuando:
+    //     o bien se llega al último comando escrito en el workspace
+    //     o bien el usuario frena la ejecución
+    //     o bien existe un error en la escena de pilas web
+    return new Promise((success, reject) => {
+      let hayMasParaEjecutarDespues;
+
+      let execInterpreterUntilEnd = (interpreter) => {
+
+        // Si el usuario solicitó terminar el programa deja
+        // de ejecutar el intérprete.
+        if (!this.get("ejecutando")) {
+          success();
+          return;
+        }
+
+        let err = this.get("errorDeActividad"); 
+        if (err) {
+          reject(new ErrorDeActividad(err));
+          return;
+        }
+
+        try {
+          if (pasoAPaso) {
+            // Si está activado el modo depurador, intentará suspender
+            // la llamada a interpreter.run() hasta que el usuario pulse
+            // el botón step.
+            if (interpreter.paused_ === false && !this.get('pausadoEnBreakpoint')) {  
+              hayMasParaEjecutarDespues = interpreter.run(); 
+              this.set('pausadoEnBreakpoint', true);
+            }
+          } else {
+            hayMasParaEjecutarDespues = interpreter.run();
+          }
+        } catch(e) {
+          reject(e);
+        }
+
+        if (hayMasParaEjecutarDespues) {
+          // Llama recursivamente, abriendo thread en cada llamada.
+          setTimeout(execInterpreterUntilEnd, 10, interpreter);
+        } else {
+          success();
+        }
+      };
+
+      execInterpreterUntilEnd(interprete);
+
+    });
+  },
+
   cuandoTerminaEjecucion() {
     Ember.run(this, function() {
       this.sendAction('onTerminoEjecucion');
@@ -287,7 +320,6 @@ export default Ember.Component.extend({
 
   willDestroyElement() {
     window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
-    window.removeEventListener('terminaEjecucion', this.handlerTerminaEjecucion, false);
   },
 
   restaurar_codigo(codigo) {
@@ -297,6 +329,14 @@ export default Ember.Component.extend({
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
     }
+  },
+  
+  descargar(text, name, type) {
+    var a = document.getElementById("placeholder");
+    var file = new Blob([text], {type: type});
+    a.href = URL.createObjectURL(file);
+    a.download = name;
+    a.click();
   },
 
   /*
@@ -322,114 +362,20 @@ export default Ember.Component.extend({
         this.get('cuandoEjecuta')(codigo_xml);
       }
 
-      let codigoDesdeWorkspace = this.get('javascriptCode');
       let factory = this.get('interpreterFactory');
-      let codigoCompleto = js_beautify(`
-        var actor_id = 'demo'; // se asume el actor receptor de la escena.
-
-        function hacer(id, comportamiento, params) {
-          out_hacer(comportamiento, JSON.stringify(params));
-        }
-
-        function main() {
-          ${codigoDesdeWorkspace}
-        }
-
-        main();
-      `);
-
-      this.set('pausadoEnBreakpoint', false);
-
-      let interprete = factory.crearInterprete(codigoCompleto, (bloque) => {
+      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloque) => {
         var me = this;
         Ember.run(function () {
           me.set('highlightedBlock', bloque);
         });
       });
-
-      let estaPausadoEnBreakpoint = () => {
-        return this.get('pausadoEnBreakpoint');
-      };
-
-      let pausarInterprete = () => {
-        this.set('pausadoEnBreakpoint', true);
-      };
-
-      function ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte) {
-
-        return new Ember.RSVP.Promise((success, reject) => {
-          let running;
-
-          function execInterpreterUntilEnd(interpreter) {
-            // Si el usuario solicitó terminar el programa deja
-            // de ejecutar el intérprete.
-            if (condicion_de_corte()) {
-              success();
-              return;
-            }
-
-            if (error_de_actividad()) {
-              reject(error_de_actividad());
-              return;
-            }
-
-            try {
-
-              if (pasoAPaso) {
-
-                // Si está activado el modo depurador, intentará suspender
-                // la llamada a interpreter.run() hasta que el usuario pulse
-                // el botón step.
-
-                if (interpreter.paused_ === false) {
-                  if (estaPausadoEnBreakpoint()) {
-
-                  } else {
-                    running = interpreter.run();
-                    pausarInterprete();
-                  }
-
-                }
-
-              } else {
-                running = interpreter.run();
-              }
-
-            } catch(e) {
-              reject(e);
-            }
-
-            if (running) {
-              setTimeout(execInterpreterUntilEnd, 10, interpreter);
-            } else {
-              success();
-            }
-          }
-
-          execInterpreterUntilEnd(interprete);
-
-        });
-      }
-
+      
+      this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
 
-      let condicion_de_corte = () => {
-        return !this.get("ejecutando");
-      };
-
-      let error_de_actividad = () => {
-        return this.get("errorDeActividad");
-      };
-
-      let ejecucion = ejecutarInterpreteHastaTerminar(interprete, condicion_de_corte);
-
-      ejecucion
-      .then(() => {
-        this.cuandoTerminaEjecucion();
-      })
-      .catch((err) => {
-        console.error(err); //Es un error dentro de la actividad, no debería burbujear
-      });
+      this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso)
+        .then(() => this.cuandoTerminaEjecucion())
+        .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ }); 
     },
 
     reiniciar() {
@@ -507,6 +453,7 @@ export default Ember.Component.extend({
       });
     },
 
+    //TODO: Mover la creación y cargado del archivo a otro objeto y testear
     cargarSolucion(archivo, contenido) {
       let regex_file = /\.spbq$/;
       let regex_version = /^\d+$/;
@@ -556,15 +503,7 @@ export default Ember.Component.extend({
 
       let contenido_como_string = JSON.stringify(contenido);
 
-      function descargar(text, name, type) {
-        var a = document.getElementById("placeholder");
-        var file = new Blob([text], {type: type});
-        a.href = URL.createObjectURL(file);
-        a.download = name;
-        a.click();
-      }
-
-      descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
+      this.descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
     },
 
     step() {
@@ -594,3 +533,10 @@ Ember.onerror = function (e) {
     console.error(e);
   }
 };
+
+class ErrorDeActividad extends Error {
+  constructor(exception) {
+    super(exception);
+  }
+}
+/* jshint ignore:end */

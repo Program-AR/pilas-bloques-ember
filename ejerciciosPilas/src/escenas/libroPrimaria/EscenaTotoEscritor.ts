@@ -32,6 +32,10 @@ class EscenaTotoEscritor extends EscenaToto {
             { alto: 160, ancho: 300, imagen: 'invisible.png', separacionEntreCasillas: -20 }, { grilla: 'invisible.png', relAspecto: 1 }
         );
     }
+
+    estaResueltoElProblema() : boolean {
+        return super.estaResueltoElProblema() && this.automata.tocandoFin();
+    }
 }
 
 abstract class EscribirTextoEnOtraCuadricula extends EscribirTexto {

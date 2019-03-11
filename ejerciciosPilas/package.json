@@ -38,7 +38,8 @@
     "phantomjs-polyfill": "0.0.1",
     "typescript": "^1.8.10",
     "nearley": "2.12.1",
-    "grunt-run": "^0.8.1"
+    "grunt-run": "^0.8.1",
+    "reflect-metadata":"0.1.13"
   },
   "dependencies": {
     "grunt-contrib-qunit": "^1.2.0"

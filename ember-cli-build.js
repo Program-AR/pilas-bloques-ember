@@ -13,6 +13,7 @@ module.exports = function(defaults) {
     });
 
     app.import('bower_components/bootstrap/dist/css/bootstrap.css');
+    app.import('bower_components/bluebird/js/browser/bluebird.min.js');
     app.import('vendor/acorn_interpreter.js');
     app.import('vendor/beautify.js');
     app.import('vendor/utilidades_de_depuracion.js');

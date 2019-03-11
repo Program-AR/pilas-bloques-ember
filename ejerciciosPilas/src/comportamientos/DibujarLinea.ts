@@ -5,44 +5,50 @@
 // Esto hace que no haya que hacer cálculos ni aprender qué significa Shape.regX ó cómo lo usa pilas.
 // Llámenme cobarde, sí. Perdón.
 class DibujarLinea extends MovimientoAnimado {
-	_hayObstaculo: boolean;
 
-	iniciar(receptor){
+	iniciar(receptor) {
 		super.iniciar(receptor);
 		if (!receptor.pizarra) receptor.pizarra = new pilas.actores.Pizarra();
 	}
 
-	darUnPaso(){
-		var origen = { x: this.receptor.x, y: this.receptor.y };
+	darUnPaso() {
+		const origen = { x: this.receptor.x, y: this.receptor.y };
 		super.darUnPaso();
+		this.dibujarLinea(origen.x, origen.y);
+	}
+
+	dibujarLinea(x: number, y: number) {
 		if (!this.hayObstaculo()) {
-			this.receptor.pizarra.linea(origen.x, origen.y, this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
+			this.receptor.pizarra.linea(x, y, this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
 		}
 	}
 
-	preAnimacion() {
-		this.argumentos.distancia = this.argumentos.distancia || this.receptor.escena.longitudSegmento ;
-		this.argumentos.distanciaConObstaculo = this.argumentos.distancia / 2;
-		super.preAnimacion();
+	dibujarPunto() {
 		if (this.argumentos.dibujarPuntos && !this.hayObstaculo()) {
 			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
 		}
 	}
 
+	preAnimacion() {
+		this.argumentos.distancia = this.argumentos.distancia || this.receptor.escena.longitudSegmento;
+		this.argumentos.distanciaConObstaculo = this.argumentos.distancia / 2;
+		super.preAnimacion();
+		this.dibujarPunto();
+	}
+
 	postAnimacion() {
 		super.postAnimacion();
-		if (this.argumentos.dibujarPuntos) {
-			this.receptor.pizarra.dibujar_punto(this.receptor.x, this.receptor.y, this.receptor.escena.colorDibujo(), 6);
-		}
+		this.dibujarPunto();
 	}
 
 	hayObstaculo(): boolean {
-		if (this._hayObstaculo === undefined) {
-			this._hayObstaculo = this.receptor.escena.obtenerActoresConEtiqueta("Charco").some(charco =>
-				charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y)
-			);
-		}
-		return this._hayObstaculo; 
+		return this.receptor.escena.obtenerActoresConEtiqueta("Charco").some(charco =>
+			charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y));
+	}
+
+	obstaculo() {
+		return this.receptor.escena.obtenerActoresConEtiqueta("Charco").filter(charco =>
+			charco.colisiona_con_un_punto(this.puntoMedio().x, this.puntoMedio().y))[0];
 	}
 
 	/**
@@ -55,10 +61,18 @@ class DibujarLinea extends MovimientoAnimado {
 			y: (this.destino().y + this.receptor.y) / 2
 		};
 	}
+
+	/**
+	 * Redefino el metodo dejandolo vacio para evitar
+	 * que se utilicen las validaciones de colision heredadas.
+	 */
+	configurarVerificaciones(): void {
+
+	}
 }
 
 class DibujarHaciaAdelante extends DibujarLinea {
-	preAnimacion(){
+	preAnimacion() {
 		this.argumentos.direccion = new Direct(this.receptor.rotacion);
 		super.preAnimacion();
 	}
