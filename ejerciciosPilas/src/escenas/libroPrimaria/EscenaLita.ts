@@ -9,6 +9,18 @@ class EscenaLita extends EscenaDesdeMapa {
 	xFinal: number;
 	yFinal: number;
 
+	static clasesDeActoresInvolucrados() :typeof ActorAnimado[] {
+		return [Lita, Ensaladera, Tomate, Lechuga, FlechaEscenarioAleatorio];
+	};
+
+	static pathFondo() : string {
+		return 'fondo.lita.png';
+	}
+
+	static imagenesAdicionales() : string[]{
+		return ['casillas.lita.png'].concat(Obstaculo.imagenesPara('lita'));
+	}			//TODO: Hacer con la casilla lo mismo que para obstáculo!
+
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal?: [number, number]) {
 		super();
 		this.initDesdeUnaOVariasDescripciones(especificacion, opciones);
