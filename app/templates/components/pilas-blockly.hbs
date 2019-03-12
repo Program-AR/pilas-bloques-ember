@@ -32,13 +32,8 @@
         {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
         <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
-              
 
-          <label class="switch" title="Modo Turbo">
-            <{{input type="checkbox" id="modoTuboHabilitado" disabled=this.ejecutando  checked=this.modoTuboHabilitado}}>
-              <span class="slider round"><i class="slider-icon fa fa-bolt"></i></span>
-          </label>
-
+        {{pilas-toggle isDisabled=this.ejecutando isChecked=this.modoTuboHabilitado icon="fa fa-bolt"}}
 
         {{#if debeMostarRegresarAlLibro}}
           {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
