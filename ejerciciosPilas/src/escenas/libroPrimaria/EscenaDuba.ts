@@ -18,8 +18,8 @@ class EscenaDuba extends EscenaDesdeMapa {
 	}
 
 	static imagenesAdicionales() : string[]{
-		return ['casillas.duba.png'].concat(Obstaculo.imagenesPara('duba'));
-	}			//TODO: Hacer con la casilla lo mismo que para obstáculo!
+		return Casilla.imagenesPara('duba').concat(Obstaculo.imagenesPara('duba'));
+	}			//TODO: Usar flatMap (lodash)
 
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal? : [number, number]) {
 		super();

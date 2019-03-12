@@ -18,8 +18,8 @@ class EscenaLita extends EscenaDesdeMapa {
 	}
 
 	static imagenesAdicionales() : string[]{
-		return ['casillas.lita.png'].concat(Obstaculo.imagenesPara('lita'));
-	}			//TODO: Hacer con la casilla lo mismo que para obstáculo!
+		return Casilla.imagenesPara('lita').concat(Obstaculo.imagenesPara('lita'));
+	}			//TODO: Usar flatMap (lodash)
 
 	constructor(especificacion: string | Array<string>, opciones?: opcionesMapaAleatorio, posFinal?: [number, number]) {
 		super();
