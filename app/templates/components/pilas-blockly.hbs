@@ -27,7 +27,7 @@
           <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
       {{/if}}
 
-      {{#if noEstoyEnMoodle}}
+      {{#unless estoyEnMoodle}}
 
         {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
@@ -43,7 +43,7 @@
           <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
         {{/if}}
 
-      {{/if}}
+      {{/unless}}
 
     {{/if}}
 
