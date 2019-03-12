@@ -23,7 +23,7 @@ class ActorAnimado extends Actor {
     pausado;
     habilidadesSuspendidas;
     pilaAnimaciones;
-    velocidadesDeLasAnimaciones;
+    velocidadOriginalDeLasAnimaciones;
 
 
     constructor(x, y, opciones) {
@@ -37,15 +37,24 @@ class ActorAnimado extends Actor {
         this.objetosRecogidos = [];
         this.habilidadesSuspendidas = [];
         this.pilaAnimaciones = [];
-        this.velocidadesDeLasAnimaciones = [];
-        this.resguardarVelocidades();
     }
 
-    resguardarVelocidades() {
+    acelerarLaVelocidadDeLasAnimaciones() {
+        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
+        this.velocidadOriginalDeLasAnimaciones = {};
         for (var nombre in this._imagen.animaciones) {
-            this.velocidadesDeLasAnimaciones[nombre] = this._imagen.animaciones[nombre].velocidad;
+            this.velocidadOriginalDeLasAnimaciones[nombre] = this._imagen.animaciones[nombre].velocidad;
+            this._imagen.animaciones[nombre].velocidad = 60;
         }
+    }
 
+    restaurarLaVelocidadDeLasAnimaciones() {
+        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
+        if (this.velocidadOriginalDeLasAnimaciones) {
+            for (var nombre in this._imagen.animaciones) {
+                this._imagen.animaciones[nombre].velocidad = this.velocidadOriginalDeLasAnimaciones[nombre];
+            }
+        }
     }
 
     pre_actualizar(){
@@ -227,21 +236,6 @@ class ActorAnimado extends Actor {
 
     nombreAnimacionActual() : string {
         return this._imagen.animacion_en_curso.nombre;
-    }
-
-    ponerMaximaVelocidad() {
-        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
-        for (var nombre in this._imagen.animaciones) {
-            this._imagen.animaciones[nombre].velocidad = 60;
-        }
-    }
-
-
-    normalizarVelocidad() {
-        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
-        for (var nombre in this._imagen.animaciones) {
-            this._imagen.animaciones[nombre].velocidad = this.velocidadesDeLasAnimaciones[nombre];
-        }
     }
 
     seguidillaHasta(nro){
