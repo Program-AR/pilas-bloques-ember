@@ -27,21 +27,7 @@
           <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
       {{/if}}
 
-      {{#if modoAlumno}}
-
-      {{else if modoDocente}}
-
-      {{else}}
-
-        {{#if mostrarGuardar}}
-          {{#if model}}
-            <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
-          {{else}}
-            <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
-          {{/if}}
-        {{/if}}
-
-        
+      {{#if noEstoyEnMoodle}}
 
         {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
