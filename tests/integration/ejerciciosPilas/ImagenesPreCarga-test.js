@@ -24,3 +24,18 @@ test('EscenaLita', function(assert) {
     resolve();
   });
 });
+
+test('EscenaCoty', function(assert) {
+  let escena = `new EscenaCoty(
+    [],
+    [{x:-120,y:50},{x:20,y:50}],
+    {xCoty: -0, yCoty: 0, puedeHaberCharco: true}
+  )`;
+  return createPilasTest(this, escena, (pilas, resolve, pilasService) => {
+    let imagenes = pilasService.imagenesParaPrecargar(escena);
+    let imagenesEsperadas = ["fondo.coty.png", "actor.coty.png", "actor.charco.png", "flechaEscenarioAleatorio.png"];
+    assert.deepEqual(imagenes, imagenesEsperadas);
+    resolve();
+  });
+});
+

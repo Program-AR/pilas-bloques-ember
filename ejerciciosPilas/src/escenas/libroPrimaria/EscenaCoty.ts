@@ -16,15 +16,23 @@ class EscenaCoty extends DibujandoFiguras {
   puedeHaberCharco: boolean;
   longitudSegmento: number;
 
+  static clasesDeActoresInvolucrados(): typeof ActorAnimado[] {
+    return [Coty, Charco, FlechaEscenarioAleatorio]
+  }
+
+  static pathFondo(): string {
+    return 'fondo.coty.png';
+  }
+
+	// static imagenesAdicionales() : string[]{
+	// 	return 
+  // }
+  
   constructor(dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], argumentos: ArgumentosCoty) {
     super();
     this._puntosEsperados = puntosEsperados;
     this.dibujoPreexistente = DibujoLineal.desdePuntosSimples(dibujoPreexistente);
     this.sanitizarArgumentos(argumentos);
-  }
-
-  static clasesDeActoresInvolucrados(): typeof ActorAnimado[] {
-    return [Coty, Charco]
   }
 
   sanitizarArgumentos(argumentos: ArgumentosCoty) {
@@ -81,10 +89,6 @@ class EscenaCoty extends DibujandoFiguras {
 
   puntosEsperados() {
     return this._puntosEsperados;
-  }
-
-  static pathFondo(): string {
-    return 'fondo.coty.png';
   }
 
   colorDibujo() {
