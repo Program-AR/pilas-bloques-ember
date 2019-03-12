@@ -39,3 +39,18 @@ test('EscenaCoty', function(assert) {
   });
 });
 
+test('EscenaTotoEscritor', function(assert) {
+  let escena = `new EscenaTotoEscritor(new ObjetivoCopiar())`;
+  return createPilasTest(this, escena, (pilas, resolve, pilasService) => {
+    let imagenes = pilasService.imagenesParaPrecargar(escena);
+    let imagenesEsperadas = ["fondo.toto.png", "actor.toto.png", "actor.letra.tablero.png", "actor.letra.manuscrita.png", "casillas.toto.png", "manoToto.png", "libretaToto.png"];
+    assert.deepEqual(imagenes, imagenesEsperadas);
+    resolve();
+  });
+});
+
+`new EscenaTotoLector([
+  ['A', 'r', 'e'],
+  ['t', 'o', 'j'],
+  ['i', 't', 'o'],
+], "toto")`
