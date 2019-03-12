@@ -338,13 +338,13 @@ export default Ember.Service.extend(Ember.Evented, {
 
   habilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = true;
-    this.evaluar('pilas.escena_actual().actores').forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad());
+    this.evaluar('pilas.escena_actual().actores').forEach(actor => actor.acelerarLaVelocidadDeLasAnimaciones && actor.acelerarLaVelocidadDeLasAnimaciones());
 
   },
 
   deshabilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
-    this.evaluar('pilas.escena_actual().actores').forEach(a => a.normalizarVelocidad && a.normalizarVelocidad());
+    this.evaluar('pilas.escena_actual().actores').forEach(actor => actor.restaurarLaVelocidadDeLasAnimaciones && actor.restaurarLaVelocidadDeLasAnimaciones());
   }
 
 });
