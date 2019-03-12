@@ -134,7 +134,7 @@ export function actividadTest(nombre, opciones) {
             }
 
             setTimeout(() => {
-              this.$('#modoTuboHabilitado').click();
+              this.$('#modo-turbo').click();
               this.$('.btn-ejecutar').click();
             }, 1000);
 
