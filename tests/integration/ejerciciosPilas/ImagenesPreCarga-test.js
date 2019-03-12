@@ -49,8 +49,17 @@ test('EscenaTotoEscritor', function(assert) {
   });
 });
 
-`new EscenaTotoLector([
-  ['A', 'r', 'e'],
-  ['t', 'o', 'j'],
-  ['i', 't', 'o'],
-], "toto")`
+
+test('EscenaTotoLector', function(assert) {
+  let escena = `new EscenaTotoLector([
+    ['A', 'r', 'e'],
+    ['t', 'o', 'j'],
+    ['i', 't', 'o'],
+  ], "toto")`;
+  return createPilasTest(this, escena, (pilas, resolve, pilasService) => {
+    let imagenes = pilasService.imagenesParaPrecargar(escena);
+    let imagenesEsperadas = ["fondo.toto.png", "actor.toto.png", "actor.letra.tablero.png", "actor.letra.leida.png", "casillas.toto.png", "pensamientoToto.png"];
+    assert.deepEqual(imagenes, imagenesEsperadas);
+    resolve();
+  });
+});
