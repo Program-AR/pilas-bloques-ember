@@ -275,7 +275,7 @@ export default Ember.Service.extend(Ember.Evented, {
    *
    */
   cambiarFPS(fps) {
-    this.evaluar(`createjs.Ticker.setFPS(${fps});`);
+    this.evaluar(`pilas.setFPS(${fps});`);
   },
 
   /**
@@ -338,13 +338,12 @@ export default Ember.Service.extend(Ember.Evented, {
 
   habilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = true;
-    this.evaluar('pilas.escena_actual().actores').forEach(actor => actor.acelerarLaVelocidadDeLasAnimaciones && actor.acelerarLaVelocidadDeLasAnimaciones());
-
+    this.evaluar('pilas').ponerVelocidadMaxima();
   },
 
   deshabilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
-    this.evaluar('pilas.escena_actual().actores').forEach(actor => actor.restaurarLaVelocidadDeLasAnimaciones && actor.restaurarLaVelocidadDeLasAnimaciones());
+    this.evaluar('pilas').ponerVelocidadNormal();
   }
 
 });
