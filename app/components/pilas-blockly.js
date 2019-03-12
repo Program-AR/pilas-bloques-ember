@@ -64,6 +64,10 @@ export default Ember.Component.extend({
     return this.get('ejecutando') || this.get('terminoDeEjecutar');
   }),
 
+  noEstoyEnMoodle: Ember.computed('modoAlumno', 'modoDocente', function() {
+    return ! this.get('modoAlumno') && ! this.get('modoDocente');
+  }),
+
   didInsertElement() {
 
     var event = new Event('terminaCargaInicial');
