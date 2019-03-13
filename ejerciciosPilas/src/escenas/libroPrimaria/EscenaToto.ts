@@ -12,10 +12,10 @@ abstract class EscenaToto extends EscenaDesdeMapa {
     topeDeLetras : number;
     cuadriculaSecundaria : Cuadricula; // En esta cuadrícula van apareciendo las letras a medida que Toto lee.
 
-	static pathFondo() : string {
-		return 'fondo.toto.png';
+    static pathFondo(): string {
+        return 'fondo.toto.png';
     }
-    
+
     static clasesDeActoresInvolucrados() : typeof ActorAnimado[] {
         const actores : typeof ActorAnimado[] = [Toto, LetraTablero]
 		return actores.concat(this.clasesDeActoresExtrasToto());

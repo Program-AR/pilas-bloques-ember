@@ -24,10 +24,6 @@ class EscenaCoty extends DibujandoFiguras {
     return 'fondo.coty.png';
   }
 
-	// static imagenesAdicionales() : string[]{
-	// 	return 
-  // }
-  
   constructor(dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], argumentos: ArgumentosCoty) {
     super();
     this._puntosEsperados = puntosEsperados;
