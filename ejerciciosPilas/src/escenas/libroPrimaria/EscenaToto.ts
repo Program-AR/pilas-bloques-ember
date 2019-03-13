@@ -12,6 +12,27 @@ abstract class EscenaToto extends EscenaDesdeMapa {
     topeDeLetras : number;
     cuadriculaSecundaria : Cuadricula; // En esta cuadrícula van apareciendo las letras a medida que Toto lee.
 
+	static pathFondo() : string {
+		return 'fondo.toto.png';
+    }
+    
+    static clasesDeActoresInvolucrados() : typeof ActorAnimado[] {
+        const actores : typeof ActorAnimado[] = [Toto, LetraTablero]
+		return actores.concat(this.clasesDeActoresExtrasToto());
+	};
+
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return []
+    }
+
+	static imagenesAdicionales() : string[] {
+		return Casilla.imagenesPara('toto').concat(this.imagenesAdicionalesToto())
+    }
+
+	static imagenesAdicionalesToto() : string[] {
+		return []
+    }
+
     /**
      * @param mapaEscena Matriz bidimensional de strings a partir de la cual se crea la escena.
      * Toto se representa con una 'A' mayúscula. Las letras a leer van en minúscula

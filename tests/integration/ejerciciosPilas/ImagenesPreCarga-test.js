@@ -51,11 +51,7 @@ test('EscenaTotoEscritor', function(assert) {
 
 
 test('EscenaTotoLector', function(assert) {
-  let escena = `new EscenaTotoLector([
-    ['A', 'r', 'e'],
-    ['t', 'o', 'j'],
-    ['i', 't', 'o'],
-  ], "toto")`;
+  let escena = `new EscenaTotoLector([['A', 'r', 'e']], "")`;
   return createPilasTest(this, escena, (pilas, resolve, pilasService) => {
     let imagenes = pilasService.imagenesParaPrecargar(escena);
     let imagenesEsperadas = ["fondo.toto.png", "actor.toto.png", "actor.letra.tablero.png", "actor.letra.leida.png", "casillas.toto.png", "pensamientoToto.png"];

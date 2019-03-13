@@ -4,16 +4,12 @@
 class EscenaTotoEscritor extends EscenaToto {
     manoQueEscribe : Actor;
     
-    static clasesDeActoresInvolucrados() :typeof ActorAnimado[] {
-		return [Toto, LetraTablero, LetraManuscrita];
-	};
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return [LetraManuscrita]
+    }
 
-	static pathFondo() : string {
-		return 'fondo.toto.png';
-	}
-
-	static imagenesAdicionales() : string[]{
-		return Casilla.imagenesPara('toto').concat(['manoToto.png', 'libretaToto.png'])
+	static imagenesAdicionalesToto() : string[]{
+		return ['manoToto.png', 'libretaToto.png']
     }
     
     constructor(estilo: EstiloTotoEscritor){

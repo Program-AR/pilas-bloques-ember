@@ -8,16 +8,12 @@
  */
 class EscenaTotoLector extends EscenaToto {
 
-    static clasesDeActoresInvolucrados() :typeof ActorAnimado[] {
-		return [Toto, LetraTablero, LetraLeida];
-	};
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return [LetraLeida]
+    }
 
-	static pathFondo() : string {
-		return 'fondo.toto.png';
-	}
-
-	static imagenesAdicionales() : string[]{
-		return Casilla.imagenesPara('toto').concat(['pensamientoToto.png'])
+	static imagenesAdicionalesToto() : string[]{
+		return ['pensamientoToto.png']
     }
 
     obtenerAutomata() : TotoLector {
