@@ -325,6 +325,14 @@ export default Ember.Service.extend(Ember.Evented, {
     return this.evaluar(codigo);
   },
 
+  cambiarAModoDeLecturaSimple() {
+      this.evaluar('pilas.cambiarAModoDeLecturaSimple()');
+  },
+
+  cambiarAModoDeLecturaNormal() {
+    this.evaluar('pilas.cambiarAModoDeLecturaNormal()');
+},
+
   /**
    * Evalúa código directamente, sin reiniciar de ninguna forma.
    *
