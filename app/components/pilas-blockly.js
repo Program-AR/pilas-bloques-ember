@@ -344,6 +344,14 @@ export default Ember.Component.extend({
     a.click();
   },
 
+  setModoTurbo() {
+    if (this.modoTuboHabilitado) {
+      this.get('pilas').habilitarModoTurbo();
+    } else {
+      this.get('pilas').deshabilitarModoTurbo();
+    }
+  },
+
   /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
@@ -360,13 +368,7 @@ export default Ember.Component.extend({
 
       this.get('pilas').reiniciarEscenaCompleta();
 
-      if (this.modoTuboHabilitado) {
-        this.get('pilas').habilitarModoTurbo();
-      }
-
-      else {
-        this.get('pilas').deshabilitarModoTurbo();
-      }
+      this.setModoTurbo()
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución
