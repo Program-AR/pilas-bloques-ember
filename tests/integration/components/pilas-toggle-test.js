@@ -12,17 +12,17 @@ test('it renders', function(assert) {
 });
 
 test('it can be disabled', function(assert) {
-  this.set("disabled", true)
+  this.set("disabled", true);
   this.render(toggle);
 
   assert.ok(this.$("input")[0].disabled);
 });
 
 test('it can be checked', function(assert) {
-  this.set("checked", true)
+  this.set("checked", true);
   this.render(toggle);
 
   assert.ok(this.$("input")[0].checked);
 });
 
-toggle = hbs`{{pilas-toggle isDisabled=disabled isChecked=checked}}`
+let toggle = hbs`{{pilas-toggle isDisabled=disabled isChecked=checked}}`;
