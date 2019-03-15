@@ -6,20 +6,23 @@ moduleForComponent('pilas-toggle', 'Integration | Component | pilas toggle', {
 });
 
 test('it renders', function(assert) {
+  this.render(toggle);
 
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
-
-  this.render(hbs`{{pilas-toggle}}`);
-
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
-  this.render(hbs`
-    {{#pilas-toggle}}
-      template block text
-    {{/pilas-toggle}}
-  `);
-
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.ok(this.$("input")[0]);
 });
+
+test('it can be disabled', function(assert) {
+  this.set("disabled", true)
+  this.render(toggle);
+
+  assert.ok(this.$("input")[0].disabled);
+});
+
+test('it can be checked', function(assert) {
+  this.set("checked", true)
+  this.render(toggle);
+
+  assert.ok(this.$("input")[0].checked);
+});
+
+toggle = hbs`{{pilas-toggle isDisabled=disabled isChecked=checked}}`
