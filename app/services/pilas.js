@@ -1,12 +1,6 @@
 import Ember from 'ember';
 import listaImagenes from 'pilasbloques/components/listaImagenes';
-const defaultImages = [
-  "balloon-tip-left.png",
-  "balloon-tip-right.png",
-  "balloon-tip-think-left.png",
-  "balloon-tip-think-right.png",
-  "balloon.png",
-]
+
 
 /**
  * Provee acceso a pilasweb y sus eventos.
@@ -36,6 +30,13 @@ export default Ember.Service.extend(Ember.Evented, {
   inicializadorDeLaEscenaActual: null,
   temporallyCallback: null, /* almacena el callback para avisar si pilas
                                se reinició correctamente. */
+  imagenesDefault: [
+    "balloon-tip-left.png",
+    "balloon-tip-right.png",
+    "balloon-tip-think-left.png",
+    "balloon-tip-think-right.png",
+    "balloon.png",
+  ],
 
   /**
    * Instancia pilas-engine con los atributos que le envíe
@@ -117,7 +118,7 @@ export default Ember.Service.extend(Ember.Evented, {
     //Le pregunto a la escena qué imágenes va a necesitar
     var imagenes = this.evaluar(`${this.nombreDeEscena(nombreOInicializadorDeEscena)}.imagenesPreCarga()`);
     //Si la escena no las sabe, cargo todas:
-    return imagenes.length ? imagenes.concat(defaultImages) : listaImagenes;
+    return imagenes.length ? imagenes.concat(this.imagenesDefault) : listaImagenes;
   },
 
   nombreDeEscena(nombreOInicializadorDeEscena){
