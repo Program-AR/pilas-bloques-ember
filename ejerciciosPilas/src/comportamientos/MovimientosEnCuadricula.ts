@@ -4,15 +4,15 @@
 /// <reference path = "../actores/Cuadricula.ts" />
 /// <reference path = "../actores/Casilla.ts" />
 
-type vectorDireccion = {x: number, y: number};
+type vectorDireccion = { x: number, y: number };
 
 class MovimientoEnCuadricula extends MovimientoAnimado {
-    cuadricula : Cuadricula;
-    casillaOrigen : Casilla;
-    casillaDestino : Casilla;
-    direccionCasilla : DireccionCasilla ; // Strategy
+    cuadricula: Cuadricula;
+    casillaOrigen: Casilla;
+    casillaDestino: Casilla;
+    direccionCasilla: DireccionCasilla; // Strategy
 
-    iniciar(receptor : ActorAnimado) : void {
+    iniciar(receptor: ActorAnimado): void {
         // La dirección puede ya venir predefinida mediante herencia o bien definirse
         // dinámicamente mediante un string que se pasa por parámetro
         if (!this.direccionCasilla) {
@@ -21,8 +21,8 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         }
 
         super.iniciar(receptor);
-        
-        this.cuadricula = this.receptor.cuadricula;  
+
+        this.cuadricula = this.receptor.cuadricula;
 
         this.casillaOrigen = this.casillaActual();
         this.casillaDestino = this.proximaCasilla(this.casillaOrigen) || this.casillaOrigen;
@@ -32,33 +32,33 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         this.argumentos.distanciaConObstaculo = this.distanciaConObstaculo();
     }
 
-    casillaActual() : Casilla {
+    casillaActual(): Casilla {
         return this.receptor.casillaActual();
     }
 
-    proximaCasilla(casilla : Casilla) : Casilla {
+    proximaCasilla(casilla: Casilla): Casilla {
         // Template Method. Devolver la casilla a la que se va a avanzar
         return this.direccionCasilla.proximaCasilla(casilla);
     }
 
-    vectorDireccion() : vectorDireccion {
+    vectorDireccion(): vectorDireccion {
         return this.direccionCasilla.vectorDireccion;
     }
 
-    distancia() : number {
+    distancia(): number {
         // Template Method. Devuelve la distancia vertical u horizontal según corresponda
         return this.direccionCasilla.distancia(this);
     }
 
-    distanciaHorizontal() : number {
+    distanciaHorizontal(): number {
         return this.cuadricula.anchoCasilla() + this.cuadricula.separacion();
     }
 
-    distanciaVertical() : number {
+    distanciaVertical(): number {
         return this.cuadricula.altoCasilla() + this.cuadricula.separacion();
     }
 
-    hayObstaculo() : boolean {
+    hayObstaculo(): boolean {
         return this.casillaDestino.tieneActorConEtiqueta('Obstaculo');
     }
 
@@ -68,7 +68,7 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
     }
 
 
-    configurarVerificaciones() : void {
+    configurarVerificaciones(): void {
         super.configurarVerificaciones();
         this.verificacionesPre.push(new Verificacion(
             () => this.verificarDireccion(),
@@ -76,47 +76,47 @@ class MovimientoEnCuadricula extends MovimientoAnimado {
         ));
     }
 
-    verificarDireccion() : boolean {
+    verificarDireccion(): boolean {
         return this.proximaCasilla(this.casillaOrigen) !== undefined;
     }
 
-    textoAMostrar() : string {
+    textoAMostrar(): string {
         // Template Method. Para mostrar mensaje descriptivo al no poder avanzar
         return this.direccionCasilla.textoAMostrar();
     }
 
 
-    postAnimacion() : void {
+    postAnimacion(): void {
         this.receptor.setCasillaActual(this.casillaDestino);
     }
 
 
-    nombreAnimacion() : string {
+    nombreAnimacion(): string {
         return this.hayObstaculo()
             ? "correrChocando"
-            : super.nombreAnimacion();        
+            : super.nombreAnimacion();
     }
 }
 
 interface DireccionCasilla {
-    vectorDireccion : vectorDireccion;
-    proximaCasilla(casilla : Casilla) : Casilla;
-    textoAMostrar() : string;
-    distanciaUnaCasilla(movimiento : MovimientoEnCuadricula) : number;
-    distancia(movimiento : MovimientoEnCuadricula) : number;
+    vectorDireccion: vectorDireccion;
+    proximaCasilla(casilla: Casilla): Casilla;
+    textoAMostrar(): string;
+    distanciaUnaCasilla(movimiento: MovimientoEnCuadricula): number;
+    distancia(movimiento: MovimientoEnCuadricula): number;
 }
 
 
 class DirCasillaDerecha implements DireccionCasilla {
     vectorDireccion = { x: 1, y: 0 };
 
-    proximaCasilla(casilla){
+    proximaCasilla(casilla) {
         return casilla.casillaASuDerecha();
     }
-    textoAMostrar(){
+    textoAMostrar() {
         return "la derecha";
     }
-    distanciaUnaCasilla(movimiento){
+    distanciaUnaCasilla(movimiento) {
         return movimiento.distanciaHorizontal();
     }
     distancia(movimiento) {
@@ -127,13 +127,13 @@ class DirCasillaDerecha implements DireccionCasilla {
 class DirCasillaArriba implements DireccionCasilla {
     vectorDireccion = { x: 0, y: 1 };
 
-    proximaCasilla(casilla){
+    proximaCasilla(casilla) {
         return casilla.casillaDeArriba();
     }
-    textoAMostrar(){
+    textoAMostrar() {
         return "arriba";
     }
-    distanciaUnaCasilla(movimiento){
+    distanciaUnaCasilla(movimiento) {
         return movimiento.distanciaVertical();
     }
     distancia(movimiento) {
@@ -144,13 +144,13 @@ class DirCasillaArriba implements DireccionCasilla {
 class DirCasillaAbajo implements DireccionCasilla {
     vectorDireccion = { x: 0, y: -1 };
 
-    proximaCasilla(casilla){
+    proximaCasilla(casilla) {
         return casilla.casillaDeAbajo();
     }
-    textoAMostrar(){
+    textoAMostrar() {
         return "abajo";
     }
-    distanciaUnaCasilla(movimiento){
+    distanciaUnaCasilla(movimiento) {
         return movimiento.distanciaVertical();
     }
     distancia(movimiento) {
@@ -161,13 +161,13 @@ class DirCasillaAbajo implements DireccionCasilla {
 class DirCasillaIzquierda implements DireccionCasilla {
     vectorDireccion = { x: -1, y: 0 };
 
-    proximaCasilla(casilla){
+    proximaCasilla(casilla) {
         return casilla.casillaASuIzquierda();
     }
-    textoAMostrar(){
+    textoAMostrar() {
         return "la izquierda";
     }
-    distanciaUnaCasilla(movimiento){
+    distanciaUnaCasilla(movimiento) {
         return movimiento.distanciaHorizontal();
     }
     distancia(movimiento) {
@@ -176,16 +176,16 @@ class DirCasillaIzquierda implements DireccionCasilla {
 }
 
 class MoverACasillaDerecha extends MovimientoEnCuadricula {
-  direccionCasilla = new DirCasillaDerecha();
+    direccionCasilla = new DirCasillaDerecha();
 }
 class MoverACasillaArriba extends MovimientoEnCuadricula {
-  direccionCasilla = new DirCasillaArriba();
+    direccionCasilla = new DirCasillaArriba();
 }
 class MoverACasillaAbajo extends MovimientoEnCuadricula {
-  direccionCasilla = new DirCasillaAbajo();
+    direccionCasilla = new DirCasillaAbajo();
 }
 class MoverACasillaIzquierda extends MovimientoEnCuadricula {
-  direccionCasilla = new DirCasillaIzquierda();
+    direccionCasilla = new DirCasillaIzquierda();
 }
 
 
@@ -195,7 +195,7 @@ class DirTodoADerecha extends DirCasillaDerecha {
     }
     distancia(movimiento) {
         return movimiento.distanciaHorizontal()
-               * (movimiento.cuadricula.cantColumnas - 1 - movimiento.casillaActual().nroColumna);
+            * (movimiento.cuadricula.cantColumnas - 1 - movimiento.casillaActual().nroColumna);
     }
 }
 
@@ -214,7 +214,7 @@ class DirTodoAbajo extends DirCasillaAbajo {
     }
     distancia(movimiento) {
         return movimiento.distanciaVertical()
-               * (movimiento.cuadricula.cantFilas - 1 - movimiento.casillaActual().nroColumna);
+            * (movimiento.cuadricula.cantFilas - 1 - movimiento.casillaActual().nroColumna);
     }
 }
 
@@ -242,22 +242,22 @@ class MoverTodoAIzquierda extends MovimientoEnCuadricula {
 
 
 class SiguienteFila extends MoverACasillaAbajo {
-  configurarVerificaciones() {
-    super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la fila"));
-  }
+    configurarVerificaciones() {
+        super.configurarVerificaciones();
+        this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la fila"));
+    }
 }
 
 class SiguienteColumna extends MoverACasillaDerecha {
-  configurarVerificaciones() {
-    super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
-  }
+    configurarVerificaciones() {
+        super.configurarVerificaciones();
+        this.verificacionesPre.push(new Verificacion(() => this.receptor.casillaActual().esInicio(), "No puedo ir desde acá, tengo que estar al inicio de la columna"));
+    }
 }
 
 
 class DireccionCasillaFactory {
-    obtenerDireccionCasilla(direccion : string) : DireccionCasilla {
+    obtenerDireccionCasilla(direccion: string): DireccionCasilla {
         if (direccion == "derecha") {
             return new DirCasillaDerecha();
         }
