@@ -22,7 +22,7 @@ class ComportamientoConVelocidad extends ComportamientoAnimado {
 		super.preAnimacion();
 		this.argumentos.cantPasos = this.argumentos.cantPasos || 10;
 		this.argumentos.velocidad = (ComportamientoConVelocidad.modoTurbo) ? 100 : this.argumentos.velocidad || 20;
-		this.argumentos.deboCortarAnimaciones = (ComportamientoConVelocidad.modoTurbo) ? true : this.argumentos.deboCortarAnimaciones || false;
+		this.argumentos.deboCortarAnimaciones = ComportamientoConVelocidad.modoTurbo || this.argumentos.deboCortarAnimaciones;
 
 		this.vueltasSinEjecutar = 0;
 		this.enQueVueltaEjecuto = Math.round(100 / this.velocidad());
