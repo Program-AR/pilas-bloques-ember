@@ -5,7 +5,9 @@ export const pilasMock = {
     on() { },
     liberarRecursos() { },
     reiniciarEscenaCompleta: sinon.stub(),
-    estaResueltoElProblema() { return true; }
+    estaResueltoElProblema() { return true; },
+    habilitarModoTurbo: sinon.stub(),
+    deshabilitarModoTurbo: sinon.stub(),
 };
 
 export const interpreteMock = { 
