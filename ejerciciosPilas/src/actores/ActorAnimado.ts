@@ -39,24 +39,6 @@ class ActorAnimado extends Actor {
         this.pilaAnimaciones = [];
     }
 
-    acelerarLaVelocidadDeLasAnimaciones() {
-        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
-        this.velocidadOriginalDeLasAnimaciones = {};
-        for (var nombre in this._imagen.animaciones) {
-            this.velocidadOriginalDeLasAnimaciones[nombre] = this._imagen.animaciones[nombre].velocidad;
-            this._imagen.animaciones[nombre].velocidad = 60;
-        }
-    }
-
-    restaurarLaVelocidadDeLasAnimaciones() {
-        // TODO: pasar esto a pilasweb (como minimo a la _imagen)
-        if (this.velocidadOriginalDeLasAnimaciones) {
-            for (var nombre in this._imagen.animaciones) {
-                this._imagen.animaciones[nombre].velocidad = this.velocidadOriginalDeLasAnimaciones[nombre];
-            }
-        }
-    }
-
     pre_actualizar(){
         if (!this.pausado) super.pre_actualizar();
     }
