@@ -8,8 +8,12 @@ abstract class DibujandoFiguras extends EscenaActividad {
     pizarraFantasma: Pizarra;
     anchoLinea = 6;
 
+    static pathFondo(): string {
+      return 'fondo.dibujando.figuras.png';
+    }
+
     iniciar() {
-        this.fondo = new Fondo(this.pathFondo(),0,0);
+        this.fondo = new Fondo((<typeof DibujandoFiguras>this.constructor).pathFondo(),0,0);
         this.crearAutomata();
         this.dibujoEsperado = DibujoLineal.desdePuntosSimples(this.puntosEsperados());
         this.hacerDibujoPreexistente();
@@ -39,10 +43,6 @@ abstract class DibujandoFiguras extends EscenaActividad {
 
     estaResueltoElProblema(){
       return this.dibujoRealizado().igualA(this.dibujoEsperado.unificado());
-    }
-
-    pathFondo(): string {
-      return 'fondo.dibujando.figuras.png';
     }
 
     colorDibujo() {

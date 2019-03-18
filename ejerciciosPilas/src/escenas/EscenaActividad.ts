@@ -7,13 +7,47 @@
 // Toda escena que represente una actividad debe heredar de aquí.
 
 class EscenaActividad extends Base {
+	static faltanImagenes = false
 	estado = new Estado();
 	errorHandler = new ProductionErrorHandler(this);
 	automata : ActorAnimado;
 	cuadricula : Cuadricula;
 	fondo;
 
+	/**
+	 * Devuelve todos los nombres de archivo de imagen necesarios para
+	 * poder correr la escena. De esta forma sólo se precargarán esas imágenes
+	 * y no todas las existentes de todas las escenas. 
+	 * Es estático porque es necesario antes de la creación de la escena ó sus objetos.
+	 */
 	static imagenesPreCarga(): string[]{
+		var imgsPrecargar = this.pathFondo() ? [this.pathFondo()] : [];
+		this.clasesDeActoresInvolucrados().forEach(c => imgsPrecargar = imgsPrecargar.concat(c.imagenesPreCarga()));
+		var imgs = imgsPrecargar.concat(this.imagenesAdicionales());
+		return this.faltanImagenes ? [] : imgs
+	}
+
+	/**
+	 * Devuelve las clases de los actores que hay en escena. Se le preguntará la imagen a precargar
+	 * a cada una de esas clases.
+	 * Pensado para redefinirse por escena.
+	 */
+	static clasesDeActoresInvolucrados() :typeof ActorAnimado[] {
+		this.faltanImagenes = true;
+		return [];
+	};
+
+	static pathFondo() : string {
+		this.faltanImagenes = true;
+		return '';
+	}
+
+	/**
+	 * Además de definir las clases de actores involucradas, las escenas pueden agregar 
+	 * nombres de archivo de imagen adicionales con este método.
+	 * Pensado para redefinirse por escena.
+	 */
+	static imagenesAdicionales() : string[]{
 		return [];
 	}
 

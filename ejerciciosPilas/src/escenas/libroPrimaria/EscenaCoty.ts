@@ -2,6 +2,7 @@
 /// <reference path = "../../actores/libroPrimaria/Coty.ts" />
 /// <reference path = "../../actores/libroPrimaria/Charco.ts" />
 /// <reference path = "../../actores/FlechaEscenarioAleatorio.ts" />
+/// <reference path = "../../habilidades/EstallarAlSalirDePantalla.ts"/>
 
 type ArgumentosCoty = { xCoty?: number, yCoty?: number, longitudSegmento?: number, puedeHaberCharco?: boolean }
 
@@ -14,6 +15,14 @@ class EscenaCoty extends DibujandoFiguras {
   charco: Charco;
   puedeHaberCharco: boolean;
   longitudSegmento: number;
+
+  static clasesDeActoresInvolucrados(): typeof ActorAnimado[] {
+    return [Coty, Charco, FlechaEscenarioAleatorio]
+  }
+
+  static pathFondo(): string {
+    return 'fondo.coty.png';
+  }
 
   constructor(dibujoPreexistente: PuntoSimple[] | PuntoSimple[][] = [], puntosEsperados: PuntoSimple[] | PuntoSimple[][] = [], argumentos: ArgumentosCoty) {
     super();
@@ -76,10 +85,6 @@ class EscenaCoty extends DibujandoFiguras {
 
   puntosEsperados() {
     return this._puntosEsperados;
-  }
-
-  pathFondo(): string {
-    return 'fondo.coty.png';
   }
 
   colorDibujo() {

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import listaImagenes from 'pilasbloques/components/listaImagenes';
 
+
 /**
  * Provee acceso a pilasweb y sus eventos.
  *
@@ -61,7 +62,7 @@ export default Ember.Service.extend(Ember.Evented, {
                         canvas: canvasElement,
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
-                        cargar_imagenes_estandar: true,
+                        cargar_imagenes_estandar: false,
                         silenciar_advertencia_de_multiples_ejecutar: true
                       };
 

@@ -7,6 +7,15 @@
  * A medida que el zorro lee las letras, estas van apareciendo en otra cuadrícula.
  */
 class EscenaTotoLector extends EscenaToto {
+
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return [LetraLeida]
+    }
+
+	static imagenesAdicionalesToto() : string[]{
+		return ['pensamientoToto.png']
+    }
+
     obtenerAutomata() : TotoLector {
         return new TotoLector();
     }
