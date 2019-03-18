@@ -8,7 +8,7 @@ function testDePrecarga(escena, constructor, imagenesEsperadas) {
   test(escena, function(assert) {
     return createPilasTest(this, constructor, (pilas, resolve, pilasService) => {
       let imagenes = pilasService.imagenesParaPrecargar(constructor);
-      assert.deepEqual(imagenes, imagenesEsperadas.concat(pilasService.imagenesDefault));
+      assert.deepEqual(imagenes, imagenesEsperadas);
       resolve();
     });
   });
