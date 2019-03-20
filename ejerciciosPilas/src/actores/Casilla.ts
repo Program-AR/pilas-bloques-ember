@@ -14,6 +14,15 @@ class Casilla extends ActorAnimado {
     nroColumna;
     actores;
 
+    static imagenesPara(actor) : string[] {
+        return [`casillas.${actor}.png`];
+    }
+
+    static imagenesPreCarga() : string[] {
+        //Como las casillas dependen del actor, se debería usar imagenesPara(actor) para obtener las imágenes.
+        throw "Casilla.imagenesPreCarga() is useless. Should use Casilla.imagenesPara(actor)"
+    }
+
     constructor(nroF, nroC, cuadricula) {
         this.cuadricula = cuadricula;
         this.nroFila = nroF;

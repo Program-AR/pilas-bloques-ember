@@ -27,35 +27,23 @@
           <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
       {{/if}}
 
-      {{#if modoAlumno}}
-
-      {{else if modoDocente}}
-
-      {{else}}
-
-        {{#if mostrarGuardar}}
-          {{#if model}}
-            <button class='btn btn-success' {{action "guardar"}}>Guardar</button>
-          {{else}}
-            <button class='btn btn-success' {{action "guardar"}}>Crear y Guardar</button>
-          {{/if}}
-        {{/if}}
+      {{#unless estoyEnMoodle}}
 
         {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
 
         <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
 
+        {{pilas-toggle isDisabled=this.ejecutando isChecked=this.modoTuboHabilitado icon="fa fa-bolt" tooltip="Modo Turbo" element-id="modo-turbo"}}
 
         {{#if debeMostarRegresarAlLibro}}
           {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
         {{/if}}
 
-
         {{#if mostrarCompartir}}
           <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
         {{/if}}
 
-      {{/if}}
+      {{/unless}}
 
     {{/if}}
 

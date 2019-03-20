@@ -128,23 +128,14 @@ export function actividadTest(nombre, opciones) {
           this.set('solucion', window.btoa(opciones.solucion));
           // Captura el evento de inicialización de pilas:
           this.on('onReady', function(/*instanciaPilas*/) {
-            if (opciones.fps) {
-              pilas.cambiarFPS(opciones.fps);
-            } else {
-              pilas.cambiarFPS(300);
-            }
-
-            pilas.evaluar('pilas.escena_actual().actores').forEach(a => a.ponerMaximaVelocidad && a.ponerMaximaVelocidad()); // Para que las animaciones se hagan rápido
-            pilas.evaluar('ComportamientoConVelocidad').prototype.velocidad = function(){ return 100; }; // para que los movimientos se hagan rápido
-            //pilas.evaluar('ComportamientoConVelocidad').prototype.pasosRestantes = function(){ return 1; }; // para que los movimientos se hagan rápido
-            pilas.evaluar('ComportamientoConVelocidad').prototype.deboCortarAnimacion = function(){ return true; }; // para que los movimientos sean instantáneos
 
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
 
             setTimeout(() => {
-             this.$('.btn-ejecutar').click();
+              this.$('#modo-turbo').click();
+              this.$('.btn-ejecutar').click();
             }, 1000);
 
           });

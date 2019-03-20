@@ -1,13 +1,12 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import "pilas-toggle.scss";
+@import "ember-blocky.scss";
 @import "modal.scss";
 @import "ribbons.scss";
 
 
 @import "font-awesome";
-
-html, body {
-}
 
 [data-ember-action] {
     cursor: pointer;
@@ -893,11 +892,6 @@ a:hover {
   color: hsla(29,65%,50%,1);
   border-radius: 6px;
 }
-
-
-
-@import "ember-blocky.scss";
-
 
 .pilas-libro-contenedor a:hover {
   text-decoration: none;

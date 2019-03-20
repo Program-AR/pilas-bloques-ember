@@ -4,9 +4,11 @@ import sinon from 'sinon';
 export const pilasMock = {
     on() { },
     liberarRecursos() { },
+    estaResueltoElProblema() { return true; },
     reiniciarEscenaCompleta: sinon.stub(),
     cambiarAModoDeLecturaSimple: sinon.stub(),
-    estaResueltoElProblema() { return true; }
+    habilitarModoTurbo: sinon.stub(),
+    deshabilitarModoTurbo: sinon.stub(),
 };
 
 export const interpreteMock = { 

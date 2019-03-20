@@ -8,9 +8,10 @@
 
 @mergeWith(Colisionable)
 class Charco extends ActorAnimado {
+    static _grilla = 'actor.charco.png';
 
     constructor() {
-        super(0, 0, { grilla: 'actor.charco.png' })
+        super(0, 0)
         this.definirAnimacion("parado", [0], 6, true)
     }
 

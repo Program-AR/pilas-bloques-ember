@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   codigo: null,
   highlightedBlock: null, // bloque a resaltar.
   modelActividad: null,
+  modoTuboHabilitado: false,
 
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -61,6 +62,10 @@ export default Ember.Component.extend({
 
   debeMostarReiniciar: Ember.computed('ejecutando', 'terminoDeEjecutar', function() {
     return this.get('ejecutando') || this.get('terminoDeEjecutar');
+  }),
+
+  estoyEnMoodle: Ember.computed('modoAlumno', 'modoDocente', function() {
+    return this.get('modoAlumno') || this.get('modoDocente');
   }),
 
   didInsertElement() {
@@ -339,6 +344,14 @@ export default Ember.Component.extend({
     a.click();
   },
 
+  setModoTurbo() {
+    if (this.modoTuboHabilitado) {
+      this.get('pilas').habilitarModoTurbo();
+    } else {
+      this.get('pilas').deshabilitarModoTurbo();
+    }
+  },
+
   /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
@@ -352,7 +365,10 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar(pasoAPaso=false) {
+
       this.get('pilas').reiniciarEscenaCompleta();
+
+      this.setModoTurbo()
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución
@@ -517,8 +533,9 @@ export default Ember.Component.extend({
 
       this.set('codigoActualEnFormatoXML', xml);
       this.sendAction('onChangeWorkspace', xml);
-    }
-  },
+    },
+
+  }
 
 });
 

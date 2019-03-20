@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import listaImagenes from 'pilasbloques/components/listaImagenes';
 
+
 /**
  * Provee acceso a pilasweb y sus eventos.
  *
@@ -61,7 +62,7 @@ export default Ember.Service.extend(Ember.Evented, {
                         canvas: canvasElement,
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
-                        cargar_imagenes_estandar: true,
+                        cargar_imagenes_estandar: false,
                         silenciar_advertencia_de_multiples_ejecutar: true
                       };
 
@@ -106,15 +107,15 @@ export default Ember.Service.extend(Ember.Evented, {
     });
   },
 
-  imagenesParaPrecargar(nombreOInicializadorDeEscena){
+  imagenesParaPrecargar(nombreOInicializadorDeEscena) {
     //Le pregunto a la escena qué imágenes va a necesitar
     var imagenes = this.evaluar(`${this.nombreDeEscena(nombreOInicializadorDeEscena)}.imagenesPreCarga()`);
     //Si la escena no las sabe, cargo todas:
     return imagenes.length ? imagenes : listaImagenes;
   },
 
-  nombreDeEscena(nombreOInicializadorDeEscena){
-    if(nombreOInicializadorDeEscena.indexOf('new') === -1){
+  nombreDeEscena(nombreOInicializadorDeEscena) {
+    if (nombreOInicializadorDeEscena.indexOf('new') === -1) {
       // Significa que vino el nombre.
       return nombreOInicializadorDeEscena;
     } else {
@@ -178,11 +179,11 @@ export default Ember.Service.extend(Ember.Evented, {
   },
 
   inicializarEscena(iframeElement, nombreOInicializador) {
-		var inicializador = nombreOInicializador;
-		if(inicializador.indexOf('new') === -1) {
-			//Significa que vino un nombre de escena.
-			inicializador = `new ${inicializador}()`;
-		}
+    var inicializador = nombreOInicializador;
+    if (inicializador.indexOf('new') === -1) {
+      //Significa que vino un nombre de escena.
+      inicializador = `new ${inicializador}()`;
+    }
     let codigo = `
       var escena = ${inicializador};
       pilas.mundo.gestor_escenas.cambiar_escena(escena);
@@ -275,7 +276,7 @@ export default Ember.Service.extend(Ember.Evented, {
    *
    */
   cambiarFPS(fps) {
-    this.evaluar(`createjs.Ticker.setFPS(${fps});`);
+    this.evaluar(`pilas.setFPS(${fps});`);
   },
 
   /**
@@ -342,6 +343,16 @@ export default Ember.Service.extend(Ember.Evented, {
   evaluar(codigo) {
     let iframeElement = this.get("iframe");
     return iframeElement.contentWindow.eval(codigo);
+  },
+
+  habilitarModoTurbo() {
+    this.evaluar('ComportamientoConVelocidad').modoTurbo = true;
+    this.evaluar('pilas').ponerVelocidadMaxima();
+  },
+
+  deshabilitarModoTurbo() {
+    this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
+    this.evaluar('pilas').ponerVelocidadNormal();
   }
 
 });

@@ -3,7 +3,15 @@
 
 class EscenaTotoEscritor extends EscenaToto {
     manoQueEscribe : Actor;
+    
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return [LetraManuscrita]
+    }
 
+	static imagenesAdicionalesToto() : string[]{
+		return ['manoToto.png', 'libretaToto.png']
+    }
+    
     constructor(estilo: EstiloTotoEscritor){
         super(estilo.mapa(), estilo.textoEsperado(), estilo.topeDeLetras());
     }

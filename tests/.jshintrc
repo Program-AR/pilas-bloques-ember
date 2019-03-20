@@ -28,6 +28,7 @@
     "Prism",
     "ga"
   ],
+  "asi": true,
   "node": false,
   "browser": false,
   "boss": true,
