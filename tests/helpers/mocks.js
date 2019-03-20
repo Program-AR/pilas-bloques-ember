@@ -5,6 +5,7 @@ export const pilasMock = {
     on() { },
     liberarRecursos() { },
     reiniciarEscenaCompleta: sinon.stub(),
+    cambiarAModoDeLecturaSimple: sinon.stub(),
     estaResueltoElProblema() { return true; }
 };
 
@@ -20,5 +21,10 @@ export const interpreterFactoryMock = Ember.Service.extend({
 export const actividadMock = { 
     get(key) { return this[key]; }, //TODO: Sacar esta definición
     nombre: "Actividad_Mock",
-    debeFelicitarse: true 
+    debeFelicitarse: true,
+    grupo: {
+        libro: {
+            modoLecturaSimple: true
+        }
+    }
 };
