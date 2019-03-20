@@ -7,6 +7,10 @@ export default Ember.Component.extend({
   cargando: true,
   showCode: false,
 
+  modoLecturaSimple: Ember.computed('model', function() {
+    return this.get('model.grupo.libro.modoLecturaSimple');
+  }),
+
   didInsertElement() {
     this.get('blocksGallery').start();
   },
@@ -15,7 +19,7 @@ export default Ember.Component.extend({
     onReady(pilas) {
       this.sendAction("onReady", pilas);
       this.set('cargando', false);
-      if(this.get('model.grupo.libro.modoLecturaSimple')){
+      if(this.get('modoLecturaSimple')){
         pilas.cambiarAModoDeLecturaSimple();
       }
     }
