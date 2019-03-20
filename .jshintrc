@@ -16,6 +16,7 @@
     "goog",
     "js_beautify"
   ],
+  "asi": true,
   "browser": true,
   "boss": true,
   "curly": true,
