@@ -3,9 +3,28 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.4.2-beta (25 de Marzo de 2019)
+  * Se agrega la posibilidad de ejecutar un ejercicio en "Modo turbo", lo cual aumenta la velocidad y evita las animaciones.
+  * Ahora se precargan solamente las imágenes necesarias para cada desafío antes de comenzar, esto permite que la carga del ejercicio sea más rápida.
+  * Se agrega el bloque "SaltarHaciaAdelante", que ejecuta el comportamiento para desplazarse sin dibujar en los desafíos de Dibujando.
+  * Se agrega el comportamiento "Hundir" que lo usa Coty. También se agrega que tire error cuando Coty se va de la pantalla.
+  * Se agrega la clase "Colisionable" para agregar comportamientos por colisión. Además se implementa una forma de extender comportamiento entre clases, usada por el Charco para ser Colisionable.
+  * Se agrega un ejercicio de "Dibujo libre" en el libro del Segundo ciclo de primaria.
+  * Actualizadas las condiciones de errores y resolución de los ejercicios de Lita. Así como la resolución del Desafío 2 de TopoTopo.
+  * Refactor del componente pilas-blockly, encargado de la ejecución del intérprete de pilas.
+  * Se usan las declaraciones de tipos de Pilas Web desde el paquete bower y se elimina el archivo del proyecto.
+  * Se arreglan algunos bugs sobre:
+    * El parámetro de los bloques DibujarLado y MoverDireccionDibujando.
+    * Bloque de Procedimiento en "Coty dibuja libre".
+    * Modo de lectura simple contempla los mensajes de error en Pilas Web.
+  * Se agregan tests sobre:
+    * Bloques con id que contengan el carácter '$'.
+    * Ejercicios de Coty, Dibujante, Toto (Lector y Escritor).
+    * Unitarios de la lógica del componente de pilas-blockly.
+
 * 1.4.1-beta (1 de Noviembre de 2018)
-  * Cambios en algunos nombres de desafíos
-  * Cambios cosméticos en los enunciados
+  * Cambios en algunos nombres de desafíos.
+  * Cambios cosméticos en los enunciados.
 
 * 1.4.0-beta (12 de Octubre de 2018)
   * Se publican los dos libros existentes, cada libro con un conjunto de desafíos.
