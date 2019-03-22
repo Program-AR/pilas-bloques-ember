@@ -6,8 +6,6 @@
     <a>Muy pronto</a>
   </div>
 
-  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
-
 {{else}}
 
 
@@ -15,9 +13,10 @@
 
     <img class='desafio-img' src='images/desafios/{{model.nombreImagen}}'>
 
-    {{#unless model.grupo.libro.desafiosCortos}}
-      <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
-    {{/unless}}
   {{/link-to}}
 
 {{/if}}
+
+{{#unless model.grupo.libro.desafiosCortos}}
+  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+{{/unless}}
