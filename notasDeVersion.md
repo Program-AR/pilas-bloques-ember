@@ -3,7 +3,7 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
-* 1.4.2-beta (22 de Marzo de 2019)
+* 1.4.2-beta (25 de Marzo de 2019)
   * Se agrega la posibilidad de ejecutar un ejercicio en "Modo turbo", lo cual aumenta la velocidad y evita las animaciones.
   * Ahora se precargan solamente las imágenes necesarias para cada desafío antes de comenzar, esto permite que la carga del ejercicio sea más rápida.
   * Se agrega el bloque "SaltarHaciaAdelante", que ejecuta el comportamiento para desplazarse sin dibujar en los desafíos de Dibujando.
