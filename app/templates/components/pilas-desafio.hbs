@@ -1,12 +1,6 @@
 {{#if model.deshabilitado}}
 
-  {{#if model.imagen}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.imagen}}.png'>
-  {{else if model.nombre}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
-  {{else}}
-    <img class='grayscale semi-transparente' src='images/desafios/proximamente.png'>
-  {{/if}}
+  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombreImagen}}'>
 
   <div class="ribbon right gray semi-transparente">
     <a>Muy pronto</a>
@@ -19,11 +13,7 @@
 
   {{#link-to "desafio" model (query-params codigo="")}}
 
-    {{#if model.imagen}}
-      <img class='desafio-img' src='images/desafios/{{model.imagen}}.png'>
-    {{else if model.nombre}}
-      <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
-    {{/if}}
+    <img class='desafio-img' src='images/desafios/{{model.nombreImagen}}'>
 
     {{#unless model.grupo.libro.desafiosCortos}}
       <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
