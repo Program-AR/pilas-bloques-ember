@@ -1,5 +1,5 @@
 /// <reference path = "SuperTito1.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 
 /**
  * @class SuperTito2
@@ -13,7 +13,7 @@ class SuperTito2 extends SuperTito1 {
         this.hayLuz = false;
     }
 
-    pathFondo(){
+    static pathFondo(){
         return 'fondo.superTito2.png';
     }
 

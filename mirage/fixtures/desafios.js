@@ -21,8 +21,8 @@ export default [
     grupoId: 1,
     nombre: 'AlienTocaBoton',
     titulo: 'El alien toca el botón',
-    enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n'+
-               'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
+    enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n' +
+      'Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!',
     consignaInicial: 'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.',
     escena: 'AlienInicial',
     debeFelicitarse: true,
@@ -48,7 +48,7 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     debeFelicitarse: true,
-    bloques:  ['saltar1', 'Procedimiento', 'repetir']
+    bloques: ['saltar1', 'Procedimiento', 'repetir']
   },
   {
     id: 4,
@@ -66,8 +66,8 @@ export default [
     grupoId: 1,
     nombre: 'TitoEnciendeLuces',
     titulo: 'Tito enciende las luces',
-    enunciado: 'Ayudá a Tito a encender todas las luces. \n'+
-    'Pista: creá un procedimiento para prender todas las luces de una diagonal.',
+    enunciado: 'Ayudá a Tito a encender todas las luces. \n' +
+      'Pista: creá un procedimiento para prender todas las luces de una diagonal.',
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     debeFelicitarse: true,
@@ -81,7 +81,7 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'LevantaTuerca', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'repetir']
   },
   {
     id: 7,
@@ -102,7 +102,7 @@ export default [
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'MorderSandia', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'repetir']
   },
   {
     id: 9,
@@ -113,7 +113,7 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo',  'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'repetir']
   },
   {
     id: 10,
@@ -130,12 +130,12 @@ export default [
     grupoId: 1,
     nombre: 'LaGranAventuraDelMarEncantado',
     titulo: 'La gran aventura del mar encantado',
-    enunciado:  'Ayuda a la heroína a rescatar a su príncipe. Para ello debe superar en orden cada una de las siguientes pruebas:\n' +
-              '1) Buscar la llave.\n'+
-              '2) Abrir el cofre con la llave y tomar el sombrero mágico que está dentro.\n'+
-              '3) Entregarle el sombrero al mago para recibir la espada a cambio.\n'+
-              '4) Luchar con la espada contra el caballero oscuro.\n'+
-              '5) Escapar en unicornio.',
+    enunciado: 'Ayuda a la heroína a rescatar a su príncipe. Para ello debe superar en orden cada una de las siguientes pruebas:\n' +
+      '1) Buscar la llave.\n' +
+      '2) Abrir el cofre con la llave y tomar el sombrero mágico que está dentro.\n' +
+      '3) Entregarle el sombrero al mago para recibir la espada a cambio.\n' +
+      '4) Luchar con la espada contra el caballero oscuro.\n' +
+      '5) Escapar en unicornio.',
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'Escaparenunicornio', 'repetir', 'Procedimiento'],
@@ -156,10 +156,10 @@ export default [
     nombre: 'ElMonoYLasBananas',
     titulo: 'El mono y las bananas',
     enunciado:
-    '¿Podés hacer que el mono avance al casillero de enfrente?'+
-    ' Si hay una banana debe comérsela. Si no, es feliz con sólo llegar. \n '+
-    'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: mirá la categoría "Sensores" y la categoría "Alternativas".',
+      '¿Podés hacer que el mono avance al casillero de enfrente?' +
+      ' Si hay una banana debe comérsela. Si no, es feliz con sólo llegar. \n ' +
+      'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
+      'Pista: mirá la categoría "Sensores" y la categoría "Alternativas".',
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     debeFelicitarse: true,
@@ -170,10 +170,10 @@ export default [
     grupoId: 2,
     nombre: 'LaEleccionDelMono',
     titulo: 'La elección del mono',
-    enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene '+
-     'que comer la fruta que aparece, ya sea banana ó manzana. \n'+
-    'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
-    'Pista: ésta vez no alcanza con el bloque "Si".',
+    enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene ' +
+      'que comer la fruta que aparece, ya sea banana ó manzana. \n' +
+      'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
+      'Pista: ésta vez no alcanza con el bloque "Si".',
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
@@ -188,7 +188,7 @@ export default [
     escena: 'LaberintoCorto',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'MoverACasillaDerecha',
-              'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
+      'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 16,
@@ -219,7 +219,7 @@ export default [
     escena: 'LaberintoLargo',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-              'Repetir', 'Si', 'Sino', 'TocandoAbajo', 'TocandoDerecha'],
+      'Repetir', 'Si', 'Sino', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 19,
@@ -231,7 +231,7 @@ export default [
     escena: 'SuperTito1',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
-              'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
+      'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 20,
@@ -243,7 +243,7 @@ export default [
     escena: 'SuperTito2',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
-              'MoverACasillaAbajo', 'Repetir', 'Si', 'Sino', 'Hasta']
+      'MoverACasillaAbajo', 'Repetir', 'Si', 'Sino', 'Hasta']
   },
   {
     id: 21,
@@ -255,8 +255,8 @@ export default [
     escena: 'LaberintoConQueso',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-              'ComerQueso', 'Repetir', 'Si', 'Sino', 'Hasta', 'TocandoAbajo',
-              'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
+      'ComerQueso', 'Repetir', 'Si', 'Sino', 'Hasta', 'TocandoAbajo',
+      'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
   },
   {
     id: 22,
@@ -268,8 +268,8 @@ export default [
     escena: 'ElDetectiveChaparro',
     debeFelicitarse: true,
     bloques: ['Repetir', 'Si', 'Sino', 'Hasta', 'Procedimiento',
-              'PrimerSospechoso', 'SiguienteSospechoso', 'SacarDisfraz',
-              'EsCulpable'],
+      'PrimerSospechoso', 'SiguienteSospechoso', 'SacarDisfraz',
+      'EsCulpable'],
   },
   {
     id: 23,
@@ -277,14 +277,14 @@ export default [
     nombre: 'FutbolRobots',
     titulo: 'Fútbol para robots',
     enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
-    'Recordá siempre que una buena división en procedimientos puede ayudarte a encarar '+
-    'mejor el problema.',
+      'Recordá siempre que una buena división en procedimientos puede ayudarte a encarar ' +
+      'mejor el problema.',
     consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
     escena: 'FutbolRobots',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
-              'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
-              'Sino', 'Hasta'],
+      'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
+      'Sino', 'Hasta'],
   },
   {
     id: 24,
@@ -292,13 +292,13 @@ export default [
     nombre: 'PrendiendoLasCompus',
     titulo: 'Prendiendo las compus',
     enunciado:
-    'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
+      'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
     escena: 'PrendiendoLasCompus',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'MoverACasillaDerecha', 'MoverACasillaArriba',
-              'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-              'PrenderCompuConColision', 'EstoyEnEsquina'],
+      'MoverACasillaDerecha', 'MoverACasillaArriba',
+      'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'PrenderCompuConColision', 'EstoyEnEsquina'],
   },
   {
     id: 25,
@@ -310,9 +310,9 @@ export default [
     escena: 'ElMonoQueSabeContar',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
-              'SiguienteColumna', 'ContarBanana', 'ContarManzana',
-              'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'Sino',
-              'Hasta', 'EstoyAlInicio', 'EstoyAlFin']
+      'SiguienteColumna', 'ContarBanana', 'ContarManzana',
+      'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'Sino',
+      'Hasta', 'EstoyAlInicio', 'EstoyAlFin']
   },
   {
     id: 26,
@@ -324,7 +324,7 @@ export default [
     escena: 'SuperViaje',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
-              'Repetir', 'Si', 'Sino', 'Hasta'],
+      'Repetir', 'Si', 'Sino', 'Hasta'],
   },
   {
     id: 27,
@@ -336,10 +336,10 @@ export default [
     escena: 'ElMonoCuentaDeNuevo',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
-              'SiguienteColumna',
-              'ContarBanana', 'ContarManzana', 'TocandoBanana',
-              'TocandoManzana','RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'EstoyAlInicio',  'LargoColumnaActual']
+      'SiguienteColumna',
+      'ContarBanana', 'ContarManzana', 'TocandoBanana',
+      'TocandoManzana', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+      'EstoyAlInicio', 'LargoColumnaActual']
   },
   {
     id: 28,
@@ -351,8 +351,8 @@ export default [
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]". \n Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
-              'VolverAlBordeIzquierdo', 'ComerBananaNano', 'RepetirVacio', 'Repetir', 'Si',
-              'Sino', 'Hasta', 'Numero'],
+      'VolverAlBordeIzquierdo', 'ComerBananaNano', 'RepetirVacio', 'Repetir', 'Si',
+      'Sino', 'Hasta', 'Numero'],
   },
   {
     id: 29,
@@ -364,7 +364,7 @@ export default [
     escena: 'DibujandoCuadrado',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+      'GirarGrados', 'Numero']
   },
   {
     id: 30,
@@ -376,7 +376,7 @@ export default [
     escena: 'Dibujando5CuadradosHorizontal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 31,
@@ -388,7 +388,7 @@ export default [
     escena: 'Dibujando5CuadradosDiagonal',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 32,
@@ -400,7 +400,7 @@ export default [
     escena: 'Dibujando4CuadradosInteriores',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 33,
@@ -412,7 +412,7 @@ export default [
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero']
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 34,
@@ -424,7 +424,7 @@ export default [
     escena: 'DibujandoHexagono',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 35,
@@ -436,7 +436,7 @@ export default [
     escena: 'DibujandoTrianguloEquilatero',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 36,
@@ -448,7 +448,7 @@ export default [
     escena: 'DibujandoPoligonosInteriores',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 37,
@@ -460,7 +460,7 @@ export default [
     escena: 'DibujandoCuevaEstalagtitas',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
-              'GirarGrados', 'Numero', 'OpAritmetica']
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 130,
@@ -471,7 +471,7 @@ export default [
     enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de los 3 focos una cierta cantidad de veces: 5 veces el primero, 8 el segundo y 12 el tercero.',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
-              'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
+      'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
     id: 131,
@@ -494,9 +494,9 @@ export default [
     deshabilitado: false,
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-              'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
-              'OpAritmetica'],
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+      'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
+      'OpAritmetica'],
   },
   {
     id: 133,
@@ -507,8 +507,8 @@ export default [
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-              'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+      'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
     id: 134,
@@ -520,8 +520,8 @@ export default [
     consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-              'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
-              'ExplotarGlobo', 'Numero', 'OpAritmetica']
+      'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
+      'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
   {
     id: 135,
@@ -530,7 +530,7 @@ export default [
     titulo: 'Prendiendo las fogatas',
     escena: 'PrendiendoLasFogatas',
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
-		consignaInicial: 'Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!',
+    consignaInicial: 'Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
@@ -540,43 +540,50 @@ export default [
     ]
   },
 
-/*  {
+
+  {
     id: 136,
     grupoId: 5,
-    nombre: '',
-    titulo: 'Próximamente: más actividades',
-    deshabilitado: true,
-  },*/
+    nombre: 'DibujoLibre',
+    titulo: '¡Dibujo libre!',
+    imagen: 'DibujoLibre',
+    escena: `new DibujandoLibremente()`,
+    enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
+    consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
+    debeFelicitarse: false,
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
 
-	{
-		id: 201,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2a',
+  {
+    id: 201,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2a',
     titulo: 'Desafío 1',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,-,-,O,-],\
       [-,A,-,-,P,-],\
       [-,-,-,O,-,-],\
       [O,O,O,O,-,O],\
 		")`,
-		enunciado: 'Ayudá a la puma Duba a comer su churrasco. Evitá los obstáculos.',
+    enunciado: 'Ayudá a la puma Duba a comer su churrasco. Evitá los obstáculos.',
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco'
     ]
-	},
-	{
-		id: 202,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2b',
+  },
+  {
+    id: 202,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2b',
     titulo: 'Desafío 2',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,O,O,O,O,O],\
         [O,-,O,-,P,O],\
@@ -584,23 +591,23 @@ export default [
         [O,O,-,O,O,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: 'Duba quiere comer su churrasco. ¡Ayudala!',
-		debeFelicitarse: true, 
+    enunciado: 'Duba quiere comer su churrasco. ¡Ayudala!',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco'
     ]
-	},
-	{
-		id: 203,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2c',
+  },
+  {
+    id: 203,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2c',
     titulo: 'Desafío 3',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
       [O,A,O,-,-,O],\
@@ -608,10 +615,10 @@ export default [
       [O,-,O,-,-,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '¿Ayudás a la puma a comer su churrasco? Evitá los obstáculos.',
-		debeFelicitarse: true, 
+    enunciado: '¿Ayudás a la puma a comer su churrasco? Evitá los obstáculos.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -620,11 +627,11 @@ export default [
     ]
   },
   {
-		id: 204,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2d',
+    id: 204,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2d',
     titulo: 'Desafío 4',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,A,O,O,O],\
       [O,O,-,O,O,O],\
@@ -632,10 +639,10 @@ export default [
       [O,O,O,P,-,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: 'Duba quiere comer churrasco. ¿Cómo lo puede hacer sin chocarse con los obstáculos?',
-		debeFelicitarse: true, 
+    enunciado: 'Duba quiere comer churrasco. ¿Cómo lo puede hacer sin chocarse con los obstáculos?',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -644,11 +651,11 @@ export default [
     ]
   },
   {
-		id: 205,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2e',
+    id: 205,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2e',
     titulo: 'Desafío 5',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,O,-,O,-,O],\
       [O,-,A,-,-,O],\
@@ -656,10 +663,10 @@ export default [
       [O,O,-,-,P,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: 'Ayudá a la puma Duba a saciar su hambre, evitando los obstáculos.',
-		debeFelicitarse: true, 
+    enunciado: 'Ayudá a la puma Duba a saciar su hambre, evitando los obstáculos.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -668,11 +675,11 @@ export default [
     ]
   },
   {
-		id: 206,
-		grupoId: 'manual1cPrimaria3.1.2',
-		nombre: '3.1.2f',
+    id: 206,
+    grupoId: 'manual1cPrimaria3.1.2',
+    nombre: '3.1.2f',
     titulo: 'Desafío 6',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,-,-,-,-,O],\
       [O,-,O,P,-,O],\
@@ -680,10 +687,10 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: 'Duba quiere devorar su churrasco. ¿Cómo lo puede lograr?',
-		debeFelicitarse: true, 
+    enunciado: 'Duba quiere devorar su churrasco. ¿Cómo lo puede lograr?',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -702,7 +709,8 @@ export default [
       {xCoty: 25, yCoty: 75}
     )`,
     enunciado: 'Ayudá a la llama a completar la torre.',
-    debeFelicitarse: true, 
+    consignaInicial: 'Para completar el dibujo, Coty debe dibujar sobre las líneas grises.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
@@ -716,8 +724,8 @@ export default [
       [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
       {xCoty: -50, yCoty: 25}
     )`,
-    enunciado: '¡Coty quiere pintar la casa! ¿La ayudás?',
-    debeFelicitarse: true, 
+    enunciado: '¡Coty quiere dibujar la casa! ¿La ayudás?',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
@@ -732,7 +740,7 @@ export default [
       {xCoty: 125, yCoty: 0}
     )`,
     enunciado: 'La llama quiere solo dibujar tres rayas. ¿Cómo puede hacerlo?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -743,7 +751,7 @@ export default [
     titulo: 'Desafío 4',
     escena: `new EscenaCotySonrisa()`,
     enunciado: '¿Ayudás a la llama a completar la carita feliz?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -767,7 +775,7 @@ export default [
       {xCoty: -50, yCoty: 100}      
     )`,
     enunciado: '¿Cómo puede hacer la llama para terminar de dibujar el puente?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -787,7 +795,7 @@ export default [
     titulo: 'Desafío 6',
     escena: `new EscenaCotyCactus()`,
     enunciado: '¿Cómo puede hacer la llama para completar el cardo?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -797,8 +805,8 @@ export default [
     nombre: '3.1.3g',
     titulo: 'Desafío 7',
     escena: `new EscenaCotyMate()`,
-    enunciado: 'Es hora de un buen mate. Ayudá a la llama a terminar de pintarlo.',
-    debeFelicitarse: true, 
+    enunciado: 'Es hora de un buen mate. Ayudá a la llama a terminar de dibujarlo.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -816,7 +824,7 @@ export default [
       [O,O,O,O,O,O]\
     ")`,
     enunciado: 'Ayudá a la mulita a preparar la ensalada mixta.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -842,7 +850,7 @@ export default [
       [O,O,O,O,O]\
     ")`,
     enunciado: 'Hoy Lita quiere comer una ensaladita. ¡Ayudala a prepararla!',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -866,7 +874,7 @@ export default [
       [-,T,-]\
     ")`,
     enunciado: 'Tomate, lechuga y listo. Ayudá a Lita a preparar su ensalada.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -890,7 +898,7 @@ export default [
       [-,-,-,-]\
     ")`,
     enunciado: 'Ayudá a Lita a preparar su plato favorito.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -914,7 +922,7 @@ export default [
       [-,-,-]\
     ")`,
     enunciado: '¿Agarra primero el tomate o la lechuga? Ayudá a Lita a preparar su plato predilecto.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -937,7 +945,7 @@ export default [
       [-,-,E]\
     ")`,
     enunciado: '¿Qué pasos puede dar la mulita para preparar su plato favorito?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -950,11 +958,11 @@ export default [
     ],
   },
   {
-		id: 220,
-		grupoId: 'manual1cPrimaria3.2.3',
-		nombre: '3.2.3a',
+    id: 220,
+    grupoId: 'manual1cPrimaria3.2.3',
+    nombre: '3.2.3a',
     titulo: 'Desafío 1',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
       [O,O,O,O,O,O],\
       [O,P,O,-,-,O],\
       [O,-,O,-,-,-],\
@@ -962,10 +970,10 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
 		")`,
-		enunciado: '¿Cuál es el error de problema? Encontralo y ayudá a Duba a comer su churrasco.',
-		debeFelicitarse: true, 
+    enunciado: '¿Cuál es el error de problema? Encontralo y ayudá a Duba a comer su churrasco.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -1011,11 +1019,11 @@ export default [
   </xml>`,
   },
   {
-		id: 221,
-		grupoId: 'manual1cPrimaria3.2.3',
-		nombre: '3.2.3b',
+    id: 221,
+    grupoId: 'manual1cPrimaria3.2.3',
+    nombre: '3.2.3b',
     titulo: 'Desafío 2',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,-,-,O,O,O],\
         [O,-,P,O,O,O],\
@@ -1023,10 +1031,10 @@ export default [
         [O,-,-,-,A,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '¿Qué pasa con Duba que no logra comer su comida? Corregí el programa para que la puma sacie su hambre.',
-		debeFelicitarse: true, 
+    enunciado: '¿Qué pasa con Duba que no logra comer su comida? Corregí el programa para que la puma sacie su hambre.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -1056,11 +1064,11 @@ export default [
   </xml>`,
   },
   {
-		id: 222,
-		grupoId: 'manual1cPrimaria3.2.3',
-		nombre: '3.2.3c',
+    id: 222,
+    grupoId: 'manual1cPrimaria3.2.3',
+    nombre: '3.2.3c',
     titulo: 'Desafío 3',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,P,O,A,O,O],\
         [O,-,O,-,O,O],\
@@ -1068,10 +1076,10 @@ export default [
         [O,-,-,O,O,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: 'Descubrí el problema del programa y corregilo así Duba puede comer su churrasco.',
-		debeFelicitarse: true, 
+    enunciado: 'Descubrí el problema del programa y corregilo así Duba puede comer su churrasco.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -1105,11 +1113,11 @@ export default [
   </xml>`,
   },
   {
-		id: 223,
-		grupoId: 'manual1cPrimaria3.2.3',
-		nombre: '3.2.3d',
+    id: 223,
+    grupoId: 'manual1cPrimaria3.2.3',
+    nombre: '3.2.3d',
     titulo: 'Desafío 4',
-		escena: `new EscenaDuba("\
+    escena: `new EscenaDuba("\
         [O,O,O,O,O,O],\
         [O,O,-,-,-,O],\
         [O,-,P,-,-,O],\
@@ -1117,10 +1125,10 @@ export default [
         [O,-,-,A,-,O],\
         [O,O,O,O,O,O],\
 		")`,
-		enunciado: '¿Hay instrucciones de más o falta alguna? Mirá el programa, descubrí el error y ayudá a Duba a comer su plato predilecto.',
-		debeFelicitarse: true, 
+    enunciado: '¿Hay instrucciones de más o falta alguna? Mirá el programa, descubrí el error y ayudá a Duba a comer su plato predilecto.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
-		bloques: [
+    bloques: [
       'MoverACasillaAbajo',
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
@@ -1212,7 +1220,7 @@ export default [
       </block>
     </xml>`,
     enunciado: '¿Qué error encontrás en este programa? Corregilo y ayudá a la mulita a preparar su almuerzo.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1234,8 +1242,9 @@ export default [
         ['t', 'o', 'j'],
         ['i', 't', 'o'],
     ], "toto")`,
-    enunciado: 'Ayudá al zorro a escribir su nombre: TOTO.',
-    debeFelicitarse: true, 
+    enunciado: 'Ayudá al zorro a leer su nombre: TOTO.',
+    consignaInicial: 'TOTO lee las letras por las que se mueve.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1254,8 +1263,8 @@ export default [
         ['z', 'A', 'a', 'm'],
         ['y', 'l', 'l', 'q']
     ], "llama")`,
-    enunciado: 'El zorro está pensando en su amiga de la Puna, Coty. Ayudalo a escribir LLAMA.',
-    debeFelicitarse: true, 
+    enunciado: 'El zorro está pensando en su amiga de la Puna, Coty. Ayudalo a leer LLAMA.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1275,7 +1284,7 @@ export default [
         ['r', 'y', 'a'],
     ], "puma")`,
     enunciado: '¡Adiviná en quién está pensando el zorro! Una ayuda: es un animal al que le gusta mucho comer churrasco.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1293,8 +1302,9 @@ export default [
         ['A', 'c', 'a', 'b'],
         ['o', 'l', 'l', 'e'],
     ], "caballo")`,
-    enunciado: '¿Qué quiso decir el zorro y qué terminó escribiendo? ¡Descubrí el error y corregilo!',
-    debeFelicitarse: true, 
+    enunciado: '¿Qué quiso leer el zorro y qué terminó leyendo? ¡Descubrí el error y corregilo!',
+    consignaInicial: 'Toto está volviendo. Va a demorar un poco porque está andando a ...',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1346,8 +1356,8 @@ export default [
         ['u', 'n', 'e'],
         ['l', 'A', 's'],
     ], "lunes", 7)`,
-    enunciado: 'El zorro está distraído. Ayudalo a escribir correctamente lo que quiere decir.',
-    debeFelicitarse: true, 
+    enunciado: 'El zorro está distraído. Ayudalo a leer correctamente qué día llega a Humahuaca.',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1406,7 +1416,7 @@ export default [
 		")`,
     enunciado: '¿Puede la puma llegar al churrasco usando solo una vez el bloque mover?',
     consignaInicial: 'Podés usar el nuevo bloque “Repetir”',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1433,7 +1443,7 @@ export default [
         [-,-,A,O,O,O,O,O],\
 		")`,
     enunciado: 'La puma tiene hambre y está lejos del churrasco. ¡Pero ahora sabe repetir!',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1460,7 +1470,7 @@ export default [
       [O,O,-,-,O,O,O,O],\
 		")`,
     enunciado: '¿Cómo puede hacer la puma para llegar a su comida sin tener que usar muchos bloques mover?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1481,9 +1491,9 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
-    enunciado: 'La llama quiere pintar cuatro líneas. ¿Qué es lo que se repite esta vez?',
+    enunciado: 'La llama quiere dibujar cuatro líneas. ¿Qué es lo que se repite esta vez?',
     consignaInicial: 'Puede haber más de un bloque dentro del Repetir',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1507,8 +1517,8 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
-    enunciado: '¡Ahora además hay que mover para abajo! ¿Será tan fácil como agregar un bloque a lo que hiciste antes? ¿Cuántas repeticiones son necesarias ahora?',
-    debeFelicitarse: true, 
+    enunciado: '¡Ahora además hay que dibujar para abajo! ¿Será tan fácil como agregar un bloque a lo que hiciste antes? ¿Cuántas repeticiones son necesarias ahora?',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1532,8 +1542,8 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
-    enunciado: 'La llama tiene ganas de pintar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite? ',
-    debeFelicitarse: true, 
+    enunciado: 'La llama tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite? ',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1564,7 +1574,7 @@ export default [
 		")`,
     enunciado: '¡Qué bueno, ya tenés una solución! ¿La probás?',
     consignaInicial: 'Podés probar los programas paso a paso para descubrir los errores',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1617,7 +1627,7 @@ export default [
       [O,O,O,O,O,O,O,O],\
 		")`,
     enunciado: '¿Qué pasa que Duba no llega a comer su plato preferido? Sacá, modificá y/o agregá los bloques que falten para que logre su cometido.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1665,7 +1675,7 @@ export default [
       {xCoty: -100, yCoty: -100}      
     )`,
     enunciado: '¿Qué patrón debe repetir Coty esta vez? ¿Es correcta la solución propuesta?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1719,7 +1729,7 @@ export default [
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
     )`,
     enunciado: '¡Otra vez Coty está en cualquiera! ¿Podés encontrar los errores y corregirlos? La llama te lo va a agradecer.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1793,7 +1803,7 @@ export default [
       [E,L,T,-,O,O,O]\
     ")`,
     enunciado: '¿Encontrás pasos que se repiten? ¿Cuáles son? Creá el programa que ayuda a Lita a preparar su ensalada del día.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1868,7 +1878,7 @@ export default [
       </block>
     </xml>`,
     enunciado: '¡Así como está, la mulita no puede preparar su ensalada! ¿Cuántas veces Lita repite los pasos para llegar a la lechuga? ¿Qué habría que modificar? ¿Qué sucede cuando pretende agarrar el tomate?',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1887,9 +1897,9 @@ export default [
     nombre: '5.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
-    enunciado: '¡A veces no hay churrasco! ¿Podés hacer un solo programa para que Duba avance siempre y coma solo si hay un churrasco?',
-    consignaInicial: 'El bloque "Si" sirve para a veces hacer algo y a veces no. ¡Sabe preguntar!',
-    debeFelicitarse: true, 
+    enunciado: '¡A veces hay churrasco y a veces no! ¿Podés hacer un solo programa para que Duba avance siempre y coma solo si hay un churrasco?',
+    consignaInicial: 'El bloque "Si" sirve para a veces hacer algo y a veces no. ¡Sirve para preguntar!',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1907,8 +1917,8 @@ export default [
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
-    enunciado: 'Ahora Duba debe avanzar dos veces. Pero ¡tiene que comerse todos los churrascos que aparecen! (pero sólo si aparecen)',
-    debeFelicitarse: true, 
+    enunciado: 'Ahora Duba debe avanzar dos veces. ¡tiene que comerse todos los churrascos que aparecen! ...Pero sólo si aparecen',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1931,7 +1941,7 @@ export default [
       {xCoty: -120, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 140}
     )`,
     enunciado: 'Coty debe dibujar un cuadrado, pero... ¡Cuidado, que a veces aparece un charco!',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1953,8 +1963,8 @@ export default [
     titulo: 'Desafío 1',
     escena: `new EscenaLita("[A,-,L|T]")`,
     enunciado: 'Lita quiere agarrar cualquier verdura. ¡Pero debe ser la correcta!',
-    consignaInicial: 'El bloque Si/Sino me permite elegir entre dos alternativas. Sólo hay que elegir bien la pregunta',
-    debeFelicitarse: true, 
+    consignaInicial: 'El bloque Si/Sino permite elegir entre dos alternativas. Sólo hay que elegir bien la pregunta',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1990,7 +2000,7 @@ export default [
 		"])`,
     enunciado: 'No siempre debe avanzar a la derecha... ¿Qué pregunta le sirve a Duba para decidir?',
     consignaInicial: 'También se puede poner más de una instrucción en el bloque Si/Sino',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2003,7 +2013,7 @@ export default [
       'HayObstaculoArriba',
       'HayObstaculoAbajo',
       'HayObstaculoIzquierda',
-      'HayObstaculoDerecha'                  
+      'HayObstaculoDerecha'
     ],
   },
   {
@@ -2018,7 +2028,7 @@ export default [
       [O,O,O,O,O],\
 		", { coleccion: ["O"] })`,
     enunciado: '¡Cuidado, Duba! ¿Dónde puede aparecer un obstáculo? ¡Vamos a tener que decidir el camino a tomar!',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2042,7 +2052,7 @@ export default [
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
     enunciado: 'Ahora Duba está lejos, y tiene que decidir si comer ó no. ¿La ayudamos con los bloques que aprendimos?',
     consignaInicial: 'Es importante apretar ejecutar varias veces para entender el problema',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2064,7 +2074,7 @@ export default [
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
     enunciado: '¡Cuántos churrascos! ¿Qué patrón debe repetir Duba? ¿Cuántas preguntas tiene que hacer?',
     consignaInicial: 'Es importante apretar ejecutar varias veces para entender el problema',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2085,7 +2095,7 @@ export default [
     titulo: 'Desafío 3',
     escena: `new EscenaLita("[A],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[E]", { coleccion: ["T", "L"] })`,
     enunciado: '¡Lita también debe repetir su decisión varias veces! Siempre hay una verdura, sólo debe decidir cuál agarrar en cada paso.',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2110,7 +2120,7 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
     enunciado: '¡Ahora Toto sabe escribir! Hacé que copie toda la palabra.',
     consignaInicial: 'Toto sabe escribir la letra que está tocando',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2132,7 +2142,7 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
     enunciado: 'Ahora Toto quiere escribir una X por cada letra. ¡Sin importar lo que lea! ¿Cuantas X debe escribir?',
     consignaInicial: 'Toto también sabe escribir una letra que le digas',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2155,7 +2165,7 @@ export default [
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
     enunciado: 'A Toto le gusta jugar con las letras: hacé que copie la palabra, pero cuando llegue a la M, que agregue "ICH"',
     consignaInicial: 'Cuando copia "Cemento" escribe "Cemichento"',
-    debeFelicitarse: true, 
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2178,8 +2188,8 @@ export default [
     titulo: 'Desafío 4',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
     enunciado: 'Hacé que Toto copie la palabra hablando en Jeringozo. Si la palabra fuera "DUBA" él tiene que copiar "DUPUBAPA"',
-    consignaInicial: 'El idioma Jeringozo agrega "MA" después de una A, "ME" después de una E, y así con todas las vocales',
-    debeFelicitarse: true, 
+    consignaInicial: 'El idioma Jeringozo agrega "PA" después de una A, "PE" después de una E, y así con todas las vocales',
+    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -2204,10 +2214,10 @@ export default [
     escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
-    debeFelicitarse: true, 
+    debeFelicitarse: false,
     estiloToolbox: 'sinCategorias',
     bloques: [
-      'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Procedimiento', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
+      'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
 
   // Los desafíos a partir de acá (id paracapturaXX) se crearon únicamente para tomar capturas
@@ -2225,7 +2235,7 @@ export default [
       [O,O,O,O],\
 		")`,
     estiloToolbox: 'sinCategorias',
-    bloques: ['repetir','si','sino','MoverACasillaAbajo','MoverACasillaArriba','MoverACasillaIzquierda','MoverACasillaDerecha','ComerChurrasco','HayChurrasco']
+    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura02',

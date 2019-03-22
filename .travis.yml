@@ -38,21 +38,21 @@ before_install:
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli
+- npm install -g surge
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')  ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then NOMBRE=$(sh scripts/obtenerNombre.sh)              ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para compilar"   ; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make empaquetar                                    ; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ; fi
 after_success:
-  - test $TRAVIS_BRANCH = "develop" && ember surge --environment development --new-domain develop-pilas-bloques.surge.sh
-  - test $TRAVIS_BRANCH = "master"  && ember surge --environment development --new-domain master-pilas-bloques.surge.sh
-  - test $TRAVIS_BRANCH = "feature/actualizar-blockly" && ember surge --environment development --new-domain experimental-pilas-bloques.surge.sh
-after_failure:
-  - test $TRAVIS_BRANCH = "feature/actualizar-blockly" && ember surge --environment development --new-domain experimental-pilas-bloques.surge.sh
+  - ember build --environment=development
+  - test $TRAVIS_BRANCH = "develop" && surge ./dist/ develop-pilas-bloques.surge.sh
+  - test $TRAVIS_BRANCH = "master"  && surge ./dist/ master-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases
@@ -64,7 +64,7 @@ deploy:
     - "binarios/${NOMBRE}-${VERSION}.exe"
     - "binarios/${NOMBRE}-${VERSION}-linux-x64.zip"
     - "binarios/${NOMBRE}-${VERSION}-linux-ia32.zip"
-    - "binarios/${NOMBRE}_${VERSION}_amd64.deb"
+    - "binarios/${NOMBRE}_${VERSION_DEB}_amd64.deb"
   on:
     tags: true
     all_branches: true

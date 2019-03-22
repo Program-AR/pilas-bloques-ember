@@ -1,19 +1,18 @@
 /// <reference path = "../../actores/ActorAnimado.ts" />
-/// <reference path = "../../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../../../../bower_components/pilasweb/dist/pilasweb.d.ts" />
 
 /**
  * Actor que representa una letra en una cuadrícula.
  */
 abstract class Letra extends ActorAnimado {
     private _caracter : string;
-    private static _caracteresValidos: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ";
+    private static _caracteresValidos: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚÜÑ ";
 
     /**
      * @param unString Indica la letra que será representada por el actor (case insensitive).
      */
     constructor(unString : string) {
         super(0, 0, {
-            grilla: this.pathImagen(),
             cantColumnas: Letra._caracteresValidos.length,
             cantFilas: 1,
             cuadrosParado: [Letra.indiceDeCaracter(Letra.primerLetraDeString(unString))]
@@ -30,6 +29,14 @@ abstract class Letra extends ActorAnimado {
     }
 
     /**
+     * Permite verificar de antemano si es posible crear una instancia de Letra
+     * a partir de cierto string
+     */
+    static esArgumentoValido(unString : string) : boolean {
+        return Letra.esCaracterValido(unString[0].toUpperCase());
+    }
+
+    /**
      * Auxiliar para recuperar la primer letra de un string, en mayúsculas.
      * Falla si no es una letra.
      */
@@ -39,7 +46,7 @@ abstract class Letra extends ActorAnimado {
             return caracter;
         }
         else {
-            throw Error("El caracter proporcionado no es una letra");
+            throw Error("El cáracter proporcionado no es una letra");
         }
     }
 
@@ -55,24 +62,17 @@ abstract class Letra extends ActorAnimado {
         return unString.length == 1 && Letra._caracteresValidos.indexOf(unString) >= 0;
     }
 
-    abstract pathImagen(): string; 
 }
 
 
 class LetraTablero extends Letra {
-    pathImagen(): string {
-        return "actor.letra.tablero.png";
-    }
+    static _grilla = 'actor.letra.tablero.png'
 }
 
 class LetraLeida extends Letra {
-    pathImagen(): string {
-        return "actor.letra.leida.png";
-    }
+    static _grilla = 'actor.letra.leida.png'
 }
 
 class LetraManuscrita extends Letra {
-    pathImagen(): string {
-        return "actor.letra.manuscrita.png";
-    }
+    static _grilla = 'actor.letra.manuscrita.png'
 }

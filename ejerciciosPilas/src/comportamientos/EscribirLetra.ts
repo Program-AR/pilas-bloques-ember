@@ -32,6 +32,17 @@ class EscribirLetra extends ComportamientoConVelocidad {
         this.receptor.setX(this.xInicial);
     }
 
+    configurarVerificaciones() : void {
+        super.configurarVerificaciones();
+        // Esta verificación permite que el autómata avise, con un mensaje de
+        // error descriptivo, si se está intentando escribir un carácter que
+        // no es soportado por el actor Letra
+        this.verificacionesPre.push(new Verificacion(
+            () => Letra.esArgumentoValido(this.argumentos.caracter),
+            "No sé escribir ese símbolo"
+        ));
+    }
+
     postAnimacion() {
         super.postAnimacion();
         this.receptor.cuadricula.agregarActorEnCasilla(new LetraManuscrita(this.argumentos.caracter),this.receptor.casillaActual());

@@ -1,6 +1,6 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts" />
 /// <reference path = "ComportamientoAnimado.ts" />
-	
+
 class Decir extends ComportamientoAnimado {
 	globo;
 
@@ -12,16 +12,16 @@ class Decir extends ComportamientoAnimado {
 	doActualizar() {
 		super.doActualizar();
 		return !this.globo.vivo;
-  }
+	}
 
-	crearGlobo(){
-		return new Globo(this.receptor, this.argumentos.mensaje, {autoEliminar: this.argumentos.autoEliminar} )
+	crearGlobo() {
+		return new Globo(this.receptor, this.argumentos.mensaje, { autoEliminar: this.argumentos.autoEliminarGlobo })
 	}
 
 }
 
-class Pensar extends Decir{
-    crearGlobo() {
+class Pensar extends Decir {
+	crearGlobo() {
 		return new GloboPensar(this.receptor, this.argumentos.mensaje)
-    }
+	}
 }

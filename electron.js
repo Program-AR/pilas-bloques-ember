@@ -1,4 +1,10 @@
 /* jshint node: true */
+
+/*
+NOTA IMPORTANTE
+Este archivo no se usa. Está aquí para recordar cuál es el template básico de electron.
+Lo que sirva puede moverse a extras/electron.js
+*/
 'use strict';
 
 const electron             = require('electron');

@@ -732,6 +732,40 @@ export default Ember.Service.extend({
 
     this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
 
+
+    blockly.createCustomBlock('SaltarHaciaAdelante', {
+      message0: "%1 Saltar hacia adelante %2",
+      colour: Blockly.Blocks.primitivas.COLOUR,
+      inputsInline: true,
+      previousStatement: true,
+      nextStatement: true,
+      args0: [
+        {
+          "type": "field_image",
+          "src": `iconos/icono.arriba.png`,
+          "width": 16,
+          "height": 20,
+          "alt": "*"
+        },
+        {
+          "type": "input_value",
+          "name": "longitud",
+        }
+      ],
+      code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
+    });
+
+    Blockly.Blocks['SaltarHaciaAdelante'].toolbox = `
+    <block type="SaltarHaciaAdelante">
+      <value name="longitud">
+        <block type="math_number"><field name="NUM">100</field></block></value>
+    </block>
+  `;
+
+    Blockly.Blocks['SaltarHaciaAdelante'].categoria = 'Primitivas';
+
+
+
     blockly.createCustomBlock('DibujarLado', {
       message0: "%1 Dibujar lado de %2",
       colour: Blockly.Blocks.primitivas.COLOUR,
@@ -798,28 +832,20 @@ export default Ember.Service.extend({
 		this.crearBloqueAccion('PrepararEnsalada', {
       descripcion: 'Preparar ensalada',
       icono: 'icono.ensaladera.png',
-      comportamiento: 'ComportamientoColision',
-      argumentos: `{
-        etiqueta: "Ensaladera",
-        nombreAnimacion: "prepararEnsalada",
-        animacionColisionadoMientras: "preparando",
-        animacionColisionadoPost: "llena",
-        idTransicion: "prepararEnsalada"
-      }`
+      comportamiento: 'PrepararEnsalada',
+      argumentos: `{}`,
       // comportamientoAdicional: 'Eliminar',
       // argumentosComportamiento: {
       //   nombreAnimacion: "explotar"
       // }
     });
 
-
-
     // Para los desafíos de escribir y leer letras
     
     this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
       descripcion: 'Escribir letra que estoy tocando',
       icono: 'icono.DibujarLinea.png',
-      comportamiento: 'EscribirTextoDadoEnOtraCuadricula',
+      comportamiento: 'EscribirLetraActualEnOtraCuadricula',
       argumentos: '{}',
     });
 
@@ -843,11 +869,13 @@ export default Ember.Service.extend({
           "text": ""
         }
       ],
-      code: 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "$texto"});'
     });
-
+    
     Blockly.Blocks['EscribirTextoDadoEnOtraCuadricula'].categoria = 'Primitivas';
-
+    
+    Blockly.MyLanguage['EscribirTextoDadoEnOtraCuadricula'] = function(block) {
+      return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
+    };
 
 
     blockly.createCustomBlock('GirarGrados', {
@@ -885,28 +913,28 @@ export default Ember.Service.extend({
       descripcion: 'Mover arriba dibujando',
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
       descripcion: 'Mover abajo dibujando',
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
       descripcion: 'Mover derecha dibujando',
       icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', {
       descripcion: 'Mover izquierda dibujando',
       icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{distancia: 50, direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('SaltarArriba', {

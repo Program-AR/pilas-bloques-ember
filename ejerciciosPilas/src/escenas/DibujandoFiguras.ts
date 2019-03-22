@@ -1,15 +1,19 @@
 /// <reference path = "EscenaActividad.ts" />
 /// <reference path = "Dibujos.ts" />
 /// <reference path = "../actores/Dibujante.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts" />
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts" />
 
 abstract class DibujandoFiguras extends EscenaActividad {
     dibujoEsperado: DibujoLineal;
     pizarraFantasma: Pizarra;
     anchoLinea = 6;
 
+    static pathFondo(): string {
+      return 'fondo.dibujando.figuras.png';
+    }
+
     iniciar() {
-        this.fondo = new Fondo(this.pathFondo(),0,0);
+        this.fondo = new Fondo((<typeof DibujandoFiguras>this.constructor).pathFondo(),0,0);
         this.crearAutomata();
         this.dibujoEsperado = DibujoLineal.desdePuntosSimples(this.puntosEsperados());
         this.hacerDibujoPreexistente();
@@ -39,10 +43,6 @@ abstract class DibujandoFiguras extends EscenaActividad {
 
     estaResueltoElProblema(){
       return this.dibujoRealizado().igualA(this.dibujoEsperado.unificado());
-    }
-
-    pathFondo(): string {
-      return 'fondo.dibujando.figuras.png';
     }
 
     colorDibujo() {
@@ -110,5 +110,12 @@ class DibujandoPoligonosInteriores extends DibujandoFiguras {
 class DibujandoCuevaEstalagtitas extends DibujandoFiguras {
   puntosEsperados(){
     return [{x:-150,y:100}, {x:-130,y:100}, {x:-110,y:100}, {x:-90,y:100}, {x:-70,y:100}, {x:-50,y:100}, {x:-30,y:100}, {x:-10,y:100}, {x:10,y:100}, {x:30,y:100}, {x:50,y:100}, {x:50,y:80}, {x:50,y:60}, {x:50,y:40}, {x:50,y:20}, {x:50,y:0}, {x:50,y:-20}, {x:50,y:-40}, {x:50,y:-60}, {x:50,y:-80}, {x:50,y:-100}, {x:30,y:-100}, {x:10,y:-100}, {x:-10,y:-100}, {x:-30,y:-100}, {x:-50,y:-100}, {x:-70,y:-100}, {x:-90,y:-100}, {x:-110,y:-100}, {x:-130,y:-100}, {x:-150,y:-100}, {x:-150,y:-80}, {x:-150,y:-60}, {x:-150,y:-40}, {x:-150,y:-20}, {x:-150,y:0}, {x:-150,y:20}, {x:-150,y:40}, {x:-150,y:60}, {x:-150,y:80}, {x:-150,y:100}, {x:-146,y:100}, {x:-142,y:100}, {x:-138,y:100}, {x:-134,y:100}, {x:-130,y:100}, {x:-126,y:100}, {x:-122,y:100}, {x:-118,y:100}, {x:-114,y:100}, {x:-110,y:100}, {x:-112,y:97}, {x:-114,y:93}, {x:-116,y:90}, {x:-118,y:86}, {x:-120,y:83}, {x:-122,y:79}, {x:-124,y:76}, {x:-126,y:72}, {x:-128,y:69}, {x:-130,y:65}, {x:-132,y:69}, {x:-134,y:72}, {x:-136,y:76}, {x:-138,y:79}, {x:-140,y:83}, {x:-142,y:86}, {x:-144,y:90}, {x:-146,y:93}, {x:-148,y:97}, {x:-150,y:100}, {x:-146,y:100}, {x:-142,y:100}, {x:-138,y:100}, {x:-134,y:100}, {x:-130,y:100}, {x:-126,y:100}, {x:-122,y:100}, {x:-118,y:100}, {x:-114,y:100}, {x:-110,y:100}, {x:-104,y:100}, {x:-98,y:100}, {x:-92,y:100}, {x:-86,y:100}, {x:-80,y:100}, {x:-74,y:100}, {x:-68,y:100}, {x:-62,y:100}, {x:-56,y:100}, {x:-50,y:100}, {x:-53,y:95}, {x:-56,y:90}, {x:-59,y:84}, {x:-62,y:79}, {x:-65,y:74}, {x:-68,y:69}, {x:-71,y:64}, {x:-74,y:58}, {x:-77,y:53}, {x:-80,y:48}, {x:-83,y:53}, {x:-86,y:58}, {x:-89,y:64}, {x:-92,y:69}, {x:-95,y:74}, {x:-98,y:79}, {x:-101,y:84}, {x:-104,y:90}, {x:-107,y:95}, {x:-110,y:100}, {x:-104,y:100}, {x:-98,y:100}, {x:-92,y:100}, {x:-86,y:100}, {x:-80,y:100}, {x:-74,y:100}, {x:-68,y:100}, {x:-62,y:100}, {x:-56,y:100}, {x:-50,y:100}, {x:-40,y:100}, {x:-30,y:100}, {x:-20,y:100}, {x:-10,y:100}, {x:0,y:100}, {x:10,y:100}, {x:20,y:100}, {x:30,y:100}, {x:40,y:100}, {x:50,y:100}, {x:45,y:91}, {x:40,y:83}, {x:35,y:74}, {x:30,y:65}, {x:25,y:57}, {x:20,y:48}, {x:15,y:39}, {x:10,y:31}, {x:5,y:22}, {x:0,y:13}, {x:-5,y:22}, {x:-10,y:31}, {x:-15,y:39}, {x:-20,y:48}, {x:-25,y:57}, {x:-30,y:65}, {x:-35,y:74}, {x:-40,y:83}, {x:-45,y:91}, {x:-50,y:100}];
+  }
+}
+
+
+class DibujandoLibremente extends DibujandoFiguras {
+  puntosEsperados(){
+    return [];
   }
 }

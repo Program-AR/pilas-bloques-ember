@@ -12,7 +12,7 @@ class EscenaDubaFondoBlanco extends EscenaDuba {
 }
 
 class EscenaCotyFondoBlanco extends EscenaCoty {
-	pathFondo(): string {
+	static pathFondo(): string {
 		return "fondo.blanco.png";
 	}
 }

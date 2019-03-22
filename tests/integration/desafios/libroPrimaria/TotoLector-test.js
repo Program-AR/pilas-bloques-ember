@@ -25,6 +25,48 @@ actividadTest("3.I1a", {
 </xml>`,
 });
 
+actividadTest("3.I1a", {
+  descripcionAdicional: '3.I1a: Estalla al leer de más',
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="269" y="15">
+      <statement name="program">
+        <block type="MoverLeyendoAbajo">
+          <next>
+            <block type="MoverLeyendoDerecha">
+              <next>
+                <block type="MoverLeyendoIzquierda">
+                  <next>
+                    <block type="MoverLeyendoDerecha">
+                      <next>
+                        <block type="MoverLeyendoIzquierda"></block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
+  errorEsperado: "Ya leí mucho, ¡estoy cansado!"
+});
+
+actividadTest("3.I1a", {
+  descripcionAdicional: '3.I1a: No puede salir del tablero',
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="269" y="15">
+      <statement name="program">
+        <block type="MoverLeyendoArriba"></block>
+      </statement>
+    </block>
+  </xml>`,
+  errorEsperado: "No puedo ir para arriba"
+});
+
 actividadTest("3.I1b", {
   descripcionAdicional: '3.I1b: Se puede resolver',
 	solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">

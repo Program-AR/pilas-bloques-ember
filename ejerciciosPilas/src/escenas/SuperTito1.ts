@@ -1,5 +1,5 @@
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "../actores/Tito.ts"/>
 /// <reference path = "../actores/Lamparin.ts"/>
 /// <reference path = "../actores/Cuadricula.ts"/>
@@ -17,7 +17,7 @@ class SuperTito1 extends EscenaActividad {
     objetos;
 
     iniciar() {
-        this.fondo = new Fondo(this.pathFondo(),0,0);
+        this.fondo = new Fondo((<typeof SuperTito1>this.constructor).pathFondo(),0,0);
         this.objetos = [];
         this.cuadricula = new Cuadricula(0,0,this.cantidadFilas(),1,
             {separacionEntreCasillas: 5},
@@ -48,7 +48,7 @@ class SuperTito1 extends EscenaActividad {
         lamparin.x += 15;
     }
 
-    pathFondo(){
+    static pathFondo(){
         return 'fondo.superTito1.png';
     }
 

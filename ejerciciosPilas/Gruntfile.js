@@ -31,6 +31,8 @@ module.exports = function(grunt) {
           module: 'commonjs',
           target: 'es5',
           rootDir: 'src',
+          experimentalDecorators: true,
+          emitDecoratorMetadata: true,
           sourceMap: false,
           fullSourceMapPath: false,
           declaration: false,

@@ -3,7 +3,15 @@
 
 class EscenaTotoEscritor extends EscenaToto {
     manoQueEscribe : Actor;
+    
+	static clasesDeActoresExtrasToto() : typeof ActorAnimado[] {
+		return [LetraManuscrita]
+    }
 
+	static imagenesAdicionalesToto() : string[]{
+		return ['manoToto.png', 'libretaToto.png']
+    }
+    
     constructor(estilo: EstiloTotoEscritor){
         super(estilo.mapa(), estilo.textoEsperado(), estilo.topeDeLetras());
     }
@@ -32,15 +40,28 @@ class EscenaTotoEscritor extends EscenaToto {
             { alto: 160, ancho: 300, imagen: 'invisible.png', separacionEntreCasillas: -20 }, { grilla: 'invisible.png', relAspecto: 1 }
         );
     }
+
+    estaResueltoElProblema() : boolean {
+        return super.estaResueltoElProblema() && this.automata.tocandoFin();
+    }
 }
 
-
-class EscribirTextoDadoEnOtraCuadricula extends EscribirTexto {
+abstract class EscribirTextoEnOtraCuadricula extends EscribirTexto {
     iniciar(receptor){
-        this.argumentos.texto = this.argumentos.texto || pilas.escena_actual().automata.caracterActual();
+        this.argumentos.texto = this.obtenerTexto();
         this.argumentos.receptor = pilas.escena_actual().manoQueEscribe;
         super.iniciar(this.argumentos.receptor);
     }
+
+    abstract obtenerTexto(): string;
+}
+
+class EscribirLetraActualEnOtraCuadricula extends EscribirTextoEnOtraCuadricula {
+    obtenerTexto(): string { return pilas.escena_actual().automata.caracterActual(); }
+}
+
+class EscribirTextoDadoEnOtraCuadricula extends EscribirTextoEnOtraCuadricula {
+    obtenerTexto(): string { return this.argumentos.texto; }
 }
 
 

@@ -1,4 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 
 /* @class HabilidadAnimada
  * Es la clase de la que heredan todas en ejerciciosPilas, donde 

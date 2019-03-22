@@ -1,4 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "ActorAnimado.ts"/>
 /// <reference path = "Cuadricula.ts"/>
 
@@ -13,6 +13,15 @@ class Casilla extends ActorAnimado {
     nroFila;
     nroColumna;
     actores;
+
+    static imagenesPara(actor) : string[] {
+        return [`casillas.${actor}.png`];
+    }
+
+    static imagenesPreCarga() : string[] {
+        //Como las casillas dependen del actor, se debería usar imagenesPara(actor) para obtener las imágenes.
+        throw "Casilla.imagenesPreCarga() is useless. Should use Casilla.imagenesPara(actor)"
+    }
 
     constructor(nroF, nroC, cuadricula) {
         this.cuadricula = cuadricula;

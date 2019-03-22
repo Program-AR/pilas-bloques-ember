@@ -1,4 +1,4 @@
-/// <reference path = "../../dependencias/pilasweb.d.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
 /// <reference path = "ComportamientoConVelocidad.ts"/>
 /// <reference path = "../Direct.ts"/>
 
@@ -29,7 +29,7 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
     this.sanitizarArgumentosMovAn();
     super.preAnimacion();
     this.vectorDeAvance = this.valoresFinales.direccion.destinyFrom(
-      {x:0,y:0},
+      { x: 0, y: 0 },
       this.valoresFinales.distancia / this.argumentos.cantPasos);
     this.receptor.suspenderHabilidadesConMovimiento();
     this.voltearSiCorresponde();
@@ -39,12 +39,12 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
     this.receptor.activarHabilidadesConMovimiento();
   }
 
-   darUnPaso(): void {
+  darUnPaso(): void {
     this.receptor.x += this.vectorDeAvance.x;
     this.receptor.y += this.vectorDeAvance.y;
-   }
+  }
 
-   setearEstadoFinalDeseado(): void {
+  setearEstadoFinalDeseado(): void {
     this.receptor.x = this.valoresFinales.destino.x;
     this.receptor.y = this.valoresFinales.destino.y;
   }
@@ -92,6 +92,10 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
       this.valoresFinales.distancia = this.argumentos.distanciaConObstaculo || this.valoresFinales.distancia;
       this.argumentos.cantPasos = Math.ceil(this.argumentos.cantPasos * (this.valoresFinales.distancia / distanciaOriginal));
       this.valoresFinales.destino = this.calcularDestino();
+
+      if (this.obstaculo() !== undefined) {
+        this.obstaculo().teEstoyPorColisionar(this.receptor);
+      }
     }
   }
 
@@ -108,10 +112,14 @@ class MovimientoAnimado extends ComportamientoConVelocidad {
     return false;
   }
 
+  obstaculo() {
+    return undefined;
+  }
+
   configurarVerificaciones(): void {
     super.configurarVerificaciones();
     this.verificacionesPost.push(new Verificacion(
-      () => ! this.hayObstaculo(),
+      () => !this.hayObstaculo(),
       "¡Hay un obstáculo!",
       "obstaculo"
     ));
