@@ -1055,6 +1055,9 @@ export default Ember.Service.extend({
         return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
       }
       code = argument0 + operator + argument1;
+      if(block.getFieldValue('OP') == 'DIVIDE' && eval(argument1) == 0) {
+        code = `(function(){evaluar("lanzarActividadError('No se puede dividir por 0')")})()`
+      }
       return [code, order];
     };
 
