@@ -897,7 +897,7 @@ export default Ember.Service.extend({
           "name": "grados",
         }
       ],
-      code: 'hacer(actor_id, "Rotar", {angulo: - $grados, voltearAlIrAIzquierda: false, velocidad: 60});'
+      code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
     });
 
     Blockly.Blocks['GirarGrados'].toolbox = `
@@ -997,9 +997,68 @@ export default Ember.Service.extend({
 
   _definirBloquesAlias() {
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
+    // this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
     this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
     this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
+
+    this.get('blockly').createCustomBlock('OpAritmetica',  {
+      "type": "math_arithmetic",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "A",
+          "check": "Number"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "OP",
+          "options": [
+            ["%{BKY_MATH_ADDITION_SYMBOL}", "ADD"],
+            ["%{BKY_MATH_SUBTRACTION_SYMBOL}", "MINUS"],
+            ["%{BKY_MATH_MULTIPLICATION_SYMBOL}", "MULTIPLY"],
+            ["%{BKY_MATH_DIVISION_SYMBOL}", "DIVIDE"],
+            ["%{BKY_MATH_POWER_SYMBOL}", "POWER"]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "B",
+          "check": "Number"
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number",
+      "colour": "%{BKY_MATH_HUE}",
+      "helpUrl": "%{BKY_MATH_ARITHMETIC_HELPURL}",
+      "extensions": ["math_op_tooltip"]
+    });
+
+    Blockly.MyLanguage['OpAritmetica'] = function(block) {
+      // Basic arithmetic operators, and power.
+      var OPERATORS = {
+        'ADD': [' + ', Blockly.JavaScript.ORDER_ADDITION],
+        'MINUS': [' - ', Blockly.JavaScript.ORDER_SUBTRACTION],
+        'MULTIPLY': [' * ', Blockly.JavaScript.ORDER_MULTIPLICATION],
+        'DIVIDE': [' / ', Blockly.JavaScript.ORDER_DIVISION],
+        'POWER': [null, Blockly.JavaScript.ORDER_COMMA]  // Handle power separately.
+      };
+      var tuple = OPERATORS[block.getFieldValue('OP')];
+      var operator = tuple[0];
+      var order = tuple[1];
+      var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
+      var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
+      var code;
+      // Power in JavaScript requires a special case since it has no operator.
+      if (!operator) {
+        code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+        return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      }
+      code = argument0 + operator + argument1;
+      return [code, order];
+    };
+
+    Blockly.Blocks['OpAritmetica'].categoria = 'Operadores';
   },
 
   _definirBloquesSensores() {
