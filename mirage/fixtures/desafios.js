@@ -407,7 +407,7 @@ export default [
     grupoId: 5,
     nombre: 'DibujandoEscaleraCuadrada',
     titulo: 'Dibujando: Escalera cuadrada',
-    enunciado: 'Dibujá 5 cuadros de lado 50 y uno de 100, como muestra la figura sombreada.',
+    enunciado: 'Dibujá 5 cuadrados: 4 de lado 50 y uno de 100, como muestra la figura sombreada.',
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
