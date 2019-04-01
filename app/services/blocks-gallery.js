@@ -8,7 +8,7 @@ export default Ember.Service.extend({
     this._definirColores();
     this._definirBloqueAlIniciar();
     this._definirBloquesAccion();
-    this._definirBloquesAlias();
+    this._definirBloquesBasicos();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
@@ -995,12 +995,14 @@ export default Ember.Service.extend({
 
   },
 
-  _definirBloquesAlias() {
-    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    // this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
+  _definirBloquesBasicos() {
     this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
     this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
+    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
+    this._definirOpAritmetica()
+  },
 
+  _definirOpAritmetica() { //Este código fue sacado de Blockly
     this.get('blockly').createCustomBlock('OpAritmetica',  {
       "type": "math_arithmetic",
       "message0": "%1 %2 %3",
@@ -1043,25 +1045,30 @@ export default Ember.Service.extend({
         'DIVIDE': [' / ', Blockly.JavaScript.ORDER_DIVISION],
         'POWER': [null, Blockly.JavaScript.ORDER_COMMA]  // Handle power separately.
       };
-      var tuple = OPERATORS[block.getFieldValue('OP')];
-      var operator = tuple[0];
-      var order = tuple[1];
       var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
       var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
+      var op = block.getFieldValue('OP');
+      var tuple = OPERATORS[op];
+      var operator = tuple[0];
+      var order = tuple[1];
+      var isPow = !operator;
+      var isDivisionByZero = op === 'DIVIDE' && eval(argument1) === 0;
       var code;
       // Power in JavaScript requires a special case since it has no operator.
-      if (!operator) {
+      if (isPow) {
         code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
         return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
       }
-      code = argument0 + operator + argument1;
-      if(block.getFieldValue('OP') == 'DIVIDE' && eval(argument1) == 0) {
-        code = `(function(){evaluar("lanzarActividadError('No se puede dividir por 0')")})()`
+      if(isDivisionByZero) {
+        code = `(function(){evaluar("lanzarActividadError('No se puede dividir por 0')")})()`;
+        return [code, order];
       }
+      code = argument0 + operator + argument1;
       return [code, order];
     };
 
     Blockly.Blocks['OpAritmetica'].categoria = 'Operadores';
+
   },
 
   _definirBloquesSensores() {
