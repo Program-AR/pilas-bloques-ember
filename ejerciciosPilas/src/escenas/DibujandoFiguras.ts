@@ -118,4 +118,8 @@ class DibujandoLibremente extends DibujandoFiguras {
   puntosEsperados(){
     return [];
   }
+
+  estaResueltoElProblema(){
+    return false;
+  }
 }
