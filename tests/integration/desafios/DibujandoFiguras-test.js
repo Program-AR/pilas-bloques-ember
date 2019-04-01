@@ -252,3 +252,34 @@ actividadTest('DibujoLibre', {
 </xml>`,
   resuelveDesafio: false,
 });
+
+
+actividadTest('DibujoLibre', {
+  descripcionAdicional: 'No se puede dividir por cero.',
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="GirarGrados">
+          <value name="grados">
+            <block type="OpAritmetica">
+              <field name="OP">DIVIDE</field>
+              <value name="A">
+                <block type="math_number">
+                  <field name="NUM">90</field>
+                </block>
+              </value>
+              <value name="B">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
+  errorEsperado: "No se puede dividir por 0",
+  resuelveDesafio: false,
+});
