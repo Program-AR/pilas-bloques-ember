@@ -1052,18 +1052,21 @@ export default Ember.Service.extend({
       var operator = tuple[0];
       var order = tuple[1];
       var isPow = !operator;
-      var isDivisionByZero = op === 'DIVIDE' && eval(argument1) === 0;
+      var isDivision = op === 'DIVIDE';
       var code;
       // Power in JavaScript requires a special case since it has no operator.
       if (isPow) {
         code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
         return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
       }
-      if(isDivisionByZero) {
-        code = `(function(){evaluar("lanzarActividadError('No se puede dividir por 0')")})()`;
-        return [code, order];
-      }
-      code = argument0 + operator + argument1;
+      code = `
+      (function(){
+        if (${isDivision} && ${argument1} === 0)
+          evaluar("lanzarActividadError('No se puede dividir por 0')")
+        else
+          return ${argument0 + operator + argument1}
+      })()
+      `;
       return [code, order];
     };
 
