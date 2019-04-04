@@ -308,12 +308,15 @@ export default Ember.Component.extend({
   cuandoTerminaEjecucion() {
     Ember.run(this, function() {
       this.sendAction('onTerminoEjecucion');
-
+      
       if (this.get("debeMostrarFinDeDesafio")) {
         if (this.get('pilas').estaResueltoElProblema() && this.get('modelActividad').get('debeFelicitarse')) {
           this.send('abrirFinDesafio');
         }
       }
+      
+      // Clear highlight block
+      Blockly.mainWorkspace.highlightBlock();
 
       if (this.get('ejecutando')) {
         this.set('ejecutando', false);
@@ -382,8 +385,9 @@ export default Ember.Component.extend({
       let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloque) => {
         var me = this;
         Ember.run(function () {
-          me.set('highlightedBlock', bloque);
+          // me.set('highlightedBlock', bloque);
         });
+        Blockly.mainWorkspace.highlightBlock(bloque, true)
       });
       
       this.set('pausadoEnBreakpoint', false);
