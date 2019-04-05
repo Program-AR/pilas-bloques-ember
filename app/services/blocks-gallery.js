@@ -155,7 +155,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('PrenderCompu', {
       descripcion: 'Prender compu',
-      icono: 'icono.computadora.png',
+      icono: 'icono.turn_on.svg',
       comportamiento: 'PrenderCompuParaInstalar',
       argumentos: `{
         etiqueta: 'CompuAnimada',
@@ -381,7 +381,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('ApagarCompu', {
       descripcion: 'Apagar compu',
-      icono: 'icono.computadora.png',
+      icono: 'icono.turn_off.svg',
       comportamiento: 'ComportamientoColision',
       argumentos: `{
 				etiqueta: "CompuAnimada",
@@ -394,6 +394,7 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('InstalarJuego', {
       descripcion: 'Instalar juego',
+      icono: 'icono.installation.svg',
 			comportamiento: 'SecuenciaAnimada',
 			argumentos:  `{
         idTransicion: "instalar",
@@ -420,18 +421,21 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('EscribirC', {
       descripcion: 'Escribir "C"',
+      icono: 'icono.letter-c.svg',
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion : "escribirC"}',
     });
 
     this.crearBloqueAccion('EscribirB', {
       descripcion: 'Escribir "B"',
+      icono: 'icono.letter-b.svg',
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion: "escribirB"}',
     });
 
     this.crearBloqueAccion('EscribirA', {
       descripcion: 'Escribir "A"',
+      icono: 'icono.letter-a.svg',
       comportamiento: 'EscribirEnCompuAnimada',
       argumentos: '{idTransicion: "escribirA"}',
     });
