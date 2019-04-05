@@ -21,7 +21,6 @@ export default Ember.Component.extend({
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
   codigo: null,
-  highlightedBlock: null, // bloque a resaltar.
   modelActividad: null,
   modoTuboHabilitado: false,
 
@@ -355,7 +354,7 @@ export default Ember.Component.extend({
   },
 
   clearHighlight() {
-    Blockly.mainWorkspace.highlightBlock();
+    this.get('highlighter').clear()
   },
 
   /*
@@ -384,11 +383,8 @@ export default Ember.Component.extend({
         this.get('cuandoEjecuta')(codigo_xml);
       }
 
-      let highlightedBlocks = []
       let factory = this.get('interpreterFactory');
-      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloqueId) => {
-        this.highlighter.step(bloqueId)
-      });
+      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloqueId) => this.get('highlighter').step(bloqueId));
       
       this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
