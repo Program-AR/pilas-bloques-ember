@@ -315,13 +315,10 @@ export default Ember.Component.extend({
         }
       }
       
-      // Clear highlight block
-      Blockly.mainWorkspace.highlightBlock();
-
       if (this.get('ejecutando')) {
         this.set('ejecutando', false);
         this.set('terminoDeEjecutar', true);
-        this.set('highlightedBlock', null);
+        this.clearHighlight();
       }
     });
   },
@@ -355,6 +352,10 @@ export default Ember.Component.extend({
     }
   },
 
+  clearHighlight() {
+    Blockly.mainWorkspace.highlightBlock();
+  },
+
   /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
@@ -381,13 +382,28 @@ export default Ember.Component.extend({
         this.get('cuandoEjecuta')(codigo_xml);
       }
 
+      let highlightedBlocks = []
       let factory = this.get('interpreterFactory');
-      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloque) => {
-        var me = this;
-        Ember.run(function () {
-          // me.set('highlightedBlock', bloque);
-        });
-        Blockly.mainWorkspace.highlightBlock(bloque, true)
+      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloqueId) => {
+        let bloque = Blockly.mainWorkspace.getBlockById(bloqueId)
+        let esDefinicion = !bloque.getParent()
+        let ultimoBloque = highlightedBlocks[highlightedBlocks.length - 1]
+        
+        // console.log(bloque)
+        if (ultimoBloque && !ultimoBloque.getNextBlock()) {
+          highlightedBlocks.pop()
+          ultimoBloque = highlightedBlocks[highlightedBlocks.length - 1]
+        }
+
+        if (bloque.getParent() == ultimoBloque)
+          highlightedBlocks.pop()
+
+        if (!esDefinicion)
+          highlightedBlocks.push(bloque)
+
+
+        this.clearHighlight()
+        highlightedBlocks.forEach((b) => Blockly.mainWorkspace.highlightBlock(b.id, true))
       });
       
       this.set('pausadoEnBreakpoint', false);
@@ -399,7 +415,7 @@ export default Ember.Component.extend({
     },
 
     reiniciar() {
-      this.set('highlightedBlock', null);
+      this.clearHighlight()
       this.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
