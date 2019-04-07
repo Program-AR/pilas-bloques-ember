@@ -6,7 +6,7 @@
  * título: <obligatorio> Es el título visible del desafío en la lista del libro y en la pantalla principal del desafío.
  * enunciado: <obligatorio> Es el enunciado del desafío. Es la descripción del objetivo del programa que debe realizar el alumno.
  * consignaInicial: Es una posible pista, el "Sabías qué". En general en Pilas Bloques suele aparecer cuando el desafío introduce un concepto nuevo.
- * escena: <obligatorio> Es un String que puede indicar ó bien un nombre de clase, ó bien EL STRING con un "new Escena..." que luego se PARSEARÁ como javascript para construir la escena de ejerciciosPilas asociada a este desafío.
+ * escena: <obligatorio> Es un String que puede indicar o bien un nombre de clase, o bien EL STRING con un "new Escena..." que luego se PARSEARÁ como javascript para construir la escena de ejerciciosPilas asociada a este desafío.
  * debeFelicitarse: Es un booleano que indica si tiene sentido que el desafío chequee e informe al alumno la concreción exitosa de su programa. En una actividad de dibujo libre estaría en false.
  * bloques: <obligatorio> Es la lista de ids de bloque de Blockly que habrá en el toolbox de la actividad.
  * estiloToolbox: Tiene tres valores: 
@@ -171,7 +171,7 @@ export default [
     nombre: 'LaEleccionDelMono',
     titulo: 'La elección del mono',
     enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene ' +
-      'que comer la fruta que aparece, ya sea banana ó manzana. \n' +
+      'que comer la fruta que aparece, ya sea banana o manzana. \n' +
       'Ejecutá el programa varias veces para asegurarte que siempre funciona. \n' +
       'Pista: ésta vez no alcanza con el bloque "Si".',
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
@@ -2050,7 +2050,7 @@ export default [
     nombre: '5.2.1a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
-    enunciado: 'Ahora Duba está lejos, y tiene que decidir si comer ó no. ¿La ayudamos con los bloques que aprendimos?',
+    enunciado: 'Ahora Duba está lejos, y tiene que decidir si comer o no. ¿La ayudamos con los bloques que aprendimos?',
     consignaInicial: 'Es importante apretar ejecutar varias veces para entender el problema',
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
