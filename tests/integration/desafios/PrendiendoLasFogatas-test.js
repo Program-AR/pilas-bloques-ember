@@ -87,7 +87,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="si" id="14" inline="true">
             <value name="condition">
-               <block type="tocandoFogata" id="15" />
+               <block type="TocandoFogata" id="15" />
             </value>
             <statement name="block">
                <block type="PrenderFogata" id="16" />

@@ -163,7 +163,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'si']
+    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'si']
   },
   {
     id: 14,
@@ -177,7 +177,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'repetir', 'si', 'sino', 'tocandoManzana', 'tocandoBanana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'si', 'sino', 'TocandoManzana', 'TocandoBanana']
   },
   {
     id: 15,
