@@ -138,7 +138,7 @@ export default [
       '5) Escapar en unicornio.',
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'Escaparenunicornio', 'repetir', 'Procedimiento'],
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'EscaparEnUnicornio', 'repetir', 'Procedimiento'],
   },
   {
     id: 12,
