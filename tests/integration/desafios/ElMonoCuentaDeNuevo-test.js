@@ -81,7 +81,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="si" id="20" inline="true">
             <value name="condition">
-               <block type="tocandoBanana" id="21" />
+               <block type="TocandoBanana" id="21" />
             </value>
             <statement name="block">
                <block type="ContarBanana" id="22" />
@@ -95,7 +95,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="si" id="24" inline="true">
             <value name="condition">
-               <block type="tocandoManzana" id="25" />
+               <block type="TocandoManzana" id="25" />
             </value>
             <statement name="block">
                <block type="ContarManzana" id="26" />
