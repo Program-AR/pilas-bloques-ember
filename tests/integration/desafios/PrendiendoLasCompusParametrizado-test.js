@@ -65,7 +65,7 @@ actividadTest(nombre, {
 		        <next>
 		          <block type="hasta" id="29">
 		            <value name="condition">
-		              <block type="Estoyenunaesquina" id="31"></block>
+		              <block type="EstoyEnEsquina" id="31"></block>
 		            </value>
 		            <statement name="block">
 		              <block type="PrenderCompuConColision" id="41">
