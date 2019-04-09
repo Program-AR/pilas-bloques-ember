@@ -973,17 +973,12 @@ export default Ember.Service.extend({
 
   _definirBloquesSensores() {
 
-
-///////////////////////////////////////////////////////////////////////////////////////////// Aqui comienza el ejercicio de bananas y manzanas
-
     this.crearBloqueSensor('TocandoBanana', {
       descripcion: 'Hay banana acá',
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
       esBool: true
     });
-
-    // this.crearBloqueAlias('tocandoBanana', 'Tocandobanana');
 
     this.crearBloqueSensor('TocandoManzana', {
       descripcion: 'Hay manzana acá',
@@ -992,35 +987,12 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    // this.crearBloqueAlias('tocandoManzana', 'Tocandomanzana');
-
     this.crearBloqueSensor('TocandoNaranja', {
       descripcion: 'Hay una naranja acá',
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
       esBool: true
     });
-
-        // this.crearBloqueSensor('TocandoManzana', {
-    //   descripcion: 'Hay una manzana acá',
-    //   icono: 'icono.manzana.png',
-    //   funcionSensor: 'tocando("ManzanaAnimada")',
-    //   esBool: true
-    // });
-
-    // this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
-
-    // this.crearBloqueSensor('TocandoBanana', {
-    //   descripcion: 'Hay una banana acá',
-    //   icono: 'icono.banana.png',
-    //   funcionSensor: 'tocando("BananaAnimada")',
-    //   esBool: true
-    // });
-
-    // this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
-
-
-///////////////////////////////////////////////////////////////////////////////////////////// Aqui termina el ejercicio de bananas y manzanas
 
     this.crearBloqueSensor('TocandoFogata', {
       descripcion: 'Hay fogata acá',
