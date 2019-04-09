@@ -30,7 +30,7 @@ actividadTest(nombre, {
 		  <statement name="STACK">
 			 <block type="si" id="82" inline="true">
 				<value name="condition">
-				   <block type="tocandoLuz" id="83" />
+				   <block type="TocandoLuz" id="83" />
 				</value>
 				<statement name="block">
 				   <block type="EncenderLuz" id="84" />
