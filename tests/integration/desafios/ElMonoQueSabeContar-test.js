@@ -42,7 +42,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="hasta" id="114" inline="true">
             <value name="condition">
-               <block type="estoyFinColumna" id="129" />
+               <block type="EstoyAlFin" id="129" />
             </value>
             <statement name="block">
                <block type="MoverACasillaAbajo" id="146">
@@ -95,7 +95,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="hasta" id="251" inline="true">
             <value name="condition">
-               <block type="estoyInicio" id="256" />
+               <block type="EstoyAlInicio" id="256" />
             </value>
             <statement name="block">
                <block type="MoverACasillaArriba" id="262" />

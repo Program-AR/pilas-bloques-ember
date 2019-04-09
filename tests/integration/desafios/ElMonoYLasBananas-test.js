@@ -24,7 +24,7 @@ actividadTest(nombre, {
     <field name="NAME">Comer banana si hay</field>
     <statement name="STACK">
       <block type="si" id="27" inline="true">
-        <value name="condition"><block type="Tocandobanana" id="28"></block></value>
+        <value name="condition"><block type="TocandoBanana" id="28"></block></value>
         <statement name="block"><block type="ComerBanana" id="29"></block></statement>
       </block>
     </statement>
