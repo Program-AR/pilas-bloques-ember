@@ -313,6 +313,9 @@ class ActorAnimado extends Actor {
         this.setZ(Math.min.apply(Math, this.escena.actores.map(act => act.getZ())) - 1);
     }
 
+    lanzarActividadError(mensaje) {
+        throw new ActividadError(mensaje);
+    }
 }
 
 // Helper para construir las animaciones:
