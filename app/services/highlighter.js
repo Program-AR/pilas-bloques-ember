@@ -4,9 +4,10 @@ export default Ember.Service.extend({
     
     blocks: [],
     workspace: Blockly.mainWorkspace,
-    
+
     step(blockId) {
         let block = this.workspace.getBlockById(blockId)
+        if (!block) return // TODO: For testing
         this._removePreviousBlockIfLastOfModule()
         this._removePreviousBlockIfContinue(block)
 

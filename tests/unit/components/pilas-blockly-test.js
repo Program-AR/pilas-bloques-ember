@@ -1,13 +1,14 @@
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock } from '../../helpers/mocks';
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock } from '../../helpers/mocks';
 import sinon from 'sinon';
 
 moduleFor('component:pilas-blockly', 'Unit | Components | pilas-blockly', {
-  // Specify the other units that are required for this test.
-  // needs: ['controller:foo']
+  needs: ['service:highlighter'],
   setup() {
     this.register('service:interpreterFactory', interpreterFactoryMock);
+    this.container.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
+
     let ctrl = this.subject();
     ctrl.pilas = pilasMock; //TODO: Injectar como service
     ctrl.descargar = sinon.spy();
@@ -54,7 +55,6 @@ test('Luego de ejecutar termina de ejecutar', function(assert) {
   Ember.run.later(() => {
     assert.notOk(ctrl.get('ejecutando'));
     assert.ok(ctrl.get('terminoDeEjecutar'));
-    assert.notOk(ctrl.get('highlightedBlock'));
   });
 });
 
@@ -72,7 +72,6 @@ test('Al reiniciar settea flags y reinicia la escena de pilas', function(assert)
   let ctrl = this.subject();
   ctrl.send('reiniciar');
 
-  assert.notOk(ctrl.get('highlightedBlock'));
   assert.notOk(ctrl.get('ejecutando'));
   assert.notOk(ctrl.get('terminoDeEjecutar'));
   assert.notOk(ctrl.get('errorDeActividad'));

@@ -1,16 +1,15 @@
-import { moduleFor, test, only } from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit';
+import { blocklyWorkspaceMock } from '../../helpers/mocks';
 
 
 moduleFor('service:highlighter', 'Unit | Service | highlighter', { 
     needs: ['service:blocksGallery', 'service:blockly'],
     setup() {
         var highlighter = this.subject()
-        let workspace = new Blockly.Workspace()
-        workspace.highlightBlock = function() { } //Mocking (?)
-        highlighter.workspace = workspace
+        highlighter.workspace = blocklyWorkspaceMock()
+        highlighter.clear()
         
         this.container.lookup('service:blocksGallery').start()
-        highlighter.clear()
     }
 });
 
