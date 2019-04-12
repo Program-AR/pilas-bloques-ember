@@ -551,7 +551,7 @@ export default [
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
     debeFelicitarse: false,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
 
