@@ -111,24 +111,24 @@ class MorderPorEtiqueta extends EncenderPorEtiqueta {
 	}
 }
 
-class PrenderCompuParaInstalar extends ComportamientoColision {
-	configurarVerificaciones() {
+class PrenderComputadora extends ComportamientoColision {
+
+	configurarVerificaciones(): void {
 		super.configurarVerificaciones();
 		this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
 			"Esta compu ya la prendiste antes"))
 	}
+
 }
 
-class ApagarPorEtiqueta extends ComportamientoColision {
-	metodo(objetoColision) {
-		objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "apagada", mantenerAnimacion: true });
-	}
-}
+class ApagarComputadora extends ComportamientoColision {
 
-class PrenderPorEtiqueta extends ComportamientoColision {
-	metodo(objetoColision) {
-		objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "prendida", mantenerAnimacion: true });
+	configurarVerificaciones(): void {
+		super.configurarVerificaciones();
+		this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
+			"Esta compu ya la apagaste antes"))
 	}
+
 }
 
 class EscribirEnCompuAnimada extends ComportamientoColision {

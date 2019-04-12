@@ -298,7 +298,7 @@ export default [
     bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
       'MoverACasillaDerecha', 'MoverACasillaArriba',
       'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'PrenderCompuConColision', 'EstoyEnEsquina'],
+      'PrenderCompu', 'EstoyEnEsquina'],
   },
   {
     id: 25,
@@ -495,7 +495,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-      'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
+      'PrenderCompu', 'EstoyEnEsquina', 'Numero',
       'OpAritmetica'],
   },
   {

@@ -5,8 +5,7 @@ const nombre = 'PrendiendoLasCompusParametrizado';
 moduloActividad(nombre);
 
 actividadTest(nombre, {
-	solucion: `
-		<xml xmlns="http://www.w3.org/1999/xhtml">
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 		  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
 		    <statement name="program">
 		      <block type="procedures_callnoreturn" id="46">
@@ -68,7 +67,7 @@ actividadTest(nombre, {
 		              <block type="Estoyenunaesquina" id="31"></block>
 		            </value>
 		            <statement name="block">
-		              <block type="PrenderCompuConColision" id="41">
+		              <block type="PrenderCompu" id="41">
 		                <next>
 		                  <block type="MoverA" id="34">
 		                    <value name="direccion">
@@ -87,4 +86,44 @@ actividadTest(nombre, {
 		  </block>
 		</xml>
 	`
+});
+
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una compu donde no hay',
+	errorEsperado: 'No hay una compu aqui',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+							<xml xmlns="http://www.w3.org/1999/xhtml">
+   							<variables />
+  	 						<block type="al_empezar_a_ejecutar" id="IAu_wXvP7R@SfU%v^Vtk" deletable="false" movable="false" editable="false" x="15" y="15">
+      						<statement name="program">
+        		 				<block type="PrenderCompu" id="zcbpp]rCxf0V_fAjI_B," />
+      						</statement>
+   							</block>
+						</xml>`,
+});
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una compu que ya esta prendida',
+	errorEsperado: 'Esta compu ya la prendiste antes',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	<xml xmlns="http://www.w3.org/1999/xhtml">
+		 <variables />
+		 <block type="al_empezar_a_ejecutar" id="i(OI|s9pE2Qvpapiwd/6" deletable="false" movable="false" editable="false" x="15" y="15">
+				<statement name="program">
+					 <block type="MoverA" id="|]=Mhkm?SiH~~(CmXm5A">
+							<value name="direccion">
+								 <block type="ParaAbajo" id="G({j[b8r$e.%v_}Y{wri" />
+							</value>
+							<next>
+								 <block type="PrenderCompu" id="eKE{4Vs^$=VZ;T-Ze!0M">
+										<next>
+											 <block type="PrenderCompu" id="hn_h}miHQ6Jo9Ng_t5Zt" />
+										</next>
+								 </block>
+							</next>
+					 </block>
+				</statement>
+		 </block>
+	</xml>`,
 });
