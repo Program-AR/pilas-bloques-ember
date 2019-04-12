@@ -252,7 +252,7 @@ function loadProgramAndSendSteps(highlighter, steps, blocksAsText) {
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
     // En los procedure_call ejecuta el próximo bloque de definición
     function doStep(block) {
-        if (steps == 0 || ignoredBlockTypes.includes(block.type)) return
+        if (steps === 0 || ignoredBlockTypes.includes(block.type)) return
         highlighter.step(block.id)
         steps--
         if (block.defType_) { // procedure_call
