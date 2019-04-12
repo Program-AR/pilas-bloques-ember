@@ -138,10 +138,10 @@ class EscribirEnCompuAnimada extends ComportamientoColision {
 		this.argumentos.nombreAnimacion = "escribir";
 		super.iniciar(receptor);
 	}
-	
+
 	metodo(objetoColision) {
 		if (this.argumentos['idTransicion'] == 'escribirC') {
-			objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
+			objetoColision.cargarAnimacion("claveok");
 		}
 	}
 }
