@@ -1,7 +1,5 @@
 /* jshint ignore:start */
 import Ember from 'ember';
-import Highlighter from '../helpers/highlighter'
-
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 
 export default Ember.Component.extend({
@@ -24,7 +22,7 @@ export default Ember.Component.extend({
   modelActividad: null,
   modoTuboHabilitado: false,
 
-  highlighter: null,
+  highlighter: Ember.inject.service(),
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
@@ -370,7 +368,6 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar(pasoAPaso=false) {
-      this.set('highlighter', new Highlighter(Blockly.mainWorkspace));
       this.get('pilas').reiniciarEscenaCompleta();
 
       this.setModoTurbo()
