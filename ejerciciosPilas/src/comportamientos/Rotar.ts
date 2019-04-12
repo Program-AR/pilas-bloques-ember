@@ -6,7 +6,8 @@ class Rotar extends ComportamientoConVelocidad {
 
 	preAnimacion(){
 		super.preAnimacion();
-		if (!this.argumentos.angulo) throw new ArgumentError("Angle must be provided for Rotar to work");
+		if (!this.argumentos.angulo && this.argumentos.angulo !== 0) 
+			throw new ArgumentError("Angle must be provided for Rotar to work");
 		this.anguloAvance = this.argumentos.angulo / this.argumentos.cantPasos;
 		this.anguloFinal = this.receptor.rotacion + this.argumentos.angulo;
 	}
