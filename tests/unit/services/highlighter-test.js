@@ -91,11 +91,56 @@ test('When go out repetition block should only highlight next block', function(a
 });
 
 
+let alternativeProgram = `
+<block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="269" y="15">
+    <statement name="program">
+    <block type="MoverACasillaAbajo">
+        <next>
+        <block type="si">
+            <value name="condition">
+            <block type="HayTomate"></block>
+            </value>
+            <statement name="block">
+            <block type="MoverACasillaArriba">
+                <next>
+                <block type="MoverACasillaAbajo"></block>
+                </next>
+            </block>
+            </statement>
+            <next>
+            <block type="MoverACasillaAbajo"></block>
+            </next>
+        </block>
+        </next>
+    </block>
+    </statement>
+</block>
+`
+
+test('Should highlight alternative block', function(assert) {
+    var highlighter = this.subject()
+    loadProgramAndSendSteps(highlighter, 3, alternativeProgram)
+    assertHighlight(assert, highlighter, ['si'])
+});
+
+test('When enter on alternative block should only highlight current block', function(assert) {
+    var highlighter = this.subject()
+    loadProgramAndSendSteps(highlighter, 5, alternativeProgram)
+    assertHighlight(assert, highlighter, ['MoverACasillaAbajo'])
+});
+
+test('When go out alternative block should only highlight next block', function(assert) {
+    var highlighter = this.subject()
+    loadProgramAndSendSteps(highlighter, 6, alternativeProgram)
+    assertHighlight(assert, highlighter, ['MoverACasillaAbajo'])
+});
+
+
 function loadProgramAndSendSteps(highlighter, steps, blocksAsText) {
     let dom = Blockly.Xml.textToDom(blocksAsText)
     let mainBlock = Blockly.Xml.domToBlock(dom, highlighter.workspace)
 
-    let ignoredBlockTypes = ["math_number"]
+    let ignoredBlockTypes = ["math_number", "HayTomate"]
 
     //Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
     function doStep(block) {
