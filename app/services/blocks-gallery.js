@@ -8,10 +8,10 @@ export default Ember.Service.extend({
     this._definirColores();
     this._definirBloqueAlIniciar();
     this._definirBloquesAccion();
-    this._definirBloquesAlias();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
+    this._definirBloquesAlias();
   },
 
   /*
@@ -26,7 +26,7 @@ export default Ember.Service.extend({
    *
    */
   crearBloqueAccion(nombre, opciones) {
-    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','comportamiento','argumentos']);
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
     let bloque = this.get('blockly').createCustomBlockWithHelper(nombre, opciones);
@@ -46,8 +46,8 @@ export default Ember.Service.extend({
       throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
     }
 
-    let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal); 
-    bloque.categoria = categoria ||  Blockly.Blocks[nombreDelBloqueOriginal].categoria;
+    let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal);
+    bloque.categoria = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoria;
 
     return bloque;
   },
@@ -64,8 +64,8 @@ export default Ember.Service.extend({
    */
   crearBloqueSensor(nombre, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'funcionSensor']);
-    
-    var formaDelBloque = opciones.icono ? "%1 " : ""; 
+
+    var formaDelBloque = opciones.icono ? "%1 " : "";
     formaDelBloque += opciones.esBool ? "¿" : "";
     formaDelBloque += opciones.descripcion;
     formaDelBloque += opciones.esBool ? "?" : "";
@@ -90,7 +90,7 @@ export default Ember.Service.extend({
     // TODO: Arreglar generacion de codigo
     bloque.categoria = "Sensores";
 
-    Blockly.MyLanguage[nombre] = function() {
+    Blockly.MyLanguage[nombre] = function () {
       let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
@@ -99,7 +99,7 @@ export default Ember.Service.extend({
   },
 
   crearBloqueValor(nombre, opciones) {
-    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion','icono','valor']);
+    this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
     let bloque = this.get('blockly').createBlockValue(nombre, opciones);
@@ -119,21 +119,21 @@ export default Ember.Service.extend({
     });
   },
 
-  _definirColores(){
+  _definirColores() {
     // Pisar las globales de Blockly es necesario pues usamos algunos bloques de Blockly como aliases.
-    Blockly.Blocks.math.HUE =  94; // En PB 1.1.2 era '#48930e'
+    Blockly.Blocks.math.HUE = 94; // En PB 1.1.2 era '#48930e'
     Blockly.Blocks.logic.HUE = 210; // En PB 1.1.2 era '#5cb712'
     Blockly.Blocks.procedures.HUE = 290; // En PB 1.1.2 era '#6C52EB'
-    Blockly.Blocks.variables.HUE =  330; // En PB 1.1.2 era '#cc5b22'
+    Blockly.Blocks.variables.HUE = 330; // En PB 1.1.2 era '#cc5b22'
     Blockly.Blocks.texts.HUE = 160; // En PB 1.1.2 era '#4a6cd4'
     Blockly.Blocks.lists.HUE = 206; // En PB 1.1.2 era '#cc5b22'
 
     // Para los bloques propios
-    Blockly.Blocks.primitivas = {COLOUR: '#4a6cd4'};
-    Blockly.Blocks.control = {COLOUR: '#ee7d16'};
-    Blockly.Blocks.sensores = {COLOUR: '#2ca5e2'};
-    Blockly.Blocks.direcciones = {COLOUR: '#2ba4e2'};
-    Blockly.Blocks.eventos = {COLOUR: '#00a65a'}; // == boton ejecutar
+    Blockly.Blocks.primitivas = { COLOUR: '#4a6cd4' };
+    Blockly.Blocks.control = { COLOUR: '#ee7d16' };
+    Blockly.Blocks.sensores = { COLOUR: '#2ca5e2' };
+    Blockly.Blocks.direcciones = { COLOUR: '#2ba4e2' };
+    Blockly.Blocks.eventos = { COLOUR: '#00a65a' }; // == boton ejecutar
 
     // IN SCRATCH THE COLOURS ARE
     // 4a6cd4 MOTION
@@ -392,8 +392,8 @@ export default Ember.Service.extend({
 
     this.crearBloqueAccion('InstalarJuego', {
       descripcion: 'Instalar juego',
-			comportamiento: 'SecuenciaAnimada',
-			argumentos:  `{
+      comportamiento: 'SecuenciaAnimada',
+      argumentos: `{
         idTransicion: "instalar",
         secuencia: [
           {
@@ -766,14 +766,14 @@ export default Ember.Service.extend({
 
     Blockly.Blocks['DibujarLado'].categoria = 'Primitivas';
 
-		this.crearBloqueAccion('ComerChurrasco', {
+    this.crearBloqueAccion('ComerChurrasco', {
       descripcion: 'Comer churrasco',
       icono: 'icono.churrasco.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionColisionadoMientras: "desaparecer"}',
     });
 
-		this.crearBloqueAccion('AgarrarTomate', {
+    this.crearBloqueAccion('AgarrarTomate', {
       descripcion: 'Agarrar tomate',
       icono: 'icono.tomate.png',
       comportamiento: 'RecogerPorEtiqueta',
@@ -786,7 +786,7 @@ export default Ember.Service.extend({
       }`,
     });
 
-		this.crearBloqueAccion('AgarrarLechuga', {
+    this.crearBloqueAccion('AgarrarLechuga', {
       descripcion: 'Agarrar lechuga',
       icono: 'icono.lechuga.png',
       comportamiento: 'RecogerPorEtiqueta',
@@ -798,7 +798,7 @@ export default Ember.Service.extend({
       }`,
     });
 
-		this.crearBloqueAccion('PrepararEnsalada', {
+    this.crearBloqueAccion('PrepararEnsalada', {
       descripcion: 'Preparar ensalada',
       icono: 'icono.ensaladera.png',
       comportamiento: 'PrepararEnsalada',
@@ -810,7 +810,7 @@ export default Ember.Service.extend({
     });
 
     // Para los desafíos de escribir y leer letras
-    
+
     this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
       descripcion: 'Escribir letra que estoy tocando',
       icono: 'icono.DibujarLinea.png',
@@ -839,10 +839,10 @@ export default Ember.Service.extend({
         }
       ],
     });
-    
+
     Blockly.Blocks['EscribirTextoDadoEnOtraCuadricula'].categoria = 'Primitivas';
-    
-    Blockly.MyLanguage['EscribirTextoDadoEnOtraCuadricula'] = function(block) {
+
+    Blockly.MyLanguage['EscribirTextoDadoEnOtraCuadricula'] = function (block) {
       return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
     };
 
@@ -964,13 +964,6 @@ export default Ember.Service.extend({
 
   },
 
-  _definirBloquesAlias() {
-    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
-    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
-    this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
-  },
-
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('TocandoBanana', {
@@ -1090,7 +1083,7 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    this.crearBloqueSensor('EsCulpable',  {
+    this.crearBloqueSensor('EsCulpable', {
       id: 'Descubralculpable',
       descripcion: 'Estoy frente al culpable',
       icono: 'icono.culpable.png',
@@ -1104,14 +1097,14 @@ export default Ember.Service.extend({
       funcionSensor: 'tocando("Churrasco")',
       esBool: true
     });
-  
+
     this.crearBloqueSensor('HayObstaculoArriba', {
       descripcion: 'Hay un obstáculo arriba',
       icono: 'icono.arriba.png',
       funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
       esBool: true
     });
-  
+
     this.crearBloqueSensor('HayObstaculoAbajo', {
       descripcion: 'Hay un obstáculo abajo',
       icono: 'icono.abajo.png',
@@ -1155,7 +1148,7 @@ export default Ember.Service.extend({
           "type": "field_dropdown",
           "name": "letra",
           "options": [
-            ["R","r"],["M","m"],["T","t"],["A","a"],["E","e"],["I","i"],["O","o"],["U","u"]
+            ["R", "r"], ["M", "m"], ["T", "t"], ["A", "a"], ["E", "e"], ["I", "i"], ["O", "o"], ["U", "u"]
           ]
         }
       ],
@@ -1166,7 +1159,7 @@ export default Ember.Service.extend({
     });
     sensorHayVocal.categoria = "Sensores";
 
-    Blockly.MyLanguage['hayVocalRMT'] = function(block) {
+    Blockly.MyLanguage['hayVocalRMT'] = function (block) {
       let codigo = `evaluar("leyendoCaracter('${block.getFieldValue('letra')}')")`;
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
@@ -1217,14 +1210,12 @@ export default Ember.Service.extend({
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
-    this.crearBloqueAlias('Texto', 'text','Valores');
-
   },
 
   _definirBloqueAlIniciar() {
 
     Blockly.Blocks['al_empezar_a_ejecutar'] = {
-      init: function() {
+      init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
 
         this.appendDummyInput().appendField('Al empezar a ejecutar');
@@ -1242,7 +1233,7 @@ export default Ember.Service.extend({
   _definirBloquesEstructurasDeControl() {
 
     Blockly.Blocks['RepetirVacio'] = {
-      init: function() {
+      init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
         this.setPreviousStatement(true);
@@ -1268,7 +1259,7 @@ export default Ember.Service.extend({
 
     let init_base_callnoreturn = Blockly.Blocks['procedures_callnoreturn'].init;
 
-    Blockly.Blocks['procedures_callnoreturn'].init = function() {
+    Blockly.Blocks['procedures_callnoreturn'].init = function () {
       this.setInputsInline(true);
       init_base_callnoreturn.call(this);
     };
@@ -1277,11 +1268,9 @@ export default Ember.Service.extend({
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
     let init_base_procedimiento = Blockly.Blocks['procedures_defnoreturn'].init;
 
-    Blockly.Blocks['procedures_defnoreturn'].init = function() {
+    Blockly.Blocks['procedures_defnoreturn'].init = function () {
       init_base_procedimiento.call(this);
     };
-
-    this.crearBloqueAlias('param_get', 'variables_get');
 
     bloque_procedimiento.categoria = 'Mis procedimientos';
     bloque_procedimiento.categoria_custom = 'PROCEDURE';
@@ -1289,15 +1278,13 @@ export default Ember.Service.extend({
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
-    this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
-
     Blockly.Blocks['Si'] = {
-      init: function() {
+      init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
-            .setCheck('Boolean')
-            .appendField('Si');
-				this.setInputsInline(true);
+          .setCheck('Boolean')
+          .appendField('Si');
+        this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1305,18 +1292,16 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
-    this.crearBloqueAlias('si', 'Si', 'Alternativas');
-
     Blockly.Blocks['SiNo'] = {
-      init: function() {
+      init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
-            .setCheck('Boolean')
-            .appendField('Si');
+          .setCheck('Boolean')
+          .appendField('Si');
         this.appendStatementInput('block1');
-				this.setInputsInline(true);
+        this.setInputsInline(true);
         this.appendDummyInput()
-            .appendField('si no');
+          .appendField('si no');
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1324,16 +1309,13 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
-    this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
-    this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
-
     Blockly.Blocks['Hasta'] = {
-      init: function() {
+      init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
         this.appendValueInput('condition')
-            .setCheck('Boolean')
-            .appendField('Repetir hasta que');
+          .setCheck('Boolean')
+          .appendField('Repetir hasta que');
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1341,23 +1323,21 @@ export default Ember.Service.extend({
       categoria: 'Repeticiones',
     };
 
-    this.crearBloqueAlias('hasta', 'Hasta');
-
   },
 
   _generarLenguaje() {
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
 
-    Blockly.MyLanguage['al_empezar_a_ejecutar'] = function(block) {
+    Blockly.MyLanguage['al_empezar_a_ejecutar'] = function (block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
       let codigo = `${programa}`;
       return codigo;
     };
 
-    Blockly.MyLanguage['RepetirVacio'] = function(block) {
+    Blockly.MyLanguage['RepetirVacio'] = function (block) {
       var repeats = Blockly.MyLanguage.valueToCode(block, 'count',
-      Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
+        Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
 
       var branch = Blockly.MyLanguage.statementToCode(block, 'block');
       branch = Blockly.MyLanguage.addLoopTrap(branch, block.id);
@@ -1380,7 +1360,7 @@ export default Ember.Service.extend({
 
     Blockly.MyLanguage['repetir'] = Blockly.MyLanguage['RepetirVacio'];
 
-    Blockly.MyLanguage['Si'] = function(block) {
+    Blockly.MyLanguage['Si'] = function (block) {
       var condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `if (${condition}) {
@@ -1388,7 +1368,7 @@ export default Ember.Service.extend({
       }`;
     };
 
-    Blockly.MyLanguage['SiNo'] = function(block) {
+    Blockly.MyLanguage['SiNo'] = function (block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var bloque_1 = Blockly.JavaScript.statementToCode(block, 'block1');
       var bloque_2 = Blockly.JavaScript.statementToCode(block, 'block2');
@@ -1400,7 +1380,7 @@ export default Ember.Service.extend({
       }`;
     };
 
-    Blockly.MyLanguage['Hasta'] = function(block) {
+    Blockly.MyLanguage['Hasta'] = function (block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `while (!${condition}) {
@@ -1411,5 +1391,21 @@ export default Ember.Service.extend({
 
     Blockly.MyLanguage.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.MyLanguage.addReservedWords('highlightBlock');
+  },
+
+  _definirBloquesAlias() {
+    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
+    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
+    this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
+    // aca tendira que encganchar la cracion de los alias que tienen sentido.
+    this.crearBloqueAlias('Texto', 'text', 'Valores');
+    this.crearBloqueAlias('param_get', 'variables_get');
+    this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
+    this.crearBloqueAlias('si', 'Si', 'Alternativas');
+    this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
+    this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
+    this.crearBloqueAlias('hasta', 'Hasta');
   }
+
 });
