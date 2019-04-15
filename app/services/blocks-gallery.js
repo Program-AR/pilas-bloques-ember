@@ -8,6 +8,7 @@ export default Ember.Service.extend({
     this._definirColores();
     this._definirBloqueAlIniciar();
     this._definirBloquesAccion();
+    this._definirOpAritmetica();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
@@ -850,7 +851,6 @@ export default Ember.Service.extend({
       return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
     };
 
-
     blockly.createCustomBlock('GirarGrados', {
       message0: "%1 Girar %2 grados",
       colour: Blockly.Blocks.primitivas.COLOUR,
@@ -1258,9 +1258,6 @@ export default Ember.Service.extend({
       toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
     };
 
-    let bloque_procedimiento = this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn');
-
-
     let init_base_callnoreturn = Blockly.Blocks['procedures_callnoreturn'].init;
 
     Blockly.Blocks['procedures_callnoreturn'].init = function () {
@@ -1275,9 +1272,6 @@ export default Ember.Service.extend({
     Blockly.Blocks['procedures_defnoreturn'].init = function () {
       init_base_procedimiento.call(this);
     };
-
-    bloque_procedimiento.categoria = 'Mis procedimientos';
-    bloque_procedimiento.categoria_custom = 'PROCEDURE';
 
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
@@ -1392,17 +1386,86 @@ export default Ember.Service.extend({
       }`;
     };
 
-
     Blockly.MyLanguage.STATEMENT_PREFIX = 'highlightBlock(%1);\n';
     Blockly.MyLanguage.addReservedWords('highlightBlock');
   },
 
+  _definirOpAritmetica() { //Este código fue sacado de Blockly
+    this.get('blockly').createCustomBlock('OpAritmetica', {
+      "type": "math_arithmetic",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "A",
+          "check": "Number"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "OP",
+          "options": [
+            ["%{BKY_MATH_ADDITION_SYMBOL}", "ADD"],
+            ["%{BKY_MATH_SUBTRACTION_SYMBOL}", "MINUS"],
+            ["%{BKY_MATH_MULTIPLICATION_SYMBOL}", "MULTIPLY"],
+            ["%{BKY_MATH_DIVISION_SYMBOL}", "DIVIDE"],
+            ["%{BKY_MATH_POWER_SYMBOL}", "POWER"]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "B",
+          "check": "Number"
+        }
+      ],
+      "inputsInline": true,
+      "output": "Number",
+      "colour": "%{BKY_MATH_HUE}",
+      "helpUrl": "%{BKY_MATH_ARITHMETIC_HELPURL}",
+      "extensions": ["math_op_tooltip"]
+    });
+
+    Blockly.MyLanguage['OpAritmetica'] = function (block) {
+      // Basic arithmetic operators, and power.
+      var OPERATORS = {
+        'ADD': [' + ', Blockly.JavaScript.ORDER_ADDITION],
+        'MINUS': [' - ', Blockly.JavaScript.ORDER_SUBTRACTION],
+        'MULTIPLY': [' * ', Blockly.JavaScript.ORDER_MULTIPLICATION],
+        'DIVIDE': [' / ', Blockly.JavaScript.ORDER_DIVISION],
+        'POWER': [null, Blockly.JavaScript.ORDER_COMMA]  // Handle power separately.
+      };
+      var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
+      var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
+      var op = block.getFieldValue('OP');
+      var tuple = OPERATORS[op];
+      var operator = tuple[0];
+      var order = tuple[1];
+      var isPow = !operator;
+      var isDivision = op === 'DIVIDE';
+      var code;
+      // Power in JavaScript requires a special case since it has no operator.
+      if (isPow) {
+        code = 'Math.pow(' + argument0 + ', ' + argument1 + ')';
+        return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+      }
+      code = `
+      (function(){
+        if (${isDivision} && ${argument1} === 0)
+          evaluar("lanzarActividadError('No se puede dividir por 0')")
+        else
+          return ${argument0 + operator + argument1}
+      })()
+      `;
+      return [code, order];
+    };
+
+    Blockly.Blocks['OpAritmetica'].categoria = 'Operadores';
+
+  },
+
   _definirBloquesAlias() {
-    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
     this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
     this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
-    // aca tendira que encganchar la cracion de los alias que tienen sentido.
+    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
     this.crearBloqueAlias('Texto', 'text', 'Valores');
     this.crearBloqueAlias('param_get', 'variables_get');
     this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
@@ -1410,6 +1473,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
     this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
     this.crearBloqueAlias('hasta', 'Hasta');
+    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos');
   }
 
 });
