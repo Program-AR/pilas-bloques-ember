@@ -13,6 +13,7 @@ export default Ember.Service.extend({
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
+    this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 
   /*
@@ -1468,6 +1469,9 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
     this.crearBloqueAlias('Texto', 'text', 'Valores');
     this.crearBloqueAlias('param_get', 'variables_get');
+  },
+  
+  _agregarAliasParaCompatibilidadHaciaAtras() {
     this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
     this.crearBloqueAlias('si', 'Si', 'Alternativas');
     this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
