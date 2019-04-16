@@ -6,7 +6,7 @@ class ComportamientoConComputadora extends ComportamientoColision {
 
     constructor(argumentos: any) {
         argumentos.etiqueta = 'CompuAnimada';
-        argumentos.mensajeError = "No hay una compu aqui";
+        argumentos.mensajeError = "No hay una computadora aqui";
         argumentos.nombreAnimacion = "escribir";
         super(argumentos);
     }
@@ -24,7 +24,7 @@ class PrenderComputadora extends ComportamientoConComputadora {
     configurarVerificaciones(): void {
         super.configurarVerificaciones();
         this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
-            "Esta compu ya está prendida"))
+            "Esta computadora ya está prendida"))
     }
 
 }
@@ -40,7 +40,7 @@ class ApagarComputadora extends ComportamientoConComputadora {
     configurarVerificaciones(): void {
         super.configurarVerificaciones();
         this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
-            "Esta compu ya está apagada"))
+            "Esta computadora ya está apagada"))
     }
 
 }

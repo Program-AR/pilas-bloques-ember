@@ -48,12 +48,12 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarError('inicial','escribirA','Primero hay que prender la computadora');
     builder.agregarError('inicial','escribirB','Primero hay que prender la computadora');
     builder.agregarError('inicial','escribirC','Primero hay que prender la computadora');
-    builder.agregarError('inicial','apagar','Primero hay que prender la computadora');
+    builder.agregarError('inicial','apagar','Esta computadora ya está apagada');
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','instalar','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirC','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirA','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirB','Primero hay que prender la computadora',1,3);
-    builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','apagar','Primero hay que prender la computadora',1,3);
+    builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','apagar','Esta computadora ya está apagada',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('prendido','escribirC','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('prendido','escribirB','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoA','escribirC','Esa no es la clave correcta',1,3);
