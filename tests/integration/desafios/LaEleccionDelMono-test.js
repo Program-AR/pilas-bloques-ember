@@ -12,7 +12,7 @@ actividadTest(nombre, {
         <statement name="program">
            <block type="AvanzarMono" id="20">
               <next>
-                 <block type="sino" id="22" inline="true">
+                 <block type="SiNo" id="22" inline="true">
                     <value name="condition">
                        <block type="TocandoManzana" id="30" />
                     </value>

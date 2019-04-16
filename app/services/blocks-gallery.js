@@ -174,6 +174,7 @@ export default Ember.Service.extend({
       argumentos: "{'etiqueta':'Luz'}"
     });
 
+    // Revisar esto si se duplica
     this.crearBloqueAccion('ComerBanana', {
       descripcion: 'Comer banana',
       icono: 'icono.banana.png',
@@ -181,6 +182,7 @@ export default Ember.Service.extend({
       argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
     });
 
+    // Revisar esto si se duplica
     this.crearBloqueAccion('ComerBananaNano', {
       descripcion: 'Comer banana',
       icono: 'icono.banana.png',
@@ -251,19 +253,20 @@ export default Ember.Service.extend({
       argumentos: '{nombreAnimacion: "saludando", idTransicion: "saludar"}',
     });
 
-    this.crearBloqueAccion('Abrirojos', {
+    this.crearBloqueAccion('AbrirOjos', {
       descripcion: 'Abrir ojos',
       icono: 'icono.abrirOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true, idTransicion: "abrirOjos"}',
     });
 
-    this.crearBloqueAccion('Cerrarojos', {
+    this.crearBloqueAccion('CerrarOjos', {
       descripcion: 'Cerrar ojos',
       icono: 'icono.cerrarOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados", idTransicion: "cerrarOjos"}',
     });
+
 
     this.crearBloqueAccion('Acostarse', {
       descripcion: 'Acostarse',
@@ -293,13 +296,14 @@ export default Ember.Service.extend({
       argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
     });
 
-    this.crearBloqueAccion('Soar', {
+    this.crearBloqueAccion('Soniar', {
       descripcion: 'Soñar',
       icono: 'icono.soniar.png',
       comportamiento: 'Pensar',
       argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
     });
 
+    // Revisar esto si se duplica
     this.crearBloqueAccion('saltar1', {
       descripcion: 'Saltar',
       icono: 'icono.arriba.png',
@@ -347,15 +351,15 @@ export default Ember.Service.extend({
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
 
-    this.crearBloqueAccion('SiguienteCompu', {
-      descripcion: 'Pasar a la siguiente compu',
+    this.crearBloqueAccion('SiguienteComputadora', {
+      descripcion: 'Pasar a la siguiente computadora',
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
-    this.crearBloqueAccion('PrenderCompu', {
-      descripcion: 'Prender compu',
+    this.crearBloqueAccion('PrenderComputadora', {
+      descripcion: 'Prender computadora',
       icono: 'icono.turn_on.svg',
       comportamiento: 'PrenderComputadora',
       argumentos: `{
@@ -367,8 +371,8 @@ export default Ember.Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('ApagarCompu', {
-      descripcion: 'Apagar compu',
+    this.crearBloqueAccion('ApagarComputadora', {
+      descripcion: 'Apagar computadora',
       icono: 'icono.turn_off.svg',
       comportamiento: 'ApagarComputadora',
       argumentos: `{
@@ -428,7 +432,7 @@ export default Ember.Service.extend({
       argumentos: '{idTransicion: "escribirA"}',
     });
 
-    this.crearBloqueAccion('Agarrarllave', {
+    this.crearBloqueAccion('AgarrarLlave', {
       descripcion: 'Tomar la llave',
       icono: 'icono.llave.png',
       comportamiento: 'Sostener',
@@ -438,7 +442,7 @@ export default Ember.Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Abrircofre', {
+    this.crearBloqueAccion('AbrirCofre', {
       descripcion: 'Abrir el cofre',
       icono: 'icono.cofre.png',
       comportamiento: 'Soltar',
@@ -450,7 +454,7 @@ export default Ember.Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Darsombrero', {
+    this.crearBloqueAccion('DarSombrero', {
       descripcion: 'Dar el sombrero',
       icono: 'icono.sombrero.png',
       comportamiento: 'ComportamientoColision',
@@ -462,7 +466,7 @@ export default Ember.Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Atacarconespada', {
+    this.crearBloqueAccion('AtacarConEspada', {
       id: 'Atacarconespada',
       descripcion: 'Atacar con la espada',
       icono: 'icono.espada.png',
@@ -536,7 +540,6 @@ export default Ember.Service.extend({
         etiqueta: "NaveAnimada"
       }`,
     });
-
 
     this.crearBloqueAccion('AvanzarMono', {
       descripcion: 'Mover a la derecha',
@@ -675,21 +678,21 @@ export default Ember.Service.extend({
       argumentos: '{}',
     });
 
-    this.crearBloqueAccion('PrimerSospechoso', {
+    this.crearBloqueAccion('IrAlPrimerSospechoso', {
       descripcion: 'Ir al primer sospechoso',
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
 
-    this.crearBloqueAccion('SiguienteSospechoso', {
+    this.crearBloqueAccion('IrAlSiguienteSospechoso', {
       descripcion: 'Pasar al siguiente sospechoso',
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
-    this.crearBloqueAccion('SacarDisfraz', {
+    this.crearBloqueAccion('InterrogarSospechoso', {
       descripcion: 'Interrogar sospechoso',
       icono: 'icono.sacar.disfraz.png',
       comportamiento: 'SacarDisfraz',
@@ -797,10 +800,6 @@ export default Ember.Service.extend({
       icono: 'icono.ensaladera.png',
       comportamiento: 'PrepararEnsalada',
       argumentos: `{}`,
-      // comportamientoAdicional: 'Eliminar',
-      // argumentosComportamiento: {
-      //   nombreAnimacion: "explotar"
-      // }
     });
 
     // Para los desafíos de escribir y leer letras
@@ -1021,14 +1020,14 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    this.crearBloqueSensor('EstoyAlInicio', {
+    this.crearBloqueSensor('EstoySobreElInicio', {
       descripcion: 'Estoy al inicio de la columna',
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
       esBool: true
     });
 
-    this.crearBloqueSensor('EstoyAlFin', {
+    this.crearBloqueSensor('EstoySobreElFinal', {
       descripcion: 'Estoy al final de la columna',
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
@@ -1241,7 +1240,7 @@ export default Ember.Service.extend({
       categoria: 'Repeticiones',
     };
 
-    Blockly.Blocks['repetir'] = {
+    Blockly.Blocks['Repetir'] = {
       init: Blockly.Blocks['RepetirVacio'].init,
       categoria: Blockly.Blocks['RepetirVacio'].categoria,
       toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
@@ -1345,7 +1344,7 @@ export default Ember.Service.extend({
       return code;
     };
 
-    Blockly.MyLanguage['repetir'] = Blockly.MyLanguage['RepetirVacio'];
+    Blockly.MyLanguage['Repetir'] = Blockly.MyLanguage['RepetirVacio'];
 
     Blockly.MyLanguage['Si'] = function (block) {
       var condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
@@ -1468,21 +1467,19 @@ export default Ember.Service.extend({
    * que utilizan los bloques anteriormente citados.
    */
   _agregarAliasParaCompatibilidadHaciaAtras() {
-
-    // Estos son casos especiales, OJO, corregir luego.
-    this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
-    this.crearBloqueAlias('si', 'Si', 'Alternativas');
-    this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
-    this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
-
-
-    // Estos alias son los que habian sido eliminados, en el test, hay que crearlos
-    // Programaticamente.
+    this.crearBloqueAlias('si', 'Si');
+    this.crearBloqueAlias('Sino', 'SiNo');
+    this.crearBloqueAlias('sino', 'SiNo');
+    this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
     this.crearBloqueAlias('hasta', 'Hasta');
+    this.crearBloqueAlias('repetir', 'Repetir');
     this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
     this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
-    this.crearBloqueAlias('Prendercompu', 'PrenderCompu');
-    this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
+    this.crearBloqueAlias('PrenderCompuConColision', 'PrenderComputadora');
+    this.crearBloqueAlias('Prendercompu', 'PrenderComputadora');
+    this.crearBloqueAlias('PrenderCompu', 'PrenderComputadora');
+    this.crearBloqueAlias('ApagarCompu', 'ApagarComputadora');
+    this.crearBloqueAlias('SiguienteCompu', 'SiguienteComputadora');
     this.crearBloqueAlias('Prenderfogata', 'PrenderFogata');
     this.crearBloqueAlias('Dejarregalo', 'DejarRegalo');
     this.crearBloqueAlias('Contarbanana', 'ContarBanana');
@@ -1492,19 +1489,31 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('siguienteFoco', 'SiguienteFoco');
     this.crearBloqueAlias('empezarFiesta', 'EmpezarFiesta');
     this.crearBloqueAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
-    this.crearBloqueAlias('Primersospechoso', 'PrimerSospechoso');
-    this.crearBloqueAlias('Siguientesospechoso', 'SiguienteSospechoso');
-    this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
+    this.crearBloqueAlias('Primersospechoso', 'IrAlPrimerSospechoso');
+    this.crearBloqueAlias('PrimerSospechoso', "IrAlPrimerSospechoso");
+    this.crearBloqueAlias('Siguientesospechoso', 'IrAlSiguienteSospechoso');
+    this.crearBloqueAlias('SiguienteSospechoso', "IrAlSiguienteSospechoso");
+    this.crearBloqueAlias('Sacardisfraz', 'InterrogarSospechoso');
+    this.crearBloqueAlias('SacarDisfraz', 'InterrogarSospechoso');
     this.crearBloqueAlias('tocandoFogata', 'TocandoFogata');
     this.crearBloqueAlias('tocandoInicio', 'TocandoInicio');
     this.crearBloqueAlias('tocandoFinal', 'TocandoFinal');
     this.crearBloqueAlias('tocandoPelota', 'TocandoPelota');
     this.crearBloqueAlias('Estoyenunaesquina', 'EstoyEnEsquina');
-    this.crearBloqueAlias('estoyInicio', 'EstoyAlInicio');
-    this.crearBloqueAlias('estoyFinColumna', 'EstoyAlFin');
     this.crearBloqueAlias('tocandoQueso', 'TocandoQueso');
     this.crearBloqueAlias('tocandoLuz', 'TocandoLuz');
-    this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
+    this.crearBloqueAlias('Abrirojos', 'AbrirOjos');
+    this.crearBloqueAlias('Cerrarojos', 'CerrarOjos');
+    this.crearBloqueAlias('Soar', "Soniar");
+    this.crearBloqueAlias('Agarrarllave', "AgarrarLlave");
+    this.crearBloqueAlias('Abrircofre', "AbrirCofre");
+    this.crearBloqueAlias('Darsombrero', "DarSombrero");
+    this.crearBloqueAlias('Atacarconespada', "AtacarConEspada");
+    this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
+    this.crearBloqueAlias('estoyInicio', 'EstoySobreElInicio');
+    this.crearBloqueAlias('estoyAlInicio', 'EstoySobreElInicio');
+    this.crearBloqueAlias('estoyFinColumna', 'EstoySobreElFinal');
+    this.crearBloqueAlias('EstoyAlFin', 'EstoySobreElFinal');
   }
 
 });

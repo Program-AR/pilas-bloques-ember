@@ -22,7 +22,7 @@ actividadTest(nombre, {
                      <block type="ComerQueso" id="92" />
                   </statement>
                   <next>
-                     <block type="sino" id="14" inline="true">
+                     <block type="SiNo" id="14" inline="true">
                         <value name="condition">
                            <block type="TocandoAbajo" id="26" />
                         </value>

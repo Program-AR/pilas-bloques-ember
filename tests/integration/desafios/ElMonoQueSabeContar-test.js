@@ -9,7 +9,7 @@ actividadTest(nombre, {
 <xml xmlns="http://www.w3.org/1999/xhtml">
    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
       <statement name="program">
-         <block type="repetir" id="68" inline="true">
+         <block type="Repetir" id="68" inline="true">
             <value name="count">
                <block type="math_number" id="69">
                   <field name="NUM">4</field>
@@ -42,7 +42,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="hasta" id="114" inline="true">
             <value name="condition">
-               <block type="EstoyAlFin" id="129" />
+               <block type="EstoySobreElFinal" id="129" />
             </value>
             <statement name="block">
                <block type="MoverACasillaAbajo" id="146">
@@ -95,7 +95,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="hasta" id="251" inline="true">
             <value name="condition">
-               <block type="EstoyAlInicio" id="256" />
+               <block type="EstoySobreElInicio" id="256" />
             </value>
             <statement name="block">
                <block type="MoverACasillaArriba" id="262" />

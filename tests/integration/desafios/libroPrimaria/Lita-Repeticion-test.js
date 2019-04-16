@@ -7,7 +7,7 @@ actividadTest("4.I1a", {
     solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
         <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
             <value name="count">
             <block type="math_number">
                 <field name="NUM">3</field>
@@ -57,7 +57,7 @@ actividadTest("4.I1a", {
 actividadTest("4.I1b", {
   descripcionAdicional: "4.I1b: La solución propuesta no resuelve el problema",
     solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
-    <block type="repetir" disabled="true" x="42" y="-249">
+    <block type="Repetir" disabled="true" x="42" y="-249">
         <value name="count">
         <block type="math_number">
             <field name="NUM">10</field>
@@ -66,7 +66,7 @@ actividadTest("4.I1b", {
     </block>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
         <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
             <value name="count">
             <block type="math_number">
                 <field name="NUM">4</field>
@@ -78,7 +78,7 @@ actividadTest("4.I1b", {
             <next>
             <block type="AgarrarLechuga">
                 <next>
-                <block type="repetir">
+                <block type="Repetir">
                     <value name="count">
                     <block type="math_number">
                         <field name="NUM">5</field>
@@ -112,7 +112,7 @@ actividadTest("4.I1b", {
 actividadTest("4.I1b", {
   descripcionAdicional: "4.I1b: La solución correcta resuelve el problema",
     solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
-    <block type="repetir" disabled="true" x="42" y="-249">
+    <block type="Repetir" disabled="true" x="42" y="-249">
         <value name="count">
         <block type="math_number">
             <field name="NUM">10</field>
@@ -121,7 +121,7 @@ actividadTest("4.I1b", {
     </block>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
         <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
             <value name="count">
             <block type="math_number">
                 <field name="NUM">5</field>
@@ -133,7 +133,7 @@ actividadTest("4.I1b", {
             <next>
             <block type="AgarrarLechuga">
                 <next>
-                <block type="repetir">
+                <block type="Repetir">
                     <value name="count">
                     <block type="math_number">
                         <field name="NUM">5</field>

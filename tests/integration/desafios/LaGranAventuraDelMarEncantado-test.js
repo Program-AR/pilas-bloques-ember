@@ -12,7 +12,7 @@ actividadTest(nombre, {
 				<statement name="program">
 					 <block type="MoverACasillaDerecha" id="11">
 							<next>
-								 <block type="Darsombrero" id="24" />
+								 <block type="DarSombrero" id="24" />
 							</next>
 					 </block>
 				</statement>
@@ -69,7 +69,7 @@ actividadTest(nombre, {
 	              <block type="MoverACasillaIzquierda" id="12"></block>
 	            </statement>
 	            <next>
-	              <block type="Abrircofre" id="49"></block>
+	              <block type="AbrirCofre" id="49"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -115,7 +115,7 @@ actividadTest(nombre, {
 	        <next>
 	          <block type="MoverACasillaDerecha" id="23">
 	            <next>
-	              <block type="Atacarconespada" id="24"></block>
+	              <block type="AtacarConEspada" id="24"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -146,7 +146,7 @@ actividadTest(nombre, {
 	              <block type="MoverACasillaDerecha" id="31"></block>
 	            </statement>
 	            <next>
-	              <block type="Agarrarllave" id="73"></block>
+	              <block type="AgarrarLlave" id="73"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -169,7 +169,7 @@ actividadTest(nombre, {
 	        <next>
 	          <block type="MoverACasillaDerecha" id="36">
 	            <next>
-	              <block type="Darsombrero" id="37"></block>
+	              <block type="DarSombrero" id="37"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -227,7 +227,7 @@ actividadTest(nombre, {
             <next>
                <block type="MoverACasillaArriba" id="147">
                   <next>
-                     <block type="Abrircofre" id="267" />
+                     <block type="AbrirCofre" id="267" />
                   </next>
                </block>
             </next>
@@ -258,7 +258,7 @@ actividadTest(nombre, {
                      <block type="MoverACasillaArriba" id="46" />
                   </statement>
                   <next>
-                     <block type="Agarrarllave" id="257" />
+                     <block type="AgarrarLlave" id="257" />
                   </next>
                </block>
             </next>
@@ -275,7 +275,7 @@ actividadTest(nombre, {
                   <next>
                      <block type="MoverACasillaDerecha" id="402">
                         <next>
-                           <block type="Atacarconespada" id="237" />
+                           <block type="AtacarConEspada" id="237" />
                         </next>
                      </block>
                   </next>
@@ -319,7 +319,7 @@ actividadTest(nombre, {
             <next>
                <block type="MoverACasillaDerecha" id="367">
                   <next>
-                     <block type="Darsombrero" id="217" />
+                     <block type="DarSombrero" id="217" />
                   </next>
                </block>
             </next>

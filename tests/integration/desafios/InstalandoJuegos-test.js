@@ -16,7 +16,7 @@ actividadTest(nombre, {
 				   </block>
 				</value>
 				<statement name="block">
-				   <block type="SiguienteCompu" id="221">
+				   <block type="SiguienteComputadora" id="221">
 					  <next>
 						 <block type="procedures_callnoreturn" id="209">
 							<mutation name="Procesar compu" />
@@ -31,14 +31,14 @@ actividadTest(nombre, {
 		  <mutation />
 		  <field name="NAME">Procesar compu</field>
 		  <statement name="STACK">
-			 <block type="PrenderCompu" id="229">
+			 <block type="PrenderComputadora" id="229">
 				<next>
 				   <block type="procedures_callnoreturn" id="233">
 					  <mutation name="Ingresar password" />
 					  <next>
 						 <block type="InstalarJuego" id="241">
 							<next>
-							   <block type="ApagarCompu" id="249" />
+							   <block type="ApagarComputadora" id="249" />
 							</next>
 						 </block>
 					  </next>
@@ -71,9 +71,9 @@ actividadTest(nombre, {
 	<xml>
 	   <block y="0" x="0" editable="false" movable="false" deletable="false" id="32" type="al_empezar_a_ejecutar">
 		  <statement name="program">
-			 <block id="35" type="SiguienteCompu">
+			 <block id="35" type="SiguienteComputadora">
 				<next>
-				   <block inline="true" id="33" type="repetir">
+				   <block inline="true" id="33" type="Repetir">
 					  <value name="count">
 						 <block id="34" type="Numero">
 							<field name="NUM">3</field>
@@ -93,14 +93,14 @@ actividadTest(nombre, {
 		  <mutation />
 		  <field name="NAME">Procesar compu</field>
 		  <statement name="STACK">
-			 <block id="38" type="PrenderCompu">
+			 <block id="38" type="PrenderComputadora">
 				<next>
 				   <block id="39" type="procedures_callnoreturn">
 					  <mutation name="Ingresar password" />
 					  <next>
 						 <block id="40" type="InstalarJuego">
 							<next>
-							   <block id="41" type="ApagarCompu" />
+							   <block id="41" type="ApagarComputadora" />
 							</next>
 						 </block>
 					  </next>

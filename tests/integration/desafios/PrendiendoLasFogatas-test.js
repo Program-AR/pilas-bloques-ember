@@ -55,7 +55,7 @@ actividadTest(nombre, {
       </mutation>
       <field name="NAME">Avanzar prendiendo hacia</field>
       <statement name="STACK">
-         <block type="repetir" id="8" inline="true">
+         <block type="Repetir" id="8" inline="true">
             <value name="count">
                <block type="math_number" id="9">
                   <field name="NUM">6</field>

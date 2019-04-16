@@ -62,7 +62,7 @@ actividadTest(nombre, {
       </mutation>
       <field name="NAME">Cambiar foco veces</field>
       <statement name="STACK">
-         <block type="repetir" id="13" inline="true">
+         <block type="Repetir" id="13" inline="true">
             <value name="count">
                <block type="param_get" id="14">
                   <field name="VAR">veces</field>

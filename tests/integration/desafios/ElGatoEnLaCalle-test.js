@@ -34,7 +34,7 @@ actividadTest(nombre, {
 			<mutation></mutation>
 			<field name="NAME">despertarse</field>
 			<statement name="STACK">
-				<block type="Abrirojos" id="83">
+				<block type="AbrirOjos" id="83">
 					<next>
 						<block type="Pararse" id="108"></block>
 					</next>
@@ -47,9 +47,9 @@ actividadTest(nombre, {
 			<statement name="STACK">
 				<block type="Acostarse" id="42">
 					<next>
-						<block type="Cerrarojos" id="62">
+						<block type="CerrarOjos" id="62">
 							<next>
-								<block type="Soar" id="71"></block>
+								<block type="Soniar" id="71"></block>
 							</next>
 						</block>
 					</next>
@@ -93,7 +93,7 @@ actividadTest(nombre, {
 		<statement name="STACK">
 			<block type="Pararse" id="24">
 				<next>
-					<block type="Abrirojos" id="23"></block>
+					<block type="AbrirOjos" id="23"></block>
 				</next>
 			</block>
 		</statement>
@@ -102,11 +102,11 @@ actividadTest(nombre, {
 		<mutation></mutation>
 		<field name="NAME">dormirse</field>
 		<statement name="STACK">
-			<block type="Cerrarojos" id="27">
+			<block type="CerrarOjos" id="27">
 				<next>
 					<block type="Acostarse" id="26">
 						<next>
-							<block type="Soar" id="28"></block>
+							<block type="Soniar" id="28"></block>
 						</next>
 					</block>
 				</next>
@@ -119,19 +119,19 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Puedo acostarme y pararme varias veces idem ojos',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="105" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="155"><next><block type="Abrirojos" id="164"><next><block type="Cerrarojos" id="173"><next><block type="Abrirojos" id="182"><next><block type="Acostarse" id="191"><next><block type="Pararse" id="200"><next><block type="Acostarse" id="209"></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="105" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="CerrarOjos" id="155"><next><block type="AbrirOjos" id="164"><next><block type="CerrarOjos" id="173"><next><block type="AbrirOjos" id="182"><next><block type="Acostarse" id="191"><next><block type="Pararse" id="200"><next><block type="Acostarse" id="209"></block></next></block></next></block></next></block></next></block></next></block></next></block></statement></block></xml>',
 	resuelveDesafio: false,
 });
 
 actividadTest(nombre, {
 	descripcionAdicional: 'da error al intentar cerrar ojos dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="39" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="40"><next><block type="Cerrarojos" id="41"></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="39" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="CerrarOjos" id="40"><next><block type="CerrarOjos" id="41"></block></next></block></statement></block></xml>',
 	errorEsperado: 'No puedo, ya estoy con los ojos cerrados',
 });
 
 actividadTest(nombre, {
 	descripcionAdicional: 'da error al intentar abrir ojos dos veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="19" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Cerrarojos" id="38"><next><block type="Abrirojos" id="20"><next><block type="Abrirojos" id="21"></block></next></block></next></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="19" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="CerrarOjos" id="38"><next><block type="AbrirOjos" id="20"><next><block type="AbrirOjos" id="21"></block></next></block></next></block></statement></block></xml>',
 	errorEsperado: 'No puedo, ya estoy con los ojos abiertos',
 });
 

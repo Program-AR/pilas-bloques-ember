@@ -9,7 +9,7 @@ actividadTest(nombre, {
 <xml xmlns="http://www.w3.org/1999/xhtml">
    <block type="al_empezar_a_ejecutar" id="3" deletable="false" movable="false" editable="false" x="0" y="0">
       <statement name="program">
-         <block type="repetir" id="4" inline="true">
+         <block type="Repetir" id="4" inline="true">
             <value name="count">
                <block type="math_number" id="5">
                   <field name="NUM">4</field>
@@ -42,7 +42,7 @@ actividadTest(nombre, {
       <statement name="STACK">
          <block type="hasta" id="10" inline="true">
             <value name="condition">
-               <block type="EstoyAlInicio" id="11" />
+               <block type="EstoySobreElInicio" id="11" />
             </value>
             <statement name="block">
                <block type="MoverACasillaArriba" id="12" />
@@ -54,7 +54,7 @@ actividadTest(nombre, {
       <mutation />
       <field name="NAME">Contar frutas de columna</field>
       <statement name="STACK">
-         <block type="repetir" id="14" inline="true">
+         <block type="Repetir" id="14" inline="true">
             <value name="count">
                <block type="LargoColumnaActual" id="15" />
             </value>

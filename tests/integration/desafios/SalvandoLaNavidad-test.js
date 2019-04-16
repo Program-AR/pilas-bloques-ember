@@ -91,7 +91,7 @@ actividadTest(nombre, {
       </mutation>
       <field name="NAME">dejar regalos en fila</field>
       <statement name="STACK">
-         <block type="repetir" id="51" inline="true">
+         <block type="Repetir" id="51" inline="true">
             <value name="count">
                <block type="param_get" id="56">
                   <field name="VAR">cant. casilleros</field>

@@ -11,7 +11,7 @@ actividadTest("5.1.4a", {
           <next>
             <block type="MoverACasillaDerecha">
               <next>
-                <block type="sino">
+                <block type="SiNo">
                   <value name="condition">
                     <block type="HayTomate"></block>
                   </value>
@@ -40,7 +40,7 @@ actividadTest("5.1.4a", {
           <next>
             <block type="MoverACasillaDerecha">
               <next>
-                <block type="sino">
+                <block type="SiNo">
                   <value name="condition">
                     <block type="HayLechuga"></block>
                   </value>
@@ -102,7 +102,7 @@ actividadTest("5.2.1c", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">6</field>
@@ -159,7 +159,7 @@ actividadTest("5.2.1c", {
 
 actividadTest("5.2.1c", {
   descripcionAdicional: "3.1.4a: No se puede preparar ensalada aun, faltan recoger todas las verduras restantes",
-  solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="m+bao0~F%Q;[seB/+6/3" deletable="false" movable="false" editable="false" x="271" y="15"><statement name="program"><block type="repetir" id="%6n:[itB,;QL.6sXUuIx"><value name="count"><block type="math_number" id="U.-e{r/vX+Z(A5mz+i5:"><field name="NUM">7</field></block></value><statement name="block"><block type="MoverACasillaAbajo" id=",G_SMDg%CGYuVOpeZBf3"></block></statement><next><block type="PrepararEnsalada" id="Z~_|BigUji_!L?Q-DxdR"></block></next></block></statement></block></xml>',
+  solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="m+bao0~F%Q;[seB/+6/3" deletable="false" movable="false" editable="false" x="271" y="15"><statement name="program"><block type="Repetir" id="%6n:[itB,;QL.6sXUuIx"><value name="count"><block type="math_number" id="U.-e{r/vX+Z(A5mz+i5:"><field name="NUM">7</field></block></value><statement name="block"><block type="MoverACasillaAbajo" id=",G_SMDg%CGYuVOpeZBf3"></block></statement><next><block type="PrepararEnsalada" id="Z~_|BigUji_!L?Q-DxdR"></block></next></block></statement></block></xml>',
   resuelveDesafio: false,
   errorEsperado: "¡Todavía me quedan ingredientes por recoger!",
 });

@@ -68,7 +68,7 @@ actividadTest("5.1.4b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="sino">
+      <block type="SiNo">
         <value name="condition">
           <block type="HayObstaculoDerecha"></block>
         </value>
@@ -103,7 +103,7 @@ actividadTest("5.1.4b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="sino">
+      <block type="SiNo">
         <value name="condition">
           <block type="HayObstaculoAbajo"></block>
         </value>
@@ -140,7 +140,7 @@ actividadTest("5.1.4c", {
     <statement name="program">
       <block type="MoverACasillaDerecha">
       <next>
-      <block type="sino">
+      <block type="SiNo">
         <value name="condition">
           <block type="HayObstaculoDerecha"></block>
         </value>
@@ -189,7 +189,7 @@ actividadTest("5.2.1a", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">7</field>
@@ -221,7 +221,7 @@ actividadTest("5.2.1b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">7</field>

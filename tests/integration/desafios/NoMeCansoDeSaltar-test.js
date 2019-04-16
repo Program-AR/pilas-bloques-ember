@@ -6,7 +6,7 @@ moduloActividad(nombre);
 
 // Solución esperada. Usa el bloque Repetir
 actividadTest(nombre, {
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="13" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="14" inline="true"><value name="count"><block type="math_number" id="15"><field name="NUM">30</field></block></value><statement name="block"><block type="saltar1" id="16"></block></statement></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="13" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Repetir" id="14" inline="true"><value name="count"><block type="math_number" id="15"><field name="NUM">30</field></block></value><statement name="block"><block type="saltar1" id="16"></block></statement></block></statement></block></xml>',
 });
 
 // Solución alternativa donde no usa el bloque Repetir y ejecuta 30 bloques saltar seguidos.
@@ -16,6 +16,6 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error al querer saltar más de 30 veces',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="repetir" id="4" inline="true"><value name="count"><block type="math_number" id="5"><field name="NUM">31</field></block></value><statement name="block"><block type="saltar1" id="7"></block></statement></block></statement></block></xml>',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="Repetir" id="4" inline="true"><value name="count"><block type="math_number" id="5"><field name="NUM">31</field></block></value><statement name="block"><block type="saltar1" id="7"></block></statement></block></statement></block></xml>',
 	errorEsperado: '¡Uy! Salté mucho... ¡Me pasé!',
 });

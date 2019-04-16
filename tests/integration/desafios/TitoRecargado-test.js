@@ -9,7 +9,7 @@ actividadTest(nombre, {
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 	   <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
 		  <statement name="program">
-			 <block type="repetir" id="13" inline="true">
+			 <block type="Repetir" id="13" inline="true">
 				<value name="count">
 				   <block type="math_number" id="14">
 					  <field name="NUM">6</field>
@@ -52,7 +52,7 @@ actividadTest(nombre, {
 			 <block type="procedures_callnoreturn" id="60">
 				<mutation name="Prender luz si esta apagada" />
 				<next>
-				   <block type="repetir" id="45" inline="true">
+				   <block type="Repetir" id="45" inline="true">
 					  <value name="count">
 						 <block type="math_number" id="46">
 							<field name="NUM">5</field>
