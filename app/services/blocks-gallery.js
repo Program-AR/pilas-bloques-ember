@@ -341,7 +341,7 @@ export default Ember.Service.extend({
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
 
-    this.crearBloqueAccion('SiguienteComputadora', {
+    this.crearBloqueAccion('PasarASiguienteComputadora', {
       descripcion: 'Pasar a la siguiente computadora',
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
@@ -352,73 +352,41 @@ export default Ember.Service.extend({
       descripcion: 'Prender computadora',
       icono: 'icono.turn_on.svg',
       comportamiento: 'PrenderComputadora',
-      argumentos: `{
-        etiqueta: 'CompuAnimada',
-        mensajeError: 'No hay una compu aqui',
-        idTransicion: 'prender',
-        animacionColisionadoPost: 'prendida',
-        nombreAnimacion: 'escribir'
-      }`,
+      argumentos: '{}',
     });
 
     this.crearBloqueAccion('ApagarComputadora', {
       descripcion: 'Apagar computadora',
       icono: 'icono.turn_off.svg',
       comportamiento: 'ApagarComputadora',
-      argumentos: `{
-				etiqueta: "CompuAnimada",
-				mensajeError: "No hay una compu aqui",
-				idTransicion: "apagar",
-				animacionColisionadoPost: "parado",
-				nombreAnimacion: "escribir"
-			}`
+      argumentos: '{}'
     });
 
     this.crearBloqueAccion('InstalarJuego', {
       descripcion: 'Instalar juego',
       icono: 'icono.installation.svg',
-      comportamiento: 'SecuenciaAnimada',
-      argumentos: `{
-        idTransicion: "instalar",
-        secuencia: [
-          {
-            comportamiento: "ComportamientoColision",
-            argumentos: {
-              etiqueta: "CompuAnimada",
-							mensajeError: "No hay una compu aqui",
-							nombreAnimacion: "escribir",
-            }
-          },
-          {
-            comportamiento: "EsperarAnimacionTocado",
-            argumentos: {
-							etiqueta: "CompuAnimada",
-							nombreAnimacion: "instalando",
-							nombreAnimacionSiguiente: "yaInstalado"
-            }
-          }
-        ]
-      }`
+      comportamiento: 'InstalarJuegoEnComputadora',
+      argumentos: '{}'
     });
 
     this.crearBloqueAccion('EscribirC', {
       descripcion: 'Escribir "C"',
       icono: 'icono.letter-c.svg',
-      comportamiento: 'EscribirEnCompuAnimada',
+      comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion : "escribirC"}',
     });
 
     this.crearBloqueAccion('EscribirB', {
       descripcion: 'Escribir "B"',
       icono: 'icono.letter-b.svg',
-      comportamiento: 'EscribirEnCompuAnimada',
+      comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion: "escribirB"}',
     });
 
     this.crearBloqueAccion('EscribirA', {
       descripcion: 'Escribir "A"',
       icono: 'icono.letter-a.svg',
-      comportamiento: 'EscribirEnCompuAnimada',
+      comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion: "escribirA"}',
     });
 
@@ -1469,7 +1437,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Prendercompu', 'PrenderComputadora');
     this.crearBloqueAlias('PrenderCompu', 'PrenderComputadora');
     this.crearBloqueAlias('ApagarCompu', 'ApagarComputadora');
-    this.crearBloqueAlias('SiguienteCompu', 'SiguienteComputadora');
+    this.crearBloqueAlias('SiguienteCompu', 'PasarASiguienteComputadora');
     this.crearBloqueAlias('Prenderfogata', 'PrenderFogata');
     this.crearBloqueAlias('Dejarregalo', 'DejarRegalo');
     this.crearBloqueAlias('Contarbanana', 'ContarBanana');

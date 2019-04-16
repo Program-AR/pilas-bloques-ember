@@ -107,38 +107,3 @@ class MorderPorEtiqueta extends EncenderPorEtiqueta {
 		return "mordida";
 	}
 }
-
-class PrenderComputadora extends ComportamientoColision {
-
-	configurarVerificaciones(): void {
-		super.configurarVerificaciones();
-		this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
-			"Esta compu ya la prendiste antes"))
-	}
-
-}
-
-class ApagarComputadora extends ComportamientoColision {
-
-	configurarVerificaciones(): void {
-		super.configurarVerificaciones();
-		this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
-			"Esta compu ya la apagaste antes"))
-	}
-
-}
-
-class EscribirEnCompuAnimada extends ComportamientoColision {
-	iniciar(receptor) {
-		this.argumentos.etiqueta = "CompuAnimada";
-		this.argumentos.mensajeError = "No hay una compu aqui";
-		this.argumentos.nombreAnimacion = "escribir";
-		super.iniciar(receptor);
-	}
-
-	metodo(objetoColision) {
-		if (this.argumentos['idTransicion'] == 'escribirC') {
-			objetoColision.cargarAnimacion("claveok");
-		}
-	}
-}

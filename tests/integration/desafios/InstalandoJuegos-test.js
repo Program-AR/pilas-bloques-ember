@@ -16,7 +16,7 @@ actividadTest(nombre, {
 				   </block>
 				</value>
 				<statement name="block">
-				   <block type="SiguienteComputadora" id="221">
+				   <block type="PasarASiguienteComputadora" id="221">
 					  <next>
 						 <block type="procedures_callnoreturn" id="209">
 							<mutation name="Procesar compu" />
@@ -67,11 +67,12 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'No debe poderse resolver la actividad si no están las tres máquinas instaladas',
+	errorEsperado: 'Esta compu ya está prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml>
 	   <block y="0" x="0" editable="false" movable="false" deletable="false" id="32" type="al_empezar_a_ejecutar">
 		  <statement name="program">
-			 <block id="35" type="SiguienteComputadora">
+			 <block id="35" type="PasarASiguienteComputadora">
 				<next>
 				   <block inline="true" id="33" type="Repetir">
 					  <value name="count">
@@ -125,5 +126,4 @@ actividadTest(nombre, {
 		  </statement>
 	   </block>
 	</xml>`,
-	errorEsperado: 'Esta compu ya la prendiste antes',
 });

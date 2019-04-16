@@ -105,7 +105,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
-	errorEsperado: 'Esta compu ya la prendiste antes',
+	errorEsperado: 'Esta compu ya está prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 		 <variables />
