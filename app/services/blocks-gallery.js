@@ -294,8 +294,7 @@ export default Ember.Service.extend({
       argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
     });
 
-    // Revisar esto si se duplica
-    this.crearBloqueAccion('saltar1', {
+    this.crearBloqueAccion('SaltarHablando', {
       descripcion: 'Saltar',
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarHablando',
@@ -1506,6 +1505,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('estoyFinColumna', 'EstoySobreElFinal');
     this.crearBloqueAlias('EstoyAlFin', 'EstoySobreElFinal');
     this.crearBloqueAlias('ComerBananaNano', 'ComerBanana');
+    this.crearBloqueAlias('saltar1', 'SaltarHablando');
   }
 
 });
