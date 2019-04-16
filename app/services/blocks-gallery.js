@@ -13,7 +13,6 @@ export default Ember.Service.extend({
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
-    this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 
   /*
@@ -1469,15 +1468,54 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
     this.crearBloqueAlias('Texto', 'text', 'Valores');
     this.crearBloqueAlias('param_get', 'variables_get');
+    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos');
+    this._agregarAliasParaCompatibilidadHaciaAtras();
   },
-  
+
+  /**
+   * Crea alias con nombres de bloques que fueron previamente usados
+   * en pilas bloques, pero que han cambiado el nombre por otro actualmente.
+   * Esto es necesario para mantener la retrocompatibilidad con ejercicios
+   * que utilizan los bloques anteriormente citados.
+   */
   _agregarAliasParaCompatibilidadHaciaAtras() {
+
+    // Estos son casos especiales, OJO, corregir luego.
     this.crearBloqueAlias('Repetir', 'repetir', 'Repeticiones');
     this.crearBloqueAlias('si', 'Si', 'Alternativas');
     this.crearBloqueAlias('Sino', 'SiNo', 'Alternativas');
     this.crearBloqueAlias('sino', 'SiNo', 'Alternativas');
+
+
+    // Estos alias son los que habian sido eliminados, en el test, hay que crearlos
+    // Programaticamente.
     this.crearBloqueAlias('hasta', 'Hasta');
-    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos');
+    this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
+    this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
+    this.crearBloqueAlias('Prendercompu', 'PrenderCompu');
+    this.crearBloqueAlias('Escaparenunicornio', 'EscaparEnUnicornio');
+    this.crearBloqueAlias('Prenderfogata', 'PrenderFogata');
+    this.crearBloqueAlias('Dejarregalo', 'DejarRegalo');
+    this.crearBloqueAlias('Contarbanana', 'ContarBanana');
+    this.crearBloqueAlias('Contarmanzana', 'ContarManzana');
+    this.crearBloqueAlias('AvanzarKm', 'Avanzar1km');
+    this.crearBloqueAlias('cambiarColor', 'CambiarColor');
+    this.crearBloqueAlias('siguienteFoco', 'SiguienteFoco');
+    this.crearBloqueAlias('empezarFiesta', 'EmpezarFiesta');
+    this.crearBloqueAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
+    this.crearBloqueAlias('Primersospechoso', 'PrimerSospechoso');
+    this.crearBloqueAlias('Siguientesospechoso', 'SiguienteSospechoso');
+    this.crearBloqueAlias('Sacardisfraz', 'SacarDisfraz');
+    this.crearBloqueAlias('tocandoFogata', 'TocandoFogata');
+    this.crearBloqueAlias('tocandoInicio', 'TocandoInicio');
+    this.crearBloqueAlias('tocandoFinal', 'TocandoFinal');
+    this.crearBloqueAlias('tocandoPelota', 'TocandoPelota');
+    this.crearBloqueAlias('Estoyenunaesquina', 'EstoyEnEsquina');
+    this.crearBloqueAlias('estoyInicio', 'EstoyAlInicio');
+    this.crearBloqueAlias('estoyFinColumna', 'EstoyAlFin');
+    this.crearBloqueAlias('tocandoQueso', 'TocandoQueso');
+    this.crearBloqueAlias('tocandoLuz', 'TocandoLuz');
+    this.crearBloqueAlias('Descubralculpable', 'EsCulpable');
   }
 
 });
