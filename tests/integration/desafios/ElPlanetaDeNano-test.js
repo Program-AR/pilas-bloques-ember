@@ -84,7 +84,7 @@ actividadTest(nombre, {
 				<statement name="block">
 				   <block type="MoverACasillaDerecha" id="17">
 					  <next>
-						 <block type="ComerBananaNano" id="18" />
+						 <block type="ComerBanana" id="18" />
 					  </next>
 				   </block>
 				</statement>

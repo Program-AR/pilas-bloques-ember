@@ -174,20 +174,11 @@ export default Ember.Service.extend({
       argumentos: "{'etiqueta':'Luz'}"
     });
 
-    // Revisar esto si se duplica
     this.crearBloqueAccion('ComerBanana', {
       descripcion: 'Comer banana',
       icono: 'icono.banana.png',
       comportamiento: 'RecogerPorEtiqueta',
       argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
-    });
-
-    // Revisar esto si se duplica
-    this.crearBloqueAccion('ComerBananaNano', {
-      descripcion: 'Comer banana',
-      icono: 'icono.banana.png',
-      comportamiento: 'RecogerPorEtiqueta',
-      argumentos: '{etiqueta: "BananaAnimada"}',
     });
 
     this.crearBloqueAccion('ComerManzana', {
@@ -1514,6 +1505,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('estoyAlInicio', 'EstoySobreElInicio');
     this.crearBloqueAlias('estoyFinColumna', 'EstoySobreElFinal');
     this.crearBloqueAlias('EstoyAlFin', 'EstoySobreElFinal');
+    this.crearBloqueAlias('ComerBananaNano', 'ComerBanana');
   }
 
 });
