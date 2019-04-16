@@ -119,3 +119,23 @@ actividadTest(nombre, {
 	   </block>
 	</xml>`,
 });
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
+	errorEsperado: 'No hay una compu aqui',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+				<xml xmlns="http://www.w3.org/1999/xhtml">
+   					<variables />
+   					<block type="al_empezar_a_ejecutar" id="f??M^^OalsGN9_LMY{!8" deletable="false" movable="false" editable="false" x="15" y="15">
+      					<statement name="program">
+         					<block type="PrenderComputadora" id="0h,Qgm8I1;Z5CLtd[U(4" />
+      					</statement>
+					   </block>
+				</xml>`,
+});
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
+	errorEsperado: 'Esta compu ya la prendiste antes',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="m]4qN#uBu1{*2RN{P7b/" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><block type="MoverACasillaAbajo" id="Vcm9$Ds4ZHA8.%cgUoL3"><next><block type="PrenderComputadora" id="G(LhjH54n`MKDK:OMZ=A"><next><block type="PrenderComputadora" id="ob^9-_ZqX[Jc)c#+jt}F"></block></next></block></next></block></statement></block></xml>',
+});
