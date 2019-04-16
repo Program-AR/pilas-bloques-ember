@@ -1,4 +1,4 @@
-import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'PrendiendoLasCompus';
 
@@ -40,7 +40,7 @@ actividadTest(nombre, {
 						 <block type="EstoyEnEsquina" id="62" />
 					  </value>
 					  <statement name="block">
-						 <block type="PrenderCompuConColision" id="68">
+						 <block type="PrenderCompu" id="68">
 							<next>
 							   <block type="MoverACasillaDerecha" id="79" />
 							</next>
@@ -62,7 +62,7 @@ actividadTest(nombre, {
 						 <block type="EstoyEnEsquina" id="149" />
 					  </value>
 					  <statement name="block">
-						 <block type="PrenderCompuConColision" id="178">
+						 <block type="PrenderCompu" id="178">
 							<next>
 							   <block type="MoverACasillaArriba" id="172" />
 							</next>
@@ -84,7 +84,7 @@ actividadTest(nombre, {
 						 <block type="EstoyEnEsquina" id="91" />
 					  </value>
 					  <statement name="block">
-						 <block type="PrenderCompuConColision" id="108">
+						 <block type="PrenderCompu" id="108">
 							<next>
 							   <block type="MoverACasillaAbajo" id="97" />
 							</next>
@@ -106,7 +106,7 @@ actividadTest(nombre, {
 						 <block type="EstoyEnEsquina" id="156" />
 					  </value>
 					  <statement name="block">
-						 <block type="PrenderCompuConColision" id="184">
+						 <block type="PrenderCompu" id="184">
 							<next>
 							   <block type="MoverACasillaIzquierda" id="195" />
 							</next>

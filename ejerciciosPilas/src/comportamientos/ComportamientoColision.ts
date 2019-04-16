@@ -5,15 +5,12 @@
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
-
 Si se está colisionando con un objeto de etiqueta A:
 	Realizar acciones dependientes de ese objeto
 Caso Contrario:
 	El personaje principal ejecuta un mensaje de error.
-
 La escena que lo utiliza debe tener definido
 automata
-
 Respecto de los argumentos:
  - etiqueta: Es obligatorio, es la etiqueta del actor con el que busca condicional.
  - mensajeError: Es el mensaje que aparece cuando no hay colisión objeto de esa etiqueta.
@@ -111,24 +108,24 @@ class MorderPorEtiqueta extends EncenderPorEtiqueta {
 	}
 }
 
-class PrenderCompuParaInstalar extends ComportamientoColision {
-	configurarVerificaciones() {
+class PrenderComputadora extends ComportamientoColision {
+
+	configurarVerificaciones(): void {
 		super.configurarVerificaciones();
 		this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
 			"Esta compu ya la prendiste antes"))
 	}
+
 }
 
-class ApagarPorEtiqueta extends ComportamientoColision {
-	metodo(objetoColision) {
-		objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "apagada", mantenerAnimacion: true });
-	}
-}
+class ApagarComputadora extends ComportamientoColision {
 
-class PrenderPorEtiqueta extends ComportamientoColision {
-	metodo(objetoColision) {
-		objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "prendida", mantenerAnimacion: true });
+	configurarVerificaciones(): void {
+		super.configurarVerificaciones();
+		this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
+			"Esta compu ya la apagaste antes"))
 	}
+
 }
 
 class EscribirEnCompuAnimada extends ComportamientoColision {
@@ -138,10 +135,10 @@ class EscribirEnCompuAnimada extends ComportamientoColision {
 		this.argumentos.nombreAnimacion = "escribir";
 		super.iniciar(receptor);
 	}
-	
+
 	metodo(objetoColision) {
 		if (this.argumentos['idTransicion'] == 'escribirC') {
-			objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
+			objetoColision.cargarAnimacion("claveok");
 		}
 	}
 }

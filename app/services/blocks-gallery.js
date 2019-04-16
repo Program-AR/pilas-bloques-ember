@@ -154,30 +154,6 @@ export default Ember.Service.extend({
 
   _definirBloquesAccion() {
 
-    this.crearBloqueAccion('PrenderCompu', {
-      descripcion: 'Prender compu',
-      icono: 'icono.turn_on.svg',
-      comportamiento: 'PrenderCompuParaInstalar',
-      argumentos: `{
-        etiqueta: 'CompuAnimada',
-        mensajeError: 'No hay una compu aqui',
-        idTransicion: 'prender',
-        animacionColisionadoPost: 'prendida',
-        nombreAnimacion: 'escribir'
-      }`,
-    });
-
-    this.crearBloqueAccion('PrenderCompuConColision', {
-      descripcion: 'Prender compu',
-      icono: 'icono.computadora.png',
-      comportamiento: 'ComportamientoColision',
-      argumentos: `{
-        etiqueta: "CompuAnimada",
-        animacionColisionadoPost: "prendida",
-        nombreAnimacion: "escribir"
-      }`,
-    });
-
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
@@ -378,10 +354,23 @@ export default Ember.Service.extend({
       argumentos: '{}',
     });
 
+    this.crearBloqueAccion('PrenderCompu', {
+      descripcion: 'Prender compu',
+      icono: 'icono.turn_on.svg',
+      comportamiento: 'PrenderComputadora',
+      argumentos: `{
+        etiqueta: 'CompuAnimada',
+        mensajeError: 'No hay una compu aqui',
+        idTransicion: 'prender',
+        animacionColisionadoPost: 'prendida',
+        nombreAnimacion: 'escribir'
+      }`,
+    });
+
     this.crearBloqueAccion('ApagarCompu', {
       descripcion: 'Apagar compu',
       icono: 'icono.turn_off.svg',
-      comportamiento: 'ComportamientoColision',
+      comportamiento: 'ApagarComputadora',
       argumentos: `{
 				etiqueta: "CompuAnimada",
 				mensajeError: "No hay una compu aqui",

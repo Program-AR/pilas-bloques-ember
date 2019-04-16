@@ -1,4 +1,4 @@
-import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'PrendiendoLasCompusParametrizado';
 
@@ -68,7 +68,7 @@ actividadTest(nombre, {
 		              <block type="EstoyEnEsquina" id="31"></block>
 		            </value>
 		            <statement name="block">
-		              <block type="PrenderCompuConColision" id="41">
+		              <block type="PrenderCompu" id="41">
 		                <next>
 		                  <block type="MoverA" id="34">
 		                    <value name="direccion">
