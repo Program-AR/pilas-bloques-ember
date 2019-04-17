@@ -35,12 +35,15 @@ test('Should not highlight program block', function(assert) {
     assertHighlight(assert, [])
 });
 
-
 test('On lineal program should highlight only current block', function(assert) {
     loadProgramAndSendSteps(3, linealProgram)
     assertHighlight(assert, ['MoverACasillaIzquierda'])
 });
 
+test('At finish, last block stay highlighted', function(assert) {
+  loadProgramAndSendSteps(Infinity, linealProgram)
+  assertHighlight(assert, ['MoverACasillaDerecha'])
+});
 
 let repetitionProgram = [`
 <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="269" y="15">
