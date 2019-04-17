@@ -7,7 +7,10 @@ export default Ember.Service.extend({
 
     step(blockId) {
         let block = this.workspace.getBlockById(blockId)
-        if (!block) return // TODO: For testing
+        if (!block) { // For testing
+            console.warn(`Couldn't highlight block id: ${blockId}`)
+            return
+        }
         this._removePreviousBlockIfLastOfModule()
         this._removePreviousBlockIfContinue(block)
 
