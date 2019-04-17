@@ -54,20 +54,11 @@ class ComportamientoAnimado extends Comportamiento {
 		this.sanitizarArgumentos();
 		this.configurarVerificaciones();
 
-		this.secuenciaActualizar = new Array();
-		this.secuenciaActualizar.push(function () {
-			this.configuracionInicial();
-			this.preAnimacion();
-			return true;
-		}.bind(this));
-		this.secuenciaActualizar.push(function () {
-			return this.doActualizar();
-		}.bind(this));
-		this.secuenciaActualizar.push(function () {
-			this.configuracionFinal();
-			this.postAnimacion();
-			return true;
-		}.bind(this));
+		this.secuenciaActualizar = [
+			() => { this.configuracionInicial(); this.preAnimacion(); return true; },
+			() => { return this.doActualizar() },
+			() => { this.configuracionFinal(); this.postAnimacion(); return true; }
+		];
 	}
 
 	sanitizarArgumentos() {

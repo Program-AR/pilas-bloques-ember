@@ -6,7 +6,7 @@ class ComportamientoConComputadora extends ComportamientoColision {
 
     constructor(argumentos: any) {
         argumentos.etiqueta = 'CompuAnimada';
-        argumentos.mensajeError = "No hay una computadora aqui";
+        argumentos.mensajeError = "No hay una computadora aquí";
         argumentos.nombreAnimacion = "escribir";
         super(argumentos);
     }

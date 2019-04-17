@@ -91,7 +91,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
-	errorEsperado: 'No hay una computadora aqui',
+	errorEsperado: 'No hay una computadora aquí',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 							<xml xmlns="http://www.w3.org/1999/xhtml">
    							<variables />
