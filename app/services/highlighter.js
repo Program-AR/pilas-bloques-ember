@@ -1,5 +1,8 @@
 import Ember from 'ember';
 
+/// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
+/// Particularmente, tiene la lógica de highligh para los procedimientos.
+/// No sabe nada sobre qué hacen o cuándo se jecutará cada bloque.
 export default Ember.Service.extend({
     
     blocks: [],
