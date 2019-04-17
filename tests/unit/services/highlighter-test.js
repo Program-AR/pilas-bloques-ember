@@ -1,11 +1,12 @@
 import { moduleFor, test } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
 
+var highlighter
 
 moduleFor('service:highlighter', 'Unit | Service | highlighter', { 
     needs: ['service:blocksGallery', 'service:blockly'],
     setup() {
-        var highlighter = this.subject()
+        highlighter = this.subject()
         highlighter.workspace = blocklyWorkspaceMock()
         highlighter.clear()
         
@@ -30,16 +31,14 @@ let linealProgram = [`
 `]
 
 test('Should not highlight program block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 1, linealProgram)
-    assertHighlight(assert, highlighter, [])
+    loadProgramAndSendSteps(1, linealProgram)
+    assertHighlight(assert, [])
 });
 
 
 test('On lineal program should highlight only current block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 3, linealProgram)
-    assertHighlight(assert, highlighter, ['MoverACasillaIzquierda'])
+    loadProgramAndSendSteps(3, linealProgram)
+    assertHighlight(assert, ['MoverACasillaIzquierda'])
 });
 
 
@@ -72,21 +71,18 @@ let repetitionProgram = [`
 `]
 
 test('Should highlight repetition block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 3, repetitionProgram)
-    assertHighlight(assert, highlighter, ['repetir'])
+    loadProgramAndSendSteps(3, repetitionProgram)
+    assertHighlight(assert, ['repetir'])
 });
 
 test('When enter on repetition block should only highlight current block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 5, repetitionProgram)
-    assertHighlight(assert, highlighter, ['MoverACasillaDerecha'])
+    loadProgramAndSendSteps(5, repetitionProgram)
+    assertHighlight(assert, ['MoverACasillaDerecha'])
 });
 
 test('When go out repetition block should only highlight next block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 6, repetitionProgram)
-    assertHighlight(assert, highlighter, ['MoverACasillaAbajo'])
+    loadProgramAndSendSteps(6, repetitionProgram)
+    assertHighlight(assert, ['MoverACasillaAbajo'])
 });
 
 
@@ -117,21 +113,18 @@ let alternativeProgram = [`
 `]
 
 test('Should highlight alternative block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 3, alternativeProgram)
-    assertHighlight(assert, highlighter, ['si'])
+    loadProgramAndSendSteps(3, alternativeProgram)
+    assertHighlight(assert, ['si'])
 });
 
 test('When enter on alternative block should only highlight current block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 5, alternativeProgram)
-    assertHighlight(assert, highlighter, ['MoverACasillaAbajo'])
+    loadProgramAndSendSteps(5, alternativeProgram)
+    assertHighlight(assert, ['MoverACasillaAbajo'])
 });
 
 test('When go out alternative block should only highlight next block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 6, alternativeProgram)
-    assertHighlight(assert, highlighter, ['MoverACasillaAbajo'])
+    loadProgramAndSendSteps(6, alternativeProgram)
+    assertHighlight(assert, ['MoverACasillaAbajo'])
 });
 
 let programWithProcedures = [`
@@ -212,37 +205,32 @@ let programWithProcedures = [`
 `]
 
 test('Should not highlight procedure definition block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 4, programWithProcedures)
-    assertHighlight(assert, highlighter, ['procedures_callnoreturn'])
+    loadProgramAndSendSteps(4, programWithProcedures)
+    assertHighlight(assert, ['procedures_callnoreturn'])
 });
 
 test('When enter on procedure block should highlight procedure call and current block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 5, programWithProcedures)
-    assertHighlight(assert, highlighter, ['procedures_callnoreturn', 'GirarGrados'])
+    loadProgramAndSendSteps(5, programWithProcedures)
+    assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
 });
 
 test('Step on procedure block should highlight procedure call and go lineal', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 6, programWithProcedures)
-    assertHighlight(assert, highlighter, ['procedures_callnoreturn', 'procedures_callnoreturn'])
+    loadProgramAndSendSteps(6, programWithProcedures)
+    assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn'])
 });
 
 test('Should highlight all procedure calls involve in current stack', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 8, programWithProcedures)
-    assertHighlight(assert, highlighter, ['procedures_callnoreturn', 'procedures_callnoreturn', 'SaltarHaciaAdelante'])
+    loadProgramAndSendSteps(8, programWithProcedures)
+    assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn', 'SaltarHaciaAdelante'])
 });
 
 test('When go out procedure block should only highlight next block', function(assert) {
-    var highlighter = this.subject()
-    loadProgramAndSendSteps(highlighter, 11, programWithProcedures)
-    assertHighlight(assert, highlighter, ['DibujarLado'])
+    loadProgramAndSendSteps(11, programWithProcedures)
+    assertHighlight(assert, ['DibujarLado'])
 });
 
 
-function loadProgramAndSendSteps(highlighter, steps, blocksAsText) {
+function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
         .map(Blockly.Xml.textToDom)
@@ -265,7 +253,7 @@ function loadProgramAndSendSteps(highlighter, steps, blocksAsText) {
 }
 
 //TODO: Config assert?
-function assertHighlight(assert, highlighter, expectedTypes) {
+function assertHighlight(assert, expectedTypes) {
     assertLength(assert, highlighter.blocks, expectedTypes.length)
     assertTypes(assert, highlighter.blocks, expectedTypes)
 }
