@@ -37,7 +37,7 @@ export default [
     consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
     escena: 'ElGatoEnLaCalle',
     debeFelicitarse: true,
-    bloques: ['Saludar', 'Avanzar', 'Volver', 'Abrirojos', 'Cerrarojos', 'Acostarse', 'Pararse', 'Soar', 'Procedimiento']
+    bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento']
   },
   {
     id: 3,
@@ -48,7 +48,7 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     debeFelicitarse: true,
-    bloques: ['saltar1', 'Procedimiento', 'repetir']
+    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
   },
   {
     id: 4,
@@ -59,7 +59,7 @@ export default [
     consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
     escena: 'ElMarcianoEnElDesierto',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir']
   },
   {
     id: 5,
@@ -71,7 +71,7 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'repetir']
+    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
   },
   {
     id: 6,
@@ -81,7 +81,7 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'Repetir']
   },
   {
     id: 7,
@@ -92,7 +92,7 @@ export default [
     consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
     escena: 'ElRecolectorDeEstrellas',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'Repetir']
   },
   {
     id: 8,
@@ -102,7 +102,7 @@ export default [
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir']
   },
   {
     id: 9,
@@ -113,7 +113,7 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'Repetir']
   },
   {
     id: 10,
@@ -123,7 +123,7 @@ export default [
     enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
     escena: 'InstalandoJuegos',
     debeFelicitarse: true,
-    bloques: ['SiguienteCompu', 'PrenderCompu', 'ApagarCompu', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'repetir', 'Procedimiento'],
+    bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
     id: 11,
@@ -138,7 +138,7 @@ export default [
       '5) Escapar en unicornio.',
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Agarrarllave', 'Abrircofre', 'Darsombrero', 'Atacarconespada', 'Escaparenunicornio', 'repetir', 'Procedimiento'],
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
   },
   {
     id: 12,
@@ -148,7 +148,7 @@ export default [
     enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
     escena: 'ReparandoLaNave',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'repetir', 'Procedimiento'],
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'Repetir', 'Procedimiento'],
   },
   {
     id: 13,
@@ -163,7 +163,7 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'AvanzarMono', 'Tocandobanana', 'repetir', 'Procedimiento', 'si']
+    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si']
   },
   {
     id: 14,
@@ -177,7 +177,7 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'repetir', 'si', 'sino', 'tocandoManzana', 'tocandoBanana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
   },
   {
     id: 15,
@@ -187,7 +187,7 @@ export default [
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
     escena: 'LaberintoCorto',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'MoverACasillaDerecha',
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
@@ -198,7 +198,7 @@ export default [
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
     escena: 'TresNaranjas',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'Sino', 'TocandoNaranja']
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja']
   },
   {
     id: 17,
@@ -208,7 +208,7 @@ export default [
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     escena: 'TitoRecargado',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'Sino', 'TocandoLuz']
+    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuz']
   },
   {
     id: 18,
@@ -219,7 +219,7 @@ export default [
     escena: 'LaberintoLargo',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-      'Repetir', 'Si', 'Sino', 'TocandoAbajo', 'TocandoDerecha'],
+      'Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
     id: 19,
@@ -231,7 +231,7 @@ export default [
     escena: 'SuperTito1',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
-      'TocandoFinal', 'Repetir', 'Si', 'Sino', 'Hasta'],
+      'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
   },
   {
     id: 20,
@@ -243,7 +243,7 @@ export default [
     escena: 'SuperTito2',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
-      'MoverACasillaAbajo', 'Repetir', 'Si', 'Sino', 'Hasta']
+      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta']
   },
   {
     id: 21,
@@ -255,7 +255,7 @@ export default [
     escena: 'LaberintoConQueso',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-      'ComerQueso', 'Repetir', 'Si', 'Sino', 'Hasta', 'TocandoAbajo',
+      'ComerQueso', 'Repetir', 'Si', 'SiNo', 'Hasta', 'TocandoAbajo',
       'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
   },
   {
@@ -267,8 +267,8 @@ export default [
     consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
     escena: 'ElDetectiveChaparro',
     debeFelicitarse: true,
-    bloques: ['Repetir', 'Si', 'Sino', 'Hasta', 'Procedimiento',
-      'PrimerSospechoso', 'SiguienteSospechoso', 'SacarDisfraz',
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
+      'IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso',
       'EsCulpable'],
   },
   {
@@ -284,7 +284,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
       'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
-      'Sino', 'Hasta'],
+      'SiNo', 'Hasta'],
   },
   {
     id: 24,
@@ -295,10 +295,10 @@ export default [
       'Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.',
     escena: 'PrendiendoLasCompus',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'Sino', 'Hasta',
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'MoverACasillaDerecha', 'MoverACasillaArriba',
       'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'PrenderCompuConColision', 'EstoyEnEsquina'],
+      'PrenderComputadora', 'EstoyEnEsquina'],
   },
   {
     id: 25,
@@ -311,8 +311,8 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarBanana', 'ContarManzana',
-      'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'Sino',
-      'Hasta', 'EstoyAlInicio', 'EstoyAlFin']
+      'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'SiNo',
+      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal']
   },
   {
     id: 26,
@@ -324,7 +324,7 @@ export default [
     escena: 'SuperViaje',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
-      'Repetir', 'Si', 'Sino', 'Hasta'],
+      'Repetir', 'Si', 'SiNo', 'Hasta'],
   },
   {
     id: 27,
@@ -338,8 +338,8 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna',
       'ContarBanana', 'ContarManzana', 'TocandoBanana',
-      'TocandoManzana', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-      'EstoyAlInicio', 'LargoColumnaActual']
+      'TocandoManzana', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'EstoySobreElInicio', 'LargoColumnaActual']
   },
   {
     id: 28,
@@ -351,8 +351,8 @@ export default [
     consignaInicial: 'A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]". \n Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
-      'VolverAlBordeIzquierdo', 'ComerBananaNano', 'RepetirVacio', 'Repetir', 'Si',
-      'Sino', 'Hasta', 'Numero'],
+      'VolverAlBordeIzquierdo', 'ComerBanana', 'RepetirVacio', 'Repetir', 'Si',
+      'SiNo', 'Hasta', 'Numero'],
   },
   {
     id: 29,
@@ -363,7 +363,7 @@ export default [
     consignaInicial: '',
     escena: 'DibujandoCuadrado',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero']
   },
   {
@@ -375,7 +375,7 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosHorizontal',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
@@ -387,7 +387,7 @@ export default [
     consignaInicial: '',
     escena: 'Dibujando5CuadradosDiagonal',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
@@ -399,7 +399,7 @@ export default [
     consignaInicial: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.',
     escena: 'Dibujando4CuadradosInteriores',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
@@ -411,7 +411,7 @@ export default [
     consignaInicial: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).',
     escena: 'DibujandoCabezaElefante',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
@@ -423,7 +423,7 @@ export default [
     consignaInicial: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.',
     escena: 'DibujandoHexagono',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
@@ -435,7 +435,7 @@ export default [
     consignaInicial: 'En los polígonos, la suma de todos los ángulos externos es 360',
     escena: 'DibujandoTrianguloEquilatero',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
@@ -447,7 +447,7 @@ export default [
     consignaInicial: 'Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?',
     escena: 'DibujandoPoligonosInteriores',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
@@ -459,7 +459,7 @@ export default [
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',
     escena: 'DibujandoCuevaEstalagtitas',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
@@ -470,7 +470,7 @@ export default [
     escena: 'LaFiestaDeDracula',
     enunciado: 'Para que la fiesta de Drácula comience debemos cambiar el color de los 3 focos una cierta cantidad de veces: 5 veces el primero, 8 el segundo y 12 el tercero.',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'Numero',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero',
       'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
@@ -481,7 +481,7 @@ export default [
     escena: 'SalvandoLaNavidad',
     enunciado: 'Ayudá a Papá Noel a dejar un regalo al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
     id: 132,
@@ -494,8 +494,8 @@ export default [
     deshabilitado: false,
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
-      'PrenderCompuConColision', 'EstoyEnEsquina', 'Numero',
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'PrenderComputadora', 'EstoyEnEsquina', 'Numero',
       'OpAritmetica'],
   },
   {
@@ -507,7 +507,7 @@ export default [
     enunciado: 'Tito debe encender todas las luces del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
-      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
@@ -519,7 +519,7 @@ export default [
     enunciado: 'El cangrejo quiere pinchar todos los globos de la fiesta. Tené en cuenta que estos no cambian de lugar. Pista: ¿la cantidad de globos y la dirección podrían ser parámetros?',
     consignaInicial: 'Se pueden combinar parámetros numéricos (cantidades, longitudes) con parámetros de texto (direcciones, nombres).',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
       'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
@@ -532,7 +532,7 @@ export default [
     enunciado: 'En este caso debemos encender todas las fogatas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca se prenden y que el tamaño del cuadrado no varía de una ejecución a la otra.',
     consignaInicial: 'Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'si', 'SiNo', 'Hasta',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
       'Numero', 'OpComparacion', 'OpAritmetica',
@@ -551,7 +551,7 @@ export default [
     enunciado: 'En esta actividad vas a poder realizar el dibujo que más te guste',
     consignaInicial: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.',
     debeFelicitarse: false,
-    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'Sino', 'Hasta', 'DibujarLado',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
 
@@ -1424,7 +1424,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1451,7 +1451,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1478,7 +1478,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1504,7 +1504,7 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1529,7 +1529,7 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1554,7 +1554,7 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'repetir'
+      'Repetir'
     ]
   },
   {
@@ -1582,7 +1582,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir'
+      'Repetir'
     ],
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -1590,7 +1590,7 @@ export default [
     <statement name="program">
       <block type="MoverACasillaArriba">
       <next>
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">4</field>
@@ -1635,13 +1635,13 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir'
+      'Repetir'
     ],
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">5</field>
@@ -1686,13 +1686,13 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'repetir'
+      'Repetir'
     ],
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
       <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
         <statement name="program">
-          <block type="repetir">
+          <block type="Repetir">
             <value name="count">
               <block type="math_number">
                 <field name="NUM">4</field>
@@ -1702,7 +1702,7 @@ export default [
               <block type="MoverArribaDibujando"></block>
             </statement>
             <next>
-              <block type="repetir">
+              <block type="Repetir">
                 <value name="count">
                   <block type="math_number">
                     <field name="NUM">4</field>
@@ -1740,13 +1740,13 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'repetir'
+      'Repetir'
     ],
     debugging: true,
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
       <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
         <statement name="program">
-          <block type="repetir">
+          <block type="Repetir">
             <value name="count">
               <block type="math_number">
                 <field name="NUM">2</field>
@@ -1760,7 +1760,7 @@ export default [
               </block>
             </statement>
             <next>
-              <block type="repetir">
+              <block type="Repetir">
                 <value name="count">
                   <block type="math_number">
                     <field name="NUM">3</field>
@@ -1770,7 +1770,7 @@ export default [
                   <block type="MoverDerechaDibujando"></block>
                 </statement>
                 <next>
-                  <block type="repetir">
+                  <block type="Repetir">
                     <value name="count">
                       <block type="math_number">
                         <field name="NUM">3</field>
@@ -1813,7 +1813,7 @@ export default [
       'AgarrarTomate',
       'AgarrarLechuga',
       'PrepararEnsalada',
-      'repetir',
+      'Repetir',
     ],
   },
   {
@@ -1834,7 +1834,7 @@ export default [
     solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
       <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">4</field>
@@ -1847,7 +1847,7 @@ export default [
         <next>
         <block type="AgarrarLechuga">
         <next>
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">5</field>
@@ -1888,7 +1888,7 @@ export default [
       'AgarrarTomate',
       'AgarrarLechuga',
       'PrepararEnsalada',
-      'repetir',
+      'Repetir',
     ],
   },
   {
@@ -1907,7 +1907,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'si',
+      'Si',
       'HayChurrasco'
     ],
   },
@@ -1926,7 +1926,7 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'si',
+      'Si',
       'HayChurrasco'
     ],
   },
@@ -1952,7 +1952,7 @@ export default [
       'SaltarArriba',
       'SaltarDerecha',
       'SaltarIzquierda',
-      'si',
+      'Si',
       'HayCharco'
     ]
   },
@@ -1974,8 +1974,8 @@ export default [
       'AgarrarTomate',
       'AgarrarLechuga',
       'PrepararEnsalada',
-      'si',
-      'sino',
+      'Si',
+      'SiNo',
       'HayTomate',
       'HayLechuga',
     ],
@@ -2008,8 +2008,8 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'si',
-      'sino',
+      'Si',
+      'SiNo',
       'HayObstaculoArriba',
       'HayObstaculoAbajo',
       'HayObstaculoIzquierda',
@@ -2036,8 +2036,8 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'si',
-      'sino',
+      'Si',
+      'SiNo',
       'HayObstaculoArriba',
       'HayObstaculoAbajo',
       'HayObstaculoIzquierda',
@@ -2060,9 +2060,9 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir',
-      'si',
-      'sino',
+      'Repetir',
+      'Si',
+      'SiNo',
       'HayChurrasco'
     ],
   },
@@ -2082,9 +2082,9 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'ComerChurrasco',
-      'repetir',
-      'si',
-      'sino',
+      'Repetir',
+      'Si',
+      'SiNo',
       'HayChurrasco'
     ],
   },
@@ -2105,9 +2105,9 @@ export default [
       'AgarrarTomate',
       'AgarrarLechuga',
       'PrepararEnsalada',
-      'repetir',
-      'si',
-      'sino',
+      'Repetir',
+      'Si',
+      'SiNo',
       'HayTomate',
       'HayLechuga',
     ],
@@ -2128,9 +2128,9 @@ export default [
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
       'EscribirLetraActualEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino'
+      'Repetir',
+      'Si',
+      'SiNo'
     ],
   },
 
@@ -2151,9 +2151,9 @@ export default [
       'MoverACasillaDerecha',
       'EscribirLetraActualEnOtraCuadricula',
       'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino'
+      'Repetir',
+      'Si',
+      'SiNo'
     ],
   },
 
@@ -2174,9 +2174,9 @@ export default [
       'MoverACasillaDerecha',
       'EscribirLetraActualEnOtraCuadricula',
       'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino',
+      'Repetir',
+      'Si',
+      'SiNo',
       'hayVocalRMT'
     ],
   },
@@ -2198,9 +2198,9 @@ export default [
       'MoverACasillaDerecha',
       'EscribirLetraActualEnOtraCuadricula',
       'EscribirTextoDadoEnOtraCuadricula',
-      'repetir',
-      'si',
-      'sino',
+      'Repetir',
+      'Si',
+      'SiNo',
       'hayVocalRMT'
     ],
   },
@@ -2235,7 +2235,7 @@ export default [
       [O,O,O,O],\
 		")`,
     estiloToolbox: 'sinCategorias',
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura02',
@@ -2249,7 +2249,7 @@ export default [
       [A,-,O],\
 		")`,
     estiloToolbox: 'sinCategorias',
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura03',
@@ -2263,7 +2263,7 @@ export default [
       [A,-,O],\
 		")`,
     estiloToolbox: 'sinCategorias',
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura04',
@@ -2277,7 +2277,7 @@ export default [
       [O,O,O],\
 		")`,
     estiloToolbox: 'sinCategorias',
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura05',
@@ -2291,7 +2291,7 @@ export default [
       [-,O,O],\
       [P,O,O],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura06',
@@ -2305,7 +2305,7 @@ export default [
       [[{x:-30,y:60},{x:30,y:60},{x:30,y:0},{x:30,y:-60}]],
       {xCoty: -30, yCoty: 60, longitudSegmento: 60}
     )`,
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'Si', 'SiNo', 'HayCharco']
   },
   {
     id: 'paracaptura07',
@@ -2319,7 +2319,7 @@ export default [
       [[{x:-40,y:-40},{x:-40,y:40},{x:40,y:40},{x:40,y:-40},{x:-40,y:-40}]],
       {xCoty: -40, yCoty: -40, longitudSegmento: 80}
     )`,
-    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'repetir', 'si', 'sino', 'HayCharco']
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'Si', 'SiNo', 'HayCharco']
   },
   {
     id: 'paracaptura08',
@@ -2332,7 +2332,7 @@ export default [
       ['n', 'A'],
       ['a', 'b'],
     ], "banana")`,
-    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'paracaptura09',
@@ -2347,7 +2347,7 @@ export default [
       ['m', 'u'],
       ['c', 'a'],
     ], "humahuaca")`,
-    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'paracaptura10',
@@ -2362,7 +2362,7 @@ export default [
       ['n', 'a', 'b'],
       ['a', 'r', 'e'],
     ], "banana")`,
-    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'paracaptura11',
@@ -2377,7 +2377,7 @@ export default [
       ['m', 'u', 'o'],
       ['c', 'a', 'j'],
     ], "humahuaca")`,
-    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'repetir', 'si', 'sino']
+    bloques: ['MoverLeyendoArriba', 'MoverLeyendoAbajo', 'MoverLeyendoDerecha', 'MoverLeyendoIzquierda', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'paracaptura12',
@@ -2393,7 +2393,7 @@ export default [
       [O,-,-,-,-],\
       [O,O,-,P,-],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura13',
@@ -2409,7 +2409,7 @@ export default [
       [-,-,O,-,-],\
       [A,O,O,-,O],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura14',
@@ -2425,7 +2425,7 @@ export default [
       [O,-,-,-,-],\
       [O,-,O,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura15',
@@ -2444,7 +2444,7 @@ export default [
       [O,O,-,-,-,O,-,O],\
       [O,O,O,O,O,O,O,O],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura16',
@@ -2463,7 +2463,7 @@ export default [
       [O,O,O,O,-,A,-,O],\
       [O,O,O,O,O,O,O,O],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura17',
@@ -2482,7 +2482,7 @@ export default [
       [O,O,O,O,-,O,-,A],\
       [O,O,O,O,O,O,-,-],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco']
   },
   {
     id: 'paracaptura18',
@@ -2495,7 +2495,7 @@ export default [
       [-,-,-,-,-],\
       [A,O,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura19',
@@ -2508,7 +2508,7 @@ export default [
       [-,-,-,-,-],\
       [A,-,-,O,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura20',
@@ -2521,7 +2521,7 @@ export default [
       [-,-,O,-,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura21',
@@ -2534,7 +2534,7 @@ export default [
       [-,O,-,-,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura22',
@@ -2547,7 +2547,7 @@ export default [
       [-,-,-,-,O],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura23',
@@ -2560,7 +2560,7 @@ export default [
       [-,-,-,O,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura24',
@@ -2573,7 +2573,7 @@ export default [
       [-,O,-,-,-],\
       [A,-,-,O,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura25',
@@ -2586,7 +2586,7 @@ export default [
       [-,-,-,-,-],\
       [A,-,-,O,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura26',
@@ -2599,7 +2599,7 @@ export default [
       [-,-,O,-,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura27',
@@ -2612,7 +2612,7 @@ export default [
       [-,-,-,-,-],\
       [A,O,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura28',
@@ -2625,7 +2625,7 @@ export default [
       [-,-,-,O,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'paracaptura29',
@@ -2638,6 +2638,6 @@ export default [
       [-,-,-,-,-],\
       [A,-,-,-,P],\
 		")`,
-    bloques: ['repetir', 'si', 'sino', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+    bloques: ['Repetir', 'Si', 'SiNo', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha', 'ComerChurrasco', 'HayChurrasco', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
 ];

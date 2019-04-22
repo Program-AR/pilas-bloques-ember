@@ -6,7 +6,19 @@ moduloActividad(nombre);
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error al dar sombrero sin tenerlo',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="MoverACasillaDerecha" id="11"><next><block type="Darsombrero" id="24"></block></next></block></statement></block></xml>',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	<xml xmlns="http://www.w3.org/1999/xhtml">
+		 <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
+				<statement name="program">
+					 <block type="MoverACasillaDerecha" id="11">
+							<next>
+								 <block type="DarSombrero" id="24" />
+							</next>
+					 </block>
+				</statement>
+		 </block>
+	</xml>`,
+	
 	errorEsperado: 'Para darle el sombrero al mago necesitás sacarlo del cofre.',
 });
 
@@ -57,7 +69,7 @@ actividadTest(nombre, {
 	              <block type="MoverACasillaIzquierda" id="12"></block>
 	            </statement>
 	            <next>
-	              <block type="Abrircofre" id="49"></block>
+	              <block type="AbrirCofre" id="49"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -82,7 +94,7 @@ actividadTest(nombre, {
 	          </block>
 	        </statement>
 	        <next>
-	          <block type="Escaparenunicornio" id="18"></block>
+	          <block type="EscaparEnUnicornio" id="18"></block>
 	        </next>
 	      </block>
 	    </statement>
@@ -103,7 +115,7 @@ actividadTest(nombre, {
 	        <next>
 	          <block type="MoverACasillaDerecha" id="23">
 	            <next>
-	              <block type="Atacarconespada" id="24"></block>
+	              <block type="AtacarConEspada" id="24"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -134,7 +146,7 @@ actividadTest(nombre, {
 	              <block type="MoverACasillaDerecha" id="31"></block>
 	            </statement>
 	            <next>
-	              <block type="Agarrarllave" id="73"></block>
+	              <block type="AgarrarLlave" id="73"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -157,7 +169,7 @@ actividadTest(nombre, {
 	        <next>
 	          <block type="MoverACasillaDerecha" id="36">
 	            <next>
-	              <block type="Darsombrero" id="37"></block>
+	              <block type="DarSombrero" id="37"></block>
 	            </next>
 	          </block>
 	        </next>
@@ -170,6 +182,150 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Solo puede escapar sobre el unicornio',
-	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0"><statement name="program"><block type="procedures_callnoreturn" id="58"><mutation name="Ir a buscar la llave"></mutation><next><block type="procedures_callnoreturn" id="306"><mutation name="Ir al Cofre"></mutation><next><block type="procedures_callnoreturn" id="328"><mutation name="Ir al mago"></mutation><next><block type="procedures_callnoreturn" id="299"><mutation name="Ir a pelear"></mutation><next><block type="procedures_callnoreturn" id="292"><mutation name="Ir a Escapar"></mutation></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="78" x="233" y="26"><mutation></mutation><field name="NAME">Ir al Cofre</field><statement name="STACK"><block type="repetir" id="120" inline="true"><value name="count"><block type="math_number" id="121"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaIzquierda" id="137"></block></statement><next><block type="MoverACasillaArriba" id="147"><next><block type="Abrircofre" id="267"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="3" x="-30" y="191"><mutation></mutation><field name="NAME">Ir a buscar la llave</field><statement name="STACK"><block type="repetir" id="17" inline="true"><value name="count"><block type="math_number" id="18"><field name="NUM">4</field></block></value><statement name="block"><block type="MoverACasillaDerecha" id="34"></block></statement><next><block type="repetir" id="23" inline="true"><value name="count"><block type="math_number" id="24"><field name="NUM">2</field></block></value><statement name="block"><block type="MoverACasillaArriba" id="46"></block></statement><next><block type="Agarrarllave" id="257"></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="96" x="252" y="216"><mutation></mutation><field name="NAME">Ir a pelear</field><statement name="STACK"><block type="MoverACasillaArriba" id="422"><next><block type="MoverACasillaArriba" id="392"><next><block type="MoverACasillaDerecha" id="402"><next><block type="Atacarconespada" id="237"></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="102" x="223" y="404"><mutation></mutation><field name="NAME">Ir a Escapar</field><statement name="STACK"><block type="repetir" id="444" inline="true"><value name="count"><block type="math_number" id="445"><field name="NUM">2</field></block></value><statement name="block"><block type="MoverACasillaAbajo" id="465"></block></statement><next><block type="Escaparenunicornio" id="163"></block></next></block></statement></block><block type="procedures_defnoreturn" id="82" x="-29" y="448"><mutation></mutation><field name="NAME">Ir al mago</field><statement name="STACK"><block type="repetir" id="340" inline="true"><value name="count"><block type="math_number" id="341"><field name="NUM">3</field></block></value><statement name="block"><block type="MoverACasillaAbajo" id="357"></block></statement><next><block type="MoverACasillaDerecha" id="367"><next><block type="Darsombrero" id="217"></block></next></block></next></block></statement></block></xml>',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+<xml xmlns="http://www.w3.org/1999/xhtml">
+   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
+      <statement name="program">
+         <block type="procedures_callnoreturn" id="58">
+            <mutation name="Ir a buscar la llave" />
+            <next>
+               <block type="procedures_callnoreturn" id="306">
+                  <mutation name="Ir al Cofre" />
+                  <next>
+                     <block type="procedures_callnoreturn" id="328">
+                        <mutation name="Ir al mago" />
+                        <next>
+                           <block type="procedures_callnoreturn" id="299">
+                              <mutation name="Ir a pelear" />
+                              <next>
+                                 <block type="procedures_callnoreturn" id="292">
+                                    <mutation name="Ir a Escapar" />
+                                 </block>
+                              </next>
+                           </block>
+                        </next>
+                     </block>
+                  </next>
+               </block>
+            </next>
+         </block>
+      </statement>
+   </block>
+   <block type="procedures_defnoreturn" id="78" x="233" y="26">
+      <mutation />
+      <field name="NAME">Ir al Cofre</field>
+      <statement name="STACK">
+         <block type="repetir" id="120" inline="true">
+            <value name="count">
+               <block type="math_number" id="121">
+                  <field name="NUM">4</field>
+               </block>
+            </value>
+            <statement name="block">
+               <block type="MoverACasillaIzquierda" id="137" />
+            </statement>
+            <next>
+               <block type="MoverACasillaArriba" id="147">
+                  <next>
+                     <block type="AbrirCofre" id="267" />
+                  </next>
+               </block>
+            </next>
+         </block>
+      </statement>
+   </block>
+   <block type="procedures_defnoreturn" id="3" x="-30" y="191">
+      <mutation />
+      <field name="NAME">Ir a buscar la llave</field>
+      <statement name="STACK">
+         <block type="repetir" id="17" inline="true">
+            <value name="count">
+               <block type="math_number" id="18">
+                  <field name="NUM">4</field>
+               </block>
+            </value>
+            <statement name="block">
+               <block type="MoverACasillaDerecha" id="34" />
+            </statement>
+            <next>
+               <block type="repetir" id="23" inline="true">
+                  <value name="count">
+                     <block type="math_number" id="24">
+                        <field name="NUM">2</field>
+                     </block>
+                  </value>
+                  <statement name="block">
+                     <block type="MoverACasillaArriba" id="46" />
+                  </statement>
+                  <next>
+                     <block type="AgarrarLlave" id="257" />
+                  </next>
+               </block>
+            </next>
+         </block>
+      </statement>
+   </block>
+   <block type="procedures_defnoreturn" id="96" x="252" y="216">
+      <mutation />
+      <field name="NAME">Ir a pelear</field>
+      <statement name="STACK">
+         <block type="MoverACasillaArriba" id="422">
+            <next>
+               <block type="MoverACasillaArriba" id="392">
+                  <next>
+                     <block type="MoverACasillaDerecha" id="402">
+                        <next>
+                           <block type="AtacarConEspada" id="237" />
+                        </next>
+                     </block>
+                  </next>
+               </block>
+            </next>
+         </block>
+      </statement>
+   </block>
+   <block type="procedures_defnoreturn" id="102" x="223" y="404">
+      <mutation />
+      <field name="NAME">Ir a Escapar</field>
+      <statement name="STACK">
+         <block type="repetir" id="444" inline="true">
+            <value name="count">
+               <block type="math_number" id="445">
+                  <field name="NUM">2</field>
+               </block>
+            </value>
+            <statement name="block">
+               <block type="MoverACasillaAbajo" id="465" />
+            </statement>
+            <next>
+               <block type="EscaparEnUnicornio" id="163" />
+            </next>
+         </block>
+      </statement>
+   </block>
+   <block type="procedures_defnoreturn" id="82" x="-29" y="448">
+      <mutation />
+      <field name="NAME">Ir al mago</field>
+      <statement name="STACK">
+         <block type="repetir" id="340" inline="true">
+            <value name="count">
+               <block type="math_number" id="341">
+                  <field name="NUM">3</field>
+               </block>
+            </value>
+            <statement name="block">
+               <block type="MoverACasillaAbajo" id="357" />
+            </statement>
+            <next>
+               <block type="MoverACasillaDerecha" id="367">
+                  <next>
+                     <block type="DarSombrero" id="217" />
+                  </next>
+               </block>
+            </next>
+         </block>
+      </statement>
+   </block>
+</xml>`,
 	errorEsperado: 'Para escapar hace falta un transporte',
 });

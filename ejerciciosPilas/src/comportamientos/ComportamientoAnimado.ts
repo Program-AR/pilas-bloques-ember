@@ -49,28 +49,19 @@ class ComportamientoAnimado extends Comportamiento {
 	verificacionesPost;
 	hayQueAnimar;
 
-	iniciar(receptor){
+	iniciar(receptor) {
 		super.iniciar(receptor);
 		this.sanitizarArgumentos();
 		this.configurarVerificaciones();
 
-		this.secuenciaActualizar = new Array();
- 		this.secuenciaActualizar.push(function() {
-			this.configuracionInicial();
-        	this.preAnimacion();
-        	return true;
-   		}.bind(this));
-   		this.secuenciaActualizar.push(function() {
-        	return this.doActualizar();
-   		}.bind(this));
-   		this.secuenciaActualizar.push(function() {
-			this.configuracionFinal();
-        	this.postAnimacion();
-        	return true;
-   		}.bind(this));
+		this.secuenciaActualizar = [
+			() => { this.configuracionInicial(); this.preAnimacion(); return true; },
+			() => { return this.doActualizar() },
+			() => { this.configuracionFinal(); this.postAnimacion(); return true; }
+		];
 	}
 
-	sanitizarArgumentos(){
+	sanitizarArgumentos() {
 		this.receptor = this.argumentos.receptor || this.receptor;
 		this.hayQueAnimar = this.argumentos.hayQueAnimar !== false;
 		this.verificacionesPre = this.argumentos.verificacionesPre || [];
@@ -78,17 +69,17 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	/** No se recomienda redefinir. Redefinir en su lugar el doActualizar */
-	actualizar(){
-		if(this.secuenciaActualizar.length > 0) {
-			if(this.secuenciaActualizar[0]()) {
+	actualizar() {
+		if (this.secuenciaActualizar.length > 0) {
+			if (this.secuenciaActualizar[0]()) {
 				this.secuenciaActualizar.shift();
 			}
-    	} else {
-      		return true;
-    	}
+		} else {
+			return true;
+		}
 	}
 
-	private configuracionInicial(){
+	private configuracionInicial() {
 		this.realizarVerificacionesPreAnimacion();
 
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
@@ -97,13 +88,13 @@ class ComportamientoAnimado extends Comportamiento {
 			this.receptor.cargarAnimacion(this.nombreAnimacion());
 	}
 
-	private configuracionFinal(){
+	private configuracionFinal() {
 		this.receptor.animar();
 		this.receptor.cargarAnimacion(this.nombreAnimacionSiguiente());
 		this.realizarVerificacionesPostAnimacion();
 	}
 
-	private realizarVerificacionesPreAnimacion(){
+	private realizarVerificacionesPreAnimacion() {
 		this.verificacionesPre.forEach(verificacion => {
 			verificacion.verificar();
 		});
@@ -119,18 +110,17 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	/* Redefinir si corresponde animar el comportamiento. */
-	nombreAnimacion(){
+	nombreAnimacion() {
 		return this.argumentos.nombreAnimacion || this.nombreAnimacionParado();
 	}
 
 	/* Redefinir si corresponde */
-	nombreAnimacionParado(){
+	nombreAnimacionParado() {
 		return this.argumentos.nombreAnimacionParado || 'parado';
 	}
 
 	/* Redefinir si corresponde */
-	nombreAnimacionSiguiente(){
-		if (this.argumentos.mantenerAnimacion) return this.nombreAnimacion();
+	nombreAnimacionSiguiente() {
 		return this.argumentos.nombreAnimacionSiguiente || this.animacionAnterior;
 	}
 
@@ -141,11 +131,11 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	/* Redefinir si corresponde */
-	preAnimacion(){
+	preAnimacion() {
 	}
 
 	/* Redefinir si corresponde */
-	postAnimacion(){
+	postAnimacion() {
 	}
 
 	/** Redefinir si es necesario.
@@ -154,28 +144,28 @@ class ComportamientoAnimado extends Comportamiento {
 	 *  Debe retornar true cuando corresponda terminar el comportamiento.
 	 *  Por defecto termina cuando termina la animación.
 	 *  Al redefinir siempre debe llamarse a super */
-	doActualizar(){
+	doActualizar() {
 		return this.receptor.avanzarAnimacion()
 	}
 }
 
 
 class Verificacion {
-	condicionEjecucion : () => boolean;
-	mensajeError : string;
-	nombreAnimacion : string;
+	condicionEjecucion: () => boolean;
+	mensajeError: string;
+	nombreAnimacion: string;
 
-	constructor(condicionEjecucion : () => boolean, mensajeError: string, nombreAnimacion?: string) {
+	constructor(condicionEjecucion: () => boolean, mensajeError: string, nombreAnimacion?: string) {
 		this.condicionEjecucion = condicionEjecucion;
 		this.mensajeError = mensajeError;
 		this.nombreAnimacion = nombreAnimacion;
 	}
 
-	seCumple() : boolean {
+	seCumple(): boolean {
 		return this.condicionEjecucion();
 	}
 
-	verificar() : void {
+	verificar(): void {
 		if (!this.seCumple()) {
 			throw new ActividadError(this.mensajeError, this.nombreAnimacion);
 		}
@@ -190,7 +180,7 @@ class ArgumentError implements Error {
 		this.message = description;
 	}
 
-	toString(){
+	toString() {
 		return this.name + ': ' + this.message;
 	}
 }

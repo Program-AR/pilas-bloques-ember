@@ -6,7 +6,7 @@ import { pilasMock, interpreterFactoryMock } from '../../helpers/mocks';
 moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
   integration: true,
   setup() { //TODO: Mover a un lugar más general
-    this.set('bloques', ['repetir']);
+    this.set('bloques', ['Repetir']);
     this.set('pilas', pilasMock);
 
     let modelMock = { 

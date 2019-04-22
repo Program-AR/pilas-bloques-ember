@@ -1,4 +1,4 @@
-import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'PrendiendoLasCompusParametrizado';
 
@@ -65,10 +65,10 @@ actividadTest(nombre, {
 		        <next>
 		          <block type="hasta" id="29">
 		            <value name="condition">
-		              <block type="Estoyenunaesquina" id="31"></block>
+		              <block type="EstoyEnEsquina" id="31"></block>
 		            </value>
 		            <statement name="block">
-		              <block type="PrenderCompuConColision" id="41">
+		              <block type="PrenderComputadora" id="41">
 		                <next>
 		                  <block type="MoverA" id="34">
 		                    <value name="direccion">
@@ -87,4 +87,43 @@ actividadTest(nombre, {
 		  </block>
 		</xml>
 	`
+});
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
+	errorEsperado: 'No hay una computadora aquí',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+							<xml xmlns="http://www.w3.org/1999/xhtml">
+   							<variables />
+  	 						<block type="al_empezar_a_ejecutar" id="IAu_wXvP7R@SfU%v^Vtk" deletable="false" movable="false" editable="false" x="15" y="15">
+      						<statement name="program">
+        		 				<block type="PrenderComputadora" id="zcbpp]rCxf0V_fAjI_B," />
+      						</statement>
+   							</block>
+						</xml>`,
+});
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
+	errorEsperado: 'Esta computadora ya está prendida',
+	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	<xml xmlns="http://www.w3.org/1999/xhtml">
+		 <variables />
+		 <block type="al_empezar_a_ejecutar" id="i(OI|s9pE2Qvpapiwd/6" deletable="false" movable="false" editable="false" x="15" y="15">
+				<statement name="program">
+					 <block type="MoverA" id="|]=Mhkm?SiH~~(CmXm5A">
+							<value name="direccion">
+								 <block type="ParaAbajo" id="G({j[b8r$e.%v_}Y{wri" />
+							</value>
+							<next>
+								 <block type="PrenderComputadora" id="eKE{4Vs^$=VZ;T-Ze!0M">
+										<next>
+											 <block type="PrenderComputadora" id="hn_h}miHQ6Jo9Ng_t5Zt" />
+										</next>
+								 </block>
+							</next>
+					 </block>
+				</statement>
+		 </block>
+	</xml>`,
 });

@@ -48,12 +48,12 @@ class InstalandoJuegos extends EscenaActividad {
     builder.agregarError('inicial','escribirA','Primero hay que prender la computadora');
     builder.agregarError('inicial','escribirB','Primero hay que prender la computadora');
     builder.agregarError('inicial','escribirC','Primero hay que prender la computadora');
-    builder.agregarError('inicial','apagar','Primero hay que prender la computadora');
+    builder.agregarError('inicial','apagar','Esta computadora ya está apagada');
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','instalar','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirC','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirA','Primero hay que prender la computadora',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','escribirB','Primero hay que prender la computadora',1,3);
-    builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','apagar','Primero hay que prender la computadora',1,3);
+    builder.agregarErrorAVariosEstadosDeSalida('maquinaApagada','apagar','Esta computadora ya está apagada',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('prendido','escribirC','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('prendido','escribirB','Esa no es la clave correcta',1,3);
     builder.agregarErrorAVariosEstadosDeSalida('escritoA','escribirC','Esa no es la clave correcta',1,3);
@@ -72,39 +72,4 @@ class InstalandoJuegos extends EscenaActividad {
      this.automata.y=-70;
      this.automata.x=-170;
    }
-}
-
-
-class PrenderCompuParaInstalar extends ComportamientoColision {
-  configurarVerificaciones(){
-    super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
-      "Esta compu ya la prendiste antes"))
-  }
-}
-
-class ApagarPorEtiqueta extends ComportamientoColision {
-    metodo(objetoColision){
-        objetoColision.hacer_luego(ComportamientoAnimado, {nombreAnimacion: "apagada", mantenerAnimacion: true});
-    }
-}
-
-class PrenderPorEtiqueta extends ComportamientoColision {
-    metodo(objetoColision){
-        objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "prendida", mantenerAnimacion: true });
-    }
-}
-
-class EscribirEnCompuAnimada extends ComportamientoColision {
-	iniciar(receptor){
-		this.argumentos.etiqueta = "CompuAnimada";
-		this.argumentos.mensajeError = "No hay una compu aqui";
-		this.argumentos.nombreAnimacion = "escribir";
-		super.iniciar(receptor);
-	}
-    metodo(objetoColision){
-      if (this.argumentos['idTransicion'] == 'escribirC') {
-          objetoColision.hacer_luego(ComportamientoAnimado, { nombreAnimacion: "claveok", mantenerAnimacion: true });
-      }
-    }
 }

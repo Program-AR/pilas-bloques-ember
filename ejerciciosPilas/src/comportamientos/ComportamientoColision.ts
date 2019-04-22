@@ -5,15 +5,12 @@
 /*
 Es un comportamiento genérico con la idea de ser extendido
 Sus características son
-
 Si se está colisionando con un objeto de etiqueta A:
 	Realizar acciones dependientes de ese objeto
 Caso Contrario:
 	El personaje principal ejecuta un mensaje de error.
-
 La escena que lo utiliza debe tener definido
 automata
-
 Respecto de los argumentos:
  - etiqueta: Es obligatorio, es la etiqueta del actor con el que busca condicional.
  - mensajeError: Es el mensaje que aparece cuando no hay colisión objeto de esa etiqueta.
@@ -27,7 +24,7 @@ Respecto de los argumentos:
 
 class ComportamientoColision extends ComportamientoAnimado {
 
-	sanitizarArgumentos(){
+	sanitizarArgumentos() {
 		super.sanitizarArgumentos();
 
 		if (!this.argumentos['etiqueta']) {
@@ -56,57 +53,57 @@ class ComportamientoColision extends ComportamientoAnimado {
 		this.metodo(objetoTocado);
 	}
 
-	preAnimacion(){
+	preAnimacion() {
 		super.preAnimacion();
-		if (this.argumentos['animacionColisionadoMientras'])  this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionadoMientras']);
+		if (this.argumentos['animacionColisionadoMientras']) this.objetoTocado().cargarAnimacion(this.argumentos['animacionColisionadoMientras']);
 	}
 
 	colisiona() {
 		return this.receptor.tocando(this.argumentos['etiqueta']);
 	}
 
-	objetoTocado(){
+	objetoTocado() {
 		return this.receptor.objetoTocado(this.argumentos['etiqueta']);
 	}
 
-	hacerLegible(etiqueta){
+	hacerLegible(etiqueta) {
 		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
 	}
 
-	metodo(objetoColision){
-						//redefinir por subclase
+	metodo(objetoColision) {
+		//redefinir por subclase
 	}
 }
 
-class DesencadenarComportamientoSiColisiona extends ComportamientoColision{
-	metodo(objetoColision){
-		let claseComportamiento:any = window[this.argumentos['comportamiento']];
+class DesencadenarComportamientoSiColisiona extends ComportamientoColision {
+	metodo(objetoColision) {
+		let claseComportamiento: any = window[this.argumentos['comportamiento']];
 
 		objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento'])
 	}
 }
 
-class EncenderPorEtiqueta extends ComportamientoColision{
-	nombreAnimacion(){
+class EncenderPorEtiqueta extends ComportamientoColision {
+	nombreAnimacion() {
 		return "recoger";
 	}
-	metodo(objetoColision){
+	metodo(objetoColision) {
 		objetoColision.cargarAnimacion(this.nombreProximaAnimacion());
 	}
-	nombreProximaAnimacion(){
+	nombreProximaAnimacion() {
 		return "prendida"
 	}
 	configurarVerificaciones() {
 		super.configurarVerificaciones();
 		this.verificacionesPre.push(new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"));
 	}
-	estaApagada(){
+	estaApagada() {
 		return this.objetoTocado().nombreAnimacionActual() != this.nombreProximaAnimacion();
 	}
 }
 
 class MorderPorEtiqueta extends EncenderPorEtiqueta {
-    nombreProximaAnimacion() {
+	nombreProximaAnimacion() {
 		return "mordida";
-    }
+	}
 }

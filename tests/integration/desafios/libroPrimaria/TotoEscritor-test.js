@@ -8,7 +8,7 @@ actividadTest("5.I1a", {
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">7</field>
@@ -61,7 +61,7 @@ actividadTest("5.I1a", {
       <statement name="program">
         <block type="MoverACasillaDerecha">
           <next>
-            <block type="repetir">
+            <block type="Repetir">
               <value name="count">
                 <block type="math_number">
                   <field name="NUM">8</field>
@@ -84,7 +84,7 @@ actividadTest("5.I1b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">7</field>
@@ -111,7 +111,7 @@ actividadTest("5.I1b", {
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">7</field>
@@ -135,7 +135,7 @@ actividadTest("5.I1c", {
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">7</field>
@@ -202,7 +202,7 @@ actividadTest("5.I1d", {
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
-        <block type="repetir">
+        <block type="Repetir">
           <value name="count">
             <block type="math_number">
               <field name="NUM">7</field>
