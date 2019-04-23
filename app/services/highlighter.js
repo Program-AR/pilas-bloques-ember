@@ -14,7 +14,7 @@ export default Ember.Service.extend({
             console.warn(`Couldn't highlight block id: ${blockId}`)
             return
         }
-        this._removePreviousBlockIfLastOfModule()
+        this._removeLastBlockIfEndOfModule()
         this._removePreviousBlockIfContinue(block)
 
         if (!this._ignore(block))
@@ -32,8 +32,8 @@ export default Ember.Service.extend({
         return this.blocks[this.blocks.length - 1]
     },
 
-    _removePreviousBlockIfLastOfModule() {
-        if (this._lastBlock() && !this._lastBlock().getNextBlock())
+    _removeLastBlockIfEndOfModule() {
+        if (this._shouldRemoveLastBlock())
           this.blocks.pop()
     },
 
@@ -46,8 +46,22 @@ export default Ember.Service.extend({
         return this._isModuleDefinition(block)
     },
 
+    _shouldRemoveLastBlock() {
+        return  this._lastBlock() && 
+                this._isEndOfModule(this._lastBlock()) && 
+                !this._isProcedureCall(this._lastBlock())
+    },
+
+    _isEndOfModule(block) {
+        return !block.getNextBlock()
+    },
+
     _isModuleDefinition(block) {
         return !block.getParent()
+    },
+
+    _isProcedureCall(block) {
+        return !!block.defType_
     },
 
     _updateHighlight() {
