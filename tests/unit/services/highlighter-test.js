@@ -233,6 +233,45 @@ test('When go out procedure block should only highlight next block', function(as
 });
 
 
+let programFinishInProcedure = [`
+<block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="DibujarLado">
+        <value name="longitud">
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="procedimiento general"></mutation>
+          </block>
+        </next>
+      </block>
+    </statement>
+</block>`,
+`<block type="procedures_defnoreturn" x="46" y="247">
+    <field name="NAME">procedimiento general</field>
+    <comment pinned="false" h="80" w="160">Describe esta función...</comment>
+    <statement name="STACK">
+      <block type="GirarGrados">
+        <value name="grados">
+          <block type="math_number">
+            <field name="NUM">90</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+</block>`
+]
+
+test('When program finishes with procedure call should highlight both blocks', function(assert) {
+  loadProgramAndSendSteps(Infinity, programFinishInProcedure)
+  assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
+});
+
+
+
 function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
