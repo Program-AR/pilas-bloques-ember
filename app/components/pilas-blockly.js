@@ -1,6 +1,5 @@
 /* jshint ignore:start */
 import Ember from 'ember';
-
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1;
 
 export default Ember.Component.extend({
@@ -20,10 +19,10 @@ export default Ember.Component.extend({
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
   codigo: null,
-  highlightedBlock: null, // bloque a resaltar.
   modelActividad: null,
   modoTuboHabilitado: false,
 
+  highlighter: Ember.inject.service(),
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
@@ -308,17 +307,17 @@ export default Ember.Component.extend({
   cuandoTerminaEjecucion() {
     Ember.run(this, function() {
       this.sendAction('onTerminoEjecucion');
-
+      
       if (this.get("debeMostrarFinDeDesafio")) {
         if (this.get('pilas').estaResueltoElProblema() && this.get('modelActividad').get('debeFelicitarse')) {
           this.send('abrirFinDesafio');
         }
       }
-
+      
       if (this.get('ejecutando')) {
         this.set('ejecutando', false);
         this.set('terminoDeEjecutar', true);
-        this.set('highlightedBlock', null);
+        this.clearHighlight();
       }
     });
   },
@@ -352,6 +351,10 @@ export default Ember.Component.extend({
     }
   },
 
+  clearHighlight() {
+    this.get('highlighter').clear()
+  },
+
   /*
   cargar_codigo_desde_el_modelo() {
     if (this.get('model')) {
@@ -365,7 +368,6 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar(pasoAPaso=false) {
-
       this.get('pilas').reiniciarEscenaCompleta();
 
       this.setModoTurbo()
@@ -379,12 +381,7 @@ export default Ember.Component.extend({
       }
 
       let factory = this.get('interpreterFactory');
-      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloque) => {
-        var me = this;
-        Ember.run(function () {
-          me.set('highlightedBlock', bloque);
-        });
-      });
+      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloqueId) => this.get('highlighter').step(bloqueId));
       
       this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
@@ -395,7 +392,7 @@ export default Ember.Component.extend({
     },
 
     reiniciar() {
-      this.set('highlightedBlock', null);
+      this.clearHighlight()
       this.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);

@@ -30,3 +30,9 @@ export const actividadMock = {
         }
     }
 };
+
+export const blocklyWorkspaceMock = function() {
+    let workspace = new Blockly.Workspace()
+    workspace.highlightBlock = sinon.stub()
+    return workspace
+}
