@@ -53,6 +53,36 @@ export default Ember.Service.extend({
     return bloque;
   },
 
+  existBlockType(blockAlias) {
+    return Blockly.Blocks[blockAlias] !== undefined;
+  },
+
+  getBlockTypes() {
+    var types = [];
+
+    for (var prop in Blockly.Blocks) {
+      types.push(prop);
+    }
+
+    return types;
+  },
+
+  areAlias(blockType, anotherBlockType) {
+    return Blockly.Blocks[blockType].init === Blockly.Blocks[anotherBlockType].init;
+  },
+
+  areAllAlias(blockTypes, blockType ) {
+    return blockTypes.every(type => this.areAlias(blockType, type))
+  },
+
+  getAlias(blockType) {
+    return this.getBlockTypes().filter(type => type !== blockType && this.areAlias(blockType, type));
+  },
+
+  getBlockTypesWithNotAlias(blockAlias) {
+    return this.getBlockTypes().filter(blockType => !this.areAlias(blockAlias, blockType));
+  },
+
   /*
    * Método auxiliar para crear un bloque que sirva como sensor.
    *
@@ -1433,6 +1463,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('repetir', 'Repetir');
     this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
     this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
+    this.crearBloqueAlias('prenderCompuConColision', 'PrenderComputadora');
     this.crearBloqueAlias('PrenderCompuConColision', 'PrenderComputadora');
     this.crearBloqueAlias('Prendercompu', 'PrenderComputadora');
     this.crearBloqueAlias('PrenderCompu', 'PrenderComputadora');

@@ -1,8 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 
-moduleFor('service:blocks-gallery', 'Unit | Service | pilas', {
-    // Specify the other units that are required for this test.
-    // needs: ['service:foo']
+moduleFor('service:blocks-gallery', 'Unit | Service | blocks-gallery', {
     needs: ['service:blocksGallery', 'service:blockly'],
     setup() {
         this.container.lookup('service:blocksGallery').start()
@@ -10,241 +8,443 @@ moduleFor('service:blocks-gallery', 'Unit | Service | pilas', {
 });
 
 test('check if "si" block definition exist and is equal to "Si" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['si'] != undefined)
-    assert.ok(Blockly.Blocks['si'].init == Blockly.Blocks['Si'].init)
+    let service = this.subject()
+    let alias = 'si'
+    let type = 'Si'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "sino" block definition exist and is equal to "SiNo" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['sino'] != undefined)
-    assert.ok(Blockly.Blocks['sino'].init == Blockly.Blocks['SiNo'].init)
+    let service = this.subject()
+    let alias = 'sino'
+    let type = 'SiNo'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Sino" block definition exist and is equal to "SiNo" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Sino'] != undefined)
-    assert.ok(Blockly.Blocks['Sino'].init == Blockly.Blocks['SiNo'].init)
+    let service = this.subject()
+    let alias = 'Sino'
+    let type = 'SiNo'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "hasta" block definition exist and is equal to "Hasta" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['hasta'] != undefined)
-    assert.ok(Blockly.Blocks['hasta'].init == Blockly.Blocks['Hasta'].init)
+    let service = this.subject()
+    let alias = 'hasta'
+    let type = 'Hasta'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "prenderCompuConColision" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['PrenderCompuConColision'] != undefined)
-    assert.ok(Blockly.Blocks['PrenderCompuConColision'].init == Blockly.Blocks['PrenderComputadora'].init)
+    let service = this.subject()
+    let alias = 'prenderCompuConColision'
+    let type = 'PrenderComputadora'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
+});
+
+
+test('check if "PrenderCompuConColision" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
+    let service = this.subject()
+    let alias = 'PrenderCompuConColision'
+    let type = 'PrenderComputadora'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "PrenderCompu" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['PrenderCompu'] != undefined)
-    assert.ok(Blockly.Blocks['PrenderCompu'].init == Blockly.Blocks['PrenderComputadora'].init)
+    let service = this.subject()
+    let alias = 'PrenderCompu'
+    let type = 'PrenderComputadora'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "ApagarCompu" block definition exist and is equal to "ApagarComputadora" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['ApagarCompu'] != undefined)
-    assert.ok(Blockly.Blocks['ApagarCompu'].init == Blockly.Blocks['ApagarComputadora'].init)
+    let service = this.subject()
+    let alias = 'ApagarCompu'
+    let type = 'ApagarComputadora'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "SiguienteCompu" block definition exist and is equal to "PasarASiguienteComputadora" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['SiguienteCompu'] != undefined)
-    assert.ok(Blockly.Blocks['SiguienteCompu'].init == Blockly.Blocks['PasarASiguienteComputadora'].init)
+    let service = this.subject()
+    let alias = 'SiguienteCompu'
+    let type = 'PasarASiguienteComputadora'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Descubralculpable" block definition exist and is equal to "EsCulpable" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Descubralculpable'] != undefined)
-    assert.ok(Blockly.Blocks['Descubralculpable'].init == Blockly.Blocks['EsCulpable'].init)
+    let service = this.subject()
+    let alias = 'Descubralculpable'
+    let type = 'EsCulpable'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "repetir" block definition exist and is equal to "Repetir" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['repetir'] != undefined)
-    assert.ok(Blockly.Blocks['repetir'].init == Blockly.Blocks['Repetir'].init)
+    let service = this.subject()
+    let alias = 'repetir'
+    let type = 'Repetir'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoBanana" block definition exist and is equal to "TocandoBanana" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoBanana'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoBanana'].init == Blockly.Blocks['TocandoBanana'].init)
+    let service = this.subject()
+    let alias = 'tocandoBanana'
+    let type = 'TocandoBanana'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoManzana" block definition exist and is equal to "TocandoManzana" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoManzana'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoManzana'].init == Blockly.Blocks['TocandoManzana'].init)
+    let service = this.subject()
+    let alias = 'tocandoManzana'
+    let type = 'TocandoManzana'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "PrenderFogata" block definition exist and is equal to "PrenderFogata" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['PrenderFogata'] != undefined)
-    assert.ok(Blockly.Blocks['PrenderFogata'].init == Blockly.Blocks['PrenderFogata'].init)
+    let service = this.subject()
+    let alias = 'PrenderFogata'
+    let type = 'PrenderFogata'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Dejarregalo" block definition exist and is equal to "DejarRegalo" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Dejarregalo'] != undefined)
-    assert.ok(Blockly.Blocks['Dejarregalo'].init == Blockly.Blocks['DejarRegalo'].init)
+    let service = this.subject()
+    let alias = 'Dejarregalo'
+    let type = 'DejarRegalo'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Contarbanana" block definition exist and is equal to "ContarBanana" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Contarbanana'] != undefined)
-    assert.ok(Blockly.Blocks['Contarbanana'].init == Blockly.Blocks['ContarBanana'].init)
+    let service = this.subject()
+    let alias = 'Contarbanana'
+    let type = 'ContarBanana'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Contarmanzana" block definition exist and is equal to "ContarManzana" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Contarmanzana'] != undefined)
-    assert.ok(Blockly.Blocks['Contarmanzana'].init == Blockly.Blocks['ContarManzana'].init)
+    let service = this.subject()
+    let alias = 'Contarmanzana'
+    let type = 'ContarManzana'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "AvanzarKm" block definition exist and is equal to "Avanzar1km" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['AvanzarKm'] != undefined)
-    assert.ok(Blockly.Blocks['AvanzarKm'].init == Blockly.Blocks['Avanzar1km'].init)
+    let service = this.subject()
+    let alias = 'AvanzarKm'
+    let type = 'Avanzar1km'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "cambiarColor" block definition exist and is equal to "CambiarColor" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['cambiarColor'] != undefined)
-    assert.ok(Blockly.Blocks['cambiarColor'].init == Blockly.Blocks['CambiarColor'].init)
+    let service = this.subject()
+    let alias = 'cambiarColor'
+    let type = 'CambiarColor'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "siguienteFoco" block definition exist and is equal to "siguienteFoco" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['siguienteFoco'] != undefined)
-    assert.ok(Blockly.Blocks['siguienteFoco'].init == Blockly.Blocks['siguienteFoco'].init)
+    let service = this.subject()
+    let alias = 'siguienteFoco'
+    let type = 'siguienteFoco'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "empezarFiesta" block definition exist and is equal to "EmpezarFiesta" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['empezarFiesta'] != undefined)
-    assert.ok(Blockly.Blocks['empezarFiesta'].init == Blockly.Blocks['EmpezarFiesta'].init)
+    let service = this.subject()
+    let alias = 'empezarFiesta'
+    let type = 'EmpezarFiesta'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Volveralbordeizquierdo" block definition exist and is equal to "VolverAlBordeIzquierdo" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Volveralbordeizquierdo'] != undefined)
-    assert.ok(Blockly.Blocks['Volveralbordeizquierdo'].init == Blockly.Blocks['VolverAlBordeIzquierdo'].init)
+    let service = this.subject()
+    let alias = 'Volveralbordeizquierdo'
+    let type = 'VolverAlBordeIzquierdo'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Primersospechoso" block definition exist and is equal to "IrAlPrimerSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Primersospechoso'] != undefined)
-    assert.ok(Blockly.Blocks['Primersospechoso'].init == Blockly.Blocks['IrAlPrimerSospechoso'].init)
+    let service = this.subject()
+    let alias = 'Primersospechoso'
+    let type = 'IrAlPrimerSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "PrimerSospechoso" block definition exist and is equal to "IrAlPrimerSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['PrimerSospechoso'] != undefined)
-    assert.ok(Blockly.Blocks['PrimerSospechoso'].init == Blockly.Blocks['IrAlPrimerSospechoso'].init)
+    let service = this.subject()
+    let alias = 'PrimerSospechoso'
+    let type = 'IrAlPrimerSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Siguientesospechoso" block definition exist and is equal to "IrAlSiguienteSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Siguientesospechoso'] != undefined)
-    assert.ok(Blockly.Blocks['Siguientesospechoso'].init == Blockly.Blocks['IrAlSiguienteSospechoso'].init)
+    let service = this.subject()
+    let alias = 'Siguientesospechoso'
+    let type = 'IrAlSiguienteSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "SiguienteSospechoso" block definition exist and is equal to "IrAlSiguienteSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['SiguienteSospechoso'] != undefined)
-    assert.ok(Blockly.Blocks['SiguienteSospechoso'].init == Blockly.Blocks['IrAlSiguienteSospechoso'].init)
+    let service = this.subject()
+    let alias = 'SiguienteSospechoso'
+    let type = 'IrAlSiguienteSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Sacardisfraz" block definition exist and is equal to "InterrogarSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Sacardisfraz'] != undefined)
-    assert.ok(Blockly.Blocks['Sacardisfraz'].init == Blockly.Blocks['InterrogarSospechoso'].init)
+    let service = this.subject()
+    let alias = 'Sacardisfraz'
+    let type = 'InterrogarSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "SacarDisfraz" block definition exist and is equal to "InterrogarSospechoso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['SacarDisfraz'] != undefined)
-    assert.ok(Blockly.Blocks['SacarDisfraz'].init == Blockly.Blocks['InterrogarSospechoso'].init)
+    let service = this.subject()
+    let alias = 'SacarDisfraz'
+    let type = 'InterrogarSospechoso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Estoyenunaesquina" block definition exist and is equal to "EstoyEnEsquina" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Estoyenunaesquina'] != undefined)
-    assert.ok(Blockly.Blocks['Estoyenunaesquina'].init == Blockly.Blocks['EstoyEnEsquina'].init)
+    let service = this.subject()
+    let alias = 'Estoyenunaesquina'
+    let type = 'EstoyEnEsquina'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoFogata" block definition exist and is equal to "TocandoFogata" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoFogata'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoFogata'].init == Blockly.Blocks['TocandoFogata'].init)
+    let service = this.subject()
+    let alias = 'tocandoFogata'
+    let type = 'TocandoFogata'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoInicio" block definition exist and is equal to "TocandoInicio" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoInicio'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoInicio'].init == Blockly.Blocks['TocandoInicio'].init)
+    let service = this.subject()
+    let alias = 'tocandoInicio'
+    let type = 'TocandoInicio'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoFinal" block definition exist and is equal to "TocandoFinal" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoFinal'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoFinal'].init == Blockly.Blocks['TocandoFinal'].init)
+    let service = this.subject()
+    let alias = 'tocandoFinal'
+    let type = 'TocandoFinal'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoPelota" block definition exist and is equal to "TocandoPelota" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoPelota'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoPelota'].init == Blockly.Blocks['TocandoPelota'].init)
+    let service = this.subject()
+    let alias = 'tocandoPelota'
+    let type = 'TocandoPelota'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoQueso" block definition exist and is equal to "TocandoQueso" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoQueso'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoQueso'].init == Blockly.Blocks['TocandoQueso'].init)
+    let service = this.subject()
+    let alias = 'tocandoQueso'
+    let type = 'TocandoQueso'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "tocandoLuz" block definition exist and is equal to "TocandoLuz" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['tocandoLuz'] != undefined)
-    assert.ok(Blockly.Blocks['tocandoLuz'].init == Blockly.Blocks['TocandoLuz'].init)
+    let service = this.subject()
+    let alias = 'tocandoLuz'
+    let type = 'TocandoLuz'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Abrirojos" block definition exist and is equal to "AbrirOjos" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Abrirojos'] != undefined)
-    assert.ok(Blockly.Blocks['Abrirojos'].init == Blockly.Blocks['AbrirOjos'].init)
+    let service = this.subject()
+    let alias = 'Abrirojos'
+    let type = 'AbrirOjos'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Cerrarojos" block definition exist and is equal to "CerrarOjos" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Cerrarojos'] != undefined)
-    assert.ok(Blockly.Blocks['Cerrarojos'].init == Blockly.Blocks['CerrarOjos'].init)
+    let service = this.subject()
+    let alias = 'Cerrarojos'
+    let type = 'CerrarOjos'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Soar" block definition exist and is equal to "Soniar" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Soar'] != undefined)
-    assert.ok(Blockly.Blocks['Soar'].init == Blockly.Blocks['Soniar'].init)
+    let service = this.subject()
+    let alias = 'Soar'
+    let type = 'Soniar'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Agarrarllave" block definition exist and is equal to "AgarrarLlave" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Agarrarllave'] != undefined)
-    assert.ok(Blockly.Blocks['Agarrarllave'].init == Blockly.Blocks['AgarrarLlave'].init)
+    let service = this.subject()
+    let alias = 'Agarrarllave'
+    let type = 'AgarrarLlave'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Abrircofre" block definition exist and is equal to "AbrirCofre" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Abrircofre'] != undefined)
-    assert.ok(Blockly.Blocks['Abrircofre'].init == Blockly.Blocks['AbrirCofre'].init)
+    let service = this.subject()
+    let alias = 'Abrircofre'
+    let type = 'AbrirCofre'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Darsombrero" block definition exist and is equal to "DarSombrero" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Darsombrero'] != undefined)
-    assert.ok(Blockly.Blocks['Darsombrero'].init == Blockly.Blocks['DarSombrero'].init)
+    let service = this.subject()
+    let alias = 'Darsombrero'
+    let type = 'DarSombrero'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Atacarconespada" block definition exist and is equal to "AtacarConEspada" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Atacarconespada'] != undefined)
-    assert.ok(Blockly.Blocks['Atacarconespada'].init == Blockly.Blocks['AtacarConEspada'].init)
+    let service = this.subject()
+    let alias = 'Atacarconespada'
+    let type = 'AtacarConEspada'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "Escaparenunicornio" block definition exist and is equal to "EscaparEnUnicornio" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['Escaparenunicornio'] != undefined)
-    assert.ok(Blockly.Blocks['Escaparenunicornio'].init == Blockly.Blocks['EscaparEnUnicornio'].init)
+    let service = this.subject()
+    let alias = 'Escaparenunicornio'
+    let type = 'EscaparEnUnicornio'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "estoyInicio" block definition exist and is equal to "EstoySobreElInicio" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['estoyInicio'] != undefined)
-    assert.ok(Blockly.Blocks['estoyInicio'].init == Blockly.Blocks['EstoySobreElInicio'].init)
+    let service = this.subject()
+    let alias = 'estoyInicio'
+    let type = 'EstoySobreElInicio'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "estoyAlInicio" block definition exist and is equal to "EstoySobreElInicio" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['estoyAlInicio'] != undefined)
-    assert.ok(Blockly.Blocks['estoyAlInicio'].init == Blockly.Blocks['EstoySobreElInicio'].init)
+    let service = this.subject()
+    let alias = 'estoyAlInicio'
+    let type = 'EstoySobreElInicio'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "estoyFinColumna" block definition exist and is equal to "EstoySobreElFinal" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['estoyFinColumna'] != undefined)
-    assert.ok(Blockly.Blocks['estoyFinColumna'].init == Blockly.Blocks['EstoySobreElFinal'].init)
+    let service = this.subject()
+    let alias = 'estoyFinColumna'
+    let type = 'EstoySobreElFinal'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "EstoyAlFin" block definition exist and is equal to "EstoySobreElFinal" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['EstoyAlFin'] != undefined)
-    assert.ok(Blockly.Blocks['EstoyAlFin'].init == Blockly.Blocks['EstoySobreElFinal'].init)
+    let service = this.subject()
+    let alias = 'EstoyAlFin'
+    let type = 'EstoySobreElFinal'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "ComerBananaNano" block definition exist and is equal to "ComerBanana" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['ComerBananaNano'] != undefined)
-    assert.ok(Blockly.Blocks['ComerBananaNano'].init == Blockly.Blocks['ComerBanana'].init)
+    let service = this.subject()
+    let alias = 'ComerBananaNano'
+    let type = 'ComerBanana'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
 
 test('check if "saltar1" block definition exist and is equal to "SaltarHablando" block definition', function (assert) {
-    assert.ok(Blockly.Blocks['saltar1'] != undefined)
-    assert.ok(Blockly.Blocks['saltar1'].init == Blockly.Blocks['SaltarHablando'].init)
+    let service = this.subject()
+    let alias = 'saltar1'
+    let type = 'SaltarHablando'
+    assert.ok(service.existBlockType(alias))
+    assert.ok(service.areAlias(alias, type))
+    assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
 });
