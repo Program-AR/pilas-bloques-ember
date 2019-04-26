@@ -1,11 +1,11 @@
-import { moduleFor, test } from 'ember-qunit';
+import { moduleFor, test } from 'ember-qunit'
 
 moduleFor('service:blocks-gallery', 'Unit | Service | blocks-gallery', {
     needs: ['service:blocksGallery', 'service:blockly'],
     setup() {
         this.container.lookup('service:blocksGallery').start()
     }
-});
+})
 
 test('check if "si" block definition exist and is equal to "Si" block definition', function (assert) {
     let service = this.subject()
@@ -14,7 +14,7 @@ test('check if "si" block definition exist and is equal to "Si" block definition
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "sino" block definition exist and is equal to "SiNo" block definition', function (assert) {
     let service = this.subject()
@@ -23,7 +23,7 @@ test('check if "sino" block definition exist and is equal to "SiNo" block defini
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Sino" block definition exist and is equal to "SiNo" block definition', function (assert) {
     let service = this.subject()
@@ -32,7 +32,7 @@ test('check if "Sino" block definition exist and is equal to "SiNo" block defini
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "hasta" block definition exist and is equal to "Hasta" block definition', function (assert) {
     let service = this.subject()
@@ -41,7 +41,7 @@ test('check if "hasta" block definition exist and is equal to "Hasta" block defi
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "prenderCompuConColision" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
     let service = this.subject()
@@ -50,7 +50,7 @@ test('check if "prenderCompuConColision" block definition exist and is equal to 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 
 test('check if "PrenderCompuConColision" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
@@ -60,7 +60,7 @@ test('check if "PrenderCompuConColision" block definition exist and is equal to 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "PrenderCompu" block definition exist and is equal to "PrenderComputadora" block definition', function (assert) {
     let service = this.subject()
@@ -69,7 +69,7 @@ test('check if "PrenderCompu" block definition exist and is equal to "PrenderCom
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "ApagarCompu" block definition exist and is equal to "ApagarComputadora" block definition', function (assert) {
     let service = this.subject()
@@ -78,7 +78,7 @@ test('check if "ApagarCompu" block definition exist and is equal to "ApagarCompu
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "SiguienteCompu" block definition exist and is equal to "PasarASiguienteComputadora" block definition', function (assert) {
     let service = this.subject()
@@ -87,7 +87,7 @@ test('check if "SiguienteCompu" block definition exist and is equal to "PasarASi
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Descubralculpable" block definition exist and is equal to "EsCulpable" block definition', function (assert) {
     let service = this.subject()
@@ -96,7 +96,7 @@ test('check if "Descubralculpable" block definition exist and is equal to "EsCul
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "repetir" block definition exist and is equal to "Repetir" block definition', function (assert) {
     let service = this.subject()
@@ -105,7 +105,7 @@ test('check if "repetir" block definition exist and is equal to "Repetir" block 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoBanana" block definition exist and is equal to "TocandoBanana" block definition', function (assert) {
     let service = this.subject()
@@ -114,7 +114,7 @@ test('check if "tocandoBanana" block definition exist and is equal to "TocandoBa
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoManzana" block definition exist and is equal to "TocandoManzana" block definition', function (assert) {
     let service = this.subject()
@@ -123,7 +123,7 @@ test('check if "tocandoManzana" block definition exist and is equal to "TocandoM
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "PrenderFogata" block definition exist and is equal to "PrenderFogata" block definition', function (assert) {
     let service = this.subject()
@@ -132,7 +132,7 @@ test('check if "PrenderFogata" block definition exist and is equal to "PrenderFo
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Dejarregalo" block definition exist and is equal to "DejarRegalo" block definition', function (assert) {
     let service = this.subject()
@@ -141,7 +141,7 @@ test('check if "Dejarregalo" block definition exist and is equal to "DejarRegalo
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Contarbanana" block definition exist and is equal to "ContarBanana" block definition', function (assert) {
     let service = this.subject()
@@ -150,7 +150,7 @@ test('check if "Contarbanana" block definition exist and is equal to "ContarBana
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Contarmanzana" block definition exist and is equal to "ContarManzana" block definition', function (assert) {
     let service = this.subject()
@@ -159,7 +159,7 @@ test('check if "Contarmanzana" block definition exist and is equal to "ContarMan
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "AvanzarKm" block definition exist and is equal to "Avanzar1km" block definition', function (assert) {
     let service = this.subject()
@@ -168,7 +168,7 @@ test('check if "AvanzarKm" block definition exist and is equal to "Avanzar1km" b
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "cambiarColor" block definition exist and is equal to "CambiarColor" block definition', function (assert) {
     let service = this.subject()
@@ -177,7 +177,7 @@ test('check if "cambiarColor" block definition exist and is equal to "CambiarCol
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "siguienteFoco" block definition exist and is equal to "siguienteFoco" block definition', function (assert) {
     let service = this.subject()
@@ -186,7 +186,7 @@ test('check if "siguienteFoco" block definition exist and is equal to "siguiente
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "empezarFiesta" block definition exist and is equal to "EmpezarFiesta" block definition', function (assert) {
     let service = this.subject()
@@ -195,7 +195,7 @@ test('check if "empezarFiesta" block definition exist and is equal to "EmpezarFi
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Volveralbordeizquierdo" block definition exist and is equal to "VolverAlBordeIzquierdo" block definition', function (assert) {
     let service = this.subject()
@@ -204,7 +204,7 @@ test('check if "Volveralbordeizquierdo" block definition exist and is equal to "
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Primersospechoso" block definition exist and is equal to "IrAlPrimerSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -213,7 +213,7 @@ test('check if "Primersospechoso" block definition exist and is equal to "IrAlPr
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "PrimerSospechoso" block definition exist and is equal to "IrAlPrimerSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -222,7 +222,7 @@ test('check if "PrimerSospechoso" block definition exist and is equal to "IrAlPr
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Siguientesospechoso" block definition exist and is equal to "IrAlSiguienteSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -231,7 +231,7 @@ test('check if "Siguientesospechoso" block definition exist and is equal to "IrA
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "SiguienteSospechoso" block definition exist and is equal to "IrAlSiguienteSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -240,7 +240,7 @@ test('check if "SiguienteSospechoso" block definition exist and is equal to "IrA
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Sacardisfraz" block definition exist and is equal to "InterrogarSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -249,7 +249,7 @@ test('check if "Sacardisfraz" block definition exist and is equal to "Interrogar
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "SacarDisfraz" block definition exist and is equal to "InterrogarSospechoso" block definition', function (assert) {
     let service = this.subject()
@@ -258,7 +258,7 @@ test('check if "SacarDisfraz" block definition exist and is equal to "Interrogar
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Estoyenunaesquina" block definition exist and is equal to "EstoyEnEsquina" block definition', function (assert) {
     let service = this.subject()
@@ -267,7 +267,7 @@ test('check if "Estoyenunaesquina" block definition exist and is equal to "Estoy
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoFogata" block definition exist and is equal to "TocandoFogata" block definition', function (assert) {
     let service = this.subject()
@@ -276,7 +276,7 @@ test('check if "tocandoFogata" block definition exist and is equal to "TocandoFo
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoInicio" block definition exist and is equal to "TocandoInicio" block definition', function (assert) {
     let service = this.subject()
@@ -285,7 +285,7 @@ test('check if "tocandoInicio" block definition exist and is equal to "TocandoIn
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoFinal" block definition exist and is equal to "TocandoFinal" block definition', function (assert) {
     let service = this.subject()
@@ -294,7 +294,7 @@ test('check if "tocandoFinal" block definition exist and is equal to "TocandoFin
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoPelota" block definition exist and is equal to "TocandoPelota" block definition', function (assert) {
     let service = this.subject()
@@ -303,7 +303,7 @@ test('check if "tocandoPelota" block definition exist and is equal to "TocandoPe
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoQueso" block definition exist and is equal to "TocandoQueso" block definition', function (assert) {
     let service = this.subject()
@@ -312,7 +312,7 @@ test('check if "tocandoQueso" block definition exist and is equal to "TocandoQue
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "tocandoLuz" block definition exist and is equal to "TocandoLuz" block definition', function (assert) {
     let service = this.subject()
@@ -321,7 +321,7 @@ test('check if "tocandoLuz" block definition exist and is equal to "TocandoLuz" 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Abrirojos" block definition exist and is equal to "AbrirOjos" block definition', function (assert) {
     let service = this.subject()
@@ -330,7 +330,7 @@ test('check if "Abrirojos" block definition exist and is equal to "AbrirOjos" bl
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Cerrarojos" block definition exist and is equal to "CerrarOjos" block definition', function (assert) {
     let service = this.subject()
@@ -339,7 +339,7 @@ test('check if "Cerrarojos" block definition exist and is equal to "CerrarOjos" 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Soar" block definition exist and is equal to "Soniar" block definition', function (assert) {
     let service = this.subject()
@@ -348,7 +348,7 @@ test('check if "Soar" block definition exist and is equal to "Soniar" block defi
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Agarrarllave" block definition exist and is equal to "AgarrarLlave" block definition', function (assert) {
     let service = this.subject()
@@ -357,7 +357,7 @@ test('check if "Agarrarllave" block definition exist and is equal to "AgarrarLla
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Abrircofre" block definition exist and is equal to "AbrirCofre" block definition', function (assert) {
     let service = this.subject()
@@ -366,7 +366,7 @@ test('check if "Abrircofre" block definition exist and is equal to "AbrirCofre" 
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Darsombrero" block definition exist and is equal to "DarSombrero" block definition', function (assert) {
     let service = this.subject()
@@ -375,7 +375,7 @@ test('check if "Darsombrero" block definition exist and is equal to "DarSombrero
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Atacarconespada" block definition exist and is equal to "AtacarConEspada" block definition', function (assert) {
     let service = this.subject()
@@ -384,7 +384,7 @@ test('check if "Atacarconespada" block definition exist and is equal to "AtacarC
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "Escaparenunicornio" block definition exist and is equal to "EscaparEnUnicornio" block definition', function (assert) {
     let service = this.subject()
@@ -393,7 +393,7 @@ test('check if "Escaparenunicornio" block definition exist and is equal to "Esca
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "estoyInicio" block definition exist and is equal to "EstoySobreElInicio" block definition', function (assert) {
     let service = this.subject()
@@ -402,7 +402,7 @@ test('check if "estoyInicio" block definition exist and is equal to "EstoySobreE
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "estoyAlInicio" block definition exist and is equal to "EstoySobreElInicio" block definition', function (assert) {
     let service = this.subject()
@@ -411,7 +411,7 @@ test('check if "estoyAlInicio" block definition exist and is equal to "EstoySobr
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "estoyFinColumna" block definition exist and is equal to "EstoySobreElFinal" block definition', function (assert) {
     let service = this.subject()
@@ -420,7 +420,7 @@ test('check if "estoyFinColumna" block definition exist and is equal to "EstoySo
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "EstoyAlFin" block definition exist and is equal to "EstoySobreElFinal" block definition', function (assert) {
     let service = this.subject()
@@ -429,7 +429,7 @@ test('check if "EstoyAlFin" block definition exist and is equal to "EstoySobreEl
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "ComerBananaNano" block definition exist and is equal to "ComerBanana" block definition', function (assert) {
     let service = this.subject()
@@ -438,7 +438,7 @@ test('check if "ComerBananaNano" block definition exist and is equal to "ComerBa
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
 
 test('check if "saltar1" block definition exist and is equal to "SaltarHablando" block definition', function (assert) {
     let service = this.subject()
@@ -447,4 +447,4 @@ test('check if "saltar1" block definition exist and is equal to "SaltarHablando"
     assert.ok(service.existBlockType(alias))
     assert.ok(service.areAlias(alias, type))
     assert.notOk(service.areAllAlias(service.getBlockTypesWithNotAlias(alias), type))
-});
+})
