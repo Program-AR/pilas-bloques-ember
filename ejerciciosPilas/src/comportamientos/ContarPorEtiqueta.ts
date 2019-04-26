@@ -23,7 +23,7 @@ class ContarPorEtiqueta extends ComportamientoColision {
 		};
 	}
 
-	metodo(objetoColision) {
+	alColisionar(objetoColision) {
 		this.receptor[this.attrName()].aumentar('cantidad',1);
 		if (this.argumentos.eliminar) objetoColision.eliminar();
 	}

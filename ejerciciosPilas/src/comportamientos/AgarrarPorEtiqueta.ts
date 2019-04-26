@@ -5,7 +5,7 @@ del actor que lo levanta. El subactor acompaña visualmente al actor
 de ahora en adelante.
 */
 class AgarrarPorEtiqueta extends ComportamientoColision{
-		metodo(objetoColision){
+		alColisionar(objetoColision){
 		var objetoAgarrado = objetoColision.clonar();
 		objetoAgarrado.escala = objetoColision.escala;
 		objetoAgarrado.y = this.receptor.y;

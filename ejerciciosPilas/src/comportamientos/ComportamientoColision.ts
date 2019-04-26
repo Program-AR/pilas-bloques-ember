@@ -50,7 +50,7 @@ class ComportamientoColision extends ComportamientoAnimado {
 			objetoTocado.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento']);
 		}
 
-		this.metodo(objetoTocado);
+		this.alColisionar(objetoTocado);
 	}
 
 	preAnimacion() {
@@ -70,13 +70,13 @@ class ComportamientoColision extends ComportamientoAnimado {
 		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0];
 	}
 
-	metodo(objetoColision) {
+	alColisionar(objetoColision) {
 		//redefinir por subclase
 	}
 }
 
 class DesencadenarComportamientoSiColisiona extends ComportamientoColision {
-	metodo(objetoColision) {
+	alColisionar(objetoColision) {
 		let claseComportamiento: any = window[this.argumentos['comportamiento']];
 
 		objetoColision.hacer_luego(claseComportamiento, this.argumentos['argumentosComportamiento'])
@@ -87,7 +87,7 @@ class EncenderPorEtiqueta extends ComportamientoColision {
 	nombreAnimacion() {
 		return "recoger";
 	}
-	metodo(objetoColision) {
+	alColisionar(objetoColision) {
 		objetoColision.cargarAnimacion(this.nombreProximaAnimacion());
 	}
 	nombreProximaAnimacion() {

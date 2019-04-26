@@ -11,7 +11,7 @@ class Sostener extends ComportamientoColision {
     this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
   }
 
-  metodo(objetoColision){
+  alColisionar(objetoColision){
 			// TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
 			var objetoAgarrado = objetoColision.clonar();
       objetoAgarrado.escala = objetoColision.escala;
@@ -35,7 +35,7 @@ class Sostener extends ComportamientoColision {
 }
 
 class Soltar extends ComportamientoColision {
-  metodo(objetoColision) {
+  alColisionar(objetoColision) {
     if (this.argumentos.queSoltar) {
       this.receptor.eliminarSubactor(this.argumentos.queSoltar)
     } else {

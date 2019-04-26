@@ -67,7 +67,7 @@ class CambiarColor extends ComportamientoColision {
     super.sanitizarArgumentos();
   }
 
-	metodo(foco){
+	alColisionar(foco){
     foco.cambiarColor();
 	}
 }

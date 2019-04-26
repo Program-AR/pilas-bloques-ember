@@ -1,7 +1,7 @@
 /// <reference path="ComportamientoColision.ts"/>
 
 class RecogerPorEtiqueta extends ComportamientoColision{
-			metodo(objetoColision){
+			alColisionar(objetoColision){
 				objetoColision.eliminar();
 				if(this.argumentos['dondeReflejarValor']){
 						this.argumentos['dondeReflejarValor'].aumentar(1);

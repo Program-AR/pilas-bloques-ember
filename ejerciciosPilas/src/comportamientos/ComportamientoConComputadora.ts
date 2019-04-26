@@ -53,7 +53,7 @@ class EscribirEnComputadora extends ComportamientoConComputadora {
     }
 
 
-    metodo(objetoColision) {
+    alColisionar(objetoColision) {
         if (this.argumentos['idTransicion'] == 'escribirC') {
             objetoColision.cargarAnimacion("claveok");
         }
