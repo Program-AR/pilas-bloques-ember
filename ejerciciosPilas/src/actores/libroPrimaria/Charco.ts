@@ -4,19 +4,19 @@
 /// <reference path="../Colisionable.ts"/>
 /// <reference path="../../actores/libroPrimaria/Coty.ts"/>
 /// <reference path="../../comportamientos/SaltarAnimado.ts"/>
-/// <reference path="../../comportamientos/Hundir.ts"/>
+/// <reference path="../../comportamientos/Hundirse.ts"/>
 
 @mergeWith(Colisionable)
 class Charco extends ActorAnimado {
-    static _grilla = 'actor.charco.png';
+    static _grilla = 'actor.charco.png'
 
     constructor() {
         super(0, 0)
         this.definirAnimacion("parado", [0], 6, true)
     }
 
-    comportamientosQueProvoco(): Function[] {
-        return [Hundir]
+    provocoAlColisionar(): Function[] {
+        return [Hundirse]
     }
 
 }
