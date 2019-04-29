@@ -1,11 +1,11 @@
-/// <reference path="ComportamientoColision.ts"/>
+/// <reference path="Interactuar.ts"/>
 /*
 Este comportamiento permite tomar un objeto y convertirlo en subactor
 del actor que lo levanta. El subactor acompaña visualmente al actor
 de ahora en adelante.
 */
-class AgarrarPorEtiqueta extends ComportamientoColision{
-		alColisionar(objetoColision){
+class AgarrarPorEtiqueta extends Interactuar{
+		alInteractuar(objetoColision){
 		var objetoAgarrado = objetoColision.clonar();
 		objetoAgarrado.escala = objetoColision.escala;
 		objetoAgarrado.y = this.receptor.y;

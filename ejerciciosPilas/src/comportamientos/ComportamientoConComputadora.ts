@@ -1,14 +1,23 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoColision.ts" />
+/// <reference path = "Interactuar.ts" />
 /// <reference path = "SecuenciaAnimada.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
 
-class ComportamientoConComputadora extends ComportamientoColision {
+class ComportamientoConComputadora extends Interactuar {
 
     constructor(argumentos: any) {
-        argumentos.etiqueta = 'CompuAnimada';
-        argumentos.mensajeError = "No hay una computadora aquí";
-        argumentos.nombreAnimacion = "escribir";
-        super(argumentos);
+        argumentos.etiqueta = 'CompuAnimada'
+        argumentos.mensajeError = "No hay una computadora aquí"
+        argumentos.nombreAnimacion = "escribir"
+        super(argumentos)
+    }
+
+    public computadoraInteractuada(): CompuAnimada {
+        return this.interactuado() as CompuAnimada
+    }
+
+    protected alInteractuar(actor: ActorAnimado): void {
+
     }
 
 }
@@ -16,14 +25,14 @@ class ComportamientoConComputadora extends ComportamientoColision {
 class PrenderComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = 'prender';
-        argumentos.animacionColisionadoPost = "prendida";
-        super(argumentos);
+        argumentos.idTransicion = 'prender'
+        argumentos.animacionColisionadoPost = "prendida"
+        super(argumentos)
     }
 
-    configurarVerificaciones(): void {
-        super.configurarVerificaciones();
-        this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
+    public configurarVerificaciones(): void {
+        super.configurarVerificaciones()
+        this.verificacionesPre.push(new Verificacion(() => !this.computadoraInteractuada().estaPrendida(),
             "Esta computadora ya está prendida"))
     }
 
@@ -32,14 +41,14 @@ class PrenderComputadora extends ComportamientoConComputadora {
 class ApagarComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = 'apagar';
-        argumentos.animacionColisionadoPost = "parado";
-        super(argumentos);
+        argumentos.idTransicion = 'apagar'
+        argumentos.animacionColisionadoPost = "parado"
+        super(argumentos)
     }
 
-    configurarVerificaciones(): void {
-        super.configurarVerificaciones();
-        this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
+    public configurarVerificaciones(): void {
+        super.configurarVerificaciones()
+        this.verificacionesPre.push(new Verificacion(() => this.computadoraInteractuada().estaPrendida(),
             "Esta computadora ya está apagada"))
     }
 
@@ -48,22 +57,23 @@ class ApagarComputadora extends ComportamientoConComputadora {
 class EscribirEnComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
-        argumentos.nombreAnimacion = "escribir";
-        super(argumentos);
+        argumentos.nombreAnimacion = "escribir"
+        super(argumentos)
     }
 
 
-    alColisionar(objetoColision) {
+    protected alInteractuar(actor: ActorAnimado): void {
         if (this.argumentos['idTransicion'] == 'escribirC') {
-            objetoColision.cargarAnimacion("claveok");
+            actor.cargarAnimacion("claveok")
         }
     }
+    
 }
 
 class InstalarJuegoEnComputadora extends SecuenciaAnimada {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = "instalar";
+        argumentos.idTransicion = "instalar"
         argumentos.secuencia = [
             {
                 comportamiento: "EscribirEnComputadora",
@@ -78,8 +88,8 @@ class InstalarJuegoEnComputadora extends SecuenciaAnimada {
                 }
             },
 
-        ];
-        super(argumentos);
+        ]
+        super(argumentos)
     }
 
 

@@ -1,4 +1,4 @@
-/// <reference path="ComportamientoColision.ts"/>
+/// <reference path="Interactuar.ts"/>
 /// <reference path="../actores/ObservadoAnimado.ts"/>
 
 /*
@@ -12,7 +12,7 @@ Ejemplo de uso: ElMonoQueSabeContar.ts
 */
 
 
-class ContarPorEtiqueta extends ComportamientoColision {
+class ContarPorEtiqueta extends Interactuar {
 
 	iniciar(receptor){
 		super.iniciar(receptor);
@@ -23,7 +23,7 @@ class ContarPorEtiqueta extends ComportamientoColision {
 		};
 	}
 
-	alColisionar(objetoColision) {
+	alInteractuar(objetoColision) {
 		this.receptor[this.attrName()].aumentar('cantidad',1);
 		if (this.argumentos.eliminar) objetoColision.eliminar();
 	}

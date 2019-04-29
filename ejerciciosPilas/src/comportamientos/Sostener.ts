@@ -1,27 +1,28 @@
-/// <reference path="ComportamientoColision.ts"/>
+/// <reference path="Interactuar.ts"/>
 
 /*
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
-class Sostener extends ComportamientoColision {
-  preAnimacion(){
+class Sostener extends Interactuar {
+
+  preAnimacion() {
     super.preAnimacion();
     this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
   }
 
-  alColisionar(objetoColision){
-			// TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
-			var objetoAgarrado = objetoColision.clonar();
-      objetoAgarrado.escala = objetoColision.escala;
-      objetoAgarrado.y = this.receptor.y;
-      objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
-      this.receptor.agregarSubactor(objetoAgarrado);
-      objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
+  alInteractuar(objetoColision) {
+    // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
+    var objetoAgarrado = objetoColision.clonar();
+    objetoAgarrado.escala = objetoColision.escala;
+    objetoAgarrado.y = this.receptor.y;
+    objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
+    this.receptor.agregarSubactor(objetoAgarrado);
+    objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
 
-      if (objetoColision.disminuir) objetoColision.disminuir('cantidad',1);
-      if (!objetoColision['cantidad']) objetoColision.eliminar();
+    if (objetoColision.disminuir) objetoColision.disminuir('cantidad', 1);
+    if (!objetoColision['cantidad']) objetoColision.eliminar();
   }
 
   configurarVerificaciones() {
@@ -29,13 +30,13 @@ class Sostener extends ComportamientoColision {
     this.verificacionesPre.push(new Verificacion(() => this.puedoSostener(), "No puedo sostener dos cosas a la vez..."));
   }
 
-  puedoSostener(){
+  puedoSostener() {
     return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
   }
 }
 
-class Soltar extends ComportamientoColision {
-  alColisionar(objetoColision) {
+class Soltar extends Interactuar {
+  alInteractuar(objetoColision) {
     if (this.argumentos.queSoltar) {
       this.receptor.eliminarSubactor(this.argumentos.queSoltar)
     } else {
@@ -47,19 +48,19 @@ class Soltar extends ComportamientoColision {
   configurarVerificaciones() {
     super.configurarVerificaciones();
     this.verificacionesPre.push(
-    new Verificacion(
-         () => this.sostieneLoQueCorresponde(),
+      new Verificacion(
+        () => this.sostieneLoQueCorresponde(),
         "No tengo " + this.hacerLegible(this.argumentos.queSoltar) + " en la mano")
-      );
+    );
   }
 
-  sostieneLoQueCorresponde(){
-     return this.argumentos.queSoltar ?
-       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
-       this.receptor.tieneAlgoEnLaMano();
+  sostieneLoQueCorresponde() {
+    return this.argumentos.queSoltar ?
+      this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
+      this.receptor.tieneAlgoEnLaMano();
   }
 
-  hacerLegible(etiqueta){
+  hacerLegible(etiqueta) {
     return etiqueta ? super.hacerLegible(etiqueta) : "nada";
   }
 }

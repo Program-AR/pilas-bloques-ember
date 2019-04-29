@@ -157,7 +157,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
-      comportamiento: 'ComportamientoColision',
+      comportamiento: 'Interactuar',
       argumentos: `{
         animacionColisionadoPost: 'prendida',
         nombreAnimacion: 'apretar',
@@ -415,7 +415,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('DarSombrero', {
       descripcion: 'Dar el sombrero',
       icono: 'icono.sombrero.png',
-      comportamiento: 'ComportamientoColision',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: "MagoAnimado",
         nombreAnimacion: "cambiarSombreroPorEspada",
@@ -433,7 +433,7 @@ export default Ember.Service.extend({
         idTransicion: "atacarConEspada",
         secuencia: [
           {
-            comportamiento: "ComportamientoColision",
+            comportamiento: "Interactuar",
             argumentos: {
               etiqueta: "CaballeroAnimado",
               animacionColisionadoMientras: "defender",
@@ -486,7 +486,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderFogata', {
       descripcion: 'Prender fogata',
       icono: 'icono.FogataPrendida.png',
-      comportamiento: 'ComportamientoColision',
+      comportamiento: 'Interactuar',
       argumentos: '{etiqueta: "FogataAnimada", animacionColisionadoPost: "prendida", nombreAnimacion: "prender" }',
     });
 
@@ -562,7 +562,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ExplotarGlobo', {
       descripcion: 'Explotar globo',
       icono: 'icono.globo.png',
-      comportamiento: 'ComportamientoColision',
+      comportamiento: 'Interactuar',
 
       argumentos: `{
         etiqueta: "GloboAnimado",

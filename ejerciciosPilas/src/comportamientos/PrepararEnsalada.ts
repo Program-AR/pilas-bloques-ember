@@ -1,8 +1,7 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoColision.ts" />
+/// <reference path = "Interactuar.ts" />
 
-class PrepararEnsalada extends ComportamientoColision {
-
+class PrepararEnsalada extends Interactuar {
 
     constructor() {
 
@@ -28,6 +27,10 @@ class PrepararEnsalada extends ComportamientoColision {
 
         this.verificacionesPre.push(new Verificacion(() => escena.noHayMasLechugas(),
             '¡Todavía me queda lechuga por recoger!'));
+
+    }
+
+    protected alInteractuar(actor: ActorAnimado): void {
 
     }
 
