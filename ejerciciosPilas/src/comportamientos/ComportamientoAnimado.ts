@@ -98,11 +98,6 @@ class ComportamientoAnimado extends Comportamiento {
 		this.verificacionesPre.forEach(verificacion => {
 			verificacion.verificar();
 		});
-
-		if (this.argumentos.idTransicion) {
-			// Si la transición que se intenta realizar no es válida, explota acá
-			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion);
-		}
 	}
 
 	private realizarVerificacionesPostAnimacion() {
