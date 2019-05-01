@@ -473,11 +473,6 @@ export default Ember.Component.extend({
       let data = null;
       let solucion = null;
 
-      if (!regex_file.test(archivo.name)) {
-        alert("Lo siento, solo se permiten cargar archivos .spbq");
-        return;
-      }
-
       try {
         data = JSON.parse(contenido);
         solucion = atob(data.solucion);
@@ -487,11 +482,13 @@ export default Ember.Component.extend({
         return;
       }
 
-      if (!regex_version.test(data.version)) {
-        alert("Lo siento, la especificación de versión es incorrecta.");
-        return;
+      if (!regex_file.test(archivo.name)) {
+        alert("Cuidado, este archivo NO tiene extensión .spbq.");
       }
 
+      if (!regex_version.test(data.version)) {
+        alert("Cuidado, la especificación de versión es incorrecta.");
+      }
 
       if (parseInt(data.version) > VERSION_DEL_FORMATO_DE_ARCHIVO) {
         alert("Cuidado, el archivo corresponde a otra versión de la aplicación. Se cargará de todas formas, pero puede fallar.");
