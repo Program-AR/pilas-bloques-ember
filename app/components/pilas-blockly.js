@@ -468,8 +468,8 @@ export default Ember.Component.extend({
 
     //TODO: Mover la creación y cargado del archivo a otro objeto y testear
     cargarSolucion(archivo, contenido) {
-      let regex_file = /\.spbq$/;
-      let regex_version = /^\d+$/;
+      // let regex_file = /\.spbq$/;
+      // let regex_version = /^\d+$/;
       let data = null;
       let solucion = null;
 
@@ -478,20 +478,8 @@ export default Ember.Component.extend({
         solucion = atob(data.solucion);
       } catch (e) {
         console.error(e);
-        alert("Lo siento, el archivo está dañando.");
+        alert("Lo siento, este archivo no tiene una solución de Pilas Bloques.");
         return;
-      }
-
-      if (!regex_file.test(archivo.name)) {
-        alert("Cuidado, este archivo NO tiene extensión .spbq.");
-      }
-
-      if (!regex_version.test(data.version)) {
-        alert("Cuidado, la especificación de versión es incorrecta.");
-      }
-
-      if (parseInt(data.version) > VERSION_DEL_FORMATO_DE_ARCHIVO) {
-        alert("Cuidado, el archivo corresponde a otra versión de la aplicación. Se cargará de todas formas, pero puede fallar.");
       }
 
       if (this.get("modelActividad.nombre") !== data.actividad) {
