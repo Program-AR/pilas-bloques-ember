@@ -31,7 +31,7 @@ export default Ember.Component.extend({
   },
 
   limpiarInput() {
-    document.getElementById('cargarActividadInput').value = null;
+    this.$('#cargarActividadInput').value = null;
   },
 
   descargar(text, name, type) {
@@ -65,23 +65,21 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    alPulsar() {
+    abrirSolucion() {
       this.$("#cargarActividadInput").click();
     },
 
     guardarSolucion() {
-      let nombre_de_la_actividad = this.get("actividad.nombre");
-      let nombre_surgerido = `${nombre_de_la_actividad}.spbq`;
+      let activityName = this.get("actividad.nombre");
+      let fileName = `${activityName}.spbq`;
 
       let contenido = {
         version: VERSION_DEL_FORMATO_DE_ARCHIVO,
-        actividad: nombre_de_la_actividad,
+        actividad: activityName,
         solucion: btoa(this.get('xml'))
       };
 
-      let contenido_como_string = JSON.stringify(contenido);
-
-      this.descargar(contenido_como_string, nombre_surgerido, 'application/octet-stream');
+      this.descargar(JSON.stringify(contenido), fileName, 'application/octet-stream');
     },
   }
 });
