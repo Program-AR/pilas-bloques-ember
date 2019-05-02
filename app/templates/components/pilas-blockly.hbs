@@ -29,9 +29,7 @@
 
       {{#unless estoyEnMoodle}}
 
-        {{pilas-boton-cargar cuandoSelecciona="cargarSolucion"}}
-
-        <button class='btn btn-default' {{action "guardarSolucion"}}><i class="fa fa-download"></i> Guardar</button>
+        {{pilas-boton-cargar actividad=modelActividad workspace=initial_workspace xml=codigoActualEnFormatoXML}}
 
         {{pilas-toggle isDisabled=this.ejecutando isChecked=this.modoTuboHabilitado icon="fa fa-bolt" tooltip="Modo Turbo" element-id="modo-turbo"}}
 
