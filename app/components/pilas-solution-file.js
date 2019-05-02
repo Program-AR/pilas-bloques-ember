@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   xml: null,
 
   didInsertElement() {
-    this.$('#cargarActividadInput').change((event) => {
+    this.fileInput().change((event) => {
       let archivo = event.target.files[0];
 
       if (archivo) {
@@ -18,7 +18,7 @@ export default Ember.Component.extend({
         reader.onload = (e) => {
       	  let contenido = e.target.result;
           
-          this.cargarSolucion(archivo, contenido);
+          this.cargarSolucion(contenido);
         };
 
         reader.readAsText(archivo);
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
   },
 
   limpiarInput() {
-    this.$('#cargarActividadInput').value = null;
+    this.fileInput().value = null;
   },
 
   descargar(text, name, type) {
@@ -39,10 +39,11 @@ export default Ember.Component.extend({
     var file = new Blob([text], {type: type});
     a.href = URL.createObjectURL(file);
     a.download = name;
-    a.click();
+    a.type = type
+    a.click()
   },
 
-  cargarSolucion(archivo, contenido) {
+  cargarSolucion(contenido) {
     // let regex_file = /\.spbq$/;
     // let regex_version = /^\d+$/;
     let data = null;
@@ -64,9 +65,13 @@ export default Ember.Component.extend({
     this.set('workspace', solucion);
   },
 
+  fileInput() {
+    return this.$("#cargarActividadInput")
+  },
+
   actions: {
     abrirSolucion() {
-      this.$("#cargarActividadInput").click();
+      this.fileInput().click();
     },
 
     guardarSolucion() {
