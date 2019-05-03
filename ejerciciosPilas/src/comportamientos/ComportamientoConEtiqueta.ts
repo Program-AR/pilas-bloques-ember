@@ -29,7 +29,7 @@ class InteractuarPorEtiqueta extends ComportamientoAnimado {
     }
 
     public configurarVerificaciones(): void {
-        const mensajeError: string = this.argumentos['mensajeError'] || "¡Acá no hay " + this.argumentos['etiqueta'] + "!"
+        const mensajeError: string = this.argumentos['mensajeError'] || "¡Acá no hay " + this.hacerLegible(this.argumentos['etiqueta']) + "!"
         this.verificacionesPre.push(new Verificacion(() => this.hayConQuienInteractuar(), mensajeError))
     }
 
@@ -84,6 +84,10 @@ class InteractuarPorEtiqueta extends ComportamientoAnimado {
         this.alInteractuar()
 
     }
+
+    protected hacerLegible(etiqueta: String): String {
+		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0]
+	}
 
 }
 

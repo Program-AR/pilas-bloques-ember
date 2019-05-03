@@ -34,6 +34,11 @@ class Sostener extends InteractuarPorEtiqueta {
   puedoSostener() {
     return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
   }
+
+  hacerLegible(etiqueta) {
+    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
+  }
+  
 }
 
 class Soltar extends InteractuarPorEtiqueta {
@@ -52,7 +57,7 @@ class Soltar extends InteractuarPorEtiqueta {
 
   configurarVerificaciones() {
     super.configurarVerificaciones();
-    const mensajeError: string = "No tengo " + (this.argumentos.queSoltar ? this.argumentos.queSoltar : "nada") + " en la mano"
+    const mensajeError: string = "No tengo " + (this.argumentos.queSoltar ? this.hacerLegible(this.argumentos.queSoltar) : "nada") + " en la mano"
     this.verificacionesPre.push(new Verificacion(() => this.sostieneLoQueCorresponde(), mensajeError));
   }
 
@@ -61,5 +66,10 @@ class Soltar extends InteractuarPorEtiqueta {
       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
       this.receptor.tieneAlgoEnLaMano();
   }
+
+  hacerLegible(etiqueta) {
+    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
+  }
+
 
 }
