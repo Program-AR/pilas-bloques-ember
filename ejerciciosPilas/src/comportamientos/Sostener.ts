@@ -14,15 +14,17 @@ class Sostener extends InteractuarPorEtiqueta {
 
   protected alInteractuar(): void {
     // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
-    var objetoAgarrado = this.interactuado().clonar()
-    objetoAgarrado.escala = this.interactuado().escala
+
+    var interactuado: any =  this.interactuado()
+    var objetoAgarrado: any = interactuado.clonar()
+    objetoAgarrado.escala = interactuado.escala
     objetoAgarrado.y = this.receptor.y
     objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4)
     this.receptor.agregarSubactor(objetoAgarrado)
     objetoAgarrado.cargarAnimacion("correr") // porque tiene que cargar la misma imagen que va a usar al moverse
 
-    if (objetoAgarrado.disminuir) objetoAgarrado.disminuir('cantidad', 1)
-    if (!this.interactuado()['cantidad']) this.interactuado().eliminar()
+    if (interactuado.disminuir) interactuado.disminuir('cantidad',1)
+    if (!interactuado['cantidad']) interactuado.eliminar()
 
   }
 
@@ -35,10 +37,6 @@ class Sostener extends InteractuarPorEtiqueta {
     return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
   }
 
-  hacerLegible(etiqueta) {
-    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
-  }
-  
 }
 
 class Soltar extends InteractuarPorEtiqueta {
