@@ -8,15 +8,14 @@ export default Ember.Component.extend({
   workspace: null,
   xml: null,
 
-  leer(archivo) {
+  leerSolucion(archivo) {
     var reader = new FileReader()
-
-    reader.onload = (e) => {
-      let contenido = e.target.result
-      this.cargarSolucion(contenido)
-    }
-
-    reader.readAsText(archivo)
+    return new Promise((resolve, reject) => {
+      reader.onerror = (err) => reject(err)
+      reader.onload = (event) => resolve(event.target.result)
+      reader.readAsText(archivo)
+    })
+    .then((contenido) => this.cargarSolucion(contenido))
   },
 
   descargar(text, name, type) {
@@ -53,13 +52,8 @@ export default Ember.Component.extend({
     this.fileInput().change((event) => {
       let archivo = event.target.files[0]
 
-      if (archivo) {
-        try {
-          this.leer(archivo)
-        } catch (error) {
-          alert(error) //TODO: Fix!! Las excepciones no llegan hasta acá, habría que trabajar mejor el async
-        }
-      }
+      if (archivo)
+        this.leerSolucion(archivo).catch(alert)
 
       this.limpiarInput() // Fuerza a que se pueda cargar dos o más veces el mismo archivo
       return false
