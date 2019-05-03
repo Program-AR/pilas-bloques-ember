@@ -207,7 +207,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada luego de haber instalado un juego',
-	errorEsperado: 'Esta computadora ya está apagada',
+	errorEsperado: '¡Ups, esa no era la opción correcta!',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
    <variables />

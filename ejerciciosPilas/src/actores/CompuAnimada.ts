@@ -2,7 +2,7 @@
 
 class CompuAnimada extends ActorAnimado {
 
-  private _estaPrendida: boolean = false;
+  private _estaPrendida: boolean = false
 
   constructor(x, y) {
     super(x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 })
@@ -13,16 +13,17 @@ class CompuAnimada extends ActorAnimado {
     this.definirAnimacion("yaInstalado", [7], 1)
   }
 
+  cargarAnimacion(nombre) {
+    super.cargarAnimacion(nombre)
+    
+    if(nombre === "prendida") {
+      this._estaPrendida = true
+    }
+
+  }
+
   public estaPrendida(): boolean {
-    return this._estaPrendida;
-  }
-
-  public prender(): void {
-    this._estaPrendida = true
-  }
-
-  public apagar(): void {
-    this._estaPrendida = false
+    return this._estaPrendida
   }
 
 }
