@@ -157,7 +157,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
-      comportamiento: 'InteractuarConEtiqueta',
+      comportamiento: 'InteractuarPorEtiqueta',
       argumentos: `{
         etiqueta: 'BotonAnimado',
         nombreAnimacion: 'apretar',
@@ -492,7 +492,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderFogata', {
       descripcion: 'Prender fogata',
       icono: 'icono.FogataPrendida.png',
-      comportamiento: 'InteractuarConEtiqueta',
+      comportamiento: 'InteractuarPorEtiqueta',
       argumentos: `{
         etiqueta: "FogataAnimada",
         nombreAnimacion: "prender",
@@ -572,7 +572,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ExplotarGlobo', {
       descripcion: 'Explotar globo',
       icono: 'icono.globo.png',
-      comportamiento: 'InteractuarConEtiqueta',
+      comportamiento: 'InteractuarPorEtiqueta',
       argumentos: `{
         etiqueta: "GloboAnimado",
         nombreAnimacion: "recoger",
@@ -606,7 +606,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PatearPelota', {
       descripcion: 'Patear pelota',
       icono: 'icono.pelota.png',
-      comportamiento: 'InteractuarConEtiqueta',
+      comportamiento: 'InteractuarPorEtiqueta',
       argumentos: `{
         etiqueta: "PelotaAnimada",
         idTransicion: "patear",

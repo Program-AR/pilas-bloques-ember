@@ -18,7 +18,7 @@
  * la interacción.
  * Este comportamiento finaliza, y el comportamiento adicional en el actor interactuado continúa.
 */
-class InteractuarConEtiqueta extends ComportamientoAnimado {
+class InteractuarPorEtiqueta extends ComportamientoAnimado {
 
     public sanitizarArgumentos(): void {
         super.sanitizarArgumentos()
@@ -87,7 +87,7 @@ class InteractuarConEtiqueta extends ComportamientoAnimado {
 
 }
 
-class EncenderPorEtiqueta extends InteractuarConEtiqueta {
+class EncenderPorEtiqueta extends InteractuarPorEtiqueta {
 
     public nombreAnimacion(): String {
         return "recoger"
@@ -120,7 +120,7 @@ class MorderPorEtiqueta extends EncenderPorEtiqueta {
 
 }
 
-class RecogerPorEtiqueta extends InteractuarConEtiqueta {
+class RecogerPorEtiqueta extends InteractuarPorEtiqueta {
 
     protected alInteractuar(): void {
         super.alInteractuar()
@@ -136,7 +136,7 @@ class RecogerPorEtiqueta extends InteractuarConEtiqueta {
 
 }
 
-class ContarPorEtiqueta extends InteractuarConEtiqueta {
+class ContarPorEtiqueta extends InteractuarPorEtiqueta {
 
     iniciar(receptor) {
         super.iniciar(receptor)

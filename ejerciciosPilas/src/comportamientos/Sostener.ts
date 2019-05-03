@@ -5,7 +5,7 @@ Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
-class Sostener extends InteractuarConEtiqueta {
+class Sostener extends InteractuarPorEtiqueta {
 
   preAnimacion() {
     super.preAnimacion();
@@ -14,17 +14,15 @@ class Sostener extends InteractuarConEtiqueta {
 
   protected alInteractuar(): void {
     // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
-    var objetoAgarrado = this.interactuado().clonar();
-    objetoAgarrado.escala = this.interactuado().escala;
-    objetoAgarrado.y = this.receptor.y;
-    objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
-    this.receptor.agregarSubactor(objetoAgarrado);
-    objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
+    var objetoAgarrado = this.interactuado().clonar()
+    objetoAgarrado.escala = this.interactuado().escala
+    objetoAgarrado.y = this.receptor.y
+    objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4)
+    this.receptor.agregarSubactor(objetoAgarrado)
+    objetoAgarrado.cargarAnimacion("correr") // porque tiene que cargar la misma imagen que va a usar al moverse
 
-    const interactuadoConDisminuir = Trait.toObject(ObservadoConDisminuir, this.interactuado());
-
-    if (interactuadoConDisminuir.disminuir) interactuadoConDisminuir.disminuir('cantidad', 1);
-    if (!this.interactuado()['cantidad']) this.interactuado().eliminar();
+    if (objetoAgarrado.disminuir) objetoAgarrado.disminuir('cantidad', 1)
+    if (!this.interactuado()['cantidad']) this.interactuado().eliminar()
 
   }
 
@@ -38,7 +36,7 @@ class Sostener extends InteractuarConEtiqueta {
   }
 }
 
-class Soltar extends InteractuarConEtiqueta {
+class Soltar extends InteractuarPorEtiqueta {
 
   protected alInteractuar(): void {
 

@@ -60,7 +60,7 @@ class LaFiestaDeDracula extends EscenaActividad {
   }
 }
 
-class CambiarColor extends InteractuarConEtiqueta {
+class CambiarColor extends InteractuarPorEtiqueta {
 
   sanitizarArgumentos() {
     this.argumentos.etiqueta = "Foco";
