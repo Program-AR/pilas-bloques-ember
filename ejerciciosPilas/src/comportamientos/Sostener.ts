@@ -1,28 +1,31 @@
-/// <reference path="Interactuar.ts"/>
+/// <reference path="ComportamientoConEtiqueta.ts"/>
 
 /*
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
-class Sostener extends Interactuar {
+class Sostener extends InteractuarConEtiqueta {
 
   preAnimacion() {
     super.preAnimacion();
     this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
   }
 
-  alInteractuar(objetoColision) {
+  protected alInteractuar(): void {
     // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
-    var objetoAgarrado = objetoColision.clonar();
-    objetoAgarrado.escala = objetoColision.escala;
+    var objetoAgarrado = this.interactuado().clonar();
+    objetoAgarrado.escala = this.interactuado().escala;
     objetoAgarrado.y = this.receptor.y;
     objetoAgarrado.x = this.receptor.subactores[0].derecha - (this.receptor.subactores[0].ancho / 4);
     this.receptor.agregarSubactor(objetoAgarrado);
     objetoAgarrado.cargarAnimacion("correr"); // porque tiene que cargar la misma imagen que va a usar al moverse
 
-    if (objetoColision.disminuir) objetoColision.disminuir('cantidad', 1);
-    if (!objetoColision['cantidad']) objetoColision.eliminar();
+    const interactuadoConDisminuir = Trait.toObject(ObservadoConDisminuir, this.interactuado());
+
+    if (interactuadoConDisminuir.disminuir) interactuadoConDisminuir.disminuir('cantidad', 1);
+    if (!this.interactuado()['cantidad']) this.interactuado().eliminar();
+
   }
 
   configurarVerificaciones() {
@@ -35,23 +38,24 @@ class Sostener extends Interactuar {
   }
 }
 
-class Soltar extends Interactuar {
-  alInteractuar(objetoColision) {
+class Soltar extends InteractuarConEtiqueta {
+
+  protected alInteractuar(): void {
+
     if (this.argumentos.queSoltar) {
       this.receptor.eliminarSubactor(this.argumentos.queSoltar)
-    } else {
+    }
+
+    else {
       this.receptor.eliminarUltimoSubactor();
-    };
+    }
 
   }
 
   configurarVerificaciones() {
     super.configurarVerificaciones();
-    this.verificacionesPre.push(
-      new Verificacion(
-        () => this.sostieneLoQueCorresponde(),
-        "No tengo " + this.hacerLegible(this.argumentos.queSoltar) + " en la mano")
-    );
+    const mensajeError: string = "No tengo " + (this.argumentos.queSoltar ? this.argumentos.queSoltar : "nada") + " en la mano"
+    this.verificacionesPre.push(new Verificacion(() => this.sostieneLoQueCorresponde(), mensajeError));
   }
 
   sostieneLoQueCorresponde() {
@@ -60,7 +64,4 @@ class Soltar extends Interactuar {
       this.receptor.tieneAlgoEnLaMano();
   }
 
-  hacerLegible(etiqueta) {
-    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
-  }
 }

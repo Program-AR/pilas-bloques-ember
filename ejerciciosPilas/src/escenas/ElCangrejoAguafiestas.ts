@@ -1,9 +1,8 @@
 /// <reference path = "EscenaActividad.ts" />
-/// <reference path="../comportamientos/RecogerPorEtiqueta.ts"/>
+/// <reference path="../comportamientos/ComportamientoConEtiqueta.ts"/>
 /// <reference path="../actores/CuadriculaEsparsa.ts"/>
 /// <reference path="../actores/GloboAnimado.ts"/>
 /// <reference path="../actores/CangrejoAnimado.ts"/>
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />}
 
   class ElCangrejoAguafiestas extends EscenaActividad {
     fondo;

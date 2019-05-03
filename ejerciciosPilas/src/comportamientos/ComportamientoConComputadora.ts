@@ -1,9 +1,9 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "Interactuar.ts" />
+/// <reference path = "ComportamientoConEtiqueta.ts" />
 /// <reference path = "SecuenciaAnimada.ts" />
 /// <reference path = "../actores/CompuAnimada.ts" />
 
-class ComportamientoConComputadora extends Interactuar {
+abstract class ComportamientoConComputadora extends InteractuarConEtiqueta {
 
     constructor(argumentos: any) {
         argumentos.etiqueta = 'CompuAnimada'
@@ -16,17 +16,13 @@ class ComportamientoConComputadora extends Interactuar {
         return this.interactuado() as CompuAnimada
     }
 
-    protected alInteractuar(actor: ActorAnimado): void {
-
-    }
-
 }
 
 class PrenderComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
         argumentos.idTransicion = 'prender'
-        argumentos.animacionColisionadoPost = "prendida"
+        argumentos.animacionAlFinalizarInteraccion = "prendida"
         super(argumentos)
     }
 
@@ -42,7 +38,7 @@ class ApagarComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
         argumentos.idTransicion = 'apagar'
-        argumentos.animacionColisionadoPost = "parado"
+        argumentos.animacionAlFinalizarInteraccion = "parado"
         super(argumentos)
     }
 
@@ -56,28 +52,24 @@ class ApagarComputadora extends ComportamientoConComputadora {
 
 class EscribirEnComputadora extends ComportamientoConComputadora {
 
-    constructor(argumentos: any) {
-        argumentos.nombreAnimacion = "escribir"
-        super(argumentos)
-    }
-
-
-    protected alInteractuar(actor: ActorAnimado): void {
+    protected alInteractuar(): void {
+        super.alInteractuar()
         if (this.argumentos['idTransicion'] == 'escribirC') {
-            actor.cargarAnimacion("claveok")
+            this.interactuado().cargarAnimacion("claveok")
         }
     }
-    
+
 }
 
 class InstalarJuegoEnComputadora extends SecuenciaAnimada {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = "instalar"
         argumentos.secuencia = [
             {
                 comportamiento: "EscribirEnComputadora",
-                argumentos: {}
+                argumentos: {
+                    idTransicion: "instalar",
+                }
             },
             {
                 comportamiento: "EsperarAnimacionTocado",
@@ -87,7 +79,6 @@ class InstalarJuegoEnComputadora extends SecuenciaAnimada {
                     nombreAnimacionSiguiente: "yaInstalado"
                 }
             },
-
         ]
         super(argumentos)
     }

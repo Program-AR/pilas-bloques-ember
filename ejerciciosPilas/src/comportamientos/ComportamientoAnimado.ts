@@ -80,8 +80,10 @@ class ComportamientoAnimado extends Comportamiento {
 	}
 
 	private configuracionInicial() {
+		if (this.argumentos.idTransicion) {
+			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion);
+		}
 		this.realizarVerificacionesPreAnimacion();
-
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
 		if (this.hayQueAnimar)

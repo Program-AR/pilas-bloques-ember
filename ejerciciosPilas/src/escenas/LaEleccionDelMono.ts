@@ -4,7 +4,7 @@
 /// <reference path = "../actores/ManzanaAnimada.ts" />
 /// <reference path = "../actores/MonoAnimado.ts" />
 /// <reference path = "../actores/FlechaEscenarioAleatorio.ts" />
-/// <reference path = "../comportamientos/RecogerPorEtiqueta.ts" />
+/// <reference path = "../comportamientos/ComportamientoConEtiqueta.ts" />
 /// <reference path = "../comportamientos/MovimientosEnCuadricula.ts" />
 
 class LaEleccionDelMono extends EscenaActividad {

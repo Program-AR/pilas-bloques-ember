@@ -1,7 +1,7 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "Interactuar.ts" />
+/// <reference path = "ComportamientoConEtiqueta.ts" />
 
-class PrepararEnsalada extends Interactuar {
+class PrepararEnsalada extends InteractuarConEtiqueta {
 
     constructor() {
 
@@ -9,37 +9,33 @@ class PrepararEnsalada extends Interactuar {
             etiqueta: "Ensaladera",
             nombreAnimacion: "prepararEnsalada",
             animacionColisionadoMientras: "preparando",
-            animacionColisionadoPost: "llena",
+            animacionAlFinalizarInteraccion: "llena",
             idTransicion: "prepararEnsalada"
-        });
+        })
     }
 
     configurarVerificaciones() {
-        super.configurarVerificaciones();
+        super.configurarVerificaciones()
 
-        const escena = pilas.escena_actual();
+        const escena = pilas.escena_actual()
 
         this.verificacionesPre.push(new Verificacion(() => !escena.hayDeLosDosIngredientes(),
             '¡Todavía me quedan ingredientes por recoger!'))
 
         this.verificacionesPre.push(new Verificacion(() => escena.noHayMasTomates(),
-            '¡Todavía me queda tomate por recoger!'));
+            '¡Todavía me queda tomate por recoger!'))
 
         this.verificacionesPre.push(new Verificacion(() => escena.noHayMasLechugas(),
-            '¡Todavía me queda lechuga por recoger!'));
-
-    }
-
-    protected alInteractuar(actor: ActorAnimado): void {
+            '¡Todavía me queda lechuga por recoger!'))
 
     }
 
     postAnimacion() {
-        super.postAnimacion();
+        super.postAnimacion()
         if (pilas.escena_actual().noHayMasIngredientes()) {
             pilas.escena_actual().estado = new Estado(() =>
                 true
-            );
+            )
         }
     }
 
