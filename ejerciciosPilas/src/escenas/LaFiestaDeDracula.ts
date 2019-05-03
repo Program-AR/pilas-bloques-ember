@@ -6,7 +6,7 @@
 /// <reference path = "../actores/Murcielago.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
 /// <reference path = "../comportamientos/SecuenciaAnimada.ts" />
-/// <reference path = "../comportamientos/ComportamientoConEtiqueta.ts" />
+/// <reference path = "../comportamientos/Interactuar.ts" />
 
 
 class LaFiestaDeDracula extends EscenaActividad {
@@ -60,7 +60,7 @@ class LaFiestaDeDracula extends EscenaActividad {
   }
 }
 
-class CambiarColor extends InteractuarPorEtiqueta {
+class CambiarColor extends Interactuar {
 
   sanitizarArgumentos() {
     this.argumentos.etiqueta = "Foco";

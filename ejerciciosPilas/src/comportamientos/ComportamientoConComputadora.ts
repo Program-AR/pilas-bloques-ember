@@ -1,9 +1,9 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoConEtiqueta.ts" />
+/// <reference path = "Interactuar.ts" />
 /// <reference path = "SecuenciaAnimada.ts" />
 /// <reference path = "../actores/CompuAnimada.ts" />
 
-abstract class ComportamientoConComputadora extends InteractuarPorEtiqueta {
+abstract class ComportamientoConComputadora extends Interactuar {
 
     constructor(argumentos: any) {
         argumentos.etiqueta = 'CompuAnimada'

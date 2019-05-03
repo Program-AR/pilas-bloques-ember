@@ -18,7 +18,7 @@
  * la interacción.
  * Este comportamiento finaliza, y el comportamiento adicional en el actor interactuado continúa.
 */
-class InteractuarPorEtiqueta extends ComportamientoAnimado {
+class Interactuar extends ComportamientoAnimado {
 
     public sanitizarArgumentos(): void {
         super.sanitizarArgumentos()
@@ -89,74 +89,4 @@ class InteractuarPorEtiqueta extends ComportamientoAnimado {
 		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0]
 	}
 
-}
-
-class EncenderPorEtiqueta extends InteractuarPorEtiqueta {
-
-    public nombreAnimacion(): String {
-        return "recoger"
-    }
-
-    protected alInteractuar(): void {
-        this.interactuado().cargarAnimacion(this.nombreProximaAnimacion())
-    }
-
-    public nombreProximaAnimacion(): string {
-        return "prendida"
-    }
-
-    configurarVerificaciones() {
-        super.configurarVerificaciones()
-        this.verificacionesPre.push(new Verificacion(() => this.estaApagada(), "¡Ya está " + this.nombreProximaAnimacion() + "!"))
-    }
-
-    estaApagada() {
-        return this.interactuado().nombreAnimacionActual() != this.nombreProximaAnimacion()
-    }
-
-}
-
-class MorderPorEtiqueta extends EncenderPorEtiqueta {
-
-    nombreProximaAnimacion() {
-        return "mordida"
-    }
-
-}
-
-class RecogerPorEtiqueta extends InteractuarPorEtiqueta {
-
-    protected alInteractuar(): void {
-        super.alInteractuar()
-        this.interactuado().eliminar()
-        if (this.argumentos['dondeReflejarValor']) {
-            this.argumentos['dondeReflejarValor'].aumentar(1)
-        }
-    }
-
-    nombreAnimacion() {
-        return this.argumentos.nombreAnimacion || "recoger"
-    }
-
-}
-
-class ContarPorEtiqueta extends InteractuarPorEtiqueta {
-
-    iniciar(receptor) {
-        super.iniciar(receptor)
-        if (!receptor[this.attrName()]) {
-            receptor[this.attrName()] = new ObservadoConAumentar()
-            receptor[this.attrName()].cantidad = 0
-            receptor[this.attrName()].registrarObservador(this.receptor.escena.tableros[this.argumentos.etiqueta])
-        }
-    }
-
-    protected alInteractuar(): void {
-        this.receptor[this.attrName()].aumentar('cantidad', 1)
-        if (this.argumentos.eliminar) this.interactuado().eliminar()
-    }
-
-    attrName() {
-        return 'cant' + this.argumentos.etiqueta
-    }
 }

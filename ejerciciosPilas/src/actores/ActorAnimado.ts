@@ -272,10 +272,10 @@ class ActorAnimado extends Actor {
     }
 
     cuando_busca_recoger() {
-        this.escena.intentaronRecoger();
+        this.escena.intentaronRecolectar();
     }
     recoger(a) {
-        this.escena.intentaronRecoger(a);
+        this.escena.intentaronRecolectar(a);
     }
 
     informarError(error: ActividadError) {

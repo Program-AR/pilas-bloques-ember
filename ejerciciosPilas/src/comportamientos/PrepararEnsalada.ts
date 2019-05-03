@@ -1,7 +1,7 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoConEtiqueta.ts" />
+/// <reference path = "Interactuar.ts" />
 
-class PrepararEnsalada extends InteractuarPorEtiqueta {
+class PrepararEnsalada extends Interactuar {
 
     constructor() {
 

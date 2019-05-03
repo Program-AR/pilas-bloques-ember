@@ -1,11 +1,12 @@
-/// <reference path="ComportamientoConEtiqueta.ts"/>
+/// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
+/// <reference path = "Interactuar.ts" />
 
 /*
 Este comportamiento Agarra al objeto y refleja en un contador
 el valor.
 Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por defecto es falso)
 */
-class Sostener extends InteractuarPorEtiqueta {
+class Sostener extends Interactuar {
 
   preAnimacion() {
     super.preAnimacion();
@@ -39,7 +40,7 @@ class Sostener extends InteractuarPorEtiqueta {
 
 }
 
-class Soltar extends InteractuarPorEtiqueta {
+class Soltar extends Interactuar {
 
   protected alInteractuar(): void {
 

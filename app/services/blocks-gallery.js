@@ -157,7 +157,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ApretarBoton', {
       descripcion: 'Apretar botón',
       icono: 'iconos.botonRojo.png',
-      comportamiento: 'InteractuarPorEtiqueta',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: 'BotonAnimado',
         nombreAnimacion: 'apretar',
@@ -170,35 +170,35 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('EncenderLuz', {
       descripcion: 'Prender la luz',
       icono: 'icono.Lamparita.png',
-      comportamiento: 'EncenderPorEtiqueta',
+      comportamiento: 'Encender',
       argumentos: "{'etiqueta':'Luz'}"
     });
 
     this.crearBloqueAccion('ComerBanana', {
       descripcion: 'Comer banana',
       icono: 'icono.banana.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
     });
 
     this.crearBloqueAccion('ComerManzana', {
       descripcion: 'Comer manzana',
       icono: 'icono.manzana.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: `{etiqueta: 'ManzanaAnimada', nombreAnimacion: "comerManzana"}`,
     });
 
     this.crearBloqueAccion('ComerQueso', {
       descripcion: 'Comer queso',
       icono: 'queso.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "QuesoAnimado"}',
     });
 
     this.crearBloqueAccion('ComerNaranja', {
       descripcion: 'Comer naranja',
       icono: 'naranja.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
     });
 
@@ -233,7 +233,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('LevantaTuerca', {
       descripcion: 'Levantar tuerca',
       icono: 'tuerca.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
     });
 
@@ -316,28 +316,28 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('TomarEstrella', {
       descripcion: 'Tomar estrella',
       icono: 'icono.estrella.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
     });
 
     this.crearBloqueAccion('MorderSandia', {
       descripcion: 'Comer sandía',
       icono: 'icono.sandia.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
     });
 
     this.crearBloqueAccion('AlimentarPez', {
       descripcion: 'Alimentar pez',
       icono: 'icono.pez.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
     });
 
     this.crearBloqueAccion('AgarrarComida', {
       descripcion: 'Agarrar comida',
       icono: 'icono.alimento_pez.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
 
@@ -492,7 +492,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PrenderFogata', {
       descripcion: 'Prender fogata',
       icono: 'icono.FogataPrendida.png',
-      comportamiento: 'InteractuarPorEtiqueta',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: "FogataAnimada",
         nombreAnimacion: "prender",
@@ -558,21 +558,21 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ContarBanana', {
       descripcion: 'Contar una banana',
       icono: 'icono.banana.png',
-      comportamiento: 'ContarPorEtiqueta',
+      comportamiento: 'Contar',
       argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
     });
 
     this.crearBloqueAccion('ContarManzana', {
       descripcion: 'Contar una manzana',
       icono: 'icono.manzana.png',
-      comportamiento: 'ContarPorEtiqueta',
+      comportamiento: 'Contar',
       argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
     });
 
     this.crearBloqueAccion('ExplotarGlobo', {
       descripcion: 'Explotar globo',
       icono: 'icono.globo.png',
-      comportamiento: 'InteractuarPorEtiqueta',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: "GloboAnimado",
         nombreAnimacion: "recoger",
@@ -606,7 +606,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('PatearPelota', {
       descripcion: 'Patear pelota',
       icono: 'icono.pelota.png',
-      comportamiento: 'InteractuarPorEtiqueta',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: "PelotaAnimada",
         idTransicion: "patear",
@@ -743,14 +743,14 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('ComerChurrasco', {
       descripcion: 'Comer churrasco',
       icono: 'icono.churrasco.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionMientrasInteractua: "desaparecer"}',
     });
 
     this.crearBloqueAccion('AgarrarTomate', {
       descripcion: 'Agarrar tomate',
       icono: 'icono.tomate.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: `{
         etiqueta: "Tomate",
         nombreAnimacion: "agarrarTomate",
@@ -763,7 +763,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('AgarrarLechuga', {
       descripcion: 'Agarrar lechuga',
       icono: 'icono.lechuga.png',
-      comportamiento: 'RecogerPorEtiqueta',
+      comportamiento: 'Recolectar',
       argumentos: `{
         etiqueta: "Lechuga",
         nombreAnimacion: "agarrarLechuga",

@@ -19,7 +19,7 @@ class TitoRecargado extends SuperTito2 {
     }
 
     prenderLuz() {
-        this.automata.hacer_luego(EncenderPorEtiqueta, { etiqueta: 'Luz' });
+        this.automata.hacer_luego(Encender, { etiqueta: 'Luz' });
     }
 
 }
