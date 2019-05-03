@@ -11,9 +11,24 @@ moduleFor('component:pilas-solution-file', 'Unit | Components | pilas-solution-f
   setup() {
     ctrl = this.subject()
     ctrl.set('actividad', actividadMock)
+    ctrl.descargar = sinon.stub()
     sinon.resetHistory()
   }
 })
+
+test("Al guardar solución crea el archivo correctamente", function(assert) {
+  let contenido = JSON.stringify({
+    version,
+    actividad,
+    solucion: "bnVsbA=="
+  })
+  let archivo = `${actividad}.spbq`
+  let tipo = 'application/octet-stream'
+  
+  ctrl.send("guardarSolucion")
+  assert.ok(ctrl.descargar.calledWith(contenido, archivo, tipo))
+})
+
 
 
 let solucionCompleta = {
