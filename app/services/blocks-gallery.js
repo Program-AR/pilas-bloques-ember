@@ -42,13 +42,17 @@ export default Ember.Service.extend({
    * esos bloques en realidad se generan a partir de los bloques estándar
    * como 'controls_if'.
    */
-  crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria) {
+  crearBloqueAlias(nombre, nombreDelBloqueOriginal, categoria, categoriaCustom) {
     if (!Blockly.Blocks[nombreDelBloqueOriginal]) {
       throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
     }
 
     let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal);
     bloque.categoria = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoria;
+
+    if(categoriaCustom) {
+      bloque.categoria_custom = categoriaCustom;
+    }
 
     return bloque;
   },
@@ -1414,7 +1418,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
     this.crearBloqueAlias('Texto', 'text', 'Valores');
     this.crearBloqueAlias('param_get', 'variables_get');
-    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos');
+    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos', 'PROCEDURE');
     this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 
