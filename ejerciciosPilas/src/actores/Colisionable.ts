@@ -3,10 +3,10 @@
 
 abstract class Colisionable {
 
-    teEstoyPorColisionar(actor: Actor): void {
-        this.provocoAlColisionar().forEach((comportamiento: Function) => actor.hacer_luego(comportamiento))
+    public teEstoyPorColisionar(actor: Actor): void {
+        this.comportamientosAlColisionar().forEach((comportamiento: Function) => actor.hacer_luego(comportamiento))
     }
 
-    abstract provocoAlColisionar(): Function[]
+    public abstract comportamientosAlColisionar(): Function[]
 
 }
