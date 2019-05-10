@@ -1,17 +1,17 @@
 /* jshint node: true */
 
-var electron = require('electron');
+var electron = require('electron')
 
-var app = electron.app;
-var mainWindow = null;
-var BrowserWindow = electron.BrowserWindow;
+var app = electron.app
+var mainWindow = null
+var BrowserWindow = electron.BrowserWindow
 
 
-var fs = require('fs');
+var fs = require('fs')
 
 app.on('window-all-closed', function onWindowAllClosed() {
-  app.quit();
-});
+  app.quit()
+})
 
 app.on('ready', function onReady() {
 
@@ -20,17 +20,34 @@ app.on('ready', function onReady() {
     height: 672,
     minWidth: 500,
     minHeight: 500,
-  });
+  })
 
-  //mainWindow.openDevTools();
+  // mainWindow.openDevTools()
 
-  delete mainWindow.module;
+  delete mainWindow.module
 
-  mainWindow.loadURL('file://' + __dirname + '/index.html');
-  mainWindow.setMenu(null);
+  mainWindow.loadURL('file://' + __dirname + '/index.html')
+  mainWindow.setMenu(null)
 
   mainWindow.on('closed', function onClosed() {
-    mainWindow = null;
-  });
+    mainWindow = null
+  })
 
-});
+  const { dialog } = require('electron')
+  mainWindow.webContents.session.on('will-download', (event, downloadItem, webContents) => {
+    event.preventDefault()
+    var fileName = dialog.showSaveDialog({
+      defaultPath: downloadItem.getFilename(),
+      filters: [
+        { name: 'Solución de Pilas Bloques', extensions: ['spbq'] },
+        { name: 'Todos los archivos', extensions: ['*'] }
+      ]
+    })
+
+    if (fileName) {
+      downloadItem.setSavePath(fileName)
+    } else {
+      downloadItem.cancel()
+    }
+  })
+})
