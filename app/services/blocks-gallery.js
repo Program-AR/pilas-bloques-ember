@@ -53,6 +53,10 @@ export default Ember.Service.extend({
     return bloque;
   },
 
+  areAliases(alias, type) {
+    return Blockly.Blocks[alias].init === Blockly.Blocks[type].init;
+  },
+
   /*
    * Método auxiliar para crear un bloque que sirva como sensor.
    *
@@ -1433,6 +1437,7 @@ export default Ember.Service.extend({
     this.crearBloqueAlias('repetir', 'Repetir');
     this.crearBloqueAlias('tocandoBanana', 'TocandoBanana');
     this.crearBloqueAlias('tocandoManzana', 'TocandoManzana');
+    this.crearBloqueAlias('prenderCompuConColision', 'PrenderComputadora');
     this.crearBloqueAlias('PrenderCompuConColision', 'PrenderComputadora');
     this.crearBloqueAlias('Prendercompu', 'PrenderComputadora');
     this.crearBloqueAlias('PrenderCompu', 'PrenderComputadora');
