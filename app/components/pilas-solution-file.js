@@ -55,7 +55,6 @@ export default Ember.Component.extend({
         { name: 'Todos los archivos', extensions: ['*'] }
       ]
     })
-    console.log(archivos)
     if (archivos) 
       this.leerSolucionFS(archivos[0]).catch(alert)
   },
