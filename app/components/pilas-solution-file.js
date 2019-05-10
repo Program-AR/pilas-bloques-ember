@@ -7,8 +7,9 @@ export default Ember.Component.extend({
   actividad: null,
   workspace: null,
   xml: null,
+  inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
 
-  leerSolucion(archivo) {
+  leerSolucionWeb(archivo) {
     var reader = new FileReader()
     return new Promise((resolve, reject) => {
       reader.onerror = (err) => reject(err)
@@ -18,13 +19,10 @@ export default Ember.Component.extend({
     .then((contenido) => this.cargarSolucion(contenido))
   },
 
-  descargar(text, name, type) {
-    var a = document.getElementById("placeholder")
-    var file = new Blob([text], {type: type})
-    a.href = URL.createObjectURL(file)
-    a.download = name
-    a.type = type
-    a.click()
+  leerSolucionFS(archivo) {
+    let fs = Promise.promisifyAll(require("fs"))
+    return fs.readFileAsync(archivo, 'utf-8')
+    .then((contenido) => this.cargarSolucion(contenido))
   },
 
   cargarSolucion(contenido) {
@@ -48,12 +46,35 @@ export default Ember.Component.extend({
     }
   },
 
+  openElectronLoadDialog() {
+    const { dialog } = require('electron').remote
+    const archivos = dialog.showOpenDialog({ //TODO: this config exists in extras/electron.js
+      properties: ['openFile'],
+      filters: [
+        { name: 'Solución de Pilas Bloques', extensions: ['spbq'] },
+        { name: 'Todos los archivos', extensions: ['*'] }
+      ]
+    })
+    console.log(archivos)
+    if (archivos) 
+      this.leerSolucionFS(archivos[0]).catch(alert)
+  },
+
+  descargar(text, name, type) {
+    var a = document.getElementById("placeholder")
+    var file = new Blob([text], {type: type})
+    a.href = URL.createObjectURL(file)
+    a.download = name
+    a.type = type
+    a.click()
+  },
+
   didInsertElement() {
     this.fileInput().change((event) => {
       let archivo = event.target.files[0]
 
       if (archivo)
-        this.leerSolucion(archivo).catch(alert)
+        this.leerSolucionWeb(archivo).catch(alert)
 
       this.limpiarInput() // Fuerza a que se pueda cargar dos o más veces el mismo archivo
       return false
@@ -70,7 +91,11 @@ export default Ember.Component.extend({
 
   actions: {
     abrirSolucion() {
-      this.fileInput().click()
+      if (this.inElectron) {
+        this.openElectronLoadDialog()
+      } else {
+        this.fileInput().click()
+      }
     },
 
     guardarSolucion() {
