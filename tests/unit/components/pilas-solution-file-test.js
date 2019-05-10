@@ -101,7 +101,7 @@ function fileTest(mensaje, contenido, cbGood, cbFail) {
     let archivo = new Blob([JSON.stringify(contenido)])
     
     ctrl
-    .leerSolucion(archivo)
+    .leerSolucionWeb(archivo)
     .then(() => {
       cbGood(assert)
       done()
