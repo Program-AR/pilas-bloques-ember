@@ -35,7 +35,7 @@ app.on('ready', function onReady() {
 
   const { dialog } = require('electron')
   mainWindow.webContents.session.on('will-download', (event, downloadItem, webContents) => {
-    event.preventDefault()
+    
     var fileName = dialog.showSaveDialog({
       defaultPath: downloadItem.getFilename(),
       filters: [
