@@ -9,7 +9,7 @@ class PrepararEnsalada extends Interactuar {
             etiqueta: "Ensaladera",
             nombreAnimacion: "prepararEnsalada",
             animacionColisionadoMientras: "preparando",
-            animacionAlFinalizarInteraccion: "llena",
+            animacionInteractuadoAlFinal: "llena",
             idTransicion: "prepararEnsalada"
         })
     }

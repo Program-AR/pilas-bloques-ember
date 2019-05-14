@@ -22,7 +22,7 @@ class PrenderComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
         argumentos.idTransicion = 'prender'
-        argumentos.animacionAlFinalizarInteraccion = "prendida"
+        argumentos.animacionInteractuadoAlFinal = "prendida"
         super(argumentos)
     }
 
@@ -38,7 +38,7 @@ class ApagarComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
         argumentos.idTransicion = 'apagar'
-        argumentos.animacionAlFinalizarInteraccion = "parado"
+        argumentos.animacionInteractuadoAlFinal = "parado"
         super(argumentos)
     }
 

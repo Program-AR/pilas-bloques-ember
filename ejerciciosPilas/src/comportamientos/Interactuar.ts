@@ -12,8 +12,8 @@
  * Respecto de los argumentos:
  *  - etiqueta: Es obligatorio, es la etiqueta del actor con el que busca interactuar.
  *  - mensajeError: Es el mensaje que aparece cuando no hay un actor con esa etiqueta.
- *  - animacionMientrasInteractua: Es la animación que se gatilla en el actor interactuado mientras se realiza la interacción.
- *  - animacionAlFinalizarInteraccion: Es la animación que se gatilla en el actor interactuado justo luego de terminar la interacción.
+ *  - animacionInteractuadoMientras: Es la animación que se gatilla en el actor interactuado mientras se realiza la interacción.
+ *  - animacionInteractuadoAlFinal: Es la animación que se gatilla en el actor interactuado justo luego de terminar la interacción.
  *  - comportamientoAdicional y argumentosComportamiento: Es el comportamiento que se gatilla en el objeto colisionado justo luego de terminar
  * la interacción.
  * Este comportamiento finaliza, y el comportamiento adicional en el actor interactuado continúa.
@@ -35,15 +35,15 @@ class Interactuar extends ComportamientoAnimado {
 
     public preAnimacion(): void {
         super.preAnimacion()
-        if (this.argumentos['animacionMientrasInteractua']) {
-            this.interactuado().cargarAnimacion(this.argumentos['animacionMientrasInteractua'])
+        if (this.argumentos['animacionInteractuadoMientras']) {
+            this.interactuado().cargarAnimacion(this.argumentos['animacionInteractuadoMientras'])
         }
     }
 
     public postAnimacion(): void {
 
-        if (this.argumentos['animacionAlFinalizarInteraccion']) {
-            this.interactuado().cargarAnimacion(this.argumentos['animacionAlFinalizarInteraccion'])
+        if (this.argumentos['animacionInteractuadoAlFinal']) {
+            this.interactuado().cargarAnimacion(this.argumentos['animacionInteractuadoAlFinal'])
         }
 
         this.interactuar()
