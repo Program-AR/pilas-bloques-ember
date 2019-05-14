@@ -2,7 +2,7 @@
 
 class CompuAnimada extends ActorAnimado {
 
-  private _estaPrendida: boolean = false
+  private _yaFuePrendida: boolean = false
 
   constructor(x, y) {
     super(x, y, { grilla: 'compu_animada.png', cantColumnas: 8, cantFilas: 1 })
@@ -17,13 +17,13 @@ class CompuAnimada extends ActorAnimado {
     super.cargarAnimacion(nombre)
     
     if(nombre === "prendida") {
-      this._estaPrendida = true
+      this._yaFuePrendida = true
     }
 
   }
 
-  public estaPrendida(): boolean {
-    return this._estaPrendida
+  public yaFuePrendida(): boolean {
+    return this._yaFuePrendida
   }
 
 }
