@@ -91,10 +91,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-run');
 
-  grunt.registerTask('copiarPilasBloques', 'copy');
+  grunt.registerTask('copiarEjerciciosPilas', 'copy');
   grunt.registerTask('evaluarTypeScript', 'ts');
   grunt.registerTask('compilarTypeScript', 'typescript');
-  grunt.registerTask('compile', ['compilarTypeScript', 'run:compilarGramaticaAleatoria', 'concat', 'copy']);
+  grunt.registerTask('compile', ['compilarTypeScript', 'run:compilarGramaticaAleatoria', 'concat', 'copiarEjerciciosPilas']);
   grunt.registerTask('default', ['compile']);
 
   grunt.registerTask('test', 'qunit');
