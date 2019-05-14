@@ -9,14 +9,14 @@ Argumentos adicionales al comportamiento colision: puedoSostenerMasDeUno (por de
 class Sostener extends Interactuar {
 
   preAnimacion() {
-    super.preAnimacion();
-    this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger";
+    super.preAnimacion()
+    this.argumentos.nombreAnimacion = this.argumentos.nombreAnimacion || "recoger"
   }
 
   protected alInteractuar(): void {
     // TODO: Habría que separarlo en dos comportamientos, Tomar por un lado, Contar por el otro.
 
-    var interactuado: any =  this.interactuado()
+    var interactuado: any = this.interactuado()
     var objetoAgarrado: any = interactuado.clonar()
     objetoAgarrado.escala = interactuado.escala
     objetoAgarrado.y = this.receptor.y
@@ -24,18 +24,18 @@ class Sostener extends Interactuar {
     this.receptor.agregarSubactor(objetoAgarrado)
     objetoAgarrado.cargarAnimacion("correr") // porque tiene que cargar la misma imagen que va a usar al moverse
 
-    if (interactuado.disminuir) interactuado.disminuir('cantidad',1)
+    if (interactuado.disminuir) interactuado.disminuir('cantidad', 1)
     if (!interactuado['cantidad']) interactuado.eliminar()
 
   }
 
   configurarVerificaciones() {
-    super.configurarVerificaciones();
-    this.verificacionesPre.push(new Verificacion(() => this.puedoSostener(), "No puedo sostener dos cosas a la vez..."));
+    super.configurarVerificaciones()
+    this.verificacionesPre.push(new Verificacion(() => this.puedoSostener(), "No puedo sostener dos cosas a la vez..."))
   }
 
   puedoSostener() {
-    return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano();
+    return this.argumentos.puedoSostenerMasDeUno || !this.receptor.tieneAlgoEnLaMano()
   }
 
 }
@@ -49,25 +49,26 @@ class Soltar extends Interactuar {
     }
 
     else {
-      this.receptor.eliminarUltimoSubactor();
+      this.receptor.eliminarUltimoSubactor()
     }
 
   }
 
   configurarVerificaciones() {
-    super.configurarVerificaciones();
-    const mensajeError: string = "No tengo " + (this.argumentos.queSoltar ? this.hacerLegible(this.argumentos.queSoltar) : "nada") + " en la mano"
-    this.verificacionesPre.push(new Verificacion(() => this.sostieneLoQueCorresponde(), mensajeError));
+    super.configurarVerificaciones()
+    this.verificacionesPre.push(new Verificacion(() => this.sostieneLoQueCorresponde(),
+      `No tengo ${this.hacerLegible(this.argumentos.queSoltar)} en la mano`
+    ))
   }
 
-  sostieneLoQueCorresponde() {
+  protected sostieneLoQueCorresponde(): boolean {
     return this.argumentos.queSoltar ?
       this.receptor.tieneEnLaMano(this.argumentos.queSoltar) :
-      this.receptor.tieneAlgoEnLaMano();
+      this.receptor.tieneAlgoEnLaMano()
   }
 
-  hacerLegible(etiqueta) {
-    return etiqueta ? super.hacerLegible(etiqueta) : "nada";
+  protected hacerLegible(etiqueta: string): string {
+    return etiqueta ? super.hacerLegible(etiqueta) : "nada"
   }
 
 

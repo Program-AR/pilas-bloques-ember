@@ -66,7 +66,7 @@ class Interactuar extends ComportamientoAnimado {
 	/**
 	 * Se llama al realizarse la interacción.
 	 */
-    protected alInteractuar(): void  {
+    protected alInteractuar(): void {
 
     }
 
@@ -85,8 +85,8 @@ class Interactuar extends ComportamientoAnimado {
 
     }
 
-    protected hacerLegible(etiqueta: String): String {
-		return etiqueta.toLowerCase().split("animada")[0].split("animado")[0]
-	}
+    protected hacerLegible(etiqueta: string): string {
+        return etiqueta.toLowerCase().split("animada")[0].split("animado")[0]
+    }
 
 }

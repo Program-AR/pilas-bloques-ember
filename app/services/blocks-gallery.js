@@ -415,7 +415,7 @@ export default Ember.Service.extend({
     this.crearBloqueAccion('DarSombrero', {
       descripcion: 'Dar el sombrero',
       icono: 'icono.sombrero.png',
-      comportamiento: 'ComportamientoAnimado',
+      comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: "MagoAnimado",
         nombreAnimacion: "cambiarSombreroPorEspada",
@@ -433,7 +433,7 @@ export default Ember.Service.extend({
         idTransicion: "atacarConEspada",
         secuencia: [
           {
-            comportamiento: "ComportamientoAnimado",
+            comportamiento: "Interactuar",
             argumentos: {
               etiqueta: "CaballeroAnimado",
               animacionMientrasInteractua: "defender",
