@@ -81,11 +81,9 @@ class ComportamientoAnimado extends Comportamiento {
 
 	private configuracionInicial() {
 		this.realizarVerificacionesPreAnimacion();
+
 		this.receptor.detenerAnimacion(); // Porque hace quilombo
 		this.animacionAnterior = this.receptor.nombreAnimacionActual();
-		if (this.argumentos.idTransicion) {
-			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion);
-		}
 		if (this.hayQueAnimar)
 			this.receptor.cargarAnimacion(this.nombreAnimacion());
 	}
@@ -100,7 +98,13 @@ class ComportamientoAnimado extends Comportamiento {
 		this.verificacionesPre.forEach(verificacion => {
 			verificacion.verificar();
 		});
+
+		if (this.argumentos.idTransicion) {
+			// Si la transición que se intenta realizar no es válida, explota acá
+			this.receptor.escena.estado.realizarTransicion(this.argumentos.idTransicion);
+		}
 	}
+
 
 	private realizarVerificacionesPostAnimacion() {
 		this.verificacionesPost.forEach(verificacion => verificacion.verificar());
