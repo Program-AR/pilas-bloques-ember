@@ -71,7 +71,7 @@ build: compilar
 serve: pre_ember_build
 	./node_modules/ember-cli/bin/ember serve
 
-watch: 
+watch_ejercicios: 
 	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt watch
 
 compilar: pre_ember_build
