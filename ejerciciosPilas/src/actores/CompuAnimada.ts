@@ -13,17 +13,27 @@ class CompuAnimada extends ActorAnimado {
     this.definirAnimacion("yaInstalado", [7], 1)
   }
 
-  cargarAnimacion(nombre) {
+  public cargarAnimacion(nombre: string): void {
     super.cargarAnimacion(nombre)
-    
-    if(nombre === "prendida") {
+
+    if (nombre === "prendida") {
       this._yaFuePrendida = true
     }
 
   }
 
+  /**
+   * Indica si la computadora fue alguna vez prendida.
+   */
   public yaFuePrendida(): boolean {
     return this._yaFuePrendida
+  }
+
+  /**
+   * indica si la computadora se encuentra prendida.
+   */
+  public estaPrendida(): boolean {
+    return this.nombreAnimacionActual() == "prendida"
   }
 
 }
