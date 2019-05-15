@@ -6,11 +6,10 @@ import Ember from 'ember';
 export default Ember.Service.extend({
     
     blocks: [],
-    workspace: Blockly.mainWorkspace,
 
     step(blockId) {
-        let block = this.workspace.getBlockById(blockId)
-        if (!block) { // For testing
+        let block = this._workspace().getBlockById(blockId)
+        if (!block) {
             console.warn(`Couldn't highlight block id: ${blockId}`)
             return
         }
@@ -66,10 +65,14 @@ export default Ember.Service.extend({
 
     _updateHighlight() {
         this._clearHighlight()
-        this.blocks.forEach((b) => this.workspace.highlightBlock(b.id, true))
+        this.blocks.forEach((b) => this._workspace().highlightBlock(b.id, true))
     },
 
     _clearHighlight() {
-        this.workspace.highlightBlock()
+        this._workspace().highlightBlock()
+    },
+
+    _workspace() {
+        return Blockly.getMainWorkspace()
     }
 })
