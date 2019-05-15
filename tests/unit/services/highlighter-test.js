@@ -4,14 +4,14 @@ import { blocklyWorkspaceMock } from '../../helpers/mocks';
 var highlighter
 
 moduleFor('service:highlighter', 'Unit | Service | highlighter', { 
-    needs: ['service:blocksGallery', 'service:blockly'],
-    setup() {
-        highlighter = this.subject()
-        highlighter.workspace = blocklyWorkspaceMock()
-        highlighter.clear()
-        
-        this.container.lookup('service:blocksGallery').start()
-    }
+  needs: ['service:blocksGallery', 'service:blockly'],
+  setup() {
+    Blockly.mainWorkspace = blocklyWorkspaceMock()
+    highlighter = this.subject()
+    highlighter.clear()
+    
+    this.container.lookup('service:blocksGallery').start()
+  }
 });
 
 let linealProgram = [`
@@ -276,7 +276,7 @@ function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
         .map(Blockly.Xml.textToDom)
-        .map(dom => Blockly.Xml.domToBlock(dom, highlighter.workspace))
+        .map(dom => Blockly.Xml.domToBlock(dom, Blockly.mainWorkspace))
 
     let ignoredBlockTypes = ["math_number", "HayTomate"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
