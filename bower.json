@@ -14,5 +14,8 @@
     "blockly-package": "0.0.16",
     "bluebird": "^3.5.3",
     "proceds-blockly": "Program-AR/proceds-blockly#^0.2.1"
+  },
+  "resolutions": {
+    "blockly-package": "0.0.16"
   }
 }
