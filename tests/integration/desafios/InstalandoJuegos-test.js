@@ -67,7 +67,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'No debe poderse resolver la actividad si no están las tres máquinas instaladas',
-	errorEsperado: 'Esta computadora ya está prendida',
+	errorEsperado: 'Esta computadora ya fue prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml>
 	   <block y="0" x="0" editable="false" movable="false" deletable="false" id="32" type="al_empezar_a_ejecutar">
@@ -167,7 +167,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
-	errorEsperado: 'Esta computadora ya está prendida',
+	errorEsperado: 'Esta computadora ya fue prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
@@ -207,7 +207,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada luego de haber instalado un juego',
-	errorEsperado: '¡Ups, esa no era la opción correcta!',
+	errorEsperado: 'Esta computadora ya está apagada',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
    <variables />
