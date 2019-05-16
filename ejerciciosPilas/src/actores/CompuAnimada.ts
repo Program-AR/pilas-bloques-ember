@@ -36,11 +36,4 @@ class CompuAnimada extends ActorAnimado {
     return this.nombreAnimacionActual() == "prendida"
   }
 
-    /**
-   * indica si la computadora se encuentra apagada.
-   */
-  public estaApagada(): boolean {
-    return this.nombreAnimacionActual() == "parado"
-  }
-
 }

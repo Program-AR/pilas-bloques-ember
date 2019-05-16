@@ -28,10 +28,8 @@ class PrenderComputadora extends ComportamientoConComputadora {
 
     public configurarVerificaciones(): void {
         super.configurarVerificaciones()
-        this.verificacionesPre.push(new Verificacion(() => this.computadoraInteractuada().estaPrendida(),
-            "Esta computadora ya está prendida"))
         this.verificacionesPre.push(new Verificacion(() => !this.computadoraInteractuada().yaFuePrendida(),
-            "Esta computadora ya fue prendida"))
+            "Esta computadora ya está prendida"))
     }
 
 }
@@ -46,7 +44,7 @@ class ApagarComputadora extends ComportamientoConComputadora {
 
     public configurarVerificaciones(): void {
         super.configurarVerificaciones()
-        this.verificacionesPre.push(new Verificacion(() => this.computadoraInteractuada().estaApagada(),
+        this.verificacionesPre.push(new Verificacion(() => this.computadoraInteractuada().estaPrendida(),
             "Esta computadora ya está apagada"))
     }
 
