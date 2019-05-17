@@ -1219,6 +1219,18 @@ export default Ember.Service.extend({
       init_base_callnoreturn.call(this);
     };
 
+    function isInsidexProcedureDef(paramBlock) {
+      return paramBlock.getRootBlock().id == paramBlock.$parent
+    }
+
+    let init_base_variables_get = Blockly.Blocks['variables_get'].init;
+
+    Blockly.Blocks['variables_get'].init = function () {
+      this.setOnChange(() => {
+        this.setDisabled(!isInsidexProcedureDef(this))
+      });
+      init_base_variables_get.call(this);
+    };
 
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
     let init_base_procedimiento = Blockly.Blocks['procedures_defnoreturn'].init;
