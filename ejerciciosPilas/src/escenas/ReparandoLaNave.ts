@@ -9,7 +9,6 @@
 /// <reference path = "../actores/ObservadoAnimado.ts" />
 /// <reference path = "../actores/ActorCompuesto.ts" />
 /// <reference path = "EstadosDeEscena.ts" />
-/// <reference path = "../comportamientos/ComportamientoColision.ts" />
 /// <reference path = "../habilidades/Flotar.ts" />
 
 class ReparandoLaNave extends EscenaActividad {
@@ -21,19 +20,21 @@ class ReparandoLaNave extends EscenaActividad {
   nave;
 
   iniciar() {
-    this.fondo = new Fondo('fondos.reparandoLaNave.png',0,0);
+    this.fondo = new Fondo('fondos.reparandoLaNave.png', 0, 0);
 
-    this.cuadricula = new Cuadricula(0,0,4,5,
-        {ancho:323,alto:261},
-        {grilla: 'invisible.png',
-        cantColumnas: 1});
+    this.cuadricula = new Cuadricula(0, 0, 4, 5,
+      { ancho: 323, alto: 261 },
+      {
+        grilla: 'invisible.png',
+        cantColumnas: 1
+      });
 
     this.crearActores();
     this.crearTableros();
     this.crearEstado();
   }
 
-  private crearActores(){
+  private crearActores() {
     this.crearAutomata();
 
     var lanave = new NaveAnimada();
@@ -53,7 +54,7 @@ class ReparandoLaNave extends EscenaActividad {
   }
 
   private crearAutomata() {
-    this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoAnimado(0, 0)]});
+    this.automata = new ActorCompuesto(0, 0, { subactores: [new MarcianoAnimado(0, 0)] });
     this.cuadricula.agregarActorEnPerspectiva(this.automata, this.cuadricula.cantFilas - 1, 0, false);
     this.automata.escala = 0.8;
     this.automata.y += 50;

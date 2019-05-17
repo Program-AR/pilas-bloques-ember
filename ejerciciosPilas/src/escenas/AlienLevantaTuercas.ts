@@ -47,7 +47,7 @@ moverDerecha(){
 	}
 
 	levantaTuerca(){
-		this.automata.hacer_luego(RecogerPorEtiqueta,{'etiqueta':'TuercaAnimada','mensajeError':'No hay una tuerca aquí'});
+		this.automata.hacer_luego(Recolectar,{'etiqueta':'TuercaAnimada','mensajeError':'No hay una tuerca aquí'});
 
 	}
 

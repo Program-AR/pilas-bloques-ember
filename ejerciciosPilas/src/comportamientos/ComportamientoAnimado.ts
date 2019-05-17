@@ -105,6 +105,7 @@ class ComportamientoAnimado extends Comportamiento {
 		}
 	}
 
+
 	private realizarVerificacionesPostAnimacion() {
 		this.verificacionesPost.forEach(verificacion => verificacion.verificar());
 	}
