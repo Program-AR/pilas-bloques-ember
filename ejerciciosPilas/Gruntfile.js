@@ -1,8 +1,9 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   require('load-grunt-tasks')(grunt);
 
   grunt.initConfig({
+
     qunit: {
       files: ['test/index.html']
     },
@@ -13,14 +14,30 @@ module.exports = function(grunt) {
       },
       dist: {
         src: [
-            'dependencias/helpers.js',
-            'dependencias/listHelper.js',
-            'node_modules/nearley/lib/nearley.js',
-            'compilados/gramaticaAleatoria.js',
-            'compilados/ejerciciosPilas.js',
+          'dependencias/helpers.js',
+          'dependencias/listHelper.js',
+          'node_modules/nearley/lib/nearley.js',
+          'compilados/gramaticaAleatoria.js',
+          'compilados/ejerciciosPilas.js',
         ],
         dest: 'compilados/ejerciciosPilas.js',
       },
+    },
+
+    copy: {
+      main: {
+        expand: true,
+        src: 'compilados/ejerciciosPilas.js',
+        dest: '../public/libs/',
+        flatten: true,
+        filter: 'isFile'
+      },
+    },
+
+    ts: {
+      default: {
+        tsconfig: 'tsconfig.json'
+      }
     },
 
     typescript: {
@@ -37,20 +54,23 @@ module.exports = function(grunt) {
           fullSourceMapPath: false,
           declaration: false,
           comments: true,
-          }
         }
-      },
+      }
+    },
+
+    open: {
+      dev: {
+        path: 'src/visorEjercicios.html'
+      }
+    },
+
     watch: {
       scripts: {
         files: ['src/**'],
-        tasks: ['typescript', 'concat'],
+        tasks: ['compile'],
       }
     },
-    open: {
-        dev: {
-            path: 'src/visorEjercicios.html'
-        }
-    },
+
     run: {
       compilarGramaticaAleatoria: {
         cmd: 'npm',
@@ -63,13 +83,19 @@ module.exports = function(grunt) {
   });
 
   grunt.loadNpmTasks('grunt-typescript');
+  grunt.loadNpmTasks('grunt-ts');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-open');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-run');
 
-  grunt.registerTask('default', ['typescript', 'run:compilarGramaticaAleatoria', 'concat']);
+  grunt.registerTask('copiarEjerciciosPilas', 'copy');
+  grunt.registerTask('evaluarTypeScript', 'ts');
+  grunt.registerTask('compilarTypeScript', 'typescript');
+  grunt.registerTask('compile', ['compilarTypeScript', 'run:compilarGramaticaAleatoria', 'concat', 'copiarEjerciciosPilas']);
+  grunt.registerTask('default', ['compile']);
 
   grunt.registerTask('test', 'qunit');
 };
