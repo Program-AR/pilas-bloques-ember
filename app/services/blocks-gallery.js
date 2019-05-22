@@ -1219,17 +1219,48 @@ export default Ember.Service.extend({
       init_base_callnoreturn.call(this);
     };
 
+    function setParentProcedureIfInside(paramBlock) {
+      let procedureArgs = paramBlock.getRootBlock().arguments_
+      if (procedureArgs && procedureArgs.includes(paramBlock.getFieldValue('VAR')))
+        paramBlock.$parent = paramBlock.getRootBlock().id
+    }
+
     function isInsidexProcedureDef(paramBlock) {
+      if (!paramBlock.$parent)
+        setParentProcedureIfInside(paramBlock)
       return paramBlock.getRootBlock().id == paramBlock.$parent
     }
 
-    let init_base_variables_get = Blockly.Blocks['variables_get'].init;
-
-    Blockly.Blocks['variables_get'].init = function () {
-      this.setOnChange(() => {
+    Blockly.Blocks.variables_get = {
+      init: function () {
+        this.jsonInit({
+          "type": "variables_get",
+          "message0": "%1",
+          "args0": [
+            {
+            "type": "field_label",
+            "name": "VAR",
+            "text": "nombre de variable"
+            }
+          ],
+          "output": null,
+          "colour": Blockly.Blocks.variables.HUE,
+          "tooltip": "",
+          "helpUrl": "",
+        });
+      },
+      mutationToDom: function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('var', this.getFieldValue('VAR'));
+        return container;
+      },
+      domToMutation: function(xmlElement) {
+        var var_name = xmlElement.getAttribute('var');
+        this.setFieldValue(var_name, 'VAR');
+      },
+      onchange: function(){
         this.setDisabled(!isInsidexProcedureDef(this))
-      });
-      init_base_variables_get.call(this);
+      }
     };
 
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
