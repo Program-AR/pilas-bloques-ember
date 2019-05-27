@@ -41,7 +41,7 @@ class Interactuar extends ComportamientoAnimado {
     }
 
     public postAnimacion(): void {
-
+        super.preAnimacion()
         if (this.argumentos['animacionInteractuadoAlFinal']) {
             this.interactuado().cargarAnimacion(this.argumentos['animacionInteractuadoAlFinal'])
         }
