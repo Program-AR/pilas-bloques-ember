@@ -263,7 +263,7 @@ export default [
     grupoId: 3,
     nombre: 'ElDetectiveChaparro',
     titulo: 'El detective Chaparro',
-    enunciado: 'El detective debe descubrir al culpable de un crimen, quitándole el disfraz que lo camufla. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!',
+    enunciado: 'El detective debe descubrir al culpable de un crimen. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!',
     consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
     escena: 'ElDetectiveChaparro',
     debeFelicitarse: true,
