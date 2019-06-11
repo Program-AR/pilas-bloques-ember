@@ -1226,8 +1226,6 @@ export default Ember.Service.extend({
     }
 
     function isInsidexProcedureDef(paramBlock) {
-      if (!paramBlock.$parent)
-        setParentProcedureIfInside(paramBlock)
       return paramBlock.getRootBlock().id == paramBlock.$parent
     }
 
@@ -1258,7 +1256,8 @@ export default Ember.Service.extend({
         var var_name = xmlElement.getAttribute('var');
         this.setFieldValue(var_name, 'VAR');
       },
-      onchange: function(){
+      onchange: function() {
+        setParentProcedureIfInside(this) // Fuerza a ser un argumento del procedimiento por nombre
         this.setDisabled(!isInsidexProcedureDef(this))
       }
     };

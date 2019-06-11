@@ -1,4 +1,5 @@
 import { moduleFor, test } from 'ember-qunit'
+import { blocklyWorkspaceMock } from '../../helpers/mocks';
 
 moduleFor('service:blocks-gallery', 'Unit | Service | blocks-gallery', {
     needs: ['service:blocksGallery', 'service:blockly'],
@@ -6,6 +7,46 @@ moduleFor('service:blocks-gallery', 'Unit | Service | blocks-gallery', {
         this.container.lookup('service:blocksGallery').start();
     }
 })
+
+
+let procedure = `
+<block type="procedures_defnoreturn" x="386" y="56">
+    <mutation>
+      <arg name="param"></arg>
+    </mutation>
+    <field name="NAME">Hacer algo</field>
+    <field name="ARG0">param</field>
+    <statement name="STACK">
+      <block type="DibujarLado">
+        <value name="longitud">
+          <block type="variables_get">
+            <mutation var="param"></mutation>
+          </block>
+        </value>
+      </block>
+    </statement>
+</block>
+`
+
+test('Parameters should have $parent procedure id', function(assert) {
+    let block = Blockly.Xml.domToBlock(Blockly.Xml.textToDom(procedure), blocklyWorkspaceMock())
+    let param = findParam(block)
+    assert.equal(param.$parent, block.id)
+});
+
+function findParam(rootBlock) {
+    let param = findChildren(rootBlock, "variables_get")
+    param.onchange() // Force initialize
+    return param
+}
+
+
+function findChildren(rootBlock, type) {
+    return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
+}
+
+
+///////////// ALIAS /////////////
 
 let testAlias = function (alias, type) {
     test(`check if ${alias} block definition exist and is equal to ${type} block definition`, function (assert) {
