@@ -246,3 +246,45 @@ actividadTest(nombre, {
    </block>
 </xml>`,
 });
+
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora en la cual ya se termino de instalar el juego de forma satisfactoria',
+	errorEsperado: 'Esta computadora ya fue prendida',
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables></variables>
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="PasarASiguienteComputadora">
+        <next>
+          <block type="PrenderComputadora">
+            <next>
+              <block type="EscribirA">
+                <next>
+                  <block type="EscribirB">
+                    <next>
+                      <block type="EscribirC">
+                        <next>
+                          <block type="InstalarJuego">
+                            <next>
+                              <block type="ApagarComputadora">
+                                <next>
+                                  <block type="PrenderComputadora"></block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`,
+});
