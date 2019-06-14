@@ -275,8 +275,7 @@ test('When program finishes with procedure call should highlight both blocks', f
 function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
-        .map(Blockly.Xml.textToDom)
-        .map(dom => Blockly.Xml.domToBlock(dom, Blockly.mainWorkspace))
+        .map(Blockly.textToBlock)
 
     let ignoredBlockTypes = ["math_number", "HayTomate"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
