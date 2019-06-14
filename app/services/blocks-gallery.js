@@ -1250,14 +1250,16 @@ export default Ember.Service.extend({
       mutationToDom: function() {
         var container = document.createElement('mutation');
         container.setAttribute('var', this.getFieldValue('VAR'));
+        if (this.$parent) container.setAttribute("parent", this.$parent);
         return container;
       },
       domToMutation: function(xmlElement) {
         var var_name = xmlElement.getAttribute('var');
         this.setFieldValue(var_name, 'VAR');
+        this.$parent = xmlElement.getAttribute("parent") || null;
       },
       onchange: function() {
-        setParentProcedureIfInside(this) // Fuerza a ser un argumento del procedimiento por nombre
+        // if (!this.$parent) setParentProcedureIfInside(this) // Fuerza a ser un argumento del procedimiento por nombre
         this.setDisabled(!isInsidexProcedureDef(this))
       }
     };
