@@ -4,6 +4,7 @@ export default Ember.Service.extend({
   blockly: Ember.inject.service(),
 
   start() {
+    Blockly.textToBlock = this._textToBlock
     this._generarLenguaje();
     this._definirColores();
     this._definirBloqueAlIniciar();
@@ -15,6 +16,10 @@ export default Ember.Service.extend({
     this._definirBloquesAlias();
   },
 
+  _textToBlock(text) {
+    return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace)
+  },
+  
   /*
    * Método auxiliar para crear un bloque acción.
    *
@@ -1223,7 +1228,7 @@ export default Ember.Service.extend({
       return paramBlock.getRootBlock().id == paramBlock.$parent
     }
 
-    function isFree(block) {
+    function isFlying(block) {
       return block.getRootBlock() == block
     }
 
@@ -1263,10 +1268,8 @@ export default Ember.Service.extend({
       onchange: function() {
         if (this.$parent) { // Este if sirve para las soluciones viejas que no tienen $parent
           var ok = isInsideProcedureDef(this)
-          var warning = (ok || isFree(this)) 
-                        ? null 
+          var warning = (ok || isFlying(this)) ? null 
                         : `Estás usando este bloque en cualquier lado, la re flasheaste. Este bloque debería usarse dentro de ${getProcedureName.bind(this) (this.$parent)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
-          
           this.setDisabled(!ok)
           this.setWarningText(warning)
         }

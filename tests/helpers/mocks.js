@@ -33,6 +33,7 @@ export const actividadMock = {
 
 export const blocklyWorkspaceMock = function() {
     let workspace = new Blockly.Workspace()
+    Blockly.mainWorkspace = workspace
     workspace.highlightBlock = sinon.stub()
     return workspace
 }
