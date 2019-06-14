@@ -1219,14 +1219,16 @@ export default Ember.Service.extend({
       init_base_callnoreturn.call(this);
     };
 
-    function setParentProcedureIfInside(paramBlock) {
-      let procedureArgs = paramBlock.getRootBlock().arguments_
-      if (procedureArgs && procedureArgs.includes(paramBlock.getFieldValue('VAR')))
-        paramBlock.$parent = paramBlock.getRootBlock().id
+    function isInsideProcedureDef(paramBlock) {
+      return paramBlock.getRootBlock().id == paramBlock.$parent
     }
 
-    function isInsidexProcedureDef(paramBlock) {
-      return paramBlock.getRootBlock().id == paramBlock.$parent
+    function isFree(block) {
+      return block.getRootBlock() == block
+    }
+
+    function getProcedureName(id) {
+      return this.workspace.getBlockById(id).getProcedureDef()[0]
     }
 
     Blockly.Blocks.variables_get = {
@@ -1259,8 +1261,15 @@ export default Ember.Service.extend({
         this.$parent = xmlElement.getAttribute("parent") || null;
       },
       onchange: function() {
-        // if (!this.$parent) setParentProcedureIfInside(this) // Fuerza a ser un argumento del procedimiento por nombre
-        this.setDisabled(!isInsidexProcedureDef(this))
+        if (this.$parent) { // Este if sirve para las soluciones viejas que no tienen $parent
+          var ok = isInsideProcedureDef(this)
+          var warning = (ok || isFree(this)) 
+                        ? null 
+                        : `Estás usando este bloque en cualquier lado, la re flasheaste. Este bloque debería usarse dentro de ${getProcedureName.bind(this) (this.$parent)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
+          
+          this.setDisabled(!ok)
+          this.setWarningText(warning)
+        }
       }
     };
 
