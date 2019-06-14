@@ -7,7 +7,7 @@ const nombre = 'Interactuar';
 
 moduloEjerciciosPilas(nombre);
 
-test('Se crea una instancia de Interactuar', function (assert) {
+test('Interactuar sanitiza correctamente argumentos correctos', function (assert) {
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
         let Interactuar = pilasService.evaluar("Interactuar");
         let argumentos = {
@@ -36,7 +36,7 @@ test('no se puede crear una instancia de Interactuar, falta la etiqueta', functi
     });
 });
 
-test('se prueba que se llama al metodo alInteractuar', function (assert) {
+test('El mensaje interactuar llama al método alInteractuar', function (assert) {
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
         let Interactuar = pilasService.evaluar("Interactuar");
         let argumentos = {
@@ -53,59 +53,57 @@ test('se prueba que se llama al metodo alInteractuar', function (assert) {
     });
 });
 
-test(`se prueba al interactuar con un actor, durante la preanimación cambia la animación del
- actor por la definida en la etiqueta animacionInteractuadoMientras`, function (assert) {
-        return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-            let Alien = pilasService.evaluar("AlienAnimado");
-            let Interactuar = pilasService.evaluar("Interactuar");
-            let argumentos = {
-                etiqueta: "AlienAnimado",
-                animacionInteractuadoMientras: "hablar",
-                nombreAnimacion: "apretar"
-            };
+test(`animacionInteractuadoMientras funciona correctamente`, function (assert) {
+    return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
+        let Alien = pilasService.evaluar("AlienAnimado");
+        let Interactuar = pilasService.evaluar("Interactuar");
+        let argumentos = {
+            etiqueta: "AlienAnimado",
+            animacionInteractuadoMientras: "hablar",
+            nombreAnimacion: "apretar"
+        };
 
-            let alienInstance = new Alien(0, 0);
-            let spy = sinon.spy(alienInstance, 'cargarAnimacion')
-            let interactuarInstance = new Interactuar(argumentos);
+        let alienInstance = new Alien(0, 0);
+        let spy = sinon.spy(alienInstance, 'cargarAnimacion')
+        let interactuarInstance = new Interactuar(argumentos);
 
-            sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
-                return alienInstance;
-            })
+        sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
+            return alienInstance;
+        })
 
-            interactuarInstance.preAnimacion();
+        interactuarInstance.preAnimacion();
 
-            assert.ok(argumentos.animacionInteractuadoMientras === interactuarInstance.interactuado().nombreAnimacionActual());
-            assert.ok(spy.calledOnce);
-            spy.restore();
-            resolve();
-        });
+        assert.ok(argumentos.animacionInteractuadoMientras === interactuarInstance.interactuado().nombreAnimacionActual());
+        assert.ok(spy.calledOnce);
+        spy.restore();
+        resolve();
     });
+});
 
-test(`se prueba al interactuar con un actor, durante la postanimación cambia la animación del
- actor por la definida en la etiqueta animacionInteractuadoAlFinal`, function (assert) {
-        return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-            let Alien = pilasService.evaluar("AlienAnimado");
-            let Interactuar = pilasService.evaluar("Interactuar");
-            let argumentos = {
-                etiqueta: "AlienAnimado",
-                animacionInteractuadoMientras: "hablar",
-                nombreAnimacion: "apretar",
-                animacionInteractuadoAlFinal: "parado"
-            };
+test(`animacionInteractuadoAlFinal funciona correctamente`, function (assert) {
+    return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
+        let Alien = pilasService.evaluar("AlienAnimado");
+        let Interactuar = pilasService.evaluar("Interactuar");
+        let argumentos = {
+            etiqueta: "AlienAnimado",
+            animacionInteractuadoMientras: "hablar",
+            nombreAnimacion: "apretar",
+            animacionInteractuadoAlFinal: "parado"
+        };
 
-            let alienInstance = new Alien(0, 0);
-            let spy = sinon.spy(alienInstance, 'cargarAnimacion')
-            let interactuarInstance = new Interactuar(argumentos);
+        let alienInstance = new Alien(0, 0);
+        let spy = sinon.spy(alienInstance, 'cargarAnimacion')
+        let interactuarInstance = new Interactuar(argumentos);
 
-            sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
-                return alienInstance;
-            })
+        sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
+            return alienInstance;
+        })
 
-            interactuarInstance.postAnimacion();
+        interactuarInstance.postAnimacion();
 
-            assert.ok(argumentos.animacionInteractuadoAlFinal === interactuarInstance.interactuado().nombreAnimacionActual());
-            assert.ok(spy.calledOnce);
-            spy.restore();
-            resolve();
-        });
+        assert.ok(argumentos.animacionInteractuadoAlFinal === interactuarInstance.interactuado().nombreAnimacionActual());
+        assert.ok(spy.calledOnce);
+        spy.restore();
+        resolve();
     });
+});
