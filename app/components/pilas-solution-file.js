@@ -1,5 +1,5 @@
 import Ember from 'ember'
-let VERSION_DEL_FORMATO_DE_ARCHIVO = 1
+let VERSION_DEL_FORMATO_DE_ARCHIVO = 2
 
 export default Ember.Component.extend({
   tagName: 'span',
@@ -8,6 +8,10 @@ export default Ember.Component.extend({
   workspace: null,
   xml: null,
   inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+
+  version() {
+    return VERSION_DEL_FORMATO_DE_ARCHIVO
+  },
 
   leerSolucionWeb(archivo) {
     var reader = new FileReader()

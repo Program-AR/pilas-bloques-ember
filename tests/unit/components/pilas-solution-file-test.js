@@ -3,7 +3,7 @@ import { actividadMock } from '../../helpers/mocks'
 import sinon from 'sinon'
 
 let ctrl
-let version = 1
+let version
 let actividad = actividadMock.nombre
 let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlhYmxlcz48L3ZhcmlhYmxlcz48YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBpZD0idX4vczBQV1BEWkQ1aFEtLFFnPXQiIGRlbGV0YWJsZT0iZmFsc2UiIG1vdmFibGU9ImZhbHNlIiBlZGl0YWJsZT0iZmFsc2UiIHg9IjIyNyIgeT0iMTUiPjwvYmxvY2s+PC94bWw+"
 
@@ -12,6 +12,7 @@ moduleFor('component:pilas-solution-file', 'Unit | Components | pilas-solution-f
     ctrl = this.subject()
     ctrl.set('actividad', actividadMock)
     ctrl.descargar = sinon.stub()
+    version = ctrl.version()
     sinon.resetHistory()
   }
 })
