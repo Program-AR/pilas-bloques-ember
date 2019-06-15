@@ -11,7 +11,6 @@ moduleFor('component:pilas-blockly', 'Unit | Components | pilas-blockly', {
 
     let ctrl = this.subject();
     ctrl.pilas = pilasMock; //TODO: Injectar como service
-    ctrl.descargar = sinon.spy();
     ctrl.set('modelActividad', actividadMock);
     sinon.resetHistory();
   }
@@ -78,14 +77,3 @@ test('Al reiniciar settea flags y reinicia la escena de pilas', function(assert)
   assert.ok(pilasMock.reiniciarEscenaCompleta.called);
 });
 
-
-test('Al guardar solución hace una descarga con la solución', function(assert) {
-  let ctrl = this.subject();
-  ctrl.send('guardarSolucion');
-
-  assert.ok(ctrl.descargar.calledWith(
-    JSON.stringify({version:1, actividad:"Actividad_Mock", solucion:""}),
-    'Actividad_Mock.spbq',
-    'application/octet-stream'
-  ));
-});

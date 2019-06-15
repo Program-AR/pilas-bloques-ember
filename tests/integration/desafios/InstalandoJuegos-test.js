@@ -67,7 +67,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'No debe poderse resolver la actividad si no están las tres máquinas instaladas',
-	errorEsperado: 'Esta computadora ya está prendida',
+	errorEsperado: 'Esta computadora ya fue prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml>
 	   <block y="0" x="0" editable="false" movable="false" deletable="false" id="32" type="al_empezar_a_ejecutar">
@@ -167,7 +167,7 @@ actividadTest(nombre, {
 
 actividadTest(nombre, {
 	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
-	errorEsperado: 'Esta computadora ya está prendida',
+	errorEsperado: 'Esta computadora ya fue prendida',
 	solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
@@ -244,5 +244,47 @@ actividadTest(nombre, {
          </block>
       </statement>
    </block>
+</xml>`,
+});
+
+
+actividadTest(nombre, {
+	descripcionAdicional: 'Da error si se intenta prender una computadora en la cual ya se termino de instalar el juego de forma satisfactoria',
+	errorEsperado: 'Esta computadora ya fue prendida',
+	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  <variables></variables>
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <block type="PasarASiguienteComputadora">
+        <next>
+          <block type="PrenderComputadora">
+            <next>
+              <block type="EscribirA">
+                <next>
+                  <block type="EscribirB">
+                    <next>
+                      <block type="EscribirC">
+                        <next>
+                          <block type="InstalarJuego">
+                            <next>
+                              <block type="ApagarComputadora">
+                                <next>
+                                  <block type="PrenderComputadora"></block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
 </xml>`,
 });

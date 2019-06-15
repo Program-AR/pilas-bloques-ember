@@ -7,7 +7,7 @@
     "location",
     "setTimeout",
     "$",
-    "-Promise",
+    "Promise",
     "define",
     "console",
     "visit",
@@ -27,7 +27,8 @@
     "currentRouteName",
     "Prism",
     "ga",
-    "Blockly"
+    "Blockly",
+    "Blob"
   ],
   "asi": true,
   "node": false,

@@ -1,14 +1,19 @@
 /// <reference path = "../../../bower_components/pilasweb/dist/pilasweb.d.ts"/>
-/// <reference path = "ComportamientoColision.ts" />
+/// <reference path = "Interactuar.ts" />
 /// <reference path = "SecuenciaAnimada.ts" />
+/// <reference path = "../actores/CompuAnimada.ts" />
 
-class ComportamientoConComputadora extends ComportamientoColision {
+abstract class ComportamientoConComputadora extends Interactuar {
 
     constructor(argumentos: any) {
-        argumentos.etiqueta = 'CompuAnimada';
-        argumentos.mensajeError = "No hay una computadora aquí";
-        argumentos.nombreAnimacion = "escribir";
-        super(argumentos);
+        argumentos.etiqueta = 'CompuAnimada'
+        argumentos.mensajeError = "No hay una computadora aquí"
+        argumentos.nombreAnimacion = "escribir"
+        super(argumentos)
+    }
+
+    public computadoraInteractuada(): CompuAnimada {
+        return this.interactuado() as CompuAnimada
     }
 
 }
@@ -16,15 +21,15 @@ class ComportamientoConComputadora extends ComportamientoColision {
 class PrenderComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = 'prender';
-        argumentos.animacionColisionadoPost = "prendida";
-        super(argumentos);
+        argumentos.idTransicion = 'prender'
+        argumentos.animacionInteractuadoAlFinal = "prendida"
+        super(argumentos)
     }
 
-    configurarVerificaciones(): void {
-        super.configurarVerificaciones();
-        this.verificacionesPre.push(new Verificacion(() => !this.objetoTocado().yaFuePrendida,
-            "Esta computadora ya está prendida"))
+    public configurarVerificaciones(): void {
+        super.configurarVerificaciones()
+        this.verificacionesPre.push(new Verificacion(() => !this.computadoraInteractuada().yaFuePrendida(),
+            "Esta computadora ya fue prendida"))
     }
 
 }
@@ -32,14 +37,14 @@ class PrenderComputadora extends ComportamientoConComputadora {
 class ApagarComputadora extends ComportamientoConComputadora {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = 'apagar';
-        argumentos.animacionColisionadoPost = "parado";
-        super(argumentos);
+        argumentos.idTransicion = 'apagar'
+        argumentos.animacionInteractuadoAlFinal = "parado"
+        super(argumentos)
     }
 
-    configurarVerificaciones(): void {
-        super.configurarVerificaciones();
-        this.verificacionesPre.push(new Verificacion(() => this.objetoTocado().yaFuePrendida,
+    public configurarVerificaciones(): void {
+        super.configurarVerificaciones()
+        this.verificacionesPre.push(new Verificacion(() => !this.computadoraInteractuada().estaApagada(),
             "Esta computadora ya está apagada"))
     }
 
@@ -47,27 +52,24 @@ class ApagarComputadora extends ComportamientoConComputadora {
 
 class EscribirEnComputadora extends ComportamientoConComputadora {
 
-    constructor(argumentos: any) {
-        argumentos.nombreAnimacion = "escribir";
-        super(argumentos);
-    }
-
-
-    metodo(objetoColision) {
+    protected alInteractuar(): void {
+        super.alInteractuar()
         if (this.argumentos['idTransicion'] == 'escribirC') {
-            objetoColision.cargarAnimacion("claveok");
+            this.interactuado().cargarAnimacion("claveok")
         }
     }
+
 }
 
 class InstalarJuegoEnComputadora extends SecuenciaAnimada {
 
     constructor(argumentos: any) {
-        argumentos.idTransicion = "instalar";
         argumentos.secuencia = [
             {
                 comportamiento: "EscribirEnComputadora",
-                argumentos: {}
+                argumentos: {
+                    idTransicion: "instalar",
+                }
             },
             {
                 comportamiento: "EsperarAnimacionTocado",
@@ -77,9 +79,8 @@ class InstalarJuegoEnComputadora extends SecuenciaAnimada {
                     nombreAnimacionSiguiente: "yaInstalado"
                 }
             },
-
-        ];
-        super(argumentos);
+        ]
+        super(argumentos)
     }
 
 
