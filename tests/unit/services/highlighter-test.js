@@ -6,7 +6,7 @@ var highlighter
 moduleFor('service:highlighter', 'Unit | Service | highlighter', { 
   needs: ['service:blocksGallery', 'service:blockly'],
   setup() {
-    Blockly.mainWorkspace = blocklyWorkspaceMock()
+    blocklyWorkspaceMock()
     highlighter = this.subject()
     highlighter.clear()
     
