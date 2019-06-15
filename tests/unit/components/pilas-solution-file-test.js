@@ -48,6 +48,19 @@ let solucionCompletaConVersionPosterior = {
 
 goodFileTest("Carga un archivo de solución aunque tenga una versión posterior", solucionCompletaConVersionPosterior)
 
+let solucionCompletaConVersionAnterior = {
+  version: -1,
+  actividad,
+  solucion
+}
+
+failFileTest("Verifica que se está cargando una versión anterior", solucionCompletaConVersionAnterior, function(assert, err) {
+  assert.equal(err, "Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+})
+
+failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function(assert) {
+  assert.ok(ctrl.get("workspace"))
+})
 
 let solucionCompletaSinVersion = {
   actividad,
@@ -67,9 +80,27 @@ failFileTest("Verifica que sea para la actividad que se está cargando", solucio
   assert.equal(err, "Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
 })
 
-failFileTest("Aunque no sea una solución para la actividad, se carga al workspace", solucionParaOtraActividad, function(assert) {
+failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function(assert) {
   assert.ok(ctrl.get("workspace"))
 })
+
+
+let solucionCompletaConVersionAnteriorParaOtraActividad = {
+  version: -1,
+  actividad: "Otra_Actividad",
+  solucion
+}
+
+failFileTest("Acumula las validaciones con soluciones", solucionCompletaConVersionAnteriorParaOtraActividad, function(assert, err) {
+  assert.equal(err, 
+`Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
+Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
+})
+
+failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function(assert) {
+  assert.ok(ctrl.get("workspace"))
+})
+
 
 
 let archivoSinSolucion = {

@@ -40,10 +40,14 @@ export default Ember.Component.extend({
     }
 
     this.set('workspace', solucion)
-
-    if (this.get("actividad.nombre") !== data.actividad) {
-      throw `Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`
-    }
+    
+    let errors = []
+    if (this.get("actividad.nombre") !== data.actividad)
+      errors.push(`Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`)
+    if (VERSION_DEL_FORMATO_DE_ARCHIVO > data.version)
+      errors.push("Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+    if (errors.length != 0)
+      throw errors.join('\n')
   },
 
   openElectronLoadDialog() {
