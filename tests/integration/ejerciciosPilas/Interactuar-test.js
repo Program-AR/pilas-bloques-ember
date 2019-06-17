@@ -16,9 +16,19 @@ function setup(pilasService){
     let alien = new (pilasService.evaluar("AlienAnimado"))(0,0);
     pilasService.evaluar("pilas").escena_actual().automata = alien;
     let boton = new (pilasService.evaluar("BotonAnimado"))(0,0);
-    let ActividadError = pilasService.evaluar("ActividadError");
     let cuadricula = new (pilasService.evaluar("Cuadricula"))(0, 0, 1, 2,{},{grilla: 'invisible.png'});
-    return {Interactuar, alien, boton, ActividadError, cuadricula};
+    return {Interactuar, alien, boton, cuadricula};
+}
+
+function interactuarAlienThrows(argumentos, mensajeError, pilasService, assert, alien){
+    // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
+    // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
+    let elInteractuar = new (pilasService.evaluar("Interactuar"))(argumentos);
+    elInteractuar.iniciar(alien);
+    assert.throws(
+        () => elInteractuar.configuracionInicial(), 
+        new (pilasService.evaluar("ActividadError"))(mensajeError)
+    );
 }
 
 moduloEjerciciosPilas(nombre);
@@ -49,35 +59,21 @@ test('Sanitización: No se puede crear una instancia de Interactuar, falta la et
 
 test('Sin cuadrícula: No se puede interactuar con un objeto si estoy lejos', function(assert){
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-        let {Interactuar, alien, boton, ActividadError} = setup(pilasService);
+        let {alien, boton} = setup(pilasService);
         boton.x += 300;
 
-        // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
-        // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
-        let elInteractuar = new Interactuar(argumentosParaApretar);
-        elInteractuar.iniciar(alien);
-        assert.throws(
-            () => elInteractuar.configuracionInicial(), 
-            new ActividadError("¡Acá no hay boton!")
-        );
+        interactuarAlienThrows(argumentosParaApretar,"¡Acá no hay boton!",pilasService,assert,alien);
         resolve();
     });
 });
 
 test('Con cuadrícula: No se puede interactuar con un objeto si estoy en otra casilla', function(assert){
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-        let {Interactuar, alien, boton, ActividadError,cuadricula} = setup(pilasService);
+        let {alien, boton, cuadricula} = setup(pilasService);
         cuadricula.agregarActor(alien,0,0);
         cuadricula.agregarActor(boton,0,1);
 
-        // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
-        // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
-        let elInteractuar = new Interactuar(argumentosParaApretar);
-        elInteractuar.iniciar(alien);
-        assert.throws(
-            () => elInteractuar.configuracionInicial(), 
-            new ActividadError("¡Acá no hay boton!")
-        );
+        interactuarAlienThrows(argumentosParaApretar,"¡Acá no hay boton!",pilasService,assert,alien);
         resolve();
     });
 });
@@ -109,17 +105,10 @@ test('Con cuadrícula: Interactúa cuando está el objeto', function(assert){
 
 test('mensajeError funciona correctamente', function (assert) {
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-        let {ActividadError, Interactuar, alien} = setup(pilasService);
+        let {alien} = setup(pilasService);
         let argumentosMensajeError = { etiqueta: 'AbortoLegal', mensajeError: 'Para no morir'};
 
-        // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
-        // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
-        let elInteractuar = new Interactuar(argumentosMensajeError);
-        elInteractuar.iniciar(alien);
-        assert.throws(
-            () => elInteractuar.configuracionInicial(), 
-            new ActividadError("Para no morir")
-        );
+        interactuarAlienThrows(argumentosMensajeError,"Para no morir",pilasService,assert,alien);
         resolve();
     });
 });
