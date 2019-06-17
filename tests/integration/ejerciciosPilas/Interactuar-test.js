@@ -1,4 +1,4 @@
-import { test, setupApplicationTest } from 'ember-qunit';
+import { test } from 'ember-qunit';
 import { moduloEjerciciosPilas, hacerLuegoConCallback } from '../../helpers/ejerciciosPilasTest';
 import createPilasTest from '../../helpers/createPilasTest';
 import sinon from 'sinon';
@@ -41,7 +41,7 @@ test('Sanitización: No se puede crear una instancia de Interactuar, falta la et
 
         assert.throws(
             () => new Interactuar({}).sanitizarArgumentos(), 
-            new ArgumentError("Debe proveerse una etiqueta para verificar interacción"), 
+            new ArgumentError("Debe proveerse una etiqueta para verificar interacción")
         );
         resolve();
     });
@@ -54,7 +54,7 @@ test('Sin cuadrícula: No se puede interactuar con un objeto si estoy lejos', fu
 
         // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
         // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
-        elInteractuar = new Interactuar(argumentosParaApretar);
+        let elInteractuar = new Interactuar(argumentosParaApretar);
         elInteractuar.iniciar(alien);
         assert.throws(
             () => elInteractuar.configuracionInicial(), 
@@ -72,7 +72,7 @@ test('Con cuadrícula: No se puede interactuar con un objeto si estoy en otra ca
 
         // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
         // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
-        elInteractuar = new Interactuar(argumentosParaApretar);
+        let elInteractuar = new Interactuar(argumentosParaApretar);
         elInteractuar.iniciar(alien);
         assert.throws(
             () => elInteractuar.configuracionInicial(), 
@@ -107,6 +107,23 @@ test('Con cuadrícula: Interactúa cuando está el objeto', function(assert){
     });
 });
 
+test('mensajeError funciona correctamente', function (assert) {
+    return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
+        let {ActividadError, Interactuar, alien} = setup(pilasService);
+        let argumentosMensajeError = { etiqueta: 'AbortoLegal', mensajeError: 'Para no morir'};
+
+        // Idealmente estas 3 líneas deberían ser un hacerLuegoConCallback, pero
+        // no hay hooks para esperar un error, así que por eso se usa el iniciar y configuracionInicial
+        let elInteractuar = new Interactuar(argumentosMensajeError);
+        elInteractuar.iniciar(alien);
+        assert.throws(
+            () => elInteractuar.configuracionInicial(), 
+            new ActividadError("Para no morir")
+        );
+        resolve();
+    });
+});
+
 test(`animacionInteractuadoMientras funciona correctamente`, function (assert) {
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
         let {Interactuar, alien} = setup(pilasService);
@@ -128,5 +145,24 @@ test(`animacionInteractuadoMientras funciona correctamente`, function (assert) {
 
         spy.restore();
         resolve();
+    });
+});
+
+test('comportamientoAdicional funciona correctamente', function(assert){
+    return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
+        let {Interactuar, alien, boton} = setup(pilasService);
+        let argumentos = {
+            etiqueta: 'BotonAnimado',
+            comportamientoAdicional: 'ComportamientoAnimado',
+            argumentosComportamiento: {nombreAnimacion: 'apagada'}
+        };
+        let spy = sinon.spy(boton, 'hacer_luego')
+        
+        hacerLuegoConCallback(alien,Interactuar,argumentos,() => {
+            assert.ok(spy.calledOnce);
+            
+            spy.restore();
+            resolve();
+        });
     });
 });
