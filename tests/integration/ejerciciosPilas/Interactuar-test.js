@@ -11,12 +11,6 @@ let argumentosParaApretar = {
     animacionInteractuadoAlFinal: "prendida"
 }
 
-let argumentosParaPelear = {
-    etiqueta: "CaballeroAnimado",
-    animacionInteractuadoMientras: "defender",
-    nombreAnimacion: "atacar",
-}
-
 function setup(pilasService){
     let Interactuar = pilasService.evaluar("Interactuar");
     let alien = new (pilasService.evaluar("AlienAnimado"))(0,0);
@@ -88,7 +82,7 @@ test('Con cuadrícula: No se puede interactuar con un objeto si estoy en otra ca
     });
 });
 
-test('Sin cuadrícula: Interactúa cuando está el objeto', function(assert){
+test('Sin cuadrícula: Interactúa cuando está el objeto. AnimacionInteractuadoFinal funciona correctamente', function(assert){
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
         let {Interactuar, alien, boton} = setup(pilasService);
 
@@ -104,6 +98,7 @@ test('Con cuadrícula: Interactúa cuando está el objeto', function(assert){
         let {Interactuar, alien, boton, cuadricula} = setup(pilasService);
         cuadricula.agregarActor(alien,0,0);
         cuadricula.agregarActor(boton,0,0);
+        boton.x += 300; // para asegurar que no está chequeando por proximidad sino por casilla
         
         hacerLuegoConCallback(alien,Interactuar,argumentosParaApretar,() => {
             assert.equal(argumentosParaApretar.animacionInteractuadoAlFinal, boton.nombreAnimacionActual());
@@ -133,34 +128,6 @@ test(`animacionInteractuadoMientras funciona correctamente`, function (assert) {
         interactuarInstance.preAnimacion();
 
         assert.ok(argumentos.animacionInteractuadoMientras === interactuarInstance.interactuado().nombreAnimacionActual());
-        assert.ok(spy.calledOnce);
-        spy.restore();
-        resolve();
-    });
-});
-
-test(`animacionInteractuadoAlFinal funciona correctamente`, function (assert) {
-    return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-        let Alien = pilasService.evaluar("AlienAnimado");
-        let Interactuar = pilasService.evaluar("Interactuar");
-        let argumentos = {
-            etiqueta: "AlienAnimado",
-            animacionInteractuadoMientras: "hablar",
-            nombreAnimacion: "apretar",
-            animacionInteractuadoAlFinal: "parado"
-        };
-
-        let alienInstance = new Alien(0, 0);
-        let spy = sinon.spy(alienInstance, 'cargarAnimacion')
-        let interactuarInstance = new Interactuar(argumentos);
-
-        sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
-            return alienInstance;
-        })
-
-        interactuarInstance.postAnimacion();
-
-        assert.ok(argumentos.animacionInteractuadoAlFinal === interactuarInstance.interactuado().nombreAnimacionActual());
         assert.ok(spy.calledOnce);
         spy.restore();
         resolve();
