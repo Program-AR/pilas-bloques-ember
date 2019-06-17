@@ -109,26 +109,23 @@ test('Con cuadrícula: Interactúa cuando está el objeto', function(assert){
 
 test(`animacionInteractuadoMientras funciona correctamente`, function (assert) {
     return createPilasTest(this, 'EscenaTests', (pilas, resolve, pilasService) => {
-        let Alien = pilasService.evaluar("AlienAnimado");
-        let Interactuar = pilasService.evaluar("Interactuar");
+        let {Interactuar, alien} = setup(pilasService);
         let argumentos = {
             etiqueta: "AlienAnimado",
             animacionInteractuadoMientras: "hablar",
             nombreAnimacion: "apretar"
         };
+        let elInteractuar = new Interactuar(argumentos);
 
-        let alienInstance = new Alien(0, 0);
-        let spy = sinon.spy(alienInstance, 'cargarAnimacion')
-        let interactuarInstance = new Interactuar(argumentos);
-
+        let spy = sinon.spy(alien, 'cargarAnimacion')
         sinon.stub(Interactuar.prototype, 'interactuado').callsFake(() => {
-            return alienInstance;
+            return alien;
         })
 
-        interactuarInstance.preAnimacion();
-
-        assert.ok(argumentos.animacionInteractuadoMientras === interactuarInstance.interactuado().nombreAnimacionActual());
+        elInteractuar.preAnimacion();
+        assert.equal(argumentos.animacionInteractuadoMientras, elInteractuar.interactuado().nombreAnimacionActual());
         assert.ok(spy.calledOnce);
+
         spy.restore();
         resolve();
     });
