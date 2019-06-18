@@ -1,7 +1,7 @@
-import Ember from 'ember'
+import Component from '@ember/component';
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 1
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'span',
   cuandoSelecciona: null,
   actividad: null,
@@ -104,7 +104,7 @@ export default Ember.Component.extend({
       let contenido = {
         version: VERSION_DEL_FORMATO_DE_ARCHIVO,
         actividad: activityName,
-        solucion: btoa(this.get('xml'))
+        solucion: btoa(this.xml)
       }
 
       this.descargar(JSON.stringify(contenido), fileName, 'application/octet-stream')

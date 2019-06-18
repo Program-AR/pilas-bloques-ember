@@ -1,18 +1,20 @@
-import { skip } from 'qunit';
-import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
+import { module, skip } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
 import desafios from '../pages/desafios';
 
-moduleForAcceptance('Acceptance | desafios');
+module('Acceptance | desafios', function(hooks) {
+  setupApplicationTest(hooks);
 
-skip('visiting /desafios', function(assert) {
-  let cantidadDesafiosEsperada = 50;
+  skip('visiting /desafios', function(assert) {
+    let cantidadDesafiosEsperada = 50;
 
-  desafios.
-    visit();
+    desafios.
+      visit();
 
-  andThen(function() {
-    assert.equal(desafios.cantidadDeDesafiosDisponibles(), cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
+    andThen(function() {
+      assert.equal(desafios.cantidadDeDesafiosDisponibles(), cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
+    });
+
+
   });
-
-
 });

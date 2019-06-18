@@ -1,7 +1,12 @@
 /* jshint ignore:start */
-import Ember from 'ember';
+import { computed } from '@ember/object';
 
-export default Ember.Component.extend({
+import { later, scheduleOnce, run } from '@ember/runloop';
+import { on } from '@ember/object/evented';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+
+export default Component.extend({
   classNames: 'desafio-panel-derecho',
   ejecutando: false,
   terminoDeEjecutar: false,
@@ -9,8 +14,8 @@ export default Ember.Component.extend({
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
-  environment: Ember.inject.service(),
-  interpreterFactory: Ember.inject.service(),
+  environment: service(),
+  interpreterFactory: service(),
   abrirConsignaInicial: false,
   solucion: null,
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
@@ -21,8 +26,8 @@ export default Ember.Component.extend({
   modelActividad: null,
   modoTuboHabilitado: false,
 
-  highlighter: Ember.inject.service(),
-  twitter: Ember.inject.service(),
+  highlighter: service(),
+  twitter: service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
   compartirEnCurso: false,
@@ -43,27 +48,27 @@ export default Ember.Component.extend({
 
   javascriptCode: null,
 
-  inyectarRedimensionado: Ember.on('init', function() {
+  inyectarRedimensionado: on('init', function() {
 
     // Muestra el dialogo inicial si está definida la consigna inicial.
     if (this.get('actividad.actividad.consignaInicial')) {
-      Ember.run.later(() => {
+      later(() => {
         this.set('abrirConsignaInicial', true);
       });
     }
 
   }),
 
-  debeMostarRegresarAlLibro: Ember.computed('model', function() {
+  debeMostarRegresarAlLibro: computed('model', function() {
     return true;
   }),
 
-  debeMostarReiniciar: Ember.computed('ejecutando', 'terminoDeEjecutar', function() {
-    return this.get('ejecutando') || this.get('terminoDeEjecutar');
+  debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function() {
+    return this.ejecutando || this.terminoDeEjecutar;
   }),
 
-  estoyEnMoodle: Ember.computed('modoAlumno', 'modoDocente', function() {
-    return this.get('modoAlumno') || this.get('modoDocente');
+  estoyEnMoodle: computed('modoAlumno', 'modoDocente', function() {
+    return this.modoAlumno || this.modoDocente;
   }),
 
   didInsertElement() {
@@ -71,42 +76,42 @@ export default Ember.Component.extend({
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
 
-    Ember.run.scheduleOnce('afterRender', () => {
-      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.get('bloques')));
+    scheduleOnce('afterRender', () => {
+      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
 
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
 
       // Elijo el estilo default de toolbox si es que no viene indicado en el desafio
-      if(!this.get('modelActividad').get('estiloToolbox')){
-        this.get('modelActividad').set('estiloToolbox','desplegable');
+      if(!this.modelActividad.get('estiloToolbox')){
+        this.modelActividad.set('estiloToolbox','desplegable');
       }
 
 
       // Si el código está serializado en la URL, lo intenta colocar en el
       // workspace.
-      if (this.get('codigo')) {
-        let codigoSerializado = this.get('codigo');
+      if (this.codigo) {
+        let codigoSerializado = this.codigo;
         let codigoXML = atob(codigoSerializado);
 
         this.set('initial_workspace', codigoXML);
-      } else if (this.get('modelActividad').get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
-				this.set('initial_workspace', this.get('modelActividad').get('solucionInicial'));
+      } else if (this.modelActividad.get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
+				this.set('initial_workspace', this.modelActividad.get('solucionInicial'));
 			} else { //Sino, el código por defecto es el empezar a ejecutar
         this.set('initial_workspace', this._xmlBloqueEmpezarAEjecutar());
       }
 
     });
 
-    if (this.get("persistirSolucionEnURL")) {
+    if (this.persistirSolucionEnURL) {
       // TODO: puede que esto quede en desuso.
     }
 
     // Este es un hook para luego agregar a la interfaz 
     // el informe deseado al ocurrir un error.
-    this.get('pilas').on("errorDeActividad", (motivoDelError) => {
-      Ember.run(this, function() {
+    this.pilas.on("errorDeActividad", (motivoDelError) => {
+      run(this, function() {
         this.set('errorDeActividad', motivoDelError);
       });
     });
@@ -186,7 +191,7 @@ export default Ember.Component.extend({
   },
 
   _debeHaberCategoriasEnToolbox(){
-    return this.get('modelActividad').get('estiloToolbox') !== "sinCategorias";
+    return this.modelActividad.get('estiloToolbox') !== "sinCategorias";
   },
 
   /**
@@ -263,12 +268,12 @@ export default Ember.Component.extend({
 
         // Si el usuario solicitó terminar el programa deja
         // de ejecutar el intérprete.
-        if (!this.get("ejecutando")) {
+        if (!this.ejecutando) {
           success();
           return;
         }
 
-        let err = this.get("errorDeActividad"); 
+        let err = this.errorDeActividad; 
         if (err) {
           reject(new ErrorDeActividad(err));
           return;
@@ -279,7 +284,7 @@ export default Ember.Component.extend({
             // Si está activado el modo depurador, intentará suspender
             // la llamada a interpreter.run() hasta que el usuario pulse
             // el botón step.
-            if (interpreter.paused_ === false && !this.get('pausadoEnBreakpoint')) {  
+            if (interpreter.paused_ === false && !this.pausadoEnBreakpoint) {  
               hayMasParaEjecutarDespues = interpreter.run(); 
               this.set('pausadoEnBreakpoint', true);
             }
@@ -304,16 +309,16 @@ export default Ember.Component.extend({
   },
 
   cuandoTerminaEjecucion() {
-    Ember.run(this, function() {
+    run(this, function() {
       this.sendAction('onTerminoEjecucion');
       
-      if (this.get("debeMostrarFinDeDesafio")) {
-        if (this.get('pilas').estaResueltoElProblema() && this.get('modelActividad').get('debeFelicitarse')) {
+      if (this.debeMostrarFinDeDesafio) {
+        if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
           this.send('abrirFinDesafio');
         }
       }
       
-      if (this.get('ejecutando')) {
+      if (this.ejecutando) {
         this.set('ejecutando', false);
         this.set('terminoDeEjecutar', true);
         this.clearHighlight();
@@ -336,14 +341,14 @@ export default Ember.Component.extend({
   
   setModoTurbo() {
     if (this.modoTuboHabilitado) {
-      this.get('pilas').habilitarModoTurbo();
+      this.pilas.habilitarModoTurbo();
     } else {
-      this.get('pilas').deshabilitarModoTurbo();
+      this.pilas.deshabilitarModoTurbo();
     }
   },
 
   clearHighlight() {
-    this.get('highlighter').clear()
+    this.highlighter.clear()
   },
 
   /*
@@ -359,20 +364,20 @@ export default Ember.Component.extend({
 
   actions: {
     ejecutar(pasoAPaso=false) {
-      this.get('pilas').reiniciarEscenaCompleta();
+      this.pilas.reiniciarEscenaCompleta();
 
       this.setModoTurbo()
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución
       // del usuario en cada momento de ejecución.
-      if (this.get('cuandoEjecuta')) {
-        let codigo_xml = this.get('codigoActualEnFormatoXML');
-        this.get('cuandoEjecuta')(codigo_xml);
+      if (this.cuandoEjecuta) {
+        let codigo_xml = this.codigoActualEnFormatoXML;
+        this.cuandoEjecuta(codigo_xml);
       }
 
-      let factory = this.get('interpreterFactory');
-      let interprete = factory.crearInterprete(this.get('javascriptCode'), (bloqueId) => this.get('highlighter').step(bloqueId));
+      let factory = this.interpreterFactory;
+      let interprete = factory.crearInterprete(this.javascriptCode, (bloqueId) => this.highlighter.step(bloqueId));
       
       this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
@@ -387,7 +392,7 @@ export default Ember.Component.extend({
       this.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
-      this.get('pilas').reiniciarEscenaCompleta();
+      this.pilas.reiniciarEscenaCompleta();
     },
 
     guardar() {
@@ -395,7 +400,7 @@ export default Ember.Component.extend({
     },
 
     ver_codigo() {
-      let codigo_como_string = this.get('actividad').generarCodigoXMLComoString();
+      let codigo_como_string = this.actividad.generarCodigoXMLComoString();
       alert(codigo_como_string);
     },
 
@@ -403,14 +408,14 @@ export default Ember.Component.extend({
       var codigo = prompt("Ingrese el código");
 
       if (codigo) {
-        this.get('actividad').cargarCodigoDesdeStringXML(codigo);
+        this.actividad.cargarCodigoDesdeStringXML(codigo);
       }
 
     },
 
     compartir() {
       this.set('abrirDialogoCompartir', true);
-      let data = this.get("pilas").obtenerCapturaDePantalla();
+      let data = this.pilas.obtenerCapturaDePantalla();
       this.set('previewData', data);
     },
 
@@ -427,8 +432,8 @@ export default Ember.Component.extend({
     },
 
     abrirMensajePublicado() {
-      let url = this.get('mensajePublicadoURL');
-      this.get('browser').openLink(url);
+      let url = this.mensajePublicadoURL;
+      this.browser.openLink(url);
     },
 
     abrirReporteProblemas() {
@@ -442,10 +447,10 @@ export default Ember.Component.extend({
     enviarMensaje() {
       this.set('envioEnCurso', true);
 
-      let mensaje = this.get('mensajeCompartir');
-      let imagen = this.get('previewData');
+      let mensaje = this.mensajeCompartir;
+      let imagen = this.previewData;
 
-      this.get('twitter').compartir(mensaje, imagen).
+      this.twitter.compartir(mensaje, imagen).
 
       then((data) => {
         this.set('envioEnCurso', false);
@@ -468,7 +473,7 @@ export default Ember.Component.extend({
 
       this.set('codigoActualEnFormatoXML', xml);
       this.sendAction('onChangeWorkspace', xml);
-    },
+    }
 
   }
 

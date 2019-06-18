@@ -1,4 +1,5 @@
-import { moduleForComponent } from 'ember-qunit';
+import { module } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
 
 export function moduloEjerciciosPilas(nombre) {
   let titulo = `Integration | EjerciciosPilas | ${nombre}`;

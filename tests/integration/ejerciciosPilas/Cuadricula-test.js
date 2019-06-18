@@ -1,5 +1,8 @@
-import {test} from 'ember-qunit';
-import {moduloEjerciciosPilas, hacerLuegoConCallback} from '../../helpers/ejerciciosPilasTest';
+import { test } from 'qunit';
+import {
+  moduloEjerciciosPilas,
+  hacerLuegoConCallback
+} from '../../helpers/ejerciciosPilasTest';
 import createPilasTest from '../../helpers/createPilasTest';
 
 const nombre = 'Cuadricula';

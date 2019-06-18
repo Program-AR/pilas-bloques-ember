@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 
-export default Ember.Service.extend({
-  blockly: Ember.inject.service(),
+export default Service.extend({
+  blockly: service(),
 
   start() {
     this._generarLenguaje();
@@ -30,7 +30,7 @@ export default Ember.Service.extend({
     this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    let bloque = this.get('blockly').createCustomBlockWithHelper(nombre, opciones);
+    let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
     return bloque;
   },
@@ -47,7 +47,7 @@ export default Ember.Service.extend({
       throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
     }
 
-    let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal);
+    let bloque = this.blockly.createAlias(nombre, nombreDelBloqueOriginal);
     bloque.categoria = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoria;
 
     if(categoriaCustom) {
@@ -79,7 +79,7 @@ export default Ember.Service.extend({
     formaDelBloque += opciones.descripcion;
     formaDelBloque += opciones.esBool ? "?" : "";
 
-    let blockly = this.get('blockly');
+    let blockly = this.blockly;
     let bloque = blockly.createCustomBlock(nombre, {
       message0: formaDelBloque,
       colour: opciones.colour || Blockly.Blocks.sensores.COLOUR,
@@ -111,7 +111,7 @@ export default Ember.Service.extend({
     this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    let bloque = this.get('blockly').createBlockValue(nombre, opciones);
+    let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
 
     return bloque;
@@ -591,7 +591,7 @@ export default Ember.Service.extend({
         }}`,
     });
 
-    let blockly = this.get('blockly');
+    let blockly = this.blockly;
 
     let bloque = blockly.createCustomBlock('MoverA', {
       message0: "Mover a %1",
@@ -1110,7 +1110,7 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    let sensorHayVocal = this.get('blockly').createCustomBlock('hayVocalRMT', {
+    let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
       "type": "block_type",
       "message0": "%1 ¿La letra actual es una %2 ?",
       "args0": [
@@ -1364,7 +1364,7 @@ export default Ember.Service.extend({
   },
 
   _definirOpAritmetica() { //Este código fue sacado de Blockly
-    this.get('blockly').createCustomBlock('OpAritmetica', {
+    this.blockly.createCustomBlock('OpAritmetica', {
       "type": "math_arithmetic",
       "message0": "%1 %2 %3",
       "args0": [

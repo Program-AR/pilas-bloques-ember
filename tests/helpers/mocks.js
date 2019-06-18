@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 import sinon from 'sinon';
 
 export const pilasMock = {
@@ -16,7 +16,7 @@ export const interpreteMock = {
     run: sinon.stub().returns(false)
 };
 
-export const interpreterFactoryMock = Ember.Service.extend({ 
+export const interpreterFactoryMock = Service.extend({ 
     crearInterprete(){ return interpreteMock; }
 });
 

@@ -1,10 +1,11 @@
-import Ember from 'ember';
+import { Promise } from 'rsvp';
+import Service from '@ember/service';
 import config from "../config/environment";
 
-export default Ember.Service.extend({
+export default Service.extend({
   guardar(parametros) {
 
-    return new Ember.RSVP.Promise((success, reject) => {
+    return new Promise((success, reject) => {
 
       let data = {
         hash: parametros.hash,
@@ -27,7 +28,7 @@ export default Ember.Service.extend({
 
   obtener_solucion_xml_desde_hash(hash) {
 
-    return new Ember.RSVP.Promise((success, reject) => {
+    return new Promise((success, reject) => {
       $.ajax({
         url: `${config.cursoBackendURL}/soluciones/${hash}`,
         contentType: 'application/json',

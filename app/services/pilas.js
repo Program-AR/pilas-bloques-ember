@@ -1,4 +1,6 @@
-import Ember from 'ember';
+import { Promise } from 'rsvp';
+import Evented from '@ember/object/evented';
+import Service from '@ember/service';
 import listaImagenes from 'pilasbloques/components/listaImagenes';
 
 
@@ -22,7 +24,7 @@ import listaImagenes from 'pilasbloques/components/listaImagenes';
  * @public
  * @class PilasService
  */
-export default Ember.Service.extend(Ember.Evented, {
+export default Service.extend(Evented, {
   iframe: null,
   actorCounter: 0,
   pilas: null,
@@ -46,7 +48,7 @@ export default Ember.Service.extend(Ember.Evented, {
     this.set("iframe", iframeElement);
     this.set("loading", true);
 
-    return new Ember.RSVP.Promise((success) => {
+    return new Promise((success) => {
       let width = options.width;
       let height = options.height;
 
@@ -93,8 +95,8 @@ export default Ember.Service.extend(Ember.Evented, {
          * que existir una promesa en curso, así que estas lineas se
          * encargan de satisfacer esa promesa llamando al callback success.
          */
-        if (this.get("temporallyCallback")) {
-          this.get("temporallyCallback")(pilas);
+        if (this.temporallyCallback) {
+          this.temporallyCallback(pilas);
           this.set("temporallyCallback", null);
         }
 
@@ -201,7 +203,7 @@ export default Ember.Service.extend(Ember.Evented, {
    */
   ejecutarCodigo(codigo) {
     this.reiniciar().then(() => {
-      let iframeElement = this.get("iframe");
+      let iframeElement = this.iframe;
       iframeElement.contentWindow.eval(codigo);
     });
   },
@@ -228,12 +230,12 @@ export default Ember.Service.extend(Ember.Evented, {
    */
   ejecutarCodigoSinReiniciar(codigo) {
 
-    if (this.get("loading")) {
+    if (this.loading) {
       console.warn("Cuidado, no se puede ejecutar antes de que pilas cargue.");
       return;
     }
 
-    let iframeElement = this.get("iframe");
+    let iframeElement = this.iframe;
 
     this.reiniciarEscenaCompleta();
 
@@ -247,7 +249,7 @@ export default Ember.Service.extend(Ember.Evented, {
    * @public
    */
   obtenerCapturaDePantalla() {
-    let iframeElement = this.get("iframe");
+    let iframeElement = this.iframe;
     return iframeElement.contentWindow.document.getElementById('canvas').toDataURL('image/png');
   },
 
@@ -258,9 +260,9 @@ export default Ember.Service.extend(Ember.Evented, {
    * @private
    */
   reiniciarEscenaCompleta() {
-    let iframeElement = this.get("iframe");
+    let iframeElement = this.iframe;
     iframeElement.contentWindow.eval("pilas.reiniciar();");
-    this.inicializarEscena(iframeElement, this.get("inicializadorDeLaEscenaActual"));
+    this.inicializarEscena(iframeElement, this.inicializadorDeLaEscenaActual);
   },
 
   /**
@@ -293,13 +295,13 @@ export default Ember.Service.extend(Ember.Evented, {
    * @private
    */
   reiniciar() {
-    return new Ember.RSVP.Promise((success) => {
-      if (this.get("loading")) {
+    return new Promise((success) => {
+      if (this.loading) {
         console.warn("Cuidado, se está reiniciando en medio de la carga.");
       }
 
       this.set("loading", true);
-      this.get("iframe").contentWindow.location.reload(true);
+      this.iframe.contentWindow.location.reload(true);
 
       /* Guarda el callback  para que se llame luego de la carga de pilas. */
       this.set("temporallyCallback", success);
@@ -341,7 +343,7 @@ export default Ember.Service.extend(Ember.Evented, {
    * @public
    */
   evaluar(codigo) {
-    let iframeElement = this.get("iframe");
+    let iframeElement = this.iframe;
     return iframeElement.contentWindow.eval(codigo);
   },
 

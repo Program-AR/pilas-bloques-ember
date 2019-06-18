@@ -1,11 +1,13 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('modal-ayuda', 'Integration | Component | modal ayuda', {
-  integration: true
-});
+module('Integration | Component | modal ayuda', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{modal-ayuda}}`);
-  assert.equal(this.$().text().trim(), '', "No imprime texto si está oculto.");
+  test('it renders', async function(assert) {
+    await render(hbs`{{modal-ayuda}}`);
+    assert.dom('*').hasText('', "No imprime texto si está oculto.");
+  });
 });

@@ -1,7 +1,9 @@
-import { test } from 'ember-qunit';
+import { run } from '@ember/runloop';
+import { Promise } from 'rsvp';
+import { setupTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-import {moduleForComponent} from 'ember-qunit';
+import { module, test } from 'qunit';
+import 'ember-qunit';
 import startMirage from './start-mirage';
 
 /**
@@ -103,9 +105,9 @@ export function actividadTest(nombre, opciones) {
     let pilas = this.container.lookup('service:pilas');
     //let actividades = this.container.lookup('service:actividades');
 
-	  return new Ember.RSVP.Promise((success) => {
+	  return new Promise((success) => {
 
-      Ember.run(() => {
+      run(() => {
 
         // Simula el model hook del router desafío.
         store.findAll("desafio").then((data) => {

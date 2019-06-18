@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { later } from '@ember/runloop';
+import Component from '@ember/component';
 import environment from '../config/environment';
 
-export default Ember.Component.extend({
+export default Component.extend({
   servicioNotificador: null,
   hayActualizacion: false,
   tagName: '',
@@ -10,10 +11,10 @@ export default Ember.Component.extend({
   didInsertElement() {
     const inElectron = (typeof process !== "undefined");
 
-    if (this.get('servicioNotificador') && inElectron) {
+    if (this.servicioNotificador && inElectron) {
       /* Solo si está en la versión offline, sobre electron, espera 5 segundos
         * y consulta si existe una versión nueva para descargar. */
-      Ember.run.later(this, function() {
+      later(this, function() {
         this.consultarSiExisteVersionNueva();
       }, 5000);
     }
@@ -21,7 +22,7 @@ export default Ember.Component.extend({
 
 
   consultarSiExisteVersionNueva() {
-    this.get('servicioNotificador').consultar().then((data) => {
+    this.servicioNotificador.consultar().then((data) => {
 
       if (data.hayActualizacion) {
         this.set('hayActualizacion', true);

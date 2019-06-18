@@ -1,5 +1,5 @@
-import {test} from 'ember-qunit';
-import {moduloEjerciciosPilas} from '../../helpers/ejerciciosPilasTest';
+import { test } from 'qunit';
+import { moduloEjerciciosPilas } from '../../helpers/ejerciciosPilasTest';
 import createPilasTest from '../../helpers/createPilasTest';
 
 const nombre = 'Cuadricula Esparsa';

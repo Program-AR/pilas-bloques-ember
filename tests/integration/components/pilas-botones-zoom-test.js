@@ -1,11 +1,13 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('pilas-botones-zoom', 'Integration | Component | pilas botones zoom', {
-  integration: true
-});
+module('Integration | Component | pilas botones zoom', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{pilas-botones-zoom}}`);
-  assert.equal(this.$().text().trim(), '100%');
+  test('it renders', async function(assert) {
+    await render(hbs`{{pilas-botones-zoom}}`);
+    assert.dom('*').hasText('100%');
+  });
 });

@@ -1,11 +1,13 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('pilas-cargando', 'Integration | Component | pilas cargando', {
-  integration: true
-});
+module('Integration | Component | pilas cargando', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{pilas-cargando}}`);
-  assert.equal(this.$().text().trim(), '', "No debe tener texto alguno.");
+  test('it renders', async function(assert) {
+    await render(hbs`{{pilas-cargando}}`);
+    assert.dom('*').hasText('', "No debe tener texto alguno.");
+  });
 });
