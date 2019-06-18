@@ -17,7 +17,6 @@
     "js_beautify",
     "Blockly"
   ],
-  "esversion": "esnext",
   "asi": true,
   "browser": true,
   "boss": true,

@@ -14,7 +14,7 @@ export default Component.extend({
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
-  environment: service(),
+  // environment: service(), // esto no lo reconoce ember 3
   interpreterFactory: service(),
   abrirConsignaInicial: false,
   solucion: null,

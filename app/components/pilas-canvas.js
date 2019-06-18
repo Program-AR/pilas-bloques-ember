@@ -20,10 +20,6 @@ export default Component.extend({
   },
 
   initElement() {
-    console.log(this.$);
-    console.log(this.element);
-
-    // let iframeElement = this.$().find('#innerIframe')[0];
     let iframeElement = this.element.querySelector('#innerIframe');
 
     this.set("iframeElement", iframeElement);
@@ -31,7 +27,7 @@ export default Component.extend({
     this.iframeElement.onload = () => {
 
       if (this.pilas) {
-        this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.escena).
+        this.pilas.inicializarPilas(iframeElement, { width: 420, height: 480 }, this.escena).
           then((pilas) => {
 
             if (this.escena) {
@@ -58,7 +54,7 @@ export default Component.extend({
       // onLoad solo se utiliza dentro de la batería de tests. Este
       // componente se tendría que usar mediante el servicio "pilas"
       // en cualquier otro lugar.
-      this.sendAction('onLoad', {iframeElement});
+      this.sendAction('onLoad', { iframeElement });
 
     };
 
