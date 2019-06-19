@@ -17,12 +17,12 @@ Ember.onerror = function (e) {
 
 **Global**: `Ember.K`
 
-**Location**: `tests/helpers/responsive.js` at line 4
+**Location**: `tests/helpers/responsive.js` at line 10
 
 ```js
-import MediaService from 'ember-responsive/media';
 
-const { K, getOwner } = Ember;
-const { classify } = Ember.String;
+const {
+  K
+} = Ember;
 
 ```

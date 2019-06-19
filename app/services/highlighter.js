@@ -4,12 +4,11 @@ import Service from '@ember/service';
 /// Particularmente, tiene la lógica de highligh para los procedimientos.
 /// No sabe nada sobre qué hacen o cuándo se jecutará cada bloque.
 export default Service.extend({
-    
+
     blocks: [],
-    workspace: Blockly.mainWorkspace,
 
     step(blockId) {
-        let block = this.workspace.getBlockById(blockId)
+        let block = Blockly.mainWorkspace.getBlockById(blockId)
         if (!block) { // For testing
             console.warn(`Couldn't highlight block id: ${blockId}`)
             return
@@ -18,7 +17,7 @@ export default Service.extend({
         this._removePreviousBlockIfContinue(block)
 
         if (!this._ignore(block))
-          this.blocks.push(block)
+            this.blocks.push(block)
 
         this._updateHighlight()
     },
@@ -27,19 +26,19 @@ export default Service.extend({
         this.blocks.length = 0
         this._clearHighlight()
     },
-    
+
     _lastBlock() {
         return this.blocks[this.blocks.length - 1]
     },
 
     _removeLastBlockIfEndOfModule() {
         if (this._shouldRemoveLastBlock())
-          this.blocks.pop()
+            this.blocks.pop()
     },
 
     _removePreviousBlockIfContinue(block) {
         if (block.getParent() == this._lastBlock())
-          this.blocks.pop()
+            this.blocks.pop()
     },
 
     _ignore(block) {
@@ -47,9 +46,9 @@ export default Service.extend({
     },
 
     _shouldRemoveLastBlock() {
-        return  this._lastBlock() && 
-                this._isEndOfModule(this._lastBlock()) && 
-                !this._isProcedureCall(this._lastBlock())
+        return this._lastBlock() &&
+            this._isEndOfModule(this._lastBlock()) &&
+            !this._isProcedureCall(this._lastBlock())
     },
 
     _isEndOfModule(block) {
@@ -66,10 +65,10 @@ export default Service.extend({
 
     _updateHighlight() {
         this._clearHighlight()
-        this.blocks.forEach((b) => this.workspace.highlightBlock(b.id, true))
+        this.blocks.forEach((b) => Blockly.mainWorkspace.highlightBlock(b.id, true))
     },
 
     _clearHighlight() {
-        this.workspace.highlightBlock()
+        Blockly.mainWorkspace.highlightBlock()
     }
 })

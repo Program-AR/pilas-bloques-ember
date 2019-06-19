@@ -8,6 +8,6 @@
     "Faker": "~3.1.0",
     "pilasweb": "0.4.9",
     "blockly-package": "0.0.16",
-    "bluebird": "^3.5.3"
+    "bluebird": "^3.5.5"
   }
 }
