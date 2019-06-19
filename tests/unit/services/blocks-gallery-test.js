@@ -103,6 +103,17 @@ test('Parameter without parent procedure should be always ok', function(assert) 
 });
 
 
+test('Parameter should dispose when procedure is disposed', function(assert) {
+    let procedure = Blockly.textToBlock(emptyProcedure)
+    let param = findParam(Blockly.textToBlock(flying))
+    assert.ok(param.workspace)
+    procedure.dispose()
+    assertAsync(assert, function() {
+        assert.notOk(param.workspace)
+    })
+});
+
+
 function findParam(rootBlock) {
     let type = "variables_get"
     let param = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
@@ -115,6 +126,14 @@ function findChildren(rootBlock, type) {
     return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
 }
 
+
+
+function assertAsync(assert, fn) {
+  let done = assert.async(1)
+  setTimeout(function() {
+      fn(); done()
+  })
+}
 
 ///////////// ALIAS /////////////
 
