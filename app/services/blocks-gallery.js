@@ -1251,8 +1251,8 @@ export default Ember.Service.extend({
       return block.getRootBlock() == block
     }
 
-    function getProcedureName(id) {
-      return this.workspace.getBlockById(id).getProcedureDef()[0]
+    function getName(procedureBlock) {
+      return procedureBlock.getProcedureDef()[0]
     }
 
     Blockly.Blocks.variables_get = {
@@ -1284,11 +1284,16 @@ export default Ember.Service.extend({
         this.setFieldValue(var_name, 'VAR');
         this.$parent = xmlElement.getAttribute("parent") || null;
       },
-      onchange: function() {
+      onchange: function(event) {
+        if (event && event.blockId == this.$parent && event.type == Blockly.Events.BLOCK_DELETE) {
+          this.dispose()
+          return;
+        }
         if (this.$parent) { // Este if sirve para las soluciones viejas que no tienen $parent
           var ok = isInsideProcedureDef(this)
-          var warning = (ok || isFlying(this)) ? null 
-                        : `Estás usando este bloque en cualquier lado, la re flasheaste. Este bloque debería usarse dentro de ${getProcedureName.bind(this) (this.$parent)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
+          var procedureDef = this.workspace.getBlockById(this.$parent)
+          var warning = (ok || isFlying(this) || !procedureDef) ? null 
+                        : `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
           this.setDisabled(!ok)
           this.setWarningText(warning)
         }
