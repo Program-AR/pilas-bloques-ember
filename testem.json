@@ -5,7 +5,7 @@
   "phantomjs_debug_port": 9000,
   "parallel": 10,
   "launch_in_ci": [
-    "Chrome"
+    "Firefox"
   ],
   "launch_in_dev": [
     "PhantomJS"
