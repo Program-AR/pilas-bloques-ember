@@ -3,13 +3,13 @@
 
 **Global**: `Ember.onerror`
 
-**Location**: `app/components/pilas-blockly.js` at line 482
+**Location**: `app/components/pilas-blockly.js` at line 483
 
 ```js
 });
 
 Ember.onerror = function (e) {
-  if(e || e.message || e.stack){
+  if (e || e.message || e.stack) {
     console.error(
 ```
 
