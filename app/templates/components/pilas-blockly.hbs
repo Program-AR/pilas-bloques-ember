@@ -30,8 +30,9 @@
       {{#unless estoyEnMoodle}}
 
         {{pilas-solution-file actividad=modelActividad workspace=initial_workspace xml=codigoActualEnFormatoXML}}
-
-        {{pilas-toggle isDisabled=this.ejecutando isChecked=this.modoTuboHabilitado icon="fa fa-bolt" tooltip="Modo Turbo" element-id="modo-turbo"}}
+        
+        <Pilas-Toggle @isDisabled={{this.ejecutando}} @isChecked={{this.modoTuboHabilitado}} @icon={{"fa fa-bolt"}} 
+        @tooltip={{"Modo Turbo"}} @element-id={{"modo-turbo"}} /> 
 
         {{#if debeMostarRegresarAlLibro}}
           {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
