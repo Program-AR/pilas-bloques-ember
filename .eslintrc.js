@@ -1,11 +1,9 @@
 module.exports = {
   root: true,
-  parserOptions: {
-    ecmaVersion: 2015,
-    sourceType: 'module'
-  },
   plugins: [
-    'ember'
+    'ember',
+    'eslint-plugin-ember',
+    'eslint-plugin-standard'
   ],
   extends: [
     'eslint:recommended',
