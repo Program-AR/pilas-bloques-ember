@@ -38,9 +38,7 @@
     "grunt-ts": "^5.5.1",
     "grunt-typescript": "^0.8.0",
     "load-grunt-tasks": "^5.0.0",
-    "mocha-phantomjs": "^4.1.0",
     "nearley": "^2.16.0",
-    "phantomjs-polyfill": "^0.0.1",
     "reflect-metadata": "^0.1.13",
     "typescript": "^3.5.2"
   }

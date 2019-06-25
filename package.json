@@ -44,7 +44,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-funnel": "^2.0.2",
     "devtron": "1.4.0",
-    "electron": "5.0.4",
+    "electron": "5.0.5",
     "electron-installer-debian": "^2.0.0",
     "electron-installer-flatpak": "0.8.0",
     "electron-packager": "14.0.0",
@@ -87,7 +87,7 @@
     "ember-sinon": "^4.0.0",
     "ember-source": "^3.10.2",
     "loader.js": "^4.7.0",
-    "sass": "^1.21.0",
+    "sass": "^1.22.0",
     "node-sass": "^4.12.0",
     "yuidoc-ember-cli-theme": "^1.0.4"
   },
