@@ -3,7 +3,6 @@ import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import 'ember-qunit';
-// import startMirage from './start-mirage';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import { setupRenderingTest } from 'ember-qunit'; 
 
@@ -14,7 +13,6 @@ export function moduloActividad(nombre, testDeclarations) {
 	module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupRenderingTest(hooks);
     setupMirage(hooks);
-    // startMirage();
     testDeclarations();
   });
 }
