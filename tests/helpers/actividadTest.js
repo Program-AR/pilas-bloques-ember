@@ -126,18 +126,6 @@ export function actividadTest(nombre, opciones) {
           this.set('solucion', window.btoa(opciones.solucion));
           // Captura el evento de inicialización de pilas:
 
-          // this.on('onReady', function(/*instanciaPilas*/) {
-
-          //   if (opciones.cantidadDeActoresAlComenzar) {
-          //     validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
-          //   }
-
-          //   setTimeout(() => {
-          //     this.$('#modo-turbo').click();
-          //     this.$('.btn-ejecutar').click();
-          //   }, 1000);
-
-          // });
           this.set('onReady', () => {
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
