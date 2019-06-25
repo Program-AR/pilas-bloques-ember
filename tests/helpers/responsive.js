@@ -4,7 +4,7 @@ import { computed } from '@ember/object';
 import { classify } from '@ember/string';
 import { getOwner } from '@ember/application';
 import Ember from 'ember';
-import MediaService from 'ember-responsive/media';
+import MediaService from 'ember-responsive/services/media';
 
 const {
   K

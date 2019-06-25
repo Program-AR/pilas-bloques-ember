@@ -1,26 +1,20 @@
 import { run } from '@ember/runloop';
 import { Promise } from 'rsvp';
-import { setupTest } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import 'ember-qunit';
 import startMirage from './start-mirage';
+import { setupRenderingTest } from 'ember-qunit'; 
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
-export function moduloActividad(nombre) {
-  let titulo = `Integration | Actividad | ${nombre}`;
-
-  let opciones = {
-    integration: true,
-
-    setup() {
-      startMirage(this.container);
-    }
-  };
-
-	moduleForComponent('pilas-editor', titulo, opciones);
+export function moduloActividad(nombre, testDeclarations) {
+	module(`Integration | Actividad | ${nombre}`, (hooks) => {
+    setupRenderingTest(hooks);
+    // startMirage();
+    testDeclarations();
+  });
 }
 
 /**
@@ -98,12 +92,17 @@ export function actividadTest(nombre, opciones) {
   }
 
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
-
+  
 	test(descripcion, function(assert) {
+    let store = this.owner.lookup('service:store');
+    let pilas = this.owner.lookup('service:pilas');
 
-    let store = this.container.lookup('service:store');
-    let pilas = this.container.lookup('service:pilas');
-    //let actividades = this.container.lookup('service:actividades');
+    console.log(store);
+    console.log(pilas);
+
+    assert.equal(true, true);
+
+    //let actividades = this.owner.lookup('service:actividades');
 
 	  return new Promise((success) => {
 
