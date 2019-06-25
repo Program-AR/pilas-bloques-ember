@@ -3,7 +3,8 @@ import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
 import 'ember-qunit';
-import startMirage from './start-mirage';
+// import startMirage from './start-mirage';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import { setupRenderingTest } from 'ember-qunit'; 
 
 /**
@@ -12,6 +13,7 @@ import { setupRenderingTest } from 'ember-qunit';
 export function moduloActividad(nombre, testDeclarations) {
 	module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupRenderingTest(hooks);
+    setupMirage(hooks);
     // startMirage();
     testDeclarations();
   });
@@ -97,11 +99,6 @@ export function actividadTest(nombre, opciones) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
 
-    console.log(store);
-    console.log(pilas);
-
-    assert.equal(true, true);
-
     //let actividades = this.owner.lookup('service:actividades');
 
 	  return new Promise((success) => {
@@ -128,8 +125,20 @@ export function actividadTest(nombre, opciones) {
           // Carga la solución en base64, el formato que espera el componente.
           this.set('solucion', window.btoa(opciones.solucion));
           // Captura el evento de inicialización de pilas:
-          this.on('onReady', function(/*instanciaPilas*/) {
 
+          // this.on('onReady', function(/*instanciaPilas*/) {
+
+          //   if (opciones.cantidadDeActoresAlComenzar) {
+          //     validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
+          //   }
+
+          //   setTimeout(() => {
+          //     this.$('#modo-turbo').click();
+          //     this.$('.btn-ejecutar').click();
+          //   }, 1000);
+
+          // });
+          this.set('onReady', () => {
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
@@ -137,8 +146,7 @@ export function actividadTest(nombre, opciones) {
             setTimeout(() => {
               this.$('#modo-turbo').click();
               this.$('.btn-ejecutar').click();
-            }, 1000);
-
+            }, 1000)
           });
 
           /**
