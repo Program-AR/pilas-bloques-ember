@@ -15,7 +15,7 @@
     "Interpreter",
     "goog",
     "js_beautify",
-    "Blockly"
+    "Blob"
   ],
   "asi": true,
   "browser": true,

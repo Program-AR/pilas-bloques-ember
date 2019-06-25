@@ -21,7 +21,7 @@ export const interpreterFactoryMock = Ember.Service.extend({
 });
 
 export const actividadMock = { 
-    get(key) { return this[key]; }, //TODO: Sacar esta definición
+    get(key) { return this[key]; }, //TODO: Sacar esta definición y usar Ember.Component.extend
     nombre: "Actividad_Mock",
     debeFelicitarse: true,
     grupo: {
@@ -32,7 +32,10 @@ export const actividadMock = {
 };
 
 export const blocklyWorkspaceMock = function() {
-    let workspace = new Blockly.Workspace()
+    let workspace = new Blockly.WorkspaceSvg({})
+    workspace.createDom()
+    workspace.cachedParentSvg_ = { getScreenCTM: sinon.stub() }
+    Blockly.mainWorkspace = workspace
     workspace.highlightBlock = sinon.stub()
     return workspace
 }

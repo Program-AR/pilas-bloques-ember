@@ -1,5 +1,5 @@
 import Ember from 'ember'
-let VERSION_DEL_FORMATO_DE_ARCHIVO = 1
+let VERSION_DEL_FORMATO_DE_ARCHIVO = 2
 
 export default Ember.Component.extend({
   tagName: 'span',
@@ -8,6 +8,10 @@ export default Ember.Component.extend({
   workspace: null,
   xml: null,
   inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+
+  version() {
+    return VERSION_DEL_FORMATO_DE_ARCHIVO
+  },
 
   leerSolucionWeb(archivo) {
     var reader = new FileReader()
@@ -40,10 +44,14 @@ export default Ember.Component.extend({
     }
 
     this.set('workspace', solucion)
-
-    if (this.get("actividad.nombre") !== data.actividad) {
-      throw `Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`
-    }
+    
+    let errors = []
+    if (this.get("actividad.nombre") !== data.actividad)
+      errors.push(`Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`)
+    if (VERSION_DEL_FORMATO_DE_ARCHIVO > data.version)
+      errors.push("Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+    if (errors.length != 0)
+      throw errors.join('\n')
   },
 
   openElectronLoadDialog() {

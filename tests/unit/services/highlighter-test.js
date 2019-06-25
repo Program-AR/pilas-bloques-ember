@@ -4,14 +4,14 @@ import { blocklyWorkspaceMock } from '../../helpers/mocks';
 var highlighter
 
 moduleFor('service:highlighter', 'Unit | Service | highlighter', { 
-    needs: ['service:blocksGallery', 'service:blockly'],
-    setup() {
-        highlighter = this.subject()
-        highlighter.workspace = blocklyWorkspaceMock()
-        highlighter.clear()
-        
-        this.container.lookup('service:blocksGallery').start()
-    }
+  needs: ['service:blocksGallery', 'service:blockly'],
+  setup() {
+    blocklyWorkspaceMock()
+    highlighter = this.subject()
+    highlighter.clear()
+    
+    this.container.lookup('service:blocksGallery').start()
+  }
 });
 
 let linealProgram = [`
@@ -275,8 +275,7 @@ test('When program finishes with procedure call should highlight both blocks', f
 function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
-        .map(Blockly.Xml.textToDom)
-        .map(dom => Blockly.Xml.domToBlock(dom, highlighter.workspace))
+        .map(Blockly.textToBlock)
 
     let ignoredBlockTypes = ["math_number", "HayTomate"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!

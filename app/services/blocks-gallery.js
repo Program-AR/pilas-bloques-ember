@@ -4,6 +4,7 @@ export default Ember.Service.extend({
   blockly: Ember.inject.service(),
 
   start() {
+    Blockly.textToBlock = this._textToBlock
     this._generarLenguaje();
     this._definirColores();
     this._definirBloqueAlIniciar();
@@ -15,6 +16,10 @@ export default Ember.Service.extend({
     this._definirBloquesAlias();
   },
 
+  _textToBlock(text) {
+    return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace)
+  },
+  
   /*
    * Método auxiliar para crear un bloque acción.
    *
@@ -1238,6 +1243,62 @@ export default Ember.Service.extend({
       init_base_callnoreturn.call(this);
     };
 
+    function isInsideProcedureDef(paramBlock) {
+      return paramBlock.getRootBlock().id == paramBlock.$parent
+    }
+
+    function isFlying(block) {
+      return block.getRootBlock() == block
+    }
+
+    function getName(procedureBlock) {
+      return procedureBlock.getProcedureDef()[0]
+    }
+
+    Blockly.Blocks.variables_get = {
+      init: function () {
+        this.jsonInit({
+          "type": "variables_get",
+          "message0": "%1",
+          "args0": [
+            {
+            "type": "field_label",
+            "name": "VAR",
+            "text": "nombre de variable"
+            }
+          ],
+          "output": null,
+          "colour": Blockly.Blocks.variables.HUE,
+          "tooltip": "",
+          "helpUrl": "",
+        });
+      },
+      mutationToDom: function() {
+        var container = document.createElement('mutation');
+        container.setAttribute('var', this.getFieldValue('VAR'));
+        if (this.$parent) container.setAttribute("parent", this.$parent);
+        return container;
+      },
+      domToMutation: function(xmlElement) {
+        var var_name = xmlElement.getAttribute('var');
+        this.setFieldValue(var_name, 'VAR');
+        this.$parent = xmlElement.getAttribute("parent") || null;
+      },
+      onchange: function(event) {
+        if (event && event.blockId == this.$parent && event.type == Blockly.Events.BLOCK_DELETE) {
+          this.dispose()
+          return;
+        }
+        if (this.$parent) { // Este if sirve para las soluciones viejas que no tienen $parent
+          var ok = isInsideProcedureDef(this)
+          var procedureDef = this.workspace.getBlockById(this.$parent)
+          var warning = (ok || isFlying(this) || !procedureDef) ? null 
+                        : `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
+          this.setDisabled(!ok)
+          this.setWarningText(warning)
+        }
+      }
+    };
 
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
     let init_base_procedimiento = Blockly.Blocks['procedures_defnoreturn'].init;
