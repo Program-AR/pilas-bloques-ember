@@ -65,8 +65,7 @@ test('Parameter in non parent procedure should be disabled and with warning', fu
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(main))
     assert.ok(param.disabled)
-    // TODO: No sé dónde / cuando se guarda el Warning, por consola anda pero acá no (ni siquiera después de hacer setWarningText)
-    // assert.equal(param.warning.getText(), "") 
+    assert.equal(param.warning.getText(), "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
 });
 
 let flying = `
