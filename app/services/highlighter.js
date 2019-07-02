@@ -8,8 +8,8 @@ export default Service.extend({
     blocks: [],
 
     step(blockId) {
-        let block = Blockly.mainWorkspace.getBlockById(blockId)
-        if (!block) { // For testing
+        let block = this._workspace().getBlockById(blockId)
+        if (!block) {
             console.warn(`Couldn't highlight block id: ${blockId}`)
             return
         }
@@ -65,10 +65,14 @@ export default Service.extend({
 
     _updateHighlight() {
         this._clearHighlight()
-        this.blocks.forEach((b) => Blockly.mainWorkspace.highlightBlock(b.id, true))
+        this.blocks.forEach((b) => this._workspace().highlightBlock(b.id, true))
     },
 
     _clearHighlight() {
-        Blockly.mainWorkspace.highlightBlock()
+        this._workspace().highlightBlock()
+    },
+
+    _workspace() {
+        return Blockly.getMainWorkspace()
     }
 })

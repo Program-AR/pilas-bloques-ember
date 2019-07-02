@@ -1,4 +1,4 @@
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
 
@@ -9,6 +9,7 @@ module('Unit | Service | highlighter', function (hooks) {
 
   hooks.beforeEach(function () {
     highlighter = this.owner.lookup('service:highlighter')
+    this.blockly = this.owner.lookup('service:blockly');
     highlighter.workspace = blocklyWorkspaceMock()
     highlighter.clear()
 
@@ -36,12 +37,12 @@ module('Unit | Service | highlighter', function (hooks) {
     assertHighlight(assert, [])
   });
 
-  skip('On lineal program should highlight only current block', function (assert) {
+  test('On lineal program should highlight only current block', function (assert) {
     loadProgramAndSendSteps(3, linealProgram)
     assertHighlight(assert, ['MoverACasillaIzquierda'])
   });
 
-  skip('At finish, last block stay highlighted', function (assert) {
+  test('At finish, last block stay highlighted', function (assert) {
     loadProgramAndSendSteps(Infinity, linealProgram)
     assertHighlight(assert, ['MoverACasillaDerecha'])
   });
@@ -74,18 +75,18 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>
   `]
 
-  skip('Should highlight repetition block', function (assert) {
+  test('Should highlight repetition block', function (assert) {
     console.log(highlighter);
     loadProgramAndSendSteps(3, repetitionProgram)
     assertHighlight(assert, ['repetir'])
   });
 
-  skip('When enter on repetition block should only highlight current block', function (assert) {
+  test('When enter on repetition block should only highlight current block', function (assert) {
     loadProgramAndSendSteps(5, repetitionProgram)
     assertHighlight(assert, ['MoverACasillaDerecha'])
   });
 
-  skip('When go out repetition block should only highlight next block', function (assert) {
+  test('When go out repetition block should only highlight next block', function (assert) {
     loadProgramAndSendSteps(6, repetitionProgram)
     assertHighlight(assert, ['MoverACasillaAbajo'])
   });
@@ -117,17 +118,17 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>
   `]
 
-  skip('Should highlight alternative block', function (assert) {
+  test('Should highlight alternative block', function (assert) {
     loadProgramAndSendSteps(3, alternativeProgram)
     assertHighlight(assert, ['si'])
   });
 
-  skip('When enter on alternative block should only highlight current block', function (assert) {
+  test('When enter on alternative block should only highlight current block', function (assert) {
     loadProgramAndSendSteps(5, alternativeProgram)
     assertHighlight(assert, ['MoverACasillaAbajo'])
   });
 
-  skip('When go out alternative block should only highlight next block', function (assert) {
+  test('When go out alternative block should only highlight next block', function (assert) {
     loadProgramAndSendSteps(6, alternativeProgram)
     assertHighlight(assert, ['MoverACasillaAbajo'])
   });
@@ -209,27 +210,27 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>
   `]
 
-  skip('Should not highlight procedure definition block', function (assert) {
+  test('Should not highlight procedure definition block', function (assert) {
     loadProgramAndSendSteps(4, programWithProcedures)
     assertHighlight(assert, ['procedures_callnoreturn'])
   });
 
-  skip('When enter on procedure block should highlight procedure call and current block', function (assert) {
+  test('When enter on procedure block should highlight procedure call and current block', function (assert) {
     loadProgramAndSendSteps(5, programWithProcedures)
     assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
   });
 
-  skip('Step on procedure block should highlight procedure call and go lineal', function (assert) {
+  test('Step on procedure block should highlight procedure call and go lineal', function (assert) {
     loadProgramAndSendSteps(6, programWithProcedures)
     assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn'])
   });
 
-  skip('Should highlight all procedure calls involve in current stack', function (assert) {
+  test('Should highlight all procedure calls involve in current stack', function (assert) {
     loadProgramAndSendSteps(8, programWithProcedures)
     assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn', 'SaltarHaciaAdelante'])
   });
 
-  skip('When go out procedure block should only highlight next block', function (assert) {
+  test('When go out procedure block should only highlight next block', function (assert) {
     loadProgramAndSendSteps(11, programWithProcedures)
     assertHighlight(assert, ['DibujarLado'])
   });
@@ -267,7 +268,7 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>`
   ]
 
-  skip('When program finishes with procedure call should highlight both blocks', function (assert) {
+  test('When program finishes with procedure call should highlight both blocks', function (assert) {
     loadProgramAndSendSteps(Infinity, programFinishInProcedure)
     assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
   });
@@ -277,8 +278,7 @@ module('Unit | Service | highlighter', function (hooks) {
   function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
-      .map(Blockly.Xml.textToDom)
-      .map(dom => Blockly.Xml.domToBlock(dom, highlighter.workspace))
+        .map(Blockly.textToBlock)
 
     let ignoredBlockTypes = ["math_number", "HayTomate"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
