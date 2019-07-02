@@ -2,6 +2,8 @@ import { Promise } from 'rsvp';
 import { module } from 'qunit';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
+import { setupRenderingTest } from 'ember-qunit';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
 export default function (name, options = {}) {
 

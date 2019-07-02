@@ -1,7 +1,7 @@
 import { run } from '@ember/runloop';
 import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
-import { module, test } from 'qunit';
+import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
@@ -46,6 +46,7 @@ function validarOpciones(opciones) {
     'cantidadDeActoresAlComenzar',
     'cantidadDeActoresAlTerminar',
     'fps',
+    'skip'
   ];
 
   function esOpcionInvalida(opcion) {
@@ -82,6 +83,7 @@ function validarOpciones(opciones) {
  *        - cantidadDeActoresAlTerminar: Un diccionario para validar la cantidad de actores en la escena.
  *        - fps: Los cuadros por segundo esperados (por omisión 200 en los test y 60 normalmente).
  *        - resuelveDesafio: Si es false, verifica que la solución NO resuelva el problema.
+ *        - skip: Si es true, se salteara este test.
  * 
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
@@ -93,7 +95,7 @@ export function actividadTest(nombre, opciones) {
 
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
-  test(descripcion, function (assert) {
+  ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
 
@@ -179,19 +181,19 @@ export function actividadTest(nombre, opciones) {
            */
 
           this.render(hbs`
-            {{pilas-editor
-              debug=false
-              pilas=pilas
-              model=model
-              showCode=true
-              onReady="onReady"
-              codigo=solucion
-              codigoJavascript=""
-              persistirSolucionEnURL=false
-              onTerminoEjecucion=onTerminoEjecucion
-              debeMostrarFinDeDesafio=false
-            }}
-          `);
+              {{pilas-editor
+                debug=false
+                pilas=pilas
+                model=model
+                showCode=true
+                onReady="onReady"
+                codigo=solucion
+                codigoJavascript=""
+                persistirSolucionEnURL=false
+                onTerminoEjecucion=onTerminoEjecucion
+                debeMostrarFinDeDesafio=false
+              }}
+            `);
         });
 
       });
@@ -199,4 +201,7 @@ export function actividadTest(nombre, opciones) {
     });
 
   });
+
+
+
 }

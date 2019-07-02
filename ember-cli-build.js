@@ -6,6 +6,16 @@ var Funnel = require('broccoli-funnel');
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    'ember-cli-babel': {
+      includePolyfill: true
+    },
+    'ember-cli-babel-polyfills': {
+      evergreenTargets: [
+        'last 1 Chrome versions',
+        'last 1 Firefox versions',
+        'last 1 Safari versions',
+      ],
+    },
     fingerprint: {
       enabled: false,
     },

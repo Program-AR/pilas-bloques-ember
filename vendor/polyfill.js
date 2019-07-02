@@ -1,0 +1,1 @@
+app.import('vendor/babel-polyfill.js', { prepend: true });
