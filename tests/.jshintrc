@@ -30,6 +30,7 @@
     "Blockly",
     "Blob"
   ],
+  "esversion": 9,
   "asi": true,
   "node": false,
   "browser": false,
@@ -54,6 +55,6 @@
   "strict": false,
   "white": false,
   "eqnull": true,
-  "esnext": true,
+  "esnext": false,
   "unused": true
 }

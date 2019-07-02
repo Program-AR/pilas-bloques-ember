@@ -11,9 +11,9 @@ module('Integration | Component | pilas desafio', function(hooks) {
     this.set("modelDeshabilitado", {id: 1, titulo: 'demo', nombre: "AlienTocaBoton", escena: "AlienTocaBoton", deshabilitado: true});
 
     await render(hbs`{{pilas-desafio model=model}}`);
-    assert.dom('*').hasText('demo', "Muestra el Título del desafio.");
+    assert.dom().hasText('demo', "Muestra el Título del desafio.");
 
     await render(hbs`{{pilas-desafio model=modelDeshabilitado}}`);
-    assert.ok((find('*').textContent.trim().indexOf("Muy pronto") > -1), "Tiene el texto Muy pronto");
+    assert.ok((find().textContent.trim().indexOf("Muy pronto") > -1), "Tiene el texto Muy pronto");
   });
 });

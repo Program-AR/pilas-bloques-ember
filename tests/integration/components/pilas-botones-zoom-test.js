@@ -8,6 +8,6 @@ module('Integration | Component | pilas botones zoom', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{pilas-botones-zoom}}`);
-    assert.dom('*').hasText('100%');
+    assert.dom().hasText('100%');
   });
 });

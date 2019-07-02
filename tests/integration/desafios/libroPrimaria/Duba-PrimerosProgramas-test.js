@@ -1,10 +1,10 @@
 import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
-moduloActividad("Duba - Primeros programas");
+moduloActividad("Duba - Primeros programas", () => {
 
-actividadTest("3.1.2a", {
-  descripcionAdicional: "3.1.2a: Se puede resolver",
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2a", {
+    descripcionAdicional: "3.1.2a: Se puede resolver",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaDerecha" id="8[h9[(my?v_@jD)IcuKE">
@@ -23,11 +23,11 @@ actividadTest("3.1.2a", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2a", {
-  descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para arriba',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2a", {
+    descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para arriba',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaArriba" id="[j1z:])m?Mh%?/XP?l[L">
@@ -38,12 +38,12 @@ actividadTest("3.1.2a", {
     </statement>
 	</block>
 	</xml>`,
-	errorEsperado: '¡Hay un obstáculo!',
-});
+    errorEsperado: '¡Hay un obstáculo!',
+  });
 
-actividadTest("3.1.2a", {
-  descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para abajo',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2a", {
+    descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para abajo',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaAbajo" id="]1_W/tT]L@3Fen:kZ./o">
@@ -55,12 +55,12 @@ actividadTest("3.1.2a", {
   </block >
 	<block type="MoverACasillaIzquierda" id="sUjx|1FMK-$Qk*M]r+v0" disabled="true" x="180" y="412"></block>
 	</xml>`,
-	errorEsperado: '¡Hay un obstáculo!',
-});
+    errorEsperado: '¡Hay un obstáculo!',
+  });
 
-actividadTest("3.1.2a", {
-  descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para la izquierda',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2a", {
+    descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para la izquierda',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaArriba" id="[j1z:])m?Mh%?/XP?l[L">
@@ -71,12 +71,12 @@ actividadTest("3.1.2a", {
     </statement>
   </block>
 	</xml>`,
-	errorEsperado: '¡Hay un obstáculo!',
-});
+    errorEsperado: '¡Hay un obstáculo!',
+  });
 
-actividadTest("3.1.2a", {
-  descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para la derecha',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2a", {
+    descripcionAdicional: '2.1.2a: Da error al querer ir hacia un obstáculo para la derecha',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaAbajo" id="]1_W/tT]L@3Fen:kZ./o">
@@ -92,12 +92,12 @@ actividadTest("3.1.2a", {
     </statement >
   </block >
 	</xml>`,
-	errorEsperado: '¡Hay un obstáculo!',
-});
+    errorEsperado: '¡Hay un obstáculo!',
+  });
 
-actividadTest("3.1.2b", {
-  descripcionAdicional: "3.1.2b: Se puede resolver",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2b", {
+    descripcionAdicional: "3.1.2b: Se puede resolver",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaDerecha" id="vWmE|Gys1c:mq}x1MZd\`">
@@ -116,11 +116,11 @@ actividadTest("3.1.2b", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2c", {
-  descripcionAdicional: "3.1.2c: Se puede resolver",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2c", {
+    descripcionAdicional: "3.1.2c: Se puede resolver",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaAbajo" id="!qt\`8P39sG1c-Q]vH?_Y">
@@ -143,11 +143,11 @@ actividadTest("3.1.2c", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2d", {
-  descripcionAdicional: "3.1.2d: Se puede resolver",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2d", {
+    descripcionAdicional: "3.1.2d: Se puede resolver",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaAbajo" id="4d^RFl:3Hm3l4}%72ACw">
@@ -170,11 +170,11 @@ actividadTest("3.1.2d", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2e", {
-  descripcionAdicional: "3.1.2e: Se puede resolver (solución 1)",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2e", {
+    descripcionAdicional: "3.1.2e: Se puede resolver (solución 1)",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaAbajo" id="[R9.}A16EZ4|v*+kAx81">
@@ -197,11 +197,11 @@ actividadTest("3.1.2e", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2e", {
-  descripcionAdicional: "3.1.2e: Se puede resolver (solución 2)",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2e", {
+    descripcionAdicional: "3.1.2e: Se puede resolver (solución 2)",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaDerecha" id="bIhb6Dg~ath3ms_.BA(M">
@@ -224,11 +224,11 @@ actividadTest("3.1.2e", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
-actividadTest("3.1.2f", {
-  descripcionAdicional: "3.1.2f: Se puede resolver",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.1.2f", {
+    descripcionAdicional: "3.1.2f: Se puede resolver",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
 	<block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
 	  <statement name="program">
 		<block type="MoverACasillaArriba" id="c/ns5YzzTOu52ksu\`$fA">
@@ -255,12 +255,12 @@ actividadTest("3.1.2f", {
 	  </statement>
 	</block>
 	</xml>`,
-});
+  });
 
 
-actividadTest("3.2.3a", {
-  descripcionAdicional: "3.2.3a: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3a", {
+    descripcionAdicional: "3.2.3a: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
   <statement name="program">
     <block type="MoverACasillaArriba">
@@ -296,12 +296,12 @@ actividadTest("3.2.3a", {
   </statement>
   </block>
 </xml>`,
-  errorEsperado: "¡Hay un obstáculo!",
-});
+    errorEsperado: "¡Hay un obstáculo!",
+  });
 
-actividadTest("3.2.3a", {
-  descripcionAdicional: "3.2.3a: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3a", {
+    descripcionAdicional: "3.2.3a: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaArriba">
@@ -341,11 +341,11 @@ actividadTest("3.2.3a", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("3.2.3b", {
-  descripcionAdicional: "3.2.3b: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3b", {
+    descripcionAdicional: "3.2.3b: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
   <statement name="program">
     <block type="MoverACasillaIzquierda">
@@ -365,12 +365,12 @@ actividadTest("3.2.3b", {
   </statement>
   </block>
 </xml>`,
-  errorEsperado: "¡Hay un obstáculo!",
-});
+    errorEsperado: "¡Hay un obstáculo!",
+  });
 
-actividadTest("3.2.3b", {
-  descripcionAdicional: "3.2.3b: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3b", {
+    descripcionAdicional: "3.2.3b: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaIzquierda">
@@ -394,11 +394,11 @@ actividadTest("3.2.3b", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("3.2.3c", {
-  descripcionAdicional: "3.2.3c: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3c", {
+    descripcionAdicional: "3.2.3c: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
   <statement name="program">
     <block type="MoverACasillaAbajo">
@@ -422,12 +422,12 @@ actividadTest("3.2.3c", {
   </statement>
   </block>
 </xml>`,
-  errorEsperado: "¡Hay un obstáculo!",
-});
+    errorEsperado: "¡Hay un obstáculo!",
+  });
 
-actividadTest("3.2.3c", {
-  descripcionAdicional: "3.2.3c: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3c", {
+    descripcionAdicional: "3.2.3c: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaAbajo">
@@ -459,11 +459,11 @@ actividadTest("3.2.3c", {
     </statement>
     </block>
     </xml>`,
-});
+  });
 
-actividadTest("3.2.3d", {
-  descripcionAdicional: "3.2.3d: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3d", {
+    descripcionAdicional: "3.2.3d: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaIzquierda">
@@ -495,12 +495,12 @@ actividadTest("3.2.3d", {
     </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Hay un obstáculo!"
-});
+    errorEsperado: "¡Hay un obstáculo!"
+  });
 
-actividadTest("3.2.3d", {
-  descripcionAdicional: "3.2.3d: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("3.2.3d", {
+    descripcionAdicional: "3.2.3d: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaIzquierda">
@@ -528,5 +528,7 @@ actividadTest("3.2.3d", {
     </statement>
     </block>
   </xml>`,
+  });
+
 });
 

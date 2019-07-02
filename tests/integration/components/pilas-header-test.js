@@ -12,7 +12,7 @@ module('Integration | Component | pilas header', function(hooks) {
 
     await render(hbs`{{pilas-header}}`);
 
-    assert.ok(find('*').textContent, 'Contiene texto');
+    assert.ok(find().textContent, 'Contiene texto');
 
   });
 });

@@ -11,16 +11,16 @@ export const pilasMock = {
     deshabilitarModoTurbo: sinon.stub(),
 };
 
-export const interpreteMock = { 
+export const interpreteMock = {
     paused_: false,
     run: sinon.stub().returns(false)
 };
 
-export const interpreterFactoryMock = Service.extend({ 
-    crearInterprete(){ return interpreteMock; }
+export const interpreterFactoryMock = Service.extend({
+    crearInterprete() { return interpreteMock; }
 });
 
-export const actividadMock = { 
+export const actividadMock = {
     get(key) { return this[key]; }, //TODO: Sacar esta definición
     nombre: "Actividad_Mock",
     debeFelicitarse: true,
@@ -31,7 +31,7 @@ export const actividadMock = {
     }
 };
 
-export const blocklyWorkspaceMock = function() {
+export const blocklyWorkspaceMock = function () {
     let workspace = new Blockly.Workspace()
     workspace.highlightBlock = sinon.stub()
     return workspace

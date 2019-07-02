@@ -2,11 +2,11 @@ import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'LaGranAventuraDelMarEncantado';
 
-moduloActividad(nombre);
+moduloActividad(nombre, () => {
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error al dar sombrero sin tenerlo',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error al dar sombrero sin tenerlo',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 		 <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
 				<statement name="program">
@@ -18,13 +18,13 @@ actividadTest(nombre, {
 				</statement>
 		 </block>
 	</xml>`,
-	
-	errorEsperado: 'Para darle el sombrero al mago necesitás sacarlo del cofre.',
-});
+
+		errorEsperado: 'Para darle el sombrero al mago necesitás sacarlo del cofre.',
+	});
 
 
-actividadTest(nombre, {
-	solucion: `
+	actividadTest(nombre, {
+		solucion: `
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 	  <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
 	    <statement name="program">
@@ -178,11 +178,11 @@ actividadTest(nombre, {
 	  </block>
 	</xml>
 	`
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Solo puede escapar sobre el unicornio',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Solo puede escapar sobre el unicornio',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 <xml xmlns="http://www.w3.org/1999/xhtml">
    <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
       <statement name="program">
@@ -327,5 +327,7 @@ actividadTest(nombre, {
       </statement>
    </block>
 </xml>`,
-	errorEsperado: 'Para escapar hace falta un transporte',
+		errorEsperado: 'Para escapar hace falta un transporte',
+	});
+
 });

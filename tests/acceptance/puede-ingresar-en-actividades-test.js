@@ -1,9 +1,11 @@
 import { visit } from '@ember/test-helpers';
-import { module, test } from 'qunit';
+import { module, skip } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
-module('Acceptance | puede ingresar en actividades', function(hooks) {
+module('Acceptance | puede ingresar en actividades', function (hooks) {
   setupApplicationTest(hooks);
+  setupMirage(hooks);
 
   /*
    * Realiza una validación luego de que se detengan todas las promesas pendientes.
@@ -17,7 +19,7 @@ module('Acceptance | puede ingresar en actividades', function(hooks) {
     await visit('/');
   }
 
-  test('Nombres de actividades en la URL', async function(assert) {
+  skip('Nombres de actividades en la URL', async function (assert) {
 
     await visit('/desafios/DibujandoAlCuadrado');
     validar_que_se_muestra_el_titulo(assert, "Dibujando: Al cuadrado");

@@ -1,12 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | pilas canvas', function(hooks) {
+module('Integration | Component | pilas canvas', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
+  test('it renders', async function (assert) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
 
@@ -14,7 +14,7 @@ module('Integration | Component | pilas canvas', function(hooks) {
 
     await render(hbs`{{pilas-canvas pilas=pilas}}`);
 
-    assert.dom('*').hasText('');
+    assert.dom().hasText('');
 
     // Template block usage:
     await render(hbs`
@@ -23,6 +23,6 @@ module('Integration | Component | pilas canvas', function(hooks) {
       {{/pilas-canvas}}
     `);
 
-    assert.dom('*').hasText('template block text');
+    assert.dom().hasText('template block text');
   });
 });

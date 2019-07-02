@@ -2,10 +2,10 @@ import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'InstalandoJuegos';
 
-moduloActividad(nombre);
+moduloActividad(nombre, () => {
 
-actividadTest(nombre, {
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 	   <block type="al_empezar_a_ejecutar" id="193" deletable="false" movable="false" editable="false" x="0" y="0">
 		  <statement name="program">
@@ -63,12 +63,12 @@ actividadTest(nombre, {
 		  </statement>
 	   </block>
 	</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'No debe poderse resolver la actividad si no están las tres máquinas instaladas',
-	errorEsperado: 'Esta computadora ya fue prendida',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'No debe poderse resolver la actividad si no están las tres máquinas instaladas',
+		errorEsperado: 'Esta computadora ya fue prendida',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml>
 	   <block y="0" x="0" editable="false" movable="false" deletable="false" id="32" type="al_empezar_a_ejecutar">
 		  <statement name="program">
@@ -126,12 +126,12 @@ actividadTest(nombre, {
 		  </statement>
 	   </block>
 	</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
-	errorEsperado: 'No hay una computadora aquí',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
+		errorEsperado: 'No hay una computadora aquí',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
    					<block type="al_empezar_a_ejecutar" id="hI{t44eHqn15uW[!}1B{" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -140,12 +140,12 @@ actividadTest(nombre, {
       					</statement>
    					</block>
 					</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta avanzar mas de 3 veces a la siguiente computadora',
-	errorEsperado: 'No puedo ir para la derecha',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta avanzar mas de 3 veces a la siguiente computadora',
+		errorEsperado: 'No puedo ir para la derecha',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
    					<block type="al_empezar_a_ejecutar" id="e9x6)PO4mZu(;D%S5Fws" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -163,12 +163,12 @@ actividadTest(nombre, {
       					</statement>
    					</block>
 					</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
-	errorEsperado: 'Esta computadora ya fue prendida',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
+		errorEsperado: 'Esta computadora ya fue prendida',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
    					<block type="al_empezar_a_ejecutar" id="t:SYqPq{bs.BNKDmH.wk" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -185,12 +185,12 @@ actividadTest(nombre, {
       					</statement>
    					</block>
 					</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada',
-	errorEsperado: 'Esta computadora ya está apagada',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada',
+		errorEsperado: 'Esta computadora ya está apagada',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 					<xml xmlns="http://www.w3.org/1999/xhtml">
    					<variables />
    					<block type="al_empezar_a_ejecutar" id="so@Q*BAb]=G_!6k##0])" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -203,12 +203,12 @@ actividadTest(nombre, {
      						</statement>
    					</block>
 					</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada luego de haber instalado un juego',
-	errorEsperado: 'Esta computadora ya está apagada',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta apagar una computadora que ya esta apagada luego de haber instalado un juego',
+		errorEsperado: 'Esta computadora ya está apagada',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
    <variables />
    <block type="al_empezar_a_ejecutar" id="t:SYqPq{bs.BNKDmH.wk" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -245,13 +245,13 @@ actividadTest(nombre, {
       </statement>
    </block>
 </xml>`,
-});
+	});
 
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta prender una computadora en la cual ya se termino de instalar el juego de forma satisfactoria',
-	errorEsperado: 'Esta computadora ya fue prendida',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta prender una computadora en la cual ya se termino de instalar el juego de forma satisfactoria',
+		errorEsperado: 'Esta computadora ya fue prendida',
+		solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <variables></variables>
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
@@ -287,4 +287,6 @@ actividadTest(nombre, {
     </statement>
   </block>
 </xml>`,
+	});
+
 });

@@ -1,20 +1,21 @@
 import { module, skip } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
-import desafios from '../pages/desafios';
+import { create, visitable, count } from 'ember-cli-page-object';
 
-module('Acceptance | desafios', function(hooks) {
+const page = create({
+  visit: visitable('/desafios'),
+  cantidadDeDesafiosDisponibles: count('.desafio a')
+});
+
+module('Acceptance | desafios', function (hooks) {
   setupApplicationTest(hooks);
 
-  skip('visiting /desafios', function(assert) {
+  skip('visiting /acercade', async function (assert) {
     let cantidadDesafiosEsperada = 50;
-
-    desafios.
-      visit();
-
-    andThen(function() {
-      assert.equal(desafios.cantidadDeDesafiosDisponibles(), cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
+    await page.visit();
+    andThen(function () {
+      assert.equal(page.cantidadDeDesafiosDisponibles, cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
     });
-
-
   });
+
 });

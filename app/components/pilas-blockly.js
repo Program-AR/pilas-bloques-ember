@@ -480,18 +480,6 @@ export default Component.extend({
 
 });
 
-Ember.onerror = function (e) {
-  if (e || e.message || e.stack) {
-    console.error(
-      "Exception: " + e.message + "\n" +
-      "\n" +
-      "Stack trace:\n" + e.stack
-    );
-  } else {
-    console.error(e);
-  }
-};
-
 class ErrorDeActividad extends Error {
   constructor(exception) {
     super(exception);

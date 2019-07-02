@@ -2,18 +2,18 @@ import { run } from '@ember/runloop';
 import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test } from 'qunit';
-import 'ember-qunit';
+import { setupRenderingTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
-import { setupRenderingTest } from 'ember-qunit'; 
+import 'ember-qunit';
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
-export function moduloActividad(nombre, testDeclarations) {
-	module(`Integration | Actividad | ${nombre}`, (hooks) => {
+export function moduloActividad(nombre, runActivityTests) {
+  module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupRenderingTest(hooks);
     setupMirage(hooks);
-    testDeclarations();
+    runActivityTests();
   });
 }
 
@@ -92,14 +92,14 @@ export function actividadTest(nombre, opciones) {
   }
 
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
-  
-	test(descripcion, function(assert) {
+
+  test(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
 
     //let actividades = this.owner.lookup('service:actividades');
 
-	  return new Promise((success) => {
+    return new Promise((success) => {
 
       run(() => {
 
@@ -140,7 +140,7 @@ export function actividadTest(nombre, opciones) {
            * si es un error esperado o no. Y en cualquiera de los
            * dos casos finaliza el test.
            */
-          pilas.on("errorDeActividad", function(motivoDelError) {
+          pilas.on("errorDeActividad", function (motivoDelError) {
             let errorEsperado = opciones.errorEsperado;
 
             if (errorEsperado) {
@@ -170,7 +170,7 @@ export function actividadTest(nombre, opciones) {
             }
 
             success();
-           });
+          });
 
           /**
            * Se instancia el componente pilas-editor con los paneles que
@@ -178,7 +178,7 @@ export function actividadTest(nombre, opciones) {
            * hace dentro de la aplicación.
            */
 
-  	      this.render(hbs`
+          this.render(hbs`
             {{pilas-editor
               debug=false
               pilas=pilas
@@ -198,5 +198,5 @@ export function actividadTest(nombre, opciones) {
 
     });
 
-	});
+  });
 }

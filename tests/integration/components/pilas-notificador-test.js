@@ -8,6 +8,6 @@ module('Integration | Component | pilas notificador', function(hooks) {
 
   test('it renders', async function(assert) {
     await render(hbs`{{pilas-notificador}}`);
-    assert.ok(find('*').textContent.trim(), 'Hay algo de texto');
+    assert.ok(find().textContent.trim(), 'Hay algo de texto');
   });
 });
