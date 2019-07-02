@@ -18,6 +18,6 @@ module('Integration | Component | pilas editor', function(hooks) {
 
     await render(hbs`{{pilas-editor pilas=pilas model=model}}`);
 
-    assert.ok(find().textContent.trim());
+    assert.dom().hasAnyText('Hay algo de texto');
   });
 });
