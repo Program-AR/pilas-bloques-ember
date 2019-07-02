@@ -1,19 +1,18 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-module('Unit | Service | blocks-gallery', function(hooks) {
+module('Unit | Service | blocks-gallery', function (hooks) {
   setupTest(hooks);
 
-  hooks.beforeEach(function() {
-    this.setup = function() {
-        this.owner.lookup('service:blocksGallery').start();
-    };
+  hooks.beforeEach(function () {
+    this.blocksGallery = this.owner.lookup('service:blocksGallery');
+    this.blocksGallery.start();
   });
 
   let testAlias = function (alias, type) {
-      test(`check if ${alias} block definition exist and is equal to ${type} block definition`, function (assert) {
-          assert.ok(this.subject().areAliases(alias, type));
-      });
+    test(`check if ${alias} block definition exist and is equal to ${type} block definition`, function (assert) {
+      assert.ok(this.blocksGallery.areAliases(alias, type));
+    });
   }
 
   testAlias('si', 'Si');

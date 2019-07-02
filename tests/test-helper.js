@@ -77,6 +77,22 @@ TestLoader.prototype.shouldLoadModule = (moduleName) =>
     moduleName.includes("acercade-test") ||
     moduleName.includes("desafios-test") ||
     moduleName.includes("principal-test") ||
+    moduleName.includes("pilas-blockly-test") ||
+    moduleName.includes("pilas-editor-test") ||
+    moduleName.includes("pilas-solution-file-test") ||
+    moduleName.includes("acercade-test") ||
+    moduleName.includes("test-test") ||
+    moduleName.includes("desafio-test") ||
+    moduleName.includes("libro-test") ||
+    moduleName.includes("acercade-test") ||
+    moduleName.includes("desafio-test") ||
+    moduleName.includes("index-test") ||
+    moduleName.includes("libros-test") ||
+    moduleName.includes("blocks-gallery-test") ||
+    moduleName.includes("highlighter-test") ||
+    moduleName.includes("notificador-test") ||
+    moduleName.includes("pilas-test") ||
+    moduleName.includes("zoom-test") ||
     moduleName.includes("puede-ingresar-en-actividades-test");
 
 
