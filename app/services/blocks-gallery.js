@@ -1301,11 +1301,12 @@ export default Ember.Service.extend({
           var procedureDef = this.workspace.getBlockById(this.$parent)
           var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
-          var warning = (ok || isFlying(this) || !procedureDef) 
-                        ? null 
-                        : (hasParam(procedureDef, this)) 
-                          ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-                          : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+          var warning = 
+            (ok || isFlying(this) || !procedureDef) 
+            ? null 
+            : (hasParam(procedureDef, this)) 
+              ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
+              : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
           this.setWarningText(warning)
         }
       }

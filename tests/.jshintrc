@@ -40,7 +40,7 @@
   "evil": true,
   "forin": false,
   "immed": false,
-  "laxbreak": false,
+  "laxbreak": true,
   "newcap": true,
   "noarg": true,
   "noempty": false,
