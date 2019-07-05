@@ -17,7 +17,7 @@ services:
   - xvfb
 sudo: false
 node_js:
-- '6.11.3'
+- 'node'
 cache:
   directories:
   - node_modules
