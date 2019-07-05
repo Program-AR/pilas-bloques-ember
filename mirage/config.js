@@ -18,7 +18,6 @@ export default function() {
   // this.namespace = '';    // make this `api`, for example, if your API is namespaced
   this.timing = 50;      // delay for each request, automatically set to 0 during testing
 
-
   this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('http://104.131.245.133:9914/**');
   this.passthrough('http://api.pilasbloques.program.ar/**');
