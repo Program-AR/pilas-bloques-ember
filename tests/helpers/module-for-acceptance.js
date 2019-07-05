@@ -11,19 +11,18 @@ export default function (name, options = {}) {
 
     setupRenderingTest(hooks);
     setupMirage(hooks);
-    // runActivityTests();
 
     hooks.beforeEach(function () {
       this.application = startApp();
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
-    }),
+    })
 
-      hooks.afterEach(function () {
-        let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
-        return Promise.resolve(afterEach).then(() => destroyApp(this.application));
-      })
+    hooks.afterEach(function () {
+      let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
+      return Promise.resolve(afterEach).then(() => destroyApp(this.application));
+    })
 
   });
 
