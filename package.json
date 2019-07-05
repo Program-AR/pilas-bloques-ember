@@ -33,8 +33,7 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test",
-    "linter": "eslint ."
+    "test": "ember test"
   },
   "engines": {
     "node": ">= 0.10.0"
@@ -89,13 +88,6 @@
     "ember-route-action-helper": "2.0.7",
     "ember-sinon": "^4.0.0",
     "ember-source": "^3.11.1",
-    "eslint": "^6.0.1",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-ember": "^6.7.0",
-    "eslint-plugin-import": "^2.18.0",
-    "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.0",
     "faker": "^4.1.0",
     "loader.js": "^4.7.0",
     "node-sass": "^4.12.0",
@@ -103,7 +95,9 @@
     "sass": "^1.22.2",
     "yuidoc-ember-cli-theme": "^1.0.4"
   },
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^3.5.2"
+  },
   "main": "electron.js",
   "ember-electron": {
     "WHAT IS THIS?": "Please see the README.md",

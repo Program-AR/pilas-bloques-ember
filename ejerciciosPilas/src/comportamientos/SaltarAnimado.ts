@@ -17,7 +17,7 @@ class SaltarAnimado extends MovimientoAnimado {
 		super.preAnimacion();
 		this.sanitizarArgumentosSaltar();
 		this.velocidad_vertical = this.velocidad_inicial;
-		pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
+		// pilas.sonidos.cargar('libs/data/audio/saltar.wav').reproducir();
 		this.vectorDeAvanceOriginal = {x: this.vectorDeAvance.x, y: this.vectorDeAvance.y};
 	}
 

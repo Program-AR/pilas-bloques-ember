@@ -15,6 +15,8 @@
  * * * "aplanado", produce el mismo toolbox aplanado con los bloques visibles que "sinCategorias", pero con las categorías en labels. Al momento está sin implementar.
  */
 
+/*jshint esversion: 6 */
+
 export default [
   {
     id: 1,

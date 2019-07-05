@@ -7,6 +7,8 @@ module.exports = {
     "Firefox"
   ],
   "launch_in_dev": [
-    "Chrome"
+    "Chrome",
+    "Chromium",
+    "Firefox"
   ]
 };

@@ -1,3 +1,5 @@
+/*jshint esversion: 6 */
+
 export default [
   {
     id: 1,
