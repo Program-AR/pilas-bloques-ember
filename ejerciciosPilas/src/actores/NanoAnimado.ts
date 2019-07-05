@@ -9,6 +9,6 @@ class NanoAnimado extends ActorAnimado {
                                           concat([2,2,1,1])
                                           , 6, true);
         this.definirAnimacion('correr', [7,9,7,9], 12);
-        this.definirAnimacion('recoger', [10,11,12,13,13,12,11,10], 30);
+        this.definirAnimacion('comerBanana', [10,11,12,13,13,12,11,10], 30);
     }
 }

@@ -272,10 +272,10 @@ class ActorAnimado extends Actor {
     }
 
     cuando_busca_recoger() {
-        this.escena.intentaronRecoger();
+        this.escena.intentaronRecolectar();
     }
     recoger(a) {
-        this.escena.intentaronRecoger(a);
+        this.escena.intentaronRecolectar(a);
     }
 
     informarError(error: ActividadError) {
@@ -313,6 +313,9 @@ class ActorAnimado extends Actor {
         this.setZ(Math.min.apply(Math, this.escena.actores.map(act => act.getZ())) - 1);
     }
 
+    lanzarActividadError(mensaje) {
+        throw new ActividadError(mensaje);
+    }
 }
 
 // Helper para construir las animaciones:

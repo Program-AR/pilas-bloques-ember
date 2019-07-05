@@ -29,7 +29,7 @@ actividadTest(nombre, {
 	    <statement name="STACK">
 	      <block type="MoverACasillaArriba" id="146">
 	        <next>
-	          <block type="repetir" id="147" inline="true">
+	          <block type="Repetir" id="147" inline="true">
 	            <value name="count">
 	              <block type="math_number" id="148">
 	                <field name="NUM">4</field>
@@ -51,7 +51,7 @@ actividadTest(nombre, {
 	    <mutation></mutation>
 	    <field name="NAME">Buscar alimento</field>
 	    <statement name="STACK">
-	      <block type="repetir" id="152" inline="true">
+	      <block type="Repetir" id="152" inline="true">
 	        <value name="count">
 	          <block type="math_number" id="153">
 	            <field name="NUM">2</field>
@@ -61,7 +61,7 @@ actividadTest(nombre, {
 	          <block type="MoverACasillaArriba" id="154"></block>
 	        </statement>
 	        <next>
-	          <block type="repetir" id="155" inline="true">
+	          <block type="Repetir" id="155" inline="true">
 	            <value name="count">
 	              <block type="math_number" id="156">
 	                <field name="NUM">4</field>
@@ -82,7 +82,7 @@ actividadTest(nombre, {
 	    <mutation></mutation>
 	    <field name="NAME">Alimentar peces de abajo</field>
 	    <statement name="STACK">
-	      <block type="repetir" id="160" inline="true">
+	      <block type="Repetir" id="160" inline="true">
 	        <value name="count">
 	          <block type="math_number" id="161">
 	            <field name="NUM">3</field>
@@ -92,7 +92,7 @@ actividadTest(nombre, {
 	          <block type="MoverACasillaAbajo" id="162"></block>
 	        </statement>
 	        <next>
-	          <block type="repetir" id="163" inline="true">
+	          <block type="Repetir" id="163" inline="true">
 	            <value name="count">
 	              <block type="math_number" id="164">
 	                <field name="NUM">3</field>

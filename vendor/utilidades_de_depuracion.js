@@ -13,8 +13,9 @@ var pbUtils = {
     a.click();
   },
 
-  obtenerSolucionXml: function() {
-      return Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)).replace(/ id="[^"]*"/g, "");
+  obtenerSolucionXml: function(withIds) {
+    var text = Blockly.Xml.domToPrettyText(Blockly.Xml.workspaceToDom(Blockly.mainWorkspace))
+    return withIds ? text : text.replace(/ id="[^"]*"/g, "");
   },
 
   cargarSolucionXml: function(codigo) {
@@ -25,7 +26,7 @@ var pbUtils = {
   },
 
   guardarSolucionEnUrl: function() {
-    var xml = this.obtenerSolucionXml();
+    var xml = this.obtenerSolucionXml(true);
     var codigo = btoa(xml);
     window.location.href = window.location.href.split("?")[0] + "?codigo=" + encodeURIComponent(codigo);
     console.log("Se guardó correctamente la solución, ahora se puede recargar la página sin perder el workspace.");

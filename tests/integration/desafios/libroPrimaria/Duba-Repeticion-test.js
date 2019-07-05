@@ -47,7 +47,7 @@ actividadTest("4.1.3a", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">7</field>
@@ -114,7 +114,7 @@ actividadTest("4.1.3b", {
     <statement name="program">
       <block type="MoverACasillaIzquierda">
       <next>
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">6</field>
@@ -189,7 +189,7 @@ actividadTest("4.1.3c", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">3</field>
@@ -200,7 +200,7 @@ actividadTest("4.1.3c", {
           </block>
         </statement>
       <next>
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">6</field>
@@ -229,7 +229,7 @@ actividadTest("4.2.3a", {
     <statement name="program">
       <block type="MoverACasillaArriba">
       <next>
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">4</field>
@@ -259,7 +259,7 @@ actividadTest("4.2.3a", {
     <statement name="program">
       <block type="MoverACasillaArriba">
       <next>
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">5</field>
@@ -286,7 +286,7 @@ actividadTest("4.2.3b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">5</field>
@@ -316,7 +316,7 @@ actividadTest("4.2.3b", {
   solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
-      <block type="repetir">
+      <block type="Repetir">
         <value name="count">
           <block type="math_number">
             <field name="NUM">4</field>

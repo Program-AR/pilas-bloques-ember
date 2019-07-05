@@ -2,7 +2,7 @@
   "predef": [
     "document",
     "window",
-    "-Promise",
+    "Promise",
     "Bootstrap",
     "require",
     "$",
@@ -14,15 +14,15 @@
     "ga",
     "Interpreter",
     "goog",
-    "js_beautify"
+    "js_beautify",
+    "Blob"
   ],
   "asi": true,
   "browser": true,
   "boss": true,
-  "curly": true,
+  "curly": false,
   "debug": false,
   "devel": true,
-  "eqeqeq": true,
   "evil": true,
   "forin": false,
   "immed": false,

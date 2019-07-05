@@ -140,9 +140,161 @@ actividadTest('DibujandoEscaleraCuadrada', {
 
 
 actividadTest('DibujandoEscaleraCuadrada', {
-  descripcionAdicional: 'La habilidad saltar hacia adelante debe funcionar.',
+  descripcionAdicional: 'La habilidad saltar hacia adelante debe funcionar',
 	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="+9CHb~cPzv@du|%Z[DO8" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><block type="procedures_callnoreturn" id="^wP*$fD4n6`dJ(9QNT@$"><mutation name="Dibujar cuadrado"></mutation><next><block type="repetir" id="_KP~-~QM0+x3+3v{%~yX"><value name="count"><block type="math_number" id="c,_L04QILWr(qi;4CK?}"><field name="NUM">4</field></block></value><statement name="block"><block type="procedures_callnoreturn" id="F?~AF=y*^8wEi%1]CxKK"><mutation name="Dibujar Cuadradito"></mutation><next><block type="procedures_callnoreturn" id="0${3C{h@:Cgl?f60/0{c"><mutation name="Avanzar a siguiente cuadradito"></mutation></block></next></block></statement></block></next></block></statement></block><block type="procedures_defnoreturn" id="$H^lKeO))zlt[KD`FBaw" x="408" y="25"><field name="NAME">Dibujar cuadrado</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="repetir" id="PZia#3u|ecS__Jra%:_;"><value name="count"><block type="math_number" id="/[:QP5HjaQn;7ZrVc5P{"><field name="NUM">4</field></block></value><statement name="block"><block type="DibujarLado" id=":[oeE/75P6Snfgz?M^x="><value name="longitud"><block type="math_number" id="d{*,3tjYpg{~}b$b@Dgc"><field name="NUM">100</field></block></value><next><block type="GirarGrados" id="xjoV?KI{Cz~7MaP8Y5df"><value name="grados"><block type="math_number" id="yog.;,ww_?xeU_,6ech9"><field name="NUM">90</field></block></value></block></next></block></statement><next><block type="SaltarHaciaAdelante" id="IP%`$Y=4uD~7?3JxH%YE"><value name="longitud"><block type="math_number" id="gH/$j~+Rk:xi3sll]2yw"><field name="NUM">50</field></block></value><next><block type="GirarGrados" id="^t:d6o5n#H*x~r2x^ffB"><value name="grados"><block type="math_number" id="B8aa1KfF85=kJ/7)r9OU"><field name="NUM">90</field></block></value><next><block type="SaltarHaciaAdelante" id="zrvkVQz/:w_+gy(kYF9A"><value name="longitud"><block type="math_number" id="!n?+=u2b*+#9)Jz.K$mE"><field name="NUM">100</field></block></value><next><block type="GirarGrados" id="?IX+_oTh[tZ{7:D2)uh)"><value name="grados"><block type="math_number" id=":`v`$-Ol(jy@t[WQbdbw"><field name="NUM">270</field></block></value></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="|pymycmDH.5l^@u!WHV~" x="20" y="198"><field name="NAME">Avanzar a siguiente cuadradito</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="GirarGrados" id="!{c*dq%mopnh6vs;hvMs"><value name="grados"><block type="math_number" id="Bk*dIkD|SDG1M/HWDycv"><field name="NUM">90</field></block></value><next><block type="SaltarHaciaAdelante" id="8onuQ^?{INKZW=(%n(!h"><value name="longitud"><block type="math_number" id="/EQ?xl/l;lT_5BCJl2EK"><field name="NUM">50</field></block></value><next><block type="GirarGrados" id="P7!-gDiMm{%34)qJDsv~"><value name="grados"><block type="math_number" id="?V:!Q!Q-f6l~5d_@bUnK"><field name="NUM">270</field></block></value></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="o^1jg67e~h??bcPK5v@5" x="410" y="360"><field name="NAME">Dibujar Cuadradito</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="repetir" id="+V;hsu]FT:69FwV_KO4l"><value name="count"><block type="math_number" id="fe^C/=TGp;2th=_ZCgAu"><field name="NUM">4</field></block></value><statement name="block"><block type="DibujarLado" id="Pu:-FKB9!n,tvm?SG$fz"><value name="longitud"><block type="math_number" id="],iJNu(AGL7G!i[GDuq1"><field name="NUM">50</field></block></value><next><block type="GirarGrados" id="y=N`#raR80(TKU/lHUcr"><value name="grados"><block type="math_number" id="f}A#}M:HYp:.1}B6(5nJ"><field name="NUM">90</field></block></value></block></next></block></statement></block></statement></block></xml>',
   resuelveDesafio: true,
+});
+
+actividadTest('DibujandoEscaleraCuadrada', {
+  descripcionAdicional: 'Solución alternativa debe solucionar el desafío',
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables>
+      <variable type="">x</variable>
+      <variable type="">largo del lado</variable>
+    </variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="procedures_callnoreturn">
+          <mutation name="dibujar un cuadrado">
+            <arg name="largo del lado"></arg>
+          </mutation>
+          <value name="ARG0">
+            <block type="Numero">
+              <field name="NUM">100</field>
+            </block>
+          </value>
+          <next>
+            <block type="procedures_callnoreturn">
+              <mutation name="acomodar alien en el cuadrado">
+                <arg name="largo del lado"></arg>
+              </mutation>
+              <value name="ARG0">
+                <block type="Numero">
+                  <field name="NUM">100</field>
+                </block>
+              </value>
+              <next>
+                <block type="DibujarLado">
+                  <value name="longitud">
+                    <block type="math_number">
+                      <field name="NUM">50</field>
+                    </block>
+                  </value>
+                  <next>
+                    <block type="repetir">
+                      <value name="count">
+                        <block type="math_number">
+                          <field name="NUM">4</field>
+                        </block>
+                      </value>
+                      <statement name="block">
+                        <block type="procedures_callnoreturn">
+                          <mutation name="dibujar un cuadrado">
+                            <arg name="largo del lado"></arg>
+                          </mutation>
+                          <value name="ARG0">
+                            <block type="Numero">
+                              <field name="NUM">50</field>
+                            </block>
+                          </value>
+                          <next>
+                            <block type="procedures_callnoreturn">
+                              <mutation name="acomodar alien en el cuadrado">
+                                <arg name="largo del lado"></arg>
+                              </mutation>
+                              <value name="ARG0">
+                                <block type="Numero">
+                                  <field name="NUM">50</field>
+                                </block>
+                              </value>
+                            </block>
+                          </next>
+                        </block>
+                      </statement>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+    <block type="procedures_defnoreturn" x="303" y="168">
+      <mutation>
+        <arg name="largo del lado"></arg>
+      </mutation>
+      <field name="NAME">dibujar un cuadrado</field>
+      <comment pinned="false" h="80" w="160">Describe esta función...</comment>
+      <statement name="STACK">
+        <block type="repetir">
+          <value name="count">
+            <block type="math_number">
+              <field name="NUM">4</field>
+            </block>
+          </value>
+          <statement name="block">
+            <block type="DibujarLado">
+              <value name="longitud">
+                <block type="variables_get">
+                  <field name="VAR" variabletype="">largo del lado</field>
+                </block>
+              </value>
+              <next>
+                <block type="GirarGrados">
+                  <value name="grados">
+                    <block type="math_number">
+                      <field name="NUM">90</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+    <block type="procedures_defnoreturn" x="24" y="379">
+      <mutation>
+        <arg name="largo del lado"></arg>
+      </mutation>
+      <field name="NAME">acomodar alien en el cuadrado</field>
+      <comment pinned="false" h="80" w="160">Describe esta función...</comment>
+      <statement name="STACK">
+        <block type="GirarGrados">
+          <value name="grados">
+            <block type="math_number">
+              <field name="NUM">90</field>
+            </block>
+          </value>
+          <next>
+            <block type="DibujarLado">
+              <value name="longitud">
+                <block type="variables_get">
+                  <field name="VAR" variabletype="">largo del lado</field>
+                </block>
+              </value>
+              <next>
+                <block type="GirarGrados">
+                  <value name="grados">
+                    <block type="math_number">
+                      <field name="NUM">270</field>
+                    </block>
+                  </value>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
+  resuelveDesafio: true,
+});
+
+actividadTest('DibujandoEscaleraCuadrada', {
+  descripcionAdicional: 'Otra solución alternativa debe solucionar el desafío',
+	solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="ic:eis)a8D|w@Sf`lItT" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><block type="procedures_callnoreturn" id="YecAr$BID!?=oq1gtJDX"><mutation name="dibujar cuadrado grande"></mutation><next><block type="GirarGrados" id="fIgjq}88]:~+{i`]!uQw"><value name="grados"><block type="math_number" id="yzUI+]}sX3kPa4d8kY5a"><field name="NUM">90</field></block></value><next><block type="DibujarLado" id="p3C?!(V%2`Mcqh7-/E}8"><value name="longitud"><block type="math_number" id="u{}fqz^jVcSeoCeVFpkD"><field name="NUM">100</field></block></value><next><block type="GirarGrados" id="re4$kz|Hj4w,06e-ONFy"><value name="grados"><block type="math_number" id="q12_lMX`*8jT2(g^VF6I"><field name="NUM">-90</field></block></value><next><block type="DibujarLado" id="D!oo-=kj-a(094lQgOa3"><value name="longitud"><block type="math_number" id="A|/xIpY{KAYAyA@~UtIM"><field name="NUM">50</field></block></value><next><block type="repetir" id="`SdXWs{P%d9hWiXQ[C7i"><value name="count"><block type="math_number" id="(7vDpZNtgN3/w;}~Nv^T"><field name="NUM">4</field></block></value><statement name="block"><block type="procedures_callnoreturn" id="EB$btXbhVra6{[klQ}Vv"><mutation name="dibujar cuadrado pequeo"></mutation><next><block type="GirarGrados" id=";kSB}22$`w|Zcm[y9pX!"><value name="grados"><block type="math_number" id="!xMH)ANUNVGkg8v[GM_4"><field name="NUM">90</field></block></value><next><block type="DibujarLado" id="iEAI.IuDBav?@`*H-lSm"><value name="longitud"><block type="math_number" id="VE%S/eLrtoBdX^0WhTRO"><field name="NUM">50</field></block></value><next><block type="GirarGrados" id="$]Ax#=ckd6[A3ask_d=j"><value name="grados"><block type="math_number" id="lgB_$n8t12=z5BD.|CX6"><field name="NUM">-90</field></block></value></block></next></block></next></block></next></block></statement></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type="procedures_defnoreturn" id="?G7ZD/00o7OnRlg`dqks" x="325" y="106"><field name="NAME">dibujar cuadrado grande</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="repetir" id="#NN-!of[QJy:|/xCB^Nr"><value name="count"><block type="math_number" id="n@c;T_97sim3gx9-qJNX"><field name="NUM">4</field></block></value><statement name="block"><block type="DibujarLado" id="(o%OWkva8g9[#}BPO3l5"><value name="longitud"><block type="math_number" id=")ZVhG5q}xKu]$e:6$lV%"><field name="NUM">100</field></block></value><next><block type="GirarGrados" id="+w3XC5Tk$[Tvi0ns:$HF"><value name="grados"><block type="math_number" id="D6B6R}wh])h])~HNxJ)o"><field name="NUM">90</field></block></value></block></next></block></statement></block></statement></block><block type="procedures_defnoreturn" id="[$ek:t9E/AAOk?tA=N$O" x="326" y="250"><field name="NAME">dibujar cuadrado pequeo</field><comment pinned="false" h="80" w="160">Describe esta funcin...</comment><statement name="STACK"><block type="repetir" id="cG;)F)zOP32GKFOOmxTK"><value name="count"><block type="math_number" id="|D)0K7hFzFkr5^ym2Y@0"><field name="NUM">4</field></block></value><statement name="block"><block type="DibujarLado" id="np:yXxn?Ais.O)Ai5S=}"><value name="longitud"><block type="math_number" id="{RQZA;+dgaZD^b1y$ygR"><field name="NUM">50</field></block></value><next><block type="GirarGrados" id=")l`wC~OiT}cbnBl~ZyPB"><value name="grados"><block type="math_number" id="7JP415vKB.Am.)w9!mXo"><field name="NUM">90</field></block></value></block></next></block></statement></block></statement></block></xml>',
 });
 
 moduloActividad('DibujandoHexagono');
@@ -250,5 +402,54 @@ actividadTest('DibujoLibre', {
     </value>
   </block>
 </xml>`,
+  resuelveDesafio: false,
+});
+
+actividadTest('DibujoLibre', {
+  descripcionAdicional: 'No se puede dividir por cero.',
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="GirarGrados">
+          <value name="grados">
+            <block type="OpAritmetica">
+              <field name="OP">DIVIDE</field>
+              <value name="A">
+                <block type="math_number">
+                  <field name="NUM">90</field>
+                </block>
+              </value>
+              <value name="B">
+                <block type="math_number">
+                  <field name="NUM">0</field>
+                </block>
+              </value>
+            </block>
+          </value>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
+  errorEsperado: "No se puede dividir por 0",
+  resuelveDesafio: false,
+});
+
+actividadTest('DibujoLibre', {
+  descripcionAdicional: 'Se puede girar 0 grados.',
+  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="GirarGrados">
+          <value name="grados">
+            <block type="math_number">
+              <field name="NUM">0</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+    </block>
+  </xml>`,
   resuelveDesafio: false,
 });

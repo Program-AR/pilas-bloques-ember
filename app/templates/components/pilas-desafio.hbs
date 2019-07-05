@@ -1,45 +1,12 @@
 {{#if model.deshabilitado}}
-
-  {{#if model.imagen}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.imagen}}.png'>
-  {{else if model.nombre}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
-  {{else}}
-    <img class='grayscale semi-transparente' src='images/desafios/proximamente.png'>
-  {{/if}}
-
-  <div class="ribbon right gray semi-transparente">
-    <a>Muy pronto</a>
-  </div>
-
-  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
-
-{{else if model.bloques}}
-
-
-  {{#link-to "desafio" model (query-params codigo="")}}
-
-    {{#if model.imagen}}
-      <img class='desafio-img' src='images/desafios/{{model.imagen}}.png'>
-    {{else if model.nombre}}
-      <img class='desafio-img' src='images/desafios/{{model.nombre}}.png'>
-    {{/if}}
-
-    {{#unless model.grupo.libro.desafiosCortos}}
-      <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
-    {{/unless}}
-  {{/link-to}}
-
+  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombreImagen}}'>
+  <div class="ribbon right gray semi-transparente"><a>Muy pronto</a></div>
 {{else}}
-
-  {{#if model.imagen}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.imagen}}.png'>
-  {{else if model.nombre}}
-    <img class='grayscale semi-transparente' src='images/desafios/{{model.nombre}}.png'>
-  {{/if}}
-
-  {{#unless model.grupo.libro.desafiosCortos}}
-    <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
-  {{/unless}}
-
+  {{#link-to "desafio" model (query-params codigo="")}}
+    <img class='desafio-img' src='images/desafios/{{model.nombreImagen}}'>
+  {{/link-to}}
 {{/if}}
+
+{{#unless model.grupo.libro.desafiosCortos}}
+  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
+{{/unless}}

@@ -3,6 +3,26 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.4.3 (2 de Julio de 2019)
+  * ¡Nuevos bloques de procedimientos! Que mejoran la usabilidad para agregar parámetros. Esto se logra utilizando el proyecto [proceds-blockly](https://github.com/Program-AR/proceds-blockly) que es el mismo que utiliza nuestra herramienta hermana Gobstones Web.
+  * Ahora al ejecutar una solución con procedimientos se resalta tanto el bloque que se está ejecutando como la llamada al procedimiento, si es debido.
+  * Se sacaron los condicionales de los ejercicios de Dibujo Libre ya que no cuentan con sensores para usarlos.
+  * Se agregaron íconos faltantes en algunos bloques de la actividad "Instalando juegos".
+  * Se sacaron algunos alias innecesarios de bloques.
+  * Se cambiaron los nombres de algunos métodos intervenientes de las colisiones de los actores.
+  * Se actualizó la versión de Electron.
+  * Se arreglan los siguientes bugs:
+    * No mostraba el bloque "Al empezar a Ejecutar" en Wondows XP.
+    * Errores en las ventanas de guardar o cargar una solución spbq en Windows.
+    * Error al intentar dividir por 0.
+    * Error al querer prender una computadora que ya está prendida en "Prendiendo las compus".
+    * Mejoras al detectar una solución correcta en "Instalando juegos".
+    * Comportamientos extraños al crear y usar los bloques de procedimientos.
+  * Se agregan tests sobre:
+    * Soluciones alternativas a "Dibujando: Escalera cuadrada".
+    * Colisiones e interacción de los actores.
+    * Retrocompatibilidad de los alias de los bloques.
+
 * 1.4.2-beta (25 de Marzo de 2019)
   * Se agrega la posibilidad de ejecutar un ejercicio en "Modo turbo", lo cual aumenta la velocidad y evita las animaciones.
   * Ahora se precargan solamente las imágenes necesarias para cada desafío antes de comenzar, esto permite que la carga del ejercicio sea más rápida.
