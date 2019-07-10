@@ -112,14 +112,7 @@ full: limpiar_todo full_travis
 full_travis: iniciar compilar_ejercicios_pilas
 
 empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
-	@echo ""
-	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios':${N}"
-	@echo ""
-	@echo "${G}   binarios/pilas-bloques-${VERSION}.dmg${N}"
-	@echo "${G}   binarios/pilas-bloques-${VERSION}.exe${N}"
-	@echo "${G}   binarios/pilas-bloques-${VERSION}-linux-x64.zip${N}"
-	@echo "${G}   binarios/pilas-bloques-${VERSION}-linux-ia32.zip${N}"
-	@echo ""
+	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
 
 _preparar_electron:
 	@echo "${G}Preparando directorio dist para funcionar con electron...${N}"
@@ -150,7 +143,7 @@ _borrar_binarios_linux:
 # Además, el package debian generado tiene nombre diferente al viejo.
 _empaquetar_deb_linux_x64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-debian --src binarios/${NOMBRE}-linux-x64/ --dest binarios/ --arch amd64 --icon=extras/icono.icns
+	node_modules/.bin/electron-installer-debian --arch amd64 --config=extras/linux-package.json
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)
@@ -164,7 +157,7 @@ _empaquetar_zip_linux_ia32:
 # https://www.npmjs.com/package/electron-installer-flatpak
 _empaquetar_flatpak_linux_64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-flatpak --config=config/linux64-flatpak.json
+	node_modules/.bin/electron-installer-flatpak --arch x64 --config=extras/linux-package.json
 	mv binarios/io.atom.electron.${NOMBRE}_master_x64.flatpak binarios/${NOMBRE}-${VERSION}-x64.flatpak
 
 actualizar_imagenes:

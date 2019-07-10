@@ -1,0 +1,9 @@
+{
+    "src": "binarios/pilasbloques-linux-x64/",
+    "dest": "binarios/",
+    "icon": "extras/icono.ico",
+    "categories": [
+        "Development",
+        "Education"
+    ]
+}
