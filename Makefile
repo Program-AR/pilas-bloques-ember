@@ -117,9 +117,9 @@ empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquet
 _preparar_electron:
 	@echo "${G}Preparando directorio dist para funcionar con electron...${N}"
 	@cp package.json dist/package.json
-	@cp extras/electron.js dist
+	@cp packaging/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=extras/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=packaging/icono.$(3)
 
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
@@ -129,7 +129,7 @@ _empaquetar_osx:
 _empaquetar_win32:
 	$(call empaquetar,win32,ia32,ico)
 	@echo "${G}Generando instalador para windows...${N}"
-	cp extras/instalador.nsi binarios/${NOMBRE}-win32-ia32/
+	cp packaging/instalador.nsi binarios/${NOMBRE}-win32-ia32/
 	cd binarios/${NOMBRE}-win32-ia32/; makensis instalador.nsi
 	@mv binarios/${NOMBRE}-win32-ia32/${NOMBRE}.exe binarios/${NOMBRE}-${VERSION}.exe
 
@@ -143,7 +143,7 @@ _borrar_binarios_linux:
 # Además, el package debian generado tiene nombre diferente al viejo.
 _empaquetar_deb_linux_x64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-debian --arch amd64 --config=extras/linux-package.json
+	node_modules/.bin/electron-installer-debian --arch amd64 --config=packaging/linux-package.json
 
 _empaquetar_zip_linux_x64:
 	$(call empaquetar,linux,x64,icns)
@@ -157,7 +157,7 @@ _empaquetar_zip_linux_ia32:
 # https://www.npmjs.com/package/electron-installer-flatpak
 _empaquetar_flatpak_linux_64:
 	$(call empaquetar,linux,x64,icns)
-	node_modules/.bin/electron-installer-flatpak --arch x64 --config=extras/linux-package.json
+	node_modules/.bin/electron-installer-flatpak --arch x64 --config=packaging/linux-package.json
 	mv binarios/io.atom.electron.${NOMBRE}_master_x64.flatpak binarios/${NOMBRE}-${VERSION}-x64.flatpak
 
 actualizar_imagenes:
