@@ -20,6 +20,8 @@ export default Ember.Component.extend({
   codigo: null,
   modelActividad: null,
   modoTuboHabilitado: false,
+  hayComentarioPersonalizado: false,
+  comentarioPersonalizado: '',
 
   highlighter: Ember.inject.service(),
   twitter: Ember.inject.service(),
@@ -50,8 +52,12 @@ export default Ember.Component.extend({
       Ember.run.later(() => {
         this.set('abrirConsignaInicial', true);
       });
+      console.log(this.get('actividad'))
+      if(this.get('actividad.actividad.comentarioPersonalizado')){
+        this.set('hayComentarioPersonalizado',true); 
+        this.set('comentarioPersonalizado',comentarioPersonalizado); // ver quien tiene el json cargado, console.log(this.get ....)  
+      };
     }
-
   }),
 
   debeMostarRegresarAlLibro: Ember.computed('model', function() {
@@ -64,6 +70,10 @@ export default Ember.Component.extend({
 
   estoyEnMoodle: Ember.computed('modoAlumno', 'modoDocente', function() {
     return this.get('modoAlumno') || this.get('modoDocente');
+  }),
+
+  comentarioPersonalizado: computed(function(){
+    return this.get('comentarioPersonalizado');
   }),
 
   didInsertElement() {
