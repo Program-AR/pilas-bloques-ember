@@ -37,7 +37,8 @@ export default [
     consignaInicial: 'Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.',
     escena: 'ElGatoEnLaCalle',
     debeFelicitarse: true,
-    bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento']
+    bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento'],
+    comentarioPersonalizado: "¿Pudsite crear un nuevo procediento? El nombre que le pusiste, ¿dice lo que el procediemiento hace?"
   },
   {
     id: 3,
@@ -48,7 +49,8 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     debeFelicitarse: true,
-    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
+    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "¿Cuántas veces usaste la primitiva Saltar? Si la usaste 30 veces, intenta resolviendo de otra manera."
   },
   {
     id: 4,
@@ -59,7 +61,8 @@ export default [
     consignaInicial: 'Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar',
     escena: 'ElMarcianoEnElDesierto',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "¿Qué nombres le pusiste a tus procedimientos? Elegir buenos nombres a tus soluciones ayuda a que otras personas entiendan lo que hiciste de un simple vistazo."
   },
   {
     id: 5,
@@ -71,7 +74,8 @@ export default [
     consignaInicial: 'Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.',
     escena: 'TitoEnciendeLuces',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
+    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "Es recomendable pensar una estrategia de solución antes de empezar a resolver. Por cierto, no te olvides de poner buenos nombres."
   },
   {
     id: 6,
@@ -81,7 +85,8 @@ export default [
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
     escena: 'AlienLevantaTuercas',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "Los procedimientos nos ayudan, entre otras cosas, a hacer más expresivos nuestros programas.    "
   },
   {
     id: 7,
@@ -92,7 +97,8 @@ export default [
     consignaInicial: 'Usar muchas veces un procedimiento te ahorra trabajo.',
     escena: 'ElRecolectorDeEstrellas',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "Podés usar procedimientos cuando se hacen las mismas acciones en distintas partes de nuestro problema."
   },
   {
     id: 8,
@@ -102,7 +108,8 @@ export default [
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
     escena: 'MariaLaComeSandias',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "Pensar una estrategia de solución ayuda a ver qué procedimientos necesitamos para resolver el problema"
   },
   {
     id: 9,
@@ -113,7 +120,8 @@ export default [
     consignaInicial: '',
     escena: 'AlimentandoALosPeces',
     debeFelicitarse: true,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'Repetir'],
+    comentarioPersonalizado: "Podés crear procedimientos sin rellenarlos y ponerlos en el bloque principal. Esto ayuda a plantear una estrategia de solución"
   },
   {
     id: 10,
@@ -124,6 +132,7 @@ export default [
     escena: 'InstalandoJuegos',
     debeFelicitarse: true,
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
+    comentarioPersonalizado: "Un procedimiento puede llamar a otros que hayas creado anteriormente"
   },
   {
     id: 11,
@@ -139,6 +148,7 @@ export default [
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
+    comentarioPersonalizado: "¡Woow!¡Cuántas cosas hicimos! Recomendación: crear procedimientos que se muevan hacia los lugares indicados. Ejemplo: Ir hacia la llave"
   },
   {
     id: 12,
@@ -149,6 +159,7 @@ export default [
     escena: 'ReparandoLaNave',
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'Repetir', 'Procedimiento'],
+    comentarioPersonalizado: "¡Llegamos al final de la unidad! A recordar siempre: poner buenos nombres a los procedimientos para que se entienda lo que hicimos"
   },
   {
     id: 13,
@@ -163,7 +174,8 @@ export default [
     consignaInicial: 'El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".',
     escena: 'ElMonoYLasBananas',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si']
+    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
+    comentarioPersonalizado: "La alternativa condicional nos permite controlar parte de nuestro programa y así tomar decisiones. ¡Qué gran herramienta!"
   },
   {
     id: 14,
@@ -177,7 +189,8 @@ export default [
     consignaInicial: 'Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
+    comentarioPersonalizado: "¿Es lo mismo usar dos bloques 'si' que un solo bloque 'si no'?¿Qué se entinde mejor?¿Y en cuánto a la ejecución?"
   },
   {
     id: 15,
@@ -187,8 +200,8 @@ export default [
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
     escena: 'LaberintoCorto',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
-      'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha','MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
+    comentarioPersonalizado: "¿Qué respuestas nos pueden dar los sensores?¿Ya se te ocurrió cuáles son?"
   },
   {
     id: 16,
@@ -198,7 +211,8 @@ export default [
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
     escena: 'TresNaranjas',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja']
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja'],
+    comentarioPersonalizado: "Un buen nombre para el procedimiento que come la naranja es 'Comer naranja si hay'"
   },
   {
     id: 17,
@@ -208,7 +222,8 @@ export default [
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
     escena: 'TitoRecargado',
     debeFelicitarse: true,
-    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuz']
+    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuz'],
+    comentarioPersonalizado: "A tener en cuenta siempre: ¡Prolijidad! Esto es: crear procedimientos y ponerle buenos nombres"
   },
   {
     id: 18,
@@ -218,8 +233,8 @@ export default [
     enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
     escena: 'LaberintoLargo',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-      'Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo','Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
+    comentarioPersonalizado: "Un buen nombre para el procedimiento que mueve al ratón podría ser 'Mover ratón para abajo o a la dercha' ¿Se te ocurre algún otro nombre?"
   },
   {
     id: 19,
@@ -230,8 +245,8 @@ export default [
     consignaInicial: 'Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!',
     escena: 'SuperTito1',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
-      'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo','TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    comentarioPersonalizado: "¡Vaya! Tenemos una nueva herramienta: la repetición condicional. Esta nos permite hacer algo hasta que se cumpla una condición."
   },
   {
     id: 20,
@@ -242,8 +257,8 @@ export default [
     consignaInicial: 'El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".',
     escena: 'SuperTito2',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
-      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta']
+    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz','MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    comentarioPersonalizado: "Nuestro programas pueden hacer cada vez más cosas. ¿Ya podemos crear páginas web? Falta un buen tramo, pero estamos más cerca"
   },
   {
     id: 21,
@@ -254,9 +269,8 @@ export default [
     consignaInicial: 'Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!',
     escena: 'LaberintoConQueso',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
-      'ComerQueso', 'Repetir', 'Si', 'SiNo', 'Hasta', 'TocandoAbajo',
-      'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo','ComerQueso', 'Repetir', 'Si', 'SiNo', 'Hasta', 'TocandoAbajo','TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
+    comentarioPersonalizado: "En este ejercicio trabajamos la repetición y alternativa condicional.¿Se te ocurre cuándo el celular usa estas herramientas?"
   },
   {
     id: 22,
@@ -267,9 +281,8 @@ export default [
     consignaInicial: 'El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.',
     escena: 'ElDetectiveChaparro',
     debeFelicitarse: true,
-    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
-      'IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso',
-      'EsCulpable'],
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento','IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso','EsCulpable'],
+    comentarioPersonalizado: "¿Que pasaría si entre los sospechosos no hubiera ningún culpable?¿Qué sucede con la ejecución de nuestro programa?¿Puede terminar?"  
   },
   {
     id: 23,
@@ -282,9 +295,8 @@ export default [
     consignaInicial: 'El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.',
     escena: 'FutbolRobots',
     debeFelicitarse: true,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
-      'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
-      'SiNo', 'Hasta'],
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila','PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si','SiNo', 'Hasta'],
+    comentarioPersonalizado: "¿Cómo organizaste tu solución? Ayuda: creá el procedimiento 'Ir hacia la pelota' y otro que se llame 'Ir a inicio fila'"
   },
   {
     id: 24,
@@ -299,6 +311,7 @@ export default [
       'MoverACasillaDerecha', 'MoverACasillaArriba',
       'MoverACasillaAbajo', 'MoverACasillaIzquierda',
       'PrenderComputadora', 'EstoyEnEsquina'],
+    comentarioPersonalizado: "Como venimos viendo, la repetición condicional nos da la posibilidad de hacer recorridos sin saber previamente cuántos casilleros tiene el mismo"
   },
   {
     id: 25,
@@ -312,7 +325,8 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarBanana', 'ContarManzana',
       'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'SiNo',
-      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal']
+      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal'],
+    comentarioPersonalizado: "¿Por qué no es lo mismo usar dos bloques 'si' que el 'si no' para realizar el conteo? Ahh...¿Pudiste subdividir en tareas?"
   },
   {
     id: 26,
@@ -325,6 +339,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
       'Repetir', 'Si', 'SiNo', 'Hasta'],
+    comentarioPersonalizado: "Los sensores nos permiten obtener datos del contexto de nuestro programa.¿Qué valores nos puede dar el sensor 'kilómetros a recorrer'"
   },
   {
     id: 27,
@@ -339,7 +354,8 @@ export default [
       'SiguienteColumna',
       'ContarBanana', 'ContarManzana', 'TocandoBanana',
       'TocandoManzana', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'EstoySobreElInicio', 'LargoColumnaActual']
+      'EstoySobreElInicio', 'LargoColumnaActual'],
+    comentarioPersonalizado: "Para reflexionar: ¿En qué se diferencian procediemientos de sensores"
   },
   {
     id: 28,
@@ -353,6 +369,7 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
       'VolverAlBordeIzquierdo', 'ComerBanana', 'RepetirVacio', 'Repetir', 'Si',
       'SiNo', 'Hasta', 'Numero'],
+    comentarioPersonalizado: "Los parámetros hacen más generales nuestras soluciones. Notar que la repetición simple usa esta herramienta ¿Te das cuenta cómo?"  
   },
   {
     id: 29,
@@ -472,6 +489,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero',
       'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
+    comentarioPersonalizado: "¿Podríamos resolver este ejercicio sin parámetros? Nuestra solución, ¿sería más o menos clara?"
   },
   {
     id: 131,
@@ -482,6 +500,7 @@ export default [
     enunciado: 'Ayudá a Papá Noel a dejar un regalo al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+    comentarioPersonalizado: "¿Podríamos resolver este ejercicio sin parámetros?¿Con qué otra herramienta vista anteriormente se puede recorrer la fila?"
   },
   {
     id: 132,
@@ -497,6 +516,7 @@ export default [
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'PrenderComputadora', 'EstoyEnEsquina', 'Numero',
       'OpAritmetica'],
+    comentarioPersonalizado: "Así como vimos que es importante poner buenos nombres a nuestros procedimientos, ¡lo mismo aplica a los nombres de nuestros parámetros!"
   },
   {
     id: 133,
@@ -509,6 +529,7 @@ export default [
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
+    comentarioPersonalizado: "Antes de saber parámetros, ¿Cuántos comandos primitivos había relacionados a moverse? Exacto, 4.¿Y luego de saberlo? Sí, sólo uno.¡Wow! Los parámetros generalizan soluciones y, a su vez, nos hacen más expresivos."
   },
   {
     id: 134,
@@ -521,7 +542,8 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
-      'ExplotarGlobo', 'Numero', 'OpAritmetica']
+      'ExplotarGlobo', 'Numero', 'OpAritmetica'],
+    comentarioPersonalizado: "¿Qué nombres le pusiste a tus parámetros?¿Son lo suficientemente expresivos?¡Aha! Vale lo mismo para tus procedimientos."
   },
   {
     id: 135,
@@ -537,10 +559,9 @@ export default [
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
       'Numero', 'OpComparacion', 'OpAritmetica',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
-    ]
+    ],
+    comentarioPersonalizado: "Llegando el final ya vimos: repetición simple y condicional, alternativa condicional, sensores numéricos, procedimientos. Te propongo lo sigiunte ¿Podés explicarle a alguna de estas herramienas a otra persona?"
   },
-
-
   {
     id: 136,
     grupoId: 5,
