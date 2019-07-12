@@ -74,35 +74,31 @@ export default Ember.Component.extend({
     blocks
     .filter(block => !this._isAvailable(block))
     .forEach(block => {
-      console.log("Disable: ", block)
       block.setDisabled(true)
       block.setWarningText("Este bloque no está disponible en esta actividad.")
     })
-
-    // this._disableNotAvailableBlocks(blocks.flatMap(b => b.getChildren()))
   },
 
   _isAvailable(block) {
     let blockName = (block.alias || block.type).toLowerCase()
 
     let globalAvailableBlocks = ["al_empezar_a_ejecutar", "numero"]
+    let procedureBlocks = ["procedure", "variable", "param"]
     
     if (globalAvailableBlocks.includes(blockName)) return true;
 
     let activityAvailableBlocks = this.get('bloques').map(name => name.toLowerCase())
-      
-    console.log({activityAvailableBlocks})
-      
-    if (block.type.includes("procedure") || block.type.includes("variable") || block.type.includes("param")) {
+    
+    if (procedureBlocks.some(it => blockName.includes(it))) {
       return activityAvailableBlocks.includes("procedimiento")
     }
-
 
     return activityAvailableBlocks.includes(blockName)
   },
 
 
 
+  
 
   didInsertElement() {
 
@@ -509,8 +505,6 @@ export default Ember.Component.extend({
     },
 
     newWorkspace() {
-      console.log("ACAAAA")
-      console.log("AVAILABLE", this.get('bloques'))
       this._disableNotAvailableBlocks(Blockly.getMainWorkspace().getAllBlocks())
     },
 
