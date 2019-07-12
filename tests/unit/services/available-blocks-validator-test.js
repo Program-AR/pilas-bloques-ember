@@ -143,7 +143,7 @@ test('Should works for original blocks with alias', function(assert) {
 //TODO: Mover a un lugar más general (se repoite en blocks-gallery-test)
 function findBlockByTypeIn(rootBlock, type) {
   let block = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
-  if (block.onchange) block.onchange() // Force initialize
+  // if (block.onchange) block.onchange() // Force initialize
   return block
 }
 function findChildren(rootBlock, type) {
