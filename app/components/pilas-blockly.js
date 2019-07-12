@@ -66,6 +66,44 @@ export default Ember.Component.extend({
     return this.get('modoAlumno') || this.get('modoDocente');
   }),
 
+
+  //TODO: Mover a un service y testear
+  _disableNotAvailableBlocks(blocks) {
+    if (blocks.length == 0) return;
+
+    blocks
+    .filter(block => !this._isAvailable(block))
+    .forEach(block => {
+      console.log("Disable: ", block)
+      block.setDisabled(true)
+      block.setWarningText("Este bloque no está disponible en esta actividad.")
+    })
+
+    // this._disableNotAvailableBlocks(blocks.flatMap(b => b.getChildren()))
+  },
+
+  _isAvailable(block) {
+    let blockName = (block.alias || block.type).toLowerCase()
+
+    let globalAvailableBlocks = ["al_empezar_a_ejecutar", "numero"]
+    
+    if (globalAvailableBlocks.includes(blockName)) return true;
+
+    let activityAvailableBlocks = this.get('bloques').map(name => name.toLowerCase())
+      
+    console.log({activityAvailableBlocks})
+      
+    if (block.type.includes("procedure") || block.type.includes("variable") || block.type.includes("param")) {
+      return activityAvailableBlocks.includes("procedimiento")
+    }
+
+
+    return activityAvailableBlocks.includes(blockName)
+  },
+
+
+
+
   didInsertElement() {
 
     var event = new Event('terminaCargaInicial');
@@ -468,6 +506,12 @@ export default Ember.Component.extend({
 
       this.set('codigoActualEnFormatoXML', xml);
       this.sendAction('onChangeWorkspace', xml);
+    },
+
+    newWorkspace() {
+      console.log("ACAAAA")
+      console.log("AVAILABLE", this.get('bloques'))
+      this._disableNotAvailableBlocks(Blockly.getMainWorkspace().getAllBlocks())
     },
 
   }
