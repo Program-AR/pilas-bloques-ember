@@ -22,6 +22,7 @@ export default Ember.Component.extend({
   modoTuboHabilitado: false,
 
   highlighter: Ember.inject.service(),
+  availableBlocksValidator: Ember.inject.service(),
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
   mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
@@ -65,40 +66,6 @@ export default Ember.Component.extend({
   estoyEnMoodle: Ember.computed('modoAlumno', 'modoDocente', function() {
     return this.get('modoAlumno') || this.get('modoDocente');
   }),
-
-
-  //TODO: Mover a un service y testear
-  _disableNotAvailableBlocks(blocks) {
-    if (blocks.length == 0) return;
-
-    blocks
-    .filter(block => !this._isAvailable(block))
-    .forEach(block => {
-      block.setDisabled(true)
-      block.setWarningText("Este bloque no está disponible en esta actividad.")
-    })
-  },
-
-  _isAvailable(block) {
-    let blockName = (block.alias || block.type).toLowerCase()
-
-    let globalAvailableBlocks = ["al_empezar_a_ejecutar", "numero"]
-    let procedureBlocks = ["procedure", "variable", "param"]
-    
-    if (globalAvailableBlocks.includes(blockName)) return true;
-
-    let activityAvailableBlocks = this.get('bloques').map(name => name.toLowerCase())
-    
-    if (procedureBlocks.some(it => blockName.includes(it))) {
-      return activityAvailableBlocks.includes("procedimiento")
-    }
-
-    return activityAvailableBlocks.includes(blockName)
-  },
-
-
-
-  
 
   didInsertElement() {
 
@@ -505,7 +472,8 @@ export default Ember.Component.extend({
     },
 
     newWorkspace() {
-      this._disableNotAvailableBlocks(Blockly.getMainWorkspace().getAllBlocks())
+      this.get('availableBlocksValidator')
+      .disableNotAvailableBlocks(Blockly.getMainWorkspace().getAllBlocks(), this.get('bloques'))
     },
 
   }
