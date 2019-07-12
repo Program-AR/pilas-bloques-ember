@@ -472,8 +472,7 @@ export default Ember.Component.extend({
     },
 
     newWorkspace() {
-      this.get('availableBlocksValidator')
-      .disableNotAvailableBlocks(Blockly.getMainWorkspace().getAllBlocks(), this.get('bloques'))
+      this.get('availableBlocksValidator').disableNotAvailableBlocksInWorkspace(this.get('bloques'))
     },
 
   }
