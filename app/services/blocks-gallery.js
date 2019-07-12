@@ -9,11 +9,11 @@ export default Ember.Service.extend({
     this._definirColores();
     this._definirBloqueAlIniciar();
     this._definirBloquesAccion();
-    this._definirOpAritmetica();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
+    this._definirOpAritmetica(); // Should be after alias
   },
 
   _textToBlock(text) {
@@ -1498,6 +1498,7 @@ export default Ember.Service.extend({
 
   _definirBloquesAlias() {
     this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
     this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
     this.crearBloqueAlias('Numero', 'math_number', 'Valores');
     this.crearBloqueAlias('Texto', 'text', 'Valores');
