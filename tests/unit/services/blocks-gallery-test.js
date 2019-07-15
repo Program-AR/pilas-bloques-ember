@@ -1,5 +1,6 @@
 import { moduleFor, test } from 'ember-qunit'
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
+import { findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
 
 moduleFor('service:blocks-gallery', 'Unit | Service | blocks-gallery', {
     needs: ['service:blocksGallery', 'service:blockly'],
@@ -33,8 +34,8 @@ let procedure = `
 
 test('Parameter in parent procedure should be ok', function(assert) {
     let param = findParam(Blockly.textToBlock(procedure))
-    assert.notOk(param.disabled)
-    assert.notOk(param.warning)
+    assertNotDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 let emptyProcedure = `
@@ -64,8 +65,8 @@ let main = `
 test('Parameter in non parent procedure should be disabled and with warning', function(assert) {
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(main))
-    assert.ok(param.disabled)
-    assert.equal(param.warning.getText(), "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
+    assertDisabled(assert, param)
+    assertWarning(assert, param, "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
 });
 
 let flying = `
@@ -77,8 +78,8 @@ let flying = `
 test('Parameter in non parent procedure should only be disabled', function(assert) {
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(flying))
-    assert.ok(param.disabled)
-    assert.notOk(param.warning)
+    assertDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 let mainWithoutParent = `
@@ -97,8 +98,8 @@ let mainWithoutParent = `
 
 test('Parameter without parent procedure should be always ok', function(assert) {
     let param = findParam(Blockly.textToBlock(mainWithoutParent))
-    assert.notOk(param.disabled)
-    assert.notOk(param.warning)
+    assertNotDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 
@@ -114,25 +115,11 @@ test('Parameter should dispose when procedure is disposed', function(assert) {
 
 
 function findParam(rootBlock) {
-    let type = "variables_get"
-    let param = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
+    let param = findBlockByTypeIn(rootBlock, "variables_get")
     param.onchange() // Force initialize
     return param
 }
 
-
-function findChildren(rootBlock, type) {
-    return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
-}
-
-
-
-function assertAsync(assert, fn) {
-  let done = assert.async(1)
-  setTimeout(function() {
-      fn(); done()
-  })
-}
 
 ///////////// ALIAS /////////////
 

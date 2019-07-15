@@ -1,5 +1,6 @@
 import { moduleFor, test } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
+import { findBlockByTypeIn, assertDisabled, assertNotDisabled, assertWarning } from '../../helpers/utils';
 
 var validator
 
@@ -30,7 +31,7 @@ test('Should not disable global available blocks', function(assert) {
 
   validator.disableNotAvailableBlocksInWorkspace([])
 
-  assert.notOk(program.disabled)
+  assertNotDisabled(assert, program)
 });
 
 test('Should disable not available activity blocks', function(assert) {
@@ -39,7 +40,7 @@ test('Should disable not available activity blocks', function(assert) {
 
   validator.disableNotAvailableBlocksInWorkspace(["MoverACasillaDerecha"])
 
-  assertDisabled(assert, moveLeft)
+  assertNotAvailable(assert, moveLeft)
 });
 
 test('Should not disable available activity blocks', function(assert) {
@@ -48,7 +49,7 @@ test('Should not disable available activity blocks', function(assert) {
 
   validator.disableNotAvailableBlocksInWorkspace(["MoverACasillaDerecha"])
 
-  assert.notOk(moveRight.disabled)
+  assertNotDisabled(assert, moveRight)
 });
 
 let procedureDefinition = `
@@ -88,9 +89,9 @@ test('Should disable procedure blocks when they are not available', function(ass
 
   validator.disableNotAvailableBlocksInWorkspace(["GirarGrados"])
   
-  assertDisabled(assert, procedure)
-  assertDisabled(assert, variable)
-  assertDisabled(assert, procedureCall)
+  assertNotAvailable(assert, procedure)
+  assertNotAvailable(assert, variable)
+  assertNotAvailable(assert, procedureCall)
 });
 
 test('Should not disable procedure blocks when they are not available', function(assert) {
@@ -101,9 +102,9 @@ test('Should not disable procedure blocks when they are not available', function
 
   validator.disableNotAvailableBlocksInWorkspace(["GirarGrados", "Procedimiento"])
 
-  assert.notOk(procedure.disabled)
-  assert.notOk(variable.disabled)
-  assert.notOk(procedureCall.disabled)
+  assertNotDisabled(assert, procedure)
+  assertNotDisabled(assert, variable)
+  assertNotDisabled(assert, procedureCall)
 });
 
 let mathArithmeticProgram = `
@@ -136,22 +137,12 @@ test('Should works for original blocks with alias', function(assert) {
 
   validator.disableNotAvailableBlocksInWorkspace(["GirarGrados", "OpAritmetica"])
 
-  assert.notOk(mathArithmetic.disabled)
+  assertNotDisabled(assert, mathArithmetic)
 });
 
 
-//TODO: Mover a un lugar más general (se repoite en blocks-gallery-test)
-function findBlockByTypeIn(rootBlock, type) {
-  let block = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
-  // if (block.onchange) block.onchange() // Force initialize
-  return block
-}
-function findChildren(rootBlock, type) {
-    return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
+function assertNotAvailable(assert, block) {
+  assertDisabled(assert, block)
+  assertWarning(assert, block, "Este bloque no está disponible en esta actividad.") 
 }
 
-
-function assertDisabled(assert, block) {
-  assert.ok(block.disabled)
-  assert.equal(block.warning.getText(), "Este bloque no está disponible en esta actividad.") 
-}
