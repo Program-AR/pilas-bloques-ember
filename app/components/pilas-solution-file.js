@@ -56,7 +56,7 @@ export default Ember.Component.extend({
 
   openElectronLoadDialog() {
     const { dialog } = require('electron').remote
-    const archivos = dialog.showOpenDialog({ //TODO: this config exists in extras/electron.js
+    const archivos = dialog.showOpenDialog({ //TODO: this config exists in packaging/electron.js
       properties: ['openFile'],
       filters: [
         { name: 'Solución de Pilas Bloques', extensions: ['spbq'] },
