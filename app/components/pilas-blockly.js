@@ -357,7 +357,13 @@ export default Component.extend({
     ejecutar(pasoAPaso = false) {
       this.pilas.reiniciarEscenaCompleta();
 
-      this.setModoTurbo();
+      this.setModoTurbo()
+      let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
+      event.runCode = true
+      Blockly.Events.fire(event)
+
+      if (!Blockly.mainWorkspace.getTopBlocks().every(b => b.allInputsFilled(false))) return;
+
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución

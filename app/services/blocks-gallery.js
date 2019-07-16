@@ -1214,6 +1214,42 @@ export default Service.extend({
 
   _definirBloquesEstructurasDeControl() {
 
+    Blockly.Blocks.blank_value = {
+      init: function () {
+        this.jsonInit({
+          "type": "blank_value",
+          "message0": "",
+          "output": null,
+          "colour": "#ffffff",
+          "tooltip": "",
+          "helpUrl": "",
+        });
+        this.setShadow(true)
+      },
+      onchange: function(event) {
+        if (event && event.runCode)
+          this.setWarningText("Hay un espacio en blanco!")
+      }
+    };
+
+    Blockly.Blocks.blank_statement = {
+      init: function () {
+        this.jsonInit({
+          "type": "blank_statement",
+          "message0": "",
+          "previousStatement": null,
+          "colour": "#ffffff",
+          "tooltip": "",
+          "helpUrl": "",
+        });
+        this.setShadow(true)
+      },
+      onchange: function(event) {
+        if (event && event.runCode)
+          this.setWarningText("Hay un espacio en blanco!")
+      }
+    };
+    
     Blockly.Blocks.RepetirVacio = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
@@ -1231,9 +1267,18 @@ export default Service.extend({
     };
 
     Blockly.Blocks.Repetir = {
-      init: Blockly.Blocks.RepetirVacio.init,
-      categoria: Blockly.Blocks.RepetirVacio.categoria,
-      toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
+      init: Blockly.Blocks['RepetirVacio'].init,
+      categoria: Blockly.Blocks['RepetirVacio'].categoria,
+      toolbox: `
+      <block type="repetir">
+        <value name="count">
+          <block type="blank_value"></block>
+        </value>
+        <value name="block">
+          <block type="blank_statement"></block>
+        </value>
+      </block>
+      `
     };
 
     let init_base_callnoreturn = Blockly.Blocks.procedures_callnoreturn.init;
@@ -1374,6 +1419,14 @@ export default Service.extend({
   _generarLenguaje() {
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
+
+    Blockly.MyLanguage['blank_value'] = function (block) {
+      return null
+    };
+
+    Blockly.MyLanguage['blank_statement'] = function (block) {
+      return null
+    };
 
     Blockly.MyLanguage.al_empezar_a_ejecutar = function (block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
