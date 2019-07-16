@@ -1,12 +1,12 @@
 {{yield}}
-
-{{#link-to "libros.verLibro" libro}}
-
+<LinkTo @route="libros.verLibro" @model={{libro}}>
   {{#if libro.nombre}}
-    <img src="imagenes/libros/{{libro.nombre}}.png"/>
+    <img src="imagenes/libros/{{libro.nombre}}.png" />
   {{/if}}
-
-  <h2>{{libro.titulo}}</h2>
-{{/link-to}}
-
-<p>{{libro.descripcion}}</p>
+  <h2>
+    {{libro.titulo}}
+  </h2>
+</LinkTo>
+<p>
+  {{libro.descripcion}}
+</p>

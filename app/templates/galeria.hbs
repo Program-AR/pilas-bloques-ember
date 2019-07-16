@@ -1,13 +1,19 @@
-<div class='contenido-principal'>
-  <h1>Galería de bloques</h1>
-
-  <p>Esta sección muestra los bloques que actualmente migramos a
-    la nueva versión de blockly.</p>
-
-  <p>Esta información es temporal, y solo estará visible en el branch
-  <code>feature/actualizar-blockly</code>.</p>
-
+<div class="contenido-principal">
+  <h1>
+    Galería de bloques
+  </h1>
+  <p>
+    Esta sección muestra los bloques que actualmente migramos a
+    la nueva versión de blockly.
+  </p>
+  <p>
+    Esta información es temporal, y solo estará visible en el branch
+    <code>
+      feature/actualizar-blockly
+    </code>
+    .
+  </p>
   <div class="padding">
-    {{ember-blockly-catalog current_block=current_block}}
+    <EmberBlocklyCatalog @current_block={{current_block}} />
   </div>
 </div>

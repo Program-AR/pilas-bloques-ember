@@ -1,8 +1,19 @@
-<div class="pilas-notificador {{if hayActualizacion 'pilas-notificador-visible' 'pilas-notificador-oculto'}}">
-  <div class="pilas-notificador-cerrar" {{action "cerrar"}}><i class="fa fa-close"></i></div>
-
-  <p>Hay una nueva versión disponible para descargar.</p>
-  <p>Visitá {{#pilas-link href=linkDescarga}}nuestra web para más información.{{/pilas-link}}</p>
-
+<div
+  class="pilas-notificador
+    {{if hayActualizacion "pilas-notificador-visible" "pilas-notificador-oculto"
+    }}"
+>
+  <div class="pilas-notificador-cerrar" {{action "cerrar"}}>
+    <i class="fa fa-close"></i>
+  </div>
+  <p>
+    Hay una nueva versión disponible para descargar.
+  </p>
+  <p>
+    Visitá
+    <PilasLink @href={{linkDescarga}}>
+      nuestra web para más información.
+    </PilasLink>
+  </p>
   {{yield}}
 </div>

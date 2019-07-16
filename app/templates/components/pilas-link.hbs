@@ -1,5 +1,9 @@
 {{#if inElectron}}
-  <a href="" {{action "abrirConNavegadorExterno" href}}>{{yield}}</a>
+  <a href="" {{action "abrirConNavegadorExterno" href}}>
+    {{yield}}
+  </a>
 {{else}}
-  <a href={{href}} target="_blank">{{yield}}</a>
+  <a href={{href}} target="_blank">
+    {{yield}}
+  </a>
 {{/if}}
