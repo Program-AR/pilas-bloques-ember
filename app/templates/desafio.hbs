@@ -1,10 +1,10 @@
-<PilasEditor
-  @pilas={{pilas}}
-  @model={{model}}
-  @onReady="cuandoCargaPilas"
-  @persistirSolucionEnURL={{false}}
-  @codigo={{codigo}}
-  @onReady={{action "cuandoCargaPilas"}}
-  @debeMostrarFinDeDesafio={{true}}
-  @onChangeWorkspace={{action "onChangeWorkspace"}}
-/>
+{{pilas-editor
+  pilas=pilas
+  model=model
+  onReady="cuandoCargaPilas"
+  persistirSolucionEnURL=false
+  codigo=codigo
+  onReady=(action 'cuandoCargaPilas')
+  debeMostrarFinDeDesafio=true
+  onChangeWorkspace=(action 'onChangeWorkspace')
+}}

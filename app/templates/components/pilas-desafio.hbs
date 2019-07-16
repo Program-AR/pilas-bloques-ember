@@ -1,20 +1,12 @@
 {{#if model.deshabilitado}}
-  <img
-    class="grayscale semi-transparente"
-    src="images/desafios/{{model.nombreImagen}}"
-  />
-  <div class="ribbon right gray semi-transparente">
-    <a>
-      Muy pronto
-    </a>
-  </div>
+  <img class='grayscale semi-transparente' src='images/desafios/{{model.nombreImagen}}'>
+  <div class="ribbon right gray semi-transparente"><a>Muy pronto</a></div>
 {{else}}
-  <LinkTo @route="desafio" @model={{model}} @query={{hash codigo=""}}>
-    <img class="desafio-img" src="images/desafios/{{model.nombreImagen}}" />
-  </LinkTo>
+  {{#link-to "desafio" model (query-params codigo="")}}
+    <img class='desafio-img' src='images/desafios/{{model.nombreImagen}}'>
+  {{/link-to}}
 {{/if}}
+
 {{#unless model.grupo.libro.desafiosCortos}}
-  <div class="pilas-desafio-titulo">
-    {{model.titulo}}
-  </div>
+  <div class='pilas-desafio-titulo'>{{model.titulo}}</div>
 {{/unless}}

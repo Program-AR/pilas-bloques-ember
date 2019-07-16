@@ -1,11 +1,9 @@
-<PilasEditor
-  @pilas={{pilas}}
-  @model={{model}}
-  @persistirSolucionEnURL={{false}}
-  @codigo={{model.solucion}}
-  @modoAlumno={{true}}
-  @hash={{model.hash}}
-  @idAlumno={{model.idAlumno}}
-  @cuandoEjecuta={{route-action "cuandoEjecuta"}}
-  @debeMostrarFinDeDesafio={{true}}
-/>
+{{pilas-editor
+  pilas=pilas
+  model=model
+  persistirSolucionEnURL=false
+  codigo=model.solucion
+  modoAlumno=true hash=model.hash idAlumno=model.idAlumno
+  cuandoEjecuta=(route-action "cuandoEjecuta")
+  debeMostrarFinDeDesafio=true
+}}

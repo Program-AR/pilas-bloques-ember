@@ -1,44 +1,34 @@
-<div class="contenido-principal">
+<div class='contenido-principal'>
+
   <div class="box">
+    <p><img class='main-logo' src='images/main-logo.png' width="468" height="262"></p>
     <p>
-      <img
-        class="main-logo"
-        src="images/main-logo.png"
-        width="468"
-        height="262"
-      />
-    </p>
-    <p>
-      ¡Hola! Te damos la bienvenida a
-      <strong>
-        Pilas Bloques
-      </strong>
-      ,
+      ¡Hola! Te damos la bienvenida a <strong>Pilas Bloques</strong>,
       una herramienta para aprender a programar.
     </p>
+
     <p>
       Los desafíos que ofrecemos están organizados en dos grupos:
     </p>
+
     {{#each model as |libro|}}
       {{#unless libro.oculto}}
-        <PilasLibro @libro={{libro}} />
+        {{pilas-libro libro=libro}}
       {{/unless}}
     {{/each}}
-    <hr />
+
+    <hr>
+
     <p>
-      Visitá la sección
-      <LinkTo @route="acercade">
-        <strong>
-          Acerca de
-        </strong>
-      </LinkTo>
+      Visitá la sección {{#link-to "acercade"}}<strong>Acerca de</strong>{{/link-to}}
       para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
     </p>
+
     <p>
-      Si necesitás ayuda, presioná (
-      {{fa-icon "question"}}
-      ) ubicado en la parte superior derecha
+      Si necesitás ayuda, presioná ({{fa-icon "question"}}) ubicado en la parte superior derecha
       de la pantalla.
     </p>
+
   </div>
+
 </div>

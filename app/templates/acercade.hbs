@@ -1,22 +1,17 @@
 {{outlet}}
-<div class="contenido-principal">
-  <div class="contenedor-acercade">
-    <PilasAcercaDe />
-    <p>
-      Actualmente estás usando la versión
-      <code>
-        {{app-version}}
-      </code>
-      {{#if hayActualizacion}}
-        (y se puede actualizar a la versión{{versionMasReciente}})
-      {{/if}}
-    </p>
-    <p>
-      <button class="btn btn-warning" {{action "visitarWeb"}}>
-        {{fa-icon "globe"}}
-        Visitar la web del proyecto
-      </button>
-      <PilasUpdate />
-    </p>
-  </div>
+<div class='contenido-principal'>
+	<div class='contenedor-acercade'>
+		{{pilas-acerca-de}}
+
+		<p>Actualmente estás usando la versión <code>{{app-version}}</code>
+			{{#if hayActualizacion}}
+			 	(y se puede actualizar a la versión {{versionMasReciente}})
+			{{/if}}
+			</p>
+
+		<p>
+		  <button class='btn btn-warning' {{action "visitarWeb"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
+		  {{pilas-update}}
+		</p>
+	</div>
 </div>

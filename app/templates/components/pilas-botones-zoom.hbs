@@ -1,23 +1,16 @@
 {{#if canZoomOut}}
-  <button class="btn btn-success btn-rect" {{action "zoomOut"}}>
-    <i class="fa fa-minus"></i>
-  </button>
+  <button {{action 'zoomOut'}} class='btn btn-success btn-rect'><i class='fa fa-minus'></i></button>
 {{else}}
-  <button disabled="" class="btn btn-success btn-rect">
-    <i class="fa fa-minus"></i>
-  </button>
+  <button disabled class='btn btn-success btn-rect'><i class='fa fa-minus'></i></button>
 {{/if}}
-<span class="zoom-label" {{action "zoomRestore"}}>
-  {{zoomValue}}
-  %
-</span>
+
+  <span {{action 'zoomRestore'}} class='zoom-label'>{{zoomValue}}%</span>
+
 {{#if canZoomIn}}
-  <button class="btn btn-success btn-rect" {{action "zoomIn"}}>
-    <i class="fa fa-plus"></i>
-  </button>
+  <button {{action 'zoomIn'}} class='btn btn-success btn-rect'><i class='fa fa-plus'></i></button>
 {{else}}
-  <button disabled="" class="btn btn-success btn-rect">
-    <i class="fa fa-plus"></i>
-  </button>
+  <button disabled class='btn btn-success btn-rect'><i class='fa fa-plus'></i></button>
 {{/if}}
+
+
 {{yield}}

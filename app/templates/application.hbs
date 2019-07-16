@@ -1,6 +1,8 @@
 {{#if layout}}
-  <PilasHeader /><PilasNotificador @servicioNotificador={{notificador}} />
+  {{pilas-header}}
+  {{pilas-notificador servicioNotificador=notificador}}
 {{/if}}
-<div class={{if layout "contenedor-padding-superior" "contenedor-sin-padding"}}>
-  {{outlet}}
+
+<div class={{if layout 'contenedor-padding-superior' 'contenedor-sin-padding'}}>
+{{outlet}}
 </div>
