@@ -22,7 +22,6 @@ export default Ember.Component.extend({
   modoTuboHabilitado: false,
   hayComentarioPersonalizado: false,
   comentarioPersonalizado: '',
-
   highlighter: Ember.inject.service(),
   twitter: Ember.inject.service(),
   previewData: null, // representa la imagen previsualización del dialogo para twittear.
@@ -46,17 +45,17 @@ export default Ember.Component.extend({
   javascriptCode: null,
 
   inyectarRedimensionado: Ember.on('init', function() {
-
     // Muestra el dialogo inicial si está definida la consigna inicial.
     if (this.get('actividad.actividad.consignaInicial')) {
       Ember.run.later(() => {
         this.set('abrirConsignaInicial', true);
+      
       });
-      console.log(this.get('actividad'))
-      if(this.get('actividad.actividad.comentarioPersonalizado')){
-        this.set('hayComentarioPersonalizado',true); 
-        this.set('comentarioPersonalizado',comentarioPersonalizado); // ver quien tiene el json cargado, console.log(this.get ....)  
-      };
+      console.log(this.get('actividad'));
+    if(true){ // this.get('actividad.actividad.comentarioPersonalizado')
+      this.set('hayComentarioPersonalizado',true); 
+      this.set(comentarioPersonalizado,'comentarioPersonalizado'); // ver quien tiene el json cargado, console.log(this.get ....)  
+    };
     }
   }),
 
@@ -72,8 +71,8 @@ export default Ember.Component.extend({
     return this.get('modoAlumno') || this.get('modoDocente');
   }),
 
-  comentarioPersonalizado: computed(function(){
-    return this.get('comentarioPersonalizado');
+  algo: Ember.computed('comentarioPersonalizado',function(){
+    return this.get('actividad');
   }),
 
   didInsertElement() {
@@ -322,7 +321,9 @@ export default Ember.Component.extend({
           this.send('abrirFinDesafio');
         }
       }
-      
+      console.log(this.get('modelActividad.enunciado'));
+      console.log(this.get('modelActividad.comentarioPersonalizado'));
+      //console.log(this.get('actividad'));
       if (this.get('ejecutando')) {
         this.set('ejecutando', false);
         this.set('terminoDeEjecutar', true);
@@ -368,6 +369,9 @@ export default Ember.Component.extend({
   */
 
   actions: {
+    logActividad(){
+      console.log(this.get('hayComentarioPersonalizado'));
+    },
     ejecutar(pasoAPaso=false) {
       this.get('pilas').reiniciarEscenaCompleta();
 
@@ -386,10 +390,11 @@ export default Ember.Component.extend({
       
       this.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
-
+      
       this.ejecutarInterpreteHastaTerminar(interprete,pasoAPaso)
         .then(() => this.cuandoTerminaEjecucion())
         .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ }); 
+      
     },
 
     reiniciar() {
@@ -430,6 +435,10 @@ export default Ember.Component.extend({
 
     abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
+      this.set('comentarioPersonalizado',this.get('modelActividad.comentarioPersonalizado'))
+      if(this.get('comentarioPersonalizado')){
+        this.set('hayComentarioPersonalizado',true);
+      }
     },
 
     ocultarFinDesafio() {

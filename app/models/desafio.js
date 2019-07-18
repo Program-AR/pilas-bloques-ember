@@ -11,6 +11,7 @@ export default Model.extend({
   enunciado: attr('string'),
   consignaInicial: attr('string'),
   escena: attr('string'),
+  comentarioPersonalizado: attr('string'),
   debeFelicitarse: attr(),
   estiloToolbox: attr('string'),
   grupo: belongsTo('grupo'),
