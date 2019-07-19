@@ -43,7 +43,7 @@ export default Component.extend({
              *
              */
             if (this.onReady) {
-              this.sendAction("onReady", pilas);
+              this.onReady(pilas);
             } else {
               //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
             }
@@ -55,7 +55,8 @@ export default Component.extend({
       // onLoad solo se utiliza dentro de la batería de tests. Este
       // componente se tendría que usar mediante el servicio "pilas"
       // en cualquier otro lugar.
-      this.sendAction('onLoad', {iframeElement});
+      if (this.onLoad)
+        this.onLoad({iframeElement});
 
     };
 

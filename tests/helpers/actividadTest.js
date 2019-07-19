@@ -186,7 +186,7 @@ export function actividadTest(nombre, opciones) {
                 pilas=pilas
                 model=model
                 showCode=true
-                onReady="onReady"
+                onReady=onReady
                 codigo=solucion
                 codigoJavascript=""
                 persistirSolucionEnURL=false
