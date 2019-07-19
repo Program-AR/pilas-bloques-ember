@@ -473,7 +473,7 @@ export default Component.extend({
       }
 
       this.set('codigoActualEnFormatoXML', xml);
-      this.sendAction('onChangeWorkspace', xml);
+      // this.sendAction('onChangeWorkspace', xml);
     }
 
   }

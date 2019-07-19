@@ -19,7 +19,8 @@ export default Component.extend({
   
   actions: {
     onReady(pilas) {
-      this.sendAction("onReady", pilas);
+      if (this.onReady)
+        this.onReady(pilas)
       this.set('cargando', false);
       if(this.modoLecturaSimple){
         pilas.cambiarAModoDeLecturaSimple();

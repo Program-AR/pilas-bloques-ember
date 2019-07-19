@@ -14,7 +14,7 @@ export default function createPilasTest(context, escena, callback) {
       callback(pilas, resolve, pilasService);
     });
 
-    context.render(hbs`{{pilas-canvas pilas=pilas onReady='onReady' escena=escena}}`);
+    context.render(hbs`{{pilas-canvas pilas=pilas onReady=onReady escena=escena}}`);
 
   });
 }
