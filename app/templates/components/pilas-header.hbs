@@ -20,7 +20,7 @@
 
         <div class="navbar-header navbar-collapse">
           <!-- Haciendo que el logo de programar no se colapse, y desaparezca en mobile. -->
-          {{#unless media.isMobile}}
+          {{#unless (media 'isMobile')}}
             {{#pilas-link href="http://program.ar"}}<img src='imagenes/programar-short.png'/>{{/pilas-link}}
           {{/unless}}
         </div>
