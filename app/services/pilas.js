@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp';
 import Evented from '@ember/object/evented';
 import Service from '@ember/service';
 import listaImagenes from 'pilasbloques/components/listaImagenes';

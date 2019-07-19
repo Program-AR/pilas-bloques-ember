@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 
 export default function createPilasTest(context, escena, callback) {

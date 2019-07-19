@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp';
 import { module } from 'qunit';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';

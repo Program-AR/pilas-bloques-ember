@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp';
 import Service from '@ember/service';
 import config from "../config/environment";
 

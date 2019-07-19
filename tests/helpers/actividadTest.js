@@ -1,5 +1,4 @@
 import { run } from '@ember/runloop';
-import { Promise } from 'rsvp';
 import hbs from 'htmlbars-inline-precompile';
 import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';

@@ -1,4 +1,3 @@
-import { Promise } from 'rsvp';
 import Service from '@ember/service';
 
 //const URL = "http://localhost:3000/sendMessage";
