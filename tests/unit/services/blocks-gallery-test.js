@@ -41,6 +41,29 @@ test('Parameter in parent procedure should be ok', function(assert) {
     assert.notOk(param.warning)
 });
 
+
+let procedureWithDeletedParam = `
+<block type="procedures_defnoreturn" id="whpKBVIV.;:t%=8XN+E_" x="778" y="185">
+<field name="NAME">Hacer algo</field>
+<statement name="STACK">
+  <block type="GirarGrados" id=";qf!gXUI;'/BUa0nx#y]">
+    <value name="grados">
+      <block type="variables_get" id="wAE7-:@m*P0G[x'Uf$Hv">
+        <mutation var="param" parent="whpKBVIV.;:t%=8XN+E_"></mutation>
+      </block>
+    </value>
+  </block>
+</statement>
+</block>
+`
+
+test('Parameter in parent procedure without param should be disabled', function(assert) {
+  let param = findParam(Blockly.textToBlock(procedureWithDeletedParam))
+  assert.ok(param.disabled)
+  assert.equal(param.warning.getText(), "Este bloque ya no puede usarse, el parámetro ha sido eliminado.") 
+});
+
+
 let emptyProcedure = `
 <block type="procedures_defnoreturn" id="whpKBVIV.;:t%=8XN+E_" x="41" y="112">
 <mutation>
@@ -72,6 +95,7 @@ test('Parameter in non parent procedure should be disabled and with warning', fu
     assert.equal(param.warning.getText(), "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
 });
 
+
 let flying = `
 <block type="variables_get" id="wAE7-:@m*P0G[x'Uf$Hv" disabled="true" x="399" y="294">
 <mutation var="param" parent="whpKBVIV.;:t%=8XN+E_"></mutation>
@@ -84,6 +108,17 @@ test('Parameter in non parent procedure should only be disabled', function(asser
     assert.ok(param.disabled)
     assert.notOk(param.warning)
 });
+
+test('Parameter should dispose when procedure is disposed', function(assert) {
+    let procedure = Blockly.textToBlock(emptyProcedure)
+    let param = findParam(Blockly.textToBlock(flying))
+    assert.ok(param.workspace)
+    procedure.dispose()
+    assertAsync(assert, function() {
+        assert.notOk(param.workspace)
+    })
+});
+
 
 let mainWithoutParent = `
 <block type="al_empezar_a_ejecutar" id="~7u[uK:$SQa$}1uY9,h6" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -105,16 +140,6 @@ test('Parameter without parent procedure should be always ok', function(assert) 
     assert.notOk(param.warning)
 });
 
-
-test('Parameter should dispose when procedure is disposed', function(assert) {
-    let procedure = Blockly.textToBlock(emptyProcedure)
-    let param = findParam(Blockly.textToBlock(flying))
-    assert.ok(param.workspace)
-    procedure.dispose()
-    assertAsync(assert, function() {
-        assert.notOk(param.workspace)
-    })
-});
 
 
 function findParam(rootBlock) {
