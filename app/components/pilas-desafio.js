@@ -7,7 +7,7 @@ export default Component.extend({
 
   actions: {
     abrir() {
-      this.sendAction('onSelect', this.nombre);
+      if (this.onSelect) this.onSelect(this.nombre)
     }
   }
 });

@@ -311,7 +311,8 @@ export default Component.extend({
 
   cuandoTerminaEjecucion() {
     run(this, function () {
-      this.sendAction('onTerminoEjecucion');
+      if (this.onTerminoEjecucion)
+        this.onTerminoEjecucion()
 
       if (this.debeMostrarFinDeDesafio) {
         if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
@@ -352,17 +353,6 @@ export default Component.extend({
     this.highlighter.clear()
   },
 
-  /*
-  cargar_codigo_desde_el_modelo() {
-    if (this.get('model')) {
-      var modelo = this.get('model');
-      var codigo = modelo.get('codigo');
-      this.restaurar_codigo(codigo);
-    }
-    this.sendAction('registrarPrimerCodigo');
-  },
-  */
-
   actions: {
     ejecutar(pasoAPaso = false) {
       this.pilas.reiniciarEscenaCompleta();
@@ -397,7 +387,7 @@ export default Component.extend({
     },
 
     guardar() {
-      this.sendAction('guardar');
+      if (this.guardar) this.guardar()
     },
 
     ver_codigo() {
@@ -473,7 +463,8 @@ export default Component.extend({
       }
 
       this.set('codigoActualEnFormatoXML', xml);
-      // this.sendAction('onChangeWorkspace', xml);
+      if (this.onChangeWorkspace)
+        this.onChangeWorkspace(xml)
     }
 
   }

@@ -5,6 +5,7 @@ import { module, test, skip } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
+import jQuery from 'jquery';
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
@@ -132,8 +133,8 @@ export function actividadTest(nombre, opciones) {
             }
 
             setTimeout(() => {
-              this.$('#modo-turbo').click();
-              this.$('.btn-ejecutar').click();
+              jQuery('#modo-turbo').click();
+              jQuery('.btn-ejecutar').click();
             }, 1000)
           });
 

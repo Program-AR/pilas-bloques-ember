@@ -5,7 +5,7 @@ export default Component.extend({
 
   actions: {
     ocultar() {
-      this.sendAction("close");
+      if (this.close) this.close()
     },
   }
 });
