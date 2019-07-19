@@ -55,8 +55,8 @@ module('Integration | Component | pilas blockly', function (hooks) {
 
   test('Al reiniciar desaparece reiniciar y aparece ejecutar', async function (assert) {
     await render(pilasBlockly());
-    await this.$("button:contains('Ejecutar')").click();
-    await this.$("button:contains('Reiniciar')").click();
+    await findElementWithText(this, "button", "Ejecutar").click();
+    await findElementWithText(this, "button", "Reiniciar").click();
     assert.ok(existeBoton(this, "Ejecutar"), "Tiene el botón ejecutar visible");
     assert.notOk(existeBoton(this, "Reiniciar"), "Desaparece el botón reiniciar");
   });
@@ -65,16 +65,20 @@ module('Integration | Component | pilas blockly', function (hooks) {
     return hbs`{{ pilas-blockly cargando=cargando ejecutando=ejecutando terminoDeEjecutar=terminoDeEjecutar pilas=pilas bloques=bloques model=model modelActividad=model }}`;
   }
 
-  function existeElementoConTexto(context, elemento, texto) {
-    return context.$(elemento).text().includes(texto);
+  function findElementWithText(context, elemento, texto) {
+    return Array
+      .from(context.element.querySelectorAll(elemento))
+      .find(domElement =>
+        domElement.innerText.includes(texto)
+      );
   }
 
   function existeBoton(context, texto) {
-    return existeElementoConTexto(context, "button", texto);
+    return findElementWithText(context, "button", texto) !== undefined;
   }
 
   function existeTexto(context, texto) {
-    return existeElementoConTexto(context, "p", texto);
+    return findElementWithText(context, "p", texto) !== undefined;
   }
 
 });

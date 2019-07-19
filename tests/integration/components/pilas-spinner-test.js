@@ -9,10 +9,10 @@ module('Integration | Component | pilas spinner', function(hooks) {
   test('it renders', async function(assert) {
 
     await render(hbs`{{pilas-spinner}}`);
-    assert.equal(this.$(".spinner")[0].className, 'spinner ', "Debe tener las clases normales del spinner");
+    assert.equal(this.element.querySelector(".spinner").className, 'spinner ', "Debe tener las clases normales del spinner");
 
     await render(hbs`{{pilas-spinner centered=true}}`);
-    assert.equal(this.$(".spinner")[0].className, 'spinner spinner-centered', "Deaabe tener las clases normales del spinner");
+    assert.equal(this.element.querySelector(".spinner").className, 'spinner spinner-centered', "Deaabe tener las clases normales del spinner");
 
   });
 });
