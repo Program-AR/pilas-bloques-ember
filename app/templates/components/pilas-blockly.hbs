@@ -81,10 +81,10 @@
 
 
 {{#if mostrarDialogoFinDesafio}}
-  {{#modal-dialog close="ocultarFinDesafio"
+  {{#modal-dialog onClose=(action "ocultarFinDesafio")
                   attatchment="middle center"
                   translucentOverlay=true
-                  container-class="dialogoFinDesafio"}}
+                  containerClass="dialogoFinDesafio"}}
 
     {{modal-title title="¡Lo lograste!" close="ocultarFinDesafio"}}
     <div class="center">
@@ -99,10 +99,10 @@
 {{/if}}
 
 {{#if mostrarDialogoReporteProblemas}}
-  {{#modal-dialog close='cerrarReporteProblemas'
+  {{#modal-dialog onClose=(action "cerrarReporteProblemas")
                   targetAttachment="center"
                   translucentOverlay=true
-                  container-class="dialogoAjustado"}}
+                  containerClass="dialogoAjustado"}}
     {{modal-title title="Reportar un problema" close='cerrarReporteProblemas'}}
     {{info-reportar-problema}}
   {{/modal-dialog}}
@@ -110,7 +110,7 @@
 
 
 {{#if abrirDialogoCompartir}}
-  {{#modal-dialog close="ocultarModalTwitter"
+  {{#modal-dialog onClose=(action "ocultarModalTwitter")
                   targetAttachment="center"
                   translucentOverlay=true}}
 
