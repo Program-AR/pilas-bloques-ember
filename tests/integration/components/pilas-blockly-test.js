@@ -53,9 +53,9 @@ module('Integration | Component | pilas blockly', function (hooks) {
     assert.ok(existeBoton(this, "Reiniciar"), "Tiene el botón reiniciar visible");
   });
 
-  test('Al reiniciar', async function (assert) {
-    this.set("terminoDeEjecutar", true);
+  test('Al reiniciar desaparece reiniciar y aparece ejecutar', async function (assert) {
     await render(pilasBlockly());
+    await this.$("button:contains('Ejecutar')").click();
     await this.$("button:contains('Reiniciar')").click();
     assert.ok(existeBoton(this, "Ejecutar"), "Tiene el botón ejecutar visible");
     assert.notOk(existeBoton(this, "Reiniciar"), "Desaparece el botón reiniciar");
