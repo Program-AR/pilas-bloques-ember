@@ -107,7 +107,7 @@ module.exports = function (defaults) {
   app.import(app.bowerDirectory + "/fontface-source-sans-pro/fonts/WOFF/TTF/SourceSansPro-Semibold.ttf.woff", { destDir: "fonts/" });
   app.import(app.bowerDirectory + "/fontface-source-sans-pro/fonts/WOFF/TTF/SourceSansPro-SemiboldIt.ttf.woff", { destDir: "fonts/" });
 
-  process.setMaxListeners(1000);
+  process.setMaxListeners(Infinity);
 
 
   var extraAssets = new Funnel('bower_components/pilasweb', {
