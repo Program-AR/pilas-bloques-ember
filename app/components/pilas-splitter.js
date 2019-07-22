@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['pilas-splitter'],
 
     didInsertElement() {
@@ -14,7 +14,7 @@ export default Ember.Component.extend({
         $('#over-splitter').show();
 
         let initialX = event.pageX;
-        let initialWidth = $(this.get("panel")).width();
+        let initialWidth = $(this.panel).width();
 
         $('#over-splitter').on("mousemove", (event) => {
           let dx = (event.pageX - initialX);
@@ -24,7 +24,7 @@ export default Ember.Component.extend({
           newWidth = Math.max(newWidth, 200);
           newWidth = Math.min(newWidth, 800);
 
-          $(this.get("panel")).width(newWidth);
+          $(this.panel).width(newWidth);
 
           $(window).trigger('resize');
           window.dispatchEvent(new Event('resize'));
@@ -44,10 +44,10 @@ export default Ember.Component.extend({
     },
 
     fixLayout() {
-      let width = $(this.get("iframe")).width();
+      let width = $(this.iframe).width();
       let height = width * 1.1428;
 
-      $(this.get('iframe')).height(height);
-      $(this.get('ayuda')).css('top', height);
+      $(this.iframe).height(height);
+      $(this.ayuda).css('top', height);
     },
 });

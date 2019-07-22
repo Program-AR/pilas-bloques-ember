@@ -1,23 +1,26 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import { computed, observer } from '@ember/object';
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'div',
   classNames: ['nw-zoom'],
   zoomValue: 100,
-  zoom: Ember.inject.service(),
+  zoom: service(),
 
-  canZoomIn: Ember.computed('zoomValue', function() {
-    return this.get('zoomValue') < 120;
+  canZoomIn: computed('zoomValue', function() {
+    return this.zoomValue < 120;
   }),
 
-  canZoomOut: Ember.computed('zoomValue', function() {
-    return this.get('zoomValue') > 80;
+  canZoomOut: computed('zoomValue', function() {
+    return this.zoomValue > 80;
   }),
 
-  cambiarZoom: Ember.observer('zoomValue', function() {
-    this.get('zoom').setValue(this.get('zoomValue'));
+  cambiarZoom: observer('zoomValue', function() {
+    this.zoom.setValue(this.zoomValue);
 
-    this.aplicarZoom((this.get('zoomValue') - 100) / 10);
+    this.aplicarZoom((this.zoomValue - 100) / 10);
   }),
 
 
@@ -25,17 +28,17 @@ export default Ember.Component.extend({
     document.body.style.zoom = (100 + zoomLevel * 10) + "%";
   },
 
-  onStart: Ember.on('init', function() {
-    this.set('zoomValue', this.get('zoom').getValue());
+  onStart: on('init', function() {
+    this.set('zoomValue', this.zoom.getValue());
     this.cambiarZoom();
   }),
 
   actions: {
     zoomIn() {
-      this.set('zoomValue', this.get('zoomValue') + 10);
+      this.set('zoomValue', this.zoomValue + 10);
     },
     zoomOut() {
-      this.set('zoomValue', this.get('zoomValue') - 10);
+      this.set('zoomValue', this.zoomValue - 10);
     },
     zoomRestore() {
       this.set('zoomValue', 100);

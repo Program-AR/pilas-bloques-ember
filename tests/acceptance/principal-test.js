@@ -1,24 +1,22 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
-import principal from '../pages/principal';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { create, visitable, text, count } from 'ember-cli-page-object';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
-moduleForAcceptance('Acceptance | principal');
+const page = create({
+  scope: '.contenido-principal',
+  visit: visitable('/'),
+  tituloModal: text('h4', { scope: '.ember-modal-dialog', resetScope: true }),
+  cantidadDeImagenes: count('img'),
+  cantidadDeLinks: count('a'),
+});
 
-test('visiting /', function(assert) {
-  principal.
-    visit();
+module('Acceptance | principal', function (hooks) {
+  setupApplicationTest(hooks);
+  setupMirage(hooks);
 
-  andThen(() => {
-    assert.equal(principal.cantidadDeLinks(), 3, "Hay tres links en pantalla.");
+  test('visiting /', async function (assert) {
+    await page.visit();
+    assert.equal(page.cantidadDeLinks, 3, "Hay tres links en pantalla.");
   });
-
-  principal.abrirAyuda();
-
-  andThen(() => {
-    assert.equal(principal.tituloModal(), "Ayuda", "El modal de ayuda está visible.");
-  });
-
-  principal.
-    cerrarDialogo();
-
 });

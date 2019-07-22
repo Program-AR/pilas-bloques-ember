@@ -1,6 +1,7 @@
-import Ember from 'ember';
+import { scheduleOnce } from '@ember/runloop';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['pilas-canvas-container'],
   classNameBindings: ['media.isMobile:media-mobile'],
   iframeElement: null,
@@ -9,28 +10,29 @@ export default Ember.Component.extend({
                       * llamar al componente y es obligatorio. */
 
   didInsertElement() {
-    Ember.run.scheduleOnce('afterRender', this, this.initElement);
+    scheduleOnce('afterRender', this, this.initElement);
   },
 
   willDestroyElement() {
-    if (this.get('pilas')) {
-      this.get("pilas").liberarRecursos();
+    if (this.pilas) {
+      this.pilas.liberarRecursos();
     }
   },
 
   initElement() {
-    let iframeElement = this.$().find('#innerIframe')[0];
+    
+    let iframeElement = this.element.querySelector('#innerIframe');
 
     this.set("iframeElement", iframeElement);
 
-    this.get("iframeElement").onload = () => {
+    this.iframeElement.onload = () => {
 
-      if (this.get('pilas')) {
-        this.get("pilas").inicializarPilas(iframeElement, {width: 420, height: 480},this.get("escena")).
+      if (this.pilas) {
+        this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.escena).
           then((pilas) => {
 
-            if (this.get('escena')) {
-              this.get("pilas").inicializarEscena(iframeElement, this.get("escena"));
+            if (this.escena) {
+              this.pilas.inicializarEscena(iframeElement, this.escena);
             } else {
               console.warn("No especificó una escena para cargar en pilas-canvas.");
             }
@@ -40,8 +42,8 @@ export default Ember.Component.extend({
              * para ser utilizado.
              *
              */
-            if (this.get('onReady')) {
-              this.sendAction("onReady", pilas);
+            if (this.onReady) {
+              this.onReady(pilas);
             } else {
               //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
             }
@@ -53,22 +55,23 @@ export default Ember.Component.extend({
       // onLoad solo se utiliza dentro de la batería de tests. Este
       // componente se tendría que usar mediante el servicio "pilas"
       // en cualquier otro lugar.
-      this.sendAction('onLoad', {iframeElement});
+      if (this.onLoad)
+        this.onLoad({iframeElement});
 
     };
 
   },
 
   reloadIframe(onLoadFunction) {
-    this.get("iframeElement").onload = onLoadFunction;
-    this.get("iframeElement").contentWindow.location.reload(true);
+    this.iframeElement.onload = onLoadFunction;
+    this.iframeElement.contentWindow.location.reload(true);
   },
 
   actions: {
     execute(code) {
       this.reloadIframe(() => {
         alert("Ha cargado el código y está todo listo!");
-        this.get("iframeElement").contentWindow.eval(code);
+        this.iframeElement.contentWindow.eval(code);
       });
     },
     clear() {

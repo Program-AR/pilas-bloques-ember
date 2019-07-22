@@ -1,5 +1,5 @@
+/*jshint esversion: 6 */
+
 export default function(server) {
-  server.loadFixtures('grupos');
-  server.loadFixtures('desafios');
-  server.loadFixtures('libros');
+  server.loadFixtures();
 }

@@ -2,11 +2,11 @@ import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'Blocks Gallery - aliases test';
 
-moduloActividad(nombre);
+moduloActividad(nombre, () => {
 
-actividadTest("InstalandoJuegos", {
-    descripcionAdicional: 'Old Blocks works with new aliases implementation',
-		solucion: `<?xml version="1.0" encoding="UTF-8"?>
+   actividadTest("InstalandoJuegos", {
+      descripcionAdicional: 'Old Blocks works with new aliases implementation',
+      solucion: `<?xml version="1.0" encoding="UTF-8"?>
       <xml xmlns="http://www.w3.org/1999/xhtml">
          <variables />
          <block type="al_empezar_a_ejecutar" id="NLO52_{=EfQ]%h_Mvb-D" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -57,4 +57,6 @@ actividadTest("InstalandoJuegos", {
             </statement>
          </block>
       </xml>`
+   });
+
 });

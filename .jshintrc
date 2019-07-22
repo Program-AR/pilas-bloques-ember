@@ -17,6 +17,7 @@
     "js_beautify",
     "Blob"
   ],
+  "esversion": 9,
   "asi": true,
   "browser": true,
   "boss": true,
@@ -40,6 +41,6 @@
   "strict": false,
   "white": false,
   "eqnull": true,
-  "esnext": true,
+  "esnext": false,
   "unused": true
 }

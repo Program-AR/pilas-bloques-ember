@@ -8,15 +8,14 @@
 }
 
 .ember-modal-dialog {
+  height: 500px;
+  width: 800px;
   border-radius: 0px;
   background-color: #fff;
   box-shadow: 0 0 10px #222;
-  padding: 10px;
   overflow-y: auto;
-  top: 30px !important;
-  bottom: 30px !important;
-  margin-top: 0px !important;
 }
+
 
 .modal-title {
   padding-bottom: 15px;

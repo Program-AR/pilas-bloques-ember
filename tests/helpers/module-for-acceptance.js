@@ -1,23 +1,28 @@
 import { module } from 'qunit';
-import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
+import { setupRenderingTest } from 'ember-qunit';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
-const { RSVP: { Promise } } = Ember; // jshint ignore:line
+export default function (name, options = {}) {
 
-export default function(name, options = {}) {
-  module(name, {
-    beforeEach() {
+  module(name, (hooks) => {
+
+    setupRenderingTest(hooks);
+    setupMirage(hooks);
+
+    hooks.beforeEach(function () {
       this.application = startApp();
-
       if (options.beforeEach) {
         return options.beforeEach.apply(this, arguments);
       }
-    },
+    })
 
-    afterEach() {
+    hooks.afterEach(function () {
       let afterEach = options.afterEach && options.afterEach.apply(this, arguments);
       return Promise.resolve(afterEach).then(() => destroyApp(this.application));
-    }
+    })
+
   });
+
 }

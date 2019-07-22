@@ -2,10 +2,10 @@ import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = 'PrendiendoLasCompusParametrizado';
 
-moduloActividad(nombre);
+moduloActividad(nombre, () => {
 
-actividadTest(nombre, {
-	solucion: `
+	actividadTest(nombre, {
+		solucion: `
 		<xml xmlns="http://www.w3.org/1999/xhtml">
 		  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
 		    <statement name="program">
@@ -87,12 +87,12 @@ actividadTest(nombre, {
 		  </block>
 		</xml>
 	`
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
-	errorEsperado: 'No hay una computadora aquí',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta prender una computadora donde no hay',
+		errorEsperado: 'No hay una computadora aquí',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 							<xml xmlns="http://www.w3.org/1999/xhtml">
    							<variables />
   	 						<block type="al_empezar_a_ejecutar" id="IAu_wXvP7R@SfU%v^Vtk" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -101,12 +101,12 @@ actividadTest(nombre, {
       						</statement>
    							</block>
 						</xml>`,
-});
+	});
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
-	errorEsperado: 'Esta computadora ya fue prendida',
-	solucion: `<?xml version="1.0" encoding="UTF-8"?>
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error si se intenta prender una computadora que ya esta prendida',
+		errorEsperado: 'Esta computadora ya fue prendida',
+		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 		 <variables />
 		 <block type="al_empezar_a_ejecutar" id="i(OI|s9pE2Qvpapiwd/6" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -126,4 +126,6 @@ actividadTest(nombre, {
 				</statement>
 		 </block>
 	</xml>`,
+	});
+
 });

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 import environment from '../config/environment';
 
-export default Ember.Service.extend({
-  ajax: Ember.inject.service(),
+export default Service.extend({
+  ajax: service(),
   hayActualizacion: false,
   versionActual: null,
 
@@ -38,7 +38,7 @@ export default Ember.Service.extend({
     let versionActual = environment.APP.version;
     let url = environment['versionURL'];
 
-    return this.get('ajax').request(url).then((data) => {
+    return this.ajax.request(url).then((data) => {
       let versionDesdeElServidor = data.tag_name;
 
 

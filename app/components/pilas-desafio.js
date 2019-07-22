@@ -1,13 +1,13 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   classNames: ['desafio'],
   nombre: null,
   deshabilitada: false,
 
   actions: {
     abrir() {
-      this.sendAction('onSelect', this.get('nombre'));
+      if (this.onSelect) this.onSelect(this.nombre)
     }
   }
 });

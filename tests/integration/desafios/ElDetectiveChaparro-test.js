@@ -1,11 +1,11 @@
-import {moduloActividad, actividadTest} from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
 const nombre = "ElDetectiveChaparro";
 
-moduloActividad(nombre);
+moduloActividad(nombre, () => {
 
-actividadTest(nombre, {
-  solucion: `<?xml version="1.0" encoding="UTF-8"?>
+   actividadTest(nombre, {
+      solucion: `<?xml version="1.0" encoding="UTF-8"?>
   <xml xmlns="http://www.w3.org/1999/xhtml">
      <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
         <statement name="program">
@@ -32,12 +32,12 @@ actividadTest(nombre, {
         </statement>
      </block>
   </xml>`,
-});
+   });
 
-actividadTest(nombre, {
-	descripcionAdicional: 'Da error si se quiere determinar si un sospechoso es culpable antes de interrogarlo',
-	errorEsperado: 'No puedo saber si es el culpable, no lo he interrogado antes.',
-	solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+   actividadTest(nombre, {
+      descripcionAdicional: 'Da error si se quiere determinar si un sospechoso es culpable antes de interrogarlo',
+      errorEsperado: 'No puedo saber si es el culpable, no lo he interrogado antes.',
+      solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
   <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
     <statement name="program">
       <block type="IrAlPrimerSospechoso" id="JguD~YdHru6P~fcr%NY">
@@ -60,4 +60,6 @@ actividadTest(nombre, {
   </block>
   <block type="Repetir" id="hX[/K9]kVi:cxT;yI{bB" disabled="true" x="-20" y="480"></block>
 </xml>`
+   });
+
 });

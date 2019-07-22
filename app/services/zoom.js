@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 
-export default Ember.Service.extend({
+export default Service.extend({
   zoom: 100,
 
   getValue() {
-    return this.get('zoom');
+    return this.zoom;
   },
 
   setValue(zoomValue) {
