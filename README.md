@@ -43,7 +43,7 @@ git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 source ~/.nvm/nvm.sh
 source ~/.nvm/install.sh
 ```
-Y luego elegir instalar la versión Long Term Support (LTS) mas actual de Node.js, actualmente lleva el nombre en clave Dubnium (Version 10.13.0).
+Y luego instalar la versión Long Term Support (LTS) mas actual de Node.js, actualmente lleva el nombre en clave Dubnium (Version 10.13.0).
 
 ```
 nvm install lts/dubnium
