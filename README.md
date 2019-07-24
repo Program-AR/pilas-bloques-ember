@@ -35,7 +35,7 @@ Y lo mismo con python:
 sudo apt install python
 
 ```
-Y también hay que asegurarse de tener una version de node compatiuble con Pilas Bloques (>= 8):
+Y también hay que asegurarse de tener una version de node compatible con Pilas Bloques (>= 8):
 
 Para lograrlo, podemos instalarlo ejecutando el siguiente script:
 ```
