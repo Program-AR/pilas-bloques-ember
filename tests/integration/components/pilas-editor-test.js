@@ -1,21 +1,23 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import EmberObject from '@ember/object';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 import { pilasMock } from '../../helpers/mocks';
 
-moduleForComponent('pilas-editor', 'Integration | Component | pilas editor', {
-  integration: true
-});
+module('Integration | Component | pilas editor', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
+  test('it renders', async function(assert) {
 
-  this.set('pilas', pilasMock);
+    this.set('pilas', pilasMock);
 
-  this.set('model', Ember.Object.extend({
-    bloques: ['controls_if']
-  }).create());
+    this.set('model', EmberObject.extend({
+      bloques: ['controls_if']
+    }).create());
 
-  this.render(hbs`{{pilas-editor pilas=pilas model=model}}`);
+    await render(hbs`{{pilas-editor pilas=pilas model=model}}`);
 
-  assert.ok(this.$().text().trim());
+    assert.dom().hasAnyText('Hay algo de texto');
+  });
 });

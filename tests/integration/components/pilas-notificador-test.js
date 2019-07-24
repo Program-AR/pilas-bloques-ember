@@ -1,11 +1,13 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('pilas-notificador', 'Integration | Component | pilas notificador', {
-  integration: true
-});
+module('Integration | Component | pilas notificador', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  this.render(hbs`{{pilas-notificador}}`);
-  assert.ok(this.$().text().trim(), 'Hay algo de texto');
+  test('it renders', async function(assert) {
+    await render(hbs`{{pilas-notificador}}`);
+    assert.dom().hasAnyText('Hay algo de texto');
+  });
 });

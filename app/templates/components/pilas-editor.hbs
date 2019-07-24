@@ -4,7 +4,7 @@
 
   <div class="desafio-panel-izquierdo" id='panel-izquierdo'>
 
-    {{pilas-canvas pilas=pilas onReady="onReady" escena=model.escena}}
+    <PilasCanvas @pilas={{pilas}} @onReady={{action "onReady"}} @escena={{model.escena}} />
 
     <div class='contenedor-panel-ayuda' id="panel-ayuda">
       <div class='panel-ayuda puede-seleccionar'>

@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
-export default Ember.Route.extend({
-  blockly: Ember.inject.service(),
-  blocksGallery: Ember.inject.service(),
+export default Route.extend({
+  blockly: service(),
+  blocksGallery: service(),
 
   activate() {
-    this.get('blocksGallery').start();
+    this.blocksGallery.start();
   }
 
 });

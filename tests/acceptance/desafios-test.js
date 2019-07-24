@@ -1,17 +1,35 @@
-import { skip } from 'qunit';
-import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
-import desafios from '../pages/desafios';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
-moduleForAcceptance('Acceptance | desafios');
+import { create, visitable, count } from 'ember-cli-page-object';
 
-skip('visiting /desafios', function(assert) {
-  let cantidadDesafiosEsperada = 50;
+const page = create({
+  cantidadDeDesafiosDisponibles: count('.ember-view .desafio .desafio-img')
+});
 
-  desafios.
-    visit();
+const page1 = create({
+  visit: visitable('/libros/1')
+});
 
-  andThen(function() {
-    assert.equal(desafios.cantidadDeDesafiosDisponibles(), cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
+const page2 = create({
+  visit: visitable('/libros/2')
+});
+
+module('Acceptance | desafios', function (hooks) {
+  setupApplicationTest(hooks);
+  setupMirage(hooks);
+
+  test('La cantidad de desafíos que se muestra en la pagina 1 es correcta', async function (assert) {
+    let cantidadDesafiosEsperada = 55;
+    await page1.visit();
+    assert.equal(page.cantidadDeDesafiosDisponibles, cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
+  });
+
+  test('La cantidad de desafíos que se muestra en la pagina 2 es correcta', async function (assert) {
+    let cantidadDesafiosEsperada = 44;
+    await page2.visit();
+    assert.equal(page.cantidadDeDesafiosDisponibles, cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
   });
 
 

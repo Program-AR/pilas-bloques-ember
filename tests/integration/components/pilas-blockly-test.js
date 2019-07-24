@@ -1,81 +1,85 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import Service from '@ember/service';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
 import { pilasMock, interpreterFactoryMock } from '../../helpers/mocks';
 
-moduleForComponent('pilas-blockly', 'Integration | Component | pilas blockly', {
-  integration: true,
-  setup() { //TODO: Mover a un lugar más general
+module('Integration | Component | pilas blockly', function (hooks) {
+  setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
     this.set('bloques', ['Repetir']);
     this.set('pilas', pilasMock);
 
-    let modelMock = { 
-      get(attr) { return this[attr]; }, 
-      estiloToolbox: 'aplanado' 
+    let modelMock = {
+      get(attr) { return this[attr]; },
+      estiloToolbox: 'aplanado'
     };
     this.set('model', modelMock);
 
-    this.register('service:interpreterFactory', interpreterFactoryMock);
+    this.owner.register('service:interpreterFactory', interpreterFactoryMock);
 
-    let environmentMock = Ember.Service.extend({ });
-    this.register('service:environment', environmentMock);
+    let environmentMock = Service.extend({});
+    this.owner.register('service:environment', environmentMock);
 
-    this.container.lookup('service:blocksGallery').start();
+    this.owner.lookup('service:blocksGallery').start();
+  });
+
+  test('Cuando el componente está cargando', async function (assert) {
+    this.set('cargando', true);
+    await render(pilasBlockly());
+    assert.dom("button").doesNotExist('No muestra ningún botón');
+    assert.ok(existeTexto(this, "cargando"), "Solo muestra el texto 'cargando'");
+  });
+
+  test('Cuando el componente está listo para ser usado', async function (assert) {
+    await render(pilasBlockly());
+    assert.ok(existeBoton(this, "Ejecutar"), "Tiene el botón ejecutar visible");
+    assert.notOk(existeBoton(this, "Compartir"), 'Ya no existe un botón para compartir por twitter por omisión');
+    assert.ok(existeBoton(this, "Abrir"), 'Existe un botón para cargar una solución');
+    assert.ok(existeBoton(this, "Guardar"), 'Existe un botón para guardar una solución');
+  });
+
+  test('Mientras se ejecuta un ejercicio', async function (assert) {
+    this.set("ejecutando", true);
+    await render(pilasBlockly());
+    assert.ok(existeBoton(this, "Reiniciar"), "Tiene el botón reiniciar visible");
+  });
+
+  test('Cuando se termina de ejecutar un ejercicio', async function (assert) {
+    this.set("terminoDeEjecutar", true);
+    await render(pilasBlockly());
+    assert.ok(existeBoton(this, "Reiniciar"), "Tiene el botón reiniciar visible");
+  });
+
+  test('Al reiniciar desaparece reiniciar y aparece ejecutar', async function (assert) {
+    await render(pilasBlockly());
+    await findElementWithText(this, "button", "Ejecutar").click();
+    await findElementWithText(this, "button", "Reiniciar").click();
+    assert.ok(existeBoton(this, "Ejecutar"), "Tiene el botón ejecutar visible");
+    assert.notOk(existeBoton(this, "Reiniciar"), "Desaparece el botón reiniciar");
+  });
+
+  function pilasBlockly() {
+    return hbs`{{ pilas-blockly cargando=cargando ejecutando=ejecutando terminoDeEjecutar=terminoDeEjecutar pilas=pilas bloques=bloques model=model modelActividad=model }}`;
   }
+
+  function findElementWithText(context, elemento, texto) {
+    return Array
+      .from(context.element.querySelectorAll(elemento))
+      .find(domElement =>
+        domElement.innerText.includes(texto)
+      );
+  }
+
+  function existeBoton(context, texto) {
+    return findElementWithText(context, "button", texto) !== undefined;
+  }
+
+  function existeTexto(context, texto) {
+    return findElementWithText(context, "p", texto) !== undefined;
+  }
+
 });
-
-test('Cuando el componente está cargando', function(assert) {
-  this.set('cargando', true);
-  this.render(pilasBlockly());
-
-  assert.equal(this.$("button").length, 0, 'No muestra ningún botón');
-  assert.ok(existeTexto("cargando"), "Solo muestra el texto 'cargando'");
-});
-
-test('Cuando el componente está listo para ser usado', function(assert) {
-  this.render(pilasBlockly());
-  
-  assert.ok(existeBoton("Ejecutar"), "Tiene el botón ejecutar visible");
-  assert.notOk(existeBoton("Compartir"), 'Ya no existe un botón para compartir por twitter por omisión');
-  assert.ok(existeBoton("Abrir"), 'Existe un botón para cargar una solución');
-  assert.ok(existeBoton("Guardar"), 'Existe un botón para guardar una solución');
-});
-
-test('Mientras se ejecuta un ejercicio', function(assert) {
-  this.set("ejecutando", true);
-  this.render(pilasBlockly());
-  assert.ok(existeBoton("Reiniciar"), "Tiene el botón reiniciar visible");
-});
-
-test('Cuando se termina de ejecutar un ejercicio', function(assert) {
-  this.set("terminoDeEjecutar", true);
-  this.render(pilasBlockly());
-  assert.ok(existeBoton("Reiniciar"), "Tiene el botón reiniciar visible");
-});
-
-test('Al reiniciar', function(assert) {
-  this.set("terminoDeEjecutar", true);
-  this.render(pilasBlockly());
-
-  this.$("button:contains('Reiniciar')").click();
-
-  assert.ok(existeBoton("Ejecutar"), "Tiene el botón ejecutar visible");
-  assert.notOk(existeBoton("Reiniciar"), "Desaparece el botón reiniciar");
-});
-
-function pilasBlockly() {
-  return hbs`{{ pilas-blockly cargando=cargando ejecutando=ejecutando terminoDeEjecutar=terminoDeEjecutar pilas=pilas bloques=bloques model=model modelActividad=model }}`;
-}
-
-function existeElementoConTexto(elemento, texto) {
-  return this.$(elemento).text().includes(texto);
-}
-
-function existeBoton(texto) {
-  return existeElementoConTexto("button", texto);
-}
-
-function existeTexto(texto) {
-  return existeElementoConTexto("p", texto);
-}
 

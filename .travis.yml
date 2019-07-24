@@ -17,7 +17,7 @@ services:
   - xvfb
 sudo: false
 node_js:
-- '6.11.3'
+  - 'lts/dubnium'
 cache:
   directories:
   - node_modules
@@ -36,7 +36,6 @@ before_install:
 - npm --version
 - npm config set spin false
 - npm install -g bower
-- npm install -g phantomjs-prebuilt
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli

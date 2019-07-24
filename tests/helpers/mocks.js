@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 import sinon from 'sinon';
 
 export const pilasMock = {
@@ -11,13 +11,13 @@ export const pilasMock = {
     deshabilitarModoTurbo: sinon.stub(),
 };
 
-export const interpreteMock = { 
+export const interpreteMock = {
     paused_: false,
     run: sinon.stub().returns(false)
 };
 
-export const interpreterFactoryMock = Ember.Service.extend({ 
-    crearInterprete(){ return interpreteMock; }
+export const interpreterFactoryMock = Service.extend({
+    crearInterprete() { return interpreteMock; }
 });
 
 export const actividadMock = { 

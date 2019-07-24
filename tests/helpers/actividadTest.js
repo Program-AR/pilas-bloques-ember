@@ -1,24 +1,20 @@
-import { test } from 'ember-qunit';
+import { run } from '@ember/runloop';
 import hbs from 'htmlbars-inline-precompile';
-import Ember from 'ember';
-import {moduleForComponent} from 'ember-qunit';
-import startMirage from './start-mirage';
+import { module, test, skip } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
+import 'ember-qunit';
+import jQuery from 'jquery';
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
-export function moduloActividad(nombre) {
-  let titulo = `Integration | Actividad | ${nombre}`;
-
-  let opciones = {
-    integration: true,
-
-    setup() {
-      startMirage(this.container);
-    }
-  };
-
-	moduleForComponent('pilas-editor', titulo, opciones);
+export function moduloActividad(nombre, runActivityTests) {
+  module(`Integration | Actividad | ${nombre}`, (hooks) => {
+    setupRenderingTest(hooks);
+    setupMirage(hooks);
+    runActivityTests();
+  });
 }
 
 /**
@@ -50,6 +46,7 @@ function validarOpciones(opciones) {
     'cantidadDeActoresAlComenzar',
     'cantidadDeActoresAlTerminar',
     'fps',
+    'skip'
   ];
 
   function esOpcionInvalida(opcion) {
@@ -86,6 +83,7 @@ function validarOpciones(opciones) {
  *        - cantidadDeActoresAlTerminar: Un diccionario para validar la cantidad de actores en la escena.
  *        - fps: Los cuadros por segundo esperados (por omisión 200 en los test y 60 normalmente).
  *        - resuelveDesafio: Si es false, verifica que la solución NO resuelva el problema.
+ *        - skip: Si es true, se salteara este test.
  * 
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
@@ -97,15 +95,15 @@ export function actividadTest(nombre, opciones) {
 
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
-	test(descripcion, function(assert) {
+  ((opciones.skip) ? skip : test)(descripcion, function (assert) {
+    let store = this.owner.lookup('service:store');
+    let pilas = this.owner.lookup('service:pilas');
 
-    let store = this.container.lookup('service:store');
-    let pilas = this.container.lookup('service:pilas');
-    //let actividades = this.container.lookup('service:actividades');
+    //let actividades = this.owner.lookup('service:actividades');
 
-	  return new Ember.RSVP.Promise((success) => {
+    return new Promise((success) => {
 
-      Ember.run(() => {
+      run(() => {
 
         // Simula el model hook del router desafío.
         store.findAll("desafio").then((data) => {
@@ -127,17 +125,16 @@ export function actividadTest(nombre, opciones) {
           // Carga la solución en base64, el formato que espera el componente.
           this.set('solucion', window.btoa(opciones.solucion));
           // Captura el evento de inicialización de pilas:
-          this.on('onReady', function(/*instanciaPilas*/) {
 
+          this.set('onReady', () => {
             if (opciones.cantidadDeActoresAlComenzar) {
               validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
             }
 
             setTimeout(() => {
-              this.$('#modo-turbo').click();
-              this.$('.btn-ejecutar').click();
-            }, 1000);
-
+              jQuery('#modo-turbo').click();
+              jQuery('.btn-ejecutar').click();
+            }, 1000)
           });
 
           /**
@@ -145,7 +142,7 @@ export function actividadTest(nombre, opciones) {
            * si es un error esperado o no. Y en cualquiera de los
            * dos casos finaliza el test.
            */
-          pilas.on("errorDeActividad", function(motivoDelError) {
+          pilas.on("errorDeActividad", function (motivoDelError) {
             let errorEsperado = opciones.errorEsperado;
 
             if (errorEsperado) {
@@ -175,7 +172,7 @@ export function actividadTest(nombre, opciones) {
             }
 
             success();
-           });
+          });
 
           /**
            * Se instancia el componente pilas-editor con los paneles que
@@ -183,25 +180,28 @@ export function actividadTest(nombre, opciones) {
            * hace dentro de la aplicación.
            */
 
-  	      this.render(hbs`
-            {{pilas-editor
-              debug=false
-              pilas=pilas
-              model=model
-              showCode=true
-              onReady="onReady"
-              codigo=solucion
-              codigoJavascript=""
-              persistirSolucionEnURL=false
-              onTerminoEjecucion=onTerminoEjecucion
-              debeMostrarFinDeDesafio=false
-            }}
-          `);
+          this.render(hbs`
+              {{pilas-editor
+                debug=false
+                pilas=pilas
+                model=model
+                showCode=true
+                onReady=onReady
+                codigo=solucion
+                codigoJavascript=""
+                persistirSolucionEnURL=false
+                onTerminoEjecucion=onTerminoEjecucion
+                debeMostrarFinDeDesafio=false
+              }}
+            `);
         });
 
       });
 
     });
 
-	});
+  });
+
+
+
 }

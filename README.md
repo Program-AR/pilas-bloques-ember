@@ -1,7 +1,7 @@
 Pilas Bloques
 =============
 
-- Issues planificados para este sprint: [![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-bloques.png?label=ready&title=Ready)](http://waffle.io/Program-AR/pilas-bloques)
+- Issues planificados para este sprint: [Stories in Ready](https://github.com/orgs/Program-AR/projects/1)
 
 - Rama master: [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-bloques)
 - Rama develop (principal): [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-bloques)
@@ -35,21 +35,20 @@ Y lo mismo con python:
 sudo apt install python
 
 ```
+Y también hay que asegurarse de tener una version de node compatible con Pilas Bloques (>= 8):
 
-Y también hay que asegurarse de tener node (actualmente compilamos con node 6)
-
-Podemos lograrlo con nvm, para lo cual hay que instalarlo:
+Para lograrlo, podemos instalarlo ejecutando el siguiente script:
 ```
-git clone https://github.com/creationix/nvm.git ~/.nvm
+git clone https://github.com/nvm-sh/nvm.git ~/.nvm
 source ~/.nvm/nvm.sh
 source ~/.nvm/install.sh
 ```
-
-Y luego elegir la versión de node:
+Y luego instalar la versión Long Term Support (LTS) mas actual de Node.js, actualmente lleva el nombre en clave Dubnium (Version 10.13.0).
 
 ```
-nvm install 6.11.3
-nvm use 6.11.3
+nvm install lts/dubnium
+nvm use lts/dubnium 
+
 ```
 
 Luego, se puede escribir el comando ``make`` para ver las tareas disponibles:

@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 
 
-export default Ember.Service.extend({
-  pilas: Ember.inject.service(),
+export default Service.extend({
+  pilas: service(),
 
   /**
    * Retorna un intérprete preparado para ejecutar el código que
@@ -24,7 +24,7 @@ export default Ember.Service.extend({
    * pueda usar funcioens como "hacer", "console.log" etc..
    */
   _initFunction(interpreter, scope, callback_cuando_ejecuta_bloque) {
-    let pilasService = this.get('pilas');
+    let pilasService = this.pilas;
     var actor = pilasService.evaluar(`pilas.escena_actual().automata;`);
 
     var console_log_wrapper = function(txt) {

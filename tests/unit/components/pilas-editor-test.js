@@ -1,19 +1,25 @@
-import { moduleFor, test } from 'ember-qunit';
-import { pilasMock, interpreterFactoryMock, actividadMock } from '../../helpers/mocks';
+import { module, test } from 'qunit';
+import { setupTest } from 'ember-qunit';
+import {
+  pilasMock,
+  interpreterFactoryMock,
+  actividadMock
+} from '../../helpers/mocks';
 import sinon from 'sinon';
 
-moduleFor('component:pilas-editor', 'Unit | Components | pilas-editor', {
-  setup() {
-    this.register('service:interpreterFactory', interpreterFactoryMock);
-    let ctrl = this.subject();
-    ctrl.set('model', actividadMock);
-    sinon.resetHistory();
-  }
-});
+module('Unit | Components | pilas-editor', function(hooks) {
+  setupTest(hooks);
 
-test('Si el desafío necesita modo de lectura simple debería indicárselo a pilas', function(assert) {
-  let ctrl = this.subject();
-  ctrl.send('onReady', pilasMock);
+  hooks.beforeEach(function() {
+      this.owner.register('service:interpreterFactory', interpreterFactoryMock);
+      this.ctrl = this.owner.factoryFor('component:pilas-editor').create();
+      this.ctrl.set('model', actividadMock);
+      sinon.resetHistory();
+  });
 
-  assert.ok(pilasMock.cambiarAModoDeLecturaSimple.called);
+  test('Si el desafío necesita modo de lectura simple debería indicárselo a pilas', function(assert) {
+    this.ctrl.send('onReady', pilasMock);
+
+    assert.ok(pilasMock.cambiarAModoDeLecturaSimple.called);
+  });
 });

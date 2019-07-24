@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Service from '@ember/service';
 
 //const URL = "http://localhost:3000/sendMessage";
 const URL_SEND_MESSAGE = "http://104.131.245.133:9914/sendMessage";
 
-export default Ember.Service.extend({
+export default Service.extend({
   compartir(mensaje, imagen) {
-    return new Ember.RSVP.Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       $.ajax({
         url: URL_SEND_MESSAGE,
         type: 'POST',

@@ -1,10 +1,10 @@
-import Ember from 'ember';
+import Service, { inject as service } from '@ember/service';
 
-export default Ember.Service.extend({
-  blockly: Ember.inject.service(),
+export default Service.extend({
+  blockly: service(),
 
   start() {
-    Blockly.textToBlock = this._textToBlock
+    Blockly.textToBlock = this._textToBlock;
     this._generarLenguaje();
     this._definirColores();
     this._definirBloqueAlIniciar();
@@ -17,9 +17,9 @@ export default Ember.Service.extend({
   },
 
   _textToBlock(text) {
-    return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace)
+    return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace);
   },
-  
+
   /*
    * Método auxiliar para crear un bloque acción.
    *
@@ -35,7 +35,7 @@ export default Ember.Service.extend({
     this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    let bloque = this.get('blockly').createCustomBlockWithHelper(nombre, opciones);
+    let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
     return bloque;
   },
@@ -52,10 +52,10 @@ export default Ember.Service.extend({
       throw new Error(`No existe el bloque ${nombreDelBloqueOriginal} al querer crear un alias, ¿Tal vez los argumentos están invertidos?`);
     }
 
-    let bloque = this.get('blockly').createAlias(nombre, nombreDelBloqueOriginal);
+    let bloque = this.blockly.createAlias(nombre, nombreDelBloqueOriginal);
     bloque.categoria = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoria;
 
-    if(categoriaCustom) {
+    if (categoriaCustom) {
       bloque.categoria_custom = categoriaCustom;
     }
 
@@ -84,7 +84,7 @@ export default Ember.Service.extend({
     formaDelBloque += opciones.descripcion;
     formaDelBloque += opciones.esBool ? "?" : "";
 
-    let blockly = this.get('blockly');
+    let blockly = this.blockly;
     let bloque = blockly.createCustomBlock(nombre, {
       message0: formaDelBloque,
       colour: opciones.colour || Blockly.Blocks.sensores.COLOUR,
@@ -116,7 +116,7 @@ export default Ember.Service.extend({
     this._validar_opciones_obligatorias(nombre, opciones, ['descripcion', 'icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
 
-    let bloque = this.get('blockly').createBlockValue(nombre, opciones);
+    let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
 
     return bloque;
@@ -596,7 +596,7 @@ export default Ember.Service.extend({
         }}`,
     });
 
-    let blockly = this.get('blockly');
+    let blockly = this.blockly;
 
     let bloque = blockly.createCustomBlock('MoverA', {
       message0: "Mover a %1",
@@ -711,14 +711,14 @@ export default Ember.Service.extend({
       code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
     });
 
-    Blockly.Blocks['SaltarHaciaAdelante'].toolbox = `
+    Blockly.Blocks.SaltarHaciaAdelante.toolbox = `
     <block type="SaltarHaciaAdelante">
       <value name="longitud">
         <block type="math_number"><field name="NUM">100</field></block></value>
     </block>
   `;
 
-    Blockly.Blocks['SaltarHaciaAdelante'].categoria = 'Primitivas';
+    Blockly.Blocks.SaltarHaciaAdelante.categoria = 'Primitivas';
 
 
 
@@ -744,14 +744,14 @@ export default Ember.Service.extend({
       code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
     });
 
-    Blockly.Blocks['DibujarLado'].toolbox = `
+    Blockly.Blocks.DibujarLado.toolbox = `
       <block type="DibujarLado">
         <value name="longitud">
           <block type="math_number"><field name="NUM">100</field></block></value>
       </block>
     `;
 
-    Blockly.Blocks['DibujarLado'].categoria = 'Primitivas';
+    Blockly.Blocks.DibujarLado.categoria = 'Primitivas';
 
     this.crearBloqueAccion('ComerChurrasco', {
       descripcion: 'Comer churrasco',
@@ -823,9 +823,9 @@ export default Ember.Service.extend({
       ],
     });
 
-    Blockly.Blocks['EscribirTextoDadoEnOtraCuadricula'].categoria = 'Primitivas';
+    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoria = 'Primitivas';
 
-    Blockly.MyLanguage['EscribirTextoDadoEnOtraCuadricula'] = function (block) {
+    Blockly.MyLanguage.EscribirTextoDadoEnOtraCuadricula = function (block) {
       return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
     };
 
@@ -851,14 +851,14 @@ export default Ember.Service.extend({
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
     });
 
-    Blockly.Blocks['GirarGrados'].toolbox = `
+    Blockly.Blocks.GirarGrados.toolbox = `
       <block type="GirarGrados">
         <value name="grados">
           <block type="math_number"><field name="NUM">90</field></block></value>
       </block>
     `;
 
-    Blockly.Blocks['GirarGrados'].categoria = 'Primitivas';
+    Blockly.Blocks.GirarGrados.categoria = 'Primitivas';
 
     this.crearBloqueAccion('MoverArribaDibujando', {
       descripcion: 'Mover arriba dibujando',
@@ -1115,7 +1115,7 @@ export default Ember.Service.extend({
       esBool: true
     });
 
-    let sensorHayVocal = this.get('blockly').createCustomBlock('hayVocalRMT', {
+    let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
       "type": "block_type",
       "message0": "%1 ¿La letra actual es una %2 ?",
       "args0": [
@@ -1141,7 +1141,7 @@ export default Ember.Service.extend({
     });
     sensorHayVocal.categoria = "Sensores";
 
-    Blockly.MyLanguage['hayVocalRMT'] = function (block) {
+    Blockly.MyLanguage.hayVocalRMT = function (block) {
       let codigo = `evaluar("leyendoCaracter('${block.getFieldValue('letra')}')")`;
       return [codigo, Blockly.MyLanguage.ORDER_ATOMIC];
     };
@@ -1196,7 +1196,7 @@ export default Ember.Service.extend({
 
   _definirBloqueAlIniciar() {
 
-    Blockly.Blocks['al_empezar_a_ejecutar'] = {
+    Blockly.Blocks.al_empezar_a_ejecutar = {
       init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
 
@@ -1214,7 +1214,7 @@ export default Ember.Service.extend({
 
   _definirBloquesEstructurasDeControl() {
 
-    Blockly.Blocks['RepetirVacio'] = {
+    Blockly.Blocks.RepetirVacio = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
@@ -1230,29 +1230,37 @@ export default Ember.Service.extend({
       categoria: 'Repeticiones',
     };
 
-    Blockly.Blocks['Repetir'] = {
-      init: Blockly.Blocks['RepetirVacio'].init,
-      categoria: Blockly.Blocks['RepetirVacio'].categoria,
+    Blockly.Blocks.Repetir = {
+      init: Blockly.Blocks.RepetirVacio.init,
+      categoria: Blockly.Blocks.RepetirVacio.categoria,
       toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
     };
 
-    let init_base_callnoreturn = Blockly.Blocks['procedures_callnoreturn'].init;
+    let init_base_callnoreturn = Blockly.Blocks.procedures_callnoreturn.init;
 
-    Blockly.Blocks['procedures_callnoreturn'].init = function () {
+    Blockly.Blocks.procedures_callnoreturn.init = function () {
       this.setInputsInline(true);
       init_base_callnoreturn.call(this);
     };
 
     function isInsideProcedureDef(paramBlock) {
-      return paramBlock.getRootBlock().id == paramBlock.$parent
+      return paramBlock.getRootBlock().id === paramBlock.$parent;
+    }
+
+    function hasParam(procedureBlock, paramBlock) {
+      return getParams(procedureBlock).includes(paramBlock.getFieldValue('VAR'))
     }
 
     function isFlying(block) {
-      return block.getRootBlock() == block
+      return block.getRootBlock() === block;
     }
 
     function getName(procedureBlock) {
-      return procedureBlock.getProcedureDef()[0]
+      return procedureBlock.getProcedureDef()[0];
+    }
+
+    function getParams(procedureBlock) {
+      return procedureBlock.getProcedureDef()[1]
     }
 
     Blockly.Blocks.variables_get = {
@@ -1262,9 +1270,9 @@ export default Ember.Service.extend({
           "message0": "%1",
           "args0": [
             {
-            "type": "field_label",
-            "name": "VAR",
-            "text": "nombre de variable"
+              "type": "field_label",
+              "name": "VAR",
+              "text": "nombre de variable"
             }
           ],
           "output": null,
@@ -1273,44 +1281,50 @@ export default Ember.Service.extend({
           "helpUrl": "",
         });
       },
-      mutationToDom: function() {
+      mutationToDom: function () {
         var container = document.createElement('mutation');
         container.setAttribute('var', this.getFieldValue('VAR'));
-        if (this.$parent) container.setAttribute("parent", this.$parent);
+        if (this.$parent) {
+          container.setAttribute("parent", this.$parent);
+        }
         return container;
       },
-      domToMutation: function(xmlElement) {
+      domToMutation: function (xmlElement) {
         var var_name = xmlElement.getAttribute('var');
         this.setFieldValue(var_name, 'VAR');
         this.$parent = xmlElement.getAttribute("parent") || null;
       },
-      onchange: function(event) {
-        if (event && event.blockId == this.$parent && event.type == Blockly.Events.BLOCK_DELETE) {
-          this.dispose()
+      onchange: function (event) {
+        if (event && event.blockId === this.$parent && event.type === Blockly.Events.BLOCK_DELETE) {
+          this.dispose();
           return;
         }
         if (this.$parent) { // Este if sirve para las soluciones viejas que no tienen $parent
-          var ok = isInsideProcedureDef(this)
           var procedureDef = this.workspace.getBlockById(this.$parent)
-          var warning = (ok || isFlying(this) || !procedureDef) ? null 
-                        : `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.` // TODO: Contemplar el caso en el que se borre el procedimiento (o debería eliminarse todos los parámetros?)
+          var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
+          var warning = 
+            (ok || isFlying(this) || !procedureDef) 
+            ? null 
+            : (hasParam(procedureDef, this)) 
+              ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
+              : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
           this.setWarningText(warning)
         }
       }
     };
 
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
-    let init_base_procedimiento = Blockly.Blocks['procedures_defnoreturn'].init;
+    let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
 
-    Blockly.Blocks['procedures_defnoreturn'].init = function () {
+    Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
     };
 
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
-    Blockly.Blocks['Si'] = {
+    Blockly.Blocks.Si = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
@@ -1324,7 +1338,7 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
-    Blockly.Blocks['SiNo'] = {
+    Blockly.Blocks.SiNo = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
@@ -1341,7 +1355,7 @@ export default Ember.Service.extend({
       categoria: 'Alternativas',
     };
 
-    Blockly.Blocks['Hasta'] = {
+    Blockly.Blocks.Hasta = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.setInputsInline(true);
@@ -1361,13 +1375,13 @@ export default Ember.Service.extend({
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
 
-    Blockly.MyLanguage['al_empezar_a_ejecutar'] = function (block) {
+    Blockly.MyLanguage.al_empezar_a_ejecutar = function (block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
       let codigo = `${programa}`;
       return codigo;
     };
 
-    Blockly.MyLanguage['RepetirVacio'] = function (block) {
+    Blockly.MyLanguage.RepetirVacio = function (block) {
       var repeats = Blockly.MyLanguage.valueToCode(block, 'count',
         Blockly.MyLanguage.ORDER_ASSIGNMENT) || '0';
 
@@ -1390,9 +1404,9 @@ export default Ember.Service.extend({
       return code;
     };
 
-    Blockly.MyLanguage['Repetir'] = Blockly.MyLanguage['RepetirVacio'];
+    Blockly.MyLanguage.Repetir = Blockly.MyLanguage.RepetirVacio;
 
-    Blockly.MyLanguage['Si'] = function (block) {
+    Blockly.MyLanguage.Si = function (block) {
       var condition = Blockly.JavaScript.valueToCode(block, 'condition', Blockly.JavaScript.ORDER_ATOMIC) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `if (${condition}) {
@@ -1400,7 +1414,7 @@ export default Ember.Service.extend({
       }`;
     };
 
-    Blockly.MyLanguage['SiNo'] = function (block) {
+    Blockly.MyLanguage.SiNo = function (block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var bloque_1 = Blockly.JavaScript.statementToCode(block, 'block1');
       var bloque_2 = Blockly.JavaScript.statementToCode(block, 'block2');
@@ -1412,7 +1426,7 @@ export default Ember.Service.extend({
       }`;
     };
 
-    Blockly.MyLanguage['Hasta'] = function (block) {
+    Blockly.MyLanguage.Hasta = function (block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
       return `while (!${condition}) {
@@ -1425,7 +1439,7 @@ export default Ember.Service.extend({
   },
 
   _definirOpAritmetica() { //Este código fue sacado de Blockly
-    this.get('blockly').createCustomBlock('OpAritmetica', {
+    this.blockly.createCustomBlock('OpAritmetica', {
       "type": "math_arithmetic",
       "message0": "%1 %2 %3",
       "args0": [
@@ -1458,7 +1472,7 @@ export default Ember.Service.extend({
       "extensions": ["math_op_tooltip"]
     });
 
-    Blockly.MyLanguage['OpAritmetica'] = function (block) {
+    Blockly.MyLanguage.OpAritmetica = function (block) {
       // Basic arithmetic operators, and power.
       var OPERATORS = {
         'ADD': [' + ', Blockly.JavaScript.ORDER_ADDITION],
@@ -1492,7 +1506,7 @@ export default Ember.Service.extend({
       return [code, order];
     };
 
-    Blockly.Blocks['OpAritmetica'].categoria = 'Operadores';
+    Blockly.Blocks.OpAritmetica.categoria = 'Operadores';
 
   },
 

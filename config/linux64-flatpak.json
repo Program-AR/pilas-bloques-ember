@@ -1,9 +1,0 @@
-{
-  "src": "binarios/pilasbloques-linux-x64/",
-  "arch": "x64",
-  "dest": "binarios/",
-  "icon": "extras/icono.icns",
-  "categories": [
-    "Education"
-  ]
-}

@@ -2,7 +2,6 @@
  * Una actividad se define con el siguiente diccionario:
  * id: <obligatorio> Es el número por el cual se accederá al desafío en la URL.
  * nombre: <obligatorio> Es un segundo identificador único. Se usa para cosas como para chequear que la solución cargada sea de este desafío y no otro.
- * grupoId: <obligatorio> Es el número de grupo en el que se inserta el desafío.
  * título: <obligatorio> Es el título visible del desafío en la lista del libro y en la pantalla principal del desafío.
  * enunciado: <obligatorio> Es el enunciado del desafío. Es la descripción del objetivo del programa que debe realizar el alumno.
  * consignaInicial: Es una posible pista, el "Sabías qué". En general en Pilas Bloques suele aparecer cuando el desafío introduce un concepto nuevo.
@@ -15,10 +14,11 @@
  * * * "aplanado", produce el mismo toolbox aplanado con los bloques visibles que "sinCategorias", pero con las categorías en labels. Al momento está sin implementar.
  */
 
+/*jshint esversion: 6 */
+
 export default [
   {
     id: 1,
-    grupoId: 1,
     nombre: 'AlienTocaBoton',
     titulo: 'El alien toca el botón',
     enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n' +
@@ -30,7 +30,6 @@ export default [
   },
   {
     id: 2,
-    grupoId: 1,
     nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
     titulo: 'El gato en la calle', // sale de 'nombre' en 'app/actividades/actividadElGatoEnLaCalle.js'
     enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
@@ -41,7 +40,6 @@ export default [
   },
   {
     id: 3,
-    grupoId: 1,
     nombre: 'NoMeCansoDeSaltar',
     titulo: 'No me canso de saltar',
     enunciado: 'Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.',
@@ -52,7 +50,6 @@ export default [
   },
   {
     id: 4,
-    grupoId: 1,
     nombre: 'ElMarcianoEnElDesierto',
     titulo: 'El marciano en el desierto',
     enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de manzanas',
@@ -63,7 +60,6 @@ export default [
   },
   {
     id: 5,
-    grupoId: 1,
     nombre: 'TitoEnciendeLuces',
     titulo: 'Tito enciende las luces',
     enunciado: 'Ayudá a Tito a encender todas las luces. \n' +
@@ -75,7 +71,6 @@ export default [
   },
   {
     id: 6,
-    grupoId: 1,
     nombre: 'ElAlienYLasTuercas',
     titulo: 'El alien y las tuercas',
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
@@ -85,7 +80,6 @@ export default [
   },
   {
     id: 7,
-    grupoId: 1,
     nombre: 'ElRecolectorDeEstrellas',
     titulo: 'El recolector de estrellas',
     enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.',
@@ -96,7 +90,6 @@ export default [
   },
   {
     id: 8,
-    grupoId: 1,
     nombre: 'MariaLaComeSandias',
     titulo: 'María y las sandías',
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
@@ -106,7 +99,6 @@ export default [
   },
   {
     id: 9,
-    grupoId: 1,
     nombre: 'AlimentandoALosPeces',
     titulo: 'Alimentando a los peces',
     enunciado: 'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: ¿Cuántas partes debería tener tu estrategia?',
@@ -117,7 +109,6 @@ export default [
   },
   {
     id: 10,
-    grupoId: 1,
     nombre: 'InstalandoJuegos',
     titulo: 'Instalando juegos',
     enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
@@ -127,7 +118,6 @@ export default [
   },
   {
     id: 11,
-    grupoId: 1,
     nombre: 'LaGranAventuraDelMarEncantado',
     titulo: 'La gran aventura del mar encantado',
     enunciado: 'Ayuda a la heroína a rescatar a su príncipe. Para ello debe superar en orden cada una de las siguientes pruebas:\n' +
@@ -142,7 +132,6 @@ export default [
   },
   {
     id: 12,
-    grupoId: 1,
     nombre: 'ReparandoLaNave',
     titulo: 'Reparando la nave',
     enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
@@ -152,7 +141,6 @@ export default [
   },
   {
     id: 13,
-    grupoId: 2,
     nombre: 'ElMonoYLasBananas',
     titulo: 'El mono y las bananas',
     enunciado:
@@ -167,7 +155,6 @@ export default [
   },
   {
     id: 14,
-    grupoId: 2,
     nombre: 'LaEleccionDelMono',
     titulo: 'La elección del mono',
     enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene ' +
@@ -181,7 +168,6 @@ export default [
   },
   {
     id: 15,
-    grupoId: 2,
     nombre: 'LaberintoCorto',
     titulo: 'Laberinto corto',
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
@@ -192,7 +178,6 @@ export default [
   },
   {
     id: 16,
-    grupoId: 2,
     nombre: 'TresNaranjas',
     titulo: 'Tres naranjas',
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
@@ -202,7 +187,6 @@ export default [
   },
   {
     id: 17,
-    grupoId: 2,
     nombre: 'TitoRecargado',
     titulo: 'Tito recargado',
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
@@ -212,7 +196,6 @@ export default [
   },
   {
     id: 18,
-    grupoId: 2,
     nombre: 'LaberintoLargo',
     titulo: 'Laberinto largo',
     enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
@@ -223,7 +206,6 @@ export default [
   },
   {
     id: 19,
-    grupoId: 3,
     nombre: 'SuperTito1',
     titulo: 'Súper Tito 1 ',
     enunciado: ' Ayudá a Tito a encender las luces. \n ¡Ojo! En todas las celdas hay una luz, pero no sabés cuántas celdas hay en cada ejecución.',
@@ -235,7 +217,6 @@ export default [
   },
   {
     id: 20,
-    grupoId: 3,
     nombre: 'SuperTito2',
     titulo: 'Súper Tito 2',
     enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
@@ -247,7 +228,6 @@ export default [
   },
   {
     id: 21,
-    grupoId: 3,
     nombre: 'LaberintoConQueso',
     titulo: 'Laberinto con queso',
     enunciado: '¡El ratón está más hambriento que nunca! Guialo por el laberinto para que pueda comer todos los trozos de queso. Pista: antes de empezar, apretá varias veces el botón Ejecutar para conocer cómo varía el escenario.',
@@ -260,7 +240,6 @@ export default [
   },
   {
     id: 22,
-    grupoId: 3,
     nombre: 'ElDetectiveChaparro',
     titulo: 'El detective Chaparro',
     enunciado: 'El detective debe descubrir al culpable de un crimen. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!',
@@ -273,7 +252,6 @@ export default [
   },
   {
     id: 23,
-    grupoId: 3,
     nombre: 'FutbolRobots',
     titulo: 'Fútbol para robots',
     enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
@@ -288,7 +266,6 @@ export default [
   },
   {
     id: 24,
-    grupoId: 3,
     nombre: 'PrendiendoLasCompus',
     titulo: 'Prendiendo las compus',
     enunciado:
@@ -302,7 +279,6 @@ export default [
   },
   {
     id: 25,
-    grupoId: 3,
     nombre: 'ElMonoQueSabeContar',
     titulo: 'El mono que sabe contar',
     enunciado: 'El mono debe recorrer todas las casillas y contar cuántas bananas y manzanas hay en total. Pista: primero pensá cómo contarías si hay una manzana o una banana en una casilla determinada. Luego pensá cómo harías para contar todas las frutas de una sola columna.',
@@ -316,7 +292,6 @@ export default [
   },
   {
     id: 26,
-    grupoId: 4,
     nombre: 'ElSuperviaje',
     titulo: 'El Superviaje',
     enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.',
@@ -328,7 +303,6 @@ export default [
   },
   {
     id: 27,
-    grupoId: 4,
     nombre: 'ElMonoCuentaDeNuevo',
     titulo: 'El mono cuenta de nuevo',
     enunciado: 'El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?',
@@ -343,7 +317,6 @@ export default [
   },
   {
     id: 28,
-    grupoId: 5,
     nombre: 'ElPlanetaDeNano',
     titulo: 'El planeta de Nano',
     escena: 'ElPlanetaDeNano',
@@ -356,7 +329,6 @@ export default [
   },
   {
     id: 29,
-    grupoId: 5,
     nombre: 'DibujandoAlCuadrado',
     titulo: 'Dibujando: Al cuadrado',
     enunciado: 'Dibujá un cuadrado que tenga 100 de lado.',
@@ -368,7 +340,6 @@ export default [
   },
   {
     id: 30,
-    grupoId: 5,
     nombre: 'DibujandoRayuelaRobotica',
     titulo: 'Dibujando: Rayuela robótica',
     enunciado: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.',
@@ -380,7 +351,6 @@ export default [
   },
   {
     id: 31,
-    grupoId: 5,
     nombre: 'DibujandoCortoPorLaDiagonal',
     titulo: 'Dibujando: Corto por la diagonal',
     enunciado: 'Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.',
@@ -392,7 +362,6 @@ export default [
   },
   {
     id: 32,
-    grupoId: 5,
     nombre: 'DibujandoMamushkaCuadrada',
     titulo: 'Dibujando: Mamushka cuadrada',
     enunciado: 'Dibujá 4 cuadrados de lados 50, 100, 150 y 200, como muestra la figura sombreada. Pista: creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado.',
@@ -404,7 +373,6 @@ export default [
   },
   {
     id: 33,
-    grupoId: 5,
     nombre: 'DibujandoEscaleraCuadrada',
     titulo: 'Dibujando: Escalera cuadrada',
     enunciado: 'Dibujá 5 cuadrados: 4 de lado 50 y uno de 100, como muestra la figura sombreada.',
@@ -416,7 +384,6 @@ export default [
   },
   {
     id: 34,
-    grupoId: 5,
     nombre: 'DibujandoHexagono',
     titulo: 'Dibujando: Hexágono',
     enunciado: 'Dibujá un hexágono de lado 100, como muestra la figura sombreada. Pista: pensá cuántos grados debe girar el robot sabiendo cuánto miden los ángulos internos del hexágono.',
@@ -428,7 +395,6 @@ export default [
   },
   {
     id: 35,
-    grupoId: 5,
     nombre: 'DibujandoPiramideInvertida',
     titulo: 'Dibujando: Pirámide invertida',
     enunciado: 'Dibujá un triángulo equilátero de lado 100, como muestra la figura sombreada. Pista: pensá si existe una relación entre los ángulos y la cantidad de lados.',
@@ -440,7 +406,6 @@ export default [
   },
   {
     id: 36,
-    grupoId: 5,
     nombre: 'DibujandoFigurasDentroDeFiguras',
     titulo: 'Dibujando: Figuras dentro de figuras',
     enunciado: 'Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados. ',
@@ -452,7 +417,6 @@ export default [
   },
   {
     id: 37,
-    grupoId: 5,
     nombre: 'DibujandoLaCuevaDeEstalagtitas',
     titulo: 'Dibujando: La cueva de estalagtitas',
     enunciado: 'Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.',
@@ -464,7 +428,6 @@ export default [
   },
   {
     id: 130,
-    grupoId: 5,
     nombre: 'LaFiestaDeDracula',
     titulo: 'La fiesta de Drácula',
     escena: 'LaFiestaDeDracula',
@@ -475,7 +438,6 @@ export default [
   },
   {
     id: 131,
-    grupoId: 5,
     nombre: 'SalvandoLaNavidad',
     titulo: 'Salvando la Navidad',
     escena: 'SalvandoLaNavidad',
@@ -485,7 +447,6 @@ export default [
   },
   {
     id: 132,
-    grupoId: 5,
     nombre: 'PrendiendoLasCompusParametrizado',
     titulo: 'Prendiendo las compus parametrizado',
     escena: 'PrendiendoLasCompus',
@@ -500,7 +461,6 @@ export default [
   },
   {
     id: 133,
-    grupoId: 5,
     nombre: 'TitoCuadrado',
     titulo: 'Tito cuadrado',
     escena: 'TitoCuadrado',
@@ -512,7 +472,6 @@ export default [
   },
   {
     id: 134,
-    grupoId: 5,
     nombre: 'ElCangrejoAguafiestas',
     titulo: 'El cangrejo aguafiestas',
     escena: 'ElCangrejoAguafiestas',
@@ -525,7 +484,6 @@ export default [
   },
   {
     id: 135,
-    grupoId: 5,
     nombre: 'PrendiendoLasFogatas',
     titulo: 'Prendiendo las fogatas',
     escena: 'PrendiendoLasFogatas',
@@ -543,7 +501,6 @@ export default [
 
   {
     id: 136,
-    grupoId: 5,
     nombre: 'DibujoLibre',
     titulo: '¡Dibujo libre!',
     imagen: 'DibujoLibre',
@@ -557,7 +514,6 @@ export default [
 
   {
     id: 201,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -580,7 +536,6 @@ export default [
   },
   {
     id: 202,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -604,7 +559,6 @@ export default [
   },
   {
     id: 203,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -628,7 +582,6 @@ export default [
   },
   {
     id: 204,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2d',
     titulo: 'Desafío 4',
     escena: `new EscenaDuba("\
@@ -652,7 +605,6 @@ export default [
   },
   {
     id: 205,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2e',
     titulo: 'Desafío 5',
     escena: `new EscenaDuba("\
@@ -676,7 +628,6 @@ export default [
   },
   {
     id: 206,
-    grupoId: 'manual1cPrimaria3.1.2',
     nombre: '3.1.2f',
     titulo: 'Desafío 6',
     escena: `new EscenaDuba("\
@@ -700,7 +651,6 @@ export default [
   },
   {
     id: 207,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaCoty(
@@ -716,7 +666,6 @@ export default [
   },
   {
     id: 208,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaCoty(
@@ -731,7 +680,6 @@ export default [
   },
   {
     id: 209,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -746,7 +694,6 @@ export default [
   },
   {
     id: 210,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3d',
     titulo: 'Desafío 4',
     escena: `new EscenaCotySonrisa()`,
@@ -766,7 +713,6 @@ export default [
   },
   {
     id: 211,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3e',
     titulo: 'Desafío 5',
     escena: `new EscenaCoty(
@@ -790,7 +736,6 @@ export default [
   },
   {
     id: 212,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3f',
     titulo: 'Desafío 6',
     escena: `new EscenaCotyCactus()`,
@@ -801,7 +746,6 @@ export default [
   },
   {
     id: 213,
-    grupoId: 'manual1cPrimaria3.1.3',
     nombre: '3.1.3g',
     titulo: 'Desafío 7',
     escena: `new EscenaCotyMate()`,
@@ -812,7 +756,6 @@ export default [
   },
   {
     id: 214,
-    grupoId: 'manual1cPrimaria3.1.4',
     nombre: '3.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -838,7 +781,6 @@ export default [
   },
   {
     id: 215,
-    grupoId: 'manual1cPrimaria3.1.4',
     nombre: '3.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -864,7 +806,6 @@ export default [
   },
   {
     id: 216,
-    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -888,7 +829,6 @@ export default [
   },
   {
     id: 217,
-    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -912,7 +852,6 @@ export default [
   },
   {
     id: 218,
-    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2c',
     titulo: 'Desafío 3',
     escena: `new EscenaLita("\
@@ -936,7 +875,6 @@ export default [
   },
   {
     id: 219,
-    grupoId: 'manual1cPrimaria3.2.2',
     nombre: '3.2.2d',
     titulo: 'Desafío 4',
     escena: `new EscenaLita("\
@@ -959,7 +897,6 @@ export default [
   },
   {
     id: 220,
-    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -1020,7 +957,6 @@ export default [
   },
   {
     id: 221,
-    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -1065,7 +1001,6 @@ export default [
   },
   {
     id: 222,
-    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -1114,7 +1049,6 @@ export default [
   },
   {
     id: 223,
-    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3d',
     titulo: 'Desafío 4',
     escena: `new EscenaDuba("\
@@ -1171,7 +1105,6 @@ export default [
   },
   {
     id: 224,
-    grupoId: 'manual1cPrimaria3.2.3',
     nombre: '3.2.3e',
     titulo: 'Desafío 5',
     escena: `new EscenaLita("\
@@ -1234,7 +1167,6 @@ export default [
   },
   {
     id: 225,
-    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaTotoLector([
@@ -1255,7 +1187,6 @@ export default [
   },
   {
     id: 226,
-    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaTotoLector([
@@ -1275,7 +1206,6 @@ export default [
   },
   {
     id: 227,
-    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1c',
     titulo: 'Desafío 3',
     escena: `new EscenaTotoLector([
@@ -1295,7 +1225,6 @@ export default [
   },
   {
     id: 228,
-    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1d',
     titulo: 'Desafío 4',
     escena: `new EscenaTotoLector([
@@ -1348,7 +1277,6 @@ export default [
   },
   {
     id: 229,
-    grupoId: 'manual1cPrimaria3.I',
     nombre: '3.I1e',
     titulo: 'Desafío 5',
     escena: `new EscenaTotoLector([
@@ -1401,7 +1329,6 @@ export default [
   },
   {
     id: 230,
-    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -1429,7 +1356,6 @@ export default [
   },
   {
     id: 231,
-    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -1456,7 +1382,6 @@ export default [
   },
   {
     id: 232,
-    grupoId: 'manual1cPrimaria4.1.3',
     nombre: '4.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -1483,7 +1408,6 @@ export default [
   },
   {
     id: 233,
-    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaCoty(
@@ -1509,7 +1433,6 @@ export default [
   },
   {
     id: 234,
-    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaCoty(
@@ -1534,7 +1457,6 @@ export default [
   },
   {
     id: 235,
-    grupoId: 'manual1cPrimaria4.1.4',
     nombre: '4.1.4c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1559,7 +1481,6 @@ export default [
   },
   {
     id: 236,
-    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("\
@@ -1613,7 +1534,6 @@ export default [
   },
   {
     id: 237,
-    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("\
@@ -1666,7 +1586,6 @@ export default [
   },
   {
     id: 238,
-    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1720,7 +1639,6 @@ export default [
   },
   {
     id: 239,
-    grupoId: 'manual1cPrimaria4.2.3',
     nombre: '4.2.3d',
     titulo: 'Desafío 4',
     escena: `new EscenaCoty(
@@ -1790,7 +1708,6 @@ export default [
   },
   {
     id: 240,
-    grupoId: 'manual1cPrimaria4.I',
     nombre: '4.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("\
@@ -1818,7 +1735,6 @@ export default [
   },
   {
     id: 241,
-    grupoId: 'manual1cPrimaria4.I',
     nombre: '4.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaLita("\
@@ -1893,7 +1809,6 @@ export default [
   },
   {
     id: 242,
-    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
@@ -1913,7 +1828,6 @@ export default [
   },
   {
     id: 243,
-    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
@@ -1932,7 +1846,6 @@ export default [
   },
   {
     id: 244,
-    grupoId: 'manual1cPrimaria5.1.3',
     nombre: '5.1.3c',
     titulo: 'Desafío 3',
     escena: `new EscenaCoty(
@@ -1958,7 +1871,6 @@ export default [
   },
   {
     id: 245,
-    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4a',
     titulo: 'Desafío 1',
     escena: `new EscenaLita("[A,-,L|T]")`,
@@ -1982,7 +1894,6 @@ export default [
   },
   {
     id: 246,
-    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba(["\
@@ -2018,7 +1929,6 @@ export default [
   },
   {
     id: 247,
-    grupoId: 'manual1cPrimaria5.1.4',
     nombre: '5.1.4c',
     titulo: 'Desafío 3',
     escena: `new EscenaDuba("\
@@ -2046,7 +1956,6 @@ export default [
   },
   {
     id: 248,
-    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1a',
     titulo: 'Desafío 1',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
@@ -2068,7 +1977,6 @@ export default [
   },
   {
     id: 249,
-    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1b',
     titulo: 'Desafío 2',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
@@ -2090,7 +1998,6 @@ export default [
   },
   {
     id: 250,
-    grupoId: 'manual1cPrimaria5.2.1',
     nombre: '5.2.1c',
     titulo: 'Desafío 3',
     escena: `new EscenaLita("[A],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[E]", { coleccion: ["T", "L"] })`,
@@ -2114,7 +2021,6 @@ export default [
   },
   {
     id: 251,
-    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1a',
     titulo: 'Desafío 1',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
@@ -2136,7 +2042,6 @@ export default [
 
   {
     id: 252,
-    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1b',
     titulo: 'Desafío 2',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
@@ -2159,7 +2064,6 @@ export default [
 
   {
     id: 253,
-    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1c',
     titulo: 'Desafío 3',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
@@ -2183,7 +2087,6 @@ export default [
 
   {
     id: 254,
-    grupoId: 'manual1cPrimaria5.I',
     nombre: '5.I1d',
     titulo: 'Desafío 4',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
@@ -2207,7 +2110,6 @@ export default [
 
   {
     id: 255,
-    grupoId: 'manual1cPrimariaOtros',
     nombre: 'CotyDibujoLibre',
     titulo: '¡Coty dibuja libre!',
     imagen: 'Coty',
@@ -2224,7 +2126,6 @@ export default [
   // para el manual de Tandil y no están pensados para ser usados por los alumnos.
   {
     id: 'paracaptura01',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1a',
     titulo: 'Cap. 3 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2239,7 +2140,6 @@ export default [
   },
   {
     id: 'paracaptura02',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-1',
     titulo: 'Cap. 3 / SD2 / A1 b-1',
     imagen: 'Duba',
@@ -2253,7 +2153,6 @@ export default [
   },
   {
     id: 'paracaptura03',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-2',
     titulo: 'Cap. 3 / SD2 / A1 b-2',
     imagen: 'Duba',
@@ -2267,7 +2166,6 @@ export default [
   },
   {
     id: 'paracaptura04',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-3',
     titulo: 'Cap. 3 / SD2 / A1 b-3',
     imagen: 'Duba',
@@ -2281,7 +2179,6 @@ export default [
   },
   {
     id: 'paracaptura05',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1b-4',
     titulo: 'Cap. 3 / SD2 / A1 b-4',
     imagen: 'Duba',
@@ -2295,7 +2192,6 @@ export default [
   },
   {
     id: 'paracaptura06',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1 c',
     titulo: 'Cap. 3 / SD2 / A1 c',
     imagen: 'Coty',
@@ -2309,7 +2205,6 @@ export default [
   },
   {
     id: 'paracaptura07',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.2.1 d',
     titulo: 'Cap. 3 / SD2 / A1 d',
     imagen: 'Coty',
@@ -2323,7 +2218,6 @@ export default [
   },
   {
     id: 'paracaptura08',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a',
     imagen: 'Toto',
@@ -2336,7 +2230,6 @@ export default [
   },
   {
     id: 'paracaptura09',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b',
     imagen: 'Toto',
@@ -2351,7 +2244,6 @@ export default [
   },
   {
     id: 'paracaptura10',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 a',
     titulo: 'Cap. 3 / Integradora / A1 a V2',
     imagen: 'Toto',
@@ -2366,7 +2258,6 @@ export default [
   },
   {
     id: 'paracaptura11',
-    grupoId: 'manual1cPrimariaCapturasCap3',
     nombre: '3.I1 b',
     titulo: 'Cap. 3 / Integradora / A1 b V2',
     imagen: 'Toto',
@@ -2381,7 +2272,6 @@ export default [
   },
   {
     id: 'paracaptura12',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1a',
     titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2397,7 +2287,6 @@ export default [
   },
   {
     id: 'paracaptura13',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1b',
     titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
@@ -2413,7 +2302,6 @@ export default [
   },
   {
     id: 'paracaptura14',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.1c',
     titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
@@ -2429,7 +2317,6 @@ export default [
   },
   {
     id: 'paracaptura15',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2a',
     titulo: 'Cap. 4 / SD2 / A1 a',
     imagen: 'Duba',
@@ -2448,7 +2335,6 @@ export default [
   },
   {
     id: 'paracaptura16',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2b',
     titulo: 'Cap. 4 / SD2 / A1 b',
     imagen: 'Duba',
@@ -2467,7 +2353,6 @@ export default [
   },
   {
     id: 'paracaptura17',
-    grupoId: 'manual1cPrimariaCapturasCap4',
     nombre: '4.2.2c',
     titulo: 'Cap. 4 / SD2 / A1 c',
     imagen: 'Duba',
@@ -2486,7 +2371,6 @@ export default [
   },
   {
     id: 'paracaptura18',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2a',
     titulo: 'Cap. 5 / SD2 / A2 a',
     imagen: 'Duba',
@@ -2499,7 +2383,6 @@ export default [
   },
   {
     id: 'paracaptura19',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2b',
     titulo: 'Cap. 5 / SD2 / A2 b',
     imagen: 'Duba',
@@ -2512,7 +2395,6 @@ export default [
   },
   {
     id: 'paracaptura20',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2c',
     titulo: 'Cap. 5 / SD2 / A2 c',
     imagen: 'Duba',
@@ -2525,7 +2407,6 @@ export default [
   },
   {
     id: 'paracaptura21',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2d',
     titulo: 'Cap. 5 / SD2 / A2 d',
     imagen: 'Duba',
@@ -2538,7 +2419,6 @@ export default [
   },
   {
     id: 'paracaptura22',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2e',
     titulo: 'Cap. 5 / SD2 / A2 e',
     imagen: 'Duba',
@@ -2551,7 +2431,6 @@ export default [
   },
   {
     id: 'paracaptura23',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2f',
     titulo: 'Cap. 5 / SD2 / A2 f',
     imagen: 'Duba',
@@ -2564,7 +2443,6 @@ export default [
   },
   {
     id: 'paracaptura24',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2g',
     titulo: 'Cap. 5 / SD2 / A2 g',
     imagen: 'Duba',
@@ -2577,7 +2455,6 @@ export default [
   },
   {
     id: 'paracaptura25',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2h',
     titulo: 'Cap. 5 / SD2 / A2 h',
     imagen: 'Duba',
@@ -2590,7 +2467,6 @@ export default [
   },
   {
     id: 'paracaptura26',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2i',
     titulo: 'Cap. 5 / SD2 / A2 i',
     imagen: 'Duba',
@@ -2603,7 +2479,6 @@ export default [
   },
   {
     id: 'paracaptura27',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2j',
     titulo: 'Cap. 5 / SD2 / A2 j',
     imagen: 'Duba',
@@ -2616,7 +2491,6 @@ export default [
   },
   {
     id: 'paracaptura28',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2k',
     titulo: 'Cap. 5 / SD2 / A2 k',
     imagen: 'Duba',
@@ -2629,7 +2503,6 @@ export default [
   },
   {
     id: 'paracaptura29',
-    grupoId: 'manual1cPrimariaCapturasCap5',
     nombre: '5SD2A2l',
     titulo: 'Cap. 5 / SD2 / A2 l',
     imagen: 'Duba',

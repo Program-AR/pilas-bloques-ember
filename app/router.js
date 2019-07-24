@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { on } from '@ember/object/evented';
+import EmberRouter from '@ember/routing/router';
 import config from './config/environment';
 
-const Router = Ember.Router.extend({
+const Router = EmberRouter.extend({
   location: config.locationType
 });
 
@@ -23,9 +24,9 @@ Router.map(function() {
 });
 
 Router.reopen({
-  notifyGoogleAnalytics: Ember.on("didTransition", function() {
+  notifyGoogleAnalytics: on("didTransition", function() {
     if (ga && config.googleAnalyticsEnabled) {
-      let url = this.get('url');
+      let url = this.url;
       ga('send', 'pageview', {page: url, title: url});
     }
   })

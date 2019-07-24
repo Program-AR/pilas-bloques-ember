@@ -1,18 +1,21 @@
-import { test } from 'qunit';
-import moduleForAcceptance from 'pilasbloques/tests/helpers/module-for-acceptance';
-import acercaDe from '../pages/acerca-de';
+import { module, test } from 'qunit';
+import { setupApplicationTest } from 'ember-qunit';
+import { create, visitable, text, count } from 'ember-cli-page-object';
 
-moduleForAcceptance('Acceptance | acercade');
+const page = create({
+  visit: visitable('/acercade'),
+  scope: '.contenido-principal',
+  titulo: text("h1"),
+  cantidadDeBotones: count('button')
+});
 
-test('visiting /acercade', function(assert) {
+module('Acceptance | acercade', function (hooks) {
+  setupApplicationTest(hooks);
 
-  acercaDe.
-    visit();
-
-  andThen(function() {
-    assert.ok(acercaDe.titulo(), "Tiene título");
-    assert.equal(acercaDe.titulo(), "Acerca de Pilas Bloques", "Aparece el título de la aplicación.");
-    assert.equal(acercaDe.cantidadDeBotones(), 1, "Existe un solo botón");
+  test('visiting /acercade', async function (assert) {
+    await page.visit();
+    assert.ok(page.titulo, "Tiene título");
+    assert.equal(page.titulo, "Acerca de Pilas Bloques", "Aparece el título de la aplicación.");
+    assert.equal(page.cantidadDeBotones, 1, "Existe un solo botón");
   });
-
 });

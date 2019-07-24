@@ -1,9 +1,11 @@
-import Ember from 'ember';
+import { alias } from '@ember/object/computed';
+import { inject as service } from '@ember/service';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-  notificador: Ember.inject.service(),
-  hayActualizacion: Ember.computed.alias('notificador.hayActualizacion'),
-  versionMasReciente: Ember.computed.alias('notificador.versionActual'),
+export default Controller.extend({
+  notificador: service(),
+  hayActualizacion: alias('notificador.hayActualizacion'),
+  versionMasReciente: alias('notificador.versionActual'),
 
   actions: {
     visitarWeb() {
