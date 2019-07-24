@@ -16,8 +16,6 @@ os:
 services:
   - xvfb
 sudo: false
-node_js:
-  - 'lts/dubnium'
 cache:
   directories:
   - node_modules
