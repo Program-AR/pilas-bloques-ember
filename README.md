@@ -1,7 +1,7 @@
 Pilas Bloques
 =============
 
-- Issues planificados para este sprint: [![Stories in Ready](https://badge.waffle.io/Program-AR/pilas-bloques.png?label=ready&title=Ready)](http://waffle.io/Program-AR/pilas-bloques)
+- Issues planificados para este sprint: [Stories in Ready](https://github.com/orgs/Program-AR/projects/1)
 
 - Rama master: [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-bloques)
 - Rama develop (principal): [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-bloques)
