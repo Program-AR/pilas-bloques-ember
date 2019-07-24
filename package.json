@@ -77,7 +77,6 @@
     "ember-exam": "4.0.0",
     "ember-export-application-global": "^2.0.0",
     "ember-font-awesome": "4.0.0-rc.4",
-    "ember-inflector": "3.0.1",
     "ember-inspector": "3.10.0",
     "ember-load-initializers": "2.0.0",
     "ember-modal-dialog": "^3.0.0-beta.4",
