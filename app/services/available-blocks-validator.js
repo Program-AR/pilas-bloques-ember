@@ -4,7 +4,7 @@ import Ember from 'ember';
 export default Ember.Service.extend({
     
     globalAvailableBlocks: ["al_empezar_a_ejecutar", "numero"],
-    procedureBlocks: ["procedure", "variable", "param"],
+    procedureBlocks: ["procedures_defnoreturn", "procedures_callnoreturn", "variables_get", "param_get"],
 
     disableNotAvailableBlocksInWorkspace(activityBlocks) {
         Blockly.getMainWorkspace()
@@ -14,16 +14,20 @@ export default Ember.Service.extend({
     },
 
     _isAvailable(block, activityBlocks) {
-        let blockName = (block.alias || block.type).toLowerCase()
-
-        if (this.globalAvailableBlocks.includes(blockName)) return true;
-
+        if (this._match(this.globalAvailableBlocks, block)) return true;
+        
         let activityAvailableBlocks = activityBlocks.map(name => name.toLowerCase())
         
-        if (this.procedureBlocks.some(it => blockName.includes(it)))
+        if (this._match(this.procedureBlocks, block))
             return activityAvailableBlocks.includes("procedimiento")
 
-        return activityAvailableBlocks.includes(blockName)
+        return this._match(activityAvailableBlocks, block)
+    },
+
+    _match(availableBlocks, currentBlock) {
+        let aliases = currentBlock.aliases || []
+        return  availableBlocks.includes(currentBlock.type.toLowerCase())
+        ||      aliases.some(alias => availableBlocks.includes(alias.toLowerCase()))
     },
 
     _disable(block) {
