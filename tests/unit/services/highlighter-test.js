@@ -76,7 +76,6 @@ module('Unit | Service | highlighter', function (hooks) {
   `]
 
   test('Should highlight repetition block', function (assert) {
-    console.log(highlighter);
     loadProgramAndSendSteps(3, repetitionProgram)
     assertHighlight(assert, ['repetir'])
   });
