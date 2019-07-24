@@ -468,8 +468,8 @@ export default Component.extend({
         this.onChangeWorkspace(xml)
     },
 
-    newWorkspace() {
-      this.get('availableBlocksValidator').disableNotAvailableBlocksInWorkspace(this.get('bloques'))
+    onNewWorkspace() {
+      this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.bloques)
     },
 
   }
