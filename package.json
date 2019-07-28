@@ -90,11 +90,9 @@
     "loader.js": "4.7.0",
     "node-sass": "4.12.0",
     "qunit-dom": "0.9.0",
+    "typescript": "3.5.3",
     "sass": "1.22.7",
     "yuidoc-ember-cli-theme": "1.0.4"
-  },
-  "dependencies": {
-    "typescript": "3.5.3"
   },
   "main": "electron.js",
   "ember-electron": {

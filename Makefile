@@ -50,19 +50,19 @@ comandos:
 	@echo ""
 
 
-iniciar: iniciar_ejercicios
+iniciar: 
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
 	@node_modules/bower/bin/bower install --allow-root
-
-iniciar_ejercicios:
-	@echo "${G}instalando dependencias de ejerciciosPilas...${N}"
-	cd ejerciciosPilas; npm install
+	@node_modules/Pilas-Bloques-Exercises/node_modules/bower/bin/bower install --allow-root
 
 compilar_ejercicios_pilas:
-	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt
+	@cd node_modules/Pilas-Bloques-Exercises; echo "${G}Compilando ejercicios para Pilas Bloques${N}"; node_modules/grunt-cli/bin/grunt
 
-pre_ember_build: compilar_ejercicios_pilas actualizar_imagenes
+copiar_ejercicios_pilas:
+	@echo "${G}Agregando los ejercicios previamente compilados a Pilas Bloques${N}"; cp -rf node_modules/Pilas-Bloques-Exercises/dist/ejerciciosPilas.js public/libs/
+
+pre_ember_build: compilar_ejercicios_pilas copiar_ejercicios_pilas actualizar_imagenes
 
 dist: compilar
 
@@ -96,20 +96,18 @@ version_minor:
 version_major:
 	./node_modules/ember-cli/bin/ember release --major
 
-
 limpiar_todo:
 	@echo "Limpiando bibliotecas..."
 	@echo "(se reinstalarán a continuación)"
 	@sleep 1s;
 	@echo "Borrando node_modules, tmp y bower_components ..."
-	@rm -rf node_modules/ bower_components/ tmp/
-	@echo "Borrando node_modules de ejerciciosPilas..."
-	@rm -rf ejerciciosPilas/node_modules/
+	@rm -rf node_modules/ bower_components/ tmp/ public/libs/ejerciciosPilas.js
 	@sleep 1s;
+
 
 full: limpiar_todo full_travis
 
-full_travis: iniciar compilar_ejercicios_pilas
+full_travis: iniciar compilar_ejercicios_pilas copiar_ejercicios_pilas
 
 empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
