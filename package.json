@@ -135,5 +135,9 @@
       "ProductName": null,
       "InternalName": null
     }
+  },
+  "dependencies": {
+    "pilasweb": "^0.4.9",
+    "pilas-bloques-exercises": "^0.2.0"
   }
 }

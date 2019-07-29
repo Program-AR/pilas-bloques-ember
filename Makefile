@@ -24,11 +24,6 @@ comandos:
 	@echo "    ${G}test_travis${N}     Ejecuta las pruebas como esperamos en travis (en paralelo)."
 	@echo "    ${G}actualizar_imagenes${N}  Actualiza imagenes como iconos."
 	@echo ""
-	@echo ""
-	@echo "  ${Y}Para desarrolladores (avanzadas)${N}"
-	@echo ""
-	@echo "    ${G}compilar_ejercicios_pilas${N}       Compilar los ejercicios de pilas."
-	@echo ""
 	@echo "    ${L}El comando full es equivalente a realizar estos pasos en orden:${N}"
 	@echo "${L}"
 	@echo "       → iniciar → compilar_ejercicios_pilas"
@@ -54,15 +49,13 @@ iniciar:
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
 	@node_modules/bower/bin/bower install --allow-root
-	@node_modules/Pilas-Bloques-Exercises/node_modules/bower/bin/bower install --allow-root
 
-compilar_ejercicios_pilas:
-	@cd node_modules/Pilas-Bloques-Exercises; echo "${G}Compilando ejercicios para Pilas Bloques${N}"; node_modules/grunt-cli/bin/grunt
+compilar_ejercicios_pilas: # Para cuando se quiere probar los cambios a ejercicios_pilas SIN releasearlo
+	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
+	@cd ../Pilas-Bloques-Exercises; node_modules/grunt-cli/bin/grunt
+	@cp -rf ../Pilas-Bloques-Exercises/dist/pilas-bloques-exercises.js node_modules/pilas-bloques-exercises/dist/pilas-bloques-exercises.js
 
-copiar_ejercicios_pilas:
-	@echo "${G}Agregando los ejercicios previamente compilados a Pilas Bloques${N}"; cp -rf node_modules/Pilas-Bloques-Exercises/dist/ejerciciosPilas.js public/libs/
-
-pre_ember_build: compilar_ejercicios_pilas copiar_ejercicios_pilas actualizar_imagenes
+pre_ember_build: actualizar_imagenes
 
 dist: compilar
 
@@ -72,7 +65,8 @@ serve: pre_ember_build
 	./node_modules/ember-cli/bin/ember serve
 
 watch_ejercicios: 
-	@cd ejerciciosPilas; echo "${G}Compilando ejerciciosPilas${N}"; node_modules/grunt-cli/bin/grunt watch
+	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
+	@cd ../Pilas-Bloques-Exercises; node_modules/grunt-cli/bin/grunt watch
 
 compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build
@@ -83,9 +77,9 @@ compilar_web: pre_ember_build
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
 
-compilar_pilasweb:
+compilar_pilasweb: # Para cuando se quiere probar los cambios a pilasweb SIN releasearlo
 	cd ../pilasweb; make build
-	cp -rf ../pilasweb/dist bower_components/pilasweb/
+	cp -rf ../pilasweb/dist node_modules/pilasweb/
 
 version_patch:
 	./node_modules/ember-cli/bin/ember release
@@ -101,13 +95,11 @@ limpiar_todo:
 	@echo "(se reinstalarán a continuación)"
 	@sleep 1s;
 	@echo "Borrando node_modules, tmp y bower_components ..."
-	@rm -rf node_modules/ bower_components/ tmp/ public/libs/ejerciciosPilas.js
+	@rm -rf node_modules/ bower_components/ tmp/
 	@sleep 1s;
 
 
-full: limpiar_todo full_travis
-
-full_travis: iniciar compilar_ejercicios_pilas copiar_ejercicios_pilas
+full: limpiar_todo iniciar
 
 empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
