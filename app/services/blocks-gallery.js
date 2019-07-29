@@ -1196,28 +1196,10 @@ export default Service.extend({
 
   _definirBloqueAlIniciar() {
 
-    Blockly.Blocks.al_empezar_a_ejecutar = {
-      init: function () {
-        this.setColour(Blockly.Blocks.eventos.COLOUR);
-
-        this.appendDummyInput().appendField('Al empezar a ejecutar');
-
-        this.appendStatementInput('program');
-        this.setDeletable(false);
-
-        this.setEditable(false);
-        this.setMovable(false);
-      }
-    };
-
-  },
-
-  _definirBloquesEstructurasDeControl() {
-
-    Blockly.Blocks.blank_value = {
+    Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
-          "type": "blank_value",
+          "type": "required_value",
           "message0": "",
           "output": null,
           "colour": "#ffffff",
@@ -1232,10 +1214,10 @@ export default Service.extend({
       }
     };
 
-    Blockly.Blocks.blank_statement = {
+    Blockly.Blocks.required_statement = {
       init: function () {
         this.jsonInit({
-          "type": "blank_statement",
+          "type": "required_statement",
           "message0": "",
           "previousStatement": null,
           "colour": "#ffffff",
@@ -1249,7 +1231,22 @@ export default Service.extend({
           this.setWarningText("Hay un espacio en blanco!")
       }
     };
-    
+
+    Blockly.Blocks.al_empezar_a_ejecutar = {
+      init: function () {
+        this.setColour(Blockly.Blocks.eventos.COLOUR);
+        this.appendDummyInput().appendField('Al empezar a ejecutar');
+        this.appendStatementInput('program');
+        this.setDeletable(false);
+        this.setEditable(false);
+        this.setMovable(false);
+      },
+    };
+
+  },
+
+  _definirBloquesEstructurasDeControl() {
+
     Blockly.Blocks.RepetirVacio = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
@@ -1272,13 +1269,14 @@ export default Service.extend({
       toolbox: `
       <block type="repetir">
         <value name="count">
-          <block type="blank_value"></block>
+          <block type="math_number"><field name="NUM">10</field></block>
         </value>
         <value name="block">
-          <block type="blank_statement"></block>
+          <block type="required_statement"></block>
         </value>
       </block>
       `
+      //TODO: Al final dejar esto como debería estar
     };
 
     let init_base_callnoreturn = Blockly.Blocks.procedures_callnoreturn.init;
@@ -1420,11 +1418,11 @@ export default Service.extend({
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
 
-    Blockly.MyLanguage['blank_value'] = function (block) {
+    Blockly.MyLanguage.required_value = function () {
       return null
     };
 
-    Blockly.MyLanguage['blank_statement'] = function (block) {
+    Blockly.MyLanguage.required_statement = function () {
       return null
     };
 
