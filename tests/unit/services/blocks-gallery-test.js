@@ -20,24 +20,21 @@ function createBlock(type) {
   return Blockly.mainWorkspace.newBlock(type) 
 }
 
+function assertRequiredInputs(assert, block, inputType, blockType) {
+  block.inputList
+    .filter(input => input.type == inputType)
+    .forEach(input => {
+      let inputBlock = input.connection.targetBlock()
+      assert.ok(inputBlock, `${input.name} is required`)
+      assert.equal(inputBlock.type, blockType)
+    })
+}
+
 function testHasRequiredInputs(blockType) {
   test(`${blockType} has required inputs`, function(assert) {
     let block = createBlock(blockType)
-    block.inputList
-      .filter(input => input.type == Blockly.INPUT_VALUE)
-      .forEach(input => {
-        let inputBlock = input.connection.targetBlock()
-        assert.ok(inputBlock, `${input.name} is required`)
-        assert.equal(inputBlock.type, "required_value")
-      })
-
-    block.inputList
-      .filter(input => input.type == Blockly.NEXT_STATEMENT)
-      .forEach(input => {
-        let inputBlock = input.connection.targetBlock()
-        assert.ok(inputBlock, `${input.name} is required`)
-        assert.equal(inputBlock.type, "required_statement")
-      })
+    assertRequiredInputs(assert, block, Blockly.INPUT_VALUE, 'required_value')
+    assertRequiredInputs(assert, block, Blockly.NEXT_STATEMENT, 'required_statement')
   });  
 }
 
@@ -53,6 +50,8 @@ testHasRequiredInputs('SiNo')
 // Primitivas
 testHasRequiredInputs('GirarGrados')
 
+
+// Toolbox
 let toolbox = `
 <block type="GirarGrados">
   <value name="grados">
