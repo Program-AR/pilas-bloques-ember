@@ -52,8 +52,8 @@ iniciar:
 
 compilar_ejercicios_pilas: # Para cuando se quiere probar los cambios a ejercicios_pilas SIN releasearlo
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
-	@cd ../Pilas-Bloques-Exercises; node_modules/grunt-cli/bin/grunt
-	@cp -rf ../Pilas-Bloques-Exercises/dist/pilas-bloques-exercises.js node_modules/pilas-bloques-exercises/dist/pilas-bloques-exercises.js
+	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt
+	@cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/
 
 pre_ember_build: actualizar_imagenes
 
@@ -66,7 +66,7 @@ serve: pre_ember_build
 
 watch_ejercicios: 
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
-	@cd ../Pilas-Bloques-Exercises; node_modules/grunt-cli/bin/grunt watch
+	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
 
 compilar: pre_ember_build
 	./node_modules/ember-cli/bin/ember build

@@ -5,7 +5,7 @@ import console
 console.success("Generando lista de imagenes ...")
 
 current_path = os.path.dirname(os.path.realpath(__file__))
-image_path = os.path.join(current_path, '..', 'public', 'libs', 'data')
+image_path = os.path.join(current_path, '..', 'node_modules', 'pilas-bloques-exercises','dist', 'data')
 output_path = os.path.join(current_path, '..', 'app', 'components', 'listaImagenes.js')
 
 image_names = [x for x in os.listdir(image_path) if x.endswith('.png')]
