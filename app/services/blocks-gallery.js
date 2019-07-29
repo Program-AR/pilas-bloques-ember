@@ -849,7 +849,10 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
-    });
+    }, 
+      function() { requiredInput(this, 'grados') }
+    );
+    
 
     Blockly.Blocks.GirarGrados.toolbox = `
       <block type="GirarGrados">
@@ -1196,6 +1199,7 @@ export default Service.extend({
 
   _definirBloqueAlIniciar() {
 
+    //TODO: Mover a otro método
     Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
@@ -1259,6 +1263,9 @@ export default Service.extend({
         this.appendDummyInput()
           .appendField('veces');
         this.appendStatementInput('block');
+        
+        requiredInput(this, 'count');
+        requiredInput(this, 'block');
       },
       categoria: 'Repeticiones',
     };
@@ -1271,13 +1278,66 @@ export default Service.extend({
         <value name="count">
           <block type="math_number"><field name="NUM">10</field></block>
         </value>
-        <value name="block">
-          <block type="required_statement"></block>
-        </value>
       </block>
       `
-      //TODO: Al final dejar esto como debería estar
     };
+
+    Blockly.Blocks.Hasta = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.setInputsInline(true);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Repetir hasta que');
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+
+        requiredInput(this, 'condition');
+        requiredInput(this, 'block');
+      },
+      categoria: 'Repeticiones',
+    };
+
+
+    Blockly.Blocks.Si = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Si');
+        this.setInputsInline(true);
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+
+        requiredInput(this, 'condition');
+        requiredInput(this, 'block');
+      },
+      categoria: 'Alternativas',
+    };
+
+    Blockly.Blocks.SiNo = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Si');
+        this.appendStatementInput('block1');
+        this.setInputsInline(true);
+        this.appendDummyInput()
+          .appendField('si no');
+        this.appendStatementInput('block2');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+
+        requiredInput(this, 'condition');
+        requiredInput(this, 'block1');
+        requiredInput(this, 'block2');
+      },
+      categoria: 'Alternativas',
+    };
+
 
     let init_base_callnoreturn = Blockly.Blocks.procedures_callnoreturn.init;
 
@@ -1366,51 +1426,6 @@ export default Service.extend({
 
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
-
-    Blockly.Blocks.Si = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Si');
-        this.setInputsInline(true);
-        this.appendStatementInput('block');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Alternativas',
-    };
-
-    Blockly.Blocks.SiNo = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Si');
-        this.appendStatementInput('block1');
-        this.setInputsInline(true);
-        this.appendDummyInput()
-          .appendField('si no');
-        this.appendStatementInput('block2');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Alternativas',
-    };
-
-    Blockly.Blocks.Hasta = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.setInputsInline(true);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Repetir hasta que');
-        this.appendStatementInput('block');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Repeticiones',
-    };
 
   },
 
@@ -1631,3 +1646,13 @@ export default Service.extend({
   }
 
 });
+
+function requiredInput(block, inputName) {
+  let connection = block.getInput(inputName).connection
+  let shadowType =  (connection.type == Blockly.INPUT_VALUE)
+                    ? "required_value"
+                    : "required_statement"
+  var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
+  connection.setShadowDom(shadowValue)
+  connection.respawnShadow_() //TODO: Mirar bien cuándo tirar esto, tal vez convenga hacerlo al Ejecutar
+}

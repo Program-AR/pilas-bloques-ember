@@ -13,6 +13,67 @@ module('Unit | Service | blocks-gallery', function (hooks) {
   });
 
 
+
+///////////// REQUIRED INPUTS /////////////
+
+function createBlock(type) {
+  return Blockly.mainWorkspace.newBlock(type) 
+}
+
+function testHasRequiredInputs(blockType) {
+  test(`${blockType} has required inputs`, function(assert) {
+    let block = createBlock(blockType)
+    block.inputList
+      .filter(input => input.type == Blockly.INPUT_VALUE)
+      .forEach(input => {
+        let inputBlock = input.connection.targetBlock()
+        assert.ok(inputBlock, `${input.name} is required`)
+        assert.equal(inputBlock.type, "required_value")
+      })
+
+    block.inputList
+      .filter(input => input.type == Blockly.NEXT_STATEMENT)
+      .forEach(input => {
+        let inputBlock = input.connection.targetBlock()
+        assert.ok(inputBlock, `${input.name} is required`)
+        assert.equal(inputBlock.type, "required_statement")
+      })
+  });  
+}
+
+// Repeticiones
+testHasRequiredInputs('RepetirVacio')
+testHasRequiredInputs('Repetir')
+testHasRequiredInputs('Hasta')
+
+// Alternativas
+testHasRequiredInputs('Si')
+testHasRequiredInputs('SiNo')
+
+// Primitivas
+testHasRequiredInputs('GirarGrados')
+
+let toolbox = `
+<block type="GirarGrados">
+  <value name="grados">
+    <block type="math_number"><field name="NUM">90</field></block>
+  </value>
+</block>
+`
+
+test('When required input exists should be ok', function(assert) {
+  let block = Blockly.textToBlock(toolbox)
+  assert.notOk(findChildren(block, "required_value"))
+  assert.ok(block.allInputsFilled(false))
+});
+
+test('When required input exists and it is disposed should be required again', function(assert) {
+  let block = Blockly.textToBlock(toolbox)
+  findChildren(block, "math_number").dispose()
+  assert.ok(findChildren(block, "required_value"))
+  assert.notOk(block.allInputsFilled(false))
+});
+
 ///////////// PARAMS /////////////
 
 
@@ -143,15 +204,16 @@ test('Parameter without parent procedure should be always ok', function(assert) 
 
 
 function findParam(rootBlock) {
-    let type = "variables_get"
-    let param = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
+    let param = findChildren(rootBlock, "variables_get")
     param.onchange() // Force initialize
     return param
 }
 
 
 function findChildren(rootBlock, type) {
-    return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
+  if (!rootBlock) return null
+  if (rootBlock.type == type) return rootBlock
+  return rootBlock.getChildren().map(b => findChildren(b, type)).find(b => b != undefined)
 }
 
 
