@@ -22,7 +22,6 @@ comandos:
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
 	@echo "    ${G}compilar_web${N}    Genera la aplicación para la versión web (desde un iframe)."
 	@echo "    ${G}test_travis${N}     Ejecuta las pruebas como esperamos en travis (en paralelo)."
-	@echo "    ${G}actualizar_imagenes${N}  Actualiza imagenes como iconos."
 	@echo ""
 	@echo "    ${L}El comando full es equivalente a realizar estos pasos en orden:${N}"
 	@echo "${L}"
@@ -55,24 +54,19 @@ compilar_ejercicios_pilas: # Para cuando se quiere probar los cambios a ejercici
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt
 	@cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/
 
-pre_ember_build: actualizar_imagenes
-
 dist: compilar
 
 build: compilar
 
-serve: pre_ember_build
-	./node_modules/ember-cli/bin/ember serve
+serve: ./node_modules/ember-cli/bin/ember serve
 
 watch_ejercicios: 
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
 
-compilar: pre_ember_build
-	./node_modules/ember-cli/bin/ember build
+compilar: ./node_modules/ember-cli/bin/ember build
 
-compilar_web: pre_ember_build
-	./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
+compilar_web: ./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 
 compilar_live:
 	./node_modules/ember-cli/bin/ember build --watch
@@ -149,9 +143,6 @@ _empaquetar_flatpak_linux_64:
 	$(call empaquetar,linux,x64,icns)
 	node_modules/.bin/electron-installer-flatpak --arch x64 --config=packaging/linux-package.json
 	mv binarios/io.atom.electron.${NOMBRE}_master_x64.flatpak binarios/${NOMBRE}-${VERSION}-x64.flatpak
-
-actualizar_imagenes:
-	cd scripts; python generarListaImagenes.py
 
 test_travis:
 	./node_modules/ember-cli/bin/ember test
