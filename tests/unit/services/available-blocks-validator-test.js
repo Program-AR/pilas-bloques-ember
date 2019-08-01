@@ -94,7 +94,7 @@ test('Should disable procedure blocks when they are not available', function(ass
   assertNotAvailable(assert, procedureCall)
 });
 
-test('Should not disable procedure blocks when they are not available', function(assert) {
+test('Should not disable procedure blocks when they are available', function(assert) {
   let procedure = Blockly.textToBlock(procedureDefinition)
   let variable = findBlockByTypeIn(procedure, "variables_get")
   let program = Blockly.textToBlock(procedureCallProgram)
