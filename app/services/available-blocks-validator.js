@@ -3,8 +3,8 @@ import Ember from 'ember';
 /// Este service deshabilita los bloques que no estén disponibles para una actividad
 export default Ember.Service.extend({
     
-    globalAvailableBlocks: ["al_empezar_a_ejecutar", "numero"],
-    procedureBlocks: ["procedures_defnoreturn", "procedures_callnoreturn", "variables_get", "param_get"],
+    globalAvailableBlockTypes: ["al_empezar_a_ejecutar", "numero"],
+    procedureRelatedBlockTypes: ["procedures_defnoreturn", "procedures_callnoreturn", "variables_get", "param_get"],
 
     disableNotAvailableBlocksInWorkspace(activityBlocks) {
         Blockly.getMainWorkspace()
@@ -14,20 +14,21 @@ export default Ember.Service.extend({
     },
 
     _isAvailable(block, activityBlocks) {
-        if (this._match(this.globalAvailableBlocks, block)) return true;
-        
-        let activityAvailableBlocks = activityBlocks.map(name => name.toLowerCase())
-        
-        if (this._match(this.procedureBlocks, block))
-            return activityAvailableBlocks.includes("procedimiento")
-
-        return this._match(activityAvailableBlocks, block)
+        return  this._match(this.globalAvailableBlockTypes, block)
+        ||      this._match(activityBlocks, block)
+        ||      (this._match(this.procedureRelatedBlockTypes, block) && this._includes(activityBlocks, "procedimiento"))
     },
 
-    _match(availableBlocks, currentBlock) {
+    _match(availableBlockTypes, currentBlock) {
         let aliases = currentBlock.aliases || []
-        return  availableBlocks.includes(currentBlock.type.toLowerCase())
-        ||      aliases.some(alias => availableBlocks.includes(alias.toLowerCase()))
+        return  this._includes(availableBlockTypes, currentBlock.type)
+        ||      aliases.some(alias => this._includes(availableBlockTypes, alias))
+    },
+
+    _includes(availableBlockTypes, type) {
+        return availableBlockTypes
+            .map(name => name.toLowerCase())
+            .includes(type.toLowerCase())
     },
 
     _disable(block) {
