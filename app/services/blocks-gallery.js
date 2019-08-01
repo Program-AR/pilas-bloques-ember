@@ -1536,7 +1536,12 @@ export default Service.extend({
       "colour": "%{BKY_MATH_HUE}",
       "helpUrl": "%{BKY_MATH_ARITHMETIC_HELPURL}",
       "extensions": ["math_op_tooltip"]
-    });
+    },
+      function() { 
+        requiredInput(this, "A")
+        requiredInput(this, "B")
+      } 
+    );
 
     Blockly.MyLanguage.OpAritmetica = function (block) {
       // Basic arithmetic operators, and power.

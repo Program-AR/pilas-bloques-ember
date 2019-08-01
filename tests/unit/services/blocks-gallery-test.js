@@ -47,6 +47,10 @@ testHasRequiredInputs('Hasta')
 testHasRequiredInputs('Si')
 testHasRequiredInputs('SiNo')
 
+// Operadores
+testHasRequiredInputs('OpAritmetica')
+testHasRequiredInputs('OpComparacion') //TODO
+
 // Primitivas
 testHasRequiredInputs('GirarGrados')
 
