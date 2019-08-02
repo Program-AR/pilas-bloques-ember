@@ -1,8 +1,13 @@
+export function createBlock(type) {
+    return Blockly.mainWorkspace.newBlock(type) 
+}
+  
 export function findBlockByTypeIn(rootBlock, type) {
     if (!rootBlock) return null
     if (rootBlock.type == type) return rootBlock
     return rootBlock.getChildren().map(b => findBlockByTypeIn(b, type)).find(b => b != undefined)
 }
+
 
 ////// ASSERT //////
 

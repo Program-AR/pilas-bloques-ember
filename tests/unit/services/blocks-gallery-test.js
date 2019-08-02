@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
-import { findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
+import { createBlock, findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
 
 module('Unit | Service | blocks-gallery', function (hooks) {
   setupTest(hooks);
@@ -16,10 +16,6 @@ module('Unit | Service | blocks-gallery', function (hooks) {
 
 
 ///////////// REQUIRED INPUTS /////////////
-
-function createBlock(type) {
-  return Blockly.mainWorkspace.newBlock(type) 
-}
 
 function testHasRequiredInputs(blockType) {
   test(`${blockType} has required inputs`, function(assert) {

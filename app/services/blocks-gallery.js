@@ -1667,9 +1667,7 @@ export default Service.extend({
 function requiredAllInputs(block) {
   block.inputList
   .filter(input => input.connection && input.connection.getShadowDom() == null)
-  .forEach(input => {
-    requiredInput(block, input.name)
-  })
+  .forEach(input => requiredInput(block, input.name))
 }
 
 function requiredInput(block, inputName) {
