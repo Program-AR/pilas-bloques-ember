@@ -14,7 +14,6 @@ export default Component.extend({
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
-  // environment: service(), // esto no lo reconoce ember 3
   interpreterFactory: service(),
   abrirConsignaInicial: false,
   solucion: null,
@@ -27,11 +26,8 @@ export default Component.extend({
   modoTuboHabilitado: false,
 
   highlighter: service(),
-  twitter: service(),
-  previewData: null, // representa la imagen previsualización del dialogo para twittear.
-  mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
-  compartirEnCurso: false,
-  //browser: Ember.inject.service(),
+  availableBlocksValidator: service(),
+
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
@@ -404,16 +400,6 @@ export default Component.extend({
 
     },
 
-    compartir() {
-      this.set('abrirDialogoCompartir', true);
-      let data = this.pilas.obtenerCapturaDePantalla();
-      this.set('previewData', data);
-    },
-
-    ocultarModalTwitter() {
-      this.set('abrirDialogoCompartir', false);
-    },
-
     abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
     },
@@ -422,35 +408,12 @@ export default Component.extend({
       this.set('mostrarDialogoFinDesafio', false);
     },
 
-    abrirMensajePublicado() {
-      let url = this.mensajePublicadoURL;
-      this.browser.openLink(url);
-    },
-
     abrirReporteProblemas() {
       this.set('mostrarDialogoReporteProblemas', true);
     },
 
     cerrarReporteProblemas() {
       this.set('mostrarDialogoReporteProblemas', false);
-    },
-
-    enviarMensaje() {
-      this.set('envioEnCurso', true);
-
-      let mensaje = this.mensajeCompartir;
-      let imagen = this.previewData;
-
-      this.twitter.compartir(mensaje, imagen).
-
-        then((data) => {
-          this.set('envioEnCurso', false);
-          this.set('mensajePublicadoURL', data.url);
-        }).
-        catch((err) => {
-          alert(err);
-          this.set('envioEnCurso', false);
-        });
     },
 
     step() {
@@ -465,7 +428,11 @@ export default Component.extend({
       this.set('codigoActualEnFormatoXML', xml);
       if (this.onChangeWorkspace)
         this.onChangeWorkspace(xml)
-    }
+    },
+
+    onNewWorkspace() {
+      this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.bloques)
+    },
 
   }
 
