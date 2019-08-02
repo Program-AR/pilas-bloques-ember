@@ -21,16 +21,6 @@ function createBlock(type) {
   return Blockly.mainWorkspace.newBlock(type) 
 }
 
-function assertRequiredInputs(assert, block, inputType, blockType) {
-  block.inputList
-    .filter(input => input.type == inputType)
-    .forEach(input => {
-      let inputBlock = input.connection.targetBlock()
-      assert.ok(inputBlock, `${input.name} is required`)
-      assert.equal(inputBlock.type, blockType)
-    })
-}
-
 function testHasRequiredInputs(blockType) {
   test(`${blockType} has required inputs`, function(assert) {
     let block = createBlock(blockType)
@@ -62,8 +52,20 @@ testHasRequiredInputs('SaltarHaciaAdelante')
 // testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') //TODO: field_input (texto)
 
 // Procedimientos
-testHasRequiredInputs('procedures_callnoreturn')
+testHasRequiredInputs('procedures_defnoreturn')
 
+let precedureCall = `
+<block type="procedures_callnoreturn">
+  <mutation name="Hacer algo">
+    <arg name="parámetro 1"></arg>
+  </mutation>
+</block>
+`
+test('procedures_callnoreturn has required inputs', function(assert) {
+  let block = Blockly.textToBlock(precedureCall)
+  block.onchange() // Force update
+  assert.ok(findBlockByTypeIn(block, "required_value"))
+})
 
 // Toolbox
 let toolbox = `
@@ -78,14 +80,25 @@ test('When required input exists should be ok', function(assert) {
   let block = Blockly.textToBlock(toolbox)
   assert.notOk(findBlockByTypeIn(block, "required_value"))
   assert.ok(block.allInputsFilled(false))
-});
+})
 
 test('When required input exists and it is disposed should be required again', function(assert) {
   let block = Blockly.textToBlock(toolbox)
   findBlockByTypeIn(block, "math_number").dispose()
   assert.ok(findBlockByTypeIn(block, "required_value"))
   assert.notOk(block.allInputsFilled(false))
-});
+})
+
+
+function assertRequiredInputs(assert, block, inputType, blockType) {
+  block.inputList
+    .filter(input => input.type == inputType)
+    .forEach(input => {
+      let inputBlock = input.connection.targetBlock()
+      assert.ok(inputBlock, `${input.name} is required`)
+      assert.equal(inputBlock.type, blockType)
+    })
+}
 
 ///////////// PARAMS /////////////
 

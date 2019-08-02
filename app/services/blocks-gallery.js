@@ -1353,6 +1353,10 @@ export default Service.extend({
       init_base_callnoreturn.call(this);
     };
 
+    Blockly.Blocks.procedures_callnoreturn.onchange = function () {
+      requiredAllInputs(this) // Input fields are added after instantiation 
+    };
+
     function isInsideProcedureDef(paramBlock) {
       return paramBlock.getRootBlock().id === paramBlock.$parent;
     }
@@ -1429,6 +1433,7 @@ export default Service.extend({
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
+      requiredInput(this, "STACK")
     };
 
     delete Blockly.Blocks.procedures_defreturn;
@@ -1659,6 +1664,13 @@ export default Service.extend({
   }
 
 });
+function requiredAllInputs(block) {
+  block.inputList
+  .filter(input => input.connection && input.connection.getShadowDom() == null)
+  .forEach(input => {
+    requiredInput(block, input.name)
+  })
+}
 
 function requiredInput(block, inputName) {
   let connection = block.getInput(inputName).connection
