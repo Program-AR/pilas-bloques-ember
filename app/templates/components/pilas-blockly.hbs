@@ -104,7 +104,7 @@
                   targetAttachment="center"
                   translucentOverlay=true
                   containerClass="dialogoAjustado"}}
-    {{modal-title title="Reportar un problema" close='cerrarReporteProblemas'}}
+    {{modal-title title="Reportar un problema" close=(action "cerrarReporteProblemas")}}
     {{info-reportar-problema}}
   {{/modal-dialog}}
 {{/if}}
