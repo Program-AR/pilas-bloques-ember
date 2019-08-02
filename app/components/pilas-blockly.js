@@ -27,11 +27,7 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
-  twitter: service(),
-  previewData: null, // representa la imagen previsualización del dialogo para twittear.
-  mensajeCompartir: 'Comparto mi solución de Pilas Bloques',
-  compartirEnCurso: false,
-  //browser: Ember.inject.service(), // TODO: Eliminar esto?
+
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
@@ -404,16 +400,6 @@ export default Component.extend({
 
     },
 
-    compartir() {
-      this.set('abrirDialogoCompartir', true);
-      let data = this.pilas.obtenerCapturaDePantalla();
-      this.set('previewData', data);
-    },
-
-    ocultarModalTwitter() {
-      this.set('abrirDialogoCompartir', false);
-    },
-
     abrirFinDesafio() {
       this.set('mostrarDialogoFinDesafio', true);
     },
@@ -422,35 +408,12 @@ export default Component.extend({
       this.set('mostrarDialogoFinDesafio', false);
     },
 
-    abrirMensajePublicado() {
-      let url = this.mensajePublicadoURL;
-      this.browser.openLink(url);
-    },
-
     abrirReporteProblemas() {
       this.set('mostrarDialogoReporteProblemas', true);
     },
 
     cerrarReporteProblemas() {
       this.set('mostrarDialogoReporteProblemas', false);
-    },
-
-    enviarMensaje() {
-      this.set('envioEnCurso', true);
-
-      let mensaje = this.mensajeCompartir;
-      let imagen = this.previewData;
-
-      this.twitter.compartir(mensaje, imagen).
-
-        then((data) => {
-          this.set('envioEnCurso', false);
-          this.set('mensajePublicadoURL', data.url);
-        }).
-        catch((err) => {
-          alert(err);
-          this.set('envioEnCurso', false);
-        });
     },
 
     step() {
