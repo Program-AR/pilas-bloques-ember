@@ -39,6 +39,8 @@ function testHasRequiredInputs(blockType) {
   });  
 }
 
+testHasRequiredInputs('al_empezar_a_ejecutar') //TODO: ????
+
 // Repeticiones
 testHasRequiredInputs('RepetirVacio')
 testHasRequiredInputs('Repetir')
@@ -50,10 +52,17 @@ testHasRequiredInputs('SiNo')
 
 // Operadores
 testHasRequiredInputs('OpAritmetica')
-testHasRequiredInputs('OpComparacion') //TODO
+// testHasRequiredInputs('OpComparacion') //TODO
 
 // Primitivas
+testHasRequiredInputs('MoverA')
+testHasRequiredInputs('DibujarLado')
 testHasRequiredInputs('GirarGrados')
+testHasRequiredInputs('SaltarHaciaAdelante')
+// testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') //TODO: field_input (texto)
+
+// Procedimientos
+testHasRequiredInputs('procedures_callnoreturn')
 
 
 // Toolbox

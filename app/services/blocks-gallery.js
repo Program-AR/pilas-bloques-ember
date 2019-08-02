@@ -611,7 +611,9 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "MovimientoEnCuadricula", {direccionCasilla: $direccion});'
-    });
+    }, 
+      function() { requiredInput(this, 'direccion') }
+    );
 
     bloque.categoria = "Primitivas";
 
@@ -709,7 +711,9 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
-    });
+    }, 
+      function() { requiredInput(this, 'longitud') }
+    );
 
     Blockly.Blocks.SaltarHaciaAdelante.toolbox = `
     <block type="SaltarHaciaAdelante">
@@ -742,7 +746,9 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
-    });
+    }, 
+      function() { requiredInput(this, 'longitud') }
+    );
 
     Blockly.Blocks.DibujarLado.toolbox = `
       <block type="DibujarLado">
@@ -1244,6 +1250,7 @@ export default Service.extend({
         this.setDeletable(false);
         this.setEditable(false);
         this.setMovable(false);
+        requiredInput(this, 'program')
       },
     };
 
