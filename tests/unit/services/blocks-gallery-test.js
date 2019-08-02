@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
+import { findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
 
 module('Unit | Service | blocks-gallery', function (hooks) {
   setupTest(hooks);
@@ -66,14 +67,14 @@ let toolbox = `
 
 test('When required input exists should be ok', function(assert) {
   let block = Blockly.textToBlock(toolbox)
-  assert.notOk(findChildren(block, "required_value"))
+  assert.notOk(findBlockByTypeIn(block, "required_value"))
   assert.ok(block.allInputsFilled(false))
 });
 
 test('When required input exists and it is disposed should be required again', function(assert) {
   let block = Blockly.textToBlock(toolbox)
-  findChildren(block, "math_number").dispose()
-  assert.ok(findChildren(block, "required_value"))
+  findBlockByTypeIn(block, "math_number").dispose()
+  assert.ok(findBlockByTypeIn(block, "required_value"))
   assert.notOk(block.allInputsFilled(false))
 });
 
@@ -101,8 +102,8 @@ let procedure = `
 
 test('Parameter in parent procedure should be ok', function(assert) {
     let param = findParam(Blockly.textToBlock(procedure))
-    assert.notOk(param.disabled)
-    assert.notOk(param.warning)
+    assertNotDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 
@@ -155,8 +156,8 @@ let main = `
 test('Parameter in non parent procedure should be disabled and with warning', function(assert) {
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(main))
-    assert.ok(param.disabled)
-    assert.equal(param.warning.getText(), "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
+    assertDisabled(assert, param)
+    assertWarning(assert, param, "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.") 
 });
 
 
@@ -169,8 +170,8 @@ let flying = `
 test('Parameter in non parent procedure should only be disabled', function(assert) {
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(flying))
-    assert.ok(param.disabled)
-    assert.notOk(param.warning)
+    assertDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 test('Parameter should dispose when procedure is disposed', function(assert) {
@@ -200,33 +201,18 @@ let mainWithoutParent = `
 
 test('Parameter without parent procedure should be always ok', function(assert) {
     let param = findParam(Blockly.textToBlock(mainWithoutParent))
-    assert.notOk(param.disabled)
-    assert.notOk(param.warning)
+    assertNotDisabled(assert, param)
+    assertNotWarning(assert, param)
 });
 
 
 
 function findParam(rootBlock) {
-    let param = findChildren(rootBlock, "variables_get")
+    let param = findBlockByTypeIn(rootBlock, "variables_get")
     param.onchange() // Force initialize
     return param
 }
 
-
-function findChildren(rootBlock, type) {
-  if (!rootBlock) return null
-  if (rootBlock.type == type) return rootBlock
-  return rootBlock.getChildren().map(b => findChildren(b, type)).find(b => b != undefined)
-}
-
-
-
-function assertAsync(assert, fn) {
-  let done = assert.async(1)
-  setTimeout(function() {
-      fn(); done()
-  })
-}
 
 ///////////// ALIAS /////////////
 
