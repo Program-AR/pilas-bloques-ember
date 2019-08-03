@@ -38,7 +38,7 @@ testHasRequiredInputs('SiNo')
 
 // Operadores
 testHasRequiredInputs('OpAritmetica')
-// testHasRequiredInputs('OpComparacion') //TODO
+testHasRequiredInputs('OpComparacion')
 
 // Primitivas
 testHasRequiredInputs('MoverA')

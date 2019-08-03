@@ -13,7 +13,7 @@ export default Service.extend({
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
-    this._definirOpAritmetica(); // Should be after alias
+    this._definirOperaciones(); // Should be after alias
   },
 
   _textToBlock(text) {
@@ -1516,7 +1516,7 @@ export default Service.extend({
     Blockly.MyLanguage.addReservedWords('highlightBlock');
   },
 
-  _definirOpAritmetica() { //Este código fue sacado de Blockly
+  _definirOperaciones() { //Este código fue sacado de Blockly
     this.blockly.createCustomBlock('OpAritmetica', {
       "type": "math_arithmetic",
       "message0": "%1 %2 %3",
@@ -1591,6 +1591,63 @@ export default Service.extend({
 
     Blockly.Blocks.OpAritmetica.categoria = 'Operadores';
 
+    this.blockly.createCustomBlock('OpComparacion', {
+      "type": "logic_compare",
+      "message0": "%1 %2 %3",
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "A"
+        },
+        {
+          "type": "field_dropdown",
+          "name": "OP",
+          "options": [
+            ["=", "EQ"],
+            ["\u2260", "NEQ"],
+            ["\u200F<", "LT"],
+            ["\u200F\u2264", "LTE"],
+            ["\u200F>", "GT"],
+            ["\u200F\u2265", "GTE"]
+          ]
+        },
+        {
+          "type": "input_value",
+          "name": "B"
+        }
+      ],
+      "inputsInline": true,
+      "output": "Boolean",
+      "style": "logic_blocks",
+      "helpUrl": "%{BKY_LOGIC_COMPARE_HELPURL}",
+      "extensions": ["logic_compare", "logic_op_tooltip"]
+    },
+      function() { 
+        requiredInput(this, "A")
+        requiredInput(this, "B")
+      } 
+    );
+    
+    Blockly.MyLanguage.OpComparacion = function(block) {
+      // Comparison operator.
+      var OPERATORS = {
+        'EQ': '==',
+        'NEQ': '!=',
+        'LT': '<',
+        'LTE': '<=',
+        'GT': '>',
+        'GTE': '>='
+      };
+      var operator = OPERATORS[block.getFieldValue('OP')];
+      var order = (operator == '==' || operator == '!=') ?
+          Blockly.JavaScript.ORDER_EQUALITY : Blockly.JavaScript.ORDER_RELATIONAL;
+      var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
+      var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
+      var code = argument0 + ' ' + operator + ' ' + argument1;
+      return [code, order];
+    };    
+
+    Blockly.Blocks.OpComparacion.categoria = 'Operadores';
   },
 
   _definirBloquesAlias() {
@@ -1666,7 +1723,7 @@ export default Service.extend({
 });
 function requiredAllInputs(block) {
   block.inputList
-  .filter(input => input.connection && input.connection.getShadowDom() == null)
+  .filter(input => input.connection && input.connection.targetConnection == null && input.connection.getShadowDom() == null)
   .forEach(input => requiredInput(block, input.name))
 }
 
