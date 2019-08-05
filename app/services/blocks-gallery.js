@@ -1721,6 +1721,7 @@ export default Service.extend({
   }
 
 });
+
 function requiredAllInputs(block) {
   block.inputList
   .filter(input => input.connection && input.connection.targetConnection == null && input.connection.getShadowDom() == null)

@@ -16,6 +16,7 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   hooks.beforeEach(function() {
       this.owner.register('service:interpreterFactory', interpreterFactoryMock);
       this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
+      this.owner.lookup('service:blocksGallery').start()
 
       this.ctrl = this.owner.factoryFor('component:pilas-blockly').create();
       this.ctrl.pilas = pilasMock; //TODO: Injectar como service
@@ -77,5 +78,78 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     assert.notOk(this.ctrl.get('errorDeActividad'));
     assert.ok(pilasMock.reiniciarEscenaCompleta.called);
   });
+
+
+  let simpleProgram = `
+    <block type="al_empezar_a_ejecutar">
+      <statement name="program">
+        <block type="MoverACasillaDerecha"></block>
+      </statement>
+    </block>
+  `
+
+  test('Ejecuta cuando todos los bloques están completos', function(assert) {
+    Blockly.textToBlock(simpleProgram)
+
+    this.ctrl.send('ejecutar');
+
+    assert.ok(interpreteMock.run.called);
+  });
+
+  test('No ejecuta cuando el programa tiene algún agujero', function(assert) {
+    let program = `
+    <block type="al_empezar_a_ejecutar">
+      <statement name="program">
+        <block type="repetir">
+          <value name="count">
+            <block type="math_number">
+              <field name="NUM">10</field>
+            </block>
+          </value>
+        </block>
+      </statement>
+    </block>
+    `
+    Blockly.textToBlock(program)
+
+    this.ctrl.send('ejecutar');
+
+    assert.notOk(interpreteMock.run.called);
+  });
+
+  test('Ejecuta cuando existe algún bloque con agujeros pero no se usa', function(assert) {
+    let bloqueSuelto = `    
+    <block type="repetir" disabled="true">
+      <value name="count">
+        <block type="math_number">
+          <field name="NUM">10</field>
+        </block>
+      </value>
+    </block>
+    `
+
+    Blockly.textToBlock(simpleProgram)
+    Blockly.textToBlock(bloqueSuelto)
+
+    this.ctrl.send('ejecutar');
+
+    assert.ok(interpreteMock.run.called);
+  });
+
+  test('No ejecuta cuando existe algún procedimiento vacío', function(assert) {
+    let emptyProcedure = `    
+    <block type="procedures_defnoreturn">
+      <field name="NAME">Hacer algo</field>
+    </block>
+    `
+
+    Blockly.textToBlock(simpleProgram)
+    Blockly.textToBlock(emptyProcedure)
+
+    this.ctrl.send('ejecutar');
+
+    assert.notOk(interpreteMock.run.called);
+  });
+
 });
 

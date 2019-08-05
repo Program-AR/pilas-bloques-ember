@@ -358,7 +358,7 @@ export default Component.extend({
       event.runCode = true
       Blockly.Events.fire(event)
 
-      if (!Blockly.mainWorkspace.getTopBlocks().every(b => b.allInputsFilled(false))) return;
+      if (!Blockly.mainWorkspace.getTopBlocks().filter(b => !b.disabled).every(b => b.allInputsFilled(false))) return;
 
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
