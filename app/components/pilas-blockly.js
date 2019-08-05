@@ -349,16 +349,20 @@ export default Component.extend({
     this.highlighter.clear()
   },
 
+  allEnabledTopBlocksFilled() {
+    return Blockly.mainWorkspace.getTopBlocks()
+      .filter(block => !block.disabled)
+      .every(block => block.allInputsFilled(false))
+  },
+
   actions: {
     ejecutar(pasoAPaso = false) {
-      this.pilas.reiniciarEscenaCompleta();
+      Blockly.Events.fireRunCode()
+      if (!this.allEnabledTopBlocksFilled()) return;
+      
+      this.pilas.reiniciarEscenaCompleta()
 
       this.setModoTurbo()
-      let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
-      event.runCode = true
-      Blockly.Events.fire(event)
-
-      if (!Blockly.mainWorkspace.getTopBlocks().filter(b => !b.disabled).every(b => b.allInputsFilled(false))) return;
 
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza

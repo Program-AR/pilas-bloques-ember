@@ -5,6 +5,7 @@ export default Service.extend({
 
   start() {
     Blockly.textToBlock = this._textToBlock;
+    Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
     this._definirBloqueAlIniciar();
@@ -18,6 +19,12 @@ export default Service.extend({
 
   _textToBlock(text) {
     return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace);
+  },
+
+  _fireRunCodeEvent() {
+    let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
+    event.runCode = true
+    Blockly.Events.fire(event)
   },
 
   /*
