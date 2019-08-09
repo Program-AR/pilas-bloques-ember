@@ -1239,7 +1239,7 @@ export default Service.extend({
       },
       onchange: function(event) {
         if (event && event.runCode) {
-          this.setWarningText("Hay un espacio en blanco!")
+          this.setWarningText("¡Acá falta un bloque expresión!")
           opaque(this)
         }
       }
@@ -1260,7 +1260,7 @@ export default Service.extend({
       },
       onchange: function(event) {
         if (event && event.runCode) {
-          this.setWarningText("Hay un espacio en blanco!")
+          this.setWarningText("¡Acá faltan bloques comandos!")
           opaque(this)
         }
       }

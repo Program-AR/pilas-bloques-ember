@@ -159,7 +159,7 @@ module('Unit | Components | pilas-blockly', function(hooks) {
 
     this.ctrl.send('ejecutar')
 
-    later(() => assertWarning(assert, required, "Hay un espacio en blanco!"))
+    later(() => assertWarning(assert, required, "¡Acá faltan bloques comandos!"))
   })
 
 })
