@@ -5,7 +5,7 @@ export function createBlock(type) {
 export function findBlockByTypeIn(rootBlock, type) {
     if (!rootBlock) return null
     if (rootBlock.type == type) return rootBlock
-    return rootBlock.getChildren().map(b => findBlockByTypeIn(b, type)).find(b => b != undefined)
+    return rootBlock.getChildren().map(b => findBlockByTypeIn(b, type)).find(b => b != null)
 }
 
 

@@ -1746,9 +1746,15 @@ export default Service.extend({
 
 });
 
+function shouldAddRequiredShadow(connection) {
+  return  connection.getShadowDom() == null // Should have not a shadow block
+  &&      [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
+}
+
+// Agrega un required shadow a todos los input que sean para encastrar otros bloques
 function requiredAllInputs(block) {
   block.inputList
-  .filter(input => input.connection && input.connection.targetConnection == null && input.connection.getShadowDom() == null)
+  .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
   .forEach(input => requiredInput(block, input.name))
 }
 
@@ -1759,5 +1765,6 @@ function requiredInput(block, inputName) {
                     : "required_statement"
   var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
   connection.setShadowDom(shadowValue)
-  connection.respawnShadow_() //TODO: Mirar bien cuándo tirar esto, tal vez convenga hacerlo al Ejecutar
+  if (!connection.targetConnection)
+    connection.respawnShadow_()
 }
