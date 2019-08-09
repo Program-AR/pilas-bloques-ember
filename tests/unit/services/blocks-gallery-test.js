@@ -25,7 +25,7 @@ function testHasRequiredInputs(blockType) {
   });  
 }
 
-testHasRequiredInputs('al_empezar_a_ejecutar') //TODO: ????
+testHasRequiredInputs('al_empezar_a_ejecutar')
 
 // Repeticiones
 testHasRequiredInputs('RepetirVacio')
@@ -45,7 +45,7 @@ testHasRequiredInputs('MoverA')
 testHasRequiredInputs('DibujarLado')
 testHasRequiredInputs('GirarGrados')
 testHasRequiredInputs('SaltarHaciaAdelante')
-// testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') //TODO: field_input (texto)
+// testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') // field_input (texto) por default ya tiene string vacío
 
 // Procedimientos
 testHasRequiredInputs('procedures_defnoreturn')
