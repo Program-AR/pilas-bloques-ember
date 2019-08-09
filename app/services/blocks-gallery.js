@@ -8,7 +8,7 @@ export default Service.extend({
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
-    this._definirBloqueAlIniciar();
+    this._definirBloquesIniciales();
     this._definirBloquesAccion();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
@@ -1210,9 +1210,20 @@ export default Service.extend({
 
   },
 
-  _definirBloqueAlIniciar() {
+  _definirBloquesIniciales() {
 
-    //TODO: Mover a otro método
+    function fillOpacity(block, opacity) {
+      block.getSvgRoot().style["fill-opacity"] = opacity
+    }
+
+    function transparent(block) {
+      fillOpacity(block, 0)
+    }
+
+    function opaque(block) {
+      fillOpacity(block, 1)
+    }
+
     Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
@@ -1224,10 +1235,13 @@ export default Service.extend({
           "helpUrl": "",
         });
         this.setShadow(true)
+        transparent(this)
       },
       onchange: function(event) {
-        if (event && event.runCode)
+        if (event && event.runCode) {
           this.setWarningText("Hay un espacio en blanco!")
+          opaque(this)
+        }
       }
     };
 
@@ -1242,10 +1256,13 @@ export default Service.extend({
           "helpUrl": "",
         });
         this.setShadow(true)
+        transparent(this)
       },
       onchange: function(event) {
-        if (event && event.runCode)
+        if (event && event.runCode) {
           this.setWarningText("Hay un espacio en blanco!")
+          opaque(this)
+        }
       }
     };
 
