@@ -619,7 +619,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "MovimientoEnCuadricula", {direccionCasilla: $direccion});'
     }, 
-      function() { requiredInput(this, 'direccion') }
+      function() { requiredAllInputs(this) }
     );
 
     bloque.categoria = "Primitivas";
@@ -719,7 +719,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
     }, 
-      function() { requiredInput(this, 'longitud') }
+      function() { requiredAllInputs(this) }
     );
 
     Blockly.Blocks.SaltarHaciaAdelante.toolbox = `
@@ -754,7 +754,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
     }, 
-      function() { requiredInput(this, 'longitud') }
+      function() { requiredAllInputs(this) }
     );
 
     Blockly.Blocks.DibujarLado.toolbox = `
@@ -863,7 +863,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
     }, 
-      function() { requiredInput(this, 'grados') }
+      function() { requiredAllInputs(this) }
     );
     
 
@@ -1274,7 +1274,7 @@ export default Service.extend({
         this.setDeletable(false);
         this.setEditable(false);
         this.setMovable(false);
-        requiredInput(this, 'program')
+        requiredAllInputs(this)
       },
     };
 
@@ -1295,8 +1295,8 @@ export default Service.extend({
           .appendField('veces');
         this.appendStatementInput('block');
         
-        requiredInput(this, 'count');
-        requiredInput(this, 'block');
+        requiredAllInputs(this);
+        requiredAllInputs(this);
       },
       categoria: 'Repeticiones',
     };
@@ -1324,8 +1324,8 @@ export default Service.extend({
         this.setPreviousStatement(true);
         this.setNextStatement(true);
 
-        requiredInput(this, 'condition');
-        requiredInput(this, 'block');
+        requiredAllInputs(this);
+        requiredAllInputs(this);
       },
       categoria: 'Repeticiones',
     };
@@ -1342,8 +1342,8 @@ export default Service.extend({
         this.setPreviousStatement(true);
         this.setNextStatement(true);
 
-        requiredInput(this, 'condition');
-        requiredInput(this, 'block');
+        requiredAllInputs(this);
+        requiredAllInputs(this);
       },
       categoria: 'Alternativas',
     };
@@ -1362,9 +1362,9 @@ export default Service.extend({
         this.setPreviousStatement(true);
         this.setNextStatement(true);
 
-        requiredInput(this, 'condition');
-        requiredInput(this, 'block1');
-        requiredInput(this, 'block2');
+        requiredAllInputs(this);
+        requiredAllInputs(this);
+        requiredAllInputs(this);
       },
       categoria: 'Alternativas',
     };
@@ -1457,7 +1457,7 @@ export default Service.extend({
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
-      requiredInput(this, "STACK")
+      requiredAllInputs(this)
     };
 
     delete Blockly.Blocks.procedures_defreturn;
@@ -1574,8 +1574,8 @@ export default Service.extend({
       "extensions": ["math_op_tooltip"]
     },
       function() { 
-        requiredInput(this, "A")
-        requiredInput(this, "B")
+        requiredAllInputs(this)
+        requiredAllInputs(this)
       } 
     );
 
@@ -1647,8 +1647,8 @@ export default Service.extend({
       "extensions": ["logic_compare", "logic_op_tooltip"]
     },
       function() { 
-        requiredInput(this, "A")
-        requiredInput(this, "B")
+        requiredAllInputs(this)
+        requiredAllInputs(this)
       } 
     );
     
