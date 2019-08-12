@@ -15,6 +15,7 @@ export default Service.extend({
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
     this._definirOperaciones(); // Should be after alias
+    this._makeAllInputsRequired()
   },
 
   _textToBlock(text) {
@@ -25,6 +26,18 @@ export default Service.extend({
     let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
     event.runCode = true
     Blockly.Events.fire(event)
+  },
+
+  _makeAllInputsRequired() {
+    Object
+    .values(Blockly.Blocks)
+    .forEach(blockDef => {
+      let oldInit = blockDef.init
+      blockDef.init = function() {
+        if (oldInit) oldInit.bind(this)()
+        requiredAllInputs(this)
+      }
+    })
   },
 
   /*
@@ -618,9 +631,7 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "MovimientoEnCuadricula", {direccionCasilla: $direccion});'
-    }, 
-      function() { requiredAllInputs(this) }
-    );
+    });
 
     bloque.categoria = "Primitivas";
 
@@ -718,9 +729,7 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
-    }, 
-      function() { requiredAllInputs(this) }
-    );
+    });
 
     Blockly.Blocks.SaltarHaciaAdelante.toolbox = `
     <block type="SaltarHaciaAdelante">
@@ -753,9 +762,7 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
-    }, 
-      function() { requiredAllInputs(this) }
-    );
+    });
 
     Blockly.Blocks.DibujarLado.toolbox = `
       <block type="DibujarLado">
@@ -862,9 +869,7 @@ export default Service.extend({
         }
       ],
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
-    }, 
-      function() { requiredAllInputs(this) }
-    );
+    });
     
 
     Blockly.Blocks.GirarGrados.toolbox = `
@@ -1274,7 +1279,6 @@ export default Service.extend({
         this.setDeletable(false);
         this.setEditable(false);
         this.setMovable(false);
-        requiredAllInputs(this)
       },
     };
 
@@ -1294,9 +1298,6 @@ export default Service.extend({
         this.appendDummyInput()
           .appendField('veces');
         this.appendStatementInput('block');
-        
-        requiredAllInputs(this);
-        requiredAllInputs(this);
       },
       categoria: 'Repeticiones',
     };
@@ -1323,9 +1324,6 @@ export default Service.extend({
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-
-        requiredAllInputs(this);
-        requiredAllInputs(this);
       },
       categoria: 'Repeticiones',
     };
@@ -1341,9 +1339,6 @@ export default Service.extend({
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-
-        requiredAllInputs(this);
-        requiredAllInputs(this);
       },
       categoria: 'Alternativas',
     };
@@ -1361,10 +1356,6 @@ export default Service.extend({
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
-
-        requiredAllInputs(this);
-        requiredAllInputs(this);
-        requiredAllInputs(this);
       },
       categoria: 'Alternativas',
     };
@@ -1457,7 +1448,6 @@ export default Service.extend({
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
-      requiredAllInputs(this)
     };
 
     delete Blockly.Blocks.procedures_defreturn;
@@ -1572,12 +1562,7 @@ export default Service.extend({
       "colour": "%{BKY_MATH_HUE}",
       "helpUrl": "%{BKY_MATH_ARITHMETIC_HELPURL}",
       "extensions": ["math_op_tooltip"]
-    },
-      function() { 
-        requiredAllInputs(this)
-        requiredAllInputs(this)
-      } 
-    );
+    });
 
     Blockly.MyLanguage.OpAritmetica = function (block) {
       // Basic arithmetic operators, and power.
@@ -1614,64 +1599,6 @@ export default Service.extend({
     };
 
     Blockly.Blocks.OpAritmetica.categoria = 'Operadores';
-
-    this.blockly.createCustomBlock('OpComparacion', {
-      "type": "logic_compare",
-      "message0": "%1 %2 %3",
-      "args0": [
-        {
-          "type": "input_value",
-          "name": "A"
-        },
-        {
-          "type": "field_dropdown",
-          "name": "OP",
-          "options": [
-            ["=", "EQ"],
-            ["\u2260", "NEQ"],
-            ["\u200F<", "LT"],
-            ["\u200F\u2264", "LTE"],
-            ["\u200F>", "GT"],
-            ["\u200F\u2265", "GTE"]
-          ]
-        },
-        {
-          "type": "input_value",
-          "name": "B"
-        }
-      ],
-      "inputsInline": true,
-      "output": "Boolean",
-      "style": "logic_blocks",
-      "helpUrl": "%{BKY_LOGIC_COMPARE_HELPURL}",
-      "extensions": ["logic_compare", "logic_op_tooltip"]
-    },
-      function() { 
-        requiredAllInputs(this)
-        requiredAllInputs(this)
-      } 
-    );
-    
-    Blockly.MyLanguage.OpComparacion = function(block) {
-      // Comparison operator.
-      var OPERATORS = {
-        'EQ': '==',
-        'NEQ': '!=',
-        'LT': '<',
-        'LTE': '<=',
-        'GT': '>',
-        'GTE': '>='
-      };
-      var operator = OPERATORS[block.getFieldValue('OP')];
-      var order = (operator == '==' || operator == '!=') ?
-          Blockly.JavaScript.ORDER_EQUALITY : Blockly.JavaScript.ORDER_RELATIONAL;
-      var argument0 = Blockly.JavaScript.valueToCode(block, 'A', order) || '0';
-      var argument1 = Blockly.JavaScript.valueToCode(block, 'B', order) || '0';
-      var code = argument0 + ' ' + operator + ' ' + argument1;
-      return [code, order];
-    };    
-
-    Blockly.Blocks.OpComparacion.categoria = 'Operadores';
   },
 
   _definirBloquesAlias() {
