@@ -252,13 +252,11 @@ let testAlias = function (alias, type) {
   testAlias('repetir', 'Repetir');
   testAlias('tocandoBanana', 'TocandoBanana');
   testAlias('tocandoManzana', 'TocandoManzana');
-  testAlias('PrenderFogata', 'PrenderFogata');
   testAlias('Dejarregalo', 'DejarRegalo');
   testAlias('Contarbanana', 'ContarBanana');
   testAlias('Contarmanzana', 'ContarManzana');
   testAlias('AvanzarKm', 'Avanzar1km');
   testAlias('cambiarColor', 'CambiarColor');
-  testAlias('siguienteFoco', 'siguienteFoco');
   testAlias('empezarFiesta', 'EmpezarFiesta');
   testAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
   testAlias('Primersospechoso', 'IrAlPrimerSospechoso');

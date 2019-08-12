@@ -83,7 +83,7 @@ export default Service.extend({
   },
 
   areAliases(alias, type) {
-    return Blockly.Blocks[alias].init === Blockly.Blocks[type].init;
+    return Blockly.Blocks[type].aliases.includes(alias);
   },
 
   /*
