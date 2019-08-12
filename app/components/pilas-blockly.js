@@ -349,11 +349,21 @@ export default Component.extend({
     this.highlighter.clear()
   },
 
+  allEnabledTopBlocksFilled() {
+    return Blockly.mainWorkspace.getTopBlocks()
+      .filter(block => !block.disabled)
+      .every(block => block.allInputsFilled(false))
+  },
+
   actions: {
     ejecutar(pasoAPaso = false) {
-      this.pilas.reiniciarEscenaCompleta();
+      Blockly.Events.fireRunCode()
+      if (!this.allEnabledTopBlocksFilled()) return;
+      
+      this.pilas.reiniciarEscenaCompleta()
 
-      this.setModoTurbo();
+      this.setModoTurbo()
+
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución

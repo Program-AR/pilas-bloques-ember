@@ -1,10 +1,11 @@
-export function findBlockByTypeIn(rootBlock, type) {
-    let block = rootBlock.type == type ? rootBlock : findChildren(rootBlock, type)
-    return block
+export function createBlock(type) {
+    return Blockly.mainWorkspace.newBlock(type) 
 }
-
-function findChildren(rootBlock, type) {
-    return rootBlock.getChildren().find((b) => b.type == type) || findChildren(rootBlock.getChildren()[0], type)
+  
+export function findBlockByTypeIn(rootBlock, type) {
+    if (!rootBlock) return null
+    if (rootBlock.type == type) return rootBlock
+    return rootBlock.getChildren().map(b => findBlockByTypeIn(b, type)).find(b => b != null)
 }
 
 

@@ -3,7 +3,7 @@ import Ember from 'ember';
 /// Este service deshabilita los bloques que no estén disponibles para una actividad
 export default Ember.Service.extend({
     
-    globalAvailableBlockTypes: ["al_empezar_a_ejecutar", "numero"],
+    globalAvailableBlockTypes: ["al_empezar_a_ejecutar", "numero", "required_value", "required_statement"],
     procedureRelatedBlockTypes: ["procedures_defnoreturn", "procedures_callnoreturn", "variables_get", "param_get"],
 
     disableNotAvailableBlocksInWorkspace(activityBlocks) {

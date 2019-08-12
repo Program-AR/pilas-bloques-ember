@@ -5,19 +5,39 @@ export default Service.extend({
 
   start() {
     Blockly.textToBlock = this._textToBlock;
+    Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
-    this._definirBloqueAlIniciar();
+    this._definirBloquesIniciales();
     this._definirBloquesAccion();
     this._definirBloquesSensores();
     this._definirBloquesQueRepresentanValores();
     this._definirBloquesEstructurasDeControl();
     this._definirBloquesAlias();
-    this._definirOpAritmetica(); // Should be after alias
+    this._definirOperaciones(); // Should be after alias
+    this._makeAllInputsRequired()
   },
 
   _textToBlock(text) {
     return Blockly.Xml.domToBlock(Blockly.Xml.textToDom(text), Blockly.mainWorkspace);
+  },
+
+  _fireRunCodeEvent() {
+    let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
+    event.runCode = true
+    Blockly.Events.fire(event)
+  },
+
+  _makeAllInputsRequired() {
+    Object
+    .values(Blockly.Blocks)
+    .forEach(blockDef => {
+      let oldInit = blockDef.init
+      blockDef.init = function() {
+        if (oldInit) oldInit.bind(this)()
+        requiredAllInputs(this)
+      }
+    })
   },
 
   /*
@@ -63,7 +83,7 @@ export default Service.extend({
   },
 
   areAliases(alias, type) {
-    return Blockly.Blocks[alias].init === Blockly.Blocks[type].init;
+    return Blockly.Blocks[type].aliases.includes(alias);
   },
 
   /*
@@ -850,6 +870,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
     });
+    
 
     Blockly.Blocks.GirarGrados.toolbox = `
       <block type="GirarGrados">
@@ -1194,20 +1215,71 @@ export default Service.extend({
 
   },
 
-  _definirBloqueAlIniciar() {
+  _definirBloquesIniciales() {
+
+    function fillOpacity(block, opacity) {
+      block.getSvgRoot().style["fill-opacity"] = opacity
+    }
+
+    function transparent(block) {
+      fillOpacity(block, 0)
+    }
+
+    function opaque(block) {
+      fillOpacity(block, 1)
+    }
+
+    Blockly.Blocks.required_value = {
+      init: function () {
+        this.jsonInit({
+          "type": "required_value",
+          "message0": "",
+          "output": null,
+          "colour": "#ffffff",
+          "tooltip": "",
+          "helpUrl": "",
+        });
+        this.setShadow(true)
+        transparent(this)
+      },
+      onchange: function(event) {
+        if (event && event.runCode) {
+          this.setWarningText("¡Acá falta un bloque expresión!")
+          opaque(this)
+        }
+      }
+    };
+
+    Blockly.Blocks.required_statement = {
+      init: function () {
+        this.jsonInit({
+          "type": "required_statement",
+          "message0": "",
+          "previousStatement": null,
+          "colour": "#ffffff",
+          "tooltip": "",
+          "helpUrl": "",
+        });
+        this.setShadow(true)
+        transparent(this)
+      },
+      onchange: function(event) {
+        if (event && event.runCode) {
+          this.setWarningText("¡Acá faltan bloques comandos!")
+          opaque(this)
+        }
+      }
+    };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {
       init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
-
         this.appendDummyInput().appendField('Al empezar a ejecutar');
-
         this.appendStatementInput('program');
         this.setDeletable(false);
-
         this.setEditable(false);
         this.setMovable(false);
-      }
+      },
     };
 
   },
@@ -1231,16 +1303,73 @@ export default Service.extend({
     };
 
     Blockly.Blocks.Repetir = {
-      init: Blockly.Blocks.RepetirVacio.init,
-      categoria: Blockly.Blocks.RepetirVacio.categoria,
-      toolbox: '<block type="repetir"><value name="count"><block type="math_number"><field name="NUM">10</field></block></value></block>'
+      init: Blockly.Blocks['RepetirVacio'].init,
+      categoria: Blockly.Blocks['RepetirVacio'].categoria,
+      toolbox: `
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number"><field name="NUM">10</field></block>
+        </value>
+      </block>
+      `
     };
+
+    Blockly.Blocks.Hasta = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.setInputsInline(true);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Repetir hasta que');
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Repeticiones',
+    };
+
+
+    Blockly.Blocks.Si = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Si');
+        this.setInputsInline(true);
+        this.appendStatementInput('block');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
+    Blockly.Blocks.SiNo = {
+      init: function () {
+        this.setColour(Blockly.Blocks.control.COLOUR);
+        this.appendValueInput('condition')
+          .setCheck('Boolean')
+          .appendField('Si');
+        this.appendStatementInput('block1');
+        this.setInputsInline(true);
+        this.appendDummyInput()
+          .appendField('si no');
+        this.appendStatementInput('block2');
+        this.setPreviousStatement(true);
+        this.setNextStatement(true);
+      },
+      categoria: 'Alternativas',
+    };
+
 
     let init_base_callnoreturn = Blockly.Blocks.procedures_callnoreturn.init;
 
     Blockly.Blocks.procedures_callnoreturn.init = function () {
       this.setInputsInline(true);
       init_base_callnoreturn.call(this);
+    };
+
+    Blockly.Blocks.procedures_callnoreturn.onchange = function () {
+      requiredAllInputs(this) // Input fields are added after instantiation 
     };
 
     function isInsideProcedureDef(paramBlock) {
@@ -1324,56 +1453,19 @@ export default Service.extend({
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;
 
-    Blockly.Blocks.Si = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Si');
-        this.setInputsInline(true);
-        this.appendStatementInput('block');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Alternativas',
-    };
-
-    Blockly.Blocks.SiNo = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Si');
-        this.appendStatementInput('block1');
-        this.setInputsInline(true);
-        this.appendDummyInput()
-          .appendField('si no');
-        this.appendStatementInput('block2');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Alternativas',
-    };
-
-    Blockly.Blocks.Hasta = {
-      init: function () {
-        this.setColour(Blockly.Blocks.control.COLOUR);
-        this.setInputsInline(true);
-        this.appendValueInput('condition')
-          .setCheck('Boolean')
-          .appendField('Repetir hasta que');
-        this.appendStatementInput('block');
-        this.setPreviousStatement(true);
-        this.setNextStatement(true);
-      },
-      categoria: 'Repeticiones',
-    };
-
   },
 
   _generarLenguaje() {
     Blockly.MyLanguage = Blockly.JavaScript;
     Blockly.MyLanguage.addReservedWords('main', 'hacer', 'out_hacer', 'evaluar');
+
+    Blockly.MyLanguage.required_value = function () {
+      return null
+    };
+
+    Blockly.MyLanguage.required_statement = function () {
+      return null
+    };
 
     Blockly.MyLanguage.al_empezar_a_ejecutar = function (block) {
       let programa = Blockly.JavaScript.statementToCode(block, 'program');
@@ -1438,7 +1530,7 @@ export default Service.extend({
     Blockly.MyLanguage.addReservedWords('highlightBlock');
   },
 
-  _definirOpAritmetica() { //Este código fue sacado de Blockly
+  _definirOperaciones() { //Este código fue sacado de Blockly
     this.blockly.createCustomBlock('OpAritmetica', {
       "type": "math_arithmetic",
       "message0": "%1 %2 %3",
@@ -1507,7 +1599,6 @@ export default Service.extend({
     };
 
     Blockly.Blocks.OpAritmetica.categoria = 'Operadores';
-
   },
 
   _definirBloquesAlias() {
@@ -1581,3 +1672,26 @@ export default Service.extend({
   }
 
 });
+
+function shouldAddRequiredShadow(connection) {
+  return  connection.getShadowDom() == null // Should have not a shadow block
+  &&      [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
+}
+
+// Agrega un required shadow a todos los input que sean para encastrar otros bloques
+function requiredAllInputs(block) {
+  block.inputList
+  .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
+  .forEach(input => requiredInput(block, input.name))
+}
+
+function requiredInput(block, inputName) {
+  let connection = block.getInput(inputName).connection
+  let shadowType =  (connection.type == Blockly.INPUT_VALUE)
+                    ? "required_value"
+                    : "required_statement"
+  var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
+  connection.setShadowDom(shadowValue)
+  if (!connection.targetConnection)
+    connection.respawnShadow_()
+}

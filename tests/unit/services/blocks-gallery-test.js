@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
-import { findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
+import { createBlock, findBlockByTypeIn, assertAsync, assertDisabled, assertNotDisabled, assertWarning, assertNotWarning } from '../../helpers/utils';
 
 module('Unit | Service | blocks-gallery', function (hooks) {
   setupTest(hooks);
@@ -13,6 +13,88 @@ module('Unit | Service | blocks-gallery', function (hooks) {
     this.blocksGallery.start();
   });
 
+
+
+///////////// REQUIRED INPUTS /////////////
+
+function testHasRequiredInputs(blockType) {
+  test(`${blockType} has required inputs`, function(assert) {
+    let block = createBlock(blockType)
+    assertRequiredInputs(assert, block, Blockly.INPUT_VALUE, 'required_value')
+    assertRequiredInputs(assert, block, Blockly.NEXT_STATEMENT, 'required_statement')
+  });  
+}
+
+testHasRequiredInputs('al_empezar_a_ejecutar')
+
+// Repeticiones
+testHasRequiredInputs('RepetirVacio')
+testHasRequiredInputs('Repetir')
+testHasRequiredInputs('Hasta')
+
+// Alternativas
+testHasRequiredInputs('Si')
+testHasRequiredInputs('SiNo')
+
+// Operadores
+testHasRequiredInputs('OpAritmetica')
+testHasRequiredInputs('OpComparacion')
+
+// Primitivas
+testHasRequiredInputs('MoverA')
+testHasRequiredInputs('DibujarLado')
+testHasRequiredInputs('GirarGrados')
+testHasRequiredInputs('SaltarHaciaAdelante')
+// testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') // field_input (texto) por default ya tiene string vacío
+
+// Procedimientos
+testHasRequiredInputs('procedures_defnoreturn')
+
+let precedureCall = `
+<block type="procedures_callnoreturn">
+  <mutation name="Hacer algo">
+    <arg name="parámetro 1"></arg>
+  </mutation>
+</block>
+`
+test('procedures_callnoreturn has required inputs', function(assert) {
+  let block = Blockly.textToBlock(precedureCall)
+  block.onchange() // Force update
+  assert.ok(findBlockByTypeIn(block, "required_value"))
+})
+
+// Toolbox
+let toolbox = `
+<block type="GirarGrados">
+  <value name="grados">
+    <block type="math_number"><field name="NUM">90</field></block>
+  </value>
+</block>
+`
+
+test('When required input exists should be ok', function(assert) {
+  let block = Blockly.textToBlock(toolbox)
+  assert.notOk(findBlockByTypeIn(block, "required_value"))
+  assert.ok(block.allInputsFilled(false))
+})
+
+test('When required input exists and it is disposed should be required again', function(assert) {
+  let block = Blockly.textToBlock(toolbox)
+  findBlockByTypeIn(block, "math_number").dispose()
+  assert.ok(findBlockByTypeIn(block, "required_value"))
+  assert.notOk(block.allInputsFilled(false))
+})
+
+
+function assertRequiredInputs(assert, block, inputType, blockType) {
+  block.inputList
+    .filter(input => input.type == inputType)
+    .forEach(input => {
+      let inputBlock = input.connection.targetBlock()
+      assert.ok(inputBlock, `${input.name} is required`)
+      assert.equal(inputBlock.type, blockType)
+    })
+}
 
 ///////////// PARAMS /////////////
 
@@ -170,13 +252,11 @@ let testAlias = function (alias, type) {
   testAlias('repetir', 'Repetir');
   testAlias('tocandoBanana', 'TocandoBanana');
   testAlias('tocandoManzana', 'TocandoManzana');
-  testAlias('PrenderFogata', 'PrenderFogata');
   testAlias('Dejarregalo', 'DejarRegalo');
   testAlias('Contarbanana', 'ContarBanana');
   testAlias('Contarmanzana', 'ContarManzana');
   testAlias('AvanzarKm', 'Avanzar1km');
   testAlias('cambiarColor', 'CambiarColor');
-  testAlias('siguienteFoco', 'siguienteFoco');
   testAlias('empezarFiesta', 'EmpezarFiesta');
   testAlias('Volveralbordeizquierdo', 'VolverAlBordeIzquierdo');
   testAlias('Primersospechoso', 'IrAlPrimerSospechoso');
