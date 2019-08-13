@@ -1,18 +1,19 @@
-import Ember from 'ember';
 import hbs from 'htmlbars-inline-precompile';
 
 export default function createPilasTest(context, escena, callback) {
   // context en este caso es el test en si mismo (this).
 
-  return new Ember.RSVP.Promise((resolve) => {
+  return new Promise((resolve) => {
 
-    context.inject.service('pilas');
+    let pilasService = context.owner.lookup('service:pilas');
+    context.set('pilas', pilasService);
     context.set("escena", escena);
 
-    context.on('onReady', function(pilas) {
-      callback(pilas, resolve, context.get('pilas'));
+    context.set('onReady', function (pilas) {
+      callback(pilas, resolve, pilasService);
     });
 
-    context.render(hbs`{{pilas-canvas pilas=pilas onReady='onReady' escena=escena}}`);
+    context.render(hbs`{{pilas-canvas pilas=pilas onReady=onReady escena=escena}}`);
+
   });
 }

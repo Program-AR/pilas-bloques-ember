@@ -1,16 +1,18 @@
-import { moduleForComponent, test } from 'ember-qunit';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-moduleForComponent('pilas-acerca-de', 'Integration | Component | pilas acerca de', {
-  integration: true
-});
+module('Integration | Component | pilas acerca de', function (hooks) {
+  setupRenderingTest(hooks);
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+  test('it renders', async function (assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{pilas-acerca-de}}`);
+    await render(hbs`{{pilas-acerca-de}}`);
 
-  assert.ok(this.$().text(), "Incluye texto");
+    assert.dom().hasAnyText();
 
+  });
 });

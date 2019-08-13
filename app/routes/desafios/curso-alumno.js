@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
+import Route from '@ember/routing/route';
 
 
 /* Esta ruta es una especialización de la ruta Nombre,
@@ -6,8 +7,8 @@ import Ember from 'ember';
  * de la interfaz y permite guardar la solución en un
  * backend de datos.
  */
-export default Ember.Route.extend({
-  cursoAPI: Ember.inject.service(),
+export default Route.extend({
+  cursoAPI: service(),
 
   model(params) {
     params.nombre = this.decodificarHash(params.hash).actividad;
@@ -37,7 +38,7 @@ export default Ember.Route.extend({
     model.idAlumno = valores.idAlumno;
     model.hash = valores.hashCompleto;
 
-    return this.get("cursoAPI").obtener_solucion_xml_desde_hash(model.hash).
+    return this.cursoAPI.obtener_solucion_xml_desde_hash(model.hash).
       then((solucion_xml) => {
         model.set("solucion", btoa(solucion_xml));
       }).
@@ -83,7 +84,7 @@ export default Ember.Route.extend({
 
       let parametros = {actividad: nombre, hash, idAlumno, codigo_xml: codigoXML};
 
-      this.get("cursoAPI").guardar(parametros).
+      this.cursoAPI.guardar(parametros).
         catch((reason) => {
           console.error(reason);
           alert("Se a producido un error al guardar, por favor volvé a intentar.");

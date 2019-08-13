@@ -1,7 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   actividad: {
     iniciarEscena: function() {
       let fondo = new pilas.fondos.Tarde(); // jshint ignore:line

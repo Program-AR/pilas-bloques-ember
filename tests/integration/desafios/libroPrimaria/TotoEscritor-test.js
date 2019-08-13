@@ -1,10 +1,10 @@
-import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
-moduloActividad("Toto escritor");
+moduloActividad("Toto escritor", () => {
 
-actividadTest("5.I1a", {
-  descripcionAdicional: '5.I1a: Se puede resolver',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1a", {
+    descripcionAdicional: '5.I1a: Se puede resolver',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -25,11 +25,11 @@ actividadTest("5.I1a", {
       </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("5.I1a", {
-  descripcionAdicional: '5.I1a: No puede copiar la letra en un casillero vacío',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1a", {
+    descripcionAdicional: '5.I1a: No puede copiar la letra en un casillero vacío',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -37,12 +37,12 @@ actividadTest("5.I1a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "No hay una letra aquí"
-});
+    errorEsperado: "No hay una letra aquí"
+  });
 
-actividadTest("5.I1a", {
-  descripcionAdicional: '5.I1a: No puede salir de la cuadrícula',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1a", {
+    descripcionAdicional: '5.I1a: No puede salir de la cuadrícula',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -50,12 +50,12 @@ actividadTest("5.I1a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "No puedo ir para la izquierda"
-});
+    errorEsperado: "No puedo ir para la izquierda"
+  });
 
-actividadTest("5.I1a", {
-  descripcionAdicional: '5.I1a: No puede escribir de más',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1a", {
+    descripcionAdicional: '5.I1a: No puede escribir de más',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -76,12 +76,12 @@ actividadTest("5.I1a", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Estoy cansado! No quiero escribir más..."
-});
+    errorEsperado: "¡Estoy cansado! No quiero escribir más..."
+  });
 
-actividadTest("5.I1b", {
-  descripcionAdicional: '5.I1b: Se puede resolver',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1b", {
+    descripcionAdicional: '5.I1b: Se puede resolver',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
         <block type="Repetir">
@@ -103,11 +103,11 @@ actividadTest("5.I1b", {
       </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("5.I1b", {
-  descripcionAdicional: '5.I1b: Solamente escribir sin moverse NO resuelve el desafio',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1b", {
+    descripcionAdicional: '5.I1b: Solamente escribir sin moverse NO resuelve el desafio',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -126,12 +126,12 @@ actividadTest("5.I1b", {
       </statement>
     </block>
   </xml>`,
-  resuelveDesafio: false
-});
+    resuelveDesafio: false
+  });
 
-actividadTest("5.I1c", {
-  descripcionAdicional: '5.I1c: Se puede resolver',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1c", {
+    descripcionAdicional: '5.I1c: Se puede resolver',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -167,11 +167,11 @@ actividadTest("5.I1c", {
       </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("5.I1c", {
-  descripcionAdicional: '5.I1c: No puede preguntar sobre la letra actual en un casillero vacío',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1c", {
+    descripcionAdicional: '5.I1c: No puede preguntar sobre la letra actual en un casillero vacío',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -193,12 +193,12 @@ actividadTest("5.I1c", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: "No hay una letra aquí"
-});
+    errorEsperado: "No hay una letra aquí"
+  });
 
-actividadTest("5.I1d", {
-  descripcionAdicional: '5.I1d: Se puede resolver',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1d", {
+    descripcionAdicional: '5.I1d: Se puede resolver',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="382" y="15">
       <statement name="program">
@@ -290,11 +290,11 @@ actividadTest("5.I1d", {
       </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("5.I1d", {
-  descripcionAdicional: 'Se brinda un mensaje de error al intentar escribir un carácter inválido',
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("5.I1d", {
+    descripcionAdicional: 'Se brinda un mensaje de error al intentar escribir un carácter inválido',
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <variables></variables>
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="378" y="15">
       <statement name="program">
@@ -304,5 +304,7 @@ actividadTest("5.I1d", {
       </statement>
     </block>
   </xml>`,
-  errorEsperado: 'No sé escribir ese símbolo'
+    errorEsperado: 'No sé escribir ese símbolo'
+  });
+
 });

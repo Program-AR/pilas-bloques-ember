@@ -1,11 +1,11 @@
-import Ember from 'ember';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: '',
 
   actions: {
     ocultar() {
-      this.sendAction("close");
+      if (this.close) this.close()
     },
   }
 });

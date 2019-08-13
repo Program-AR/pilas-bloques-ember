@@ -1,10 +1,10 @@
-import {moduloActividad, actividadTest} from '../../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
-moduloActividad("Duba - Repetición");
+moduloActividad("Duba - Repetición", () => {
 
-actividadTest("4.1.3a", {
-  descripcionAdicional: "4.1.3a: La solución sin repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3a", {
+    descripcionAdicional: "4.1.3a: La solución sin repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaDerecha">
@@ -40,11 +40,11 @@ actividadTest("4.1.3a", {
     </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("4.1.3a", {
-  descripcionAdicional: "4.1.3a: La solución con repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3a", {
+    descripcionAdicional: "4.1.3a: La solución con repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="Repetir">
@@ -65,11 +65,11 @@ actividadTest("4.1.3a", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("4.1.3b", {
-  descripcionAdicional: "4.1.3b: La solución sin repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3b", {
+    descripcionAdicional: "4.1.3b: La solución sin repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaIzquierda">
@@ -105,11 +105,11 @@ actividadTest("4.1.3b", {
     </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("4.1.3b", {
-  descripcionAdicional: "4.1.3b: La solución con repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3b", {
+    descripcionAdicional: "4.1.3b: La solución con repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaIzquierda">
@@ -134,11 +134,11 @@ actividadTest("4.1.3b", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("4.1.3c", {
-  descripcionAdicional: "4.1.3c: La solución sin repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3c", {
+    descripcionAdicional: "4.1.3c: La solución sin repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaAbajo">
@@ -182,11 +182,11 @@ actividadTest("4.1.3c", {
     </statement>
     </block>
   </xml>`
-});
+  });
 
-actividadTest("4.1.3c", {
-  descripcionAdicional: "4.1.3c: La solución con repetición resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.1.3c", {
+    descripcionAdicional: "4.1.3c: La solución con repetición resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="Repetir">
@@ -220,11 +220,11 @@ actividadTest("4.1.3c", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("4.2.3a", {
-  descripcionAdicional: "4.2.3a: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.2.3a", {
+    descripcionAdicional: "4.2.3a: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaArriba">
@@ -249,12 +249,12 @@ actividadTest("4.2.3a", {
     </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Acá no hay churrasco!"
-});
+    errorEsperado: "¡Acá no hay churrasco!"
+  });
 
-actividadTest("4.2.3a", {
-  descripcionAdicional: "4.2.3a: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.2.3a", {
+    descripcionAdicional: "4.2.3a: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="MoverACasillaArriba">
@@ -279,11 +279,11 @@ actividadTest("4.2.3a", {
     </statement>
     </block>
   </xml>`,
-});
+  });
 
-actividadTest("4.2.3b", {
-  descripcionAdicional: "4.2.3b: La solución provista no resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.2.3b", {
+    descripcionAdicional: "4.2.3b: La solución provista no resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="Repetir">
@@ -308,12 +308,12 @@ actividadTest("4.2.3b", {
     </statement>
     </block>
   </xml>`,
-  errorEsperado: "¡Hay un obstáculo!"
-});
+    errorEsperado: "¡Hay un obstáculo!"
+  });
 
-actividadTest("4.2.3b", {
-  descripcionAdicional: "4.2.3b: La solución corregida resuelve el problema",
-  solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+  actividadTest("4.2.3b", {
+    descripcionAdicional: "4.2.3b: La solución corregida resuelve el problema",
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
     <statement name="program">
       <block type="Repetir">
@@ -342,4 +342,6 @@ actividadTest("4.2.3b", {
     </statement>
     </block>
   </xml>`,
+  });
+
 });
