@@ -16,8 +16,15 @@ os:
 services:
   - xvfb
 sudo: false
+cache:
+  directories:
+  - node_modules
+  - bower_components
+  - $HOME/.npm
+  - $HOME/.cache # includes bowers cache
+  - cache
 install:
-- travis_wait make iniciar
+- travis_wait make full_travis
 script:
 - node -v
 - make test_travis
