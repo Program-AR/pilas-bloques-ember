@@ -16,10 +16,6 @@ os:
 services:
   - xvfb
 sudo: false
-cache:
-  directories:
-  - node_modules
-  - bower_components
 install:
 - travis_wait make iniciar
 script:
