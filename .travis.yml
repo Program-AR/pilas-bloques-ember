@@ -20,9 +20,6 @@ cache:
   directories:
   - node_modules
   - bower_components
-  - $HOME/.npm
-  - $HOME/.cache # includes bowers cache
-  - cache
 install:
 - travis_wait make iniciar
 script:
