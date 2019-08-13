@@ -1,6 +1,6 @@
 'use strict';
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var mergeTrees = require('ember-cli/node_modules/broccoli-merge-trees');
+var mergeTrees = require('broccoli-merge-trees');
 var Funnel = require('broccoli-funnel');
 
 module.exports = function (defaults) {
@@ -107,8 +107,6 @@ module.exports = function (defaults) {
   app.import(app.bowerDirectory + "/fontface-source-sans-pro/fonts/WOFF/TTF/SourceSansPro-Semibold.ttf.woff", { destDir: "fonts/" });
   app.import(app.bowerDirectory + "/fontface-source-sans-pro/fonts/WOFF/TTF/SourceSansPro-SemiboldIt.ttf.woff", { destDir: "fonts/" });
 
-  process.setMaxListeners(Infinity);
-  
   var pilasWeb = new Funnel('node_modules/pilasweb', {
     srcDir: '/dist',
     include: ['**'],

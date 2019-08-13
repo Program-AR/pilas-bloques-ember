@@ -58,8 +58,6 @@ dist: compilar
 
 build: compilar
 
-serve: ./node_modules/ember-cli/bin/ember serve
-
 watch_ejercicios: 
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
