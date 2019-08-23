@@ -42,6 +42,7 @@ module.exports = function (defaults) {
   app.import('bower_components/bluebird/js/browser/bluebird.min.js');
   app.import('bower_components/proceds-blockly/proceds-blockly-original.js');
   app.import('bower_components/proceds-blockly/proceds-blockly.js');
+  app.import('node_modules/mulang/build/mulang.js');
   app.import('vendor/acorn_interpreter.js');
   app.import('vendor/beautify.js');
   app.import('vendor/utilidades_de_depuracion.js');
