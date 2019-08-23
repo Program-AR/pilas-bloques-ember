@@ -7,5 +7,11 @@ export default Route.extend({
       replace: true
     }
   },
-  pilas: service()
+  pilas: service(),
+
+  model(param) {
+    this.store.findAll("libro");
+    return this.store.findRecord('desafio', param.desafio_id);
+  }
+
 });
