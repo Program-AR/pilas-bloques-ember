@@ -10,7 +10,7 @@
     "email": "info@program.ar",
     "url": "http://program.ar"
   },
-  "license": "MIT",
+  "license": "GPL-3.0",
   "repository": "https://github.com/Program-AR/pilas-bloques",
   "categories": [
     "Education",
