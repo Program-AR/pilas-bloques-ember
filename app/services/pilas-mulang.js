@@ -1,6 +1,35 @@
+// Code here will be linted with JSHint.
+/* jshint ignore:start */
 import Service from '@ember/service';
 
 export default Service.extend({
+
+  analyze(mainBlock) {
+    let ast = this.parse(mainBlock)
+    console.log(ast)
+    
+    let expectations = [
+      {
+         "binding" : "al_empezar_a_ejecutar",
+         "inspection" : "Uses:repetir"
+      }
+    ]
+    let result = mulang.analyse({
+      "sample" : {
+        "tag": "MulangSample",
+        "ast": ast
+      },
+      "spec": {
+        "expectations": expectations,
+        "smellsSet": {
+          "tag": 'NoSmells',
+        }
+      }
+    })
+    console.log(result);
+
+    return result
+  },
 
   parse(solution) {
     console.log(solution)
@@ -103,7 +132,7 @@ function buildBlockAst(block) {
   if(mulangTag) {
     return createNode(mulangTag, block.type);
   } else {
-    return createNode("Application", parseApplication(block)); //???
+    return createNode("Application", parseApplication(block)); //TODO: ???
   }
 }
 
@@ -331,6 +360,10 @@ function getListenerNormalizedName(blockInfo) {
   return normalizeListenerName(customNamePlaceholder, attributes);
 }
 
+let mulangTransform = {
+  "Repetir": "Repeat"
+}
+
 let mulangTags = {
   "Application": parseApplication,
   "Reference": parseReference,
@@ -344,3 +377,6 @@ let mulangTags = {
   "Assignment": parseAssignment,
   "EntryPoint": parseEntryPoint
 };
+
+// Code here will be ignored by JSHint.
+/* jshint ignore:end */

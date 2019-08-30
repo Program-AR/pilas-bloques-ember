@@ -21,7 +21,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
             <next>
               <block type="MoverACasillaDerecha">
                 <next>
-                  <block type="ComerChurrasco"></block>
+                  <block type="Repetir"></block>
                 </next>
               </block>
             </next>
@@ -36,29 +36,12 @@ module('Unit | Service | pilas-mulang', function(hooks) {
   test('Can analize blocks with mulang', function(assert) {
     let pilasMulang = this.owner.lookup('service:pilas-mulang')
     let mainBlock = Blockly.textToBlock(program)
-    let ast = pilasMulang.parse(mainBlock)
-    let expectations = [
-      {
-         "binding" : "Intransitive:al_empezar_a_ejecutar",
-         "inspection" : "Uses:ComerChurrasco"
-      }
-    ]
-
-    console.log(ast)
-
-    console.log(mulang.analyse({
-      "sample" : {
-        "tag": "MulangSample",
-        "ast": ast
-      },
-      "spec": {
-        "expectations": expectations,
-        "smellsSet": {
-          "tag": 'NoSmells',
-        }
-      }
-    }))
-
-    assert.ok(true);
+    let result = pilasMulang.analyze(mainBlock)
+    assertMulangResult(assert, result);
   });
 });
+
+
+function assertMulangResult(assert, {expectationResults}) {
+  assert.ok(expectationResults.every(({result}) => result))
+}

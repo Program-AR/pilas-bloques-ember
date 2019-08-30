@@ -27,6 +27,8 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
+  pilasMulang: service(),
+  mulangExpectation: true, //TODO: Sacar
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -312,6 +314,10 @@ export default Component.extend({
 
       if (this.debeMostrarFinDeDesafio) {
         if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
+          let mulangResult = this.pilasMulang.analyze(Blockly.mainWorkspace.getTopBlocks()[0])
+          let mulangExpectation = mulangResult.expectationResults[0].result
+          console.log({mulangExpectation})
+          this.set("mulangExpectation", mulangExpectation)
           this.send('abrirFinDesafio');
         }
       }
