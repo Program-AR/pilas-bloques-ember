@@ -357,10 +357,10 @@ export default Component.extend({
 
   actions: {
     ejecutar(pasoAPaso = false) {
+      this.pilas.reiniciarEscenaCompleta()
+
       Blockly.Events.fireRunCode()
       if (!this.allEnabledTopBlocksFilled()) return;
-      
-      this.pilas.reiniciarEscenaCompleta()
 
       this.setModoTurbo()
 
