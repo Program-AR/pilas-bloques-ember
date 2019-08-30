@@ -210,9 +210,11 @@ export default Component.extend({
       'Mis funciones'
     ];
 
-    return toolbox.sort((cat1, cat2) =>
-      orden_inicial.indexOf(cat1.category) >= orden_inicial.indexOf(cat2.category)
-    );
+    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.category) - orden_inicial.indexOf(cat2.category));
+
+    // return toolbox.sort((cat1, cat2) =>
+    //   orden_inicial.indexOf(cat1.category) >= orden_inicial.indexOf(cat2.category)
+    // );
   },
 
   /**
