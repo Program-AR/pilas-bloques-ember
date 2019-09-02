@@ -25,10 +25,8 @@ export default Service.extend({
     return result
   },
 
-  parse(solution) {
-    console.log(solution)
-    let mainBlock = solution
-    return buildEntryPoint(mainBlock.type, buildSequenceAst(mainBlock.getChildren()[0]));
+  parse(mainBlock) {
+    return buildBlockAst(mainBlock);
   },
 
 });
@@ -100,6 +98,10 @@ function buildTargetAst(target) {
   return buildEntryPoint(target.name, createNode("Sequence", topLevelSequence));
 }
 
+function buildEntryPoint(name, contents) {
+  return createNode("EntryPoint", [name, contents]);
+}
+
 function hasSiblings(block) {
   return block.getNextBlock() // && !hasImplicitSubstack(block.opcode);
 }
@@ -121,13 +123,37 @@ function getBlockSiblings(block) {
   return siblings;
 }
 
+
+
+
+
+function buildBlockAst(block) {
+  let {tag, parse} = parser(block);
+  return createNode(tag, parse(block));
+}
+
 function parser(block) {
   var tag
   var parse
   switch (block.type) {
+    case "al_empezar_a_ejecutar":
+      tag = "EntryPoint"
+      parse = parseEntryPoint
+      break;
+  
     case "repetir":
       tag = "Repeat"
       parse = parseRepeat
+      break;
+  
+    case "Si":
+      tag = "If"
+      parse = parseIf
+      break;
+  
+    case "math_number":
+      tag = "MuNumber"
+      parse = parseMuNumber
       break;
   
     default:
@@ -138,10 +164,42 @@ function parser(block) {
   return {tag, parse}
 }
 
-function buildBlockAst(block) {
-  let {tag, parse} = parser(block);
-  return createNode(tag, parse(block));
+
+
+
+function parseEntryPoint(block) {
+  return [
+    block.type, 
+    buildSequenceAst(block.getChildren()[0])
+  ]
 }
+
+function parseRepeat(block) {
+  let countBlock = block.getInputTargetBlock("count") //TODO: parseInput
+  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
+  return [
+    buildBlockAst(countBlock),
+    buildSequenceAst(sequenceBlock)
+  ]
+}
+
+function parseIf(block) {
+  let condition = block.getInputTargetBlock("condition") //TODO: parseInput
+  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
+  return [
+    buildBlockAst(condition),
+    buildSequenceAst(sequenceBlock)
+  ]
+}
+
+function parseMuNumber(block) {
+  return parseFloat(block.getFieldValue("NUM"));
+}
+
+
+
+
+
 
 function parseRegularBlock(blockInfo) {
   let mulangTag = blockInfo.blockStructure.mulangTag;
@@ -236,10 +294,6 @@ function getContents(blockInfo) {
   return getExpression(blockInfo).contents;
 }
 
-function parseMuNumber(blockInfo) {
-  return parseFloat(getContents(blockInfo));
-}
-
 function getWhileExpression(blockInfo) {
   // Forever is parsed as while true as mulang doesn't support it natively
   // Repeat_until is parsed as while(!condition)
@@ -259,24 +313,6 @@ function parseWhile(blockInfo) {
   return [
     getWhileExpression(blockInfo),
     doParseInput("SUBSTACK", blockInfo.block)
-  ]
-}
-
-function parseRepeat(block) {
-  let countBlock = block.getInputTargetBlock("count") //TODO: parseInput
-  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
-  console.log(sequenceBlock)
-  return [
-    buildBlockAst(countBlock),
-    buildSequenceAst(sequenceBlock)
-  ]
-}
-
-function parseIf(blockInfo) {
-  return [
-    getExpression(blockInfo),
-    doParseInput("SUBSTACK", blockInfo.block),
-    doParseInput("SUBSTACK2", blockInfo.block)
   ]
 }
 
@@ -325,10 +361,6 @@ function getProcedureName(blockInfo) {
   return parseProcedureName(prototypeBlock);
 }
 
-function buildEntryPoint(name, contents) {
-  return createNode("EntryPoint", [name, contents]);
-}
-
 function parseAssignment(blockInfo) {
   return [
     getContents(blockInfo),
@@ -339,13 +371,6 @@ function parseAssignment(blockInfo) {
 
 function parseReference(blockInfo) {
   return blockInfo.normalizedOpcode;
-}
-
-function parseEntryPoint(blockInfo) {
-  return [
-    getListenerNormalizedName(blockInfo),
-    buildSequenceAst(nextBlockFor(blockInfo.block))
-  ]
 }
 
 /* This function generates the name of a listener by replacing the $N tokens, with the
