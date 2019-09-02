@@ -4,16 +4,10 @@ import Service from '@ember/service';
 
 export default Service.extend({
 
-  analyze(mainBlock) {
+  analyze(mainBlock, expectations = []) {
     let ast = this.parse(mainBlock)
     console.log(ast)
     
-    let expectations = [
-      {
-         "binding" : "al_empezar_a_ejecutar",
-         "inspection" : "Uses:repetir"
-      }
-    ]
     let result = mulang.analyse({
       "sample" : {
         "tag": "MulangSample",
@@ -127,13 +121,26 @@ function getBlockSiblings(block) {
   return siblings;
 }
 
-function buildBlockAst(block) {
-  let mulangTag = block.mulangTag;
-  if(mulangTag) {
-    return createNode(mulangTag, block.type);
-  } else {
-    return createNode("Application", parseApplication(block)); //TODO: ???
+function parser(block) {
+  var tag
+  var parse
+  switch (block.type) {
+    case "repetir":
+      tag = "Repeat"
+      parse = parseRepeat
+      break;
+  
+    default:
+      tag = "Application"
+      parse = parseApplication
+      break;
   }
+  return {tag, parse}
+}
+
+function buildBlockAst(block) {
+  let {tag, parse} = parser(block);
+  return createNode(tag, parse(block));
 }
 
 function parseRegularBlock(blockInfo) {
@@ -255,10 +262,13 @@ function parseWhile(blockInfo) {
   ]
 }
 
-function parseRepeat(blockInfo) {
+function parseRepeat(block) {
+  let countBlock = block.getInputTargetBlock("count") //TODO: parseInput
+  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
+  console.log(sequenceBlock)
   return [
-    getExpression(blockInfo),
-    doParseInput("SUBSTACK", blockInfo.block)
+    buildBlockAst(countBlock),
+    buildSequenceAst(sequenceBlock)
   ]
 }
 

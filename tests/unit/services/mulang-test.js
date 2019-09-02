@@ -10,6 +10,34 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     this.owner.lookup('service:blocksGallery').start()
   });
 
+  let al_empezar_a_ejecutar = `
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="MoverACasillaDerecha">
+        <next>
+          <block type="MoverACasillaIzquierda">
+            <next>
+              <block type="MoverACasillaDerecha"></block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `
+  test('Should parse al_empezar_a_ejecutar', function(assert) {
+    let pilasMulang = this.owner.lookup('service:pilas-mulang')
+    let mainBlock = Blockly.textToBlock(al_empezar_a_ejecutar)
+    let result = pilasMulang.parse(mainBlock)
+    let expected = entryPoint(
+      "al_empezar_a_ejecutar",
+      application("MoverACasillaDerecha"),
+      application("MoverACasillaIzquierda"),
+      application("MoverACasillaDerecha")
+    )
+    assert.deepEqual(result, expected);
+  });
+
 
   let program = `
   <block type="al_empezar_a_ejecutar">
@@ -21,7 +49,18 @@ module('Unit | Service | pilas-mulang', function(hooks) {
             <next>
               <block type="MoverACasillaDerecha">
                 <next>
-                  <block type="Repetir"></block>
+                  <block type="repetir">
+                    <value name="count">
+                      <shadow type="required_value"></shadow>
+                      <block type="math_number">
+                        <field name="NUM">10</field>
+                      </block>
+                    </value>
+                    <statement name="block">
+                      <shadow type="required_statement"></shadow>
+                      <block type="MoverACasillaDerecha"></block>
+                    </statement>
+                  </block>
                 </next>
               </block>
             </next>
@@ -36,7 +75,13 @@ module('Unit | Service | pilas-mulang', function(hooks) {
   test('Can analize blocks with mulang', function(assert) {
     let pilasMulang = this.owner.lookup('service:pilas-mulang')
     let mainBlock = Blockly.textToBlock(program)
-    let result = pilasMulang.analyze(mainBlock)
+    let expectations = [
+      {
+         "binding" : "al_empezar_a_ejecutar",
+         "inspection" : "UsesRepeat"
+      }
+    ]
+    let result = pilasMulang.analyze(mainBlock, expectations)
     assertMulangResult(assert, result);
   });
 });
@@ -44,4 +89,30 @@ module('Unit | Service | pilas-mulang', function(hooks) {
 
 function assertMulangResult(assert, {expectationResults}) {
   assert.ok(expectationResults.every(({result}) => result))
+}
+
+// Builders
+function entryPoint(name, ...sequence) {
+  return {
+    tag: "EntryPoint",
+    contents: [
+      {
+        tag: "Sequence",
+        contents: sequence
+      }
+    ]
+  }
+}
+
+function application(name) {
+  return {
+    tag: "Application",
+    contents: [
+      {
+        tag: "Reference",
+        contents: name
+      },
+      []
+    ]
+  }
 }
