@@ -1229,6 +1229,16 @@ export default Service.extend({
       fillOpacity(block, 1)
     }
 
+    function onChangeRequired(warningText) {
+      return function(event) {
+        if (event && event.runCode) {
+          this.setWarningText(warningText)
+          opaque(this)
+        }
+        if (this.warning && this.warning.bubble_) this.warning.bubble_.setColour('red')
+      }
+    }
+
     Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
@@ -1242,12 +1252,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: function(event) {
-        if (event && event.runCode) {
-          this.setWarningText("¡Acá falta un bloque expresión!")
-          opaque(this)
-        }
-      }
+      onchange: onChangeRequired("¡Acá falta un bloque expresión!")
     };
 
     Blockly.Blocks.required_statement = {
@@ -1263,12 +1268,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: function(event) {
-        if (event && event.runCode) {
-          this.setWarningText("¡Acá faltan bloques comandos!")
-          opaque(this)
-        }
-      }
+      onchange: onChangeRequired("¡Acá faltan bloques comandos!")
     };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {
