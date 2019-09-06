@@ -93,7 +93,67 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     )
   )
 
+  let sino = `
+  <block type="SiNo">
+    <value name="condition">
+      <shadow type="required_value"></shadow>
+      <block type="HayTomate"></block>
+    </value>
+    <statement name="block1">
+      <shadow type="required_statement"></shadow>
+      <block type="AgarrarTomate">
+        <next>
+          <block type="MoverACasillaIzquierda"></block>
+        </next>
+      </block>
+    </statement>
+    <statement name="block2">
+      <shadow type="required_statement"></shadow>
+      <block type="AgarrarLechuga">
+        <next>
+          <block type="MoverACasillaIzquierda"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `
+  parserTest('sino', sino, 
+    IfElse(
+      application("HayTomate"),
+      sequence(
+        application("AgarrarTomate"),
+        application("MoverACasillaIzquierda")
+      ),
+      sequence(
+        application("AgarrarLechuga"),
+        application("MoverACasillaIzquierda")
+      )
+    )
+  )
 
+  let hasta = `
+  <block type="Hasta">
+    <value name="condition">
+      <shadow type="required_value"></shadow>
+      <block type="TocandoFinal"></block>
+    </value>
+    <statement name="block">
+      <shadow type="required_statement"></shadow>
+      <block type="EncenderLuz">
+        <next>
+          <block type="MoverACasillaAbajo"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `
+  parserTest('hasta', hasta, 
+    muWhile(
+      application("TocandoFinal"),
+      application("EncenderLuz"),
+      application("MoverACasillaAbajo")
+    )
+  )
 
 
 
@@ -158,27 +218,31 @@ function entryPoint(name, ...seq) {
     tag: "EntryPoint",
     contents: [
       name,
-      sequence(seq)
+      sequence(...seq)
     ]
   }
 }
 
-function sequence(seq) {
+function sequence(...seq) {
   return {
     tag: "Sequence",
     contents: seq
   }
 }
 
-function application(name) {
+function reference(name) {
+  return {
+    tag: "Reference",
+    contents: name
+  }
+}
+
+function application(name, ...params) {
   return {
     tag: "Application",
     contents: [
-      {
-        tag: "Reference",
-        contents: name
-      },
-      []
+      reference(name),
+      params
     ]
   }
 }
@@ -188,7 +252,7 @@ function repeat(count, ...seq) {
     tag: "Repeat",
     contents: [
       number(count),
-      sequence(seq)
+      sequence(...seq)
     ]
   }
 }
@@ -198,7 +262,28 @@ function muIf(condition, ...seq) {
     tag: "If",
     contents: [
       condition,
-      sequence(seq)
+      sequence(...seq)
+    ]
+  }
+}
+
+function IfElse(condition, seqTrue, seqFalse) {
+  return {
+    tag: "If",
+    contents: [
+      condition,
+      seqTrue,
+      seqFalse
+    ]
+  }
+}
+
+function muWhile(condition, ...seq) {
+  return {
+    tag: "While",
+    contents: [
+      condition,
+      sequence(...seq)
     ]
   }
 }

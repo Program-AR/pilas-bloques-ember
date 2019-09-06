@@ -150,6 +150,16 @@ function parser(block) {
       tag = "If"
       parse = parseIf
       break;
+
+    case "SiNo":
+      tag = "If"
+      parse = parseIfElse
+      break;
+  
+    case "Hasta":
+      tag = "While"
+      parse = parseWhile
+      break;
   
     case "math_number":
       tag = "MuNumber"
@@ -175,20 +185,40 @@ function parseEntryPoint(block) {
 }
 
 function parseRepeat(block) {
-  let countBlock = block.getInputTargetBlock("count") //TODO: parseInput
-  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
+  let countBlock = block.getInputTargetBlock("count")
+  let statements = block.getInputTargetBlock("block")
   return [
     buildBlockAst(countBlock),
-    buildSequenceAst(sequenceBlock)
+    buildSequenceAst(statements)
+  ]
+}
+
+function parseWhile(block) {
+  let condition = block.getInputTargetBlock("condition")
+  let statements = block.getInputTargetBlock("block")
+  return [
+    buildBlockAst(condition),
+    buildSequenceAst(statements)
   ]
 }
 
 function parseIf(block) {
-  let condition = block.getInputTargetBlock("condition") //TODO: parseInput
-  let sequenceBlock = block.getInputTargetBlock("block") //TODO: parseInput
+  let condition = block.getInputTargetBlock("condition")
+  let statements = block.getInputTargetBlock("block")
   return [
     buildBlockAst(condition),
-    buildSequenceAst(sequenceBlock)
+    buildSequenceAst(statements)
+  ]
+}
+
+function parseIfElse(block) {
+  let condition = block.getInputTargetBlock("condition")
+  let statementsIf = block.getInputTargetBlock("block1")
+  let statementsElse = block.getInputTargetBlock("block2")
+  return [
+    buildBlockAst(condition),
+    buildSequenceAst(statementsIf),
+    buildSequenceAst(statementsElse)
   ]
 }
 
@@ -307,13 +337,6 @@ function getWhileExpression(blockInfo) {
 function createNotApplication(contents) {
   let negatedContents = [createNode("Reference", "not"), [contents]];
   return createNode("Application", negatedContents)
-}
-
-function parseWhile(blockInfo) {
-  return [
-    getWhileExpression(blockInfo),
-    doParseInput("SUBSTACK", blockInfo.block)
-  ]
 }
 
 function parseEquation(blockInfo) {
