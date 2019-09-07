@@ -6,7 +6,7 @@ export default Service.extend({
 
   analyze(mainBlock, expectations = []) {
     let ast = this.parse(mainBlock)
-    console.log(ast)
+    // console.log(ast)
     
     let result = mulang.analyse({
       "sample" : {
@@ -20,7 +20,7 @@ export default Service.extend({
         }
       }
     })
-    console.log(result);
+    // console.log(result);
 
     return result
   },
@@ -167,8 +167,13 @@ function parser(block) {
       break;
   
     default:
-      tag = "Application"
-      parse = parseApplication
+      if (block.categoria == "Valores") {
+        tag = "Reference"
+        parse = parseReference
+      } else {
+        tag = "Application"
+        parse = parseApplication
+      }
       break;
   }
   return {tag, parse}
@@ -182,6 +187,25 @@ function parseEntryPoint(block) {
     block.type, 
     buildSequenceAst(block.getChildren()[0])
   ]
+}
+
+function parseApplication(block) {
+  return [
+    createReference(block),
+    parseArguments(block)
+  ]
+}
+
+function parseArguments(block) {
+  // if (block.type == "EscribirTextoDadoEnOtraCuadricula") {
+  //   console.log(block)
+  //   console.log(block.getVars())
+  // }
+
+  return block.inputList
+    .filter(input => input.type == Blockly.INPUT_VALUE)
+    .map(input => input.connection.targetBlock())    
+    .map(b => buildBlockAst(b))
 }
 
 function parseRepeat(block) {
@@ -226,6 +250,16 @@ function parseMuNumber(block) {
   return parseFloat(block.getFieldValue("NUM"));
 }
 
+function parseReference(block) {
+  return block.type
+}
+
+
+
+
+function createReference(block) {
+  return createNode("Reference", block.type)
+}
 
 
 
@@ -239,14 +273,6 @@ function parseRegularBlock(blockInfo) {
 
 function parseMulangTag(mulangTag) {
   return mulangTags[mulangTag];
-}
-
-function parseApplication(block) {
-  let referenceName = block.type
-  return [
-    createNode("Reference", referenceName),
-    parseAttributes(block)
-  ]
 }
 
 function parseField(input) {
@@ -297,13 +323,6 @@ function parseAttribute(attr, block, parseFunction, type) {
   } else {
     return buildEmptyNode();
   }
-}
-
-function parseAttributes(blockInfo) {
-  // let {blockStructure, block} = blockInfo;
-  // let parsedFields = parseBlockFields(blockStructure.fields, block);
-  // let parsedInputs = parseBlockInputs(getBlockInputs(blockStructure, block), block);
-  return [] //[...parsedFields, ...parsedInputs];
 }
 
 function getBlockInputs(blockStructure, block) {
@@ -390,10 +409,6 @@ function parseAssignment(blockInfo) {
     doParseInput("VALUE", blockInfo.block)
   ]
 
-}
-
-function parseReference(blockInfo) {
-  return blockInfo.normalizedOpcode;
 }
 
 /* This function generates the name of a listener by replacing the $N tokens, with the

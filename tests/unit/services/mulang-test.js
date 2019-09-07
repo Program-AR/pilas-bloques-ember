@@ -155,6 +155,60 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     )
   )
 
+  let applicationWithReferenceParameter = `
+  <block type="MoverA">
+    <value name="direccion">
+      <shadow type="required_value"></shadow>
+      <block type="ParaLaDerecha"></block>
+    </value>
+  </block>
+  `
+  parserTest('application with reference param', applicationWithReferenceParameter, 
+    application("MoverA", reference("ParaLaDerecha"))
+  )
+
+  let applicationWithApplicationParameter = `
+  <block type="DibujarLado">
+    <value name="longitud">
+      <shadow type="required_value"></shadow>
+      <block type="OpAritmetica">
+        <field name="OP">ADD</field>
+        <value name="A">
+          <shadow type="required_value"></shadow>
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <value name="B">
+          <shadow type="required_value"></shadow>
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+      </block>
+    </value>
+  </block>
+  `
+  parserTest('application with application param', applicationWithApplicationParameter, 
+    application("DibujarLado", 
+      application("OpAritmetica", 
+        number(10),
+        number(100)
+      )
+    )
+  )
+
+  // TODO
+  // let applicationWithTextParameter = `
+  // <block type="EscribirTextoDadoEnOtraCuadricula">
+  //   <field name="texto">A</field>
+  // </block>
+  // `
+  // parserTest('application with text param', applicationWithTextParameter, 
+  //   application("EscribirTextoDadoEnOtraCuadricula", string("A"))
+  // )
+
+
 
 
   /////////// ANALYZE ////////////
@@ -288,9 +342,16 @@ function muWhile(condition, ...seq) {
   }
 }
 
-function number(number) {
+function number(n) {
   return {
     tag: "MuNumber",
-    contents: number
+    contents: n
+  }
+}
+
+function string(s) {
+  return {
+    tag: "MuString",
+    contents: s
   }
 }
