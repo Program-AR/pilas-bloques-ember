@@ -175,6 +175,11 @@ function parser(block) {
       parse = parseProcedure
       break;
 
+    case "variables_get":
+      tag = "Reference"
+      parse = parseVariable
+      break;
+
     default:
       if (block.categoria == "Valores") {
         tag = "Reference"
@@ -256,6 +261,10 @@ function parseIfElse(block) {
 
 function parseMuNumber(block) {
   return parseFloat(block.getFieldValue("NUM"));
+}
+
+function parseVariable(block) {
+  return block.getFieldValue("VAR")
 }
 
 function parseReference(block) {

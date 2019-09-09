@@ -155,7 +155,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     )
   )
 
-  let applicationWithReferenceParameter = `
+  let applicationWithParameter = `
   <block type="MoverA">
     <value name="direccion">
       <shadow type="required_value"></shadow>
@@ -163,7 +163,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  parserTest('application with reference param', applicationWithReferenceParameter, 
+  parserTest('application with reference param', applicationWithParameter, 
     application("MoverA", reference("ParaLaDerecha"))
   )
 
@@ -253,6 +253,72 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     )
   )
 
+  let procedureWithParams = `
+  <block type="procedures_defnoreturn">
+    <mutation>
+      <arg name="lado"></arg>
+      <arg name="angulo"></arg>
+    </mutation>
+    <field name="NAME">esquina</field>
+    <field name="ARG0">lado</field>
+    <field name="ARG1">angulo</field>
+    <statement name="STACK">
+      <shadow type="required_statement"></shadow>
+      <block type="DibujarLado">
+        <value name="longitud">
+          <shadow type="required_value"></shadow>
+          <block type="variables_get">
+            <mutation var="lado" parent=":2hb{1CYnYqL(S0v_ou"></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="GirarGrados">
+            <value name="grados">
+              <shadow type="required_value"></shadow>
+              <block type="variables_get">
+                <mutation var="angulo" parent=":2hb{1CYnYqL(S0v_ou"></mutation>
+              </block>
+            </value>
+            <next>
+              <block type="DibujarLado">
+                <value name="longitud">
+                  <shadow type="required_value"></shadow>
+                  <block type="variables_get">
+                    <mutation var="lado" parent=":2hb{1CYnYqL(S0v_ou"></mutation>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `
+  parserTest('procedure with params', procedureWithParams, 
+    procedure("esquina", ["lado", "angulo"],
+      application("DibujarLado", reference("lado")),
+      application("GirarGrados", reference("angulo")),
+      application("DibujarLado", reference("lado"))
+    )
+  )
+
+  let parameter = `
+  <block type="GirarGrados">
+    <value name="grados">
+      <shadow type="required_value"></shadow>
+      <block type="variables_get">
+        <mutation var="angulo" parent=":2hb{1CYnYqL(S0v_ou"></mutation>
+      </block>
+    </value>
+  </block>
+  `
+  parserTest('parameter', parameter, 
+    application("GirarGrados",
+      reference("angulo")
+    )
+  )
+
 
 
   /////////// ANALYZE ////////////
@@ -325,9 +391,16 @@ function procedure(name, params, ...seq) {
 
 function equation(params, ...seq) {
   return [
-    params,
+    params.map(name => variable(name)),
     body(...seq)
   ]
+}
+
+function variable(name) {
+  return {
+    tag: "VariablePattern",
+    contents: name
+  }
 }
 
 function body(...seq) {
