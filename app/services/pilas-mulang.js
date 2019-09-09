@@ -41,6 +41,10 @@ function nextBlockFor(block) {
   return block.getNextBlock();
 }
 
+function getChild(block) {
+  return block.getChildren()[0]
+}
+
 function getBlock(blockId) {
   return targetBlocks[blockId]
 }
@@ -166,6 +170,11 @@ function parser(block) {
       parse = parseMuNumber
       break;
   
+    case "procedures_defnoreturn":
+      tag = "Procedure"
+      parse = parseProcedure
+      break;
+
     default:
       if (block.categoria == "Valores") {
         tag = "Reference"
@@ -185,7 +194,7 @@ function parser(block) {
 function parseEntryPoint(block) {
   return [
     block.type, 
-    buildSequenceAst(block.getChildren()[0])
+    buildSequenceAst(getChild(block))
   ]
 }
 
@@ -199,7 +208,6 @@ function parseApplication(block) {
 function parseArguments(block) {
   // if (block.type == "EscribirTextoDadoEnOtraCuadricula") {
   //   console.log(block)
-  //   console.log(block.getVars())
   // }
 
   return block.inputList
@@ -253,6 +261,41 @@ function parseMuNumber(block) {
 function parseReference(block) {
   return block.type
 }
+
+
+// TODO: Duplicate from blocks-gallery
+function getProcedureName(procedureBlock) { 
+  return procedureBlock.getProcedureDef()[0];
+}
+function getParams(procedureBlock) {
+  return procedureBlock.getProcedureDef()[1]
+}
+
+
+function parseProcedure(block) {
+  return [
+    getProcedureName(block),
+    createNode("Equation", parseEquation(block))
+  ];
+}
+
+function parseEquation(block) {
+  return [
+    parseEquationParams(block),
+    parseEquationBody(block)
+  ]
+}
+
+function parseEquationParams(block) {
+  return getParams(block).map( argument => createNode("VariablePattern", argument) );
+}
+
+function parseEquationBody(block) {
+  let bodyContents = buildSequenceAst(getChild(block));
+  return createNode("UnguardedBody", bodyContents);
+}
+
+
 
 
 
@@ -356,51 +399,6 @@ function getWhileExpression(blockInfo) {
 function createNotApplication(contents) {
   let negatedContents = [createNode("Reference", "not"), [contents]];
   return createNode("Application", negatedContents)
-}
-
-function parseEquation(blockInfo) {
-  let procedureBlock = getBlock(blockInfo.block.parent);
-  return [
-    parseEquationParams(blockInfo),
-    parseEquationBody(procedureBlock)
-  ]
-}
-
-function parseProcedure(blockInfo) {
-  return [
-    getProcedureName(blockInfo),
-    doParseInput("custom_block", blockInfo.block),
-  ];
-}
-
-function getProcedurePrototype(blockInfo) {
-  return getBlock(blockInfo.block.inputs.custom_block.block);
-}
-
-function parseEquationParams(blockInfo) {
-  let equationParams = getEquationParams(blockInfo);
-  return equationParams.map( argument => createNode("VariablePattern", argument) );
-}
-
-function parseEquationBody(block) {
-  let bodyContents = buildSequenceAst(nextBlockFor(block));
-  return createNode("UnguardedBody", bodyContents);
-}
-
-
-function getEquationParams(blockInfo) {
-  return JSON.parse(blockInfo.block.mutation.argumentnames);
-}
-
-// "proc test %s %b foo %b" is parsed as "proc test foo"
-function parseProcedureName(prototypeBlock) {
-  let procCode = prototypeBlock.mutation.proccode;
-  return procCode.replace(/%./g, '').replace(/\s+/g, ' ').trim();
-}
-
-function getProcedureName(blockInfo) {
-  let prototypeBlock = getProcedurePrototype(blockInfo);
-  return parseProcedureName(prototypeBlock);
 }
 
 function parseAssignment(blockInfo) {

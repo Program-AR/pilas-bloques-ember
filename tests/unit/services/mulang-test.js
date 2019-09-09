@@ -208,6 +208,50 @@ module('Unit | Service | pilas-mulang', function(hooks) {
   //   application("EscribirTextoDadoEnOtraCuadricula", string("A"))
   // )
 
+  
+  let procedureProgram = `
+  <block type="procedures_defnoreturn">
+    <field name="NAME">esquina</field>
+    <statement name="STACK">
+      <shadow type="required_statement"></shadow>
+      <block type="DibujarLado">
+        <value name="longitud">
+          <shadow type="required_value"></shadow>
+          <block type="math_number">
+            <field name="NUM">100</field>
+          </block>
+        </value>
+        <next>
+          <block type="GirarGrados">
+            <value name="grados">
+              <shadow type="required_value"></shadow>
+              <block type="math_number">
+                <field name="NUM">90</field>
+              </block>
+            </value>
+            <next>
+              <block type="DibujarLado">
+                <value name="longitud">
+                  <shadow type="required_value"></shadow>
+                  <block type="math_number">
+                    <field name="NUM">100</field>
+                  </block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `
+  parserTest('procedure', procedureProgram, 
+    procedure("esquina", [], 
+      application("DibujarLado", number(100)),
+      application("GirarGrados", number(90)),
+      application("DibujarLado", number(100))
+    )
+  )
 
 
 
@@ -267,6 +311,32 @@ function assertMulangResult(assert, {expectationResults}) {
 }
 
 // Builders
+function procedure(name, params, ...seq) {
+  return {
+    tag: "Procedure",
+    contents: [
+      name,
+      [
+        equation(params, ...seq)
+      ]
+    ]
+  }
+}
+
+function equation(params, ...seq) {
+  return [
+    params,
+    body(...seq)
+  ]
+}
+
+function body(...seq) {
+  return {
+    tag: "UnguardedBody",
+    contents: sequence(...seq)
+  }
+}
+
 function entryPoint(name, ...seq) {
   return {
     tag: "EntryPoint",
