@@ -198,15 +198,14 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     )
   )
 
-  // TODO
-  // let applicationWithTextParameter = `
-  // <block type="EscribirTextoDadoEnOtraCuadricula">
-  //   <field name="texto">A</field>
-  // </block>
-  // `
-  // parserTest('application with text param', applicationWithTextParameter, 
-  //   application("EscribirTextoDadoEnOtraCuadricula", string("A"))
-  // )
+  let applicationWithTextParameter = `
+  <block type="EscribirTextoDadoEnOtraCuadricula">
+    <field name="texto">A</field>
+  </block>
+  `
+  parserTest('application with text param', applicationWithTextParameter, 
+    application("EscribirTextoDadoEnOtraCuadricula", string("A"))
+  )
 
   
   let procedureProgram = `

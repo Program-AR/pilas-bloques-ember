@@ -211,14 +211,17 @@ function parseApplication(block) {
 }
 
 function parseArguments(block) {
-  // if (block.type == "EscribirTextoDadoEnOtraCuadricula") {
-  //   console.log(block)
-  // }
-
   return block.inputList
     .filter(input => input.type == Blockly.INPUT_VALUE)
     .map(input => input.connection.targetBlock())    
     .map(b => buildBlockAst(b))
+    .concat(...getTextArguments(block))
+}
+
+function getTextArguments(block) {
+  let text = block.getFieldValue("texto") // TODO: Mega-hard-coded
+  if (!text) return []
+  return [createNode("MuString", text)]
 }
 
 function parseRepeat(block) {
