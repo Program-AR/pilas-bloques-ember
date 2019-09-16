@@ -17,11 +17,15 @@ module('Unit | Service | blocks-gallery', function (hooks) {
 
 ///////////// REQUIRED INPUTS /////////////
 
-function testHasRequiredInputs(blockType) {
-  test(`${blockType} has required inputs`, function(assert) {
+function testHasRequiredInputs(blockType, required = true) {
+  test(`${blockType} ${required ? "has" : "doesn't have"} required inputs`, function(assert) {
     let block = createBlock(blockType)
-    assertRequiredInputs(assert, block, Blockly.INPUT_VALUE, 'required_value')
-    assertRequiredInputs(assert, block, Blockly.NEXT_STATEMENT, 'required_statement')
+    if (required) {
+      assertRequiredInputs(assert, block, Blockly.INPUT_VALUE, 'required_value')
+      assertRequiredInputs(assert, block, Blockly.NEXT_STATEMENT, 'required_statement')
+    } else {
+      assert.ok(block.getChildren().length == 0) //TODO: Check more information
+    }
   });  
 }
 
@@ -48,7 +52,7 @@ testHasRequiredInputs('SaltarHaciaAdelante')
 // testHasRequiredInputs('EscribirTextoDadoEnOtraCuadricula') // field_input (texto) por default ya tiene string vacío
 
 // Procedimientos
-testHasRequiredInputs('procedures_defnoreturn')
+testHasRequiredInputs('procedures_defnoreturn', false)
 
 let precedureCall = `
 <block type="procedures_callnoreturn">
