@@ -30,8 +30,8 @@ export default Service.extend({
 
   _makeAllInputsRequired() {
     Object.entries(Blockly.Blocks)
-    .filter(([name, _]) => name != "procedures_defnoreturn")
-    .map(([_, block]) => block)    
+    .filter(([name, _]) => name != "procedures_defnoreturn") // jshint ignore:line
+    .map(([_, block]) => block) // jshint ignore:line
     .forEach(blockDef => {
       let oldInit = blockDef.init
       blockDef.init = function() {
