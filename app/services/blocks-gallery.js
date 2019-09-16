@@ -29,8 +29,9 @@ export default Service.extend({
   },
 
   _makeAllInputsRequired() {
-    Object
-    .values(Blockly.Blocks)
+    Object.entries(Blockly.Blocks)
+    .filter(([name, _]) => name != "procedures_defnoreturn")
+    .map(([_, block]) => block)    
     .forEach(blockDef => {
       let oldInit = blockDef.init
       blockDef.init = function() {
