@@ -94,6 +94,20 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   </block>
   `
 
+  let nonFilledProgram = `
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+    </statement>
+  </block>
+  `
+
   test('Ejecuta cuando todos los bloques están completos', function(assert) {
     Blockly.textToBlock(filledProgram)
 
@@ -103,20 +117,7 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   })
 
   test('No ejecuta cuando el programa tiene algún agujero', function(assert) {
-    let program = `
-    <block type="al_empezar_a_ejecutar">
-      <statement name="program">
-        <block type="repetir">
-          <value name="count">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-    `
-    Blockly.textToBlock(program)
+    Blockly.textToBlock(nonFilledProgram)
 
     this.ctrl.send('ejecutar')
 
@@ -152,8 +153,8 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   })
 
   test('Al ejecutar aparecen los warnings de bloques vacíos', function(assert) {
-    let procedure = Blockly.textToBlock(emptyProcedure)
-    let required = findBlockByTypeIn(procedure, "required_statement")
+    let program = Blockly.textToBlock(nonFilledProgram)
+    let required = findBlockByTypeIn(program, "required_statement")
     
     assertNotWarning(assert, required)
 
