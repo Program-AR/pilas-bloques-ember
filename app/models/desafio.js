@@ -16,6 +16,7 @@ export default Model.extend({
   grupo: belongsTo('grupo'),
   bloques: attr(),
 	solucionInicial: attr('string'),
+  expectativas: attr(),
 	debugging: attr('boolean'), 
 
   nombreImagen: computed('imagen','nombre', function(){
