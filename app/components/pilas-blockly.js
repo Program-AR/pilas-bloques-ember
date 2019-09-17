@@ -314,9 +314,9 @@ export default Component.extend({
 
       if (this.debeMostrarFinDeDesafio) {
         if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
-          let mulangResult = this.pilasMulang.analyze(Blockly.mainWorkspace.getTopBlocks()[0])
-          let mulangExpectation = mulangResult.expectationResults[0].result
-          console.log({mulangExpectation})
+          let mulangResult = this.pilasMulang.analyze(Blockly.mainWorkspace.getTopBlocks()[0], this.modelActividad.get('expectativas'))
+          console.log({mulangResult})
+          let mulangExpectation = mulangResult.expectationResults.every(({result}) => result)
           this.set("mulangExpectation", mulangExpectation)
           this.send('abrirFinDesafio');
         }

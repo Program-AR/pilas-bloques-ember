@@ -93,14 +93,14 @@
       <img style="transform:scaleX(-1)" src="imagenes/libros/programar.png"/>
     </div>
     {{#if mulangExpectation}}
-      <p><strong>¡Muy bien!</strong> Estamos usando un nuevo bloque Repetir.</p>
+      <p><strong>¡Muy bien!</strong> Estamos usando un nuevo bloque Si.</p>
     {{/if}}
     {{#unless mulangExpectation}}
       <p><strong>Para pensar...</strong> Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!</p>
       {{!-- <p>Si tenés <strong>procedimientos</strong>, usalos para escribir tu <strong>estrategia</strong>. Si tenés patrones repetidos... ¡Usá <strong>repetición</strong>! Y si el escenario cambia... ¡Usá alternativas y repeticiones <strong>condicionales</strong>!</p>--}}
       {{!-- <p>¿Estás usando los conceptos bien?</p>   --}}
       <div class="alert alert-warning">
-        <p>¿No estás repitiendo muchas veces un mismo bloque?</p>
+        <p>¿Tu solución funciona para todos los casos?</p>
       </div>
     {{/unless}}
   {{/modal-dialog}}
