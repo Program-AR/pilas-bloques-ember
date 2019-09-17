@@ -118,7 +118,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
   </block>
   `
   parserTest('sino', sino, 
-    IfElse(
+    ifElse(
       application("HayTomate"),
       sequence(
         application("AgarrarTomate"),
@@ -326,30 +326,17 @@ module('Unit | Service | pilas-mulang', function(hooks) {
   let program = `
   <block type="al_empezar_a_ejecutar">
     <statement name="program">
-      <shadow type="required_statement"></shadow>
-      <block type="MoverACasillaDerecha">
-        <next>
+      <block type="Si">
+        <value name="condition">
+          <block type="HayChurrasco"></block>
+        </value>
+        <statement name="block">
           <block type="MoverACasillaDerecha">
             <next>
-              <block type="MoverACasillaDerecha">
-                <next>
-                  <block type="repetir">
-                    <value name="count">
-                      <shadow type="required_value"></shadow>
-                      <block type="math_number">
-                        <field name="NUM">10</field>
-                      </block>
-                    </value>
-                    <statement name="block">
-                      <shadow type="required_statement"></shadow>
-                      <block type="MoverACasillaDerecha"></block>
-                    </statement>
-                  </block>
-                </next>
-              </block>
+              <block type="ComerChurrasco"></block>
             </next>
           </block>
-        </next>
+        </statement>
       </block>
     </statement>
   </block>
@@ -362,7 +349,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     let expectations = [
       {
          "binding" : "al_empezar_a_ejecutar",
-         "inspection" : "UsesRepeat"
+         "inspection" : "UsesIf"
       }
     ]
     let result = pilasMulang.analyze(mainBlock, expectations)
@@ -458,12 +445,13 @@ function muIf(condition, ...seq) {
     tag: "If",
     contents: [
       condition,
-      sequence(...seq)
+      sequence(...seq),
+      none()
     ]
   }
 }
 
-function IfElse(condition, seqTrue, seqFalse) {
+function ifElse(condition, seqTrue, seqFalse) {
   return {
     tag: "If",
     contents: [
@@ -495,5 +483,12 @@ function string(s) {
   return {
     tag: "MuString",
     contents: s
+  }
+}
+
+function none() {
+  return {
+    tag: "None",
+    contents: []
   }
 }

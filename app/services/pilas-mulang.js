@@ -6,7 +6,7 @@ export default Service.extend({
 
   analyze(mainBlock, expectations = []) {
     let ast = this.parse(mainBlock)
-    // console.log(ast)
+    // console.log({ast})
     
     let result = mulang.analyse({
       "sample" : {
@@ -20,7 +20,7 @@ export default Service.extend({
         }
       }
     })
-    // console.log(result);
+    // console.log({result});
 
     return result
   },
@@ -247,7 +247,8 @@ function parseIf(block) {
   let statements = block.getInputTargetBlock("block")
   return [
     buildBlockAst(condition),
-    buildSequenceAst(statements)
+    buildSequenceAst(statements),
+    buildEmptyNode()
   ]
 }
 
