@@ -5,6 +5,7 @@ export default Service.extend({
 
   start() {
     Blockly.textToBlock = this._textToBlock;
+    Blockly.isProcedure = this._isProcedure;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
@@ -28,9 +29,13 @@ export default Service.extend({
     Blockly.Events.fire(event)
   },
 
+  _isProcedure(type) {
+    return type == "procedures_defnoreturn"
+  },
+
   _makeAllInputsRequired() {
     Object.entries(Blockly.Blocks)
-    .filter(([name, _]) => name != "procedures_defnoreturn") // jshint ignore:line
+    .filter(([type, _]) => !Blockly.isProcedure(type)) // jshint ignore:line
     .map(([_, block]) => block) // jshint ignore:line
     .forEach(blockDef => {
       let oldInit = blockDef.init
