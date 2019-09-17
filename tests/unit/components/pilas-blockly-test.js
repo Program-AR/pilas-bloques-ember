@@ -84,13 +84,33 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   let filledProgram = `
     <block type="al_empezar_a_ejecutar">
       <statement name="program">
-        <block type="MoverACasillaDerecha"></block>
+        <block type="MoverACasillaDerecha">
+          <next>
+            <block type="procedures_callnoreturn">
+              <mutation name="Hacer algo"></mutation>
+            </block>
+          </next>
+        </block>
       </statement>
     </block>
   `
   let emptyProcedure = `    
   <block type="procedures_defnoreturn">
     <field name="NAME">Hacer algo</field>
+  </block>
+  `
+
+  let nonFilledProgram = `
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="repetir">
+        <value name="count">
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+      </block>
+    </statement>
   </block>
   `
 
@@ -103,20 +123,7 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   })
 
   test('No ejecuta cuando el programa tiene algún agujero', function(assert) {
-    let program = `
-    <block type="al_empezar_a_ejecutar">
-      <statement name="program">
-        <block type="repetir">
-          <value name="count">
-            <block type="math_number">
-              <field name="NUM">10</field>
-            </block>
-          </value>
-        </block>
-      </statement>
-    </block>
-    `
-    Blockly.textToBlock(program)
+    Blockly.textToBlock(nonFilledProgram)
 
     this.ctrl.send('ejecutar')
 
@@ -142,18 +149,18 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     assert.ok(interpreteMock.run.called)
   })
 
-  test('No ejecuta cuando existe algún procedimiento vacío', function(assert) {
+  test('Ejecuta aún cuando existe procedimiento vacío', function(assert) {
     Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(emptyProcedure)
 
     this.ctrl.send('ejecutar')
 
-    assert.notOk(interpreteMock.run.called)
+    assert.ok(interpreteMock.run.called)
   })
 
   test('Al ejecutar aparecen los warnings de bloques vacíos', function(assert) {
-    let procedure = Blockly.textToBlock(emptyProcedure)
-    let required = findBlockByTypeIn(procedure, "required_statement")
+    let program = Blockly.textToBlock(nonFilledProgram)
+    let required = findBlockByTypeIn(program, "required_statement")
     
     assertNotWarning(assert, required)
 
