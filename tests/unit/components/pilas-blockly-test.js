@@ -84,7 +84,13 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   let filledProgram = `
     <block type="al_empezar_a_ejecutar">
       <statement name="program">
-        <block type="MoverACasillaDerecha"></block>
+        <block type="MoverACasillaDerecha">
+          <next>
+            <block type="procedures_callnoreturn">
+              <mutation name="Hacer algo"></mutation>
+            </block>
+          </next>
+        </block>
       </statement>
     </block>
   `
@@ -143,13 +149,13 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     assert.ok(interpreteMock.run.called)
   })
 
-  test('No ejecuta cuando existe algún procedimiento vacío', function(assert) {
+  test('Ejecuta aún cuando existe procedimiento vacío', function(assert) {
     Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(emptyProcedure)
 
     this.ctrl.send('ejecutar')
 
-    assert.notOk(interpreteMock.run.called)
+    assert.ok(interpreteMock.run.called)
   })
 
   test('Al ejecutar aparecen los warnings de bloques vacíos', function(assert) {
