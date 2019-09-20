@@ -154,8 +154,8 @@ export default [
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
     expectativas: [
       {
-         "binding" : "al_empezar_a_ejecutar",
-         "inspection" : "UsesIf"
+        "binding" : "al_empezar_a_ejecutar",
+        "inspection" : "UsesIf"
       }
     ]
   },

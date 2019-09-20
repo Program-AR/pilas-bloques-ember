@@ -68,6 +68,10 @@ export default Component.extend({
   estoyEnMoodle: computed('modoAlumno', 'modoDocente', function () {
     return this.modoAlumno || this.modoDocente;
   }),
+  
+  tieneExpectativas: computed('modelActividad', function () {
+    return this.modelActividad.get('expectativas')
+  }),
 
   didInsertElement() {
 
