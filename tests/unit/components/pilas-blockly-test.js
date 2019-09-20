@@ -94,12 +94,6 @@ module('Unit | Components | pilas-blockly', function(hooks) {
       </statement>
     </block>
   `
-  let emptyProcedure = `    
-  <block type="procedures_defnoreturn">
-    <field name="NAME">Hacer algo</field>
-  </block>
-  `
-
   let nonFilledProgram = `
   <block type="al_empezar_a_ejecutar">
     <statement name="program">
@@ -149,6 +143,24 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     assert.ok(interpreteMock.run.called)
   })
 
+  let emptyProcedure = `    
+  <block type="procedures_defnoreturn">
+    <field name="NAME">Hacer algo</field>
+  </block>
+  `
+  let nonFilledProcedure = `    
+  <block type="procedures_defnoreturn">
+    <field name="NAME">Hacer algo</field>
+    <statement name="STACK">
+      <block type="GirarGrados">
+        <value name="grados">
+          <shadow type="required_value"></shadow>
+        </value>
+      </block>
+    </statement>
+  </block>
+  `
+
   test('Ejecuta aún cuando existe procedimiento vacío', function(assert) {
     Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(emptyProcedure)
@@ -156,6 +168,15 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     this.ctrl.send('ejecutar')
 
     assert.ok(interpreteMock.run.called)
+  })
+
+  test('No ejecuta cuando existe procedimiento con algún agujero', function(assert) {
+    Blockly.textToBlock(filledProgram)
+    Blockly.textToBlock(nonFilledProcedure)
+
+    this.ctrl.send('ejecutar')
+
+    assert.notOk(interpreteMock.run.called)
   })
 
   test('Al ejecutar aparecen los warnings de bloques vacíos', function(assert) {
