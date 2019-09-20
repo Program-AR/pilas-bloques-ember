@@ -347,10 +347,10 @@ export default Component.extend({
     this.highlighter.clear()
   },
 
-  allEnabledTopBlocksFilled() {
+  shouldExecuteProgram() {
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
-      .every(block => block.allInputsFilled(false) || Blockly.isProcedure(block.type))
+      .every(block => block.allInputsFilled(false) || Blockly.isEmptyProcedure(block))
   },
 
   actions: {
@@ -358,7 +358,7 @@ export default Component.extend({
       this.pilas.reiniciarEscenaCompleta()
 
       Blockly.Events.fireRunCode()
-      if (!this.allEnabledTopBlocksFilled()) return;
+      if (!this.shouldExecuteProgram()) return;
 
       this.setModoTurbo()
 

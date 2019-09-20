@@ -6,6 +6,7 @@ export default Service.extend({
   start() {
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
+    Blockly.isEmptyProcedure = this._isEmptyProcedure;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
@@ -31,6 +32,10 @@ export default Service.extend({
 
   _isProcedure(type) {
     return type == "procedures_defnoreturn"
+  },
+
+  _isEmptyProcedure(block) {
+    return Blockly.isProcedure(block.type) && block.getChildren().length == 0
   },
 
   _makeAllInputsRequired() {
