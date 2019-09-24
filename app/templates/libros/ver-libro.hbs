@@ -5,6 +5,7 @@
   <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
 
   {{#each model.categorias as |categoria|}}
+  <!-- falta el título de la categoría (como h1?)jugar -->
     {{#each categoria.grupos as |grupo|}}
       {{#if grupo.titulo}}
         <h2>{{grupo.titulo}}</h2>
