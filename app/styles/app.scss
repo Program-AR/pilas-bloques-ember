@@ -4,7 +4,7 @@
 @import "ember-blocky.scss";
 @import "modal.scss";
 @import "ribbons.scss";
-
+@import 'ember-paper';
 @import "font-awesome";
 
 [data-ember-action] {
@@ -599,18 +599,18 @@ h2 {
   font-weight: 200;
 }
 
-.contenedor-padding-superior {
-  padding-top: 4em;
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
+// .contenedor-padding-superior {
+//   padding-top: 4em;
+//   height: 100%;
+//   position: absolute;
+//   width: 100%;
+// }
 
-.contenedor-sin-padding {
-  height: 100%;
-  position: absolute;
-  width: 100%;
-}
+// .contenedor-sin-padding {
+//   height: 100%;
+//   position: absolute;
+//   width: 100%;
+// }
 
 .contenedor-pilas-editor {
     display: flex;
