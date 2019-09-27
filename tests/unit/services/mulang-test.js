@@ -2,25 +2,16 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
 
+let pilasMulang = null
+
 module('Unit | Service | pilas-mulang', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function () {
     blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
+    pilasMulang = this.owner.lookup('service:pilas-mulang')
   });
-
-
-  /////////// PARSE ////////////
-
-  function parserTest(name, code, mulangAst) {
-    test(`Should parse ${name}`, function(assert) {
-      let pilasMulang = this.owner.lookup('service:pilas-mulang')
-      let result = pilasMulang.parse(Blockly.textToBlock(code))
-      assert.deepEqual(result, mulangAst)
-    });  
-  }
-
 
   let al_empezar_a_ejecutar = `
   <block type="al_empezar_a_ejecutar">
@@ -37,7 +28,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar, 
+  mulangTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar, 
     entryPoint(
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha"),
@@ -63,7 +54,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('repetir', repetir, 
+  mulangTest('repetir', repetir, 
     repeat(
       10,
       application("MoverACasillaIzquierda"),
@@ -85,7 +76,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('si', si, 
+  mulangTest('si', si, 
     muIf(
       application("HayChurrasco"),
       application("MoverACasillaDerecha"),
@@ -117,7 +108,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('sino', sino, 
+  mulangTest('sino', sino, 
     ifElse(
       application("HayTomate"),
       sequence(
@@ -147,7 +138,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('hasta', hasta, 
+  mulangTest('hasta', hasta, 
     muWhile(
       application("TocandoFinal"),
       application("EncenderLuz"),
@@ -163,7 +154,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  parserTest('application with reference param', applicationWithParameter, 
+  mulangTest('application with reference param', applicationWithParameter, 
     application("MoverA", reference("ParaLaDerecha"))
   )
 
@@ -189,7 +180,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  parserTest('application with application param', applicationWithApplicationParameter, 
+  mulangTest('application with application param', applicationWithApplicationParameter, 
     application("DibujarLado", 
       application("OpAritmetica", 
         number(10),
@@ -203,7 +194,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     <field name="texto">A</field>
   </block>
   `
-  parserTest('application with text param', applicationWithTextParameter, 
+  mulangTest('application with text param', applicationWithTextParameter, 
     application("EscribirTextoDadoEnOtraCuadricula", string("A"))
   )
 
@@ -244,7 +235,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('procedure', procedureProgram, 
+  mulangTest('procedure', procedureProgram, 
     procedure("esquina", [], 
       application("DibujarLado", number(100)),
       application("GirarGrados", number(90)),
@@ -294,7 +285,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  parserTest('procedure with params', procedureWithParams, 
+  mulangTest('procedure with params', procedureWithParams, 
     procedure("esquina", ["lado", "angulo"],
       application("DibujarLado", reference("lado")),
       application("GirarGrados", reference("angulo")),
@@ -312,55 +303,31 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  parserTest('parameter', parameter, 
+  mulangTest('parameter', parameter, 
     application("GirarGrados",
       reference("angulo")
     )
   )
-
-
-
-  /////////// ANALYZE ////////////
-
-
-  let program = `
-  <block type="al_empezar_a_ejecutar">
-    <statement name="program">
-      <block type="Si">
-        <value name="condition">
-          <block type="HayChurrasco"></block>
-        </value>
-        <statement name="block">
-          <block type="MoverACasillaDerecha">
-            <next>
-              <block type="ComerChurrasco"></block>
-            </next>
-          </block>
-        </statement>
-      </block>
-    </statement>
-  </block>
-  `
-
-  // Replace this with your real tests.
-  test('Can analize blocks with mulang', function(assert) {
-    let pilasMulang = this.owner.lookup('service:pilas-mulang')
-    let mainBlock = Blockly.textToBlock(program)
-    let expectations = [
-      {
-         "binding" : "al_empezar_a_ejecutar",
-         "inspection" : "UsesIf"
-      }
-    ]
-    let result = pilasMulang.analyze(mainBlock, expectations)
-    assertMulangResult(assert, result);
-  });
 });
 
+
+function mulangTest(name, code, mulangAst) {
+  test(`Should parse ${name}`, function(assert) {
+    let ast = pilasMulang.parse(Blockly.textToBlock(code))
+    assert.deepEqual(ast, mulangAst)
+  })
+
+  test(`Should analyze ${name}`, function(assert) {
+    let result = pilasMulang.analyze(Blockly.textToBlock(code))
+    assertMulangResult(assert, result);
+  })
+}
 
 function assertMulangResult(assert, {expectationResults}) {
   assert.ok(expectationResults.every(({result}) => result))
 }
+
+
 
 // Builders
 function procedure(name, params, ...seq) {
