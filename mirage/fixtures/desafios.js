@@ -46,7 +46,14 @@ export default [
     consignaInicial: 'El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".',
     escena: 'NoMeCansoDeSaltar',
     debeFelicitarse: true,
-    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
+    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir'],
+    expectativas: [
+      {
+        "name": "Usa Repetir",
+        "binding" : "*",
+        "inspection" : "UsesRepeat"
+      }
+    ]
   },
   {
     id: 4,
@@ -154,7 +161,7 @@ export default [
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
     expectativas: [
       {
-        "binding" : "al_empezar_a_ejecutar",
+        "binding" : "*",
         "inspection" : "UsesIf"
       }
     ]
@@ -1831,6 +1838,12 @@ export default [
       'Si',
       'HayChurrasco'
     ],
+    expectativas: [
+      {
+        "binding" : "*",
+        "inspection" : "UsesIf"
+      }
+    ]
   },
   {
     id: 243,
