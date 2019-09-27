@@ -6,7 +6,7 @@ export default Service.extend({
   start() {
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
-    Blockly.isEmptyProcedure = this._isEmptyProcedure;
+    Blockly.isEmptyProcedure = this._isEmptyProcedure.bind(this);
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     this._generarLenguaje();
     this._definirColores();
@@ -35,7 +35,12 @@ export default Service.extend({
   },
 
   _isEmptyProcedure(block) {
-    return Blockly.isProcedure(block.type) && block.getChildren().length == 0
+    return Blockly.isProcedure(block.type) && this._hasEmptyStatement(block)
+  },
+
+  _hasEmptyStatement(procedureBlock) {
+    let statement = procedureBlock.getInputTargetBlock("STACK")
+    return !statement || statement.isShadow()
   },
 
   _makeAllInputsRequired() {

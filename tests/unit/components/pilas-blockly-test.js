@@ -85,11 +85,6 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     <block type="al_empezar_a_ejecutar">
       <statement name="program">
         <block type="MoverACasillaDerecha">
-          <next>
-            <block type="procedures_callnoreturn">
-              <mutation name="Hacer algo"></mutation>
-            </block>
-          </next>
         </block>
       </statement>
     </block>
@@ -148,6 +143,18 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     <field name="NAME">Hacer algo</field>
   </block>
   `
+  let emptyProcedureWithParam = `
+  <block type="procedures_defnoreturn">
+    <mutation>
+      <arg name="parámetro 1"></arg>
+    </mutation>
+    <field name="NAME">Hacer algo</field>
+    <field name="ARG0">parámetro 1</field>
+    <statement name="STACK">
+      <shadow type="required_statement"></shadow>
+    </statement>
+  </block>
+  `
   let nonFilledProcedure = `    
   <block type="procedures_defnoreturn">
     <field name="NAME">Hacer algo</field>
@@ -162,7 +169,6 @@ module('Unit | Components | pilas-blockly', function(hooks) {
   `
 
   test('Ejecuta aún cuando existe procedimiento vacío', function(assert) {
-    Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(emptyProcedure)
 
     this.ctrl.send('ejecutar')
@@ -170,8 +176,15 @@ module('Unit | Components | pilas-blockly', function(hooks) {
     assert.ok(interpreteMock.run.called)
   })
 
+  test('Ejecuta aún cuando existe procedimiento vacío con parámetros', function(assert) {
+    Blockly.textToBlock(emptyProcedureWithParam)
+
+    this.ctrl.send('ejecutar')
+
+    assert.ok(interpreteMock.run.called)
+  })
+
   test('No ejecuta cuando existe procedimiento con algún agujero', function(assert) {
-    Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(nonFilledProcedure)
 
     this.ctrl.send('ejecutar')
