@@ -4,9 +4,12 @@ export default Service.extend({
   blockly: service(),
 
   start() {
+    //START TODO: Move these definitions to another file
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
+    Blockly.shouldExecute = this._shouldExecute.bind(this);
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
+    //END TODO
     this._generarLenguaje();
     this._definirColores();
     this._definirBloquesIniciales();
@@ -29,8 +32,21 @@ export default Service.extend({
     Blockly.Events.fire(event)
   },
 
+  _shouldExecute(block) {
+    return block.allInputsFilled(false) || this._isEmptyProcedure(block)
+  },
+
   _isProcedure(type) {
     return type == "procedures_defnoreturn"
+  },
+
+  _isEmptyProcedure(block) {
+    return Blockly.isProcedure(block.type) && this._hasEmptyStatement(block)
+  },
+
+  _hasEmptyStatement(procedureBlock) {
+    let statement = procedureBlock.getInputTargetBlock("STACK")
+    return !statement || statement.isShadow()
   },
 
   _makeAllInputsRequired() {
