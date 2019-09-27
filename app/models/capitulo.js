@@ -3,7 +3,7 @@ import attr from 'ember-data/attr';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
-  titulo: attr('string'),
-  desafios: hasMany('desafio'),
-  capitulo: belongsTo('capitulo')
+    titulo: attr('string'),
+    grupos: hasMany('grupo'),
+    libro: belongsTo('libro')
 });

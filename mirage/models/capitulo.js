@@ -3,6 +3,6 @@
 import { Model, hasMany, belongsTo } from 'ember-cli-mirage';
 
 export default Model.extend({
-  desafios: hasMany('desafio'),
-  capitulo: belongsTo('capitulo')
+  grupos: hasMany('grupo'),
+  libro: belongsTo('libro')
 });

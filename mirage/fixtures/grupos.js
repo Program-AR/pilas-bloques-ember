@@ -26,10 +26,10 @@ export default [
     titulo: 'Parametrización de soluciones',
     desafioIds: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 130, 131, 132, 133, 134, 135, 136]
   },
-  {
-    id: 'manual1cPrimaria3',
-    titulo: 'Capítulo 3: Programando en la computadora'
-  },
+  // {
+  //   id: 'manual1cPrimaria3',
+  //   titulo: 'Capítulo 3: Programando en la computadora'
+  // },
   {
     id: 'manual1cPrimaria3.1.2',
     titulo: 'Dieta a base de churrascos',
