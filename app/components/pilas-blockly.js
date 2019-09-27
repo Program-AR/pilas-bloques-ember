@@ -350,7 +350,7 @@ export default Component.extend({
   shouldExecuteProgram() {
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
-      .every(block => block.allInputsFilled(false) || Blockly.isEmptyProcedure(block))
+      .every(block => Blockly.shouldExecute(block))
   },
 
   actions: {

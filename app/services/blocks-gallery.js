@@ -4,10 +4,12 @@ export default Service.extend({
   blockly: service(),
 
   start() {
+    //START TODO: Move these definitions to another file
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
-    Blockly.isEmptyProcedure = this._isEmptyProcedure.bind(this);
+    Blockly.shouldExecute = this._shouldExecute.bind(this);
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
+    //END TODO
     this._generarLenguaje();
     this._definirColores();
     this._definirBloquesIniciales();
@@ -28,6 +30,10 @@ export default Service.extend({
     let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
     event.runCode = true
     Blockly.Events.fire(event)
+  },
+
+  _shouldExecute(block) {
+    return block.allInputsFilled(false) || this._isEmptyProcedure(block)
   },
 
   _isProcedure(type) {
