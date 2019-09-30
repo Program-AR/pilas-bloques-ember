@@ -18,7 +18,7 @@
 
 export default [
   {
-    id: 1,
+    id: 'AlienTocaBoton',
     nombre: 'AlienTocaBoton',
     titulo: 'El alien toca el botón',
     enunciado: 'Ayudá a nuestro Alien a presionar el botón de su laboratorio. \n' +
@@ -29,7 +29,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'ApretarBoton']
   },
   {
-    id: 2,
+    id: 'ElGatoEnLaCalle',
     nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
     titulo: 'El gato en la calle', // sale de 'nombre' en 'app/actividades/actividadElGatoEnLaCalle.js'
     enunciado: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.',
@@ -39,7 +39,7 @@ export default [
     bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento']
   },
   {
-    id: 3,
+    id: 'NoMeCansoDeSaltar',
     nombre: 'NoMeCansoDeSaltar',
     titulo: 'No me canso de saltar',
     enunciado: 'Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.',
@@ -49,7 +49,7 @@ export default [
     bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
   },
   {
-    id: 4,
+    id: 'ElMarcianoEnElDesierto',
     nombre: 'ElMarcianoEnElDesierto',
     titulo: 'El marciano en el desierto',
     enunciado: 'El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de manzanas',
@@ -59,7 +59,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir']
   },
   {
-    id: 5,
+    id: 'TitoEnciendeLuces',
     nombre: 'TitoEnciendeLuces',
     titulo: 'Tito enciende las luces',
     enunciado: 'Ayudá a Tito a encender todas las luces. \n' +
@@ -70,7 +70,7 @@ export default [
     bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
   },
   {
-    id: 6,
+    id: 'ElAlienYLasTuercas',
     nombre: 'ElAlienYLasTuercas',
     titulo: 'El alien y las tuercas',
     enunciado: 'Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga',
@@ -79,7 +79,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'Repetir']
   },
   {
-    id: 7,
+    id: 'ElRecolectorDeEstrellas',
     nombre: 'ElRecolectorDeEstrellas',
     titulo: 'El recolector de estrellas',
     enunciado: 'Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.',
@@ -89,7 +89,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'Repetir']
   },
   {
-    id: 8,
+    id: 'MariaLaComeSandias',
     nombre: 'MariaLaComeSandias',
     titulo: 'María y las sandías',
     enunciado: 'María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.',
@@ -98,7 +98,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir']
   },
   {
-    id: 9,
+    id: 'AlimentandoALosPeces',
     nombre: 'AlimentandoALosPeces',
     titulo: 'Alimentando a los peces',
     enunciado: 'Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: ¿Cuántas partes debería tener tu estrategia?',
@@ -108,7 +108,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'Repetir']
   },
   {
-    id: 10,
+    id: 'InstalandoJuegos',
     nombre: 'InstalandoJuegos',
     titulo: 'Instalando juegos',
     enunciado: 'Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.',
@@ -117,7 +117,7 @@ export default [
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
-    id: 11,
+    id: 'LaGranAventuraDelMarEncantado',
     nombre: 'LaGranAventuraDelMarEncantado',
     titulo: 'La gran aventura del mar encantado',
     enunciado: 'Ayuda a la heroína a rescatar a su príncipe. Para ello debe superar en orden cada una de las siguientes pruebas:\n' +
@@ -131,7 +131,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
   },
   {
-    id: 12,
+    id: 'ReparandoLaNave',
     nombre: 'ReparandoLaNave',
     titulo: 'Reparando la nave',
     enunciado: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.',
@@ -140,7 +140,7 @@ export default [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'Repetir', 'Procedimiento'],
   },
   {
-    id: 13,
+    id: 'ElMonoYLasBananas',
     nombre: 'ElMonoYLasBananas',
     titulo: 'El mono y las bananas',
     enunciado:
@@ -154,7 +154,7 @@ export default [
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si']
   },
   {
-    id: 14,
+    id: 'LaEleccionDelMono',
     nombre: 'LaEleccionDelMono',
     titulo: 'La elección del mono',
     enunciado: '¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene ' +
@@ -167,7 +167,7 @@ export default [
     bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
   },
   {
-    id: 15,
+    id: 'LaberintoCorto',
     nombre: 'LaberintoCorto',
     titulo: 'Laberinto corto',
     enunciado: 'Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.',
@@ -177,7 +177,7 @@ export default [
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
-    id: 16,
+    id: 'TresNaranjas',
     nombre: 'TresNaranjas',
     titulo: 'Tres naranjas',
     enunciado: 'El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.',
@@ -186,7 +186,7 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja']
   },
   {
-    id: 17,
+    id: 'TitoRecargado',
     nombre: 'TitoRecargado',
     titulo: 'Tito recargado',
     enunciado: 'Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.',
@@ -195,7 +195,7 @@ export default [
     bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuz']
   },
   {
-    id: 18,
+    id: 'LaberintoLargo',
     nombre: 'LaberintoLargo',
     titulo: 'Laberinto largo',
     enunciado: 'Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.',
@@ -205,7 +205,7 @@ export default [
       'Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
-    id: 19,
+    id: 'SuperTito1',
     nombre: 'SuperTito1',
     titulo: 'Súper Tito 1 ',
     enunciado: ' Ayudá a Tito a encender las luces. \n ¡Ojo! En todas las celdas hay una luz, pero no sabés cuántas celdas hay en cada ejecución.',
@@ -216,7 +216,7 @@ export default [
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
   },
   {
-    id: 20,
+    id: 'SuperTito2',
     nombre: 'SuperTito2',
     titulo: 'Súper Tito 2',
     enunciado: 'Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? \n',
@@ -227,7 +227,7 @@ export default [
       'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta']
   },
   {
-    id: 21,
+    id: 'LaberintoConQueso',
     nombre: 'LaberintoConQueso',
     titulo: 'Laberinto con queso',
     enunciado: '¡El ratón está más hambriento que nunca! Guialo por el laberinto para que pueda comer todos los trozos de queso. Pista: antes de empezar, apretá varias veces el botón Ejecutar para conocer cómo varía el escenario.',
@@ -239,7 +239,7 @@ export default [
       'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
   },
   {
-    id: 22,
+    id: 'ElDetectiveChaparro',
     nombre: 'ElDetectiveChaparro',
     titulo: 'El detective Chaparro',
     enunciado: 'El detective debe descubrir al culpable de un crimen. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!',
@@ -251,7 +251,7 @@ export default [
       'EsCulpable'],
   },
   {
-    id: 23,
+    id: 'FutbolRobots',
     nombre: 'FutbolRobots',
     titulo: 'Fútbol para robots',
     enunciado: 'Ayudá a nuestro robot futbolista a patear todas las pelotas. ' +
@@ -265,7 +265,7 @@ export default [
       'SiNo', 'Hasta'],
   },
   {
-    id: 24,
+    id: 'PrendiendoLasCompus',
     nombre: 'PrendiendoLasCompus',
     titulo: 'Prendiendo las compus',
     enunciado:
@@ -278,7 +278,7 @@ export default [
       'PrenderComputadora', 'EstoyEnEsquina'],
   },
   {
-    id: 25,
+    id: 'ElMonoQueSabeContar',
     nombre: 'ElMonoQueSabeContar',
     titulo: 'El mono que sabe contar',
     enunciado: 'El mono debe recorrer todas las casillas y contar cuántas bananas y manzanas hay en total. Pista: primero pensá cómo contarías si hay una manzana o una banana en una casilla determinada. Luego pensá cómo harías para contar todas las frutas de una sola columna.',
@@ -291,7 +291,7 @@ export default [
       'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal']
   },
   {
-    id: 26,
+    id: 'ElSuperviaje',
     nombre: 'ElSuperviaje',
     titulo: 'El Superviaje',
     enunciado: 'Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.',
@@ -302,7 +302,7 @@ export default [
       'Repetir', 'Si', 'SiNo', 'Hasta'],
   },
   {
-    id: 27,
+    id: 'ElMonoCuentaDeNuevo',
     nombre: 'ElMonoCuentaDeNuevo',
     titulo: 'El mono cuenta de nuevo',
     enunciado: 'El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?',
@@ -316,7 +316,7 @@ export default [
       'EstoySobreElInicio', 'LargoColumnaActual']
   },
   {
-    id: 28,
+    id: 'ElPlanetaDeNano',
     nombre: 'ElPlanetaDeNano',
     titulo: 'El planeta de Nano',
     escena: 'ElPlanetaDeNano',
@@ -328,7 +328,7 @@ export default [
       'SiNo', 'Hasta', 'Numero'],
   },
   {
-    id: 29,
+    id: 'DibujandoAlCuadrado',
     nombre: 'DibujandoAlCuadrado',
     titulo: 'Dibujando: Al cuadrado',
     enunciado: 'Dibujá un cuadrado que tenga 100 de lado.',
@@ -339,7 +339,7 @@ export default [
       'GirarGrados', 'Numero']
   },
   {
-    id: 30,
+    id: 'DibujandoRayuelaRobotica',
     nombre: 'DibujandoRayuelaRobotica',
     titulo: 'Dibujando: Rayuela robótica',
     enunciado: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.',
@@ -350,7 +350,7 @@ export default [
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
-    id: 31,
+    id: 'DibujandoCortoPorLaDiagonal',
     nombre: 'DibujandoCortoPorLaDiagonal',
     titulo: 'Dibujando: Corto por la diagonal',
     enunciado: 'Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.',
@@ -361,7 +361,7 @@ export default [
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
-    id: 32,
+    id: 'DibujandoMamushkaCuadrada',
     nombre: 'DibujandoMamushkaCuadrada',
     titulo: 'Dibujando: Mamushka cuadrada',
     enunciado: 'Dibujá 4 cuadrados de lados 50, 100, 150 y 200, como muestra la figura sombreada. Pista: creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado.',
@@ -372,7 +372,7 @@ export default [
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
-    id: 33,
+    id: 'DibujandoEscaleraCuadrada',
     nombre: 'DibujandoEscaleraCuadrada',
     titulo: 'Dibujando: Escalera cuadrada',
     enunciado: 'Dibujá 5 cuadrados: 4 de lado 50 y uno de 100, como muestra la figura sombreada.',
@@ -383,7 +383,7 @@ export default [
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
-    id: 34,
+    id: 'DibujandoHexagono',
     nombre: 'DibujandoHexagono',
     titulo: 'Dibujando: Hexágono',
     enunciado: 'Dibujá un hexágono de lado 100, como muestra la figura sombreada. Pista: pensá cuántos grados debe girar el robot sabiendo cuánto miden los ángulos internos del hexágono.',
@@ -394,7 +394,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 35,
+    id: 'DibujandoPiramideInvertida',
     nombre: 'DibujandoPiramideInvertida',
     titulo: 'Dibujando: Pirámide invertida',
     enunciado: 'Dibujá un triángulo equilátero de lado 100, como muestra la figura sombreada. Pista: pensá si existe una relación entre los ángulos y la cantidad de lados.',
@@ -405,7 +405,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 36,
+    id: 'DibujandoFigurasDentroDeFiguras',
     nombre: 'DibujandoFigurasDentroDeFiguras',
     titulo: 'Dibujando: Figuras dentro de figuras',
     enunciado: 'Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados. ',
@@ -416,7 +416,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 37,
+    id: 'DibujandoLaCuevaDeEstalagtitas',
     nombre: 'DibujandoLaCuevaDeEstalagtitas',
     titulo: 'Dibujando: La cueva de estalagtitas',
     enunciado: 'Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.',
@@ -427,7 +427,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 130,
+    id: 'LaFiestaDeDracula',
     nombre: 'LaFiestaDeDracula',
     titulo: 'La fiesta de Drácula',
     escena: 'LaFiestaDeDracula',
@@ -437,7 +437,7 @@ export default [
       'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
   {
-    id: 131,
+    id: 'SalvandoLaNavidad',
     nombre: 'SalvandoLaNavidad',
     titulo: 'Salvando la Navidad',
     escena: 'SalvandoLaNavidad',
@@ -446,7 +446,7 @@ export default [
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
-    id: 132,
+    id: 'PrendiendoLasCompusParametrizado',
     nombre: 'PrendiendoLasCompusParametrizado',
     titulo: 'Prendiendo las compus parametrizado',
     escena: 'PrendiendoLasCompus',
@@ -460,7 +460,7 @@ export default [
       'OpAritmetica'],
   },
   {
-    id: 133,
+    id: 'TitoCuadrado',
     nombre: 'TitoCuadrado',
     titulo: 'Tito cuadrado',
     escena: 'TitoCuadrado',
@@ -471,7 +471,7 @@ export default [
       'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
   },
   {
-    id: 134,
+    id: 'ElCangrejoAguafiestas',
     nombre: 'ElCangrejoAguafiestas',
     titulo: 'El cangrejo aguafiestas',
     escena: 'ElCangrejoAguafiestas',
@@ -483,7 +483,7 @@ export default [
       'ExplotarGlobo', 'Numero', 'OpAritmetica']
   },
   {
-    id: 135,
+    id: 'PrendiendoLasFogatas',
     nombre: 'PrendiendoLasFogatas',
     titulo: 'Prendiendo las fogatas',
     escena: 'PrendiendoLasFogatas',
@@ -497,10 +497,8 @@ export default [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
   },
-
-
   {
-    id: 136,
+    id: 'DibujoLibre',
     nombre: 'DibujoLibre',
     titulo: '¡Dibujo libre!',
     imagen: 'DibujoLibre',

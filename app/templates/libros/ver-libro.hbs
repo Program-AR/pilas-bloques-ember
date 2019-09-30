@@ -5,20 +5,28 @@
   <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
 
   {{#each model.capitulos as |capitulo|}}
-  <!-- falta el título de la categoría (como h1?)jugar -->
-    {{#each capitulo.grupos as |grupo|}}
-      {{#if grupo.titulo}}
-        <h2>{{grupo.titulo}}</h2>
+    
+      {{#if capitulo.titulo}}
+        <h1>{{capitulo.titulo}}</h1>
       {{/if}}
-      {{#each grupo.desafios as |desafio|}}
-        {{pilas-desafio model=desafio}}
-      {{/each}}
+      
+      {{#each capitulo.grupos as |grupo|}}
+        
+        {{#if grupo.titulo}}
+          <h3>{{grupo.titulo}}</h3>
+        {{/if}}
+        
+        {{#each grupo.desafios as |desafio|}}
+          {{pilas-desafio model=desafio}}
+        {{/each}}
+    
     {{/each}}
+  
   {{else}}
     <p class="mensaje-sin-desafios">Lo siento, no hay desafíos para este manual aún.</p>
   {{/each}}
 
-  {{#unless model.grupos.isSettled}}
+  {{#unless model.capitulos.isSettled}}
     {{pilas-cargando}}
   {{/unless}}
 

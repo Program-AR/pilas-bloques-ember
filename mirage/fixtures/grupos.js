@@ -2,34 +2,149 @@
 
 export default [
   {
-    id: 1,
-    titulo: 'Autómatas, comandos, procedimientos y repetición',
-    desafioIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    id: 'AlienTocaBoton',
+    desafioIds: ['AlienTocaBoton']
   },
   {
-    id: 2,
-    titulo: 'Alternativa condicional',
-    desafioIds: [13, 14, 15, 16, 17, 18]
+    id: 'ElGatoEnLaCalle',
+    desafioIds: ['ElGatoEnLaCalle']
   },
   {
-    id: 3,
-    titulo: 'Repetición condicional',
-    desafioIds: [19, 20, 21, 22, 23, 24, 25]
+    id: 'NoMeCansoDeSaltar',
+    desafioIds: ['NoMeCansoDeSaltar']
   },
   {
-    id: 4,
-    titulo: 'Sensores Numéricos',
-    desafioIds: [26, 27]
+    id: 'ElMarcianoEnElDesierto',
+    desafioIds: ['ElMarcianoEnElDesierto']
   },
   {
-    id: 5,
-    titulo: 'Parametrización de soluciones',
-    desafioIds: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 130, 131, 132, 133, 134, 135, 136]
+    id: 'TitoEnciendeLuces',
+    desafioIds: ['TitoEnciendeLuces']
   },
-  // {
-  //   id: 'manual1cPrimaria3',
-  //   titulo: 'Capítulo 3: Programando en la computadora'
-  // },
+  {
+    id: 'ElAlienYLasTuercas',
+    desafioIds: ['ElAlienYLasTuercas']
+  },
+  {
+    id: 'ElRecolectorDeEstrellas',
+    desafioIds: ['ElRecolectorDeEstrellas']
+  },
+  {
+    id: 'MariaLaComeSandias',
+    desafioIds: ['MariaLaComeSandias']
+  },
+  {
+    id: 'AlimentandoALosPeces',
+    desafioIds: ['AlimentandoALosPeces']
+  },
+  {
+    id: 'InstalandoJuegos',
+    desafioIds: ['InstalandoJuegos']
+  },
+  {
+    id: 'LaGranAventuraDelMarEncantado',
+    desafioIds: ['LaGranAventuraDelMarEncantado']
+  },
+  {
+    id: 'ReparandoLaNave',
+    desafioIds: ['ReparandoLaNave']
+  },
+  {
+    id: 'ElMonoYLasBananas',
+    desafioIds: ['ElMonoYLasBananas']
+  },
+  {
+    id: 'LaEleccionDelMono',
+    desafioIds: ['LaEleccionDelMono']
+  },
+  {
+    id: 'LaberintoCorto',
+    desafioIds: ['LaberintoCorto']
+  },
+  {
+    id: 'TresNaranjas',
+    desafioIds: ['TresNaranjas']
+  },
+  {
+    id: 'TitoRecargado',
+    desafioIds: ['TitoRecargado']
+  },
+  {
+    id: 'LaberintoLargo',
+    desafioIds: ['LaberintoLargo']
+  },
+  {
+    id: 'SuperTito1',
+    desafioIds: ['SuperTito1']
+  },
+  {
+    id: 'SuperTito2',
+    desafioIds: ['SuperTito2']
+  },
+  {
+    id: 'LaberintoConQueso',
+    desafioIds: ['LaberintoConQueso']
+  },
+  {
+    id: 'ElDetectiveChaparro',
+    desafioIds: ['ElDetectiveChaparro']
+  },
+  {
+    id: 'FutbolRobots',
+    desafioIds: ['FutbolRobots']
+  },
+  {
+    id: 'PrendiendoLasCompus',
+    desafioIds: ['PrendiendoLasCompus']
+  },
+  {
+    id: 'ElMonoQueSabeContar',
+    desafioIds: ['ElMonoQueSabeContar']
+  },
+  {
+    id: 'ElSuperviaje',
+    desafioIds: ['ElSuperviaje']
+  },
+  {
+    id: 'ElMonoCuentaDeNuevo',
+    desafioIds: ['ElMonoCuentaDeNuevo']
+  },
+  {
+    id: 'ElPlanetaDeNano',
+    desafioIds: ['ElPlanetaDeNano']
+  },
+  {
+    id: 'Dibujando Figuras',
+    desafioIds: ['DibujandoAlCuadrado', 'DibujandoRayuelaRobotica', 'DibujandoCortoPorLaDiagonal', 'DibujandoMamushkaCuadrada', 'DibujandoEscaleraCuadrada', 'DibujandoHexagono', 'DibujandoPiramideInvertida', 'DibujandoFigurasDentroDeFiguras', 'DibujandoLaCuevaDeEstalagtitas']
+  },
+  {
+    id: 'LaFiestaDeDracula',
+    desafioIds: ['LaFiestaDeDracula']
+  },
+  {
+    id: 'SalvandoLaNavidad',
+    desafioIds: ['SalvandoLaNavidad']
+  },
+  {
+    id: 'PrendiendoLasCompusParametrizado',
+    desafioIds: ['PrendiendoLasCompusParametrizado']
+  },
+  {
+    id: 'TitoCuadrado',
+    desafioIds: ['TitoCuadrado']
+  },
+  {
+    id: 'ElCangrejoAguafiestas',
+    desafioIds: ['ElCangrejoAguafiestas']
+  },
+  {
+    id: 'PrendiendoLasFogatas',
+    desafioIds: ['PrendiendoLasFogatas']
+  },
+  {
+    id: 'DibujoLibre',
+    desafioIds: ['DibujoLibre']
+  },
   {
     id: 'manual1cPrimaria3.1.2',
     titulo: 'Dieta a base de churrascos',
@@ -61,10 +176,6 @@ export default [
     desafioIds: [225, 226, 227, 228, 229]
   },
   {
-    id: 'manual1cPrimaria4',
-    titulo: 'Capítulo 4: Repetición'
-  },
-  {
     id: 'manual1cPrimaria4.1.3',
     titulo: 'Más churrascos para Duba',
     desafioIds: [230, 231, 232]
@@ -83,10 +194,6 @@ export default [
     id: 'manual1cPrimaria4.I',
     titulo: 'Lita, a puro vegetal',
     desafioIds: [240, 241]
-  },
-  {
-    id: 'manual1cPrimaria5',
-    titulo: 'Capítulo 5: Alternativa condicional'
   },
   {
     id: 'manual1cPrimaria5.1.3',
