@@ -3,147 +3,147 @@
 export default [
   {
     id: 'AlienTocaBoton',
-    desafioIds: ['AlienTocaBoton']
+    desafioIds: [1]
   },
   {
     id: 'ElGatoEnLaCalle',
-    desafioIds: ['ElGatoEnLaCalle']
+    desafioIds: [2]
   },
   {
     id: 'NoMeCansoDeSaltar',
-    desafioIds: ['NoMeCansoDeSaltar']
+    desafioIds: [3]
   },
   {
     id: 'ElMarcianoEnElDesierto',
-    desafioIds: ['ElMarcianoEnElDesierto']
+    desafioIds: [4]
   },
   {
     id: 'TitoEnciendeLuces',
-    desafioIds: ['TitoEnciendeLuces']
+    desafioIds: [5]
   },
   {
     id: 'ElAlienYLasTuercas',
-    desafioIds: ['ElAlienYLasTuercas']
+    desafioIds: [6]
   },
   {
     id: 'ElRecolectorDeEstrellas',
-    desafioIds: ['ElRecolectorDeEstrellas']
+    desafioIds: [7]
   },
   {
     id: 'MariaLaComeSandias',
-    desafioIds: ['MariaLaComeSandias']
+    desafioIds: [8]
   },
   {
     id: 'AlimentandoALosPeces',
-    desafioIds: ['AlimentandoALosPeces']
+    desafioIds: [9]
   },
   {
     id: 'InstalandoJuegos',
-    desafioIds: ['InstalandoJuegos']
+    desafioIds: [10]
   },
   {
     id: 'LaGranAventuraDelMarEncantado',
-    desafioIds: ['LaGranAventuraDelMarEncantado']
+    desafioIds: [11]
   },
   {
     id: 'ReparandoLaNave',
-    desafioIds: ['ReparandoLaNave']
+    desafioIds: [12]
   },
   {
     id: 'ElMonoYLasBananas',
-    desafioIds: ['ElMonoYLasBananas']
+    desafioIds: [13]
   },
   {
     id: 'LaEleccionDelMono',
-    desafioIds: ['LaEleccionDelMono']
+    desafioIds: [14]
   },
   {
     id: 'LaberintoCorto',
-    desafioIds: ['LaberintoCorto']
+    desafioIds: [15]
   },
   {
     id: 'TresNaranjas',
-    desafioIds: ['TresNaranjas']
+    desafioIds: [16]
   },
   {
     id: 'TitoRecargado',
-    desafioIds: ['TitoRecargado']
+    desafioIds: [17]
   },
   {
     id: 'LaberintoLargo',
-    desafioIds: ['LaberintoLargo']
+    desafioIds: [18]
   },
   {
     id: 'SuperTito1',
-    desafioIds: ['SuperTito1']
+    desafioIds: [19]
   },
   {
     id: 'SuperTito2',
-    desafioIds: ['SuperTito2']
+    desafioIds: [20]
   },
   {
     id: 'LaberintoConQueso',
-    desafioIds: ['LaberintoConQueso']
+    desafioIds: [21]
   },
   {
     id: 'ElDetectiveChaparro',
-    desafioIds: ['ElDetectiveChaparro']
+    desafioIds: [22]
   },
   {
     id: 'FutbolRobots',
-    desafioIds: ['FutbolRobots']
+    desafioIds: [23]
   },
   {
     id: 'PrendiendoLasCompus',
-    desafioIds: ['PrendiendoLasCompus']
+    desafioIds: [24]
   },
   {
     id: 'ElMonoQueSabeContar',
-    desafioIds: ['ElMonoQueSabeContar']
+    desafioIds: [25]
   },
   {
     id: 'ElSuperviaje',
-    desafioIds: ['ElSuperviaje']
+    desafioIds: [26]
   },
   {
     id: 'ElMonoCuentaDeNuevo',
-    desafioIds: ['ElMonoCuentaDeNuevo']
+    desafioIds: [27]
   },
   {
     id: 'ElPlanetaDeNano',
-    desafioIds: ['ElPlanetaDeNano']
+    desafioIds: [28]
   },
   {
     id: 'Dibujando Figuras',
-    desafioIds: ['DibujandoAlCuadrado', 'DibujandoRayuelaRobotica', 'DibujandoCortoPorLaDiagonal', 'DibujandoMamushkaCuadrada', 'DibujandoEscaleraCuadrada', 'DibujandoHexagono', 'DibujandoPiramideInvertida', 'DibujandoFigurasDentroDeFiguras', 'DibujandoLaCuevaDeEstalagtitas']
+    desafioIds: [29, 30, 31, 32, 33, 34, 35, 36, 37]
   },
   {
     id: 'LaFiestaDeDracula',
-    desafioIds: ['LaFiestaDeDracula']
+    desafioIds: [130]
   },
   {
     id: 'SalvandoLaNavidad',
-    desafioIds: ['SalvandoLaNavidad']
+    desafioIds: [131]
   },
   {
     id: 'PrendiendoLasCompusParametrizado',
-    desafioIds: ['PrendiendoLasCompusParametrizado']
+    desafioIds: [132]
   },
   {
     id: 'TitoCuadrado',
-    desafioIds: ['TitoCuadrado']
+    desafioIds: [133]
   },
   {
     id: 'ElCangrejoAguafiestas',
-    desafioIds: ['ElCangrejoAguafiestas']
+    desafioIds: [134]
   },
   {
     id: 'PrendiendoLasFogatas',
-    desafioIds: ['PrendiendoLasFogatas']
+    desafioIds: [135]
   },
   {
     id: 'DibujoLibre',
-    desafioIds: ['DibujoLibre']
+    desafioIds: [136]
   },
   {
     id: 'manual1cPrimaria3.1.2',
