@@ -3,6 +3,11 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.5.2 (27 de Septiembre de 2019)
+  * Al ejecutar siempre se actualizan los escenarios aleatorios.
+  * Se permite ejecutar soluciones con proccedimientos vacíos.
+  * Se arreglan algunos errores con el orden en que aparecen las categorías con los bloques disponibles.
+
 * 1.5.0 (19 de Agosto de 2019)
   * ¡Actualizamos la versión de Ember! Esto permitió resolver algunos problemas de vulnerabilidad en la aplicación y la actualización de varias dependencias.
   * Se grisan los bloques que dejan de funcionar al borrar un parámetro de algún procedimiento.
