@@ -347,18 +347,18 @@ export default Component.extend({
     this.highlighter.clear()
   },
 
-  allEnabledTopBlocksFilled() {
+  shouldExecuteProgram() {
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
-      .every(block => block.allInputsFilled(false))
+      .every(block => Blockly.shouldExecute(block))
   },
 
   actions: {
     ejecutar(pasoAPaso = false) {
-      Blockly.Events.fireRunCode()
-      if (!this.allEnabledTopBlocksFilled()) return;
-      
       this.pilas.reiniciarEscenaCompleta()
+
+      Blockly.Events.fireRunCode()
+      if (!this.shouldExecuteProgram()) return;
 
       this.setModoTurbo()
 

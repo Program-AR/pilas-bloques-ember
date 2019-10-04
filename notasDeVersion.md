@@ -3,6 +3,18 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.5.2 (27 de Septiembre de 2019)
+  * Al ejecutar siempre se actualizan los escenarios aleatorios.
+  * Se permite ejecutar soluciones con proccedimientos vacíos.
+  * Se arreglan algunos errores con el orden en que aparecen las categorías con los bloques disponibles.
+
+* 1.5.0 (19 de Agosto de 2019)
+  * ¡Actualizamos la versión de Ember! Esto permitió resolver algunos problemas de vulnerabilidad en la aplicación y la actualización de varias dependencias.
+  * Se grisan los bloques que dejan de funcionar al borrar un parámetro de algún procedimiento.
+  * Al importar una solución de otro ejercicio se grisan los bloques que no pertenecen a la actividad.
+  * Se avisa de la presencia de bloques con "agujeros" al intentar ejecutar un programa con errores.
+  * Se arreglan algunos problemas del instalador de Linux.
+
 * 1.4.3 (2 de Julio de 2019)
   * ¡Nuevos bloques de procedimientos! Que mejoran la usabilidad para agregar parámetros. Esto se logra utilizando el proyecto [proceds-blockly](https://github.com/Program-AR/proceds-blockly) que es el mismo que utiliza nuestra herramienta hermana Gobstones Web.
   * Ahora al ejecutar una solución con procedimientos se resalta tanto el bloque que se está ejecutando como la llamada al procedimiento, si es debido.
