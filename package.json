@@ -31,6 +31,7 @@
     "test": "tests"
   },
   "scripts": {
+    "postinstall": "sed -i '608369,608372d' ./node_modules/mulang/build/mulang.js",
     "build": "ember build",
     "start": "ember server",
     "test": "ember test --serve"
