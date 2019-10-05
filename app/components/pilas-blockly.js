@@ -20,7 +20,7 @@ export default Component.extend({
   pilas: null,          // Se espera que sea una referencia al servicio pilas.
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
-  debeMostrarFinDeDesafio: false,
+  debeMostrarFinDeDesafio: false, //TODO: Only for testing?
   codigo: null,
   modelActividad: null,
   modoTuboHabilitado: false,
@@ -315,10 +315,12 @@ export default Component.extend({
 
       if (this.debeMostrarFinDeDesafio) {
         if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
-          // let mulangResult = this.pilasMulang.analyze(Blockly.mainWorkspace.getTopBlocks()[0], this.modelActividad.get('expectativas'))
-          // console.log({mulangResult})
-          // let mulangExpectation = mulangResult.expectationResults.every(({result}) => result)
-          // this.set("mulangExpectation", mulangExpectation)
+          let {expectationResults, prize} = this.pilasMulang.analyze(Blockly.mainWorkspace.getTopBlocks()[0], this.modelActividad.get('expectativas'))
+          // let mulangExpectation = expectationResults.every(({result}) => result)
+          console.log(prize);
+          
+          this.set("expectationResults", expectationResults)
+          this.set("prize", prize)
           this.send('abrirFinDesafio');
         }
       }

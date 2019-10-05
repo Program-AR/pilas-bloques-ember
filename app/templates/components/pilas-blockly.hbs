@@ -88,25 +88,39 @@
                   containerClass="dialogoFinDesafio"}}
 
     {{modal-title title="¡Lo lograste!" close=(action "ocultarFinDesafio")}}
-    <div class="center">
-      <img src="imagenes/libros/primer-ciclo.png"/>
-      <img style="transform:scaleX(-1)" src="imagenes/libros/programar.png"/>
-    </div>
-    {{#if mulangExpectation}}
-      {{#if tieneExpectativas}}
-        <p><strong>¡Muy bien!</strong> Estamos usando un nuevo bloque Si.</p>
+    <p>¡Solucionaste el ejercicio, felicitaciones!</p>  
+    <div class="row">
+      <div class="col col-xs-4">
+        <img src="imagenes/premios/duba.1.png"/>
+      </div>
+      <div class="col col-xs-4">
+      {{#if prize.good}}
+        <img src="imagenes/premios/duba.2.png"/>
       {{else}}
-        <p>¡Solucionaste el ejercicio, felicitaciones!</p>  
+        ???
       {{/if}}
-    {{/if}}
-    {{#unless mulangExpectation}}
-      <p><strong>Para pensar...</strong> Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!</p>
-      {{!-- <p>Si tenés <strong>procedimientos</strong>, usalos para escribir tu <strong>estrategia</strong>. Si tenés patrones repetidos... ¡Usá <strong>repetición</strong>! Y si el escenario cambia... ¡Usá alternativas y repeticiones <strong>condicionales</strong>!</p>--}}
-      <p>¿Estás usando los conceptos bien?</p>  
-      {{!-- <div class="alert alert-warning">
-        <p>¿Tu solución funciona para todos los casos?</p>
-      </div> --}}
-    {{/unless}}
+      </div>
+      <div class="col col-xs-4">
+      {{#if prize.excelent}}
+        <img src="imagenes/premios/duba.3.png"/>
+      {{else}}
+        ???
+      {{/if}}
+      </div>
+    </div>
+    {{#each expectationResults as |expectation|}}
+      <p>
+        {{#if expectation.result}}
+          <i class="fa fa-2x fa-check-circle color-success"></i>
+        {{else}}
+          <i class="fa fa-2x fa-times-circle color-failure"></i>
+        {{/if}}
+        <strong>{{expectation.message}}</strong>
+      </p>
+      <div class="center">
+        <img src={{expectation.blockImg}}/>
+      </div>
+    {{/each}}
   {{/modal-dialog}}
 {{/if}}
 

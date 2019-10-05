@@ -8,7 +8,7 @@ export default Service.extend({
   analyze(mainBlock, expectations = []) {
     let ast = this.parse(mainBlock)
     
-    let result = mulang.analyse({
+    let mulangResult = mulang.analyse({
       "sample" : {
         "tag": "MulangSample",
         "ast": ast
@@ -20,9 +20,14 @@ export default Service.extend({
         }
       }
     })
-    // console.log({result});
+    console.log({mulangResult});
 
-    return result
+    let expectationResults =  mulangResult.expectationResults.map(expectationToResult)
+
+    return {
+      expectationResults,
+      prize: toPrize(expectationResults)
+    }
   },
 
   parse(mainBlock) {
@@ -31,6 +36,33 @@ export default Service.extend({
 
 });
 
+// MULANG RESULTS
+function toPrize(expectations) {
+  return {
+    good: expectations.some(({result}) => result),
+    excelent: expectations.every(({result}) => result) 
+  }
+}
+
+let inspectionForPersons = { //TODO: i18n
+  "UsesIf" : {
+    success: "Tu programa funciona en todos los casos",
+    failure: "Tu programa no funciona en todos los casos",
+    block: "bloque_si_sino.png"
+  }
+}
+
+function expectationToResult({expectation, result}) {
+  let {success, failure, block} = inspectionForPersons[expectation.inspection] 
+  return {
+    result,
+    message: result ? success : failure,
+    blockImg: `imagenes/bloques/${block}`
+  }
+}
+
+
+// MULANG AST
 
 function buildBlockAst(block) {
   let tag = mulangTag(block);
