@@ -26,6 +26,8 @@ app.on('ready', function onReady() {
 
   delete mainWindow.module
 
+  mainWindow.setMenuBarVisibility(false)
+
   mainWindow.loadURL('file://' + __dirname + '/index.html')
   mainWindow.setMenu(null)
 
