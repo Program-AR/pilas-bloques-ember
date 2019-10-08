@@ -3,6 +3,8 @@
 @import "pilas-toggle.scss";
 @import "ember-blocky.scss";
 @import "breadcrumb";
+@import "pilas-canvas.scss";
+@import "pilas-editor.scss";
 @import "modal.scss";
 @import "ribbons.scss";
 @import 'ember-paper';
@@ -631,15 +633,18 @@ h2 {
   font-weight: 300;
 }
 
-.iframe-pilas-canvas {
-  border: 0;
-  background-color: rgba(0, 0, 0, 0.1);
-}
+// OJO - esto puede romper la forma en la que se ve en los test.
 
-.pilas-canvas-container {
-  position: relative;
-  overflow: hidden;
-}
+// .iframe-pilas-canvas {
+//   display: block;
+//   border: 0;
+//   background-color: rgba(0, 0, 0, 0.1);
+// }
+
+// .pilas-canvas-container {
+//   position: relative;
+//   overflow: hidden;
+// }
 
 
 .contenedor-panel-ayuda {
