@@ -4,8 +4,12 @@ export default Service.extend({
   blockly: service(),
 
   start() {
+    //START TODO: Move these definitions to another file
     Blockly.textToBlock = this._textToBlock;
+    Blockly.isProcedure = this._isProcedure;
+    Blockly.shouldExecute = this._shouldExecute.bind(this);
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
+    //END TODO
     this._generarLenguaje();
     this._definirColores();
     this._definirBloquesIniciales();
@@ -28,9 +32,27 @@ export default Service.extend({
     Blockly.Events.fire(event)
   },
 
+  _shouldExecute(block) {
+    return block.allInputsFilled(false) || this._isEmptyProcedure(block)
+  },
+
+  _isProcedure(type) {
+    return type == "procedures_defnoreturn"
+  },
+
+  _isEmptyProcedure(block) {
+    return Blockly.isProcedure(block.type) && this._hasEmptyStatement(block)
+  },
+
+  _hasEmptyStatement(procedureBlock) {
+    let statement = procedureBlock.getInputTargetBlock("STACK")
+    return !statement || statement.isShadow()
+  },
+
   _makeAllInputsRequired() {
-    Object
-    .values(Blockly.Blocks)
+    Object.entries(Blockly.Blocks)
+    .filter(([type, _]) => !Blockly.isProcedure(type)) // jshint ignore:line
+    .map(([_, block]) => block) // jshint ignore:line
     .forEach(blockDef => {
       let oldInit = blockDef.init
       blockDef.init = function() {
@@ -1229,6 +1251,16 @@ export default Service.extend({
       fillOpacity(block, 1)
     }
 
+    function onChangeRequired(warningText) {
+      return function(event) {
+        if (event && event.runCode) {
+          this.setWarningText(warningText)
+          opaque(this)
+        }
+        if (this.warning && this.warning.bubble_) this.warning.bubble_.setColour('red')
+      }
+    }
+
     Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
@@ -1242,12 +1274,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: function(event) {
-        if (event && event.runCode) {
-          this.setWarningText("¡Acá falta un bloque expresión!")
-          opaque(this)
-        }
-      }
+      onchange: onChangeRequired("¡Acá falta un bloque expresión!")
     };
 
     Blockly.Blocks.required_statement = {
@@ -1263,12 +1290,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: function(event) {
-        if (event && event.runCode) {
-          this.setWarningText("¡Acá faltan bloques comandos!")
-          opaque(this)
-        }
-      }
+      onchange: onChangeRequired("¡Acá faltan bloques comandos!")
     };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {

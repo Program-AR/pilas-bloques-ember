@@ -8,6 +8,9 @@ export default function() {
   this.get('/grupos');
   this.get('/grupos/:id');
 
+  this.get('/capitulos');
+  this.get('/capitulos/:id');
+
   this.get('/libros');
   this.get('/libros/:id');
 

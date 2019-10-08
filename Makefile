@@ -101,7 +101,7 @@ _preparar_electron:
 	@cp package.json dist/package.json
 	@cp packaging/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --version=0.37.6 --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=packaging/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=packaging/icono.$(3)
 
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
