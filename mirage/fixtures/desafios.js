@@ -427,7 +427,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 130,
+    id:130,
     nombre: 'LaFiestaDeDracula',
     titulo: 'La fiesta de Drácula',
     escena: 'LaFiestaDeDracula',
@@ -446,7 +446,7 @@ export default [
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
-    id: 132,
+    id:132,
     nombre: 'PrendiendoLasCompusParametrizado',
     titulo: 'Prendiendo las compus parametrizado',
     escena: 'PrendiendoLasCompus',
@@ -497,8 +497,6 @@ export default [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
   },
-
-
   {
     id: 136,
     nombre: 'DibujoLibre',
