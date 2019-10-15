@@ -1,0 +1,7 @@
+<Modal @title={{"¿Pensás que este ejercicio tiene un error?"}} @hasButtons={{true}} @cancel={{"Cancelar"}} @success={{"Enviar"}} @onClose={{action onClose}} @onSuccess={{action "createIssue"}}>
+  {{paper-input label="Titulo" value=title onChange=(action (mut title))}}
+  {{paper-input textarea=true block=true label="Problema" maxlength=200 passThru=(hash rows=5 maxRows=5) value=problem onChange=(action (mut problem))}}
+  Dejanos un nombre y un email para poder contestarte:
+  {{paper-input label="Nombre" value=name onChange=(action (mut name))}}
+  {{paper-input label="E-mail" type="email" value=email onChange=(action (mut email))}}
+</Modal>
