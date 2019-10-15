@@ -1,23 +1,62 @@
-.ember-modal-overlay.translucent {
-  background-color: rgba(0, 0, 0, 0.44) !important;
+  md-dialog {
+    max-width: 800px !important;
+    width: 800px !important;
+    overflow-x: hidden;
 }
 
-.ember-modal-overlay {
-  z-index: 20000 !important;
-  height: 200vh;
+.wallpaper {
+  background-image:
+       linear-gradient(
+    rgba(0, 0, 0, 0.4),
+    rgba(0, 0, 0, 0.4)
+  ),
+  url("/imagenes/wallpapers/coty-wallpaper.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 400px;
+  overflow:hidden;
 }
 
-.ember-modal-dialog {
-  height: 500px;
-  width: 800px;
-  border-radius: 0px;
-  background-color: #fff;
-  box-shadow: 0 0 10px #222;
-  overflow-y: auto;
+.wallpaper-title {
+  width:400px;
+  color: #ebe924;
+  font-size: 3rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px black;
 }
 
+.wallpaper-text {
+  width:450px;
+  color: #ebe924;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px black;
+}
 
-.modal-title {
-  padding-bottom: 15px;
-  //border-bottom: 1px solid rgb(226, 226, 226);
+.wallpaper-arrow {
+  position: absolute;
+  width:60px;
+  height:80px;
+  animation-name: example;
+  animation-duration: 0.7s;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+}
+
+@keyframes example {
+  0%    {transform: translateX(650px) translateY(-110px)}
+  100%  {transform: translateX(650px) translateY(-75px)}
+}
+
+.wallpaper-button {
+  cursor: pointer;
+  color: #ebe924;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 5px black;
 }
