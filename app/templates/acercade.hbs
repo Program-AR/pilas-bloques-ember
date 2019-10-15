@@ -1,7 +1,7 @@
 {{outlet}}
 <div class='contenido-principal'>
 	<div class='contenedor-acercade'>
-		{{pilas-acerca-de}}
+		<PilasAcercaDe/>
 
 		<p>Actualmente estás usando la versión <code>{{app-version}}</code>
 			{{#if hayActualizacion}}
@@ -11,7 +11,7 @@
 
 		<p>
 		  <button class='btn btn-warning' {{action "visitarWeb"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
-		  {{pilas-update}}
+		  <PilasUpdate/>
 		</p>
 	</div>
 </div>

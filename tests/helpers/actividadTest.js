@@ -133,7 +133,7 @@ export function actividadTest(nombre, opciones) {
 
             setTimeout(() => {
               jQuery('#modo-turbo').click();
-              jQuery('.btn-ejecutar').click();
+              jQuery('#run-button').click();
             }, 1000)
           });
 
@@ -175,13 +175,13 @@ export function actividadTest(nombre, opciones) {
           });
 
           /**
-           * Se instancia el componente pilas-editor con los paneles que
+           * Se instancia el componente exercise-workspace con los paneles que
            * observará el usuario y una solución pre-cargada, tal y como se
            * hace dentro de la aplicación.
            */
 
           this.render(hbs`
-              {{pilas-editor
+              {{exercise-workspace
                 debug=false
                 pilas=pilas
                 model=model
