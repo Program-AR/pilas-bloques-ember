@@ -1,60 +1,18 @@
-{{yield}}
-
-{{!-- <nav class="navbar navbar-default" role="navigation">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header navbar-collapse">
-      <a class="navbar-brand" href="#"><img src='imagenes/logo.png'></a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        {{#link-to "libros" tagName='li'}}<a href=#><i class='fa fa-home'></i> Principal</a>{{/link-to}}
-        {{#link-to "libros.verLibro" 1 tagName='li'}}<a href=#><i class='fa fa-book'></i> 1er Ciclo</a>{{/link-to}}
-        {{#link-to "libros.verLibro" 2 tagName='li'}}<a href=#><i class='fa fa-book'></i> 2do Ciclo</a>{{/link-to}}
-        {{#link-to "acercade" tagName='li'}}<a href=#><i class='fa fa-info-circle'></i> Acerca de</a>{{/link-to}}
-      </ul>
-
-      <div class='header-right'>
-
-        <div class="navbar-header navbar-collapse">
-          <!-- Haciendo que el logo de programar no se colapse, y desaparezca en mobile. -->
-          {{#unless (media 'isMobile')}}
-            {{#pilas-link href="http://program.ar"}}<img src='imagenes/programar-short.png'/>{{/pilas-link}}
-          {{/unless}}
-        </div>
-
-        {{pilas-automatic-update}}
-
-        <button class="header-button" id="abrir-ayuda" {{action "abrirAyuda"}}>{{fa-icon "question"}}</button>
-      </div>
-
-    </div>
-  </div>
-</nav>
-
-
-{{modal-ayuda mostrar=mostrarDialogoAyuda}} --}}
-
-
-{{#paper-toolbar as |toolbar|}}
-   {{#toolbar.tools}}
-
-    {{#paper-button href=(href-to "index")}}
-      <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
-    {{/paper-button}}
-
+<PaperToolbar>
+  <PaperToolbarTools>
+    <NavigationButton @url={{"index"}}>
+      <img class="pilas-bloques-logo" src='imagenes/logo.png'>
+    </NavigationButton>
     <span class="flex"></span>
+    <a class="program-ar-logo " href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+  </PaperToolbarTools>
+</PaperToolbar>
 
+{{!-- <span class="flex"></span>
     <div class="btn-group btn-breadcrumb">
       <a href="#" class="btn btn-primary"><i class='fa fa-home'></i></a>
       <a href="#" class="btn btn-primary">Desafios primer ciclo</a>
       <a href="#" class="btn btn-primary">Programando en la computadora</a>
       <div class="btn btn-info">Dieta a base de churrascos</div>
-    </div>
-
-    <span class="flex"></span>
-    <a class="program-ar-logo " href="http://program.ar"><img src='imagenes/programar-short.png'></a>
-   {{/toolbar.tools}}
- {{/paper-toolbar}}
+    </div> 
+--}}
