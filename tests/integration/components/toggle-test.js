@@ -23,5 +23,5 @@ module('Integration | Component | pilas toggle', function (hooks) {
     assert.ok(this.element.querySelector("input").checked);
   });
 
-  let toggle = hbs`{{pilas-toggle isDisabled=disabled isChecked=checked}}`;
+  let toggle = hbs`{{toggle isDisabled=disabled isChecked=checked}}`;
 });
