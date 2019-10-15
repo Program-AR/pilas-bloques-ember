@@ -7,7 +7,7 @@ import { inject as service } from '@ember/service';
 import Component from '@ember/component';
 
 export default Component.extend({
-  classNames: 'desafio-panel-derecho',
+  classNames: 'pilas-blockly',
   ejecutando: false,
   terminoDeEjecutar: false,
   errorDeActividad: null,
@@ -23,7 +23,6 @@ export default Component.extend({
   debeMostrarFinDeDesafio: false,
   codigo: null,
   modelActividad: null,
-  modoTuboHabilitado: false,
 
   highlighter: service(),
   availableBlocksValidator: service(),
@@ -55,10 +54,6 @@ export default Component.extend({
 
   }),
 
-  debeMostarRegresarAlLibro: computed('model', function () {
-    return true;
-  }),
-
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
   }),
@@ -68,6 +63,16 @@ export default Component.extend({
   }),
 
   didInsertElement() {
+
+    /*
+      Esta no es la forma correcta de arreglar esto.
+      Pero como pilas-blockly es hijo de exerciseWorkspace,
+      exerciseWorkspace no puede enviarle actions a pilas-blocky.
+      Esto es lo mas que puedo hacer para evitar un refactor
+      gigante.
+    */
+    this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
+    this.exerciseWorkspace.setPilasBlockly(this);
 
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
@@ -269,7 +274,7 @@ export default Component.extend({
 
         let err = this.errorDeActividad;
         if (err) {
-          reject(new ErrorDeActividad(err));
+          reject(err);
           return;
         }
 
@@ -281,6 +286,7 @@ export default Component.extend({
             if (interpreter.paused_ === false && !this.pausadoEnBreakpoint) {
               hayMasParaEjecutarDespues = interpreter.run();
               this.set('pausadoEnBreakpoint', true);
+              this.exerciseWorkspace.set('pausadoEnBreakpoint', true);
             }
           } else {
             hayMasParaEjecutarDespues = interpreter.run();
@@ -316,7 +322,9 @@ export default Component.extend({
 
       if (this.ejecutando) {
         this.set('ejecutando', false);
+        this.exerciseWorkspace.set('ejecutando', false);
         this.set('terminoDeEjecutar', true);
+        this.exerciseWorkspace.set('terminoDeEjecutar', true);
         this.clearHighlight();
       }
     });
@@ -332,14 +340,6 @@ export default Component.extend({
     if (Blockly.mainWorkspace) {
       Blockly.mainWorkspace.clear();
       Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
-    }
-  },
-
-  setModoTurbo() {
-    if (this.modoTuboHabilitado) {
-      this.pilas.habilitarModoTurbo();
-    } else {
-      this.pilas.deshabilitarModoTurbo();
     }
   },
 
@@ -360,9 +360,6 @@ export default Component.extend({
       Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
 
-      this.setModoTurbo()
-
-
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución
       // del usuario en cada momento de ejecución.
@@ -375,17 +372,22 @@ export default Component.extend({
       let interprete = factory.crearInterprete(this.javascriptCode, (bloqueId) => this.highlighter.step(bloqueId));
 
       this.set('pausadoEnBreakpoint', false);
+      this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
       this.set('ejecutando', true);
+      this.exerciseWorkspace.set('ejecutando', true);
 
       this.ejecutarInterpreteHastaTerminar(interprete, pasoAPaso)
         .then(() => this.cuandoTerminaEjecucion())
-        .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ });
+        .catch(err => new ErrorDeActividad(err));
+        // .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ });
     },
 
     reiniciar() {
       this.clearHighlight()
       this.set('ejecutando', false);
+      this.exerciseWorkspace.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
+      this.exerciseWorkspace.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
       this.pilas.reiniciarEscenaCompleta();
     },
@@ -426,6 +428,7 @@ export default Component.extend({
 
     step() {
       this.set('pausadoEnBreakpoint', false);
+      this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
     },
 
     onChangeWorkspace(xml) {
@@ -441,7 +444,6 @@ export default Component.extend({
     onNewWorkspace() {
       this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.bloques)
     },
-
   }
 
 });

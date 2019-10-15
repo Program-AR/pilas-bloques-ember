@@ -3,30 +3,6 @@ pre {
   padding: 10px;
 }
 
-.ember-blockly-container {
-  width: 100%;
-  min-height: 400px;
-  height: 100%;
-}
-
-.flexbox-container {
-  display: flex;
-}
-
-.flexbox-direction-row {
-  flex-direction: row;
-}
-
-.flexbox-direction-column {
-  flex-direction: column;
-}
-
-.column {
-  flex-grow: 1;
-  border: 1px solid black;
-  text-align:center;
-}
-
 .yellow {
   background-color: green;
   color: white;
