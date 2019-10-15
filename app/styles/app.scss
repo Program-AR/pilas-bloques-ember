@@ -7,7 +7,6 @@
 @import "modal.scss";
 @import "breadcrumb";
 @import "button";
-@import "navigation-button";
 @import "fireworks.scss";
 @import "bug-report-modal.scss";
 @import "congratulations-modal.scss";
@@ -38,6 +37,16 @@
 
 .not-allowed {
   cursor: not-allowed;
+}
+
+.menu-button-typography {
+  padding-left: 30px;
+  padding-right: 8px;
+}
+
+.menu-button-icon {
+  position: absolute;
+  padding-top: 5px !important;
 }
 
 .button-typography {

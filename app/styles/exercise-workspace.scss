@@ -6,7 +6,7 @@
 }
 
 .pilas-blockly-container {
-  height: 97%;
+  height: calc(100vh - 230px);
 }
 
 #draggable {

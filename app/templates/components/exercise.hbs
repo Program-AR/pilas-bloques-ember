@@ -1,5 +1,4 @@
-<PaperCard class="flex layout-column">
-    <PilasCanvas @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} />
+<PaperCard class="exercise-card flex layout-column">
     <div class="exercise-actions flex layout-row">
         {{#if needShowStepByStepButtons}}
             {{#if running}}
@@ -28,4 +27,5 @@
             </Toggle>
         </div>
     </div>
+    <PilasCanvas @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} />
 </PaperCard>
