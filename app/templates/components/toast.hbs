@@ -1,0 +1,6 @@
+{{#if needShowToast}}
+  {{#paper-toast onClose=(action (mut needShowToast) false) as |toast|}}
+    {{#toast.text}}{{message}}{{/toast.text}}
+    {{yield}}
+  {{/paper-toast}}
+{{/if}}
