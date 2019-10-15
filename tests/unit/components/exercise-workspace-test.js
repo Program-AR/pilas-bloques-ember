@@ -7,12 +7,12 @@ import {
 } from '../../helpers/mocks';
 import sinon from 'sinon';
 
-module('Unit | Components | pilas-editor', function(hooks) {
+module('Unit | Components | exercise-workspace', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function() {
       this.owner.register('service:interpreterFactory', interpreterFactoryMock);
-      this.ctrl = this.owner.factoryFor('component:pilas-editor').create();
+      this.ctrl = this.owner.factoryFor('component:exercise-workspace').create();
       this.ctrl.set('model', actividadMock);
       sinon.resetHistory();
   });

@@ -1,0 +1,31 @@
+<PaperCard class="flex layout-column">
+    <PilasCanvas @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} />
+    <div class="exercise-actions flex layout-row">
+        {{#if needShowStepByStepButtons}}
+            {{#if running}}
+                <div class="step-by-step-button-container">
+                    <Button @isDisabled={{not pausedOnBreackpoint}} @onClick={{action step}}>{{paper-icon "skip_next"}}<span class="button-typography">Avanzar un paso</span></Button>
+                </div>
+            {{else}}
+                <div class="step-by-step-button-container">
+                    <Button @onClick={{action step-by-step-execution}}>{{paper-icon "play_arrow"}}<span class="button-typography">Ejecutar paso a paso</span></Button>
+                </div>
+            {{/if}}
+        {{/if}}
+        {{#if running}}
+            <div class="restart-button-container">
+                <Button @onClick={{action reset}}>{{paper-icon "refresh"}}<span class="button-typography">Reiniciar</span></Button>
+            </div>
+        {{else}}
+            <div class="run-button-container">
+                <Button @element-id={{"run-button"}} @onClick={{action run}}>{{paper-icon "play_arrow"}}<span class="button-typography">Ejecutar</span></Button>
+            </div>
+        {{/if}}
+        <span class="flex"></span>
+        <div class="toggle-container">
+            <Toggle @isDisabled={{running}} @isChecked={{enableTurboMode}} @tooltip={{"Modo Turbo"}} @element-id={{"modo-turbo"}} @onClick={{onClick}}>
+                <i class="slider-icon fa fa-bolt"></i>
+            </Toggle>
+        </div>
+    </div>
+</PaperCard>

@@ -1,0 +1,29 @@
+.exercise-card {
+    border-radius: 10px;
+}
+
+.exercise-card md-card-title {
+    overflow-y: auto;
+    max-height: 80px;
+    padding: 0px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.exercise-card md-card-title md-card-title-text {
+    justify-content: center;
+}
+
+.exercise-card md-card-title md-card-title-text:only-child .md-subhead {
+    padding-top: 0px;
+}
+
+.exercise-cover {
+    position: inherit;
+    width: 118px;
+    height: 100px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}

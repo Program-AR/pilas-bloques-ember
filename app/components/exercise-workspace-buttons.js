@@ -2,7 +2,7 @@ import Component from '@ember/component';
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 2;
 
 export default Component.extend({
-  tagName: 'span',
+  tagName: 'workspace-buttons',
   cuandoSelecciona: null,
   actividad: null,
   workspace: null,
@@ -23,6 +23,7 @@ export default Component.extend({
       .then((contenido) => this.cargarSolucion(contenido));
   },
 
+  // Esto tengo que pasarlo a Promise nativo.
   leerSolucionFS(archivo) {
     let fs = Promise.promisifyAll(require("fs"));
     return fs.readFileAsync(archivo, 'utf-8')

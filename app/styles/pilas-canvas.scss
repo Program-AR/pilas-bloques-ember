@@ -1,10 +1,12 @@
-
 .iframe-container {
-    position: inherit;
+    position: relative;
     width: 100%;
     height: 100%;
 }
 
 .iframe-container iframe {
+    position: relative;
     border: 0;
-  }
+    width: 100%;
+    height: 100%;
+}

@@ -1,0 +1,74 @@
+.pilas-canvas {
+    position: relative;
+    overflow: hidden;
+    width: 420px;
+    height: 480px;
+}
+
+.exercise-actions {
+    position: relative;
+}
+
+.exercise-actions .step-by-step-button-container .md-button {
+    color:#fff;
+    background-color:#31b0d5;
+    border-color:    #269abc;
+}
+
+.exercise-actions .step-by-step-button-container md-icon.md-default-theme {
+    color:#fff;
+}
+
+.exercise-actions .step-by-step-button-container .md-button:hover {
+    cursor: not-allowed;
+}
+
+.exercise-actions .step-by-step-button-container .md-button:not([disabled]):hover {
+    background-color:#269abc;
+    cursor: pointer;
+}
+
+.exercise-actions .restart-button-container .md-button {
+    color:#fff;
+    background-color:#ec971f;
+    border-color:    #d58512;
+}
+
+.exercise-actions .restart-button-container md-icon.md-default-theme {
+    color:#fff;
+}
+
+.exercise-actions .restart-button-container .md-button:hover {
+    cursor: not-allowed;
+}
+
+  
+.exercise-actions .restart-button-container .md-button:not([disabled]):hover {
+    background-color:#d58512;
+    cursor: pointer;
+}
+
+.exercise-actions .run-button-container .md-button {
+    color:#fff;
+    background-color:#449d44;
+    border-color:    #398439;
+}
+
+.exercise-actions .run-button-container md-icon.md-default-theme {
+    color:#fff;
+}
+
+.exercise-actions .run-button-container  .md-button:hover {
+    cursor: not-allowed;
+}
+
+  
+.exercise-actions .run-button-container .md-button:not([disabled]):hover {
+    background-color:#398439;
+    cursor: pointer;
+}
+
+.toggle-container {
+    padding-top: 7px;
+    padding-right: 7px;
+}

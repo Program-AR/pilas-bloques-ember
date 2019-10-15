@@ -1,0 +1,16 @@
+.pilas-blockly {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+.pilas-blockly-container {
+  height: 97%;
+}
+
+#draggable {
+    position: fixed;
+    cursor: move;
+    z-index: 20;
+}

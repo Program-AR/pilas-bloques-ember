@@ -1,0 +1,13 @@
+<PaperCard id="exercise-detail" class="exercise-card flex layout-row">
+    <img class="exercise-cover" alt="{{model.titulo}}" src="imagenes/desafios/{{model.nombreImagen}}">
+    <PaperCardTitle>
+        <PaperCardTitleText>
+            <PaperCardHeaderHeadline>{{if model.grupo.titulo model.grupo.titulo model.titulo}}</PaperCardHeaderHeadline>
+            <PaperCardHeaderSubhead>{{model.enunciado}}</PaperCardHeaderSubhead>
+        </PaperCardTitleText>
+    </PaperCardTitle>
+</PaperCard>
+
+{{#if model.consignaInicial}}
+    <InitialDialogModal @model={{model}} @needShowInitialDialog={{model.consignaInicial}} @parent={{"#exercise-detail"}}/>
+{{/if}}
