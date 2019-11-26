@@ -1,7 +1,10 @@
 
 <div class="flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
-  <ExerciseDetails class="exercise-details" @model={{model}} />
+  <ExerciseDetails class="exercise-details" 
+    @model={{model}}
+    @cargando={{cargando}}
+  />
   
   <div class="flex layout-row">
     <PaperCard class="flex-grow pilas-blockly-container">

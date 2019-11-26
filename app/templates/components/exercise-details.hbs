@@ -1,4 +1,7 @@
 <PaperCard id="exercise-detail" class="exercise-card flex layout-row">
+    {{#if cargando}}
+        <PilasSpinner/>
+    {{else}}
     <img class="exercise-cover" alt="{{model.titulo}}" src="imagenes/desafios/{{model.nombreImagen}}">
     <PaperCardTitle>
         <PaperCardTitleText>
@@ -6,4 +9,5 @@
             <PaperCardHeaderSubhead>{{model.enunciado}}</PaperCardHeaderSubhead>
         </PaperCardTitleText>
     </PaperCardTitle>
+    {{/if}}
 </PaperCard>

@@ -1,4 +1,5 @@
 .exercise-card {
+    position: inherit;
     border-radius: 10px;
 }
 
@@ -77,4 +78,15 @@
 .toggle-container {
     padding-top: 7px;
     padding-right: 7px;
+}
+
+.pilas-canvas-buttons {
+    position: inherit;
+    float:right;
+    margin-top: -53px;
+}
+
+.tip-button .material-icons {
+    transform: rotate(180deg);
+    color: #f9bd38;
 }

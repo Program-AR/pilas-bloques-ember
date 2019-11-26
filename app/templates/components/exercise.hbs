@@ -30,4 +30,12 @@
         </div>
     {{/unless}}
         <PilasCanvas @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}}/>
+        {{#unless cargando}}
+            <div class="pilas-canvas-buttons">
+                <div class="flex layout-row">
+                    <span class="flex"></span>
+                    <Button class="tip-button" title={{"!Dame una pista!"}} @isFab={{true}} @isMini={{true}} @isRaised={{true}} @onClick={{action (mut needShowInitialDialog)}}>{{paper-icon "wb_incandescent"}}</Button>
+                </div>
+            </div>
+         {{/unless}}
 </PaperCard>
