@@ -1,5 +1,5 @@
 {{#if cargando}}
-  {{!-- {{pilas-cargando}} --}}
+  {{pilas-cargando}}
 {{else}}
   <EmberBlockly
       @mediaFolder={{"blockly-package/media/"}}
@@ -21,7 +21,7 @@
     />
   {{#unless estoyEnMoodle}}
     <span class="pilas-blockly-workspace-buttons">
-      <ExerciseWorkspaceButtons @actividad={{modelActividad}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}} @openTip={{action (mut needShowInitialDialog)}} {{!-- @openBugReport={{action 'abrirReporteProblemas' }} --}} />
+      <ExerciseWorkspaceButtons @actividad={{modelActividad}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}} {{!--@openTip={{action (mut needShowInitialDialog)}} @openBugReport={{action 'abrirReporteProblemas' }} --}} />
     </span>
   {{/unless}}
 {{/if}}

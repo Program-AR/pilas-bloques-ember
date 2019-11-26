@@ -1,5 +1,6 @@
-{{!-- {{pilas-spinner centered=true}} --}}
-
 <div class="iframe-container">
+    {{#if cargando}}
+        {{pilas-cargando}}
+    {{/if}}
     <iframe src="pilas.html" id="innerIframe"></iframe>
 </div>

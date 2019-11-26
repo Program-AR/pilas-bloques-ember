@@ -1,7 +1,7 @@
 
 <div class="flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
-  <ExerciseDetails @model={{model}} />
+  <ExerciseDetails class="exercise-details" @model={{model}} />
   
   <div class="flex layout-row">
     <PaperCard class="flex-grow pilas-blockly-container">
@@ -32,6 +32,7 @@
         @pilas={{pilas}}
         @escena={{model.escena}} 
         @onReady={{action "onReady"}}
+        @cargando={{cargando}}
         @showStepByStepButtons={{debeMostrarPasoHabilitado}}
         @running={{ejecutando}}
         @pausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
