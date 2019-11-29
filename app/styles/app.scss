@@ -1,23 +1,25 @@
+@import "breadcrumb.scss";
+@import "bug-report-modal.scss";
+@import "button.scss";
+@import "congratulations-modal.scss";
+@import "ember-blocky.scss";
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
-@import "ribbons.scss";
-@import "font-awesome";
 @import 'ember-paper';
-@import "toggle.scss";
-@import "modal.scss";
-@import "breadcrumb";
-@import "button";
-@import "fireworks.scss";
-@import "bug-report-modal.scss";
-@import "congratulations-modal.scss";
-@import "pilas-header.scss";
-@import "ember-blocky.scss";
-@import "pilas-canvas.scss";
-@import "pilas-blockly.scss";
 @import "exercise.scss";
 @import "exercise-details.scss";
 @import "exercise-workspace.scss";
 @import "exercise-workspace-buttons.scss";
+@import "fireworks.scss";
+@import "font-awesome";
+@import "modal.scss";
+@import "pilas-blockly.scss";
+@import "pilas-canvas.scss";
+@import "pilas-header.scss";
+@import "ribbons.scss";
+@import "spinner.scss";
+@import "splitter.scss";
+@import "toggle.scss";
 
 [data-ember-action] {
     cursor: pointer;
@@ -197,7 +199,6 @@ span.url {
   text-shadow: 0px 0px 3px white;
 }
 
-
 .right {
   float: right;
 }
@@ -205,7 +206,6 @@ span.url {
 .border-rigth {
   margin-right: 10px;
 }
-
 
 .modal-inline-block {
   display: inline-block;
@@ -220,7 +220,6 @@ span.url {
 .float-left {
   float: left;
 }
-
 
 .compartir-mensaje {
   background-color: rgb(255, 255, 215);
@@ -306,7 +305,6 @@ span.url {
   color: orange !important;
 }
 
-
 .tip-block {
   border: 1px solid rgb(201, 198, 249);
   background-color: rgb(223, 255, 254);
@@ -320,7 +318,6 @@ span.url {
 .panel-ayuda p {
   text-align: left;
 }
-
 
 h2 {
   font-size: 24px;
@@ -340,27 +337,6 @@ h2 {
   bottom: 3px;
   margin-top: 5px;
   top: 480px;
-}
-
-.content-spinner {
-  margin: auto;
-}
-
-.spinner {
-  height: 38px;
-  width: 38px;
-  animation: rotate 0.6s infinite linear;
-  border: 3px solid #9C9C9C;
-  border-right-color: transparent;
-  border-radius: 50%;
-}
-
-.spinner-centered {
-  position: absolute;
-  text-align: center;
-  left: 50%;
-  top: 43%;
-  margin-left: -20px;
 }
 
 @keyframes rotate {
