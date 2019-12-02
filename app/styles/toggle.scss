@@ -28,7 +28,6 @@
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    -webkit-transition: .4s;
     transition: .4s;
   }
   
@@ -40,7 +39,6 @@
     left: 4px;
     bottom: 4px;
     background-color: white;
-    -webkit-transition: .4s;
     transition: .4s;
   }
 
@@ -48,13 +46,10 @@
     position: absolute;
     padding-top: 9px;
     padding-left: 13px;
-    -webkit-transition: .4s;
     transition: .4s;
   }
 
   input:checked + .slider .slider-icon{
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
 
@@ -63,8 +58,6 @@
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
     transform: translateX(26px);
   }
 
