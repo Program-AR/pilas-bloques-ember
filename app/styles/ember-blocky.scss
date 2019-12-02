@@ -101,3 +101,12 @@ table td {
   background-color: #d6e8ff;
   border: 1px solid #a3b1c3;
 }
+
+.blocklyToolboxDiv {
+  background-color: #ddd;
+  overflow-x: visible;
+  overflow-y: auto;
+  position: absolute;
+  z-index: 20;
+  -webkit-tap-highlight-color: transparent;
+}

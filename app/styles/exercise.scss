@@ -1,11 +1,14 @@
 .exercise-card {
     position: inherit;
     border-radius: 10px;
+    z-index: 99;
 }
 
 .pilas-canvas {
     position: relative;
     overflow: hidden;
+    // width: 210px;
+    // height: 240px;
     width: 420px;
     height: 480px;
     border-bottom-left-radius: 10px;
