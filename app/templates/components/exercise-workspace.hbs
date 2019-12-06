@@ -1,52 +1,63 @@
 
 <div class="flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
-  <ExerciseDetails class="exercise-details" 
-    @model={{model}}
-    @cargando={{cargando}}
-  />
+  {{#unless shouldUseFloatingMode}}
+    <ExerciseDetails class="exercise-details" 
+      @model={{model}}
+      @cargando={{cargando}}
+    />
+  {{/unless}}
   
   <div class="flex layout-row">
-    <PaperCard class="flex-grow pilas-blockly-container">
+    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container-collapsed" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
-          @guardar={{'guardar'}}
-          @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
-          @modoDocente={{modoDocente}}
-          @modoAlumno={{modoAlumno}}
-          @hash={{hash}}
-          @idAlumno={{idAlumno}}
-          @codigo={{codigo}}
-          @showCode={{showCode}}
-          @cargando={{cargando}}
-          @modelActividad={{model}}
-          @cuandoEjecuta={{cuandoEjecuta}}
-          @model={{model}}
-          @pasoAPasoHabilitado={{model.debugging}}
-          @persistirSolucionEnURL={{persistirSolucionEnURL}}
-          @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
-          @pilas={{pilas}}
-          @bloques={{model.bloques}}
-          @onChangeWorkspace={{onChangeWorkspace}}
-          @onTerminoEjecucion={{onTerminoEjecucion}}
+        @guardar={{'guardar'}}
+        @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
+        @modoDocente={{modoDocente}}
+        @modoAlumno={{modoAlumno}}
+        @hash={{hash}}
+        @idAlumno={{idAlumno}}
+        @codigo={{codigo}}
+        @showCode={{showCode}}
+        @cargando={{cargando}}
+        @modelActividad={{model}}
+        @cuandoEjecuta={{cuandoEjecuta}}
+        @model={{model}}
+        @pasoAPasoHabilitado={{model.debugging}}
+        @persistirSolucionEnURL={{persistirSolucionEnURL}}
+        @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
+        @pilas={{pilas}}
+        @bloques={{model.bloques}}
+        @onChangeWorkspace={{onChangeWorkspace}}
+        @onTerminoEjecucion={{onTerminoEjecucion}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @changeScreenMode={{action "changeScreenMode"}}
+        {{!-- @changeScreenMode={{action (mut shouldUseFloatingMode) (not shouldUseFloatingMode)}} --}}
+        {{!-- and action "updateBlockyWorkspaceBounds" --}}
+        {{!-- and action (if shouldUseFloatingMode "makeDraggable" "makeNotDraggable") --}}
       />
     </PaperCard>
 
-    <Exercise class="flex-nogrow" id={{if shouldUseFloatingMode "draggable" "no-draggable"}}
-        @pilas={{pilas}}
-        @escena={{model.escena}} 
-        @onReady={{action "onReady"}}
-        @cargando={{cargando}}
-        @showStepByStepButtons={{debeMostrarPasoHabilitado}}
-        @running={{ejecutando}}
-        @pausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
-        @enableTurboMode={{modoTuboHabilitado}}
-        @step={{action 'step' true}}
-        @step-by-step-execution={{action 'ejecutar' true}}
-        @run={{action 'ejecutar' false}}
-        @reset={{action 'reiniciar' false}}
-        @onClick={{action 'updateTurboMode'}}
-    />
+    <Exercise class="flex-nogrow" id="draggable"
+      @pilas={{pilas}}
+      @escena={{model.escena}} 
+      @onReady={{action "onReady"}}
+      @cargando={{cargando}}
+      @showStepByStepButtons={{debeMostrarPasoHabilitado}}
+      @running={{ejecutando}}
+      @pausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+      @enableTurboMode={{modoTuboHabilitado}}
+      @step={{action 'step' true}}
+      @step-by-step-execution={{action 'ejecutar' true}}
+      @run={{action 'ejecutar' false}}
+      @reset={{action 'reiniciar' false}}
+      @onClick={{action 'updateTurboMode'}}
+      />
   </div>
+
+  {{#unless shouldUseFloatingMode}}
+    <Footer @cargando={{cargando}}/>
+  {{/unless}}
 
   <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowToast}}>
     {{if modoTuboHabilitado "ACTIVADO" "DESACTIVADO"}}

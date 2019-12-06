@@ -21,15 +21,9 @@
     />
   {{#unless estoyEnMoodle}}
     <span class="pilas-blockly-workspace-buttons">
-      <ExerciseWorkspaceButtons @actividad={{modelActividad}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}} {{!--@openTip={{action (mut needShowInitialDialog)}} @openBugReport={{action 'abrirReporteProblemas' }} --}} />
+      <ExerciseWorkspaceButtons @actividad={{modelActividad}} @shouldUseFloatingMode={{shouldUseFloatingMode}}  @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}} {{!--@openBugReport={{action 'abrirReporteProblemas' }} --}} />
     </span>
   {{/unless}}
-{{/if}}
-
-{{#if model.consignaInicial}}
-  {{#if needShowInitialDialog}}
-    <InitialDialogModal @model={{model}} @needShowInitialDialog={{needShowInitialDialog}}/>
-  {{/if}}
 {{/if}}
 
 {{#if mostrarDialogoFinDesafio}}

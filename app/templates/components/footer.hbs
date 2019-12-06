@@ -1,0 +1,11 @@
+<PaperCard class="footer-card flex footer">
+  {{#if cargando}}
+    <Spinner/>
+  {{else}}
+    <div class="layout-row flex-grow">
+      <span class="flex"></span>
+      {{#paper-button disabled=isDisabled raised=isRaised fab=isFab href=(href-to "acercade") bubbles=true}}{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">¿Algún problema con este ejercicio?</span>{{/paper-button}}
+      {{#paper-button disabled=isDisabled raised=isRaised fab=isFab href=(href-to "acercade") bubbles=true}}{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">Acerca de</span>{{/paper-button}}
+    </div>
+  {{/if}}
+</PaperCard>

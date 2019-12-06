@@ -5,29 +5,30 @@
 
 .details-card md-card-title {
     overflow-y: auto;
-    max-height: 100px;
-    padding-top: 5px;
-    padding-left: 39px;
-    padding-right: 10px;
-    padding-bottom: 2px;
-}
+    max-height: 80px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}   
 
 .exercise-cover {
     position: inherit;
-    width: 118px;
-    height: 100px;
+    width: 100px;
+    height: 80px;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 }
 
 .tab {
+    justify-content: space-evenly;
     background-color: #f1f1f1;
-    height: 100px;
+    height: 80px;
 }
 
 .tab .md-button {
     width: 50px;
     min-width: 50px;
+    margin: 0px!important;
+    padding: 0px !important;
 }
 
 .tab .clue-button {

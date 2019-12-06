@@ -2,15 +2,22 @@
     position: inherit;
     border-radius: 10px;
     z-index: 99;
+    // width:  calc(420px * (100vw / 100vh));
+    // width: 420px;
+    // width: 100%;
+    // max-width: 480px;
+    // width: calc(420px - (100vh * 0.21)); 
 }
 
 .pilas-canvas {
     position: relative;
     overflow: hidden;
-    // width: 210px;
-    // height: 240px;
-    width: 420px;
-    height: 480px;
+    // width:  calc(420px * (100vw / 100vh));
+    // height: calc(480px * (100vw / 100vh));
+    // width: 420px;
+    // height: 480px;
+    width: calc(420px - (100vh * 0.21));
+    height: calc(480px - (100vh * 0.21));
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 }

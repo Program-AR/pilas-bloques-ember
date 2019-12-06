@@ -9,11 +9,8 @@ export default Component.extend({
   blocksGallery: service(),
   cargando: true,
   modoTuboHabilitado: false,
-  floatingMode: false,
-
-  shouldUseFloatingMode: computed('shouldUseFloatingMode', function () {
-    return this.get('floatingMode');
-  }),
+  canvasWidth: 0,
+  canvasHeight: 0,
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -35,16 +32,50 @@ export default Component.extend({
     this.blocksGallery.start();
   },
 
-  didRender() {
-    //Make the DIV element draggagle:
-    let elmnt = document.getElementById("draggable");
+  setPilasBlockly(pilasBlockly) {
+    this.set('pilasBlockly', pilasBlockly);
+  },
 
-    if (elmnt) {
-      makeDraggable();
-    }
+  actions: {
 
-    function makeDraggable() {
+    onReady(pilas) {
+      if (this.onReady) {
+        this.onReady(pilas)
+      }
+      this.set('cargando', false);
+      if (this.modoLecturaSimple) {
+        pilas.cambiarAModoDeLecturaSimple();
+      }
+    },
+
+    changeScreenMode() {
+      this.set("shouldUseFloatingMode", !this.get("shouldUseFloatingMode"));
+      this.send("updateBlockyWorkspaceBounds");
+
+      if (this.get("shouldUseFloatingMode")) {
+        this.send("makeDraggable");
+      } 
+
+      else {
+        this.send("makeNotDraggable");
+      }
+      
+    },
+
+    makeDraggable() {
+      let elmnt = document.getElementById("draggable");
+      let canvas = document.getElementsByClassName("pilas-canvas")[0];
+
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+      elmnt.style.top = (elmnt.offsetTop) + "px";
+      elmnt.style.left = (elmnt.offsetLeft + 50) + "px";
+
+      elmnt.style.position = "fixed";
+      this.canvasWidth = canvas.style.height;
+      this.canvasHeight = canvas.style.width;
+      canvas.style.height = 240 + "px";
+      canvas.style.width = 210 + "px";
 
       elmnt.onmousedown = onMouseDown;
       elmnt.ontouchstart = onTouchStart;
@@ -114,39 +145,32 @@ export default Component.extend({
         elmnt.ontouchmove = null;
       }
 
-    }
-  },
+    },
 
-  setPilasBlockly(pilasBlockly) {
-    this.set('pilasBlockly', pilasBlockly);
-  },
+    makeNotDraggable() {
+      let elmnt = document.getElementById("draggable");
+      let canvas = document.getElementsByClassName("pilas-canvas")[0];
+      elmnt.style.position = "inherit";
+      canvas.style.height = this.canvasHeight;
+      canvas.style.width = this.canvasWidth;
+    },
 
-  actions: {
-
-    onReady(pilas) {
-      if (this.onReady) {
-        this.onReady(pilas)
-      }
-      this.set('cargando', false);
-      if (this.modoLecturaSimple) {
-        pilas.cambiarAModoDeLecturaSimple();
-      }
-
+    updateBlockyWorkspaceBounds() {
+      // This make blocky workspaces render correctly after container resize.
+      // This is a WORKAROUND, i cant get it work without this.
+      Blockly.mainWorkspace.getAllBlocks()[0].select()
+      Blockly.mainWorkspace.getAllBlocks()[0].unselect()
     },
 
     updateTurboMode() {
       if (!this.modoTuboHabilitado) {
         this.pilas.habilitarModoTurbo();
       }
-      
+
       else {
         this.pilas.deshabilitarModoTurbo();
       }
       this.set("needShowToast", true);
-    },
-
-    updateFloatingMode() {
-      this.set("floatingMode", !this.get("floatingMode"));
     },
 
     ejecutar(pasoAPaso = false) {

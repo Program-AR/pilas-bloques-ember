@@ -1,6 +1,7 @@
 .exercise-details {
   align-self: flex-start;
-  width: 100%
+  width: 100%;
+  height: 100%;
 }
 
 .pilas-blockly {
@@ -11,12 +12,33 @@
 }
 
 .pilas-blockly-container {
-  height: calc(100vh - 230px);
-  // height: calc(100vh);
+  position: inherit;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  // height: calc(100vh - 88px);
+  height: calc(100vh - 245px);
+  // height: 100vh;
+}
+
+.pilas-blockly-container-collapsed {
+  position: inherit;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  height: calc(100vh - 88px);
+  // height: 100vh;
 }
 
 #draggable {
-    position: fixed;
-    cursor: move;
-    z-index: 20;
+  position: inherit;
+  cursor: move;
+  z-index: 20;
 }
+
+// .exercise-container {
+
+// }
+
+// .exercise-container-collapsed  {
+//   position: inherit;
+//   width: 10px;
+// }
