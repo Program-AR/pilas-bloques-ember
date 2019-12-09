@@ -48,15 +48,31 @@ export default Component.extend({
       }
     },
 
+    hideScene() {
+      let canvas = document.getElementsByClassName("pilas-canvas")[0];
+      let elmnt = document.getElementById("draggable");
+      elmnt.style.display='none';
+      canvas.style.display='none';
+    },
+
+    showScene() {
+      let canvas = document.getElementsByClassName("pilas-canvas")[0];
+      let elmnt = document.getElementById("draggable");
+      elmnt.style.display='block';
+      canvas.style.display='block';
+    },
+
     changeScreenMode() {
       this.set("shouldUseFloatingMode", !this.get("shouldUseFloatingMode"));
       this.send("updateBlockyWorkspaceBounds");
 
       if (this.get("shouldUseFloatingMode")) {
         this.send("makeDraggable");
+        this.send("hideScene");
       }
 
       else {
+        this.send("showScene");
         this.send("makeNotDraggable");
       }
 
@@ -180,6 +196,7 @@ export default Component.extend({
 
     ejecutar(pasoAPaso = false) {
       this.pilasBlockly.send('ejecutar', pasoAPaso);
+      this.send("showScene");
     },
 
     step() {
