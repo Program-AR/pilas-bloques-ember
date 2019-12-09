@@ -3,6 +3,7 @@ import Component from '@ember/component';
 export default Component.extend({
 
     actions: {
+        // Only used with alternative version with github integration.
         createIssue() {
             fetch('https://api.github.com/repos/Program-AR/pilas-bloques/issues', {
                 method: 'POST',
