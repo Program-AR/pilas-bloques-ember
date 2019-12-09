@@ -418,14 +418,6 @@ export default Component.extend({
       this.set('mostrarDialogoFinDesafio', false);
     },
 
-    abrirReporteProblemas() {
-      this.set('mostrarDialogoReporteProblemas', true);
-    },
-
-    cerrarReporteProblemas() {
-      this.set('mostrarDialogoReporteProblemas', false);
-    },
-
     step() {
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);

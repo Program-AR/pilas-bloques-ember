@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | pilas spinner', function(hooks) {
+module('Integration | Component | spinner', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {

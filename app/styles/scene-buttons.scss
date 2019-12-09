@@ -1,29 +1,5 @@
-.exercise-card {
-    position: inherit;
-    border-radius: 10px;
-    z-index: 99;
-    // width:  calc(420px * (100vw / 100vh));
-    // width: 420px;
-    // width: 100%;
-    // max-width: 480px;
-    // width: calc(420px - (100vh * 0.21)); 
-}
-
-.pilas-canvas {
-    position: relative;
-    overflow: hidden;
-    // width:  calc(420px * (100vw / 100vh));
-    // height: calc(480px * (100vw / 100vh));
-    // width: 420px;
-    // height: 480px;
-    width: calc(420px - (100vh * 0.21));
-    height: calc(480px - (100vh * 0.21));
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-
 .exercise-actions {
-    position: relative;
+    position: inherit;
 }
 
 .exercise-actions .step-by-step-button-container .md-button {
@@ -90,13 +66,6 @@
     padding-right: 7px;
 }
 
-.pilas-canvas-buttons {
-    position: inherit;
-    float:right;
-    margin-top: -53px;
-}
-
-.tip-button .material-icons {
-    transform: rotate(180deg);
-    color: #f9bd38;
+.toggle-container-collapsed {
+    padding-top: 7px;
 }

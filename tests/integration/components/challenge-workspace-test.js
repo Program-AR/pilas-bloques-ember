@@ -5,7 +5,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { pilasMock } from '../../helpers/mocks';
 
-module('Integration | Component | pilas editor', function(hooks) {
+module('Integration | Component | challenge-workspace', function(hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function(assert) {
@@ -16,7 +16,7 @@ module('Integration | Component | pilas editor', function(hooks) {
       bloques: ['controls_if']
     }).create());
 
-    await render(hbs`{{exercise-workspace pilas=pilas model=model}}`);
+    await render(hbs`{{challenge-workspace pilas=pilas model=model}}`);
 
     assert.dom().hasAnyText('Hay algo de texto');
   });

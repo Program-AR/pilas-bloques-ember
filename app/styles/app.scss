@@ -1,15 +1,12 @@
 @import "breadcrumb.scss";
 @import "bug-report-modal.scss";
 @import "button.scss";
+@import "challenge-workspace.scss";
+@import "challenge-workspace-buttons.scss";
 @import "congratulations-modal.scss";
-@import "ember-blocky.scss";
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import 'ember-paper';
-@import "exercise.scss";
-@import "exercise-details.scss";
-@import "exercise-workspace.scss";
-@import "exercise-workspace-buttons.scss";
 @import "fireworks.scss";
 @import "font-awesome.scss";
 @import "footer.scss";
@@ -18,6 +15,9 @@
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
 @import "ribbons.scss";
+@import "scene.scss";
+@import "scene-buttons.scss";
+@import "scene-details.scss";
 @import "spinner.scss";
 @import "splitter.scss";
 @import "toggle.scss";

@@ -54,28 +54,30 @@ export default Component.extend({
 
       if (this.get("shouldUseFloatingMode")) {
         this.send("makeDraggable");
-      } 
+      }
 
       else {
         this.send("makeNotDraggable");
       }
-      
+
     },
 
     makeDraggable() {
       let elmnt = document.getElementById("draggable");
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
+      let exerciseCard = document.getElementsByClassName("exercise-card")[0];
+      let blocklyFlyout = document.getElementsByClassName("blocklyFlyout")[0];
 
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-      elmnt.style.top = (elmnt.offsetTop) + "px";
-      elmnt.style.left = (elmnt.offsetLeft + 50) + "px";
-
-      elmnt.style.position = "fixed";
-      this.canvasWidth = canvas.style.height;
-      this.canvasHeight = canvas.style.width;
       canvas.style.height = 240 + "px";
       canvas.style.width = 210 + "px";
+      exerciseCard.style.height = 240 + "px";
+      exerciseCard.style.width = 210 + "px";
+
+      elmnt.style.top = (blocklyFlyout.height.baseVal.value - 50) + "px";
+      elmnt.style.left = (blocklyFlyout.width.baseVal.value + 25) + "px";
+      elmnt.style.position = "fixed";
 
       elmnt.onmousedown = onMouseDown;
       elmnt.ontouchstart = onTouchStart;
@@ -150,9 +152,12 @@ export default Component.extend({
     makeNotDraggable() {
       let elmnt = document.getElementById("draggable");
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
+      let exerciseCard = document.getElementsByClassName("exercise-card")[0];
       elmnt.style.position = "inherit";
-      canvas.style.height = this.canvasHeight;
-      canvas.style.width = this.canvasWidth;
+      canvas.style.width = "";
+      canvas.style.height = "";
+      exerciseCard.style.width = "";
+      exerciseCard.style.height = "";
     },
 
     updateBlockyWorkspaceBounds() {

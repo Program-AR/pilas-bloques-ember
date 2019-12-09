@@ -1,7 +1,15 @@
+.iframe-container-collapsed {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+}
+
 .iframe-container {
     position: relative;
     width: 100%;
     height: 100%;
+    z-index: 22;
 }
 
 .iframe-container iframe {
@@ -10,3 +18,136 @@
     width: 100%;
     height: 100%;
 }
+
+.iframe-container-collapsed iframe {
+    position: relative;
+    border: 0;
+    width: 100%;
+    height: 100%;
+}
+
+pre {
+    border: 1px solid gray;
+    padding: 10px;
+  }
+  
+  .yellow {
+    background-color: green;
+    color: white;
+  }
+  
+  .red {
+    background-color: red;
+  }
+  
+  .blue {
+    background-color: blue;
+    color: white;
+  }
+  
+  table {
+    border: 1px solid black;
+    margin-top: 1em;
+  }
+  
+  table th {
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #bbb;
+  }
+  
+  table td {
+    border: 1px solid #bbb;
+    padding: 10px;
+  }
+  
+  .list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    width: 200px;
+    border: 1px solid gray;
+  }
+  
+  .list li {
+    cursor: pointer;
+    margin: 4px;
+  }
+  
+  .list li:hover {
+    background-color: yellow;
+  }
+  
+  .code-preview {
+    position: absolute;
+    left: 350px;
+    height: 135px;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    right: 20px;
+  
+  }
+  
+  .code-preview span {
+    color: rgba(0, 0, 255, 0.43)
+  }
+  
+  .core-preview-in-blockly {
+    overflow: auto;
+    z-index: 8;
+    position: absolute;;
+    background-color: rgba(175, 175, 175, 0.14);
+    border: 1px solid rgba(128, 128, 128, 0.1);
+    margin-left: 50%;
+    width: 400px;
+    height: 300px;
+    margin-top: 10px;
+    margin-right: 20px;
+    opacity: 0.8;
+    right: 10px;
+    font-size: x-small;
+  }
+  
+  .ember-blockly-list {
+    height: 300px;
+    overflow: scroll;
+    border: 1px solid gray;
+    margin-top: 5px;
+  }
+  
+  .ember-blockly-list-item {
+    border: 1px solid #eee;
+    padding: 2px;
+    padding-left: 5px;
+    margin: 2px;
+    cursor: pointer;
+  }
+  
+  .ember-blockly-list-item.selected {
+    background-color: #d6e8ff;
+    border: 1px solid #a3b1c3;
+  }
+  
+  .blocklyToolboxDiv {
+    background-color: #ddd;
+    overflow-x: visible;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 20;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .blocklyFlyoutScrollbar {
+    z-index: 20;
+  }
+  
+  .blocklyMainBackground {
+    stroke-width: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .blocklySvg {
+    background-color:transparent;
+  }

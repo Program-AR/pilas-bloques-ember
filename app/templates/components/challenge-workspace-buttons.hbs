@@ -1,0 +1,8 @@
+<div class="flex layout-row">
+    <span class="flex"></span>
+    <input type='file' id="cargarActividadInput" accept=".spbq" class="hidden" />
+    <a id="placeholder" class="hidden">..</a>
+    <Button @tooltip={{"Abrir solución"}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}>{{paper-icon "folder"}}</Button>
+    <Button @tooltip={{"Guardar solución"}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}>{{paper-icon "save"}}</Button>
+    <Button @tooltip={{if shouldUseFloatingMode "Salir de Pantalla Completa" "Pantalla Completa"}} @isFab={{true}} @isRaised={{true}} @onClick={{changeScreenMode}}>{{paper-icon (if shouldUseFloatingMode "fullscreen_exit" "fullscreen")}}</Button>
+</div>

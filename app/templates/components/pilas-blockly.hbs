@@ -21,15 +21,11 @@
     />
   {{#unless estoyEnMoodle}}
     <span class="pilas-blockly-workspace-buttons">
-      <ExerciseWorkspaceButtons @actividad={{modelActividad}} @shouldUseFloatingMode={{shouldUseFloatingMode}}  @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}} {{!--@openBugReport={{action 'abrirReporteProblemas' }} --}} />
+      <ChallengeWorkspaceButtons @actividad={{modelActividad}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}}/>
     </span>
   {{/unless}}
 {{/if}}
 
 {{#if mostrarDialogoFinDesafio}}
   <CongratulationsModal @onClose={{action "ocultarFinDesafio"}}/>
-{{/if}}
-
-{{#if mostrarDialogoReporteProblemas}}
-  <BugReportModal @onClose={{action "cerrarReporteProblemas"}}/>
 {{/if}}

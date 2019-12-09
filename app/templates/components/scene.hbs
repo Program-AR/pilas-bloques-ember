@@ -1,0 +1,18 @@
+<PaperCard class="exercise-card flex layout-column">
+    {{#unless shouldUseFloatingMode}}
+        <SceneButtons
+            @needShowStepByStepButtons={{needShowStepByStepButtons}}
+            @pausedOnBreackpoint={{pausedOnBreackpoint}}
+            @step={{step}}
+            @step-by-step-execution={{step-by-step-execution}}
+            @reset={{reset}}
+            @run={{run}}
+            @running={{running}}
+            @enableTurboMode={{enableTurboMode}}
+            @onToggle={{onToggle}}
+            @shouldUseFloatingMode={{shouldUseFloatingMode}}
+            @cargando={{cargando}}
+        />
+    {{/unless}}
+    <PilasCanvas class={{if shouldUseFloatingMode "canMove" ""}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
+</PaperCard>
