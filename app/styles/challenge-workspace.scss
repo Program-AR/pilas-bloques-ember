@@ -13,11 +13,8 @@
 
 .pilas-blockly-container {
   position: inherit;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
-  // height: calc(100vh - 88px);
-  // height: calc(100vh - 245px);
-  height: 100vh;
+  height: 73vh;
+  width: 100%; 
 }
 
 .pilas-blockly-container-collapsed {
@@ -25,7 +22,6 @@
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
   height: calc(100vh - 88px);
-  // height: 100vh;
 }
 
 #draggable {

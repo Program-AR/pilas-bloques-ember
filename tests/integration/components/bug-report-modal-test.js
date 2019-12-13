@@ -10,17 +10,11 @@ module('Integration | Component | bug-report-modal', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<BugReportModal />`);
+    this.set('closeModal', () => {});
+
+    await render(hbs`<BugReportModal @onClose={{action closeModal}} />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
-    // Template block usage:
-    await render(hbs`
-      <BugReportModal>
-        template block text
-      </BugReportModal>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

@@ -69,6 +69,11 @@
     padding-right: 7px;
 }
 
+.toggle-container-collapsed .md-button:not([disabled]):hover {
+    background-color:#2196f3;
+    cursor: pointer;
+}
+
 .toggle-container-collapsed .md-button {
     color:#fff;
     background-color:#4aa7f3;

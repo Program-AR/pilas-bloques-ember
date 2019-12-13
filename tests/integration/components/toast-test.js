@@ -10,17 +10,11 @@ module('Integration | Component | toast', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<Toast />`);
+    this.set('needShowTurboModeIndicator', true);
+
+    await render(hbs`<Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}} />`);
 
     assert.equal(this.element.textContent.trim(), '');
 
-    // Template block usage:
-    await render(hbs`
-      <Toast>
-        template block text
-      </Toast>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

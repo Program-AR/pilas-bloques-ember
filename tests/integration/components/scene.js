@@ -13,14 +13,5 @@ module('Integration | Component | scene', function(hooks) {
     await render(hbs`<Scene/>`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <Scene>
-        template block text
-      </Scene>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

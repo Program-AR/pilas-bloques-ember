@@ -21,5 +21,5 @@
             <Button @tooltip={{"Cerrar"}} @isIcon={{true}} @onClick={{hideScene}}>{{paper-icon "close"}}</Button>
         </div>
     {{/if}}
-    <PilasCanvas class={{if shouldUseFloatingMode "canMove" ""}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
+    <PilasCanvas class={{if shouldUseFloatingMode "canvas-boder-radius canMove" "canvas-boder-bottom-radius"}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
 </PaperCard>

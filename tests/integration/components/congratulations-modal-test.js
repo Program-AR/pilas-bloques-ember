@@ -10,17 +10,10 @@ module('Integration | Component | congratulations-modal', function(hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.set('myAction', function(val) { ... });
 
-    await render(hbs`<CongratulationsModal />`);
+    this.set('closeModal', () => {});
+
+    await render(hbs`<CongratulationsModal @onClose={{action closeModal}} />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <CongratulationsModal>
-        template block text
-      </CongratulationsModal>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

@@ -8,11 +8,9 @@ module('Integration | Component | spinner', function(hooks) {
 
   test('it renders', async function(assert) {
 
-    await render(hbs`{{spinner}}`);
-    assert.equal(this.element.querySelector(".spinner").className, 'spinner ', "Debe tener las clases normales del spinner");
+    await render(hbs`<Spinner />`);
 
-    await render(hbs`{{spinner centered=true}}`);
-    assert.equal(this.element.querySelector(".spinner").className, 'spinner spinner-centered', "Deaabe tener las clases normales del spinner");
+    assert.equal(this.element.textContent.trim(), '');
 
   });
 });

@@ -13,14 +13,5 @@ module('Integration | Component | fireworks', function(hooks) {
     await render(hbs`<Fireworks />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <Fireworks>
-        template block text
-      </Fireworks>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

@@ -51,15 +51,15 @@ export default Component.extend({
     hideScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display='none';
-      canvas.style.display='none';
+      elmnt.style.display = 'none';
+      canvas.style.display = 'none';
     },
 
     showScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display='block';
-      canvas.style.display='block';
+      elmnt.style.display = 'block';
+      canvas.style.display = 'block';
     },
 
     changeScreenMode() {
@@ -185,11 +185,11 @@ export default Component.extend({
 
     updateTurboMode(swapFirst = false) {
 
-      if(swapFirst) {
-        this.set("modoTuboHabilitado", !this.modoTuboHabilitado);
+      if (swapFirst) {
+        this.set("modoTuboHabilitado", !this.get("modoTuboHabilitado"));
       }
 
-      if (!this.modoTuboHabilitado) {
+      if (!this.get("modoTuboHabilitado")) {
         this.pilas.habilitarModoTurbo();
       }
 
@@ -197,8 +197,10 @@ export default Component.extend({
         this.pilas.deshabilitarModoTurbo();
       }
 
-      this.set("needShowTurboModeIndicator", true);
-    
+      if (!Ember.testing) {
+        this.set("needShowTurboModeIndicator", true);
+      }
+
     },
 
     ejecutar(pasoAPaso = false) {
