@@ -25,7 +25,7 @@ export default Component.extend({
   }),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
-    return this.ejecutando || this.terminoDeEjecutar;
+    return this.get('ejecutando') || this.get('terminoDeEjecutar');
   }),
 
   didInsertElement() {
@@ -183,7 +183,12 @@ export default Component.extend({
       Blockly.mainWorkspace.getAllBlocks()[0].unselect()
     },
 
-    updateTurboMode() {
+    updateTurboMode(swapFirst = false) {
+
+      if(swapFirst) {
+        this.set("modoTuboHabilitado", !this.modoTuboHabilitado);
+      }
+
       if (!this.modoTuboHabilitado) {
         this.pilas.habilitarModoTurbo();
       }
@@ -191,7 +196,9 @@ export default Component.extend({
       else {
         this.pilas.deshabilitarModoTurbo();
       }
-      this.set("needShowToast", true);
+
+      this.set("needShowTurboModeIndicator", true);
+    
     },
 
     ejecutar(pasoAPaso = false) {
@@ -201,6 +208,7 @@ export default Component.extend({
 
     step() {
       this.pilasBlockly.send('step');
+      this.send("showScene");
     },
 
     reiniciar() {

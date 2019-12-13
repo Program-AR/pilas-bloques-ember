@@ -31,6 +31,9 @@
     padding: 0px !important;
 }
 
-.tab .clue-button {
+.tab .clue-button md-icon[md-font-icon] {
+    line-height: 24px;
+    width: auto;
+    color: #ebca14;
     transform: rotate(180deg);
 }

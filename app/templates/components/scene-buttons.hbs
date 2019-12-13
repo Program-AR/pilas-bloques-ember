@@ -3,28 +3,34 @@
         {{#if needShowStepByStepButtons}}
             {{#if running}}
                 <div class="step-by-step-button-container">
-                    <Button @tooltip={{"Avanzar un paso"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @isDisabled={{not pausedOnBreackpoint}} @onClick={{action step}}>{{paper-icon "skip_next"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Avanzar un paso</span>{{/unless}}</Button>
+                    <Button @tooltip={{"Avanzar un paso"}} @isDisabled={{not isPausedOnBreackpoint}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @onClick={{step}}>{{paper-icon "skip_next"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Avanzar un paso</span>{{/unless}}</Button>
                 </div>
             {{else}}
                 <div class="step-by-step-button-container">
-                    <Button @tooltip={{"Ejecutar paso a paso la solución propuesta"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @onClick={{action step-by-step-execution}}>{{paper-icon "play_arrow"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Ejecutar paso a paso</span>{{/unless}}</Button>
+                    <Button @tooltip={{"Ejecutar paso a paso la solución propuesta"}} @isDisabled={{running}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @onClick={{step-by-step-execution}}>{{paper-icon "play_arrow"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Ejecutar paso a paso</span>{{/unless}}</Button>
                 </div>
             {{/if}}
         {{/if}}
         {{#if running}}
             <div class="restart-button-container">
-                <Button @tooltip={{"Reiniciar la ejecución"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @onClick={{action reset}}>{{paper-icon "refresh"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Reiniciar</span>{{/unless}}</Button>
+                <Button @tooltip={{"Reiniciar la ejecución"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @onClick={{reset}}>{{paper-icon "refresh"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Reiniciar</span>{{/unless}}</Button>
             </div>
         {{else}}
             <div class="run-button-container">
-                <Button @tooltip={{"Ejecutar la solución propuesta"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @element-id={{if shouldUseFloatingMode "run-button-collapsed" "run-button"}} @onClick={{action run}}>{{paper-icon "play_arrow"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Ejecutar</span>{{/unless}}</Button>
+                <Button @tooltip={{"Ejecutar la solución propuesta"}} @isRaised={{shouldUseFloatingMode}} @isFab={{shouldUseFloatingMode}} @isMini={{shouldUseFloatingMode}} @element-id={{if shouldUseFloatingMode "run-button-collapsed" "run-button"}} @onClick={{run}}>{{paper-icon "play_arrow"}}{{#unless shouldUseFloatingMode}}<span class="button-typography">Ejecutar</span>{{/unless}}</Button>
             </div>
         {{/if}}
         <span class="flex"></span>
-        <div class={{if shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}}>
-            <Toggle @element-id={{if shouldUseFloatingMode "modo-turbo-collapsed" "modo-turbo"}} @isDisabled={{running}} @isChecked={{enableTurboMode}} @tooltip={{"Modo Turbo"}} @onClick={{onToggle}}>
-                <i class="slider-icon fa fa-bolt"></i>
-            </Toggle>
-        </div>
+        {{#if shouldUseFloatingMode}}
+            <div class="toggle-container-collapsed">
+                <Button @element-id="modo-turbo-collapsed" @tooltip={{"Modo Turbo"}} @onClick={{swapTurboMode}} @isDisabled={{running}} @isRaised={{true}} @isFab={{true}} @isMini={{true}}><i class="fa fa-bolt"></i></Button>
+            </div>
+        {{else}}
+            <div class="toggle-container">
+                <Toggle @element-id="modo-turbo" @tooltip={{"Modo Turbo"}} @onToggle={{updateTurboMode}} @isDisabled={{running}} @isChecked={{isTurboModeEnabled}}>
+                    <i class="slider-icon fa fa-bolt"></i>
+                </Toggle>
+            </div>
+        {{/if}}
     </div>
 {{/unless}}

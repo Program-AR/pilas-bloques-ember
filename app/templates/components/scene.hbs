@@ -2,17 +2,24 @@
     {{#unless shouldUseFloatingMode}}
         <SceneButtons
             @needShowStepByStepButtons={{needShowStepByStepButtons}}
-            @pausedOnBreackpoint={{pausedOnBreackpoint}}
+            @isPausedOnBreackpoint={{isPausedOnBreackpoint}}
             @step={{step}}
             @step-by-step-execution={{step-by-step-execution}}
             @reset={{reset}}
             @run={{run}}
             @running={{running}}
-            @enableTurboMode={{enableTurboMode}}
-            @onToggle={{onToggle}}
+            @isTurboModeEnabled={{isTurboModeEnabled}}
+            @updateTurboMode={{updateTurboMode}}
             @shouldUseFloatingMode={{shouldUseFloatingMode}}
             @cargando={{cargando}}
+            @swapTurboMode={{swapTurboMode}}
         />
     {{/unless}}
+    {{#if shouldUseFloatingMode}}
+        <div class="pilas-canvas-scene-buttons flex layout-row">
+            <span class="flex"></span>
+            <Button @tooltip={{"Cerrar"}} @isIcon={{true}} @onClick={{hideScene}}>{{paper-icon "close"}}</Button>
+        </div>
+    {{/if}}
     <PilasCanvas class={{if shouldUseFloatingMode "canMove" ""}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
 </PaperCard>

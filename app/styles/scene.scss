@@ -30,3 +30,13 @@
     cursor: move;
 }
 
+.pilas-canvas-scene-buttons {
+    // position: inherit;
+}
+
+.pilas-canvas-scene-buttons .md-button {
+    width: 50px;
+    min-width: 50px;
+    margin: 0px!important;
+    padding: 0px !important;
+}
