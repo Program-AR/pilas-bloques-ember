@@ -25,7 +25,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
           throw e;
         }
       }
-      let tituloVisibleEnPantalla = $(".contenedor-panel-ayuda h4").text();
+      let tituloVisibleEnPantalla = $(".header-title").text();
       assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama efectivamente " + tituloEsperado);
     })
   }

@@ -13,15 +13,15 @@
 
 .pilas-blockly-container {
   position: inherit;
-  height: 73vh;
   width: 100%; 
+  height: calc(100vh - 245px);
 }
 
 .pilas-blockly-container-collapsed {
   position: inherit;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
-  height: calc(100vh - 88px);
+  height: calc(100vh - 82px);
 }
 
 #draggable {

@@ -66,8 +66,8 @@ export default Component.extend({
 
     /*
       Esta no es la forma correcta de arreglar esto.
-      Pero como pilas-blockly es hijo de exerciseWorkspace,
-      exerciseWorkspace no puede enviarle actions a pilas-blocky.
+      Pero como pilas-blockly es hijo de challengeWorkspace,
+      challengeWorkspace no puede enviarle actions a pilas-blocky.
       Esto es lo mas que puedo hacer para evitar un refactor
       gigante.
     */
@@ -354,6 +354,7 @@ export default Component.extend({
   },
 
   actions: {
+
     ejecutar(pasoAPaso = false) {
       this.pilas.reiniciarEscenaCompleta()
 
@@ -373,6 +374,7 @@ export default Component.extend({
 
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
+      
       this.set('ejecutando', true);
       this.exerciseWorkspace.set('ejecutando', true);
 

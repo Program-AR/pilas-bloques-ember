@@ -9,4 +9,13 @@
 
 .footer .md-button {
     font-size: 11px;
+    margin-top: 8px;
+}
+
+.footer .app-version {
+    padding-left: 15px;
+}
+
+.footer .app-version .version-number {
+    font-weight: bold !important;
 }

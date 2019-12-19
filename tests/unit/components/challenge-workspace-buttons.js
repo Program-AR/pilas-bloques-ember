@@ -8,11 +8,11 @@ let version
 let actividad = actividadMock.nombre
 let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlhYmxlcz48L3ZhcmlhYmxlcz48YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBpZD0idX4vczBQV1BEWkQ1aFEtLFFnPXQiIGRlbGV0YWJsZT0iZmFsc2UiIG1vdmFibGU9ImZhbHNlIiBlZGl0YWJsZT0iZmFsc2UiIHg9IjIyNyIgeT0iMTUiPjwvYmxvY2s+PC94bWw+"
 
-module('Unit | Components | exercise-workspace-buttons', function(hooks) {
+module('Unit | Components | challenge-workspace-buttons', function(hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function() {
-      ctrl = this.owner.factoryFor('component:exercise-workspace-buttons').create()
+      ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
       ctrl.set('actividad', actividadMock)
       ctrl.descargar = sinon.stub()
       version = ctrl.version()
@@ -31,8 +31,6 @@ module('Unit | Components | exercise-workspace-buttons', function(hooks) {
     ctrl.send("guardarSolucion")
     assert.ok(ctrl.descargar.calledWith(contenido, archivo, tipo))
   })
-
-
 
   let solucionCompleta = {
     version,

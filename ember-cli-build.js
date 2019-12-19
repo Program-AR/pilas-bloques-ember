@@ -17,7 +17,7 @@ module.exports = function (defaults) {
       ],
     },
     fingerprint: {
-      enabled: true,
+      enabled: false,
     },
     'ember-font-awesome': {
       useScss: true,

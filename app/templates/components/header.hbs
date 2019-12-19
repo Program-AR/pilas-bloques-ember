@@ -1,18 +1,14 @@
 <PaperToolbar class="header">
   <PaperToolbarTools>
-    {{#paper-button disabled=isDisabled raised=isRaised fab=isFab href=(href-to "index") bubbles=true}}<img class="pilas-bloques-logo" src='imagenes/logo.png'>{{/paper-button}}
-    {{#paper-button disabled=isDisabled raised=isRaised fab=isFab href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
-    {{#paper-button disabled=isDisabled raised=isRaised fab=isFab href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
+    {{#paper-button disabled=false raised=false fab=false href=(href-to "index") bubbles=true}}<img class="pilas-bloques-logo" src='imagenes/logo.png'>{{/paper-button}}
+    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
+    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
     <span class="flex"></span>
-    <a class="program-ar-logo " href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+    {{#if model.titulo}}
+    <div class="header-title">{{model.titulo}}</div>
+        <span class="flex"></span>
+        <span class="flex"></span>
+    {{/if}}
+    <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
   </PaperToolbarTools>
 </PaperToolbar>
-
-{{!-- <span class="flex"></span>
-    <div class="btn-group btn-breadcrumb">
-      <a href="#" class="btn btn-primary"><i class='fa fa-home'></i></a>
-      <a href="#" class="btn btn-primary">Desafios primer ciclo</a>
-      <a href="#" class="btn btn-primary">Programando en la computadora</a>
-      <div class="btn btn-info">Dieta a base de churrascos</div>
-    </div> 
---}}
