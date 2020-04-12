@@ -1,5 +1,6 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
+@import "disclaimer-principal.scss";
 @import "pilas-toggle.scss";
 @import "ember-blocky.scss";
 @import "modal.scss";
@@ -464,8 +465,8 @@ body,
 .box {
   font-size: 18px;
   box-shadow: 0 0 10px rgb(180, 180, 180);
-  margin: 30px;
-  padding: 20px;
+  margin: 10px;
+  padding: 10px;
   text-align: center;
 }
 
