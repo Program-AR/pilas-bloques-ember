@@ -62,7 +62,8 @@ watch_ejercicios:
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
 
-compilar: ./node_modules/ember-cli/bin/ember build
+compilar: 
+	./node_modules/ember-cli/bin/ember build
 
 compilar_web: ./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 
