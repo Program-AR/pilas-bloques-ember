@@ -32,7 +32,6 @@
   },
   "scripts": {
     "build": "ember build",
-    "postinstall": "bower install",
     "start": "ember server",
     "test": "ember test --serve"
   },
@@ -40,12 +39,13 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
+    "blockly-package": "Program-AR/blockly-package#v0-16",
+    "proceds-blockly": "Program-AR/proceds-blockly#npm-module",
     "pilas-bloques-exercises": "^1.1.1"
   },
   "devDependencies": {
     "@ember/jquery": "^0.6.1",
     "@ember/optional-features": "^0.7.0",
-    "bower": "^1.8.8",
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^3.0.2",
@@ -57,7 +57,7 @@
     "electron-rebuild": "^1.8.6",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.5.3",
-    "ember-blockly": "^0.2.4",
+    "ember-blockly": "Program-AR/ember-blockly#bower-removed-from-project",
     "ember-cli": "^3.13.1",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.12.0",

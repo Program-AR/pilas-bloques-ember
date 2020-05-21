@@ -19,7 +19,6 @@ sudo: false
 cache:
   directories:
   - node_modules
-  - bower_components
   - "$HOME/.npm"
   - "$HOME/.cache"
   - cache
@@ -33,7 +32,6 @@ before_script:
 before_install:
 - npm --version
 - npm config set spin false
-- npm install -g bower
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli

@@ -47,7 +47,6 @@ comandos:
 iniciar: 
 	@echo "${G}instalando dependencias ...${N}"
 	@npm install
-	@node_modules/bower/bin/bower install --allow-root
 
 compilar_ejercicios_pilas: # Para cuando se quiere probar los cambios a ejercicios_pilas SIN releasearlo
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
@@ -87,8 +86,7 @@ limpiar_todo:
 	@echo "Limpiando bibliotecas..."
 	@echo "(se reinstalarán a continuación)"
 	@sleep 1s;
-	@echo "Borrando node_modules, tmp y bower_components ..."
-	@rm -rf node_modules/ bower_components/ tmp/
+	@echo "Borrando node_modules y tmp..."
 	@sleep 1s;
 
 
@@ -102,7 +100,7 @@ _preparar_electron:
 	@cp package.json dist/package.json
 	@cp packaging/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=packaging/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.$(3)
 
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
