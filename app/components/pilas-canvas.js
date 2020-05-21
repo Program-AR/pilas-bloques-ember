@@ -2,7 +2,7 @@ import { scheduleOnce } from '@ember/runloop';
 import Component from '@ember/component';
 
 export default Component.extend({
-  classNames: ['pilas-canvas-container'],
+  classNames: ['pilas-canvas'],
   classNameBindings: ['media.isMobile:media-mobile'],
   iframeElement: null,
   escena: null,

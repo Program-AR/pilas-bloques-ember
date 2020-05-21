@@ -1,33 +1,29 @@
 <html>
 
-<style>
-  html {
-    overflow: hidden;
-  }
+  <style>
+    body {
+      margin:0px;
+      padding:0px;
+      min-height: 100%;
+    }
+    canvas {
+      width: 100%;
+      height: 100%;
+    }
+    
+  </style>
+  
+  <script>
+    window.webkitAudioContext = window.AudioContext;
+  </script>
 
-  canvas {
-    width: 100%;
-    height: auto;
-  }
+  <body>
+    <canvas id="canvas"></canvas>
+  </body>
 
-  body {
-    margin: 0px;
-    padding: 0px;
-  }
-</style>
-
-<script>
-  window.webkitAudioContext = window.AudioContext;
-</script>
-
-<body>
-  <canvas id="canvas"></canvas>
-</body>
-
-
-<head>
-  <script src="libs/pilasweb.js"></script>
-  <script src="libs/pilas-bloques-exercises.js"></script>
-</head>
+  <head>
+    <script src="libs/pilasweb.js"></script>
+    <script src="libs/pilas-bloques-exercises.js"></script>
+  </head>
 
 </html>

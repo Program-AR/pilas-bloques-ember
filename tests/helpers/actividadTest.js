@@ -132,9 +132,11 @@ export function actividadTest(nombre, opciones) {
             }
 
             setTimeout(() => {
+              // this should be turbo mode first an then run, but only works this way. I don't know why
+              jQuery('#run-button').click();
               jQuery('#modo-turbo').click();
-              jQuery('.btn-ejecutar').click();
-            }, 1000)
+            }, 1000);
+
           });
 
           /**
@@ -175,17 +177,17 @@ export function actividadTest(nombre, opciones) {
           });
 
           /**
-           * Se instancia el componente pilas-editor con los paneles que
+           * Se instancia el componente challenge-workspace con los paneles que
            * observará el usuario y una solución pre-cargada, tal y como se
            * hace dentro de la aplicación.
            */
 
           this.render(hbs`
-              {{pilas-editor
+              {{challenge-workspace
                 debug=false
                 pilas=pilas
                 model=model
-                showCode=true
+                showCode=false
                 onReady=onReady
                 codigo=solucion
                 codigoJavascript=""

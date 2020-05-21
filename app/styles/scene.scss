@@ -1,0 +1,41 @@
+.exercise-card {
+    position: inherit;
+    border-radius: 10px;
+    z-index: 99;
+}
+
+.exercise-buttons-card {
+    position: inherit;
+    border-radius: 10px;
+}
+
+// adds breackpoints to this.
+.pilas-canvas {
+    width: 420px;   
+    height: 480px;
+    overflow: hidden;
+}
+
+.canvas-boder-radius {
+    border-radius: 10px;
+}
+
+.canvas-boder-bottom-radius{
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.canMove {
+    cursor: move;
+}
+
+.pilas-canvas-scene-buttons {
+    // position: inherit;
+}
+
+.pilas-canvas-scene-buttons .md-button {
+    width: 50px;
+    min-width: 50px;
+    margin: 0px!important;
+    padding: 0px !important;
+}

@@ -1,110 +1,31 @@
-{{yield}}
-
-<div class="vbox">
-
-  <div class='pilas-blockly-botones'>
-
-    {{#if cargando}}
-      <p class="center"> cargando ... </p>
-    {{else}}
-
-      {{#if pasoAPasoHabilitado}}
-        {{#if ejecutando}}
-          {{#if pausadoEnBreakpoint}}
-            <button class='btn btn-default btn-info' {{action "step"}}><i class='fa fa-step-forward'></i> Avanzar un paso</button>
-          {{else}}
-            <button class='btn btn-default btn-info' disabled><i class='fa fa-step-forward'></i> Avanzar un paso</button>
-          {{/if}}
-        {{else}}
-          <button class='btn btn-success btn-info' {{action 'ejecutar' true}}><i class='fa fa-play'></i> Ejecutar paso a paso</button>
-        {{/if}}
-      {{/if}}
-
-
-      {{#if debeMostarReiniciar}}
-          <button class='btn btn-warning' {{action 'reiniciar'}}><i class='fa fa-refresh'></i> Reiniciar</button>
-      {{else}}
-          <button class='btn btn-success btn-ejecutar' {{action 'ejecutar'}}><i class='fa fa-play'></i> Ejecutar</button>
-      {{/if}}
-
-      {{#unless estoyEnMoodle}}
-
-        {{pilas-solution-file actividad=modelActividad workspace=initial_workspace xml=codigoActualEnFormatoXML}}
-        
-        <Pilas-Toggle @isDisabled={{this.ejecutando}} @isChecked={{this.modoTuboHabilitado}} @icon={{"fa fa-bolt"}} 
-        @tooltip={{"Modo Turbo"}} @element-id={{"modo-turbo"}} /> 
-
-        {{#if debeMostarRegresarAlLibro}}
-          {{#link-to "libros.verLibro" model.grupo.libro class='btn btn-default border-right right'}}<i class='fa fa-arrow-left'></i> Regresar al libro{{/link-to}}
-        {{/if}}
-
-        {{#if mostrarCompartir}}
-          <button class='btn btn-info border-right right' {{action "compartir"}}><i class='fa fa-twitter'></i> Compartir</button>
-        {{/if}}
-
-      {{/unless}}
-
-    {{/if}}
-
-  </div>
-
-
-  <div class="contenedor-para-componente-blocky">
-    {{#if cargando}}
-      {{pilas-cargando}}
-    {{else}}
-
-      {{ember-blockly
-        mediaFolder="blockly-package/media/"
-        blocks=blockly_toolbox
-        workspace=initial_workspace
-        withZoom=true
-        withTrash=true
-        comments=blockly_comments
-        disable=blockly_disable
-        duplicate=blockly_duplicate
-        help=false
-        disableBlock=false
-        javascriptCode=javascriptCode
-        showCode=showCode
-        comment=true
-        onChangeWorkspace=(action "onChangeWorkspace")
-        onNewWorkspace=(action "onNewWorkspace")
-        disableNotConnectedToMainBlock=true
-      }}
-
-    {{/if}}
-  </div>
-
-  <div id="preguntaPorProblemas" {{action 'abrirReporteProblemas'}}>{{fa-icon "question-circle"}} ¿Algún problema con este ejercicio? </div>
-
-</div>
-
-
-{{#if mostrarDialogoFinDesafio}}
-  {{#modal-dialog onClose=(action "ocultarFinDesafio")
-                  attatchment="middle center"
-                  translucentOverlay=true
-                  containerClass="dialogoFinDesafio"}}
-
-    {{modal-title title="¡Lo lograste!" close=(action "ocultarFinDesafio")}}
-    <div class="center">
-      <img src="imagenes/libros/primer-ciclo.png"/>
-      <img style="transform:scaleX(-1)" src="imagenes/libros/programar.png"/>
-    </div>
-    <p><strong>Para pensar...</strong> Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!</p>
-    {{!-- <p>Si tenés <strong>procedimientos</strong>, usalos para escribir tu <strong>estrategia</strong>. Si tenés patrones repetidos... ¡Usá <strong>repetición</strong>! Y si el escenario cambia... ¡Usá alternativas y repeticiones <strong>condicionales</strong>!</p>--}}
-    <p>¿Estás usando los conceptos bien?</p>  
-
-  {{/modal-dialog}}
+{{#if cargando}}
+  <Spinner @centered={{true}} />
+{{else}}
+  <EmberBlockly
+      @mediaFolder={{"blockly-package/media/"}}
+      @blocks={{blockly_toolbox}}
+      @workspace={{initial_workspace}}
+      @withZoom={{true}}
+      @withTrash={{true}}
+      @comments={{blockly_comments}}
+      @disable={{blockly_disable}}
+      @duplicate={{blockly_duplicate}}
+      @help={{false}}
+      @disableBlock={{false}}
+      @javascriptCode={{javascriptCode}}
+      @showCode={{showCode}}
+      @comment={{true}}
+      @onChangeWorkspace={{action "onChangeWorkspace"}}
+      @onNewWorkspace={{action "onNewWorkspace"}}
+      @disableNotConnectedToMainBlock={{true}}
+    />
+  {{#unless estoyEnMoodle}}
+    <span class="pilas-blockly-workspace-buttons">
+      <ChallengeWorkspaceButtons @actividad={{modelActividad}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}}/>
+    </span>
+  {{/unless}}
 {{/if}}
 
-{{#if mostrarDialogoReporteProblemas}}
-  {{#modal-dialog onClose=(action "cerrarReporteProblemas")
-                  targetAttachment="center"
-                  translucentOverlay=true
-                  containerClass="dialogoAjustado"}}
-    {{modal-title title="Reportar un problema" close=(action "cerrarReporteProblemas")}}
-    {{info-reportar-problema}}
-  {{/modal-dialog}}
+{{#if mostrarDialogoFinDesafio}}
+  <CongratulationsModal @onClose={{action "ocultarFinDesafio"}}/>
 {{/if}}

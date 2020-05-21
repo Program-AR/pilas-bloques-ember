@@ -10,7 +10,7 @@ export default [
     modoLecturaSimple: true, // modo de lectura para niños pequeños.
     desafiosCortos: true // significa que en un grupo/serie de desafíos, se deben hacer uno detrás del otro.
     // sirve particularmente para mostrar el título de la serie en el desafío.
-    // ver pilas-editor.hbs
+    // ver challenge-workspace.hbs
   },
   {
     id: 2,

@@ -1,0 +1,19 @@
+.content-spinner {
+    margin: auto;
+}
+  
+.spinner {
+    height: 38px;
+    width: 38px;
+    animation: rotate 0.6s infinite linear;
+    border: 3px solid #9C9C9C;
+    border-right-color: transparent;
+    border-radius: 50%;
+}
+  
+.spinner-centered {
+    position: absolute;
+    text-align: center;
+    left: 47%;
+    top: 40%;
+}

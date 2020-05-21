@@ -1,0 +1,16 @@
+.header {
+    border-bottom: 0.5px solid #777777
+}
+
+md-toolbar:not(.md-menu-toolbar) {
+    background-color: #f8f8f8 !important;
+    color: #777777;
+}
+
+md-toolbar:not(.md-menu-toolbar) .material-icons {
+    color: #777777 !important;
+}
+
+.pilas-bloques-logo {
+    padding-top: 12px;
+}

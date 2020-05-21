@@ -1,0 +1,92 @@
+<Header id="header-workspace" @model={{model}}/>
+
+<div class="flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+  
+  {{#unless shouldUseFloatingMode}}
+    <SceneDetails class="exercise-details" 
+      @model={{model}}
+      @cargando={{cargando}}
+    />
+  {{/unless}}
+  
+  <div class="flex layout-row">
+    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container-collapsed" "flex-grow pilas-blockly-container"}}>
+      <PilasBlockly
+        @guardar={{'guardar'}}
+        @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
+        @modoDocente={{modoDocente}}
+        @modoAlumno={{modoAlumno}}
+        @hash={{hash}}
+        @idAlumno={{idAlumno}}
+        @codigo={{codigo}}
+        @showCode={{showCode}}
+        @cargando={{cargando}}
+        @modelActividad={{model}}
+        @cuandoEjecuta={{cuandoEjecuta}}
+        @model={{model}}
+        @pasoAPasoHabilitado={{model.debugging}}
+        @persistirSolucionEnURL={{persistirSolucionEnURL}}
+        @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
+        @pilas={{pilas}}
+        @bloques={{model.bloques}}
+        @onChangeWorkspace={{onChangeWorkspace}}
+        @onTerminoEjecucion={{onTerminoEjecucion}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @changeScreenMode={{action "changeScreenMode"}}
+      />
+    </PaperCard>
+
+    <Scene class="flex-nogrow" id="draggable"
+      @cargando={{cargando}}
+      @escena={{model.escena}} 
+      @hideScene={{action "hideScene"}}
+      @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+      @isRunning={{ejecutando}}
+      @isTurboModeEnabled={{modoTuboHabilitado}}
+      @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
+      @onReady={{action "onReady"}}
+      @pilas={{pilas}}
+      @reset={{action 'reiniciar' false}}
+      @run={{action 'ejecutar' false}}
+      @running={{ejecutando}}
+      @shouldUseFloatingMode={{shouldUseFloatingMode}}
+      @step={{action 'step' true}}
+      @step-by-step-execution={{action 'ejecutar' true}}
+      @swapTurboMode={{action 'updateTurboMode' true}}
+      @updateTurboMode={{action 'updateTurboMode' false}}
+    />
+
+    {{#if shouldUseFloatingMode}}
+    <PaperCard class="exercise-buttons-card">
+      <SceneButtons
+        @cargando={{cargando}}
+        @isTurboModeEnabled={{modoTuboHabilitado}}
+        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
+        @updateTurboMode={{action 'updateTurboMode' false}}
+        @reset={{action 'reiniciar' false}}
+        @run={{action 'ejecutar' false}}
+        @running={{ejecutando}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @step={{action 'step' true}}
+        @step-by-step-execution={{action 'ejecutar' true}}
+        @swapTurboMode={{action 'updateTurboMode' true}}
+      />
+    </PaperCard>
+    {{/if}}
+
+  </div>
+
+  {{#unless shouldUseFloatingMode}}
+    <Footer @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
+  {{/unless}}
+
+  <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>
+    {{if modoTuboHabilitado "ACTIVADO" "DESACTIVADO"}}
+  </Toast>
+
+  {{#if showReportAProblemModel}}
+    <BugReportModal @onClose={{action (mut showReportAProblemModel) false}}/>
+  {{/if}}
+
+</div>

@@ -1,6 +1,8 @@
+<Header/>
+
 <div class="contenido-principal {{if model.modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
 
-  <DisclaimerPrincipal></DisclaimerPrincipal>
+ <DisclaimerPrincipal/>
 
   <h1>Desafíos del {{model.titulo}}</h1>
 
@@ -29,7 +31,7 @@
   {{/each}}
 
   {{#unless model.capitulos.isSettled}}
-    {{pilas-cargando}}
+    <Spinner @centered={{true}} />
   {{/unless}}
 
 </div>

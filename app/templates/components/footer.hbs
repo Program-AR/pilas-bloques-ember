@@ -1,0 +1,12 @@
+<PaperCard class="footer-card flex footer">
+  {{#if cargando}}
+    <Spinner/>
+  {{else}}
+    <div class="layout-row flex-grow">
+      <p class="app-version"><code>Versión:<span clas="version-number">{{app-version}}</span></code></p>
+      <span class="flex"></span>
+       <Button @onClick={{action openReportAProblemModel}}>{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">¿Algún problema con este ejercicio?</span></Button>
+      {{#paper-button href=(href-to "acercade") bubbles=true}}{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">Acerca de</span>{{/paper-button}}
+    </div>
+  {{/if}}
+</PaperCard>
