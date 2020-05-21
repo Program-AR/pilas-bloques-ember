@@ -8,7 +8,7 @@ export default Component.extend({
             fetch('https://api.github.com/repos/Program-AR/pilas-bloques/issues', {
                 method: 'POST',
                 headers: {
-                    'Authorization': 'token 417a27862c9bbb720a908a96554282bfae973f99'
+                    'Authorization': 'token githubFakeToken'
                 },
                 body: JSON.stringify({ title: this.get("title"), body: this.get("problem") + "\nEnviado por " + "<b>" + this.get("name") + "</b> (" + this.get("email") + ")" + " desde Pilas Bloques." })
             }).catch(function (err) {
