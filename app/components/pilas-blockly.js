@@ -380,8 +380,11 @@ export default Component.extend({
 
       this.ejecutarInterpreteHastaTerminar(interprete, pasoAPaso)
         .then(() => this.cuandoTerminaEjecucion())
-        .catch(err => new ErrorDeActividad(err));
-        // .catch(ErrorDeActividad, err => { /** Los errores de la actividad no deberían burbujear */ });
+        .catch(err => {
+          if (err instanceof ErrorDeActividad) {
+            /** Los errores de la actividad no deberían burbujear */
+          }
+        });
     },
 
     reiniciar() {
