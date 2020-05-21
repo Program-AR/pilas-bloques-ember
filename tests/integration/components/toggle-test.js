@@ -24,5 +24,5 @@ module('Integration | Component | toggle', function (hooks) {
   });
 
   let toggle = hbs`{{toggle isDisabled=disabled isChecked=checked}}`;
-  
+
 });

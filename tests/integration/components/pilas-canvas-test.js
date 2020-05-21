@@ -13,7 +13,7 @@ module('Integration | Component | pilas canvas', function (hooks) {
     this.set('pilas', this.owner.lookup('service:pilas'));
     this.set('cargando', true);
     this.set('escena', null);
-    this.set('onReady', () => {});
+    this.set('onReady', () => { });
 
     await render(hbs`<PilasCanvas @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />`);
 
