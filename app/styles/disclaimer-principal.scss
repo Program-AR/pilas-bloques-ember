@@ -1,0 +1,21 @@
+.jumbotron {
+    padding: 3px 3px;
+    margin-bottom: 10px;
+    color: inherit;
+    background-color: #fafafa;
+  }
+  
+  .jumbotron p {
+    font-size: 18px;
+    font-weight: 200;
+  }
+  
+  #phoneDisclaimers {
+    display: flex; 
+  }
+  
+  #phoneDisclaimers img {
+    height: 100%;
+    align-self: flex-end;
+    margin-left: 10px;
+  } 
