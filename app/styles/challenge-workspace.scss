@@ -14,7 +14,7 @@
 .pilas-blockly-container {
   position: inherit;
   width: 100%; 
-  height: calc(100vh - 245px);
+  min-height: calc(100vh - 245px); // calculate the height minus header and footer in px.
 }
 
 .pilas-blockly-container-collapsed {
