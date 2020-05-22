@@ -1,7 +1,7 @@
 'use strict';
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var mergeTrees = require('broccoli-merge-trees');
-var Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
