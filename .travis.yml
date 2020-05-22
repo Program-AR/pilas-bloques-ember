@@ -23,7 +23,7 @@ cache:
   - "$HOME/.cache"
   - cache
 install:
-- travis_wait make iniciar
+- npm install
 script:
 - node -v
 - make test_travis
