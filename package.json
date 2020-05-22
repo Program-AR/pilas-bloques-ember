@@ -33,13 +33,14 @@
   "scripts": {
     "build": "ember build",
     "start": "ember server",
-    "test": "ember test --serve"
+    "test": "ember test --serve",
+    "test:CI": "ember test"
   },
   "engines": {
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "blockly-package": "github:Program-AR/blockly-package#master",
+    "blockly-package": "github:Program-AR/blockly-package#v0-16",
     "pilas-bloques-exercises": "^1.1.1",
     "proceds-blockly": "github:Program-AR/proceds-blockly#npm-module"
   },

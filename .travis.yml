@@ -26,7 +26,7 @@ install:
 - npm install
 script:
 - node -v
-- make test_travis
+- npm run test:CI
 before_script:
 - export DISPLAY=:99.0
 before_install:
