@@ -1,4 +1,6 @@
+import Ember from 'ember';
 import Component from '@ember/component';
+
 let VERSION_DEL_FORMATO_DE_ARCHIVO = 2;
 
 export default Component.extend({
@@ -7,6 +9,7 @@ export default Component.extend({
   actividad: null,
   workspace: null,
   xml: null,
+  store: Ember.inject.service(),
   inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
 
   version() {
@@ -19,8 +22,7 @@ export default Component.extend({
       reader.onerror = (err) => reject(err);
       reader.onload = (event) => resolve(event.target.result);
       reader.readAsText(archivo);
-    })
-      .then((contenido) => this.cargarSolucion(contenido));
+    });
   },
 
   // Esto tengo que pasarlo a Promise nativo.
@@ -85,9 +87,11 @@ export default Component.extend({
     this.fileInput().addEventListener("change", (event) => {
       let archivo = event.target.files[0];
       if (archivo) {
-        this.leerSolucionWeb(archivo).catch(alert);
+        this.leerSolucionWeb(archivo)
+          .then(contenido => this.cargarSolucion(contenido))
+          .catch(alert);
       }
-      this.limpiarInput(); // Fuerza a que se pueda cargar dos o más veces el mismo archivo
+      this.limpiarInput(this.fileInput()); // Fuerza a que se pueda cargar dos o más veces el mismo archivo
       return false;
     });
   },
@@ -96,8 +100,8 @@ export default Component.extend({
     return this.element.querySelector("#cargarActividadInput");
   },
 
-  limpiarInput() {
-    this.fileInput().value = null;
+  limpiarInput(input) {
+    input.value = null;
   },
 
   actions: {
