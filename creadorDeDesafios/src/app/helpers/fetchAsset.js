@@ -1,0 +1,1 @@
+export default path => require(`../assets/${path}`)

@@ -1,0 +1,8 @@
+input.error {
+  border: 1px solid #EADAE4;
+}
+
+.error {
+  color:#db2269;
+  display: relative;
+}

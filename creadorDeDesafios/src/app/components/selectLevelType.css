@@ -1,0 +1,41 @@
+.image {
+    display: inline-block;
+
+    padding: 5px;
+    margin: 10px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+}
+
+.numberInput {
+    margin-left: 5px;
+    width:70px;
+    display: inline-block;
+    text-align: center;
+}
+
+.imageClicked {
+    display: inline-block;
+
+    padding: 5px;
+    margin: 10px;
+    border: 5px solid purple;
+    border-radius: 5px;
+}
+
+.image img, .imageClicked img ,.image span, .imageClicked span {
+    display: block;
+    width: 200px;
+    margin:auto;
+}
+
+.image span, .imageClicked img , .image figcaption, .imageClicked figcaption {
+    text-align: center;
+    margin-top: 8px;
+}
+
+.figContainer {
+    display: flex;
+    margin: auto;
+    width: 80%;
+}

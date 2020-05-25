@@ -1,0 +1,48 @@
+{
+  "name": "creador-de-desafios-pilasbloques",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "eject": "react-scripts eject",
+    "test": "react-scripts test --env=node"
+  },
+  "devDependencies": {
+    "react-scripts": "^3.0.0"
+  },
+  "dependencies": {
+    "blockly": "^2.20190722.1",
+    "lodash": "^4.17.14",
+    "react": "^16.8.6",
+    "react-beautiful-dnd": "^11.0.5",
+    "react-bootstrap": "^1.0.0-beta.11",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "react-scrollable-list": "^1.2.0",
+    "react-stepzilla": "^6.0.0",
+    "react-tooltip": "^3.11.1",
+    "styled-components": "^4.3.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "build": {
+    "appId": "nonExistentID",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  }
+}
