@@ -16,12 +16,6 @@ os:
 services:
 - xvfb
 sudo: false
-cache:
-  directories:
-  - node_modules
-  - "$HOME/.npm"
-  - "$HOME/.cache"
-  - cache
 install:
 - npm install
 script:
@@ -32,6 +26,10 @@ before_script:
 before_install:
 - npm --version
 - npm config set spin false
+- npm install -g grunt-cli
+- npm install -g node-gyp
+- npm install -g ember-cli
+- npm install -g surge
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
   fi
