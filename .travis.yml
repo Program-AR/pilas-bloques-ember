@@ -32,7 +32,6 @@ before_script:
 before_install:
 - npm --version
 - npm config set spin false
-- npm install -g surge
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
   fi
