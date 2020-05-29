@@ -1,10 +1,10 @@
 'use strict';
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
-var mergeTrees = require('broccoli-merge-trees');
-var Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
 
 module.exports = function (defaults) {
-  let app = new EmberApp(defaults, {
+  const app = new EmberApp(defaults, {
     // Add options here
     'ember-cli-babel': {
       includePolyfill: true
@@ -38,26 +38,46 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  app.import('bower_components/proceds-blockly/proceds-blockly-original.js');
-  app.import('bower_components/proceds-blockly/proceds-blockly.js');
   app.import('vendor/acorn_interpreter.js');
   app.import('vendor/beautify.js');
   app.import('vendor/utilidades_de_depuracion.js');
 
-  var pilasWeb = new Funnel('node_modules/pilasweb', {
+  const blocklyPackage = new Funnel('node_modules/blockly-package', {
+    srcDir: '/',
+    include: [
+      'blockly_compressed.js',
+      'blocks_compressed.js',
+      'es.js',
+      'javascript_compressed.js'
+    ],
+    destDir: '/assets/'
+  });
+
+  const blocklyMedia = new Funnel('node_modules/blockly-package', {
+    srcDir: '/media',
+    include: ['**'],
+    destDir: '/media/'
+  });
+
+  const procedsBlockly = new Funnel('node_modules/proceds-blockly', {
+    srcDir: '/',
+    include: ['proceds-blockly-original.js', 'proceds-blockly.js'],
+    destDir: '/assets/'
+  });
+
+  const pilasWeb = new Funnel('node_modules/pilasweb', {
     srcDir: '/dist',
     include: ['**'],
     destDir: '/libs/'
   });
 
-  var pilasBloquesExercises = new Funnel('node_modules/pilas-bloques-exercises', {
+  const pilasBloquesExercises = new Funnel('node_modules/pilas-bloques-exercises', {
     srcDir: '/dist',
     include: ['**'],
     destDir: '/libs/'
   });
 
-
-  return mergeTrees([app.toTree(), pilasWeb, pilasBloquesExercises], {
+  return mergeTrees([app.toTree(), blocklyPackage, blocklyMedia, procedsBlockly, pilasWeb, pilasBloquesExercises], {
     overwrite: true
   });
 

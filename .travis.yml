@@ -19,21 +19,19 @@ sudo: false
 cache:
   directories:
   - node_modules
-  - bower_components
   - "$HOME/.npm"
   - "$HOME/.cache"
   - cache
 install:
-- travis_wait make iniciar
+- npm install
 script:
 - node -v
-- make test_travis
+- npm run test:CI
 before_script:
 - export DISPLAY=:99.0
 before_install:
 - npm --version
 - npm config set spin false
-- npm install -g bower
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli

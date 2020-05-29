@@ -17,7 +17,6 @@ comandos:
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
-	@echo "    ${G}iniciar${N}         Instala dependencias."
 	@echo "    ${G}compilar${N}        Genera los archivos compilados."
 	@echo "    ${G}compilar_live${N}   Compila de forma contínua."
 	@echo "    ${G}compilar_web${N}    Genera la aplicación para la versión web (desde un iframe)."
@@ -25,8 +24,6 @@ comandos:
 	@echo ""
 	@echo "    ${L}El comando full es equivalente a realizar estos pasos en orden:${N}"
 	@echo "${L}"
-	@echo "       → iniciar → compilar_ejercicios_pilas"
-	@echo "${N}"
 	@echo ""
 	@echo "  ${Y}Para distribuir${N}"
 	@echo ""
@@ -44,26 +41,17 @@ comandos:
 	@echo ""
 
 
-iniciar: 
-	@echo "${G}instalando dependencias ...${N}"
-	@npm install
-	@node_modules/bower/bin/bower install --allow-root
-
 compilar_ejercicios_pilas: # Para cuando se quiere probar los cambios a ejercicios_pilas SIN releasearlo
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt
 	@cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/
 
-dist: compilar
-
-build: compilar
-
 watch_ejercicios: 
 	echo "${G}Compilando ejercicios para Pilas Bloques${N}"
 	@cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
 
-compilar: 
-	./node_modules/ember-cli/bin/ember build
+build: 
+	@npm run build
 
 compilar_web: ./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
 
@@ -83,17 +71,6 @@ version_minor:
 version_major:
 	./node_modules/ember-cli/bin/ember release --major
 
-limpiar_todo:
-	@echo "Limpiando bibliotecas..."
-	@echo "(se reinstalarán a continuación)"
-	@sleep 1s;
-	@echo "Borrando node_modules, tmp y bower_components ..."
-	@rm -rf node_modules/ bower_components/ tmp/
-	@sleep 1s;
-
-
-full: limpiar_todo iniciar
-
 empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
 
@@ -102,7 +79,7 @@ _preparar_electron:
 	@cp package.json dist/package.json
 	@cp packaging/electron.js dist
 
-empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --ignore=bower_components --out=binarios --overwrite --icon=packaging/icono.$(3)
+empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.$(3)
 
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
@@ -143,10 +120,4 @@ _empaquetar_flatpak_linux_64:
 	node_modules/.bin/electron-installer-flatpak --arch x64 --config=packaging/linux-package.json
 	mv binarios/io.atom.electron.${NOMBRE}_master_x64.flatpak binarios/${NOMBRE}-${VERSION}-x64.flatpak
 
-test_travis:
-	./node_modules/ember-cli/bin/ember test
-
-test:
-	./node_modules/ember-cli/bin/ember test --serve
-
-.PHONY: dist
+.PHONY: build

@@ -82,20 +82,18 @@ export default Component.extend({
   },
 
   didInsertElement() {
-    this.fileInput().change((event) => {
+    this.fileInput().addEventListener("change", (event) => {
       let archivo = event.target.files[0];
-
       if (archivo) {
         this.leerSolucionWeb(archivo).catch(alert);
       }
-
       this.limpiarInput(); // Fuerza a que se pueda cargar dos o más veces el mismo archivo
       return false;
     });
   },
 
   fileInput() {
-    return this.$("#cargarActividadInput");
+    return this.element.querySelector("#cargarActividadInput");
   },
 
   limpiarInput() {
