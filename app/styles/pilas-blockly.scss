@@ -14,23 +14,3 @@
     float:right;
     height: 100%;
 }
-
-.blocklyTrash {
-  opacity: 0.4 !important;
-}
-
-.blocklyScrollbarHandle {
-  fill: var(--theme-container-background-color);
-}
-
-.blocklyFlyout {
-  border-radius: 10px;
-  position: absolute;
-  z-index: 20;
-  backdrop-filter: blur(1.2px);
-}
-
-.blocklyFlyoutBackground {
-  fill: var(--theme-container-background-color);
-  fill-opacity: .8.5;
-}
