@@ -1,4 +1,6 @@
 .details-card {
+    background-color: var(--theme-background-color);
+    color: var(--theme-font-color);
     position: inherit;
     border-radius: 10px;
 }
@@ -19,8 +21,8 @@
 }
 
 .tab {
+    background-color: var(--theme-container-background-color);
     justify-content: space-evenly;
-    background-color: #f1f1f1;
     height: 80px;
 }
 
@@ -29,6 +31,10 @@
     min-width: 50px;
     margin: 0px!important;
     padding: 0px !important;
+}
+
+.tab md-icon[md-font-icon] {
+    color: var(--theme-font-color);
 }
 
 .tab .clue-button md-icon[md-font-icon] {

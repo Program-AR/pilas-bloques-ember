@@ -13,6 +13,7 @@
 @import "footer.scss";
 @import "header.scss";
 @import "modal.scss";
+@import "night-mode-toggle.scss";
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
 @import "ribbons.scss";
@@ -33,6 +34,24 @@
   -moz-user-select:none;
   -ms-user-select:none;
   user-select:none;
+}
+
+:root {
+  --theme-background-color:#f8f8f8;
+  --theme-font-color:#777777;
+  --theme-background-secondary-color:#f1f1f1;
+  --theme-container-background-color:#dfdbdb;
+  --theme-button-background-color:#f5f5f5;
+  --theme-button-hover-background-color:#dfdbdb;
+}
+
+[dark-theme=true] {
+  --theme-background-color:#202020;
+  --theme-font-color:#f8f8f8;
+  --theme-background-secondary-color:#181818;
+  --theme-container-background-color:#323232;
+  --theme-button-background-color:#323232;
+  --theme-button-hover-background-color:#585858;
 }
 
 .pointer {

@@ -1,5 +1,10 @@
+.app-footer {
+    background-color: var(--theme-background-secondary-color);
+}
+
 .footer {
-    background-color: #f8f8f8 !important;
+    background-color: var(--theme-background-color);
+    color: var(--theme-font-color);
 }
 
 .footer-card {
@@ -10,6 +15,10 @@
 .footer .md-button {
     font-size: 11px;
     margin-top: 8px;
+}
+
+.footer md-icon[md-font-icon] {
+    color: var(--theme-font-color);
 }
 
 .footer .app-version {

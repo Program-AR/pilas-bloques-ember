@@ -1,10 +1,12 @@
 .exercise-card {
+    background-color: var(--theme-background-color);
     position: inherit;
     border-radius: 10px;
     z-index: 99;
 }
 
 .exercise-buttons-card {
+    background-color: var(--theme-background-color);
     position: inherit;
     border-radius: 10px;
 }

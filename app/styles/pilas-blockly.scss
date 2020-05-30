@@ -3,14 +3,34 @@
     overflow: hidden;
     width: 100%;
     height: 100%;
-  }
+}
   
-  .ember-blockly-container > div {
-    top: 0px !important;
-    left: 0px !important;
-  }
+.ember-blockly-container > div {
+  top: 0px !important;
+  left: 0px !important;
+}
   
 .pilas-blockly-workspace-buttons {
     float:right;
     height: 100%;
+}
+
+.blocklyTrash {
+  opacity: 0.4 !important;
+}
+
+.blocklyScrollbarHandle {
+  fill: var(--theme-container-background-color);
+}
+
+.blocklyFlyout {
+  border-radius: 10px;
+  position: absolute;
+  z-index: 20;
+  backdrop-filter: blur(1.2px);
+}
+
+.blocklyFlyoutBackground {
+  fill: var(--theme-container-background-color);
+  fill-opacity: .8.5;
 }
