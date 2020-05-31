@@ -3,10 +3,8 @@
     {{#paper-button disabled=false raised=false fab=false href=(href-to "index") bubbles=true}}<img class="pilas-bloques-logo" src='imagenes/logo.png'>{{/paper-button}}
     {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
     {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
-    <div>
-        <a {{action 'importarProyecto'}}><i class='fa fa-upload'></i> Importar Desafío</a>
-        <input type='file' id="cargarProyectoInput" accept=".pb" class="hidden"/>
-    </div>
+    {{#paper-button disabled=false raised=false fab=false onClick=(action "importarProyecto") bubbles=true}}{{paper-icon "file-upload" class="menu-button-icon"}}<span class="menu-button-typography">Importar Desafío</span>{{/paper-button}}
+    <input type='file' id="cargarProyectoInput" accept=".pb" class="hidden"/>
     <span class="flex"></span>
     {{#if model.titulo}}
     <div class="header-title">{{model.titulo}}</div>

@@ -2,9 +2,9 @@ import {closedRangeFrom1} from "../utils/RangeUtils";
 import Position from "../components/createLevel/model/Position";
 import Character from "../components/createLevel/model/Character";
 import Element from "../components/createLevel/model/Element";
-//import pbBlocks from "../components/initialSolution/pilas-bloques-blocks";
-//import 'blockly/blocks';
-//import toolboxBuilder from "../components/initialSolution/pbToolboxBuilder";
+import pbBlocks from "../components/initialSolution/pilas-bloques-blocks";
+import 'blockly/blocks';
+import toolboxBuilder from "../components/initialSolution/pbToolboxBuilder";
 
 export default class PilasBloquesLevelEncoder {
   encode(levelToEncode) {
@@ -50,11 +50,11 @@ export default class PilasBloquesLevelEncoder {
 
       return encodedRows.join();
     };
-    //const categories = levelToEncode.categoriesPermitted;
-    //pbBlocks.make();
-    //const bloques = toolboxBuilder.bloquesPermitidos(pbBlocks.types(),categories).map(bloque => bloque.bloque);
+    const categories = levelToEncode.categoriesPermitted;
+    pbBlocks.make();
+    const bloques = toolboxBuilder.bloquesPermitidos(pbBlocks.types(),categories).map(bloque => bloque.bloque);
 
-    const bloques = levelToEncode.scene.blocks;
+    //const bloques = levelToEncode.scene.blocks;
 
     const encodedGrids = `"${encodeGrid(levelToEncode.grids[0])}"`;
 
