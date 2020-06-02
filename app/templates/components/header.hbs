@@ -1,14 +1,23 @@
 <PaperToolbar class="header">
   <PaperToolbarTools>
     {{#paper-button disabled=false raised=false fab=false href=(href-to "index") bubbles=true}}<img class="pilas-bloques-logo" src='imagenes/logo.png'>{{/paper-button}}
-    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
-    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
-    <span class="flex"></span>
-    {{#if model.titulo}}
-      <div class="header-title">{{model.titulo}}</div>
+    {{#unless model}}
+      {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
+      {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
+    {{/unless}}
       <span class="flex"></span>
-      <span class="flex"></span>
+    {{#if model}}
+      <Breadcrumb>
+        {{#breadcrumb-item href=(href-to "desafio" model.id)}}{{model.titulo}}{{/breadcrumb-item}}
+        {{#if model.grupo.titulo}}
+          {{#breadcrumb-item href=(href-to "libros.verLibro" model.grupo.capitulo.libro.id)}}{{model.grupo.titulo}}{{/breadcrumb-item}}
+        {{/if}}
+        {{#breadcrumb-item href=(href-to "libros.verLibro" model.grupo.capitulo.libro.id)}}{{model.grupo.capitulo.titulo}}{{/breadcrumb-item}}
+        {{#breadcrumb-item href=(href-to "libros.verLibro" model.grupo.capitulo.libro.id)}}{{model.grupo.capitulo.libro.titulo}}{{/breadcrumb-item}}
+        {{#breadcrumb-item href=(href-to "index") flat=true }}{{paper-icon "home"}}{{/breadcrumb-item}}
+      </Breadcrumb>
     {{/if}}
+    <span class="flex"></span>
     <NightModeToggle/>
   </PaperToolbarTools>
 </PaperToolbar>

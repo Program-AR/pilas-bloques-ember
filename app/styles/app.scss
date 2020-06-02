@@ -1,3 +1,4 @@
+@import "breadcrumb.scss";
 @import "bug-report-modal.scss";
 @import "button.scss";
 @import "challenge-workspace.scss";
@@ -44,6 +45,8 @@
   --theme-button-background-color:#f5f5f5;
   --theme-button-hover-background-color:#dfdbdb;
   --list-selection-hover-color:#beb8b8;
+  --breadcrumb-border-color:#cacaca;
+  --breadcrumb-hover-color:#c0c0c0;
 }
 
 [theme='dark'] {
@@ -55,6 +58,8 @@
   --theme-button-background-color:#323232;
   --theme-button-hover-background-color:#585858;
   --list-selection-hover-color:#585858;
+  --breadcrumb-border-color:#181818;
+  --breadcrumb-hover-color:#585858;
 }
 
 .ember-application {
