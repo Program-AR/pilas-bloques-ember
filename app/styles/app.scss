@@ -57,6 +57,10 @@
   --list-selection-hover-color:#585858;
 }
 
+.ember-application {
+  background-color: var(--theme-background-secondary-color);
+}
+
 .expand-full-width-height {
   position: relative;
   width: 100%;

@@ -2,13 +2,17 @@
     background-color: var(--theme-background-color);
     position: inherit;
     border-radius: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     z-index: 99;
 }
 
 .exercise-buttons-card {
     background-color: var(--theme-background-color);
     position: inherit;
+    margin-top: 10px;
     border-radius: 10px;
+    margin-bottom: 0px;
 }
 
 // adds breackpoints to this.
@@ -29,10 +33,6 @@
 
 .canMove {
     cursor: move;
-}
-
-.pilas-canvas-scene-buttons {
-    // position: inherit;
 }
 
 .pilas-canvas-scene-buttons .md-button {
