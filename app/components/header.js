@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import Component from '@ember/component';
+import ENV from 'pilasbloques/config/environment'
 
 export default Component.extend({
   tagName: 'div',
@@ -7,6 +8,7 @@ export default Component.extend({
   mostrarDialogoAyuda: false,
   store: Ember.inject.service(),
   router: Ember.inject.service(),
+  importarProyectoHabilitado: ENV.importarProyectoHabilitado,
 
   didInsertElement() {
     this.fileInputProyecto().change((event) => {

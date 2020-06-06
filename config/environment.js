@@ -12,6 +12,7 @@ module.exports = function(environment) {
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
+    importarProyectoHabilitado: false,
     
     EmberENV: {
       EXTEND_PROTOTYPES: {
