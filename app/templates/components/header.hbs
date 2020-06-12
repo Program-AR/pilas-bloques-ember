@@ -1,14 +1,18 @@
 <PaperToolbar class="header">
-  <PaperToolbarTools>
-    {{#paper-button disabled=false raised=false fab=false href=(href-to "index") bubbles=true}}<img class="pilas-bloques-logo" src='imagenes/logo.png'>{{/paper-button}}
-    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 1) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span>{{/paper-button}}
-    {{#paper-button disabled=false raised=false fab=false href=(href-to "libros.verLibro" 2) bubbles=true}}{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span>{{/paper-button}}
+    <PaperToolbarTools>
+    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "index"}}><img class="pilas-bloques-logo" src='imagenes/logo.png'></PaperButton>
+    <PaperButton @@disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span></PaperButton>
+    <PaperButton @@disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span></PaperButton>
     <span class="flex"></span>
     {{#if model.titulo}}
       <div class="header-title">{{model.titulo}}</div>
       <span class="flex"></span>
       <span class="flex"></span>
     {{/if}}
-    <NightModeToggle/>
+    <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+    <Menu @icon={{"menu"}} @offset="5 57">
+      <span class="menu-title">Modo Nocturno: </span>
+      <NightModeToggle/>
+    </Menu>
   </PaperToolbarTools>
 </PaperToolbar>

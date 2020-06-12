@@ -1,19 +1,22 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
     tagName: 'div',
     classNames: [],
 
-    didRender() {
-        if (localStorage.getItem('theme') === 'dark') {
-            this.set('nightTheme', true)
-            document.documentElement.setAttribute('theme', 'dark');
-        }
-        else {
-            this.set('nightTheme', false)
-            document.documentElement.setAttribute('theme', 'light');
-        }
-    },
+    // didRender() {
+    //     if (this.isNightTheme) {
+    //         document.documentElement.setAttribute('theme', 'dark');
+    //     }
+    //     else {
+    //         document.documentElement.setAttribute('theme', 'light');
+    //     }
+    // },
+
+    isNightTheme: computed('nightTheme', function () {
+        return localStorage.getItem('theme') === 'dark';
+    }),
 
     setLightTheme() {
         localStorage.setItem('theme', 'light');
@@ -25,7 +28,7 @@ export default Component.extend({
 
     actions: {
         toggleTheme() {
-            if (localStorage.getItem('theme') === 'dark') {
+            if (this.isNightTheme) {
                 this.setLightTheme();
             }
             else {
