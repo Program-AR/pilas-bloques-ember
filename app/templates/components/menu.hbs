@@ -1,0 +1,20 @@
+<PaperMenu @offset={{offset}} as |menu|>
+    <menu.trigger>
+        {{#if image}}
+        <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}}>
+            <img class="pilas-bloques-logo" src={{image}}>
+        </PaperButton>
+        {{else}}
+        <PaperButton class="md-menu-origin" @iconButton={{true}}>
+            {{#if icon}}
+                {{paper-icon icon}}
+            {{else}}
+                {{paper-icon "menu"}}
+            {{/if}}
+        </PaperButton>
+        {{/if}}
+    </menu.trigger>
+    <menu.content as |content|>
+        <content.menu-item><span class="menu-title">Modo Nocturno:</span> <NightModeToggle/></content.menu-item>
+    </menu.content>
+</PaperMenu>

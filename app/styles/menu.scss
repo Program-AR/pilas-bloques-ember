@@ -1,0 +1,15 @@
+.menu-title {
+    color: var(--theme-font-color);
+}
+
+md-menu-content {
+    background-color: var(--theme-menu-color);
+    color: var(--theme-font-color);
+}
+
+md-menu-item > * {
+    width: 100%;
+    margin: auto 0;
+    padding-left: 16px;
+    padding-right: 0px;
+}

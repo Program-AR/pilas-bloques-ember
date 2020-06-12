@@ -1,34 +1,7 @@
-.night-mode-slider .slider {
-  background-color: #f1dc54;
+.sun {
+  margin-left:-3px;
 }
 
-.night-mode-slider input:checked + .slider {
-  background-color: #2962ff;
+.moon {
+  margin-left:-1px;
 }
-
-.night-mode-slider-icon {
-  position: absolute;
-  padding-top: 6px;
-  padding-left: 6px;
-  height: 27  px;
-  width: 28px;
-  transition: .4s;
-}
-
-.light-mode-slider-icon {
-  position: absolute;
-  padding-top: 4px;
-  padding-left: 4px;
-  height: 30px;
-  width: 30px;
-  transition: .4s;
-}
-
-input:checked + .slider .night-mode-slider-icon {
-  transform: translateX(26px);
-}
-
-input:checked + .slider .light-mode-slider-icon {
-  transform: translateX(26px);
-}
-

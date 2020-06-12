@@ -1,5 +1,3 @@
-<div class="night-mode-slider">
-    <Toggle @element-id="night-mode-slider" @tooltip={{if nightTheme "Activar el modo Luminoso" "Activar el modo Nocturno"}} @isChecked={{nightTheme}} @onToggle={{action "toggleTheme"}}>
-        <img class={{if nightTheme "night-mode-slider-icon" "light-mode-slider-icon"}} src={{if nightTheme "https://i.ibb.co/FxzBYR9/night.png" "https://i.ibb.co/7JfqXxB/sunny.png"}} alt={{if nightTheme "Modo nocturno" "Modo luminoso"}}>
-    </Toggle>
-</div>
+<Toggle @element-id="night-mode-slider" @tooltip={{if isNightTheme "Activar el modo Luminoso" "Activar el modo Nocturno"}} @isChecked={{isNightTheme}} @onToggle={{action "toggleTheme"}}>
+    <i class={{if isNightTheme "slider-icon fa fa-moon-o moon" "slider-icon fa fa-sun-o sun"}}></i>
+</Toggle>
