@@ -14,7 +14,8 @@
 
 .footer .md-button {
     font-size: 11px;
-    margin-top: 8px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .footer md-icon[md-font-icon] {
@@ -23,8 +24,15 @@
 
 .footer .app-version {
     padding-left: 20px;
+    margin-bottom: 0px;
+    margin-top: 9px;
 }
 
 .footer .app-version .version-number {
     font-weight: bold !important;
+}
+
+.program-ar-logo {
+    padding-top: 5px;
+    padding-left: 15px;
 }
