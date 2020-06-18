@@ -1,0 +1,15 @@
+.workspace-buttons .md-button.md-fab.md-mini {
+    background-color: var(--theme-button-background-color);
+}
+
+.workspace-buttons .md-button.md-raised:not([disabled]) md-icon {
+    color: var(--theme-font-color);
+}
+
+.workspace-buttons .md-button.md-fab.md-mini:hover {
+    background-color: var(--theme-button-hover-background-color);
+}
+
+.workspace-buttons .md-button.md-fab.md-mini:focus {
+    background-color: var(--theme-button-hover-background-color);
+}

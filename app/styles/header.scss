@@ -1,16 +1,41 @@
+$header-height: 45px;
+
 .header {
-    border-bottom: 0.5px solid #777777
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 md-toolbar:not(.md-menu-toolbar) {
-    background-color: #f8f8f8 !important;
-    color: #777777;
+    background-color: var(--theme-background-color);
+    color: var(--theme-font-color);
+    min-height:$header-height !important;
+    height: $header-height !important;
+}
+
+.md-toolbar-tools {
+    height: $header-height;
+    max-height: $header-height;
 }
 
 md-toolbar:not(.md-menu-toolbar) .material-icons {
-    color: #777777 !important;
+    color: var(--theme-font-color);
 }
 
 .pilas-bloques-logo {
     padding-top: 12px;
+}
+
+.program-ar-logo {
+    padding-top: 5px;
+}
+
+md-menu-content {
+    background-color: var(--theme-menu-color);
+    color: var(--theme-font-color);
+}
+
+md-menu-item > * {
+    width: 100%;
+    margin: auto 0;
+    padding-left: 16px;
+    padding-right: 0px;
 }

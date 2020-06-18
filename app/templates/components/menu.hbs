@@ -1,0 +1,8 @@
+<PaperMenu @offset={{offset}} as |menu|>
+    <menu.trigger>
+        <PaperButton class="md-menu-origin" @iconButton={{true}}>{{paper-icon icon}}</PaperButton>
+    </menu.trigger>
+    <menu.content as |content|>
+        <content.menu-item>{{yield}}</content.menu-item>
+    </menu.content>
+</PaperMenu>

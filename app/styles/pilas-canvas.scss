@@ -1,153 +1,81 @@
 .iframe-container-collapsed {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
+  @extend .expand-full-width-height;
+  z-index: -10;
 }
 
 .iframe-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 22;
+  @extend .expand-full-width-height;
+  z-index: 22;
 }
 
 .iframe-container iframe {
-    position: relative;
-    border: 0;
-    width: 100%;
-    height: 100%;
+  @extend .expand-full-width-height;
+  border: 0;
 }
 
 .iframe-container-collapsed iframe {
-    position: relative;
-    border: 0;
-    width: 100%;
-    height: 100%;
+  @extend .expand-full-width-height;
+  border: 0;
 }
 
-pre {
-    border: 1px solid gray;
-    padding: 10px;
-  }
+.blocklyTrash {
+  opacity: 0.4 !important;
+}
   
-  .yellow {
-    background-color: green;
-    color: white;
-  }
+.blocklyScrollbarHandle {
+  fill: var(--theme-container-background-color);
+}
   
-  .red {
-    background-color: red;
-  }
+.blocklyFlyout {
+  border-radius: 10px;
+  position: absolute;
+  z-index: 20;
+  backdrop-filter: blur(1.2px);
+}
   
-  .blue {
-    background-color: blue;
-    color: white;
-  }
+.blocklyFlyoutBackground {
+  fill: var(--theme-container-background-color);
+  fill-opacity: .8.5;
+}
   
-  table {
-    border: 1px solid black;
-    margin-top: 1em;
-  }
+.blocklyToolboxDiv {
+  background-color: var(--theme-container-background-color);
+  border-radius: 10px;
+  color: var(--theme-font-color);
+  position: absolute;
+  overflow-x: visible;
+  overflow-y: auto;
+  z-index: 20;
+}
   
-  table th {
-    text-align: left;
-    padding: 10px;
-    border: 1px solid #bbb;
-  }
+.blocklyFlyoutScrollbar {
+  z-index: 20;
+}
   
-  table td {
-    border: 1px solid #bbb;
-    padding: 10px;
-  }
+.blocklyMainBackground {
+  @extend .expand-full-width-height;
+  stroke-width: 0;
+}
   
-  .list {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    width: 200px;
-    border: 1px solid gray;
-  }
-  
-  .list li {
-    cursor: pointer;
-    margin: 4px;
-  }
-  
-  .list li:hover {
-    background-color: yellow;
-  }
-  
-  .code-preview {
-    position: absolute;
-    left: 350px;
-    height: 135px;
-    border: 0;
-    padding: 0;
-    margin: 0;
-    right: 20px;
-  
-  }
-  
-  .code-preview span {
-    color: rgba(0, 0, 255, 0.43)
-  }
-  
-  .core-preview-in-blockly {
-    overflow: auto;
-    z-index: 8;
-    position: absolute;;
-    background-color: rgba(175, 175, 175, 0.14);
-    border: 1px solid rgba(128, 128, 128, 0.1);
-    margin-left: 50%;
-    width: 400px;
-    height: 300px;
-    margin-top: 10px;
-    margin-right: 20px;
-    opacity: 0.8;
-    right: 10px;
-    font-size: x-small;
-  }
-  
-  .ember-blockly-list {
-    height: 300px;
-    overflow: scroll;
-    border: 1px solid gray;
-    margin-top: 5px;
-  }
-  
-  .ember-blockly-list-item {
-    border: 1px solid #eee;
-    padding: 2px;
-    padding-left: 5px;
-    margin: 2px;
-    cursor: pointer;
-  }
-  
-  .ember-blockly-list-item.selected {
-    background-color: #d6e8ff;
-    border: 1px solid #a3b1c3;
-  }
-  
-  .blocklyToolboxDiv {
-    background-color: #ddd;
-    overflow-x: visible;
-    overflow-y: auto;
-    position: absolute;
-    z-index: 20;
-    -webkit-tap-highlight-color: transparent;
-  }
-  
-  .blocklyFlyoutScrollbar {
-    z-index: 20;
-  }
-  
-  .blocklyMainBackground {
-    stroke-width: 0;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .blocklySvg {
-    background-color:transparent;
-  }
+.blocklySvg {
+  background-color:transparent;
+}
+
+.blocklyTreeRow{
+  border-radius: 8px !important;
+  height: 22px !important;
+  margin-bottom: 3px !important;
+  line-height: 22px !important;
+  padding-right: 10px !important;
+}
+
+.blocklyTreeRow:hover {
+  @extend .blocklyTreeRow;
+  background-color: var(--theme-list-selection-hover-color) !important;
+
+}
+
+.blocklyTreeSelected, .blocklyTreeSelected:hover {
+  @extend .blocklyTreeRow;
+  background-color: rgb(85, 119, 238) !important;
+}

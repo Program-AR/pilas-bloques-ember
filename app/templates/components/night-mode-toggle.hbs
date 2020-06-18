@@ -1,0 +1,3 @@
+<Toggle @element-id="night-mode-slider" @tooltip={{if isNightTheme "Activar el modo Luminoso" "Activar el modo Nocturno"}} @isChecked={{isNightTheme}} @onToggle={{action "toggleTheme"}}>
+    <i class={{if isNightTheme "slider-icon fa fa-moon-o moon" "slider-icon fa fa-sun-o sun"}}></i>
+</Toggle>

@@ -1,6 +1,6 @@
 <Header id="header-workspace" @model={{model}}/>
 
-<div class="flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+<div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
   {{#unless shouldUseFloatingMode}}
     <SceneDetails class="exercise-details" 
@@ -78,7 +78,7 @@
   </div>
 
   {{#unless shouldUseFloatingMode}}
-    <Footer @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
+    <Footer class="app-footer" @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
   {{/unless}}
 
   <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>
