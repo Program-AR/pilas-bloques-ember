@@ -46,10 +46,12 @@
   --theme-button-background-color:#f5f5f5;
   --theme-button-hover-background-color:#dfdbdb;
   --theme-menu-color:#f8f8f8;
-  --list-selection-hover-color:#beb8b8;
   --breadcrumb-border-color:#cacaca;
   --breadcrumb-hover-color:#c0c0c0;
   --breadcrumb-selected-color:rgb(242, 220, 25);
+  --theme-tab-icon-color:#777777;
+  --theme-tab-icon-disabled-color:#beb8b8;
+  --theme-list-selection-hover-color:#beb8b8;
 }
 
 [theme='dark'] {
@@ -61,10 +63,12 @@
   --theme-button-background-color:#323232;
   --theme-button-hover-background-color:#585858;
   --theme-menu-color:#202020;
-  --list-selection-hover-color:#585858;
   --breadcrumb-border-color:#181818;
   --breadcrumb-hover-color:#585858;
   --breadcrumb-selected-color:#808080;
+  --theme-tab-icon-color:#f8f8f8;
+  --theme-tab-icon-disabled-color:#585858;
+  --theme-list-selection-hover-color:#585858;
 }
 
 .ember-application {

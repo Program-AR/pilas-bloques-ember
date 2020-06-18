@@ -34,18 +34,19 @@
 }
 
 .tab md-icon[md-font-icon] {
-    color: var(--theme-font-color);
+    color: var(--theme-tab-icon-color);
 }
 
 .tab .clue-button md-icon[md-font-icon] {
-    line-height: 24px;
-    width: auto;
     color: #ebca14;
+    line-height: 24px;
     transform: rotate(180deg);
+    width: auto;
 }
 
 .tab .no-clue-button md-icon[md-font-icon] {
+    color: var(--theme-tab-icon-disabled-color);
     line-height: 24px;
-    width: auto;
     transform: rotate(180deg);
+    width: auto;
 }
