@@ -25,8 +25,8 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
           throw e;
         }
       }
-      let tituloVisibleEnPantalla = $(".header-title").text();
-      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama efectivamente " + tituloEsperado);
+      const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
+      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloEsperado + " y no " + tituloEsperado);
     })
   }
 
