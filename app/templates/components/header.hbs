@@ -1,23 +1,26 @@
 <PaperToolbar class="header">
     <PaperToolbarTools>
-      <Menu @image="imagenes/logo.png" @offset="5 57"/>
-      {{#unless model}}  
-        <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Primer Ciclo</span></PaperButton>
-        <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Segundo Ciclo</span></PaperButton>
-      {{/unless}}
-      {{#if model}}
-        <span class="flex"></span>
-        <Breadcrumb>
-          <BreadcrumbItem @selected={{true}} @href={{href-to "desafio" model.id}}>{{model.titulo}}</BreadcrumbItem>
-          {{#if model.grupo.titulo}}
-            <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.titulo}}</BreadcrumbItem>
-          {{/if}}
-            <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.titulo}}</BreadcrumbItem>
-            <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.libro.titulo}}</BreadcrumbItem>
-            <BreadcrumbInitialItem @href={{href-to "index"}}>{{paper-icon "home"}}</BreadcrumbInitialItem>
-        </Breadcrumb>
-      {{/if}}
+    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "index"}}><img class="pilas-bloques-logo" src='imagenes/logo.png'></PaperButton>
+    {{#unless model}} 
+      <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Primer Ciclo</span></PaperButton>
+      <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Segundo Ciclo</span></PaperButton>
+    {{/unless}}
+    {{#if model}}
       <span class="flex"></span>
-      <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+      <Breadcrumb>
+        <BreadcrumbItem @selected={{true}} @href={{href-to "desafio" model.id}}>{{model.titulo}}</BreadcrumbItem>
+        {{#if model.grupo.titulo}}
+          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.titulo}}</BreadcrumbItem>
+        {{/if}}
+          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.titulo}}</BreadcrumbItem>
+          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.libro.titulo}}</BreadcrumbItem>
+          <BreadcrumbInitialItem @href={{href-to "index"}}>{{paper-icon "home"}}</BreadcrumbInitialItem>
+      </Breadcrumb>
+    {{/if}}
+    <span class="flex"></span>
+    <Menu @icon={{"settings"}} @offset="5 57">
+      <span class="menu-title">Modo Nocturno: </span>
+      <NightModeToggle/>
+    </Menu>
   </PaperToolbarTools>
 </PaperToolbar>
