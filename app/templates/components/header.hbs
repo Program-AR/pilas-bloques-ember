@@ -9,17 +9,17 @@
       {{#if (media 'isMobile')}}
       <PaperMenu @offset="5 57" as |menu|>
         <menu.trigger>
-          <PaperButton class="md-menu-origin" @iconButton={{true}}>
+          <PaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "requestMenuFocus" "navigation-menu"}}>
             {{paper-icon "menu"}}
           </PaperButton>
         </menu.trigger>
         <menu.content as |content|>
-          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.libro.titulo}}</span></PaperButton></span></content.menu-item>
-          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.titulo}}</span></PaperButton></span></content.menu-item>
+          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.libro.titulo}}</span></PaperButton></content.menu-item>
+          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.titulo}}</span></PaperButton></content.menu-item>
           {{#if model.grupo.titulo}}
-            <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.titulo}}</span></PaperButton></span></content.menu-item>
+            <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.titulo}}</span></PaperButton></content.menu-item>
           {{/if}}
-          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "desafio" model.id}}><span class="menu-item-typography">{{model.titulo}}</span></PaperButton></span></content.menu-item>
+          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "desafio" model.id}}><span class="menu-item-typography">{{model.titulo}}</span></PaperButton></content.menu-item>
         </menu.content>
       </PaperMenu>
       {{else}}
@@ -38,7 +38,7 @@
     <span class="flex"></span>
     <PaperMenu @offset="5 57" as |menu|>
       <menu.trigger>
-        <PaperButton class="md-menu-origin" @iconButton={{true}}>
+        <PaperButton id="settings-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "requestMenuFocus" "settings-menu"}}>
           {{paper-icon "settings"}}
         </PaperButton>
       </menu.trigger>

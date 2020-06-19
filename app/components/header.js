@@ -13,4 +13,13 @@ export default Component.extend({
     }
   },
 
+  actions: {
+
+    // The reason for using this action is this currently open bug: https://github.com/miguelcobain/ember-paper/issues/1151.
+    requestMenuFocus(id) {
+      document.getElementById(id).focus();
+    }
+
+  }
+
 });
