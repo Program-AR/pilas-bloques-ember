@@ -3,7 +3,6 @@ $breadcrumb-size: 30px;
 .breadcrumb {
   display: flex;
   flex-direction: row-reverse;
-  flex-wrap: wrap;
   margin: 0px;
   margin-top: -2px;
   list-style:none;
@@ -11,7 +10,6 @@ $breadcrumb-size: 30px;
 
 .breadcrumb  li {
   float: left;
-  transition:all .2s;
 }
 
 .breadcrumb li a {
@@ -25,6 +23,30 @@ $breadcrumb-size: 30px;
   padding-left: $breadcrumb-size + 2;
   padding-right: $breadcrumb-size / 2;
   text-decoration: none;
+  white-space: nowrap;
+  display: block;
+  overflow: hidden;
+  max-width: none;
+  text-overflow: ellipsis;
+  transition:all .4s;
+}
+
+@media (max-width: 1000px) {
+  .breadcrumb li a {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 900px) {
+  .breadcrumb li a {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 850px) {
+  .breadcrumb li a {
+    max-width: 100px;
+  }
 }
 
 .breadcrumb li a:hover {
@@ -32,19 +54,21 @@ $breadcrumb-size: 30px;
 }
 
 .breadcrumb .breadcrumb-initial-item a {
-  padding: 5px;
-  padding-left: 2.5px;
-  padding-right: 2.5px;
+  padding-top: 0px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-bottom: 4px;
+}
+
+.breadcrumb .breadcrumb-initial-item a .material-icons {
+  padding: 1.5px;
 }
 
 .breadcrumb .breadcrumb-selected-item a {
   background-color: var(--breadcrumb-selected-color);
+  max-width:none;
 }
 
 .breadcrumb .breadcrumb-selected-item a:hover {
   background-color: var(--breadcrumb-selected-color);
-}
-
-.breadcrumb .breadcrumb-initial-item a .material-icons {
-  margin-top: -3px;
 }

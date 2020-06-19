@@ -12,9 +12,9 @@
 @import "font-awesome.scss";
 @import "footer.scss";
 @import "header.scss";
+@import "menu.scss";
 @import "modal.scss";
 @import "night-mode-toggle.scss";
-@import "menu.scss";
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
 @import "ribbons.scss";
@@ -48,7 +48,7 @@
   --theme-menu-color:#f8f8f8;
   --breadcrumb-border-color:#cacaca;
   --breadcrumb-hover-color:#c0c0c0;
-  --breadcrumb-selected-color:rgb(242, 220, 25);
+  --breadcrumb-selected-color:rgb(247, 227, 55);
   --theme-tab-icon-color:#777777;
   --theme-tab-icon-disabled-color:#beb8b8;
   --theme-list-selection-hover-color:#beb8b8;
@@ -152,7 +152,6 @@ span.url {
   text-align: center;
   left: 0;
   right: 0;
-  z-index: 200;
   background-color: rgba(247, 247, 247, 0.72);
   border-top: 1px solid gray;
 }
@@ -185,14 +184,6 @@ span.url {
 
 .etiqueta {
   width: 100px !important;
-}
-
-.modal-backdrop {
-  z-index: 5000;
-}
-
-.modal {
-  z-index: 20000;
 }
 
 .fila-opcion {
@@ -434,42 +425,6 @@ table {
 
 .hidden {
   display: none;
-}
-
-.pilas-notificador {
-  position: fixed;
-  background-color: #ffffd3;
-  z-index: 2000;
-  border-top: 0;
-  padding: 5px;
-  left: 50%;
-  right: 50%;
-  width: 400px;
-  margin-left: -200px;
-  box-shadow: 0 0 10px;
-  border-radius: 7px;
-  padding-top: 15px;
-  top: -8px;
-  transition: top 0.3s;
-}
-
-.pilas-notificador p {
-  font-size: 16px;
-  text-align: center;
-}
-
-.pilas-notificador-cerrar {
-  position: absolute;
-  right: 10px;
-  color: gray;
-}
-
-.pilas-notificador-visible {
-  top: -8px;
-}
-
-.pilas-notificador-oculto {
-  top: -100px;
 }
 
 a:hover {

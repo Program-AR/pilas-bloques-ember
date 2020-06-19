@@ -5,19 +5,46 @@
       <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Primer Ciclo</span></PaperButton>
       <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Segundo Ciclo</span></PaperButton>
     {{/unless}}
-    <span class="flex"></span>
     {{#if model}}
-      <Breadcrumb>
-        <BreadcrumbItem class="challenge-title" @selected={{true}} @href={{href-to "desafio" model.id}}>{{model.titulo}}</BreadcrumbItem>
-        {{#if model.grupo.titulo}}
-          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.titulo}}</BreadcrumbItem>
-        {{/if}}
-        <BreadcrumbItem>{{model.grupo.capitulo.titulo}}</BreadcrumbItem>
-        <BreadcrumbItem>{{model.grupo.capitulo.libro.titulo}}</BreadcrumbItem>
-        <BreadcrumbInitialItem @href={{"#"}}>{{paper-icon "home"}}</BreadcrumbInitialItem>
-      </Breadcrumb>
+      {{#if (media 'isMobile')}}
+      <PaperMenu @offset="5 57" as |menu|>
+        <menu.trigger>
+          <PaperButton class="md-menu-origin" @iconButton={{true}}>
+            {{paper-icon "menu"}}
+          </PaperButton>
+        </menu.trigger>
+        <menu.content as |content|>
+          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.libro.titulo}}</span></PaperButton></span></content.menu-item>
+          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.titulo}}</span></PaperButton></span></content.menu-item>
+          {{#if model.grupo.titulo}}
+            <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.titulo}}</span></PaperButton></span></content.menu-item>
+          {{/if}}
+          <content.menu-item><span><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "desafio" model.id}}><span class="menu-item-typography">{{model.titulo}}</span></PaperButton></span></content.menu-item>
+        </menu.content>
+      </PaperMenu>
+      {{else}}
+        <span class="flex"></span>
+        <Breadcrumb>
+          <BreadcrumbItem class="challenge-title" @selected={{true}} @href={{href-to "desafio" model.id}}>{{model.titulo}}</BreadcrumbItem>
+          {{#if model.grupo.titulo}}
+            <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.titulo}}</BreadcrumbItem>
+          {{/if}}
+          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.titulo}}</BreadcrumbItem>
+          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.libro.titulo}}</BreadcrumbItem>
+          <BreadcrumbInitialItem @href={{"#"}}>{{paper-icon "home"}}</BreadcrumbInitialItem>
+        </Breadcrumb>
+      {{/if}}
     {{/if}}
     <span class="flex"></span>
-    <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+    <PaperMenu @offset="5 57" as |menu|>
+      <menu.trigger>
+        <PaperButton class="md-menu-origin" @iconButton={{true}}>
+          {{paper-icon "settings"}}
+        </PaperButton>
+      </menu.trigger>
+      <menu.content as |content|>
+        <content.menu-item><span class="menu-item-typography">Modo Nocturno: </span> <NightModeToggle/></content.menu-item>
+      </menu.content>
+    </PaperMenu>
   </PaperToolbarTools>
 </PaperToolbar>
