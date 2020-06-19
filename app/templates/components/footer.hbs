@@ -3,7 +3,9 @@
     <Spinner/>
   {{else}}
     <div class="layout-row flex-grow">
-      <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+      {{#if (media 'isDesktop')}}
+        <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
+      {{/if}}
       <p class="app-version"><code>Versión:<span clas="version-number">{{app-version}}</span></code></p>
       <span class="flex"></span>
       <PaperButton @onClick={{action openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}}>{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">¿Algún problema con este ejercicio?</span></PaperButton>
