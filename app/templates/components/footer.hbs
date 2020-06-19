@@ -3,7 +3,7 @@
     <Spinner/>
   {{else}}
     <div class="layout-row flex-grow">
-      {{#if (media 'isDesktop')}}
+      {{#if (or (media 'isDesktop') (media 'isJumbo'))}}
         <a class="program-ar-logo" href="http://program.ar"><img src='imagenes/programar-short.png'></a>
       {{/if}}
       <p class="app-version"><code>Versión:<span clas="version-number">{{app-version}}</span></code></p>
