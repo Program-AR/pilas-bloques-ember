@@ -1,10 +1,11 @@
 import { run } from '@ember/runloop';
-import hbs from 'htmlbars-inline-precompile';
-import { module, test, skip } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
+import { module, skip, test } from 'qunit';
+import simulateRouterHooks from "./simulate-router.hooks";
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
@@ -105,19 +106,17 @@ export function actividadTest(nombre, opciones) {
 
       run(async () => {
 
+        // Simulate the model hook from router.
+        simulateRouterHooks(store);
+
         /** 
-         * Simulate the model hook from router.
-         * 
-         * TODO: replace the findAll("desafio") and findBy('nombre', nombre)
-         * function by a more specific ember-data query, like findRecord which 
+         * TODO: replace the findAll and findBy functions by a
+         * more specific ember-data query, like findRecord which 
          * fetchs only one record.
          * 
          * (This only exist because mirage must be need fixed before).
          */
         const model = (await store.findAll("desafio")).findBy('nombre', nombre);
-        await store.findAll("libro");
-        await store.findAll("capitulo");
-        await store.findAll("grupo");
 
         if (!model) {
           throw new Error(`No existe una actividad con el nombre ${nombre}`);

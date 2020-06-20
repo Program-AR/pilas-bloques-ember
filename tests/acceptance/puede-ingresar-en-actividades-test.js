@@ -2,6 +2,7 @@ import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
+import simulateRouterHooks from "../helpers/simulate-router.hooks";
 
 module('Acceptance | puede ingresar en actividades', function (hooks) {
   setupApplicationTest(hooks);
@@ -19,23 +20,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
       // La razón por la que levantamos este try catch es porque el helper visit tiene un bug
       // descrito acá: https://github.com/emberjs/ember-test-helpers/issues/332 (todavía abierto)        
       try {
-
-        const store = this.owner.lookup('service:store');
-
-        /** 
-         * Simulate the model hook from router.
-         * 
-         * TODO: replace the findAll("desafio") and findBy('nombre', nombre)
-         * function by a more specific ember-data query, like findRecord which 
-         * fetchs only one record.
-         * 
-         * (This only exist because mirage must be need fixed before).
-         */
-        await store.findAll("desafio");
-        await store.findAll("libro");
-        await store.findAll("capitulo");
-        await store.findAll("grupo");
-
+        simulateRouterHooks(this.owner.lookup('service:store'));
         await visit(`/desafios/${nombreDesafio}`);
       }
       catch (e) {
