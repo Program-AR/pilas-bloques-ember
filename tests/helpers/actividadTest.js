@@ -103,101 +103,104 @@ export function actividadTest(nombre, opciones) {
 
     return new Promise((success) => {
 
-      run(() => {
+      run(async () => {
 
-        // Simula el model hook del router desafío.
-        store.findAll("desafio").then((data) => {
-          // TODO: reemplazar la linea anterior (findAll) y la siguiente
-          //       por una consulta a ember-data más específica, como la que
-          //       realiza findRecord, que solo debería traer un solo registro.
-          //
-          //       (esto está así ahora porque se debe corregir mirage antes).
-          let model = data.findBy('nombre', nombre);
+        /** 
+         * Simulate the model hook from router.
+         * 
+         * TODO: replace the findAll("desafio") and findBy('nombre', nombre)
+         * function by a more specific ember-data query, like findRecord which 
+         * fetchs only one record.
+         * 
+         * (This only exist because mirage must be need fixed before).
+         */
+        const model = (await store.findAll("desafio")).findBy('nombre', nombre);
+        await store.findAll("libro");
+        await store.findAll("capitulo");
+        await store.findAll("grupo");
 
-          if (!model) {
-            throw new Error(`No existe una actividad con el nombre ${nombre}`);
+        if (!model) {
+          throw new Error(`No existe una actividad con el nombre ${nombre}`);
+        }
+
+        this.set('model', model);
+        this.set('pilas', pilas);
+
+
+        // Carga la solución en base64, el formato que espera el componente.
+        this.set('solucion', window.btoa(opciones.solucion));
+        // Captura el evento de inicialización de pilas:
+
+        this.set('onReady', () => {
+          if (opciones.cantidadDeActoresAlComenzar) {
+            validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
           }
 
-          this.set('model', model);
-          this.set('pilas', pilas);
+          setTimeout(() => {
+            // this should be turbo mode first an then run, but only works this way. I don't know why
+            jQuery('#run-button').click();
+            jQuery('#modo-turbo').click();
+          }, 1000);
 
-
-          // Carga la solución en base64, el formato que espera el componente.
-          this.set('solucion', window.btoa(opciones.solucion));
-          // Captura el evento de inicialización de pilas:
-
-          this.set('onReady', () => {
-            if (opciones.cantidadDeActoresAlComenzar) {
-              validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
-            }
-
-            setTimeout(() => {
-              // this should be turbo mode first an then run, but only works this way. I don't know why
-              jQuery('#run-button').click();
-              jQuery('#modo-turbo').click();
-            }, 1000);
-
-          });
-
-          /**
-           * Si hay un error en la actividad intenta determinar
-           * si es un error esperado o no. Y en cualquiera de los
-           * dos casos finaliza el test.
-           */
-          pilas.on("errorDeActividad", function (motivoDelError) {
-            let errorEsperado = opciones.errorEsperado;
-
-            if (errorEsperado) {
-              assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
-            } else {
-              assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
-            }
-
-            success();
-          });
-
-          this.set('onTerminoEjecucion', () => {
-            if (opciones.cantidadDeActoresAlTerminar) {
-              validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
-            }
-
-            // Los errores esperados no deberían llegar a este punto, así
-            // que se emite un error.
-            let errorEsperado = opciones.errorEsperado;
-
-            if (errorEsperado) {
-              assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
-            } else if (opciones.resuelveDesafio === false) {
-              assert.ok(!pilas.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
-            } else {
-              assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
-            }
-
-            success();
-          });
-
-          /**
-           * Se instancia el componente challenge-workspace con los paneles que
-           * observará el usuario y una solución pre-cargada, tal y como se
-           * hace dentro de la aplicación.
-           */
-
-          this.render(hbs`
-              {{challenge-workspace
-                debug=false
-                pilas=pilas
-                model=model
-                showCode=false
-                onReady=onReady
-                codigo=solucion
-                codigoJavascript=""
-                persistirSolucionEnURL=false
-                onTerminoEjecucion=onTerminoEjecucion
-                debeMostrarFinDeDesafio=false
-              }}
-            `);
         });
 
+        /**
+         * Si hay un error en la actividad intenta determinar
+         * si es un error esperado o no. Y en cualquiera de los
+         * dos casos finaliza el test.
+         */
+        pilas.on("errorDeActividad", function (motivoDelError) {
+          let errorEsperado = opciones.errorEsperado;
+
+          if (errorEsperado) {
+            assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
+          } else {
+            assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
+          }
+
+          success();
+        });
+
+        this.set('onTerminoEjecucion', () => {
+          if (opciones.cantidadDeActoresAlTerminar) {
+            validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
+          }
+
+          // Los errores esperados no deberían llegar a este punto, así
+          // que se emite un error.
+          let errorEsperado = opciones.errorEsperado;
+
+          if (errorEsperado) {
+            assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
+          } else if (opciones.resuelveDesafio === false) {
+            assert.ok(!pilas.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
+          } else {
+            assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
+          }
+
+          success();
+        });
+
+        /**
+         * Se instancia el componente challenge-workspace con los paneles que
+         * observará el usuario y una solución pre-cargada, tal y como se
+         * hace dentro de la aplicación.
+         */
+
+        this.render(hbs`
+                    {{challenge-workspace
+                      debug=false
+                      pilas=pilas
+                      model=model
+                      showCode=false
+                      onReady=onReady
+                      codigo=solucion
+                      codigoJavascript=""
+                      persistirSolucionEnURL=false
+                      onTerminoEjecucion=onTerminoEjecucion
+                      debeMostrarFinDeDesafio=false
+                    }}
+                  `);
       });
 
     });
