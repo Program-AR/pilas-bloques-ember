@@ -1,0 +1,50 @@
+<PaperMenu @offset="5 43" as |menu|>
+    <menu.trigger>
+        <PaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "requestFocus" "navigation-menu"}}>
+            {{paper-icon "menu"}}
+        </PaperButton>
+    </menu.trigger>
+    <menu.content as |content|>
+            <content.menu-item>
+                <PaperButton 
+                    @disabled={{false}} 
+                    @raised={{false}} 
+                    @fab={{false}}
+                    @bubbles={{true}}
+                    @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
+                        <span class="menu-item-typography">{{desafio.grupo.capitulo.libro.titulo}}</span>
+                </PaperButton>
+            </content.menu-item>
+            <content.menu-item>
+                <PaperButton 
+                    @disabled={{false}} 
+                    @raised={{false}} 
+                    @fab={{false}} 
+                    @bubbles={{true}}
+                    @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
+                        <span class="menu-item-typography">{{desafio.grupo.capitulo.titulo}}</span>
+                </PaperButton>
+            </content.menu-item>
+            {{#if desafio.grupo.titulo}}
+                <content.menu-item>
+                    <PaperButton 
+                        @disabled={{false}}
+                        @raised={{false}}
+                        @fab={{false}}
+                        @bubbles={{true}}
+                        @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
+                            <span class="menu-item-typography">{{desafio.grupo.titulo}}</span>
+                    </PaperButton>
+                </content.menu-item>
+            {{/if}}
+            <content.menu-item>
+                <PaperButton 
+                    @disabled={{false}}
+                    @raised={{false}}
+                    @fab={{false}}
+                    @bubbles={{true}}
+                    @href={{href-to "desafio" desafio.id}}><span class="menu-item-typography">{{desafio.titulo}}</span>
+                </PaperButton>
+            </content.menu-item>
+        </menu.content>
+</PaperMenu>

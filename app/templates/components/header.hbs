@@ -1,50 +1,43 @@
 <PaperToolbar class="header">
   <PaperToolbarTools>
+
      <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
+
     {{#unless model}}
-      <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Primer Ciclo</span></PaperButton>
-      <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Segundo Ciclo</span></PaperButton>
+
+      {{!-- primer ciclo href button --}}
+      <PaperButton 
+        @disabled={{false}} 
+        @raised={{false}} 
+        @fab={{false}} 
+        @bubbles={{true}} 
+        @href={{href-to "libros.verLibro" 1}}>
+          {{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Primer Ciclo</span>
+      </PaperButton>
+
+       {{!-- segundo ciclo href button --}}
+      <PaperButton 
+        @disabled={{false}}
+        @raised={{false}}
+        @fab={{false}}
+        @bubbles={{true}}
+        @href={{href-to "libros.verLibro" 2}}>
+          {{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Segundo Ciclo</span>
+      </PaperButton>
+
     {{/unless}}
+
     {{#if model}}
       {{#if (media 'isMobile')}}
-      <PaperMenu @offset="5 57" as |menu|>
-        <menu.trigger>
-          <PaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "requestMenuFocus" "navigation-menu"}}>
-            {{paper-icon "menu"}}
-          </PaperButton>
-        </menu.trigger>
-        <menu.content as |content|>
-          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.libro.titulo}}</span></PaperButton></content.menu-item>
-          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.capitulo.titulo}}</span></PaperButton></content.menu-item>
-          {{#if model.grupo.titulo}}
-            <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}><span class="menu-item-typography">{{model.grupo.titulo}}</span></PaperButton></content.menu-item>
-          {{/if}}
-          <content.menu-item><PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "desafio" model.id}}><span class="menu-item-typography">{{model.titulo}}</span></PaperButton></content.menu-item>
-        </menu.content>
-      </PaperMenu>
+        <NavigationMenu @desafio={{model}}/>
       {{else}}
         <span class="flex"></span>
-        <Breadcrumb>
-          <BreadcrumbItem class="challenge-title" @selected={{true}} @href={{href-to "desafio" model.id}}>{{model.titulo}}</BreadcrumbItem>
-          {{#if model.grupo.titulo}}
-            <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.titulo}}</BreadcrumbItem>
-          {{/if}}
-          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.titulo}}</BreadcrumbItem>
-          <BreadcrumbItem @href={{href-to "libros.verLibro" model.grupo.capitulo.libro.id}}>{{model.grupo.capitulo.libro.titulo}}</BreadcrumbItem>
-          <BreadcrumbInitialItem @href={{"#"}}>{{paper-icon "home"}}</BreadcrumbInitialItem>
-        </Breadcrumb>
+        <NavigationBreadcrumb @desafio={{model}}/>
       {{/if}}
     {{/if}}
+
     <span class="flex"></span>
-    <PaperMenu @offset="5 57" as |menu|>
-      <menu.trigger>
-        <PaperButton id="settings-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "requestMenuFocus" "settings-menu"}}>
-          {{paper-icon "settings"}}
-        </PaperButton>
-      </menu.trigger>
-      <menu.content as |content|>
-        <content.menu-item><span class="menu-item-typography">Modo Nocturno: </span> <NightModeToggle/></content.menu-item>
-      </menu.content>
-    </PaperMenu>
+    <SettingsMenu/>
+
   </PaperToolbarTools>
 </PaperToolbar>
