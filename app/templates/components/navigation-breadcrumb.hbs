@@ -13,7 +13,7 @@
     <BreadcrumbItem @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
         {{desafio.grupo.capitulo.libro.titulo}}
     </BreadcrumbItem>
-    <BreadcrumbInitialItem @href={{href-to "index"}}>
+    <BreadcrumbItem @initial={{true}} @href={{href-to "index"}}>
         {{paper-icon "home"}}
-    </BreadcrumbInitialItem>
+    </BreadcrumbItem>
 </Breadcrumb>

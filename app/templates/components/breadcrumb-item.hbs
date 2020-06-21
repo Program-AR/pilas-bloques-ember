@@ -1,5 +1,7 @@
-<li class={{if selected "breadcrumb-selected-item"}}>
-    <a href={{href}}>
-        {{yield}}
-    </a>
+<li class={{classes}}>
+    {{#if href}}
+        <a href={{href}}>{{yield}}</a>
+    {{else}}
+        <a>{{yield}}</a>
+    {{/if}}
 </li>
