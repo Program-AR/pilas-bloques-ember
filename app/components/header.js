@@ -5,12 +5,7 @@ export default Component.extend({
   classNames: [],
 
   didRender() {
-    if (localStorage.getItem('theme') === 'dark') {
-      document.documentElement.setAttribute('theme', 'dark');
-    }
-    else {
-      document.documentElement.setAttribute('theme', 'light');
-    }
+    document.documentElement.setAttribute('theme', localStorage.getItem('theme') || 'light');
   }
 
 });

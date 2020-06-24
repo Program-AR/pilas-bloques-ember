@@ -29,7 +29,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
         }
       }
       const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
-      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloEsperado + " y no " + tituloEsperado);
+      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloVisibleEnPantalla + " y no " + tituloEsperado);
     })
   }
 
