@@ -9,7 +9,7 @@ export default Component.extend({
   showCode: false,
   blocksGallery: service(),
   cargando: true,
-  modoTuboHabilitado: false,
+  turboMode: false,
   canvasWidth: 0,
   canvasHeight: 0,
 
@@ -185,18 +185,16 @@ export default Component.extend({
       Blockly.mainWorkspace.getAllBlocks()[0].unselect()
     },
 
-    updateTurboMode(swapFirst = false) {
+    updateTurboMode() {
 
-      if (swapFirst) {
-        this.set("modoTuboHabilitado", !this.get("modoTuboHabilitado"));
-      }
-
-      if (!this.get("modoTuboHabilitado")) {
-        this.pilas.habilitarModoTurbo();
+      if (this.turboMode) {
+        this.pilas.deshabilitarModoTurbo();
+        this.set("turboMode", false);
       }
 
       else {
-        this.pilas.deshabilitarModoTurbo();
+        this.pilas.habilitarModoTurbo();
+        this.set("turboMode", true);
       }
 
       if (!Ember.testing) {

@@ -36,34 +36,31 @@
       />
     </PaperCard>
 
-    <Scene class="flex-nogrow" id="draggable"
-      @cargando={{cargando}}
-      @escena={{model.escena}} 
-      @hideScene={{action "hideScene"}}
-      @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
-      @isRunning={{ejecutando}}
-      @isTurboModeEnabled={{modoTuboHabilitado}}
-      @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
-      @onReady={{action "onReady"}}
-      @pilas={{pilas}}
-      @reset={{action 'reiniciar' false}}
-      @run={{action 'ejecutar' false}}
-      @running={{ejecutando}}
-      @shouldUseFloatingMode={{shouldUseFloatingMode}}
-      @step={{action 'step' true}}
-      @step-by-step-execution={{action 'ejecutar' true}}
-      @swapTurboMode={{action 'updateTurboMode' true}}
-      @updateTurboMode={{action 'updateTurboMode' false}}
-    />
-
-    {{#if shouldUseFloatingMode}}
-    <PaperCard class="exercise-buttons-card">
+    <div>
       <SceneButtons
         @cargando={{cargando}}
         @isTurboModeEnabled={{modoTuboHabilitado}}
         @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
         @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
-        @updateTurboMode={{action 'updateTurboMode' false}}
+        @updateTurboMode={{action 'updateTurboMode'}}
+        @reset={{action 'reiniciar' false}}
+        @run={{action 'ejecutar' false}}
+        @running={{ejecutando}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @step={{action 'step' true}}
+        @step-by-step-execution={{action 'ejecutar' true}}
+      />
+
+      <Scene class="flex-nogrow" id="draggable"
+        @cargando={{cargando}}
+        @escena={{model.escena}} 
+        @hideScene={{action "hideScene"}}
+        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+        @isRunning={{ejecutando}}
+        @isTurboModeEnabled={{modoTuboHabilitado}}
+        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
+        @onReady={{action "onReady"}}
+        @pilas={{pilas}}
         @reset={{action 'reiniciar' false}}
         @run={{action 'ejecutar' false}}
         @running={{ejecutando}}
@@ -71,9 +68,10 @@
         @step={{action 'step' true}}
         @step-by-step-execution={{action 'ejecutar' true}}
         @swapTurboMode={{action 'updateTurboMode' true}}
+        @updateTurboMode={{action 'updateTurboMode' false}}
       />
-    </PaperCard>
-    {{/if}}
+
+    </div>
 
   </div>
 
@@ -82,7 +80,7 @@
   {{/unless}}
 
   <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>
-    {{if modoTuboHabilitado "ACTIVADO" "DESACTIVADO"}}
+    {{if turboMode "ACTIVADO" "DESACTIVADO"}}
   </Toast>
 
   {{#if showReportAProblemModel}}
