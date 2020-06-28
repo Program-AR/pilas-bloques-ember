@@ -40,9 +40,9 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "blockly-package": "github:Program-AR/blockly-package#v0-16",
+    "blockly-package": "^1.0.0",
     "pilas-bloques-exercises": "^1.1.1",
-    "proceds-blockly": "github:Program-AR/proceds-blockly#master"
+    "proceds-blockly": "^1.0.0"
   },
   "devDependencies": {
     "@ember/jquery": "^1.1.0",
@@ -58,7 +58,7 @@
     "electron-rebuild": "^1.11.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.5.3",
-    "ember-blockly": "github:Program-AR/ember-blockly#master",
+    "ember-blockly": "^0.3.0",
     "ember-cli": "^3.18.0",
     "ember-cli-app-version": "^3.2.0",
     "ember-cli-babel": "^7.20.1",
