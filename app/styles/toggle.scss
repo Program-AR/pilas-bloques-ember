@@ -49,10 +49,6 @@
     transform: translateX(26px);
   }
 
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
   input:checked + .slider:before {
     transform: translateX(26px);
   }
