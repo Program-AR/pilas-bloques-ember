@@ -1,13 +1,13 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
 
 export default Component.extend({
     tagName: 'div',
     classNames: [],
+    isNightTheme: false,
 
-    isNightTheme: computed('nightTheme', function () {
-        return localStorage.getItem('theme') === 'dark';
-    }),
+    didRender() {
+        this.set('isNightTheme', localStorage.getItem('theme') === 'dark');
+    },
 
     setLightTheme() {
         localStorage.setItem('theme', 'light');
