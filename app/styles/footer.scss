@@ -34,10 +34,13 @@
 }
 
 .program-ar-logo {
-    padding-top: 9px;
-    padding-left: 15px;
-}
-
-.program-ar-logo-img {
+    background-image: var(--theme-programar-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
     height: 20px;
+    width: 145px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    margin-right: -10px;
 }
