@@ -42,7 +42,7 @@
         @isTurboModeEnabled={{modoTuboHabilitado}}
         @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
         @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
-        @updateTurboMode={{action 'updateTurboMode'}}
+        @pilas={{pilas}}
         @reset={{action 'reiniciar' false}}
         @run={{action 'ejecutar' false}}
         @running={{ejecutando}}
@@ -67,8 +67,6 @@
         @shouldUseFloatingMode={{shouldUseFloatingMode}}
         @step={{action 'step' true}}
         @step-by-step-execution={{action 'ejecutar' true}}
-        @swapTurboMode={{action 'updateTurboMode' true}}
-        @updateTurboMode={{action 'updateTurboMode' false}}
       />
 
     </div>
@@ -78,10 +76,6 @@
   {{#unless shouldUseFloatingMode}}
     <Footer class="app-footer" @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
   {{/unless}}
-
-  <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>
-    {{if turboMode "ACTIVADO" "DESACTIVADO"}}
-  </Toast>
 
   {{#if showReportAProblemModel}}
     <BugReportModal @onClose={{action (mut showReportAProblemModel) false}}/>

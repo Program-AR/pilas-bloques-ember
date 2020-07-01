@@ -1,4 +1,4 @@
-import Ember from 'ember';
+// import Ember from 'ember';
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
@@ -9,7 +9,6 @@ export default Component.extend({
   showCode: false,
   blocksGallery: service(),
   cargando: true,
-  turboMode: false,
   canvasWidth: 0,
   canvasHeight: 0,
 
@@ -183,24 +182,6 @@ export default Component.extend({
       // This is a WORKAROUND, i cant get it work without this.
       Blockly.mainWorkspace.getAllBlocks()[0].select()
       Blockly.mainWorkspace.getAllBlocks()[0].unselect()
-    },
-
-    updateTurboMode() {
-
-      if (this.turboMode) {
-        this.pilas.deshabilitarModoTurbo();
-        this.set("turboMode", false);
-      }
-
-      else {
-        this.pilas.habilitarModoTurbo();
-        this.set("turboMode", true);
-      }
-
-      if (!Ember.testing) {
-        this.set("needShowTurboModeIndicator", true);
-      }
-
     },
 
     ejecutar(pasoAPaso = false) {

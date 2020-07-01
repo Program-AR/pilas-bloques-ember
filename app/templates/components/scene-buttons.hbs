@@ -4,11 +4,11 @@
         <SceneButton 
             @class="step-by-step-button-container"
             @element-id="step-by-step-run-button"
-            @label="Ejecutar paso a paso"
-            @icon="play_arrow"
+            @label="Paso"
+            @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) running}}
             @isDisabled={{running}} 
-            @isMini={{true}} 
+            @isMini={{shouldUseFloatingMode}} 
             @onClick={{step-by-step-execution}}
             @tooltip="Ejecutar paso a paso la solución propuesta"
         />
@@ -16,11 +16,11 @@
         <SceneButton 
             @class="step-by-step-button-container"
             @element-id="run-step-button"
-            @label="Avanzar un paso"
+            @label="Paso"
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) (not running)}}
             @isDisabled={{not isPausedOnBreackpoint}} 
-            @isMini={{true}} 
+            @isMini={{shouldUseFloatingMode}} 
             @onClick={{step}}
             @tooltip="Avanzar un paso" 
         />
@@ -32,7 +32,7 @@
             @icon="play_arrow"
             @isHidden={{running}}
             @isDisabled={{running}} 
-            @isMini={{true}} 
+            @isMini={{shouldUseFloatingMode}} 
             @onClick={{run}}
             @tooltip="Ejecutar la solución propuesta"
         />
@@ -44,7 +44,7 @@
             @icon="refresh"
             @isHidden={{not running}}
             @isDisabled={{not running}} 
-            @isMini={{true}} 
+            @isMini={{shouldUseFloatingMode}} 
             @onClick={{reset}}
             @tooltip="Reiniciar la ejecución" 
         />
@@ -53,16 +53,7 @@
             <span class="flex"></span>
         {{/unless}}
 
-        <SceneButton 
-            @class="toggle-container-collapsed"
-            @element-id="turbo-button" 
-            @faIcon="fa fa-bolt"
-            @isHidden={{false}}
-            @isDisabled={{running}} 
-            @isMini={{true}} 
-            @onClick={{updateTurboMode}}
-            @tooltip="Modo Turbo" 
-            />
+        <TurboModeToggle class={{if shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{pilas}} />
 
     </PaperCard>
 {{/unless}}
