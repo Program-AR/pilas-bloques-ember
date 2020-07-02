@@ -1,14 +1,18 @@
 <Header id="header-workspace" @model={{model}}/>
-
+  
 <div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
+  {{#if (or (media 'isMobile') (media 'isTablet')) }}
+    <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
+  {{/if}}
+
   {{#unless shouldUseFloatingMode}}
     <SceneDetails class="exercise-details" 
       @model={{model}}
       @cargando={{cargando}}
     />
   {{/unless}}
-  
+
   <div class="flex layout-row">
     <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container-collapsed" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
