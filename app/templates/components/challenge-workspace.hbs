@@ -2,7 +2,7 @@
   
 <div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
-  {{#if (or (media 'isMobile') (media 'isTablet')) }}
+  {{#if (and (media 'isMobile') (media 'isPortrait')) }}
     <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
   {{/if}}
 
