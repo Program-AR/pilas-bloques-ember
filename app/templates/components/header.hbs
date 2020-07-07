@@ -3,18 +3,27 @@
 
     <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
 
-    {{#unless model}}
-      <BookNavigationButton @index="1">Primer Ciclo</BookNavigationButton>
-      <BookNavigationButton @index="2">Segundo Ciclo</BookNavigationButton>
+    {{#unless (or challenge book)}}
+      <span class="flex"/>
+      <span>Una herramienta para aprender a programar</span>
     {{/unless}}
 
-    {{#if model}}
+    {{#if (or challenge book)}}
+
       {{#if (media 'isMobile')}}
-        <NavigationMenu @desafio={{model}} />
+        <NavigationMenu 
+          @desafio={{challenge}} 
+        />
       {{else}}
         <span class="flex"/>
-        <NavigationBreadcrumb @desafio={{model}} />
+        <NavigationBreadcrumb 
+          @book={{book}}
+          @challenge={{challenge}}
+          @chapter={{chapter}}
+          @group={{group}}
+        />
       {{/if}}
+      
     {{/if}}
     
     <span class="flex"/>

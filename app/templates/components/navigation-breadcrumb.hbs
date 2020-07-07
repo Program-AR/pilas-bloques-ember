@@ -1,19 +1,31 @@
 <Breadcrumb>
-    <BreadcrumbItem class="challenge-title" @selected={{true}} @href={{href-to "desafio" desafio.id}}>
-        {{desafio.titulo}}
-    </BreadcrumbItem>
-    {{#if desafio.grupo.titulo}}
-        <BreadcrumbItem @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
-            {{desafio.grupo.titulo}}
+
+    {{#unless (not (and challenge challenge.titulo))}}
+        <BreadcrumbItem class="challenge-title" @selected={{true}} @href={{href-to "desafio" challenge.id}}>
+            {{challenge.titulo}}
         </BreadcrumbItem>
-    {{/if}}
-    <BreadcrumbItem @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
-        {{desafio.grupo.capitulo.titulo}}
-    </BreadcrumbItem>
-    <BreadcrumbItem @href={{href-to "libros.verLibro" desafio.grupo.capitulo.libro.id}}>
-        {{desafio.grupo.capitulo.libro.titulo}}
-    </BreadcrumbItem>
+    {{/unless}}
+
+    {{#unless (not (and group group.titulo))}}
+        <BreadcrumbItem @href={{href-to "libros.verLibro" book.id}}>
+            {{group.titulo}}
+        </BreadcrumbItem>
+    {{/unless}}
+
+    {{#unless (not (and chapter chapter.titulo))}}
+        <BreadcrumbItem @href={{href-to "libros.verLibro" book.id}}>
+            {{chapter.titulo}}
+        </BreadcrumbItem>
+    {{/unless}}
+
+    {{#unless (not (and book book.titulo))}}
+        <BreadcrumbItem @href={{href-to "libros.verLibro" book.id}}>
+            {{book.titulo}}
+        </BreadcrumbItem>
+    {{/unless}}
+
     <BreadcrumbItem @initial={{true}} @href={{href-to "index"}}>
         {{paper-icon "home"}}
     </BreadcrumbItem>
+
 </Breadcrumb>
