@@ -2,7 +2,7 @@
   
 <div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
   
-  {{#if (or (media 'isMobile') (media 'isTablet')) }}
+  {{#if (and (media 'isMobile') (media 'isPortrait')) }}
     <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
   {{/if}}
 
@@ -14,7 +14,7 @@
   {{/unless}}
 
   <div class="flex layout-row">
-    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container-collapsed" "flex-grow pilas-blockly-container"}}>
+    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
         @guardar={{'guardar'}}
         @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
