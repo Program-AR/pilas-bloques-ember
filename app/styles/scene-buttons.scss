@@ -1,9 +1,19 @@
+.button-typography {
+    padding: 0px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
 .exercise-actions {
     position: inherit;
 }
 
-.exercise-actions .step-by-step-button-container .md-button {
+.exercise-actions .md-button {
     color:#fff;
+    padding: 0px;
+}
+
+.exercise-actions .step-by-step-button-container .md-button {
     background-color:#31b0d5;
     border-color:    #269abc;
 }
@@ -13,17 +23,23 @@
     margin-top : -2px;
 }
 
-.exercise-actions .step-by-step-button-container .md-button:hover {
-    cursor: not-allowed;
-}
-
-.exercise-actions .step-by-step-button-container .md-button:not([disabled]):hover {
+.exercise-actions .step-by-step-button-container .md-button:not([disabled]):hover,
+.exercise-actions .step-by-step-button-container .md-button:not([disabled]):focus {
     background-color:#269abc;
     cursor: pointer;
 }
 
+.exercise-actions .md-button[disabled] {
+    background-color: #dadada;
+    color: #878787;
+}
+
+.exercise-actions .md-button[disabled] md-icon.md-default-theme {
+    color: #878787;
+    margin-top : -2px;
+}
+
 .exercise-actions .restart-button-container .md-button {
-    color:#fff;
     background-color:#ec971f;
     border-color:    #d58512;
 }
@@ -33,18 +49,14 @@
     margin-top : -2px;
 }
 
-.exercise-actions .restart-button-container .md-button:hover {
-    cursor: not-allowed;
-}
 
-
-.exercise-actions .restart-button-container .md-button:not([disabled]):hover {
+.exercise-actions .restart-button-container .md-button:not([disabled]):hover,
+.exercise-actions .restart-button-container .md-button:not([disabled]):focus {
     background-color:#d58512;
     cursor: pointer;
 }
 
 .exercise-actions .run-button-container .md-button {
-    color:#fff;
     background-color:#449d44;
     border-color:    #398439;
 }
@@ -54,12 +66,8 @@
     margin-top : -2px;
 }
 
-.exercise-actions .run-button-container  .md-button:hover {
-    cursor: not-allowed;
-}
-
-  
-.exercise-actions .run-button-container .md-button:not([disabled]):hover {
+.exercise-actions .run-button-container .md-button:not([disabled]):hover,
+.exercise-actions .run-button-container .md-button:not([disabled]):focus {
     background-color:#398439;
     cursor: pointer;
 }
@@ -69,13 +77,14 @@
     padding-right: 7px;
 }
 
-.toggle-container-collapsed .md-button:not([disabled]):hover {
-    background-color:#2196f3;
-    cursor: pointer;
-}
-
 .toggle-container-collapsed .md-button {
-    color:#fff;
+    color:rgb(255, 238, 0);
     background-color:#4aa7f3;
     border-color:    #2196f3;
+}
+
+.toggle-container-collapsed .md-button:not([disabled]):hover,
+.toggle-container-collapsed .md-button:not([disabled]):focus {
+    background-color:#2196f3;
+    cursor: pointer;
 }

@@ -136,9 +136,8 @@ export function actividadTest(nombre, opciones) {
           }
 
           setTimeout(() => {
-            // this should be turbo mode first an then run, but only works this way. I don't know why
+            jQuery('#turbo-button').click();
             jQuery('#run-button').click();
-            jQuery('#modo-turbo').click();
           }, 1000);
 
         });
