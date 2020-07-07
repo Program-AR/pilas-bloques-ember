@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export function not([value]/*, hash */) {
+export function not([value]) {
     return !value;
 }
 

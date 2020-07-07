@@ -1,17 +1,24 @@
 <PaperToolbar class="header">
-    <PaperToolbarTools>
-    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "index"}}><img class="pilas-bloques-logo" src='imagenes/logo.png'></PaperButton>
-    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 1}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 1</span></PaperButton>
-    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "libros.verLibro" 2}}>{{paper-icon "menu_book" class="menu-button-icon"}}<span class="menu-button-typography">Libro 2</span></PaperButton>
-    <span class="flex"></span>
-    {{#if model.titulo}}
-      <div class="header-title">{{model.titulo}}</div>
-      <span class="flex"></span>
-      <span class="flex"></span>
+  <PaperToolbarTools>
+
+    <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
+
+    {{#unless model}}
+      <BookNavigationButton @index="1">Primer Ciclo</BookNavigationButton>
+      <BookNavigationButton @index="2">Segundo Ciclo</BookNavigationButton>
+    {{/unless}}
+
+    {{#if model}}
+      {{#if (media 'isMobile')}}
+        <NavigationMenu @desafio={{model}} />
+      {{else}}
+        <span class="flex"/>
+        <NavigationBreadcrumb @desafio={{model}} />
+      {{/if}}
     {{/if}}
-    <Menu @icon={{"menu"}} @offset="5 57">
-      <span class="menu-title">Modo Nocturno: </span>
-      <NightModeToggle/>
-    </Menu>
+    
+    <span class="flex"/>
+    <NightModeToggle/>
+
   </PaperToolbarTools>
 </PaperToolbar>

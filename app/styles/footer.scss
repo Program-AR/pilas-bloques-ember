@@ -5,6 +5,7 @@
 .footer {
     background-color: var(--theme-background-color);
     color: var(--theme-font-color);
+    margin-bottom: 5px;
 }
 
 .footer-card {
@@ -25,7 +26,7 @@
 .footer .app-version {
     padding-left: 20px;
     margin-bottom: 0px;
-    margin-top: 9px;
+    margin-top: 7px;
 }
 
 .footer .app-version .version-number {
@@ -33,6 +34,13 @@
 }
 
 .program-ar-logo {
-    padding-top: 5px;
-    padding-left: 15px;
+    background-image: var(--theme-programar-logo);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 145px;
+    margin-top: 8px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    margin-right: -10px;
 }

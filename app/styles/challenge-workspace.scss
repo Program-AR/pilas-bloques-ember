@@ -21,23 +21,20 @@
   border-radius: 10px;
   position: inherit;
   width: 100%; 
+  min-width: 700px;
   margin-top: 0px;
   margin-bottom: 0px;
   margin-right: 0px;
   min-height: calc(100vh - 210px); // calculate the height minus header and footer in px.
 }
 
-.pilas-blockly-container-collapsed {
-  background-color: var(--theme-background-color);
-  position: inherit;
-  border-radius: 10px;
+.floating-mode {
   height: calc(100vh - 70px);
   margin-top: 10px;
-  margin-bottom: 0px;
   margin-right: 5px;
 }
 
 #draggable {
   position: inherit;
-  z-index: 20;
+  z-index: 30;
 }

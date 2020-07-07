@@ -4,31 +4,40 @@
     border-radius: 10px;
     margin-top: 0px;
     margin-bottom: 0px;
-    z-index: 99;
 }
 
 .exercise-buttons-card {
     background-color: var(--theme-background-color);
     position: inherit;
-    margin-top: 10px;
     border-radius: 10px;
-    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 
-// adds breackpoints to this.
+.exercise-buttons-collapsed-card {
+    background-color: var(--theme-background-color);
+    position: inherit;
+    min-height: calc(100vh - 70px);
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 .pilas-canvas {
     width: 420px;   
     height: 480px;
     overflow: hidden;
 }
 
-.canvas-boder-radius {
-    border-radius: 10px;
+@media (max-width: 1280px){
+    .pilas-canvas {
+        width: 300px;   
+        height: 343px;
+    }
 }
 
-.canvas-boder-bottom-radius{
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+.canvas-boder-radius {
+    border-radius: 10px;
 }
 
 .canMove {
