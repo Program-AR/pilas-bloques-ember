@@ -1,0 +1,31 @@
+.phone-rotation {
+    position: absolute;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4),rgba(0, 0, 0, 0.4)),
+    url("../imagenes/wallpapers/phone-rotation-warning-wallpaper.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: var(--theme-background-secondary-color);
+    height: 100vh;
+    width: 100vw;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.phone-rotation img {
+    width: 60%;
+}
+
+.phone-rotation span {
+    padding: 2rem;
+    color: whitesmoke;
+    text-shadow: 1px 1px 5px black;
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+.phone-rotation .uppercase {
+    font-size: 2.5rem;
+}

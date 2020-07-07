@@ -66,15 +66,11 @@ export default Component.extend({
       this.set("shouldUseFloatingMode", !this.get("shouldUseFloatingMode"));
       this.send("updateBlockyWorkspaceBounds");
 
-      if (this.get("shouldUseFloatingMode")) {
+      this.send("showScene");
+      if (this.get("shouldUseFloatingMode")) 
         this.send("makeDraggable");
-        this.send("hideScene");
-      }
-
-      else {
-        this.send("showScene");
+      else 
         this.send("makeNotDraggable");
-      }
 
     },
 
@@ -82,17 +78,19 @@ export default Component.extend({
       let elmnt = document.getElementById("draggable");
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let exerciseCard = document.getElementsByClassName("exercise-card")[0];
-      let blocklyFlyout = document.getElementsByClassName("blocklyFlyout")[0];
+      let pilasBlockly = document.getElementsByClassName("pilas-blockly")[0].getBoundingClientRect();
 
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-      canvas.style.height = 240 + "px";
-      canvas.style.width = 210 + "px";
-      exerciseCard.style.height = 240 + "px";
-      exerciseCard.style.width = 210 + "px";
+      const miniature = {height: 240, width: 210}
 
-      elmnt.style.top = (blocklyFlyout.height.baseVal.value - 50) + "px";
-      elmnt.style.left = (blocklyFlyout.width.baseVal.value + 25) + "px";
+      canvas.style.height = miniature.height + "px";
+      canvas.style.width = miniature.width + "px";
+      exerciseCard.style.height = miniature.height + "px";
+      exerciseCard.style.width = miniature.width + "px";
+
+      elmnt.style.top = (pilasBlockly.bottom - miniature.height) + "px";
+      elmnt.style.left = (pilasBlockly.left + 15) + "px";
       elmnt.style.position = "fixed";
 
       elmnt.onmousedown = onMouseDown;
