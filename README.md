@@ -9,7 +9,6 @@ Pilas Bloques
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
-![](screenshots/principal.png)
 ![](screenshots/desafios.png)
 ![](screenshots/editor.png)
 
