@@ -2,33 +2,148 @@
 
 export default [
   {
-    id: 1,
-    titulo: 'Autómatas, comandos, procedimientos y repetición',
-    desafioIds: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+    id: 'AlienTocaBoton',
+    desafioIds: [1]
   },
   {
-    id: 2,
-    titulo: 'Alternativa condicional',
-    desafioIds: [13, 14, 15, 16, 17, 18]
+    id: 'ElGatoEnLaCalle',
+    desafioIds: [2]
   },
   {
-    id: 3,
-    titulo: 'Repetición condicional',
-    desafioIds: [19, 20, 21, 22, 23, 24, 25]
+    id: 'NoMeCansoDeSaltar',
+    desafioIds: [3]
   },
   {
-    id: 4,
-    titulo: 'Sensores Numéricos',
-    desafioIds: [26, 27]
+    id: 'ElMarcianoEnElDesierto',
+    desafioIds: [4]
   },
   {
-    id: 5,
-    titulo: 'Parametrización de soluciones',
-    desafioIds: [28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 130, 131, 132, 133, 134, 135, 136]
+    id: 'TitoEnciendeLuces',
+    desafioIds: [5]
   },
   {
-    id: 'manual1cPrimaria3',
-    titulo: 'Capítulo 3: Programando en la computadora'
+    id: 'ElAlienYLasTuercas',
+    desafioIds: [6]
+  },
+  {
+    id: 'ElRecolectorDeEstrellas',
+    desafioIds: [7]
+  },
+  {
+    id: 'MariaLaComeSandias',
+    desafioIds: [8]
+  },
+  {
+    id: 'AlimentandoALosPeces',
+    desafioIds: [9]
+  },
+  {
+    id: 'InstalandoJuegos',
+    desafioIds: [10]
+  },
+  {
+    id: 'LaGranAventuraDelMarEncantado',
+    desafioIds: [11]
+  },
+  {
+    id: 'ReparandoLaNave',
+    desafioIds: [12]
+  },
+  {
+    id: 'ElMonoYLasBananas',
+    desafioIds: [13]
+  },
+  {
+    id: 'LaEleccionDelMono',
+    desafioIds: [14]
+  },
+  {
+    id: 'LaberintoCorto',
+    desafioIds: [15]
+  },
+  {
+    id: 'TresNaranjas',
+    desafioIds: [16]
+  },
+  {
+    id: 'TitoRecargado',
+    desafioIds: [17]
+  },
+  {
+    id: 'LaberintoLargo',
+    desafioIds: [18]
+  },
+  {
+    id: 'SuperTito1',
+    desafioIds: [19]
+  },
+  {
+    id: 'SuperTito2',
+    desafioIds: [20]
+  },
+  {
+    id: 'LaberintoConQueso',
+    desafioIds: [21]
+  },
+  {
+    id: 'ElDetectiveChaparro',
+    desafioIds: [22]
+  },
+  {
+    id: 'FutbolRobots',
+    desafioIds: [23]
+  },
+  {
+    id: 'PrendiendoLasCompus',
+    desafioIds: [24]
+  },
+  {
+    id: 'ElMonoQueSabeContar',
+    desafioIds: [25]
+  },
+  {
+    id: 'ElSuperviaje',
+    desafioIds: [26]
+  },
+  {
+    id: 'ElMonoCuentaDeNuevo',
+    desafioIds: [27]
+  },
+  {
+    id: 'ElPlanetaDeNano',
+    desafioIds: [28]
+  },
+  {
+    id: 'Dibujando Figuras',
+    desafioIds: [29, 30, 31, 32, 33, 34, 35, 36, 37]
+  },
+  {
+    id: 'LaFiestaDeDracula',
+    desafioIds: [130]
+  },
+  {
+    id: 'SalvandoLaNavidad',
+    desafioIds: [131]
+  },
+  {
+    id: 'PrendiendoLasCompusParametrizado',
+    desafioIds: [132]
+  },
+  {
+    id: 'TitoCuadrado',
+    desafioIds: [133]
+  },
+  {
+    id: 'ElCangrejoAguafiestas',
+    desafioIds: [134]
+  },
+  {
+    id: 'PrendiendoLasFogatas',
+    desafioIds: [135]
+  },
+  {
+    id: 'DibujoLibre',
+    desafioIds: [136]
   },
   {
     id: 'manual1cPrimaria3.1.2',
@@ -61,10 +176,6 @@ export default [
     desafioIds: [225, 226, 227, 228, 229]
   },
   {
-    id: 'manual1cPrimaria4',
-    titulo: 'Capítulo 4: Repetición'
-  },
-  {
     id: 'manual1cPrimaria4.1.3',
     titulo: 'Más churrascos para Duba',
     desafioIds: [230, 231, 232]
@@ -83,10 +194,6 @@ export default [
     id: 'manual1cPrimaria4.I',
     titulo: 'Lita, a puro vegetal',
     desafioIds: [240, 241]
-  },
-  {
-    id: 'manual1cPrimaria5',
-    titulo: 'Capítulo 5: Alternativa condicional'
   },
   {
     id: 'manual1cPrimaria5.1.3',

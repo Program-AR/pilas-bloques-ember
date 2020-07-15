@@ -9,7 +9,6 @@ Pilas Bloques
 Esta es una versión hermana de [pilas-engine](http://www.pilas-engine.com.ar) pero
 utilizando bloques, javascript y desafíos para aprender a programar.
 
-![](screenshots/principal.png)
 ![](screenshots/desafios.png)
 ![](screenshots/editor.png)
 
@@ -58,11 +57,11 @@ Luego, se puede escribir el comando ``make`` para ver las tareas disponibles:
 Luego, para instalar las dependencias, compilar el módulo ejercicios_pilas y correr la aplicación, sencillamente:
 
 ```
-make full
-make serve
+nvm use & npm install
+npm start
 ```
 
-En general, para compilar diariamente, con `make serve` ya es suficiente.
+En general, para compilar diariamente, con `npm start` ya es suficiente.
 
 
 Tests
@@ -73,7 +72,7 @@ Para ejecutar los tests de la aplicación hay 3 opciones:
 1. Levantar el server de test:
 
 ```
-  make test
+  npm run test
 ```
 
 2. Ejecutar los tests de forma contínua:

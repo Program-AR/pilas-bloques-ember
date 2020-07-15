@@ -1,0 +1,52 @@
+.details-card {
+    background-color: var(--theme-background-color);
+    color: var(--theme-font-color);
+    position: inherit;
+    border-radius: 10px;
+}
+
+.details-card md-card-title {
+    overflow-y: auto;
+    max-height: 80px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}   
+
+.exercise-cover {
+    position: inherit;
+    width: 100px;
+    height: 80px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.tab {
+    background-color: var(--theme-container-background-color);
+    justify-content: space-evenly;
+    height: 80px;
+}
+
+.tab .md-button {
+    width: 50px;
+    min-width: 50px;
+    margin: 0px!important;
+    padding: 0px !important;
+}
+
+.tab md-icon[md-font-icon] {
+    color: var(--theme-tab-icon-color);
+}
+
+.tab .clue-button md-icon[md-font-icon] {
+    color: #ebca14;
+    line-height: 24px;
+    transform: rotate(180deg);
+    width: auto;
+}
+
+.tab .no-clue-button md-icon[md-font-icon] {
+    color: var(--theme-tab-icon-disabled-color);
+    line-height: 24px;
+    transform: rotate(180deg);
+    width: auto;
+}

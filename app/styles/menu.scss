@@ -1,0 +1,20 @@
+.menu-button-typography {
+    padding-left: 30px;
+    padding-right: 8px;
+}
+  
+.menu-button-icon {
+    position: absolute;
+    padding-top: 5px !important;
+}
+
+.menu-item-typography {
+    color: var(--theme-font-color);
+}
+
+md-menu-content {
+    background-color: var(--theme-menu-color);
+    color: var(--theme-font-color);
+    margin: 0px;
+    padding:0px;
+}

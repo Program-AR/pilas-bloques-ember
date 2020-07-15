@@ -1,0 +1,33 @@
+<PaperToolbar class="header">
+  <PaperToolbarTools>
+
+    <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
+
+    {{#unless (or challenge book)}}
+      <span class="flex"/>
+      <span class="headerTitle">Una herramienta para aprender a programar</span>
+    {{/unless}}
+
+    {{#if (or challenge book)}}
+
+      {{#if (media 'isMobile')}}
+        <NavigationMenu 
+          @desafio={{challenge}} 
+        />
+      {{else}}
+        <span class="flex"/>
+        <NavigationBreadcrumb 
+          @book={{book}}
+          @challenge={{challenge}}
+          @chapter={{chapter}}
+          @group={{group}}
+        />
+      {{/if}}
+      
+    {{/if}}
+    
+    <span class="flex"/>
+    <NightModeToggle/>
+
+  </PaperToolbarTools>
+</PaperToolbar>

@@ -1,0 +1,81 @@
+.iframe-container-collapsed {
+  @extend .expand-full-width-height;
+  z-index: -10;
+}
+
+.iframe-container {
+  @extend .expand-full-width-height;
+  z-index: 10;
+}
+
+.iframe-container iframe {
+  @extend .expand-full-width-height;
+  border: 0;
+}
+
+.iframe-container-collapsed iframe {
+  @extend .expand-full-width-height;
+  border: 0;
+}
+
+.blocklyTrash {
+  opacity: 0.4 !important;
+}
+  
+.blocklyScrollbarHandle {
+  fill: var(--theme-container-background-color);
+}
+  
+.blocklyFlyout {
+  border-radius: 10px;
+  position: absolute;
+  z-index: 20;
+  backdrop-filter: blur(1.2px);
+}
+  
+.blocklyFlyoutBackground {
+  fill: var(--theme-container-background-color);
+  fill-opacity: .8.5;
+}
+  
+.blocklyToolboxDiv {
+  background-color: var(--theme-container-background-color);
+  border-radius: 10px;
+  color: var(--theme-font-color);
+  position: absolute;
+  overflow-x: visible;
+  overflow-y: auto;
+  z-index: 20;
+}
+  
+.blocklyFlyoutScrollbar {
+  z-index: 20;
+}
+  
+.blocklyMainBackground {
+  @extend .expand-full-width-height;
+  stroke-width: 0;
+}
+  
+.blocklySvg {
+  background-color:transparent;
+}
+
+.blocklyTreeRow{
+  border-radius: 8px !important;
+  height: 22px !important;
+  margin-bottom: 3px !important;
+  line-height: 22px !important;
+  padding-right: 10px !important;
+}
+
+.blocklyTreeRow:hover {
+  @extend .blocklyTreeRow;
+  background-color: var(--theme-list-selection-hover-color) !important;
+
+}
+
+.blocklyTreeSelected, .blocklyTreeSelected:hover {
+  @extend .blocklyTreeRow;
+  background-color: rgb(85, 119, 238) !important;
+}

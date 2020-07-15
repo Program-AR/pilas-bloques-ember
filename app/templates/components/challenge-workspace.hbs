@@ -1,0 +1,93 @@
+<Header id="header-workspace" 
+    @book={{model.grupo.capitulo.libro}}
+    @challenge={{model}}
+    @chapter={{model.grupo.capitulo}}
+    @group={{model.grupo}}
+/>
+  
+<div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+  
+  {{#if (and (media 'isMobile') (media 'isPortrait')) }}
+    <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
+  {{/if}}
+
+  {{#unless shouldUseFloatingMode}}
+    <SceneDetails class="exercise-details" 
+      @model={{model}}
+      @cargando={{cargando}}
+    />
+  {{/unless}}
+
+  <div class="flex layout-row">
+    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
+      <PilasBlockly
+        @guardar={{'guardar'}}
+        @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
+        @modoDocente={{modoDocente}}
+        @modoAlumno={{modoAlumno}}
+        @hash={{hash}}
+        @idAlumno={{idAlumno}}
+        @codigo={{codigo}}
+        @showCode={{showCode}}
+        @cargando={{cargando}}
+        @modelActividad={{model}}
+        @cuandoEjecuta={{cuandoEjecuta}}
+        @model={{model}}
+        @pasoAPasoHabilitado={{model.debugging}}
+        @persistirSolucionEnURL={{persistirSolucionEnURL}}
+        @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
+        @pilas={{pilas}}
+        @bloques={{model.bloques}}
+        @onChangeWorkspace={{onChangeWorkspace}}
+        @onTerminoEjecucion={{onTerminoEjecucion}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @changeScreenMode={{action "changeScreenMode"}}
+      />
+    </PaperCard>
+
+    <div>
+      <SceneButtons
+        @cargando={{cargando}}
+        @isTurboModeEnabled={{modoTuboHabilitado}}
+        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
+        @pilas={{pilas}}
+        @reset={{action 'reiniciar' false}}
+        @run={{action 'ejecutar' false}}
+        @running={{ejecutando}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @step={{action 'step' true}}
+        @step-by-step-execution={{action 'ejecutar' true}}
+      />
+
+      <Scene class="flex-nogrow" id="draggable"
+        @cargando={{cargando}}
+        @escena={{model.escena}} 
+        @hideScene={{action "hideScene"}}
+        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
+        @isRunning={{ejecutando}}
+        @isTurboModeEnabled={{modoTuboHabilitado}}
+        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
+        @onReady={{action "onReady"}}
+        @pilas={{pilas}}
+        @reset={{action 'reiniciar' false}}
+        @run={{action 'ejecutar' false}}
+        @running={{ejecutando}}
+        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @step={{action 'step' true}}
+        @step-by-step-execution={{action 'ejecutar' true}}
+      />
+
+    </div>
+
+  </div>
+
+  {{#unless shouldUseFloatingMode}}
+    <Footer class="app-footer" @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
+  {{/unless}}
+
+  {{#if showReportAProblemModel}}
+    <BugReportModal @onClose={{action (mut showReportAProblemModel) false}}/>
+  {{/if}}
+
+</div>

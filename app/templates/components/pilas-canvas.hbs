@@ -1,5 +1,6 @@
-{{yield}}
-
-{{pilas-spinner centered=true}}
-
-<iframe src="pilas.html" width="100%" height="100%" class="iframe-pilas-canvas" id="innerIframe"></iframe>
+<div class={{if shouldUseFloatingMode "iframe-container-collapsed" "iframe-container"}}>
+    {{#if cargando}}
+        <Spinner @centered={{true}}/>
+    {{/if}}
+    <iframe src="pilas.html" id="innerIframe"></iframe>
+</div>

@@ -3,10 +3,10 @@ import { setupRenderingTest } from 'ember-qunit';
 import '@ember/test-helpers';
 import createPilasTest from "../../helpers/createPilasTest";
 
-module('Integration | Component | pilasweb actores', function(hooks) {
+module('Integration | Component | pilasweb actores', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('Puede crear un actor y actualizar algunos atributos', function(assert) {
+  test('Puede crear un actor y actualizar algunos atributos', function (assert) {
 
     return createPilasTest(this, 'AlienInicial', (pilas, resolve) => {
       /* CREACION DE ACTORES */

@@ -2,6 +2,7 @@ import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
+import simulateRouterHooks from "../helpers/simulate-router.hooks";
 
 module('Acceptance | puede ingresar en actividades', function (hooks) {
   setupApplicationTest(hooks);
@@ -19,14 +20,16 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
       // La razón por la que levantamos este try catch es porque el helper visit tiene un bug
       // descrito acá: https://github.com/emberjs/ember-test-helpers/issues/332 (todavía abierto)        
       try {
+        simulateRouterHooks(this.owner.lookup('service:store'));
         await visit(`/desafios/${nombreDesafio}`);
-      } catch (e) {
+      }
+      catch (e) {
         if (e.message !== 'TransitionAborted') {
           throw e;
         }
       }
-      let tituloVisibleEnPantalla = $(".contenedor-panel-ayuda h4").text();
-      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama efectivamente " + tituloEsperado);
+      const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
+      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloVisibleEnPantalla + " y no " + tituloEsperado);
     })
   }
 

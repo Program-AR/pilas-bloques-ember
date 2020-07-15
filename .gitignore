@@ -8,7 +8,6 @@
 
 # dependencies
 /node_modules
-/bower_components
 
 /blockly/
 /closure-library/
@@ -22,8 +21,6 @@ npm-debug.log
 testem.log
 */**/.directory
 
-public/libs/pilasweb.js
-public/libs/ejerciciosPilas.js
 
 dist_web
 dist_website

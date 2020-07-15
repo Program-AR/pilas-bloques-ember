@@ -1,0 +1,11 @@
+<Breadcrumb>
+
+    <BreadcrumbItem @item={{challenge}} class="challenge-title" @selected={{true}} />
+    <BreadcrumbItem @item={{group}} @href={{href-to "libros.verLibro" book.id}} />
+    <BreadcrumbItem @item={{chapter}} @href={{href-to "libros.verLibro" book.id}} />
+    <BreadcrumbItem @item={{book}} @href={{href-to "libros.verLibro" book.id}} />
+    <BreadcrumbItem @href={{href-to "index"}} @initial={{true}} >
+        {{paper-icon "home"}}
+    </BreadcrumbItem>
+
+</Breadcrumb>

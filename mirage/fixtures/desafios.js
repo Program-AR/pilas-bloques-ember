@@ -5,7 +5,7 @@
  * título: <obligatorio> Es el título visible del desafío en la lista del libro y en la pantalla principal del desafío.
  * enunciado: <obligatorio> Es el enunciado del desafío. Es la descripción del objetivo del programa que debe realizar el alumno.
  * consignaInicial: Es una posible pista, el "Sabías qué". En general en Pilas Bloques suele aparecer cuando el desafío introduce un concepto nuevo.
- * escena: <obligatorio> Es un String que puede indicar o bien un nombre de clase, o bien EL STRING con un "new Escena..." que luego se PARSEARÁ como javascript para construir la escena de ejerciciosPilas asociada a este desafío.
+ * escena: <obligatorio> Es un String que puede indicar o bien un nombre de clase, o bien EL STRING con un "new Escena..." que luego se PARSEARÁ como javascript para construir la escena de pilas-bloques-exercises asociada a este desafío.
  * debeFelicitarse: Es un booleano que indica si tiene sentido que el desafío chequee e informe al alumno la concreción exitosa de su programa. En una actividad de dibujo libre estaría en false.
  * bloques: <obligatorio> Es la lista de ids de bloque de Blockly que habrá en el toolbox de la actividad.
  * estiloToolbox: Tiene tres valores: 
@@ -427,7 +427,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id: 130,
+    id:130,
     nombre: 'LaFiestaDeDracula',
     titulo: 'La fiesta de Drácula',
     escena: 'LaFiestaDeDracula',
@@ -446,7 +446,7 @@ export default [
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
-    id: 132,
+    id:132,
     nombre: 'PrendiendoLasCompusParametrizado',
     titulo: 'Prendiendo las compus parametrizado',
     escena: 'PrendiendoLasCompus',
@@ -497,8 +497,6 @@ export default [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
   },
-
-
   {
     id: 136,
     nombre: 'DibujoLibre',

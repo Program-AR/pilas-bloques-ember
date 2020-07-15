@@ -1,0 +1,59 @@
+{{#unless cargando}}
+    <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column" "exercise-buttons-card exercise-actions flex layout-row"}}>
+        
+        <SceneButton 
+            @class="step-by-step-button-container"
+            @element-id="step-by-step-run-button"
+            @label="Paso"
+            @icon="skip_next"
+            @isHidden={{or (not needShowStepByStepButtons) running}}
+            @isDisabled={{running}} 
+            @isMini={{shouldUseFloatingMode}} 
+            @onClick={{step-by-step-execution}}
+            @tooltip="Ejecutar paso a paso la solución propuesta"
+        />
+
+        <SceneButton 
+            @class="step-by-step-button-container"
+            @element-id="run-step-button"
+            @label="Paso"
+            @icon="skip_next"
+            @isHidden={{or (not needShowStepByStepButtons) (not running)}}
+            @isDisabled={{not isPausedOnBreackpoint}} 
+            @isMini={{shouldUseFloatingMode}} 
+            @onClick={{step}}
+            @tooltip="Avanzar un paso" 
+        />
+
+        <SceneButton 
+            @class="run-button-container"
+            @element-id="run-button"
+            @label="Ejecutar"
+            @icon="play_arrow"
+            @isHidden={{running}}
+            @isDisabled={{running}} 
+            @isMini={{shouldUseFloatingMode}} 
+            @onClick={{run}}
+            @tooltip="Ejecutar la solución propuesta"
+        />
+
+        <SceneButton 
+            @class="restart-button-container"
+            @element-id="restart-button"
+            @label="Reiniciar"
+            @icon="refresh"
+            @isHidden={{not running}}
+            @isDisabled={{not running}} 
+            @isMini={{shouldUseFloatingMode}} 
+            @onClick={{reset}}
+            @tooltip="Reiniciar la ejecución" 
+        />
+
+        {{#unless shouldUseFloatingMode}}
+            <span class="flex"></span>
+        {{/unless}}
+
+        <TurboModeToggle class={{if shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{pilas}} />
+
+    </PaperCard>
+{{/unless}}

@@ -1,0 +1,7 @@
+<Toggle @element-id="turbo-button" @isChecked={{turboMode}} @onToggle={{action 'updateTurboMode'}} @tooltip={{if turboMode "Desactivar el modo Turbo" "Activar el modo Turbo"}}>
+    <i class="slider-icon fa fa-bolt"></i>
+</Toggle>
+
+<Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>
+    {{if turboMode "ACTIVADO" "DESACTIVADO"}}
+</Toast>

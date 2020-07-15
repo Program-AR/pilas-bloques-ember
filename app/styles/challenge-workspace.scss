@@ -1,0 +1,40 @@
+.workspace {
+  background-color: var(--theme-background-secondary-color);
+}
+
+.exercise-details {
+  background-color: var(--theme-background-secondary-color);
+  align-self: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.pilas-blockly {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+}
+
+.pilas-blockly-container {
+  background-color: var(--theme-background-color);
+  border-radius: 10px;
+  position: inherit;
+  width: 100%; 
+  min-width: 700px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 0px;
+  min-height: calc(100vh - 210px); // calculate the height minus header and footer in px.
+}
+
+.floating-mode {
+  height: calc(100vh - 70px);
+  margin-top: 10px;
+  margin-right: 5px;
+}
+
+#draggable {
+  position: inherit;
+  z-index: 30;
+}
