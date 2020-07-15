@@ -2,6 +2,8 @@
 VERSION=$(shell scripts/obtenerVersion.sh)
 # El NOMBRE lo usa el empaquetador para crear archivos y carpetas y para darle nombre a los binarios
 NOMBRE=$(shell scripts/obtenerNombre.sh)
+# La ruta del ejecutable de ember
+EMBER=./node_modules/.bin/ember
 
 N=[0m
 G=[01;32m
@@ -53,23 +55,23 @@ watch_ejercicios:
 build: 
 	@npm run build
 
-compilar_web: ./node_modules/ember-cli/bin/ember build --environment=web --output-path dist_web
+compilar_web: $(EMBER) build --environment=web --output-path dist_web
 
 compilar_live:
-	./node_modules/ember-cli/bin/ember build --watch
+	$(EMBER) build --watch
 
 compilar_pilasweb: # Para cuando se quiere probar los cambios a pilasweb SIN releasearlo
 	cd ../pilasweb; make build
 	cp -rf ../pilasweb/dist node_modules/pilasweb/
 
 version_patch:
-	./node_modules/ember-cli/bin/ember release
+	$(EMBER) release
 
 version_minor:
-	./node_modules/ember-cli/bin/ember release --minor
+	$(EMBER) release --minor
 
 version_major:
-	./node_modules/ember-cli/bin/ember release --major
+	$(EMBER) release --major
 
 empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
