@@ -3,6 +3,21 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.6.0 (20 de Julio de 2020)
+  *  ¡Rediseñamos la aplicación! Ahora la página se puede ver y usar mejor en dispositivos como celulares y tablets. 
+  *  La nueva disposición privilegia los bloques poniéndolos a la izquierda y poniéndoles un ancho mínimo para que en cualquier pantalla haya lugar para los mismos.
+  *  Tenemos una cabecera nueva, que muestra el libro, capítulo y desafío actual, con la idea de "breadcrumb". Ocupa menos alto que antes, y al acortarse se adapta al tamaño reduciendo el contenido textual. 
+  *  Cuando la cabecera no tiene espacio, el "breadcrumb" se transforma en un "burger menu", desplegable.
+  *  Tenemos un modo nocturno, apropiado para descansar la vista, o por gusto personal. Pone el fondo oscuro y adecúa los colores.
+  *  El enunciado y las pistas están visibles arriba de todo, y se puede alternar entre el enunciado y las pistas.
+  *  Se agrega un recordatoroio de rotado del dispositivo para usarse en modo horizontal cuando no alcanza el espacio.
+  *  Ahora el tamaño del escenario se ajusta al tamaño de la pantalla, creciendo al máximo de ancho (420px) sólo si tiene lugar.
+  *  Se agrega el modo "pantalla completa", que sirve para tener toda la pantalla disponible para poder programar, y la posibilidad de ocultar el escenario mientras se programa (o tenerlo como miniatura móvil).
+  *  Utilizamos "meta viewport" para escalar (reducir) el tamaño de la aplicación cuando se abre en celulares, lo que nos permite, junto con unos pocos media queries, que se pueda ver en todas las resoluciones que figuraban en Analytics.
+  *  Ahora las imágenes de los libros se ven bien en celulares. 
+  *  Se actualiza la flecha "Ejecutá varias veces" para que apunte a la nueva posición del botón Ejecutar y que diga algo más adecuado conceptualmente: "Hay varios escenarios".
+  *  Ahora las barras de navegación horizontales y verticales aparecen cuando a Pilas Bloques no le alcanza el tamaño para mostrarse, así se puede navegar por la aplicación aunque la pantalla sea pequeña.
+
 * 1.5.2 (27 de Septiembre de 2019)
   * Al ejecutar siempre se actualizan los escenarios aleatorios.
   * Se permite ejecutar soluciones con proccedimientos vacíos.
