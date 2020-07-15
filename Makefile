@@ -86,7 +86,7 @@ empaquetar = @echo "${G}Empaquetando binarios para $(1) $(2)...${N}"; node_modul
 _empaquetar_osx:
 	rm -f binarios/${NOMBRE}-${VERSION}.dmg
 	$(call empaquetar,darwin,all,icns)
-	hdiutil create binarios/${NOMBRE}-${VERSION}.dmg -srcfolder ./binarios/${NOMBRE}-darwin-x64/${NOMBRE}.app -size 200mb
+	hdiutil create binarios/${NOMBRE}-${VERSION}.dmg -srcfolder ./binarios/${NOMBRE}-darwin-x64/${NOMBRE}.app -size 1g
 
 _empaquetar_win32:
 	$(call empaquetar,win32,ia32,ico)
