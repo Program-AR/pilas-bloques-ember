@@ -46,7 +46,7 @@ before_deploy:
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para
   compilar"   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make empaquetar                                    ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 make empaquetar                     ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ;
   fi

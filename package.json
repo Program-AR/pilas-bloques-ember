@@ -32,9 +32,11 @@
   },
   "scripts": {
     "build": "ember build",
+    "build:web": "ember build --environment=web --output-path dist_web",
     "start": "ember server",
     "test": "ember test --serve",
-    "test:CI": "ember test"
+    "test:CI": "ember test",
+    "clean": "rm -rf node_modules dist dist_web"
   },
   "engines": {
     "node": ">= 0.10.0"

@@ -55,8 +55,6 @@ watch_ejercicios:
 build: 
 	@npm run build
 
-compilar_web: $(EMBER) build --environment=web --output-path dist_web
-
 compilar_live:
 	$(EMBER) build --watch
 

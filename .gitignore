@@ -1,5 +1,6 @@
 # compiled output
 /dist
+/dist_web
 /tmp
 
 .DS_Store
@@ -20,10 +21,6 @@
 npm-debug.log
 testem.log
 */**/.directory
-
-
-dist_web
-dist_website
 
 log_descompresion.log
 *.pyc
