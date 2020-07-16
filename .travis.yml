@@ -70,14 +70,14 @@ deploy:
       condition: "$TRAVIS_OS_NAME == osx"
   - provider: surge # Whenever master gets updated, update master site.
     project: ./dist/
-    domain: master-pilas-bloques.surge.sh
+    domain: master-pilasbloques.surge.sh
     skip_cleanup: true
     on:
       branch: master
       condition: "$TRAVIS_OS_NAME == linux"
   - provider: surge # Whenever develop gets updated, update develop site.
     project: ./dist/
-    domain: develop-pilas-bloques.surge.sh
+    domain: develop-pilasbloques.surge.sh
     skip_cleanup: true
     on:
       branch: develop
