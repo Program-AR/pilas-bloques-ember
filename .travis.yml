@@ -46,9 +46,11 @@ before_deploy: # Prepare OSX to pack binaries, and Linux to publish webpage to S
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para
   compilar"   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 120 make empaquetar                     ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 120 make empaquetar                    ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development            ;
+  fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g surge                             ;
   fi
 deploy:
   - provider: releases # When there is a tag, pack the installers and upload to Github.
