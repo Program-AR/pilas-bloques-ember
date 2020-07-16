@@ -29,13 +29,14 @@ before_install:
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli
-- npm install -g surge
 before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ;
   fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg wine-stable    ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ;
+  fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask install wine-stable                      ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ;
   fi
@@ -50,6 +51,7 @@ before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ;
   fi
 after_success:
+- npm install -g surge
 - test $TRAVIS_BRANCH = "develop" && ember build --environment=development
 - test $TRAVIS_BRANCH = "develop" && surge ./dist/ develop-pilas-bloques.surge.sh
 - test $TRAVIS_BRANCH = "master" && ember build --environment=development
