@@ -1,0 +1,33 @@
+appId: ar.program.pilas-bloques
+
+productName: Pilas Bloques
+
+directories:
+  app: ./dist
+  buildResources: ./packages
+  output: ./packages
+
+win:
+  target:
+  - target: nsis
+    arch:
+      - x64
+      - ia32
+  icon: ./packaging/icono.ico
+
+linux:
+  category: Education
+  target:
+    - target: AppImage
+    - target: deb
+    - target: zip
+      arch:
+        - x64
+        - ia32
+  icon: ./packaging/icono.icns
+
+mac:
+  category: Education
+  target:
+    - target: dmg
+  icon: ./packaging/icono.icns

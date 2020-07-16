@@ -28,4 +28,5 @@ dist_website
 log_descompresion.log
 *.pyc
 /docs/
-/binarios/
+/binaries/
+/packages/

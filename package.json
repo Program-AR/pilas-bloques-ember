@@ -1,7 +1,7 @@
 {
   "name": "pilasbloques",
   "productName": "Pilas Bloques",
-  "genericName": "Programacion con bloques",
+  "genericName": "Programación con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
   "version": "1.5.3",
   "homepage": "http://pilasbloques.program.ar",
@@ -26,10 +26,7 @@
     "Nahuel Palumbo <nahuel.palumbo@gmail.com> (https://github.com/PalumboN)"
   ],
   "private": true,
-  "directories": {
-    "doc": "doc",
-    "test": "tests"
-  },
+  "main": "electron.js",
   "scripts": {
     "build": "ember build",
     "start": "ember server",
@@ -51,11 +48,6 @@
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^4.2.0",
     "devtron": "^1.4.0",
-    "electron": "^9.0.5",
-    "electron-installer-debian": "^3.1.0",
-    "electron-installer-flatpak": "^0.8.0",
-    "electron-packager": "^15.0.0",
-    "electron-rebuild": "^1.11.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.6.0",
     "ember-blockly": "^0.3.0",
@@ -76,7 +68,6 @@
     "ember-cli-yuidoc": "0.9.1",
     "ember-composable-helpers": "4.2.1",
     "ember-data": "3.19.0",
-    "ember-electron": "^2.10.2",
     "ember-exam": "5.0.1",
     "ember-export-application-global": "^2.0.1",
     "ember-font-awesome": "4.0.0-rc.4",
@@ -91,53 +82,13 @@
     "ember-route-action-helper": "2.0.8",
     "ember-sinon": "5.0.0",
     "ember-source": "3.19.0",
+    "electron": "^9.1.0",
+    "electron-builder": "22.7.0",
     "faker": "4.1.0",
     "liquid-fire": "^0.31.0",
     "loader.js": "4.7.0",
     "qunit-dom": "1.2.0",
     "sass": "^1.26.9",
     "yuidoc-ember-cli-theme": "1.0.4"
-  },
-  "main": "electron.js",
-  "ember-electron": {
-    "WHAT IS THIS?": "Please see the README.md",
-    "copy-files": [
-      "electron.js",
-      "package.json"
-    ],
-    "name": null,
-    "platform": null,
-    "arch": null,
-    "version": null,
-    "app-bundle-id": null,
-    "app-category-type": null,
-    "app-copyright": null,
-    "app-version": null,
-    "asar": null,
-    "asar-unpack": null,
-    "asar-unpack-dir": null,
-    "build-version": null,
-    "cache": null,
-    "extend-info": null,
-    "extra-resource": null,
-    "helper-bundle-id": null,
-    "icon": null,
-    "ignore": null,
-    "out": null,
-    "osx-sign": {
-      "identity": null,
-      "entitlements": null,
-      "entitlements-inherit": null
-    },
-    "overwrite": null,
-    "prune": null,
-    "strict-ssl": null,
-    "version-string": {
-      "CompanyName": null,
-      "FileDescription": null,
-      "OriginalFilename": null,
-      "ProductName": null,
-      "InternalName": null
-    }
   }
 }
