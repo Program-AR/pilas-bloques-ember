@@ -108,4 +108,4 @@ electron_build_mac:
 electron_build:
 	@ make electron_build_win
 	@ make electron_build_linux
-	# @ make electron_build_mac
+	@ make electron_build_mac
