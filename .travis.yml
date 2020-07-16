@@ -29,7 +29,7 @@ before_install:
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli
-before_deploy:
+before_deploy: # Prepare OSX to pack binaries, and Linux to publish webpage to Surge.
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ;
@@ -46,29 +46,37 @@ before_deploy:
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para
   compilar"   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 30 make empaquetar                     ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then travis_wait 120 make empaquetar                     ;
   fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ;
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development            ;
   fi
-after_success:
-- npm install -g surge
-- test $TRAVIS_BRANCH = "develop" && ember build --environment=development
-- test $TRAVIS_BRANCH = "develop" && surge ./dist/ develop-pilas-bloques.surge.sh
-- test $TRAVIS_BRANCH = "master" && ember build --environment=development
-- test $TRAVIS_BRANCH = "master" && surge ./dist/ master-pilas-bloques.surge.sh
 deploy:
-  skip_cleanup: true
-  provider: releases
-  prerelease: true
-  api_key:
-    secure: 1ShkmF5gvpFKzCeGCPqzFl1Lm2Ox6fh0oxDWMaGKBSQW6sgeEY6TIhbYcSh4cqOSrBxazMNC4/JZ4F/I6p4fdyxESNN+aioJR02kbHRUHDC7OUPt3YfqYTQt2yAp31YItEeiwac2F7y4y54u1lAN1Ig0nKaGglKWOORhW7olsX1ZoPItkXPGvwpw8e1VKrR/F/zRhk/OYkoV7Ix/x3Zr5y1i0E25RCQa7U88Ov3h0ErkgfFtmzcI2I9ZZSw7S5ZQi7LyLYUx+29uIHvZb2h7LkZTqJOhfGqn1wgp3FSmRADxD9Gpmm56Ol+OZ9EML9SuWmtKVMPnp7xWnp+fafvrwcROdTHacFHCJNi9HUz7qMb9hHLgLFVOSso8DHrb41Em4r49AkaZC5MPe0VnrVRyuV/Neo/xBhjt0RYSBWViUVKx4O3wH0EhspkZBcpBwnKbhQ9qXB2cgbqnmreDdSyyU5exy/2i7OhNm2WGZK71eMosVdLu6RBiDmHws8jUSDIBmpo/RNSO+G8G7RaSz3+Zo20xpMDlnu+7lr/DiV8Su7186f2O7VIOpvpla3GQDRwJf2rllJn6CkGGrb4+b/N+azWs2meuzFrY/cA06IHztKMIlBF1jOawCTU2Ladc4GwbeREFHKe4J7Zt1lyCTRBl4DjjE0CvgeHFLWiDGzyZ6Uw=
-  file:
-  - binarios/${NOMBRE}-${VERSION}.dmg
-  - binarios/${NOMBRE}-${VERSION}.exe
-  - binarios/${NOMBRE}-${VERSION}-linux-x64.zip
-  - binarios/${NOMBRE}-${VERSION}-linux-ia32.zip
-  - binarios/${NOMBRE}_${VERSION_DEB}_amd64.deb
-  on:
-    tags: true
-    all_branches: true
-    condition: "$TRAVIS_OS_NAME == osx"
+  - provider: releases # When there is a tag, pack the installers and upload to Github.
+    skip_cleanup: true
+    prerelease: true
+    api_key:
+      secure: 1ShkmF5gvpFKzCeGCPqzFl1Lm2Ox6fh0oxDWMaGKBSQW6sgeEY6TIhbYcSh4cqOSrBxazMNC4/JZ4F/I6p4fdyxESNN+aioJR02kbHRUHDC7OUPt3YfqYTQt2yAp31YItEeiwac2F7y4y54u1lAN1Ig0nKaGglKWOORhW7olsX1ZoPItkXPGvwpw8e1VKrR/F/zRhk/OYkoV7Ix/x3Zr5y1i0E25RCQa7U88Ov3h0ErkgfFtmzcI2I9ZZSw7S5ZQi7LyLYUx+29uIHvZb2h7LkZTqJOhfGqn1wgp3FSmRADxD9Gpmm56Ol+OZ9EML9SuWmtKVMPnp7xWnp+fafvrwcROdTHacFHCJNi9HUz7qMb9hHLgLFVOSso8DHrb41Em4r49AkaZC5MPe0VnrVRyuV/Neo/xBhjt0RYSBWViUVKx4O3wH0EhspkZBcpBwnKbhQ9qXB2cgbqnmreDdSyyU5exy/2i7OhNm2WGZK71eMosVdLu6RBiDmHws8jUSDIBmpo/RNSO+G8G7RaSz3+Zo20xpMDlnu+7lr/DiV8Su7186f2O7VIOpvpla3GQDRwJf2rllJn6CkGGrb4+b/N+azWs2meuzFrY/cA06IHztKMIlBF1jOawCTU2Ladc4GwbeREFHKe4J7Zt1lyCTRBl4DjjE0CvgeHFLWiDGzyZ6Uw=
+    file:
+    - binarios/${NOMBRE}-${VERSION}.dmg
+    - binarios/${NOMBRE}-${VERSION}.exe
+    - binarios/${NOMBRE}-${VERSION}-linux-x64.zip
+    - binarios/${NOMBRE}-${VERSION}-linux-ia32.zip
+    - binarios/${NOMBRE}_${VERSION_DEB}_amd64.deb
+    on:
+      tags: true
+      all_branches: true
+      condition: "$TRAVIS_OS_NAME == osx"
+  - provider: surge # Whenever master gets updated, update master site.
+    project: ./dist/
+    domain: master-pilas-bloques.surge.sh
+    skip_cleanup: true
+    on:
+      branch: master
+      condition: "$TRAVIS_OS_NAME == linux"
+  - provider: surge # Whenever develop gets updated, update develop site.
+    project: ./dist/
+    domain: develop-pilas-bloques.surge.sh
+    skip_cleanup: true
+    on:
+      branch: develop
+      condition: "$TRAVIS_OS_NAME == linux"
