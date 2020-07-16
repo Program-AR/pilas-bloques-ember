@@ -71,7 +71,7 @@ version_minor:
 version_major:
 	$(EMBER) release --major
 
-empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_linux
+empaquetar: build _preparar_electron _empaquetar_osx _empaquetar_win32 _empaquetar_linux
 	@echo "${G}Listo, los binarios se generaron en el directorio 'binarios'.${N}"
 
 _preparar_electron:
