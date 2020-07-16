@@ -36,7 +36,7 @@ before_deploy:
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ;
   fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew cask install wine-stable                      ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/cask-versions/wine-devel     ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ;
   fi
