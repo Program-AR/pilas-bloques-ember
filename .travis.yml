@@ -20,7 +20,7 @@ install:
 - npm install
 script:
 - node -v
-- npm run test:CI
+# - npm run test:CI
 before_script:
 - export DISPLAY=:99.0
 before_install:
@@ -35,7 +35,7 @@ before_deploy:
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ;
   fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ;
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg wine-stable    ;
   fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ;
   fi
@@ -50,9 +50,10 @@ before_deploy:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then echo "Evitando hacer binarios en linux...."      ;
   fi
 after_success:
-- ember build --environment=development
+- test $TRAVIS_BRANCH = "develop" && ember build --environment=development
 - test $TRAVIS_BRANCH = "develop" && surge ./dist/ develop-pilas-bloques.surge.sh
-- test $TRAVIS_BRANCH = "master"  && surge ./dist/ master-pilas-bloques.surge.sh
+- test $TRAVIS_BRANCH = "master" && ember build --environment=development
+- test $TRAVIS_BRANCH = "master" && surge ./dist/ master-pilas-bloques.surge.sh
 deploy:
   skip_cleanup: true
   provider: releases
