@@ -8,6 +8,7 @@
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import 'ember-paper';
+@import 'exercises-books.scss';
 @import "fireworks.scss";
 @import "font-awesome.scss";
 @import "footer.scss";
@@ -86,10 +87,6 @@ p {
   color: #f8f8f8;
 }
 
-.book-title {
-  margin-top: -7px;
-}
-
 .nw-zoom {
   display: inline-block;
   margin-right: 10px;
@@ -148,13 +145,50 @@ span.url {
   right: 0;
   overflow-y: hidden;
   padding: 20px;
-  background-color: var(--theme-modal-background-color);
+  background-color: var(--theme-box-container-color);
   color: var(--theme-font-color);
 }
 
+.box {
+  font-size: 18px;
+  text-align: center;
+}
+
+.box p {
+  font-size: 21px;
+}
+
 .jumbotron {
-  background-color: var(--theme-modal-background-color);
-  color: var(--theme-font-color);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+  background-color: var(--theme-box-container-color);
+  // box-shadow: inset 0 2px 0 rgba(0, 0, 0, 0.05);
+  // color: var(--theme-font-color);
+  // border: 1px solid #e7e7e7;
+  // border-top-color: rgb(231, 231, 231);
+  // border-top-style: solid;
+  // border-top-width: 1px;
+  // border-right-color: rgb(231, 231, 231);
+  // border-right-style: solid;
+  // border-right-width: 1px;
+  // border-bottom-color: rgb(231, 231, 231);
+  // border-bottom-style: solid;
+  // border-bottom-width: 1px;
+  // border-left-color: rgb(231, 231, 231);
+  // border-left-style: solid;
+  // border-left-width: 1px;
+  // border-image-source: initial;
+  // border-image-slice: initial;
+  // border-image-width: initial;
+  // border-image-outset: initial;
+  // border-image-repeat: initial;
+}
+
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
 }
 
 .table-preferencias td, .table-preferencias th {
@@ -251,18 +285,6 @@ span.url {
   border: 1px solid rgb(255, 255, 103);
   border-radius: 10px;
   padding: 10px;
-}
-
-.box {
-  font-size: 18px;
-  box-shadow: 0 0 10px rgb(180, 180, 180);
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-}
-
-.box p {
-  font-size: 21px;
 }
 
 .em-modal {
