@@ -1,0 +1,10 @@
+{{#if challenge.deshabilitado}}
+  <img class='grayscale semi-transparente' src='images/desafios/{{challenge.nombreImagen}}'>
+  <div class="ribbon right gray semi-transparente"><a>Muy pronto</a></div>
+{{else}}
+  {{#link-to "desafio" challenge (query-params codigo="")}}
+    <img class='desafio-img' src='imagenes/desafios/{{challenge.nombreImagen}}'>
+  {{/link-to}}
+{{/if}}
+
+  <div class='pilas-desafio-titulo'>{{challenge.titulo}}</div>
