@@ -15,6 +15,7 @@
 @import "menu.scss";
 @import "modal.scss";
 @import "night-mode-toggle.scss";
+@import "link.scss";
 @import "phone-rotation-warning.scss";
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
@@ -57,12 +58,36 @@
   cursor: not-allowed;
 }
 
+.show-version {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: var(--code-background-color);
+  border-radius: 4px;
+}
+
 input, textarea {
   -webkit-touch-callout:default;
   -webkit-user-select:text;
   -moz-user-select:text;
   -ms-user-select:text;
   user-select:text;
+}
+
+p {
+  font-size: 18px;
+  font-family: "Source Sans Pro";
+  font-weight: 300;
+}
+
+.visit-website .md-button {
+  background-color:#449d44;
+  border-color:    #398439;
+  color: #f8f8f8;
+}
+
+.book-title {
+  margin-top: -7px;
 }
 
 .nw-zoom {
@@ -385,9 +410,8 @@ a:hover {
   cursor: pointer;
 }
 
-.pilas-libro-contenedor {
+.exercises-book-container {
   display: inline-block;
-  background-image: url('../imagenes/pilas-libro.png');
   background-repeat: no-repeat;
   background-position: center top;
   width: 388px;
@@ -395,17 +419,17 @@ a:hover {
   padding-top: 20px;
 }
 
-.pilas-libro-contenedor h2 {
+.exercises-book-container h2 {
   margin: 0;
   font-size: 20px;
 }
 
-.pilas-libro-contenedor img {
+.exercises-book-container img {
   margin: auto;
   display: block;
 }
 
-.pilas-libro-contenedor p {
+.exercises-book-container p {
   padding-top: 3px;
   font-style: italic;
 }
@@ -428,7 +452,7 @@ a:hover {
   border-radius: 6px;
 }
 
-.pilas-libro-contenedor a:hover {
+.exercises-book-container a:hover {
   text-decoration: none;
 }
 

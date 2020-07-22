@@ -15,22 +15,17 @@
       Los desafíos que ofrecemos están organizados en dos grupos:
     </p>
 
-    {{#each model as |libro|}}
-      {{#unless libro.oculto}}
-        {{pilas-libro libro=libro}}
+    {{#each model as |book|}}
+      {{#unless book.oculto}}
+        {{exercises-book book=book}}
       {{/unless}}
     {{/each}}
 
     <hr>
 
     <p>
-      Visitá la sección {{#link-to "acercade"}}<strong>Acerca de</strong>{{/link-to}}
+      Visitá la sección<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>Acerca de</strong></Link>
       para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
-    </p>
-
-    <p>
-      Si necesitás ayuda, presioná ({{fa-icon "question"}}) ubicado en la parte superior derecha
-      de la pantalla.
     </p>
 
   </div>

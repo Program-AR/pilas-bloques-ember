@@ -1,0 +1,12 @@
+{{yield}}
+
+<Link @href={{href-to "libros.verLibro" book}} @openOnNewTab={{false}}>
+
+  {{#if book.nombre}}
+    <img src="imagenes/libros/{{book.nombre}}.png"/>
+  {{/if}}
+
+  <h3 class="book-title">{{book.titulo}}</h3>
+</Link>
+
+<p>{{book.descripcion}}</p>

@@ -4,13 +4,26 @@
 	<div class='contenedor-acercade'>
 		<DescripcionAcercaDe /> <!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver Makefile de ese proyecto -->
 
-		<p>Actualmente estás usando la versión <code>{{app-version}}</code>
+		<p>Actualmente estás usando la versión <code class="show-version">{{app-version}}</code>
 			{{#if hayActualizacion}}
 			 	(y se puede actualizar a la versión {{versionMasReciente}})
 			{{/if}}
 			</p>
 		<p>
-		<button class='btn btn-warning' {{action "visitarWeb"}}>{{fa-icon "globe"}} Visitar la web del proyecto</button>
+		
+		<Button 
+			class='visit-website'
+            @isDisabled={{false}}
+            @isFab={{false}} 
+            @isMini={{false}}
+            @isRaised={{true}}
+            @element-id={{"visit-website"}}
+            @tooltip={{"visita la web del proyecto"}}
+            @onClick={{action "visitarWeb"}}
+        >
+			{{fa-icon "globe"}} Visitar la web del proyecto
+		</Button>
+		
 		{{pilas-update}}
 		</p>
 	</div>
