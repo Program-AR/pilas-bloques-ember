@@ -98,7 +98,6 @@
     "loader.js": "4.7.0",
     "qunit-dom": "1.2.0",
     "sass": "^1.26.9",
-    "source-sans-pro": "^3.6.0",
     "yuidoc-ember-cli-theme": "1.0.4"
   },
   "main": "electron.js",
