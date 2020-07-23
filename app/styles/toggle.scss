@@ -61,3 +61,8 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
+  .glow input:checked + .slider {
+      box-shadow: 0 0 10px 0 transparentize(#3EA6FF, 0.5);
+      background-color: #3EA6FF;
+  }
