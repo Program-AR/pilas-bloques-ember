@@ -8,9 +8,6 @@ export default [
     titulo: 'Primer Ciclo',
     descripcion: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"',
     modoLecturaSimple: true, // modo de lectura para niños pequeños.
-    desafiosCortos: true // significa que en un grupo/serie de desafíos, se deben hacer uno detrás del otro.
-    // sirve particularmente para mostrar el título de la serie en el desafío.
-    // ver challenge-workspace.hbs
   },
   {
     id: 2,
@@ -26,7 +23,6 @@ export default [
     capituloIds: ['manual1cPrimariaCapturasCap3', 'manual1cPrimariaCapturasCap4', 'manual1cPrimariaCapturasCap5'],
     titulo: 'Primer ciclo para hacer capturas',
     modoLecturaSimple: true,
-    desafiosCortos: true,
     oculto: true
   }
 
