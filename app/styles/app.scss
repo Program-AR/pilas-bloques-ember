@@ -3,12 +3,12 @@
 @import "button.scss";
 @import "challenge-workspace.scss";
 @import "challenge-workspace-buttons.scss";
+@import 'challenges-book.scss';
 @import "congratulations-modal.scss";
 @import "disclaimer-principal.scss";
 @import "ember-modal-dialog/ember-modal-structure";
 @import "ember-modal-dialog/ember-modal-appearance";
 @import 'ember-paper';
-@import 'exercises-books.scss';
 @import "fireworks.scss";
 @import "font-awesome.scss";
 @import "footer.scss";
@@ -87,7 +87,7 @@ p {
   @extend .application-font;
 }
 
-.visit-website .md-button {
+.visit-website .md-button, .visit-website .md-button:not([disabled]):hover {
   background-color:#449d44;
   border-color:    #398439;
   color: #f8f8f8;
@@ -412,7 +412,7 @@ a:hover {
   cursor: pointer;
 }
 
-.exercises-book-container {
+.challenges-book-container {
   display: inline-block;
   background-repeat: no-repeat;
   background-position: center top;
@@ -421,17 +421,17 @@ a:hover {
   padding-top: 20px;
 }
 
-.exercises-book-container h2 {
+.challenges-book-container h2 {
   margin: 0;
   font-size: 20px;
 }
 
-.exercises-book-container img {
+.challenges-book-container img {
   margin: auto;
   display: block;
 }
 
-.exercises-book-container p {
+.challenges-book-container p {
   padding-top: 3px;
   font-style: italic;
 }
@@ -454,7 +454,7 @@ a:hover {
   border-radius: 6px;
 }
 
-.exercises-book-container a:hover {
+.challenges-book-container a:hover {
   text-decoration: none;
 }
 

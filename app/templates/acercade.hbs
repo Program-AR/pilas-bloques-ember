@@ -1,3 +1,5 @@
+{{!-- ¡WARNING! this component is used also in others pilas-engine-bloques-website project. --}}
+
 <Header/>
 {{outlet}}
 <div class='contenido-principal'>
@@ -13,9 +15,6 @@
 		
 		<Button 
 			class='visit-website'
-            @isDisabled={{false}}
-            @isFab={{false}} 
-            @isMini={{false}}
             @isRaised={{true}}
             @element-id={{"visit-website"}}
             @tooltip={{"visita la web del proyecto"}}
