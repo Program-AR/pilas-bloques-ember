@@ -3,6 +3,7 @@
 @import "button.scss";
 @import "challenge-workspace.scss";
 @import "challenge-workspace-buttons.scss";
+@import 'challenges-book.scss';
 @import "congratulations-modal.scss";
 @import "disclaimer-principal.scss";
 @import "ember-modal-dialog/ember-modal-structure";
@@ -15,6 +16,7 @@
 @import "menu.scss";
 @import "modal.scss";
 @import "night-mode-toggle.scss";
+@import "link.scss";
 @import "phone-rotation-warning.scss";
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
@@ -39,6 +41,14 @@
   user-select:none;
 }
 
+$font-family: Roboto, "Helvetica Neue", sans-serif;
+
+.application-font {
+  font-size: 18px;
+  font-family: $font-family;
+  font-weight: 300;
+}
+
 .ember-application {
   background-color: var(--theme-background-secondary-color);
 }
@@ -57,12 +67,30 @@
   cursor: not-allowed;
 }
 
+.show-version {
+  padding: 2px 4px;
+  font-size: 90%;
+  color: #c7254e;
+  background-color: var(--code-background-color);
+  border-radius: 4px;
+}
+
 input, textarea {
   -webkit-touch-callout:default;
   -webkit-user-select:text;
   -moz-user-select:text;
   -ms-user-select:text;
   user-select:text;
+}
+
+p {
+  @extend .application-font;
+}
+
+.visit-website .md-button, .visit-website .md-button:not([disabled]):hover {
+  background-color:#449d44;
+  border-color:    #398439;
+  color: #f8f8f8;
 }
 
 .nw-zoom {
@@ -123,13 +151,30 @@ span.url {
   right: 0;
   overflow-y: hidden;
   padding: 20px;
-  background-color: var(--theme-modal-background-color);
+  background-color: var(--theme-box-container-color);
   color: var(--theme-font-color);
 }
 
+.box {
+  font-size: 18px;
+  text-align: center;
+}
+
+.box p {
+  font-size: 21px;
+}
+
 .jumbotron {
-  background-color: var(--theme-modal-background-color);
-  color: var(--theme-font-color);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0;
+  background-color: var(--theme-box-container-color);
+}
+
+.jumbotron p {
+  margin-bottom: 15px;
+  font-size: 21px;
+  font-weight: 200;
 }
 
 .table-preferencias td, .table-preferencias th {
@@ -141,9 +186,7 @@ span.url {
 }
 
 .fila-opcion {
-  font-size: 18px;
-  font-family: "Source Sans Pro";
-  font-weight: 300;
+  @extend .application-font;
   padding: 10px;
 }
 
@@ -228,18 +271,6 @@ span.url {
   padding: 10px;
 }
 
-.box {
-  font-size: 18px;
-  box-shadow: 0 0 10px rgb(180, 180, 180);
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
-}
-
-.box p {
-  font-size: 21px;
-}
-
 .em-modal {
   background-color: hsla(0, 0%, 0%, 0.44) !important;
 }
@@ -271,9 +302,7 @@ span.url {
 
 
 .page-container li {
-  font-size: 18px;
-  font-family: "Source Sans Pro";
-  font-weight: 300;
+  @extend .application-font;
 }
 
 .pilas-update {
@@ -298,7 +327,7 @@ span.url {
 .pilas-automatic-update a {
   color: rgb(184, 134, 42) !important;
   text-decoration: none !important;
-  font-family: "Source Sans Pro" !important;
+  font-family: $font-family !important;
 }
 
 .pilas-automatic-update a:hover {
@@ -326,9 +355,7 @@ h2 {
 }
 
 .contenedor-acercade li {
-  font-size: 18px;
-  font-family: "Source Sans Pro";
-  font-weight: 300;
+  @extend .application-font;
 }
 
 .contenedor-panel-ayuda {
@@ -385,9 +412,8 @@ a:hover {
   cursor: pointer;
 }
 
-.pilas-libro-contenedor {
+.challenges-book-container {
   display: inline-block;
-  background-image: url('../imagenes/pilas-libro.png');
   background-repeat: no-repeat;
   background-position: center top;
   width: 388px;
@@ -395,17 +421,17 @@ a:hover {
   padding-top: 20px;
 }
 
-.pilas-libro-contenedor h2 {
+.challenges-book-container h2 {
   margin: 0;
   font-size: 20px;
 }
 
-.pilas-libro-contenedor img {
+.challenges-book-container img {
   margin: auto;
   display: block;
 }
 
-.pilas-libro-contenedor p {
+.challenges-book-container p {
   padding-top: 3px;
   font-style: italic;
 }
@@ -428,7 +454,7 @@ a:hover {
   border-radius: 6px;
 }
 
-.pilas-libro-contenedor a:hover {
+.challenges-book-container a:hover {
   text-decoration: none;
 }
 

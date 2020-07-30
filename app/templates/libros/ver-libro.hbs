@@ -6,7 +6,7 @@
 
   <h1>Desafíos del {{model.titulo}}</h1>
 
-  <p>{{#link-to "libros"}}<i class="fa fa-chevron-left"></i> Volver a la lista de libros{{/link-to}}</p>
+  <p><Link @href={{href-to "libros"}} @openOnNewTab={{false}}><i class="fa fa-chevron-left"></i> Volver a la lista de libros</Link></p>
 
   {{#each model.capitulos as |capitulo|}}
     

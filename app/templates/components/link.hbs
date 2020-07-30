@@ -1,0 +1,5 @@
+{{#if inElectron}}
+  <a class="link" {{action "abrirConNavegadorExterno" href}}>{{yield}}</a>
+{{else}}
+  <a class="link" href={{href}} target={{if openOnNewTab '_blank' ''}}>{{yield}}</a>
+{{/if}}

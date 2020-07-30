@@ -1,0 +1,27 @@
+.zoom {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    transition: transform .2s;
+}
+  
+.zoom:hover {
+    transform: scale(1.2);
+}
+
+.book-title {
+    margin: 0px;
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.exercises-book-image {
+    border: 0;
+    padding: 0px;
+    margin: 0px;
+}
+.challenges-book-description i, .challenges-book-description a {
+    color: var(--theme-font-color);
+    font-style: italic;
+    font-size: 14px;
+    height: 65px;
+}
