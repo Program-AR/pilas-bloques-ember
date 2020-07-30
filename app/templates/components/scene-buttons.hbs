@@ -30,8 +30,8 @@
             @element-id="run-button"
             @label="Ejecutar"
             @icon="play_arrow"
-            @isHidden={{running}}
-            @isDisabled={{running}} 
+            @isHidden={{needShowRestartButton}}
+            @isDisabled={{needShowRestartButton}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{run}}
             @tooltip="Ejecutar la solución propuesta"
@@ -42,8 +42,8 @@
             @element-id="restart-button"
             @label="Reiniciar"
             @icon="refresh"
-            @isHidden={{not running}}
-            @isDisabled={{not running}} 
+            @isHidden={{not needShowRestartButton}}
+            @isDisabled={{not needShowRestartButton}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{reset}}
             @tooltip="Reiniciar la ejecución" 

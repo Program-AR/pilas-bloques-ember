@@ -7,7 +7,6 @@ export default Model.extend({
   nombre: attr('string'),
   descripcion: attr('string'),
   modoLecturaSimple: attr('boolean'),
-  desafiosCortos: attr('boolean'),
   oculto: attr('boolean'),
   capitulos: hasMany('capitulo')
 });

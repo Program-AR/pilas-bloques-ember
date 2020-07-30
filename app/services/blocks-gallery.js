@@ -456,8 +456,8 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AbrirCofre', {
-      descripcion: 'Abrir el cofre',
-      icono: 'icono.cofre.png',
+      descripcion: 'Abrir el cofre y tomar sombrero',
+      icono: 'icono.cofreConSombrero.png',
       comportamiento: 'Soltar',
       argumentos: `{
         etiqueta: "CofreAnimado",
