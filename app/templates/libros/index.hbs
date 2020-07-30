@@ -3,34 +3,32 @@
 <div class='contenido-principal'>
 
   <div class="box">
+    
     <p><img class='main-logo' src='imagenes/main-logo.png' width="468" height="262"></p>
     <p>
       ¡Hola! Te damos la bienvenida a <strong>Pilas Bloques</strong>,
       una herramienta para aprender a programar.
     </p>
 
-      <DisclaimerPrincipal/>
+    <DisclaimerPrincipal/>
 
-    <p>
-      Los desafíos que ofrecemos están organizados en dos grupos:
-    </p>
+    <div class="jumbotron center">
+      <p>
+        Los desafíos que ofrecemos están organizados en dos grupos:
+      </p>
 
-    {{#each model as |libro|}}
-      {{#unless libro.oculto}}
-        {{pilas-libro libro=libro}}
-      {{/unless}}
-    {{/each}}
+      {{#each model as |book|}}
+        {{#unless book.oculto}}
+          {{challenges-book book=book class="zoom"}}
+        {{/unless}}
+      {{/each}}
+    </div>
 
     <hr>
-
+    
     <p>
-      Visitá la sección {{#link-to "acercade"}}<strong>Acerca de</strong>{{/link-to}}
+      Visitá la sección<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>Acerca de</strong></Link>
       para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
-    </p>
-
-    <p>
-      Si necesitás ayuda, presioná ({{fa-icon "question"}}) ubicado en la parte superior derecha
-      de la pantalla.
     </p>
 
   </div>
