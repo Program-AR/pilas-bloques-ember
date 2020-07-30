@@ -2,9 +2,9 @@
   <img class='grayscale semi-transparente' src='images/desafios/{{model.nombreImagen}}'>
   <div class="ribbon right gray semi-transparente"><a>Muy pronto</a></div>
 {{else}}
-  {{#link-to "desafio" model (query-params codigo="")}}
+  <Link @href={{href-to "desafio" model (query-params codigo="")}} @openOnNewTab={{false}}>
     <img class='desafio-img' src='imagenes/desafios/{{model.nombreImagen}}'>
-  {{/link-to}}
+  </Link>
 {{/if}}
 
 {{#unless model.grupo.libro.desafiosCortos}}
