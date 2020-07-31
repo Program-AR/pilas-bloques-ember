@@ -71,8 +71,8 @@ moduloActividad(nombre, () => {
 	});
 
 	actividadTest(nombre, {
-		descripcionAdicional: 'No se puede mover a la derecha luego de haber pateado una pelota',
-		errorEsperado: 'No puedo ir para la derecha',
+		descripcionAdicional: 'No puedo patear 2 veces la misma pelota',
+		errorEsperado: 'No puedo patear dos veces la misma pelota',
 		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 			<xml xmlns="http://www.w3.org/1999/xhtml">
 			<variables />
