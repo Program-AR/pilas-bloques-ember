@@ -25,6 +25,7 @@ sudo: false
 
 install:
 - npm install
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
 
 script:
 - node -v
@@ -32,7 +33,7 @@ script:
 - make build _preparar_electron 
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make _empaquetar_osx; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then make _empaquetar_win32; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/obtenerNombre.sh)  --app-version=$(sh scripts/obtenerVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
 
 before_script:
 - export DISPLAY=:99.0
@@ -43,7 +44,6 @@ before_install:
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g electron-installer-debian; fi
 
 before_deploy: # Prepare OSX to pack binaries, and Linux to publish webpage to Surge.
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
