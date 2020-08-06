@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "blockly-package": "^1.0.0",
-    "pilas-bloques-exercises": "^1.2.0",
+    "pilas-bloques-exercises": "1.2.2",
     "proceds-blockly": "^1.0.0"
   },
   "devDependencies": {

@@ -661,17 +661,9 @@ export default Service.extend({
     this.crearBloqueAccion('PatearPelota', {
       descripcion: 'Patear pelota',
       icono: 'icono.pelota.png',
-      comportamiento: 'Interactuar',
+      comportamiento: 'PatearPelota',
       argumentos: `{
-        etiqueta: "PelotaAnimada",
         idTransicion: "patear",
-        comportamientoAdicional: 'SerPateado',
-        argumentosComportamiento: {
-          tiempoEnElAire:25,
-          aceleracion:0.0025,
-          elevacionMaxima:25,
-          gradosDeAumentoStep:-2
-        }
       }`,
     });
 
