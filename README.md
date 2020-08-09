@@ -48,6 +48,20 @@ called "First Cycle", so that children between 5 and 8 years old will be able to
 The tool is designed to help the teacher and the student in the learning process of programming in a school environment. In our didactic sequence, inquiry-based learning is fundamental. Our recommendation, however, is that the teacher be the one who guides and assists the student's learning process.
 
 
+## Contributing
+
+There are many ways in which you can participate in the project, for example:
+
+* [File an issue](https://github.com/Program-AR/pilas-bloques/issues), and help us verify as they are checked in.
+* Review [source code changes](https://github.com/Program-AR/pilas-bloques/pulls).
+* [Submit your first collaboration](https://github.com/Program-AR/pilas-bloques/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+* Follow Pilas Bloques on [Twitter](https://twitter.com/pilasbloques) and let us know what you think!
+
+### Contributors
+
+[contributors](https://github.com/Program-AR/pilas-bloques/graphs/contributors)
+
+
 ## Getting Started
 
 In order to collaborate, first of all you will install [Git](https://git-scm.com/) and then you will must clone the [Pilas Bloques](https://github.com/Program-AR/pilas-bloques) repository.
@@ -131,19 +145,6 @@ npm test
 ```
 npm start
 ```
-
-### Contributing
-
-There are many ways in which you can participate in the project, for example:
-
-* [File an issue](https://github.com/Program-AR/pilas-bloques/issues), and help us verify as they are checked in.
-* Review [source code changes](https://github.com/Program-AR/pilas-bloques/pulls).
-* [Submit your first collaboration](https://github.com/Program-AR/pilas-bloques/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
-* Follow Pilas Bloques on [Twitter](https://twitter.com/pilasbloques) and let us know what you think!
-
-## Contributors
-
-[contributors](https://github.com/Program-AR/pilas-bloques/graphs/contributors)
 
 ### License
 
