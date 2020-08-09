@@ -84,7 +84,7 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo pacman -S python
   ```
   
-  Gentoo Linux:
+  Gentoo:
   ```
   emerge --ask dev-lang/python:3.4
   ```
@@ -106,7 +106,7 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo pacman -S make
   ```
   
-  Gentoo Linux:
+  Gentoo:
   ```
   emerge --ask sys-devel/make:4.3
   ```
