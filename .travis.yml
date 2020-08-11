@@ -1,6 +1,7 @@
 env:
   matrix:
   - MATRIX_EVAL="CC=gcc-4.9 && CXX=g++-4.9"
+
 addons:
   firefox: latest
   apt:
@@ -9,49 +10,47 @@ addons:
     packages:
     - g++-4.9
     - gcc-4.9
+
 language: node_js
+
 os:
 - linux
 - osx
+- windows
+
 services:
 - xvfb
+
 sudo: false
+
 install:
-- npm install
-script:
-- node -v
-# - npm run test:CI
-before_script:
-- export DISPLAY=:99.0
-before_install:
-- npm --version
-- npm config set spin false
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install fakeroot; fi
 - npm install -g grunt-cli
 - npm install -g node-gyp
 - npm install -g ember-cli
-before_deploy: # Prepare OSX to pack binaries, and Linux to publish webpage to Surge.
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install curl                                  ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then cd $TRAVIS_BUILD_DIR && travis/download-homebrew   ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install makensis fakeroot dpkg                ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install homebrew/cask-versions/wine-devel     ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION=$(sh scripts/obtenerVersion.sh)            ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then VERSION_DEB=$(echo ${VERSION} | sed -e
-  's/-/~/g')  ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then NOMBRE=$(sh scripts/obtenerNombre.sh)              ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then echo "Detectando version $VERSION para
-  compilar"   ; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make empaquetar                                    ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development            ;
-  fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g surge                             ;
-  fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g surge; fi
+- npm install
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
+
+script:
+- node -v
+- npm run build
+- cp package.json dist/package.json
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
+
+before_script:
+- export DISPLAY=:99.0
+
+before_install:
+- npm --version
+- npm config set spin false
+
+before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make _empaquetar_osx; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/obtenerNombre.sh)  --app-version=$(sh scripts/obtenerVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development; fi
+
 deploy:
   - provider: releases # When there is a tag, pack the installers and upload to Github.
     skip_cleanup: true
@@ -59,15 +58,38 @@ deploy:
     api_key:
       secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
     file:
-    - binarios/${NOMBRE}-${VERSION}.dmg
-    #- binarios/${NOMBRE}-${VERSION}.exe
     - binarios/${NOMBRE}-${VERSION}-linux-x64.zip
     - binarios/${NOMBRE}-${VERSION}-linux-ia32.zip
     - binarios/${NOMBRE}_${VERSION_DEB}_amd64.deb
     on:
       tags: true
       all_branches: true
+      condition: "$TRAVIS_OS_NAME == linux"
+
+  - provider: releases # When there is a tag, pack the installers and upload to Github.
+    skip_cleanup: true
+    prerelease: true
+    api_key:
+      secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
+    file:
+    - binarios/${NOMBRE}-${VERSION}.dmg
+    on:
+      tags: true
+      all_branches: true
       condition: "$TRAVIS_OS_NAME == osx"
+
+  - provider: releases # When there is a tag, pack the installers and upload to Github.
+    skip_cleanup: true
+    prerelease: true
+    api_key:
+      secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
+    file:
+    - binarios/${NOMBRE}-${VERSION}.exe
+    on:
+      tags: true
+      all_branches: true
+      condition: "$TRAVIS_OS_NAME == windows"
+
   - provider: surge # Whenever master gets updated, update master site.
     project: ./dist/
     domain: master-pilasbloques.surge.sh
@@ -75,6 +97,7 @@ deploy:
     on:
       branch: master
       condition: "$TRAVIS_OS_NAME == linux"
+
   - provider: surge # Whenever develop gets updated, update develop site.
     project: ./dist/
     domain: develop-pilasbloques.surge.sh

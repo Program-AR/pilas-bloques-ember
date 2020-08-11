@@ -1,55 +1,42 @@
 /* jshint node: true */
 
-var electron = require('electron')
+const { app, BrowserWindow } = require('electron')
 
-var app = electron.app
-var mainWindow = null
-var BrowserWindow = electron.BrowserWindow
+function createWindow() {
 
+  // Create the browser window.
+  const win = new BrowserWindow()
 
-var fs = require('fs')
+  win.setMenuBarVisibility(false)
+  win.setMenu(null)
+  win.setMinimumSize(800, 600)
+  win.setSize(1024, 600, true)
+  win.maximize()
 
-app.on('window-all-closed', function onWindowAllClosed() {
-  app.quit()
+  // and load the index.html of the app. 
+  win.loadURL('file://' + __dirname + '/index.html')
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// Some APIs can only be used after this event occurs.
+app.on('ready', function onReady() {
+  createWindow()
 })
 
-app.on('ready', function onReady() {
+app.on('activate', () => {
+  // On macOS it's common to re-create a window in the app when the
+  // dock icon is clicked and there are no other windows open.
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow()
+  }
+})
 
-  mainWindow = new BrowserWindow({
-    width: 1024,
-    height: 600,
-    minWidth: 500,
-    minHeight: 500,
-  })
-
-  // mainWindow.openDevTools()
-
-  delete mainWindow.module
-
-  mainWindow.setMenuBarVisibility(false)
-
-  mainWindow.loadURL('file://' + __dirname + '/index.html')
-  mainWindow.setMenu(null)
-
-  mainWindow.on('closed', function onClosed() {
-    mainWindow = null
-  })
-
-  const { dialog } = require('electron')
-  mainWindow.webContents.session.on('will-download', (event, downloadItem, webContents) => {
-    
-    var fileName = dialog.showSaveDialog({
-      defaultPath: downloadItem.getFilename(),
-      filters: [
-        { name: 'Solución de Pilas Bloques', extensions: ['spbq'] },
-        { name: 'Todos los archivos', extensions: ['*'] }
-      ]
-    })
-
-    if (fileName) {
-      downloadItem.setSavePath(fileName)
-    } else {
-      downloadItem.cancel()
-    }
-  })
+// Quit when all windows are closed, except on macOS. There, it's common
+// for applications and their menu bar to stay active until the user quits
+// explicitly with Cmd + Q.
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit()
+  }
 })
