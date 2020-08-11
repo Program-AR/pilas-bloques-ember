@@ -96,8 +96,7 @@
     "liquid-fire": "^0.31.0",
     "loader.js": "4.7.0",
     "qunit-dom": "1.2.0",
-    "sass": "^1.26.9",
-    "yuidoc-ember-cli-theme": "1.0.4"
+    "sass": "^1.26.9"
   },
   "main": "electron.js",
   "ember-electron": {
