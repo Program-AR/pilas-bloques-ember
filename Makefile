@@ -67,7 +67,7 @@ release_major:
 package = @echo "${G}Generating package for $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NAME} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.$(3)
 
 electron_pre_build:
-	@ echo "${G}Making dist directory works with electron...${N}"
+	@ echo "${G}Making dist directory work with electron...${N}"
 	if ! ([ -d "./binaries" ]); then mkdir ./binaries; fi
 	cp package.json dist/package.json
 	cp packaging/electron.js dist
