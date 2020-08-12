@@ -72,8 +72,7 @@ electron_pre_build:
 	cp package.json dist/package.json
 	cp packaging/electron.js dist
 
-electron_osx_package:
-	make electron_pre_build;
+electron_osx_package: electron_pre_build
 	@ echo "${G}Generating package for osx...${N}"
 	rm -f binarios/${NAME}-${VERSION}.dmg
 	$(call package, darwin, all, icns)
