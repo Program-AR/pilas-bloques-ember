@@ -86,10 +86,7 @@ electron_win32_package:
 	cd binarios/${NAME}-win32-ia32/; makensis instalador.nsi
 	mv binarios/${NAME}-win32-ia32/${NAME}.exe binarios/${NAME}-${VERSION}.exe
 
-electron_linux_packages: 
-	make electron_linux_x64_zip_package 
-	make electron_linux_ia32_zip_package 
-	make electron_linux_x64_deb_package
+electron_linux_packages: electron_linux_x64_zip_package electron_linux_ia32_zip_package electron_linux_x64_deb_package
 
 # This packaging has the problem that it does NOT replace the old Huayra Pilas Bloques app.
 # Also, the debian generator package has a different name than the old one
