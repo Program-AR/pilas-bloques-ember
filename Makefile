@@ -68,7 +68,7 @@ package = @echo "${G}Generating package for $(1) $(2)...${N}"; node_modules/.bin
 
 electron_pre_build:
 	@ echo "${G}Making dist directory work with electron...${N}"
-	if ! ([ -d "./binaries" ]); then mkdir ./binaries; fi
+	mkdir -p ./binaries
 	cp package.json dist/package.json
 	cp packaging/electron.js dist
 
