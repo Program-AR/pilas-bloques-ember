@@ -93,7 +93,7 @@ electron_linux_packages: electron_linux_x64_zip_package electron_linux_ia32_zip_
 electron_linux_x64_deb_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux x64 package for debian...${N}"
-	if [ -f "./binaries/${NAME}_${VERSION}_amd64.deb" ]; then rm "./binaries/${NAME}_${VERSION}_amd64.deb"; fi
+	rm -f "./binaries/${NAME}_${VERSION}_amd64.deb"
 	$(call package, linux, x64, icns)
 	node_modules/.bin/electron-installer-debian --arch amd64 --config=packaging/linux-package.json
 
