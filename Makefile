@@ -26,7 +26,7 @@ commands:
 	@ echo "    ${G}build_pilasweb${N}    					Build Pilas Web dependency."
 	@ echo "    ${G}build_pilas_bloques_exercises${N}		Build Pilas Bloques exercises."
 	@ echo ""
-	@ echo "  ${Y}for deployment:${N}"
+	@ echo "  ${Y}for distribution:${N}"
 	@ echo ""
 	@ echo "    ${G}release_patch${N}     Generate a version (x.x.PATCH)."
 	@ echo "    ${G}release_minor${N}     Generate a version (x.MINOR.x)."
