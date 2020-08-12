@@ -32,9 +32,7 @@ commands:
 	@ echo "    ${G}release_minor${N}     Generate a version (x.MINOR.x)."
 	@ echo "    ${G}release_major${N}     Generate a version (MAJOR.x.x)."
 	@ echo ""
-	@ echo "    ${L}NOTE: every version generates a binary automatically in travis,${N}"
-	@ echo "    ${L}only minor and major versions will be officially distributed.${N}"
-	@ echo "    ${L}The patch versions are internal or test.${N}"
+	@ echo "    ${L}NOTE: every version generates a binary automatically in travis.${N}"
 	@ echo ""
 	@ echo ""
 
