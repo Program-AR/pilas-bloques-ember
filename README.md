@@ -79,41 +79,11 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo apt install python
   ```
   
-  Arch Linux:
-  ```
-  sudo pacman -S python
-  ```
-  
-  Gentoo:
-  ```
-  emerge --ask dev-lang/python:3.4
-  ```
-
-  Fedora:
-  ```
-  dnf install -y python3-setuptools python3-devel
-  ```
-  
 * Make:
 
   Debian/Ubuntu:
   ```
   sudo apt-get install make
-  ```
-  
-  Arch Linux:
-  ```
-  sudo pacman -S make
-  ```
-  
-  Gentoo:
-  ```
-  emerge --ask sys-devel/make:4.3
-  ```
-  
-  Fedora:
-  ```
-  dnf install -y make
   ```
   
 * The Long Term Support (LTS) version of Node S called Dubnium (Version 10.13.0).
