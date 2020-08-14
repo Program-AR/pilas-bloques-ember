@@ -48,7 +48,7 @@ before_install:
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make electron_linux_packages; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make electron_osx_package; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/obtenerNombre.sh)  --app-version=$(sh scripts/obtenerVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/projectName.sh) --app-version=$(sh scripts/projectVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development; fi
 
 deploy:

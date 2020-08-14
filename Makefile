@@ -2,10 +2,10 @@
 EMBER=./node_modules/.bin/ember
 
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
-NAME=$(shell node -p "require('./package.json').name")
+NAME=$(shell scripts/projectName.sh)
 
 # The project version.
-VERSION=$(shell node -p "require('./package.json').version")
+VERSION=$(shell scripts/projectVersion.sh)
 
 N=[0m
 G=[01;32m
@@ -50,7 +50,8 @@ watch_pilas_bloques_exercises:
 	@ echo "${G}Building Pilas Bloques Exercises${N}"
 	cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
 
-build: npm run build
+build: 
+	npm run build
 
 build_live:
 	$(EMBER) build --watch
