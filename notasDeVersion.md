@@ -3,6 +3,15 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.6.1 (24 de agosto de 2020)
+  *  ¡Rediseñamos la pantalla de bienvenida y las fuentes usadas en la aplicación! Ahora esta posee un diseño más elegante.
+  *  Las versiones de escritorio de la aplicación comienzan maximizadas al iniciarlas.
+  *  Al finalizar la ejecución de un ejercicio, ahora se muestra el botón "Reiniciar" en vez de "Ejecutar".
+  *  Al Intentar guardar la solución de un ejercicio ya no salta ningún cartel de error.
+  *  El botón del modo turbo vuelve a mostrar un color brillante para denotar que está activado.
+  *  Se soluciona problema que permitía resolver el ejercicio Fútbol para robots sin la necesidad de patear todas las pelotas.
+  *  Se cambió el nombre y el icono del bloque "abrir el cofre" por "abrir el cofre y tomar sombrero" en el ejercicio La aventura del mar encantado.
+
 * 1.6.0 (20 de Julio de 2020)
   *  ¡Rediseñamos la aplicación! Ahora la página se puede ver y usar mejor en dispositivos como celulares y tablets. 
   *  La nueva disposición privilegia los bloques poniéndolos a la izquierda y poniéndoles un ancho mínimo para que en cualquier pantalla haya lugar para los mismos.
