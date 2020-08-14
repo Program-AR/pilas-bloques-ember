@@ -3,7 +3,7 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
-* 1.6.1 (14 de agosto de 2020)
+* 1.6.1 (24 de agosto de 2020)
   *  ¡Rediseñamos la pantalla de bienvenida y las fuentes usadas en la aplicación! Ahora la página se posee un diseño más elegante.
   *  Las versiones de escritorio de la aplicación comienzan maximizadas al iniciarlas.
   *  Al finalizar la ejecución de un ejercicio, ahora se muestra el botón "Reiniciar" en vez de "Ejecutar".
