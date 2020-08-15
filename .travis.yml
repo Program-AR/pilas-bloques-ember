@@ -46,9 +46,9 @@ before_install:
 - npm config set spin false
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
-- NOMBRE=$(sh scripts/obtenerNombre.sh); fi
-- VERSION=$(sh scripts/obtenerVersion.sh); fi
-- VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g'); fi
+- NOMBRE=$(sh scripts/obtenerNombre.sh)
+- VERSION=$(sh scripts/obtenerVersion.sh)
+- VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make _empaquetar_osx; fi
 - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/obtenerNombre.sh) --app-version=$(sh scripts/obtenerVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
