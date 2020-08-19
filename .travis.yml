@@ -32,28 +32,61 @@ install:
 - npm install
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
 
-script:
-- node -v
-- npm run build
-- cp package.json dist/package.json
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
-
 before_script:
 - export DISPLAY=:99.0
 
 before_install:
 - npm --version
 - npm config set spin false
+- |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        [[ ! -f C:/tools/msys64/msys2_shell.cmd ]] && rm -rf C:/tools/msys64
+        choco uninstall -y mingw
+        choco upgrade --no-progress -y msys2
+        export msys2='cmd //C RefreshEnv.cmd '
+        export msys2+='& set MSYS=winsymlinks:nativestrict '
+        export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
+        export mingw64="$msys2 -mingw64 -full-path -here -c "\"\$@"\" --"
+        export msys2+=" -msys2 -c "\"\$@"\" --"
+        $msys2 pacman --sync --noconfirm --needed mingw-w64-x86_64-toolchain
+        export PATH=/C/tools/msys64/mingw64/bin:$PATH
+        export MAKE=mingw32-make  # so that Autotools can find it
+        choco install nsis
+        export PATH=/C/Program\ Files\ \(x86\)/NSIS/Bin/:$PATH
+        export MAKENSIS=makensis.exe
+        ;;
+    esac
+
+before_cache:
+- |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        # https://unix.stackexchange.com/a/137322/107554
+        $msys2 pacman --sync --clean --noconfirm
+        ;;
+    esac
+
+cache:
+    directories:
+    - $HOME/AppData/Local/Temp/chocolatey
+    - /C/tools/msys64
+
+script:
+- node -v
+- npm run build
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
 - NOMBRE=$(sh scripts/obtenerNombre.sh)
 - VERSION=$(sh scripts/obtenerVersion.sh)
 - VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make _empaquetar_osx; fi
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make _preparar_electron _empaquetar_zip_linux_x64 _empaquetar_zip_linux_ia32 _empaquetar_deb_linux_x64; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make _preparar_electron _empaquetar_osx; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKE _preparar_electron; fi
 - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist ${NOMBRE} --app-version=${VERSION} --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cp packaging/instalador.nsi binarios/${NOMBRE}-win32-ia32/; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cd binarios/${NOMBRE}-win32-ia32/; makensis instalador.nsi; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cp packaging/instalador.nsi binarios/${NOMBRE}-win32-ia32; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKENSIS binarios/${NOMBRE}-win32-ia32/instalador.nsi; fi
 - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mv binarios/${NOMBRE}-win32-ia32/${NOMBRE}.exe binarios/${NOMBRE}-${VERSION}.exe; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development; fi
 
