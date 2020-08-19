@@ -23,18 +23,6 @@ services:
 
 sudo: false
 
-install:
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install fakeroot; fi
-- npm install -g grunt-cli
-- npm install -g node-gyp
-- npm install -g ember-cli
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g surge; fi
-- npm install
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
-
-before_script:
-- export DISPLAY=:99.0
-
 before_install:
 - npm --version
 - npm config set spin false
@@ -58,6 +46,15 @@ before_install:
         ;;
     esac
 
+install:
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install fakeroot; fi
+- npm install -g grunt-cli
+- npm install -g node-gyp
+- npm install -g ember-cli
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install -g surge; fi
+- npm install
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
+
 before_cache:
 - |-
     case $TRAVIS_OS_NAME in
@@ -71,6 +68,9 @@ cache:
     directories:
     - $HOME/AppData/Local/Temp/chocolatey
     - /C/tools/msys64
+
+before_script:
+- export DISPLAY=:99.0
 
 script:
 - node -v
