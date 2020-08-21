@@ -79,7 +79,7 @@ script:
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
 - NAME=$(sh scripts/projectName.sh)
-- VERSION=$(sh scripts/obtenerVersion.sh)
+- VERSION=$(sh scripts/projectVersion.sh)
 - VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make electron_pre_build electron_linux_packages; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make electron_pre_build electron_osx_package; fi
