@@ -101,13 +101,13 @@ electron_linux_x64_deb_package:
 electron_linux_x64_zip_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux x64 zip...${N}"
-	if [ -f "./binaries/${NAME}-${VERSION}-x64.zip" ]; then rm "./binaries/${NAME}-${VERSION}-x64.zip"; fi
+	rm -f ./binaries/${NAME}-${VERSION}-x64.zip
 	$(call package, linux, x64, icns)
 	cd binarios; zip -r ${NAME}-${VERSION}-linux-x64.zip ${NAME}-linux-x64/
 
 electron_linux_ia32_zip_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux ia32 zip...${N}"
-	if [ -f "./binaries/${NAME}-${VERSION}-ia32.zip" ]; then rm "./binaries/${NAME}-${VERSION}-ia32.zip"; fi
+	rm -f ./binaries/${NAME}-${VERSION}-ia32.zip
 	$(call package, linux, ia32, icns)
 	cd binarios; zip -r ${NAME}-${VERSION}-linux-ia32.zip ${NAME}-linux-ia32/
