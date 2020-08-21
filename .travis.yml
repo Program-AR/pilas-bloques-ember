@@ -23,6 +23,29 @@ services:
 
 sudo: false
 
+before_install:
+- npm --version
+- npm config set spin false
+- |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        [[ ! -f C:/tools/msys64/msys2_shell.cmd ]] && rm -rf C:/tools/msys64
+        choco uninstall -y mingw
+        choco upgrade --no-progress -y msys2
+        export msys2='cmd //C RefreshEnv.cmd '
+        export msys2+='& set MSYS=winsymlinks:nativestrict '
+        export msys2+='& C:\\tools\\msys64\\msys2_shell.cmd -defterm -no-start'
+        export mingw64="$msys2 -mingw64 -full-path -here -c "\"\$@"\" --"
+        export msys2+=" -msys2 -c "\"\$@"\" --"
+        $msys2 pacman --sync --noconfirm --needed mingw-w64-x86_64-toolchain
+        export PATH=/C/tools/msys64/mingw64/bin:$PATH
+        export MAKE=mingw32-make  # so that Autotools can find it
+        choco install nsis
+        export PATH=/C/Program\ Files\ \(x86\)/NSIS/Bin/:$PATH
+        export MAKENSIS=makensis.exe
+        ;;
+    esac
+
 install:
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get install fakeroot; fi
 - npm install -g grunt-cli
@@ -32,23 +55,39 @@ install:
 - npm install
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm install electron-installer-debian; fi
 
-script:
-- node -v
-- npm run build
-- cp package.json dist/package.json
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
+before_cache:
+- |-
+    case $TRAVIS_OS_NAME in
+      windows)
+        # https://unix.stackexchange.com/a/137322/107554
+        $msys2 pacman --sync --clean --noconfirm
+        ;;
+    esac
+
+cache:
+    directories:
+    - $HOME/AppData/Local/Temp/chocolatey
+    - /C/tools/msys64
 
 before_script:
 - export DISPLAY=:99.0
 
-before_install:
-- npm --version
-- npm config set spin false
+script:
+- node -v
+- npm run build
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make electron_linux_packages; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make electron_osx_package; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist $(sh scripts/projectName.sh) --app-version=$(sh scripts/projectVersion.sh) --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
+- NAME=$(sh scripts/projectName.sh)
+- VERSION=$(sh scripts/obtenerVersion.sh)
+- VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make electron_pre_build electron_linux_packages; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make electron_pre_build electron_osx_package; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKE electron_pre_build; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist ${NAME} --app-version=${VERSION} --platform=win32 --arch=ia32 --ignore=node_modules --out=binarios --overwrite --icon=packaging/icono.ico; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cp packaging/instalador.nsi binarios/${NAME}-win32-ia32; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKENSIS binarios/${NAME}-win32-ia32/instalador.nsi; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mv binarios/${NAME}-win32-ia32/${NAME}.exe binarios/${NAME}-${VERSION}.exe; fi
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development; fi
 
 deploy:
@@ -58,9 +97,9 @@ deploy:
     api_key:
       secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
     file:
-    - binarios/${NOMBRE}-${VERSION}-linux-x64.zip
-    - binarios/${NOMBRE}-${VERSION}-linux-ia32.zip
-    - binarios/${NOMBRE}_${VERSION_DEB}_amd64.deb
+    - binarios/${NAME}-${VERSION}-linux-x64.zip
+    - binarios/${NAME}-${VERSION}-linux-ia32.zip
+    - binarios/${NAME}_${VERSION_DEB}_amd64.deb
     on:
       tags: true
       all_branches: true
@@ -72,7 +111,7 @@ deploy:
     api_key:
       secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
     file:
-    - binarios/${NOMBRE}-${VERSION}.dmg
+    - binarios/${NAME}-${VERSION}.dmg
     on:
       tags: true
       all_branches: true
@@ -84,7 +123,7 @@ deploy:
     api_key:
       secure: SUY6RLPjT+n3IlNWvPh8p0CwQqjbRyIVyFI3fTHURgKt5OtWHF+lb1v1cHmsLOhhScwQ3QwNh03VaKwLTZgppE7napykXWGW4dMtnWajj6ZUmL3Wt4azLT2LS/Pl/a3A+K35AeachESdeRZ0EIvZLntWNXB3Uvr1LIk6L6LXIzp6gVDA88GHQ8kYsuD+0HHjq6BHDCcNkjKPZVmF0qhYgQe+p/UdfO0mBRSD/AowMwM0lBoPAQJ0OxZcrGjcDrC3h7Lo4c260JcpwDd6kO6n5/iSyEVhvuEDvVXh9b9Anov27YcFLlcDg6PUBcLPKdnzQZnbhplvQchP0G8621lOJhtgZosvkHynzZ3dbAi6S89yMpNes1Sa9RgjADLp4uzYhIhslYUvJ0s37Z+misrPVqJ52qhF4BkHI9pKRGiF0rHqNbOdY6KMHEaXgl9iOJgkI529Imh7iKkxXzI20phJEnZhK7i/XAdokSHhJi7CsVwCgtInS5eN7CqYwKtQoMVyuKUAHRO8kCJOnxCX7MYVHXqOKZKui/fvLFFHgafYwoFhSZo2Rj3hBIXAyvBkLvbShm13+yIZaoQRfTvUjZRkYEK9+22JEFVPiqi3QLy6ephVo68mTW0eyJiUGl9EOdF2dL2emFRDushqq7VtBbAa2c04WKgQyfDiP5v7unj/kZ8=
     file:
-    - binarios/${NOMBRE}-${VERSION}.exe
+    - binarios/${NAME}-${VERSION}.exe
     on:
       tags: true
       all_branches: true

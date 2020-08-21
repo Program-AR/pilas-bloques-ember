@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -73,7 +73,6 @@
     "ember-cli-sri": "^2.1.1",
     "ember-cli-test-loader": "3.0.0",
     "ember-cli-uglify": "3.0.0",
-    "ember-cli-yuidoc": "0.9.1",
     "ember-composable-helpers": "4.2.1",
     "ember-data": "3.19.0",
     "ember-electron": "^2.10.2",
@@ -95,8 +94,7 @@
     "liquid-fire": "^0.31.0",
     "loader.js": "4.7.0",
     "qunit-dom": "1.2.0",
-    "sass": "^1.26.9",
-    "yuidoc-ember-cli-theme": "1.0.4"
+    "sass": "^1.26.9"
   },
   "main": "electron.js",
   "ember-electron": {
