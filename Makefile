@@ -76,13 +76,13 @@ electron_pre_build:
 electron_osx_package: electron_pre_build
 	@ echo "${G}Generating package for osx...${N}"
 	rm -f binaries/${NAME}-${VERSION}.dmg
-	$(call package, darwin, all, icns)
+	$(call package,darwin,all,icns)
 	hdiutil create binaries/${NAME}-${VERSION}.dmg -srcfolder ./binaries/${NAME}-darwin-x64/${NAME}.app -size 1g
 
 electron_win32_package:
 	make electron_pre_build;
 	@ echo "${G}Generating installer for windows package...${N}"
-	$(call package, win32, ia32, ico)
+	$(call package,win32,ia32,ico)
 	cp packaging/instalador.nsi binaries/${NAME}-win32-ia32/
 	cd binaries/${NAME}-win32-ia32/; makensis instalador.nsi
 	mv binaries/${NAME}-win32-ia32/${NAME}.exe binaries/${NAME}-${VERSION}.exe
@@ -95,19 +95,19 @@ electron_linux_x64_deb_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux x64 package for debian...${N}"
 	rm -f "./binaries/${NAME}_${VERSION}_amd64.deb"
-	$(call package, linux, x64, icns)
+	$(call package,linux,x64,icns)
 	node_modules/.bin/electron-installer-debian --arch amd64 --config=packaging/linux-package.json
 
 electron_linux_x64_zip_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux x64 zip...${N}"
 	rm -f ./binaries/${NAME}-${VERSION}-x64.zip
-	$(call package, linux, x64, icns)
+	$(call package,linux,x64,icns)
 	cd binaries; zip -r ${NAME}-${VERSION}-linux-x64.zip ${NAME}-linux-x64/
 
 electron_linux_ia32_zip_package:
 	make electron_pre_build;
 	@ echo "${G}Generating linux ia32 zip...${N}"
 	rm -f ./binaries/${NAME}-${VERSION}-ia32.zip
-	$(call package, linux, ia32, icns)
+	$(call package,linux,ia32,icns)
 	cd binaries; zip -r ${NAME}-${VERSION}-linux-ia32.zip ${NAME}-linux-ia32/
