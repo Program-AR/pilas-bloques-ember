@@ -24,4 +24,4 @@ testem.log
 
 log_descompresion.log
 *.pyc
-/binarios/
+/binaries/
