@@ -13,14 +13,5 @@ module('Integration | Component | survey-window', function(hooks) {
     await render(hbs`<PersonalSurvey />`);
 
     assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
-    await render(hbs`
-      <PersonalSurvey>
-        template block text
-      </PersonalSurvey>
-    `);
-
-    assert.equal(this.element.textContent.trim(), 'template block text');
   });
 });

@@ -22,7 +22,7 @@ export default Component.extend({
     { title:  "Clase o Tarea",
       pages: [{ name:"classOrHomework", questions: [ 
             { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar?" },
-            { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} != undefined" }
+            { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
           ]
         }],
       askEachSession: true
@@ -30,7 +30,8 @@ export default Component.extend({
     { title:  "Escuela y Compañía",
       pages: [{ name:"schoolAndCompany", questions: [ 
             { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela?" },
-            { type: "text", isRequired: true, name: "avatar", title: "¿Cómo es tu apodo?", visibleIf: "{isAtSchool} = 'Sí'" }
+            { type: "text", isRequired: true, name: "nickname", title: "¿Cómo es tu apodo?", visibleIf: "{isAtSchool} = 'Sí'" },
+            { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'"}
           ]
         }],
       askEachSession: true
@@ -46,22 +47,22 @@ export default Component.extend({
     surveyWindow.isExpanded = true
     surveyWindow.survey.locale = 'es'
     surveyWindow.show()
-    surveyWindow.survey.onComplete.add(sur =>{ console.log(sur.data); this.incrementDialogIndex() }) // TODO: replace by call to backend
+    surveyWindow.survey.onComplete.add(survey =>{ console.log(survey.data); this.markCurrentDialogAsAnswered() }) // TODO: replace by call to backend
   },
 
   showNextDialog() {
-    var nextDialog = this.surveyDialogs[this.nextDialogIndex()]
-    if (nextDialog) this.showSurveyDialog(nextDialog)
+    if (this.nextDialog()) this.showSurveyDialog(this.nextDialog())
   },
 
-  nextDialogIndex() {
-    if(localStorage.getItem('nextDialogIndex') === null || localStorage.getItem('nextDialogIndex') === undefined){
-      localStorage.setItem('nextDialogIndex','0')
-    }
-    return parseInt(localStorage.getItem('nextDialogIndex'))
+  markCurrentDialogAsAnswered(){
+    let storage = this.nextDialog().askEachSession ? sessionStorage : localStorage
+    // adding "," only if its not the first title answered
+    let titlesAnswered = storage.getItem('titlesAnswered') ? storage.getItem('titlesAnswered') + "," : ""
+    storage.setItem('titlesAnswered', titlesAnswered + this.nextDialog().title)
   },
 
-  incrementDialogIndex(){
-    localStorage.setItem('nextDialogIndex',this.nextDialogIndex() + 1)
-  }
+  nextDialog() { return this.dialogsNotAnswered()[0]},
+  dialogsNotAnswered() { return this.surveyDialogs.filter(surveyDialog => !this.wasAnswered(localStorage, surveyDialog) && !this.wasAnswered(sessionStorage, surveyDialog))},
+  wasAnswered(storage, surveyDialog) { return storage.getItem('titlesAnswered') && storage.getItem('titlesAnswered').split(',').includes(surveyDialog.title)}
+
 });
