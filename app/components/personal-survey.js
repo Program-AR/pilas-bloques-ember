@@ -22,7 +22,7 @@ export default Component.extend({
     { title:  "Clase o Tarea",
       pages: [{ name:"classOrHomework", questions: [ 
             { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar?" },
-            { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
+            { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea", "No, estoy por mi cuenta"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
           ]
         }],
       askEachSession: true
@@ -43,11 +43,13 @@ export default Component.extend({
   },
 
   showSurveyDialog(surveyDialog) {
-    var surveyWindow = new Survey.SurveyWindow(surveyDialog)
-    surveyWindow.isExpanded = true
-    surveyWindow.survey.locale = 'es'
-    surveyWindow.show()
-    surveyWindow.survey.onComplete.add(survey =>{ console.log(survey.data); this.markCurrentDialogAsAnswered() }) // TODO: replace by call to backend
+    if (window.surveyWindow) return 0 // don't create other surveyWindow if it exists.
+    Survey.StylesManager.applyTheme("winterstone")
+    window.surveyWindow = new Survey.SurveyWindow(surveyDialog)
+    window.surveyWindow.isExpanded = true
+    window.surveyWindow.survey.locale = 'es'
+    window.surveyWindow.show()
+    window.surveyWindow.survey.onComplete.add(survey =>{ console.log(survey.data); this.markCurrentDialogAsAnswered() }) // TODO: replace by call to backend
   },
 
   showNextDialog() {
@@ -59,6 +61,7 @@ export default Component.extend({
     // adding "," only if its not the first title answered
     let titlesAnswered = storage.getItem('titlesAnswered') ? storage.getItem('titlesAnswered') + "," : ""
     storage.setItem('titlesAnswered', titlesAnswered + this.nextDialog().title)
+    window.surveyWindow = undefined
   },
 
   nextDialog() { return this.dialogsNotAnswered()[0]},
