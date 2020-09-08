@@ -46,6 +46,21 @@ export default Component.extend({
       if (this.modoLecturaSimple) {
         pilas.cambiarAModoDeLecturaSimple();
       }
+
+      // Create a new ClientJS object
+      const client = new ClientJS()
+
+      // Get the client's fingerprint id
+      const fingerprint = client.getFingerprint()
+
+      //       POST to /challenges of pb analytics with:
+      console.log({
+        challengeId: this.model.id,
+        timestamp: new Date(),
+        online: typeof process === "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+        browserId: fingerprint,
+        userId: fingerprint
+      })
     },
 
     hideScene() {
@@ -67,9 +82,9 @@ export default Component.extend({
       this.send("updateBlockyWorkspaceBounds");
 
       this.send("showScene");
-      if (this.get("shouldUseFloatingMode")) 
+      if (this.get("shouldUseFloatingMode"))
         this.send("makeDraggable");
-      else 
+      else
         this.send("makeNotDraggable");
 
     },
@@ -82,7 +97,7 @@ export default Component.extend({
 
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-      const miniature = {height: 240, width: 210}
+      const miniature = { height: 240, width: 210 }
 
       canvas.style.height = miniature.height + "px";
       canvas.style.width = miniature.width + "px";
