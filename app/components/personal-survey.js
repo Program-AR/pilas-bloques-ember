@@ -12,6 +12,26 @@ export default Component.extend({
         { type: "html", name: "askingHelp", html: "<p>¡Hola! ¿Nos ayudás a mejorar Pilas Bloques?</p><p>Te vamos a hacer preguntas cortitas.</p><p>¡Contestalas cuando quieras!</p>" }
       ]}]
     },
+    {
+      title: "Soft Login",
+      pages: [{ name: "softLogin", questions: [
+        { type: "imagepicker", 
+          name: "avatar", 
+          title: "¿Qué personaje de Pilas Bloques te gusta?", 
+          showLabel: true, 
+          colCount: 4,
+          imageHeight: 75,
+          imageWidth: 75,
+          defaultValue: "Lita",  // TODO: change defaultValue taking it from localStorage 
+          choices: [
+            {value: "Coty", imageLink: "imagenes/surveyLogoCoty.png"}, // TODO: replace by more and better avatars
+            {value: "Lita", imageLink: "imagenes/surveyLogoLita.png"}, 
+            {value: "Heroína", imageLink: "imagenes/surveyLogoHeroin.png"}, 
+            {value: "Alien", imageLink: "imagenes/surveyLogoAlien.png"}]
+        },
+        { type: "text", isRequired: true, name: "nickname", title: "¿Cómo es tu apodo?", defaultValue: "Ludmila"} // TODO: change defaultValue taking it from localStorage 
+      ]}]
+    },
     { title: "Edad y Género",
       logo: "imagenes/surveyLogoLita.png",
       pages: [{ name:"ageAndGender", questions: [ 
