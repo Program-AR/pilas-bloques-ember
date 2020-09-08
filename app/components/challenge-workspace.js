@@ -47,20 +47,22 @@ export default Component.extend({
         pilas.cambiarAModoDeLecturaSimple();
       }
 
-      // Create a new ClientJS object
-      const client = new ClientJS()
-
-      // Get the client's fingerprint id
-      const fingerprint = client.getFingerprint()
-
-      //       POST to /challenges of pb analytics with:
-      console.log({
+      const fingerprint = new ClientJS().getFingerprint()
+      const body = {
         challengeId: this.model.id,
         timestamp: new Date(),
         online: typeof process === "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
         browserId: fingerprint,
         userId: fingerprint
+      }
+      // TODO: Move to pbAnalytics service
+      $.ajax({
+        url: 'http://localhost:3000/challenges',
+        contentType: 'application/json',
+        type: "POST",
+        data: JSON.stringify(body)
       })
+        .fail((err) => console.log({ err }))
     },
 
     hideScene() {

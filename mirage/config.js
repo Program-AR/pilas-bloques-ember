@@ -26,6 +26,7 @@ export default function() {
   this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');
   this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
+  this.passthrough('http://localhost:3000/**'); //TODO: ENVVAR
 
   /*
     Shorthand cheatsheet:
