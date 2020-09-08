@@ -5,7 +5,15 @@ export default Component.extend({
   /** Dialog descriptions according to SurveyJS library.
    ** Additional field: askEachSession, which tells the app to ask the question each time*/
   surveyDialogs: [ 
-    { title:  "Edad y Género",
+    {
+      title: "¿Nos ayudás?",
+      logo: "imagenes/surveyLogoCoty.png",
+      pages: [{ name: "askingHelp", questions: [
+        { type: "html", name: "askingHelp", html: "<p>¡Hola! ¿Nos ayudás a mejorar Pilas Bloques?</p><p>Te vamos a hacer preguntas cortitas.</p><p>¡Contestalas cuando quieras!</p>" }
+      ]}]
+    },
+    { title: "Edad y Género",
+      logo: "imagenes/surveyLogoLita.png",
       pages: [{ name:"ageAndGender", questions: [ 
             { type: "dropdown", choices: [ 3,4,5,6,7,8,9,10,11,12,13,14,15,16,17, "18 o más" ], isRequired: true, name: "age", title: "¿Cuántos años tenés?" },
             { type: "radiogroup", choices: ["Mujer", "Varón", "Otro"], isRequired: true, name: "gender", title: "¿Cuál es tu género?", visibleIf: "{age} != undefined" }
@@ -13,6 +21,7 @@ export default Component.extend({
         }]
     },
     { title:  "Escuela y Provincia", 
+      logo: "imagenes/surveyLogoAlien.png",
       pages: [{ name:"schoolAndProvince", questions: [ 
             { type: "dropdown", choices: ['Ciudad Autónoma de Buenos Aires (CABA)', 'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', 'Tucumán', 'No estoy en Argentina'], isRequired: true, name: "province", title: "¿En qué provincia vivís?" },
             { type: "radiogroup", choices: ["Pública", "Parroquial", "Privada"], isRequired: true, name: "gender", title: "¿A qué tipo de escuela vas?", visibleIf: "{province} != undefined" }
@@ -20,14 +29,16 @@ export default Component.extend({
         }]
     },
     { title:  "Clase o Tarea",
+      logo: "imagenes/surveyLogoHeroin.png",
       pages: [{ name:"classOrHomework", questions: [ 
             { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar?" },
-            { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea", "No, estoy por mi cuenta"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
+            { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
           ]
         }],
       askEachSession: true
     },
     { title:  "Escuela y Compañía",
+      logo: "imagenes/surveyLogoCoty.png",
       pages: [{ name:"schoolAndCompany", questions: [ 
             { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela?" },
             { type: "text", isRequired: true, name: "nickname", title: "¿Cómo es tu apodo?", visibleIf: "{isAtSchool} = 'Sí'" },
@@ -48,6 +59,10 @@ export default Component.extend({
     window.surveyWindow = new Survey.SurveyWindow(surveyDialog)
     window.surveyWindow.isExpanded = true
     window.surveyWindow.survey.locale = 'es'
+    window.surveyWindow.survey.showQuestionNumbers = 'off'
+    window.surveyWindow.survey.logoHeight = 75
+    window.surveyWindow.survey.logoWidth = 75
+    window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
     window.surveyWindow.survey.onComplete.add(survey =>{ console.log(survey.data); this.markCurrentDialogAsAnswered() }) // TODO: replace by call to backend
   },
