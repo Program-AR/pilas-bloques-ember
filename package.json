@@ -45,7 +45,8 @@
     "blockly-package": "^1.0.0",
     "clientjs": "^0.1.11",
     "pilas-bloques-exercises": "1.2.2",
-    "proceds-blockly": "^1.0.0"
+    "proceds-blockly": "^1.0.0",
+    "uuid": "^8.3.0"
   },
   "devDependencies": {
     "@ember/jquery": "^1.1.0",

@@ -1,16 +1,22 @@
 import Service from '@ember/service'
 import config from "../config/environment"
 
+const ANALYTICS_KEY = 'PB_ANALYTICS_SESSION'
+
 export default Service.extend({
   openChallenge(challengeId) {
+    const online = typeof process === "undefined" //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
     const url = 'http://localhost:3000/challenges' //TODO: config
     const fingerprint = new ClientJS().getFingerprint()
+    const sessionId = this.checkSessionId()
+
     const body = {
       challengeId,
-      timestamp: new Date(),
-      online: typeof process === "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+      online,
+      sessionId,
       browserId: fingerprint,
-      userId: fingerprint
+      userId: fingerprint,
+      createdAt: new Date(),
     }
     return fetch(url, {
       method: "POST",
@@ -22,4 +28,20 @@ export default Service.extend({
       .catch((pbAnalyticsError) => console.log({ pbAnalyticsError })) // Connection error
 
   },
+
+  checkSessionId() {
+    let session = JSON.parse(localStorage.getItem(ANALYTICS_KEY))
+    const isOld = () => (new Date() - session.timestamp) / 1000 / 60 > 30 // Minutes // TODO: config 
+    if (!session || isOld()) return this.updateSession().id
+    return session.id
+  },
+
+  updateSession() {
+    const newSession = {
+      id: new Date().getMilliseconds(), //TODO: Usar uuid
+      timestamp: new Date()
+    }
+    localStorage.setItem(ANALYTICS_KEY, JSON.stringify(newSession))
+    return newSession
+  }
 })
