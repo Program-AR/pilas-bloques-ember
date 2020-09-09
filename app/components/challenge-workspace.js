@@ -7,6 +7,7 @@ export default Component.extend({
   persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
+  analyticsApi: service(),
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
@@ -47,22 +48,7 @@ export default Component.extend({
         pilas.cambiarAModoDeLecturaSimple();
       }
 
-      const fingerprint = new ClientJS().getFingerprint()
-      const body = {
-        challengeId: this.model.id,
-        timestamp: new Date(),
-        online: typeof process === "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
-        browserId: fingerprint,
-        userId: fingerprint
-      }
-      // TODO: Move to pbAnalytics service
-      $.ajax({
-        url: 'http://localhost:3000/challenges',
-        contentType: 'application/json',
-        type: "POST",
-        data: JSON.stringify(body)
-      })
-        .fail((err) => console.log({ err }))
+      this.analyticsApi.openChallenge(this.model.id)
     },
 
     hideScene() {
