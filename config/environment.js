@@ -12,7 +12,11 @@ module.exports = function(environment) {
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
-    
+    pbAnalyticsApi: {
+      baseURL: null,
+      sessionExpire: 30
+    },
+
     EmberENV: {
       EXTEND_PROTOTYPES: {
         Date: false,
@@ -39,6 +43,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     ENV['cursoBackendURL'] = 'http://testing-pilas-bloques-api.enjambrelab.com.ar';
+    ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
   }
 
   if (environment === 'test') {
@@ -56,6 +61,7 @@ module.exports = function(environment) {
 
   if (environment === 'web' || environment === 'production') {
     ENV['cursoBackendURL'] = 'http://api.pilasbloques.program.ar';
+    ENV.pbAnalyticsApi.baseURL = null // TODO
     ENV['googleAnalyticsEnabled'] = true;
   }
 

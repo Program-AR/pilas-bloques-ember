@@ -1,12 +1,13 @@
 import Service from '@ember/service'
 import config from "../config/environment"
 
+const { baseURL, sessionExpire } = config.pbAnalyticsApi
 
 export default Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
 
   openChallenge(challengeId) {
-    const url = 'http://localhost:3000/challenges' //TODO: config
+    const url = `${baseURL}/challenges`
     const body = this.buildBody(challengeId)
 
     return fetch(url, {
@@ -37,7 +38,7 @@ export default Service.extend({
 
   checkSessionId() {
     let session = JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
-    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > 30 // Minutes // TODO: config 
+    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
     if (!session || isOld()) return this.updateSession().id
     return session.id
   },
