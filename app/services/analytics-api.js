@@ -1,10 +1,11 @@
-import Service from '@ember/service'
+import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 
 const { baseURL, sessionExpire } = config.pbAnalyticsApi
 
 export default Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
+  platform: service(),
 
   openChallenge(challengeId) {
     const url = `${baseURL}/challenges`
@@ -22,14 +23,13 @@ export default Service.extend({
   },
 
   buildBody(challengeId) {
-    const online = typeof process === "undefined" //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+    const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const sessionId = this.checkSessionId()
-
     return {
       challengeId,
-      online,
       sessionId,
+      online,
       browserId: fingerprint,
       userId: fingerprint,
       createdAt: new Date(),
