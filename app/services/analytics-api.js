@@ -1,23 +1,14 @@
 import Service from '@ember/service'
 import config from "../config/environment"
 
-const ANALYTICS_KEY = 'PB_ANALYTICS_SESSION'
 
 export default Service.extend({
-  openChallenge(challengeId) {
-    const online = typeof process === "undefined" //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
-    const url = 'http://localhost:3000/challenges' //TODO: config
-    const fingerprint = new ClientJS().getFingerprint()
-    const sessionId = this.checkSessionId()
+  ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
 
-    const body = {
-      challengeId,
-      online,
-      sessionId,
-      browserId: fingerprint,
-      userId: fingerprint,
-      createdAt: new Date(),
-    }
+  openChallenge(challengeId) {
+    const url = 'http://localhost:3000/challenges' //TODO: config
+    const body = this.buildBody(challengeId)
+
     return fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
@@ -29,8 +20,23 @@ export default Service.extend({
 
   },
 
+  buildBody(challengeId) {
+    const online = typeof process === "undefined" //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+    const fingerprint = new ClientJS().getFingerprint()
+    const sessionId = this.checkSessionId()
+
+    return {
+      challengeId,
+      online,
+      sessionId,
+      browserId: fingerprint,
+      userId: fingerprint,
+      createdAt: new Date(),
+    }
+  },
+
   checkSessionId() {
-    let session = JSON.parse(localStorage.getItem(ANALYTICS_KEY))
+    let session = JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
     const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > 30 // Minutes // TODO: config 
     if (!session || isOld()) return this.updateSession().id
     return session.id
@@ -41,7 +47,7 @@ export default Service.extend({
       id: uuidv4(),
       timestamp: new Date()
     }
-    localStorage.setItem(ANALYTICS_KEY, JSON.stringify(newSession))
+    localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(newSession))
     return newSession
   }
 })
