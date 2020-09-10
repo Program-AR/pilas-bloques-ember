@@ -31,14 +31,14 @@ export default Service.extend({
 
   checkSessionId() {
     let session = JSON.parse(localStorage.getItem(ANALYTICS_KEY))
-    const isOld = () => (new Date() - session.timestamp) / 1000 / 60 > 30 // Minutes // TODO: config 
+    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > 30 // Minutes // TODO: config 
     if (!session || isOld()) return this.updateSession().id
     return session.id
   },
 
   updateSession() {
     const newSession = {
-      id: new Date().getMilliseconds(), //TODO: Usar uuid
+      id: uuidv4(),
       timestamp: new Date()
     }
     localStorage.setItem(ANALYTICS_KEY, JSON.stringify(newSession))
