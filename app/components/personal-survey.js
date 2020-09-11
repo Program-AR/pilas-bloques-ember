@@ -74,7 +74,7 @@ export default Component.extend({
   },
 
   showSurveyDialog(surveyDialog) {
-    if (window.surveyWindow) return 0 // don't create other surveyWindow if it exists.
+    if (window.surveyWindow) return; // don't create other surveyWindow if it exists.
     Survey.StylesManager.applyTheme("winterstone")
     window.surveyWindow = new Survey.SurveyWindow(surveyDialog)
     window.surveyWindow.isExpanded = true
@@ -84,23 +84,35 @@ export default Component.extend({
     window.surveyWindow.survey.logoWidth = 75
     window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
-    window.surveyWindow.survey.onComplete.add(survey =>{ console.log(survey.data); this.markCurrentDialogAsAnswered() }) // TODO: replace by call to backend
+    window.surveyWindow.survey.onComplete.add(survey => this.saveDialogAnswer(survey.data))
   },
 
   showNextDialog() {
     if (this.nextDialog()) this.showSurveyDialog(this.nextDialog())
   },
 
+  saveDialogAnswer(data){
+    console.log(data); // TODO: replace by call to backend
+    this.markCurrentDialogAsAnswered() 
+  },
+
   markCurrentDialogAsAnswered(){
     let storage = this.nextDialog().askEachSession ? sessionStorage : localStorage
-    // adding "," only if its not the first title answered
-    let titlesAnswered = storage.getItem('titlesAnswered') ? storage.getItem('titlesAnswered') + "," : ""
-    storage.setItem('titlesAnswered', titlesAnswered + this.nextDialog().title)
+    storage.setItem('titlesAnswered',JSON.stringify(this.titlesAnswered(storage).concat([this.nextDialog().title])))
     window.surveyWindow = undefined
   },
 
-  nextDialog() { return this.dialogsNotAnswered()[0]},
-  dialogsNotAnswered() { return this.surveyDialogs.filter(surveyDialog => !this.wasAnswered(localStorage, surveyDialog) && !this.wasAnswered(sessionStorage, surveyDialog))},
-  wasAnswered(storage, surveyDialog) { return storage.getItem('titlesAnswered') && storage.getItem('titlesAnswered').split(',').includes(surveyDialog.title)}
+  nextDialog() { return this.surveyDialogs.find(surveyDialog => !this.wasAnswered(localStorage, surveyDialog) && !this.wasAnswered(sessionStorage, surveyDialog)) },
+  wasAnswered(storage, surveyDialog) { return this.titlesAnswered(storage).includes(surveyDialog.title)},
+
+  titlesAnswered(storage) {
+    let titlesAnswered = []
+    try { 
+       titlesAnswered = JSON.parse(storage.getItem('titlesAnswered')) || []
+    } catch(e) {
+      // if parse fails, leave it []
+    }
+    return titlesAnswered
+  }
 
 });
