@@ -28,7 +28,10 @@
     "Prism",
     "ga",
     "Blockly",
-    "Blob"
+    "Blob",
+    "localStorage",
+    "ClientJS",
+    "uuidv4"
   ],
   "esversion": 9,
   "asi": true,

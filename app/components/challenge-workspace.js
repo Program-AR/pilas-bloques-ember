@@ -7,6 +7,7 @@ export default Component.extend({
   persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
+  analyticsApi: service(),
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
@@ -46,6 +47,8 @@ export default Component.extend({
       if (this.modoLecturaSimple) {
         pilas.cambiarAModoDeLecturaSimple();
       }
+
+      this.analyticsApi.openChallenge(this.model.id)
     },
 
     hideScene() {
@@ -67,9 +70,9 @@ export default Component.extend({
       this.send("updateBlockyWorkspaceBounds");
 
       this.send("showScene");
-      if (this.get("shouldUseFloatingMode")) 
+      if (this.get("shouldUseFloatingMode"))
         this.send("makeDraggable");
-      else 
+      else
         this.send("makeNotDraggable");
 
     },
@@ -82,7 +85,7 @@ export default Component.extend({
 
       var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
-      const miniature = {height: 240, width: 210}
+      const miniature = { height: 240, width: 210 }
 
       canvas.style.height = miniature.height + "px";
       canvas.style.width = miniature.width + "px";

@@ -65,6 +65,18 @@ module.exports = function (defaults) {
     destDir: '/assets/'
   });
 
+  const clientJS = new Funnel('node_modules/clientjs', {
+    srcDir: '/dist',
+    include: ['**'],
+    destDir: '/assets/'
+  });
+
+  const uuid = new Funnel('node_modules/uuid', {
+    srcDir: 'dist/umd',
+    include: ['**'],
+    destDir: '/assets/'
+  });
+
   const pilasWeb = new Funnel('node_modules/pilasweb', {
     srcDir: '/dist',
     include: ['**'],
@@ -77,7 +89,7 @@ module.exports = function (defaults) {
     destDir: '/libs/'
   });
 
-  return mergeTrees([app.toTree(), blocklyPackage, blocklyMedia, procedsBlockly, pilasWeb, pilasBloquesExercises], {
+  return mergeTrees([app.toTree(), blocklyPackage, blocklyMedia, procedsBlockly, uuid, clientJS, pilasWeb, pilasBloquesExercises], {
     overwrite: true
   });
 

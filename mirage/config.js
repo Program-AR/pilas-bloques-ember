@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+import config from "../config/environment";
 
 export default function() {
 
@@ -26,6 +27,7 @@ export default function() {
   this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');
   this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
+  this.passthrough(`${config.pbAnalyticsApi.baseURL}/**`);
 
   /*
     Shorthand cheatsheet:
