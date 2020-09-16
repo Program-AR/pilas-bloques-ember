@@ -11,7 +11,7 @@ export default Service.extend({
     const url = `${baseURL}/challenges`
     const body = this.buildBody(challengeId)
 
-    return fetch(url, {
+    fetch(url, {
       method: "POST",
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
@@ -20,6 +20,25 @@ export default Service.extend({
       .then((pbAnalyticsError) => { if (pbAnalyticsError) console.log({ pbAnalyticsError }) }) // Api error
       .catch((pbAnalyticsError) => console.log({ pbAnalyticsError })) // Connection error
 
+  },
+
+  runProgram(challengeId, program, staticAnalysis) {
+    const url = `${baseURL}/solutions`
+    const solutionId = uuidv4()
+    const body = {
+      solutionId,
+      program,
+      staticAnalysis,
+      ...this.buildBody(challengeId)
+    }
+
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    return solutionId
   },
 
   buildBody(challengeId) {

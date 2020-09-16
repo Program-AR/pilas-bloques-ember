@@ -26,6 +26,7 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
+  analyticsApi: service(),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -353,9 +354,17 @@ export default Component.extend({
       .every(block => Blockly.shouldExecute(block))
   },
 
+  staticAnalysis() {
+    return {
+      couldExecute: this.shouldExecuteProgram(),
+    }
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
+      // TODO: Use solutionId for 'Execution finished event'
+      /*const solutionId = */this.analyticsApi.runProgram(this.model.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
       this.pilas.reiniciarEscenaCompleta()
 
       Blockly.Events.fireRunCode()
