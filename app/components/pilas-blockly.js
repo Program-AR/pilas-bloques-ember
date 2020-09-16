@@ -269,7 +269,7 @@ export default Component.extend({
         // Si el usuario solicitó terminar el programa deja
         // de ejecutar el intérprete.
         if (!this.ejecutando) {
-          success();
+          success({stoppedByUser: true});
           return;
         }
 
@@ -301,7 +301,7 @@ export default Component.extend({
           // Llama recursivamente, abriendo thread en cada llamada.
           setTimeout(execInterpreterUntilEnd, 10, interpreter);
         } else {
-          success();
+          success({finished: true});
         }
       };
 
@@ -360,11 +360,21 @@ export default Component.extend({
     }
   },
 
+  runProgramEvent() {
+    return this.analyticsApi.runProgram(this.model.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+  },
+
+  executionFinishedEvent(solutionId, executionResult) {
+    this.analyticsApi.executionFinished(solutionId, {
+      isTheProblemSolved: this.pilas.estaResueltoElProblema(),
+      ...executionResult
+    })
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
-      // TODO: Use solutionId for 'Execution finished event'
-      /*const solutionId = */this.analyticsApi.runProgram(this.model.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+      const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 
       Blockly.Events.fireRunCode()
@@ -383,14 +393,18 @@ export default Component.extend({
 
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
-      
+
       this.set('ejecutando', true);
       this.exerciseWorkspace.set('ejecutando', true);
 
       this.ejecutarInterpreteHastaTerminar(interprete, pasoAPaso)
-        .then(() => this.cuandoTerminaEjecucion())
-        .catch(err => {
-          if (err instanceof ErrorDeActividad) {
+        .then((executionResult) => {
+          this.executionFinishedEvent(analyticsSolutionId, executionResult)
+          this.cuandoTerminaEjecucion()
+        })
+        .catch(error => {
+          this.executionFinishedEvent(analyticsSolutionId, { error })
+          if (error instanceof ErrorDeActividad) { // TODO: Este if no tiene sentido.
             /** Los errores de la actividad no deberían burbujear */
           }
         });
