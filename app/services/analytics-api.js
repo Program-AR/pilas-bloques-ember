@@ -26,7 +26,7 @@ export default Service.extend({
   },
 
   executionFinished(solutionId, executionResult) {
-    this._send('POST', `solutions/${solutionId}`, executionResult)
+    this._send('PUT', `solutions/${solutionId}`, { executionResult })
   },
 
 
@@ -37,7 +37,7 @@ export default Service.extend({
     return session.id
   },
 
-  _buildBaseBody() {
+  _buildSessionBody() {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const sessionId = this.checkSessionId()
@@ -46,7 +46,7 @@ export default Service.extend({
       online,
       browserId: fingerprint,
       userId: fingerprint,
-      createdAt: new Date(),
+      timestamp: new Date(),
     }
   },
 
@@ -63,7 +63,7 @@ export default Service.extend({
     const url = `${baseURL}/${resource}`
     const body = {
       ...data,
-      ...this._buildBaseBody()
+      session: this._buildSessionBody()
     }
 
     return fetch(url, {
