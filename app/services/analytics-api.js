@@ -8,23 +8,27 @@ export default Service.extend({
   platform: service(),
 
   openChallenge(challengeId) {
-    const body = this._buildBody(challengeId)
-    this._send('POST', 'challenges', body)
+    this._send('POST', 'challenges', { challengeId })
   },
 
   runProgram(challengeId, program, staticAnalysis) {
     const solutionId = uuidv4()
-    const body = {
+    const data = {
+      challengeId,
       solutionId,
       program,
       staticAnalysis,
-      ...this._buildBody(challengeId)
     }
 
-    this._send('POST', 'solutions', body)
+    this._send('POST', 'solutions', data)
 
     return solutionId
   },
+
+  executionFinished(solutionId, executionResult) {
+    this._send('POST', `solutions/${solutionId}`, executionResult)
+  },
+
 
   checkSessionId() {
     let session = JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
@@ -33,12 +37,11 @@ export default Service.extend({
     return session.id
   },
 
-  _buildBody(challengeId) {
+  _buildBaseBody() {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const sessionId = this.checkSessionId()
     return {
-      challengeId,
       sessionId,
       online,
       browserId: fingerprint,
@@ -56,8 +59,12 @@ export default Service.extend({
     return newSession
   },
 
-  _send(method, resource, body) {
+  _send(method, resource, data) {
     const url = `${baseURL}/${resource}`
+    const body = {
+      ...data,
+      ...this._buildBaseBody()
+    }
 
     return fetch(url, {
       method,
