@@ -361,7 +361,7 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.analyticsApi.runProgram(this.model.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+    return this.analyticsApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
   },
 
   executionFinishedEvent(solutionId, executionResult) {

@@ -6,6 +6,7 @@ const { baseURL, sessionExpire } = config.pbAnalyticsApi
 export default Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   platform: service(),
+  connected: true,
 
   openChallenge(challengeId) {
     this._send('POST', 'challenges', { challengeId })
@@ -60,6 +61,7 @@ export default Service.extend({
   },
 
   _send(method, resource, data) {
+    if (!this.connected) { return; }
     const url = `${baseURL}/${resource}`
     const body = {
       ...data,

@@ -99,6 +99,7 @@ export function actividadTest(nombre, opciones) {
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
+    this.owner.lookup('service:analytics-api').connected = false;
 
     //let actividades = this.owner.lookup('service:actividades');
 
