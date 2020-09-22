@@ -365,9 +365,11 @@ export default Component.extend({
   },
 
   executionFinishedEvent(solutionId, executionResult) {
-    this.analyticsApi.executionFinished(solutionId, {
-      isTheProblemSolved: this.pilas.estaResueltoElProblema(),
-      ...executionResult
+    run(this, function() {
+      this.analyticsApi.executionFinished(solutionId, {
+        isTheProblemSolved: this.pilas.estaResueltoElProblema(),
+        ...executionResult
+      })
     })
   },
 
@@ -404,7 +406,11 @@ export default Component.extend({
         })
         .catch(error => {
           this.executionFinishedEvent(analyticsSolutionId, { error })
+          if (this.onErrorDeActividad)
+          this.onErrorDeActividad(error)
+
           if (error instanceof ErrorDeActividad) { // TODO: Este if no tiene sentido.
+    
             /** Los errores de la actividad no deberían burbujear */
           }
         });

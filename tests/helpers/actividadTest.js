@@ -148,7 +148,7 @@ export function actividadTest(nombre, opciones) {
          * si es un error esperado o no. Y en cualquiera de los
          * dos casos finaliza el test.
          */
-        pilas.on("errorDeActividad", function (motivoDelError) {
+        this.set("onErrorDeActividad", function (motivoDelError) {
           let errorEsperado = opciones.errorEsperado;
 
           if (errorEsperado) {
@@ -197,6 +197,7 @@ export function actividadTest(nombre, opciones) {
                       codigoJavascript=""
                       persistirSolucionEnURL=false
                       onTerminoEjecucion=onTerminoEjecucion
+                      onErrorDeActividad=onErrorDeActividad
                       debeMostrarFinDeDesafio=false
                     }}
                   `);
