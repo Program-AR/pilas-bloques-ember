@@ -1,6 +1,6 @@
 {
-    "src": "binarios/pilasbloques-linux-x64/",
-    "dest": "binarios/",
+    "src": "binaries/pilasbloques-linux-x64/",
+    "dest": "binaries/",
     "icon": "packaging/icono.ico",
     "categories": [
         "Development",
