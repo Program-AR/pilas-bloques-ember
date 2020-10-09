@@ -6,28 +6,28 @@ const Router = EmberRouter.extend({
   location: config.locationType
 });
 
-Router.map(function() {
+Router.map(function () {
   this.route('acercade');
-  this.route('desafio', {path: '/desafio/:desafio_id'});
+  this.route('desafio', { path: '/desafio/:desafio_id' });
 
   /* Rutas para el curso online 2016 (moodle) */
-  this.route('desafios', function() {
-    this.route('cursoAlumno',  {path: "/cursoAlumno/:hash"});
-    this.route('cursoDocente', {path: "/cursoDocente/:hash"});
-    this.route('desafioPorNombre', {path: '/:nombreDelDesafio'});
+  this.route('desafios', function () {
+    this.route('cursoAlumno', { path: "/cursoAlumno/:hash" });
+    this.route('cursoDocente', { path: "/cursoDocente/:hash" });
+    this.route('desafioPorNombre', { path: '/:nombreDelDesafio' });
   });
 
-  this.route('libros', function() {
-    this.route('verLibro', {path: ":libro_id"});
+  this.route('libros', function () {
+    this.route('verLibro', { path: ":libro_id" });
   });
   this.route('galeria');
 });
 
 Router.reopen({
-  notifyGoogleAnalytics: on("didTransition", function() {
+  notifyGoogleAnalytics: on("didTransition", function () {
     if (ga && config.googleAnalyticsEnabled) {
       let url = this.url;
-      ga('send', 'pageview', {page: url, title: url});
+      ga('send', 'pageview', { page: url, title: url });
     }
   })
 });

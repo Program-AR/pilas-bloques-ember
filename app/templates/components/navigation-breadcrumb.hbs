@@ -1,11 +1,20 @@
 <Breadcrumb>
-
+    
+    {{!-- Challenge title --}}
     <BreadcrumbItem @item={{challenge}} class="challenge-title" @selected={{true}} />
-    <BreadcrumbItem @item={{group}} @href={{href-to "libros.verLibro" book.id}} />
-    <BreadcrumbItem @item={{chapter}} @href={{href-to "libros.verLibro" book.id}} />
-    <BreadcrumbItem @item={{book}} @href={{href-to "libros.verLibro" book.id}} />
-    <BreadcrumbItem @href={{href-to "index"}} @initial={{true}} >
-        {{paper-icon "home"}}
-    </BreadcrumbItem>
+    
+    {{#if book}}
+        {{!-- Challenge group --}}
+        <BreadcrumbItem @item={{group}} @href={{href-to "libros.verLibro" book.id}} />
+        
+        {{!-- Challenge chapter --}}
+        <BreadcrumbItem @item={{chapter}} @href={{href-to "libros.verLibro" book.id}} />
+        
+        {{!-- Challenge book --}}
+        <BreadcrumbItem @item={{book}} @href={{href-to "libros.verLibro" book.id}} />
+    {{/if}}
+    
+    {{!-- Home button--}}
+    <BreadcrumbItem @href={{href-to "index"}} @initial={{true}}>{{paper-icon "home"}}</BreadcrumbItem>
 
 </Breadcrumb>

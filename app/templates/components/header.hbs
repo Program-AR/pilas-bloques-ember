@@ -12,7 +12,11 @@
 
       {{#if (media 'isMobile')}}
         <NavigationMenu 
-          @desafio={{challenge}} 
+          @book={{book}}
+          @challenge={{challenge}}
+          @chapter={{chapter}}
+          @group={{group}}
+          @hidden={{openCustomScene}}
         />
       {{else}}
         <span class="flex"/>
@@ -21,6 +25,7 @@
           @challenge={{challenge}}
           @chapter={{chapter}}
           @group={{group}}
+          @hidden={{openCustomScene}}
         />
       {{/if}}
       
