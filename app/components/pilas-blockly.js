@@ -273,9 +273,11 @@ export default Component.extend({
           return;
         }
 
-        let err = this.errorDeActividad;
-        if (err) {
-          reject(err);
+        // Si se produce un error en la actividad se termina de ejecutar el intérprete.
+        // Esto es un resultado válido, no hubo ningún problema con el intérprete.
+        let error = this.errorDeActividad; // Se settea ante evento de Pilas
+        if (error) {
+          success({error});
           return;
         }
 
@@ -312,6 +314,11 @@ export default Component.extend({
 
   cuandoTerminaEjecucion() {
     run(this, function () {
+      if (this.errorDeActividad) {
+        if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
+        return;
+      }
+
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
@@ -400,20 +407,10 @@ export default Component.extend({
       this.exerciseWorkspace.set('ejecutando', true);
 
       this.ejecutarInterpreteHastaTerminar(interprete, pasoAPaso)
-        .then((executionResult) => {
+        .then(executionResult => {
           this.executionFinishedEvent(analyticsSolutionId, executionResult)
           this.cuandoTerminaEjecucion()
         })
-        .catch(error => {
-          this.executionFinishedEvent(analyticsSolutionId, { error })
-          if (this.onErrorDeActividad)
-          this.onErrorDeActividad(error)
-
-          if (error instanceof ErrorDeActividad) { // TODO: Este if no tiene sentido.
-    
-            /** Los errores de la actividad no deberían burbujear */
-          }
-        });
     },
 
     reiniciar() {
