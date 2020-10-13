@@ -44,7 +44,6 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
-    ENV.challengeCreatorURL = "http://localhost:3001"
     ENV.cursoBackendURL = 'http://testing-pilas-bloques-api.enjambrelab.com.ar'
     ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
   }
