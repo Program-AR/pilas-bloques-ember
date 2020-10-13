@@ -30,17 +30,9 @@ export default Component.extend({
     })
   },
 
-  lowBudgetUuidv4() {//TODO should include uuid dependency
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-      const r = Math.random() * 16 | 0;
-      const v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
-    });
-  },
-
   cargarProyecto(contenido) {
     var desafio = JSON.parse(atob(contenido));
-    desafio.id = this.lowBudgetUuidv4();
+    desafio.id = uuidv4();
     this.store.createRecord('desafio', desafio);
     this.router.transitionTo('desafio', desafio.id);
   },
