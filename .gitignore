@@ -25,3 +25,6 @@ testem.log
 log_descompresion.log
 *.pyc
 /binaries/
+
+.idea/
+*.iml

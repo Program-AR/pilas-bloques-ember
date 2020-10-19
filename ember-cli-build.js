@@ -89,7 +89,31 @@ module.exports = function (defaults) {
     destDir: '/libs/'
   });
 
-  return mergeTrees([app.toTree(), blocklyPackage, blocklyMedia, procedsBlockly, uuid, clientJS, pilasWeb, pilasBloquesExercises], {
+  const pilasBloquesCreador = new Funnel('node_modules/creador-de-desafios-pilasbloques', {
+    srcDir: '/build',
+    include: ['**'],
+    exclude: ['/static'],
+    destDir: '/libs/creador-de-desafios-pilasbloques'
+  });
+
+  const pilasBloquesCreadorStaticAssets = new Funnel('node_modules/creador-de-desafios-pilasbloques', {
+    srcDir: '/build/static',
+    include: ['**'],
+    destDir: '/static/'
+  });
+
+  return mergeTrees([
+    app.toTree(),
+    blocklyPackage,
+    blocklyMedia,
+    procedsBlockly,
+    uuid,
+    clientJS,
+    pilasWeb,
+    pilasBloquesExercises,
+    pilasBloquesCreador,
+    pilasBloquesCreadorStaticAssets
+  ], {
     overwrite: true
   });
 
