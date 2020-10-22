@@ -1366,7 +1366,7 @@ export default Service.extend({
         this.appendStatementInput('block1');
         this.setInputsInline(true);
         this.appendDummyInput()
-          .appendField('SINO');
+          .appendField('sino');
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
