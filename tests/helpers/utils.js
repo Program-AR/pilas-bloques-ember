@@ -17,6 +17,11 @@ export function assertAsync(assert, fn) {
     })
 }
 
+export function assertProps(assert, obj, props) {
+    const expected = Object.assign({}, obj, props)
+    assert.propEqual(obj, expected)
+}
+
 export function assertDisabled(assert, block) {
     assert.ok(block.disabled)
 }

@@ -2,7 +2,7 @@ import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
-import { findBlockByTypeIn, assertWarning, assertNotWarning } from '../../helpers/utils'
+import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning } from '../../helpers/utils'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
@@ -17,6 +17,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.pilas = pilasMock //TODO: Injectar como service
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
+    this.ctrl.set('analyticsApi', sinon.stub(this.ctrl.analyticsApi))
     sinon.resetHistory()
   })
 
@@ -182,6 +183,27 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertNotWarning(assert, required)
     this.ctrl.send('ejecutar')
     later(() => assertWarning(assert, required, "¡Acá faltan bloques comandos!"))
+  })
+
+  // API
+  test('Avisa a la api al ejecutar', function (assert) {
+    this.ctrl.send('ejecutar')
+    assertProps(assert, this.ctrl.analyticsApi.runProgram.lastCall.lastArg, { couldExecute: true })
+  })
+
+  test('Avisa a la api al finalizar la ejecucion', function (assert) {
+    this.ctrl.send('ejecutar')
+    later(() => {
+      assertProps(assert, this.ctrl.analyticsApi.executionFinished.lastCall.lastArg, { finished: true })
+    })
+  })
+
+  test('Avisa a la api al finalizar la ejecucion con error', function (assert) {
+    this.ctrl.errorDeActividad = "ERROR"
+    this.ctrl.send('ejecutar')
+    later(() => {
+      assertProps(assert, this.ctrl.analyticsApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
+    })
   })
 
 })

@@ -22,6 +22,7 @@ export const interpreterFactoryMock = Service.extend({
 
 export const actividadMock = {
     get(key) { return this[key]; }, //TODO: Sacar esta definición y usar Ember.Component.extend
+    id: "000",
     nombre: "Actividad_Mock",
     debeFelicitarse: true,
 
