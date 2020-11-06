@@ -8,8 +8,22 @@ export default Service.extend({
   platform: service(),
   connected: true,
 
-  login(credentials) {
+  async login(credentials) {
     return this._send('POST', 'login', credentials)
+      .then((res) => {
+        if (res.status >= 400) throw res.text()
+        else this._saveSession(res.json())
+      })
+  },
+
+  register(data) {
+    const { username, avatarURL } = data
+    const credentials = data
+    const profile = {
+      nickName: username,
+      avatarURL
+    }
+    return this._send('POST', 'register', { credentials, profile })
   },
 
   checkSessionId() {
@@ -19,29 +33,11 @@ export default Service.extend({
     return session.id
   },
 
-  _buildSessionBody() {
-    const online = this.platform.online()
-    const fingerprint = new ClientJS().getFingerprint()
-    const sessionId = this.checkSessionId()
-    return {
-      sessionId,
-      online,
-      browserId: fingerprint,
-      userId: fingerprint,
-      timestamp: new Date(),
-    }
+  _saveSession(session) {
+    localStorage.setItem(this.SESSION_KEY, JSON.stringify(session))
   },
 
-  _updateSession() {
-    const newSession = {
-      id: uuidv4(),
-      timestamp: new Date()
-    }
-    localStorage.setItem(this.SESSION_KEY, JSON.stringify(newSession))
-    return newSession
-  },
-
-  _send(method, resource, body) {
+  async _send(method, resource, body) {
     if (!this.connected) { return; }
     const url = `${baseURL}/${resource}`
 
@@ -50,7 +46,7 @@ export default Service.extend({
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     })
-      // .then((res) => { if (res.status > 200) return res.json() })
-      // .catch((pbApiError) => console.log({ pbApiError })) // Connection error
+    // .then((res) => { if (res.status > 200) return res.json() })
+    // .catch((pbApiError) => console.log({ pbApiError })) // Connection error
   },
 })

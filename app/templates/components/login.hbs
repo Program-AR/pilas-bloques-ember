@@ -1,7 +1,7 @@
 <div class="center">
-  <img src="imagenes/libros/primer-ciclo.png" />
-
   <form {{action "doLogin" on="submit"}}>
+    <img src="imagenes/libros/primer-ciclo.png" />
+
     <p for="username"> Usuario </p>
     <Input @value={{ credentials.username }} required />
     <p for="password"> Contraseña </p>
@@ -25,8 +25,11 @@
 
 
   <p> ¿No tenés una cuenta? </p>
-  <Button class="link" @onClick={{action "doLogin"}}>
+  <Button class="link" @onClick={{action (mut openRegister) true}}>
     Registrate
   </Button>
 </div>
 
+<ModalToggle title="Nueva cuenta" @open={{openRegister}}>
+  <Register/>
+</ModalToggle>
