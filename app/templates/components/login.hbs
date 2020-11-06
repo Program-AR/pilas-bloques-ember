@@ -1,27 +1,32 @@
-<Modal @title={{"Iniciar sesion"}} @onClose={{action onClose}}>
-  <div class="center">
-    <img src="imagenes/libros/primer-ciclo.png" />
+<div class="center">
+  <img src="imagenes/libros/primer-ciclo.png" />
 
+  <form {{action "doLogin" on="submit"}}>
     <p for="username"> Usuario </p>
-    <Input @value={{ credentials.username }} />
-
+    <Input @value={{ credentials.username }} required />
     <p for="password"> Contraseña </p>
-    <Input @value={{ credentials.password }} />
+    <Input type="password" @value={{ credentials.password }} required />
 
-    <Button @onClick={{action "doLogin"}}>
+    {{#if wrongLogin}}
+      <p>Usuario o contraseña incorrectos, volvé a intentar.</p>
+      <Button class="link" @onClick={{action "doLogin"}}>
+        ¿Olvidaste tu usuario o contraseña?
+      </Button>
+    {{/if}}
+
+    <Button type="submit">
       Ingresar
     </Button>
+  </form>
 
-    <Button class="link" @onClick={{action "doLogin"}}>
-      Olvidé mi constraseña
-    </Button>
+  <Button class="link" @onClick={{action "doLogin"}}>
+    Olvidé mi usuario o constraseña
+  </Button>
 
 
-    <p> ¿No tenés una cuenta? </p>
-    <Button class="link" @onClick={{action "doLogin"}}>
-      Registrate
-    </Button>
-
-  </div>
-</Modal>
+  <p> ¿No tenés una cuenta? </p>
+  <Button class="link" @onClick={{action "doLogin"}}>
+    Registrate
+  </Button>
+</div>
 

@@ -28,6 +28,7 @@ export default function() {
   this.passthrough('https://api.github.com/**');
   this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
   this.passthrough(`${config.pbAnalyticsApi.baseURL}/**`);
+  this.passthrough(`${config.pbApi.baseURL}/**`);
 
   /*
     Shorthand cheatsheet:

@@ -2,6 +2,6 @@
   Ingresar
 </Button>
 
-{{#if openLogin}}
-  <Login @onClose={{action (mut openLogin) false}}/>
-{{/if}}
+<ModalToggle title="Iniciar sesión" @open={{openLogin}}>
+  <Login/>
+</ModalToggle>

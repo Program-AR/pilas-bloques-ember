@@ -19,6 +19,10 @@ module.exports = function (environment) {
       sessionExpire: 30
     },
 
+    pbApi: {
+      baseURL: null
+    },
+
     EmberENV: {
       EXTEND_PROTOTYPES: {
         Date: false,
@@ -46,6 +50,7 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.cursoBackendURL = 'http://testing-pilas-bloques-api.enjambrelab.com.ar'
     ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
+    ENV.pbApi.baseURL = 'http://localhost:3005'
   }
 
   if (environment === 'test') {
