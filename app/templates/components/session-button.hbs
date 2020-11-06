@@ -1,0 +1,7 @@
+<Button @onClick={{action (mut openLogin) true}}>
+  Ingresar
+</Button>
+
+{{#if openLogin}}
+  <Login @onClose={{action (mut openLogin) false}}/>
+{{/if}}

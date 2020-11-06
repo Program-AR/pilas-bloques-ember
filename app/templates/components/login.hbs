@@ -1,0 +1,27 @@
+<Modal @title={{"Iniciar sesion"}} @onClose={{action onClose}}>
+  <div class="center">
+    <img src="imagenes/libros/primer-ciclo.png" />
+
+    <p for="username"> Usuario </p>
+    <Input @value={{ credentials.username }} />
+
+    <p for="password"> Contraseña </p>
+    <Input @value={{ credentials.password }} />
+
+    <Button @onClick={{action "doLogin"}}>
+      Ingresar
+    </Button>
+
+    <Button class="link" @onClick={{action "doLogin"}}>
+      Olvidé mi constraseña
+    </Button>
+
+
+    <p> ¿No tenés una cuenta? </p>
+    <Button class="link" @onClick={{action "doLogin"}}>
+      Registrate
+    </Button>
+
+  </div>
+</Modal>
+
