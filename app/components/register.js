@@ -4,20 +4,26 @@ import Component from '@ember/component'
 export default Component.extend({
   pilasBloquesApi: service(),
   registerData: {},
+  validUsername: true,
   wrongPasswords: false,
 
-  validPassword() {
+  validPasswords() {
     const { password, passwordConfirm } = this.registerData
     return password == passwordConfirm
   },
 
   actions: {
     doRegister() {
-      if (!this.validPassword()) {
-        this.set("wrongPasswords", true)
-        return;
-      }
       this.pilasBloquesApi.register(this.registerData)
+    },
+
+    checkUsername() {
+      this.pilasBloquesApi.validateUsername(this.registerData.username)
+        .then(check => this.set("validUsername", check))
+    },
+
+    checkPassword() {
+      this.set("wrongPasswords", !this.validPasswords())
     }
   }
 });

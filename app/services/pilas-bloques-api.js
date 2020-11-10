@@ -24,6 +24,10 @@ export default Service.extend({
       .then(session => this._saveSession(session))
   },
 
+  async validateUsername(username) {
+    return this._send('GET', `register/check?username=${username}`)
+  },
+
   logout() {
     return this._saveSession(null)
   },

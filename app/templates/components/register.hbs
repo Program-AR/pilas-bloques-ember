@@ -3,11 +3,16 @@
     <img src="imagenes/libros/primer-ciclo.png" />
 
     <p for="username"> Usuario </p>
-    <Input @value={{ registerData.username }} required />
+    <Input @value={{ registerData.username }} @focusOut={{action "checkUsername"}} required />
+
+    {{#unless validUsername}}
+      <p>Este nombre de usuario ya existe</p>
+    {{/unless}}
+
     <p for="password"> Contraseña </p>
     <Input type="password" @value={{ registerData.password }} required />
     <p for="passwordConfirm"> Confirmar contraseña </p>
-    <Input type="password" @value={{ registerData.passwordConfirm }} required />
+    <Input type="password" @value={{ registerData.passwordConfirm }} @focusOut={{action "checkPassword"}} required />
     
     {{#if wrongPasswords}}
       <p>Las contraseñas no coinciden</p>
@@ -15,13 +20,13 @@
 
     <p for="parentName"> Nombre del tutor </p>
     <Input @value={{ registerData.parentName }} required />
-    <p for="parentCUIL"> CUIL o DNI del tutor </p>
+    <p for="parentCUIL"> CUIL del tutor </p>
     <Input @value={{ registerData.parentCUIL }} required />
 
     <p for="avatarURL"> Avatar </p>
     <Input @value={{ registerData.avatarURL }} required />
 
-    <Button type="submit">
+    <Button type="submit" @isDisabled={{ or (not validUsername) wrongPasswords }}>
       Registrar
     </Button>
   </form>

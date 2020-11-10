@@ -14,6 +14,6 @@ export default Component.extend({
           this.set("wrongLogin", true)
           this.set("credentials.password", "")
         })
-    },
+    }
   }
 });
