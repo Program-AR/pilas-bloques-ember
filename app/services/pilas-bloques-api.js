@@ -10,13 +10,10 @@ export default Service.extend({
 
   async login(credentials) {
     return this._send('POST', 'login', credentials)
-      .then((res) => {
-        if (res.status >= 400) throw res.text()
-        else this._saveSession(res.json())
-      })
+      .then(session => this._saveSession(session))
   },
 
-  register(data) {
+  async register(data) {
     const { username, avatarURL } = data
     const credentials = data
     const profile = {
@@ -24,13 +21,15 @@ export default Service.extend({
       avatarURL
     }
     return this._send('POST', 'register', { credentials, profile })
+      .then(session => this._saveSession(session))
   },
 
-  checkSessionId() {
-    let session = JSON.parse(localStorage.getItem(this.SESSION_KEY))
-    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
-    if (!session || isOld()) return this._updateSession().id
-    return session.id
+  logout() {
+    return this._saveSession(null)
+  },
+
+  getSession() {
+    return JSON.parse(localStorage.getItem(this.SESSION_KEY))
   },
 
   _saveSession(session) {
@@ -46,7 +45,7 @@ export default Service.extend({
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     })
-    // .then((res) => { if (res.status > 200) return res.json() })
+      .then(res => { if (res.status >= 400) { throw res.text() } else return res.json() })
     // .catch((pbApiError) => console.log({ pbApiError })) // Connection error
   },
 })

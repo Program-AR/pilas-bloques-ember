@@ -1,7 +1,23 @@
-<Button @onClick={{action (mut openLogin) true}}>
-  Ingresar
-</Button>
+{{#if session}}
+  <PaperMenu @offset="5 43" as |menu|>
+    <menu.trigger>
+      <Button> {{ session.nickName }} </Button>
+    </menu.trigger>
+    <menu.content as |content|>
+      <content.menu-item>
+        <Button @onClick={{action "changeUser"}}> Cambiar usuario </Button>
+      </content.menu-item>
 
-<ModalToggle title="Iniciar sesión" @open={{openLogin}}>
-  <Login/>
+      <content.menu-item>
+        <Button @onClick={{action "logout"}}> Cerrar sesión </Button>
+      </content.menu-item>
+    </menu.content>
+  </PaperMenu>
+{{else}}
+  <Button @onClick={{action (mut openLogin) true}}> Ingresar </Button>
+{{/if}}
+
+
+<ModalToggle @title="Iniciar sesión" @open={{openLogin}}>
+  <Login />
 </ModalToggle>

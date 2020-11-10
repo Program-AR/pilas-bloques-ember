@@ -9,10 +9,11 @@ export default Component.extend({
   actions: {
     doLogin() {
       this.pilasBloquesApi.login(this.credentials)
-        .catch(err => {
+        .then(() => document.location.reload())
+        .catch(() => {
           this.set("wrongLogin", true)
           this.set("credentials.password", "")
         })
-    }
+    },
   }
 });
