@@ -31,11 +31,14 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "ember build",
-    "build:web": "ember build --environment=web --output-path dist_web",
+    "build": "sh ./scripts/build.sh",
+    "build:web": "sh ./scripts/build.sh -web",
+    "release:path": "sh ./scripts/release.sh -patch",
+    "release:major": "sh ./scripts/release.sh -major",
+    "release:minor": "sh ./scripts/release.sh -minor",
     "start": "ember server",
-    "test": "ember test --serve",
-    "test:CI": "ember test",
+    "test": "sh ./scripts/test.sh -live",
+    "test:CI": "sh ./scripts/test.sh -ci",
     "clean": "rm -rf node_modules dist dist_web"
   },
   "engines": {
