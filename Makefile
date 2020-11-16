@@ -19,51 +19,20 @@ commands:
 	@ echo ""
 	@ echo "${B}Commands available for ${G}pilas-bloques${N} - ${Y} versión ${VERSION}${N}"
 	@ echo ""
-	@ echo "  ${Y}for development:${N}"
+	@ echo "  ${Y}for packaging :${N}"
 	@ echo ""
-	@ echo "    ${G}build${N}								Build the project."
-	@ echo "    ${G}build_live${N}   						Build the project continuously."
-	@ echo "    ${G}build_pilasweb${N}    					Build Pilas Web dependency."
-	@ echo "    ${G}build_pilas_bloques_exercises${N}		Build Pilas Bloques exercises."
-	@ echo ""
-	@ echo "  ${Y}for distribution:${N}"
-	@ echo ""
-	@ echo "    ${G}release_patch${N}     Generate a version (x.x.PATCH)."
-	@ echo "    ${G}release_minor${N}     Generate a version (x.MINOR.x)."
-	@ echo "    ${G}release_major${N}     Generate a version (MAJOR.x.x)."
+	@ echo "    ${G}electron_osx_package${N}   			Make a electron osx electron package."
+	@ echo "    ${G}electron_linux_x64_deb_package${N}  Make a electron linux x64 deb electron package."
+	@ echo "    ${G}electron_linux_x64_zip_package${N}  Make a electron linux x64 zip electron package."
+	@ echo "    ${G}electron_linux_ia32_zip_package${N} Make a electron linux x32 zip electron package."
+	@ echo "    ${G}electron_win32_package${N}    		Make a electron Win32 electron package."
+	@ echo "    ${G}electron_linux_packages${N}			Make all electron linux electron packages."
 	@ echo ""
 	@ echo "    ${L}NOTE: every version generates a binary automatically in travis.${N}"
 	@ echo ""
 	@ echo ""
 
 
-build_pilasweb: # For develop with Pilas Web WITHOUT releasing it.
-	cd ../pilasweb; make build
-	cp -rf ../pilasweb/dist node_modules/pilasweb/
-
-build_pilas_bloques_exercises: #For develop with Pilas Bloques Exercises WITHOUT releasing it.
-	@ echo "${G}Building Pilas Bloques Exercises${N}"
-	cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt
-	cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/
-
-watch_pilas_bloques_exercises: 
-	@ echo "${G}Building Pilas Bloques Exercises${N}"
-	cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch
-
-build: 
-	npm run build
-
-build_live:
-	$(EMBER) build --watch
-
-release_patch:
-	$(EMBER) release
-
-release_minor:
-	$(EMBER) release --minor
-
-release_major:
-	$(EMBER) release --major
 
 package = @echo "${G}Generating package for $(1) $(2)...${N}"; node_modules/.bin/electron-packager dist ${NAME} --app-version=${VERSION} --platform=$(1) --arch=$(2) --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.$(3)
 
