@@ -1,6 +1,3 @@
-# The ember executable path.
-EMBER=./node_modules/.bin/ember
-
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
 NAME=$(shell scripts/projectName.sh)
 
