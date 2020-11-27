@@ -15,6 +15,7 @@ export default Component.extend({
   actions: {
     doRegister() {
       this.pilasBloquesApi.register(this.registerData)
+      .then(() => document.location.reload())
     },
 
     checkUsername() {
