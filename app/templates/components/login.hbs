@@ -25,15 +25,10 @@
 
 
   <p> ¿No tenés una cuenta? </p>
-  <Button class="link" @onClick={{action (mut openRegister) true}}>
+  <Link @href={{href-to "register"}}>
     Registrate
-  </Button>
+  </Link>
 </div>
-
-<ModalToggle @title="Nueva cuenta" @open={{openRegister}}>
-  <Register/>
-</ModalToggle>
-
 
 <ModalToggle @title="Recuperar contraseña" @open={{openRecovery}}>
   ????

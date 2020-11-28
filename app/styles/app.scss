@@ -29,10 +29,6 @@
 @import "themes/themes.scss";
 @import "toggle.scss";
 
-[data-ember-action] {
-    cursor: pointer;
-}
-
 * {
   -webkit-touch-callout:none;
   -webkit-user-select:none;

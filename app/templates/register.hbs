@@ -1,3 +1,5 @@
+<Header/>
+
 <div class="center">
   <form {{action "doRegister" on="submit"}}>
     <img src="imagenes/libros/primer-ciclo.png" />
@@ -26,6 +28,11 @@
     <Input @value={{ registerData.email }} />
 
     <p for="avatarURL"> Avatar </p>
+    {{#each avatars as |avatar|}}
+      <label for=""> {{ avatar }}</label>
+      {{!-- <img class="avatar" src={{"imagenes/avatars/" + avatar}} /> --}}
+    {{/each}}
+
     <Input @value={{ registerData.avatarURL }} required />
 
     <p for="Terms & Conditions"> Términos y condiciones </p>

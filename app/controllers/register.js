@@ -1,11 +1,12 @@
 import { inject as service } from '@ember/service'
-import Component from '@ember/component'
+import Controller from '@ember/controller';
 
-export default Component.extend({
+export default Controller.extend({
   pilasBloquesApi: service(),
   registerData: {},
   validUsername: true,
   wrongPasswords: false,
+  avatars: ['alien.png', 'duba.png', 'lita.png'],
 
   validPasswords() {
     const { password, passwordConfirm } = this.registerData

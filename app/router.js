@@ -22,6 +22,7 @@ Router.map(function () {
     this.route('verLibro', { path: ":libro_id" });
   });
   this.route('galeria');
+  this.route('register');
 });
 
 Router.reopen({
