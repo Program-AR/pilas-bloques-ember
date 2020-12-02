@@ -13,8 +13,6 @@ Router.map(function () {
 
   /* Rutas para el curso online 2016 (moodle) */
   this.route('desafios', function () {
-    this.route('cursoAlumno', { path: "/cursoAlumno/:hash" });
-    this.route('cursoDocente', { path: "/cursoDocente/:hash" });
     this.route('desafioPorNombre', { path: '/:nombreDelDesafio' });
   });
 
