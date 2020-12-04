@@ -49,3 +49,13 @@ md-menu-item > * {
     padding-left: 16px;
     padding-right: 0px;
 }
+
+.user-menu {
+    height: inherit !important;
+    display: inline-flex;
+}
+
+.face {
+    border-radius: 30px;
+    border: 1px solid #ddd;
+}
