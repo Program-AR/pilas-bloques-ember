@@ -476,3 +476,19 @@ a:hover {
 .blocklyText {
   font-family: Arial, sans-serif !important;
 }
+
+.gray {
+  filter: grayscale(1);
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border: 0;
+  padding: 0;
+}
+
+.avatar > img {
+  height: inherit;
+  width: inherit;
+}
