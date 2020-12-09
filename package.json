@@ -31,15 +31,24 @@
     "test": "tests"
   },
   "scripts": {
-    "build": "sh ./scripts/build.sh",
-    "build:web": "sh ./scripts/build.sh -web",
-    "release:path": "sh ./scripts/release.sh -patch",
-    "release:major": "sh ./scripts/release.sh -major",
-    "release:minor": "sh ./scripts/release.sh -minor",
+    "build": "ember build",
+    "build:web": "ember build --environment=web --output-path dist_web",
+    "build:pilasweb": "cd ../pilasweb; make build; cp -rf ../pilasweb/dist node_modules/pilasweb/",
+    "build:exercises": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt; cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/",
+    "clean": "rm -rf node_modules dist dist_web",
+    "electron:build:linux_x64_deb": "sh ./scripts/package.sh -linux_x64_deb",
+    "electron:build:linux_ia32_zip": "sh ./scripts/package.sh -linux_ia32_zip",
+    "electron:build:linux_x64_zip": "sh ./scripts/package.sh -linux_x64_zip",
+    "electron:build:linux": "sh ./scripts/package.sh -linux",
+    "electron:build:osx": "sh ./scripts/package.sh -osx",
+    "electron:build:win32": "sh ./scripts/package.sh -win32",
+    "release:path": "ember release",
+    "release:major": "ember release --major",
+    "release:minor": "ember release --minor",
     "start": "ember server",
-    "test": "sh ./scripts/test.sh -live",
-    "test:CI": "sh ./scripts/test.sh -ci",
-    "clean": "rm -rf node_modules dist dist_web"
+    "test": "ember test --serve",
+    "test:CI": "ember test",
+    "watch:exercises": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch"
   },
   "engines": {
     "node": ">= 0.10.0"
