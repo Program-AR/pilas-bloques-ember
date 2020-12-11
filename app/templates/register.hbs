@@ -1,7 +1,7 @@
 <Header/>
 
 <div class="center">
-  <form {{action "doRegister" on="submit"}}>
+  <PaperForm @onSubmit={{action "doRegister"}} as |form|>
     <img src="imagenes/libros/primer-ciclo.png" />
     <br>
     
@@ -9,7 +9,8 @@
       @value={{ registerData.username }} 
       @onChange={{ action (mut registerData.username) }} 
       @focusOut={{ action "checkUsername" }}
-      @required={{ true }}>
+      @required={{ true }} 
+      @errorMessages={{ hash required="Este campo es necesario" }} > {{!-- TODO: Abstraer esto --}}
       {{#unless validUsername}}
         {{!-- TODO: Move to <InputErrorMessage> component --}}
         <div class="md-input-messages-animation md-auto-hide" id="ember267-error-messages">
@@ -48,12 +49,15 @@
       @required={{ true }} />
 
     <br>
-    <PaperInput @label="Email (opcional)"
+    <PaperInput @type="email" @label="Email (opcional)"
       @value={{ registerData.email }} 
       @onChange={{ action (mut registerData.email) }} />
 
 
-    <p for="avatarURL"> Avatar </p>
+    <p for="avatarURL">
+      Elegí tu avatar:
+      <PaperInput class="invisible-input" @type="checkbox" @onChange={{ null }} @value={{ registerData.avatarURL }} @required={{ true }} />  
+    </p>
     {{#each avatars as |avatar|}}
       <button type="button" class="avatar" onClick={{action (mut registerData.avatarURL) avatar}}>
         <img class={{ if (not (eq registerData.avatarURL avatar)) "gray"}} src={{ concat "imagenes/avatars/" avatar }} />
@@ -68,8 +72,8 @@
     <Input @type={{"checkbox"}} required />
     <span>He leído y acepto los términos y condiciones.</span>
 
-    <Button type="submit" @isDisabled={{ or (not validUsername) wrongPasswords }}>
+    <Button type="submit" @isDisabled={{not validUsername}}>
       Registrar
     </Button>
-  </form>
+  </PaperForm>
 </div>

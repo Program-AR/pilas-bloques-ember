@@ -18,7 +18,6 @@ export default Controller.extend({
 
   actions: {
     doRegister() {
-      //TODO: Validate avatar
       this.pilasBloquesApi.register(this.registerData)
       .then(() => this.transitionToRoute("/"))
     },

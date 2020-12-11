@@ -492,3 +492,7 @@ a:hover {
   height: inherit;
   width: inherit;
 }
+
+.invisible-input > input {
+  visibility: hidden;
+}
