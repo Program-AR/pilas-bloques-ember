@@ -1,13 +1,18 @@
 import { inject as service } from '@ember/service'
+import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 
 const data = {} // Hack for use in validation
 
 export default Controller.extend({
+  avatardb: service(),
   pilasBloquesApi: service(),
   registerData: data,
   validUsername: true,
-  avatars: ['alien.png', 'duba.png', 'lita.png'],
+
+  avatars: computed('avatardb', function() {
+    return this.avatardb.allAvatars()
+  }),
 
   passwordConfirmValidation: [{
     message: 'Las contraseñas no coinciden',

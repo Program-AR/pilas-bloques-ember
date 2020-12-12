@@ -493,6 +493,15 @@ a:hover {
   width: inherit;
 }
 
+.avatar > .selected {
+  border-style: double;
+}
+
 .invisible-input > input {
   visibility: hidden;
+}
+
+.register-form {
+  max-width: 20rem;
+  display: inline-block;
 }

@@ -1,10 +1,10 @@
 <Header/>
 
 <div class="center">
-  <PaperForm @onSubmit={{action "doRegister"}} as |form|>
+  <PaperForm class="register-form" @onSubmit={{action "doRegister"}} as |form|>
     <img src="imagenes/libros/primer-ciclo.png" />
-    <br>
     
+    <br>
     <PaperInput @label="Usuario"
       @value={{ registerData.username }} 
       @onChange={{ action (mut registerData.username) }} 
@@ -21,7 +21,6 @@
       {{/unless}}
     </PaperInput>
 
-
     <br>
     <PaperInput @type="password" @label="Contraseña"
       @value={{ registerData.password }} 
@@ -34,7 +33,6 @@
       @onChange={{ action (mut passwordConfirm) }} 
       @customValidations={{ passwordConfirmValidation }}
       @required={{ true }} />
-
 
     <br>
     <PaperInput @label="Nombre del tutor"
@@ -53,16 +51,19 @@
       @value={{ registerData.email }} 
       @onChange={{ action (mut registerData.email) }} />
 
-
     <p for="avatarURL">
       Elegí tu avatar:
       <PaperInput class="invisible-input" @type="checkbox" @onChange={{ null }} @value={{ registerData.avatarURL }} @required={{ true }} />  
     </p>
-    {{#each avatars as |avatar|}}
-      <button type="button" class="avatar" onClick={{action (mut registerData.avatarURL) avatar}}>
-        <img class={{ if (not (eq registerData.avatarURL avatar)) "gray"}} src={{ concat "imagenes/avatars/" avatar }} />
-      </button>
-    {{/each}}
+    <PaperGridList @cols="1 sm-md-2 gt-md-4" @rowHeight="gt-md-1:1" as |grid|>
+      {{#each avatars as |avatar|}}
+        <grid.tile as |tile|>
+          <button type="button" class="avatar" onClick={{action (mut registerData.avatarURL) avatar}}>
+            <img class={{ if (not (eq registerData.avatarURL avatar)) "gray" "selected"}} src={{ avatar }} />
+          </button>
+        </grid.tile>
+      {{/each}}
+    </PaperGridList>
 
     <p for="Terms & Conditions"> Términos y condiciones </p>
     <Textarea @value={{ "Acá van los términos y condiciones" }} disabled={{true}} />
