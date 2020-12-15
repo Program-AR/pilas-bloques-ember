@@ -511,3 +511,7 @@ a:hover {
   max-width: 20rem;
   display: inline-block;
 }
+
+md-menu-content > md-menu-item {
+  color: inherit;
+}
