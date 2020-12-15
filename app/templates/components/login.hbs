@@ -1,23 +1,34 @@
-<div class="center">
-  <form {{action "doLogin" on="submit"}}>
+|<div class="center">
+  <PaperForm @onSubmit={{action "doLogin"}} as |form|>
     <img src="imagenes/libros/primer-ciclo.png" />
 
-    <p for="username"> Usuario </p>
-    <Input @value={{ credentials.username }} required />
-    <p for="password"> Contraseña </p>
-    <Input type="password" @value={{ credentials.password }} required />
+    <PbInput @label="Usuario"
+      @model={{ credentials.username }} 
+      @required={{ true }} />
+
+    <PbInput @type="password" @label="Contraseña"
+      @model={{ credentials.password }} 
+      @required={{ true }} />
 
     {{#if wrongLogin}}
-      <p>Usuario o contraseña incorrectos, volvé a intentar.</p>
-      <Button class="link" @onClick={{action "doLogin"}}>
-        ¿Olvidaste tu usuario o contraseña?
-      </Button>
+      <PaperCard as |card|>
+        <card.title as |title|>
+          <title.text as |text|>
+            <text.headline>Usuario o contraseña incorrectos, volvé a intentar</text.headline>
+          </title.text>
+        </card.title>
+        <card.actions>
+          <Button class="link" @onClick={{action (mut openRecovery) true}}>
+            ¿Olvidaste tu usuario o contraseña?
+          </Button>
+        </card.actions>
+      </PaperCard>
     {{/if}}
 
     <Button type="submit">
       Ingresar
     </Button>
-  </form>
+  </PaperForm>
 
   <Button class="link" @onClick={{action (mut openRecovery) true}}>
     Olvidé mi usuario o constraseña
@@ -31,5 +42,5 @@
 </div>
 
 <ModalToggle @title="Recuperar contraseña" @open={{openRecovery}}>
-  ????
+  En construcción, si tenés problemas con tu cuenta contactate con el equipo de desarrollo.
 </ModalToggle>
