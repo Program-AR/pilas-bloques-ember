@@ -50,7 +50,7 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.cursoBackendURL = 'http://testing-pilas-bloques-api.enjambrelab.com.ar'
     ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
-    ENV.pbApi.baseURL = 'http://localhost:3005'
+    ENV.pbApi.baseURL = 'http://localhost:3006'
   }
 
   if (environment === 'test') {

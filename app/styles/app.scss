@@ -497,6 +497,12 @@ a:hover {
   border-style: double;
 }
 
+.invisible-input {
+  margin: 0;
+  top: -2rem;
+  height: 5px;
+}
+
 .invisible-input > input {
   visibility: hidden;
 }
