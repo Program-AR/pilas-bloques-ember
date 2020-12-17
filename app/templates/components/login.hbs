@@ -14,14 +14,9 @@
       <PaperCard as |card|>
         <card.title as |title|>
           <title.text as |text|>
-            <text.headline>Usuario o contraseña incorrectos, volvé a intentar</text.headline>
+            <p>Usuario o contraseña incorrectos, volvé a intentar</p>
           </title.text>
         </card.title>
-        <card.actions>
-          <Button class="link" @onClick={{action (mut openRecovery) true}}>
-            ¿Olvidaste tu usuario o contraseña?
-          </Button>
-        </card.actions>
       </PaperCard>
     {{/if}}
 

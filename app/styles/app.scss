@@ -520,6 +520,10 @@ md-input-container > label {
   color: var(--theme-font-color);
 }
 
+md-input-container > .md-input {
+  color: var(--theme-font-color);
+}
+
 md-input-container:not(.md-input-focused):not(.md-input-invalid) > label.md-required:after {
   color: var(--theme-font-color);
 }
@@ -530,4 +534,8 @@ p {
 
 span {
   color: var(--theme-font-color);
+}
+
+md-card {
+  background-color: inherit;
 }
