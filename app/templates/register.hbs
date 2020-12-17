@@ -31,7 +31,7 @@
       @model={{ registerData.email }} />
 
     <p for="avatarURL">
-      Elegí tu avatar:
+      <label>Elegí tu avatar:</label>
       <PbInput class="invisible-input" @type="checkbox" @model={{ registerData.avatarURL }} @required={{ true }} />  
     </p>
     <PaperGridList @cols="1 sm-md-2 gt-md-4" @rowHeight="gt-md-1:1" as |grid|>
@@ -52,7 +52,7 @@
     <Input @type={{"checkbox"}} required /> <span>He leído y acepto los términos y condiciones.</span>
 
     <br><br>
-    <Button type="submit" @isDisabled={{not validUsername}}>
+    <Button class="link" type="submit" @isDisabled={{not validUsername}}>
       Registrar
     </Button>
   </PaperForm>

@@ -515,3 +515,19 @@ a:hover {
 md-menu-content > md-menu-item {
   color: inherit;
 }
+
+md-input-container > label {
+  color: var(--theme-font-color);
+}
+
+md-input-container:not(.md-input-focused):not(.md-input-invalid) > label.md-required:after {
+  color: var(--theme-font-color);
+}
+
+p {
+  color: var(--theme-font-color);
+}
+
+span {
+  color: var(--theme-font-color);
+}
