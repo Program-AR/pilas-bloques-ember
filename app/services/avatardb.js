@@ -15,4 +15,9 @@ export default Ember.Service.extend({
     return AVATAR_PATH + avatar
   },
 
+  randomAvatar() {
+    const avatars = this.allAvatars()
+    return avatars[Math.floor(Math.random() * avatars.length)]
+  }
+
 })
