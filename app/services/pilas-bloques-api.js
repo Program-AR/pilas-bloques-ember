@@ -6,6 +6,10 @@ const { baseURL } = config.pbApi
 export default Service.extend({
   SESSION_KEY: 'PB_SESSION',
   platform: service(),
+  loading: {
+    login: false,
+    register: false,
+  },
   connected: true,
 
   async login(credentials) {
@@ -36,19 +40,25 @@ export default Service.extend({
   },
 
   _saveSession(session) {
-    localStorage.setItem(this.SESSION_KEY, JSON.stringify(session))
+    localStorage.setItem(this.SESSION_KEY, JSON.stringify(session || null))
   },
 
   async _send(method, resource, body) {
     if (!this.connected) { return; }
     const url = `${baseURL}/${resource}`
-
+    
+    const flag = `loading.${resource}`
+    this.set(flag, true)
     return fetch(url, {
       method,
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     })
       .then(res => { if (res.status >= 400) { throw res.text() } else return res.json() })
-    // .catch((pbApiError) => console.log({ pbApiError })) // Connection error
+      .catch((pbApiError) => {
+        console.log({ pbApiError }) //TODO: Toast
+        throw pbApiError
+      })
+      .finally(() => this.set(flag, false))
   },
 })

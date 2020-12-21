@@ -20,9 +20,9 @@
       </PaperCard>
     {{/if}}
 
-    <Button type="submit">
+    <ProgressButton type="submit" @loading={{ pilasBloquesApi.loading.login }}>
       Ingresar
-    </Button>
+    </ProgressButton>
   </PaperForm>
 
   <Button class="link" @onClick={{action (mut openRecovery) true}}>
