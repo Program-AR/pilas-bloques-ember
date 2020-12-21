@@ -15,12 +15,11 @@ export default Service.extend({
 
   async register(data) {
     const { username, avatarURL } = data
-    const credentials = data
     const profile = {
       nickName: username,
       avatarURL
     }
-    return this._send('POST', 'register', { credentials, profile })
+    return this._send('POST', 'register', { ...data, profile })
       .then(session => this._saveSession(session))
   },
 
