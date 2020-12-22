@@ -5,6 +5,7 @@ const { baseURL } = config.pbApi
 
 export default Service.extend({
   SESSION_KEY: 'PB_SESSION',
+  paperToaster: service(),
   platform: service(),
   loading: {
     login: false,
@@ -46,7 +47,7 @@ export default Service.extend({
   async _send(method, resource, body) {
     if (!this.connected) { return; }
     const url = `${baseURL}/${resource}`
-    
+
     const flag = `loading.${resource}`
     this.set(flag, true)
     return fetch(url, {
@@ -54,11 +55,22 @@ export default Service.extend({
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     })
-      .then(res => { if (res.status >= 400) { throw res.text() } else return res.json() })
-      .catch((pbApiError) => {
-        console.log({ pbApiError }) //TODO: Toast
+      .catch(pbApiError => {
+        this._alertServerError()
+        // console.log({ pbApiError })
         throw pbApiError
       })
+      .then(res => {
+        if (res.status >= 400) throw { status: res.status, message: res.text() }
+        return res.json()
+      })
       .finally(() => this.set(flag, false))
+  },
+
+  _alertServerError() {
+    this.paperToaster.show("Problemas con el servidor, intentar más tarde", {
+      duration: 4000,
+      position: "top"
+    })
   },
 })
