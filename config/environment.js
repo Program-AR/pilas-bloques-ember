@@ -61,7 +61,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
-  if (environment === 'web' || environment === 'production') {
+  if (environment === 'production') {
     ENV.enableChallengeCreator = false
     ENV.cursoBackendURL = 'http://api.pilasbloques.program.ar'
     ENV.pbAnalyticsApi.baseURL = null // TODO

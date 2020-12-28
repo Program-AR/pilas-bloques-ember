@@ -1,6 +1,6 @@
 # compiled output
 /dist
-/dist_web
+/dist_prod
 /tmp
 
 .DS_Store

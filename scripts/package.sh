@@ -15,6 +15,9 @@ PACKAGER=./node_modules/.bin/electron-packager
 # The electron debian packager path.
 DEBIAN_PACKAGER=./node_modules/.bin/electron-installer-debian
 
+# The folder with all the publishable webapp
+DIST=./dist_prod
+
 help() {
     echo ""
 	echo "Commands available for pilas-bloques - versión $VERSION"
@@ -39,8 +42,8 @@ prebuild() {
     
     echo "Generating package for $PLATFORM $ARCH..."
     mkdir -p ./binaries
-    cp package.json dist/package.json
-    cp packaging/electron.js dist
+    cp package.json $DIST/package.json
+    cp packaging/electron.js $DIST
 }
 
 package() {
@@ -48,7 +51,7 @@ package() {
     ARCH=$2
     ICON_EXTENSION=$3
 
-    $PACKAGER dist $NAME --app-version=$VERSION --platform=$PLATFORM --arch=$ARCH --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.$ICON_EXTENSION
+    $PACKAGER $DIST $NAME --app-version=$VERSION --platform=$PLATFORM --arch=$ARCH --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.$ICON_EXTENSION
 }
 
 package_linux_x64_deb() {

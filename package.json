@@ -36,7 +36,7 @@
     "test:CI": "ember test",
     "watch:exercises": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch",
     "build": "ember build",
-    "build:web": "ember build --environment=web --output-path dist_web",
+    "build:prod": "ember build --environment=production --output-path dist_prod",
     "build:pilasweb": "cd ../pilasweb; make build; cp -rf ../pilasweb/dist node_modules/pilasweb/",
     "build:exercises": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt; cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/",
     "release:patch": "ember release",
@@ -48,7 +48,7 @@
     "pack:linux": "sh ./scripts/package.sh -linux",
     "pack:osx": "sh ./scripts/package.sh -osx",
     "pack:win32": "sh ./scripts/package.sh -win32",
-    "clean": "rm -rf node_modules dist dist_web"
+    "clean": "rm -rf node_modules dist dist_prod"
   },
   "engines": {
     "node": ">= 0.10.0"

@@ -74,14 +74,15 @@ before_script:
 
 script:
 - node -v
-- npm run build
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
 - NAME=$(sh scripts/projectName.sh)
 - VERSION=$(sh scripts/projectVersion.sh)
 - VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run pack:linux; ember build --environment=development; fi
+- npm run build # for surge (generates dist folder)
+- if [[ ! -z "$TRAVIS_TAG" ]]; npm run build:prod; fi # for packaging (generates dist_prod folder)
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run pack:linux; fi
 - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run pack:osx; fi
 - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm run pack:win32; fi
 
