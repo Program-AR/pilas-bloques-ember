@@ -105,7 +105,7 @@ case "$1" in
     (-linux_x64_deb)    package_linux_x64_deb;;
     (-linux_ia32_zip)   package_linux_ia32_zip;;
     (-linux_x64_zip)    package_linux_x64_zip;;
-    (-linux)            package_linux;;
+    (-linux)            pwd;; #package_linux;;
     (-osx)              package_osx;;
     (-win32)            package_win32;;
     (*)                 echo Try 'package -help' for more information.;;
