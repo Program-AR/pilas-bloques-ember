@@ -79,14 +79,7 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo apt install python
   ```
   
-* Make (soon to be eliminated from the project):
-
-  Debian/Ubuntu:
-  ```
-  sudo apt-get install make
-  ```
-  
-* The Long Term Support (LTS) version of Node S called Dubnium (Version 10.13.0) or whatever version `.nvmrc` file says.
+* Node. The version required is indicated in `.nvmrc` file.
 
   Install it: 
   ```
