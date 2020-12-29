@@ -59,7 +59,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
-  if (environment === 'web' || environment === 'production') {
+  if (environment === 'production') {
     ENV.enableChallengeCreator = false
     ENV.pbAnalyticsApi.baseURL = null // TODO
     ENV.googleAnalyticsEnabled = true

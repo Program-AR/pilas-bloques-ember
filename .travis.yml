@@ -74,21 +74,17 @@ before_script:
 
 script:
 - node -v
-- npm run build
 - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run test:CI; fi
 
 before_deploy: # Pack binaries, and Linux to publish webpage to Surge.
 - NAME=$(sh scripts/projectName.sh)
 - VERSION=$(sh scripts/projectVersion.sh)
 - VERSION_DEB=$(echo ${VERSION} | sed -e 's/-/~/g')
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then make electron_linux_packages; fi
-- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then make electron_osx_package; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKE electron_pre_build; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then node_modules/.bin/electron-packager dist ${NAME} --app-version=${VERSION} --platform=win32 --arch=ia32 --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.ico; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then cp packaging/instalador.nsi binaries/${NAME}-win32-ia32; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then $MAKENSIS binaries/${NAME}-win32-ia32/instalador.nsi; fi
-- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then mv binaries/${NAME}-win32-ia32/${NAME}.exe binaries/${NAME}-${VERSION}.exe; fi
-- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ember build --environment=development; fi
+- npm run build # for surge (generates dist folder)
+- if [[ ! -z "$TRAVIS_TAG" ]]; npm run build:prod; fi # for packaging (generates dist_prod folder)
+- if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then npm run pack:linux; fi
+- if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then npm run pack:osx; fi
+- if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then npm run pack:win32; fi
 
 deploy:
   - provider: releases # When there is a tag, pack the installers and upload to Github.
