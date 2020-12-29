@@ -67,7 +67,7 @@ package_linux_ia32_zip() {
     echo "Generating linux ia32 zip..."
     rm -f ./binaries/$NAME-$VERSION-ia32.zip
     package "linux" "ia32" "icns"
-    cd binaries; zip -r $NAME-$VERSION-linux-ia32.zip $NAME-linux-ia32/
+    cd binaries; zip -r $NAME-$VERSION-linux-ia32.zip $NAME-linux-ia32/; cd ..
 }
 
 package_linux_x64_zip() {
@@ -75,7 +75,7 @@ package_linux_x64_zip() {
     echo "Generating linux x64 zip..."
     rm -f ./binaries/$NAME-$VERSION-x64.zip
     package "linux" "x64" "icns"
-    cd binaries; zip -r $NAME-$VERSION-linux-x64.zip $NAME-linux-x64/
+    cd binaries; zip -r $NAME-$VERSION-linux-x64.zip $NAME-linux-x64/; cd ..
 }
 
 package_linux() {
@@ -105,7 +105,7 @@ case "$1" in
     (-linux_x64_deb)    package_linux_x64_deb;;
     (-linux_ia32_zip)   package_linux_ia32_zip;;
     (-linux_x64_zip)    package_linux_x64_zip;;
-    (-linux)            pwd;; #package_linux;;
+    (-linux)            package_linux;;
     (-osx)              package_osx;;
     (-win32)            package_win32;;
     (*)                 echo Try 'package -help' for more information.;;
