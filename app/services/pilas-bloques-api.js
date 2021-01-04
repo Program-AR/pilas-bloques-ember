@@ -4,7 +4,7 @@ import config from "../config/environment"
 const { baseURL } = config.pbApi
 
 export default Service.extend({
-  SESSION_KEY: 'PB_SESSION',
+  USER_KEY: 'PB_USER',
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
   loading: {
@@ -38,7 +38,7 @@ export default Service.extend({
   // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
-      .then(session => this._saveSession(session))
+      .then(session => this._saveUser(session))
   },
 
   async register(data) {
@@ -48,7 +48,7 @@ export default Service.extend({
       avatarURL
     }
     return this._send('POST', 'register', { ...data, profile })
-      .then(session => this._saveSession(session))
+      .then(session => this._saveUser(session))
   },
 
   async validateUsername(username) {
@@ -56,40 +56,44 @@ export default Service.extend({
   },
 
   logout() {
-    return this._saveSession(null)
+    return this._saveUser(null)
   },
 
-  getSession() {
-    return JSON.parse(localStorage.getItem(this.SESSION_KEY))
+  getUser() {
+    return JSON.parse(localStorage.getItem(this.USER_KEY))
   },
 
-  _saveSession(session) {
-    localStorage.setItem(this.SESSION_KEY, JSON.stringify(session || null))
+  _saveUser(user) {
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user || null))
   },
 
 
-  
+
   async _send(method, resource, body, reportError = true) {
     if (!this.connected) { return; }
     if (body) { body.session = this.pilasBloquesAnalytics.buildSession() }
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource}`
-    this.set(flag, true)
+    const headers = { 
+      'Content-Type': 'application/json',
+      'Authorization': this.getUser() ? `Bearer ${this.getUser().token}` : null
+    }
 
+    this.set(flag, true)
     return fetch(url, {
       method,
       body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' }
+      headers
     })
-      .catch(pbApiError => {
+      .catch(connectionErr => {
         if (reportError) this._alertServerError()
-        // console.log({ pbApiError })
-        throw pbApiError
+        // console.log({ connectionErr })
+        throw connectionErr
       })
       .then(res => {
         if (res.status >= 400) throw { status: res.status, message: res.text() }
-        return res.json()
+        return res.json().catch(() => { /** if not body present */})
       })
       .finally(() => this.set(flag, false))
   },
