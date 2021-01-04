@@ -6,13 +6,36 @@ const { baseURL } = config.pbApi
 export default Service.extend({
   SESSION_KEY: 'PB_SESSION',
   paperToaster: service(),
-  platform: service(),
+  pilasBloquesAnalytics: service(),
   loading: {
     login: false,
     register: false,
   },
   connected: true,
 
+  // SOLUTIONS
+  openChallenge(challengeId) {
+    this._send('POST', 'challenges', { challengeId }, false)
+  },
+
+  runProgram(challengeId, program, staticAnalysis) {
+    const solutionId = uuidv4()
+    const data = {
+      challengeId,
+      solutionId,
+      program,
+      staticAnalysis,
+    }
+    this._send('POST', 'solutions', data, false)
+
+    return solutionId
+  },
+
+  executionFinished(solutionId, executionResult) {
+    this._send('PUT', `solutions/${solutionId}`, { executionResult }, false)
+  },
+
+  // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
       .then(session => this._saveSession(session))
@@ -44,19 +67,23 @@ export default Service.extend({
     localStorage.setItem(this.SESSION_KEY, JSON.stringify(session || null))
   },
 
-  async _send(method, resource, body) {
-    if (!this.connected) { return; }
-    const url = `${baseURL}/${resource}`
 
+  
+  async _send(method, resource, body, reportError = true) {
+    if (!this.connected) { return; }
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession() }
+
+    const url = `${baseURL}/${resource}`
     const flag = `loading.${resource}`
     this.set(flag, true)
+
     return fetch(url, {
       method,
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' }
     })
       .catch(pbApiError => {
-        this._alertServerError()
+        if (reportError) this._alertServerError()
         // console.log({ pbApiError })
         throw pbApiError
       })

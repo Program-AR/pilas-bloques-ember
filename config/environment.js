@@ -14,8 +14,7 @@ module.exports = function (environment) {
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
 
-    pbAnalyticsApi: {
-      baseURL: null,
+    pbAnalytics: {
       sessionExpire: 30
     },
 
@@ -49,7 +48,6 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
     ENV.cursoBackendURL = 'http://testing-pilas-bloques-api.enjambrelab.com.ar'
-    ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
     ENV.pbApi.baseURL = 'http://localhost:3006'
   }
 
@@ -69,7 +67,7 @@ module.exports = function (environment) {
   if (environment === 'web' || environment === 'production') {
     ENV.enableChallengeCreator = false
     ENV.cursoBackendURL = 'http://api.pilasbloques.program.ar'
-    ENV.pbAnalyticsApi.baseURL = null // TODO
+    ENV.pbApi.baseURL = 'http://api.pilasbloques'
     ENV.googleAnalyticsEnabled = true
   }
 

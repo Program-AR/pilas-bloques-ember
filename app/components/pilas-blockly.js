@@ -26,7 +26,7 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
-  analyticsApi: service(),
+  pilasBloquesApi: service(),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -368,12 +368,12 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.analyticsApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
   },
 
   executionFinishedEvent(solutionId, executionResult) {
     run(this, function() {
-      this.analyticsApi.executionFinished(solutionId, {
+      this.pilasBloquesApi.executionFinished(solutionId, {
         isTheProblemSolved: this.pilas.estaResueltoElProblema(),
         ...executionResult
       })

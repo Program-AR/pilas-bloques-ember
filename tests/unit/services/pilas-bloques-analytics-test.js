@@ -1,43 +1,43 @@
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 
-module('Unit | Service | analytics-api', function (hooks) {
+module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   setupTest(hooks)
 
-  var api
+  var pbAnalytics
 
   hooks.beforeEach(function () {
-    api = this.owner.lookup('service:analytics-api')
+    pbAnalytics = this.owner.lookup('service:pilas-bloques-analytics')
     localStorage.clear()
   })
 
   test('Should create new sessionId', function (assert) {
-    assert.ok(api.checkSessionId())
+    assert.ok(pbAnalytics.checkSessionId())
   })
 
   test('Should save session', function (assert) {
-    api.checkSessionId()
+    pbAnalytics.checkSessionId()
     const { id, timestamp } = getSession()
     assert.ok(id)
     assert.ok(timestamp)
   })
 
   test('Should keep the session for a while', function (assert) {
-    const firstSessionId = api.checkSessionId()
+    const firstSessionId = pbAnalytics.checkSessionId()
     changeSessionTimestampByMinutes(1)
-    const currentSessionId = api.checkSessionId()
+    const currentSessionId = pbAnalytics.checkSessionId()
     assert.equal(firstSessionId, currentSessionId)
   })
 
   test('Should change the session after a long time', function (assert) {
-    const firstSessionId = api.checkSessionId()
+    const firstSessionId = pbAnalytics.checkSessionId()
     changeSessionTimestampByMinutes(31)
-    const currentSessionId = api.checkSessionId()
+    const currentSessionId = pbAnalytics.checkSessionId()
     assert.notEqual(firstSessionId, currentSessionId)
   })
   
   function getSession() {
-    return JSON.parse(localStorage.getItem(api.ANALYTICS_KEY))
+    return JSON.parse(localStorage.getItem(pbAnalytics.ANALYTICS_KEY))
   }
   
   function changeSessionTimestampByMinutes(minutes) {
@@ -45,7 +45,7 @@ module('Unit | Service | analytics-api', function (hooks) {
     const before = new Date()
     before.setMinutes(before.getMinutes() - minutes)
     session.timestamp = before
-    localStorage.setItem(api.ANALYTICS_KEY, JSON.stringify(session))
+    localStorage.setItem(pbAnalytics.ANALYTICS_KEY, JSON.stringify(session))
   }
 
 })
