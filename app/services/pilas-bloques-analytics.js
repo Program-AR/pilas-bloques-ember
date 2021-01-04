@@ -14,7 +14,7 @@ export default Service.extend({
     return session.id
   },
 
-  buildSession() {
+  buildSession(userId) {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const sessionId = this.checkSessionId()
@@ -22,7 +22,7 @@ export default Service.extend({
       sessionId,
       online,
       browserId: fingerprint,
-      userId: fingerprint,
+      userId: userId || fingerprint,
       timestamp: new Date(),
     }
   },

@@ -71,13 +71,14 @@ export default Service.extend({
 
   async _send(method, resource, body, reportError = true) {
     if (!this.connected) { return; }
-    if (body) { body.session = this.pilasBloquesAnalytics.buildSession() }
+    const user = this.getUser()
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user?.nickName) }
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource}`
     const headers = { 
       'Content-Type': 'application/json',
-      'Authorization': this.getUser() ? `Bearer ${this.getUser().token}` : null
+      'Authorization': user ? `Bearer ${user.token}` : null
     }
 
     this.set(flag, true)
