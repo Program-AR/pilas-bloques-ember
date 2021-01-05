@@ -23,6 +23,7 @@ export default Component.extend({
       reader.onload = (event) => resolve(event.target.result);
       reader.readAsText(archivo);
     })
+    .then(contenido => this.cargarSolucion(contenido))
   },
 
   // Esto tengo que pasarlo a Promise nativo.
@@ -87,9 +88,7 @@ export default Component.extend({
     this.fileInput().addEventListener("change", (event) => {
       let archivo = event.target.files[0];
       if (archivo) {
-        this.leerSolucionWeb(archivo)
-          .then(contenido => this.cargarSolucion(contenido))
-          .catch(alert);
+        this.leerSolucionWeb(archivo).catch(alert);
       }
       this.limpiarInput(this.fileInput());  // Fuerza a que se pueda cargar dos o más veces el mismo archivo
       return false;
