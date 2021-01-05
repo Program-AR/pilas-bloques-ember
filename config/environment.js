@@ -18,6 +18,10 @@ module.exports = function (environment) {
       sessionExpire: 30
     },
 
+    pbApi: {
+      baseURL: null
+    },
+
     EmberENV: {
       EXTEND_PROTOTYPES: {
         Date: false,
@@ -44,6 +48,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
     ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
+    ENV.pbApi.baseURL = 'http://localhost:3006'
   }
 
   if (environment === 'test') {

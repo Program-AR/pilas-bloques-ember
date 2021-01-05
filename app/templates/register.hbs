@@ -1,0 +1,59 @@
+<Header/>
+
+<div class="center">
+  <PaperForm class="register-form" @onSubmit={{action "doRegister"}} as |form|>
+    <img src="imagenes/session/register.png" />
+    
+    <PbInput @label="Usuario"
+      @model={{ registerData.username }} 
+      @focusOut={{ action "checkUsername" }}
+      @required={{ true }}
+      @error={{ if (not validUsername) "Este nombre de usuario ya existe" }} />
+
+    <PbInput @type="password" @label="Contraseña"
+      @model={{ registerData.password }} 
+      @required={{ true }} />
+
+    <PbInput @type="password" @label="Confirmar contraseña"
+      @model={{ passwordConfirm }} 
+      @customValidations={{ passwordConfirmValidation }}
+      @required={{ true }} />
+
+    <PbInput @label="Nombre de madre, padre o tutor/a"
+      @model={{ registerData.parentName }} 
+      @required={{ true }} />
+
+    <PbInput @label="CUIL de madre, padre o tutor/a"
+      @model={{ registerData.parentCUIL }} 
+      @required={{ true }} />
+
+    <PbInput @type="email" @label="Email (opcional)"
+      @model={{ registerData.email }} />
+
+    <p for="avatarURL">
+      <label>Elegí tu avatar:</label>
+      <PbInput class="invisible-input" @type="checkbox" @model={{ registerData.avatarURL }} @required={{ true }} />  
+    </p>
+    <PaperGridList @cols="4" @rowHeight="gt-xs-1:1 gt-md-1:1" as |grid|>
+      {{#each avatars as |avatar|}}
+        <grid.tile as |tile|>
+          <button type="button" class="avatar" onClick={{action (mut registerData.avatarURL) avatar}}>
+            <img class={{ if (not (eq registerData.avatarURL avatar)) "gray" "selected"}} src={{ avatar }} />
+          </button>
+        </grid.tile>
+      {{/each}}
+    </PaperGridList>
+
+    <p for="Terms & Conditions"> Términos y condiciones </p>
+    <Textarea @value={{ "Acá van los términos y condiciones" }} disabled={{true}} />
+    <br>
+    <Link>Ver todos los términos y condiciones</Link>
+    <br><br>
+    <Input @type={{"checkbox"}} required /> <span>He leído y acepto los términos y condiciones.</span>
+
+    <br><br>
+    <ProgressButton class="link" type="submit" @isDisabled={{not validUsername}} @loading={{ pilasBloquesApi.loading.register }}>
+      Registrar
+    </ProgressButton>
+  </PaperForm>
+</div>

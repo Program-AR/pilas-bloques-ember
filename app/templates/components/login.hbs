@@ -1,0 +1,41 @@
+<div class="center">
+  <PaperForm @onSubmit={{action "doLogin"}} as |form|>
+    <img class="login-header" src="imagenes/session/login.png" />
+
+    <PbInput @label="Usuario"
+      @model={{ credentials.username }} 
+      @required={{ true }} />
+
+    <PbInput @type="password" @label="Contraseña"
+      @model={{ credentials.password }} 
+      @required={{ true }} />
+
+    {{#if wrongLogin}}
+      <PaperCard as |card|>
+        <card.title as |title|>
+          <title.text as |text|>
+            <p>Usuario o contraseña incorrectos, volvé a intentar</p>
+          </title.text>
+        </card.title>
+      </PaperCard>
+    {{/if}}
+
+    <ProgressButton type="submit" @loading={{ pilasBloquesApi.loading.login }}>
+      Ingresar
+    </ProgressButton>
+  </PaperForm>
+
+  <Button class="link" @onClick={{action (mut openRecovery) true}}>
+    Olvidé mi usuario o constraseña
+  </Button>
+
+
+  <p> ¿No tenés una cuenta? </p>
+  <Link @href={{href-to "register"}}>
+    Registrate
+  </Link>
+</div>
+
+<ModalToggle @title="Recuperar contraseña" @open={{openRecovery}}>
+  En construcción, si tenés problemas con tu cuenta contactate con el equipo de desarrollo.
+</ModalToggle>
