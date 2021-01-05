@@ -72,7 +72,7 @@ export default Service.extend({
   async _send(method, resource, body, reportError = true) {
     if (!this.connected) { return; }
     const user = this.getUser()
-    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user?.nickName) }
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource}`
@@ -93,8 +93,8 @@ export default Service.extend({
         throw connectionErr
       })
       .then(res => {
-        if (res.status >= 400) res.text().then(message => { throw { status: res.status, message } })
-        return res.json().catch(() => { /** if not body present */})
+        if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
+        else { return res.json().catch(() => { /** if not body present */}) }
       })
       .finally(() => this.set(flag, false))
   },
