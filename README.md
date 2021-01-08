@@ -40,7 +40,7 @@ It is the plan by which you intend to learn a topic. The Pilas Bloques didactic 
 
 ### Who can do the Pilas Bloques challenges?
 
-The challenges can be done by children from 3 to 99 years old;). However, we currently have two manuals for teachers. One oriented at primary school teachers
+The challenges can be done by children from 3 to 99 years old ;). However, we currently have two manuals for teachers. One oriented at primary school teachers
 called "First Cycle", so that children between 5 and 8 years old will be able to take better advantage of these activities. Another oriented at secondary school teachers called "Second Cycle", children between 9 and 12 years old will be able to take better advantage of these activities.
 
 ### Can anyone do this challenges?
@@ -64,7 +64,7 @@ There are many ways in which you can participate in the project, for example:
 
 ## Getting Started
 
-In order to collaborate, first of all you will install [Git](https://git-scm.com/) and then you will must clone the [Pilas Bloques](https://github.com/Program-AR/pilas-bloques) repository.
+In order to collaborate, first of all you will install [Git](https://git-scm.com/) and then you must clone the [Pilas Bloques](https://github.com/Program-AR/pilas-bloques) repository.
 
 ```
 git clone https://github.com/Program-AR/pilas-bloques.git
@@ -79,21 +79,14 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo apt install python
   ```
   
-* Make:
-
-  Debian/Ubuntu:
-  ```
-  sudo apt-get install make
-  ```
-  
-* The Long Term Support (LTS) version of Node S called Dubnium (Version 10.13.0).
+* Node. The version required is indicated in `.nvmrc` file.
 
   Install it: 
   ```
   git clone https://github.com/nvm-sh/nvm.git ~/.nvm
   source ~/.nvm/nvm.sh
   source ~/.nvm/install.sh
-  nvm install lts/dubnium
+  nvm install .
   ```
 
 ### Use Pilas Bloques NodeJS target version:
@@ -106,7 +99,9 @@ nvm use
 npm install
 ```
 
-### Run all test:
+## Daily Development commands
+
+### Run all tests:
 ```
 npm test
 ```

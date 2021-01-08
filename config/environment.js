@@ -7,7 +7,6 @@ module.exports = function (environment) {
     baseURL: '/',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
-    cursoBackendURL: null,
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     'ember-cli-mirage': { enabled: true },
@@ -47,7 +46,6 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
-    ENV.cursoBackendURL = 'http://testing-pilas-bloques-api.enjambrelab.com.ar'
     ENV.pbApi.baseURL = 'http://localhost:3006'
   }
 
@@ -64,9 +62,8 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
   }
 
-  if (environment === 'web' || environment === 'production') {
+  if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.cursoBackendURL = 'http://api.pilasbloques.program.ar'
     ENV.pbApi.baseURL = 'http://api.pilasbloques'
     ENV.googleAnalyticsEnabled = true
   }
