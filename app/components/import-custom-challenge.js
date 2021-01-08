@@ -22,16 +22,39 @@ export default Component.extend({
   },
 
   leerSolucionWeb(archivo) {
+    
+    /*
+    const unzipit = require('unzipit');
+const fsPromises = require('fs').promises;
+
+const funcion = async function readFiles(filename) {
+  const buf = await fsPromises.readFile(filename);
+  const {zip, entries} = await unzipit.unzip(new Uint8Array(buf));
+
+  const arrayBuffer = await entries['desafio/desafio.json'].arrayBuffer();
+
+  console.log(arrayBuffer)
+  console.log(String.fromCharCode.apply(null, arrayBuffer))
+  const utf8Decoder = new TextDecoder();
+  console.log(utf8Decoder.decode(arrayBuffer));
+
+}*/
+
+
     var reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onerror = (err) => reject(err);
-      reader.onload = (event) => resolve(event.target.result);
-      reader.readAsText(archivo);
+      reader.onload = async (event) => {
+        const {zip, entries} = await unzipit.unzip(new Uint8Array(event.target.result));
+        const arrayBuffer = await entries['desafio/desafio.json'].arrayBuffer();
+        resolve(new TextDecoder().decode(arrayBuffer));
+      };
+      reader.readAsArrayBuffer(archivo);
     })
   },
 
   cargarProyecto(contenido) {
-    var desafio = JSON.parse(atob(contenido));
+    var desafio = JSON.parse((contenido));
     desafio.id = uuidv4();
     this.store.createRecord('desafio', desafio);
     this.router.transitionTo('desafio', desafio.id);

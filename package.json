@@ -55,10 +55,11 @@
   },
   "dependencies": {
     "blockly-package": "^1.0.0",
-    "creador-de-desafios-pilasbloques": "^1.0.1",
     "clientjs": "^0.1.11",
+    "creador-de-desafios-pilasbloques": "^1.0.1",
     "pilas-bloques-exercises": "1.2.2",
     "proceds-blockly": "^1.0.0",
+    "unzipit": "^1.3.5",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
