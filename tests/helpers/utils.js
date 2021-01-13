@@ -1,4 +1,19 @@
 import fetchMock from 'fetch-mock'
+import { setupTest } from 'ember-qunit'
+import { toastMock } from './mocks'
+import sinon from 'sinon'
+
+export function setupPBTest(hooks) {
+    setupTest(hooks)
+    hooks.beforeEach(function () {
+        this.owner.register('service:paperToaster', toastMock)
+        fetchMock.reset()
+        fetchMock.config.overwriteRoutes = true
+        localStorage.clear()
+        sinon.resetHistory()
+    })    
+}
+
 
 ////// BLOCKLY //////
 

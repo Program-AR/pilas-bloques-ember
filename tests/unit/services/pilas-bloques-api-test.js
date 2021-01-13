@@ -1,30 +1,22 @@
 import { module, test } from 'qunit'
-import { setupTest } from 'ember-qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader } from '../../helpers/utils'
-import { toastMock } from '../../helpers/mocks'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest } from '../../helpers/utils'
 import config from '../../../config/environment'
-import sinon from 'sinon'
 
 const { baseURL } = config.pbApi
 
 module('Unit | Service | pilas-bloques-api', function (hooks) {
-  setupTest(hooks)
+  setupPBTest(hooks)
 
   var api
   const fakeUser = { username: "TEST", token: "TOKEN" }
 
   hooks.beforeEach(function () {
-    this.owner.register('service:paperToaster', toastMock)
-    fetchMock.reset()
-    fetchMock.config.overwriteRoutes = true
     fetchMock.mock(`${baseURL}/login`, fakeUser)
     fetchMock.mock(`${baseURL}/register`, fakeUser)
     fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
     fetchMock.mock(`begin:${baseURL}`, 200)
-    localStorage.clear()
-    sinon.resetHistory()
     api = this.owner.lookup('service:pilas-bloques-api')
   })
 
