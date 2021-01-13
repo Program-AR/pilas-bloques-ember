@@ -2,20 +2,20 @@ import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 
 const { baseURL } = config.pbApi
+const log = () => { } // console.log
+
+const logger = topic => message => log(topic, message)
 
 export default Service.extend({
   USER_KEY: 'PB_USER',
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
-  loading: {
-    login: false,
-    register: false,
-  },
+  loading: { },
   connected: true,
 
   // SOLUTIONS
   openChallenge(challengeId) {
-    this._send('POST', 'challenges', { challengeId }, false)
+    this._send('POST', 'challenges', { challengeId }, false).catch(logger('openChallenge'))
   },
 
   runProgram(challengeId, program, staticAnalysis) {
@@ -26,13 +26,13 @@ export default Service.extend({
       program,
       staticAnalysis,
     }
-    this._send('POST', 'solutions', data, false)
+    this._send('POST', 'solutions', data, false).catch(logger('runProgram'))
 
     return solutionId
   },
 
   executionFinished(solutionId, executionResult) {
-    this._send('PUT', `solutions/${solutionId}`, { executionResult }, false)
+    this._send('PUT', `solutions/${solutionId}`, { executionResult }, false).catch(logger('executionFinished'))
   },
 
   // LOGIN - REGISTER
@@ -69,8 +69,11 @@ export default Service.extend({
 
 
 
-  async _send(method, resource, body, reportError = true) {
-    if (!this.connected) { return; }
+  async _send(method, resource, body, critical = true) {
+    if (!this.connected) { 
+      if (critical) this._alertServerError()
+      return; 
+    }
     const user = this.getUser()
     if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
 
@@ -88,7 +91,7 @@ export default Service.extend({
       headers
     })
       .catch(connectionErr => {
-        if (reportError) this._alertServerError()
+        if (critical) this._alertServerError()
         // console.log({ connectionErr })
         throw connectionErr
       })

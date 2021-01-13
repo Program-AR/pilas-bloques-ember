@@ -53,15 +53,16 @@ module.exports = function (environment) {
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'
-    ENV.APP.autoboot = false // <------ false here
+    ENV.APP.autoboot = false // <------ false here (?)
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false
     ENV.APP.LOG_VIEW_LOOKUPS = false
 
     ENV.APP.rootElement = '#ember-testing'
+    ENV.pbApi.baseURL = 'http://testing-api'
   }
-
+  
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
     ENV.pbApi.baseURL = 'http://api.pilasbloques'

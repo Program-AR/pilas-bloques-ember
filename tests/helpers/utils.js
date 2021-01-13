@@ -1,3 +1,7 @@
+import fetchMock from 'fetch-mock'
+
+////// BLOCKLY //////
+
 export function createBlock(type) {
     return Blockly.mainWorkspace.newBlock(type)
 }
@@ -41,4 +45,20 @@ export function assertNotWarning(assert, block) {
 export function assertNotAvailable(assert, block) {
     assertDisabled(assert, block)
     assertWarning(assert, block, "Este bloque no está disponible en esta actividad.")
+}
+
+////// FETCH //////
+
+export function fetchCalled(uri) {
+    return fetchMock.called(`begin:${uri}`)
+}
+
+export function fetchCallBody() {
+    const [, { body }] = fetchMock.lastCall()
+    return JSON.parse(body)
+}
+
+export function fetchCallHeader() {
+    const [, { headers }] = fetchMock.lastCall()
+    return headers
 }
