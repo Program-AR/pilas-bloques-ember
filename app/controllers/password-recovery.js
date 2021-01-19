@@ -7,7 +7,7 @@ export default Controller.extend({
   pilasBloquesApi: service(),
   credentials: data,
   passwordConfirm: null,
-  usernameExist: true, // Default true for (no) error visualization
+  usernameExists: true, // Default true for (no) error visualization
   wrongCredentials: false,
 
   //TODO: Abstraer
@@ -26,10 +26,10 @@ export default Controller.extend({
 
   actions: {
     checkUsername(cb) {
-      this.pilasBloquesApi.validateUsername(this.credentials.username)
-        .then(check => {
-          this.set("usernameExist", !check)
-          if (!check) cb()
+      this.pilasBloquesApi.userExists(this.credentials.username)
+        .then(exist => {
+          this.set("usernameExists", exist)
+          if (exist) cb()
         })
     },
 
@@ -38,7 +38,7 @@ export default Controller.extend({
       this.pilasBloquesApi.changePassword(this.credentials)
         .then(cb)
         .catch(({ status }) => {
-          if (status === 400) {
+          if (status === 400) { //TODO: Abstraer 
             this.set("wrongCredentials", true)
             this.clearPasswords()
           }

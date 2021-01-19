@@ -56,8 +56,8 @@ export default Service.extend({
       .then(session => this._saveUser(session))
   },
 
-  async validateUsername(username) {
-    return this._send('GET', `register/check?username=${username}`)
+  async userExists(username) {
+    return this._send('GET', `users/exists?username=${username}`)
   },
 
   logout() {

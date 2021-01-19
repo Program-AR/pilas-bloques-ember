@@ -28,8 +28,8 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.validateUsername(this.registerData.username)
-        .then(check => this.set("validUsername", check))
+      this.pilasBloquesApi.userExists(this.registerData.username)
+        .then(exist => this.set("validUsername", !exist))
     },
   }
 })
