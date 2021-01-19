@@ -51,6 +51,11 @@ export default Service.extend({
       .then(session => this._saveUser(session))
   },
 
+  async changePassword(newCredentials) {
+    return this._send('PUT', 'credentials', newCredentials)
+      .then(session => this._saveUser(session))
+  },
+
   async validateUsername(username) {
     return this._send('GET', `register/check?username=${username}`)
   },
