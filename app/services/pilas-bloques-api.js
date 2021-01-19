@@ -83,7 +83,7 @@ export default Service.extend({
     if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
 
     const url = `${baseURL}/${resource}`
-    const flag = `loading.${resource.split('?')[0]}`
+    const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
     const headers = { 
       'Content-Type': 'application/json',
       'Authorization': user ? `Bearer ${user.token}` : null

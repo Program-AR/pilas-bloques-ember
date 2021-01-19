@@ -1,5 +1,4 @@
 import { inject as service } from '@ember/service'
-import { computed } from '@ember/object'
 import Controller from '@ember/controller'
 
 const data = {} // Hack for use in validation
@@ -8,14 +7,10 @@ export default Controller.extend({
   pilasBloquesApi: service(),
   credentials: data,
   passwordConfirm: null,
-  usernameExist: true,
+  usernameExist: true, // Default true for (no) error visualization
   wrongCredentials: false,
 
-  // TODO: Sacar
-  checkingUsername: computed('pilasBloquesApi.loading', function () {
-    return this.pilasBloquesApi.loading['register/check']
-  }),
-
+  //TODO: Abstraer
   passwordConfirmValidation: [{
     message: 'Las contraseñas no coinciden',
     validate: function (inputValue, other) {
@@ -48,6 +43,6 @@ export default Controller.extend({
             this.clearPasswords()
           }
         })
-    }
+    },
   }
 })
