@@ -15,20 +15,17 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   hooks.beforeEach(function () {
     fetchMock.mock(`${baseURL}/login`, fakeUser)
     fetchMock.mock(`${baseURL}/register`, fakeUser)
+    fetchMock.mock(`${baseURL}/credentials`, fakeUser)
     fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
     fetchMock.mock(`begin:${baseURL}`, 200)
     api = this.owner.lookup('service:pilas-bloques-api')
   })
 
-  test('On login should save user data', async function (assert) {
-    await api.login({})
-    assert.deepEqual(getUser(), fakeUser)
-  })
+  authTest('On login should save user data', () => api.login({}) )
 
-  test('On register should save user data', async function (assert) {
-    await api.register({})
-    assert.deepEqual(getUser(), fakeUser)
-  })
+  authTest('On register should save user data', () => api.register({}) )
+
+  authTest('On change password should save user data', () => api.changePassword({}) )
 
   test('On logout should delete user data', function (assert) {
     saveUser(fakeUser)
@@ -106,5 +103,12 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
 
   function saveUser(data) {
     return localStorage.setItem(api.USER_KEY, JSON.stringify(data))
+  }
+
+  async function authTest(description, accion) {
+    test(description, async function (assert) {
+      await accion()
+      assert.deepEqual(getUser(), fakeUser)
+    })  
   }
 })
