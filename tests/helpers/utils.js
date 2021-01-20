@@ -3,6 +3,9 @@ import { setupTest } from 'ember-qunit'
 import { toastMock } from './mocks'
 import sinon from 'sinon'
 
+import config from '../../config/environment'
+const { baseURL } = config.pbApi
+
 export function setupPBTest(hooks) {
     setupTest(hooks)
     hooks.beforeEach(function () {
@@ -12,6 +15,11 @@ export function setupPBTest(hooks) {
         localStorage.clear()
         sinon.resetHistory()
     })    
+}
+
+// TODO Ver dónde ponerlo:
+export function mockApi(path, response) {
+    fetchMock.mock(`begin:${baseURL}/${path}`, response)
 }
 
 

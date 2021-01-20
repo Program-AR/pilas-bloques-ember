@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest } from '../../helpers/utils'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest, mockApi } from '../../helpers/utils'
 import config from '../../../config/environment'
 
 const { baseURL } = config.pbApi
@@ -13,11 +13,12 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   const fakeUser = { username: "TEST", token: "TOKEN" }
 
   hooks.beforeEach(function () {
-    fetchMock.mock(`${baseURL}/login`, fakeUser)
-    fetchMock.mock(`${baseURL}/register`, fakeUser)
-    fetchMock.mock(`${baseURL}/credentials`, fakeUser)
-    fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
-    fetchMock.mock(`begin:${baseURL}`, 200)
+    mockApi(`login`, fakeUser)
+    mockApi(`register`, fakeUser)
+    mockApi(`credentials`, fakeUser)
+    //TODO: Move to setup?
+    mockApi(`error`, { throws: 'ERROR' })
+    mockApi('', 200)
     api = this.owner.lookup('service:pilas-bloques-api')
   })
 
@@ -81,7 +82,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('should handle server error', async function (assert) {
-    fetchMock.mock(`${baseURL}/login`, { body: "SERVER ERROR", status: 400 })
+    mockApi(`login`, { body: "SERVER ERROR", status: 400 })
     await api.login({}).catch(err => {
       assert.deepEqual(err, {
         message: "SERVER ERROR",
