@@ -37,11 +37,11 @@ export function findBlockByTypeIn(rootBlock, type) {
 
 ////// ASSERT //////
 
-export function assertAsync(assert, fn) {
+export function assertAsync(assert, fn, ms = 0) {
     let done = assert.async(1)
     setTimeout(function () {
         fn(); done()
-    })
+    }, ms)
 }
 
 export function assertProps(assert, obj, props) {
