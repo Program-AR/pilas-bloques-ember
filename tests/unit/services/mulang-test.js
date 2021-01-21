@@ -308,6 +308,14 @@ module('Unit | Service | pilas-mulang', function(hooks) {
       reference("angulo")
     )
   )
+
+  test(`Should parse all workspace`, function(assert) {
+    Blockly.textToBlock(al_empezar_a_ejecutar)
+    Blockly.textToBlock(procedureProgram)
+    let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
+    let tags = ast.map(node => node.tag)
+    assert.deepEqual(tags, ["EntryPoint", "Procedure"])
+  })
 });
 
 
