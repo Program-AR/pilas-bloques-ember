@@ -65,7 +65,7 @@ module.exports = function (environment) {
   
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.pbApi.baseURL = 'http://api.pilasbloques'
+    ENV.pbApi.baseURL = 'https://api.pilasbloques.program.ar'
     ENV.googleAnalyticsEnabled = true
   }
 
