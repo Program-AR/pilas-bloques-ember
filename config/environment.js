@@ -53,7 +53,7 @@ module.exports = function (environment) {
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'
-    ENV.APP.autoboot = false // <------ false here (?)
+    ENV.APP.autoboot = false // ember-qunit needs it to be false.
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false
