@@ -18,12 +18,13 @@ export default Service.extend({
     this._send('POST', 'challenges', { challengeId }, false).catch(logger('openChallenge'))
   },
 
-  runProgram(challengeId, program, staticAnalysis) {
+  runProgram(challengeId, program, ast, staticAnalysis) {
     const solutionId = uuidv4()
     const data = {
       challengeId,
       solutionId,
       program,
+      ast,
       staticAnalysis,
     }
     this._send('POST', 'solutions', data, false).catch(logger('runProgram'))

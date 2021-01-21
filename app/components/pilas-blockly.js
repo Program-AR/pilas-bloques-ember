@@ -27,6 +27,7 @@ export default Component.extend({
   highlighter: service(),
   availableBlocksValidator: service(),
   pilasBloquesApi: service(),
+  pilasMulang: service(),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -368,7 +369,7 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.pilasMulang.parseAll(Blockly.mainWorkspace), this.staticAnalysis())
   },
 
   executionFinishedEvent(solutionId, executionResult) {

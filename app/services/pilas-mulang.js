@@ -4,6 +4,10 @@ import Service from '@ember/service';
 
 export default Service.extend({
 
+  parseAll(workspace) {
+    return workspace.getTopBlocks().map(this.parse)
+  },
+
   parse(mainBlock) {
     return buildBlockAst(mainBlock);
   },
