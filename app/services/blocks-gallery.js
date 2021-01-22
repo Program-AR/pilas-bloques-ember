@@ -1,4 +1,5 @@
-import Service, { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
 
 export default Service.extend({
   blockly: service(),
@@ -27,7 +28,7 @@ export default Service.extend({
   },
 
   _fireRunCodeEvent() {
-    let event = Blockly.Events.fromJson({type:"ui", run: true}, Blockly.mainWorkspace)
+    let event = Blockly.Events.fromJson({ type: "ui", run: true }, Blockly.mainWorkspace)
     event.runCode = true
     Blockly.Events.fire(event)
   },
@@ -51,15 +52,15 @@ export default Service.extend({
 
   _makeAllInputsRequired() {
     Object.entries(Blockly.Blocks)
-    .filter(([type, _]) => !Blockly.isProcedure(type)) // jshint ignore:line
-    .map(([_, block]) => block) // jshint ignore:line
-    .forEach(blockDef => {
-      let oldInit = blockDef.init
-      blockDef.init = function() {
-        if (oldInit) oldInit.bind(this)()
-        requiredAllInputs(this)
-      }
-    })
+      .filter(([type, _]) => !Blockly.isProcedure(type)) // jshint ignore:line
+      .map(([_, block]) => block) // jshint ignore:line
+      .forEach(blockDef => {
+        let oldInit = blockDef.init
+        blockDef.init = function () {
+          if (oldInit) oldInit.bind(this)()
+          requiredAllInputs(this)
+        }
+      })
   },
 
   /*
@@ -884,7 +885,7 @@ export default Service.extend({
       ],
       code: 'hacer(actor_id, "Rotar", {angulo: - ($grados), voltearAlIrAIzquierda: false, velocidad: 60});'
     });
-    
+
 
     Blockly.Blocks.GirarGrados.toolbox = `
       <block type="GirarGrados">
@@ -1244,7 +1245,7 @@ export default Service.extend({
     }
 
     function onChangeRequired(warningText) {
-      return function(event) {
+      return function (event) {
         if (event && event.runCode) {
           this.setWarningText(warningText)
           opaque(this)
@@ -1386,26 +1387,6 @@ export default Service.extend({
       requiredAllInputs(this) // Input fields are added after instantiation 
     };
 
-    function isInsideProcedureDef(paramBlock) {
-      return paramBlock.getRootBlock().id === paramBlock.$parent;
-    }
-
-    function hasParam(procedureBlock, paramBlock) {
-      return getParams(procedureBlock).includes(paramBlock.getFieldValue('VAR'))
-    }
-
-    function isFlying(block) {
-      return block.getRootBlock() === block;
-    }
-
-    function getName(procedureBlock) {
-      return procedureBlock.getProcedureDef()[0];
-    }
-
-    function getParams(procedureBlock) {
-      return procedureBlock.getProcedureDef()[1]
-    }
-
     Blockly.Blocks.variables_get = {
       init: function () {
         this.jsonInit({
@@ -1446,12 +1427,12 @@ export default Service.extend({
           var procedureDef = this.workspace.getBlockById(this.$parent)
           var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
-          var warning = 
-            (ok || isFlying(this) || !procedureDef) 
-            ? null 
-            : (hasParam(procedureDef, this)) 
-              ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-              : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+          var warning =
+            (ok || isFlying(this) || !procedureDef)
+              ? null
+              : (hasParam(procedureDef, this))
+                ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
+                : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
           this.setWarningText(warning)
         }
       }
@@ -1685,27 +1666,4 @@ export default Service.extend({
     this.crearBloqueAlias('saltar1', 'SaltarHablando');
   }
 
-});
-
-function shouldAddRequiredShadow(connection) {
-  return  connection.getShadowDom() == null // Should have not a shadow block
-  &&      [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
-}
-
-// Agrega un required shadow a todos los input que sean para encastrar otros bloques
-function requiredAllInputs(block) {
-  block.inputList
-  .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
-  .forEach(input => requiredInput(block, input.name))
-}
-
-function requiredInput(block, inputName) {
-  let connection = block.getInput(inputName).connection
-  let shadowType =  (connection.type == Blockly.INPUT_VALUE)
-                    ? "required_value"
-                    : "required_statement"
-  var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
-  connection.setShadowDom(shadowValue)
-  if (!connection.targetConnection)
-    connection.respawnShadow_()
-}
+})

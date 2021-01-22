@@ -1,6 +1,5 @@
-// Code here will be linted with JSHint.
-/* jshint ignore:start */
-import Service from '@ember/service';
+import Service from '@ember/service'
+import { getName, getParams, getBlockSiblings, getChild } from './block-utils'
 
 export default Service.extend({
 
@@ -129,7 +128,7 @@ function parseIfElse(block) {
 
 function parseProcedure(block) {
   return [
-    getProcedureName(block),
+    getName(block),
     createNode("Equation", parseEquation(block))
   ];
 }
@@ -164,19 +163,6 @@ let mulangParsers = {
 
 
 
-
-
-// TODO: Duplicate from blocks-gallery
-function getProcedureName(procedureBlock) { 
-  return procedureBlock.getProcedureDef()[0];
-}
-function getParams(procedureBlock) {
-  return procedureBlock.getProcedureDef()[1]
-}
-
-
-
-
 function createNode(tag, contents) {
   if(tag === "Equation") return [contents];
   return contents !== undefined ? {tag, contents} : {tag};
@@ -199,26 +185,3 @@ function buildSequenceAst(topLevelBlock) {
     return buildBlockAst(topLevelBlock);
   }
 }
-
-function hasSiblings(block) {
-  return block.getNextBlock() 
-}
-
-function getBlockSiblings(block) {
-  const siblings = [];
-  while (hasSiblings(block)){
-    block = nextBlockFor(block);
-    siblings.push(block);
-  }
-  return siblings;
-}
-
-function nextBlockFor(block) {
-  return block.getNextBlock();
-}
-
-function getChild(block) {
-  return block.getChildren()[0]
-}
-// Code here will be ignored by JSHint.
-/* jshint ignore:end */
