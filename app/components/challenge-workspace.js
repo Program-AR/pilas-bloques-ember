@@ -7,7 +7,7 @@ export default Component.extend({
   persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
-  analyticsApi: service(),
+  pilasBloquesApi: service(),
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
@@ -48,7 +48,7 @@ export default Component.extend({
         pilas.cambiarAModoDeLecturaSimple();
       }
 
-      this.analyticsApi.openChallenge(this.model.id)
+      this.pilasBloquesApi.openChallenge(this.model.id)
     },
 
     hideScene() {

@@ -2,20 +2,43 @@ import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 
 const { baseURL } = config.pbApi
+const log = () => { } // console.log
+
+const logger = topic => message => log(topic, message)
 
 export default Service.extend({
-  SESSION_KEY: 'PB_SESSION',
+  USER_KEY: 'PB_USER',
   paperToaster: service(),
-  platform: service(),
-  loading: {
-    login: false,
-    register: false,
-  },
+  pilasBloquesAnalytics: service(),
+  loading: { },
   connected: true,
 
+  // SOLUTIONS
+  openChallenge(challengeId) {
+    this._send('POST', 'challenges', { challengeId }, false).catch(logger('openChallenge'))
+  },
+
+  runProgram(challengeId, program, staticAnalysis) {
+    const solutionId = uuidv4()
+    const data = {
+      challengeId,
+      solutionId,
+      program,
+      staticAnalysis,
+    }
+    this._send('POST', 'solutions', data, false).catch(logger('runProgram'))
+
+    return solutionId
+  },
+
+  executionFinished(solutionId, executionResult) {
+    this._send('PUT', `solutions/${solutionId}`, { executionResult }, false).catch(logger('executionFinished'))
+  },
+
+  // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
-      .then(session => this._saveSession(session))
+      .then(session => this._saveUser(session))
   },
 
   async register(data) {
@@ -25,7 +48,7 @@ export default Service.extend({
       avatarURL
     }
     return this._send('POST', 'register', { ...data, profile })
-      .then(session => this._saveSession(session))
+      .then(session => this._saveUser(session))
   },
 
   async validateUsername(username) {
@@ -33,36 +56,48 @@ export default Service.extend({
   },
 
   logout() {
-    return this._saveSession(null)
+    return this._saveUser(null)
   },
 
-  getSession() {
-    return JSON.parse(localStorage.getItem(this.SESSION_KEY))
+  getUser() {
+    return JSON.parse(localStorage.getItem(this.USER_KEY))
   },
 
-  _saveSession(session) {
-    localStorage.setItem(this.SESSION_KEY, JSON.stringify(session || null))
+  _saveUser(user) {
+    localStorage.setItem(this.USER_KEY, JSON.stringify(user || null))
   },
 
-  async _send(method, resource, body) {
-    if (!this.connected) { return; }
+
+
+  async _send(method, resource, body, critical = true) {
+    if (!this.connected) { 
+      if (critical) this._alertServerError()
+      return; 
+    }
+    const user = this.getUser()
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
+
     const url = `${baseURL}/${resource}`
-
     const flag = `loading.${resource}`
+    const headers = { 
+      'Content-Type': 'application/json',
+      'Authorization': user ? `Bearer ${user.token}` : null
+    }
+
     this.set(flag, true)
     return fetch(url, {
       method,
       body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' }
+      headers
     })
-      .catch(pbApiError => {
-        this._alertServerError()
-        // console.log({ pbApiError })
-        throw pbApiError
+      .catch(connectionErr => {
+        if (critical) this._alertServerError()
+        // console.log({ connectionErr })
+        throw connectionErr
       })
       .then(res => {
-        if (res.status >= 400) throw { status: res.status, message: res.text() }
-        return res.json()
+        if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
+        else { return res.json().catch(() => { /** if not body present */}) }
       })
       .finally(() => this.set(flag, false))
   },

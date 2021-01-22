@@ -53,3 +53,7 @@ export const blocklyWorkspaceMock = function () {
     workspace.highlightBlock = sinon.stub()
     return workspace
 }
+
+export const toastMock = Service.extend({
+    show: sinon.stub()
+});

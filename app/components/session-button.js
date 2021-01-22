@@ -16,7 +16,7 @@ export default Component.extend({
   },
 
   updateSession() {
-    this.set("session", this.pilasBloquesApi.getSession())
+    this.set("session", this.pilasBloquesApi.getUser())
   },
 
   actions: {
