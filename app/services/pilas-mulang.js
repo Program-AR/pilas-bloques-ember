@@ -1,5 +1,6 @@
 import Service from '@ember/service'
-import { getName, getParams, getBlockSiblings, getChild } from './block-utils'
+import { getName, getParams, getChild, getBlockSiblings } from './block-utils'
+import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
 export default Service.extend({
 
@@ -17,6 +18,16 @@ export default Service.extend({
 function buildBlockAst(block) {
   let tag = mulangTag(block);
   return createNode(tag, mulangParsers[tag](block));
+}
+
+function buildSequenceAst(topLevelBlock) {
+  if (!topLevelBlock) return createEmptyNode();
+  let siblings = getBlockSiblings(topLevelBlock);
+  if (siblings.length) {
+    return createNode("Sequence", [topLevelBlock, ...siblings].map(b => buildBlockAst(b)))
+  } else {
+    return buildBlockAst(topLevelBlock);
+  }
 }
 
 function mulangTag(block) {
@@ -43,7 +54,7 @@ function parseMuNumber(block) {
 
 function parseEntryPoint(block) {
   return [
-    block.type, 
+    block.type,
     buildSequenceAst(getChild(block))
   ]
 }
@@ -69,7 +80,7 @@ function parseVariable(block) {
 function parseArguments(block) {
   return block.inputList
     .filter(input => input.type == Blockly.INPUT_VALUE)
-    .map(input => input.connection.targetBlock())    
+    .map(input => input.connection.targetBlock())
     .map(b => buildBlockAst(b))
     .concat(...parseText(block))
 }
@@ -111,7 +122,7 @@ function parseIf(block) {
   return [
     buildBlockAst(condition),
     buildSequenceAst(statements),
-    buildEmptyNode()
+    createEmptyNode()
   ]
 }
 
@@ -141,7 +152,7 @@ function parseEquation(block) {
 }
 
 function parseEquationParams(block) {
-  return getParams(block).map( argument => createNode("VariablePattern", argument) );
+  return getParams(block).map(argument => createNode("VariablePattern", argument));
 }
 
 function parseEquationBody(block) {
@@ -158,30 +169,4 @@ let mulangParsers = {
   "Procedure": parseProcedure,
   "MuNumber": parseMuNumber,
   "EntryPoint": parseEntryPoint
-}
-
-
-
-
-function createNode(tag, contents) {
-  if(tag === "Equation") return [contents];
-  return contents !== undefined ? {tag, contents} : {tag};
-}
-
-function createReference(block) {
-  return createNode("Reference", block.type)
-}
-
-function buildEmptyNode() {
-  return createNode("None", []);
-}
-
-function buildSequenceAst(topLevelBlock) {
-  if (!topLevelBlock) return buildEmptyNode();
-  let siblings = getBlockSiblings(topLevelBlock);
-  if (siblings.length) {
-    return createNode("Sequence", [topLevelBlock, ...siblings].map(b => buildBlockAst(b)))
-  } else {
-    return buildBlockAst(topLevelBlock);
-  }
 }
