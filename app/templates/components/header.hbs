@@ -5,14 +5,18 @@
 
     {{#unless (or challenge book)}}
       <span class="flex"/>
-      <span class="headerTitle">Una herramienta para aprender a programar</span>
+      <span class="header-title">Una herramienta para aprender a programar</span>
     {{/unless}}
 
     {{#if (or challenge book)}}
 
       {{#if (media 'isMobile')}}
         <NavigationMenu 
-          @desafio={{challenge}} 
+          @book={{book}}
+          @challenge={{challenge}}
+          @chapter={{chapter}}
+          @group={{group}}
+          @hidden={{openCustomScene}}
         />
       {{else}}
         <span class="flex"/>
@@ -21,6 +25,7 @@
           @challenge={{challenge}}
           @chapter={{chapter}}
           @group={{group}}
+          @hidden={{openCustomScene}}
         />
       {{/if}}
       
@@ -28,6 +33,8 @@
     
     <span class="flex"/>
     <NightModeToggle/>
+    &nbsp;&nbsp;&nbsp;
+    <SessionButton/>
 
   </PaperToolbarTools>
 </PaperToolbar>

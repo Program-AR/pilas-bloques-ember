@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */
+import config from "../config/environment";
 
 export default function() {
 
@@ -22,10 +23,8 @@ export default function() {
   this.timing = 50;      // delay for each request, automatically set to 0 during testing
 
   this.passthrough('http://www.google-analytics.com/**');
-  this.passthrough('http://104.131.245.133:9914/**');
-  this.passthrough('http://api.pilasbloques.program.ar/**');
   this.passthrough('https://api.github.com/**');
-  this.passthrough('http://testing-pilas-bloques-api.enjambrelab.com.ar/**');
+  this.passthrough(`${config.pbApi.baseURL}/**`);
 
   /*
     Shorthand cheatsheet:

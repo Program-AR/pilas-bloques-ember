@@ -26,6 +26,7 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
+  pilasBloquesApi: service(),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -268,13 +269,15 @@ export default Component.extend({
         // Si el usuario solicitó terminar el programa deja
         // de ejecutar el intérprete.
         if (!this.ejecutando) {
-          success();
+          success({stoppedByUser: true});
           return;
         }
 
-        let err = this.errorDeActividad;
-        if (err) {
-          reject(err);
+        // Si se produce un error en la actividad se termina de ejecutar el intérprete.
+        // Esto es un resultado válido, no hubo ningún problema con el intérprete.
+        let error = this.errorDeActividad; // Se settea ante evento de Pilas
+        if (error) {
+          success({error});
           return;
         }
 
@@ -300,7 +303,7 @@ export default Component.extend({
           // Llama recursivamente, abriendo thread en cada llamada.
           setTimeout(execInterpreterUntilEnd, 10, interpreter);
         } else {
-          success();
+          success({finished: true});
         }
       };
 
@@ -311,6 +314,11 @@ export default Component.extend({
 
   cuandoTerminaEjecucion() {
     run(this, function () {
+      if (this.errorDeActividad) {
+        if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
+        return;
+      }
+
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
@@ -353,9 +361,29 @@ export default Component.extend({
       .every(block => Blockly.shouldExecute(block))
   },
 
+  staticAnalysis() {
+    return {
+      couldExecute: this.shouldExecuteProgram(),
+    }
+  },
+
+  runProgramEvent() {
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+  },
+
+  executionFinishedEvent(solutionId, executionResult) {
+    run(this, function() {
+      this.pilasBloquesApi.executionFinished(solutionId, {
+        isTheProblemSolved: this.pilas.estaResueltoElProblema(),
+        ...executionResult
+      })
+    })
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
+      const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 
       Blockly.Events.fireRunCode()
@@ -374,17 +402,15 @@ export default Component.extend({
 
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
-      
+
       this.set('ejecutando', true);
       this.exerciseWorkspace.set('ejecutando', true);
 
       this.ejecutarInterpreteHastaTerminar(interprete, pasoAPaso)
-        .then(() => this.cuandoTerminaEjecucion())
-        .catch(err => {
-          if (err instanceof ErrorDeActividad) {
-            /** Los errores de la actividad no deberían burbujear */
-          }
-        });
+        .then(executionResult => {
+          this.executionFinishedEvent(analyticsSolutionId, executionResult)
+          this.cuandoTerminaEjecucion()
+        })
     },
 
     reiniciar() {

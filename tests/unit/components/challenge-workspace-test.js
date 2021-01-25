@@ -13,6 +13,7 @@ module('Unit | Components | challenge-workspace', function (hooks) {
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock);
     this.ctrl = this.owner.factoryFor('component:challenge-workspace').create();
+    this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
     this.ctrl.set('model', actividadMock);
     sinon.resetHistory();
   });

@@ -3,7 +3,7 @@ import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
 import { findBlockByTypeIn, assertNotDisabled, assertNotAvailable } from '../../helpers/utils';
 
-module('available-blocks-validator', function (hooks) {
+module('Unit | Service | available-blocks-validator', function (hooks) {
   setupTest(hooks);
 
   var validator

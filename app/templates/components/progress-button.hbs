@@ -1,0 +1,8 @@
+<div class="layout-row layout-align-center-center">
+  <Button @isDisabled={{ or @isDisabled @loading }} ...attributes>
+    {{yield}}
+  </Button>
+  {{#if @loading}}
+    <Spinner style="margin: 0;"/>
+  {{/if}}
+</div>

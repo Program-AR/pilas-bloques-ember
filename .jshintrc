@@ -15,7 +15,9 @@
     "Interpreter",
     "goog",
     "js_beautify",
-    "Blob"
+    "Blob",
+    "ClientJS",
+    "uuidv4"
   ],
   "esversion": 9,
   "asi": true,

@@ -1,6 +1,6 @@
 # compiled output
 /dist
-/dist_web
+/dist_prod
 /tmp
 
 .DS_Store
@@ -25,3 +25,6 @@ testem.log
 log_descompresion.log
 *.pyc
 /binaries/
+
+.idea/
+*.iml

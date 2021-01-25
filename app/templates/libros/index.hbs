@@ -19,9 +19,21 @@
 
       {{#each model as |book|}}
         {{#unless book.oculto}}
-          {{challenges-book book=book class="zoom"}}
+          {{challenges-book book=book}}
         {{/unless}}
       {{/each}}
+    </div>
+
+    <div class="jumbotron center">
+      <p>
+        ¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!
+      </p>
+
+    {{#if enableChallengeCreator}}
+      {{create-custom-challenge}}
+      {{import-custom-challenge}}
+    {{/if}}
+
     </div>
 
     <hr>

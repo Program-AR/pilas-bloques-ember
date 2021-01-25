@@ -1,0 +1,25 @@
+{{#if session}}
+  <PaperMenu @offset="5 43" as |menu|>
+    <menu.trigger class="user-menu">
+      <img class="face" src= {{ session.avatarURL }} />
+      <Button> {{ session.nickName }} </Button>
+    </menu.trigger>
+    <menu.content as |content|>
+      <content.menu-item>
+        <Button @onClick={{action "changeUser"}}> Cambiar usuario </Button>
+      </content.menu-item>
+
+      <content.menu-item>
+        <Button @onClick={{action "logout"}}> Cerrar sesión </Button>
+      </content.menu-item>
+    </menu.content>
+  </PaperMenu>
+{{else}}
+  <img class="face gray" src={{ randomAvatar }} />
+  <Button @onClick={{action (mut openLogin) true}}> Ingresar </Button>
+{{/if}}
+
+
+<ModalToggle @title="Iniciar sesión" @open={{openLogin}}>
+  <Login />
+</ModalToggle>

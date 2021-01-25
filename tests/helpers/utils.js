@@ -1,3 +1,22 @@
+import fetchMock from 'fetch-mock'
+import { setupTest } from 'ember-qunit'
+import { toastMock } from './mocks'
+import sinon from 'sinon'
+
+export function setupPBTest(hooks) {
+    setupTest(hooks)
+    hooks.beforeEach(function () {
+        this.owner.register('service:paperToaster', toastMock)
+        fetchMock.reset()
+        fetchMock.config.overwriteRoutes = true
+        localStorage.clear()
+        sinon.resetHistory()
+    })    
+}
+
+
+////// BLOCKLY //////
+
 export function createBlock(type) {
     return Blockly.mainWorkspace.newBlock(type)
 }
@@ -15,6 +34,11 @@ export function assertAsync(assert, fn) {
     setTimeout(function () {
         fn(); done()
     })
+}
+
+export function assertProps(assert, obj, props) {
+    const expected = Object.assign({}, obj, props)
+    assert.propEqual(obj, expected)
 }
 
 export function assertDisabled(assert, block) {
@@ -36,4 +60,20 @@ export function assertNotWarning(assert, block) {
 export function assertNotAvailable(assert, block) {
     assertDisabled(assert, block)
     assertWarning(assert, block, "Este bloque no está disponible en esta actividad.")
+}
+
+////// FETCH //////
+
+export function fetchCalled(uri) {
+    return fetchMock.called(`begin:${uri}`)
+}
+
+export function fetchCallBody() {
+    const [, { body }] = fetchMock.lastCall()
+    return JSON.parse(body)
+}
+
+export function fetchCallHeader() {
+    const [, { headers }] = fetchMock.lastCall()
+    return headers
 }

@@ -6,6 +6,6 @@ export default Component.extend({
 
   didRender() {
     document.documentElement.setAttribute('theme', localStorage.getItem('theme') || 'light');
-  }
+  },
 
 });
