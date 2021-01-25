@@ -106,9 +106,9 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     return localStorage.setItem(api.USER_KEY, JSON.stringify(data))
   }
 
-  async function authTest(description, accion) {
+  async function authTest(description, action) {
     test(description, async function (assert) {
-      await accion()
+      await action()
       assert.deepEqual(getUser(), fakeUser)
     })  
   }
