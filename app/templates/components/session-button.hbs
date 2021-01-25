@@ -23,3 +23,7 @@
 <ModalToggle @title="Iniciar sesión" @open={{openLogin}}>
   <Login />
 </ModalToggle>
+
+{{#if session}}
+  <PersonalSurvey />
+{{/if}}
