@@ -24,6 +24,7 @@ export default Service.extend({
       browserId: fingerprint,
       userId: userId || fingerprint,
       timestamp: new Date(),
+      context: [], // Survey TODO: Buscar nomber
     }
   },
 
