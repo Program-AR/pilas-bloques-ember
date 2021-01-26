@@ -14,10 +14,7 @@
       @model={{ registerData.password }} 
       @required={{ true }} />
 
-    <PbInput @type="password" @label="Confirmar contraseña"
-      @model={{ passwordConfirm }} 
-      @customValidations={{ passwordConfirmValidation }}
-      @required={{ true }} />
+    <PasswordConfirmation @password={{ registerData.password }} />
 
     <PbInput @label="Nombre de madre, padre o tutor/a"
       @model={{ registerData.parentName }} 

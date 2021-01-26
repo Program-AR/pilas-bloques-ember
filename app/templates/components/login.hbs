@@ -25,17 +25,13 @@
     </ProgressButton>
   </PaperForm>
 
-  <Button class="link" @onClick={{action (mut openRecovery) true}}>
+  <br>
+  <Link @href={{href-to "password-recovery"}}>
     Olvidé mi usuario o constraseña
-  </Button>
-
+  </Link>
 
   <p> ¿No tenés una cuenta? </p>
   <Link @href={{href-to "register"}}>
     Registrate
   </Link>
 </div>
-
-<ModalToggle @title="Recuperar contraseña" @open={{openRecovery}}>
-  En construcción, si tenés problemas con tu cuenta contactate con el equipo de desarrollo.
-</ModalToggle>

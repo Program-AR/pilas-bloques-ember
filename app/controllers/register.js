@@ -2,24 +2,15 @@ import { inject as service } from '@ember/service'
 import { computed } from '@ember/object';
 import Controller from '@ember/controller';
 
-const data = {} // Hack for use in validation
-
 export default Controller.extend({
   avatardb: service(),
   pilasBloquesApi: service(),
-  registerData: data,
+  registerData: {},
   validUsername: true,
 
   avatars: computed('avatardb', function() {
     return this.avatardb.allAvatars()
   }),
-
-  passwordConfirmValidation: [{
-    message: 'Las contraseñas no coinciden',
-    validate: function(inputValue) {
-      return data.password == inputValue
-    }
-  }],
 
   actions: {
     doRegister() {
@@ -28,8 +19,8 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.validateUsername(this.registerData.username)
-        .then(check => this.set("validUsername", check))
+      this.pilasBloquesApi.userExists(this.registerData.username)
+        .then(exist => this.set("validUsername", !exist))
     },
   }
 })

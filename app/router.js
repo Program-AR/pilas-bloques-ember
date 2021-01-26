@@ -21,6 +21,7 @@ Router.map(function () {
   });
   this.route('galeria');
   this.route('register');
+  this.route('password-recovery');
 });
 
 Router.reopen({

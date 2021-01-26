@@ -1,5 +1,6 @@
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
+import { badRequest } from '../utils/request'
 
 export default Component.extend({
   pilasBloquesApi: service(),
@@ -11,12 +12,10 @@ export default Component.extend({
       this.set("wrongLogin", false)
       this.pilasBloquesApi.login(this.credentials)
         .then(() => document.location.reload())
-        .catch(({ status }) => {
-          if (status === 400) {
-            this.set("wrongLogin", true)
-            this.set("credentials.password", "")
-          }
-        })
+        .catch(badRequest(() => {
+          this.set("wrongLogin", true)
+          this.set("credentials.password", "")
+        }))
     }
   }
 });
