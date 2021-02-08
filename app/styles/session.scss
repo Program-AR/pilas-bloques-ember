@@ -1,0 +1,38 @@
+.gray {
+  filter: grayscale(1);
+}
+
+.login-header {
+  height: 8rem;
+}
+
+.avatar {
+  width: 4rem;
+  height: 4rem;
+  border: 0;
+  padding: 0;
+}
+
+.avatar > img {
+  height: inherit;
+  width: inherit;
+}
+
+.avatar > .selected {
+  border-style: double;
+}
+
+.invisible-input {
+  margin: 0;
+  top: -2rem;
+  height: 5px;
+}
+
+.invisible-input > input {
+  visibility: hidden;
+}
+
+.register-form {
+  max-width: 20rem;
+  display: inline-block;
+}
