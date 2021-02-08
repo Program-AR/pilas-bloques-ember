@@ -30,6 +30,8 @@
 @import "splitter.scss";
 @import "themes/themes.scss";
 @import "toggle.scss";
+@import "session.scss";
+@import "theme-config.scss";
 
 * {
   -webkit-touch-callout:none;
@@ -479,71 +481,8 @@ a:hover {
   font-family: Arial, sans-serif !important;
 }
 
-.gray {
-  filter: grayscale(1);
-}
-
-.login-header {
-  height: 8rem;
-}
-
-.avatar {
-  width: 4rem;
-  height: 4rem;
-  border: 0;
-  padding: 0;
-}
-
-.avatar > img {
-  height: inherit;
-  width: inherit;
-}
-
-.avatar > .selected {
-  border-style: double;
-}
-
-.invisible-input {
-  margin: 0;
-  top: -2rem;
-  height: 5px;
-}
-
-.invisible-input > input {
-  visibility: hidden;
-}
-
-.register-form {
-  max-width: 20rem;
-  display: inline-block;
-}
-
 md-menu-content > md-menu-item {
   color: inherit;
-}
-
-md-input-container > label {
-  color: var(--theme-font-color);
-}
-
-md-input-container > .md-input {
-  color: var(--theme-font-color);
-}
-
-md-input-container:not(.md-input-focused):not(.md-input-invalid) > label.md-required:after {
-  color: var(--theme-font-color);
-}
-
-h1, h2, h3, p {
-  color: var(--theme-font-color);
-}
-
-span {
-  color: var(--theme-font-color);
-}
-
-.md-button {
-  color: var(--theme-font-color);
 }
 
 md-card {
