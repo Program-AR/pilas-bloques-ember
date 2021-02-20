@@ -13,11 +13,38 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     pilasMulang = this.owner.lookup('service:pilas-mulang')
   })
 
-  //TODO: Testear cuerpo vacío y con una sola aplicación.
+  let emptyProgram = `
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <shadow type="required_statement"></shadow>
+    </statement>
+  </block>
+  `
+  mulangTest('emptyProgram', emptyProgram,
+    simpleEntryPoint(
+      "al_empezar_a_ejecutar"
+    )
+  )
+
+  let simpleProgram = `
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <shadow type="required_statement"></shadow>
+      <block type="MoverACasillaDerecha"></block>
+    </statement>
+  </block>
+  `
+  mulangTest('simpleProgram', simpleProgram,
+    simpleEntryPoint(
+      "al_empezar_a_ejecutar",
+      application("MoverACasillaDerecha")
+    )
+  )
 
   let al_empezar_a_ejecutar = `
   <block type="al_empezar_a_ejecutar">
     <statement name="program">
+      <shadow type="required_statement"></shadow>
       <block type="MoverACasillaDerecha">
         <next>
           <block type="MoverACasillaIzquierda">
@@ -37,7 +64,6 @@ module('Unit | Service | pilas-mulang', function (hooks) {
       application("MoverACasillaIzquierda"),
       application("MoverACasillaDerecha")
     )
-
   )
 
   let repetir = `
@@ -428,6 +454,16 @@ function body(...seq) {
   return {
     tag: "UnguardedBody",
     contents: sequence(...seq)
+  }
+}
+
+function simpleEntryPoint(name, uniqueExpression = none()) {
+  return {
+    tag: "EntryPoint",
+    contents: [
+      name,
+      uniqueExpression
+    ]
   }
 }
 
