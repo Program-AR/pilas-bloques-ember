@@ -9,23 +9,23 @@ export default Service.extend({
   },
 
   parse(mainBlock) {
-    return buildBlockAst(mainBlock);
+    return buildBlockAst(mainBlock)
   },
 
-});
+})
 
 function buildBlockAst(block) {
-  let tag = mulangTag(block);
-  return createNode(tag, mulangParsers[tag](block));
+  let tag = mulangTag(block)
+  return createNode(tag, mulangParsers[tag](block))
 }
 
-function buildSequenceAst(topLevelBlock) {
-  if (!topLevelBlock) return createEmptyNode();
-  let siblings = getBlockSiblings(topLevelBlock);
+function buildSequenceAst(firstBlock) {
+  if (!firstBlock || firstBlock.isShadow()) return createEmptyNode()
+  let siblings = getBlockSiblings(firstBlock).filter(block => !block.isShadow())
   if (siblings.length) {
-    return createNode("Sequence", [topLevelBlock, ...siblings].map(b => buildBlockAst(b)))
+    return createNode("Sequence", [firstBlock, ...siblings].map(b => buildBlockAst(b)))
   } else {
-    return buildBlockAst(topLevelBlock);
+    return buildBlockAst(firstBlock)
   }
 }
 
@@ -49,7 +49,7 @@ let pilasToMulangTags = {
 
 
 function parseMuNumber(block) {
-  return parseFloat(block.getFieldValue("NUM"));
+  return parseFloat(block.getFieldValue("NUM"))
 }
 
 function parseEntryPoint(block) {
@@ -147,7 +147,7 @@ function parseProcedure(block) {
   return [
     getName(block),
     createNode("Equation", parseEquation(block))
-  ];
+  ]
 }
 
 function parseEquation(block) {
@@ -158,12 +158,12 @@ function parseEquation(block) {
 }
 
 function parseEquationParams(block) {
-  return getParams(block).map(argument => createNode("VariablePattern", argument));
+  return getParams(block).map(argument => createNode("VariablePattern", argument))
 }
 
 function parseEquationBody(block) {
-  let bodyContents = buildSequenceAst(getChild(block));
-  return createNode("UnguardedBody", bodyContents);
+  let bodyContents = buildSequenceAst(getChild(block))
+  return createNode("UnguardedBody", bodyContents)
 }
 
 let mulangParsers = {
