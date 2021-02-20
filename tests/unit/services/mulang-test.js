@@ -251,7 +251,8 @@ module('Unit | Service | pilas-mulang', function (hooks) {
       <block type="MoverACasillaDerecha">
         <next>
           <block type="PrenderFogata"></block>
-          </block>
+        </next>
+      </block>
     </statement>
   </block>
   `
