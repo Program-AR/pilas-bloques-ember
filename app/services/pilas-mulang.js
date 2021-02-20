@@ -1,5 +1,5 @@
 import Service from '@ember/service'
-import { getName, getParams, getChild, getBlockSiblings } from './block-utils'
+import { getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from './block-utils'
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
 export default Service.extend({
@@ -13,21 +13,6 @@ export default Service.extend({
   },
 
 });
-
-
-// TODO: Repeat with highlighter
-function isProcedureCall(block) {
-  return !!block.defType_;
-}
-
-// TODO: No acoplarse a la categoria
-function isOperator(block) {
-  return block.categoria == "Operadores"
-}
-function isValue(block) {
-  return block.categoria == "Valores"
-}
-
 
 function buildBlockAst(block) {
   let tag = mulangTag(block);
@@ -59,7 +44,7 @@ let pilasToMulangTags = {
   "math_number": "MuNumber",
   "Numero": "MuNumber",
   "procedures_defnoreturn": "Procedure",
-  "variables_get": "Reference",
+  "variables_get": "Reference", //TODO: Model each one with tag & parse
 }
 
 

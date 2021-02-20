@@ -1,13 +1,25 @@
+export function isFlying(block) {
+  return block.getRootBlock() === block
+}
+
+// TODO: No acoplarse a la categoria
+export function isOperator(block) {
+  return block.categoria == "Operadores"
+}
+export function isValue(block) {
+  return block.categoria == "Valores"
+}
+
+export function isProcedureCall(block) {
+  return !!block.defType_
+}
+
 export function isInsideProcedureDef(paramBlock) {
   return paramBlock.getRootBlock().id === paramBlock.$parent
 }
 
 export function hasParam(procedureBlock, paramBlock) {
   return getParams(procedureBlock).includes(paramBlock.getFieldValue('VAR'))
-}
-
-export function isFlying(block) {
-  return block.getRootBlock() === block
 }
 
 export function getName(procedureBlock) {
@@ -20,15 +32,11 @@ export function getParams(procedureBlock) {
 
 export function getBlockSiblings(block) {
   const siblings = [];
-  while (hasSiblings(block)){
+  while (block.getNextBlock()){
     block = block.getNextBlock()
     siblings.push(block);
   }
   return siblings;
-}
-
-export function hasSiblings(block) {
-  return block.getNextBlock() 
 }
 
 export function getChild(block) {
@@ -42,12 +50,12 @@ export function requiredAllInputs(block) {
   .forEach(input => requiredInput(block, input.name))
 }
 
-export function shouldAddRequiredShadow(connection) {
+function shouldAddRequiredShadow(connection) {
   return  connection.getShadowDom() == null // Should have not a shadow block
   &&      [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
 }
 
-export function requiredInput(block, inputName) {
+function requiredInput(block, inputName) {
   let connection = block.getInput(inputName).connection
   let shadowType =  (connection.type == Blockly.INPUT_VALUE)
                     ? "required_value"

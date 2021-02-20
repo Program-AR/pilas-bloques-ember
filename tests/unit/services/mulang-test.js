@@ -2,7 +2,6 @@ import QUnit, { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { blocklyWorkspaceMock } from '../../helpers/mocks'
 
-QUnit.dump.maxDepth = 10 // For deepEqual assertion
 let pilasMulang = null
 
 module('Unit | Service | pilas-mulang', function (hooks) {
@@ -389,6 +388,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
 
 
 function mulangTest(name, code, mulangAst) {
+  QUnit.dump.maxDepth = 10 // For deepEqual assertion
   test(`Should parse ${name}`, function (assert) {
     let ast = pilasMulang.parse(Blockly.textToBlock(code))
     assert.deepEqual(ast, mulangAst)
