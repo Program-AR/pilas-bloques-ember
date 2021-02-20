@@ -15,8 +15,67 @@ export default Service.extend({
 })
 
 function buildBlockAst(block) {
-  let tag = mulangTag(block)
-  return createNode(tag, mulangParsers[tag](block))
+  let {tag, parse} = mulangParser(block)
+  return createNode(tag, parse(block))
+}
+
+function mulangParser(block) {
+  let parser = pilasToMulangParsers[block.type]
+  if (parser) return parser
+  return isValue(block) ? referenceParser : applicationParser
+}
+
+let entryPointParser = {
+  tag: "EntryPoint",
+  parse: parseEntryPoint
+}
+
+let repeatParser = {
+  tag: "Repeat",
+  parse: parseRepeat
+}
+
+let ifParser = {
+  tag: "If",
+  parse: parseIf
+}
+
+let whileParser = {
+  tag: "While",
+  parse: parseWhile
+}
+
+let numberParser = {
+  tag: "MuNumber",
+  parse: parseMuNumber
+}
+
+let procedureParser = {
+  tag: "Procedure",
+  parse: parseProcedure
+}
+
+let referenceParser = {
+  tag: "Reference",
+  parse: parseReference
+}
+
+let applicationParser = {
+  tag: "Application",
+  parse: parseApplication
+}
+
+
+let pilasToMulangParsers = {
+  "al_empezar_a_ejecutar": entryPointParser,
+  "repetir": repeatParser,
+  "Si": ifParser,
+  "SiNo": { ...ifParser, parse: parseIfElse },
+  "Hasta": whileParser,
+  "math_number": numberParser,
+  "Numero": numberParser,
+  "procedures_defnoreturn": procedureParser,
+  "variables_get": { ...referenceParser, parse: parseVariable }
 }
 
 function buildSequenceAst(firstBlock) {
@@ -28,25 +87,6 @@ function buildSequenceAst(firstBlock) {
     return buildBlockAst(firstBlock)
   }
 }
-
-function mulangTag(block) {
-  let tag = pilasToMulangTags[block.type]
-  if (tag) return tag
-  return isValue(block) ? "Reference" : "Application"
-}
-
-let pilasToMulangTags = {
-  "al_empezar_a_ejecutar": "EntryPoint",
-  "repetir": "Repeat",
-  "Si": "If",
-  "SiNo": "If",
-  "Hasta": "While",
-  "math_number": "MuNumber",
-  "Numero": "MuNumber",
-  "procedures_defnoreturn": "Procedure",
-  "variables_get": "Reference", //TODO: Model each one with tag & parse
-}
-
 
 function parseMuNumber(block) {
   return parseFloat(block.getFieldValue("NUM"))
@@ -73,10 +113,7 @@ function parseApplication(block) {
 }
 
 function parseReference(block) {
-  if (block.type == "variables_get") //TODO
-    return parseVariable(block)
-  else
-    return block.type
+  return referenceName(block)
 }
 
 function parseVariable(block) {
@@ -113,13 +150,6 @@ function parseWhile(block) {
     buildBlockAst(condition),
     buildSequenceAst(statements)
   ]
-}
-
-function parseAbstractIf(block) {
-  if (block.type == "Si")
-    return parseIf(block)
-  else
-    return parseIfElse(block)
 }
 
 function parseIf(block) {
@@ -164,15 +194,4 @@ function parseEquationParams(block) {
 function parseEquationBody(block) {
   let bodyContents = buildSequenceAst(getChild(block))
   return createNode("UnguardedBody", bodyContents)
-}
-
-let mulangParsers = {
-  "Application": parseApplication,
-  "Reference": parseReference,
-  "Repeat": parseRepeat,
-  "While": parseWhile,
-  "If": parseAbstractIf,
-  "Procedure": parseProcedure,
-  "MuNumber": parseMuNumber,
-  "EntryPoint": parseEntryPoint
 }
