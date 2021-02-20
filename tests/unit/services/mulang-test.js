@@ -1,17 +1,20 @@
-import { module, test } from 'qunit';
-import { setupTest } from 'ember-qunit';
-import { blocklyWorkspaceMock } from '../../helpers/mocks';
+import QUnit, { module, test } from 'qunit'
+import { setupTest } from 'ember-qunit'
+import { blocklyWorkspaceMock } from '../../helpers/mocks'
 
+QUnit.dump.maxDepth = 10 // For deepEqual assertion
 let pilasMulang = null
 
-module('Unit | Service | pilas-mulang', function(hooks) {
-  setupTest(hooks);
+module('Unit | Service | pilas-mulang', function (hooks) {
+  setupTest(hooks)
 
   hooks.beforeEach(function () {
     blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
     pilasMulang = this.owner.lookup('service:pilas-mulang')
-  });
+  })
+
+  //TODO: Testear cuerpo vacío y con una sola aplicación.
 
   let al_empezar_a_ejecutar = `
   <block type="al_empezar_a_ejecutar">
@@ -28,7 +31,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar, 
+  mulangTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar,
     entryPoint(
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha"),
@@ -54,7 +57,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('repetir', repetir, 
+  mulangTest('repetir', repetir,
     repeat(
       10,
       application("MoverACasillaIzquierda"),
@@ -76,7 +79,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('si', si, 
+  mulangTest('si', si,
     muIf(
       application("HayChurrasco"),
       application("MoverACasillaDerecha"),
@@ -108,7 +111,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('sino', sino, 
+  mulangTest('sino', sino,
     ifElse(
       application("HayTomate"),
       sequence(
@@ -138,7 +141,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('hasta', hasta, 
+  mulangTest('hasta', hasta,
     muWhile(
       application("TocandoFinal"),
       application("EncenderLuz"),
@@ -154,7 +157,7 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  mulangTest('application with reference param', applicationWithParameter, 
+  mulangTest('application with reference param', applicationWithParameter,
     application("MoverA", reference("ParaLaDerecha"))
   )
 
@@ -180,9 +183,9 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  mulangTest('application with application param', applicationWithApplicationParameter, 
-    application("DibujarLado", 
-      application("OpAritmetica", 
+  mulangTest('application with application param', applicationWithApplicationParameter,
+    application("DibujarLado",
+      application("ADD",
         number(10),
         number(100)
       )
@@ -194,11 +197,51 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     <field name="texto">A</field>
   </block>
   `
-  mulangTest('application with text param', applicationWithTextParameter, 
+  mulangTest('application with text param', applicationWithTextParameter,
     application("EscribirTextoDadoEnOtraCuadricula", string("A"))
   )
 
-  
+  let operator = `
+  <block type="Si">
+    <value name="condition">
+      <shadow type="required_value"></shadow>
+      <block type="OpComparacion">
+        <field name="OP">EQ</field>
+        <value name="A">
+          <shadow type="required_value"></shadow>
+          <block type="Numero">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+        <value name="B">
+          <shadow type="required_value"></shadow>
+          <block type="Numero">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </value>
+    <statement name="block">
+      <shadow type="required_statement"></shadow>
+      <block type="MoverACasillaDerecha">
+        <next>
+          <block type="PrenderFogata"></block>
+          </block>
+    </statement>
+  </block>
+  `
+  mulangTest('operator', operator,
+    muIf(
+      application("EQ",
+        number(0),
+        number(0)
+      ),
+      application("MoverACasillaDerecha"),
+      application("PrenderFogata")
+    )
+  )
+
+
   let procedureProgram = `
   <block type="procedures_defnoreturn">
     <field name="NAME">esquina</field>
@@ -235,8 +278,8 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('procedure', procedureProgram, 
-    procedure("esquina", [], 
+  mulangTest('procedure', procedureProgram,
+    procedure("esquina", [],
       application("DibujarLado", number(100)),
       application("GirarGrados", number(90)),
       application("DibujarLado", number(100))
@@ -285,12 +328,38 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </statement>
   </block>
   `
-  mulangTest('procedure with params', procedureWithParams, 
+  mulangTest('procedure with params', procedureWithParams,
     procedure("esquina", ["lado", "angulo"],
       application("DibujarLado", reference("lado")),
       application("GirarGrados", reference("angulo")),
       application("DibujarLado", reference("lado"))
     )
+  )
+
+  let procedureCall = `
+  <block type="procedures_callnoreturn">
+    <mutation name="Hacer algo"></mutation>
+  </block>
+  `
+  mulangTest('procedureCall', procedureCall,
+    application("Hacer algo")
+  )
+
+  let procedureCallWithParam = `
+  <block type="procedures_callnoreturn" disabled="true">
+    <mutation name="Hacer algo2">
+      <arg name="parámetro 1"></arg>
+    </mutation>
+    <value name="ARG0">
+      <shadow type="required_value"></shadow>
+      <block type="math_number">
+        <field name="NUM">90</field>
+      </block>
+    </value>
+  </block>
+  `
+  mulangTest('procedureCallWithParam', procedureCallWithParam,
+    application("Hacer algo2", number(90))
   )
 
   let parameter = `
@@ -303,24 +372,24 @@ module('Unit | Service | pilas-mulang', function(hooks) {
     </value>
   </block>
   `
-  mulangTest('parameter', parameter, 
+  mulangTest('parameter', parameter,
     application("GirarGrados",
       reference("angulo")
     )
   )
 
-  test(`Should parse all workspace`, function(assert) {
+  test(`Should parse all workspace`, function (assert) {
     Blockly.textToBlock(al_empezar_a_ejecutar)
     Blockly.textToBlock(procedureProgram)
     let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
     let tags = ast.map(node => node.tag)
     assert.deepEqual(tags, ["EntryPoint", "Procedure"])
   })
-});
+})
 
 
 function mulangTest(name, code, mulangAst) {
-  test(`Should parse ${name}`, function(assert) {
+  test(`Should parse ${name}`, function (assert) {
     let ast = pilasMulang.parse(Blockly.textToBlock(code))
     assert.deepEqual(ast, mulangAst)
   })

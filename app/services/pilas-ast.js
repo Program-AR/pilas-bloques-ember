@@ -4,8 +4,8 @@ export function createNode(tag, contents) {
   return contents !== undefined ? {tag, contents} : {tag};
 }
 
-export function createReference(block) {
-  return createNode("Reference", block.type)
+export function createReference(name) {
+  return createNode("Reference", name)
 }
 
 export function createEmptyNode() {

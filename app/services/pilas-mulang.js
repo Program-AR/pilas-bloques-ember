@@ -15,6 +15,20 @@ export default Service.extend({
 });
 
 
+// TODO: Repeat with highlighter
+function isProcedureCall(block) {
+  return !!block.defType_;
+}
+
+// TODO: No acoplarse a la categoria
+function isOperator(block) {
+  return block.categoria == "Operadores"
+}
+function isValue(block) {
+  return block.categoria == "Valores"
+}
+
+
 function buildBlockAst(block) {
   let tag = mulangTag(block);
   return createNode(tag, mulangParsers[tag](block));
@@ -33,7 +47,7 @@ function buildSequenceAst(topLevelBlock) {
 function mulangTag(block) {
   let tag = pilasToMulangTags[block.type]
   if (tag) return tag
-  return block.categoria == "Valores" ? "Reference" : "Application"
+  return isValue(block) ? "Reference" : "Application"
 }
 
 let pilasToMulangTags = {
@@ -43,6 +57,7 @@ let pilasToMulangTags = {
   "SiNo": "If",
   "Hasta": "While",
   "math_number": "MuNumber",
+  "Numero": "MuNumber",
   "procedures_defnoreturn": "Procedure",
   "variables_get": "Reference",
 }
@@ -59,9 +74,15 @@ function parseEntryPoint(block) {
   ]
 }
 
+function referenceName(block) {
+  return  isProcedureCall(block) ? block.getFieldValue('NAME')
+        : isOperator(block) ? block.getFieldValue('OP')
+        : block.type
+}
+
 function parseApplication(block) {
   return [
-    createReference(block),
+    createReference(referenceName(block)),
     parseArguments(block)
   ]
 }
@@ -86,7 +107,7 @@ function parseArguments(block) {
 }
 
 function parseText(block) {
-  let text = block.getFieldValue("texto") // TODO: Mega-hard-coded
+  let text = block.getFieldValue("texto") // TODO: Mega-hard-coded?
   if (!text) return []
   return [createNode("MuString", text)]
 }
@@ -110,7 +131,7 @@ function parseWhile(block) {
 }
 
 function parseAbstractIf(block) {
-  if (block.type == "Si") //TODO
+  if (block.type == "Si")
     return parseIf(block)
   else
     return parseIfElse(block)
