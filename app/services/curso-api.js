@@ -35,7 +35,7 @@ export default Ember.Service.extend({
         contentType: 'application/json',
         type: "get",
       }).
-      done((result) => {
+        done((result) => {
         success(result.data[0].xml);
       }).
       fail(reject);
@@ -81,7 +81,7 @@ export default Ember.Service.extend({
         url: request_data.url,
         contentType: 'application/json',
         type: request_data.method,
-        data: oauth.authorize(request_data)
+        data: JSON.stringify(oauth.authorize(request_data))
       }).done(success).fail(reject);
     }).catch((reason) => {
           console.error(reason);
