@@ -9,6 +9,7 @@ export default Service.extend({
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
     Blockly.shouldExecute = this._shouldExecute.bind(this);
+    Blockly.aliases = this._aliases;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     //END TODO
     this._generarLenguaje();
@@ -35,6 +36,10 @@ export default Service.extend({
 
   _shouldExecute(block) {
     return block.allInputsFilled(false) || this._isEmptyProcedure(block)
+  },
+  
+  _aliases(type) {
+    return Blockly.Blocks[type].aliases || []
   },
 
   _isProcedure(type) {
@@ -106,7 +111,7 @@ export default Service.extend({
   },
 
   areAliases(alias, type) {
-    return Blockly.Blocks[type].aliases.includes(alias);
+    return Blockly.aliases(type).includes(alias);
   },
 
   /*

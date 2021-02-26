@@ -21,9 +21,17 @@ function buildBlockAst(block) {
 }
 
 function mulangParser(block) {
-  let parser = pilasToMulangParsers[block.type]
+  let parser = pilasToMulangParsers[block.type] || searchAlias(block) 
   if (parser) return parser
   return isValue(block) ? referenceParser : applicationParser
+}
+
+function searchAlias(block) {
+  for (const alias of Blockly.aliases(block.type)) {
+    if (pilasToMulangParsers[alias]) {
+      return pilasToMulangParsers[alias]
+    }
+  }
 }
 
 let entryPointParser = {

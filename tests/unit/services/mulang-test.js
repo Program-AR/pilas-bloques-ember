@@ -14,6 +14,10 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     pilasMulang = this.owner.lookup('service:pilas-mulang')
   })
 
+  /**
+   * BLOCKS
+   */
+
   let emptyProgram = `
   <block type="al_empezar_a_ejecutar">
     <statement name="program">
@@ -405,6 +409,24 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     )
   )
 
+  let alias = `
+  <block type="si">
+    <value name="condition">
+      <shadow type="required_value"></shadow>
+    </value>
+    <statement name="block">
+      <shadow type="required_statement"></shadow>
+    </statement>
+  </block>
+  `
+  mulangParseBlockTest('alias', alias,
+    muIf(none())
+  )
+
+  /**
+   * WORKSPACE
+   */
+
   mulangParseWorkspaceTest(`every blocks`, [simpleProgram, procedureDefinition], [simpleProgramAST, procedureAST])
 
   let evilSolution = [`
@@ -649,7 +671,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     ),
     procedure('Prender compus hacia', ['direccion'],
       application('MoverA', reference('direccion')),
-      muWhile(reference('EstoyEnEsquina'),
+      muWhile(application('EstoyEnEsquina'),
         application('PrenderComputadora'),
         application('MoverA', reference('direccion')),
       ),
@@ -657,7 +679,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     ),
     procedure('Hacer algo', [],
       repeat(number(10),
-        ifElse(reference('TocandoBanana'),
+        ifElse(application('TocandoBanana'),
           application('ComerBanana'),
           application('ComerManzana')
         )
