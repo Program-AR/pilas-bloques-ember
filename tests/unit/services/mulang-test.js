@@ -34,12 +34,12 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('simpleProgram', simpleProgram,
+  let simpleProgramAST =
     simpleEntryPoint(
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha")
     )
-  )
+  mulangTest('simpleProgram', simpleProgram, simpleProgramAST)
 
   let al_empezar_a_ejecutar = `
   <block type="al_empezar_a_ejecutar">
@@ -268,7 +268,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   )
 
 
-  let procedureProgram = `
+  let procedureDefinition = `
   <block type="procedures_defnoreturn">
     <field name="NAME">esquina</field>
     <statement name="STACK">
@@ -304,13 +304,13 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('procedure', procedureProgram,
+  let procedureAST =
     procedure("esquina", [],
       application("DibujarLado", number(100)),
       application("GirarGrados", number(90)),
       application("DibujarLado", number(100))
     )
-  )
+  mulangTest('procedure', procedureDefinition, procedureAST)
 
   let procedureWithParams = `
   <block type="procedures_defnoreturn">
@@ -404,12 +404,11 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     )
   )
 
-  test(`Should parse all workspace`, function (assert) {
-    Blockly.textToBlock(al_empezar_a_ejecutar)
-    Blockly.textToBlock(procedureProgram)
+  test(`Should parse every blocks on workspace`, function (assert) {
+    Blockly.textToBlock(simpleProgram)
+    Blockly.textToBlock(procedureDefinition)
     let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
-    let tags = ast.map(node => node.tag)
-    assert.deepEqual(tags, ["EntryPoint", "Procedure"])
+    assert.deepEqual(ast, [simpleProgramAST, procedureAST])
   })
 })
 
