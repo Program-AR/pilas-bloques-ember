@@ -21,7 +21,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('emptyProgram', emptyProgram,
+  mulangParseBlockTest('emptyProgram', emptyProgram,
     entryPoint(
       "al_empezar_a_ejecutar"
     )
@@ -40,7 +40,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha")
     )
-  mulangTest('simpleProgram', simpleProgram, simpleProgramAST)
+  mulangParseBlockTest('simpleProgram', simpleProgram, simpleProgramAST)
 
   let al_empezar_a_ejecutar = `
   <block type="al_empezar_a_ejecutar">
@@ -58,7 +58,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar,
+  mulangParseBlockTest('al_empezar_a_ejecutar', al_empezar_a_ejecutar,
     entryPoint(
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha"),
@@ -83,7 +83,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('repetir', repetir,
+  mulangParseBlockTest('repetir', repetir,
     repeat(
       number(10),
       application("MoverACasillaIzquierda"),
@@ -105,7 +105,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('si', si,
+  mulangParseBlockTest('si', si,
     muIf(
       application("HayChurrasco"),
       application("MoverACasillaDerecha"),
@@ -137,7 +137,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('sino', sino,
+  mulangParseBlockTest('sino', sino,
     ifElse(
       application("HayTomate"),
       sequence(
@@ -167,7 +167,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('hasta', hasta,
+  mulangParseBlockTest('hasta', hasta,
     muWhile(
       application("TocandoFinal"),
       application("EncenderLuz"),
@@ -183,7 +183,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </value>
   </block>
   `
-  mulangTest('application with reference param', applicationWithParameter,
+  mulangParseBlockTest('application with reference param', applicationWithParameter,
     application("MoverA", reference("ParaLaDerecha"))
   )
 
@@ -209,7 +209,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </value>
   </block>
   `
-  mulangTest('application with application param', applicationWithApplicationParameter,
+  mulangParseBlockTest('application with application param', applicationWithApplicationParameter,
     application("DibujarLado",
       application("ADD",
         number(10),
@@ -223,7 +223,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     <field name="texto">A</field>
   </block>
   `
-  mulangTest('application with text param', applicationWithTextParameter,
+  mulangParseBlockTest('application with text param', applicationWithTextParameter,
     application("EscribirTextoDadoEnOtraCuadricula", string("A"))
   )
 
@@ -257,7 +257,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('operator', operator,
+  mulangParseBlockTest('operator', operator,
     muIf(
       application("EQ",
         number(0),
@@ -311,7 +311,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
       application("GirarGrados", number(90)),
       application("DibujarLado", number(100))
     )
-  mulangTest('procedure', procedureDefinition, procedureAST)
+  mulangParseBlockTest('procedure', procedureDefinition, procedureAST)
 
   let procedureWithParams = `
   <block type="procedures_defnoreturn">
@@ -355,7 +355,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </statement>
   </block>
   `
-  mulangTest('procedure with params', procedureWithParams,
+  mulangParseBlockTest('procedure with params', procedureWithParams,
     procedure("esquina", ["lado", "angulo"],
       application("DibujarLado", reference("lado")),
       application("GirarGrados", reference("angulo")),
@@ -368,7 +368,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     <mutation name="Hacer algo"></mutation>
   </block>
   `
-  mulangTest('procedureCall', procedureCall,
+  mulangParseBlockTest('procedureCall', procedureCall,
     application("Hacer algo")
   )
 
@@ -385,7 +385,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </value>
   </block>
   `
-  mulangTest('procedureCallWithParam', procedureCallWithParam,
+  mulangParseBlockTest('procedureCallWithParam', procedureCallWithParam,
     application("Hacer algo2", number(90))
   )
 
@@ -399,18 +399,13 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </value>
   </block>
   `
-  mulangTest('parameter', parameter,
+  mulangParseBlockTest('parameter', parameter,
     application("GirarGrados",
       reference("angulo")
     )
   )
 
-  test(`Should parse every blocks on workspace`, function (assert) {
-    Blockly.textToBlock(simpleProgram)
-    Blockly.textToBlock(procedureDefinition)
-    let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
-    assert.deepEqual(ast, [simpleProgramAST, procedureAST])
-  })
+  mulangParseWorkspaceTest(`every blocks`, [simpleProgram, procedureDefinition], [simpleProgramAST, procedureAST])
 
   let evilSolution = [`
   <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
@@ -510,34 +505,181 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     </value>
   </block>
   `]
-  test(`Should parse workspace with errors`, function (assert) {
-    evilSolution.forEach(Blockly.textToBlock)
-    let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
-    assert.deepEqual(ast, [
-      entryPoint('al_empezar_a_ejecutar',
-        repeat(application('ADD', number(10), none()), none()),
-        application('Hacer algo2')
+  mulangParseWorkspaceTest(`errors`, evilSolution, [
+    entryPoint('al_empezar_a_ejecutar',
+      repeat(application('ADD', number(10), none()), none()),
+      application('Hacer algo2')
+    ),
+    procedure('Hacer algo', ['parámetro 1'],
+      application('DibujarLado', none()),
+      application('Hacer algo', none())
+    ),
+    procedure('Hacer algo2', [],
+      application('GirarGrados', reference('parámetro 1')),
+      ifElse(none(), none(), none())
+    ),
+    reference('parámetro 1'),
+    number(100),
+    application('SaltarHaciaAdelante', none())
+  ])
+
+  let completeSolution = [`
+  <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="0" y="0">
+    <statement name="program">
+      <block type="procedures_callnoreturn" id="46">
+        <mutation name="Prender compus hacia">
+          <arg name="direccion"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="ParaLaDerecha" id="61"></block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn" id="64">
+            <mutation name="Prender compus hacia">
+              <arg name="direccion"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="ParaAbajo" id="72"></block>
+            </value>
+            <next>
+              <block type="procedures_callnoreturn" id="77">
+                <mutation name="Prender compus hacia">
+                  <arg name="direccion"></arg>
+                </mutation>
+                <value name="ARG0">
+                  <block type="ParaLaIzquierda" id="83"></block>
+                </value>
+                <next>
+                  <block type="procedures_callnoreturn" id="92">
+                    <mutation name="Prender compus hacia">
+                      <arg name="direccion"></arg>
+                    </mutation>
+                    <value name="ARG0">
+                      <block type="ParaArriba" id="89"></block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `, `
+  <block type="procedures_defnoreturn" id="18" x="7" y="207">
+    <mutation>
+      <arg name="direccion"></arg>
+    </mutation>
+    <field name="NAME">Prender compus hacia</field>
+    <comment pinned="false" h="80" w="160">Describe esta función...</comment>
+    <statement name="STACK">
+      <block type="MoverA" id="95">
+        <value name="direccion">
+          <block type="param_get" id="99">
+            <field name="VAR">direccion</field>
+          </block>
+        </value>
+        <next>
+          <block type="hasta" id="29">
+            <value name="condition">
+              <block type="EstoyEnEsquina" id="31"></block>
+            </value>
+            <statement name="block">
+              <block type="PrenderComputadora" id="41">
+                <next>
+                  <block type="MoverA" id="34">
+                    <value name="direccion">
+                      <block type="param_get" id="38">
+                        <field name="VAR">direccion</field>
+                      </block>
+                    </value>
+                  </block>
+                </next>
+              </block>
+            </statement>
+            <next>
+              <block type="procedures_callnoreturn">
+                <mutation name="Hacer algo"></mutation>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `, `
+  <block type="procedures_defnoreturn" x="168" y="252">
+    <field name="NAME">Hacer algo</field>
+    <statement name="STACK">
+      <block type="repetir">
+        <value name="count">
+          <shadow type="required_value"></shadow>
+          <block type="math_number">
+            <field name="NUM">10</field>
+          </block>
+        </value>
+        <statement name="block">
+          <shadow type="required_statement"></shadow>
+          <block type="SiNo">
+            <value name="condition">
+              <shadow type="required_value"></shadow>
+              <block type="TocandoBanana"></block>
+            </value>
+            <statement name="block1">
+              <shadow type="required_statement"></shadow>
+              <block type="ComerBanana"></block>
+            </statement>
+            <statement name="block2">
+              <shadow type="required_statement"></shadow>
+              <block type="ComerManzana"></block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  `]
+  mulangParseWorkspaceTest(`complete solution`, completeSolution, [
+    entryPoint('al_empezar_a_ejecutar',
+      application('Prender compus hacia', reference('ParaLaDerecha')),
+      application('Prender compus hacia', reference('ParaAbajo')),
+      application('Prender compus hacia', reference('ParaLaIzquierda')),
+      application('Prender compus hacia', reference('ParaArriba')),
+    ),
+    procedure('Prender compus hacia', ['direccion'],
+      application('MoverA', reference('direccion')),
+      muWhile(reference('EstoyEnEsquina'),
+        application('PrenderComputadora'),
+        application('MoverA', reference('direccion')),
       ),
-      procedure('Hacer algo', ['parámetro 1'],
-        application('DibujarLado', none()),
-        application('Hacer algo', none())
-      ),
-      procedure('Hacer algo2', [],
-        application('GirarGrados', reference('parámetro 1')),
-        ifElse(none(), none(), none())
-      ),
-      reference('parámetro 1'),
-      number(100),
-      application('SaltarHaciaAdelante', none())
-    ])
-  })
+      application('Hacer algo'),
+    ),
+    procedure('Hacer algo', [],
+      repeat(number(10),
+        ifElse(reference('TocandoBanana'),
+          application('ComerBanana'),
+          application('ComerManzana')
+        )
+      )
+    )
+  ])
+
 })
 
 
-function mulangTest(name, code, mulangAst) {
-  test(`Should parse ${name}`, function (assert) {
+function mulangParseBlockTest(name, code, expectedAst) {
+  test(`Should parse ${name} block`, function (assert) {
     let ast = pilasMulang.parse(Blockly.textToBlock(code))
-    assert.deepEqual(ast, mulangAst)
+    assert.deepEqual(ast, expectedAst)
+  })
+}
+
+function mulangParseWorkspaceTest(description, definitions, expectedAst) {
+  test(`Should parse workspace with ${description}`, function (assert) {
+    definitions.forEach(Blockly.textToBlock)
+    let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
+    assert.deepEqual(ast, expectedAst)
   })
 }
 
