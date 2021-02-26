@@ -15,6 +15,7 @@ export default Service.extend({
 })
 
 function buildBlockAst(block) {
+  if (block.isShadow()) return createEmptyNode()
   let {tag, parse} = mulangParser(block)
   return createNode(tag, parse(block))
 }

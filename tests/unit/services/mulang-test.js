@@ -8,6 +8,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   setupTest(hooks)
 
   hooks.beforeEach(function () {
+    QUnit.dump.maxDepth = 10 // For deepEqual assertion
     blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
     pilasMulang = this.owner.lookup('service:pilas-mulang')
@@ -21,7 +22,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   </block>
   `
   mulangTest('emptyProgram', emptyProgram,
-    simpleEntryPoint(
+    entryPoint(
       "al_empezar_a_ejecutar"
     )
   )
@@ -35,7 +36,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   </block>
   `
   let simpleProgramAST =
-    simpleEntryPoint(
+    entryPoint(
       "al_empezar_a_ejecutar",
       application("MoverACasillaDerecha")
     )
@@ -84,7 +85,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   `
   mulangTest('repetir', repetir,
     repeat(
-      10,
+      number(10),
       application("MoverACasillaIzquierda"),
       application("MoverACasillaDerecha")
     )
@@ -410,11 +411,130 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
     assert.deepEqual(ast, [simpleProgramAST, procedureAST])
   })
+
+  let evilSolution = [`
+  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+    <statement name="program">
+      <shadow type="required_statement"></shadow>
+      <block type="repetir">
+        <value name="count">
+          <shadow type="required_value"></shadow>
+          <block type="OpAritmetica">
+            <field name="OP">ADD</field>
+            <value name="A">
+              <shadow type="required_value"></shadow>
+              <block type="math_number">
+                <field name="NUM">10</field>
+              </block>
+            </value>
+            <value name="B">
+              <shadow type="required_value"></shadow>
+            </value>
+          </block>
+        </value>
+        <statement name="block">
+          <shadow type="required_statement"></shadow>
+        </statement>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="Hacer algo2"></mutation>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `, `
+  <block type="procedures_defnoreturn" x="385" y="21">
+    <mutation>
+      <arg name="parámetro 1"></arg>
+    </mutation>
+    <field name="NAME">Hacer algo</field>
+    <field name="ARG0">parámetro 1</field>
+    <statement name="STACK">
+      <block type="DibujarLado">
+        <value name="longitud">
+          <shadow type="required_value"></shadow>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="Hacer algo">
+              <arg name="parámetro 1"></arg>
+            </mutation>
+            <value name="ARG0">
+              <shadow type="required_value"></shadow>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `, `
+  <block type="procedures_defnoreturn" x="709" y="10">
+    <field name="NAME">Hacer algo2</field>
+    <statement name="STACK">
+      <block type="GirarGrados">
+        <value name="grados">
+          <shadow type="required_value"></shadow>
+          <block type="variables_get" disabled="true">
+            <mutation var="parámetro 1" parent="hZ6TYHUC~Lmbq+5encV["></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="SiNo" disabled="true" x="394" y="141">
+            <value name="condition">
+              <shadow type="required_value"></shadow>
+            </value>
+            <statement name="block1">
+              <shadow type="required_statement"></shadow>
+            </statement>
+            <statement name="block2">
+              <shadow type="required_statement"></shadow>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  `, `
+  <block type="variables_get" disabled="true" x="358" y="216">
+    <mutation var="parámetro 1" parent="hZ6TYHUC~Lmbq+5encV["></mutation>
+  </block>
+  `, `
+  <block type="math_number" disabled="true" x="609" y="218">
+    <field name="NUM">100</field>
+  </block>
+  `, `
+  <block type="SaltarHaciaAdelante" disabled="true" x="156" y="292">
+    <value name="longitud">
+      <shadow type="required_value"></shadow>
+    </value>
+  </block>
+  `]
+  test(`Should parse workspace with errors`, function (assert) {
+    evilSolution.forEach(Blockly.textToBlock)
+    let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
+    assert.deepEqual(ast, [
+      entryPoint('al_empezar_a_ejecutar',
+        repeat(application('ADD', number(10), none()), none()),
+        application('Hacer algo2')
+      ),
+      procedure('Hacer algo', ['parámetro 1'],
+        application('DibujarLado', none()),
+        application('Hacer algo', none())
+      ),
+      procedure('Hacer algo2', [],
+        application('GirarGrados', reference('parámetro 1')),
+        ifElse(none(), none(), none())
+      ),
+      reference('parámetro 1'),
+      number(100),
+      application('SaltarHaciaAdelante', none())
+    ])
+  })
 })
 
 
 function mulangTest(name, code, mulangAst) {
-  QUnit.dump.maxDepth = 10 // For deepEqual assertion
   test(`Should parse ${name}`, function (assert) {
     let ast = pilasMulang.parse(Blockly.textToBlock(code))
     assert.deepEqual(ast, mulangAst)
@@ -457,15 +577,6 @@ function body(...seq) {
   }
 }
 
-function simpleEntryPoint(name, uniqueExpression = none()) {
-  return {
-    tag: "EntryPoint",
-    contents: [
-      name,
-      uniqueExpression
-    ]
-  }
-}
 
 function entryPoint(name, ...seq) {
   return {
@@ -478,6 +589,8 @@ function entryPoint(name, ...seq) {
 }
 
 function sequence(...seq) {
+  if (seq.length == 0) return none()
+  if (seq.length == 1) return seq[0]
   return {
     tag: "Sequence",
     contents: seq
@@ -505,7 +618,7 @@ function repeat(count, ...seq) {
   return {
     tag: "Repeat",
     contents: [
-      number(count),
+      count,
       sequence(...seq)
     ]
   }
