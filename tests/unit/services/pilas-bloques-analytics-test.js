@@ -16,10 +16,17 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   })
 
   test('Should save session', function (assert) {
-    pbAnalytics.getSession().id
-    const { id, timestamp } = getSession()
+    pbAnalytics.getSession()
+    const { id, timestamp, answers } = getSession()
     assert.ok(id)
     assert.ok(timestamp)
+    assert.ok(answers)
+  })
+
+  test('Should add new answers', function (assert) {
+    pbAnalytics.newAnswer({ id: 'TEST' })
+    const { answers } = getSession()
+    assert.deepEqual(answers, [{ id: 'TEST' }])
   })
 
   test('Should keep the session for a while', function (assert) {
@@ -35,11 +42,11 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     const currentSessionId = pbAnalytics.getSession().id
     assert.notEqual(firstSessionId, currentSessionId)
   })
-  
+
   function getSession() {
     return JSON.parse(localStorage.getItem(pbAnalytics.ANALYTICS_KEY))
   }
-  
+
   function changeSessionTimestampByMinutes(minutes) {
     const session = getSession()
     const before = new Date()
