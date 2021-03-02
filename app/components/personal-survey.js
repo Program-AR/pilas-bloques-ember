@@ -60,7 +60,6 @@ export default Component.extend({
       pages: [{
         name: "schoolAndCompany", questions: [
           { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela?" },
-          { type: "text", isRequired: true, name: "nickname", title: "¿Cómo es tu apodo?", visibleIf: "{isAtSchool} = 'Sí'" },
           { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],
@@ -98,11 +97,11 @@ export default Component.extend({
 
   storageFor(uqestion) { return uqestion.askEachSession ? this.pilasBloquesAnalytics : this.pilasBloquesApi },
   nextQuestion() { return this.questions.find(question => !this.wasAnswered(question)) },
-  wasAnswered(question) { return this.answeredIds().includes(question.id) },
-  answeredIds() {
-    const userAnswers = this.pilasBloquesApi.getUser().answers || []
-    const sessionAnswers = this.pilasBloquesAnalytics.getSession().answers || []
-    return [...userAnswers, ...sessionAnswers]
+  wasAnswered(question) { return this.answeredQuestionsIds().includes(question.id) },
+  answeredQuestionsIds() { return [...this.userAnswers(), ...this.sessionAnswers()] },
+  userAnswers() { return this.pilasBloquesApi.getUser().answers || [] }, //TODO: Rename to answeredQuestionsIds 
+  sessionAnswers() {
+    const { answers } = this.pilasBloquesAnalytics.getSession()
+    return answers && answers.map(({ question }) => question.id) || []
   }
-
 });

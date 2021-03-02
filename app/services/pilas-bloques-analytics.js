@@ -10,7 +10,7 @@ export default Service.extend({
   checkSessionId() {
     let session = this.getSession()
     const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
-    if (!session || isOld()) return this._updateSession().id
+    if (!session || isOld()) return this._newSession().id
     return session.id
   },
 
@@ -28,16 +28,28 @@ export default Service.extend({
     }
   },
 
-  _updateSession() {
+  newAnswer(data) {
+    const session = this.getSession()
+    const answers = session.answers || []
+    answers.push(data)
+    this._save({ ...session, answers })
+  },
+
+  _newSession() {
     const newSession = {
       id: uuidv4(),
-      timestamp: new Date()
+      timestamp: new Date(),
+      answers: []
     }
-    localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(newSession))
+    this._save(newSession)
     return newSession
   },
 
   getSession() {
     return JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
+  },
+
+  _save(session) {
+    localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(session))
   }
 })
