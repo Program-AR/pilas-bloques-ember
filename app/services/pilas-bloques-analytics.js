@@ -8,7 +8,7 @@ export default Service.extend({
   platform: service(),
 
   checkSessionId() {
-    let session = JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
+    let session = this.getSession()
     const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
     if (!session || isOld()) return this._updateSession().id
     return session.id
@@ -36,4 +36,8 @@ export default Service.extend({
     localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(newSession))
     return newSession
   },
+
+  getSession() {
+    return JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
+  }
 })

@@ -38,7 +38,7 @@ export default Service.extend({
   // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
-      .then(session => this._saveUser(session))
+      .then(user => this._saveUser(user))
   },
 
   async register(data) {
@@ -48,11 +48,16 @@ export default Service.extend({
       avatarURL
     }
     return this._send('POST', 'register', { ...data, profile })
-      .then(session => this._saveUser(session))
+      .then(user => this._saveUser(user))
   },
 
   async validateUsername(username) {
     return this._send('GET', `register/check?username=${username}`)
+  },
+
+  async newAnswer(data) {
+    return this._send('POST', `answers`, data)
+      .then(user => this._saveUser(user))
   },
 
   logout() {
