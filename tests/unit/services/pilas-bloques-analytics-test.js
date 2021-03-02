@@ -12,27 +12,27 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   })
 
   test('Should create new sessionId', function (assert) {
-    assert.ok(pbAnalytics.checkSessionId())
+    assert.ok(pbAnalytics.getSession().id)
   })
 
   test('Should save session', function (assert) {
-    pbAnalytics.checkSessionId()
+    pbAnalytics.getSession().id
     const { id, timestamp } = getSession()
     assert.ok(id)
     assert.ok(timestamp)
   })
 
   test('Should keep the session for a while', function (assert) {
-    const firstSessionId = pbAnalytics.checkSessionId()
+    const firstSessionId = pbAnalytics.getSession().id
     changeSessionTimestampByMinutes(1)
-    const currentSessionId = pbAnalytics.checkSessionId()
+    const currentSessionId = pbAnalytics.getSession().id
     assert.equal(firstSessionId, currentSessionId)
   })
 
   test('Should change the session after a long time', function (assert) {
-    const firstSessionId = pbAnalytics.checkSessionId()
+    const firstSessionId = pbAnalytics.getSession().id
     changeSessionTimestampByMinutes(31)
-    const currentSessionId = pbAnalytics.checkSessionId()
+    const currentSessionId = pbAnalytics.getSession().id
     assert.notEqual(firstSessionId, currentSessionId)
   })
   

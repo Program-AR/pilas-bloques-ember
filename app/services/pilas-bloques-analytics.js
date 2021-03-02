@@ -7,19 +7,12 @@ export default Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   platform: service(),
 
-  checkSessionId() {
-    let session = this.getSession()
-    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
-    if (!session || isOld()) return this._newSession().id
-    return session.id
-  },
-
   buildSession(userId) {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
-    const sessionId = this.checkSessionId()
+    const session = this.getSession()
     return {
-      sessionId,
+      ...session,
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
@@ -46,8 +39,13 @@ export default Service.extend({
   },
 
   getSession() {
-    return JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
+    const data = localStorage.getItem(this.ANALYTICS_KEY)
+    if (!data) return this._newSession()
+    const session = JSON.parse(data)
+    return this._isOld(session) ? this._newSession() : session
   },
+
+  _isOld({ timestamp }) { return (new Date() - new Date(timestamp)) / 1000 / 60 > sessionExpire }, // Minutes
 
   _save(session) {
     localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(session))
