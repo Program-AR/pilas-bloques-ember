@@ -90,6 +90,7 @@ export default Component.extend({
   },
 
   saveAnswer(response) {
+    response.timestamp = new Date()
     const question = this.nextQuestion()
     this.storageFor(question).newAnswer({ question, response })
     window.surveyWindow = undefined //TODO: close() hide()?
