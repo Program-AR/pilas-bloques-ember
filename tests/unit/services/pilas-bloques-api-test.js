@@ -3,6 +3,7 @@ import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
 import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest } from '../../helpers/utils'
 import config from '../../../config/environment'
+import { fakeUser } from '../../helpers/mocks'
 
 const { baseURL } = config.pbApi
 
@@ -10,7 +11,6 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   setupPBTest(hooks)
 
   var api
-  const fakeUser = { username: "TEST", token: "TOKEN" }
 
   hooks.beforeEach(function () {
     fetchMock.mock(`${baseURL}/login`, fakeUser)

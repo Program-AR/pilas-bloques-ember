@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock'
 import { setupTest } from 'ember-qunit'
-import { toastMock } from './mocks'
+import { fakeUser, toastMock } from './mocks'
 import sinon from 'sinon'
 
 export function setupPBTest(hooks) {
@@ -11,6 +11,12 @@ export function setupPBTest(hooks) {
         fetchMock.config.overwriteRoutes = true
         localStorage.clear()
         sinon.resetHistory()
+    })    
+}
+
+export function setupLoggedUser(hooks) {
+    hooks.beforeEach(function () {
+        localStorage.setItem('PB_USER', JSON.stringify(fakeUser))
     })    
 }
 
