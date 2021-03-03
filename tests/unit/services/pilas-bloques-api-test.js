@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest } from '../../helpers/utils'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest, mockApi } from '../../helpers/utils'
 import config from '../../../config/environment'
 import { fakeUser } from '../../helpers/mocks'
 
@@ -17,20 +17,10 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     storage = this.owner.lookup('service:storage')
   })
 
-  test('On login should save user data', async function (assert) {
-    await api.login({})
-    assert.deepEqual(storage.getUser(), fakeUser)
-  })
-
-  test('On register should save user data', async function (assert) {
-    await api.register({})
-    assert.deepEqual(storage.getUser(), fakeUser)
-  })
-
-  test('On new user answer should update user data', async function (assert) {
-    await api.newAnswer({})
-    assert.deepEqual(storage.getUser(), fakeUser)
-  })
+  authTest('On login should save user data', () => api.login({}) )
+  authTest('On register should save user data', () => api.register({}) )
+  authTest('On change password should save user data', () => api.changePassword({}) )
+  authTest('On new user answer should update user data', () => api.newAnswer({}) )
 
   test('On logout should delete user data', function (assert) {
     storage.saveUser(fakeUser)
@@ -86,7 +76,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('should handle server error', async function (assert) {
-    fetchMock.mock(`${baseURL}/login`, { body: "SERVER ERROR", status: 400 })
+    mockApi(`login`, { body: "SERVER ERROR", status: 400 })
     await api.login({}).catch(err => {
       assert.deepEqual(err, {
         message: "SERVER ERROR",
@@ -100,4 +90,11 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
       assert.equal(err, 'ERROR')
     })
   })
+
+  async function authTest(description, action) {
+    test(description, async function (assert) {
+      await action()
+      assert.deepEqual(getUser(), fakeUser)
+    })  
+  }
 })

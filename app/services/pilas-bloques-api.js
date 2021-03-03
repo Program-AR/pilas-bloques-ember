@@ -51,8 +51,13 @@ export default Service.extend({
       .then(user => this.storage.saveUser(user))
   },
 
-  async validateUsername(username) {
-    return this._send('GET', `register/check?username=${username}`)
+  async changePassword(newCredentials) {
+    return this._send('PUT', 'credentials', newCredentials)
+      .then(session => this._saveUser(session))
+  },
+
+  async userExists(username) {
+    return this._send('GET', `users/exists?username=${username}`)
   },
 
   async newAnswer(data) {
@@ -76,7 +81,7 @@ export default Service.extend({
     if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
 
     const url = `${baseURL}/${resource}`
-    const flag = `loading.${resource}`
+    const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
     const headers = { 
       'Content-Type': 'application/json',
       'Authorization': user ? `Bearer ${user.token}` : null

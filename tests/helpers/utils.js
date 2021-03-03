@@ -23,14 +23,19 @@ export function setupLoggedUser(hooks) {
     })    
 }
 
-function resetFetch() {
+export function resetFetch() {
     fetchMock.reset()
     fetchMock.config.overwriteRoutes = true
-    fetchMock.mock(`${baseURL}/login`, fakeUser)
-    fetchMock.mock(`${baseURL}/register`, fakeUser)
-    fetchMock.mock(`${baseURL}/answers`, fakeUser)
-    fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
-    fetchMock.mock(`begin:${baseURL}`, 200)
+    mockApi(`login`, fakeUser)
+    mockApi(`register`, fakeUser)
+    mockApi(`credentials`, fakeUser)
+    mockApi(`answers`, fakeUser)
+    mockApi(`error`, { throws: 'ERROR' })
+    mockApi(``, 200)
+}
+
+export function mockApi(path, response) {
+    fetchMock.mock(`begin:${baseURL}/${path}`, response)
 }
 
 
@@ -48,11 +53,11 @@ export function findBlockByTypeIn(rootBlock, type) {
 
 ////// ASSERT //////
 
-export function assertAsync(assert, fn) {
+export function assertAsync(assert, fn, ms = 0) {
     let done = assert.async(1)
     setTimeout(function () {
         fn(); done()
-    })
+    }, ms)
 }
 
 export function assertProps(assert, obj, props) {

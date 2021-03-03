@@ -97,7 +97,7 @@ export default Component.extend({
     return this.storageFor(question).newAnswer({ question, response })
   },
 
-  close() { window.surveyWindow && window.surveyWindow.hide() },
+  close() { return window.surveyWindow && window.surveyWindow.hide() },
 
   storageFor(uqestion) { return uqestion.askEachSession ? this.pilasBloquesAnalytics : this.pilasBloquesApi },
   nextQuestion() { return this.questions.find(question => !this.wasAnswered(question)) },
