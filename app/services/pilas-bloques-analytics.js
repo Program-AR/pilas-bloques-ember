@@ -4,8 +4,8 @@ import config from "../config/environment"
 const { sessionExpire } = config.pbAnalytics
 
 export default Service.extend({
-  ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   platform: service(),
+  storage: service(),
 
   buildSession(userId) {
     const online = this.platform.online()
@@ -25,7 +25,7 @@ export default Service.extend({
     const session = this.getSession()
     const answers = session.answers || []
     answers.push(data)
-    this._save({ ...session, answers })
+    this.storage.saveAnalyticsSession({ ...session, answers })
   },
 
   _newSession() {
@@ -34,20 +34,15 @@ export default Service.extend({
       timestamp: new Date(),
       answers: []
     }
-    this._save(newSession)
+    this.storage.saveAnalyticsSession(newSession)
     return newSession
   },
 
   getSession() {
-    const data = localStorage.getItem(this.ANALYTICS_KEY)
-    if (!data) return this._newSession()
-    const session = JSON.parse(data)
+    const session = this.storage.getAnalyticsSession()
+    if (!session) return this._newSession()
     return this._isOld(session) ? this._newSession() : session
   },
 
   _isOld({ timestamp }) { return (new Date() - new Date(timestamp)) / 1000 / 60 > sessionExpire }, // Minutes
-
-  _save(session) {
-    localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(session))
-  }
 })

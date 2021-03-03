@@ -19,7 +19,7 @@ export function setupPBTest(hooks) {
 
 export function setupLoggedUser(hooks) {
     hooks.beforeEach(function () {
-        localStorage.setItem('PB_USER', JSON.stringify(fakeUser)) //TODO: CONST key
+        this.owner.lookup('service:storage').saveUser(fakeUser)
     })    
 }
 

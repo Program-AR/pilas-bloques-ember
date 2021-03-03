@@ -7,7 +7,9 @@ module('Unit | Components | personal-survey', function (hooks) {
   setupLoggedUser(hooks)
 
   let personalSurvey
+  var storage
   hooks.beforeEach(function () {
+    storage = this.owner.lookup('service:storage')
     personalSurvey = this.owner.factoryFor('component:personal-survey').create()
     sinon.spy(personalSurvey.pilasBloquesApi)
     sinon.spy(personalSurvey.pilasBloquesAnalytics)
@@ -57,7 +59,7 @@ module('Unit | Components | personal-survey', function (hooks) {
   function answerUserQuestion(id) {
     const user = personalSurvey.pilasBloquesApi.getUser()
     user.answers.push(id) //TODO: Rename
-    localStorage.setItem('PB_USER', JSON.stringify(user)) //TODO: Const
+    storage.saveUser(user)
   }
 
   function answerSessionQuestion(id) {

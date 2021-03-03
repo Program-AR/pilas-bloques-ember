@@ -5,8 +5,10 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   setupPBTest(hooks)
 
   var pbAnalytics
+  var storage
   hooks.beforeEach(function () {
     pbAnalytics = this.owner.lookup('service:pilas-bloques-analytics')
+    storage = this.owner.lookup('service:storage')
   })
 
   test('Should create new sessionId', function (assert) {
@@ -42,7 +44,7 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   })
 
   function getSession() {
-    return JSON.parse(localStorage.getItem(pbAnalytics.ANALYTICS_KEY))
+    return storage.getAnalyticsSession()
   }
 
   function changeSessionTimestampByMinutes(minutes) {
@@ -50,7 +52,7 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     const before = new Date()
     before.setMinutes(before.getMinutes() - minutes)
     session.timestamp = before
-    localStorage.setItem(pbAnalytics.ANALYTICS_KEY, JSON.stringify(session))
+    storage.saveAnalyticsSession(session)
   }
 
 })

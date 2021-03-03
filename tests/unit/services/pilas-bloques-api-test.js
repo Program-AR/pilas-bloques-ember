@@ -11,30 +11,31 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   setupPBTest(hooks)
 
   var api
-
+  var storage
   hooks.beforeEach(function () {
     api = this.owner.lookup('service:pilas-bloques-api')
+    storage = this.owner.lookup('service:storage')
   })
 
   test('On login should save user data', async function (assert) {
     await api.login({})
-    assert.deepEqual(getUser(), fakeUser)
+    assert.deepEqual(storage.getUser(), fakeUser)
   })
 
   test('On register should save user data', async function (assert) {
     await api.register({})
-    assert.deepEqual(getUser(), fakeUser)
+    assert.deepEqual(storage.getUser(), fakeUser)
   })
 
   test('On new user answer should update user data', async function (assert) {
     await api.newAnswer({})
-    assert.deepEqual(getUser(), fakeUser)
+    assert.deepEqual(storage.getUser(), fakeUser)
   })
 
   test('On logout should delete user data', function (assert) {
-    saveUser(fakeUser)
+    storage.saveUser(fakeUser)
     api.logout()
-    assert.notOk(getUser())
+    assert.notOk(storage.getUser())
   })
 
   test('On run program should create new solution id', function (assert) {
@@ -79,7 +80,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('if user is logged should set authorization header', async function (assert) {
-    saveUser(fakeUser)
+    storage.saveUser(fakeUser)
     await api.login({})
     assert.equal(fetchCallHeader().Authorization, 'Bearer TOKEN')
   })
@@ -99,13 +100,4 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
       assert.equal(err, 'ERROR')
     })
   })
-
-
-  function getUser() {
-    return JSON.parse(localStorage.getItem(api.USER_KEY))
-  }
-
-  function saveUser(data) {
-    return localStorage.setItem(api.USER_KEY, JSON.stringify(data))
-  }
 })
