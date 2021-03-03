@@ -8,6 +8,10 @@ module('Integration | Component | survey-window', function(hooks) {
   setupRenderingTest(hooks)
   setupLoggedUser(hooks)
 
+  hooks.afterEach(function () {
+    this.owner.lookup('component:personal-survey').close()
+  })
+
   test('it renders', async function(assert) {
     await render(hbs`<PersonalSurvey />`)
 

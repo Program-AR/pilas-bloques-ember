@@ -75,6 +75,7 @@ export default Component.extend({
     if (this.nextQuestion()) this.showSurveyDialog(this.nextQuestion())
   },
 
+  //TODO: Param window for testing?
   showSurveyDialog(question) {
     if (window.surveyWindow) return; // don't create other surveyWindow if it exists.
     Survey.StylesManager.applyTheme("winterstone")
@@ -93,8 +94,10 @@ export default Component.extend({
     response.timestamp = new Date()
     const question = this.nextQuestion()
     this.storageFor(question).newAnswer({ question, response })
-    window.surveyWindow = undefined //TODO: close() hide()?
+    this.close()
   },
+
+  close() { window.surveyWindow && window.surveyWindow.hide() },
 
   storageFor(uqestion) { return uqestion.askEachSession ? this.pilasBloquesAnalytics : this.pilasBloquesApi },
   nextQuestion() { return this.questions.find(question => !this.wasAnswered(question)) },
