@@ -58,7 +58,7 @@ module('Unit | Components | personal-survey', function (hooks) {
 
   function answerUserQuestion(id) {
     const user = personalSurvey.pilasBloquesApi.getUser()
-    user.answers.push(id) //TODO: Rename
+    user.answeredQuestionIds.push(id)
     storage.saveUser(user)
   }
 

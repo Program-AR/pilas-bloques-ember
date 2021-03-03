@@ -101,9 +101,9 @@ export default Component.extend({
 
   storageFor(uqestion) { return uqestion.askEachSession ? this.pilasBloquesAnalytics : this.pilasBloquesApi },
   nextQuestion() { return this.questions.find(question => !this.wasAnswered(question)) },
-  wasAnswered(question) { return this.answeredQuestionsIds().includes(question.id) },
-  answeredQuestionsIds() { return [...this.userAnswers(), ...this.sessionAnswers()] },
-  userAnswers() { return this.pilasBloquesApi.getUser().answers || [] }, //TODO: Rename to answeredQuestionsIds 
+  wasAnswered(question) { return this.answeredQuestionIds().includes(question.id) },
+  answeredQuestionIds() { return [...this.userAnswers(), ...this.sessionAnswers()] },
+  userAnswers() { return this.pilasBloquesApi.getUser().answeredQuestionIds || [] },
   sessionAnswers() {
     const { answers } = this.pilasBloquesAnalytics.getSession()
     return answers && answers.map(({ question }) => question.id) || []

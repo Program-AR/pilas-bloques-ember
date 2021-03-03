@@ -58,4 +58,4 @@ export const toastMock = Service.extend({
     show: sinon.stub()
 });
 
-export const fakeUser = { username: "TEST", token: "TOKEN", answers: [] }
+export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds: [] }
