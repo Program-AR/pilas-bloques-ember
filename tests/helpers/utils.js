@@ -1,14 +1,15 @@
+import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import { setupTest } from 'ember-qunit'
 import { fakeUser, toastMock } from './mocks'
-import sinon from 'sinon'
+import config from '../../config/environment'
+const { baseURL } = config.pbApi
 
 export function setupPBTest(hooks) {
     setupTest(hooks)
     hooks.beforeEach(function () {
         this.owner.register('service:paperToaster', toastMock)
-        fetchMock.reset()
-        fetchMock.config.overwriteRoutes = true
+        resetFetch()
         localStorage.clear()
         sinon.resetHistory()
     })    
@@ -18,6 +19,16 @@ export function setupLoggedUser(hooks) {
     hooks.beforeEach(function () {
         localStorage.setItem('PB_USER', JSON.stringify(fakeUser)) //TODO: CONST key
     })    
+}
+
+function resetFetch() {
+    fetchMock.reset()
+    fetchMock.config.overwriteRoutes = true
+    fetchMock.mock(`${baseURL}/login`, fakeUser)
+    fetchMock.mock(`${baseURL}/register`, fakeUser)
+    fetchMock.mock(`${baseURL}/answers`, fakeUser)
+    fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
+    fetchMock.mock(`begin:${baseURL}`, 200)
 }
 
 

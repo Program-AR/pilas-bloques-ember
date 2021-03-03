@@ -1,11 +1,6 @@
+import sinon from 'sinon'
 import { module, test } from 'qunit'
 import { setupLoggedUser, setupPBTest } from '../../helpers/utils'
-import config from '../../../config/environment'
-import { fakeUser } from '../../helpers/mocks'
-import fetchMock from 'fetch-mock'
-import sinon from 'sinon'
-
-const { baseURL } = config.pbApi
 
 module('Unit | Components | personal-survey', function (hooks) {
   setupPBTest(hooks)
@@ -13,7 +8,6 @@ module('Unit | Components | personal-survey', function (hooks) {
 
   let personalSurvey
   hooks.beforeEach(function () {
-    fetchMock.mock(`${baseURL}/answers`, fakeUser) //TODO: Abstraer
     personalSurvey = this.owner.factoryFor('component:personal-survey').create()
     sinon.spy(personalSurvey.pilasBloquesApi)
     sinon.spy(personalSurvey.pilasBloquesAnalytics)
@@ -42,12 +36,22 @@ module('Unit | Components | personal-survey', function (hooks) {
     await testSaveAnswer(assert, personalSurvey.pilasBloquesAnalytics)
   })
 
+  test('Should hide on complete question', async function (assert) {
+    window.surveyWindow = { hide: sinon.stub() }
+    await doResponse()
+    assert.ok(window.surveyWindow.hide.called)
+  })
+
   async function testSaveAnswer(assert, storage) {
-    await personalSurvey.saveAnswer({ text: "RESPONSE" })
+    await doResponse()
     const { question, response } = storage.newAnswer.lastCall.lastArg
     assert.equal(question.id, 1)
     assert.equal(response.text, "RESPONSE")
     assert.ok(response.timestamp)
+  }
+
+  function doResponse() {
+    return personalSurvey.saveAnswer({ text: "RESPONSE" })
   }
 
   function answerUserQuestion(id) {
