@@ -13,10 +13,6 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   var api
 
   hooks.beforeEach(function () {
-    fetchMock.mock(`${baseURL}/login`, fakeUser)
-    fetchMock.mock(`${baseURL}/register`, fakeUser)
-    fetchMock.mock(`${baseURL}/error`, { throws: 'ERROR' })
-    fetchMock.mock(`begin:${baseURL}`, 200)
     api = this.owner.lookup('service:pilas-bloques-api')
   })
 
@@ -27,6 +23,11 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
 
   test('On register should save user data', async function (assert) {
     await api.register({})
+    assert.deepEqual(getUser(), fakeUser)
+  })
+
+  test('On new user answer should update user data', async function (assert) {
+    await api.newAnswer({})
     assert.deepEqual(getUser(), fakeUser)
   })
 

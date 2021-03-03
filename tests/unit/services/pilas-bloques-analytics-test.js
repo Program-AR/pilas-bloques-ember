@@ -1,14 +1,12 @@
 import { module, test } from 'qunit'
-import { setupTest } from 'ember-qunit'
+import { setupPBTest } from '../../helpers/utils'
 
 module('Unit | Service | pilas-bloques-analytics', function (hooks) {
-  setupTest(hooks)
+  setupPBTest(hooks)
 
   var pbAnalytics
-
   hooks.beforeEach(function () {
     pbAnalytics = this.owner.lookup('service:pilas-bloques-analytics')
-    localStorage.clear()
   })
 
   test('Should create new sessionId', function (assert) {

@@ -93,8 +93,8 @@ export default Component.extend({
   saveAnswer(response) {
     response.timestamp = new Date()
     const question = this.nextQuestion()
-    this.storageFor(question).newAnswer({ question, response })
     this.close()
+    return this.storageFor(question).newAnswer({ question, response })
   },
 
   close() { window.surveyWindow && window.surveyWindow.hide() },
