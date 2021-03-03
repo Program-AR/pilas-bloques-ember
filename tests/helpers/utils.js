@@ -30,8 +30,8 @@ export function resetFetch() {
     mockApi(`register`, fakeUser)
     mockApi(`credentials`, fakeUser)
     mockApi(`answers`, fakeUser)
+    mockApi(`solutions`, 200)
     mockApi(`error`, { throws: 'ERROR' })
-    mockApi(``, 200)
 }
 
 export function mockApi(path, response) {

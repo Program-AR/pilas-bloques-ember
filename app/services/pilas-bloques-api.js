@@ -53,7 +53,7 @@ export default Service.extend({
 
   async changePassword(newCredentials) {
     return this._send('PUT', 'credentials', newCredentials)
-      .then(session => this._saveUser(session))
+      .then(user => this.storage.saveUser(user))
   },
 
   async userExists(username) {

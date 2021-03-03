@@ -94,7 +94,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   async function authTest(description, action) {
     test(description, async function (assert) {
       await action()
-      assert.deepEqual(getUser(), fakeUser)
+      assert.deepEqual(storage.getUser(), fakeUser)
     })  
   }
 })
