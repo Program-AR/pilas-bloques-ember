@@ -7,7 +7,7 @@ const log = () => { } // console.log
 const logger = topic => message => log(topic, message)
 
 export default Service.extend({
-  USER_KEY: 'PB_USER',
+  storage: service(),
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
   loading: { },
@@ -38,7 +38,7 @@ export default Service.extend({
   // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
-      .then(session => this._saveUser(session))
+      .then(user => this.storage.saveUser(user))
   },
 
   async register(data) {
@@ -48,30 +48,28 @@ export default Service.extend({
       avatarURL
     }
     return this._send('POST', 'register', { ...data, profile })
-      .then(session => this._saveUser(session))
+      .then(user => this.storage.saveUser(user))
   },
 
   async changePassword(newCredentials) {
     return this._send('PUT', 'credentials', newCredentials)
-      .then(session => this._saveUser(session))
+      .then(user => this.storage.saveUser(user))
   },
 
   async userExists(username) {
     return this._send('GET', `users/exists?username=${username}`)
   },
 
+  async newAnswer(data) {
+    return this._send('POST', `answers`, data)
+      .then(user => this.storage.saveUser(user))
+  },
+
   logout() {
-    return this._saveUser(null)
+    return this.storage.saveUser(null)
   },
 
-  getUser() {
-    return JSON.parse(localStorage.getItem(this.USER_KEY))
-  },
-
-  _saveUser(user) {
-    localStorage.setItem(this.USER_KEY, JSON.stringify(user || null))
-  },
-
+  getUser() { return this.storage.getUser() },
 
 
   async _send(method, resource, body, critical = true) {

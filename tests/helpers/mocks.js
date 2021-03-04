@@ -57,3 +57,5 @@ export const blocklyWorkspaceMock = function () {
 export const toastMock = Service.extend({
     show: sinon.stub()
 });
+
+export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds: [] }

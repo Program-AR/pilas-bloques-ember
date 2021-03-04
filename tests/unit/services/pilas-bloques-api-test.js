@@ -3,6 +3,7 @@ import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
 import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest, mockApi } from '../../helpers/utils'
 import config from '../../../config/environment'
+import { fakeUser } from '../../helpers/mocks'
 
 const { baseURL } = config.pbApi
 
@@ -10,28 +11,21 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   setupPBTest(hooks)
 
   var api
-  const fakeUser = { username: "TEST", token: "TOKEN" }
-
+  var storage
   hooks.beforeEach(function () {
-    mockApi(`login`, fakeUser)
-    mockApi(`register`, fakeUser)
-    mockApi(`credentials`, fakeUser)
-    //TODO: Move to setup?
-    mockApi(`error`, { throws: 'ERROR' })
-    mockApi('', 200)
     api = this.owner.lookup('service:pilas-bloques-api')
+    storage = this.owner.lookup('service:storage')
   })
 
   authTest('On login should save user data', () => api.login({}) )
-
   authTest('On register should save user data', () => api.register({}) )
-
   authTest('On change password should save user data', () => api.changePassword({}) )
+  authTest('On new user answer should update user data', () => api.newAnswer({}) )
 
   test('On logout should delete user data', function (assert) {
-    saveUser(fakeUser)
+    storage.saveUser(fakeUser)
     api.logout()
-    assert.notOk(getUser())
+    assert.notOk(storage.getUser())
   })
 
   test('On run program should create new solution id', function (assert) {
@@ -76,7 +70,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('if user is logged should set authorization header', async function (assert) {
-    saveUser(fakeUser)
+    storage.saveUser(fakeUser)
     await api.login({})
     assert.equal(fetchCallHeader().Authorization, 'Bearer TOKEN')
   })
@@ -97,19 +91,10 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     })
   })
 
-
-  function getUser() {
-    return JSON.parse(localStorage.getItem(api.USER_KEY))
-  }
-
-  function saveUser(data) {
-    return localStorage.setItem(api.USER_KEY, JSON.stringify(data))
-  }
-
   async function authTest(description, action) {
     test(description, async function (assert) {
       await action()
-      assert.deepEqual(getUser(), fakeUser)
+      assert.deepEqual(storage.getUser(), fakeUser)
     })  
   }
 })
