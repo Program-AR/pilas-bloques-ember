@@ -7,10 +7,7 @@
 		<DescripcionAcercaDe />
 		<!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver Makefile de ese proyecto -->
 
-		<p>Actualmente estás usando la versión <code class="show-version">{{app-version versionOnly=true}}</code>
-			<Link @href={{concat 'https://github.com/Program-AR/pilas-bloques/commit/' (app-version shaOnly=true) }}>
-			{{app-version
-			shaOnly=true}}</Link>
+		<p>Actualmente estás usando la versión {{version}}
 			{{#if hayActualizacion}}
 			(y se puede actualizar a la versión {{versionMasReciente}})
 			{{/if}}

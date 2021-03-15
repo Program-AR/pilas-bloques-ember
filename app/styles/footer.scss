@@ -25,13 +25,12 @@
 
 .footer .app-version {
     font-size: 13px;
-    padding-left: 25px;
     margin-bottom: 0px;
     margin-top: 10px;
 }
 
-.footer .app-version .version-number {
-    font-weight: bold !important;
+.footer .app-version > code {
+    padding-left: 25px;
 }
 
 .program-ar-logo {
