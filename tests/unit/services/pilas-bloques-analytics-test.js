@@ -1,8 +1,8 @@
 import { module, test } from 'qunit'
-import { setupPBTest } from '../../helpers/utils'
+import { setupPBUnitTest } from '../../helpers/utils'
 
 module('Unit | Service | pilas-bloques-analytics', function (hooks) {
-  setupPBTest(hooks)
+  setupPBUnitTest(hooks)
 
   var pbAnalytics
   var storage

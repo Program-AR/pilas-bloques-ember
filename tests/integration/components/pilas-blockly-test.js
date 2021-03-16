@@ -1,22 +1,12 @@
 import { module, test } from 'qunit'
-import { setupRenderingTest } from 'ember-qunit'
 import { render } from '@ember/test-helpers'
-import Component from '@ember/component'
 import hbs from 'htmlbars-inline-precompile'
+import { mockApi, setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
 import { actividadMock, createActividadMock, pilasMock } from '../../helpers/mocks'
-import { mockApi, resetFetch, setupLoggedUser } from '../../helpers/utils'
 
 module('Integration | Component | pilas-blockly', function (hooks) {
-  setupRenderingTest(hooks)
-  //TODO: setupPBTest
-  hooks.beforeEach(function () {
-    resetFetch()
-    localStorage.clear()
-  })
+  setupPBIntegrationTest(hooks)
   setupLoggedUser(hooks)
-  hooks.beforeEach(function () {
-    this.owner.register('component:personal-survey', Component.extend({}))
-  })
 
   const code = `PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+CiAgPHZhcmlhYmxlcz48L3ZhcmlhYmxlcz4KICA8YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBkZWxldGFibGU9ImZhbHNlIiBtb3ZhYmxlPSJmYWxzZSIgZWRpdGFibGU9ImZhbHNlIiB4PSIyNjYiIHk9IjE1Ij4KICAgIDxzdGF0ZW1lbnQgbmFtZT0icHJvZ3JhbSI+CiAgICAgIDxzaGFkb3cgdHlwZT0icmVxdWlyZWRfc3RhdGVtZW50Ij48L3NoYWRvdz4KICAgIDwvc3RhdGVtZW50PgogIDwvYmxvY2s+CiAgPGJsb2NrIHR5cGU9IkNvbWVyQ2h1cnJhc2NvIiBkaXNhYmxlZD0idHJ1ZSIgeD0iNTg5IiB5PSI4NyI+PC9ibG9jaz4KPC94bWw+`
 
