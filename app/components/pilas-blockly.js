@@ -90,13 +90,13 @@ export default Component.extend({
         this.modelActividad.set('estiloToolbox', 'desplegable');
       }
 
-      const savedSolution = await this.pilasBloquesApi.savedSolution(this.modelActividad.id)
+      const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
+
       // Si el código está serializado en la URL, lo intenta colocar en el
       // workspace.
       if (this.codigo) {
         let codigoSerializado = this.codigo;
         let codigoXML = atob(codigoSerializado);
-
         this.set('initial_workspace', codigoXML);
       } else if (savedSolution) { // Si ya envió una solución anteriormente
         this.set('initial_workspace', savedSolution.program);
@@ -105,7 +105,6 @@ export default Component.extend({
       } else { //Sino, el código por defecto es el empezar a ejecutar
         this.set('initial_workspace', this._xmlBloqueEmpezarAEjecutar());
       }
-
     });
 
     if (this.persistirSolucionEnURL) {

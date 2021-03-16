@@ -12,7 +12,7 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    this.updateSession() //TODO: Computed?
+    this.updateSession()
   },
 
   updateSession() {

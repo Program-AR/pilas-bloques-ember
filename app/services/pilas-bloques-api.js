@@ -18,7 +18,8 @@ export default Service.extend({
     this._send('POST', 'challenges', { challengeId }, false).catch(logger('openChallenge'))
   },
 
-  savedSolution(challengeId) {
+  lastSolution(challengeId) {
+    if (!this.getUser()) return null
     return this._send('GET', `challenges/${challengeId}/solution`, undefined, false).catch(() => null)
   },
 
@@ -82,7 +83,7 @@ export default Service.extend({
       return; 
     }
     const user = this.getUser()
-    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) }
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`

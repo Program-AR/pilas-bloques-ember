@@ -30,12 +30,13 @@ export function resetFetch() {
     mockApi(`register`, fakeUser)
     mockApi(`credentials`, fakeUser)
     mockApi(`answers`, fakeUser)
+    mockApi(`challenges`, 200)
     mockApi(`solutions`, 200)
     mockApi(`error`, { throws: 'ERROR' })
 }
 
-export function mockApi(path, response) {
-    fetchMock.mock(`begin:${baseURL}/${path}`, response)
+export function mockApi(path, response, options) {
+    fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
 }
 
 
