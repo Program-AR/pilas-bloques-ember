@@ -67,7 +67,9 @@ module.exports = function (environment) {
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
     ENV.googleAnalyticsEnabled = true
-    //The baseURL is filled in production and staging during deploy
+    // The baseURL is replaced in production and staging during deploy
+    // However, we need this here because it is used when packaging the app.
+    ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
   }
 
   return ENV
