@@ -63,10 +63,11 @@ module.exports = function (environment) {
     ENV.pbApi.baseURL = 'http://testing-api'
   }
   
+  // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.pbApi.baseURL = 'https://api.pilasbloques.program.ar'
     ENV.googleAnalyticsEnabled = true
+    //The baseURL is filled in production and staging during deploy
   }
 
   return ENV
