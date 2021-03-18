@@ -1,29 +1,25 @@
 {{!-- ¡WARNING! this component is used also in others pilas-engine-bloques-website project. --}}
 
-<Header/>
+<Header />
 {{outlet}}
 <div class='contenido-principal'>
 	<div class='contenedor-acercade'>
-		<DescripcionAcercaDe /> <!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver Makefile de ese proyecto -->
+		<DescripcionAcercaDe />
+		<!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver scripts de construcción de ese proyecto -->
 
-		<p>Actualmente estás usando la versión <code class="show-version">{{app-version}}</code>
+		<p>Actualmente estás usando la versión {{version}}
 			{{#if hayActualizacion}}
-			 	(y se puede actualizar a la versión {{versionMasReciente}})
+			(y se puede actualizar a la versión {{versionMasReciente}})
 			{{/if}}
-			</p>
+		</p>
 		<p>
-		
-		<Button 
-			class='visit-website'
-            @isRaised={{true}}
-            @element-id={{"visit-website"}}
-            @tooltip={{"visita la web del proyecto"}}
-            @onClick={{action "visitarWeb"}}
-        >
-			{{fa-icon "globe"}} Visitar la web del proyecto
-		</Button>
-		
-		{{pilas-update}}
+
+			<Button class='visit-website' @isRaised={{true}} @element-id={{"visit-website"}} @tooltip={{"visita la web del
+				proyecto"}} @onClick={{action "visitarWeb" }}>
+				{{fa-icon "globe"}} Visitar la web del proyecto
+			</Button>
+
+			{{pilas-update}}
 		</p>
 	</div>
 </div>
