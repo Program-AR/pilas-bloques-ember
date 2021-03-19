@@ -22,10 +22,12 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   authTest('On change password should save user data', () => api.changePassword({}) )
   authTest('On new user answer should update user data', () => api.newAnswer({}) )
 
-  test('On logout should delete user data', function (assert) {
+  test('On logout should delete user & session data', function (assert) {
     storage.saveUser(fakeUser)
+    storage.saveAnalyticsSession(fakeUser)
     api.logout()
     assert.notOk(storage.getUser())
+    assert.notOk(storage.getAnalyticsSession())
   })
 
   test('On run program should create new solution id', function (assert) {
