@@ -485,6 +485,20 @@ md-card {
   background-color: inherit;
 }
 
+md-toast {
+  position: fixed;
+  border-radius: 10rem;
+}
+
+md-toast .md-toast-content {
+  background-color: #f9edbe;
+  border: 1px solid #f0c36d;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  & > * {
+    color: black;
+  }
+} 
+
 .md-stepper-indicator-wrapper {
   background-color: inherit;
 }
