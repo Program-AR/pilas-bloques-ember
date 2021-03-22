@@ -1,3 +1,8 @@
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+@import 'ember-paper';
+@import 'ember-paper-stepper';
+@import "acercade.scss";
 @import "breadcrumb.scss";
 @import "bug-report-modal.scss";
 @import "button.scss";
@@ -7,10 +12,6 @@
 @import 'challenges-book.scss';
 @import "congratulations-modal.scss";
 @import "disclaimer-principal.scss";
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-@import 'ember-paper';
-@import 'ember-paper-stepper';
 @import "fireworks.scss";
 @import "font-awesome.scss";
 @import "footer.scss";
@@ -86,12 +87,6 @@ input, textarea {
 
 p {
   @extend .application-font;
-}
-
-.visit-website .md-button, .visit-website .md-button:not([disabled]):hover {
-  background-color:#449d44;
-  border-color:    #398439;
-  color: #f8f8f8;
 }
 
 .nw-zoom {
@@ -489,6 +484,20 @@ md-menu-content > md-menu-item {
 md-card {
   background-color: inherit;
 }
+
+md-toast {
+  position: fixed;
+  border-radius: 10rem;
+}
+
+md-toast .md-toast-content {
+  background-color: #f9edbe;
+  border: 1px solid #f0c36d;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  & > * {
+    color: black;
+  }
+} 
 
 .md-stepper-indicator-wrapper {
   background-color: inherit;

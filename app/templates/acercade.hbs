@@ -14,10 +14,9 @@
 		</p>
 		<p>
 
-			<Button class='visit-website' @isRaised={{true}} @element-id={{"visit-website"}} @tooltip={{"visita la web del
-				proyecto"}} @onClick={{action "visitarWeb" }}>
+			<Link @href="https://pilasbloques.program.ar/" class='visit-website-link' @openOnNewTab={{true}} @tooltip={{"visita la web del proyecto"}}>
 				{{fa-icon "globe"}} Visitar la web del proyecto
-			</Button>
+			</Link>
 
 			{{pilas-update}}
 		</p>

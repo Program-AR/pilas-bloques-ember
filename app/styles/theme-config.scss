@@ -21,3 +21,7 @@ span {
 .md-button {
   color: var(--theme-font-color);
 }
+
+md-icon[md-font-icon] {
+  color: var(--theme-font-color);
+}

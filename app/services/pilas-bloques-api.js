@@ -66,7 +66,8 @@ export default Service.extend({
   },
 
   logout() {
-    return this.storage.saveUser(null)
+    this.pilasBloquesAnalytics.logout()
+    this.storage.saveUser(null)
   },
 
   getUser() { return this.storage.getUser() },

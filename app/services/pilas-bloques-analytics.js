@@ -43,5 +43,9 @@ export default Service.extend({
     return this._isOld(session) ? this._newSession() : session
   },
 
+  logout() {
+    this.storage.saveAnalyticsSession(null)
+  },
+
   _isOld({ timestamp }) { return (new Date() - new Date(timestamp)) / 1000 / 60 > sessionExpire }, // Minutes
 })
