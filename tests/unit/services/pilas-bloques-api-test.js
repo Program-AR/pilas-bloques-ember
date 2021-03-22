@@ -1,14 +1,14 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBTest, mockApi } from '../../helpers/utils'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi } from '../../helpers/utils'
 import config from '../../../config/environment'
 import { fakeUser } from '../../helpers/mocks'
 
 const { baseURL } = config.pbApi
 
 module('Unit | Service | pilas-bloques-api', function (hooks) {
-  setupPBTest(hooks)
+  setupPBUnitTest(hooks)
 
   var api
   var storage

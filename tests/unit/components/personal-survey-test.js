@@ -1,9 +1,9 @@
 import sinon from 'sinon'
 import { module, test } from 'qunit'
-import { setupLoggedUser, setupPBTest } from '../../helpers/utils'
+import { setupLoggedUser, setupPBUnitTest } from '../../helpers/utils'
 
 module('Unit | Components | personal-survey', function (hooks) {
-  setupPBTest(hooks)
+  setupPBUnitTest(hooks)
   setupLoggedUser(hooks)
 
   let personalSurvey

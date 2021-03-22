@@ -1,25 +1,49 @@
 import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
-import { setupTest } from 'ember-qunit'
+import Component from '@ember/component'
+import { setupRenderingTest, setupTest } from 'ember-qunit'
 import { fakeUser, toastMock } from './mocks'
 import config from '../../config/environment'
 const { baseURL } = config.pbApi
 
 ////// SETUP //////
 
-export function setupPBTest(hooks) {
+export function setupPBUnitTest(hooks) {
     setupTest(hooks)
+    setupClear(hooks)
+    setupToasterMock(hooks)
+}
+
+export function setupPBIntegrationTest(hooks) {
+    setupRenderingTest(hooks)
+    setupClear(hooks)
+    setupEmberMocks(hooks)
+}
+
+export function setupClear(hooks) {
     hooks.beforeEach(function () {
-        this.owner.register('service:paperToaster', toastMock)
         resetFetch()
         localStorage.clear()
         sinon.resetHistory()
-    })    
+    })
 }
 
 export function setupLoggedUser(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:storage').saveUser(fakeUser)
+    })    
+}
+
+export function setupEmberMocks(hooks) {
+    setupToasterMock(hooks)
+    hooks.beforeEach(function () {
+        this.owner.register('component:personal-survey', Component.extend({}))
+    })    
+}
+
+export function setupToasterMock(hooks) {
+    hooks.beforeEach(function () {
+        this.owner.register('service:paperToaster', toastMock)
     })    
 }
 
@@ -30,12 +54,13 @@ export function resetFetch() {
     mockApi(`register`, fakeUser)
     mockApi(`credentials`, fakeUser)
     mockApi(`answers`, fakeUser)
+    mockApi(`challenges`, 200)
     mockApi(`solutions`, 200)
     mockApi(`error`, { throws: 'ERROR' })
 }
 
-export function mockApi(path, response) {
-    fetchMock.mock(`begin:${baseURL}/${path}`, response)
+export function mockApi(path, response, options) {
+    fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
 }
 
 

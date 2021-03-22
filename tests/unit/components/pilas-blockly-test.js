@@ -80,6 +80,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
 
+  // PROGRAM EXECUTION
   let filledProgram =
     `<block type="al_empezar_a_ejecutar">
       <statement name="program">
