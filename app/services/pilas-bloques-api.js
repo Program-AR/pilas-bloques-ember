@@ -10,7 +10,7 @@ export default Service.extend({
   storage: service(),
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
-  loading: { },
+  loading: {},
   connected: true,
 
   // SOLUTIONS
@@ -23,13 +23,14 @@ export default Service.extend({
     return this._send('GET', `challenges/${challengeId}/solution`, undefined, false).catch(() => null)
   },
 
-  runProgram(challengeId, program, staticAnalysis) {
+  runProgram(challengeId, program, staticAnalysis, turboModeOn) {
     const solutionId = uuidv4()
     const data = {
       challengeId,
       solutionId,
       program,
       staticAnalysis,
+      turboModeOn,
     }
     this._send('POST', 'solutions', data, false).catch(logger('runProgram'))
 
@@ -79,16 +80,16 @@ export default Service.extend({
 
 
   async _send(method, resource, body, critical = true) {
-    if (!this.connected) { 
+    if (!this.connected) {
       if (critical) this._alertServerError()
-      return; 
+      return;
     }
     const user = this.getUser()
-    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName) } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
+    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName), body.timestamp = new Date() } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
-    const headers = { 
+    const headers = {
       'Content-Type': 'application/json',
       'Authorization': user ? `Bearer ${user.token}` : null
     }
@@ -106,7 +107,7 @@ export default Service.extend({
       })
       .then(res => {
         if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
-        else { return res.json().catch(() => { /** if not body present */}) }
+        else { return res.json().catch(() => { /** if not body present */ }) }
       })
       .finally(() => this.set(flag, false))
   },

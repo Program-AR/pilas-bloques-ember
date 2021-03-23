@@ -17,10 +17,10 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     storage = this.owner.lookup('service:storage')
   })
 
-  authTest('On login should save user data', () => api.login({}) )
-  authTest('On register should save user data', () => api.register({}) )
-  authTest('On change password should save user data', () => api.changePassword({}) )
-  authTest('On new user answer should update user data', () => api.newAnswer({}) )
+  authTest('On login should save user data', () => api.login({}))
+  authTest('On register should save user data', () => api.register({}))
+  authTest('On change password should save user data', () => api.changePassword({}))
+  authTest('On new user answer should update user data', () => api.newAnswer({}))
 
   test('On logout should delete user & session data', function (assert) {
     storage.saveUser(fakeUser)
@@ -53,7 +53,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     fetchMock.mock(`begin:${baseURL}`, { throws: 'ERROR' })
     const done = assert.async()
     api.openChallenge(1)
-    api.runProgram(1, "program", {})
+    api.runProgram(1, "program", {}, false)
     api.executionFinished(1010, {})
     assert.notOk(api.paperToaster.show.called)
     later(done)
@@ -97,6 +97,6 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     test(description, async function (assert) {
       await action()
       assert.deepEqual(storage.getUser(), fakeUser)
-    })  
+    })
   }
 })

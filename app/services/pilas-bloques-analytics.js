@@ -16,7 +16,6 @@ export default Service.extend({
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
-      timestamp: new Date(),
     }
   },
 
