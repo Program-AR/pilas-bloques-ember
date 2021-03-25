@@ -85,7 +85,10 @@ export default Service.extend({
       return;
     }
     const user = this.getUser()
-    if (body) { body.session = this.pilasBloquesAnalytics.buildSession(user && user.nickName), body.timestamp = new Date() } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
+    if (body) {
+      body.context = this.pilasBloquesAnalytics.context(user && user.nickName)
+      body.timestamp = new Date()
+    } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`

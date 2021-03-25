@@ -17,9 +17,9 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
 
   test('Should save session', function (assert) {
     pbAnalytics.getSession()
-    const { id, timestamp, answers } = getSession()
+    const { id, firstInteraction, answers } = getSession()
     assert.ok(id)
-    assert.ok(timestamp)
+    assert.ok(firstInteraction)
     assert.ok(answers)
   })
 
@@ -31,14 +31,14 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
 
   test('Should keep the session for a while', function (assert) {
     const firstSessionId = pbAnalytics.getSession().id
-    changeSessionTimestampByMinutes(1)
+    changeSessionFirstInteractionByMinutes(1)
     const currentSessionId = pbAnalytics.getSession().id
     assert.equal(firstSessionId, currentSessionId)
   })
 
   test('Should change the session after a long time', function (assert) {
     const firstSessionId = pbAnalytics.getSession().id
-    changeSessionTimestampByMinutes(31)
+    changeSessionFirstInteractionByMinutes(31)
     const currentSessionId = pbAnalytics.getSession().id
     assert.notEqual(firstSessionId, currentSessionId)
   })
@@ -47,11 +47,11 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     return storage.getAnalyticsSession()
   }
 
-  function changeSessionTimestampByMinutes(minutes) {
+  function changeSessionFirstInteractionByMinutes(minutes) {
     const session = getSession()
     const before = new Date()
     before.setMinutes(before.getMinutes() - minutes)
-    session.timestamp = before
+    session.firstInteraction = before
     storage.saveAnalyticsSession(session)
   }
 
