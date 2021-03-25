@@ -4,22 +4,15 @@ import config from "../config/environment"
 const { sessionExpire } = config.pbAnalytics
 
 export default Service.extend({
-  ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   platform: service(),
-
-  checkSessionId() {
-    let session = JSON.parse(localStorage.getItem(this.ANALYTICS_KEY))
-    const isOld = () => (new Date() - new Date(session.timestamp)) / 1000 / 60 > sessionExpire // Minutes
-    if (!session || isOld()) return this._updateSession().id
-    return session.id
-  },
+  storage: service(),
 
   buildSession(userId) {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
-    const sessionId = this.checkSessionId()
+    const session = this.getSession()
     return {
-      sessionId,
+      ...session,
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
@@ -27,12 +20,32 @@ export default Service.extend({
     }
   },
 
-  _updateSession() {
+  newAnswer(data) {
+    const session = this.getSession()
+    const answers = session.answers || []
+    answers.push(data)
+    this.storage.saveAnalyticsSession({ ...session, answers })
+  },
+
+  _newSession() {
     const newSession = {
       id: uuidv4(),
-      timestamp: new Date()
+      timestamp: new Date(),
+      answers: []
     }
-    localStorage.setItem(this.ANALYTICS_KEY, JSON.stringify(newSession))
+    this.storage.saveAnalyticsSession(newSession)
     return newSession
   },
+
+  getSession() {
+    const session = this.storage.getAnalyticsSession()
+    if (!session) return this._newSession()
+    return this._isOld(session) ? this._newSession() : session
+  },
+
+  logout() {
+    this.storage.saveAnalyticsSession(null)
+  },
+
+  _isOld({ timestamp }) { return (new Date() - new Date(timestamp)) / 1000 / 60 > sessionExpire }, // Minutes
 })

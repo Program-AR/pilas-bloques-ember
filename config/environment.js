@@ -53,7 +53,7 @@ module.exports = function (environment) {
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'
-    ENV.APP.autoboot = false // <------ false here (?)
+    ENV.APP.autoboot = false // ember-qunit needs it to be false.
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false
@@ -63,10 +63,13 @@ module.exports = function (environment) {
     ENV.pbApi.baseURL = 'http://testing-api'
   }
   
+  // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.pbApi.baseURL = 'http://api.pilasbloques'
     ENV.googleAnalyticsEnabled = true
+    // The baseURL is replaced in production and staging during deploy
+    // However, we need this here because it is used when packaging the app.
+    ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
   }
 
   return ENV

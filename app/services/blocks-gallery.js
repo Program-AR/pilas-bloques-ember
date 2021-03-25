@@ -522,6 +522,7 @@ export default Service.extend({
 
     this.crearBloqueAccion('Escapar', {
       descripcion: 'Escapar',
+      icono: 'icono.escapar.png',
       comportamiento: 'Escapar',
       argumentos: `{
         receptor: "nave",
@@ -563,6 +564,7 @@ export default Service.extend({
 
     this.crearBloqueAccion('Depositar', {
       descripcion: 'Poner en la nave',
+      icono: 'icono.PonerEnNave.png',
       comportamiento: 'Soltar',
       argumentos: `{
         idTransicion: "depositar",

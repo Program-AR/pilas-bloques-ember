@@ -1,9 +1,9 @@
 import { module, test } from 'qunit'
-import { assertAsync, mockApi, setupPBTest } from '../../helpers/utils'
+import { assertAsync, mockApi, setupPBUnitTest } from '../../helpers/utils'
 import sinon from 'sinon'
 
 module('Unit | Controller | password-recovery', function(hooks) {
-  setupPBTest(hooks)
+  setupPBUnitTest(hooks)
 
   hooks.beforeEach(function () {
     this.ctrl = this.owner.lookup('controller:password-recovery')

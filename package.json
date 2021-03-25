@@ -59,6 +59,7 @@
     "clientjs": "^0.1.11",
     "pilas-bloques-exercises": "1.2.2",
     "proceds-blockly": "^1.0.0",
+    "survey-knockout": "^1.8.0",
     "uuid": "^8.3.0"
   },
   "devDependencies": {
@@ -68,7 +69,7 @@
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^4.2.0",
     "devtron": "^1.4.0",
-    "electron": "9.2.1",
+    "electron": "9.4.0",
     "electron-packager": "15.1.0",
     "electron-rebuild": "2.0.0",
     "ember-ajax": "^5.0.0",
