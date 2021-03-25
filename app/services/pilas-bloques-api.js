@@ -22,13 +22,14 @@ export default Service.extend({
     if (!this.getUser()) return null
     return this._send('GET', `challenges/${challengeId}/solution`, undefined, false).catch(() => null)
   },
-
-  runProgram(challengeId, program, staticAnalysis) {
+  
+  runProgram(challengeId, program, ast, staticAnalysis) {
     const solutionId = uuidv4()
     const data = {
       challengeId,
       solutionId,
       program,
+      ast,
       staticAnalysis,
     }
     this._send('POST', 'solutions', data, false).catch(logger('runProgram'))

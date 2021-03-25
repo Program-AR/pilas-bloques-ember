@@ -78,7 +78,7 @@ export function findBlockByTypeIn(rootBlock, type) {
 
 ////// ASSERT //////
 
-export function assertAsync(assert, fn, ms = 0) {
+export function assertAsync(assert, fn, ms = 0) { //TODO: Curry
     let done = assert.async(1)
     setTimeout(function () {
         fn(); done()

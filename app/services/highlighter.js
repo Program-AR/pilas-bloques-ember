@@ -1,3 +1,5 @@
+
+import { isFlying, isProcedureCall } from './block-utils'
 import Service from '@ember/service';
 
 /// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
@@ -45,25 +47,17 @@ export default Service.extend({
     },
 
     _ignore(block) {
-        return this._isModuleDefinition(block);
+        return isFlying(block);
     },
 
     _shouldRemoveLastBlock() {
         return this._lastBlock() &&
             this._isEndOfModule(this._lastBlock()) &&
-            !this._isProcedureCall(this._lastBlock());
+            !isProcedureCall(this._lastBlock());
     },
 
     _isEndOfModule(block) {
         return !block.getNextBlock();
-    },
-
-    _isModuleDefinition(block) {
-        return !block.getParent();
-    },
-
-    _isProcedureCall(block) {
-        return !!block.defType_;
     },
 
     _updateHighlight() {
