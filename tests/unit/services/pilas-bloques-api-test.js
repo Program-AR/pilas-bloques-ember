@@ -66,9 +66,9 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     assert.notOk(api.loading.login)
   })
 
-  test('should add session to body', async function (assert) {
+  test('should add context to body', async function (assert) {
     await api.login({})
-    assert.ok(fetchCallBody().session)
+    assert.ok(fetchCallBody().context)
   })
 
   test('if user is logged should set authorization header', async function (assert) {

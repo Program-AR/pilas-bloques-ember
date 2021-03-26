@@ -370,7 +370,7 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.pilasMulang.parseAll(Blockly.mainWorkspace), this.staticAnalysis(), this.pilas.modoTurboEstaActivado())
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.pilasMulang.parseAll(Blockly.mainWorkspace), this.pilas.modoTurboEstaActivado(), this.staticAnalysis())
   },
 
   executionFinishedEvent(solutionId, executionResult) {

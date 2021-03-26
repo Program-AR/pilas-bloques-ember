@@ -30,8 +30,8 @@ export default Service.extend({
       solutionId,
       program,
       ast,
-      staticAnalysis,
       turboModeOn,
+      staticAnalysis,
     }
     this._send('POST', 'solutions', data, false).catch(logger('runProgram'))
 
