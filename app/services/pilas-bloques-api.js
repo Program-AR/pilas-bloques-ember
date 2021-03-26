@@ -23,12 +23,13 @@ export default Service.extend({
     return this._send('GET', `challenges/${challengeId}/solution`, undefined, false).catch(() => null)
   },
 
-  runProgram(challengeId, program, staticAnalysis, turboModeOn) {
+  runProgram(challengeId, program, ast, staticAnalysis, turboModeOn) {
     const solutionId = uuidv4()
     const data = {
       challengeId,
       solutionId,
       program,
+      ast,
       staticAnalysis,
       turboModeOn,
     }

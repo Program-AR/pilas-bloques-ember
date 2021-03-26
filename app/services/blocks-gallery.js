@@ -1,4 +1,5 @@
-import Service, { inject as service } from '@ember/service';
+import Service, { inject as service } from '@ember/service'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
 
 export default Service.extend({
   blockly: service(),
@@ -8,6 +9,7 @@ export default Service.extend({
     Blockly.textToBlock = this._textToBlock;
     Blockly.isProcedure = this._isProcedure;
     Blockly.shouldExecute = this._shouldExecute.bind(this);
+    Blockly.aliases = this._aliases;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
     //END TODO
     this._generarLenguaje();
@@ -34,6 +36,10 @@ export default Service.extend({
 
   _shouldExecute(block) {
     return block.allInputsFilled(false) || this._isEmptyProcedure(block)
+  },
+  
+  _aliases(type) {
+    return Blockly.Blocks[type].aliases || []
   },
 
   _isProcedure(type) {
@@ -105,7 +111,7 @@ export default Service.extend({
   },
 
   areAliases(alias, type) {
-    return Blockly.Blocks[type].aliases.includes(alias);
+    return Blockly.aliases(type).includes(alias);
   },
 
   /*
@@ -1388,26 +1394,6 @@ export default Service.extend({
       requiredAllInputs(this) // Input fields are added after instantiation 
     };
 
-    function isInsideProcedureDef(paramBlock) {
-      return paramBlock.getRootBlock().id === paramBlock.$parent;
-    }
-
-    function hasParam(procedureBlock, paramBlock) {
-      return getParams(procedureBlock).includes(paramBlock.getFieldValue('VAR'))
-    }
-
-    function isFlying(block) {
-      return block.getRootBlock() === block;
-    }
-
-    function getName(procedureBlock) {
-      return procedureBlock.getProcedureDef()[0];
-    }
-
-    function getParams(procedureBlock) {
-      return procedureBlock.getProcedureDef()[1]
-    }
-
     Blockly.Blocks.variables_get = {
       init: function () {
         this.jsonInit({
@@ -1687,27 +1673,4 @@ export default Service.extend({
     this.crearBloqueAlias('saltar1', 'SaltarHablando');
   }
 
-});
-
-function shouldAddRequiredShadow(connection) {
-  return connection.getShadowDom() == null // Should have not a shadow block
-    && [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
-}
-
-// Agrega un required shadow a todos los input que sean para encastrar otros bloques
-function requiredAllInputs(block) {
-  block.inputList
-    .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
-    .forEach(input => requiredInput(block, input.name))
-}
-
-function requiredInput(block, inputName) {
-  let connection = block.getInput(inputName).connection
-  let shadowType = (connection.type == Blockly.INPUT_VALUE)
-    ? "required_value"
-    : "required_statement"
-  var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
-  connection.setShadowDom(shadowValue)
-  if (!connection.targetConnection)
-    connection.respawnShadow_()
-}
+})
