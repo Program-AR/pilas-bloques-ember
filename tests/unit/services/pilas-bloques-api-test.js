@@ -53,7 +53,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     fetchMock.mock(`begin:${baseURL}`, { throws: 'ERROR' })
     const done = assert.async()
     api.openChallenge(1)
-    api.runProgram(1, "program", {}, false)
+    api.runProgram(1, "program", {})
     api.executionFinished(1010, {})
     assert.notOk(api.paperToaster.show.called)
     later(done)
@@ -68,7 +68,18 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
 
   test('should add context to body', async function (assert) {
     await api.login({})
-    assert.ok(fetchCallBody().context)
+    const context = fetchCallBody().context
+    assert.ok(context.answers)
+    assert.ok(context.browserId)
+    assert.ok(context.firstInteraction)
+    assert.ok(context.id)
+    assert.ok(context.online)
+    assert.ok(context.userId)
+  })
+
+  test('should add timestamp to body', async function (assert) {
+    await api.login({})
+    assert.ok(fetchCallBody().timestamp)
   })
 
   test('if user is logged should set authorization header', async function (assert) {

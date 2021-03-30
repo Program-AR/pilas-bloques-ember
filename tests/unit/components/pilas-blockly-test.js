@@ -207,5 +207,14 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
   })
 
+  test('Se envia la metadata en cada aviso a la api', function (assert) {
+    this.ctrl.send('ejecutar')
+    const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    assert.ok(metadata.ast)
+    assert.ok(metadata.program || metadata.program.length === 0)
+    assert.ok(metadata.staticAnalysis)
+    assert.ok(metadata.turboModeOn)
+  })
+
 })
 
