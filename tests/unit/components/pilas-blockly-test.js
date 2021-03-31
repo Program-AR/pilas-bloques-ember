@@ -208,7 +208,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
   })
 
-  test('Se envia la metadata en cada aviso a la api', function (assert) {
+  test('Envia metadata a la api al ejecutar', function (assert) {
     this.ctrl.send('ejecutar')
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
     assert.ok(metadata.ast)
@@ -218,4 +218,3 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
 })
-
