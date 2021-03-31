@@ -189,7 +189,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   // API
   test('Avisa a la api al ejecutar', function (assert) {
     this.ctrl.send('ejecutar')
-    assertProps(assert, this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg, { couldExecute: true })
+    const staticAnalysis = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg.staticAnalysis
+    assertProps(assert, staticAnalysis, { couldExecute: true })
   })
 
   test('Avisa a la api al finalizar la ejecucion', function (assert) {
