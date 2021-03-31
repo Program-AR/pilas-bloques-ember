@@ -2,7 +2,7 @@ import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
-import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning } from '../../helpers/utils'
+import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps } from '../../helpers/utils'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
@@ -211,10 +211,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   test('Envia metadata a la api al ejecutar', function (assert) {
     this.ctrl.send('ejecutar')
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
-    assert.ok(metadata.ast)
+    assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
     assert.ok(metadata.program || metadata.program.length === 0)
-    assert.ok(metadata.staticAnalysis)
-    assert.ok(metadata.turboModeOn)
   })
 
 })

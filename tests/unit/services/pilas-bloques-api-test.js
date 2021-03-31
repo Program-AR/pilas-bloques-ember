@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi } from '../../helpers/utils'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi, assertHasProps } from '../../helpers/utils'
 import config from '../../../config/environment'
 import { fakeUser } from '../../helpers/mocks'
 
@@ -69,12 +69,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   test('should add context to body', async function (assert) {
     await api.login({})
     const context = fetchCallBody().context
-    assert.ok(context.answers)
-    assert.ok(context.browserId)
-    assert.ok(context.firstInteraction)
-    assert.ok(context.id)
-    assert.ok(context.online)
-    assert.ok(context.userId)
+    assertHasProps(assert, context, 'answers', 'browserId', 'firstInteraction', 'id', 'online', 'userId')
   })
 
   test('should add timestamp to body', async function (assert) {
