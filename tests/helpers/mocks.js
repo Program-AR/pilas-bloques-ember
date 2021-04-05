@@ -7,6 +7,7 @@ export const pilasMock = {
     liberarRecursos() { },
     estaResueltoElProblema() { return true; },
     inicializarPilas() { return Promise.resolve(this) },
+    modoTurboEstaActivado() { return true; },
     inicializarEscena: sinon.stub(),
     reiniciarEscenaCompleta: sinon.stub(),
     cambiarAModoDeLecturaSimple: sinon.stub(),

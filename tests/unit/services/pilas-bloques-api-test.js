@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
 import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi } from '../../helpers/utils'
+import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi, assertHasProps } from '../../helpers/utils'
 import config from '../../../config/environment'
 import { fakeUser } from '../../helpers/mocks'
 
@@ -17,10 +17,10 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     storage = this.owner.lookup('service:storage')
   })
 
-  authTest('On login should save user data', () => api.login({}) )
-  authTest('On register should save user data', () => api.register({}) )
-  authTest('On change password should save user data', () => api.changePassword({}) )
-  authTest('On new user answer should update user data', () => api.newAnswer({}) )
+  authTest('On login should save user data', () => api.login({}))
+  authTest('On register should save user data', () => api.register({}))
+  authTest('On change password should save user data', () => api.changePassword({}))
+  authTest('On new user answer should update user data', () => api.newAnswer({}))
 
   test('On logout should delete user & session data', function (assert) {
     storage.saveUser(fakeUser)
@@ -66,9 +66,15 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     assert.notOk(api.loading.login)
   })
 
-  test('should add session to body', async function (assert) {
+  test('should add context to body', async function (assert) {
     await api.login({})
-    assert.ok(fetchCallBody().session)
+    const context = fetchCallBody().context
+    assertHasProps(assert, context, 'answers', 'browserId', 'firstInteraction', 'id', 'online', 'userId')
+  })
+
+  test('should add timestamp to body', async function (assert) {
+    await api.login({})
+    assert.ok(fetchCallBody().timestamp)
   })
 
   test('if user is logged should set authorization header', async function (assert) {
@@ -97,6 +103,6 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     test(description, async function (assert) {
       await action()
       assert.deepEqual(storage.getUser(), fakeUser)
-    })  
+    })
   }
 })
