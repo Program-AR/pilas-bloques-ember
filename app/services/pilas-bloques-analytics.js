@@ -31,22 +31,28 @@ export default Service.extend({
   _newSession() {
     const newSession = {
       id: uuidv4(),
-      firstInteraction: new Date(),
+      lastInteraction: new Date(),
       answers: []
     }
     this.storage.saveAnalyticsSession(newSession)
     return newSession
   },
 
+  _updatedSession(session) {
+    const updatedSession = { ...session, lastInteraction: new Date() }
+    this.storage.saveAnalyticsSession(updatedSession)
+    return updatedSession
+  },
+
   getSession() {
     const session = this.storage.getAnalyticsSession()
     if (!session) return this._newSession()
-    return this._isOld(session) ? this._newSession() : session
+    return this._isOld(session) ? this._newSession() : this._updatedSession(session)
   },
 
   logout() {
     this.storage.saveAnalyticsSession(null)
   },
 
-  _isOld({ firstInteraction }) { return (new Date() - new Date(firstInteraction)) / 1000 / 60 > sessionExpire }, // Minutes
+  _isOld({ lastInteraction }) { return (new Date() - lastInteraction) / 1000 / 60 > sessionExpire }, // Minutes
 })
