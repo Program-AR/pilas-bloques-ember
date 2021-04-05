@@ -328,12 +328,12 @@ export default Service.extend(Evented, {
   },
 
   cambiarAModoDeLecturaSimple() {
-      this.evaluar('pilas.cambiarAModoDeLecturaSimple()');
+    this.evaluar('pilas.cambiarAModoDeLecturaSimple()');
   },
 
   cambiarAModoDeLecturaNormal() {
     this.evaluar('pilas.cambiarAModoDeLecturaNormal()');
-},
+  },
 
   /**
    * Evalúa código directamente, sin reiniciar de ninguna forma.
@@ -354,6 +354,10 @@ export default Service.extend(Evented, {
   deshabilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
     this.evaluar('pilas').ponerVelocidadNormal();
+  },
+
+  modoTurboEstaActivado() {
+    return this.evaluar('ComportamientoConVelocidad').modoTurbo
   }
 
 });

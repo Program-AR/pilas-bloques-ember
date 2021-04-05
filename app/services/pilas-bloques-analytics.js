@@ -7,7 +7,7 @@ export default Service.extend({
   platform: service(),
   storage: service(),
 
-  buildSession(userId) {
+  context(userId) {
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()
@@ -16,7 +16,6 @@ export default Service.extend({
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
-      timestamp: new Date(),
     }
   },
 
@@ -30,7 +29,7 @@ export default Service.extend({
   _newSession() {
     const newSession = {
       id: uuidv4(),
-      timestamp: new Date(),
+      firstInteraction: new Date(),
       answers: []
     }
     this.storage.saveAnalyticsSession(newSession)
@@ -47,5 +46,5 @@ export default Service.extend({
     this.storage.saveAnalyticsSession(null)
   },
 
-  _isOld({ timestamp }) { return (new Date() - new Date(timestamp)) / 1000 / 60 > sessionExpire }, // Minutes
+  _isOld({ firstInteraction }) { return (new Date() - new Date(firstInteraction)) / 1000 / 60 > sessionExpire }, // Minutes
 })
