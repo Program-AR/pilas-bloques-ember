@@ -3,11 +3,13 @@ import config from "../config/environment"
 
 const { sessionExpire } = config.pbAnalytics
 
+//TODO: Rename 'Analytics' to 'session' related approach
 export default Service.extend({
   platform: service(),
   storage: service(),
 
-  context(userId) {
+  context() {
+    const userId = this.storage.getUserId()
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()

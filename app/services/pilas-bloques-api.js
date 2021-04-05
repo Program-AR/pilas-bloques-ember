@@ -84,7 +84,7 @@ export default Service.extend({
     }
     const user = this.getUser()
     if (body) {
-      body.context = this.pilasBloquesAnalytics.context(user && user.nickName)
+      body.context = this.pilasBloquesAnalytics.context()
       body.timestamp = new Date()
     } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
