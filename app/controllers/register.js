@@ -7,6 +7,8 @@ export default Controller.extend({
   pilasBloquesApi: service(),
   registerData: {},
   validUsername: true,
+  validEmail: true,
+  validParentName: true,
 
   avatars: computed('avatardb', function() {
     return this.avatardb.allAvatars()
@@ -22,5 +24,25 @@ export default Controller.extend({
       this.pilasBloquesApi.userExists(this.registerData.username)
         .then(exist => this.set("validUsername", !exist))
     },
+
+    checkEmail() {
+      this.set("validEmail", this._isValidEmail(this.registerData.email))
+    },
+
+    checkParentName() {
+      this.set("validParentName", this._isValidParentName(this.registerData.parentName))
+    },
+  },
+
+  // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+  _isValidEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  },
+
+  _isValidParentName(parentName) {
+    const re = /.+ .+/;
+    return re.test(parentName);
   }
+
 })

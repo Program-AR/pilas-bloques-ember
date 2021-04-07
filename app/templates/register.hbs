@@ -17,7 +17,9 @@
     <PasswordConfirmation @password={{ registerData.password }} />
 
     <PbInput @type="email" @label="Email"
-      @model={{ registerData.email }} />
+      @focusOut={{ action "checkEmail" }}
+      @model={{ registerData.email }}
+      @error={{ if (not validEmail) "Este no es un email válido" }} />
 
     <p for="avatarURL">
       <label>Elegí tu avatar:</label>
@@ -35,27 +37,24 @@
 
     <p>Consentimiento parental</p>
 
-    <PbInput @label="Nombre de madre, padre o tutor/a"
+    <PbInput @label="Nombre completo de madre, padre o tutor/a"
+      @focusOut={{ action "checkParentName" }}
       @model={{ registerData.parentName }} 
-      @required={{ true }} />
+      @required={{ true }}
+      @error={{ if (not validParentName) "Se requiere nombre y apellido" }} />
 
-    <PbInput @label="CUIL de madre, padre o tutor/a"
+    <PbInput @label="DNI de madre, padre o tutor/a"
       @model={{ registerData.parentCUIL }} 
       @required={{ true }} />
 
     <Collapsable @class="left" @title="¿Por qué solicitamos estos datos?">
-        <p>
-          Para la FUNDACIÓN SADOSKY tu privacidad y la de tus hijos es muy importante. Para protegerla mejor, y para que puedas tener una experiencia gratificante al utilizar nuestra Plataforma te presentamos estas Condiciones de Uso en las que se resumen todas nuestras prácticas con la información en línea.
-        </p>
-        <p>
-          A fin de identificar tu cuenta con los datos de tu padre / padre / tutor en caso de hacer uso a los derechos emergentes de la Ley de Protección de Datos Personales del menor tutelado. Ver mas en (link)
-        </p>
-        <p>
-          Los padres o tutores podrán solicitar por email a ponerunemail@fundacionsadosky.org.ar al Administrador que le muestre los datos consignados por menor a su cargo y solicitar que se efectúen modificaciones en los datos suministrados.
-        </p>
+      <p>Para la FUNDACIÓN SADOSKY tu privacidad y la de tus hijas/os es muy importante.</p>
+      <p>Identificamos la cuenta con los datos de madre, padre o tutor/a para poder saber de quién se trata en caso de que quiera hacer uso de los derechos emergentes de la Ley de Protección de Datos Personales del menor tutelado. Podés ver más en el punto 8.4 de los <TermsAndConditionsLink />.</p>
+      <p>Las madres, padres o tutores podrán comunicarse por email a pilasbloques@program.ar para conocer cuáles son los datos almacenados de los menores a su cargo y solicitar que se efectúen modificaciones en los datos suministrados.</p>
+
     </Collapsable>
 
-    <Input @type={{"checkbox"}} required /> <span>He leído y acepto los <Link @openOnNewTab={{true}} @href="https://docs.google.com/document/d/e/2PACX-1vTNX9zl8txZmuINNz2qODrodoQhvr0o2-r3T_6yFp6quEpidmPz6ORx1HSjo2KNUg6MnyHPN-Ti44z1/pub">términos y condiciones de uso</Link></span>
+    <Input @type={{"checkbox"}} required /> <span>He leído y acepto los <TermsAndConditionsLink /></span>
 
     <br><br>
     <ProgressButton class="link" type="submit" @isDisabled={{not validUsername}} @loading={{ pilasBloquesApi.loading.register }}>
