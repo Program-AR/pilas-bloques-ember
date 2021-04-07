@@ -69,7 +69,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   test('should add context to body', async function (assert) {
     await api.login({})
     const context = fetchCallBody().context
-    assertHasProps(assert, context, 'answers', 'browserId', 'firstInteraction', 'id', 'online', 'userId')
+    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'userId')
   })
 
   test('should add timestamp to body', async function (assert) {
