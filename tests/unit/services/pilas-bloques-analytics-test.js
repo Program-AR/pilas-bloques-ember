@@ -6,17 +6,18 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
 
   var pbAnalytics
   var storage
+  var firstSessionId
   hooks.beforeEach(function () {
     pbAnalytics = this.owner.lookup('service:pilas-bloques-analytics')
     storage = this.owner.lookup('service:storage')
+    firstSessionId = pbAnalytics.getSession().id // Creates session
   })
 
   test('Should create new sessionId', function (assert) {
-    assert.ok(pbAnalytics.getSession().id)
+    assert.ok(firstSessionId)
   })
 
   test('Should save session', function (assert) {
-    pbAnalytics.getSession()
     const { id, lastInteraction, answers } = getStorageSession()
     assert.ok(id)
     assert.ok(lastInteraction)
@@ -30,21 +31,18 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   })
 
   test('Should keep the session for a while', function (assert) {
-    const firstSessionId = pbAnalytics.getSession().id
     substractMinutesFromStorageSession(1)
     const currentSessionId = pbAnalytics.getSession().id
     assert.equal(firstSessionId, currentSessionId)
   })
 
   test('Should change the session after a long time', function (assert) {
-    const firstSessionId = pbAnalytics.getSession().id
     substractMinutesFromStorageSession(31)
     const currentSessionId = pbAnalytics.getSession().id
     assert.notEqual(firstSessionId, currentSessionId)
   })
 
   test('Should update lastInteraction after an interaction', function (assert) {
-    pbAnalytics.getSession() // Creates session
     substractMinutesFromStorageSession(15)
     const firstSessionInteraction = getStorageSession().lastInteraction
 
