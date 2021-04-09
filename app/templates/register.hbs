@@ -13,7 +13,8 @@
 
     <PbInput @label="Nombre de madre, padre o tutor/a" @model={{ registerData.parentName }} @required={{ true }} />
 
-    <PbInput @label="DNI de madre, padre o tutor/a" @model={{ registerData.parentDNI }} @required={{ true }} />
+    <PbInput @label="DNI de madre, padre o tutor/a" @focusOut={{ action "checkDNI" }} @model={{ registerData.parentDNI
+      }} @required={{ true }} @error={{ if (not validDNI) "El DNI es invalido" }} />
 
     <PbInput @type="email" @label="Email (opcional)" @model={{ registerData.email }} />
 
