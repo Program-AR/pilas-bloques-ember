@@ -1,6 +1,7 @@
 import { inject as service } from '@ember/service'
-import { computed } from '@ember/object';
-import Controller from '@ember/controller';
+import { computed } from '@ember/object'
+import Controller from '@ember/controller'
+import { notFound } from '../utils/request'
 
 export default Controller.extend({
   avatardb: service(),
@@ -8,19 +9,22 @@ export default Controller.extend({
   registerData: {},
   validUsername: true,
 
-  avatars: computed('avatardb', function() {
+  avatars: computed('avatardb', function () {
     return this.avatardb.allAvatars()
   }),
 
   actions: {
     doRegister() {
       this.pilasBloquesApi.register(this.registerData)
-      .then(() => this.transitionToRoute("/"))
+        .then(() => this.transitionToRoute("/"))
     },
 
     checkUsername() {
       this.pilasBloquesApi.passwordRecovery(this.registerData.username)
-        .then(exist => this.set("validUsername", !exist))
+        .then(_ => this.set("validUsername", false))
+        .catch(notFound(() => {
+          this.set("validUsername", true)
+        }))
     },
   }
 })
