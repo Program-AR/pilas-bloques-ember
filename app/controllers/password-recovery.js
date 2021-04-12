@@ -13,9 +13,9 @@ export default Controller.extend({
   actions: {
     checkUsername(cb) {
       this.pilasBloquesApi.passwordRecovery(this.credentials.username)
-        .then((credentials) => {
+        .then(({ email }) => {
           this.set("usernameExists", true)
-          this.set("credentials", credentials)
+          this.set("credentials.email", email)
           cb()
         })
         .catch(notFound(() => {

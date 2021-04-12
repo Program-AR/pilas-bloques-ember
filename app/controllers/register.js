@@ -20,7 +20,7 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.passwordRecovery(this.registerData.username)
+      this.pilasBloquesApi.passwordRecovery(this.registerData.username)//TODO: Tal vez queremos dejar el check también, esto es super turbio
         .then(_ => this.set("validUsername", false))
         .catch(notFound(() => {
           this.set("validUsername", true)
