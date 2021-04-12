@@ -10,11 +10,15 @@ export default Controller.extend({
 
   actions: {
     checkUsername(cb) {
-      this.pilasBloquesApi.userExists(this.credentials.username)
-        .then(exist => {
-          this.set("usernameExists", exist)
-          if (exist) cb()
+      this.pilasBloquesApi.passwordRecovery(this.credentials.username)
+        .then((credentials) => {
+          this.set("usernameExists", true)
+          this.set("credentials", credentials)
+          cb()
         })
+        .catch(notFound(() => {
+          this.set("usernameExists", false)
+        }))
     },
 
     changePassword(cb) {

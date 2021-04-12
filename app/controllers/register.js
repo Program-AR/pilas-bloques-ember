@@ -19,7 +19,7 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.userExists(this.registerData.username)
+      this.pilasBloquesApi.passwordRecovery(this.registerData.username)
         .then(exist => this.set("validUsername", !exist))
     },
   }
