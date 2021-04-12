@@ -1,9 +1,11 @@
 import { inject as service } from '@ember/service'
 import Controller from '@ember/controller'
-import { badRequest } from '../utils/request'
+import { badRequest, notFound } from '../utils/request'
 
 export default Controller.extend({
   pilasBloquesApi: service(),
+  queryParams: ['token'],
+  token: null,
   credentials: {},
   usernameExists: true, // Default true for (no) error visualization
   wrongCredentials: false,
@@ -23,6 +25,7 @@ export default Controller.extend({
 
     changePassword(cb) {
       this.set("wrongCredentials", false)
+      this.set("credentials.token", this.token)
       this.pilasBloquesApi.changePassword(this.credentials)
         .then(cb)
         .catch(badRequest(() => {
