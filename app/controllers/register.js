@@ -9,15 +9,19 @@ export default Controller.extend({
   validUsername: true,
   validEmail: true,
   validParentName: true,
+  validDNI: true,
+  canRegister: computed('validUsername', 'validEmail', 'validParentName', 'validDNI', function() {
+    return this.validUsername && this.validEmail && this.validParentName && this.validDNI
+  }),
 
-  avatars: computed('avatardb', function() {
+  avatars: computed('avatardb', function () {
     return this.avatardb.allAvatars()
   }),
 
   actions: {
     doRegister() {
       this.pilasBloquesApi.register(this.registerData)
-      .then(() => this.transitionToRoute("/"))
+        .then(() => this.transitionToRoute("/"))
     },
 
     checkUsername() {
@@ -26,23 +30,20 @@ export default Controller.extend({
     },
 
     checkEmail() {
-      this.set("validEmail", this._isValidEmail(this.registerData.email))
+      // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+      const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      this.set("validEmail", re.test(this.registerData.email))
     },
 
     checkParentName() {
-      this.set("validParentName", this._isValidParentName(this.registerData.parentName))
+      const re = /.+ .+/
+      this.set("validParentName", re.test(this.registerData.parentName))
     },
+
+    checkDNI() {
+      // any string with at least 6 numbers
+      const re = new RegExp('(\\D*\\d\\D*){6,}')
+      this.set("validDNI", re.test(this.registerData.parentDNI))
+    }
   },
-
-  // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
-  _isValidEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  },
-
-  _isValidParentName(parentName) {
-    const re = /.+ .+/;
-    return re.test(parentName);
-  }
-
 })
