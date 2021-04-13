@@ -271,7 +271,7 @@ export default Component.extend({
         // Si el usuario solicitó terminar el programa deja
         // de ejecutar el intérprete.
         if (!this.ejecutando) {
-          success({stoppedByUser: true});
+          success({ stoppedByUser: true });
           return;
         }
 
@@ -279,7 +279,7 @@ export default Component.extend({
         // Esto es un resultado válido, no hubo ningún problema con el intérprete.
         let error = this.errorDeActividad; // Se settea ante evento de Pilas
         if (error) {
-          success({error});
+          success({ error });
           return;
         }
 
@@ -305,7 +305,7 @@ export default Component.extend({
           // Llama recursivamente, abriendo thread en cada llamada.
           setTimeout(execInterpreterUntilEnd, 10, interpreter);
         } else {
-          success({finished: true});
+          success({ finished: true });
         }
       };
 
@@ -370,11 +370,11 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.pilasMulang.parseAll(Blockly.mainWorkspace), this.staticAnalysis())
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilas.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
-    run(this, function() {
+    run(this, function () {
       this.pilasBloquesApi.executionFinished(solutionId, {
         isTheProblemSolved: this.pilas.estaResueltoElProblema(),
         ...executionResult
