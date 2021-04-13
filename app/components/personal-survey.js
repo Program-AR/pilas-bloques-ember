@@ -77,7 +77,7 @@ export default Component.extend({
 
   //TODO: Param window for testing?
   showSurveyDialog(question) {
-    if (window.surveyWindow) return; // don't create other surveyWindow if it exists.
+    if (window.surveyWindow && window.surveyWindow.isShowing) return; // don't create other surveyWindow if it exists.
     Survey.StylesManager.applyTheme("winterstone")
     window.surveyWindow = new Survey.SurveyWindow(question)
     window.surveyWindow.isExpanded = true

@@ -31,20 +31,20 @@ export function setupClear(hooks) {
 export function setupLoggedUser(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:storage').saveUser(fakeUser)
-    })    
+    })
 }
 
 export function setupEmberMocks(hooks) {
     setupToasterMock(hooks)
     hooks.beforeEach(function () {
         this.owner.register('component:personal-survey', Component.extend({}))
-    })    
+    })
 }
 
 export function setupToasterMock(hooks) {
     hooks.beforeEach(function () {
         this.owner.register('service:paperToaster', toastMock)
-    })    
+    })
 }
 
 export function resetFetch() {
@@ -88,6 +88,10 @@ export function assertAsync(assert, fn, ms = 0) { //TODO: Curry
 export function assertProps(assert, obj, props) {
     const expected = Object.assign({}, obj, props)
     assert.propEqual(obj, expected)
+}
+
+export function assertHasProps(assert, obj, ...props) {
+    props.forEach((prop) => assert.ok(obj[prop]))
 }
 
 export function assertDisabled(assert, block) {
