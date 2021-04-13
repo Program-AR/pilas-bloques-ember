@@ -1,26 +1,25 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | collapsable', function(hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function(assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function(val) { ... });
-
-    await render(hbs`<Collapsable />`);
-
-    assert.equal(this.element.textContent.trim(), '');
-
-    // Template block usage:
+  hooks.beforeEach(async () => {
     await render(hbs`
       <Collapsable>
-        template block text
+        content
       </Collapsable>
     `);
+  })
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+  test('Initial collapsable does not show content', async function(assert) {
+    assert.notOk(this.element.textContent.includes("content"));
+  });
+
+  test('Content appears when clicked', async function(assert) {
+    await click('.collapsable-title');    
+    assert.ok(this.element.textContent.includes("content"));
   });
 });
