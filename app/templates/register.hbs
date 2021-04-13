@@ -40,7 +40,7 @@
     <Input @type={{"checkbox"}} required /> <span>He leído y acepto los términos y condiciones.</span>
 
     <br><br>
-    <ProgressButton class="link" type="submit" @isDisabled={{not validUsername}} @loading={{
+    <ProgressButton class="link" type="submit" @isDisabled={{or (not validUsername) (not validDNI)}} @loading={{
       pilasBloquesApi.loading.register }}>
       Registrar
     </ProgressButton>
