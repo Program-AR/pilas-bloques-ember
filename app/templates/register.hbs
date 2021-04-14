@@ -57,7 +57,7 @@
 
     <br><br>
     <ProgressButton class="link" type="submit" 
-      @isDisabled={{not canRegister}} 
+      @isDisabled={{not validUsername}} 
       @loading={{ pilasBloquesApi.loading.register }}>
         Registrar
     </ProgressButton>

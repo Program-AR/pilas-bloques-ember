@@ -5,15 +5,9 @@ import Controller from '@ember/controller';
 export default Controller.extend({
   avatardb: service(),
   pilasBloquesApi: service(),
-  registerData: {},
+  registerData: {email:''},
   validUsername: true,
-  validEmail: true,
-  validParentName: true,
-  validDNI: true,
-  canRegister: computed('validUsername', 'validEmail', 'validParentName', 'validDNI', function() {
-    return this.validUsername && this.validEmail && this.validParentName && this.validDNI
-  }),
-
+  
   avatars: computed('avatardb', function () {
     return this.avatardb.allAvatars()
   }),
@@ -23,7 +17,7 @@ export default Controller.extend({
     validate: (mail) => {
       // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
       const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      return re.test(mail)
+      return re.test(mail) || mail == ''
     }
   }],
 
