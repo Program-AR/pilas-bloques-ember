@@ -17,9 +17,8 @@
     <PasswordConfirmation @password={{ registerData.password }} />
 
     <PbInput @type="email" @label="Email"
-      @focusOut={{ action "checkEmail" }}
       @model={{ registerData.email }}
-      @error={{ if (not validEmail) "Este no es un email válido" }} />
+      @customValidations={{ mailValidation }} />
 
     <p for="avatarURL">
       <label>Elegí tu avatar:</label>
@@ -38,16 +37,14 @@
     <p>Consentimiento parental</p>
 
     <PbInput @label="Nombre completo de madre, padre o tutor/a"
-      @focusOut={{ action "checkParentName" }}
       @model={{ registerData.parentName }} 
       @required={{ true }}
-      @error={{ if (not validParentName) "Se requiere nombre y apellido" }} />
+      @customValidations={{ parentNameValidation }} />
 
     <PbInput @label="DNI de madre, padre o tutor/a" 
-      @focusOut={{ action "checkDNI" }} 
       @model={{ registerData.parentDNI }} 
       @required={{ true }} 
-      @error={{ if (not validDNI) "El DNI es invalido" }} />
+      @customValidations={{ DNIValidation }} />
 
     <Collapsable @class="left" @title="¿Por qué solicitamos estos datos?">
       <p>Para la FUNDACIÓN SADOSKY tu privacidad y la de tus hijas/os es muy importante.</p>
