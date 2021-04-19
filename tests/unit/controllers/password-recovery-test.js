@@ -2,22 +2,25 @@ import { module, test } from 'qunit'
 import { assertAsync, mockApi, setupPBUnitTest } from '../../helpers/utils'
 import sinon from 'sinon'
 
-module('Unit | Controller | password-recovery', function(hooks) {
+module('Unit | Controller | password-recovery', function (hooks) {
   setupPBUnitTest(hooks)
 
   hooks.beforeEach(function () {
     this.ctrl = this.owner.lookup('controller:password-recovery')
     this.next = sinon.stub()
   })
-  
+
   test('If username exists continue next step', function (assert) {
-    mockApi(`users/exists`, true)
+    mockApi(`password-recovery`, { email: 'fake@test.com' })
     this.ctrl.send('checkUsername', this.next)
-    awaitAssert(assert, () => assert.ok(this.next.called))
+    awaitAssert(assert, () => {
+      assert.ok(this.next.called)
+      assert.equal(this.ctrl.credentials.email, 'fake@test.com')
+    })
   })
 
   test('If username not exist, show error', function (assert) {
-    mockApi(`users/exists`, false)
+    mockApi(`password-recovery`, 404)
     this.ctrl.send('checkUsername', this.next)
     awaitAssert(assert, () => {
       assert.notOk(this.next.called)
@@ -45,8 +48,8 @@ module('Unit | Controller | password-recovery', function(hooks) {
      * Se assertea en 500ms para esperar a que termine la Promise de la API.
      * En realidad habría que meter esa resolución dentro del runloop de Ember
      * para usar las herramientas que ofrece, pero no me salió.
-     * */ 
+     * */
     assertAsync(assert, fn, 500)
   }
-  
+
 })
