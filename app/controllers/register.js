@@ -1,7 +1,6 @@
 import { inject as service } from '@ember/service'
 import { computed } from '@ember/object'
 import Controller from '@ember/controller'
-import { notFound } from '../utils/request'
 
 export default Controller.extend({
   avatardb: service(),
@@ -20,11 +19,8 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.passwordRecovery(this.registerData.username)//TODO: Tal vez queremos dejar el check también, esto es super turbio
-        .then(_ => this.set("validUsername", false))
-        .catch(notFound(() => {
-          this.set("validUsername", true)
-        }))
+      this.pilasBloquesApi.userExists(this.registerData.username)
+        .then(exist => this.set("validUsername", !exist))
     },
   }
 })

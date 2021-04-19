@@ -64,6 +64,10 @@ export default Service.extend({
     return this._send('POST', `password-recovery?username=${username}`)
   },
 
+  async userExists(username) {
+    return this._send('GET', `users/exists?username=${username}`)
+  },
+
   async newAnswer(data) {
     return this._send('POST', `answers`, data)
       .then(user => this.storage.saveUser(user))
