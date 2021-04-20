@@ -36,3 +36,19 @@
   max-width: 20rem;
   display: inline-block;
 }
+
+.register-form md-input-container {
+  width: 300px; // Makes the input labels readable
+}
+
+// TODO: Move to someplace component-specific
+.collapsable-title { 
+  color: var(--theme-font-color);
+  font-style: italic;
+  cursor: pointer;
+  margin-bottom: 18px;
+}
+
+.collapsable-title:hover {
+  background-color: var(--theme-background-color);
+}

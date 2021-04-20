@@ -94,7 +94,7 @@ package_osx() {
 package_win32() {
     prebuild "win" "ia32"
     echo "Generating installer for windows package..."
-    package "win" "ia32" "ico"
+    package "win32" "ia32" "ico"
 	cp packaging/instalador.nsi binaries/$NAME-win32-ia32/
 	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe

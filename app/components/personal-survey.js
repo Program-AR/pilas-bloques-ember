@@ -21,7 +21,7 @@ export default Component.extend({
     },
     {
       id: 2,
-      title: "Edad y Género",
+      title: "Edad y género",
       logo: "imagenes/surveyLogoLita.png",
       pages: [{
         name: "ageAndGender", questions: [
@@ -32,7 +32,7 @@ export default Component.extend({
     },
     {
       id: 3,
-      title: "Escuela y Provincia",
+      title: "Escuela y provincia",
       logo: "imagenes/surveyLogoAlien.png",
       pages: [{
         name: "schoolAndProvince", questions: [
@@ -43,7 +43,7 @@ export default Component.extend({
     },
     {
       id: 4,
-      title: "Clase o Tarea",
+      title: "Clase o tarea",
       logo: "imagenes/surveyLogoHeroin.png",
       pages: [{
         name: "classOrHomework", questions: [
@@ -55,7 +55,7 @@ export default Component.extend({
     },
     {
       id: 5,
-      title: "Escuela y Compañía",
+      title: "Escuela y compañía",
       logo: "imagenes/surveyLogoCoty.png",
       pages: [{
         name: "schoolAndCompany", questions: [
@@ -77,7 +77,7 @@ export default Component.extend({
 
   //TODO: Param window for testing?
   showSurveyDialog(question) {
-    if (window.surveyWindow) return; // don't create other surveyWindow if it exists.
+    if (window.surveyWindow && window.surveyWindow.isShowing) return; // don't create other surveyWindow if it exists.
     Survey.StylesManager.applyTheme("winterstone")
     window.surveyWindow = new Survey.SurveyWindow(question)
     window.surveyWindow.isExpanded = true
