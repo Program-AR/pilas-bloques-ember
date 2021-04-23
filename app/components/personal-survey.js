@@ -47,8 +47,8 @@ export default Component.extend({
       logo: "imagenes/surveyLogoHeroin.png",
       pages: [{
         name: "classOrHomework", questions: [
-          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar?" },
-          { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
+          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar ahora?" },
+          { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea ahora", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea ahora?", visibleIf: "{isOnSchoolTime} = 'No'" }
         ]
       }],
       askEachSession: true
@@ -59,7 +59,7 @@ export default Component.extend({
       logo: "imagenes/surveyLogoCoty.png",
       pages: [{
         name: "schoolAndCompany", questions: [
-          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela?" },
+          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela ahora mismo?" },
           { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],

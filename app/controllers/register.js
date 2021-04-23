@@ -12,6 +12,14 @@ export default Controller.extend({
     return this.avatardb.allAvatars()
   }),
 
+  usernameFormatValidation: [{
+    message: 'El usuario sólo puede contener letras, números y guiones',
+    validate: (userName) => {
+      const re = /^[a-zA-Z\d]+[a-zA-Z\d\-_]*$/
+      return re.test(userName)
+    }
+  }],
+
   mailValidation:[{
     message: 'Este no es un email válido',
     validate: (mail) => {
