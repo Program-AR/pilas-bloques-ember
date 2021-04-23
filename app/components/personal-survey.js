@@ -13,6 +13,7 @@ export default Component.extend({
       id: 1,
       title: "¿Nos ayudás?",
       logo: "imagenes/surveyLogoCoty.png",
+      completeText: "¡Dale!",
       pages: [{
         name: "askingHelp", questions: [
           { type: "html", name: "askingHelp", html: "<p>¡Hola! ¿Nos ayudás a mejorar Pilas Bloques?</p><p>Te vamos a hacer preguntas cortitas.</p><p>¡Contestalas cuando quieras!</p>" }
