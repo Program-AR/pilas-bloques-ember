@@ -61,7 +61,7 @@ export default Component.extend({
       pages: [{
         name: "schoolAndCompany", questions: [
           { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela ahora mismo?" },
-          { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'" }
+          { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien ahora?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],
       askEachSession: true
