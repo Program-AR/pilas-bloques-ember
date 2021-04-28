@@ -37,7 +37,7 @@ export default Component.extend({
       pages: [{
         name: "schoolAndProvince", questions: [
           { type: "dropdown", choices: ['No estoy en Argentina', 'Ciudad Autónoma de Buenos Aires (CABA)', 'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', 'Tucumán'], isRequired: true, name: "province", title: "¿En qué provincia vivís?" },
-          { type: "radiogroup", choices: ["Pública", "Parroquial", "Privada"], isRequired: true, name: "gender", title: "¿A qué tipo de escuela vas?", visibleIf: "{province} != undefined" }
+          { type: "radiogroup", choices: ["Pública", "Parroquial", "Privada"], isRequired: true, name: "schoolType", title: "¿A qué tipo de escuela vas?", visibleIf: "{province} != undefined" }
         ]
       }]
     },
