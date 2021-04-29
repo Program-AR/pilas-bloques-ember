@@ -10,6 +10,7 @@ export default Service.extend({
   storage: service(),
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
+  platform: service(),
   loading: {},
   connected: true,
 
@@ -118,5 +119,15 @@ export default Service.extend({
       duration: 4000,
       position: "top"
     })
+  },
+
+  init() {
+    this._super.apply(this, arguments)
+    if (!this.platform.online()) { // Avoiding unnecessary requests when in website
+      this._send('GET', 'ping')
+        .then(() => this.set('connected', true))
+        .catch(() => this.set('connected', false))
+    }
+
   },
 })

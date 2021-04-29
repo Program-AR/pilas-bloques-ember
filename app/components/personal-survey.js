@@ -68,7 +68,7 @@ export default Component.extend({
   ],
 
   didInsertElement() {
-    this.showNextQuestion()
+    if (this.pilasBloquesApi.connected) this.showNextQuestion()
   },
 
   showNextQuestion() {
