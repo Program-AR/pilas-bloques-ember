@@ -12,7 +12,15 @@ export default Controller.extend({
     return this.avatardb.allAvatars()
   }),
 
-  mailValidation: [{
+  usernameFormatValidation: [{
+    message: 'El usuario sólo puede contener letras, números y guiones',
+    validate: (userName) => {
+      const re = /^[a-zA-Z\d]+[a-zA-Z\d\-_]*$/
+      return re.test(userName)
+    }
+  }],
+
+  mailValidation:[{
     message: 'Este no es un email válido',
     validate: (mail) => {
       // https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript

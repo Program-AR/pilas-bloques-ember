@@ -13,6 +13,7 @@ export default Component.extend({
       id: 1,
       title: "¿Nos ayudás?",
       logo: "imagenes/surveyLogoCoty.png",
+      completeText: "¡Dale!",
       pages: [{
         name: "askingHelp", questions: [
           { type: "html", name: "askingHelp", html: "<p>¡Hola! ¿Nos ayudás a mejorar Pilas Bloques?</p><p>Te vamos a hacer preguntas cortitas.</p><p>¡Contestalas cuando quieras!</p>" }
@@ -37,7 +38,7 @@ export default Component.extend({
       pages: [{
         name: "schoolAndProvince", questions: [
           { type: "dropdown", choices: ['No estoy en Argentina', 'Ciudad Autónoma de Buenos Aires (CABA)', 'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', 'Tucumán'], isRequired: true, name: "province", title: "¿En qué provincia vivís?" },
-          { type: "radiogroup", choices: ["Pública", "Parroquial", "Privada"], isRequired: true, name: "gender", title: "¿A qué tipo de escuela vas?", visibleIf: "{province} != undefined" }
+          { type: "radiogroup", choices: ["Pública", "Parroquial", "Privada"], isRequired: true, name: "schoolType", title: "¿A qué tipo de escuela vas?", visibleIf: "{province} != undefined" }
         ]
       }]
     },
@@ -47,8 +48,8 @@ export default Component.extend({
       logo: "imagenes/surveyLogoHeroin.png",
       pages: [{
         name: "classOrHomework", questions: [
-          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar?" },
-          { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea?", visibleIf: "{isOnSchoolTime} = 'No'" }
+          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar ahora?" },
+          { type: "radiogroup", choices: ["Sí, estoy haciendo la tarea ahora", "No"], isRequired: true, name: "isDoingHomework", title: "¿Estás haciendo la tarea ahora?", visibleIf: "{isOnSchoolTime} = 'No'" }
         ]
       }],
       askEachSession: true
@@ -59,8 +60,8 @@ export default Component.extend({
       logo: "imagenes/surveyLogoCoty.png",
       pages: [{
         name: "schoolAndCompany", questions: [
-          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela?" },
-          { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'" }
+          { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela ahora mismo?" },
+          { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien ahora?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],
       askEachSession: true
