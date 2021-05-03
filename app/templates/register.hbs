@@ -7,6 +7,7 @@
     <PbInput @label="Usuario"
       @model={{ registerData.username }} 
       @focusOut={{ action "checkUsername" }}
+      @customValidations={{ usernameFormatValidation }}
       @required={{ true }}
       @error={{ if (not validUsername) "Este nombre de usuario ya existe" }} />
 
@@ -16,7 +17,7 @@
 
     <PasswordConfirmation @password={{ registerData.password }} />
 
-    <PbInput @type="email" @label="Email"
+    <PbInput @type="email" @label="Email (opcional)"
       @model={{ registerData.email }}
       @customValidations={{ mailValidation }} />
 
@@ -35,6 +36,9 @@
     </PaperGridList>
 
     <p>Consentimiento parental</p>
+
+    <small> Si sos mayor de edad, escribí tus propios datos. </small>
+    <p></p>
 
     <PbInput @label="Nombre completo de madre, padre o tutor/a"
       @model={{ registerData.parentName }} 
@@ -59,7 +63,8 @@
     <ProgressButton class="link" type="submit" 
       @isDisabled={{not validUsername}} 
       @loading={{ pilasBloquesApi.loading.register }}>
-        Registrar
+        Registrarme
     </ProgressButton>
   </PaperForm>
+  <br><br>
 </div>
