@@ -60,6 +60,10 @@ export default Service.extend({
       .then(user => this.storage.saveUser(user))
   },
 
+  async passwordRecovery(username) {
+    return this._send('POST', `password-recovery?username=${username}`)
+  },
+
   async userExists(username) {
     return this._send('GET', `users/exists?username=${username}`)
   },
