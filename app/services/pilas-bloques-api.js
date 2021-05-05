@@ -12,7 +12,7 @@ export default Service.extend({
   pilasBloquesAnalytics: service(),
   platform: service(),
   loading: {},
-  connected: null,
+  connected: true, //Necesita empezar en true para que el _send() haga el ping inicial.
 
   // SOLUTIONS
   openChallenge(challengeId) {
@@ -125,8 +125,8 @@ export default Service.extend({
     this._super.apply(this, arguments)
     if (!this.platform.online()) { // Avoiding unnecessary requests when in website
       this._send('GET', 'ping', undefined, false)
-        .then(() => this.set('connected', true))
-        .catch(() => this.set('connected', false))
+        .then(() => { this.set('connected', true) })
+        .catch(() => { this.set('connected', false) })
     }
     else {
       this.set('connected', true)
