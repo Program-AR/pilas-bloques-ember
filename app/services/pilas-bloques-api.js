@@ -128,9 +128,6 @@ export default Service.extend({
         .then(() => { this.set('connected', true) })
         .catch(() => { this.set('connected', false) })
     }
-    else {
-      this.set('connected', true)
-    }
 
   },
 })
