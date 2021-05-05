@@ -1,5 +1,6 @@
 import Service from '@ember/service'
 
 export default Service.extend({
-  online() { return typeof process === "undefined" }
+  inElectron() { return /electron/i.test(navigator.userAgent) },
+  online() { return !this.inElectron() }
 })
