@@ -17,6 +17,6 @@ module('Acceptance | principal', function (hooks) {
 
   test('visiting /', async function (assert) {
     await page.visit();
-    assert.equal(page.cantidadDeLinks, 5, "La cantidad de links en pantalla renderiza bien.");
+    assert.equal(page.cantidadDeLinks, 6, "La cantidad de links en pantalla renderiza bien.");
   });
 });
