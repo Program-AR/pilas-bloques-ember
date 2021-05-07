@@ -5,6 +5,7 @@ import Survey from 'survey-knockout'
 export default Component.extend({
   pilasBloquesApi: service(),
   pilasBloquesAnalytics: service(),
+  paperToaster: service(),
 
   /** Dialog descriptions according to SurveyJS library.
    ** Additional field: askEachSession, which tells the app to ask the question each time*/
@@ -87,7 +88,7 @@ export default Component.extend({
     window.surveyWindow.survey.logoWidth = 75
     window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
-    window.surveyWindow.survey.onComplete.add(survey => this.saveAnswer(survey.data))
+    window.surveyWindow.survey.onComplete.add(survey => { this.saveAnswer(survey.data); this.showThankYou() })
   },
 
   saveAnswer(response) {
@@ -107,5 +108,11 @@ export default Component.extend({
   sessionAnswers() {
     const { answers } = this.pilasBloquesAnalytics.getSession()
     return answers && answers.map(({ question }) => question.id) || []
+  },
+  showThankYou() {
+    this.paperToaster.show("Gracias :)", {
+      duration: 4000,
+      position: "bottom"
+    })
   }
 });
