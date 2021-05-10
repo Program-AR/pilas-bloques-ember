@@ -12,7 +12,7 @@ export default Service.extend({
   pilasBloquesAnalytics: service(),
   platform: service(),
   loading: {},
-  connected: true, //Necesita empezar en true para que el _send() haga el ping inicial.
+  connected: null,
 
   // SOLUTIONS
   openChallenge(challengeId) {
@@ -77,12 +77,7 @@ export default Service.extend({
 
   getUser() { return this.storage.getUser() },
 
-
   async _send(method, resource, body, critical = true) {
-    if (!this.connected) {
-      if (critical) this._alertServerError()
-      return;
-    }
     const user = this.getUser()
     if (body) {
       body.context = this.pilasBloquesAnalytics.context()
@@ -104,10 +99,12 @@ export default Service.extend({
     })
       .catch(connectionErr => {
         if (critical) this._alertServerError()
+        this.set('connected', false)
         // console.log({ connectionErr })
         throw connectionErr
       })
       .then(res => {
+        this.set('connected', true)
         if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
         else { return res.json().catch(() => { /** if not body present */ }) }
       })
@@ -123,11 +120,10 @@ export default Service.extend({
 
   init() {
     this._super.apply(this, arguments)
-    if (!this.platform.online()) { // Avoiding unnecessary requests when in website
-      this._send('GET', 'ping', undefined, false)
-        .then(() => { this.set('connected', true) })
-        .catch(() => { this.set('connected', false) })
+    if (this.platform.inElectron()) { // Avoiding unnecessary requests when in website
+      this._send('GET', 'ping', undefined, false) // forces setting of "connected"
+    } else {
+      this.set('connected', true)
     }
-
   },
 })
