@@ -20,6 +20,8 @@ module('Integration | Component | survey-window', function (hooks) {
     fetchMock.reset()
   })
 
+  const personalSurveyDidRender = (element) => element.innerHTML.toString().includes("Nothing to show, it's all javascript")
+
   test('it renders', async function (assert) {
     await render(hbs`<PersonalSurvey />`)
     assert.equal(this.element.textContent.trim(), '')
@@ -29,12 +31,12 @@ module('Integration | Component | survey-window', function (hooks) {
   test('When the user is not logged in, should not show questions', async function (assert) {
     api.logout()
     await render(hbs`<SessionButton />`)
-    assert.notOk(this.element.innerHTML.toString().includes("Nothing to show, it's all javascript"))
+    assert.notOk(personalSurveyDidRender(this.element))
   })
 
   test('When the user is logged in and the api is accessible, should show questions', async function (assert) {
     await render(hbs`<SessionButton />`)
-    assert.ok(this.element.innerHTML.toString().includes("Nothing to show, it's all javascript"))
+    assert.ok(personalSurveyDidRender(this.element))
   })
 
   test('When the user is logged in and the api is not accessible, should not show questions', async function (assert) {
