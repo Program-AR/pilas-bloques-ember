@@ -1,11 +1,7 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
-import fetchMock from 'fetch-mock'
-import { fetchCalled, fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi, assertHasProps } from '../../helpers/utils'
-import config from '../../../config/environment'
+import { fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi, assertHasProps, failAllApiFetchs } from '../../helpers/utils'
 import { fakeUser } from '../../helpers/mocks'
-
-const { baseURL } = config.pbApi
 
 module('Unit | Service | pilas-bloques-api', function (hooks) {
   setupPBUnitTest(hooks)
@@ -36,21 +32,25 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     later(done)
   })
 
+  test('If fetch succeeds should be connected', async function (assert) {
+    await api.ping()
+    assert.ok(api.connected)
+  })
 
-  test('If not connected does not send request', async function (assert) {
-    api.connected = false
-    await api.login({})
-    assert.notOk(fetchCalled(baseURL))
+  test('If fetch fails should not be connected', async function (assert) {
+    failAllApiFetchs()
+    await api.ping().catch(() => {})
+    assert.notOk(api.connected)
   })
 
   test('If not connected should alert server error', async function (assert) {
-    api.connected = false
-    await api.login({})
+    failAllApiFetchs()
+    await api.login({}).catch(() => {})
     assert.ok(api.paperToaster.show.called)
   })
 
   test('should not alert server error on no critical requests', function (assert) {
-    fetchMock.mock(`begin:${baseURL}`, { throws: 'ERROR' })
+    failAllApiFetchs()
     const done = assert.async()
     api.openChallenge(1)
     api.runProgram(1, "program", {})

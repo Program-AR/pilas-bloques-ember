@@ -56,11 +56,17 @@ export function resetFetch() {
     mockApi(`answers`, fakeUser)
     mockApi(`challenges`, 200)
     mockApi(`solutions`, 200)
+    mockApi(`ping`, 200)
     mockApi(`error`, { throws: 'ERROR' })
 }
 
 export function mockApi(path, response, options) {
     fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
+}
+
+export function failAllApiFetchs() {
+    fetchMock.reset()
+    mockApi("", { throws: 'ERROR' })
 }
 
 

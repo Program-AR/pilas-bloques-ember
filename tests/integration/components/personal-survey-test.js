@@ -20,29 +20,28 @@ module('Integration | Component | survey-window', function (hooks) {
     fetchMock.reset()
   })
 
-  const personalSurveyDidRender = (element) => element.innerHTML.toString().includes("Nothing to show, it's all javascript")
+  const surveyExists = () => window.surveyWindow && window.surveyWindow.isShowing
 
   test('it renders', async function (assert) {
     await render(hbs`<PersonalSurvey />`)
     assert.equal(this.element.textContent.trim(), '')
-    assert.ok(window.surveyWindow.isShowing)
+    assert.ok(surveyExists())
   })
 
   test('When the user is not logged in, should not show questions', async function (assert) {
     api.logout()
     await render(hbs`<SessionButton />`)
-    assert.notOk(personalSurveyDidRender(this.element))
+    assert.notOk(surveyExists())
   })
 
   test('When the user is logged in and the api is accessible, should show questions', async function (assert) {
     await render(hbs`<SessionButton />`)
-    assert.ok(personalSurveyDidRender(this.element))
+    assert.ok(surveyExists())
   })
 
   test('When the user is logged in and the api is not accessible, should not show questions', async function (assert) {
-    fetchMock.get(/.*/, { throws: 'Error' })
-    await api.userExists('pepita').catch(() => { }) // Errors set connected in false.
+    api.connected = false
     await render(hbs`<SessionButton />`)
-    assert.ok(!(window.surveyWindow && window.surveyWindow.isShowing)) // 50% de las veces el surveyWindow no se crea, y las otras veces si, con el isShowing en falso.
+    assert.notOk(surveyExists())
   })
 })
