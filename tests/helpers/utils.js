@@ -32,6 +32,9 @@ export function setupLoggedUser(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:storage').saveUser(fakeUser)
     })
+    hooks.afterEach(function () {
+        localStorage.clear()
+    })
 }
 
 export function setupEmberMocks(hooks) {
