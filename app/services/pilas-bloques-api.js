@@ -96,7 +96,8 @@ export default Service.extend({
     }
 
     this.set(flag, true)
-    return fetch(url, {
+
+    return this._doFetch(url, {
       method,
       body: JSON.stringify(body),
       headers
@@ -113,6 +114,15 @@ export default Service.extend({
         else { return res.json().catch(() => { /** if not body present */ }) }
       })
       .finally(() => this.set(flag, false))
+
+  },
+
+  _doFetch(url, options) {
+    try {
+      return fetch(url, options)
+    } catch (err) {
+      return Promise.reject(err)
+    }
   },
 
   _alertServerError() {
