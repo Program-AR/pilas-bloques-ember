@@ -1,20 +1,21 @@
 import { later } from '@ember/runloop';
 import Component from '@ember/component';
 import environment from '../config/environment';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
   servicioNotificador: null,
   hayActualizacion: false,
   tagName: '',
   linkDescarga: environment.linkDeDescarga,
+  platform: service(),
 
   didInsertElement() {
-    const inElectron = (typeof process !== "undefined");
 
-    if (this.servicioNotificador && inElectron) {
+    if (this.servicioNotificador && this.platform.inElectron()) {
       /* Solo si está en la versión offline, sobre electron, espera 5 segundos
         * y consulta si existe una versión nueva para descargar. */
-      later(this, function() {
+      later(this, function () {
         this.consultarSiExisteVersionNueva();
       }, 5000);
     }

@@ -10,8 +10,9 @@ export default Service.extend({
   storage: service(),
   paperToaster: service(),
   pilasBloquesAnalytics: service(),
+  platform: service(),
   loading: {},
-  connected: true,
+  connected: null,
 
   // SOLUTIONS
   openChallenge(challengeId) {
@@ -78,14 +79,13 @@ export default Service.extend({
     this.storage.saveUser(null)
   },
 
+  async ping() {
+    return this._send('GET', 'ping', undefined, false)
+  },
+
   getUser() { return this.storage.getUser() },
 
-
   async _send(method, resource, body, critical = true) {
-    if (!this.connected) {
-      if (critical) this._alertServerError()
-      return;
-    }
     const user = this.getUser()
     if (body) {
       body.context = this.pilasBloquesAnalytics.context()
@@ -100,21 +100,33 @@ export default Service.extend({
     }
 
     this.set(flag, true)
-    return fetch(url, {
+
+    return this._doFetch(url, {
       method,
       body: JSON.stringify(body),
       headers
     })
       .catch(connectionErr => {
         if (critical) this._alertServerError()
+        this.set('connected', false)
         // console.log({ connectionErr })
         throw connectionErr
       })
       .then(res => {
+        this.set('connected', true)
         if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
         else { return res.json().catch(() => { /** if not body present */ }) }
       })
       .finally(() => this.set(flag, false))
+
+  },
+
+  _doFetch(url, options) {
+    try {
+      return fetch(url, options)
+    } catch (err) {
+      return Promise.reject(err)
+    }
   },
 
   _alertServerError() {
@@ -122,5 +134,14 @@ export default Service.extend({
       duration: 4000,
       position: "top"
     })
+  },
+
+  init() {
+    this._super.apply(this, arguments)
+    if (this.platform.inElectron()) { // Avoiding unnecessary requests when in website
+      this.ping() // forces setting of "connected"
+    } else {
+      this.set('connected', true)
+    }
   },
 })

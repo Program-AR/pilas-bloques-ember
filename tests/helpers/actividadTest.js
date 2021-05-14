@@ -6,6 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
 import simulateRouterHooks from "./simulate-router.hooks";
+import { failAllApiFetchs } from './utils';
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
@@ -99,7 +100,8 @@ export function actividadTest(nombre, opciones) {
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
-    this.owner.lookup('service:pilas-bloques-api').connected = false;
+    failAllApiFetchs()
+    this.owner.lookup('service:pilas-bloques-api').logout();
 
     //let actividades = this.owner.lookup('service:actividades');
 
