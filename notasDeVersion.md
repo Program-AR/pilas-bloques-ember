@@ -5,7 +5,7 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
 
 * 1.7.2 (21 de mayo de 2021)
   * ¡ Ahora Pilas Bloques permite registrarse! 
-  * Pilas Bloques ahora tiene un backend, compuesto [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api) y [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics). 
+  * Pilas Bloques ahora tiene un backend, compuesto por [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api) y [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics). 
     * Se guardan las soluciones, tanto en formato XML como el AST.
     * Se guardan las respuestas a las preguntas.
   * Se actualizaron dependencias y se resolvieron vulnerabilidades de seguridad.
