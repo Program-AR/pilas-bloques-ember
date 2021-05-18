@@ -5,12 +5,14 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
 
 * 1.7.2 (21 de mayo de 2021)
   * ¡ Ahora Pilas Bloques permite registrarse! 
-  * Pilas Bloques ahora tiene un backend, compuesto por [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api) y [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics). 
-    * Se guardan las soluciones, tanto en formato XML como el AST.
-    * Se guardan las respuestas a las preguntas.
+  * Pilas Bloques ahora tiene un backend, compuesto por dos servicios: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api) y [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics). 
+    * En Analytics se guardan todas las soluciones de todo usuario registrado y sin registrar, tanto en formato XML como el AST.
+    * En la API se guarda la info de usuarios registrados, credenciales, las respuestas a las preguntas demográficas, y la última solución por ejercicio. La API también envía los mails de recuperación de contraseña.
   * Se actualizaron dependencias y se resolvieron vulnerabilidades de seguridad.
-  * Se deprecaron las rutas de cursoAlumno y cursoDocente.
-  * Se arreglaron bugs variados.
+  * Se deprecaron las rutas de cursoAlumno y cursoDocente, que en algún momento fueron utilizadas para una integración precaria con Moodle.
+  * Ahora los scripts para correr y deployar la app no son más con Makefile, favoreciendo el desarrollo multiplataforma.
+  * Se agregó con un feature flag el creador de desafíos diseñado por alumnos de UTN FRBA (sólo para desarrolladores)
+  * Se arreglaron bugs variados. 
 
 * 1.6.1 (24 de agosto de 2020)
   *  ¡Rediseñamos la pantalla de bienvenida y las fuentes usadas en la aplicación! Ahora esta posee un diseño más elegante.
