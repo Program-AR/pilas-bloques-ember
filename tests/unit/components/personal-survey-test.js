@@ -53,7 +53,7 @@ module('Unit | Components | personal-survey', function (hooks) {
   }
 
   function doResponse() {
-    return personalSurvey.saveAnswer({ text: "RESPONSE" })
+    return personalSurvey.completeAnswer({ text: "RESPONSE" })
   }
 
   function answerUserQuestion(id) {

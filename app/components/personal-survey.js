@@ -64,7 +64,8 @@ export default Component.extend({
           { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],
-      askEachSession: true
+      askEachSession: true,
+      isLastQuestion: true,
     }
   ],
 
@@ -88,12 +89,20 @@ export default Component.extend({
     window.surveyWindow.survey.logoWidth = 75
     window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
-    window.surveyWindow.survey.onComplete.add(survey => { this.saveAnswer(survey.data); this.showThankYou() })
+    window.surveyWindow.survey.onComplete.add(survey => { this.completeAnswer(survey.data) })
   },
 
-  saveAnswer(response) {
-    response.timestamp = new Date()
+  completeAnswer(response) {
     const question = this.nextQuestion()
+    this.saveAnswer(question, response)
+
+    if (question.isLastQuestion) {
+      this.showThankYou()
+    }
+  },
+
+  saveAnswer(question, response) {
+    response.timestamp = new Date()
     this.close()
     return this.storageFor(question).newAnswer({ question, response })
   },
@@ -109,8 +118,9 @@ export default Component.extend({
     const { answers } = this.pilasBloquesAnalytics.getSession()
     return answers && answers.map(({ question }) => question.id) || []
   },
+
   showThankYou() {
-    this.paperToaster.show("Gracias :)", {
+    this.paperToaster.show("Muchas gracias por tus respuestas.", {
       duration: 4000,
       position: "bottom"
     })
