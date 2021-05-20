@@ -23,7 +23,7 @@ export default Component.extend({
       reader.onload = (event) => resolve(event.target.result);
       reader.readAsText(archivo);
     })
-    .then(contenido => this.cargarSolucion(contenido))
+      .then(contenido => this.cargarSolucion(contenido))
   },
 
   // Esto tengo que pasarlo a Promise nativo.
@@ -124,5 +124,10 @@ export default Component.extend({
 
       this.descargar(JSON.stringify(contenido), fileName, 'application/octet-stream');
     },
-  }
+
+    reiniciarSolucion() {
+      this.set('workspace', this.actividad.solucionBaseInicial);
+    },
+  },
+
 });

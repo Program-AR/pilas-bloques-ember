@@ -4,5 +4,6 @@
     <a id="placeholder" class="hidden">..</a>
     <Button @tooltip={{"Abrir solución"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}>{{paper-icon "folder"}}</Button>
     <Button @tooltip={{"Guardar solución"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}>{{paper-icon "save"}}</Button>
+    <Button @tooltip={{"Reiniciar solución"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "reiniciarSolucion"}}>{{paper-icon "restart_alt"}}</Button>
     <Button @tooltip={{if shouldUseFloatingMode "Salir de Pantalla Completa" "Pantalla Completa"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{changeScreenMode}}>{{paper-icon (if shouldUseFloatingMode "fullscreen_exit" "fullscreen")}}</Button>
 </div>
