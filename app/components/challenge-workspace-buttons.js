@@ -11,6 +11,7 @@ export default Component.extend({
   xml: null,
   store: service(),
   inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
+  restartDialogIsOpen: false,
 
   version() {
     return VERSION_DEL_FORMATO_DE_ARCHIVO;
@@ -126,7 +127,8 @@ export default Component.extend({
     },
 
     reiniciarSolucion() {
-      this.set('workspace', this.actividad.solucionBaseInicial);
+      this.set('workspace', this.actividad.solucionBaseInicial)
+      this.set('restartDialogIsOpen', false)
     },
   },
 
