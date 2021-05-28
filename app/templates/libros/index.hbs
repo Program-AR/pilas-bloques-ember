@@ -25,11 +25,11 @@
     </div>
 
     <div class="jumbotron center">
+
+    {{#if enableChallengeCreator}}
       <p>
         ¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!
       </p>
-
-    {{#if enableChallengeCreator}}
       {{create-custom-challenge}}
       {{import-custom-challenge}}
     {{/if}}
