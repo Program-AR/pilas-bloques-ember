@@ -1,0 +1,7 @@
+<ModalToggle @title="Terminos y condiciones de uso" @open={{shouldOpen}} @clickOutsideToClose={{false}}>
+  <div>Buenas, debido a razones tenemos que pedirte que leas o aceptes o algo los <TermsAndConditionsLink />.</div>
+  <div>
+    <Button @onClick={{action "acceptTerms"}}> Acepto los terminos y condiciones de uso </Button>
+    <Button @onClick={{action "rejectTerms"}}> No acepto</Button>
+  </div>
+</ModalToggle>
