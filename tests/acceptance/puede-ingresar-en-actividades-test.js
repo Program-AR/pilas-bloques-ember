@@ -49,6 +49,6 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
 
   testSePuedeVisitar("DibujandoFigurasDentroDeFiguras", "Dibujando: Figuras dentro de figuras");
 
-  testSePuedeVisitar("DibujandoLaCuevaDeEstalagtitas", "Dibujando: La cueva de estalagtitas");
+  testSePuedeVisitar("DibujandoLaCuevaDeEstalagtitas", "Dibujando: La cueva de estalactitas");
 
 });

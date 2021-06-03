@@ -418,7 +418,7 @@ export default [
   {
     id: 37,
     nombre: 'DibujandoLaCuevaDeEstalagtitas',
-    titulo: 'Dibujando: La cueva de estalagtitas',
+    titulo: 'Dibujando: La cueva de estalactitas',
     enunciado: 'Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.',
     consignaInicial: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.',
     escena: 'DibujandoCuevaEstalagtitas',
