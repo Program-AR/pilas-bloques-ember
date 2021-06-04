@@ -9,7 +9,7 @@ export default Component.extend({
   shouldClose: false,
 
   termsAreAccepted: computed('storage', 'pilasBloquesApi', function () {
-    return this.get('pilasBloquesApi').getUser() || this.get('storage').termsAndConditionsAreAccepted()
+    return this.get('pilasBloquesApi').getUser() || this.get('storage').termsAreAccepted()
   }),
 
   shouldOpen: computed('termsAreAccepted', 'shouldClose', function () {
@@ -18,7 +18,7 @@ export default Component.extend({
 
   actions: {
     acceptTerms() {
-      this.storage.registerTermsAndConditions()
+      this.storage.saveTermsAcceptance()
       this.set('shouldClose', true)
     },
 

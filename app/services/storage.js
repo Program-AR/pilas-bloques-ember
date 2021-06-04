@@ -20,9 +20,9 @@ export default Ember.Service.extend({
 
   saveAnalyticsSession(session) { this._save(this.ANALYTICS_KEY, session) },
 
-  registerTermsAndConditions() { this._save(this.TOS_ACCEPTED_KEY, true) },
+  saveTermsAcceptance() { this._save(this.TOS_ACCEPTED_KEY, true) },
 
-  termsAndConditionsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
+  termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
   _get(key) { return JSON.parse(localStorage.getItem(key) || null) },
   _save(key, data = null) { localStorage.setItem(key, JSON.stringify(data)) },
