@@ -1,7 +1,8 @@
 import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
-import { setupRenderingTest, setupTest } from 'ember-qunit'
+import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import { fakeUser, toastMock } from './mocks'
 import config from '../../config/environment'
 const { baseURL } = config.pbApi
@@ -18,6 +19,12 @@ export function setupPBIntegrationTest(hooks) {
     setupRenderingTest(hooks)
     setupClear(hooks)
     setupEmberMocks(hooks)
+}
+
+export function setupPBAcceptanceTest(hooks) {
+    setupApplicationTest(hooks)
+    setupMirage(hooks)
+    setupClear(hooks)
 }
 
 export function setupClear(hooks) {
