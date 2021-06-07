@@ -1,5 +1,5 @@
-{{#if inElectron}}
-  <a ...attributes class="link" {{action "abrirConNavegadorExterno" href}} >{{yield}}</a>
+{{#if (compute platform.inElectron)}}
+  <a ...attributes class="link" {{action "abrirDesdeElectron" href}} >{{yield}}</a>
 {{else}}
   <a ...attributes class="link" href={{href}} target={{if openOnNewTab '_blank' ''}} >{{yield}}</a>
 {{/if}}

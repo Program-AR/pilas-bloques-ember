@@ -96,7 +96,7 @@ package_win32() {
     echo "Generating installer for windows package..."
     package "win32" "ia32" "ico"
 	cp packaging/instalador.nsi binaries/$NAME-win32-ia32/
-	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi
+	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi; cd ../..
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 

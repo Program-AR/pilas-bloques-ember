@@ -1,16 +1,24 @@
 import { inject as service } from '@ember/service'
-import { computed } from '@ember/object';
-import Controller from '@ember/controller';
+import { computed } from '@ember/object'
+import Controller from '@ember/controller'
 
 export default Controller.extend({
   avatardb: service(),
   pilasBloquesApi: service(),
-  registerData: {email:''},
+  registerData: { email: '' },
   validUsername: true,
-  
+
   avatars: computed('avatardb', function () {
     return this.avatardb.allAvatars()
   }),
+
+  usernameFormatValidation: [{
+    message: 'El usuario sólo puede contener letras, números y guiones',
+    validate: (userName) => {
+      const re = /^[a-zA-Z\d]+[a-zA-Z\d\-_]*$/
+      return re.test(userName)
+    }
+  }],
 
   mailValidation:[{
     message: 'Este no es un email válido',
@@ -21,7 +29,7 @@ export default Controller.extend({
     }
   }],
 
-  parentNameValidation:[{
+  parentNameValidation: [{
     message: 'Se requiere nombre y apellido',
     validate: (parentName) => {
       const re = /.+ .+/
@@ -29,9 +37,9 @@ export default Controller.extend({
     }
   }],
 
-  DNIValidation:[{
+  DNIValidation: [{
     message: 'El DNI es invalido',
-    validate: (DNI) =>{
+    validate: (DNI) => {
       // any string with at least 6 numbers
       const re = new RegExp('(\\D*\\d\\D*){6,}')
       return re.test(DNI)
