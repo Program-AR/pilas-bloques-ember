@@ -65,7 +65,6 @@ export default Component.extend({
         ]
       }],
       askEachSession: true,
-      isLastQuestion: true,
     }
   ],
 
@@ -95,8 +94,7 @@ export default Component.extend({
   completeAnswer(response) {
     const question = this.nextQuestion()
     this.saveAnswer(question, response)
-
-    if (question.isLastQuestion) {
+    if (question == this.questions.lastObject) {
       this.showThankYou()
     }
   },
