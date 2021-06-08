@@ -13,6 +13,11 @@ module.exports = function (environment) {
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
 
+    showdown: {
+      simpleLineBreaks: true,
+      emoji: true
+    },
+
     pbAnalytics: {
       sessionExpire: 30
     },
