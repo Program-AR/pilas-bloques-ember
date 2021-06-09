@@ -3,7 +3,6 @@ libros:
     welcome: "--¡Hola! Te damos la bienvenida a '<b>' Pilas Bloques '</b>', una herramienta para aprender a programar."
     challenges: "--Los desafíos que ofrecemos están organizados en dos grupos:"
     custom_challenges: "--¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
-    visit_about: "--Visitá la sección {startAbout} Acerca de {closeAbout} para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló."
     about: "--Acerca de"
 
 
