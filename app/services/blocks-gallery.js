@@ -2,7 +2,8 @@ import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
 
 export default Service.extend({
-  blockly: service(),
+  blockly: service(), 
+  intl: Ember.inject.service(),
 
   start() {
     //START TODO: Move these definitions to another file
@@ -796,7 +797,7 @@ export default Service.extend({
     Blockly.Blocks.DibujarLado.categoria = 'Primitivas';
 
     this.crearBloqueAccion('ComerChurrasco', {
-      descripcion: 'Comer churrasco',
+      descripcion: this.intl.t(`blocks.eatSteak`),
       icono: 'icono.churrasco.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta:"Churrasco", nombreAnimacion: "comerChurrasco", animacionInteractuadoMientras: "desaparecer"}',

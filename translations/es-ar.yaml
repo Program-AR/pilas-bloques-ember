@@ -5,4 +5,7 @@ libros:
     custom_challenges: "--¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
     about: "--Acerca de"
 
+blocks:
+  turnOnTheLight: "--Prender la luz"
+  eatSteak: "--Comer churrasco"
 
