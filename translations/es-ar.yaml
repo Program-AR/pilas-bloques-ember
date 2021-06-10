@@ -30,7 +30,8 @@ components:
     difference: "¿En qué se diferencia Pilas Bloques de otras herramientas?"
     learning: "La principal diferencia es que esta plataforma fue pensada para <b>acompañar una secuencia didáctica</b> para el aprendizaje de la programación en la escuela."
     sequence: "¿Qué es una secuencia didáctica?"
-    plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos. Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando <Link @href='https://program.ar/mision/' @openOnNewTab={{true}}>acá</Link>."
+    plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos. 
+          Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando"
     who_can_do: "¿Quién puede hacer los desafíos de Pilas Bloques?"
     activities: "Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente poseemos
     acompañan dos manuales para docentes orientados a <b> la primaria </b>, por lo que los niños entre
