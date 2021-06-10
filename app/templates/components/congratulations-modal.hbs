@@ -1,8 +1,8 @@
 <Fireworks/>
-<Modal @title={{"¡Lo lograste!"}} @onClose={{action onClose}}>
+<Modal @title={{t "components.congratulations-modal.did_it"}} @onClose={{action onClose}}>
   <div class="center">
     <img src="imagenes/libros/primer-ciclo.png" />
-    <p><strong>Para pensar...</strong> Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!</p>
-    <p>¿Estás usando los conceptos bien?</p>
+    <p><strong>{{t "components.congratulations-modal.think"}}</strong> {{ t "components.congratulations-modal.solutions"}}</p>
+    <p>{{t "components.congratulations-modal.concepts"}}</p>
   </div>
 </Modal>
