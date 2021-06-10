@@ -8,13 +8,13 @@ export default Model.extend({
   intl: Ember.inject.service(),
 
   titulo: computed('id',function(){
-    return this.intl.t(`challenges.${this.id}.title`); 
+    return this.intl.t(`model.challenges.${this.id}.title`);
   }),
   enunciado: computed('id',function(){
-    return this.intl.t(`challenges.${this.id}.description`); 
+    return this.intl.t(`model.challenges.${this.id}.description`);
   }),
   consignaInicial: computed('id',function(){
-    return this.intl.t(`challenges.${this.id}.clue`); 
+    return this.intl.t(`model.challenges.${this.id}.clue`);
   }),
 
   nombre: attr('string'),
