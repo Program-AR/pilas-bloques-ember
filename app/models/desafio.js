@@ -2,6 +2,7 @@ import { computed } from '@ember/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
+import Ember from 'ember';
 
 export default Model.extend({
   intl: Ember.inject.service(),
