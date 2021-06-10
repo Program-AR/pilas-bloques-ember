@@ -1,9 +1,9 @@
 
-<Modal @title={{"¿Pensás que este ejercicio tiene un error?"}} @onClose={{action onClose}}>
-  <p>{{ t "components.bug-report-modal.problem"}}</p>
-  <p>{{ t "components.bug-report-modal.error"}}</p>
-  <p> {{ t "components.bug-report-modal.error"}} <a href="mailto:pilasbloques@program.ar">pilasbloques@program.ar</a></p>
-  <p> {{ t "components.bug-report-modal.github"}} <Link @href="https://github.com/Program-AR/pilas-bloques/issues" @openOnNewTab={{false}}>Issue Tracker</Link></p>
+<Modal @title={{t "components.bugReportModal.problem"}} @onClose={{action onClose}}>
+  <p>{{t "components.bugReportModal.problem"}}</p>
+  <p>{{t "components.bugReportModal.error"}}</p>
+  <p>{{t "components.bugReportModal.mail"}}<a href="mailto:pilasbloques@program.ar">pilasbloques@program.ar</a></p>
+  <p>{{t "components.bugReportModal.githubReport"}}<Link @href="https://github.com/Program-AR/pilas-bloques/issues" @openOnNewTab={{false}}>{{ t "components.bugReportModal.issueTracker"}}</Link></p>
 </Modal>
 
 

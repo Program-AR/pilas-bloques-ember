@@ -2,23 +2,33 @@ libros:
   index:
     welcome: "--¡Hola! Te damos la bienvenida a '<b>' Pilas Bloques '</b>', una herramienta para aprender a programar."
     challenges: "--Los desafíos que ofrecemos están organizados en dos grupos:"
-    custom_challenges: "--¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
+    customChallenges: "--¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
     about: "--Acerca de"
+
+acercade:
+  yourCurrentVersion: Actualmente estás usando la versión
+  youCanUpdate: y se puede actualizar a la versión
+  visitProjectWeb: Visitar la web del proyecto
+
 components:
-  bug-report-modal:
+  bugReportModal:
     problem: "¿Tenés algún problema?"
     error: "¿Pensás que este ejercicio tiene un error?"
     mail: "Podés escribirnos a "
-    github: "Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el"
-  congratulations-modal:
-    did_it: "¡Lo lograste!"
-    think: "Para pensar..."
-    solutions: "Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!"
+    githubReport: "Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el"
+    issueTracker: Issue Tracker
+
+  congratulationsModal:
+    youDidIt: "¡Lo lograste!"
+    toThink: "Para pensar..."
+    otherSolutions: "Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!"
     concepts: "¿Estás usando los conceptos bien?"
-  create-custom-challenge:
+
+  createCustomChallenge:
     create: "Crear Desafío"
     custom: "Crea desafíos personalizados con el creador de desafíos de Pilas Bloques."
-  descripcion-acerca-de:
+
+  descripcionAcercaDe:
     about: "Acerca de Pilas Bloques"
     app: "Pilas Bloques es una aplicación para aprender a programar, desarrollada especialmente para el aula."
     challenges: "Se proponen desafíos con diversos niveles de dificultad para acercar a las y los estudiantes al mundo de la programación por medio de bloques."
@@ -32,22 +42,22 @@ components:
     sequence: "¿Qué es una secuencia didáctica?"
     plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos. 
           Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando"
-    who_can_do: "¿Quién puede hacer los desafíos de Pilas Bloques?"
-    activities: "Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente poseemos
-    acompañan dos manuales para docentes orientados a <b> la primaria </b>, por lo que los niños entre
-    5 y 8 años podrán aprovechar mejor las actividades del Primer Ciclo, y los niños entre 9 y 12 años
-    podrán aprovechar mejor las actividades del Segundo Ciclo."
-    anynone: "¿Y cualquiera puede hacer los desafíos por su cuenta?"
+    whoCanDo: "¿Quién puede hacer los desafíos de Pilas Bloques?"
+    activities: "Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente
+                acompañan dos manuales para docentes orientados a <b> la primaria </b>, por lo que los niños entre
+                5 y 8 años podrán aprovechar mejor las actividades del Primer Ciclo, y los niños entre 9 y 12 años
+                podrán aprovechar mejor las actividades del Segundo Ciclo."
+    anyone: "¿Y cualquiera puede hacer los desafíos por su cuenta?"
     tool: "La herramienta está pensada como <b>ayuda al docente y al alumno</b> en el proceso de aprendizaje 
-    de la programación en un entorno escolar. En la secuencia didáctica que se plantea, 
-    la <b>indagación</b> autodidacta es fundamental. Nuestra recomendación, no obstante, es que el 
-    docente sea el que <b>guíe</b> y asista el proceso de aprendizaje del alumno."
+          de la programación en un entorno escolar. En la secuencia didáctica que se plantea, 
+          la <b>indagación</b> autodidacta es fundamental. Nuestra recomendación, no obstante, es que el 
+          docente sea el que <b>guíe</b> y asista el proceso de aprendizaje del alumno."
     contact: "Contacto"
-    any_doubt: "Por cualquier duda nos pueden contactar a: "
-    about_authors: "Sobre los autores y Program.AR"
+    anyDoubts: "Por cualquier duda nos pueden contactar a: "
+    aboutAuthors: "Sobre los autores y Program.AR"
     developed: "Pilas Bloques fue desarrollada por"
-    uses_tool: ". Esta aplicación hace uso de la herramienta"
-    developed_by: "Desarrollada por"
-    didatic_sequence: "La secuencia didáctica que guía la herramienta fue elaborada por "
+    usesTool: ". Esta aplicación hace uso de la herramienta"
+    developedBy: "Desarrollada por"
+    didacticSequence: "La secuencia didáctica que guía la herramienta fue elaborada por "
     material: " , y puede encontrarse junto con otros materiales en la página web. Contó con el apoyo y la colaboración de la Universidad Nacional de Quilmes y otras universidades nacionales de Argentina."
     iniciative: "Program.AR es una iniciativa que trabaja para que el aprendizaje significativo de Computación esté presente en todas las escuelas argentinas. Más información: "
