@@ -1,5 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
+import Ember from 'ember'
 
 export default Service.extend({
   blockly: service(), 
@@ -217,7 +218,7 @@ export default Service.extend({
   _definirBloquesAccion() {
 
     this.crearBloqueAccion('ApretarBoton', {
-      descripcion: 'Apretar botón',
+      descripcion: this.intl.t(`blocks.pushButton`),
       icono: 'iconos.botonRojo.png',
       comportamiento: 'Interactuar',
       argumentos: `{
@@ -230,91 +231,91 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('EncenderLuz', {
-      descripcion: 'Prender la luz',
+      descripcion: this.intl.t(`blocks.turnOnTheLight`),
       icono: 'icono.Lamparita.png',
       comportamiento: 'Encender',
       argumentos: "{'etiqueta':'Luz'}"
     });
 
     this.crearBloqueAccion('ComerBanana', {
-      descripcion: 'Comer banana',
+      descripcion: this.intl.t(`blocks.eatBanana`),
       icono: 'icono.banana.png',
       comportamiento: 'Recolectar',
       argumentos: `{etiqueta: 'BananaAnimada', nombreAnimacion: "comerBanana"}`,
     });
 
     this.crearBloqueAccion('ComerManzana', {
-      descripcion: 'Comer manzana',
+      descripcion: this.intl.t(`blocks.eatApple`),
       icono: 'icono.manzana.png',
       comportamiento: 'Recolectar',
       argumentos: `{etiqueta: 'ManzanaAnimada', nombreAnimacion: "comerManzana"}`,
     });
 
     this.crearBloqueAccion('ComerQueso', {
-      descripcion: 'Comer queso',
+      descripcion: this.intl.t(`blocks.eatCheese`),
       icono: 'queso.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "QuesoAnimado"}',
     });
 
     this.crearBloqueAccion('ComerNaranja', {
-      descripcion: 'Comer naranja',
+      descripcion: this.intl.t(`blocks.eatOrange`),
       icono: 'naranja.png',
       comportamiento: 'Recolectar',
       argumentos: '{\'etiqueta\' : \'NaranjaAnimada\',  nombreAnimacion: "comerNaranja"}',
     });
 
     this.crearBloqueAccion('MoverACasillaDerecha', {
-      descripcion: 'Mover a la derecha',
+      descripcion: this.intl.t(`blocks.moveRight`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaIzquierda', {
-      descripcion: 'Mover a la izquierda',
+      descripcion: this.intl.t(`blocks.moveLeft`),
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverACasillaIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaArriba', {
-      descripcion: 'Mover arriba',
+      descripcion: this.intl.t(`blocks.moveUp`),
       icono: 'icono.arriba.png',
       comportamiento: 'MoverACasillaArriba',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverACasillaAbajo', {
-      descripcion: 'Mover abajo',
+      descripcion: this.intl.t(`blocks.moveDown`),
       icono: 'icono.abajo.png',
       comportamiento: 'MoverACasillaAbajo',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('LevantaTuerca', {
-      descripcion: 'Levantar tuerca',
+      descripcion: this.intl.t(`blocks.pickNut`),
       icono: 'tuerca.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "TuercaAnimada", mensajeError: "No hay tuerca aquí", pasos: 50}',
     });
 
     this.crearBloqueAccion('Saludar', {
-      descripcion: 'Saludar',
+      descripcion: this.intl.t(`blocks.greet`),
       icono: 'icono.saludar.png',
       comportamiento: 'ComportamientoAnimado',
       argumentos: '{nombreAnimacion: "saludando", idTransicion: "saludar"}',
     });
 
     this.crearBloqueAccion('AbrirOjos', {
-      descripcion: 'Abrir ojos',
+      descripcion: this.intl.t(`blocks.openEyes`),
       icono: 'icono.abrirOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "abrirOjos", valorEstar: "con los ojos abiertos", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "parado", arrancoAsi:true, idTransicion: "abrirOjos"}',
     });
 
     this.crearBloqueAccion('CerrarOjos', {
-      descripcion: 'Cerrar ojos',
+      descripcion: this.intl.t(`blocks.closeEyes`),
       icono: 'icono.cerrarOjos.png',
       comportamiento: 'AnimarSiNoEstoyYa',
       argumentos: '{nombreAnimacion: "cerrarOjos", valorEstar: "con los ojos cerrados", descripcionEstar: "estadoOjos", nombreAnimacionSiguiente: "ojosCerrados", idTransicion: "cerrarOjos"}',
@@ -322,42 +323,42 @@ export default Service.extend({
 
 
     this.crearBloqueAccion('Acostarse', {
-      descripcion: 'Acostarse',
+      descripcion: this.intl.t(`blocks.lie`),
       icono: 'icono.acostarse.png',
       comportamiento: 'ModificarRotacionYAltura',
       argumentos: '{alturaIr: -180 ,rotacionIr: 90, nombreAnimacion:"acostado", valorEstar: "acostado", descripcionEstar: "posicionCuerpo", idTransicion: "acostarse"}',
     });
 
     this.crearBloqueAccion('Pararse', {
-      descripcion: 'Pararse',
+      descripcion: this.intl.t(`blocks.standUp`),
       icono: 'icono.pararse.png',
       comportamiento: 'ModificarRotacionYAltura',
       argumentos: '{alturaIr: -150 ,rotacionIr: 0, nombreAnimacion:"acostado", valorEstar: "parado", descripcionEstar: "posicionCuerpo", arrancoAsi:true, idTransicion: "levantarse"}',
     });
 
     this.crearBloqueAccion('Volver', {
-      descripcion: 'Volver',
+      descripcion: this.intl.t(`blocks.return`),
       icono: 'icono.izquierda.png',
       comportamiento: 'MovimientoAnimado',
       argumentos: '{direccion: [-1,0], distancia: 50, idTransicion: "volver"}',
     });
 
     this.crearBloqueAccion('Avanzar', {
-      descripcion: 'Avanzar',
+      descripcion: this.intl.t(`blocks.advance`),
       icono: 'icono.derecha.png',
       comportamiento: 'MovimientoAnimado',
       argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
     });
 
     this.crearBloqueAccion('Soniar', {
-      descripcion: 'Soñar',
+      descripcion: this.intl.t(`blocks.dream`),
       icono: 'icono.soniar.png',
       comportamiento: 'Pensar',
       argumentos: '{mensaje: "ZZzzZzZ...", hayQueAnimar: false, idTransicion: "soniar"}',
     });
 
     this.crearBloqueAccion('SaltarHablando', {
-      descripcion: 'Saltar',
+      descripcion: this.intl.t(`blocks.jump`),
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarHablando',
       argumentos: `{
@@ -369,91 +370,91 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('VolverABordeIzquierdo', {
-      descripcion: 'Ir al borde izquierdo',
+      descripcion: this.intl.t(`blocks.goToLeftBorder`),
       icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('TomarEstrella', {
-      descripcion: 'Tomar estrella',
+      descripcion: this.intl.t(`blocks.takeStar`),
       icono: 'icono.estrella.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
     });
 
     this.crearBloqueAccion('MorderSandia', {
-      descripcion: 'Comer sandía',
+      descripcion: this.intl.t(`blocks.eatWatermelon`),
       icono: 'icono.sandia.png',
       comportamiento: 'Recolectar',
       argumentos: '{\'etiqueta\':\'SandiaAnimada\', \'mensajeError\': \'Acá no hay una sandia\'}',
     });
 
     this.crearBloqueAccion('AlimentarPez', {
-      descripcion: 'Alimentar pez',
+      descripcion: this.intl.t(`blocks.feedFish`),
       icono: 'icono.pez.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "PezAnimado", idTransicion: "alimentarPez"}',
     });
 
     this.crearBloqueAccion('AgarrarComida', {
-      descripcion: 'Agarrar comida',
+      descripcion: this.intl.t(`blocks.pickFood`),
       icono: 'icono.alimento_pez.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "AlimentoAnimado", idTransicion: "recogerComida"}',
     });
 
     this.crearBloqueAccion('PasarASiguienteComputadora', {
-      descripcion: 'Pasar a la siguiente computadora',
+      descripcion: this.intl.t(`blocks.nextComputer`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('PrenderComputadora', {
-      descripcion: 'Prender computadora',
+      descripcion: this.intl.t(`blocks.turnComputerOn`),
       icono: 'icono.turn_on.svg',
       comportamiento: 'PrenderComputadora',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('ApagarComputadora', {
-      descripcion: 'Apagar computadora',
+      descripcion: this.intl.t(`blocks.turnComputerOff`),
       icono: 'icono.turn_off.svg',
       comportamiento: 'ApagarComputadora',
       argumentos: '{}'
     });
 
     this.crearBloqueAccion('InstalarJuego', {
-      descripcion: 'Instalar juego',
+      descripcion: this.intl.t(`blocks.installGame`),
       icono: 'icono.installation.svg',
       comportamiento: 'InstalarJuegoEnComputadora',
       argumentos: '{}'
     });
 
     this.crearBloqueAccion('EscribirA', {
-      descripcion: 'Escribir "A"',
+      descripcion: this.intl.t(`blocks.writeA`),
       icono: 'icono.letter-a.svg',
       comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion: "escribirA"}',
     });
 
     this.crearBloqueAccion('EscribirB', {
-      descripcion: 'Escribir "B"',
+      descripcion: this.intl.t(`blocks.writeB`),
       icono: 'icono.letter-b.svg',
       comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion: "escribirB"}',
     });
 
     this.crearBloqueAccion('EscribirC', {
-      descripcion: 'Escribir "C"',
+      descripcion: this.intl.t(`blocks.writeC`),
       icono: 'icono.letter-c.svg',
       comportamiento: 'EscribirEnComputadora',
       argumentos: '{idTransicion : "escribirC"}',
     });
 
     this.crearBloqueAccion('AgarrarLlave', {
-      descripcion: 'Tomar la llave',
+      descripcion: this.intl.t(`blocks.takeKey`),
       icono: 'icono.llave.png',
       comportamiento: 'Sostener',
       argumentos: `{
@@ -463,7 +464,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AbrirCofre', {
-      descripcion: 'Abrir el cofre y tomar sombrero',
+      descripcion: this.intl.t(`blocks.openSafeBoxTakeHat`),
       icono: 'icono.cofreConSombrero.png',
       comportamiento: 'Soltar',
       argumentos: `{
@@ -475,7 +476,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('DarSombrero', {
-      descripcion: 'Dar el sombrero',
+      descripcion: this.intl.t(`blocks.leaveHat`),
       icono: 'icono.sombrero.png',
       comportamiento: 'Interactuar',
       argumentos: `{
@@ -488,7 +489,7 @@ export default Service.extend({
 
     this.crearBloqueAccion('AtacarConEspada', {
       id: 'Atacarconespada',
-      descripcion: 'Atacar con la espada',
+      descripcion: this.intl.t(`blocks.attackWithSword`),
       icono: 'icono.espada.png',
       comportamiento: 'SecuenciaAnimada',
       argumentos: `{
@@ -513,7 +514,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('EscaparEnUnicornio', {
-      descripcion: 'Escapar en unicornio',
+      descripcion: this.intl.t(`blocks.unicornEscape`),
       icono: 'icono.unicornio.png',
       comportamiento: 'Escapar',
       argumentos: `{
@@ -522,7 +523,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('Escapar', {
-      descripcion: 'Escapar',
+      descripcion: this.intl.t(`blocks.escape`),
       icono: 'icono.escapar.png',
       comportamiento: 'Escapar',
       argumentos: `{
@@ -532,7 +533,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('TomarHierro', {
-      descripcion: 'Agarrar hierro',
+      descripcion: this.intl.t(`blocks.pickIron`),
       icono: 'icono.hierro.png',
       comportamiento: 'Sostener',
       argumentos: `{
@@ -542,7 +543,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('TomarCarbon', {
-      descripcion: 'Agarrar carbón',
+      descripcion: this.intl.t(`blocks.pickCarbon`),
       id: 'TomarCarbon',
       icono: 'icono.carbon.png',
       comportamiento: 'Sostener',
@@ -553,7 +554,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('PrenderFogata', {
-      descripcion: 'Prender fogata',
+      descripcion: this.intl.t(`blocks.lightCampfire`),
       icono: 'icono.FogataPrendida.png',
       comportamiento: 'Interactuar',
       argumentos: `{
@@ -564,7 +565,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('Depositar', {
-      descripcion: 'Poner en la nave',
+      descripcion: this.intl.t(`blocks.putIntoTheShip`),
       icono: 'icono.PonerEnNave.png',
       comportamiento: 'Soltar',
       argumentos: `{
@@ -574,28 +575,28 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AvanzarMono', {
-      descripcion: 'Mover a la derecha',
+      descripcion: this.intl.t(`blocks.moveRight`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{velocidad: 25}',
     });
 
     this.crearBloqueAccion('DejarRegalo', {
-      descripcion: 'Dejar un regalo',
+      descripcion: this.intl.t(`blocks.leavePresent`),
       icono: 'icono.regalo.png',
       comportamiento: 'Depositar',
       argumentos: '{claseADepositar: "RegaloAnimado"}',
     });
 
     this.crearBloqueAccion('SiguienteFila', {
-      descripcion: 'Pasar a la siguiente fila',
+      descripcion: this.intl.t(`blocks.nextLine`),
       icono: 'icono.abajo.png',
       comportamiento: 'SiguienteFila',
       argumentos: '{}'
     });
 
     this.crearBloqueAccion('SiguienteFilaTotal', {
-      descripcion: 'Pasar a la siguiente fila',
+      descripcion: this.intl.t(`blocks.nextLine`),
       icono: 'icono.izquierdaAbajo.png',
       comportamiento: 'SecuenciaAnimada',
 
@@ -613,28 +614,28 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('SiguienteColumna', {
-      descripcion: 'Pasar a la siguiente columna',
+      descripcion: this.intl.t(`blocks.nextColumn`),
       icono: 'icono.derecha.png',
       comportamiento: 'SiguienteColumna',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('ContarBanana', {
-      descripcion: 'Contar una banana',
+      descripcion: this.intl.t(`blocks.countBanana`),
       icono: 'icono.banana.png',
       comportamiento: 'Contar',
       argumentos: '{etiqueta: "BananaAnimada", nombreAnimacion: "comerBanana"}',
     });
 
     this.crearBloqueAccion('ContarManzana', {
-      descripcion: 'Contar una manzana',
+      descripcion: this.intl.t(`blocks.countManzana`),
       icono: 'icono.manzana.png',
       comportamiento: 'Contar',
       argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
     });
 
     this.crearBloqueAccion('ExplotarGlobo', {
-      descripcion: 'Explotar globo',
+      descripcion: this.intl.t(`blocks.blowUpBallon`),
       icono: 'icono.globo.png',
       comportamiento: 'Interactuar',
       argumentos: `{
@@ -668,7 +669,7 @@ export default Service.extend({
 
 
     this.crearBloqueAccion('PatearPelota', {
-      descripcion: 'Patear pelota',
+      descripcion: this.intl.t(`blocks.kickBall`),
       icono: 'icono.pelota.png',
       comportamiento: 'PatearPelota',
       argumentos: `{
@@ -677,56 +678,56 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('Avanzar1km', {
-      descripcion: 'Avanzar 1 Km',
+      descripcion: this.intl.t(`blocks.move1Km`),
       icono: 'icono.derecha.png',
       comportamiento: 'VolarHeroicamente',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('CambiarColor', {
-      descripcion: 'Cambiar color del foco',
+      descripcion: this.intl.t(`blocks.changeLightColor`),
       icono: 'icono.cambiar.color.png',
       comportamiento: 'CambiarColor',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('SiguienteFoco', {
-      descripcion: 'Pasar al siguiente foco',
+      descripcion: this.intl.t(`blocks.moveNextLight`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('EmpezarFiesta', {
-      descripcion: 'Empezar fiesta',
+      descripcion: this.intl.t(`blocks.startParty`),
       icono: 'icono.empezar.fiesta.png',
       comportamiento: 'EmpezarFiesta',
       argumentos: '{idTransicion: "empezarFiesta"}',
     });
 
     this.crearBloqueAccion('VolverAlBordeIzquierdo', {
-      descripcion: 'Volver al borde izquierdo',
+      descripcion: this.intl.t(`blocks.backToLeftBorder`),
       icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('IrAlPrimerSospechoso', {
-      descripcion: 'Ir al primer sospechoso',
+      descripcion: this.intl.t(`blocks.goToFirstSuspect`),
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverTodoAIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('IrAlSiguienteSospechoso', {
-      descripcion: 'Pasar al siguiente sospechoso',
+      descripcion: this.intl.t(`blocks.nextSuspect`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('InterrogarSospechoso', {
-      descripcion: 'Interrogar sospechoso',
+      descripcion: this.intl.t(`blocks.askSuspect`),
       icono: 'icono.sacar.disfraz.png',
       comportamiento: 'SacarDisfraz',
       argumentos: '{}',
@@ -804,7 +805,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AgarrarTomate', {
-      descripcion: 'Agarrar tomate',
+      descripcion: this.intl.t(`blocks.pickTomato`),
       icono: 'icono.tomate.png',
       comportamiento: 'Recolectar',
       argumentos: `{
@@ -817,7 +818,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AgarrarLechuga', {
-      descripcion: 'Agarrar lechuga',
+      descripcion: this.intl.t(`blocks.pickLettuce`),
       icono: 'icono.lechuga.png',
       comportamiento: 'Recolectar',
       argumentos: `{
@@ -829,7 +830,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('PrepararEnsalada', {
-      descripcion: 'Preparar ensalada',
+      descripcion: this.intl.t(`blocks.prepareSalad`),
       icono: 'icono.ensaladera.png',
       comportamiento: 'PrepararEnsalada',
       argumentos: `{}`,
@@ -838,7 +839,7 @@ export default Service.extend({
     // Para los desafíos de escribir y leer letras
 
     this.crearBloqueAccion('EscribirLetraActualEnOtraCuadricula', {
-      descripcion: 'Escribir letra que estoy tocando',
+      descripcion: this.intl.t(`blocks.writeLetter`),
       icono: 'icono.DibujarLinea.png',
       comportamiento: 'EscribirLetraActualEnOtraCuadricula',
       argumentos: '{}',
@@ -905,84 +906,84 @@ export default Service.extend({
     Blockly.Blocks.GirarGrados.categoria = 'Primitivas';
 
     this.crearBloqueAccion('MoverArribaDibujando', {
-      descripcion: 'Mover arriba dibujando',
+      descripcion: this.intl.t(`blocks.moveAndDrawUp`),
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarLinea',
       argumentos: '{direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', {
-      descripcion: 'Mover abajo dibujando',
+      descripcion: this.intl.t(`blocks.moveAndDrawDown`),
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarLinea',
       argumentos: '{direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', {
-      descripcion: 'Mover derecha dibujando',
+      descripcion: this.intl.t(`blocks.moveAndDrawRight`),
       icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarLinea',
       argumentos: '{direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', {
-      descripcion: 'Mover izquierda dibujando',
+      descripcion: this.intl.t(`blocks.moveAndDrawLeft`),
       icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarLinea',
       argumentos: '{direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('SaltarArriba', {
-      descripcion: 'Saltar arriba',
+      descripcion: this.intl.t(`blocks.jumpUp`),
       icono: 'icono.arriba.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [0,1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarAbajo', {
-      descripcion: 'Saltar abajo',
+      descripcion: this.intl.t(`blocks.jumpDown`),
       icono: 'icono.abajo.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [0,-1], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarDerecha', {
-      descripcion: 'Saltar derecha',
+      descripcion: this.intl.t(`blocks.jumpRight`),
       icono: 'icono.derecha.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('SaltarIzquierda', {
-      descripcion: 'Saltar izquierda',
+      descripcion: this.intl.t(`blocks.jumpLeft`),
       icono: 'icono.izquierda.png',
       comportamiento: 'SaltarAnimado',
       argumentos: '{direccion: [-1,0], distancia: 50, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"}',
     });
 
     this.crearBloqueAccion('MoverLeyendoDerecha', {
-      descripcion: 'Mover a la derecha',
+      descripcion: this.intl.t(`blocks.moveRight`),
       icono: 'icono.derecha.png',
       comportamiento: 'MoverLeyendoDerecha',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverLeyendoIzquierda', {
-      descripcion: 'Mover a la izquierda',
+      descripcion: this.intl.t(`blocks.moveLeft`),
       icono: 'icono.izquierda.png',
       comportamiento: 'MoverLeyendoIzquierda',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverLeyendoArriba', {
-      descripcion: 'Mover arriba',
+      descripcion: this.intl.t(`blocks.moveUp`),
       icono: 'icono.arriba.png',
       comportamiento: 'MoverLeyendoArriba',
       argumentos: '{}',
     });
 
     this.crearBloqueAccion('MoverLeyendoAbajo', {
-      descripcion: 'Mover abajo',
+      descripcion: this.intl.t(`blocks.moveDown`),
       icono: 'icono.abajo.png',
       comportamiento: 'MoverLeyendoAbajo',
       argumentos: '{}',
@@ -993,117 +994,117 @@ export default Service.extend({
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('TocandoBanana', {
-      descripcion: 'Hay banana acá',
+      descripcion: this.intl.t(`blocks.bananaHere`),
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoManzana', {
-      descripcion: 'Hay manzana acá',
+      descripcion: this.intl.t(`blocks.appleHere`),
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoNaranja', {
-      descripcion: 'Hay una naranja acá',
+      descripcion: this.intl.t(`blocks.orangeHere`),
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoFogata', {
-      descripcion: 'Hay fogata acá',
+      descripcion: this.intl.t(`blocks.campfireHere`),
       icono: 'icono.FogataApagada.png',
       funcionSensor: 'tocando("FogataAnimada")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoInicio', {
-      descripcion: 'Estoy al inicio',
+      descripcion: this.intl.t(`blocks.atTheBeginning`),
       icono: 'icono.futbolInicio.png',
       funcionSensor: 'tocandoInicio()',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoPelota', {
-      descripcion: 'Llegué a la pelota',
+      descripcion: this.intl.t(`blocks.getToTheBall`),
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinal', {
-      descripcion: 'Llegué al final',
+      descripcion: this.intl.t(`blocks.comeToTheEnd`),
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
       esBool: true
     });
 
     this.crearBloqueSensor('KmsTotales', {
-      descripcion: 'Kilómetros a recorrer',
+      descripcion: this.intl.t(`blocks.kmToTravel`),
       icono: 'icono.kms.png',
       funcionSensor: 'kmsTotales()',
     });
 
     this.crearBloqueSensor('EstoyEnEsquina', {
-      descripcion: 'Estoy en una esquina',
+      descripcion: this.intl.t(`blocks.atTheSquare`),
       icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
       esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElInicio', {
-      descripcion: 'Estoy al inicio de la columna',
+      descripcion: this.intl.t(`blocks.atColumnBeginning`),
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
       esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElFinal', {
-      descripcion: 'Estoy al final de la columna',
+      descripcion: this.intl.t(`blocks.atColumnEnd`),
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
       esBool: true
     });
 
     this.crearBloqueSensor('LargoColumnaActual', {
-      descripcion: 'Largo de la columna actual',
+      descripcion: this.intl.t(`blocks.currentColumnLength`),
       icono: 'icono.largoCol.png',
       funcionSensor: 'largoColumnaActual()-1',
     });
 
     this.crearBloqueSensor('TocandoAbajo', {
-      descripcion: 'Puedo mover abajo',
+      descripcion: this.intl.t(`blocks.canMoveDown`),
       icono: 'icono.abajo.png',
       funcionSensor: 'tocandoFlechaAbajo()',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoDerecha', {
-      descripcion: 'Puedo mover a la derecha',
+      descripcion: this.intl.t(`blocks.canMoveRight`),
       icono: 'icono.derecha.png',
       funcionSensor: 'tocandoFlechaDerecha()',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinCamino', {
-      descripcion: 'Llegó a la meta',
+      descripcion: this.intl.t(`blocks.reachedGoal`),
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoQueso', {
-      descripcion: 'Hay queso acá',
+      descripcion: this.intl.t(`blocks.cheeseHere`),
       icono: 'queso.png',
       funcionSensor: 'tocando("QuesoAnimado")',
       esBool: true
     });
 
     this.crearBloqueSensor('TocandoLuz', {
-      descripcion: 'Hay lamparita acá',
+      descripcion: this.intl.t(`blocks.lampHere`),
       icono: 'icono.LamparitaApagada.png',
       funcionSensor: 'tocando("Lamparin")',
       esBool: true
@@ -1111,49 +1112,49 @@ export default Service.extend({
 
     this.crearBloqueSensor('EsCulpable', {
       id: 'Descubralculpable',
-      descripcion: 'Estoy frente al culpable',
+      descripcion: this.intl.t(`blocks.frontOfGuilty`),
       icono: 'icono.culpable.png',
       funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
       esBool: true
     });
 
     this.crearBloqueSensor('HayChurrasco', {
-      descripcion: 'Hay un churrasco acá',
+      descripcion: this.intl.t(`blocks.steakHere`),
       icono: 'icono.churrasco.png',
       funcionSensor: 'tocando("Churrasco")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoArriba', {
-      descripcion: 'Hay un obstáculo arriba',
+      descripcion: this.intl.t(`blocks.obstacleUp`),
       icono: 'icono.arriba.png',
       funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoAbajo', {
-      descripcion: 'Hay un obstáculo abajo',
+      descripcion: this.intl.t(`blocks.obstacleDown`),
       icono: 'icono.abajo.png',
       funcionSensor: 'tieneEnLaCasillaDeAbajo("Obstaculo")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoIzquierda', {
-      descripcion: 'Hay un obstáculo a la izquierda',
+      descripcion: this.intl.t(`blocks.obstacleAtLeft`),
       icono: 'icono.izquierda.png',
       funcionSensor: 'tieneEnLaCasillaASuIzquierda("Obstaculo")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoDerecha', {
-      descripcion: 'Hay un obstáculo a la derecha',
+      descripcion: this.intl.t(`blocks.obstacleAtRight`),
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayCharco', {
-      descripcion: 'Hay un charco',
+      descripcion: this.intl.t(`blocks.puddleHere`),
       icono: 'icono.charco.png',
       funcionSensor: 'hayEnEscena("Charco")',
       esBool: true
@@ -1191,14 +1192,14 @@ export default Service.extend({
     };
 
     this.crearBloqueSensor('HayLechuga', {
-      descripcion: 'Hay lechuga acá',
+      descripcion: this.intl.t(`blocks.lettuceHere`),
       icono: 'icono.lechuga.png',
       funcionSensor: 'tocando("Lechuga")',
       esBool: true
     });
 
     this.crearBloqueSensor('HayTomate', {
-      descripcion: 'Hay tomate acá',
+      descripcion: this.intl.t(`blocks.tomatoHere`),
       icono: 'icono.tomate.png',
       funcionSensor: 'tocando("Tomate")',
       esBool: true
@@ -1209,28 +1210,28 @@ export default Service.extend({
   _definirBloquesQueRepresentanValores() {
 
     this.crearBloqueValor("ParaLaDerecha", {
-      descripcion: 'la derecha',
+      descripcion: this.intl.t(`blocks.right`),
       icono: 'icono.derecha.png',
       valor: 'derecha',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaLaIzquierda', {
-      descripcion: 'la izquierda',
+      descripcion: this.intl.t(`blocks.left`),
       icono: 'icono.izquierda.png',
       valor: 'izquierda',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaArriba', {
-      descripcion: 'arriba',
+      descripcion: this.intl.t(`blocks.up`),
       icono: 'icono.arriba.png',
       valor: 'arriba',
       colour: Blockly.Blocks.direcciones.COLOUR,
     });
 
     this.crearBloqueValor('ParaAbajo', {
-      descripcion: 'abajo',
+      descripcion: this.intl.t(`blocks.down`),
       icono: 'icono.abajo.png',
       valor: 'abajo',
       colour: Blockly.Blocks.direcciones.COLOUR,
