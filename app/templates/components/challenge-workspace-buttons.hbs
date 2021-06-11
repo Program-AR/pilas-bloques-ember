@@ -10,7 +10,7 @@
 
 <ModalToggle @open={{restartDialogIsOpen}}>
   <div class="center">
-  Esto va a reiniciar la solucion. No vas a poder volver a tu solucion anterior.
+  ¡Cuidado! Al reiniciar la solución se perderán tus cambios.
   <div>
     <Button @onClick={{action "reiniciarSolucion"}}>Reiniciar la solucion</Button>
     <Button @onClick={{action (mut restartDialogIsOpen) false}}>Cancelar</Button>
