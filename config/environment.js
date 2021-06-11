@@ -62,7 +62,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
     ENV.pbApi.baseURL = 'http://testing-api'
   }
-  
+
   // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
