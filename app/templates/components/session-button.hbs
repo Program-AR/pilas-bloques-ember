@@ -17,7 +17,7 @@
   <PersonalSurvey />
 {{else}}
   <img class="face gray" src={{ randomAvatar }} />
-  <Button @onClick={{action (mut openLogin) true}}> Ingresar </Button>
+  <Button id="login-btn" @onClick={{action (mut openLogin) true}}> Ingresar </Button>
 {{/if}}
 
 
