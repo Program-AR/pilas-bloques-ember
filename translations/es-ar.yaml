@@ -693,15 +693,12 @@ model:
     1:
       title: Primer Ciclo
       description: Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"
-      name: "primer-ciclo"
     2:
       title: Segundo Ciclo
       description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR"  Para 2° ciclo de primaria en adelante.
-      name: "programar"
     capturas1c:
       title: Primer ciclo para hacer capturas
       description: ""
-      name: ""
 
   chapters:
     Capítulo 3:

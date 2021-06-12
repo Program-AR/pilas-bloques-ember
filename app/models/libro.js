@@ -11,14 +11,11 @@ export default Model.extend({
     return this.intl.t(`model.books.${this.id}.title`);
   }),
 
-  nombre: computed('id',function(){
-    return this.intl.t(`model.books.${this.id}.name`);
-  }),
-
   descripcion: computed('id',function(){
     return this.intl.t(`model.books.${this.id}.description`);
   }), 
 
+  imagen: attr('string'),
   modoLecturaSimple: attr('boolean'),
   oculto: attr('boolean'),
   capitulos: hasMany('capitulo')
