@@ -204,19 +204,5 @@ export default [
   {
     id: 'manual1cPrimariaOtros',
     desafioIds: [255]
-  },
-  {
-    id: 'manual1cPrimariaCapturasCap3',
-    desafioIds: ['paracaptura01', 'paracaptura02', 'paracaptura03', 'paracaptura04', 'paracaptura05', 'paracaptura06',
-      'paracaptura07', 'paracaptura08', 'paracaptura09', 'paracaptura10', 'paracaptura11']
-  },
-  {
-    id: 'manual1cPrimariaCapturasCap4',
-    desafioIds: ['paracaptura12', 'paracaptura13', 'paracaptura14', 'paracaptura15', 'paracaptura16', 'paracaptura17']
-  },
-  {
-    id: 'manual1cPrimariaCapturasCap5',
-    desafioIds: ['paracaptura18', 'paracaptura19', 'paracaptura20', 'paracaptura21', 'paracaptura22', 'paracaptura23',
-      'paracaptura24', 'paracaptura25', 'paracaptura26', 'paracaptura27', 'paracaptura28', 'paracaptura29']
   }
 ];

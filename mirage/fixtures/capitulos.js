@@ -33,16 +33,4 @@ export default [
         id: 'Parametrización de soluciones',
         grupoIds: ['ElPlanetaDeNano', 'Dibujando Figuras', 'LaFiestaDeDracula', 'SalvandoLaNavidad', 'PrendiendoLasCompusParametrizado', 'TitoCuadrado', 'ElCangrejoAguafiestas', 'PrendiendoLasFogatas', 'DibujoLibre']
     },
-    {
-        id: 'manual1cPrimariaCapturasCap3',
-        grupoIds: ['manual1cPrimariaCapturasCap3']
-    },
-    {
-        id: 'manual1cPrimariaCapturasCap4',
-        grupoIds: ['manual1cPrimariaCapturasCap4']
-    },
-    {
-        id: 'manual1cPrimariaCapturasCap5',
-        grupoIds: ['manual1cPrimariaCapturasCap5']
-    },
 ];

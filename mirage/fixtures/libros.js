@@ -12,11 +12,4 @@ export default [
     capituloIds: ['Autómatas, comandos, procedimientos y repetición', 'Alternativa condicional', 'Repetición condicional', 'Sensores Numéricos', 'Parametrización de soluciones'],
     imagen: 'programar.png'
   },
-  // Libro invisible, exclusivo para hacer capturas:
-  {
-    id: 'capturas1c',
-    capituloIds: ['manual1cPrimariaCapturasCap3', 'manual1cPrimariaCapturasCap4', 'manual1cPrimariaCapturasCap5'],
-    modoLecturaSimple: true,
-    oculto: true
-  }
 ];
