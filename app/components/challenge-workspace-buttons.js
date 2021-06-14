@@ -127,7 +127,7 @@ export default Component.extend({
     },
 
     reiniciarSolucion() {
-      this.set('workspace', this.actividad.solucionBaseInicial)
+      this.set('workspace', this.actividad.initialWorkspace)
       this.set('restartDialogIsOpen', false)
     },
   },

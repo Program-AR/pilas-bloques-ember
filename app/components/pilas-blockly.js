@@ -102,7 +102,7 @@ export default Component.extend({
       } else if (savedSolution) { // Si ya envió una solución anteriormente
         this.set('initial_workspace', savedSolution.program);
       } else {
-        this.set('initial_workspace', this.modelActividad.solucionBaseInicial);
+        this.set('initial_workspace', this.modelActividad.initialWorkspace);
       }
     });
 

@@ -27,7 +27,7 @@ export default Model.extend({
     return `${this.imagen || this.nombre || 'proximamente'}.png`;
   }),
 
-  solucionBaseInicial: computed("solucionInicial", function () {
+  initialWorkspace: computed("solucionInicial", function () {
     return this.solucionInicial || xmlBloqueEmpezarAEjecutar
   })
 
