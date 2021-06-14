@@ -1,0 +1,11 @@
+name: main-workflow
+on: [push]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: node -v
+      - run: npm install 
+      - run: npm run test:CI
