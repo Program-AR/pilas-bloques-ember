@@ -3,6 +3,8 @@ on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      DISPLAY: :99.0
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
