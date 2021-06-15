@@ -24,8 +24,8 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     assert.ok(answers)
   })
 
-  test('Should add new answers', function (assert) {
-    pbAnalytics.newAnswer({ id: 'TEST' })
+  test('Should add new answers', async function (assert) {
+    await pbAnalytics.newAnswer({ id: 'TEST' })
     const { answers } = getStorageSession()
     assert.deepEqual(answers, [{ id: 'TEST' }])
   })

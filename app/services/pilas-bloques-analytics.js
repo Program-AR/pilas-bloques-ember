@@ -21,7 +21,7 @@ export default Service.extend({
     }
   },
 
-  newAnswer(data) {
+  async newAnswer(data) {
     const session = this.getSession()
     const answers = session.answers || []
     answers.push(data)

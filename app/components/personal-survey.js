@@ -89,21 +89,21 @@ export default Component.extend({
     window.surveyWindow.survey.logoWidth = 75
     window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
-    window.surveyWindow.survey.onComplete.add(survey => { this.completeAnswer(survey.data) })
+    window.surveyWindow.survey.onComplete.add(async survey => { await this.completeAnswer(survey.data) })
   },
 
-  completeAnswer(response) {
+  async completeAnswer(response) {
     const question = this.nextQuestion()
-    this.saveAnswer(question, response)
+    await this.saveAnswer(question, response)
     if (question == this.questions.lastObject) {
       this.showThankYou()
     }
   },
 
-  saveAnswer(question, response) {
+  async saveAnswer(question, response) {
     response.timestamp = new Date()
     this.close()
-    return this.storageFor(question).newAnswer({ question, response })
+    return await this.storageFor(question).newAnswer({ question, response })
   },
 
   close() { return window.surveyWindow && window.surveyWindow.hide() },
