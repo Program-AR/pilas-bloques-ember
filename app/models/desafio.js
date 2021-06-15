@@ -3,7 +3,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
-const xmlBloqueEmpezarAEjecutar =
+export const xmlBloqueEmpezarAEjecutar =
   `<xml xmlns="http://www.w3.org/1999/xhtml">
     <block type="al_empezar_a_ejecutar" x="15" y="15"></block>
   </xml>`
