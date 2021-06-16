@@ -27,3 +27,33 @@ jobs:
         uses: GabrielBB/xvfb-action@v1
         with:
           run: npm run test:CI
+
+  pack-linux: # When there is a tag, pack the installers and upload to Github.
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags')
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install 
+      - run: npm run build:prod
+      - run: npm run pack:linux
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "binaries/*.zip,binaries/*.deb"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  pack-macos: # When there is a tag, pack the installers and upload to Github.
+    runs-on: macos-latest 
+    if: startsWith(github.ref, 'refs/tags')
+    needs: test
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+      - run: npm install
+      - run: npm run build:prod
+      - run: npm run pack:osx
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "binaries/*.dmg"
+          token: ${{ secrets.GITHUB_TOKEN }}
