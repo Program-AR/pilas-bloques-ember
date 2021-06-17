@@ -2,7 +2,7 @@ import { module, test } from 'qunit'
 import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import { mockApi, setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
-import { actividadMock, createActividadMock, pilasMock } from '../../helpers/mocks'
+import { actividadMock, pilasMock } from '../../helpers/mocks'
 
 module('Integration | Component | pilas-blockly', function (hooks) {
   setupPBIntegrationTest(hooks)
