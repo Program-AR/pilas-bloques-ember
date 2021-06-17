@@ -12,8 +12,7 @@
   <div class="center">
   ¡Cuidado! Al borrar la solución se perderán tus cambios.
   <div>
-    <Button @onClick={{action "borrarSolucion"}}>Borrar la solucion</Button>
-    <Button @onClick={{action (mut deleteDialogIsOpen) false}}>Cancelar</Button>
+    <Button @isRaised={{true}} @onClick={{action "borrarSolucion"}}>Borrar la solucion</Button>
   </div>
 </div>
 </ModalToggle>
