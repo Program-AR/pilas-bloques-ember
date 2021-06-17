@@ -43,13 +43,16 @@ module('Integration | Component | pilas-blockly', function (hooks) {
     <block type="MoverACasillaAbajo"></block>
   </xml>`
 
+  const createActivity = (owner, fields) => owner.lookup('service:store').createRecord('desafio', { bloques: ['controls_if'], ...fields })
+
   test('should start with activity initial solution in workspace', async function (assert) {
-    await renderComponent.call(this, { model: createActividadMock({ solucionInicial }) })
+    const activityWithInitialSolution = createActivity(this.owner, { solucionInicial })
+    await renderComponent.call(this, { model: activityWithInitialSolution })
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'MoverACasillaAbajo')
   })
 
   test('without initial code should start only with main block', async function (assert) {
-    await renderComponent.call(this)
+    await renderComponent.call(this, { model: createActivity(this.owner) })
     assertBlockTypes(assert, 'al_empezar_a_ejecutar')
   })
 })
