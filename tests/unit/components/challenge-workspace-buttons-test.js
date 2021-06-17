@@ -1,6 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { actividadMock } from '../../helpers/mocks'
+import { xmlBloqueEmpezarAEjecutar } from 'pilasbloques/models/desafio'
 import sinon from 'sinon'
 
 let ctrl
@@ -8,18 +9,18 @@ let version
 let actividad = actividadMock.nombre
 let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlhYmxlcz48L3ZhcmlhYmxlcz48YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBpZD0idX4vczBQV1BEWkQ1aFEtLFFnPXQiIGRlbGV0YWJsZT0iZmFsc2UiIG1vdmFibGU9ImZhbHNlIiBlZGl0YWJsZT0iZmFsc2UiIHg9IjIyNyIgeT0iMTUiPjwvYmxvY2s+PC94bWw+"
 
-module('Unit | Components | challenge-workspace-buttons', function(hooks) {
+module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   setupTest(hooks);
 
-  hooks.beforeEach(function() {
-      ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
-      ctrl.set('actividad', actividadMock)
-      ctrl.descargar = sinon.stub()
-      version = ctrl.version()
-      sinon.resetHistory()
+  hooks.beforeEach(function () {
+    ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
+    ctrl.set('actividad', actividadMock)
+    ctrl.descargar = sinon.stub()
+    version = ctrl.version()
+    sinon.resetHistory()
   });
 
-  test("Al guardar solución crea el archivo correctamente", function(assert) {
+  test("Al guardar solución crea el archivo correctamente", function (assert) {
     let contenido = JSON.stringify({
       version,
       actividad,
@@ -27,7 +28,7 @@ module('Unit | Components | challenge-workspace-buttons', function(hooks) {
     })
     let archivo = `${actividad}.spbq`
     let tipo = 'application/octet-stream'
-    
+
     ctrl.send("guardarSolucion")
     assert.ok(ctrl.descargar.calledWith(contenido, archivo, tipo))
   })
@@ -37,6 +38,23 @@ module('Unit | Components | challenge-workspace-buttons', function(hooks) {
     actividad,
     solucion
   }
+
+  test("Al borrar una solucion con un workspace inicial se deberia volver al workspace incial", function (assert) {
+    const actividadConWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio', { solucionInicial: solucion })
+    ctrl.set('actividad', actividadConWorkspaceInicial)
+    ctrl.set('workspace', 'algoDistinto')
+    ctrl.send('borrarSolucion')
+    assert.equal(ctrl.get('workspace'), solucion)
+  })
+
+  test("Al borrar una solucion sin un workspace inicial se deberia volver al wokspace inicial base", function (assert) {
+    const actividadSinWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio')
+    ctrl.set('actividad', actividadSinWorkspaceInicial)
+    ctrl.set('workspace', 'algoDistinto')
+    ctrl.send('borrarSolucion')
+    assert.equal(ctrl.get('workspace'), xmlBloqueEmpezarAEjecutar)
+  })
+
 
   goodFileTest("Carga un archivo de solución correctamente", solucionCompleta)
 
@@ -49,19 +67,19 @@ module('Unit | Components | challenge-workspace-buttons', function(hooks) {
 
   goodFileTest("Carga un archivo de solución aunque tenga una versión posterior", solucionCompletaConVersionPosterior)
 
-let solucionCompletaConVersionAnterior = {
-  version: -1,
-  actividad,
-  solucion
-}
+  let solucionCompletaConVersionAnterior = {
+    version: -1,
+    actividad,
+    solucion
+  }
 
-failFileTest("Verifica que se está cargando una versión anterior", solucionCompletaConVersionAnterior, function(assert, err) {
-  assert.equal(err, "Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
-})
+  failFileTest("Verifica que se está cargando una versión anterior", solucionCompletaConVersionAnterior, function (assert, err) {
+    assert.equal(err, "Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+  })
 
-failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function(assert) {
-  assert.ok(ctrl.get("workspace"))
-})
+  failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function (assert) {
+    assert.ok(ctrl.get("workspace"))
+  })
 
   let solucionCompletaSinVersion = {
     actividad,
@@ -77,43 +95,43 @@ failFileTest("Aunque no tenga una versión actual se carga al workspace", soluci
     solucion
   }
 
-  failFileTest("Verifica que sea para la actividad que se está cargando", solucionParaOtraActividad, function(assert, err) {
+  failFileTest("Verifica que sea para la actividad que se está cargando", solucionParaOtraActividad, function (assert, err) {
     assert.equal(err, "Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
   })
 
-failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function(assert) {
-  assert.ok(ctrl.get("workspace"))
-})
+  failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function (assert) {
+    assert.ok(ctrl.get("workspace"))
+  })
 
 
-let solucionCompletaConVersionAnteriorParaOtraActividad = {
-  version: -1,
-  actividad: "Otra_Actividad",
-  solucion
-}
+  let solucionCompletaConVersionAnteriorParaOtraActividad = {
+    version: -1,
+    actividad: "Otra_Actividad",
+    solucion
+  }
 
-failFileTest("Acumula las validaciones con soluciones", solucionCompletaConVersionAnteriorParaOtraActividad, function(assert, err) {
-  assert.equal(err, 
-`Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
+  failFileTest("Acumula las validaciones con soluciones", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert, err) {
+    assert.equal(err,
+      `Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
 Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
-})
+  })
 
-failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function(assert) {
-  assert.ok(ctrl.get("workspace"))
-})
+  failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert) {
+    assert.ok(ctrl.get("workspace"))
+  })
 
 
 
-let archivoSinSolucion = {
-  version,
-  actividad,
-}
+  let archivoSinSolucion = {
+    version,
+    actividad,
+  }
 
-  failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function(assert, err) {
+  failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function (assert, err) {
     assert.equal(err, "Lo siento, este archivo no tiene una solución de Pilas Bloques.")
   })
 
-  failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function(assert) {
+  failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function (assert) {
     assert.notOk(ctrl.get("workspace"))
   })
 
@@ -128,20 +146,20 @@ let archivoSinSolucion = {
   }
 
   function fileTest(mensaje, contenido, cbGood, cbFail) {
-    test(mensaje, function(assert) {
+    test(mensaje, function (assert) {
       let done = assert.async()
       let archivo = new Blob([JSON.stringify(contenido)])
-      
+
       ctrl
-      .leerSolucionWeb(archivo)
-      .then(() => {
-        cbGood(assert)
-        done()
-      })
-      .catch((err) => {
-        cbFail(assert, err)
-        done()
-      })
+        .leerSolucionWeb(archivo)
+        .then(() => {
+          cbGood(assert)
+          done()
+        })
+        .catch((err) => {
+          cbFail(assert, err)
+          done()
+        })
     })
   }
 });
