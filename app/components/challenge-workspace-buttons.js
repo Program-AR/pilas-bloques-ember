@@ -10,8 +10,8 @@ export default Component.extend({
   workspace: null,
   xml: null,
   store: service(),
-  inElectron: typeof process !== "undefined", //TODO: Mover a un service y reemplazar a todos los lugares donde se usa.
   deleteDialogIsOpen: false,
+  platform: service(),
 
   version() {
     return VERSION_DEL_FORMATO_DE_ARCHIVO;
@@ -106,7 +106,8 @@ export default Component.extend({
 
   actions: {
     abrirSolucion() {
-      if (this.inElectron) {
+      //if (this.platform.inElectron()) { TODO: Hasta que require('electron') no ande, no se puede hacer esto.
+      if (false) {
         this.openElectronLoadDialog();
       } else {
         this.fileInput().click();

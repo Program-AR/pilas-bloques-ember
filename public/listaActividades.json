@@ -54,7 +54,7 @@
         { "idActividad": "DibujandoHexagono", "nombreLegible":"Dibujando: Hexágono" },
         { "idActividad": "DibujandoTrianguloEquilatero", "nombreLegible":"Dibujando: Pirámide invertida" },
         { "idActividad": "DibujandoPoligonosInteriores", "nombreLegible":"Dibujando: Figuras dentro de figuras" },
-        { "idActividad": "DibujandoCuevaEstalagtitas", "nombreLegible":"Dibujando: La cueva de estalagtitas" },
+        { "idActividad": "DibujandoCuevaEstalagtitas", "nombreLegible":"Dibujando: La cueva de estalactitas" },
         { "idActividad": "LaFiestaDeDracula", "nombreLegible":"La fiesta de Drácula" },
         { "idActividad": "SalvandoLaNavidad", "nombreLegible":"Salvando la Navidad" },
         { "idActividad": "PrendiendoLasCompusParametrizado", "nombreLegible":"Prendiendo las compus parametrizado" },

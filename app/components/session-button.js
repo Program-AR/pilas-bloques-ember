@@ -6,6 +6,7 @@ export default Component.extend({
   pilasBloquesApi: service(),
   avatardb: service(),
   wrongLogin: false,
+  session: null,
 
   randomAvatar: computed("avatardb", function() {
     return this.avatardb.randomAvatar()
