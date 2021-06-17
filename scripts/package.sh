@@ -31,7 +31,7 @@ help() {
 	echo "    -win32            Make a electron Win32 electron package."
 	echo "    -linux            Make all electron linux electron packages."
 	echo ""
-	echo "  NOTE: every version generates a binary automatically in travis."
+	echo "  NOTE: every version generates a binary automatically in CI."
 	echo ""
 	echo ""
 }
