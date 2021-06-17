@@ -39,19 +39,19 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
     solucion
   }
 
-  test("Al reiniciar una solucion con un workspace inicial se deberia volver al workspace incial", function (assert) {
+  test("Al borrar una solucion con un workspace inicial se deberia volver al workspace incial", function (assert) {
     const actividadConWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio', { solucionInicial: solucion })
     ctrl.set('actividad', actividadConWorkspaceInicial)
     ctrl.set('workspace', 'algoDistinto')
-    ctrl.send('reiniciarSolucion')
+    ctrl.send('borrarSolucion')
     assert.equal(ctrl.get('workspace'), solucion)
   })
 
-  test("Al reiniciar una solucion sin un workspace inicial se deberia volver al wokspace inicial base", function (assert) {
+  test("Al borrar una solucion sin un workspace inicial se deberia volver al wokspace inicial base", function (assert) {
     const actividadSinWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio')
     ctrl.set('actividad', actividadSinWorkspaceInicial)
     ctrl.set('workspace', 'algoDistinto')
-    ctrl.send('reiniciarSolucion')
+    ctrl.send('borrarSolucion')
     assert.equal(ctrl.get('workspace'), xmlBloqueEmpezarAEjecutar)
   })
 
