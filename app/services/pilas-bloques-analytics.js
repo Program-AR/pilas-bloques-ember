@@ -21,7 +21,8 @@ export default Service.extend({
     }
   },
 
-  newAnswer(data) {
+  // This is async because it needs to be polymorphic with the service pilasBloquesApi
+  async newAnswer(data) {
     const session = this.getSession()
     const answers = session.answers || []
     answers.push(data)

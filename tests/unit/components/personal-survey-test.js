@@ -53,7 +53,7 @@ module('Unit | Components | personal-survey', function (hooks) {
   }
 
   function doResponse() {
-    return personalSurvey.saveAnswer({ text: "RESPONSE" })
+    return personalSurvey.completeAnswer({ text: "RESPONSE" })
   }
 
   function answerUserQuestion(id) {
@@ -62,8 +62,8 @@ module('Unit | Components | personal-survey', function (hooks) {
     storage.saveUser(user)
   }
 
-  function answerSessionQuestion(id) {
-    personalSurvey.pilasBloquesAnalytics.newAnswer(makeAnswer(id))
+  async function answerSessionQuestion(id) {
+    await personalSurvey.pilasBloquesAnalytics.newAnswer(makeAnswer(id))
   }
 
   function makeAnswer(id, response) { return { question: { id }, response } }
