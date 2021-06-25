@@ -1,7 +1,7 @@
 <div class="login">
-  <img class="login-header" src="imagenes/session/login.png" />
+<img class="login-header" src="imagenes/session/login.png" />
   <div class="login-item">
-    <h3>Ya tengo una cuenta</h3>
+    <h3>Ya tengo usuario</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
     <PbInput @label="Usuario"
       @model={{ credentials.username }} 
@@ -33,7 +33,7 @@
   </div>
 
   <div class="login-item">
-    <h3> No tengo una cuenta </h3>
+    <h3> Aún no tengo usuario </h3>
     <Link @href={{href-to "register"}}>
       ¡Registrate haciendo click aca!
     </Link>
