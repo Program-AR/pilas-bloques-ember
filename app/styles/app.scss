@@ -476,8 +476,9 @@ a:hover {
   justify-content: space-between;
 }
 
-.disclaimer-image{
-  width: 5%;
+.disclaimer-header{
+  display: flex;
+  justify-content: center;
 }
 
 .aplicar-modo-lectura-simple,
