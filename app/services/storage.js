@@ -24,6 +24,8 @@ export default Ember.Service.extend({
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
+  clear() { localStorage.clear() },
+
   _get(key) { return JSON.parse(localStorage.getItem(key) || null) },
   _save(key, data = null) { localStorage.setItem(key, JSON.stringify(data)) },
 })
