@@ -471,10 +471,14 @@ a:hover {
   text-align: left;
 }
 
-.disclaimer{
+.disclaimer-container {
   display: flex;
   justify-content: space-between;
   text-align: center;
+}
+
+.disclaimer {
+  padding: 0.5em;
 }
 
 .aplicar-modo-lectura-simple,
