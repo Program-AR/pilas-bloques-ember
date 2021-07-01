@@ -29,7 +29,7 @@ export default Ember.Service.extend({
   clear() { localStorage.clear() },
 
   _get(key) {
-    return this._doSafe((storage) => storage.getItem(key) || null)
+    return this._doSafe((storage) => JSON.parse(storage.getItem(key) || null))
   },
   _save(key, data = null) {
     this._doSafe((storage) => storage.setItem(key, JSON.stringify(data)))
