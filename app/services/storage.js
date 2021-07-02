@@ -1,6 +1,8 @@
-import Ember from 'ember';
+import Ember from 'ember'
+import { inject as service } from '@ember/service'
 
 export default Ember.Service.extend({
+  router: service(),
   USER_KEY: 'PB_USER',
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
@@ -24,6 +26,21 @@ export default Ember.Service.extend({
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
-  _get(key) { return JSON.parse(localStorage.getItem(key) || null) },
-  _save(key, data = null) { localStorage.setItem(key, JSON.stringify(data)) },
+  clear() { localStorage.clear() },
+
+  _get(key) {
+    return this._doSafe((storage) => JSON.parse(storage.getItem(key) || null))
+  },
+  _save(key, data = null) {
+    this._doSafe((storage) => storage.setItem(key, JSON.stringify(data)))
+  },
+
+  _doSafe(fn) {
+    try {
+      return fn(localStorage)
+    } catch (e) {
+      console.error("ERROR", e)
+      this.router.transitionTo('clear')
+    }
+  },
 })
