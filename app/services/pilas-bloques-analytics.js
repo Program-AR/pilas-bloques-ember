@@ -1,5 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
+import environment from '../config/environment';
 
 const { sessionExpire } = config.pbAnalytics
 
@@ -13,15 +14,18 @@ export default Service.extend({
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()
+    const version = environment.APP.version
     return {
       ...session,
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
+      version,
     }
   },
 
-  newAnswer(data) {
+  // This is async because it needs to be polymorphic with the service pilasBloquesApi
+  async newAnswer(data) {
     const session = this.getSession()
     const answers = session.answers || []
     answers.push(data)

@@ -101,10 +101,8 @@ export default Component.extend({
         this.set('initial_workspace', codigoXML);
       } else if (savedSolution) { // Si ya envió una solución anteriormente
         this.set('initial_workspace', savedSolution.program);
-      } else if (this.modelActividad.get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
-        this.set('initial_workspace', this.modelActividad.get('solucionInicial'));
-      } else { //Sino, el código por defecto es el empezar a ejecutar
-        this.set('initial_workspace', this._xmlBloqueEmpezarAEjecutar());
+      } else {
+        this.set('initial_workspace', this.modelActividad.initialWorkspace);
       }
     });
 
@@ -121,12 +119,6 @@ export default Component.extend({
     });
 
     $(window).trigger('resize');
-  },
-
-  _xmlBloqueEmpezarAEjecutar() {
-    return `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" x="15" y="15"></block>
-    </xml>`;
   },
 
   /**

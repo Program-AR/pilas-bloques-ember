@@ -1,7 +1,7 @@
 # Pilas Bloques - A tool to learn to program.
 
-- Master: [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=master)](https://travis-ci.org/Program-AR/pilas-bloques)
-- Develop (main): [![Build Status](https://travis-ci.org/Program-AR/pilas-bloques.svg?branch=develop)](https://travis-ci.org/Program-AR/pilas-bloques)
+- Master: [![build](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml)
+- Develop (main): [![build](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml)
 
 - Backlog: [Stories in Ready](https://github.com/orgs/Program-AR/projects/1)
 
