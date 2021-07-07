@@ -12,8 +12,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
   /*
    * Realiza una validación luego de que se detengan todas las promesas pendientes.
    *
-   * La validación consiste en asegurarse de que el título que se muestra en el
-   * panel de consigna sea exacamente el título el esperado.
+   * Valida que el titulo, descripción y pista de los desafíos se haya traducido correctamente.
    */
 
   function testSePuedeVisitar(challengeId) {
