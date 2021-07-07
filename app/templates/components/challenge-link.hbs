@@ -1,6 +1,6 @@
 {{#if challenge.deshabilitado}}
   <img class='grayscale semi-transparente' src='images/desafios/{{challenge.nombreImagen}}'>
-  <div class="ribbon right gray semi-transparente"><a>Muy pronto</a></div>
+  <div class="ribbon right gray semi-transparente"><a>{{t "components.challengeLink.soon"}}</a></div>
 {{else}}
   <Link @href={{href-to "desafio" challenge (query-params codigo="")}} @openOnNewTab={{false}}>
     <img class='desafio-img' src='imagenes/desafios/{{challenge.nombreImagen}}'>

@@ -652,3 +652,68 @@ components:
     didacticSequence: "La secuencia didáctica que guía la herramienta fue elaborada por "
     material: " , y puede encontrarse junto con otros materiales en la página web. Contó con el apoyo y la colaboración de la Universidad Nacional de Quilmes y otras universidades nacionales de Argentina."
     iniciative: "Program.AR es una iniciativa que trabaja para que el aprendizaje significativo de Computación esté presente en todas las escuelas argentinas. Más información: "
+  clearData:
+    deleting: "Borrando datos del navegador, si tenés un usuario es posible que tengas que ingresar nuevamente."
+  importCustomChallenge:
+    import: "Importar Desafío"
+    custom: "Importa un desafío personalizado proveniente del creador de desafios de Pilas Bloques."
+  header: 
+    tool: "Una herramienta para aprender a programar"
+  registerDisclaimer: 
+    now: "¡ Ahora Pilas Bloques permite"
+    register: "registrarse"
+    optional: "Hacerlo es <b>completamente opcional</b>, nos ayuda para poder mejorar Pilas Bloques y te permite suspender tu trabajo y retomarlo desde donde lo habías dejado."
+  programarDisclaimer: 
+    entered: "¿ Entraste a"
+    programar: "Program.AR en casa"
+    in: "En"
+    find: "encontrarás mucho material, muchas herramientas y una explicación de cómo usar Pilas Bloques"
+  challengeLink: 
+    soon: "Muy pronto"
+  challengeWorkspaceButtons:
+    open: "Abrir solución"
+    save: "Guardar solución"
+    careful: "¡Cuidado! Al borrar la solución se perderán tus cambios."
+    delete: "Borrar la solucion"
+    exit: "Salir de Pantalla Completa"
+    fullScreen: "Pantalla Completa"
+  footer:
+    version: "Versión:"
+    problem: "¿Algún problema con este ejercicio?"
+    about: "Acerca De"
+  login:
+    already: "Ya tengo usuario"
+    wrong: "Usuario o contraseña incorrectos, volvé a intentar"
+    forgot: "Olvidé mi usuario o constraseña"
+    dontHaveUser: "Aún no tengo usuario"
+    register: "¡Registrate haciendo click acá!"
+    login: "Ingresar"
+  modalAyuda:
+    help: "Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques."
+    firstSteps: "El primer paso es abrir la sección de Desafíos:"
+    categories: "Los bloques están agrupados en categorías, usá la barra lateral para desplegar los bloques."
+    dragAndDrop: "Luego podés arrastrar y soltar los bloques sobre el área de trabajo."
+    continue: "Una vez que tengas tu programa listo pulsá el botón ejecutar continuar."
+    delete: "Ah, y los bloques se pueden borrar arrastrándolos a la papelera."
+  passwordConfirmation:
+    password: "Confirmar contraseña"
+  sessionButton:
+    login: "Ingresar"
+    logout: "Cerrar sesión"
+    changeUser: "Cambiar usuario"
+  phoneRotationWarning:
+    rotate: "Intentá rotar el celular"
+    widerScreen: "Pilas Bloques necesita una pantalla más ancha"
+  notifier:
+    download: "Hay una nueva versión disponible para descargar."
+    visit: "Visitá"
+    moreInfo: "nuestra web para más información."
+  termsAndConditionLink:
+    terms: "términos y condiciones de uso"
+
+  desafios:
+    desafioPorNombreError: 
+      wentWrong: "Lo siento, algo salió mal..."
+      doesntExist: "No existe un desafío con el nombre indicado en la URL. ¿Podrías corroborar la correctitud de la dirección a este desafío?"
+    index:
+      chooseOne: "Elegí uno de los libros de la barra superior"

@@ -4,13 +4,12 @@
   {{else}}
   <div class="layout-row flex-grow">
     <a class="program-ar-logo" href="http://program.ar" />
-    <p class="app-version"><code>Versión:</code></p>{{version class="app-version"}}
+    <p class="app-version"><code>{{t "components.footer.version"}}</code></p>{{version class="app-version"}}
     <span class="flex"></span>
     <PaperButton @onClick={{action openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}}
-      @bubbles={{true}}>{{paper-icon "help" class="menu-button-icon"}}<span class="menu-button-typography">¿Algún
-        problema con este ejercicio?</span></PaperButton>
+      @bubbles={{true}}>{{paper-icon "help" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.problem"}}</span></PaperButton>
     <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "acercade" }}>
-      {{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">Acerca de</span></PaperButton>
+      {{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.about"}}</span></PaperButton>
   </div>
   {{/if}}
 </PaperCard>
