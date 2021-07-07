@@ -3,6 +3,7 @@ import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import simulateRouterHooks from "../helpers/simulate-router.hooks";
+import Ember from 'ember';
 
 module('Acceptance | puede ingresar en actividades', function (hooks) {
   setupApplicationTest(hooks);
@@ -15,7 +16,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
    * panel de consigna sea exacamente el título el esperado.
    */
 
-  function testSePuedeVisitar(nombreDesafio, tituloEsperado) {
+  function testSePuedeVisitar(nombreDesafio) {
     test(`Se puede visitar ${nombreDesafio}`, async function (assert) {
       // La razón por la que levantamos este try catch es porque el helper visit tiene un bug
       // descrito acá: https://github.com/emberjs/ember-test-helpers/issues/332 (todavía abierto)        
@@ -28,27 +29,40 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
           throw e;
         }
       }
-      const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
-      assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloVisibleEnPantalla + " y no " + tituloEsperado);
+
+      //TODO: Make this work
+      var intl = Ember.inject.service();
+
+      var tituloEsperado = intl.t("model.challenges." + nombreDesafio + ".title");
+      const challengeTitle = $(".challenge-title").text().trim();
+      assert.equal(challengeTitle, tituloEsperado, "La actividad se llama '" + challengeTitle + "' y no '" + tituloEsperado + "'");
+
+      var descripcionEsperada = intl.t("model.challenges." + nombreDesafio + ".title");
+      const challengeDescription = $("#challenge-description").text().trim();
+      assert.equal(challengeDescription, descripcionEsperada, "La descripción es '" + challengeDescription + "' y no '" + descripcionEsperada + "'");
+
+      var pistaEsperada = intl.t("model.challenges." + nombreDesafio + ".title");
+      const challengeClue = $("#challenge-clue").text().trim();
+      assert.equal(challengeClue, pistaEsperada, "La pista es '" + challengeClue + "' y no '" + pistaEsperada + "'");
     })
   }
 
-  testSePuedeVisitar("DibujandoAlCuadrado", "Dibujando: Al cuadrado");
+  testSePuedeVisitar("DibujandoAlCuadrado");
 
-  testSePuedeVisitar("DibujandoRayuelaRobotica", "Dibujando: Rayuela robótica");
+  testSePuedeVisitar("DibujandoRayuelaRobotica");
 
-  testSePuedeVisitar("DibujandoCortoPorLaDiagonal", "Dibujando: Corto por la diagonal");
+  testSePuedeVisitar("DibujandoCortoPorLaDiagonal");
 
-  testSePuedeVisitar("DibujandoMamushkaCuadrada", "Dibujando: Mamushka cuadrada");
+  testSePuedeVisitar("DibujandoMamushkaCuadrada");
 
-  testSePuedeVisitar("DibujandoEscaleraCuadrada", "Dibujando: Escalera cuadrada");
+  testSePuedeVisitar("DibujandoEscaleraCuadrada");
 
-  testSePuedeVisitar("DibujandoHexagono", "Dibujando: Hexágono");
+  testSePuedeVisitar("DibujandoHexagono");
 
-  testSePuedeVisitar("DibujandoPiramideInvertida", "Dibujando: Pirámide invertida");
+  testSePuedeVisitar("DibujandoPiramideInvertida");
 
-  testSePuedeVisitar("DibujandoFigurasDentroDeFiguras", "Dibujando: Figuras dentro de figuras");
+  testSePuedeVisitar("DibujandoFigurasDentroDeFiguras");
 
-  testSePuedeVisitar("DibujandoLaCuevaDeEstalagtitas", "Dibujando: La cueva de estalactitas");
+  testSePuedeVisitar("DibujandoLaCuevaDeEstalagtitas");
 
 });

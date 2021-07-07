@@ -8,6 +8,7 @@ module('Unit | Model | desafio', function(hooks) {
 
   test('it exists', function(assert) {
     let model = run(() => this.owner.lookup('service:store').createRecord('desafio'));
+
     // let store = this.store();
     assert.ok(!!model);
   });
