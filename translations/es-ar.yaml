@@ -64,3 +64,33 @@ components:
     didacticSequence: "La secuencia didáctica que guía la herramienta fue elaborada por "
     material: " , y puede encontrarse junto con otros materiales en la página web. Contó con el apoyo y la colaboración de la Universidad Nacional de Quilmes y otras universidades nacionales de Argentina."
     iniciative: "Program.AR es una iniciativa que trabaja para que el aprendizaje significativo de Computación esté presente en todas las escuelas argentinas. Más información: "
+
+  scene:
+    close: "Cerrar"
+
+  sceneDetails:
+    seeDescription: "!Quiero ver el enunciado!"
+    getClue: "!Quiero ver el enunciado!"
+    noClues: "Este ejercicio no contiene pista alguna"
+
+  sceneButtons:
+    stepByStepRun:
+      label: "Paso"
+      tooltip: "Ejecutar paso a paso la solución propuesta"
+    runStep:
+      label: "Paso"
+      tooltip: "Avanzar un paso"
+    run:
+      label: "Ejecutar"
+      tooltip: "Ejecutar la solución propuesta"
+    restart:
+      label: "Reiniciar"
+      tooltip: "Reiniciar la ejecución"
+
+  turboModeToggle:
+    turnOff: "Desactivar el modo Turbo"
+    turnOn: "Activar el modo Turbo"
+    active: "ACTIVADO"
+    inactive: "DESACTIVADO"
+
+    
