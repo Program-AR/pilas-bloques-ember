@@ -5,6 +5,7 @@ import Survey from 'survey-knockout'
 export default Component.extend({
   pilasBloquesApi: service(),
   pilasBloquesAnalytics: service(),
+  paperToaster: service(),
 
   /** Dialog descriptions according to SurveyJS library.
    ** Additional field: askEachSession, which tells the app to ask the question each time*/
@@ -64,7 +65,7 @@ export default Component.extend({
           { type: "radiogroup", choices: ["Estoy con una adulta o adulto", "Estoy con una compañera o compañero", "No me está ayudando nadie"], isRequired: true, name: "help", title: "¿Te está ayudando alguien ahora?", visibleIf: "{isAtSchool} = 'No'" }
         ]
       }],
-      askEachSession: true
+      askEachSession: true,
     }
   ],
 
@@ -88,14 +89,21 @@ export default Component.extend({
     window.surveyWindow.survey.logoWidth = 75
     window.surveyWindow.survey.logoPosition = 'top'
     window.surveyWindow.show()
-    window.surveyWindow.survey.onComplete.add(survey => this.saveAnswer(survey.data))
+    window.surveyWindow.survey.onComplete.add(async survey => { await this.completeAnswer(survey.data) })
   },
 
-  saveAnswer(response) {
-    response.timestamp = new Date()
+  async completeAnswer(response) {
     const question = this.nextQuestion()
+    await this.saveAnswer(question, response)
+    if (question == this.questions.lastObject) {
+      this.showThankYou()
+    }
+  },
+
+  async saveAnswer(question, response) {
+    response.timestamp = new Date()
     this.close()
-    return this.storageFor(question).newAnswer({ question, response })
+    return await this.storageFor(question).newAnswer({ question, response })
   },
 
   close() { return window.surveyWindow && window.surveyWindow.hide() },
@@ -108,5 +116,12 @@ export default Component.extend({
   sessionAnswers() {
     const { answers } = this.pilasBloquesAnalytics.getSession()
     return answers && answers.map(({ question }) => question.id) || []
+  },
+
+  showThankYou() {
+    this.paperToaster.show("Muchas gracias por tus respuestas.", {
+      duration: 4000,
+      position: "bottom"
+    })
   }
 });

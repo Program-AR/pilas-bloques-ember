@@ -54,15 +54,15 @@ export default Component.extend({
     hideScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display = 'none';
-      canvas.style.display = 'none';
+      elmnt.style.visibility = 'hidden';
+      canvas.style.visibility = 'hidden';
     },
 
     showScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display = 'block';
-      canvas.style.display = 'block';
+      elmnt.style.visibility = 'visible';
+      canvas.style.visibility = 'visible';
     },
 
     changeScreenMode() {

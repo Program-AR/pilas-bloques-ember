@@ -59,3 +59,12 @@ md-menu-item > * {
     border-radius: 10px;
     border: 1px solid #ddd;
 }
+
+#login-btn > button {
+    animation: blinker 1s linear infinite;
+}
+@keyframes blinker {
+  50% {
+    color: var(--theme-link-color);
+  }
+}

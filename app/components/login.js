@@ -3,6 +3,7 @@ import Component from '@ember/component'
 import { badRequest } from '../utils/request'
 
 export default Component.extend({
+  router: service(),
   pilasBloquesApi: service(),
   credentials: {},
   wrongLogin: false,
@@ -11,7 +12,14 @@ export default Component.extend({
     doLogin() {
       this.set("wrongLogin", false)
       this.pilasBloquesApi.login(this.credentials)
-        .then(() => document.location.reload())
+        .then(() =>{
+          const router = this.get('router');
+          if (router.currentRouteName === "register"){
+            router.transitionTo('libros');
+          }else{
+            document.location.reload();
+          }
+        })
         .catch(badRequest(() => {
           this.set("wrongLogin", true)
           this.set("credentials.password", "")
