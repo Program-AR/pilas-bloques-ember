@@ -153,3 +153,13 @@ export function fetchCallHeader() {
     const [, { headers }] = fetchMock.lastCall()
     return headers
 }
+
+////// DOM ELEMENTS /////
+
+export async function awaitForElementToExist(elementSelector, maxAwaitMs){
+    var timeoutInMs = maxAwaitMs;
+    var startTimeInMs = Date.now();
+    while(($(elementSelector).length == 0) && (startTimeInMs + timeoutInMs > Date.now())){
+      await new Promise(r => setTimeout(r, 20));
+    }
+}
