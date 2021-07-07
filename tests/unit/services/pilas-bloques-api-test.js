@@ -39,13 +39,13 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
 
   test('If fetch fails should not be connected', async function (assert) {
     failAllApiFetchs()
-    await api.ping().catch(() => {})
+    await api.ping().catch(() => { })
     assert.notOk(api.connected)
   })
 
   test('If not connected should alert server error', async function (assert) {
     failAllApiFetchs()
-    await api.login({}).catch(() => {})
+    await api.login({}).catch(() => { })
     assert.ok(api.paperToaster.show.called)
   })
 
@@ -69,7 +69,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   test('should add context to body', async function (assert) {
     await api.login({})
     const context = fetchCallBody().context
-    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'userId')
+    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'userId', 'version')
   })
 
   test('should add timestamp to body', async function (assert) {

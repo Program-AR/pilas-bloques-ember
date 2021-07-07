@@ -10,6 +10,7 @@ export default Component.extend({
   workspace: null,
   xml: null,
   store: service(),
+  deleteDialogIsOpen: false,
   platform: service(),
 
   version() {
@@ -125,5 +126,11 @@ export default Component.extend({
 
       this.descargar(JSON.stringify(contenido), fileName, 'application/octet-stream');
     },
-  }
+
+    borrarSolucion() {
+      this.set('workspace', this.actividad.initialWorkspace)
+      this.set('deleteDialogIsOpen', false)
+    },
+  },
+
 });

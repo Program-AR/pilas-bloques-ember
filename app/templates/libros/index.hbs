@@ -27,7 +27,7 @@
 
     {{#if enableChallengeCreator}}
       <p>
-      {{ t "libros.index.custom_challenges"}}
+      {{ t "libros.index.customChallenges"}}
       </p>
       {{create-custom-challenge}}
       {{import-custom-challenge}}
@@ -38,9 +38,8 @@
     <hr>
 
     <p>
-     Visitá la sección<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>Acerca de</strong></Link>
-           para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
-
+     {{t "libros.index.visitAbout.part1"}}<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>{{t "libros.index.visitAbout.link1"}}</strong></Link>
+           {{t "libros.index.visitAbout.part2"}}
     </p>
 
   </div>

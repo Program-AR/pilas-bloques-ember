@@ -1,7 +1,7 @@
-<div class="center">
+<div class="login">
+  <div class="login-item">
+    <h3>Ya tengo usuario</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
-    <img class="login-header" src="imagenes/session/login.png" />
-
     <PbInput @label="Usuario"
       @model={{ credentials.username }} 
       @required={{ true }} />
@@ -29,10 +29,13 @@
   <Link @href={{href-to "password-recovery"}}>
     Olvidé mi usuario o constraseña
   </Link>
+  </div>
 
-  <p> ¿No tenés una cuenta? </p>
-  <Link @href={{href-to "register"}}>
-    Registrate
-  </Link>
-  <p></p>
+  <div class="login-item">
+  <img class="login-header" src="imagenes/session/login.png" />
+    <h3> Aún no tengo usuario </h3>
+    <Link @href={{href-to "register"}}>
+      ¡Registrate haciendo click aca!
+    </Link>
+  </div>
 </div>

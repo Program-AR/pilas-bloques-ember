@@ -1,8 +1,9 @@
 import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
-import { setupRenderingTest, setupTest } from 'ember-qunit'
-import { fakeUser, toastMock } from './mocks'
+import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
+import { fakeUser, toastMock, routerMock } from './mocks'
 import config from '../../config/environment'
 const { baseURL } = config.pbApi
 
@@ -12,12 +13,19 @@ export function setupPBUnitTest(hooks) {
     setupTest(hooks)
     setupClear(hooks)
     setupToasterMock(hooks)
+    setupRouterMock(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
     setupRenderingTest(hooks)
     setupClear(hooks)
     setupEmberMocks(hooks)
+}
+
+export function setupPBAcceptanceTest(hooks) {
+    setupApplicationTest(hooks)
+    setupMirage(hooks)
+    setupClear(hooks)
 }
 
 export function setupClear(hooks) {
@@ -47,6 +55,12 @@ export function setupEmberMocks(hooks) {
 export function setupToasterMock(hooks) {
     hooks.beforeEach(function () {
         this.owner.register('service:paperToaster', toastMock)
+    })
+}
+
+export function setupRouterMock(hooks) {
+    hooks.beforeEach(function () {
+        this.owner.register('service:router', routerMock)
     })
 }
 
