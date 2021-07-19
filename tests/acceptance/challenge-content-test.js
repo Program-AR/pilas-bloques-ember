@@ -5,7 +5,7 @@ import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import simulateRouterHooks from "../helpers/simulate-router.hooks";
 import { awaitForElementToExist } from "../helpers/utils"
 
-module('Acceptance | puede ingresar en actividades', function (hooks) {
+module('Acceptance | challenge content test', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
@@ -32,7 +32,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
       }
 
       var intl = this.owner.lookup('service:intl');
-      
+
       var expectedTitle = intl.t("model.challenges." + challengeId + ".title").string.trim();
       const challengeTitle = $(".challenge-title").text().trim();
       assert.equal(challengeTitle, expectedTitle, "La actividad se llama '" + challengeTitle + "' y no '" + expectedTitle + "'");

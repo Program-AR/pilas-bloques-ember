@@ -8,24 +8,28 @@
 
   <p><Link @href={{href-to "libros"}} @openOnNewTab={{false}}><i class="fa fa-chevron-left"></i> Volver a la lista de libros</Link></p>
 
+
   {{#each model.capitulos as |capitulo|}}
-    
+    <div data-test-vista-de-libro-capitulo>
+
       {{#if capitulo.titulo}}
-        <h1>{{capitulo.titulo}}</h1>
+        <h1 data-vista-de-libro-capitulo-id={{capitulo.id}} data-vista-de-libro-capitulo-title>{{capitulo.titulo}}</h1>
       {{/if}}
-      
+
+
       {{#each capitulo.grupos as |grupo|}}
-        
-        {{#if grupo.titulo.length}}
-          <h3>{{grupo.titulo}}</h3>
+        <div data-vista-de-libro-grupo>
+        {{#if grupo.titulo}}
+          <h3 data-vista-de-libro-grupo-id={{grupo.id}} data-vista-de-libro-grupo-title>{{grupo.titulo}}</h3>
         {{/if}}
-        
+
         {{#each grupo.desafios as |desafio|}}
           {{challenge-link challenge=desafio}}
         {{/each}}
-    
-    {{/each}}
-  
+        </div>
+      {{/each}}
+
+    </div>
   {{else}}
     <p class="mensaje-sin-desafios">Lo siento, no hay desafíos para este manual aún.</p>
   {{/each}}

@@ -13,7 +13,7 @@ model:
     1:
       title: El alien toca el botón
       description: |
-        Ayudá a nuestro Alien a presionar el botón de su laboratorio. 
+        Ayudá a nuestro Alien a presionar el botón de su laboratorio.
         Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!
       clue: Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.
     2:
@@ -33,7 +33,7 @@ model:
     5:
       title: Tito enciende las luces
       description: |
-        Ayudá a Tito a encender todas las luces. 
+        Ayudá a Tito a encender todas las luces.
         Pista: creá un procedimiento para prender todas las luces de una diagonal.
       clue: Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
     6:
@@ -78,15 +78,15 @@ model:
     13:
       title: El mono y las bananas
       description: |
-        ¿Podés hacer que el mono avance al casillero de enfrente? Si hay una banana debe comérsela. Si no, es feliz con sólo llegar. 
-        Ejecutá el programa varias veces para asegurarte que siempre funciona. 
+        ¿Podés hacer que el mono avance al casillero de enfrente? Si hay una banana debe comérsela. Si no, es feliz con sólo llegar.
+        Ejecutá el programa varias veces para asegurarte que siempre funciona.
         Pista: mirá la categoría "Sensores" y la categoría "Alternativas".
       clue: El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".
     14:
       title: La elección del mono
       description: |
-        ¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene que comer la fruta que aparece, ya sea banana o manzana. 
-        Ejecutá el programa varias veces para asegurarte que siempre funciona. 
+        ¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene que comer la fruta que aparece, ya sea banana o manzana.
+        Ejecutá el programa varias veces para asegurarte que siempre funciona.
         Pista: ésta vez no alcanza con el bloque "Si".
       clue: Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".
     15:
@@ -109,15 +109,15 @@ model:
         Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.
       clue: ""
     19:
-      title: Súper Tito 1 
+      title: Súper Tito 1
       description: |
-        Ayudá a Tito a encender las luces. 
+        Ayudá a Tito a encender las luces.
         ¡Ojo! En todas las celdas hay una luz, pero no sabés cuántas celdas hay en cada ejecución.
       clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
     20:
       title: Súper Tito 2
       description: |
-        Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1? 
+        Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
     21:
       title: Laberinto con queso
@@ -154,10 +154,10 @@ model:
     28:
       title: El planeta de Nano
       description: |
-        Ayudá a Nano a comer todas sus bananas. ¡Cuidado! No se puede bajar... 
+        Ayudá a Nano a comer todas sus bananas. ¡Cuidado! No se puede bajar...
         ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!
       clue: |
-        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]". 
+        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]".
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en la estrella que aparece al lado de "Definir" y luego arrastrar el bloque "nombre de entrada" a "entradas".
     29:
       title: |
@@ -202,7 +202,7 @@ model:
       title: |
         Dibujando: Figuras dentro de figuras
       description: |
-        Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados. 
+        Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados.
       clue: |
         Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
     37:
@@ -382,7 +382,7 @@ model:
       clue: ""
     235:
       title: Desafío 3
-      description: La llama tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite? 
+      description: La llama tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?
       clue: ""
     236:
       title: Desafío 1
@@ -576,7 +576,7 @@ model:
       description: Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"
     2:
       title: Segundo Ciclo
-      description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR"  Para 2° ciclo de primaria en adelante.
+      description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR" Para 2° ciclo de primaria en adelante.
 
   chapters:
     Capítulo 3:
@@ -595,7 +595,7 @@ model:
       title: "Sensores Numéricos"
     Parametrización de soluciones:
       title: "Parametrización de soluciones"
-    
+
 acercade:
   yourCurrentVersion: Actualmente estás usando la versión
   youCanUpdate: y se puede actualizar a la versión
@@ -631,7 +631,7 @@ components:
     difference: "¿En qué se diferencia Pilas Bloques de otras herramientas?"
     learning: "La principal diferencia es que esta plataforma fue pensada para <b>acompañar una secuencia didáctica</b> para el aprendizaje de la programación en la escuela."
     sequence: "¿Qué es una secuencia didáctica?"
-    plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos. 
+    plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos.
           Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando"
     whoCanDo: "¿Quién puede hacer los desafíos de Pilas Bloques?"
     activities: "Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente
@@ -639,9 +639,9 @@ components:
                 5 y 8 años podrán aprovechar mejor las actividades del Primer Ciclo, y los niños entre 9 y 12 años
                 podrán aprovechar mejor las actividades del Segundo Ciclo."
     anyone: "¿Y cualquiera puede hacer los desafíos por su cuenta?"
-    tool: "La herramienta está pensada como <b>ayuda al docente y al alumno</b> en el proceso de aprendizaje 
-          de la programación en un entorno escolar. En la secuencia didáctica que se plantea, 
-          la <b>indagación</b> autodidacta es fundamental. Nuestra recomendación, no obstante, es que el 
+    tool: "La herramienta está pensada como <b>ayuda al docente y al alumno</b> en el proceso de aprendizaje
+          de la programación en un entorno escolar. En la secuencia didáctica que se plantea,
+          la <b>indagación</b> autodidacta es fundamental. Nuestra recomendación, no obstante, es que el
           docente sea el que <b>guíe</b> y asista el proceso de aprendizaje del alumno."
     contact: "Contacto"
     anyDoubts: "Por cualquier duda nos pueden contactar a: "
