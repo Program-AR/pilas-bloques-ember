@@ -10,17 +10,17 @@
 
 
   {{#each model.capitulos as |capitulo|}}
-    <div data-test-vista-de-libro-capitulo>
+    <div data-test-book-view-chapter>
 
       {{#if capitulo.titulo}}
-        <h1 data-vista-de-libro-capitulo-id={{capitulo.id}} data-vista-de-libro-capitulo-title>{{capitulo.titulo}}</h1>
+        <h1 data-test-book-view-chapter-id={{capitulo.id}} data-test-book-view-chapter-title>{{capitulo.titulo}}</h1>
       {{/if}}
 
 
       {{#each capitulo.grupos as |grupo|}}
-        <div data-vista-de-libro-grupo>
+        <div data-test-book-view-group>
         {{#if grupo.titulo}}
-          <h3 data-vista-de-libro-grupo-id={{grupo.id}} data-vista-de-libro-grupo-title>{{grupo.titulo}}</h3>
+          <h3 data-test-book-view-group-id={{grupo.id}} data-test-book-view-group-title>{{grupo.titulo}}</h3>
         {{/if}}
 
         {{#each grupo.desafios as |desafio|}}

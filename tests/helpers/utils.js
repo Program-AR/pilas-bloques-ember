@@ -2,7 +2,7 @@ import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
+import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { fakeUser, toastMock, routerMock } from './mocks'
 import config from '../../config/environment'
 const { baseURL } = config.pbApi
@@ -104,7 +104,7 @@ export function findBlockByTypeIn(rootBlock, type) {
 export function assertAsync(assert, fn, ms = 0) { //TODO: Curry
     let done = assert.async(1)
     setTimeout(function () {
-        fn(); done()
+        fn() done()
     }, ms)
 }
 
@@ -156,10 +156,13 @@ export function fetchCallHeader() {
 
 ////// DOM ELEMENTS /////
 
-export async function awaitForElementToExist(elementSelector, maxAwaitMs){
-    var timeoutInMs = maxAwaitMs;
-    var startTimeInMs = Date.now();
-    while(($(elementSelector).length == 0) && (startTimeInMs + timeoutInMs > Date.now())){
-      await new Promise(r => setTimeout(r, 20));
+/**
+ * Needed for acceptance tests where there is a visit() to a challenge page.
+ */
+export async function awaitChallengeLoading(){
+    var timeoutInMs = 5000
+    var startTimeInMs = Date.now()
+    while(($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())){
+      await new Promise(r => setTimeout(r, 20))
     }
 }
