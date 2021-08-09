@@ -20,9 +20,10 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-            
+
       - run: sudo locale-gen es_AR.UTF-8
       - run: sudo update-locale LANG=es_AR.UTF-8
+      - run: export LANG=es_AR.UTF-8
       - run: npm install
 
       - name: Run tests with headless window
