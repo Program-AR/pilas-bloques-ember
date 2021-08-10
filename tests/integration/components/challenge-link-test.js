@@ -14,7 +14,7 @@ module('Integration | Component | pilas desafio', function (hooks) {
     assert.dom().hasText('demo', "Muestra el Título del desafio.");
 
     await render(hbs`{{challenge-link challenge=modelDeshabilitado}}`);
-    assert.dom('div.ribbon').hasText("Muy pronto", "Tiene el texto Muy pronto");
+    assert.dom('div.ribbon.semi-transparente').exists();
   });
 
 });
