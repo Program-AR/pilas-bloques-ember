@@ -13,6 +13,7 @@ import { failAllApiFetchs } from './utils';
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
+    this.owner.lookup('service:intl').setLocale('es-ar')
     setupRenderingTest(hooks);
     setupMirage(hooks);
     runActivityTests();
