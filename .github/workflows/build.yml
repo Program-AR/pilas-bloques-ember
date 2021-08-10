@@ -22,7 +22,7 @@ jobs:
             ${{ runner.os }}-
 
       - name: Set Locale 
-          LANG: "es_AR.UTF-8" 
+        LANG: "es_AR.UTF-8" 
         - run: sudo locale-gen es_AR.UTF-8
         - run: sudo update-locale LANG=es_AR.UTF-8
         - run: export LANG=es_AR.UTF-8
