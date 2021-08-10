@@ -75,3 +75,4 @@ jobs:
           allowUpdates: true
           artifacts: "binaries/*.exe"
           token: ${{ secrets.GITHUB_TOKEN }}
+# Test comment
