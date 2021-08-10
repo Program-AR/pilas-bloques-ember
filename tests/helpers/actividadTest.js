@@ -13,7 +13,6 @@ import { failAllApiFetchs } from './utils';
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
-    this.owner.lookup('service:intl').setLocale('es-ar')
     setupRenderingTest(hooks);
     setupMirage(hooks);
     runActivityTests();
@@ -91,7 +90,6 @@ function validarOpciones(opciones) {
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
 export function actividadTest(nombre, opciones) {
-
   if (validarOpciones(opciones)) {
     throw new Error(`Se ha iniciado el tests ${nombre} con opciones inválidas.`);
   }
@@ -99,6 +97,7 @@ export function actividadTest(nombre, opciones) {
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
+    this.owner.lookup('service:intl').setLocale('es-ar');
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
     failAllApiFetchs()
