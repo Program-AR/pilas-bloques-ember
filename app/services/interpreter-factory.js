@@ -69,21 +69,7 @@ export default Service.extend({
       comportamiento = comportamiento ? comportamiento.toString() : '';
       params = params ? params.toString() : '';
       params = JSON.parse(params);
-      var clase_comportamiento = pilasService.evaluar(`
-        var comportamiento = null;
-
-        if (window['${comportamiento}']) {
-          comportamiento = ${comportamiento};
-        } else {
-          if (pilas.comportamientos['${comportamiento}']) {
-            comportamiento = pilas.comportamientos['${comportamiento}'];
-          } else {
-            throw new Error("No existe un comportamiento llamado '${comportamiento}'.");
-          }
-        }
-
-        comportamiento;
-      `);
+      var clase_comportamiento = pilasService.comportamiento(comportamiento);
 
       if(typeof params.receptor === 'string') {
         params.receptor = pilasService.evaluar(`pilas.escena_actual().${params.receptor}`);
@@ -121,6 +107,15 @@ export default Service.extend({
     }
 
     interpreter.setProperty(scope, 'highlightBlock', interpreter.createNativeFunction(out_highlightBlock));
+
+    /**
+     * Ejecuta el string indicado en el intérprete de pilas.
+     */
+    function out_unsafeExec(codeString){
+      return pilasService.evaluar(codeString.toString())
+    }
+
+    interpreter.setProperty(scope, 'unsafeExec', interpreter.createNativeFunction(out_unsafeExec))
   },
 
   wrappearCodigo(codigo){

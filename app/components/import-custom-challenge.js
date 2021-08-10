@@ -57,20 +57,28 @@ export default Component.extend({
 
     let properties;
     if ( blockType === "action") {
+      const description = aBlock.description;
+      const interactsWith = "icono.manzana";
       properties = {
+        id: "ContarFruta",
         descripcion: description,
         icono: interactsWith+'.png',
-        comportamiento: 'Recolectar',
-        argumentos:`{etiqueta: ${interactsWith}}`
-      }
+        comportamiento: 'Alternativa',
+        argumentos: 
+          `{
+  condicion: unsafeExec('() => pilas.escena_actual().automata.tocando("ManzanaAnimada")'),
+  entonces: unsafeExec('new Contar({ etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana" })'),
+  sino: unsafeExec('new Contar({ etiqueta:"BananaAnimada", nombreAnimacion: "comerBanana" })')
+}`
+        }      
       this.blocksGallery.crearBloqueAccion(name,properties)
     }
     if (  blockType === "sensor" ) {
       const object = aBlock.object;
       properties = {
-        descripcion: description,
-        icono: object+'.png',
-        funcionSensor: `tocando("${object}")`,
+        descripcion: "Hay frutinha acá",
+        icono: "icono.manzana.png",
+        funcionSensor: "tocando('ManzanaAnimada') || pilas.escena_actual().automata.tocando('BananaAnimada')",
         esBool: true
       }
       this.blocksGallery.crearBloqueSensor(name,properties)

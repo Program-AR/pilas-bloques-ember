@@ -354,6 +354,24 @@ export default Service.extend(Evented, {
   deshabilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
     this.evaluar('pilas').ponerVelocidadNormal();
+  },
+
+  comportamiento(nombreComportamiento) {
+    return this.evaluar(`
+        var comportamiento = null;
+
+        if (window['${nombreComportamiento}']) {
+          comportamiento = ${nombreComportamiento};
+        } else {
+          if (pilas.comportamientos['${nombreComportamiento}']) {
+            comportamiento = pilas.comportamientos['${nombreComportamiento}'];
+          } else {
+            throw new Error("No existe un comportamiento llamado '${nombreComportamiento}'.");
+          }
+        }
+
+        comportamiento;
+      `)
   }
 
 });
