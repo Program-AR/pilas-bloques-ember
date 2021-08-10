@@ -76,8 +76,8 @@ components:
     close: "Cerrar"
 
   sceneDetails:
-    seeDescription: "!Quiero ver el enunciado!"
-    getClue: "!Quiero ver el enunciado!"
+    seeDescription: "¡Quiero ver el enunciado!"
+    getClue: "¡Dame una pista!"
     noClues: "Este ejercicio no contiene pista alguna"
 
   sceneButtons:
