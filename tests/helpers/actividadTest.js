@@ -1,7 +1,7 @@
 import { run } from '@ember/runloop';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
@@ -13,7 +13,7 @@ import { failAllApiFetchs } from './utils';
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
-    setupRenderingTest(hooks);
+    setupPBIntegrationTest(hooks);
     setupMirage(hooks);
     runActivityTests();
   });
@@ -102,6 +102,7 @@ export function actividadTest(nombre, opciones) {
     let pilas = this.owner.lookup('service:pilas');
     failAllApiFetchs()
     this.owner.lookup('service:pilas-bloques-api').logout();
+    this.owner.lookup('service:intl').setLocale(['es-ar'])
 
     //let actividades = this.owner.lookup('service:actividades');
 

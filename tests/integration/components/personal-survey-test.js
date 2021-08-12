@@ -1,4 +1,5 @@
 import { module, test } from 'qunit'
+import { setUpTestLocale } from '../../helpers/utils'
 import { setupRenderingTest } from 'ember-qunit'
 import { render } from '@ember/test-helpers'
 import { hbs } from 'ember-cli-htmlbars'
@@ -9,6 +10,7 @@ module('Integration | Component | survey-window', function (hooks) {
   var api
 
   setupRenderingTest(hooks)
+  setUpTestLocale(hooks)
   setupLoggedUser(hooks)
 
   hooks.beforeEach(function () {
@@ -16,6 +18,7 @@ module('Integration | Component | survey-window', function (hooks) {
   })
 
   hooks.afterEach(function () {
+
     this.owner.lookup('component:personal-survey').close()
     fetchMock.reset()
   })

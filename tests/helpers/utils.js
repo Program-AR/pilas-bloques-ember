@@ -14,18 +14,21 @@ export function setupPBUnitTest(hooks) {
     setupClear(hooks)
     setupToasterMock(hooks)
     setupRouterMock(hooks)
+    setUpTestLocale(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
     setupRenderingTest(hooks)
     setupClear(hooks)
     setupEmberMocks(hooks)
+    setUpTestLocale(hooks)
 }
 
 export function setupPBAcceptanceTest(hooks) {
     setupApplicationTest(hooks)
     setupMirage(hooks)
     setupClear(hooks)
+    setUpTestLocale(hooks)
 }
 
 export function setupClear(hooks) {
@@ -84,6 +87,12 @@ export function mockApi(path, response, options) {
 export function failAllApiFetchs() {
     fetchMock.reset()
     mockApi("", { throws: 'ERROR' })
+}
+
+export function setUpTestLocale(hooks) {
+    hooks.beforeEach(function () {
+        this.owner.lookup('service:intl').setLocale(['es-ar'])
+    })
 }
 
 

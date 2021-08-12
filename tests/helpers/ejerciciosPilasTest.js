@@ -1,11 +1,11 @@
 import { module } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../helpers/utils'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
 
 export function moduloEjerciciosPilas(nombre, runExerciseTests) {
   module(`Integration | EjerciciosPilas | ${nombre}`, (hooks) => {
-    setupRenderingTest(hooks);
+    setupPBIntegrationTest(hooks);
     setupMirage(hooks);
     runExerciseTests();
   });
