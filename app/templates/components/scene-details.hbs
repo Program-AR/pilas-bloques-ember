@@ -7,9 +7,9 @@
             <div class="flex-grow">
                 <div class="layout-row">
                     <div class="tab layout-column">
-                        <Button class="tablinks" @tooltip={{"!Quiero ver el enunciado!"}} @iconButton={{true}} @mini={{true}} @onClick={{action "setTab" "statement"}}>{{paper-icon "menu_book"}}</Button>
+                        <Button class="tablinks" @tooltip={{ t "components.sceneDetails.seeDescription"}} @iconButton={{true}} @mini={{true}} @onClick={{action "setTab" "statement"}}>{{paper-icon "menu_book"}}</Button>
                         <div class={{if model.consignaInicial "clue-button" "no-clue-button"}}>
-                            <Button @tooltip={{if model.consignaInicial "!Dame una pista!" "Este ejercicio no contiene pista alguna"}} @isDisabled={{not model.consignaInicial}} @iconButton={{true}} @isMini={{true}} @onClick={{action "setTab" "clue"}}>{{paper-icon "wb_incandescent"}}</Button>
+                            <Button @tooltip={{if model.consignaInicial (t "components.sceneDetails.getClue") (t "components.sceneDetails.noClues")}} @isDisabled={{not model.consignaInicial}} @iconButton={{true}} @isMini={{true}} @onClick={{action "setTab" "clue"}}>{{paper-icon "wb_incandescent"}}</Button>
                         </div>
                     </div>
                     <div id="statement" class="tabcontent">
