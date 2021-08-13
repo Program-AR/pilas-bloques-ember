@@ -89,7 +89,7 @@ export function failAllApiFetchs() {
     mockApi("", { throws: 'ERROR' })
 }
 
-function setUpTestLocale(hooks) {
+export function setUpTestLocale(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:intl').setLocale(['es-ar'])
     })
