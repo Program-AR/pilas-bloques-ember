@@ -16,6 +16,7 @@ module('Integration | Component | survey-window', function (hooks) {
   })
 
   hooks.afterEach(function () {
+
     this.owner.lookup('component:personal-survey').close()
     fetchMock.reset()
   })

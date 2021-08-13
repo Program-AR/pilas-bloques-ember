@@ -1,13 +1,12 @@
 import { module, test } from 'qunit'
-import { setupRenderingTest } from 'ember-qunit'
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import { render } from '@ember/test-helpers'
 import { hbs } from 'ember-cli-htmlbars'
 
-module('Integration | Component | descripcion-acerca-de', function(hooks) {
-  setupRenderingTest(hooks)
+module('Integration | Component | descripcion-acerca-de', function (hooks) {
+  setupPBIntegrationTest(hooks)
 
-  test('it renders', async function(assert) {
-    this.owner.lookup('service:intl').setLocale('es-ar')
+  test('it renders', async function (assert) {
     await render(hbs`<DescripcionAcercaDe />`);
     assert.ok(this.element.textContent.includes('Acerca de'))
   })
