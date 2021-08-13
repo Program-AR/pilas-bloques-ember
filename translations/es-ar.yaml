@@ -466,6 +466,46 @@ model:
       title: ¡Coty dibuja libre!
       description: En esta actividad vas a poder realizar el dibujo que más te guste
       clue: Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.
+    202101:
+      title: Introductorio
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202102:
+      title: Primer desafío
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202103:
+      title: Segundo desafío
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202104:
+      title: Primer desafío
+      description: Descripcion con Lita
+      clue: Pista con Lita
+    202105:
+      title: Segundo desafío
+      description: Descripcion con Lita
+      clue: Pista con Lita
+    202106:
+      title: Introductorio
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202107:
+      title: Primer desafío
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202108:
+      title: Segundo desafío
+      description: Descripcion con Duba
+      clue: Pista con Duba
+    202109:
+      title: Primer desafío
+      description: Descripcion con Lita
+      clue: Pista con Lita
+    202110:
+      title: Segundo desafío
+      description: Descripcion con Lita
+      clue: Pista con Lita
 
   groups:
     AlienTocaBoton:
@@ -570,6 +610,14 @@ model:
       title: Agente Secreto Topotopo
     manual1cPrimariaOtros:
       title: Otros
+    tecnopolis2021PequesConDuba:
+      title: Con Duba
+    tecnopolis2021PequesConLita:
+      title: Con Lita
+    tecnopolis2021NoTanPequesConDuba:
+      title: Con Duba
+    tecnopolis2021NoTanPequesConLita:
+      title: Con Lita
 
   books:
     1:
@@ -578,6 +626,9 @@ model:
     2:
       title: Segundo Ciclo
       description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR" Para 2° ciclo de primaria en adelante.
+    100:
+      title: Tecnopolis 2021
+      description: Desafios de Tecnopolis 2021
 
   chapters:
     Capítulo 3:
@@ -596,6 +647,10 @@ model:
       title: "Sensores Numéricos"
     Parametrización de soluciones:
       title: "Parametrización de soluciones"
+    Desafíos para peques:
+      title: "Desafíos para peques"
+    Desafíos para no tan peques:
+      title: "Desafíos para no tan peques"
 
 desafios:
   desafioPorNombreError: 

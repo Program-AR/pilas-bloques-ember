@@ -12,4 +12,9 @@ export default [
     capituloIds: ['Autómatas, comandos, procedimientos y repetición', 'Alternativa condicional', 'Repetición condicional', 'Sensores Numéricos', 'Parametrización de soluciones'],
     imagen: 'programar.png'
   },
+  {
+    id: 100,
+    capituloIds: ['Desafíos para peques', 'Desafíos para no tan peques'],
+    oculto: true
+  },
 ];

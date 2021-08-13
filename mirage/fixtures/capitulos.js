@@ -33,4 +33,12 @@ export default [
         id: 'Parametrización de soluciones',
         grupoIds: ['ElPlanetaDeNano', 'Dibujando Figuras', 'LaFiestaDeDracula', 'SalvandoLaNavidad', 'PrendiendoLasCompusParametrizado', 'TitoCuadrado', 'ElCangrejoAguafiestas', 'PrendiendoLasFogatas', 'DibujoLibre']
     },
+    {
+        id: 'Desafíos para peques',
+        grupoIds: ['tecnopolis2021PequesConDuba', 'tecnopolis2021PequesConLita']
+    },
+    {
+        id: 'Desafíos para no tan peques',
+        grupoIds: ['tecnopolis2021NoTanPequesConDuba', 'tecnopolis2021NoTanPequesConLita']
+    },
 ];
