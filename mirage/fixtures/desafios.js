@@ -1859,7 +1859,7 @@ export default [
   },
   {
     id: 202101,
-    nombre: 'tecnopolis202101',
+    nombre: 'tecnopolis2021Peques1',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -1905,7 +1905,7 @@ export default [
   },
   {
     id: 202102,
-    nombre: 'tecnopolis202102',
+    nombre: 'tecnopolis2021Peques2',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -1927,7 +1927,7 @@ export default [
   },
   {
     id: 202103,
-    nombre: 'tecnopolis202103',
+    nombre: 'tecnopolis2021Peques3',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -1949,7 +1949,7 @@ export default [
   },
   {
     id: 202104,
-    nombre: 'tecnopolis202104',
+    nombre: 'tecnopolis2021Peques4',
     imagen: 'Lita',
     bloques: [
       'MoverACasillaAbajo',
@@ -1973,7 +1973,7 @@ export default [
   },
   {
     id: 202105,
-    nombre: 'tecnopolis202105',
+    nombre: 'tecnopolis2021Peques5',
     imagen: 'Lita',
     bloques: [
       'MoverACasillaAbajo',
@@ -1997,7 +1997,7 @@ export default [
   },
   {
     id: 202106,
-    nombre: 'tecnopolis202106',
+    nombre: 'tecnopolis2021NoTanPeques1',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -2046,7 +2046,7 @@ export default [
   },
   {
     id: 202107,
-    nombre: 'tecnopolis202107',
+    nombre: 'tecnopolis2021NoTanPeques2',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -2068,7 +2068,7 @@ export default [
   },
   {
     id: 202108,
-    nombre: 'tecnopolis202108',
+    nombre: 'tecnopolis2021NoTanPeques3',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -2090,7 +2090,7 @@ export default [
   },
   {
     id: 202109,
-    nombre: 'tecnopolis202109',
+    nombre: 'tecnopolis2021NoTanPeques4',
     imagen: 'Lita',
     bloques: [
       'MoverACasillaAbajo',
@@ -2114,7 +2114,7 @@ export default [
   },
   {
     id: 202110,
-    nombre: 'tecnopolis202110',
+    nombre: 'tecnopolis2021NoTanPeques5',
     imagen: 'Lita',
     bloques: [
       'MoverACasillaAbajo',
