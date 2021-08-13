@@ -4,26 +4,12 @@ export default [
   {
     id: 1,
     capituloIds: ['Capítulo 3', 'Capítulo 4', 'Capítulo 5'],
-    nombre: 'primer-ciclo',
-    titulo: 'Primer Ciclo',
-    descripcion: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"',
-    modoLecturaSimple: true, // modo de lectura para niños pequeños.
+    imagen: 'primer-ciclo.png',
+    modoLecturaSimple: true // modo de lectura para niños pequeños.
   },
   {
     id: 2,
     capituloIds: ['Autómatas, comandos, procedimientos y repetición', 'Alternativa condicional', 'Repetición condicional', 'Sensores Numéricos', 'Parametrización de soluciones'],
-    nombre: 'programar',
-    titulo: 'Segundo Ciclo',
-    descripcion: 'Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR"  Para 2° ciclo de primaria en adelante.',
+    imagen: 'programar.png'
   },
-
-  // Libro invisible, exclusivo para hacer capturas:
-  {
-    id: 'capturas1c',
-    capituloIds: ['manual1cPrimariaCapturasCap3', 'manual1cPrimariaCapturasCap4', 'manual1cPrimariaCapturasCap5'],
-    titulo: 'Primer ciclo para hacer capturas',
-    modoLecturaSimple: true,
-    oculto: true
-  }
-
 ];

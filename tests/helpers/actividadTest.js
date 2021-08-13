@@ -1,7 +1,7 @@
 import { run } from '@ember/runloop';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
@@ -13,7 +13,7 @@ import { failAllApiFetchs } from './utils';
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
-    setupRenderingTest(hooks);
+    setupPBIntegrationTest(hooks);
     setupMirage(hooks);
     runActivityTests();
   });
@@ -90,7 +90,6 @@ function validarOpciones(opciones) {
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
 export function actividadTest(nombre, opciones) {
-
   if (validarOpciones(opciones)) {
     throw new Error(`Se ha iniciado el tests ${nombre} con opciones inválidas.`);
   }

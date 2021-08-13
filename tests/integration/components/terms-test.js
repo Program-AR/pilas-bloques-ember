@@ -1,13 +1,11 @@
 import { module, test } from 'qunit';
 import { render } from '@ember/test-helpers';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import { fakeUser } from '../../helpers/mocks'
-import { setupClear } from '../../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | terms', function (hooks) {
-  setupRenderingTest(hooks)
-  setupClear(hooks)
+  setupPBIntegrationTest(hooks)
 
   var storage
   hooks.beforeEach(function () {
