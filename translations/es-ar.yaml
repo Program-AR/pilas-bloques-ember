@@ -112,7 +112,7 @@ blocks:
   nextLine: "Pasar a la siguiente fila"
   nextColumn: "Pasar a la siguiente columna"
   countBanana: "Contar una banana"
-  countManzana: "Contar una manzana"
+  countApple: "Contar una manzana"
   blowUpBallon: "Explotar globo"
   kickBall: "Patear pelota"
   move1Km: "Avanzar 1 Km"
