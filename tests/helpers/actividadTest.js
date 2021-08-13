@@ -97,12 +97,10 @@ export function actividadTest(nombre, opciones) {
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
-    this.owner.lookup('service:intl').setLocale('es-ar');
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
     failAllApiFetchs()
     this.owner.lookup('service:pilas-bloques-api').logout();
-    this.owner.lookup('service:intl').setLocale(['es-ar'])
 
     //let actividades = this.owner.lookup('service:actividades');
 

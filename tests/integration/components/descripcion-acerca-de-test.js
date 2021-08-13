@@ -7,7 +7,6 @@ module('Integration | Component | descripcion-acerca-de', function (hooks) {
   setupPBIntegrationTest(hooks)
 
   test('it renders', async function (assert) {
-    this.owner.lookup('service:intl').setLocale('es-ar')
     await render(hbs`<DescripcionAcercaDe />`);
     assert.ok(this.element.textContent.includes('Acerca de'))
   })

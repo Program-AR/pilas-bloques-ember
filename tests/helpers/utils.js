@@ -89,7 +89,7 @@ export function failAllApiFetchs() {
     mockApi("", { throws: 'ERROR' })
 }
 
-export function setUpTestLocale(hooks) {
+function setUpTestLocale(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:intl').setLocale(['es-ar'])
     })
@@ -113,7 +113,7 @@ export function findBlockByTypeIn(rootBlock, type) {
 export function assertAsync(assert, fn, ms = 0) { //TODO: Curry
     let done = assert.async(1)
     setTimeout(function () {
-        fn() 
+        fn()
         done()
     }, ms)
 }
@@ -169,10 +169,10 @@ export function fetchCallHeader() {
 /**
  * Needed for acceptance tests where there is a visit() to a challenge page.
  */
-export async function awaitChallengeLoading(){
+export async function awaitChallengeLoading() {
     var timeoutInMs = 5000
     var startTimeInMs = Date.now()
-    while(($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())){
-      await new Promise(r => setTimeout(r, 20))
+    while (($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())) {
+        await new Promise(r => setTimeout(r, 20))
     }
 }
