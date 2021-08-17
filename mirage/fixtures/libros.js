@@ -14,7 +14,8 @@ export default [
   },
   {
     id: 100,
-    capituloIds: ['Desafíos para peques', 'Desafíos para no tan peques'],
-    oculto: true
+    capituloIds: ['Tecnopolis 2021 Ejercicio Modelo', 'Tecnopolis 2021 Con Duba', 'Tecnopolis 2021 Con Lita'],
+    imagen: 'tecnopolis.png',
+    modoLecturaSimple: true
   },
 ];

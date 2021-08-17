@@ -34,11 +34,15 @@ export default [
         grupoIds: ['ElPlanetaDeNano', 'Dibujando Figuras', 'LaFiestaDeDracula', 'SalvandoLaNavidad', 'PrendiendoLasCompusParametrizado', 'TitoCuadrado', 'ElCangrejoAguafiestas', 'PrendiendoLasFogatas', 'DibujoLibre']
     },
     {
-        id: 'Desafíos para peques',
-        grupoIds: ['tecnopolis2021PequesConDuba', 'tecnopolis2021PequesConLita']
+        id: 'Tecnopolis 2021 Ejercicio Modelo',
+        grupoIds: ['tecnopolis2021EjercicioModelo']
     },
     {
-        id: 'Desafíos para no tan peques',
-        grupoIds: ['tecnopolis2021NoTanPequesConDuba', 'tecnopolis2021NoTanPequesConLita']
+        id: 'Tecnopolis 2021 Con Duba',
+        grupoIds: ['tecnopolis2021ConDuba']
+    },
+    {
+        id: 'Tecnopolis 2021 Con Lita',
+        grupoIds: ['tecnopolis2021ConLita']
     },
 ];

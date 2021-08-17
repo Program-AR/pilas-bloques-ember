@@ -467,45 +467,41 @@ model:
       description: En esta actividad vas a poder realizar el dibujo que más te guste
       clue: Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.
     202101:
-      title: Introductorio
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Introducción
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     202102:
-      title: Primer desafío
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Nivel 1
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     202103:
-      title: Segundo desafío
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Nivel 2
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     202104:
-      title: Primer desafío
-      description: Descripcion con Lita
-      clue: Pista con Lita
+      title: Nivel 3
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     202105:
-      title: Segundo desafío
-      description: Descripcion con Lita
-      clue: Pista con Lita
+      title: Nivel 4
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     202106:
-      title: Introductorio
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Nivel 1
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
     202107:
-      title: Primer desafío
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Nivel 2
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
     202108:
-      title: Segundo desafío
-      description: Descripcion con Duba
-      clue: Pista con Duba
+      title: Nivel 3
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
     202109:
-      title: Primer desafío
-      description: Descripcion con Lita
-      clue: Pista con Lita
-    202110:
-      title: Segundo desafío
-      description: Descripcion con Lita
-      clue: Pista con Lita
+      title: Nivel 4
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
 
   groups:
     AlienTocaBoton:
@@ -610,14 +606,12 @@ model:
       title: Agente Secreto Topotopo
     manual1cPrimariaOtros:
       title: Otros
-    tecnopolis2021PequesConDuba:
-      title: Con Duba
-    tecnopolis2021PequesConLita:
-      title: Con Lita
-    tecnopolis2021NoTanPequesConDuba:
-      title: Con Duba
-    tecnopolis2021NoTanPequesConLita:
-      title: Con Lita
+    tecnopolis2021EjercicioModelo:
+      title: ""
+    tecnopolis2021ConDuba:
+      title: ""
+    tecnopolis2021ConLita:
+      title: ""
 
   books:
     1:
@@ -647,10 +641,12 @@ model:
       title: "Sensores Numéricos"
     Parametrización de soluciones:
       title: "Parametrización de soluciones"
-    Desafíos para peques:
-      title: "Desafíos para peques"
-    Desafíos para no tan peques:
-      title: "Desafíos para no tan peques"
+    Tecnopolis 2021 Ejercicio Modelo:
+      title: "Ejercicio Modelo"
+    Tecnopolis 2021 Con Duba:
+      title: "Con Duba"
+    Tecnopolis 2021 Con Lita:
+      title: "Con Lita"
 
 desafios:
   desafioPorNombreError: 

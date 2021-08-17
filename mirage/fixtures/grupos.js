@@ -206,19 +206,15 @@ export default [
     desafioIds: [255]
   },
   {
-    id: 'tecnopolis2021PequesConDuba',
-    desafioIds: [202101, 202102, 202103]
+    id: 'tecnopolis2021EjercicioModelo',
+    desafioIds: [202101]
   },
   {
-    id: 'tecnopolis2021PequesConLita',
-    desafioIds: [202104, 202105]
+    id: 'tecnopolis2021ConDuba',
+    desafioIds: [202102, 202103, 202104, 202105]
   },
   {
-    id: 'tecnopolis2021NoTanPequesConDuba',
-    desafioIds: [202106, 202107, 202108]
-  },
-  {
-    id: 'tecnopolis2021NoTanPequesConLita',
-    desafioIds: [202109, 202110]
+    id: 'tecnopolis2021ConLita',
+    desafioIds: [202106, 202107, 202108, 202109]
   },
 ];

@@ -1,40 +1,9 @@
 import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
-moduloActividad("Tecnopolis 2021 - No tan peques", () => {
+moduloActividad("Tecnopolis 2021 - Con Lita", () => {
 
-  actividadTest("tecnopolis2021NoTanPeques1", {
-    descripcionAdicional: "tecnopolis2021NoTanPeques1: Se puede resolver",
-    solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
-    <variables></variables>
-    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
-      <statement name=\"program\">
-        <shadow type=\"required_statement\"></shadow>
-        <block type=\"repetir\">
-          <value name=\"count\">
-            <shadow type=\"required_value\"></shadow>
-            <block type=\"math_number\">
-              <field name=\"NUM\">3</field>
-            </block>
-          </value>
-          <statement name=\"block\">
-            <shadow type=\"required_statement\"></shadow>
-            <block type=\"MoverACasillaDerecha\"></block>
-          </statement>
-          <next>
-            <block type=\"MoverACasillaAbajo\">
-              <next>
-                <block type=\"ComerChurrasco\"></block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-  </xml>`
-  });
-
-  actividadTest("tecnopolis2021NoTanPeques2", {
-    descripcionAdicional: "tecnopolis2021NoTanPeques2: Se puede resolver",
+  actividadTest("tecnopolis2021LitaNivel1", {
+    descripcionAdicional: "tecnopolis2021LitaNivel1: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
     <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
@@ -49,40 +18,28 @@ moduloActividad("Tecnopolis 2021 - No tan peques", () => {
           </value>
           <statement name=\"block\">
             <shadow type=\"required_statement\"></shadow>
-            <block type=\"MoverACasillaDerecha\"></block>
+            <block type=\"MoverACasillaAbajo\"></block>
           </statement>
           <next>
-            <block type=\"repetir\">
-              <value name=\"count\">
-                <shadow type=\"required_value\"></shadow>
-                <block type=\"math_number\">
-                  <field name=\"NUM\">3</field>
-                </block>
-              </value>
-              <statement name=\"block\">
-                <shadow type=\"required_statement\"></shadow>
-                <block type=\"MoverACasillaAbajo\"></block>
-              </statement>
+            <block type=\"AgarrarLechuga\">
               <next>
-                <block type=\"MoverACasillaIzquierda\">
+                <block type=\"repetir\">
+                  <value name=\"count\">
+                    <shadow type=\"required_value\"></shadow>
+                    <block type=\"math_number\">
+                      <field name=\"NUM\">5</field>
+                    </block>
+                  </value>
+                  <statement name=\"block\">
+                    <shadow type=\"required_statement\"></shadow>
+                    <block type=\"MoverACasillaDerecha\"></block>
+                  </statement>
                   <next>
-                    <block type=\"MoverACasillaIzquierda\">
+                    <block type=\"AgarrarTomate\">
                       <next>
-                        <block type=\"MoverACasillaAbajo\">
+                        <block type=\"MoverACasillaArriba\">
                           <next>
-                            <block type=\"MoverACasillaAbajo\">
-                              <next>
-                                <block type=\"MoverACasillaDerecha\">
-                                  <next>
-                                    <block type=\"MoverACasillaDerecha\">
-                                      <next>
-                                        <block type=\"ComerChurrasco\"></block>
-                                      </next>
-                                    </block>
-                                  </next>
-                                </block>
-                              </next>
-                            </block>
+                            <block type=\"PrepararEnsalada\"></block>
                           </next>
                         </block>
                       </next>
@@ -96,10 +53,10 @@ moduloActividad("Tecnopolis 2021 - No tan peques", () => {
       </statement>
     </block>
   </xml>`
-  })
+  });
 
-  actividadTest("tecnopolis2021NoTanPeques3", {
-    descripcionAdicional: "tecnopolis2021NoTanPeques3: Se puede resolver",
+  actividadTest("tecnopolis2021LitaNivel2", {
+    descripcionAdicional: "tecnopolis2021LitaNivel2: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
     <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
@@ -109,28 +66,62 @@ moduloActividad("Tecnopolis 2021 - No tan peques", () => {
           <value name=\"count\">
             <shadow type=\"required_value\"></shadow>
             <block type=\"math_number\">
-              <field name=\"NUM\">4</field>
+              <field name=\"NUM\">2</field>
             </block>
           </value>
           <statement name=\"block\">
             <shadow type=\"required_statement\"></shadow>
             <block type=\"MoverACasillaDerecha\">
               <next>
-                <block type=\"MoverACasillaAbajo\">
+                <block type=\"MoverACasillaAbajo\"></block>
+              </next>
+            </block>
+          </statement>
+          <next>
+            <block type=\"repetir\">
+              <value name=\"count\">
+                <shadow type=\"required_value\"></shadow>
+                <block type=\"math_number\">
+                  <field name=\"NUM\">2</field>
+                </block>
+              </value>
+              <statement name=\"block\">
+                <shadow type=\"required_statement\"></shadow>
+                <block type=\"MoverACasillaDerecha\">
                   <next>
-                    <block type=\"ComerChurrasco\"></block>
+                    <block type=\"AgarrarLechuga\">
+                      <next>
+                        <block type=\"MoverACasillaAbajo\">
+                          <next>
+                            <block type=\"AgarrarTomate\"></block>
+                          </next>
+                        </block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </statement>
+              <next>
+                <block type=\"MoverACasillaDerecha\">
+                  <next>
+                    <block type=\"MoverACasillaAbajo\">
+                      <next>
+                        <block type=\"PrepararEnsalada\"></block>
+                      </next>
+                    </block>
                   </next>
                 </block>
               </next>
             </block>
-          </statement>
+          </next>
         </block>
       </statement>
     </block>
   </xml>`
   })
-  actividadTest("tecnopolis2021NoTanPeques4", {
-    descripcionAdicional: "tecnopolis2021NoTanPeques4: Se puede resolver",
+
+  actividadTest("tecnopolis2021LitaNivel3", {
+    descripcionAdicional: "tecnopolis2021LitaNivel3: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
     <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
@@ -201,8 +192,8 @@ moduloActividad("Tecnopolis 2021 - No tan peques", () => {
     </block>
   </xml>`
   })
-  actividadTest("tecnopolis2021NoTanPeques5", {
-    descripcionAdicional: "tecnopolis2021NoTanPeques5: Se puede resolver",
+  actividadTest("tecnopolis2021LitaNivel4", {
+    descripcionAdicional: "tecnopolis2021LitaNivel4: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
     <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
