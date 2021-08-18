@@ -309,7 +309,7 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
-    id:130,
+    id: 130,
     nombre: 'LaFiestaDeDracula',
     escena: 'LaFiestaDeDracula',
     debeFelicitarse: true,
@@ -324,7 +324,7 @@ export default [
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
-    id:132,
+    id: 132,
     nombre: 'PrendiendoLasCompusParametrizado',
     escena: 'PrendiendoLasCompus',
     deshabilitado: false,
@@ -1856,5 +1856,247 @@ export default [
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
+  },
+  {
+    id: 202101,
+    nombre: 'tecnopolis2021Modelo',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [-,-,O,P,-,-],\
+    [-,-,O,-,-,-],\
+    [-,-,O,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <variables></variables>
+    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
+      <statement name=\"program\">
+        <shadow type=\"required_statement\"></shadow>
+        <block type=\"repetir\">
+          <value name=\"count\">
+            <shadow type=\"required_value\"></shadow>
+            <block type=\"math_number\">
+              <field name=\"NUM\">3</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <shadow type=\"required_statement\"></shadow>
+            <block type=\"MoverACasillaDerecha\"></block>
+          </statement>
+          <next>
+            <block type=\"MoverACasillaAbajo\">
+              <next>
+                <block type=\"ComerChurrasco\"></block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  },
+  {
+    id: 202102,
+    nombre: 'tecnopolis2021DubaNivel1',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,O,O,-,-],\
+    [-,-,O,O,-,P],\
+    [-,-,-,-,-,P],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202103,
+    nombre: 'tecnopolis2021DubaNivel2',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,-,-,-,-,-],\
+    [-,O,-,-,-,-],\
+    [-,-,O,-,-,-],\
+    [-,-,-,O,-,-],\
+    [-,-,-,-,O,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202104,
+    nombre: 'tecnopolis2021DubaNivel3',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,O,O,O,O,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,O,O],\
+    [-,-,-,-,-,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202105,
+    nombre: 'tecnopolis2021DubaNivel4',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [-,P,-,-,-,-],\
+    [-,-,P,-,-,-],\
+    [-,-,-,P,-,-],\
+    [-,-,-,-,P,-],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202106,
+    nombre: 'tecnopolis2021LitaNivel1',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,O,O,-,-],\
+    [-,-,O,O,-,-],\
+    [-,-,-,-,-,E],\
+    [L,-,-,-,-,T],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202107,
+    nombre: 'tecnopolis2021LitaNivel2',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,-,-,-,-],\
+    [O,-,-,-,-,-],\
+    [-,O,-,L,-,-],\
+    [-,-,O,T,L,-],\
+    [-,-,-,O,T,-],\
+    [-,-,-,-,O,E],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202108,
+    nombre: 'tecnopolis2021LitaNivel3',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,-,-,-,T],\
+    [O,O,O,O,O,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,-,L],\
+    [-,-,-,-,O,O],\
+    [-,-,-,-,-,E],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 202109,
+    nombre: 'tecnopolis2021LitaNivel4',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,L,-,-,-,-],\
+    [-,T,L,-,-,-],\
+    [-,-,T,L,-,-],\
+    [-,-,-,T,L,-],\
+    [-,-,-,-,T,-],\
+    [-,-,-,-,-,E],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
   },
 ];
