@@ -40,8 +40,8 @@ export default Component.extend({
     // Parseamos el JSON
     const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
     const jsonDesafio = JSON.parse(jsonDesafioAsString);
+    jsonDesafio.challengeCover = await entries["desafio/assets/splashChallenge.png"].arrayBuffer();
     const bloques = jsonDesafio.blocks;
-    console.log(bloques)
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
     this.blocksGallery.start();  
     bloques.forEach(block => this._createBlock(block));
