@@ -48,7 +48,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
-    ENV.testTranslations = true
+    ENV.testTranslations = false
   }
 
   if (environment === 'test') {
