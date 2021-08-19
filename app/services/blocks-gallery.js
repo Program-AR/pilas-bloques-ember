@@ -167,7 +167,7 @@ export default Service.extend({
   crearBloqueValor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opcions.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
 
     let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
