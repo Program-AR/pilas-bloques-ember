@@ -1,10 +1,11 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
-import { findBlockByTypeIn, assertNotDisabled, assertNotAvailable } from '../../helpers/utils';
+import { findBlockByTypeIn, assertNotDisabled, assertNotAvailable, setUpTestLocale } from '../../helpers/utils';
 
 module('Unit | Service | available-blocks-validator', function (hooks) {
   setupTest(hooks);
+  setUpTestLocale(hooks)
 
   var validator
 

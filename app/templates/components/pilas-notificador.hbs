@@ -1,8 +1,8 @@
 <div class="pilas-notificador {{if hayActualizacion 'pilas-notificador-visible' 'pilas-notificador-oculto'}}">
   <div class="pilas-notificador-cerrar" {{action "cerrar"}}><i class="fa fa-close"></i></div>
 
-  <p>Hay una nueva versión disponible para descargar.</p>
-  <p>Visitá<Link @href={{href-to "linkDescarga"}} @openOnNewTab={{true}}><strong>nuestra web para más información.</strong></Link></p>
+  <p>{{t "components.notifier.download"}}</p>
+  <p>{{t "components.notifier.visit"}}<Link @href={{href-to "linkDescarga"}} @openOnNewTab={{true}}><strong>{{t "components.notifier.moreInfo"}}</strong></Link></p>
 
   {{yield}}
 </div>

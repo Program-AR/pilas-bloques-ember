@@ -2,7 +2,7 @@ import { module, test } from 'qunit'
 import { setupRenderingTest } from 'ember-qunit'
 import { render } from '@ember/test-helpers'
 import { hbs } from 'ember-cli-htmlbars'
-import { setupLoggedUser } from '../../helpers/utils'
+import { setupLoggedUser, setUpTestLocale } from '../../helpers/utils'
 import fetchMock from 'fetch-mock'
 
 module('Integration | Component | survey-window', function (hooks) {
@@ -10,12 +10,14 @@ module('Integration | Component | survey-window', function (hooks) {
 
   setupRenderingTest(hooks)
   setupLoggedUser(hooks)
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     api = this.owner.lookup('service:pilas-bloques-api')
   })
 
   hooks.afterEach(function () {
+
     this.owner.lookup('component:personal-survey').close()
     fetchMock.reset()
   })

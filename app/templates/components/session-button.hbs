@@ -6,18 +6,18 @@
     </menu.trigger>
     <menu.content as |content|>
       <content.menu-item>
-        <Button @onClick={{action "changeUser"}}> Cambiar usuario </Button>
+        <Button @onClick={{action "changeUser"}}> {{t "components.sessionButton.changeUser"}} </Button>
       </content.menu-item>
 
       <content.menu-item>
-        <Button @onClick={{action "logout"}}> Cerrar sesión </Button>
+        <Button @onClick={{action "logout"}}> {{t "components.sessionButton.logout"}} </Button>
       </content.menu-item>
     </menu.content>
   </PaperMenu>
   <PersonalSurvey />
 {{else}}
   <img class="face gray" src={{ randomAvatar }} />
-  <Button id="login-btn" @onClick={{action (mut openLogin) true}}> Ingresar </Button>
+  <Button id="login-btn" @onClick={{action (mut openLogin) true}}> {{t "components.sessionButton.login"}} </Button>
 {{/if}}
 
 

@@ -2,6 +2,7 @@ import { computed } from '@ember/object';
 import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
+import Ember from 'ember';
 
 export const xmlBloqueEmpezarAEjecutar =
   `<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -9,12 +10,21 @@ export const xmlBloqueEmpezarAEjecutar =
   </xml>`
 
 export default Model.extend({
+  intl: Ember.inject.service(),
+
+  titulo: computed('id',function(){
+    return this.intl.t(`model.challenges.${this.id}.title`);
+  }),
+  enunciado: computed('id',function(){
+    return this.intl.t(`model.challenges.${this.id}.description`);
+  }),
+  consignaInicial: computed('id',function(){
+    return this.intl.t(`model.challenges.${this.id}.clue`);
+  }),
+
   nombre: attr('string'),
-  titulo: attr('string'),
   imagen: attr('string'),
   deshabilitado: attr('boolean'),
-  enunciado: attr('string'),
-  consignaInicial: attr('string'),
   escena: attr('string'),
   debeFelicitarse: attr(),
   estiloToolbox: attr('string'),
