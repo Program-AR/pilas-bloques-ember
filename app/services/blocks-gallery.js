@@ -3,7 +3,7 @@ import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } 
 import Ember from 'ember'
 
 export default Service.extend({
-  blockly: service(), 
+  blockly: service(),
   intl: Ember.inject.service(),
 
   start() {
@@ -39,7 +39,7 @@ export default Service.extend({
   _shouldExecute(block) {
     return block.allInputsFilled(false) || this._isEmptyProcedure(block)
   },
-  
+
   _aliases(type) {
     return Blockly.Blocks[type].aliases || []
   },
@@ -604,7 +604,7 @@ export default Service.extend({
     let blockly = this.blockly;
 
     let bloque = blockly.createCustomBlock('MoverA', {
-      message0: "Mover a %1",
+      message0: `${this.intl.t(`blocks.moveTo`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -678,7 +678,7 @@ export default Service.extend({
     });
 
     blockly.createCustomBlock('SaltarHaciaAdelante', {
-      message0: "%1 Saltar hacia adelante %2",
+      message0: `${this.intl.t(`blocks.jumpFront`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -711,7 +711,7 @@ export default Service.extend({
 
 
     blockly.createCustomBlock('DibujarLado', {
-      message0: "%1 Dibujar lado de %2",
+      message0: `${this.intl.t(`blocks.drawSide`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -785,7 +785,7 @@ export default Service.extend({
     });
 
     blockly.createCustomBlock('EscribirTextoDadoEnOtraCuadricula', {
-      message0: "%1 Escribir: %2",
+      message0: `${this.intl.t(`blocks.write`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -813,7 +813,7 @@ export default Service.extend({
     };
 
     blockly.createCustomBlock('GirarGrados', {
-      message0: "%1 Girar %2 grados",
+      message0: `${this.intl.t(`blocks.turnDegrees`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -1065,7 +1065,7 @@ export default Service.extend({
 
     let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
       "type": "block_type",
-      "message0": "%1 ¿La letra actual es una %2 ?",
+      "message0": `${this.intl.t(`blocks.currentCharacter`)}`,
       "args0": [
         {
           type: "field_image",
