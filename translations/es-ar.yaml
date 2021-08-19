@@ -919,6 +919,6 @@ blocks:
   jumpFront: "%1 Saltar hacia adelante %2"
   drawSide: "%1 Dibujar lado de %2"
   write: "%1 Escribir: %2"
-  turnDegreeds: "%1 Girar %2 grados"
+  turnDegrees: "%1 Girar %2 grados"
   currentCharacter: "%1 ¿La letra actual es una %2 ?"
   
