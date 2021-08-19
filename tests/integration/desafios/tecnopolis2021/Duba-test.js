@@ -5,30 +5,32 @@ moduloActividad("Tecnopolis 2021 - Con Duba", () => {
   actividadTest("tecnopolis2021Modelo", {
     descripcionAdicional: "tecnopolis2021Modelo: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
-    <variables></variables>
-    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\">
-      <statement name=\"program\">
-        <shadow type=\"required_statement\"></shadow>
-        <block type=\"MoverACasillaDerecha\">
-          <next>
-            <block type=\"MoverACasillaDerecha\">
-              <next>
-                <block type=\"MoverACasillaDerecha\">
-                  <next>
-                    <block type=\"MoverACasillaAbajo\">
-                      <next>
-                        <block type=\"ComerChurrasco\"></block>
-                      </next>
-                    </block>
-                  </next>
-                </block>
-              </next>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-  </xml>`
+  <variables></variables>
+  <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"273\" y=\"15\">
+    <statement name=\"program\">
+      <shadow type=\"required_statement\"></shadow>
+      <block type=\"repetir\">
+        <value name=\"count\">
+          <shadow type=\"required_value\"></shadow>
+          <block type=\"math_number\">
+            <field name=\"NUM\">2</field>
+          </block>
+        </value>
+        <statement name=\"block\">
+          <shadow type=\"required_statement\"></shadow>
+          <block type=\"MoverACasillaDerecha\">
+            <next>
+              <block type=\"MoverACasillaAbajo\"></block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type=\"ComerChurrasco\"></block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>`
   })
   actividadTest("tecnopolis2021DubaNivel1", {
     descripcionAdicional: "tecnopolis2021DubaNivel1: Se puede resolver",
