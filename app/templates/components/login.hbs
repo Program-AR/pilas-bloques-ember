@@ -1,6 +1,6 @@
 <div class="login">
   <div class="login-item">
-    <h3>Ya tengo usuario</h3>
+    <h3>{{t "components.login.already"}}</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
     <PbInput @label="Usuario"
       @model={{ credentials.username }} 
@@ -14,28 +14,28 @@
       <PaperCard as |card|>
         <card.title as |title|>
           <title.text as |text|>
-            <p>Usuario o contraseña incorrectos, volvé a intentar</p>
+            <p>{{t "components.login.wrong"}}</p>
           </title.text>
         </card.title>
       </PaperCard>
     {{/if}}
 
     <ProgressButton type="submit" @loading={{ pilasBloquesApi.loading.login }}>
-      Ingresar
+      {{t "components.login.login"}}
     </ProgressButton>
   </PaperForm>
 
   <br>
   <Link @href={{href-to "password-recovery"}}>
-    Olvidé mi usuario o constraseña
+    {{t "components.login.forgot"}}
   </Link>
   </div>
 
   <div class="login-item">
   <img class="login-header" src="imagenes/session/login.png" />
-    <h3> Aún no tengo usuario </h3>
+    <h3> {{t "components.login.dontHaveUser"}} </h3>
     <Link @href={{href-to "register"}}>
-      ¡Registrate haciendo click aca!
+      {{t "components.login.register"}}
     </Link>
   </div>
 </div>

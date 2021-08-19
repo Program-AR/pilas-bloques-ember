@@ -1,14 +1,14 @@
 import { module } from 'qunit';
 import startApp from '../helpers/start-app';
 import destroyApp from '../helpers/destroy-app';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 
 export default function (name, options = {}) {
 
   module(name, (hooks) => {
 
-    setupRenderingTest(hooks);
+    setupPBIntegrationTest(hooks);
     setupMirage(hooks);
 
     hooks.beforeEach(function () {
