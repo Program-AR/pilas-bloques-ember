@@ -1,11 +1,13 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
+import { setUpTestLocale } from '../../helpers/utils';
 
 var highlighter;
 
 module('Unit | Service | highlighter', function (hooks) {
   setupTest(hooks);
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     highlighter = this.owner.lookup('service:highlighter')
@@ -277,7 +279,7 @@ module('Unit | Service | highlighter', function (hooks) {
   function loadProgramAndSendSteps(steps, blocksAsText) {
     let definitionIndex = 0
     let definitionBlocks = blocksAsText
-        .map(Blockly.textToBlock)
+      .map(Blockly.textToBlock)
 
     let ignoredBlockTypes = ["math_number", "HayTomate"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!

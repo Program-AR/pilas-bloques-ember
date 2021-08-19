@@ -2,11 +2,13 @@ import QUnit, { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { blocklyWorkspaceMock } from '../../helpers/mocks'
 import { procedure, entryPoint, sequence, reference, application, repeat, muIf, ifElse, muWhile, number, string, none } from '../../helpers/astFactories'
+import { setUpTestLocale } from '../../helpers/utils';
 
 let pilasMulang = null
 
 module('Unit | Service | pilas-mulang', function (hooks) {
   setupTest(hooks)
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     QUnit.dump.maxDepth = 10 // For deepEqual assertion
