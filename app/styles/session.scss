@@ -2,6 +2,20 @@
   filter: grayscale(1);
 }
 
+.login {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.login-item{
+  flex: auto;
+  text-align: center;
+}
+
+.login-item + .login-item {
+  border-left: solid 1px var(--theme-font-color);
+}
+
 .login-header {
   height: 8rem;
 }

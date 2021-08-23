@@ -471,6 +471,16 @@ a:hover {
   text-align: left;
 }
 
+.disclaimer-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.disclaimer {
+  padding: 0.5em;
+}
+
 .aplicar-modo-lectura-simple,
 .aplicar-modo-lectura-simple button // esta regla es necesaria para evitar que la sobreescriba Bootstrap
 {

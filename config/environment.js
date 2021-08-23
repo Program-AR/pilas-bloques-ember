@@ -12,6 +12,7 @@ module.exports = function (environment) {
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
+    testTranslations: false,
 
     showdown: {
       simpleLineBreaks: true,
@@ -52,6 +53,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
+    ENV.testTranslations = false
   }
 
   if (environment === 'test') {
@@ -67,7 +69,7 @@ module.exports = function (environment) {
     ENV.APP.rootElement = '#ember-testing'
     ENV.pbApi.baseURL = 'http://testing-api'
   }
-  
+
   // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
@@ -75,6 +77,7 @@ module.exports = function (environment) {
     // The baseURL is replaced in production and staging during deploy
     // However, we need this here because it is used when packaging the app.
     ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
+    ENV.testTranslations = false
   }
 
   return ENV

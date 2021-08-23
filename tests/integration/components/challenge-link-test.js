@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | pilas desafio', function (hooks) {
-  setupRenderingTest(hooks);
+  setupPBIntegrationTest(hooks);
 
   test('it renders', async function (assert) {
     this.set("model", { id: 1, titulo: 'demo', nombre: "AlienTocaBoton", escena: "AlienTocaBoton", });
@@ -14,7 +14,7 @@ module('Integration | Component | pilas desafio', function (hooks) {
     assert.dom().hasText('demo', "Muestra el Título del desafio.");
 
     await render(hbs`{{challenge-link challenge=modelDeshabilitado}}`);
-    assert.dom('div.ribbon').hasText("Muy pronto", "Tiene el texto Muy pronto");
+    assert.dom('div.ribbon.semi-transparente').exists();
   });
 
 });
