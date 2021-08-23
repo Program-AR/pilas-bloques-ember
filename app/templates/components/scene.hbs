@@ -2,7 +2,7 @@
     {{#if shouldUseFloatingMode}}
         <div class="pilas-canvas-scene-buttons flex layout-row">
             <span class="flex"></span>
-            <Button @tooltip={{"Cerrar"}} @isIcon={{true}} @onClick={{hideScene}}>{{paper-icon "close"}}</Button>
+            <Button @tooltip={{t "components.scene.close"}} @isIcon={{true}} @onClick={{hideScene}}>{{paper-icon "close"}}</Button>
         </div>
     {{/if}}
     <PilasCanvas class={{if shouldUseFloatingMode "canvas-boder-radius canMove" "canvas-boder-radius"}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
