@@ -89,6 +89,12 @@ p {
   @extend .application-font;
 }
 
+.exercise-text  {
+  p {
+    margin: 0;
+  }
+}
+
 .nw-zoom {
   display: inline-block;
   margin-right: 10px;
