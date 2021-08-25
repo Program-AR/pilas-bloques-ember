@@ -2,11 +2,12 @@ import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
-import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps } from '../../helpers/utils'
+import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
   setupTest(hooks)
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)

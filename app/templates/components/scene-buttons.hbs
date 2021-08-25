@@ -4,49 +4,49 @@
         <SceneButton 
             @class="step-by-step-button-container"
             @element-id="step-by-step-run-button"
-            @label="Paso"
+            @label={{ t "components.sceneButtons.stepByStepRun.label"}}
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) running}}
             @isDisabled={{running}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step-by-step-execution}}
-            @tooltip="Ejecutar paso a paso la solución propuesta"
+            @tooltip={{ t "components.sceneButtons.stepByStepRun.tooltip"}}
         />
 
         <SceneButton 
             @class="step-by-step-button-container"
             @element-id="run-step-button"
-            @label="Paso"
+            @label={{ t "components.sceneButtons.runStep.label"}}
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) (not running)}}
             @isDisabled={{not isPausedOnBreackpoint}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step}}
-            @tooltip="Avanzar un paso" 
+            @tooltip={{ t "components.sceneButtons.runStep.tooltip"}}
         />
 
         <SceneButton 
             @class="run-button-container"
             @element-id="run-button"
-            @label="Ejecutar"
+            @label={{ t "components.sceneButtons.run.label"}}
             @icon="play_arrow"
             @isHidden={{needShowRestartButton}}
             @isDisabled={{needShowRestartButton}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{run}}
-            @tooltip="Ejecutar la solución propuesta"
+            @tooltip={{ t "components.sceneButtons.run.tooltip"}}
         />
 
         <SceneButton 
             @class="restart-button-container"
             @element-id="restart-button"
-            @label="Reiniciar"
+            @label={{ t "components.sceneButtons.restart.label"}}
             @icon="refresh"
             @isHidden={{not needShowRestartButton}}
             @isDisabled={{not needShowRestartButton}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{reset}}
-            @tooltip="Reiniciar la ejecución" 
+            @tooltip={{ t "components.sceneButtons.restart.tooltip"}}
         />
 
         {{#unless shouldUseFloatingMode}}
