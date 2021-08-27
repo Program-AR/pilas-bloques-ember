@@ -7,7 +7,7 @@ export default Component.extend({
   persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
-  analyticsApi: service(),
+  pilasBloquesApi: service(),
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
@@ -48,21 +48,21 @@ export default Component.extend({
         pilas.cambiarAModoDeLecturaSimple();
       }
 
-      this.analyticsApi.openChallenge(this.model.id)
+      this.pilasBloquesApi.openChallenge(this.model.id)
     },
 
     hideScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display = 'none';
-      canvas.style.display = 'none';
+      elmnt.style.visibility = 'hidden';
+      canvas.style.visibility = 'hidden';
     },
 
     showScene() {
       let canvas = document.getElementsByClassName("pilas-canvas")[0];
       let elmnt = document.getElementById("draggable");
-      elmnt.style.display = 'block';
-      canvas.style.display = 'block';
+      elmnt.style.visibility = 'visible';
+      canvas.style.visibility = 'visible';
     },
 
     changeScreenMode() {

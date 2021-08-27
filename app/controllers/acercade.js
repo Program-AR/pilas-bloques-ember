@@ -6,11 +6,4 @@ export default Controller.extend({
   notificador: service(),
   hayActualizacion: alias('notificador.hayActualizacion'),
   versionMasReciente: alias('notificador.versionActual'),
-
-  actions: {
-    visitarWeb() {
-      var url = "http://bloques.pilas-engine.com.ar";
-      window.open(url);
-    },
-  }
 });

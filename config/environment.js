@@ -12,9 +12,9 @@ module.exports = function (environment) {
     'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
+    testTranslations: false,
 
-    pbAnalyticsApi: {
-      baseURL: null,
+    pbAnalytics: {
       sessionExpire: 30
     },
 
@@ -47,27 +47,32 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
-    ENV.pbAnalyticsApi.baseURL = 'http://localhost:3000'
     ENV.pbApi.baseURL = 'http://localhost:3006'
+    ENV.testTranslations = false
   }
 
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/'
     ENV.locationType = 'none'
-    ENV.APP.autoboot = false // <------ false here
+    ENV.APP.autoboot = false // ember-qunit needs it to be false.
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false
     ENV.APP.LOG_VIEW_LOOKUPS = false
 
     ENV.APP.rootElement = '#ember-testing'
+    ENV.pbApi.baseURL = 'http://testing-api'
   }
 
+  // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.pbAnalyticsApi.baseURL = null // TODO
     ENV.googleAnalyticsEnabled = true
+    // The baseURL is replaced in production and staging during deploy
+    // However, we need this here because it is used when packaging the app.
+    ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
+    ENV.testTranslations = false
   }
 
   return ENV

@@ -31,7 +31,7 @@ help() {
 	echo "    -win32            Make a electron Win32 electron package."
 	echo "    -linux            Make all electron linux electron packages."
 	echo ""
-	echo "  NOTE: every version generates a binary automatically in travis."
+	echo "  NOTE: every version generates a binary automatically in CI."
 	echo ""
 	echo ""
 }
@@ -94,9 +94,9 @@ package_osx() {
 package_win32() {
     prebuild "win" "ia32"
     echo "Generating installer for windows package..."
-    package "win" "ia32" "ico"
+    package "win32" "ia32" "ico"
 	cp packaging/instalador.nsi binaries/$NAME-win32-ia32/
-	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi
+	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi; cd ../..
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 

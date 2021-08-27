@@ -26,7 +26,8 @@ export default Component.extend({
 
   highlighter: service(),
   availableBlocksValidator: service(),
-  analyticsApi: service(),
+  pilasBloquesApi: service(),
+  pilasMulang: service(),
 
   bloques: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -78,7 +79,7 @@ export default Component.extend({
     var event = new Event('terminaCargaInicial');
     window.dispatchEvent(event);
 
-    scheduleOnce('afterRender', () => {
+    scheduleOnce('afterRender', async () => {
       this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
 
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
@@ -90,20 +91,19 @@ export default Component.extend({
         this.modelActividad.set('estiloToolbox', 'desplegable');
       }
 
+      const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
 
       // Si el código está serializado en la URL, lo intenta colocar en el
       // workspace.
       if (this.codigo) {
         let codigoSerializado = this.codigo;
         let codigoXML = atob(codigoSerializado);
-
         this.set('initial_workspace', codigoXML);
-      } else if (this.modelActividad.get('solucionInicial')) { //también puede venir código de la configuración de la actividad.
-        this.set('initial_workspace', this.modelActividad.get('solucionInicial'));
-      } else { //Sino, el código por defecto es el empezar a ejecutar
-        this.set('initial_workspace', this._xmlBloqueEmpezarAEjecutar());
+      } else if (savedSolution) { // Si ya envió una solución anteriormente
+        this.set('initial_workspace', savedSolution.program);
+      } else {
+        this.set('initial_workspace', this.modelActividad.initialWorkspace);
       }
-
     });
 
     if (this.persistirSolucionEnURL) {
@@ -119,12 +119,6 @@ export default Component.extend({
     });
 
     $(window).trigger('resize');
-  },
-
-  _xmlBloqueEmpezarAEjecutar() {
-    return `<xml xmlns="http://www.w3.org/1999/xhtml">
-      <block type="al_empezar_a_ejecutar" x="15" y="15"></block>
-    </xml>`;
   },
 
   /**
@@ -269,7 +263,7 @@ export default Component.extend({
         // Si el usuario solicitó terminar el programa deja
         // de ejecutar el intérprete.
         if (!this.ejecutando) {
-          success({stoppedByUser: true});
+          success({ stoppedByUser: true });
           return;
         }
 
@@ -277,7 +271,7 @@ export default Component.extend({
         // Esto es un resultado válido, no hubo ningún problema con el intérprete.
         let error = this.errorDeActividad; // Se settea ante evento de Pilas
         if (error) {
-          success({error});
+          success({ error });
           return;
         }
 
@@ -303,7 +297,7 @@ export default Component.extend({
           // Llama recursivamente, abriendo thread en cada llamada.
           setTimeout(execInterpreterUntilEnd, 10, interpreter);
         } else {
-          success({finished: true});
+          success({ finished: true });
         }
       };
 
@@ -368,12 +362,12 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.analyticsApi.runProgram(this.modelActividad.id, this.codigoActualEnFormatoXML, this.staticAnalysis())
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilas.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
-    run(this, function() {
-      this.analyticsApi.executionFinished(solutionId, {
+    run(this, function () {
+      this.pilasBloquesApi.executionFinished(solutionId, {
         isTheProblemSolved: this.pilas.estaResueltoElProblema(),
         ...executionResult
       })

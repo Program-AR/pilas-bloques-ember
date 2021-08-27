@@ -1,13 +1,15 @@
 <PaperCard class="footer-card flex footer">
   {{#if cargando}}
-    <Spinner/>
+  <Spinner />
   {{else}}
-    <div class="layout-row flex-grow">
-      <a class="program-ar-logo" href="http://program.ar"/>
-      <p class="app-version"><code>Versión:<span clas="version-number">{{app-version}}</span></code></p>
-      <span class="flex"></span>
-      <PaperButton @onClick={{action openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}}>{{paper-icon "help" class="menu-button-icon"}}<span class="menu-button-typography">¿Algún problema con este ejercicio?</span></PaperButton>
-      <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "acercade"}}>{{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">Acerca de</span></PaperButton>
-    </div>
+  <div class="layout-row flex-grow">
+    <a class="program-ar-logo" href="http://program.ar" />
+    <p class="app-version"><code>{{t "components.footer.version"}}</code></p>{{version class="app-version"}}
+    <span class="flex"></span>
+    <PaperButton @onClick={{action openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}}
+      @bubbles={{true}}>{{paper-icon "help" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.problem"}}</span></PaperButton>
+    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "acercade" }}>
+      {{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.about"}}</span></PaperButton>
+  </div>
   {{/if}}
 </PaperCard>

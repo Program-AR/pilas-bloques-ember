@@ -1,3 +1,8 @@
+@import "ember-modal-dialog/ember-modal-structure";
+@import "ember-modal-dialog/ember-modal-appearance";
+@import 'ember-paper';
+@import 'ember-paper-stepper';
+@import "acercade.scss";
 @import "breadcrumb.scss";
 @import "bug-report-modal.scss";
 @import "button.scss";
@@ -7,9 +12,6 @@
 @import 'challenges-book.scss';
 @import "congratulations-modal.scss";
 @import "disclaimer-principal.scss";
-@import "ember-modal-dialog/ember-modal-structure";
-@import "ember-modal-dialog/ember-modal-appearance";
-@import 'ember-paper';
 @import "fireworks.scss";
 @import "font-awesome.scss";
 @import "footer.scss";
@@ -18,6 +20,7 @@
 @import "modal.scss";
 @import "night-mode-toggle.scss";
 @import "link.scss";
+@import "personal-survey.scss";
 @import "phone-rotation-warning.scss";
 @import "pilas-blockly.scss";
 @import "pilas-canvas.scss";
@@ -29,6 +32,8 @@
 @import "splitter.scss";
 @import "themes/themes.scss";
 @import "toggle.scss";
+@import "session.scss";
+@import "theme-config.scss";
 
 * {
   -webkit-touch-callout:none;
@@ -82,12 +87,6 @@ input, textarea {
 
 p {
   @extend .application-font;
-}
-
-.visit-website .md-button, .visit-website .md-button:not([disabled]):hover {
-  background-color:#449d44;
-  border-color:    #398439;
-  color: #f8f8f8;
 }
 
 .nw-zoom {
@@ -468,6 +467,20 @@ a:hover {
   text-align: center;
 }
 
+.left {
+  text-align: left;
+}
+
+.disclaimer-container {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.disclaimer {
+  padding: 0.5em;
+}
+
 .aplicar-modo-lectura-simple,
 .aplicar-modo-lectura-simple button // esta regla es necesaria para evitar que la sobreescriba Bootstrap
 {
@@ -478,69 +491,32 @@ a:hover {
   font-family: Arial, sans-serif !important;
 }
 
-.gray {
-  filter: grayscale(1);
-}
-
-.login-header {
-  height: 8rem;
-}
-
-.avatar {
-  width: 4rem;
-  height: 4rem;
-  border: 0;
-  padding: 0;
-}
-
-.avatar > img {
-  height: inherit;
-  width: inherit;
-}
-
-.avatar > .selected {
-  border-style: double;
-}
-
-.invisible-input {
-  margin: 0;
-  top: -2rem;
-  height: 5px;
-}
-
-.invisible-input > input {
-  visibility: hidden;
-}
-
-.register-form {
-  max-width: 20rem;
-  display: inline-block;
-}
-
 md-menu-content > md-menu-item {
   color: inherit;
 }
 
-md-input-container > label {
-  color: var(--theme-font-color);
-}
-
-md-input-container > .md-input {
-  color: var(--theme-font-color);
-}
-
-md-input-container:not(.md-input-focused):not(.md-input-invalid) > label.md-required:after {
-  color: var(--theme-font-color);
-}
-
-p {
-  color: var(--theme-font-color);
-}
-
-span {
-  color: var(--theme-font-color);
-}
-
 md-card {
   background-color: inherit;
+}
+
+md-toast {
+  position: fixed;
+  border-radius: 10rem;
+}
+
+md-toast .md-toast-content {
+  background-color: #f9edbe;
+  border: 1px solid #f0c36d;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  & > * {
+    color: black;
+  }
+} 
+
+.md-stepper-indicator-wrapper {
+  background-color: inherit;
+}
+
+.md-stepper-number span {
+  color: white;
 }

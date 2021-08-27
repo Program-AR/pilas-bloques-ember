@@ -1,0 +1,28 @@
+.sv_window {
+    z-index: 25;
+}
+
+.sv_window_title {
+    background-color: var(--theme-menu-color);
+}
+
+.sv_window_content {
+    padding: 0;
+}
+
+.sv_main .sv_container * {
+    background-color: var(--theme-container-background-color);
+}
+
+
+.sv_main .sv_container .sv_header {
+    padding: 0;
+}
+
+.sv_main .sv_container .sv_body .sv_nav {
+    padding: 0.5em;
+}
+
+.sv_main .sv_container .sv_body {
+    padding: 0;
+}

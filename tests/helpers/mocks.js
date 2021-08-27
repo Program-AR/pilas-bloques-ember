@@ -1,3 +1,4 @@
+import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
 
@@ -5,6 +6,9 @@ export const pilasMock = {
     on() { },
     liberarRecursos() { },
     estaResueltoElProblema() { return true; },
+    inicializarPilas() { return Promise.resolve(this) },
+    modoTurboEstaActivado() { return true; },
+    inicializarEscena: sinon.stub(),
     reiniciarEscenaCompleta: sinon.stub(),
     cambiarAModoDeLecturaSimple: sinon.stub(),
     habilitarModoTurbo: sinon.stub(),
@@ -20,20 +24,23 @@ export const interpreterFactoryMock = Service.extend({
     crearInterprete() { return interpreteMock; }
 });
 
-export const actividadMock = {
-    get(key) { return this[key]; }, //TODO: Sacar esta definición y usar Ember.Component.extend
+export const createActividadMock = (fields) => EmberObject.extend({
     id: "000",
     nombre: "Actividad_Mock",
     debeFelicitarse: true,
-
+    bloques: ['controls_if'],
+    escena: `new DibujandoLibremente()`,
     grupo: {
         capitulo: {
             libro: {
                 modoLecturaSimple: true
             }
         }
-    }
-};
+    },
+    ...fields
+}).create()
+
+export const actividadMock = createActividadMock()
 
 export const componentMock = {
     properties: {},
@@ -53,3 +60,13 @@ export const blocklyWorkspaceMock = function () {
     workspace.highlightBlock = sinon.stub()
     return workspace
 }
+
+export const toastMock = Service.extend({
+    show: sinon.stub()
+})
+
+export const routerMock = Service.extend({
+    transitionTo: sinon.stub()
+})
+
+export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds: [] }

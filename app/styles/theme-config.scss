@@ -1,0 +1,27 @@
+md-input-container > label {
+  color: var(--theme-font-color);
+}
+
+md-input-container > .md-input {
+  color: var(--theme-font-color);
+}
+
+md-input-container:not(.md-input-focused):not(.md-input-invalid) > label.md-required:after {
+  color: var(--theme-font-color);
+}
+
+h1, h2, h3, p, small {
+  color: var(--theme-font-color);
+}
+
+span {
+  color: var(--theme-font-color);
+}
+
+.md-button {
+  color: var(--theme-font-color);
+}
+
+md-icon[md-font-icon] {
+  color: var(--theme-font-color);
+}

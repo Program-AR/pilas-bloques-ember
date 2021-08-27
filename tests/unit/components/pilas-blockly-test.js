@@ -2,11 +2,12 @@ import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
-import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning } from '../../helpers/utils'
+import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
   setupTest(hooks)
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
@@ -17,7 +18,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.pilas = pilasMock //TODO: Injectar como service
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
-    this.ctrl.set('analyticsApi', sinon.stub(this.ctrl.analyticsApi))
+    this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
     sinon.resetHistory()
   })
 
@@ -80,6 +81,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
 
+  // PROGRAM EXECUTION
   let filledProgram =
     `<block type="al_empezar_a_ejecutar">
       <statement name="program">
@@ -188,13 +190,14 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   // API
   test('Avisa a la api al ejecutar', function (assert) {
     this.ctrl.send('ejecutar')
-    assertProps(assert, this.ctrl.analyticsApi.runProgram.lastCall.lastArg, { couldExecute: true })
+    const staticAnalysis = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg.staticAnalysis
+    assertProps(assert, staticAnalysis, { couldExecute: true })
   })
 
   test('Avisa a la api al finalizar la ejecucion', function (assert) {
     this.ctrl.send('ejecutar')
     later(() => {
-      assertProps(assert, this.ctrl.analyticsApi.executionFinished.lastCall.lastArg, { finished: true })
+      assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { finished: true })
     })
   })
 
@@ -202,9 +205,15 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.errorDeActividad = "ERROR"
     this.ctrl.send('ejecutar')
     later(() => {
-      assertProps(assert, this.ctrl.analyticsApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
+      assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
     })
   })
 
-})
+  test('Envia metadata a la api al ejecutar', function (assert) {
+    this.ctrl.send('ejecutar')
+    const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
+    assert.ok(metadata.program || metadata.program.length === 0)
+  })
 
+})

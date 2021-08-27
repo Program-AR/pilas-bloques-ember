@@ -24,7 +24,6 @@ export default function() {
 
   this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('https://api.github.com/**');
-  this.passthrough(`${config.pbAnalyticsApi.baseURL}/**`);
   this.passthrough(`${config.pbApi.baseURL}/**`);
 
   /*

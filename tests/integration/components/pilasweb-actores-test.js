@@ -1,10 +1,10 @@
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import '@ember/test-helpers';
 import createPilasTest from "../../helpers/createPilasTest";
 
 module('Integration | Component | pilasweb actores', function (hooks) {
-  setupRenderingTest(hooks);
+  setupPBIntegrationTest(hooks);
 
   test('Puede crear un actor y actualizar algunos atributos', function (assert) {
 

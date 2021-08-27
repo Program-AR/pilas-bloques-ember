@@ -1,7 +1,7 @@
-<div class="center">
+<div class="login">
+  <div class="login-item">
+    <h3>{{t "components.login.already"}}</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
-    <img class="login-header" src="imagenes/session/login.png" />
-
     <PbInput @label="Usuario"
       @model={{ credentials.username }} 
       @required={{ true }} />
@@ -14,28 +14,28 @@
       <PaperCard as |card|>
         <card.title as |title|>
           <title.text as |text|>
-            <p>Usuario o contraseña incorrectos, volvé a intentar</p>
+            <p>{{t "components.login.wrong"}}</p>
           </title.text>
         </card.title>
       </PaperCard>
     {{/if}}
 
     <ProgressButton type="submit" @loading={{ pilasBloquesApi.loading.login }}>
-      Ingresar
+      {{t "components.login.login"}}
     </ProgressButton>
   </PaperForm>
 
-  <Button class="link" @onClick={{action (mut openRecovery) true}}>
-    Olvidé mi usuario o constraseña
-  </Button>
-
-
-  <p> ¿No tenés una cuenta? </p>
-  <Link @href={{href-to "register"}}>
-    Registrate
+  <br>
+  <Link @href={{href-to "password-recovery"}}>
+    {{t "components.login.forgot"}}
   </Link>
-</div>
+  </div>
 
-<ModalToggle @title="Recuperar contraseña" @open={{openRecovery}}>
-  En construcción, si tenés problemas con tu cuenta contactate con el equipo de desarrollo.
-</ModalToggle>
+  <div class="login-item">
+  <img class="login-header" src="imagenes/session/login.png" />
+    <h3> {{t "components.login.dontHaveUser"}} </h3>
+    <Link @href={{href-to "register"}}>
+      {{t "components.login.register"}}
+    </Link>
+  </div>
+</div>

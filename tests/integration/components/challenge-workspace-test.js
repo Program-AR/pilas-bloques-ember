@@ -1,12 +1,12 @@
 import EmberObject from '@ember/object';
 import { module, test } from 'qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../../helpers/utils'
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { pilasMock } from '../../helpers/mocks';
 
 module('Integration | Component | challenge-workspace', function (hooks) {
-  setupRenderingTest(hooks);
+  setupPBIntegrationTest(hooks);
 
   test('it renders', async function (assert) {
 

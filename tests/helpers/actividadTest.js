@@ -1,18 +1,19 @@
 import { run } from '@ember/runloop';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
-import { setupRenderingTest } from 'ember-qunit';
+import { setupPBIntegrationTest } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
 import simulateRouterHooks from "./simulate-router.hooks";
+import { failAllApiFetchs } from './utils';
 
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
-    setupRenderingTest(hooks);
+    setupPBIntegrationTest(hooks);
     setupMirage(hooks);
     runActivityTests();
   });
@@ -89,7 +90,6 @@ function validarOpciones(opciones) {
  * Para ejemplos de invocación podés ver: actividadElAlienYLasTuercas-test.js
  */
 export function actividadTest(nombre, opciones) {
-
   if (validarOpciones(opciones)) {
     throw new Error(`Se ha iniciado el tests ${nombre} con opciones inválidas.`);
   }
@@ -99,7 +99,8 @@ export function actividadTest(nombre, opciones) {
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
-    this.owner.lookup('service:analytics-api').connected = false;
+    failAllApiFetchs()
+    this.owner.lookup('service:pilas-bloques-api').logout();
 
     //let actividades = this.owner.lookup('service:actividades');
 

@@ -3,18 +3,17 @@
 <div class='contenido-principal'>
 
   <div class="box">
-    
+
     <p><img class='main-logo' src='imagenes/main-logo.png' width="468" height="262"></p>
     <p>
-      ¡Hola! Te damos la bienvenida a <strong>Pilas Bloques</strong>,
-      una herramienta para aprender a programar.
+    {{t "libros.index.welcome"}}
     </p>
 
     <DisclaimerPrincipal/>
 
     <div class="jumbotron center">
       <p>
-        Los desafíos que ofrecemos están organizados en dos grupos:
+        {{ t "libros.index.challenges"}}
       </p>
 
       {{#each model as |book|}}
@@ -25,11 +24,11 @@
     </div>
 
     <div class="jumbotron center">
-      <p>
-        ¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!
-      </p>
 
     {{#if enableChallengeCreator}}
+      <p>
+      {{ t "libros.index.customChallenges"}}
+      </p>
       {{create-custom-challenge}}
       {{import-custom-challenge}}
     {{/if}}
@@ -37,12 +36,13 @@
     </div>
 
     <hr>
-    
+
     <p>
-      Visitá la sección<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>Acerca de</strong></Link>
-      para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló.
+     {{t "libros.index.visitAbout.part1"}}<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>{{t "libros.index.visitAbout.link1"}}</strong></Link>
+           {{t "libros.index.visitAbout.part2"}}
     </p>
 
   </div>
+
 
 </div>
