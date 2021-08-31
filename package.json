@@ -38,7 +38,7 @@
     "build:prod": "ember build --environment=production --output-path dist_prod",
     "pilasweb:build": "cd ../pilasweb; make build; cp -rf ../pilasweb/dist node_modules/pilasweb/",
     "exercises:watch": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch",
-    "exercises:build": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt; cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises/dist",
+    "exercises:build": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt;cd ../pilas-bloques; cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises",
     "release:patch": "ember release",
     "release:major": "ember release --major",
     "release:minor": "ember release --minor",
@@ -58,7 +58,7 @@
     "creador-de-desafios-pilasbloques": "^1.0.1",
     "clientjs": "^0.1.11",
     "pilas-bloques-exercises": "1.2.2",
-    "proceds-blockly": "^1.0.0",
+    "proceds-blockly": "^1.0.1",
     "survey-knockout": "^1.8.0",
     "uuid": "^8.3.0"
   },
