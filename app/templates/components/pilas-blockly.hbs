@@ -19,11 +19,9 @@
       @onNewWorkspace={{action "onNewWorkspace"}}
       @disableNotConnectedToMainBlock={{true}}
     />
-  {{#unless estoyEnMoodle}}
     <span class="pilas-blockly-workspace-buttons">
       <ChallengeWorkspaceButtons @actividad={{modelActividad}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}}/>
     </span>
-  {{/unless}}
 {{/if}}
 
 {{#if mostrarDialogoFinDesafio}}

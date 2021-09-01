@@ -11,7 +11,7 @@ Router.map(function () {
   this.route('challengue-creator');
   this.route('desafio', { path: '/desafio/:desafio_id' });
 
-  /* Rutas para el curso online 2016 (moodle) */
+  /* Estas rutas están en los primeros cuadernillos impresos, deben seguir existiendo. */
   this.route('desafios', function () {
     this.route('desafioPorNombre', { path: '/:nombreDelDesafio' });
   });
