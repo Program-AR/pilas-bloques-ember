@@ -60,10 +60,6 @@ export default Component.extend({
     return this.ejecutando || this.terminoDeEjecutar;
   }),
 
-  estoyEnMoodle: computed('modoAlumno', 'modoDocente', function () {
-    return this.modoAlumno || this.modoDocente;
-  }),
-
   didInsertElement() {
 
     /*
@@ -110,7 +106,7 @@ export default Component.extend({
       // TODO: puede que esto quede en desuso.
     }
 
-    // Este es un hook para luego agregar a la interfaz 
+    // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
     this.pilas.on("errorDeActividad", (motivoDelError) => {
       run(this, function () {
@@ -168,7 +164,7 @@ export default Component.extend({
   /**
    * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
    * sino directamente los bloques en el toolbox.
-   * 
+   *
    * TODO: Falta implementar el estilo "desplegado"
    */
   _aplicarEstiloAToolbox(toolbox) {
@@ -192,9 +188,9 @@ export default Component.extend({
 
   /**
    * Ordena la lista de ítems de un toolbox (usualmente categorias), por el orden
-   * establecido en Pilas Bloques. 
+   * establecido en Pilas Bloques.
    * Las categorías que no están en la lista definida por Pilas Bloques, quedan al final.
-   * @param {*} toolbox 
+   * @param {*} toolbox
    */
   ordenar_toolbox(toolbox) {
     let orden_inicial = [ // Orden inicial para la lista de categorias.
