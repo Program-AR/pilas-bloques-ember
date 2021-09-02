@@ -40,8 +40,11 @@ export default Component.extend({
     // Parseamos el JSON
     const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
     const jsonDesafio = JSON.parse(jsonDesafioAsString);
-    const imageBlob = await entries["desafio/assets/splashChallenge.png"].blob('image/png');
-    jsonDesafio.challengeCover = URL.createObjectURL(imageBlob)
+    const splashBlob = await entries["desafio/assets/splashChallenge.png"].blob('image/png');
+    jsonDesafio.challengeCover = URL.createObjectURL(splashBlob)
+    const backgroundBlob = await entries["desafio/assets/background.png"].blob('image/png');
+    const backgroundURL = URL.createObjectURL(backgroundBlob)
+    jsonDesafio.escena = `new CustomScene({grid:{spec:"${jsonDesafio.grid}"},backgroundImage:"${backgroundURL}"})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
     const bloques = jsonDesafio.blocks;
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
     this.blocksGallery.start();  
@@ -64,7 +67,7 @@ export default Component.extend({
         comportamiento: 'Recolectar',
         argumentos:`{etiqueta: ${interactsWith}}`
       }
-      this.blocksGallery.crearBloqueAccion(name,properties)
+      this.blocksGallery.crearBloqueAccion(name,name,properties)
     }
     if (  blockType === "sensor" ) {
       const object = aBlock.object;
@@ -74,9 +77,8 @@ export default Component.extend({
         funcionSensor: `tocando("${object}")`,
         esBool: true
       }
-      this.blocksGallery.crearBloqueSensor(name,properties)
+      this.blocksGallery.crearBloqueSensor(name,name,properties)
     }
-    console.log("properties", properties)
   },
 
   cargarProyecto(desafio) {
