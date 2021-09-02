@@ -5,7 +5,7 @@ export default Component.extend({
   classNames: ['pilas-canvas'],
   classNameBindings: ['media.isMobile:media-mobile'],
   iframeElement: null,
-  escena: null,
+  challenge: null,
   pilas: null,       /* Se espera que este atributo se defina al
                       * llamar al componente y es obligatorio. */
 
@@ -19,6 +19,10 @@ export default Component.extend({
     }
   },
 
+  escena(){
+    return this.challenge && this.challenge.escena;
+  },
+
   initElement() {
     
     let iframeElement = this.element.querySelector('#innerIframe');
@@ -28,11 +32,11 @@ export default Component.extend({
     this.iframeElement.onload = () => {
 
       if (this.pilas) {
-        this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.escena).
+        this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.challenge).
           then((pilas) => {
 
-            if (this.escena) {
-              this.pilas.inicializarEscena(iframeElement, this.escena);
+            if (this.escena()) {
+              this.pilas.inicializarEscena(iframeElement, this.escena());
             } else {
               console.warn("No especificó una escena para cargar en pilas-canvas.");
             }

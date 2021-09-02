@@ -44,10 +44,11 @@ export default Component.extend({
     jsonDesafio.challengeCover = URL.createObjectURL(splashBlob)
     const backgroundBlob = await entries["desafio/assets/background.png"].blob('image/png');
     const backgroundURL = URL.createObjectURL(backgroundBlob)
-    jsonDesafio.escena = `new CustomScene({grid:{spec:"${jsonDesafio.grid}"},backgroundImage:"${backgroundURL}"})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
+    jsonDesafio.background = backgroundURL
+    jsonDesafio.escena = ` new CustomScene({grid:{spec:"${jsonDesafio.grid}"},backgroundImage:"${backgroundURL}"})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
     const bloques = jsonDesafio.blocks;
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
-    this.blocksGallery.start();  
+    this.blocksGallery.start();
     bloques.forEach(block => this._createBlock(block));
     // Devolvemos el JSON como String para compatibilizar con la funcion que procesa después
     resolve(jsonDesafio);
@@ -57,27 +58,27 @@ export default Component.extend({
     const name = aBlock.name;
     const interactsWith = aBlock.interactsWith;
     const description = aBlock.description;
-    const blockType = aBlock.type;        
+    const blockType = aBlock.type;
 
     let properties;
-    if ( blockType === "action") {
+    if (blockType === "action") {
       properties = {
         descripcion: description,
-        icono: interactsWith+'.png',
+        icono: interactsWith + '.png',
         comportamiento: 'Recolectar',
-        argumentos:`{etiqueta: ${interactsWith}}`
+        argumentos: `{etiqueta: ${interactsWith}}`
       }
-      this.blocksGallery.crearBloqueAccion(name,name,properties)
+      this.blocksGallery.crearBloqueAccion(name, name, properties)
     }
-    if (  blockType === "sensor" ) {
+    if (blockType === "sensor") {
       const object = aBlock.object;
       properties = {
         descripcion: description,
-        icono: object+'.png',
+        icono: object + '.png',
         funcionSensor: `tocando("${object}")`,
         esBool: true
       }
-      this.blocksGallery.crearBloqueSensor(name,name,properties)
+      this.blocksGallery.crearBloqueSensor(name, name, properties)
     }
   },
 

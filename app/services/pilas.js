@@ -43,7 +43,7 @@ export default Service.extend(Evented, {
    *
    * @public
    */
-  inicializarPilas(iframeElement, options, nombreOInicializadorDeEscena) {
+  inicializarPilas(iframeElement, options, challenge) {
     this.set("iframe", iframeElement);
     this.set("loading", true);
 
@@ -53,7 +53,7 @@ export default Service.extend(Evented, {
 
       // Cuidado: esto hace que no se pueda cargar una escena diferente en esta instancia de pilas.
       // La razón es que se le pregunta a la escena qué imágenes precargar.
-      let listaImagenesSerializada = this.imagenesParaPrecargar(nombreOInicializadorDeEscena).join("|");
+      let listaImagenesSerializada = this.imagenesParaPrecargar(challenge).join("|");
 
       var code = `
         var canvasElement = document.getElementById('canvas');
@@ -108,11 +108,15 @@ export default Service.extend(Evented, {
     });
   },
 
-  imagenesParaPrecargar(nombreOInicializadorDeEscena) {
+  imagenesParaPrecargar(challenge) {
     //Le pregunto a la escena qué imágenes va a necesitar
-    var imagenes = this.evaluar(`${this.nombreDeEscena(nombreOInicializadorDeEscena)}.imagenesPreCarga()`);
+    var imagenes = this.evaluar(`${this.nombreDeEscena(challenge.escena)}.imagenesPreCarga()`);
     //Si la escena no las sabe, cargo todas:
-    return imagenes.length ? imagenes : listaImagenes;
+    imagenes = imagenes.length ? imagenes : listaImagenes
+    
+    if(challenge.background) imagenes.push(challenge.background) 
+    
+    return imagenes;
   },
 
   nombreDeEscena(nombreOInicializadorDeEscena) {
