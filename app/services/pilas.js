@@ -113,9 +113,9 @@ export default Service.extend(Evented, {
     var imagenes = this.evaluar(`${this.nombreDeEscena(challenge.escena)}.imagenesPreCarga()`);
     //Si la escena no las sabe, cargo todas:
     imagenes = imagenes.length ? imagenes : listaImagenes
-    
-    if(challenge.background) imagenes.push(challenge.background) 
-    
+
+    if (challenge.images) imagenes.push(challenge.images)
+
     return imagenes;
   },
 

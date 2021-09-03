@@ -1,6 +1,8 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
+const assetsPath = 'desafio/assets'
+
 export default Component.extend({
   classNames: ["challenges-book-container zoom"],
   store: service(),
@@ -31,24 +33,44 @@ export default Component.extend({
     });
   },
 
+  async _filenameToIdentifier(filename) { //Converts "desafio/assets/obstaculos/grass.png" to "obstaculos/grass"
+    return filename.replace(`${assetsPath}/`).split('.')[0]
+  },
+
+  async _isChallengeImage(filepath) {
+    return filepath.startsWith(`${assetsPath}/challenge/`) && !filepath.endsWith('/')
+  },
+
+  async _imageContentToURL(content) {
+    const blob = await content.blob('image/png') //Y si no es png?
+    return URL.createObjectURL(blob)
+  },
+
+  async _getChallengeImages(entries) { // "Challenge" no es apropiado, aca me quiero referir especificamente a lo que iria a la escena. Tal vez sceneImages?
+    const imageEntries = Object.entries(entries).filter(([filename, _content]) => this._isChallengeImage(filename))
+    return await Promise.all(imageEntries.map(async ([filename, content]) => ({ id: this._filenameToIdentifier(filename), url: await this._imageContentToURL(content) })))
+  },
+
+  async _getChallengeJson(entries) {
+    const arrayBuffer = await entries["desafio/desafio.json"].arrayBuffer();
+    // Parseamos el JSON
+    const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
+    return JSON.parse(jsonDesafioAsString);
+  },
+
   async _loadChallenge(theZipContent, resolve) {
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
     );
-    const arrayBuffer = await entries["desafio/desafio.json"].arrayBuffer();
-
-    // Parseamos el JSON
-    const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
-    const jsonDesafio = JSON.parse(jsonDesafioAsString);
-    const splashBlob = await entries["desafio/assets/splashChallenge.png"].blob('image/png');
-    jsonDesafio.challengeCover = URL.createObjectURL(splashBlob)
-    const backgroundBlob = await entries["desafio/assets/background.png"].blob('image/png');
-    const backgroundURL = URL.createObjectURL(backgroundBlob)
-    jsonDesafio.background = backgroundURL
-    jsonDesafio.escena = ` new CustomScene({grid:{spec:"${jsonDesafio.grid}"},backgroundImage:"${backgroundURL}"})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
-    const bloques = jsonDesafio.blocks;
+    const jsonDesafio = await this._getChallengeJson(entries)
+    const images = await this._getChallengeImages(entries)
+    const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
+    jsonDesafio.challengeCover = challengeCover
+    jsonDesafio.images = images.map(image => image.url) //json.images no me gusta mucho. Seria mejor algo a lo imagesToPreload. 
+    jsonDesafio.escena = ` new CustomScene({grid:{spec:"${jsonDesafio.grid}"},images:${JSON.stringify(images)}})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
     this.blocksGallery.start();
+    const bloques = jsonDesafio.blocks;
     bloques.forEach(block => this._createBlock(block));
     // Devolvemos el JSON como String para compatibilizar con la funcion que procesa después
     resolve(jsonDesafio);
