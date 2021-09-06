@@ -33,12 +33,12 @@ export default Component.extend({
     });
   },
 
-  async _filenameToIdentifier(filename) { //Converts "desafio/assets/obstaculos/grass.png" to "obstaculos/grass"
-    return filename.replace(`${assetsPath}/`).split('.')[0]
+  _filenameToIdentifier(filename) { //Converts "desafio/assets/obstaculos/grass.png" to "obstaculos/grass"
+    return filename.replace(`${assetsPath}/`, '').split('.')[0]
   },
 
   async _isChallengeImage(filepath) {
-    return filepath.startsWith(`${assetsPath}/challenge/`) && !filepath.endsWith('/')
+    return filepath.startsWith(assetsPath) && !filepath.endsWith('/')
   },
 
   async _imageContentToURL(content) {

@@ -114,7 +114,7 @@ export default Service.extend(Evented, {
     //Si la escena no las sabe, cargo todas:
     imagenes = imagenes.length ? imagenes : listaImagenes
 
-    if (challenge.images) imagenes.push(challenge.images)
+    if (challenge.images) imagenes = imagenes.concat(challenge.images)
 
     return imagenes;
   },
