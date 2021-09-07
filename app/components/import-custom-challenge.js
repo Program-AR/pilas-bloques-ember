@@ -58,6 +58,15 @@ export default Component.extend({
     return JSON.parse(jsonDesafioAsString);
   },
 
+  /*
+  * Zip structure:
+  * desafio/: root folder
+  * desafio/desafio.json: challenge definition
+  * desafio/assets/background.png: challenge background
+  * desafio/assets/splashChallenge.png: splash challenge image
+  * desafio/assets/prizes/*.png: prizes images 
+  * desafio/assets/obstacles/*.png: obstacle images
+  */
   async _loadChallenge(theZipContent, resolve) {
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
@@ -88,9 +97,9 @@ export default Component.extend({
         descripcion: description,
         icono: interactsWith + '.png',
         comportamiento: 'Recolectar',
-        argumentos: `{etiqueta: ${interactsWith}}`
+        argumentos: `{etiqueta: '${interactsWith}'}`
       }
-      this.blocksGallery.crearBloqueAccion(name, name, properties)
+      this.blocksGallery.crearBloqueAccion(name, undefined, properties)
     }
     if (blockType === "sensor") {
       const object = aBlock.object;
@@ -100,7 +109,7 @@ export default Component.extend({
         funcionSensor: `tocando("${object}")`,
         esBool: true
       }
-      this.blocksGallery.crearBloqueSensor(name, name, properties)
+      this.blocksGallery.crearBloqueSensor(name, undefined, properties)
     }
   },
 
