@@ -76,7 +76,7 @@ export default Component.extend({
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
     jsonDesafio.challengeCover = challengeCover
     jsonDesafio.images = images.map(image => image.url) //json.images no me gusta mucho. Seria mejor algo a lo imagesToPreload. 
-    jsonDesafio.escena = ` new CustomScene({grid:{spec:"${jsonDesafio.grid}"},images:${JSON.stringify(images)}})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
+    jsonDesafio.escena = `new CustomScene({grid:{spec:${JSON.stringify(jsonDesafio.grid)}},images:${JSON.stringify(images)}})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
     this.blocksGallery.start();
     const bloques = jsonDesafio.blocks;
