@@ -604,7 +604,7 @@ export default Service.extend({
     let blockly = this.blockly;
 
     let bloque = blockly.createCustomBlock('MoverA', {
-      message0: this.intl.t(`blocks.moveTo`),
+      message0: `${this.intl.t(`blocks.moveTo`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -678,7 +678,7 @@ export default Service.extend({
     });
 
     blockly.createCustomBlock('SaltarHaciaAdelante', {
-      message0: this.intl.t(`blocks.jumpFront`),
+      message0: `${this.intl.t(`blocks.jumpFront`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -711,7 +711,7 @@ export default Service.extend({
 
 
     blockly.createCustomBlock('DibujarLado', {
-      message0: this.intl.t(`blocks.drawSide`),
+      message0: `${this.intl.t(`blocks.drawSide`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -785,7 +785,7 @@ export default Service.extend({
     });
 
     blockly.createCustomBlock('EscribirTextoDadoEnOtraCuadricula', {
-      message0: this.intl.t(`blocks.write`),
+      message0: `${this.intl.t(`blocks.write`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -813,7 +813,7 @@ export default Service.extend({
     };
 
     blockly.createCustomBlock('GirarGrados', {
-      message0: this.intl.t(`blocks.turnDegrees`),
+      message0: `${this.intl.t(`blocks.turnDegrees`)}`,
       colour: Blockly.Blocks.primitivas.COLOUR,
       inputsInline: true,
       previousStatement: true,
@@ -1065,7 +1065,7 @@ export default Service.extend({
 
     let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
       "type": "block_type",
-      "message0": this.intl.t(`blocks.currentCharacter`),
+      "message0": `${this.intl.t(`blocks.currentCharacter`)}`,
       "args0": [
         {
           type: "field_image",
