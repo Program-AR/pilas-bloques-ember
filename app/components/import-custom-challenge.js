@@ -37,7 +37,7 @@ export default Component.extend({
     return filename.replace(`${assetsPath}/`, '').split('.')[0]
   },
 
-  async _isChallengeImage(filepath) {
+  _isChallengeImage(filepath) {
     return filepath.startsWith(assetsPath) && !filepath.endsWith('/')
   },
 
@@ -46,7 +46,7 @@ export default Component.extend({
     return URL.createObjectURL(blob)
   },
 
-  async _getChallengeImages(entries) { // "Challenge" no es apropiado, aca me quiero referir especificamente a lo que iria a la escena. Tal vez sceneImages?
+  async _getSceneImages(entries) {
     const imageEntries = Object.entries(entries).filter(([filename, _content]) => this._isChallengeImage(filename))
     return await Promise.all(imageEntries.map(async ([filename, content]) => ({ id: this._filenameToIdentifier(filename), url: await this._imageContentToURL(content) })))
   },
@@ -71,18 +71,20 @@ export default Component.extend({
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
     );
-    const jsonDesafio = await this._getChallengeJson(entries)
-    const images = await this._getChallengeImages(entries)
+
+    const challengeJson = await this._getChallengeJson(entries)
+    const sceneImages = await this._getSceneImages(entries)
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
-    jsonDesafio.challengeCover = challengeCover
-    jsonDesafio.images = images.map(image => image.url) //json.images no me gusta mucho. Seria mejor algo a lo imagesToPreload. 
-    jsonDesafio.escena = `new CustomScene({grid:{spec:${JSON.stringify(jsonDesafio.grid)}},images:${JSON.stringify(images)}})` //Sobreescribe la escena previa, habria que checkear que ya no haya una escena antes
+    challengeJson.challengeCover = challengeCover
+    challengeJson.imagesToPreload = sceneImages.map(image => image.url)
+    //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.escena || `new CustomScene(...)" aca
+    challengeJson.escena = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
-    this.blocksGallery.start();
-    const bloques = jsonDesafio.blocks;
+    this.blocksGallery.start(); //TODO: Esto deberia hacerse automaticamente al inyectar el servicio
+    const bloques = challengeJson.blocks;
     bloques.forEach(block => this._createBlock(block));
     // Devolvemos el JSON como String para compatibilizar con la funcion que procesa después
-    resolve(jsonDesafio);
+    resolve(challengeJson);
   },
 
   _createBlock(aBlock) {
