@@ -47,7 +47,7 @@ export default Component.extend({
   },
 
   async _getSceneImages(entries) {
-    const imageEntries = Object.entries(entries).filter(([filename, _content]) => this._isChallengeImage(filename))
+    const imageEntries = Object.entries(entries).filter(entry => this._isChallengeImage(entry[0]))
     return await Promise.all(imageEntries.map(async ([filename, content]) => ({ id: this._filenameToIdentifier(filename), url: await this._imageContentToURL(content) })))
   },
 
@@ -71,10 +71,11 @@ export default Component.extend({
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
     );
-
+    //Para el issue eventual de ideas: Que el creador de zip checkee que el nombre no exista ya.
     const challengeJson = await this._getChallengeJson(entries)
     const sceneImages = await this._getSceneImages(entries)
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
+    challengeJson.id = uuidv4();
     challengeJson.challengeCover = challengeCover
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
     //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.escena || `new CustomScene(...)" aca
@@ -126,7 +127,6 @@ export default Component.extend({
       TODO: Chequear que los bloques instanciados en la blocksGallery tienen las propiedades que definimos en el json del zip.
     */
     desafio.bloques = desafio.blocks.map(b => b.name); // Acá definimos la key que pide el PB actualmente 
-    desafio.id = uuidv4();
     this.store.createRecord("desafio", desafio);
     this.router.transitionTo("desafio", desafio.id);
   },
