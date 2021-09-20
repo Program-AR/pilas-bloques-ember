@@ -15,7 +15,7 @@ export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupPBIntegrationTest(hooks);
     setupMirage(hooks);
-    runActivityTests();
+    runActivityTests(hooks);
   });
 }
 
@@ -97,6 +97,7 @@ export function actividadTest(nombre, opciones) {
   let descripcion = opciones.descripcionAdicional || 'Se puede resolver';
 
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
+    console.log('empece el actividadTest')
     let store = this.owner.lookup('service:store');
     let pilas = this.owner.lookup('service:pilas');
     failAllApiFetchs()

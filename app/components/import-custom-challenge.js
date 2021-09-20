@@ -15,8 +15,6 @@ export default Component.extend({
 
       if (archivo) {
         this.leerSolucionWeb(archivo)
-          .then((contenido) => this.cargarProyecto(contenido))
-          .catch(alert);
       }
 
       this.limpiarInput(this.fileInputProyecto()); // Fuerza a que se pueda cargar dos o más veces el mismo archivo
@@ -30,7 +28,9 @@ export default Component.extend({
       reader.onerror = (err) => reject(err);
       reader.onload = async (event) => await this._loadChallenge(event.target.result, resolve);
       reader.readAsArrayBuffer(archivo);
-    });
+    })
+      .then((contenido) => this.cargarProyecto(contenido))
+      .catch(alert)
   },
 
   _filenameToIdentifier(filename) { //Converts "desafio/assets/obstaculos/grass.png" to "obstaculos/grass"
@@ -75,7 +75,6 @@ export default Component.extend({
     const challengeJson = await this._getChallengeJson(entries)
     const sceneImages = await this._getSceneImages(entries)
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
-    challengeJson.id = uuidv4();
     challengeJson.challengeCover = challengeCover
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
     //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.escena || `new CustomScene(...)" aca
