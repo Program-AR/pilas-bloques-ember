@@ -36,6 +36,10 @@ components:
     otherSolutions: "Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!"
     concepts: "¿Estás usando los conceptos bien?"
 
+  expectationsModal:
+    goodButNotTooGood: "Ya casi..."
+    couldBeBetter: "Tu programa resolvió el desafío pero todavía quedan objetivos por cumplir."
+
   createCustomChallenge:
     create: "Crear Desafío"
     custom: "Crea desafíos personalizados con el creador de desafíos de Pilas Bloques."
@@ -815,6 +819,16 @@ model:
       title: "Con Duba"
     Tecnopolis 2021 Con Lita:
       title: "Con Lita"
+
+  spects:
+    declares_procedure: "No estás usando procedimientos para dividí en subtareas."
+    too_long: "La definición {declaration, select,
+        al_empezar_a_ejecutar {del programa principal}
+        other {de {declaration}}
+      } hace muchas cosas, dividí en subtareas usando procedimientos."
+    do_something: "La definición de {declaration} no hace nada."
+    is_used: "{declaration} no se usa desde ningún lado."
+    is_used_from_main: "{declaration} no se usa desde el programa principal."
 
 blocks:
   turnOnTheLight: "Prender la luz"

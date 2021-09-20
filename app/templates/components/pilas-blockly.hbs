@@ -27,3 +27,14 @@
 {{#if mostrarDialogoFinDesafio}}
   <CongratulationsModal @onClose={{action "ocultarFinDesafio"}}/>
 {{/if}}
+
+
+{{#if showExpects}}
+  <Modal @title={{t "components.expectationsModal.goodButNotTooGood"}} @onClose={{action (mut showExpects) false}}>
+    <p>{{t "components.expectationsModal.couldBeBetter"}}</p>
+    <img src='imagenes/guido.jpg' height='20%' width='30%'>
+    {{#each failedExpects as |expect|}}
+      <p>{{expect}}</p>
+    {{/each}}
+  </Modal>
+{{/if}}

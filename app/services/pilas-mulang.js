@@ -1,16 +1,23 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
+import { parseExpect } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
 export default Service.extend({
   activityExpectations: service(),
+  intl: service(),
 
   analyze(workspace, activity) {
     const activityExpectation = this.activityExpectations.expectationFor(activity.id)
     const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
-    return mulang.astCode(ast).customExpect(customExpect).map(([expect, result]) => ({ expect, result }))
+    const toTranslatedResult = ([expect, result]) =>
+      ({ expect: this.intl.t(...parseExpect(expect)).toString(), result })
+    return mulang
+      .astCode(ast)
+      .customExpect(customExpect)
+      .map(toTranslatedResult)
   },
 
   parseAll(workspace) {

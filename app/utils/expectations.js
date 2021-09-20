@@ -2,7 +2,7 @@ import { allProcedureNames, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
 export const declaresAnyProcedure = (/* workspace */) => join([
-  `expectation "Declara algún procedimiento": declares something unlike ${toEDLString(entryPointType)};`,
+  newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, 'declares_procedure'),
   notTooLong()(entryPointType)
 ])
 export const allProceduresShould = (...expectations) => (workspace) =>
@@ -13,19 +13,30 @@ export const multiExpect = (...expectations) => (element) =>
 
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
-  `expectation "'${declaration}' hace algo": within ${toEDLString(declaration)} count(calls) >= 1;`
+  newExpectation(`within ${toEDLString(declaration)} count(calls) >= 1`, 'do_something', { declaration })
 
 export const isUsed = (declaration) =>
-  `expectation "'${declaration}' se usa en algún lado": calls ${toEDLString(declaration)};`
+  newExpectation(`calls ${toEDLString(declaration)}`, 'is_used', { declaration })
 
 export const isUsedFromMain = (declaration) =>
-  `expectation "'${declaration}' se usa desde el programa principal": through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)};`
+  newExpectation(`through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)}`, 'is_used_from_main', { declaration })
 
 export const notTooLong = (limit = 7) => (declaration) =>
-  `expectation "'${declaration}' hace pocas cosas": within ${toEDLString(declaration)} count(calls) <= ${limit};`
+  newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit}`, 'too_long', { declaration, limit })
 
 
 // UTILS
+const newExpectation = (expect, id, opts = {}) =>
+  `expectation "${stringify(id, opts)}": ${expect};` 
+
+const stringify = (id, opts) => // TODO: test
+  `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+
+export const parseExpect = (name) => [
+  name.split('|')[0],
+  Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
+]
+
 const toEDLString = name => `\`${name}\``
 
 const join = expectations => expectations.join('\n')

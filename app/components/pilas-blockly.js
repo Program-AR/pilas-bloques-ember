@@ -322,6 +322,7 @@ export default Component.extend({
         } else {
           console.log(failedExpects)
           this.set('failedExpects', failedExpects)
+          this.set('showExpects', true)
         }
       }
 
@@ -380,6 +381,8 @@ export default Component.extend({
   actions: {
 
     ejecutar(pasoAPaso = false) {
+      console.log(this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+      
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 
