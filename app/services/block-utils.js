@@ -10,6 +10,10 @@ export function isValue(block) {
   return block.categoria == "Valores"
 }
 
+export function isProcedure(block){
+  return Blockly.isProcedure(block.type)
+}
+
 export function isProcedureCall(block) {
   return !!block.defType_
 }

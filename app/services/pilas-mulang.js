@@ -1,11 +1,40 @@
 import Service from '@ember/service'
-import { getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from './block-utils'
+import { getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedure, isProcedureCall } from './block-utils'
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
+
+const entryPointType = 'al_empezar_a_ejecutar'
 
 export default Service.extend({
 
+  analyze(workspace, activity) {
+
+    const EDLString = name => `\`${name}\``
+    
+    // const allPrimitiveNames = activity.bloques.map(EDLString).join(', ')
+    const globalExpects = [
+      `expectation "Declara algún procedimiento": declares something unlike ${EDLString(entryPointType)};`,
+      `expectation "Divide en subtareas": within ${EDLString(entryPointType)} count(calls) < 7;`,
+    ]
+
+    const allProcedureNames = workspace.getAllBlocks().filter(isProcedure).map(getName)
+    const procedureExpects = allProcedureNames.flatMap(
+      procedureName => [
+        `expectation "'${procedureName}' hace algo": within ${EDLString(procedureName)} count(calls) >= 1;`,
+        `expectation "'${procedureName}' se usa en algún lado": calls ${EDLString(procedureName)};`,
+        `expectation "'${procedureName}' se usa desde el programa principal": through ${EDLString(entryPointType)} calls ${EDLString(procedureName)};`,
+      ]
+    )
+
+    const customExpect = globalExpects.concat(procedureExpects).join('\n')
+    const ast = this.parseAll(workspace)
+    const mulangAnalysis = mulang.astCode(ast).customExpect(customExpect)
+    console.log(mulangAnalysis)
+
+
+  },
+
   parseAll(workspace) {
-    return workspace.getTopBlocks().map(this.parse)
+    return createNode("Sequence", workspace.getTopBlocks().map(this.parse))
   },
 
   parse(mainBlock) {
@@ -16,12 +45,12 @@ export default Service.extend({
 
 function buildBlockAst(block) {
   if (block.isShadow()) return createEmptyNode()
-  let {tag, parse} = mulangParser(block)
+  let { tag, parse } = mulangParser(block)
   return createNode(tag, parse(block))
 }
 
 function mulangParser(block) {
-  let parser = pilasToMulangParsers[block.type] || searchAlias(block) 
+  let parser = pilasToMulangParsers[block.type] || searchAlias(block)
   if (parser) return parser
   return isValue(block) ? referenceParser : applicationParser
 }
@@ -76,7 +105,7 @@ let applicationParser = {
 
 
 let pilasToMulangParsers = {
-  "al_empezar_a_ejecutar": entryPointParser,
+  [entryPointType]: entryPointParser,
   "repetir": repeatParser,
   "Si": ifParser,
   "SiNo": { ...ifParser, parse: parseIfElse },
@@ -109,9 +138,9 @@ function parseEntryPoint(block) {
 }
 
 function referenceName(block) {
-  return  isProcedureCall(block) ? block.getFieldValue('NAME')
-        : isOperator(block) ? block.getFieldValue('OP')
-        : block.type
+  return isProcedureCall(block) ? block.getFieldValue('NAME')
+    : isOperator(block) ? block.getFieldValue('OP')
+      : block.type
 }
 
 function parseApplication(block) {

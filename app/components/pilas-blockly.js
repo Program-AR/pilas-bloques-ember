@@ -304,6 +304,9 @@ export default Component.extend({
 
   cuandoTerminaEjecucion() {
     run(this, function () {
+
+      // this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
+
       if (this.errorDeActividad) {
         if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
         return;
@@ -373,6 +376,8 @@ export default Component.extend({
   actions: {
 
     ejecutar(pasoAPaso = false) {
+      this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
+
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 

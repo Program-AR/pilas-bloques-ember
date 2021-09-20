@@ -65,6 +65,12 @@ module.exports = function (defaults) {
     destDir: '/assets/'
   });
 
+  const mulang = new Funnel('node_modules/mulang', {
+    srcDir: '/build',
+    include: ['mulang.js'],
+    destDir: '/assets/'
+  });
+
   const clientJS = new Funnel('node_modules/clientjs', {
     srcDir: '/dist',
     include: ['**'],
@@ -107,6 +113,7 @@ module.exports = function (defaults) {
     blocklyPackage,
     blocklyMedia,
     procedsBlockly,
+    mulang,
     uuid,
     clientJS,
     pilasWeb,

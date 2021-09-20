@@ -17,7 +17,8 @@
     "js_beautify",
     "Blob",
     "ClientJS",
-    "uuidv4"
+    "uuidv4",
+    "mulang"
   ],
   "esversion": 9,
   "asi": true,
