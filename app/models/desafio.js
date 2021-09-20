@@ -32,6 +32,7 @@ export default Model.extend({
   bloques: attr(),
   solucionInicial: attr('string'),
   debugging: attr('boolean'),
+  expectativas: attr(),
 
   nombreImagen: computed('imagen', 'nombre', function () {
     return `${this.imagen || this.nombre || 'proximamente'}.png`;

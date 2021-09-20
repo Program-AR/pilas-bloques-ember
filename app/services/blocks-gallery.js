@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from '../utils/blocks'
 import Ember from 'ember'
 
 export default Service.extend({

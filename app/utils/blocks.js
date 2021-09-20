@@ -1,5 +1,11 @@
+export const entryPointType = 'al_empezar_a_ejecutar'
+
 export function isFlying(block) {
   return block.getRootBlock() === block
+}
+
+export function allProcedureNames(workspace) {
+  return workspace.getAllBlocks().filter(isProcedure).map(getName)
 }
 
 // TODO: No acoplarse a la categoria

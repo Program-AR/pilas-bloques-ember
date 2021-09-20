@@ -305,8 +305,6 @@ export default Component.extend({
   cuandoTerminaEjecucion() {
     run(this, function () {
 
-      // this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
-
       if (this.errorDeActividad) {
         if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
         return;
@@ -314,10 +312,16 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
+ 
 
-      if (this.debeMostrarFinDeDesafio) {
-        if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
-          this.send('abrirFinDesafio');
+      if (this.pilas.estaResueltoElProblema()) {
+        const expects = this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
+        const failedExpects = expects.filter(e => !e.result).map(e => e.expect)
+        if (!failedExpects.length && this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')) {
+          this.send('abrirFinDesafio')
+        } else {
+          console.log(failedExpects)
+          this.set('failedExpects', failedExpects)
         }
       }
 
@@ -376,8 +380,6 @@ export default Component.extend({
   actions: {
 
     ejecutar(pasoAPaso = false) {
-      this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
-
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 

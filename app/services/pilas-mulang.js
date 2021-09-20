@@ -1,36 +1,16 @@
-import Service from '@ember/service'
-import { getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedure, isProcedureCall } from './block-utils'
+import Service, { inject as service } from '@ember/service'
+import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
+// TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
-const entryPointType = 'al_empezar_a_ejecutar'
-
 export default Service.extend({
+  activityExpectations: service(),
 
   analyze(workspace, activity) {
-
-    const EDLString = name => `\`${name}\``
-    
-    // const allPrimitiveNames = activity.bloques.map(EDLString).join(', ')
-    const globalExpects = [
-      `expectation "Declara algún procedimiento": declares something unlike ${EDLString(entryPointType)};`,
-      `expectation "Divide en subtareas": within ${EDLString(entryPointType)} count(calls) < 7;`,
-    ]
-
-    const allProcedureNames = workspace.getAllBlocks().filter(isProcedure).map(getName)
-    const procedureExpects = allProcedureNames.flatMap(
-      procedureName => [
-        `expectation "'${procedureName}' hace algo": within ${EDLString(procedureName)} count(calls) >= 1;`,
-        `expectation "'${procedureName}' se usa en algún lado": calls ${EDLString(procedureName)};`,
-        `expectation "'${procedureName}' se usa desde el programa principal": through ${EDLString(entryPointType)} calls ${EDLString(procedureName)};`,
-      ]
-    )
-
-    const customExpect = globalExpects.concat(procedureExpects).join('\n')
+    const activityExpectation = this.activityExpectations.expectationFor(activity.id)
+    const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
-    const mulangAnalysis = mulang.astCode(ast).customExpect(customExpect)
-    console.log(mulangAnalysis)
-
-
+    return mulang.astCode(ast).customExpect(customExpect).map(([expect, result]) => ({ expect, result }))
   },
 
   parseAll(workspace) {
