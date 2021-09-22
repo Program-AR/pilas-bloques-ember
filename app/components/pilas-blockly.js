@@ -381,7 +381,8 @@ export default Component.extend({
   actions: {
 
     ejecutar(pasoAPaso = false) {
-      console.log(this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+      // TODO: Debug - Sacar al final
+      // console.log(this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
       
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
