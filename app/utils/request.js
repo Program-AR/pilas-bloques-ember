@@ -6,11 +6,14 @@ export const notFound = (cb) => ({ status }) => {
 }
 
 export const loadLazyScript = (file) => {
-  setTimeout(() => { 
-    const _script = document.createElement('script')
-    _script.type = 'text/javascript'
-    _script.src = `assets/${file}`
-    const _head = document.getElementsByTagName("head")[0]
-    _head.appendChild(_script)
+  setTimeout(() => {
+    if (!document.getElementById(file)) {
+      const _script = document.createElement('script')
+      _script.type = 'text/javascript'
+      _script.src = `assets/${file}`
+      _script.id = file
+      const _head = document.getElementsByTagName("head")[0]
+      _head.appendChild(_script)
+    }
   }, 1)
 }

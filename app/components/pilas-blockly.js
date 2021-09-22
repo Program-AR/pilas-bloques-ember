@@ -320,7 +320,8 @@ export default Component.extend({
         if (!failedExpects.length && this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')) {
           this.send('abrirFinDesafio')
         } else {
-          console.log(failedExpects)
+          // TODO: Debug - Sacar al final
+          // console.log(failedExpects)
           this.set('failedExpects', failedExpects)
           this.set('showExpects', true)
         }

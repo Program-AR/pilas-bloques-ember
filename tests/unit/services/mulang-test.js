@@ -704,7 +704,7 @@ function mulangParseWorkspaceTest(description, definitions, expectedAst) {
   test(`Should parse workspace with ${description}`, function (assert) {
     definitions.forEach(Blockly.textToBlock)
     let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
-    assert.deepEqual(ast, expectedAst)
+    assert.deepEqual(ast, sequence(...expectedAst))
   })
 }
 
