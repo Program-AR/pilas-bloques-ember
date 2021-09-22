@@ -45,9 +45,13 @@ export function entryPoint(name, ...seq) {
 export function sequence(...seq) {
   if (seq.length == 0) return none()
   if (seq.length == 1) return seq[0]
+  return rawSequence(seq)
+}
+
+export function rawSequence(contents) {
   return {
     tag: "Sequence",
-    contents: seq
+    contents
   }
 }
 

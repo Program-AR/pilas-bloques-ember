@@ -21,7 +21,8 @@ export default Service.extend({
   },
 
   parseAll(workspace) {
-    return createNode("Sequence", workspace.getTopBlocks().map(this.parse))
+    const astNodes = workspace.getTopBlocks().map(this.parse)
+    return createNode("Sequence", astNodes)
   },
 
   parse(mainBlock) {

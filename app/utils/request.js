@@ -6,8 +6,9 @@ export const notFound = (cb) => ({ status }) => {
 }
 
 export const loadLazyScript = (file) => {
+  //TODO: Use afterRender?
   setTimeout(() => {
-    if (!document.getElementById(file)) {
+    if (!document.getElementById(file)) { //TODO: Pensar mejor este if
       const _script = document.createElement('script')
       _script.type = 'text/javascript'
       _script.src = `assets/${file}`

@@ -1,10 +1,9 @@
 import { allProcedureNames, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
-export const declaresAnyProcedure = (/* workspace */) => join([
-  newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, 'declares_procedure'),
-  notTooLong()(entryPointType)
-])
+export const declaresAnyProcedure = (/* workspace */) =>
+  newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, 'declares_procedure')
+
 export const allProceduresShould = (...expectations) => (workspace) =>
   join(allProcedureNames(workspace).map(multiExpect(...expectations)))
 
@@ -22,12 +21,12 @@ export const isUsedFromMain = (declaration) =>
   newExpectation(`through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)}`, 'is_used_from_main', { declaration })
 
 export const notTooLong = (limit = 7) => (declaration) =>
-  newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit}`, 'too_long', { declaration, limit })
+  newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>
-  `expectation "${stringify(id, opts)}": ${expect};` 
+  `expectation "${stringify(id, opts)}": ${expect};`
 
 const stringify = (id, opts) => // TODO: test
   `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
