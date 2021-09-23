@@ -6,7 +6,7 @@ const activityExpectations = {
   // La gran aventura del mar encantado
   11: multiExpect(
     declaresAnyProcedure,
-    notTooLong()(entryPointType),
+    () => notTooLong()(entryPointType),
     allProceduresShould(
       notTooLong(),
       doSomething,
