@@ -24,6 +24,11 @@ export const interpreterFactoryMock = Service.extend({
     crearInterprete() { return interpreteMock; }
 });
 
+export const activityExpectationsMock = Service.extend({
+    expectations: () => '',
+    expectationFor(id) { return this.expectations }
+});
+
 export const createActividadMock = (fields) => EmberObject.extend({
     id: "000",
     nombre: "Actividad_Mock",

@@ -1,8 +1,9 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
+import { declaresAnyProcedure } from '../../../utils/expectations'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
@@ -11,6 +12,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
+    this.owner.register('service:activityExpectations', activityExpectationsMock)
     this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
 
@@ -62,10 +64,19 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   })
 
+  test('Al resolver el problema con expectativas fallidas debe mostrarlas', function (assert) {
+    this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
+    this.ctrl.send('ejecutar')
+    later(() => {
+      assert.ok(this.ctrl.get('failedExpects').length)
+      assert.ok(this.ctrl.get('showExpects'))
+      assert.notOk(this.ctrl.get('mostrarDialogoFinDesafio'))
+    })
+  })
+
   test('Al resolver el problema muestra el fin del desafío', function (assert) {
     this.ctrl.set('debeMostrarFinDeDesafio', true)
     this.ctrl.send('ejecutar')
-
     later(() => {
       assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
     })
