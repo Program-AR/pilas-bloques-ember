@@ -69,7 +69,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     later(() => {
       assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
     })
-
   })
 
   test('Al reiniciar settea flags y reinicia la escena de pilas', function (assert) {
@@ -194,6 +193,18 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertProps(assert, staticAnalysis, { couldExecute: true })
   })
 
+  test('Envia metadata a la api al ejecutar', function (assert) {
+    Blockly.textToBlock(filledProgram)
+    this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
+    this.ctrl.send('ejecutar')
+    const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
+    assert.deepEqual(metadata.staticAnalysis, { 
+      couldExecute: true,
+      expects: [],
+    })
+  })
+
   test('Avisa a la api al finalizar la ejecucion', function (assert) {
     this.ctrl.send('ejecutar')
     later(() => {
@@ -207,13 +218,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     later(() => {
       assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
     })
-  })
-
-  test('Envia metadata a la api al ejecutar', function (assert) {
-    this.ctrl.send('ejecutar')
-    const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
-    assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
-    assert.ok(metadata.program || metadata.program.length === 0)
   })
 
 })

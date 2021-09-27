@@ -30,6 +30,7 @@ export default Component.extend({
   pilasMulang: service(),
 
   bloques: [],
+  expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
   anterior_ancho: -1,
@@ -58,6 +59,10 @@ export default Component.extend({
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
+  }),
+
+  failedExpects: computed('expects', function () {
+    return this.expects.filter(e => !e.result).map(e => e.expect)
   }),
 
   didInsertElement() {
@@ -315,16 +320,11 @@ export default Component.extend({
  
 
       if (this.pilas.estaResueltoElProblema()) {
-        const expects = this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad)
-        const failedExpects = expects.filter(e => !e.result).map(e => e.expect)
-        if (!failedExpects.length && this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')) {
-          this.send('abrirFinDesafio')
-        } else {
-          // TODO: Debug - Sacar al final
-          // console.log(failedExpects)
-          this.set('failedExpects', failedExpects)
+        if (this.get('failedExpects').length) {
           this.set('showExpects', true)
-        }
+        } else if (this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')) {
+          this.send('abrirFinDesafio')
+        } 
       }
 
       if (this.ejecutando) {
@@ -363,11 +363,17 @@ export default Component.extend({
   staticAnalysis() {
     return {
       couldExecute: this.shouldExecuteProgram(),
+      expects: this.get('expects'),
     }
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilas.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { 
+      program: this.codigoActualEnFormatoXML, 
+      ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), 
+      turboModeOn: this.pilas.modoTurboEstaActivado(), 
+      staticAnalysis: this.staticAnalysis() 
+    })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
@@ -382,9 +388,7 @@ export default Component.extend({
   actions: {
 
     ejecutar(pasoAPaso = false) {
-      // TODO: Debug - Sacar al final
-      // console.log(this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
-      
+      this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 
