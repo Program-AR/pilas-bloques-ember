@@ -44,7 +44,7 @@ module('Acceptance | challenge content internationalization test', function (hoo
   // Second book challenge:
   testCanVisit(1,
     'El alien toca el botón',
-    'Ayudá a nuestro Alien a presionar el botón de su laboratorio. Pistas: mirá las primitivas disponibles. ¡Vas a tener que avanzar varias veces! 😉.',
+    'Ayudá a nuestro Alien a presionar el botón de su laboratorio. Pistas: mirá las primitivas disponibles. ¡Vas a tener que avanzar varias veces! 😉',
     'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.')
 
   // Conditional Alternative:
