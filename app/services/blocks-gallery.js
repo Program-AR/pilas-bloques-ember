@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from '../utils/blocks'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError } from '../utils/blocks'
 import Ember from 'ember'
 
 export default Service.extend({
@@ -1153,10 +1153,9 @@ export default Service.extend({
     function onChangeRequired(warningText) {
       return function (event) {
         if (event && event.runCode) {
-          this.setWarningText(warningText)
+          addError(this, warningText)
           opaque(this)
         }
-        if (this.warning && this.warning.bubble_) this.warning.bubble_.setColour('red')
       }
     }
 
@@ -1333,13 +1332,13 @@ export default Service.extend({
           var procedureDef = this.workspace.getBlockById(this.$parent)
           var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
-          var warning =
+          var err =
             (ok || isFlying(this) || !procedureDef)
               ? null
               : (hasParam(procedureDef, this))
                 ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
                 : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
-          this.setWarningText(warning)
+          addError(this, err)
         }
       }
     };

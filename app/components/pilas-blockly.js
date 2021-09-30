@@ -1,10 +1,10 @@
 /* jshint ignore:start */
-import { computed } from '@ember/object';
-
-import { later, scheduleOnce, run } from '@ember/runloop';
-import { on } from '@ember/object/evented';
-import { inject as service } from '@ember/service';
-import Component from '@ember/component';
+import { computed } from '@ember/object'
+import { later, scheduleOnce, run } from '@ember/runloop'
+import { on } from '@ember/object/evented'
+import { inject as service } from '@ember/service'
+import Component from '@ember/component'
+import { addWarning, clearValidations, declarationWithName } from '../utils/blocks'
 
 export default Component.extend({
   classNames: 'pilas-blockly',
@@ -62,7 +62,15 @@ export default Component.extend({
   }),
 
   failedExpects: computed('expects', function () {
-    return this.expects.filter(e => !e.result).map(e => e.expect)
+    return this.expects.filter(e => !e.result)
+  }),
+
+  allExpectsPassed: computed('failedExpects', function () {
+    return !this.failedExpects.length
+  }),
+
+  shouldShowCongratulations: computed('allExpectsPassed', 'debeMostrarFinDeDesafio', 'modelActividad', function () {
+    return this.allExpectsPassed && this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
   }),
 
   didInsertElement() {
@@ -317,14 +325,9 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
- 
 
-      if (this.pilas.estaResueltoElProblema()) {
-        if (this.get('failedExpects').length) {
-          this.set('showExpects', true)
-        } else if (this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')) {
-          this.send('abrirFinDesafio')
-        } 
+      if (this.pilas.estaResueltoElProblema() && this.shouldShowCongratulations ) {
+        this.send('abrirFinDesafio')
       }
 
       if (this.ejecutando) {
@@ -368,11 +371,11 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { 
-      program: this.codigoActualEnFormatoXML, 
-      ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), 
-      turboModeOn: this.pilas.modoTurboEstaActivado(), 
-      staticAnalysis: this.staticAnalysis() 
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, {
+      program: this.codigoActualEnFormatoXML,
+      ast: this.pilasMulang.parseAll(Blockly.mainWorkspace),
+      turboModeOn: this.pilas.modoTurboEstaActivado(),
+      staticAnalysis: this.staticAnalysis()
     })
   },
 
@@ -385,10 +388,20 @@ export default Component.extend({
     })
   },
 
+  showExpectationFeedback() {
+    this.get('failedExpects').forEach(({ declaration, expect }, i) =>
+      addWarning(declarationWithName(declaration), expect, -i)// TODO: Add priority?
+    )
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
+      clearValidations()
       this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+
+      this.showExpectationFeedback()
+
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
 

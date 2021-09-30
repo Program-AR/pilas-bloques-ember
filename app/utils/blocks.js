@@ -4,8 +4,18 @@ export function isFlying(block) {
   return block.getRootBlock() === block
 }
 
+export function allProcedures(workspace = Blockly.mainWorkspace) {
+  return workspace.getTopBlocks().filter(isProcedure)
+}
+
 export function allProcedureNames(workspace) {
-  return workspace.getAllBlocks().filter(isProcedure).map(getName)
+  return allProcedures(workspace).map(getName)
+}
+
+export function declarationWithName(name, workspace = Blockly.mainWorkspace) {
+  return entryPointType == name 
+  ? workspace.getAllBlocks().find(b => b.type === entryPointType) //TODO: Move to gral place
+  : allProcedures(workspace).find(p => getName(p) == name)
 }
 
 // TODO: No acoplarse a la categoria
@@ -74,4 +84,20 @@ function requiredInput(block, inputName) {
   connection.setShadowDom(shadowValue)
   if (!connection.targetConnection)
     connection.respawnShadow_()
+}
+
+
+export function clearValidations(workspace = Blockly.mainWorkspace) {
+  workspace.getAllBlocks().filter(b => b.warning).forEach(b => b.setWarningText(null))
+}
+
+export function addWarning(block, message, index) {
+  block.setWarningText(message, index)
+  block.warning.setVisible(true)
+  block.warning.bubble_.setColour('yellow')
+}
+
+export function addError(block, message, index) {
+  addWarning(block, message, index)
+  block.warning.bubble_.setColour('red')
 }

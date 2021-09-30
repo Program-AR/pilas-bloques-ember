@@ -2,7 +2,7 @@ import { allProcedureNames, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
 export const declaresAnyProcedure = (/* workspace */) =>
-  newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, 'declares_procedure')
+  newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, 'declares_procedure', { declaration: entryPointType })
 
 export const allProceduresShould = (...expectations) => (workspace) =>
   join(allProcedureNames(workspace).map(multiExpect(...expectations)))

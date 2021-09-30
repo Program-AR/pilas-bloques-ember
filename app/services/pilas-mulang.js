@@ -4,16 +4,29 @@ import { parseExpect } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
+
+
 export default Service.extend({
   activityExpectations: service(),
   intl: service(),
-
+  
+  /**
+   * @return ExpectationResult
+   * {
+   *  expect: translated expectation name [string]
+   *  result: if the program pass de expect [boolean]
+   *  declaration: blockId
+   *  ... other specific params
+   * }
+   */
   analyze(workspace, activity) {
     const activityExpectation = this.activityExpectations.expectationFor(activity.id)
     const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
-    const toTranslatedResult = ([expect, result]) =>
-      ({ expect: this.intl.t(...parseExpect(expect)).toString(), result })
+    const toTranslatedResult = ([expect, result]) => {
+      const [name, params] = parseExpect(expect)
+      return { expect: this.intl.t(name, params).toString(), result, ...params }
+    }
     return mulang
       .astCode(ast)
       .customExpect(customExpect)
