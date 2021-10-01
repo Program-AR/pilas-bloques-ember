@@ -1,7 +1,7 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
-const assetsPath = 'desafio/assets'
+const assetsPath = 'challenge/assets'
 
 export default Component.extend({
   classNames: ["challenges-book-container zoom"],
@@ -52,21 +52,12 @@ export default Component.extend({
   },
 
   async _getChallengeJson(entries) {
-    const arrayBuffer = await entries["desafio/desafio.json"].arrayBuffer();
+    const arrayBuffer = await entries["challenge/challenge.json"].arrayBuffer();
     // Parseamos el JSON
     const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
     return JSON.parse(jsonDesafioAsString);
   },
 
-  /*
-  * Zip structure:
-  * desafio/: root folder
-  * desafio/desafio.json: challenge definition
-  * desafio/assets/background.png: challenge background
-  * desafio/assets/splashChallenge.png: splash challenge image
-  * desafio/assets/prizes/*.png: prizes images 
-  * desafio/assets/obstacles/*.png: obstacle images
-  */
   async _loadChallenge(theZipContent, resolve) {
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
