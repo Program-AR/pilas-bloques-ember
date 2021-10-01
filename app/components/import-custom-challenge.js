@@ -58,6 +58,7 @@ export default Component.extend({
     return JSON.parse(jsonDesafioAsString);
   },
 
+  //Zip and challenge.json definition: https://github.com/Program-AR/pilas-bloques/wiki/Expected-custom-challenge-zip-structure
   async _loadChallenge(theZipContent, resolve) {
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
