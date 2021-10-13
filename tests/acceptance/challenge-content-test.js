@@ -1,13 +1,8 @@
-import { visit } from '@ember/test-helpers'
 import { module, test } from 'qunit'
-import { setupApplicationTest } from 'ember-qunit'
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
-import simulateRouterHooks from "../helpers/simulate-router.hooks"
-import { awaitChallengeLoading } from "../helpers/utils"
+import { awaitChallengeLoading, setupPBAcceptanceTest, safeVisit } from "../helpers/utils"
 
 module('Acceptance | challenge content internationalization test', function (hooks) {
-  setupApplicationTest(hooks)
-  setupMirage(hooks)
+  setupPBAcceptanceTest(hooks)
 
   /*
    * Validates after all promises finish.
@@ -16,20 +11,7 @@ module('Acceptance | challenge content internationalization test', function (hoo
 
   function testCanVisit(challengeId, expectedTitle, expectedescription, expectedClue) {
     test(`Challenge ${challengeId} is internationalized`, async function (assert) {
-      // The visit helper has a known bug, so we need this try/catch
-      // https://github.com/emberjs/ember-test-helpers/issues/332 (still open)
-
-
-      try {
-        simulateRouterHooks(this.owner.lookup('service:store'))
-        await visit(`/desafio/${challengeId}`)
-      }
-      catch (e) {
-        if (e.message !== 'TransitionAborted') {
-          throw e
-        }
-      }
-
+      await safeVisit(`/desafio/${challengeId}`)
       const challengeTitle = $(".challenge-title").text().trim()
       assert.equal(challengeTitle, expectedTitle)
 
