@@ -1,18 +1,18 @@
-<Header id="header-workspace" 
+<Header id="header-workspace"
     @book={{model.grupo.capitulo.libro}}
     @challenge={{model}}
     @chapter={{model.grupo.capitulo}}
     @group={{model.grupo}}
 />
-  
+
 <div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
-  
+
   {{#if (and (media 'isMobile') (media 'isPortrait')) }}
     <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
   {{/if}}
 
   {{#unless shouldUseFloatingMode}}
-    <SceneDetails class="exercise-details" 
+    <SceneDetails class="exercise-details"
       @model={{model}}
       @cargando={{cargando}}
     />
@@ -23,8 +23,6 @@
       <PilasBlockly
         @guardar={{'guardar'}}
         @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
-        @modoDocente={{modoDocente}}
-        @modoAlumno={{modoAlumno}}
         @hash={{hash}}
         @idAlumno={{idAlumno}}
         @codigo={{codigo}}
