@@ -4,6 +4,13 @@ import { awaitChallengeLoading, setupPBAcceptanceTest, safeVisit } from "../help
 module('Acceptance | challenge content internationalization test', function (hooks) {
   setupPBAcceptanceTest(hooks)
 
+  test(`Markdown text gets formatted`, async function (assert) {
+    await safeVisit(`/desafio/1`)
+    await awaitChallengeLoading()
+    const italicText = $("em").text().trim()
+    assert.equal(italicText, 'primitivas')
+  })
+
   /*
    * Validates after all promises finish.
    * Checks title, description and clue of the challenge are translated.
@@ -12,13 +19,11 @@ module('Acceptance | challenge content internationalization test', function (hoo
   function testCanVisit(challengeId, expectedTitle, expectedescription, expectedClue) {
     test(`Challenge ${challengeId} is internationalized`, async function (assert) {
       await safeVisit(`/desafio/${challengeId}`)
-      const challengeTitle = $(".challenge-title").text().trim()
-      assert.equal(challengeTitle, expectedTitle)
-
       await awaitChallengeLoading()
 
+      const challengeTitle = $(".challenge-title").text().trim()
+      assert.equal(challengeTitle, expectedTitle)
       assert.dom("[data-test-challenge-description]").matchesText(expectedescription)
-
       assert.dom("[data-test-challenge-clue]").matchesText(expectedClue)
     })
   }
