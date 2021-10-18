@@ -26,7 +26,7 @@ export default Component.extend({
     var reader = new FileReader();
     return new Promise((resolve, reject) => {
       reader.onerror = (err) => reject(err);
-      reader.onload = async (event) => await this._loadChallenge(event.target.result, resolve);
+      reader.onload = (event) => this._loadChallenge(event.target.result, resolve);
       reader.readAsArrayBuffer(archivo);
     })
       .then((contenido) => this.cargarProyecto(contenido))
@@ -38,7 +38,7 @@ export default Component.extend({
   },
 
   _isChallengeImage(filepath) {
-    return filepath.startsWith(assetsPath) && !filepath.endsWith('/')
+    return filepath.startsWith(assetsPath) && !filepath.endsWith('/') //Should be inside the assets folder and should not be a folder
   },
 
   async _imageContentToURL(content) {
@@ -85,9 +85,8 @@ export default Component.extend({
     const description = aBlock.description;
     const blockType = aBlock.type;
 
-    let properties;
     if (blockType === "action") {
-      properties = {
+      const properties = {
         descripcion: description,
         icono: interactsWith + '.png',
         comportamiento: 'Recolectar',
@@ -97,7 +96,7 @@ export default Component.extend({
     }
     if (blockType === "sensor") {
       const object = aBlock.object;
-      properties = {
+      const properties = {
         descripcion: description,
         icono: object + '.png',
         funcionSensor: `tocando("${object}")`,

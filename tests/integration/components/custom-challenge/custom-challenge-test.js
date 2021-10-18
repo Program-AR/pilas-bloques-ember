@@ -20,7 +20,7 @@ module('Integration | Component | custom-challenge', function (hooks) {
 });
 
 
-//Mirage breaks the fetch of this fetch.
+//Mirage breaks the fetch of this test.
 /*
 moduloActividad('custom-activity', (hooks) => {
 
