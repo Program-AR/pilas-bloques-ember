@@ -1,12 +1,8 @@
-import { visit } from '@ember/test-helpers';
-import { module, test } from 'qunit';
-import { setupApplicationTest } from 'ember-qunit';
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
-import simulateRouterHooks from "../helpers/simulate-router.hooks";
+import { module, test } from 'qunit'
+import { setupPBAcceptanceTest, safeVisit } from '../helpers/utils'
 
 module('Acceptance | puede ingresar en actividades', function (hooks) {
-  setupApplicationTest(hooks);
-  setupMirage(hooks);
+  setupPBAcceptanceTest(hooks)
 
   /*
    * Realiza una validación luego de que se detengan todas las promesas pendientes.
@@ -17,17 +13,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
 
   function testSePuedeVisitar(nombreDesafio, tituloEsperado) {
     test(`Se puede visitar ${nombreDesafio}`, async function (assert) {
-      // La razón por la que levantamos este try catch es porque el helper visit tiene un bug
-      // descrito acá: https://github.com/emberjs/ember-test-helpers/issues/332 (todavía abierto)        
-      try {
-        simulateRouterHooks(this.owner.lookup('service:store'));
-        await visit(`/desafios/${nombreDesafio}`);
-      }
-      catch (e) {
-        if (e.message !== 'TransitionAborted') {
-          throw e;
-        }
-      }
+      await safeVisit(`/desafios/${nombreDesafio}`)
       const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
       assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloVisibleEnPantalla + " y no " + tituloEsperado);
     })

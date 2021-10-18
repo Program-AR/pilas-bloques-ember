@@ -18,15 +18,15 @@
 
 
       {{#each capitulo.grupos as |grupo|}}
-        <div data-test-book-view-group>
         {{#if grupo.titulo}}
-          <h3 data-test-book-view-group-id={{grupo.id}} data-test-book-view-group-title>{{grupo.titulo}}</h3>
+          <div data-test-book-view-group>
+            <h3 data-test-book-view-group-id={{grupo.id}} data-test-book-view-group-title>{{grupo.titulo}}</h3>
+          </div>
         {{/if}}
 
         {{#each grupo.desafios as |desafio|}}
           {{challenge-link challenge=desafio}}
         {{/each}}
-        </div>
       {{/each}}
 
     </div>
