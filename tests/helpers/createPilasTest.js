@@ -7,13 +7,12 @@ export default function createPilasTest(context, escena, callback) {
 
     let pilasService = context.owner.lookup('service:pilas');
     context.set('pilas', pilasService);
-    context.set("escena", escena);
-
+    context.set('challenge', { escena });
     context.set('onReady', function (pilas) {
       callback(pilas, resolve, pilasService);
     });
 
-    context.render(hbs`{{pilas-canvas pilas=pilas onReady=onReady escena=escena}}`);
+    context.render(hbs`{{pilas-canvas pilas=pilas onReady=onReady challenge=challenge}}`);
 
   });
 }
