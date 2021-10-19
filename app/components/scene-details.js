@@ -39,6 +39,7 @@ export default Component.extend({
                 }
 
                 document.getElementById(tab).style.display = "block";
+                document.getElementById(tab).style.width = "100%";
             }
         },
 

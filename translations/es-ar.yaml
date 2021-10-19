@@ -183,7 +183,7 @@ model:
       title: El alien toca el botón
       description: |
         Ayudá a nuestro Alien a presionar el botón de su laboratorio.
-        Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!
+        Pistas: mirá las _primitivas_ disponibles. ¡Vas a tener que avanzar varias veces! :wink:
       clue: Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.
     2:
       title: El gato en la calle

@@ -15,14 +15,14 @@
                     <div id="statement" class="tabcontent">
                         <PaperCardTitle class="layout-column">
                             <PaperCardTitleText>
-                                <PaperCardHeaderSubhead data-test-challenge-description>{{model.enunciado}}</PaperCardHeaderSubhead>
+                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-description>{{markdown-to-html model.enunciado}}</PaperCardHeaderSubhead>
                             </PaperCardTitleText>
                         </PaperCardTitle>
                     </div>
                     <div id="clue" class="tabcontent">
                         <PaperCardTitle class="layout-column">
                             <PaperCardTitleText>
-                                <PaperCardHeaderSubhead data-test-challenge-clue>{{model.consignaInicial}}</PaperCardHeaderSubhead>
+                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-clue>{{markdown-to-html model.consignaInicial}}</PaperCardHeaderSubhead>
                             </PaperCardTitleText>
                         </PaperCardTitle>
                     </div>
