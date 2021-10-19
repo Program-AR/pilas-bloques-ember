@@ -7,7 +7,7 @@ moduloEjerciciosPilas('Imagenes Pre-carga', () => {
   function testDePrecarga(escena, constructor, imagenesEsperadas) {
     test(escena, function (assert) {
       return createPilasTest(this, constructor, (pilas, resolve, pilasService) => {
-        let imagenes = pilasService.imagenesParaPrecargar(constructor);
+        let imagenes = pilasService.imagenesParaPrecargar({ escena: constructor });
         assert.deepEqual(imagenes, imagenesEsperadas);
         resolve();
       });
