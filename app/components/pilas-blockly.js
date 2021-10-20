@@ -326,7 +326,7 @@ export default Component.extend({
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
-      if (this.pilas.estaResueltoElProblema() && this.shouldShowCongratulations ) {
+      if (this.pilas.estaResueltoElProblema() && this.shouldShowCongratulations) {
         this.send('abrirFinDesafio')
       }
 
@@ -394,18 +394,20 @@ export default Component.extend({
     )
   },
 
+  runValidations() {
+    clearValidations()
+    this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+    this.showExpectationFeedback()
+    Blockly.Events.fireRunCode()
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
-      clearValidations()
-      this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
-
-      this.showExpectationFeedback()
-
       const analyticsSolutionId = this.runProgramEvent()
       this.pilas.reiniciarEscenaCompleta()
+      this.runValidations()
 
-      Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
@@ -474,11 +476,8 @@ export default Component.extend({
     },
 
     onChangeWorkspace(xml) {
-      if (this.isDestroyed) {
-        return;
-      }
-
-      this.set('codigoActualEnFormatoXML', xml);
+      if (this.isDestroyed) return;
+      this.set('codigoActualEnFormatoXML', xml)
       if (this.onChangeWorkspace)
         this.onChangeWorkspace(xml)
     },

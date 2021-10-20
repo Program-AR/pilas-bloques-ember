@@ -33,6 +33,7 @@ export default Ember.Service.extend({
 
     _disable(block) {
         block.setDisabled(true)
+        // TODO: Use addWarning/Error from blocks and internationalize
         block.setWarningText("Este bloque no está disponible en esta actividad.")
     },
 

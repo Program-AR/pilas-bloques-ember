@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError } from '../utils/blocks'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor } from '../utils/blocks'
 import Ember from 'ember'
 
 export default Service.extend({
@@ -1332,23 +1332,19 @@ export default Service.extend({
           var procedureDef = this.workspace.getBlockById(this.$parent)
           var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
-          var err =
-            (ok || isFlying(this) || !procedureDef)
-              ? null
-              : (hasParam(procedureDef, this))
-                ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-                : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
-          addError(this, err)
+          if (ok || isFlying(this) || !procedureDef) {
+            clearValidationsFor(this)
+          } else {
+            var err = (hasParam(procedureDef, this))
+              ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
+              : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+            addError(this, err)
+          }
         }
       }
     };
 
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
-    let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
-
-    Blockly.Blocks.procedures_defnoreturn.init = function () {
-      init_base_procedimiento.call(this);
-    };
 
     delete Blockly.Blocks.procedures_defreturn;
     delete Blockly.Blocks.procedures_ifreturn;

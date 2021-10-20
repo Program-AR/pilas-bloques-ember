@@ -821,7 +821,7 @@ model:
       title: "Con Lita"
 
   spects:
-    declares_procedure: "No estás usando procedimientos para dividí en subtareas."
+    declares_procedure: "No estás usando procedimientos para dividir en subtareas."
     too_long: "La definición {declaration, select,
         al_empezar_a_ejecutar {del programa principal}
         other {de {declaration}}

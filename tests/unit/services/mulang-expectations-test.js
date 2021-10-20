@@ -111,10 +111,8 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   // IDs for internationalize - [key, params]
 
-  const noParams = { "": undefined } // ??
-
   expectationKeyTest('declaresAnyProcedure', declaresAnyProcedure(),
-    [makeKey('declares_procedure'), noParams]
+    [makeKey('declares_procedure'), { declaration: entryPointType }]
   )
 
   expectationKeyTest('doSomething', doSomething(declaration),

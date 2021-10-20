@@ -88,7 +88,11 @@ function requiredInput(block, inputName) {
 
 
 export function clearValidations(workspace = Blockly.mainWorkspace) {
-  workspace.getAllBlocks().filter(b => b.warning).forEach(b => b.setWarningText(null))
+  workspace.getAllBlocks().filter(b => b.warning).forEach(clearValidationsFor)
+}
+
+export function clearValidationsFor(block) {
+  block.setWarningText(null)
 }
 
 export function addWarning(block, message, index) {
