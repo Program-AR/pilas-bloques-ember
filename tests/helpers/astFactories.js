@@ -100,9 +100,9 @@ export function ifElse(condition, seqTrue, seqFalse) {
   }
 }
 
-export function muWhile(condition, ...seq) {
+export function muUntil(condition, ...seq) {
   return {
-    tag: "While",
+    tag: "Until",
     contents: [
       condition,
       sequence(...seq)

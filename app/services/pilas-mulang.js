@@ -49,9 +49,9 @@ let ifParser = {
   parse: parseIf
 }
 
-let whileParser = {
-  tag: "While",
-  parse: parseWhile
+let untilParser = {
+  tag: "Until",
+  parse: parseUntil
 }
 
 let numberParser = {
@@ -80,7 +80,7 @@ let pilasToMulangParsers = {
   "repetir": repeatParser,
   "Si": ifParser,
   "SiNo": { ...ifParser, parse: parseIfElse },
-  "Hasta": whileParser,
+  "Hasta": untilParser,
   "math_number": numberParser,
   "Numero": numberParser,
   "procedures_defnoreturn": procedureParser,
@@ -152,7 +152,7 @@ function parseRepeat(block) {
   ]
 }
 
-function parseWhile(block) {
+function parseUntil(block) {
   let condition = block.getInputTargetBlock("condition")
   let statements = block.getInputTargetBlock("block")
   return [
