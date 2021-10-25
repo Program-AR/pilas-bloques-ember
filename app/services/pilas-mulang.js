@@ -25,7 +25,7 @@ export default Service.extend({
     const ast = this.parseAll(workspace)
     const toTranslatedResult = ([expect, result]) => {
       const [name, params] = parseExpect(expect)
-      return { expect: this.intl.t(name, params).toString(), result, ...params }
+      return { expect: this.intl.t(name, {result, ...params}).toString(), result, ...params }
     }
     return mulang
       .astCode(ast)

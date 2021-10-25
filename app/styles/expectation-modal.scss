@@ -9,12 +9,22 @@
     md-progress-linear {
         margin: 1rem;
         margin-left: 0;
+        margin-bottom: 2rem !important;
+        .md-container, .md-bar {
+            height: 15px;
+        }
+        .md-container {
+            background-color: red;
+        }
+        .md-bar2 {
+            background-color: green;
+        }
     }
     p.good {
-        color: green
+        color: green;
     }
     p.bad {
-        color: red
+        color: red;
     }
     md-icon[md-font-icon] {
         color: inherit;

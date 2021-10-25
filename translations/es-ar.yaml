@@ -821,14 +821,29 @@ model:
       title: "Con Lita"
 
   spects:
-    declares_procedure: "No estás usando procedimientos para dividir en subtareas."
+    declares_procedure: "{result, select, 
+      true {Estás}
+      false {No estás}
+    } usando procedimientos para dividir en subtareas."
     too_long: "La definición {declaration, select,
         al_empezar_a_ejecutar {del programa principal}
         other {de {declaration}}
-      } hace muchas cosas, dividí en subtareas usando procedimientos."
-    do_something: "La definición de {declaration} no hace nada."
-    is_used: "{declaration} no se usa desde ningún lado."
-    is_used_from_main: "{declaration} no se usa desde el programa principal."
+      } {result, select, 
+        true {no hace muchas cosas}
+        false {hace muchas cosas, dividí en subtareas usando procedimientos}
+      }."
+    do_something: "La definición de {declaration} {result, select, 
+      true {hace algo}
+      false {no hace nada}
+    }."
+    is_used: "{declaration} {result, select, 
+      true {se usa}
+      false {no se usa desde ningún lado}
+    }."
+    is_used_from_main: "{declaration} {result, select, 
+      true {se usa desde el programa principal}
+      false {no se usa desde el programa principal}
+    }."
 
 blocks:
   turnOnTheLight: "Prender la luz"
