@@ -1,8 +1,10 @@
 import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
+import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
+import simulateRouterHooks from './simulate-router.hooks'
 import { fakeUser, toastMock, routerMock } from './mocks'
 import config from '../../config/environment'
 const { baseURL } = config.pbApi
@@ -29,6 +31,7 @@ export function setupPBAcceptanceTest(hooks) {
     setupMirage(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
+    setupSiulateRouter(hooks)
 }
 
 export function setupClear(hooks) {
@@ -64,6 +67,12 @@ export function setupToasterMock(hooks) {
 export function setupRouterMock(hooks) {
     hooks.beforeEach(function () {
         this.owner.register('service:router', routerMock)
+    })
+}
+
+export function setupSiulateRouter(hooks) {
+    hooks.beforeEach(function () {
+        simulateRouterHooks(this.owner.lookup('service:store'))
     })
 }
 
@@ -174,5 +183,19 @@ export async function awaitChallengeLoading() {
     var startTimeInMs = Date.now()
     while (($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())) {
         await new Promise(r => setTimeout(r, 20))
+    }
+}
+
+
+export async function safeVisit(url) {
+    // The visit helper has a known bug, so we need this try/catch
+    // https://github.com/emberjs/ember-test-helpers/issues/332 (still open)
+    try {
+        await visit(url)
+    }
+    catch (e) {
+        if (e.message !== 'TransitionAborted') {
+            throw e
+        }
     }
 }

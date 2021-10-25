@@ -26,6 +26,7 @@ components:
   bugReportModal:
     problem: "¿Tenés algún problema?"
     error: "¿Pensás que este ejercicio tiene un error?"
+    askTeacher: "Recordá contactarte siempre con tu docente o escuela para hacerle consultas. Quienes hacemos Pilas Bloques lamentablemente no conocemos a todas las maestras y maestros que usan la herramienta."
     mail: "Podés escribirnos a "
     githubReport: "Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el"
     issueTracker: Issue Tracker
@@ -183,7 +184,7 @@ model:
       title: El alien toca el botón
       description: |
         Ayudá a nuestro Alien a presionar el botón de su laboratorio.
-        Pistas: mirá las acciones disponibles. ¡Vas a tener que avanzar varias veces!
+        Pistas: mirá las _primitivas_ disponibles. ¡Vas a tener que avanzar varias veces! :wink:
       clue: Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.
     2:
       title: El gato en la calle

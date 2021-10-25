@@ -14,6 +14,11 @@ module.exports = function (environment) {
     enableChallengeCreator: false,
     testTranslations: false,
 
+    showdown: {
+      simpleLineBreaks: true,
+      emoji: true
+    },
+
     pbAnalytics: {
       sessionExpire: 30
     },

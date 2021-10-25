@@ -7,7 +7,7 @@ export default Model.extend({
   intl: Ember.inject.service(),
 
   titulo: computed('id',function(){
-    return this.intl.t(`model.groups.${this.id}.title`);
+    return this.intl.t(`model.groups.${this.id}.title`).toString()
   }),
 
   desafios: hasMany('desafio'),

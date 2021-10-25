@@ -1,6 +1,6 @@
 /* jshint node:true */
 
-module.exports = function(/* environment */) {
+module.exports = function (/* environment */) {
   return {
     /**
      * Merges the fallback locale's translations into all other locales as a
@@ -47,7 +47,7 @@ module.exports = function(/* environment */) {
      * @type {Boolean}
      * @default "false"
      */
-    wrapTranslationsWithNamespace: true,
+    wrapTranslationsWithNamespace: false, //Setting true here breaks the translations in Windows
 
     /**
      * Cause a build error if ICU argument mismatches are detected between translations
