@@ -1,0 +1,22 @@
+
+.expectationsModal {
+    text-align: center;
+    p {
+        margin: 1vh;
+    }
+}
+.expectationResults {
+    md-progress-linear {
+        margin: 1rem;
+        margin-left: 0;
+    }
+    p.good {
+        color: green
+    }
+    p.bad {
+        color: red
+    }
+    md-icon[md-font-icon] {
+        color: inherit;
+    }
+}

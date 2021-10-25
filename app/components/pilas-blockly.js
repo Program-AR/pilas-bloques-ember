@@ -65,12 +65,20 @@ export default Component.extend({
     return this.expects.filter(e => !e.result)
   }),
 
+  passedExpects: computed('expects', function () {
+    return this.expects.filter(e => e.result)
+  }),
+
   allExpectsPassed: computed('failedExpects', function () {
     return !this.failedExpects.length
   }),
 
-  shouldShowCongratulations: computed('allExpectsPassed', 'debeMostrarFinDeDesafio', 'modelActividad', function () {
-    return this.allExpectsPassed && this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
+  passedExpectsValue: computed('passedExpects', 'expects', function () {
+    return 100 * this.passedExpects.length / this.expects.length
+  }),
+
+  shouldOpenEndModal: computed('debeMostrarFinDeDesafio', 'modelActividad', function () {
+    return this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
   }),
 
   didInsertElement() {
@@ -325,8 +333,8 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
-
-      if (this.pilas.estaResueltoElProblema() && this.shouldShowCongratulations) {
+        
+      if (this.pilas.estaResueltoElProblema() && this.shouldOpenEndModal) {
         this.send('abrirFinDesafio')
       }
 

@@ -21,6 +21,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
+    this.ctrl.set('debeMostrarFinDeDesafio', true)
     sinon.resetHistory()
   })
 
@@ -64,22 +65,26 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   })
 
-  test('Al resolver el problema con expectativas fallidas debe mostrarlas', function (assert) {
+  test('Al resolver el problema muestra el fin del desafío', function (assert) {
+    this.ctrl.send('ejecutar')
+    later(() => {
+      assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
+    })
+  })
+
+  test('Al resolver el problema con expectativas fallidas', function (assert) {
     Blockly.textToBlock(filledProgram)
     this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
     this.ctrl.send('ejecutar')
     later(() => {
-      assert.ok(this.ctrl.get('failedExpects').length)
-      // assert.ok(this.ctrl.get('showExpects')) TODO
-      assert.notOk(this.ctrl.get('mostrarDialogoFinDesafio'))
+      assert.notOk(this.ctrl.get('allExpectsPassed'))
     })
   })
 
-  test('Al resolver el problema muestra el fin del desafío', function (assert) {
-    this.ctrl.set('debeMostrarFinDeDesafio', true)
+  test('Al resolver el problema sin expectativas fallidas', function (assert) {
     this.ctrl.send('ejecutar')
     later(() => {
-      assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
+      assert.ok(this.ctrl.get('allExpectsPassed'))
     })
   })
 
