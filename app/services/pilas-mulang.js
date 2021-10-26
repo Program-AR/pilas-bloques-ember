@@ -9,7 +9,27 @@ import { createNode, createReference, createEmptyNode } from './pilas-ast'
 export default Service.extend({
   activityExpectations: service(),
   intl: service(),
-  
+
+  runTests(workspace, activity) {
+    if (!activity.tests) return [];
+    const ast = mulang.nativeCode("JavaScript", activity.nativeCode).ast
+    ast.contents.push(this.parseAll(workspace).contents[1])
+    console.log({ ast })
+    return mulang
+      .astCode(ast)
+      .analyse({
+        "testAnalysisType": {
+          "tag": "ExternalTests",
+          "test": {
+            "tag": "CodeSample",
+            "language": "JavaScript",
+            "content": activity.tests
+          }
+        }
+      }).testResults
+      .map(t => ({...t, passed: t.status.tag == 'Success'}))
+  },
+
   /**
    * @return ExpectationResult
    * {
@@ -25,7 +45,7 @@ export default Service.extend({
     const ast = this.parseAll(workspace)
     const toTranslatedResult = ([expect, result]) => {
       const [name, params] = parseExpect(expect)
-      return { expect: this.intl.t(name, {result, ...params}).toString(), result, ...params }
+      return { expect: this.intl.t(name, { result, ...params }).toString(), result, ...params }
     }
     return mulang
       .astCode(ast)

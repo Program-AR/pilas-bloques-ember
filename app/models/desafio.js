@@ -33,6 +33,8 @@ export default Model.extend({
   solucionInicial: attr('string'),
   debugging: attr('boolean'),
   expectativas: attr(),
+  nativeCode: attr('string'),
+  tests: attr('string'),
 
   nombreImagen: computed('imagen', 'nombre', function () {
     return `${this.imagen || this.nombre || 'proximamente'}.png`;

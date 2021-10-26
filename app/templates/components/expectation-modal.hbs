@@ -1,6 +1,7 @@
 <Modal @title={{t "components.expectationsModal.goodButNotTooGood"}} @onClose={{onClose}}>
   <div class='expectationsModal'>
-    <p>{{t "components.expectationsModal.couldBeBetter"}}</p>
+    {{!-- <p>{{t "components.expectationsModal.couldBeBetter"}}</p> --}}
+    <p>Tu programa resolvió este escenario pero no resuelve todos. ¡Seguí probando!</p>
     <img src="imagenes/libros/primer-ciclo.png" />
   </div>
   <div class='expectationResults' >
@@ -13,6 +14,19 @@
           {{paper-icon "thumb_down_off_alt"}}
         {{/if}}
         {{expectationResult.expect}}
+      </p>
+    {{/each}}
+  </div>
+
+  <div class='expectationResults' >
+    {{#each tests as |testResult|}}
+      <p class={{if testResult.passed 'good' 'bad'}}>
+        {{#if testResult.passed}}
+          {{paper-icon "check-circle"}}
+        {{else}}
+          {{paper-icon "thumb_down_off_alt"}}
+        {{/if}}
+        {{testResult.description}}
       </p>
     {{/each}}
   </div>

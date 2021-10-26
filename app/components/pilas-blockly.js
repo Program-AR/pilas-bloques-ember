@@ -77,8 +77,16 @@ export default Component.extend({
     return 100 * this.passedExpects.length / this.expects.length
   }),
 
+  allTestsPassed: computed('tests', function () {
+    return this.tests.every(({status}) => status.tag == 'Success')
+  }),
+
   shouldOpenEndModal: computed('debeMostrarFinDeDesafio', 'modelActividad', function () {
     return this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
+  }),
+
+  allObjectivesPassed: computed('allExpectsPassed', 'allTestsPassed', function () {
+    return this.allExpectsPassed && this.allTestsPassed
   }),
 
   didInsertElement() {
@@ -333,7 +341,7 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
-        
+
       if (this.pilas.estaResueltoElProblema() && this.shouldOpenEndModal) {
         this.send('abrirFinDesafio')
       }
@@ -409,6 +417,12 @@ export default Component.extend({
     Blockly.Events.fireRunCode()
   },
 
+  runTests() {
+    const testResults = this.pilasMulang.runTests(Blockly.mainWorkspace, this.modelActividad)
+    console.log(testResults)
+    this.set('tests', testResults)
+  },
+
   actions: {
 
     ejecutar(pasoAPaso = false) {
@@ -417,6 +431,7 @@ export default Component.extend({
       this.runValidations()
 
       if (!this.shouldExecuteProgram()) return;
+      this.runTests()
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
       // cuando se accede a la ruta curso/alumno para guardar la solución

@@ -113,7 +113,37 @@ export default [
     nombre: 'LaEleccionDelMono',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
+    nativeCode: `
+      let elMonoAvanzo = false
+      let comioBanana = false
+      let comioManzana = false
+      let hayBanana = false
+      let hayManzana = false
+      function AvanzarMono() { elMonoAvanzo = true }
+      function ComerBanana() { comioBanana = true }
+      function ComerManzana() { comioManzana = true }
+      function TocandoBanana() { return hayBanana }
+      function TocandoManzana() { return hayManzana }
+    `,
+    tests: `
+      it("El mono avanza", function() {
+        solucion()
+        assert.equals(true, elMonoAvanzo)
+      })
+      it("Si hay manzana el mono come solo manzana", function() {
+        hayManzana = true
+        solucion()
+        assert.equals(true, comioManzana)
+        assert.equals(false, comioBanana)
+      })
+      it("Si hay banana el mono come solo banana", function() {
+        hayBanana = true
+        solucion()
+        assert.equals(false, comioManzana)
+        assert.equals(true, comioBanana)
+      })
+    `
   },
   {
     id: 15,
