@@ -19,7 +19,7 @@ export default Component.extend({
     }
   },
 
-  escena(){
+  sceneConstructor(){
     return this.challenge && this.challenge.escena;
   },
 
@@ -35,8 +35,8 @@ export default Component.extend({
         this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.challenge).
           then((pilas) => {
 
-            if (this.escena()) {
-              this.pilas.inicializarEscena(iframeElement, this.escena());
+            if (this.sceneConstructor()) {
+              this.pilas.inicializarEscena(iframeElement, this.sceneConstructor());
             } else {
               console.warn("No especificó una escena para cargar en pilas-canvas.");
             }

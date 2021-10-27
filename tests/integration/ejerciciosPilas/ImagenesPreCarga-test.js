@@ -4,10 +4,10 @@ import createPilasTest from '../../helpers/createPilasTest';
 
 moduloEjerciciosPilas('Imagenes Pre-carga', () => {
 
-  function testDePrecarga(escena, constructor, imagenesEsperadas) {
+  function testDePrecarga(escena, sceneConstructor, imagenesEsperadas) {
     test(escena, function (assert) {
-      return createPilasTest(this, constructor, (pilas, resolve, pilasService) => {
-        let imagenes = pilasService.imagenesParaPrecargar({ escena: constructor });
+      return createPilasTest(this, sceneConstructor, (pilas, resolve, pilasService) => {
+        let imagenes = pilasService.imagenesParaPrecargar({ escena: sceneConstructor });
         assert.deepEqual(imagenes, imagenesEsperadas);
         resolve();
       });
