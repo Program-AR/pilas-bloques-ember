@@ -73,6 +73,7 @@ export default Component.extend({
     this.blocksGallery.start()
     challengeJson.blocks.forEach(block => this._createBlock(block)) //Create all the custom blocks
     challengeJson.bloques = challengeJson.blocks.map(b => b.name) //The "bloques" attribute is the list with all the names of the blocks that the challenge uses   
+    //TODO: Chequear que los bloques instanciados en la blocksGallery tienen las propiedades que definimos en el json del zip.
     resolve(challengeJson)
   },
 
@@ -104,15 +105,6 @@ export default Component.extend({
   },
 
   cargarProyecto(desafio) {
-    /*
-      Actualmente PB espera que el json tenga una key llamada "bloques" en donde el valor es un array
-      con el nombre de los bloques. 
-
-      Lo que nosotros propusimos con 'blocks' sirve para instanciar los bloques en el blockGallery, pero 
-      depsués hay que hacer esta conversión para compatibilizar con el diseño actual. Ver pilas-blockly.js >> obtenerToolboxDesdeListaDeBloques
-
-      TODO: Chequear que los bloques instanciados en la blocksGallery tienen las propiedades que definimos en el json del zip.
-    */
     this.store.createRecord("desafio", desafio);
     this.router.transitionTo("desafio", desafio.id);
   },
