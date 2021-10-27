@@ -68,8 +68,8 @@ export default Component.extend({
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
     challengeJson.challengeCover = challengeCover
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
-    //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.escena || `new CustomScene(...)" aca
-    challengeJson.escena = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`
+    //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.sceneConstructor || `new CustomScene(...)" aca
+    challengeJson.sceneConstructor = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`
     // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
     this.blocksGallery.start(); //TODO: Esto deberia hacerse automaticamente al inyectar el servicio
     const bloques = challengeJson.blocks;

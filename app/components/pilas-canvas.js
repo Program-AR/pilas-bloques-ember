@@ -20,7 +20,7 @@ export default Component.extend({
   },
 
   escena(){
-    return this.challenge && this.challenge.escena;
+    return this.challenge && this.challenge.sceneConstructor;
   },
 
   initElement() {
