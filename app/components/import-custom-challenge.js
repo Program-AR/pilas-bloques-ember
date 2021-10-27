@@ -38,11 +38,11 @@ export default Component.extend({
   },
 
   _isChallengeImage(filepath) {
-    return filepath.startsWith(assetsPath) && !filepath.endsWith('/') //Should be inside the assets folder and should not be a folder
+    return filepath.startsWith(assetsPath) && filepath.toLowerCase().endsWith('.png')
   },
 
   async _imageContentToURL(content) {
-    const blob = await content.blob('image/png') //Y si no es png?
+    const blob = await content.blob('image/png')
     return URL.createObjectURL(blob)
   },
 
@@ -53,7 +53,6 @@ export default Component.extend({
 
   async _getChallengeJson(entries) {
     const arrayBuffer = await entries["challenge/challenge.json"].arrayBuffer();
-    // Parseamos el JSON
     const jsonDesafioAsString = new TextDecoder().decode(arrayBuffer);
     return JSON.parse(jsonDesafioAsString);
   },
