@@ -70,10 +70,10 @@ export default Component.extend({
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
     //Currently it is not possible to define scenes in the json itself, like in the desafios.js file, but it can be made possible by replacing this line with "challengeJson.escena = challengeJson.sceneConstructor || `new CustomScene(...)"
     challengeJson.escena = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`
-    this.blocksGallery.start();
-    const bloques = challengeJson.blocks;
-    bloques.forEach(block => this._createBlock(block));
-    resolve(challengeJson);
+    this.blocksGallery.start()
+    challengeJson.blocks.forEach(block => this._createBlock(block)) //Create all the custom blocks
+    challengeJson.bloques = challengeJson.blocks.map(b => b.name) //The "bloques" attribute is the list with all the names of the blocks that the challenge uses   
+    resolve(challengeJson)
   },
 
   _createBlock(aBlock) {
@@ -113,7 +113,6 @@ export default Component.extend({
 
       TODO: Chequear que los bloques instanciados en la blocksGallery tienen las propiedades que definimos en el json del zip.
     */
-    desafio.bloques = desafio.blocks.map(b => b.name); // Acá definimos la key que pide el PB actualmente 
     this.store.createRecord("desafio", desafio);
     this.router.transitionTo("desafio", desafio.id);
   },
