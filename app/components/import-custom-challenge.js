@@ -62,19 +62,17 @@ export default Component.extend({
     const { entries } = await unzipit.unzip(
       new Uint8Array(theZipContent)
     );
-    //Para el issue eventual de ideas: Que el creador de zip checkee que el nombre no exista ya.
+    //TODO: The custom challenge creator should verify that the custom challenge name does not conflict with any pre-existing challenge name. 
     const challengeJson = await this._getChallengeJson(entries)
     const sceneImages = await this._getSceneImages(entries)
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
     challengeJson.challengeCover = challengeCover
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
-    //Ahora no se pueden definir escenas en el json mismo, pero no es problema permitirlo con un "challengeJson.escena || `new CustomScene(...)" aca
+    //Currently it is not possible to define scenes in the json itself, like in the desafios.js file, but it can be made possible by replacing this line with "challengeJson.escena = challengeJson.sceneConstructor || `new CustomScene(...)"
     challengeJson.escena = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`
-    // Preparamos el objecto de la blockGallery para poder instanciar los bloques nuevos
-    this.blocksGallery.start(); //TODO: Esto deberia hacerse automaticamente al inyectar el servicio
+    this.blocksGallery.start();
     const bloques = challengeJson.blocks;
     bloques.forEach(block => this._createBlock(block));
-    // Devolvemos el JSON como String para compatibilizar con la funcion que procesa después
     resolve(challengeJson);
   },
 
