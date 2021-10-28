@@ -29,7 +29,7 @@ export default Component.extend({
       reader.onload = (event) => this._loadChallenge(event.target.result, resolve);
       reader.readAsArrayBuffer(archivo);
     })
-      .then((contenido) => this.cargarProyecto(contenido))
+      .then((contenido) => this.loadProyect(contenido))
       .catch(alert)
   },
 
@@ -73,7 +73,6 @@ export default Component.extend({
     this.blocksGallery.start()
     challengeJson.blocks.forEach(block => this._createBlock(block)) //Create all the custom blocks
     challengeJson.bloques = challengeJson.blocks.map(b => b.name) //The "bloques" attribute is the list with all the names of the blocks that the challenge uses   
-    //TODO: Chequear que los bloques instanciados en la blocksGallery tienen las propiedades que definimos en el json del zip.
     resolve(challengeJson)
   },
 
@@ -104,9 +103,9 @@ export default Component.extend({
     }
   },
 
-  cargarProyecto(desafio) {
-    this.store.createRecord("desafio", desafio);
-    this.router.transitionTo("desafio", desafio.id);
+  loadProyect(challenge) {
+    this.store.createRecord("desafio", challenge);
+    this.router.transitionTo("desafio", challenge.id);
   },
 
   fileInputProyecto() {
