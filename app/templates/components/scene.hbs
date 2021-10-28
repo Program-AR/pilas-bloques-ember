@@ -5,5 +5,5 @@
             <Button @tooltip={{t "components.scene.close"}} @isIcon={{true}} @onClick={{hideScene}}>{{paper-icon "close"}}</Button>
         </div>
     {{/if}}
-    <PilasCanvas class={{if shouldUseFloatingMode "canvas-boder-radius canMove" "canvas-boder-radius"}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />
+    <PilasCanvas class={{if shouldUseFloatingMode "canvas-boder-radius canMove" "canvas-boder-radius"}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @pilas={{pilas}} @onReady={{onReady}} @challenge={{challenge}} @cargando={{cargando}} />
 </PaperCard>

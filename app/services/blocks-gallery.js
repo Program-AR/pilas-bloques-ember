@@ -84,7 +84,7 @@ export default Service.extend({
   crearBloqueAccion(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
 
     let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
@@ -129,7 +129,7 @@ export default Service.extend({
    */
   crearBloqueSensor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['funcionSensor']);
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
 
     var formaDelBloque = opciones.icono ? "%1 " : "";
     formaDelBloque += opciones.esBool ? "¿" : "";
@@ -167,7 +167,7 @@ export default Service.extend({
   crearBloqueValor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
 
     let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
