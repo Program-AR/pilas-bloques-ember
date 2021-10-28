@@ -217,4 +217,12 @@ export default [
     id: 'tecnopolis2021ConLita',
     desafioIds: [202106, 202107, 202108, 202109]
   },
+  {
+    id: 'tecnopolis2021ConCoty',
+    desafioIds: [207, 209, 213, 233, 235]
+  },
+  {
+    id: 'tecnopolis2021ConToto',
+    desafioIds: [225, 226, 227, 229]
+  },
 ];

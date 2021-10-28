@@ -45,4 +45,12 @@ export default [
         id: 'Tecnopolis 2021 Con Lita',
         grupoIds: ['tecnopolis2021ConLita']
     },
+    {
+        id: 'Tecnopolis 2021 Con Coty',
+        grupoIds: ['tecnopolis2021ConCoty']
+    },
+    {
+        id: 'Tecnopolis 2021 Con Toto',
+        grupoIds: ['tecnopolis2021ConToto']
+    }
 ];
