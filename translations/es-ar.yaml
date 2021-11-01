@@ -713,6 +713,10 @@ model:
       title: Nivel 4
       description: El zorro está distraído. Ayudalo a leer correctamente qué día llega a Humahuaca.
       clue: ""
+    2021305:
+      title: Nivel 5
+      description: Tecnopolis.
+      clue: ""
       
 
   groups:

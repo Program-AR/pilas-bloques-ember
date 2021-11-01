@@ -2313,4 +2313,22 @@ export default [
       </block>
     </xml>`,
   },
+  {
+    id: 2021305,
+    nombre: 'tecnopolis2021TotoNivel5',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['A','t', 'e', 'l', 'j'],
+        ['i','s', 'c', 'n', 'o'],
+        ['l','o', 'p', 'o', 'v'],
+    ], "tecnopolis")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
 ];
