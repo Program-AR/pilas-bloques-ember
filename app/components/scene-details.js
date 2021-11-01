@@ -1,8 +1,13 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
 
     initialized: false,
+    exerciseCover: computed('model', function () {
+        return this.model.challengeCover || `imagenes/desafios/${this.model.nombreImagen}`
+    }),
+
 
     didRender() {
 
@@ -22,7 +27,7 @@ export default Component.extend({
             if (tabcontent.length > 1) {
 
                 this.set('initialized', true);
-                
+
                 for (i = 0; i < tabcontent.length; i++) {
                     tabcontent[i].style.display = "none";
                 }

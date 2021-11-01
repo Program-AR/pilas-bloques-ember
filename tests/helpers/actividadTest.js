@@ -15,7 +15,7 @@ export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupPBIntegrationTest(hooks);
     setupMirage(hooks);
-    runActivityTests();
+    runActivityTests(hooks);
   });
 }
 

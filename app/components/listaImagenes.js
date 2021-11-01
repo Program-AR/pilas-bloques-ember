@@ -182,4 +182,5 @@ export default [
     "tuerca.png",
     "unicornio.heroina.png",
     "unicornio.png",
+    "imagenNoEncontrada.png"
 ];
