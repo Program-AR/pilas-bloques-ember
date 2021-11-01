@@ -2331,4 +2331,113 @@ export default [
       'MoverLeyendoDerecha',
     ],
   },
+  {
+    id: 2021306,
+    nombre: 'tecnopolis2021TotoNivel6',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['d','A','o'],
+        ['z','n','a'],
+        ['g','e','c'],
+        ['r','u','d'],
+        ['w','q','t'],
+        ['x','u','a'],
+        ['j','e','r'],
+        ['y','n','v']
+    ], "neuquen")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021307,
+    nombre: 'tecnopolis2021TotoNivel7',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['d','A','o'],
+        ['z','n','a'],
+        ['g','e','c'],
+        ['r','u','d'],
+        ['w','q','t'],
+    ], "neuquen")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021308,
+    nombre: 'tecnopolis2021TotoNivel8',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+      ['t','a','q','m','e','v','o','g','r','a','u'],
+      ['n','A','s','a','n','t','a','c','r','u','a'],
+      ['f','d','i','u','v','r','e','o','h','z','d'],
+    ], "santacruz")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021309,
+    nombre: 'tecnopolis2021TotoNivel9',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+      ['f','d','h','w','t'],
+      ['e','a','z','b','u'],
+      ['r','x','h','u','y'],
+      ['t','A','c','i','k'],
+    ], "chubut")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+    solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <variables></variables>
+    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"269\" y=\"15\">
+      <statement name=\"program\">
+        <shadow type=\"required_statement\"></shadow>
+        <block type=\"repetir\">
+          <value name=\"count\">
+            <shadow type=\"required_value\"></shadow>
+            <block type=\"math_number\">
+              <field name=\"NUM\">3</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <shadow type=\"required_statement\"></shadow>
+            <block type=\"MoverLeyendoArriba\">
+              <next>
+                <block type=\"MoverLeyendoDerecha\"></block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  },
+
 ];

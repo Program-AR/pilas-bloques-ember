@@ -715,8 +715,24 @@ model:
       clue: ""
     2021305:
       title: Nivel 5
-      description: Tecnopolis.
+      description: ¿En dónde hay un stand de Pilas Bloques? ¡En Tec....!
       clue: ""
+    2021306:
+      title: Nivel 6
+      description: ¿Qué nombre de provincia argentina se puede leer igual al derecho que al revés? Neu...
+      clue: ¡Apareció el bloque Repetir para ayudarnos a resolver el desafío!
+    2021307:
+      title: Nivel 7
+      description: Ahora tenes que volver a leer Neuquen. Recordá que se puede leer igual al derecho que al revés.
+      clue: 
+    2021308:
+      title: Nivel 8
+      description: Ayudalo a Toto a leer SANTA CRUZ. Pero usando el bloque repetición
+      clue: ¿Sabías que dentro de un bloque repetir pueden ponerse muchos bloques?
+    2021309:
+      title: Nivel 9
+      description: ¿Qué provincia argentina está al sur de Río Negro? Chu... ¡Pero Toto se equivocó al leer el programa! Ayudalo a corregirlo
+      clue:
       
 
   groups:
