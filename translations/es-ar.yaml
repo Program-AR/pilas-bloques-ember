@@ -691,6 +691,10 @@ model:
       title: Nivel 5
       description: La llama tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?
       clue: ""
+    2021206:
+      title: Nivel 6
+      description: "¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?"
+      clue: ""
     2021301:
       title: Nivel 1
       description: |

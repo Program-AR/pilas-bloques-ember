@@ -2184,6 +2184,29 @@ export default [
       'Repetir'
     ]
   },
+  {
+    id: 2021206,
+    nombre: 'tecnopolis2021CotyNivel6',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-150,y:0},{x:-150,y:50},{x:-100,y:50},{x:-100,y:0}],[{x:-100,y:-50},{x:-50,y:-50}],[{x:-50,y:0},{x:-50,y:50},{x:0,y:50},{x:0,y:0}],[{x:0,y:-50},{x:50,y:-50}],[{x:50,y:0},{x:50,y:50},{x:100,y:50},{x:100,y:0}],[{x:100,y:-50},{x:150,y:-50}]],
+      {xCoty: -150, yCoty: 0}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'Repetir'
+    ]
+  },
   //Toto
   {
     id: 2021301, //Copy of 225
