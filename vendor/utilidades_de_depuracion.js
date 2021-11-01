@@ -34,7 +34,7 @@ var pbUtils = {
 
   // Por ejemplo utils.obtenerPuntosDePizarra("pizarraFantasma") ó bien utils.obtenerPuntosDePizarra("automata.pizarra")
   obtenerPuntosDePizarra: function(pizarra, unificar = false) {
-    return PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`DibujoLineal.desdePizarra(pilas.escena_actual().${pizarra}, ${unificar});`).stringPuntos();
+    return Pilasbloques.__container__.cache['service:pilas'].evaluar(`DibujoLineal.desdePizarra(pilas.escena_actual().${pizarra}, ${unificar});`).stringPuntos();
   },
 
   obtenerBloquesSvg: function() {
