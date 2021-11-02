@@ -2629,6 +2629,7 @@ export default [
       'MoverLeyendoDerecha',
       'Repetir'
     ],
+    debugging: true,
     solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
     <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"269\" y=\"15\">

@@ -761,15 +761,17 @@ model:
       title: Nivel 7
       description: |
         Ahora tenés que volver a leer Neuquén. ¡Recordá que se puede leer igual al derecho que al revés! :wink: 
-      clue: 
+      clue: ""
     2021308:
       title: Nivel 8
       description: Ayudalo a Toto a leer SANTA CRUZ. ¡Pero esta vez usando el bloque repetición!
       clue: ¿Sabías que dentro de un bloque repetir pueden ponerse muchos bloques?
     2021309:
       title: Nivel 9
-      description: ¿Qué provincia argentina está al sur de Río Negro? Chu... ¡Pero Toto se equivocó al leer el programa! Ayudalo a corregirlo.
-      clue:
+      description: |
+        ¿Qué provincia argentina está al sur de Río Negro? Chu... 
+        ¡Nos regalaron un programa ya hecho! :+1: ¿Pero funciona? :hushed: ¡Corrijámoslo!.
+      clue: ""
       
 
   groups:
