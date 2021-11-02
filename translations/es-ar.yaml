@@ -693,6 +693,10 @@ model:
       clue: ""
     2021206:
       title: Nivel 6
+      description: Ayudá a Coty a escribir la letra que falta.
+      clue: ""
+    2021207:
+      title: Nivel 7
       description: "¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?"
       clue: ""
     2021301:
