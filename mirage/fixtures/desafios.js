@@ -2194,6 +2194,106 @@ export default [
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
+  {
+    id: 2021105,
+    nombre: 'tecnopolis2021LitaNivel5',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,T,T,T,T,T],\
+    [-,O,O,O,O,L],\
+    [-,-,-,-,O,L],\
+    [O,O,-,-,O,L],\
+    [-,O,O,-,O,L],\
+    [-,-,O,E,-,L],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021106,
+    nombre: 'tecnopolis2021LitaNivel6',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,L,-,-,E],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,-,-,T,O],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021107,
+    nombre: 'tecnopolis2021LitaNivel7',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,L,L,L,L,O],\
+    [-,O,O,O,-,O],\
+    [-,O,E,O,-,O],\
+    [-,O,-,T,T,O],\
+    [-,O,O,O,O,O],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021108,
+    nombre: 'tecnopolis2021LitaNivel8',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,L,-,-,-],\
+    [O,O,-,-,O,O],\
+    [-,O,-,-,O,-],\
+    [-,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [T,-,-,-,-,E],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
   //Coty
   {
     id: 2021201, //Copy of 207
