@@ -655,6 +655,22 @@ model:
       title: Nivel 4
       description: Ayudá a Duba a recoger todos los churrascos.
       clue: El bloque REPETIR puede ayudarte.
+    2021005:
+      title: Nivel 5
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
+    2021006:
+      title: Nivel 6
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
+    2021007:
+      title: Nivel 7
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
+    2021008:
+      title: Nivel 8
+      description: Ayudá a Duba a recoger todos los churrascos.
+      clue: El bloque REPETIR puede ayudarte.
     2021101:
       title: Nivel 1
       description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
@@ -669,6 +685,22 @@ model:
       clue: El bloque REPETIR puede ayudarte.
     2021104:
       title: Nivel 4
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
+    2021105:
+      title: Nivel 5
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
+    2021106:
+      title: Nivel 6
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
+    2021107:
+      title: Nivel 7
+      description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
+      clue: El bloque REPETIR puede ayudarte.
+    2021108:
+      title: Nivel 8
       description: Ayudá a Lita a preparar la ensalada (con tomate y lechuga)
       clue: El bloque REPETIR puede ayudarte.
     2021201:
