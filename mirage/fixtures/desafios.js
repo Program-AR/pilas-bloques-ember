@@ -2001,6 +2001,98 @@ export default [
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
+  {
+    id: 2021005,
+    nombre: 'tecnopolis2021DubaNivel5',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,P],\
+    [-,O,O,O,O,-],\
+    [-,-,-,-,O,-],\
+    [O,O,-,-,O,-],\
+    [-,O,O,-,-,-],\
+    [-,-,O,-,-,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021006,
+    nombre: 'tecnopolis2021DubaNivel6',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,-,P,O],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021007,
+    nombre: 'tecnopolis2021DubaNivel7',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,O],\
+    [-,O,O,O,-,O],\
+    [-,O,P,O,-,O],\
+    [-,O,-,-,-,O],\
+    [-,O,O,O,O,O],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021008,
+    nombre: 'tecnopolis2021DubaNivel8',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [-,O,-,-,O,-],\
+    [-,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [P,-,-,-,-,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
   //Lita
   {
     id: 2021101,

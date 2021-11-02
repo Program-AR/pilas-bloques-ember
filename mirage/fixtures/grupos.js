@@ -211,7 +211,7 @@ export default [
   },
   {
     id: 'tecnopolis2021ConDuba',
-    desafioIds: [2021001, 2021002, 2021003, 2021004]
+    desafioIds: [2021001, 2021002, 2021003, 2021004, 2021005, 2021006, 2021007, 2021008]
   },
   {
     id: 'tecnopolis2021ConLita',
