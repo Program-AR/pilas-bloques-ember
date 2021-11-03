@@ -1867,6 +1867,53 @@ export default [
       'MoverACasillaArriba',
       'MoverACasillaIzquierda',
       'MoverACasillaDerecha',
+      'ComerChurrasco'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,-,-,-,-,-],\
+    [-,O,P,-,-,-],\
+    [-,-,O,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <variables></variables>
+    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"269\" y=\"15\">
+      <statement name=\"program\">
+        <shadow type=\"required_statement\"></shadow>
+        <block type=\"MoverACasillaDerecha\">
+          <next>
+            <block type=\"MoverACasillaDerecha\">
+              <next>
+                <block type=\"MoverACasillaDerecha\">
+                  <next>
+                    <block type=\"MoverACasillaAbajo\">
+                      <next>
+                        <block type=\"ComerChurrasco\"></block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  },
+  {
+    id: 202102,
+    nombre: 'tecnopolis2021Modelo',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
       'ComerChurrasco',
       'Repetir'
     ],

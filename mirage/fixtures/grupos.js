@@ -207,7 +207,7 @@ export default [
   },
   {
     id: 'tecnopolis2021EjercicioModelo',
-    desafioIds: [202101]
+    desafioIds: [202101, 202102]
   },
   {
     id: 'tecnopolis2021ConDuba',
