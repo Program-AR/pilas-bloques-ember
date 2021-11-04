@@ -2,7 +2,7 @@ import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
 moduloActividad("Tecnopolis 2021 - Con Duba", () => {
 
-  actividadTest("tecnopolis2021Modelo", {
+  actividadTest("tecnopolis2021ModeloRepeticion", {
     descripcionAdicional: "tecnopolis2021Modelo: Se puede resolver",
     solucion: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
   <variables></variables>

@@ -1907,7 +1907,7 @@ export default [
   },
   {
     id: 202102,
-    nombre: 'tecnopolis2021Modelo',
+    nombre: 'tecnopolis2021ModeloRepeticion',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
