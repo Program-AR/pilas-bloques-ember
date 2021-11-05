@@ -3,6 +3,14 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.8.0 (5 de noviembre de 2021) ¡Tecnópolis!
+  * Se agregó un tercer libro, el libro "Tecnópolis", donde aparecen varios desafíos que también podrán realizarse "en el mundo real" en el stand de Pilas Bloques en Tecnópolis 2021, por 7 fines de semana empezando el 5/11/2021.
+  * Además, en ese libro hay algunos desafíos bonus con Toto, Coty, Lita y Duba, algunos ya existentes en 1er ciclo de primaria y otros nuevos.
+  * Como parte de la colaboración con el equipo de voluntarios de Salesforce, se agregó la posibilidad de internacionalizar la aplicación con ember-intl. En las próximas versiones saldrá la posibilidad de tener Pilas Bloques en inglés.
+  * También parte de ese trabajo colaborativo fue agregar la posibilidad de tener enunciados con Markdown (y agregar links, negritas, emojis, etc.) usando ember-cli-showdown. Lamentablemente pocos enunciados por ahora lo tienen, pero ahora está la posibilidad.
+  * Se agrega diálogo de aceptación de términos de servicio para tode usuarie.
+  * Se avanza sobre una versión más completa del importador de actividades (aunque aún apagado por feature flag).
+
 * 1.7.2 (21 de mayo de 2021)
   * ¡ Ahora Pilas Bloques permite registrarse! 
   * Pilas Bloques ahora tiene un backend, compuesto por dos servicios: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api) y [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics). 
