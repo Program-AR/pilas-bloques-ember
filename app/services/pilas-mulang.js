@@ -16,12 +16,12 @@ export default Service.extend({
 
 function buildBlockAst(block) {
   if (block.isShadow()) return createEmptyNode()
-  let {tag, parse} = mulangParser(block)
+  let { tag, parse } = mulangParser(block)
   return createNode(tag, parse(block))
 }
 
 function mulangParser(block) {
-  let parser = pilasToMulangParsers[block.type] || searchAlias(block) 
+  let parser = pilasToMulangParsers[block.type] || searchAlias(block)
   if (parser) return parser
   return isValue(block) ? referenceParser : applicationParser
 }
@@ -49,9 +49,9 @@ let ifParser = {
   parse: parseIf
 }
 
-let whileParser = {
+let untilParser = {
   tag: "While",
-  parse: parseWhile
+  parse: parseUntil
 }
 
 let numberParser = {
@@ -80,7 +80,7 @@ let pilasToMulangParsers = {
   "repetir": repeatParser,
   "Si": ifParser,
   "SiNo": { ...ifParser, parse: parseIfElse },
-  "Hasta": whileParser,
+  "Hasta": untilParser,
   "math_number": numberParser,
   "Numero": numberParser,
   "procedures_defnoreturn": procedureParser,
@@ -109,9 +109,9 @@ function parseEntryPoint(block) {
 }
 
 function referenceName(block) {
-  return  isProcedureCall(block) ? block.getFieldValue('NAME')
-        : isOperator(block) ? block.getFieldValue('OP')
-        : block.type
+  return isProcedureCall(block) ? block.getFieldValue('NAME')
+    : isOperator(block) ? block.getFieldValue('OP')
+      : block.type
 }
 
 function parseApplication(block) {
@@ -152,11 +152,11 @@ function parseRepeat(block) {
   ]
 }
 
-function parseWhile(block) {
+function parseUntil(block) {
   let condition = block.getInputTargetBlock("condition")
   let statements = block.getInputTargetBlock("block")
   return [
-    buildBlockAst(condition),
+    negate(buildBlockAst(condition)),
     buildSequenceAst(statements)
   ]
 }
@@ -203,4 +203,11 @@ function parseEquationParams(block) {
 function parseEquationBody(block) {
   let bodyContents = buildSequenceAst(getChild(block))
   return createNode("UnguardedBody", bodyContents)
+}
+
+function negate(condition) {
+  return {
+    tag: "Application",
+    contents: [{ tag: "Primitive", contents: ["Negation"] }, [condition]]
+  }
 }
