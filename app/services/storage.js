@@ -6,6 +6,7 @@ export default Ember.Service.extend({
   USER_KEY: 'PB_USER',
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
+  CURRENT_THEME: 'PB_CURRENT_THEME',
 
   getUserId() {
     const user = this.getUser()
@@ -25,6 +26,10 @@ export default Ember.Service.extend({
   saveTermsAcceptance() { this._save(this.TOS_ACCEPTED_KEY, true) },
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
+
+  getCurrentTheme() {return this._get(this.CURRENT_THEME)},
+
+  saveCurrentTheme(theme) {this._save(this.CURRENT_THEME, theme)},
 
   clear() { localStorage.clear() },
 
