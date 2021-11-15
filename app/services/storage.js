@@ -27,9 +27,9 @@ export default Ember.Service.extend({
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
-  getCurrentTheme() {return this._get(this.CURRENT_THEME)},
+  getCurrentTheme() { return this._get(this.CURRENT_THEME) },
 
-  saveCurrentTheme(theme) {this._save(this.CURRENT_THEME, theme)},
+  saveCurrentTheme(theme) { this._save(this.CURRENT_THEME, theme) },
 
   clear() { localStorage.clear() },
 
