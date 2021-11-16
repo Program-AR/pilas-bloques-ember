@@ -8,7 +8,7 @@ export default Component.extend({
 
 
   didRender() {
-    document.documentElement.setAttribute('theme', this.storage.getCurrentTheme() || 'light');
+    document.documentElement.setAttribute('theme', this.storage.getUseNightTheme() ? 'dark' : 'light');
   },
 
 });

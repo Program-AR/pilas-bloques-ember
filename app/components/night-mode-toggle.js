@@ -9,25 +9,12 @@ export default Component.extend({
     isNightTheme: false,
 
     didRender() {
-        this.set('isNightTheme', this.storage.getCurrentTheme() === 'dark');
-    },
-
-    setLightTheme() {
-        this.storage.saveCurrentTheme('light');
-    },
-
-    setDarkTheme() {
-        this.storage.saveCurrentTheme('dark');
+        this.set('isNightTheme', this.storage.getUseNightTheme());
     },
 
     actions: {
         toggleTheme() {
-            if (this.isNightTheme) {
-                this.setLightTheme();
-            }
-            else {
-                this.setDarkTheme();
-            }
+            this.storage.toggleNightTheme();
         }
     }
 

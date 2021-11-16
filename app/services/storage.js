@@ -6,7 +6,7 @@ export default Ember.Service.extend({
   USER_KEY: 'PB_USER',
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
-  CURRENT_THEME: 'PB_CURRENT_THEME',
+  USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
 
   getUserId() {
     const user = this.getUser()
@@ -27,9 +27,9 @@ export default Ember.Service.extend({
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
-  getCurrentTheme() { return this._get(this.CURRENT_THEME) },
+  getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) },
 
-  saveCurrentTheme(theme) { this._save(this.CURRENT_THEME, theme) },
+  toggleNightTheme() { this._save(this.USE_NIGHT_THEME_KEY, !this.getUseNightTheme()) },
 
   clear() { localStorage.clear() },
 
