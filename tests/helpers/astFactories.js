@@ -134,7 +134,7 @@ export function none() {
 function primitive(name) {
   return {
     tag: "Primitive",
-    contents: [name]
+    contents: name
   }
 }
 

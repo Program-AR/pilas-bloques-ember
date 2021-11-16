@@ -208,6 +208,6 @@ function parseEquationBody(block) {
 function negate(condition) {
   return {
     tag: "Application",
-    contents: [{ tag: "Primitive", contents: ["Negation"] }, [condition]]
+    contents: [{ tag: "Primitive", contents: "Negation" }, [condition]]
   }
 }
