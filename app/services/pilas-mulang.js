@@ -13,7 +13,8 @@ export default Service.extend({
   runTests(workspace, activity) {
     if (!activity.tests) return [];
     const ast = mulang.nativeCode("JavaScript", activity.nativeCode).ast
-    ast.contents.push(this.parseAll(workspace).contents[1])
+    // parseAll returns a sequence, we only need its contents.
+    ast.contents = ast.contents.concat(this.parseAll(workspace).contents)
     console.log({ ast })
     return mulang
       .astCode(ast)
@@ -27,7 +28,7 @@ export default Service.extend({
           }
         }
       }).testResults
-      .map(t => ({...t, passed: t.status.tag == 'Success'}))
+      .map(t => ({ ...t, passed: t.status.tag == 'Success' }))
   },
 
   /**
