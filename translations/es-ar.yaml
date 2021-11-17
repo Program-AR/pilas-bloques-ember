@@ -533,7 +533,7 @@ model:
     230:
       title: Desafío 1
       description: ¿Puede la puma llegar al churrasco usando solo una vez el bloque mover?
-      clue: Podés usar el nuevo bloque “Repetir”
+      clue: Podés usar el nuevo bloque "Repetir"
     231:
       title: Desafío 2
       description: La puma tiene hambre y está lejos del churrasco. ¡Pero ahora sabe repetir!
@@ -640,7 +640,7 @@ model:
       description: |
         Ayudá a Duba a recoger todos los churrascos. 
         Acá tenes un video que explica como: <https://youtu.be/bc43ZyJrfSo>
-      clue: 
+      clue: ""
     202102:
       title: Introducción a repetición
       description: Ayudá a Duba a recoger todos los churrascos, ¡Pero ahora hay un nuevo bloque! :thinking:.
