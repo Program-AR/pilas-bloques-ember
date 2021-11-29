@@ -68,7 +68,7 @@ module.exports = function (/* environment */) {
      * @type {Boolean}
      * @default "false"
      */
-    errorOnMissingTranslations: false,
+    errorOnMissingTranslations: true,
 
     /**
      * removes empty translations from the build output.
@@ -88,8 +88,8 @@ module.exports = function (/* environment */) {
      * @type {Function}
      * @default "function(key,locale) { return true }"
      */
-    requiresTranslation(/* key, locale */) {
-      return true;
+    requiresTranslation(key, locale) {
+      return locale === "es-ar";
     }
   };
 };
