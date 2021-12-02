@@ -17,12 +17,10 @@ export default Component.extend({
     
     actions: {
         updateTurboMode() {
+            this.storage.toggleTurboMode();
             if (this.turboMode) {
-                this.storage.toggleTurboMode();
                 this.pilas.deshabilitarModoTurbo();
-            }
-            else {
-                this.storage.toggleTurboMode()
+            } else {
                 this.pilas.habilitarModoTurbo();
             }
 
