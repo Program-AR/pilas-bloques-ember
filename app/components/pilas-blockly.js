@@ -60,6 +60,10 @@ export default Component.extend({
     return this.ejecutando || this.terminoDeEjecutar;
   }),
 
+  didUpdateAttrs() {
+    this.didInsertElement()
+  },
+
   didInsertElement() {
 
     /*
@@ -86,25 +90,10 @@ export default Component.extend({
       if (!this.modelActividad.get('estiloToolbox')) {
         this.modelActividad.set('estiloToolbox', 'desplegable');
       }
+      console.log(await this.initialWorkspace())
+      this.set('initial_workspace', await this.initialWorkspace())
 
-      const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
-
-      // Si el código está serializado en la URL, lo intenta colocar en el
-      // workspace.
-      if (this.codigo) {
-        let codigoSerializado = this.codigo;
-        let codigoXML = atob(codigoSerializado);
-        this.set('initial_workspace', codigoXML);
-      } else if (savedSolution) { // Si ya envió una solución anteriormente
-        this.set('initial_workspace', savedSolution.program);
-      } else {
-        this.set('initial_workspace', this.modelActividad.initialWorkspace);
-      }
     });
-
-    if (this.persistirSolucionEnURL) {
-      // TODO: puede que esto quede en desuso.
-    }
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
@@ -115,6 +104,24 @@ export default Component.extend({
     });
 
     $(window).trigger('resize');
+  },
+
+  async initialWorkspace() {
+    const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
+    const serializedURLCode = this.codigo && atob(this.codigo)
+
+    return this.addRandomIdToWorkspace(serializedURLCode || savedSolution?.program || this.modelActividad.initialWorkspace)
+  },
+  /**
+   * Adds an id to a block of the XML.
+   * This is necessary because the ember-blockly component doesnt update the workspace when the
+   * initial workspace is the same as the previous challenge. 
+   */
+  addRandomIdToWorkspace(workspaceXML) {
+    return workspaceXML.includes('id=') ?
+      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`)
+      :
+      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`)
   },
 
   /**

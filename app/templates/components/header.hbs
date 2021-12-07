@@ -28,6 +28,15 @@
           @hidden={{openCustomScene}}
         />
       {{/if}}
+      {{!-- Hacer componente --}}
+      {{#if challenge.previousChallenge}}
+    {{!-- Previous challenge --}}
+    <ButtonToChallenge @challenge={{challenge.previousChallenge}}>{{paper-icon "keyboard_double_arrow_left"}}</ButtonToChallenge>
+      {{/if}}
+      {{#if challenge.nextChallenge}}
+          {{!-- Next challenge --}}
+          <ButtonToChallenge @challenge={{challenge.nextChallenge}}>{{paper-icon "keyboard_double_arrow_right"}}</ButtonToChallenge>
+      {{/if}}
       
     {{/if}}
     

@@ -9,8 +9,8 @@ export default Component.extend({
   pilas: null,       /* Se espera que este atributo se defina al
                       * llamar al componente y es obligatorio. */
 
-  didInsertElement() {
-    scheduleOnce('afterRender', this, this.initElement);
+  didRender() {
+    this.initElement()
   },
 
   willDestroyElement() {
@@ -19,12 +19,12 @@ export default Component.extend({
     }
   },
 
-  sceneConstructor(){
+  sceneConstructor() {
     return this.challenge && this.challenge.escena;
   },
 
   initElement() {
-    
+
     let iframeElement = this.element.querySelector('#innerIframe');
 
     this.set("iframeElement", iframeElement);
@@ -32,7 +32,7 @@ export default Component.extend({
     this.iframeElement.onload = () => {
 
       if (this.pilas) {
-        this.pilas.inicializarPilas(iframeElement, {width: 420, height: 480},this.challenge).
+        this.pilas.inicializarPilas(iframeElement, { width: 420, height: 480 }, this.challenge).
           then((pilas) => {
 
             if (this.sceneConstructor()) {
@@ -60,27 +60,12 @@ export default Component.extend({
       // componente se tendría que usar mediante el servicio "pilas"
       // en cualquier otro lugar.
       if (this.onLoad)
-        this.onLoad({iframeElement});
+        this.onLoad({ iframeElement });
 
     };
 
   },
-
-  reloadIframe(onLoadFunction) {
-    this.iframeElement.onload = onLoadFunction;
-    this.iframeElement.contentWindow.location.reload(true);
-  },
-
   actions: {
-    execute(code) {
-      this.reloadIframe(() => {
-        alert("Ha cargado el código y está todo listo!");
-        this.iframeElement.contentWindow.eval(code);
-      });
-    },
-    clear() {
-      this.reloadIframe();
-    },
     quitFullscreen() {
       this.set('inFullScreen', false);
     },

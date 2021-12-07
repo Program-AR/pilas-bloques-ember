@@ -39,6 +39,21 @@ export default Model.extend({
 
   initialWorkspace: computed("solucionInicial", function () {
     return this.solucionInicial || xmlBloqueEmpezarAEjecutar
+  }),
+
+  indexInGroup: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges.findIndex(challenge => challenge.id === this.id)
+  }),
+
+  nextChallenge: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges[this.indexInGroup + 1]
+  }),
+
+  previousChallenge: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges[this.indexInGroup - 1]
   })
 
 
