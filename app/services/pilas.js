@@ -25,41 +25,36 @@ import listaImagenes from 'pilasbloques/components/listaImagenes';
  */
 export default Service.extend(Evented, {
   iframe: null,
-  actorCounter: 0,
-  pilas: null,
+  size: null,
   loading: true,
-  inicializadorDeLaEscenaActual: null,
-  temporallyCallback: null, /* almacena el callback para avisar si pilas
-                               se reinició correctamente. */
+  currentChallenge: null,
 
   /**
-   * Instancia pilas-engine con los atributos que le envíe
-   * el componente x-canvas.
-   *
-   * Este método realiza una conexión con el servicio pilas, y
-   * se llamará automáticamente ante dos eventos: se agrega el
-   * componente x-canvas a un template o se ha llamado a `reload`
-   * en el servicio pilas.
-   *
-   * @public
+   * Instantiates and runs pilas-engine (pilasweb) main framework.
+   * Preloads needed challenge's images (TODO: decouple image preloading from fwk initialization).
+   * Sets up messaging events from iframe.
+   * NOTE: Doesn't load scene. For that you need to call setChallenge afterwards.
+   * @param iframeElement is the iframe DOM where pilasengine will run.
+   * @param size is the width and height in pixels of the main scene.
+   * @param challenge is the Challenge object from which scene's images will be taken.
    */
-  inicializarPilas(iframeElement, options, challenge) {
+  loadPilas(iframeElement, size, challenge) {
     this.set("iframe", iframeElement);
+    this.set("size", size);
+    this.set("currentChallenge", challenge)
     this.set("loading", true);
+    this.conectarEventos();
 
     return new Promise((success) => {
-      let width = options.width;
-      let height = options.height;
-
       // Cuidado: esto hace que no se pueda cargar una escena diferente en esta instancia de pilas.
       // La razón es que se le pregunta a la escena qué imágenes precargar.
       let listaImagenesSerializada = this.imagenesParaPrecargar(challenge).join("|");
 
-      var code = `
+      let pilasweb = this.evaluar(`
         var canvasElement = document.getElementById('canvas');
         var listaImagenes = "${listaImagenesSerializada}".split("|");
-        var opciones = {ancho: ${width},
-                        alto: ${height},
+        var opciones = {ancho: ${size.width},
+                        alto: ${size.height},
                         canvas: canvasElement,
                         data_path: 'libs/data',
                         imagenesExtra: listaImagenes,
@@ -70,42 +65,18 @@ export default Service.extend(Evented, {
         var pilas = pilasengine.iniciar(opciones);
 
         pilas;
-      `;
-
-      let pilas = iframeElement.contentWindow.eval(code);
-
-
-      this.conectarEventos();
-
-      pilas.onready = () => {
-
-        //this.get('actividad').iniciarEscena();
-        //var contenedor = document.getElementById('contenedor-blockly');
-        //this.get('actividad').iniciarBlockly(contenedor);
-
-        //if (this.get('actividad')['finalizaCargarBlockly']) {
-        //  this.get('actividad').finalizaCargarBlockly();
-        //}
-
-        success(pilas);
-
-        /*
-         * Si el usuario llamó a "reload" desde este servicio, tendría
-         * que existir una promesa en curso, así que estas lineas se
-         * encargan de satisfacer esa promesa llamando al callback success.
-         */
-        if (this.temporallyCallback) {
-          this.temporallyCallback(pilas);
-          this.set("temporallyCallback", null);
-        }
-
+      `)
+      pilasweb.onready = () => {
+        success();
         this.set("loading", false);
-
       };
-
-      pilas.ejecutar();
-      this.cambiarFPS(100);
+      pilasweb.ejecutar()
+      pilasweb.setFPS(100)
     });
+  },
+
+  async reloadPilas(challenge){
+    await this.loadPilas(this.iframe, this.size, challenge)
   },
 
   imagenesParaPrecargar(challenge) {
@@ -173,76 +144,27 @@ export default Service.extend(Evented, {
     });
   },
 
-  /**
-   * Se llama automáticamente para desconectar los eventos del servicio.
-   *
-   * @method desconectarEventos
-   * @private
-   */
   desconectarEventos() {
     $(window).off("message.fromIframe");
   },
 
-  inicializarEscena(iframeElement, nombreOInicializador) {
-    var inicializador = nombreOInicializador;
-    if (inicializador.indexOf('new') === -1) {
-      //Significa que vino un nombre de escena.
-      inicializador = `new ${inicializador}()`;
+  async setChallenge(challenge) {
+    if(!challenge || !challenge.escena) throw "Scene missing in challenge"
+    if(this.get('challenge') != challenge) await this.reloadPilas(challenge)
+    this.evaluar(`pilas.mundo.gestor_escenas.cambiar_escena(${this.sceneInitializer()})`)
+  },
+
+  sceneInitializer(){
+    var initializer = this.get('currentChallenge').escena;
+    if (initializer.indexOf('new') === -1) {
+      // Means scene is just a class name
+      initializer = `new ${initializer}()`;
     }
-    let codigo = `
-      var escena = ${inicializador};
-      pilas.mundo.gestor_escenas.cambiar_escena(escena);
-    `;
-
-    this.evaluar(codigo);
-    this.set("inicializadorDeLaEscenaActual", inicializador);
+    return initializer
   },
 
-  /**
-   * Evalúa código reiniciando completamente la biblioteca.
-   *
-   * @method ejecutarCodigo
-   * @public
-   */
-  ejecutarCodigo(codigo) {
-    this.reiniciar().then(() => {
-      let iframeElement = this.iframe;
-      iframeElement.contentWindow.eval(codigo);
-    });
-  },
-
-  /**
-   * Retorna true si el problema está resuelto.
-   *
-   * @method estaResueltoElProblema
-   * @public
-   */
   estaResueltoElProblema() {
     return this.evaluar(`pilas.escena_actual().estaResueltoElProblema();`);
-  },
-
-
-
-  /**
-   * Ejecuta el código reiniciando la escena rápidamente.
-   *
-   * @method ejecutarCodigoSinReiniciar
-   * @public
-   *
-   * @todo convertir en método privado.
-   */
-  ejecutarCodigoSinReiniciar(codigo) {
-
-    if (this.loading) {
-      console.warn("Cuidado, no se puede ejecutar antes de que pilas cargue.");
-      return;
-    }
-
-    let iframeElement = this.iframe;
-
-    this.reiniciarEscenaCompleta();
-
-    iframeElement.contentWindow.eval(codigo);
   },
 
   /**
@@ -262,53 +184,9 @@ export default Service.extend(Evented, {
    * @method reiniciarEscenaCompleta
    * @private
    */
-  reiniciarEscenaCompleta() {
-    let iframeElement = this.iframe;
-    iframeElement.contentWindow.eval("pilas.reiniciar();");
-    this.inicializarEscena(iframeElement, this.inicializadorDeLaEscenaActual);
-  },
-
-  /**
-   * Modifica la velocidad de las animaciones y la simulación.
-   *
-   * Este método es particularmente útil para ejecutar los tests de integración
-   * super rápido.
-   *
-   * Por omisión pilas utiliza un temporizador a 60 FPS.
-   *
-   * @method cambiarFPS
-   * @public
-   *
-   */
-  cambiarFPS(fps) {
-    this.evaluar(`pilas.setFPS(${fps});`);
-  },
-
-  /**
-   * Permite reiniciar pilas por completo.
-   *
-   * La acción de reinicio se realiza re-cargando el iframe
-   * que contiene a pilas, así que se va a volver a llamar al
-   * método `instanciarPilas` automáticamente.
-   *
-   * Este método retorna una promesa, que se cumple cuando pilas se
-   * halla cargado completamente.
-   *
-   * @method reiniciar
-   * @private
-   */
-  reiniciar() {
-    return new Promise((success) => {
-      if (this.loading) {
-        console.warn("Cuidado, se está reiniciando en medio de la carga.");
-      }
-
-      this.set("loading", true);
-      this.iframe.contentWindow.location.reload(true);
-
-      /* Guarda el callback  para que se llame luego de la carga de pilas. */
-      this.set("temporallyCallback", success);
-    });
+  async reiniciarEscenaCompleta() {
+    this.evaluar("pilas.reiniciar();");
+    await this.setChallenge(this.currentChallenge);
   },
 
   /**
@@ -346,8 +224,7 @@ export default Service.extend(Evented, {
    * @public
    */
   evaluar(codigo) {
-    let iframeElement = this.iframe;
-    return iframeElement.contentWindow.eval(codigo);
+    return this.iframe.contentWindow.eval(codigo);
   },
 
   habilitarModoTurbo() {
