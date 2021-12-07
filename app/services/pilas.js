@@ -229,16 +229,20 @@ export default Service.extend(Evented, {
 
   habilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = true;
-    this.evaluar('pilas').ponerVelocidadMaxima();
+    this.engine().ponerVelocidadMaxima();
   },
 
   deshabilitarModoTurbo() {
     this.evaluar('ComportamientoConVelocidad').modoTurbo = false;
-    this.evaluar('pilas').ponerVelocidadNormal();
+    this.engine().ponerVelocidadNormal();
   },
 
   modoTurboEstaActivado() {
     return this.evaluar('ComportamientoConVelocidad').modoTurbo
+  },
+
+  engine(){
+    return this.evaluar('pilas')
   }
 
 });

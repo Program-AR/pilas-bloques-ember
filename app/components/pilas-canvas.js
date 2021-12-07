@@ -24,7 +24,7 @@ export default Component.extend({
   async loadScene() {
     await this.pilas.loadPilas(this.get('iframeElement'), { width: 420, height: 480 }, this.challenge)
     await this.pilas.setChallenge(this.challenge)
-    if(this.onReady) this.onReady(this.pilas)
+    if(this.onReady) this.onReady(this.pilas.engine())
   }
 
 });
