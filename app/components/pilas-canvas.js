@@ -14,8 +14,7 @@ export default Component.extend({
   },
 
   didUpdate() {
-    this.pilas.evaluar('pilas.reiniciar();')
-    this.pilas.inicializarEscena(this.get('iframeElement'), this.sceneConstructor());
+    this.initializeScene()
   },
 
   willDestroyElement() {
@@ -40,7 +39,7 @@ export default Component.extend({
 
   initializeScene() {
     if (this.sceneConstructor()) {
-      this.pilas.inicializarEscena(iframeElement, this.sceneConstructor());
+      this.pilas.inicializarEscena(this.get('iframeElement'), this.sceneConstructor());
     } else {
       console.warn("No especificó una escena para cargar en pilas-canvas.");
     }
@@ -51,7 +50,7 @@ export default Component.extend({
      *
      */
     if (this.onReady) {
-      this.onReady(pilas);
+      this.onReady(this.pilas);
     } else {
       //console.warn("Se a iniciado el componente pilas-canvas sin referencia a la acción onLoad.");
     }
