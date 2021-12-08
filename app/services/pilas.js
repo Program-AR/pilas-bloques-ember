@@ -76,7 +76,7 @@ export default Service.extend(Evented, {
   },
 
   async reloadPilas(challenge){
-    await this.loadPilas(this.iframe, this.size, challenge)
+    await this.loadPilas(this.get('iframe'), this.get('size'), challenge)
   },
 
   imagenesParaPrecargar(challenge) {
@@ -224,7 +224,7 @@ export default Service.extend(Evented, {
    * @public
    */
   evaluar(codigo) {
-    return this.iframe.contentWindow.eval(codigo);
+    return this.get('iframe').contentWindow.eval(codigo);
   },
 
   habilitarModoTurbo() {
