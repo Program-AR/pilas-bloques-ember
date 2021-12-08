@@ -7,6 +7,7 @@ export default Ember.Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
   USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
+  USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
 
   getUserId() {
     const user = this.getUser()
@@ -30,6 +31,10 @@ export default Ember.Service.extend({
   getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) },
 
   toggleNightTheme() { this._save(this.USE_NIGHT_THEME_KEY, !this.getUseNightTheme()) },
+
+  getUseSimpleRead() { return this._get(this.USE_SIMPLE_READ_KEY) },
+
+  toggleSimpleRead() { this._save(this.USE_SIMPLE_READ_KEY, !this.getUseSimpleRead()) },
 
   clear() { localStorage.clear() },
 

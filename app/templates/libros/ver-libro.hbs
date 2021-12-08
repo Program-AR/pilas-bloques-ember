@@ -1,6 +1,6 @@
 <Header @book={{model}} />
 
-<div class="contenido-principal {{if model.modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+<div class="contenido-principal {{if model.modoLecturaSimple 'aplicar-modo-lectura-simple'}}" style="text-transform: {{if model.shouldShowSimpleRead 'uppercase' 'none'}}">
 
  <DisclaimerPrincipal/>
 

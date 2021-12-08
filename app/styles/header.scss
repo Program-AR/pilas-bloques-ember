@@ -12,10 +12,16 @@ $header-height: 45px;
 
 .header-title {
     font-size: smaller;
+    margin-left: 10%;
 }
 
 .night-mode {
     margin-top: 10%;
+}
+
+.simple-read {
+    margin-top: 10%;
+    margin-right: 15px;
 }
 
 md-toolbar:not(.md-menu-toolbar) {

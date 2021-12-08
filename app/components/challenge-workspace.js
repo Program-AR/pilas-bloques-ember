@@ -11,6 +11,7 @@ export default Component.extend({
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
+  storage: service(),
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -22,6 +23,10 @@ export default Component.extend({
 
   modoLecturaSimple: computed('model', function () {
     return this.get('model.grupo.capitulo.libro.modoLecturaSimple');
+  }),
+
+  shouldShowSimpleRead:  computed('id',function(){
+    return this.modoLecturaSimple || this.storage.getUseSimpleRead();
   }),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
