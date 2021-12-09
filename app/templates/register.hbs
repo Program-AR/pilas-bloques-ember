@@ -4,25 +4,30 @@
   <PaperForm class="register-form" @onSubmit={{action "doRegister"}} as |form|>
     <img src="imagenes/session/register.png" />
     
-    <PbInput @label="Usuario"
+    <PbInput 
+      @label={{t "templates.register.username"}}
       @model={{ registerData.username }} 
       @focusOut={{ action "checkUsername" }}
       @customValidations={{ usernameFormatValidation }}
       @required={{ true }}
       @error={{ if (not validUsername) "Este nombre de usuario ya existe" }} />
 
-    <PbInput @type="password" @label="Contraseña"
+    <PbInput 
+      @type="password" 
+      @label={{t "templates.register.password"}}
       @model={{ registerData.password }} 
       @required={{ true }} />
 
     <PasswordConfirmation @password={{ registerData.password }} />
 
-    <PbInput @type="email" @label="Email (opcional)"
+    <PbInput 
+      @type="email" 
+      @label="{{t "templates.register.email"}} ({{t "templates.register.options.optional"}})"
       @model={{ registerData.email }}
       @customValidations={{ mailValidation }} />
 
     <p for="avatarURL">
-      <label>Elegí tu avatar:</label>
+      <label>{{t "templates.register.chooseAvatar"}}:</label>
       <PbInput class="invisible-input" @type="checkbox" @model={{ registerData.avatarURL }} @required={{ true }} />  
     </p>
     <PaperGridList @cols="4" @rowHeight="gt-xs-1:1 gt-md-1:1" as |grid|>
@@ -35,35 +40,55 @@
       {{/each}}
     </PaperGridList>
 
-    <p>Consentimiento parental</p>
+    <p>{{t "templates.register.parentalConsent"}}</p>
 
-    <small> Si sos mayor de edad, escribí tus propios datos. </small>
+    <small>{{t "templates.register.inAge"}}</small>
     <p></p>
 
-    <PbInput @label="Nombre completo de madre, padre o tutor/a"
+    <PbInput 
+      @label={{t "templates.register.parentalFullname"}}
       @model={{ registerData.parentName }} 
       @required={{ true }}
       @customValidations={{ parentNameValidation }} />
 
-    <PbInput @label="DNI de madre, padre o tutor/a" 
+    <PbInput
+      @label={{t "templates.register.parentalId"}}
       @model={{ registerData.parentDNI }} 
       @required={{ true }} 
       @customValidations={{ DNIValidation }} />
 
-    <Collapsable @class="left" @title="¿Por qué solicitamos estos datos?">
-      <p>Para la FUNDACIÓN SADOSKY tu privacidad y la de tus hijas/os es muy importante.</p>
-      <p>Identificamos la cuenta con los datos de madre, padre o tutor/a para poder saber de quién se trata en caso de que quiera hacer uso de los derechos emergentes de la Ley de Protección de Datos Personales del menor tutelado. Podés ver más en el punto 8.4 de los <TermsAndConditionsLink />.</p>
-      <p>Las madres, padres o tutores podrán comunicarse por email a <a href="mailto:pilasbloques@program.ar">pilasbloques@program.ar</a> para conocer cuáles son los datos almacenados de los menores a su cargo y solicitar que se efectúen modificaciones en los datos suministrados.</p>
+    <Collapsable 
+      @title={{t "templates.register.whyData.title"}}
+      @class="left">
+
+      <p>{{t "templates.register.whyData.privacy"}}</p>
+      <p>
+        {{t "templates.register.whyData.dataProtectionLaw"}}
+        <TermsAndConditionsLink />.
+      </p>
+      <p>
+        {{t "templates.register.whyData.parentalContact"}} 
+        <a href="mailto:pilasbloques@program.ar">pilasbloques@program.ar</a> 
+        {{t "templates.register.whyData.whyContact"}}
+      </p>
 
     </Collapsable>
 
-    <Input @type={{"checkbox"}} required /> <span>Leí y acepto los <TermsAndConditionsLink /></span>
+    <Input 
+      @type={{"checkbox"}} 
+      required /> 
+    <span>
+      {{t "templates.register.iHaveReadAndAccept"}} 
+      <TermsAndConditionsLink />
+    </span>
 
     <br><br>
-    <ProgressButton class="link" type="submit" 
+    <ProgressButton 
+      class="link" 
+      type="submit" 
       @isDisabled={{not validUsername}} 
       @loading={{ pilasBloquesApi.loading.register }}>
-        Registrarme
+        {{t "templates.register.register"}}
     </ProgressButton>
   </PaperForm>
   <br><br>
