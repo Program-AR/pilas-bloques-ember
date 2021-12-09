@@ -19,3 +19,6 @@ register: Register
 
 options:
   optional: optional
+
+errors:
+  userAlreadyExists: "This username has already exists"

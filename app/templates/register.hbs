@@ -10,7 +10,7 @@
       @focusOut={{ action "checkUsername" }}
       @customValidations={{ usernameFormatValidation }}
       @required={{ true }}
-      @error={{ if (not validUsername) "Este nombre de usuario ya existe" }} />
+      @error={{ if (not validUsername) (t "templates.register.errors.userAlreadyExists") }} />
 
     <PbInput 
       @type="password" 

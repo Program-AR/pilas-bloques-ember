@@ -19,3 +19,6 @@ register: Registrarme
 
 options:
   optional: opcional 
+
+errors:
+  userAlreadyExists: "Este nombre de usuario ya existe"
