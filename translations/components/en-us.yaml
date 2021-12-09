@@ -1,0 +1,118 @@
+bugReportModal:
+  askTeacher: "MISSING TRANSLATION"
+  problem: "Are you having any problem?"
+  error: "Do you think there’s an error in this exercise?"
+  mail: "You can contact us writing to "
+  githubReport: "If you have a Github account, you can also report the error directly through the"
+  issueTracker: Issue Tracker
+
+congratulationsModal:
+  youDidIt: "You did it!"
+  toThink: "To think..."
+  otherSolutions: "Your program is not the only option to solve the problem. There are other solutions!"
+  concepts: "Are you using the concepts well?"
+
+createCustomChallenge:
+  create: "Create a challenge"
+  custom: "Create custom challenges with Pilas Bloques’ challenge creator."
+
+scene:
+  close: "Close"
+
+sceneDetails:
+  seeDescription: "I want to see the statement!"
+  getClue: "Give me a clue!"
+  noClues: "This exercise doesn´t have any clue"
+
+sceneButtons:
+  stepByStepRun:
+    label: "Step"
+    tooltip: "Run the proposed solution step by step"
+  runStep:
+    label: "Step"
+    tooltip: "Move forward one step"
+  run:
+    label: "Run"
+    tooltip: "Run the proposed solution"
+  restart:
+    label: "Restart"
+    tooltip: "Restart the program"
+
+turboModeToggle:
+  turnOff: "Turn Turbo modo off"
+  turnOn: "Turn Turbo modo on"
+  active: "ACTIVE"
+  inactive: "INACTIVE"
+
+clearData:
+  deleting: "Deleting data from the browser; if you have a username, you’ll probably have to log in again."
+
+importCustomChallenge:
+  import: "Import Challenge"
+  custom: "Import a custom challenge from Pilas Bloques’ challenge creator."
+
+header:
+  tool: "A tool to learn programming"
+
+registerDisclaimer:
+  now: "Now Pilas Bloques allows you to"
+  register: "register"
+  optional: "Your registration is <b>completely optional</b>; it will help us improve Pilas Bloques, and will allow you to interrupt your work and resume it from where you left it."
+
+programarDisclaimer:
+  entered: "Did you visit"
+  programar: "Program.AR en casa"
+  in: "In"
+  find: "you will find a lot of material, many tools, and an explanation on how to use Pilas Bloques"
+
+challengeLink:
+  soon: "Very soon"
+
+challengeWorkspaceButtons:
+  open: "Open solution"
+  save: "Save solution"
+  careful: "Be careful! If you delete the solution, you will lose your work."
+  delete: "Delete solution"
+  exit: "Exit Full Screen"
+  fullScreen: "Full Screen"
+
+footer:
+  version: "Version:"
+  problem: "Any problem with this exercise?"
+  about: "About"
+
+login:
+  already: "I already have a username"
+  wrong: "Username or password are not correct; try it again"
+  forgot: "I forgot my username and password"
+  dontHaveUser: "I don’t have a username yet"
+  register: "Click here to register now!"
+  login: "Log in"
+
+modalAyuda:
+  help: "This app will offer you several challenges you can solve by fitting blocks together."
+  firstSteps: "The first step is to open the Challenges section:"
+  categories: "The blocks are grouped in categories; use the sidebar to display the blocks."
+  dragAndDrop: "The you can drag and drop the blocks to the workspace."
+  continue: "Once your program is ready, push the \"Run\" button to continue."
+  delete: "And you can also delete the blocks by dragging them to the recycle bin."
+
+passwordConfirmation:
+  password: "Confirm password"
+
+sessionButton:
+  login: "Log in"
+  logout: "Log out"
+  changeUser: "Change user"
+
+phoneRotationWarning:
+  rotate: "Try to rotate your mobile screen"
+  widerScreen: "Pilas Bloques needs a wider screen"
+
+notifier:
+  download: "There is a new version available for download."
+  visit: "Visit"
+  moreInfo: "our web to learn more."
+
+termsAndConditionLink:
+  terms: "terms of use and conditions"
