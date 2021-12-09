@@ -1,17 +1,3 @@
-############ Main page contents, texts, buttons, etc. ############
-
-libros:
-  index:
-    welcome: "¡Hola! Te damos la bienvenida a <b> Pilas Bloques </b>, una herramienta para aprender a programar."
-    challenges: "Los desafíos que ofrecemos están organizados en dos grupos:"
-    customChallenges: "¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
-    visitAbout:
-      part1: "Visitá la sección "
-      link1: "Acerca de"
-      part2: " para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló."
-
-############ Challenge and books texts, clues and blocks ############
-
 model:
   challenges:
     1:
