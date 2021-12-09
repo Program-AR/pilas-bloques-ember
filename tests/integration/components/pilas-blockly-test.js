@@ -43,7 +43,10 @@ module('Integration | Component | pilas-blockly', function (hooks) {
     <block type="MoverACasillaAbajo"></block>
   </xml>`
 
-  const createActivity = (owner, fields) => owner.lookup('service:store').createRecord('desafio', { bloques: ['controls_if'], ...fields })
+  const createActivity = (owner, fields) => {
+    const group = owner.lookup('service:store').createRecord('grupo')
+    return owner.lookup('service:store').createRecord('desafio', { grupo: group, escena: "AlienInicial", bloques: ['controls_if'], ...fields })
+  }
 
   test('should start with activity initial solution in workspace', async function (assert) {
     const activityWithInitialSolution = createActivity(this.owner, { solucionInicial })

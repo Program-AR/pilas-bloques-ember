@@ -90,7 +90,6 @@ export default Component.extend({
       if (!this.modelActividad.get('estiloToolbox')) {
         this.modelActividad.set('estiloToolbox', 'desplegable');
       }
-      console.log(await this.initialWorkspace())
       this.set('initial_workspace', await this.initialWorkspace())
 
     });
@@ -118,10 +117,9 @@ export default Component.extend({
    * initial workspace is the same as the previous challenge. 
    */
   addRandomIdToWorkspace(workspaceXML) {
-    return workspaceXML.includes('id=') ?
-      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`)
-      :
-      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`)
+    return workspaceXML && (workspaceXML.includes('id=') ?
+      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`) :
+      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`))
   },
 
   /**

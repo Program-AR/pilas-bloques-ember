@@ -10,10 +10,10 @@ module('Integration | Component | pilas canvas', function (hooks) {
     // Set any properties with this.set('myProperty', 'value');
     // Handle any actions with this.on('myAction', function(val) { ... });
     this.set('cargando', true);
-    this.set('escena', null);
+    this.set('challenge', {escena: 'AlienInicial'});
     this.set('onReady', () => { });
 
-    await render(hbs`<PilasCanvas @onReady={{onReady}} @escena={{escena}} @cargando={{cargando}} />`);
+    await render(hbs`<PilasCanvas @onReady={{onReady}} @challenge={{challenge}} @cargando={{cargando}} />`);
 
     assert.dom().hasText('');
 
