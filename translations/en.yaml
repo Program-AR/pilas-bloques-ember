@@ -1,26 +1,5 @@
 # TODO: Pending translations to en
 
-############ Main page contents, texts, buttons, etc. ############
-
-libros:
-  index:
-    welcome: "¡Hola! Te damos la bienvenida a <b> Pilas Bloques </b>, una herramienta para aprender a programar."
-    challenges: "Los desafíos que ofrecemos están organizados en dos grupos:"
-    customChallenges: "¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
-    visitAbout:
-      part1: "Visitá la sección "
-      link1: "Acerca de"
-      part2: " para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló."
-
-desafios:
-  desafioPorNombreError: 
-    wentWrong: "Lo siento, algo salió mal..."
-    doesntExist: "No existe un desafío con el nombre indicado en la URL. ¿Podrías corroborar la correctitud de la dirección a este desafío?"
-  index:
-    chooseOne: "Elegí uno de los libros de la barra superior"
-
-############ Challenge and books texts, clues and blocks ############
-
 model:
   challenges:
     1:
@@ -625,7 +604,6 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: "Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una"
-      
 
   groups:
     AlienTocaBoton:
