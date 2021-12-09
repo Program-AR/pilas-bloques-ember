@@ -1,13 +1,23 @@
-libros:
-  index:
-    welcome: "Hi! Welcome to <b> Pilas Bloques </b>, a tool to learn programming."
-    challenges: "The challenges we offer are organized in two groups:"
-    customChallenges: "Now you can also create and import your own challenges using <b>Pilas Bloques</b> challenge creator!"
-    visitAbout:
-      part1: "Visit the section "
-      link1: "About"
-      part2: " to learn more about this tool and its developers."
-
+templates:
+  acercade:
+    yourCurrentVersion: "You are currently using the version"
+    youCanUpdate: "and the version can be updated"
+    visitProjectWeb: "Visit the project website"
+  desafios:
+    desafioPorNombreError:
+      wentWrong: "Sorry, something went wrong..."
+      doesntExist: "The challenge with the name mentioned in the URL doesn’t exist. Can you please check whether the address of the challenge is correct?"
+    index:
+      chooseOne: "Choose one of the books from the upper menu bar"
+  libros:
+    index:
+      welcome: "Hi! Welcome to <b> Pilas Bloques </b>, a tool to learn programming."
+      challenges: "The challenges we offer are organized in two groups:"
+      customChallenges: "Now you can also create and import your own challenges using <b>Pilas Bloques</b> challenge creator!"
+      visitAbout:
+        part1: "Visit the section "
+        link1: "About"
+        part2: " to learn more about this tool and its developers."
 
 model:
   challenges:
@@ -619,19 +629,6 @@ model:
       title: "With Toto"
     Tecnopolis 2021 Con Coty:
       title: "With Coty"
-
-desafios:
-  desafioPorNombreError:
-    wentWrong: "Sorry, something went wrong..."
-    doesntExist: "The challenge with the name mentioned in the URL doesn’t exist. Can you please check whether the address of the challenge is correct?"
-  index:
-    chooseOne: "Choose one of the books from the upper menu bar"
-
-
-acercade:
-  yourCurrentVersion: "You are currently using the version"
-  youCanUpdate: "and the version can be updated"
-  visitProjectWeb: "Visit the project website"
 
 components:
   bugReportModal:
