@@ -148,9 +148,16 @@ export default Service.extend(Evented, {
     $(window).off("message.fromIframe");
   },
 
+  /**
+   * Saves current challenge and switches pilas engine scene.
+   * If the challenge is the same as the previous one, it restarts pilas engine scene.
+   * If the challenge is different, reloads pilas engine, as we need to preload different images (TODO: decouple image preloading from pilas engine initialization)
+   * Can be called any number of times, but loadPilas should have been called first once.
+   * @param {*} challenge 
+   */
   async setChallenge(challenge) {
     if(!challenge || !challenge.escena) throw "Scene missing in challenge"
-    if(this.get('challenge') != challenge) await this.reloadPilas(challenge)
+    if(this.get('currentChallenge').id !== challenge.id) await this.reloadPilas(challenge)
     this.evaluar(`pilas.mundo.gestor_escenas.cambiar_escena(${this.sceneInitializer()})`)
   },
 
@@ -178,23 +185,11 @@ export default Service.extend(Evented, {
     return iframeElement.contentWindow.document.getElementById('canvas').toDataURL('image/png');
   },
 
-  /**
-   * Realiza un reinicio rápido de la escena actual.
-   *
-   * @method reiniciarEscenaCompleta
-   * @private
-   */
-  async reiniciarEscenaCompleta() {
-    this.evaluar("pilas.reiniciar();");
-    await this.setChallenge(this.currentChallenge);
+  async restartScene() {
+    this.evaluar("pilas.reiniciar()")
+    await this.setChallenge(this.currentChallenge)
   },
 
-  /**
-   * Retorna la cantidad de actores en la escena con la etiqueta solicitada.
-   *
-   * @method contarActoresConEtiqueta
-   * @public
-   */
   contarActoresConEtiqueta(etiqueta) {
     let codigo = `
       var actoresEnLaEscena = pilas.escena_actual().actores;

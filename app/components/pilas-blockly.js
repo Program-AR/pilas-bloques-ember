@@ -379,7 +379,7 @@ export default Component.extend({
 
     async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
-      await this.pilas.reiniciarEscenaCompleta()
+      await this.pilas.restartScene()
 
       Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
@@ -415,7 +415,7 @@ export default Component.extend({
       this.set('terminoDeEjecutar', false);
       this.exerciseWorkspace.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
-      await this.pilas.reiniciarEscenaCompleta();
+      await this.pilas.restartScene();
     },
 
     guardar() {

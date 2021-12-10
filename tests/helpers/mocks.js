@@ -9,7 +9,7 @@ export const pilasMock = {
     loadPilas() { return Promise.resolve(this) },
     modoTurboEstaActivado() { return true; },
     setChallenge: sinon.stub(),
-    reiniciarEscenaCompleta: sinon.stub(),
+    restartScene: sinon.stub(),
     cambiarAModoDeLecturaSimple: sinon.stub(),
     habilitarModoTurbo: sinon.stub(),
     deshabilitarModoTurbo: sinon.stub(),

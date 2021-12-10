@@ -77,7 +77,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assert.notOk(this.ctrl.get('ejecutando'))
     assert.notOk(this.ctrl.get('terminoDeEjecutar'))
     assert.notOk(this.ctrl.get('errorDeActividad'))
-    assert.ok(pilasMock.reiniciarEscenaCompleta.called)
+    assert.ok(pilasMock.restartScene.called)
   })
 
 
