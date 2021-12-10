@@ -377,9 +377,9 @@ export default Component.extend({
 
   actions: {
 
-    ejecutar(pasoAPaso = false) {
+    async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
-      this.pilas.reiniciarEscenaCompleta()
+      await this.pilas.reiniciarEscenaCompleta()
 
       Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
