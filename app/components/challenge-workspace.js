@@ -184,8 +184,8 @@ export default Component.extend({
       Blockly.mainWorkspace.getAllBlocks()[0].unselect()
     },
 
-    ejecutar(pasoAPaso = false) {
-      this.pilasBlockly.send('ejecutar', pasoAPaso);
+    async ejecutar(pasoAPaso = false) {
+      await this.pilasBlockly.send('ejecutar', pasoAPaso);
       this.send("showScene");
     },
 
@@ -194,8 +194,8 @@ export default Component.extend({
       this.send("showScene");
     },
 
-    reiniciar() {
-      this.pilasBlockly.send('reiniciar');
+    async reiniciar() {
+      await this.pilasBlockly.send('reiniciar');
     },
 
   }
