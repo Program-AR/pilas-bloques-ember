@@ -408,14 +408,14 @@ export default Component.extend({
         })
     },
 
-    reiniciar() {
+    async reiniciar() {
       this.clearHighlight()
       this.set('ejecutando', false);
       this.exerciseWorkspace.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.exerciseWorkspace.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
-      this.pilas.reiniciarEscenaCompleta();
+      await this.pilas.reiniciarEscenaCompleta();
     },
 
     guardar() {

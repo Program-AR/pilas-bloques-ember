@@ -98,7 +98,7 @@ export function actividadTest(nombre, opciones) {
 
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
-    let pilas = this.owner.lookup('service:pilas');
+    let pilasService = this.owner.lookup('service:pilas');
     failAllApiFetchs()
     this.owner.lookup('service:pilas-bloques-api').logout();
 
@@ -125,7 +125,7 @@ export function actividadTest(nombre, opciones) {
         }
 
         this.set('model', model);
-        this.set('pilas', pilas);
+        this.set('pilasService', pilasService);
 
 
         // Carga la solución en base64, el formato que espera el componente.
@@ -134,7 +134,7 @@ export function actividadTest(nombre, opciones) {
 
         this.set('onReady', () => {
           if (opciones.cantidadDeActoresAlComenzar) {
-            validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
+            validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilasService);
           }
 
           setTimeout(() => {
@@ -163,7 +163,7 @@ export function actividadTest(nombre, opciones) {
 
         this.set('onTerminoEjecucion', () => {
           if (opciones.cantidadDeActoresAlTerminar) {
-            validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
+            validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilasService);
           }
 
           // Los errores esperados no deberían llegar a este punto, así
@@ -173,9 +173,9 @@ export function actividadTest(nombre, opciones) {
           if (errorEsperado) {
             assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
           } else if (opciones.resuelveDesafio === false) {
-            assert.ok(!pilas.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
+            assert.ok(!pilasService.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
           } else {
-            assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
+            assert.ok(pilasService.estaResueltoElProblema(), "Se puede resolver el problema");
           }
 
           success();
@@ -190,7 +190,7 @@ export function actividadTest(nombre, opciones) {
         this.render(hbs`
                     {{challenge-workspace
                       debug=false
-                      pilas=pilas
+                      pilas=pilasService
                       model=model
                       showCode=false
                       onReady=onReady
