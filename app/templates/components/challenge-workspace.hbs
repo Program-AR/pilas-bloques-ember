@@ -47,7 +47,6 @@
     <div>
       <SceneButtons
         @cargando={{cargando}}
-        @isTurboModeEnabled={{modoTuboHabilitado}}
         @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
         @needShowRestartButton={{debeMostarReiniciar}}
         @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
@@ -64,18 +63,8 @@
         @cargando={{cargando}}
         @challenge={{model}} 
         @hideScene={{action "hideScene"}}
-        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
-        @isRunning={{ejecutando}}
-        @isTurboModeEnabled={{modoTuboHabilitado}}
-        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
         @onReady={{action "onReady"}}
-        @pilas={{pilas}}
-        @reset={{action 'reiniciar' false}}
-        @run={{action 'ejecutar' false}}
-        @running={{ejecutando}}
         @shouldUseFloatingMode={{shouldUseFloatingMode}}
-        @step={{action 'step' true}}
-        @step-by-step-execution={{action 'ejecutar' true}}
       />
 
     </div>
