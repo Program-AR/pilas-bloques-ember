@@ -18,6 +18,7 @@ TODO: Traducir
 * Si el PR incluye cambio visuales se deben incluir imagenes mostrando el cambio.
 * Todos los tests tienen que pasar.
 * Todo tiene que estar testeado
+* Todo el nuevo codigo tiene que estar en ingles. El objetivo a futuro es que todo Pilas Bloques esté traducido al inglés. Es por ello que el código introducido con cada Pull Request debe estar en inglés. Además, si el código modifica bastante de un componente, se espera que se aproveche el PR para hacer la traducción del mismo.
 
 Ejemplo de un buen PR: https://github.com/Program-AR/pilas-bloques/pull/878
 
