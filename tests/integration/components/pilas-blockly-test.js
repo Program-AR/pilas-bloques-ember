@@ -2,7 +2,7 @@ import { module, test } from 'qunit'
 import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import { mockApi, setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
-import { actividadMock, pilasMock } from '../../helpers/mocks'
+import { actividadMock, pilasMock, createActivity } from '../../helpers/mocks'
 
 module('Integration | Component | pilas-blockly', function (hooks) {
   setupPBIntegrationTest(hooks)
@@ -42,11 +42,6 @@ module('Integration | Component | pilas-blockly', function (hooks) {
     </block>
     <block type="MoverACasillaAbajo"></block>
   </xml>`
-
-  const createActivity = (owner, fields) => {
-    const group = owner.lookup('service:store').createRecord('grupo')
-    return owner.lookup('service:store').createRecord('desafio', { grupo: group, escena: "AlienInicial", bloques: ['controls_if'], ...fields })
-  }
 
   test('should start with activity initial solution in workspace', async function (assert) {
     const activityWithInitialSolution = createActivity(this.owner, { solucionInicial })
