@@ -50,17 +50,7 @@ The tool is designed to help the teacher and the student in the learning process
 
 ## Contributing
 
-There are many ways in which you can participate in the project, for example:
-
-* [File an issue](https://github.com/Program-AR/pilas-bloques/issues), and help us verify as they are checked in.
-* Review [source code changes](https://github.com/Program-AR/pilas-bloques/pulls).
-* [Submit your first collaboration](https://github.com/Program-AR/pilas-bloques/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
-* Follow Program.AR on [Twitter](https://twitter.com/Programar2020) and on [Instagram](https://www.instagram.com/program_ar/) and let us know what you think!
-
-### Contributors
-
-[contributors](https://github.com/Program-AR/pilas-bloques/graphs/contributors)
-
+Check out the [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING.md) guideline!
 
 ## Getting Started
 
@@ -113,7 +103,7 @@ npm start
 
 ### License
 
-Copyright © 2014, [Program-AR](http://program.ar), All Rights Reserved.
+Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
 
 Licensed under the terms of [GNU General Public License v3.0](https://github.com/Program-AR/pilas-bloques/blob/master/LICENSE) license.
 
