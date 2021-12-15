@@ -1,16 +1,16 @@
-# Pilas Bloques - A tool to learn to program.
-
-- Master: [![build](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml/badge.svg?branch=master)](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml)
-- Develop (main): [![build](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml/badge.svg?branch=develop)](https://github.com/Program-AR/pilas-bloques/actions/workflows/build.yml)
-
-- Backlog: [Stories in Ready](https://github.com/orgs/Program-AR/projects/1)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+![Ember](https://img.shields.io/badge/ember-1C1E24?style=for-the-badge&logo=ember.js&logoColor=#D04A37)
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Program-AR/pilas-bloques/issues)
-[![Dependency Status](https://david-dm.org/Program-AR/pilas-bloques/status.svg)](https://david-dm.org/Program-AR/pilas-bloques)
-[![devDependency Status](https://david-dm.org/Program-AR/pilas-bloques/dev-status.svg)](https://david-dm.org/Program-AR/pilas-bloques/?type=dev)
 ![open issues](https://badgen.net/github/open-issues/Program-AR/pilas-bloques)
-![help wanted](https://badgen.net/github/label-issues/Program-AR/pilas-bloques/help-wanted/open)
+![downloads](https://badgen.net/github/assets-dl/Program-AR/pilas-bloques/1.6.1)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+# Pilas Bloques - A tool to learn to program.
+
+<p align="center">
+  <img src="https://pilasbloques.program.ar/online/imagenes/main-logo.png"/>
+</p>
 
 ## About
 
