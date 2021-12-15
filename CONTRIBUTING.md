@@ -1,6 +1,6 @@
 # Cómo contribuir a Pilas Bloques
 
-Muchas gracias por querer colaborar en Pilas Bloques 🙌. Si no lo hiciste todavia leé el README del proyecto https://github.com/Program-AR/pilas-bloques/blob/develop/README.md para tener una mejor idea de cual es nuestro objetivo con Pilas Bloques y tambien instrucciones para instalar el ambiente de desarrollo. 
+Muchas gracias por querer colaborar en Pilas Bloques 🙌. Si no lo hiciste todavia leé el [README del proyecto](https://github.com/Program-AR/pilas-bloques/blob/develop/README.md) para tener una mejor idea de cual es nuestro objetivo con Pilas Bloques y tambien instrucciones para instalar el ambiente de desarrollo. 
 En Pilas Bloques trabajamos con Pull Requests, por esto si queres aportar al proyecto vas a tener que forkearlo, hacerte una branch y tirar un PR al repo original.
 Si no sabes con que colaborar podes ver los [first good issues](https://github.com/Program-AR/pilas-bloques/labels/good%20first%20issue) o tambien el [project de Pilas Bloques](https://github.com/orgs/Program-AR/projects/1).
 
