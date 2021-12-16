@@ -14,4 +14,4 @@ La descripción podría responder a estas preguntas: ¿Que estabas haciendo en P
 
 **(Si corresponde) Link al desafio:**
 
-**(Si es relevante al bug) Usuario de Pilas Bloques:**
+**Usuario de Pilas Bloques:**
