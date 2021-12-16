@@ -24,4 +24,4 @@ Ejemplo de un buen PR: https://github.com/Program-AR/pilas-bloques/pull/878
 Nos podes arrobar aca en Github con `@pilasbloqueros` o tambien nos podes mandar un mail a pilasbloques@program.ar
 
 
-:heart: :heart: Thanks for contributing! :heart: :heart:
+De nuevo muchas gracias por querer colaborar con el proyecto!!! :heart: :heart:
