@@ -16,7 +16,7 @@ Si encontraste un bug y queres reportarlo, o si tenes una idea para un feature p
 * Si el PR incluye cambio visuales se pueden incluir imagenes mostrando el cambio.
 * Todos los tests tienen que pasar.
 * Todo tiene que estar testeado
-* Todo el nuevo codigo tiene que estar en ingles. El objetivo a futuro es que todo Pilas Bloques esté traducido al inglés. Es por ello que el código introducido con cada Pull Request debe estar en inglés. Además, si el código modifica bastante de un componente, se espera que se aproveche el PR para hacer la traducción del mismo.
+* Todo nuevo código debe estar codificado **en inglés**. Ver apartado el apartado "Sobre el idioma" de este archivo para saber por que.
 
 Ejemplo de un buen PR: https://github.com/Program-AR/pilas-bloques/pull/878
 
@@ -25,3 +25,18 @@ Nos podes arrobar aca en Github con `@pilasbloqueros` o tambien nos podes mandar
 
 
 De nuevo muchas gracias por querer colaborar con el proyecto!!! :heart: :heart:
+
+
+
+_____________
+
+## Sobre el idioma
+Pilas Bloques es una aplicación cuya comunidad usuaria y desarrolladora es principalmente hispanohablante. Es por eso que la documentación y discusiones en issues y pull requests están en **español**: el objetivo es poder **incluir** en estas discusiones a quienes no tienen manejo de inglés.
+
+Sin embargo, viendo la necesidad de recibir aportes de varios lugares del mundo que necesitan también utilizar Pilas Bloques, estamos admitiendo el inglés como idioma secundario en las discusiones, y ya tenemos las primeras versiones en inglés de la documentación. 
+
+Pero además, y fundamentalmente, **estamos comenzando el proceso de traducción de todo el código al inglés**, con el objetivo de ampliar la comunidad. Es por esto que:
+
+* Todo el nuevo código que se proponga en un pull request, debe estar en inglés. :gb: 
+* Si quien quiere hacer el aporte open source no maneja bien el inglés, el equipo de Pilas Bloques con gusto le ayudará con la traducción. :+1: 
+* Si un pull request modifica extensivamente un componente que estaba codificado en español, se valorarán los esfuerzos por traducir el componente. :mechanical_arm: 
