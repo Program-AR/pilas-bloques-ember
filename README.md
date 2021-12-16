@@ -1,5 +1,4 @@
-![es](https://i.imgur.com/yzcc5qK.png)
-![en](https://i.imgur.com/BB7VIYm.png)
+[![en](https://i.imgur.com/BB7VIYm.png)](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
 ![pt](https://i.imgur.com/Z09sdxp.png)
 ![fr](https://i.imgur.com/aNhOHfA.png)
 
