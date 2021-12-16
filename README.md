@@ -10,7 +10,7 @@
 ![downloads](https://badgen.net/github/assets-dl/Program-AR/pilas-bloques/1.6.1)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-# Pilas Bloques - Una herramienta para aprender a programar.
+# Pilas Bloques - Una herramienta para aprender a programar
 
 <p align="center">
   <img src="https://pilasbloques.program.ar/online/imagenes/main-logo.png"/>
