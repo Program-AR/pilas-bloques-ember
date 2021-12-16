@@ -112,6 +112,10 @@ npm test
 npm start
 ```
 
+### Preparar el backend (solo necesario para cosas de usuarios y eso):
+
+Para tener un backend para probar cosas de usuarios y guardar desafios es necesario tener levantado los proyectos de [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) y una base de datos [MongoDB](https://www.mongodb.com/).
+
 ### Licencia
 
 Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
