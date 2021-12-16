@@ -42,7 +42,7 @@ The tool is designed to help the teacher and the student in the learning process
 
 ## Contributing
 
-You can find all the information you need to start contributing in Pilas Bloques in the [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING.md) guidelines!
+You can find all the information you need to start contributing in Pilas Bloques in the [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING_en.md) guidelines!
 
 ## Getting Started
 
