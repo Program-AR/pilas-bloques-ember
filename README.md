@@ -29,7 +29,7 @@ Se proponen desafíos con diversos niveles de dificultad para acercar a las y lo
 
 Es desarrollar programas con acciones e instrucciones incorporadas en bloques o piezas prediseñadas. El resultado de encastrar los bloques entre sí es el programa que resuelve el problema ó desafío planteado. 
 
-### Why learning by programming with blocks?
+### ¿Por qué es positiva esta modalidad de aprendizaje? 
 
 * Porque cada **concepto** abstracto asociado a la programación tiene su representación **visual**.
 * Porque ahorra las **dificultades** que genera la sintaxis formal de un lenguaje **escrito** (¡y la frustración cuando cometemos un error al escribir!). Los bloques se seleccionan, arrastran, encastran y listo.
@@ -55,15 +55,15 @@ La herramienta está pensada como **ayuda al docente y al alumno** en el proceso
 
 En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING.md) tenes toda la informacion necesaria para contribuir al proyecto!
 
-## Getting Started
+## Como instalar el entorno de desarrollo
 
-In order to collaborate, first of all you will install [Git](https://git-scm.com/) and then you must clone the [Pilas Bloques](https://github.com/Program-AR/pilas-bloques) repository.
+Para colaborar en Pilas Bloques vas a tener que instalar [Git](https://git-scm.com/) y clonar el repositorio de [Pilas Bloques](https://github.com/Program-AR/pilas-bloques):
 
 ```
 git clone https://github.com/Program-AR/pilas-bloques.git
 ```
 
-### Prerequisites
+### Pre-requisitos
 
 * Python 3:
 
@@ -72,39 +72,48 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   sudo apt install python
   ```
   
-* Node. The version required is indicated in `.nvmrc` file.
+  Windows:
+  
+  [Link de descarga de Python](https://www.python.org/downloads/)
+  
+  
+* Node. La version requerida para el proyecto está en el archivo `.nvmrc`.
 
-  Install it: 
+  Debian/Ubuntu:
   ```
   git clone https://github.com/nvm-sh/nvm.git ~/.nvm
   source ~/.nvm/nvm.sh
   source ~/.nvm/install.sh
   nvm install .
   ```
+  
+  Windows:
+  
+  ¿¿¿¿????
 
-### Use Pilas Bloques NodeJS target version:
+### Usá la version de NodeJS de Pilas Bloques:
 ```
 nvm use
 ```
   
-### Install all project dependencies:
+### Instalá las dependencias del proyecto:
 ```
 npm install
 ```
 
-## Daily Development commands
+## Comandos comunes de desarrollo
 
-### Run all tests:
+### Correr todos los tests:
 ```
 npm test
 ```
 
-### Start Pilas Bloques:
+### Levantar Pilas Bloques:
 ```
 npm start
 ```
 
-### License
+### Licencia
 
 Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
 
