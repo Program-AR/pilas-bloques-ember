@@ -393,6 +393,7 @@ export default Component.extend({
       }
 
       let factory = this.interpreterFactory;
+      console.log(`JavascriptCode: ${this.javascriptCode}`)
       let interprete = factory.crearInterprete(this.javascriptCode, (bloqueId) => this.highlighter.step(bloqueId));
 
       this.set('pausadoEnBreakpoint', false);
