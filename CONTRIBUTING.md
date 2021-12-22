@@ -1,3 +1,6 @@
+### Read in other languages
+* [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING_en.md)
+______
 # Cómo contribuir a Pilas Bloques
 
 Muchas gracias por querer colaborar en Pilas Bloques 🙌. Si no lo hiciste todavia leé el [README del proyecto](https://github.com/Program-AR/pilas-bloques/blob/develop/README.md) para tener una mejor idea de cual es nuestro objetivo con Pilas Bloques y tambien instrucciones para instalar el ambiente de desarrollo. 
