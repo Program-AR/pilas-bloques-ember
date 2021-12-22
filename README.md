@@ -1,7 +1,6 @@
-[![en](https://i.imgur.com/BB7VIYm.png)](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
-![pt](https://i.imgur.com/Z09sdxp.png)
-![fr](https://i.imgur.com/aNhOHfA.png)
-
+### Read in other languages
+* [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
+_____________
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Ember](https://img.shields.io/badge/ember-1C1E24?style=for-the-badge&logo=ember.js&logoColor=#D04A37)
 
