@@ -1,6 +1,3 @@
-### Read in other languages
-* [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
-_____________
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Ember](https://img.shields.io/badge/ember-1C1E24?style=for-the-badge&logo=ember.js&logoColor=#D04A37)
 
@@ -8,6 +5,10 @@ _____________
 ![open issues](https://badgen.net/github/open-issues/Program-AR/pilas-bloques)
 ![downloads](https://badgen.net/github/assets-dl/Program-AR/pilas-bloques/1.6.1)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+### Read in other languages
+* [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
+_____________
 
 # Pilas Bloques - Una herramienta para aprender a programar
 
