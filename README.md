@@ -3,8 +3,8 @@
 
 [![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Program-AR/pilas-bloques/issues)
 ![open issues](https://badgen.net/github/open-issues/Program-AR/pilas-bloques)
-![downloads](https://badgen.net/github/assets-dl/Program-AR/pilas-bloques/1.6.1)
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![downloads](https://img.shields.io/github/downloads/Program-AR/pilas-bloques/total.svg)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 ### Read in other languages
 * [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
