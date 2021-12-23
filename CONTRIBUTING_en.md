@@ -6,7 +6,7 @@ Si no sabes con que colaborar podes ver los [first good issues](https://github.c
 
 ## Issues
 
-Si encontraste un bug y queres reportarlo, o si tenes una idea para un feature para Pilas Bloques, [crea un issue describiendolo](https://github.com/Program-AR/pilas-bloques/issues/new).
+If you found a bug and you want to report it, or if you have an idea for a feature for Pilas Bloques, [create an issue describing it](https://github.com/Program-AR/pilas-bloques/issues/new).
 
 ## Pull Requests
 
