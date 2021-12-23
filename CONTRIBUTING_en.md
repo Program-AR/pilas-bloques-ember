@@ -20,6 +20,13 @@ Si encontraste un bug y queres reportarlo, o si tenes una idea para un feature p
 
 Example of a good PR: https://github.com/Program-AR/pilas-bloques/pull/878
 
+
+## Translations
+
+* If you want to improve or complete an already existing translation you can do so by editing the proper translation file in the [translations folder](https://github.com/Program-AR/pilas-bloques/tree/develop/translations) and making a pull request with your proposed changes.
+
+* If you want to start the translation to a language that Pilas Bloques doesnt support yet, you can do so by creating a translation file in the [translations folder](https://github.com/Program-AR/pilas-bloques/tree/develop/translations) and making a pull request with your proposed translation.
+
 ## Do you have any questions?
 You can tag us in Github with `@pilasbloqueros` or you can also send us an email to pilasbloques@program.ar
 
