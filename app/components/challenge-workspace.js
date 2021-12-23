@@ -38,7 +38,7 @@ export default Component.extend({
 
   actions: {
 
-    onReady(pilas) {
+    onSceneReady(pilas) {
       if (this.onReady) {
         this.onReady(pilas)
       }
