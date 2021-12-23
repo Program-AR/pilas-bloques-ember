@@ -25,9 +25,9 @@ Ejemplo de un buen PR: https://github.com/Program-AR/pilas-bloques/pull/878
 
 ## Traducciones
 
-* Si queres mejorar o completar una traduccion ya existente de Pilas Bloques podes hacerlo buscando el archivo del lenguaje en la [carpeta de traducciones](https://github.com/Program-AR/pilas-bloques/tree/develop/translations) y haciendo un pull request con tus cambios propuestos.
+* Si queres mejorar o completar una traducción ya existente de Pilas Bloques podes hacerlo buscando el archivo del lenguaje en la [carpeta de traducciones](https://github.com/Program-AR/pilas-bloques/tree/develop/translations) y haciendo un pull request con tus cambios propuestos.
 
-* Si queres empezar la traduccion de Pilas Bloques a un lenguaje que todavia no tiene, podes hacerlo creando un nuevo archivo en la [carpeta de traducciones](https://github.com/Program-AR/pilas-bloques/tree/develop/translations).
+* Si queres empezar la traducción de Pilas Bloques a un lenguaje que todavia no tiene, podes hacerlo creando un nuevo archivo en la [carpeta de traducciones](https://github.com/Program-AR/pilas-bloques/tree/develop/translations) y haciendo un pull request con tu traducción propuesta.
 
 ## ¿Tenes alguna pregunta?
 Nos podes arrobar aca en Github con `@pilasbloqueros` o tambien nos podes mandar un mail a pilasbloques@program.ar
