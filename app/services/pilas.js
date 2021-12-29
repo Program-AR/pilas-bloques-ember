@@ -11,14 +11,10 @@ import listaImagenes from 'pilasbloques/components/listaImagenes';
  */
 
 /**
- * Un servicio que provee métodos y eventos para comunicarse
- * con pilasweb y el componente pilas-canvas.
- * DEMO.
+ * Pilas service is the component in charge of the communication with pilasweb (pilas engine) framework.
+ * It is the interface in and out of the iframe where pilasweb is running.
  *
- * Estos son los eventos que puede reportar el servicio:
- *
- * - terminaCargaInicial
- * - errorDeActividad
+ * This service reports the event "errorDeActividad"
  *
  * @public
  * @class PilasService

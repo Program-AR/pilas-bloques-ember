@@ -76,9 +76,6 @@ export default Component.extend({
     this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
     this.exerciseWorkspace.setPilasBlockly(this);
 
-    var event = new Event('terminaCargaInicial');
-    window.dispatchEvent(event);
-
     scheduleOnce('afterRender', async () => {
       this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
 
@@ -331,10 +328,6 @@ export default Component.extend({
         this.clearHighlight();
       }
     });
-  },
-
-  willDestroyElement() {
-    window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
   },
 
   restaurar_codigo(codigo) {
