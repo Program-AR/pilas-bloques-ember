@@ -27,7 +27,7 @@ export default Model.extend({
   deshabilitado: attr('boolean'),
   escena: attr('string'),
   debeFelicitarse: attr(),
-  estiloToolbox: attr('string'),
+  estiloToolbox: attr('string', { defaultValue: "desplegable" }), 
   grupo: belongsTo('grupo'),
   bloques: attr(),
   solucionInicial: attr('string'),

@@ -78,17 +78,10 @@ export default Component.extend({
 
     scheduleOnce('afterRender', async () => {
       this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
-
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
       this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
-
-      // Elijo el estilo default de toolbox si es que no viene indicado en el desafio
-      if (!this.modelActividad.get('estiloToolbox')) {
-        this.modelActividad.set('estiloToolbox', 'desplegable');
-      }
       this.set('initial_workspace', await this.initialWorkspace())
-
     });
 
     // Este es un hook para luego agregar a la interfaz
