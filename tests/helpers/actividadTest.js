@@ -131,7 +131,7 @@ export function actividadTest(nombre, opciones) {
         this.set('solucion', window.btoa(opciones.solucion));
         // Captura el evento de inicialización de pilas:
 
-        this.set('onReady', () => {
+        this.set('startExecution', () => {
           if (opciones.cantidadDeActoresAlComenzar) {
             validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilasService);
           }
@@ -193,7 +193,7 @@ export function actividadTest(nombre, opciones) {
                       pilas=pilasService
                       model=model
                       showCode=false
-                      onReady=onReady
+                      onReady=startExecution
                       codigo=solucion
                       codigoJavascript=""
                       persistirSolucionEnURL=false
