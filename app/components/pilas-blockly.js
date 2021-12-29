@@ -64,7 +64,7 @@ export default Component.extend({
     this.didInsertElement()
   },
 
-  didInsertElement() {
+  async didInsertElement() {
 
     /*
       Esta no es la forma correcta de arreglar esto.
@@ -76,20 +76,16 @@ export default Component.extend({
     this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
     this.exerciseWorkspace.setPilasBlockly(this);
 
-    scheduleOnce('afterRender', async () => {
-      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
-      this.set('blockly_comments', this.get('actividad.puedeComentar'));
-      this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
-      this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
-      this.set('initial_workspace', await this.initialWorkspace())
-    });
+    this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
+    this.set('blockly_comments', this.get('actividad.puedeComentar'));
+    this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
+    this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+    this.set('initial_workspace', await this.initialWorkspace())
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
     this.pilas.on("errorDeActividad", (motivoDelError) => {
-      run(this, function () {
-        this.set('errorDeActividad', motivoDelError);
-      });
+      this.set('errorDeActividad', motivoDelError);
     });
 
     $(window).trigger('resize');
