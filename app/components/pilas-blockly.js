@@ -17,7 +17,7 @@ export default Component.extend({
   interpreterFactory: service(),
   abrirConsignaInicial: false,
   solucion: null,
-  pilas: null,          // Se espera que sea una referencia al servicio pilas.
+  pilasService: null,
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
@@ -84,7 +84,7 @@ export default Component.extend({
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
-    this.pilas.on("errorDeActividad", (motivoDelError) => {
+    this.pilasService.on("errorDeActividad", (motivoDelError) => {
       this.set('errorDeActividad', motivoDelError);
     });
 
@@ -304,7 +304,7 @@ export default Component.extend({
         this.onTerminoEjecucion()
 
       if (this.debeMostrarFinDeDesafio) {
-        if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
+        if (this.pilasService.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
           this.send('abrirFinDesafio');
         }
       }
@@ -345,13 +345,13 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilas.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilasService.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
     run(this, function () {
       this.pilasBloquesApi.executionFinished(solutionId, {
-        isTheProblemSolved: this.pilas.estaResueltoElProblema(),
+        isTheProblemSolved: this.pilasService.estaResueltoElProblema(),
         ...executionResult
       })
     })
@@ -361,7 +361,7 @@ export default Component.extend({
 
     async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
-      await this.pilas.restartScene()
+      await this.pilasService.restartScene()
 
       Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
@@ -398,7 +398,7 @@ export default Component.extend({
       this.set('terminoDeEjecutar', false);
       this.exerciseWorkspace.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
-      await this.pilas.restartScene();
+      await this.pilasService.restartScene();
     },
 
     guardar() {
