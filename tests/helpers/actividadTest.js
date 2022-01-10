@@ -1,7 +1,7 @@
 import { run } from '@ember/runloop';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
-import { setupPBIntegrationTest } from '../helpers/utils'
+import { setupPBIntegrationTest, acceptTerms } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
@@ -14,6 +14,7 @@ export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupPBIntegrationTest(hooks);
     setupMirage(hooks);
+    acceptTerms(hooks);
     runActivityTests(hooks);
   });
 }
