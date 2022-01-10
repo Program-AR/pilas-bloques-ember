@@ -15,7 +15,6 @@ export default Component.extend({
   data_observar_blockly: false,
   actividad: null,
   interpreterFactory: service(),
-  abrirConsignaInicial: false,
   solucion: null,
   pilasService: null,
   codigoJavascript: "", // Se carga como parametro
@@ -44,17 +43,6 @@ export default Component.extend({
   pausadoEnBreakpoint: false,
 
   javascriptCode: null,
-
-  inyectarRedimensionado: on('init', function () {
-
-    // Muestra el dialogo inicial si está definida la consigna inicial.
-    if (this.get('actividad.actividad.consignaInicial')) {
-      later(() => {
-        this.set('abrirConsignaInicial', true);
-      });
-    }
-
-  }),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
