@@ -345,6 +345,12 @@ export default Component.extend({
     })
   },
 
+  javascriptCode(){ 
+    // This should be EmberBlockly's responsibility. 
+    // But that component's javascriptCode often won't get updated soon enough and tests will fail. See https://github.com/Program-AR/pilas-bloques/pull/878
+    return Blockly.MyLanguage.workspaceToCode(Blockly.getMainWorkspace())
+  },
+
   actions: {
 
     async ejecutar(pasoAPaso = false) {
@@ -363,8 +369,7 @@ export default Component.extend({
       }
 
       let factory = this.interpreterFactory;
-      console.log(`JavascriptCode: ${this.javascriptCode}`)
-      let interprete = factory.crearInterprete(this.javascriptCode, (bloqueId) => this.highlighter.step(bloqueId));
+      let interprete = factory.crearInterprete(this.javascriptCode(), (bloqueId) => this.highlighter.step(bloqueId));
 
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
