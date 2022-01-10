@@ -15,7 +15,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.owner.lookup('service:blocksGallery').start()
 
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
-    this.ctrl.pilas = pilasMock //TODO: Injectar como service
+    this.ctrl.pilasService = pilasMock //TODO: Injectar como service
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))

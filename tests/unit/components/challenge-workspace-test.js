@@ -19,7 +19,7 @@ module('Unit | Components | challenge-workspace', function (hooks) {
   });
 
   test('Si el desafío necesita modo de lectura simple debería indicárselo a pilas', function (assert) {
-    this.ctrl.send('onReady', pilasMock);
+    this.ctrl.send('onSceneReady', pilasMock);
     assert.ok(pilasMock.cambiarAModoDeLecturaSimple.called);
   });
   
