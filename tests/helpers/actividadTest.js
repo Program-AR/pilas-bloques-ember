@@ -139,7 +139,6 @@ export function actividadTest(nombre, opciones) {
           setTimeout(() => {
             jQuery('#turbo-button').click();
             jQuery('#run-button').click();
-            console.log('Clickie')
           }, 1000);
 
         });
@@ -157,12 +156,10 @@ export function actividadTest(nombre, opciones) {
           } else {
             assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
           }
-          console.log(`onError: ${nombre}-${descripcion}`)
           success();
         });
 
         this.set('onTerminoEjecucion', () => {
-          console.log(`onTermino: ${nombre}-${descripcion}`)
           if (opciones.cantidadDeActoresAlTerminar) {
             validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilasService);
           }
