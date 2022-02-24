@@ -1,0 +1,893 @@
+libros:
+  index:
+    welcome: "Hi! Welcome to <b> Pilas Bloques </b>, a tool to learn programming."
+    challenges: "The challenges we offer are organized in two groups:"
+    customChallenges: "Now you can also create and import your own challenges using <b>Pilas Bloques</b> challenge creator!"
+    visitAbout:
+      part1: "Visit the section "
+      link1: "About"
+      part2: " to learn more about this tool and its developers."
+
+
+model:
+  challenges:
+    1:
+      title: "The alien pushes the button"
+      description: |
+        "Help our Alien push the button of his lab.
+        Clues: look at the available actions. You will have to move forward several times!"
+      clue: "The blocks allow you to create sequences of actions to solve the challenges we offer in Pilas Bloques."
+    2:
+      title: "The cat in the street"
+      description: "Make the cat take a step forward, get sleep, wake up, greet, and then come back to his original place."
+      clue: You can create new actions in Procedures by defining new blocks including other actions."
+    3:
+      title: "I love jumping"
+      description: |
+        "Help the cat get rid of laziness by jumping 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks."
+      clue: "The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called \"Simple repetition\"."
+    4:
+      title: "The Martian in the desert"
+      description: |
+        "The Martian is lost in the desert and needs to eat his favorite food: apples! Help him meet his goal. Clue: Create a procedure (block) for each group of apples"
+      clue: "There are many ways to eat the apples. You can start by eating the apples on the right, or you can start from top to bottom! Can you figure out another strategy? Consider it always before programming."
+    5:
+      title: "Tito turns the lights on"
+      description: |
+        "Help Tito turn all lights on.
+        Clue: create a procedure to turn on all lights in a diagonal line."
+      clue: "You can create a procedure once, and then use it anytime you want within the same program."
+    6:
+      title: "The alien and the screws"
+      description: |
+        "Define a program to help the alien pick up all screws. Clue: Can’t the alien move in a diagonal line? You can create your own procedure to help him do it.""
+      clue: ""
+    7:
+      title: "The stars collector"
+      description: |
+        "Help our friend collect all stars. Clue: you can create a procedure for collecting a row of stars."
+      clue: "Using the same procedure several times saves your efforts."
+    8:
+      title: "Mary and the watermelons"
+      description: |
+        "Mary needs to eat all watermelons in the grid. Think how you could help her do it by creating the necessary blocks. Clue: the way in which the watermelons are distributed in the grid is key to create as few procedures as possible."
+      clue: ""
+    9:
+      title: "Feeding the fishes"
+      description: |
+        "Our diver needs to feed the 7 fishes on screen with worms. First pick up the worms, and then go to each fish to feed them. Clue: How many steps should your strategy have?"
+      clue: ""
+    10:
+      title: "Installing games"
+      description: |
+        "Ramiro needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password (\"ABC\"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer."
+      clue: ""
+    11:
+      title: "The great adventure of the enchanted sea"
+      description: |
+        "Help the heroine rescue her prince. To achieve this, she needs to overcome the following challenges one after the other:
+        1) Finding the key.
+        2) Opening the chest with the key, and then taking the magic hat that’s inside.
+        3) Giving the hat to the magician to receive the sword in return.
+        4) Fighting against the dark knight using her sword.
+        5) Running away riding a unicorn."
+      clue: ""
+    12:
+      title: "Repairing the spaceship"
+      description: "The Martian needs to repair his spaceship to get back home. To achieve this, he needs to carry 3 units of carbon and 3 units of iron to the spaceship, but he cannot load more than one unit at a time."
+      clue: ""
+    13:
+      title: "The monkey and the bananas"
+      description: |
+        "Can you help the monkey move forward to the opposite box? If there is a banana, he should eat it. Otherwise, he will be happy just by reaching there.
+        Run the program several times to make sure it always works.
+        Clue: look at the \"Sensors\" category and the \"Alternatives\" category."
+      clue: "The \"If... Then\" block runs a sequence of instructions only when the condition is true. This is called \"conditional alternative\"."
+    14:
+      title: "Monkey’s choice"
+      description: |
+        "Can you help our monkey again? This time he should eat all fruits appearing on the screen, whether banana or apple.
+        Run the program several times to make sure it always works.
+        Clue: this time the \"If\" block is not enough."
+      clue: "When there are only 2 options, making one question is enough. In those cases, you can use the \"If... Else\" block."
+    15:
+      title: "Short maze"
+      description: |
+        "Guide the mouse to reach the finish line. To achieve this, he needs to move forward one box in the direction of the arrow. Clue: look in the \"Sensors\" category which questions you could ask."
+      clue: ""
+    16:
+      title: "Three oranges"
+      description: |
+        "The alien should eat all orange sections appearing in the violet boxes. But they neither appear always in the same places, nor the same number of oranges! Clue: first think what procedure you should create to eat only one orange, if it appears."
+      clue: ""
+    17:
+      title: "Tito reloaded"
+      description: "Tito needs to turn all lights on to know the route... But they change their places each time you run the program! You can use the procedures and control blocks."
+      clue: ""
+    18:
+      title: "Long maze"
+      description: |
+        "Help the mouse get out of the maze. Opposite to the previous maze, here the mouse needs to move forward a lot of boxes. How many? Is it always the same number? Clue: first think how to move forward one single box.""
+      clue: ""
+    19:
+      title: "Super Tito 1"
+      description: |
+        "Help Tito turn all lights on.
+        Watch out! There’s a light in every cell, but you don´t know how many cells are there each time you run the program."
+      clue: "There are new blocks that can help you solve this challenge very easily. Use them!"
+    20:
+      title: "Super Tito 2"
+      description: |
+        "Super Tito should turn all lights on, but opposite to the previous challenge, there are cells without any light here. Could you use the same procedure you used in Super Tito 1?"
+      clue: "The \"Repeat until\" block will repeat a sequence of actions until one condition is met. This is called \"conditional repetition\"."
+    21:
+      title: "Maze with cheese"
+      description: |
+        "The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the "Run" button several times to learn how the scenario changes."
+      clue: "It is important to consider if the block’s condition called \"Repeat until\" is met at any given time. Otherwise, the program might never end!"
+    22:
+      title: "Detective Chaparro"
+      description: "The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!"
+      clue: "The \"Repeat until\" block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row."
+    23:
+      title: "Football for robots"
+      description: "Help our football player robot kick all balls. Always remember that a proper procedures splitting can help you face the challenge better."
+      clue: The procedure to be defined should consider the variable scenario and offer a solution with little number of blocks. It is important to take into account that the action repeats several times, and the length of the rows is usually different."
+    24:
+      title: "Powering all computers on"
+      description: |
+        "We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides."
+      clue: ""
+    25:
+      title: "The monkey who knows how to count"
+      description: |
+        "The monkey should visit all boxes and count how many bananas and apples are there in total. Clue: first think how you could count whether there is any apple or banana in a particular box. Then think how you could count all fruits in only one particular column."
+      clue: "Splitting a big problem into several little problems can help you better understand each one of its parts. At the same time, this will allow us to focus on solving easier challenges if compared to the original one."
+    26:
+      title: "The Supertrip"
+      description: |
+        "Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the \"Sensors\" category to see if there is something useful for you there."
+      clue: "You can use the \"Repeat\" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor."
+    27:
+      title: "The monkey counts again"
+      description: "The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?"
+      clue: "A sensor will allow us to get information that can change each time you run the program, even within the same instance. For example, the length of a column changes depending on the column on which the monkey is standing."
+    28:
+      title: "Nano’s planet"
+      description: |
+        "Help Nano eat all his bananas. Be careful! He cannot come down...
+        Take into account that the scenario doesn’t change, and the bananas are always in the same boxes!"
+      clue: |
+        "You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: \"Eat 2 bananas on the right\", \"Eat 3 bananas on the right\", and \"Eat 4 bananas on the right\", we can replace these three procedures with one procedure with a parameter stating the number of bananas we want to eat on the right: \"Eat on the right the following number: [number]\".
+        For adding a parameter to a new procedure, you have to click on the star appearing close to \"Define\" and then drag the \"name of entry\" block towards \"entries\".
+    29:
+      title: |
+        "Drawing: Squares"
+      description: "Draw a square where each side's length is 100."
+      clue: ""
+    30:
+      title: |
+        "Drawing: Robotic hopscotch"
+      description: "Draw 5 squares in a row, where each side's length is 50, as shown by the shaded figure below."
+      clue: ""
+    31:
+      title: |
+        "Drawing: Cutting through the diagonal line"
+      description: "Draw 5 squares in a diagonal line, where each side's length is 50, as shown by the shaded figure below."
+      clue: ""
+    32:
+      title: |
+        "Drawing: Squared mamushkas"
+      description: |
+        "Draw 4 squares, where each side's length is 50, 100, 150, and 200 respectively, as shown by the shaded figure below. Clue: create a new procedure for drawing different squares with different side’s length."
+      clue: "Including parameters in the procedures will allow you to generalize a concept. For example, the side’s length of a square."
+    33:
+      title: |
+        "Drawing: Squared stairs"
+      description: |
+        "Draw 5 squares. 4 of them where each side's length is 50, and 1 of them where each side’s length is 100, as shown by the shaded figure below.
+      clue: "When creating a procedure with parameters, their values are not defined (for example: \"side's length\"). When you use the procedures, you have to set a particular value for such parameters (50, 100, etc.)."
+    34:
+      title: |
+        "Drawing: Hexagon"
+      description: |
+        "Draw a hexagon, where each side's length is 100, as shown by the shaded figure below. Clue: think how many degrees the robot needs to rotate considering the interior angles of the hexagon.""
+      clue: "In polygons, the exterior angle value is equal to 180 degrees, less the interior angle value."
+    35:
+      title: |
+        "Drawing: Inverted pyramid"
+      description: |
+        "Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: consider if there exists a relationship between the different angles and the number of sides."
+      clue: "In polygons, the sum of all exterior angles is equal to 360"
+    36:
+      title: |
+        "Drawing: Figures inside figures"
+      description: |
+        "Draw a triangle, a square, and a pentagon, where each side's length is 100, as shown by the shaded figure below. Clue: create a procedure with a parameter for the number of sides."
+      clue: |
+        "Now we have the Operators: these blocks will allow us to do the numbers automatically, like a calculator!... How many degrees is a full circle rotation? What number should we divide this by?"
+    37:
+      title: |
+        "Drawing: The cave of stalactites"
+      description: |
+        "Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length."
+      clue: "In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure."
+    130:
+      title: "Dracula’s party"
+      description: |
+        "For allowing Dracula’s party to start, we should change the color of 3 spotlights a certain number of times: 5 times the first spotlight, 8 times the second, and 12 times the third."
+      clue: ""
+    131:
+      title: "Saving Christmas"
+      description: |
+        "Help Santa leave a present at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?"
+      clue: ""
+    132:
+      title: "Powering all computers on by using parameters"
+      description: "Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are."
+      clue: "The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move."
+    133:
+      title: "Tito and the square"
+      description: "Tito should turn on all lights in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn´t change each time you run the program."
+      clue: ""
+    134:
+      title: "The spoilsport crab"
+      description: |
+        "The crab wants to prick all balloons in the party. Take into account that they don’t change their position. Clue: could the number of balloons and the direction be parameters?"
+      clue: "You can match numeric parameters (quantities, lengths) with text parameters (directions, names)."
+    135:
+      title: "Lighting the fires"
+      description: "In this case we should light all fires in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn´t change each time you run the program."
+      clue: "If you don´t have a procedure with parameters to move in any direction... You can create it!"
+    136:
+      title: "Free drawing!"
+      description: "In this activity you’ll be able to draw whatever you like."
+      clue: "We’ve included all blocks possible, so that you can unleash your creativity."
+    201:
+      title: "Challenge 1"
+      description: "Help the puma Duba eat her beefsteak. Avoid the obstacles."
+      clue: ""
+    202:
+      title: "Challenge 2"
+      description: "Duba wants to eat her beefsteak. Help her!"
+      clue: ""
+    203:
+      title: "Challenge 3"
+      description: "Will you help the puma eat her beefsteak? Avoid the obstacles."
+      clue: ""
+    204:
+      title: "Challenge 4"
+      description: "Duba wants to eat her beefsteak. How could she do it without crashing with the obstacles?"
+      clue: ""
+    205:
+      title: "Challenge 5"
+      description: "Help the puma Duba satisfy her hunger, avoiding the obstacles."
+      clue: ""
+    206:
+      title: "Challenge 6"
+      description: "Duba wants to eat her beefsteak up. How could she do it?"
+      clue: ""
+    207:
+      title: "Challenge 1"
+      description: "Help the llama complete the tower."
+      clue: "To complete the drawing, Coty needs to draw on the grey lines."
+    208:
+      title: "Challenge 2"
+      description: "Coty wants to draw a house! Will you help her?"
+      clue: ""
+    209:
+      title: "Challenge 3"
+      description: "The llama only wants to draw three lines. How could she do it?"
+      clue: ""
+    210:
+      title: "Challenge 4"
+      description: "Will you help the llama complete the happy face?"
+      clue: ""
+    211:
+      title: "Challenge 5"
+      description: "How could the llama finish the drawing of the bridge?"
+      clue: ""
+    212:
+      title: "Challenge 6"
+      description: "How could the llama finish the drawing of the thistle?"
+      clue: ""
+    213:
+      title: "Challenge 7"
+      description: "It’s time for a good mate. Help the llama finish her drawing."
+      clue: ""
+    214:
+      title: "Challenge 1"
+      description: "Help the armadillo prepare a mixed green salad."
+      clue: ""
+    215:
+      title: "Challenge 2"
+      description: "Today Lita wants to eat a little salad. Help her prepare it!"
+      clue: ""
+    216:
+      title: "Challenge 1"
+      description: "Tomato, lettuce leaves, and it´s ready. Help Lita prepare her salad."
+      clue: ""
+    217:
+      title: "Challenge 2"
+      description: "Help Lita prepare her favorite dish."
+      clue: ""
+    218:
+      title: "Challenge 3"
+      description: "Will she take tomato or lettuce leaves first? Help Lita prepare her favorite dish."
+      clue: ""
+    219:
+      title: "Challenge 4"
+      description: "What steps can the armadillo take to prepare her favorite dish?"
+      clue: ""
+    220:
+      title: "Challenge 1"
+      description: "What’s the error here? Find it, and help Duba eat her beefsteak."
+      clue: ""
+    221:
+      title: "Challenge 2"
+      description: "What happens with Duba that she can’t eat her food? Correct the program and help the puma satisfy her hunger."
+      clue: ""
+    222:
+      title: "Challenge 3"
+      description: "Find out what the problem of this program is, and correct it, to help Duba eat her beefsteak."
+      clue: ""
+    223:
+      title: "Challenge 4"
+      description: "Are there instructions in excess or anything missing? Look at the program, find out what the error is, and help Duba eat her favorite dish."
+      clue: ""
+    224:
+      title: "Challenge 5"
+      description: "What error can you find in this program? Correct it and help the armadillo prepare her lunch."
+      clue: ""
+    225:
+      title: "Challenge 1"
+      description: |
+        "Help the fox read his name: TOTO."
+      clue: "TOTO reads the letters over which he moves."
+    226:
+      title: "Challenge 2"
+      description: "The fox is thinking about Coty, his friend from the Puna. Help him read LLAMA."
+      clue: ""
+    227:
+      title: "Challenge 3"
+      description: |
+        "Guess who the fox is thinking about! A clue: it’s an animal who likes eating beefsteak very much."
+      clue: ""
+    228:
+      title: "Challenge 4"
+      description: "What did the fox want to read? And what did he read finally? Find the error and correct it!"
+      clue: "Toto is coming back. He will be a little late because he is riding a ..."
+    229:
+      title: "Challenge 5"
+      description: "The fox is absentminded. Help him read correctly what day he will arrive at Humahuaca."
+      clue: ""
+    230:
+      title: "Challenge 1"
+      description: "Could the puma reach the beefsteak by using the \"Move\" block only once?"
+      clue: "You can use the new \"Repeat\" block"
+    231:
+      title: "Challenge 2"
+      description: "The puma is hungry and she is far from her beefsteak. But now she knows how to repeat!"
+      clue: ""
+    232:
+      title: "Challenge 3"
+      description: "How could the puma reach her food without need of using many \"Move\" blocks?"
+      clue: ""
+    233:
+      title: "Challenge 1"
+      description: "The llama wants to draw four lines. What’s the repeated item this time?"
+      clue: "I may be more than one block within the Repeat block"
+    234:
+      title: "Challenge 2"
+      description: "Now, in addition, you have to draw downwards! Will this be as easy as adding a block to what you did before? How many repetitions are needed now?"
+      clue: ""
+    235:
+      title: "Challenge 3"
+      description: "The llama wants to draw a flight of stairs. Can you find the pattern that repeats? How many times does it repeat?"
+      clue: ""
+    236:
+      title: "Challenge 1"
+      description: "Great, you found the solution! Will you test it?"
+      clue: "You can test the programs step by step to find out the errors"
+    237:
+      title: "Challenge 2"
+      description: "What happens with Duba that she can’t eat her favorite dish? Remove, modify and/or add the missing blocks so that she can meet her goal."
+      clue: ""
+    238:
+      title: "Challenge 3"
+      description: "What pattern should Coty repeat this time? Is the proposed solution correct?"
+      clue: ""
+    239:
+      title: "Challenge 4"
+      description: "Coty got lost again! Can you find the errors and correct them? The llama will be thankful."
+      clue: ""
+    240:
+      title: "Challenge 1"
+      description: Can you find the steps that repeat? What are they? Create the program to help Lita prepare today’s special salad."
+      clue: ""
+    241:
+      title: "Challenge 2"
+      description: "Where she is now, the armadillo cannot prepare her salad! How many times does Lita repeat the steps to reach the lettuce? What should you modify? What happens when she tries to grab the tomato?"
+      clue: ""
+    242:
+      title: "Challenge 1"
+      description: "Sometimes there is beefsteak; but sometimes not! Can you create only one program to help Duba move on and eat only if there is beefsteak?"
+      clue: "The \"If\" block is useful for doing something sometimes, and sometimes not. It’s useful for asking!"
+    243:
+      title: "Challenge 2"
+      description: "Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear."
+      clue: ""
+    244:
+      title: "Challenge 3"
+      description: "Coty should draw a square, but... Be careful, sometimes a puddle appears!"
+      clue: ""
+    245:
+      title: "Challenge 1"
+      description: "Lita wants to grab any vegetable. But she should grab only the correct one!"
+      clue: "The If/Else block allows you to choose between two options. You just have to choose the question well."
+    246:
+      title: "Challenge 2"
+      description: "She doesn´t always have to move on to the right... What question is useful for Duba to decide?"
+      clue: "You can also include more than one instruction in the If/Else block."
+    247:
+      title: "Challenge 3"
+      description: "Duba, be careful! Where may an obstacle appear? We will have to decide what route to take!"
+      clue: ""
+    248:
+      title: "Challenge 1"
+      description: "Now Duba is far away, and she should decide whether to eat or not. Let’s help her with the blocks we’ve learnt about!"
+      clue: "It’s important to push the \"Run\" button several times to understand the problem."
+    249:
+      title: "Challenge 2"
+      description: "So many beefsteaks! What pattern should Duba repeat? How many questions does she have to make?"
+      clue: "It’s important to push the \"Run\" button several times to understand the problem."
+    250:
+      title: "Challenge 3"
+      description: "Lita should also repeat her decision several times! There is always a vegetable; she just needs to decide which she will grab in each step."
+      clue: ""
+    251:
+      title: "Challenge 1"
+      description: "Now Toto knows how to write! Make him copy the whole word."
+      clue: "Toto knows how to write the letter he is touching."
+    252:
+      title: "Challenge 2"
+      description: "Now Toto wants to write an X per each letter. No matter what he reads! How many Xs should he write?"
+      clue: "Toto also knows how to write the letter you want."
+    253:
+      title: "Challenge 3"
+      description: |
+        "Toto likes playing with the letters: make him copy the word, but make him add \"ICH\" when he reaches the M."
+      clue: "When he copies \"Cement\", he will write \"Cemichent\""
+    254:
+      title: "Challenge 4"
+      description: "Make Toto copy the word in double Dutch. If the word were \"DUBA\", he will have to copy \"DUPUBAPA\""
+      clue: "Double Dutch language adds \"PA\" after an A, \"PE\" after an E, and so on with the rest of the vowels."
+    255:
+      title: "Coty practices free drawing!"
+      description: "In this activity you’ll be able to draw whatever you like."
+      clue: "We’ve included all blocks possible, so that you can unleash your creativity."
+
+  groups:
+    AlienTocaBoton:
+      title: ""
+    ElGatoEnLaCalle:
+      title: ""
+    NoMeCansoDeSaltar:
+      title: ""
+    ElMarcianoEnElDesierto:
+      title: ""
+    TitoEnciendeLuces:
+      title: ""
+    ElAlienYLasTuercas:
+      title: ""
+    ElRecolectorDeEstrellas:
+      title: ""
+    MariaLaComeSandias:
+      title: ""
+    AlimentandoALosPeces:
+      title: ""
+    InstalandoJuegos:
+      title: ""
+    LaGranAventuraDelMarEncantado:
+      title: ""
+    ReparandoLaNave:
+      title: ""
+    ElMonoYLasBananas:
+      title: ""
+    LaEleccionDelMono:
+      title: ""
+    LaberintoCorto:
+      title: ""
+    TresNaranjas:
+      title: ""
+    TitoRecargado:
+      title: ""
+    LaberintoLargo:
+      title: ""
+    SuperTito1:
+      title: ""
+    SuperTito2:
+      title: ""
+    LaberintoConQueso:
+      title: ""
+    ElDetectiveChaparro:
+      title: ""
+    FutbolRobots:
+      title: ""
+    PrendiendoLasCompus:
+      title: ""
+    ElMonoQueSabeContar:
+      title: ""
+    ElSuperviaje:
+      title: ""
+    ElMonoCuentaDeNuevo:
+      title: ""
+    ElPlanetaDeNano:
+      title: ""
+    Dibujando Figuras:
+      title: ""
+    LaFiestaDeDracula:
+      title: ""
+    SalvandoLaNavidad:
+      title: ""
+    PrendiendoLasCompusParametrizado:
+      title: ""
+    TitoCuadrado:
+      title: ""
+    ElCangrejoAguafiestas:
+      title: ""
+    PrendiendoLasFogatas:
+      title: ""
+    DibujoLibre:
+      title: ""
+    manual1cPrimaria3.1.2:
+      title: "Diet based on beefsteaks"
+    manual1cPrimaria3.1.3:
+      title: "Coty begins to draw"
+    manual1cPrimaria3.1.4:
+      title: "Preparing a lettuce and tomato salad!"
+    manual1cPrimaria3.2.2:
+      title: "The secret salad"
+    manual1cPrimaria3.2.3:
+      title: "Problems to eat!"
+    manual1cPrimaria3.I:
+      title: "Toto’s words"
+    manual1cPrimaria4.1.3:
+      title: "More beefsteaks for Duba"
+    manual1cPrimaria4.1.4:
+      title: "Coty’s lines"
+    manual1cPrimaria4.2.3:
+      title: "Let’s correct the programs"
+    manual1cPrimaria4.I:
+      title: "Lita loves vegetables"
+    manual1cPrimaria5.1.3:
+      title: "Only on certain occasions"
+    manual1cPrimaria5.1.4:
+      title: "Or else?"
+    manual1cPrimaria5.2.1:
+      title: "More beefsteaks and salads"
+    manual1cPrimaria5.I:
+      title: "Topotopo Secret Agent"
+    manual1cPrimariaOtros:
+      title: "Others"
+    tecnopolis2021EjercicioModelo:
+      title: ""
+    tecnopolis2021ConDuba:
+      title: ""
+    tecnopolis2021ConLita:
+      title: ""
+    tecnopolis2021ConCoty:
+      title: ""
+    tecnopolis2021ConToto:
+      title: ""
+
+  books:
+    1:
+      title: "First Cycle"
+      description: "Challenges of Teachers’ Handbook \"Computer Science in the classroom, 1st cycle of elementary school\""
+    2:
+      title: "Second Cycle"
+      description: "Challenges of Teachers’ Book \"Activities to learn how to Program.AR\" for the 2nd cycle of elementary school, and beyond."
+    100:
+      title: "Tecnopolis 2021"
+      description: "Challenges of Tecnopolis 2021"
+
+  chapters:
+    Capítulo 3:
+      title: "Chapter 3: Programming in your computer"
+    Capítulo 4:
+      title: "Chapter 4: Repetition"
+    Capítulo 5:
+      title: "Chapter 5: Conditional alternative"
+    Autómatas, comandos, procedimientos y repetición:
+      title: "Automatas, commands, procedures, and repetition"
+    Alternativa condicional:
+      title: "Conditional alternative"
+    Repetición condicional:
+      title: "Conditional repetition"
+    Sensores Numéricos:
+      title: "Numerical sensors"
+    Parametrización de soluciones:
+      title: "Solutions parameterizing"
+    Tecnopolis 2021 Ejercicio Modelo:
+      title: "Sample Exercise"
+    Tecnopolis 2021 Con Duba:
+      title: "With Duba"
+    Tecnopolis 2021 Con Lita:
+      title: "With Lita"
+    Tecnopolis 2021 Con Toto:
+      title: "With Toto"
+    Tecnopolis 2021 Con Coty:
+      title: "With Coty"
+
+desafios:
+  desafioPorNombreError:
+    wentWrong: "Sorry, something went wrong..."
+    doesntExist: "The challenge with the name mentioned in the URL doesn’t exist. Can you please check whether the address of the challenge is correct?"
+  index:
+    chooseOne: "Choose one of the books from the upper menu bar"
+
+
+acercade:
+  yourCurrentVersion: "You are currently using the version"
+  youCanUpdate: "and the version can be updated"
+  visitProjectWeb: "Visit the project website"
+
+components:
+  bugReportModal:
+    askTeacher: "MISSING TRANSLATION"
+    problem: "Are you having any problem?"
+    error: "Do you think there’s an error in this exercise?"
+    mail: "You can contact us writing to "
+    githubReport: "If you have a Github account, you can also report the error directly through the"
+    issueTracker: Issue Tracker
+
+  congratulationsModal:
+    youDidIt: "You did it!"
+    toThink: "To think..."
+    otherSolutions: "Your program is not the only option to solve the problem. There are other solutions!"
+    concepts: "Are you using the concepts well?"
+
+  createCustomChallenge:
+    create: "Create a challenge"
+    custom: "Create custom challenges with Pilas Bloques’ challenge creator."
+
+  descripcionAcercaDe:
+    about: "About Pilas Bloques"
+    app: "Pilas Bloques is an application to learn programming, specially developed for the classroom."
+    challenges: "We offer challenges with different levels of complexity to introduce students into the universe of programming with blocks."
+    blocks: "What does programming with blocks mean?"
+    develop: "It means developing programs with actions and instructions introduced in blocks or predesigned units. The result of fitting blocks together is a program that solves the problem or challenge we offered."
+    positive: "Why is this learning methodology positive?"
+    concept: "Because each abstract <b>concept</b> associated with programming has its <b>visual</b> representation."
+    difficulties: "Because it avoids the <b>difficulties</b> produced by the formal syntax of a <b>written</b> language (and the frustration when we make a mistake in writing!). The blocks are selected, dragged, fit together, and the task is ready."
+    difference: "What makes Pilas Bloques different from the other tools?"
+    learning: "The main difference is that this platform was created in <b>support of a didactic sequence</b> to learn programming at school."
+    sequence: "What’s a didactic sequence?"
+    plan: "It’s the plan by means of which teachers expect students to learn a topic. Pilas Bloques didactic sequence was created and tested by Argentine teachers and researchers. Nowadays, this proposal is being studied in depth and expanded. Learn more about the initiatives we are working on"
+    whoCanDo: "Who can solve Pilas Bloques challenges?"
+    activities: "These challenges can be solved by anyone, from a 3-year-old child to a 99-year-old adult ;) . However, at present
+                we offer two Teachers’ Books as supporting material, targeted at the <b> elementary school </b>, so that children between 5 and 8 years old can take advantage of the activities of the First Cycle, and children between 9 and 12 years old will be able to take advantage of the activities of the Second Cycle."
+    anyone: "And can anyone solve these challenges on their own?"
+    tool: "This tool was thought as an <b>aid for the teacher and the student</b> along the teaching-learning process of Programming
+          at school. In these didactic sequences, the <b>inquiry-based</b> self-learning methodology is fundamental. However, our recommendation is that the
+          teacher serves as the <b>guide</b> and assists during the student’s learning process."
+    contact: "Contact"
+    anyDoubts: "In case of doubt, contact us at: "
+    aboutAuthors: "About the authors and Program.AR"
+    developed: "Pilas Bloques was developed by"
+    usesTool: ". This application uses the tool"
+    developedBy: "Developed by"
+    didacticSequence: "The didactic sequence on which this tool is based was developed by "
+    material: " , and is available, together with other material, in the website. Supported by, and with the collaboration of, Universidad Nacional de Quilmes, and other Argentine national universities."
+    iniciative: "Program.AR is an initiative targeted at making Computer Science significant learning available at all Argentine schools. More information: "
+
+  scene:
+    close: "Close"
+
+  sceneDetails:
+    seeDescription: "I want to see the statement!"
+    getClue: "Give me a clue!"
+    noClues: "This exercise doesn´t have any clue"
+
+  sceneButtons:
+    stepByStepRun:
+      label: "Step"
+      tooltip: "Run the proposed solution step by step"
+    runStep:
+      label: "Step"
+      tooltip: "Move forward one step"
+    run:
+      label: "Run"
+      tooltip: "Run the proposed solution"
+    restart:
+      label: "Restart"
+      tooltip: "Restart the program"
+
+  turboModeToggle:
+    turnOff: "Turn Turbo modo off"
+    turnOn: "Turn Turbo modo on"
+    active: "ACTIVE"
+    inactive: "INACTIVE"
+
+  clearData:
+    deleting: "Deleting data from the browser; if you have a username, you’ll probably have to log in again."
+
+  importCustomChallenge:
+    import: "Import Challenge"
+    custom: "Import a custom challenge from Pilas Bloques’ challenge creator."
+
+  header:
+    tool: "A tool to learn programming"
+
+  registerDisclaimer:
+    now: "Now Pilas Bloques allows you to"
+    register: "register"
+    optional: "Your registration is <b>completely optional</b>; it will help us improve Pilas Bloques, and will allow you to interrupt your work and resume it from where you left it."
+
+  programarDisclaimer:
+    entered: "Did you visit"
+    programar: "Program.AR en casa"
+    in: "In"
+    find: "you will find a lot of material, many tools, and an explanation on how to use Pilas Bloques"
+
+  challengeLink:
+    soon: "Very soon"
+
+  challengeWorkspaceButtons:
+    open: "Open solution"
+    save: "Save solution"
+    careful: "Be careful! If you delete the solution, you will lose your work."
+    delete: "Delete solution"
+    exit: "Exit Full Screen"
+    fullScreen: "Full Screen"
+
+  footer:
+    version: "Version:"
+    problem: "Any problem with this exercise?"
+    about: "About"
+
+  login:
+    already: "I already have a username"
+    wrong: "Username or password are not correct; try it again"
+    forgot: "I forgot my username and password"
+    dontHaveUser: "I don’t have a username yet"
+    register: "Click here to register now!"
+    login: "Log in"
+
+  modalAyuda:
+    help: "This app will offer you several challenges you can solve by fitting blocks together."
+    firstSteps: "The first step is to open the Challenges section:"
+    categories: "The blocks are grouped in categories; use the sidebar to display the blocks."
+    dragAndDrop: "The you can drag and drop the blocks to the workspace."
+    continue: "Once your program is ready, push the \"Run\" button to continue."
+    delete: "And you can also delete the blocks by dragging them to the recycle bin."
+
+  passwordConfirmation:
+    password: "Confirm password"
+
+  sessionButton:
+    login: "Log in"
+    logout: "Log out"
+    changeUser: "Change user"
+
+  phoneRotationWarning:
+    rotate: "Try to rotate your mobile screen"
+    widerScreen: "Pilas Bloques needs a wider screen"
+
+  notifier:
+    download: "There is a new version available for download."
+    visit: "Visit"
+    moreInfo: "our web to learn more."
+
+  termsAndConditionLink:
+    terms: "terms of use and conditions"
+
+blocks:
+  turnOnTheLight: "Turn on the light"
+  pushButton: "Push the button"
+  eatBanana: "Eat the banana"
+  eatApple: "Eat the apple"
+  eatCheese: "Eat cheese"
+  eatOrange: "Eat the orange"
+  moveRight: "Move to the right"
+  moveLeft: "Move to the left"
+  moveUp: "Move up"
+  moveDown: "Move down"
+  pickNut: "Pick the nut"
+  greet: "Greet"
+  openEyes: "Open eyes"
+  closeEyes: "Close eyes"
+  lie: "Lie down"
+  standUp: "Stand up"
+  return: "Return"
+  advance: "Move forward"
+  dream: "Dream"
+  jump: "Jump"
+  goToLeftBorder: "Go to left border"
+  takeStar: "Take the star"
+  eatWatermelon: "Eat watermelon"
+  feedFish: "Feed the fish"
+  pickFood: "Pick food"
+  nextComputer: "Go to next computer"
+  turnComputerOn: "Turn the computer on"
+  turnComputerOff: "Turn the computer off"
+  installGame: "Install the game"
+  writeA: "Write \"A\""
+  writeB: "Write \"B\""
+  writeC: "Write \"C\""
+  takeKey: "Take the key"
+  openSafeBoxTakeHat: "Open the safe box and take the hat"
+  leaveHat: "Leave the hat"
+  attackWithSword: "Attack with the sword"
+  unicornEscape: "Run away riding a unicorn"
+  escape: "Run away"
+  pickIron: "Pick iron"
+  pickCarbon: "Pick carbon"
+  lightCampfire: "Light the campfire"
+  putIntoTheShip: "Put into the spaceship"
+  leavePresent: "Leave a present"
+  nextLine: "Go to the next line"
+  nextColumn: "Go to the next column"
+  countBanana: "Count a banana"
+  countApple: "Count an apple"
+  blowUpBallon: "Blow up the balloon"
+  kickBall: "Kick the ball"
+  move1Km: "Move 1 Km forward"
+  changeLightColor: "Change spotlight color"
+  moveNextLight: "Move to next spotlight"
+  startParty: "Start the party"
+  backToLeftBorder: "Get back to the left border"
+  goToFirstSuspect: "Go to the first suspect"
+  nextSuspect: "Go to next suspect"
+  askSuspect: "Interrogate the suspect"
+  eatSteak: "Eat beefsteak"
+  pickTomato: "Pick the tomato"
+  pickLettuce: "Pick lettuce"
+  prepareSalad: "Prepare the salad"
+  writeLetter: "Write the letter I am touching"
+  moveAndDrawUp: "Move up and draw"
+  moveAndDrawDown: "Move down and draw"
+  moveAndDrawRight: "Move to the right and draw"
+  moveAndDrawLeft: "Move to the left and draw"
+  jumpUp: "Jump up"
+  jumpDown: "Jump down"
+  jumpRight: "Jump to the right"
+  jumpLeft: "Jump to the left"
+  bananaHere: "There is a banana here!"
+  appleHere: "There is an apple here!"
+  orangeHere: "There is an orange here!"
+  campfireHere: "There is a campfire here!"
+  atTheBeginning: "I am at the beginning"
+  getToTheBall: "I got to the ball"
+  comeToTheEnd: "I came to the end"
+  kmToTravel: "Kilometers to travel"
+  atTheSquare: "I am in one corner"
+  atColumnBeginning: "I am at the beginning of the column"
+  atColumnEnd: "I am at the end of the column"
+  currentColumnLength: "Current column length"
+  canMoveDown: "I can move down"
+  canMoveRight: "I can move to the right"
+  reachedGoal: "I reached the finish line"
+  cheeseHere: "There is cheese here!"
+  lampHere: "There is a spotlight here!"
+  frontOfGuilty: "I found the guilty party"
+  steakHere: "There is a beefsteak here!"
+  obstacleUp: "There is an obstacle up there"
+  obstacleDown: "There is an obstacle down there"
+  obstacleAtLeft: "There is an obstacle on the left"
+  obstacleAtRight: "There is an obstacle on the right"
+  puddleHere: "There is a puddle here"
+  lettuceHere: "There is lettuce here!"
+  tomatoHere: "There is a tomato here!"
+  right: "to the right"
+  left: "to the left"
+  up: "up"
+  down: "down"
+  moveTo: "Move to %1"
+  jumpFront: "%1 Jump ahead %2"
+  drawSide: "%1 Draw a side of %2"
+  write: "%1 Write: %2"
+  turnDegrees: "%1 Turn %2 degrees"
+  currentCharacter: "%1 Is the current letter an %2 ?"
+

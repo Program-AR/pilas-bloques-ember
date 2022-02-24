@@ -14,7 +14,7 @@ module.exports = function (/* environment */) {
      * @type {String?}
      * @default "null"
      */
-    fallbackLocale: null,
+    fallbackLocale: 'es-ar',
 
     /**
      * Path where translations are stored.  This is relative to the project root.
@@ -88,8 +88,8 @@ module.exports = function (/* environment */) {
      * @type {Function}
      * @default "function(key,locale) { return true }"
      */
-    requiresTranslation(/* key, locale */) {
-      return true;
+    requiresTranslation(key, locale) {
+      return locale === "es-ar";
     }
   };
 };

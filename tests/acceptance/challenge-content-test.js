@@ -51,6 +51,6 @@ module('Acceptance | challenge content internationalization test', function (hoo
   testCanVisit(230,
     'Desafío 1',
     '¿Puede la puma llegar al churrasco usando solo una vez el bloque mover?',
-    'Podés usar el nuevo bloque “Repetir”')
+    'Podés usar el nuevo bloque "Repetir"')
 
 })
