@@ -459,6 +459,10 @@ model:
       title: Introduction
       description: Help Duba pick all beefsteaks up.
       clue: The REPEAT block can help you.
+    202102:
+      title: Introducción a repetición
+      description: Ayudá a Duba a recoger todos los churrascos, ¡Pero ahora hay un nuevo bloque! :thinking:.
+      clue: Fijate qué pasa cuando apretás el botón Ejecutar.
     2021001:
       title: Level 1
       description: Help Duba pick all beefsteaks up.
@@ -473,6 +477,22 @@ model:
       clue: The REPEAT block can help you.
     2021004:
       title: Level 4
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021005:
+      title: Level 5
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021006:
+      title: Level 6
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021007:
+      title: Level 7
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021008:
+      title: Level 8
       description: Help Duba pick all beefsteaks up.
       clue: The REPEAT block can help you.
     2021101:
@@ -491,7 +511,91 @@ model:
       title: Level 4
       description: Help Lita prepare the salad (with tomato and lettuce).
       clue: The REPEAT block can help you.
-
+    2021105:
+      title: Level 5
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021106:
+      title: Level 6
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021107:
+      title: Level 7
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021108:
+      title: Level 8
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+     2021201:
+      title: Level 1
+      description: Ayudá a la llama Coty a completar la torre.
+      clue: Para completar el dibujo, Coty debe dibujar sobre las líneas grises.
+    2021202:
+      title: Level 2
+      description: La llama quiere solo dibujar tres rayas. ¿Cómo puede hacerlo?
+      clue: ""
+    2021203: 
+      title: Level 3
+      description: Es hora de un buen mate. Ayudá a Coty a terminar de dibujarlo.
+      clue: ""
+    2021204:
+      title: Level 4
+      description: La llama quiere dibujar cuatro líneas. ¿Qué es lo que se repite esta vez?
+      clue: Puede haber más de un bloque dentro del Repetir
+    2021205:
+      title: Level 5
+      description: Coty tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?
+      clue: ""
+    2021206:
+      title: Level 6
+      description: Ayudá a Coty a escribir la letra que falta.
+      clue: ""
+    2021207:
+      title: Level 7
+      description: "¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?"
+      clue: ""
+    2021301:
+      title: Level 1
+      description: |
+        El zorro Toto va leyendo las letras mientras se mueve. Ayudalo a leer su nombre.
+      clue: TOTO lee las letras por las que se mueve.
+    2021302:
+      title: Level 2
+      description: Ayudalo a moverse para leer LLAMA.
+      clue: ""
+    2021303:
+      title: Level 3
+      description: |
+        Toto tiene que leer una palabra. ¡Adiviná en quién está pensando el zorro! Una ayuda: es un animal al que le gusta mucho comer churrasco.
+      clue: ""
+    2021304:
+      title: Level 4
+      description: Arreglá el programa para que Toto pueda leer un día de la semana.
+      clue: "Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una"
+    2021305:
+      title: Level 5
+      description: Toto tiene que leer una palabra. ¿En dónde hay un stand de Pilas Bloques? ¡En Tec....!
+      clue: ""
+    2021306:
+      title: Level 6
+      description: Toto tiene que leer el nombre de una provincia que se lee igual al derecho que al revés. ¿Sabés cuál es?
+      clue: ¡Apareció el bloque Repetir para ayudarnos a resolver el desafío!
+    2021307:
+      title: Level 7 
+      description: |
+        Toto tiene que volver a leer Neuquén. ¡Recordá que se puede leer igual al derecho que al revés! :wink: 
+      clue: ""
+    2021308:
+      title: Level 8
+      description: Ayudalo a Toto a leer SANTA CRUZ. ¡Pero esta vez usando el bloque repetición!
+      clue: ¿Sabías que dentro de un bloque repetir pueden ponerse muchos bloques?
+    2021309:
+      title: Level 9
+      description: |
+        Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
+        Fijate si funciona o qué hay que arreglar.
+      clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
 
   groups:
    AlienTocaBoton:
