@@ -406,7 +406,7 @@ model:
       title: "Challenge 2"
       description: "Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear."
       clue: ""
-       244:
+    244:
       title: Challenge 3
       description: Coty should draw a square, but... Be careful, sometimes a puddle appears!
       clue: ""
@@ -527,7 +527,7 @@ model:
       title: Level 8
       description: Help Lita prepare the salad (with tomato and lettuce).
       clue: The REPEAT block can help you.
-     2021201:
+    2021201:
       title: Level 1
       description: Ayudá a la llama Coty a completar la torre.
       clue: Para completar el dibujo, Coty debe dibujar sobre las líneas grises.
@@ -598,7 +598,7 @@ model:
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
 
   groups:
-   AlienTocaBoton:
+    AlienTocaBoton:
       title: ""
     ElGatoEnLaCalle:
       title: ""
@@ -724,30 +724,30 @@ model:
 
 
   chapters:
-    Chapter 3:
+    Capítulo 3:
       title: "Chapter 3: Programming in your computer"
-    Chapter 4:
+    Capítulo 4:
       title: "Chapter 4: Repetition"
-    Chapter 5:
+    Capítulo 5:
       title: "Chapter 5: Conditional alternative"
-    Robots, commands, procedures, and repetition:
+    Autómatas, comandos, procedimientos y repetición:
       title: "Automatons, commands, procedures, and repetition"
-    Conditional alternative:
+    Alternativa condicional:
       title: "Conditional alternative"
-    Conditional repetition:
+    Repetición condicional:
       title: "Conditional repetition"
-    Numerical sensors:
+    Sensores Numéricos:
       title: "Numerical sensors"
-    Solutions parameterizing:
+    Parametrización de soluciones:
       title: "Solutions parameterizing"
-    Tecnopolis 2021 Sample Exercise:
+    Tecnopolis 2021 Ejercicio Modelo:
       title: "Sample Exercise"
-    Tecnopolis 2021 With Duba:
+    Tecnopolis 2021 Con Duba:
       title: "With Duba"
-    Tecnopolis 2021 With Lita:
+    Tecnopolis 2021 Con Lita:
       title: "With Lita"
-    Tecnopolis 2021 With Coty:
+    Tecnopolis 2021 Con Coty:
       title: "With Coty"
-    Tecnopolis 2021 With Toto:
+    Tecnopolis 2021 Con Toto:
       title: "With Toto"
 
