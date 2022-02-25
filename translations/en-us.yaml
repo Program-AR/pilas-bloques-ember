@@ -1,77 +1,77 @@
 model:
   challenges:
     1:
-      title: "The alien pushes the button"
+      title: The alien pushes the button
       description: |
-        "Help our Alien push the button of his lab.
-        Clues: look at the available actions. You will have to move forward several times!"
-      clue: "The blocks allow you to create sequences of actions to solve the challenges we offer in Pilas Bloques."
+        Help our Alien push the button of his lab.
+        Clues: look at the available actions. You will have to move forward several times!
+      clue: The blocks allow you to create sequences of actions to solve the challenges we offer in Pilas Bloques.
     2:
-      title: "The cat in the street"
-      description: "Make the cat take a step forward, get sleep, wake up, greet, and then come back to his original place."
-      clue: You can create new actions in Procedures by defining new blocks including other actions."
+      title: The cat in the street
+      description: Make the cat take a step forward, get to sleep, wake up, greet, and then come back to his original place.
+      clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
     3:
-      title: "I love jumping"
+      title: I love jumping
       description: |
-        "Help the cat get rid of laziness by jumping 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks."
-      clue: "The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called \"Simple repetition\"."
+        Help the cat get rid of laziness by jumping 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks.
+      clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called \"Simple repetition\".
     4:
-      title: "The Martian in the desert"
+      title: The Martian in the desert
       description: |
-        "The Martian is lost in the desert and needs to eat his favorite food: apples! Help him meet his goal. Clue: Create a procedure (block) for each group of apples"
-      clue: "There are many ways to eat the apples. You can start by eating the apples on the right, or you can start from top to bottom! Can you figure out another strategy? Consider it always before programming."
+        The Martian is lost in the desert and needs to eat his favorite food: apples! Help him meet his goal. Clue: Create a procedure (block) for each group of apples
+      clue: There are many ways to eat the apples. You can start by eating the apples on the right, or you can start from top to bottom! Can you figure out another strategy? Consider it always before programming.
     5:
-      title: "Tito turns the lights on"
+      title: Tito turns the lights on
       description: |
-        "Help Tito turn all lights on.
-        Clue: create a procedure to turn on all lights in a diagonal line."
-      clue: "You can create a procedure once, and then use it anytime you want within the same program."
+        Help Tito turn all lights on.
+        Clue: create a procedure to turn on all lights in a diagonal line.
+      clue: You can create a procedure once, and then use it anytime you want within the same program.
     6:
-      title: "The alien and the screws"
+      title: The alien and the nuts
       description: |
-        "Define a program to help the alien pick up all screws. Clue: Can’t the alien move in a diagonal line? You can create your own procedure to help him do it.""
+        Define a program to help the alien pick up all nuts. Clue: Can’t the alien move in a diagonal line? You can create your own procedure to help him do it.
       clue: ""
     7:
-      title: "The stars collector"
+      title: The stars collector
       description: |
-        "Help our friend collect all stars. Clue: you can create a procedure for collecting a row of stars."
-      clue: "Using the same procedure several times saves your efforts."
+        Help our friend collect all stars. Clue: you can create a procedure for collecting a row of stars.
+      clue: Using the same procedure several times saves your efforts.
     8:
-      title: "Mary and the watermelons"
+      title: Mary and the watermelons
       description: |
-        "Mary needs to eat all watermelons in the grid. Think how you could help her do it by creating the necessary blocks. Clue: the way in which the watermelons are distributed in the grid is key to create as few procedures as possible."
+        Mary needs to eat all watermelons in the grid. Think how you could help her do it by creating the necessary blocks. Clue: the way in which the watermelons are distributed in the grid is key to create as few procedures as possible.
       clue: ""
     9:
-      title: "Feeding the fishes"
+      title: Feeding the fishes
       description: |
-        "Our diver needs to feed the 7 fishes on screen with worms. First pick up the worms, and then go to each fish to feed them. Clue: How many steps should your strategy have?"
+        Our diver needs to feed the 7 fishes on screen with worms. First pick up the worms, and then go to each fish to feed them. Clue: How many steps should your strategy have?
       clue: ""
     10:
-      title: "Installing games"
+      title: Installing games
       description: |
-        "Ramiro needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password (\"ABC\"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer."
+        Ramiro needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password (\"ABC\"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ""
     11:
-      title: "The great adventure of the enchanted sea"
+      title: The great adventure of the enchanted sea
       description: |
-        "Help the heroine rescue her prince. To achieve this, she needs to overcome the following challenges one after the other:
+        Help the heroine rescue her prince. To achieve this, she needs to overcome the following challenges one after the other:
         1) Finding the key.
         2) Opening the chest with the key, and then taking the magic hat that’s inside.
         3) Giving the hat to the magician to receive the sword in return.
         4) Fighting against the dark knight using her sword.
-        5) Running away riding a unicorn."
+        5) Running away riding a unicorn.
       clue: ""
     12:
-      title: "Repairing the spaceship"
-      description: "The Martian needs to repair his spaceship to get back home. To achieve this, he needs to carry 3 units of carbon and 3 units of iron to the spaceship, but he cannot load more than one unit at a time."
+      title: Repairing the spaceship
+      description: The Martian needs to repair his spaceship to get back home. To achieve this, he needs to carry 3 units of carbon and 3 units of iron to the spaceship, but he cannot load more than one unit at a time.
       clue: ""
     13:
-      title: "The monkey and the bananas"
+      title: The monkey and the bananas
       description: |
-        "Can you help the monkey move forward to the opposite box? If there is a banana, he should eat it. Otherwise, he will be happy just by reaching there.
+        Can you help the monkey move forward to the opposite box? If there is a banana, he should eat it. Otherwise, he will be happy just by reaching there.
         Run the program several times to make sure it always works.
-        Clue: look at the \"Sensors\" category and the \"Alternatives\" category."
-      clue: "The \"If... Then\" block runs a sequence of instructions only when the condition is true. This is called \"conditional alternative\"."
+        Clue: look at the \"Sensors\" category and the \"Alternatives\” category.
+      clue: The \"If\" block runs a sequence of instructions only when the condition is true. This is called \"Conditional alternative\".
     14:
       title: "Monkey’s choice"
       description: |
