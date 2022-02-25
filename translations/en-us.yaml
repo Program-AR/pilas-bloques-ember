@@ -317,94 +317,94 @@ model:
       description: What happens with Duba that she can’t eat her food? Correct the program and help the puma satisfy her hunger.
       clue: ""
     222:
-      title: "Challenge 3"
-      description: "Find out what the problem of this program is, and correct it, to help Duba eat her beefsteak."
+      title: Challenge 3
+      description: Find out what the problem of this program is, and correct it, to help Duba eat her beefsteak.
       clue: ""
     223:
-      title: "Challenge 4"
-      description: "Are there instructions in excess or anything missing? Look at the program, find out what the error is, and help Duba eat her favorite dish."
+      title: Challenge 4
+      description: Are there instructions in excess or anything missing? Look at the program, find out what the error is, and help Duba eat her favorite dish.
       clue: ""
     224:
-      title: "Challenge 5"
-      description: "What error can you find in this program? Correct it and help the armadillo prepare her lunch."
+      title: Challenge 5
+      description: What error can you find in this program? Correct it and help the armadillo prepare her lunch.
       clue: ""
     225:
-      title: "Challenge 1"
+      title: Challenge 1
       description: |
-        "Help the fox read his name: TOTO."
-      clue: "TOTO reads the letters over which he moves."
+        Help the fox read his name: TOTO.
+      clue: TOTO reads the letters over which he moves.
     226:
-      title: "Challenge 2"
-      description: "The fox is thinking about Coty, his friend from the Puna. Help him read LLAMA."
+      title: Challenge 2
+      description: The fox is thinking about Coty, his friend from the Puna. Help him read LLAMA.
       clue: ""
     227:
-      title: "Challenge 3"
+      title: Challenge 3
       description: |
-        "Guess who the fox is thinking about! A clue: it’s an animal who likes eating beefsteak very much."
+        Guess who the fox is thinking about! A clue: it’s an animal who likes eating beefsteak very much.
       clue: ""
     228:
-      title: "Challenge 4"
-      description: "What did the fox want to read? And what did he read finally? Find the error and correct it!"
-      clue: "Toto is coming back. He will be a little late because he is riding a ..."
+      title: Challenge 4
+      description: What did the fox want to read? And what did he read finally? Find the error and correct it!
+      clue: Toto is coming back. He will be a little late because he is riding a ...
     229:
-      title: "Challenge 5"
-      description: "The fox is absentminded. Help him read correctly what day he will arrive at Humahuaca."
+      title: Challenge 5
+      description: The fox is absentminded. Help him read correctly what day he will arrive at Humahuaca.
       clue: ""
     230:
-      title: "Challenge 1"
-      description: "Could the puma reach the beefsteak by using the \"Move\" block only once?"
-      clue: "You can use the new \"Repeat\" block"
+      title: Challenge 1
+      description: Could the puma reach the beefsteak by using the \"Move right\” block only once?
+      clue: You can use the new \"Repeat\” block
     231:
-      title: "Challenge 2"
-      description: "The puma is hungry and she is far from her beefsteak. But now she knows how to repeat!"
+      title: Challenge 2
+      description: The puma is hungry and she is far from her beefsteak. But now she knows how to repeat!
       clue: ""
     232:
-      title: "Challenge 3"
-      description: "How could the puma reach her food without need of using many \"Move\" blocks?"
+      title: Challenge 3
+      description: How could the puma reach her food without need of using many \"Move\” blocks?
       clue: ""
     233:
-      title: "Challenge 1"
-      description: "The llama wants to draw four lines. What’s the repeated item this time?"
-      clue: "I may be more than one block within the Repeat block"
+      title: Challenge 1
+      description: The llama wants to draw four lines. What’s the repeated item this time?
+      clue: I may be more than one block within the Repeat block
     234:
-      title: "Challenge 2"
-      description: "Now, in addition, you have to draw downwards! Will this be as easy as adding a block to what you did before? How many repetitions are needed now?"
+      title: Challenge 2
+      description: Now, in addition, you have to draw downwards! Will this be as easy as adding a block to what you did before? How many repetitions are needed now?
       clue: ""
     235:
-      title: "Challenge 3"
-      description: "The llama wants to draw a flight of stairs. Can you find the pattern that repeats? How many times does it repeat?"
+      title: Challenge 3
+      description: The llama wants to draw a flight of stairs. Can you find the pattern that repeats? How many times does it repeat?
       clue: ""
     236:
-      title: "Challenge 1"
-      description: "Great, you found the solution! Will you test it?"
-      clue: "You can test the programs step by step to find out the errors"
+      title: Challenge 1
+      description: Great, you found the solution! Will you test it?
+      clue: You can test the programs step by step to find out the errors
     237:
-      title: "Challenge 2"
-      description: "What happens with Duba that she can’t eat her favorite dish? Remove, modify and/or add the missing blocks so that she can meet her goal."
+      title: Challenge 2
+      description: What happens with Duba that she can’t eat her favorite dish? Remove, modify and/or add the missing blocks so that she can meet her goal.
       clue: ""
     238:
-      title: "Challenge 3"
-      description: "What pattern should Coty repeat this time? Is the proposed solution correct?"
+      title: Challenge 3
+      description: What pattern should Coty repeat this time? Is the proposed solution correct?
       clue: ""
     239:
-      title: "Challenge 4"
-      description: "Coty got lost again! Can you find the errors and correct them? The llama will be thankful."
+      title: Challenge 4
+      description: Coty got lost again! Can you find the errors and correct them? The llama will be thankful.
       clue: ""
     240:
-      title: "Challenge 1"
-      description: Can you find the steps that repeat? What are they? Create the program to help Lita prepare today’s special salad."
+      title: Challenge 1
+      description: Can you find the steps that repeat? What are they? Create the program to help Lita prepare today’s special salad.
       clue: ""
     241:
-      title: "Challenge 2"
-      description: "Where she is now, the armadillo cannot prepare her salad! How many times does Lita repeat the steps to reach the lettuce? What should you modify? What happens when she tries to grab the tomato?"
+      title: Challenge 2
+      description: The armadillo cannot prepare her salad! How many times does Lita repeat the steps to reach the lettuce? What should you modify? What happens when she tries to grab the tomato?
       clue: ""
     242:
-      title: "Challenge 1"
-      description: "Sometimes there is beefsteak; but sometimes not! Can you create only one program to help Duba move on and eat only if there is beefsteak?"
-      clue: "The \"If\" block is useful for doing something sometimes, and sometimes not. It’s useful for asking!"
+      title: Challenge 1
+      description: Sometimes there is beefsteak; but sometimes not! Can you create only one program to help Duba move on and eat only if there is beefsteak?
+      clue: The \"If\" block is useful for doing something sometimes, and sometimes not. It’s useful for asking!
     243:
-      title: "Challenge 2"
-      description: "Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear."
+      title: Challenge 2
+      description: Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear.
       clue: ""
     244:
       title: "Challenge 3"
