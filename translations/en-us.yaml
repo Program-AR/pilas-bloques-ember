@@ -73,74 +73,74 @@ model:
         Clue: look at the \"Sensors\" category and the \"Alternatives\” category.
       clue: The \"If\" block runs a sequence of instructions only when the condition is true. This is called \"Conditional alternative\".
     14:
-      title: "Monkey’s choice"
+      title: Monkey’s choice
       description: |
-        "Can you help our monkey again? This time he should eat all fruits appearing on the screen, whether banana or apple.
+        Can you help our monkey again? This time he should eat all fruits appearing on the screen, whether banana or apple.
         Run the program several times to make sure it always works.
-        Clue: this time the \"If\" block is not enough."
-      clue: "When there are only 2 options, making one question is enough. In those cases, you can use the \"If... Else\" block."
+        Clue: this time the \"If\” block is not enough.
+      clue: When there are only 2 options, making one question is enough. In those cases, you can use the \"If... Else\” block.
     15:
-      title: "Short maze"
+      title: Short maze
       description: |
-        "Guide the mouse to reach the finish line. To achieve this, he needs to move forward one box in the direction of the arrow. Clue: look in the \"Sensors\" category which questions you could ask."
+        Guide the mouse to reach the finish line. To achieve this, he needs to move forward one box in the direction of the arrow. Clue: look in the \"Sensors\" category which questions you could ask.
       clue: ""
     16:
-      title: "Three oranges"
+      title: Three oranges
       description: |
-        "The alien should eat all orange sections appearing in the violet boxes. But they neither appear always in the same places, nor the same number of oranges! Clue: first think what procedure you should create to eat only one orange, if it appears."
+        The alien should eat all orange sections appearing in the violet boxes. But they neither appear always in the same places, nor the same number of oranges! Clue: first think what procedure you should create to eat only one orange, if it appears.
       clue: ""
     17:
-      title: "Tito reloaded"
-      description: "Tito needs to turn all lights on to know the route... But they change their places each time you run the program! You can use the procedures and control blocks."
+      title: Tito reloaded
+      description: Tito needs to turn all lights on to know the route... But they change their places each time you run the program! You can use the procedures and control blocks.
       clue: ""
     18:
-      title: "Long maze"
+      title: Long maze
       description: |
-        "Help the mouse get out of the maze. Opposite to the previous maze, here the mouse needs to move forward a lot of boxes. How many? Is it always the same number? Clue: first think how to move forward one single box.""
+        Help the mouse get out of the maze. Opposite to the previous maze, here the mouse needs to move forward a lot of boxes. How many? Is it always the same number? Clue: first think how to move forward one single box.
       clue: ""
     19:
-      title: "Super Tito 1"
+      title: Super Tito 1
       description: |
-        "Help Tito turn all lights on.
-        Watch out! There’s a light in every cell, but you don´t know how many cells are there each time you run the program."
-      clue: "There are new blocks that can help you solve this challenge very easily. Use them!"
+        Help Tito turn all lights on.
+        Watch out! There’s a light in every cell, but you don´t know how many cells are there each time you run the program.
+      clue: There are new blocks that can help you solve this challenge very easily. Use them!
     20:
-      title: "Super Tito 2"
+      title: Super Tito 2
       description: |
-        "Super Tito should turn all lights on, but opposite to the previous challenge, there are cells without any light here. Could you use the same procedure you used in Super Tito 1?"
-      clue: "The \"Repeat until\" block will repeat a sequence of actions until one condition is met. This is called \"conditional repetition\"."
+        Super Tito should turn all lights on, but opposite to the previous challenge, there are cells without any light here. Could you use the same procedure you used in Super Tito 1?
+      clue: The \"Repeat until\" block will repeat a sequence of actions until one condition is met. This is called \"Conditional repetition\".
     21:
-      title: "Maze with cheese"
+      title: Maze with cheese
       description: |
-        "The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the "Run" button several times to learn how the scenario changes."
-      clue: "It is important to consider if the block’s condition called \"Repeat until\" is met at any given time. Otherwise, the program might never end!"
+        The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
+      clue: It is important to consider if the block’s condition called \"Repeat until\” is met at any given time. Otherwise, the program might never end!
     22:
-      title: "Detective Chaparro"
-      description: "The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!"
-      clue: "The \"Repeat until\" block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row."
+      title: Detective Chaparro
+      description: The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!
+      clue: The \"Repeat until\” block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row.
     23:
-      title: "Football for robots"
-      description: "Help our football player robot kick all balls. Always remember that a proper procedures splitting can help you face the challenge better."
-      clue: The procedure to be defined should consider the variable scenario and offer a solution with little number of blocks. It is important to take into account that the action repeats several times, and the length of the rows is usually different."
+      title: Football for robots
+      description: Help our football player robot kick all balls. Always remember that a proper task division using procedures can help you face the challenge better.
+      clue: The procedure to be defined should consider the variable scenario and offer a solution with little number of blocks. It is important to take into account that the action repeats several times, and the length of the rows is usually different.
     24:
-      title: "Powering all computers on"
+      title: Powering all computers on
       description: |
-        "We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides."
+        We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
       clue: ""
     25:
-      title: "The monkey who knows how to count"
+      title: The monkey who knows how to count
       description: |
-        "The monkey should visit all boxes and count how many bananas and apples are there in total. Clue: first think how you could count whether there is any apple or banana in a particular box. Then think how you could count all fruits in only one particular column."
-      clue: "Splitting a big problem into several little problems can help you better understand each one of its parts. At the same time, this will allow us to focus on solving easier challenges if compared to the original one."
+        The monkey should visit all boxes and count how many bananas and apples are there in total. Clue: first think how you could count whether there is any apple or banana in a particular box. Then think how you could count all fruits in only one particular column.
+      clue: Splitting a big problem into several little problems can help you better understand each one of its parts. At the same time, this will allow us to focus on solving easier challenges if compared to the original one.
     26:
-      title: "The Supertrip"
+      title: The Supertrip
       description: |
-        "Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the \"Sensors\" category to see if there is something useful for you there."
-      clue: "You can use the \"Repeat\" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor."
+        Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the \"Sensors\" category to see if there is something useful for you there.
+      clue: You can use the \"Repeat\" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor.
     27:
-      title: "The monkey counts again"
-      description: "The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?"
-      clue: "A sensor will allow us to get information that can change each time you run the program, even within the same instance. For example, the length of a column changes depending on the column on which the monkey is standing."
+      title: The monkey counts again
+      description: The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?
+      clue: A sensor will allow us to get information that can change each time you run the program, even during the same run. For example, the length of a column changes depending on the column on which the monkey is standing.
     28:
       title: "Nano’s planet"
       description: |
