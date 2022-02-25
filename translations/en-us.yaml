@@ -220,101 +220,101 @@ model:
       description: Tito should turn on all lights in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn't change each time you run the program.
       clue: ""
     134:
-      title: "The spoilsport crab"
+      title: The spoilsport crab
       description: |
-        "The crab wants to prick all balloons in the party. Take into account that they don’t change their position. Clue: could the number of balloons and the direction be parameters?"
-      clue: "You can match numeric parameters (quantities, lengths) with text parameters (directions, names)."
+        The crab wants to pinch all balloons in the party. Take into account that they don’t change their position. Clue: could the number of balloons and the direction be parameters?
+      clue: You can match numeric parameters (quantities, lengths) with text parameters (directions, names).
     135:
-      title: "Lighting the fires"
-      description: "In this case we should light all fires in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn´t change each time you run the program."
-      clue: "If you don´t have a procedure with parameters to move in any direction... You can create it!"
+      title: Lighting the campfires
+      description: In this case we should light all campfires in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn´t change each time you run the program.
+      clue: If you don´t have a procedure with parameters to move in any direction... You can create it!
     136:
-      title: "Free drawing!"
-      description: "In this activity you’ll be able to draw whatever you like."
-      clue: "We’ve included all blocks possible, so that you can unleash your creativity."
+      title: Free drawing!
+      description: In this activity you’ll be able to draw whatever you like.
+      clue: We’ve included all blocks possible, so that you can unleash your creativity.
     201:
-      title: "Challenge 1"
-      description: "Help the puma Duba eat her beefsteak. Avoid the obstacles."
+      title: Challenge 1
+      description: Help Duba the puma eat her beefsteak. Avoid the obstacles.
       clue: ""
     202:
-      title: "Challenge 2"
-      description: "Duba wants to eat her beefsteak. Help her!"
+      title: Challenge 2
+      description: Duba wants to eat her beefsteak. Help her!
       clue: ""
     203:
-      title: "Challenge 3"
-      description: "Will you help the puma eat her beefsteak? Avoid the obstacles."
+      title: Challenge 3
+      description: Will you help the puma eat her beefsteak? Avoid the obstacles.
       clue: ""
     204:
-      title: "Challenge 4"
-      description: "Duba wants to eat her beefsteak. How could she do it without crashing with the obstacles?"
+      title: Challenge 4
+      description: Duba wants to eat her beefsteak. How could she do it without crashing with the obstacles?
       clue: ""
     205:
-      title: "Challenge 5"
-      description: "Help the puma Duba satisfy her hunger, avoiding the obstacles."
+      title: Challenge 5
+      description: Help the puma Duba satisfy her hunger, avoiding the obstacles.
       clue: ""
     206:
-      title: "Challenge 6"
-      description: "Duba wants to eat her beefsteak up. How could she do it?"
+      title: Challenge 6
+      description: Duba wants to eat her beefsteak up. How could she do it?
       clue: ""
     207:
-      title: "Challenge 1"
-      description: "Help the llama complete the tower."
-      clue: "To complete the drawing, Coty needs to draw on the grey lines."
+      title: Challenge 1
+      description: Help the llama complete the tower.
+      clue: To complete the drawing, Coty needs to draw on the grey lines.
     208:
-      title: "Challenge 2"
-      description: "Coty wants to draw a house! Will you help her?"
+      title: Challenge 2
+      description: Coty wants to draw a house! Will you help her?
       clue: ""
     209:
-      title: "Challenge 3"
-      description: "The llama only wants to draw three lines. How could she do it?"
+      title: Challenge 3
+      description: The llama only wants to draw three lines. How could she do it?
       clue: ""
     210:
-      title: "Challenge 4"
-      description: "Will you help the llama complete the happy face?"
+      title: Challenge 4
+      description: Will you help the llama complete the happy face?
       clue: ""
     211:
-      title: "Challenge 5"
-      description: "How could the llama finish the drawing of the bridge?"
+      title: Challenge 5
+      description: How could the llama finish the drawing of the bridge?
       clue: ""
     212:
-      title: "Challenge 6"
-      description: "How could the llama finish the drawing of the thistle?"
+      title: Challenge 6
+      description: How could the llama finish the drawing of the thistle?
       clue: ""
     213:
-      title: "Challenge 7"
-      description: "It’s time for a good mate. Help the llama finish her drawing."
+      title: Challenge 7
+      description: It’s time for a good mate. Help the llama finish her drawing.
       clue: ""
     214:
-      title: "Challenge 1"
-      description: "Help the armadillo prepare a mixed green salad."
+      title: Challenge 1
+      description: Help Lita the armadillo prepare a mixed green salad.
       clue: ""
     215:
-      title: "Challenge 2"
-      description: "Today Lita wants to eat a little salad. Help her prepare it!"
+      title: Challenge 2
+      description: Today Lita wants to eat a little salad. Help her prepare it!
       clue: ""
     216:
-      title: "Challenge 1"
-      description: "Tomato, lettuce leaves, and it´s ready. Help Lita prepare her salad."
+      title: Challenge 1
+      description: Tomato, lettuce leaves, and it´s ready. Help Lita prepare her salad.
       clue: ""
     217:
-      title: "Challenge 2"
-      description: "Help Lita prepare her favorite dish."
+      title: Challenge 2
+      description: Help Lita prepare her favorite dish.
       clue: ""
     218:
-      title: "Challenge 3"
-      description: "Will she take tomato or lettuce leaves first? Help Lita prepare her favorite dish."
+      title: Challenge 3
+      description: Will she take tomato or lettuce leaves first? Help Lita prepare her favorite dish.
       clue: ""
     219:
-      title: "Challenge 4"
-      description: "What steps can the armadillo take to prepare her favorite dish?"
+      title: Challenge 4
+      description: What steps can the armadillo take to prepare her favorite dish?
       clue: ""
     220:
-      title: "Challenge 1"
-      description: "What’s the error here? Find it, and help Duba eat her beefsteak."
+      title: Challenge 1
+      description: What’s the error here? Find it, and help Duba eat her beefsteak.
       clue: ""
     221:
-      title: "Challenge 2"
-      description: "What happens with Duba that she can’t eat her food? Correct the program and help the puma satisfy her hunger."
+      title: Challenge 2
+      description: What happens with Duba that she can’t eat her food? Correct the program and help the puma satisfy her hunger.
       clue: ""
     222:
       title: "Challenge 3"
