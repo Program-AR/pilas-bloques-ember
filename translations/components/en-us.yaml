@@ -6,6 +6,7 @@ bugReportModal:
   githubReport: "If you have a Github account, you can also report the error directly through the"
   issueTracker: Issue Tracker
 
+
 congratulationsModal:
   youDidIt: "You did it!"
   toThink: "To think..."

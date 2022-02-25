@@ -406,58 +406,95 @@ model:
       title: "Challenge 2"
       description: "Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear."
       clue: ""
-    244:
-      title: "Challenge 3"
-      description: "Coty should draw a square, but... Be careful, sometimes a puddle appears!"
+       244:
+      title: Challenge 3
+      description: Coty should draw a square, but... Be careful, sometimes a puddle appears!
       clue: ""
     245:
-      title: "Challenge 1"
-      description: "Lita wants to grab any vegetable. But she should grab only the correct one!"
-      clue: "The If/Else block allows you to choose between two options. You just have to choose the question well."
+      title: Challenge 1
+      description: Lita wants to grab any vegetable. But she should grab only the correct one!
+      clue: The If/Else block allows you to choose between two options. You just have to choose the question well.
     246:
-      title: "Challenge 2"
-      description: "She doesn´t always have to move on to the right... What question is useful for Duba to decide?"
-      clue: "You can also include more than one instruction in the If/Else block."
+      title: Challenge 2
+      description: She doesn´t always have to move on to the right... What question is useful for Duba to decide?
+      clue: You can also include more than one instruction in the If/Else block.
     247:
-      title: "Challenge 3"
-      description: "Duba, be careful! Where may an obstacle appear? We will have to decide what route to take!"
+      title: Challenge 3
+      description: Duba, be careful! Where may an obstacle appear? We will have to decide what route to take!
       clue: ""
     248:
-      title: "Challenge 1"
-      description: "Now Duba is far away, and she should decide whether to eat or not. Let’s help her with the blocks we’ve learnt about!"
-      clue: "It’s important to push the \"Run\" button several times to understand the problem."
+      title: Challenge 1
+      description: Now Duba is far away, and she should decide whether to eat or not. Let’s help her with the blocks we’ve learnt about!
+      clue: It’s important to push the "Run" button several times to understand the problem.
     249:
-      title: "Challenge 2"
-      description: "So many beefsteaks! What pattern should Duba repeat? How many questions does she have to make?"
-      clue: "It’s important to push the \"Run\" button several times to understand the problem."
+      title: Challenge 2
+      description: So many beefsteaks! What pattern should Duba repeat? How many questions does she have to make?
+      clue: It’s important to push the "Run" button several times to understand the problem.
     250:
-      title: "Challenge 3"
-      description: "Lita should also repeat her decision several times! There is always a vegetable; she just needs to decide which she will grab in each step."
+      title: Challenge 3
+      description: Lita should also repeat her decision several times! There is always a vegetable; she just needs to decide which she will grab in each step.
       clue: ""
     251:
-      title: "Challenge 1"
-      description: "Now Toto knows how to write! Make him copy the whole word."
-      clue: "Toto knows how to write the letter he is touching."
+      title: Challenge 1
+      description: Now Toto knows how to write! Make him copy the whole word.
+      clue: Toto knows how to write the letter he is touching.
     252:
-      title: "Challenge 2"
-      description: "Now Toto wants to write an X per each letter. No matter what he reads! How many Xs should he write?"
-      clue: "Toto also knows how to write the letter you want."
+      title: Challenge 2
+      description: Now Toto wants to write an X per each letter. No matter what he reads! How many Xs should he write?
+      clue: Toto also knows how to write the letter you want.
     253:
-      title: "Challenge 3"
+      title: Challenge 3
       description: |
-        "Toto likes playing with the letters: make him copy the word, but make him add \"ICH\" when he reaches the M."
-      clue: "When he copies \"Cement\", he will write \"Cemichent\""
+        Toto likes playing with the letters: make him copy the word, but make him add "ICH" when he reaches the M.
+      clue: When he copies "Cement", he will write "Cemichent"
     254:
-      title: "Challenge 4"
-      description: "Make Toto copy the word in double Dutch. If the word were \"DUBA\", he will have to copy \"DUPUBAPA\""
-      clue: "Double Dutch language adds \"PA\" after an A, \"PE\" after an E, and so on with the rest of the vowels."
+      title: Challenge 4
+      description: Make Toto copy the word in Jeringozo language. If the word were "DUBA", he will have to copy "DUPUBAPA"
+      clue: Jeringozo language adds "PA" after an A, "PE" after an E, and so on with the rest of the vowels.
     255:
-      title: "Coty practices free drawing!"
-      description: "In this activity you’ll be able to draw whatever you like."
-      clue: "We’ve included all blocks possible, so that you can unleash your creativity."
+      title: Coty practices free drawing!
+      description: In this activity you’ll be able to draw whatever you like.
+      clue: We’ve included all blocks possible, so that you can unleash your creativity.
+    202101:
+      title: Introduction
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021001:
+      title: Level 1
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021002:
+      title: Level 2
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021003:
+      title: Level 3
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021004:
+      title: Level 4
+      description: Help Duba pick all beefsteaks up.
+      clue: The REPEAT block can help you.
+    2021101:
+      title: Level 1
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021102:
+      title: Level 2
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021103:
+      title: Level 3
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+    2021104:
+      title: Level 4
+      description: Help Lita prepare the salad (with tomato and lettuce).
+      clue: The REPEAT block can help you.
+
 
   groups:
-    AlienTocaBoton:
+   AlienTocaBoton:
       title: ""
     ElGatoEnLaCalle:
       title: ""
@@ -530,35 +567,35 @@ model:
     DibujoLibre:
       title: ""
     manual1cPrimaria3.1.2:
-      title: "Diet based on beefsteaks"
+      title: Diet based on beefsteaks
     manual1cPrimaria3.1.3:
-      title: "Coty begins to draw"
+      title: Coty begins to draw
     manual1cPrimaria3.1.4:
-      title: "Preparing a lettuce and tomato salad!"
+      title: Preparing a lettuce and tomato salad!
     manual1cPrimaria3.2.2:
-      title: "The secret salad"
+      title: The secret salad
     manual1cPrimaria3.2.3:
-      title: "Problems to eat!"
+      title: Problems to eat!
     manual1cPrimaria3.I:
-      title: "Toto’s words"
+      title: Toto’s words
     manual1cPrimaria4.1.3:
-      title: "More beefsteaks for Duba"
+      title: More beefsteaks for Duba
     manual1cPrimaria4.1.4:
-      title: "Coty’s lines"
+      title: Coty’s lines
     manual1cPrimaria4.2.3:
-      title: "Let’s correct the programs"
+      title: Let’s correct the programs
     manual1cPrimaria4.I:
-      title: "Lita loves vegetables"
+      title: Lita loves vegetables
     manual1cPrimaria5.1.3:
-      title: "Only on certain occasions"
+      title: Only on certain occasions
     manual1cPrimaria5.1.4:
-      title: "Or else?"
+      title: Or else?
     manual1cPrimaria5.2.1:
-      title: "More beefsteaks and salads"
+      title: More beefsteaks and salads
     manual1cPrimaria5.I:
-      title: "Topotopo Secret Agent"
+      title: Topotopo Secret Agent
     manual1cPrimariaOtros:
-      title: "Others"
+      title: Others
     tecnopolis2021EjercicioModelo:
       title: ""
     tecnopolis2021ConDuba:
@@ -572,39 +609,41 @@ model:
 
   books:
     1:
-      title: "First Cycle"
-      description: "Challenges of Teachers’ Handbook \"Computer Science in the classroom, 1st cycle of elementary school\""
+      title: First Cycle
+      description: Challenges of Teachers’ Handbook "Computer Science in the classroom, 1st cycle of elementary school"
     2:
-      title: "Second Cycle"
-      description: "Challenges of Teachers’ Book \"Activities to learn how to Program.AR\" for the 2nd cycle of elementary school, and beyond."
+      title: Second Cycle
+      description: Challenges of Teachers’ Book "Activities to learn how to Program.AR" for the 2nd cycle of elementary school, and beyond.
     100:
-      title: "Tecnopolis 2021"
-      description: "Challenges of Tecnopolis 2021"
+      title: Tecnopolis 2021
+      description: Challenges of Tecnopolis 2021
+
 
   chapters:
-    Capítulo 3:
+    Chapter 3:
       title: "Chapter 3: Programming in your computer"
-    Capítulo 4:
+    Chapter 4:
       title: "Chapter 4: Repetition"
-    Capítulo 5:
+    Chapter 5:
       title: "Chapter 5: Conditional alternative"
-    Autómatas, comandos, procedimientos y repetición:
-      title: "Automatas, commands, procedures, and repetition"
-    Alternativa condicional:
+    Robots, commands, procedures, and repetition:
+      title: "Automatons, commands, procedures, and repetition"
+    Conditional alternative:
       title: "Conditional alternative"
-    Repetición condicional:
+    Conditional repetition:
       title: "Conditional repetition"
-    Sensores Numéricos:
+    Numerical sensors:
       title: "Numerical sensors"
-    Parametrización de soluciones:
+    Solutions parameterizing:
       title: "Solutions parameterizing"
-    Tecnopolis 2021 Ejercicio Modelo:
+    Tecnopolis 2021 Sample Exercise:
       title: "Sample Exercise"
-    Tecnopolis 2021 Con Duba:
+    Tecnopolis 2021 With Duba:
       title: "With Duba"
-    Tecnopolis 2021 Con Lita:
+    Tecnopolis 2021 With Lita:
       title: "With Lita"
-    Tecnopolis 2021 Con Toto:
-      title: "With Toto"
-    Tecnopolis 2021 Con Coty:
+    Tecnopolis 2021 With Coty:
       title: "With Coty"
+    Tecnopolis 2021 With Toto:
+      title: "With Toto"
+
