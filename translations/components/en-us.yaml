@@ -1,11 +1,10 @@
 bugReportModal:
-  askTeacher: "MISSING TRANSLATION"
+  askTeacher: "Remember to ask your teacher and/or school if you have any questions. Unfortunately the Pilas Bloques developer team doesn't know every teacher who uses the tool."
   problem: "Are you having any problem?"
   error: "Do you think there’s an error in this exercise?"
   mail: "You can contact us writing to "
   githubReport: "If you have a Github account, you can also report the error directly through the"
   issueTracker: Issue Tracker
-
 
 congratulationsModal:
   youDidIt: "You did it!"
@@ -62,7 +61,7 @@ registerDisclaimer:
 
 programarDisclaimer:
   entered: "Did you visit"
-  programar: "Program.AR at home"
+  programar: "Program.AR en casa"
   in: "In"
   find: "you will find a lot of material, many tools, and an explanation on how to use Pilas Bloques"
 
@@ -84,7 +83,7 @@ footer:
 
 login:
   already: "I already have a username"
-  wrong: "Username or password are not correct; try again"
+  wrong: "Username or password are not correct; try it again"
   forgot: "I forgot my username and password"
   dontHaveUser: "I don’t have a username yet"
   register: "Click here to register now!"
@@ -94,7 +93,7 @@ modalAyuda:
   help: "This app will offer you several challenges you can solve by fitting blocks together."
   firstSteps: "The first step is to open the Challenges section:"
   categories: "The blocks are grouped in categories; use the sidebar to display the blocks."
-  dragAndDrop: "Then you can drag and drop the blocks to the workspace."
+  dragAndDrop: "The you can drag and drop the blocks to the workspace."
   continue: "Once your program is ready, push the \"Run\" button to continue."
   delete: "And you can also delete the blocks by dragging them to the recycle bin."
 
@@ -115,5 +114,8 @@ notifier:
   visit: "Visit"
   moreInfo: "our web to learn more."
 
-termsAndConditionLink:
-  terms: "terms of use and conditions"
+acceptTermsAndConditions:
+  askToRead: "Your privacy and that of your children are very important to Sadosky Foundation. That’s why we ask you to read and accept our "
+  termsLink: "terms of use and conditions"
+  toUse: " to use Pilas Bloques"
+  accept: "I accept the terms of use and conditions"
