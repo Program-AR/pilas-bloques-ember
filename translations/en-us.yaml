@@ -142,82 +142,82 @@ model:
       description: The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?
       clue: A sensor will allow us to get information that can change each time you run the program, even during the same run. For example, the length of a column changes depending on the column on which the monkey is standing.
     28:
-      title: "Nano’s planet"
+      title: Nano’s planet
       description: |
-        "Help Nano eat all his bananas. Be careful! He cannot come down...
-        Take into account that the scenario doesn’t change, and the bananas are always in the same boxes!"
+        Help Nano eat all his bananas. Be careful! He cannot come down...
+        Take into account that the scenario doesn’t change, and the bananas are always in the same boxes!
       clue: |
-        "You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: \"Eat 2 bananas on the right\", \"Eat 3 bananas on the right\", and \"Eat 4 bananas on the right\", we can replace these three procedures with one procedure with a parameter stating the number of bananas we want to eat on the right: \"Eat on the right the following number: [number]\".
-        For adding a parameter to a new procedure, you have to click on the star appearing close to \"Define\" and then drag the \"name of entry\" block towards \"entries\".
+        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: \"Eat 2 bananas on the right\", \"Eat 3 bananas on the right\", and \"Eat 4 bananas on the right\", we can replace these three procedures with one procedure with a parameter stating the number of bananas we want to eat on the right: \"Eat on the right the following number: [number]\".
+        For adding a parameter to a new procedure, you have to click on the plus sign.
     29:
       title: |
-        "Drawing: Squares"
-      description: "Draw a square where each side's length is 100."
+        Drawing: Squares
+      description: Draw a square where each side's length is 100.
       clue: ""
     30:
       title: |
-        "Drawing: Robotic hopscotch"
-      description: "Draw 5 squares in a row, where each side's length is 50, as shown by the shaded figure below."
+        Drawing: Robotic hopscotch
+      description: Draw 5 squares in a row, where each side's length is 50, as shown by the shaded figure below.
       clue: ""
     31:
       title: |
-        "Drawing: Cutting through the diagonal line"
-      description: "Draw 5 squares in a diagonal line, where each side's length is 50, as shown by the shaded figure below."
+        Drawing: Cutting through the diagonal line
+      description: Draw 5 squares in a diagonal line, where each side's length is 50, as shown by the shaded figure below.
       clue: ""
     32:
       title: |
-        "Drawing: Squared mamushkas"
+        Drawing: Squared mamushkas
       description: |
-        "Draw 4 squares, where each side's length is 50, 100, 150, and 200 respectively, as shown by the shaded figure below. Clue: create a new procedure for drawing different squares with different side’s length."
-      clue: "Including parameters in the procedures will allow you to generalize a concept. For example, the side’s length of a square."
+        Draw 4 squares, where each side's length is 50, 100, 150, and 200 respectively, as shown by the shaded figure below. Clue: create a new procedure for drawing different squares with different side’s length.
+      clue: Including parameters in the procedures will allow you to generalize a concept. For example, the side’s length of a square.
     33:
       title: |
-        "Drawing: Squared stairs"
+        Drawing: Squared stairs
       description: |
-        "Draw 5 squares. 4 of them where each side's length is 50, and 1 of them where each side’s length is 100, as shown by the shaded figure below.
+        Draw 5 squares. 4 of them where each side's length is 50, and 1 of them where each side’s length is 100, as shown by the shaded figure below.
       clue: "When creating a procedure with parameters, their values are not defined (for example: \"side's length\"). When you use the procedures, you have to set a particular value for such parameters (50, 100, etc.)."
     34:
       title: |
-        "Drawing: Hexagon"
+        Drawing: Hexagon
       description: |
-        "Draw a hexagon, where each side's length is 100, as shown by the shaded figure below. Clue: think how many degrees the robot needs to rotate considering the interior angles of the hexagon.""
-      clue: "In polygons, the exterior angle value is equal to 180 degrees, less the interior angle value."
+        Draw a hexagon, where each side's length is 100, as shown by the shaded figure below. Clue: think how many degrees the robot needs to rotate considering the interior angles of the hexagon.
+      clue: In polygons, the exterior angle value is equal to 180 degrees, less the interior angle value.
     35:
       title: |
-        "Drawing: Inverted pyramid"
+        Drawing: Inverted pyramid
       description: |
-        "Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: consider if there exists a relationship between the different angles and the number of sides."
-      clue: "In polygons, the sum of all exterior angles is equal to 360"
+        Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: consider if there exists a relationship between the different angles and the number of sides.
+      clue: In polygons, the sum of all exterior angles is equal to 360
     36:
       title: |
-        "Drawing: Figures inside figures"
+        Drawing: Figures inside figures
       description: |
-        "Draw a triangle, a square, and a pentagon, where each side's length is 100, as shown by the shaded figure below. Clue: create a procedure with a parameter for the number of sides."
+        Draw a triangle, a square, and a pentagon, where each side's length is 100, as shown by the shaded figure below. Clue: create a procedure with a parameter for the number of sides.
       clue: |
-        "Now we have the Operators: these blocks will allow us to do the numbers automatically, like a calculator!... How many degrees is a full circle rotation? What number should we divide this by?"
+        Now we have the Operators: these blocks will allow us to do the numbers automatically, like a calculator!... How many degrees is a full circle rotation? What number should we divide this by?
     37:
       title: |
-        "Drawing: The cave of stalactites"
+        Drawing: The cave of stalactites
       description: |
-        "Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length."
-      clue: "In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure."
+        Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length.
+      clue: In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure.
     130:
-      title: "Dracula’s party"
+      title: Dracula’s party
       description: |
-        "For allowing Dracula’s party to start, we should change the color of 3 spotlights a certain number of times: 5 times the first spotlight, 8 times the second, and 12 times the third."
+        For allowing Dracula’s party to start, we should change the color of 3 spotlights a certain number of times: 5 times the first spotlight, 8 times the second, and 12 times the third.
       clue: ""
     131:
-      title: "Saving Christmas"
+      title: Saving Christmas
       description: |
-        "Help Santa leave a present at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?"
+        Help Santa leave a present at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
       clue: ""
     132:
-      title: "Powering all computers on by using parameters"
-      description: "Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are."
-      clue: "The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move."
+      title: Powering all computers on by using parameters
+      description: Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are.
+      clue: The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move.
     133:
-      title: "Tito and the square"
-      description: "Tito should turn on all lights in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn´t change each time you run the program."
+      title: Tito and the square
+      description: Tito should turn on all lights in the square, but they are distributed in a different way each time you run the program. Take into account that the boxes in the corner never turn on, and that the size of the square doesn't change each time you run the program.
       clue: ""
     134:
       title: "The spoilsport crab"
