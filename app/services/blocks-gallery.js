@@ -84,7 +84,7 @@ export default Service.extend({
   crearBloqueAccion(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = opciones.descripcion || this.traduccion(intlID)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
@@ -129,7 +129,7 @@ export default Service.extend({
    */
   crearBloqueSensor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['funcionSensor']);
-    opciones.descripcion = opciones.descripcion || this.traduccion(intlID)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     var formaDelBloque = opciones.icono ? "%1 " : "";
     formaDelBloque += opciones.esBool ? "¿" : "";
@@ -166,20 +166,20 @@ export default Service.extend({
 
 
   /*
-   * Devuelve un objeto con un atributo 'string'. Ej: { string: "Al empezar a ejecutar" }
+   * Returns an object with a 'string' attribute. E.g. { string: "When run" }
    */
-  traduccion(id) {
+  t(id) {
     return this.intl.t(`blocks.${id}`);
   },
 
-  stringTraducidoDe(id) {
-    return this.traduccion(id).toString();
+  tString(id) {
+    return this.t(id).toString();
   },
 
   crearBloqueValor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = opciones.descripcion || this.traduccion(intlID)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
@@ -1209,7 +1209,7 @@ export default Service.extend({
     Blockly.Blocks.al_empezar_a_ejecutar = {
       init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
-        this.appendDummyInput().appendField(thisService.stringTraducidoDe('program'));
+        this.appendDummyInput().appendField(thisService.tString('program'));
         this.appendStatementInput('program');
         this.setDeletable(false);
         this.setEditable(false);
@@ -1231,9 +1231,9 @@ export default Service.extend({
         this.setNextStatement(true);
         this.appendValueInput('count')
           .setCheck('Number')
-          .appendField(thisService.stringTraducidoDe('simpleRepetitionBeggining'));
+          .appendField(thisService.tString('simpleRepetitionBeggining'));
         this.appendDummyInput()
-          .appendField(thisService.stringTraducidoDe('simpleRepetitionEnd'));
+          .appendField(thisService.tString('simpleRepetitionEnd'));
         this.appendStatementInput('block');
       },
       categoria: 'Repeticiones',
@@ -1257,7 +1257,7 @@ export default Service.extend({
         this.setInputsInline(true);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField(thisService.stringTraducidoDe('conditionalRepetition'));
+          .appendField(thisService.tString('conditionalRepetition'));
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1271,7 +1271,7 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField(thisService.stringTraducidoDe('simpleAlternative'));
+          .appendField(thisService.tString('simpleAlternative'));
         this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
@@ -1285,11 +1285,11 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField(thisService.stringTraducidoDe('simpleAlternative'));
+          .appendField(thisService.tString('simpleAlternative'));
         this.appendStatementInput('block1');
         this.setInputsInline(true);
         this.appendDummyInput()
-          .appendField(thisService.stringTraducidoDe('completeAlternative'));
+          .appendField(thisService.tString('completeAlternative'));
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
