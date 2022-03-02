@@ -24,6 +24,7 @@ community include:
   and learning from the experience
 * Focusing on what is best not just for us as individuals, but for the overall
   community
+* Learning and teaching through our errors and those of our pairs. Open Source code is a collective construction.
 
 Examples of unacceptable behavior include:
 
@@ -35,6 +36,7 @@ Examples of unacceptable behavior include:
   without their explicit permission
 * Other conduct which could reasonably be considered inappropriate in a
   professional setting
+* _Blaming_ a piece of code to a past contributor.
 
 ## Enforcement Responsibilities
 

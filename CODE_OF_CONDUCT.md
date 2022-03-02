@@ -17,6 +17,7 @@ Ejemplos de comportamiento que contribuyen a crear un ambiente positivo para nue
 * Dar y aceptar adecuadamente retroalimentación constructiva
 * Aceptar la responsabilidad y disculparse ante quienes se vean afectados por nuestros errores, aprendiendo de la experiencia
 * Centrarse en lo que sea mejor no sólo para nosotros como individuos, sino para la comunidad en general
+* Aprender y enseñar con nuestros errores y los del prójimo. El código abierto es una construcción colectiva.
 
 Ejemplos de comportamiento inaceptable:
 
@@ -28,6 +29,7 @@ Ejemplos de comportamiento inaceptable:
   electrónico, sin su permiso explícito
 * Otras conductas que puedan ser razonablemente consideradas como inapropiadas en un
   entorno profesional
+* _Culpar_ a quien haya escrito cierto código en el pasado. 
 
 ## Aplicación de las responsabilidades
 
