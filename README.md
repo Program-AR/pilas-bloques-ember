@@ -6,8 +6,7 @@
 ![downloads](https://img.shields.io/github/downloads/Program-AR/pilas-bloques/total.svg)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-### Read in other languages
-* [English](https://github.com/Program-AR/pilas-bloques/blob/guidelines/README_en.md)
+[:gb: Read in English](https://github.com/Program-AR/pilas-bloques/blob/develop/README_en.md)
 _____________
 
 # Pilas Bloques - Una herramienta para aprender a programar
@@ -50,11 +49,11 @@ Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo,
 La herramienta está pensada como **ayuda al docente y al alumno** en el proceso de aprendizaje de la programación en un entorno escolar. En la secuencia didáctica que se plantea, la **indagación** autodidacta es fundamental. Nuestra recomendación, no obstante, es que el docente sea el que **guíe** y asista el proceso de aprendizaje del alumno. 
 
 
-## Como contribuir
+## Cómo contribuír
 
 En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING.md) tenes toda la informacion necesaria para contribuir al proyecto!
 
-## Como instalar el entorno de desarrollo
+## Cómo instalar el entorno de desarrollo
 
 Para colaborar en Pilas Bloques vas a tener que instalar [Git](https://git-scm.com/) y clonar el repositorio de [Pilas Bloques](https://github.com/Program-AR/pilas-bloques):
 
@@ -85,10 +84,6 @@ git clone https://github.com/Program-AR/pilas-bloques.git
   source ~/.nvm/install.sh
   nvm install .
   ```
-  
-  Windows:
-  
-  ¿¿¿¿????
 
 ### Usá la version de NodeJS de Pilas Bloques:
 ```
@@ -122,5 +117,5 @@ Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
 
 Licensed under the terms of [GNU General Public License v3.0](https://github.com/Program-AR/pilas-bloques/blob/master/LICENSE) license.
 
-### Changeslog
-[here](notasDeVersion.md)
+### Registro de cambios
+[aquí](notasDeVersion.md)

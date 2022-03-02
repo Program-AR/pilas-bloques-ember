@@ -7,6 +7,4 @@ assignees: ''
 
 ---
 
-**¿Qué problema tiene Pilas Bloques?:**
-
-**¿Cómo te gustaria que Pilas Bloques lo resuelva?:**
+**¿Qué te gustaría que tuviera Pilas Bloques o qué te gustaría que fuera distinto?:**

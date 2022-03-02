@@ -1,3 +1,5 @@
+[:gb: Read in English](https://github.com/Program-AR/pilas-bloques/blob/develop/CODE_OF_CONDUCT_en.md)
+
 # Código de Conducta convenido para Contribuyentes
 
 ## Nuestro compromiso
