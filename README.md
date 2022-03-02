@@ -51,7 +51,7 @@ La herramienta está pensada como **ayuda al docente y al alumno** en el proceso
 
 ## Cómo contribuír
 
-En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/guidelines/CONTRIBUTING.md) tenes toda la informacion necesaria para contribuir al proyecto!
+En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/develop/CONTRIBUTING.md) tenes toda la informacion necesaria para contribuir al proyecto!
 
 ## Cómo instalar el entorno de desarrollo
 
