@@ -1231,7 +1231,7 @@ export default Service.extend({
         this.setNextStatement(true);
         this.appendValueInput('count')
           .setCheck('Number')
-          .appendField(thisService.tString('simpleRepetitionBeggining'));
+          .appendField(thisService.tString('simpleRepetitionBeginning'));
         this.appendDummyInput()
           .appendField(thisService.tString('simpleRepetitionEnd'));
         this.appendStatementInput('block');
