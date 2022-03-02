@@ -1,4 +1,4 @@
-# Pilas Bloques - A tool to learn to program.
+# Pilas Bloques - A tool to learn computer programming
 
 <p align="center">
   <img src="https://pilasbloques.program.ar/online/imagenes/main-logo.png"/>
