@@ -154,14 +154,41 @@ export default Component.extend({
       if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoryId) {
         this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, bloque, bloqueDesdeBlockly.categoria_custom);
       } else {
-        this._agregar_bloque_a_categoria(toolbox, 'SIN CATEGORÍA', bloque);
+        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', bloque);
       }
 
     });
 
     toolbox.push({ categoryId: 'separator', isSeparator: true });
 
-    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox));
+    return this._toEmberBlocklyToolbox(toolbox);
+  },
+
+  _toEmberBlocklyToolbox(toolbox) {
+    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox)).map(
+      block => this._toEmberBlocklyBlock(block)
+    )
+  },
+
+  /*
+   * EmberBlocklyBlock should have the following structure:
+   * type EmberBlocklyBlock = string | {
+	 *    category?: string,
+   *    custom?: string,
+	 *    isSeparator?: boolean,
+	 *    blocks?: string[]
+   * }
+   */
+  _toEmberBlocklyBlock(block) {
+    if(typeof block === "string") return block
+
+    const idToDelete = 'categoryId'
+    const translatedCategory = this.intl.t(`blocks.${block.categoryId}`).toString()
+
+    // the removed object will go to unusedVar
+    const { [idToDelete]: unusedVar, ...emberBlocklyBlock } = { category: translatedCategory, ...block }  // dynamic key
+
+    return emberBlocklyBlock
   },
 
   /**
