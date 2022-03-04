@@ -39,8 +39,8 @@ model:
     8:
       title: María y las sandías
       description: |
-        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.
-      clue: ""
+        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     9:
       title: Alimentando a los peces
       description: |
