@@ -39,8 +39,8 @@ model:
     8:
       title: Mary and the watermelons
       description: |
-        Mary needs to eat all watermelons in the grid. Think how you could help her do it by creating the necessary blocks. Clue: the way in which the watermelons are distributed in the grid is key to create as few procedures as possible.
-      clue: ""
+        Mary needs to eat all watermelons in the grid. Think how you could help her do it by creating the necessary blocks.
+      clue: You can also think if there is a strategy that allows you to **reuse** the same procedure several times.
     9:
       title: Feeding the fishes
       description: |
