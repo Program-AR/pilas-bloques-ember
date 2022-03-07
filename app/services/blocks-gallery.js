@@ -84,7 +84,7 @@ export default Service.extend({
   crearBloqueAccion(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
     bloque.categoria = "Primitivas";
@@ -129,7 +129,7 @@ export default Service.extend({
    */
   crearBloqueSensor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['funcionSensor']);
-    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     var formaDelBloque = opciones.icono ? "%1 " : "";
     formaDelBloque += opciones.esBool ? "¿" : "";
@@ -164,10 +164,22 @@ export default Service.extend({
     return bloque;
   },
 
+
+  /*
+   * Returns an object with a 'string' attribute. E.g. { string: "When run" }
+   */
+  t(id) {
+    return this.intl.t(`blocks.${id}`);
+  },
+
+  tString(id) {
+    return this.t(id).toString();
+  },
+
   crearBloqueValor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = opciones.descripcion || this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createBlockValue(nombre, opciones);
     bloque.categoria = "Valores";
@@ -1138,6 +1150,8 @@ export default Service.extend({
 
   _definirBloquesIniciales() {
 
+    const thisService = this;
+
     function fillOpacity(block, opacity) {
       block.getSvgRoot().style["fill-opacity"] = opacity
     }
@@ -1195,7 +1209,7 @@ export default Service.extend({
     Blockly.Blocks.al_empezar_a_ejecutar = {
       init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
-        this.appendDummyInput().appendField('Al empezar a ejecutar');
+        this.appendDummyInput().appendField(thisService.tString('program'));
         this.appendStatementInput('program');
         this.setDeletable(false);
         this.setEditable(false);
@@ -1207,6 +1221,8 @@ export default Service.extend({
 
   _definirBloquesEstructurasDeControl() {
 
+    const thisService = this;
+
     Blockly.Blocks.RepetirVacio = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
@@ -1215,9 +1231,9 @@ export default Service.extend({
         this.setNextStatement(true);
         this.appendValueInput('count')
           .setCheck('Number')
-          .appendField('Repetir');
+          .appendField(thisService.tString('simpleRepetitionBeginning'));
         this.appendDummyInput()
-          .appendField('veces');
+          .appendField(thisService.tString('simpleRepetitionEnd'));
         this.appendStatementInput('block');
       },
       categoria: 'Repeticiones',
@@ -1241,7 +1257,7 @@ export default Service.extend({
         this.setInputsInline(true);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Repetir hasta que');
+          .appendField(thisService.tString('conditionalRepetition'));
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
@@ -1255,7 +1271,7 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Si');
+          .appendField(thisService.tString('simpleAlternative'));
         this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
@@ -1269,11 +1285,11 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Si');
+          .appendField(thisService.tString('simpleAlternative'));
         this.appendStatementInput('block1');
         this.setInputsInline(true);
         this.appendDummyInput()
-          .appendField('sino');
+          .appendField(thisService.tString('completeAlternative'));
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
