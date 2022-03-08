@@ -5,6 +5,7 @@ import { later, scheduleOnce, run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
+import Ember from 'ember'
 
 export default Component.extend({
   classNames: 'pilas-blockly',
@@ -36,7 +37,7 @@ export default Component.extend({
   anterior_alto: -1,
 
   blockly_toolbox: [{
-    category: '...',
+    categoryId: '...',
     blocks: []
   }],
 
@@ -44,6 +45,8 @@ export default Component.extend({
   pausadoEnBreakpoint: false,
 
   javascriptCode: null,
+
+  intl: Ember.inject.service(),
 
   inyectarRedimensionado: on('init', function () {
 
@@ -127,11 +130,11 @@ export default Component.extend({
    *
    * [
    *    {
-   *      category: 'Primitivas',
+   *      categoryId: 'primitives',
    *      blocks: ['MoverDerecha']
    *    },
    *    {
-   *      category: 'Sensores',
+   *      categoryId: 'sensors',
    *      blocks: ['TocaSensor', 'TocaEnemigo']
    *    },
    * ]
@@ -148,17 +151,41 @@ export default Component.extend({
     bloques.forEach((bloque) => {
       let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
 
-      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoria) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoria, bloque, bloqueDesdeBlockly.categoria_custom);
+      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoryId) {
+        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, bloque, bloqueDesdeBlockly.categoria_custom);
       } else {
-        this._agregar_bloque_a_categoria(toolbox, 'SIN CATEGORÍA', bloque);
+        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', bloque);
       }
 
     });
 
-    toolbox.push({ category: 'Separator', isSeparator: true });
+    toolbox.push({ categoryId: 'separator', isSeparator: true });
 
-    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox));
+    return this._toEmberBlocklyToolbox(toolbox);
+  },
+
+  _toEmberBlocklyToolbox(toolbox) {
+    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox)).map(
+      block => this._toEmberBlocklyToolboxItem(block)
+    )
+  },
+
+  /*
+   * EmberBlocklyToolboxItem should have the following structure:
+   * type EmberBlocklyToolboxItem = string | {
+	 *    category?: string,
+   *    custom?: string,
+	 *    isSeparator?: boolean,
+	 *    blocks?: string[]
+   * }
+   */
+  _toEmberBlocklyToolboxItem(block) {
+    if(typeof block === "string") return block
+
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${block.categoryId}`).toString(), ...block }
+    delete emberBlocklyToolboxItem.categoryId
+
+    return emberBlocklyToolboxItem
   },
 
   /**
@@ -172,7 +199,7 @@ export default Component.extend({
     if (!this._debeHaberCategoriasEnToolbox()) {
       aplanado = [];
       toolbox.forEach(bloque => {
-        if (bloque.isSeparator || !bloque.category) {
+        if (bloque.isSeparator || !bloque.categoryId) {
           aplanado.push(bloque); //un separador ó un id de bloque van directo
         } else {
           aplanado = aplanado.concat(this._aplicarEstiloAToolbox(bloque.blocks));
@@ -194,19 +221,19 @@ export default Component.extend({
    */
   ordenar_toolbox(toolbox) {
     let orden_inicial = [ // Orden inicial para la lista de categorias.
-      'Primitivas',
-      'Mis procedimientos',
-      'Repeticiones',
-      'Alternativas',
-      'Variables',
-      'Separator',
-      'Valores',
-      'Sensores',
-      'Operadores',
-      'Mis funciones'
+      'primitives',
+      'myProcedures',
+      'repetitions',
+      'alternatives',
+      'variables',
+      'separator',
+      'values',
+      'sensors',
+      'operators',
+      'myFunctions'
     ];
 
-    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.category) - orden_inicial.indexOf(cat2.category));
+    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.categoryId) - orden_inicial.indexOf(cat2.categoryId));
   },
 
   /**
@@ -226,13 +253,13 @@ export default Component.extend({
 
     function obtenerOCrearCategoria(toolbox, categoria) {
       for (let i = 0; i < toolbox.length; i++) {
-        if (toolbox[i].category === categoria) {
+        if (toolbox[i].categoryId === categoria) {
           return toolbox[i];
         }
       }
 
       toolbox.push({
-        category: categoria,
+        categoryId: categoria,
         blocks: []
       });
 

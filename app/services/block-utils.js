@@ -4,10 +4,10 @@ export function isFlying(block) {
 
 // TODO: No acoplarse a la categoria
 export function isOperator(block) {
-  return block.categoria == "Operadores"
+  return block.categoryId == "operators"
 }
 export function isValue(block) {
-  return block.categoria == "Valores"
+  return block.categoryId == "values"
 }
 
 export function isProcedureCall(block) {
