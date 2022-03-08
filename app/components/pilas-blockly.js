@@ -182,7 +182,7 @@ export default Component.extend({
   _toEmberBlocklyToolboxItem(block) {
     if(typeof block === "string") return block
 
-    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.${block.categoryId}`).toString(), ...block }
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${block.categoryId}`).toString(), ...block }
     delete emberBlocklyToolboxItem.categoryId
 
     return emberBlocklyToolboxItem
