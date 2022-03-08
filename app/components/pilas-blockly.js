@@ -79,7 +79,7 @@ export default Component.extend({
     window.dispatchEvent(event);
 
     scheduleOnce('afterRender', async () => {
-      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
+      this.set('blockly_toolbox', this.toolboxForBlockTypes(this.bloques));
 
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
@@ -121,12 +121,12 @@ export default Component.extend({
   },
 
   /**
-   * Genera el toolbox como lista de categorias con bloques a partir
-   * de una lista de bloques simples.
+   * Creates a toolbox as a list of categories ids with block types
+   * from a list of block types
    *
-   * Por ejemplo:
+   * E.g.:
    *
-   *  >> obtenerToolboxDesdeListaDeBloques(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
+   *  >> toolboxForBlockTypes(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
    *
    * [
    *    {
@@ -140,21 +140,21 @@ export default Component.extend({
    * ]
    *
    */
-  obtenerToolboxDesdeListaDeBloques(bloques) {
+   toolboxForBlockTypes(blockTypes) {
 
-    if (bloques === undefined) {
+    if (blockTypes === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
     let toolbox = [];
 
-    bloques.forEach((bloque) => {
-      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
+    blockTypes.forEach((blockType) => {
+      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(blockType);
 
       if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoryId) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, bloque, bloqueDesdeBlockly.categoria_custom);
+        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, blockType, bloqueDesdeBlockly.categoria_custom);
       } else {
-        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', bloque);
+        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', blockType);
       }
 
     });
@@ -246,7 +246,7 @@ export default Component.extend({
   },
 
   /**
-   * Método auxiliar de "obtenerToolboxDesdeListaDeBloques". Este método
+   * Método auxiliar de "toolboxForBlockTypes". Este método
    * permite agregar un bloque a una categoría dentro del toolbox.
    */
   _agregar_bloque_a_categoria(toolbox, categoria, bloque, categoria_custom) {
