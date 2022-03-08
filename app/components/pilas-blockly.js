@@ -166,29 +166,26 @@ export default Component.extend({
 
   _toEmberBlocklyToolbox(toolbox) {
     return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox)).map(
-      block => this._toEmberBlocklyBlock(block)
+      block => this._toEmberBlocklyToolboxItem(block)
     )
   },
 
   /*
-   * EmberBlocklyBlock should have the following structure:
-   * type EmberBlocklyBlock = string | {
+   * EmberBlocklyToolboxItem should have the following structure:
+   * type EmberBlocklyToolboxItem = string | {
 	 *    category?: string,
    *    custom?: string,
 	 *    isSeparator?: boolean,
 	 *    blocks?: string[]
    * }
    */
-  _toEmberBlocklyBlock(block) {
+  _toEmberBlocklyToolboxItem(block) {
     if(typeof block === "string") return block
 
-    const idToDelete = 'categoryId'
-    const translatedCategory = this.intl.t(`blocks.${block.categoryId}`).toString()
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.${block.categoryId}`).toString(), ...block }
+    delete emberBlocklyToolboxItem.categoryId
 
-    // the removed object will go to unusedVar
-    const { [idToDelete]: unusedVar, ...emberBlocklyBlock } = { category: translatedCategory, ...block }  // dynamic key
-
-    return emberBlocklyBlock
+    return emberBlocklyToolboxItem
   },
 
   /**
