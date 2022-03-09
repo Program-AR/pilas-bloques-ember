@@ -223,9 +223,25 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   const operator = { categoryId: 'operators' }
   const primitive = { categoryId: 'primitives' }
 
+  const separator = { categoryId: 'separator', isSeparator: true }
+  const blockId = "A block id"
+
+  const doThis = 'Do this'
+  const doThat = 'Do that'
+
+  const myProcedures = { categoryId: 'procedures', blocks: [doThis, doThat] }
+
+  const toolbox = [blockId, myProcedures, separator]
+
   hooks.beforeEach(function () {
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
+    this.ctrl.set('modelActividad', actividadMock)
+    this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
   })
+
+  function setCategoriesNotRequired(ctrl) {
+    ctrl.modelActividad.set('estiloToolbox', 'sinCategorias')
+  }
 
   test('ToolboxForBlockTypes should fail if blockTypes is undefined', function (assert) {
     assert.throws(() => this.ctrl.toolboxForBlockTypes(undefined))
@@ -233,14 +249,31 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
 
   test('Toolbox should be ordered based on Pilas Bloques stablished order', function (assert) {
     const alternative = { categoryId: 'alternatives' }
-
     assert.propEqual(this.ctrl.ordered_toolbox([operator, primitive, alternative]), [primitive, alternative, operator])
   })
 
   test('When sorted categories that are not acknowledged by Pilas Bloques should be at the end', function (assert) {
     const uncategorized = { categoryId: 'uncategorized' }
-
     assert.propEqual(this.ctrl.ordered_toolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
+  })
+
+  test('If categories are required in toolbox, it should stay unchanged', function (assert) {
+    assert.propEqual(this.ctrl._aplicarEstiloAToolbox(toolbox), toolbox)
+  })
+
+  test('If categories are not required in toolbox, it should be flattened', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._aplicarEstiloAToolbox(toolbox), [blockId, doThis, doThat,separator])
+  })
+
+  test('When styling, separators should be left unchanged', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._aplicarEstiloAToolbox([separator]), [separator])
+  })
+
+  test('When styling, blocks ids should be left unchanged', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._aplicarEstiloAToolbox([blockId]), [blockId])
   })
 
 })
