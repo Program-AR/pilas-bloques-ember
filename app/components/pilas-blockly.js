@@ -165,7 +165,7 @@ export default Component.extend({
   },
 
   _toEmberBlocklyToolbox(toolbox) {
-    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox)).map(
+    return this._aplicarEstiloAToolbox(this.ordered_toolbox(toolbox)).map(
       block => this._toEmberBlocklyToolboxItem(block)
     )
   },
@@ -214,13 +214,12 @@ export default Component.extend({
   },
 
   /**
-   * Ordena la lista de ítems de un toolbox (usualmente categorias), por el orden
-   * establecido en Pilas Bloques.
-   * Las categorías que no están en la lista definida por Pilas Bloques, quedan al final.
+   * Orders the toolbox (usually categories) by Pilas Bloques stablished order.
+   * Categories that are not in the initial_order list should remain at the end.
    * @param {*} toolbox
    */
-  ordenar_toolbox(toolbox) {
-    let orden_inicial = [ // Orden inicial para la lista de categorias.
+  ordered_toolbox(toolbox) {
+    const initial_order = [ // Categories initial order.
       'primitives',
       'myProcedures',
       'repetitions',
@@ -233,7 +232,18 @@ export default Component.extend({
       'myFunctions'
     ];
 
-    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.categoryId) - orden_inicial.indexOf(cat2.categoryId));
+    const recognized_items = []
+    const unrecognized_items = []
+
+    toolbox.forEach(item => {
+      if(initial_order.includes(item.categoryId)){
+        recognized_items.push(item)
+      } else {
+        unrecognized_items.push(item)
+      }
+    })
+
+    return recognized_items.sort((cat1, cat2) => initial_order.indexOf(cat1.categoryId) - initial_order.indexOf(cat2.categoryId)).concat(unrecognized_items);
   },
 
   /**

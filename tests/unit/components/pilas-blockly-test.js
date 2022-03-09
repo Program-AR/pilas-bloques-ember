@@ -215,5 +215,32 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
     assert.ok(metadata.program || metadata.program.length === 0)
   })
+})
+
+module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hooks) {
+  setupTest(hooks)
+
+  const operator = { categoryId: 'operators' }
+  const primitive = { categoryId: 'primitives' }
+
+  hooks.beforeEach(function () {
+    this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
+  })
+
+  test('ToolboxForBlockTypes should fail if blockTypes is undefined', function (assert) {
+    assert.throws(() => this.ctrl.toolboxForBlockTypes(undefined))
+  })
+
+  test('Toolbox should be ordered based on Pilas Bloques stablished order', function (assert) {
+    const alternative = { categoryId: 'alternatives' }
+
+    assert.propEqual(this.ctrl.ordered_toolbox([operator, primitive, alternative]), [primitive, alternative, operator])
+  })
+
+  test('When sorted categories that are not acknowledged by Pilas Bloques should be at the end', function (assert) {
+    const uncategorized = { categoryId: 'uncategorized' }
+
+    assert.propEqual(this.ctrl.ordered_toolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
+  })
 
 })
