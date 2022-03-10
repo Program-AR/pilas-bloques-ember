@@ -198,6 +198,18 @@ export default Service.extend({
     });
   },
 
+  defineProcedureTranslations(){
+    Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
+    Blockly.Msg.PROCEDURES_DEFRETURN_TITLE = this.tString("procedures.definition")
+    Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_PARAMETER = this.tString("procedures.paramName")
+    Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP = this.tString("procedures.create")
+
+    initProcedsBlockly(false);
+  },
+
   _definirColores() {
     // Pisar las globales de Blockly es necesario pues usamos algunos bloques de Blockly como aliases.
     Blockly.Blocks.math.HUE = 94; // En PB 1.1.2 era '#48930e'
@@ -1360,7 +1372,8 @@ export default Service.extend({
       }
     };
 
-    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
+    this.defineProcedureTranslations()
+    
     let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {

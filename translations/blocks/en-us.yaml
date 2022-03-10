@@ -122,3 +122,9 @@ categories:
   operators: "Operators"
   myFunctions: "My functions"
   uncategorized: "Uncategorized"
+procedures: 
+  definition: "Define"
+  name: "Do something"
+  paramWith: "with"
+  paramName: "parameter"
+  create: "Create a procedure."
