@@ -165,7 +165,7 @@ export default Component.extend({
   },
 
   _toEmberBlocklyToolbox(toolbox) {
-    return this._aplicarEstiloAToolbox(this.ordered_toolbox(toolbox)).map(
+    return this._styledToolbox(this.ordered_toolbox(toolbox)).map(
       block => this._toEmberBlocklyToolboxItem(block)
     )
   },
@@ -189,27 +189,32 @@ export default Component.extend({
   },
 
   /**
-   * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
-   * sino directamente los bloques en el toolbox.
-   *
-   * TODO: Falta implementar el estilo "desplegado"
+   * Depending on the challenge, categories may not be required to be shown.
+   * Block types should be shown instead.
+   * 
+   * TODO: Implement style "desplegado"
    */
-  _aplicarEstiloAToolbox(toolbox) {
-    var aplanado = toolbox;
-    if (!this._debeHaberCategoriasEnToolbox()) {
-      aplanado = [];
-      toolbox.forEach(bloque => {
-        if (bloque.isSeparator || !bloque.categoryId) {
-          aplanado.push(bloque); //un separador ó un id de bloque van directo
-        } else {
-          aplanado = aplanado.concat(this._aplicarEstiloAToolbox(bloque.blocks));
-        }
-      });
-    }
-    return aplanado;
+  _styledToolbox(toolbox) {
+    if(this._areCategoriesRequiredInToolbox()) return toolbox
+
+    let flattened_toolbox = []
+
+    toolbox.forEach(block => {
+      if(this._shouldRemainUnchanged(block)){
+        flattened_toolbox.push(block) //Separators and block ids should not be modified
+      } else {
+        flattened_toolbox = flattened_toolbox.concat(this._styledToolbox(block.blocks))
+      }
+    })
+
+    return flattened_toolbox
   },
 
-  _debeHaberCategoriasEnToolbox() {
+  _shouldRemainUnchanged(block){
+    return block.isSeparator || !block.categoryId
+  },
+
+  _areCategoriesRequiredInToolbox() {
     return this.modelActividad.get('estiloToolbox') !== "sinCategorias";
   },
 

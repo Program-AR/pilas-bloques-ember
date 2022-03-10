@@ -258,22 +258,22 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   })
 
   test('If categories are required in toolbox, it should stay unchanged', function (assert) {
-    assert.propEqual(this.ctrl._aplicarEstiloAToolbox(toolbox), toolbox)
+    assert.propEqual(this.ctrl._styledToolbox(toolbox), toolbox)
   })
 
   test('If categories are not required in toolbox, it should be flattened', function (assert) {
     setCategoriesNotRequired(this.ctrl)
-    assert.propEqual(this.ctrl._aplicarEstiloAToolbox(toolbox), [blockId, doThis, doThat,separator])
+    assert.propEqual(this.ctrl._styledToolbox(toolbox), [blockId, doThis, doThat,separator])
   })
 
   test('When styling, separators should be left unchanged', function (assert) {
     setCategoriesNotRequired(this.ctrl)
-    assert.propEqual(this.ctrl._aplicarEstiloAToolbox([separator]), [separator])
+    assert.propEqual(this.ctrl._styledToolbox([separator]), [separator])
   })
 
   test('When styling, blocks ids should be left unchanged', function (assert) {
     setCategoriesNotRequired(this.ctrl)
-    assert.propEqual(this.ctrl._aplicarEstiloAToolbox([blockId]), [blockId])
+    assert.propEqual(this.ctrl._styledToolbox([blockId]), [blockId])
   })
 
 })
