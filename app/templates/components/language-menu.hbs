@@ -1,0 +1,20 @@
+<PaperMenu @offset="5 43" as |menu|>
+
+    <menu.trigger>
+        <PaperButton id="language-menu" class="md-menu-origin" @iconButton={{true}}>
+            {{paper-icon "language"}}
+        </PaperButton>
+    </menu.trigger>
+
+    <menu.content as |content|>
+        {{#each languageIds as |languageId|}}
+        <content.menu-item>
+            <PaperButton @onClick={{action "setLanguage" languageId }}>
+                <span class="menu-item-typography">{{compute (action languageName) languageId}}</span>
+            </PaperButton>
+        </content.menu-item>
+        {{/each}}
+
+
+    </menu.content>
+</PaperMenu>
