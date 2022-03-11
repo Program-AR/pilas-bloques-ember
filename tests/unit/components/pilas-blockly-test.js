@@ -237,6 +237,7 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
+    this.ctrl.get('intl').setLocale('en-us') // This is needed because categories are tied to locale and translation.
   })
 
   function setCategoriesNotRequired(ctrl) {
@@ -274,6 +275,29 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   test('When styling, blocks ids should be left unchanged', function (assert) {
     setCategoriesNotRequired(this.ctrl)
     assert.propEqual(this.ctrl._styledToolbox([blockId]), [blockId])
+  })
+
+  test('ToolboxForBlockTypes should add one separator', function (assert) {
+    assert.equal(
+      this.ctrl.toolboxForBlockTypes(['Saludar'])
+      .filter(block => block.isSeparator)
+      .length,
+      1
+    )
+  })
+
+  // WARNING: categories are tied to translation.
+  test('If a blocktype is not a valid blockly block, is should be uncategorized', function (assert) {
+    const nonExistentBlockTypeName = 'NonExistentBlockType'
+    const emberBlocklySeparator = {
+      category: 'Separator',
+      isSeparator: true
+    }
+    const nonExistentEmberBlockly = {
+      category: 'Uncategorized',
+      blocks: [nonExistentBlockTypeName]
+    }
+    assert.propEqual(this.ctrl.toolboxForBlockTypes([nonExistentBlockTypeName]), [emberBlocklySeparator, nonExistentEmberBlockly])
   })
 
 })
