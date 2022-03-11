@@ -1,5 +1,4 @@
-import menu from './menu';
+import Component from '@ember/component';
 
-export default menu.extend({
-    
-})
+export default Component.extend({
+});
