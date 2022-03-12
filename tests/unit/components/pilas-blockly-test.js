@@ -233,11 +233,16 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
 
   const toolbox = [blockId, myProcedures, separator]
 
+  const emberBlocklySeparator = {
+    category: 'Separator',
+    isSeparator: true
+  }
+
   hooks.beforeEach(function () {
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
-    this.ctrl.get('intl').setLocale('en-us') // This is needed because categories are tied to locale and translation.
+    this.ctrl.get('intl').setLocale('en-us') // This is necessary because categories are tied to locale and translation.
   })
 
   function setCategoriesNotRequired(ctrl) {
@@ -289,15 +294,29 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   // WARNING: categories are tied to translation.
   test('If a blocktype is not a valid blockly block, is should be uncategorized', function (assert) {
     const nonExistentBlockTypeName = 'NonExistentBlockType'
-    const emberBlocklySeparator = {
-      category: 'Separator',
-      isSeparator: true
-    }
     const nonExistentEmberBlockly = {
       category: 'Uncategorized',
       blocks: [nonExistentBlockTypeName]
     }
     assert.propEqual(this.ctrl.toolboxForBlockTypes([nonExistentBlockTypeName]), [emberBlocklySeparator, nonExistentEmberBlockly])
+  })
+
+  test('ToolboxForBlockTypes should group block types by their category', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const moveLeft = 'MoverACasillaIzquierda'
+    const repeat = 'Repetir'
+    const emberBlocklyPrimitives = {
+      category: 'Primitives',
+      blocks: [moveRight, moveLeft]
+    }
+    const emberBlocklyRepetitions = {
+      category: 'Repetition',
+      blocks: [repeat]
+    }
+    assert.propEqual(
+      this.ctrl.toolboxForBlockTypes([moveRight, repeat, moveLeft]),
+      [emberBlocklyPrimitives, emberBlocklyRepetitions, emberBlocklySeparator]
+    )
   })
 
 })
