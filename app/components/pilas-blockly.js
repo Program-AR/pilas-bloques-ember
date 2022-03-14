@@ -146,22 +146,27 @@ export default Component.extend({
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
-    let toolbox = [];
-
-    blockTypes.forEach((blockType) => {
-      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(blockType);
-
-      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoryId) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, blockType, bloqueDesdeBlockly.categoria_custom);
-      } else {
-        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', blockType);
-      }
-
-    });
+    const toolbox = this.groupedByCategories(blockTypes)
 
     toolbox.push({ categoryId: 'separator', isSeparator: true });
 
     return this._toEmberBlocklyToolbox(toolbox);
+  },
+
+  groupedByCategories(blockTypes) {
+    return this.categoryIdsFor(blockTypes).map( categoryId => ({
+      categoryId: categoryId,
+      blocks: blockTypes.filter( bt => this._categoryIdFor(bt) === categoryId ),
+    }))
+  },
+
+  categoryIdsFor(blockTypes) {
+    return [... new Set(blockTypes.map(bt => this._categoryIdFor(bt)))]
+  },
+
+  _categoryIdFor(blockType) {
+    const blockFromBlockly = this._blockFromBlockly(blockType)
+    return blockFromBlockly && blockFromBlockly.categoryId || 'uncategorized'
   },
 
   _toEmberBlocklyToolbox(toolbox) {
@@ -176,7 +181,7 @@ export default Component.extend({
 	 *    category?: string,
    *    custom?: string,
 	 *    isSeparator?: boolean,
-	 *    blocks?: string[]
+	 *    blocks?: string[] // These are block types, not blocks.
    * }
    */
   _toEmberBlocklyToolboxItem(block) {
@@ -252,40 +257,12 @@ export default Component.extend({
   },
 
   /**
-   * Permite obtener el bloque desde blockly a partir de su nombre simple.
+   * Obtains a Blockly block from a block type
    *
-   * TODO: Mover a ember-blockly. Debería estar dentro del servicio blockly.
+   * TODO: Move to ember-blockly. It belongs to blockly service.
    */
-  _obtenerBloqueDesdeBlockly(bloqueComoString) {
-    return Blockly.Blocks[bloqueComoString];
-  },
-
-  /**
-   * Método auxiliar de "toolboxForBlockTypes". Este método
-   * permite agregar un bloque a una categoría dentro del toolbox.
-   */
-  _agregar_bloque_a_categoria(toolbox, categoria, bloque, categoria_custom) {
-
-    function obtenerOCrearCategoria(toolbox, categoria) {
-      for (let i = 0; i < toolbox.length; i++) {
-        if (toolbox[i].categoryId === categoria) {
-          return toolbox[i];
-        }
-      }
-
-      toolbox.push({
-        categoryId: categoria,
-        blocks: []
-      });
-
-      return toolbox[toolbox.length - 1];
-    }
-
-    let categoriaEnElToolbox = obtenerOCrearCategoria(toolbox, categoria);
-    if (categoria_custom) {
-      categoriaEnElToolbox.custom = categoria_custom;
-    }
-    categoriaEnElToolbox.blocks.push(bloque);
+  _blockFromBlockly(blockType) {
+    return Blockly.Blocks[blockType];
   },
 
   ejecutarInterpreteHastaTerminar(interprete, pasoAPaso) {
