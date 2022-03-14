@@ -1,30 +1,20 @@
 import Component from '@ember/component';
+import { inject as service } from '@ember/service';
 
 export default Component.extend({
+
     tagName: 'div',
     classNames: [],
+    storage: service(),
     isNightTheme: false,
 
     didRender() {
-        this.set('isNightTheme', localStorage.getItem('theme') === 'dark');
-    },
-
-    setLightTheme() {
-        localStorage.setItem('theme', 'light');
-    },
-
-    setDarkTheme() {
-        localStorage.setItem('theme', 'dark');
+        this.set('isNightTheme', this.storage.getUseNightTheme());
     },
 
     actions: {
         toggleTheme() {
-            if (this.isNightTheme) {
-                this.setLightTheme();
-            }
-            else {
-                this.setDarkTheme();
-            }
+            this.storage.toggleNightTheme();
         }
     }
 

@@ -1,7 +1,7 @@
 import QUnit, { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { blocklyWorkspaceMock } from '../../helpers/mocks'
-import { procedure, entryPoint, sequence, reference, application, repeat, muIf, ifElse, muWhile, number, string, none } from '../../helpers/astFactories'
+import { procedure, entryPoint, sequence, reference, application, repeat, muIf, ifElse, muUntil, number, string, none } from '../../helpers/astFactories'
 import { setUpTestLocale } from '../../helpers/utils';
 
 let pilasMulang = null
@@ -175,7 +175,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   </block>
   `
   mulangParseBlockTest('hasta', hasta,
-    muWhile(
+    muUntil(
       application("TocandoFinal"),
       application("EncenderLuz"),
       application("MoverACasillaAbajo")
@@ -674,7 +674,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     ),
     procedure('Prender compus hacia', ['direccion'],
       application('MoverA', reference('direccion')),
-      muWhile(application('EstoyEnEsquina'),
+      muUntil(application('EstoyEnEsquina'),
         application('PrenderComputadora'),
         application('MoverA', reference('direccion')),
       ),
