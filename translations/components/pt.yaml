@@ -1,0 +1,118 @@
+bugReportModal:
+  problem: "Tem algum problema?"
+  error: "Acha que este exercício tem um erro? "
+  askTeacher: "Lembre-se de sempre entrar em contato com seu professor ou escola para fazer perguntas. Nós que fazemos o Pilas Bloques infelizmente não conhecem todos os professores que usam a ferramenta."
+  mail: "Pode nos escrever no"
+  githubReport: "Se você tem uma conta no Github, você também pode fazer um relatório de bug diretamente para nós"
+  issueTracker: Issue Tracker
+
+congratulationsModal:
+  youDidIt: "Conseguiu!"
+  toThink: "Para pensar..."
+  otherSolutions: "Seu programa não é o único que resolve o problema. Existem outras soluções! "
+  concepts: "Você está usando bem os conceitos?"
+
+createCustomChallenge:
+  create: "Criar desafio"
+  custom: "Crie desafios personalizados com o criador de desafios do Pilas Bloques."
+
+scene:
+  close: "Fechar"
+
+sceneDetails:
+  seeDescription: "Quero ver a declaração!"
+  getClue: "Dá-me uma dica!"
+  noClues: "Este exercício não contém nenhuma dica"
+
+sceneButtons:
+  stepByStepRun:
+    label: "Passo"
+    tooltip: "Execute a solução proposta passo a passo"
+  runStep:
+    label: "Passo"
+    tooltip: "Dê um passo"
+  run:
+    label: "Executar"
+    tooltip: "Executar a solução proposta"
+  restart:
+    label: "Reiniciar"
+    tooltip: "Reiniciar a execução"
+
+turboModeToggle:
+  turnOff: "Desativar o modo Turbo"
+  turnOn: "Ativar o modo Turbo"
+  active: "ATIVADO"
+  inactive: "DESATIVADO"
+
+clearData:
+  deleting: "Excluindo dados do navegador, se você tiver um usuário, pode ter que entrar novamente."
+
+importCustomChallenge:
+  import: "Importar Desafio"
+  custom: "Importe um desafio personalizado do criador de desafios do Pilas Bloques."
+
+header:
+  tool: "Uma ferramenta para aprender a programar"
+
+registerDisclaimer:
+  now: "¡ Agora o Pilas Bloques permite"
+  register: "registrar-se"
+  optional: "Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou."
+
+programarDisclaimer:
+  entered: "Você entrou"
+  programar: "Program.AR em casa"
+  in: "Em"
+  find: "você encontrará muito material, muitas ferramentas e uma explicação de como usar o Pilas Bloques"
+
+challengeLink:
+  soon: "Em breve"
+
+challengeWorkspaceButtons:
+  open: "Abrir solução"
+  save: "Guardar solução"
+  careful: "Atenção! Remover a solução perderá suas alterações."
+  delete: "Remover a solução"
+  exit: "Sair da tela cheia"
+  fullScreen: "Tela Cheia"
+
+footer:
+  version: "Versão:"
+  problem: "Problemas com este exercício?"
+  about: "Sobre"
+
+login:
+  already: "Já tenho um usuário"
+  wrong: "Nome de usuário ou senha incorretos, tente novamente"
+  forgot: "Esqueci meu nome de usuário ou senha"
+  dontHaveUser: "Ainda não tenho usuário"
+  register: "Cadastre-se clicando aqui!"
+  login: "Entrar"
+
+modalAyuda:
+  help: "Esta aplicação apresentará vários desafios que podem ser resolvidos conectando blocos."
+  firstSteps: "O primeiro passo é abrir a seção Desafios:"
+  categories: "Os blocos estão agrupados em categorias, use a barra lateral para exibi-los."
+  dragAndDrop: "Pode então arrastar e soltar os blocos na área de trabalho. "
+  continue: "Assim que tiver seu programa pronto, pressione o botão Executar para continuar."
+  delete: "Ah, e os blocos podem ser removidos arrastando-os para a lata de lixo."
+
+passwordConfirmation:
+  password: "Confirmar senha"
+
+sessionButton:
+  login: "Entrar"
+  logout: "Fechar sessão"
+  changeUser: "Mudar usuário"
+
+phoneRotationWarning:
+  rotate: "Tente girar o celular"
+  widerScreen: "Pilas Bloques  precisa de uma tela mais ampla"
+
+notifier:
+  download: "Há uma nova versão disponível para baixar."
+  visit: "Visite"
+  moreInfo: "nosso site para mais informação."
+
+termsAndConditionLink:
+  terms: "termos e condições de uso"
