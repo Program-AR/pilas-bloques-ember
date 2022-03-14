@@ -57,7 +57,7 @@
     "blockly-package": "^1.0.0",
     "clientjs": "^0.1.11",
     "creador-de-desafios-pilasbloques": "^1.0.1",
-    "pilas-bloques-ember-intl": "^1.0.0",
+    "pilas-bloques-ember-intl": "^1.1.1",
     "pilas-bloques-exercises": "1.2.3",
     "pilasweb": "^0.5.0",
     "proceds-blockly": "^1.0.1",
