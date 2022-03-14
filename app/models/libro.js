@@ -7,13 +7,13 @@ import Ember from 'ember';
 export default Model.extend({
   intl: Ember.inject.service(),
 
-  titulo: computed('id',function(){
+  titulo: computed('id', 'intl.locale', function () {
     return this.intl.t(`model.books.${this.id}.title`);
   }),
 
-  descripcion: computed('id',function(){
+  descripcion: computed('id', 'intl.locale', function () {
     return this.intl.t(`model.books.${this.id}.description`);
-  }), 
+  }),
 
   imagen: attr('string'),
   modoLecturaSimple: attr('boolean'),

@@ -6,7 +6,7 @@ import Ember from 'ember';
 export default Model.extend({
   intl: Ember.inject.service(),
 
-  titulo: computed('id',function(){
+  titulo: computed('id', 'intl.locale', function () {
     return this.intl.t(`model.groups.${this.id}.title`).toString()
   }),
 

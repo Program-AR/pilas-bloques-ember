@@ -12,13 +12,13 @@ export const xmlBloqueEmpezarAEjecutar =
 export default Model.extend({
   intl: Ember.inject.service(),
 
-  titulo: computed('id', function () {
+  titulo: computed('id', 'intl.locale', function () {
     return `${this.intl.t(`model.challenges.${this.id}.title`)}`;
   }),
-  enunciado: computed('id', function () {
+  enunciado: computed('id', 'intl.locale', function () {
     return `${this.intl.t(`model.challenges.${this.id}.description`)}`;
   }),
-  consignaInicial: computed('id', function () {
+  consignaInicial: computed('id', 'intl.locale', function () {
     return `${this.intl.t(`model.challenges.${this.id}.clue`)}`;
   }),
 
