@@ -114,5 +114,5 @@ notifier:
   visit: "Visite"
   moreInfo: "nosso site para mais informação."
 
-termsAndConditionLink:
-  terms: "termos e condições de uso"
+acceptTermsAndConditions:
+  accept: "termos e condições de uso"
