@@ -253,14 +253,14 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
     assert.throws(() => this.ctrl.toolboxForBlockTypes(undefined))
   })
 
-  test('Toolbox should be ordered based on Pilas Bloques stablished order', function (assert) {
+  test('Toolbox should be sorted based on Pilas Bloques stablished order', function (assert) {
     const alternative = { categoryId: 'alternatives' }
-    assert.propEqual(this.ctrl.ordered_toolbox([operator, primitive, alternative]), [primitive, alternative, operator])
+    assert.propEqual(this.ctrl.sortedToolbox([operator, primitive, alternative]), [primitive, alternative, operator])
   })
 
   test('When sorted categories that are not acknowledged by Pilas Bloques should be at the end', function (assert) {
     const uncategorized = { categoryId: 'uncategorized' }
-    assert.propEqual(this.ctrl.ordered_toolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
+    assert.propEqual(this.ctrl.sortedToolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
   })
 
   test('If categories are required in toolbox, it should stay unchanged', function (assert) {
@@ -289,6 +289,21 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
       .length,
       1
     )
+  })
+
+  test('ToolboxForBlockTypes should add a separator between commands and expressions', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const sensor = 'HayObstaculoDerecha'
+    const emberBlocklyCommands = {
+      category: 'Primitives',
+      blocks: [moveRight]
+    }
+    const emberBlocklySensors = {
+      category: 'Sensors',
+      blocks: [sensor]
+    }
+    const emberToolbox = [emberBlocklyCommands, emberBlocklySeparator, emberBlocklySensors]
+    assert.propEqual(this.ctrl.toolboxForBlockTypes([sensor, moveRight]), emberToolbox)
   })
 
   // WARNING: categories are tied to translation.

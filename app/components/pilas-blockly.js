@@ -148,6 +148,8 @@ export default Component.extend({
 
     const toolbox = this.groupedByCategories(blockTypes)
 
+    // This is meant to separate commands from expressions
+    // sortedToolbox will put it in the right position
     toolbox.push({ categoryId: 'separator', isSeparator: true });
 
     return this._toEmberBlocklyToolbox(toolbox);
@@ -197,7 +199,7 @@ export default Component.extend({
    * }
    */
   _toEmberBlocklyToolbox(toolbox) {
-    return this._styledToolbox(this.ordered_toolbox(toolbox)).map(
+    return this._styledToolbox(this.sortedToolbox(toolbox)).map(
       toolboxItem => this._toEmberBlocklyToolboxItem(toolboxItem)
     )
   },
@@ -238,11 +240,10 @@ export default Component.extend({
 
   /**
    * Orders the toolbox (usually categories) by Pilas Bloques stablished order.
-   * Categories that are not in the initial_order list should remain at the end.
    * @param {*} toolbox
    */
-  ordered_toolbox(toolbox) {
-    const initial_order = [ // Categories initial order.
+  sortedToolbox(toolbox) {
+    const desiredOrder = [ // Categories initial order.
       'primitives',
       'myProcedures',
       'repetitions',
@@ -252,21 +253,11 @@ export default Component.extend({
       'values',
       'sensors',
       'operators',
-      'myFunctions'
+      'myFunctions',
+      'uncategorized'
     ];
 
-    const recognized_items = []
-    const unrecognized_items = []
-
-    toolbox.forEach(item => {
-      if(initial_order.includes(item.categoryId)){
-        recognized_items.push(item)
-      } else {
-        unrecognized_items.push(item)
-      }
-    })
-
-    return recognized_items.sort((cat1, cat2) => initial_order.indexOf(cat1.categoryId) - initial_order.indexOf(cat2.categoryId)).concat(unrecognized_items);
+    return [... toolbox].sort((cat1, cat2) => desiredOrder.indexOf(cat1.categoryId) - desiredOrder.indexOf(cat2.categoryId))
   },
 
   /**
