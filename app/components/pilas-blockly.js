@@ -165,28 +165,53 @@ export default Component.extend({
   },
 
   _categoryIdFor(blockType) {
-      return this._blockFromBlockly(blockType)?.categoryId || 'uncategorized'
-  },
-
-  _toEmberBlocklyToolbox(toolbox) {
-    return this._styledToolbox(this.ordered_toolbox(toolbox)).map(
-      block => this._toEmberBlocklyToolboxItem(block)
-    )
+    return this.blocklyBlock(blockType)?.categoryId || 'uncategorized'
   },
 
   /*
-   * EmberBlocklyToolboxItem should have the following structure:
-   * type EmberBlocklyToolboxItem = string | {
-	 *    category?: string,
-   *    custom?: string,
-	 *    isSeparator?: boolean,
-	 *    blocks?: string[] // These are block types, not blocks.
+   * _toEmberBlocklyToolbox(toolbox: Toolbox) => EmberToolbox
+   * type Toolbox = ToolboxItem[]
+   * type ToolboxItem = BlockType | Separator | Category
+   * type Separator = {
+   *   categoryId: string,
+   *   isSeparator: true
+   * }
+   * type Category = {
+   *   categoryId: string,
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   * }
+   * 
+   * 
+   * type EmberToolbox = EmberToolboxItem[]
+   * type EmberToolboxItem = BlockType | EmberSeparator | EmberCategory
+   * type BlockType = string
+   * type EmberSeparator = {
+   *    isSeparator: true // always
+   * } 
+   * type EmberCategory = {
+   *   category?: string, // printable category name
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   *   isSeparator: false // always false for categories
    * }
    */
-  _toEmberBlocklyToolboxItem(block) {
-    if(typeof block === "string") return block
+  _toEmberBlocklyToolbox(toolbox) {
+    return this._styledToolbox(this.ordered_toolbox(toolbox)).map(
+      toolboxItem => this._toEmberBlocklyToolboxItem(toolboxItem)
+    )
+  },
 
-    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${block.categoryId}`).toString(), ...block }
+  _toEmberBlocklyToolboxItem(toolboxItem) {
+    if(typeof toolboxItem === "string") return toolboxItem
+
+    if(toolboxItem.isSeparator){
+      const emberSeparator = {... toolboxItem}
+      delete emberSeparator.categoryId
+      return emberSeparator
+    }
+
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${toolboxItem.categoryId}`).toString(), ...toolboxItem }
     delete emberBlocklyToolboxItem.categoryId
 
     return emberBlocklyToolboxItem
@@ -201,21 +226,10 @@ export default Component.extend({
   _styledToolbox(toolbox) {
     if(this._areCategoriesRequiredInToolbox()) return toolbox
 
-    let flattened_toolbox = []
-
-    toolbox.forEach(block => {
-      if(this._shouldRemainUnchanged(block)){
-        flattened_toolbox.push(block) //Separators and block ids should not be modified
-      } else {
-        flattened_toolbox = flattened_toolbox.concat(this._styledToolbox(block.blocks))
-      }
+    return toolbox.flatMap(toolboxItem => {
+      if(toolboxItem.isSeparator || !toolboxItem.categoryId) return [toolboxItem]
+      return toolboxItem.blocks
     })
-
-    return flattened_toolbox
-  },
-
-  _shouldRemainUnchanged(block){
-    return block.isSeparator || !block.categoryId
   },
 
   _areCategoriesRequiredInToolbox() {
@@ -260,7 +274,7 @@ export default Component.extend({
    *
    * TODO: Move to ember-blockly. It belongs to blockly service.
    */
-  _blockFromBlockly(blockType) {
+  blocklyBlock(blockType) {
     return Blockly.Blocks[blockType];
   },
 

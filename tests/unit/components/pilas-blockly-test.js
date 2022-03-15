@@ -234,11 +234,11 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   const toolbox = [blockId, myProcedures, separator]
 
   const emberBlocklySeparator = {
-    category: 'Separator',
     isSeparator: true
   }
 
   hooks.beforeEach(function () {
+    this.owner.lookup('service:blocksGallery').start()
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
@@ -317,6 +317,28 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
       this.ctrl.toolboxForBlockTypes([moveRight, repeat, moveLeft]),
       [emberBlocklyPrimitives, emberBlocklyRepetitions, emberBlocklySeparator]
     )
+  })
+
+  test('Transformation: _toEmberBlocklyToolboxItem should not change a BlockType', function (assert) {
+    const blockType = 'MoverACasillaDerecha'
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(blockType), blockType)
+  })
+
+  test('Transformation: Separator to EmberSeparator', function (assert) {
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(separator), emberBlocklySeparator)
+  })
+
+  test('Transformation: Category to EmberCategory', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const category = {
+      categoryId: 'primitives',
+      blocks: [moveRight]
+    }
+    const emberCategory = {
+      category: 'Primitives',
+      blocks: [moveRight]
+    }
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(category), emberCategory)
   })
 
 })
