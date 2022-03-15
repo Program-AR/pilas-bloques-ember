@@ -1,5 +1,5 @@
 bugReportModal:
-  askTeacher: "MISSING TRANSLATION"
+  askTeacher: "Remember to ask your teacher and/or school if you have any questions. Unfortunately the Pilas Bloques developer team doesn't know every teacher who uses the tool."
   problem: "Are you having any problem?"
   error: "Do you think there’s an error in this exercise?"
   mail: "You can contact us writing to "
@@ -114,5 +114,8 @@ notifier:
   visit: "Visit"
   moreInfo: "our web to learn more."
 
-termsAndConditionLink:
-  terms: "terms of use and conditions"
+acceptTermsAndConditions:
+  askToRead: "Your privacy and that of your children are very important to Sadosky Foundation. That’s why we ask you to read and accept our "
+  termsLink: "terms of use and conditions"
+  toUse: " to use Pilas Bloques"
+  accept: "I accept the terms of use and conditions"

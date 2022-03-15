@@ -114,5 +114,8 @@ notifier:
   visit: "Visitá"
   moreInfo: "nuestra web para más información."
 
-termsAndConditionLink:
-  terms: "términos y condiciones de uso"
+acceptTermsAndConditions:
+  askToRead: "Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy importante. Por eso te pedimos que leas y aceptes nuestros "
+  termsLink: "términos y condiciones de uso"
+  toUse: " para poder usar Pilas Bloques."
+  accept: "Acepto los terminos y condiciones de uso"
