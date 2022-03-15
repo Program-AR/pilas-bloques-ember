@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.8.0",
+  "version": "1.8.3",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -42,12 +42,12 @@
     "release:patch": "ember release",
     "release:major": "ember release --major",
     "release:minor": "ember release --minor",
-    "pack:linux_x64_deb": "sh ./scripts/package.sh -linux_x64_deb",
-    "pack:linux_ia32_zip": "sh ./scripts/package.sh -linux_ia32_zip",
-    "pack:linux_x64_zip": "sh ./scripts/package.sh -linux_x64_zip",
-    "pack:linux": "sh ./scripts/package.sh -linux",
-    "pack:osx": "sh ./scripts/package.sh -osx",
-    "pack:win32": "sh ./scripts/package.sh -win32",
+    "pack:linux_x64_deb": "bash ./scripts/package.sh -linux_x64_deb",
+    "pack:linux_ia32_zip": "bash ./scripts/package.sh -linux_ia32_zip",
+    "pack:linux_x64_zip": "bash ./scripts/package.sh -linux_x64_zip",
+    "pack:linux": "bash ./scripts/package.sh -linux",
+    "pack:osx": "bash ./scripts/package.sh -osx",
+    "pack:win32": "bash ./scripts/package.sh -win32",
     "clean": "rm -rf node_modules dist dist_prod"
   },
   "engines": {
@@ -62,7 +62,6 @@
     "pilasweb": "^0.5.0",
     "proceds-blockly": "^1.0.1",
     "survey-knockout": "^1.8.0",
-    "unzipit": "^1.3.5",
     "uuid": "^8.3.0"
   },
   "devDependencies": {

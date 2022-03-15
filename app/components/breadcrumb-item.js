@@ -7,11 +7,11 @@ export default Component.extend({
         var _classes = ""
 
         if (this.initial) {
-            _classes = _classes + "breadcrumb-initial-item";
+            _classes += "breadcrumb-initial-item";
         }
 
         if (this.selected) {
-            _classes = _classes + "breadcrumb-selected-item";
+            _classes += "breadcrumb-selected-item";
         }
 
         return _classes;
