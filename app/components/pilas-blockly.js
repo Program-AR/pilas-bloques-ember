@@ -165,8 +165,7 @@ export default Component.extend({
   },
 
   _categoryIdFor(blockType) {
-    const blockFromBlockly = this._blockFromBlockly(blockType)
-    return blockFromBlockly && blockFromBlockly.categoryId || 'uncategorized'
+      return this._blockFromBlockly(blockType)?.categoryId || 'uncategorized'
   },
 
   _toEmberBlocklyToolbox(toolbox) {
