@@ -258,7 +258,7 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
     assert.propEqual(this.ctrl.sortedToolbox([operator, primitive, alternative]), [primitive, alternative, operator])
   })
 
-  test('When sorted categories that are not acknowledged by Pilas Bloques should be at the end', function (assert) {
+  test('Uncategorized category should be the last item in the toolbox after sorting', function (assert) {
     const uncategorized = { categoryId: 'uncategorized' }
     assert.propEqual(this.ctrl.sortedToolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
   })
