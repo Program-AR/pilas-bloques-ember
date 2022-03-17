@@ -5,14 +5,16 @@
   </div>
   <div class='expectationResults' >
     <PaperProgressLinear @value={{passedExpectsValue}} />
-    {{#each expects as |expectationResult|}}
-      <p class={{if expectationResult.result 'good' 'bad'}}>
-        {{#if expectationResult.result}}
-          {{paper-icon "check-circle"}}
-        {{else}}
-          {{paper-icon "thumb_down_off_alt"}}
-        {{/if}}
-        {{expectationResult.expect}}
+    {{#each passedExpects as |result|}}
+      <p class='good'>
+        {{paper-icon "check-circle"}}
+        {{result.expect}}
+      </p>
+    {{/each}}
+    {{#each failedExpects as |result|}}
+      <p class='bad'>
+        {{paper-icon "radio_button_unchecked"}}
+        {{result.expect}}
       </p>
     {{/each}}
   </div>

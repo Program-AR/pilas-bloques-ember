@@ -12,19 +12,14 @@
         margin-bottom: 2rem !important;
         .md-container, .md-bar {
             height: 15px;
-        }
-        .md-container {
-            background-color: red;
+            border-radius: 10px;
         }
         .md-bar2 {
-            background-color: green;
+            background-image: linear-gradient(to bottom, green, rgb(0, 61, 0));
         }
     }
     p.good {
         color: green;
-    }
-    p.bad {
-        color: red;
     }
     md-icon[md-font-icon] {
         color: inherit;
