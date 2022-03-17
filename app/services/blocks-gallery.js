@@ -206,8 +206,13 @@ export default Service.extend({
     Blockly.Msg.PROCEDURES_PARAMETER = this.tString("procedures.paramName")
     Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = this.tString("procedures.paramWith")
     Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP = this.tString("procedures.create")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT = this.tString("procedures.comment")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_NOPARAMS = this.tString("procedures.noParams")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER = this.tString("procedures.addParam")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
+    Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
 
-    initProcedsBlockly(false);
+    ProcedsBlockly.init()
   },
 
   _definirColores() {

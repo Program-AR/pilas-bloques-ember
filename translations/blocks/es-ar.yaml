@@ -128,3 +128,8 @@ procedures:
   paramWith: "con"
   paramName: "parámetro"
   create: "Crea un procedimiento."
+  removeParam: "Quitar parámetro"
+  comment: "Describe el procedimiento..."
+  noParams: ""
+  addParam: "Agregar parámetro"
+  addParamPrompt: "Enter the parameter's name"
