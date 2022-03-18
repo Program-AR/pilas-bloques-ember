@@ -12,16 +12,19 @@ $header-height: 45px;
 
 .header-title {
     font-size: smaller;
-    margin-left: 10%;
+}
+
+@mixin config-elem() {
+    margin-top: 10%;
 }
 
 .night-mode {
-    margin-top: 10%;
+    @include config-elem();
 }
 
 .simple-read {
-    margin-top: 10%;
-    margin-right: 15px;
+    @include config-elem();
+    margin-right: 0.4em;
 }
 
 md-toolbar:not(.md-menu-toolbar) {
