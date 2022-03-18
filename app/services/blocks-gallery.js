@@ -201,7 +201,6 @@ export default Service.extend({
   defineProcedureTranslations(){
     Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
-    Blockly.Msg.PROCEDURES_DEFRETURN_TITLE = this.tString("procedures.definition")
     Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
     Blockly.Msg.PROCEDURES_PARAMETER = this.tString("procedures.paramName")
     Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = this.tString("procedures.paramWith")
