@@ -1,6 +1,6 @@
 /* app/services/intl.js */
 import { assign } from '@ember/polyfills';
-import IntlService from 'ember-intl/services/intl';
+import IntlService from 'pilas-bloques-ember-intl/services/intl';
 import Ember from 'ember';
 import ENV from 'pilasbloques/config/environment'
 

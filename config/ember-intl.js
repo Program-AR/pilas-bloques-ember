@@ -47,7 +47,7 @@ module.exports = function (/* environment */) {
      * @type {Boolean}
      * @default "false"
      */
-    wrapTranslationsWithNamespace: true, //Setting true here breaks the translations in Windows
+    wrapTranslationsWithNamespace: true, // TODO: https://github.com/Program-AR/pilas-bloques/issues/910
 
     /**
      * Cause a build error if ICU argument mismatches are detected between translations

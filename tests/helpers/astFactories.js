@@ -100,11 +100,11 @@ export function ifElse(condition, seqTrue, seqFalse) {
   }
 }
 
-export function muWhile(condition, ...seq) {
+export function muUntil(condition, ...seq) {
   return {
     tag: "While",
     contents: [
-      condition,
+      primitiveApplication('Negation', condition),
       sequence(...seq)
     ]
   }
@@ -128,5 +128,19 @@ export function none() {
   return {
     tag: "None",
     contents: []
+  }
+}
+
+function primitive(name) {
+  return {
+    tag: "Primitive",
+    contents: name
+  }
+}
+
+function primitiveApplication(name, ...params) {
+  return {
+    tag: "Application",
+    contents: [primitive(name), params]
   }
 }
