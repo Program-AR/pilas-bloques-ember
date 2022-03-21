@@ -1,6 +1,7 @@
 import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
 import Ember from 'ember'
+import * as ProcedsBlockly from 'proceds-blockly/proceds-blockly'
 
 export default Service.extend({
   blockly: service(),
