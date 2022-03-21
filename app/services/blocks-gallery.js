@@ -1,7 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
 import Ember from 'ember'
-import * as ProcedsBlockly from 'proceds-blockly/proceds-blockly'
 
 export default Service.extend({
   blockly: service(),
@@ -212,7 +211,26 @@ export default Service.extend({
     Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
     Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
 
+    // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
+    // After calling init(), we disable unwanted toolbox blocks again
+    this._enableUnwantedProcedureBlocks()
     ProcedsBlockly.init()
+    this._disableUnwantedProcedureBlocks()
+  },
+
+  _disableUnwantedProcedureBlocks() {
+    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
+      if (Blockly.Blocks[blockType]) {
+        Blockly['bkp_'+blockType] = Blockly.Blocks[blockType]
+        delete Blockly.Blocks[blockType]
+      }
+    })
+  },
+
+  _enableUnwantedProcedureBlocks() {
+    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
+      if (Blockly['bkp_'+blockType]) Blockly.Blocks[blockType] = Blockly['bkp_'+blockType]
+    })
   },
 
   _definirColores() {
@@ -1377,6 +1395,9 @@ export default Service.extend({
       }
     };
 
+    // Blockly dynamically loads stuff in procedures category that we don't want, so we take them out
+    this._disableUnwantedProcedureBlocks()
+
     this.defineProcedureTranslations()
     
     let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
@@ -1384,9 +1405,6 @@ export default Service.extend({
     Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
     };
-
-    delete Blockly.Blocks.procedures_defreturn;
-    delete Blockly.Blocks.procedures_ifreturn;
 
   },
 
