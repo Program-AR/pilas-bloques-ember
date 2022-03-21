@@ -3,6 +3,7 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   intl: service(),
   beforeModel() {
-    this.get('intl').setLocale(['es-ar']);
+    const selectedLanguage = localStorage.getItem('selectedLanguage')
+    this.get('intl').setLocale(selectedLanguage || 'es-ar')
   }
 });
