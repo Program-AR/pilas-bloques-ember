@@ -9,13 +9,13 @@ export default Component.extend({
         return this.get('intl').get('locales')
     }),
 
-    languageName(languageId) {
-        return this.get('intl').t('localeName', { locale: languageId })
+    languageName(localeCode) {
+        return this.get('intl').t('localeName', { locale: localeCode })
     },
 
     actions: {
-        setLanguage: function (selectedLanguageId) {
-            this.intl.setLanguage(selectedLanguageId)
+        setLanguage: function (selectedLocaleCode) {
+            this.intl.setLanguage(selectedLocaleCode)
         }
     }
 });

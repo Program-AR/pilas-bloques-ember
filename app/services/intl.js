@@ -3,8 +3,11 @@ import { assign } from '@ember/polyfills';
 import IntlService from 'pilas-bloques-ember-intl/services/intl';
 import Ember from 'ember';
 import ENV from 'pilasbloques/config/environment'
+import { inject as service } from '@ember/service';
 
 export default IntlService.extend({
+  storage: service(),
+
   t(key, options) {
     return this.addTranslationCheck(this._super(key, assign({ htmlSafe: true }, options)));
   },
@@ -16,7 +19,7 @@ export default IntlService.extend({
   },
 
   setLanguage(selectedLanguageId) {
-    localStorage.setItem('selectedLanguage', selectedLanguageId);
+    this.storage.saveSelectedLanguage(selectedLanguageId);
     window.location.reload(true)
   }
 });
