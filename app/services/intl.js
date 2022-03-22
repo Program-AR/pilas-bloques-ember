@@ -18,8 +18,8 @@ export default IntlService.extend({
       safeHTML
   },
 
-  setLanguage(selectedLocaleCode) {
-    this.storage.saveSelectedLanguage(selectedLocaleCode);
+  setLocale(selectedLocaleCode) {
+    this.storage.saveSelectedLocale(selectedLocaleCode);
     window.location.reload(true)
   }
 });

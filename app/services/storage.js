@@ -8,7 +8,7 @@ export default Ember.Service.extend({
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
   USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
-  SELECTED_LANGUAGE_KEY: 'PB_SELECTED_LANGUAGE',
+  SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
 
   getUserId() {
     const user = this.getUser()
@@ -37,9 +37,9 @@ export default Ember.Service.extend({
 
   toggleTurboMode() { this._save(this.USE_TURBO_MODE_KEY, !this.getUseTurboMode()) },
 
-  saveSelectedLanguage(selectedLanguage) { this._save(this.SELECTED_LANGUAGE_KEY, selectedLanguage) },
+  saveSelectedLocale(selectedLocale) { this._save(this.SELECTED_LOCALE_KEY, selectedLocale) },
 
-  getSelectedLanguage() { return this._get(this.SELECTED_LANGUAGE_KEY) },
+  getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) },
 
   clear() { localStorage.clear() },
 

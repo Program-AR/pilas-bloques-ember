@@ -6,7 +6,7 @@ export default Route.extend({
   intl: service(),
 
   beforeModel() {
-    const selectedLanguage = this.storage.getSelectedLanguage()
-    this.get('intl').setLocale(selectedLanguage || 'es-ar')
+    const selectedLocale = this.storage.getSelectedLocale()
+    this.get('intl').setLocale(selectedLocale || 'es-ar')
   }
 });
