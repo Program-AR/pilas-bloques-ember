@@ -18,7 +18,8 @@
     "Blob",
     "ClientJS",
     "uuidv4",
-    "unzipit"
+    "unzipit",
+    "ProcedsBlockly"
   ],
   "esversion": 9,
   "asi": true,
