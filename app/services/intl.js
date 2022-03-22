@@ -18,7 +18,7 @@ export default IntlService.extend({
       safeHTML
   },
 
-  setLocale(selectedLocaleCode) {
+  setSelectedLocale(selectedLocaleCode) {
     this.storage.saveSelectedLocale(selectedLocaleCode);
     window.location.reload(true)
   }

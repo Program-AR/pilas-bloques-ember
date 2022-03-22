@@ -15,7 +15,7 @@ export default Component.extend({
 
     actions: {
         setLocale: function (selectedLocaleCode) {
-            this.intl.setLocale(selectedLocaleCode)
+            this.intl.setSelectedLocale(selectedLocaleCode)
         }
     }
 });
