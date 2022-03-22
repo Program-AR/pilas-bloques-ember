@@ -5,7 +5,7 @@ import { computed } from '@ember/object';
 export default Component.extend({
 
     intl: service(),
-    languageIds: computed("intl", function () {
+    localeCodes: computed("intl", function () {
         return this.get('intl').get('locales')
     }),
 
