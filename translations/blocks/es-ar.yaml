@@ -132,4 +132,4 @@ procedures:
   comment: "Describe el procedimiento..."
   noParams: ""
   addParam: "Agregar parámetro"
-  addParamPrompt: "Enter the parameter's name"
+  addParamPrompt: "Ingresa el nombre del parámetro"
