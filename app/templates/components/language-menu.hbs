@@ -11,11 +11,13 @@
 
     <menu.content as |content|>
         {{#each localeCodes as |localeCode|}}
-        <content.menu-item>
-            <PaperButton @onClick={{action "setLocale" localeCode }}>
-                <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
-            </PaperButton>
-        </content.menu-item>
+            {{#if (compute (action shouldBeEnabled) localeCode)}}
+            <content.menu-item>
+                <PaperButton @onClick={{action "setLocale" localeCode }}>
+                    <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
+                </PaperButton>
+            </content.menu-item>
+            {{/if}}
         {{/each}}
 
 
