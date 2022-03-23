@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.8.3",
+  "version": "1.8.4",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -72,7 +72,7 @@
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^4.2.0",
     "devtron": "^1.4.0",
-    "electron": "15.2.0",
+    "electron": "15.3.5",
     "electron-packager": "15.1.0",
     "electron-rebuild": "2.0.0",
     "ember-ajax": "^5.0.0",
