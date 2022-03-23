@@ -1,7 +1,7 @@
 <PaperMenu @offset="5 43" as |menu|>
-  <PaperTooltip>
-    {{t "changeLanguage"}}
-  </PaperTooltip>
+    <PaperTooltip>
+        {{t "changeLanguage"}}
+    </PaperTooltip>
 
     <menu.trigger>
         <PaperButton id="language-menu" class="md-menu-origin" @iconButton={{true}}>
@@ -11,13 +11,11 @@
 
     <menu.content as |content|>
         {{#each localeCodes as |localeCode|}}
-            {{#if (compute (action shouldBeEnabled) localeCode)}}
-            <content.menu-item>
-                <PaperButton @onClick={{action "setLocale" localeCode }}>
-                    <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
-                </PaperButton>
-            </content.menu-item>
-            {{/if}}
+        <content.menu-item>
+            <PaperButton @onClick={{action "setLocale" localeCode }}>
+                <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
+            </PaperButton>
+        </content.menu-item>
         {{/each}}
 
 
