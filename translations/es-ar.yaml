@@ -1,183 +1,3 @@
-############ Main page contents, texts, buttons, etc. ############
-
-libros:
-  index:
-    welcome: "¡Hola! Te damos la bienvenida a <b> Pilas Bloques </b>, una herramienta para aprender a programar."
-    challenges: "Los desafíos que ofrecemos están organizados en dos grupos:"
-    customChallenges: "¡Ahora también podes crear e importar desafíos con el creador de desafíos de <b>Pilas Bloques</b>!"
-    visitAbout:
-      part1: "Visitá la sección "
-      link1: "Acerca de"
-      part2: " para conocer más en detalle de qué se trata esta herramienta y quién la desarrolló."
-
-desafios:
-  desafioPorNombreError: 
-    wentWrong: "Lo siento, algo salió mal..."
-    doesntExist: "No existe un desafío con el nombre indicado en la URL. ¿Podrías corroborar la correctitud de la dirección a este desafío?"
-  index:
-    chooseOne: "Elegí uno de los libros de la barra superior"
-
-acercade:
-  yourCurrentVersion: Actualmente estás usando la versión
-  youCanUpdate: y se puede actualizar a la versión
-  visitProjectWeb: Visitar la web del proyecto
-
-components:
-  bugReportModal:
-    problem: "¿Tenés algún problema?"
-    error: "¿Pensás que este ejercicio tiene un error?"
-    askTeacher: "Recordá contactarte siempre con tu docente o escuela para hacerle consultas. Quienes hacemos Pilas Bloques lamentablemente no conocemos a todas las maestras y maestros que usan la herramienta."
-    mail: "Podés escribirnos a "
-    githubReport: "Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el"
-    issueTracker: Issue Tracker
-
-  congratulationsModal:
-    youDidIt: "¡Lo lograste!"
-    toThink: "Para pensar..."
-    otherSolutions: "Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!"
-    concepts: "¿Estás usando los conceptos bien?"
-
-  createCustomChallenge:
-    create: "Crear Desafío"
-    custom: "Crea desafíos personalizados con el creador de desafíos de Pilas Bloques."
-
-  descripcionAcercaDe:
-    about: "Acerca de Pilas Bloques"
-    app: "Pilas Bloques es una aplicación para aprender a programar, desarrollada especialmente para el aula."
-    challenges: "Se proponen desafíos con diversos niveles de dificultad para acercar a las y los estudiantes al mundo de la programación por medio de bloques."
-    blocks: "¿Qué es programar por medio de bloques?"
-    develop: "Es desarrollar programas con acciones e instrucciones incorporadas en bloques o piezas prediseñadas. El resultado de encastrar los bloques entre sí es el programa que resuelve el problema ó desafío planteado."
-    positive: "¿Por qué es positiva esta modalidad de aprendizaje?"
-    concept: "Porque cada <b>concepto</b> abstracto asociado a la programación tiene su representación <b>visual</b>."
-    difficulties: "Porque ahorra las <b>dificultades</b> que genera la sintaxis formal de un lenguaje <b>escrito</b> (¡y la frustración cuando cometemos un error al escribir!). Los bloques se seleccionan, arrastran, encastran y listo."
-    difference: "¿En qué se diferencia Pilas Bloques de otras herramientas?"
-    learning: "La principal diferencia es que esta plataforma fue pensada para <b>acompañar una secuencia didáctica</b> para el aprendizaje de la programación en la escuela."
-    sequence: "¿Qué es una secuencia didáctica?"
-    plan: "Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos.
-          Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando"
-    whoCanDo: "¿Quién puede hacer los desafíos de Pilas Bloques?"
-    activities: "Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente
-                acompañan dos manuales para docentes orientados a <b> la primaria </b>, por lo que los niños entre
-                5 y 8 años podrán aprovechar mejor las actividades del Primer Ciclo, y los niños entre 9 y 12 años
-                podrán aprovechar mejor las actividades del Segundo Ciclo."
-    anyone: "¿Y cualquiera puede hacer los desafíos por su cuenta?"
-    tool: "La herramienta está pensada como <b>ayuda al docente y al alumno</b> en el proceso de aprendizaje
-          de la programación en un entorno escolar. En la secuencia didáctica que se plantea,
-          la <b>indagación</b> autodidacta es fundamental. Nuestra recomendación, no obstante, es que el
-          docente sea el que <b>guíe</b> y asista el proceso de aprendizaje del alumno."
-    contact: "Contacto"
-    anyDoubts: "Por cualquier duda nos pueden contactar a: "
-    aboutAuthors: "Sobre los autores y Program.AR"
-    developed: "Pilas Bloques fue desarrollada por"
-    usesTool: ". Esta aplicación hace uso de la herramienta"
-    developedBy: "Desarrollada por"
-    didacticSequence: "La secuencia didáctica que guía la herramienta fue elaborada por "
-    material: " , y puede encontrarse junto con otros materiales en la página web. Contó con el apoyo y la colaboración de la Universidad Nacional de Quilmes y otras universidades nacionales de Argentina."
-    iniciative: "Program.AR es una iniciativa que trabaja para que el aprendizaje significativo de Computación esté presente en todas las escuelas argentinas. Más información: "
-  
-  scene:
-    close: "Cerrar"
-
-  sceneDetails:
-    seeDescription: "¡Quiero ver el enunciado!"
-    getClue: "¡Dame una pista!"
-    noClues: "Este ejercicio no contiene pista alguna"
-
-  sceneButtons:
-    stepByStepRun:
-      label: "Paso"
-      tooltip: "Ejecutar paso a paso la solución propuesta"
-    runStep:
-      label: "Paso"
-      tooltip: "Avanzar un paso"
-    run:
-      label: "Ejecutar"
-      tooltip: "Ejecutar la solución propuesta"
-    restart:
-      label: "Reiniciar"
-      tooltip: "Reiniciar la ejecución"
-
-  turboModeToggle:
-    turnOff: "Desactivar el modo Turbo"
-    turnOn: "Activar el modo Turbo"
-    active: "ACTIVADO"
-    inactive: "DESACTIVADO"
-    
-  clearData:
-    deleting: "Borrando datos del navegador, si tenés un usuario es posible que tengas que ingresar nuevamente."
-
-  importCustomChallenge:
-    import: "Importar Desafío"
-    custom: "Importa un desafío personalizado proveniente del creador de desafios de Pilas Bloques."
-
-  header: 
-    tool: "Una herramienta para aprender a programar"
-
-  registerDisclaimer: 
-    now: "¡ Ahora Pilas Bloques permite"
-    register: "registrarse"
-    optional: "Hacerlo es <b>completamente opcional</b>, nos ayuda para poder mejorar Pilas Bloques y te permite suspender tu trabajo y retomarlo desde donde lo habías dejado."
-
-  programarDisclaimer: 
-    entered: "¿ Entraste a"
-    programar: "Program.AR en casa"
-    in: "En"
-    find: "encontrarás mucho material, muchas herramientas y una explicación de cómo usar Pilas Bloques"
-
-  challengeLink: 
-    soon: "Muy pronto"
-
-  challengeWorkspaceButtons:
-    open: "Abrir solución"
-    save: "Guardar solución"
-    careful: "¡Cuidado! Al borrar la solución se perderán tus cambios."
-    delete: "Borrar la solucion"
-    exit: "Salir de Pantalla Completa"
-    fullScreen: "Pantalla Completa"
-
-  footer:
-    version: "Versión:"
-    problem: "¿Algún problema con este ejercicio?"
-    about: "Acerca De"
-
-  login:
-    already: "Ya tengo usuario"
-    wrong: "Usuario o contraseña incorrectos, volvé a intentar"
-    forgot: "Olvidé mi usuario o constraseña"
-    dontHaveUser: "Aún no tengo usuario"
-    register: "¡Registrate haciendo click acá!"
-    login: "Ingresar"
-  
-  modalAyuda:
-    help: "Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques."
-    firstSteps: "El primer paso es abrir la sección de Desafíos:"
-    categories: "Los bloques están agrupados en categorías, usá la barra lateral para desplegar los bloques."
-    dragAndDrop: "Luego podés arrastrar y soltar los bloques sobre el área de trabajo."
-    continue: "Una vez que tengas tu programa listo pulsá el botón ejecutar continuar."
-    delete: "Ah, y los bloques se pueden borrar arrastrándolos a la papelera."
-  
-  passwordConfirmation:
-    password: "Confirmar contraseña"
-  
-  sessionButton:
-    login: "Ingresar"
-    logout: "Cerrar sesión"
-    changeUser: "Cambiar usuario"
-  
-  phoneRotationWarning:
-    rotate: "Intentá rotar el celular"
-    widerScreen: "Pilas Bloques necesita una pantalla más ancha"
-  
-  notifier:
-    download: "Hay una nueva versión disponible para descargar."
-    visit: "Visitá"
-    moreInfo: "nuestra web para más información."
-  
-  termsAndConditionLink:
-    terms: "términos y condiciones de uso"
-
-############ Challenge and books texts, clues and blocks ############
-
 model:
   challenges:
     1:
@@ -219,8 +39,8 @@ model:
     8:
       title: María y las sandías
       description: |
-        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios. Pista: la forma en que las sandías están distribuidas en la cuadrícula, es clave para crear la menor cantidad de procedimientos.
-      clue: ""
+        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     9:
       title: Alimentando a los peces
       description: |
@@ -533,7 +353,7 @@ model:
     230:
       title: Desafío 1
       description: ¿Puede la puma llegar al churrasco usando solo una vez el bloque mover?
-      clue: Podés usar el nuevo bloque “Repetir”
+      clue: Podés usar el nuevo bloque "Repetir"
     231:
       title: Desafío 2
       description: La puma tiene hambre y está lejos del churrasco. ¡Pero ahora sabe repetir!
@@ -640,7 +460,7 @@ model:
       description: |
         Ayudá a Duba a recoger todos los churrascos. 
         Acá tenes un video que explica como: <https://youtu.be/bc43ZyJrfSo>
-      clue: 
+      clue: ""
     202102:
       title: Introducción a repetición
       description: Ayudá a Duba a recoger todos los churrascos, ¡Pero ahora hay un nuevo bloque! :thinking:.
@@ -936,112 +756,3 @@ model:
       title: "Con Coty"
     Tecnopolis 2021 Con Toto:
       title: "Con Toto"
-
-blocks:
-  turnOnTheLight: "Prender la luz"
-  pushButton: "Apretar botón"
-  eatBanana: "Comer banana"
-  eatApple: "Comer manzana"
-  eatCheese: "Comer queso"
-  eatOrange: "Comer naranja"
-  moveRight: "Mover a la derecha"
-  moveLeft: "Mover a la izquierda"
-  moveUp: "Mover arriba"
-  moveDown: "Mover abajo"
-  pickNut: "Levantar tuerca"
-  greet: "Saludar"
-  openEyes: "Abrir ojos"
-  closeEyes: "Cerrar ojos"
-  lie: "Acostarse"
-  standUp: "Pararse"
-  return: "Volver"
-  advance: "Avanzar"
-  dream: "Soñar"
-  jump: "Saltar"
-  goToLeftBorder: "Ir al borde izquierdo"
-  takeStar: "Tomar estrella"
-  eatWatermelon: "Comer sandía"
-  feedFish: "Alimentar pez"
-  pickFood: "Agarrar comida"
-  nextComputer: "Pasar a la siguiente computadora"
-  turnComputerOn: "Prender computadora"
-  turnComputerOff: "Apagar computadora"
-  installGame: "Instalar juego"
-  writeA: "Escribir \"A\""
-  writeB: "Escribir \"B\""
-  writeC: "Escribir \"C\""
-  takeKey: "Tomar la llave"
-  openSafeBoxTakeHat: "Abrir el cofre y tomar sombrero"
-  leaveHat: "Dar el sombrero"
-  attackWithSword: "Atacar con la espada"
-  unicornEscape: "Escapar en unicornio"
-  escape: "Escapar"
-  pickIron: "Agarrar hierro"
-  pickCarbon: "Agarrar carbón"
-  lightCampfire: "Prender fogata"
-  putIntoTheShip: "Poner en la nave"
-  leavePresent: "Dejar un regalo"
-  nextLine: "Pasar a la siguiente fila"
-  nextColumn: "Pasar a la siguiente columna"
-  countBanana: "Contar una banana"
-  countApple: "Contar una manzana"
-  blowUpBallon: "Explotar globo"
-  kickBall: "Patear pelota"
-  move1Km: "Avanzar 1 Km"
-  changeLightColor: "Cambiar color del foco"
-  moveNextLight: "Pasar al siguiente foco"
-  startParty: "Empezar fiesta"
-  backToLeftBorder: "Volver al borde izquierdo"
-  goToFirstSuspect: "Ir al primer sospechoso"
-  nextSuspect: "Pasar al siguiente sospechoso"
-  askSuspect: "Interrogar sospechoso"
-  eatSteak: "Comer churrasco"
-  pickTomato: "Agarrar tomate"
-  pickLettuce: "Agarrar lechuga"
-  prepareSalad: "Preparar ensalada"
-  writeLetter: "Escribir letra que estoy tocando"
-  moveAndDrawUp: "Mover arriba dibujando"
-  moveAndDrawDown: "Mover abajo dibujando"
-  moveAndDrawRight: "Mover derecha dibujando"
-  moveAndDrawLeft: "Mover izquierda dibujando"
-  jumpUp: "Saltar arriba"
-  jumpDown: "Saltar abajo"
-  jumpRight: "Saltar derecha"
-  jumpLeft: "Saltar izquierda"
-  bananaHere: "Hay banana acá"
-  appleHere: "Hay manzana acá"
-  orangeHere: "Hay una naranja acá"
-  campfireHere: "Hay fogata acá"
-  atTheBeginning: "Estoy al inicio"
-  getToTheBall: "Llegué a la pelota"
-  comeToTheEnd: "Llegué al final"
-  kmToTravel: "Kilómetros a recorrer"
-  atTheSquare: "Estoy en una esquina"
-  atColumnBeginning: "Estoy al inicio de la columna"
-  atColumnEnd: "Estoy al final de la columna"
-  currentColumnLength: "Largo de la columna actual"
-  canMoveDown: "Puedo mover abajo"
-  canMoveRight: "Puedo mover a la derecha"
-  reachedGoal: "Llegó a la meta"
-  cheeseHere: "Hay queso acá"
-  lampHere: "Hay lamparita acá"
-  frontOfGuilty: "Estoy frente al culpable"
-  steakHere: "Hay un churrasco acá"
-  obstacleUp: "Hay un obstáculo arriba"
-  obstacleDown: "Hay un obstáculo abajo"
-  obstacleAtLeft: "Hay un obstáculo a la izquierda"
-  obstacleAtRight: "Hay un obstáculo a la derecha"
-  puddleHere: "Hay un charco"
-  lettuceHere: "Hay lechuga acá"
-  tomatoHere: "Hay tomate acá"
-  right: "la derecha"
-  left: "la izquierda"
-  up: "arriba"
-  down: "abajo"
-  moveTo: "Mover a %1"
-  jumpFront: "%1 Saltar hacia adelante %2"
-  drawSide: "%1 Dibujar lado de %2"
-  write: "%1 Escribir: %2"
-  turnDegrees: "%1 Girar %2 grados"
-  currentCharacter: "%1 ¿La letra actual es una %2 ?"
-  

@@ -215,5 +215,145 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
     assert.ok(metadata.program || metadata.program.length === 0)
   })
+})
+
+module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hooks) {
+  setupTest(hooks)
+
+  const operator = { categoryId: 'operators' }
+  const primitive = { categoryId: 'primitives' }
+
+  const separator = { categoryId: 'separator', isSeparator: true }
+  const blockId = "A block id"
+
+  const doThis = 'Do this'
+  const doThat = 'Do that'
+
+  const myProcedures = { categoryId: 'procedures', blocks: [doThis, doThat] }
+
+  const toolbox = [blockId, myProcedures, separator]
+
+  const emberBlocklySeparator = {
+    isSeparator: true
+  }
+
+  hooks.beforeEach(function () {
+    this.owner.lookup('service:blocksGallery').start()
+    this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
+    this.ctrl.set('modelActividad', actividadMock)
+    this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
+    this.ctrl.get('intl').setLocale('en-us') // This is necessary because categories are tied to locale and translation.
+  })
+
+  function setCategoriesNotRequired(ctrl) {
+    ctrl.modelActividad.set('estiloToolbox', 'sinCategorias')
+  }
+
+  test('ToolboxForBlockTypes should fail if blockTypes is undefined', function (assert) {
+    assert.throws(() => this.ctrl.toolboxForBlockTypes(undefined))
+  })
+
+  test('Toolbox should be sorted based on Pilas Bloques stablished order', function (assert) {
+    const alternative = { categoryId: 'alternatives' }
+    assert.propEqual(this.ctrl.sortedToolbox([operator, primitive, alternative]), [primitive, alternative, operator])
+  })
+
+  test('Uncategorized category should be the last item in the toolbox after sorting', function (assert) {
+    const uncategorized = { categoryId: 'uncategorized' }
+    assert.propEqual(this.ctrl.sortedToolbox([operator, uncategorized, primitive]), [primitive, operator, uncategorized])
+  })
+
+  test('If categories are required in toolbox, it should stay unchanged', function (assert) {
+    assert.propEqual(this.ctrl._styledToolbox(toolbox), toolbox)
+  })
+
+  test('If categories are not required in toolbox, it should be flattened', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._styledToolbox(toolbox), [blockId, doThis, doThat,separator])
+  })
+
+  test('When styling, separators should be left unchanged', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._styledToolbox([separator]), [separator])
+  })
+
+  test('When styling, blocks ids should be left unchanged', function (assert) {
+    setCategoriesNotRequired(this.ctrl)
+    assert.propEqual(this.ctrl._styledToolbox([blockId]), [blockId])
+  })
+
+  test('ToolboxForBlockTypes should add one separator', function (assert) {
+    assert.equal(
+      this.ctrl.toolboxForBlockTypes(['Saludar'])
+      .filter(block => block.isSeparator)
+      .length,
+      1
+    )
+  })
+
+  test('ToolboxForBlockTypes should add a separator between commands and expressions', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const sensor = 'HayObstaculoDerecha'
+    const emberBlocklyCommands = {
+      category: 'Primitives',
+      blocks: [moveRight]
+    }
+    const emberBlocklySensors = {
+      category: 'Sensors',
+      blocks: [sensor]
+    }
+    const emberToolbox = [emberBlocklyCommands, emberBlocklySeparator, emberBlocklySensors]
+    assert.propEqual(this.ctrl.toolboxForBlockTypes([sensor, moveRight]), emberToolbox)
+  })
+
+  // WARNING: categories are tied to translation.
+  test('If a blocktype is not a valid blockly block, is should be uncategorized', function (assert) {
+    const nonExistentBlockTypeName = 'NonExistentBlockType'
+    const nonExistentEmberBlockly = {
+      category: 'Uncategorized',
+      blocks: [nonExistentBlockTypeName]
+    }
+    assert.propEqual(this.ctrl.toolboxForBlockTypes([nonExistentBlockTypeName]), [emberBlocklySeparator, nonExistentEmberBlockly])
+  })
+
+  test('ToolboxForBlockTypes should group block types by their category', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const moveLeft = 'MoverACasillaIzquierda'
+    const repeat = 'Repetir'
+    const emberBlocklyPrimitives = {
+      category: 'Primitives',
+      blocks: [moveRight, moveLeft]
+    }
+    const emberBlocklyRepetitions = {
+      category: 'Repetition',
+      blocks: [repeat]
+    }
+    assert.propEqual(
+      this.ctrl.toolboxForBlockTypes([moveRight, repeat, moveLeft]),
+      [emberBlocklyPrimitives, emberBlocklyRepetitions, emberBlocklySeparator]
+    )
+  })
+
+  test('Transformation: _toEmberBlocklyToolboxItem should not change a BlockType', function (assert) {
+    const blockType = 'MoverACasillaDerecha'
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(blockType), blockType)
+  })
+
+  test('Transformation: Separator to EmberSeparator', function (assert) {
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(separator), emberBlocklySeparator)
+  })
+
+  test('Transformation: Category to EmberCategory', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const category = {
+      categoryId: 'primitives',
+      blocks: [moveRight]
+    }
+    const emberCategory = {
+      category: 'Primitives',
+      blocks: [moveRight]
+    }
+    assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(category), emberCategory)
+  })
 
 })

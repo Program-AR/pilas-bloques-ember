@@ -1,7 +1,9 @@
-<PaperInput @type={{ type }} @label={{ label }}
+<PaperInput
+  @type={{ type }} 
+  @label={{ label }}
   @value={{ model }} 
   @onChange={{ action (mut model) }}
-  @errorMessages={{ hash required="Este campo es necesario" }} 
+  @errorMessages={{ hash required=(t "templates.pb-input.requiredField") }}
   @customValidations={{ or customValidations (array) }}
   @focusOut={{ focusOut }}
   @onKeyDown={{ onKeyDown }}
