@@ -21,10 +21,6 @@ export default Component.extend({
     return this.get('pausadoEnBreakpoint');
   }),
 
-  modoLecturaSimple: computed('model', function () {
-    return this.get('model.grupo.capitulo.libro.modoLecturaSimple');
-  }),
-
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.get('ejecutando') || this.get('terminoDeEjecutar');
   }),
@@ -38,7 +34,7 @@ export default Component.extend({
   },
 
   shouldShowSimpleRead() {
-    return this.simpleRead.shouldShowSimpleRead()
+    return this.simpleRead.shouldShowSimpleRead(this.get('model.grupo.capitulo.libro.modoLecturaSimple'))
   },
 
   actions: {
@@ -49,7 +45,7 @@ export default Component.extend({
       }
       this.set('cargando', false);
 
-      if (this.modoLecturaSimple) {
+      if (this.shouldShowSimpleRead()) {
         pilas.cambiarAModoDeLecturaSimple();
       }
 

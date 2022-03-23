@@ -5,11 +5,7 @@ export default Service.extend({
 
     storage: service(),
 
-    shouldShowSimpleRead() {
-        return this.simpleReadMode() || this.storage.getUseSimpleRead()
-    },
-
-    simpleReadMode() {
-        return this.get('model.grupo.capitulo.libro.modoLecturaSimple')
+    shouldShowSimpleRead(defaultValue) {
+        return defaultValue || this.storage.getUseSimpleRead()
     }
 });

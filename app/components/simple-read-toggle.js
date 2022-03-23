@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
 
 export default Component.extend({
 
@@ -10,12 +9,13 @@ export default Component.extend({
     simpleRead: service(),
 
     shouldShowSimpleRead() {
-        return this.simpleRead.shouldShowSimpleRead()
-    },
+        return this.simpleRead.shouldShowSimpleRead(this.get('book.modoLecturaSimple'))
+    },   
 
     actions: {
         toggleSimpleRead() {
             this.storage.toggleSimpleRead();
+            window.location.reload()
         }
     }
 

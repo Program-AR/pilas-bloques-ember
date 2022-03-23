@@ -1,3 +1,5 @@
-<Toggle class="simple-read" @element-id="simple-read-slider" @tooltip={{if (compute (action shouldShowSimpleRead)) "Desativar el modo Lectura Simple" "Activar el modo Lectura Simple"}} @isChecked={{compute (action shouldShowSimpleRead)}} @onToggle={{action 'toggleSimpleRead'}}>
-    <i class={{if (compute (action shouldShowSimpleRead)) "slider-icon fa fa-font letterType" "slider-icon fa fa-times letterType"}}></i>
-</Toggle>
+{{#unless book.modoLecturaSimple}}
+    <Toggle class="simple-read" @element-id="simple-read-slider" @tooltip={{if (compute (action shouldShowSimpleRead)) "Desativar el modo Lectura Simple" "Activar el modo Lectura Simple"}} @isChecked={{compute (action shouldShowSimpleRead)}} @onToggle={{action 'toggleSimpleRead'}}>
+        <i class={{if (compute (action shouldShowSimpleRead)) "slider-icon fa fa-font letterType" "slider-icon fa fa-times letterType"}}></i>
+    </Toggle>
+{{/unless}}
