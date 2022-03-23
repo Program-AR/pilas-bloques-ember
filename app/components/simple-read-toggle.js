@@ -1,15 +1,16 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
+import { computed } from '@ember/object';
 
 export default Component.extend({
 
     tagName: 'div',
     classNames: [],
     storage: service(),
-    shouldShowSimpleRead: false,
+    simpleRead: service(),
 
-    didRender() {
-        this.set('shouldShowSimpleRead', this.storage.getUseSimpleRead());
+    shouldShowSimpleRead() {
+        return this.simpleRead.shouldShowSimpleRead()
     },
 
     actions: {

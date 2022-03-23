@@ -3,11 +3,9 @@ import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 import { computed } from '@ember/object';
 import Ember from 'ember';
-import { inject as service } from '@ember/service';
 
 export default Model.extend({
   intl: Ember.inject.service(),
-  storage: service(),
 
   titulo: computed('id',function(){
     return this.intl.t(`model.books.${this.id}.title`);
@@ -21,8 +19,4 @@ export default Model.extend({
   modoLecturaSimple: attr('boolean'),
   oculto: attr('boolean'),
   capitulos: hasMany('capitulo'),
-  
-  shouldShowSimpleRead:  computed('id',function(){
-    return this.modoLecturaSimple || this.storage.getUseSimpleRead();
-  }),
 });
