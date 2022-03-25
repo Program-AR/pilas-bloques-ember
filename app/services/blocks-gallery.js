@@ -198,6 +198,41 @@ export default Service.extend({
     });
   },
 
+  defineProcedureTranslations(){
+    Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
+    Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_PARAMETER = this.tString("procedures.paramName")
+    Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP = this.tString("procedures.create")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT = this.tString("procedures.comment")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_NOPARAMS = this.tString("procedures.noParams")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER = this.tString("procedures.addParam")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
+    Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
+
+    // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
+    // After calling init(), we disable unwanted toolbox blocks again
+    this._enableUnwantedProcedureBlocks()
+    ProcedsBlockly.init()
+    this._disableUnwantedProcedureBlocks()
+  },
+
+  _disableUnwantedProcedureBlocks() {
+    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
+      if (Blockly.Blocks[blockType]) {
+        Blockly['bkp_'+blockType] = Blockly.Blocks[blockType]
+        delete Blockly.Blocks[blockType]
+      }
+    })
+  },
+
+  _enableUnwantedProcedureBlocks() {
+    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
+      if (Blockly['bkp_'+blockType]) Blockly.Blocks[blockType] = Blockly['bkp_'+blockType]
+    })
+  },
+
   _definirColores() {
     // Pisar las globales de Blockly es necesario pues usamos algunos bloques de Blockly como aliases.
     Blockly.Blocks.math.HUE = 94; // En PB 1.1.2 era '#48930e'
@@ -1360,15 +1395,16 @@ export default Service.extend({
       }
     };
 
-    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
+    // Blockly dynamically loads stuff in procedures category that we don't want, so we take them out
+    this._disableUnwantedProcedureBlocks()
+
+    this.defineProcedureTranslations()
+    
     let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {
       init_base_procedimiento.call(this);
     };
-
-    delete Blockly.Blocks.procedures_defreturn;
-    delete Blockly.Blocks.procedures_ifreturn;
 
   },
 
