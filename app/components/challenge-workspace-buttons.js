@@ -27,13 +27,6 @@ export default Component.extend({
       .then(contenido => this.cargarSolucion(contenido))
   },
 
-  // Esto tengo que pasarlo a Promise nativo.
-  leerSolucionFS(archivo) {
-    const fs = Promise.promisifyAll(require("fs"));
-    return fs.readFileAsync(archivo, 'utf-8')
-      .then((contenido) => this.cargarSolucion(contenido));
-  },
-
   cargarSolucion(contenido) {
     // let regex_file = /\.spbq$/
     // let regex_version = /^\d+$/
@@ -59,20 +52,6 @@ export default Component.extend({
     }
     if (errors.length !== 0) {
       throw errors.join('\n');
-    }
-  },
-
-  openElectronLoadDialog() {
-    const { dialog } = require('electron').remote
-    const archivos = dialog.showOpenDialog({ //TODO: this config exists in packaging/electron.js
-      properties: ['openFile'],
-      filters: [
-        { name: 'Solución de Pilas Bloques', extensions: ['spbq'] },
-        { name: 'Todos los archivos', extensions: ['*'] }
-      ]
-    });
-    if (archivos) {
-      this.leerSolucionFS(archivos[0]).catch(alert);
     }
   },
 
@@ -106,12 +85,7 @@ export default Component.extend({
 
   actions: {
     abrirSolucion() {
-      //if (this.platform.inElectron()) { TODO: Hasta que require('electron') no ande, no se puede hacer esto.
-      if (false) {
-        this.openElectronLoadDialog();
-      } else {
-        this.fileInput().click();
-      }
+      this.fileInput().click();
     },
 
     guardarSolucion() {

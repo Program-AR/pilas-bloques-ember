@@ -1,171 +1,170 @@
-localeName: Español
-changeLanguage: Cambiar idioma
+localeName: Português
 
 model:
   challenges:
     1:
-      title: El alien toca el botón
+      title: O alienígena toca o botão
       description: |
-        Ayudá a nuestro Alien a presionar el botón de su laboratorio.
-        Pistas: mirá las _primitivas_ disponibles. ¡Vas a tener que avanzar varias veces! :wink:
-      clue: Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.
+        Ajude nosso alienígena a apertar o botão de seu laboratório.
+        Dicas: veja os _primitivos_ disponíveis. Você vai ter que avançar várias vezes! :wink:
+      clue: Os blocos permitem formar sequências de ações para resolver os desafios que propomos no Pilas Bloques.
     2:
-      title: El gato en la calle
-      description: Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.
-      clue: Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.
+      title: O gato na rua
+      description: Faça o gato dar um passo à frente, adormecer, acordar, dizer olá e voltar ao seu lugar.
+      clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
     3:
-      title: No me canso de saltar
+      title: Eu nunca me canso de pular
       description: |
-        Ayudá al gato a quitarse la pereza saltando 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.
-      clue: El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".
+        Ajude o gato a se livrar da preguiça pulando 30 vezes seguidas. Dica: pode ser resolvido com menos de 30 blocos.
+      clue: O bloco Repetir permite que você escolha o número de vezes que deseja repetir uma sequência de ações. Isso é chamado de "Repetição Simples".
     4:
-      title: El marciano en el desierto
+      title: O marciano no deserto
       description: |
-        El marciano está perdido en el desierto y necesita alimentarse de su comida favorita: ¡las manzanas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de manzanas
-      clue: Hay muchas formas de comer las manzanas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar
+        O marciano está perdido no deserto e precisa comer sua comida favorita: maçãs! Ajude-o a cumprir seu objetivo. Dica: crie um procedimento (bloco) para cada conjunto de maçãs
+      clue: Existem muitas maneiras de comer maçãs. Você pode começar com os da direita ou pode começar no topo! Você pode pensar em outra estratégia? Sempre pense nela antes de programar
     5:
-      title: Tito enciende las luces
+      title: Tito acende as luzes
       description: |
-        Ayudá a Tito a encender todas las luces.
-        Pista: creá un procedimiento para prender todas las luces de una diagonal.
-      clue: Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
+        Ajude Tito a acender todas as luzes.
+        Dica: crie um procedimento para ligar todas as luzes na diagonal.
+      clue: Você pode criar um procedimento uma vez e usá-lo quantas vezes quiser em um programa.
     6:
-      title: El alien y las tuercas
+      title: O alienigena e as porcas
       description: |
-        Definí un programa para que el alien junte todas las tuercas. Pista: ¿El alien no puede moverse en diagonal? Podés crear tu propio procedimiento para que lo haga
+        Defina um programa para o alienígena coletar todas as porcas. Dica: o alienígena não pode se mover diagonalmente? Você pode criar seu próprio procedimento para fazer isso
       clue: ""
     7:
-      title: El recolector de estrellas
+      title: O colecionador de estrelas
       description: |
-        Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.
-      clue: Usar muchas veces un procedimiento te ahorra trabajo.
+        Ajude nosso personagem a coletar todas as estrelas. Dica: você pode fazer um procedimento que leva uma fileira de estrelas.
+      clue: Usar um procedimento muitas vezes poupa seu trabalho.
     8:
-      title: María y las sandías
+      title: Maria e as melancias
       description: |
-        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
-      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+        Maria precisa comer todas as melancias da grelha. Pense em como você pode fazer isso criando os blocos necessários. Dica: a forma como as melancias são dispostas na grade é fundamental para criar o mínimo de procedimentos.
+      clue: ""
     9:
-      title: Alimentando a los peces
+      title: Alimentando os peixes
       description: |
-        Nuestro buzo debe alimentar con lombrices a los 7 peces que hay en esta escena. Buscá primero a las lombrices y luego pasá por cada pez alimentándolo. Pista: ¿Cuántas partes debería tener tu estrategia?
+        Nosso mergulhador deve alimentar os 7 peixes desta cena com vermes. Procure os vermes primeiro e depois passe por cada peixe e alimente-os. Dica: quantas partes sua estratégia deve ter?
       clue: ""
     10:
-      title: Instalando juegos
+      title: Instalando jogos
       description: |
-        Ramiro tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
+        O Ramiro tem que instalar um jogo em 3 computadores para se divertir com os amigos. Os passos para instalá-lo em cada um são: ligue, digite a senha ("ABC"), instale o jogo e desligue a máquina. Dica: aproveite o fato de que em cada computador tem que fazer o mesmo trabalho.
       clue: ""
     11:
-      title: La gran aventura del mar encantado
+      title: A grande aventura do mar encantado
       description: |
-        Ayuda a la heroína a rescatar a su príncipe. Para ello debe superar en orden cada una de las siguientes pruebas:
-        1) Buscar la llave.
-        2) Abrir el cofre con la llave y tomar el sombrero mágico que está dentro.
-        3) Entregarle el sombrero al mago para recibir la espada a cambio.
-        4) Luchar con la espada contra el caballero oscuro.
-        5) Escapar en unicornio.
+        Ajude a heroína a resgatar seu príncipe. Para fazer isso, você deve passar em cada um dos seguintes testes em ordem:
+        1) Ache a chave.
+        2) Abra o baú com a chave e pegue o chapéu mágico que está dentro.
+        3) Dê o chapéu ao mago para receber a espada em troca.
+        4) Lute com a espada contra o cavaleiro das trevas.
+        5) Escape no unicórnio.
       clue: ""
     12:
-      title: Reparando la nave
-      description: El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.
+      title: Reparando o navio
+      description: O marciano deve consertar sua nave espacial para voltar para casa. Para fazer isso, ele deve trazer 3 unidades de carvão e 3 de ferro para o navio, mas não pode carregar mais de uma unidade de cada vez.
       clue: ""
     13:
-      title: El mono y las bananas
+      title: O macaco e as bananas
       description: |
-        ¿Podés hacer que el mono avance al casillero de enfrente? Si hay una banana debe comérsela. Si no, es feliz con sólo llegar.
-        Ejecutá el programa varias veces para asegurarte que siempre funciona.
-        Pista: mirá la categoría "Sensores" y la categoría "Alternativas".
-      clue: El bloque "Si... Entonces" ejecuta una secuencia de instrucciones solamente cuando la condición es verdadera. Esto se llama "alternativa condicional".
+        Você pode mover o macaco para a caixa da frente? Se houver uma banana, ele deve comê-la. Se não, ele fica feliz apenas por chegar lá.
+        Execute o programa várias vezes para verificar se ele sempre funciona.
+        Dica: observe a categoria "Sensores" e a categoria "Alternativas".
+      clue: O bloco "Se ... Então" executa uma seqüência de instruções somente quando a condição é verdadeira. Isso é chamado de "alternativa condicional".
     14:
-      title: La elección del mono
+      title: A escolha do macaco
       description: |
-        ¿Podés ayudar nuevamente a nuestro mono? Esta vez tiene que comer la fruta que aparece, ya sea banana o manzana.
-        Ejecutá el programa varias veces para asegurarte que siempre funciona.
-        Pista: ésta vez no alcanza con el bloque "Si".
-      clue: Cuando sólo hay 2 opciones, alcanza con hacer una sola pregunta. En esos casos se puede usar el bloque "Si... si no".
+        Você pode ajudar nosso macaco de novo? Desta vez, ele tem que comer a fruta que aparece, seja banana ou maçã.
+        Execute o programa várias vezes para verificar se ele sempre funciona.
+        Dica: desta vez, o bloco "Se" não é suficiente.
+      clue: Quando existem apenas 2 opções, basta fazer uma única pergunta. Nesses casos, você pode usar o bloco "Se ... se não".
     15:
-      title: Laberinto corto
+      title: Labirinto curto
       description: |
-        Guiá al ratón para llegar a la meta. Para lograrlo, debe avanzar una casilla en la dirección que indica la flecha. Pista: mirá en la categoría "Sensores" qué preguntas podés hacer.
+        Guie o rato para alcançar a meta. Para conseguir isso, ele deve avançar um quadrado na direção indicada pela seta. Dica: veja na categoria "Sensores" quais perguntas você pode fazer.
       clue: ""
     16:
-      title: Tres naranjas
+      title: Três laranjas
       description: |
-        El alien debe comer todos los gajos de naranja que aparezcan en las casillas violetas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de naranjas! Pista: pensá primero cómo harías un procedimiento para comer una sola naranja si es que la hay.
+        O alienígena deve comer todos os segmentos laranja que aparecem nos quadrados roxos. Mas nem sempre aparecem nos mesmos lugares ou na mesma quantidade de laranjas! Dica: primeiro pense em como você faria um procedimento para comer uma única laranja, se houver uma.
       clue: ""
     17:
-      title: Tito recargado
-      description: Tito necesita encender las luces para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
+      title: Tito recarregado
+      description: Tito precisa acender as luzes para saber o caminho ... Mas a cada execução eles trocam de lugar! Você pode usar os procedimentos e blocos de controle.
       clue: ""
     18:
-      title: Laberinto largo
+      title: Labirinto longo
       description: |
-        Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.
+        Ajude o mouse a sair do labirinto. Ao contrário do labirinto anterior, aqui o número de quadrados que ele deve avançar são muitos. Quantos? É sempre igual? Dica: primeiro pense em como avançar um único quadrado.
       clue: ""
     19:
-      title: Súper Tito 1
+      title: Super Tito 1
       description: |
-        Ayudá a Tito a encender las luces.
-        ¡Ojo! En todas las celdas hay una luz, pero no sabés cuántas celdas hay en cada ejecución.
-      clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
+        Ajude Tito a acender as luzes.
+        Atenção! Em todos os quadrados há uma luz, mas você não sabe quantos quadrados existem em cada execução.
+      clue: Existem novos blocos que podem ajudar-te a resolver o desafio com muita facilidade. Aproveite!
     20:
       title: Súper Tito 2
       description: |
-        Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1?
-      clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+        Super Tito deve acender todas as luzes, mas ao contrário do desafio anterior, existem células sem luz. Você pode usar o mesmo procedimento de Super Tito 1?
+      clue: O bloco "repetir até" repete uma sequência de ações até que uma condição seja atendida. Isso é chamado de "repetição condicional".
     21:
-      title: Laberinto con queso
+      title: Labirinto com queijo
       description: |
-        ¡El ratón está más hambriento que nunca! Guialo por el laberinto para que pueda comer todos los trozos de queso. Pista: antes de empezar, apretá varias veces el botón Ejecutar para conocer cómo varía el escenario.
-      clue: Es importante pensar si en algún momento se cumple la condición del bloque "Repetir hasta qué". Sino, ¡el programa podría no terminar nunca!
+        O rato está com mais fome do que nunca! Guie-o pelo labirinto para que ele coma todos os pedaços de queijo. Dica: antes de começar, pressione o botão Executar várias vezes para ver como o cenário varia.
+      clue: É importante pensar se a condição do bloco "Repetir até que" é atendida a algum momento. Do contrário, o programa pode nunca terminar!
     22:
-      title: El detective Chaparro
-      description: El detective debe descubrir al culpable de un crimen. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!
-      clue: El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.
+      title: Detective Chaparro
+      description: O detetive deve descobrir o culpado de um crime. Começando com o primeiro à esquerda, questione cada suspeito até encontrar o culpado!
+      clue: O bloco "Repetir até que" nos permite encerrar o programa quando encontramos o culpado, sem ter que interrogar todos os suspeitos na fila.
     23:
-      title: Fútbol para robots
-      description: Ayudá a nuestro robot futbolista a patear todas las pelotas. Recordá siempre que una buena división en procedimientos puede ayudarte a encarar mejor el problema.
-      clue: El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.
+      title: Futebol de Robôs
+      description: Ajude nosso robô de futebol a chutar todas as bolas. Lembre-se sempre de que uma boa divisão em procedimentos pode ajudar-te a lidar melhor com o problema.
+      clue: O procedimento definido deve considerar o cenário variável e oferecer uma solução com poucos blocos. É importante notar que a ação se repete várias vezes e que o comprimento das linhas varia.
     24:
-      title: Prendiendo las compus
+      title: Ligando os computadores
       description: |
-        Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
+        Devemos ligar todos os computadores lembrando que a largura e a altura do cenário mudam a cada execução. Dica: pense em como você ligaria os computadores apenas para um lado do retângulo e, em seguida, repita para o restante dos lados.
       clue: ""
     25:
-      title: El mono que sabe contar
+      title: O macaco que sabe contar
       description: |
-        El mono debe recorrer todas las casillas y contar cuántas bananas y manzanas hay en total. Pista: primero pensá cómo contarías si hay una manzana o una banana en una casilla determinada. Luego pensá cómo harías para contar todas las frutas de una sola columna.
-      clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
+        O macaco deve passar por todos os quadrados e contar quantas bananas e maçãs existem no total. Dica: primeiro pense em como você contaria se houvesse uma maçã ou uma banana em um determinado quadrado. Em seguida, pense em como você faria para contar todas as frutas em uma única coluna.
+      clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
     26:
-      title: El Superviaje
+      title: A Superviagem
       description: |
-        Nuestro superhéroe debe realizar su súper paseo matutino que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que nuestro súper amigo llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.
-      clue: Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor
+        Nosso super-herói deve realizar sua super caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que nosso superamigo sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
+      clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor
     27:
-      title: El mono cuenta de nuevo
-      description: El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?
-      clue: Una sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.
+      title: O macaco conta novamente
+      description: O macaco tem que contar os frutos novamente, mas agora ele não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-lo?
+      clue: Um sensor nos permite obter informações que podem mudar a cada execução do programa, até na mesma execução. Por exemplo, o comprimento de cada coluna varia dependendo da coluna em que o macaco está.
     28:
-      title: El planeta de Nano
+      title: O planeta de Nano
       description: |
-        Ayudá a Nano a comer todas sus bananas. ¡Cuidado! No se puede bajar...
-        ¡Tené en cuenta que el escenario no cambia, las bananas están siempre en las mismas casillas!
+        Ajude o Nano a comer todas as suas bananas. Atenção! Não é possível descer ...
+        Tenha em atenção que o cenário não muda, as bananas estão sempre nas mesmas caixas!
       clue: |
-        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Comer 2 bananas a la derecha", "Comer 3 bananas a la derecha" y "Comer 4 bananas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de bananas que queremos comer a la derecha: "Comer a la derecha esta cantidad: [cantidad]".
-        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+        Os parâmetros podem ser adicionados aos procedimentos para torná-los mais gerais. Por exemplo, se criarmos os procedimentos "Comer 2 bananas à direita", "Comer 3 bananas à direita" e "Comer 4 bananas à direita", podemos substituir todos os três por um único procedimento que recebe como parâmetro o quantidade de bananas que queremos comer à direita: "Comer à direita esta quantidade: [quantidade]".
+        Para adicionar um parâmetro a um novo procedimento, clique no + que aparece ao lado do nome no bloco "Definir".
     29:
       title: |
-        Dibujando: Al cuadrado
-      description: Dibujá un cuadrado que tenga 100 de lado.
+        Desenho: Quadrado
+      description: Desenhe um quadrado com 100 de cada lado.
       clue: ""
     30:
       title: |
-        Dibujando: Rayuela robótica
-      description: Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.
+        Desenho: amarelinha robótica
+      description: Desenhe 5 quadrados em uma linha, cada um com um lado de 50, como mostrado na figura sombreada.
       clue: ""
     31:
       title: |
-        Dibujando: Corto por la diagonal
-      description: Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.
+        Desenho: Curto na diagonal
+      description: Desenhe 5 quadrados na diagonal, cada um com o lado 50, como mostrado na figura sombreada.
       clue: ""
     32:
       title: |
@@ -461,7 +460,7 @@ model:
     202101:
       title: Introducción
       description: |
-        Ayudá a Duba a recoger todos los churrascos. 
+        Ayudá a Duba a recoger todos los churrascos.
         Acá tenes un video que explica como: <https://youtu.be/bc43ZyJrfSo>
       clue: ""
     202102:
@@ -544,7 +543,7 @@ model:
       title: Nivel 2
       description: La llama quiere solo dibujar tres rayas. ¿Cómo puede hacerlo?
       clue: ""
-    2021203: 
+    2021203:
       title: Nivel 3
       description: Es hora de un buen mate. Ayudá a Coty a terminar de dibujarlo.
       clue: ""
@@ -591,9 +590,9 @@ model:
       description: Toto tiene que leer el nombre de una provincia que se lee igual al derecho que al revés. ¿Sabés cuál es?
       clue: ¡Apareció el bloque Repetir para ayudarnos a resolver el desafío!
     2021307:
-      title: Nivel 7 
+      title: Nivel 7
       description: |
-        Toto tiene que volver a leer Neuquén. ¡Recordá que se puede leer igual al derecho que al revés! :wink: 
+        Toto tiene que volver a leer Neuquén. ¡Recordá que se puede leer igual al derecho que al revés! :wink:
       clue: ""
     2021308:
       title: Nivel 8
@@ -605,7 +604,7 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: "Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una"
-      
+
 
   groups:
     AlienTocaBoton:

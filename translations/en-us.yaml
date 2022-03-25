@@ -1,3 +1,6 @@
+localeName: English
+changeLanguage: Change language
+
 model:
   challenges:
     1:

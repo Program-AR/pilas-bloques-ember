@@ -79,7 +79,7 @@ export default Component.extend({
     window.dispatchEvent(event);
 
     scheduleOnce('afterRender', async () => {
-      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
+      this.set('blockly_toolbox', this.toolboxForBlockTypes(this.bloques));
 
       this.set('blockly_comments', this.get('actividad.puedeComentar'));
       this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
@@ -121,12 +121,12 @@ export default Component.extend({
   },
 
   /**
-   * Genera el toolbox como lista de categorias con bloques a partir
-   * de una lista de bloques simples.
+   * Creates a toolbox as a list of categories ids with block types
+   * from a list of block types
    *
-   * Por ejemplo:
+   * E.g.:
    *
-   *  >> obtenerToolboxDesdeListaDeBloques(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
+   *  >> toolboxForBlockTypes(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
    *
    * [
    *    {
@@ -140,87 +140,110 @@ export default Component.extend({
    * ]
    *
    */
-  obtenerToolboxDesdeListaDeBloques(bloques) {
+   toolboxForBlockTypes(blockTypes) {
 
-    if (bloques === undefined) {
+    if (blockTypes === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
-    let toolbox = [];
+    const toolbox = this.groupedByCategories(blockTypes)
 
-    bloques.forEach((bloque) => {
-      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
-
-      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoryId) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoryId, bloque, bloqueDesdeBlockly.categoria_custom);
-      } else {
-        this._agregar_bloque_a_categoria(toolbox, 'uncategorized', bloque);
-      }
-
-    });
-
+    // This is meant to separate commands from expressions
+    // sortedToolbox will put it in the right position
     toolbox.push({ categoryId: 'separator', isSeparator: true });
 
     return this._toEmberBlocklyToolbox(toolbox);
   },
 
-  _toEmberBlocklyToolbox(toolbox) {
-    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox)).map(
-      block => this._toEmberBlocklyToolboxItem(block)
-    )
+  groupedByCategories(blockTypes) {
+    return this.categoryIdsFor(blockTypes).map( categoryId => ({
+      categoryId: categoryId,
+      blocks: blockTypes.filter( bt => this._categoryIdFor(bt) === categoryId ),
+    }))
+  },
+
+  categoryIdsFor(blockTypes) {
+    return [... new Set(blockTypes.map(bt => this._categoryIdFor(bt)))]
+  },
+
+  _categoryIdFor(blockType) {
+    return this.blocklyBlock(blockType)?.categoryId || 'uncategorized'
   },
 
   /*
-   * EmberBlocklyToolboxItem should have the following structure:
-   * type EmberBlocklyToolboxItem = string | {
-	 *    category?: string,
-   *    custom?: string,
-	 *    isSeparator?: boolean,
-	 *    blocks?: string[]
+   * _toEmberBlocklyToolbox(toolbox: Toolbox) => EmberToolbox
+   * type Toolbox = ToolboxItem[]
+   * type ToolboxItem = BlockType | Separator | Category
+   * type Separator = {
+   *   categoryId: string,
+   *   isSeparator: true
+   * }
+   * type Category = {
+   *   categoryId: string,
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   * }
+   * 
+   * 
+   * type EmberToolbox = EmberToolboxItem[]
+   * type EmberToolboxItem = BlockType | EmberSeparator | EmberCategory
+   * type BlockType = string
+   * type EmberSeparator = {
+   *    isSeparator: true // always
+   * } 
+   * type EmberCategory = {
+   *   category?: string, // printable category name
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   *   isSeparator: false // always false for categories
    * }
    */
-  _toEmberBlocklyToolboxItem(block) {
-    if(typeof block === "string") return block
+  _toEmberBlocklyToolbox(toolbox) {
+    return this._styledToolbox(this.sortedToolbox(toolbox)).map(
+      toolboxItem => this._toEmberBlocklyToolboxItem(toolboxItem)
+    )
+  },
 
-    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${block.categoryId}`).toString(), ...block }
+  _toEmberBlocklyToolboxItem(toolboxItem) {
+    if(typeof toolboxItem === "string") return toolboxItem
+
+    if(toolboxItem.isSeparator){
+      const emberSeparator = {... toolboxItem}
+      delete emberSeparator.categoryId
+      return emberSeparator
+    }
+
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${toolboxItem.categoryId}`).toString(), ...toolboxItem }
     delete emberBlocklyToolboxItem.categoryId
 
     return emberBlocklyToolboxItem
   },
 
   /**
-   * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
-   * sino directamente los bloques en el toolbox.
-   *
-   * TODO: Falta implementar el estilo "desplegado"
+   * Depending on the challenge, categories may not be required to be shown.
+   * Block types should be shown instead.
+   * 
+   * TODO: Implement style "desplegado"
    */
-  _aplicarEstiloAToolbox(toolbox) {
-    var aplanado = toolbox;
-    if (!this._debeHaberCategoriasEnToolbox()) {
-      aplanado = [];
-      toolbox.forEach(bloque => {
-        if (bloque.isSeparator || !bloque.categoryId) {
-          aplanado.push(bloque); //un separador ó un id de bloque van directo
-        } else {
-          aplanado = aplanado.concat(this._aplicarEstiloAToolbox(bloque.blocks));
-        }
-      });
-    }
-    return aplanado;
+  _styledToolbox(toolbox) {
+    if(this._areCategoriesRequiredInToolbox()) return toolbox
+
+    return toolbox.flatMap(toolboxItem => {
+      if(toolboxItem.isSeparator || !toolboxItem.categoryId) return [toolboxItem]
+      return toolboxItem.blocks
+    })
   },
 
-  _debeHaberCategoriasEnToolbox() {
+  _areCategoriesRequiredInToolbox() {
     return this.modelActividad.get('estiloToolbox') !== "sinCategorias";
   },
 
   /**
-   * Ordena la lista de ítems de un toolbox (usualmente categorias), por el orden
-   * establecido en Pilas Bloques.
-   * Las categorías que no están en la lista definida por Pilas Bloques, quedan al final.
+   * Orders the toolbox (usually categories) by Pilas Bloques stablished order.
    * @param {*} toolbox
    */
-  ordenar_toolbox(toolbox) {
-    let orden_inicial = [ // Orden inicial para la lista de categorias.
+  sortedToolbox(toolbox) {
+    const desiredOrder = [ // Categories initial order.
       'primitives',
       'myProcedures',
       'repetitions',
@@ -230,47 +253,20 @@ export default Component.extend({
       'values',
       'sensors',
       'operators',
-      'myFunctions'
+      'myFunctions',
+      'uncategorized'
     ];
 
-    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.categoryId) - orden_inicial.indexOf(cat2.categoryId));
+    return [... toolbox].sort((cat1, cat2) => desiredOrder.indexOf(cat1.categoryId) - desiredOrder.indexOf(cat2.categoryId))
   },
 
   /**
-   * Permite obtener el bloque desde blockly a partir de su nombre simple.
+   * Obtains a Blockly block from a block type
    *
-   * TODO: Mover a ember-blockly. Debería estar dentro del servicio blockly.
+   * TODO: Move to ember-blockly. It belongs to blockly service.
    */
-  _obtenerBloqueDesdeBlockly(bloqueComoString) {
-    return Blockly.Blocks[bloqueComoString];
-  },
-
-  /**
-   * Método auxiliar de "obtenerToolboxDesdeListaDeBloques". Este método
-   * permite agregar un bloque a una categoría dentro del toolbox.
-   */
-  _agregar_bloque_a_categoria(toolbox, categoria, bloque, categoria_custom) {
-
-    function obtenerOCrearCategoria(toolbox, categoria) {
-      for (let i = 0; i < toolbox.length; i++) {
-        if (toolbox[i].categoryId === categoria) {
-          return toolbox[i];
-        }
-      }
-
-      toolbox.push({
-        categoryId: categoria,
-        blocks: []
-      });
-
-      return toolbox[toolbox.length - 1];
-    }
-
-    let categoriaEnElToolbox = obtenerOCrearCategoria(toolbox, categoria);
-    if (categoria_custom) {
-      categoriaEnElToolbox.custom = categoria_custom;
-    }
-    categoriaEnElToolbox.blocks.push(bloque);
+  blocklyBlock(blockType) {
+    return Blockly.Blocks[blockType];
   },
 
   ejecutarInterpreteHastaTerminar(interprete, pasoAPaso) {
