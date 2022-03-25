@@ -6,10 +6,10 @@ export const pilasMock = {
     on() { },
     liberarRecursos() { },
     estaResueltoElProblema() { return true; },
-    inicializarPilas() { return Promise.resolve(this) },
+    loadPilas() { return Promise.resolve(this) },
     modoTurboEstaActivado() { return true; },
-    inicializarEscena: sinon.stub(),
-    reiniciarEscenaCompleta: sinon.stub(),
+    setChallenge: sinon.stub(),
+    restartScene: sinon.stub(),
     cambiarAModoDeLecturaSimple: sinon.stub(),
     habilitarModoTurbo: sinon.stub(),
     deshabilitarModoTurbo: sinon.stub(),
@@ -70,3 +70,12 @@ export const routerMock = Service.extend({
 })
 
 export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds: [] }
+
+export const createActivity = (owner, fields) => {
+    const group = createGroup(owner)
+    return owner.lookup('service:store').createRecord('desafio', { grupo: group, escena: "AlienInicial", bloques: ['controls_if'], ...fields })
+}
+
+export const createGroup = (owner, fields) => {
+    return owner.lookup('service:store').createRecord('grupo', fields)
+}

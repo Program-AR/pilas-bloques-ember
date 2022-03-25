@@ -5,13 +5,5 @@ export default Controller.extend({
   pilas: service(),
   queryParams: ['codigo'],
   codigo: "",
-  codigoJavascript: '',
-
-  actions: {
-    cuandoCargaPilas(/*pilas*/) {
-    },
-
-    onChangeWorkspace(/*codigoDelWorkspace*/) {
-    }
-  }
+  codigoJavascript: ''
 });
