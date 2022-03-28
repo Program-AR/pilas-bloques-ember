@@ -1,8 +1,10 @@
 import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
 /// Este service deshabilita los bloques que no estén disponibles para una actividad
 export default Ember.Service.extend({
-    
+    intl: service(),
+
     globalAvailableBlockTypes: ["al_empezar_a_ejecutar", "numero", "required_value", "required_statement"],
     procedureRelatedBlockTypes: ["procedures_defnoreturn", "procedures_callnoreturn", "variables_get", "param_get"],
 
@@ -33,7 +35,7 @@ export default Ember.Service.extend({
 
     _disable(block) {
         block.setDisabled(true)
-        block.setWarningText("Este bloque no está disponible en esta actividad.")
+        block.setWarningText(this.intl.t('blocks.errors.nonAvailableBlock').string)
     },
 
 

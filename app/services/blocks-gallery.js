@@ -1196,7 +1196,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá falta un bloque expresión!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingExpressionBlock').string)
     };
 
     Blockly.Blocks.required_statement = {
@@ -1212,7 +1212,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá faltan bloques comandos!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingCommandBlock').string)
     };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {
@@ -1318,6 +1318,9 @@ export default Service.extend({
       requiredAllInputs(this) // Input fields are added after instantiation 
     };
 
+    const deletedParameterError = this.intl.t('blocks.errors.deletedParameter').string
+    const wrongParameterError = (procedureDef) => this.intl.t('blocks.errors.wrongParameter', { procedure: getName(procedureDef) }).string
+
     Blockly.Blocks.variables_get = {
       init: function () {
         this.jsonInit({
@@ -1362,8 +1365,8 @@ export default Service.extend({
             (ok || isFlying(this) || !procedureDef)
               ? null
               : (hasParam(procedureDef, this))
-                ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-                : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+                ? wrongParameterError(procedureDef)
+                : deletedParameterError
           this.setWarningText(warning)
         }
       }

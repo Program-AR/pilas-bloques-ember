@@ -133,3 +133,9 @@ procedures:
   noParams: ""
   addParam: "Add parameter"
   addParamPrompt: "Enter the parameter's name"
+errors:
+  missingCommandBlock: "There are no command blocks here!"
+  missingExpressionBlock: "There is no expression block here!"
+  nonAvailableBlock: "This block is not available in this activity."
+  wrongParameter: "This block can not be used here. It is a parameter that can only be used on {procedure}."
+  deletedParameter: "This block can no longer be used, the parameter has been deleted."
