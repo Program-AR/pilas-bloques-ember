@@ -22,16 +22,16 @@ export default Component.extend({
             if (tabcontent.length > 1) {
 
                 this.set('initialized', true);
-                
-                for (i = 0; i < tabcontent.length; i++) {
-                    tabcontent[i].style.display = "none";
-                }
+
+                tabcontent.forEach(tabItem => {
+                    tabItem.style.display = "none";
+                })
 
                 tablinks = document.getElementsByClassName("tablinks");
 
-                for (i = 0; i < tablinks.length; i++) {
-                    tablinks[i].className = tablinks[i].className.replace(" active", "");
-                }
+                tablinks.forEach(tabLink => {
+                    tabLink.className = tabLink.className.replace(" active", "");
+                })
 
                 document.getElementById(tab).style.display = "block";
             }
