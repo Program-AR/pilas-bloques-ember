@@ -12,6 +12,7 @@ export default Component.extend({
   store: service(),
   deleteDialogIsOpen: false,
   platform: service(),
+  intl: service(),
 
   version() {
     return VERSION_DEL_FORMATO_DE_ARCHIVO;
@@ -38,17 +39,17 @@ export default Component.extend({
       solucion = atob(data.solucion);
     } catch (e) {
       console.error(e);
-      throw "Lo siento, este archivo no tiene una solución de Pilas Bloques.";
+      throw this.intl.t('components.challengeWorkspaceButtons.notASolution');
     }
 
     this.set('workspace', solucion);
 
     let errors = [];
     if (this.get("actividad.nombre") !== data.actividad) {
-      errors.push(`Cuidado, el archivo indica que es para otra actividad (${data.actividad}). Se cargará de todas formas, pero puede fallar.`);
+      errors.push(this.intl.t('components.challengeWorkspaceButtons.wrongActivity', { activity: data.actividad }));
     }
     if (VERSION_DEL_FORMATO_DE_ARCHIVO > data.version) {
-      errors.push("Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.");
+      errors.push(this.intl.t('components.challengeWorkspaceButtons.oldVersion'));
     }
     if (errors.length !== 0) {
       throw errors.join('\n');
