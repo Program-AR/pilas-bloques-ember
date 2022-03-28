@@ -71,6 +71,7 @@ challengeLink:
 challengeWorkspaceButtons:
   open: "Abrir solución"
   save: "Guardar solución"
+  delete: "Borrar solución"
   careful: "¡Cuidado! Al borrar la solución se perderán tus cambios."
   delete: "Borrar la solucion"
   exit: "Salir de Pantalla Completa"
