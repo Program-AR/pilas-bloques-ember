@@ -12,14 +12,14 @@ export const xmlBloqueEmpezarAEjecutar =
 export default Model.extend({
   intl: Ember.inject.service(),
 
-  titulo: computed('id',function(){
-    return this.intl.t(`model.challenges.${this.id}.title`);
+  titulo: computed('id', function () {
+    return `${this.intl.t(`model.challenges.${this.id}.title`)}`;
   }),
-  enunciado: computed('id',function(){
-    return this.intl.t(`model.challenges.${this.id}.description`);
+  enunciado: computed('id', function () {
+    return `${this.intl.t(`model.challenges.${this.id}.description`)}`;
   }),
-  consignaInicial: computed('id',function(){
-    return this.intl.t(`model.challenges.${this.id}.clue`);
+  consignaInicial: computed('id', function () {
+    return `${this.intl.t(`model.challenges.${this.id}.clue`)}`;
   }),
 
   nombre: attr('string'),
@@ -27,7 +27,7 @@ export default Model.extend({
   deshabilitado: attr('boolean'),
   escena: attr('string'),
   debeFelicitarse: attr(),
-  estiloToolbox: attr('string'),
+  estiloToolbox: attr('string', { defaultValue: "desplegable" }), 
   grupo: belongsTo('grupo'),
   bloques: attr(),
   solucionInicial: attr('string'),
@@ -39,6 +39,21 @@ export default Model.extend({
 
   initialWorkspace: computed("solucionInicial", function () {
     return this.solucionInicial || xmlBloqueEmpezarAEjecutar
+  }),
+
+  indexInGroup: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges.findIndex(challenge => challenge.id === this.id)
+  }),
+
+  nextChallenge: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges[this.indexInGroup + 1]
+  }),
+
+  previousChallenge: computed('grupo', function () {
+    const groupChallenges = this.grupo.get('desafios').toArray()
+    return groupChallenges[this.indexInGroup - 1]
   })
 
 

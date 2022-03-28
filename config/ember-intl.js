@@ -1,6 +1,6 @@
 /* jshint node:true */
 
-module.exports = function(/* environment */) {
+module.exports = function (/* environment */) {
   return {
     /**
      * Merges the fallback locale's translations into all other locales as a
@@ -14,7 +14,7 @@ module.exports = function(/* environment */) {
      * @type {String?}
      * @default "null"
      */
-    fallbackLocale: null,
+    fallbackLocale: 'es-ar',
 
     /**
      * Path where translations are stored.  This is relative to the project root.
@@ -47,7 +47,7 @@ module.exports = function(/* environment */) {
      * @type {Boolean}
      * @default "false"
      */
-    wrapTranslationsWithNamespace: true,
+    wrapTranslationsWithNamespace: true, // TODO: https://github.com/Program-AR/pilas-bloques/issues/910
 
     /**
      * Cause a build error if ICU argument mismatches are detected between translations
@@ -88,8 +88,8 @@ module.exports = function(/* environment */) {
      * @type {Function}
      * @default "function(key,locale) { return true }"
      */
-    requiresTranslation(/* key, locale */) {
-      return true;
+    requiresTranslation(key, locale) {
+      return locale === "es-ar";
     }
   };
 };

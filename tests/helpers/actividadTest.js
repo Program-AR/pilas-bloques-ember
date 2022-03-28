@@ -1,13 +1,12 @@
 import { run } from '@ember/runloop';
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
-import { setupPBIntegrationTest } from '../helpers/utils'
+import { setupPBIntegrationTest, acceptTerms } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
 import simulateRouterHooks from "./simulate-router.hooks";
 import { failAllApiFetchs } from './utils';
-
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
@@ -15,7 +14,8 @@ export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupPBIntegrationTest(hooks);
     setupMirage(hooks);
-    runActivityTests();
+    acceptTerms(hooks);
+    runActivityTests(hooks);
   });
 }
 
@@ -98,7 +98,7 @@ export function actividadTest(nombre, opciones) {
 
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
-    let pilas = this.owner.lookup('service:pilas');
+    let pilasService = this.owner.lookup('service:pilas');
     failAllApiFetchs()
     this.owner.lookup('service:pilas-bloques-api').logout();
 
@@ -125,16 +125,16 @@ export function actividadTest(nombre, opciones) {
         }
 
         this.set('model', model);
-        this.set('pilas', pilas);
+        this.set('pilasService', pilasService);
 
 
         // Carga la solución en base64, el formato que espera el componente.
         this.set('solucion', window.btoa(opciones.solucion));
         // Captura el evento de inicialización de pilas:
 
-        this.set('onReady', () => {
+        this.set('startExecution', () => {
           if (opciones.cantidadDeActoresAlComenzar) {
-            validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilas);
+            validarCantidadDeActores(opciones.cantidadDeActoresAlComenzar, assert, pilasService);
           }
 
           setTimeout(() => {
@@ -157,13 +157,12 @@ export function actividadTest(nombre, opciones) {
           } else {
             assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
           }
-
           success();
         });
 
         this.set('onTerminoEjecucion', () => {
           if (opciones.cantidadDeActoresAlTerminar) {
-            validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilas);
+            validarCantidadDeActores(opciones.cantidadDeActoresAlTerminar, assert, pilasService);
           }
 
           // Los errores esperados no deberían llegar a este punto, así
@@ -173,11 +172,10 @@ export function actividadTest(nombre, opciones) {
           if (errorEsperado) {
             assert.notOk(`No ocurrió el error esperado: '${errorEsperado}'`);
           } else if (opciones.resuelveDesafio === false) {
-            assert.ok(!pilas.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
+            assert.ok(!pilasService.estaResueltoElProblema(), "Se esperaba que la solución no resuelva el problema");
           } else {
-            assert.ok(pilas.estaResueltoElProblema(), "Se puede resolver el problema");
+            assert.ok(pilasService.estaResueltoElProblema(), "Se puede resolver el problema");
           }
-
           success();
         });
 
@@ -190,10 +188,10 @@ export function actividadTest(nombre, opciones) {
         this.render(hbs`
                     {{challenge-workspace
                       debug=false
-                      pilas=pilas
+                      pilas=pilasService
                       model=model
                       showCode=false
-                      onReady=onReady
+                      onReady=startExecution
                       codigo=solucion
                       codigoJavascript=""
                       persistirSolucionEnURL=false

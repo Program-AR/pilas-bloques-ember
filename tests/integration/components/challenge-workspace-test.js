@@ -13,7 +13,8 @@ module('Integration | Component | challenge-workspace', function (hooks) {
     this.set('pilas', pilasMock);
 
     this.set('model', EmberObject.extend({
-      bloques: ['controls_if']
+      bloques: ['controls_if'],
+      escena: 'AlienInicial'
     }).create());
 
     await render(hbs`{{challenge-workspace pilas=pilas model=model}}`);

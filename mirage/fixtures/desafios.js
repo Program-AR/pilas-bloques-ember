@@ -1857,9 +1857,57 @@ export default [
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
+  //Tecnopolis
   {
     id: 202101,
     nombre: 'tecnopolis2021Modelo',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,-,-,-,-,-],\
+    [-,O,P,-,-,-],\
+    [-,-,O,-,-,-],\
+    [-,-,-,-,-,-],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <variables></variables>
+    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"269\" y=\"15\">
+      <statement name=\"program\">
+        <shadow type=\"required_statement\"></shadow>
+        <block type=\"MoverACasillaDerecha\">
+          <next>
+            <block type=\"MoverACasillaDerecha\">
+              <next>
+                <block type=\"MoverACasillaDerecha\">
+                  <next>
+                    <block type=\"MoverACasillaAbajo\">
+                      <next>
+                        <block type=\"ComerChurrasco\"></block>
+                      </next>
+                    </block>
+                  </next>
+                </block>
+              </next>
+            </block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  },
+  {
+    id: 202102,
+    nombre: 'tecnopolis2021ModeloRepeticion',
     imagen: 'Duba',
     bloques: [
       'MoverACasillaAbajo',
@@ -1907,8 +1955,9 @@ export default [
     </block>
   </xml>`
   },
+  //Duba
   {
-    id: 202102,
+    id: 2021001,
     nombre: 'tecnopolis2021DubaNivel1',
     imagen: 'Duba',
     bloques: [
@@ -1931,7 +1980,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202103,
+    id: 2021002,
     nombre: 'tecnopolis2021DubaNivel2',
     imagen: 'Duba',
     bloques: [
@@ -1954,7 +2003,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202104,
+    id: 2021003,
     nombre: 'tecnopolis2021DubaNivel3',
     imagen: 'Duba',
     bloques: [
@@ -1977,7 +2026,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202105,
+    id: 2021004,
     nombre: 'tecnopolis2021DubaNivel4',
     imagen: 'Duba',
     bloques: [
@@ -2000,7 +2049,100 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202106,
+    id: 2021005,
+    nombre: 'tecnopolis2021DubaNivel5',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,P],\
+    [-,O,O,O,O,-],\
+    [-,-,-,-,O,-],\
+    [O,O,-,-,O,-],\
+    [-,O,O,-,-,-],\
+    [-,-,O,-,-,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021006,
+    nombre: 'tecnopolis2021DubaNivel6',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,O,P,O],\
+    [-,O,P,-,P,O],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021007,
+    nombre: 'tecnopolis2021DubaNivel7',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,O],\
+    [-,O,O,O,-,O],\
+    [-,O,P,O,-,O],\
+    [-,O,-,-,-,O],\
+    [-,O,O,O,O,O],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021008,
+    nombre: 'tecnopolis2021DubaNivel8',
+    imagen: 'Duba',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'ComerChurrasco',
+      'Repetir'
+    ],
+    escena: `new EscenaDuba("\
+    [A,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [-,O,-,-,O,-],\
+    [-,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [P,-,-,-,-,P],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  //Lita
+  {
+    id: 2021101,
     nombre: 'tecnopolis2021LitaNivel1',
     imagen: 'Lita',
     bloques: [
@@ -2025,7 +2167,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202107,
+    id: 2021102,
     nombre: 'tecnopolis2021LitaNivel2',
     imagen: 'Lita',
     bloques: [
@@ -2050,7 +2192,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202108,
+    id: 2021103,
     nombre: 'tecnopolis2021LitaNivel3',
     imagen: 'Lita',
     bloques: [
@@ -2075,7 +2217,7 @@ export default [
     estiloToolbox: 'sinCategorias',
   },
   {
-    id: 202109,
+    id: 2021104,
     nombre: 'tecnopolis2021LitaNivel4',
     imagen: 'Lita',
     bloques: [
@@ -2099,4 +2241,466 @@ export default [
     debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
+  {
+    id: 2021105,
+    nombre: 'tecnopolis2021LitaNivel5',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,T,T,T,T,T],\
+    [-,O,O,O,O,L],\
+    [-,-,-,-,O,L],\
+    [O,O,-,-,O,L],\
+    [-,O,O,-,O,L],\
+    [-,-,O,E,-,L],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021106,
+    nombre: 'tecnopolis2021LitaNivel6',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,L,-,-,E],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,L,O,T,O],\
+    [-,O,-,-,T,O],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021107,
+    nombre: 'tecnopolis2021LitaNivel7',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,L,L,L,L,O],\
+    [-,O,O,O,-,O],\
+    [-,O,E,O,-,O],\
+    [-,O,-,T,T,O],\
+    [-,O,O,O,O,O],\
+    [-,-,-,-,-,-],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  {
+    id: 2021108,
+    nombre: 'tecnopolis2021LitaNivel8',
+    imagen: 'Lita',
+    bloques: [
+      'MoverACasillaAbajo',
+      'MoverACasillaArriba',
+      'MoverACasillaIzquierda',
+      'MoverACasillaDerecha',
+      'AgarrarTomate',
+      'AgarrarLechuga',
+      'PrepararEnsalada',
+      'Repetir'
+    ],
+    escena: `new EscenaLita("\
+    [A,-,L,-,-,-],\
+    [O,O,-,-,O,O],\
+    [-,O,-,-,O,-],\
+    [-,-,-,-,-,-],\
+    [O,O,-,-,O,O],\
+    [T,-,-,-,-,E],\
+  ")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+  },
+  //Coty
+  {
+    id: 2021201, //Copy of 207
+    nombre: 'tecnopolis2021CotyNivel1',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [{x:125,y:75},{x:125,y:-175},{x:-25,y:-175},{x:-25,y:-75},{x:25,y:-75},{x:25,y:-175},{x:-125,y:-175},{x:-125,y:125},{x:-75,y:125},{x:-75,y:75},{x:-25,y:75},{x:-25,y:125},{x:25,y:125},{x:25,y:75}],
+      [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
+      {xCoty: 25, yCoty: 75}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
+  },
+  {
+    id: 2021202, //Copy of 209
+    nombre: 'tecnopolis2021CotyNivel2',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
+      {xCoty: 125, yCoty: 0}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 2021203, //Copy of 213
+    nombre: 'tecnopolis2021CotyNivel3',
+    imagen: 'Coty',
+    escena: `new EscenaCotyMate()`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
+  },
+  {
+    id: 2021204, //Copy of 233
+    nombre: 'tecnopolis2021CotyNivel4',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
+      {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'Repetir'
+    ]
+  },
+  {
+    id: 2021205, //Copy of 235
+    nombre: 'tecnopolis2021CotyNivel5',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
+      {xCoty: -120, yCoty: -60, longitudSegmento: 40}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'Repetir'
+    ]
+  },
+  {
+    id: 2021206,
+    nombre: 'tecnopolis2021CotyNivel6',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [[{x:-104,y:12},{x:-78,y:12}],[{x:-104,y:12},{x:-104,y:-30}],[{x:-104,y:-9},{x:-78,y:-9}],[{x:-104,y:-30},{x:-78,y:-30}],[{x:-70,y:12},{x:-44,y:12}],[{x:-70,y:12},{x:-70,y:-30},{x:-44,y:-30}],[{x:-36,y:12},{x:-36,y:-30}],[{x:-36,y:12},{x:-30,y:4},{x:-28,y:0},{x:-19,y:-12},{x:-17,y:-16},{x:-14,y:-19},{x:-8,y:-27}],[{x:-10,y:12},{x:-10,y:-30}],[{x:-2,y:12},{x:24,y:12}],[{x:-2,y:12},{x:-2,y:-30}],[{x:24,y:12},{x:24,y:-30}],[{x:-2,y:-30},{x:24,y:-30}],[{x:32,y:12},{x:58,y:12}],[{x:32,y:12},{x:32,y:-30}],[{x:32,y:-9},{x:58,y:-9}],[{x:58,y:12},{x:58,y:-12}],[{x:66,y:12},{x:92,y:12}],[{x:66,y:12},{x:66,y:-30}],[{x:92,y:12},{x:92,y:-30}],[{x:66,y:-30},{x:92,y:-30}],[{x:100,y:12},{x:100,y:-30},{x:126,y:-30}],[{x:142,y:12},{x:142,y:-30}],[{x:150,y:12},{x:176,y:12}],[{x:150,y:12},{x:150,y:-12}],[{x:150,y:-9},{x:176,y:-9},{x:176,y:-33}],[{x:150,y:-30},{x:176,y:-30}]],
+      [[{x:-180,y:70},{x:-80,y:70}],[{x:-130,y:70},{x:-130,y:-30}]],
+      {xCoty: -130, yCoty: 70}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'Repetir'
+    ]
+  },
+  {
+    id: 2021207,
+    nombre: 'tecnopolis2021CotyNivel7',
+    imagen: 'Coty',
+    escena: `new EscenaCoty(
+      [],
+      [[{x:-150,y:0},{x:-150,y:50},{x:-100,y:50},{x:-100,y:0}],[{x:-100,y:-50},{x:-50,y:-50}],[{x:-50,y:0},{x:-50,y:50},{x:0,y:50},{x:0,y:0}],[{x:0,y:-50},{x:50,y:-50}],[{x:50,y:0},{x:50,y:50},{x:100,y:50},{x:100,y:0}],[{x:100,y:-50},{x:150,y:-50}]],
+      {xCoty: -150, yCoty: 0}
+    )`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverArribaDibujando',
+      'MoverAbajoDibujando',
+      'MoverDerechaDibujando',
+      'MoverIzquierdaDibujando',
+      'SaltarAbajo',
+      'SaltarArriba',
+      'SaltarDerecha',
+      'SaltarIzquierda',
+      'Repetir'
+    ]
+  },
+  //Toto
+  {
+    id: 2021301, //Copy of 225
+    nombre: 'tecnopolis2021TotoNivel1',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['A', 'r', 'e'],
+        ['t', 'o', 'j'],
+        ['i', 't', 'o'],
+    ], "toto")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
+  {
+    id: 2021302, //Copy of 226
+    nombre: 'tecnopolis2021TotoNivel2',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['r', 'h', 'j', 'a'],
+        ['z', 'A', 'a', 'm'],
+        ['y', 'l', 'l', 'q']
+    ], "llama")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
+  {
+    id: 2021303, //Copy of 227
+    nombre: 'tecnopolis2021TotoNivel3',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['a', 'm', 'A'],
+        ['f', 'u', 'p'],
+        ['r', 'y', 'a'],
+    ], "puma")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
+  {
+    id: 2021304, //Copy of 229
+    nombre: 'tecnopolis2021TotoNivel4',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['w', 'a', 'r'],
+        ['u', 'n', 'e'],
+        ['l', 'A', 's'],
+    ], "lunes", 7)`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns="http://www.w3.org/1999/xhtml">
+      <block type="al_empezar_a_ejecutar" id="1" deletable="false" movable="false" editable="false" x="15" y="15">
+      <statement name="program">
+        <block type="MoverLeyendoIzquierda">
+        <next>
+        <block type="MoverLeyendoArriba">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoArriba">
+        <next>
+        <block type="MoverLeyendoDerecha">
+        <next>
+        <block type="MoverLeyendoAbajo">
+        <next>
+        <block type="MoverLeyendoAbajo">
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+        </next>
+        </block>
+      </statement>
+      </block>
+    </xml>`,
+  },
+  {
+    id: 2021305,
+    nombre: 'tecnopolis2021TotoNivel5',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['A','t', 'e', 'l', 'j'],
+        ['i','s', 'c', 'n', 'o'],
+        ['l','o', 'p', 'o', 'v'],
+    ], "tecnopolis")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+    ],
+  },
+  {
+    id: 2021306,
+    nombre: 'tecnopolis2021TotoNivel6',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['d','A','o'],
+        ['z','n','a'],
+        ['g','e','c'],
+        ['r','u','d'],
+        ['w','q','t'],
+        ['x','u','a'],
+        ['j','e','r'],
+        ['y','n','v']
+    ], "neuquen")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021307,
+    nombre: 'tecnopolis2021TotoNivel7',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+        ['d','A','o'],
+        ['z','n','a'],
+        ['g','e','c'],
+        ['r','u','d'],
+        ['w','q','t'],
+    ], "neuquen")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021308,
+    nombre: 'tecnopolis2021TotoNivel8',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+      ['t','a','q','m','e','v','o','g','r','a','u'],
+      ['n','A','s','a','n','t','a','c','r','u','a'],
+      ['f','d','i','u','v','r','e','o','h','z','d'],
+    ], "santacruz")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+  },
+  {
+    id: 2021309,
+    nombre: 'tecnopolis2021TotoNivel9',
+    imagen: 'Toto',
+    escena: `new EscenaTotoLector([
+      ['f','d','h','w','t'],
+      ['e','a','z','b','u'],
+      ['r','x','h','u','y'],
+      ['t','A','c','i','k'],
+    ], "chubut")`,
+    debeFelicitarse: true,
+    estiloToolbox: 'sinCategorias',
+    bloques: [
+      'MoverLeyendoAbajo',
+      'MoverLeyendoArriba',
+      'MoverLeyendoIzquierda',
+      'MoverLeyendoDerecha',
+      'Repetir'
+    ],
+    debugging: true,
+    solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
+    <variables></variables>
+    <block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"269\" y=\"15\">
+      <statement name=\"program\">
+        <shadow type=\"required_statement\"></shadow>
+        <block type=\"repetir\">
+          <value name=\"count\">
+            <shadow type=\"required_value\"></shadow>
+            <block type=\"math_number\">
+              <field name=\"NUM\">3</field>
+            </block>
+          </value>
+          <statement name=\"block\">
+            <shadow type=\"required_statement\"></shadow>
+            <block type=\"MoverLeyendoArriba\">
+              <next>
+                <block type=\"MoverLeyendoDerecha\"></block>
+              </next>
+            </block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  },
+
 ];

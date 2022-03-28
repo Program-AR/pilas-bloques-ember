@@ -1,8 +1,13 @@
 import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
 
     initialized: false,
+    exerciseCover: computed('model', function () {
+        return this.model.challengeCover || `imagenes/desafios/${this.model.nombreImagen}`
+    }),
+
 
     didRender() {
 
@@ -34,6 +39,7 @@ export default Component.extend({
                 })
 
                 document.getElementById(tab).style.display = "block";
+                document.getElementById(tab).style.width = "100%";
             }
         },
 

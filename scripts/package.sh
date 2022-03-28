@@ -18,6 +18,8 @@ DEBIAN_PACKAGER=./node_modules/.bin/electron-installer-debian
 # The folder with all the publishable webapp
 DIST=./dist_prod
 
+[[ -d $DIST ]] || { echo "ERROR: The folder $DIST doesn't exist. You have to build Pilas Bloques before packaging." ; exit 1; }
+
 help() {
     echo ""
 	echo "Commands available for pilas-bloques - versión $VERSION"
