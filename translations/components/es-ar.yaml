@@ -54,6 +54,10 @@ importCustomChallenge:
 header: 
   tool: "Una herramienta para aprender a programar"
 
+nightModeToggle:
+  lightTheme: "Activar modo claro"
+  darkTheme: "Activar modo oscuro"
+
 registerDisclaimer: 
   now: "¡ Ahora Pilas Bloques permite"
   register: "registrarse"
