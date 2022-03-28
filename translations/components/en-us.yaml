@@ -71,7 +71,6 @@ challengeLink:
 challengeWorkspaceButtons:
   open: "Open solution"
   save: "Save solution"
-  delete: "Delete solution"
   careful: "Be careful! If you delete the solution, you will lose your work."
   delete: "Delete solution"
   exit: "Exit Full Screen"
