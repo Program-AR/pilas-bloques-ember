@@ -38,6 +38,7 @@ module('Unit | Service | storage | SimpleRead', function(hooks) {
 
   hooks.beforeEach(function() {
     service = this.owner.lookup('service:storage')
+    service.clear()
   })
 
   test('By default simple read mode is disabled', function (assert) {

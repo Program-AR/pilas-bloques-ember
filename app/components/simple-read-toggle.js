@@ -9,8 +9,12 @@ export default Component.extend({
     simpleRead: service(),
 
     shouldShowSimpleRead() {
-        return this.simpleRead.shouldShowSimpleRead(this.get('book.modoLecturaSimple'))
-    },   
+        return this.simpleRead.shouldShowSimpleRead(this.bookSimpleReadMode())
+    },
+
+    bookSimpleReadMode() {
+        return this.get('book.modoLecturaSimple')
+    },
 
     actions: {
         toggleSimpleRead() {
