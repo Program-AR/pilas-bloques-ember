@@ -50,3 +50,15 @@
     transform: rotate(180deg);
     width: auto;
 }
+
+.tabcontent {
+    width: 100%;
+}
+
+.tabcontent:not(.active) {
+    display: none;
+}
+
+.tabcontent.active {
+    display: block;
+}
