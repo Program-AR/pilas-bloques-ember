@@ -164,7 +164,7 @@ export default Service.extend({
 
 
   /*
-   * Returns an object with a 'string' attribute. E.g. { string: "When run" }
+   * Returns an object with a 'string' attribute. E.g. { string: "When the program runs" }
    */
   t(id) {
     return this.intl.t(`blocks.${id}`);
