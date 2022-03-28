@@ -22,3 +22,7 @@ options:
 
 errors:
   userAlreadyExists: "This username has already exists"
+  userFormat: "The username can only contain letters, numbers and dashes"
+  invalidMail: "This mail is invalid"
+  missingParentName: "Full name is required"
+  invalidNumber: "This number is not valid"

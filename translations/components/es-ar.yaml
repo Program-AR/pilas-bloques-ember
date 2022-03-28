@@ -94,7 +94,9 @@ login:
   forgot: "Olvidé mi usuario o constraseña"
   dontHaveUser: "Aún no tengo usuario"
   register: "¡Registrate haciendo click acá!"
-  login: "Ingresar"
+  login: "Iniciar sesión"
+  username: "Usuario"
+  password: "Contraseña"
 
 modalAyuda:
   help: "Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques."
@@ -106,6 +108,7 @@ modalAyuda:
 
 passwordConfirmation:
   password: "Confirmar contraseña"
+  matchError: "Las contraseñas no coinciden"
 
 sessionButton:
   login: "Ingresar"

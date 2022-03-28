@@ -2,11 +2,11 @@
   <div class="login-item">
     <h3>{{t "components.login.already"}}</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
-    <PbInput @label="Usuario"
+    <PbInput @label={{t "components.login.username"}}
       @model={{ credentials.username }} 
       @required={{ true }} />
 
-    <PbInput @type="password" @label="Contraseña"
+    <PbInput @type="password" @label={{t "components.login.password"}}
       @model={{ credentials.password }} 
       @required={{ true }} />
 

@@ -95,6 +95,8 @@ login:
   dontHaveUser: "I don’t have a username yet"
   register: "Click here to register now!"
   login: "Log in"
+  username: "Username"
+  password: "Password"
 
 modalAyuda:
   help: "This app will offer you several challenges you can solve by fitting blocks together."
@@ -106,6 +108,7 @@ modalAyuda:
 
 passwordConfirmation:
   password: "Confirm password"
+  matchError: "The passwords do not match"
 
 sessionButton:
   login: "Log in"
