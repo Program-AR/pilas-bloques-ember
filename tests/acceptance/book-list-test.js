@@ -3,6 +3,7 @@ import { setupApplicationTest } from 'ember-qunit'
 import { create, visitable, text, collection, attribute } from 'ember-cli-page-object'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { simpleReadMock } from '../helpers/mocks'
+import { testSimpleReadModeDisabled, testSimpleReadModeEnabled } from '../helpers/utils'
 
 const page = create({
   scope: '.contenido-principal',
@@ -39,15 +40,6 @@ module('Acceptance | book list test', function (hooks) {
     })
   })
 
-  test('when simple read mode is enabled, simple read mode css class should be applied', async function (assert) {
-    await page.visit()
-    assert.dom('div.simple-read-mode').exists()
-  })
-
-  test('when simple read mode is disabled, simple read mode css class should not be applied', async function (assert) {
-    this.simpleReadMock = this.owner.lookup('service:simpleRead');
-    this.simpleReadMock.shouldShow = false
-    await page.visit()
-    assert.dom('div.simple-read-mode').doesNotExist()
-  })
+  testSimpleReadModeEnabled(() => page.visit())
+  testSimpleReadModeDisabled(() => page.visit())
 })

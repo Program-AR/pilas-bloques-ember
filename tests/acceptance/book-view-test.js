@@ -3,6 +3,7 @@ import { setupApplicationTest } from 'ember-qunit'
 import { create, visitable, text, collection, attribute } from 'ember-cli-page-object'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { simpleReadMock } from '../helpers/mocks'
+import { testSimpleReadModeDisabled, testSimpleReadModeEnabled } from '../helpers/utils'
 
 /*
  * Tests that book page shows internationalized chapters and titles.
@@ -58,16 +59,7 @@ module('Acceptance | book view test', function (hooks) {
   testBookView(1)
   testBookView(2)
 
-  test('when simple read mode is enabled, simple read mode css class should be applied', async function (assert) {
-    await simpleReadPage.visit()
-    assert.dom('div.simple-read-mode').exists()
-  })
-
-  test('when simple read mode is disabled, simple read mode css class should not be applied', async function (assert) {
-    this.simpleReadMock = this.owner.lookup('service:simpleRead');
-    this.simpleReadMock.shouldShow = false
-    await simpleReadPage.visit()
-    assert.dom('div.simple-read-mode').doesNotExist()
-  })
+  testSimpleReadModeEnabled(() => simpleReadPage.visit())
+  testSimpleReadModeDisabled(() => simpleReadPage.visit())
 
 })

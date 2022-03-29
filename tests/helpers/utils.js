@@ -7,6 +7,7 @@ import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import simulateRouterHooks from './simulate-router.hooks'
 import { fakeUser, toastMock, routerMock } from './mocks'
 import config from '../../config/environment'
+import { test } from 'qunit';
 const { baseURL } = config.pbApi
 
 ////// SETUP //////
@@ -198,4 +199,22 @@ export async function safeVisit(url) {
             throw e
         }
     }
+}
+
+////// TESTS //////
+
+export function testSimpleReadModeEnabled(callback) {
+    test('when simple read mode is enabled, simple read mode css class should be applied', async function (assert) {
+        await callback()
+        assert.dom('div.simple-read-mode').exists()
+    })
+}
+
+export function testSimpleReadModeDisabled(callback) {
+    test('when simple read mode is disabled, simple read mode css class should not be applied', async function (assert) {
+        this.simpleReadMock = this.owner.lookup('service:simpleRead');
+        this.simpleReadMock.shouldShow = false
+        await callback()
+        assert.dom('div.simple-read-mode').doesNotExist()
+    })
 }
