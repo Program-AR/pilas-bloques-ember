@@ -137,5 +137,5 @@ errors:
   missingCommandBlock: "There are no command blocks here!"
   missingExpressionBlock: "There is no expression block here!"
   nonAvailableBlock: "This block is not available in this activity."
-  wrongParameter: "This block can not be used here. It is a parameter that can only be used on {procedure}."
+  wrongParameter: This block can't be used here. It's a parameter that can only be used inside the procedure "{procedure}".
   deletedParameter: "This block can no longer be used, the parameter has been deleted."
