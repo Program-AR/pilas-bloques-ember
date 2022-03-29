@@ -3,18 +3,9 @@ import { module, test } from 'qunit';
 import { setupPBIntegrationTest } from '../../helpers/utils'
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { pilasMock } from '../../helpers/mocks';
-import Ember from 'ember';
+import { pilasMock, simpleReadMock } from '../../helpers/mocks';
 
 // jshint unused: false
-const simpleReadStub = Ember.Service.extend({
-  shouldShow: true,
-
-  // param is necessary because simpleRead service expects an argument
-  shouldShowSimpleRead(_){
-    return this.shouldShow
-  } 
-})
 
 module('Integration | Component | challenge-workspace', function (hooks) {
   setupPBIntegrationTest(hooks);
@@ -25,7 +16,7 @@ module('Integration | Component | challenge-workspace', function (hooks) {
     this.set('model', EmberObject.extend({
       bloques: ['controls_if']
     }).create());
-    this.owner.register('service:simpleRead', simpleReadStub);
+    this.owner.register('service:simpleRead', simpleReadMock);
   });
 
   test('it renders', async function (assert) {
