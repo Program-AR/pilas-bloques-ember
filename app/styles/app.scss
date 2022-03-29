@@ -482,8 +482,8 @@ a:hover {
   padding: 0.5em;
 }
 
-.simple-read,
-.simple-read button // this rule is necessary to avoid being overwritten by Bootstrap
+.simple-read-mode,
+.simple-read-mode button // this rule is necessary to avoid being overwritten by Bootstrap
 {
   text-transform: uppercase !important;
 }

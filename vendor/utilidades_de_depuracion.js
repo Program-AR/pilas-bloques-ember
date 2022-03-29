@@ -52,7 +52,7 @@ var pbUtils = {
     }
 
     aleph.querySelectorAll(".blocklyPathLight").forEach(function (elem) { elem.setAttribute("fill", "none") });
-    if (document.getElementsByClassName("simple-read").length > 0) {
+    if (document.getElementsByClassName("simple-read-mode").length > 0) {
       aleph.querySelectorAll(".blocklyText").forEach(function (elem) { elem.textContent = elem.textContent.toUpperCase() });
     }
 
