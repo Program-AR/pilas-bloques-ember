@@ -14,7 +14,8 @@ module('Integration | Component | challenge-workspace', function (hooks) {
   hooks.beforeEach(function(assert) {
     this.set('pilas', pilasMock);
     this.set('model', EmberObject.extend({
-      bloques: ['controls_if']
+      bloques: ['controls_if'],
+      escena: 'AlienInicial'
     }).create());
     this.owner.register('service:simpleRead', simpleReadMock);
   });

@@ -31,7 +31,8 @@
     "Blob",
     "localStorage",
     "ClientJS",
-    "uuidv4"
+    "uuidv4",
+    "ProcedsBlockly"
   ],
   "esversion": 9,
   "asi": true,

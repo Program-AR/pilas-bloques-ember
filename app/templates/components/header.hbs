@@ -9,7 +9,6 @@
     {{/unless}}
 
     {{#if (or challenge book)}}
-
       {{#if (media 'isMobile')}}
         <NavigationMenu 
           @book={{book}}
@@ -28,11 +27,16 @@
           @hidden={{openCustomScene}}
         />
       {{/if}}
-      
+      <ChallengeNavigationArrows @challenge={{challenge}}/>
     {{/if}}
+
     
     <span class="flex"/>
+
+    <LanguageMenu/>
+    
     <SimpleReadToggle @book={{or book chapter.libro}}/>
+
     <NightModeToggle/>
     &nbsp;&nbsp;&nbsp;
     <SessionButton/>

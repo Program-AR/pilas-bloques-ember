@@ -5,6 +5,7 @@ import { later, scheduleOnce, run } from '@ember/runloop';
 import { on } from '@ember/object/evented';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
+import Ember from 'ember'
 
 export default Component.extend({
   classNames: 'pilas-blockly',
@@ -15,9 +16,8 @@ export default Component.extend({
   data_observar_blockly: false,
   actividad: null,
   interpreterFactory: service(),
-  abrirConsignaInicial: false,
   solucion: null,
-  pilas: null,          // Se espera que sea una referencia al servicio pilas.
+  pilasService: null,
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
@@ -36,7 +36,7 @@ export default Component.extend({
   anterior_alto: -1,
 
   blockly_toolbox: [{
-    category: '...',
+    categoryId: '...',
     blocks: []
   }],
 
@@ -44,23 +44,17 @@ export default Component.extend({
   pausadoEnBreakpoint: false,
 
   javascriptCode: null,
-
-  inyectarRedimensionado: on('init', function () {
-
-    // Muestra el dialogo inicial si está definida la consigna inicial.
-    if (this.get('actividad.actividad.consignaInicial')) {
-      later(() => {
-        this.set('abrirConsignaInicial', true);
-      });
-    }
-
-  }),
+  intl: Ember.inject.service(),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
   }),
 
-  didInsertElement() {
+  didUpdateAttrs() {
+    this.didInsertElement()
+  },
+
+  async didInsertElement() {
 
     /*
       Esta no es la forma correcta de arreglar esto.
@@ -72,178 +66,185 @@ export default Component.extend({
     this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
     this.exerciseWorkspace.setPilasBlockly(this);
 
-    var event = new Event('terminaCargaInicial');
-    window.dispatchEvent(event);
-
-    scheduleOnce('afterRender', async () => {
-      this.set('blockly_toolbox', this.obtenerToolboxDesdeListaDeBloques(this.bloques));
-
-      this.set('blockly_comments', this.get('actividad.puedeComentar'));
-      this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
-      this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
-
-      // Elijo el estilo default de toolbox si es que no viene indicado en el desafio
-      if (!this.modelActividad.get('estiloToolbox')) {
-        this.modelActividad.set('estiloToolbox', 'desplegable');
-      }
-
-      const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
-
-      // Si el código está serializado en la URL, lo intenta colocar en el
-      // workspace.
-      if (this.codigo) {
-        let codigoSerializado = this.codigo;
-        let codigoXML = atob(codigoSerializado);
-        this.set('initial_workspace', codigoXML);
-      } else if (savedSolution) { // Si ya envió una solución anteriormente
-        this.set('initial_workspace', savedSolution.program);
-      } else {
-        this.set('initial_workspace', this.modelActividad.initialWorkspace);
-      }
-    });
-
-    if (this.persistirSolucionEnURL) {
-      // TODO: puede que esto quede en desuso.
-    }
+    this.set('blockly_toolbox', this.toolboxForBlockTypes(this.bloques));
+    this.set('blockly_comments', this.get('actividad.puedeComentar'));
+    this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
+    this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+    this.set('initial_workspace', await this.initialWorkspace())
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
-    this.pilas.on("errorDeActividad", (motivoDelError) => {
-      run(this, function () {
-        this.set('errorDeActividad', motivoDelError);
-      });
+    this.pilasService.on("errorDeActividad", (motivoDelError) => {
+      this.set('errorDeActividad', motivoDelError);
     });
 
     $(window).trigger('resize');
   },
 
+  async initialWorkspace() {
+    const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
+    const serializedURLCode = this.codigo && atob(this.codigo)
+
+    return this.addRandomIdToWorkspace(serializedURLCode || savedSolution?.program || this.modelActividad.initialWorkspace)
+  },
   /**
-   * Genera el toolbox como lista de categorias con bloques a partir
-   * de una lista de bloques simples.
+   * Adds an id to a block of the XML.
+   * This is necessary because the ember-blockly component doesnt update the workspace when the
+   * initial workspace is the same as the previous challenge. 
+   */
+  addRandomIdToWorkspace(workspaceXML) {
+    return workspaceXML && (workspaceXML.includes('id=') ?
+      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`) :
+      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`))
+  },
+
+  /**
+   * Creates a toolbox as a list of categories ids with block types
+   * from a list of block types
    *
-   * Por ejemplo:
+   * E.g.:
    *
-   *  >> obtenerToolboxDesdeListaDeBloques(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
+   *  >> toolboxForBlockTypes(['MoverDerecha', 'TocaSensor', 'TocaEnemigo'])
    *
    * [
    *    {
-   *      category: 'Primitivas',
+   *      categoryId: 'primitives',
    *      blocks: ['MoverDerecha']
    *    },
    *    {
-   *      category: 'Sensores',
+   *      categoryId: 'sensors',
    *      blocks: ['TocaSensor', 'TocaEnemigo']
    *    },
    * ]
    *
    */
-  obtenerToolboxDesdeListaDeBloques(bloques) {
+  toolboxForBlockTypes(blockTypes) {
 
-    if (bloques === undefined) {
+    if (blockTypes === undefined) {
       throw new Error("La actividad no tiene bloques definidos, revise el fixture de la actividad para migrarla a ember-blocky.");
     }
 
-    let toolbox = [];
+    const toolbox = this.groupedByCategories(blockTypes)
 
-    bloques.forEach((bloque) => {
-      let bloqueDesdeBlockly = this._obtenerBloqueDesdeBlockly(bloque);
+    // This is meant to separate commands from expressions
+    // sortedToolbox will put it in the right position
+    toolbox.push({ categoryId: 'separator', isSeparator: true });
 
-      if (bloqueDesdeBlockly && bloqueDesdeBlockly.categoria) {
-        this._agregar_bloque_a_categoria(toolbox, bloqueDesdeBlockly.categoria, bloque, bloqueDesdeBlockly.categoria_custom);
-      } else {
-        this._agregar_bloque_a_categoria(toolbox, 'SIN CATEGORÍA', bloque);
-      }
+    return this._toEmberBlocklyToolbox(toolbox);
+  },
 
-    });
+  groupedByCategories(blockTypes) {
+    return this.categoryIdsFor(blockTypes).map(categoryId => ({
+      categoryId: categoryId,
+      blocks: blockTypes.filter(bt => this._categoryIdFor(bt) === categoryId),
+    }))
+  },
 
-    toolbox.push({ category: 'Separator', isSeparator: true });
+  categoryIdsFor(blockTypes) {
+    return [... new Set(blockTypes.map(bt => this._categoryIdFor(bt)))]
+  },
 
-    return this._aplicarEstiloAToolbox(this.ordenar_toolbox(toolbox));
+  _categoryIdFor(blockType) {
+    return this.blocklyBlock(blockType)?.categoryId || 'uncategorized'
+  },
+
+  /*
+   * _toEmberBlocklyToolbox(toolbox: Toolbox) => EmberToolbox
+   * type Toolbox = ToolboxItem[]
+   * type ToolboxItem = BlockType | Separator | Category
+   * type Separator = {
+   *   categoryId: string,
+   *   isSeparator: true
+   * }
+   * type Category = {
+   *   categoryId: string,
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   * }
+   * 
+   * 
+   * type EmberToolbox = EmberToolboxItem[]
+   * type EmberToolboxItem = BlockType | EmberSeparator | EmberCategory
+   * type BlockType = string
+   * type EmberSeparator = {
+   *    isSeparator: true // always
+   * } 
+   * type EmberCategory = {
+   *   category?: string, // printable category name
+   *   custom?: string, // for Blockly Dynamic Categories
+   *   blocks?: BlockType[],
+   *   isSeparator: false // always false for categories
+   * }
+   */
+  _toEmberBlocklyToolbox(toolbox) {
+    return this._styledToolbox(this.sortedToolbox(toolbox)).map(
+      toolboxItem => this._toEmberBlocklyToolboxItem(toolboxItem)
+    )
+  },
+
+  _toEmberBlocklyToolboxItem(toolboxItem) {
+    if (typeof toolboxItem === "string") return toolboxItem
+
+    if (toolboxItem.isSeparator) {
+      const emberSeparator = { ...toolboxItem }
+      delete emberSeparator.categoryId
+      return emberSeparator
+    }
+
+    const emberBlocklyToolboxItem = { category: this.intl.t(`blocks.categories.${toolboxItem.categoryId}`).toString(), ...toolboxItem }
+    delete emberBlocklyToolboxItem.categoryId
+
+    return emberBlocklyToolboxItem
   },
 
   /**
-   * Dependiendo del desafío, puede pasar que sea necesario no mostrar las categorías
-   * sino directamente los bloques en el toolbox.
-   *
-   * TODO: Falta implementar el estilo "desplegado"
+   * Depending on the challenge, categories may not be required to be shown.
+   * Block types should be shown instead.
+   * 
+   * TODO: Implement style "desplegado"
    */
-  _aplicarEstiloAToolbox(toolbox) {
-    var aplanado = toolbox;
-    if (!this._debeHaberCategoriasEnToolbox()) {
-      aplanado = [];
-      toolbox.forEach(bloque => {
-        if (bloque.isSeparator || !bloque.category) {
-          aplanado.push(bloque); //un separador ó un id de bloque van directo
-        } else {
-          aplanado = aplanado.concat(this._aplicarEstiloAToolbox(bloque.blocks));
-        }
-      });
-    }
-    return aplanado;
+  _styledToolbox(toolbox) {
+    if (this._areCategoriesRequiredInToolbox()) return toolbox
+
+    return toolbox.flatMap(toolboxItem => {
+      if (toolboxItem.isSeparator || !toolboxItem.categoryId) return [toolboxItem]
+      return toolboxItem.blocks
+    })
   },
 
-  _debeHaberCategoriasEnToolbox() {
+  _areCategoriesRequiredInToolbox() {
     return this.modelActividad.get('estiloToolbox') !== "sinCategorias";
   },
 
   /**
-   * Ordena la lista de ítems de un toolbox (usualmente categorias), por el orden
-   * establecido en Pilas Bloques.
-   * Las categorías que no están en la lista definida por Pilas Bloques, quedan al final.
+   * Orders the toolbox (usually categories) by Pilas Bloques stablished order.
    * @param {*} toolbox
    */
-  ordenar_toolbox(toolbox) {
-    let orden_inicial = [ // Orden inicial para la lista de categorias.
-      'Primitivas',
-      'Mis procedimientos',
-      'Repeticiones',
-      'Alternativas',
-      'Variables',
-      'Separator',
-      'Valores',
-      'Sensores',
-      'Operadores',
-      'Mis funciones'
+  sortedToolbox(toolbox) {
+    const desiredOrder = [ // Categories initial order.
+      'primitives',
+      'myProcedures',
+      'repetitions',
+      'alternatives',
+      'variables',
+      'separator',
+      'values',
+      'sensors',
+      'operators',
+      'myFunctions',
+      'uncategorized'
     ];
 
-    return toolbox.sort((cat1, cat2) => orden_inicial.indexOf(cat1.category) - orden_inicial.indexOf(cat2.category));
+    return [...toolbox].sort((cat1, cat2) => desiredOrder.indexOf(cat1.categoryId) - desiredOrder.indexOf(cat2.categoryId))
   },
 
   /**
-   * Permite obtener el bloque desde blockly a partir de su nombre simple.
+   * Obtains a Blockly block from a block type
    *
-   * TODO: Mover a ember-blockly. Debería estar dentro del servicio blockly.
+   * TODO: Move to ember-blockly. It belongs to blockly service.
    */
-  _obtenerBloqueDesdeBlockly(bloqueComoString) {
-    return Blockly.Blocks[bloqueComoString];
-  },
-
-  /**
-   * Método auxiliar de "obtenerToolboxDesdeListaDeBloques". Este método
-   * permite agregar un bloque a una categoría dentro del toolbox.
-   */
-  _agregar_bloque_a_categoria(toolbox, categoria, bloque, categoria_custom) {
-
-    function obtenerOCrearCategoria(toolbox, categoria) {
-      for (let i = 0; i < toolbox.length; i++) {
-        if (toolbox[i].category === categoria) {
-          return toolbox[i];
-        }
-      }
-
-      toolbox.push({
-        category: categoria,
-        blocks: []
-      });
-
-      return toolbox[toolbox.length - 1];
-    }
-
-    let categoriaEnElToolbox = obtenerOCrearCategoria(toolbox, categoria);
-    if (categoria_custom) {
-      categoriaEnElToolbox.custom = categoria_custom;
-    }
-    categoriaEnElToolbox.blocks.push(bloque);
+  blocklyBlock(blockType) {
+    return Blockly.Blocks[blockType];
   },
 
   ejecutarInterpreteHastaTerminar(interprete, pasoAPaso) {
@@ -313,7 +314,7 @@ export default Component.extend({
         this.onTerminoEjecucion()
 
       if (this.debeMostrarFinDeDesafio) {
-        if (this.pilas.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
+        if (this.pilasService.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
           this.send('abrirFinDesafio');
         }
       }
@@ -326,10 +327,6 @@ export default Component.extend({
         this.clearHighlight();
       }
     });
-  },
-
-  willDestroyElement() {
-    window.removeEventListener('terminaCargaInicial', this.handlerCargaInicial, false);
   },
 
   restaurar_codigo(codigo) {
@@ -358,23 +355,29 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilas.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
+    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilasService.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
     run(this, function () {
       this.pilasBloquesApi.executionFinished(solutionId, {
-        isTheProblemSolved: this.pilas.estaResueltoElProblema(),
+        isTheProblemSolved: this.pilasService.estaResueltoElProblema(),
         ...executionResult
       })
     })
   },
 
+  javascriptCode() {
+    // This should be EmberBlockly's responsibility. 
+    // But that component's javascriptCode often won't get updated soon enough and tests will fail. See https://github.com/Program-AR/pilas-bloques/pull/878
+    return Blockly.MyLanguage.workspaceToCode(Blockly.getMainWorkspace())
+  },
+
   actions: {
 
-    ejecutar(pasoAPaso = false) {
+    async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
-      this.pilas.reiniciarEscenaCompleta()
+      await this.pilasService.restartScene()
 
       Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
@@ -388,7 +391,7 @@ export default Component.extend({
       }
 
       let factory = this.interpreterFactory;
-      let interprete = factory.crearInterprete(this.javascriptCode, (bloqueId) => this.highlighter.step(bloqueId));
+      let interprete = factory.crearInterprete(this.javascriptCode(), (bloqueId) => this.highlighter.step(bloqueId));
 
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
@@ -403,14 +406,14 @@ export default Component.extend({
         })
     },
 
-    reiniciar() {
+    async reiniciar() {
       this.clearHighlight()
       this.set('ejecutando', false);
       this.exerciseWorkspace.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.exerciseWorkspace.set('terminoDeEjecutar', false);
       this.set('errorDeActividad', null);
-      this.pilas.reiniciarEscenaCompleta();
+      await this.pilasService.restartScene();
     },
 
     guardar() {

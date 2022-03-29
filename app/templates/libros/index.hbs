@@ -6,14 +6,14 @@
 
     <p><img class='main-logo' src='imagenes/main-logo.png' width="468" height="262"></p>
     <p>
-    {{t "libros.index.welcome"}}
+    {{t "templates.libros.index.welcome"}}
     </p>
 
     <DisclaimerPrincipal/>
 
     <div class="jumbotron center">
       <p>
-        {{ t "libros.index.challenges"}}
+        {{ t "templates.libros.index.challenges"}}
       </p>
 
       {{#each model as |book|}}
@@ -27,7 +27,7 @@
 
     {{#if enableChallengeCreator}}
       <p>
-      {{ t "libros.index.customChallenges"}}
+      {{ t "templates.libros.index.customChallenges"}}
       </p>
       {{create-custom-challenge}}
       {{import-custom-challenge}}
@@ -38,8 +38,8 @@
     <hr>
 
     <p>
-     {{t "libros.index.visitAbout.part1"}}<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>{{t "libros.index.visitAbout.link1"}}</strong></Link>
-           {{t "libros.index.visitAbout.part2"}}
+     {{t "templates.libros.index.visitAbout.part1"}}<Link @href={{href-to "acercade"}} @openOnNewTab={{false}}><strong>{{t "templates.libros.index.visitAbout.link1"}}</strong></Link>
+           {{t "templates.libros.index.visitAbout.part2"}}
     </p>
 
   </div>

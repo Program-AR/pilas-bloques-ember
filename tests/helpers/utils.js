@@ -105,6 +105,12 @@ export function setUpTestLocale(hooks) {
     })
 }
 
+export function acceptTerms(hooks) {
+    hooks.beforeEach(function () {
+        this.owner.lookup('service:storage').saveTermsAcceptance()
+    })
+}
+
 
 ////// BLOCKLY //////
 

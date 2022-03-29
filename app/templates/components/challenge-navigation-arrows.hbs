@@ -1,0 +1,9 @@
+{{#if challenge.previousChallenge}}
+    {{!-- Previous challenge --}}
+  <ButtonToChallenge id='previous-challenge-arrow' @challenge={{challenge.previousChallenge}}>{{paper-icon "keyboard_double_arrow_left"}}</ButtonToChallenge>
+{{/if}}
+
+{{#if challenge.nextChallenge}}
+    {{!-- Next challenge --}}
+    <ButtonToChallenge id='next-challenge-arrow' @challenge={{challenge.nextChallenge}}>{{paper-icon "keyboard_double_arrow_right"}}</ButtonToChallenge>
+{{/if}}
