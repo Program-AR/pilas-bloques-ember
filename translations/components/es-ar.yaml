@@ -54,6 +54,10 @@ importCustomChallenge:
 header: 
   tool: "Una herramienta para aprender a programar"
 
+simpleReadToggle:
+  disable: "Desactivar el modo Lectura Simple"
+  enable: "Activar el modo Lectura Simple"
+
 registerDisclaimer: 
   now: "¡ Ahora Pilas Bloques permite"
   register: "registrarse"

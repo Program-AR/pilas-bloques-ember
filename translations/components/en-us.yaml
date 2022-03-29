@@ -54,6 +54,10 @@ importCustomChallenge:
 header:
   tool: "A tool to learn programming"
 
+simpleReadToggle:
+  disable: "Disable Simple Read mode"
+  enable: "Enable Simple Read mode"
+
 registerDisclaimer:
   now: "Now Pilas Bloques allows you to"
   register: "register"
