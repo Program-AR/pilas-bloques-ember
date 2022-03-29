@@ -12,6 +12,7 @@ let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlh
 
 module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   setupTest(hooks);
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
@@ -19,7 +20,6 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
     ctrl.descargar = sinon.stub()
     version = ctrl.version()
     sinon.resetHistory()
-    setUpTestLocale(hooks)
   });
 
   test("Al guardar solución crea el archivo correctamente", function (assert) {
