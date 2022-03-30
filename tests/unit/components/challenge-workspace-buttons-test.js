@@ -98,7 +98,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   }
 
   failFileTest("Verifica que sea para la actividad que se está cargando", solucionParaOtraActividad, function (assert, err) {
-    assert.equal(err, "Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
+    assert.equal(err, "¡Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
   })
 
   failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function (assert) {
