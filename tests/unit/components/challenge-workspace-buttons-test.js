@@ -114,8 +114,8 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
 
   failFileTest("Acumula las validaciones con soluciones", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert, err) {
     assert.equal(err,
-      `Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
-Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
+      `¡Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
+¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
   })
 
   failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert) {
