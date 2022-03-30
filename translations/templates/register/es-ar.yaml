@@ -25,4 +25,4 @@ errors:
   userFormat: "El usuario sólo puede contener letras, números y guiones"
   invalidMail: "Este no es un mail válido"
   missingParentName: "Se requiere nombre y apellido"
-  invalidNumber: "El DNI es invalido"
+  invalidNumber: "El DNI es inválido"
