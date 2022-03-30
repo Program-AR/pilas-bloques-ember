@@ -5,13 +5,11 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { pilasMock, simpleReadMock } from '../../helpers/mocks';
 
-// jshint unused: false
-
 module('Integration | Component | challenge-workspace', function (hooks) {
   setupPBIntegrationTest(hooks);
   const workspace = hbs`{{challenge-workspace pilas=pilas model=model}}`
 
-  hooks.beforeEach(function(assert) {
+  hooks.beforeEach(function() {
     this.set('pilas', pilasMock);
     this.set('model', EmberObject.extend({
       bloques: ['controls_if'],

@@ -24,8 +24,7 @@ module('Acceptance | book list test', function (hooks) {
   setupApplicationTest(hooks)
   setupMirage(hooks)
 
-  // jshint unused: false
-  hooks.beforeEach(function(assert) {
+  hooks.beforeEach(function() {
     this.owner.register('service:simpleRead', simpleReadMock);
   });
 

@@ -17,8 +17,7 @@ module('Acceptance | book view test', function (hooks) {
     visit: visitable('/libros/2'),
   })
 
-  // jshint unused: false
-  hooks.beforeEach(function(assert) {
+  hooks.beforeEach(function() {
     this.owner.register('service:simpleRead', simpleReadMock);
   });
 
