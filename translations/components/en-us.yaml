@@ -108,7 +108,7 @@ modalAyuda:
 
 passwordConfirmation:
   password: "Confirm password"
-  matchError: "The passwords do not match"
+  matchError: "Passwords do not match"
 
 sessionButton:
   login: "Log in"
