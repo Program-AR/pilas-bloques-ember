@@ -198,7 +198,7 @@ export default Service.extend({
     });
   },
 
-  defineProcedureTranslations(){
+  defineBlocklyTranslations() {
     Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
     Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
@@ -210,6 +210,22 @@ export default Service.extend({
     Blockly.Msg.PROCEDURES_ADD_PARAMETER = this.tString("procedures.addParam")
     Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
     Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
+    Blockly.Msg.PROCEDURES_CREATE_DO = this.tString("actions.createProcedure")
+    Blockly.Msg.ADD_COMMENT = this.tString("actions.addComment")
+    Blockly.Msg.REMOVE_COMMENT = this.tString("actions.removeComment")
+    Blockly.Msg.DUPLICATE_BLOCK = this.tString("actions.duplicate")
+    Blockly.Msg.HELP = this.tString("actions.help")
+    Blockly.Msg.DELETE_BLOCK = this.tString("actions.deleteOne")
+    Blockly.Msg.DELETE_X_BLOCKS = this.tString("actions.deleteMany")
+    Blockly.Msg.DISABLE_BLOCK = this.tString("actions.disable")
+    Blockly.Msg.ENABLE_BLOCK = this.tString("actions.enable")
+    Blockly.Msg.UNDO = this.tString("actions.undo")
+    Blockly.Msg.REDO = this.tString("actions.redo")
+    Blockly.Msg.CLEAN_UP = this.tString("actions.cleanUp")
+    Blockly.Msg.EXTERNAL_INPUTS = this.tString("actions.externalInputs")
+    
+    
+
 
     // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
     // After calling init(), we disable unwanted toolbox blocks again
@@ -219,17 +235,17 @@ export default Service.extend({
   },
 
   _disableUnwantedProcedureBlocks() {
-    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
+    ['procedures_defreturn', 'procedures_ifreturn'].forEach(blockType => {
       if (Blockly.Blocks[blockType]) {
-        Blockly['bkp_'+blockType] = Blockly.Blocks[blockType]
+        Blockly['bkp_' + blockType] = Blockly.Blocks[blockType]
         delete Blockly.Blocks[blockType]
       }
     })
   },
 
   _enableUnwantedProcedureBlocks() {
-    ['procedures_defreturn','procedures_ifreturn'].forEach(blockType => {
-      if (Blockly['bkp_'+blockType]) Blockly.Blocks[blockType] = Blockly['bkp_'+blockType]
+    ['procedures_defreturn', 'procedures_ifreturn'].forEach(blockType => {
+      if (Blockly['bkp_' + blockType]) Blockly.Blocks[blockType] = Blockly['bkp_' + blockType]
     })
   },
 
@@ -1398,8 +1414,8 @@ export default Service.extend({
     // Blockly dynamically loads stuff in procedures category that we don't want, so we take them out
     this._disableUnwantedProcedureBlocks()
 
-    this.defineProcedureTranslations()
-    
+    this.defineBlocklyTranslations()
+
     let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
 
     Blockly.Blocks.procedures_defnoreturn.init = function () {

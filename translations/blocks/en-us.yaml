@@ -133,3 +133,18 @@ procedures:
   noParams: ""
   addParam: "Add parameter"
   addParamPrompt: "Enter the parameter's name"
+actions:
+  createProcedure: "Create '%1'"
+  addComment: "Add comment"
+  removeComment: "Remove comment"
+  duplicate: "Duplicate"
+  help: "Help"
+  deleteOne: "Delete block"
+  deleteMany: "Delete %1 blocks"
+  disable: "Disable block"
+  enable: "Enable block"
+  undo: "Undo"
+  redo: "Redo"
+  cleanUp: "Clean up blocks"
+  externalInputs: "External Inputs"
+
