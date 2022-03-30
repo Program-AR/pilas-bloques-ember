@@ -76,7 +76,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   }
 
   failFileTest("Verifica que se está cargando una versión anterior", solucionCompletaConVersionAnterior, function (assert, err) {
-    assert.equal(err, "Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+    assert.equal(err, "¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
   })
 
   failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function (assert) {
