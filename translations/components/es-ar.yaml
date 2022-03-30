@@ -111,7 +111,7 @@ passwordConfirmation:
   matchError: "Las contraseñas no coinciden"
 
 sessionButton:
-  login: "Ingresar"
+  login: "Iniciar sesión"
   logout: "Cerrar sesión"
   changeUser: "Cambiar usuario"
 
