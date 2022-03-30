@@ -9,7 +9,7 @@ module('Unit | Route | libros', function (hooks) {
   test('books should be sorted', async function (assert) {
     const route = this.owner.lookup('route:libros.index');
     const books = await route.model()
-    const bookIds = books.map(book => book.get('id'))
-    assert.deepEqual(bookIds, ['1', '2', '100'])
+    const bookIds = books.map(book => parseInt(book.get('id')))
+    assert.deepEqual(bookIds, bookIds.sort())
   });
 });
