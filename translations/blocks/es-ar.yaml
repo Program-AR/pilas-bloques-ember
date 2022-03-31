@@ -134,7 +134,7 @@ procedures:
   addParam: "Agregar parámetro"
   addParamPrompt: "Ingresa el nombre del parámetro"
 actions:
-  createProcedure: "Crear '%1'"
+  createProcedure: "Usar procedimiento '%1'"
   addComment: "Añadir comentario"
   removeComment: "Eliminar comentario"
   duplicate: "Duplicar"
