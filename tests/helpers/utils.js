@@ -32,7 +32,7 @@ export function setupPBAcceptanceTest(hooks) {
     setupMirage(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
-    setupSiulateRouter(hooks)
+    setupSimulateRouter(hooks)
 }
 
 export function setupClear(hooks) {
@@ -71,7 +71,7 @@ export function setupRouterMock(hooks) {
     })
 }
 
-export function setupSiulateRouter(hooks) {
+export function setupSimulateRouter(hooks) {
     hooks.beforeEach(function () {
         simulateRouterHooks(this.owner.lookup('service:store'))
     })

@@ -97,7 +97,6 @@ export default Component.extend({
         descripcion: description,
         icono: object + '.png',
         funcionSensor: `tocando("${object}")`,
-        esBool: true
       }
       this.blocksGallery.crearBloqueSensor(name, undefined, properties)
     }

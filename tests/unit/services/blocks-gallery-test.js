@@ -180,7 +180,7 @@ module('Unit | Service | blocks-gallery', function (hooks) {
     Blockly.textToBlock(emptyProcedure)
     let param = findParam(Blockly.textToBlock(main))
     assertDisabled(assert, param)
-    assertWarning(assert, param, "Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en Hacer algo.")
+    assertWarning(assert, param, 'Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en el procedimiento "Hacer algo"')
   });
 
 

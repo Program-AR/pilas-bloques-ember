@@ -57,6 +57,10 @@ header:
 simpleReadToggle:
   disable: "Disable Simple Read mode"
   enable: "Enable Simple Read mode"
+  
+nightModeToggle:
+  lightTheme: "Activate light theme"
+  darkTheme: "Activate dark theme"
 
 registerDisclaimer:
   now: "Now Pilas Bloques allows you to"
@@ -79,6 +83,9 @@ challengeWorkspaceButtons:
   delete: "Delete solution"
   exit: "Exit Full Screen"
   fullScreen: "Full Screen"
+  notASolution: "This file does not have a Pilas Bloques solution."
+  wrongActivity: "Be careful! The file indicates that it is from another challenge ({activity}). It will be loaded anyways, but it could fail."
+  oldVersion: "Be careful! The file indicates that it is from an older version. It will be loaded anyways, but we suggest that you solve the challenge again and save the solution in a new file."
 
 footer:
   version: "Version:"
@@ -92,6 +99,8 @@ login:
   dontHaveUser: "I don’t have a username yet"
   register: "Click here to register now!"
   login: "Log in"
+  username: "Username"
+  password: "Password"
 
 modalAyuda:
   help: "This app will offer you several challenges you can solve by fitting blocks together."
@@ -103,6 +112,7 @@ modalAyuda:
 
 passwordConfirmation:
   password: "Confirm password"
+  matchError: "Passwords do not match"
 
 sessionButton:
   login: "Log in"

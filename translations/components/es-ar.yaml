@@ -58,6 +58,10 @@ simpleReadToggle:
   disable: "Desactivar el modo Lectura Simple"
   enable: "Activar el modo Lectura Simple"
 
+nightModeToggle:
+  lightTheme: "Activar modo claro"
+  darkTheme: "Activar modo oscuro"
+
 registerDisclaimer: 
   now: "¡ Ahora Pilas Bloques permite"
   register: "registrarse"
@@ -76,9 +80,12 @@ challengeWorkspaceButtons:
   open: "Abrir solución"
   save: "Guardar solución"
   careful: "¡Cuidado! Al borrar la solución se perderán tus cambios."
-  delete: "Borrar la solucion"
+  delete: "Borrar la solución"
   exit: "Salir de Pantalla Completa"
   fullScreen: "Pantalla Completa"
+  notASolution: "Este archivo no tiene una solución de Pilas Bloques."
+  wrongActivity: "¡Cuidado! El archivo indica que es para otra actividad ({activity}). Se cargará de todas formas, pero puede fallar."
+  oldVersion: "¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo."
 
 footer:
   version: "Versión:"
@@ -91,7 +98,9 @@ login:
   forgot: "Olvidé mi usuario o constraseña"
   dontHaveUser: "Aún no tengo usuario"
   register: "¡Registrate haciendo click acá!"
-  login: "Ingresar"
+  login: "Iniciar sesión"
+  username: "Usuario"
+  password: "Contraseña"
 
 modalAyuda:
   help: "Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques."
@@ -103,9 +112,10 @@ modalAyuda:
 
 passwordConfirmation:
   password: "Confirmar contraseña"
+  matchError: "Las contraseñas no coinciden"
 
 sessionButton:
-  login: "Ingresar"
+  login: "Iniciar sesión"
   logout: "Cerrar sesión"
   changeUser: "Cambiar usuario"
 
