@@ -133,7 +133,7 @@ procedures:
   noParams: ""
   addParam: "Add parameter"
   addParamPrompt: "Enter the parameter's name"
-actions:
+contextMenu:
   createProcedure: "Use procedure '%1'"
   addComment: "Add comment"
   removeComment: "Remove comment"
