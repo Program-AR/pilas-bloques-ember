@@ -132,9 +132,7 @@ export default Service.extend({
     opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     var formaDelBloque = opciones.icono ? "%1 " : "";
-    formaDelBloque += opciones.esBool ? "¿" : "";
     formaDelBloque += opciones.descripcion;
-    formaDelBloque += opciones.esBool ? "?" : "";
 
     let blockly = this.blockly;
     let bloque = blockly.createCustomBlock(nombre, {
@@ -166,7 +164,7 @@ export default Service.extend({
 
 
   /*
-   * Returns an object with a 'string' attribute. E.g. { string: "When run" }
+   * Returns an object with a 'string' attribute. E.g. { string: "When the program runs" }
    */
   t(id) {
     return this.intl.t(`blocks.${id}`);
@@ -986,43 +984,36 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoBanana', 'bananaHere', {
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoManzana', 'appleHere', {
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoNaranja', 'orangeHere', {
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFogata', 'campfireHere', {
       icono: 'icono.FogataApagada.png',
       funcionSensor: 'tocando("FogataAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoInicio', 'atTheBeginning', {
       icono: 'icono.futbolInicio.png',
       funcionSensor: 'tocandoInicio()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoPelota', 'getToTheBall', {
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinal', 'comeToTheEnd', {
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
-      esBool: true
     });
 
     this.crearBloqueSensor('KmsTotales', 'kmToTravel', {
@@ -1033,19 +1024,16 @@ export default Service.extend({
     this.crearBloqueSensor('EstoyEnEsquina', 'atTheSquare', {
       icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
-      esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElInicio', 'atColumnBeginning', {
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
-      esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElFinal', 'atColumnEnd', {
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
-      esBool: true
     });
 
     this.crearBloqueSensor('LargoColumnaActual', 'currentColumnLength', {
@@ -1056,74 +1044,62 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoAbajo', 'canMoveDown', {
       icono: 'icono.abajo.png',
       funcionSensor: 'tocandoFlechaAbajo()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoDerecha', 'canMoveRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tocandoFlechaDerecha()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinCamino', 'reachedGoal', {
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoQueso', 'cheeseHere', {
       icono: 'queso.png',
       funcionSensor: 'tocando("QuesoAnimado")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoLuz', 'lampHere', {
       icono: 'icono.LamparitaApagada.png',
       funcionSensor: 'tocando("Lamparin")',
-      esBool: true
     });
 
     this.crearBloqueSensor('EsCulpable', 'frontOfGuilty', {
       id: 'Descubralculpable',
       icono: 'icono.culpable.png',
       funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayChurrasco', 'steakHere', {
       icono: 'icono.churrasco.png',
       funcionSensor: 'tocando("Churrasco")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoArriba', 'obstacleUp', {
       icono: 'icono.arriba.png',
       funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoAbajo', 'obstacleDown', {
       icono: 'icono.abajo.png',
       funcionSensor: 'tieneEnLaCasillaDeAbajo("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoIzquierda', 'obstacleAtLeft', {
       icono: 'icono.izquierda.png',
       funcionSensor: 'tieneEnLaCasillaASuIzquierda("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoDerecha', 'obstacleAtRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
       icono: 'icono.charco.png',
       funcionSensor: 'hayEnEscena("Charco")',
-      esBool: true
     });
 
     let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
@@ -1160,13 +1136,11 @@ export default Service.extend({
     this.crearBloqueSensor('HayLechuga', 'lettuceHere', {
       icono: 'icono.lechuga.png',
       funcionSensor: 'tocando("Lechuga")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayTomate', 'tomatoHere', {
       icono: 'icono.tomate.png',
       funcionSensor: 'tocando("Tomate")',
-      esBool: true
     });
 
   },
@@ -1238,7 +1212,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá falta un bloque expresión!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingExpressionBlock').string)
     };
 
     Blockly.Blocks.required_statement = {
@@ -1254,7 +1228,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá faltan bloques comandos!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingCommandBlock').string)
     };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {
@@ -1360,6 +1334,9 @@ export default Service.extend({
       requiredAllInputs(this) // Input fields are added after instantiation 
     };
 
+    const deletedParameterError = this.intl.t('blocks.errors.deletedParameter').string
+    const wrongParameterError = (procedureDef) => this.intl.t('blocks.errors.wrongParameter', { procedure: getName(procedureDef) }).string
+
     Blockly.Blocks.variables_get = {
       init: function () {
         this.jsonInit({
@@ -1404,8 +1381,8 @@ export default Service.extend({
             (ok || isFlying(this) || !procedureDef)
               ? null
               : (hasParam(procedureDef, this))
-                ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-                : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+                ? wrongParameterError(procedureDef)
+                : deletedParameterError
           this.setWarningText(warning)
         }
       }

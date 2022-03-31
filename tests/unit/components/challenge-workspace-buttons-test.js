@@ -3,6 +3,7 @@ import { setupTest } from 'ember-qunit';
 import { actividadMock } from '../../helpers/mocks'
 import { xmlBloqueEmpezarAEjecutar } from 'pilasbloques/models/desafio'
 import sinon from 'sinon'
+import { setUpTestLocale } from '../../helpers/utils'
 
 let ctrl
 let version
@@ -11,6 +12,7 @@ let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlh
 
 module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   setupTest(hooks);
+  setUpTestLocale(hooks)
 
   hooks.beforeEach(function () {
     ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
@@ -74,7 +76,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   }
 
   failFileTest("Verifica que se está cargando una versión anterior", solucionCompletaConVersionAnterior, function (assert, err) {
-    assert.equal(err, "Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
+    assert.equal(err, "¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.")
   })
 
   failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function (assert) {
@@ -96,7 +98,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   }
 
   failFileTest("Verifica que sea para la actividad que se está cargando", solucionParaOtraActividad, function (assert, err) {
-    assert.equal(err, "Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
+    assert.equal(err, "¡Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.")
   })
 
   failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function (assert) {
@@ -112,8 +114,8 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
 
   failFileTest("Acumula las validaciones con soluciones", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert, err) {
     assert.equal(err,
-      `Cuidado, el archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
-Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
+      `¡Cuidado! El archivo indica que es para otra actividad (Otra_Actividad). Se cargará de todas formas, pero puede fallar.
+¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.`)
   })
 
   failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert) {
@@ -128,7 +130,7 @@ Cuidado, el archivo indica que es de una versión anterior. Se cargará de todas
   }
 
   failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function (assert, err) {
-    assert.equal(err, "Lo siento, este archivo no tiene una solución de Pilas Bloques.")
+    assert.equal(err, "Este archivo no tiene una solución de Pilas Bloques.")
   })
 
   failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function (assert) {

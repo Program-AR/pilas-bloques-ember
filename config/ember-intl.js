@@ -89,7 +89,8 @@ module.exports = function (/* environment */) {
      * @default "function(key,locale) { return true }"
      */
     requiresTranslation(key, locale) {
-      return locale === "es-ar";
+      const completeLocales = ['es-ar', 'en-us']
+      return completeLocales.includes(locale);
     }
   };
 };

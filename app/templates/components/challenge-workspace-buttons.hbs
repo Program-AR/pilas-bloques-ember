@@ -4,7 +4,7 @@
     <a id="placeholder" class="hidden">..</a>
     <Button @tooltip={{t "components.challengeWorkspaceButtons.open" }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}>{{paper-icon "folder"}}</Button>
     <Button @tooltip={{t "components.challengeWorkspaceButtons.save"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}>{{paper-icon "save"}}</Button>
-    <Button @tooltip={{"Borrar solución"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (mut deleteDialogIsOpen) true}}>{{paper-icon "delete"}}</Button>
+    <Button @tooltip={{t "components.challengeWorkspaceButtons.delete"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (mut deleteDialogIsOpen) true}}>{{paper-icon "delete"}}</Button>
     <Button @tooltip={{if shouldUseFloatingMode (t "components.challengeWorkspaceButtons.exit") (t "components.challengeWorkspaceButtons.fullScreen") }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{changeScreenMode}}>{{paper-icon (if shouldUseFloatingMode "fullscreen_exit" "fullscreen")}}</Button>
 </div>
 
