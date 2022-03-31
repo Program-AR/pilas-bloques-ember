@@ -5,10 +5,10 @@
     @group={{model.grupo}}
 />
 
-<div class="workspace flex layout-column {{if modoLecturaSimple 'aplicar-modo-lectura-simple'}}">
+<div class="workspace flex layout-column {{if (compute (action shouldShowSimpleRead)) 'simple-read-mode'}}">
 
   {{#if (and (media 'isMobile') (media 'isPortrait')) }}
-    <PhoneRotationWarning @modoLecturaSimple={{modoLecturaSimple}} />
+    <PhoneRotationWarning @modoLecturaSimple={{compute (action shouldShowSimpleRead)}} />
   {{/if}}
 
   {{#unless shouldUseFloatingMode}}

@@ -2,6 +2,8 @@ import { module, test } from 'qunit'
 import { setupApplicationTest } from 'ember-qunit'
 import { create, visitable, text, collection, attribute } from 'ember-cli-page-object'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
+import { simpleReadMock } from '../helpers/mocks'
+import { testSimpleReadModeDisabled, testSimpleReadModeEnabled } from '../helpers/utils'
 
 const page = create({
   scope: '.contenido-principal',
@@ -22,6 +24,10 @@ module('Acceptance | book list test', function (hooks) {
   setupApplicationTest(hooks)
   setupMirage(hooks)
 
+  hooks.beforeEach(function() {
+    this.owner.register('service:simpleRead', simpleReadMock);
+  });
+
   test('Books titles and descriptions are internationalized', async function (assert) {
     await page.visit()
 
@@ -32,4 +38,7 @@ module('Acceptance | book list test', function (hooks) {
       assert.equal(book.description, intl.t(`model.books.${book.id}.description`).string)
     })
   })
+
+  testSimpleReadModeEnabled(() => page.visit())
+  testSimpleReadModeDisabled(() => page.visit())
 })

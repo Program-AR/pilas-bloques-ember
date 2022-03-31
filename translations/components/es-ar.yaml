@@ -54,6 +54,10 @@ importCustomChallenge:
 header: 
   tool: "Una herramienta para aprender a programar"
 
+simpleReadToggle:
+  disable: "Desactivar el modo Lectura Simple"
+  enable: "Activar el modo Lectura Simple"
+
 nightModeToggle:
   lightTheme: "Activar modo claro"
   darkTheme: "Activar modo oscuro"

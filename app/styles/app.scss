@@ -19,6 +19,7 @@
 @import "menu.scss";
 @import "modal.scss";
 @import "night-mode-toggle.scss";
+@import "simple-read-toggle.scss";
 @import "link.scss";
 @import "personal-survey.scss";
 @import "phone-rotation-warning.scss";
@@ -481,8 +482,8 @@ a:hover {
   padding: 0.5em;
 }
 
-.aplicar-modo-lectura-simple,
-.aplicar-modo-lectura-simple button // esta regla es necesaria para evitar que la sobreescriba Bootstrap
+.simple-read-mode,
+.simple-read-mode button // this rule is necessary to avoid being overwritten by Bootstrap
 {
   text-transform: uppercase !important;
 }

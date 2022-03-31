@@ -11,6 +11,7 @@ export default Component.extend({
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
+  simpleRead: service(),
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -18,10 +19,6 @@ export default Component.extend({
 
   estaPausadoEnUnBreackpoint: computed('pausadoEnBreakpoint', function () {
     return this.get('pausadoEnBreakpoint');
-  }),
-
-  modoLecturaSimple: computed('model', function () {
-    return this.get('model.grupo.capitulo.libro.modoLecturaSimple');
   }),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
@@ -36,6 +33,10 @@ export default Component.extend({
     this.set('pilasBlockly', pilasBlockly);
   },
 
+  shouldShowSimpleRead() {
+    return this.simpleRead.shouldShowSimpleRead(this.get('model.grupo.capitulo.libro.modoLecturaSimple'))
+  },
+
   actions: {
 
     onSceneReady(pilas) {
@@ -44,7 +45,7 @@ export default Component.extend({
       }
       this.set('cargando', false);
 
-      if (this.modoLecturaSimple) {
+      if (this.shouldShowSimpleRead()) {
         pilas.cambiarAModoDeLecturaSimple();
       }
 

@@ -7,6 +7,7 @@ export default Ember.Service.extend({
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
   USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
+  USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
 
@@ -33,6 +34,10 @@ export default Ember.Service.extend({
 
   toggleNightTheme() { this._save(this.USE_NIGHT_THEME_KEY, !this.getUseNightTheme()) },
 
+  getUseSimpleRead() { return this._get(this.USE_SIMPLE_READ_KEY) },
+
+  toggleSimpleRead() { this._save(this.USE_SIMPLE_READ_KEY, !this.getUseSimpleRead()) },
+  
   getUseTurboMode() { return this._get(this.USE_TURBO_MODE_KEY) },
 
   toggleTurboMode() { this._save(this.USE_TURBO_MODE_KEY, !this.getUseTurboMode()) },

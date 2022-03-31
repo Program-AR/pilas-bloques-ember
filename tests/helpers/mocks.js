@@ -71,6 +71,16 @@ export const routerMock = Service.extend({
 
 export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds: [] }
 
+// jshint unused: false
+export const simpleReadMock = Service.extend({
+    shouldShow: true,
+  
+    // param is necessary because simpleRead service expects an argument
+    shouldShowSimpleRead(_){
+      return this.shouldShow
+    } 
+})
+
 export const createActivity = (owner, fields) => {
     const group = createGroup(owner)
     return owner.lookup('service:store').createRecord('desafio', { grupo: group, escena: "AlienInicial", bloques: ['controls_if'], ...fields })

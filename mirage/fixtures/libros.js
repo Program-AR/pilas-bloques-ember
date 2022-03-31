@@ -10,7 +10,8 @@ export default [
   {
     id: 2,
     capituloIds: ['Autómatas, comandos, procedimientos y repetición', 'Alternativa condicional', 'Repetición condicional', 'Sensores Numéricos', 'Parametrización de soluciones'],
-    imagen: 'programar.png'
+    imagen: 'programar.png',
+    modoLecturaSimple: false
   },
   {
     id: 100,

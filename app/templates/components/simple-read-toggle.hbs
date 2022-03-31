@@ -1,0 +1,5 @@
+{{#unless book.modoLecturaSimple}}
+    <Toggle class="simple-read" @element-id="simple-read-slider" @tooltip={{if (compute (action shouldShowSimpleRead)) (t "components.simpleReadToggle.disable") (t "components.simpleReadToggle.enable")}} @isChecked={{compute (action shouldShowSimpleRead)}} @onToggle={{action 'toggleSimpleRead'}}>
+        <i class={{if (compute (action shouldShowSimpleRead)) "slider-icon fa fa-font letterType" "slider-icon fa fa-times letterType"}}></i>
+    </Toggle>
+{{/unless}}

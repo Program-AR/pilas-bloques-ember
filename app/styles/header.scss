@@ -14,8 +14,17 @@ $header-height: 45px;
     font-size: smaller;
 }
 
-.night-mode {
+@mixin config-elem() {
     margin-top: 10%;
+}
+
+.night-mode {
+    @include config-elem();
+}
+
+.simple-read {
+    @include config-elem();
+    margin-right: 0.4em;
 }
 
 md-toolbar:not(.md-menu-toolbar) {
