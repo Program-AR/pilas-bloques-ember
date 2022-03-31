@@ -104,7 +104,7 @@ drawSide: "%1 Draw a side of %2"
 write: "%1 Write: %2"
 turnDegrees: "%1 Turn %2 degrees"
 currentCharacter: "%1 Is the current letter an %2 ?"
-program: "When run"
+program: "When the program runs"
 simpleRepetitionBeginning: "Repeat"
 simpleRepetitionEnd: "times"
 conditionalRepetition: "Repeat until"
@@ -133,3 +133,9 @@ procedures:
   noParams: ""
   addParam: "Add parameter"
   addParamPrompt: "Enter the parameter's name"
+errors:
+  missingCommandBlock: "There are no command blocks here!"
+  missingExpressionBlock: "There is no expression block here!"
+  nonAvailableBlock: "This block is not available in this activity."
+  wrongParameter: This block can't be used here. It's a parameter that can only be used inside the procedure "{procedure}".
+  deletedParameter: "This block can no longer be used, the parameter has been deleted."
