@@ -12,7 +12,7 @@
                             <Button @tooltip={{if model.consignaInicial (t "components.sceneDetails.getClue") (t "components.sceneDetails.noClues")}} @isDisabled={{not model.consignaInicial}} @iconButton={{true}} @isMini={{true}} @onClick={{action "setTab" "clue"}}>{{paper-icon "wb_incandescent"}}</Button>
                         </div>
                     </div>
-                    <div id="statement" class="tabcontent">
+                    <div id="statement" class="tabcontent active">
                         <PaperCardTitle class="layout-column">
                             <PaperCardTitleText>
                                 <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-description>{{markdown-to-html model.enunciado}}</PaperCardHeaderSubhead>
