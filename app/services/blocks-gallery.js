@@ -196,7 +196,7 @@ export default Service.extend({
     });
   },
 
-  defineProcedureTranslations() {
+  defineBlocklyTranslations() {
     Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
     Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
@@ -208,6 +208,22 @@ export default Service.extend({
     Blockly.Msg.PROCEDURES_ADD_PARAMETER = this.tString("procedures.addParam")
     Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
     Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
+    Blockly.Msg.PROCEDURES_CREATE_DO = this.tString("contextMenu.createProcedure")
+    Blockly.Msg.ADD_COMMENT = this.tString("contextMenu.addComment")
+    Blockly.Msg.REMOVE_COMMENT = this.tString("contextMenu.removeComment")
+    Blockly.Msg.DUPLICATE_BLOCK = this.tString("contextMenu.duplicate")
+    Blockly.Msg.HELP = this.tString("contextMenu.help")
+    Blockly.Msg.DELETE_BLOCK = this.tString("contextMenu.deleteOne")
+    Blockly.Msg.DELETE_X_BLOCKS = this.tString("contextMenu.deleteMany")
+    Blockly.Msg.DISABLE_BLOCK = this.tString("contextMenu.disable")
+    Blockly.Msg.ENABLE_BLOCK = this.tString("contextMenu.enable")
+    Blockly.Msg.UNDO = this.tString("contextMenu.undo")
+    Blockly.Msg.REDO = this.tString("contextMenu.redo")
+    Blockly.Msg.CLEAN_UP = this.tString("contextMenu.cleanUp")
+    Blockly.Msg.EXTERNAL_INPUTS = this.tString("contextMenu.externalInputs")
+    
+    
+
 
     // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
     // After calling init(), we disable unwanted toolbox blocks again
@@ -1375,7 +1391,7 @@ export default Service.extend({
     // Blockly dynamically loads stuff in procedures category that we don't want, so we take them out
     this._disableUnwantedProcedureBlocks()
 
-    this.defineProcedureTranslations()
+    this.defineBlocklyTranslations()
 
     let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
 
