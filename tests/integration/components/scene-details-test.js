@@ -46,6 +46,15 @@ module('Integration | Component | Scene details', function (hooks) {
     assert.dom(statement).doesNotHaveClass('active')
   })
 
+  test('clicking on a clue should show it and hide the statement tab', async function (assert) {
+    await clickClue(this)
+
+    const clue = document.getElementById('clue')
+    const statement = document.getElementById('statement')
+    assert.equal(window.getComputedStyle(statement).display, 'none')
+    assert.equal(window.getComputedStyle(clue).display, 'block')
+  })
+
   const clickClue = async (context) => {
     await render(sceneDetails)
     const clueButton = context.element.querySelectorAll('button')[1]
