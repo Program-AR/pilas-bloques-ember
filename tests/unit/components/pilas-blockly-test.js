@@ -81,8 +81,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
   })
 
-  test('Al resolver el problema sin expectativas fallidas', function (assert) {
-    this.ctrl.send('ejecutar')
+  test('Al resolver el problema sin expectativas fallidas', async function (assert) {
+    await this.ctrl.send('ejecutar')
     later(() => {
       assert.ok(this.ctrl.get('allExpectsPassed'))
     })
@@ -210,10 +210,10 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertProps(assert, staticAnalysis, { couldExecute: true })
   })
 
-  test('Envia metadata a la api al ejecutar', function (assert) {
+  test('Envia metadata a la api al ejecutar', async function (assert) {
     Blockly.textToBlock(filledProgram)
     this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
-    this.ctrl.send('ejecutar')
+    await this.ctrl.send('ejecutar')
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
     assert.deepEqual(metadata.staticAnalysis, { 
