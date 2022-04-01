@@ -1,5 +1,5 @@
 import QUnit, { module, test } from 'qunit'
-import { procedure, entryPoint, sequence, rawSequence, reference, application, repeat, muIf, ifElse, muWhile, number, string, none } from '../../helpers/astFactories'
+import { procedure, entryPoint, sequence, rawSequence, reference, application, repeat, muIf, ifElse, muUntil, number, string, none } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
 
