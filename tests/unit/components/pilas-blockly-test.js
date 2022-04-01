@@ -72,7 +72,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
   })
 
-  test('Al resolver el problema con expectativas fallidas', function (assert) {
+  test('Al resolver el problema con expectativas fallidas', async function (assert) {
     Blockly.textToBlock(filledProgram)
     this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
     await this.ctrl.send('ejecutar')
