@@ -1,6 +1,7 @@
 import { module, test } from 'qunit'
 import { setupPBUnitTest, setupLoggedUser } from '../../helpers/utils'
 import { fakeUser } from '../../helpers/mocks'
+import { setupTest } from 'ember-qunit';
 
 module('Unit | Service | storage', function(hooks) {
   let service
@@ -31,4 +32,22 @@ module('Unit | Service | storage', function(hooks) {
   }
 })
 
+module('Unit | Service | storage | SimpleRead', function(hooks) {
+  let service
+  setupTest(hooks);
+
+  hooks.beforeEach(function() {
+    service = this.owner.lookup('service:storage')
+    service.clear()
+  })
+
+  test('By default simple read mode is disabled', function (assert) {
+    assert.notOk(service.getUseSimpleRead())
+  })
+
+  test('Enabled simple read mode', function (assert) {
+    service.toggleSimpleRead()
+    assert.ok(service.getUseSimpleRead())
+  })
+})
 

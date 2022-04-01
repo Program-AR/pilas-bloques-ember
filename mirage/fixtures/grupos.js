@@ -207,14 +207,22 @@ export default [
   },
   {
     id: 'tecnopolis2021EjercicioModelo',
-    desafioIds: [202101]
+    desafioIds: [202101, 202102]
   },
   {
     id: 'tecnopolis2021ConDuba',
-    desafioIds: [202102, 202103, 202104, 202105]
+    desafioIds: [2021001, 2021002, 2021003, 2021004, 2021005, 2021006, 2021007, 2021008]
   },
   {
     id: 'tecnopolis2021ConLita',
-    desafioIds: [202106, 202107, 202108, 202109]
+    desafioIds: [2021101, 2021102, 2021103, 2021104, 2021105, 2021106, 2021107, 2021108]
+  },
+  {
+    id: 'tecnopolis2021ConCoty',
+    desafioIds: [2021201, 2021202, 2021203, 2021204, 2021205, 2021206, 2021207, 255]
+  },
+  {
+    id: 'tecnopolis2021ConToto',
+    desafioIds: [2021301, 2021302, 2021303, 2021304, 2021305, 2021306, 2021307, 2021308, 2021309]
   },
 ];

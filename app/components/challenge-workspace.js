@@ -11,6 +11,7 @@ export default Component.extend({
   cargando: true,
   canvasWidth: 0,
   canvasHeight: 0,
+  simpleRead: service(),
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -18,10 +19,6 @@ export default Component.extend({
 
   estaPausadoEnUnBreackpoint: computed('pausadoEnBreakpoint', function () {
     return this.get('pausadoEnBreakpoint');
-  }),
-
-  modoLecturaSimple: computed('model', function () {
-    return this.get('model.grupo.capitulo.libro.modoLecturaSimple');
   }),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
@@ -36,15 +33,19 @@ export default Component.extend({
     this.set('pilasBlockly', pilasBlockly);
   },
 
+  shouldShowSimpleRead() {
+    return this.simpleRead.shouldShowSimpleRead(this.get('model.grupo.capitulo.libro.modoLecturaSimple'))
+  },
+
   actions: {
 
-    onReady(pilas) {
+    onSceneReady(pilas) {
       if (this.onReady) {
         this.onReady(pilas)
       }
       this.set('cargando', false);
 
-      if (this.modoLecturaSimple) {
+      if (this.shouldShowSimpleRead()) {
         pilas.cambiarAModoDeLecturaSimple();
       }
 
@@ -184,8 +185,8 @@ export default Component.extend({
       Blockly.mainWorkspace.getAllBlocks()[0].unselect()
     },
 
-    ejecutar(pasoAPaso = false) {
-      this.pilasBlockly.send('ejecutar', pasoAPaso);
+    async ejecutar(pasoAPaso = false) {
+      await this.pilasBlockly.send('ejecutar', pasoAPaso);
       this.send("showScene");
     },
 
@@ -194,8 +195,8 @@ export default Component.extend({
       this.send("showScene");
     },
 
-    reiniciar() {
-      this.pilasBlockly.send('reiniciar');
+    async reiniciar() {
+      await this.pilasBlockly.send('reiniciar');
     },
 
   }

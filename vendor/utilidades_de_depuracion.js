@@ -34,7 +34,7 @@ var pbUtils = {
 
   // Por ejemplo utils.obtenerPuntosDePizarra("pizarraFantasma") ó bien utils.obtenerPuntosDePizarra("automata.pizarra")
   obtenerPuntosDePizarra: function(pizarra, unificar = false) {
-    return PilasEngineBloques.__container__.cache['service:pilas'].evaluar(`DibujoLineal.desdePizarra(pilas.escena_actual().${pizarra}, ${unificar});`).stringPuntos();
+    return Pilasbloques.__container__.cache['service:pilas'].evaluar(`DibujoLineal.desdePizarra(pilas.escena_actual().${pizarra}, ${unificar});`).stringPuntos();
   },
 
   obtenerBloquesSvg: function() {
@@ -52,7 +52,7 @@ var pbUtils = {
     }
 
     aleph.querySelectorAll(".blocklyPathLight").forEach(function (elem) { elem.setAttribute("fill", "none") });
-    if (document.getElementsByClassName("aplicar-modo-lectura-simple").length > 0) {
+    if (document.getElementsByClassName("simple-read-mode").length > 0) {
       aleph.querySelectorAll(".blocklyText").forEach(function (elem) { elem.textContent = elem.textContent.toUpperCase() });
     }
 

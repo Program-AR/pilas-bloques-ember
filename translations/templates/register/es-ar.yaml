@@ -1,0 +1,28 @@
+username: Nombre de usuario
+password: Contraseña
+email: Correo electrónico
+chooseAvatar: Elegí tu avatar
+parentalConsent: Consentimiento parental
+inAge: Si sos mayor de edad, escribí tus propios datos.
+parentalFullname: Nombre completo de madre, padre o tutor/a
+parentalId: DNI de madre, padre o tutor/a"
+
+whyData:
+  title: ¿Por qué solicitamos estos datos?
+  privacy: Para la FUNDACIÓN SADOSKY tu privacidad y la de tus hijas/os es muy importante.
+  dataProtectionLaw: Identificamos la cuenta con los datos de madre, padre o tutor/a para poder saber de quién se trata en caso de que quiera hacer uso de los derechos emergentes de la Ley de Protección de Datos Personales del menor tutelado. Podés ver más en el punto 8.4 de los
+  parentalContact: Las madres, padres o tutores podrán comunicarse por email a
+  whyContact: para conocer cuáles son los datos almacenados de los menores a su cargo y solicitar que se efectúen modificaciones en los datos suministrados.
+
+iHaveReadAndAccept: Leí y acepto los
+register: Registrarme 
+
+options:
+  optional: opcional 
+
+errors:
+  userAlreadyExists: "Este nombre de usuario ya existe"
+  userFormat: "El usuario sólo puede contener letras, números y guiones"
+  invalidMail: "Este no es un mail válido"
+  missingParentName: "Se requiere nombre y apellido"
+  invalidNumber: "El DNI es inválido"

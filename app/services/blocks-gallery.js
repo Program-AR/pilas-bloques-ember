@@ -84,10 +84,10 @@ export default Service.extend({
   crearBloqueAccion(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['comportamiento', 'argumentos']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createCustomBlockWithHelper(nombre, opciones);
-    bloque.categoria = "Primitivas";
+    bloque.categoryId = "primitives";
     return bloque;
   },
 
@@ -104,7 +104,7 @@ export default Service.extend({
     }
 
     let bloque = this.blockly.createAlias(nombre, nombreDelBloqueOriginal);
-    bloque.categoria = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoria;
+    bloque.categoryId = categoria || Blockly.Blocks[nombreDelBloqueOriginal].categoryId;
 
     if (categoriaCustom) {
       bloque.categoria_custom = categoriaCustom;
@@ -129,12 +129,10 @@ export default Service.extend({
    */
   crearBloqueSensor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['funcionSensor']);
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     var formaDelBloque = opciones.icono ? "%1 " : "";
-    formaDelBloque += opciones.esBool ? "¿" : "";
     formaDelBloque += opciones.descripcion;
-    formaDelBloque += opciones.esBool ? "?" : "";
 
     let blockly = this.blockly;
     let bloque = blockly.createCustomBlock(nombre, {
@@ -154,7 +152,7 @@ export default Service.extend({
       code: ``
     });
     // TODO: Arreglar generacion de codigo
-    bloque.categoria = "Sensores";
+    bloque.categoryId = "sensors";
 
     Blockly.MyLanguage[nombre] = function () {
       let codigo = `evaluar(${JSON.stringify(opciones.funcionSensor)})`;
@@ -164,13 +162,25 @@ export default Service.extend({
     return bloque;
   },
 
+
+  /*
+   * Returns an object with a 'string' attribute. E.g. { string: "When the program runs" }
+   */
+  t(id) {
+    return this.intl.t(`blocks.${id}`);
+  },
+
+  tString(id) {
+    return this.t(id).toString();
+  },
+
   crearBloqueValor(nombre, intlID, opciones) {
     this._validar_opciones_obligatorias(nombre, opciones, ['icono', 'valor']);
     opciones.colour = opciones.colour || Blockly.Blocks.primitivas.COLOUR;
-    opciones.descripcion = this.intl.t(`blocks.${intlID}`)
+    opciones.descripcion = opciones.descripcion || this.t(intlID)
 
     let bloque = this.blockly.createBlockValue(nombre, opciones);
-    bloque.categoria = "Valores";
+    bloque.categoryId = "values";
 
     return bloque;
   },
@@ -184,6 +194,57 @@ export default Service.extend({
         throw new Error(`No se puede crear el bloque ${nombre} porque no se indicó un valor para la opción ${opcion}.`);
       }
     });
+  },
+
+  defineBlocklyTranslations() {
+    Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
+    Blockly.Msg.PROCEDURES_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_PARAMETER = this.tString("procedures.paramName")
+    Blockly.Msg.PROCEDURES_CALL_BEFORE_PARAMS = this.tString("procedures.paramWith")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_TOOLTIP = this.tString("procedures.create")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_COMMENT = this.tString("procedures.comment")
+    Blockly.Msg.PROCEDURES_DEFNORETURN_NOPARAMS = this.tString("procedures.noParams")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER = this.tString("procedures.addParam")
+    Blockly.Msg.PROCEDURES_ADD_PARAMETER_PROMPT = this.tString("procedures.addParamPrompt")
+    Blockly.Msg.PROCEDURES_REMOVE_PARAMETER = this.tString("procedures.removeParam")
+    Blockly.Msg.PROCEDURES_CREATE_DO = this.tString("contextMenu.createProcedure")
+    Blockly.Msg.ADD_COMMENT = this.tString("contextMenu.addComment")
+    Blockly.Msg.REMOVE_COMMENT = this.tString("contextMenu.removeComment")
+    Blockly.Msg.DUPLICATE_BLOCK = this.tString("contextMenu.duplicate")
+    Blockly.Msg.HELP = this.tString("contextMenu.help")
+    Blockly.Msg.DELETE_BLOCK = this.tString("contextMenu.deleteOne")
+    Blockly.Msg.DELETE_X_BLOCKS = this.tString("contextMenu.deleteMany")
+    Blockly.Msg.DISABLE_BLOCK = this.tString("contextMenu.disable")
+    Blockly.Msg.ENABLE_BLOCK = this.tString("contextMenu.enable")
+    Blockly.Msg.UNDO = this.tString("contextMenu.undo")
+    Blockly.Msg.REDO = this.tString("contextMenu.redo")
+    Blockly.Msg.CLEAN_UP = this.tString("contextMenu.cleanUp")
+    Blockly.Msg.EXTERNAL_INPUTS = this.tString("contextMenu.externalInputs")
+    
+    
+
+
+    // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
+    // After calling init(), we disable unwanted toolbox blocks again
+    this._enableUnwantedProcedureBlocks()
+    ProcedsBlockly.init()
+    this._disableUnwantedProcedureBlocks()
+  },
+
+  _disableUnwantedProcedureBlocks() {
+    ['procedures_defreturn', 'procedures_ifreturn'].forEach(blockType => {
+      if (Blockly.Blocks[blockType]) {
+        Blockly['bkp_' + blockType] = Blockly.Blocks[blockType]
+        delete Blockly.Blocks[blockType]
+      }
+    })
+  },
+
+  _enableUnwantedProcedureBlocks() {
+    ['procedures_defreturn', 'procedures_ifreturn'].forEach(blockType => {
+      if (Blockly['bkp_' + blockType]) Blockly.Blocks[blockType] = Blockly['bkp_' + blockType]
+    })
   },
 
   _definirColores() {
@@ -618,7 +679,7 @@ export default Service.extend({
       code: 'hacer(actor_id, "MovimientoEnCuadricula", {direccionCasilla: $direccion});'
     });
 
-    bloque.categoria = "Primitivas";
+    bloque.categoryId = "primitives";
 
 
     this.crearBloqueAccion('PatearPelota', 'kickBall', {
@@ -706,7 +767,7 @@ export default Service.extend({
     </block>
   `;
 
-    Blockly.Blocks.SaltarHaciaAdelante.categoria = 'Primitivas';
+    Blockly.Blocks.SaltarHaciaAdelante.categoryId = 'primitives';
 
 
 
@@ -739,7 +800,7 @@ export default Service.extend({
       </block>
     `;
 
-    Blockly.Blocks.DibujarLado.categoria = 'Primitivas';
+    Blockly.Blocks.DibujarLado.categoryId = 'primitives';
 
     this.crearBloqueAccion('ComerChurrasco', 'eatSteak', {
       icono: 'icono.churrasco.png',
@@ -806,7 +867,7 @@ export default Service.extend({
       ],
     });
 
-    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoria = 'Primitivas';
+    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoryId = 'primitives';
 
     Blockly.MyLanguage.EscribirTextoDadoEnOtraCuadricula = function (block) {
       return 'hacer(actor_id, "EscribirTextoDadoEnOtraCuadricula", {texto: "' + (block.getFieldValue('texto') || '') + '"});';
@@ -842,7 +903,7 @@ export default Service.extend({
       </block>
     `;
 
-    Blockly.Blocks.GirarGrados.categoria = 'Primitivas';
+    Blockly.Blocks.GirarGrados.categoryId = 'primitives';
 
     this.crearBloqueAccion('MoverArribaDibujando', 'moveAndDrawUp', {
       icono: 'icono.arribaDibujando.png',
@@ -923,43 +984,36 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoBanana', 'bananaHere', {
       icono: 'icono.banana.png',
       funcionSensor: 'tocando("BananaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoManzana', 'appleHere', {
       icono: 'icono.manzana.png',
       funcionSensor: 'tocando("ManzanaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoNaranja', 'orangeHere', {
       icono: 'icono.naranja.png',
       funcionSensor: 'tocando("NaranjaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFogata', 'campfireHere', {
       icono: 'icono.FogataApagada.png',
       funcionSensor: 'tocando("FogataAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoInicio', 'atTheBeginning', {
       icono: 'icono.futbolInicio.png',
       funcionSensor: 'tocandoInicio()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoPelota', 'getToTheBall', {
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinal', 'comeToTheEnd', {
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
-      esBool: true
     });
 
     this.crearBloqueSensor('KmsTotales', 'kmToTravel', {
@@ -970,19 +1024,16 @@ export default Service.extend({
     this.crearBloqueSensor('EstoyEnEsquina', 'atTheSquare', {
       icono: 'icono.prendiendoLasCompus2.png',
       funcionSensor: 'casillaActual().esEsquina()',
-      esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElInicio', 'atColumnBeginning', {
       icono: 'icono.casillainiciomono.png',
       funcionSensor: 'casillaActual().esInicio()',
-      esBool: true
     });
 
     this.crearBloqueSensor('EstoySobreElFinal', 'atColumnEnd', {
       icono: 'icono.casillafinalmono.png',
       funcionSensor: 'casillaActual().esFin()',
-      esBool: true
     });
 
     this.crearBloqueSensor('LargoColumnaActual', 'currentColumnLength', {
@@ -993,74 +1044,62 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoAbajo', 'canMoveDown', {
       icono: 'icono.abajo.png',
       funcionSensor: 'tocandoFlechaAbajo()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoDerecha', 'canMoveRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tocandoFlechaDerecha()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoFinCamino', 'reachedGoal', {
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoQueso', 'cheeseHere', {
       icono: 'queso.png',
       funcionSensor: 'tocando("QuesoAnimado")',
-      esBool: true
     });
 
     this.crearBloqueSensor('TocandoLuz', 'lampHere', {
       icono: 'icono.LamparitaApagada.png',
       funcionSensor: 'tocando("Lamparin")',
-      esBool: true
     });
 
     this.crearBloqueSensor('EsCulpable', 'frontOfGuilty', {
       id: 'Descubralculpable',
       icono: 'icono.culpable.png',
       funcionSensor: 'colisionaConElCulpable() && pilas.escena_actual().culpable.teEncontraron()',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayChurrasco', 'steakHere', {
       icono: 'icono.churrasco.png',
       funcionSensor: 'tocando("Churrasco")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoArriba', 'obstacleUp', {
       icono: 'icono.arriba.png',
       funcionSensor: 'tieneEnLaCasillaDeArriba("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoAbajo', 'obstacleDown', {
       icono: 'icono.abajo.png',
       funcionSensor: 'tieneEnLaCasillaDeAbajo("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoIzquierda', 'obstacleAtLeft', {
       icono: 'icono.izquierda.png',
       funcionSensor: 'tieneEnLaCasillaASuIzquierda("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayObstaculoDerecha', 'obstacleAtRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
       icono: 'icono.charco.png',
       funcionSensor: 'hayEnEscena("Charco")',
-      esBool: true
     });
 
     let sensorHayVocal = this.blockly.createCustomBlock('hayVocalRMT', {
@@ -1087,7 +1126,7 @@ export default Service.extend({
       "tooltip": "Es cierto cuando estoy leyendo esta letra ahora",
       "helpUrl": ""
     });
-    sensorHayVocal.categoria = "Sensores";
+    sensorHayVocal.categoryId = "sensors";
 
     Blockly.MyLanguage.hayVocalRMT = function (block) {
       let codigo = `evaluar("leyendoCaracter('${block.getFieldValue('letra')}')")`;
@@ -1097,13 +1136,11 @@ export default Service.extend({
     this.crearBloqueSensor('HayLechuga', 'lettuceHere', {
       icono: 'icono.lechuga.png',
       funcionSensor: 'tocando("Lechuga")',
-      esBool: true
     });
 
     this.crearBloqueSensor('HayTomate', 'tomatoHere', {
       icono: 'icono.tomate.png',
       funcionSensor: 'tocando("Tomate")',
-      esBool: true
     });
 
   },
@@ -1137,6 +1174,8 @@ export default Service.extend({
   },
 
   _definirBloquesIniciales() {
+
+    const thisService = this;
 
     function fillOpacity(block, opacity) {
       block.getSvgRoot().style["fill-opacity"] = opacity
@@ -1172,7 +1211,7 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá falta un bloque expresión!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingExpressionBlock').string)
     };
 
     Blockly.Blocks.required_statement = {
@@ -1188,13 +1227,13 @@ export default Service.extend({
         this.setShadow(true)
         transparent(this)
       },
-      onchange: onChangeRequired("¡Acá faltan bloques comandos!")
+      onchange: onChangeRequired(this.intl.t('blocks.errors.missingCommandBlock').string)
     };
 
     Blockly.Blocks.al_empezar_a_ejecutar = {
       init: function () {
         this.setColour(Blockly.Blocks.eventos.COLOUR);
-        this.appendDummyInput().appendField('Al empezar a ejecutar');
+        this.appendDummyInput().appendField(thisService.tString('program'));
         this.appendStatementInput('program');
         this.setDeletable(false);
         this.setEditable(false);
@@ -1206,6 +1245,8 @@ export default Service.extend({
 
   _definirBloquesEstructurasDeControl() {
 
+    const thisService = this;
+
     Blockly.Blocks.RepetirVacio = {
       init: function () {
         this.setColour(Blockly.Blocks.control.COLOUR);
@@ -1214,17 +1255,17 @@ export default Service.extend({
         this.setNextStatement(true);
         this.appendValueInput('count')
           .setCheck('Number')
-          .appendField('Repetir');
+          .appendField(thisService.tString('simpleRepetitionBeginning'));
         this.appendDummyInput()
-          .appendField('veces');
+          .appendField(thisService.tString('simpleRepetitionEnd'));
         this.appendStatementInput('block');
       },
-      categoria: 'Repeticiones',
+      categoryId: 'repetitions',
     };
 
     Blockly.Blocks.Repetir = {
       init: Blockly.Blocks['RepetirVacio'].init,
-      categoria: Blockly.Blocks['RepetirVacio'].categoria,
+      categoryId: Blockly.Blocks['RepetirVacio'].categoryId,
       toolbox: `
       <block type="repetir">
         <value name="count">
@@ -1240,12 +1281,12 @@ export default Service.extend({
         this.setInputsInline(true);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Repetir hasta que');
+          .appendField(thisService.tString('conditionalRepetition'));
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Repeticiones',
+      categoryId: 'repetitions',
     };
 
 
@@ -1254,13 +1295,13 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Si');
+          .appendField(thisService.tString('simpleAlternative'));
         this.setInputsInline(true);
         this.appendStatementInput('block');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Alternativas',
+      categoryId: 'alternatives',
     };
 
     Blockly.Blocks.SiNo = {
@@ -1268,16 +1309,16 @@ export default Service.extend({
         this.setColour(Blockly.Blocks.control.COLOUR);
         this.appendValueInput('condition')
           .setCheck('Boolean')
-          .appendField('Si');
+          .appendField(thisService.tString('simpleAlternative'));
         this.appendStatementInput('block1');
         this.setInputsInline(true);
         this.appendDummyInput()
-          .appendField('sino');
+          .appendField(thisService.tString('completeAlternative'));
         this.appendStatementInput('block2');
         this.setPreviousStatement(true);
         this.setNextStatement(true);
       },
-      categoria: 'Alternativas',
+      categoryId: 'alternatives',
     };
 
 
@@ -1291,6 +1332,9 @@ export default Service.extend({
     Blockly.Blocks.procedures_callnoreturn.onchange = function () {
       requiredAllInputs(this) // Input fields are added after instantiation 
     };
+
+    const deletedParameterError = this.intl.t('blocks.errors.deletedParameter').string
+    const wrongParameterError = (procedureDef) => this.intl.t('blocks.errors.wrongParameter', { procedure: getName(procedureDef) }).string
 
     Blockly.Blocks.variables_get = {
       init: function () {
@@ -1336,18 +1380,24 @@ export default Service.extend({
             clearValidationsFor(this)
           } else {
             var err = (hasParam(procedureDef, this))
-              ? `Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en ${getName(procedureDef)}.`
-              : "Este bloque ya no puede usarse, el parámetro ha sido eliminado."
+            ? wrongParameterError(procedureDef)
+            : deletedParameterError
             addError(this, err)
           }
         }
       }
     };
 
-    Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = "Definir";
+    // Blockly dynamically loads stuff in procedures category that we don't want, so we take them out
+    this._disableUnwantedProcedureBlocks()
 
-    delete Blockly.Blocks.procedures_defreturn;
-    delete Blockly.Blocks.procedures_ifreturn;
+    this.defineBlocklyTranslations()
+
+    let init_base_procedimiento = Blockly.Blocks.procedures_defnoreturn.init;
+
+    Blockly.Blocks.procedures_defnoreturn.init = function () {
+      init_base_procedimiento.call(this);
+    };
 
   },
 
@@ -1494,17 +1544,17 @@ export default Service.extend({
       return [code, order];
     };
 
-    Blockly.Blocks.OpAritmetica.categoria = 'Operadores';
+    Blockly.Blocks.OpAritmetica.categoryId = 'operators';
   },
 
   _definirBloquesAlias() {
-    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'Operadores');
-    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'Operadores');
-    this.crearBloqueAlias('Booleano', 'logic_boolean', 'Valores');
-    this.crearBloqueAlias('Numero', 'math_number', 'Valores');
-    this.crearBloqueAlias('Texto', 'text', 'Valores');
+    this.crearBloqueAlias('OpComparacion', 'logic_compare', 'operators');
+    this.crearBloqueAlias('OpAritmetica', 'math_arithmetic', 'operators');
+    this.crearBloqueAlias('Booleano', 'logic_boolean', 'values');
+    this.crearBloqueAlias('Numero', 'math_number', 'values');
+    this.crearBloqueAlias('Texto', 'text', 'values');
     this.crearBloqueAlias('param_get', 'variables_get');
-    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'Mis procedimientos', 'PROCEDURE');
+    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'myProcedures', 'PROCEDURE');
     this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 

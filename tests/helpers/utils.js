@@ -1,10 +1,13 @@
 import sinon from 'sinon'
 import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
+import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { fakeUser, toastMock, routerMock, blocklyWorkspaceMock } from './mocks'
+import simulateRouterHooks from './simulate-router.hooks'
 import config from '../../config/environment'
+import { test } from 'qunit';
 const { baseURL } = config.pbApi
 
 ////// SETUP //////
@@ -29,6 +32,7 @@ export function setupPBAcceptanceTest(hooks) {
     setupMirage(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
+    setupSimulateRouter(hooks)
 }
 
 export function setupClear(hooks) {
@@ -67,6 +71,12 @@ export function setupRouterMock(hooks) {
     })
 }
 
+export function setupSimulateRouter(hooks) {
+    hooks.beforeEach(function () {
+        simulateRouterHooks(this.owner.lookup('service:store'))
+    })
+}
+
 export function resetFetch() {
     fetchMock.reset()
     fetchMock.config.overwriteRoutes = true
@@ -99,6 +109,12 @@ export function setUpTestWorkspace(hooks) {
     hooks.beforeEach(function () {
         blocklyWorkspaceMock()
         this.owner.lookup('service:blocksGallery').start()    
+    })
+}
+
+export function acceptTerms(hooks) {
+    hooks.beforeEach(function () {
+        this.owner.lookup('service:storage').saveTermsAcceptance()
     })
 }
 
@@ -182,4 +198,36 @@ export async function awaitChallengeLoading() {
     while (($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())) {
         await new Promise(r => setTimeout(r, 20))
     }
+}
+
+
+export async function safeVisit(url) {
+    // The visit helper has a known bug, so we need this try/catch
+    // https://github.com/emberjs/ember-test-helpers/issues/332 (still open)
+    try {
+        await visit(url)
+    }
+    catch (e) {
+        if (e.message !== 'TransitionAborted') {
+            throw e
+        }
+    }
+}
+
+////// TESTS //////
+
+export function testSimpleReadModeEnabled(callback) {
+    test('when simple read mode is enabled, simple read mode css class should be applied', async function (assert) {
+        await callback()
+        assert.dom('div.simple-read-mode').exists()
+    })
+}
+
+export function testSimpleReadModeDisabled(callback) {
+    test('when simple read mode is disabled, simple read mode css class should not be applied', async function (assert) {
+        this.simpleReadMock = this.owner.lookup('service:simpleRead');
+        this.simpleReadMock.shouldShow = false
+        await callback()
+        assert.dom('div.simple-read-mode').doesNotExist()
+    })
 }

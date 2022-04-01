@@ -1,0 +1,28 @@
+username: Username
+password: Password
+email: Email
+chooseAvatar: Choose your avatar
+parentalConsent: Parental consent
+inAge: If you are of legal age, write your own data.
+parentalFullname: Full name of mother, father or guardian
+parentalId: Social number of mother, father or guardian
+
+whyData:
+  title: Why do we request this data?
+  privacy: For the FUNDACIÓN SADOSKY your privacy and that of your children is very important.
+  dataProtectionLaw: We identify the account with the data of the mother, father or guardian in order to know who it is in case you want to make use of the rights arising from the Personal Data Protection Law of the minor under guardianship. You can see more in point 8.4 of the
+  parentalContact: Mothers, fathers or guardians may communicate by email to
+  whyContact: to find out what the stored data of the minors in your care are and request that modifications be made to the data provided.
+
+iHaveReadAndAccept: I have read and accept the
+register: Register
+
+options:
+  optional: optional
+
+errors:
+  userAlreadyExists: "This username has already exists"
+  userFormat: "The username can only contain letters, numbers and dashes"
+  invalidMail: "This mail is invalid"
+  missingParentName: "Full name is required"
+  invalidNumber: "This number is not valid"

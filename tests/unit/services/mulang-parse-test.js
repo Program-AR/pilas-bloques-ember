@@ -2,6 +2,7 @@ import QUnit, { module, test } from 'qunit'
 import { procedure, entryPoint, sequence, rawSequence, reference, application, repeat, muIf, ifElse, muWhile, number, string, none } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
+
 let pilasMulang = null
 
 module('Unit | Service | pilas-mulang | Parse', function (hooks) {
@@ -171,7 +172,7 @@ module('Unit | Service | pilas-mulang | Parse', function (hooks) {
   </block>
   `
   mulangParseBlockTest('hasta', hasta,
-    muWhile(
+    muUntil(
       application("TocandoFinal"),
       application("EncenderLuz"),
       application("MoverACasillaAbajo")
@@ -671,7 +672,7 @@ module('Unit | Service | pilas-mulang | Parse', function (hooks) {
     ),
     procedure('Prender compus hacia', ['direccion'],
       application('MoverA', reference('direccion')),
-      muWhile(application('EstoyEnEsquina'),
+      muUntil(application('EstoyEnEsquina'),
         application('PrenderComputadora'),
         application('MoverA', reference('direccion')),
       ),

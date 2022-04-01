@@ -18,7 +18,9 @@
     "Blob",
     "ClientJS",
     "uuidv4",
-    "mulang"
+    "mulang",
+    "unzipit",
+    "ProcedsBlockly"
   ],
   "esversion": 9,
   "asi": true,

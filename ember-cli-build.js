@@ -83,6 +83,12 @@ module.exports = function (defaults) {
     destDir: '/assets/'
   });
 
+  const unzipit = new Funnel('node_modules/unzipit', {
+    srcDir: '/dist',
+    include: ['**'],
+    destDir: '/assets/'
+  });
+
   const pilasWeb = new Funnel('node_modules/pilasweb', {
     srcDir: '/dist',
     include: ['**'],
@@ -117,6 +123,7 @@ module.exports = function (defaults) {
     uuid,
     clientJS,
     pilasWeb,
+    unzipit,
     pilasBloquesExercises,
     pilasBloquesCreador,
     pilasBloquesCreadorStaticAssets

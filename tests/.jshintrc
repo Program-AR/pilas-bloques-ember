@@ -32,7 +32,8 @@
     "localStorage",
     "ClientJS",
     "uuidv4",
-    "mulang"
+    "mulang",
+    "ProcedsBlockly"
   ],
   "esversion": 9,
   "asi": true,

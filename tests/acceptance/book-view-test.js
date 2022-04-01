@@ -2,6 +2,8 @@ import { module, test } from 'qunit'
 import { setupApplicationTest } from 'ember-qunit'
 import { create, visitable, text, collection, attribute } from 'ember-cli-page-object'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
+import { simpleReadMock } from '../helpers/mocks'
+import { testSimpleReadModeDisabled, testSimpleReadModeEnabled } from '../helpers/utils'
 
 /*
  * Tests that book page shows internationalized chapters and titles.
@@ -9,6 +11,15 @@ import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 module('Acceptance | book view test', function (hooks) {
   setupApplicationTest(hooks)
   setupMirage(hooks)
+
+  const simpleReadPage = create({
+    scope: '.contenido-principal',
+    visit: visitable('/libros/2'),
+  })
+
+  hooks.beforeEach(function() {
+    this.owner.register('service:simpleRead', simpleReadMock);
+  });
 
   function testBookView(libroId) {
     test(`Internationalization of book ${libroId} page`, async function (assert) {
@@ -46,4 +57,8 @@ module('Acceptance | book view test', function (hooks) {
 
   testBookView(1)
   testBookView(2)
+
+  testSimpleReadModeEnabled(() => simpleReadPage.visit())
+  testSimpleReadModeDisabled(() => simpleReadPage.visit())
+
 })
