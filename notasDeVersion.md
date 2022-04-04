@@ -12,7 +12,7 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
   * Se dividieron las traducciones en varios archivos. Para hacer esto se tuvo que hacer la dependencia `pilas-bloques-ember-intl` para solucionar un bug de `ember-intl` respecto a las traducciones en Windows. Esta dependencia se debería [dejar de usar eventualmente](https://github.com/Program-AR/pilas-bloques/issues/910).
   * Se internacionalizaron las categorías de bloques.
   * Se internacionalizó `proceds-blockly`.
-  * La traducción al ingles ahora tiene que estar completa para poder buildear Pilas Bloques.
+  * La traducción al inglés ahora tiene que estar completa para poder buildear Pilas Bloques.
   * Se empezó la traducción al portugués. Actualmente está incompleta así que no esta habilitadá su selección en el selector de idiomas.
   * Se arregló que a veces el orden en el que aparecen los libros es aleatorio.
   * Se hizo un refactor de la lógica relacionada a ejecutar un desafío en https://github.com/Program-AR/pilas-bloques/pull/878.
