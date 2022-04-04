@@ -635,6 +635,8 @@ model:
         true {se usa desde el programa principal}
         false {no se usa desde el programa principal}
       }.
+    name_was_changed : |
+      Ponele nombre
 
   groups:
     AlienTocaBoton:
