@@ -13,7 +13,7 @@ Se presentan aquí notas de versión adicionales a las notas de versión apareci
   * Se internacionalizaron las categorías de bloques.
   * Se internacionalizó `proceds-blockly`.
   * La traducción al inglés ahora tiene que estar completa para poder buildear Pilas Bloques.
-  * Se empezó la traducción al portugués. Actualmente está incompleta así que no esta habilitadá su selección en el selector de idiomas.
+  * Se empezó la traducción al portugués. Actualmente está incompleta, así que no está habilitada su selección en el selector de idiomas.
   * Se arregló que a veces el orden en el que aparecen los libros es aleatorio.
   * Se hizo un refactor de la lógica relacionada a ejecutar un desafío en https://github.com/Program-AR/pilas-bloques/pull/878.
   * Se bumpeó la versión de Electron de 15.2.0 a 15.3.5. 
