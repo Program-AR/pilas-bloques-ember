@@ -135,5 +135,5 @@ acceptTermsAndConditions:
   accept: "I accept the terms of use and conditions"
 
 expectationsModal:
-  goodButNotTooGood: "It's okey, but... it could be better!"
+  goodButNotTooGood: "It's okay, but... it could be better!"
   reviewSolution: "Review your solution and try to fulfill all the objectives."
