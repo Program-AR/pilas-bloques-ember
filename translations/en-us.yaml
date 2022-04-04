@@ -603,31 +603,31 @@ model:
   spects:
     declares_procedure: |
       {result, select, 
-        true {Estás}
-        false {No estás}
-      } usando procedimientos para dividir en subtareas.
+        true {You are}
+        other {You are not}
+      } using procedures to divide in subtasks.
     too_long: |
-      La definición {declaration, select,
-        al_empezar_a_ejecutar {del programa principal}
-        other {del procedimiento "{declaration}"}
+      The definition {declaration, select,
+        al_empezar_a_ejecutar {of the main program}
+        other {of the procedure "{declaration}"}
       } {result, select, 
-        true {no hace muchas cosas}
-        false {hace muchas cosas, dividí en subtareas usando procedimientos}
+        true {does not do much}
+        other {does a lot of things, use procedures to divide in subtasks}
       }.
     do_something: |
-      La definición del procedimiento "{declaration}" {result, select, 
-        true {hace algo}
-        false {no hace nada}
+      The definition of the procedure "{declaration}" {result, select, 
+        true {does something}
+        other {does not do anything}
       }.
     is_used: |
-      El procedimiento "{declaration}" {result, select, 
-        true {se usa}
-        false {no se usa desde ningún lado}
+      The procedure "{declaration}" {result, select, 
+        true {is being used}
+        other {is not being used from anywhere}
       }.
     is_used_from_main: |
-      El procedimiento "{declaration}" {result, select, 
-        true {se usa desde el programa principal}
-        false {no se usa desde el programa principal}
+      The procedure "{declaration}" {result, select, 
+        true {is being used from the main program}
+        other {is not being used from the main program}
       }.
 
   
