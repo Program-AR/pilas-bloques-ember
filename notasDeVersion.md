@@ -3,6 +3,23 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.9.2 (8 de abril de 2022)
+  * ¡Ahora Pilas Bloques está disponible en inglés!
+  * Agregamos un botón de selección de idiomas.
+  * Tenemos un modo de lectura simple, apropiado para las personas que lo necesiten.
+  * En el primer ciclo, ¡Podemos movernos entre desafíos!. Para ello agregamos botones para ir al anterior y al siguiente.
+  * Ahora se mantiene el modo turbo al cambiar de desafío
+  * Se dividieron las traducciones en varios archivos. Para hacer esto se tuvo que hacer la dependencia `pilas-bloques-ember-intl` para solucionar un bug de `ember-intl` respecto a las traducciones en Windows. Esta dependencia se debería [dejar de usar eventualmente](https://github.com/Program-AR/pilas-bloques/issues/910).
+  * Se internacionalizaron las categorías de bloques.
+  * Se internacionalizó `proceds-blockly`.
+  * La traducción al ingles ahora tiene que estar completa para poder buildear Pilas Bloques.
+  * Se empezó la traducción al portugués. Actualmente está incompleta así que no esta habilitadá su selección en el selector de idiomas.
+  * Se arregló que a veces el orden en el que aparecen los libros es aleatorio.
+  * Se hizo un refactor de la lógica relacionada a ejecutar un desafío en https://github.com/Program-AR/pilas-bloques/pull/878.
+  * Se bumpeó la versión de Electron de 15.2.0 a 15.3.5. 
+  * Se fijó la versión de `ember-paper` a la `1.0.0-beta.35` por problemas de compatibilidad.
+  * Se sacó la dependencia de `pilasweb` del `package.json` porque ya viene con `pilas-bloques-exercises`.
+  
 * 1.8.0 (5 de noviembre de 2021) ¡Tecnópolis!
   * Se agregó un tercer libro, el libro "Tecnópolis", donde aparecen varios desafíos que también podrán realizarse "en el mundo real" en el stand de Pilas Bloques en Tecnópolis 2021, por 7 fines de semana empezando el 5/11/2021.
   * Además, en ese libro hay algunos desafíos bonus con Toto, Coty, Lita y Duba, algunos ya existentes en 1er ciclo de primaria y otros nuevos.
