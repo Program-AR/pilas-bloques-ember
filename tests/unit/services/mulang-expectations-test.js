@@ -84,7 +84,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
-  const intlMock = { t: (_id) => ({ string: 'Hacer algo' }) }
+  const intlMock = { t: () => ({ string: 'Hacer algo' }) }
 
   expectationTestOk('nameWasChanged', nameWasChanged(intlMock)('procedure_with_changed_name'), [
     entryPoint(entryPointType),
