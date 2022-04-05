@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -85,6 +85,19 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
+  expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
+    procedure(declaration, [],
+      application("PROCEDURE2")  
+    ),
+    procedure("PROCEDURE2", [])
+  ])
+
+  expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
+    procedure(declaration, [],
+      application(declaration)  
+    )
+  ])
+
 
   function expectationTestOk(expectationName, expectation, astNodes) {
     expectationTest(expectationName, expectation, astNodes, true)
@@ -129,6 +142,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
     [makeKey('too_long'), { declaration, limit }]
+  )
+
+  expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
+    [makeKey('does_not_use_recursion'), { declaration }]
   )
 
 
