@@ -147,6 +147,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     [makeKey('too_long'), { declaration, limit }]
   )
 
+  expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
+    [makeKey('name_was_changed'), { declaration }]
+  )
+
 
   function makeKey(expectationName) { return `model.spects.${expectationName}` }
 
