@@ -2,6 +2,10 @@ import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor } from '../utils/blocks'
 import Ember from 'ember'
 
+const original_procedure_type = 'procedures_defnoreturn'
+const procedure_alias = 'Procedimiento'
+const PROCEDURES_SYNONYMS = [original_procedure_type, procedure_alias]
+
 export default Service.extend({
   blockly: service(),
   intl: Ember.inject.service(),
@@ -45,7 +49,7 @@ export default Service.extend({
   },
 
   _isProcedure(type) {
-    return type == "procedures_defnoreturn"
+    return PROCEDURES_SYNONYMS.some(s => s == type)
   },
 
   _isEmptyProcedure(block) {
@@ -1554,7 +1558,7 @@ export default Service.extend({
     this.crearBloqueAlias('Numero', 'math_number', 'values');
     this.crearBloqueAlias('Texto', 'text', 'values');
     this.crearBloqueAlias('param_get', 'variables_get');
-    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'myProcedures', 'PROCEDURE');
+    this.crearBloqueAlias(procedure_alias, original_procedure_type, 'myProcedures', 'PROCEDURE'); // If another alias is created it should be added to the list of procedures synonyms
     this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 
