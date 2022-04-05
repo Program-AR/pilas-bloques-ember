@@ -10,6 +10,9 @@ export const allProceduresShould = (...expectations) => (workspace) =>
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
 
+export const usesConditionalAlternative = () =>
+  newExpectation(`through ${toEDLString(entryPointType)} uses if`, 'uses_conditional_alternative', { declaration: entryPointType })
+
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) >= 1`, 'do_something', { declaration })
@@ -26,7 +29,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>
-  `expectation "${stringify(id, opts)}": ${expect};`
+   `expectation "${stringify(id, opts)}": ${expect};`
 
 const stringify = (id, opts) => // TODO: test
   `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`

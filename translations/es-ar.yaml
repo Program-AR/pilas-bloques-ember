@@ -635,6 +635,11 @@ model:
         true {se usa desde el programa principal}
         false {no se usa desde el programa principal}
       }.
+    uses_conditional_alternative: |
+      {result, select, 
+        true {Estás}
+        false {No estás}
+      } usando una alternativa condicional.
 
   groups:
     AlienTocaBoton:
