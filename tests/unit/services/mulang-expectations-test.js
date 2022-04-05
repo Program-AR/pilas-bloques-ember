@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, usesConditionalAlternative} from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -41,7 +41,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     procedure('EMPTY', [])
   ])
 
-  expectationTestOk('isUsed (from pocedure)', isUsed('EMPTY'), [
+  expectationTestOk('isUsed (from procedure)', isUsed('EMPTY'), [
     procedure(declaration, [],
       application('EMPTY')
     ),
@@ -131,6 +131,9 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     [makeKey('too_long'), { declaration, limit }]
   )
 
+  expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
+    [makeKey('uses_conditional_alternative'), { declaration: entryPointType }]
+  )
 
   function makeKey(expectationName) { return `model.spects.${expectationName}` }
 
