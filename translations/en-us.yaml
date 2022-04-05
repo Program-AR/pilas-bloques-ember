@@ -630,9 +630,9 @@ model:
         false {no se usa desde el programa principal}
       }.
     name_was_changed : |
-      The procedure "{declaration}" {result, select,
-        true {has a changed name}
-        false {doesn't have a changed name}
+      {result, select,
+        true {A name was chosen for the procedure "{declaration}"}
+        false {A name wasn't chosen for the procedure "{declaration}"}
       }
 
   

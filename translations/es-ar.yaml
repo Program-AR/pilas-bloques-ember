@@ -636,9 +636,9 @@ model:
         false {no se usa desde el programa principal}
       }.
     name_was_changed : |
-      El procedimiento "{declaration}" {result, select,
-        true {tiene un nombre cambiado}
-        false {no tiene un nombre cambiado}
+      {result, select,
+        true {Se eligió un nombre para el procedimiento "{declaration}"}
+        false {No se eligió un nombre para el procedimiento "{declaration}"}
       }
 
   groups:
