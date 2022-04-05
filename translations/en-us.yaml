@@ -630,7 +630,10 @@ model:
         false {no se usa desde el programa principal}
       }.
     name_was_changed : |
-      Ponele nombre
+      The procedure "{declaration}" {result, select,
+        true {has a changed name}
+        false {doesn't have a changed name}
+      }
 
   
   groups:

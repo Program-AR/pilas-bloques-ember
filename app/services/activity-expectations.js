@@ -26,6 +26,6 @@ export default Service.extend({
     The translation of expectations themselves occur in the analyze method of pilas-mulang.
   */
   expectationFor(id) {
-    return activityExpectations[id](this.intl) || (() => '')
+    return activityExpectations[id] ? activityExpectations[id](this.intl) : (() => '')
   }
 })

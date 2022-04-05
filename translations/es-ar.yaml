@@ -636,7 +636,10 @@ model:
         false {no se usa desde el programa principal}
       }.
     name_was_changed : |
-      Ponele nombre
+      El procedimiento "{declaration}" {result, select,
+        true {tiene un nombre cambiado}
+        false {no tiene un nombre cambiado}
+      }
 
   groups:
     AlienTocaBoton:
