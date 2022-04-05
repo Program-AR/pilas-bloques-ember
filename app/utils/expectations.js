@@ -24,7 +24,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
 export const nameWasChanged = (intl) => (declaration) =>
-  newSimpleCondition(declaration !== intl.t('blocks.procedures.name').string, 'name_was_changed', { declaration })
+  newSimpleCondition(!declaration.includes(intl.t('blocks.procedures.name').string), 'name_was_changed', { declaration })
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>

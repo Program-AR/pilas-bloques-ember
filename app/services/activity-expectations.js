@@ -21,6 +21,10 @@ const activityExpectations = {
 export default Service.extend({
   intl: service(),
 
+  /*
+    Intl is needed for the nameWasChanged expectation, which needs to know the default procedure name. 
+    The translation of expectations themselves occur in the analyze method of pilas-mulang.
+  */
   expectationFor(id) {
     return activityExpectations[id](this.intl) || (() => '')
   }
