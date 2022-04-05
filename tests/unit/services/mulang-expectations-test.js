@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
 import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, usesConditionalAlternative} from '../../../utils/expectations'
-import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
+import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
 module('Unit | Service | Mulang | Expectations', function (hooks) {
@@ -82,6 +82,33 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'),
       application('PRIMITIVE'),
       application('PRIMITIVE'),
+    )
+  ])
+
+  expectationTestFail('usesConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      application('EMPTY')
+    )
+  ])
+
+  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      muIf(none())
+    )
+  ])
+
+  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      ifElse(none(), none(), none())
+    )
+  ])
+
+  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      application('USES_IF')
+    ),
+    procedure('USES_IF', [],
+      muIf(none())
     )
   ])
 
