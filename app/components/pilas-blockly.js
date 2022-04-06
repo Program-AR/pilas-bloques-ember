@@ -4,7 +4,7 @@ import { run } from '@ember/runloop'
 
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
-import { addWarning, clearValidations, declarationWithName } from '../utils/blocks'
+import { addError, addWarning, clearValidations, declarationWithName } from '../utils/blocks'
 import { isCritical } from '../utils/expectations'
 
 
@@ -395,8 +395,20 @@ export default Component.extend({
   },
 
   showExpectationFeedback() {
-    this.get('failedExpects').forEach(({ declaration, description }, i) =>
-      addWarning(declarationWithName(declaration), description, -i)// TODO: Add priority?
+    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+    this.expectationFeedbackFor(
+      this.get('failedExpects').filter(fe => !isCritical(fe)),
+      addWarning
+    )
+    this.expectationFeedbackFor(
+      this.get('failedExpects').filter(isCritical),
+      addError
+    )
+  },
+
+  expectationFeedbackFor(failedExceptations, addFeedback) {
+    failedExceptations.forEach(({ declaration, description }, i) =>
+      addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
     )
   },
 
