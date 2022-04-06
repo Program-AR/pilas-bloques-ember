@@ -5,6 +5,7 @@ import { run } from '@ember/runloop'
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
 import { addWarning, clearValidations, declarationWithName } from '../utils/blocks'
+import { isCritical } from '../utils/expectations'
 
 
 export default Component.extend({
@@ -366,6 +367,11 @@ export default Component.extend({
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
       .every(block => Blockly.shouldExecute(block))
+      && !this.existsCriticalExpectationFailure()
+  },
+
+  existsCriticalExpectationFailure() {
+    return this.get('failedExpects').some(fe => isCritical(fe))
   },
 
   staticAnalysis() {
@@ -389,8 +395,8 @@ export default Component.extend({
   },
 
   showExpectationFeedback() {
-    this.get('failedExpects').forEach(({ declaration, expect }, i) =>
-      addWarning(declarationWithName(declaration), expect, -i)// TODO: Add priority?
+    this.get('failedExpects').forEach(({ declaration, description }, i) =>
+      addWarning(declarationWithName(declaration), description, -i)// TODO: Add priority?
     )
   },
 

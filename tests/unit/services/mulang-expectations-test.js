@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -194,5 +194,49 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       assert.deepEqual(fullId, expectedIds)
     })
   }
+
+  const expectationName = 'model.spects.expectation_id'
+  const stringifiedExpectationId = 'model.spects.expectation_id|'
+  const stringifiedExpectationOneOpt =  'model.spects.expectation_id|declaration=PROCEDURE'
+  const stringifiedExpectationMultipleOpt = 'model.spects.expectation_id|declaration=PROCEDURE;b=foo'
+
+  // Utils
+  // stringify is not meant to be used this way
+  test('stringify with expectation id only', function (assert) {
+    assert.equal(stringify('expectation_id', {}), stringifiedExpectationId)
+  })
+
+  test('stringify with one option', function (assert) {
+    assert.equal(stringify('expectation_id', { declaration }), stringifiedExpectationOneOpt)
+  })
+
+  test('stringify with multiple options', function (assert) {
+    assert.equal(stringify('expectation_id', { declaration, b: 'foo' }), stringifiedExpectationMultipleOpt)
+  })
+
+  // parseExpect is not meant to be used this way
+  test('parseExpect with expectation name only', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationId), [expectationName, { "": undefined }])
+  })
+
+  test('parseExpect with expectation name and one param', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationOneOpt), [expectationName, { declaration: declaration }])
+  })
+
+  test('parseExpect with expectation name and multiple params', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationMultipleOpt), [expectationName, { declaration: declaration, b: 'foo' }])
+  })
+
+  test('expectation id from name', function (assert) {
+    assert.equal(expectationId(expectationName), 'expectation_id')
+  })
+
+  test('expectation id is critical', function (assert) {
+    assert.ok(isCritical({ id: doesNotUseRecursionId }))
+  })
+
+  test('expectation id is not critical', function (assert) {
+    assert.notOk(isCritical({ id: 'is_used' }))
+  })
 
 })
