@@ -24,7 +24,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
 export const doesNotUseRecursion = (declaration) =>
-  newExpectation(`through ${toEDLString(declaration)} ! calls ${toEDLString(declaration)}`, 'does_not_use_recursion', { declaration })
+  newExpectation(`not (through ${toEDLString(declaration)} calls ${toEDLString(declaration)})`, 'does_not_use_recursion', { declaration })
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>
