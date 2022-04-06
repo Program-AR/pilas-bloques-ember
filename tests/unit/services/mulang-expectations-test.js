@@ -29,6 +29,12 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
+  expectationTestOk('doSomething', doSomething(declaration), [
+    procedure(declaration, [],
+      application(declaration)
+    )
+  ], 'Recursion should count as doing something')
+
   expectationTestFail('doSomething', doSomething('EMPTY'), [
     procedure('EMPTY', [])
   ])
@@ -85,9 +91,17 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
+  expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application(declaration),
+      application(declaration)
+    )
+  ], 'Recursive calls should count as being too long ')
+
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application("PROCEDURE2")  
+      application("PROCEDURE2")
     ),
     procedure("PROCEDURE2", [])
   ])
@@ -95,31 +109,39 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application(declaration)  
+      application(declaration)
     )
   ])
-  /*
+
   // Indirect recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application("PROCEDURE2")  
+      application("PROCEDURE2")
     ),
     procedure("PROCEDURE2", [],
       application(declaration)
     )
-  ])
-  */
+  ], 'Indirect recursion should count as recursion')
 
-  function expectationTestOk(expectationName, expectation, astNodes) {
-    expectationTest(expectationName, expectation, astNodes, true)
+  expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application("PROCEDURE2")
+    ),
+    procedure("PROCEDURE2", [],
+      application('PRIMITIVE'))
+  ], 'Direct recursion with another procedure call should count as recursion')
+
+  function expectationTestOk(expectationName, expectation, astNodes, testName) {
+    expectationTest(expectationName, expectation, astNodes, true, testName)
   }
 
-  function expectationTestFail(expectationName, expectation, astNodes) {
-    expectationTest(expectationName, expectation, astNodes, false)
+  function expectationTestFail(expectationName, expectation, astNodes, testName) {
+    expectationTest(expectationName, expectation, astNodes, false, testName)
   }
 
-  function expectationTest(expectationName, edl, astNodes, shouldPass) {
-    test(`Expectation ${expectationName} - ${shouldPass ? 'ok' : 'fail'}`, function (assert) {
+  function expectationTest(expectationName, edl, astNodes, shouldPass, testName = '') {
+    test(`Expectation ${expectationName} - ${testName || (shouldPass ? 'ok' : 'fail')}`, function (assert) {
       const mulangResult = mulang
         .astCode(rawSequence(astNodes))
         .customExpect(edl)
