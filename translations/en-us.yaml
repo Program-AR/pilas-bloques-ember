@@ -631,9 +631,9 @@ model:
       }.
     uses_conditional_alternative: |
       {result, select, 
-        true {You are}
-        false {You are not}
-      } using a conditional alternative.
+        true {You are using conditional alternative}
+        false {You should use conditional alternative to consider all scenarios}
+      }
 
   
   groups:

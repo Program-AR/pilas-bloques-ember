@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, usesIf } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, usesConditionalAlternative } from '../utils/expectations'
 
 const activityExpectations = {
   // La gran aventura del mar encantado
@@ -16,24 +16,24 @@ const activityExpectations = {
   ),
 
   // El mono y las bananas
-  13: usesIf,
+  13: usesConditionalAlternative,
 
   // La elección del mono
-  14: usesIf,
+  14: usesConditionalAlternative,
 
   //Laberinto corto 
-  15: usesIf,
+  15: usesConditionalAlternative,
   
   //Solo en ciertas ocasiones
 
   //Desafio 1 
-  242: usesIf,
+  242: usesConditionalAlternative,
 
   //Desafio 2 
-  243: usesIf,
+  243: usesConditionalAlternative,
   
   //Desafio 3 
-  244: usesIf
+  244: usesConditionalAlternative
 }
 
 export default Service.extend({

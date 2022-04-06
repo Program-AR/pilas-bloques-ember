@@ -637,9 +637,9 @@ model:
       }.
     uses_conditional_alternative: |
       {result, select, 
-        true {Estás}
-        false {No estás}
-      } usando una alternativa condicional.
+        true {Estás usando alternativa condicional}
+        false {Deberías usar alternativa condicional para considerar todos los escenarios}
+      }
 
   groups:
     AlienTocaBoton:
