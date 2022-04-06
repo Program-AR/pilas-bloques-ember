@@ -24,7 +24,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
 export const doesNotUseRecursion = (declaration) =>
-  newExpectation(`through ${toEDLString(declaration)} ! calls ${toEDLString(declaration)}`, 'does_not_use_recursion', { declaration })
+  newExpectation(`through ${toEDLString(declaration)} ! calls ${toEDLString(declaration)}`, doesNotUseRecursionId, { declaration })
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>
@@ -47,4 +47,11 @@ const toEDLString = name => `\`${name}\``
 const join = expectations => expectations.join('\n')
 
 const stringifiedExceptationPrefix = 'model.spects.'
+
+export const doesNotUseRecursionId = 'does_not_use_recursion'
+
+const criticalExpectationsIds = [doesNotUseRecursionId]
+
+export const isCritical = (expectationResult) =>
+  criticalExpectationsIds.some(id => id === expectationResult.id)
 

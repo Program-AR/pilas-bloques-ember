@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -207,6 +207,14 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   test('expectation id from name', function (assert) {
     assert.equal(expectationId(expectationName), 'expectation_id')
+  })
+
+  test('expectation id is critical', function (assert) {
+    assert.ok(isCritical({ id: doesNotUseRecursionId }))
+  })
+
+  test('expectation id is not critical', function (assert) {
+    assert.notOk(isCritical({ id: 'is_used' }))
   })
 
 })
