@@ -92,12 +92,23 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     procedure("PROCEDURE2", [])
   ])
 
+  // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
       application(declaration)  
     )
   ])
-
+  /*
+  // Indirect recursion
+  expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
+    procedure(declaration, [],
+      application("PROCEDURE2")  
+    ),
+    procedure("PROCEDURE2", [],
+      application(declaration)
+    )
+  ])
+  */
 
   function expectationTestOk(expectationName, expectation, astNodes) {
     expectationTest(expectationName, expectation, astNodes, true)
