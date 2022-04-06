@@ -638,7 +638,7 @@ model:
     name_was_changed : |
       {result, select,
         true {Se eligió un nombre para el procedimiento "{declaration}"}
-        false {No se eligió un nombre para el procedimiento "{declaration}"}
+        false {Deberías elegir un nombre para el procedimiento "{declaration}"}
       }
 
   groups:
