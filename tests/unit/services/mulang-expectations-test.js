@@ -173,17 +173,35 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     })
   }
 
+  const stringifiedExpectationId = 'model.spects.expectation_id|'
+  const stringifiedExpectationOneOpt =  'model.spects.expectation_id|declaration=PROCEDURE'
+  const stringifiedExpectationMultipleOpt = 'model.spects.expectation_id|declaration=PROCEDURE;b=foo'
+
   // Utils
+  // stringify is not meant to be used this way
   test('stringify with expectation id only', function (assert) {
-    assert.equal(stringify('expectation_id', {}), 'model.spects.expectation_id|')
+    assert.equal(stringify('expectation_id', {}), stringifiedExpectationId)
   })
 
   test('stringify with one option', function (assert) {
-    assert.equal(stringify('expectation_id', { declaration }), 'model.spects.expectation_id|declaration=PROCEDURE')
+    assert.equal(stringify('expectation_id', { declaration }), stringifiedExpectationOneOpt)
   })
 
   test('stringify with multiple options', function (assert) {
-    assert.equal(stringify('expectation_id', { declaration, b: 'foo' }), 'model.spects.expectation_id|declaration=PROCEDURE;b=foo')
+    assert.equal(stringify('expectation_id', { declaration, b: 'foo' }), stringifiedExpectationMultipleOpt)
+  })
+
+  // parseExpect is not meant to be used this way
+  test('parseExpect with expectation name only', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationId), ['model.spects.expectation_id', { "": undefined }])
+  })
+
+  test('parseExpect with expectation name and one param', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationOneOpt), ['model.spects.expectation_id', { declaration: declaration }])
+  })
+
+  test('parseExpect with expectation name and multiple params', function (assert) {
+    assert.propEqual(parseExpect(stringifiedExpectationMultipleOpt), ['model.spects.expectation_id', { declaration: declaration, b: 'foo' }])
   })
 
 })
