@@ -609,9 +609,9 @@ model:
   spects:
     declares_procedure: |
       {result, select, 
-        true {Estás}
-        false {No estás}
-      } usando procedimientos para dividir en subtareas.
+        true {Estás usando procedimientos para dividir en subtareas.}
+        false {Deberías usar procedimientos para dividir en subtareas.}
+      } 
     too_long: |
       La definición {declaration, select,
         al_empezar_a_ejecutar {del programa principal}
