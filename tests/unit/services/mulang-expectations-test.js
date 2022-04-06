@@ -91,19 +91,19 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
-  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+  expectationTestOk('usesSimpleConditionalAlternative', usesConditionalAlternative(), [
     entryPoint(entryPointType,
       muIf(none())
     )
   ])
 
-  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+  expectationTestOk('usesCompleteConditionalAlternative', usesConditionalAlternative(), [
     entryPoint(entryPointType,
       ifElse(none(), none(), none())
     )
   ])
 
-  expectationTestOk('usesConditionalAlternative', usesConditionalAlternative(), [
+  expectationTestOk('usesConditionalAlternative (from procedure)', usesConditionalAlternative(), [
     entryPoint(entryPointType,
       application('USES_IF')
     ),
