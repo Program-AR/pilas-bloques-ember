@@ -389,8 +389,8 @@ export default Component.extend({
   },
 
   showExpectationFeedback() {
-    this.get('failedExpects').forEach(({ declaration, expect }, i) =>
-      addWarning(declarationWithName(declaration), expect, -i)// TODO: Add priority?
+    this.get('failedExpects').forEach(({ declaration, description }, i) =>
+      addWarning(declarationWithName(declaration), description, -i)// TODO: Add priority?
     )
   },
 

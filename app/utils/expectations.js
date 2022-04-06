@@ -31,14 +31,20 @@ const newExpectation = (expect, id, opts = {}) =>
   `expectation "${stringify(id, opts)}": ${expect};`
 
 export const stringify = (id, opts) =>
-  `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+  `${expectationName(id)}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
 
 export const parseExpect = (name) => [
   name.split('|')[0],
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
+const expectationName = (id) => stringifiedExceptationPrefix + id
+
+export const expectationId = (name) => name.replace(stringifiedExceptationPrefix, "")
+
 const toEDLString = name => `\`${name}\``
 
 const join = expectations => expectations.join('\n')
+
+const stringifiedExceptationPrefix = 'model.spects.'
 
