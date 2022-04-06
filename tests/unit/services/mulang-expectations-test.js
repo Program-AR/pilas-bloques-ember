@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -172,5 +172,18 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       assert.deepEqual(fullId, expectedIds)
     })
   }
+
+  // Utils
+  test('stringify with expectation id only', function (assert) {
+    assert.equal(stringify('expectation_id', {}), 'model.spects.expectation_id|')
+  })
+
+  test('stringify with one option', function (assert) {
+    assert.equal(stringify('expectation_id', { declaration }), 'model.spects.expectation_id|declaration=PROCEDURE')
+  })
+
+  test('stringify with multiple options', function (assert) {
+    assert.equal(stringify('expectation_id', { declaration, b: 'foo' }), 'model.spects.expectation_id|declaration=PROCEDURE;b=foo')
+  })
 
 })

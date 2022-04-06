@@ -30,7 +30,7 @@ export const doesNotUseRecursion = (declaration) =>
 const newExpectation = (expect, id, opts = {}) =>
   `expectation "${stringify(id, opts)}": ${expect};`
 
-const stringify = (id, opts) => // TODO: test
+export const stringify = (id, opts) =>
   `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
 
 export const parseExpect = (name) => [
