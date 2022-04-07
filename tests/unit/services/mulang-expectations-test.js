@@ -28,13 +28,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE')
     )
   ])
-  /*
+  
     expectationTestOk('doSomething', doSomething(declaration), [
       procedure(declaration, [],
         application(declaration)
       )
     ], 'Recursion should count as doing something')
-  */
+  
   expectationTestFail('doSomething', doSomething('EMPTY'), [
     procedure('EMPTY', [])
   ])
@@ -90,7 +90,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'),
     )
   ])
-  /*
+  
     expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
       procedure(declaration, [],
         application(declaration),
@@ -98,7 +98,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
         application(declaration)
       )
     ], 'Recursive calls should count as being too long ')
-  */
+  
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
       application("PROCEDURE2")
