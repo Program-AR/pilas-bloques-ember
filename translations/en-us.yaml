@@ -632,7 +632,7 @@ model:
     uses_conditional_alternative: |
       {result, select, 
         true {You are using conditional alternative}
-        false {You should use conditional alternative to consider all scenarios}
+        false {You should use conditional alternative to consider all possible scenarios}
       }
 
   
