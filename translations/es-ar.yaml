@@ -638,7 +638,12 @@ model:
     uses_conditional_alternative: |
       {result, select, 
         true {Estás usando alternativa condicional}
-        false {Deberías usar alternativa condicional para considerar todos los escenarios}
+        false {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
+      }
+    uses_conditional_repetition: |
+      {result, select, 
+        true {Estás usando repetición condicional}
+        false {Deberías usar repetición condicional para considerar todos los escenarios posibles}
       }
 
   groups:

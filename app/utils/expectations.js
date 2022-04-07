@@ -11,7 +11,10 @@ export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
 
 export const usesConditionalAlternative = () =>
-  newExpectation(`through ${toEDLString(entryPointType)} uses if`, 'uses_conditional_alternative', { declaration: entryPointType })
+  newGlobalExpectation('uses if', 'uses_conditional_alternative')
+
+export const usesConditionalRepetition = () =>
+  newGlobalExpectation('uses while', 'uses_conditional_repetition')
 
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
@@ -28,6 +31,9 @@ export const notTooLong = (limit = 7) => (declaration) =>
 
 
 // UTILS
+const newGlobalExpectation = (expect, id) =>
+  newExpectation(`through ${toEDLString(entryPointType)} ${expect}`, id, {declaration: entryPointType})
+
 const newExpectation = (expect, id, opts = {}) =>
    `expectation "${stringify(id, opts)}": ${expect};`
 
