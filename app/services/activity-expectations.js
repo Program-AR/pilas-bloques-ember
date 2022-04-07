@@ -1,10 +1,9 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation } from '../utils/expectations'
 
-const activityExpectations = {
-  // La gran aventura del mar encantado
-  11: multiExpect(
+const expectationsIds = {
+  subtaskDivision: multiExpect(
     declaresAnyProcedure,
     () => notTooLong()(entryPointType),
     allProceduresShould(
@@ -17,7 +16,14 @@ const activityExpectations = {
 }
 
 export default Service.extend({
-  expectationFor(id) {
-    return activityExpectations[id] || (() => '')
+  expectationFor(activity) {
+    return activity.expectations ? this.expectations(activity) : noExpectation
+  },
+
+  expectations(activity){
+    return multiExpect(
+      ...Object.entries(activity.expectations) //Must not be undefined
+      .map(([id, shouldApply]) => shouldApply && expectationsIds[id] ? expectationsIds[id] : noExpectation)
+    )
   }
 })

@@ -93,6 +93,9 @@ export default [
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
+    expectations: {
+      subtaskDivision: true,
+    },
   },
   {
     id: 12,

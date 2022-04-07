@@ -23,6 +23,7 @@ export const isUsedFromMain = (declaration) =>
 export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
+export const noExpectation = (declaration) => '' // jshint ignore: line
 
 // UTILS
 const newExpectation = (expect, id, opts = {}) =>
