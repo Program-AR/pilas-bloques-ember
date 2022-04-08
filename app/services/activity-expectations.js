@@ -23,7 +23,11 @@ export default Service.extend({
   expectations(activity){
     return multiExpect(
       ...Object.entries(activity.expectations) //Must not be undefined
-      .map(([id, shouldApply]) => shouldApply && expectationsIds[id] ? expectationsIds[id] : noExpectation)
+      .map(e => this.applicableExpectation(e))
     )
+  },
+
+  applicableExpectation([id, shouldApply]) {
+    return shouldApply && expectationsIds[id] ? expectationsIds[id] : noExpectation
   }
 })
