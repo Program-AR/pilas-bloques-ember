@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, usesConditionalAlternative} from '../../../utils/expectations'
-import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none } from '../../helpers/astFactories'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, usesConditionalAlternative, usesConditionalRepetition} from '../../../utils/expectations'
+import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
 module('Unit | Service | Mulang | Expectations', function (hooks) {
@@ -112,6 +112,17 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
+  expectationTestFail('usesCondicionalRepetition', usesConditionalRepetition(), [
+    entryPoint(entryPointType,
+      application('EMPTY')
+    )
+  ])
+
+  expectationTestOk('usesCondicionalRepetition', usesConditionalRepetition(), [
+    entryPoint(entryPointType,
+      muUntil(none(), none())
+    )
+  ])
 
   function expectationTestOk(expectationName, expectation, astNodes) {
     expectationTest(expectationName, expectation, astNodes, true)
@@ -160,6 +171,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
     [makeKey('uses_conditional_alternative'), { declaration: entryPointType }]
+  )
+
+  expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
+    [makeKey('uses_conditional_repetition'), { declaration: entryPointType }]
   )
 
   function makeKey(expectationName) { return `model.spects.${expectationName}` }

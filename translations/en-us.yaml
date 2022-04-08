@@ -633,7 +633,12 @@ model:
       {result, select, 
         true {You are using conditional alternative}
         false {You should use conditional alternative to consider all possible scenarios}
-      }
+      }.
+    uses_conditional_repetition: |
+      {result, select, 
+        true {You are using conditional repetition}
+        false {You should use conditional repetition to consider all possible scenarios}
+      }.
 
   
   groups:
