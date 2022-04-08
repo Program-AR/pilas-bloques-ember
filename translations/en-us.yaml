@@ -603,9 +603,9 @@ model:
   spects:
     declares_procedure: |
       {result, select, 
-        true {You are}
-        other {You are not}
-      } using procedures to divide in subtasks.
+        true {You are using procedures to divide in subtasks.}
+        false {You should use procedures to divide in subtasks.}
+      } 
     too_long: |
       The definition {declaration, select,
         al_empezar_a_ejecutar {of the main program}
@@ -629,6 +629,11 @@ model:
         true {is being used from the main program}
         other {is not being used from the main program}
       }.
+    name_was_changed : |
+      {result, select,
+        true {A name was chosen for the procedure "{declaration}"}
+        false {You should choose a name for the procedure "{declaration}"}
+      }
 
   
   groups:

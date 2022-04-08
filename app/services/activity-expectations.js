@@ -1,10 +1,11 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, nameWasChanged } from '../utils/expectations'
+import { inject as service } from '@ember/service';
 
 const activityExpectations = {
   // La gran aventura del mar encantado
-  11: multiExpect(
+  11: (intl) => multiExpect(
     declaresAnyProcedure,
     () => notTooLong()(entryPointType),
     allProceduresShould(
@@ -12,12 +13,19 @@ const activityExpectations = {
       doSomething,
       isUsed,
       isUsedFromMain,
+      nameWasChanged(intl)
     )
   )
 }
 
 export default Service.extend({
+  intl: service(),
+
+  /*
+    Intl is needed for the nameWasChanged expectation, which needs to know the default procedure name. 
+    The translation of expectations themselves occur in the analyze method of pilas-mulang.
+  */
   expectationFor(id) {
-    return activityExpectations[id] || (() => '')
+    return activityExpectations[id] ? activityExpectations[id](this.intl) : (() => '')
   }
 })
