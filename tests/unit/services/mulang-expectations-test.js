@@ -103,7 +103,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
-  expectationTestOk('usesConditionalAlternative (from procedure)', usesConditionalAlternative(), [
+  expectationTestOk('Global expectation is transitive through a procedure', usesConditionalAlternative(), [
     entryPoint(entryPointType,
       application('USES_IF')
     ),
