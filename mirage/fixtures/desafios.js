@@ -94,7 +94,7 @@ export default [
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
     expectations: {
-      subtaskDivision: true,
+      decomposition: true,
     },
   },
   {

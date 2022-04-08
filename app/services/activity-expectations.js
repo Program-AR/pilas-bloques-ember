@@ -2,8 +2,8 @@ import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
 import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation } from '../utils/expectations'
 
-const expectationsIds = {
-  subtaskDivision: multiExpect(
+const activityExpectations = {
+  decomposition: multiExpect(
     declaresAnyProcedure,
     () => notTooLong()(entryPointType),
     allProceduresShould(
@@ -16,6 +16,9 @@ const expectationsIds = {
 }
 
 export default Service.extend({
+
+  idsToExpectations: activityExpectations,
+
   expectationFor(activity) {
     return activity.expectations ? this.expectations(activity) : noExpectation
   },
@@ -28,6 +31,6 @@ export default Service.extend({
   },
 
   applicableExpectation([id, shouldApply]) {
-    return shouldApply && expectationsIds[id] ? expectationsIds[id] : noExpectation
+    return shouldApply && this.idsToExpectations[id] ? this.idsToExpectations[id] : noExpectation
   }
 })
