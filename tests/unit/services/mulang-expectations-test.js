@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCalls } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -132,13 +132,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'))
   ], 'Direct recursion with another procedure call should count as recursion')
 
-  expectationTestOk('countCalls', newExpectation(`${countCalls(declaration)} = 2`, 'counts', { declaration }), [
+  expectationTestOk('countCallsWithin', newExpectation(`${countCallsWithin(declaration)} = 2`, 'counts', { declaration }), [
     procedure(declaration, [],
       application("PROCEDURE2"),
       application(declaration)
     ),
     procedure("PROCEDURE2", [])
-  ], 'countCalls includes recursive calls')
+  ], 'countCallsWithin includes recursive calls')
 
   function expectationTestOk(expectationName, expectation, astNodes, testName) {
     expectationTest(expectationName, expectation, astNodes, true, testName)
