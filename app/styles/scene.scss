@@ -29,7 +29,7 @@
     overflow: hidden;
 }
 
-@media (max-width: 1280px){
+@media (max-width: 1280px), (max-height: 730px) {
     .pilas-canvas {
         width: 300px;   
         height: 343px;
