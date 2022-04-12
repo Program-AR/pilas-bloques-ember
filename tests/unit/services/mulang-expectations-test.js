@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, usesConditionalAlternative, usesConditionalRepetition} from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -10,7 +10,6 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   const declaration = 'PROCEDURE'
   const limit = '3'
-
 
   // EDL
   expectationTestOk('declaresAnyProcedure', declaresAnyProcedure(), [
@@ -123,6 +122,23 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       muUntil(none(), none())
     )
   ])
+  const intlMock = { t: () => ({ string: 'Hacer algo' }) }
+
+  expectationTestOk('nameWasChanged', nameWasChanged(intlMock)('procedure_with_changed_name'), [
+    entryPoint(entryPointType),
+    procedure('procedure_with_changed_name', [])
+  ])
+
+  expectationTestFail('nameWasChanged', nameWasChanged(intlMock)('Hacer algo'), [
+    entryPoint(entryPointType),
+    procedure('Hacer algo', [])
+  ])
+
+  expectationTestFail('nameWasChanged', nameWasChanged(intlMock)('Hacer algo2'), [
+    entryPoint(entryPointType),
+    procedure('Hacer algo', [])
+  ])
+
 
   function expectationTestOk(expectationName, expectation, astNodes) {
     expectationTest(expectationName, expectation, astNodes, true)
@@ -176,6 +192,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
     [makeKey('uses_conditional_repetition'), { declaration: entryPointType }]
   )
+  expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
+    [makeKey('name_was_changed'), { declaration }]
+  )
+
 
   function makeKey(expectationName) { return `model.spects.${expectationName}` }
 

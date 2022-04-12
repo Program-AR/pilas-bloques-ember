@@ -29,6 +29,8 @@ export const isUsedFromMain = (declaration) =>
 export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
 
+export const nameWasChanged = (intl) => (declaration) =>
+  newSimpleCondition(!declaration.includes(intl.t('blocks.procedures.name').string), 'name_was_changed', { declaration })
 
 // UTILS
 const newGlobalExpectation = (expect, id) =>
@@ -39,6 +41,12 @@ const newExpectation = (expect, id, opts = {}) =>
 
 const stringify = (id, opts) => // TODO: test
   `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+
+const newSimpleCondition = (condition, id, opt = {}) =>
+  newExpectation(condition ? pass : fail, id, opt)
+
+const pass = `calls || ! calls`
+const fail = `calls && ! calls`
 
 export const parseExpect = (name) => [
   name.split('|')[0],
