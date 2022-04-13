@@ -19,7 +19,7 @@ export default Service.extend({
    *  ... other specific params
    * }
    */
-  analyze(workspace, activity) {
+  async analyze(workspace, activity) {
     const activityExpectation = this.activityExpectations.expectationFor(activity)
     const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
@@ -27,10 +27,20 @@ export default Service.extend({
       const [name, params] = parseExpect(expect)
       return { expect: this.intl.t(name, {result, ...params}).toString(), result, ...params }
     }
-    return mulang
-      .astCode(ast)
-      .customExpect(customExpect)
-      .map(toTranslatedResult)
+
+    return new Promise((resolve, reject) => {
+      try {
+        return resolve(
+          mulang
+          .astCode(ast)
+          .customExpect(customExpect)
+          .map(toTranslatedResult)
+        )
+      }
+      catch (error) {
+        return reject(error)
+      }
+    })
   },
 
   parseAll(workspace) {

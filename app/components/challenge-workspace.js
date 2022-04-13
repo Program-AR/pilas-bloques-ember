@@ -12,6 +12,7 @@ export default Component.extend({
   canvasWidth: 0,
   canvasHeight: 0,
   simpleRead: service(),
+  areExpectationsRunning: false,
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -186,7 +187,9 @@ export default Component.extend({
     },
 
     async ejecutar(pasoAPaso = false) {
+      this.set('areExpectationsRunning', true)
       await this.pilasBlockly.send('ejecutar', pasoAPaso);
+      this.set('areExpectationsRunning', false)
       this.send("showScene");
     },
 
