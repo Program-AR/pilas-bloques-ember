@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -28,7 +28,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE')
     )
   ])
-
+  
+    expectationTestOk('doSomething', doSomething(declaration), [
+      procedure(declaration, [],
+        application(declaration)
+      )
+    ], 'Recursion should count as doing something')
+  
   expectationTestFail('doSomething', doSomething('EMPTY'), [
     procedure('EMPTY', [])
   ])
@@ -84,10 +90,18 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'),
     )
   ])
-
+  
+    expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
+      procedure(declaration, [],
+        application(declaration),
+        application(declaration),
+        application(declaration)
+      )
+    ], 'Recursive calls should count as being too long ')
+  
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application("PROCEDURE2")  
+      application("PROCEDURE2")
     ),
     procedure("PROCEDURE2", [])
   ])
@@ -95,31 +109,47 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application(declaration)  
+      application(declaration)
     )
   ])
-  /*
+
   // Indirect recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
-      application("PROCEDURE2")  
+      application("PROCEDURE2")
     ),
     procedure("PROCEDURE2", [],
       application(declaration)
     )
-  ])
-  */
+  ], 'Indirect recursion should count as recursion')
 
-  function expectationTestOk(expectationName, expectation, astNodes) {
-    expectationTest(expectationName, expectation, astNodes, true)
+  expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application("PROCEDURE2")
+    ),
+    procedure("PROCEDURE2", [],
+      application('PRIMITIVE'))
+  ], 'Direct recursion with another procedure call should count as recursion')
+
+  expectationTestOk('countCallsWithin', newExpectation(`${countCallsWithin(declaration)} = 2`, 'counts', { declaration }), [
+    procedure(declaration, [],
+      application("PROCEDURE2"),
+      application(declaration)
+    ),
+    procedure("PROCEDURE2", [])
+  ], 'countCallsWithin includes recursive calls')
+
+  function expectationTestOk(expectationName, expectation, astNodes, testName) {
+    expectationTest(expectationName, expectation, astNodes, true, testName)
   }
 
-  function expectationTestFail(expectationName, expectation, astNodes) {
-    expectationTest(expectationName, expectation, astNodes, false)
+  function expectationTestFail(expectationName, expectation, astNodes, testName) {
+    expectationTest(expectationName, expectation, astNodes, false, testName)
   }
 
-  function expectationTest(expectationName, edl, astNodes, shouldPass) {
-    test(`Expectation ${expectationName} - ${shouldPass ? 'ok' : 'fail'}`, function (assert) {
+  function expectationTest(expectationName, edl, astNodes, shouldPass, testName = '') {
+    test(`Expectation ${expectationName} - ${testName || (shouldPass ? 'ok' : 'fail')}`, function (assert) {
       const mulangResult = mulang
         .astCode(rawSequence(astNodes))
         .customExpect(edl)
