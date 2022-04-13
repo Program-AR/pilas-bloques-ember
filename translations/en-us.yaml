@@ -629,6 +629,11 @@ model:
         true {is being used from the main program}
         other {is not being used from the main program}
       }.
+    does_not_use_recursion: |
+      {result, select,
+        true {The procedure "{declaration}" does not use recursion.}
+        other {Warning! The procedure "{declaration}" uses recursion! It is a really powerful way of thinking a solution, but we will leave it for more advanced courses. Try to solve it in a different way.}
+      }
     name_was_changed : |
       {result, select,
         true {A name was chosen for the procedure "{declaration}"}

@@ -4,7 +4,8 @@ import { run } from '@ember/runloop'
 
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
-import { addWarning, clearValidations, declarationWithName } from '../utils/blocks'
+import { addError, addWarning, clearValidations, declarationWithName } from '../utils/blocks'
+import { isCritical, notCritical } from '../utils/expectations'
 
 
 export default Component.extend({
@@ -366,6 +367,11 @@ export default Component.extend({
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
       .every(block => Blockly.shouldExecute(block))
+      && !this.existsCriticalExpectationFailure()
+  },
+
+  existsCriticalExpectationFailure() {
+    return this.get('failedExpects').some(fe => isCritical(fe))
   },
 
   staticAnalysis() {
@@ -389,8 +395,22 @@ export default Component.extend({
   },
 
   showExpectationFeedback() {
-    this.get('failedExpects').forEach(({ declaration, expect }, i) =>
-      addWarning(declarationWithName(declaration), expect, -i)// TODO: Add priority?
+    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+    this.showExpectationFeedbackFor(
+      notCritical,
+      addWarning
+    )
+    this.showExpectationFeedbackFor(
+      isCritical,
+      addError
+    )
+  },
+
+  showExpectationFeedbackFor(condition, addFeedback) {
+    this.get('failedExpects')
+    .filter(condition)
+    .forEach(({ declaration, description }, i) =>
+      addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
     )
   },
 
