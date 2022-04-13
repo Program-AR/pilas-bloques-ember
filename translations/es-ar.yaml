@@ -639,6 +639,7 @@ model:
       {result, select,
         true {El procedimiento "{declaration}" no usa recursión.}
         other {¡Cuidado! ¡El procedimiento "{declaration}" usa recursión! Es una manera muy poderosa de pensar una solución, pero la dejaremos para un curso más avanzado. Intentá resolverlo de otra manera.}
+      }
     name_was_changed : |
       {result, select,
         true {Se eligió un nombre para el procedimiento "{declaration}"}
