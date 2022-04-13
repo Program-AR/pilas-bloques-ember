@@ -26,6 +26,9 @@ export const notTooLong = (limit = 7) => (declaration) =>
 export const doesNotUseRecursion = (declaration) =>
   newExpectation(`not (through ${toEDLString(declaration)} calls ${toEDLString(declaration)})`, doesNotUseRecursionId, { declaration })
 
+export const nameWasChanged = (intl) => (declaration) =>
+  newSimpleCondition(!declaration.includes(intl.t('blocks.procedures.name').string), 'name_was_changed', { declaration })
+
 // UTILS
 export const newExpectation = (expect, id, opts = {}) =>
   `expectation "${stringify(id, opts)}": ${expect};`
@@ -37,6 +40,12 @@ export const countCallsWithin = (declaration) =>
 
 export const stringify = (id, opts) =>
   `${expectationName(id)}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+
+const newSimpleCondition = (condition, id, opt = {}) =>
+  newExpectation(condition ? pass : fail, id, opt)
+
+const pass = `calls || ! calls`
+const fail = `calls && ! calls`
 
 export const parseExpect = (name) => [
   name.split('|')[0],

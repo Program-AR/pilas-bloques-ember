@@ -603,9 +603,9 @@ model:
   spects:
     declares_procedure: |
       {result, select, 
-        true {You are}
-        other {You are not}
-      } using procedures to divide in subtasks.
+        true {You are using procedures to divide in subtasks.}
+        false {You should use procedures to divide in subtasks.}
+      } 
     too_long: |
       The definition {declaration, select,
         al_empezar_a_ejecutar {of the main program}
@@ -634,6 +634,12 @@ model:
         true {The procedure "{declaration}" does not use recursion.}
         other {Warning! The procedure "{declaration}" uses recursion! It is a really powerful way of thinking a solution, but we will leave it for more advanced courses. Try to solve it in a different way.}
       }
+    name_was_changed : |
+      {result, select,
+        true {A name was chosen for the procedure "{declaration}"}
+        false {You should choose a name for the procedure "{declaration}"}
+      }
+
   
   groups:
     AlienTocaBoton:
