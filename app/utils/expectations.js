@@ -18,7 +18,7 @@ export const usesConditionalRepetition = () =>
 
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
-  newExpectation(`within ${toEDLString(declaration)} count(calls) >= 1`, 'do_something', { declaration })
+  newExpectation(`${countCallsWithin(declaration)} >= 1`, 'do_something', { declaration })
 
 export const isUsed = (declaration) =>
   newExpectation(`calls ${toEDLString(declaration)}`, 'is_used', { declaration })
@@ -27,7 +27,10 @@ export const isUsedFromMain = (declaration) =>
   newExpectation(`through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)}`, 'is_used_from_main', { declaration })
 
 export const notTooLong = (limit = 7) => (declaration) =>
-  newExpectation(`within ${toEDLString(declaration)} count(calls) <= ${limit - 1}`, 'too_long', { declaration, limit })
+  newExpectation(`${countCallsWithin(declaration)} <= ${limit - 1}`, 'too_long', { declaration, limit })
+
+export const doesNotUseRecursion = (declaration) =>
+  newExpectation(`not (through ${toEDLString(declaration)} calls ${toEDLString(declaration)})`, doesNotUseRecursionId, { declaration })
 
 export const nameWasChanged = (intl) => (declaration) =>
   newSimpleCondition(!declaration.includes(intl.t('blocks.procedures.name').string), 'name_was_changed', { declaration })
@@ -36,11 +39,16 @@ export const nameWasChanged = (intl) => (declaration) =>
 const newGlobalExpectation = (expect, id) =>
   newExpectation(`through ${toEDLString(entryPointType)} ${expect}`, id, {declaration: entryPointType})
 
-const newExpectation = (expect, id, opts = {}) =>
-   `expectation "${stringify(id, opts)}": ${expect};`
+export const newExpectation = (expect, id, opts = {}) =>
+  `expectation "${stringify(id, opts)}": ${expect};`
 
-const stringify = (id, opts) => // TODO: test
-  `model.spects.${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+// Use this to count number of calls inside a procedure, including recursive calls
+// Mulang count does not count recursive calls
+export const countCallsWithin = (declaration) =>
+  `within ${toEDLString(declaration)} count(calls) + count(calls ${toEDLString(declaration)})`
+
+export const stringify = (id, opts) =>
+  `${expectationName(id)}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
 
 const newSimpleCondition = (condition, id, opt = {}) =>
   newExpectation(condition ? pass : fail, id, opt)
@@ -53,7 +61,23 @@ export const parseExpect = (name) => [
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
+const expectationName = (id) => stringifiedExceptationPrefix + id
+
+export const expectationId = (name) => name.replace(stringifiedExceptationPrefix, "")
+
 const toEDLString = name => `\`${name}\``
 
 const join = expectations => expectations.join('\n')
+
+const stringifiedExceptationPrefix = 'model.spects.'
+
+export const doesNotUseRecursionId = 'does_not_use_recursion'
+
+const criticalExpectationsIds = [doesNotUseRecursionId]
+
+export const isCritical = (expectationResult) =>
+  criticalExpectationsIds.some(id => id === expectationResult.id)
+
+export const notCritical = (expectationResult) =>
+  !isCritical(expectationResult)
 

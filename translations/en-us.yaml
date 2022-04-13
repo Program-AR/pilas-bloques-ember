@@ -17,7 +17,7 @@ model:
       title: I love jumping
       description: |
         Help the cat get rid of laziness by jumping 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks.
-      clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called \"Simple repetition\".
+      clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called "Simple repetition".
     4:
       title: The Martian in the desert
       description: |
@@ -52,7 +52,7 @@ model:
     10:
       title: Installing games
       description: |
-        Ramiro needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password (\"ABC\"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
+        Ramiro needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ""
     11:
       title: The great adventure of the enchanted sea
@@ -73,19 +73,19 @@ model:
       description: |
         Can you help the monkey move forward to the opposite box? If there is a banana, he should eat it. Otherwise, he will be happy just by reaching there.
         Run the program several times to make sure it always works.
-        Clue: look at the \"Sensors\" category and the \"Alternatives\” category.
-      clue: The \"If\" block runs a sequence of instructions only when the condition is true. This is called \"Conditional alternative\".
+        Clue: look at the "Sensors" category and the "Alternatives" category.
+      clue: The "If" block runs a sequence of instructions only when the condition is true. This is called "Conditional alternative".
     14:
       title: Monkey’s choice
       description: |
         Can you help our monkey again? This time he should eat all fruits appearing on the screen, whether banana or apple.
         Run the program several times to make sure it always works.
-        Clue: this time the \"If\” block is not enough.
-      clue: When there are only 2 options, making one question is enough. In those cases, you can use the \"If... Else\” block.
+        Clue: this time the "If" block is not enough.
+      clue: When there are only 2 options, making one question is enough. In those cases, you can use the "If... Else" block.
     15:
       title: Short maze
       description: |
-        Guide the mouse to reach the finish line. To achieve this, he needs to move forward one box in the direction of the arrow. Clue: look in the \"Sensors\" category which questions you could ask.
+        Guide the mouse to reach the finish line. To achieve this, he needs to move forward one box in the direction of the arrow. Clue: look in the "Sensors" category which questions you could ask.
       clue: ""
     16:
       title: Three oranges
@@ -111,16 +111,16 @@ model:
       title: Super Tito 2
       description: |
         Super Tito should turn all lights on, but opposite to the previous challenge, there are cells without any light here. Could you use the same procedure you used in Super Tito 1?
-      clue: The \"Repeat until\" block will repeat a sequence of actions until one condition is met. This is called \"Conditional repetition\".
+      clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
     21:
       title: Maze with cheese
       description: |
         The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
-      clue: It is important to consider if the block’s condition called \"Repeat until\” is met at any given time. Otherwise, the program might never end!
+      clue: It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!
     22:
       title: Detective Chaparro
       description: The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!
-      clue: The \"Repeat until\” block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row.
+      clue: The "Repeat until" block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row.
     23:
       title: Football for robots
       description: Help our football player robot kick all balls. Always remember that a proper task division using procedures can help you face the challenge better.
@@ -138,8 +138,8 @@ model:
     26:
       title: The Supertrip
       description: |
-        Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the \"Sensors\" category to see if there is something useful for you there.
-      clue: You can use the \"Repeat\" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor.
+        Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the "Sensors" category to see if there is something useful for you there.
+      clue: You can use the "Repeat" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor.
     27:
       title: The monkey counts again
       description: The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?
@@ -150,7 +150,7 @@ model:
         Help Nano eat all his bananas. Be careful! He cannot come down...
         Take into account that the scenario doesn’t change, and the bananas are always in the same boxes!
       clue: |
-        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: \"Eat 2 bananas on the right\", \"Eat 3 bananas on the right\", and \"Eat 4 bananas on the right\", we can replace these three procedures with one procedure with a parameter stating the number of bananas we want to eat on the right: \"Eat on the right the following number: [number]\".
+        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Eat 2 bananas on the right", "Eat 3 bananas on the right", and "Eat 4 bananas on the right", we can replace these three procedures with one procedure with a parameter stating the number of bananas we want to eat on the right: "Eat on the right the following number: [number]".
         For adding a parameter to a new procedure, you have to click on the plus sign.
     29:
       title: |
@@ -355,15 +355,15 @@ model:
       clue: ""
     230:
       title: Challenge 1
-      description: Could the puma reach the beefsteak by using the \"Move right\” block only once?
-      clue: You can use the new \"Repeat\” block
+      description: Could the puma reach the beefsteak by using the "Move right" block only once?
+      clue: You can use the new "Repeat" block
     231:
       title: Challenge 2
       description: The puma is hungry and she is far from her beefsteak. But now she knows how to repeat!
       clue: ""
     232:
       title: Challenge 3
-      description: How could the puma reach her food without need of using many \"Move\” blocks?
+      description: How could the puma reach her food without need of using many "Move" blocks?
       clue: ""
     233:
       title: Challenge 1
@@ -404,7 +404,7 @@ model:
     242:
       title: Challenge 1
       description: Sometimes there is beefsteak; but sometimes not! Can you create only one program to help Duba move on and eat only if there is beefsteak?
-      clue: The \"If\" block is useful for doing something sometimes, and sometimes not. It’s useful for asking!
+      clue: The "If" block is useful for doing something sometimes, and sometimes not. It’s useful for asking!
     243:
       title: Challenge 2
       description: Now Duba should move on twice. She should eat all beefsteaks appearing on screen! ... But only if they appear.
@@ -639,6 +639,11 @@ model:
         true {You are using conditional repetition}
         other {You should use conditional repetition to consider all possible scenarios}
       }.
+    does_not_use_recursion: |
+      {result, select,
+        true {The procedure "{declaration}" does not use recursion.}
+        other {Warning! The procedure "{declaration}" uses recursion! It is a really powerful way of thinking a solution, but we will leave it for more advanced courses. Try to solve it in a different way.}
+      }
     name_was_changed : |
       {result, select,
         true {A name was chosen for the procedure "{declaration}"}
