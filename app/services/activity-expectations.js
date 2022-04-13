@@ -26,11 +26,12 @@ export default Service.extend({
   expectations(activity){
     return multiExpect(
       ...Object.entries(activity.expectations) //Must not be undefined
-      .map(e => this.applicableExpectation(e))
+      .filter(e => this.shouldBeApplied(e))
+      .map(([id, _]) => this.idsToExpectations[id])
     )
   },
 
-  applicableExpectation([id, shouldApply]) {
-    return shouldApply && this.idsToExpectations[id] ? this.idsToExpectations[id] : noExpectation
-  }
+  shouldBeApplied([id, shouldApply]) {
+    return shouldApply && this.idsToExpectations[id]
+  },
 })

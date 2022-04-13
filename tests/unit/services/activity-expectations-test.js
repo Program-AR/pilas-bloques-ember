@@ -27,23 +27,34 @@ module('Unit | Service | activity-expectations', function (hooks) {
     activityExpectations.set('idsToExpectations', idsToExpectationsMock)
   });
 
-  test('if an expectation should not be applied, it is mapped to a noExceptation', function (assert) {
-    assert.equal(activityExpectations.applicableExpectation([decompositionKey, false])(), '')
+  test('an expectation id should not be applied if its value is falsy', function (assert) {
+    assert.notOk(activityExpectations.shouldBeApplied([decompositionKey, false]))
   })
 
-  test('a nonexistent id is mapped to noExpectation', function (assert) {
-    assert.equal(activityExpectations.applicableExpectation(['randomID', true])(), '')
+  test('an invalid expectation id should not be applied, regardless of its value', function (assert) {
+    assert.notOk(activityExpectations.shouldBeApplied(['randomID', true]))
   })
 
-  test('if an expectation should be applied and id exists, it is mapped to its corresponding expectation', function (assert) {
-    assert.equal(activityExpectations.applicableExpectation([decompositionKey, true])(), expectationStringMock)
+  test('an expectation id should be applied if it is valid and its value is truthy', function (assert) {
+    assert.ok(activityExpectations.shouldBeApplied([decompositionKey, true]))
   })
 
   test('domain expectations to mulang expectations', function (assert) {
     assert.equal(activityExpectations.expectations(activityMock)(), 'ExpectationMock\nExpectationMock')
   })
 
-  test('if an activity does not define expectations, no expectation is applied', function (assert) {
+  test('multiple nonexistent expectations ids are transformed to a noExpectation', function (assert) {
+    const wrongActivityMock = {
+      expectations: {
+        foo: true,
+        bar: false,
+        baz: true
+      }
+    }
+    assert.equal(activityExpectations.expectations(wrongActivityMock)(), '')
+  })
+
+  test('if an activity does not define expectations, noExpectation is applied', function (assert) {
     assert.equal(activityExpectations.expectationFor({})(), '')
   })
 
