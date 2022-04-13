@@ -600,6 +600,42 @@ model:
         Fijate si funciona o qué hay que arreglar.
       clue: "Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una"
     
+  spects:
+    declares_procedure: |
+      {result, select, 
+        true {You are using procedures to divide in subtasks.}
+        false {You should use procedures to divide in subtasks.}
+      } 
+    too_long: |
+      The definition {declaration, select,
+        al_empezar_a_ejecutar {of the main program}
+        other {of the procedure "{declaration}"}
+      } {result, select, 
+        true {does not do much}
+        other {does a lot of things, use procedures to divide in subtasks}
+      }.
+    do_something: |
+      The definition of the procedure "{declaration}" {result, select, 
+        true {does something}
+        other {does not do anything}
+      }.
+    is_used: |
+      The procedure "{declaration}" {result, select, 
+        true {is being used}
+        other {is not being used from anywhere}
+      }.
+    is_used_from_main: |
+      The procedure "{declaration}" {result, select, 
+        true {is being used from the main program}
+        other {is not being used from the main program}
+      }.
+    name_was_changed : |
+      {result, select,
+        true {A name was chosen for the procedure "{declaration}"}
+        false {You should choose a name for the procedure "{declaration}"}
+      }
+
+  
   groups:
     AlienTocaBoton:
       title: ""

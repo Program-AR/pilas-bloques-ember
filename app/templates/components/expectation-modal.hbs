@@ -1,0 +1,21 @@
+<Modal @title={{t "components.expectationsModal.goodButNotTooGood"}} @onClose={{onClose}}>
+  <div class='expectationsModal'>
+    <p>{{t "components.expectationsModal.reviewSolution"}}</p>
+    <img src="imagenes/libros/primer-ciclo.png" />
+  </div>
+  <div class='expectationResults' >
+    <PaperProgressLinear @value={{passedExpectsValue}} />
+    {{#each passedExpects as |result|}}
+      <p class='good'>
+        {{paper-icon "check-circle"}}
+        {{result.expect}}
+      </p>
+    {{/each}}
+    {{#each failedExpects as |result|}}
+      <p class='bad'>
+        {{paper-icon "radio_button_unchecked"}}
+        {{result.expect}}
+      </p>
+    {{/each}}
+  </div>
+</Modal>

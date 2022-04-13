@@ -24,5 +24,13 @@
 {{/if}}
 
 {{#if mostrarDialogoFinDesafio}}
-  <CongratulationsModal @onClose={{action "ocultarFinDesafio"}}/>
+  {{#if allExpectsPassed}}
+    <CongratulationsModal @onClose={{action "ocultarFinDesafio"}}/>
+  {{else}}
+    <ExpectationModal 
+      @passedExpects={{passedExpects}}
+      @failedExpects={{failedExpects}}
+      @passedExpectsValue={{passedExpectsValue}}
+      @onClose={{action "ocultarFinDesafio"}}/>
+  {{/if}}
 {{/if}}

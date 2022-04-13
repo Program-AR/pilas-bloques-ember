@@ -1,11 +1,11 @@
 /* jshint ignore:start */
-import { computed } from '@ember/object';
+import { computed } from '@ember/object'
+import { run } from '@ember/runloop'
 
-import { later, scheduleOnce, run } from '@ember/runloop';
-import { on } from '@ember/object/evented';
-import { inject as service } from '@ember/service';
-import Component from '@ember/component';
-import Ember from 'ember'
+import { inject as service } from '@ember/service'
+import Component from '@ember/component'
+import { addWarning, clearValidations, declarationWithName } from '../utils/blocks'
+
 
 export default Component.extend({
   classNames: 'pilas-blockly',
@@ -30,6 +30,7 @@ export default Component.extend({
   pilasMulang: service(),
 
   bloques: [],
+  expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
   anterior_ancho: -1,
@@ -50,10 +51,30 @@ export default Component.extend({
     return this.ejecutando || this.terminoDeEjecutar;
   }),
 
+  failedExpects: computed('expects', function () {
+    return this.expects.filter(e => !e.result)
+  }),
+
+  passedExpects: computed('expects', function () {
+    return this.expects.filter(e => e.result)
+  }),
+
+  allExpectsPassed: computed('failedExpects', function () {
+    return !this.failedExpects.length
+  }),
+
+  passedExpectsValue: computed('passedExpects', 'expects', function () {
+    return 100 * this.passedExpects.length / this.expects.length
+  }),
+
+  shouldOpenEndModal: computed('debeMostrarFinDeDesafio', 'modelActividad', function () {
+    return this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
+  }),
+
   didUpdateAttrs() {
     this.didInsertElement()
   },
-
+  
   async didInsertElement() {
 
     /*
@@ -305,6 +326,7 @@ export default Component.extend({
 
   cuandoTerminaEjecucion() {
     run(this, function () {
+
       if (this.errorDeActividad) {
         if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
         return;
@@ -312,11 +334,9 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
-
-      if (this.debeMostrarFinDeDesafio) {
-        if (this.pilasService.estaResueltoElProblema() && this.modelActividad.get('debeFelicitarse')) {
-          this.send('abrirFinDesafio');
-        }
+        
+      if (this.pilasService.estaResueltoElProblema() && this.shouldOpenEndModal) {
+        this.send('abrirFinDesafio')
       }
 
       if (this.ejecutando) {
@@ -351,6 +371,7 @@ export default Component.extend({
   staticAnalysis() {
     return {
       couldExecute: this.shouldExecuteProgram(),
+      expects: this.get('expects'),
     }
   },
 
@@ -367,6 +388,19 @@ export default Component.extend({
     })
   },
 
+  showExpectationFeedback() {
+    this.get('failedExpects').forEach(({ declaration, expect }, i) =>
+      addWarning(declarationWithName(declaration), expect, -i)// TODO: Add priority?
+    )
+  },
+
+  runValidations() {
+    clearValidations()
+    this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+    this.showExpectationFeedback()
+    Blockly.Events.fireRunCode()
+  },
+  
   javascriptCode() {
     // This should be EmberBlockly's responsibility. 
     // But that component's javascriptCode often won't get updated soon enough and tests will fail. See https://github.com/Program-AR/pilas-bloques/pull/878
@@ -378,8 +412,8 @@ export default Component.extend({
     async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
       await this.pilasService.restartScene()
+      this.runValidations()
 
-      Blockly.Events.fireRunCode()
       if (!this.shouldExecuteProgram()) return;
 
       // Permite obtener el código xml al momento de ejecutar. Se utiliza
@@ -448,11 +482,8 @@ export default Component.extend({
     },
 
     onChangeWorkspace(xml) {
-      if (this.isDestroyed) {
-        return;
-      }
-
-      this.set('codigoActualEnFormatoXML', xml);
+      if (this.isDestroyed) return;
+      this.set('codigoActualEnFormatoXML', xml)
       if (this.onChangeWorkspace)
         this.onChangeWorkspace(xml)
     },

@@ -4,8 +4,8 @@ import Component from '@ember/component'
 import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
 import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
+import { fakeUser, toastMock, routerMock, blocklyWorkspaceMock } from './mocks'
 import simulateRouterHooks from './simulate-router.hooks'
-import { fakeUser, toastMock, routerMock } from './mocks'
 import config from '../../config/environment'
 import { test } from 'qunit';
 const { baseURL } = config.pbApi
@@ -102,6 +102,13 @@ export function failAllApiFetchs() {
 export function setUpTestLocale(hooks) {
     hooks.beforeEach(function () {
         this.owner.lookup('service:intl').setLocale(['es-ar'])
+    })
+}
+
+export function setUpTestWorkspace(hooks) {
+    hooks.beforeEach(function () {
+        blocklyWorkspaceMock()
+        this.owner.lookup('service:blocksGallery').start()    
     })
 }
 

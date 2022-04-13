@@ -1,6 +1,6 @@
 
-import { isFlying, isProcedureCall } from './block-utils'
-import Service from '@ember/service';
+import { isFlying, isProcedureCall } from '../utils/blocks'
+import Service from '@ember/service'
 
 /// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
 /// Particularmente, tiene la lógica de highligh para los procedimientos.

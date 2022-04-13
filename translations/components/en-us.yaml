@@ -133,3 +133,7 @@ acceptTermsAndConditions:
   termsLink: "terms of use and conditions"
   toUse: " to use Pilas Bloques"
   accept: "I accept the terms of use and conditions"
+
+expectationsModal:
+  goodButNotTooGood: "It's okay, but... it could be better!"
+  reviewSolution: "Review your solution and try to fulfill all the objectives."

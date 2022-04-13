@@ -1,19 +1,16 @@
 import QUnit, { module, test } from 'qunit'
-import { setupTest } from 'ember-qunit'
-import { blocklyWorkspaceMock } from '../../helpers/mocks'
-import { procedure, entryPoint, sequence, reference, application, repeat, muIf, ifElse, muUntil, number, string, none } from '../../helpers/astFactories'
-import { setUpTestLocale } from '../../helpers/utils';
+import { procedure, entryPoint, sequence, rawSequence, reference, application, repeat, muIf, ifElse, muUntil, number, string, none } from '../../helpers/astFactories'
+import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
+
 
 let pilasMulang = null
 
-module('Unit | Service | pilas-mulang', function (hooks) {
-  setupTest(hooks)
-  setUpTestLocale(hooks)
+module('Unit | Service | pilas-mulang | Parse', function (hooks) {
+  setupPBUnitTest(hooks)
+  setUpTestWorkspace(hooks)
 
   hooks.beforeEach(function () {
     QUnit.dump.maxDepth = 10 // For deepEqual assertion
-    blocklyWorkspaceMock()
-    this.owner.lookup('service:blocksGallery').start()
     pilasMulang = this.owner.lookup('service:pilas-mulang')
   })
 
@@ -429,6 +426,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
   /**
    * WORKSPACE
    */
+  mulangParseWorkspaceTest(`one block`, [simpleProgram], [simpleProgramAST])
 
   mulangParseWorkspaceTest(`every blocks`, [simpleProgram, procedureDefinition], [simpleProgramAST, procedureAST])
 
@@ -704,7 +702,7 @@ function mulangParseWorkspaceTest(description, definitions, expectedAst) {
   test(`Should parse workspace with ${description}`, function (assert) {
     definitions.forEach(Blockly.textToBlock)
     let ast = pilasMulang.parseAll(Blockly.mainWorkspace)
-    assert.deepEqual(ast, expectedAst)
+    assert.deepEqual(ast, rawSequence(expectedAst))
   })
 }
 

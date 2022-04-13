@@ -1,6 +1,10 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs } from './block-utils'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor } from '../utils/blocks'
 import Ember from 'ember'
+
+const original_procedure_type = 'procedures_defnoreturn'
+const procedure_alias = 'Procedimiento'
+const PROCEDURES_SYNONYMS = [original_procedure_type, procedure_alias]
 
 export default Service.extend({
   blockly: service(),
@@ -45,7 +49,7 @@ export default Service.extend({
   },
 
   _isProcedure(type) {
-    return type == "procedures_defnoreturn"
+    return PROCEDURES_SYNONYMS.some(s => s == type)
   },
 
   _isEmptyProcedure(block) {
@@ -1192,10 +1196,9 @@ export default Service.extend({
     function onChangeRequired(warningText) {
       return function (event) {
         if (event && event.runCode) {
-          this.setWarningText(warningText)
+          addError(this, warningText)
           opaque(this)
         }
-        if (this.warning && this.warning.bubble_) this.warning.bubble_.setColour('red')
       }
     }
 
@@ -1377,13 +1380,14 @@ export default Service.extend({
           var procedureDef = this.workspace.getBlockById(this.$parent)
           var ok = isInsideProcedureDef(this) && hasParam(procedureDef, this)
           this.setDisabled(!ok)
-          var warning =
-            (ok || isFlying(this) || !procedureDef)
-              ? null
-              : (hasParam(procedureDef, this))
-                ? wrongParameterError(procedureDef)
-                : deletedParameterError
-          this.setWarningText(warning)
+          if (ok || isFlying(this) || !procedureDef) {
+            clearValidationsFor(this)
+          } else {
+            var err = (hasParam(procedureDef, this))
+            ? wrongParameterError(procedureDef)
+            : deletedParameterError
+            addError(this, err)
+          }
         }
       }
     };
@@ -1554,7 +1558,7 @@ export default Service.extend({
     this.crearBloqueAlias('Numero', 'math_number', 'values');
     this.crearBloqueAlias('Texto', 'text', 'values');
     this.crearBloqueAlias('param_get', 'variables_get');
-    this.crearBloqueAlias('Procedimiento', 'procedures_defnoreturn', 'myProcedures', 'PROCEDURE');
+    this.crearBloqueAlias(procedure_alias, original_procedure_type, 'myProcedures', 'PROCEDURE'); // If another alias is created it should be added to the list of procedures synonyms
     this._agregarAliasParaCompatibilidadHaciaAtras();
   },
 

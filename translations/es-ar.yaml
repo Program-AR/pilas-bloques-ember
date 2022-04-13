@@ -606,6 +606,40 @@ model:
         Fijate si funciona o qué hay que arreglar.
       clue: "Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una"
       
+  spects:
+    declares_procedure: |
+      {result, select, 
+        true {Estás usando procedimientos para dividir en subtareas.}
+        false {Deberías usar procedimientos para dividir en subtareas.}
+      } 
+    too_long: |
+      La definición {declaration, select,
+        al_empezar_a_ejecutar {del programa principal}
+        other {del procedimiento "{declaration}"}
+      } {result, select, 
+        true {no hace muchas cosas}
+        other {hace muchas cosas, dividí en subtareas usando procedimientos}
+      }.
+    do_something: |
+      La definición del procedimiento "{declaration}" {result, select, 
+        true {hace algo}
+        other {no hace nada}
+      }.
+    is_used: |
+      El procedimiento "{declaration}" {result, select, 
+        true {se usa}
+        other {no se usa desde ningún lado}
+      }.
+    is_used_from_main: |
+      El procedimiento "{declaration}" {result, select, 
+        true {se usa desde el programa principal}
+        other {no se usa desde el programa principal}
+      }.
+    name_was_changed : |
+      {result, select,
+        true {Se eligió un nombre para el procedimiento "{declaration}"}
+        false {Deberías elegir un nombre para el procedimiento "{declaration}"}
+      }
 
   groups:
     AlienTocaBoton:

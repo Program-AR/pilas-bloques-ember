@@ -1,11 +1,41 @@
-import Service from '@ember/service'
-import { getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from './block-utils'
+import Service, { inject as service } from '@ember/service'
+import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
+import { parseExpect } from '../utils/expectations'
+// TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
+
+
 export default Service.extend({
+  activityExpectations: service(),
+  intl: service(),
+  
+  /**
+   * @return ExpectationResult
+   * {
+   *  expect: translated expectation name [string]
+   *  result: if the program pass de expect [boolean]
+   *  declaration: blockId
+   *  ... other specific params
+   * }
+   */
+  analyze(workspace, activity) {
+    const activityExpectation = this.activityExpectations.expectationFor(activity.id)
+    const customExpect = activityExpectation(workspace)
+    const ast = this.parseAll(workspace)
+    const toTranslatedResult = ([expect, result]) => {
+      const [name, params] = parseExpect(expect)
+      return { expect: this.intl.t(name, {result, ...params}).toString(), result, ...params }
+    }
+    return mulang
+      .astCode(ast)
+      .customExpect(customExpect)
+      .map(toTranslatedResult)
+  },
 
   parseAll(workspace) {
-    return workspace.getTopBlocks().map(this.parse)
+    const astNodes = workspace.getTopBlocks().map(this.parse)
+    return createNode("Sequence", astNodes)
   },
 
   parse(mainBlock) {
@@ -76,7 +106,7 @@ let applicationParser = {
 
 
 let pilasToMulangParsers = {
-  "al_empezar_a_ejecutar": entryPointParser,
+  [entryPointType]: entryPointParser,
   "repetir": repeatParser,
   "Si": ifParser,
   "SiNo": { ...ifParser, parse: parseIfElse },

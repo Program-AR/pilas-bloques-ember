@@ -1,8 +1,9 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
+import { declaresAnyProcedure } from '../../../utils/expectations'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
@@ -11,6 +12,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
+    this.owner.register('service:activityExpectations', activityExpectationsMock)
     this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
 
@@ -19,6 +21,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
+    this.ctrl.set('debeMostrarFinDeDesafio', true)
     sinon.resetHistory()
   })
 
@@ -63,13 +66,26 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Al resolver el problema muestra el fin del desafío', async function (assert) {
-    this.ctrl.set('debeMostrarFinDeDesafio', true)
     await this.ctrl.send('ejecutar')
-
     later(() => {
       assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
     })
+  })
 
+  test('Al resolver el problema con expectativas fallidas', async function (assert) {
+    Blockly.textToBlock(filledProgram)
+    this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
+    await this.ctrl.send('ejecutar')
+    later(() => {
+      assert.notOk(this.ctrl.get('allExpectsPassed'))
+    })
+  })
+
+  test('Al resolver el problema sin expectativas fallidas', async function (assert) {
+    await this.ctrl.send('ejecutar')
+    later(() => {
+      assert.ok(this.ctrl.get('allExpectsPassed'))
+    })
   })
 
   test('Al reiniciar settea flags y reinicia la escena de pilas', async function (assert) {
@@ -192,6 +208,18 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     await this.ctrl.send('ejecutar')
     const staticAnalysis = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg.staticAnalysis
     assertProps(assert, staticAnalysis, { couldExecute: true })
+  })
+
+  test('Envia metadata a la api al ejecutar', async function (assert) {
+    Blockly.textToBlock(filledProgram)
+    this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
+    await this.ctrl.send('ejecutar')
+    const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
+    assert.deepEqual(metadata.staticAnalysis, { 
+      couldExecute: true,
+      expects: [],
+    })
   })
 
   test('Avisa a la api al finalizar la ejecucion', async function (assert) {
