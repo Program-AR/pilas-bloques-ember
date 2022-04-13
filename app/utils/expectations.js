@@ -60,3 +60,6 @@ const criticalExpectationsIds = [doesNotUseRecursionId]
 export const isCritical = (expectationResult) =>
   criticalExpectationsIds.some(id => id === expectationResult.id)
 
+export const notCritical = (expectationResult) =>
+  !isCritical(expectationResult)
+
