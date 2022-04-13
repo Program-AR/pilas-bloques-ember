@@ -638,17 +638,17 @@ model:
     uses_conditional_alternative: |
       {result, select, 
         true {Estás usando alternativa condicional}
-        false {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
+        other {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
       }.
     uses_conditional_repetition: |
       {result, select, 
         true {Estás usando repetición condicional}
-        false {Deberías usar repetición condicional para considerar todos los escenarios posibles}
+        other {Deberías usar repetición condicional para considerar todos los escenarios posibles}
       }.
     name_was_changed : |
       {result, select,
         true {Se eligió un nombre para el procedimiento "{declaration}"}
-        false {Deberías elegir un nombre para el procedimiento "{declaration}"}
+        other {Deberías elegir un nombre para el procedimiento "{declaration}"}
       }
 
   groups:

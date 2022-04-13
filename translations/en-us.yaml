@@ -604,7 +604,7 @@ model:
     declares_procedure: |
       {result, select, 
         true {You are using procedures to divide in subtasks.}
-        false {You should use procedures to divide in subtasks.}
+        other {You should use procedures to divide in subtasks.}
       } 
     too_long: |
       The definition {declaration, select,
@@ -632,17 +632,17 @@ model:
     uses_conditional_alternative: |
       {result, select, 
         true {You are using conditional alternative}
-        false {You should use conditional alternative to consider all possible scenarios}
+        other {You should use conditional alternative to consider all possible scenarios}
       }.
     uses_conditional_repetition: |
       {result, select, 
         true {You are using conditional repetition}
-        false {You should use conditional repetition to consider all possible scenarios}
+        other {You should use conditional repetition to consider all possible scenarios}
       }.
     name_was_changed : |
       {result, select,
         true {A name was chosen for the procedure "{declaration}"}
-        false {You should choose a name for the procedure "{declaration}"}
+        other {You should choose a name for the procedure "{declaration}"}
       }
 
   

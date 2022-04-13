@@ -18,45 +18,45 @@ const activityExpectations = {
   ),
 
   // El mono y las bananas
-  13: usesConditionalAlternative,
+  13: () => usesConditionalAlternative,
 
   // La elección del mono
-  14: usesConditionalAlternative,
+  14: () => usesConditionalAlternative,
 
   // Laberinto corto 
-  15: usesConditionalAlternative,
+  15: () => usesConditionalAlternative,
 
   // Súper Tito 1
-  19: usesConditionalRepetition,
+  19: () => usesConditionalRepetition,
   
   // Súper Tito 2
-  20: usesConditionalRepetition,
+  20: () => usesConditionalRepetition,
   
   // Laberinto con queso
-  21: usesConditionalRepetition,
+  21: () => usesConditionalRepetition,
 
   //El Detective chaparro
-  22: usesConditionalRepetition,
+  22: () => usesConditionalRepetition,
   
   //Fútbol para robots
-  23: usesConditionalRepetition,
+  23: () => usesConditionalRepetition,
   
   //Prendiendo las compus
-  24: usesConditionalRepetition,
+  24: () => usesConditionalRepetition,
   
   //El mono que sabe contar
-  25: usesConditionalRepetition,
+  25: () => usesConditionalRepetition,
   
   // Solo en ciertas ocasiones
 
   // Desafio 1 
-  242: usesConditionalAlternative,
+  242: () => usesConditionalAlternative,
 
   // Desafio 2 
-  243: usesConditionalAlternative,
+  243: () => usesConditionalAlternative,
   
   // Desafio 3 
-  244: usesConditionalAlternative
+  244: () => usesConditionalAlternative
 }
 
 export default Service.extend({
