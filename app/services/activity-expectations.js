@@ -27,7 +27,7 @@ export default Service.extend({
     return multiExpect(
       ...Object.entries(activity.expectations) //Must not be undefined
       .filter(e => this.shouldBeApplied(e))
-      .map(([id, _]) => this.idsToExpectations[id])
+      .map(([id, _]) => this.idsToExpectations[id]) // jshint ignore: line
     )
   },
 
