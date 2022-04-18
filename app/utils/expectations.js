@@ -10,6 +10,12 @@ export const allProceduresShould = (...expectations) => (workspace) =>
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
 
+export const usesConditionalAlternative = () =>
+  newGlobalExpectation('uses if', 'uses_conditional_alternative')
+
+export const usesConditionalRepetition = () =>
+  newGlobalExpectation('uses while', 'uses_conditional_repetition')
+
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
   newExpectation(`${countCallsWithin(declaration)} >= 1`, 'do_something', { declaration })
@@ -30,6 +36,9 @@ export const nameWasChanged = (intl) => (declaration) =>
   newSimpleCondition(!declaration.includes(intl.t('blocks.procedures.name').string), 'name_was_changed', { declaration })
 
 // UTILS
+const newGlobalExpectation = (expect, id) =>
+  newExpectation(`through ${toEDLString(entryPointType)} ${expect}`, id, {declaration: entryPointType})
+
 export const newExpectation = (expect, id, opts = {}) =>
   `expectation "${stringify(id, opts)}": ${expect};`
 

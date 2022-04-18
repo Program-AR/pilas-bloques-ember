@@ -635,6 +635,16 @@ model:
         true {se usa desde el programa principal}
         other {no se usa desde el programa principal}
       }.
+    uses_conditional_alternative: |
+      {result, select, 
+        true {Estás usando alternativa condicional}
+        other {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
+      }.
+    uses_conditional_repetition: |
+      {result, select, 
+        true {Estás usando repetición condicional}
+        other {Deberías usar repetición condicional para considerar todos los escenarios posibles}
+      }.
     does_not_use_recursion: |
       {result, select,
         true {El procedimiento "{declaration}" no usa recursión.}
@@ -643,7 +653,7 @@ model:
     name_was_changed : |
       {result, select,
         true {Se eligió un nombre para el procedimiento "{declaration}"}
-        false {Deberías elegir un nombre para el procedimiento "{declaration}"}
+        other {Deberías elegir un nombre para el procedimiento "{declaration}"}
       }
 
   groups:

@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged } from '../../../utils/expectations'
-import { procedure, entryPoint, rawSequence, application } from '../../helpers/astFactories'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition } from '../../../utils/expectations'
+import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
 module('Unit | Service | Mulang | Expectations', function (hooks) {
@@ -46,7 +46,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     procedure('EMPTY', [])
   ])
 
-  expectationTestOk('isUsed (from pocedure)', isUsed('EMPTY'), [
+  expectationTestOk('isUsed (from procedure)', isUsed('EMPTY'), [
     procedure(declaration, [],
       application('EMPTY')
     ),
@@ -105,6 +105,45 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     procedure("PROCEDURE2", [])
   ])
 
+  expectationTestFail('usesConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      application('EMPTY')
+    )
+  ])
+
+  expectationTestOk('usesSimpleConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      muIf(none())
+    )
+  ])
+
+  expectationTestOk('usesCompleteConditionalAlternative', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      ifElse(none(), none(), none())
+    )
+  ])
+
+  expectationTestOk('Global expectation is transitive through a procedure', usesConditionalAlternative(), [
+    entryPoint(entryPointType,
+      application('USES_IF')
+    ),
+    procedure('USES_IF', [],
+      muIf(none())
+    )
+  ])
+
+  expectationTestFail('usesCondicionalRepetition', usesConditionalRepetition(), [
+    entryPoint(entryPointType,
+      application('EMPTY')
+    )
+  ])
+
+  expectationTestOk('usesCondicionalRepetition', usesConditionalRepetition(), [
+    entryPoint(entryPointType,
+      muUntil(none(), none())
+    )
+  ])
+  
   // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
@@ -202,6 +241,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     [makeKey('too_long'), { declaration, limit }]
   )
 
+  expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
+    [makeKey('uses_conditional_alternative'), { declaration: entryPointType }]
+  )
+
+  expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
+    [makeKey('uses_conditional_repetition'), { declaration: entryPointType }]
+  )
   expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
     [makeKey('does_not_use_recursion'), { declaration }]
   )
