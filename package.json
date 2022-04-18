@@ -48,7 +48,7 @@
     "pack:linux": "bash ./scripts/package.sh -linux",
     "pack:osx": "bash ./scripts/package.sh -osx",
     "pack:win32": "bash ./scripts/package.sh -win32",
-    "postinstall": "sed -i '770768,770770d' ./node_modules/mulang/build/mulang.js && bash ./scripts/fix-deprecated.sh",
+    "postinstall": "sed -i '770768,770770d' ./node_modules/mulang/build/mulang.js && bash ./scripts/change-sass-division.sh",
     "clean": "rm -rf node_modules dist dist_prod"
   },
   "engines": {
