@@ -8,13 +8,13 @@
     {{#each passedExpects as |result|}}
       <p class='good'>
         {{paper-icon "check-circle"}}
-        {{result.expect}}
+        {{result.description}}
       </p>
     {{/each}}
     {{#each failedExpects as |result|}}
       <p class='bad'>
         {{paper-icon "radio_button_unchecked"}}
-        {{result.expect}}
+        {{result.description}}
       </p>
     {{/each}}
   </div>

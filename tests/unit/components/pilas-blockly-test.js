@@ -3,7 +3,7 @@ import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
 import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
-import { declaresAnyProcedure } from '../../../utils/expectations'
+import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
 
 module('Unit | Components | pilas-blockly', function (hooks) {
@@ -242,6 +242,21 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
     assert.ok(metadata.program || metadata.program.length === 0)
+  })
+
+  test('should execute program if all expectations passed', function (assert) {
+    this.ctrl.set('expects', [ { id: 'is_used', description: "Is used", result: true, declaration: 'block_id' } ])
+    assert.ok(this.ctrl.shouldExecuteProgram())
+  })
+
+  test('should execute program if any non critical exceptation fails', function (assert) {
+    this.ctrl.set('expects', [ { id: 'is_used', description: "Is used", result: false, declaration: 'block_id' } ])
+    assert.ok(this.ctrl.shouldExecuteProgram())
+  })
+
+  test('should not execute program if any critical exceptation fails', function (assert) {
+    this.ctrl.set('expects', [ { id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id' } ])
+    assert.notOk(this.ctrl.shouldExecuteProgram())
   })
 })
 

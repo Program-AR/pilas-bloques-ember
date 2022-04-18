@@ -10,10 +10,10 @@ module('Unit | Service | activity-expectations', function (hooks) {
   const decompositionKey = 'decomposition'
   const expectationStringMock = 'ExpectationMock'
   const expectationMock = (e) => expectationStringMock // jshint ignore: line
-  const idsToExpectationsMock = {
+  const idsToExpectationsMock = () => ({
     decomposition: expectationMock,
     simpleRepetition: expectationMock
-  }
+  })
 
   const activityMock = {
     expectations: {

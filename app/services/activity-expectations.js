@@ -1,8 +1,9 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition } from '../utils/expectations'
+import { inject as service } from '@ember/service';
 
-const activityExpectations = {
+const activityExpectations = (intl) => ({
   decomposition: multiExpect(
     declaresAnyProcedure,
     () => notTooLong()(entryPointType),
@@ -11,11 +12,19 @@ const activityExpectations = {
       doSomething,
       isUsed,
       isUsedFromMain,
+      doesNotUseRecursion,
+      nameWasChanged(intl)
     )
-  )
-}
+  ),
+
+  conditionalAlternative: usesConditionalAlternative,
+
+  conditionalRepetition: usesConditionalRepetition,
+
+})
 
 export default Service.extend({
+  intl: service(),
 
   idsToExpectations: activityExpectations,
 
@@ -27,11 +36,15 @@ export default Service.extend({
     return multiExpect(
       ...Object.entries(activity.expectations) //Must not be undefined
       .filter(e => this.shouldBeApplied(e))
-      .map(([id, _]) => this.idsToExpectations[id]) // jshint ignore: line
+      .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
     )
   },
 
   shouldBeApplied([id, shouldApply]) {
-    return shouldApply && this.idsToExpectations[id]
+    return shouldApply && this.idToExpectation(id)
   },
+
+  idToExpectation(id) {
+    return this.idsToExpectations(this.intl)[id]
+  }
 })
