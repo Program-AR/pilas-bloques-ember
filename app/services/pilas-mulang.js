@@ -1,6 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
-import { parseExpect } from '../utils/expectations'
+import { parseExpect, expectationId } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
@@ -13,6 +13,7 @@ export default Service.extend({
   /**
    * @return ExpectationResult
    * {
+   *  id: expectation id
    *  expect: translated expectation name [string]
    *  result: if the program pass de expect [boolean]
    *  declaration: blockId
@@ -25,7 +26,7 @@ export default Service.extend({
     const ast = this.parseAll(workspace)
     const toTranslatedResult = ([expect, result]) => {
       const [name, params] = parseExpect(expect)
-      return { expect: this.intl.t(name, {result, ...params}).toString(), result, ...params }
+      return { id: expectationId(name), description: this.intl.t(name, {result, ...params}).toString(), result, ...params }
     }
     return mulang
       .astCode(ast)
