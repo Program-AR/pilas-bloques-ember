@@ -1,19 +1,8 @@
-sass_migrator_division() {
-    sass-migrator division **/* *.scss;
-}
+#!/bin/bash
+declare -a FoldersToMigrate=("font-awesome/scss" "angular-material-styles/src/core" "angular-material-styles/src/components" )
 
-echo 'Changing deprecated division - font-awesome';
-
-cd node_modules/font-awesome/scss
-sass_migrator_division;
-
-cd ../..
-
-echo 'Changing deprecated division - angular-material-styles'
-
-cd angular-material-styles/src/core
-sass_migrator_division;
-
-cd ../components
-sass_migrator_division;
+for folder in "${FoldersToMigrate[@]}"; do
+   echo "Changing deprecated division - ${folder}";
+   sass-migrator division node_modules/$folder/**/*.scss node_modules/$folder/*.scss;
+done
 
