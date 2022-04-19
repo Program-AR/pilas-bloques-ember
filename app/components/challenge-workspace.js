@@ -189,7 +189,7 @@ export default Component.extend({
     async ejecutar(pasoAPaso = false) {
       this.set('areExpectationsRunning', true)
       await sleep(50) // This enables the component to rerender
-      await this.pilasBlockly.send('ejecutar', pasoAPaso);
+      await this.pilasBlockly.actions.ejecutar.call(this.pilasBlockly, pasoAPaso)
       this.set('areExpectationsRunning', false)
       this.send("showScene");
     },
