@@ -93,6 +93,9 @@ export default [
     escena: 'LaGranAventuraDelMarEncantado',
     debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
+    expectations: {
+      decomposition: true,
+    },
   },
   {
     id: 12,
@@ -106,14 +109,20 @@ export default [
     nombre: 'ElMonoYLasBananas',
     escena: 'ElMonoYLasBananas',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si']
+    bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 14,
     nombre: 'LaEleccionDelMono',
     escena: 'LaEleccionDelMono',
     debeFelicitarse: true,
-    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+    bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 15,
@@ -122,6 +131,9 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 16,
@@ -152,6 +164,9 @@ export default [
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 20,
@@ -159,7 +174,10 @@ export default [
     escena: 'SuperTito2',
     debeFelicitarse: true,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
-      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta']
+      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 21,
@@ -169,6 +187,9 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'ComerQueso', 'Repetir', 'Si', 'SiNo', 'Hasta', 'TocandoAbajo',
       'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 22,
@@ -178,6 +199,9 @@ export default [
     bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
       'IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso',
       'EsCulpable'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 23,
@@ -187,6 +211,9 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
       'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
       'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 24,
@@ -197,6 +224,9 @@ export default [
       'MoverACasillaDerecha', 'MoverACasillaArriba',
       'MoverACasillaAbajo', 'MoverACasillaIzquierda',
       'PrenderComputadora', 'EstoyEnEsquina'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 25,
@@ -206,7 +236,10 @@ export default [
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarBanana', 'ContarManzana',
       'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'SiNo',
-      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal']
+      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 26,
@@ -1596,6 +1629,9 @@ export default [
       'Si',
       'HayChurrasco'
     ],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 243,
@@ -1612,6 +1648,9 @@ export default [
       'Si',
       'HayChurrasco'
     ],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 244,
@@ -1634,7 +1673,10 @@ export default [
       'SaltarIzquierda',
       'Si',
       'HayCharco'
-    ]
+    ],
+    expectations: {
+      conditionalAlternative: true,
+    }
   },
   {
     id: 245,

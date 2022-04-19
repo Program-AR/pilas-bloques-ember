@@ -21,7 +21,7 @@ export default Service.extend({
    * }
    */
   analyze(workspace, activity) {
-    const activityExpectation = this.activityExpectations.expectationFor(activity.id)
+    const activityExpectation = this.activityExpectations.expectationFor(activity)
     const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
     const toTranslatedResult = ([expect, result]) => {

@@ -29,6 +29,8 @@ export const isUsedFromMain = (declaration) =>
 export const notTooLong = (limit = 7) => (declaration) =>
   newExpectation(`${countCallsWithin(declaration)} <= ${limit - 1}`, 'too_long', { declaration, limit })
 
+export const noExpectation = (declaration) => '' // jshint ignore: line
+
 export const doesNotUseRecursion = (declaration) =>
   newExpectation(`not (through ${toEDLString(declaration)} calls ${toEDLString(declaration)})`, doesNotUseRecursionId, { declaration })
 
