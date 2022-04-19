@@ -610,7 +610,7 @@ model:
     declares_procedure: |
       {result, select, 
         true {Estás usando procedimientos para dividir en subtareas.}
-        false {Deberías usar procedimientos para dividir en subtareas.}
+        other {Deberías usar procedimientos para dividir en subtareas.}
       } 
     too_long: |
       La definición {declaration, select,
