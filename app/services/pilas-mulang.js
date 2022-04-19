@@ -29,19 +29,11 @@ export default Service.extend({
       return { id: expectationId(name), description: this.intl.t(name, {result, ...params}).toString(), result, ...params }
     }
 
-    return new Promise((resolve, reject) => {
-      try {
-        return resolve(
-          mulang
-          .astCode(ast)
-          .customExpect(customExpect)
-          .map(toTranslatedResult)
-        )
-      }
-      catch (error) {
-        return reject(error)
-      }
-    })
+    return mulang
+    .astCode(ast)
+    .customExpect(customExpect)
+    .map(toTranslatedResult)
+
   },
 
   parseAll(workspace) {

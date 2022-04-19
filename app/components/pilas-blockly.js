@@ -18,7 +18,7 @@ export default Component.extend({
   actividad: null,
   interpreterFactory: service(),
   solucion: null,
-  pilasService: null,
+  pilasService: null, //TODO: inyect as service?
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   debeMostrarFinDeDesafio: false,
