@@ -1,6 +1,8 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
+import { asyncActionCall } from '../utils/actions'
+import { later } from '@ember/runloop';
 
 export default Component.extend({
   classNames: ['exercise-workspace'],
@@ -188,10 +190,11 @@ export default Component.extend({
 
     async ejecutar(pasoAPaso = false) {
       this.set('areExpectationsRunning', true)
-      await sleep(50) // This enables the component to rerender
-      await this.pilasBlockly.actions.ejecutar.call(this.pilasBlockly, pasoAPaso)
-      this.set('areExpectationsRunning', false)
-      this.send("showScene");
+      later(this, async function() {
+        await asyncActionCall('ejecutar', this.pilasBlockly, pasoAPaso)
+        this.set('areExpectationsRunning', false)
+        this.send("showScene");
+      }, 50)
     },
 
     step() {
@@ -200,13 +203,9 @@ export default Component.extend({
     },
 
     async reiniciar() {
-      await this.pilasBlockly.send('reiniciar');
+      await asyncActionCall('reiniciar', this.pilasBlockly)
     },
 
   }
 
 });
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
