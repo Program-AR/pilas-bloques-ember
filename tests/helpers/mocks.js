@@ -41,6 +41,7 @@ export const createActividadMock = (fields) => EmberObject.extend({
             }
         }
     },
+    hasAutomaticGrading: true,
     ...fields
 }).create()
 
