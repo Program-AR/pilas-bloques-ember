@@ -14,11 +14,11 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
     this.owner.register('service:activityExpectations', activityExpectationsMock)
+    this.owner.register('service:pilas', pilasMock)
     this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
 
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
-    this.ctrl.pilasService = pilasMock //TODO: Injectar como service
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
@@ -31,7 +31,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.send('ejecutar')
     await settled()
 
-    //assert.ok(this.ctrl.get('ejecutando')) //TODO: review test
     assert.notOk(this.ctrl.get('pausadoEnBreakpoint'))
     assert.ok(interpreteMock.run.called)
   })
@@ -102,7 +101,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assert.notOk(this.ctrl.get('ejecutando'))
     assert.notOk(this.ctrl.get('terminoDeEjecutar'))
     assert.notOk(this.ctrl.get('errorDeActividad'))
-    assert.ok(pilasMock.restartScene.called)
+    assert.ok(this.owner.lookup('service:pilas').restartScene.called)
   })
 
 
