@@ -5,9 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
-          node-version: '14.19.1'
+          node-version-file: '.nvmrc'
 
       #https://docs.github.com/es/actions/guides/caching-dependencies-to-speed-up-workflows#using-the-cache-action
       - name: Cache node modules
