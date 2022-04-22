@@ -17,4 +17,10 @@ export default Component.extend({
         return _classes;
     }),
 
+    actions: {
+        reload(){
+            window.location.reload()
+        }
+    }
+
 });
