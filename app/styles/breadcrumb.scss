@@ -20,7 +20,7 @@ $breadcrumb-size: 30px;
   margin-left: -$breadcrumb-size;
   padding: 5px;
   padding-left: $breadcrumb-size + 2;
-  padding-right: $breadcrumb-size / 2;
+  padding-right: $breadcrumb-size * 0.5;
   text-decoration: none;
   white-space: nowrap;
   display: block;

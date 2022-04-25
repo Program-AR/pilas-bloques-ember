@@ -21,7 +21,6 @@ export default Component.extend({
   pilasService: service('pilas'),
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
-  debeMostrarFinDeDesafio: false,
   codigo: null,
   modelActividad: null,
 
@@ -68,14 +67,10 @@ export default Component.extend({
     return 100 * this.passedExpects.length / this.expects.length
   }),
 
-  shouldOpenEndModal: computed('debeMostrarFinDeDesafio', 'modelActividad', function () {
-    return this.debeMostrarFinDeDesafio && this.modelActividad.get('debeFelicitarse')
-  }),
-
   didUpdateAttrs() {
     this.didInsertElement()
   },
-  
+
   async didInsertElement() {
 
     /*
@@ -335,10 +330,8 @@ export default Component.extend({
 
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
-        
-      if (this.pilasService.estaResueltoElProblema() && this.shouldOpenEndModal) {
-        this.send('abrirFinDesafio')
-      }
+
+      this.send('showEndModal')
 
       if (this.ejecutando) {
         this.set('ejecutando', false);
@@ -408,10 +401,10 @@ export default Component.extend({
 
   showExpectationFeedbackFor(condition, addFeedback) {
     this.get('failedExpects')
-    .filter(condition)
-    .forEach(({ declaration, description }, i) =>
-      addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
-    )
+      .filter(condition)
+      .forEach(({ declaration, description }, i) =>
+        addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
+      )
   },
 
   async runValidations() {
@@ -420,7 +413,7 @@ export default Component.extend({
     this.showExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
-  
+
   javascriptCode() {
     // This should be EmberBlockly's responsibility. 
     // But that component's javascriptCode often won't get updated soon enough and tests will fail. See https://github.com/Program-AR/pilas-bloques/pull/878
@@ -488,14 +481,6 @@ export default Component.extend({
 
     },
 
-    abrirFinDesafio() {
-      this.set('mostrarDialogoFinDesafio', true);
-    },
-
-    ocultarFinDesafio() {
-      this.set('mostrarDialogoFinDesafio', false);
-    },
-
     step() {
       this.set('pausadoEnBreakpoint', false);
       this.exerciseWorkspace.set('pausadoEnBreakpoint', false);
@@ -511,7 +496,17 @@ export default Component.extend({
     onNewWorkspace() {
       this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.bloques)
     },
-  }
+
+    showEndModal() {
+      const isOpen = this.pilasService.estaResueltoElProblema() && this.modelActividad.get('hasAutomaticGrading')
+      this.set('isEndModalOpen', isOpen);
+    },
+
+    hideEndModal() {
+      this.set('isEndModalOpen', false);
+    },
+  },
+
 
 });
 

@@ -197,7 +197,6 @@ export function actividadTest(nombre, opciones) {
                       persistirSolucionEnURL=false
                       onTerminoEjecucion=onTerminoEjecucion
                       onErrorDeActividad=onErrorDeActividad
-                      debeMostrarFinDeDesafio=false
                     }}
                   `);
       });

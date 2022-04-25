@@ -22,7 +22,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
-    this.ctrl.set('debeMostrarFinDeDesafio', true)
     sinon.resetHistory()
   })
 
@@ -73,7 +72,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.ctrl.send('ejecutar')
     await settled()
     later(() => {
-      assert.ok(this.ctrl.get('mostrarDialogoFinDesafio'))
+      assert.ok(this.ctrl.get('isEndModalOpen'))
     })
   })
 
@@ -233,7 +232,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
     await settled()
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
-    assert.deepEqual(metadata.staticAnalysis, { 
+    assert.deepEqual(metadata.staticAnalysis, {
       couldExecute: true,
       expects: [],
     })
@@ -265,22 +264,22 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('should execute program if all expectations passed', function (assert) {
-    this.ctrl.set('expects', [ { id: 'is_used', description: "Is used", result: true, declaration: 'block_id' } ])
+    this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: true, declaration: 'block_id' }])
     assert.ok(this.ctrl.shouldExecuteProgram())
   })
 
   test('should execute program if any non critical exceptation fails', function (assert) {
-    this.ctrl.set('expects', [ { id: 'is_used', description: "Is used", result: false, declaration: 'block_id' } ])
+    this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: false, declaration: 'block_id' }])
     assert.ok(this.ctrl.shouldExecuteProgram())
   })
 
   test('should not execute program if any critical exceptation fails', function (assert) {
-    this.ctrl.set('expects', [ { id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id' } ])
+    this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id' }])
     assert.notOk(this.ctrl.shouldExecuteProgram())
   })
 })
 
-module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hooks) {
+module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function (hooks) {
   setupTest(hooks)
 
   const operator = { categoryId: 'operators' }
@@ -332,7 +331,7 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
 
   test('If categories are not required in toolbox, it should be flattened', function (assert) {
     setCategoriesNotRequired(this.ctrl)
-    assert.propEqual(this.ctrl._styledToolbox(toolbox), [blockId, doThis, doThat,separator])
+    assert.propEqual(this.ctrl._styledToolbox(toolbox), [blockId, doThis, doThat, separator])
   })
 
   test('When styling, separators should be left unchanged', function (assert) {
@@ -348,8 +347,8 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function(hook
   test('ToolboxForBlockTypes should add one separator', function (assert) {
     assert.equal(
       this.ctrl.toolboxForBlockTypes(['Saludar'])
-      .filter(block => block.isSeparator)
-      .length,
+        .filter(block => block.isSeparator)
+        .length,
       1
     )
   })
