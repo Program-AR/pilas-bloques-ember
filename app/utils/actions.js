@@ -3,5 +3,5 @@
  * Using send directly does not work because it does not return a Promise.
  * Send is void.
 */
-export const asyncActionCall = async (actionName, receiver, ...args) =>
+export const asyncActionCall = async (receiver, actionName, ...args) =>
     await receiver.actions[actionName].call(receiver, ...args)

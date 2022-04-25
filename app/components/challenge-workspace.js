@@ -191,7 +191,7 @@ export default Component.extend({
     async ejecutar(pasoAPaso = false) {
       this.set('areExpectationsRunning', true)
       later(this, async function() {
-        await asyncActionCall('ejecutar', this.pilasBlockly, pasoAPaso)
+        await asyncActionCall(this.pilasBlockly, 'ejecutar', pasoAPaso)
         this.set('areExpectationsRunning', false)
         this.send("showScene");
       }, 50)
@@ -203,7 +203,7 @@ export default Component.extend({
     },
 
     async reiniciar() {
-      await asyncActionCall('reiniciar', this.pilasBlockly)
+      await asyncActionCall(this.pilasBlockly, 'reiniciar')
     },
 
   }
