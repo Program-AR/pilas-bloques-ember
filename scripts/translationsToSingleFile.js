@@ -58,9 +58,6 @@ function translationsToSingleFile(languageToTranslate, baseLanguage, source) {
     
         if(languageToTranslateFile) {
             translationYaml = mergedYamls(translationYaml, yamlFile(source, languageToTranslateFile))
-            if(source === '../translations'){
-                console.log(`MERGED TRANSLATIONS: ${JSON.stringify(translationYaml)}`)
-            }
         }
     }
 
