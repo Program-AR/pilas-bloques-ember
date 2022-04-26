@@ -14,19 +14,19 @@
         />
 
         <SceneButton 
-            @class="step-by-step-button-container"
+            @class={{if areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
             @element-id="run-step-button"
             @label={{ t "components.sceneButtons.runStep.label"}}
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) (not running)}}
-            @isDisabled={{not isPausedOnBreackpoint}} 
+            @isDisabled={{or (not isPausedOnBreackpoint) areExpectationsRunning}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step}}
             @tooltip={{ t "components.sceneButtons.runStep.tooltip"}}
         />
 
         <SceneButton 
-            @class={{if areExpectationsRunning "deactivated-run-button-container" "run-button-container"}}
+            @class={{if areExpectationsRunning "deactivated-button-container" "run-button-container"}}
             @element-id="run-button"
             @label={{ t "components.sceneButtons.run.label"}}
             @icon="play_arrow"
