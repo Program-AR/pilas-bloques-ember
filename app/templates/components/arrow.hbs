@@ -1,5 +1,5 @@
-<div class="multiple-scenarios-arrow">
-    <img src="imagenes/multiple-scenarios-arrow2.png" style="object-fit: contain"/>
-    <span class="multiple-scenarios-arrow-text">{{t "multipleScenarios"}}</span>
+<div class={{if shouldUseFloatingMode "multiple-scenarios-arrow full-screen-arrow" "multiple-scenarios-arrow normal-screen-arrow"}}>
+    <img src={{if shouldUseFloatingMode "imagenes/multiple-scenarios-arrow-full-screen.png" "imagenes/multiple-scenarios-arrow.png"}}>
+    <span class="multiple-scenarios-arrow-text">{{t "components.sceneButtons.multipleScenarios"}}</span>
 </div>
 
