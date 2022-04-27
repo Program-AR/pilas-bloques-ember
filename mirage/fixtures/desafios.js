@@ -112,7 +112,8 @@ export default [
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
       conditionalAlternative: true,
-    }
+    },
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 14,
@@ -122,7 +123,8 @@ export default [
     bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
     expectations: {
       conditionalAlternative: true,
-    }
+    },
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 15,

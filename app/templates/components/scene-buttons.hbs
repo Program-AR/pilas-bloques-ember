@@ -1,5 +1,9 @@
 {{#unless cargando}}
     <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column" "exercise-buttons-card exercise-actions flex layout-row"}}>
+
+        {{#if shouldUseFloatingMode}}
+            <TurboModeToggle class="toggle-container-collapsed" @pilas={{pilas}} />
+        {{/if}}
         
         <SceneButton 
             @class="step-by-step-button-container"
@@ -23,6 +27,11 @@
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step}}
             @tooltip={{ t "components.sceneButtons.runStep.tooltip"}}
+        />
+
+        <Arrow
+            @shouldUseFloatingMode={{shouldUseFloatingMode}}
+            @shouldShowMultipleScenarioHelp={{shouldShowMultipleScenarioHelp}}
         />
 
         <SceneButton 
@@ -50,10 +59,10 @@
         />
 
         {{#unless shouldUseFloatingMode}}
-            <span class="flex"></span>
+            <span class="flex"> </span>
+            <TurboModeToggle class="toggle-container" @pilas={{pilas}} />
         {{/unless}}
 
-        <TurboModeToggle class={{if shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{pilas}} />
 
     </PaperCard>
 {{/unless}}
