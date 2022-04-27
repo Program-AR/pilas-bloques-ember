@@ -1633,7 +1633,8 @@ export default [
     ],
     expectations: {
       conditionalAlternative: true,
-    }
+    },
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 243,
@@ -1652,7 +1653,8 @@ export default [
     ],
     expectations: {
       conditionalAlternative: true,
-    }
+    },
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 244,
@@ -1699,6 +1701,7 @@ export default [
       'HayTomate',
       'HayLechuga',
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 246,
@@ -1731,6 +1734,7 @@ export default [
       'HayObstaculoIzquierda',
       'HayObstaculoDerecha'
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 247,
@@ -1756,6 +1760,7 @@ export default [
       'HayObstaculoIzquierda',
       'HayObstaculoDerecha'
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 248,
@@ -1774,6 +1779,7 @@ export default [
       'SiNo',
       'HayChurrasco'
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 249,
@@ -1792,6 +1798,7 @@ export default [
       'SiNo',
       'HayChurrasco'
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 250,
@@ -1813,6 +1820,7 @@ export default [
       'HayTomate',
       'HayLechuga',
     ],
+    shouldShowMultipleScenarioHelp: true
   },
   {
     id: 251,
