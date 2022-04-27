@@ -89,3 +89,38 @@
     background-color:#2196f3;
     cursor: pointer;
 }
+
+.arrow{
+    position: relative;
+    top: 100px;
+}
+
+.multiple-scenarios-arrow{
+    position: absolute;
+    text-align: center;
+    animation: updown 0.75s linear infinite;
+    height: 12%;
+    width: auto;
+    right: 90px;
+}
+
+.multiple-scenarios-arrow-text {
+    white-space: nowrap;
+    position: absolute;
+    top: 50%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 70%;
+
+}
+
+@keyframes updown {
+    0%, 100% {
+      transform: translateX(-5%);
+    }
+  
+    50% {
+      transform: translateX(5%);
+    }
+  }
