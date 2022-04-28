@@ -8,6 +8,9 @@
 .column-reverse{
     flex-direction: column-reverse;
     justify-content: flex-end;
+    padding-top: 7px;
+    padding-left: 2px;
+    padding-right: 2px;
 }
 
 .exercise-actions {
@@ -110,14 +113,14 @@
 
 .full-screen-arrow{
     animation: left-rigth 0.5s linear infinite;
-    top: 35px;
+    top: 22px;
     left: -215px;
 }
 
 .multiple-scenarios-arrow-text {
     white-space: nowrap;
     position: absolute;
-    top: 46%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
