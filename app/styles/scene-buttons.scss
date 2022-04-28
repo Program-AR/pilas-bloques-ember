@@ -95,17 +95,19 @@
     text-align: center;
     width: 150px;
     z-index: 11;
+
 }
 
 .normal-screen-arrow{
+    left: 16px;
+    top: 58px;
     animation: up-down 0.5s linear infinite;
-    top: 200px; 
-    right: 150px;
 }
 
 .full-screen-arrow{
     animation: left-rigth 0.5s linear infinite;
-    right: 100px;
+    top: 35px;
+    left: -165px;
 }
 
 .multiple-scenarios-arrow-text {
