@@ -1,9 +1,5 @@
 {{#unless cargando}}
-    <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column" "exercise-buttons-card exercise-actions flex layout-row"}}>
-
-        {{#if shouldUseFloatingMode}}
-            <TurboModeToggle class="toggle-container-collapsed" @pilas={{pilas}} />
-        {{/if}}
+    <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
         
         <SceneButton 
             @class="step-by-step-button-container"
@@ -59,9 +55,10 @@
         />
 
         {{#unless shouldUseFloatingMode}}
-            <span class="flex"> </span>
-            <TurboModeToggle class="toggle-container" @pilas={{pilas}} />
+            <span class="flex"></span>
         {{/unless}}
+
+        <TurboModeToggle class={{if shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{pilas}} />
 
 
     </PaperCard>

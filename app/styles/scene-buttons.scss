@@ -5,6 +5,11 @@
     color:#fff;
 }
 
+.column-reverse{
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+}
+
 .exercise-actions {
     position: inherit;
 }
@@ -93,9 +98,8 @@
 .multiple-scenarios-arrow{
     position: absolute;
     text-align: center;
-    width: 150px;
+    width: 200px;
     z-index: 11;
-
 }
 
 .normal-screen-arrow{
@@ -107,7 +111,7 @@
 .full-screen-arrow{
     animation: left-rigth 0.5s linear infinite;
     top: 35px;
-    left: -165px;
+    left: -215px;
 }
 
 .multiple-scenarios-arrow-text {
@@ -117,7 +121,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
-    font-size: 70%;
+    font-size: 75%;
 
 }
 
