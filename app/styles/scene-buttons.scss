@@ -98,6 +98,10 @@
     cursor: pointer;
 }
 
+.arrow{
+    position: relative;
+}
+
 .multiple-scenarios-arrow{
     position: absolute;
     text-align: center;
@@ -120,12 +124,11 @@
 .multiple-scenarios-arrow-text {
     white-space: nowrap;
     position: absolute;
-    top: 50%;
+    top: 46%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
     font-size: 75%;
-
 }
 
 @keyframes left-rigth {
