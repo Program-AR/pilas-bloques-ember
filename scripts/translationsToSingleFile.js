@@ -7,6 +7,10 @@
 const fs = require('fs');
 const yaml = require('js-yaml');
 
+const fileMiddleName = '-single-file-from-'
+const encoding = 'utf8'
+const folderPrefix = 'folder_'
+
 /*
  * Example:
  * makeSingleFile('es-ar', 'pt', translationsFolder)
@@ -14,7 +18,7 @@ const yaml = require('js-yaml');
 */
 function makeSingleFile(languageToTranslate, baseLanguage='es-ar', source='../translations') {
     const yamlString = yaml.safeDump(translationsToSingleFile(languageToTranslate, baseLanguage, source))
-    fs.writeFileSync(`${languageToTranslate}-single-file-from-${baseLanguage}.yaml`, yamlString, 'utf8');
+    fs.writeFileSync(`${languageToTranslate}${fileMiddleName}${baseLanguage}.yaml`, yamlString, encoding);
 }
 
 const yamlName = (language) => `${language}.yaml`
@@ -23,7 +27,7 @@ const languageFile = (dirents, language) =>
     dirents.find(d => yamlName(language) === d.name)
 
 function yamlFile(source, dirent) {
-    const fileContents = fs.readFileSync(`${source}/${dirent.name}`, 'utf8')
+    const fileContents = fs.readFileSync(`${source}/${dirent.name}`, encoding)
     return yaml.safeLoad(fileContents)
 }
 
@@ -62,7 +66,7 @@ function translationsToSingleFile(languageToTranslate, baseLanguage, source) {
     }
 
     dirents.filter(d => d.isDirectory()).forEach(d => {
-        translationYaml[`folder_${d.name}`] = translationsToSingleFile(languageToTranslate, baseLanguage, `${source}/${d.name}`)
+        translationYaml[`${folderPrefix}${d.name}`] = translationsToSingleFile(languageToTranslate, baseLanguage, `${source}/${d.name}`)
     })
 
     return translationYaml
