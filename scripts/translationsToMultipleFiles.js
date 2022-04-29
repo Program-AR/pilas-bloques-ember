@@ -40,7 +40,7 @@ function yamlDictionariesFrom(translationYaml, baseDirectory, language) {
     const yamlDictionary = yamlDictionaryFrom(singleFileTranslationYaml, baseDirectory, language)
 
     // Some folders do not have their own translation file.
-    if(isEmpty(yamlDictionary)) yamlDictionaries.push(yamlDictionary)
+    if(!isEmpty(yamlDictionary.content)) yamlDictionaries.push(yamlDictionary)
 
     return yamlDictionaries
 }
