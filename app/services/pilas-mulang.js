@@ -35,7 +35,7 @@ export default Service.extend({
       console.error(e)
     }
     
-    return results.map(toTranslatedResult)
+    return results.map(toTranslatedResult(this.intl))
   },
 
   parseAll(workspace) {
@@ -53,13 +53,14 @@ export default Service.extend({
  * @param {[Expect,Result]} pair is a pair of Mulang expectation and result
  * @returns a Pilas Bloques Expectation object
  */
-function toTranslatedResult([expect, result]) {
+const toTranslatedResult = (intl) => ([expect, result]) => {
   const [name, params] = parseExpect(expect)
   return { 
     id: expectationId(name), 
-    description: this.intl.t(name, {result, ...params}).toString(), 
+    description: intl.t(name, {result, ...params}).toString(), 
     result, 
-    ...params }
+    ...params 
+  }
 }
 
 function buildBlockAst(block) {
