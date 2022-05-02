@@ -105,48 +105,57 @@
 .multiple-scenarios-arrow{
     position: absolute;
     text-align: center;
-    width: 200px;
     z-index: 11;
 }
 
 .normal-screen-arrow{
-    left: 16px;
-    top: 58px;
+    left: 3px;
+    top: 76px;
     animation: up-down 0.5s linear infinite;
+}
+
+.normal-screen-arrow-image{
+    background-image: url("../imagenes/multiple-scenarios-arrow-normal-screen.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 30px 10px 10px 15px
+}
+
+.full-screen-arrow-image{
+    background-image: url("../imagenes/multiple-scenarios-arrow-full-screen.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 15px 35px 15px 10px;
 }
 
 .full-screen-arrow{
     animation: left-rigth 0.5s linear infinite;
-    top: 22px;
-    left: -215px;
+    top: -35px;
+    left: -219px;
 }
 
 .multiple-scenarios-arrow-text {
     white-space: nowrap;
-    position: absolute;
-    top: 46%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: black;
-    font-size: 75%;
+    font-size: 65%;
 }
 
 @keyframes left-rigth {
     0%, 100% {
-      transform: translateX(-5%);
+      transform: translateX(-3%);
     }
   
     50% {
-      transform: translateX(5%);
+      transform: translateX(3%);
     }
   }
 
 @keyframes up-down {
     0%, 100% {
-      transform: translateY(-5%);
+      transform: translateY(-7%);
     }
   
     50% {
-      transform: translateY(5%);
+      transform: translateY(7%);
     }
   }
