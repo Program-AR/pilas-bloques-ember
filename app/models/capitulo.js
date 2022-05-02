@@ -2,6 +2,7 @@ import Model from 'ember-data/model';
 import { hasMany, belongsTo } from 'ember-data/relationships';
 import { computed } from '@ember/object';
 import Ember from 'ember';
+import attr from 'ember-data/attr';
 
 export default Model.extend({
   intl: Ember.inject.service(),
@@ -11,5 +12,6 @@ export default Model.extend({
   }),
 
   grupos: hasMany('grupo'),
-  libro: belongsTo('libro')
+  libro: belongsTo('libro'),
+  expectations: attr(),
 });
