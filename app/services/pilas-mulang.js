@@ -24,16 +24,18 @@ export default Service.extend({
     const activityExpectation = this.activityExpectations.expectationFor(activity)
     const customExpect = activityExpectation(workspace)
     const ast = this.parseAll(workspace)
-    const toTranslatedResult = ([expect, result]) => {
-      const [name, params] = parseExpect(expect)
-      return { id: expectationId(name), description: this.intl.t(name, {result, ...params}).toString(), result, ...params }
+    var results
+
+    try {
+      // customExpect takes a lot of time. 
+      results = mulang.astCode(ast).customExpect(customExpect)
+    } catch (e) {
+      // mulang errors should not affect normal application usage
+      results = []
+      console.error(e)
     }
-
-    return mulang
-    .astCode(ast)
-    .customExpect(customExpect)
-    .map(toTranslatedResult)
-
+    
+    return results.map(toTranslatedResult(this.intl))
   },
 
   parseAll(workspace) {
@@ -46,6 +48,20 @@ export default Service.extend({
   },
 
 })
+
+/**
+ * @param {[Expect,Result]} pair is a pair of Mulang expectation and result
+ * @returns a Pilas Bloques Expectation object
+ */
+const toTranslatedResult = (intl) => ([expect, result]) => {
+  const [name, params] = parseExpect(expect)
+  return { 
+    id: expectationId(name), 
+    description: intl.t(name, {result, ...params}).toString(), 
+    result, 
+    ...params 
+  }
+}
 
 function buildBlockAst(block) {
   if (block.isShadow()) return createEmptyNode()
