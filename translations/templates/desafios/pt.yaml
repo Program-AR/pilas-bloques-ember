@@ -1,5 +1,7 @@
 desafioPorNombreError:
-  wentWrong: "Desculpe, algo deu errado..."
-  doesntExist: "Não há desafio com o nome indicado no URL. Você poderia confirmar a correção da direção a este desafio?"
+  wentWrong: 'Desculpe, algo deu errado...'
+  doesntExist: >-
+    Não há desafio com o nome indicado no URL. Você poderia confirmar a correção
+    da direção a este desafio?
 index:
-  chooseOne: "Escolha um dos livros da barra superior"
+  chooseOne: Escolha um dos livros da barra superior
