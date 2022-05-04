@@ -11,7 +11,8 @@ module('Unit | Components | challenge-workspace', function (hooks) {
   setupTest(hooks);
 
   hooks.beforeEach(function () {
-    this.owner.register('service:interpreterFactory', interpreterFactoryMock);
+    this.owner.register('service:interpreterFactory', interpreterFactoryMock)
+    this.owner.register('service:pilas', pilasMock)
     this.ctrl = this.owner.factoryFor('component:challenge-workspace').create();
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
     this.ctrl.set('model', actividadMock);
@@ -19,8 +20,9 @@ module('Unit | Components | challenge-workspace', function (hooks) {
   });
 
   test('Si el desafío necesita modo de lectura simple debería indicárselo a pilas', function (assert) {
-    this.ctrl.send('onSceneReady', pilasMock);
-    assert.ok(pilasMock.cambiarAModoDeLecturaSimple.called);
+    const pilasService = this.owner.lookup('service:pilas')
+    this.ctrl.send('onSceneReady', pilasService);
+    assert.ok(pilasService.cambiarAModoDeLecturaSimple.called);
   });
   
 });

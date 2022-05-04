@@ -18,7 +18,7 @@ export default Component.extend({
   actividad: null,
   interpreterFactory: service(),
   solucion: null,
-  pilasService: null,
+  pilasService: service('pilas'),
   codigoJavascript: "", // Se carga como parametro
   persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   codigo: null,
@@ -407,9 +407,9 @@ export default Component.extend({
       )
   },
 
-  runValidations() {
+  async runValidations() {
     clearValidations()
-    this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+    this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
     this.showExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
@@ -425,7 +425,7 @@ export default Component.extend({
     async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
       await this.pilasService.restartScene()
-      this.runValidations()
+      await this.runValidations()
 
       if (!this.shouldExecuteProgram()) return;
 

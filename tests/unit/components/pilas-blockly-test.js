@@ -5,6 +5,7 @@ import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, block
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
+import { settled } from '@ember/test-helpers';
 
 module('Unit | Components | pilas-blockly', function (hooks) {
   setupTest(hooks)
@@ -13,11 +14,11 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   hooks.beforeEach(function () {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
     this.owner.register('service:activityExpectations', activityExpectationsMock)
+    this.owner.register('service:pilas', pilasMock)
     this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
 
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
-    this.ctrl.pilasService = pilasMock //TODO: Injectar como service
     this.ctrl.set('modelActividad', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
@@ -26,15 +27,16 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   //TODO: Ver de agrupar en modules
   test('Al ejecutar se encuentra ejecutando y ejecuta el intérprete', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
 
-    assert.ok(this.ctrl.get('ejecutando'))
     assert.notOk(this.ctrl.get('pausadoEnBreakpoint'))
     assert.ok(interpreteMock.run.called)
   })
 
   test('Ejecutar paso a paso bloquea la ejecución', async function (assert) {
-    await this.ctrl.send('ejecutar', true)
+    this.ctrl.send('ejecutar', true)
+    await settled()
 
     later(() => {
       assert.ok(interpreteMock.run.calledOnce)
@@ -44,7 +46,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Step desbloquea el breakpoint', async function (assert) {
-    await this.ctrl.send('ejecutar', true)
+    this.ctrl.send('ejecutar', true)
+    await settled()
 
     later(() => {
       assert.ok(this.ctrl.get('pausadoEnBreakpoint'))
@@ -55,7 +58,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Luego de ejecutar termina de ejecutar', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
 
     later(() => {
       assert.notOk(this.ctrl.get('ejecutando'))
@@ -65,7 +69,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Al resolver el problema muestra el fin del desafío', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => {
       assert.ok(this.ctrl.get('isEndModalOpen'))
     })
@@ -74,25 +79,28 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   test('Al resolver el problema con expectativas fallidas', async function (assert) {
     Blockly.textToBlock(filledProgram)
     this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => {
       assert.notOk(this.ctrl.get('allExpectsPassed'))
     })
   })
 
   test('Al resolver el problema sin expectativas fallidas', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => {
       assert.ok(this.ctrl.get('allExpectsPassed'))
     })
   })
 
   test('Al reiniciar settea flags y reinicia la escena de pilas', async function (assert) {
-    await this.ctrl.send('reiniciar')
+    this.ctrl.send('reiniciar')
+    await settled()
     assert.notOk(this.ctrl.get('ejecutando'))
     assert.notOk(this.ctrl.get('terminoDeEjecutar'))
     assert.notOk(this.ctrl.get('errorDeActividad'))
-    assert.ok(pilasMock.restartScene.called)
+    assert.ok(this.owner.lookup('service:pilas').restartScene.called)
   })
 
 
@@ -120,13 +128,15 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   test('Ejecuta cuando todos los bloques están completos', async function (assert) {
     Blockly.textToBlock(filledProgram)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.ok(interpreteMock.run.called)
   })
 
   test('No ejecuta cuando el programa tiene algún agujero', async function (assert) {
     Blockly.textToBlock(nonFilledProgram)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.notOk(interpreteMock.run.called)
   })
 
@@ -143,7 +153,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     Blockly.textToBlock(filledProgram)
     Blockly.textToBlock(bloqueSuelto)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.ok(interpreteMock.run.called)
   })
 
@@ -178,19 +189,22 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   test('Ejecuta aún cuando existe procedimiento vacío', async function (assert) {
     Blockly.textToBlock(emptyProcedure)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.ok(interpreteMock.run.called)
   })
 
   test('Ejecuta aún cuando existe procedimiento vacío con parámetros', async function (assert) {
     Blockly.textToBlock(emptyProcedureWithParam)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.ok(interpreteMock.run.called)
   })
 
   test('No ejecuta cuando existe procedimiento con algún agujero', async function (assert) {
     Blockly.textToBlock(nonFilledProcedure)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     assert.notOk(interpreteMock.run.called)
   })
 
@@ -198,13 +212,15 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     let program = Blockly.textToBlock(nonFilledProgram)
     let required = findBlockByTypeIn(program, "required_statement")
     assertNotWarning(assert, required)
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => assertWarning(assert, required, "¡Acá faltan bloques comandos!"))
   })
 
   // API
   test('Avisa a la api al ejecutar', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     const staticAnalysis = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg.staticAnalysis
     assertProps(assert, staticAnalysis, { couldExecute: true })
   })
@@ -212,8 +228,9 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   test('Envia metadata a la api al ejecutar', async function (assert) {
     Blockly.textToBlock(filledProgram)
     this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    await settled()
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
     assert.deepEqual(metadata.staticAnalysis, {
       couldExecute: true,
@@ -222,7 +239,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Avisa a la api al finalizar la ejecucion', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => {
       assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { finished: true })
     })
@@ -230,15 +248,17 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
   test('Avisa a la api al finalizar la ejecucion con error', async function (assert) {
     this.ctrl.errorDeActividad = "ERROR"
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
+    await settled()
     later(() => {
       assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
     })
   })
 
   test('Envia metadata a la api al ejecutar', async function (assert) {
-    await this.ctrl.send('ejecutar')
+    this.ctrl.send('ejecutar')
     const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
+    await settled()
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
     assert.ok(metadata.program || metadata.program.length === 0)
   })
