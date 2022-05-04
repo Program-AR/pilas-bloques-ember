@@ -43,7 +43,7 @@ importCustomChallenge:
   import: Import Challenge
   custom: Import a custom challenge from Pilas Bloques’ challenge creator.
 header:
-  tool: A tool to learn programming
+  tool: A tool to learn computer programming
 simpleReadToggle:
   disable: Disable Simple Read mode
   enable: Enable Simple Read mode
