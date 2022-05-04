@@ -10,6 +10,11 @@ const yaml = require('js-yaml');
 const fileMiddleName = '-single-file-from-'
 const encoding = 'utf8'
 const folderPrefix = 'folder_'
+const yamlDumpOptions = {
+    'flowLevel': -1,
+    'lineWidth': -1,
+    'noRefs': true
+}
 
 /*
  * Example:
@@ -17,7 +22,7 @@ const folderPrefix = 'folder_'
  * 
 */
 function makeSingleFile(languageToTranslate, baseLanguage='es-ar', source='../translations') {
-    const yamlString = yaml.safeDump(translationsToSingleFile(languageToTranslate, baseLanguage, source))
+    const yamlString = yaml.safeDump(translationsToSingleFile(languageToTranslate, baseLanguage, source), yamlDumpOptions)
     fs.writeFileSync(`${languageToTranslate}${fileMiddleName}${baseLanguage}.yaml`, yamlString, encoding);
 }
 

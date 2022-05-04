@@ -6,11 +6,16 @@ const fileMiddleName = '-single-file-from-'
 const encoding = 'utf8'
 const folderPrefix = 'folder_'
 const yamlName = (language) => `${language}.yaml`
+const yamlDumpOptions = {
+    'flowLevel': -1,
+    'lineWidth': -1,
+    'noRefs': true
+}
 
 function makeMultipleFiles(singleTranslationFileName, translationsFolder='../translations') {
     const translationYaml = loadYaml(singleTranslationFileName)
     yamlDictionariesFrom(translationYaml, translationsFolder, translationLanguage(singleTranslationFileName)).forEach(({ directory, content }) => {
-        fs.writeFileSync(directory, yaml.safeDump(content), encoding)
+        fs.writeFileSync(directory, yaml.safeDump(content, yamlDumpOptions), encoding)
     })
 }
 
