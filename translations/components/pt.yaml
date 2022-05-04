@@ -1,14 +1,9 @@
 bugReportModal:
   problem: Tem algum problema?
   error: 'Acha que este exercício tem um erro? '
-  askTeacher: >-
-    Lembre-se de sempre entrar em contato com seu professor ou escola para fazer
-    perguntas. Nós que fazemos o Pilas Bloques infelizmente não conhecem todos
-    os professores que usam a ferramenta.
+  askTeacher: Lembre-se de sempre entrar em contato com seu professor ou escola para fazer perguntas. Nós que fazemos o Pilas Bloques infelizmente não conhecem todos os professores que usam a ferramenta.
   mail: Pode nos escrever no
-  githubReport: >-
-    Se você tem uma conta no Github, você também pode fazer um relatório de bug
-    diretamente para nós
+  githubReport: 'Se você tem uma conta no Github, você também pode fazer um relatório de bug diretamente para nós'
   issueTracker: Issue Tracker
 congratulationsModal:
   youDidIt: Conseguiu!
@@ -43,9 +38,7 @@ turboModeToggle:
   active: ATIVADO
   inactive: DESATIVADO
 clearData:
-  deleting: >-
-    Excluindo dados do navegador, se você tiver um usuário, pode ter que entrar
-    novamente.
+  deleting: 'Excluindo dados do navegador, se você tiver um usuário, pode ter que entrar novamente.'
 importCustomChallenge:
   import: Importar Desafio
   custom: Importe um desafio personalizado do criador de desafios do Pilas Bloques.
@@ -60,17 +53,12 @@ nightModeToggle:
 registerDisclaimer:
   now: ¡ Agora o Pilas Bloques permite
   register: registrar-se
-  optional: >-
-    Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas
-    Bloques e permite que você suspenda seu trabalho e continue de onde você
-    parou.
+  optional: 'Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou.'
 programarDisclaimer:
   entered: Você entrou
   programar: Program.AR em casa
   in: Em
-  find: >-
-    você encontrará muito material, muitas ferramentas e uma explicação de como
-    usar o Pilas Bloques
+  find: 'você encontrará muito material, muitas ferramentas e uma explicação de como usar o Pilas Bloques'
 challengeLink:
   soon: Em breve
 challengeWorkspaceButtons:
@@ -81,13 +69,8 @@ challengeWorkspaceButtons:
   exit: Sair da tela cheia
   fullScreen: Tela Cheia
   notASolution: Este archivo no tiene una solución de Pilas Bloques.
-  wrongActivity: >-
-    ¡Cuidado! El archivo indica que es para otra actividad ({activity}). Se
-    cargará de todas formas, pero puede fallar.
-  oldVersion: >-
-    ¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de
-    todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y
-    guardes un nuevo archivo.
+  wrongActivity: '¡Cuidado! El archivo indica que es para otra actividad ({activity}). Se cargará de todas formas, pero puede fallar.'
+  oldVersion: '¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.'
 footer:
   version: 'Versão:'
   problem: Problemas com este exercício?
@@ -102,15 +85,11 @@ login:
   username: Usuario
   password: Contraseña
 modalAyuda:
-  help: >-
-    Esta aplicação apresentará vários desafios que podem ser resolvidos
-    conectando blocos.
+  help: Esta aplicação apresentará vários desafios que podem ser resolvidos conectando blocos.
   firstSteps: 'O primeiro passo é abrir a seção Desafios:'
   categories: 'Os blocos estão agrupados em categorias, use a barra lateral para exibi-los.'
   dragAndDrop: 'Pode então arrastar e soltar os blocos na área de trabalho. '
-  continue: >-
-    Assim que tiver seu programa pronto, pressione o botão Executar para
-    continuar.
+  continue: 'Assim que tiver seu programa pronto, pressione o botão Executar para continuar.'
   delete: 'Ah, e os blocos podem ser removidos arrastando-os para a lata de lixo.'
 passwordConfirmation:
   password: Confirmar senha
@@ -127,9 +106,7 @@ notifier:
   visit: Visite
   moreInfo: nosso site para mais informação.
 acceptTermsAndConditions:
-  askToRead: >-
-    Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy
-    importante. Por eso te pedimos que leas y aceptes nuestros 
+  askToRead: 'Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy importante. Por eso te pedimos que leas y aceptes nuestros '
   termsLink: términos y condiciones de uso
   toUse: ' para poder usar Pilas Bloques.'
   accept: termos e condições de uso

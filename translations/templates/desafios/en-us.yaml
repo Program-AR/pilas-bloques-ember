@@ -1,7 +1,5 @@
 desafioPorNombreError:
   wentWrong: 'Sorry, something went wrong...'
-  doesntExist: >-
-    The challenge with the name mentioned in the URL doesn’t exist. Can you
-    please check whether the address of the challenge is correct?
+  doesntExist: The challenge with the name mentioned in the URL doesn’t exist. Can you please check whether the address of the challenge is correct?
 index:
   chooseOne: Choose one of the books from the upper menu bar

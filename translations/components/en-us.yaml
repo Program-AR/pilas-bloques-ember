@@ -1,21 +1,14 @@
 bugReportModal:
-  askTeacher: >-
-    Remember to ask your teacher and/or school if you have any questions.
-    Unfortunately the Pilas Bloques developer team doesn't know every teacher
-    who uses the tool.
+  askTeacher: Remember to ask your teacher and/or school if you have any questions. Unfortunately the Pilas Bloques developer team doesn't know every teacher who uses the tool.
   problem: Are you having any problem?
   error: Do you think there’s an error in this exercise?
   mail: 'You can contact us writing to '
-  githubReport: >-
-    If you have a Github account, you can also report the error directly through
-    the
+  githubReport: 'If you have a Github account, you can also report the error directly through the'
   issueTracker: Issue Tracker
 congratulationsModal:
   youDidIt: You did it!
   toThink: To think...
-  otherSolutions: >-
-    Your program is not the only option to solve the problem. There are other
-    solutions!
+  otherSolutions: Your program is not the only option to solve the problem. There are other solutions!
   concepts: Are you using the concepts well?
 createCustomChallenge:
   create: Create a challenge
@@ -45,9 +38,7 @@ turboModeToggle:
   active: ACTIVE
   inactive: INACTIVE
 clearData:
-  deleting: >-
-    Deleting data from the browser; if you have a username, you’ll probably have
-    to log in again.
+  deleting: 'Deleting data from the browser; if you have a username, you’ll probably have to log in again.'
 importCustomChallenge:
   import: Import Challenge
   custom: Import a custom challenge from Pilas Bloques’ challenge creator.
@@ -62,17 +53,12 @@ nightModeToggle:
 registerDisclaimer:
   now: Now Pilas Bloques allows you to
   register: register
-  optional: >-
-    Your registration is <b>completely optional</b>; it will help us improve
-    Pilas Bloques, and will allow you to interrupt your work and resume it from
-    where you left it.
+  optional: 'Your registration is <b>completely optional</b>; it will help us improve Pilas Bloques, and will allow you to interrupt your work and resume it from where you left it.'
 programarDisclaimer:
   entered: Did you visit
   programar: Program.AR en casa
   in: In
-  find: >-
-    you will find a lot of material, many tools, and an explanation on how to
-    use Pilas Bloques
+  find: 'you will find a lot of material, many tools, and an explanation on how to use Pilas Bloques'
 challengeLink:
   soon: Very soon
 challengeWorkspaceButtons:
@@ -83,13 +69,8 @@ challengeWorkspaceButtons:
   exit: Exit Full Screen
   fullScreen: Full Screen
   notASolution: This file does not have a Pilas Bloques solution.
-  wrongActivity: >-
-    Be careful! The file indicates that it is from another challenge
-    ({activity}). It will be loaded anyways, but it could fail.
-  oldVersion: >-
-    Be careful! The file indicates that it is from an older version. It will be
-    loaded anyways, but we suggest that you solve the challenge again and save
-    the solution in a new file.
+  wrongActivity: 'Be careful! The file indicates that it is from another challenge ({activity}). It will be loaded anyways, but it could fail.'
+  oldVersion: 'Be careful! The file indicates that it is from an older version. It will be loaded anyways, but we suggest that you solve the challenge again and save the solution in a new file.'
 footer:
   version: 'Version:'
   problem: Any problem with this exercise?
@@ -104,9 +85,7 @@ login:
   username: Username
   password: Password
 modalAyuda:
-  help: >-
-    This app will offer you several challenges you can solve by fitting blocks
-    together.
+  help: This app will offer you several challenges you can solve by fitting blocks together.
   firstSteps: 'The first step is to open the Challenges section:'
   categories: The blocks are grouped in categories; use the sidebar to display the blocks.
   dragAndDrop: The you can drag and drop the blocks to the workspace.
@@ -127,9 +106,7 @@ notifier:
   visit: Visit
   moreInfo: our web to learn more.
 acceptTermsAndConditions:
-  askToRead: >-
-    Your privacy and that of your children are very important to Sadosky
-    Foundation. That’s why we ask you to read and accept our 
+  askToRead: 'Your privacy and that of your children are very important to Sadosky Foundation. That’s why we ask you to read and accept our '
   termsLink: terms of use and conditions
   toUse: ' to use Pilas Bloques'
   accept: I accept the terms of use and conditions
