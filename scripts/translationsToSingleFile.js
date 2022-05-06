@@ -59,7 +59,7 @@ function translationsToSingleFile(languageToTranslate, baseLanguage, source) {
 
     const baseLanguageFile = languageFile(dirents, baseLanguage)
     
-    // Some folders do not have their onw translation file. E.g. templates
+    // Some folders do not have their own translation file. E.g. templates
     if(baseLanguageFile) {
         const languageToTranslateFile = languageFile(dirents, languageToTranslate)
 
