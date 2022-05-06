@@ -50,10 +50,7 @@ function yamlDictionariesFrom(translationYaml, baseDirectory, language) {
     return yamlDictionaries
 }
 
-function isEmpty(obj) { 
-    for (var x in obj) { return false; }
-    return true;
- }
+const isEmpty = (obj) => Object.keys(obj).length === 0;
 
 const isFolder = (key) => key.startsWith(folderPrefix)
 
