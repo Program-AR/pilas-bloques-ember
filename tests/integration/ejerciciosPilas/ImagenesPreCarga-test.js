@@ -17,7 +17,7 @@ moduloEjerciciosPilas('Imagenes Pre-carga', () => {
   testDePrecarga('EscenaDuba', `new EscenaDuba("[O,-,A,P,*]")`,
     [
       "fondo.duba.png", "actor.duba.png", "actor.churrasco.png",
-      "flechaEscenarioAleatorio.png", "casillas.duba.png", "obstaculo.duba1.png",
+      "casillas.duba.png", "obstaculo.duba1.png",
       "obstaculo.duba2.png", "obstaculo.duba3.png", "obstaculo.duba4.png"
     ]
   )
@@ -25,7 +25,7 @@ moduloEjerciciosPilas('Imagenes Pre-carga', () => {
   testDePrecarga('EscenaLita', `new EscenaLita("[O,-,A,T,L,E]")`,
     [
       "fondo.lita.png", "actor.lita.png", "actor.ensaladera.png", "actor.tomate.png", "actor.lechuga.png",
-      "flechaEscenarioAleatorio.png", "casillas.lita.png", "obstaculo.lita1.png",
+      "casillas.lita.png", "obstaculo.lita1.png",
       "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png"
     ]
   )
@@ -37,8 +37,7 @@ moduloEjerciciosPilas('Imagenes Pre-carga', () => {
     {xCoty: -0, yCoty: 0, puedeHaberCharco: true}
   )`,
     [
-      "fondo.coty.png", "actor.coty.png", "actor.charco.png",
-      "flechaEscenarioAleatorio.png"
+      "fondo.coty.png", "actor.coty.png", "actor.charco.png"
     ]
   )
 
