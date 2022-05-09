@@ -3,6 +3,9 @@ Notas de versión detalladas
 
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.9.3 (4 de Mayo de 2022)
+  * Se solucionó el bug que te hacía perder la solución al hacer _"pantalla completa"_.
+
 * 1.9.2 (8 de abril de 2022)
   * ¡Ahora Pilas Bloques está disponible en inglés!
   * Agregamos un botón de selección de idiomas.

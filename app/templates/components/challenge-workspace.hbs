@@ -34,7 +34,6 @@
         @pasoAPasoHabilitado={{model.debugging}}
         @persistirSolucionEnURL={{persistirSolucionEnURL}}
         @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
-        @pilasService={{pilas}}
         @bloques={{model.bloques}}
         @onChangeWorkspace={{onChangeWorkspace}}
         @onTerminoEjecucion={{onTerminoEjecucion}}
@@ -58,6 +57,7 @@
         @step={{action 'step' true}}
         @step-by-step-execution={{action 'ejecutar' true}}
         @shouldShowMultipleScenarioHelp={{model.shouldShowMultipleScenarioHelp}}
+        @areExpectationsRunning={{areExpectationsRunning}}
       />
 
       <Scene class="flex-nogrow" id="draggable"

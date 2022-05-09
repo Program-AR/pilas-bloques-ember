@@ -2,7 +2,7 @@ import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
 
-export const pilasMock = {
+export const pilasMock = Service.extend({
     on() { },
     liberarRecursos() { },
     estaResueltoElProblema() { return true; },
@@ -13,7 +13,7 @@ export const pilasMock = {
     cambiarAModoDeLecturaSimple: sinon.stub(),
     habilitarModoTurbo: sinon.stub(),
     deshabilitarModoTurbo: sinon.stub(),
-};
+})
 
 export const interpreteMock = {
     paused_: false,
@@ -32,7 +32,6 @@ export const activityExpectationsMock = Service.extend({
 export const createActividadMock = (fields) => EmberObject.extend({
     id: "000",
     nombre: "Actividad_Mock",
-    debeFelicitarse: true,
     bloques: ['controls_if'],
     escena: `new DibujandoLibremente()`,
     grupo: {
@@ -42,6 +41,7 @@ export const createActividadMock = (fields) => EmberObject.extend({
             }
         }
     },
+    hasAutomaticGrading: true,
     ...fields
 }).create()
 
@@ -79,11 +79,11 @@ export const fakeUser = { username: "TEST", token: "TOKEN", answeredQuestionIds:
 // jshint unused: false
 export const simpleReadMock = Service.extend({
     shouldShow: true,
-  
+
     // param is necessary because simpleRead service expects an argument
-    shouldShowSimpleRead(_){
-      return this.shouldShow
-    } 
+    shouldShowSimpleRead(_) {
+        return this.shouldShow
+    }
 })
 
 export const createActivity = (owner, fields) => {

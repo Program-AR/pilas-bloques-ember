@@ -6,7 +6,7 @@
  * enunciado: <obligatorio> Es el enunciado del desafío. Es la descripción del objetivo del programa que debe realizar el alumno.
  * consignaInicial: Es una posible pista, el "Sabías qué". En general en Pilas Bloques suele aparecer cuando el desafío introduce un concepto nuevo.
  * escena: <obligatorio> Es un String que puede indicar o bien un nombre de clase, o bien EL STRING con un "new Escena..." que luego se PARSEARÁ como javascript para construir la escena de pilas-bloques-exercises asociada a este desafío.
- * debeFelicitarse: Es un booleano que indica si tiene sentido que el desafío chequee e informe al alumno la concreción exitosa de su programa. En una actividad de dibujo libre estaría en false.
+ * hasAutomaticGrading: Es un booleano que indica si tiene sentido que el desafío chequee e informe al alumno la concreción exitosa de su programa. En una actividad de dibujo libre estaría en false.
  * bloques: <obligatorio> Es la lista de ids de bloque de Blockly que habrá en el toolbox de la actividad.
  * estiloToolbox: Tiene tres valores: 
  * * * "sinCategorias", lo que hace un toolbox aplanado, con los bloques directamente en el toolbox sin títulos ni clasificaciones. 
@@ -21,77 +21,66 @@ export default [
     id: 1,
     nombre: 'AlienTocaBoton',
     escena: 'AlienInicial',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'ApretarBoton']
   },
   {
     id: 2,
     nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
     escena: 'ElGatoEnLaCalle',
-    debeFelicitarse: true,
     bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento']
   },
   {
     id: 3,
     nombre: 'NoMeCansoDeSaltar',
     escena: 'NoMeCansoDeSaltar',
-    debeFelicitarse: true,
     bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
   },
   {
     id: 4,
     nombre: 'ElMarcianoEnElDesierto',
     escena: 'ElMarcianoEnElDesierto',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir']
   },
   {
     id: 5,
     nombre: 'TitoEnciendeLuces',
     escena: 'TitoEnciendeLuces',
-    debeFelicitarse: true,
     bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
   },
   {
     id: 6,
     nombre: 'ElAlienYLasTuercas',
     escena: 'AlienLevantaTuercas',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'LevantaTuerca', 'Procedimiento', 'Repetir']
   },
   {
     id: 7,
     nombre: 'ElRecolectorDeEstrellas',
     escena: 'ElRecolectorDeEstrellas',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'Procedimiento', 'Repetir']
   },
   {
     id: 8,
     nombre: 'MariaLaComeSandias',
     escena: 'MariaLaComeSandias',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir']
   },
   {
     id: 9,
     nombre: 'AlimentandoALosPeces',
     escena: 'AlimentandoALosPeces',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AlimentarPez', 'AgarrarComida', 'Procedimiento', 'Repetir']
   },
   {
     id: 10,
     nombre: 'InstalandoJuegos',
     escena: 'InstalandoJuegos',
-    debeFelicitarse: true,
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
     id: 11,
     nombre: 'LaGranAventuraDelMarEncantado',
     escena: 'LaGranAventuraDelMarEncantado',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarLlave', 'AbrirCofre', 'DarSombrero', 'AtacarConEspada', 'EscaparEnUnicornio', 'Repetir', 'Procedimiento'],
     expectations: {
       decomposition: true,
@@ -101,14 +90,12 @@ export default [
     id: 12,
     nombre: 'ReparandoLaNave',
     escena: 'ReparandoLaNave',
-    debeFelicitarse: true,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarHierro', 'TomarCarbon', 'Depositar', 'Escapar', 'Repetir', 'Procedimiento'],
   },
   {
     id: 13,
     nombre: 'ElMonoYLasBananas',
     escena: 'ElMonoYLasBananas',
-    debeFelicitarse: true,
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
       conditionalAlternative: true,
@@ -119,7 +106,6 @@ export default [
     id: 14,
     nombre: 'LaEleccionDelMono',
     escena: 'LaEleccionDelMono',
-    debeFelicitarse: true,
     bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
     expectations: {
       conditionalAlternative: true,
@@ -130,7 +116,6 @@ export default [
     id: 15,
     nombre: 'LaberintoCorto',
     escena: 'LaberintoCorto',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
     expectations: {
@@ -141,21 +126,18 @@ export default [
     id: 16,
     nombre: 'TresNaranjas',
     escena: 'TresNaranjas',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja']
   },
   {
     id: 17,
     nombre: 'TitoRecargado',
     escena: 'TitoRecargado',
-    debeFelicitarse: true,
     bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuz']
   },
   {
     id: 18,
     nombre: 'LaberintoLargo',
     escena: 'LaberintoLargo',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
   },
@@ -163,7 +145,6 @@ export default [
     id: 19,
     nombre: 'SuperTito1',
     escena: 'SuperTito1',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'EncenderLuz', 'MoverACasillaAbajo',
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
@@ -174,7 +155,6 @@ export default [
     id: 20,
     nombre: 'SuperTito2',
     escena: 'SuperTito2',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuz', 'EncenderLuz',
       'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
@@ -185,7 +165,6 @@ export default [
     id: 21,
     nombre: 'LaberintoConQueso',
     escena: 'LaberintoConQueso',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'ComerQueso', 'Repetir', 'Si', 'SiNo', 'Hasta', 'TocandoAbajo',
       'TocandoDerecha', 'TocandoFinCamino', 'TocandoQueso'],
@@ -197,7 +176,6 @@ export default [
     id: 22,
     nombre: 'ElDetectiveChaparro',
     escena: 'ElDetectiveChaparro',
-    debeFelicitarse: true,
     bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
       'IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso',
       'EsCulpable'],
@@ -209,7 +187,6 @@ export default [
     id: 23,
     nombre: 'FutbolRobots',
     escena: 'FutbolRobots',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
       'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
       'SiNo', 'Hasta'],
@@ -221,7 +198,6 @@ export default [
     id: 24,
     nombre: 'PrendiendoLasCompus',
     escena: 'PrendiendoLasCompus',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'MoverACasillaDerecha', 'MoverACasillaArriba',
       'MoverACasillaAbajo', 'MoverACasillaIzquierda',
@@ -234,7 +210,6 @@ export default [
     id: 25,
     nombre: 'ElMonoQueSabeContar',
     escena: 'ElMonoQueSabeContar',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarBanana', 'ContarManzana',
       'TocandoBanana', 'TocandoManzana', 'Repetir', 'Si', 'SiNo',
@@ -247,7 +222,6 @@ export default [
     id: 26,
     nombre: 'ElSuperviaje',
     escena: 'SuperViaje',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
       'Repetir', 'Si', 'SiNo', 'Hasta'],
   },
@@ -255,7 +229,6 @@ export default [
     id: 27,
     nombre: 'ElMonoCuentaDeNuevo',
     escena: 'ElMonoCuentaDeNuevo',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna',
       'ContarBanana', 'ContarManzana', 'TocandoBanana',
@@ -266,7 +239,6 @@ export default [
     id: 28,
     nombre: 'ElPlanetaDeNano',
     escena: 'ElPlanetaDeNano',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
       'VolverAlBordeIzquierdo', 'ComerBanana', 'RepetirVacio', 'Repetir', 'Si',
       'SiNo', 'Hasta', 'Numero'],
@@ -275,7 +247,6 @@ export default [
     id: 29,
     nombre: 'DibujandoAlCuadrado',
     escena: 'DibujandoCuadrado',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero']
   },
@@ -283,7 +254,6 @@ export default [
     id: 30,
     nombre: 'DibujandoRayuelaRobotica',
     escena: 'Dibujando5CuadradosHorizontal',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
@@ -291,7 +261,6 @@ export default [
     id: 31,
     nombre: 'DibujandoCortoPorLaDiagonal',
     escena: 'Dibujando5CuadradosDiagonal',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
@@ -299,7 +268,6 @@ export default [
     id: 32,
     nombre: 'DibujandoMamushkaCuadrada',
     escena: 'Dibujando4CuadradosInteriores',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
@@ -307,7 +275,6 @@ export default [
     id: 33,
     nombre: 'DibujandoEscaleraCuadrada',
     escena: 'DibujandoCabezaElefante',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
@@ -315,7 +282,6 @@ export default [
     id: 34,
     nombre: 'DibujandoHexagono',
     escena: 'DibujandoHexagono',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
@@ -323,7 +289,6 @@ export default [
     id: 35,
     nombre: 'DibujandoPiramideInvertida',
     escena: 'DibujandoTrianguloEquilatero',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
@@ -331,7 +296,6 @@ export default [
     id: 36,
     nombre: 'DibujandoFigurasDentroDeFiguras',
     escena: 'DibujandoPoligonosInteriores',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
@@ -339,7 +303,6 @@ export default [
     id: 37,
     nombre: 'DibujandoLaCuevaDeEstalagtitas',
     escena: 'DibujandoCuevaEstalagtitas',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
@@ -347,7 +310,6 @@ export default [
     id: 130,
     nombre: 'LaFiestaDeDracula',
     escena: 'LaFiestaDeDracula',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero',
       'OpAritmetica', 'CambiarColor', 'SiguienteFoco', 'EmpezarFiesta'],
   },
@@ -355,7 +317,6 @@ export default [
     id: 131,
     nombre: 'SalvandoLaNavidad',
     escena: 'SalvandoLaNavidad',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'DejarRegalo', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
@@ -363,7 +324,6 @@ export default [
     nombre: 'PrendiendoLasCompusParametrizado',
     escena: 'PrendiendoLasCompus',
     deshabilitado: false,
-    debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'PrenderComputadora', 'EstoyEnEsquina', 'Numero',
@@ -373,7 +333,6 @@ export default [
     id: 133,
     nombre: 'TitoCuadrado',
     escena: 'TitoCuadrado',
-    debeFelicitarse: true,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoLuz', 'EncenderLuz', 'Numero', 'OpAritmetica'],
@@ -382,7 +341,6 @@ export default [
     id: 134,
     nombre: 'ElCangrejoAguafiestas',
     escena: 'ElCangrejoAguafiestas',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
       'ExplotarGlobo', 'Numero', 'OpAritmetica']
@@ -391,7 +349,6 @@ export default [
     id: 135,
     nombre: 'PrendiendoLasFogatas',
     escena: 'PrendiendoLasFogatas',
-    debeFelicitarse: true,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoFogata', 'PrenderFogata',
       'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
@@ -404,7 +361,7 @@ export default [
     nombre: 'DibujoLibre',
     imagen: 'DibujoLibre',
     escena: `new DibujandoLibremente()`,
-    debeFelicitarse: false,
+    hasAutomaticGrading: false,
     bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
@@ -419,7 +376,6 @@ export default [
       [-,-,-,O,-,-],\
       [O,O,O,O,-,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -440,7 +396,6 @@ export default [
         [O,O,-,O,O,O],\
         [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -461,7 +416,6 @@ export default [
       [O,-,O,-,-,O],\
       [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -482,7 +436,6 @@ export default [
       [O,O,O,P,-,O],\
       [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -503,7 +456,6 @@ export default [
       [O,O,-,-,P,O],\
       [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -524,7 +476,6 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -542,7 +493,6 @@ export default [
       [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
       {xCoty: 25, yCoty: 75}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
@@ -554,7 +504,6 @@ export default [
       [{x:-50,y:25},{x:0,y:25},{x:50,y:25},{x:50,y:-25},{x:50,y:-75},{x:0,y:-75},{x:-50,y:-75},{x:-50,y:-25},{x:-50,y:25}],
       {xCoty: -50, yCoty: 25}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
@@ -566,7 +515,6 @@ export default [
       [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
       {xCoty: 125, yCoty: 0}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -574,7 +522,6 @@ export default [
     id: 210,
     nombre: '3.1.3d',
     escena: `new EscenaCotySonrisa()`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -595,7 +542,6 @@ export default [
       [{x:-50,y:0},{x:0,y:0},{x:50,y:0},{x:50,y:50},{x:0,y:50},{x:-50,y:50},{x:-50,y:0}],
       {xCoty: -50, yCoty: 100}      
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -612,7 +558,6 @@ export default [
     id: 212,
     nombre: '3.1.3f',
     escena: `new EscenaCotyCactus()`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -620,7 +565,6 @@ export default [
     id: 213,
     nombre: '3.1.3g',
     escena: `new EscenaCotyMate()`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -635,7 +579,6 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -658,7 +601,6 @@ export default [
       [A,O,O,O,E],\
       [O,O,O,O,O]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -679,7 +621,6 @@ export default [
       [A,-,E],\
       [-,T,-]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -700,7 +641,6 @@ export default [
       [A,-,-,E],\
       [-,-,-,-]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -721,7 +661,6 @@ export default [
       [-,-,-],\
       [-,-,-]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -741,7 +680,6 @@ export default [
       [-,L,T],\
       [-,-,E]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -764,7 +702,6 @@ export default [
       [O,O,O,O,O,O],\
       [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -822,7 +759,6 @@ export default [
         [O,-,-,-,A,O],\
         [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -864,7 +800,6 @@ export default [
         [O,-,-,O,O,O],\
         [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -910,7 +845,6 @@ export default [
         [O,-,-,A,-,O],\
         [O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1001,7 +935,6 @@ export default [
       </statement>
       </block>
     </xml>`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1021,7 +954,6 @@ export default [
         ['t', 'o', 'j'],
         ['i', 't', 'o'],
     ], "toto")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1038,7 +970,6 @@ export default [
         ['z', 'A', 'a', 'm'],
         ['y', 'l', 'l', 'q']
     ], "llama")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1055,7 +986,6 @@ export default [
         ['f', 'u', 'p'],
         ['r', 'y', 'a'],
     ], "puma")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1071,7 +1001,6 @@ export default [
         ['A', 'c', 'a', 'b'],
         ['o', 'l', 'l', 'e'],
     ], "caballo")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1121,7 +1050,6 @@ export default [
         ['u', 'n', 'e'],
         ['l', 'A', 's'],
     ], "lunes", 7)`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -1176,7 +1104,6 @@ export default [
         [-,-,O,O,O,O,O,O],\
         [-,-,-,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1200,7 +1127,6 @@ export default [
         [-,-,O,O,O,O,O,O],\
         [-,-,A,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1224,7 +1150,6 @@ export default [
       [O,O,-,O,O,O,O,O],\
       [O,O,-,-,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1243,7 +1168,6 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1265,7 +1189,6 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20},{x:150,y:-20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}      
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1287,7 +1210,6 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1314,7 +1236,6 @@ export default [
       [O,O,O,O,O,O,O,O],\
       [O,O,O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1364,7 +1285,6 @@ export default [
       [O,O,O,O,O,O,O,O],\
       [O,O,O,O,O,O,O,O],\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1409,7 +1329,6 @@ export default [
       [[{x:-100,y:-100},{x:-100,y:-50},{x:-50,y:-50},{x:-50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50},{x:50,y:100},{x:100,y:100}]],
       {xCoty: -100, yCoty: -100}      
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1460,7 +1379,6 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-80,y:20},{x:-40,y:20},{x:-40,y:60},{x:0,y:60},{x:40,y:60},{x:40,y:20},{x:80,y:20},{x:80,y:-20},{x:120,y:-20},{x:120,y:-60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}      
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1531,7 +1449,6 @@ export default [
       [-,-,O,-,O,O,O],\
       [E,L,T,-,O,O,O]\
     ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1603,7 +1520,6 @@ export default [
       </statement>
       </block>
     </xml>`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1620,7 +1536,6 @@ export default [
     id: 242,
     nombre: '5.1.3a',
     escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1640,7 +1555,6 @@ export default [
     id: 243,
     nombre: '5.1.3b',
     escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1664,7 +1578,6 @@ export default [
       [{x:-120,y:50},{x:20,y:50},{x:20,y:-90},{x:-120,y:-90},{x:-120,y:50}],
       {xCoty: -120, yCoty: 50, puedeHaberCharco: true, longitudSegmento: 140}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -1686,7 +1599,6 @@ export default [
     id: 245,
     nombre: '5.1.4a',
     escena: `new EscenaLita("[A,-,L|T]")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1719,7 +1631,6 @@ export default [
       [O,P,O,O,O],\
       [O,O,O,O,O],\
     "])`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1745,7 +1656,6 @@ export default [
       [A,-,*,-,P],\
       [O,O,O,O,O],\
     ", { coleccion: ["O"] })`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1766,7 +1676,6 @@ export default [
     id: 248,
     nombre: '5.2.1a',
     escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1785,7 +1694,6 @@ export default [
     id: 249,
     nombre: '5.2.1b',
     escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1804,7 +1712,6 @@ export default [
     id: 250,
     nombre: '5.2.1c',
     escena: `new EscenaLita("[A],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[*>L|T],[E]", { coleccion: ["T", "L"] })`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1826,7 +1733,6 @@ export default [
     id: 251,
     nombre: '5.I1a',
     escena: `new EscenaTotoEscritor(new ObjetivoCopiar())`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1844,7 +1750,6 @@ export default [
     id: 252,
     nombre: '5.I1b',
     escena: `new EscenaTotoEscritor(new ObjetivoX())`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1863,7 +1768,6 @@ export default [
     id: 253,
     nombre: '5.I1c',
     escena: `new EscenaTotoEscritor(new ObjetivoMicha())`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1883,7 +1787,6 @@ export default [
     id: 254,
     nombre: '5.I1d',
     escena: `new EscenaTotoEscritor(new ObjetivoJeringozo())`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1904,7 +1807,7 @@ export default [
     nombre: 'CotyDibujoLibre',
     imagen: 'Coty',
     escena: `new EscenaCoty([],[],{xCoty: -50, yCoty: 50})`,
-    debeFelicitarse: false,
+    hasAutomaticGrading: false,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
@@ -1929,7 +1832,6 @@ export default [
     [-,-,-,-,-,-],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
@@ -1977,7 +1879,6 @@ export default [
     [-,-,-,-,-,-],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     solucionInicial: `<xml xmlns=\"http://www.w3.org/1999/xhtml\">
     <variables></variables>
@@ -2028,7 +1929,6 @@ export default [
     [-,-,-,-,-,P],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2051,7 +1951,6 @@ export default [
     [-,-,-,O,-,-],\
     [-,-,-,-,O,P],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2074,7 +1973,6 @@ export default [
     [-,-,-,-,O,O],\
     [-,-,-,-,-,P],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2097,7 +1995,6 @@ export default [
     [-,-,-,-,P,-],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2120,7 +2017,6 @@ export default [
     [-,O,O,-,-,-],\
     [-,-,O,-,-,P],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2143,7 +2039,6 @@ export default [
     [-,O,P,O,P,O],\
     [-,O,P,-,P,O],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2166,7 +2061,6 @@ export default [
     [-,O,O,O,O,O],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2189,7 +2083,6 @@ export default [
     [O,O,-,-,O,O],\
     [P,-,-,-,-,P],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   //Lita
@@ -2215,7 +2108,6 @@ export default [
     [-,-,-,-,-,E],\
     [L,-,-,-,-,T],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2240,7 +2132,6 @@ export default [
     [-,-,-,O,T,-],\
     [-,-,-,-,O,E],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2265,7 +2156,6 @@ export default [
     [-,-,-,-,O,O],\
     [-,-,-,-,-,E],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2290,7 +2180,6 @@ export default [
     [-,-,-,-,T,-],\
     [-,-,-,-,-,E],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2315,7 +2204,6 @@ export default [
     [-,O,O,-,O,L],\
     [-,-,O,E,-,L],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2340,7 +2228,6 @@ export default [
     [-,O,L,O,T,O],\
     [-,O,-,-,T,O],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2365,7 +2252,6 @@ export default [
     [-,O,O,O,O,O],\
     [-,-,-,-,-,-],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   {
@@ -2390,7 +2276,6 @@ export default [
     [O,O,-,-,O,O],\
     [T,-,-,-,-,E],\
   ")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
   },
   //Coty
@@ -2403,7 +2288,6 @@ export default [
       [{x:25,y:75},{x:75,y:75},{x:75,y:125},{x:125,y:125},{x:125,y:75}],
       {xCoty: 25, yCoty: 75}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando']
   },
@@ -2416,7 +2300,6 @@ export default [
       [[ {x:-125,y:0}, {x:-75,y:0}],[ {x:-25,y:0}, {x:25,y:0}],[ {x:75,y:0}, {x:125,y:0}]],
       {xCoty: 125, yCoty: 0}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -2425,7 +2308,6 @@ export default [
     nombre: 'tecnopolis2021CotyNivel3',
     imagen: 'Coty',
     escena: `new EscenaCotyMate()`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: ['MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda']
   },
@@ -2438,7 +2320,6 @@ export default [
       [[{x:-130,y:20},{x:-90,y:20}], [{x:-50,y:20},{x:-10,y:20}], [{x:30,y:20},{x:70,y:20}], [{x:110,y:20},{x:150,y:20}]],
       {xCoty: -130, yCoty: 20, longitudSegmento: 40}     
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -2461,7 +2342,6 @@ export default [
       [[{x:-120,y:-60},{x:-120,y:-20},{x:-80,y:-20},{x:-40,y:-20},{x:-40,y:20},{x:0,y:20},{x:40,y:20},{x:40,y:60},{x:80,y:60},{x:120,y:60}]],
       {xCoty: -120, yCoty: -60, longitudSegmento: 40}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -2484,7 +2364,6 @@ export default [
       [[{x:-180,y:70},{x:-80,y:70}],[{x:-130,y:70},{x:-130,y:-30}]],
       {xCoty: -130, yCoty: 70}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -2507,7 +2386,6 @@ export default [
       [[{x:-150,y:0},{x:-150,y:50},{x:-100,y:50},{x:-100,y:0}],[{x:-100,y:-50},{x:-50,y:-50}],[{x:-50,y:0},{x:-50,y:50},{x:0,y:50},{x:0,y:0}],[{x:0,y:-50},{x:50,y:-50}],[{x:50,y:0},{x:50,y:50},{x:100,y:50},{x:100,y:0}],[{x:100,y:-50},{x:150,y:-50}]],
       {xCoty: -150, yCoty: 0}
     )`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverArribaDibujando',
@@ -2531,7 +2409,6 @@ export default [
         ['t', 'o', 'j'],
         ['i', 't', 'o'],
     ], "toto")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2549,7 +2426,6 @@ export default [
         ['z', 'A', 'a', 'm'],
         ['y', 'l', 'l', 'q']
     ], "llama")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2567,7 +2443,6 @@ export default [
         ['f', 'u', 'p'],
         ['r', 'y', 'a'],
     ], "puma")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2585,7 +2460,6 @@ export default [
         ['u', 'n', 'e'],
         ['l', 'A', 's'],
     ], "lunes", 7)`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2636,7 +2510,6 @@ export default [
         ['i','s', 'c', 'n', 'o'],
         ['l','o', 'p', 'o', 'v'],
     ], "tecnopolis")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2659,7 +2532,6 @@ export default [
         ['j','e','r'],
         ['y','n','v']
     ], "neuquen")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2680,7 +2552,6 @@ export default [
         ['r','u','d'],
         ['w','q','t'],
     ], "neuquen")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2699,7 +2570,6 @@ export default [
       ['n','A','s','a','n','t','a','c','r','u','a'],
       ['f','d','i','u','v','r','e','o','h','z','d'],
     ], "santacruz")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',
@@ -2719,7 +2589,6 @@ export default [
       ['r','x','h','u','y'],
       ['t','A','c','i','k'],
     ], "chubut")`,
-    debeFelicitarse: true,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverLeyendoAbajo',

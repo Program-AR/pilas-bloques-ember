@@ -5,7 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
 
       #https://docs.github.com/es/actions/guides/caching-dependencies-to-speed-up-workflows#using-the-cache-action
       - name: Cache node modules
@@ -34,7 +36,9 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:linux
@@ -50,7 +54,9 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:osx
@@ -66,7 +72,9 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
+        with:
+          node-version-file: '.nvmrc'
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:win32

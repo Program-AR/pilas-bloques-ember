@@ -2,24 +2,24 @@
     <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
         
         <SceneButton 
-            @class="step-by-step-button-container"
+            @class={{if areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
             @element-id="step-by-step-run-button"
             @label={{ t "components.sceneButtons.stepByStepRun.label"}}
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) running}}
-            @isDisabled={{running}} 
+            @isDisabled={{or running areExpectationsRunning}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step-by-step-execution}}
             @tooltip={{ t "components.sceneButtons.stepByStepRun.tooltip"}}
         />
 
         <SceneButton 
-            @class="step-by-step-button-container"
+            @class={{if areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
             @element-id="run-step-button"
             @label={{ t "components.sceneButtons.runStep.label"}}
             @icon="skip_next"
             @isHidden={{or (not needShowStepByStepButtons) (not running)}}
-            @isDisabled={{not isPausedOnBreackpoint}} 
+            @isDisabled={{or (not isPausedOnBreackpoint) areExpectationsRunning}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{step}}
             @tooltip={{ t "components.sceneButtons.runStep.tooltip"}}
@@ -31,12 +31,12 @@
         />
 
         <SceneButton 
-            @class="run-button-container"
+            @class={{if areExpectationsRunning "deactivated-button-container" "run-button-container"}}
             @element-id="run-button"
             @label={{ t "components.sceneButtons.run.label"}}
             @icon="play_arrow"
             @isHidden={{needShowRestartButton}}
-            @isDisabled={{needShowRestartButton}} 
+            @isDisabled={{or needShowRestartButton areExpectationsRunning}} 
             @isMini={{shouldUseFloatingMode}} 
             @onClick={{run}}
             @tooltip={{ t "components.sceneButtons.run.tooltip"}}
