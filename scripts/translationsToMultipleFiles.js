@@ -2,7 +2,6 @@ const fs = require('fs');
 const yaml = require('js-yaml');
 
 // Importing CommonJS sucks, so we'll copy some minor things
-const fileMiddleName = '-single-file-from-'
 const encoding = 'utf8'
 const folderPrefix = 'folder_'
 const yamlName = (language) => `${language}.yaml`
@@ -12,18 +11,39 @@ const yamlDumpOptions = {
     'noRefs': true
 }
 
-function makeMultipleFiles(singleTranslationFileName, translationsFolder='../translations') {
+checkExistence(2, 'single translations file name')
+checkExistence(3, 'translation language')
+console.log('Generating multiple translations files from a single file.')
+makeMultipleFiles(process.argv[2], process.argv[3])
+console.log('Translations files successfully generated!')
+
+function checkExistence(argPosition, missingArgDescription) {
+    if(!process.argv[argPosition]) {
+        console.info(
+            `
+            SCRIPT INFO:
+            First arg: Single translations file name. Does not need to have a specific name. E.g.: 'pt-single-file-from-es-ar'.
+            Second arg: Translation language. E.g.: 'pt' (portuguese).
+            Third arg (Optional, base value: '../translations'): Translations source directory. Folder where we can find all translations. E.g.: '../translations'
+            Use example: node translationsToMultipleFiles.js 'pt-single-file-from-es-ar' 'pt' '../translations'
+            If you want to separate a single file with portuguese translations
+            into multiple files inside ../translations directory
+            `
+        )
+        throw Error(`Missing ${missingArgDescription}. Please read info.`)
+    }
+}
+
+function makeMultipleFiles(singleTranslationFileName, translationLanguage, translationsFolder='../translations') {
     const translationYaml = loadYaml(singleTranslationFileName)
-    yamlDictionariesFrom(translationYaml, translationsFolder, translationLanguage(singleTranslationFileName)).forEach(({ directory, content }) => {
-        fs.writeFileSync(directory, yaml.safeDump(content, yamlDumpOptions), encoding)
+    yamlDictionariesFrom(translationYaml, translationsFolder, translationLanguage).forEach(({ directory, content }) => {
+        fs.writeFileSync(directory, yaml.dump(content, yamlDumpOptions), encoding)
     })
 }
 
-const translationLanguage = (singleTranslationFileName) => singleTranslationFileName.split(fileMiddleName)[0]
-
 function loadYaml(singleTranslationFileName) {
     const fileContents = fs.readFileSync(yamlName(singleTranslationFileName), encoding)
-    return yaml.safeLoad(fileContents)
+    return yaml.load(fileContents)
 }
 
 function yamlDictionariesFrom(translationYaml, baseDirectory, language) {
@@ -50,11 +70,11 @@ function yamlDictionariesFrom(translationYaml, baseDirectory, language) {
     return yamlDictionaries
 }
 
-const isEmpty = (obj) => Object.keys(obj).length === 0;
+function isEmpty(obj) { return Object.keys(obj).length === 0 }
 
-const isFolder = (key) => key.startsWith(folderPrefix)
+function isFolder(key) { return key.startsWith(folderPrefix) }
 
-const folderName = (folderKey) => folderKey.replace(folderPrefix, '')
+function folderName(folderKey) { return folderKey.replace(folderPrefix, '') } 
 
 function yamlDictionaryFrom(singleFileTranslationYaml, baseDirectory, language) {
     return {
@@ -62,8 +82,3 @@ function yamlDictionaryFrom(singleFileTranslationYaml, baseDirectory, language) 
         content: singleFileTranslationYaml
     }
 }
-
-console.log('Generating multiple translations files from a single file.')
-if(!process.argv[2]) throw Error('Single translations file must be defined. Example: pt-single-file-from-es-ar')
-makeMultipleFiles(process.argv[2], process.argv[3])
-console.log('Translations files successfully generated!')

@@ -1,9 +1,5 @@
 #!/usr/bin/node
 
-// Use example: node translationsToSingleFile.js 'pt' 'en-us' ../translations
-// If you want to make a single file for portuguese translations
-// using en-us as base language and ../translations as source directory
-
 const fs = require('fs');
 const yaml = require('js-yaml');
 
@@ -16,24 +12,41 @@ const yamlDumpOptions = {
     'noRefs': true
 }
 
+if(!process.argv[2]) {
+    console.info(
+        `
+        SCRIPT INFO:
+        First arg: Translation language. E.g.: 'pt' (portuguese).
+        Second arg (Optional, base value: 'es-ar'): Base language. This will complete missing translations from the main language. E.g.: 'en-us'.
+        Third arg (Optional, base value: '../translations'): Translations source directory. Folder where we can find all translations. E.g.: '../translations'
+        Use example: node translationsToSingleFile.js 'pt' 'en-us' '../translations'
+        If you want to make a single file for portuguese translations
+        using en-us as base language and ../translations as source directory
+        `
+    )
+    throw Error('Missing translation language. Please read info.')
+}
+console.log('Generating single translation file...')
+makeSingleFile(process.argv[2], process.argv[3], process.argv[4])
+console.log('Translation file successfully generated!')
+
 /*
  * Example:
  * makeSingleFile('es-ar', 'pt', translationsFolder)
  * 
 */
 function makeSingleFile(languageToTranslate, baseLanguage='es-ar', source='../translations') {
-    const yamlString = yaml.safeDump(translationsToSingleFile(languageToTranslate, baseLanguage, source), yamlDumpOptions)
+    const yamlString = yaml.dump(translationsToSingleFile(languageToTranslate, baseLanguage, source), yamlDumpOptions)
     fs.writeFileSync(`${languageToTranslate}${fileMiddleName}${baseLanguage}.yaml`, yamlString, encoding);
 }
 
-const yamlName = (language) => `${language}.yaml`
+function yamlName(language) { return `${language}.yaml` }
 
-const languageFile = (dirents, language) =>
-    dirents.find(d => yamlName(language) === d.name)
+function languageFile(dirents, language) { return dirents.find(d => yamlName(language) === d.name) }
 
 function yamlFile(source, dirent) {
     const fileContents = fs.readFileSync(`${source}/${dirent.name}`, encoding)
-    return yaml.safeLoad(fileContents)
+    return yaml.load(fileContents)
 }
 
 function mergedYamls(old, _new) {
@@ -76,8 +89,3 @@ function translationsToSingleFile(languageToTranslate, baseLanguage, source) {
 
     return translationYaml
 }
-
-console.log('Generating single translation file...')
-if(!process.argv[2]) throw Error('Translation language must be defined. Example: en-us')
-makeSingleFile(process.argv[2], process.argv[3], process.argv[4])
-console.log('Translation file successfully generated!')
