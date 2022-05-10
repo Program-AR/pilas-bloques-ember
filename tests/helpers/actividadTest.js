@@ -194,7 +194,6 @@ export function actividadTest(nombre, opciones) {
                       onReady=startExecution
                       codigo=solucion
                       codigoJavascript=""
-                      persistirSolucionEnURL=false
                       onTerminoEjecucion=onTerminoEjecucion
                       onErrorDeActividad=onErrorDeActividad
                     }}

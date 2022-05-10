@@ -21,18 +21,10 @@
   <div class="flex layout-row">
     <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
-        @guardar={{'guardar'}}
-        @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
-        @hash={{hash}}
-        @idAlumno={{idAlumno}}
         @codigo={{codigo}}
         @showCode={{showCode}}
         @cargando={{cargando}}
-        @modelActividad={{model}}
-        @cuandoEjecuta={{cuandoEjecuta}}
-        @model={{model}}
-        @pasoAPasoHabilitado={{model.debugging}}
-        @persistirSolucionEnURL={{persistirSolucionEnURL}}
+        @challenge={{model}}
         @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
         @bloques={{model.bloques}}
         @onChangeWorkspace={{onChangeWorkspace}}
