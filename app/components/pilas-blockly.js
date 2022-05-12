@@ -99,17 +99,7 @@ export default Component.extend({
     const savedSolution = await this.pilasBloquesApi.lastSolution(this.challenge.id)
     const serializedURLCode = this.codigo && atob(this.codigo)
 
-    return this.addRandomIdToWorkspace(serializedURLCode || savedSolution?.program || this.challenge.initialWorkspace)
-  },
-  /**
-   * Adds an id to a block of the XML.
-   * This is necessary because the ember-blockly component doesnt update the workspace when the
-   * initial workspace is the same as the previous challenge. 
-   */
-  addRandomIdToWorkspace(workspaceXML) {
-    return workspaceXML && (workspaceXML.includes('id=') ?
-      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`) :
-      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`))
+    return serializedURLCode || savedSolution?.program || this.challenge.initialWorkspace
   },
 
   /**
