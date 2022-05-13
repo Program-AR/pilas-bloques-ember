@@ -1,6 +1,5 @@
 import Evented from '@ember/object/evented';
 import Service from '@ember/service';
-import listaImagenes from 'pilasbloques/components/listaImagenes';
 
 
 /**
@@ -79,7 +78,7 @@ export default Service.extend(Evented, {
     //Le pregunto a la escena qué imágenes va a necesitar
     var imagenes = this.evaluar(`${this.nombreDeEscena(challenge.escena)}.imagenesPreCarga()`);
     //Si la escena no las sabe, cargo todas:
-    imagenes = imagenes.length ? imagenes : listaImagenes
+    imagenes = imagenes.length ? imagenes : this.evaluar(`imageList`)
 
     if (challenge.imagesToPreload) imagenes = imagenes.concat(challenge.imagesToPreload)
 
