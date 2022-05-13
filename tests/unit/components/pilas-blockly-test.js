@@ -19,7 +19,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.owner.lookup('service:blocksGallery').start()
 
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
-    this.ctrl.set('modelActividad', actividadMock)
+    this.ctrl.set('challenge', actividadMock)
     this.ctrl.set('exerciseWorkspace', componentMock)
     this.ctrl.set('pilasBloquesApi', sinon.stub(this.ctrl.pilasBloquesApi))
     sinon.resetHistory()
@@ -302,13 +302,13 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function (hoo
   hooks.beforeEach(function () {
     this.owner.lookup('service:blocksGallery').start()
     this.ctrl = this.owner.factoryFor('component:pilas-blockly').create()
-    this.ctrl.set('modelActividad', actividadMock)
-    this.ctrl.modelActividad.set('estiloToolbox', 'conCategorias')
+    this.ctrl.set('challenge', actividadMock)
+    this.ctrl.challenge.set('estiloToolbox', 'conCategorias')
     this.ctrl.get('intl').setLocale('en-us') // This is necessary because categories are tied to locale and translation.
   })
 
   function setCategoriesNotRequired(ctrl) {
-    ctrl.modelActividad.set('estiloToolbox', 'sinCategorias')
+    ctrl.challenge.set('estiloToolbox', 'sinCategorias')
   }
 
   test('ToolboxForBlockTypes should fail if blockTypes is undefined', function (assert) {

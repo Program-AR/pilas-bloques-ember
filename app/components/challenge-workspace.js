@@ -6,7 +6,6 @@ import { later } from '@ember/runloop';
 
 export default Component.extend({
   classNames: ['exercise-workspace'],
-  persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
   pilasBloquesApi: service(),
