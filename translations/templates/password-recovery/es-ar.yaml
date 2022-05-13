@@ -1,15 +1,15 @@
-username: "Usuario"
-enterUsername: "Ingrese su nombre de usuario"
-nonExistingUsername: "Este nombre de usuario no existe"
-continue: "Continuar"
-newPassword: "Nueva contraseña"
-checkEmail: "Revisá tu mail"
-emailSent: "Un e-mail fue enviado a tu casilla "
-passwordRecoveryLink: ". Dentro de ese e-mail hay un link para que recuperes tu contraseña."
-accountID: "DNI de madre, padre o tutor/a"
-invalidID: "DNI incorrecto"
-finish: "Finalizar"
-back: "Volver"
-passwordChanged: "Contraseña cambiada"
-helloAgain: "¡Hola de nuevo!"
-passwordHasBeenChanged: "Tu contraseña ha sido cambiada. "
+username: Usuario
+enterUsername: Ingrese su nombre de usuario
+nonExistingUsername: Este nombre de usuario no existe
+continue: Continuar
+newPassword: Nueva contraseña
+checkEmail: Revisá tu mail
+emailSent: 'Un e-mail fue enviado a tu casilla '
+passwordRecoveryLink: . Dentro de ese e-mail hay un link para que recuperes tu contraseña.
+accountID: 'DNI de madre, padre o tutor/a'
+invalidID: DNI incorrecto
+finish: Finalizar
+back: Volver
+passwordChanged: Contraseña cambiada
+helloAgain: ¡Hola de nuevo!
+passwordHasBeenChanged: 'Tu contraseña ha sido cambiada. '

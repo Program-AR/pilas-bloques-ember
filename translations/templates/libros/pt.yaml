@@ -1,12 +1,12 @@
 index:
-  welcome: "Olá! Seja bem-vindo ao <b>Pilas Bloques</b>, uma ferramenta para aprender a programar. "
-  challenges: "Os desafios que oferecemos estão organizados em dois grupos:"
-  customChallenges: "Agora você também pode criar e importar desafios com o criador de desafios de <b>Pilas Bloques</b>!"
+  welcome: 'Olá! Seja bem-vindo ao <b>Pilas Bloques</b>, uma ferramenta para aprender a programar. '
+  challenges: 'Os desafios que oferecemos estão organizados em dois grupos:'
+  customChallenges: Agora você também pode criar e importar desafios com o criador de desafios de <b>Pilas Bloques</b>!
   visitAbout:
-    part1: "Visite a seção "
-    link1: "Sobre"
-    part2: " para saber mais sobre o que é esta ferramenta e quem a desenvolveu."
+    part1: 'Visite a seção '
+    link1: Sobre
+    part2: ' para saber mais sobre o que é esta ferramenta e quem a desenvolveu.'
 ver-libro:
   challengesOf: Desafios de
   backBooksList: Voltar para a lista de livros
-  withoutChallenges: Desculpe, não há desafios para este manual ainda.
+  withoutChallenges: 'Desculpe, não há desafios para este manual ainda.'

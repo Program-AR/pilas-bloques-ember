@@ -1,15 +1,15 @@
-username: "Nome de usuário"
-enterUsername: "Digite seu nome de usuário"
-nonExistingUsername: "Este nome de usuário não existe"
-continue: "Continuar"
-newPassword: "Nova senha"
-checkEmail: "Verifique seu e-mail"
-emailSent: "Um e-mail foi enviado para sua caixa de entrada "
-passwordRecoveryLink: ". Dentro desse e-mail há um link para recuperar sua senha."
-accountID: "Identidade da mãe, pai ou responsável"
-invalidID: "Identidade incorreta"
-finish: "Finalizar"
-back: "Volver"
-passwordChanged: "Senha mudada"
-helloAgain: "¡Olá de novo!"
-passwordHasBeenChanged: "Sua senha foi mudada. "
+username: Nome de usuário
+enterUsername: Digite seu nome de usuário
+nonExistingUsername: Este nome de usuário não existe
+continue: Continuar
+newPassword: Nova senha
+checkEmail: Verifique seu e-mail
+emailSent: 'Um e-mail foi enviado para sua caixa de entrada '
+passwordRecoveryLink: . Dentro desse e-mail há um link para recuperar sua senha.
+accountID: 'Identidade da mãe, pai ou responsável'
+invalidID: Identidade incorreta
+finish: Finalizar
+back: Volver
+passwordChanged: Senha mudada
+helloAgain: ¡Olá de novo!
+passwordHasBeenChanged: 'Sua senha foi mudada. '
