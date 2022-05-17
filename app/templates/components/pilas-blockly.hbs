@@ -24,7 +24,7 @@
 {{/if}}
 
 {{#if isEndModalOpen}}
-  {{#if allExpectsPassed}}
+  {{#if (compute (action showCongratulationsModal))}}
     <CongratulationsModal @onClose={{action "hideEndModal"}}/>
   {{else}}
     <ExpectationModal 
