@@ -408,8 +408,8 @@ export default Component.extend({
     return Blockly.MyLanguage.workspaceToCode(Blockly.getMainWorkspace())
   },
 
-  showCongratulationsModal() {
-    return this.allExpectsPassed && this.experiments.isNotAffected()
+  shouldShowCongratulationsModal() {
+    return this.experiments.isNotAffected()
   },
 
   actions: {

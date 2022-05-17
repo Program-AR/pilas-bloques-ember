@@ -24,10 +24,10 @@
 {{/if}}
 
 {{#if isEndModalOpen}}
-  {{#if (compute (action showCongratulationsModal))}}
+  {{#if (compute (action shouldShowCongratulationsModal))}}
     <CongratulationsModal @onClose={{action "hideEndModal"}}/>
   {{else}}
-    <ExpectationModal 
+    <ExpectationModal
       @passedExpects={{passedExpects}}
       @failedExpects={{failedExpects}}
       @passedExpectsValue={{passedExpectsValue}}

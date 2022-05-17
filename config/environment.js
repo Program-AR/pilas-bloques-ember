@@ -58,7 +58,7 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
     ENV.testTranslations = false
-    ENV.experimentGroupType = ENV.groups.treatment
+    ENV.experimentGroupType = ENV.groups.control
   }
 
   if (environment === 'test') {
