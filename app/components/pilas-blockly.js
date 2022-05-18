@@ -138,14 +138,33 @@ export default Component.extend({
   },
 
   groupedByCategories(blockTypes) {
-    return this.categoryIdsFor(blockTypes).map(categoryId => ({
-      categoryId: categoryId,
-      blocks: blockTypes.filter(bt => this._categoryIdFor(bt) === categoryId),
-    }))
+    return this.groupByCategories(blockTypes.map(bt => this.toolboxBlock(bt)))
   },
 
-  categoryIdsFor(blockTypes) {
-    return [... new Set(blockTypes.map(bt => this._categoryIdFor(bt)))]
+  toolboxBlock(blockType) {
+    const toolboxBlock = {
+      categoryId: this._categoryIdFor(blockType),
+      blocks: [blockType]
+    }
+    const blocklyBlock = this.blocklyBlock(blockType)
+    if(blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
+    return toolboxBlock
+  },
+
+  groupByCategories(toolboxBlocks) {
+    const groupedBlocks = []
+    toolboxBlocks.forEach(tb => {
+      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId) 
+      if(match) {
+        match.blocks.push(...tb.blocks)
+        if(tb.custom) match.custom = tb.custom  //Last one takes precedence
+      }
+      else {
+        groupedBlocks.push(tb)
+      }
+    })
+
+    return groupedBlocks
   },
 
   _categoryIdFor(blockType) {
