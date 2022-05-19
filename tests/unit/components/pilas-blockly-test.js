@@ -418,4 +418,81 @@ module('Unit | Components | pilas-blockly | ToolboxForBlockTypes', function (hoo
     assert.propEqual(this.ctrl._toEmberBlocklyToolboxItem(category), emberCategory)
   })
 
+  test('toolboxBlock without custom category', function (assert) {
+    const blockType = 'MoverACasillaDerecha'
+    const blockWithoutCustomCategory = {
+      categoryId: 'primitives',
+      blocks: [blockType]
+    }
+    assert.propEqual(this.ctrl.toolboxBlock(blockType), blockWithoutCustomCategory)
+  })
+
+  test('toolboxBlock with custom category', function (assert) {
+    const blockType = 'Procedimiento'
+    const blockWithCustomCategory = {
+      categoryId: 'myProcedures',
+      blocks: [blockType],
+      custom: 'PROCEDURE'
+    }
+    assert.propEqual(this.ctrl.toolboxBlock(blockType), blockWithCustomCategory)
+  })
+
+  test('group by categories without custom categories', function (assert) {
+    const moveRight = 'MoverACasillaDerecha'
+    const moveLeft = 'MoverACasillaIzquierda'
+    const repeat = 'Repetir'
+    const primitives = 'primitives'
+    const repetitions = 'repetitions'
+    const moveRightToolboxBlock = {
+      categoryId: primitives,
+      blocks: [moveRight]
+    }
+    const moveLeftToolboxBlock = {
+      categoryId: primitives,
+      blocks: [moveLeft]
+    }
+    const repeatToolboxBlock = {
+      categoryId: repetitions,
+      blocks: [repeat]
+    }
+    const groupedPrimitives = {
+      categoryId: primitives,
+      blocks: [moveRight, moveLeft]
+    }
+    const groupedRepetitions = {
+      categoryId: repetitions,
+      blocks: [repeat]
+    }
+    assert.propEqual(
+      this.ctrl.groupByCategories([moveRightToolboxBlock, moveLeftToolboxBlock, repeatToolboxBlock]),
+      [groupedPrimitives, groupedRepetitions]
+    )
+  })
+
+  test('group by categories with custom categories should prioritize last value', function (assert) {
+    const myProcedures = 'myProcedures'
+    const aProcedure = 'A procedure'
+    const otherProcedure = 'Other procedure'
+    const customWithPriority = 'CUSTOM'
+    const aProcedureToolboxBlock = {
+      categoryId: myProcedures,
+      blocks: [aProcedure],
+      custom: 'EMPTY'
+    }
+    const otherProcedureToolboxBlock = {
+      categoryId: myProcedures,
+      blocks: [otherProcedure],
+      custom: customWithPriority
+    }
+    const groupedBlocks = {
+      categoryId: myProcedures,
+      blocks: [aProcedure, otherProcedure],
+      custom: customWithPriority
+    }
+    assert.propEqual(
+      this.ctrl.groupByCategories([aProcedureToolboxBlock, otherProcedureToolboxBlock]),
+      [groupedBlocks]
+    )
+  })
+
 })
