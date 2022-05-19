@@ -5,11 +5,6 @@ bugReportModal:
   mail: Pode nos escrever no
   githubReport: 'Se você tem uma conta no Github, você também pode fazer um relatório de bug diretamente para nós'
   issueTracker: Issue Tracker
-congratulationsModal:
-  youDidIt: Conseguiu!
-  toThink: Para pensar...
-  otherSolutions: 'Seu programa não é o único que resolve o problema. Existem outras soluções! '
-  concepts: Você está usando bem os conceitos?
 createCustomChallenge:
   create: Criar desafio
   custom: Crie desafios personalizados com o criador de desafios do Pilas Bloques.
@@ -110,6 +105,16 @@ acceptTermsAndConditions:
   termsLink: términos y condiciones de uso
   toUse: ' para poder usar Pilas Bloques.'
   accept: termos e condições de uso
-expectationsModal:
-  goodButNotTooGood: 'Está bien, pero... ¡podría estar mejor!'
-  reviewSolution: Revisá tu solución e intentá cumplir con todos los objetivos.
+finishedExerciseModal:
+  congratulationsModal:
+    youDidIt: Conseguiu!
+    toThink: Para pensar...
+    otherSolutions: 'Seu programa não é o único que resolve o problema. Existem outras soluções! '
+    concepts: Você está usando bem os conceitos?
+  expectationsModal:
+    treatmentGroup:
+      title: 'Está bien, pero... ¡podría estar mejor!'
+      description: Revisá tu solución e intentá cumplir con todos los objetivos.
+    controlGroup:
+      title: control titulo
+      description: control descripcion
