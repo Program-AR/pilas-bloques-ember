@@ -33,6 +33,7 @@ export default Model.extend({
   solucionInicial: attr('string'),
   debugging: attr('boolean'),
   expectations: attr(),
+  shouldShowMultipleScenarioHelp: attr('boolean', {defaultValue: false}),
 
   nombreImagen: computed('imagen', 'nombre', function () {
     return `${this.imagen || this.nombre || 'proximamente'}.png`;

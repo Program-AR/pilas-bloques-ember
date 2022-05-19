@@ -52,13 +52,6 @@ git clone https://github.com/Program-AR/pilas-bloques.git
 
 ### Prerequisites
 
-* Python 3:
-
-  Debian/Ubuntu:
-  ```
-  sudo apt install python
-  ```
-  
 * Node. The version required is indicated in `.nvmrc` file.
 
   Install it: 
