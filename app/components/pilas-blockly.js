@@ -330,15 +330,6 @@ export default Component.extend({
     });
   },
 
-  restaurar_codigo(codigo) {
-    var xml = Blockly.Xml.textToDom(codigo);
-
-    if (Blockly.mainWorkspace) {
-      Blockly.mainWorkspace.clear();
-      Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
-    }
-  },
-
   clearHighlight() {
     this.highlighter.clear()
   },
@@ -483,6 +474,20 @@ export default Component.extend({
 
     hideEndModal() {
       this.set('isEndModalOpen', false);
+    },
+
+    /**
+     * This function bypasses EmberBlockly's responsibility
+     * Because changing initial_workspace here doesn't do the trick.
+     * @param {*} workspaceXML
+     */
+    setWorkspace(workspaceXML) {
+      var xml = Blockly.Xml.textToDom(workspaceXML);
+  
+      if (Blockly.mainWorkspace) {
+        Blockly.mainWorkspace.clear();
+        Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());
+      }
     },
   },
 

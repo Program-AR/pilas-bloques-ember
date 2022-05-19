@@ -19,7 +19,13 @@
       @disableNotConnectedToMainBlock={{true}}
     />
     <span class="pilas-blockly-workspace-buttons">
-      <ChallengeWorkspaceButtons @actividad={{challenge}} @shouldUseFloatingMode={{shouldUseFloatingMode}} @changeScreenMode={{changeScreenMode}} @workspace={{initial_workspace}} @xml={{codigoActualEnFormatoXML}}/>
+      <ChallengeWorkspaceButtons 
+        @actividad={{challenge}} 
+        @shouldUseFloatingMode={{shouldUseFloatingMode}} 
+        @changeScreenMode={{changeScreenMode}} 
+        @xml={{codigoActualEnFormatoXML}}
+        @setWorkspace={{action "setWorkspace"}}
+      />
     </span>
 {{/if}}
 
