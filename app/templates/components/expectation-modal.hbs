@@ -1,6 +1,6 @@
-<Modal @title={{compute (action title)}} @onClose={{onClose}}>
+<Modal @title={{t (compute (action textTag "title"))}} @onClose={{onClose}}>
   <div class='expectationsModal'>
-    <p>{{compute (action title)}}</p>
+    <p>{{t (compute (action textTag  "description"))}}</p>
     <img src="imagenes/libros/primer-ciclo.png" />
   </div>
 

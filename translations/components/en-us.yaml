@@ -107,16 +107,18 @@ acceptTermsAndConditions:
   accept: I accept the terms of use and conditions
 finishedExerciseModal:
   congratulationsModal:
-    youDidIt: You did it!
-    toThink: To think...
-    otherSolutions: Your program is not the only option to solve the problem. There are other solutions!
-    concepts: Are you using the concepts well?
+    title: You did it!
+    description: 'To think... Your program is not the only option to solve the problem. There are other solutions! Are you using the concepts well?'
   expectationsModal:
     treatmentGroup:
-      title: 'It''s okay, but... it could be better!'
-      description: Review your solution and try to fulfill all the objectives.
+      notAllPassed:
+        title: 'It''s okay, but... it could be better!'
+        description: Review your solution and try to fulfill all the objectives.
+      allPassed: 
+        title: You did it!
+        description: ''
     controlGroup:
-      title: control titulo
-      description: control descripcion
+      title: You did it!
+      description: Here are some suggestions
       
 

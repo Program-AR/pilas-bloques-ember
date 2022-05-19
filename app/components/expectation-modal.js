@@ -14,8 +14,14 @@ export default Component.extend({
     return this.experiments.isControlGroup()
   },
 
-  title() {
-    return this.experiments.isControlGroup() ? 'control' : (this.allExpectationsPassed() ? 'treatment pasando expectativas' : 'treatment no pasando expectativas')
+  textTag(textType){
+    const base = "components.finishedExerciseModal.expectationsModal."
+    const groupTag =  this.experiments.isControlGroup() ? 'controlGroup.' : this.treatmentTag()
+    return base + groupTag + textType
+  },
+
+  treatmentTag(){
+    return 'treatmentGroup' + this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.'
   },
 
   expects() {

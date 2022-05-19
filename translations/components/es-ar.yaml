@@ -107,15 +107,17 @@ acceptTermsAndConditions:
   accept: Acepto los terminos y condiciones de uso
 finishedExerciseModal:
   congratulationsModal:
-    youDidIt: ¡Lo lograste!
-    toThink: Para pensar...
-    otherSolutions: Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!
-    concepts: ¿Estás usando los conceptos bien?
+    title: ¡Lo lograste!
+    description: 'Para pensar... Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones! ¿Estás usando los conceptos bien?'
   expectationsModal:
     treatmentGroup:
-      title: 'Está bien, pero... ¡podría estar mejor!'
-      description: Revisá tu solución e intentá cumplir con todos los objetivos.
+      notAllPassed:
+        title: 'Está bien, pero... ¡podría estar mejor!'
+        description: Revisá tu solución e intentá cumplir con todos los objetivos.
+      allPassed:
+        title: ¡Lo lograste!
+        description: ''
     controlGroup:
-      title: control titulo
-      description: control descripcion
+      title: ¡Lo lograste!
+      description: Acá tenemos algunas sugerencias
 
