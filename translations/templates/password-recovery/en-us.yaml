@@ -1,15 +1,15 @@
-username: "Username"
-enterUsername: "Enter your username"
-nonExistingUsername: "This username does not exist"
-continue: "Continue"
-newPassword: "New password"
-checkEmail: "Check your email"
-emailSent: "An email has been sent to your address "
-passwordRecoveryLink: ". In the email there is a link so you can recover your password."
-accountID: "ID of mother, father or guardian"
-invalidID: "Invalid ID"
-finish: "Submit"
-back: "Go back"
-passwordChanged: "Password changed"
-helloAgain: "Hello again!"
-passwordHasBeenChanged: "Your password has been changed. "
+username: Username
+enterUsername: Enter your username
+nonExistingUsername: This username does not exist
+continue: Continue
+newPassword: New password
+checkEmail: Check your email
+emailSent: 'An email has been sent to your address '
+passwordRecoveryLink: . In the email there is a link so you can recover your password.
+accountID: 'ID of mother, father or guardian'
+invalidID: Invalid ID
+finish: Submit
+back: Go back
+passwordChanged: Password changed
+helloAgain: Hello again!
+passwordHasBeenChanged: 'Your password has been changed. '
