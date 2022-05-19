@@ -30,9 +30,9 @@ export default Service.extend({
 
   idsToExpectations: activityExpectations,
 
-  expectationFor(activity) {
-    let models = [activity]
-    const group = activity.get('grupo')
+  expectationFor(challenge) {
+    let models = [challenge]
+    const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
     if(group) {
       const chapter = group.get('capitulo')

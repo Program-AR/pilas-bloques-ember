@@ -13,7 +13,7 @@ export default [
         id: 'Capítulo 5',
         grupoIds: ['manual1cPrimaria5.1.3', 'manual1cPrimaria5.1.4', 'manual1cPrimaria5.2.1', 'manual1cPrimaria5.I', 'manual1cPrimariaOtros'],
         expectations: {
-            decomposition: true
+            conditionalAlternative: true
         }
     },
     {
