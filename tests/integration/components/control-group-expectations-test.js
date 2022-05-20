@@ -16,9 +16,7 @@ module('Integration | Component | control-group-expectations', function(hooks) {
 
     // Template block usage:
     await render(hbs`
-      <ControlGroupExpectations>
-        template block text
-      </ControlGroupExpectations>
+      <ControlGroupExpectations/>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');

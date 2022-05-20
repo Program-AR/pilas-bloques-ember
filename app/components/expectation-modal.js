@@ -16,7 +16,7 @@ export default Component.extend({
 
   textTag(textType) {
     const base = "components.finishedExerciseModal.expectationsModal."
-    const groupTag = this.experiments.isControlGroup() ? 'controlGroup.' : this.treatmentTag()
+    const groupTag = this.isControl() ? 'controlGroup.' : this.treatmentTag()
     return base + groupTag + textType
   },
 

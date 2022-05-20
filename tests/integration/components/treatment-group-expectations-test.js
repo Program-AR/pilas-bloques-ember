@@ -16,9 +16,7 @@ module('Integration | Component | treatment-group-expectations', function(hooks)
 
     // Template block usage:
     await render(hbs`
-      <TreatmentGroupExpectations>
-        template block text
-      </TreatmentGroupExpectations>
+      <TreatmentGroupExpectations/>
     `);
 
     assert.equal(this.element.textContent.trim(), 'template block text');
