@@ -1,7 +1,7 @@
 <Modal @title={{t (compute (action textTag "title"))}} @onClose={{onClose}}>
   <div class='expectationsModal'>
-    <p>{{t (compute (action textTag  "description"))}}</p>
     <img src="imagenes/libros/primer-ciclo.png" />
+    <p>{{t (compute (action textTag  "description"))}}</p>
   </div>
 
   {{#if (compute (action isControl))}}
