@@ -14,14 +14,14 @@ export default Component.extend({
     return this.experiments.isControlGroup()
   },
 
-  textTag(textType){
+  textTag(textType) {
     const base = "components.finishedExerciseModal.expectationsModal."
-    const groupTag =  this.experiments.isControlGroup() ? 'controlGroup.' : this.treatmentTag()
+    const groupTag = this.experiments.isControlGroup() ? 'controlGroup.' : this.treatmentTag()
     return base + groupTag + textType
   },
 
-  treatmentTag(){
-    return 'treatmentGroup' + this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.'
+  treatmentTag() {
+    return 'treatmentGroup.' + (this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.')
   },
 
   expects() {
