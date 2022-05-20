@@ -16,6 +16,9 @@ export const usesConditionalAlternative = () =>
 export const usesConditionalRepetition = () =>
   newGlobalExpectation('uses while', 'uses_conditional_repetition')
 
+export const usesSimpleRepetition = () =>
+  newGlobalExpectation('uses repeat', 'uses_simple_repetition')
+
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
   newExpectation(`${countCallsWithin(declaration)} >= 1`, 'do_something', { declaration })

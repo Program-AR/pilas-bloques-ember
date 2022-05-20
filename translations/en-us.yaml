@@ -637,6 +637,11 @@ model:
         true {You are using conditional repetition}
         other {You should use conditional repetition to consider all possible scenarios}
       }.
+    uses_simple_repetition: |
+      {result, select, 
+        true {You are using simple repetition}
+        other {You should use simple repetition}
+      }.
     does_not_use_recursion: |
       {result, select,
         true {The procedure "{declaration}" does not use recursion.}

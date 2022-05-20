@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const activityExpectations = (intl) => ({
@@ -20,6 +20,8 @@ const activityExpectations = (intl) => ({
   conditionalAlternative: usesConditionalAlternative,
 
   conditionalRepetition: usesConditionalRepetition,
+
+  simpleRepetition: usesSimpleRepetition,
 
 })
 

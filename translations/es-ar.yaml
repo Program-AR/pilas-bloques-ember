@@ -643,6 +643,11 @@ model:
         true {Estás usando repetición condicional}
         other {Deberías usar repetición condicional para considerar todos los escenarios posibles}
       }.
+    uses_simple_repetition: |
+      {result, select, 
+        true {Estás usando repetición simple}
+        other {Deberías usar repetición simple}
+      }.
     does_not_use_recursion: |
       {result, select,
         true {El procedimiento "{declaration}" no usa recursión.}
