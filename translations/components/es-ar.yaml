@@ -1,139 +1,116 @@
 bugReportModal:
-  problem: "¿Tenés algún problema?"
-  error: "¿Pensás que este ejercicio tiene un error?"
-  askTeacher: "Recordá contactarte siempre con tu docente o escuela para hacerle consultas. Quienes hacemos Pilas Bloques lamentablemente no conocemos a todas las maestras y maestros que usan la herramienta."
-  mail: "Podés escribirnos a "
-  githubReport: "Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el"
+  problem: ¿Tenés algún problema?
+  error: ¿Pensás que este ejercicio tiene un error?
+  askTeacher: Recordá contactarte siempre con tu docente o escuela para hacerle consultas. Quienes hacemos Pilas Bloques lamentablemente no conocemos a todas las maestras y maestros que usan la herramienta.
+  mail: 'Podés escribirnos a '
+  githubReport: Si tenés una cuenta en Github podés también hacernos un reporte de error directamente en el
   issueTracker: Issue Tracker
-
 congratulationsModal:
-  youDidIt: "¡Lo lograste!"
-  toThink: "Para pensar..."
-  otherSolutions: "Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!"
-  concepts: "¿Estás usando los conceptos bien?"
-
+  youDidIt: ¡Lo lograste!
+  toThink: Para pensar...
+  otherSolutions: Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones!
+  concepts: ¿Estás usando los conceptos bien?
 createCustomChallenge:
-  create: "Crear Desafío"
-  custom: "Crea desafíos personalizados con el creador de desafíos de Pilas Bloques."
-
+  create: Crear Desafío
+  custom: Crea desafíos personalizados con el creador de desafíos de Pilas Bloques.
 scene:
-  close: "Cerrar"
-
+  close: Cerrar
 sceneDetails:
-  seeDescription: "¡Quiero ver el enunciado!"
-  getClue: "¡Dame una pista!"
-  noClues: "Este ejercicio no contiene pista alguna"
-
+  seeDescription: ¡Quiero ver el enunciado!
+  getClue: ¡Dame una pista!
+  noClues: Este ejercicio no contiene pista alguna
 sceneButtons:
   stepByStepRun:
-    label: "Paso"
-    tooltip: "Ejecutar paso a paso la solución propuesta"
+    label: Paso
+    tooltip: Ejecutar paso a paso la solución propuesta
   runStep:
-    label: "Paso"
-    tooltip: "Avanzar un paso"
+    label: Paso
+    tooltip: Avanzar un paso
   run:
-    label: "Ejecutar"
-    tooltip: "Ejecutar la solución propuesta"
+    label: Ejecutar
+    tooltip: Ejecutar la solución propuesta
   restart:
-    label: "Reiniciar"
-    tooltip: "Reiniciar la ejecución"
-
+    label: Reiniciar
+    tooltip: Reiniciar la ejecución
+  multipleScenarios: ¡Hay varios escenarios!
 turboModeToggle:
-  turnOff: "Desactivar el modo Turbo"
-  turnOn: "Activar el modo Turbo"
-  active: "ACTIVADO"
-  inactive: "DESACTIVADO"
-  
+  turnOff: Desactivar el modo Turbo
+  turnOn: Activar el modo Turbo
+  active: ACTIVADO
+  inactive: DESACTIVADO
 clearData:
-  deleting: "Borrando datos del navegador, si tenés un usuario es posible que tengas que ingresar nuevamente."
-
+  deleting: 'Borrando datos del navegador, si tenés un usuario es posible que tengas que ingresar nuevamente.'
 importCustomChallenge:
-  import: "Importar Desafío"
-  custom: "Importa un desafío personalizado proveniente del creador de desafios de Pilas Bloques."
-
-header: 
-  tool: "Una herramienta para aprender a programar"
-
+  import: Importar Desafío
+  custom: Importa un desafío personalizado proveniente del creador de desafios de Pilas Bloques.
+header:
+  tool: Una herramienta para aprender a programar
 simpleReadToggle:
-  disable: "Desactivar el modo Lectura Simple"
-  enable: "Activar el modo Lectura Simple"
-
+  disable: Desactivar el modo Lectura Simple
+  enable: Activar el modo Lectura Simple
 nightModeToggle:
-  lightTheme: "Activar modo claro"
-  darkTheme: "Activar modo oscuro"
-
-registerDisclaimer: 
-  now: "¡ Ahora Pilas Bloques permite"
-  register: "registrarse"
-  optional: "Hacerlo es <b>completamente opcional</b>, nos ayuda para poder mejorar Pilas Bloques y te permite suspender tu trabajo y retomarlo desde donde lo habías dejado."
-
-programarDisclaimer: 
-  entered: "¿ Entraste a"
-  programar: "Program.AR en casa"
-  in: "En"
-  find: "encontrarás mucho material, muchas herramientas y una explicación de cómo usar Pilas Bloques"
-
-challengeLink: 
-  soon: "Muy pronto"
-
+  lightTheme: Activar modo claro
+  darkTheme: Activar modo oscuro
+registerDisclaimer:
+  now: ¡ Ahora Pilas Bloques permite
+  register: registrarse
+  optional: 'Hacerlo es <b>completamente opcional</b>, nos ayuda para poder mejorar Pilas Bloques y te permite suspender tu trabajo y retomarlo desde donde lo habías dejado.'
+programarDisclaimer:
+  entered: ¿ Entraste a
+  programar: Program.AR en casa
+  in: En
+  find: 'encontrarás mucho material, muchas herramientas y una explicación de cómo usar Pilas Bloques'
+challengeLink:
+  soon: Muy pronto
 challengeWorkspaceButtons:
-  open: "Abrir solución"
-  save: "Guardar solución"
-  careful: "¡Cuidado! Al borrar la solución se perderán tus cambios."
-  delete: "Borrar la solución"
-  exit: "Salir de Pantalla Completa"
-  fullScreen: "Pantalla Completa"
-  notASolution: "Este archivo no tiene una solución de Pilas Bloques."
-  wrongActivity: "¡Cuidado! El archivo indica que es para otra actividad ({activity}). Se cargará de todas formas, pero puede fallar."
-  oldVersion: "¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo."
-
+  open: Abrir solución
+  save: Guardar solución
+  careful: ¡Cuidado! Al borrar la solución se perderán tus cambios.
+  delete: Borrar la solución
+  exit: Salir de Pantalla Completa
+  fullScreen: Pantalla Completa
+  notASolution: Este archivo no tiene una solución de Pilas Bloques.
+  wrongActivity: '¡Cuidado! El archivo indica que es para otra actividad ({activity}). Se cargará de todas formas, pero puede fallar.'
+  oldVersion: '¡Cuidado! El archivo indica que es de una versión anterior. Se cargará de todas formas, pero te sugerimos que resuelvas nuevamente el ejercicio y guardes un nuevo archivo.'
 footer:
-  version: "Versión:"
-  problem: "¿Algún problema con este ejercicio?"
-  about: "Acerca De"
-
+  version: 'Versión:'
+  problem: ¿Algún problema con este ejercicio?
+  about: Acerca De
 login:
-  already: "Ya tengo usuario"
-  wrong: "Usuario o contraseña incorrectos, volvé a intentar"
-  forgot: "Olvidé mi usuario o constraseña"
-  dontHaveUser: "Aún no tengo usuario"
-  register: "¡Registrate haciendo click acá!"
-  login: "Iniciar sesión"
-  username: "Usuario"
-  password: "Contraseña"
-
+  already: Ya tengo usuario
+  wrong: 'Usuario o contraseña incorrectos, volvé a intentar'
+  forgot: Olvidé mi usuario o constraseña
+  dontHaveUser: Aún no tengo usuario
+  register: ¡Registrate haciendo click acá!
+  login: Iniciar sesión
+  username: Usuario
+  password: Contraseña
 modalAyuda:
-  help: "Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques."
-  firstSteps: "El primer paso es abrir la sección de Desafíos:"
-  categories: "Los bloques están agrupados en categorías, usá la barra lateral para desplegar los bloques."
-  dragAndDrop: "Luego podés arrastrar y soltar los bloques sobre el área de trabajo."
-  continue: "Una vez que tengas tu programa listo pulsá el botón ejecutar continuar."
-  delete: "Ah, y los bloques se pueden borrar arrastrándolos a la papelera."
-
+  help: Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques.
+  firstSteps: 'El primer paso es abrir la sección de Desafíos:'
+  categories: 'Los bloques están agrupados en categorías, usá la barra lateral para desplegar los bloques.'
+  dragAndDrop: Luego podés arrastrar y soltar los bloques sobre el área de trabajo.
+  continue: Una vez que tengas tu programa listo pulsá el botón ejecutar continuar.
+  delete: 'Ah, y los bloques se pueden borrar arrastrándolos a la papelera.'
 passwordConfirmation:
-  password: "Confirmar contraseña"
-  matchError: "Las contraseñas no coinciden"
-
+  password: Confirmar contraseña
+  matchError: Las contraseñas no coinciden
 sessionButton:
-  login: "Iniciar sesión"
-  logout: "Cerrar sesión"
-  changeUser: "Cambiar usuario"
-
+  login: Iniciar sesión
+  logout: Cerrar sesión
+  changeUser: Cambiar usuario
 phoneRotationWarning:
-  rotate: "Intentá rotar el celular"
-  widerScreen: "Pilas Bloques necesita una pantalla más ancha"
-
+  rotate: Intentá rotar el celular
+  widerScreen: Pilas Bloques necesita una pantalla más ancha
 notifier:
-  download: "Hay una nueva versión disponible para descargar."
-  visit: "Visitá"
-  moreInfo: "nuestra web para más información."
-
+  download: Hay una nueva versión disponible para descargar.
+  visit: Visitá
+  moreInfo: nuestra web para más información.
 acceptTermsAndConditions:
-  askToRead: "Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy importante. Por eso te pedimos que leas y aceptes nuestros "
-  termsLink: "términos y condiciones de uso"
-  toUse: " para poder usar Pilas Bloques."
-  accept: "Acepto los terminos y condiciones de uso"
-
+  askToRead: 'Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy importante. Por eso te pedimos que leas y aceptes nuestros '
+  termsLink: términos y condiciones de uso
+  toUse: ' para poder usar Pilas Bloques.'
+  accept: Acepto los terminos y condiciones de uso
 expectationsModal:
-  goodButNotTooGood: "Está bien, pero... ¡podría estar mejor!"
-  reviewSolution: "Revisá tu solución e intentá cumplir con todos los objetivos."
+  goodButNotTooGood: 'Está bien, pero... ¡podría estar mejor!'
+  reviewSolution: Revisá tu solución e intentá cumplir con todos los objetivos.

@@ -1,155 +1,155 @@
-turnOnTheLight: "Turn on the light"
-pushButton: "Push the button"
-eatBanana: "Eat the banana"
-eatApple: "Eat the apple"
-eatCheese: "Eat cheese"
-eatOrange: "Eat the orange"
-moveRight: "Move right"
-moveLeft: "Move left"
-moveUp: "Move up"
-moveDown: "Move down"
-pickNut: "Pick the nut"
-greet: "Greet"
-openEyes: "Open eyes"
-closeEyes: "Close eyes"
-lie: "Lie down"
-standUp: "Stand up"
-return: "Return"
-advance: "Move forward"
-dream: "Dream"
-jump: "Jump"
-goToLeftBorder: "Go to left border"
-takeStar: "Take the star"
-eatWatermelon: "Eat watermelon"
-feedFish: "Feed the fish"
-pickFood: "Pick food"
-nextComputer: "Go to next computer"
-turnComputerOn: "Turn the computer on"
-turnComputerOff: "Turn the computer off"
-installGame: "Install the game"
-writeA: "Write \"A\""
-writeB: "Write \"B\""
-writeC: "Write \"C\""
-takeKey: "Take the key"
-openSafeBoxTakeHat: "Open the safe box and take the hat"
-leaveHat: "Leave the hat"
-attackWithSword: "Attack with the sword"
-unicornEscape: "Run away riding a unicorn"
-escape: "Run away"
-pickIron: "Pick iron"
-pickCarbon: "Pick carbon"
-lightCampfire: "Light the campfire"
-putIntoTheShip: "Put into the spaceship"
-leavePresent: "Leave a present"
-nextLine: "Go to the next line"
-nextColumn: "Go to the next column"
-countBanana: "Count a banana"
-countApple: "Count an apple"
-blowUpBallon: "Pinch the balloon"
-kickBall: "Kick the ball"
-move1Km: "Move 1 Km forward"
-changeLightColor: "Change spotlight color"
-moveNextLight: "Move to next spotlight"
-startParty: "Start the party"
-backToLeftBorder: "Get back to the left border"
-goToFirstSuspect: "Go to the first suspect"
-nextSuspect: "Go to next suspect"
-askSuspect: "Interrogate the suspect"
-eatSteak: "Eat beefsteak"
-pickTomato: "Pick the tomato"
-pickLettuce: "Pick lettuce"
-prepareSalad: "Prepare the salad"
-writeLetter: "Write the letter I am touching"
-moveAndDrawUp: "Move up and draw"
-moveAndDrawDown: "Move down and draw"
-moveAndDrawRight: "Move right and draw"
-moveAndDrawLeft: "Move left and draw"
-jumpUp: "Jump up"
-jumpDown: "Jump down"
-jumpRight: "Jump right"
-jumpLeft: "Jump left"
-bananaHere: "Is there a banana here?"
-appleHere: "Is there an apple here?"
-orangeHere: "Is there an orange here?"
-campfireHere: "Is there a campfire here?"
-atTheBeginning: "Am I at the beginning?"
-getToTheBall: "Did I get to the ball?"
-comeToTheEnd: "Am I at the end?"
-kmToTravel: "Kilometers to travel"
-atTheSquare: "Am I in one corner?"
-atColumnBeginning: "Am I at the beginning of the column?"
-atColumnEnd: "Am I at the end of the column?"
-currentColumnLength: "Current column length"
-canMoveDown: "Can I move down?"
-canMoveRight: "Can I move to the right?"
-reachedGoal: "Did I reach the finish line?"
-cheeseHere: "Is there cheese here?"
-lampHere: "Is there a spotlight here?"
-frontOfGuilty: "Did I find the guilty party?"
-steakHere: "Is there a beefsteak here?"
-obstacleUp: "Is there an obstacle up there?"
-obstacleDown: "Is there an obstacle down there?"
-obstacleAtLeft: "Is there an obstacle on the left?"
-obstacleAtRight: "Is there an obstacle on the right?"
-puddleHere: "Is there a puddle here?"
-lettuceHere: "Is there lettuce here?"
-tomatoHere: "Is there a tomato here?"
-right: "right"
-left: "left"
-up: "up"
-down: "down"
-moveTo: "Move %1"
-jumpFront: "%1 Jump ahead %2"
-drawSide: "%1 Draw a side of %2"
-write: "%1 Write: %2"
-turnDegrees: "%1 Turn %2 degrees"
-currentCharacter: "%1 Is the current letter an %2 ?"
-program: "When the program runs"
-simpleRepetitionBeginning: "Repeat"
-simpleRepetitionEnd: "times"
-conditionalRepetition: "Repeat until"
-simpleAlternative: "If"
-completeAlternative: "else"
+turnOnTheLight: Turn on the light
+pushButton: Push the button
+eatBanana: Eat the banana
+eatApple: Eat the apple
+eatCheese: Eat cheese
+eatOrange: Eat the orange
+moveRight: Move right
+moveLeft: Move left
+moveUp: Move up
+moveDown: Move down
+pickNut: Pick the nut
+greet: Greet
+openEyes: Open eyes
+closeEyes: Close eyes
+lie: Lie down
+standUp: Stand up
+return: Return
+advance: Move forward
+dream: Dream
+jump: Jump
+goToLeftBorder: Go to left border
+takeStar: Take the star
+eatWatermelon: Eat watermelon
+feedFish: Feed the fish
+pickFood: Pick food
+nextComputer: Go to next computer
+turnComputerOn: Turn the computer on
+turnComputerOff: Turn the computer off
+installGame: Install the game
+writeA: Write "A"
+writeB: Write "B"
+writeC: Write "C"
+takeKey: Take the key
+openSafeBoxTakeHat: Open the safe box and take the hat
+leaveHat: Leave the hat
+attackWithSword: Attack with the sword
+unicornEscape: Run away riding a unicorn
+escape: Run away
+pickIron: Pick iron
+pickCarbon: Pick carbon
+lightCampfire: Light the campfire
+putIntoTheShip: Put into the spaceship
+leavePresent: Leave a present
+nextLine: Go to the next line
+nextColumn: Go to the next column
+countBanana: Count a banana
+countApple: Count an apple
+blowUpBallon: Pinch the balloon
+kickBall: Kick the ball
+move1Km: Move 1 Km forward
+changeLightColor: Change spotlight color
+moveNextLight: Move to next spotlight
+startParty: Start the party
+backToLeftBorder: Get back to the left border
+goToFirstSuspect: Go to the first suspect
+nextSuspect: Go to next suspect
+askSuspect: Interrogate the suspect
+eatSteak: Eat beefsteak
+pickTomato: Pick the tomato
+pickLettuce: Pick lettuce
+prepareSalad: Prepare the salad
+writeLetter: Write the letter I am touching
+moveAndDrawUp: Move up and draw
+moveAndDrawDown: Move down and draw
+moveAndDrawRight: Move right and draw
+moveAndDrawLeft: Move left and draw
+jumpUp: Jump up
+jumpDown: Jump down
+jumpRight: Jump right
+jumpLeft: Jump left
+bananaHere: Is there a banana here?
+appleHere: Is there an apple here?
+orangeHere: Is there an orange here?
+campfireHere: Is there a campfire here?
+atTheBeginning: Am I at the beginning?
+getToTheBall: Did I get to the ball?
+comeToTheEnd: Am I at the end?
+kmToTravel: Kilometers to travel
+atTheSquare: Am I in one corner?
+atColumnBeginning: Am I at the beginning of the column?
+atColumnEnd: Am I at the end of the column?
+currentColumnLength: Current column length
+canMoveDown: Can I move down?
+canMoveRight: Can I move to the right?
+reachedGoal: Did I reach the finish line?
+cheeseHere: Is there cheese here?
+lampHere: Is there a spotlight here?
+frontOfGuilty: Did I find the guilty party?
+steakHere: Is there a beefsteak here?
+obstacleUp: Is there an obstacle up there?
+obstacleDown: Is there an obstacle down there?
+obstacleAtLeft: Is there an obstacle on the left?
+obstacleAtRight: Is there an obstacle on the right?
+puddleHere: Is there a puddle here?
+lettuceHere: Is there lettuce here?
+tomatoHere: Is there a tomato here?
+right: right
+left: left
+up: up
+down: down
+moveTo: Move %1
+jumpFront: '%1 Jump ahead %2'
+drawSide: '%1 Draw a side of %2'
+write: '%1 Write: %2'
+turnDegrees: '%1 Turn %2 degrees'
+currentCharacter: '%1 Is the current letter an %2 ?'
+program: When the program runs
+simpleRepetitionBeginning: Repeat
+simpleRepetitionEnd: times
+conditionalRepetition: Repeat until
+simpleAlternative: If
+completeAlternative: else
 categories:
-  primitives: "Primitives"
-  myProcedures: "My procedures"
-  repetitions: "Repetition"
-  alternatives: "Alternatives"
-  variables: "Variables"
-  separator: "Separator"
-  values: "Values"
-  sensors: "Sensors"
-  operators: "Operators"
-  myFunctions: "My functions"
-  uncategorized: "Uncategorized"
-procedures: 
-  definition: "Define"
-  name: "Do something"
-  paramWith: "with"
-  paramName: "parameter"
-  create: "Create a procedure."
-  removeParam: "Remove parameter"
-  comment: "Describe the procedure..."
-  noParams: ""
-  addParam: "Add parameter"
-  addParamPrompt: "Enter the parameter's name"
+  primitives: Primitives
+  myProcedures: My procedures
+  repetitions: Repetition
+  alternatives: Alternatives
+  variables: Variables
+  separator: Separator
+  values: Values
+  sensors: Sensors
+  operators: Operators
+  myFunctions: My functions
+  uncategorized: Uncategorized
+procedures:
+  definition: Define
+  name: Do something
+  paramWith: with
+  paramName: parameter
+  create: Create a procedure.
+  removeParam: Remove parameter
+  comment: Describe the procedure...
+  noParams: ''
+  addParam: Add parameter
+  addParamPrompt: Enter the parameter's name
 contextMenu:
-  createProcedure: "Use procedure '%1'"
-  addComment: "Add comment"
-  removeComment: "Remove comment"
-  duplicate: "Duplicate"
-  help: "Help"
-  deleteOne: "Delete block"
-  deleteMany: "Delete %1 blocks"
-  disable: "Disable block"
-  enable: "Enable block"
-  undo: "Undo"
-  redo: "Redo"
-  cleanUp: "Clean up blocks"
-  externalInputs: "External Inputs"
+  createProcedure: Use procedure '%1'
+  addComment: Add comment
+  removeComment: Remove comment
+  duplicate: Duplicate
+  help: Help
+  deleteOne: Delete block
+  deleteMany: Delete %1 blocks
+  disable: Disable block
+  enable: Enable block
+  undo: Undo
+  redo: Redo
+  cleanUp: Clean up blocks
+  externalInputs: External Inputs
 errors:
-  missingCommandBlock: "There are no command blocks here!"
-  missingExpressionBlock: "There is no expression block here!"
-  nonAvailableBlock: "This block is not available in this activity."
-  wrongParameter: This block can't be used here. It's a parameter that can only be used inside the procedure "{procedure}".
-  deletedParameter: "This block can no longer be used, the parameter has been deleted."
+  missingCommandBlock: There are no command blocks here!
+  missingExpressionBlock: There is no expression block here!
+  nonAvailableBlock: This block is not available in this activity.
+  wrongParameter: 'This block can''t be used here. It''s a parameter that can only be used inside the procedure "{procedure}".'
+  deletedParameter: 'This block can no longer be used, the parameter has been deleted.'

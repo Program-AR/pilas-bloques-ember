@@ -1,59 +1,59 @@
 localeName: Português
-
+changeLanguage: Cambiar idioma
 model:
   challenges:
-    1:
+    '1':
       title: O alienígena toca o botão
       description: |
         Ajude nosso alienígena a apertar o botão de seu laboratório.
         Dicas: veja os _primitivos_ disponíveis. Você vai ter que avançar várias vezes! :wink:
       clue: Os blocos permitem formar sequências de ações para resolver os desafios que propomos no Pilas Bloques.
-    2:
+    '2':
       title: O gato na rua
-      description: Faça o gato dar um passo à frente, adormecer, acordar, dizer olá e voltar ao seu lugar.
+      description: 'Faça o gato dar um passo à frente, adormecer, acordar, dizer olá e voltar ao seu lugar.'
       clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
-    3:
+    '3':
       title: Eu nunca me canso de pular
       description: |
         Ajude o gato a se livrar da preguiça pulando 30 vezes seguidas. Dica: pode ser resolvido com menos de 30 blocos.
       clue: O bloco Repetir permite que você escolha o número de vezes que deseja repetir uma sequência de ações. Isso é chamado de "Repetição Simples".
-    4:
+    '4':
       title: O marciano no deserto
       description: |
         O marciano está perdido no deserto e precisa comer sua comida favorita: maçãs! Ajude-o a cumprir seu objetivo. Dica: crie um procedimento (bloco) para cada conjunto de maçãs
       clue: Existem muitas maneiras de comer maçãs. Você pode começar com os da direita ou pode começar no topo! Você pode pensar em outra estratégia? Sempre pense nela antes de programar
-    5:
+    '5':
       title: Tito acende as luzes
       description: |
         Ajude Tito a acender todas as luzes.
         Dica: crie um procedimento para ligar todas as luzes na diagonal.
       clue: Você pode criar um procedimento uma vez e usá-lo quantas vezes quiser em um programa.
-    6:
+    '6':
       title: O alienigena e as porcas
       description: |
         Defina um programa para o alienígena coletar todas as porcas. Dica: o alienígena não pode se mover diagonalmente? Você pode criar seu próprio procedimento para fazer isso
-      clue: ""
-    7:
+      clue: ''
+    '7':
       title: O colecionador de estrelas
       description: |
         Ajude nosso personagem a coletar todas as estrelas. Dica: você pode fazer um procedimento que leva uma fileira de estrelas.
       clue: Usar um procedimento muitas vezes poupa seu trabalho.
-    8:
+    '8':
       title: Maria e as melancias
       description: |
         Maria precisa comer todas as melancias da grelha. Pense em como você pode fazer isso criando os blocos necessários. Dica: a forma como as melancias são dispostas na grade é fundamental para criar o mínimo de procedimentos.
-      clue: ""
-    9:
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+    '9':
       title: Alimentando os peixes
       description: |
         Nosso mergulhador deve alimentar os 7 peixes desta cena com vermes. Procure os vermes primeiro e depois passe por cada peixe e alimente-os. Dica: quantas partes sua estratégia deve ter?
-      clue: ""
-    10:
+      clue: ''
+    '10':
       title: Instalando jogos
       description: |
         O Ramiro tem que instalar um jogo em 3 computadores para se divertir com os amigos. Os passos para instalá-lo em cada um são: ligue, digite a senha ("ABC"), instale o jogo e desligue a máquina. Dica: aproveite o fato de que em cada computador tem que fazer o mesmo trabalho.
-      clue: ""
-    11:
+      clue: ''
+    '11':
       title: A grande aventura do mar encantado
       description: |
         Ajude a heroína a resgatar seu príncipe. Para fazer isso, você deve passar em cada um dos seguintes testes em ordem:
@@ -62,88 +62,88 @@ model:
         3) Dê o chapéu ao mago para receber a espada em troca.
         4) Lute com a espada contra o cavaleiro das trevas.
         5) Escape no unicórnio.
-      clue: ""
-    12:
+      clue: ''
+    '12':
       title: Reparando o navio
-      description: O marciano deve consertar sua nave espacial para voltar para casa. Para fazer isso, ele deve trazer 3 unidades de carvão e 3 de ferro para o navio, mas não pode carregar mais de uma unidade de cada vez.
-      clue: ""
-    13:
+      description: 'O marciano deve consertar sua nave espacial para voltar para casa. Para fazer isso, ele deve trazer 3 unidades de carvão e 3 de ferro para o navio, mas não pode carregar mais de uma unidade de cada vez.'
+      clue: ''
+    '13':
       title: O macaco e as bananas
       description: |
         Você pode mover o macaco para a caixa da frente? Se houver uma banana, ele deve comê-la. Se não, ele fica feliz apenas por chegar lá.
         Execute o programa várias vezes para verificar se ele sempre funciona.
         Dica: observe a categoria "Sensores" e a categoria "Alternativas".
       clue: O bloco "Se ... Então" executa uma seqüência de instruções somente quando a condição é verdadeira. Isso é chamado de "alternativa condicional".
-    14:
+    '14':
       title: A escolha do macaco
       description: |
         Você pode ajudar nosso macaco de novo? Desta vez, ele tem que comer a fruta que aparece, seja banana ou maçã.
         Execute o programa várias vezes para verificar se ele sempre funciona.
         Dica: desta vez, o bloco "Se" não é suficiente.
-      clue: Quando existem apenas 2 opções, basta fazer uma única pergunta. Nesses casos, você pode usar o bloco "Se ... se não".
-    15:
+      clue: 'Quando existem apenas 2 opções, basta fazer uma única pergunta. Nesses casos, você pode usar o bloco "Se ... se não".'
+    '15':
       title: Labirinto curto
       description: |
         Guie o rato para alcançar a meta. Para conseguir isso, ele deve avançar um quadrado na direção indicada pela seta. Dica: veja na categoria "Sensores" quais perguntas você pode fazer.
-      clue: ""
-    16:
+      clue: ''
+    '16':
       title: Três laranjas
       description: |
         O alienígena deve comer todos os segmentos laranja que aparecem nos quadrados roxos. Mas nem sempre aparecem nos mesmos lugares ou na mesma quantidade de laranjas! Dica: primeiro pense em como você faria um procedimento para comer uma única laranja, se houver uma.
-      clue: ""
-    17:
+      clue: ''
+    '17':
       title: Tito recarregado
       description: Tito precisa acender as luzes para saber o caminho ... Mas a cada execução eles trocam de lugar! Você pode usar os procedimentos e blocos de controle.
-      clue: ""
-    18:
+      clue: ''
+    '18':
       title: Labirinto longo
       description: |
         Ajude o mouse a sair do labirinto. Ao contrário do labirinto anterior, aqui o número de quadrados que ele deve avançar são muitos. Quantos? É sempre igual? Dica: primeiro pense em como avançar um único quadrado.
-      clue: ""
-    19:
+      clue: ''
+    '19':
       title: Super Tito 1
       description: |
         Ajude Tito a acender as luzes.
         Atenção! Em todos os quadrados há uma luz, mas você não sabe quantos quadrados existem em cada execução.
       clue: Existem novos blocos que podem ajudar-te a resolver o desafio com muita facilidade. Aproveite!
-    20:
+    '20':
       title: Súper Tito 2
       description: |
         Super Tito deve acender todas as luzes, mas ao contrário do desafio anterior, existem células sem luz. Você pode usar o mesmo procedimento de Super Tito 1?
       clue: O bloco "repetir até" repete uma sequência de ações até que uma condição seja atendida. Isso é chamado de "repetição condicional".
-    21:
+    '21':
       title: Labirinto com queijo
       description: |
         O rato está com mais fome do que nunca! Guie-o pelo labirinto para que ele coma todos os pedaços de queijo. Dica: antes de começar, pressione o botão Executar várias vezes para ver como o cenário varia.
-      clue: É importante pensar se a condição do bloco "Repetir até que" é atendida a algum momento. Do contrário, o programa pode nunca terminar!
-    22:
+      clue: 'É importante pensar se a condição do bloco "Repetir até que" é atendida a algum momento. Do contrário, o programa pode nunca terminar!'
+    '22':
       title: Detective Chaparro
-      description: O detetive deve descobrir o culpado de um crime. Começando com o primeiro à esquerda, questione cada suspeito até encontrar o culpado!
-      clue: O bloco "Repetir até que" nos permite encerrar o programa quando encontramos o culpado, sem ter que interrogar todos os suspeitos na fila.
-    23:
+      description: 'O detetive deve descobrir o culpado de um crime. Começando com o primeiro à esquerda, questione cada suspeito até encontrar o culpado!'
+      clue: 'O bloco "Repetir até que" nos permite encerrar o programa quando encontramos o culpado, sem ter que interrogar todos os suspeitos na fila.'
+    '23':
       title: Futebol de Robôs
       description: Ajude nosso robô de futebol a chutar todas as bolas. Lembre-se sempre de que uma boa divisão em procedimentos pode ajudar-te a lidar melhor com o problema.
       clue: O procedimento definido deve considerar o cenário variável e oferecer uma solução com poucos blocos. É importante notar que a ação se repete várias vezes e que o comprimento das linhas varia.
-    24:
+    '24':
       title: Ligando os computadores
       description: |
         Devemos ligar todos os computadores lembrando que a largura e a altura do cenário mudam a cada execução. Dica: pense em como você ligaria os computadores apenas para um lado do retângulo e, em seguida, repita para o restante dos lados.
-      clue: ""
-    25:
+      clue: ''
+    '25':
       title: O macaco que sabe contar
       description: |
         O macaco deve passar por todos os quadrados e contar quantas bananas e maçãs existem no total. Dica: primeiro pense em como você contaria se houvesse uma maçã ou uma banana em um determinado quadrado. Em seguida, pense em como você faria para contar todas as frutas em uma única coluna.
       clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
-    26:
+    '26':
       title: A Superviagem
       description: |
         Nosso super-herói deve realizar sua super caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que nosso superamigo sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
       clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor
-    27:
+    '27':
       title: O macaco conta novamente
-      description: O macaco tem que contar os frutos novamente, mas agora ele não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-lo?
-      clue: Um sensor nos permite obter informações que podem mudar a cada execução do programa, até na mesma execução. Por exemplo, o comprimento de cada coluna varia dependendo da coluna em que o macaco está.
-    28:
+      description: 'O macaco tem que contar os frutos novamente, mas agora ele não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-lo?'
+      clue: 'Um sensor nos permite obter informações que podem mudar a cada execução do programa, até na mesma execução. Por exemplo, o comprimento de cada coluna varia dependendo da coluna em que o macaco está.'
+    '28':
       title: O planeta de Nano
       description: |
         Ajude o Nano a comer todas as suas bananas. Atenção! Não é possível descer ...
@@ -151,534 +151,581 @@ model:
       clue: |
         Os parâmetros podem ser adicionados aos procedimentos para torná-los mais gerais. Por exemplo, se criarmos os procedimentos "Comer 2 bananas à direita", "Comer 3 bananas à direita" e "Comer 4 bananas à direita", podemos substituir todos os três por um único procedimento que recebe como parâmetro o quantidade de bananas que queremos comer à direita: "Comer à direita esta quantidade: [quantidade]".
         Para adicionar um parâmetro a um novo procedimento, clique no + que aparece ao lado do nome no bloco "Definir".
-    29:
+    '29':
       title: |
         Desenho: Quadrado
       description: Desenhe um quadrado com 100 de cada lado.
-      clue: ""
-    30:
+      clue: ''
+    '30':
       title: |
         Desenho: amarelinha robótica
-      description: Desenhe 5 quadrados em uma linha, cada um com um lado de 50, como mostrado na figura sombreada.
-      clue: ""
-    31:
+      description: 'Desenhe 5 quadrados em uma linha, cada um com um lado de 50, como mostrado na figura sombreada.'
+      clue: ''
+    '31':
       title: |
         Desenho: Curto na diagonal
-      description: Desenhe 5 quadrados na diagonal, cada um com o lado 50, como mostrado na figura sombreada.
-      clue: ""
-    32:
+      description: 'Desenhe 5 quadrados na diagonal, cada um com o lado 50, como mostrado na figura sombreada.'
+      clue: ''
+    '32':
       title: |
         Desenho: Mamushka quadrada
       description: |
         Desenhe 4 quadrados com lados 50, 100, 150 e 200, como mostrado na figura sombreada. Dica: Crie um novo procedimento para desenhar quadrados de qualquer comprimento de lado.
-      clue: Incluir parâmetros em procedimentos permite generalizar um conceito. Por exemplo, o comprimento do lado de um quadrado.
-    33:
+      clue: 'Incluir parâmetros em procedimentos permite generalizar um conceito. Por exemplo, o comprimento do lado de um quadrado.'
+    '33':
       title: |
         Desenho: Escada quadrada
       description: |
         Desenhe 5 quadrados: 4 de lado 50 e um de 100, como visto na figura sombreada..
-      clue: Ao criar um procedimento parametrizado, seus valores são indefinidos (por exemplo, "comprimento lateral"). Ao usar os procedimentos, esses parâmetros devem receber um valor específico (50, 100, etc.).
-    34:
+      clue: 'Ao criar um procedimento parametrizado, seus valores são indefinidos (por exemplo, "comprimento lateral"). Ao usar os procedimentos, esses parâmetros devem receber um valor específico (50, 100, etc.).'
+    '34':
       title: |
         Desenho: Hexágono
       description: |
         Desenhe um hexágono de lado 100, como mostrado na figura sombreada. Dica: pense em quantos graus o robô deve girar sabendo qual é o comprimento dos ângulos internos do hexágono.
-      clue: Nos polígonos, o valor de um ângulo externo é igual a 180 menos o valor de um ângulo interno.
-    35:
+      clue: 'Nos polígonos, o valor de um ângulo externo é igual a 180 menos o valor de um ângulo interno.'
+    '35':
       title: |
         Desenho: Pirâmide invertida
       description: |
         Desenhe um triângulo equilátero de lado 100, como mostrado na figura sombreada. Dica: Pense se existe uma relação entre os ângulos e o número de lados.
-      clue: Em polígonos, a adición de todos os ângulos externos é 360
-    36:
+      clue: 'Em polígonos, a adición de todos os ângulos externos é 360'
+    '36':
       title: |
         Desenho: Figuras dentro de figuras
       description: |
         Desenhe um triângulo, um quadrado e um pentágono de lado 100, como mostrado na figura sombreada. Dica: Crie um procedimento com um parâmetro para o número de lados.
       clue: |
         Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
-    37:
+    '37':
       title: |
         Desenho: A caverna das estalactites
       description: |
         Desenhe 3 triângulos com lados 40, 60 e 100 e um quadrado com lados 200, como mostrado na figura sombreada. Dica: Crie um procedimento com 2 parâmetros, um para o número de lados e outro para o comprimento dos lados.
-      clue: Para poder utilizar os parâmetros em um novo procedimento, deve-se clicar com o botão direito do mouse no bloco que define o referido procedimento.
-    130:
+      clue: 'Para poder utilizar os parâmetros em um novo procedimento, deve-se clicar com o botão direito do mouse no bloco que define o referido procedimento.'
+    '130':
       title: A festa do Drácula
       description: |
         Para a festa do Drácula começar devemos mudar a cor das 3 luminárias um certo número de vezes: 5 vezes a primeira, 8 vezes a segunda e 12 vezes a terceira.
-      clue: ""
-    131:
+      clue: ''
+    '131':
       title: Salvando o Natal
       description: |
         Ajude o Papai Noel a deixar um presente no final de cada fileira. Observe que o estágio não muda de corrida para corrida! Dica: se você tivesse que escolher um parâmetro para o seu procedimento... Qual você escolheria? O que varia de linha para linha?
-      clue: ""
-    132:
-      title: Ligando os computadores, parametrizado
-      description: Como antes, devemos ligar todos os computadores. Mas desta vez você tem que definir um único procedimento que gire em cada lado.
-      clue: Parâmetros podem ser direção, nem sempre precisam ser números. Por exemplo, um parâmetro pode ser a direção que o autômato deve se mover.
-    133:
+      clue: ''
+    '132':
+      title: 'Ligando os computadores, parametrizado'
+      description: 'Como antes, devemos ligar todos os computadores. Mas desta vez você tem que definir um único procedimento que gire em cada lado.'
+      clue: 'Parâmetros podem ser direção, nem sempre precisam ser números. Por exemplo, um parâmetro pode ser a direção que o autômato deve se mover.'
+    '133':
       title: Tito quadrado
-      description: Tito deve acender todas as luzes da praça, mas em cada execução elas são distribuídas de forma diferente. Observe que os quadrados de canto nunca ligam e o tamanho do quadrado não varia de corrida para corrida.
-      clue: ""
-    134:
+      description: 'Tito deve acender todas as luzes da praça, mas em cada execução elas são distribuídas de forma diferente. Observe que os quadrados de canto nunca ligam e o tamanho do quadrado não varia de corrida para corrida.'
+      clue: ''
+    '134':
       title: O caranguejo estraga-prazeres
       description: |
         O caranguejo quer estourar todos os balões da festa. Observe que eles não mudam de lugar. Dica: o número de balões e a direção podem ser parâmetros?
-      clue: Parâmetros numéricos (quantidades, comprimentos) podem ser combinados com parâmetros de texto (endereços, nomes).
-    135:
+      clue: 'Parâmetros numéricos (quantidades, comprimentos) podem ser combinados com parâmetros de texto (endereços, nomes).'
+    '135':
       title: Acendendo as fogueiras
-      description: Neste caso, devemos acender todas as fogueiras no quadrado, mas em cada execução elas são distribuídas de maneira diferente. Observe que os quadrados de canto nunca ligam e o tamanho do quadrado não varia de corrida para corrida.
+      description: 'Neste caso, devemos acender todas as fogueiras no quadrado, mas em cada execução elas são distribuídas de maneira diferente. Observe que os quadrados de canto nunca ligam e o tamanho do quadrado não varia de corrida para corrida.'
       clue: Se você não tem um procedimento com parâmetros para mover em qualquer direção... Você pode criá-lo!
-    136:
+    '136':
       title: ¡Desenho livre!
       description: Nesta atividade você poderá fazer o desenho que mais gosta
-      clue: Incluímos todos os blocos possíveis, para que você possa liberar seu conhecimento.
-    201:
+      clue: 'Incluímos todos os blocos possíveis, para que você possa liberar seu conhecimento.'
+    '201':
       title: Desafio 1
-      description: Ajude Duba, a puma, a comer seu churrasco. Evite os obstáculos.
-      clue: ""
-    202:
+      description: 'Ajude Duba, a puma, a comer seu churrasco. Evite os obstáculos.'
+      clue: ''
+    '202':
       title: Desafio 2
       description: Duba quer comer seu churrasco. Ajude ela!
-      clue: ""
-    203:
+      clue: ''
+    '203':
       title: Desafio 3
       description: Você ajuda o puma a comer seu churrasco? Evite os obstáculos.
-      clue: ""
-    204:
+      clue: ''
+    '204':
       title: Desafio 4
       description: Duba quer comer churrasco. Como você pode fazer isso sem esbarrar em obstáculos?
-      clue: ""
-    205:
+      clue: ''
+    '205':
       title: Desafio 5
-      description: Ajude o puma Duba a saciar sua fome, evitando os obstáculos.
-      clue: ""
-    206:
+      description: 'Ajude o puma Duba a saciar sua fome, evitando os obstáculos.'
+      clue: ''
+    '206':
       title: Desafio 6
       description: Duba quer devorar seu churrasco. Como pode fazer isso?
-      clue: ""
-    207:
+      clue: ''
+    '207':
       title: Desafio 1
       description: Ajude à lhama a completar a torre.
-      clue: Para completar o desenho, a Coty deve desenhar nas linhas cinzas.
-    208:
+      clue: 'Para completar o desenho, a Coty deve desenhar nas linhas cinzas.'
+    '208':
       title: Desafio 2
       description: Coty quer desenhar a casa! Você a ajuda?
-      clue: ""
-    209:
+      clue: ''
+    '209':
       title: Desafio 3
       description: A lhama só quer desenhar três listras. Como você pode fazer isso?
-      clue: ""
-    210:
+      clue: ''
+    '210':
       title: Desafio 4
       description: Você ajuda a lhama a completar a carinha feliz?
-      clue: ""
-    211:
+      clue: ''
+    '211':
       title: Desafio 5
       description: Como a lhama pode terminar de desenhar a ponte?
-      clue: ""
-    212:
+      clue: ''
+    '212':
       title: Desafio 6
       description: Como a lhama pode completar o cardo?
-      clue: ""
-    213:
+      clue: ''
+    '213':
       title: Desafio 7
       description: É hora de um bom mate. Ajude a lhama a terminar de desenhá-lo.
-      clue: ""
-    214:
+      clue: ''
+    '214':
       title: Desafio 1
       description: Ajude a mula a preparar a salada mista.
-      clue: ""
-    215:
+      clue: ''
+    '215':
       title: Desafio 2
       description: Hoje Lita quer comer um pouco de salada. Ajude-a a prepará-lo!
-      clue: ""
-    216:
+      clue: ''
+    '216':
       title: Desafio 1
-      description: Tomate, alface e pronto. Ajude Lita a preparar sua salada.
-      clue: ""
-    217:
+      description: 'Tomate, alface e pronto. Ajude Lita a preparar sua salada.'
+      clue: ''
+    '217':
       title: Desafio 2
       description: Ajude Lita a preparar seu prato favorito.
-      clue: ""
-    218:
+      clue: ''
+    '218':
       title: Desafio 3
       description: Você pega o tomate ou a alface primeiro? Ajude Lita a preparar seu prato favorito.
-      clue: ""
-    219:
+      clue: ''
+    '219':
       title: Desafio 4
       description: Que passos a mula pode tomar para preparar seu prato favorito?
-      clue: ""
-    220:
+      clue: ''
+    '220':
       title: Desafio 1
       description: Qual é o erro do problema? Encontre-o e ajude Duba a comer seu churrasco.
-      clue: ""
-    221:
+      clue: ''
+    '221':
       title: Desafio 2
       description: E o Duba que não pode comer sua comida? Corrija o programa para que o puma satisfaça sua fome.
-      clue: ""
-    222:
+      clue: ''
+    '222':
       title: Desafio 3
       description: Descubra o problema do programa e corrija-o para que Duba possa comer seu churrasco.
-      clue: ""
-    223:
+      clue: ''
+    '223':
       title: Desafio 4
-      description: Existem instruções extras ou ausentes? Assista ao programa, descubra o erro e ajude Duba a comer seu prato favorito.
-      clue: ""
-    224:
+      description: 'Existem instruções extras ou ausentes? Assista ao programa, descubra o erro e ajude Duba a comer seu prato favorito.'
+      clue: ''
+    '224':
       title: Desafio 5
       description: Qual erro você encontra neste programa? Corrija e ajude a mulazinha a preparar o almoço.
-      clue: ""
-    225:
+      clue: ''
+    '225':
       title: Desafio 1
       description: |
         Ajude à raposa a ler seu nome: TOTO.
       clue: TOTO lê as letras pelas quais se move.
-    226:
+    '226':
       title: Desafio 2
-      description: A raposa está pensando em seu amigo da Puna, Coty. Ajude-o a ler LLAMA.
-      clue: ""
-    227:
+      description: 'A raposa está pensando em seu amigo da Puna, Coty. Ajude-o a ler LLAMA.'
+      clue: ''
+    '227':
       title: Desafio 3
       description: |
         Adivinha em quem a raposa está pensando! Uma ajuda: é um animal que gosta muito de comer churrasco.
-      clue: ""
-    228:
+      clue: ''
+    '228':
       title: Desafio 4
       description: O que a raposa queria ler e o que ela acabou lendo? Descobri o erro e corrigi!
       clue: Toto está voltando. Vai demorar um pouco porque você está caminhando para...
-    229:
+    '229':
       title: Desafio 5
       description: A raposa está distraída. Ajude-a a ler corretamente o dia em que chega a Humahuaca.
-      clue: ""
-    230:
+      clue: ''
+    '230':
       title: Desafio 1
       description: O puma pode chegar ao churrasco usando apenas um bloco de movimento?
       clue: Você pode usar o novo bloco "Repetir"
-    231:
+    '231':
       title: Desafio 2
       description: O puma está com fome e está longe do churrasco. Mas agora ele sabe repetir!
-      clue: ""
-    232:
+      clue: ''
+    '232':
       title: Desafio 3
       description: Como o puma pode chegar à comida sem ter que usar muitos blocos de movimento?
-      clue: ""
-    233:
+      clue: ''
+    '233':
       title: Desafio 1
       description: A lhama quer desenhar quatro linhas. O que se repete desta vez?
       clue: Pode haver mais de um bloco dentro do Repetir
-    234:
+    '234':
       title: Desafio 2
       description: Agora você tem que desenhar para baixo! Será tão fácil quanto adicionar um bloco ao que você fez antes? Quantas repetições são necessárias agora?
-      clue: ""
-    235:
+      clue: ''
+    '235':
       title: Desafio 3
       description: A lhama quer desenhar uma escada. Você consegue encontrar o padrão que se repete? Quantas vezes é repetido?
-      clue: ""
-    236:
+      clue: ''
+    '236':
       title: Desafio 1
-      description: Bom, agora você tem uma solução! Você tenta?
+      description: 'Bom, agora você tem uma solução! Você tenta?'
       clue: Você pode testar os programas passo a passo para descobrir os erros
-    237:
+    '237':
       title: Desafio 2
-      description: O que acontece que Duba não consegue comer seu prato favorito? Retire, modifique e/ou adicione os blocos que faltam para atingir seu objetivo.
-      clue: ""
-    238:
+      description: 'O que acontece que Duba não consegue comer seu prato favorito? Retire, modifique e/ou adicione os blocos que faltam para atingir seu objetivo.'
+      clue: ''
+    '238':
       title: Desafio 3
       description: Qual padrão a Coty deve repetir desta vez? A solução proposta está correta?
-      clue: ""
-    239:
+      clue: ''
+    '239':
       title: Desafio 4
       description: Coty está fazendo qualquer coisa de novo! Você pode encontrar os erros e corrigi-los? A lhama vai agradecer.
-      clue: ""
-    240:
+      clue: ''
+    '240':
       title: Desafio 1
       description: Você encontra etapas que são repetidas? Quais são? Crie o programa que ajuda a Lita a preparar a sua salada diária.
-      clue: ""
-    241:
+      clue: ''
+    '241':
       title: Desafio 2
-      description: Do jeito que está, a mulazinha não pode preparar sua salada! Quantas vezes Lita repete os passos para chegar à alface? O que deve ser modificado? O que acontece quando ele tenta pegar o tomate?
-      clue: ""
-    242:
+      description: 'Do jeito que está, a mulazinha não pode preparar sua salada! Quantas vezes Lita repete os passos para chegar à alface? O que deve ser modificado? O que acontece quando ele tenta pegar o tomate?'
+      clue: ''
+    '242':
       title: Desafio 1
       description: Às vezes tem churrasco e às vezes não! Dá pra fazer um programa só pra que o Duba sempre avance e coma só se tiver churrasco?
       clue: O bloco "Se" é usado às vezes para fazer algo e às vezes não. Serve para perguntar!
-    243:
+    '243':
       title: Desafio 2
       description: Agora Duba deve avançar duas vezes. Você tem que comer todos os churrascos que aparecem! ...mas apenas se eles aparecerem
-      clue: ""
-    244:
+      clue: ''
+    '244':
       title: Desafio 3
-      description: Coty deve desenhar um quadrado, mas... Cuidado, às vezes aparece uma poça!
-      clue: ""
-    245:
+      description: 'Coty deve desenhar um quadrado, mas... Cuidado, às vezes aparece uma poça!'
+      clue: ''
+    '245':
       title: Desafio 1
       description: Lita quer pegar qualquer vegetal. Mas deve estar correta!
       clue: O bloco "Se/Se Não" permite que você escolha entre duas alternativas. Basta escolher bem a pergunta.
-    246:
+    '246':
       title: Desafio 2
       description: Nem sempre é preciso se mover para a direita... Que pergunta ajuda Duba a decidir?
       clue: Você também pode colocar mais de uma instrução no bloco "Se/Se Não".
-    247:
+    '247':
       title: Desafio 3
       description: Cuidado Duba! Onde pode aparecer um obstáculo? Vamos ter que decidir qual caminho seguir!
-      clue: ""
-    248:
+      clue: ''
+    '248':
       title: Desafio 1
-      description: Agora Duba está longe, e ela tem que decidir se come ou não. Vamos ajudá-la com os blocos que aprendemos?
+      description: 'Agora Duba está longe, e ela tem que decidir se come ou não. Vamos ajudá-la com os blocos que aprendemos?'
       clue: É importante pressionar executar várias vezes para entender o problema
-    249:
+    '249':
       title: Desafio 2
       description: Quantos churrascos! Que padrão o Duba deve repetir? Quantas perguntas você tem que fazer?
       clue: É importante pressionar executar várias vezes para entender o problema
-    250:
+    '250':
       title: Desafio 3
-      description: Lita também deve repetir sua decisão várias vezes! Há sempre um vegetal, ela só precisa decidir qual deles pegar em cada etapa.
-      clue: ""
-    251:
+      description: 'Lita também deve repetir sua decisão várias vezes! Há sempre um vegetal, ela só precisa decidir qual deles pegar em cada etapa.'
+      clue: ''
+    '251':
       title: Desafio 1
       description: Agora o Toto sabe escrever! Faça-o copiar a palavra inteira.
       clue: Toto sabe escrever as letras que está tocando
-    252:
+    '252':
       title: Desafio 2
       description: Agora Toto quer escrever uma X para cada letra. Não importa o que ele lê! Quantas Xs ele deve escrever?
       clue: Toto também sabe escrever uma carta que você diz a ele
-    253:
+    '253':
       title: Desafio 3
       description: |
         Toto gosta de brincar com as letras: ajude-o a copiar a palavra, mas quando chegar ao M, adicione "ICH"
       clue: Ao copiar "Cimento" escreva "Cimichento"
-    254:
+    '254':
       title: Desafio 4
       description: Faça o Toto copiar a palavra falando em Jeringozo. Se a palavra for "DUBA" ele tem que copiar "DUPUBAPA"
-      clue: A língua Jeringozo adiciona "PA" depois de um A, "PE" depois de um E, e assim por diante para todas as vogais.
-    255:
+      clue: 'A língua Jeringozo adiciona "PA" depois de um A, "PE" depois de um E, e assim por diante para todas as vogais.'
+    '255':
       title: ¡Coty desenha livremente!
       description: Nesta atividade você poderá fazer o desenho que mais goste
-      clue: Incluímos todos os blocos possíveis, para que você possa libertar seu conhecimento.
-    202101:
+      clue: 'Incluímos todos os blocos possíveis, para que você possa libertar seu conhecimento.'
+    '202101':
       title: Introducción
       description: |
         Ajude Duba a recolher todos os churrascos.
         Aqui está um vídeo que explica como: <https://youtu.be/bc43ZyJrfSo>
-      clue: ""
-    202102:
+      clue: ''
+    '202102':
       title: Introdução à repetição
-      description: Ajude Dubai a coletar todos os churrascos, mas agora há um novo bloco! :thinking:.
+      description: 'Ajude Dubai a coletar todos os churrascos, mas agora há um novo bloco! :thinking:.'
       clue: Veja o que acontece quando você pressiona o botão Executar.
-    2021001:
+    '2021001':
       title: Nível 1
       description: |
         Ajude Duba a recolher todos os churrascos.
         Aqui está um vídeo que explica como: <https://youtu.be/bc43ZyJrfSo>
       clue: O bloco REPETIR pode ajudá-lo.
-    2021002:
+    '2021002':
       title: Nível 2
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021003:
+    '2021003':
       title: Nível 3
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021004:
+    '2021004':
       title: Nível 4
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021005:
+    '2021005':
       title: Nível 5
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021006:
+    '2021006':
       title: Nível 6
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021007:
+    '2021007':
       title: Nível 7
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021008:
+    '2021008':
       title: Nível 8
       description: Ajude Duba a recolher todos os churrascos.
       clue: O bloco REPETIR pode ajudá-lo.
-    2021101:
+    '2021101':
       title: Nível 1
       description: |
         Ajude Lita a preparar a salada (com tomate e alface)
         Aqui está um vídeo que explica como: <https://youtu.be/cKNtw32dUCI>
       clue: O bloco REPETIR pode ajudá-lo.
-    2021102:
+    '2021102':
       title: Nível 2
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021103:
+    '2021103':
       title: Nível 3
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021104:
+    '2021104':
       title: Nível 4
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021105:
+    '2021105':
       title: Nível 5
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021106:
+    '2021106':
       title: Nível 6
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021107:
+    '2021107':
       title: Nível 7
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021108:
+    '2021108':
       title: Nível 8
       description: Ajude Lita a preparar a salada (com tomate e alface)
       clue: O bloco REPETIR pode ajudá-lo.
-    2021201:
+    '2021201':
       title: Nível 1
-      description: Ajude Coty, a lhama, a completar a torre.
-      clue: Para completar o desenho, a Coty deve desenhar nas linhas cinzas.
-    2021202:
+      description: 'Ajude Coty, a lhama, a completar a torre.'
+      clue: 'Para completar o desenho, a Coty deve desenhar nas linhas cinzas.'
+    '2021202':
       title: Nível 2
       description: A lhama quer apenas desenhar três linhas. Como você pode fazer isso?
-      clue: ""
-    2021203:
+      clue: ''
+    '2021203':
       title: Nível 3
       description: É hora de um bom mate. Ajude Coty a terminar de desenhá-lo.
-      clue: ""
-    2021204:
+      clue: ''
+    '2021204':
       title: Nível 4
       description: A lhama quer desenhar quatro linhas. O que se repete desta vez?
       clue: Pode haver mais de um bloco dentro do Repetir
-    2021205:
+    '2021205':
       title: Nível 5
       description: Coty quer desenhar uma escada. Você consegue encontrar o padrão que se repete? Quantas vezes é repetido?
-      clue: ""
-    2021206:
+      clue: ''
+    '2021206':
       title: Nível 6
       description: Ajude Coty a escrever a letra que falta.
-      clue: ""
-    2021207:
+      clue: ''
+    '2021207':
       title: Nível 7
-      description: "Você encontra o padrão que se repete? Quantas vezes é repetido?"
-      clue: ""
-    2021301:
+      description: Você encontra o padrão que se repete? Quantas vezes é repetido?
+      clue: ''
+    '2021301':
       title: Nível 1
       description: |
         A raposa Toto lê as letras enquanto se move. Ajude-o a ler seu nome.
       clue: TOTO lê as letras pelas quais se move.
-    2021302:
+    '2021302':
       title: Nível 2
       description: Ajude-o a se mover para ler LLAMA.
-      clue: ""
-    2021303:
+      clue: ''
+    '2021303':
       title: Nível 3
       description: |
         Toto tem que ler uma palavra. Adivinha em quem a raposa está pensando! Uma ajuda: é um animal que gosta muito de comer churrasco.
-      clue: ""
-    2021304:
+      clue: ''
+    '2021304':
       title: Nível 4
       description: Corrija o programa para que o Toto possa ler um dia da semana.
-      clue: "Com o botão 'PASSO' o Toto pode executar as instruções uma a uma"
-    2021305:
+      clue: Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
+    '2021305':
       title: Nível 5
       description: Toto tem que ler uma palavra. Onde há um stand de Pilas Bloques? Em Tec...!
-      clue: ""
-    2021306:
+      clue: ''
+    '2021306':
       title: Nível 6
       description: Toto tem que ler o nome de uma província argentina que lê da mesma forma para frente e para trás. Sabe qual é?
       clue: A província e Neuquén. O bloco Repetir apareceu para nos ajudar a resolver o Desafio!
-    2021307:
+    '2021307':
       title: Nível 7
       description: |
         Toto tem que ler Neuquén novamente. Lembre-se de que pode ser lido da mesma forma para a frente e para trás! :wink:
-      clue: ""
-    2021308:
+      clue: ''
+    '2021308':
       title: Nível 8
       description: Ajude o Toto a ler SANTA CRUZ. Mas desta vez usando o bloco de repetição!
       clue: Você sabia que muitos blocos podem ser colocados dentro de um bloco de repetição?
-    2021309:
+    '2021309':
       title: Nível 9
       description: |
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
-      clue: "A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma"
-
-
+      clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
+  spects:
+    declares_procedure: |
+      {result, select, 
+        true {Estás usando procedimientos para dividir en subtareas.}
+        other {Deberías usar procedimientos para dividir en subtareas.}
+      } 
+    too_long: |
+      La definición {declaration, select,
+        al_empezar_a_ejecutar {del programa principal}
+        other {del procedimiento "{declaration}"}
+      } {result, select, 
+        true {no hace muchas cosas}
+        other {hace muchas cosas, dividí en subtareas usando procedimientos}
+      }.
+    do_something: |
+      La definición del procedimiento "{declaration}" {result, select, 
+        true {hace algo}
+        other {no hace nada}
+      }.
+    is_used: |
+      El procedimiento "{declaration}" {result, select, 
+        true {se usa}
+        other {no se usa desde ningún lado}
+      }.
+    is_used_from_main: |
+      El procedimiento "{declaration}" {result, select, 
+        true {se usa desde el programa principal}
+        other {no se usa desde el programa principal}
+      }.
+    uses_conditional_alternative: |
+      {result, select, 
+        true {Estás usando alternativa condicional}
+        other {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
+      }.
+    uses_conditional_repetition: |
+      {result, select, 
+        true {Estás usando repetición condicional}
+        other {Deberías usar repetición condicional para considerar todos los escenarios posibles}
+      }.
+    does_not_use_recursion: |
+      {result, select,
+        true {El procedimiento "{declaration}" no usa recursión.}
+        other {¡Cuidado! ¡El procedimiento "{declaration}" usa recursión! Es una manera muy poderosa de pensar una solución, pero la dejaremos para un curso más avanzado. Intentá resolverlo de otra manera.}
+      }
+    name_was_changed: |
+      {result, select,
+        true {Se eligió un nombre para el procedimiento "{declaration}"}
+        other {Deberías elegir un nombre para el procedimiento "{declaration}"}
+      }
   groups:
     AlienTocaBoton:
-      title: ""
+      title: ''
     ElGatoEnLaCalle:
-      title: ""
+      title: ''
     NoMeCansoDeSaltar:
-      title: ""
+      title: ''
     ElMarcianoEnElDesierto:
-      title: ""
+      title: ''
     TitoEnciendeLuces:
-      title: ""
+      title: ''
     ElAlienYLasTuercas:
-      title: ""
+      title: ''
     ElRecolectorDeEstrellas:
-      title: ""
+      title: ''
     MariaLaComeSandias:
-      title: ""
+      title: ''
     AlimentandoALosPeces:
-      title: ""
+      title: ''
     InstalandoJuegos:
-      title: ""
+      title: ''
     LaGranAventuraDelMarEncantado:
-      title: ""
+      title: ''
     ReparandoLaNave:
-      title: ""
+      title: ''
     ElMonoYLasBananas:
-      title: ""
+      title: ''
     LaEleccionDelMono:
-      title: ""
+      title: ''
     LaberintoCorto:
-      title: ""
+      title: ''
     TresNaranjas:
-      title: ""
+      title: ''
     TitoRecargado:
-      title: ""
+      title: ''
     LaberintoLargo:
-      title: ""
+      title: ''
     SuperTito1:
-      title: ""
+      title: ''
     SuperTito2:
-      title: ""
+      title: ''
     LaberintoConQueso:
-      title: ""
+      title: ''
     ElDetectiveChaparro:
-      title: ""
+      title: ''
     FutbolRobots:
-      title: ""
+      title: ''
     PrendiendoLasCompus:
-      title: ""
+      title: ''
     ElMonoQueSabeContar:
-      title: ""
+      title: ''
     ElSuperviaje:
-      title: ""
+      title: ''
     ElMonoCuentaDeNuevo:
-      title: ""
+      title: ''
     ElPlanetaDeNano:
-      title: ""
+      title: ''
     Dibujando Figuras:
-      title: ""
+      title: ''
     LaFiestaDeDracula:
-      title: ""
+      title: ''
     SalvandoLaNavidad:
-      title: ""
+      title: ''
     PrendiendoLasCompusParametrizado:
-      title: ""
+      title: ''
     TitoCuadrado:
-      title: ""
+      title: ''
     ElCangrejoAguafiestas:
-      title: ""
+      title: ''
     PrendiendoLasFogatas:
-      title: ""
+      title: ''
     DibujoLibre:
-      title: ""
+      title: ''
     manual1cPrimaria3.1.2:
       title: Dieta à base de churrasco
     manual1cPrimaria3.1.3:
@@ -698,7 +745,7 @@ model:
     manual1cPrimaria4.2.3:
       title: Corrigimos os programas
     manual1cPrimaria4.I:
-      title: Lita, só com legumes
+      title: 'Lita, só com legumes'
     manual1cPrimaria5.1.3:
       title: Apenas em certas ocasiões
     manual1cPrimaria5.1.4:
@@ -710,51 +757,49 @@ model:
     manual1cPrimariaOtros:
       title: Outros
     tecnopolis2021EjercicioModelo:
-      title: ""
+      title: ''
     tecnopolis2021ConDuba:
-      title: ""
+      title: ''
     tecnopolis2021ConLita:
-      title: ""
+      title: ''
     tecnopolis2021ConCoty:
-      title: ""
+      title: ''
     tecnopolis2021ConToto:
-      title: ""
-
+      title: ''
   books:
-    1:
+    '1':
       title: Primeiro Ciclo
-      description: Desafios do manual para professores "Informática para a sala de aula, 1º ciclo do ensino básico"
-    2:
+      description: 'Desafios do manual para professores "Informática para a sala de aula, 1º ciclo do ensino básico"'
+    '2':
       title: Segundo Ciclo
       description: Desafios do caderno para professores "Programa Atividades para aprender.AR" A partir do 2º ciclo do ensino básico.
-    100:
+    '100':
       title: Tecnopolis 2021
       description: Desafios de Tecnopolis 2021
-
   chapters:
     Capítulo 3:
-      title: "Capítulo 3: Programando no computador"
+      title: 'Capítulo 3: Programando no computador'
     Capítulo 4:
-      title: "Capítulo 4: Repetição"
+      title: 'Capítulo 4: Repetição'
     Capítulo 5:
-      title: "Capítulo 5: Alternativa condicional"
-    Autómatas, comandos, procedimientos y repetición:
-      title: "Autômatos, comandos, procedimentos e repetição"
+      title: 'Capítulo 5: Alternativa condicional'
+    'Autómatas, comandos, procedimientos y repetición':
+      title: 'Autômatos, comandos, procedimentos e repetição'
     Alternativa condicional:
-      title: "Alternativa condicional"
+      title: Alternativa condicional
     Repetición condicional:
-      title: "Repetição condicional"
+      title: Repetição condicional
     Sensores Numéricos:
-      title: "Sensores Numéricos"
+      title: Sensores Numéricos
     Parametrización de soluciones:
-      title: "Parametrização de Soluções"
+      title: Parametrização de Soluções
     Tecnopolis 2021 Ejercicio Modelo:
-      title: "Para começar a jogar"
+      title: Para começar a jogar
     Tecnopolis 2021 Con Duba:
-      title: "Com Duba"
+      title: Com Duba
     Tecnopolis 2021 Con Lita:
-      title: "Com Lita"
+      title: Com Lita
     Tecnopolis 2021 Con Coty:
-      title: "Com Coty"
+      title: Com Coty
     Tecnopolis 2021 Con Toto:
-      title: "Com Toto"
+      title: Com Toto

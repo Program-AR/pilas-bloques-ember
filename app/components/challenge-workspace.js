@@ -1,10 +1,11 @@
 import { computed } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
+import { asyncActionCall } from '../utils/actions'
+import { later } from '@ember/runloop';
 
 export default Component.extend({
   classNames: ['exercise-workspace'],
-  persistirSolucionEnURL: false,
   showCode: false,
   blocksGallery: service(),
   pilasBloquesApi: service(),
@@ -12,6 +13,7 @@ export default Component.extend({
   canvasWidth: 0,
   canvasHeight: 0,
   simpleRead: service(),
+  areExpectationsRunning: false,
 
   debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
     return this.get('model.debugging');
@@ -186,8 +188,12 @@ export default Component.extend({
     },
 
     async ejecutar(pasoAPaso = false) {
-      await this.pilasBlockly.send('ejecutar', pasoAPaso);
-      this.send("showScene");
+      this.set('areExpectationsRunning', true)
+      later(this, async function() {
+        await asyncActionCall(this.pilasBlockly, 'ejecutar', pasoAPaso)
+        this.set('areExpectationsRunning', false)
+        this.send("showScene");
+      }, 50)
     },
 
     step() {
@@ -196,7 +202,7 @@ export default Component.extend({
     },
 
     async reiniciar() {
-      await this.pilasBlockly.send('reiniciar');
+      await asyncActionCall(this.pilasBlockly, 'reiniciar')
     },
 
   }

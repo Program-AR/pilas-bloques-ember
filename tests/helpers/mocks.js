@@ -2,7 +2,7 @@ import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
 
-export const pilasMock = {
+export const pilasMock = Service.extend({
     on() { },
     liberarRecursos() { },
     estaResueltoElProblema() { return true; },
@@ -13,7 +13,7 @@ export const pilasMock = {
     cambiarAModoDeLecturaSimple: sinon.stub(),
     habilitarModoTurbo: sinon.stub(),
     deshabilitarModoTurbo: sinon.stub(),
-};
+})
 
 export const interpreteMock = {
     paused_: false,

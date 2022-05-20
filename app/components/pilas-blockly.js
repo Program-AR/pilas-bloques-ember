@@ -18,18 +18,16 @@ export default Component.extend({
   actividad: null,
   interpreterFactory: service(),
   solucion: null,
-  pilasService: null,
+  pilasService: service('pilas'),
   codigoJavascript: "", // Se carga como parametro
-  persistirSolucionEnURL: false, // se le asigna una valor por parámetro.
   codigo: null,
-  modelActividad: null,
+  challenge: null,
 
   highlighter: service(),
   availableBlocksValidator: service(),
   pilasBloquesApi: service(),
   pilasMulang: service(),
 
-  bloques: [],
   expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
@@ -41,7 +39,6 @@ export default Component.extend({
     blocks: []
   }],
 
-  pasoAPasoHabilitado: false,
   pausadoEnBreakpoint: false,
 
   javascriptCode: null,
@@ -83,7 +80,7 @@ export default Component.extend({
     this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
     this.exerciseWorkspace.setPilasBlockly(this);
 
-    this.set('blockly_toolbox', this.toolboxForBlockTypes(this.bloques));
+    this.set('blockly_toolbox', this.toolboxForBlockTypes(this.challenge.bloques));
     this.set('blockly_comments', this.get('actividad.puedeComentar'));
     this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
     this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
@@ -99,20 +96,10 @@ export default Component.extend({
   },
 
   async initialWorkspace() {
-    const savedSolution = await this.pilasBloquesApi.lastSolution(this.modelActividad.id)
+    const savedSolution = await this.pilasBloquesApi.lastSolution(this.challenge.id)
     const serializedURLCode = this.codigo && atob(this.codigo)
 
-    return this.addRandomIdToWorkspace(serializedURLCode || savedSolution?.program || this.modelActividad.initialWorkspace)
-  },
-  /**
-   * Adds an id to a block of the XML.
-   * This is necessary because the ember-blockly component doesnt update the workspace when the
-   * initial workspace is the same as the previous challenge. 
-   */
-  addRandomIdToWorkspace(workspaceXML) {
-    return workspaceXML && (workspaceXML.includes('id=') ?
-      workspaceXML.replace(/id="[^"]*"/, `id="${Blockly.utils.genUid()}"`) :
-      workspaceXML.replace('<block', `<block id="${Blockly.utils.genUid()}"`))
+    return serializedURLCode || savedSolution?.program || this.challenge.initialWorkspace
   },
 
   /**
@@ -151,14 +138,33 @@ export default Component.extend({
   },
 
   groupedByCategories(blockTypes) {
-    return this.categoryIdsFor(blockTypes).map(categoryId => ({
-      categoryId: categoryId,
-      blocks: blockTypes.filter(bt => this._categoryIdFor(bt) === categoryId),
-    }))
+    return this.groupByCategories(blockTypes.map(bt => this.toolboxBlock(bt)))
   },
 
-  categoryIdsFor(blockTypes) {
-    return [... new Set(blockTypes.map(bt => this._categoryIdFor(bt)))]
+  toolboxBlock(blockType) {
+    const toolboxBlock = {
+      categoryId: this._categoryIdFor(blockType),
+      blocks: [blockType]
+    }
+    const blocklyBlock = this.blocklyBlock(blockType)
+    if(blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
+    return toolboxBlock
+  },
+
+  groupByCategories(toolboxBlocks) {
+    const groupedBlocks = []
+    toolboxBlocks.forEach(tb => {
+      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId) 
+      if(match) {
+        match.blocks.push(...tb.blocks)
+        if(tb.custom) match.custom = tb.custom  //Last one takes precedence
+      }
+      else {
+        groupedBlocks.push(tb)
+      }
+    })
+
+    return groupedBlocks
   },
 
   _categoryIdFor(blockType) {
@@ -230,7 +236,7 @@ export default Component.extend({
   },
 
   _areCategoriesRequiredInToolbox() {
-    return this.modelActividad.get('estiloToolbox') !== "sinCategorias";
+    return this.challenge.get('estiloToolbox') !== "sinCategorias";
   },
 
   /**
@@ -375,7 +381,7 @@ export default Component.extend({
   },
 
   runProgramEvent() {
-    return this.pilasBloquesApi.runProgram(this.modelActividad.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilasService.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
+    return this.pilasBloquesApi.runProgram(this.challenge.id, { program: this.codigoActualEnFormatoXML, ast: this.pilasMulang.parseAll(Blockly.mainWorkspace), turboModeOn: this.pilasService.modoTurboEstaActivado(), staticAnalysis: this.staticAnalysis() })
   },
 
   executionFinishedEvent(solutionId, executionResult) {
@@ -407,9 +413,9 @@ export default Component.extend({
       )
   },
 
-  runValidations() {
+  async runValidations() {
     clearValidations()
-    this.set('expects', this.pilasMulang.analyze(Blockly.mainWorkspace, this.modelActividad))
+    this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
     this.showExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
@@ -425,17 +431,9 @@ export default Component.extend({
     async ejecutar(pasoAPaso = false) {
       const analyticsSolutionId = this.runProgramEvent()
       await this.pilasService.restartScene()
-      this.runValidations()
+      await this.runValidations()
 
       if (!this.shouldExecuteProgram()) return;
-
-      // Permite obtener el código xml al momento de ejecutar. Se utiliza
-      // cuando se accede a la ruta curso/alumno para guardar la solución
-      // del usuario en cada momento de ejecución.
-      if (this.cuandoEjecuta) {
-        let codigo_xml = this.codigoActualEnFormatoXML;
-        this.cuandoEjecuta(codigo_xml);
-      }
 
       let factory = this.interpreterFactory;
       let interprete = factory.crearInterprete(this.javascriptCode(), (bloqueId) => this.highlighter.step(bloqueId));
@@ -494,11 +492,11 @@ export default Component.extend({
     },
 
     onNewWorkspace() {
-      this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.bloques)
+      this.availableBlocksValidator.disableNotAvailableBlocksInWorkspace(this.challenge.bloques)
     },
 
     showEndModal() {
-      const isOpen = this.pilasService.estaResueltoElProblema() && this.modelActividad.get('hasAutomaticGrading')
+      const isOpen = this.pilasService.estaResueltoElProblema() && this.challenge.get('hasAutomaticGrading')
       this.set('isEndModalOpen', isOpen);
     },
 

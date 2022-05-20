@@ -12,6 +12,15 @@ export default Route.extend({
   model(param) {
     this.store.findAll("libro");
     return this.store.findRecord('desafio', param.desafio_id);
+  },
+
+  actions: {
+    willTransition(transition) {
+      const challengeKey = 'desafio_id'
+      const challengeIdFrom = transition.from.params[challengeKey]
+      const challengeIdTo = transition.to.params[challengeKey]
+      if(challengeIdFrom !== challengeIdTo) window.location.reload()
+    }
   }
 
 });

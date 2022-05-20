@@ -21,20 +21,11 @@
   <div class="flex layout-row">
     <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
-        @guardar={{'guardar'}}
-        @registrarPrimerCodigo={{'registrarPrimerCodigo'}}
-        @hash={{hash}}
-        @idAlumno={{idAlumno}}
         @codigo={{codigo}}
         @showCode={{showCode}}
         @cargando={{cargando}}
-        @modelActividad={{model}}
-        @cuandoEjecuta={{cuandoEjecuta}}
-        @model={{model}}
-        @pasoAPasoHabilitado={{model.debugging}}
-        @persistirSolucionEnURL={{persistirSolucionEnURL}}
-        @pilasService={{pilas}}
-        @bloques={{model.bloques}}
+        @challenge={{model}}
+        @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
         @onChangeWorkspace={{onChangeWorkspace}}
         @onTerminoEjecucion={{onTerminoEjecucion}}
         @onErrorDeActividad={{onErrorDeActividad}}
@@ -56,6 +47,8 @@
         @shouldUseFloatingMode={{shouldUseFloatingMode}}
         @step={{action 'step' true}}
         @step-by-step-execution={{action 'ejecutar' true}}
+        @shouldShowMultipleScenarioHelp={{model.shouldShowMultipleScenarioHelp}}
+        @areExpectationsRunning={{areExpectationsRunning}}
       />
 
       <Scene class="flex-nogrow" id="draggable"

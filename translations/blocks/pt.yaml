@@ -1,107 +1,155 @@
-# Pending Translate to en
-turnOnTheLight: "Acender la luz"
-pushButton: "Apertar o botão"
-eatBanana: "Comer banana"
-eatApple: "Comer maçã"
-eatCheese: "Comer queijo"
-eatOrange: "Comer laranja"
-moveRight: "Mover para a direita"
-moveLeft: "Mover para a esquerda"
-moveUp: "Mover acima"
-moveDown: "Mover para baixo"
-pickNut: "Pegar porca"
-greet: "Saudar"
-openEyes: "Abrir olhos"
-closeEyes: "Fechar olhos"
-lie: "Deitar-se "
-standUp: "Levantar-se"
-return: "Retornar"
-advance: "Avançar"
-dream: "Sonhar"
-jump: "Saltar"
-goToLeftBorder: "Ir para a borda esquerda"
-takeStar: "Pegar estrela"
-eatWatermelon: "Comer melancia"
-feedFish: "Alimentar peixe"
-pickFood: "Pegar comida"
-nextComputer: "Ir para o próximo computador "
-turnComputerOn: "Acender computador"
-turnComputerOff: "Apagar computador"
-installGame: "Instale jogo"
-writeA: "Escrever \"A\""
-writeB: "Escrever \"B\""
-writeC: "Escrever \"C\""
-takeKey: "Pegar a chave"
-openSafeBoxTakeHat: "Abrir baú e pegar o chapéu"
-leaveHat: "Dar o chapéu"
-attackWithSword: "Atacar con a espada"
-unicornEscape: "Escapar em unicórnio"
-escape: "Escapar"
-pickIron: "Pegar ferro"
-pickCarbon: "Pegar carvão"
-lightCampfire: "Acender fogueira"
-putIntoTheShip: "Colocar no navio"
-leavePresent: "Deixar presente"
-nextLine: "Ir para a próxima linha"
-nextColumn: "Ir para a linha anterior"
-countBanana: "Contar uma banana"
-countApple: "Contar uma maçã"
-blowUpBallon: "Explodir balão"
-kickBall: "Chutar bola"
-move1Km: "Avançar 1 Km"
-changeLightColor: "Mudar a cor da lâmpada"
-moveNextLight: "Ir para a próxima lâmpada"
-startParty: "Começar a festa"
-backToLeftBorder: "Voltar para a margem esquerda"
-goToFirstSuspect: "Ir para o primeiro suspeito"
-nextSuspect: "Ir para o próximo suspeito"
-askSuspect: "Questionar suspeito"
-eatSteak: "Comer churrasco"
-pickTomato: "Pegar tomate"
-pickLettuce: "Pegar alface"
-prepareSalad: "Fazer salada"
-writeLetter: "Escrever a letra que estou tocando"
-moveAndDrawUp: "Mover para cima desenhando"
-moveAndDrawDown: "Mova para baixo desenhando"
-moveAndDrawRight: "Mover para a direita desenhando"
-moveAndDrawLeft: "Mover para a esquerda desenhando"
-jumpUp: "Saltar para cima"
-jumpDown: "Saltar para baixo"
-jumpRight: "Saltar para a direita"
-jumpLeft: "Saltar para a esquerda"
-bananaHere: "Há uma banana aqui?"
-appleHere: "Há uma maçã aqui?"
-orangeHere: "Há uma lananja aqui?"
-campfireHere: "Há uma fogueira aqui?"
-atTheBeginning: "Estou no começo?"
-getToTheBall: "Cheguei na bola?"
-comeToTheEnd: "Cheguei ao fim?"
-kmToTravel: "Quilômetros para viajar"
-atTheSquare: "Estou em uma esquina?"
-atColumnBeginning: "Estou no inicio da coluna?"
-atColumnEnd: "Estou no final da coluna?"
-currentColumnLength: "Comprimento da coluna atual"
-canMoveDown: "Posso mover para baixo?"
-canMoveRight: "Posso mover para direita?"
-reachedGoal: "Alcançou a meta?"
-cheeseHere: "Há queijo aqui?"
-lampHere: "Há uma lâmpada aqui?"
-frontOfGuilty: "Estou na frente do culpado?"
-steakHere: "Há um churrasco aqui?"
-obstacleUp: "Há um obstáculo acima?"
-obstacleDown: "Há um obstáculo abaixo?"
-obstacleAtLeft: "Há um obstáculo à esquerda?"
-obstacleAtRight: "Há um obstáculo à direita?"
-puddleHere: "Há uma poça?"
-lettuceHere: "Há alface aqui?"
-tomatoHere: "Há tomate aqui?"
-right: "A direita"
-left: "A esquerda"
-up: "Acima"
-down: "Abaixo"
-moveTo: "Mover para %1"
-jumpFront: "%1 Pular para frente %2"
-drawSide: "%1 Desenhar o lado de %2"
-write: "%1 Escrever: %2"
-turnDegrees: "%1 Virar %2 graus"
-currentCharacter: "%1 ¿A letra atual é uma %2 ?"
+turnOnTheLight: Acender la luz
+pushButton: Apertar o botão
+eatBanana: Comer banana
+eatApple: Comer maçã
+eatCheese: Comer queijo
+eatOrange: Comer laranja
+moveRight: Mover para a direita
+moveLeft: Mover para a esquerda
+moveUp: Mover acima
+moveDown: Mover para baixo
+pickNut: Pegar porca
+greet: Saudar
+openEyes: Abrir olhos
+closeEyes: Fechar olhos
+lie: 'Deitar-se '
+standUp: Levantar-se
+return: Retornar
+advance: Avançar
+dream: Sonhar
+jump: Saltar
+goToLeftBorder: Ir para a borda esquerda
+takeStar: Pegar estrela
+eatWatermelon: Comer melancia
+feedFish: Alimentar peixe
+pickFood: Pegar comida
+nextComputer: 'Ir para o próximo computador '
+turnComputerOn: Acender computador
+turnComputerOff: Apagar computador
+installGame: Instale jogo
+writeA: Escrever "A"
+writeB: Escrever "B"
+writeC: Escrever "C"
+takeKey: Pegar a chave
+openSafeBoxTakeHat: Abrir baú e pegar o chapéu
+leaveHat: Dar o chapéu
+attackWithSword: Atacar con a espada
+unicornEscape: Escapar em unicórnio
+escape: Escapar
+pickIron: Pegar ferro
+pickCarbon: Pegar carvão
+lightCampfire: Acender fogueira
+putIntoTheShip: Colocar no navio
+leavePresent: Deixar presente
+nextLine: Ir para a próxima linha
+nextColumn: Ir para a linha anterior
+countBanana: Contar uma banana
+countApple: Contar uma maçã
+blowUpBallon: Explodir balão
+kickBall: Chutar bola
+move1Km: Avançar 1 Km
+changeLightColor: Mudar a cor da lâmpada
+moveNextLight: Ir para a próxima lâmpada
+startParty: Começar a festa
+backToLeftBorder: Voltar para a margem esquerda
+goToFirstSuspect: Ir para o primeiro suspeito
+nextSuspect: Ir para o próximo suspeito
+askSuspect: Questionar suspeito
+eatSteak: Comer churrasco
+pickTomato: Pegar tomate
+pickLettuce: Pegar alface
+prepareSalad: Fazer salada
+writeLetter: Escrever a letra que estou tocando
+moveAndDrawUp: Mover para cima desenhando
+moveAndDrawDown: Mova para baixo desenhando
+moveAndDrawRight: Mover para a direita desenhando
+moveAndDrawLeft: Mover para a esquerda desenhando
+jumpUp: Saltar para cima
+jumpDown: Saltar para baixo
+jumpRight: Saltar para a direita
+jumpLeft: Saltar para a esquerda
+bananaHere: Há uma banana aqui?
+appleHere: Há uma maçã aqui?
+orangeHere: Há uma lananja aqui?
+campfireHere: Há uma fogueira aqui?
+atTheBeginning: Estou no começo?
+getToTheBall: Cheguei na bola?
+comeToTheEnd: Cheguei ao fim?
+kmToTravel: Quilômetros para viajar
+atTheSquare: Estou em uma esquina?
+atColumnBeginning: Estou no inicio da coluna?
+atColumnEnd: Estou no final da coluna?
+currentColumnLength: Comprimento da coluna atual
+canMoveDown: Posso mover para baixo?
+canMoveRight: Posso mover para direita?
+reachedGoal: Alcançou a meta?
+cheeseHere: Há queijo aqui?
+lampHere: Há uma lâmpada aqui?
+frontOfGuilty: Estou na frente do culpado?
+steakHere: Há um churrasco aqui?
+obstacleUp: Há um obstáculo acima?
+obstacleDown: Há um obstáculo abaixo?
+obstacleAtLeft: Há um obstáculo à esquerda?
+obstacleAtRight: Há um obstáculo à direita?
+puddleHere: Há uma poça?
+lettuceHere: Há alface aqui?
+tomatoHere: Há tomate aqui?
+right: A direita
+left: A esquerda
+up: Acima
+down: Abaixo
+moveTo: Mover para %1
+jumpFront: '%1 Pular para frente %2'
+drawSide: '%1 Desenhar o lado de %2'
+write: '%1 Escrever: %2'
+turnDegrees: '%1 Virar %2 graus'
+currentCharacter: '%1 ¿A letra atual é uma %2 ?'
+program: Al empezar a ejecutar
+simpleRepetitionBeginning: Repetir
+simpleRepetitionEnd: veces
+conditionalRepetition: Repetir hasta que
+simpleAlternative: Si
+completeAlternative: sino
+categories:
+  primitives: Primitivas
+  myProcedures: Mis procedimientos
+  repetitions: Repeticiones
+  alternatives: Alternativas
+  variables: Variables
+  separator: Separador
+  values: Valores
+  sensors: Sensores
+  operators: Operadores
+  myFunctions: Mis funciones
+  uncategorized: SIN CATEGORÍA
+procedures:
+  definition: Definir
+  name: Hacer algo
+  paramWith: con
+  paramName: parámetro
+  create: Crea un procedimiento.
+  removeParam: Quitar parámetro
+  comment: Describe el procedimiento...
+  noParams: ''
+  addParam: Agregar parámetro
+  addParamPrompt: Ingresa el nombre del parámetro
+contextMenu:
+  createProcedure: Usar procedimiento '%1'
+  addComment: Añadir comentario
+  removeComment: Eliminar comentario
+  duplicate: Duplicar
+  help: Ayuda
+  deleteOne: Eliminar bloque
+  deleteMany: Eliminar %1 bloques
+  disable: Desactivar bloque
+  enable: Activar bloque
+  undo: Deshacer
+  redo: Rehacer
+  cleanUp: Limpiar los bloques
+  externalInputs: Entradas externas
+errors:
+  missingCommandBlock: ¡Acá faltan bloques comandos!
+  missingExpressionBlock: ¡Acá falta un bloque expresión!
+  nonAvailableBlock: Este bloque no está disponible en esta actividad.
+  wrongParameter: 'Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en el procedimiento "{procedure}"'
+  deletedParameter: 'Este bloque ya no puede usarse, el parámetro ha sido eliminado.'
