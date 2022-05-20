@@ -61,10 +61,6 @@ export default Component.extend({
     return !this.failedExpects.length
   }),
 
-  passedExpectsValue: computed('passedExpects', 'expects', function () {
-    return 100 * this.passedExpects.length / this.expects.length
-  }),
-
   didUpdateAttrs() {
     this.didInsertElement()
   },

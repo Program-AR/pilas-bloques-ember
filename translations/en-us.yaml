@@ -647,6 +647,8 @@ model:
         true {A name was chosen for the procedure "{declaration}"}
         other {You should choose a name for the procedure "{declaration}"}
       }
+    solution_works: |
+      Your solution works! It solves the problem.
   groups:
     AlienTocaBoton:
       title: ''

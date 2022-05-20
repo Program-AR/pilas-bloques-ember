@@ -653,6 +653,8 @@ model:
         true {Se eligió un nombre para el procedimiento "{declaration}"}
         other {Deberías elegir un nombre para el procedimiento "{declaration}"}
       }
+    solution_works: |
+      ¡Tu solución funciona! Resuelve el problema.
   groups:
     AlienTocaBoton:
       title: ''
