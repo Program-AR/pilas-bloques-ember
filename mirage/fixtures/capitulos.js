@@ -7,7 +7,10 @@ export default [
     },
     {
         id: 'Capítulo 4',
-        grupoIds: ['manual1cPrimaria4.1.3', 'manual1cPrimaria4.1.4', 'manual1cPrimaria4.2.3', 'manual1cPrimaria4.I']
+        grupoIds: ['manual1cPrimaria4.1.3', 'manual1cPrimaria4.1.4', 'manual1cPrimaria4.2.3', 'manual1cPrimaria4.I'],
+        expectations: {
+            simpleRepetition: true
+        }
     },
     {
         id: 'Capítulo 5',
@@ -18,7 +21,10 @@ export default [
     },
     {
         id: 'Autómatas, comandos, procedimientos y repetición',
-        grupoIds: ['AlienTocaBoton', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave']
+        grupoIds: ['AlienTocaBoton', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
+        expectations: {
+            simpleRepetition: true
+        }
     },
     {
         id: 'Alternativa condicional',
@@ -34,7 +40,10 @@ export default [
     },
     {
         id: 'Parametrización de soluciones',
-        grupoIds: ['ElPlanetaDeNano', 'Dibujando Figuras', 'LaFiestaDeDracula', 'SalvandoLaNavidad', 'PrendiendoLasCompusParametrizado', 'TitoCuadrado', 'ElCangrejoAguafiestas', 'PrendiendoLasFogatas', 'DibujoLibre']
+        grupoIds: ['ElPlanetaDeNano', 'Dibujando Figuras', 'LaFiestaDeDracula', 'SalvandoLaNavidad', 'PrendiendoLasCompusParametrizado', 'TitoCuadrado', 'ElCangrejoAguafiestas', 'PrendiendoLasFogatas', 'DibujoLibre'],
+        expectations: {
+            simpleRepetition: true
+        }
     },
     {
         id: 'Tecnopolis 2021 Ejercicio Modelo',
