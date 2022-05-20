@@ -1,6 +1,7 @@
   <div class='expectationResults' >
     {{#each expects as |result|}}
-      <p class='good'>
+      <p>
+        {{paper-icon "radio_button_unchecked"}}
         {{result.description}}
       </p>
     {{/each}}
