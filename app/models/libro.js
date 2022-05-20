@@ -18,5 +18,6 @@ export default Model.extend({
   imagen: attr('string'),
   modoLecturaSimple: attr('boolean'),
   oculto: attr('boolean'),
-  capitulos: hasMany('capitulo')
+  capitulos: hasMany('capitulo'),
+  expectations: attr(),
 });

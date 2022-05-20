@@ -27,6 +27,7 @@ sceneButtons:
   restart:
     label: Restart
     tooltip: Restart the program
+  multipleScenarios: There're multiple scenarios!
 turboModeToggle:
   turnOff: Turn Turbo modo off
   turnOn: Turn Turbo modo on
