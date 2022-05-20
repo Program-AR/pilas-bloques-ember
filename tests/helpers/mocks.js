@@ -47,15 +47,17 @@ export const createActividadMock = (fields) => EmberObject.extend({
 
 export const actividadMock = createActividadMock()
 
-export const componentMock = {
-    properties: {},
+export const createComponentMock = (_properties) => ({
+    properties: _properties,
     set: function (property, value) {
-        componentMock.properties[property] = value;
+        this.properties[property] = value;
     },
     get: function (property) {
-        return componentMock.properties[property];
+        return this.properties[property];
     },
-}
+})
+
+export const componentMock = createComponentMock({})
 
 export const blocklyWorkspaceMock = function () {
     let workspace = new Blockly.WorkspaceSvg({})

@@ -21,7 +21,10 @@ export default [
     id: 1,
     nombre: 'AlienTocaBoton',
     escena: 'AlienInicial',
-    bloques: ['MoverACasillaDerecha', 'ApretarBoton']
+    bloques: ['MoverACasillaDerecha', 'ApretarBoton'],
+    expectations: {
+      decomposition: false
+    }
   },
   {
     id: 2,
@@ -33,7 +36,10 @@ export default [
     id: 3,
     nombre: 'NoMeCansoDeSaltar',
     escena: 'NoMeCansoDeSaltar',
-    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir']
+    bloques: ['SaltarHablando', 'Procedimiento', 'Repetir'],
+    expectations: {
+      decomposition: false
+    }
   },
   {
     id: 4,
@@ -99,6 +105,7 @@ export default [
     bloques: ['ComerBanana', 'AvanzarMono', 'TocandoBanana', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
       conditionalAlternative: true,
+      decomposition: false
     },
     shouldShowMultipleScenarioHelp: true
   },
@@ -109,6 +116,7 @@ export default [
     bloques: ['ComerBanana', 'ComerManzana', 'AvanzarMono', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana'],
     expectations: {
       conditionalAlternative: true,
+      decomposition: false
     },
     shouldShowMultipleScenarioHelp: true
   },
@@ -120,6 +128,7 @@ export default [
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
     expectations: {
       conditionalAlternative: true,
+      decomposition: false
     }
   },
   {
@@ -224,6 +233,9 @@ export default [
     escena: 'SuperViaje',
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
       'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      decomposition: false
+    }
   },
   {
     id: 27,
@@ -363,7 +375,10 @@ export default [
     escena: `new DibujandoLibremente()`,
     hasAutomaticGrading: false,
     bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
-      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante'],
+    expectations: {
+      decomposition: false
+    }
   },
 
   {
