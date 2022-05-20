@@ -2,6 +2,6 @@
 <Modal @title={{t "components.finishedExerciseModal.congratulationsModal.title"}} @onClose={{action onClose}}>
   <div class="center">
     <img src="imagenes/libros/primer-ciclo.png" />
-    <p>{{t "components.finishedExerciseModal.congratulationsModal.description"}}</p>
+    <p>{{markdown-to-html description}}</p>
   </div>
 </Modal>

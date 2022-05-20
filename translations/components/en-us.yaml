@@ -108,7 +108,7 @@ acceptTermsAndConditions:
 finishedExerciseModal:
   congratulationsModal:
     title: You did it!
-    description: 'To think... Your program is not the only option to solve the problem. There are other solutions! Are you using the concepts well?'
+    description: '*To think...* Your program is not the only option to solve the problem. There are other solutions! Are you using the concepts well?'
   expectationsModal:
     treatmentGroup:
       notAllPassed:

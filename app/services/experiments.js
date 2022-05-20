@@ -6,11 +6,11 @@ export default Service.extend({
   group: ENV.experimentGroupType,
 
   isTreatmentGroup() {
-    return this.group === ENV.groups.treatment
+    return this.group === "treatment"
   },
 
   isControlGroup() {
-    return this.group === ENV.groups.control
+    return this.group === "control"
   },
 
   isNotAffected() {

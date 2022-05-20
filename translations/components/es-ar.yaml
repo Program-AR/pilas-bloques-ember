@@ -108,7 +108,7 @@ acceptTermsAndConditions:
 finishedExerciseModal:
   congratulationsModal:
     title: ¡Lo lograste!
-    description: 'Para pensar... Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones! ¿Estás usando los conceptos bien?'
+    description: '*Para pensar...* Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones! ¿Estás usando los conceptos bien?'
   expectationsModal:
     treatmentGroup:
       notAllPassed:

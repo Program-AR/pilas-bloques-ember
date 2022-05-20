@@ -1,7 +1,5 @@
 /* jshint node: true */
 
-const groups = { treatment: "treatment", control: "control", notAffected: "notAffected" }
-
 module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'pilasbloques',
@@ -15,8 +13,7 @@ module.exports = function (environment) {
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
     testTranslations: false,
-    groups,
-    experimentGroupType: groups.notAffected,
+    experimentGroupType: "notAffected",
 
     showdown: {
       simpleLineBreaks: true,
@@ -58,7 +55,7 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
     ENV.testTranslations = false
-    ENV.experimentGroupType = ENV.groups.control
+    ENV.experimentGroupType = "notAffected"
   }
 
   if (environment === 'test') {
@@ -73,7 +70,7 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing'
     ENV.pbApi.baseURL = 'http://testing-api'
-    ENV.experimentGroupType = ENV.groups.treatment
+    ENV.experimentGroupType = "treatment"
   }
 
   // We use this for staging as well
@@ -84,7 +81,7 @@ module.exports = function (environment) {
     // However, we need this here because it is used when packaging the app.
     ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
     ENV.testTranslations = false
-    ENV.experimentGroupType = groups.notAffected
+    ENV.experimentGroupType = "notAffected"
   }
 
   return ENV
