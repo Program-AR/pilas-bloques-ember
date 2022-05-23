@@ -660,6 +660,22 @@ model:
       }
     solution_works: |
       ¡Tu solución funciona! Resuelve el problema.
+    generics:
+      too_long: |
+        {result, select, 
+          true {Tus procedimientos están divididos en subtareas también}
+          other {Tus procedimientos no están divididos en subtareas}
+        }.
+      do_something: |
+        {result, select, 
+          true {Tus procedimientos hacen cosas (no están vacíos)}
+          other {Tus procedimientos no hacen nada (están vacíos)}
+        }.
+      name_was_changed: |
+        {result, select,
+          true {Elegiste un nombre para tus procedimientos}
+          other {No elegiste un nombre para tus procedimientos}
+        }.
   groups:
     AlienTocaBoton:
       title: ''

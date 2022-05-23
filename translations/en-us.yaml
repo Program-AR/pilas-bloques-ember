@@ -654,6 +654,22 @@ model:
       }
     solution_works: |
       Your solution works! It solves the problem.
+    generics:
+      too_long: |
+        {result, select, 
+          true {Your procedures use decomposition}
+          other {Your procedures do not use decomposition}
+        }.
+      do_something: |
+        {result, select, 
+          true {Your procedures do something (are not empty)}
+          other {Your procedures do nothing (are empty)}
+        }.
+      name_was_changed: |
+        {result, select,
+          true {You chose a name for your procedures}
+          other {You did not chose a name for your procedures}
+        }.
   groups:
     AlienTocaBoton:
       title: ''

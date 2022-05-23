@@ -2,28 +2,23 @@ import Component from '@ember/component';
 import { computed } from '@ember/object'
 import { inject as service } from '@ember/service'
 
-const solutionWorks = 'solution_works'
-
 export default Component.extend({
 
-    intl: service(),
+    expectsScoring: service('expects-scoring'),
 
-    allPassedExpects: computed('passedExpects', function () {
-        return [this.solutionWorksExpect()].concat(this.passedExpects)
+    allPassedExpects: computed('expects', function () {
+        return this.expectsScoring.allPassedExpects(this.expects)
     }),
 
-    expects: computed('allPassedExpects', 'failedExpects', function () {
-        return this.allPassedExpects.concat(this.failedExpects)
+    failedExpects: computed('expects', function () {
+        return this.expectsScoring.failedExpects(this.expects)
     }),
 
-    passedExpectsValue: computed('allPassedExpects', 'expects', function () {
-        return 100 * this.allPassedExpects.length / this.expects.length
+    expectsResults: computed('expects', function () {
+        return this.expectsScoring.expectsResults(this.expects)
     }),
 
-    solutionWorksExpect() {
-        return {
-            id: solutionWorks,
-            description: this.intl.t(`model.spects.${solutionWorks}`).toString()
-        }
-    }
+    passedExpectsValue: computed('expects', function () {
+        return 100 * this.allPassedExpects.length / this.expectsResults.length
+    }),
 });
