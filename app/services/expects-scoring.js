@@ -22,10 +22,9 @@ export default Service.extend({
     },
 
     expectsResults(expects) {
-        return [this.solutionWorksExpect()].concat(this.groupById(expects)
-        .map(group => group.reduce((e1, e2) => this.combinedExpect(e1, e2)))
-        .filter(expect => this.isRelevant(expect)))
-        .map(expect => this.genericDescriptionFor(expect))
+        return [this.solutionWorksExpect()].concat(
+            this.relevantGenericExpectations(this.combineMultipleExpectations(expects))
+        )
     },
 
     failedExpects(expects) {
@@ -40,10 +39,18 @@ export default Service.extend({
         return Object.values(groupBy(e => e.id)(expects))
     },
 
-    combinedExpect(expect1, expect2) {
+    relevantGenericExpectations(expects) {
+        return expects.filter(expect => this.isRelevant(expect)).map(expect => this.genericDescriptionFor(expect))
+    },
+
+    combineMultipleExpectations(expects) {
+        return this.groupById(expects).map(group => group.reduce((e1, e2) => this.combineExpectPair(e1, e2)))
+    },
+
+    combineExpectPair(expect1, expect2) {
         return {
-            ... expect1,
-            ... expect2,
+            ...expect1,
+            ...expect2,
             result: expect1.result || expect2.result
         }
     },
@@ -55,7 +62,7 @@ export default Service.extend({
     genericDescriptionFor(expect) {
         const key = this.genericDescriptionsKeys()[expect.id]
         return {
-            ... expect,
+            ...expect,
             description: key ? this.intl.t(key, { result: expect.result }).toString() : expect.description
         }
     },
@@ -67,5 +74,5 @@ export default Service.extend({
             result: true
         }
     }
-  
+
 })
