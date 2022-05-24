@@ -3,16 +3,16 @@ import { setupTest } from 'ember-qunit';
 import { experimentsMock } from '../../helpers/mocks';
 
 const failedExpects = [
-  newExpectation(false),
-  newExpectation(false)]
+  newExpectation('4', false),
+  newExpectation('1', false)]
 
 const passedExpects = [
-  newExpectation(true),
-  newExpectation(true)]
+  newExpectation('3', true),
+  newExpectation('2', true)]
 
 
-function newExpectation(status) {
-  return { id: '', description: '', results: status }
+function newExpectation(id, status) {
+  return { id, description: '', result: status }
 }
 
 module('Unit | Component | expectation-modal', function (hooks) {
@@ -36,8 +36,7 @@ module('Unit | Component | expectation-modal', function (hooks) {
     const experimentsMock = this.owner.lookup('service:experiments')
     experimentsMock.setTreatment()
 
-    component.set('failedExpects', [])
-    component.set('passedExpects', passedExpects)
+    component.set('expects', passedExpects)
 
     assert.notOk(component.isControl())
     assert.ok(component.allExpectationsPassed())
@@ -47,8 +46,7 @@ module('Unit | Component | expectation-modal', function (hooks) {
     const experimentsMock = this.owner.lookup('service:experiments')
     experimentsMock.setTreatment()
 
-    component.set('failedExpects', failedExpects)
-    component.set('passedExpects', passedExpects)
+    component.set('expects', passedExpects.concat(failedExpects))
 
     assert.notOk(component.isControl())
     assert.notOk(component.allExpectationsPassed())
