@@ -5,11 +5,6 @@ bugReportModal:
   mail: 'You can contact us writing to '
   githubReport: 'If you have a Github account, you can also report the error directly through the'
   issueTracker: Issue Tracker
-congratulationsModal:
-  youDidIt: You did it!
-  toThink: To think...
-  otherSolutions: Your program is not the only option to solve the problem. There are other solutions!
-  concepts: Are you using the concepts well?
 createCustomChallenge:
   create: Create a challenge
   custom: Create custom challenges with Pilas Bloques’ challenge creator.
@@ -111,6 +106,20 @@ acceptTermsAndConditions:
   termsLink: terms of use and conditions
   toUse: ' to use Pilas Bloques'
   accept: I accept the terms of use and conditions
-expectationsModal:
-  goodButNotTooGood: 'It''s okay, but... it could be better!'
-  reviewSolution: Review your solution and try to fulfill all the objectives.
+finishedExerciseModal:
+  congratulationsModal:
+    title: You did it!
+    description: '*To think...* Your program is not the only option to solve the problem. There are other solutions! Are you using the concepts well?'
+  expectationsModal:
+    treatmentGroup:
+      notAllPassed:
+        title: 'It''s okay, but... it could be better!'
+        description: Review your solution and try to fulfill all the objectives.
+      allPassed: 
+        title: You did it!
+        description: ''
+    controlGroup:
+      title: You did it!
+      description: Here are some suggestions
+      
+

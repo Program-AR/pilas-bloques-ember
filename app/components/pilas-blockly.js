@@ -27,6 +27,7 @@ export default Component.extend({
   availableBlocksValidator: service(),
   pilasBloquesApi: service(),
   pilasMulang: service(),
+  experiments: service(),
 
   expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
@@ -424,6 +425,10 @@ export default Component.extend({
     // This should be EmberBlockly's responsibility. 
     // But that component's javascriptCode often won't get updated soon enough and tests will fail. See https://github.com/Program-AR/pilas-bloques/pull/878
     return Blockly.MyLanguage.workspaceToCode(Blockly.getMainWorkspace())
+  },
+
+  shouldShowCongratulationsModal() {
+    return this.experiments.isNotAffected()
   },
 
   actions: {

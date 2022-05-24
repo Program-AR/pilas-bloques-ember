@@ -88,6 +88,35 @@ export const simpleReadMock = Service.extend({
     }
 })
 
+export const experimentsMock = Service.extend({
+ 
+    group: 'notAffected',
+
+    setNotAffected(){
+        this.group = 'notAffected'
+    },
+
+    setControl(){
+        this.group = 'control'
+    },
+
+    setTreatment(){
+        this.group = 'treatment'
+    },
+
+    isTreatmentGroup() {
+        return this.group === "treatment"
+    },
+    
+    isControlGroup() {
+        return this.group === "control"
+    },
+
+    isNotAffected() {
+        return this.group === "notAffected"
+    },
+})
+
 export const createActivity = (owner, fields) => {
     const group = createGroup(owner)
     return owner.lookup('service:store').createRecord('desafio', { grupo: group, escena: "AlienInicial", bloques: ['controls_if'], ...fields })

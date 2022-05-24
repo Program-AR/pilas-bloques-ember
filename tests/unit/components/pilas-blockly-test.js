@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock, experimentsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
@@ -15,6 +15,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     this.owner.register('service:interpreterFactory', interpreterFactoryMock)
     this.owner.register('service:activityExpectations', activityExpectationsMock)
     this.owner.register('service:pilas', pilasMock)
+    this.owner.register('service:experiments', experimentsMock)
     this.owner.lookup('service:highlighter').workspace = blocklyWorkspaceMock()
     this.owner.lookup('service:blocksGallery').start()
 
@@ -73,6 +74,28 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     await settled()
     later(() => {
       assert.ok(this.ctrl.get('isEndModalOpen'))
+    })
+  })
+
+  test('Should show congratulations modal when group is not affected', async function (assert) {
+    const experimentsMock = this.owner.lookup('service:experiments')
+    
+    experimentsMock.setNotAffected()
+    this.ctrl.send('ejecutar')
+    await settled()
+    later(() => {
+      assert.ok(this.ctrl.shouldShowCongratulationsModal())
+    })
+  })
+
+  test('Should NOT show congratulations modal when group is affected', async function (assert) {
+    const experimentsMock = this.owner.lookup('service:experiments')
+    
+    experimentsMock.setControl()
+    this.ctrl.send('ejecutar')
+    await settled()
+    later(() => {
+      assert.notOk(this.ctrl.shouldShowCongratulationsModal())
     })
   })
 
