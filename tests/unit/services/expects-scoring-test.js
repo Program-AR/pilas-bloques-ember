@@ -54,12 +54,33 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e3 = expectation('1', '', false)
     const e4 = expectation('2', '', true)
     const e5 = expectation('3', '', false)
-
     const expectations = [e1, e2, e3, e4, e5]
 
     const combinedExpectations = expectsScoring.combineMultipleExpectations(expectations)
     assert.propEqual(combinedExpectations, [e1, e4, e5])
   })
 
+  test('Should map to generic description only the relevant expectations', function (assert) {
+    const relevant1 = expectation('too_long', '', true)
+    const nonRelevant1 = expectation('does_not_use_recursion', '', false)
+    const nonRelevant2 = expectation('is_used', '', true)
+    const relevant2 = expectation('do_something', '', false)
+    const expectations = [relevant1, nonRelevant1, nonRelevant2, relevant2]
+
+    const relevantGenericExpectations = expectsScoring.relevantGenericExpectations(expectations)
+
+    const genericRelevant1 = { ...relevant1, description: 'Tus procedimientos están divididos en subtareas también.\n' }
+    const genericRelevant2 = { ...relevant2, description: 'Tus procedimientos no hacen nada (están vacíos).\n' }
+
+    assert.propEqual(relevantGenericExpectations, [genericRelevant1, genericRelevant2])
+  })
+
+  test('Non generic expectations should not change description', function (assert) {
+    const exp = expectation('pepita', 'Pepita usa repeticion condicional', true)
+
+    const result = expectsScoring.genericDescriptionFor(exp)
+
+    assert.propEqual(result, exp)
+  })
 
 });
