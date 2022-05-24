@@ -670,6 +670,14 @@ model:
           true {You chose a name for your procedures}
           other {You did not chose a name for your procedures}
         }.
+    control_group:
+      do_something: Your procedures should do things.
+      too_long: Your procedures should use decomposition.
+      name_was_changed: You should choose a name for your procedures.
+      uses_conditional_alternative: You should use conditional alternative.
+      uses_conditional_repetition: You should use conditional repetition.
+      uses_simple_repetition: You should use simple repetition.
+      declares_procedure: You should declare procedures.
   groups:
     AlienTocaBoton:
       title: ''

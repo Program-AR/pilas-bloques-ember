@@ -3,7 +3,7 @@ import { inject as service } from '@ember/service'
 import { groupBy } from 'ramda'
 import { unwantedExpectsIds, doSomethingId, tooLongId, nameWasChangedId } from '../utils/expectations'
 
-const solutionWorks = 'solution_works'
+export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),

@@ -676,6 +676,14 @@ model:
           true {Elegiste un nombre para tus procedimientos}
           other {No elegiste un nombre para tus procedimientos}
         }.
+    control_group:
+      do_something: Tus procedimientos deberían hacer cosas.
+      too_long: Tus procedimientos deberían dividir en subtareas.
+      name_was_changed: Deberías elegir un nombre para cada uno de tus procedimientos.
+      uses_conditional_alternative: Deberías utilizar alternativa condicional.
+      uses_conditional_repetition: Deberías utilizar repetición condicional.
+      uses_simple_repetition: Deberías utilizar repetición simple.
+      declares_procedure: Deberías utilizar procedimientos para dividir en subtareas.
   groups:
     AlienTocaBoton:
       title: ''
