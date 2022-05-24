@@ -5,19 +5,27 @@ import { xmlBloqueEmpezarAEjecutar } from 'pilasbloques/models/desafio'
 import sinon from 'sinon'
 import { setUpTestLocale } from '../../helpers/utils'
 
-let ctrl
-let version
-let actividad = actividadMock.nombre
-let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlhYmxlcz48L3ZhcmlhYmxlcz48YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBpZD0idX4vczBQV1BEWkQ1aFEtLFFnPXQiIGRlbGV0YWJsZT0iZmFsc2UiIG1vdmFibGU9ImZhbHNlIiBlZGl0YWJsZT0iZmFsc2UiIHg9IjIyNyIgeT0iMTUiPjwvYmxvY2s+PC94bWw+"
+
 
 module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   setupTest(hooks);
   setUpTestLocale(hooks)
 
+  let ctrl
+  let version
+  let actividad = actividadMock.nombre
+  let solucion = "PHhtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94aHRtbCI+PHZhcmlhYmxlcz48L3ZhcmlhYmxlcz48YmxvY2sgdHlwZT0iYWxfZW1wZXphcl9hX2VqZWN1dGFyIiBpZD0idX4vczBQV1BEWkQ1aFEtLFFnPXQiIGRlbGV0YWJsZT0iZmFsc2UiIG1vdmFibGU9ImZhbHNlIiBlZGl0YWJsZT0iZmFsc2UiIHg9IjIyNyIgeT0iMTUiPjwvYmxvY2s+PC94bWw+"
+  let currentWorkspace
+
+
   hooks.beforeEach(function () {
     ctrl = this.owner.factoryFor('component:challenge-workspace-buttons').create()
     ctrl.set('actividad', actividadMock)
     ctrl.descargar = sinon.stub()
+    currentWorkspace = ""
+    ctrl.setWorkspace = function (xml) {
+      currentWorkspace = xml
+    }
     version = ctrl.version()
     sinon.resetHistory()
   });
@@ -44,17 +52,17 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   test("Al borrar una solucion con un workspace inicial se deberia volver al workspace incial", function (assert) {
     const actividadConWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio', { solucionInicial: solucion })
     ctrl.set('actividad', actividadConWorkspaceInicial)
-    ctrl.set('workspace', 'algoDistinto')
+    currentWorkspace = "algoDistinto"
     ctrl.send('borrarSolucion')
-    assert.equal(ctrl.get('workspace'), solucion)
+    assert.equal(currentWorkspace, solucion)
   })
 
   test("Al borrar una solucion sin un workspace inicial se deberia volver al wokspace inicial base", function (assert) {
     const actividadSinWorkspaceInicial = this.owner.lookup('service:store').createRecord('desafio')
     ctrl.set('actividad', actividadSinWorkspaceInicial)
-    ctrl.set('workspace', 'algoDistinto')
+    currentWorkspace = "algoDistinto"
     ctrl.send('borrarSolucion')
-    assert.equal(ctrl.get('workspace'), xmlBloqueEmpezarAEjecutar)
+    assert.equal(currentWorkspace, xmlBloqueEmpezarAEjecutar)
   })
 
 
@@ -80,7 +88,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   })
 
   failFileTest("Aunque no tenga una versión actual se carga al workspace", solucionCompletaConVersionAnterior, function (assert) {
-    assert.ok(ctrl.get("workspace"))
+    assert.ok(currentWorkspace)
   })
 
   let solucionCompletaSinVersion = {
@@ -102,7 +110,7 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   })
 
   failFileTest("Aunque no sea una solución para la actividad se carga al workspace", solucionParaOtraActividad, function (assert) {
-    assert.ok(ctrl.get("workspace"))
+    assert.ok(currentWorkspace)
   })
 
 
@@ -119,10 +127,8 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   })
 
   failFileTest("Aunque no tenga versión actual y sea una solución para la actividad se carga al workspace", solucionCompletaConVersionAnteriorParaOtraActividad, function (assert) {
-    assert.ok(ctrl.get("workspace"))
+    assert.ok(currentWorkspace)
   })
-
-
 
   let archivoSinSolucion = {
     version,
@@ -134,13 +140,12 @@ module('Unit | Components | challenge-workspace-buttons', function (hooks) {
   })
 
   failFileTest("Verifica que tenga una solucion", archivoSinSolucion, function (assert) {
-    assert.notOk(ctrl.get("workspace"))
+    assert.notOk(currentWorkspace)
   })
 
 
-
   function goodFileTest(mensaje, contenido) {
-    fileTest(mensaje, contenido, (assert) => { assert.ok(ctrl.get("workspace")) }, () => { })
+    fileTest(mensaje, contenido, (assert) => { assert.ok(currentWorkspace) }, () => { })
   }
 
   function failFileTest(mensaje, contenido, cb) {
