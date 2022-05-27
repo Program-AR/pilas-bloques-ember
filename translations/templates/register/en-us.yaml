@@ -5,7 +5,7 @@ chooseAvatar: Choose your avatar
 parentalConsent: Parental consent
 inAge: 'If you are of legal age, write your own data.'
 parentalFullname: 'Full name of mother, father or guardian'
-parentalId: 'Social number of mother, father or guardian'
+parentalId: 'Id of mother, father or guardian'
 whyData:
   title: Why do we request this data?
   privacy: For the FUNDACIÓN SADOSKY your privacy and that of your children is very important.

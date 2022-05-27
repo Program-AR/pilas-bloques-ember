@@ -13,7 +13,7 @@ module.exports = function (environment) {
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
     testTranslations: false,
-    experimentGroupType: "notAffected",
+    experimentGroupType: "treatment",
 
     showdown: {
       simpleLineBreaks: true,
@@ -55,7 +55,7 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
     ENV.testTranslations = false
-    ENV.experimentGroupType = "notAffected"
+    ENV.experimentGroupType = "treatment"
   }
 
   if (environment === 'test') {
