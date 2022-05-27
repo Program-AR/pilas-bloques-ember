@@ -1,7 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 import environment from '../config/environment';
-import ENV from 'pilasbloques/config/environment'
 
 const { sessionExpire } = config.pbAnalytics
 
@@ -9,6 +8,7 @@ const { sessionExpire } = config.pbAnalytics
 export default Service.extend({
   platform: service(),
   storage: service(),
+  experiments: service(),
 
   context() {
     const userId = this.storage.getUserId()
@@ -16,7 +16,7 @@ export default Service.extend({
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()
     const version = environment.APP.version
-    const experimentGroup = ENV.experimentGroupType
+    const experimentGroup = this.experiments.experimentGroup()
     return {
       ...session,
       online,

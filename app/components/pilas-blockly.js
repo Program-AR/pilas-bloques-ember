@@ -1,7 +1,6 @@
 /* jshint ignore:start */
 import { computed } from '@ember/object'
 import { run } from '@ember/runloop'
-
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
 import { addError, addWarning, clearValidations, declarationWithName } from '../utils/blocks'
@@ -377,7 +376,7 @@ export default Component.extend({
       allExpectResults: this.persistableExpectsResults(this.get('expects')),
       score: {
         expectResults: this.scoredExpectsResults(),
-        points: this.expectsScoring.totalScore(this.get('expects')) //This is a percentage. E.g.: 70
+        percentage: this.expectsScoring.totalScore(this.get('expects'))
       }
     }
   },
