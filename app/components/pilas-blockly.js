@@ -44,6 +44,7 @@ export default Component.extend({
 
   javascriptCode: null,
   intl: Ember.inject.service(),
+  expectsScoring: service('expects-scoring'),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
@@ -373,8 +374,24 @@ export default Component.extend({
   staticAnalysis() {
     return {
       couldExecute: this.shouldExecuteProgram(),
-      expects: this.get('expects'),
+      allExpectResults: this.persistableExpectsResults(this.get('expects')),
+      score: {
+        expectResults: this.scoredExpectsResults(),
+        points: this.expectsScoring.totalScore(this.get('expects')) //This is a percentage. E.g.: 70
+      }
     }
+  },
+
+  persistableExpectsResults(expects) {
+    return expects.map(e => {
+      const expect = { ...e }
+      delete expect.description
+      return expect
+    })
+  },
+
+  scoredExpectsResults() {
+    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects')))
   },
 
   runProgramEvent() {

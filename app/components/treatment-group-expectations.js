@@ -19,6 +19,6 @@ export default Component.extend({
     }),
 
     passedExpectsValue: computed('expects', function () {
-        return 100 * this.allPassedExpects.length / this.expectsResults.length
+        return this.expectsScoring.totalScore(this.expects)
     }),
 });
