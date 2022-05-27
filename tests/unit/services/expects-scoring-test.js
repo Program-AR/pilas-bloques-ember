@@ -20,7 +20,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     expectsScoring = this.owner.lookup('service:expects-scoring');
   });
 
-  test('Should add solution passed expectation at the beginning', function (assert) {
+  test('Should add solution passed expectation result at the beginning', function (assert) {
     const e1 = expectation('1', '', false)
     const e2 = expectation('2', '', true)
     const expectations = [e1, e2]
@@ -29,7 +29,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assert.propEqual(results[0], solutionPassMock)
   });
 
-  test('A combined expectation with at least a passed expectation', function (assert) {
+  test('A combined expectation with at least one passed expectation', function (assert) {
     const e1 = expectation('1', '', true)
     const e2 = expectation('1', '', false)
 
@@ -47,7 +47,6 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assert.propEqual(combinedExpectation, e1)
   })
 
-
   test('Only expectations with same id should be combined', function (assert) {
     const e1 = expectation('1', '', true)
     const e2 = expectation('1', '', false)
@@ -60,14 +59,14 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assert.propEqual(combinedExpectations, [e1, e4, e5])
   })
 
-  test('Should map to generic description only the relevant expectations', function (assert) {
+  test('Only combined scorable expectations DESCRIPTIONS should be replaced', function (assert) {
     const relevant1 = expectation('too_long', '', true)
     const nonRelevant1 = expectation('does_not_use_recursion', '', false)
     const nonRelevant2 = expectation('is_used', '', true)
     const relevant2 = expectation('do_something', '', false)
     const expectations = [relevant1, nonRelevant1, nonRelevant2, relevant2]
 
-    const relevantGenericExpectations = expectsScoring.relevantGenericExpectations(expectations)
+    const relevantGenericExpectations = expectsScoring.scorableCombinedExpectations(expectations)
 
     const genericRelevant1 = { ...relevant1, description: 'Tus procedimientos están divididos en subtareas también.\n' }
     const genericRelevant2 = { ...relevant2, description: 'Tus procedimientos no hacen nada (están vacíos).\n' }
@@ -75,10 +74,10 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assert.propEqual(relevantGenericExpectations, [genericRelevant1, genericRelevant2])
   })
 
-  test('Non generic expectations should not change description', function (assert) {
+  test('Uncombined expectations should not change description', function (assert) {
     const exp = expectation('pepita', 'Pepita usa repeticion condicional', true)
 
-    const result = expectsScoring.genericDescriptionFor(exp)
+    const result = expectsScoring.replaceCombinedExpectDescription(exp)
 
     assert.propEqual(result, exp)
   })

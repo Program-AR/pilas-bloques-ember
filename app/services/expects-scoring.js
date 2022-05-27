@@ -1,14 +1,14 @@
 import Service from '@ember/service'
 import { inject as service } from '@ember/service'
 import { groupBy } from 'ramda'
-import { unwantedExpectsIds, doSomethingId, tooLongId, nameWasChangedId } from '../utils/expectations'
+import { nonScorableExpectsIds, doSomethingId, tooLongId, nameWasChangedId } from '../utils/expectations'
 
 export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),
 
-    genericDescriptionsKeys() {
+    combinedExpectsDescriptionsKeys() {
         const descriptions = {}
         descriptions[doSomethingId] = this.genericId(doSomethingId)
         descriptions[tooLongId] = this.genericId(tooLongId)
@@ -22,8 +22,8 @@ export default Service.extend({
     },
 
     expectsResults(expects) {
-        return [this.solutionWorksExpect()].concat(
-            this.relevantGenericExpectations(this.combineMultipleExpectations(expects))
+        return [this.solutionWorksExpectResult()].concat(
+            this.scorableCombinedExpectations(this.combineMultipleExpectations(expects))
         )
     },
 
@@ -39,8 +39,8 @@ export default Service.extend({
         return Object.values(groupBy(e => e.id)(expects))
     },
 
-    relevantGenericExpectations(expects) {
-        return expects.filter(expect => this.isRelevant(expect)).map(expect => this.genericDescriptionFor(expect))
+    scorableCombinedExpectations(expects) {
+        return expects.filter(expect => this.isScorable(expect)).map(expect => this.replaceCombinedExpectDescription(expect))
     },
 
     combineMultipleExpectations(expects) {
@@ -55,19 +55,19 @@ export default Service.extend({
         }
     },
 
-    isRelevant(expect) {
-        return !unwantedExpectsIds.some(id => id === expect.id)
+    isScorable(expect) {
+        return !nonScorableExpectsIds.some(id => id === expect.id)
     },
 
-    genericDescriptionFor(expect) {
-        const key = this.genericDescriptionsKeys()[expect.id]
+    replaceCombinedExpectDescription(expect) {
+        const key = this.combinedExpectsDescriptionsKeys()[expect.id]
         return {
             ...expect,
             description: key ? this.intl.t(key, { result: expect.result }).toString() : expect.description
         }
     },
 
-    solutionWorksExpect() {
+    solutionWorksExpectResult() {
         return {
             id: solutionWorks,
             description: this.intl.t(`model.spects.${solutionWorks}`).toString(),

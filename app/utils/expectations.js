@@ -91,7 +91,7 @@ export const declaresProcedureId = 'declares_procedure'
 
 const criticalExpectationsIds = [doesNotUseRecursionId]
 
-export const unwantedExpectsIds = [doesNotUseRecursionId, isUsedId, isUsedFromMainId]
+export const nonScorableExpectsIds = [doesNotUseRecursionId, isUsedId, isUsedFromMainId]
 
 export const isCritical = (expectationResult) =>
   criticalExpectationsIds.some(id => id === expectationResult.id)
