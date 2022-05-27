@@ -127,6 +127,21 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
 
+  const initialWorkspaceXml =	
+  `<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\"></shadow></statement></block></xml>`
+
+  test("setWorkspace replaces Blockly's workspace", function (assert) {
+    Blockly.textToBlock(filledProgram)
+    this.ctrl.send('setWorkspace', initialWorkspaceXml)
+
+    const xmlAfterSetWorkspace = Blockly.Xml.workspaceToDom(Blockly.mainWorkspace)
+    
+    const xmlAfterSetWorkspaceWithoutId = Blockly.Xml.domToText(xmlAfterSetWorkspace).replace(/ id="[^"]*"/g, "")
+
+    assert.equal(initialWorkspaceXml, xmlAfterSetWorkspaceWithoutId)
+  })
+
+
   // PROGRAM EXECUTION
   let filledProgram =
     `<block type="al_empezar_a_ejecutar">

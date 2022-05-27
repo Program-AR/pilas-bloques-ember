@@ -7,7 +7,6 @@ export default Component.extend({
   tagName: 'workspace-buttons',
   cuandoSelecciona: null,
   actividad: null,
-  workspace: null,
   xml: null,
   store: service(),
   deleteDialogIsOpen: false,
@@ -42,7 +41,7 @@ export default Component.extend({
       throw this.intl.t('components.challengeWorkspaceButtons.notASolution');
     }
 
-    this.set('workspace', solucion);
+    this.setWorkspace(solucion)
 
     let errors = [];
     if (this.get("actividad.nombre") !== data.actividad) {
@@ -103,7 +102,7 @@ export default Component.extend({
     },
 
     borrarSolucion() {
-      this.set('workspace', this.actividad.initialWorkspace)
+      this.setWorkspace(this.get('actividad').initialWorkspace)
       this.set('deleteDialogIsOpen', false)
     },
   },
