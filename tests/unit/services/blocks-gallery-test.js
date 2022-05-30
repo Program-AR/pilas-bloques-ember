@@ -148,7 +148,7 @@ module('Unit | Service | blocks-gallery', function (hooks) {
   test('Parameter in parent procedure without param should be disabled', function (assert) {
     let param = findParam(Blockly.textToBlock(procedureWithDeletedParam))
     assert.ok(param.disabled)
-    assert.equal(param.warning.getText(), "Este bloque ya no puede usarse, el parámetro ha sido eliminado.")
+    assertWarning(assert, param, "Este bloque ya no puede usarse, el parámetro ha sido eliminado.")
   });
 
 
