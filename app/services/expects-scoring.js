@@ -73,6 +73,10 @@ export default Service.extend({
             description: this.intl.t(`model.spects.${solutionWorks}`).toString(),
             result: true
         }
+    },
+
+    totalScore(expects) {
+        return 100 * this.allPassedExpects(expects).length / this.expectsResults(expects).length
     }
 
 })

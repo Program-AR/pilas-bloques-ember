@@ -264,6 +264,10 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   })
 
   test('Envia metadata a la api al ejecutar', async function (assert) {
+    const solutionWorksResult = {
+      id: 'solution_works',
+      result: true
+    }
     Blockly.textToBlock(filledProgram)
     this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
     this.ctrl.send('ejecutar')
@@ -272,7 +276,11 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
     assert.deepEqual(metadata.staticAnalysis, {
       couldExecute: true,
-      expects: [],
+      allExpectResults: [],
+      score: {
+        expectResults: [solutionWorksResult],
+        percentage: 100
+      }
     })
   })
 
