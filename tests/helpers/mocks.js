@@ -46,6 +46,7 @@ export const createActividadMock = (fields) => EmberObject.extend({
 }).create()
 
 export const actividadMock = createActividadMock()
+export const actividadConExpectativaMock = createActividadMock({ expectations: { conditionalAlternative: true }, grupo: undefined })
 
 export const createComponentMock = (_properties) => ({
     properties: _properties,
