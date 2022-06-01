@@ -95,13 +95,27 @@ export function clearValidationsFor(block) {
   block.setWarningText(null)
 }
 
-export function addWarning(block, message, index) {
-  block.setWarningText(message, index)
+export function addWarning(block, message, index, itemChar = '☆ ') {
+  block.setWarningText(itemChar + lineWrap(message), index)
   block.warning.setVisible(true)
   block.warning.bubble_.setColour('yellow')
 }
 
 export function addError(block, message, index) {
-  addWarning(block, message, index)
+  addWarning(block, message, index, '★ ')
   block.warning.bubble_.setColour('red')
+}
+
+function lineWrap(message){
+  const lineLen = 75
+  return message.split(' ').reduce((lines, word) => {
+      const lastLine = lines[lines.length-1]
+      if(lastLine.length + word.length > lineLen)
+        lines.push(word)
+      else
+        lines.push(lines.pop() + ' ' + word)
+      return lines
+    },
+    [""]
+  ).join('\n  ')
 }

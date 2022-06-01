@@ -159,7 +159,7 @@ export function assertNotDisabled(assert, block) {
 }
 
 export function assertWarning(assert, block, warning) {
-    assert.equal(block.warning.getText(), warning)
+    assert.ok(block.warning.getText().includes(warning), `El warning "${block.warning.getText()}" debería contener lo esperado: "${warning}"`)
 }
 
 export function assertNotWarning(assert, block) {
