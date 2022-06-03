@@ -56,7 +56,11 @@ export default Model.extend({
   previousChallenge: computed('grupo', function () {
     const groupChallenges = this.grupo.get('desafios').toArray()
     return groupChallenges[this.indexInGroup - 1]
-  })
+  }),
+
+  hasSubtaskDivisionExpectation(){
+    return this.expectations.decomposition
+  }
 
 
 });

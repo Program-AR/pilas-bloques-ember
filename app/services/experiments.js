@@ -45,6 +45,6 @@ export default Service.extend({
   },
 
   shouldUpdateSolvedChallenges(challenge){
-    return !this.solvedChallenges.includes(challenge.id)
+    return !this.solvedChallenges.includes(challenge.id) && challenge.hasSubtaskDivisionExpectation()
   }
 });
