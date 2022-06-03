@@ -17,8 +17,8 @@ register: Cadastrar-se
 options:
   optional: opcional
 errors:
-  userAlreadyExists: Este nombre de usuario ya existe
-  userFormat: 'El usuario sólo puede contener letras, números y guiones'
-  invalidMail: Este no es un mail válido
-  missingParentName: Se requiere nombre y apellido
-  invalidNumber: El DNI es inválido
+  userAlreadyExists: Esse nome de usuário existe já
+  userFormat: 'O usuário só pode incluir letras, números e hífens'
+  invalidMail: Este não é um email válido
+  missingParentName: São necessários seu  nome e sobrenome
+  invalidNumber: O DNI é inválido
