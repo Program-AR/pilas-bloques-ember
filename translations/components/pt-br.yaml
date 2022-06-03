@@ -3,7 +3,7 @@ bugReportModal:
   error: 'Acha que este exercício tem um erro? '
   askTeacher: Lembre-se de sempre entrar em contato com seu professor ou escola para fazer perguntas. Nós que fazemos o Pilas Bloques infelizmente não conhecem todos os professores que usam a ferramenta.
   mail: Pode nos escrever no
-  githubReport: 'Se você tem uma conta no Github, você também pode fazer um relatório de bug diretamente para nós'
+  githubReport: Se você tem uma conta no Github, você também pode fazer um relatório de bug diretamente para nós
   issueTracker: Issue Tracker
 createCustomChallenge:
   create: Criar desafio
@@ -27,13 +27,14 @@ sceneButtons:
   restart:
     label: Reiniciar
     tooltip: Reiniciar a execução
+  multipleScenarios: ¡Hay varios escenarios!
 turboModeToggle:
   turnOff: Desativar o modo Turbo
   turnOn: Ativar o modo Turbo
   active: ATIVADO
   inactive: DESATIVADO
 clearData:
-  deleting: 'Excluindo dados do navegador, se você tiver um usuário, pode ter que entrar novamente.'
+  deleting: Excluindo dados do navegador, se você tiver um usuário, pode ter que entrar novamente.
 importCustomChallenge:
   import: Importar Desafio
   custom: Importe um desafio personalizado do criador de desafios do Pilas Bloques.
@@ -48,12 +49,12 @@ nightModeToggle:
 registerDisclaimer:
   now: ¡ Agora o Pilas Bloques permite
   register: registrar-se
-  optional: 'Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou.'
+  optional: Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou.
 programarDisclaimer:
   entered: Você entrou
   programar: Program.AR em casa
   in: Em
-  find: 'você encontrará muito material, muitas ferramentas e uma explicação de como usar o Pilas Bloques'
+  find: você encontrará muito material, muitas ferramentas e uma explicação de como usar o Pilas Bloques
 challengeLink:
   soon: Em breve
 challengeWorkspaceButtons:
@@ -64,15 +65,15 @@ challengeWorkspaceButtons:
   exit: Sair da tela cheia
   fullScreen: Tela Cheia
   notASolution: Este arquivo não tem uma solução da Pilas Blocos.
-  wrongActivity: 'Cuidado! O arquivo indica que é para outra atividade ({activity}). Será carregado de cualquer forma, mas pode falhar.'
-  oldVersion: 'Cuidado! O arquivo indica que é de uma versão anterior. Será carregado de qualquer forma, mas sugerimos que resolva novamente o exercício e guarde um novo arquivo.'
+  wrongActivity: Cuidado! O arquivo indica que é para outra atividade ({activity}). Será carregado de cualquer forma, mas pode falhar.
+  oldVersion: Cuidado! O arquivo indica que é de uma versão anterior. Será carregado de qualquer forma, mas sugerimos que resolva novamente o exercício e guarde um novo arquivo.
 footer:
   version: 'Versão:'
   problem: Problemas com este exercício?
   about: Sobre
 login:
   already: Já tenho um usuário
-  wrong: 'Nome de usuário ou senha incorretos, tente novamente'
+  wrong: Nome de usuário ou senha incorretos, tente novamente
   forgot: Esqueci meu nome de usuário ou senha
   dontHaveUser: Ainda não tenho usuário
   register: Cadastre-se clicando aqui!
@@ -82,10 +83,10 @@ login:
 modalAyuda:
   help: Esta aplicação apresentará vários desafios que podem ser resolvidos conectando blocos.
   firstSteps: 'O primeiro passo é abrir a seção Desafios:'
-  categories: 'Os blocos estão agrupados em categorias, use a barra lateral para exibi-los.'
+  categories: Os blocos estão agrupados em categorias, use a barra lateral para exibi-los.
   dragAndDrop: 'Pode então arrastar e soltar os blocos na área de trabalho. '
-  continue: 'Assim que tiver seu programa pronto, pressione o botão Executar para continuar.'
-  delete: 'Ah, e os blocos podem ser removidos arrastando-os para a lata de lixo.'
+  continue: Assim que tiver seu programa pronto, pressione o botão Executar para continuar.
+  delete: Ah, e os blocos podem ser removidos arrastando-os para a lata de lixo.
 passwordConfirmation:
   password: Confirmar senha
   matchError: As senhas não coincidem
@@ -112,11 +113,11 @@ finishedExerciseModal:
   expectationsModal:
     treatmentGroup:
       notAllPassed:
-        title: 'Esta bem, mas poderia estar melhor!'
+        title: Esta bem, mas poderia estar melhor!
         description: Verifique a soluçõe e tente cumprir com todos os objectivos.
       allPassed:
         title: Conseguiu!
         description: ''
     controlGroup:
       title: Conseguiu!
-      description: "Recordá que una solución correcta no sólo resuelve el problema, sino que además:"
+      description: 'Recordá que una solución correcta no sólo resuelve el problema, sino que además:'

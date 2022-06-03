@@ -151,5 +151,5 @@ errors:
   missingCommandBlock: Aqui faltam blocos comandos!
   missingExpressionBlock: Aqui falta um bloco expressão!
   nonAvailableBlock: Este bloco não está disponível nesta atividade.
-  wrongParameter: 'Este bloco não pode ser usado aqui. É um parâmetro que só pode ser usado no procedimento "{procedure}"'
-  deletedParameter: 'Este bloco já não pode ser usado, o parâmetro foi eliminado.'
+  wrongParameter: Este bloco não pode ser usado aqui. É um parâmetro que só pode ser usado no procedimento "{procedure}"
+  deletedParameter: Este bloco já não pode ser usado, o parâmetro foi eliminado.
