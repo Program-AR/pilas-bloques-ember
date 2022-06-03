@@ -31,7 +31,6 @@ export default Service.extend({
 
   updateSolvedChallenges(challenge){
     const _solvedChallenges = this.solvedChallenges
-    console.log(this.solvedChallenges)
     if (this.shouldUpdateSolvedChallenges(challenge)) _solvedChallenges.push(challenge.id)
     this.storage.saveSolvedChallenges(_solvedChallenges)
   },
@@ -40,11 +39,15 @@ export default Service.extend({
     return this.isNotAffected() || this.feedbackIsDisabled()
   },
 
+  shouldShowExpectationFeedback(){
+    return !this.feedbackIsDisabled()
+  },
+
   feedbackIsDisabled(){
     return this.solvedChallenges.length > this.subtaskDivisionTreatmentLength
   },
 
   shouldUpdateSolvedChallenges(challenge){
-    return !this.solvedChallenges.includes(challenge.id) && challenge.hasSubtaskDivisionExpectation()
+    return !this.solvedChallenges.includes(challenge.id) 
   }
 });

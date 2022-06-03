@@ -58,9 +58,6 @@ export default Model.extend({
     return groupChallenges[this.indexInGroup - 1]
   }),
 
-  hasSubtaskDivisionExpectation(){
-    return this.expectations.decomposition
-  }
 
 
 });
