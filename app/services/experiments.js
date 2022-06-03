@@ -1,9 +1,17 @@
-import Service from '@ember/service';
+import Service, { inject as service } from '@ember/service'
 import ENV from 'pilasbloques/config/environment'
+import { computed } from '@ember/object'
 
 export default Service.extend({
 
   group: ENV.experimentGroupType,
+  subtaskDivisionTreatmentLength: ENV.subtaskDivisionTreatmentLength,
+  storage: service(),
+  activityExpectations: service(),
+
+  solvedChallenges: computed('storage', function () {
+    return this.get('storage').getSolvedChallenges()
+  }),
 
   isTreatmentGroup() {
     return this.group === "treatment"
@@ -19,5 +27,24 @@ export default Service.extend({
 
   experimentGroup() {
     return this.group
+  },
+
+  updateSolvedChallenges(challenge){
+    const _solvedChallenges = this.solvedChallenges
+    console.log(this.solvedChallenges)
+    if (this.shouldUpdateSolvedChallenges(challenge)) _solvedChallenges.push(challenge.id)
+    this.storage.saveSolvedChallenges(_solvedChallenges)
+  },
+
+  shouldShowCongratulationsModal(){
+    return this.isNotAffected() || this.feedbackIsDisabled()
+  },
+
+  feedbackIsDisabled(){
+    return this.solvedChallenges.length > this.subtaskDivisionTreatmentLength
+  },
+
+  shouldUpdateSolvedChallenges(challenge){
+    return !this.solvedChallenges.includes(challenge.id)
   }
 });

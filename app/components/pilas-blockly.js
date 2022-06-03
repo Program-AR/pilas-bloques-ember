@@ -334,6 +334,8 @@ export default Component.extend({
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
+      if(this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
+
       this.send('showEndModal')
 
       if (this.ejecutando) {
@@ -431,7 +433,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.isNotAffected()
+    return this.experiments.shouldShowCongratulationsModal(this.challenge)
   },
 
   actions: {

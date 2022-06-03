@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
+  SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
 
   getUserId() {
     const user = this.getUser()
@@ -45,6 +46,13 @@ export default Ember.Service.extend({
   saveSelectedLocale(selectedLocale) { this._save(this.SELECTED_LOCALE_KEY, selectedLocale) },
 
   getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) },
+
+  saveSolvedChallenges(solvedChallenges) { this._save(this.SOLVED_CHALLENGES,solvedChallenges) },
+
+  getSolvedChallenges () { 
+    const solvedChallenges = this._get(this.SOLVED_CHALLENGES) 
+    return solvedChallenges ? solvedChallenges : []
+  },
 
   clear() { localStorage.clear() },
 
