@@ -77,27 +77,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
   })
 
-  test('Should show congratulations modal when group is not affected', async function (assert) {
-    const experimentsMock = this.owner.lookup('service:experiments')
-    
-    experimentsMock.setNotAffected()
-    this.ctrl.send('ejecutar')
-    await settled()
-    later(() => {
-      assert.ok(this.ctrl.shouldShowCongratulationsModal())
-    })
-  })
-
-  test('Should NOT show congratulations modal when group is affected', async function (assert) {
-    const experimentsMock = this.owner.lookup('service:experiments')
-    
-    experimentsMock.setControl()
-    this.ctrl.send('ejecutar')
-    await settled()
-    later(() => {
-      assert.notOk(this.ctrl.shouldShowCongratulationsModal())
-    })
-  })
 
   test('Al resolver el problema con expectativas fallidas', async function (assert) {
     Blockly.textToBlock(filledProgram)

@@ -115,6 +115,10 @@ export const experimentsMock = Service.extend({
     isNotAffected() {
         return this.group === "notAffected"
     },
+
+    shouldShowExpectationFeedback(){ return false },
+
+    updateSolvedChallenges(){}
 })
 
 export const createActivity = (owner, fields) => {
