@@ -42,7 +42,7 @@ export const nameWasChanged = (intl) => (declaration) =>
 
 // UTILS
 const newGlobalExpectation = (expect, id) =>
-  newExpectation(`through ${toEDLString(entryPointType)} ${expect}`, id, {declaration: entryPointType})
+  newExpectation(`through ${toEDLString(entryPointType)} ${expect}`, id, { declaration: entryPointType })
 
 export const newExpectation = (expect, id, opts = {}) =>
   `expectation "${stringify(id, opts)}": ${expect};`
@@ -53,7 +53,7 @@ export const countCallsWithin = (declaration) =>
   `within ${toEDLString(declaration)} count(calls) + count(calls ${toEDLString(declaration)})`
 
 export const stringify = (id, opts) =>
-  `${expectationName(id)}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
+  `${id}|${Object.entries(opts).map(([key, value]) => `${key}=${value}`).join(';')}`
 
 const newSimpleCondition = (condition, id, opt = {}) =>
   newExpectation(condition ? pass : fail, id, opt)
@@ -66,18 +66,21 @@ export const parseExpect = (name) => [
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
-const expectationName = (id) => stringifiedExceptationPrefix + id
+export const expectationDescription = (intl, name, expectationParams, result) => {
+  const descriptionParams = { result, ...expectationParams }
+  const translateAs = (prefix) => intl.t(`model.spects.${prefix}.${name}`, descriptionParams).toString()
+  return {
+    asScoring: translateAs('scoreable'),
+    asSuggestion: translateAs('suggestion')
+  }
 
-export const expectationId = (name) => name.replace(stringifiedExceptationPrefix, "")
+}
 
 const toEDLString = name => `\`${name}\``
 
 const join = expectations => expectations.join('\n')
 
-const stringifiedExceptationPrefix = 'model.spects.'
-
 export const doesNotUseRecursionId = 'does_not_use_recursion'
-
 const isUsedId = 'is_used'
 const isUsedFromMainId = 'is_used_from_main'
 

@@ -9,7 +9,7 @@
     {{#each failedExpects as |result|}}
       <p>
         {{paper-icon "radio_button_unchecked"}}
-        {{result.description}}
+        {{result.description.asScoring}}
       </p>
     {{/each}}
   </div>
