@@ -31,8 +31,10 @@ export default Service.extend({
 
   updateSolvedChallenges(challenge){
     const _solvedChallenges = this.solvedChallenges
-    if (this.shouldUpdateSolvedChallenges(challenge)) _solvedChallenges.push(challenge.id)
-    this.storage.saveSolvedChallenges(_solvedChallenges)
+    if (this.shouldUpdateSolvedChallenges(challenge)){
+      _solvedChallenges.push(challenge.id)
+      this.storage.saveSolvedChallenges(_solvedChallenges)
+    } 
   },
 
   shouldShowCongratulationsModal(){
@@ -54,6 +56,5 @@ export default Service.extend({
   hasSubtaskDivisionExpect(challenge){
     const combinedExpectations = this.activityExpectations.combinedExpectations(challenge)
     return this.activityExpectations.expectationsExist(combinedExpectations) ? this.activityExpectations.mergedExpectations(combinedExpectations).decomposition : false
-
   }
 });
