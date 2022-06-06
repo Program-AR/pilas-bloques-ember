@@ -53,7 +53,7 @@ export default Service.extend({
 
   hasSubtaskDivisionExpect(challenge){
     const combinedExpectations = this.activityExpectations.combinedExpectations(challenge)
-    const mergedExpectations = this.activityExpectations.mergedExpectations(combinedExpectations)
-    return mergedExpectations.decomposition
+    return this.activityExpectations.expectationsExist(combinedExpectations) ? this.activityExpectations.mergedExpectations(combinedExpectations).decomposition : false
+
   }
 });
