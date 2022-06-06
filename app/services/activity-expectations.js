@@ -33,6 +33,13 @@ export default Service.extend({
   idsToExpectations: activityExpectations,
 
   expectationFor(challenge) {
+    
+    const _combinedExpectations = this.combinedExpectations(challenge)
+
+    return this.expectationsExist(_combinedExpectations) ? this.expectations(this.mergedExpectations(_combinedExpectations)) : noExpectation
+  },
+
+  combinedExpectations(challenge){
     let models = [challenge]
     const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
@@ -43,9 +50,7 @@ export default Service.extend({
       models = [book, chapter, group].concat(models)
     }
 
-    const combinedExpectations = models.map(model => model.get(expectationsName))
-
-    return this.expectationsExist(combinedExpectations) ? this.expectations(this.mergedExpectations(combinedExpectations)) : noExpectation
+    return models.map(model => model.get(expectationsName))
   },
 
   expectations(expectationsConfig){

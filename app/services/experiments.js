@@ -48,6 +48,12 @@ export default Service.extend({
   },
 
   shouldUpdateSolvedChallenges(challenge){
-    return !this.solvedChallenges.includes(challenge.id) 
+    return  !this.solvedChallenges.includes(challenge.id) && this.hasSubtaskDivisionExpect(challenge)
+  },
+
+  hasSubtaskDivisionExpect(challenge){
+    const combinedExpectations = this.activityExpectations.combinedExpectations(challenge)
+    const mergedExpectations = this.activityExpectations.mergedExpectations(combinedExpectations)
+    return mergedExpectations.decomposition
   }
 });
