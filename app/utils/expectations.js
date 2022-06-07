@@ -66,9 +66,13 @@ export const parseExpect = (name) => [
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
-export const expectationDescription = (intl, name, expectationParams, result) => {
+export const expectationDescription = (intl, name, result, expectationParams) => {
   const descriptionParams = { result, ...expectationParams }
-  const translateAs = (prefix) => intl.t(`model.spects.${prefix}.${name}`, descriptionParams).toString()
+  const translateAs = (prefix) => {
+    const tag = `model.spects.${prefix}.${name}`
+    return intl.exists(tag) ? intl.t(tag, descriptionParams).toString() : ''
+  }
+
   return {
     asScoring: translateAs('scoreable'),
     asSuggestion: translateAs('suggestion')
@@ -93,8 +97,6 @@ export const simpleRepetitionId = 'uses_simple_repetition'
 export const declaresProcedureId = 'declares_procedure'
 
 const criticalExpectationsIds = [doesNotUseRecursionId]
-
-export const nonScorableExpectsIds = [doesNotUseRecursionId, isUsedId, isUsedFromMainId]
 
 export const isCritical = (expectationResult) =>
   criticalExpectationsIds.some(id => id === expectationResult.id)

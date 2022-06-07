@@ -56,7 +56,7 @@ const toTranslatedResult = (intl) => ([expect, result]) => {
   const [name, params] = parseExpect(expect)
   return {
     id: name,
-    description: expectationDescription(intl, name, params, result),
+    description: expectationDescription(intl, name, result, params),
     result,
     ...params
   }
