@@ -17,24 +17,28 @@ setExperimentGroupType(process.argv[2])
 
 function setExperimentGroupType(experimentGroupType) {
 
+    let lines
+
     try {
         const data = fs.readFileSync(dotenvPath, encoding)
-        const lines = splitLines(data.toString())
-        const savedExperimentGroupIndex = lines.findIndex(l => l.startsWith(groupTypeKey))
-    
-        if(savedExperimentGroupIndex < 0) {
-            lines.push(documentedExperimentLine(experimentGroupType))
-        }
-        else {
-            const [, currentGroup] = lines[savedExperimentGroupIndex].split('=')
-            lines[savedExperimentGroupIndex] = experimentGroupTypeLine(experimentGroupType, currentGroup)
-        }
-    
-        fs.writeFileSync(dotenvPath, joinLines(lines))
+        lines = splitLines(data.toString())
     }
     catch {
-        throw Error('.env file may not exist or its format could be wrong. Please check if it exists in root directory and its format is correct.')
+        // File does not exist
+        lines = []
     }
+
+    const savedExperimentGroupIndex = lines.findIndex(l => l.startsWith(groupTypeKey))
+
+    if(savedExperimentGroupIndex < 0) {
+        lines.push(documentedExperimentLine(experimentGroupType))
+    }
+    else {
+        const [, currentGroup] = lines[savedExperimentGroupIndex].split('=')
+        lines[savedExperimentGroupIndex] = experimentGroupTypeLine(experimentGroupType, currentGroup)
+    }
+
+    fs.writeFileSync(dotenvPath, joinLines(lines))
 }
 
 function splitLines(lines) {
