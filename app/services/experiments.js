@@ -3,7 +3,7 @@ import ENV from 'pilasbloques/config/environment'
 
 export default Service.extend({
 
-  group: ENV.experimentGroupType || 'notAffected',
+  group: ENV.experimentGroupType,
 
   isTreatmentGroup() {
     return this.group === "treatment"

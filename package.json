@@ -32,8 +32,8 @@
   },
   "scripts": {
     "start": "npm run setExperimentGroup $npm_config_group && ember server",
-    "test": "ember test --serve",
-    "test:CI": "ember test",
+    "test": "npm run setExperimentGroup --group=notAffected && ember test --serve",
+    "test:CI": "npm run setExperimentGroup --group=notAffected && ember test",
     "build": "npm run setExperimentGroup $npm_config_group && ember build",
     "build:prod": "npm run setExperimentGroup $npm_config_group && ember build --environment=production --output-path dist_prod",
     "pilasweb:build": "cd ../pilasweb; make build; cd ../pilas-bloques; cp -rf ../pilasweb node_modules/pilasweb/",
