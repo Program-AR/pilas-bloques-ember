@@ -75,7 +75,8 @@ export const expectationDescription = (intl, name, result, expectationParams) =>
 
   return {
     asScoring: translateAs('scoreable'),
-    asSuggestion: translateAs('suggestion')
+    asSuggestion: translateAs('suggestion'),
+    forControlGroup: translateAs('control_group')
   }
 
 }
@@ -88,13 +89,13 @@ export const doesNotUseRecursionId = 'does_not_use_recursion'
 const isUsedId = 'is_used'
 const isUsedFromMainId = 'is_used_from_main'
 
-export const doSomethingId = 'do_something'
-export const tooLongId = 'too_long'
-export const nameWasChangedId = 'name_was_changed'
-export const conditionalAlternativeId = 'uses_conditional_alternative'
-export const conditionalRepetitionId = 'uses_conditional_repetition'
-export const simpleRepetitionId = 'uses_simple_repetition'
-export const declaresProcedureId = 'declares_procedure'
+const doSomethingId = 'do_something'
+const tooLongId = 'too_long'
+const nameWasChangedId = 'name_was_changed'
+const conditionalAlternativeId = 'uses_conditional_alternative'
+const conditionalRepetitionId = 'uses_conditional_repetition'
+const simpleRepetitionId = 'uses_simple_repetition'
+const declaresProcedureId = 'declares_procedure'
 
 const criticalExpectationsIds = [doesNotUseRecursionId]
 

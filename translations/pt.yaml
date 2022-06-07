@@ -605,54 +605,72 @@ model:
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
   spects:
-    declares_procedure: |
-      {result, select, 
-        true {Estás usando procedimientos para dividir en subtareas.}
-        other {Deberías usar procedimientos para dividir en subtareas.}
-      } 
-    too_long: |
-      La definición {declaration, select,
-        al_empezar_a_ejecutar {del programa principal}
-        other {del procedimiento "{declaration}"}
-      } {result, select, 
-        true {no hace muchas cosas}
-        other {hace muchas cosas, dividí en subtareas usando procedimientos}
-      }.
-    do_something: |
-      La definición del procedimiento "{declaration}" {result, select, 
-        true {hace algo}
-        other {no hace nada}
-      }.
-    is_used: |
-      El procedimiento "{declaration}" {result, select, 
-        true {se usa}
-        other {no se usa desde ningún lado}
-      }.
-    is_used_from_main: |
-      El procedimiento "{declaration}" {result, select, 
-        true {se usa desde el programa principal}
-        other {no se usa desde el programa principal}
-      }.
-    uses_conditional_alternative: |
-      {result, select, 
-        true {Estás usando alternativa condicional}
-        other {Deberías usar alternativa condicional para considerar todos los escenarios posibles}
-      }.
-    uses_conditional_repetition: |
-      {result, select, 
-        true {Estás usando repetición condicional}
-        other {Deberías usar repetición condicional para considerar todos los escenarios posibles}
-      }.
-    does_not_use_recursion: |
-      {result, select,
-        true {El procedimiento "{declaration}" no usa recursión.}
-        other {¡Cuidado! ¡El procedimiento "{declaration}" usa recursión! Es una manera muy poderosa de pensar una solución, pero la dejaremos para un curso más avanzado. Intentá resolverlo de otra manera.}
-      }
-    name_was_changed: |
-      {result, select,
-        true {Se eligió un nombre para el procedimiento "{declaration}"}
-        other {Deberías elegir un nombre para el procedimiento "{declaration}"}
-      }
+    suggestion: # Will appear over the blocks
+      # For the program:
+      uses_simple_repetition: ¿Te cansaste de arrastrar bloques? Podés usar la repetición para hacer algo muchas veces.
+      # For program or procedure:
+      uses_conditional_alternative: ¿Tu programa a veces no anda? Podés usar alternativa condicional para considerar todos los escenarios posibles.
+      uses_conditional_repetition: Podés usar repetición condicional para cuando tenés que repetir algo hasta que se cumpla una condición.
+      declares_procedure: ¿Pensaste tu estrategia? Podés usar procedimientos para comenzar a pensar las partes.
+      main_too_long: ¿El programa principal es largo y difícil de leer? Podrías dividirlo en subtareas usando procedimientos.
+      too_long: ¿El procedimiento "{declaration}" es largo y difícil de leer? Podrías dividirlo en subtareas usando procedimientos.
+      # For each procedure:
+      do_something: En este procedimiento "{declaration}" podrías poner algún comando.
+      name_was_changed: Podés escribir un nombre para este procedimiento. ¿Qué hace?
+      is_used: Para que este procedimiento "{declaration}" sea útil, podrías usarlo en algún lugar.
+      is_used_from_main: ¿Tu programa no se ejecuta? Quizás podés usar este procedimiento "{declaration}" desde el programa principal.
+      does_not_use_recursion: ¡Cuidado! ¡El procedimiento "{declaration}" usa recursión! Intentá resolverlo de otra forma en este desafío.
+    scoreable: # Challenge goals, used in the final window
+      solution_works: ¡Tu solución funciona! Resuelve el problema.
+      uses_simple_repetition: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } repetición para las partes de tu programa que se repiten.
+      uses_conditional_alternative: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } alternativa condicional para considerar todos los escenarios.
+      uses_conditional_repetition: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } repetición condicional para considerar todos los escenarios.
+      declares_procedure: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } procedimientos para descomponer tu estrategia en subtareas.
+      main_too_long: |
+        {result, select, 
+          true {El programa principal es corto y legible.}
+          other {El programa principal debería estar}
+        } dividido en subtareas.
+      too_long: |
+        {result, select, 
+          true {Tus procedimientos están}
+          other {Tus procedimientos deberían estar}
+        } divididos en subtareas.
+      do_something: |
+        {result, select, 
+          true {Tus procedimientos hacen cosas (no están vacíos)}
+          other {Tus procedimientos están vacíos, deberían hacer cosas}
+        }.
+      name_was_changed: |
+        {result, select,
+          true {Elegiste}
+          other {Podrías elegir}
+        } un nombre para tus procedimientos.
+    control_group:
+      uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
+      uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
+      uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
+      declares_procedure: Tu programa debería usar procedimientos para descomponer tu estrategia en subtareas.
+      main_too_long: El programa principal debería estar dividido en subtareas usando procedimientos.
+      too_long: Tus procedimientos también deberían estar divididos en subtareas.
+      do_something: Tus procedimientos deberían hacer cosas.
+      name_was_changed: Deberías elegir un nombre para cada uno de tus procedimientos.
   groups:
     AlienTocaBoton:
       title: ''

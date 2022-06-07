@@ -27,13 +27,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE')
     )
   ])
-  
-    expectationTestOk('doSomething', doSomething(declaration), [
-      procedure(declaration, [],
-        application(declaration)
-      )
-    ], 'Recursion should count as doing something')
-  
+
+  expectationTestOk('doSomething', doSomething(declaration), [
+    procedure(declaration, [],
+      application(declaration)
+    )
+  ], 'Recursion should count as doing something')
+
   expectationTestFail('doSomething', doSomething('EMPTY'), [
     procedure('EMPTY', [])
   ])
@@ -89,15 +89,15 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'),
     )
   ])
-  
-    expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
-      procedure(declaration, [],
-        application(declaration),
-        application(declaration),
-        application(declaration)
-      )
-    ], 'Recursive calls should count as being too long ')
-  
+
+  expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application(declaration),
+      application(declaration)
+    )
+  ], 'Recursive calls should count as being too long ')
+
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
       application("PROCEDURE2")
@@ -143,7 +143,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       muUntil(none(), none())
     )
   ])
-  
+
   // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
@@ -162,7 +162,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       repeat(number(3), none())
     )
   ])
-  
+
   const intlMock = { t: () => ({ string: 'Hacer algo' }) }
 
   expectationTestOk('nameWasChanged', nameWasChanged(intlMock)('procedure_with_changed_name'), [
@@ -268,13 +268,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
     [makeKey('does_not_use_recursion'), { declaration }]
   )
-  
+
   expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
     [makeKey('name_was_changed'), { declaration }]
   )
 
 
-  function makeKey(expectationName) { return `model.spects.${expectationName}` }
+  function makeKey(expectationName) { return `model.spects.scoring.${expectationName}` }
 
   function expectationKeyTest(expectationName, edl, ...expectedIds) {
     test(`ID for ${expectationName}`, function (assert) {
@@ -289,7 +289,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   const expectationName = 'model.spects.expectation_id'
   const stringifiedExpectationId = 'model.spects.expectation_id|'
-  const stringifiedExpectationOneOpt =  'model.spects.expectation_id|declaration=PROCEDURE'
+  const stringifiedExpectationOneOpt = 'model.spects.expectation_id|declaration=PROCEDURE'
   const stringifiedExpectationMultipleOpt = 'model.spects.expectation_id|declaration=PROCEDURE;b=foo'
 
   // Utils
@@ -320,7 +320,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   })
 
   test('expectation id from name', function (assert) {
-    assert.equal(expectationId(expectationName), 'expectation_id')
+    assert.equal('parapimpim', 'expectation_id')
   })
 
   test('expectation id is critical', function (assert) {

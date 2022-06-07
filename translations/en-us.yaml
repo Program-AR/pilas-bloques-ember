@@ -599,85 +599,72 @@ model:
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
   spects:
-    declares_procedure: |
-      {result, select, 
-        true {You are using procedures to divide in subtasks.}
-        other {You should use procedures to divide in subtasks.}
-      } 
-    too_long: |
-      The definition {declaration, select,
-        al_empezar_a_ejecutar {of the main program}
-        other {of the procedure "{declaration}"}
-      } {result, select, 
-        true {does not do much}
-        other {does a lot of things, use procedures to divide in subtasks}
-      }.
-    do_something: |
-      The definition of the procedure "{declaration}" {result, select, 
-        true {does something}
-        other {does not do anything}
-      }.
-    is_used: |
-      The procedure "{declaration}" {result, select, 
-        true {is being used}
-        other {is not being used from anywhere}
-      }.
-    is_used_from_main: |
-      The procedure "{declaration}" {result, select, 
-        true {is being used from the main program}
-        other {is not being used from the main program}
-      }.
-    uses_conditional_alternative: |
-      {result, select, 
-        true {You are using conditional alternative}
-        other {You should use conditional alternative to consider all possible scenarios}
-      }.
-    uses_conditional_repetition: |
-      {result, select, 
-        true {You are using conditional repetition}
-        other {You should use conditional repetition to consider all possible scenarios}
-      }.
-    uses_simple_repetition: |
-      {result, select, 
-        true {You are using simple repetition}
-        other {You should use simple repetition}
-      }.
-    does_not_use_recursion: |
-      {result, select,
-        true {The procedure "{declaration}" does not use recursion.}
-        other {Warning! The procedure "{declaration}" uses recursion! It is a really powerful way of thinking a solution, but we will leave it for more advanced courses. Try to solve it in a different way.}
-      }
-    name_was_changed: |
-      {result, select,
-        true {A name was chosen for the procedure "{declaration}"}
-        other {You should choose a name for the procedure "{declaration}"}
-      }
-    solution_works: |
-      Your solution works! It solves the problem.
-    generics:
+    suggestion: # Will appear over the blocks
+      # For the program:
+      uses_simple_repetition: ¿Te cansaste de arrastrar bloques? Podés usar la repetición para hacer algo muchas veces.
+      # For program or procedure:
+      uses_conditional_alternative: ¿Tu programa a veces no anda? Podés usar alternativa condicional para considerar todos los escenarios posibles.
+      uses_conditional_repetition: Podés usar repetición condicional para cuando tenés que repetir algo hasta que se cumpla una condición.
+      declares_procedure: ¿Pensaste tu estrategia? Podés usar procedimientos para comenzar a pensar las partes.
+      main_too_long: ¿El programa principal es largo y difícil de leer? Podrías dividirlo en subtareas usando procedimientos.
+      too_long: ¿El procedimiento "{declaration}" es largo y difícil de leer? Podrías dividirlo en subtareas usando procedimientos.
+      # For each procedure:
+      do_something: En este procedimiento "{declaration}" podrías poner algún comando.
+      name_was_changed: Podés escribir un nombre para este procedimiento. ¿Qué hace?
+      is_used: Para que este procedimiento "{declaration}" sea útil, podrías usarlo en algún lugar.
+      is_used_from_main: ¿Tu programa no se ejecuta? Quizás podés usar este procedimiento "{declaration}" desde el programa principal.
+      does_not_use_recursion: ¡Cuidado! ¡El procedimiento "{declaration}" usa recursión! Intentá resolverlo de otra forma en este desafío.
+    scoreable: # Challenge goals, used in the final window
+      solution_works: ¡Tu solución funciona! Resuelve el problema.
+      uses_simple_repetition: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } repetición para las partes de tu programa que se repiten.
+      uses_conditional_alternative: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } alternativa condicional para considerar todos los escenarios.
+      uses_conditional_repetition: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } repetición condicional para considerar todos los escenarios.
+      declares_procedure: |
+        {result, select, 
+          true {Usás}
+          other {Deberías usar}
+        } procedimientos para descomponer tu estrategia en subtareas.
+      main_too_long: |
+        {result, select, 
+          true {El programa principal es corto y legible.}
+          other {El programa principal debería estar}
+        } dividido en subtareas.
       too_long: |
         {result, select, 
-          true {Your procedures use decomposition}
-          other {Your procedures do not use decomposition}
-        }.
+          true {Tus procedimientos están}
+          other {Tus procedimientos deberían estar}
+        } divididos en subtareas.
       do_something: |
         {result, select, 
-          true {Your procedures do something (are not empty)}
-          other {Your procedures do nothing (are empty)}
+          true {Tus procedimientos hacen cosas (no están vacíos)}
+          other {Tus procedimientos están vacíos, deberían hacer cosas}
         }.
       name_was_changed: |
         {result, select,
-          true {You chose a name for your procedures}
-          other {You did not chose a name for your procedures}
-        }.
+          true {Elegiste}
+          other {Podrías elegir}
+        } un nombre para tus procedimientos.
     control_group:
-      do_something: Your procedures should do things.
-      too_long: Your procedures should use decomposition.
-      name_was_changed: You should choose a name for your procedures.
-      uses_conditional_alternative: You should use conditional alternative.
-      uses_conditional_repetition: You should use conditional repetition.
-      uses_simple_repetition: You should use simple repetition.
-      declares_procedure: You should declare procedures.
+      uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
+      uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
+      uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
+      declares_procedure: Tu programa debería usar procedimientos para descomponer tu estrategia en subtareas.
+      main_too_long: El programa principal debería estar dividido en subtareas usando procedimientos.
+      too_long: Tus procedimientos también deberían estar divididos en subtareas.
+      do_something: Tus procedimientos deberían hacer cosas.
+      name_was_changed: Deberías elegir un nombre para cada uno de tus procedimientos.
   groups:
     AlienTocaBoton:
       title: ''
