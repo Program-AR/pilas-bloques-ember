@@ -1,4 +1,5 @@
 /* jshint node: true */
+require('dotenv').config();
 
 module.exports = function (environment) {
   var ENV = {
@@ -13,7 +14,7 @@ module.exports = function (environment) {
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
     testTranslations: false,
-    experimentGroupType: "treatment",
+    experimentGroupType: process.env.EXPERIMENT_GROUP_TYPE,
 
     showdown: {
       simpleLineBreaks: true,
@@ -55,7 +56,6 @@ module.exports = function (environment) {
     ENV.enableChallengeCreator = true
     ENV.pbApi.baseURL = 'http://localhost:3006'
     ENV.testTranslations = false
-    ENV.experimentGroupType = "treatment"
   }
 
   if (environment === 'test') {
@@ -70,7 +70,6 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing'
     ENV.pbApi.baseURL = 'http://testing-api'
-    ENV.experimentGroupType = "treatment"
   }
 
   // We use this for staging as well
@@ -81,7 +80,6 @@ module.exports = function (environment) {
     // However, we need this here because it is used when packaging the app.
     ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
     ENV.testTranslations = false
-    ENV.experimentGroupType = "notAffected"
   }
 
   return ENV

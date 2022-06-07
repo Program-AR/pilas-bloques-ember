@@ -4,7 +4,7 @@
 NAME=$(sh scripts/projectName.sh)
 
 # The project version.
-VERSION=$(sh scripts/projectVersion.sh)
+VERSION="$(sh scripts/projectVersion.sh)$(sh scripts/experimentGroupId.sh)"
 
 # The electron executable path.
 ELECTRON=./node_modules/dist/electron

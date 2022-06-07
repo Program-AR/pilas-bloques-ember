@@ -19,5 +19,9 @@ export default Service.extend({
 
   experimentGroup() {
     return this.group
+  },
+
+  groupId() {
+    return this.group.charAt(0)
   }
 });
