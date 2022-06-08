@@ -6,7 +6,7 @@ newPassword: Nova senha
 checkEmail: Verifique seu e-mail
 emailSent: 'Um e-mail foi enviado para sua caixa de entrada '
 passwordRecoveryLink: . Dentro desse e-mail há um link para recuperar sua senha.
-accountID: 'Identidade da mãe, pai ou responsável'
+accountID: Identidade da mãe, pai ou responsável
 invalidID: Identidade incorreta
 finish: Finalizar
 back: Volver
