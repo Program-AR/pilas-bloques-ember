@@ -66,4 +66,15 @@ module('Unit | Service | expects-scoring', function (hooks) {
 
     assert.propEqual(result, e1)
   })
+
+  test('Only scoreable expects should be part of the results', function (assert) {
+    const nonScoreableExpectation = { id: '1', description: { asSuggestion: 'a suggestion' }, result: true }
+    const e2 = expectation('2', true)
+    const e3 = expectation('3', false)
+    const expectations = [nonScoreableExpectation, e2, e3]
+
+    const results = expectsScoring.expectsResults(expectations)
+
+    assert.propEqual(results, [solutionPassMock, e2, e3])
+  })
 });
