@@ -234,47 +234,44 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   // IDs for internationalize - [key, params]
 
   expectationKeyTest('declaresAnyProcedure', declaresAnyProcedure(),
-    [makeKey('declares_procedure'), { declaration: entryPointType }]
+    ['declares_procedure', { declaration: entryPointType }]
   )
 
   expectationKeyTest('doSomething', doSomething(declaration),
-    [makeKey('do_something'), { declaration }]
+    ['do_something', { declaration }]
   )
 
   expectationKeyTest('isUsed', isUsed(declaration),
-    [makeKey('is_used'), { declaration }]
+    ['is_used', { declaration }]
   )
 
   expectationKeyTest('isUsedFromMain', isUsedFromMain(declaration),
-    [makeKey('is_used_from_main'), { declaration }]
+    ['is_used_from_main', { declaration }]
   )
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
-    [makeKey('too_long'), { declaration, limit }]
+    ['too_long', { declaration, limit }]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
-    [makeKey('uses_conditional_alternative'), { declaration: entryPointType }]
+    ['uses_conditional_alternative', { declaration: entryPointType }]
   )
 
   expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
-    [makeKey('uses_conditional_repetition'), { declaration: entryPointType }]
+    ['uses_conditional_repetition', { declaration: entryPointType }]
   )
 
   expectationKeyTest('usesSimpleRepetition', usesSimpleRepetition(),
-    [makeKey('uses_simple_repetition'), { declaration: entryPointType }]
+    ['uses_simple_repetition', { declaration: entryPointType }]
   )
 
   expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
-    [makeKey('does_not_use_recursion'), { declaration }]
+    ['does_not_use_recursion', { declaration }]
   )
 
   expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
-    [makeKey('name_was_changed'), { declaration }]
+    ['name_was_changed', { declaration }]
   )
-
-
-  function makeKey(expectationName) { return `model.spects.scoring.${expectationName}` }
 
   function expectationKeyTest(expectationName, edl, ...expectedIds) {
     test(`ID for ${expectationName}`, function (assert) {
@@ -287,10 +284,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     })
   }
 
-  const expectationName = 'model.spects.expectation_id'
-  const stringifiedExpectationId = 'model.spects.expectation_id|'
-  const stringifiedExpectationOneOpt = 'model.spects.expectation_id|declaration=PROCEDURE'
-  const stringifiedExpectationMultipleOpt = 'model.spects.expectation_id|declaration=PROCEDURE;b=foo'
+  const expectationName = 'expectation_id'
+  const stringifiedExpectationId = 'expectation_id|'
+  const stringifiedExpectationOneOpt = 'expectation_id|declaration=PROCEDURE'
+  const stringifiedExpectationMultipleOpt = 'expectation_id|declaration=PROCEDURE;b=foo'
 
   // Utils
   // stringify is not meant to be used this way
@@ -317,10 +314,6 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   test('parseExpect with expectation name and multiple params', function (assert) {
     assert.propEqual(parseExpect(stringifiedExpectationMultipleOpt), [expectationName, { declaration: declaration, b: 'foo' }])
-  })
-
-  test('expectation id from name', function (assert) {
-    assert.equal('parapimpim', 'expectation_id')
   })
 
   test('expectation id is critical', function (assert) {

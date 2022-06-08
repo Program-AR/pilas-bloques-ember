@@ -24,10 +24,6 @@ export default Service.extend({
         return Object.values(groupBy(e => e.id)(expects))
     },
 
-    scorableCombinedExpectations(expects) {
-        return expects.filter(expect => this.isScorable(expect))
-    },
-
     combineMultipleExpectations(expects) {
         return this.groupById(expects).map(this.expectationGroupingResult)
     },
