@@ -69,7 +69,7 @@ export const parseExpect = (name) => [
 export const expectationDescription = (intl, name, result, expectationParams) => {
   const descriptionParams = { result, ...expectationParams }
   const translateAs = (prefix) => {
-    const tag = `model.spects.${prefix}.${name}`
+    const tag = `components.spects.${prefix}.${name}`
     return intl.exists(tag) ? intl.t(tag, descriptionParams).toString() : ''
   }
 
