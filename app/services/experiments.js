@@ -5,7 +5,7 @@ import { computed } from '@ember/object'
 export default Service.extend({
 
   group: ENV.experimentGroupType,
-  subtaskDivisionTreatmentLength: ENV.subtaskDivisionTreatmentLength,
+  decompositionTreatmentLength: ENV.decompositionTreatmentLength,
   storage: service(),
   activityExpectations: service(),
 
@@ -46,14 +46,14 @@ export default Service.extend({
   },
 
   feedbackIsDisabled(){
-    return this.solvedChallenges.length > this.subtaskDivisionTreatmentLength
+    return this.solvedChallenges.length > this.decompositionTreatmentLength
   },
 
   shouldUpdateSolvedChallenges(challenge){
-    return  !this.solvedChallenges.includes(challenge.id) && this.hasSubtaskDivisionExpect(challenge)
+    return  !this.solvedChallenges.includes(challenge.id) && this.hasDecompositionExpect(challenge)
   },
 
-  hasSubtaskDivisionExpect(challenge){
+  hasDecompositionExpect(challenge){
     const combinedExpectations = this.activityExpectations.combinedExpectations(challenge)
     return this.activityExpectations.expectationsExist(combinedExpectations) ? this.activityExpectations.mergedExpectations(combinedExpectations).decomposition : false
   }

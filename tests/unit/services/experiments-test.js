@@ -12,7 +12,7 @@ module('Unit | Service | experiments', function (hooks) {
   hooks.beforeEach(function () {
     experiments = this.owner.lookup('service:experiments')
     experiments.set('group', "treatment")
-    experiments.set('subtaskDivisionTreatmentLength', 2)
+    experiments.set('decompositionTreatmentLength', 2)
 
     storageMock = {
       solvedChallenges: [],
