@@ -1,12 +1,11 @@
 import Service from '@ember/service'
-import { entryPointType } from '../utils/blocks'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const activityExpectations = (intl) => ({
   decomposition: multiExpect(
     declaresAnyProcedure,
-    () => notTooLong()(entryPointType),
+    () => mainNotTooLong(),
     allProceduresShould(
       notTooLong(),
       doSomething,
@@ -36,7 +35,7 @@ export default Service.extend({
     let models = [challenge]
     const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
-    if(group) {
+    if (group) {
       const chapter = group.get('capitulo')
       const book = chapter.get('libro')
       // This order is important. Expectations with less priority should be first.
@@ -48,11 +47,11 @@ export default Service.extend({
     return this.expectationsExist(combinedExpectations) ? this.expectations(this.mergedExpectations(combinedExpectations)) : noExpectation
   },
 
-  expectations(expectationsConfig){
+  expectations(expectationsConfig) {
     return multiExpect(
       ...Object.entries(expectationsConfig) //Must not be undefined
-      .filter(e => this.shouldBeApplied(e))
-      .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
+        .filter(e => this.shouldBeApplied(e))
+        .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
     )
   },
 

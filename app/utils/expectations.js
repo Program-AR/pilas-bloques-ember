@@ -29,8 +29,14 @@ export const isUsed = (declaration) =>
 export const isUsedFromMain = (declaration) =>
   newExpectation(`through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)}`, isUsedFromMainId, { declaration })
 
+const declarationNotTooLong = (limit, declaration, expectationName) =>
+  newExpectation(`${countCallsWithin(declaration)} <= ${limit - 1}`, expectationName, { declaration, limit })
+
 export const notTooLong = (limit = 7) => (declaration) =>
-  newExpectation(`${countCallsWithin(declaration)} <= ${limit - 1}`, tooLongId, { declaration, limit })
+  declarationNotTooLong(limit, declaration, tooLongId)
+
+export const mainNotTooLong = (limit = 7) =>
+  declarationNotTooLong(limit, entryPointType, "main_too_long")
 
 export const noExpectation = (declaration) => '' // jshint ignore: line
 
