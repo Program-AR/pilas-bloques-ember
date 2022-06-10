@@ -138,7 +138,7 @@ spects:
     is_used_from_main: Este procedimiento está siendo usado por otro, pero ese otro no es llamado desde el programa principal. Revisá eso para que tenga efecto.
     does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
   scoreable: # Challenge goals, used in the final window
-    solution_works: +¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:
+    solution_works: "¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:"
     uses_simple_repetition: |
       {result, select, 
         true {Usás}
@@ -179,7 +179,7 @@ spects:
         true {Elegiste}
         other {Podrías elegir}
       } un nombre para cada uno de tus procedimientos.
-  control_group: # El título debería ser: Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:
+  control_group: # El título debería ser: Repasá todos estos objetivos para asegurarte que tu solución sea de calidad
     uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
     uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
     uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
