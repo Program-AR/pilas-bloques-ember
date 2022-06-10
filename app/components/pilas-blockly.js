@@ -1,7 +1,6 @@
 /* jshint ignore:start */
 import { computed } from '@ember/object'
 import { run } from '@ember/runloop'
-
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
 import { addError, addWarning, clearValidations, declarationWithName } from '../utils/blocks'
@@ -44,6 +43,7 @@ export default Component.extend({
 
   javascriptCode: null,
   intl: Ember.inject.service(),
+  expectsScoring: service('expects-scoring'),
 
   debeMostarReiniciar: computed('ejecutando', 'terminoDeEjecutar', function () {
     return this.ejecutando || this.terminoDeEjecutar;
@@ -59,10 +59,6 @@ export default Component.extend({
 
   allExpectsPassed: computed('failedExpects', function () {
     return !this.failedExpects.length
-  }),
-
-  passedExpectsValue: computed('passedExpects', 'expects', function () {
-    return 100 * this.passedExpects.length / this.expects.length
   }),
 
   didUpdateAttrs() {
@@ -368,8 +364,24 @@ export default Component.extend({
   staticAnalysis() {
     return {
       couldExecute: this.shouldExecuteProgram(),
-      expects: this.get('expects'),
+      allExpectResults: this.persistableExpectsResults(this.get('expects')),
+      score: {
+        expectResults: this.scoredExpectsResults(),
+        percentage: this.expectsScoring.totalScore(this.get('expects'))
+      }
     }
+  },
+
+  persistableExpectsResults(expects) {
+    return expects.map(e => {
+      const expect = { ...e }
+      delete expect.description
+      return expect
+    })
+  },
+
+  scoredExpectsResults() {
+    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects')))
   },
 
   runProgramEvent() {

@@ -5,9 +5,10 @@ import { inject as service } from '@ember/service';
 export default Component.extend({
 
   experiments: service(),
+  expectScoring: service('expects-scoring'),
 
   allExpectationsPassed() {
-    return this.get('failedExpects').length === 0
+    return this.expectScoring.failedExpects(this.expects).length === 0
   },
 
   isControl() {
@@ -22,10 +23,6 @@ export default Component.extend({
 
   treatmentTag() {
     return 'treatmentGroup.' + (this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.')
-  },
-
-  expects() {
-    return this.get('failedExpects').concat(this.get('passedExpects'))
   }
 
 })

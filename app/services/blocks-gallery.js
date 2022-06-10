@@ -761,7 +761,7 @@ export default Service.extend({
           "name": "longitud",
         }
       ],
-      code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar"});'
+      code: 'hacer(actor_id, "SaltarHaciaAdelante", {distancia: $longitud, alturaDeseada: 50, velocidad_inicial: 20, nombreAnimacion: "saltar", voltearAlIrAIzquierda: false});'
     });
 
     Blockly.Blocks.SaltarHaciaAdelante.toolbox = `

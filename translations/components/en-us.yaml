@@ -120,6 +120,6 @@ finishedExerciseModal:
         description: ''
     controlGroup:
       title: You did it!
-      description: Here are some suggestions
+      description: "Remember that a valid solution not only solves the problem, but also:"
       
 

@@ -6,13 +6,11 @@
 
   {{#if (compute (action isControl))}}
     <ControlGroupExpectations
-      @expects={{compute (action expects)}}
+      @expects={{expects}}
     />
   {{else}}
     <TreatmentGroupExpectations
-      @passedExpects={{passedExpects}}
-      @failedExpects={{failedExpects}}
-      @passedExpectsValue={{passedExpectsValue}}
+      @expects={{expects}}
     />
   {{/if}}
 </Modal>

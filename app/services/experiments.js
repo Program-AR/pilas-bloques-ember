@@ -15,5 +15,9 @@ export default Service.extend({
 
   isNotAffected() {
     return !(this.isTreatmentGroup() || this.isControlGroup())
+  },
+
+  experimentGroup() {
+    return this.group
   }
 });

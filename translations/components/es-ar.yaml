@@ -120,5 +120,5 @@ finishedExerciseModal:
         description: ''
     controlGroup:
       title: ¡Lo lograste!
-      description: Acá tenemos algunas sugerencias
+      description: "Recordá que una solución correcta no sólo resuelve el problema, sino que además:"
 

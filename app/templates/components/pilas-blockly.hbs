@@ -34,9 +34,7 @@
     <CongratulationsModal @onClose={{action "hideEndModal"}}/>
   {{else}}
     <ExpectationModal
-      @passedExpects={{passedExpects}}
-      @failedExpects={{failedExpects}}
-      @passedExpectsValue={{passedExpectsValue}}
+      @expects={{expects}}
       @onClose={{action "hideEndModal"}}/>
   {{/if}}
 {{/if}}

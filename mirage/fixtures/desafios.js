@@ -23,14 +23,18 @@ export default [
     escena: 'AlienInicial',
     bloques: ['MoverACasillaDerecha', 'ApretarBoton'],
     expectations: {
-      decomposition: false
+      decomposition: false,
+      simpleRepetition: false
     }
   },
   {
     id: 2,
     nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
     escena: 'ElGatoEnLaCalle',
-    bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento']
+    bloques: ['Saludar', 'Avanzar', 'Volver', 'AbrirOjos', 'CerrarOjos', 'Acostarse', 'Pararse', 'Soniar', 'Procedimiento'],
+    expectations: {
+      simpleRepetition: false
+    }
   },
   {
     id: 3,
@@ -377,7 +381,8 @@ export default [
     bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante'],
     expectations: {
-      decomposition: false
+      decomposition: false,
+      simpleRepetition: false
     }
   },
 

@@ -8,6 +8,7 @@ const { sessionExpire } = config.pbAnalytics
 export default Service.extend({
   platform: service(),
   storage: service(),
+  experiments: service(),
 
   context() {
     const userId = this.storage.getUserId()
@@ -15,12 +16,14 @@ export default Service.extend({
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()
     const version = environment.APP.version
+    const experimentGroup = this.experiments.experimentGroup()
     return {
       ...session,
       online,
       browserId: fingerprint,
       userId: userId || fingerprint,
       version,
+      experimentGroup
     }
   },
 
