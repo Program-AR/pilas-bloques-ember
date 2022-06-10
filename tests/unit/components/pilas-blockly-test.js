@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock, experimentsMock, actividadConExpectativaMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock, experimentsMock, challengeWithExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
@@ -46,7 +46,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     </statement>
     </block>`
 
-  test('Al reiniciar settea flags y reinicia la escena de pilas', async function (assert) {
+  test('On restarting should set flags and restart pilas scene', async function (assert) {
     this.ctrl.send('reiniciar')
     await settled()
     assert.notOk(this.ctrl.get('ejecutando'))
@@ -75,7 +75,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.owner.register('service:activityExpectations', activityExpectationsMock)
     })
 
-    test('Al ejecutar se encuentra ejecutando y ejecuta el intérprete', async function (assert) {
+    test('On running should be running and run the interpreter', async function (assert) {
       this.ctrl.send('ejecutar')
       await settled()
 
@@ -83,7 +83,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       assert.ok(interpreteMock.run.called)
     })
 
-    test('Ejecutar paso a paso bloquea la ejecución', async function (assert) {
+    test('Running step by step should pause the run on a breakpoint', async function (assert) {
       this.ctrl.send('ejecutar', true)
       await settled()
 
@@ -94,7 +94,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     })
 
-    test('Step desbloquea el breakpoint', async function (assert) {
+    test('Stepping should unpause the breakpoint', async function (assert) {
       this.ctrl.send('ejecutar', true)
       await settled()
 
@@ -106,7 +106,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     })
 
-    test('Luego de ejecutar termina de ejecutar', async function (assert) {
+    test('After running should finish running', async function (assert) {
       this.ctrl.send('ejecutar')
       await settled()
 
@@ -125,21 +125,21 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.owner.register('service:activityExpectations', activityExpectationsMock)
     })
 
-    test('Ejecuta cuando todos los bloques están completos', async function (assert) {
+    test('A filled program should run', async function (assert) {
       Blockly.textToBlock(filledProgram)
       this.ctrl.send('ejecutar')
       await settled()
       assert.ok(interpreteMock.run.called)
     })
 
-    test('No ejecuta cuando el programa tiene algún agujero', async function (assert) {
+    test('A non filled program should not run', async function (assert) {
       Blockly.textToBlock(nonFilledProgram)
       this.ctrl.send('ejecutar')
       await settled()
       assert.notOk(interpreteMock.run.called)
     })
 
-    test('Ejecuta cuando existe algún bloque con agujeros pero no se usa', async function (assert) {
+    test('A program with unused non filled blocks should run', async function (assert) {
       let bloqueSuelto = `    
     <block type="repetir" disabled="true">
       <value name="count">
@@ -186,28 +186,28 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       </statement>
     </block>`
 
-    test('Ejecuta aún cuando existe procedimiento vacío', async function (assert) {
+    test('A program with empty procedures should run', async function (assert) {
       Blockly.textToBlock(emptyProcedure)
       this.ctrl.send('ejecutar')
       await settled()
       assert.ok(interpreteMock.run.called)
     })
 
-    test('Ejecuta aún cuando existe procedimiento vacío con parámetros', async function (assert) {
+    test('A program with empty procedures with parameters should run', async function (assert) {
       Blockly.textToBlock(emptyProcedureWithParam)
       this.ctrl.send('ejecutar')
       await settled()
       assert.ok(interpreteMock.run.called)
     })
 
-    test('No ejecuta cuando existe procedimiento con algún agujero', async function (assert) {
+    test('A program with a non filled procedure should not run', async function (assert) {
       Blockly.textToBlock(nonFilledProcedure)
       this.ctrl.send('ejecutar')
       await settled()
       assert.notOk(interpreteMock.run.called)
     })
 
-    test('Al ejecutar aparecen los warnings de bloques vacíos', async function (assert) {
+    test('On running a non filled program should show non filled blocks warning', async function (assert) {
       let program = Blockly.textToBlock(nonFilledProgram)
       let required = findBlockByTypeIn(program, "required_statement")
       assertNotWarning(assert, required)
@@ -265,7 +265,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.owner.register('service:activityExpectations', activityExpectationsMock)
     })
 
-    test('Al resolver el problema muestra el fin del desafío', async function (assert) {
+    test('On solving a challenge should show finished challenge modal', async function (assert) {
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
@@ -300,7 +300,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
   module('pilas-blockly | expectation-feedback-bubbles', function (hooks) {
     let experimentsMock
     hooks.beforeEach(function () {
-      this.ctrl.set('challenge', actividadConExpectativaMock)
+      this.ctrl.set('challenge', challengeWithExpectationsMock)
       experimentsMock = this.owner.lookup('service:experiments')
     })
 
@@ -355,14 +355,14 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.owner.register('service:activityExpectations', activityExpectationsMock)
     })
 
-    test('Avisa a la api al ejecutar', async function (assert) {
+    test('On running should send to the API', async function (assert) {
       this.ctrl.send('ejecutar')
       await settled()
       const staticAnalysis = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg.staticAnalysis
       assertProps(assert, staticAnalysis, { couldExecute: true })
     })
 
-    test('Envia metadata a la api al ejecutar', async function (assert) {
+    test('On running should send the metadata to the API', async function (assert) {
       Blockly.textToBlock(filledProgram)
       this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
       this.ctrl.send('ejecutar')
@@ -375,7 +375,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       })
     })
 
-    test('Avisa a la api al finalizar la ejecucion', async function (assert) {
+    test('On finished run should send to the API', async function (assert) {
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
@@ -383,7 +383,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       })
     })
 
-    test('Avisa a la api al finalizar la ejecucion con error', async function (assert) {
+    test('On finishing run with an error should send to the API', async function (assert) {
       this.ctrl.errorDeActividad = "ERROR"
       this.ctrl.send('ejecutar')
       await settled()
@@ -392,7 +392,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       })
     })
 
-    test('Envia metadata a la api al ejecutar', async function (assert) {
+    test('On running should send the metadata to the API', async function (assert) {
       this.ctrl.send('ejecutar')
       const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
       await settled()
