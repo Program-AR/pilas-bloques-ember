@@ -10,6 +10,7 @@ export default Ember.Service.extend({
   USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
+  EXPERIMENT_GROUP: 'PB_EXPERIMENT_GROUP',
 
   getUserId() {
     const user = this.getUser()
@@ -45,6 +46,10 @@ export default Ember.Service.extend({
   saveSelectedLocale(selectedLocale) { this._save(this.SELECTED_LOCALE_KEY, selectedLocale) },
 
   getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) },
+
+  saveExperimentGroup(newGroup) { this._save(this.EXPERIMENT_GROUP, newGroup) },
+
+  getExperimentGroup() { return this._get(this.EXPERIMENT_GROUP) },
 
   clear() { localStorage.clear() },
 
