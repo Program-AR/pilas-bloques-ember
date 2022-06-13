@@ -35,7 +35,7 @@ export default Service.extend({
       results = []
       console.error(e)
     }
-    
+
     return combineExclusiveResults(results.map(toTranslatedResult(this.intl)))
   },
 
@@ -77,7 +77,7 @@ const combineUsage = (resultGroup) => {
 
   return {
     ...isUsed,
-    result: isUsed.result || isUsedFromMain.result,
+    result: isUsed.result && isUsedFromMain.result,
     description: isUsed.result ? isUsedFromMain.description : isUsed.description
   }
 }
