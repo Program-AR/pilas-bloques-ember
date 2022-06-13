@@ -81,7 +81,7 @@ export const expectationDescription = (intl, name, result, expectationParams) =>
 
   return {
     asScoring: translateAs('scoreable'),
-    asSuggestion: translateAs('suggestion'),
+    asSuggestion: translateAs('suggestions'),
     forControlGroup: translateAs('control_group')
   }
 
