@@ -1,8 +1,9 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
-import { parseExpect, expectationDescription } from '../utils/expectations'
+import { parseExpect, expectationDescription, isCombinableExclusive, isUsedId } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
+import { groupBy } from 'ramda'
 
 
 
@@ -34,7 +35,8 @@ export default Service.extend({
       results = []
       console.error(e)
     }
-    return results.map(toTranslatedResult(this.intl))
+    
+    return combineExclusiveResults(results.map(toTranslatedResult(this.intl)))
   },
 
   parseAll(workspace) {
@@ -47,6 +49,38 @@ export default Service.extend({
   },
 
 })
+
+const combineExclusiveResults = (results) => {
+  const [combinables, notCombinables] = splitBy(isCombinableExclusive, results)
+
+  const exclusivesCombined = Object
+    .values(groupBy(r => r.declaration)(combinables))
+    .map(combineUsage)
+
+  return notCombinables.concat(exclusivesCombined)
+}
+
+const splitBy = (condition, elements) => {
+  const matchers = []
+  const nonMatchers = []
+
+  elements.forEach(e => {
+    if (condition(e)) matchers.push(e)
+    else nonMatchers.push(e)
+  })
+
+  return [matchers, nonMatchers]
+}
+
+const combineUsage = (resultGroup) => {
+  const [[isUsed], [isUsedFromMain]] = splitBy(r => r.id === isUsedId, resultGroup)
+
+  return {
+    ...isUsed,
+    result: isUsed.result || isUsedFromMain.result,
+    description: isUsed.result ? isUsedFromMain.description : isUsed.description
+  }
+}
 
 /**
  * @param {[Expect,Result]} pair is a pair of Mulang expectation and result

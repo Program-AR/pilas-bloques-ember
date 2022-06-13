@@ -92,7 +92,7 @@ const toEDLString = name => `\`${name}\``
 const join = expectations => expectations.join('\n')
 
 export const doesNotUseRecursionId = 'does_not_use_recursion'
-const isUsedId = 'is_used'
+export const isUsedId = 'is_used'
 const isUsedFromMainId = 'is_used_from_main'
 
 const doSomethingId = 'do_something'
@@ -105,8 +105,16 @@ const declaresProcedureId = 'declares_procedure'
 
 const criticalExpectationsIds = [doesNotUseRecursionId]
 
+const combinableExclusiveIds = [isUsedId, isUsedFromMainId]
+
+const isPresent = (expectationResult, ids) =>
+  ids.some(id => id === expectationResult.id)
+
+export const isCombinableExclusive = (expectationResult) =>
+  isPresent(expectationResult, combinableExclusiveIds)
+
 export const isCritical = (expectationResult) =>
-  criticalExpectationsIds.some(id => id === expectationResult.id)
+  isPresent(expectationResult, criticalExpectationsIds)
 
 export const notCritical = (expectationResult) =>
   !isCritical(expectationResult)
