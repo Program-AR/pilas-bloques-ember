@@ -10,8 +10,8 @@ const defaultExperimentGroupType = 'notAffected'
 const groupTypeKey = 'EXPERIMENT_GROUP_TYPE'
 const dotenvPath = '.env' // Warning: this will fail if used from somewhere else
 const encoding = 'utf8'
-const dotenvExperimentGroupDoc = '# Possible values: treatment, control or notAffected'
-const experimentGroupTypes = ['treatment', 'control', defaultExperimentGroupType]
+const dotenvExperimentGroupDoc = '# Possible values: treatment, control, autoassign or notAffected'
+const experimentGroupTypes = ['treatment', 'control', 'autoassign', defaultExperimentGroupType]
 
 setExperimentGroupType(process.argv[2])
 
