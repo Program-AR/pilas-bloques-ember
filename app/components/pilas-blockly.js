@@ -420,7 +420,7 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    this.showExpectationFeedback()
+    if (this.experiments.isTreatmentGroup()) this.showExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
