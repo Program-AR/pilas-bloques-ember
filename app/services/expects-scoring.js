@@ -13,7 +13,6 @@ export default Service.extend({
     },
 
     failedExpects(expects) {
-        console.log(expects)
         return this.expectsResults(expects).filter(e => !e.result)
     },
 
