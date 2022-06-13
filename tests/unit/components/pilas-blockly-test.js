@@ -326,7 +326,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
       await settled()
-      later(() => assertWarning(assert, required, 'Deberías usar alternativa condicional para considerar todos los escenarios'))
+      later(() => assertWarning(assert, required, '¿Tu programa anda a veces sí y a veces no?'))
     })
 
     test('Control groups should not show expectation feedback bubbles', async function (assert) {
