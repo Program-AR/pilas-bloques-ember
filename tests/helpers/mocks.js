@@ -46,6 +46,7 @@ export const createActividadMock = (fields) => EmberObject.extend({
 }).create()
 
 export const actividadMock = createActividadMock()
+export const challengeWithExpectationsMock = createActividadMock({ expectations: { conditionalAlternative: true }, grupo: undefined })
 
 export const createComponentMock = (_properties) => ({
     properties: _properties,
@@ -89,25 +90,25 @@ export const simpleReadMock = Service.extend({
 })
 
 export const experimentsMock = Service.extend({
- 
+
     group: 'notAffected',
 
-    setNotAffected(){
+    setNotAffected() {
         this.group = 'notAffected'
     },
 
-    setControl(){
+    setControl() {
         this.group = 'control'
     },
 
-    setTreatment(){
+    setTreatment() {
         this.group = 'treatment'
     },
 
     isTreatmentGroup() {
         return this.group === "treatment"
     },
-    
+
     isControlGroup() {
         return this.group === "control"
     },

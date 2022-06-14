@@ -104,52 +104,52 @@ drawSide: '%1 Desenhar o lado de %2'
 write: '%1 Escrever: %2'
 turnDegrees: '%1 Virar %2 graus'
 currentCharacter: '%1 ¿A letra atual é uma %2 ?'
-program: Al empezar a ejecutar
+program: Ao inicio da execução
 simpleRepetitionBeginning: Repetir
-simpleRepetitionEnd: veces
-conditionalRepetition: Repetir hasta que
+simpleRepetitionEnd: vezes
+conditionalRepetition: Repetir até que
 simpleAlternative: Si
-completeAlternative: sino
+completeAlternative: senão
 categories:
   primitives: Primitivas
-  myProcedures: Mis procedimientos
-  repetitions: Repeticiones
+  myProcedures: Meus procedimentos
+  repetitions: Repetições
   alternatives: Alternativas
-  variables: Variables
+  variables: Variáveis
   separator: Separador
   values: Valores
   sensors: Sensores
   operators: Operadores
-  myFunctions: Mis funciones
-  uncategorized: SIN CATEGORÍA
+  myFunctions: Minhas funções
+  uncategorized: SEM CATEGORÍA
 procedures:
   definition: Definir
-  name: Hacer algo
-  paramWith: con
-  paramName: parámetro
-  create: Crea un procedimiento.
-  removeParam: Quitar parámetro
-  comment: Describe el procedimiento...
+  name: Fazer alguma coisa
+  paramWith: com
+  paramName: parâmetro
+  create: Cria um procedimento.
+  removeParam: Remover parâmetro
+  comment: Descreve o procedimento...
   noParams: ''
-  addParam: Agregar parámetro
-  addParamPrompt: Ingresa el nombre del parámetro
+  addParam: Adicionar parâmetro
+  addParamPrompt: Insira o nome do parâmetro
 contextMenu:
-  createProcedure: Usar procedimiento '%1'
-  addComment: Añadir comentario
-  removeComment: Eliminar comentario
+  createProcedure: Usar procedimento '%1'
+  addComment: Adicionar comentário
+  removeComment: Excluir comentário
   duplicate: Duplicar
-  help: Ayuda
-  deleteOne: Eliminar bloque
-  deleteMany: Eliminar %1 bloques
-  disable: Desactivar bloque
-  enable: Activar bloque
-  undo: Deshacer
-  redo: Rehacer
-  cleanUp: Limpiar los bloques
+  help: Ajuda
+  deleteOne: Remover blocos
+  deleteMany: Remover %1 blocos
+  disable: Desativar bloco
+  enable: Ativar bloco
+  undo: Desfazer
+  redo: Refazer
+  cleanUp: Limpar os blocos
   externalInputs: Entradas externas
 errors:
-  missingCommandBlock: ¡Acá faltan bloques comandos!
-  missingExpressionBlock: ¡Acá falta un bloque expresión!
-  nonAvailableBlock: Este bloque no está disponible en esta actividad.
-  wrongParameter: 'Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en el procedimiento "{procedure}"'
-  deletedParameter: 'Este bloque ya no puede usarse, el parámetro ha sido eliminado.'
+  missingCommandBlock: Aqui faltam blocos comandos!
+  missingExpressionBlock: Aqui falta um bloco expressão!
+  nonAvailableBlock: Este bloco não está disponível nesta atividade.
+  wrongParameter: Este bloco não pode ser usado aqui. É um parâmetro que só pode ser usado no procedimento "{procedure}"
+  deletedParameter: Este bloco já não pode ser usado, o parâmetro foi eliminado.
