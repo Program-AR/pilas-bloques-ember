@@ -93,7 +93,7 @@ const join = expectations => expectations.join('\n')
 
 export const doesNotUseRecursionId = 'does_not_use_recursion'
 export const isUsedId = 'is_used'
-const isUsedFromMainId = 'is_used_from_main'
+export const isUsedFromMainId = 'is_used_from_main'
 
 const doSomethingId = 'do_something'
 const tooLongId = 'too_long'

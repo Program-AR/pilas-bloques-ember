@@ -4,7 +4,7 @@ import { parseExpect, expectationDescription, isCombinableExclusive, isUsedId } 
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 import { groupBy } from 'ramda'
-
+import { splitBy } from '../utils/lists'
 
 
 export default Service.extend({
@@ -50,7 +50,7 @@ export default Service.extend({
 
 })
 
-const combineExclusiveResults = (results) => {
+export const combineExclusiveResults = (results) => {
   const [combinables, notCombinables] = splitBy(isCombinableExclusive, results)
 
   const exclusivesCombined = Object
@@ -60,19 +60,7 @@ const combineExclusiveResults = (results) => {
   return notCombinables.concat(exclusivesCombined)
 }
 
-const splitBy = (condition, elements) => {
-  const matchers = []
-  const nonMatchers = []
-
-  elements.forEach(e => {
-    if (condition(e)) matchers.push(e)
-    else nonMatchers.push(e)
-  })
-
-  return [matchers, nonMatchers]
-}
-
-const combineUsage = (resultGroup) => {
+export const combineUsage = (resultGroup) => {
   const [[isUsed], [isUsedFromMain]] = splitBy(r => r.id === isUsedId, resultGroup)
 
   return {
