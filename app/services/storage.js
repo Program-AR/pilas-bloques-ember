@@ -50,8 +50,7 @@ export default Ember.Service.extend({
   saveSolvedChallenges(solvedChallenges) { this._save(this.SOLVED_CHALLENGES,solvedChallenges) },
 
   getSolvedChallenges () { 
-    const solvedChallenges = this._get(this.SOLVED_CHALLENGES) 
-    return solvedChallenges ? solvedChallenges : []
+    return this._get(this.SOLVED_CHALLENGES) || []
   },
 
   clear() { localStorage.clear() },

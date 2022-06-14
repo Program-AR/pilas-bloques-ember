@@ -3,7 +3,7 @@ import { entryPointType } from '../utils/blocks'
 import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
-const activityExpectations = (intl) => ({
+const idsToExpectations = (intl) => ({
   decomposition: multiExpect(
     declaresAnyProcedure,
     () => notTooLong()(entryPointType),
@@ -25,21 +25,21 @@ const activityExpectations = (intl) => ({
 
 })
 
-const expectationsName = 'expectations'
+const expectations = 'expectations'
 
 export default Service.extend({
   intl: service(),
 
-  idsToExpectations: activityExpectations,
+  idsToExpectations,
 
   expectationFor(challenge) {
     
-    const _combinedExpectations = this.combinedExpectations(challenge)
+    const allExpectConfigurations = this.allExpectConfigurations(challenge)
 
-    return this.expectationsExist(_combinedExpectations) ? this.expectations(this.mergedExpectations(_combinedExpectations)) : noExpectation
+    return this.expectationsExist(allExpectConfigurations) ? this.configToExpectation(this.mergeConfigurations(allExpectConfigurations)) : noExpectation
   },
 
-  combinedExpectations(challenge){
+  allExpectConfigurations(challenge){
     let models = [challenge]
     const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
@@ -50,10 +50,15 @@ export default Service.extend({
       models = [book, chapter, group].concat(models)
     }
 
-    return models.map(model => model.get(expectationsName))
+    return models.map(model => model.get(expectations))
   },
 
-  expectations(expectationsConfig){
+  hasDecomposition(challenge){
+    const allExpectConfigurations = this.allExpectConfigurations(challenge)
+    return this.expectationsExist(allExpectConfigurations) ? this.mergeConfigurations(allExpectConfigurations).decomposition : false
+  },
+
+  configToExpectation(expectationsConfig){
     return multiExpect(
       ...Object.entries(expectationsConfig) //Must not be undefined
       .filter(e => this.shouldBeApplied(e))
@@ -78,7 +83,7 @@ export default Service.extend({
    * If some values could be another objects and we would want to
    * merge those too, it should be handled differently.
    */
-  mergedExpectations(expectationsConfigs) {
+  mergeConfigurations(expectationsConfigs) {
     return expectationsConfigs.filter(e => e).reduce((baseExpect, expectWithPriority) => {
       return {
         ...baseExpect,

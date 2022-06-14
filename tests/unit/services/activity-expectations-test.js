@@ -53,7 +53,7 @@ module('Unit | Service | activity-expectations', function (hooks) {
   })
 
   test('merged expectations for a single expectation configuration', function (assert) {
-    assert.propEqual(activityExpectations.mergedExpectations([expectationsConfig]), expectationsConfig)
+    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
   })
 
   test('merged expectations for multiple configurations without keys in common', function (assert) {
@@ -65,7 +65,7 @@ module('Unit | Service | activity-expectations', function (hooks) {
       simpleRepetition: true,
       conditionalAlternative: true
     }
-    assert.propEqual(activityExpectations.mergedExpectations([expectationsConfig, conditionalAlternativeConfig]), mergedConfig)
+    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig, conditionalAlternativeConfig]), mergedConfig)
   })
 
   test('merged expectations for multiple configurations with keys in common should prioritize values with higher priority', function (assert) {
@@ -76,11 +76,11 @@ module('Unit | Service | activity-expectations', function (hooks) {
       decomposition: false,
       simpleRepetition: true
     }
-    assert.propEqual(activityExpectations.mergedExpectations([expectationsConfig, configWithHigherPriority]), mergedConfig)
+    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig, configWithHigherPriority]), mergedConfig)
   })
 
   test('domain expectations to mulang expectations', function (assert) {
-    assert.equal(activityExpectations.expectations(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
+    assert.equal(activityExpectations.configToExpectation(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
   })
 
   test('multiple nonexistent expectations ids are transformed to a noExpectation', function (assert) {
@@ -90,7 +90,7 @@ module('Unit | Service | activity-expectations', function (hooks) {
       bar: false,
       baz: true
     }
-    assert.equal(activityExpectations.expectations(nonexistenteEpectations)(), '')
+    assert.equal(activityExpectations.configToExpectation(nonexistenteEpectations)(), '')
   })
 
   test('if an activity does not define expectations, noExpectation is applied', function (assert) {

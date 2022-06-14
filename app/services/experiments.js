@@ -54,7 +54,6 @@ export default Service.extend({
   },
 
   hasDecompositionExpect(challenge){
-    const combinedExpectations = this.activityExpectations.combinedExpectations(challenge)
-    return this.activityExpectations.expectationsExist(combinedExpectations) ? this.activityExpectations.mergedExpectations(combinedExpectations).decomposition : false
+    return this.activityExpectations.hasDecomposition(challenge)
   }
 });

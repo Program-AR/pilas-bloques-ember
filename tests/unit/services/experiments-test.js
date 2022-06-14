@@ -25,12 +25,8 @@ module('Unit | Service | experiments', function (hooks) {
     activityExpectationsMock = {
       _decomposition: true,
 
-      combinedExpectations(){
-        return {decomposition: this._decomposition}
-      },
-      expectationsExist() { return true },
-      mergedExpectations() {
-        return this.combinedExpectations()
+      hasDecomposition(){
+        return this._decomposition
       }
     }
 
