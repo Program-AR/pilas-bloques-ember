@@ -1,6 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
-import { parseExpect, expectationDescription, isCombinableExclusive, isUsedId } from '../utils/expectations'
+import { parseExpect, expectationDescription, isUsageResult, isUsedId } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 import { groupBy } from 'ramda'
@@ -36,7 +36,7 @@ export default Service.extend({
       console.error(e)
     }
 
-    return combineExclusiveResults(results.map(toTranslatedResult(this.intl)))
+    return combineUsageResults(results.map(toTranslatedResult(this.intl)))
   },
 
   parseAll(workspace) {
@@ -50,14 +50,14 @@ export default Service.extend({
 
 })
 
-export const combineExclusiveResults = (results) => {
-  const [combinables, notCombinables] = splitBy(isCombinableExclusive, results)
+export const combineUsageResults = (results) => {
+  const [usageResults, otherResults] = splitBy(isUsageResult, results)
 
-  const exclusivesCombined = Object
-    .values(groupBy(r => r.declaration)(combinables))
+  const combinedUsageResults = Object
+    .values(groupBy(r => r.declaration)(usageResults))
     .map(combineUsage)
 
-  return notCombinables.concat(exclusivesCombined)
+  return otherResults.concat(combinedUsageResults)
 }
 
 export const combineUsage = (resultGroup) => {

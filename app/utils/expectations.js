@@ -110,7 +110,7 @@ const combinableExclusiveIds = [isUsedId, isUsedFromMainId]
 const isPresent = (expectationResult, ids) =>
   ids.some(id => id === expectationResult.id)
 
-export const isCombinableExclusive = (expectationResult) =>
+export const isUsageResult = (expectationResult) =>
   isPresent(expectationResult, combinableExclusiveIds)
 
 export const isCritical = (expectationResult) =>

@@ -1,7 +1,7 @@
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit';
 import { isUsedId, isUsedFromMainId } from '../../../utils/expectations'
-import { combineUsage, combineExclusiveResults } from '../../../services/pilas-mulang'
+import { combineUsage, combineUsageResults } from '../../../services/pilas-mulang'
 
 module('Unit | Service | pilas-mulang', function (hooks) {
 
@@ -31,7 +31,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
         assert.propEqual(combineUsage([isUsedResult, IsUsedFromMainResult]), createResult(isUsedId, true, isUsedFromMainDescription))
     })
 
-    test('Combine exclusive usage results', function (assert) {
+    test('Combine usage results', function (assert) {
         const flyProcedure = 'fly'
         const jumpProcedure = 'jump'
         const ifResult = createResult('if', false, '')
@@ -44,7 +44,7 @@ module('Unit | Service | pilas-mulang', function (hooks) {
         const jumpIsUsedCombined = createResult(isUsedId, true, isUsedFromMainDescription, jumpProcedure)
 
         assert.propEqual(
-            combineExclusiveResults([ifResult, flyIsUsed, flyIsUsedFromMain, whileResult, jumpIsUsed, jumpIsUsedFromMain]),
+            combineUsageResults([ifResult, flyIsUsed, flyIsUsedFromMain, whileResult, jumpIsUsed, jumpIsUsedFromMain]),
             [ifResult, whileResult, flyIsUsedCombined, jumpIsUsedCombined]
         )
 
