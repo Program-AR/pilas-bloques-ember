@@ -3,11 +3,11 @@ import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
 import { createComponentMock } from '../../helpers/mocks';
 
-module('Unit | Service | activity-expectations', function (hooks) {
+module('Unit | Service | challenge-expectations', function (hooks) {
   setupTest(hooks);
   setUpTestLocale(hooks)
 
-  var activityExpectations
+  var challengeExpectations
   const decompositionKey = 'decomposition'
   const expectationStringMock = 'ExpectationMock'
   const expectationsName = 'expectations'
@@ -22,38 +22,38 @@ module('Unit | Service | activity-expectations', function (hooks) {
     conditionalAlternative: expectationMock
   })
 
-  let activityMock
+  let challengeMock
 
   hooks.beforeEach(function () {
-    activityExpectations = this.owner.lookup('service:activity-expectations');
-    activityExpectations.set('idsToExpectations', idsToExpectationsMock)
-    activityMock = createComponentMock({
+    challengeExpectations = this.owner.lookup('service:challenge-expectations');
+    challengeExpectations.set('idsToExpectations', idsToExpectationsMock)
+    challengeMock = createComponentMock({
       expectations: expectationsConfig
     })
   });
 
   test('an expectation id should not be applied if its value is falsy', function (assert) {
-    assert.notOk(activityExpectations.shouldBeApplied([decompositionKey, false]))
+    assert.notOk(challengeExpectations.shouldBeApplied([decompositionKey, false]))
   })
 
   test('an invalid expectation id should not be applied, regardless of its value', function (assert) {
-    assert.notOk(activityExpectations.shouldBeApplied(['randomID', true]))
+    assert.notOk(challengeExpectations.shouldBeApplied(['randomID', true]))
   })
 
   test('an expectation id should be applied if it is valid and its value is truthy', function (assert) {
-    assert.ok(activityExpectations.shouldBeApplied([decompositionKey, true]))
+    assert.ok(challengeExpectations.shouldBeApplied([decompositionKey, true]))
   })
 
   test('expectations do not exist', function (assert) {
-    assert.notOk(activityExpectations.expectationsExist([undefined]))
+    assert.notOk(challengeExpectations.expectationsExist([undefined]))
   })
 
   test('expectations exist', function (assert) {
-    assert.ok(activityExpectations.expectationsExist([activityMock.get(expectationsName)]))
+    assert.ok(challengeExpectations.expectationsExist([challengeMock.get(expectationsName)]))
   })
 
   test('merged expectations for a single expectation configuration', function (assert) {
-    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
   })
 
   test('merged expectations for multiple configurations without keys in common', function (assert) {
@@ -65,7 +65,7 @@ module('Unit | Service | activity-expectations', function (hooks) {
       simpleRepetition: true,
       conditionalAlternative: true
     }
-    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig, conditionalAlternativeConfig]), mergedConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig, conditionalAlternativeConfig]), mergedConfig)
   })
 
   test('merged expectations for multiple configurations with keys in common should prioritize values with higher priority', function (assert) {
@@ -76,11 +76,11 @@ module('Unit | Service | activity-expectations', function (hooks) {
       decomposition: false,
       simpleRepetition: true
     }
-    assert.propEqual(activityExpectations.mergeConfigurations([expectationsConfig, configWithHigherPriority]), mergedConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig, configWithHigherPriority]), mergedConfig)
   })
 
   test('domain expectations to mulang expectations', function (assert) {
-    assert.equal(activityExpectations.configToExpectation(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
+    assert.equal(challengeExpectations.configToExpectation(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
   })
 
   test('multiple nonexistent expectations ids are transformed to a noExpectation', function (assert) {
@@ -90,18 +90,18 @@ module('Unit | Service | activity-expectations', function (hooks) {
       bar: false,
       baz: true
     }
-    assert.equal(activityExpectations.configToExpectation(nonexistenteEpectations)(), '')
+    assert.equal(challengeExpectations.configToExpectation(nonexistenteEpectations)(), '')
   })
 
-  test('if an activity does not define expectations, noExpectation is applied', function (assert) {
-    assert.equal(activityExpectations.expectationFor(createComponentMock({}))(), '')
+  test('if a challenge does not define expectations, noExpectation is applied', function (assert) {
+    assert.equal(challengeExpectations.expectationFor(createComponentMock({}))(), '')
   })
 
-  test('if an activity defines expectations but does not belong to a group, chapter or book, its expectations should be applied', function (assert) {
-    assert.equal(activityExpectations.expectationFor(activityMock)(), 'ExpectationMock\nExpectationMock')
+  test('if a challenge defines expectations but does not belong to a group, chapter or book, its expectations should be applied', function (assert) {
+    assert.equal(challengeExpectations.expectationFor(challengeMock)(), 'ExpectationMock\nExpectationMock')
   })
 
-  test('expectations from book, chapter, group and activity should be combined', function (assert) {
+  test('expectations from book, chapter, group and challenge should be combined', function (assert) {
     const book = createComponentMock({
       expectations: {
         decomposition: true
@@ -116,13 +116,13 @@ module('Unit | Service | activity-expectations', function (hooks) {
     const group = createComponentMock({
       capitulo: chapter
     })
-    const activity = createComponentMock({
+    const challenge = createComponentMock({
       grupo: group,
       expectations: {
         decomposition: false
       }
     })
-    assert.equal(activityExpectations.expectationFor(activity)(), 'ExpectationMock')
+    assert.equal(challengeExpectations.expectationFor(challenge)(), 'ExpectationMock')
   })
 
 });

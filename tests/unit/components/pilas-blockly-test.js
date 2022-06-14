@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock, experimentsMock, challengeWithExpectationsMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
@@ -72,7 +72,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On running should be running and run the interpreter', async function (assert) {
@@ -122,7 +122,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('A filled program should run', async function (assert) {
@@ -221,7 +221,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('should execute program if all expectations passed', function (assert) {
@@ -241,7 +241,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     test('Al resolver el problema con expectativas fallidas', async function (assert) {
       Blockly.textToBlock(filledProgram)
-      this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
+      this.owner.lookup('service:challengeExpectations').expectations = declaresAnyProcedure
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
@@ -262,7 +262,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On solving a challenge should show finished challenge modal', async function (assert) {
@@ -352,7 +352,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On running should send to the API', async function (assert) {

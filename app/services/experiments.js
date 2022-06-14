@@ -7,7 +7,7 @@ export default Service.extend({
   group: ENV.experimentGroupType,
   decompositionTreatmentLength: ENV.decompositionTreatmentLength,
   storage: service(),
-  activityExpectations: service(),
+  challengeExpectations: service(),
 
   solvedChallenges: computed('storage', function () {
     return this.get('storage').getSolvedChallenges()
@@ -54,6 +54,6 @@ export default Service.extend({
   },
 
   hasDecompositionExpect(challenge){
-    return this.activityExpectations.hasDecomposition(challenge)
+    return this.challengeExpectations.hasDecomposition(challenge)
   }
 });

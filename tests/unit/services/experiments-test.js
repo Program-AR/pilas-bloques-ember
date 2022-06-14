@@ -4,7 +4,7 @@ import { setupTest } from 'ember-qunit';
 module('Unit | Service | experiments', function (hooks) {
   let experiments
   let storageMock
-  let activityExpectationsMock
+  let challengeExpectationsMock
 
   const solvedChallenge = {id: "13"}
   setupTest(hooks);
@@ -22,7 +22,7 @@ module('Unit | Service | experiments', function (hooks) {
     }
     experiments.storage = storageMock
 
-    activityExpectationsMock = {
+    challengeExpectationsMock = {
       _decomposition: true,
 
       hasDecomposition(){
@@ -30,7 +30,7 @@ module('Unit | Service | experiments', function (hooks) {
       }
     }
 
-    experiments.activityExpectations = activityExpectationsMock
+    experiments.challengeExpectations = challengeExpectationsMock
   })
 
   test('Should show congratulations modal when group is not affected', function (assert) {
@@ -54,7 +54,7 @@ module('Unit | Service | experiments', function (hooks) {
   })
 
   test('Should NOT update solved challenges if challenge does not have subtask division expect', function (assert){
-    activityExpectationsMock._decomposition = false
+    challengeExpectationsMock._decomposition = false
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
