@@ -7,6 +7,7 @@ export default Service.extend({
 
   group: ENV.experimentGroupType,
   storage: service(),
+  pilasBloquesApi: service(),
   possibleGroups: ["treatment", "control", "notAffected"],
 
   isTreatmentGroup() {
@@ -22,21 +23,21 @@ export default Service.extend({
   },
 
   isAutoAssignGroup(){
-    return this.group === "autoAssign"
+    return this.group === "autoassign"
   },
 
   experimentGroup() {
     return this.isAutoAssignGroup() ? this.getExperimentGroupAssigned() : this.group
   },
 
-  getExperimentGroupAssigned(){
-    return this.storage.getExperimentGroup() || /*this.pilasBloquesApi.getExperimentGroupAssigned() || */   this.randomizeAndSaveExperimentGroup()
+  async getExperimentGroupAssigned(){
+    return this.storage.getExperimentGroup() || /*this.pilasBloquesApi.getExperimentGroup() ||*/ await this.randomizeAndSaveExperimentGroup()
   },
 
-  randomizeAndSaveExperimentGroup(){
-    const randomExperimentGroup = this.getRandomExperimentGroup()
-    if(/*esta logueado*/ false){
-      //guardar en api
+  async randomizeAndSaveExperimentGroup(){
+    const randomExperimentGroup = await this.getRandomExperimentGroup()
+    if(this.pilasBloquesApi.getUser()){
+     // this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
 
     this.storage.saveExperimentGroup(randomExperimentGroup)
@@ -44,15 +45,15 @@ export default Service.extend({
     return randomExperimentGroup
   },
 
-  getRandomExperimentGroup(){
-    const ip = this.getUserIp()
+  async getRandomExperimentGroup(){
+    const ip = await this.getUserIp()
     const randomizedIp = seedrandom(ip)
     const experimentGroupNumber = randomizedIp() * (this.possibleGroups.length - 1)
 
     return this.possibleGroups[Math.floor(experimentGroupNumber)]
   },
 
-  getUserIp(){
+  async getUserIp(){
     const response = await fetch("https://api64.ipify.org?format=json")
     const jsonIp = await response.json()
     
