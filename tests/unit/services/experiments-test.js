@@ -94,11 +94,11 @@ module('Unit | Service | experiments', function (hooks) {
   })
 
   function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges){
-    testShouldShow('non scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
+    testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
 
   function testShouldShowFeedbackExpectations(group, feedback, shouldShow, solvedChallenges){
-    testShouldShow('expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksExpectationFeedback()), solvedChallenges)
+    testShouldShow('blocks expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksExpectationFeedback()), solvedChallenges)
   }
 
   function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){

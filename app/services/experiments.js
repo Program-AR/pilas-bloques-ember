@@ -42,7 +42,7 @@ export default Service.extend({
   },
 
   shouldShowBlocksExpectationFeedback(){
-    return !this.feedbackIsDisabled() && this.isTreatmentGroup()
+    return this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
   shouldShowScoredExpectations(){
