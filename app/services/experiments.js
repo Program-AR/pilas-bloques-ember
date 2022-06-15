@@ -30,7 +30,7 @@ export default Service.extend({
   },
 
   updateSolvedChallenges(challenge){
-    const _solvedChallenges = this.solvedChallenges
+    const _solvedChallenges = this.solvedChallenges 
     if (this.shouldUpdateSolvedChallenges(challenge)){
       _solvedChallenges.push(challenge.id)
       this.storage.saveSolvedChallenges(_solvedChallenges)
@@ -38,11 +38,15 @@ export default Service.extend({
   },
 
   shouldShowCongratulationsModal(){
-    return this.isNotAffected() || this.feedbackIsDisabled()
+    return this.isNotAffected()
   },
 
   shouldShowExpectationFeedback(){
     return !this.feedbackIsDisabled() || this.isTreatmentGroup()
+  },
+
+  shouldShowNonScoredExpects(){
+    return this.isControlGroup() || this.feedbackIsDisabled()
   },
 
   feedbackIsDisabled(){

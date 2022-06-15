@@ -11,13 +11,13 @@ export default Component.extend({
     return this.expectScoring.failedExpects(this.expects).length === 0
   },
 
-  isControl() {
-    return this.experiments.isControlGroup()
+  shouldShowNonScoredExpects() {
+    return this.experiments.shouldShowNonScoredExpects()
   },
 
   textTag(textType) {
     const base = "components.finishedExerciseModal.expectationsModal."
-    const groupTag = this.isControl() ? 'controlGroup.' : this.treatmentTag()
+    const groupTag = this.shouldShowNonScoredExpects() ? 'controlGroup.' : this.treatmentTag()
     return base + groupTag + textType
   },
 

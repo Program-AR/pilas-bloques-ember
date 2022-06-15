@@ -433,7 +433,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.shouldShowCongratulationsModal(this.challenge)
+    return this.experiments.isNotAffected()
   },
 
   actions: {
