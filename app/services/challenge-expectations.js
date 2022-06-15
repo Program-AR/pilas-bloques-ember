@@ -49,7 +49,7 @@ export default Service.extend({
       models = [book, chapter, group].concat(models)
     }
 
-    return models.map(model => model.get(expectations))
+    return models.map(model => model.get('expectations'))
   },
 
   hasDecomposition(challenge){
