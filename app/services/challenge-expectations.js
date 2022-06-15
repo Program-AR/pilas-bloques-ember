@@ -25,7 +25,6 @@ const idsToExpectations = (intl) => ({
 
 })
 
-const expectations = 'expectations'
 
 export default Service.extend({
   intl: service(),
