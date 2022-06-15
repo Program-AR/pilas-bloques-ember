@@ -273,27 +273,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       })
     })
 
-    test('Should show congratulations modal when group is not affected', async function (assert) {
-      const experimentsMock = this.owner.lookup('service:experiments')
-
-      experimentsMock.setNotAffected()
-      this.ctrl.send('ejecutar')
-      await settled()
-      later(() => {
-        assert.ok(this.ctrl.shouldShowCongratulationsModal())
-      })
-    })
-
-    test('Should NOT show congratulations modal when group is affected', async function (assert) {
-      const experimentsMock = this.owner.lookup('service:experiments')
-
-      experimentsMock.setControl()
-      this.ctrl.send('ejecutar')
-      await settled()
-      later(() => {
-        assert.notOk(this.ctrl.shouldShowCongratulationsModal())
-      })
-    })
   })
 
 
@@ -320,8 +299,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       return findBlockByTypeIn(block, "al_empezar_a_ejecutar")
     }
 
-    test('Treatment groups should show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setTreatment()
+    test('Should show expectation feedback bubbles when required by experiments', async function (assert) {
+      experimentsMock.setShouldShowExpectationFeedback(true)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
@@ -329,17 +308,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       later(() => assertWarning(assert, required, 'Deberías usar alternativa condicional para considerar todos los escenarios'))
     })
 
-    test('Control groups should not show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setControl()
-
-      this.ctrl.send('ejecutar')
-      const required = blockFromProgram(failingExpectationsProgram)
-      await settled()
-      later(() => assertNotWarning(assert, required))
-    })
-
-    test('Not affected groups should not show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setNotAffected()
+    test('Should not show expectation feedback bubbles when not required by experiments', async function (assert) {
+      experimentsMock.setShouldShowExpectationFeedback(false)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)

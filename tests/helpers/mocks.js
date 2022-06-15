@@ -91,33 +91,13 @@ export const simpleReadMock = Service.extend({
 
 export const experimentsMock = Service.extend({
 
-    group: 'notAffected',
-
-    setNotAffected() {
-        this.group = 'notAffected'
+    shouldShowExpectsFeedback: false,
+    
+    setShouldShowExpectationFeedback(value){
+        this.shouldShowExpectsFeedback = value
     },
 
-    setControl() {
-        this.group = 'control'
-    },
-
-    setTreatment() {
-        this.group = 'treatment'
-    },
-
-    isTreatmentGroup() {
-        return this.group === "treatment"
-    },
-
-    isControlGroup() {
-        return this.group === "control"
-    },
-
-    isNotAffected() {
-        return this.group === "notAffected"
-    },
-
-    shouldShowExpectationFeedback(){ return false },
+    shouldShowExpectationFeedback(){ return this.shouldShowExpectsFeedback },
 
     updateSolvedChallenges(){}
 })
