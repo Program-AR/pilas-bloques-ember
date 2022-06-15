@@ -11,18 +11,18 @@ export default Component.extend({
     return this.expectScoring.failedExpects(this.expects).length === 0
   },
 
-  shouldShowNonScoredExpects() {
-    return this.experiments.shouldShowNonScoredExpects()
+  shouldShowScoredExpectations() {
+    return this.experiments.shouldShowScoredExpectations()
   },
 
   textTag(textType) {
     const base = "components.finishedExerciseModal.expectationsModal."
-    const groupTag = this.shouldShowNonScoredExpects() ? 'controlGroup.' : this.treatmentTag()
+    const groupTag = this.shouldShowScoredExpectations() ? this.scoredExpectationsTag() : 'nonScoredExpectations.'
     return base + groupTag + textType
   },
 
-  treatmentTag() {
-    return 'treatmentGroup.' + (this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.')
+  scoredExpectationsTag() {
+    return 'scoredExpectations.' + (this.allExpectationsPassed() ? 'allPassed.' : 'notAllPassed.')
   }
 
 })
