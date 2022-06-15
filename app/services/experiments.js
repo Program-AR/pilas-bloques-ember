@@ -41,12 +41,12 @@ export default Service.extend({
     return this.isNotAffected()
   },
 
-  shouldShowExpectationFeedback(){
-    return !this.feedbackIsDisabled() || this.isTreatmentGroup()
+  shouldShowBlocksExpectationFeedback(){
+    return !this.feedbackIsDisabled() && this.isTreatmentGroup()
   },
 
-  shouldShowNonScoredExpects(){
-    return this.isControlGroup() || this.feedbackIsDisabled()
+  shouldShowScoredExpectations(){
+    return !(this.isControlGroup() || this.feedbackIsDisabled())
   },
 
   feedbackIsDisabled(){

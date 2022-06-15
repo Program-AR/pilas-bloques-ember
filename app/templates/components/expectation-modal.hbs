@@ -4,12 +4,12 @@
     <p>{{t (compute (action textTag  "description"))}}</p>
   </div>
 
-  {{#if (compute (action shouldShowNonScoredExpects))}}
-    <NonScoredExpectations
+  {{#if (compute (action shouldShowScoredExpectations))}}
+    <ScoredExpectations
       @expects={{expects}}
     />
   {{else}}
-    <ScoredExpectations
+    <NonScoredExpectations
       @expects={{expects}}
     />
   {{/if}}

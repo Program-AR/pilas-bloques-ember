@@ -300,7 +300,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     }
 
     test('Should show expectation feedback bubbles when required by experiments', async function (assert) {
-      experimentsMock.setShouldShowExpectationFeedback(true)
+      experimentsMock.setShouldShowBlocksExpectationFeedback(true)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
@@ -309,7 +309,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('Should not show expectation feedback bubbles when not required by experiments', async function (assert) {
-      experimentsMock.setShouldShowExpectationFeedback(false)
+      experimentsMock.setShouldShowBlocksExpectationFeedback(false)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
