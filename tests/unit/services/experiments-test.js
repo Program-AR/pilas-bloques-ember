@@ -7,6 +7,9 @@ module('Unit | Service | experiments', function (hooks) {
   let challengeExpectationsMock
 
   const solvedChallenge = {id: "13"}
+
+  const solvedChallengesFeedbackDisabled = ["13", "14", "15"]
+
   setupTest(hooks);
 
   hooks.beforeEach(function () {
@@ -32,22 +35,20 @@ module('Unit | Service | experiments', function (hooks) {
     experiments.challengeExpectations = challengeExpectationsMock
   })
 
+  //Show non scored expects
 
-  test('Should show non scored expects - control group and feedback is enabled', function(assert) {
-    experiments.set('group', 'control')
-    assert.ok(experiments.shouldShowNonScoredExpects())
-  })
+  testShouldShowScoredExpectations('control', 'enabled', false)
+  testShouldShowScoredExpectations('treatment', 'enabled', true)
+  testShouldShowScoredExpectations('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
 
-  test('Should show non scored expects - treatment group and feedback is disabled', function(assert) {
-    experiments.set('group', 'treatment')
-    storageMock.solvedChallenges = ["13", "14", "15"]
-    assert.ok(experiments.shouldShowNonScoredExpects())
-  })
+  //Show feedback expectations (bubbles)
 
-  test('Should NOT show non scored expects - treatment group and feedback is enabled', function(assert) {
-    experiments.set('group', 'treatment')
-    assert.notOk(experiments.shouldShowNonScoredExpects())
-  })
+  testShouldShowFeedbackExpectations('control', 'enabled', false)
+  testShouldShowFeedbackExpectations('treatment', 'enabled', true)
+  testShouldShowFeedbackExpectations('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
+
+
+  //Congratulations modal
 
   test('Should show congratulations modal - group is not affected', function (assert) {
     experiments.set('group', 'notAffected')
@@ -59,6 +60,7 @@ module('Unit | Service | experiments', function (hooks) {
     assert.notOk(experiments.shouldShowCongratulationsModal())
   })
 
+  //Feedback is disabled
   test('Feedback is disabled - solved challenges longer than decompositionTreatmentLength', function (assert) {
     storageMock.solvedChallenges = ["13", "14", "16"]
     assert.ok(experiments.feedbackIsDisabled())
@@ -74,6 +76,8 @@ module('Unit | Service | experiments', function (hooks) {
     assert.notOk(experiments.feedbackIsDisabled())
   })
 
+  //update challenges
+
   test('Should NOT update solved challenges if challenge was already solved', function (assert){
     storageMock.solvedChallenges = ["13"]
     
@@ -88,6 +92,27 @@ module('Unit | Service | experiments', function (hooks) {
   test('Should update solved challenges when challenge has decomposition expect and is not already solved', function (assert){
     assert.ok(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
+
+  function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges){
+    testShouldShow('non scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
+  }
+
+  function testShouldShowFeedbackExpectations(group, feedback, shouldShow, solvedChallenges){
+    testShouldShow('expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksExpectationFeedback()), solvedChallenges)
+  }
+
+  function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){
+    test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function(assert){
+      storageMock.solvedChallenges = solvedChallenges
+      experiments.set('group', group)
+      const result = callback()
+      if(shouldShow){
+        assert.ok(result)
+      }else{
+        assert.notOk(result)
+      }
+    })
+  }
 
 
 });
