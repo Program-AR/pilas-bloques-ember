@@ -47,7 +47,7 @@ nightModeToggle:
   lightTheme: Ativar modo claro
   darkTheme: Ativar modo escuro
 registerDisclaimer:
-  now: ¡ Agora o Pilas Bloques permite
+  now: Agora o Pilas Bloques permite
   register: registrar-se
   optional: Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou.
 programarDisclaimer:
