@@ -10,7 +10,6 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   var challengeExpectations
   const decompositionKey = 'decomposition'
   const expectationStringMock = 'ExpectationMock'
-  const expectationsName = 'expectations'
   const expectationsConfig = {
     decomposition: true,
     simpleRepetition: true
