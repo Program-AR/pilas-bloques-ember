@@ -44,16 +44,12 @@ module('Unit | Service | challenge-expectations', function (hooks) {
     assert.ok(challengeExpectations.shouldBeApplied([decompositionKey, true]))
   })
 
-  test('expectations do not exist', function (assert) {
-    assert.notOk(challengeExpectations.expectationsExist([undefined]))
-  })
-
-  test('expectations exist', function (assert) {
-    assert.ok(challengeExpectations.expectationsExist([challengeMock.get(expectationsName)]))
-  })
-
   test('merged expectations for a single expectation configuration', function (assert) {
     assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
+  })
+
+  test('merged expectations for no expectations configuration should be an empty object', function (assert) {
+    assert.propEqual(challengeExpectations.mergeConfigurations([]), {})
   })
 
   test('merged expectations for multiple configurations without keys in common', function (assert) {
