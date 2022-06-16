@@ -43,9 +43,9 @@ module('Unit | Service | experiments', function (hooks) {
 
   //Show feedback expectations (bubbles)
 
-  testShouldShowFeedbackExpectations('control', 'enabled', false)
-  testShouldShowFeedbackExpectations('treatment', 'enabled', true)
-  testShouldShowFeedbackExpectations('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
+  testShouldShowBlocksExpectationsFeedback('control', 'enabled', false)
+  testShouldShowBlocksExpectationsFeedback('treatment', 'enabled', true)
+  testShouldShowBlocksExpectationsFeedback('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
 
 
   //Congratulations modal
@@ -97,7 +97,7 @@ module('Unit | Service | experiments', function (hooks) {
     testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
 
-  function testShouldShowFeedbackExpectations(group, feedback, shouldShow, solvedChallenges){
+  function testShouldShowBlocksExpectationsFeedback(group, feedback, shouldShow, solvedChallenges){
     testShouldShow('blocks expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksExpectationFeedback()), solvedChallenges)
   }
 
