@@ -54,7 +54,7 @@ export default Service.extend({
   },
 
   shouldUpdateSolvedChallenges(challenge){
-    return  !this.solvedChallenges.includes(challenge.id) && this.hasDecompositionExpect(challenge)
+    return !this.solvedChallenges.includes(challenge.id) && this.hasDecompositionExpect(challenge)
   },
 
   hasDecompositionExpect(challenge){

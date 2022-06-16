@@ -1,5 +1,6 @@
 import Service from '@ember/service'
 import { entryPointType } from '../utils/blocks'
+import { isEmpty/*, compose*/ } from 'ramda'
 import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
@@ -32,10 +33,7 @@ export default Service.extend({
   idsToExpectations,
 
   expectationFor(challenge) {
-    
-    const allExpectConfigurations = this.allExpectConfigurations(challenge)
-
-    return this.expectationsExist(allExpectConfigurations) ? this.configToExpectation(this.mergeConfigurations(allExpectConfigurations)) : noExpectation
+    return this.configToExpectation(this.mergeConfigurations(this.allExpectConfigurations(challenge)))
   },
 
   allExpectConfigurations(challenge){
@@ -53,16 +51,16 @@ export default Service.extend({
   },
 
   hasDecomposition(challenge){
-    const allExpectConfigurations = this.allExpectConfigurations(challenge)
-    return this.expectationsExist(allExpectConfigurations) ? this.mergeConfigurations(allExpectConfigurations).decomposition : false
+    return !!this.mergeConfigurations(this.allExpectConfigurations(challenge)).decomposition
   },
 
   configToExpectation(expectationsConfig){
-    return multiExpect(
-      ...Object.entries(expectationsConfig) //Must not be undefined
-      .filter(e => this.shouldBeApplied(e))
-      .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
-    )
+    return isEmpty(expectationsConfig) ? noExpectation 
+      : multiExpect(
+        ...Object.entries(expectationsConfig) //Must not be undefined
+        .filter(e => this.shouldBeApplied(e))
+        .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
+      )
   },
 
   shouldBeApplied([id, shouldApply]) {
@@ -71,10 +69,6 @@ export default Service.extend({
 
   idToExpectation(id) {
     return this.idsToExpectations(this.intl)[id]
-  },
-
-  expectationsExist(possibleExpectations) {
-    return possibleExpectations.some(e => e)
   },
 
   /*
@@ -88,6 +82,6 @@ export default Service.extend({
         ...baseExpect,
         ...expectWithPriority
       }
-    })
+    },{})
   }
 })
