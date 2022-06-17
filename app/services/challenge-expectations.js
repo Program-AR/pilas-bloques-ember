@@ -33,7 +33,7 @@ export default Service.extend({
   idsToExpectations,
 
   expectationFor(challenge) {
-    return this.configToExpectation(this.mergeConfigurations(this.allExpectConfigurations(challenge)))
+    return this.configToExpectation(this.allExpectConfigurationsMerged(challenge))
   },
 
   allExpectConfigurations(challenge){
@@ -50,21 +50,18 @@ export default Service.extend({
     return models.map(model => model.get('expectations'))
   },
 
-  hasDecomposition(challenge){
-    return !!this.mergeConfigurations(this.allExpectConfigurations(challenge)).decomposition
-  },
-
+  
   configToExpectation(expectationsConfig){
     return isEmpty(expectationsConfig) ? noExpectation 
-      : multiExpect(
+    : multiExpect(
         ...Object.entries(expectationsConfig) //Must not be undefined
         .filter(e => this.shouldBeApplied(e))
-        .map(([id, _]) => this.idToExpectation(id)) // jshint ignore: line
+        .map(([id, ]) => this.idToExpectation(id)) 
       )
-  },
+    },
 
-  shouldBeApplied([id, shouldApply]) {
-    return shouldApply && this.idToExpectation(id)
+    shouldBeApplied([id, shouldApply]) {
+      return shouldApply && this.idToExpectation(id)
   },
 
   idToExpectation(id) {
@@ -72,16 +69,24 @@ export default Service.extend({
   },
 
   /*
-   * This overrides the entire value of a key.
-   * If some values could be another objects and we would want to
-   * merge those too, it should be handled differently.
-   */
-  mergeConfigurations(expectationsConfigs) {
-    return expectationsConfigs.filter(e => e).reduce((baseExpect, expectWithPriority) => {
-      return {
-        ...baseExpect,
-        ...expectWithPriority
+  * This overrides the entire value of a key.
+  * If some values could be another objects and we would want to
+  * merge those too, it should be handled differently.
+  */
+ mergeConfigurations(expectationsConfigs) {
+   return expectationsConfigs.filter(e => e).reduce((baseExpect, expectWithPriority) => {
+     return {
+       ...baseExpect,
+       ...expectWithPriority
       }
     },{})
+  },
+
+  allExpectConfigurationsMerged(challenge){
+    return this.mergeConfigurations(this.allExpectConfigurations(challenge))
+  },
+
+  hasDecomposition(challenge){
+    return !!this.allExpectConfigurationsMerged(challenge).decomposition
   }
 })
