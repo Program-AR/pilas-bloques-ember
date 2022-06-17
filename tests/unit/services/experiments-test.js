@@ -84,7 +84,7 @@ module('Unit | Service | experiments', function (hooks) {
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
-  test('Should NOT update solved challenges if challenge does not decomposition expect', function (assert){
+  test('Should NOT update solved challenges if challenge does not have decomposition expect', function (assert){
     challengeExpectationsMock._decomposition = false
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
