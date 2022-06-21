@@ -50,7 +50,7 @@ export default Service.extend({
   },
 
   feedbackIsDisabled(){
-    return this.solvedChallenges.length > this.decompositionTreatmentLength
+    return this.solvedChallenges.length >= this.decompositionTreatmentLength
   },
 
   shouldUpdateSolvedChallenges(challenge){
