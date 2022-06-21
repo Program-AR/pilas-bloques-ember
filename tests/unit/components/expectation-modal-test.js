@@ -1,6 +1,5 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
-import { experimentsMock } from '../../helpers/mocks';
 
 const failedExpects = [
   newExpectation('4', false),
@@ -22,33 +21,15 @@ module('Unit | Component | expectation-modal', function (hooks) {
 
   hooks.beforeEach(function () {
     component = this.owner.factoryFor('component:expectation-modal').create();
-    this.owner.register('service:experiments', experimentsMock)
   })
 
-  test('Is control group', function (assert) {
-    const experimentsMock = this.owner.lookup('service:experiments')
-    experimentsMock.setControl()
-
-    assert.ok(component.isControl())
-  })
-
-  test('Is treatment group - all expectations passed', function (assert) {
-    const experimentsMock = this.owner.lookup('service:experiments')
-    experimentsMock.setTreatment()
-
+  test('All expectations passed', function (assert) {
     component.set('expects', passedExpects)
-
-    assert.notOk(component.isControl())
     assert.ok(component.allExpectationsPassed())
   })
 
-  test('Is treatment group - not all expectations passed', function (assert) {
-    const experimentsMock = this.owner.lookup('service:experiments')
-    experimentsMock.setTreatment()
-
+  test('Not all expectations passed', function (assert) {
     component.set('expects', passedExpects.concat(failedExpects))
-
-    assert.notOk(component.isControl())
     assert.notOk(component.allExpectationsPassed())
   })
 });
