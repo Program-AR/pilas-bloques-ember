@@ -8,7 +8,7 @@ module('Unit | Service | experiments', function (hooks) {
 
   const solvedChallenge = {id: "13"}
 
-  const solvedChallengesFeedbackDisabled = ["13", "14", "15"]
+  const solvedChallengesFeedbackDisabled = ["13", "14"]
 
   setupTest(hooks);
 
@@ -66,9 +66,9 @@ module('Unit | Service | experiments', function (hooks) {
     assert.ok(experiments.feedbackIsDisabled())
   })
 
-  test('Feedback is enabled - solved challenges equal decompositionTreatmentLength', function (assert) {
+  test('Feedback is disabled - solved challenges equal decompositionTreatmentLength', function (assert) {
     storageMock.solvedChallenges = ["13", "14"]
-    assert.notOk(experiments.feedbackIsDisabled())
+    assert.ok(experiments.feedbackIsDisabled())
   })
 
   test('Feedback is enabled - solved challenges shorter than decompositionTreatmentLength', function (assert) {
