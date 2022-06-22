@@ -111,14 +111,14 @@ finishedExerciseModal:
     title: ¡Lo lograste!
     description: '*Para pensar...* Tu programa no es el único que resuelve el problema. ¡Existen otras soluciones! ¿Estás usando los conceptos bien?'
   expectationsModal:
-    treatmentGroup:
+    scoredExpectations:
       notAllPassed:
         title: 'Está bien, pero... ¡podría estar mejor!'
         description: Revisá tu solución e intentá cumplir con todos los objetivos.
       allPassed:
         title: ¡Lo lograste!
         description: ''
-    controlGroup:
+    nonScoredExpectations:
       title: ¡Lo lograste!
       description: "Recordá que una solución correcta no sólo resuelve el problema, sino que además:"
 

@@ -11,6 +11,7 @@ export default Ember.Service.extend({
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
   EXPERIMENT_GROUP: 'PB_EXPERIMENT_GROUP',
+  SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
 
   getUserId() {
     const user = this.getUser()
@@ -50,6 +51,12 @@ export default Ember.Service.extend({
   saveExperimentGroup(newGroup) { this._save(this.EXPERIMENT_GROUP, newGroup) },
 
   getExperimentGroup() { return this._get(this.EXPERIMENT_GROUP) },
+  
+  saveSolvedChallenges(solvedChallenges) { this._save(this.SOLVED_CHALLENGES,solvedChallenges) },
+
+  getSolvedChallenges () { 
+    return this._get(this.SOLVED_CHALLENGES) || []
+  },
 
   clear() { localStorage.clear() },
 

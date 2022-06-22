@@ -334,6 +334,8 @@ export default Component.extend({
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
+      if(this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
+
       this.send('showEndModal')
 
       if (this.ejecutando) {
@@ -397,7 +399,7 @@ export default Component.extend({
     })
   },
 
-  showExpectationFeedback() {
+  showBlocksExpectationFeedback() {
     // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
     this.showExpectationFeedbackFor(
       notCritical,
@@ -420,7 +422,7 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    this.showExpectationFeedback()
+    if(this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
