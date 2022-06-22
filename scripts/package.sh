@@ -3,10 +3,11 @@
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
 NAME=$(sh scripts/projectName.sh)
 
-# The project version.
-VERSION="$(sh scripts/projectVersion.sh)$(sh scripts/experimentGroupId.sh)"
+# The folder with all the publishable webapp
+DIST=./dist_prod
 
-FULLNAME="${NAME}_${VERSION}"
+# The project version.
+VERSION="$(sh scripts/projectVersion.sh)$(node scripts/experimentGroupId.js $DIST)"
 
 # The electron executable path.
 ELECTRON=./node_modules/dist/electron
@@ -16,9 +17,6 @@ PACKAGER=./node_modules/.bin/electron-packager
 
 # The electron debian packager path.
 DEBIAN_PACKAGER=./node_modules/.bin/electron-installer-debian
-
-# The folder with all the publishable webapp
-DIST=./dist_prod
 
 [[ -d $DIST ]] || { echo "ERROR: The folder $DIST doesn't exist. You have to build Pilas Bloques before packaging." ; exit 1; }
 
@@ -55,13 +53,13 @@ package() {
     ARCH=$2
     ICON_EXTENSION=$3
 
-    $PACKAGER $DIST $FULLNAME --app-version=$VERSION --platform=$PLATFORM --arch=$ARCH --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.$ICON_EXTENSION
+    $PACKAGER $DIST $NAME --app-version=$VERSION --platform=$PLATFORM --arch=$ARCH --ignore=node_modules --out=binaries --overwrite --icon=packaging/icono.$ICON_EXTENSION
 }
 
 package_linux_x64_deb() {
     prebuild "linux" "x64"
     echo "Generating linux x64 package for debian..."
-    rm -f "./binaries/$FULLNAME_amd64.deb"
+    rm -f "./binaries/$NAME_$VERSION_amd64.deb"
     package "linux" "x64" "icns"
     $DEBIAN_PACKAGER --arch amd64 --config=packaging/linux-package.json
 }
@@ -69,17 +67,17 @@ package_linux_x64_deb() {
 package_linux_ia32_zip() {
     prebuild "linux" "ia32"
     echo "Generating linux ia32 zip..."
-    rm -f ./binaries/$FULLNAME-ia32.zip
+    rm -f ./binaries/$NAME-$VERSION-ia32.zip
     package "linux" "ia32" "icns"
-    cd binaries; zip -r $FULLNAME-linux-ia32.zip $FULLNAME-linux-ia32/; cd ..
+    cd binaries; zip -r $NAME-$VERSION-linux-ia32.zip $NAME-linux-ia32/; cd ..
 }
 
 package_linux_x64_zip() {
     prebuild "linux" "x64"
     echo "Generating linux x64 zip..."
-    rm -f ./binaries/$FULLNAME-x64.zip
+    rm -f ./binaries/$NAME-$VERSION-x64.zip
     package "linux" "x64" "icns"
-    cd binaries; zip -r $FULLNAME-linux-x64.zip $FULLNAME-linux-x64/; cd ..
+    cd binaries; zip -r $NAME-$VERSION-linux-x64.zip $NAME-linux-x64/; cd ..
 }
 
 package_linux() {
@@ -92,16 +90,16 @@ package_osx() {
     prebuild "darwin" "all"
     echo "Generating package for osx..."
     package "darwin" "all" "icns"
-    hdiutil create binaries/$FULLNAME.dmg -srcfolder ./binaries/$FULLNAME-darwin-x64/$FULLNAME.app -size 1g
+    hdiutil create binaries/$NAME-$VERSION.dmg -srcfolder ./binaries/$NAME-darwin-x64/$NAME.app -size 1g
 }
 
 package_win32() {
     prebuild "win" "ia32"
     echo "Generating installer for windows package..."
     package "win32" "ia32" "ico"
-	cp packaging/instalador.nsi binaries/$FULLNAME-win32-ia32/
-	cd binaries/$FULLNAME-win32-ia32/; makensis instalador.nsi; cd ../..
-	mv binaries/$FULLNAME-win32-ia32/$FULLNAME.exe binaries/$FULLNAME.exe
+	cp packaging/instalador.nsi binaries/$NAME-win32-ia32/
+	cd binaries/$NAME-win32-ia32/; makensis instalador.nsi; cd ../..
+	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 
 case "$1" in
