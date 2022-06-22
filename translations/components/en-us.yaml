@@ -111,14 +111,14 @@ finishedExerciseModal:
     title: You did it!
     description: '*To think...* Your program is not the only option to solve the problem. There are other solutions! Are you using the concepts well?'
   expectationsModal:
-    treatmentGroup:
+    scoredExpectations:
       notAllPassed:
         title: 'It''s okay, but... it could be better!'
         description: Review your solution and try to fulfill all the objectives.
       allPassed: 
         title: You did it!
         description: ''
-    controlGroup:
+    nonScoredExpectations:
       title: You did it!
       description: "Remember that a valid solution not only solves the problem, but also:"
       

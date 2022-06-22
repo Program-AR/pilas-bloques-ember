@@ -20,6 +20,7 @@ module.exports = function (environment) {
     enableChallengeCreator: false,
     testTranslations: false,
     experimentGroup,
+    decompositionTreatmentLength: 6,
 
     showdown: {
       simpleLineBreaks: true,

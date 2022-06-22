@@ -24,9 +24,9 @@ export const interpreterFactoryMock = Service.extend({
     crearInterprete() { return interpreteMock; }
 });
 
-export const activityExpectationsMock = Service.extend({
+export const challengeExpectationsMock = Service.extend({
     expectations: () => '',
-    expectationFor(/* activity */) { return this.expectations }
+    expectationFor(/* challenge */) { return this.expectations }
 });
 
 export const createActividadMock = (fields) => EmberObject.extend({
@@ -46,6 +46,7 @@ export const createActividadMock = (fields) => EmberObject.extend({
 }).create()
 
 export const actividadMock = createActividadMock()
+export const challengeWithExpectationsMock = createActividadMock({ expectations: { conditionalAlternative: true }, grupo: undefined })
 
 export const createComponentMock = (_properties) => ({
     properties: _properties,
@@ -89,32 +90,16 @@ export const simpleReadMock = Service.extend({
 })
 
 export const experimentsMock = Service.extend({
- 
-    group: 'notAffected',
 
-    setNotAffected(){
-        this.group = 'notAffected'
-    },
-
-    setControl(){
-        this.group = 'control'
-    },
-
-    setTreatment(){
-        this.group = 'treatment'
-    },
-
-    isTreatmentGroup() {
-        return this.group === "treatment"
-    },
+    shouldShowExpectsFeedback: false,
     
-    isControlGroup() {
-        return this.group === "control"
+    setShouldShowBlocksExpectationFeedback(value){
+        this.shouldShowExpectsFeedback = value
     },
 
-    isNotAffected() {
-        return this.group === "notAffected"
-    },
+    shouldShowBlocksExpectationFeedback(){ return this.shouldShowExpectsFeedback },
+
+    updateSolvedChallenges(){}
 })
 
 export const createActivity = (owner, fields) => {
