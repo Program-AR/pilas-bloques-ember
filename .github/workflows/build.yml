@@ -25,6 +25,8 @@ jobs:
         
       - run: npm install
 
+      - run: echo "EXPERIMENT_GROUP=notAffected" >> $GITHUB_ENV
+
       - name: Run tests with headless window
         uses: GabrielBB/xvfb-action@v1
         with:
