@@ -24,9 +24,9 @@ export const interpreterFactoryMock = Service.extend({
     crearInterprete() { return interpreteMock; }
 });
 
-export const activityExpectationsMock = Service.extend({
+export const challengeExpectationsMock = Service.extend({
     expectations: () => '',
-    expectationFor(/* activity */) { return this.expectations }
+    expectationFor(/* challenge */) { return this.expectations }
 });
 
 export const createActividadMock = (fields) => EmberObject.extend({
@@ -91,31 +91,15 @@ export const simpleReadMock = Service.extend({
 
 export const experimentsMock = Service.extend({
 
-    group: 'notAffected',
-
-    setNotAffected() {
-        this.group = 'notAffected'
+    shouldShowExpectsFeedback: false,
+    
+    setShouldShowBlocksExpectationFeedback(value){
+        this.shouldShowExpectsFeedback = value
     },
 
-    setControl() {
-        this.group = 'control'
-    },
+    shouldShowBlocksExpectationFeedback(){ return this.shouldShowExpectsFeedback },
 
-    setTreatment() {
-        this.group = 'treatment'
-    },
-
-    isTreatmentGroup() {
-        return this.group === "treatment"
-    },
-
-    isControlGroup() {
-        return this.group === "control"
-    },
-
-    isNotAffected() {
-        return this.group === "notAffected"
-    },
+    updateSolvedChallenges(){}
 })
 
 export const createActivity = (owner, fields) => {
