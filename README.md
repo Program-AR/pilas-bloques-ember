@@ -112,7 +112,7 @@ EXPERIMENT_GROUP=treatment npm run start
 Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `autoassign`.
 
 - `notAffected`: (default) no muestra ningún tipo de feedback sobre la solución propuesta.
-- `control`: al finalizar un desafío muestra las expectativas existentes para el mismo, sin informar si se cumpieron o no.
+- `control`: al finalizar un desafío muestra las expectativas existentes para el mismo, sin informar si se cumplieron o no.
 - `treatment`: tiene un período de entrenamiento en el cual muestra las expectativas existentes sobre el desafío, junto con una barra de progreso para las que se cumplieron. Se agrega feedback sobre los bloques. Una vez terminado el período de entrenamiento pasa a tener un comportamiento similar a *control*.
 - `autoassign`: asigna aleatoriamente un grupo experimental en tiempo de ejecución.
 

@@ -81,8 +81,33 @@ npm test
 
 ### Start Pilas Bloques:
 ```
-npm start
+npm run start
 ```
+
+### Build Pilas Bloques
+
+```
+npm run build
+```
+
+### About experiment groups:
+
+Pilas Bloques can be compiled in different ways depending on the experiment group. This can be achieved by setting the environment variable `EXPERIMENT_GROUP` at build time:
+
+```
+EXPERIMENT_GROUP=treatment npm run start
+```
+
+The experiment groups are: `notAffected`, `control`, `treatment` y `autoassign`.
+
+- `notAffected`: (default) it does not show any feedback on current solution.
+- `control`: after completing a challenge its expectations are shown, but it does not inform if it was achieved or not.
+- `treatment`: this one has a training period. During this time expectations are shown for each challenge, alongside a progress bar that awards points for each passed expectation. Blocks have their own feedback too. Once the training period is over, the app behavior changes to *control*.
+- `autoassign`: randomly assigns an experiment group at run time.
+
+### Preparing backend (for users stuff):
+
+If you want to test users stuff or save challenges it is necessary to fulfill some requirements: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) and a data base [MongoDB](https://www.mongodb.com/).
 
 ### License
 
