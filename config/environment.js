@@ -14,6 +14,7 @@ module.exports = function (environment) {
     enableChallengeCreator: false,
     testTranslations: false,
     experimentGroupType: "treatment",
+    decompositionTreatmentLength: 6,
 
     showdown: {
       simpleLineBreaks: true,

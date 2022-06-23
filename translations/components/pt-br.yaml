@@ -47,7 +47,7 @@ nightModeToggle:
   lightTheme: Ativar modo claro
   darkTheme: Ativar modo escuro
 registerDisclaimer:
-  now: ¡ Agora o Pilas Bloques permite
+  now: Agora o Pilas Bloques permite
   register: registrar-se
   optional: Fazer isso é <b>completamente opcional</b>, nos ajuda a melhorar o Pilas Bloques e permite que você suspenda seu trabalho e continue de onde você parou.
 programarDisclaimer:
@@ -111,14 +111,14 @@ finishedExerciseModal:
     title: Conseguiu!
     description: '*Para pensar...* Seu programa não é o único que resolve o problema. Existem outras soluções! Você está usando bem os conceitos?'
   expectationsModal:
-    treatmentGroup:
+    scoredExpectations:
       notAllPassed:
         title: Esta bem, mas poderia estar melhor!
         description: Verifique a soluçõe e tente cumprir com todos os objectivos.
       allPassed:
         title: Conseguiu!
         description: ''
-    controlGroup:
+    nonScoredExpectations:
       title: Conseguiu!
       description: 'Recordá que una solución correcta no sólo resuelve el problema, sino que además:'
 spects:
