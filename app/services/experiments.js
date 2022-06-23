@@ -1,6 +1,5 @@
 import Service, { inject as service } from '@ember/service'
 import ENV from 'pilasbloques/config/environment'
-import { inject as service } from '@ember/service'
 import seedrandom from 'seedrandom';
 import { computed } from '@ember/object'
 
@@ -9,7 +8,6 @@ export default Service.extend({
   group: ENV.experimentGroupType,
   storage: service(),
   pilasBloquesApi: service(),
-  storage: service(),
   challengeExpectations: service(),
 
   possibleGroups: ["treatment", "control", "notAffected"],
@@ -27,7 +25,7 @@ export default Service.extend({
     return this.experimentGroup() === this.possibleGroups[1]
   },
 
- isNotAffected() {
+  isNotAffected() {
     return !(this.isTreatmentGroup() || this.isControlGroup())
   },
 
@@ -40,13 +38,13 @@ export default Service.extend({
   },
 
   async getExperimentGroupAssigned(){
-    return this.storage.getExperimentGroup() || /*this.pilasBloquesApi.getExperimentGroup() ||*/ await this.randomizeAndSaveExperimentGroup()
+    return this.storage.getExperimentGroup() || this.pilasBloquesApi.getUser()?.experimentGroup || await this.randomizeAndSaveExperimentGroup() // jshint ignore:line
   },
 
   async randomizeAndSaveExperimentGroup(){
     const randomExperimentGroup = await this.getRandomExperimentGroup()
     if(this.pilasBloquesApi.getUser()){
-     // this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
+      this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
 
     this.storage.saveExperimentGroup(randomExperimentGroup)
@@ -56,10 +54,15 @@ export default Service.extend({
 
   async getRandomExperimentGroup(){
     const ip = await this.getUserIp()
-    const randomizedIp = seedrandom(ip)
-    const experimentGroupNumber = randomizedIp() * (this.possibleGroups.length - 1)
+    const randomIndex = this.randomExperimentGroupNumber(ip)
+    return this.possibleGroups[randomIndex]
+  },
 
-    return this.possibleGroups[Math.floor(experimentGroupNumber)]
+  randomExperimentGroupNumber(seed){
+    const randomizedSeed = seedrandom(seed)
+    const experimentGroupNumber = randomizedSeed() * (this.possibleGroups.length - 1)
+
+    return Math.floor(experimentGroupNumber)
   },
 
   async getUserIp(){

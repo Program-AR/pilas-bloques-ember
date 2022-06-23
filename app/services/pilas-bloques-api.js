@@ -74,6 +74,11 @@ export default Service.extend({
       .then(user => this.storage.saveUser(user))
   },
 
+  async saveExperimentGroup(group) {
+    return this._send('PUT', `experimental-group`, group)
+      .then(user => this.storage.saveUser(user))
+  },
+
   logout() {
     this.pilasBloquesAnalytics.logout()
     this.storage.saveUser(null)
