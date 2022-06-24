@@ -5,9 +5,9 @@ module('Unit | Service | experiments', function (hooks) {
   let experiments
   let storageMock
   let challengeExpectationsMock
+  let pilasBloquesApiMock
 
   const solvedChallenge = {id: "13"}
-
   const solvedChallengesFeedbackDisabled = ["13", "14"]
 
   setupTest(hooks);
@@ -18,21 +18,26 @@ module('Unit | Service | experiments', function (hooks) {
 
     storageMock = {
       solvedChallenges: [],
-      getSolvedChallenges(){
-        return this.solvedChallenges
-      }
+      experimentGroup: "notAffected",
+      getSolvedChallenges(){ return this.solvedChallenges },
+      getExperimentGroup(){ return this.experimentGroup },
+      saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} }
     }
-    experiments.storage = storageMock
-
+    
     challengeExpectationsMock = {
       _decomposition: true,
-
-      hasDecomposition(){
-        return this._decomposition
-      }
+      hasDecomposition(){ return this._decomposition }
     }
 
+    pilasBloquesApiMock = {
+      user: {experimentGroup: "control"},
+      getUser() { return this.user },
+      saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} }
+    }
+
+    experiments.storage = storageMock
     experiments.challengeExpectations = challengeExpectationsMock
+    experiments.pilasBloquesApi = pilasBloquesApiMock
   })
 
   //Show non scored expects
@@ -50,14 +55,14 @@ module('Unit | Service | experiments', function (hooks) {
 
   //Congratulations modal
 
-  test('Should show congratulations modal - group is not affected', function (assert) {
+  test('Should show congratulations modal - group is not affected', async function (assert) {
     experiments.set('group', 'notAffected')
-    assert.ok(experiments.shouldShowCongratulationsModal())
+    assert.ok(await experiments.shouldShowCongratulationsModal())
   })
 
-  test('Should NOT show congratulations modal - group is affected', function (assert) {
+  test('Should NOT show congratulations modal - group is affected', async function (assert) {
     experiments.set('group', 'treatment')
-    assert.notOk(experiments.shouldShowCongratulationsModal())
+    assert.notOk(await experiments.shouldShowCongratulationsModal())
   })
 
   //Feedback is disabled
@@ -93,6 +98,34 @@ module('Unit | Service | experiments', function (hooks) {
     assert.ok(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
+  //autoassign
+  test('ExperimentGroup gets group from storage if exists', async function(assert){
+    experiments.set('group', 'autoassign')
+    assert.deepEqual(await experiments.experimentGroup(), "notAffected")
+  })
+
+  test('ExperimentGroup gets group from api if user is logged, has group and group is not in storage', async function(assert){
+    experiments.set('group', 'autoassign')
+    storageMock.experimentGroup = null
+    assert.deepEqual(await experiments.experimentGroup(), "control")
+  })
+
+  test('Random experimentGroup is generated when user is NOT logged, and is NOT in storage ', async function(assert){
+    experiments.set('group', 'autoassign')
+    storageMock.experimentGroup = null
+    pilasBloquesApiMock.user = null
+    assert.ok(experiments.possibleGroups.includes(await experiments.experimentGroup()))
+  })
+
+  test('Random group is saved in api if user is logged and does NOT have a group', async function(assert){
+    experiments.set('group', 'autoassign')
+    storageMock.experimentGroup = null
+    pilasBloquesApiMock.user = {experimentGroup: null}
+
+    assert.ok(experiments.possibleGroups.includes(await experiments.experimentGroup()))
+    assert.deepEqual(pilasBloquesApiMock.user.experimentGroup, "treatment")
+  })
+
   function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges){
     testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
@@ -102,10 +135,10 @@ module('Unit | Service | experiments', function (hooks) {
   }
 
   function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){
-    test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function(assert){
+    test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, async function(assert){
       storageMock.solvedChallenges = solvedChallenges
       experiments.set('group', group)
-      const result = callback()
+      const result = await callback()
       if(shouldShow){
         assert.ok(result)
       }else{
