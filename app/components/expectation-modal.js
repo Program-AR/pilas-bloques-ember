@@ -11,13 +11,13 @@ export default Component.extend({
     return this.expectScoring.failedExpects(this.expects).length === 0
   },
 
-  shouldShowScoredExpectations() {
-    return this.experiments.shouldShowScoredExpectations()
+  async shouldShowScoredExpectations() {
+    return await this.experiments.shouldShowScoredExpectations()
   },
 
-  textTag(textType) {
+  async textTag(textType) {
     const base = "components.finishedExerciseModal.expectationsModal."
-    const groupTag = this.shouldShowScoredExpectations() ? this.scoredExpectationsTag() : 'nonScoredExpectations.'
+    const groupTag = await this.shouldShowScoredExpectations() ? this.scoredExpectationsTag() : 'nonScoredExpectations.'
     return base + groupTag + textType
   },
 

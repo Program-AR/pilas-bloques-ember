@@ -17,24 +17,24 @@ export default Service.extend({
     return this.get('storage').getSolvedChallenges()
   }),
 
-  isTreatmentGroup() {
-    return this.experimentGroup() === this.possibleGroups[0]
+  async isTreatmentGroup() {
+    return await this.experimentGroup() === this.possibleGroups[0]
   },
 
-  isControlGroup() {
-    return this.experimentGroup() === this.possibleGroups[1]
+  async isControlGroup() {
+    return await this.experimentGroup() === this.possibleGroups[1]
   },
 
-  isNotAffected() {
-    return !(this.isTreatmentGroup() || this.isControlGroup())
+  async isNotAffected() {
+    return !(await this.isTreatmentGroup() || await this.isControlGroup())
   },
 
   isAutoAssignGroup(){
     return this.group === "autoassign"
   },
 
-  experimentGroup() {
-    return this.isAutoAssignGroup() ? this.getExperimentGroupAssigned() : this.group
+  async experimentGroup() {
+    return this.isAutoAssignGroup() ? await this.getExperimentGroupAssigned() : this.group
   },
 
   async getExperimentGroupAssigned(){
@@ -46,7 +46,7 @@ export default Service.extend({
     if(this.pilasBloquesApi.getUser()){
       this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
-
+    
     this.storage.saveExperimentGroup(randomExperimentGroup)
 
     return randomExperimentGroup
@@ -54,11 +54,10 @@ export default Service.extend({
 
   async getRandomExperimentGroup(){
     const ip = await this.getUserIp()
-    const randomIndex = this.randomExperimentGroupNumber(ip)
-    return this.possibleGroups[randomIndex]
+    return this.possibleGroups[this.randomIndex(ip)]
   },
 
-  randomExperimentGroupNumber(seed){
+  randomIndex(seed){
     const randomizedSeed = seedrandom(seed)
     const experimentGroupNumber = randomizedSeed() * (this.possibleGroups.length - 1)
 
@@ -68,7 +67,6 @@ export default Service.extend({
   async getUserIp(){
     const response = await fetch("https://api64.ipify.org?format=json")
     const jsonIp = await response.json()
-    
     return jsonIp.ip
   },
 
@@ -80,16 +78,16 @@ export default Service.extend({
     } 
   },
 
-  shouldShowCongratulationsModal(){
-    return this.isNotAffected()
+  async shouldShowCongratulationsModal(){
+    return await this.isNotAffected()
   },
 
-  shouldShowBlocksExpectationFeedback(){
-    return this.isTreatmentGroup() && !this.feedbackIsDisabled()
+  async shouldShowBlocksExpectationFeedback(){
+    return await this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
-  shouldShowScoredExpectations(){
-    return !(this.isControlGroup() || this.feedbackIsDisabled())
+  async shouldShowScoredExpectations(){
+    return !(await this.isControlGroup() || this.feedbackIsDisabled())
   },
 
   feedbackIsDisabled(){
