@@ -12,6 +12,7 @@ export default Ember.Service.extend({
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
   EXPERIMENT_GROUP: 'PB_EXPERIMENT_GROUP',
   SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
+  USER_IP: 'PB_USER_IP',
 
   getUserId() {
     const user = this.getUser()
@@ -54,9 +55,11 @@ export default Ember.Service.extend({
   
   saveSolvedChallenges(solvedChallenges) { this._save(this.SOLVED_CHALLENGES,solvedChallenges) },
 
-  getSolvedChallenges () { 
-    return this._get(this.SOLVED_CHALLENGES) || []
-  },
+  getSolvedChallenges() { return this._get(this.SOLVED_CHALLENGES) || [] },
+
+  saveUserIp(ip) { return this._save(this.USER_IP, ip)},
+
+  getUserIp() { return this._get(this.USER_IP)},
 
   clear() { localStorage.clear() },
 

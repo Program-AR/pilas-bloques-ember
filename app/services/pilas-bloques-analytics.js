@@ -10,13 +10,14 @@ export default Service.extend({
   storage: service(),
   experiments: service(),
 
-  async context() {
+  context() {
     const userId = this.storage.getUserId()
     const online = this.platform.online()
     const fingerprint = new ClientJS().getFingerprint()
     const session = this.getSession()
     const version = environment.APP.version
-    const experimentGroup = await this.experiments.experimentGroup()
+    const experimentGroup = this.experiments.experimentGroup()
+  
     return {
       ...session,
       online,

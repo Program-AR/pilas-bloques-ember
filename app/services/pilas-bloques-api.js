@@ -75,7 +75,7 @@ export default Service.extend({
   },
 
   async saveExperimentGroup(group) {
-    return this._send('PUT', `experimental-group`, group)
+    return this._send('PUT', `experiment-group`, {group})
       .then(user => this.storage.saveUser(user))
   },
 
@@ -93,7 +93,7 @@ export default Service.extend({
   async _send(method, resource, body, critical = true) {
     const user = this.getUser()
     if (body) {
-      body.context = await this.pilasBloquesAnalytics.context()
+      body.context = this.pilasBloquesAnalytics.context()
       body.timestamp = new Date()
     } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 

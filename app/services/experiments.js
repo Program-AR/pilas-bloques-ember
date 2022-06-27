@@ -17,43 +17,43 @@ export default Service.extend({
     return this.get('storage').getSolvedChallenges()
   }),
 
-  async isTreatmentGroup() {
-    return await this.experimentGroup() === this.possibleGroups[0]
+  isTreatmentGroup() {
+    return this.experimentGroup() === this.possibleGroups[0]
   },
 
-  async isControlGroup() {
-    return await this.experimentGroup() === this.possibleGroups[1]
+  isControlGroup() {
+    return this.experimentGroup() === this.possibleGroups[1]
   },
 
-  async isNotAffected() {
-    return !(await this.isTreatmentGroup() || await this.isControlGroup())
+  isNotAffected() {
+    return !(this.isTreatmentGroup() || this.isControlGroup())
   },
 
   isAutoAssignGroup(){
     return this.group === "autoassign"
   },
 
-  async experimentGroup() {
-    return this.isAutoAssignGroup() ? await this.getExperimentGroupAssigned() : this.group
+  experimentGroup() {
+    return this.isAutoAssignGroup() ? this.getExperimentGroupAssigned() : this.group
   },
 
-  async getExperimentGroupAssigned(){
-    return this.storage.getExperimentGroup() || this.pilasBloquesApi.getUser()?.experimentGroup || await this.randomizeAndSaveExperimentGroup() // jshint ignore:line
+  getExperimentGroupAssigned(){
+    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup() || this.randomizeAndSaveExperimentGroup() // jshint ignore:line
   },
 
-  async randomizeAndSaveExperimentGroup(){
-    const randomExperimentGroup = await this.getRandomExperimentGroup()
+  randomizeAndSaveExperimentGroup(){
+    const randomExperimentGroup = this.getRandomExperimentGroup()
+    this.storage.saveExperimentGroup(randomExperimentGroup)
+
     if(this.pilasBloquesApi.getUser()){
       this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
     
-    this.storage.saveExperimentGroup(randomExperimentGroup)
-
     return randomExperimentGroup
   },
 
-  async getRandomExperimentGroup(){
-    const ip = await this.getUserIp()
+  getRandomExperimentGroup(){
+    const ip = this.storage.getUserIp()
     return this.possibleGroups[this.randomIndex(ip)]
   },
 
@@ -64,10 +64,12 @@ export default Service.extend({
     return Math.floor(experimentGroupNumber)
   },
 
-  async getUserIp(){
-    const response = await fetch("https://api64.ipify.org?format=json")
-    const jsonIp = await response.json()
-    return jsonIp.ip
+  async saveUserIP(){
+    if(!this.storage.getUserIp()){
+      const response = await fetch("https://api64.ipify.org?format=json")
+      const jsonIp = await response.json()
+      this.storage.saveUserIp(jsonIp.ip)
+    }
   },
 
   updateSolvedChallenges(challenge){
@@ -78,16 +80,16 @@ export default Service.extend({
     } 
   },
 
-  async shouldShowCongratulationsModal(){
-    return await this.isNotAffected()
+  shouldShowCongratulationsModal(){
+    return this.isNotAffected()
   },
 
-  async shouldShowBlocksExpectationFeedback(){
-    return await this.isTreatmentGroup() && !this.feedbackIsDisabled()
+  shouldShowBlocksExpectationFeedback(){
+    return this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
-  async shouldShowScoredExpectations(){
-    return !(await this.isControlGroup() || this.feedbackIsDisabled())
+  shouldShowScoredExpectations(){
+    return !(this.isControlGroup() || this.feedbackIsDisabled())
   },
 
   feedbackIsDisabled(){

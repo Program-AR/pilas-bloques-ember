@@ -422,7 +422,7 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    if(await this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
+    if(this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
@@ -432,8 +432,8 @@ export default Component.extend({
     return Blockly.MyLanguage.workspaceToCode(Blockly.getMainWorkspace())
   },
 
-  async shouldShowCongratulationsModal() {
-    return await this.experiments.shouldShowCongratulationsModal()
+  shouldShowCongratulationsModal() {
+    return this.experiments.shouldShowCongratulationsModal()
   },
 
   actions: {
