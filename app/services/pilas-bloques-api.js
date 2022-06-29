@@ -93,7 +93,7 @@ export default Service.extend({
   async _send(method, resource, body, critical = true) {
     const user = this.getUser()
     if (body) {
-      body.context = this.pilasBloquesAnalytics.context()
+      body.context = await this.pilasBloquesAnalytics.context()
       body.timestamp = new Date()
     } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
