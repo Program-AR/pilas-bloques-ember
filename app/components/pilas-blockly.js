@@ -363,7 +363,7 @@ export default Component.extend({
   enabledBlocksHaveNoErrors() {
     return Object.values(Blockly.getMainWorkspace().blockDB_)
       .filter(block => !block.disabled)
-      .every(block => !block.hasError?.call(block))
+      .every(block => !block.hasError())
   },
 
   existsCriticalExpectationFailure() {

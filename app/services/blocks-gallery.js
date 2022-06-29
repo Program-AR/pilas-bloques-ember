@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor } from '../utils/blocks'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor, createInputTextBlock } from '../utils/blocks'
 import Ember from 'ember'
 
 const original_procedure_type = 'procedures_defnoreturn'
@@ -17,6 +17,7 @@ export default Service.extend({
     Blockly.shouldExecute = this._shouldExecute.bind(this);
     Blockly.aliases = this._aliases;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
+    Blockly.Block.prototype.hasError = function () { return false }
     //END TODO
     this._generarLenguaje();
     this._definirColores();
@@ -851,44 +852,31 @@ export default Service.extend({
       argumentos: '{}',
     });
 
-    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula = {
-      init: function () {
-        this.jsonInit({
-          "type": "EscribirTextoDadoEnOtraCuadricula",
-          "message0": `${thisService.intl.t(`blocks.write`)}`,
-          "colour": Blockly.Blocks.primitivas.COLOUR,
-          "inputsInline": true,
-          "previousStatement": true,
-          "nextStatement": true,
-          "args0": [
-            {
-              "type": "field_image",
-              "src": `iconos/icono.DibujarLinea.png`,
-              "width": 16,
-              "height": 16,
-              "alt": "*"
-            },
-            {
-              "type": "field_input",
-              "name": "texto",
-              "text": ""
-            }
-          ],
-        })
+    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula = createInputTextBlock({
+      initOptions: {
+        "type": "EscribirTextoDadoEnOtraCuadricula",
+        "message0": `${thisService.intl.t(`blocks.write`)}`,
+        "colour": Blockly.Blocks.primitivas.COLOUR,
+        "inputsInline": true,
+        "previousStatement": true,
+        "nextStatement": true,
+        "args0": [
+          {
+            "type": "field_image",
+            "src": `iconos/icono.DibujarLinea.png`,
+            "width": 16,
+            "height": 16,
+            "alt": "*"
+          },
+          {
+            "type": "field_input",
+            "name": "texto",
+            "text": ""
+          }
+        ],
       },
-      onchange: function (event) {
-        if (event?.runCode && this.hasError()) {
-          addError(this, 'AAAAAAAAAAAAAAAAAAAAAAAAH')
-          this.getSvgRoot().style["fill-opacity"] = 1
-        }
-      },
-      isCustomBlock: true,
-      hasError: function () {
-        return this.inputList.some(
-          input => input.fieldRow.some(row => row.name === "texto" && !row.text_)
-        )
-      }
-    }
+      errorMessage: this.tString('errors.missingTextInput')
+    })
 
     Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoryId = 'primitives';
 

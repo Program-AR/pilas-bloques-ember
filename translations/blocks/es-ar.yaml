@@ -153,3 +153,4 @@ errors:
   nonAvailableBlock: Este bloque no está disponible en esta actividad.
   wrongParameter: 'Este bloque no puede usarse aquí. Es un parámetro que sólo puede usarse en el procedimiento "{procedure}"'
   deletedParameter: 'Este bloque ya no puede usarse, el parámetro ha sido eliminado.'
+  missingTextInput: ¡Tenés que elegir una letra!

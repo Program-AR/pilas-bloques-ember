@@ -153,3 +153,4 @@ errors:
   nonAvailableBlock: This block is not available in this activity.
   wrongParameter: 'This block can''t be used here. It''s a parameter that can only be used inside the procedure "{procedure}".'
   deletedParameter: 'This block can no longer be used, the parameter has been deleted.'
+  missingTextInput: You have to choose a letter!
