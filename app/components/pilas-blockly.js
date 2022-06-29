@@ -144,17 +144,17 @@ export default Component.extend({
       blocks: [blockType]
     }
     const blocklyBlock = this.blocklyBlock(blockType)
-    if(blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
+    if (blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
     return toolboxBlock
   },
 
   groupByCategories(toolboxBlocks) {
     const groupedBlocks = []
     toolboxBlocks.forEach(tb => {
-      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId) 
-      if(match) {
+      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId)
+      if (match) {
         match.blocks.push(...tb.blocks)
-        if(tb.custom) match.custom = tb.custom  //Last one takes precedence
+        if (tb.custom) match.custom = tb.custom  //Last one takes precedence
       }
       else {
         groupedBlocks.push(tb)
@@ -334,7 +334,7 @@ export default Component.extend({
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
-      if(this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
+      if (this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
 
       this.send('showEndModal')
 
@@ -357,6 +357,13 @@ export default Component.extend({
       .filter(block => !block.disabled)
       .every(block => Blockly.shouldExecute(block))
       && !this.existsCriticalExpectationFailure()
+      && this.enabledBlocksHaveNoErrors()
+  },
+
+  enabledBlocksHaveNoErrors() {
+    return Object.values(Blockly.getMainWorkspace().blockDB_)
+      .filter(block => !block.disabled)
+      .every(block => !block.hasError?.call(block))
   },
 
   existsCriticalExpectationFailure() {
@@ -422,7 +429,7 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    if(this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
+    if (this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
@@ -521,7 +528,7 @@ export default Component.extend({
      */
     setWorkspace(workspaceXML) {
       var xml = Blockly.Xml.textToDom(workspaceXML);
-  
+
       if (Blockly.mainWorkspace) {
         Blockly.mainWorkspace.clear();
         Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());

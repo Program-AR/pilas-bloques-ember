@@ -225,8 +225,8 @@ export default Service.extend({
     Blockly.Msg.REDO = this.tString("contextMenu.redo")
     Blockly.Msg.CLEAN_UP = this.tString("contextMenu.cleanUp")
     Blockly.Msg.EXTERNAL_INPUTS = this.tString("contextMenu.externalInputs")
-    
-    
+
+
 
 
     // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
@@ -284,6 +284,8 @@ export default Service.extend({
   },
 
   _definirBloquesAccion() {
+
+    const thisService = this
 
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: 'iconos.botonRojo.png',
@@ -849,27 +851,44 @@ export default Service.extend({
       argumentos: '{}',
     });
 
-    blockly.createCustomBlock('EscribirTextoDadoEnOtraCuadricula', {
-      message0: `${this.intl.t(`blocks.write`)}`,
-      colour: Blockly.Blocks.primitivas.COLOUR,
-      inputsInline: true,
-      previousStatement: true,
-      nextStatement: true,
-      args0: [
-        {
-          "type": "field_image",
-          "src": `iconos/icono.DibujarLinea.png`,
-          "width": 16,
-          "height": 16,
-          "alt": "*"
-        },
-        {
-          "type": "field_input",
-          "name": "texto",
-          "text": ""
+    Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula = {
+      init: function () {
+        this.jsonInit({
+          "type": "EscribirTextoDadoEnOtraCuadricula",
+          "message0": `${thisService.intl.t(`blocks.write`)}`,
+          "colour": Blockly.Blocks.primitivas.COLOUR,
+          "inputsInline": true,
+          "previousStatement": true,
+          "nextStatement": true,
+          "args0": [
+            {
+              "type": "field_image",
+              "src": `iconos/icono.DibujarLinea.png`,
+              "width": 16,
+              "height": 16,
+              "alt": "*"
+            },
+            {
+              "type": "field_input",
+              "name": "texto",
+              "text": ""
+            }
+          ],
+        })
+      },
+      onchange: function (event) {
+        if (event?.runCode && this.hasError()) {
+          addError(this, 'AAAAAAAAAAAAAAAAAAAAAAAAH')
+          this.getSvgRoot().style["fill-opacity"] = 1
         }
-      ],
-    });
+      },
+      isCustomBlock: true,
+      hasError: function () {
+        return this.inputList.some(
+          input => input.fieldRow.some(row => row.name === "texto" && !row.text_)
+        )
+      }
+    }
 
     Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoryId = 'primitives';
 
@@ -1384,8 +1403,8 @@ export default Service.extend({
             clearValidationsFor(this)
           } else {
             var err = (hasParam(procedureDef, this))
-            ? wrongParameterError(procedureDef)
-            : deletedParameterError
+              ? wrongParameterError(procedureDef)
+              : deletedParameterError
             addError(this, err)
           }
         }
