@@ -92,11 +92,6 @@ export default Service.extend({
 
   async _send(method, resource, body, critical = true) {
     const user = this.getUser()
-    if (body) {
-      body.context = await this.pilasBloquesAnalytics.context()
-      body.timestamp = new Date()
-    } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
-
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
     const headers = {
@@ -104,7 +99,12 @@ export default Service.extend({
       'Authorization': user ? `Bearer ${user.token}` : null
     }
 
-    this.set(flag, true)
+    this.set(flag, true) 
+
+    if (body) {
+      body.context = await this.pilasBloquesAnalytics.context()
+      body.timestamp = new Date()
+    } //TODO: Move user to Analytics / use id instead of nickname / rename Analytics to session related approach
 
     return this._doFetch(url, {
       method,
