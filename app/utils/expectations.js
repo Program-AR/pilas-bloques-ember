@@ -45,7 +45,7 @@ export const isUsedFromMain = (declaration) =>
 
 const declarationNotTooLong = (limit, declaration, expectationName) =>
   newExpectation(
-    { isSuggestion: true, isForControlGroup: true, isSuggestion: true },
+    { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} <= ${limit - 1}`, expectationName, { declaration, limit })
 
 export const notTooLong = (limit = 7) => (declaration) =>
@@ -106,9 +106,9 @@ export const expectationDescription = (intl, name, result, expectationParams) =>
   }
 
   return {
-    asScoring: expectationParams?.isScoreable ? translateAs('scoreable') : '',
-    asSuggestion: expectationParams?.isSuggestion ? translateAs('suggestions') : '',
-    forControlGroup: expectationParams?.isForControlGroup ? translateAs('control_group') : ''
+    asScoring: (expectationParams && expectationParams.isScoreable) ? translateAs('scoreable') : '',
+    asSuggestion: (expectationParams && expectationParams.isSuggestion) ? translateAs('suggestions') : '',
+    forControlGroup: (expectationParams && expectationParams.isForControlGroup) ? translateAs('control_group') : ''
   }
 
 }
@@ -129,7 +129,7 @@ const conditionalRepetitionId = 'uses_conditional_repetition'
 const simpleRepetitionId = 'uses_simple_repetition'
 const declaresProcedureId = 'declares_procedure'
 
-export const isCritical = (expectationResult) => expectationResult?.isCritical
+export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
 
 export const notCritical = (expectationResult) => !isCritical(expectationResult)
 
