@@ -286,8 +286,6 @@ export default Service.extend({
 
   _definirBloquesAccion() {
 
-    const thisService = this
-
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: 'iconos.botonRojo.png',
       comportamiento: 'Interactuar',
@@ -855,7 +853,7 @@ export default Service.extend({
     Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula = createInputTextBlock({
       initOptions: {
         "type": "EscribirTextoDadoEnOtraCuadricula",
-        "message0": `${thisService.intl.t(`blocks.write`)}`,
+        "message0": `${this.intl.t(`blocks.write`)}`,
         "colour": Blockly.Blocks.primitivas.COLOUR,
         "inputsInline": true,
         "previousStatement": true,
