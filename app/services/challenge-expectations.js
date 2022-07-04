@@ -17,12 +17,17 @@ const idsToExpectations = (intl) => ({
       nameWasChanged(intl)
     )
   ),
+  
+  /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
+  Only decomposition should be active
 
   conditionalAlternative: usesConditionalAlternative,
 
   conditionalRepetition: usesConditionalRepetition,
 
   simpleRepetition: usesSimpleRepetition,
+
+  */
 
 })
 
