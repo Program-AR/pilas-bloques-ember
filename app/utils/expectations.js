@@ -23,6 +23,9 @@ export const usesSimpleRepetition = () =>
 export const doSomething = (declaration) =>
   newExpectation(`${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
+export const doesNotNestControlStructures = (declaration) => 
+  newExpectation(`within ${toEDLString(declaration)} ${nestedControlStructuresExpectation('if')} && ${nestedControlStructuresExpectation('repeat')} && ${nestedControlStructuresExpectation('while')}`, doesNotNestControlStructuresId, { declaration })
+
 export const isUsed = (declaration) =>
   newExpectation(`calls ${toEDLString(declaration)}`, isUsedId, { declaration })
 
@@ -60,11 +63,13 @@ const newSimpleCondition = (condition, id, opt = {}) =>
 
 const pass = `calls || ! calls`
 const fail = `calls && ! calls`
-
+  
 export const parseExpect = (name) => [
   name.split('|')[0],
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
+
+const nestedControlStructuresExpectation = (controlStructure) => `! uses ${controlStructure} with (anything, something that (uses if || uses while || uses repeat))`
 
 const expectationName = (id) => stringifiedExceptationPrefix + id
 
@@ -88,6 +93,7 @@ export const conditionalAlternativeId = 'uses_conditional_alternative'
 export const conditionalRepetitionId = 'uses_conditional_repetition'
 export const simpleRepetitionId = 'uses_simple_repetition'
 export const declaresProcedureId = 'declares_procedure'
+export const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
 
 const criticalExpectationsIds = [doesNotUseRecursionId]
 
