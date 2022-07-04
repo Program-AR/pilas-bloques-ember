@@ -234,43 +234,43 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   // IDs for internationalize - [key, params]
 
   expectationKeyTest('declaresAnyProcedure', declaresAnyProcedure(),
-    ['declares_procedure', { declaration: entryPointType }]
+    ['declares_procedure', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('doSomething', doSomething(declaration),
-    ['do_something', { declaration }]
+    ['do_something', { declaration, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('isUsed', isUsed(declaration),
-    ['is_used', { declaration }]
+    ['is_used', { declaration, isSuggestion: true }]
   )
 
   expectationKeyTest('isUsedFromMain', isUsedFromMain(declaration),
-    ['is_used_from_main', { declaration }]
+    ['is_used_from_main', { declaration, isSuggestion: true }]
   )
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
-    ['too_long', { declaration, limit }]
+    ['too_long', { declaration, limit, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
-    ['uses_conditional_alternative', { declaration: entryPointType }]
+    ['uses_conditional_alternative', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
-    ['uses_conditional_repetition', { declaration: entryPointType }]
+    ['uses_conditional_repetition', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesSimpleRepetition', usesSimpleRepetition(),
-    ['uses_simple_repetition', { declaration: entryPointType }]
+    ['uses_simple_repetition', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
-    ['does_not_use_recursion', { declaration }]
+    ['does_not_use_recursion', { declaration, isCritical: true, isSuggestion: true }]
   )
 
   expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
-    ['name_was_changed', { declaration }]
+    ['name_was_changed', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true }]
   )
 
   function expectationKeyTest(expectationName, edl, ...expectedIds) {
@@ -316,11 +316,11 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     assert.propEqual(parseExpect(stringifiedExpectationMultipleOpt), [expectationName, { declaration: declaration, b: 'foo' }])
   })
 
-  test('expectation id is critical', function (assert) {
-    assert.ok(isCritical({ id: doesNotUseRecursionId }))
+  test('critical expectation is critical', function (assert) {
+    assert.ok(isCritical({ id: doesNotUseRecursionId, isCritical: true }))
   })
 
-  test('expectation id is not critical', function (assert) {
+  test('non critical expectation is not critical', function (assert) {
     assert.notOk(isCritical({ id: 'is_used' }))
   })
 
