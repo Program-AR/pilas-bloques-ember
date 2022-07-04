@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition, doesNotNestControlStructures } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil, repeat, number } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -90,14 +90,53 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
   
-    expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
-      procedure(declaration, [],
-        application(declaration),
-        application(declaration),
-        application(declaration)
-      )
-    ], 'Recursive calls should count as being too long ')
+  expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application(declaration),
+      application(declaration)
+    )
+  ], 'Recursive calls should count as being too long ')
   
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(entryPointType), [
+    entryPoint(entryPointType,
+      muIf(none(),
+        muUntil(none(), none())
+      )
+    )
+  ])
+
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(declaration), [
+    procedure(declaration, [], 
+      muIf(none(),
+        repeat(number(3), none()))  
+    )
+  ])
+
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(declaration), [
+    procedure(declaration, [], 
+      muIf(none(),
+        muIf(none())) 
+    )
+  ])
+
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(declaration), [
+    procedure(declaration, [], 
+      muIf(none(),
+        muUntil(none(), none())) 
+    )
+  ])
+
+  expectationTestOk('doesNotNestControlStructures', doesNotNestControlStructures(declaration), [
+    procedure(declaration, [],
+      muIf(none(),
+      application("PROCEDURE2"))
+    ),
+    procedure("PROCEDURE2", [],
+      muIf(none())
+    )
+  ])
+
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
       application("PROCEDURE2")
@@ -251,6 +290,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
     [makeKey('too_long'), { declaration, limit }]
+  )
+
+  expectationKeyTest('doesNotNestControlStructures', doesNotNestControlStructures(declaration),
+    [makeKey('does_not_nest_control_structures'), { declaration }]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
