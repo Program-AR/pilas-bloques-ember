@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
@@ -281,6 +281,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', challengeWithExpectationsMock)
       experimentsMock = this.owner.lookup('service:experiments')
+      this.owner.lookup('service:challengeExpectations').idsToExpectations = idsToExpectationsMock
     })
 
     const failingExpectationsProgram =
