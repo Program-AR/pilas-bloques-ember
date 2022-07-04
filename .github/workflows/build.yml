@@ -39,6 +39,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version-file: '.nvmrc'
+      - run: echo "EXPERIMENT_GROUP=notAffected" >> $GITHUB_ENV
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:linux
@@ -57,6 +58,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version-file: '.nvmrc'
+      - run: echo "EXPERIMENT_GROUP=notAffected" >> $GITHUB_ENV
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:osx
@@ -75,6 +77,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version-file: '.nvmrc'
+      - run: echo "EXPERIMENT_GROUP=notAffected" >> $GITHUB_ENV
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:win32

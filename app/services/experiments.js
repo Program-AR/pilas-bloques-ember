@@ -4,7 +4,7 @@ import { computed } from '@ember/object'
 
 export default Service.extend({
 
-  group: ENV.experimentGroupType,
+  group: ENV.experimentGroup,
   decompositionTreatmentLength: ENV.decompositionTreatmentLength,
   storage: service(),
   challengeExpectations: service(),
@@ -29,6 +29,10 @@ export default Service.extend({
     return this.group
   },
 
+  groupId() {
+    return this.group.charAt(0)
+  },
+  
   updateSolvedChallenges(challenge){
     const _solvedChallenges = this.solvedChallenges 
     if (this.shouldUpdateSolvedChallenges(challenge)){

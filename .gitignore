@@ -27,3 +27,5 @@ log_descompresion.log
 
 .idea/
 *.iml
+
+.env
