@@ -4,6 +4,7 @@ import { setUpTestLocale } from '../../helpers/utils';
 
 const solutionPassMock = {
   id: 'solution_works',
+  isScoreable: true,
   description: {
     asScoring: '¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:',
     asSuggestion: '',

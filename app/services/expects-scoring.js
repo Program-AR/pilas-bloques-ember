@@ -42,10 +42,13 @@ export default Service.extend({
     },
 
     solutionWorksExpectResult() {
+        const params = { isScoreable: true }
+
         return {
             id: solutionWorks,
-            description: expectationDescription(this.intl, solutionWorks, true),
-            result: true
+            description: expectationDescription(this.intl, solutionWorks, true, params),
+            result: true,
+            ...params
         }
     },
 
