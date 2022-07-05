@@ -12,23 +12,23 @@ module('Unit | Service | pilas-mulang', function (hooks) {
 
     test('Combine two usage results of a procedure that is not used from anywhere', function (assert) {
         const isUsedResult = createResult(isUsedId, false, isUsedDescription)
-        const IsUsedFromMainResult = createResult(isUsedFromMainId, false, isUsedFromMainDescription)
+        const isUsedFromMainResult = createResult(isUsedFromMainId, false, isUsedFromMainDescription)
 
-        assert.propEqual(combineUsage([isUsedResult, IsUsedFromMainResult]), createResult(isUsedId, false, isUsedDescription))
+        assert.propEqual(combineUsage([isUsedResult, isUsedFromMainResult]), createResult(isUsedId, false, isUsedDescription))
     })
 
     test('Combine two usage results of a procedure that is used from another procedure but not from main', function (assert) {
         const isUsedResult = createResult(isUsedId, true, isUsedDescription)
-        const IsUsedFromMainResult = createResult(isUsedFromMainId, false, isUsedFromMainDescription)
+        const isUsedFromMainResult = createResult(isUsedFromMainId, false, isUsedFromMainDescription)
 
-        assert.propEqual(combineUsage([isUsedResult, IsUsedFromMainResult]), createResult(isUsedId, false, isUsedFromMainDescription))
+        assert.propEqual(combineUsage([isUsedResult, isUsedFromMainResult]), createResult(isUsedId, false, isUsedFromMainDescription))
     })
 
     test('Combine two usage results of a procedure that is used', function (assert) {
         const isUsedResult = createResult(isUsedId, true, isUsedDescription)
-        const IsUsedFromMainResult = createResult(isUsedFromMainId, true, isUsedFromMainDescription)
+        const isUsedFromMainResult = createResult(isUsedFromMainId, true, isUsedFromMainDescription)
 
-        assert.propEqual(combineUsage([isUsedResult, IsUsedFromMainResult]), createResult(isUsedId, true, isUsedFromMainDescription))
+        assert.propEqual(combineUsage([isUsedResult, isUsedFromMainResult]), createResult(isUsedId, true, isUsedFromMainDescription))
     })
 
     test('Combine usage results', function (assert) {
