@@ -4,6 +4,12 @@ export function isFlying(block) {
   return block.getRootBlock() === block
 }
 
+export function allBlocksUsingControlStructures(workspace = Blockly.mainWorkspace){
+  const blockNames = allProcedures(workspace).filter(usesControlStructures).map(getName)
+  if(usesControlStructures(getEntryPointBlock(workspace))) blockNames.push(entryPointType)
+  return blockNames
+}
+
 export function allProcedures(workspace = Blockly.mainWorkspace) {
   return workspace.getTopBlocks().filter(isProcedure)
 }
@@ -14,8 +20,16 @@ export function allProcedureNames(workspace) {
 
 export function declarationWithName(name, workspace = Blockly.mainWorkspace) {
   return entryPointType == name 
-  ? workspace.getAllBlocks().find(b => b.type === entryPointType) //TODO: Move to gral place
+  ? getEntryPointBlock(workspace) //TODO: Move to gral place
   : allProcedures(workspace).find(p => getName(p) == name)
+}
+
+function getEntryPointBlock(workspace){
+  return workspace.getAllBlocks().find(b => b.type === entryPointType)
+}
+
+function usesControlStructures(block){
+  return block.getDescendants().some(isControlStructure)
 }
 
 // TODO: No acoplarse a la categoria
@@ -24,6 +38,11 @@ export function isOperator(block) {
 }
 export function isValue(block) {
   return block.categoryId == "values"
+}
+
+function isControlStructure(block){
+  const controlStructureCategories = ["repetitions", "alternatives"]
+  return controlStructureCategories.some(c => c == block.categoryId )
 }
 
 export function isProcedure(block){

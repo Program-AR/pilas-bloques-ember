@@ -1,11 +1,17 @@
-import { allProcedureNames, entryPointType } from './blocks'
+import { allProcedureNames, allBlocksUsingControlStructures, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
 export const declaresAnyProcedure = (/* workspace */) =>
   newExpectation(`declares something unlike ${toEDLString(entryPointType)}`, declaresProcedureId, { declaration: entryPointType })
 
+const allShould = (scope, ...expectations) =>
+  join(scope.map(multiExpect(...expectations)))
+
 export const allProceduresShould = (...expectations) => (workspace) =>
-  join(allProcedureNames(workspace).map(multiExpect(...expectations)))
+  allShould(allProcedureNames(workspace), ...expectations)
+
+export const allControlStructuresShould = (...expectations) => (workspace) =>
+  allShould(allBlocksUsingControlStructures(workspace), ...expectations)
 
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
