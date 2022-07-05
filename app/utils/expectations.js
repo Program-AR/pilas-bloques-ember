@@ -30,7 +30,7 @@ export const doSomething = (declaration) =>
   newExpectation(`${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
 export const doesNotNestControlStructures = (declaration) => 
-  newExpectation(`within ${toEDLString(declaration)} ${nestedControlStructuresExpectation('if')} && ${nestedControlStructuresExpectation('repeat')} && ${nestedControlStructuresExpectation('while')}`, doesNotNestControlStructuresId, { declaration })
+  newExpectation(`within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
   newExpectation(`calls ${toEDLString(declaration)}`, isUsedId, { declaration })
@@ -75,7 +75,9 @@ export const parseExpect = (name) => [
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
-const nestedControlStructuresExpectation = (controlStructure) => `! uses ${controlStructure} with (anything, something that (uses if || uses while || uses repeat))`
+const nestedControlStructureEDL = (loop) => `! uses ${loop} with (anything, ${usesControlStructureEDL})`
+const nestedAlternativeStructureEDL =  `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
+const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
 
 const expectationName = (id) => stringifiedExceptationPrefix + id
 

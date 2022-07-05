@@ -6,7 +6,9 @@ export function isFlying(block) {
 
 export function allBlocksUsingControlStructures(workspace = Blockly.mainWorkspace){
   const blockNames = allProcedures(workspace).filter(usesControlStructures).map(getName)
-  if(usesControlStructures(getEntryPointBlock(workspace))) blockNames.push(entryPointType)
+  if(usesControlStructures(getEntryPointBlock(workspace))){
+    blockNames.push(entryPointType)
+  } 
   return blockNames
 }
 
