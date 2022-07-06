@@ -229,13 +229,13 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       assert.ok(this.ctrl.shouldExecuteProgram())
     })
 
-    test('should execute program if any non critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: false, declaration: 'block_id' }])
+    test('should execute program if there are no errors', function (assert) {
+      this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: false, declaration: 'block_id', hasError() { return false } }])
       assert.ok(this.ctrl.shouldExecuteProgram())
     })
 
-    test('should not execute program if any critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true }])
+    test('should not execute program if there are errors', function (assert) {
+      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true, hasError() { return true } }])
       assert.notOk(this.ctrl.shouldExecuteProgram())
     })
 
