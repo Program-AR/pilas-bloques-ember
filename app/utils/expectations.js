@@ -75,9 +75,9 @@ export const parseExpect = (name) => [
   Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')))
 ]
 
+const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
 const nestedControlStructureEDL = (loop) => `! uses ${loop} with (anything, ${usesControlStructureEDL})`
 const nestedAlternativeStructureEDL =  `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
-const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
 
 const expectationName = (id) => stringifiedExceptationPrefix + id
 
