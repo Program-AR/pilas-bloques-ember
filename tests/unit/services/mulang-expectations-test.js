@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, expectationId, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../../utils/expectations'
+import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil, repeat, number } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -27,13 +27,13 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE')
     )
   ])
-  
-    expectationTestOk('doSomething', doSomething(declaration), [
-      procedure(declaration, [],
-        application(declaration)
-      )
-    ], 'Recursion should count as doing something')
-  
+
+  expectationTestOk('doSomething', doSomething(declaration), [
+    procedure(declaration, [],
+      application(declaration)
+    )
+  ], 'Recursion should count as doing something')
+
   expectationTestFail('doSomething', doSomething('EMPTY'), [
     procedure('EMPTY', [])
   ])
@@ -89,15 +89,15 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       application('PRIMITIVE'),
     )
   ])
-  
-    expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
-      procedure(declaration, [],
-        application(declaration),
-        application(declaration),
-        application(declaration)
-      )
-    ], 'Recursive calls should count as being too long ')
-  
+
+  expectationTestFail('notTooLong', notTooLong(limit)(declaration), [
+    procedure(declaration, [],
+      application(declaration),
+      application(declaration),
+      application(declaration)
+    )
+  ], 'Recursive calls should count as being too long ')
+
   expectationTestOk('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
       application("PROCEDURE2")
@@ -143,7 +143,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       muUntil(none(), none())
     )
   ])
-  
+
   // Direct recursion
   expectationTestFail('doesNotUseRecursion', doesNotUseRecursion(declaration), [
     procedure(declaration, [],
@@ -162,7 +162,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       repeat(number(3), none())
     )
   ])
-  
+
   const intlMock = { t: () => ({ string: 'Hacer algo' }) }
 
   expectationTestOk('nameWasChanged', nameWasChanged(intlMock)('procedure_with_changed_name'), [
@@ -234,47 +234,44 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   // IDs for internationalize - [key, params]
 
   expectationKeyTest('declaresAnyProcedure', declaresAnyProcedure(),
-    [makeKey('declares_procedure'), { declaration: entryPointType }]
+    ['declares_procedure', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('doSomething', doSomething(declaration),
-    [makeKey('do_something'), { declaration }]
+    ['do_something', { declaration, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('isUsed', isUsed(declaration),
-    [makeKey('is_used'), { declaration }]
+    ['is_used', { declaration, isSuggestion: true }]
   )
 
   expectationKeyTest('isUsedFromMain', isUsedFromMain(declaration),
-    [makeKey('is_used_from_main'), { declaration }]
+    ['is_used_from_main', { declaration, isSuggestion: true }]
   )
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
-    [makeKey('too_long'), { declaration, limit }]
+    ['too_long', { declaration, limit, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
-    [makeKey('uses_conditional_alternative'), { declaration: entryPointType }]
+    ['uses_conditional_alternative', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesConditionalRepetition', usesConditionalRepetition(),
-    [makeKey('uses_conditional_repetition'), { declaration: entryPointType }]
+    ['uses_conditional_repetition', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('usesSimpleRepetition', usesSimpleRepetition(),
-    [makeKey('uses_simple_repetition'), { declaration: entryPointType }]
+    ['uses_simple_repetition', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )
 
   expectationKeyTest('doesNotUseRecursion', doesNotUseRecursion(declaration),
-    [makeKey('does_not_use_recursion'), { declaration }]
+    ['does_not_use_recursion', { declaration, isCritical: true, isSuggestion: true }]
   )
-  
+
   expectationKeyTest('nameWasChanged', nameWasChanged(intlMock)(declaration),
-    [makeKey('name_was_changed'), { declaration }]
+    ['name_was_changed', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true }]
   )
-
-
-  function makeKey(expectationName) { return `model.spects.${expectationName}` }
 
   function expectationKeyTest(expectationName, edl, ...expectedIds) {
     test(`ID for ${expectationName}`, function (assert) {
@@ -287,10 +284,10 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     })
   }
 
-  const expectationName = 'model.spects.expectation_id'
-  const stringifiedExpectationId = 'model.spects.expectation_id|'
-  const stringifiedExpectationOneOpt =  'model.spects.expectation_id|declaration=PROCEDURE'
-  const stringifiedExpectationMultipleOpt = 'model.spects.expectation_id|declaration=PROCEDURE;b=foo'
+  const expectationName = 'expectation_id'
+  const stringifiedExpectationId = 'expectation_id|'
+  const stringifiedExpectationOneOpt = 'expectation_id|declaration=PROCEDURE'
+  const stringifiedExpectationMultipleOpt = 'expectation_id|declaration=PROCEDURE;b=foo'
 
   // Utils
   // stringify is not meant to be used this way
@@ -319,15 +316,11 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     assert.propEqual(parseExpect(stringifiedExpectationMultipleOpt), [expectationName, { declaration: declaration, b: 'foo' }])
   })
 
-  test('expectation id from name', function (assert) {
-    assert.equal(expectationId(expectationName), 'expectation_id')
+  test('critical expectation is critical', function (assert) {
+    assert.ok(isCritical({ id: doesNotUseRecursionId, isCritical: true }))
   })
 
-  test('expectation id is critical', function (assert) {
-    assert.ok(isCritical({ id: doesNotUseRecursionId }))
-  })
-
-  test('expectation id is not critical', function (assert) {
+  test('non critical expectation is not critical', function (assert) {
     assert.notOk(isCritical({ id: 'is_used' }))
   })
 
