@@ -82,7 +82,7 @@ module.exports = function (environment) {
     // However, we need this here because it is used when packaging the app.
     ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'
     ENV.testTranslations = false
-    ENV.experimentGroupType = "notAffected"
+    ENV.experimentGroupType = "treatment"
   }
 
   return ENV

@@ -39,9 +39,9 @@ model:
         Ayudá a nuestro personaje a recolectar todas las estrellas. Pista: podés hacer un procedimiento que tome una fila de estrellas.
       clue: Usar muchas veces un procedimiento te ahorra trabajo.
     '8':
-      title: María y las sandías
+      title: Tatiana y las sandías
       description: |
-        María necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+        Tatiana necesita comer todas las sandías de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
       clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     '9':
       title: Alimentando a los peces
