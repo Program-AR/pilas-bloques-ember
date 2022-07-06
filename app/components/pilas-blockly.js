@@ -356,18 +356,18 @@ export default Component.extend({
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
       .every(block => Blockly.shouldExecute(block))
-      && !this.existsCriticalExpectationFailure()
-      && this.enabledBlocksHaveNoErrors()
+      && this.thereAreNoErrors()
   },
 
-  enabledBlocksHaveNoErrors() {
+  thereAreNoErrors() {
+    return this.enabledBlocks()
+      .concat(this.get('failedExpects'))
+      .every(failable => !failable.hasError())
+  },
+
+  enabledBlocks() {
     return Object.values(Blockly.getMainWorkspace().blockDB_)
       .filter(block => !block.disabled)
-      .every(block => !block.hasError())
-  },
-
-  existsCriticalExpectationFailure() {
-    return this.get('failedExpects').some(fe => isCritical(fe))
   },
 
   staticAnalysis() {

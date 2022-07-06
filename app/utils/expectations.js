@@ -94,7 +94,7 @@ export const parseExpect = (name) => {
   const expectationName = name.split('|')[0]
   const stringToBool = (string) => (string === 'true' || string === 'false') ? string === 'true' : string
   const expectationParams = Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')).map(([paramName, paramValue]) => [paramName, stringToBool(paramValue)]))
-  return [expectationName, expectationParams]
+  return [expectationName, { ... expectationParams, hasError() { return this.isCritical && !this.result } }]
 
 }
 
