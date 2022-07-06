@@ -23,7 +23,8 @@ export default Service.extend({
       browserId: fingerprint,
       userId: userId || fingerprint,
       version,
-      experimentGroup
+      experimentGroup,
+      url: window.location.href
     }
   },
 

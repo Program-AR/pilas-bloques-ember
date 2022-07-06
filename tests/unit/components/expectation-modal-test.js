@@ -11,7 +11,7 @@ const passedExpects = [
 
 
 function newExpectation(id, status) {
-  return { id, description: '', result: status }
+  return { id, description: { asScoring: 'Scoring' }, result: status }
 }
 
 module('Unit | Component | expectation-modal', function (hooks) {

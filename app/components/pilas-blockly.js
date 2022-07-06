@@ -422,7 +422,7 @@ export default Component.extend({
     this.get('failedExpects')
       .filter(condition)
       .forEach(({ declaration, description }, i) =>
-        addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
+        addFeedback(declarationWithName(declaration), description.asSuggestion, -i)// TODO: Add priority?
       )
   },
 

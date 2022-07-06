@@ -3,8 +3,11 @@
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
 NAME=$(sh scripts/projectName.sh)
 
+# The folder with all the publishable webapp
+DIST=./dist_prod
+
 # The project version.
-VERSION=$(sh scripts/projectVersion.sh)
+VERSION="$(sh scripts/projectVersion.sh)$(node scripts/experimentGroupId.js $DIST)"
 
 # The electron executable path.
 ELECTRON=./node_modules/dist/electron
@@ -14,9 +17,6 @@ PACKAGER=./node_modules/.bin/electron-packager
 
 # The electron debian packager path.
 DEBIAN_PACKAGER=./node_modules/.bin/electron-installer-debian
-
-# The folder with all the publishable webapp
-DIST=./dist_prod
 
 [[ -d $DIST ]] || { echo "ERROR: The folder $DIST doesn't exist. You have to build Pilas Bloques before packaging." ; exit 1; }
 
