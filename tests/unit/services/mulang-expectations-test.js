@@ -242,11 +242,11 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   )
 
   expectationKeyTest('isUsed', isUsed(declaration),
-    ['is_used', { declaration, isSuggestion: true }]
+    ['is_used', { declaration, isSuggestion: true, isRelatedToUsage: true }]
   )
 
   expectationKeyTest('isUsedFromMain', isUsedFromMain(declaration),
-    ['is_used_from_main', { declaration, isSuggestion: true }]
+    ['is_used_from_main', { declaration, isSuggestion: true, isRelatedToUsage: true }]
   )
 
   expectationKeyTest('notTooLong', notTooLong(limit)(declaration),
