@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty/*, compose*/ } from 'ramda'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const idsToExpectations = (intl) => ({
@@ -16,12 +16,17 @@ const idsToExpectations = (intl) => ({
       nameWasChanged(intl)
     )
   ),
+  
+  /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
+  Only decomposition should be active. Don't forget imports
 
   conditionalAlternative: usesConditionalAlternative,
 
   conditionalRepetition: usesConditionalRepetition,
 
   simpleRepetition: usesSimpleRepetition,
+
+  */
 
 })
 
