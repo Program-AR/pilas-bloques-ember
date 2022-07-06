@@ -8,7 +8,7 @@ import { splitBy } from '../utils/lists'
 
 
 export default Service.extend({
-  activityExpectations: service(),
+  challengeExpectations: service(),
   intl: service(),
 
   /**
@@ -22,8 +22,8 @@ export default Service.extend({
    * }
    */
   async analyze(workspace, activity) {
-    const activityExpectation = this.activityExpectations.expectationFor(activity)
-    const customExpect = activityExpectation(workspace)
+    const challengeExpectation = this.challengeExpectations.expectationFor(activity)
+    const customExpect = challengeExpectation(workspace)
     const ast = this.parseAll(workspace)
     var results
 

@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, activityExpectationsMock, experimentsMock, challengeWithExpectationsMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
@@ -72,7 +72,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On running should be running and run the interpreter', async function (assert) {
@@ -122,7 +122,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('A filled program should run', async function (assert) {
@@ -221,7 +221,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('should execute program if all expectations passed', function (assert) {
@@ -235,13 +235,13 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('should not execute program if any critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id' }])
+      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true }])
       assert.notOk(this.ctrl.shouldExecuteProgram())
     })
 
     test('Al resolver el problema con expectativas fallidas', async function (assert) {
       Blockly.textToBlock(filledProgram)
-      this.owner.lookup('service:activityExpectations').expectations = declaresAnyProcedure
+      this.owner.lookup('service:challengeExpectations').expectations = declaresAnyProcedure
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
@@ -262,7 +262,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On solving a challenge should show finished challenge modal', async function (assert) {
@@ -273,27 +273,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       })
     })
 
-    test('Should show congratulations modal when group is not affected', async function (assert) {
-      const experimentsMock = this.owner.lookup('service:experiments')
-
-      experimentsMock.setNotAffected()
-      this.ctrl.send('ejecutar')
-      await settled()
-      later(() => {
-        assert.ok(this.ctrl.shouldShowCongratulationsModal())
-      })
-    })
-
-    test('Should NOT show congratulations modal when group is affected', async function (assert) {
-      const experimentsMock = this.owner.lookup('service:experiments')
-
-      experimentsMock.setControl()
-      this.ctrl.send('ejecutar')
-      await settled()
-      later(() => {
-        assert.notOk(this.ctrl.shouldShowCongratulationsModal())
-      })
-    })
   })
 
 
@@ -302,6 +281,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', challengeWithExpectationsMock)
       experimentsMock = this.owner.lookup('service:experiments')
+      this.owner.lookup('service:challengeExpectations').idsToExpectations = idsToExpectationsMock
     })
 
     const failingExpectationsProgram =
@@ -320,8 +300,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       return findBlockByTypeIn(block, "al_empezar_a_ejecutar")
     }
 
-    test('Treatment groups should show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setTreatment()
+    test('Should show expectation feedback bubbles when required by experiments', async function (assert) {
+      experimentsMock.setShouldShowBlocksExpectationFeedback(true)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
@@ -329,17 +309,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       later(() => assertWarning(assert, required, '¿Tu programa anda a veces sí y a veces no?'))
     })
 
-    test('Control groups should not show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setControl()
-
-      this.ctrl.send('ejecutar')
-      const required = blockFromProgram(failingExpectationsProgram)
-      await settled()
-      later(() => assertNotWarning(assert, required))
-    })
-
-    test('Not affected groups should not show expectation feedback bubbles', async function (assert) {
-      experimentsMock.setNotAffected()
+    test('Should not show expectation feedback bubbles when not required by experiments', async function (assert) {
+      experimentsMock.setShouldShowBlocksExpectationFeedback(false)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
@@ -352,7 +323,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     hooks.beforeEach(function () {
       this.ctrl.set('challenge', actividadMock)
-      this.owner.register('service:activityExpectations', activityExpectationsMock)
+      this.owner.register('service:challengeExpectations', challengeExpectationsMock)
     })
 
     test('On running should send to the API', async function (assert) {
@@ -365,6 +336,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     test('On running should send the metadata to the API', async function (assert) {
       const solutionWorksResult = {
         id: 'solution_works',
+        isScoreable: true,
         result: true
       }
       Blockly.textToBlock(filledProgram)

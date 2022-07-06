@@ -34,8 +34,8 @@ module('Unit | Service | pilas-mulang', function (hooks) {
     test('Combine usage results', function (assert) {
         const flyProcedure = 'fly'
         const jumpProcedure = 'jump'
-        const ifResult = createResult('if', false, '')
-        const whileResult = createResult('while', true, '', 'loop')
+        const ifResult = createResult('if', false, '', 'conditional', false)
+        const whileResult = createResult('while', true, '', 'loop', false)
         const flyIsUsed = createResult(isUsedId, true, isUsedDescription, flyProcedure)
         const flyIsUsedFromMain = createResult(isUsedFromMainId, false, isUsedFromMainDescription, flyProcedure)
         const jumpIsUsed = createResult(isUsedId, true, isUsedDescription, jumpProcedure)
@@ -50,8 +50,8 @@ module('Unit | Service | pilas-mulang', function (hooks) {
 
     })
 
-    function createResult(id, result, description, declaration = undefined) {
-        return { id, result, description, declaration }
+    function createResult(id, result, description, declaration = undefined, isRelatedToUsage = true) {
+        return { id, result, description, declaration, isRelatedToUsage }
     }
 })
 

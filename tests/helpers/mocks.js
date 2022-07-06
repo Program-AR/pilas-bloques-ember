@@ -1,6 +1,8 @@
 import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../utils/expectations'
+import { entryPointType } from '../../utils/blocks'
 
 export const pilasMock = Service.extend({
     on() { },
@@ -24,9 +26,9 @@ export const interpreterFactoryMock = Service.extend({
     crearInterprete() { return interpreteMock; }
 });
 
-export const activityExpectationsMock = Service.extend({
+export const challengeExpectationsMock = Service.extend({
     expectations: () => '',
-    expectationFor(/* activity */) { return this.expectations }
+    expectationFor(/* challenge */) { return this.expectations }
 });
 
 export const createActividadMock = (fields) => EmberObject.extend({
@@ -91,31 +93,15 @@ export const simpleReadMock = Service.extend({
 
 export const experimentsMock = Service.extend({
 
-    group: 'notAffected',
+    shouldShowExpectsFeedback: false,
 
-    setNotAffected() {
-        this.group = 'notAffected'
+    setShouldShowBlocksExpectationFeedback(value) {
+        this.shouldShowExpectsFeedback = value
     },
 
-    setControl() {
-        this.group = 'control'
-    },
+    shouldShowBlocksExpectationFeedback() { return this.shouldShowExpectsFeedback },
 
-    setTreatment() {
-        this.group = 'treatment'
-    },
-
-    isTreatmentGroup() {
-        return this.group === "treatment"
-    },
-
-    isControlGroup() {
-        return this.group === "control"
-    },
-
-    isNotAffected() {
-        return this.group === "notAffected"
-    },
+    updateSolvedChallenges() { }
 })
 
 export const createActivity = (owner, fields) => {
@@ -126,3 +112,25 @@ export const createActivity = (owner, fields) => {
 export const createGroup = (owner, fields) => {
     return owner.lookup('service:store').createRecord('grupo', fields)
 }
+
+export const idsToExpectationsMock = (intl) => ({
+    decomposition: multiExpect(
+        declaresAnyProcedure,
+        () => notTooLong()(entryPointType),
+        allProceduresShould(
+            notTooLong(),
+            doSomething,
+            isUsed,
+            isUsedFromMain,
+            doesNotUseRecursion,
+            nameWasChanged(intl)
+        )
+    ),
+
+    conditionalAlternative: usesConditionalAlternative,
+
+    conditionalRepetition: usesConditionalRepetition,
+
+    simpleRepetition: usesSimpleRepetition,
+
+})
