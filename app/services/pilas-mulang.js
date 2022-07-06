@@ -1,6 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
-import { parseExpect, expectationId } from '../utils/expectations'
+import { parseExpect, expectationDescription } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
 
@@ -9,7 +9,7 @@ import { createNode, createReference, createEmptyNode } from './pilas-ast'
 export default Service.extend({
   challengeExpectations: service(),
   intl: service(),
-  
+
   /**
    * @return ExpectationResult
    * {
@@ -34,7 +34,6 @@ export default Service.extend({
       results = []
       console.error(e)
     }
-    
     return results.map(toTranslatedResult(this.intl))
   },
 
@@ -55,11 +54,11 @@ export default Service.extend({
  */
 const toTranslatedResult = (intl) => ([expect, result]) => {
   const [name, params] = parseExpect(expect)
-  return { 
-    id: expectationId(name), 
-    description: intl.t(name, {result, ...params}).toString(), 
-    result, 
-    ...params 
+  return {
+    id: name,
+    description: expectationDescription(intl, name, result, params),
+    result,
+    ...params
   }
 }
 
