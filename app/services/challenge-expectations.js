@@ -1,13 +1,12 @@
 import Service from '@ember/service'
-import { entryPointType } from '../utils/blocks'
 import { isEmpty/*, compose*/ } from 'ramda'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const idsToExpectations = (intl) => ({
   decomposition: multiExpect(
     declaresAnyProcedure,
-    () => notTooLong()(entryPointType),
+    () => mainNotTooLong(),
     allProceduresShould(
       notTooLong(),
       doSomething,
@@ -36,11 +35,11 @@ export default Service.extend({
     return this.configToExpectation(this.allExpectConfigurationsMerged(challenge))
   },
 
-  allExpectConfigurations(challenge){
+  allExpectConfigurations(challenge) {
     let models = [challenge]
     const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
-    if(group) {
+    if (group) {
       const chapter = group.get('capitulo')
       const book = chapter.get('libro')
       // This order is important. Expectations with less priority should be first.
@@ -50,18 +49,18 @@ export default Service.extend({
     return models.map(model => model.get('expectations'))
   },
 
-  
-  configToExpectation(expectationsConfig){
-    return isEmpty(expectationsConfig) ? noExpectation 
-    : multiExpect(
-        ...Object.entries(expectationsConfig) //Must not be undefined
-        .filter(e => this.shouldBeApplied(e))
-        .map(([id, ]) => this.idToExpectation(id)) 
-      )
-    },
 
-    shouldBeApplied([id, shouldApply]) {
-      return shouldApply && this.idToExpectation(id)
+  configToExpectation(expectationsConfig) {
+    return isEmpty(expectationsConfig) ? noExpectation
+      : multiExpect(
+        ...Object.entries(expectationsConfig) //Must not be undefined
+          .filter(e => this.shouldBeApplied(e))
+          .map(([id,]) => this.idToExpectation(id))
+      )
+  },
+
+  shouldBeApplied([id, shouldApply]) {
+    return shouldApply && this.idToExpectation(id)
   },
 
   idToExpectation(id) {
@@ -73,20 +72,20 @@ export default Service.extend({
   * If some values could be another objects and we would want to
   * merge those too, it should be handled differently.
   */
- mergeConfigurations(expectationsConfigs) {
-   return expectationsConfigs.filter(e => e).reduce((baseExpect, expectWithPriority) => {
-     return {
-       ...baseExpect,
-       ...expectWithPriority
+  mergeConfigurations(expectationsConfigs) {
+    return expectationsConfigs.filter(e => e).reduce((baseExpect, expectWithPriority) => {
+      return {
+        ...baseExpect,
+        ...expectWithPriority
       }
-    },{})
+    }, {})
   },
 
-  allExpectConfigurationsMerged(challenge){
+  allExpectConfigurationsMerged(challenge) {
     return this.mergeConfigurations(this.allExpectConfigurations(challenge))
   },
 
-  hasDecomposition(challenge){
+  hasDecomposition(challenge) {
     return !!this.allExpectConfigurationsMerged(challenge).decomposition
   }
 })

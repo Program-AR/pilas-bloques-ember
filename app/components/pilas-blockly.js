@@ -144,17 +144,17 @@ export default Component.extend({
       blocks: [blockType]
     }
     const blocklyBlock = this.blocklyBlock(blockType)
-    if(blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
+    if (blocklyBlock?.categoria_custom) toolboxBlock.custom = blocklyBlock.categoria_custom
     return toolboxBlock
   },
 
   groupByCategories(toolboxBlocks) {
     const groupedBlocks = []
     toolboxBlocks.forEach(tb => {
-      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId) 
-      if(match) {
+      const match = groupedBlocks.find(gb => gb.categoryId === tb.categoryId)
+      if (match) {
         match.blocks.push(...tb.blocks)
-        if(tb.custom) match.custom = tb.custom  //Last one takes precedence
+        if (tb.custom) match.custom = tb.custom  //Last one takes precedence
       }
       else {
         groupedBlocks.push(tb)
@@ -415,7 +415,7 @@ export default Component.extend({
     this.get('failedExpects')
       .filter(condition)
       .forEach(({ declaration, description }, i) =>
-        addFeedback(declarationWithName(declaration), description, -i)// TODO: Add priority?
+        addFeedback(declarationWithName(declaration), description.asSuggestion, -i)// TODO: Add priority?
       )
   },
 
@@ -521,7 +521,7 @@ export default Component.extend({
      */
     setWorkspace(workspaceXML) {
       var xml = Blockly.Xml.textToDom(workspaceXML);
-  
+
       if (Blockly.mainWorkspace) {
         Blockly.mainWorkspace.clear();
         Blockly.Xml.domToWorkspace(xml, Blockly.getMainWorkspace());

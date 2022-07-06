@@ -235,7 +235,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('should not execute program if any critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id' }])
+      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true }])
       assert.notOk(this.ctrl.shouldExecuteProgram())
     })
 
@@ -305,7 +305,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
       await settled()
-      later(() => assertWarning(assert, required, 'Deberías usar alternativa condicional para considerar todos los escenarios'))
+      later(() => assertWarning(assert, required, '¿Tu programa anda a veces sí y a veces no?'))
     })
 
     test('Should not show expectation feedback bubbles when not required by experiments', async function (assert) {
@@ -335,6 +335,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     test('On running should send the metadata to the API', async function (assert) {
       const solutionWorksResult = {
         id: 'solution_works',
+        isScoreable: true,
         result: true
       }
       Blockly.textToBlock(filledProgram)
