@@ -121,7 +121,7 @@ model:
       description: 'El detective debe descubrir al culpable de un crimen. Comenzando por el primero de la izquierda, ¡interrogá a cada uno de los sospechosos hasta encontrar al culpable!'
       clue: El bloque "Repetir hasta que" nos permite terminar el programa cuando encontramos al culpable sin tener que interrogar a todos los sospechosos de la fila.
     '23':
-      title: Fútbol para robots
+      title: Fútbol para MESSSIIIIIII
       description: Ayudá a nuestro robot futbolista a patear todas las pelotas. Recordá siempre que una buena división en procedimientos puede ayudarte a encarar mejor el problema.
       clue: El procedimiento que se defina debe considerar el escenario variable y ofrecer una solución con poca cantidad de bloques. Es importante tener en cuenta que la acción se repite varias veces y que la longitud de las filas varía.
     '24':
