@@ -6,17 +6,11 @@ export const declaresAnyProcedure = (/* workspace */) =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `declares something unlike ${toEDLString(entryPointType)}`, declaresProcedureId, { declaration: entryPointType })
 
-const allShould = (scope, ...expectations) =>
-  join(scope.map(multiExpect(...expectations)))
-
 export const allProceduresShould = (...expectations) => (workspace) =>
   allShould(allProcedureNames(workspace), ...expectations)
 
 export const allControlStructuresShould = (...expectations) => (workspace) =>
   allShould(allBlocksUsingControlStructures(workspace), ...expectations)
-
-export const multiExpect = (...expectations) => (element) =>
-  join(expectations.map(e => e(element)))
 
 export const usesConditionalAlternative = () =>
   newGlobalExpectation(
@@ -40,7 +34,9 @@ export const doSomething = (declaration) =>
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
 export const doesNotNestControlStructures = (declaration) => 
-  newExpectation(`within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
+  newExpectation(
+    {isSuggestion: true, isForControlGroup: true, isScoreable: true},
+    `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
   newExpectation(
@@ -83,6 +79,11 @@ const newGlobalExpectation = (types, expect, id) =>
 export const newExpectation = (types, expect, id, opts = {}) =>
   `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
 
+const allShould = (scope, ...expectations) =>
+  join(scope.map(multiExpect(...expectations)))
+
+export const multiExpect = (...expectations) => (element) =>
+  join(expectations.map(e => e(element)))
 
 // Use this to count number of calls inside a procedure, including recursive calls
 // Mulang count does not count recursive calls
