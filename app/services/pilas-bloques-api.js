@@ -113,7 +113,6 @@ export default Service.extend({
         throw connectionErr
       })
       .then(res => {
-        console.log(res)
         this.set('connected', true)
         if (res.status >= 400) { return res.text().then(message => { throw { status: res.status, message } }) }
         else { return res.json().catch(() => { /** if not body present */ }) }
