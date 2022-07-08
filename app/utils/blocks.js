@@ -4,9 +4,9 @@ export function isFlying(block) {
   return block.getRootBlock() === block
 }
 
-export function allBlocksUsingControlStructures(workspace = Blockly.mainWorkspace){
-  const blockNames = allProcedures(workspace).filter(usesControlStructures).map(getName)
-  if(usesControlStructures(getEntryPointBlock(workspace))){
+export function allBlocksNestingControlStructures(workspace = Blockly.mainWorkspace){
+  const blockNames = allProcedures(workspace).filter(nestsControlStructures).map(getName)
+  if(nestsControlStructures(getEntryPointBlock(workspace))){
     blockNames.push(entryPointType)
   } 
   return blockNames
@@ -30,8 +30,17 @@ function getEntryPointBlock(workspace){
   return workspace.getAllBlocks().find(b => b.type === entryPointType)
 }
 
-function usesControlStructures(block){
-  return block.getDescendants().some(isControlStructure)
+function nestsControlStructures(block){
+  const controlStructures = block.getDescendants().filter(isControlStructure).slice(1) 
+  return indirectNestingControlStructures(controlStructures) || directNestingControlStructures(controlStructures)
+}
+
+function directNestingControlStructures(controlStructures){
+  return controlStructures.some(c => c.getDescendants().some(isControlStructure))
+}
+
+function indirectNestingControlStructures(controlStructures){
+  return controlStructures.some(c => c.getDescendants().filter(isProcedure).some(p => p.getDescendants().some(isControlStructure)))
 }
 
 // TODO: No acoplarse a la categoria

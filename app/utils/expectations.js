@@ -1,4 +1,4 @@
-import { allProcedureNames, allBlocksUsingControlStructures, entryPointType } from './blocks'
+import { allProcedureNames, allBlocksNestingControlStructures, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
 export const declaresAnyProcedure = (/* workspace */) =>
@@ -10,7 +10,7 @@ export const allProceduresShould = (...expectations) => (workspace) =>
   allShould(allProcedureNames(workspace), ...expectations)
 
 export const allControlStructuresShould = (...expectations) => (workspace) =>
-  allShould(allBlocksUsingControlStructures(workspace), ...expectations)
+  allShould(allBlocksNestingControlStructures(workspace), ...expectations)
 
 export const usesConditionalAlternative = () =>
   newGlobalExpectation(
