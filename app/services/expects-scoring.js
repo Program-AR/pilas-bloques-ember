@@ -1,30 +1,15 @@
 import Service from '@ember/service'
 import { inject as service } from '@ember/service'
-import { groupBy } from 'ramda'
-import { nonScorableExpectsIds, doSomethingId, tooLongId, nameWasChangedId } from '../utils/expectations'
+import { find, groupBy } from 'ramda'
+import { expectationDescription } from '../utils/expectations'
 
 export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),
 
-    combinedExpectsDescriptionsKeys() {
-        const descriptions = {}
-        descriptions[doSomethingId] = this.genericId(doSomethingId)
-        descriptions[tooLongId] = this.genericId(tooLongId)
-        descriptions[nameWasChangedId] = this.genericId(nameWasChangedId)
-
-        return descriptions
-    },
-
-    genericId(id) {
-        return `model.spects.generics.${id}`
-    },
-
     expectsResults(expects) {
-        return [this.solutionWorksExpectResult()].concat(
-            this.scorableCombinedExpectations(this.combineMultipleExpectations(expects))
-        )
+        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
     },
 
     failedExpects(expects) {
@@ -39,39 +24,31 @@ export default Service.extend({
         return Object.values(groupBy(e => e.id)(expects))
     },
 
-    scorableCombinedExpectations(expects) {
-        return expects.filter(expect => this.isScorable(expect)).map(expect => this.replaceCombinedExpectDescription(expect))
-    },
-
     combineMultipleExpectations(expects) {
-        return this.groupById(expects).map(group => group.reduce((e1, e2) => this.combineExpectPair(e1, e2)))
+        return this.groupById(expects).map(this.expectationGroupingResult)
     },
 
-    combineExpectPair(expect1, expect2) {
-        return {
-            ...expect1,
-            ...expect2,
-            result: expect1.result || expect2.result
-        }
+    //The result of a grouping is an expectation that represents that the grouping passed or failed. 
+    //A grouping passes when at least an expectation passes, otherwise it fails.
+    expectationGroupingResult(expectationGrouping) {
+        const expectPasses = (e) => e.result
+        const possiblePassingExpect = find(expectPasses)(expectationGrouping)
+        const anyExpect = expectationGrouping[0]
+        return possiblePassingExpect || anyExpect
     },
 
-    isScorable(expect) {
-        return !nonScorableExpectsIds.some(id => id === expect.id)
-    },
-
-    replaceCombinedExpectDescription(expect) {
-        const key = this.combinedExpectsDescriptionsKeys()[expect.id]
-        return {
-            ...expect,
-            description: key ? this.intl.t(key, { result: expect.result }).toString() : expect.description
-        }
+    isScoreable(expect) {
+        return !!expect.description.asScoring
     },
 
     solutionWorksExpectResult() {
+        const params = { isScoreable: true }
+
         return {
             id: solutionWorks,
-            description: this.intl.t(`model.spects.${solutionWorks}`).toString(),
-            result: true
+            description: expectationDescription(this.intl, solutionWorks, true, params),
+            result: true,
+            ...params
         }
     },
 

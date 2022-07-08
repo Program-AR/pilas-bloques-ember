@@ -1,6 +1,8 @@
 import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
+import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../utils/expectations'
+import { entryPointType } from '../../utils/blocks'
 
 export const pilasMock = Service.extend({
     on() { },
@@ -92,14 +94,14 @@ export const simpleReadMock = Service.extend({
 export const experimentsMock = Service.extend({
 
     shouldShowExpectsFeedback: false,
-    
-    setShouldShowBlocksExpectationFeedback(value){
+
+    setShouldShowBlocksExpectationFeedback(value) {
         this.shouldShowExpectsFeedback = value
     },
 
-    shouldShowBlocksExpectationFeedback(){ return this.shouldShowExpectsFeedback },
+    shouldShowBlocksExpectationFeedback() { return this.shouldShowExpectsFeedback },
 
-    updateSolvedChallenges(){}
+    updateSolvedChallenges() { }
 })
 
 export const createActivity = (owner, fields) => {
@@ -110,3 +112,25 @@ export const createActivity = (owner, fields) => {
 export const createGroup = (owner, fields) => {
     return owner.lookup('service:store').createRecord('grupo', fields)
 }
+
+export const idsToExpectationsMock = (intl) => ({
+    decomposition: multiExpect(
+        declaresAnyProcedure,
+        () => notTooLong()(entryPointType),
+        allProceduresShould(
+            notTooLong(),
+            doSomething,
+            isUsed,
+            isUsedFromMain,
+            doesNotUseRecursion,
+            nameWasChanged(intl)
+        )
+    ),
+
+    conditionalAlternative: usesConditionalAlternative,
+
+    conditionalRepetition: usesConditionalRepetition,
+
+    simpleRepetition: usesSimpleRepetition,
+
+})

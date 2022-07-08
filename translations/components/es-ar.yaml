@@ -113,7 +113,7 @@ finishedExerciseModal:
   expectationsModal:
     scoredExpectations:
       notAllPassed:
-        title: 'Está bien, pero... ¡podría estar mejor!'
+        title: Está bien, pero... ¡podría estar mejor!
         description: Revisá tu solución e intentá cumplir con todos los objetivos.
       allPassed:
         title: ¡Lo lograste!
@@ -121,4 +121,70 @@ finishedExerciseModal:
     nonScoredExpectations:
       title: ¡Lo lograste!
       description: "Recordá que una solución correcta no sólo resuelve el problema, sino que además:"
-
+spects:
+  suggestions: # Will appear over the blocks
+    # For the program:
+    uses_simple_repetition: Recordá que en lugar de poner muchos bloques iguales podés usar la repetición para hacer algo muchas veces.
+    # For program or procedure:
+    uses_conditional_alternative: ¿Tu programa anda a veces sí y a veces no? Podés usar alternativa condicional para considerar todos los escenarios posibles.
+    uses_conditional_repetition: Podés usar repetición condicional cuando tenés que repetir algo hasta que se cumpla una condición.
+    declares_procedure: Un buen programa está dividido en partes siguiendo una estrategia. Podés usar procedimientos para comenzar a pensar las partes.
+    main_too_long: El programa principal quedó largo y por lo tanto es difícil de leer. Podrías dividirlo en subtareas usando procedimientos.
+    too_long: Este procedimiento quedó largo y difícil de leer. Podrías dividirlo en subtareas usando procedimientos.
+    # For each procedure:
+    do_something: Este procedimiento está vacío y por lo tanto no hace nada. Agregale bloques para que tenga algún efecto.
+    name_was_changed: "Podés escribir un nombre para este procedimiento. Una buena forma de nombrarlo es responder a la pregunta: ¿qué hace este procedimiento?"
+    is_used: Este procedimiento no está siendo usado desde ninguna parte del programa. Hacé click en la manito y arrastrala hasta el lugar donde lo quieras utilizar. 
+    is_used_from_main: Este procedimiento está siendo usado por otro, pero ese otro no es llamado desde el programa principal. Revisá eso para que tenga efecto.
+    does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
+  scoreable: # Challenge goals, used in the final window
+    solution_works: "¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:"
+    uses_simple_repetition: |
+      {result, select, 
+        true {Usás}
+        other {Deberías usar}
+      } repetición para las partes de tu programa que se repiten.
+    uses_conditional_alternative: |
+      {result, select, 
+        true {Usás}
+        other {Deberías usar}
+      } alternativa condicional para considerar los escenarios variantes.
+    uses_conditional_repetition: |
+      {result, select, 
+        true {Usás}
+        other {Deberías usar}
+      } repetición condicional para considerar los escenarios variantes.
+    declares_procedure: |
+      {result, select, 
+        true {Usás}
+        other {Deberías usar}
+      } procedimientos para descomponer tu estrategia en subtareas.
+    main_too_long: |
+      {result, select, 
+        true {El programa principal es corto y legible.}
+        other {El programa principal debería estar}
+      } dividido en subtareas.
+    too_long: |
+      {result, select, 
+        true {Tus procedimientos están}
+        other {Tus procedimientos deberían estar}
+      } divididos en subtareas.
+    do_something: |
+      {result, select, 
+        true {Tus procedimientos no están vacíos, tienen bloques adentro}
+        other {Tus procedimientos están vacíos, deberían tener bloques en su interior}
+      }.
+    name_was_changed: |
+      {result, select,
+        true {Elegiste}
+        other {Podrías elegir}
+      } un nombre para cada uno de tus procedimientos.
+  control_group: # El título debería ser: Repasá todos estos objetivos para asegurarte que tu solución sea de calidad
+    uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
+    uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
+    uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
+    declares_procedure: Tu programa debería usar procedimientos para descomponer tu estrategia en subtareas.
+    main_too_long: El programa principal debería estar dividido en subtareas usando procedimientos.
+    too_long: Tus procedimientos no deberían ser largos, también deberían estar divididos en subtareas.
+    do_something: No deberías tener procedimientos vacíos, sin bloques.
+    name_was_changed: Deberías elegir un buen nombre para cada uno de tus procedimientos.
