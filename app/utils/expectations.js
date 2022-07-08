@@ -35,12 +35,12 @@ export const doSomething = (declaration) =>
 
 export const isUsed = (declaration) =>
   newExpectation(
-    { isSuggestion: true },
+    { isSuggestion: true, isRelatedToUsage: true },
     `calls ${toEDLString(declaration)}`, isUsedId, { declaration })
 
 export const isUsedFromMain = (declaration) =>
   newExpectation(
-    { isSuggestion: true },
+    { isSuggestion: true, isRelatedToUsage: true },
     `through ${toEDLString(entryPointType)} calls ${toEDLString(declaration)}`, isUsedFromMainId, { declaration })
 
 const declarationNotTooLong = (limit, declaration, expectationName) =>
@@ -54,7 +54,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
 export const mainNotTooLong = (limit = 7) =>
   declarationNotTooLong(limit, entryPointType, "main_too_long")
 
-export const noExpectation = (declaration) => '' // jshint ignore: line
+export const noExpectation = () => ''
 
 export const doesNotUseRecursion = (declaration) =>
   newExpectation(
@@ -89,13 +89,11 @@ const newSimpleCondition = (types, condition, id, opt = {}) =>
 const pass = `calls || ! calls`
 const fail = `calls && ! calls`
 
-
 export const parseExpect = (name) => {
   const expectationName = name.split('|')[0]
   const stringToBool = (string) => (string === 'true' || string === 'false') ? string === 'true' : string
   const expectationParams = Object.fromEntries(name.split('|')[1].split(';').map(entry => entry.split('=')).map(([paramName, paramValue]) => [paramName, stringToBool(paramValue)]))
   return [expectationName, expectationParams]
-
 }
 
 export const expectationDescription = (intl, name, result, expectationParams) => {
@@ -110,7 +108,6 @@ export const expectationDescription = (intl, name, result, expectationParams) =>
     asSuggestion: (expectationParams && expectationParams.isSuggestion) ? translateAs('suggestions') : '',
     forControlGroup: (expectationParams && expectationParams.isForControlGroup) ? translateAs('control_group') : ''
   }
-
 }
 
 const toEDLString = name => `\`${name}\``
@@ -118,8 +115,8 @@ const toEDLString = name => `\`${name}\``
 const join = expectations => expectations.join('\n')
 
 export const doesNotUseRecursionId = 'does_not_use_recursion'
-const isUsedId = 'is_used'
-const isUsedFromMainId = 'is_used_from_main'
+export const isUsedId = 'is_used'
+export const isUsedFromMainId = 'is_used_from_main'
 
 const doSomethingId = 'do_something'
 const tooLongId = 'too_long'
@@ -130,6 +127,8 @@ const simpleRepetitionId = 'uses_simple_repetition'
 const declaresProcedureId = 'declares_procedure'
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
+
+export const isUsageResult = (expectationResult) => expectationResult && expectationResult.isRelatedToUsage
 
 export const notCritical = (expectationResult) => !isCritical(expectationResult)
 
