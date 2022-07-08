@@ -6,7 +6,6 @@ import { computed } from '@ember/object'
 export default Service.extend({
 
   group: ENV.experimentGroup,
-  decompositionTreatmentLength: ENV.decompositionTreatmentLength,
   storage: service(),
   pilasBloquesApi: service(),
   challengeExpectations: service(),
