@@ -31,16 +31,24 @@ function getEntryPointBlock(workspace){
 }
 
 function nestsControlStructures(block){
-  const controlStructures = block.getDescendants().filter(isControlStructure).slice(1) 
-  return indirectNestingControlStructures(controlStructures) || directNestingControlStructures(controlStructures)
+  const controlStructuresDescendants = block.getDescendants().filter(isControlStructure).slice(1) 
+  return indirectNestingControlStructures(controlStructuresDescendants) || directNestingControlStructures(controlStructuresDescendants)
 }
 
 function directNestingControlStructures(controlStructures){
-  return controlStructures.some(c => c.getDescendants().some(isControlStructure))
+  return controlStructures.some(usesControlStructure)
 }
 
 function indirectNestingControlStructures(controlStructures){
-  return controlStructures.some(c => c.getDescendants().filter(isProcedure).some(p => p.getDescendants().some(isControlStructure)))
+  return controlStructures.some(c => procedureDescendants(c).some(usesControlStructure))
+}
+
+function procedureDescendants(block){
+  return block.getDescendants().filter(isProcedure)
+}
+
+function usesControlStructure(block){
+  return block.getDescendants().some(isControlStructure)
 }
 
 // TODO: No acoplarse a la categoria
