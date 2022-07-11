@@ -417,7 +417,6 @@ export default Component.extend({
   },
 
   showExpectationFeedbackFor(condition, addFeedback, getBlock = declarationWithName) {
-    console.log(this.get('failedExpects').filter(condition))
     this.get('failedExpects')
       .filter(condition)
       .forEach(({ declaration, description }, i) => 
