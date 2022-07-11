@@ -92,8 +92,8 @@ export function resetFetch() {
     
 }
 
-function fetchUserIpMock(_ip) {
-    const json = JSON.stringify({ip: _ip})
+function fetchUserIpMock(ip) {
+    const json = JSON.stringify({ip})
     fetchMock.mock(`https://api64.ipify.org?format=json`, new Response(json))
 }
 

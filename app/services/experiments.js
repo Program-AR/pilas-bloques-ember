@@ -66,9 +66,14 @@ export default Service.extend({
 
   async saveUserIP(){
     if(!this.storage.getUserIp()){
-      const response = await fetch("https://api64.ipify.org?format=json")
-      const jsonIp = await response.json()
-      this.storage.saveUserIp(jsonIp.ip)
+      try{
+        const response = await fetch("https://api64.ipify.org?format=json")
+        const jsonIp = await response.json()
+        this.storage.saveUserIp(jsonIp.ip)
+      }catch(e){
+        //If fetch fails, getRandomExperimentGroup will use 'null' as seed, resulting in "treatment" 
+        console.error(e);
+      }
     }
   },
 
