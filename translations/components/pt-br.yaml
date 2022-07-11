@@ -137,7 +137,7 @@ spects:
     is_used: Este procedimiento no está siendo usado desde ninguna parte del programa. Hacé click en la manito y arrastrala hasta el lugar donde lo quieras utilizar. 
     is_used_from_main: Este procedimiento está siendo usado por otro, pero ese otro no es llamado desde el programa principal. Revisá eso para que tenga efecto.
     does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
-    does_not_nest_control_structures: Estás anidando repeticiones y/o alternativas. Intentá dividir en subtareas usando procedimientos.
+    does_not_nest_control_structures: Estás anidando repeticiones y/o alternativas. Podemos hacer un procedimiento con esta lógica.
   scoreable: # Challenge goals, used in the final window
     solution_works: "¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:"
     uses_simple_repetition: |
