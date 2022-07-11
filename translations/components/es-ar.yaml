@@ -120,7 +120,7 @@ finishedExerciseModal:
         description: ''
     nonScoredExpectations:
       title: ¡Lo lograste!
-      description: "Recordá que una solución correcta no sólo resuelve el problema, sino que además:"
+      description: 'Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:'
 spects:
   suggestions: # Will appear over the blocks
     # For the program:
@@ -139,7 +139,7 @@ spects:
     does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
     does_not_nest_control_structures: Estás anidando repeticiones y/o alternativas. Podemos hacer un procedimiento aparte con esta lógica.
   scoreable: # Challenge goals, used in the final window
-    solution_works: "¡Tu solución funciona! Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:"
+    solution_works: "¡Tu solución funciona!"
     uses_simple_repetition: |
       {result, select, 
         true {Usás}
