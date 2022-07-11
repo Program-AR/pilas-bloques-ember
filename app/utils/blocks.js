@@ -26,12 +26,25 @@ export function declarationWithName(name, workspace = Blockly.mainWorkspace) {
   : allProcedures(workspace).find(p => getName(p) == name)
 }
 
+export function getNestedControlStructureBlock(procedureName){
+  const controlStructureBlockNesting = 
+    declarationWithName(procedureName)
+    .getDescendants()
+    .find(d => isControlStructure(d) && usesControlStructure(d))
+    
+  return getOnlyDescendants(controlStructureBlockNesting).find(isControlStructure)
+}
+
 function getEntryPointBlock(workspace){
   return workspace.getAllBlocks().find(b => b.type === entryPointType)
 }
 
+function getOnlyDescendants(block){ //Gets descendants without including the block itself
+  return block.getDescendants().slice(1)
+}
+
 function nestsControlStructures(block){
-  const controlStructuresDescendants = block.getDescendants().filter(isControlStructure).slice(1) 
+  const controlStructuresDescendants = getOnlyDescendants(block).filter(isControlStructure)
   return indirectNestingControlStructures(controlStructuresDescendants) || directNestingControlStructures(controlStructuresDescendants)
 }
 
