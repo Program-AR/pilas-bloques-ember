@@ -11,6 +11,7 @@ export default Ember.Service.extend({
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
   SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
+  FINGERPRINT: 'PB_FINGERPRINT',
 
   getUserId() {
     const user = this.getUser()
@@ -52,6 +53,13 @@ export default Ember.Service.extend({
   getSolvedChallenges () { 
     return this._get(this.SOLVED_CHALLENGES) || []
   },
+
+  getFingerprint() {
+    if(!this._get(this.FINGERPRINT)) this._save(this.FINGERPRINT, this.newFingerprint()) 
+    return this._get(this.FINGERPRINT)    
+  },
+
+  newFingerprint(){ return new ClientJS().getFingerprint() },
 
   clear() { localStorage.clear() },
 

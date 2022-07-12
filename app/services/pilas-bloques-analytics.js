@@ -13,7 +13,7 @@ export default Service.extend({
   context() {
     const userId = this.storage.getUserId()
     const online = this.platform.online()
-    const fingerprint = new ClientJS().getFingerprint()
+    const fingerprint = this.storage.getFingerprint()
     const session = this.getSession()
     const version = environment.APP.version
     const experimentGroup = this.experiments.experimentGroup()
