@@ -2,6 +2,7 @@ import { module, test } from 'qunit'
 import { setupPBUnitTest, setupLoggedUser } from '../../helpers/utils'
 import { fakeUser } from '../../helpers/mocks'
 import { setupTest } from 'ember-qunit';
+import sinon from 'sinon';
 
 module('Unit | Service | storage', function(hooks) {
   let service
@@ -30,6 +31,16 @@ module('Unit | Service | storage', function(hooks) {
   function brokeStorageData() {
     localStorage.setItem(service.USER_KEY, "123{ASD")
   }
+
+  test('Fingerprint should only be generated once by ClientJs', function(assert){
+    localStorage.clear()
+    const spy = sinon.spy(service, 'newFingerprint')
+    const newFingerprint = service.getFingerprint()
+    const fingerprintSaved = service.getFingerprint()
+
+    assert.ok(spy.calledOnce);    
+    assert.equal(newFingerprint, fingerprintSaved)
+  })
 })
 
 module('Unit | Service | storage | SimpleRead', function(hooks) {
