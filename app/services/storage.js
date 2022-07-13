@@ -13,6 +13,7 @@ export default Ember.Service.extend({
   EXPERIMENT_GROUP: 'PB_EXPERIMENT_GROUP',
   SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
   USER_IP: 'PB_USER_IP',
+  FINGERPRINT: 'PB_FINGERPRINT',
 
   getUserId() {
     const user = this.getUser()
@@ -60,6 +61,13 @@ export default Ember.Service.extend({
   saveUserIp(ip) { return this._save(this.USER_IP, ip)},
 
   getUserIp() { return this._get(this.USER_IP)},
+
+  getFingerprint() {
+    if(!this._get(this.FINGERPRINT)) this._save(this.FINGERPRINT, this.newFingerprint()) 
+    return this._get(this.FINGERPRINT)    
+  },
+
+  newFingerprint(){ return new ClientJS().getFingerprint() },
 
   clear() { localStorage.clear() },
 

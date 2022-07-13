@@ -116,6 +116,24 @@ Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `a
 - `treatment`: tiene un período de entrenamiento en el cual muestra las expectativas existentes sobre el desafío, junto con una barra de progreso para las que se cumplieron. Se agrega feedback sobre los bloques. Una vez terminado el período de entrenamiento pasa a tener un comportamiento similar a *control*.
 - `autoassign`: asigna aleatoriamente un grupo experimental en tiempo de ejecución (elige entre `control` y `treatment).
 
+### Empaquetando instaladores:
+
+- Por defecto, al hacer un _release_ de la aplicación, el CI se encarga de generar todos los instaladores empaquetados. Por ejemplo: al correr `npm run release:patch`.
+- Para hacerlo de manera local, primero hay que correr el comando `EXPERIMENT_GROUP=treatment npm run build:prod` (seteando la variable de entorno relacionada al grupo experimental) y luego buildear el instalador correspondiente a tu SO. Por ejemplo: `npm run pack:linux`.
+- Si se desea buildear para otro SO (que no sea el tuyo) hay que tener en cuenta que solamente se puede hacer desde linux. Además, hay que tener instaladas ciertas dependencias:
+  - **Windows:** se necesita tener instalado `nsis`, `wine` y `wine-mono`.
+    - Debian/Ubuntu:
+
+      ```
+      sudo apt install nsis
+      ```
+    - Arch:
+
+      ```
+      yay -S nsis
+      ```
+  - **macOS:** no disponible.
+
 ### Preparar el backend (solo necesario para cosas de usuarios y eso):
 
 Para tener un backend para probar cosas de usuarios y guardar desafios es necesario tener levantado los proyectos de [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) y una base de datos [MongoDB](https://www.mongodb.com/).

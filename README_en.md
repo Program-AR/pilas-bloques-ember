@@ -105,6 +105,24 @@ The experiment groups are: `notAffected`, `control`, `treatment` and `autoassign
 - `treatment`: this one has a training period. During this time expectations are shown for each challenge, alongside a progress bar that awards points for each passed expectation. Blocks in the workspace have their own feedback too. Once the training period is over, the app behavior changes to *control*.
 - `autoassign`: randomly assigns an experiment group at run time (between `control` and `treatment`).
 
+### Packing installers:
+
+- By default, after _releasing_ the app, the CI handles all installers generations. E.g.: after running `npm run release:patch`.
+- If you want to do it locally, first you need to run the command `EXPERIMENT_GROUP=treatment npm run build:prod` (setting EXPERIMENT_GROUP environment variable) and then build the installer corresponding to your OS. E.g.: `npm run pack:linux`.
+- If you want to pack an installer for another OS you need to know that this is only possible if you use linux. In addition, you need to install the following dependencies:
+  - **Windows:** you need to install `nsis`, `wine` and `wine-mono`.
+    - Debian/Ubuntu:
+
+      ```
+      sudo apt install nsis
+      ```
+    - Arch:
+
+      ```
+      yay -S nsis
+      ```
+  - **macOS:** unavailable.
+
 ### Preparing backend (for users stuff):
 
 If you want to test users stuff or save challenges it is necessary to fulfill some requirements: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) and a data base [MongoDB](https://www.mongodb.com/).

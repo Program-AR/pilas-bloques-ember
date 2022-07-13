@@ -10,6 +10,7 @@ export default Service.extend({
   pilasBloquesApi: service(),
   challengeExpectations: service(),
 
+  //This order is important, do NOT change
   possibleGroups: ["treatment", "control", "notAffected"],
   decompositionTreatmentLength: ENV.decompositionTreatmentLength,
   

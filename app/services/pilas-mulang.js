@@ -1,9 +1,10 @@
 import Service, { inject as service } from '@ember/service'
 import { entryPointType, getName, getParams, getChild, getBlockSiblings, isOperator, isValue, isProcedureCall } from '../utils/blocks'
-import { parseExpect, expectationDescription } from '../utils/expectations'
+import { parseExpect, expectationDescription, isUsageResult, isUsedId } from '../utils/expectations'
 // TODO: Move out from 'services' folder
 import { createNode, createReference, createEmptyNode } from './pilas-ast'
-
+import { groupBy } from 'ramda'
+import { splitBy } from '../utils/lists'
 
 
 export default Service.extend({
@@ -34,7 +35,8 @@ export default Service.extend({
       results = []
       console.error(e)
     }
-    return results.map(toTranslatedResult(this.intl))
+
+    return combineUsageResults(results.map(toTranslatedResult(this.intl)))
   },
 
   parseAll(workspace) {
@@ -47,6 +49,26 @@ export default Service.extend({
   },
 
 })
+
+export const combineUsageResults = (results) => {
+  const [usageResults, otherResults] = splitBy(isUsageResult, results)
+
+  const combinedUsageResults = Object
+    .values(groupBy(r => r.declaration)(usageResults))
+    .map(combineUsage)
+
+  return otherResults.concat(combinedUsageResults)
+}
+
+export const combineUsage = (resultGroup) => {
+  const [[isUsed], [isUsedFromMain]] = splitBy(r => r.id === isUsedId, resultGroup)
+
+  return {
+    ...isUsed,
+    result: isUsed.result && isUsedFromMain.result,
+    description: isUsed.result ? isUsedFromMain.description : isUsed.description
+  }
+}
 
 /**
  * @param {[Expect,Result]} pair is a pair of Mulang expectation and result
