@@ -15,4 +15,4 @@ helloAgain: ¡Hola de nuevo!
 passwordHasBeenChanged: 'Tu contraseña ha sido cambiada. '
 expiredTokenTitle: El enlace esta expirado.
 expiredTokenMessage: 'Puedes solicitar otro enlace haciendo '
-expiredTokenLink: click aqui!
+expiredTokenLink: click aqui
