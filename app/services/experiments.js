@@ -5,7 +5,7 @@ import { computed } from '@ember/object'
 
 export default Service.extend({
 
-  group: ENV.experimentGroup,
+  groupSelectionStrategy: ENV.experimentGroup,
   storage: service(),
   pilasBloquesApi: service(),
   challengeExpectations: service(),
@@ -30,16 +30,21 @@ export default Service.extend({
     return !(this.isTreatmentGroup() || this.isControlGroup())
   },
 
-  isAutoAssignGroup(){
-    return this.group === "autoassign"
+  isAutoAssignStrategy(){
+    return this.groupSelectionStrategy === "autoassign"
   },
 
+  /**
+   * If the group selection strategy is autoassign, returns a random group based on the user ip. 
+   * In the case that the user does not have an internet connection, always returns notAffected group.
+   * If the group selection strategy is other than autoassign, then returns the group assigned as strategy.
+   */
   experimentGroup() {
-    return this.isAutoAssignGroup() ? this.getExperimentGroupAssigned() : this.group
+    return this.isAutoAssignStrategy() ? (this.getExperimentGroupAssigned() || this.possibleGroups[2]) : this.groupSelectionStrategy
   },
 
   getExperimentGroupAssigned(){
-    return this.storage.getExperimentGroup() || this.pilasBloquesApi.getUser()?.experimentGroup || this.randomizeAndSaveExperimentGroup() // jshint ignore:line
+    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup()|| this.randomizeAndSaveExperimentGroup() // jshint ignore:line
   },
 
   randomizeAndSaveExperimentGroup(){
@@ -53,9 +58,13 @@ export default Service.extend({
     return randomExperimentGroup
   },
 
+  /**
+   * Randomizes with the ip as seed because we want every student in a classroom to have the same experiment group
+   * @returns an experiment group or null in case the ip has not been set yet
+   */
   getRandomExperimentGroup(){
     const ip = this.storage.getUserIp()
-    return this.possibleGroups[this.randomIndex(ip)]
+    return ip && this.possibleGroups[this.randomIndex(ip)]
   },
 
   randomIndex(seed){
@@ -72,7 +81,6 @@ export default Service.extend({
         const jsonIp = await response.json()
         this.storage.saveUserIp(jsonIp.ip)
       }catch(e){
-        //If fetch fails, getRandomExperimentGroup will use 'null' as seed, resulting in "treatment" 
         console.error(e);
       }
     }
