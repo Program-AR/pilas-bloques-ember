@@ -7,6 +7,7 @@ export default Component.extend({
   iframeElement: null,
   challenge: null,
   pilas: service(),
+  experiments: service(),
 
   didInsertElement() {
     this.set("iframeElement", this.element.querySelector('#innerIframe'))
@@ -22,9 +23,10 @@ export default Component.extend({
   },
 
   async loadScene() {
+    await this.experiments.saveUserIP()
     await this.pilas.loadPilas(this.get('iframeElement'), { width: 420, height: 480 }, this.challenge)
     await this.pilas.setChallenge(this.challenge)
     if(this.onReady) this.onReady(this.pilas.engine())
-  }
+  },
 
 });

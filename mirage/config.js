@@ -25,6 +25,7 @@ export default function() {
   this.passthrough('http://www.google-analytics.com/**');
   this.passthrough('https://api.github.com/**');
   this.passthrough(`${config.pbApi.baseURL}/**`);
+  this.passthrough('https://api64.ipify.org');
 
   /*
     Shorthand cheatsheet:
