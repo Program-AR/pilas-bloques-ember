@@ -19,11 +19,12 @@ module('Unit | Service | experiments', function (hooks) {
 
     storageMock = {
       solvedChallenges: [],
-      experimentGroup: "notAffected",
+      experimentGroup: null,
+      ip: "123.1.123.123",
       getSolvedChallenges(){ return this.solvedChallenges },
       getExperimentGroup(){ return this.experimentGroup },
       saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} },
-      getUserIp() { return "123.1.123.123"}
+      getUserIp() { return this.ip}
     }
     
     challengeExpectationsMock = {
@@ -103,6 +104,7 @@ module('Unit | Service | experiments', function (hooks) {
 
   test('ExperimentGroup gets group from storage if exists and user is not logged', function(assert){
     experiments.set('groupSelectionStrategy', 'autoassign')
+    storageMock.experimentGroup = "notAffected"
     assert.deepEqual(experiments.experimentGroup(), "notAffected")
   })
 
@@ -114,17 +116,21 @@ module('Unit | Service | experiments', function (hooks) {
 
   test('Random experimentGroup is generated when user is NOT logged, and is NOT in storage ', function(assert){
     experiments.set('groupSelectionStrategy', 'autoassign')
-    storageMock.experimentGroup = null
     assert.ok(experiments.possibleGroups.includes(experiments.experimentGroup()))
   })
 
   test('Random group is saved in api if user is logged and does NOT have a group', function(assert){
     experiments.set('groupSelectionStrategy', 'autoassign')
-    storageMock.experimentGroup = null
     pilasBloquesApiMock.user = {experimentGroup: null}
 
     assert.ok(experiments.possibleGroups.includes(experiments.experimentGroup()))
     assert.deepEqual(pilasBloquesApiMock.user.experimentGroup, "treatment")
+  })
+
+  test('Should assign notAffected group if could not get api', function(assert){
+    experiments.set('groupSelectionStrategy', 'autoassign')
+    storageMock.ip = null
+    assert.deepEqual(experiments.experimentGroup(), "notAffected")
   })
 
   function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges){
