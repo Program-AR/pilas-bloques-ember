@@ -87,7 +87,7 @@ export default Service.extend({
   },
 
   groupId() {
-    return this.group.charAt(0)
+    return this.groupSelectionStrategy.charAt(0)
   },
   
   updateSolvedChallenges(challenge){
