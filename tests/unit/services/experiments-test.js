@@ -9,6 +9,7 @@ module('Unit | Service | experiments', function (hooks) {
 
   const solvedChallenge = {id: "13"}
   const solvedChallengesFeedbackDisabled = ["13", "14"]
+  const userLogged = {experimentGroup: "control"}
 
   setupTest(hooks);
 
@@ -31,7 +32,7 @@ module('Unit | Service | experiments', function (hooks) {
     }
 
     pilasBloquesApiMock = {
-      user: {experimentGroup: "control"},
+      user: null,
       getUser() { return this.user },
       saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} }
     }
@@ -57,12 +58,12 @@ module('Unit | Service | experiments', function (hooks) {
   //Congratulations modal
 
   test('Should show congratulations modal - group is not affected', function (assert) {
-    experiments.set('group', 'notAffected')
+    experiments.set('groupSelectionStrategy', 'notAffected')
     assert.ok(experiments.shouldShowCongratulationsModal())
   })
 
   test('Should NOT show congratulations modal - group is affected', function (assert) {
-    experiments.set('group', 'treatment')
+    experiments.set('groupSelectionStrategy', 'treatment')
     assert.notOk(experiments.shouldShowCongratulationsModal())
   })
 
@@ -86,7 +87,6 @@ module('Unit | Service | experiments', function (hooks) {
 
   test('Should NOT update solved challenges if challenge was already solved', function (assert){
     storageMock.solvedChallenges = ["13"]
-    
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
@@ -100,26 +100,26 @@ module('Unit | Service | experiments', function (hooks) {
   })
 
   //autoassign
-  test('ExperimentGroup gets group from storage if exists', function(assert){
-    experiments.set('group', 'autoassign')
+
+  test('ExperimentGroup gets group from storage if exists and user is not logged', function(assert){
+    experiments.set('groupSelectionStrategy', 'autoassign')
     assert.deepEqual(experiments.experimentGroup(), "notAffected")
   })
 
-  test('ExperimentGroup gets group from api if user is logged, has group and group is not in storage', function(assert){
-    experiments.set('group', 'autoassign')
-    storageMock.experimentGroup = null
+  test('ExperimentGroup gets group from api if user is logged and has group', function(assert){
+    experiments.set('groupSelectionStrategy', 'autoassign')
+    pilasBloquesApiMock.user = userLogged
     assert.deepEqual(experiments.experimentGroup(), "control")
   })
 
   test('Random experimentGroup is generated when user is NOT logged, and is NOT in storage ', function(assert){
-    experiments.set('group', 'autoassign')
+    experiments.set('groupSelectionStrategy', 'autoassign')
     storageMock.experimentGroup = null
-    pilasBloquesApiMock.user = null
     assert.ok(experiments.possibleGroups.includes(experiments.experimentGroup()))
   })
 
   test('Random group is saved in api if user is logged and does NOT have a group', function(assert){
-    experiments.set('group', 'autoassign')
+    experiments.set('groupSelectionStrategy', 'autoassign')
     storageMock.experimentGroup = null
     pilasBloquesApiMock.user = {experimentGroup: null}
 
@@ -138,7 +138,7 @@ module('Unit | Service | experiments', function (hooks) {
   function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){
     test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function(assert){
       storageMock.solvedChallenges = solvedChallenges
-      experiments.set('group', group)
+      experiments.set('groupSelectionStrategy', group)
       const result = callback()
       if(shouldShow){
         assert.ok(result)
