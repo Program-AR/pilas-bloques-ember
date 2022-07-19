@@ -300,6 +300,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       return findBlockByTypeIn(block, "al_empezar_a_ejecutar")
     }
 
+    const colourFromBlock = (block) => block.warning.bubble_.bubbleBack_.getAttribute('fill')
+
     test('Should show expectation feedback bubbles when required by experiments', async function (assert) {
       experimentsMock.setShouldShowBlocksExpectationFeedback(true)
 
@@ -316,6 +318,21 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       const required = blockFromProgram(failingExpectationsProgram)
       await settled()
       later(() => assertNotWarning(assert, required))
+    })
+
+    test('Feedback bubbles should keep their colour after hiding them', async function (assert) {
+      experimentsMock.setShouldShowBlocksExpectationFeedback(true)
+
+      this.ctrl.send('ejecutar')
+      const required = blockFromProgram(failingExpectationsProgram)
+      await settled()
+      later(() => {
+        const initialColour = colourFromBlock(required)
+        required.warning.setVisible(false)
+        required.warning.setVisible(true)
+        const colourAfterHiding = colourFromBlock(required)
+        assert.equal(colourAfterHiding, initialColour)
+      })
     })
   })
 
