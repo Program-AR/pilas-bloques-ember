@@ -51,9 +51,9 @@ module('Unit | Service | experiments', function (hooks) {
 
   //Show feedback expectations (bubbles)
 
-  testShouldShowBlocksExpectationsFeedback('control', 'enabled', false)
-  testShouldShowBlocksExpectationsFeedback('treatment', 'enabled', true)
-  testShouldShowBlocksExpectationsFeedback('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
+  testShouldShowBlocksWarningExpectationsFeedback('control', 'enabled', false)
+  testShouldShowBlocksWarningExpectationsFeedback('treatment', 'enabled', true)
+  testShouldShowBlocksWarningExpectationsFeedback('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
 
 
   //Congratulations modal
@@ -137,8 +137,8 @@ module('Unit | Service | experiments', function (hooks) {
     testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
 
-  function testShouldShowBlocksExpectationsFeedback(group, feedback, shouldShow, solvedChallenges){
-    testShouldShow('blocks expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksExpectationFeedback()), solvedChallenges)
+  function testShouldShowBlocksWarningExpectationsFeedback(group, feedback, shouldShow, solvedChallenges){
+    testShouldShow('blocks warning expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksWarningExpectationFeedback()), solvedChallenges)
   }
 
   function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){

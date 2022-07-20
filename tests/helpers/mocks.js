@@ -95,11 +95,11 @@ export const experimentsMock = Service.extend({
 
     shouldShowExpectsFeedback: false,
 
-    setShouldShowBlocksExpectationFeedback(value) {
+    setShouldShowBlocksWarningExpectationFeedback(value) {
         this.shouldShowExpectsFeedback = value
     },
 
-    shouldShowBlocksExpectationFeedback() { return this.shouldShowExpectsFeedback },
+    shouldShowBlocksWarningExpectationFeedback() { return this.shouldShowExpectsFeedback },
 
     updateSolvedChallenges() { }
 })

@@ -102,7 +102,7 @@ export default Service.extend({
     return this.isNotAffected()
   },
 
-  shouldShowBlocksExpectationFeedback(){
+  shouldShowBlocksWarningExpectationFeedback(){
     return this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
