@@ -33,7 +33,8 @@
     "ClientJS",
     "uuidv4",
     "mulang",
-    "ProcedsBlockly"
+    "ProcedsBlockly",
+    "Response"
   ],
   "esversion": 9,
   "asi": true,

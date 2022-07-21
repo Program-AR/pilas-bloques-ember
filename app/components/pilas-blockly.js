@@ -406,12 +406,14 @@ export default Component.extend({
     })
   },
 
-  showBlocksExpectationFeedback() {
-    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+  showBlocksWarningExpectationFeedback() {
     this.showExpectationFeedbackFor(
       notCritical,
       addWarning
     )
+  },
+
+  showBlocksErrorExpectationFeedback(){
     this.showExpectationFeedbackFor(
       isCritical,
       addError
@@ -429,7 +431,9 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    if (this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
+    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+    if(this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
+    this.showBlocksErrorExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
@@ -440,7 +444,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.isNotAffected()
+    return this.experiments.shouldShowCongratulationsModal()
   },
 
   actions: {

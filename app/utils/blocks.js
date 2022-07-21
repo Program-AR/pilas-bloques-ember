@@ -95,15 +95,25 @@ export function clearValidationsFor(block) {
   block.setWarningText(null)
 }
 
-export function addWarning(block, message, index, itemChar = '☆ ') {
-  block.setWarningText(itemChar + lineWrap(message), index)
+const setWarningBubbleColour = (block, colour) => {
+  const unBoundedSetVisible = Blockly.Warning.prototype.setVisible
+  const boundedSetVisible = unBoundedSetVisible.bind(block.warning)
+  block.warning.setVisible = (visible) => { boundedSetVisible(visible); if (visible) block.warning.bubble_.setColour(colour) }
+}
+
+const addWarningToBlock = (block, itemChar, message, index, bubbleColour) => {
+  const text = `${itemChar} ${lineWrap(message)}`
+  block.setWarningText(text, index)
+  setWarningBubbleColour(block, bubbleColour)
   block.warning.setVisible(true)
-  block.warning.bubble_.setColour('yellow')
+}
+
+export function addWarning(block, message, index) {
+  addWarningToBlock(block, '☆', message, index, 'yellow')
 }
 
 export function addError(block, message, index) {
-  addWarning(block, message, index, '★ ')
-  block.warning.bubble_.setColour('red')
+  addWarningToBlock(block, '★', message, index, 'red')
 }
 
 function textWasChanged(fieldName, event) {

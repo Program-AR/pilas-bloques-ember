@@ -13,3 +13,6 @@ back: Volver
 passwordChanged: Senha mudada
 helloAgain: ¡Olá de novo!
 passwordHasBeenChanged: 'Sua senha foi mudada. '
+expiredTokenTitle: El enlace ha expirado.
+expiredTokenMessage: 'Puedes solicitar otro enlace haciendo '
+expiredTokenLink: click aqui
