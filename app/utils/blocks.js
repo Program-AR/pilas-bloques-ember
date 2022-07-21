@@ -106,37 +106,68 @@ export function addError(block, message, index) {
   block.warning.bubble_.setColour('red')
 }
 
-export function createInputTextBlock({ initOptions, errorMessage }) {
-  const text = 'texto'
-  return {
-    init: function () {
-      this.jsonInit(initOptions)
-    },
-    textWasChanged: function (event) {
-      return event.element === 'field' && event.name === text && (event.oldValue || event.newValue)
-    },
-    isATextChangeEvent: function (event) {
-      return event.blockId === this.id && this.textWasChanged(event)
-    },
-    onchange: function (event) {
-      if (this.disabled) {
-        clearValidationsFor(this)
-        return
-      }
-      if (event && (event.runCode || this.isATextChangeEvent(event))) {
-        if (this.hasError()) {
-          addError(this, errorMessage)
-        }
-        else {
-          clearValidationsFor(this)
-        }
-      }
-    },
-    hasError: function () {
-      return !this.getFieldValue(text)
-    },
-    isCustomBlock: true
+function textWasChanged(fieldName, event) {
+  return event.element === 'field' && event.name === fieldName && (event.oldValue !== event.newValue)
+}
+
+function isATextChangeEvent(fieldName) {
+  return function (event) {
+    return event.blockId === this.id && textWasChanged(fieldName, event)
   }
+}
+
+function isAnyParentBlockDisabled(block) {
+  const parent = block.parentBlock_
+  if (!parent) return false
+  return parent.disabled || isAnyParentBlockDisabled(parent)
+}
+
+function onChange(matchesEventKind, onTrigger) {
+  return function (event) {
+    if (this.disabled || isAnyParentBlockDisabled(this)) {
+      clearValidationsFor(this)
+      return
+    }
+    if (event && (event.runCode || matchesEventKind.call(this, event))) {
+      onTrigger.call(this)
+    }
+  }
+}
+
+export function onChangeForTextInputBlock(errorMessage, fieldName) {
+  return onChange(
+    isATextChangeEvent(fieldName),
+    function () {
+      if (this.hasError()) {
+        addError(this, errorMessage)
+      }
+      else {
+        clearValidationsFor(this)
+      }
+    }
+  )
+}
+
+function fillOpacity(block, opacity) {
+  block.getSvgRoot().style["fill-opacity"] = opacity
+}
+
+export function transparent(block) {
+  fillOpacity(block, 0)
+}
+
+function opaque(block) {
+  fillOpacity(block, 1)
+}
+
+export function onChangeRequired(warningText) {
+  return onChange(
+    (/* event */) => false,
+    function () {
+      addError(this, warningText)
+      opaque(this)
+    }
+  )
 }
 
 function lineWrap(message) {
