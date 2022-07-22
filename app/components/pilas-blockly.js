@@ -3,7 +3,7 @@ import { computed } from '@ember/object'
 import { run } from '@ember/runloop'
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
-import { addError, addWarning, clearValidations, declarationWithName, getNestedControlStructureBlock } from '../utils/blocks'
+import { addError, addWarning, clearValidations, declarationWithName, getNestedControlStructureBlocks } from '../utils/blocks'
 import { isCritical, warningInControlStructureBlock, notCritical } from '../utils/expectations'
 
 
@@ -408,7 +408,7 @@ export default Component.extend({
     this.showExpectationFeedbackFor(
       warningInControlStructureBlock,
       addWarning,
-      getNestedControlStructureBlock
+      getNestedControlStructureBlocks
     )
     this.showExpectationFeedbackFor(
       isCritical,
@@ -416,13 +416,19 @@ export default Component.extend({
     )
   },
 
-  showExpectationFeedbackFor(condition, addFeedback, getBlock = declarationWithName) {
+  declarationWithNameToArray(declaration){
+    return [declarationWithName(declaration)]
+  },
+
+  showExpectationFeedbackFor(condition, addFeedback, getBlocks = this.declarationWithNameToArray) {
     this.get('failedExpects')
       .filter(condition)
-      .forEach(({ declaration, description }, i) => 
-        addFeedback(getBlock(declaration), description.asSuggestion, -i)// TODO: Add priority?
-      )
+      .forEach(({ declaration, description }, i) => {
+          getBlocks(declaration)
+            .forEach(block => addFeedback(block, description.asSuggestion, -i))
+        })
   },
+  
 
   async runValidations() {
     clearValidations()
