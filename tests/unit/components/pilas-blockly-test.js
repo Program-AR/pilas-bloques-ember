@@ -342,7 +342,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('Feedback bubbles should keep their colour after hiding them', async function (assert) {
-      experimentsMock.setShouldShowBlocksExpectationFeedback(true)
+      experimentsMock.setShouldShowBlocksWarningExpectationFeedback(true)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
