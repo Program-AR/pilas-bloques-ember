@@ -1,15 +1,13 @@
 import Service from '@ember/service'
 import { isEmpty/*, compose*/ } from 'ramda'
-import { allProceduresShould, allControlStructuresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
+import { allProceduresShould, tuki, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const idsToExpectations = (intl) => ({
   decomposition: multiExpect(
     declaresAnyProcedure,
     () => mainNotTooLong(),
-    allControlStructuresShould(
-      doesNotNestControlStructures
-    ),
+    doesNotNestControlStructures,
     allProceduresShould(
       notTooLong(),
       doSomething,

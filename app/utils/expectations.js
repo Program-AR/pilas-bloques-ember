@@ -7,10 +7,7 @@ export const declaresAnyProcedure = (/* workspace */) =>
     `declares something unlike ${toEDLString(entryPointType)}`, declaresProcedureId, { declaration: entryPointType })
 
 export const allProceduresShould = (...expectations) => (workspace) =>
-  allShould(allProcedureNames(workspace), ...expectations)
-
-export const allControlStructuresShould = (...expectations) => (workspace) =>
-  allShould(allBlocksNestingControlStructures(workspace), ...expectations)
+  join(allProcedureNames(workspace).map(multiExpect(...expectations)))
 
 export const usesConditionalAlternative = () =>
   newGlobalExpectation(
@@ -27,13 +24,16 @@ export const usesSimpleRepetition = () =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     'uses repeat', simpleRepetitionId)
 
+export const doesNotNestControlStructures = (workspace) => 
+  join(allBlocksNestingControlStructures(workspace).map(procedureDoesNotNestControlStructures))
+
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
   newExpectation(
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
-export const doesNotNestControlStructures = (declaration) => 
+export const procedureDoesNotNestControlStructures = (declaration) => 
   newExpectation(
     {isSuggestion: true, isForControlGroup: true, isScoreable: true, warningInControlStructureBlock: true},
     `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
@@ -78,9 +78,6 @@ const newGlobalExpectation = (types, expect, id) =>
 
 export const newExpectation = (types, expect, id, opts = {}) =>
   `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
-
-const allShould = (scope, ...expectations) =>
-  join(scope.map(multiExpect(...expectations)))
 
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
