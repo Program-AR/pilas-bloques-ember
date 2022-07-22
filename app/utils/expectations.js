@@ -25,7 +25,7 @@ export const usesSimpleRepetition = () =>
     'uses repeat', simpleRepetitionId)
 
 export const doesNotNestControlStructures = (workspace) => 
-  join(allBlocksNestingControlStructures(workspace).map(procedureDoesNotNestControlStructures))
+  join(allBlocksNestingControlStructures(workspace).map(declarationDoesNotNestControlStructures))
 
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
@@ -33,7 +33,7 @@ export const doSomething = (declaration) =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
-export const procedureDoesNotNestControlStructures = (declaration) => 
+export const declarationDoesNotNestControlStructures = (declaration) => 
   newExpectation(
     {isSuggestion: true, isForControlGroup: true, isScoreable: true, warningInControlStructureBlock: true},
     `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
