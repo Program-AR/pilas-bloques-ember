@@ -52,7 +52,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   declarationNotTooLong(limit, declaration, tooLongId)
 
 export const mainNotTooLong = (limit = 7) =>
-  declarationNotTooLong(limit, entryPointType, "main_too_long")
+  declarationNotTooLong(limit, entryPointType, mainTooLongId)
 
 export const noExpectation = () => ''
 
@@ -118,13 +118,14 @@ export const doesNotUseRecursionId = 'does_not_use_recursion'
 export const isUsedId = 'is_used'
 export const isUsedFromMainId = 'is_used_from_main'
 
-const doSomethingId = 'do_something'
-const tooLongId = 'too_long'
-const nameWasChangedId = 'name_was_changed'
+export const doSomethingId = 'do_something'
+export const tooLongId = 'too_long'
+export const nameWasChangedId = 'name_was_changed'
 const conditionalAlternativeId = 'uses_conditional_alternative'
 const conditionalRepetitionId = 'uses_conditional_repetition'
 const simpleRepetitionId = 'uses_simple_repetition'
-const declaresProcedureId = 'declares_procedure'
+export const declaresProcedureId = 'declares_procedure'
+export const mainTooLongId = "main_too_long"
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
 

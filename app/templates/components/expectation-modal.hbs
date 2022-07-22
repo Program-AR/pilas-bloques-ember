@@ -7,6 +7,7 @@
   {{#if (compute (action shouldShowScoredExpectations))}}
     <ScoredExpectations
       @expects={{expects}}
+      @challenge={{challenge}}
     />
   {{else}}
     <NonScoredExpectations

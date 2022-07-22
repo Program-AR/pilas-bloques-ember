@@ -7,17 +7,34 @@ export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),
+    challengeExpectations: service(),
 
-    expectsResults(expects) {
-        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
+    expectsResults(expects, challenge) {
+        //return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
+        return [this.solutionWorksExpectResult()].concat(this.scoreItems(expects, challenge))
     },
 
-    failedExpects(expects) {
-        return this.expectsResults(expects).filter(e => !e.result)
+    failedExpects(expects, challenge) {
+        return this.expectsResults(expects, challenge).filter(e => !e.result)
     },
 
-    allPassedExpects(expects) {
-        return this.expectsResults(expects).filter(e => e.result)
+    allPassedExpects(expects, challenge) {
+        return this.expectsResults(expects, challenge).filter(e => e.result)
+    },
+
+    scoreItems(expects, challenge) {
+        const combinedExpectations = this.combineMultipleExpectations(expects)
+        return this.challengeExpectations.partialFeedbackItems(challenge)
+            .filter(this.isScoreable)
+            .map(item => this.fillScoreItem(item, combinedExpectations))
+    },
+
+    fillScoreItem(item, combinedExpectations) {
+        const matchingExpectation = combinedExpectations.find(e => e.id === item.id) || {}
+        return {
+            ...item,
+            ...matchingExpectation
+        }
     },
 
     groupById(expects) {
@@ -52,8 +69,8 @@ export default Service.extend({
         }
     },
 
-    totalScore(expects) {
-        return 100 * this.allPassedExpects(expects).length / this.expectsResults(expects).length
+    totalScore(expects, challenge) {
+        return 100 * this.allPassedExpects(expects, challenge).length / this.expectsResults(expects, challenge).length
     }
 
 })

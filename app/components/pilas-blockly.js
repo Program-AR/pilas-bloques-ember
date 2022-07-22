@@ -369,7 +369,7 @@ export default Component.extend({
       allExpectResults: this.persistableExpectsResults(this.get('expects')),
       score: {
         expectResults: this.scoredExpectsResults(),
-        percentage: this.expectsScoring.totalScore(this.get('expects'))
+        percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge)
       }
     }
   },
@@ -383,7 +383,7 @@ export default Component.extend({
   },
 
   scoredExpectsResults() {
-    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects')))
+    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects'), this.challenge))
   },
 
   runProgramEvent() {
