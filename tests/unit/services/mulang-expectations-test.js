@@ -106,6 +106,22 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
     )
   ])
 
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(entryPointType), [
+    entryPoint(entryPointType,
+      muUntil(none(),
+        muIf(none(), none())
+      )
+    )
+  ])
+
+  expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(entryPointType), [
+    entryPoint(entryPointType,
+      repeat(number(3),
+        muIf(none(), none())
+      )
+    )
+  ])
+
   expectationTestFail('doesNotNestControlStructures', doesNotNestControlStructures(declaration), [
     procedure(declaration, [], 
       muIf(none(),
