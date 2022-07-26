@@ -1,5 +1,5 @@
 import Service, { inject as service } from '@ember/service'
-import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor } from '../utils/blocks'
+import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor, transparent, onChangeRequired, onChangeForTextInputBlock } from '../utils/blocks'
 import Ember from 'ember'
 
 const original_procedure_type = 'procedures_defnoreturn'
@@ -17,6 +17,7 @@ export default Service.extend({
     Blockly.shouldExecute = this._shouldExecute.bind(this);
     Blockly.aliases = this._aliases;
     Blockly.Events.fireRunCode = this._fireRunCodeEvent;
+    Blockly.Block.prototype.hasError = function () { return false }
     //END TODO
     this._generarLenguaje();
     this._definirColores();
@@ -200,6 +201,41 @@ export default Service.extend({
     });
   },
 
+  addInputTextBlock(type, fieldName) {
+    const thisService = this
+    Blockly.Blocks[type] = {
+      init: function () {
+        this.jsonInit({
+          "type": type,
+          "message0": `${thisService.tString(`write`)}`,
+          "colour": Blockly.Blocks.primitivas.COLOUR,
+          "inputsInline": true,
+          "previousStatement": true,
+          "nextStatement": true,
+          "args0": [
+            {
+              "type": "field_image",
+              "src": `iconos/icono.DibujarLinea.png`,
+              "width": 16,
+              "height": 16,
+              "alt": "*"
+            },
+            {
+              "type": "field_input",
+              "name": fieldName,
+              "text": ""
+            }
+          ],
+        })
+      },
+      onchange: onChangeForTextInputBlock(this.tString('errors.missingTextInput'), fieldName),
+      hasError: function () {
+        return !this.getFieldValue(fieldName)
+      },
+      isCustomBlock: true
+    }
+  },
+
   defineBlocklyTranslations() {
     Blockly.Msg.PROCEDURES_DEFNORETURN_PROCEDURE = this.tString("procedures.name")
     Blockly.Msg.PROCEDURES_DEFNORETURN_TITLE = this.tString("procedures.definition")
@@ -225,8 +261,8 @@ export default Service.extend({
     Blockly.Msg.REDO = this.tString("contextMenu.redo")
     Blockly.Msg.CLEAN_UP = this.tString("contextMenu.cleanUp")
     Blockly.Msg.EXTERNAL_INPUTS = this.tString("contextMenu.externalInputs")
-    
-    
+
+
 
 
     // ProcedsBlockly.init() needs all procedure blocks to work, so we need to put them back
@@ -849,27 +885,7 @@ export default Service.extend({
       argumentos: '{}',
     });
 
-    blockly.createCustomBlock('EscribirTextoDadoEnOtraCuadricula', {
-      message0: `${this.intl.t(`blocks.write`)}`,
-      colour: Blockly.Blocks.primitivas.COLOUR,
-      inputsInline: true,
-      previousStatement: true,
-      nextStatement: true,
-      args0: [
-        {
-          "type": "field_image",
-          "src": `iconos/icono.DibujarLinea.png`,
-          "width": 16,
-          "height": 16,
-          "alt": "*"
-        },
-        {
-          "type": "field_input",
-          "name": "texto",
-          "text": ""
-        }
-      ],
-    });
+    this.addInputTextBlock("EscribirTextoDadoEnOtraCuadricula", "texto");
 
     Blockly.Blocks.EscribirTextoDadoEnOtraCuadricula.categoryId = 'primitives';
 
@@ -1181,27 +1197,6 @@ export default Service.extend({
 
     const thisService = this;
 
-    function fillOpacity(block, opacity) {
-      block.getSvgRoot().style["fill-opacity"] = opacity
-    }
-
-    function transparent(block) {
-      fillOpacity(block, 0)
-    }
-
-    function opaque(block) {
-      fillOpacity(block, 1)
-    }
-
-    function onChangeRequired(warningText) {
-      return function (event) {
-        if (event && event.runCode) {
-          addError(this, warningText)
-          opaque(this)
-        }
-      }
-    }
-
     Blockly.Blocks.required_value = {
       init: function () {
         this.jsonInit({
@@ -1384,8 +1379,8 @@ export default Service.extend({
             clearValidationsFor(this)
           } else {
             var err = (hasParam(procedureDef, this))
-            ? wrongParameterError(procedureDef)
-            : deletedParameterError
+              ? wrongParameterError(procedureDef)
+              : deletedParameterError
             addError(this, err)
           }
         }

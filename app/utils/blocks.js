@@ -13,9 +13,9 @@ export function allProcedureNames(workspace) {
 }
 
 export function declarationWithName(name, workspace = Blockly.mainWorkspace) {
-  return entryPointType == name 
-  ? workspace.getAllBlocks().find(b => b.type === entryPointType) //TODO: Move to gral place
-  : allProcedures(workspace).find(p => getName(p) == name)
+  return entryPointType == name
+    ? workspace.getAllBlocks().find(b => b.type === entryPointType) //TODO: Move to gral place
+    : allProcedures(workspace).find(p => getName(p) == name)
 }
 
 // TODO: No acoplarse a la categoria
@@ -26,7 +26,7 @@ export function isValue(block) {
   return block.categoryId == "values"
 }
 
-export function isProcedure(block){
+export function isProcedure(block) {
   return Blockly.isProcedure(block.type)
 }
 
@@ -52,7 +52,7 @@ export function getParams(procedureBlock) {
 
 export function getBlockSiblings(block) {
   const siblings = [];
-  while (block.getNextBlock()){
+  while (block.getNextBlock()) {
     block = block.getNextBlock()
     siblings.push(block);
   }
@@ -66,20 +66,20 @@ export function getChild(block) {
 // Agrega un required shadow a todos los input que sean para encastrar otros bloques
 export function requiredAllInputs(block) {
   block.inputList
-  .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
-  .forEach(input => requiredInput(block, input.name))
+    .filter(input => input.connection && shouldAddRequiredShadow(input.connection))
+    .forEach(input => requiredInput(block, input.name))
 }
 
 function shouldAddRequiredShadow(connection) {
-  return  connection.getShadowDom() == null // Should have not a shadow block
-  &&      [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
+  return connection.getShadowDom() == null // Should have not a shadow block
+    && [Blockly.INPUT_VALUE, Blockly.NEXT_STATEMENT].includes(connection.type) // Should be a "block hole"
 }
 
 function requiredInput(block, inputName) {
   let connection = block.getInput(inputName).connection
-  let shadowType =  (connection.type == Blockly.INPUT_VALUE)
-                    ? "required_value"
-                    : "required_statement"
+  let shadowType = (connection.type == Blockly.INPUT_VALUE)
+    ? "required_value"
+    : "required_statement"
   var shadowValue = Blockly.Xml.textToDom(`<shadow type="${shadowType}"></shadow>`)
   connection.setShadowDom(shadowValue)
   if (!connection.targetConnection)
@@ -116,16 +116,80 @@ export function addError(block, message, index) {
   addWarningToBlock(block, '★', message, index, 'red')
 }
 
-function lineWrap(message){
+function textWasChanged(fieldName, event) {
+  return event.element === 'field' && event.name === fieldName && (event.oldValue !== event.newValue)
+}
+
+function isATextChangeEvent(fieldName) {
+  return function (event) {
+    return event.blockId === this.id && textWasChanged(fieldName, event)
+  }
+}
+
+function isAnyParentBlockDisabled(block) {
+  const parent = block.parentBlock_
+  if (!parent) return false
+  return parent.disabled || isAnyParentBlockDisabled(parent)
+}
+
+function onChange(matchesEventKind, onTrigger) {
+  return function (event) {
+    if (this.disabled || isAnyParentBlockDisabled(this)) {
+      clearValidationsFor(this)
+      return
+    }
+    if (event && (event.runCode || matchesEventKind.call(this, event))) {
+      onTrigger.call(this)
+    }
+  }
+}
+
+export function onChangeForTextInputBlock(errorMessage, fieldName) {
+  return onChange(
+    isATextChangeEvent(fieldName),
+    function () {
+      if (this.hasError()) {
+        addError(this, errorMessage)
+      }
+      else {
+        clearValidationsFor(this)
+      }
+    }
+  )
+}
+
+function fillOpacity(block, opacity) {
+  block.getSvgRoot().style["fill-opacity"] = opacity
+}
+
+export function transparent(block) {
+  fillOpacity(block, 0)
+}
+
+function opaque(block) {
+  fillOpacity(block, 1)
+}
+
+export function onChangeRequired(warningText) {
+  return onChange(
+    (/* event */) => false,
+    function () {
+      addError(this, warningText)
+      opaque(this)
+    }
+  )
+}
+
+function lineWrap(message) {
   const lineLen = 75
   return message.split(' ').reduce((lines, word) => {
-      const lastLine = lines[lines.length-1]
-      if(lastLine.length + word.length > lineLen)
-        lines.push(word)
-      else
-        lines.push(lines.pop() + ' ' + word)
-      return lines
-    },
+    const lastLine = lines[lines.length - 1]
+    if (lastLine.length + word.length > lineLen)
+      lines.push(word)
+    else
+      lines.push(lines.pop() + ' ' + word)
+    return lines
+  },
     [""]
   ).join('\n  ')
 }
