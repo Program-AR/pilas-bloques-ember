@@ -385,6 +385,25 @@ export default [
       simpleRepetition: false
     }
   },
+  {
+    id: 38,
+    nombre: 'DibujandoNotas',
+    imagen: 'DibujandoFiguras',
+    escena: `new DibujandoFigurasSegmentado(
+      [],
+      [[{x:0,y:100},{x:-50,y:100},{x:-50,y:50},{x:-50,y:0},{x:-50,y:-50},{x:-100,y:-50},{x:-100,y:0},{x:-50,y:0}],
+      [{x:100,y:150},{x:50,y:150},{x:50,y:100},{x:50,y:50},{x:50,y:0},{x:0,y:0},{x:0,y:50},{x:50,y:50}],
+      [{x:100,y:-50},{x:50,y:-50},{x:50,y:-100},{x:100,y:-100},{x:100,y:-50},{x:100,y:0},{x:100,y:50},{x:150,y:50}],
+      [{x:200,y:0},{x:150,y:0},{x:150,y:-50},{x:150,y:-100},{x:150,y:-150},{x:100,y:-150},{x:100,y:-100},{x:150,y:-100}],
+      ],
+      {posX: 0, posY: 100, pathFondo: "fondo.partitura.png"}
+    )`, 
+    bloques: ['Procedimiento', 'Repetir','MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda'],
+    expectations: {
+      decomposition: true,
+      simpleRepetition: false
+    }
+  },
 
   {
     id: 201,
