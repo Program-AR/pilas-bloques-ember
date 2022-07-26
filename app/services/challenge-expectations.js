@@ -44,7 +44,7 @@ export default Service.extend({
     let models = [challenge]
     const group = challenge.get('grupo')
     // Some activities may not belong to a group, chapter or book
-    if (group) {
+    if (group?.id) {
       const chapter = group.get('capitulo')
       const book = chapter.get('libro')
       // This order is important. Expectations with less priority should be first.
