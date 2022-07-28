@@ -163,8 +163,8 @@ spects:
     main_too_long: |
       {result, select, 
         true {El programa principal es corto y legible.}
-        other {El programa principal debería estar}
-      } dividido en subtareas.
+        other {El programa principal es largo, debería estar dividido en subtareas.}
+      } 
     too_long: |
       {result, select, 
         true {Tus procedimientos están}
