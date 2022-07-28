@@ -1,4 +1,4 @@
-import { allProcedureNames, entryPointType } from './blocks'
+import { allProcedureNames, allBlocksNestingControlStructures, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
 export const declaresAnyProcedure = (/* workspace */) =>
@@ -8,9 +8,6 @@ export const declaresAnyProcedure = (/* workspace */) =>
 
 export const allProceduresShould = (...expectations) => (workspace) =>
   join(allProcedureNames(workspace).map(multiExpect(...expectations)))
-
-export const multiExpect = (...expectations) => (element) =>
-  join(expectations.map(e => e(element)))
 
 export const usesConditionalAlternative = () =>
   newGlobalExpectation(
@@ -27,11 +24,19 @@ export const usesSimpleRepetition = () =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     'uses repeat', simpleRepetitionId)
 
+export const doesNotNestControlStructures = (workspace) => 
+  join(allBlocksNestingControlStructures(workspace).map(declarationDoesNotNestControlStructures))
+
 // DECLARATION EXPECTATIONS
 export const doSomething = (declaration) =>
   newExpectation(
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
+
+export const declarationDoesNotNestControlStructures = (declaration) => 
+  newExpectation(
+    {isSuggestion: true, isForControlGroup: true, isScoreable: true, warningInControlStructureBlock: true},
+    `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
   newExpectation(
@@ -74,6 +79,8 @@ const newGlobalExpectation = (types, expect, id) =>
 export const newExpectation = (types, expect, id, opts = {}) =>
   `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
 
+export const multiExpect = (...expectations) => (element) =>
+  join(expectations.map(e => e(element)))
 
 // Use this to count number of calls inside a procedure, including recursive calls
 // Mulang count does not count recursive calls
@@ -88,6 +95,10 @@ const newSimpleCondition = (types, condition, id, opt = {}) =>
 
 const pass = `calls || ! calls`
 const fail = `calls && ! calls`
+
+const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
+const nestedControlStructureEDL = (loop) => `! uses ${loop} with (anything, ${usesControlStructureEDL})`
+const nestedAlternativeStructureEDL =  `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
 
 export const parseExpect = (name) => {
   const expectationName = name.split('|')[0]
@@ -125,10 +136,14 @@ const conditionalAlternativeId = 'uses_conditional_alternative'
 const conditionalRepetitionId = 'uses_conditional_repetition'
 const simpleRepetitionId = 'uses_simple_repetition'
 const declaresProcedureId = 'declares_procedure'
+const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
 
+export const notCritical = (expectationResult) => !isCritical(expectationResult) && !warningInControlStructureBlock(expectationResult)
+
+export const warningInControlStructureBlock = (expectationResult) => expectationResult && expectationResult.warningInControlStructureBlock
+
 export const isUsageResult = (expectationResult) => expectationResult && expectationResult.isRelatedToUsage
 
-export const notCritical = (expectationResult) => !isCritical(expectationResult)
 
