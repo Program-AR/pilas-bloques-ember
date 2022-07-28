@@ -43,8 +43,17 @@ module('Unit | Controller | password-recovery', function (hooks) {
     })
   })
 
+  test('If update credentials fails for unauthorized, show error', function (assert) {
+    mockApi(`credentials`, 401)
+    this.ctrl.send('changePassword', this.next)
+    awaitAssert(assert, () => {
+      assert.notOk(this.next.called)
+      assert.ok(this.ctrl.isExpiredToken)
+    })
+  })
+
   function awaitAssert(assert, fn) {
-    /** 
+    /**
      * Se assertea en 500ms para esperar a que termine la Promise de la API.
      * En realidad habría que meter esa resolución dentro del runloop de Ember
      * para usar las herramientas que ofrece, pero no me salió.

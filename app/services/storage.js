@@ -10,7 +10,10 @@ export default Ember.Service.extend({
   USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
   SELECTED_LOCALE_KEY: 'PB_SELECTED_LOCALE',
+  EXPERIMENT_GROUP: 'PB_EXPERIMENT_GROUP',
   SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
+  USER_IP: 'PB_USER_IP',
+  FINGERPRINT: 'PB_FINGERPRINT',
 
   getUserId() {
     const user = this.getUser()
@@ -47,11 +50,24 @@ export default Ember.Service.extend({
 
   getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) },
 
+  saveExperimentGroup(newGroup) { this._save(this.EXPERIMENT_GROUP, newGroup) },
+
+  getExperimentGroup() { return this._get(this.EXPERIMENT_GROUP) },
+  
   saveSolvedChallenges(solvedChallenges) { this._save(this.SOLVED_CHALLENGES,solvedChallenges) },
 
-  getSolvedChallenges () { 
-    return this._get(this.SOLVED_CHALLENGES) || []
+  getSolvedChallenges() { return this._get(this.SOLVED_CHALLENGES) || [] },
+
+  saveUserIp(ip) { return this._save(this.USER_IP, ip)},
+
+  getUserIp() { return this._get(this.USER_IP)},
+
+  getFingerprint() {
+    if(!this._get(this.FINGERPRINT)) this._save(this.FINGERPRINT, this.newFingerprint()) 
+    return this._get(this.FINGERPRINT)    
   },
+
+  newFingerprint(){ return new ClientJS().getFingerprint() },
 
   clear() { localStorage.clear() },
 

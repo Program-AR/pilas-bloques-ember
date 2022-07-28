@@ -229,13 +229,13 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       assert.ok(this.ctrl.shouldExecuteProgram())
     })
 
-    test('should execute program if any non critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: false, declaration: 'block_id' }])
+    test('should execute program if there are no errors', function (assert) {
+      this.ctrl.set('expects', [{ id: 'is_used', description: "Is used", result: false, declaration: 'block_id', hasError() { return false } }])
       assert.ok(this.ctrl.shouldExecuteProgram())
     })
 
-    test('should not execute program if any critical exceptation fails', function (assert) {
-      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true }])
+    test('should not execute program if there are errors', function (assert) {
+      this.ctrl.set('expects', [{ id: doesNotUseRecursionId, description: "Does not use recursion", result: false, declaration: 'block_id', isCritical: true, hasError() { return true } }])
       assert.notOk(this.ctrl.shouldExecuteProgram())
     })
 
@@ -255,6 +255,27 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       later(() => {
         assert.ok(this.ctrl.get('allExpectsPassed'))
       })
+    })
+  })
+
+  module('pilas-blockly | execution-with-blocks-errors', function () {
+
+    test('should execute program if enabled blocks have no errors', function (assert) {
+      const xmlWorkspace = "<xml><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"|U)5+na!D;9STcTQQz.K\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"383\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"e%]$z2Vs,fU50xT}U78h\"></shadow><block type=\"MoverACasillaDerecha\" id=\"{q9{V=,$o,yvDJ`TmuEf\"><next><block type=\"EscribirTextoDadoEnOtraCuadricula\" id=\"tD=)qkbk1t|l{/RA?tTo\"><field name=\"texto\">g</field></block></next></block></statement></block></xml>"
+      this.ctrl.send('setWorkspace', xmlWorkspace)
+      assert.ok(this.ctrl.shouldExecuteProgram())
+    })
+
+    test('should execute program if any disabled block has errors', function (assert) {
+      const xmlWorkspace = "<xml><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"|U)5+na!D;9STcTQQz.K\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"383\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"e%]$z2Vs,fU50xT}U78h\"></shadow><block type=\"MoverACasillaDerecha\" id=\"{q9{V=,$o,yvDJ`TmuEf\"></block></statement></block><block type=\"EscribirTextoDadoEnOtraCuadricula\" id=\"tD=)qkbk1t|l{/RA?tTo\" disabled=\"true\" x=\"776\" y=\"107\"><field name=\"texto\"></field></block></xml>"
+      this.ctrl.send('setWorkspace', xmlWorkspace)
+      assert.ok(this.ctrl.shouldExecuteProgram())
+    })
+
+    test('should not execute program if any enabled block has errors', function (assert) {
+      const xmlWorkspace = "<xml><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"|U)5+na!D;9STcTQQz.K\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"383\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"e%]$z2Vs,fU50xT}U78h\"></shadow><block type=\"MoverACasillaDerecha\" id=\"{q9{V=,$o,yvDJ`TmuEf\"><next><block type=\"EscribirTextoDadoEnOtraCuadricula\" id=\"tD=)qkbk1t|l{/RA?tTo\"><field name=\"texto\"></field></block></next></block></statement></block></xml>"
+      this.ctrl.send('setWorkspace', xmlWorkspace)
+      assert.notOk(this.ctrl.shouldExecuteProgram())
     })
   })
 
@@ -300,8 +321,10 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       return findBlockByTypeIn(block, "al_empezar_a_ejecutar")
     }
 
+    const colourFromBlock = (block) => block.warning.bubble_.bubbleBack_.getAttribute('fill')
+
     test('Should show expectation feedback bubbles when required by experiments', async function (assert) {
-      experimentsMock.setShouldShowBlocksExpectationFeedback(true)
+      experimentsMock.setShouldShowBlocksWarningExpectationFeedback(true)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
@@ -310,12 +333,27 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('Should not show expectation feedback bubbles when not required by experiments', async function (assert) {
-      experimentsMock.setShouldShowBlocksExpectationFeedback(false)
+      experimentsMock.setShouldShowBlocksWarningExpectationFeedback(false)
 
       this.ctrl.send('ejecutar')
       const required = blockFromProgram(failingExpectationsProgram)
       await settled()
       later(() => assertNotWarning(assert, required))
+    })
+
+    test('Feedback bubbles should keep their colour after hiding them', async function (assert) {
+      experimentsMock.setShouldShowBlocksWarningExpectationFeedback(true)
+
+      this.ctrl.send('ejecutar')
+      const required = blockFromProgram(failingExpectationsProgram)
+      await settled()
+      later(() => {
+        const initialColour = colourFromBlock(required)
+        required.warning.setVisible(false)
+        required.warning.setVisible(true)
+        const colourAfterHiding = colourFromBlock(required)
+        assert.equal(colourAfterHiding, initialColour)
+      })
     })
   })
 

@@ -4,6 +4,27 @@ export const badRequest = (cb) => ({ status }) => {
 export const notFound = (cb) => ({ status }) => {
   if (status === 404) cb()
 }
+export const unauthorized = (cb) => ({ status }) => {
+  if (status === 401) cb()
+}
+export class HttpErrorHandler{
+  constructor(response) {
+    this.response = response
+  }
+  _callError(errorFunction){
+    errorFunction(this.response);
+    return new HttpErrorHandler(this.response)
+  }
+  badRequest(cb) {
+    return this._callError(badRequest(cb))
+  }
+  unauthorized(cb) {
+    return this._callError(unauthorized(cb))
+  }
+  notFound(cb) {
+    return this._callError(notFound(cb))
+  }
+}
 
 export const loadLazyScript = (file) => {
   //TODO: Use afterRender?

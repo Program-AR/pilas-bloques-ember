@@ -13,3 +13,6 @@ back: Go back
 passwordChanged: Password changed
 helloAgain: Hello again!
 passwordHasBeenChanged: 'Your password has been changed. '
+expiredTokenTitle: The link has expired
+expiredTokenMessage: 'You can request another link by '
+expiredTokenLink: clicking here!

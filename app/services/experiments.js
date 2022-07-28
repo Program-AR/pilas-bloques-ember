@@ -1,36 +1,93 @@
 import Service, { inject as service } from '@ember/service'
 import ENV from 'pilasbloques/config/environment'
+import seedrandom from 'seedrandom';
 import { computed } from '@ember/object'
 
 export default Service.extend({
 
-  group: ENV.experimentGroup,
-  decompositionTreatmentLength: ENV.decompositionTreatmentLength,
+  groupSelectionStrategy: ENV.experimentGroup,
   storage: service(),
+  pilasBloquesApi: service(),
   challengeExpectations: service(),
 
+  //This order is important, do NOT change
+  possibleGroups: ["treatment", "control", "notAffected"],
+  decompositionTreatmentLength: ENV.decompositionTreatmentLength,
+  
   solvedChallenges: computed('storage', function () {
     return this.get('storage').getSolvedChallenges()
   }),
 
   isTreatmentGroup() {
-    return this.group === "treatment"
+    return this.experimentGroup() === this.possibleGroups[0]
   },
 
   isControlGroup() {
-    return this.group === "control"
+    return this.experimentGroup() === this.possibleGroups[1]
   },
 
   isNotAffected() {
     return !(this.isTreatmentGroup() || this.isControlGroup())
   },
 
+  isAutoAssignStrategy(){
+    return this.groupSelectionStrategy === "autoassign"
+  },
+
+  /**
+   * If the group selection strategy is autoassign, returns a random group based on the user ip. 
+   * In the case that the user does not have an internet connection, always returns notAffected group.
+   * If the group selection strategy is other than autoassign, then returns the group assigned as strategy.
+   */
   experimentGroup() {
-    return this.group
+    return this.isAutoAssignStrategy() ? (this.getExperimentGroupAssigned() || this.possibleGroups[2]) : this.groupSelectionStrategy
+  },
+
+  getExperimentGroupAssigned(){
+    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup()|| this.randomizeAndSaveExperimentGroup() // jshint ignore:line
+  },
+
+  randomizeAndSaveExperimentGroup(){
+    const randomExperimentGroup = this.getRandomExperimentGroup()
+    this.storage.saveExperimentGroup(randomExperimentGroup)
+
+    if(this.pilasBloquesApi.getUser()){
+      this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
+    }
+    
+    return randomExperimentGroup
+  },
+
+  /**
+   * Randomizes with the ip as seed because we want every student in a classroom to have the same experiment group
+   * @returns an experiment group or null in case the ip has not been set yet
+   */
+  getRandomExperimentGroup(){
+    const ip = this.storage.getUserIp()
+    return ip && this.possibleGroups[this.randomIndex(ip)]
+  },
+
+  randomIndex(seed){
+    const randomizedSeed = seedrandom(seed)
+    const experimentGroupNumber = randomizedSeed() * (this.possibleGroups.length - 1)
+
+    return Math.floor(experimentGroupNumber)
+  },
+
+  async saveUserIP(){
+    if(!this.storage.getUserIp()){
+      try{
+        const response = await fetch("https://api64.ipify.org?format=json")
+        const jsonIp = await response.json()
+        this.storage.saveUserIp(jsonIp.ip)
+      }catch(e){
+        console.error(e);
+      }
+    }
   },
 
   groupId() {
-    return this.group.charAt(0)
+    return this.groupSelectionStrategy.charAt(0)
   },
   
   updateSolvedChallenges(challenge){
@@ -45,7 +102,7 @@ export default Service.extend({
     return this.isNotAffected()
   },
 
-  shouldShowBlocksExpectationFeedback(){
+  shouldShowBlocksWarningExpectationFeedback(){
     return this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 

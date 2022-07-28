@@ -334,7 +334,7 @@ export default Component.extend({
       if (this.onTerminoEjecucion)
         this.onTerminoEjecucion()
 
-      if(this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
+      if (this.pilasService.estaResueltoElProblema()) this.experiments.updateSolvedChallenges(this.challenge)
 
       this.send('showEndModal')
 
@@ -356,11 +356,18 @@ export default Component.extend({
     return Blockly.mainWorkspace.getTopBlocks()
       .filter(block => !block.disabled)
       .every(block => Blockly.shouldExecute(block))
-      && !this.existsCriticalExpectationFailure()
+      && this.thereAreNoErrors()
   },
 
-  existsCriticalExpectationFailure() {
-    return this.get('failedExpects').some(fe => isCritical(fe))
+  thereAreNoErrors() {
+    return this.enabledBlocks()
+      .concat(this.get('failedExpects'))
+      .every(failable => !failable.hasError())
+  },
+
+  enabledBlocks() {
+    return Object.values(Blockly.getMainWorkspace().blockDB_)
+      .filter(block => !block.disabled)
   },
 
   staticAnalysis() {
@@ -399,12 +406,14 @@ export default Component.extend({
     })
   },
 
-  showBlocksExpectationFeedback() {
-    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+  showBlocksWarningExpectationFeedback() {
     this.showExpectationFeedbackFor(
       notCritical,
       addWarning
     )
+  },
+
+  showBlocksErrorExpectationFeedback(){
     this.showExpectationFeedbackFor(
       warningInControlStructureBlock,
       addWarning,
@@ -433,7 +442,9 @@ export default Component.extend({
   async runValidations() {
     clearValidations()
     this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    if(this.experiments.shouldShowBlocksExpectationFeedback()) this.showBlocksExpectationFeedback()
+    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+    if(this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
+    this.showBlocksErrorExpectationFeedback()
     Blockly.Events.fireRunCode()
   },
 
@@ -444,7 +455,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.isNotAffected()
+    return this.experiments.shouldShowCongratulationsModal()
   },
 
   actions: {
