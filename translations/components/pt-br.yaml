@@ -128,7 +128,6 @@ spects:
     # For program or procedure:
     uses_conditional_alternative: ¿Tu programa anda a veces sí y a veces no? Podés usar alternativa condicional para considerar todos los escenarios posibles.
     uses_conditional_repetition: Podés usar repetición condicional cuando tenés que repetir algo hasta que se cumpla una condición.
-    declares_procedure: Un buen programa está dividido en partes siguiendo una estrategia. Podés usar procedimientos para comenzar a pensar las partes.
     main_too_long: El programa principal quedó largo y por lo tanto es difícil de leer. Podrías dividirlo en subtareas usando procedimientos.
     too_long: Este procedimiento quedó largo y difícil de leer. Podrías dividirlo en subtareas usando procedimientos.
     # For each procedure:
@@ -155,11 +154,6 @@ spects:
         true {Usás}
         other {Deberías usar}
       } repetición condicional para considerar los escenarios variantes.
-    declares_procedure: |
-      {result, select, 
-        true {Usás}
-        other {Deberías usar}
-      } procedimientos para descomponer tu estrategia en subtareas.
     main_too_long: |
       {result, select, 
         true {El programa principal es corto y legible.}
@@ -189,7 +183,6 @@ spects:
     uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
     uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
     uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
-    declares_procedure: Tu programa debería usar procedimientos para descomponer tu estrategia en subtareas.
     main_too_long: El programa principal debería estar dividido en subtareas usando procedimientos.
     too_long: Tus procedimientos no deberían ser largos, también deberían estar divididos en subtareas.
     do_something: No deberías tener procedimientos vacíos, sin bloques.

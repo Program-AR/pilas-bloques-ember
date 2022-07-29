@@ -288,10 +288,6 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
 
   // IDs for internationalize - [key, params]
 
-  expectationKeyTest('declaresAnyProcedure', declaresAnyProcedure(),
-    ['declares_procedure', { declaration: entryPointType, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
-  )
-
   expectationKeyTest('doSomething', doSomething(declaration),
     ['do_something', { declaration, isSuggestion: true, isForControlGroup: true, isScoreable: true }]
   )

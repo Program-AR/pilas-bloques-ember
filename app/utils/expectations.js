@@ -1,10 +1,6 @@
 import { allProcedureNames, allBlocksNestingControlStructures, entryPointType } from './blocks'
 
 // GLOBAL EXPECTATIONS
-export const declaresAnyProcedure = (/* workspace */) =>
-  newExpectation(
-    { isSuggestion: true, isForControlGroup: true, isScoreable: true },
-    `declares something unlike ${toEDLString(entryPointType)}`, declaresProcedureId, { declaration: entryPointType })
 
 export const allProceduresShould = (...expectations) => (workspace) =>
   join(allProcedureNames(workspace).map(multiExpect(...expectations)))
@@ -135,7 +131,6 @@ const nameWasChangedId = 'name_was_changed'
 const conditionalAlternativeId = 'uses_conditional_alternative'
 const conditionalRepetitionId = 'uses_conditional_repetition'
 const simpleRepetitionId = 'uses_simple_repetition'
-const declaresProcedureId = 'declares_procedure'
 const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical

@@ -5,7 +5,6 @@ import { inject as service } from '@ember/service';
 
 const idsToExpectations = (intl) => ({
   decomposition: multiExpect(
-    declaresAnyProcedure,
     () => mainNotTooLong(),
     doesNotNestControlStructures,
     allProceduresShould(
