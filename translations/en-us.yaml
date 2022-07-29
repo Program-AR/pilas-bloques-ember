@@ -203,6 +203,18 @@ model:
       description: |
         Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length.
       clue: 'In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure.'
+    '40':
+      title: |
+        A spoiled party
+      description: |
+        “Nothing better than getting up in the morning and spoiling a party“ thinks the spoilsport crab. Help the crab pinch all the balloons on its way. Don't forget to download your solution (you will need it later).
+      clue: How can the crab easily tell if there is a balloon party? What should it do if no one is partying?
+    '41':
+      title: |
+        Redecorating parties
+      description: |
+        Today is a special day to celebrate and decorate parties with many balloons... But there's a little crab that likes to cause trouble. Help the crab pinch all the balloons of all the parties on its way. 
+      clue: Is there a task the crab has to complete several times? Could the solution to the previous challenge (A spoiled party) help us?  
     '130':
       title: Dracula’s party
       description: |
@@ -654,6 +666,10 @@ model:
     ElMonoCuentaDeNuevo:
       title: ''
     ElPlanetaDeNano:
+      title: ''
+    UnaFiestaArruinada:
+      title: ''
+    RedecorandoFiestas:
       title: ''
     Dibujando Figuras:
       title: ''
