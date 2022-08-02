@@ -31,7 +31,7 @@ export const doSomething = (declaration) =>
 
 export const declarationDoesNotNestControlStructures = (declaration) => 
   newExpectation(
-    {isSuggestion: true, isForControlGroup: true, isScoreable: true, warningInControlStructureBlock: true},
+    {isSuggestion: true, isForControlGroup: true, isScoreable: true},
     `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
@@ -137,7 +137,7 @@ export const isCritical = (expectationResult) => expectationResult && expectatio
 
 export const notCritical = (expectationResult) => !isCritical(expectationResult) && !warningInControlStructureBlock(expectationResult)
 
-export const warningInControlStructureBlock = (expectationResult) => expectationResult && expectationResult.warningInControlStructureBlock
+export const warningInControlStructureBlock = (expectationResult) => expectationResult.id == doesNotNestControlStructuresId
 
 export const isUsageResult = (expectationResult) => expectationResult && expectationResult.isRelatedToUsage
 
