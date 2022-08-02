@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty/*, compose*/ } from 'ramda'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 const idsToExpectations = (intl) => ({
