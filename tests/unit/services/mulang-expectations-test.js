@@ -296,7 +296,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   )
 
   expectationKeyTest('doesNotNestControlStructures', declarationDoesNotNestControlStructures(declaration),
-    ['does_not_nest_control_structures', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true, warningInControlStructureBlock: true}]
+    ['does_not_nest_control_structures', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true}]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
