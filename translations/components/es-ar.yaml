@@ -156,14 +156,14 @@ spects:
       } repetición condicional para considerar los escenarios variantes.
     main_too_long: |
       {result, select, 
-        true {El programa principal es corto y legible.}
-        other {El programa principal es largo, debería estar dividido en subtareas.}
+        true {El programa principal es corto, y por eso es más fácil de leer.}
+        other {El programa principal es largo, y por eso es difícil de leer. Debería estar dividido en subtareas usando procedimientos.}
       }
     too_long: |
       {result, select, 
-        true {Tus procedimientos están}
-        other {Tus procedimientos deberían estar}
-      } divididos en subtareas.
+        true {Tus procedimientos son cortos y por eso son más fáciles de leer.}
+        other {Tus procedimientos son largos y por eso son más difíciles de leer. Deberían estar divididos en subtareas usando procedimientos.}
+      }
     do_something: |
       {result, select, 
         true {Tus procedimientos no están vacíos, tienen bloques adentro}
@@ -183,8 +183,8 @@ spects:
     uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
     uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
     uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
-    main_too_long: El programa principal debería estar dividido en subtareas usando procedimientos.
-    too_long: Tus procedimientos no deberían ser largos, también deberían estar divididos en subtareas.
+    main_too_long: El programa principal debería ser corto y fácil de leer. Podés hacerlo más corto dividiéndolo en subtareas usando procedimientos.
+    too_long: Tus procedimientos deberían ser cortos y fáciles de leer. Podés hacerlos más cortos dividiéndolos en subtareas usando procedimientos.
     do_something: No deberías tener procedimientos vacíos, sin bloques.
     name_was_changed: Deberías elegir un buen nombre para cada uno de tus procedimientos.
     does_not_nest_control_structures: Dentro de las repeticiones y alternativas también deberías dividir en subtareas usando procedimientos.
