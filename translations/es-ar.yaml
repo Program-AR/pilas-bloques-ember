@@ -215,6 +215,24 @@ model:
       description: |
         Hoy es un día especial para celebrar y decorar las fiestas con muchos globos... pero hay un pequeño cangrejo al que le gusta ocasionar problemas. Ayudá al cangrejo a reventar los globos de todas las fiestas que encuentre a su paso.
       clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?    
+    '43':
+      title: |
+        El pasillo curvo de sandías
+      description: |
+        ¡María encontró un pasillo lleno de sandías! El único problema es que el pasillo da varias vueltas y las sandías justo están ahí… ¿Podrá María comer todas las sandías de este pasillo?
+      clue: Las sandías se encuentran justo en las curvas que da el pasillo. Una estrategia para comer las sandías en una curva sería una excelente ayuda.
+    '44':
+      title: |
+        El festín frutal
+      description: |
+        El mono vino a comer sus frutas al lugar de siempre, aunque escuchó rumores que se está dando un gran banquete frutal del otro lado… ¡Hoy es un gran día para darse un festín!
+      clue: Una comida normal del mono es una columna de 6 frutas. ¿Cuántas columnas tiene un banquete de frutas? Si lográs hacer que el mono coma las frutas de una columna tal vez puedas hacer lo mismo en un banquete.
+    '45':
+      title: |
+        Recolector de galaxias
+      description: |
+        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
+      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
     '130':
       title: La fiesta de Drácula
       description: |
@@ -676,6 +694,12 @@ model:
     UnaFiestaArruinada:
       title: ''
     RedecorandoFiestas:
+      title: ''
+    ElPasilloCurvoDeSandias:
+      title: ''
+    ElFestinFrutal:
+      title: ''
+    RecolectorDeGalaxias:
       title: ''
     Dibujando Figuras:
       title: ''

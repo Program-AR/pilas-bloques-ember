@@ -122,6 +122,18 @@ export default [
     desafioIds: [41]
   },
   {
+    id: 'ElPasilloCurvoDeSandias',
+    desafioIds: [43]
+  },
+  {
+    id: 'ElFestinFrutal',
+    desafioIds: [44]
+  },
+  {
+    id: 'RecolectorDeGalaxias',
+    desafioIds: [45]
+  },
+  {
     id: 'Dibujando Figuras',
     desafioIds: [29, 30, 31, 32, 33, 34, 35, 36, 37]
   },

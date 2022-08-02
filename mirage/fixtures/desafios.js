@@ -335,6 +335,24 @@ export default [
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ExplotarGlobo', 'TocandoGlobo']
   },
   {
+    id: 43,
+    nombre: 'ElPasilloCurvoDeSandias',
+    escena: 'ElPasilloCurvoDeSandias',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoSandia']
+  },
+  {
+    id: 44,
+    nombre: 'ElFestinFrutal',
+    escena: 'ElFestinFrutal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo','ComerBanana', 'ComerManzana', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+  },
+  {
+    id: 45,
+    nombre: 'RecolectorDeGalaxias',
+    escena: 'RecolectorDeGalaxias',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'TocandoEstrella', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
+  },
+  {
     id: 130,
     nombre: 'LaFiestaDeDracula',
     escena: 'LaFiestaDeDracula',
