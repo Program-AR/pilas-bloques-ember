@@ -121,9 +121,9 @@ export const isUsedFromMainId = 'is_used_from_main'
 export const doSomethingId = 'do_something'
 export const tooLongId = 'too_long'
 export const nameWasChangedId = 'name_was_changed'
-const conditionalAlternativeId = 'uses_conditional_alternative'
-const conditionalRepetitionId = 'uses_conditional_repetition'
-const simpleRepetitionId = 'uses_simple_repetition'
+export const conditionalAlternativeId = 'uses_conditional_alternative'
+export const conditionalRepetitionId = 'uses_conditional_repetition'
+export const simpleRepetitionId = 'uses_simple_repetition'
 export const declaresProcedureId = 'declares_procedure'
 export const mainTooLongId = "main_too_long"
 

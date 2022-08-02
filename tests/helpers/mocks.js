@@ -28,7 +28,8 @@ export const interpreterFactoryMock = Service.extend({
 
 export const challengeExpectationsMock = Service.extend({
     expectations: () => '',
-    expectationFor(/* challenge */) { return this.expectations }
+    expectationFor(/* challenge */) { return this.expectations },
+    partialFeedbackItems(/* challenge */) { return [] }
 });
 
 export const createActividadMock = (fields) => EmberObject.extend({

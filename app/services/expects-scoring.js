@@ -10,7 +10,6 @@ export default Service.extend({
     challengeExpectations: service(),
 
     expectsResults(expects, challenge) {
-        //return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
         return [this.solutionWorksExpectResult()].concat(this.scoreItems(expects, challenge))
     },
 

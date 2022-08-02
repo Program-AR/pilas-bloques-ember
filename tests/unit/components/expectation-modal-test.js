@@ -5,10 +5,13 @@ const failedExpects = [
   newExpectation('4', false),
   newExpectation('1', false)]
 
-const passedExpects = [
-  newExpectation('3', true),
-  newExpectation('2', true)]
-
+function expectsScoringMock(failedExpects) {
+  return {
+    failedExpects(/*expectsResults, challenge */) {
+      return failedExpects
+    }
+  }
+}
 
 function newExpectation(id, status) {
   return { id, description: { asScoring: 'Scoring' }, result: status }
@@ -24,12 +27,12 @@ module('Unit | Component | expectation-modal', function (hooks) {
   })
 
   test('All expectations passed', function (assert) {
-    component.set('expects', passedExpects)
+    component.expectScoring = expectsScoringMock([])
     assert.ok(component.allExpectationsPassed())
   })
 
   test('Not all expectations passed', function (assert) {
-    component.set('expects', passedExpects.concat(failedExpects))
+    component.expectScoring = expectsScoringMock(failedExpects)
     assert.notOk(component.allExpectationsPassed())
   })
 });

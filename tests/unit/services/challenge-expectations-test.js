@@ -8,40 +8,34 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   setUpTestLocale(hooks)
 
   var challengeExpectations
-  const decompositionKey = 'decomposition'
   const expectationStringMock = 'ExpectationMock'
   const expectationsConfig = {
     decomposition: true,
     simpleRepetition: true
   }
-  const expectationMock = (e) => expectationStringMock // jshint ignore: line
-  const idsToExpectationsMock = (/* intl */) => ({
-    decomposition: expectationMock,
-    simpleRepetition: expectationMock,
-    conditionalAlternative: expectationMock
-  })
+  const expectationMock = (/* expectation */) => expectationStringMock
+  const idsMapperMock = {
+    idsToSingleEvaluation: function (/* ...ids */) {
+      return {
+        expectation(/* intl */) {
+          return expectationMock
+        },
+        partialFeedbackItems(/* intl */) {
+          return []
+        }
+      }
+    }
+  }
 
   let challengeMock
 
   hooks.beforeEach(function () {
     challengeExpectations = this.owner.lookup('service:challenge-expectations');
-    challengeExpectations.set('idsToExpectations', idsToExpectationsMock)
+    challengeExpectations.set('idsMapper', idsMapperMock)
     challengeMock = createComponentMock({
       expectations: expectationsConfig
     })
   });
-
-  test('an expectation id should not be applied if its value is falsy', function (assert) {
-    assert.notOk(challengeExpectations.shouldBeApplied([decompositionKey, false]))
-  })
-
-  test('an invalid expectation id should not be applied, regardless of its value', function (assert) {
-    assert.notOk(challengeExpectations.shouldBeApplied(['randomID', true]))
-  })
-
-  test('an expectation id should be applied if it is valid and its value is truthy', function (assert) {
-    assert.ok(challengeExpectations.shouldBeApplied([decompositionKey, true]))
-  })
 
   test('merged expectations for a single expectation configuration', function (assert) {
     assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
@@ -75,17 +69,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   })
 
   test('domain expectations to mulang expectations', function (assert) {
-    assert.equal(challengeExpectations.configToExpectation(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
-  })
-
-  test('multiple nonexistent expectations ids are transformed to a noExpectation', function (assert) {
-
-    const nonexistenteEpectations = {
-      foo: true,
-      bar: false,
-      baz: true
-    }
-    assert.equal(challengeExpectations.configToExpectation(nonexistenteEpectations)(), '')
+    assert.equal(challengeExpectations.configToEvaluation(expectationsConfig).expectation()(), 'ExpectationMock')
   })
 
   test('if a challenge does not define expectations, noExpectation is applied', function (assert) {
@@ -93,7 +77,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   })
 
   test('if a challenge defines expectations but does not belong to a group, chapter or book, its expectations should be applied', function (assert) {
-    assert.equal(challengeExpectations.expectationFor(challengeMock)(), 'ExpectationMock\nExpectationMock')
+    assert.equal(challengeExpectations.expectationFor(challengeMock)(), 'ExpectationMock')
   })
 
   test('expectations from book, chapter, group and challenge should be combined', function (assert) {

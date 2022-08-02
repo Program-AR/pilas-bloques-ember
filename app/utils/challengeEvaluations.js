@@ -1,22 +1,29 @@
-import { allProceduresShould, declaresAnyProcedure, declaresProcedureId, doesNotUseRecursion, doesNotUseRecursionId, doSomething, doSomethingId, expectationDescription, isUsed, isUsedFromMain, isUsedFromMainId, isUsedId, mainNotTooLong, mainTooLongId, multiExpect, nameWasChanged, nameWasChangedId, notTooLong, tooLongId } from "./expectations"
+import { allProceduresShould, declaresAnyProcedure, declaresProcedureId, doesNotUseRecursion, doesNotUseRecursionId, doSomething, doSomethingId, expectationDescription, isUsed, isUsedFromMain, isUsedFromMainId, isUsedId, mainNotTooLong, mainTooLongId, multiExpect, nameWasChanged, nameWasChangedId, notTooLong, tooLongId, parseExpect, noExpectation } from "./expectations"
+
+const intlMock = {
+    t() {
+        return {
+            string: ''
+        }
+    }
+}
 
 //TODO: Better name pending
 
 // DECLARATION EVALUATIONS
 
-const notTooLongEvaluation = simpleEvaluation(tooLongId, notTooLong(), true)
+const notTooLongEvaluation = simpleEvaluation(tooLongId, notTooLong())
 
-const doSomethingEvaluation = simpleEvaluation(doSomethingId, doSomething, true)
+const doSomethingEvaluation = simpleEvaluation(doSomethingId, doSomething)
 
-const isUsedEvaluation = simpleEvaluation(isUsedId, isUsed, false)
+const isUsedEvaluation = simpleEvaluation(isUsedId, isUsed)
 
-const isUsedFromMainEvaluation = simpleEvaluation(isUsedFromMainId, isUsedFromMain, false)
+const isUsedFromMainEvaluation = simpleEvaluation(isUsedFromMainId, isUsedFromMain)
 
-const doesNotUseRecursionEvaluation = simpleEvaluation(doesNotUseRecursionId, doesNotUseRecursion, false)
+const doesNotUseRecursionEvaluation = simpleEvaluation(doesNotUseRecursionId, doesNotUseRecursion)
 
 const nameWasChangedEvaluation = {
-    id: nameWasChangedId,
-    isScoreable: true,
+    ...simpleEvaluation(nameWasChangedId, nameWasChanged(intlMock)), //TODO: this is only used to get params and options. Find a better solution.
 
     expectation(intl) {
         return nameWasChanged(intl)
@@ -26,9 +33,9 @@ const nameWasChangedEvaluation = {
 }
 
 // GLOBAL EVALUATIONS
-const declaresAnyProcedureEvaluation = simpleEvaluation(declaresProcedureId, declaresAnyProcedure, true)
+const declaresAnyProcedureEvaluation = simpleEvaluation(declaresProcedureId, declaresAnyProcedure)
 
-const mainNotTooLongEvaluation = simpleEvaluation(mainTooLongId, () => mainNotTooLong(), true)
+const mainNotTooLongEvaluation = simpleEvaluation(mainTooLongId, () => mainNotTooLong())
 
 const allProceduresShouldEvaluation = {
     declarationEvaluations: [
@@ -55,35 +62,27 @@ const allProceduresShouldEvaluation = {
 
 // MAIN EVALUATIONS
 
-const decompositionEvaluation = {
-    globalEvaluations: [declaresAnyProcedureEvaluation, mainNotTooLongEvaluation, allProceduresShouldEvaluation],
+const decompositionEvaluation = composeEvaluation(
+    declaresAnyProcedureEvaluation,
+    mainNotTooLongEvaluation,
+    allProceduresShouldEvaluation
+)
 
-    expectation(intl) {
-        return multiExpect(
-            ...this.globalEvaluations.map(ge => ge.expectation(intl))
-        )
+export const nullEvaluation = {
+
+    expectation() {
+        return noExpectation
     },
 
-    partialFeedbackItems: bindablePartialFeedbackItems,
-
-    evaluations() {
-        return this.globalEvaluations
+    partialFeedbackItems() {
+        return []
     }
 }
 
-function bindablePartialFeedbackItems(intl) {
-    return this.evaluations().flatMap(ge => ge.partialFeedbackItems(intl))
-}
-
-export const idsToChallengeEvaluation = {
-    decomposition: decompositionEvaluation
-}
-
-function simpleEvaluation(id, expectation, isScoreable, params = {}) {
+function simpleEvaluation(id, expectation) {
     return {
         id,
-        isScoreable,
-        ...params, //TODO: revisar poque si hacemos esto se mezcla con otros atributos.
+        ...parseExpect(expectation('mock'))[1],
 
         expectation() {
             return expectation
@@ -93,8 +92,28 @@ function simpleEvaluation(id, expectation, isScoreable, params = {}) {
     }
 }
 
+function composeEvaluation(...evaluations) {
+    return {
+        expectation(intl) {
+            return multiExpect(
+                ...this.evaluations().map(e => e.expectation(intl))
+            )
+        },
+
+        partialFeedbackItems: bindablePartialFeedbackItems,
+
+        evaluations() {
+            return evaluations
+        }
+    }
+}
+
+function bindablePartialFeedbackItems(intl) {
+    return this.evaluations().flatMap(e => e.partialFeedbackItems(intl))
+}
+
 function bindableSimplePartialFeedbackItems(intl) {
-    const params = { isScoreable: this.isScoreable } //TODO: integrar params?
+    const params = parseExpect(this.expectation(intl)('mock'))[1] //TODO: think a better solution
     const result = false
     return [{
         id: this.id,
@@ -102,4 +121,31 @@ function bindableSimplePartialFeedbackItems(intl) {
         result,
         ...params
     }]
+}
+
+const idsToChallengeEvaluation = {
+    decomposition: decompositionEvaluation,
+
+    /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
+    Only decomposition should be active. Don't forget imports
+
+    conditionalAlternative: simpleEvaluation(conditionalAlternativeId, usesConditionalAlternative),
+
+    conditionalRepetition: simpleEvaluation(conditionalRepetitionId, usesConditionalRepetition),
+
+    simpleRepetition: simpleEvaluation(simpleRepetitionId, usesSimpleRepetition),
+
+    */
+}
+
+function idToChallengeEvaluation(id) {
+    return idsToChallengeEvaluation[id] || nullEvaluation
+}
+
+function idsToSingleEvaluation(...ids) {
+    return composeEvaluation(...ids.map(id => idToChallengeEvaluation(id)))
+}
+
+export const idsMapper = {
+    idsToSingleEvaluation
 }

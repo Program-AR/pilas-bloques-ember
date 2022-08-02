@@ -1,45 +1,19 @@
 import Service from '@ember/service'
-import { isEmpty/*, compose*/ } from 'ramda'
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged } from '../utils/expectations'
-import { idsToChallengeEvaluation } from '../utils/challengeEvaluations';
+import { isEmpty } from 'ramda'
+import { nullEvaluation, idsMapper } from '../utils/challengeEvaluations';
 import { inject as service } from '@ember/service';
-
-
-const idsToExpectations = (intl) => ({
-  decomposition: multiExpect(
-    declaresAnyProcedure,
-    () => mainNotTooLong(),
-    allProceduresShould(
-      notTooLong(),
-      doSomething,
-      isUsed,
-      isUsedFromMain,
-      doesNotUseRecursion,
-      nameWasChanged(intl)
-    )
-  ),
-
-  /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
-  Only decomposition should be active. Don't forget imports
-
-  conditionalAlternative: usesConditionalAlternative,
-
-  conditionalRepetition: usesConditionalRepetition,
-
-  simpleRepetition: usesSimpleRepetition,
-
-  */
-
-})
 
 
 export default Service.extend({
   intl: service(),
-
-  idsToChallengeEvaluation,
+  idsMapper,
 
   expectationFor(challenge) {
-    return this.configToExpectation(this.allExpectConfigurationsMerged(challenge))
+    return this.challengeToEvaluation(challenge).expectation(this.intl)
+  },
+
+  challengeToEvaluation(challenge) {
+    return this.configToEvaluation(this.allExpectConfigurationsMerged(challenge))
   },
 
   allExpectConfigurations(challenge) {
@@ -56,27 +30,15 @@ export default Service.extend({
     return models.map(model => model.get('expectations'))
   },
 
-
-  configToExpectation(expectationsConfig) {
-    return isEmpty(expectationsConfig) ? noExpectation
-      : multiExpect(
-        ...this.configTo(expectationsConfig, (id) => this.idToExpectation(id))
-      )
+  configToEvaluation(expectationsConfig) {
+    return isEmpty(expectationsConfig) ? nullEvaluation
+      : this.idsMapper.idsToSingleEvaluation(...this.appliableConfigIds(expectationsConfig))
   },
 
-  configTo(expectationsConfig, transformation) {
-    return Object.entries(expectationsConfig) //Must not be undefined
-      .filter(e => this.shouldBeApplied(e))
-      .map(([id,]) => transformation(id))
-  },
-
-  shouldBeApplied([id, shouldApply]) {
-    return shouldApply && this.idToExpectation(id)
-  },
-
-  idToExpectation(id) {
-    const possibleEvaluation = this.idsToChallengeEvaluation[id]
-    return possibleEvaluation ? possibleEvaluation.expectation(this.intl) : noExpectation
+  appliableConfigIds(expectationsConfig) {
+    return Object.entries(expectationsConfig)
+      .filter(([, shouldBeApplied]) => shouldBeApplied)
+      .map(([id,]) => id)
   },
 
   /*
@@ -102,12 +64,6 @@ export default Service.extend({
   },
 
   partialFeedbackItems(challenge) {
-    const expectationsConfig = this.allExpectConfigurationsMerged(challenge)
-    return this.configTo(expectationsConfig, (id) => this.idToPartialFeedbackItems(id)).flat()
-  },
-
-  idToPartialFeedbackItems(id) {
-    const possibleEvaluation = this.idsToChallengeEvaluation[id]
-    return possibleEvaluation ? possibleEvaluation.partialFeedbackItems(this.intl) : []
+    return this.challengeToEvaluation(challenge).partialFeedbackItems(this.intl)
   }
 })
