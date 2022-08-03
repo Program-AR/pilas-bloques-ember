@@ -203,6 +203,16 @@ model:
       description: |
         Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.
       clue: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.'
+    '38':
+      title: Las rocas de Nano
+      description: |
+        En el planeta de Nano suele haber muchos derrumbes de rocas y algunas de caen en el camino a su fruta favorita y se interponen; si eso pasa, debe tomar el largo y agotador camino rocoso. Ayudá a Nano a comer la banana al final del camino, y no te olvides de descargar tu solución (la vas a necesitar más adelante).
+      clue: ¿Cuántos posibles caminos hacia la banana existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
+    '39':
+      title: Los caminos de Nano
+      description: |
+        Nano escuchó la ubicación de otra deliciosa banana en su planeta rocoso, aunque el camino es más largo y peligroso. El camino verde es el más seguro pero no siempre está libre de rocas.
+      clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las rocas de Nano)? 
     '130':
       title: La fiesta de Drácula
       description: |
