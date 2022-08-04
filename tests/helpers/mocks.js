@@ -1,7 +1,7 @@
 import EmberObject from '@ember/object'
 import Service from '@ember/service';
 import sinon from 'sinon';
-import { allProceduresShould, declaresAnyProcedure, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition } from '../../utils/expectations'
 import { entryPointType } from '../../utils/blocks'
 
 export const pilasMock = Service.extend({
@@ -115,7 +115,6 @@ export const createGroup = (owner, fields) => {
 
 export const idsToExpectationsMock = (intl) => ({
     decomposition: multiExpect(
-        declaresAnyProcedure,
         () => notTooLong()(entryPointType),
         allProceduresShould(
             notTooLong(),

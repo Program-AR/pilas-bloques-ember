@@ -411,25 +411,22 @@ export default Component.extend({
       notCritical,
       addWarning
     )
-  },
-
-  showBlocksErrorExpectationFeedback(){
+    
     this.showExpectationFeedbackFor(
       warningInControlStructureBlock,
       addWarning,
       getNestedControlStructureBlocks
     )
+  },
+
+  showBlocksErrorExpectationFeedback(){
     this.showExpectationFeedbackFor(
       isCritical,
       addError
     )
   },
 
-  declarationWithNameToArray(declaration){
-    return [declarationWithName(declaration)]
-  },
-
-  showExpectationFeedbackFor(condition, addFeedback, getBlocks = this.declarationWithNameToArray) {
+  showExpectationFeedbackFor(condition, addFeedback, getBlocks = (n) => [declarationWithName(n)]) {
     this.get('failedExpects')
       .filter(condition)
       .forEach(({ declaration, description }, i) => {

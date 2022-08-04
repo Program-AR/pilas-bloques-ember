@@ -1,6 +1,6 @@
 import { module, test } from 'qunit'
 import { entryPointType } from '../../../utils/blocks'
-import { declaresAnyProcedure, doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition, declarationDoesNotNestControlStructures } from '../../../utils/expectations'
+import { doSomething, isUsed, isUsedFromMain, notTooLong, parseExpect, doesNotUseRecursion, stringify, isCritical, doesNotUseRecursionId, newExpectation, countCallsWithin, nameWasChanged, usesConditionalAlternative, usesConditionalRepetition, usesSimpleRepetition, declarationDoesNotNestControlStructures } from '../../../utils/expectations'
 import { procedure, entryPoint, rawSequence, application, muIf, ifElse, none, muUntil, repeat, number } from '../../helpers/astFactories'
 import { setupPBUnitTest, setUpTestWorkspace } from '../../helpers/utils'
 
@@ -12,16 +12,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   const limit = '3'
 
   // EDL
-  expectationTestOk('declaresAnyProcedure', declaresAnyProcedure(), [
-    entryPoint(entryPointType),
-    procedure('EMPTY', [])
-  ])
-
-  expectationTestFail('declaresAnyProcedure', declaresAnyProcedure(), [
-    entryPoint(entryPointType)
-  ])
-
-
+ 
   expectationTestOk('doSomething', doSomething(declaration), [
     procedure(declaration, [],
       application('PRIMITIVE')
@@ -305,7 +296,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
   )
 
   expectationKeyTest('doesNotNestControlStructures', declarationDoesNotNestControlStructures(declaration),
-    ['does_not_nest_control_structures', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true, warningInControlStructureBlock: true}]
+    ['does_not_nest_control_structures', { declaration, isSuggestion: true, isScoreable: true, isForControlGroup: true}]
   )
 
   expectationKeyTest('usesConditionalAlternative', usesConditionalAlternative(),
