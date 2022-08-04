@@ -327,16 +327,14 @@ export default [
     nombre: 'LasRocasDeNano',
     escena: 'LasRocasDeNano',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'ComerBanana', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero', 'HayObstaculoArriba', 'HayObstaculoAbajo',
-      'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+      'ComerBanana', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 39,
     nombre: 'LosCaminosDeNano',
     escena: 'LosCaminosDeNano',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'ComerBanana', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero', 'HayObstaculoArriba', 'HayObstaculoAbajo',
-      'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+      'ComerBanana', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 40,
