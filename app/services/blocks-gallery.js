@@ -1031,6 +1031,11 @@ export default Service.extend({
       funcionSensor: 'tocando("PelotaAnimada")',
     });
 
+    this.crearBloqueSensor('TocandoGlobo', 'balloonHere', {
+      icono: 'icono.globo.png',
+      funcionSensor: 'tocando("GloboAnimado")'
+    })
+
     this.crearBloqueSensor('TocandoFinal', 'comeToTheEnd', {
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',

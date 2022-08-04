@@ -213,6 +213,18 @@ model:
       description: |
         Nano heard about the location of another delicious fruit in their rocky planet, though the road it's longer and more dangerous. The green road is the safest but it's not always free of rocks.
       clue: Is there a pattern that repeats? Could the solution of the previous challenge (Nano's rocks) help us?
+    '40':
+      title: |
+        A spoiled party
+      description: |
+        “Nothing better than getting up in the morning and spoiling a party“ thinks the spoilsport crab. Help the crab pinch all the balloons on its way. Don't forget to download your solution (you will need it later).
+      clue: How can the crab easily tell if there is a balloon party? What should it do if no one is partying?
+    '41':
+      title: |
+        Redecorating parties
+      description: |
+        Today is a special day to celebrate and decorate parties with many balloons... But there's a little crab that likes to cause trouble. Help the crab pinch all the balloons of all the parties on its way. 
+      clue: Is there a task the crab has to complete several times? Could the solution to the previous challenge (A spoiled party) help us?  
     '130':
       title: Dracula’s party
       description: |
@@ -668,6 +680,10 @@ model:
     ElMonoCuentaDeNuevo:
       title: ''
     ElPlanetaDeNano:
+      title: ''
+    UnaFiestaArruinada:
+      title: ''
+    RedecorandoFiestas:
       title: ''
     Dibujando Figuras:
       title: ''

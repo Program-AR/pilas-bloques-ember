@@ -4,6 +4,14 @@ export function isFlying(block) {
   return block.getRootBlock() === block
 }
 
+export function allBlocksNestingControlStructures(workspace = Blockly.mainWorkspace){
+  const blockNames = allProcedures(workspace).filter(nestsControlStructures).map(getName)
+  if(nestsControlStructures(getEntryPointBlock(workspace))){
+    blockNames.push(entryPointType)
+  } 
+  return blockNames
+}
+
 export function allProcedures(workspace = Blockly.mainWorkspace) {
   return workspace.getTopBlocks().filter(isProcedure)
 }
@@ -13,10 +21,65 @@ export function allProcedureNames(workspace) {
 }
 
 export function declarationWithName(name, workspace = Blockly.mainWorkspace) {
-  return entryPointType == name
-    ? workspace.getAllBlocks().find(b => b.type === entryPointType) //TODO: Move to gral place
-    : allProcedures(workspace).find(p => getName(p) == name)
+  return entryPointType == name 
+  ? getEntryPointBlock(workspace) //TODO: Move to gral place
+  : allProcedures(workspace).find(p => getName(p) == name)
 }
+
+function getEntryPointBlock(workspace){
+  return workspace.getAllBlocks().find(b => b.type === entryPointType)
+}
+
+//Control structure nesting
+
+function nestsControlStructures(procedure){
+  const controlStructureBlocks = procedure.getDescendants().filter(isControlStructure)
+  return directlyNestsControlStructures(controlStructureBlocks) || indirectlyNestsControlStructures(controlStructureBlocks)
+}
+
+function directlyNestsControlStructures(controlStructureBlocks){
+  return controlStructureBlocks.some(isSurroundedByControlStructure)
+}
+
+function isSurroundedByControlStructure(block){
+  return isControlStructure(block.getSurroundParent())
+}
+
+function indirectlyNestsControlStructures(controlStructureBlocks){
+  return controlStructureBlocks.some(b => getProceduresCallsSurroundedBy(b).some(usesControlStructure))
+}
+
+function getProceduresCallsSurroundedBy(block){
+  return getBlocksSurroundedBy(block).filter(isProcedureCall)
+}
+
+function getBlocksSurroundedBy(block){
+  return block.getDescendants()
+      .slice(1)
+      .filter(b => b.getSurroundParent().id === block.id)
+}
+
+/**
+ * @returns procedure block that matches a call block
+ */
+function getProcedureBlock(procedureCallBlock){
+  return declarationWithName(procedureCallBlock.getFieldValue('NAME'))
+}
+
+function usesControlStructure(procedureCallBlock){
+  return getBlocksSurroundedByProcedure(procedureCallBlock).some(isControlStructure)
+}
+
+function getBlocksSurroundedByProcedure(procedureCallBlock){
+  return getBlocksSurroundedBy(getProcedureBlock(procedureCallBlock))
+}
+
+export function getNestedControlStructureBlocks(declaration){
+  return declarationWithName(declaration)
+    .getDescendants()
+    .filter(b => isControlStructure(b) && isSurroundedByControlStructure(b))
+}
+
 
 // TODO: No acoplarse a la categoria
 export function isOperator(block) {
@@ -24,6 +87,12 @@ export function isOperator(block) {
 }
 export function isValue(block) {
   return block.categoryId == "values"
+}
+
+const controlStructureCategories = ["repetitions", "alternatives"]
+
+function isControlStructure(block) {
+  return controlStructureCategories.some(c => c == block.categoryId )
 }
 
 export function isProcedure(block) {

@@ -213,6 +213,18 @@ model:
       description: |
         Nano escuchó la ubicación de otra deliciosa banana en su planeta rocoso, aunque el camino es más largo y peligroso. El camino verde es el más seguro pero no siempre está libre de rocas.
       clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las rocas de Nano)? 
+    '40':
+      title: |
+        Una fiesta arruinada
+      description: |
+        “Nada mejor que despertar por la mañana y arruinar alguna fiesta” piensa el cangrejo aguafiestas. Ayudá al cangrejo a reventar todos los globos que encuentre a su paso. No te olvides de descargar tu solución (la vas a necesitar más adelante).
+      clue: ¿Cómo puede saber el cangrejo fácilmente si hay una fiesta de globos? ¿Qué debería hacer si no hay nadie festejando?
+    '41':
+      title: |
+        Redecorando fiestas
+      description: |
+        Hoy es un día especial para celebrar y decorar las fiestas con muchos globos... pero hay un pequeño cangrejo al que le gusta ocasionar problemas. Ayudá al cangrejo a reventar los globos de todas las fiestas que encuentre a su paso.
+      clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?    
     '130':
       title: La fiesta de Drácula
       description: |
@@ -674,6 +686,10 @@ model:
     ElMonoCuentaDeNuevo:
       title: ''
     ElPlanetaDeNano:
+      title: ''
+    UnaFiestaArruinada:
+      title: ''
+    RedecorandoFiestas:
       title: ''
     Dibujando Figuras:
       title: ''

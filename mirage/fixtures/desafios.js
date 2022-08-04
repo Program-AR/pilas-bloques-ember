@@ -339,6 +339,18 @@ export default [
       'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
+    id: 40,
+    nombre: 'UnaFiestaArruinada',
+    escena: 'UnaFiestaArruinada',
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ExplotarGlobo', 'TocandoGlobo']
+  },
+  {
+    id: 41,
+    nombre: 'RedecorandoFiestas',
+    escena: 'RedecorandoFiestas',
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ExplotarGlobo', 'TocandoGlobo']
+  },
+  {
     id: 130,
     nombre: 'LaFiestaDeDracula',
     escena: 'LaFiestaDeDracula',
