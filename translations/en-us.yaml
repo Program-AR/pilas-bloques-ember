@@ -217,22 +217,22 @@ model:
       clue: Is there a task the crab has to complete several times? Could the solution to the previous challenge (A spoiled party) help us?
     '43':
       title: |
-        El pasillo curvo de sandías
+        The watermelons curve aisle
       description: |
-        ¡María encontró un pasillo lleno de sandías! El único problema es que el pasillo da varias vueltas y las sandías justo están ahí… ¿Podrá María comer todas las sandías de este pasillo?
-      clue: Las sandías se encuentran justo en las curvas que da el pasillo. Una estrategia para comer las sandías en una curva sería una excelente ayuda.
+        María found an aisle full of watermelons! The only problem is that the aisle turns several times and the watermelons are right there... Will María be able to eat all the watermelons in this aisle?
+      clue: The watermelons are found right in the curves of the aisle. A strategy to eat the watermelons in a curve would be an excellent help.
     '44':
       title: |
-        El festín frutal
+        The fruit fest
       description: |
-        El mono vino a comer sus frutas al lugar de siempre, aunque escuchó rumores que se está dando un gran banquete frutal del otro lado… ¡Hoy es un gran día para darse un festín!
-      clue: Una comida normal del mono es una columna de 6 frutas. ¿Cuántas columnas tiene un banquete de frutas? Si lográs hacer que el mono coma las frutas de una columna tal vez puedas hacer lo mismo en un banquete.
+        The monkey came to eat his fruits at the usual place, although he heard rumors that a great fruit banquet is taking place on the other side... Today is a great day to feast!
+      clue: A normal monkey meal is a column of 6 fruits. How many columns does a fruit banquet have? If you can get the monkey to eat the fruits in a column, maybe you can do the same at a banquet.
     '45':
       title: |
-        Recolector de galaxias
+        Galaxy collector
       description: |
-        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
-      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+        The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
+      clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
     '130':
       title: Dracula’s party
       description: |
