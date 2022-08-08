@@ -16,8 +16,8 @@ moduloActividad(nombre, () => {
 
 	actividadTest(nombre, {
 		descripcionAdicional: 'Da error al querer comer una sandía donde no hay',
-		solucion: 'xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"VIGyT7dP]KAec@8R!8O!\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"Xwb##2ZMKgX8DTWxOCsu\"></shadow><block type=\"MorderSandia\" id=\"tniAJydwEEQm?_cEp%a4\"></block></statement></block></xml>',
-		errorEsperado: 'Acá no hay una sandía',
+		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"Ic?-8k?GRb_RKu*.Wbef\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"xUy0FFwiu./5J7$bCdgP\"></shadow><block type=\"MorderSandia\" id=\"yG#3}L]c$VypQGMH5on~\"></block></statement></block></xml>',
+		errorEsperado: 'Acá no hay una sandia',
 	});
 
 });
