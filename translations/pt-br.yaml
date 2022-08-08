@@ -8,6 +8,11 @@ model:
         Ajude nosso alienígena a apertar o botão de seu laboratório.
         Dicas: veja os _primitivos_ disponíveis. Você vai ter que avançar várias vezes! :wink:
       clue: Os blocos permitem formar sequências de ações para resolver os desafios que propomos no Pilas Bloques.
+    '46':
+      title: Nuevos comandos
+      description: |
+        Ahora el alien necesita prender dos botones a su derecha, luego dos más abajo, y uno al final.
+      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**    
     '2':
       title: O gato na rua
       description: Faça o gato dar um passo à frente, adormecer, acordar, dizer olá e voltar ao seu lugar.
@@ -618,6 +623,8 @@ model:
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
   groups:
     AlienTocaBoton:
+      title: ''
+    NuevosComandos:
       title: ''
     ElGatoEnLaCalle:
       title: ''

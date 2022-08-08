@@ -8,6 +8,11 @@ model:
         Help our Alien push the button of his lab.
         Clues: look at the available actions. You will have to move forward several times!
       clue: The blocks allow you to create sequences of actions to solve the challenges we offer in Pilas Bloques.
+    '46':
+      title: Nuevos comandos
+      description: |
+        Ahora el alien necesita prender dos botones a su derecha, luego dos más abajo, y uno al final.
+      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**    
     '2':
       title: The cat in the street
       description: 'Make the cat take a step forward, get to sleep, wake up, greet, and then come back to his original place.'
@@ -612,6 +617,8 @@ model:
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
   groups:
     AlienTocaBoton:
+      title: ''    
+    NuevosComandos:
       title: ''
     ElGatoEnLaCalle:
       title: ''

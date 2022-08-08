@@ -21,7 +21,7 @@ export default [
     },
     {
         id: 'Autómatas, comandos, procedimientos y repetición',
-        grupoIds: ['AlienTocaBoton', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
+        grupoIds: ['AlienTocaBoton', 'NuevosComandos', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
         expectations: {
             simpleRepetition: true
         }

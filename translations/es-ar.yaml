@@ -8,6 +8,11 @@ model:
         Ayudá a nuestro Alien a presionar el botón de su laboratorio.
         Pistas: mirá las _primitivas_ disponibles. ¡Vas a tener que avanzar varias veces! :wink:
       clue: Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.
+    '46':
+      title: Nuevos comandos
+      description: |
+        Ahora el alien necesita prender dos botones a su derecha, luego dos más abajo, y uno al final.
+      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
     '2':
       title: El gato en la calle
       description: 'Hacé que el gato avance un paso, se duerma, se despierte, salude y vuelva a su lugar.'
@@ -618,6 +623,8 @@ model:
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
   groups:
     AlienTocaBoton:
+      title: ''
+    NuevosComandos:
       title: ''
     ElGatoEnLaCalle:
       title: ''
