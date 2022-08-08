@@ -214,7 +214,13 @@ model:
         Redecorando fiestas
       description: |
         Hoy es un día especial para celebrar y decorar las fiestas con muchos globos... pero hay un pequeño cangrejo al que le gusta ocasionar problemas. Ayudá al cangrejo a reventar los globos de todas las fiestas que encuentre a su paso.
-      clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?    
+      clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?
+    '42':
+      title: |
+        El desierto multifrutal
+      description: |
+        La vida en el desierto puede ser muy difícil para un alien, así que toparse con un área llena naranjas y manzanas es todo un paraíso. Ayudá al alien a recolectar todas las frutas que encuentre a su paso.
+      clue: Pensá una estrategia que permita que el alien recorra una fila y coma todas las frutas que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
     '130':
       title: La fiesta de Drácula
       description: |
@@ -676,6 +682,8 @@ model:
     UnaFiestaArruinada:
       title: ''
     RedecorandoFiestas:
+      title: ''
+    ElDesiertoMultiFrutal:
       title: ''
     Dibujando Figuras:
       title: ''

@@ -335,6 +335,12 @@ export default [
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ExplotarGlobo', 'TocandoGlobo']
   },
   {
+    id: 42,
+    nombre: 'ElDesiertoMultiFrutal',
+    escena: 'ElDesiertoMultiFrutal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerNaranja', 'ComerManzana', 'Procedimiento', 'Repetir', 'TocandoNaranja', 'TocandoManzana', 'Si', 'SiNo']
+  },
+  {
     id: 130,
     nombre: 'LaFiestaDeDracula',
     escena: 'LaFiestaDeDracula',
