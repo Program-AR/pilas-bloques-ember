@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 var experimentGroup = process.env.EXPERIMENT_GROUP
-if (!experimentGroup) {
+if(!experimentGroup){
   experimentGroup = 'notAffected'
   console.log(`\nInfo: EXPERIMENT_GROUP variable not set. Building Pilas Bloques in default mode: ${experimentGroup}. See README.md for valid EXPERIMENT_GROUP values`)
 }
@@ -32,7 +32,7 @@ module.exports = function (environment) {
     },
 
     pbApi: {
-      baseURL: "localhost:9999"
+      baseURL: null
     },
 
     EmberENV: {
@@ -60,7 +60,7 @@ module.exports = function (environment) {
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true
     // ENV.APP.LOG_VIEW_LOOKUPS = true
     ENV.enableChallengeCreator = true
-    ENV.pbApi.baseURL = 'http://localhost:9999'
+    ENV.pbApi.baseURL = 'http://localhost:3006'
     ENV.testTranslations = false
   }
 
