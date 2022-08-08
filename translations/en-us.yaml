@@ -203,6 +203,16 @@ model:
       description: |
         Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length.
       clue: 'In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure.'
+    '38':
+      title: Nano’s rocks
+      description: |
+        In Nano’s planet there are usually a lot of rockfalls and some rocks fall on the path of his favorite fruit, getting in the way; if that happens, Nano must take the long and winding rocky road. Help Nano eat the banana at the end of the road, and don't forget to download your solution (you'll need it later).
+      clue: How many roads to the banana are there? Can all of them always be traversed or does it depend on something?
+    '39':
+      title: Nano’s paths
+      description: |
+        Nano heard about the location of another delicious fruit in their rocky planet, though the road it's longer and more dangerous. The green road is the safest but it's not always free of rocks.
+      clue: Is there a pattern that repeats? Could the solution of the previous challenge (Nano's rocks) help us?
     '40':
       title: |
         A spoiled party
@@ -658,6 +668,10 @@ model:
     LaEleccionDelMono:
       title: ''
     LaberintoCorto:
+      title: ''
+    LasRocasDeNano:
+      title: ''
+    LosCaminosDeNano:
       title: ''
     TresNaranjas:
       title: ''

@@ -66,6 +66,14 @@ export default [
     desafioIds: [16]
   },
   {
+    id: 'LasRocasDeNano',
+    desafioIds: [38]
+  },
+  {
+    id: 'LosCaminosDeNano',
+    desafioIds: [39]
+  },
+  {
     id: 'TitoRecargado',
     desafioIds: [17]
   },
