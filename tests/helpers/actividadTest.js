@@ -149,13 +149,13 @@ export function actividadTest(nombre, opciones) {
          * si es un error esperado o no. Y en cualquiera de los
          * dos casos finaliza el test.
          */
-        this.set("onErrorDeActividad", function (motivoDelError) {
+        this.set("whenErrorOccurs", function (error) {
           let errorEsperado = opciones.errorEsperado;
 
           if (errorEsperado) {
-            assert.equal(motivoDelError, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
+            assert.equal(error.message, errorEsperado, `Ocurrió el error esperado: '${errorEsperado}'. Bien!`);
           } else {
-            assert.notOk(`Ocurrió un error inesperado: '${motivoDelError}'`);
+            assert.notOk(`Ocurrió un error inesperado: '${error.message}'`);
           }
           success();
         });
@@ -195,7 +195,7 @@ export function actividadTest(nombre, opciones) {
                       codigo=solucion
                       codigoJavascript=""
                       onTerminoEjecucion=onTerminoEjecucion
-                      onErrorDeActividad=onErrorDeActividad
+                      onEngineError=whenErrorOccurs
                     }}
                   `);
       });

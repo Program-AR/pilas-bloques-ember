@@ -13,7 +13,7 @@ import Service from '@ember/service';
  * Pilas service is the component in charge of the communication with pilasweb (pilas engine) framework.
  * It is the interface in and out of the iframe where pilasweb is running.
  *
- * This service reports the event "errorDeActividad"
+ * This service reports pilas engine events such like "error", "seAgregaUnActor", etc.
  *
  * @public
  * @class PilasService
@@ -115,18 +115,13 @@ export default Service.extend(Evented, {
    *
    *     {
    *       tipo: "tipoDeMensaje"    # Cualquiera de los listados más arriba.
-   *       detalle: [...]           # string con detalles para ese evento.
+   *       ...campos                # campos adicionales del evento.
    *     }
    *
-   * Sin embargo esta función separa esa estructura para que sea más
-   * sencillo capturarla dentro de ember.
+   * Ejemplos:
    *
-   * Por ejemplo, si queremos capturar un error (como hace la batería de tests),
-   * podemos escribir:
-   *
-   *     pilas.on('errorDeActividad', function(motivoDelError) {
-   *       // etc...
-   *     });
+   *     pilas.on('error', function({error}) { ... });
+   *     pilas.on('seAgregaUnActor', function({actorID}) { ... });
    *
    * @method contectarEventos
    * @private
@@ -135,7 +130,7 @@ export default Service.extend(Evented, {
   conectarEventos() {
     $(window).on("message.fromIframe", (e) => {
       let datos = e.originalEvent.data;
-      this.trigger(datos.tipo, datos.detalle);
+      this.trigger(datos.tipo, datos);
     });
   },
 
