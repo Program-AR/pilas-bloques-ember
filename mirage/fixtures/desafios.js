@@ -31,7 +31,7 @@ export default [
     id: 46,
     nombre: 'NuevosComandos',
     escena: 'NuevosComandos',
-    bloques: ['MoverACasillaDerecha', 'ApretarBoton', 'Procedimiento'],
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ApretarBoton', 'Procedimiento'],
     expectations: {
       simpleRepetition: false
     }

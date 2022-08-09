@@ -9,10 +9,10 @@ model:
         Clues: look at the available actions. You will have to move forward several times!
       clue: The blocks allow you to create sequences of actions to solve the challenges we offer in Pilas Bloques.
     '46':
-      title: Nuevos comandos
+      title: New commands
       description: |
-        Ahora el alien necesita prender dos botones a su derecha, luego dos más abajo, y uno al final.
-      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**    
+        Now our Alien needs to push two buttons to his right, then two lower ones, and one at the bottom.
+      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
     '2':
       title: The cat in the street
       description: 'Make the cat take a step forward, get to sleep, wake up, greet, and then come back to his original place.'
