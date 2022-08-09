@@ -130,6 +130,10 @@ export default [
     desafioIds: [41]
   },
   {
+    id: 'ElDesiertoMultiFrutal',
+    desafioIds: [42]
+  },
+  {
     id: 'ElPasilloCurvoDeSandias',
     desafioIds: [43]
   },

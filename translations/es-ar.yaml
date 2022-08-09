@@ -225,6 +225,12 @@ model:
       description: |
         Hoy es un día especial para celebrar y decorar las fiestas con muchos globos... pero hay un pequeño cangrejo al que le gusta ocasionar problemas. Ayudá al cangrejo a reventar los globos de todas las fiestas que encuentre a su paso.
       clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?    
+    '42':
+      title: |
+        El desierto multifrutal
+      description: |
+        La vida en el desierto puede ser muy difícil para un alien, así que toparse con un área llena naranjas y manzanas es todo un paraíso. Ayudá al alien a recolectar todas las frutas que encuentre a su paso.
+      clue: Pensá una estrategia que permita que el alien recorra una fila y coma todas las frutas que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
     '43':
       title: |
         El pasillo curvo de sandías
@@ -243,6 +249,7 @@ model:
       description: |
         El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
       clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+      clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?
     '130':
       title: La fiesta de Drácula
       description: |
@@ -714,6 +721,8 @@ model:
     ElFestinFrutal:
       title: ''
     RecolectorDeGalaxias:
+      title: ''
+    ElDesiertoMultiFrutal:
       title: ''
     Dibujando Figuras:
       title: ''
