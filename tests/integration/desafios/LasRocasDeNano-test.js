@@ -10,7 +10,7 @@ moduloActividad(nombre, () => {
     <block type=\"procedures_defnoreturn\" x=\"-359\" y=\"-97\">
       <field name=\"NAME\">Ir por camino alternativo</field>
       <statement name=\"STACK\">
-        <block type=\"RepetirVacio\">
+        <block type=\"repetir\">
           <value name=\"count\">
             <shadow type=\"required_value\"></shadow>
             <block type=\"Numero\">
