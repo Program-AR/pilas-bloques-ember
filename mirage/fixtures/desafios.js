@@ -28,6 +28,15 @@ export default [
     }
   },
   {
+    id: 46,
+    nombre: 'NuevosComandos',
+    escena: 'NuevosComandos',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ApretarBoton', 'Procedimiento'],
+    expectations: {
+      simpleRepetition: false
+    }
+  },
+  {
     id: 2,
     nombre: 'ElGatoEnLaCalle', // sale de 'id' en 'app/actividades/actividadElGatoEnLaCalle.js'
     escena: 'ElGatoEnLaCalle',
