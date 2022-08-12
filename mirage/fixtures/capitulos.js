@@ -28,7 +28,7 @@ export default [
     },
     {
         id: 'Alternativa condicional',
-        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LaberintoCorto', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'TresNaranjas', 'TitoRecargado', 'LaberintoLargo']
+        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LaberintoCorto', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'TresNaranjas', 'TitoRecargado', 'LaberintoLargo', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias', 'ElDesiertoMultiFrutal']
     },
     {
         id: 'Repetición condicional',

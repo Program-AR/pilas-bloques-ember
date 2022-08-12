@@ -51,7 +51,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     await settled()
     assert.notOk(this.ctrl.get('ejecutando'))
     assert.notOk(this.ctrl.get('terminoDeEjecutar'))
-    assert.notOk(this.ctrl.get('errorDeActividad'))
+    assert.notOk(this.ctrl.get('engineError'))
     assert.ok(this.owner.lookup('service:pilas').restartScene.called)
   })
 
@@ -402,11 +402,11 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('On finishing run with an error should send to the API', async function (assert) {
-      this.ctrl.errorDeActividad = "ERROR"
+      this.ctrl.engineError = {message: "ERROR"}
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
-        assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { error: "ERROR" })
+        assertProps(assert, this.ctrl.pilasBloquesApi.executionFinished.lastCall.lastArg, { error: {message: "ERROR"} })
       })
     })
 

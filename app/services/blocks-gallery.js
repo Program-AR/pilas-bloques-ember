@@ -1034,7 +1034,17 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoGlobo', 'balloonHere', {
       icono: 'icono.globo.png',
       funcionSensor: 'tocando("GloboAnimado")'
-    })
+    });
+
+    this.crearBloqueSensor('TocandoSandia', 'watermelonHere', {
+      icono: 'icono.sandia.png',
+      funcionSensor: 'tocando("SandiaAnimada")'
+    });
+
+    this.crearBloqueSensor('TocandoEstrella', 'starHere', {
+      icono: 'icono.estrella.png',
+      funcionSensor: 'tocando("EstrellaAnimada")'
+    });
 
     this.crearBloqueSensor('TocandoFinal', 'comeToTheEnd', {
       icono: 'icono.titoFinalizacion.png',

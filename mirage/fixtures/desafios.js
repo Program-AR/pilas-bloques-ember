@@ -332,6 +332,20 @@ export default [
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
+    id: 38,
+    nombre: 'LasRocasDeNano',
+    escena: 'LasRocasDeNano',
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'ComerBanana', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 39,
+    nombre: 'LosCaminosDeNano',
+    escena: 'LosCaminosDeNano',
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'ComerBanana', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
     id: 40,
     nombre: 'UnaFiestaArruinada',
     escena: 'UnaFiestaArruinada',
@@ -342,6 +356,30 @@ export default [
     nombre: 'RedecorandoFiestas',
     escena: 'RedecorandoFiestas',
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ExplotarGlobo', 'TocandoGlobo']
+  },
+  {
+    id: 42,
+    nombre: 'ElDesiertoMultiFrutal',
+    escena: 'ElDesiertoMultiFrutal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerNaranja', 'ComerManzana', 'Procedimiento', 'Repetir', 'TocandoNaranja', 'TocandoManzana', 'Si', 'SiNo']
+  },
+  {
+    id: 43,
+    nombre: 'ElPasilloCurvoDeSandias',
+    escena: 'ElPasilloCurvoDeSandias',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoSandia']
+  },
+  {
+    id: 44,
+    nombre: 'ElFestinFrutal',
+    escena: 'ElFestinFrutal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo','ComerBanana', 'ComerManzana', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+  },
+  {
+    id: 45,
+    nombre: 'RecolectorDeGalaxias',
+    escena: 'RecolectorDeGalaxias',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'TomarEstrella', 'TocandoEstrella', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 130,

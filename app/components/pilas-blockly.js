@@ -11,7 +11,7 @@ export default Component.extend({
   classNames: 'pilas-blockly',
   ejecutando: false,
   terminoDeEjecutar: false,
-  errorDeActividad: null,
+  engineError: null,
   cola_deshacer: [],
   data_observar_blockly: false,
   actividad: null,
@@ -85,8 +85,8 @@ export default Component.extend({
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
-    this.pilasService.on("errorDeActividad", (motivoDelError) => {
-      this.set('errorDeActividad', motivoDelError);
+    this.pilasService.on("error", ({error}) => {
+      this.set('engineError', error);
     });
 
     $(window).trigger('resize');
@@ -284,11 +284,9 @@ export default Component.extend({
           return;
         }
 
-        // Si se produce un error en la actividad se termina de ejecutar el intérprete.
-        // Esto es un resultado válido, no hubo ningún problema con el intérprete.
-        let error = this.errorDeActividad; // Se settea ante evento de Pilas
-        if (error) {
-          success({ error });
+        // Si se produce un error en la actividad se termina de ejecutar el intérprete. Ya sea esperado o inesperado
+        if (this.engineError) { // Se settea ante evento de Pilas
+          success({ error: this.engineError });
           return;
         }
 
@@ -326,8 +324,8 @@ export default Component.extend({
   cuandoTerminaEjecucion() {
     run(this, function () {
 
-      if (this.errorDeActividad) {
-        if (this.onErrorDeActividad) this.onErrorDeActividad(this.errorDeActividad)
+      if (this.engineError) {
+        if (this.onEngineError) this.onEngineError(this.engineError)
         return;
       }
 
@@ -486,7 +484,7 @@ export default Component.extend({
       this.exerciseWorkspace.set('ejecutando', false);
       this.set('terminoDeEjecutar', false);
       this.exerciseWorkspace.set('terminoDeEjecutar', false);
-      this.set('errorDeActividad', null);
+      this.set('engineError', null);
       await this.pilasService.restartScene();
     },
 
@@ -550,10 +548,4 @@ export default Component.extend({
 
 
 });
-
-class ErrorDeActividad extends Error {
-  constructor(exception) {
-    super(exception);
-  }
-}
 /* jshint ignore:end */
