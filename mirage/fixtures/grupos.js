@@ -66,6 +66,14 @@ export default [
     desafioIds: [16]
   },
   {
+    id: 'LasRocasDeNano',
+    desafioIds: [38]
+  },
+  {
+    id: 'LosCaminosDeNano',
+    desafioIds: [39]
+  },
+  {
     id: 'TitoRecargado',
     desafioIds: [17]
   },
@@ -112,6 +120,30 @@ export default [
   {
     id: 'ElPlanetaDeNano',
     desafioIds: [28]
+  },
+  {
+    id: 'UnaFiestaArruinada',
+    desafioIds: [40]
+  },
+  {
+    id: 'RedecorandoFiestas',
+    desafioIds: [41]
+  },
+  {
+    id: 'ElDesiertoMultiFrutal',
+    desafioIds: [42]
+  },
+  {
+    id: 'ElPasilloCurvoDeSandias',
+    desafioIds: [43]
+  },
+  {
+    id: 'ElFestinFrutal',
+    desafioIds: [44]
+  },
+  {
+    id: 'RecolectorDeGalaxias',
+    desafioIds: [45]
   },
   {
     id: 'Dibujando Figuras',
