@@ -1,9 +1,9 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock, createActividadMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
-import { declaresAnyProcedure, doesNotUseRecursionId } from '../../../utils/expectations'
+import { doesNotUseRecursionId, usesConditionalAlternative } from '../../../utils/expectations'
 import sinon from 'sinon'
 import { settled } from '@ember/test-helpers';
 
@@ -241,7 +241,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     test('Al resolver el problema con expectativas fallidas', async function (assert) {
       Blockly.textToBlock(filledProgram)
-      this.owner.lookup('service:challengeExpectations').expectations = declaresAnyProcedure
+      this.owner.lookup('service:challengeExpectations').expectations = usesConditionalAlternative
       this.ctrl.send('ejecutar')
       await settled()
       later(() => {
