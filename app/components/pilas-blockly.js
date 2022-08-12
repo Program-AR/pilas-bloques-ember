@@ -450,7 +450,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.shouldShowCongratulationsModal()
+    return this.experiments.shouldShowCongratulationsModal(this.challenge)
   },
 
   actions: {

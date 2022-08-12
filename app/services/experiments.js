@@ -98,8 +98,8 @@ export default Service.extend({
     } 
   },
 
-  shouldShowCongratulationsModal(){
-    return this.isNotAffected()
+  shouldShowCongratulationsModal(challenge){
+    return this.isNotAffected() && this.challengeExpectations.doesNotHaveExpectations(challenge)
   },
 
   shouldShowBlocksWarningExpectationFeedback(){

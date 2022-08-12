@@ -74,6 +74,9 @@ export default Service.extend({
     return models.map(model => model.get('expectations'))
   },
 
+  doesNotHaveExpectations(challenge) {
+    return isEmpty(this.allExpectConfigurationsMerged(challenge))
+  },
 
   configToExpectation(expectationsConfig) {
     return isEmpty(expectationsConfig) ? noExpectation
