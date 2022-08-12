@@ -203,6 +203,52 @@ model:
       description: |
         Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.
       clue: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.'
+    '38':
+      title: Las rocas de Nano
+      description: |
+        En el planeta de Nano suele haber muchos derrumbes de rocas y algunas de caen en el camino a su fruta favorita y se interponen; si eso pasa, debe tomar el largo y agotador camino rocoso. Ayudá a Nano a comer la banana al final del camino, y no te olvides de descargar tu solución (la vas a necesitar más adelante).
+      clue: ¿Cuántos posibles caminos hacia la banana existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
+    '39':
+      title: Los caminos de Nano
+      description: |
+        Nano escuchó la ubicación de otra deliciosa banana en su planeta rocoso, aunque el camino es más largo y peligroso. El camino verde es el más seguro pero no siempre está libre de rocas.
+      clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las rocas de Nano)? 
+    '40':
+      title: |
+        Una fiesta arruinada
+      description: |
+        “Nada mejor que despertar por la mañana y arruinar alguna fiesta” piensa el cangrejo aguafiestas. Ayudá al cangrejo a reventar todos los globos que encuentre a su paso. No te olvides de descargar tu solución (la vas a necesitar más adelante).
+      clue: ¿Cómo puede saber el cangrejo fácilmente si hay una fiesta de globos? ¿Qué debería hacer si no hay nadie festejando?
+    '41':
+      title: |
+        Redecorando fiestas
+      description: |
+        Hoy es un día especial para celebrar y decorar las fiestas con muchos globos... pero hay un pequeño cangrejo al que le gusta ocasionar problemas. Ayudá al cangrejo a reventar los globos de todas las fiestas que encuentre a su paso.
+      clue: ¿Hay alguna tarea que el cangrejo tenga que realizar varias veces? ¿Nos podría  ayudar la solución del desafío anterior (Una fiesta arruinada)?
+    '42':
+      title: |
+        El desierto multifrutal
+      description: |
+        La vida en el desierto puede ser muy difícil para un alien, así que toparse con un área llena naranjas y manzanas es todo un paraíso. Ayudá al alien a recolectar todas las frutas que encuentre a su paso.
+      clue: Pensá una estrategia que permita que el alien recorra una fila y coma todas las frutas que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
+    '43':
+      title: |
+        El pasillo curvo de sandías
+      description: |
+        ¡María encontró un pasillo lleno de sandías! El único problema es que el pasillo da varias vueltas y las sandías justo están ahí… ¿Podrá María comer todas las sandías de este pasillo?
+      clue: Las sandías se encuentran justo en las curvas que da el pasillo. Una estrategia para comer las sandías en una curva sería una excelente ayuda.
+    '44':
+      title: |
+        El festín frutal
+      description: |
+        El mono vino a comer sus frutas al lugar de siempre, aunque escuchó rumores que se está dando un gran banquete frutal del otro lado… ¡Hoy es un gran día para darse un festín!
+      clue: Una comida normal del mono es una columna de 6 frutas. ¿Cuántas columnas tiene un banquete de frutas? Si lográs hacer que el mono coma las frutas de una columna tal vez puedas hacer lo mismo en un banquete.
+    '45':
+      title: |
+        Recolector de galaxias
+      description: |
+        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
+      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
     '130':
       title: La fiesta de Drácula
       description: |
@@ -635,6 +681,10 @@ model:
       title: ''
     LaberintoCorto:
       title: ''
+    LasRocasDeNano:
+      title: ''
+    LosCaminosDeNano:
+      title: ''
     TresNaranjas:
       title: ''
     TitoRecargado:
@@ -660,6 +710,18 @@ model:
     ElMonoCuentaDeNuevo:
       title: ''
     ElPlanetaDeNano:
+      title: ''
+    UnaFiestaArruinada:
+      title: ''
+    RedecorandoFiestas:
+      title: ''
+    ElPasilloCurvoDeSandias:
+      title: ''
+    ElFestinFrutal:
+      title: ''
+    RecolectorDeGalaxias:
+      title: ''
+    ElDesiertoMultiFrutal:
       title: ''
     Dibujando Figuras:
       title: ''

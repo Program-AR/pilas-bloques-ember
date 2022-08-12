@@ -203,6 +203,52 @@ model:
       description: |
         Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length.
       clue: 'In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure.'
+    '38':
+      title: Nano’s rocks
+      description: |
+        In Nano’s planet there are usually a lot of rockfalls and some rocks fall on the path of his favorite fruit, getting in the way; if that happens, Nano must take the long and winding rocky road. Help Nano eat the banana at the end of the road, and don't forget to download your solution (you'll need it later).
+      clue: How many roads to the banana are there? Can all of them always be traversed or does it depend on something?
+    '39':
+      title: Nano’s paths
+      description: |
+        Nano heard about the location of another delicious fruit in their rocky planet, though the road it's longer and more dangerous. The green road is the safest but it's not always free of rocks.
+      clue: Is there a pattern that repeats? Could the solution of the previous challenge (Nano's rocks) help us?
+    '40':
+      title: |
+        A spoiled party
+      description: |
+        “Nothing better than getting up in the morning and spoiling a party“ thinks the spoilsport crab. Help the crab pinch all the balloons on its way. Don't forget to download your solution (you will need it later).
+      clue: How can the crab easily tell if there is a balloon party? What should it do if no one is partying?
+    '41':
+      title: |
+        Redecorating parties
+      description: |
+        Today is a special day to celebrate and decorate parties with many balloons... But there's a little crab that likes to cause trouble. Help the crab pinch all the balloons of all the parties on its way. 
+      clue: Is there a task the crab has to complete several times? Could the solution to the previous challenge (A spoiled party) help us?
+    '42':
+      title: |
+        The multifruit desert
+      description: |
+        Life in the desert can be very hard for an alien, so running into an area full of oranges and apples is a dream come true. Help the alien to collect all the fruits they find on their way.
+      clue: Think of a strategy that allows the alien to go down a row and eat all the fruits they find. Can the same be done in the other rows?
+    '43':
+      title: |
+        The watermelons curve aisle
+      description: |
+        María found an aisle full of watermelons! The only problem is that the aisle turns several times and the watermelons are right there... Will María be able to eat all the watermelons in this aisle?
+      clue: The watermelons are found right in the curves of the aisle. A strategy to eat the watermelons in a curve would be an excellent help.
+    '44':
+      title: |
+        The fruit fest
+      description: |
+        The monkey came to eat his fruits at the usual place, although he heard rumors that a great fruit banquet is taking place on the other side... Today is a great day to feast!
+      clue: A normal monkey meal is a column of 6 fruits. How many columns does a fruit banquet have? If you can get the monkey to eat the fruits in a column, maybe you can do the same at a banquet.
+    '45':
+      title: |
+        Galaxy collector
+      description: |
+        The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
+      clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
     '130':
       title: Dracula’s party
       description: |
@@ -629,6 +675,10 @@ model:
       title: ''
     LaberintoCorto:
       title: ''
+    LasRocasDeNano:
+      title: ''
+    LosCaminosDeNano:
+      title: ''
     TresNaranjas:
       title: ''
     TitoRecargado:
@@ -654,6 +704,18 @@ model:
     ElMonoCuentaDeNuevo:
       title: ''
     ElPlanetaDeNano:
+      title: ''
+    UnaFiestaArruinada:
+      title: ''
+    RedecorandoFiestas:
+      title: ''
+    ElPasilloCurvoDeSandias:
+      title: ''
+    ElFestinFrutal:
+      title: ''
+    RecolectorDeGalaxias:
+      title: ''
+    ElDesiertoMultiFrutal:
       title: ''
     Dibujando Figuras:
       title: ''
