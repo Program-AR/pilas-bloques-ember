@@ -287,6 +287,9 @@ export default Component.extend({
         // Si se produce un error en la actividad se termina de ejecutar el intérprete. Ya sea esperado o inesperado
         if (this.engineError) { // Se settea ante evento de Pilas
           success({ error: this.engineError });
+          // TODO: this produces an empty error in the executionResult when the error is not an instance of ActividadError
+          // We need to copy engineError slots to a new object and return the copy
+          // https://stackoverflow.com/questions/18391212/is-it-not-possible-to-stringify-an-error-using-json-stringify
           return;
         }
 
