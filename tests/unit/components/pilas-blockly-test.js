@@ -1,7 +1,7 @@
 import { later } from '@ember/runloop'
 import { module, test } from 'qunit'
 import { setupTest } from 'ember-qunit'
-import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock, createActividadMock } from '../../helpers/mocks'
+import { pilasMock, interpreterFactoryMock, interpreteMock, actividadMock, blocklyWorkspaceMock, componentMock, challengeExpectationsMock, experimentsMock, challengeWithExpectationsMock, idsToExpectationsMock } from '../../helpers/mocks'
 import { findBlockByTypeIn, assertProps, assertWarning, assertNotWarning, assertHasProps, setUpTestLocale } from '../../helpers/utils'
 import { usesSimpleRepetition, doesNotUseRecursionId } from '../../../utils/expectations'
 import sinon from 'sinon'
