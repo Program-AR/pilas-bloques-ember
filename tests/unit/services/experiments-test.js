@@ -60,19 +60,19 @@ module('Unit | Service | experiments', function (hooks) {
 
   //Congratulations modal
 
-  test('Should show congratulations modal - group is not affected and challenge does not have expectations', function (assert) {
+  test('Should show congratulations modal - group is not affected', function (assert) {
     experiments.set('groupSelectionStrategy', 'notAffected')
+    assert.ok(experiments.shouldShowCongratulationsModal())
+  })
+
+  test('Should show congratulations modal - challenge does not has expectations', function (assert) {
+    experiments.set('groupSelectionStrategy', 'treatment')
     challengeExpectationsMock.challengeDoesNotHaveExpectations = true
     assert.ok(experiments.shouldShowCongratulationsModal())
   })
 
-  test('Should NOT show congratulations modal - group is affected', function (assert) {
+  test('Should NOT show congratulations modal - group is affected and challenge has expectations', function (assert) {
     experiments.set('groupSelectionStrategy', 'treatment')
-    assert.notOk(experiments.shouldShowCongratulationsModal())
-  })
-
-  test('Should NOT show congratulations modal - group is not affected and challenge has expectations', function (assert) {
-    experiments.set('groupSelectionStrategy', 'notAffected')
     assert.notOk(experiments.shouldShowCongratulationsModal())
   })
 
