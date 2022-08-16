@@ -1,0 +1,17 @@
+import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
+
+const nombre = 'NuevosComandos';
+
+moduloActividad(nombre, () => {
+
+	actividadTest(nombre, {
+		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"$xRawPzOeu/`_@=a509o\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"]J2~fhR%_]@ROKpqt.kT\"></shadow><block type=\"procedures_callnoreturn\" id=\"vi:1ZUT.En:bVAWauv]/\"><mutation name=\"Prender curva\"></mutation><next><block type=\"procedures_callnoreturn\" id=\"_W!XW4vnf@*jH2a9fBV;\"><mutation name=\"Ir a siguiente curva\"></mutation><next><block type=\"procedures_callnoreturn\" id=\"KG/U=Siypr{ATzxKt}B6\"><mutation name=\"Prender curva\"></mutation><next><block type=\"procedures_callnoreturn\" id=\"u)%1Ral3)@zHA!ZtTk)-\"><mutation name=\"Prender ultimo botón\"></mutation></block></next></block></next></block></next></block></statement></block><block type=\"procedures_defnoreturn\" id=\")@)Yr}J5zuM9$TJ]rXrw\" x=\"-338\" y=\"181\"><field name=\"NAME\">Ir a siguiente curva</field><statement name=\"STACK\"><block type=\"MoverACasillaAbajo\" id=\"rzou0Ox|IH4JZod+m?+S\"><next><block type=\"MoverACasillaAbajo\" id=\"RNsn77w_%6;w^tguW$jy\"><next><block type=\"MoverACasillaAbajo\" id=\"Xc%O1~W[0N@|XcD^pW},\"></block></next></block></next></block></statement></block><block type=\"procedures_defnoreturn\" id=\":H~RH+ss(IvM/9tW[9?c\" x=\"378\" y=\"228\"><field name=\"NAME\">Prender curva</field><statement name=\"STACK\"><block type=\"MoverACasillaDerecha\" id=\"Q{t;[,Hh@2~kIUL/{lUI\"><next><block type=\"MoverACasillaDerecha\" id=\"f~3UTC4i3+l1?;ho4_h`\"><next><block type=\"ApretarBoton\" id=\"a+IhPmnmCB5UcZoXB*Qf\"><next><block type=\"MoverACasillaAbajo\" id=\"zg(466lb/@^tZ!H_tx#U\"><next><block type=\"ApretarBoton\" id=\"?iVEcB+^K#T{`j~;cjlO\"><next><block type=\"procedures_callnoreturn\" id=\"g_Yi?utA%_D2%t-mcNB7\"><mutation name=\"Volver atrás\"></mutation></block></next></block></next></block></next></block></next></block></next></block></statement></block><block type=\"procedures_defnoreturn\" id=\"~H?gQXr3tJzdZ6t3i#)|\" x=\"78\" y=\"325\"><field name=\"NAME\">Volver atrás</field><statement name=\"STACK\"><block type=\"MoverACasillaArriba\" id=\"oAoAD$e9OWJSErvvpCr[\"><next><block type=\"MoverACasillaIzquierda\" id=\"[p)XqLp*=Rx}V|aO4jZ3\"><next><block type=\"MoverACasillaIzquierda\" id=\"X{L?^*p18Q@D:nsvPTjC\"></block></next></block></next></block></statement></block><block type=\"procedures_defnoreturn\" id=\"V^:3aJw@u;]MCmu#unp]\" x=\"-313\" y=\"391\"><field name=\"NAME\">Prender ultimo botón</field><statement name=\"STACK\"><block type=\"MoverACasillaAbajo\" id=\"cB,^n{iy6O|r%v[aX]I)\"><next><block type=\"ApretarBoton\" id=\"H0YS1#hy72w#Lv6gm1zb\"></block></next></block></statement></block></xml>'
+	});
+
+	actividadTest(nombre, {
+		descripcionAdicional: 'Da error al querer avanzar hacia una dirección donde no hay casilla',
+		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\",i_grY4xs|KS{W)=J!-W\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"Q.hb9z#7q?s`jF0!iLJw\"></shadow><block type=\"MoverACasillaIzquierda\" id=\"TJob/~WW,avYNY:H$YjM\"></block></statement></block></xml>',
+		errorEsperado: 'No puedo ir para la izquierda',
+	});
+
+});

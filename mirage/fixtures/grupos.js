@@ -6,6 +6,10 @@ export default [
     desafioIds: [1]
   },
   {
+    id: 'NuevosComandos',
+    desafioIds: [46]
+  },
+  {
     id: 'ElGatoEnLaCalle',
     desafioIds: [2]
   },
