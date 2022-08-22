@@ -1,7 +1,30 @@
 Notas de versión detalladas
 =============
-
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
+
+* 1.11.1 (22 de Agosto de 2022)
+  * Se agregó mulang.js, ejecutándose cada vez que se hace play. Cuando mulang está cargando, el botón se grisa. En firefox tarda un poco más, especialmente la primera vez que se aprieta el botón en cada desafío.
+  * Se agregaron las expectativas, desactivadas por feature flag por ahora. Se configuran a nivel desafío, capítulo y libro.
+  * Modos de experimento: hay 4 formas de buildear la aplicación: "notAffected", "treatment", "control" y "autoassign". "notAffected" desactiva las expectativas y sugerencias, "treatment" las pone siempre, "control" genera sólo un diálogo final completo, y "autoassign" randomiza entre las últimas dos por IP.
+  * Ahora los números de versión incluyen al final una letra de qué tipo de experimento es.
+  * Se avanzó sobre la traduccion al portugués.
+  * Se agregaron 9 nuevos desafíos, fundamentalmente de Alternativa Condicional.
+  * Se sacó Python como requerimiento del proyecto.
+  * Ahora se consigue la lista de imágenes apartir del pilas-bloques-exercises.
+  * Pilas Bloques ahora entra en pantallas de 768px.
+  * Se resolvió que se perdía el código al poner pantalla completa.
+  * Se sacó la flecha de múltiples escenarios del pilas-bloques-exercises y se la implementó en la aplicación misma.
+  * Se agregaron scripts al hacer el post-install, debido a lo que se dice en https://github.com/Program-AR/pilas-bloques/pull/968 , https://github.com/Program-AR/pilas-bloques/issues/981 y https://github.com/Program-AR/pilas-bloques/issues/1006.
+  * Se agregaron scripts para generar y usar archivos de traducción mas human friendly.
+  * Se wrappean los textos de los bubbles de warning y errores.
+  * Ahora los bubbles mantienen el color al volverse a abrir.
+  * Se agregó caducidad a los tokens de login.
+  * Ahora el fingerprint se guarda en el local storage y se lo genera de forma lazy.
+  * Ahora se envia la URL a la API en el context, debido a https://github.com/Program-AR/pilas-bloques/issues/1044.
+  * Se subió la versión de Node de dubnium a fermium.
+  * Se subió la versión de electron a 15.5.5.
+  * Se subió la versión de moment a 2.29.4.
+  * Se sacó la dependencia de devtron.
 
 * 1.9.3 (4 de Mayo de 2022)
   * Se solucionó el bug que te hacía perder la solución al hacer _"pantalla completa"_.
