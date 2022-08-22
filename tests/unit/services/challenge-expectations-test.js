@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
-import { createComponentMock } from '../../helpers/mocks';
+import { createComponentMock, challengeWithExpectationsMock } from '../../helpers/mocks';
 
 module('Unit | Service | challenge-expectations', function (hooks) {
   setupTest(hooks);
@@ -20,6 +20,8 @@ module('Unit | Service | challenge-expectations', function (hooks) {
     simpleRepetition: expectationMock,
     conditionalAlternative: expectationMock
   })
+
+  const challengeWithoutExpectationsMock = createComponentMock({})
 
   let challengeMock
 
@@ -72,6 +74,14 @@ module('Unit | Service | challenge-expectations', function (hooks) {
       simpleRepetition: true
     }
     assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig, configWithHigherPriority]), mergedConfig)
+  })
+
+  test('a challenge has expectations', function (assert) {
+    assert.notOk(challengeExpectations.doesNotHaveExpectations(challengeWithExpectationsMock))
+  })
+
+  test('a challenge does not have expectations', function (assert) {
+    assert.ok(challengeExpectations.doesNotHaveExpectations(challengeWithoutExpectationsMock))
   })
 
   test('domain expectations to mulang expectations', function (assert) {

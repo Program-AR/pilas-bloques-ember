@@ -7,6 +7,7 @@ export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),
+    challengeExpectations: service(),
 
     expectsResults(expects) {
         return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
@@ -52,8 +53,8 @@ export default Service.extend({
         }
     },
 
-    totalScore(expects) {
-        return 100 * this.allPassedExpects(expects).length / this.expectsResults(expects).length
+    totalScore(expects, challenge) {
+        return 100 * this.allPassedExpects(expects).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
 
 })

@@ -33,7 +33,9 @@ export default [
     escena: 'NuevosComandos',
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'ApretarBoton', 'Procedimiento'],
     expectations: {
-      simpleRepetition: false
+      simpleRepetition: false,
+      decomposition: false,
+      decomposition9: true
     }
   },
   {

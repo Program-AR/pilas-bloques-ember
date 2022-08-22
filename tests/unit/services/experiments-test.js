@@ -28,8 +28,10 @@ module('Unit | Service | experiments', function (hooks) {
     }
     
     challengeExpectationsMock = {
+      challengeDoesNotHaveExpectations: false,
       _decomposition: true,
-      hasDecomposition(){ return this._decomposition }
+      hasDecomposition(){ return this._decomposition },
+      doesNotHaveExpectations(/* challenge */) { return this.challengeDoesNotHaveExpectations }
     }
 
     pilasBloquesApiMock = {
@@ -63,7 +65,13 @@ module('Unit | Service | experiments', function (hooks) {
     assert.ok(experiments.shouldShowCongratulationsModal())
   })
 
-  test('Should NOT show congratulations modal - group is affected', function (assert) {
+  test('Should show congratulations modal - challenge does not has expectations', function (assert) {
+    experiments.set('groupSelectionStrategy', 'treatment')
+    challengeExpectationsMock.challengeDoesNotHaveExpectations = true
+    assert.ok(experiments.shouldShowCongratulationsModal())
+  })
+
+  test('Should NOT show congratulations modal - group is affected and challenge has expectations', function (assert) {
     experiments.set('groupSelectionStrategy', 'treatment')
     assert.notOk(experiments.shouldShowCongratulationsModal())
   })

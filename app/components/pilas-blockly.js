@@ -377,7 +377,7 @@ export default Component.extend({
       allExpectResults: this.persistableExpectsResults(this.get('expects')),
       score: {
         expectResults: this.scoredExpectsResults(),
-        percentage: this.expectsScoring.totalScore(this.get('expects'))
+        percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge)
       }
     }
   },
@@ -453,7 +453,7 @@ export default Component.extend({
   },
 
   shouldShowCongratulationsModal() {
-    return this.experiments.shouldShowCongratulationsModal()
+    return this.experiments.shouldShowCongratulationsModal(this.challenge)
   },
 
   actions: {

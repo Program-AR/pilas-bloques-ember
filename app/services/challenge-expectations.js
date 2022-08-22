@@ -1,8 +1,9 @@
 import Service from '@ember/service'
-import { isEmpty/*, compose*/ } from 'ramda'
+import { isEmpty, sum } from 'ramda'
 import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
+// Be careful when adding new expects. idsToScore should be potentially updated too.
 const idsToExpectations = (intl) => ({
   decomposition: multiExpect(
     () => mainNotTooLong(),
@@ -16,7 +17,21 @@ const idsToExpectations = (intl) => ({
       nameWasChanged(intl)
     )
   ),
-  
+
+  // This should be deleted after expectations and configuration redesign.
+  decomposition9: multiExpect(
+    () => mainNotTooLong(9),
+    doesNotNestControlStructures,
+    allProceduresShould(
+      notTooLong(9),
+      doSomething,
+      isUsed,
+      isUsedFromMain,
+      doesNotUseRecursion,
+      nameWasChanged(intl)
+    )
+  ),
+
   /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
   Only decomposition should be active. Don't forget imports
 
@@ -29,6 +44,26 @@ const idsToExpectations = (intl) => ({
   */
 
 })
+
+
+/**
+ * 
+ * This should be _erased from existence_ calculated from expectations.
+ * Related to: https://github.com/Program-AR/pilas-bloques/issues/1040
+ */
+const idsToScore = {
+  decomposition: 5,
+  decomposition9: 5,
+
+  /**
+   * See comment above
+  conditionalAlternative: 1,
+
+  conditionalRepetition: 1,
+
+  simpleRepetition: 1
+   */
+}
 
 
 export default Service.extend({
@@ -54,14 +89,21 @@ export default Service.extend({
     return models.map(model => model.get('expectations'))
   },
 
+  doesNotHaveExpectations(challenge) {
+    return isEmpty(this.allExpectConfigurationsMerged(challenge))
+  },
 
   configToExpectation(expectationsConfig) {
     return isEmpty(expectationsConfig) ? noExpectation
       : multiExpect(
-        ...Object.entries(expectationsConfig) //Must not be undefined
-          .filter(e => this.shouldBeApplied(e))
+        ...this.appliableConfigs(expectationsConfig)
           .map(([id,]) => this.idToExpectation(id))
       )
+  },
+
+  appliableConfigs(expectationsConfig) {
+    return Object.entries(expectationsConfig) //Must not be undefined
+      .filter(e => this.shouldBeApplied(e))
   },
 
   shouldBeApplied([id, shouldApply]) {
@@ -92,5 +134,20 @@ export default Service.extend({
 
   hasDecomposition(challenge) {
     return !!this.allExpectConfigurationsMerged(challenge).decomposition
+  },
+
+  totalScoreOf(challenge) {
+    return this.configToTotalScore(this.allExpectConfigurationsMerged(challenge))
+  },
+
+  configToTotalScore(expectationsConfig) {
+    return isEmpty(expectationsConfig) ? 0
+      : sum(
+        this.appliableConfigs(expectationsConfig).map(([id,]) => this.idToScore(id))
+      )
+  },
+
+  idToScore(id) {
+    return idsToScore[id] || 0
   }
 })

@@ -13,7 +13,7 @@ export default Service.extend({
   //This order is important, do NOT change
   possibleGroups: ["treatment", "control", "notAffected"],
   decompositionTreatmentLength: ENV.decompositionTreatmentLength,
-  
+
   solvedChallenges: computed('storage', function () {
     return this.get('storage').getSolvedChallenges()
   }),
@@ -30,7 +30,7 @@ export default Service.extend({
     return !(this.isTreatmentGroup() || this.isControlGroup())
   },
 
-  isAutoAssignStrategy(){
+  isAutoAssignStrategy() {
     return this.groupSelectionStrategy === "autoassign"
   },
 
@@ -43,18 +43,18 @@ export default Service.extend({
     return this.isAutoAssignStrategy() ? (this.getExperimentGroupAssigned() || this.possibleGroups[2]) : this.groupSelectionStrategy
   },
 
-  getExperimentGroupAssigned(){
-    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup()|| this.randomizeAndSaveExperimentGroup() // jshint ignore:line
+  getExperimentGroupAssigned() {
+    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup() || this.randomizeAndSaveExperimentGroup() // jshint ignore:line
   },
 
-  randomizeAndSaveExperimentGroup(){
+  randomizeAndSaveExperimentGroup() {
     const randomExperimentGroup = this.getRandomExperimentGroup()
     this.storage.saveExperimentGroup(randomExperimentGroup)
 
-    if(this.pilasBloquesApi.getUser()){
+    if (this.pilasBloquesApi.getUser()) {
       this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
-    
+
     return randomExperimentGroup
   },
 
@@ -62,25 +62,25 @@ export default Service.extend({
    * Randomizes with the ip as seed because we want every student in a classroom to have the same experiment group
    * @returns an experiment group or null in case the ip has not been set yet
    */
-  getRandomExperimentGroup(){
+  getRandomExperimentGroup() {
     const ip = this.storage.getUserIp()
     return ip && this.possibleGroups[this.randomIndex(ip)]
   },
 
-  randomIndex(seed){
+  randomIndex(seed) {
     const randomizedSeed = seedrandom(seed)
     const experimentGroupNumber = randomizedSeed() * (this.possibleGroups.length - 1)
 
     return Math.floor(experimentGroupNumber)
   },
 
-  async saveUserIP(){
-    if(!this.storage.getUserIp()){
-      try{
+  async saveUserIP() {
+    if (!this.storage.getUserIp()) {
+      try {
         const response = await fetch("https://api64.ipify.org?format=json")
         const jsonIp = await response.json()
         this.storage.saveUserIp(jsonIp.ip)
-      }catch(e){
+      } catch (e) {
         console.error(e);
       }
     }
@@ -89,36 +89,36 @@ export default Service.extend({
   groupId() {
     return this.groupSelectionStrategy.charAt(0)
   },
-  
-  updateSolvedChallenges(challenge){
-    const _solvedChallenges = this.solvedChallenges 
-    if (this.shouldUpdateSolvedChallenges(challenge)){
+
+  updateSolvedChallenges(challenge) {
+    const _solvedChallenges = this.solvedChallenges
+    if (this.shouldUpdateSolvedChallenges(challenge)) {
       _solvedChallenges.push(challenge.id)
       this.storage.saveSolvedChallenges(_solvedChallenges)
-    } 
+    }
   },
 
-  shouldShowCongratulationsModal(){
-    return this.isNotAffected()
+  shouldShowCongratulationsModal(challenge) {
+    return this.challengeExpectations.doesNotHaveExpectations(challenge) || this.isNotAffected()
   },
 
-  shouldShowBlocksWarningExpectationFeedback(){
+  shouldShowBlocksWarningExpectationFeedback() {
     return this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
-  shouldShowScoredExpectations(){
+  shouldShowScoredExpectations() {
     return !(this.isControlGroup() || this.feedbackIsDisabled())
   },
 
-  feedbackIsDisabled(){
+  feedbackIsDisabled() {
     return this.solvedChallenges.length >= this.decompositionTreatmentLength
   },
 
-  shouldUpdateSolvedChallenges(challenge){
+  shouldUpdateSolvedChallenges(challenge) {
     return !this.solvedChallenges.includes(challenge.id) && this.hasDecompositionExpect(challenge)
   },
 
-  hasDecompositionExpect(challenge){
+  hasDecompositionExpect(challenge) {
     return this.challengeExpectations.hasDecomposition(challenge)
   }
 });
