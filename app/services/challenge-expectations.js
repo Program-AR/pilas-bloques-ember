@@ -18,6 +18,20 @@ const idsToExpectations = (intl) => ({
     )
   ),
 
+  // This should be deleted after expectations and configuration redesign.
+  decomposition9: multiExpect(
+    () => mainNotTooLong(9),
+    doesNotNestControlStructures,
+    allProceduresShould(
+      notTooLong(9),
+      doSomething,
+      isUsed,
+      isUsedFromMain,
+      doesNotUseRecursion,
+      nameWasChanged(intl)
+    )
+  ),
+
   /* TODO: uncommnent after experiment is done. Related to https://github.com/Program-AR/pilas-bloques/issues/1042
   Only decomposition should be active. Don't forget imports
 
@@ -39,6 +53,7 @@ const idsToExpectations = (intl) => ({
  */
 const idsToScore = {
   decomposition: 5,
+  decomposition9: 5,
 
   /**
    * See comment above
