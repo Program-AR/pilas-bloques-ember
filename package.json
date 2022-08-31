@@ -124,7 +124,8 @@
     "loader.js": "4.7.0",
     "qunit-dom": "1.2.0",
     "sass": "^1.26.9",
-    "sass-migrator": "^1.5.4"
+    "sass-migrator": "^1.5.4",
+    "shelljs": "^0.8.5"
   },
   "main": "electron.js",
   "ember-electron": {
