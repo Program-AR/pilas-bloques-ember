@@ -127,11 +127,5 @@ The experiment groups are: `notAffected`, `control`, `treatment` and `autoassign
 
 If you want to test users stuff or save challenges it is necessary to fulfill some requirements: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) and a data base [MongoDB](https://www.mongodb.com/).
 
-### License
-
-Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
-
-Licensed under the terms of [GNU General Public License v3.0](https://github.com/Program-AR/pilas-bloques/blob/master/LICENSE) license.
-
 ### Changeslog
 [here](notasDeVersion.md)
