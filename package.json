@@ -51,6 +51,7 @@
     "pack:linux": "bash ./scripts/package.sh -linux",
     "pack:osx": "bash ./scripts/package.sh -osx",
     "pack:win32": "bash ./scripts/package.sh -win32",
+    "preinstall": "git config url.https://github.com/.insteadOf git://github.com/",
     "postinstall": "bash ./scripts/remove-mulang-require.sh && bash ./scripts/change-sass-division.sh && bash ./scripts/change-pilas-versions.sh",
     "clean": "rm -rf node_modules dist dist_prod"
   },
