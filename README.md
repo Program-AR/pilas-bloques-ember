@@ -145,11 +145,5 @@ https://github.com/Program-AR/pilas-bloques/wiki/Release-y-Deploy
 
 _____________
 
-### Licencia
-
-Copyright © 2021, [Program-AR](http://program.ar), All Rights Reserved.
-
-Licensed under the terms of [GNU General Public License v3.0](https://github.com/Program-AR/pilas-bloques/blob/master/LICENSE) license.
-
 ### Registro de cambios
 [aquí](notasDeVersion.md)
