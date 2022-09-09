@@ -51,6 +51,7 @@
     "pack:linux": "bash ./scripts/package.sh -linux",
     "pack:osx": "bash ./scripts/package.sh -osx",
     "pack:win32": "bash ./scripts/package.sh -win32",
+    "preinstall": "git config url.https://github.com/.insteadOf git://github.com/",
     "postinstall": "node ./scripts/remove-mulang-require.js && node ./scripts/change-sass-division.js && node ./scripts/change-pilas-versions.js",
     "clean": "rm -rf node_modules dist dist_prod"
   },
@@ -81,7 +82,6 @@
     "electron": "15.5.5",
     "electron-packager": "15.1.0",
     "electron-rebuild": "2.0.0",
-    "electron-installer-debian": "3.1.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.6.0",
     "ember-blockly": "^0.3.0",
@@ -127,6 +127,9 @@
     "sass": "^1.26.9",
     "sass-migrator": "^1.5.4",
     "shelljs": "^0.8.5"
+  },
+  "optionalDependencies": {
+    "electron-installer-debian": "3.1.0"
   },
   "main": "electron.js",
   "ember-electron": {
