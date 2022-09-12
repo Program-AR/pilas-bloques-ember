@@ -1,6 +1,6 @@
 index:
   welcome: 'Olá! Seja bem-vindo ao <b>Pilas Bloques</b>, uma ferramenta para aprender a programar. '
-  challenges: 'Os desafios que oferecemos estão organizados em dois grupos:'
+  challenges: 'Os desafios que oferecemos estão organizados em esses grupos:'
   customChallenges: Agora você também pode criar e importar desafios com o criador de desafios de <b>Pilas Bloques</b>!
   visitAbout:
     part1: 'Visite a seção '
