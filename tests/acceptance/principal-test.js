@@ -22,7 +22,7 @@ module('Acceptance | principal', function (hooks) {
     assert.equal(page.cantidadDeLinks, 7, "La cantidad de links en pantalla renderiza bien.");
     // test translations
     assert.equal(currentURL(), '/libros', " current url is "+currentURL()+" instead of /libros");
-    assert.true(page.translatedText.includes("Los desafíos que ofrecemos están organizados en dos grupos:"),"text should be tranlated "+page.translatedText)
+    assert.true(page.translatedText.includes("Los desafíos que ofrecemos están organizados en los siguientes grupos:"),"text should be tranlated "+page.translatedText)
     assert.false(page.translatedText.includes("Missing translation"),"no translations should be missing")
   });
 });
