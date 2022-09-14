@@ -211,7 +211,7 @@ model:
     '38':
       title: Las rocas de Nano
       description: |
-        En el planeta de Nano suele haber muchos derrumbes de rocas y algunas de caen en el camino a su fruta favorita y se interponen; si eso pasa, debe tomar el largo y agotador camino rocoso. Ayudá a Nano a comer la banana al final del camino, y no te olvides de descargar tu solución (la vas a necesitar más adelante).
+        En el planeta de Nano suele haber muchos derrumbes de rocas. Algunas caen y se interponen en el camino a su fruta favorita. Si eso pasa, debe tomar el largo y agotador camino rocoso. Ayudá a Nano a comer la banana al final del camino. ¡No te olvides de descargar tu solución! (la vas a necesitar más adelante).
       clue: ¿Cuántos posibles caminos hacia la banana existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
     '39':
       title: Los caminos de Nano

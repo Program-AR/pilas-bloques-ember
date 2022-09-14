@@ -211,7 +211,7 @@ model:
     '38':
       title: Nano’s rocks
       description: |
-        In Nano’s planet there are usually a lot of rockfalls and some rocks fall on the path of his favorite fruit, getting in the way; if that happens, Nano must take the long and winding rocky road. Help Nano eat the banana at the end of the road, and don't forget to download your solution (you'll need it later).
+        In Nano’s planet there are usually a lot of rockfalls. Some rocks fall on the path and get in the way to his favorite fruit. If that happens, Nano must take the long and winding rocky road. Help Nano eat the banana at the end of the road. Don't forget to download your solution! (you'll need it later).
       clue: How many roads to the banana are there? Can all of them always be traversed or does it depend on something?
     '39':
       title: Nano’s paths
