@@ -67,7 +67,7 @@ function getProcedureBlock(procedureCallBlock){
 }
 
 function usesControlStructure(procedureCallBlock){
-  return getBlocksSurroundedByProcedure(procedureCallBlock).some(isControlStructure)
+  return getProcedureBlock(procedureCallBlock) && getBlocksSurroundedByProcedure(procedureCallBlock).some(isControlStructure)
 }
 
 function getBlocksSurroundedByProcedure(procedureCallBlock){
