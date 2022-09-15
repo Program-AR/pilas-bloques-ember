@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 var experimentGroup = process.env.EXPERIMENT_GROUP
-if(!experimentGroup){
+if (!experimentGroup) {
   experimentGroup = 'notAffected'
   console.log(`\nInfo: EXPERIMENT_GROUP variable not set. Building Pilas Bloques in default mode: ${experimentGroup}. See README.md for valid EXPERIMENT_GROUP values`)
 }
