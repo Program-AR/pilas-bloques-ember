@@ -115,7 +115,7 @@
     "ember-load-initializers": "2.1.2",
     "ember-modal-dialog": "^3.0.0-beta.4",
     "ember-page-title": "^6.0.3",
-    "ember-paper": "1.0.0-beta.35",
+    "ember-paper": "1.0.0-beta.36",
     "ember-paper-stepper": "0.0.10",
     "ember-qunit": "^5.1.1",
     "ember-resolver": "8.0.2",
