@@ -61,6 +61,11 @@
   "engines": {
     "node": ">= 0.10.0"
   },
+  "overrides": {
+    "ember-paper": {
+      "ember-composability-tools": "1.0.0"
+    }
+  },
   "dependencies": {
     "blockly-package": "^1.0.0",
     "clientjs": "^0.1.11",
