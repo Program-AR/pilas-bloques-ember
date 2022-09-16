@@ -17,11 +17,11 @@ jobs:
         with:
           # npm cache files are stored in `~/.npm` on Linux/macOS
           path: ~/.npm
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json')-2308u89qwdhufjo9}}
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-123-${{ hashFiles('**/package-lock.json')}}
           restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-24
-            ${{ runner.os }}-build-223423
-            ${{ runner.os }}-234234
+            ${{ runner.os }}-build-543-${{ env.cache-name }}-
+            ${{ runner.os }}-111-build-
+            ${{ runner.os }}-111-
         
       - run: npm install
 
