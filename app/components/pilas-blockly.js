@@ -31,6 +31,8 @@ export default Component.extend({
   expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
+  staticAnalysisError: '',
+
   anterior_ancho: -1,
   anterior_alto: -1,
 
@@ -378,7 +380,8 @@ export default Component.extend({
       score: {
         expectResults: this.scoredExpectsResults(),
         percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge)
-      }
+      },
+      error: this.get('staticAnalysisError')
     }
   },
 
@@ -459,9 +462,17 @@ export default Component.extend({
   actions: {
 
     async ejecutar(pasoAPaso = false) {
-      const analyticsSolutionId = this.runProgramEvent()
+      this.set('staticAnalysisError', '')
       await this.pilasService.restartScene()
-      await this.runValidations()
+
+      try {
+        await this.runValidations()
+      } catch(e) {
+        console.log(e)
+        this.set('staticAnalysisError', e.toString())
+      }
+      
+      const analyticsSolutionId = this.runProgramEvent()
 
       if (!this.shouldExecuteProgram()) return;
 
