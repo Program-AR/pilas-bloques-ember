@@ -380,8 +380,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
       Blockly.textToBlock(filledProgram)
       this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
       this.ctrl.send('ejecutar')
-      const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
       await settled()
+      const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
       assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn', 'program')
       assert.deepEqual(metadata.staticAnalysis, {
         couldExecute: true,
@@ -389,7 +389,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
         score: {
           expectResults: [solutionWorksResult],
           percentage: 100
-        }
+        },
+        error: ''
       })
     })
 
@@ -412,8 +413,8 @@ module('Unit | Components | pilas-blockly', function (hooks) {
 
     test('On running should send the metadata to the API', async function (assert) {
       this.ctrl.send('ejecutar')
-      const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
       await settled()
+      const metadata = this.ctrl.pilasBloquesApi.runProgram.lastCall.lastArg
       assertHasProps(assert, metadata, 'ast', 'staticAnalysis', 'turboModeOn',)
       assert.ok(metadata.program || metadata.program.length === 0)
     })
