@@ -25,11 +25,13 @@ module('Unit | Component | expectation-modal', function (hooks) {
 
   test('All expectations passed', function (assert) {
     component.set('expects', passedExpects)
+    component.set('isTheChallengeSolved', true)
     assert.ok(component.allExpectationsPassed())
   })
 
   test('Not all expectations passed', function (assert) {
     component.set('expects', passedExpects.concat(failedExpects))
+    component.set('isTheChallengeSolved', false)
     assert.notOk(component.allExpectationsPassed())
   })
 });
