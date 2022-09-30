@@ -6,19 +6,19 @@ export default Component.extend({
 
     expectsScoring: service('expects-scoring'),
 
-    allPassedExpects: computed('expects', function () {
-        return this.expectsScoring.allPassedExpects(this.expects)
+    allPassedExpects: computed('expects', 'isTheChallengeSolved', function () {
+        return this.expectsScoring.allPassedExpects(this.expects, this.get('isTheChallengeSolved'))
     }),
 
-    failedExpects: computed('expects', function () {
-        return this.expectsScoring.failedExpects(this.expects)
+    failedExpects: computed('expects', 'isTheChallengeSolved', function () {
+        return this.expectsScoring.failedExpects(this.expects, this.get('isTheChallengeSolved'))
     }),
 
-    expectsResults: computed('expects', function () {
-        return this.expectsScoring.expectsResults(this.expects)
+    expectsResults: computed('expects', 'isTheChallengeSolved', function () {
+        return this.expectsScoring.expectsResults(this.expects, this.get('isTheChallengeSolved'))
     }),
 
-    passedExpectsValue: computed('expects', function () {
-        return this.expectsScoring.totalScore(this.expects, this.challenge)
+    passedExpectsValue: computed('expects', 'isTheChallengeSolved', function () {
+        return this.expectsScoring.totalScore(this.expects, this.challenge, this.get('isTheChallengeSolved'))
     }),
 });

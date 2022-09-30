@@ -30,7 +30,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e2 = expectation('2', true)
     const expectations = [e1, e2]
 
-    const results = expectsScoring.expectsResults(expectations)
+    const results = expectsScoring.expectsResults(expectations, true)
     assert.propEqual(results[0], solutionPassMock)
   });
 
@@ -74,7 +74,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e3 = expectation('3', false)
     const expectations = [nonScoreableExpectation, e2, e3]
 
-    const results = expectsScoring.expectsResults(expectations)
+    const results = expectsScoring.expectsResults(expectations, true)
 
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })

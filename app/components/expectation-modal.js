@@ -8,7 +8,7 @@ export default Component.extend({
   expectScoring: service('expects-scoring'),
 
   allExpectationsPassed() {
-    return this.expectScoring.failedExpects(this.expects).length === 0
+    return this.expectScoring.failedExpects(this.expects, this.get('isTheChallengeSolved')).length === 0
   },
 
   shouldShowScoredExpectations() {

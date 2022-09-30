@@ -9,16 +9,16 @@ export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
 
-    expectsResults(expects) {
-        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
+    expectsResults(expects, isTheChallengeSolved) {
+        return [this.solutionWorksExpectResult(isTheChallengeSolved)].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
     },
 
-    failedExpects(expects) {
-        return this.expectsResults(expects).filter(e => !e.result)
+    failedExpects(expects, isTheChallengeSolved) {
+        return this.expectsResults(expects, isTheChallengeSolved).filter(e => !e.result)
     },
 
-    allPassedExpects(expects) {
-        return this.expectsResults(expects).filter(e => e.result)
+    allPassedExpects(expects, isTheChallengeSolved) {
+        return this.expectsResults(expects, isTheChallengeSolved).filter(e => e.result)
     },
 
     groupById(expects) {
@@ -42,19 +42,20 @@ export default Service.extend({
         return !!expect.description.asScoring
     },
 
-    solutionWorksExpectResult() {
+    solutionWorksExpectResult(isTheChallengeSolved) {
         const params = { isScoreable: true }
+        const result = isTheChallengeSolved
 
         return {
             id: solutionWorks,
-            description: expectationDescription(this.intl, solutionWorks, true, params),
-            result: true,
+            description: expectationDescription(this.intl, solutionWorks, result, params),
+            result,
             ...params
         }
     },
 
-    totalScore(expects, challenge) {
-        return 100 * this.allPassedExpects(expects).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+    totalScore(expects, challenge, isTheChallengeSolved) {
+        return 100 * this.allPassedExpects(expects, isTheChallengeSolved).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
 
 })
