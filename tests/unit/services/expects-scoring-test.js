@@ -13,6 +13,10 @@ const solutionPassMock = {
   result: true
 }
 
+const pilasServiceMock = {
+  estaResueltoElProblema() { return true }
+}
+
 const expectation = (id, result, description = 'Bien :)') => ({ id, description: { asScoring: description }, result })
 
 module('Unit | Service | expects-scoring', function (hooks) {
@@ -23,6 +27,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
 
   hooks.beforeEach(function () {
     expectsScoring = this.owner.lookup('service:expects-scoring');
+    expectsScoring.set('pilasService', pilasServiceMock)
   });
 
   test('Should add solution passed expectation result at the beginning', function (assert) {
@@ -30,7 +35,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e2 = expectation('2', true)
     const expectations = [e1, e2]
 
-    const results = expectsScoring.expectsResults(expectations, true)
+    const results = expectsScoring.expectsResults(expectations)
     assert.propEqual(results[0], solutionPassMock)
   });
 
@@ -74,7 +79,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e3 = expectation('3', false)
     const expectations = [nonScoreableExpectation, e2, e3]
 
-    const results = expectsScoring.expectsResults(expectations, true)
+    const results = expectsScoring.expectsResults(expectations)
 
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })

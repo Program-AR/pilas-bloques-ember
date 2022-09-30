@@ -61,10 +61,6 @@ export default Component.extend({
     return !this.failedExpects.length
   }),
 
-  isTheChallengeSolved: computed('ejecutando', 'terminoDeEjecutar', function () {
-    return this.pilasService.estaResueltoElProblema()
-  }),
-
   didUpdateAttrs() {
     this.didInsertElement()
   },
@@ -381,7 +377,7 @@ export default Component.extend({
       allExpectResults: this.persistableExpectsResults(this.get('expects')),
       score: {
         expectResults: this.scoredExpectsResults(),
-        percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge, this.pilasService.estaResueltoElProblema())
+        percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge)
       }
     }
   },
@@ -395,7 +391,7 @@ export default Component.extend({
   },
 
   scoredExpectsResults() {
-    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects'), this.pilasService.estaResueltoElProblema()))
+    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects')))
   },
 
   runProgramEvent() {

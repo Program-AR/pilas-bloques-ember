@@ -8,17 +8,18 @@ export const solutionWorks = 'solution_works'
 export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
+    pilasService: service('pilas'),
 
-    expectsResults(expects, isTheChallengeSolved) {
-        return [this.solutionWorksExpectResult(isTheChallengeSolved)].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
+    expectsResults(expects) {
+        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
     },
 
-    failedExpects(expects, isTheChallengeSolved) {
-        return this.expectsResults(expects, isTheChallengeSolved).filter(e => !e.result)
+    failedExpects(expects) {
+        return this.expectsResults(expects).filter(e => !e.result)
     },
 
-    allPassedExpects(expects, isTheChallengeSolved) {
-        return this.expectsResults(expects, isTheChallengeSolved).filter(e => e.result)
+    allPassedExpects(expects) {
+        return this.expectsResults(expects).filter(e => e.result)
     },
 
     groupById(expects) {
@@ -42,9 +43,9 @@ export default Service.extend({
         return !!expect.description.asScoring
     },
 
-    solutionWorksExpectResult(isTheChallengeSolved) {
+    solutionWorksExpectResult() {
         const params = { isScoreable: true }
-        const result = isTheChallengeSolved
+        const result = this.pilasService.estaResueltoElProblema()
 
         return {
             id: solutionWorks,
@@ -54,8 +55,8 @@ export default Service.extend({
         }
     },
 
-    totalScore(expects, challenge, isTheChallengeSolved) {
-        return 100 * this.allPassedExpects(expects, isTheChallengeSolved).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+    totalScore(expects, challenge) {
+        return 100 * this.allPassedExpects(expects).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
 
 })

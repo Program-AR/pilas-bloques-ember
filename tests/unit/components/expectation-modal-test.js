@@ -14,6 +14,10 @@ function newExpectation(id, status) {
   return { id, description: { asScoring: 'Scoring' }, result: status }
 }
 
+const pilasServiceMock = {
+  estaResueltoElProblema() { return true }
+}
+
 module('Unit | Component | expectation-modal', function (hooks) {
   setupTest(hooks);
 
@@ -21,17 +25,16 @@ module('Unit | Component | expectation-modal', function (hooks) {
 
   hooks.beforeEach(function () {
     component = this.owner.factoryFor('component:expectation-modal').create();
+    this.owner.lookup('service:expects-scoring').set('pilasService', pilasServiceMock)
   })
 
   test('All expectations passed', function (assert) {
     component.set('expects', passedExpects)
-    component.set('isTheChallengeSolved', true)
     assert.ok(component.allExpectationsPassed())
   })
 
   test('Not all expectations passed', function (assert) {
     component.set('expects', passedExpects.concat(failedExpects))
-    component.set('isTheChallengeSolved', false)
     assert.notOk(component.allExpectationsPassed())
   })
 });
