@@ -36,8 +36,8 @@ export default Service.extend({
     return solutionId
   },
 
-  executionFinished(solutionId, executionResult) {
-    this._send('PUT', `solutions/${solutionId}`, { executionResult }, false).catch(logger('executionFinished'))
+  executionFinished(solutionId, executionResult, staticAnalysis) {
+    this._send('PUT', `solutions/${solutionId}`, { staticAnalysis, executionResult }, false).catch(logger('executionFinished'))
   },
 
   // LOGIN - REGISTER

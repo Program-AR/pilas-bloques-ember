@@ -402,9 +402,8 @@ export default Component.extend({
     run(this, function () {
       this.pilasBloquesApi.executionFinished(solutionId, {
         isTheProblemSolved: this.pilasService.estaResueltoElProblema(),
-        staticAnalysis: this.staticAnalysis(),
         ...executionResult
-      })
+      }, this.staticAnalysis())
     })
   },
 
