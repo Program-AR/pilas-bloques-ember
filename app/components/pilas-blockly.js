@@ -87,7 +87,7 @@ export default Component.extend({
 
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
-    this.pilasService.on("error", ({error}) => {
+    this.pilasService.on("error", ({ error }) => {
       this.set('engineError', error);
     });
 
@@ -415,7 +415,7 @@ export default Component.extend({
       notCritical,
       addWarning
     )
-    
+
     this.showExpectationFeedbackFor(
       warningInControlStructureBlock,
       addWarning,
@@ -423,7 +423,7 @@ export default Component.extend({
     )
   },
 
-  showBlocksErrorExpectationFeedback(){
+  showBlocksErrorExpectationFeedback() {
     this.showExpectationFeedbackFor(
       isCritical,
       addError
@@ -434,19 +434,26 @@ export default Component.extend({
     this.get('failedExpects')
       .filter(condition)
       .forEach(({ declaration, description }, i) => {
-          getBlocks(declaration)
-            .forEach(block => addFeedback(block, description.asSuggestion, -i))
-        })
+        getBlocks(declaration)
+          .forEach(block => addFeedback(block, description.asSuggestion, -i))
+      })
   },
-  
+
 
   async runValidations() {
-    clearValidations()
-    this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
-    if(this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
-    this.showBlocksErrorExpectationFeedback()
-    Blockly.Events.fireRunCode()
+    this.set('staticAnalysisError', '')
+
+    try {
+      clearValidations()
+      this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
+      // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+      if (this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
+      this.showBlocksErrorExpectationFeedback()
+      Blockly.Events.fireRunCode()
+    } catch (e) {
+      console.log(e)
+      this.set('staticAnalysisError', e.toString())
+    }
   },
 
   javascriptCode() {
@@ -462,16 +469,10 @@ export default Component.extend({
   actions: {
 
     async ejecutar(pasoAPaso = false) {
-      this.set('staticAnalysisError', '')
       await this.pilasService.restartScene()
 
-      try {
-        await this.runValidations()
-      } catch(e) {
-        console.log(e)
-        this.set('staticAnalysisError', e.toString())
-      }
-      
+      await this.runValidations()
+
       const analyticsSolutionId = this.runProgramEvent()
 
       if (!this.shouldExecuteProgram()) return;
