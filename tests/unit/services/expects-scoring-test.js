@@ -6,7 +6,7 @@ const solutionPassMock = {
   id: 'solution_works',
   isScoreable: true,
   description: {
-    asScoring: '¡Tu solución funciona!',
+    asScoring: '¡Tu solución _funciona_!',
     asSuggestion: '',
     forControlGroup: ''
   },
