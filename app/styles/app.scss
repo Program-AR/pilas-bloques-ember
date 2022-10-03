@@ -53,6 +53,20 @@ $font-family: Roboto, "Helvetica Neue", sans-serif;
   font-weight: 300;
 }
 
+@font-face {
+  font-family: 'NotoColorEmoji-Regular';
+  src: url(/fonts/NotoColorEmoji-Regular.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'NotoEmoji-Bold';
+  src: url(/fonts/NotoColorEmoji-Bold.ttf) format('truetype');
+}
+
+.emoji {
+  font-family: 'NotoColorEmoji-Regular', 'NotoEmoji-Bold', $font-family;
+}
+
 .ember-application {
   background-color: var(--theme-background-secondary-color);
 }
