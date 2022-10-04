@@ -11,7 +11,6 @@ export default Service.extend({
 
     expectsResults(expects, challenge) {
         const analysisResults = this.combineMultipleExpectations(expects)
-        console.log([this.solutionWorksExpectResult()].concat(this.allResultsIncludingUnusedExpects(analysisResults, challenge)))
         return [this.solutionWorksExpectResult()].concat(this.allResultsIncludingUnusedExpects(analysisResults, challenge)).filter(this.isScoreable)
     },
 
