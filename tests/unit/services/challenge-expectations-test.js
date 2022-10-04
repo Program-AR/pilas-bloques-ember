@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
-import { createComponentMock, challengeWithExpectationsMock } from '../../helpers/mocks';
+import { createComponentMock, challengeWithExpectationsMock, expectationsConfigMock } from '../../helpers/mocks';
 
 module('Unit | Service | challenge-expectations', function (hooks) {
   setupTest(hooks);
@@ -10,10 +10,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   var challengeExpectations
   const decompositionKey = 'decomposition'
   const expectationStringMock = 'ExpectationMock'
-  const expectationsConfig = {
-    decomposition: true,
-    simpleRepetition: true
-  }
+
   const expectationMock = (e) => expectationStringMock // jshint ignore: line
   const idsToExpectationsMock = (/* intl */) => ({
     decomposition: expectationMock,
@@ -29,7 +26,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
     challengeExpectations = this.owner.lookup('service:challenge-expectations');
     challengeExpectations.set('idsToExpectations', idsToExpectationsMock)
     challengeMock = createComponentMock({
-      expectations: expectationsConfig
+      expectations: expectationsConfigMock
     })
   });
 
@@ -46,7 +43,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   })
 
   test('merged expectations for a single expectation configuration', function (assert) {
-    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig]), expectationsConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfigMock]), expectationsConfigMock)
   })
 
   test('merged expectations for no expectations configuration should be an empty object', function (assert) {
@@ -62,7 +59,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
       simpleRepetition: true,
       conditionalAlternative: true
     }
-    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig, conditionalAlternativeConfig]), mergedConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfigMock, conditionalAlternativeConfig]), mergedConfig)
   })
 
   test('merged expectations for multiple configurations with keys in common should prioritize values with higher priority', function (assert) {
@@ -73,7 +70,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
       decomposition: false,
       simpleRepetition: true
     }
-    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfig, configWithHigherPriority]), mergedConfig)
+    assert.propEqual(challengeExpectations.mergeConfigurations([expectationsConfigMock, configWithHigherPriority]), mergedConfig)
   })
 
   test('a challenge has expectations', function (assert) {
@@ -85,7 +82,7 @@ module('Unit | Service | challenge-expectations', function (hooks) {
   })
 
   test('domain expectations to mulang expectations', function (assert) {
-    assert.equal(challengeExpectations.configToExpectation(expectationsConfig)(), 'ExpectationMock\nExpectationMock')
+    assert.equal(challengeExpectations.configToExpectation(expectationsConfigMock)(), 'ExpectationMock\nExpectationMock')
   })
 
   test('multiple nonexistent expectations ids are transformed to a noExpectation', function (assert) {

@@ -1,6 +1,8 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
+import { createComponentMock, expectationsConfigMock } from '../../helpers/mocks';
+import { mainTooLongID, doesNotNestControlStructuresId, simpleRepetitionId } from '../../../utils/expectations'
 
 const solutionPassMock = {
   id: 'solution_works',
@@ -21,25 +23,29 @@ module('Unit | Service | expects-scoring', function (hooks) {
 
   var expectsScoring
 
+  const challengeMock = createComponentMock({
+    expectations: expectationsConfigMock
+  })
+
   hooks.beforeEach(function () {
     expectsScoring = this.owner.lookup('service:expects-scoring');
   });
 
   test('Should add solution passed expectation result at the beginning', function (assert) {
-    const e1 = expectation('1', false)
-    const e2 = expectation('2', true)
+    const e1 = expectation(mainTooLongID, false)
+    const e2 = expectation(doesNotNestControlStructuresId, true)
     const expectations = [e1, e2]
 
-    const results = expectsScoring.expectsResults(expectations)
+    const results = expectsScoring.expectsResults(expectations, challengeMock)
     assert.propEqual(results[0], solutionPassMock)
   });
 
   test('Only expectations with same id should be combined', function (assert) {
-    const e1 = expectation('1', true)
-    const e2 = expectation('1', false)
-    const e3 = expectation('1', false)
-    const e4 = expectation('2', true)
-    const e5 = expectation('3', false)
+    const e1 = expectation(mainTooLongID, true)
+    const e2 = expectation(mainTooLongID, false)
+    const e3 = expectation(mainTooLongID, false)
+    const e4 = expectation(doesNotNestControlStructuresId, true)
+    const e5 = expectation(simpleRepetitionId, false)
     const expectations = [e1, e2, e3, e4, e5]
 
     const combinedExpectations = expectsScoring.combineMultipleExpectations(expectations)
@@ -47,9 +53,9 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('If a grouping of expectations passes, the result should be a passing expectation', function (assert) {
-    const passingExpectation = expectation('1', true, 'Passed')
-    const e2 = expectation('1', false, 'Failed')
-    const e3 = expectation('1', false, 'Failed')
+    const passingExpectation = expectation(mainTooLongID, true, 'Passed')
+    const e2 = expectation(mainTooLongID, false, 'Failed')
+    const e3 = expectation(mainTooLongID, false, 'Failed')
     const expectations = [e2, passingExpectation, e3]
 
     const result = expectsScoring.expectationGroupingResult(expectations)
@@ -58,9 +64,9 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('If a grouping of expectations fails, the result should be a failing expectation', function (assert) {
-    const e1 = expectation('1', false, 'Failed')
-    const e2 = expectation('1', false, 'Failed')
-    const e3 = expectation('1', false, 'Failed')
+    const e1 = expectation(mainTooLongID, false, 'Failed')
+    const e2 = expectation(mainTooLongID, false, 'Failed')
+    const e3 = expectation(mainTooLongID, false, 'Failed')
     const expectations = [e1, e2, e3]
 
     const result = expectsScoring.expectationGroupingResult(expectations)
@@ -69,13 +75,12 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('Only scoreable expects should be part of the results', function (assert) {
-    const nonScoreableExpectation = { id: '1', description: { asSuggestion: 'a suggestion' }, result: true }
-    const e2 = expectation('2', true)
-    const e3 = expectation('3', false)
+    const nonScoreableExpectation = { id: mainTooLongID, description: { asSuggestion: 'a suggestion' }, result: true }
+    const e2 = expectation(doesNotNestControlStructuresId, true)
+    const e3 = expectation(simpleRepetitionId, false)
     const expectations = [nonScoreableExpectation, e2, e3]
-
-    const results = expectsScoring.expectsResults(expectations)
-
+    const results = expectsScoring.expectsResults(expectations, challengeMock)
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })
+
 });
