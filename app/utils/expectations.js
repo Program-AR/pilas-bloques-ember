@@ -20,7 +20,7 @@ export const usesSimpleRepetition = () =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     'uses repeat', simpleRepetitionId)
 
-export const doesNotNestControlStructures = (workspace) => 
+export const doesNotNestControlStructures = (workspace) =>
   join(allBlocksNestingControlStructures(workspace).map(declarationDoesNotNestControlStructures))
 
 // DECLARATION EXPECTATIONS
@@ -29,9 +29,9 @@ export const doSomething = (declaration) =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
-export const declarationDoesNotNestControlStructures = (declaration) => 
+export const declarationDoesNotNestControlStructures = (declaration) =>
   newExpectation(
-    {isSuggestion: true, isForControlGroup: true, isScoreable: true},
+    { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
@@ -53,7 +53,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   declarationNotTooLong(limit, declaration, tooLongId)
 
 export const mainNotTooLong = (limit = 7) =>
-  declarationNotTooLong(limit, entryPointType, "main_too_long")
+  declarationNotTooLong(limit, entryPointType, mainTooLongID)
 
 export const noExpectation = () => ''
 
@@ -94,7 +94,7 @@ const fail = `calls && ! calls`
 
 const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
 const nestedControlStructureEDL = (loop) => `! uses ${loop} with (anything, ${usesControlStructureEDL})`
-const nestedAlternativeStructureEDL =  `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
+const nestedAlternativeStructureEDL = `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
 
 export const parseExpect = (name) => {
   const expectationName = name.split('|')[0]
@@ -125,13 +125,14 @@ export const doesNotUseRecursionId = 'does_not_use_recursion'
 export const isUsedId = 'is_used'
 export const isUsedFromMainId = 'is_used_from_main'
 
-const doSomethingId = 'do_something'
-const tooLongId = 'too_long'
-const nameWasChangedId = 'name_was_changed'
-const conditionalAlternativeId = 'uses_conditional_alternative'
-const conditionalRepetitionId = 'uses_conditional_repetition'
-const simpleRepetitionId = 'uses_simple_repetition'
-const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
+export const doSomethingId = 'do_something'
+export const tooLongId = 'too_long'
+export const nameWasChangedId = 'name_was_changed'
+export const conditionalAlternativeId = 'uses_conditional_alternative'
+export const conditionalRepetitionId = 'uses_conditional_repetition'
+export const simpleRepetitionId = 'uses_simple_repetition'
+export const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
+export const mainTooLongID = 'main_too_long'
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
 

@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty, sum } from 'ramda'
-import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId, simpleRepetitionId } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 // Be careful when adding new expects. idsToScore should be potentially updated too.
@@ -63,6 +63,13 @@ const idsToScore = {
 
   simpleRepetition: 1
    */
+}
+
+//Will be obliterated Soon™
+const harcodedAllConfigurationsToExpectIds = {
+  decomposition: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId],
+  decomposition9: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId],
+  simpleRepetition: [simpleRepetitionId]
 }
 
 
@@ -130,6 +137,16 @@ export default Service.extend({
 
   allExpectConfigurationsMerged(challenge) {
     return this.mergeConfigurations(this.allExpectConfigurations(challenge))
+  },
+
+  allExpectIdsIn(challenge) {
+    const challengeConfigurations = this.allExpectConfigurationsMerged(challenge)
+    const validConfigurationsIds = Object.keys(challengeConfigurations).filter(key => challengeConfigurations[key]) //Should only use configurations set to true.
+    return validConfigurationsIds.flatMap(this.expectIdsInConfiguration)
+  },
+
+  expectIdsInConfiguration(configId) {
+    return harcodedAllConfigurationsToExpectIds[configId] || []
   },
 
   hasDecomposition(challenge) {

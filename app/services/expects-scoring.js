@@ -9,16 +9,38 @@ export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
 
-    expectsResults(expects) {
-        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
+    expectsResults(expects, challenge) {
+        const analysisResults = this.combineMultipleExpectations(expects)
+        console.log([this.solutionWorksExpectResult()].concat(this.allResultsIncludingUnusedExpects(analysisResults, challenge)))
+        return [this.solutionWorksExpectResult()].concat(this.allResultsIncludingUnusedExpects(analysisResults, challenge)).filter(this.isScoreable)
     },
 
-    failedExpects(expects) {
-        return this.expectsResults(expects).filter(e => !e.result)
+    //We do this instead of just using the analysisResults bacause we need to check if there are unused expectations.
+    allResultsIncludingUnusedExpects(analysisResults, challenge) {
+        return this.challengeExpectations.allExpectIdsIn(challenge).map(expectationId => this.expectWithId(expectationId, analysisResults))
     },
 
-    allPassedExpects(expects) {
-        return this.expectsResults(expects).filter(e => e.result)
+    //If the expectation is not used, the result should default to true, otherwise the analysisResult should be used.
+    expectWithId(expectationId, analysisResults) {
+        const possibleResult = analysisResults.find(expectResult => expectResult.id === expectationId)
+        return possibleResult || this.unusedExpectationIdToPassingExpectation(expectationId)
+    },
+
+    unusedExpectationIdToPassingExpectation(expectationId) {
+        return {
+            id: expectationId,
+            isScoreable: true,
+            result: true,
+            description: {}
+        }
+    },
+
+    failedExpects(expects, challenge) {
+        return this.expectsResults(expects, challenge).filter(e => !e.result)
+    },
+
+    allPassedExpects(expects, challenge) {
+        return this.expectsResults(expects, challenge).filter(e => e.result)
     },
 
     groupById(expects) {
@@ -54,7 +76,7 @@ export default Service.extend({
     },
 
     totalScore(expects, challenge) {
-        return 100 * this.allPassedExpects(expects).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+        return 100 * this.allPassedExpects(expects, challenge).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
 
 })
