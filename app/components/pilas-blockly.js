@@ -403,7 +403,7 @@ export default Component.extend({
 
   executionFinishedEvent(solutionId, executionResult) {
     run(this, function () {
-      this.pilasBloquesApi.executionFinished(solutionId, {
+      this.pilasBloquesApi.executionFinished(solutionId, this.staticAnalysis(), {
         isTheProblemSolved: this.pilasService.estaResueltoElProblema(),
         ...executionResult
       })
