@@ -72,8 +72,9 @@ export const nameWasChanged = (intl) => (declaration) =>
 const newGlobalExpectation = (types, expect, id) =>
   newExpectation(types, `through ${toEDLString(entryPointType)} ${expect}`, id, { declaration: entryPointType })
 
+//Expectation name is encoded to prevent errors when using accent marks: https://github.com/Program-AR/pilas-bloques/issues/1096
 export const newExpectation = (types, expect, id, opts = {}) =>
-  `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
+  `expectation "${btoa(stringify(id, { ...types, ...opts }))}": ${expect};`
 
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))

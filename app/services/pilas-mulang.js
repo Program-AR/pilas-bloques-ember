@@ -75,7 +75,7 @@ export const combineUsage = (resultGroup) => {
  * @returns a Pilas Bloques Expectation Result object
  */
 const toExpectationResult = (intl) => ([expect, result]) => {
-  const [name, params] = parseExpect(expect)
+  const [name, params] = parseExpect(atob(expect))  //Expectation name (expect) is encoded to prevent errors when using accent marks: https://github.com/Program-AR/pilas-bloques/issues/1096
   return {
     id: name,
     description: expectationDescription(intl, name, result, params),
