@@ -141,7 +141,8 @@ export default Service.extend({
   },
 
   hasDecomposition(challenge) {
-    return !!this.allExpectConfigurationsMerged(challenge).decomposition
+    const allExpectConfigurationsMerged = this.allExpectConfigurationsMerged(challenge)
+    return !!(allExpectConfigurationsMerged.decomposition || allExpectConfigurationsMerged.decomposition9)
   },
 
   totalScoreOf(challenge) {
