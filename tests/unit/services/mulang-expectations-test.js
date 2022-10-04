@@ -324,7 +324,7 @@ module('Unit | Service | Mulang | Expectations', function (hooks) {
       const fullId = mulang
         .astCode(rawSequence([]))
         .customExpect(edl)
-        .map(([name]) => parseExpect(atob(name))) // jshint ignore:line
+        .map(([name]) => parseExpect(window.atob(name)))
 
       assert.deepEqual(fullId, expectedIds)
     })
