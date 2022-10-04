@@ -36,7 +36,7 @@ export default Service.extend({
     return solutionId
   },
 
-  executionFinished(solutionId, executionResult, staticAnalysis) {
+  executionFinished(solutionId, staticAnalysis, executionResult) {
     this._send('PUT', `solutions/${solutionId}`, { staticAnalysis, executionResult }, false).catch(logger('executionFinished'))
   },
 
