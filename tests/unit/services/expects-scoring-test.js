@@ -6,11 +6,15 @@ const solutionPassMock = {
   id: 'solution_works',
   isScoreable: true,
   description: {
-    asScoring: '¡Tu solución funciona!',
+    asScoring: '¡Tu solución _funciona_!',
     asSuggestion: '',
     forControlGroup: ''
   },
   result: true
+}
+
+const pilasServiceMock = {
+  estaResueltoElProblema() { return true }
 }
 
 const expectation = (id, result, description = 'Bien :)') => ({ id, description: { asScoring: description }, result })
@@ -23,6 +27,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
 
   hooks.beforeEach(function () {
     expectsScoring = this.owner.lookup('service:expects-scoring');
+    expectsScoring.set('pilasService', pilasServiceMock)
   });
 
   test('Should add solution passed expectation result at the beginning', function (assert) {

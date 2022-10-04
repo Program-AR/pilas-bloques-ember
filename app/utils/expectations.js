@@ -53,7 +53,7 @@ export const notTooLong = (limit = 7) => (declaration) =>
   declarationNotTooLong(limit, declaration, tooLongId)
 
 export const mainNotTooLong = (limit = 7) =>
-  declarationNotTooLong(limit, entryPointType, "main_too_long")
+  declarationNotTooLong(limit, entryPointType, mainTooLongId)
 
 export const noExpectation = () => ''
 
@@ -72,8 +72,9 @@ export const nameWasChanged = (intl) => (declaration) =>
 const newGlobalExpectation = (types, expect, id) =>
   newExpectation(types, `through ${toEDLString(entryPointType)} ${expect}`, id, { declaration: entryPointType })
 
+//Expectation name is encoded to prevent errors when using accent marks: https://github.com/Program-AR/pilas-bloques/issues/1096
 export const newExpectation = (types, expect, id, opts = {}) =>
-  `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
+  `expectation "${btoa(stringify(id, { ...types, ...opts }))}": ${expect};`
 
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
@@ -127,6 +128,7 @@ export const isUsedFromMainId = 'is_used_from_main'
 
 const doSomethingId = 'do_something'
 const tooLongId = 'too_long'
+const mainTooLongId = "main_too_long"
 const nameWasChangedId = 'name_was_changed'
 const conditionalAlternativeId = 'uses_conditional_alternative'
 const conditionalRepetitionId = 'uses_conditional_repetition'
@@ -141,4 +143,5 @@ export const warningInControlStructureBlock = (expectationResult) => expectation
 
 export const isUsageResult = (expectationResult) => expectationResult && expectationResult.isRelatedToUsage
 
-
+// WARNING: tied to expectations types. Please update both.
+export const decompositionExpectsIdsForControlGroup = [mainTooLongId, tooLongId, doSomethingId, nameWasChangedId, doesNotNestControlStructuresId]
