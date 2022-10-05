@@ -9,37 +9,21 @@ export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
 
-    expectsResults(expects, challenge) {
-        const analysisResults = this.combineMultipleExpectations(expects)
-        return [this.solutionWorksExpectResult()].concat(this.allResultsIncludingUnusedExpects(analysisResults, challenge)).filter(this.isScoreable)
+    analysisResults(expects) {
+        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects))
     },
 
-    //We do this instead of just using the analysisResults bacause we need to check if there are unused expectations.
-    allResultsIncludingUnusedExpects(analysisResults, challenge) {
-        return this.challengeExpectations.allExpectIdsIn(challenge).map(expectationId => this.expectWithId(expectationId, analysisResults))
+    expectsResults(expects) {
+        return this.analysisResults(expects).filter(this.isScoreable)
     },
 
-    //If the expectation is not used, the result should default to true, otherwise the analysisResult should be used.
-    expectWithId(expectationId, analysisResults) {
-        const possibleResult = analysisResults.find(expectResult => expectResult.id === expectationId)
-        return possibleResult || this.unusedExpectationIdToPassingExpectation(expectationId)
+    failedExpects(expects) {
+        console.log(this.analysisResults(expects))
+        return this.expectsResults(expects).filter(e => !e.result)
     },
 
-    unusedExpectationIdToPassingExpectation(expectationId) {
-        return {
-            id: expectationId,
-            isScoreable: true,
-            result: true,
-            description: {}
-        }
-    },
-
-    failedExpects(expects, challenge) {
-        return this.expectsResults(expects, challenge).filter(e => !e.result)
-    },
-
-    allPassedExpects(expects, challenge) {
-        return this.expectsResults(expects, challenge).filter(e => e.result)
+    allPassedExpects(expects) {
+        return this.expectsResults(expects).filter(e => e.result)
     },
 
     groupById(expects) {
@@ -74,8 +58,28 @@ export default Service.extend({
         }
     },
 
+    unusedExpects(expects, challenge) {
+        const unusedExpectIds = this.challengeExpectations.allExpectIdsIn(challenge).filter(expectId => !this.expectIdIsUsed(expectId, expects))
+        return unusedExpectIds.map(id => this.unusedExpectationIdToPassingExpectation(id, expects))
+    },
+
+    expectIdIsUsed(expectationId, expects) {
+        return this.analysisResults(expects).some(expectResult => expectResult.id === expectationId)
+    },
+
+    unusedExpectationIdToPassingExpectation(expectationId) {
+        return {
+            id: expectationId,
+            isScoreable: true,
+            result: true,
+            description: {}
+        }
+    },
+
     totalScore(expects, challenge) {
-        return 100 * this.allPassedExpects(expects, challenge).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+        const resultsIncludingUnused = this.analysisResults(expects).concat(this.unusedExpects(expects, challenge))
+        const passingResults = resultsIncludingUnused.filter(e => e.result)
+        return 100 * passingResults.length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
 
 })

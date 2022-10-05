@@ -7,7 +7,7 @@ export default Component.extend({
     intl: service(),
 
     expectsResults: computed('expects', function () {
-        return this.expectsScoring.expectsResults(this.expects, this.challenge).filter(expect => expect.description.forControlGroup)
+        return this.expectsScoring.expectsResults(this.expects).filter(expect => expect.description.forControlGroup)
     }),
 
 });

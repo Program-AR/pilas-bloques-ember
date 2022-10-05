@@ -391,7 +391,7 @@ export default Component.extend({
   },
 
   scoredExpectsResults() {
-    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects'), this.challenge))
+    return this.persistableExpectsResults(this.expectsScoring.expectsResults(this.get('expects')))
   },
 
   runProgramEvent() {

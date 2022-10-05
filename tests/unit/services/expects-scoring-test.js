@@ -36,7 +36,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e2 = expectation(doesNotNestControlStructuresId, true)
     const expectations = [e1, e2]
 
-    const results = expectsScoring.expectsResults(expectations, challengeMock)
+    const results = expectsScoring.expectsResults(expectations)
     assert.propEqual(results[0], solutionPassMock)
   });
 
@@ -79,7 +79,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     const e2 = expectation(doesNotNestControlStructuresId, true)
     const e3 = expectation(simpleRepetitionId, false)
     const expectations = [nonScoreableExpectation, e2, e3]
-    const results = expectsScoring.expectsResults(expectations, challengeMock)
+    const results = expectsScoring.expectsResults(expectations)
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })
 
