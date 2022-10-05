@@ -459,9 +459,9 @@ export default Component.extend({
   actions: {
 
     async ejecutar(pasoAPaso = false) {
-      const analyticsSolutionId = this.runProgramEvent()
       await this.pilasService.restartScene()
       await this.runValidations()
+      const analyticsSolutionId = this.runProgramEvent()
 
       if (!this.shouldExecuteProgram()) return;
 
