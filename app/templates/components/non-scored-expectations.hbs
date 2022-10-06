@@ -1,8 +1,8 @@
   <div class='expectationResults' >
-    {{#each expectsResults as |result|}}
-      <p>
+    {{#each expectations as |result|}}
+      <div class="goal">
         {{paper-icon "radio_button_unchecked"}}
-        {{result.description.forControlGroup}}
-      </p>
+        {{markdown-to-html result.description.forControlGroup}}
+      </div>
     {{/each}}
   </div>

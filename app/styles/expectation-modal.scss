@@ -1,18 +1,23 @@
 
 .expectationsModal {
     text-align: center;
-    p {
-        margin: 1vh;
-    }
 }
+
 .expectationResults {
-    p.passed {
+    .goal {
+        margin-top: 1em;
+        div, div p {
+            display: inline;
+            color: inherit;
+        }
+        md-icon[md-font-icon] {
+            color: inherit;
+        }
+    }
+    .passed {
         color: var(--theme-passed-color);
     }
-    p.failed {
+    .failed {
         color: var(--theme-failed-color);
-    }
-    md-icon[md-font-icon] {
-        color: inherit;
     }
 }

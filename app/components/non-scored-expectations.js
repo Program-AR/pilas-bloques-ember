@@ -1,13 +1,18 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 import { computed } from '@ember/object'
+import { expectationDescription } from '../utils/expectations';
 export default Component.extend({
 
-    expectsScoring: service('expects-scoring'),
+    challengeExpectations: service('challenge-expectations'),
     intl: service(),
 
-    expectsResults: computed('expects', function () {
-        return this.expectsScoring.expectsResults(this.expects).filter(expect => expect.description.forControlGroup)
+    expectations: computed('challenge', function () {
+        return this.challengeExpectations.expectationsIdsForControlGroup(this.challenge)
+        .map(id => ({
+            id,
+            description: expectationDescription(this.intl, id, false, { isForControlGroup: true })
+        }))
     }),
 
 });
