@@ -12,8 +12,8 @@ module('Integration | Component | terms', function (hooks) {
     storage = this.owner.lookup('service:storage')
   })
 
-  const expectTermsToShow = (assert) => assert.dom().containsText("Acepto los terminos y condiciones de uso")
-  const expectTermsNotToShow = (assert) => assert.dom().doesNotContainText("Acepto los terminos y condiciones de uso")
+  const expectTermsToShow = (assert) => assert.dom().containsText("Acepto los términos y condiciones de uso")
+  const expectTermsNotToShow = (assert) => assert.dom().doesNotContainText("Acepto los términos y condiciones de uso")
 
   test('Terms should show up to an unlogged user who did not accept the ToS', async function (assert) {
     await render(hbs`<Terms/>`)
