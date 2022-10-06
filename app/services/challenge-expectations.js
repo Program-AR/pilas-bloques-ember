@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty, sum } from 'ramda'
-import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId, simpleRepetitionId, mainTooLongID } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, nameWasChangedId, mainTooLongID } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 // Be careful when adding new expects. idsToScore should be potentially updated too.
@@ -145,6 +145,6 @@ export default Service.extend({
   },
 
   configIdToMaxScore(id) {
-    return harcodedAllConfigurationsToExpectIds[id]?.length || 0
+    return harcodedAllConfigurationsToExpectIds[id] ? harcodedAllConfigurationsToExpectIds[id].length : 0
   }
 })
