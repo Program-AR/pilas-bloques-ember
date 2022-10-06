@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty, sum } from 'ramda'
-import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId, simpleRepetitionId } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId, simpleRepetitionId, mainTooLongID } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 // Be careful when adding new expects. idsToScore should be potentially updated too.
@@ -45,31 +45,11 @@ const idsToExpectations = (intl) => ({
 
 })
 
-
-/**
- * 
- * This should be _erased from existence_ calculated from expectations.
- * Related to: https://github.com/Program-AR/pilas-bloques/issues/1040
- */
-const idsToScore = {
-  decomposition: 5,
-  decomposition9: 5,
-
-  /**
-   * See comment above
-  conditionalAlternative: 1,
-
-  conditionalRepetition: 1,
-
-  simpleRepetition: 1
-   */
-}
-
 //Will (not) be obliterated Soon™ (never)
 const harcodedAllConfigurationsToExpectIds = {
-  decomposition: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId],
-  decomposition9: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId],
-  simpleRepetition: [simpleRepetitionId]
+  decomposition: [doSomethingId, tooLongId, mainTooLongID, nameWasChangedId, doesNotNestControlStructuresId],
+  decomposition9: [doSomethingId, tooLongId, mainTooLongID, nameWasChangedId, doesNotNestControlStructuresId],
+  //simpleRepetition: [simpleRepetitionId]
 }
 
 
@@ -160,11 +140,11 @@ export default Service.extend({
   configToTotalScore(expectationsConfig) {
     return isEmpty(expectationsConfig) ? 0
       : sum(
-        this.appliableConfigs(expectationsConfig).map(([id,]) => this.idToScore(id))
+        this.appliableConfigs(expectationsConfig).map(([id,]) => this.configIdToMaxScore(id))
       )
   },
 
-  idToScore(id) {
-    return idsToScore[id] || 0
+  configIdToMaxScore(id) {
+    return harcodedAllConfigurationsToExpectIds[id]?.length || 0
   }
 })
