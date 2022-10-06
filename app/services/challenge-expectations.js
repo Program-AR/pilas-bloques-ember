@@ -65,10 +65,10 @@ const idsToScore = {
    */
 }
 
-//Will be obliterated Soon™
+//Will (not) be obliterated Soon™ (never)
 const harcodedAllConfigurationsToExpectIds = {
-  decomposition: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId],
-  decomposition9: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId, isUsedId, isUsedFromMainId, nameWasChangedId],
+  decomposition: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId],
+  decomposition9: [doSomethingId, tooLongId, nameWasChangedId, doesNotNestControlStructuresId],
   simpleRepetition: [simpleRepetitionId]
 }
 
