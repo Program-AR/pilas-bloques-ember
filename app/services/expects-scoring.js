@@ -9,16 +9,11 @@ export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
 
-    analysisResults(expects) {
-        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects))
-    },
-
     expectsResults(expects) {
-        return this.analysisResults(expects).filter(this.isScoreable)
+        return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
     },
 
     failedExpects(expects) {
-        console.log(this.analysisResults(expects))
         return this.expectsResults(expects).filter(e => !e.result)
     },
 
@@ -64,7 +59,7 @@ export default Service.extend({
     },
 
     expectIdIsUsed(expectationId, expects) {
-        return this.analysisResults(expects).some(expectResult => expectResult.id === expectationId)
+        return this.expectsResults(expects).some(expectResult => expectResult.id === expectationId)
     },
 
     unusedExpectationIdToPassingExpectation(expectationId) {
@@ -77,7 +72,7 @@ export default Service.extend({
     },
 
     totalScore(expects, challenge) {
-        const resultsIncludingUnused = this.analysisResults(expects).concat(this.unusedExpects(expects, challenge))
+        const resultsIncludingUnused = this.expectsResults(expects).concat(this.unusedExpects(expects, challenge))
         const passingResults = resultsIncludingUnused.filter(e => e.result)
         return 100 * passingResults.length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
     }
