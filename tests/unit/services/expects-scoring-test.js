@@ -83,7 +83,10 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })
 
-  const assertFloatEqual = (assert, n1, n2) => { assert.equal(Math.floor(n1), Math.floor(n2)) }
+  const assertFloatEqual = (assert, n1, n2) => {
+    const round = (num) => Number((num).toFixed(3))
+    assert.equal(round(n1), round(n2))
+  }
 
   test('Total score when using all expects of configuration', function (assert) {
     const e1 = expectation(doSomethingId, true)
