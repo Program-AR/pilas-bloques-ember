@@ -1,6 +1,6 @@
 import { on } from '@ember/object/evented';
 import EmberRouter from '@ember/routing/router';
-import config from 'pilasbloques/config/environment';
+import config from './config/environment';
 
 const Router = EmberRouter.extend({
   location: config.locationType

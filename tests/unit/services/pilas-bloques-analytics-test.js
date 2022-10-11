@@ -1,5 +1,5 @@
 import { module, test } from 'qunit'
-import { setupPBUnitTest } from '../../helpers/utils'
+import { assertHasProps, setupPBUnitTest } from '../../helpers/utils'
 
 module('Unit | Service | pilas-bloques-analytics', function (hooks) {
   setupPBUnitTest(hooks)
@@ -11,6 +11,11 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     pbAnalytics = this.owner.lookup('service:pilas-bloques-analytics')
     storage = this.owner.lookup('service:storage')
     firstSessionId = pbAnalytics.getSession().id // Creates session
+  })
+
+  test('Context saves session, online, browserId, usserId, version, experimentGroup, url, ip', async function(assert){
+    const context = await pbAnalytics.context()
+    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'userId', 'version', 'experimentGroup', 'url', 'ip')
   })
 
   test('Should create new sessionId', function (assert) {

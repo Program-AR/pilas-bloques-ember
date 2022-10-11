@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
 import { createComponentMock, challengeWithExpectationsMock, expectationsConfigMock } from '../../helpers/mocks';
+import { decompositionExpectsIdsForControlGroup } from '../../../utils/expectations';
 
 module('Unit | Service | challenge-expectations', function (hooks) {
   setupTest(hooks);
@@ -125,6 +126,28 @@ module('Unit | Service | challenge-expectations', function (hooks) {
       }
     })
     assert.equal(challengeExpectations.expectationFor(challenge)(), 'ExpectationMock')
+  })
+
+  test('expectations ids for control group from a challenge with a valid configuration', function (assert) {
+    const challengeWithValidConfiguration = createComponentMock({
+      expectations: {
+        decomposition: true
+      }
+    })
+    assert.propEqual(challengeExpectations.expectationsIdsForControlGroup(challengeWithValidConfiguration), decompositionExpectsIdsForControlGroup)
+  })
+
+  test('expectations ids for control group from a challenge with an invalid configuration', function (assert) {
+    const challengeWithValidConfiguration = createComponentMock({
+      expectations: {
+        alf: true
+      }
+    })
+    assert.propEqual(challengeExpectations.expectationsIdsForControlGroup(challengeWithValidConfiguration), [])
+  })
+
+  test('expectations ids for control group from a challenge with a mixed configuration', function (assert) {
+    assert.propEqual(challengeExpectations.expectationsIdsForControlGroup(challengeMock), decompositionExpectsIdsForControlGroup)
   })
 
 });

@@ -138,7 +138,7 @@ spects:
     does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
     does_not_nest_control_structures: Este bloque podría estar en un procedimiento con un buen nombre que describa qué tarea resuelve.
   scoreable: # Challenge goals, used in the final window
-    solution_works: "¡Tu solución funciona!"
+    solution_works: "¡Tu solución _funciona_!"
     uses_simple_repetition: |
       {result, select, 
         true {Usás}
@@ -148,12 +148,12 @@ spects:
       {result, select, 
         true {Usás}
         other {Deberías usar}
-      } alternativa condicional para considerar los escenarios variantes.
+      } **alternativa condicional** para considerar los escenarios variantes.
     uses_conditional_repetition: |
       {result, select, 
         true {Usás}
         other {Deberías usar}
-      } repetición condicional para considerar los escenarios variantes.
+      } **repetición condicional** :repeat: para considerar los escenarios variantes.
     main_too_long: |
       {result, select, 
         true {El _programa principal_ es corto, y por eso es más **fácil de leer**.}

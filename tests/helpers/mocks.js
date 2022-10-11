@@ -55,6 +55,7 @@ export const expectationsConfigMock = {
     decomposition: true,
     simpleRepetition: true
 }
+
 export const createComponentMock = (_properties) => ({
     properties: _properties,
     set: function (property, value) {

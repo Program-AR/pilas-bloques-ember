@@ -31,6 +31,8 @@ export default Component.extend({
   expects: [],
   codigoActualEnFormatoXML: '',     // se actualiza automáticamente al modificar el workspace.
 
+  staticAnalysisError: '',
+
   anterior_ancho: -1,
   anterior_alto: -1,
 
@@ -378,7 +380,8 @@ export default Component.extend({
       score: {
         expectResults: this.scoredExpectsResults(),
         percentage: this.expectsScoring.totalScore(this.get('expects'), this.challenge)
-      }
+      },
+      error: this.get('staticAnalysisError')
     }
   },
 
@@ -400,7 +403,7 @@ export default Component.extend({
 
   executionFinishedEvent(solutionId, executionResult) {
     run(this, function () {
-      this.pilasBloquesApi.executionFinished(solutionId, {
+      this.pilasBloquesApi.executionFinished(solutionId, this.staticAnalysis(), {
         isTheProblemSolved: this.pilasService.estaResueltoElProblema(),
         ...executionResult
       })
@@ -438,12 +441,19 @@ export default Component.extend({
 
 
   async runValidations() {
-    clearValidations()
-    this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
-    // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
-    if (this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
-    this.showBlocksErrorExpectationFeedback()
-    Blockly.Events.fireRunCode()
+    this.set('staticAnalysisError', '')
+
+    try {
+      clearValidations()
+      this.set('expects', await this.pilasMulang.analyze(Blockly.mainWorkspace, this.challenge))
+      // Order is important. Warnings should be added first. This way, if errors appear, warning bubbles will be painted red.
+      if (this.experiments.shouldShowBlocksWarningExpectationFeedback()) this.showBlocksWarningExpectationFeedback()
+      this.showBlocksErrorExpectationFeedback()
+      Blockly.Events.fireRunCode()
+    } catch (e) {
+      console.log(e)
+      this.set('staticAnalysisError', e.toString())
+    }
   },
 
   javascriptCode() {
@@ -460,7 +470,9 @@ export default Component.extend({
 
     async ejecutar(pasoAPaso = false) {
       await this.pilasService.restartScene()
+
       await this.runValidations()
+
       const analyticsSolutionId = this.runProgramEvent()
 
       if (!this.shouldExecuteProgram()) return;

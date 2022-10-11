@@ -2,17 +2,21 @@ import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { setUpTestLocale } from '../../helpers/utils';
 import { createComponentMock, expectationsConfigMock } from '../../helpers/mocks';
-import { mainTooLongID, doesNotNestControlStructuresId, simpleRepetitionId, doSomethingId, tooLongId, nameWasChangedId } from '../../../utils/expectations'
+import { mainTooLongId, doesNotNestControlStructuresId, simpleRepetitionId, doSomethingId, tooLongId, nameWasChangedId } from '../../../utils/expectations'
 
 const solutionPassMock = {
   id: 'solution_works',
   isScoreable: true,
   description: {
-    asScoring: '¡Tu solución funciona!',
+    asScoring: '¡Tu solución _funciona_!',
     asSuggestion: '',
     forControlGroup: ''
   },
   result: true
+}
+
+const pilasServiceMock = {
+  estaResueltoElProblema() { return true }
 }
 
 const expectation = (id, result, description = 'Bien :)') => ({ id, description: { asScoring: description }, result })
@@ -29,10 +33,11 @@ module('Unit | Service | expects-scoring', function (hooks) {
 
   hooks.beforeEach(function () {
     expectsScoring = this.owner.lookup('service:expects-scoring');
+    expectsScoring.set('pilasService', pilasServiceMock)
   });
 
   test('Should add solution passed expectation result at the beginning', function (assert) {
-    const e1 = expectation(mainTooLongID, false)
+    const e1 = expectation(mainTooLongId, false)
     const e2 = expectation(doesNotNestControlStructuresId, true)
     const expectations = [e1, e2]
 
@@ -41,9 +46,9 @@ module('Unit | Service | expects-scoring', function (hooks) {
   });
 
   test('Only expectations with same id should be combined', function (assert) {
-    const e1 = expectation(mainTooLongID, true)
-    const e2 = expectation(mainTooLongID, false)
-    const e3 = expectation(mainTooLongID, false)
+    const e1 = expectation(mainTooLongId, true)
+    const e2 = expectation(mainTooLongId, false)
+    const e3 = expectation(mainTooLongId, false)
     const e4 = expectation(doesNotNestControlStructuresId, true)
     const e5 = expectation(simpleRepetitionId, false)
     const expectations = [e1, e2, e3, e4, e5]
@@ -53,9 +58,9 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('If a grouping of expectations passes, the result should be a passing expectation', function (assert) {
-    const passingExpectation = expectation(mainTooLongID, true, 'Passed')
-    const e2 = expectation(mainTooLongID, false, 'Failed')
-    const e3 = expectation(mainTooLongID, false, 'Failed')
+    const passingExpectation = expectation(mainTooLongId, true, 'Passed')
+    const e2 = expectation(mainTooLongId, false, 'Failed')
+    const e3 = expectation(mainTooLongId, false, 'Failed')
     const expectations = [e2, passingExpectation, e3]
 
     const result = expectsScoring.expectationGroupingResult(expectations)
@@ -64,9 +69,9 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('If a grouping of expectations fails, the result should be a failing expectation', function (assert) {
-    const e1 = expectation(mainTooLongID, false, 'Failed')
-    const e2 = expectation(mainTooLongID, false, 'Failed')
-    const e3 = expectation(mainTooLongID, false, 'Failed')
+    const e1 = expectation(mainTooLongId, false, 'Failed')
+    const e2 = expectation(mainTooLongId, false, 'Failed')
+    const e3 = expectation(mainTooLongId, false, 'Failed')
     const expectations = [e1, e2, e3]
 
     const result = expectsScoring.expectationGroupingResult(expectations)
@@ -75,11 +80,13 @@ module('Unit | Service | expects-scoring', function (hooks) {
   })
 
   test('Only scoreable expects should be part of the results', function (assert) {
-    const nonScoreableExpectation = { id: mainTooLongID, description: { asSuggestion: 'a suggestion' }, result: true }
+    const nonScoreableExpectation = { id: mainTooLongId, description: { asSuggestion: 'a suggestion' }, result: true }
     const e2 = expectation(doesNotNestControlStructuresId, true)
     const e3 = expectation(simpleRepetitionId, false)
     const expectations = [nonScoreableExpectation, e2, e3]
+
     const results = expectsScoring.expectsResults(expectations)
+
     assert.propEqual(results, [solutionPassMock, e2, e3])
   })
 
@@ -91,7 +98,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
   test('Total score when using all expects of configuration', function (assert) {
     const e1 = expectation(doSomethingId, true)
     const e2 = expectation(tooLongId, false)
-    const e3 = expectation(mainTooLongID, true)
+    const e3 = expectation(mainTooLongId, true)
     const e4 = expectation(nameWasChangedId, true)
     const e5 = expectation(doesNotNestControlStructuresId, false)
     const expects = [e1, e2, e3, e4, e5]
@@ -106,7 +113,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
   test('Calculating total score when not using all expects of the challenge configuration should add the unused expects as passing expects', function (assert) {
     const e1 = expectation(doSomethingId, true)
     const e2 = expectation(tooLongId, false)
-    const e3 = expectation(mainTooLongID, false)
+    const e3 = expectation(mainTooLongId, false)
     const e4 = expectation(nameWasChangedId, false)
     //Does not nest control structures from the decomposition configuration is not used
     const expects = [e1, e2, e3, e4]
