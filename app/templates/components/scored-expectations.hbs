@@ -1,14 +1,14 @@
   <div class='expectationResults' >
     {{#each allPassedExpects as |result|}}
-      <div class='goal passed'>
+      <p class='passed'>
         {{paper-icon "check-circle"}}
-        {{markdown-to-html result.description.asScoring}}
-      </div>
+        {{result.description.asScoring}}
+      </p>
     {{/each}}
     {{#each failedExpects as |result|}}
-      <div class='goal failed'>
+      <p class='failed'>
         {{paper-icon "arrow-circle-right"}}
-        {{markdown-to-html result.description.asScoring}}
-      </div>
+        {{result.description.asScoring}}
+      </p>
     {{/each}}
   </div>

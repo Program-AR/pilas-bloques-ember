@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty, sum } from 'ramda'
-import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, nameWasChangedId, mainTooLongId, decompositionExpectsIdsForControlGroup } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, nameWasChangedId, mainTooLongID } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 // Be careful when adding new expects. idsToScore should be potentially updated too.
@@ -47,17 +47,9 @@ const idsToExpectations = (intl) => ({
 
 //Will (not) be obliterated Soon™ (never)
 const harcodedAllConfigurationsToExpectIds = {
-  decomposition: [doSomethingId, tooLongId, mainTooLongId, nameWasChangedId, doesNotNestControlStructuresId],
-  decomposition9: [doSomethingId, tooLongId, mainTooLongId, nameWasChangedId, doesNotNestControlStructuresId],
+  decomposition: [doSomethingId, tooLongId, mainTooLongID, nameWasChangedId, doesNotNestControlStructuresId],
+  decomposition9: [doSomethingId, tooLongId, mainTooLongID, nameWasChangedId, doesNotNestControlStructuresId],
   //simpleRepetition: [simpleRepetitionId]
-}
-
-// TODO: DELETE. I cant even...
-const idsToExpectationsIdsForControl = {
-  decomposition: decompositionExpectsIdsForControlGroup,
-  decomposition9: decompositionExpectsIdsForControlGroup,
-
-  // Other configurations, such as conditionals and repetitions, are not used yet.
 }
 
 
@@ -138,8 +130,7 @@ export default Service.extend({
   },
 
   hasDecomposition(challenge) {
-    const allExpectConfigurationsMerged = this.allExpectConfigurationsMerged(challenge)
-    return !!(allExpectConfigurationsMerged.decomposition || allExpectConfigurationsMerged.decomposition9)
+    return !!this.allExpectConfigurationsMerged(challenge).decomposition
   },
 
   totalScoreOf(challenge) {
@@ -155,11 +146,5 @@ export default Service.extend({
 
   configIdToMaxScore(id) {
     return harcodedAllConfigurationsToExpectIds[id] ? harcodedAllConfigurationsToExpectIds[id].length : 0
-  },
-
-  expectationsIdsForControlGroup(challenge) {
-    return Object.entries(this.allExpectConfigurationsMerged(challenge))
-      .filter(([, shouldBeApplied]) => shouldBeApplied)
-      .flatMap(([id,]) => idsToExpectationsIdsForControl[id] || [])
   }
 })

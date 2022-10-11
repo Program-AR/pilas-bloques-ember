@@ -88,7 +88,7 @@ export function resetFetch() {
     mockApi(`solutions`, 200)
     mockApi(`ping`, 200)
     mockApi(`error`, { throws: 'ERROR' })
-    fetchUserIpMock("123.123.123")
+    fetchUserIpMock("")
     
 }
 
@@ -103,7 +103,7 @@ export function mockApi(path, response, options) {
 
 export function failAllApiFetchs() {
     fetchMock.reset()
-    fetchUserIpMock("123.123.123")
+    fetchUserIpMock("")
     mockApi("", { throws: 'ERROR' })
 }
 

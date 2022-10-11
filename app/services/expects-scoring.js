@@ -8,7 +8,6 @@ export const solutionWorks = 'solution_works'
 export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
-    pilasService: service('pilas'),
 
     expectsResults(expects) {
         return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
@@ -45,12 +44,11 @@ export default Service.extend({
 
     solutionWorksExpectResult() {
         const params = { isScoreable: true }
-        const result = this.pilasService.estaResueltoElProblema()
 
         return {
             id: solutionWorks,
-            description: expectationDescription(this.intl, solutionWorks, result, params),
-            result,
+            description: expectationDescription(this.intl, solutionWorks, true, params),
+            result: true,
             ...params
         }
     },

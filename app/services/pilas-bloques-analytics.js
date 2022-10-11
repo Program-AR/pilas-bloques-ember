@@ -18,8 +18,6 @@ export default Service.extend({
     const version = environment.APP.version
 
     await this.experiments.saveUserIP()
-    const ip = this.storage.getUserIp()
-
     const experimentGroup = this.experiments.experimentGroup()
   
     return {
@@ -29,8 +27,7 @@ export default Service.extend({
       userId: userId || fingerprint,
       version,
       experimentGroup,
-      url: window.location.href,
-      ip
+      url: window.location.href
     }
   },
 

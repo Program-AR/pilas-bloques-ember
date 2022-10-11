@@ -54,7 +54,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
     const done = assert.async()
     api.openChallenge(1)
     api.runProgram(1, "program", {})
-    api.executionFinished(1010, {}, {})
+    api.executionFinished(1010, {})
     assert.notOk(api.paperToaster.show.called)
     later(done)
   })

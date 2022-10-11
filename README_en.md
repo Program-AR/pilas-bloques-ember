@@ -1,14 +1,3 @@
-![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![Ember](https://img.shields.io/badge/ember-1C1E24?style=for-the-badge&logo=ember.js&logoColor=#D04A37)
-
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Program-AR/pilas-bloques/issues)
-[![open issues](https://badgen.net/github/open-issues/Program-AR/pilas-bloques)](https://github.com/Program-AR/pilas-bloques/issues)
-![downloads](https://img.shields.io/github/downloads/Program-AR/pilas-bloques/total.svg)
-[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
-
-[:ar: Leer en español](https://github.com/Program-AR/pilas-bloques/blob/develop/README.md)
-_____________
-
 # Pilas Bloques - A tool to learn computer programming
 
 <p align="center">

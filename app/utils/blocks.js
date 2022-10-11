@@ -32,7 +32,7 @@ function getEntryPointBlock(workspace){
 
 //Control structure nesting
 
-export function nestsControlStructures(procedure){
+function nestsControlStructures(procedure){
   const controlStructureBlocks = procedure.getDescendants().filter(isControlStructure)
   return directlyNestsControlStructures(controlStructureBlocks) || indirectlyNestsControlStructures(controlStructureBlocks)
 }
@@ -66,13 +66,8 @@ function getProcedureBlock(procedureCallBlock){
   return declarationWithName(procedureCallBlock.getFieldValue('NAME'))
 }
 
-export function usesControlStructure(procedureCallBlock){
-  try {
-    return getBlocksSurroundedByProcedure(procedureCallBlock).some(isControlStructure)
-  } catch (e) {
-    console.error(e)
-    return false
-  }
+function usesControlStructure(procedureCallBlock){
+  return getBlocksSurroundedByProcedure(procedureCallBlock).some(isControlStructure)
 }
 
 function getBlocksSurroundedByProcedure(procedureCallBlock){
