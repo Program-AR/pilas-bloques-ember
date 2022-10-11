@@ -1,6 +1,6 @@
 {{#if shouldOpen}}
 
-<Modal @title="Terminos y condiciones de uso" @onClose={{action "rejectTerms"}} @clickOutsideToClose={{false}}>
+<Modal @title="Términos y condiciones de uso" @onClose={{action "rejectTerms"}} @clickOutsideToClose={{false}}>
   <div>{{t "components.acceptTermsAndConditions.askToRead"}} <TermsAndConditionsLink /> {{t "components.acceptTermsAndConditions.toUse"}}</div>
   <div>
     <Button @accent={{true}} @isRaised={{true}} @onClick={{action "acceptTerms"}}> {{t "components.acceptTermsAndConditions.accept"}} </Button>

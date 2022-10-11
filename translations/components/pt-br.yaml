@@ -180,6 +180,7 @@ spects:
         other {Dentro de las repeticiones y alternativas también deberías dividir}
       } en subtareas usando procedimientos.
   control_group:
+    solution_works: "¡Tu solución _funciona_!"
     uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
     uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
     uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.

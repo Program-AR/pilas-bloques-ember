@@ -10,4 +10,8 @@ export default Component.extend({
         return this.expectsScoring.expectsResults(this.expects).filter(expect => expect.description.forControlGroup)
     }),
 
+    solutionWorksDescription: computed('intl', function () {
+        return this.intl.t("components.spects.control_group.solution_works").toString()
+    })
+
 });
