@@ -117,7 +117,7 @@ finishedExerciseModal:
         description: Revisá tu solución e intentá cumplir con todos los objetivos.
       allPassed:
         title: ¡Lo lograste!
-        description: ''
+        description: 'Cumpliste todos los objetivos.'
     nonScoredExpectations:
       title: ¡Lo lograste!
       description: 'Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:'

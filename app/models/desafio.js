@@ -24,6 +24,7 @@ export default Model.extend({
 
   nombre: attr('string'),
   imagen: attr('string'),
+  customCover: attr('string'),
   deshabilitado: attr('boolean'),
   escena: attr('string'),
   hasAutomaticGrading: attr('boolean', { defaultValue: true }),
@@ -35,8 +36,8 @@ export default Model.extend({
   expectations: attr(),
   shouldShowMultipleScenarioHelp: attr('boolean', {defaultValue: false}),
 
-  nombreImagen: computed('imagen', 'nombre', function () {
-    return `${this.imagen || this.nombre || 'proximamente'}.png`;
+  coverSrc: computed('imagen', 'nombre', 'customCover', function () {
+    return this.customCover || `imagenes/desafios/${ this.imagen || this.nombre || 'proximamente'}.png`;
   }),
 
   initialWorkspace: computed("solucionInicial", function () {

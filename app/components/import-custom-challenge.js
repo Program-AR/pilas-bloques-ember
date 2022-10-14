@@ -66,7 +66,7 @@ export default Component.extend({
     const challengeJson = await this._getChallengeJson(entries)
     const sceneImages = await this._getSceneImages(entries)
     const challengeCover = await this._imageContentToURL(entries[`${assetsPath}/splashChallenge.png`]);
-    challengeJson.challengeCover = challengeCover
+    challengeJson.customCover = challengeCover
     challengeJson.imagesToPreload = sceneImages.map(image => image.url)
     //Currently it is not possible to define scenes in the json itself, like in the desafios.js file, but it can be made possible by replacing this line with "challengeJson.escena = challengeJson.sceneConstructor || `new CustomScene(...)"
     challengeJson.escena = `new CustomScene({grid:{spec:${JSON.stringify(challengeJson.grid)}}, images:${JSON.stringify(sceneImages)}})`

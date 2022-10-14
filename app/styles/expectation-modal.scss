@@ -1,8 +1,3 @@
-
-.expectationsModal {
-    text-align: center;
-}
-
 .expectationResults {
     .goal {
         margin-top: 1em;
@@ -22,5 +17,12 @@
     }
     .control {
         color: var(--theme-control-color);
+    }
+}
+
+.expectationModal {
+    p {
+        text-align: center;
+        padding-left: 1em;
     }
 }
