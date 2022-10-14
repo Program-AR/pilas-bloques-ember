@@ -154,7 +154,7 @@ export default Service.extend({
   },
 
   configIdToMaxScore(id) {
-    return harcodedAllConfigurationsToExpectIds[id] ? harcodedAllConfigurationsToExpectIds[id].length : 0
+    return harcodedAllConfigurationsToExpectIds[id]?.length || 0
   },
 
   expectationsIdsForControlGroup(challenge) {
