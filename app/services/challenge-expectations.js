@@ -142,7 +142,7 @@ export default Service.extend({
     return !!(allExpectConfigurationsMerged.decomposition || allExpectConfigurationsMerged.decomposition9)
   },
 
-  totalScoreOf(challenge) {
+  howManyScoreableExpectationsFor(challenge) {
     return this.configToTotalScore(this.allExpectConfigurationsMerged(challenge))
   },
 

@@ -76,7 +76,7 @@ export default Service.extend({
     totalScore(expects, challenge) {
         const resultsIncludingUnused = this.expectsResults(expects).concat(this.unusedExpects(expects, challenge))
         const passingResults = resultsIncludingUnused.filter(e => e.result)
-        return 100 * passingResults.length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+        return 100 * passingResults.length / (this.challengeExpectations.howManyScoreableExpectationsFor(challenge) + 1) // Solution works adds one to the final score
     }
 
 })
