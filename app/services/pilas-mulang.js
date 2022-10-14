@@ -149,6 +149,7 @@ let applicationParser = {
 let pilasToMulangParsers = {
   [entryPointType]: entryPointParser,
   "repetir": repeatParser,
+  "RepetirVacio": repeatParser,
   "Si": ifParser,
   "SiNo": { ...ifParser, parse: parseIfElse },
   "Hasta": untilParser,
