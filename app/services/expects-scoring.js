@@ -1,7 +1,7 @@
 import Service from '@ember/service'
 import { inject as service } from '@ember/service'
 import { find, groupBy } from 'ramda'
-import { expectationDescription } from '../utils/expectations'
+import { expectationDescription, doesNotNestControlStructuresId, tooLongId, doSomethingId, nameWasChangedId } from '../utils/expectations'
 
 export const solutionWorks = 'solution_works'
 
@@ -68,7 +68,7 @@ export default Service.extend({
         return {
             id: expectationId,
             isScoreable: true,
-            result: true,
+            result: idsToDefaultResult[expectationId],
             description: {}
         }
     },
@@ -80,3 +80,10 @@ export default Service.extend({
     }
 
 })
+
+const idsToDefaultResult = {
+    [doesNotNestControlStructuresId]: true,
+    [tooLongId]: false,
+    [doSomethingId]: false,
+    [nameWasChangedId]: false
+}

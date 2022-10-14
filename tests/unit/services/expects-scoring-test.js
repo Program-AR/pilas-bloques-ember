@@ -110,7 +110,7 @@ module('Unit | Service | expects-scoring', function (hooks) {
     assertFloatEqual(assert, expectsScoring.totalScore(expects, challengeMock), 100 * (passingExpects / totalExpects))
   })
 
-  test('Calculating total score when not using all expects of the challenge configuration should add the unused expects as passing expects', function (assert) {
+  test('Calculating total score when not using all expects of the challenge configuration should add the unused expects with positive results', function (assert) {
     const e1 = expectation(doSomethingId, true)
     const e2 = expectation(tooLongId, false)
     const e3 = expectation(mainTooLongId, false)
@@ -118,6 +118,16 @@ module('Unit | Service | expects-scoring', function (hooks) {
     //Does not nest control structures from the decomposition configuration is not used
     const expects = [e1, e2, e3, e4]
     const passingExpects = 1 + 2 //The solution passed expectation and the does not nest control structures expectation are added
+    const totalExpects = 5 + 1 //The solution passed expectation is added
+
+    assertFloatEqual(assert, expectsScoring.totalScore(expects, challengeMock), 100 * (passingExpects / totalExpects))
+  })
+
+  test('Calculating total score when not using all expects of the challenge configuration should add the unused expects with negative results', function (assert) {
+    const e1 = expectation(mainTooLongId, false)
+    //Does not nest control structures from the decomposition configuration is not used
+    const expects = [e1]
+    const passingExpects = 0 + 2 //The solution passed expectation and the does not nest control structures expectation are added
     const totalExpects = 5 + 1 //The solution passed expectation is added
 
     assertFloatEqual(assert, expectsScoring.totalScore(expects, challengeMock), 100 * (passingExpects / totalExpects))
