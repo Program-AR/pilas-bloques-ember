@@ -1,6 +1,6 @@
 import Service from '@ember/service'
 import { isEmpty, sum } from 'ramda'
-import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, decompositionExpectsIdsForControlGroup } from '../utils/expectations'
+import { allProceduresShould, doesNotUseRecursion, doSomething, isUsed, isUsedFromMain, multiExpect, notTooLong, mainNotTooLong, noExpectation, nameWasChanged, doesNotNestControlStructures, doSomethingId, tooLongId, doesNotNestControlStructuresId, nameWasChangedId, mainTooLongId, decompositionExpectsIdsForControlGroup } from '../utils/expectations'
 import { inject as service } from '@ember/service';
 
 // Be careful when adding new expects. idsToScore should be potentially updated too.
@@ -46,23 +46,11 @@ const idsToExpectations = (intl) => ({
 })
 
 
-/**
- * 
- * This should be _erased from existence_ calculated from expectations.
- * Related to: https://github.com/Program-AR/pilas-bloques/issues/1040
- */
-const idsToScore = {
-  decomposition: 5,
-  decomposition9: 5,
-
-  /**
-   * See comment above
-  conditionalAlternative: 1,
-
-  conditionalRepetition: 1,
-
-  simpleRepetition: 1
-   */
+//Will (not) be obliterated Soon™ (never)
+const harcodedAllConfigurationsToExpectIds = {
+  decomposition: [doSomethingId, tooLongId, mainTooLongId, nameWasChangedId, doesNotNestControlStructuresId],
+  decomposition9: [doSomethingId, tooLongId, mainTooLongId, nameWasChangedId, doesNotNestControlStructuresId],
+  //simpleRepetition: [simpleRepetitionId]
 }
 
 // TODO: DELETE. I cant even...
@@ -139,30 +127,39 @@ export default Service.extend({
   allExpectConfigurationsMerged(challenge) {
     return this.mergeConfigurations(this.allExpectConfigurations(challenge))
   },
+  allExpectIdsIn(challenge) {
+    const challengeConfigurations = this.allExpectConfigurationsMerged(challenge)
+    const validConfigurationsIds = Object.keys(challengeConfigurations).filter(key => challengeConfigurations[key]) //Should only use configurations set to true.
+    return validConfigurationsIds.flatMap(this.expectIdsInConfiguration)
+  },
+
+  expectIdsInConfiguration(configId) {
+    return harcodedAllConfigurationsToExpectIds[configId] || []
+  },
 
   hasDecomposition(challenge) {
     const allExpectConfigurationsMerged = this.allExpectConfigurationsMerged(challenge)
     return !!(allExpectConfigurationsMerged.decomposition || allExpectConfigurationsMerged.decomposition9)
   },
 
-  totalScoreOf(challenge) {
+  howManyScoreableExpectationsFor(challenge) {
     return this.configToTotalScore(this.allExpectConfigurationsMerged(challenge))
   },
 
   configToTotalScore(expectationsConfig) {
     return isEmpty(expectationsConfig) ? 0
       : sum(
-        this.appliableConfigs(expectationsConfig).map(([id,]) => this.idToScore(id))
+        this.appliableConfigs(expectationsConfig).map(([id,]) => this.configIdToMaxScore(id))
       )
   },
 
-  idToScore(id) {
-    return idsToScore[id] || 0
+  configIdToMaxScore(id) {
+    return harcodedAllConfigurationsToExpectIds[id]?.length || 0
   },
 
   expectationsIdsForControlGroup(challenge) {
     return Object.entries(this.allExpectConfigurationsMerged(challenge))
-    .filter(([, shouldBeApplied]) => shouldBeApplied)
-    .flatMap(([id,]) => idsToExpectationsIdsForControl[id] || [])
+      .filter(([, shouldBeApplied]) => shouldBeApplied)
+      .flatMap(([id,]) => idsToExpectationsIdsForControl[id] || [])
   }
 })
