@@ -73,8 +73,12 @@ export default Service.extend({
         }
     },
 
+    resultsIncludingUnusedExpects(expects, challenge) {
+        return this.expectsResults(expects).concat(this.unusedExpects(expects, challenge))
+    },
+
     totalScore(expects, challenge) {
-        const resultsIncludingUnused = this.expectsResults(expects).concat(this.unusedExpects(expects, challenge))
+        const resultsIncludingUnused = this.resultsIncludingUnusedExpects(expects, challenge)
         const passingResults = resultsIncludingUnused.filter(e => e.result)
         return 100 * passingResults.length / (this.challengeExpectations.howManyScoreableExpectationsFor(challenge) + 1) // Solution works adds one to the final score
     }
