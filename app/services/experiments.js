@@ -44,7 +44,7 @@ export default Service.extend({
   },
 
   getExperimentGroupAssigned() {
-    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup() || this.randomizeAndSaveExperimentGroup() // jshint ignore:line
+    return this.pilasBloquesApi.getUser()?.experimentGroup || this.storage.getExperimentGroup() || this.randomizeAndSaveExperimentGroup()
   },
 
   randomizeAndSaveExperimentGroup() {

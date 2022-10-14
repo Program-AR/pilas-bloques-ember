@@ -22,7 +22,7 @@
     "unzipit",
     "ProcedsBlockly"
   ],
-  "esversion": 9,
+  "esversion": 11,
   "asi": true,
   "browser": true,
   "boss": true,
