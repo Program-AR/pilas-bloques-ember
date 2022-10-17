@@ -386,15 +386,16 @@ export default Component.extend({
   },
 
   persistableExpectsResults(expects) {
+    const deletableProperties = ["description", "isForControlGroup", "isSuggestion", "isScoreable", "limit", "isRelatedToUsage", "isCritical"]
     return expects.map(e => {
       const expect = { ...e }
-      delete expect.description
+      deletableProperties.forEach(p => delete expect[p])
       return expect
     })
   },
 
   scoredExpectsResults() {
-    return this.persistableExpectsResults(this.expectsScoring.resultsIncludingUnusedExpects(this.get('expects'), this.challenge))
+    return this.expectsScoring.resultsIncludingUnusedExpects(this.get('expects'), this.challenge).reduce((expectsObj, expect) => ({ ...expectsObj, [expect.id]: expect.result }), {})
   },
 
   runProgramEvent() {
