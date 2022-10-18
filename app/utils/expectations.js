@@ -20,7 +20,7 @@ export const usesSimpleRepetition = () =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     'uses repeat', simpleRepetitionId)
 
-export const doesNotNestControlStructures = (workspace) => 
+export const doesNotNestControlStructures = (workspace) =>
   join(allBlocksNestingControlStructures(workspace).map(declarationDoesNotNestControlStructures))
 
 // DECLARATION EXPECTATIONS
@@ -29,9 +29,9 @@ export const doSomething = (declaration) =>
     { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `${countCallsWithin(declaration)} >= 1`, doSomethingId, { declaration })
 
-export const declarationDoesNotNestControlStructures = (declaration) => 
+export const declarationDoesNotNestControlStructures = (declaration) =>
   newExpectation(
-    {isSuggestion: true, isForControlGroup: true, isScoreable: true},
+    { isSuggestion: true, isForControlGroup: true, isScoreable: true },
     `within ${toEDLString(declaration)} ${nestedAlternativeStructureEDL} && ${nestedControlStructureEDL('repeat')} && ${nestedControlStructureEDL('while')}`, doesNotNestControlStructuresId, { declaration })
 
 export const isUsed = (declaration) =>
@@ -72,8 +72,9 @@ export const nameWasChanged = (intl) => (declaration) =>
 const newGlobalExpectation = (types, expect, id) =>
   newExpectation(types, `through ${toEDLString(entryPointType)} ${expect}`, id, { declaration: entryPointType })
 
+//Expectation name is encoded to prevent errors when using accent marks: https://github.com/Program-AR/pilas-bloques/issues/1096
 export const newExpectation = (types, expect, id, opts = {}) =>
-  `expectation "${stringify(id, { ...types, ...opts })}": ${expect};`
+  `expectation "${btoa(stringify(id, { ...types, ...opts }))}": ${expect};`
 
 export const multiExpect = (...expectations) => (element) =>
   join(expectations.map(e => e(element)))
@@ -94,7 +95,7 @@ const fail = `calls && ! calls`
 
 const usesControlStructureEDL = 'something that (uses if || uses while || uses repeat)'
 const nestedControlStructureEDL = (loop) => `! uses ${loop} with (anything, ${usesControlStructureEDL})`
-const nestedAlternativeStructureEDL =  `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
+const nestedAlternativeStructureEDL = `! uses if with (anything, ${usesControlStructureEDL}, anything) && ! uses if with (anything, anything, ${usesControlStructureEDL})`
 
 export const parseExpect = (name) => {
   const expectationName = name.split('|')[0]
@@ -125,14 +126,14 @@ export const doesNotUseRecursionId = 'does_not_use_recursion'
 export const isUsedId = 'is_used'
 export const isUsedFromMainId = 'is_used_from_main'
 
-const doSomethingId = 'do_something'
-const tooLongId = 'too_long'
-const mainTooLongId = "main_too_long"
-const nameWasChangedId = 'name_was_changed'
-const conditionalAlternativeId = 'uses_conditional_alternative'
-const conditionalRepetitionId = 'uses_conditional_repetition'
-const simpleRepetitionId = 'uses_simple_repetition'
-const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
+export const doSomethingId = 'do_something'
+export const tooLongId = 'too_long'
+export const nameWasChangedId = 'name_was_changed'
+export const conditionalAlternativeId = 'uses_conditional_alternative'
+export const conditionalRepetitionId = 'uses_conditional_repetition'
+export const simpleRepetitionId = 'uses_simple_repetition'
+export const doesNotNestControlStructuresId = 'does_not_nest_control_structures'
+export const mainTooLongId = 'main_too_long'
 
 export const isCritical = (expectationResult) => expectationResult && expectationResult.isCritical
 

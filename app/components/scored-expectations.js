@@ -17,8 +17,4 @@ export default Component.extend({
     expectsResults: computed('expects', function () {
         return this.expectsScoring.expectsResults(this.expects)
     }),
-
-    passedExpectsValue: computed('expects', function () {
-        return this.expectsScoring.totalScore(this.expects, this.challenge)
-    }),
 });

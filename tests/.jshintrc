@@ -36,7 +36,7 @@
     "ProcedsBlockly",
     "Response"
   ],
-  "esversion": 9,
+  "esversion": 11,
   "asi": true,
   "node": false,
   "browser": false,

@@ -1,8 +1,8 @@
 <Modal @title={{t (compute (action textTag "title"))}} @onClose={{onClose}}>
-  <div class='expectationsModal'>
-    <img src="imagenes/libros/primer-ciclo.png" />
-    <p>{{t (compute (action textTag  "description"))}}</p>
-  </div>
+  <PaperCard class="details-card layout-row expectationModal">
+      <img class="exercise-cover" alt="{{challenge.titulo}}" src="{{challenge.coverSrc}}">
+      <p>{{t (compute (action textTag  "description"))}}</p>
+  </PaperCard>
 
   {{#if (compute (action shouldShowScoredExpectations))}}
     <ScoredExpectations

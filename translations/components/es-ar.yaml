@@ -105,7 +105,7 @@ acceptTermsAndConditions:
   askToRead: 'Para la Fundación Sadosky tu privacidad y la de tus hijas/os es muy importante. Por eso te pedimos que leas y aceptes nuestros '
   termsLink: términos y condiciones de uso
   toUse: ' para poder usar Pilas Bloques.'
-  accept: Acepto los terminos y condiciones de uso
+  accept: Acepto los términos y condiciones de uso
 finishedExerciseModal:
   congratulationsModal:
     title: ¡Lo lograste!
@@ -117,7 +117,7 @@ finishedExerciseModal:
         description: Revisá tu solución e intentá cumplir con todos los objetivos.
       allPassed:
         title: ¡Lo lograste!
-        description: ''
+        description: 'Cumpliste todos los objetivos.'
     nonScoredExpectations:
       title: ¡Lo lograste!
       description: 'Repasá todos estos objetivos para asegurarte que tu solución sea de calidad:'
@@ -138,53 +138,54 @@ spects:
     does_not_use_recursion: ¡Cuidado! ¡Este procedimiento se llama a sí mismo! Intentá resolver de otra forma este desafío.
     does_not_nest_control_structures: Este bloque podría estar en un procedimiento con un buen nombre que describa qué tarea resuelve.
   scoreable: # Challenge goals, used in the final window
-    solution_works: "¡Tu solución funciona!"
+    solution_works: "¡Tu solución _funciona_!"
     uses_simple_repetition: |
       {result, select, 
         true {Usás}
         other {Deberías usar}
-      } repetición para las partes de tu programa que se repiten.
+      } **repetición simple** para las partes de tu programa que hay que repetir.
     uses_conditional_alternative: |
       {result, select, 
         true {Usás}
         other {Deberías usar}
-      } alternativa condicional para considerar los escenarios variantes.
+      } **alternativa condicional** para considerar los escenarios variantes.
     uses_conditional_repetition: |
       {result, select, 
         true {Usás}
         other {Deberías usar}
-      } repetición condicional para considerar los escenarios variantes.
+      } **repetición condicional** :repeat: para considerar los escenarios variantes.
     main_too_long: |
       {result, select, 
-        true {El programa principal es corto, y por eso es más fácil de leer.}
-        other {El programa principal es largo, y por eso es difícil de leer. Debería estar dividido en subtareas usando procedimientos.}
+        true {El _programa principal_ es corto, y por eso es más **fácil de leer**.}
+        other {El _programa principal_ es largo, y por eso es **difícil de leer**. <br/> :point_right: Debería estar dividido en subtareas usando **procedimientos**.}
       }
     too_long: |
       {result, select, 
-        true {Tus procedimientos son cortos y por eso son más fáciles de leer.}
-        other {Tus procedimientos son largos y por eso son más difíciles de leer. Deberían estar divididos en subtareas usando procedimientos.}
+        true {Tus _procedimientos_ son cortos y por eso son más **fáciles de leer**.}
+        other {Tus _procedimientos_ son largos y por eso son más **difíciles de leer**. <br/> :point_right: Deberían estar divididos en subtareas usando **más procedimientos** dentro de ellos.}
       }
     do_something: |
       {result, select, 
-        true {Tus procedimientos no están vacíos, tienen bloques adentro}
-        other {Tus procedimientos están vacíos, deberían tener bloques en su interior}
+        true {Tus _procedimientos_ no están vacíos, **tienen bloques** adentro}
+        other {Tus _procedimientos_ están **vacíos** <br/> :point_right: deberían tener bloques en su interior}
       }.
     name_was_changed: |
       {result, select,
         true {Elegiste}
-        other {Podrías elegir}
-      } un nombre para cada uno de tus procedimientos.
+        other {Tus procedimientos se llaman "Hacer algo" <br/> :point_right: Podrías elegir}
+      } un **nombre** para cada uno de tus procedimientos.
     does_not_nest_control_structures: |
       {result, select, 
-        true {Tu programa es más fácil de leer porque tus repeticiones y alternativas están divididas}
-        other {Para que tu programa sea más fácil de leer, dentro de las repeticiones y alternativas deberías dividir}
-      } en subtareas usando procedimientos.
-  control_group: # El título debería ser: Repasá todos estos objetivos para asegurarte que tu solución sea de calidad
-    uses_simple_repetition: Deberías usar repetición simple para las partes de tu programa que se repiten.
-    uses_conditional_alternative: Deberías usar alternativa condicional para considerar todos los escenarios.
-    uses_conditional_repetition: Deberías usar repetición condicional para considerar todos los escenarios.
-    main_too_long: El programa principal debería ser corto y fácil de leer. Podés hacerlo más corto dividiéndolo en subtareas usando procedimientos.
-    too_long: Tus procedimientos deberían ser cortos y fáciles de leer. Podés hacerlos más cortos dividiéndolos en subtareas usando procedimientos.
-    do_something: No deberías tener procedimientos vacíos, sin bloques.
-    name_was_changed: Deberías elegir un buen nombre para cada uno de tus procedimientos.
-    does_not_nest_control_structures: Dentro de las repeticiones y alternativas también deberías dividir en subtareas usando procedimientos.
+        true {Tu programa es más fácil de leer porque tus _repeticiones y alternativas_ están divididas}
+        other {Para que tu programa sea más fácil de leer <br/> :point_right: dentro de las _repeticiones y alternativas_ deberías dividir}
+      } en subtareas usando **procedimientos**.
+  control_group: 
+    solution_works: "¡Tu solución _funciona_!"
+    uses_simple_repetition: "Deberías usar **repetición simple** :repeat: para las partes de tu programa que se repiten."
+    uses_conditional_alternative: Deberías usar **alternativa condicional** para considerar todos los escenarios.
+    uses_conditional_repetition: "Deberías usar **repetición condicional** para considerar todos los escenarios."
+    main_too_long: "El _programa principal_ debería ser corto y **fácil de leer**. Podés hacerlo más corto dividiéndolo en subtareas usando **procedimientos**."
+    too_long: "Tus _procedimientos_ deberían ser cortos y **fáciles de leer**. Podés hacerlos más cortos dividiéndolos en subtareas usando **más procedimientos** dentro de ellos."
+    do_something: No deberías tener procedimientos **vacíos**, sin bloques.
+    name_was_changed: "Deberías elegir un buen **nombre** para cada uno de tus procedimientos."
+    does_not_nest_control_structures: "Dentro de las repeticiones y alternativas también deberías dividir en subtareas usando **procedimientos**."

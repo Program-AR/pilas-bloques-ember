@@ -15,4 +15,8 @@ export default Component.extend({
         }))
     }),
 
+    solutionWorksDescription: computed('intl', function () {
+        return this.intl.t("components.spects.control_group.solution_works").toString()
+    })
+
 });

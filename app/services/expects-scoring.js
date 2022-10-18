@@ -1,13 +1,14 @@
 import Service from '@ember/service'
 import { inject as service } from '@ember/service'
 import { find, groupBy } from 'ramda'
-import { expectationDescription } from '../utils/expectations'
+import { expectationDescription, doesNotNestControlStructuresId } from '../utils/expectations'
 
 export const solutionWorks = 'solution_works'
 
 export default Service.extend({
     intl: service(),
     challengeExpectations: service(),
+    pilasService: service('pilas'),
 
     expectsResults(expects) {
         return [this.solutionWorksExpectResult()].concat(this.combineMultipleExpectations(expects)).filter(this.isScoreable)
@@ -44,17 +45,42 @@ export default Service.extend({
 
     solutionWorksExpectResult() {
         const params = { isScoreable: true }
+        const result = this.pilasService.estaResueltoElProblema()
 
         return {
             id: solutionWorks,
-            description: expectationDescription(this.intl, solutionWorks, true, params),
-            result: true,
+            description: expectationDescription(this.intl, solutionWorks, result, params),
+            result,
             ...params
         }
     },
 
+    unusedExpects(expects, challenge) {
+        const unusedExpectIds = this.challengeExpectations.allExpectIdsIn(challenge).filter(expectId => !this.expectIdIsUsed(expectId, expects))
+        return unusedExpectIds.map(id => this.unusedExpectationIdToPassingExpectation(id, expects))
+    },
+
+    expectIdIsUsed(expectationId, expects) {
+        return this.expectsResults(expects).some(expectResult => expectResult.id === expectationId)
+    },
+
+    unusedExpectationIdToPassingExpectation(expectationId) {
+        return {
+            id: expectationId,
+            isScoreable: true,
+            result: expectationId === doesNotNestControlStructuresId, // the only one with default true,
+            description: {}
+        }
+    },
+
+    resultsIncludingUnusedExpects(expects, challenge) {
+        return this.expectsResults(expects).concat(this.unusedExpects(expects, challenge))
+    },
+
     totalScore(expects, challenge) {
-        return 100 * this.allPassedExpects(expects).length / (this.challengeExpectations.totalScoreOf(challenge) + 1) // Solution works adds one to the final score
+        const resultsIncludingUnused = this.resultsIncludingUnusedExpects(expects, challenge)
+        const passingResults = resultsIncludingUnused.filter(e => e.result)
+        return 100 * passingResults.length / (this.challengeExpectations.howManyScoreableExpectationsFor(challenge) + 1) // Solution works adds one to the final score
     }
 
 })
