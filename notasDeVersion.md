@@ -2,6 +2,28 @@ Notas de versión detalladas
 =============
 Se presentan aquí notas de versión adicionales a las notas de versión aparecidas en la página [http://pilasbloques.program.ar/#/notasDeVersion](http://pilasbloques.program.ar/#/notasDeVersion). Las de esa página son exclusivamente de versiones disponibles al público, mientras que las que siguen son más detalladas, incluyendo cambios intermedios:
 
+* 1.12 (18 de Agosto de 2022)
+  * Se subió la versión de `ember-electron` a la `4.0.0` y se agregó la dependencia `electron-installer-debian` para poder empaquetar `deb`.
+  * Se migraron los scripts de `post-install` de `bash` a `js`. Esto permite que funcionen correctamente tanto en `Windows` como en `macOS`.
+  * Se disminuyó (potencialmente) el tiempo requerido para correr `npm install`. Además, se modificó la dependencia `electron-installer-debian` para que sea opcional debido a que traía problemas con `Windows`.
+  * Se modificó la redacción del enunciado del desafío 38: Las rocas de Nano.
+  * Se arregló un bug que ocasionaba que la aplicación deje de funcionar al correr las expectativas de `anidación de estructuras de control` cuando se llamaba a un procedimiento eliminado desde una estructura de control.
+  * Se modificó el feedback mostrado al grupo de control para que el mismo sea generado a partir de la configuración del desafío, y no desde las expectativas que se pudieron correr.
+  * Se agregó la IP al context, relacionado con https://github.com/Program-AR/pilas-bloques/issues/1113.
+  * Se evitó que se frene la ejecución si las validaciones fallan. Además, ahora se envía el análisis estático correcto debido a que se hace luego de correr las validaciones.
+  * El resultado de la 'expectativa' `solution works` ahora se calcula en todo momento, en lugar de enviar un valor fijo al backend.
+  * Se agregó `markdown` al cuadro que muestra feedback con respecto a las expectativas.
+  * Se codifican los nombres de las expectativas antes de enviarlos a `Mulang` debido a que si dichos nombres usaban tildes traían problemas (Mulang no devolvía los nombres con tildes). Más info acá: https://github.com/Program-AR/pilas-bloques/issues/1096.
+  * Se arregló un bug que ocasionaba que el desafío "Nuevos comandos" no contara como ejercicio con la expectativa `decomposition`.
+  * Se resolvió un bug que hacía que el score final del desafío se calculara mal si el mismo no tenía estructuras de control.
+  * Se modificó el modal que muestra el feedback con respecto a las espectativas para que entre en alto en pantallas chicas.
+  * Se subió la versión de `jshint` a la 11 para que permitiera el optional chaining.
+  * Se agregó un archivo que contiene los `material icons` para que aparezcan en la aplicación aún si no tiene conexión a internet.
+  * Se arregló un bug que hacía que se genere mal el AST cuando había un bloque "Repetir vacío".
+  * Se arregló un bug que ocasionaba que el diálogo de fin de desafío se viera mal al achicar la pantalla.
+  * Se quitó información no relevante asociada al análisis estático que se envía al backend. Ahora nos quedamos solamente con los ids de las expectativas y si pasó o no.
+  * Se aumentó el límite de bloques posibles que puede tener un procedimiento para ser considerado demasiado largo en algunos desafíos (28, 39, 41, 42, 43).
+
 * 1.11.1 (22 de Agosto de 2022)
   * Se agregó mulang.js, ejecutándose cada vez que se hace play. Cuando mulang está cargando, el botón se grisa. En firefox tarda un poco más, especialmente la primera vez que se aprieta el botón en cada desafío.
   * Se agregaron las expectativas, desactivadas por feature flag por ahora. Se configuran a nivel desafío, capítulo y libro.
