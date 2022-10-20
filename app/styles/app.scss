@@ -55,12 +55,12 @@ $font-family: Roboto, "Helvetica Neue", sans-serif;
 
 @font-face {
   font-family: 'NotoColorEmoji-Regular';
-  src: url(/fonts/NotoColorEmoji-Regular.ttf) format('truetype');
+  src: url("../fonts/NotoColorEmoji.woff") format("woff");
 }
 
 @font-face {
   font-family: 'NotoEmoji-Bold';
-  src: url(/fonts/NotoColorEmoji-Bold.ttf) format('truetype');
+  src: url("../fonts/NotoEmoji-Bold.ttf") format('truetype');
 }
 
 /*
@@ -74,7 +74,7 @@ $font-family: Roboto, "Helvetica Neue", sans-serif;
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(/fonts/material_icons_V139.woff2) format('woff2');
+  src: url("../fonts/material_icons_V139.woff2") format('woff2');
 }
 
 .material-icons {
