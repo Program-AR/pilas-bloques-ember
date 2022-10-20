@@ -540,10 +540,7 @@ module('Unit | Service | pilas-mulang | Parse', function (hooks) {
     procedure('Hacer algo2', [],
       application('GirarGrados', reference('parámetro 1')),
       ifElse(none(), none(), none())
-    ),
-    reference('parámetro 1'),
-    number(100),
-    application('SaltarHaciaAdelante', none())
+    )
   ])
 
   let completeSolution = [`
