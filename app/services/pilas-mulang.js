@@ -40,7 +40,7 @@ export default Service.extend({
   },
 
   parseAll(workspace) {
-    const astNodes = workspace.getTopBlocks().map(this.parse)
+    const astNodes = workspace.getTopBlocks().filter(b => !b.disabled).map(this.parse)
     return createNode("Sequence", astNodes)
   },
 
