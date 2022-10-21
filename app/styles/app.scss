@@ -55,12 +55,42 @@ $font-family: Roboto, "Helvetica Neue", sans-serif;
 
 @font-face {
   font-family: 'NotoColorEmoji-Regular';
-  src: url(/fonts/NotoColorEmoji-Regular.ttf) format('truetype');
+  src: url("../fonts/NotoColorEmoji.woff") format("woff");
 }
 
 @font-face {
   font-family: 'NotoEmoji-Bold';
-  src: url(/fonts/NotoColorEmoji-Bold.ttf) format('truetype');
+  src: url("../fonts/NotoEmoji-Bold.ttf") format('truetype');
+}
+
+/*
+ * Ember paper does this on its own, but requires internet.
+ * So it was necessary to copy the fonts file.
+ * This enables icons to load if you have no internet connection.
+ *
+*/
+/* fallback */
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/material_icons_V139.woff2") format('woff2');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -moz-font-feature-settings: 'liga';
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .emoji {

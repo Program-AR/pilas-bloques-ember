@@ -372,11 +372,6 @@ module('Unit | Components | pilas-blockly', function (hooks) {
     })
 
     test('On running should send the metadata to the API', async function (assert) {
-      const solutionWorksResult = {
-        id: 'solution_works',
-        isScoreable: true,
-        result: true
-      }
       Blockly.textToBlock(filledProgram)
       this.ctrl.send('onChangeWorkspace', filledProgram) // Fire property change :(
       this.ctrl.send('ejecutar')
@@ -387,7 +382,7 @@ module('Unit | Components | pilas-blockly', function (hooks) {
         couldExecute: true,
         allExpectResults: [],
         score: {
-          expectResults: [solutionWorksResult],
+          expectResults: {solution_works: true},
           percentage: 100
         },
         error: ''
