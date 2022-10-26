@@ -51,7 +51,7 @@ export default Service.extend({
     const randomExperimentGroup = this.getRandomExperimentGroup()
     this.storage.saveExperimentGroup(randomExperimentGroup)
 
-    if (this.pilasBloquesApi.getUser()) {
+    if (randomExperimentGroup && this.pilasBloquesApi.getUser()) {
       this.pilasBloquesApi.saveExperimentGroup(randomExperimentGroup)
     }
 
