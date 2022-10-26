@@ -7,6 +7,7 @@ import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
 import simulateRouterHooks from "./simulate-router.hooks";
 import { failAllApiFetchs } from './utils';
+import { render } from '@ember/test-helpers'
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
@@ -185,7 +186,7 @@ export function actividadTest(nombre, opciones) {
          * hace dentro de la aplicación.
          */
 
-        this.render(hbs`
+        render(hbs`
                     {{challenge-workspace
                       debug=false
                       pilas=pilasService
