@@ -109,6 +109,12 @@ Pilas Bloques can be compiled in different ways depending on the experiment grou
 EXPERIMENT_GROUP=treatment npm run start
 ```
 
+In Windows this is done with:
+
+```
+SET "EXPERIMENT_GROUP=treatment" && npm run start
+```
+
 The experiment groups are: `notAffected`, `control`, `treatment` and `autoassign`.
 
 - `notAffected`: (default) it does not show any feedback on current solution, just challenge completion.
