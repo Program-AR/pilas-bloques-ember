@@ -109,6 +109,11 @@ Pilas Bloques puede compilarse de forma distinta dependiendo del grupo experimen
 EXPERIMENT_GROUP=treatment npm run start
 ```
 
+En Windows esto se tiene que hacer con:
+```
+SET "EXPERIMENT_GROUP=treatment" && npm run start
+```
+
 Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `autoassign`.
 
 - `notAffected`: (default) no muestra ningún tipo de feedback sobre la solución propuesta.
