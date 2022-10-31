@@ -1,6 +1,7 @@
 import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 import environment from '../config/environment';
+import { DEFAULT_LOCALE } from '../routes/application';
 
 const { sessionExpire } = config.pbAnalytics
 
@@ -21,6 +22,8 @@ export default Service.extend({
     const ip = this.storage.getUserIp()
 
     const experimentGroup = this.experiments.experimentGroup()
+
+    const locale = this.storage.getSelectedLocale() || DEFAULT_LOCALE
   
     return {
       ...session,
@@ -30,7 +33,8 @@ export default Service.extend({
       version,
       experimentGroup,
       url: window.location.href,
-      ip
+      ip,
+      locale
     }
   },
 
