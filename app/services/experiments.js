@@ -77,8 +77,7 @@ export default Service.extend({
   async saveUserIP() {
     if (!this.storage.getUserIp()) {
       try {
-        const response = await fetch("https://api64.ipify.org?format=json")
-        const jsonIp = await response.json()
+        const jsonIp = await this.pilasBloquesApi.userIp()
         this.storage.saveUserIp(jsonIp.ip)
       } catch (e) {
         console.error(e);

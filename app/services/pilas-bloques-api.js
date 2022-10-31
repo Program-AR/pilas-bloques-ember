@@ -90,6 +90,10 @@ export default Service.extend({
 
   getUser() { return this.storage.getUser() },
 
+  async userIp() {
+    return this._send('GET', 'user-ip', undefined, false)
+  },
+
   async _send(method, resource, body, critical = true) {
     const user = this.getUser()
     const url = `${baseURL}/${resource}`
