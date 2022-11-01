@@ -29,7 +29,10 @@ export default Model.extend({
   escena: attr('string'),
   hasAutomaticGrading: attr('boolean', { defaultValue: true }),
   estiloToolbox: attr('string', { defaultValue: "desplegable" }),
-  grupo: belongsTo('grupo'),
+  grupo: belongsTo('grupo', {async: false}), /* {async: false} is needed because the custom challenges should not have a group.
+  Without this, this.grupo is an empty ember object, instead of undefined. We want this to be undefined so we dont have to refactor other places
+  of the app to consider the case in which the group is an empty ember object instead of undefined.
+  */
   bloques: attr(),
   solucionInicial: attr('string'),
   debugging: attr('boolean'),
@@ -44,19 +47,21 @@ export default Model.extend({
     return this.solucionInicial || xmlBloqueEmpezarAEjecutar
   }),
 
+  challengesInTheSameGroup: computed('grupo', function(){
+    const groupChallenges = this.grupo?.get('desafios').toArray() //The challenge could be a custom challenge, in which case it doesnt have a group.
+    return groupChallenges || [this]
+  }),
+
   indexInGroup: computed('grupo', function () {
-    const groupChallenges = this.grupo.get('desafios').toArray()
-    return groupChallenges.findIndex(challenge => challenge.id === this.id)
+    return this.challengesInTheSameGroup.findIndex(challenge => challenge.id === this.id)
   }),
 
   nextChallenge: computed('grupo', function () {
-    const groupChallenges = this.grupo.get('desafios').toArray()
-    return groupChallenges[this.indexInGroup + 1]
+    return this.challengesInTheSameGroup[this.indexInGroup + 1]
   }),
 
   previousChallenge: computed('grupo', function () {
-    const groupChallenges = this.grupo.get('desafios').toArray()
-    return groupChallenges[this.indexInGroup - 1]
+    return this.challengesInTheSameGroup[this.indexInGroup - 1]
   }),
 
 
