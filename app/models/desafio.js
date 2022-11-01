@@ -29,7 +29,10 @@ export default Model.extend({
   escena: attr('string'),
   hasAutomaticGrading: attr('boolean', { defaultValue: true }),
   estiloToolbox: attr('string', { defaultValue: "desplegable" }),
-  grupo: belongsTo('grupo', {async: false}),
+  grupo: belongsTo('grupo', {async: false}), /* {async: false} is needed because the custom challenges should not have a group.
+  Without this, this.grupo is an empty ember object, instead of undefined. We want this to be undefined so we dont have to refactor other places
+  of the app to consider the case in which the group is an empty ember object instead of undefined.
+  */
   bloques: attr(),
   solucionInicial: attr('string'),
   debugging: attr('boolean'),
