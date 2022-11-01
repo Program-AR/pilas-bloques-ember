@@ -102,10 +102,10 @@ package_win32() {
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 
-package_site() {
-    echo "Generating package for site..."
+package_app() {
+    echo "Generating package for app..."
     mkdir -p ./binaries
-    zip -r ./binaries/$NAME-$VERSION-site.zip $DIST/
+    zip -r ./binaries/$NAME-$VERSION-app.zip $DIST/
 }
 
 case "$1" in
@@ -116,6 +116,6 @@ case "$1" in
     (-linux)            package_linux;;
     (-osx)              package_osx;;
     (-win32)            package_win32;;
-    (-site)             package_site;;
+    (-app)              package_app;;
     (*)                 echo Try 'package -help' for more information.;;
 esac 
