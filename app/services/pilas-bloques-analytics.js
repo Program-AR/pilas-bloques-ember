@@ -1,7 +1,6 @@
 import Service, { inject as service } from '@ember/service'
 import config from "../config/environment"
 import environment from '../config/environment';
-import { DEFAULT_LOCALE } from '../routes/application';
 
 const { sessionExpire } = config.pbAnalytics
 
@@ -10,6 +9,7 @@ export default Service.extend({
   platform: service(),
   storage: service(),
   experiments: service(),
+  usesFullScreenMode: false,
 
   async context() {
     const userId = this.storage.getUserId()
@@ -23,7 +23,11 @@ export default Service.extend({
 
     const experimentGroup = this.experiments.experimentGroup()
 
-    const locale = this.storage.getSelectedLocale() || DEFAULT_LOCALE
+    const locale = this.storage.getSelectedLocale()
+    const usesNightTheme = this.storage.getUseNightTheme()
+    const usesSimpleRead = this.storage.getUseSimpleRead()
+    const usesFullScreen = this.usesFullScreenMode
+    const solvedChallenges = this.storage.getSolvedChallenges()
   
     return {
       ...session,
@@ -34,8 +38,16 @@ export default Service.extend({
       experimentGroup,
       url: window.location.href,
       ip,
-      locale
+      locale,
+      usesNightTheme,
+      usesSimpleRead,
+      usesFullScreen,
+      solvedChallenges
     }
+  },
+
+  setUsesFullScreenMode(usesIt) {
+    this.usesFullScreenMode = usesIt
   },
 
   // This is async because it needs to be polymorphic with the service pilasBloquesApi
