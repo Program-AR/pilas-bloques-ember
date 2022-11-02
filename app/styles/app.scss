@@ -14,7 +14,6 @@
 @import "disclaimer-principal.scss";
 @import "expectation-modal.scss";
 @import "fireworks.scss";
-@import "font-awesome.scss";
 @import "footer.scss";
 @import "header.scss";
 @import "menu.scss";
@@ -557,7 +556,7 @@ md-toast .md-toast-content {
   & > * {
     color: black;
   }
-} 
+}
 
 .md-stepper-indicator-wrapper {
   background-color: inherit;
