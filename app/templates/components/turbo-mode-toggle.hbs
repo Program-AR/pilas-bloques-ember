@@ -1,5 +1,5 @@
 <Toggle @element-id="turbo-button" @glow={{true}} @isChecked={{turboMode}} @onToggle={{action 'updateTurboMode'}} @tooltip={{if turboMode (t "components.turboModeToggle.turnOff") (t "components.turboModeToggle.turnOn")}}>
-    <FaIcon @icon="bolt" class="slider-icon"/>
+    <FaIcon @icon="bolt" class="turbo-mode-icon"/>
 </Toggle>
 
 <Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}}>

@@ -1,6 +1,6 @@
 {{#unless book.modoLecturaSimple}}
     <Toggle class="simple-read" @element-id="simple-read-slider" @tooltip={{if (compute (action shouldShowSimpleRead)) (t "components.simpleReadToggle.disable") (t "components.simpleReadToggle.enable")}} @isChecked={{compute (action shouldShowSimpleRead)}} @onToggle={{action 'toggleSimpleRead'}}>
-        <b class="slider-icon">
+        <b class="simple-read-icon">
           {{#if (compute (action shouldShowSimpleRead))}}
             A
           {{else}}

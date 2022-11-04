@@ -40,10 +40,26 @@
 
   .slider-icon {
     position: absolute;
-    padding-top: 7px;
-    padding-left: 10px;
     transition: .4s;
     color: #777777;
+  }
+
+  .night-theme-icon {
+    @extend .slider-icon;
+    padding-top: 7px;
+    padding-left: 7px;
+  }
+
+  .turbo-mode-icon{
+    @extend .slider-icon;
+    padding-top: 9px;
+    padding-left: 10px;
+  }
+
+  .simple-read-icon{
+    @extend .slider-icon;
+    padding-top: 5px;
+    padding-left: 11px;
   }
 
   input:checked + .slider .slider-icon {
