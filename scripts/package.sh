@@ -32,6 +32,7 @@ help() {
 	echo "    -linux_ia32_zip   Make a electron linux x32 zip electron package."
 	echo "    -win32            Make a electron Win32 electron package."
 	echo "    -linux            Make all electron linux electron packages."
+    echo "    -app              Make an app package"
 	echo ""
 	echo "  NOTE: every version generates a binary automatically in CI."
 	echo ""
