@@ -3,8 +3,10 @@
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
 NAME=$(sh scripts/projectName.sh)
 
+DIST_FOLDER_NAME=dist_prod
+
 # The folder with all the publishable webapp
-DIST=./dist_prod
+DIST=./$DIST_FOLDER_NAME
 
 # The project version.
 VERSION="$(sh scripts/projectVersion.sh)$(node scripts/experimentGroupId.js $DIST)"
@@ -106,7 +108,7 @@ package_win32() {
 package_html() {
     echo "Generating package for html..."
     mkdir -p ./binaries
-    zip -r ./binaries/$NAME-$VERSION-html.zip $DIST/
+    tar czf ./binaries/$NAME-$VERSION-html.tar.gz $DIST_FOLDER_NAME # ./ should be ommited, otherwise it will be inside tar.gz archive.
 }
 
 case "$1" in
