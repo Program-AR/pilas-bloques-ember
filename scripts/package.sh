@@ -32,7 +32,7 @@ help() {
 	echo "    -linux_ia32_zip   Make a electron linux x32 zip electron package."
 	echo "    -win32            Make a electron Win32 electron package."
 	echo "    -linux            Make all electron linux electron packages."
-    echo "    -app              Make an app package"
+    echo "    -html             Make a html package"
 	echo ""
 	echo "  NOTE: every version generates a binary automatically in CI."
 	echo ""
@@ -103,10 +103,10 @@ package_win32() {
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 
-package_app() {
-    echo "Generating package for app..."
+package_html() {
+    echo "Generating package for html..."
     mkdir -p ./binaries
-    zip -r ./binaries/$NAME-$VERSION-app.zip $DIST/
+    zip -r ./binaries/$NAME-$VERSION-html.zip $DIST/
 }
 
 case "$1" in
@@ -117,6 +117,6 @@ case "$1" in
     (-linux)            package_linux;;
     (-osx)              package_osx;;
     (-win32)            package_win32;;
-    (-app)              package_app;;
+    (-html)             package_html;;
     (*)                 echo Try 'package -help' for more information.;;
 esac 
