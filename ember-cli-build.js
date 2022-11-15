@@ -18,10 +18,6 @@ module.exports = function (defaults) {
     },
     fingerprint: {
       enabled: false,
-    },
-    'ember-font-awesome': {
-      useScss: true,
-      includeFontFiles: true
     }
   });
 
