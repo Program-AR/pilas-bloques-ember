@@ -16,7 +16,7 @@ export default Route.extend({
         throw new Error(`No existe una actividad con el nombre ${params.nombreDelDesafio}`);
       }
 
-      return this.transitionTo("desafio", model);
+      return this.router.transitionTo("desafio", model);
     });
 
   }
