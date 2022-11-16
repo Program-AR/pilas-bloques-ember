@@ -1,7 +1,7 @@
 {{#if (or initial (and item item.titulo))}}
     <li class={{classes}}>
-        {{#if href}}
-            <a href={{href}}>{{yield}}{{item.titulo}}</a>
+        {{#if this.href}}
+            <a href={{this.href}}>{{yield}}{{item.titulo}}</a>
         {{else}}
             <a>{{yield}}{{item.titulo}}</a>
         {{/if}}

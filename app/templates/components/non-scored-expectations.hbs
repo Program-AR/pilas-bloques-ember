@@ -1,12 +1,12 @@
   <div class='expectationResults' >
     <div class="goal passed">
         <span class="emoji">👉</span>
-        {{markdown-to-html solutionWorksDescription}}
+        {{markdown-to-html this.solutionWorksDescription}}
     </div>
     {{#each expectations as |result|}}
       <div class="goal control">
         <span class="emoji">👉</span>
-        {{markdown-to-html result.description.forControlGroup}}
+        {{markdown-to-html this.result.description.forControlGroup}}
       </div>
     {{/each}}
   </div>

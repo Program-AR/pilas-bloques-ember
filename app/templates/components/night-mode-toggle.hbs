@@ -1,6 +1,6 @@
-<Toggle class="night-mode" @element-id="night-mode-slider" @tooltip={{if isNightTheme (t "components.nightModeToggle.lightTheme") (t "components.nightModeToggle.darkTheme")}} @isChecked={{isNightTheme}} @onToggle={{action "toggleTheme"}}>
+<Toggle class="night-mode" @element-id="night-mode-slider" @tooltip={{if this.isNightTheme (t "components.nightModeToggle.lightTheme") (t "components.nightModeToggle.darkTheme")}} @isChecked={{this.isNightTheme}} @onToggle={{action "toggleTheme"}}>
     <div class="night-theme-icon">
-      {{#if isNightTheme}}
+      {{#if this.isNightTheme}}
         <FaIcon @icon="moon"/>
       {{else}}
         <FaIcon @icon="sun"/>

@@ -1,10 +1,10 @@
-{{#if challenge.deshabilitado}}
-  <img class='grayscale semi-transparente' src={{challenge.coverSrc}}>
+{{#if this.challenge.deshabilitado}}
+  <img class='grayscale semi-transparente' src={{this.challenge.coverSrc}}>
   <div class="ribbon right gray semi-transparente"><a>{{t "components.challengeLink.soon"}}</a></div>
 {{else}}
-  <Link @href={{href-to "desafio" challenge (query-params codigo="")}} @openOnNewTab={{false}}>
-    <img class='desafio-img' src={{challenge.coverSrc}}>
+  <Link @href={{href-to "desafio" this.challenge (query-params codigo="")}} @openOnNewTab={{false}}>
+    <img class='desafio-img' src={{this.challenge.coverSrc}}>
   </Link>
 {{/if}}
 
-  <div class='pilas-desafio-titulo'>{{challenge.titulo}}</div>
+  <div class='pilas-desafio-titulo'>{{this.challenge.titulo}}</div>

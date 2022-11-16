@@ -6,35 +6,35 @@
     
     <PbInput 
       @label={{t "templates.register.username"}}
-      @model={{ registerData.username }} 
+      @model={{ this.registerData.username }} 
       @focusOut={{ action "checkUsername" }}
-      @customValidations={{ usernameFormatValidation }}
+      @customValidations={{ this.usernameFormatValidation }}
       @required={{ true }}
-      @error={{ if (not validUsername) (t "templates.register.errors.userAlreadyExists") }} />
+      @error={{ if (not this.validUsername) (t "templates.register.errors.userAlreadyExists") }} />
 
     <PbInput 
       @type="password" 
       @label={{t "templates.register.password"}}
-      @model={{ registerData.password }} 
+      @model={{ this.registerData.password }} 
       @required={{ true }} />
 
-    <PasswordConfirmation @password={{ registerData.password }} />
+    <PasswordConfirmation @password={{ this.registerData.password }} />
 
     <PbInput 
       @type="email" 
       @label="{{t "templates.register.email"}} ({{t "templates.register.options.optional"}})"
-      @model={{ registerData.email }}
-      @customValidations={{ mailValidation }} />
+      @model={{ this.registerData.email }}
+      @customValidations={{ this.mailValidation }} />
 
     <p for="avatarURL">
       <label>{{t "templates.register.chooseAvatar"}}:</label>
-      <PbInput class="invisible-input" @type="checkbox" @model={{ registerData.avatarURL }} @required={{ true }} />  
+      <PbInput class="invisible-input" @type="checkbox" @model={{ this.registerData.avatarURL }} @required={{ true }} />  
     </p>
     <PaperGridList @cols="4" @rowHeight="gt-xs-1:1 gt-md-1:1" as |grid|>
       {{#each avatars as |avatar|}}
         <grid.tile as |tile|>
-          <button type="button" class="avatar" onClick={{action (mut registerData.avatarURL) avatar}}>
-            <img class={{ if (not (eq registerData.avatarURL avatar)) "gray" "selected"}} src={{ avatar }} />
+          <button type="button" class="avatar" onClick={{action (mut this.registerData.avatarURL) avatar}}>
+            <img class={{ if (not (eq this.registerData.avatarURL avatar)) "gray" "selected"}} src={{ avatar }} />
           </button>
         </grid.tile>
       {{/each}}
@@ -47,15 +47,15 @@
 
     <PbInput 
       @label={{t "templates.register.parentalFullname"}}
-      @model={{ registerData.parentName }} 
+      @model={{ this.registerData.parentName }} 
       @required={{ true }}
-      @customValidations={{ parentNameValidation }} />
+      @customValidations={{ this.parentNameValidation }} />
 
     <PbInput
       @label={{t "templates.register.parentalId"}}
-      @model={{ registerData.parentDNI }} 
+      @model={{ this.registerData.parentDNI }} 
       @required={{ true }} 
-      @customValidations={{ DNIValidation }} />
+      @customValidations={{ this.DNIValidation }} />
 
     <Collapsable 
       @title={{t "templates.register.whyData.title"}}
@@ -86,8 +86,8 @@
     <ProgressButton 
       class="link" 
       type="submit" 
-      @isDisabled={{not validUsername}} 
-      @loading={{ pilasBloquesApi.loading.register }}>
+      @isDisabled={{not this.validUsername}} 
+      @loading={{ this.pilasBloquesApi.loading.register }}>
         {{t "templates.register.register"}}
     </ProgressButton>
   </PaperForm>

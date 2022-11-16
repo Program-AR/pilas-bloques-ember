@@ -1,4 +1,4 @@
-<label class="switch {{if glow "glow" ""}}" title={{tooltip}}>
-    <Input @type={{"checkbox"}} @id={{element-id}} @checked={{isChecked}} @disabled={{isDisabled}} onclick={{onToggle}} />
-    <span class="slider round {{if isDisabled "not-allowed" "pointer"}}">{{yield}}</span>
+<label class="switch {{if this.glow "glow" ""}}" title={{this.tooltip}}>
+    <Input @type={{"checkbox"}} @id={{this.element-id}} @checked={{this.isChecked}} @disabled={{this.isDisabled}} onclick={{this.onToggle}} />
+    <span class="slider round {{if this.isDisabled "not-allowed" "pointer"}}">{{yield}}</span>
 </label>

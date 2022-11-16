@@ -1,4 +1,4 @@
-{{#if cargando}}
+{{#if this.cargando}}
   <Spinner @centered={{true}} />
 {{else}}
   <EmberBlockly
@@ -12,7 +12,7 @@
       @duplicate={{blockly_duplicate}}
       @help={{false}}
       @disableBlock={{false}}
-      @showCode={{showCode}}
+      @showCode={{this.showCode}}
       @comment={{true}}
       @onChangeWorkspace={{action "onChangeWorkspace"}}
       @onNewWorkspace={{action "onNewWorkspace"}}
@@ -20,22 +20,22 @@
     />
     <span class="pilas-blockly-workspace-buttons">
       <ChallengeWorkspaceButtons 
-        @actividad={{challenge}} 
-        @shouldUseFloatingMode={{shouldUseFloatingMode}} 
-        @changeScreenMode={{changeScreenMode}} 
-        @xml={{codigoActualEnFormatoXML}}
+        @actividad={{this.challenge}} 
+        @shouldUseFloatingMode={{this.shouldUseFloatingMode}} 
+        @changeScreenMode={{this.changeScreenMode}} 
+        @xml={{this.codigoActualEnFormatoXML}}
         @setWorkspace={{action "setWorkspace"}}
       />
     </span>
 {{/if}}
 
 {{#if isEndModalOpen}}
-  {{#if (compute (action shouldShowCongratulationsModal))}}
+  {{#if (compute (action this.shouldShowCongratulationsModal))}}
     <CongratulationsModal @onClose={{action "hideEndModal"}}/>
   {{else}}
     <ExpectationModal
-      @expects={{expects}}
-      @challenge={{challenge}}
+      @expects={{this.expects}}
+      @challenge={{this.challenge}}
       @onClose={{action "hideEndModal"}}/>
   {{/if}}
 {{/if}}

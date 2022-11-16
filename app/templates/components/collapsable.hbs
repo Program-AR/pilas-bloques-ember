@@ -1,11 +1,11 @@
 <div class='collapsable-title' {{action 'toggle'}}>
   {{title}}
-  {{#if isExpanded}}
+  {{#if this.isExpanded}}
     {{paper-icon "keyboard_arrow_up"}}
   {{else}}
     {{paper-icon "keyboard_arrow_down"}}
   {{/if}}
 </div>
-{{#if isExpanded}}
+{{#if this.isExpanded}}
   {{yield}}
 {{/if}}

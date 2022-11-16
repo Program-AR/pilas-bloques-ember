@@ -3,11 +3,11 @@
     <h3>{{t "components.login.already"}}</h3>
   <PaperForm @onSubmit={{action "doLogin"}} as |form|>
     <PbInput @label={{t "components.login.username"}}
-      @model={{ credentials.username }} 
+      @model={{ this.credentials.username }} 
       @required={{ true }} />
 
     <PbInput @type="password" @label={{t "components.login.password"}}
-      @model={{ credentials.password }} 
+      @model={{ this.credentials.password }} 
       @required={{ true }} />
 
     {{#if wrongLogin}}
@@ -20,7 +20,7 @@
       </PaperCard>
     {{/if}}
 
-    <ProgressButton type="submit" @loading={{ pilasBloquesApi.loading.login }}>
+    <ProgressButton type="submit" @loading={{ this.pilasBloquesApi.loading.login }}>
       {{t "components.login.login"}}
     </ProgressButton>
   </PaperForm>

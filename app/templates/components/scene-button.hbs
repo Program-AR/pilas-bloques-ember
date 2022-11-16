@@ -1,13 +1,13 @@
 {{#unless isHidden}}
     <div class={{class}}>
         <Button 
-            @isDisabled={{isDisabled}}
-            @isFab={{isMini}} 
-            @isMini={{isMini}}
-            @isRaised={{isMini}}
-            @element-id={{element-id}}
-            @tooltip={{tooltip}}
-            @onClick={{onClick}}
+            @isDisabled={{this.isDisabled}}
+            @isFab={{this.isMini}} 
+            @isMini={{this.isMini}}
+            @isRaised={{this.isMini}}
+            @element-id={{this.element-id}}
+            @tooltip={{this.tooltip}}
+            @onClick={{this.onClick}}
             >
                 {{#if icon}}
                     {{paper-icon icon}}
@@ -17,7 +17,7 @@
                     {{/if}}
                 {{/if}}
 
-                {{#unless isMini}} 
+                {{#unless this.isMini}} 
                     <span class="button-typography">{{label}}</span>
                 {{/unless}}
         </Button>

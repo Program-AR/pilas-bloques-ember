@@ -1,15 +1,15 @@
-<Link @href={{href-to "libros.verLibro" book}} @openOnNewTab={{false}} data-test-book  >
+<Link @href={{href-to "libros.verLibro" this.book}} @openOnNewTab={{false}} data-test-book  >
 
-  {{#if book.imagen}}
+  {{#if this.book.imagen}}
     <div class="exercises-book-image">
-      <img src="imagenes/libros/{{book.imagen}}"/>
+      <img src="imagenes/libros/{{this.book.imagen}}"/>
     </div>
   {{/if}}
 
-  <h3 class="book-title" data-test-book-id={{book.id}} data-test-book-title >{{book.titulo}}</h3>
+  <h3 class="book-title" data-test-book-id={{this.book.id}} data-test-book-title >{{this.book.titulo}}</h3>
 
   <div class="challenges-book-description">
-    <i data-test-book-description>{{book.descripcion}}</i>
+    <i data-test-book-description>{{this.book.descripcion}}</i>
   </div>
 
 </Link>

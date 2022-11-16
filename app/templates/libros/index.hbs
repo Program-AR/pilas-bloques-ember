@@ -1,6 +1,6 @@
 <Header/>
 
-<div class="contenido-principal {{if (compute (action shouldShowSimpleRead)) 'simple-read-mode'}}">
+<div class="contenido-principal {{if (compute (action this.shouldShowSimpleRead)) 'simple-read-mode'}}">
 
   <div class="box">
 
@@ -16,7 +16,7 @@
         {{ t "templates.libros.index.challenges"}}
       </p>
 
-      {{#each model as |book|}}
+      {{#each this.model as |book|}}
         {{#unless book.oculto}}
           {{challenges-book book=book}}
         {{/unless}}
@@ -25,7 +25,7 @@
 
     <div class="jumbotron center">
 
-    {{#if enableChallengeCreator}}
+    {{#if this.enableChallengeCreator}}
       <p>
       {{ t "templates.libros.index.customChallenges"}}
       </p>

@@ -1,4 +1,4 @@
-{{#paper-dialog class="flex" onClose=onClose fullscreen=true origin=dialogOrigin parent=dialogParent clickOutsideToClose=true}}
+{{#paper-dialog class="flex" onClose=this.onClose fullscreen=true origin=dialogOrigin parent=dialogParent clickOutsideToClose=true}}
     <PaperToolbar>
         <PaperToolbarTools>
             <h2>{{title}}</h2>
@@ -11,8 +11,8 @@
     </PaperDialogContent>
     {{#if hasButtons}}
         <PaperDialogActions class="layout-row">
-            <Button @onClick={{onClose}}>{{cancel}}</Button>
-            <Button @onClick={{onSuccess}}>{{success}}</Button>
+            <Button @onClick={{this.onClose}}>{{this.cancel}}</Button>
+            <Button @onClick={{this.onSuccess}}>{{this.success}}</Button>
         </PaperDialogActions>
     {{/if}}
 {{/paper-dialog}}
