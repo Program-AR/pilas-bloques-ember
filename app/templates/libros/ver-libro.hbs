@@ -9,7 +9,7 @@
   <p><Link @href={{href-to "libros"}} @openOnNewTab={{false}}><FaIcon @icon="chevron-left"/> {{t "templates.libros.ver-libro.backBooksList"}}</Link></p>
 
 
-  {{#each model.capitulos as |capitulo|}}
+  {{#each this.model.capitulos as |capitulo|}}
     <div data-test-book-view-chapter>
 
       {{#if capitulo.titulo}}
@@ -34,7 +34,7 @@
     <p class="mensaje-sin-desafios">{{t "templates.libros.ver-libro.withoutChallenges"}}</p>
   {{/each}}
 
-  {{#unless model.capitulos.isSettled}}
+  {{#unless this.model.capitulos.isSettled}}
     <Spinner @centered={{true}} />
   {{/unless}}
 
