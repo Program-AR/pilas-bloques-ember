@@ -65,6 +65,7 @@
     "blockly-package": "^1.0.0",
     "clientjs": "^0.1.11",
     "creador-de-desafios-pilasbloques": "^1.0.1",
+    "miragejs": "^0.1.46",
     "mulang": "^6.0.5",
     "pilas-bloques-ember-intl": "^1.1.2",
     "pilas-bloques-exercises": "1.2.17",

@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-import { Model, hasMany, belongsTo } from 'ember-cli-mirage';
+import { Model, hasMany, belongsTo } from 'miragejs';
 
 export default Model.extend({
   desafios: hasMany('desafio'),
