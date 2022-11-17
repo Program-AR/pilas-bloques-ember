@@ -93,7 +93,7 @@
     "electron-rebuild": "2.0.0",
     "ember-ajax": "^5.0.0",
     "ember-auto-import": "^1.11.3",
-    "ember-blockly": "^0.3.0",
+    "ember-blockly": "^0.3.1",
     "ember-cli": "^3.28.0",
     "ember-cli-app-version": "^5.0.0",
     "ember-cli-babel": "^7.26.6",
