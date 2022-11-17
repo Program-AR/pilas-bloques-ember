@@ -1,5 +1,5 @@
-{{#unless isHidden}}
-    <div class={{class}}>
+{{#unless this.isHidden}}
+    <div class={{this.class}}>
         <Button 
             @isDisabled={{this.isDisabled}}
             @isFab={{this.isMini}} 
@@ -9,8 +9,8 @@
             @tooltip={{this.tooltip}}
             @onClick={{this.onClick}}
             >
-                {{#if icon}}
-                    {{paper-icon icon}}
+                {{#if this.icon}}
+                    {{paper-icon this.icon}}
                 {{else}}
                     {{#if faIcon}}
                         <i class={{faIcon}}></i>
@@ -18,7 +18,7 @@
                 {{/if}}
 
                 {{#unless this.isMini}} 
-                    <span class="button-typography">{{label}}</span>
+                    <span class="button-typography">{{this.label}}</span>
                 {{/unless}}
         </Button>
     </div>

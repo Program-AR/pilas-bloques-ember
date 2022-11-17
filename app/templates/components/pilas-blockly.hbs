@@ -3,13 +3,13 @@
 {{else}}
   <EmberBlockly
       @mediaFolder={{"media/"}}
-      @blocks={{blockly_toolbox}}
-      @workspace={{initial_workspace}}
+      @blocks={{this.blockly_toolbox}}
+      @workspace={{this.initial_workspace}}
       @withZoom={{true}}
       @withTrash={{true}}
-      @comments={{blockly_comments}}
-      @disable={{blockly_disable}}
-      @duplicate={{blockly_duplicate}}
+      @comments={{this.blockly_comments}}
+      @disable={{this.blockly_disable}}
+      @duplicate={{this.blockly_duplicate}}
       @help={{false}}
       @disableBlock={{false}}
       @showCode={{this.showCode}}
@@ -29,7 +29,7 @@
     </span>
 {{/if}}
 
-{{#if isEndModalOpen}}
+{{#if this.isEndModalOpen}}
   {{#if (compute (action this.shouldShowCongratulationsModal))}}
     <CongratulationsModal @onClose={{action "hideEndModal"}}/>
   {{else}}

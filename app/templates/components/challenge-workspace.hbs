@@ -8,7 +8,7 @@
 <div class="workspace flex layout-column {{if (compute (action this.shouldShowSimpleRead)) 'simple-read-mode'}}">
 
   {{#if (and (media 'isMobile') (media 'isPortrait')) }}
-    <PhoneRotationWarning @modoLecturaSimple={{compute (action this.shouldShowSimpleRead)}} />
+    <PhoneRotationWarning @modo ={{compute (action this.shouldShowSimpleRead)}} />
   {{/if}}
 
   {{#unless this.shouldUseFloatingMode}}
@@ -19,9 +19,9 @@
   {{/unless}}
 
   <div class="flex layout-row">
-    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
+    <PaperCard class={{if this.shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
-        @codigo={{codigo}}
+        @codigo={{this.codigo}}
         @showCode={{this.showCode}}
         @cargando={{this.cargando}}
         @challenge={{this.model}}
@@ -40,7 +40,7 @@
         @isPausedOnBreackpoint={{this.estaPausadoEnUnBreackpoint}}
         @needShowRestartButton={{this.debeMostarReiniciar}}
         @needShowStepByStepButtons={{this.debeMostrarPasoHabilitado}}
-        @pilas={{pilas}}
+        @pilas={{this.pilas}}
         @reset={{action 'reiniciar' false}}
         @run={{action 'ejecutar' false}}
         @running={{this.ejecutando}}

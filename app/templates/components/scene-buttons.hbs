@@ -1,15 +1,15 @@
 {{#unless this.cargando}}
-    <PaperCard class={{if shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
+    <PaperCard class={{if this.shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
         
         <SceneButton 
-            @class={{if areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
+            @class={{if this.areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
             @element-id="step-by-step-run-button"
             @label={{ t "components.sceneButtons.stepByStepRun.label"}}
             @icon="skip_next"
             @isHidden={{or (not this.needShowStepByStepButtons) this.running}}
             @isDisabled={{or this.running this.areExpectationsRunning}} 
             @isMini={{this.shouldUseFloatingMode}} 
-            @onClick={{step-by-step-execution}}
+            @onClick={{this.step-by-step-execution}}
             @tooltip={{ t "components.sceneButtons.stepByStepRun.tooltip"}}
         />
 
@@ -21,7 +21,7 @@
             @isHidden={{or (not this.needShowStepByStepButtons) (not this.running)}}
             @isDisabled={{or (not this.isPausedOnBreackpoint) this.areExpectationsRunning}} 
             @isMini={{this.shouldUseFloatingMode}} 
-            @onClick={{step}}
+            @onClick={{this.step}}
             @tooltip={{ t "components.sceneButtons.runStep.tooltip"}}
         />
 
@@ -38,7 +38,7 @@
             @isHidden={{this.needShowRestartButton}}
             @isDisabled={{or this.needShowRestartButton this.areExpectationsRunning}} 
             @isMini={{this.shouldUseFloatingMode}} 
-            @onClick={{run}}
+            @onClick={{this.run}}
             @tooltip={{ t "components.sceneButtons.run.tooltip"}}
         />
 
@@ -50,7 +50,7 @@
             @isHidden={{not this.needShowRestartButton}}
             @isDisabled={{not this.needShowRestartButton}} 
             @isMini={{this.shouldUseFloatingMode}} 
-            @onClick={{reset}}
+            @onClick={{this.reset}}
             @tooltip={{ t "components.sceneButtons.restart.tooltip"}}
         />
 
@@ -58,7 +58,7 @@
             <span class="flex"></span>
         {{/unless}}
 
-        <TurboModeToggle class={{if this.shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{pilas}} />
+        <TurboModeToggle class={{if this.shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{this.pilas}} />
 
 
     </PaperCard>
