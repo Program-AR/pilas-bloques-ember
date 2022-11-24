@@ -13,7 +13,8 @@ export default Component.extend({
   }),
 
   shouldOpen: computed('termsAreAccepted', 'shouldClose', function () {
-    return !(this.termsAreAccepted || this.shouldClose)
+    const shouldHide = this.termsAreAccepted || this.shouldClose || !this.get('pilasBloquesApi').isConnected() 
+    return !shouldHide
   }),
 
   actions: {
