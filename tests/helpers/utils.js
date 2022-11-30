@@ -1,5 +1,4 @@
 import sinon from 'sinon'
-import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
 import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
@@ -37,7 +36,6 @@ export function setupPBAcceptanceTest(hooks) {
 
 export function setupClear(hooks) {
     hooks.beforeEach(function () {
-        resetFetch()
         localStorage.clear()
         sinon.resetHistory()
     })
@@ -77,34 +75,23 @@ export function setupSimulateRouter(hooks) {
     })
 }
 
-export function resetFetch() {
-    fetchMock.reset()
-    fetchMock.config.overwriteRoutes = true
-    mockApi(`login`, fakeUser)
-    mockApi(`register`, fakeUser)
-    mockApi(`credentials`, fakeUser)
-    mockApi(`answers`, fakeUser)
-    mockApi(`challenges`, 200)
-    mockApi(`solutions`, 200)
-    mockApi(`ping`, 200)
-    mockApi(`error`, { throws: 'ERROR' })
-    fetchUserIpMock("123.123.123")
-    
-}
-
 function fetchUserIpMock(ip) {
+    /*
     const json = JSON.stringify({ip})
     fetchMock.mock(`https://api64.ipify.org?format=json`, new Response(json))
+    */
 }
 
 export function mockApi(path, response, options) {
-    fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
+    //fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
 }
 
 export function failAllApiFetchs() {
+    /*
     fetchMock.reset()
     fetchUserIpMock("123.123.123")
-    mockApi("", { throws: 'ERROR' })
+    mockApi("", { throws: 'ERROR' })}
+    */
 }
 
 export function setUpTestLocale(hooks) {
@@ -181,18 +168,17 @@ export function assertNotAvailable(assert, block) {
 
 ////// FETCH //////
 
-export function fetchCalled(uri) {
-    return fetchMock.called(`begin:${uri}`)
-}
-
 export function fetchCallBody() {
+    /*
     const [, { body }] = fetchMock.lastCall()
-    return JSON.parse(body)
+    return JSON.parse(body)}*/
 }
 
 export function fetchCallHeader() {
+    /*
     const [, { headers }] = fetchMock.lastCall()
     return headers
+    */
 }
 
 ////// DOM ELEMENTS /////

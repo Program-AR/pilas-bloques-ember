@@ -3,7 +3,6 @@ import { setupRenderingTest } from 'ember-qunit'
 import { render } from '@ember/test-helpers'
 import { hbs } from 'ember-cli-htmlbars'
 import { setupLoggedUser, setUpTestLocale } from '../../helpers/utils'
-import fetchMock from 'fetch-mock'
 
 module('Integration | Component | survey-window', function (hooks) {
   var api
@@ -19,7 +18,6 @@ module('Integration | Component | survey-window', function (hooks) {
   hooks.afterEach(function () {
 
     this.owner.lookup('component:personal-survey').close()
-    fetchMock.reset()
   })
 
   const surveyExists = () => window.surveyWindow && window.surveyWindow.isShowing

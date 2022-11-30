@@ -76,6 +76,7 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing'
     ENV.pbApi.baseURL = 'http://testing-api'
+    ENV['ember-cli-mirage'] = {trackRequests: true};
   }
 
   // We use this for staging as well
