@@ -83,14 +83,23 @@ function fetchUserIpMock(server, ip) {
 }
 
 export function mockApi(server, path, response, options) {
-    server.get(`${baseURL}/${path}/:id/solution`, response, options)
+    server.get(`${baseURL}/${path}`, response, options)
     server.post(`${baseURL}/challenges`, undefined, 200)
+}
+
+const api = {
+    posts: ['challenges','solutions','register','login','credentials','password-recovery','answers'],
+    puts: ['solutions/:id','experiment-group','solutions/:solutionId'],
+    gets: ['password-recovery','profile','/users/exists','user-ip','challenges/:challengeId/solution']
 }
 
 export function failAllApiFetchs(server) {
     fetchUserIpMock(server, "123.123.123")
-    server.get(`${baseURL}/${path}/:id/solution`, { errors: [ 'ERROR' ]})
-    server.post(`${baseURL}/challenges`, { errors: [ 'ERROR' ]})
+    const error = { errors: [ 'ERROR' ]}
+    const withBase = (request) => `${baseURL}/${request}`
+    api.posts.forEach(apiPost => server.post(withBase(apiPost), error))
+    api.puts.forEach(apiPut => server.put(withBase(apiPut), error))
+    api.gets.forEach(apiGet => server.get(withBase(apiGet), error))
 }
 
 export function setUpTestLocale(hooks) {

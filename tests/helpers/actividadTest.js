@@ -100,7 +100,7 @@ export function actividadTest(nombre, opciones) {
   ((opciones.skip) ? skip : test)(descripcion, function (assert) {
     let store = this.owner.lookup('service:store');
     let pilasService = this.owner.lookup('service:pilas');
-    failAllApiFetchs()
+    failAllApiFetchs(this.server)
     this.owner.lookup('service:pilas-bloques-api').logout();
 
     //let actividades = this.owner.lookup('service:actividades');
