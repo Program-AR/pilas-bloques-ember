@@ -3,7 +3,7 @@ import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import { setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
 import { actividadMock, pilasMock, createActivity } from '../../helpers/mocks'
-import config from '../../config/environment'
+import config from '../../../config/environment'
 const { baseURL } = config.pbApi
 
 module('Integration | Component | pilas-blockly', function (hooks) {
