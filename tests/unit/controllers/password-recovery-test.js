@@ -1,6 +1,8 @@
 import { module, test } from 'qunit'
-import { assertAsync, mockApi, setupPBUnitTest } from '../../helpers/utils'
+import { assertAsync, setupPBUnitTest } from '../../helpers/utils'
 import sinon from 'sinon'
+import config from '../../config/environment'
+const { baseURL } = config.pbApi
 
 module('Unit | Controller | password-recovery', function (hooks) {
   setupPBUnitTest(hooks)
@@ -11,7 +13,7 @@ module('Unit | Controller | password-recovery', function (hooks) {
   })
 
   test('If username exists continue next step', function (assert) {
-    mockApi(this.server, `password-recovery`, { email: 'fake@test.com' })
+    this.server.get(`${baseURL}/password-recovery`, { email: 'fake@test.com' })
     this.ctrl.send('checkUsername', this.next)
     awaitAssert(assert, () => {
       assert.ok(this.next.called)
@@ -20,7 +22,7 @@ module('Unit | Controller | password-recovery', function (hooks) {
   })
 
   test('If username not exist, show error', function (assert) {
-    mockApi(this.server, `password-recovery`, 404)
+    this.server.get(`${baseURL}/password-recovery`, {error: 'ERROR'}, 404)
     this.ctrl.send('checkUsername', this.next)
     awaitAssert(assert, () => {
       assert.notOk(this.next.called)
@@ -29,13 +31,13 @@ module('Unit | Controller | password-recovery', function (hooks) {
   })
 
   test('After update credentials continue next step', function (assert) {
-    mockApi(this.server, `credentials`, 200)
+    this.server.post(`${baseURL}/credentials`, undefined, 200)
     this.ctrl.send('changePassword', this.next)
     awaitAssert(assert, () => assert.ok(this.next.called))
   })
 
   test('If update credentials fails for bad request, show error', function (assert) {
-    mockApi(this.server, `credentials`, 400)
+    this.server.post(`${baseURL}/credentials`, {error: 'ERROR'}, 400)
     this.ctrl.send('changePassword', this.next)
     awaitAssert(assert, () => {
       assert.notOk(this.next.called)
@@ -44,7 +46,7 @@ module('Unit | Controller | password-recovery', function (hooks) {
   })
 
   test('If update credentials fails for unauthorized, show error', function (assert) {
-    mockApi(this.server, `credentials`, 401)
+    this.server.post(`${baseURL}/credentials`, {error: 'ERROR'}, 401)
     this.ctrl.send('changePassword', this.next)
     awaitAssert(assert, () => {
       assert.notOk(this.next.called)

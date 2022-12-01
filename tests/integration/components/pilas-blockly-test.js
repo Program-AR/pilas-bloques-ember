@@ -1,8 +1,10 @@
 import { module, test } from 'qunit'
 import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
-import { mockApi, setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
+import { setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
 import { actividadMock, pilasMock, createActivity } from '../../helpers/mocks'
+import config from '../../config/environment'
+const { baseURL } = config.pbApi
 
 module('Integration | Component | pilas-blockly', function (hooks) {
   setupPBIntegrationTest(hooks)
@@ -27,7 +29,8 @@ module('Integration | Component | pilas-blockly', function (hooks) {
   </xml>`
 
   test('should start with api last solution in workspace', async function (assert) {
-    mockApi(this.server, 'challenges/:challengeId/solution', { program })
+    this.server.get(`${baseURL}/challenges/:challengeId/solution`, {program})
+    this.server.post(`${baseURL}/challenges`, undefined, 200)
     await renderComponent.call(this)
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'MoverACasillaArriba')
   })

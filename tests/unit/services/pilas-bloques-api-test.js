@@ -1,7 +1,9 @@
 import { module, test } from 'qunit'
 import { later } from '@ember/runloop'
-import { fetchCallBody, fetchCallHeader, setupPBUnitTest, mockApi, assertHasProps, failAllApiFetchs } from '../../helpers/utils'
+import { fetchCallBody, fetchCallHeader, setupPBUnitTest, assertHasProps, failAllApiFetchs } from '../../helpers/utils'
 import { fakeUser } from '../../helpers/mocks'
+import config from '../../config/environment'
+const { baseURL } = config.pbApi
 
 module('Unit | Service | pilas-bloques-api', function (hooks) {
   setupPBUnitTest(hooks)
@@ -84,7 +86,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('should handle server error', async function (assert) {
-    mockApi(this.server, `login`, { body: "SERVER ERROR", status: 400 })
+    this.server.post(`${baseURL}/login`,{ body: "SERVER ERROR", status: 400 },400)
     await api.login({}).catch(err => {
       assert.deepEqual(err, {
         message: "SERVER ERROR",

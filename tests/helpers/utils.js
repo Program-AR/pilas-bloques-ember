@@ -82,11 +82,6 @@ function fetchUserIpMock(server, ip) {
     server.get(`https://api64.ipify.org?format=json`, () => new Response(json) )
 }
 
-export function mockApi(server, path, response, options) {
-    server.get(`${baseURL}/${path}`, response, options)
-    server.post(`${baseURL}/challenges`, undefined, 200)
-}
-
 const api = {
     posts: ['challenges','solutions','register','login','credentials','password-recovery','answers'],
     puts: ['solutions/:id','experiment-group','solutions/:solutionId'],
