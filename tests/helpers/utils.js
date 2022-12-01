@@ -17,6 +17,7 @@ export function setupPBUnitTest(hooks) {
     setupToasterMock(hooks)
     setupRouterMock(hooks)
     setUpTestLocale(hooks)
+    setupMirage(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
@@ -24,6 +25,7 @@ export function setupPBIntegrationTest(hooks) {
     setupClear(hooks)
     setupEmberMocks(hooks)
     setUpTestLocale(hooks)
+    setupMirage(hooks)
 }
 
 export function setupPBAcceptanceTest(hooks) {
@@ -75,23 +77,20 @@ export function setupSimulateRouter(hooks) {
     })
 }
 
-function fetchUserIpMock(ip) {
-    /*
+function fetchUserIpMock(server, ip) {
     const json = JSON.stringify({ip})
-    fetchMock.mock(`https://api64.ipify.org?format=json`, new Response(json))
-    */
+    server.get(`https://api64.ipify.org?format=json`, () => new Response(json) )
 }
 
-export function mockApi(path, response, options) {
-    //fetchMock.mock(`begin:${baseURL}/${path}`, response, options)
+export function mockApi(server, path, response, options) {
+    server.get(`${baseURL}/${path}/:id/solution`, response, options)
+    server.post(`${baseURL}/challenges`, undefined, 200)
 }
 
-export function failAllApiFetchs() {
-    /*
-    fetchMock.reset()
-    fetchUserIpMock("123.123.123")
-    mockApi("", { throws: 'ERROR' })}
-    */
+export function failAllApiFetchs(server) {
+    fetchUserIpMock(server, "123.123.123")
+    server.get(`${baseURL}/${path}/:id/solution`, { errors: [ 'ERROR' ]})
+    server.post(`${baseURL}/challenges`, { errors: [ 'ERROR' ]})
 }
 
 export function setUpTestLocale(hooks) {
@@ -168,17 +167,19 @@ export function assertNotAvailable(assert, block) {
 
 ////// FETCH //////
 
+function lastCall() {
+    const requests = this.server.pretender.handledRequests
+    return requests[requests.length - 1]
+}
+
 export function fetchCallBody() {
-    /*
-    const [, { body }] = fetchMock.lastCall()
-    return JSON.parse(body)}*/
+    const [, { body }] = lastCall()
+    return JSON.parse(body)
 }
 
 export function fetchCallHeader() {
-    /*
-    const [, { headers }] = fetchMock.lastCall()
+    const [, { headers }] = lastCall()
     return headers
-    */
 }
 
 ////// DOM ELEMENTS /////

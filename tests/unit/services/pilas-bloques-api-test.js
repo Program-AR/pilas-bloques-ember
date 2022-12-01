@@ -38,19 +38,19 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('If fetch fails should not be connected', async function (assert) {
-    failAllApiFetchs()
+    failAllApiFetchs(this.server)
     await api.ping().catch(() => { })
     assert.notOk(api.connected)
   })
 
   test('If not connected should alert server error', async function (assert) {
-    failAllApiFetchs()
+    failAllApiFetchs(this.server)
     await api.login({}).catch(() => { })
     assert.ok(api.paperToaster.show.called)
   })
 
   test('should not alert server error on no critical requests', function (assert) {
-    failAllApiFetchs()
+    failAllApiFetchs(this.server)
     const done = assert.async()
     api.openChallenge(1)
     api.runProgram(1, "program", {})
@@ -84,7 +84,7 @@ module('Unit | Service | pilas-bloques-api', function (hooks) {
   })
 
   test('should handle server error', async function (assert) {
-    mockApi(`login`, { body: "SERVER ERROR", status: 400 })
+    mockApi(this.server, `login`, { body: "SERVER ERROR", status: 400 })
     await api.login({}).catch(err => {
       assert.deepEqual(err, {
         message: "SERVER ERROR",
