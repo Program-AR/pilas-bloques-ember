@@ -80,13 +80,6 @@ login:
   login: Iniciar sesión
   username: Usuario
   password: Contraseña
-modalAyuda:
-  help: Esta aplicación te presentará varios desafíos que se pueden resolver conectando bloques.
-  firstSteps: 'El primer paso es abrir la sección de Desafíos:'
-  categories: 'Los bloques están agrupados en categorías, usá la barra lateral para desplegar los bloques.'
-  dragAndDrop: Luego podés arrastrar y soltar los bloques sobre el área de trabajo.
-  continue: Una vez que tengas tu programa listo pulsá el botón ejecutar continuar.
-  delete: 'Ah, y los bloques se pueden borrar arrastrándolos a la papelera.'
 passwordConfirmation:
   password: Confirmar contraseña
   matchError: Las contraseñas no coinciden
