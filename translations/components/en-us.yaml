@@ -80,13 +80,6 @@ login:
   login: Log in
   username: Username
   password: Password
-modalAyuda:
-  help: This app will offer you several challenges you can solve by fitting blocks together.
-  firstSteps: 'The first step is to open the Challenges section:'
-  categories: The blocks are grouped in categories; use the sidebar to display the blocks.
-  dragAndDrop: The you can drag and drop the blocks to the workspace.
-  continue: 'Once your program is ready, push the "Run" button to continue.'
-  delete: And you can also delete the blocks by dragging them to the recycle bin.
 passwordConfirmation:
   password: Confirm password
   matchError: Passwords do not match
