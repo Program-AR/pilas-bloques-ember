@@ -139,7 +139,7 @@ Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `a
       ```
   - **macOS:** no disponible.
 
-### Preparar el backend (solo necesario para cosas de usuarios y eso):
+### Preparar el backend (opcional):
 
 Para tener un backend para probar funcionalidades relacionadas a usuarios y a guardar desafios es necesario tener levantado los proyectos de [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) y una base de datos [MongoDB](https://www.mongodb.com/).
 
