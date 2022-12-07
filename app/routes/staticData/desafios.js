@@ -16,7 +16,7 @@
 
 /*jshint esversion: 6 */
 
-export default [
+export const desafios = [
   {
     id: 1,
     nombre: 'AlienTocaBoton',

@@ -15,7 +15,6 @@ module.exports = function (environment) {
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
-    'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
     testTranslations: false,

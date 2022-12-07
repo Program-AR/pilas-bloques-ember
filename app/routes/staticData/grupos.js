@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-export default [
+export const grupos = [
   {
     id: 'AlienTocaBoton',
     desafioIds: [1]
