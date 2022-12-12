@@ -15,7 +15,7 @@ module('Acceptance | clear', function (hooks) {
 
   test('should redirect to home', async function (assert) {
     await visit('clear')
-    later(() => assert.equal(currentURL(), '/libros'), 1000)
+    assert.equal(currentURL(), '/libros')
   })
 
 })
