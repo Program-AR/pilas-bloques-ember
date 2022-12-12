@@ -4,7 +4,6 @@ import { setupPBIntegrationTest, acceptTerms } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
-import simulateRouterHooks from "./simulate-router.hooks";
 import { failAllApiFetchs } from './utils';
 import { render } from '@ember/test-helpers'
 /**
@@ -108,7 +107,6 @@ export function actividadTest(nombre, opciones) {
       run(async () => {
 
         // Simulate the model hook from router.
-        simulateRouterHooks(store);
 
         /** 
          * TODO: replace the peekAll and findBy functions by a
