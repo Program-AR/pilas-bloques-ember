@@ -11,7 +11,7 @@ export default Route.extend({
 
   model(param) {
     // TODO: cambiar esto como con los findAll
-    return this.store.findRecord('desafio', param.desafio_id);
+    return this.store.peekRecord('desafio', param.desafio_id);
   },
 
   actions: {

@@ -3,7 +3,6 @@ import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
 import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { fakeUser, toastMock, routerMock, blocklyWorkspaceMock } from './mocks'
 import simulateRouterHooks from './simulate-router.hooks'
 import config from '../../config/environment'
@@ -29,7 +28,6 @@ export function setupPBIntegrationTest(hooks) {
 
 export function setupPBAcceptanceTest(hooks) {
     setupApplicationTest(hooks)
-    setupMirage(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
     setupSimulateRouter(hooks)
