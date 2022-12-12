@@ -1,10 +1,10 @@
 import { inject as service } from '@ember/service'
 import Route from '@ember/routing/route'
 import { loadLazyScript } from '../utils/request'
-import { desafios as desafio } from './staticData/desafios' 
-import { capitulos as capitulo } from './staticData/capitulos' 
-import { grupos as grupo } from './staticData/grupos' 
-import { libros as libro } from './staticData/libros' 
+import { desafios } from './staticData/desafios' 
+import { capitulos } from './staticData/capitulos' 
+import { grupos } from './staticData/grupos' 
+import { libros } from './staticData/libros' 
 
 export default Route.extend({
   storage: service(),
@@ -21,9 +21,14 @@ export default Route.extend({
   },
 
   loadStaticModels(){
-    const models = { desafio, grupo, capitulo, libro }
-    for (const modelName in models ){
-      models[modelName].forEach( model => this.store.createRecord(modelName, model) )
-    }
+    desafios.forEach(desafio => this.store.createRecord('desafio', desafio))
+    loadModelWithRelation(grupos, 'grupo', 'desafio')
+    loadModelWithRelation(capitulos, 'capitulo', 'grupo')
+    loadModelWithRelation(libros, 'libro', 'capitulo')
+  },
+
+  loadModelWithRelation(staticModel, modelName, relatedModelName){
+    const relatedModel = (modelItem) => modelItem[`${relatedModelName}Ids`].map(id => this.store.peekRecord(relatedModelName,id))
+    staticModel.forEach(modelItem => this.store.createRecord(modelName, {...modelItem, [`${relatedModelName}s`]: relatedModel(modelItem)}))
   }
 })
