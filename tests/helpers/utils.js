@@ -17,6 +17,7 @@ export function setupPBUnitTest(hooks) {
     setupToasterMock(hooks)
     setupRouterMock(hooks)
     setUpTestLocale(hooks)
+    setupSimulateRouter(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
@@ -24,13 +25,13 @@ export function setupPBIntegrationTest(hooks) {
     setupClear(hooks)
     setupEmberMocks(hooks)
     setUpTestLocale(hooks)
+    setupSimulateRouter(hooks)
 }
 
 export function setupPBAcceptanceTest(hooks) {
     setupApplicationTest(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
-    setupSimulateRouter(hooks)
 }
 
 export function setupClear(hooks) {
