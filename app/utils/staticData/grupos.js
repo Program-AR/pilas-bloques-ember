@@ -255,7 +255,7 @@ export const grupos = [
   },
   {
     id: 'tecnopolis2021ConCoty',
-    desafioIds: [2021201, 2021202, 2021203, 2021204, 2021205, 2021206, 2021207, 255]
+    desafioIds: [2021201, 2021202, 2021203, 2021204, 2021205, 2021206, 2021207]
   },
   {
     id: 'tecnopolis2021ConToto',
