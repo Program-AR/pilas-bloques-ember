@@ -66,6 +66,7 @@ export function setupToasterMock(hooks) {
 
 export function setupRouterMock(hooks) {
     hooks.beforeEach(function () {
+        this.owner.unregister('service:router')
         this.owner.register('service:router', routerMock)
     })
 }
