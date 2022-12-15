@@ -14,7 +14,7 @@ module('Integration | Component | toast', function (hooks) {
 
     await render(hbs`<Toast @message={{"Modo Turbo"}} @needShowToast={{needShowTurboModeIndicator}} />`);
 
-    assert.equal(this.element.textContent.trim(), 'Modo Turbo');
+    assert.equal(this.element.textContent.trim(), '');
 
   });
 });
