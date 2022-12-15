@@ -17,7 +17,7 @@ export function setupPBUnitTest(hooks) {
     setupToasterMock(hooks)
     setupRouterMock(hooks)
     setUpTestLocale(hooks)
-    setupSimulateRouter(hooks)
+    setupModels(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
@@ -25,7 +25,7 @@ export function setupPBIntegrationTest(hooks) {
     setupClear(hooks)
     setupEmberMocks(hooks)
     setUpTestLocale(hooks)
-    setupSimulateRouter(hooks)
+    setupModels(hooks)
 }
 
 export function setupPBAcceptanceTest(hooks) {
@@ -71,9 +71,9 @@ export function setupRouterMock(hooks) {
     })
 }
 
-export function setupSimulateRouter(hooks) {
+export function setupModels(hooks) {
     hooks.beforeEach(function () {
-        simulateRouterHooks(this.owner.lookup('service:store'))
+        loadStaticModels(this.owner.lookup('service:store'))
     })
 }
 
