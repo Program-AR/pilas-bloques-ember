@@ -4,9 +4,10 @@ import Component from '@ember/component'
 import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
 import { fakeUser, toastMock, routerMock, blocklyWorkspaceMock } from './mocks'
-import simulateRouterHooks from './simulate-router.hooks'
 import config from '../../config/environment'
 import { test } from 'qunit';
+import { loadStaticModels } from 'pilasbloques/utils/staticModels'
+
 const { baseURL } = config.pbApi
 
 ////// SETUP //////
