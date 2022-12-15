@@ -1,5 +1,4 @@
 import { module, test } from 'qunit'
-import { later } from '@ember/runloop'
 import { setupPBAcceptanceTest, setupLoggedUser } from '../helpers/utils'
 import { currentURL, visit } from '@ember/test-helpers'
 
