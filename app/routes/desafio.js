@@ -10,8 +10,7 @@ export default Route.extend({
   pilas: service(),
 
   model(param) {
-    this.store.findAll("libro");
-    return this.store.findRecord('desafio', param.desafio_id);
+    return this.store.peekRecord('desafio', param.desafio_id);
   },
 
   actions: {

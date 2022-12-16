@@ -7,9 +7,11 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | terms', function (hooks) {
   setupPBIntegrationTest(hooks)
 
-  var storage
+  var storage, api
   hooks.beforeEach(function () {
     storage = this.owner.lookup('service:storage')
+    api = this.owner.lookup('service:pilas-bloques-api')
+    api.connected = true
   })
 
   const expectTermsToShow = (assert) => assert.dom().containsText("Acepto los términos y condiciones de uso")
@@ -31,5 +33,12 @@ module('Integration | Component | terms', function (hooks) {
     await render(hbs`<Terms/>`)
     expectTermsNotToShow(assert)
   });
+
+  test('Terms should not show up when disconnected', async function (assert) {
+    api.connected = null
+    await render(hbs`<Terms/>`)
+    expectTermsNotToShow(assert)
+  });
+
 
 });

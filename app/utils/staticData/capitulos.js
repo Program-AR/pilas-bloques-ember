@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-export default [
+export const capitulos = [
     {
         id: 'Capítulo 3',
         grupoIds: ['manual1cPrimaria3.1.2', 'manual1cPrimaria3.1.3', 'manual1cPrimaria3.1.4', 'manual1cPrimaria3.2.2', 'manual1cPrimaria3.2.3', 'manual1cPrimaria3.I']

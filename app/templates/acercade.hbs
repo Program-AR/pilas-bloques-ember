@@ -7,15 +7,15 @@
 		<DescripcionAcercaDe />
 		<!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver scripts de construcción de ese proyecto -->
 
-		<p>{{t "templates.acercade.yourCurrentVersion"}} {{version}}
-			{{#if hayActualizacion}}
-			({{t "templates.acercade.youCanUpdate"}} {{versionMasReciente}})
+		<p>{{t "templates.acercade.yourCurrentVersion"}} {{this.version}}
+			{{#if this.hayActualizacion}}
+			({{t "templates.acercade.youCanUpdate"}} {{this.versionMasReciente}})
 			{{/if}}
 		</p>
 		<p>
 
 			<Link @href="https://pilasbloques.program.ar/" class='visit-website-link' @openOnNewTab={{true}} @tooltip={{t "templates.acercade.visitProjectWeb"}}>
-				{{fa-icon "globe"}} {{t "templates.acercade.visitProjectWeb"}}
+				<FaIcon @icon="globe"/> {{t "templates.acercade.visitProjectWeb"}}
 			</Link>
 
 			{{pilas-update}}

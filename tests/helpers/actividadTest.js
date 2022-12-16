@@ -1,19 +1,17 @@
 import { run } from '@ember/runloop';
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import 'ember-qunit';
 import { setupPBIntegrationTest, acceptTerms } from '../helpers/utils'
 import hbs from 'htmlbars-inline-precompile';
 import jQuery from 'jquery';
 import { module, skip, test } from 'qunit';
-import simulateRouterHooks from "./simulate-router.hooks";
 import { failAllApiFetchs } from './utils';
+import { render } from '@ember/test-helpers'
 /**
  * Inicia los tests de la actividad definiendo un grupo para qunit.
  */
 export function moduloActividad(nombre, runActivityTests) {
   module(`Integration | Actividad | ${nombre}`, (hooks) => {
     setupPBIntegrationTest(hooks);
-    setupMirage(hooks);
     acceptTerms(hooks);
     runActivityTests(hooks);
   });
@@ -109,16 +107,15 @@ export function actividadTest(nombre, opciones) {
       run(async () => {
 
         // Simulate the model hook from router.
-        simulateRouterHooks(store);
 
         /** 
-         * TODO: replace the findAll and findBy functions by a
+         * TODO: replace the peekAll and findBy functions by a
          * more specific ember-data query, like findRecord which 
          * fetchs only one record.
          * 
          * (This only exist because mirage must be need fixed before).
          */
-        const model = (await store.findAll("desafio")).findBy('nombre', nombre);
+        const model = (await store.peekAll("desafio")).findBy('nombre', nombre);
 
         if (!model) {
           throw new Error(`No existe una actividad con el nombre ${nombre}`);
@@ -185,7 +182,7 @@ export function actividadTest(nombre, opciones) {
          * hace dentro de la aplicación.
          */
 
-        this.render(hbs`
+        render(hbs`
                     {{challenge-workspace
                       debug=false
                       pilas=pilasService

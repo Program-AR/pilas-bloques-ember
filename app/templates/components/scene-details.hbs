@@ -1,28 +1,28 @@
 <PaperCard id="exercise-detail" class="details-card flex">
-    {{#if cargando}}
+    {{#if this.cargando}}
         <Spinner/>
     {{else}}
         <div class="layout-row">
-            <img class="exercise-cover" alt="{{model.titulo}}" src="{{model.coverSrc}}">
+            <img class="exercise-cover" alt="{{this.model.titulo}}" src="{{this.model.coverSrc}}">
             <div class="flex-grow">
                 <div class="layout-row">
                     <div class="tab layout-column">
                         <Button class="tablinks" @tooltip={{ t "components.sceneDetails.seeDescription"}} @iconButton={{true}} @mini={{true}} @onClick={{action "setTab" "statement"}}>{{paper-icon "menu_book"}}</Button>
-                        <div class={{if model.consignaInicial "clue-button" "no-clue-button"}}>
-                            <Button @tooltip={{if model.consignaInicial (t "components.sceneDetails.getClue") (t "components.sceneDetails.noClues")}} @isDisabled={{not model.consignaInicial}} @iconButton={{true}} @isMini={{true}} @onClick={{action "setTab" "clue"}}>{{paper-icon "wb_incandescent"}}</Button>
+                        <div class={{if this.model.consignaInicial "clue-button" "no-clue-button"}}>
+                            <Button @tooltip={{if this.model.consignaInicial (t "components.sceneDetails.getClue") (t "components.sceneDetails.noClues")}} @isDisabled={{not this.model.consignaInicial}} @iconButton={{true}} @isMini={{true}} @onClick={{action "setTab" "clue"}}>{{paper-icon "wb_incandescent"}}</Button>
                         </div>
                     </div>
                     <div id="statement" class="tabcontent active">
                         <PaperCardTitle class="layout-column">
                             <PaperCardTitleText>
-                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-description>{{markdown-to-html model.enunciado}}</PaperCardHeaderSubhead>
+                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-description>{{markdown-to-html this.model.enunciado}}</PaperCardHeaderSubhead>
                             </PaperCardTitleText>
                         </PaperCardTitle>
                     </div>
                     <div id="clue" class="tabcontent">
                         <PaperCardTitle class="layout-column">
                             <PaperCardTitleText>
-                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-clue>{{markdown-to-html model.consignaInicial}}</PaperCardHeaderSubhead>
+                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-clue>{{markdown-to-html this.model.consignaInicial}}</PaperCardHeaderSubhead>
                             </PaperCardTitleText>
                         </PaperCardTitle>
                     </div>

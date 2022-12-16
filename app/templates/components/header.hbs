@@ -3,31 +3,31 @@
 
     <a class="pilas-bloques-logo" href="#"><img src='imagenes/logo.png'></a>
 
-    {{#unless (or challenge book)}}
+    {{#unless (or this.challenge this.book)}}
       <span class="flex"/>
       <span class="header-title">{{t "components.header.tool"}}</span>
     {{/unless}}
 
-    {{#if (or challenge book)}}
+    {{#if (or this.challenge this.book)}}
       {{#if (media 'isMobile')}}
         <NavigationMenu 
-          @book={{book}}
-          @challenge={{challenge}}
-          @chapter={{chapter}}
-          @group={{group}}
-          @hidden={{openCustomScene}}
+          @book={{this.book}}
+          @challenge={{this.challenge}}
+          @chapter={{this.chapter}}
+          @group={{this.group}}
+          @hidden={{this.openCustomScene}}
         />
       {{else}}
         <span class="flex"/>
         <NavigationBreadcrumb 
-          @book={{book}}
-          @challenge={{challenge}}
-          @chapter={{chapter}}
-          @group={{group}}
-          @hidden={{openCustomScene}}
+          @book={{this.book}}
+          @challenge={{this.challenge}}
+          @chapter={{this.chapter}}
+          @group={{this.group}}
+          @hidden={{this.openCustomScene}}
         />
       {{/if}}
-      <ChallengeNavigationArrows @challenge={{challenge}}/>
+      <ChallengeNavigationArrows @challenge={{this.challenge}}/>
     {{/if}}
 
     
@@ -35,7 +35,7 @@
 
     <LanguageMenu/>
     
-    <SimpleReadToggle @book={{or book chapter.libro}}/>
+    <SimpleReadToggle @book={{or this.book this.chapter.libro}}/>
 
     <NightModeToggle/>
     &nbsp;&nbsp;&nbsp;

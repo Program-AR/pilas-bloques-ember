@@ -15,7 +15,7 @@
     width: 0;
     height: 0;
   }
-  
+
   /* The slider */
   .slider {
     position: absolute;
@@ -26,7 +26,7 @@
     background-color: #ccc;
     transition: .4s;
   }
-  
+
   .slider:before {
     position: absolute;
     content: "";
@@ -40,9 +40,26 @@
 
   .slider-icon {
     position: absolute;
-    padding-top: 9px;
-    padding-left: 13px;
     transition: .4s;
+    color: #777777;
+  }
+
+  .night-theme-icon {
+    @extend .slider-icon;
+    padding-top: 7px;
+    padding-left: 7px;
+  }
+
+  .turbo-mode-icon{
+    @extend .slider-icon;
+    padding-top: 9px;
+    padding-left: 10px;
+  }
+
+  .simple-read-icon{
+    @extend .slider-icon;
+    padding-top: 5px;
+    padding-left: 11px;
   }
 
   input:checked + .slider .slider-icon {
@@ -57,7 +74,7 @@
   .slider.round {
     border-radius: 34px;
   }
-  
+
   .slider.round:before {
     border-radius: 50%;
   }
