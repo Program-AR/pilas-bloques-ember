@@ -1,5 +1,4 @@
 import { module, test } from 'qunit'
-import { later } from '@ember/runloop'
 import { setupPBAcceptanceTest, setupLoggedUser } from '../helpers/utils'
 import { currentURL, visit } from '@ember/test-helpers'
 
@@ -15,7 +14,7 @@ module('Acceptance | clear', function (hooks) {
 
   test('should redirect to home', async function (assert) {
     await visit('clear')
-    later(() => assert.equal(currentURL(), '/libros'), 1000)
+    assert.equal(currentURL(), '/libros')
   })
 
 })

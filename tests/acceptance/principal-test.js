@@ -1,7 +1,6 @@
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { create, visitable, text, count } from 'ember-cli-page-object';
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage";
 import { currentURL } from '@ember/test-helpers';
 
 const page = create({
@@ -15,7 +14,6 @@ const page = create({
 
 module('Acceptance | principal', function (hooks) {
   setupApplicationTest(hooks);
-  setupMirage(hooks);
 
   test('visiting /', async function (assert) {
     await page.visit();

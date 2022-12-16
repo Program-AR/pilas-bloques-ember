@@ -1,6 +1,6 @@
 /*jshint esversion: 6 */
 
-export default [
+export const libros = [
   {
     id: 1,
     capituloIds: ['Capítulo 3', 'Capítulo 4', 'Capítulo 5'],
