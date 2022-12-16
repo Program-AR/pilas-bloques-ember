@@ -1,7 +1,7 @@
 /* jshint node: true */
 
 var experimentGroup = process.env.EXPERIMENT_GROUP
-if(!experimentGroup){
+if (!experimentGroup) {
   experimentGroup = 'notAffected'
   console.log(`\nInfo: EXPERIMENT_GROUP variable not set. Building Pilas Bloques in default mode: ${experimentGroup}. See README.md for valid EXPERIMENT_GROUP values`)
 }
@@ -15,7 +15,6 @@ module.exports = function (environment) {
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
-    'ember-cli-mirage': { enabled: true },
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
     testTranslations: false,

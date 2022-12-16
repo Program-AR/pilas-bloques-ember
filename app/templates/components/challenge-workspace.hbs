@@ -1,74 +1,74 @@
 <Header id="header-workspace"
-    @book={{model.grupo.capitulo.libro}}
-    @challenge={{model}}
-    @chapter={{model.grupo.capitulo}}
-    @group={{model.grupo}}
+    @book={{this.model.grupo.capitulo.libro}}
+    @challenge={{this.model}}
+    @chapter={{this.model.grupo.capitulo}}
+    @group={{this.model.grupo}}
 />
 
-<div class="workspace flex layout-column {{if (compute (action shouldShowSimpleRead)) 'simple-read-mode'}}">
+<div class="workspace flex layout-column {{if (compute (action this.shouldShowSimpleRead)) 'simple-read-mode'}}">
 
   {{#if (and (media 'isMobile') (media 'isPortrait')) }}
-    <PhoneRotationWarning @modoLecturaSimple={{compute (action shouldShowSimpleRead)}} />
+    <PhoneRotationWarning @modo ={{compute (action this.shouldShowSimpleRead)}} />
   {{/if}}
 
-  {{#unless shouldUseFloatingMode}}
+  {{#unless this.shouldUseFloatingMode}}
     <SceneDetails class="exercise-details"
-      @model={{model}}
-      @cargando={{cargando}}
+      @model={{this.model}}
+      @cargando={{this.cargando}}
     />
   {{/unless}}
 
   <div class="flex layout-row">
-    <PaperCard class={{if shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
+    <PaperCard class={{if this.shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
       <PilasBlockly
-        @codigo={{codigo}}
-        @showCode={{showCode}}
-        @cargando={{cargando}}
-        @challenge={{model}}
-        @debeMostrarFinDeDesafio={{debeMostrarFinDeDesafio}}
-        @onChangeWorkspace={{onChangeWorkspace}}
-        @onTerminoEjecucion={{onTerminoEjecucion}}
-        @onEngineError={{onEngineError}}
-        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @codigo={{this.codigo}}
+        @showCode={{this.showCode}}
+        @cargando={{this.cargando}}
+        @challenge={{this.model}}
+        @debeMostrarFinDeDesafio={{this.debeMostrarFinDeDesafio}}
+        @onChangeWorkspace={{this.onChangeWorkspace}}
+        @onTerminoEjecucion={{this.onTerminoEjecucion}}
+        @onEngineError={{this.onEngineError}}
+        @shouldUseFloatingMode={{this.shouldUseFloatingMode}}
         @changeScreenMode={{action "changeScreenMode"}}
       />
     </PaperCard>
 
     <div>
       <SceneButtons
-        @cargando={{cargando}}
-        @isPausedOnBreackpoint={{estaPausadoEnUnBreackpoint}}
-        @needShowRestartButton={{debeMostarReiniciar}}
-        @needShowStepByStepButtons={{debeMostrarPasoHabilitado}}
-        @pilas={{pilas}}
+        @cargando={{this.cargando}}
+        @isPausedOnBreackpoint={{this.estaPausadoEnUnBreackpoint}}
+        @needShowRestartButton={{this.debeMostarReiniciar}}
+        @needShowStepByStepButtons={{this.debeMostrarPasoHabilitado}}
+        @pilas={{this.pilas}}
         @reset={{action 'reiniciar' false}}
         @run={{action 'ejecutar' false}}
-        @running={{ejecutando}}
-        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @running={{this.ejecutando}}
+        @shouldUseFloatingMode={{this.shouldUseFloatingMode}}
         @step={{action 'step' true}}
         @step-by-step-execution={{action 'ejecutar' true}}
-        @shouldShowMultipleScenarioHelp={{model.shouldShowMultipleScenarioHelp}}
-        @areExpectationsRunning={{areExpectationsRunning}}
+        @shouldShowMultipleScenarioHelp={{this.model.shouldShowMultipleScenarioHelp}}
+        @areExpectationsRunning={{this.areExpectationsRunning}}
       />
 
       <Scene class="flex-nogrow" id="draggable"
-        @cargando={{cargando}}
-        @challenge={{model}} 
+        @cargando={{this.cargando}}
+        @challenge={{this.model}} 
         @hideScene={{action "hideScene"}}
         @onReady={{action "onSceneReady"}}
-        @shouldUseFloatingMode={{shouldUseFloatingMode}}
+        @shouldUseFloatingMode={{this.shouldUseFloatingMode}}
       />
 
     </div>
 
   </div>
 
-  {{#unless shouldUseFloatingMode}}
-    <Footer class="app-footer" @cargando={{cargando}} @openReportAProblemModel={{action (mut showReportAProblemModel)}}/>
+  {{#unless this.shouldUseFloatingMode}}
+    <Footer class="app-footer" @cargando={{this.cargando}} @openReportAProblemModel={{action (mut this.showReportAProblemModel)}}/>
   {{/unless}}
 
-  {{#if showReportAProblemModel}}
-    <BugReportModal @onClose={{action (mut showReportAProblemModel) false}}/>
+  {{#if this.showReportAProblemModel}}
+    <BugReportModal @onClose={{action (mut this.showReportAProblemModel) false}}/>
   {{/if}}
 
 </div>

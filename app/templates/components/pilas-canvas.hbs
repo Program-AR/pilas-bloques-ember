@@ -1,5 +1,5 @@
-<div class={{if shouldUseFloatingMode "iframe-container-collapsed" "iframe-container"}}>
-    {{#if cargando}}
+<div class={{if this.shouldUseFloatingMode "iframe-container-collapsed" "iframe-container"}}>
+    {{#if this.cargando}}
         <Spinner @centered={{true}}/>
     {{/if}}
     <iframe src="pilas.html" id="innerIframe"></iframe>

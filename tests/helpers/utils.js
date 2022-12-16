@@ -3,11 +3,11 @@ import fetchMock from 'fetch-mock'
 import Component from '@ember/component'
 import { visit } from '@ember/test-helpers'
 import { setupRenderingTest, setupTest, setupApplicationTest } from 'ember-qunit'
-import setupMirage from "ember-cli-mirage/test-support/setup-mirage"
 import { fakeUser, toastMock, routerMock, blocklyWorkspaceMock } from './mocks'
-import simulateRouterHooks from './simulate-router.hooks'
 import config from '../../config/environment'
 import { test } from 'qunit';
+import { loadStaticModels } from 'pilasbloques/utils/staticModels'
+
 const { baseURL } = config.pbApi
 
 ////// SETUP //////
@@ -18,6 +18,7 @@ export function setupPBUnitTest(hooks) {
     setupToasterMock(hooks)
     setupRouterMock(hooks)
     setUpTestLocale(hooks)
+    setupModels(hooks)
 }
 
 export function setupPBIntegrationTest(hooks) {
@@ -25,14 +26,13 @@ export function setupPBIntegrationTest(hooks) {
     setupClear(hooks)
     setupEmberMocks(hooks)
     setUpTestLocale(hooks)
+    setupModels(hooks)
 }
 
 export function setupPBAcceptanceTest(hooks) {
     setupApplicationTest(hooks)
-    setupMirage(hooks)
     setupClear(hooks)
     setUpTestLocale(hooks)
-    setupSimulateRouter(hooks)
 }
 
 export function setupClear(hooks) {
@@ -67,13 +67,14 @@ export function setupToasterMock(hooks) {
 
 export function setupRouterMock(hooks) {
     hooks.beforeEach(function () {
+        this.owner.unregister('service:router')
         this.owner.register('service:router', routerMock)
     })
 }
 
-export function setupSimulateRouter(hooks) {
+export function setupModels(hooks) {
     hooks.beforeEach(function () {
-        simulateRouterHooks(this.owner.lookup('service:store'))
+        loadStaticModels(this.owner.lookup('service:store'))
     })
 }
 

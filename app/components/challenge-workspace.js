@@ -16,7 +16,7 @@ export default Component.extend({
   areExpectationsRunning: false,
   pilasBloquesAnalytics: service(),
 
-  debeMostrarPasoHabilitado: computed('debeMostrarPasoHabilitado', function () {
+  debeMostrarPasoHabilitado: computed('model.debugging', function () {
     return this.get('model.debugging');
   }),
 
@@ -196,7 +196,7 @@ export default Component.extend({
 
     async ejecutar(pasoAPaso = false) {
       this.set('areExpectationsRunning', true)
-      later(this, async function() {
+      later(this, async function () {
         await asyncActionCall(this.pilasBlockly, 'ejecutar', pasoAPaso)
         this.set('areExpectationsRunning', false)
         this.send("showScene");

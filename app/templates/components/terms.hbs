@@ -1,4 +1,4 @@
-{{#if shouldOpen}}
+{{#if this.shouldOpen}}
 
 <Modal @title="Términos y condiciones de uso" @onClose={{action "rejectTerms"}} @clickOutsideToClose={{false}}>
   <div>{{t "components.acceptTermsAndConditions.askToRead"}} <TermsAndConditionsLink /> {{t "components.acceptTermsAndConditions.toUse"}}</div>

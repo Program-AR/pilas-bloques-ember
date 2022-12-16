@@ -8,7 +8,7 @@
     
     <menu.content as |content|>
 
-        {{#if book}}
+        {{#if this.book}}
             {{!-- Challenge book --}}
                 <content.menu-item>
                     <PaperButton 
@@ -16,8 +16,8 @@
                         @raised={{false}} 
                         @fab={{false}}
                         @bubbles={{true}}
-                        @href={{href-to "libros.verLibro" book.id}}>
-                        <span class="menu-item-typography">{{book.titulo}}</span>
+                        @href={{href-to "libros.verLibro" this.book.id}}>
+                        <span class="menu-item-typography">{{this.book.titulo}}</span>
                     </PaperButton>
                 </content.menu-item>
 
@@ -28,21 +28,21 @@
                         @raised={{false}} 
                         @fab={{false}} 
                         @bubbles={{true}}
-                        @href={{href-to "libros.verLibro" book.id}}>
-                        <span class="menu-item-typography">{{chapter.titulo}}</span>
+                        @href={{href-to "libros.verLibro" this.book.id}}>
+                        <span class="menu-item-typography">{{this.chapter.titulo}}</span>
                     </PaperButton>
                 </content.menu-item>
 
                 {{!-- Challenge group --}}
-                {{#if challenge.grupo.titulo}}
+                {{#if this.challenge.grupo.titulo}}
                     <content.menu-item>
                         <PaperButton 
                             @disabled={{false}}
                             @raised={{false}}
                             @fab={{false}}
                             @bubbles={{true}}
-                            @href={{href-to "libros.verLibro" book.id}}>
-                            <span class="menu-item-typography">{{group.titulo}}</span>
+                            @href={{href-to "libros.verLibro" this.book.id}}>
+                            <span class="menu-item-typography">{{this.group.titulo}}</span>
                         </PaperButton>
                     </content.menu-item>
                 {{/if}}
@@ -56,7 +56,7 @@
                     @fab={{false}}
                     @bubbles={{true}}
                     >
-                    <span class="menu-item-typography challenge-title">{{challenge.titulo}}</span>
+                    <span class="menu-item-typography challenge-title">{{this.challenge.titulo}}</span>
                 </PaperButton>
             </content.menu-item>
 

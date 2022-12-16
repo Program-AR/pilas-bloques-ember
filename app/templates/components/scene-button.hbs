@@ -1,24 +1,24 @@
-{{#unless isHidden}}
-    <div class={{class}}>
+{{#unless this.isHidden}}
+    <div class={{this.class}}>
         <Button 
-            @isDisabled={{isDisabled}}
-            @isFab={{isMini}} 
-            @isMini={{isMini}}
-            @isRaised={{isMini}}
-            @element-id={{element-id}}
-            @tooltip={{tooltip}}
-            @onClick={{onClick}}
+            @isDisabled={{this.isDisabled}}
+            @isFab={{this.isMini}} 
+            @isMini={{this.isMini}}
+            @isRaised={{this.isMini}}
+            @element-id={{this.element-id}}
+            @tooltip={{this.tooltip}}
+            @onClick={{this.onClick}}
             >
-                {{#if icon}}
-                    {{paper-icon icon}}
+                {{#if this.icon}}
+                    {{paper-icon this.icon}}
                 {{else}}
                     {{#if faIcon}}
                         <i class={{faIcon}}></i>
                     {{/if}}
                 {{/if}}
 
-                {{#unless isMini}} 
-                    <span class="button-typography">{{label}}</span>
+                {{#unless this.isMini}} 
+                    <span class="button-typography">{{this.label}}</span>
                 {{/unless}}
         </Button>
     </div>

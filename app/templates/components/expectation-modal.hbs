@@ -1,17 +1,17 @@
 <Modal @title={{t (compute (action textTag "title"))}} @onClose={{onClose}}>
   <PaperCard class="details-card layout-row expectationModal">
-      <img class="exercise-cover" alt="{{challenge.titulo}}" src="{{challenge.coverSrc}}">
+      <img class="exercise-cover" alt="{{this.challenge.titulo}}" src="{{this.challenge.coverSrc}}">
       <p>{{t (compute (action textTag  "description"))}}</p>
   </PaperCard>
 
-  {{#if (compute (action shouldShowScoredExpectations))}}
+  {{#if (compute (action this.shouldShowScoredExpectations))}}
     <ScoredExpectations
-      @expects={{expects}}
-      @challenge={{challenge}}
+      @expects={{this.expects}}
+      @challenge={{this.challenge}}
     />
   {{else}}
     <NonScoredExpectations
-      @challenge={{challenge}}
+      @challenge={{this.challenge}}
     />
   {{/if}}
 </Modal>

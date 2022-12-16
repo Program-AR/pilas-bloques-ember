@@ -4,7 +4,7 @@ const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 
 module.exports = function (defaults) {
-  const app = new EmberApp(defaults, {
+  let app = new EmberApp(defaults, {
     // Add options here
     'ember-cli-babel': {
       includePolyfill: true
@@ -18,10 +18,6 @@ module.exports = function (defaults) {
     },
     fingerprint: {
       enabled: false,
-    },
-    'ember-font-awesome': {
-      useScss: true,
-      includeFontFiles: true
     }
   });
 
