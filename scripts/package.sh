@@ -3,8 +3,10 @@
 #The project name, used by electron-packager in order to create files and folders for the app binaries.
 NAME=$(sh scripts/projectName.sh)
 
+DIST_FOLDER_NAME=dist_prod
+
 # The folder with all the publishable webapp
-DIST=./dist_prod
+DIST=./$DIST_FOLDER_NAME
 
 # The project version.
 VERSION="$(sh scripts/projectVersion.sh)$(node scripts/experimentGroupId.js $DIST)"
@@ -32,6 +34,7 @@ help() {
 	echo "    -linux_ia32_zip   Make a electron linux x32 zip electron package."
 	echo "    -win32            Make a electron Win32 electron package."
 	echo "    -linux            Make all electron linux electron packages."
+    echo "    -html             Make a html package"
 	echo ""
 	echo "  NOTE: every version generates a binary automatically in CI."
 	echo ""
@@ -102,6 +105,12 @@ package_win32() {
 	mv binaries/$NAME-win32-ia32/$NAME.exe binaries/$NAME-$VERSION.exe
 }
 
+package_html() {
+    echo "Generating package for html..."
+    mkdir -p ./binaries
+    tar czf ./binaries/$NAME-$VERSION-html.tar.gz $DIST_FOLDER_NAME # ./ should be ommited, otherwise it will be inside tar.gz archive.
+}
+
 case "$1" in
     (-help)             help;;
     (-linux_x64_deb)    package_linux_x64_deb;;
@@ -110,5 +119,6 @@ case "$1" in
     (-linux)            package_linux;;
     (-osx)              package_osx;;
     (-win32)            package_win32;;
+    (-html)             package_html;;
     (*)                 echo Try 'package -help' for more information.;;
 esac 

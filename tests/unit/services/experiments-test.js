@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
+import sinon from 'sinon'
 
 module('Unit | Service | experiments', function (hooks) {
   let experiments
@@ -7,9 +8,9 @@ module('Unit | Service | experiments', function (hooks) {
   let challengeExpectationsMock
   let pilasBloquesApiMock
 
-  const solvedChallenge = {id: "13"}
+  const solvedChallenge = { id: "13" }
   const solvedChallengesFeedbackDisabled = ["13", "14"]
-  const userLogged = {experimentGroup: "control"}
+  const userLogged = { experimentGroup: "control" }
 
   setupTest(hooks);
 
@@ -21,23 +22,28 @@ module('Unit | Service | experiments', function (hooks) {
       solvedChallenges: [],
       experimentGroup: null,
       ip: "123.1.123.123",
-      getSolvedChallenges(){ return this.solvedChallenges },
-      getExperimentGroup(){ return this.experimentGroup },
-      saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} },
-      getUserIp() { return this.ip}
+      getSolvedChallenges() { return this.solvedChallenges },
+      getExperimentGroup() { return this.experimentGroup },
+      saveExperimentGroup() { this.user = { experimentGroup: "treatment" } },
+      getUserIp() { return this.ip }
     }
-    
+
     challengeExpectationsMock = {
       challengeDoesNotHaveExpectations: false,
       _decomposition: true,
-      hasDecomposition(){ return this._decomposition },
+      hasDecomposition() { return this._decomposition },
       doesNotHaveExpectations(/* challenge */) { return this.challengeDoesNotHaveExpectations }
     }
+
+    const stub = sinon.stub()
+    stub.callsFake(function () {
+      this.user = { experimentGroup: "treatment" }
+    })
 
     pilasBloquesApiMock = {
       user: null,
       getUser() { return this.user },
-      saveExperimentGroup(){ this.user = {experimentGroup: "treatment"} }
+      saveExperimentGroup: stub
     }
 
     experiments.storage = storageMock
@@ -94,69 +100,89 @@ module('Unit | Service | experiments', function (hooks) {
 
   //update challenges
 
-  test('Should NOT update solved challenges if challenge was already solved', function (assert){
+  test('Should NOT update solved challenges if challenge was already solved', function (assert) {
     storageMock.solvedChallenges = ["13"]
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
-  test('Should NOT update solved challenges if challenge does not have decomposition expect', function (assert){
+  test('Should NOT update solved challenges if challenge does not have decomposition expect', function (assert) {
     challengeExpectationsMock._decomposition = false
     assert.notOk(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
-  test('Should update solved challenges when challenge has decomposition expect and is not already solved', function (assert){
+  test('Should update solved challenges when challenge has decomposition expect and is not already solved', function (assert) {
     assert.ok(experiments.shouldUpdateSolvedChallenges(solvedChallenge))
   })
 
   //autoassign
 
-  test('ExperimentGroup gets group from storage if exists and user is not logged', function(assert){
+  test('ExperimentGroup gets group from storage if exists and user is not logged', function (assert) {
     experiments.set('groupSelectionStrategy', 'autoassign')
     storageMock.experimentGroup = "notAffected"
     assert.deepEqual(experiments.experimentGroup(), "notAffected")
   })
 
-  test('ExperimentGroup gets group from api if user is logged and has group', function(assert){
+  test('ExperimentGroup gets group from api if user is logged and has group', function (assert) {
     experiments.set('groupSelectionStrategy', 'autoassign')
     pilasBloquesApiMock.user = userLogged
     assert.deepEqual(experiments.experimentGroup(), "control")
   })
 
-  test('Random experimentGroup is generated when user is NOT logged, and is NOT in storage ', function(assert){
+  test('Random experimentGroup is generated when user is NOT logged, and is NOT in storage ', function (assert) {
     experiments.set('groupSelectionStrategy', 'autoassign')
     assert.ok(experiments.possibleGroups.includes(experiments.experimentGroup()))
   })
 
-  test('Random group is saved in api if user is logged and does NOT have a group', function(assert){
+  test('Random group is saved in api if user is logged and does NOT have a group', function (assert) {
     experiments.set('groupSelectionStrategy', 'autoassign')
-    pilasBloquesApiMock.user = {experimentGroup: null}
+    pilasBloquesApiMock.user = { experimentGroup: null }
 
     assert.ok(experiments.possibleGroups.includes(experiments.experimentGroup()))
     assert.deepEqual(pilasBloquesApiMock.user.experimentGroup, "treatment")
   })
 
-  test('Should assign notAffected group if could not get api', function(assert){
+  test('Should assign notAffected group if could not get api', function (assert) {
     experiments.set('groupSelectionStrategy', 'autoassign')
     storageMock.ip = null
     assert.deepEqual(experiments.experimentGroup(), "notAffected")
   })
 
-  function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges){
+  test('Experiment group should not be sent to the API if it could not be calculated', function (assert) {
+    storageMock.ip = undefined
+    pilasBloquesApiMock.user = { experimentGroup: "treatment" }
+    experiments.randomizeAndSaveExperimentGroup()
+    assert.notOk(pilasBloquesApiMock.saveExperimentGroup.called)
+  })
+
+  test('Experiment group should not be sent to the API if it could be calculated but user does not exist', function (assert) {
+    storageMock.ip = undefined
+    experiments.randomizeAndSaveExperimentGroup()
+    assert.notOk(pilasBloquesApiMock.saveExperimentGroup.called)
+  })
+
+  test('Experiment group should be sent to the API if it could be calculated and user exists', function (assert) {
+    storageMock.ip = '127.0.0.1'
+    pilasBloquesApiMock.user = { experimentGroup: "treatment" }
+    experiments.randomizeAndSaveExperimentGroup()
+    assert.ok(pilasBloquesApiMock.saveExperimentGroup.called)
+  })
+
+  function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges) {
     testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
 
-  function testShouldShowBlocksWarningExpectationsFeedback(group, feedback, shouldShow, solvedChallenges){
+  function testShouldShowBlocksWarningExpectationsFeedback(group, feedback, shouldShow, solvedChallenges) {
     testShouldShow('blocks warning expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksWarningExpectationFeedback()), solvedChallenges)
   }
 
-  function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []){
-    test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function(assert){
+  function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []) {
+    test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function (assert) {
       storageMock.solvedChallenges = solvedChallenges
       experiments.set('groupSelectionStrategy', group)
       const result = callback()
-      if(shouldShow){
+      if (shouldShow) {
         assert.ok(result)
-      }else{
+      } else {
         assert.notOk(result)
       }
     })

@@ -89,13 +89,7 @@ export function resetFetch() {
     mockApi(`solutions`, 200)
     mockApi(`ping`, 200)
     mockApi(`error`, { throws: 'ERROR' })
-    fetchUserIpMock("123.123.123")
-    
-}
-
-function fetchUserIpMock(ip) {
-    const json = JSON.stringify({ip})
-    fetchMock.mock(`https://api64.ipify.org?format=json`, new Response(json))
+    mockApi('user-ip', { ip: "123.123.123" })
 }
 
 export function mockApi(path, response, options) {
@@ -104,7 +98,6 @@ export function mockApi(path, response, options) {
 
 export function failAllApiFetchs() {
     fetchMock.reset()
-    fetchUserIpMock("123.123.123")
     mockApi("", { throws: 'ERROR' })
 }
 

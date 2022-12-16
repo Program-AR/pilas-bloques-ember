@@ -70,7 +70,7 @@ export default Component.extend({
   ],
 
   didInsertElement() {
-    if (this.pilasBloquesApi.connected) this.showNextQuestion()
+    if (this.pilasBloquesApi.isConnected()) this.showNextQuestion()
   },
 
   showNextQuestion() {

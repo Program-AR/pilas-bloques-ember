@@ -88,7 +88,15 @@ export default Service.extend({
     return this._send('GET', 'ping', undefined, false)
   },
 
+  isConnected() {
+    return this.get('connected')
+  },
+
   getUser() { return this.storage.getUser() },
+
+  async userIp() {
+    return this._send('GET', 'user-ip', undefined, false)
+  },
 
   async _send(method, resource, body, critical = true) {
     const user = this.getUser()

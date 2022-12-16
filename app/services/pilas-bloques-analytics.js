@@ -9,6 +9,7 @@ export default Service.extend({
   platform: service(),
   storage: service(),
   experiments: service(),
+  usesFullScreenMode: false,
 
   async context() {
     const userId = this.storage.getUserId()
@@ -21,6 +22,12 @@ export default Service.extend({
     const ip = this.storage.getUserIp()
 
     const experimentGroup = this.experiments.experimentGroup()
+
+    const locale = this.storage.getSelectedLocale()
+    const usesNightTheme = this.storage.getUseNightTheme()
+    const usesSimpleRead = this.storage.getUseSimpleRead()
+    const usesFullScreen = this.usesFullScreenMode
+    const solvedChallenges = this.storage.getSolvedChallenges()
   
     return {
       ...session,
@@ -30,8 +37,17 @@ export default Service.extend({
       version,
       experimentGroup,
       url: window.location.href,
-      ip
+      ip,
+      locale,
+      usesNightTheme,
+      usesSimpleRead,
+      usesFullScreen,
+      solvedChallenges
     }
+  },
+
+  setUsesFullScreenMode(usesIt) {
+    this.usesFullScreenMode = usesIt
   },
 
   // This is async because it needs to be polymorphic with the service pilasBloquesApi

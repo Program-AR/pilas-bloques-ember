@@ -1,6 +1,8 @@
 import Ember from 'ember'
 import { inject as service } from '@ember/service'
 
+const DEFAULT_LOCALE = 'es-ar'
+
 export default Ember.Service.extend({
   router: service(),
   USER_KEY: 'PB_USER',
@@ -34,11 +36,11 @@ export default Ember.Service.extend({
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
 
-  getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) },
+  getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) || false },
 
   toggleNightTheme() { this._save(this.USE_NIGHT_THEME_KEY, !this.getUseNightTheme()) },
 
-  getUseSimpleRead() { return this._get(this.USE_SIMPLE_READ_KEY) },
+  getUseSimpleRead() { return this._get(this.USE_SIMPLE_READ_KEY) || false },
 
   toggleSimpleRead() { this._save(this.USE_SIMPLE_READ_KEY, !this.getUseSimpleRead()) },
   
@@ -48,7 +50,7 @@ export default Ember.Service.extend({
 
   saveSelectedLocale(selectedLocale) { this._save(this.SELECTED_LOCALE_KEY, selectedLocale) },
 
-  getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) },
+  getSelectedLocale() { return this._get(this.SELECTED_LOCALE_KEY) || DEFAULT_LOCALE },
 
   saveExperimentGroup(newGroup) { this._save(this.EXPERIMENT_GROUP, newGroup) },
 

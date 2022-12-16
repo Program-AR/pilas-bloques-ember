@@ -14,6 +14,7 @@ export default Component.extend({
   canvasHeight: 0,
   simpleRead: service(),
   areExpectationsRunning: false,
+  pilasBloquesAnalytics: service(),
 
   debeMostrarPasoHabilitado: computed('model.debugging', function () {
     return this.get('model.debugging');
@@ -29,6 +30,7 @@ export default Component.extend({
 
   didInsertElement() {
     this.blocksGallery.start();
+    this.pilasBloquesAnalytics.setUsesFullScreenMode(false)
   },
 
   setPilasBlockly(pilasBlockly) {
@@ -37,6 +39,11 @@ export default Component.extend({
 
   shouldShowSimpleRead() {
     return this.simpleRead.shouldShowSimpleRead(this.get('model.grupo.capitulo.libro.modoLecturaSimple'))
+  },
+
+  setShouldUseFloatingMode(shouldUseIt) {
+    this.pilasBloquesAnalytics.setUsesFullScreenMode(shouldUseIt)
+    this.set("shouldUseFloatingMode", shouldUseIt)
   },
 
   actions: {
@@ -69,7 +76,7 @@ export default Component.extend({
     },
 
     changeScreenMode() {
-      this.set("shouldUseFloatingMode", !this.get("shouldUseFloatingMode"));
+      this.setShouldUseFloatingMode(!this.get("shouldUseFloatingMode"));
       this.send("updateBlockyWorkspaceBounds");
 
       this.send("showScene");
