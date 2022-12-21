@@ -18,6 +18,9 @@ module.exports = function (defaults) {
     },
     fingerprint: {
       enabled: false,
+    },
+    sassOptions: {
+      extension: 'scss'
     }
   });
 

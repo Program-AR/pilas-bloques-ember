@@ -10,7 +10,7 @@ module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'pilasbloques',
     environment: environment,
-    baseURL: '/',
+    rootURL: '/',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     googleAnalyticsEnabled: false,
@@ -65,7 +65,7 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/'
+    ENV.rootURL = '/'
     ENV.locationType = 'none'
     ENV.APP.autoboot = false // ember-qunit needs it to be false.
 
