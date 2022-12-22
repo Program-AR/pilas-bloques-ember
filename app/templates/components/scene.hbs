@@ -1,4 +1,4 @@
-<PaperCard class="exercise-card flex layout-column">
+<RPaperCard class="exercise-card flex layout-column">
     {{#if this.shouldUseFloatingMode}}
         <div class="pilas-canvas-scene-buttons flex layout-row">
             <span class="flex"></span>
@@ -6,4 +6,4 @@
         </div>
     {{/if}}
     <PilasCanvas class={{if this.shouldUseFloatingMode "canvas-boder-radius canMove" "canvas-boder-radius"}} @shouldUseFloatingMode={{this.shouldUseFloatingMode}} @onReady={{this.onReady}} @challenge={{this.challenge}} @cargando={{this.cargando}} />
-</PaperCard>
+</RPaperCard>
