@@ -1,5 +1,5 @@
 {{#unless this.cargando}}
-    <PaperCard class={{if this.shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
+    <RPaperCard class={{if this.shouldUseFloatingMode "exercise-buttons-collapsed-card exercise-actions flex layout-column column-reverse" "exercise-buttons-card exercise-actions flex layout-row"}}>
         
         <SceneButton 
             @class={{if this.areExpectationsRunning "deactivated-button-container" "step-by-step-button-container"}}
@@ -61,5 +61,5 @@
         <TurboModeToggle class={{if this.shouldUseFloatingMode "toggle-container-collapsed" "toggle-container"}} @pilas={{this.pilas}} />
 
 
-    </PaperCard>
+    </RPaperCard>
 {{/unless}}
