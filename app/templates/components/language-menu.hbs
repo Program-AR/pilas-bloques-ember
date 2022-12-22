@@ -4,17 +4,17 @@
     </PaperTooltip>
 
     <menu.trigger>
-        <PaperButton id="language-menu" class="md-menu-origin" @iconButton={{true}}>
-            {{paper-icon "language"}}
-        </PaperButton>
+        <RPaperButton id="language-menu" class="md-menu-origin" @iconButton={{true}}>
+            <RPaperIcon @iconName="language"/>
+        </RPaperButton>
     </menu.trigger>
 
     <menu.content as |content|>
         {{#each localeCodes as |localeCode|}}
         <content.menu-item>
-            <PaperButton @onClick={{action "setLocale" localeCode }}>
+            <RPaperButton @onClick={{action "setLocale" localeCode }}>
                 <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
-            </PaperButton>
+            </RPaperButton>
         </content.menu-item>
         {{/each}}
 
