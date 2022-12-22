@@ -1,9 +1,9 @@
 <PaperMenu @offset="5 43" as |menu|>
     
     <menu.trigger>
-        <PaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}}>
+        <RPaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}}>
             {{paper-icon "menu"}}
-        </PaperButton>
+        </RPaperButton>
     </menu.trigger>
     
     <menu.content as |content|>
@@ -11,53 +11,53 @@
         {{#if this.book}}
             {{!-- Challenge book --}}
                 <content.menu-item>
-                    <PaperButton 
+                    <RPaperButton 
                         @disabled={{false}} 
                         @raised={{false}} 
                         @fab={{false}}
                         @bubbles={{true}}
                         @href={{href-to "libros.verLibro" this.book.id}}>
                         <span class="menu-item-typography">{{this.book.titulo}}</span>
-                    </PaperButton>
+                    </RPaperButton>
                 </content.menu-item>
 
                 {{!-- Challenge chapter --}}
                 <content.menu-item>
-                    <PaperButton 
+                    <RPaperButton 
                         @disabled={{false}} 
                         @raised={{false}} 
                         @fab={{false}} 
                         @bubbles={{true}}
                         @href={{href-to "libros.verLibro" this.book.id}}>
                         <span class="menu-item-typography">{{this.chapter.titulo}}</span>
-                    </PaperButton>
+                    </RPaperButton>
                 </content.menu-item>
 
                 {{!-- Challenge group --}}
                 {{#if this.challenge.grupo.titulo}}
                     <content.menu-item>
-                        <PaperButton 
+                        <RPaperButton 
                             @disabled={{false}}
                             @raised={{false}}
                             @fab={{false}}
                             @bubbles={{true}}
                             @href={{href-to "libros.verLibro" this.book.id}}>
                             <span class="menu-item-typography">{{this.group.titulo}}</span>
-                        </PaperButton>
+                        </RPaperButton>
                     </content.menu-item>
                 {{/if}}
             {{/if}}
             
             {{!-- Challenge title --}}
             <content.menu-item>
-                <PaperButton 
+                <RPaperButton 
                     @disabled={{false}}
                     @raised={{false}}
                     @fab={{false}}
                     @bubbles={{true}}
                     >
                     <span class="menu-item-typography challenge-title">{{this.challenge.titulo}}</span>
-                </PaperButton>
+                </RPaperButton>
             </content.menu-item>
 
         </menu.content>
