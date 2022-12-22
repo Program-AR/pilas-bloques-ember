@@ -8,7 +8,6 @@ const Router = EmberRouter.extend({
 
 Router.map(function () {
   this.route('acercade');
-  this.route('challengue-creator');
   this.route('desafio', { path: '/desafio/:desafio_id' });
 
   /* Estas rutas están en los primeros cuadernillos impresos, deben seguir existiendo. */

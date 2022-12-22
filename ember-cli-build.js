@@ -100,18 +100,6 @@ module.exports = function (defaults) {
     destDir: '/libs/'
   });
 
-  const pilasBloquesCreador = new Funnel('node_modules/creador-de-desafios-pilasbloques', {
-    srcDir: '/build',
-    include: ['**'],
-    exclude: ['/static'],
-    destDir: '/libs/creador-de-desafios-pilasbloques'
-  });
-
-  const pilasBloquesCreadorStaticAssets = new Funnel('node_modules/creador-de-desafios-pilasbloques', {
-    srcDir: '/build/static',
-    include: ['**'],
-    destDir: '/static/'
-  });
 
   return mergeTrees([
     app.toTree(),
@@ -124,8 +112,6 @@ module.exports = function (defaults) {
     pilasWeb,
     unzipit,
     pilasBloquesExercises,
-    pilasBloquesCreador,
-    pilasBloquesCreadorStaticAssets
   ], {
     overwrite: true
   });

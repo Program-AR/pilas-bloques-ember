@@ -3,22 +3,6 @@
 <Header />
 {{outlet}}
 <div class='contenido-principal'>
-	<div class='contenedor-acercade'>
-		<DescripcionAcercaDe />
-		<!-- Componente necesario porque es usado desde pilas-engine-bloques-website. Ver scripts de construcción de ese proyecto -->
+	<RPaperButton >Show backdrop</RPaperButton>
 
-		<p>{{t "templates.acercade.yourCurrentVersion"}} {{this.version}}
-			{{#if this.hayActualizacion}}
-			({{t "templates.acercade.youCanUpdate"}} {{this.versionMasReciente}})
-			{{/if}}
-		</p>
-		<p>
-
-			<Link @href="https://pilasbloques.program.ar/" class='visit-website-link' @openOnNewTab={{true}} @tooltip={{t "templates.acercade.visitProjectWeb"}}>
-				<FaIcon @icon="globe"/> {{t "templates.acercade.visitProjectWeb"}}
-			</Link>
-
-			{{pilas-update}}
-		</p>
-	</div>
 </div>
