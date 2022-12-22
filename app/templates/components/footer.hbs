@@ -1,4 +1,4 @@
-<PaperCard class="footer-card flex footer">
+<RPaperCard class="footer-card flex footer">
   {{#if this.cargando}}
   <Spinner />
   {{else}}
@@ -6,10 +6,10 @@
     <a class="program-ar-logo" href="http://program.ar" />
     <p class="app-version"><code>{{t "components.footer.version"}}</code></p>{{version class="app-version"}}
     <span class="flex"></span>
-    <PaperButton @onClick={{action this.openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}}
-      @bubbles={{true}}>{{paper-icon "help" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.problem"}}</span></PaperButton>
-    <PaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "acercade" }}>
-      {{paper-icon "info" class="menu-button-icon"}}<span class="menu-button-typography">{{t "components.footer.about"}}</span></PaperButton>
+    <RPaperButton @onClick={{action this.openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}}
+      @bubbles={{true}}><RPaperIcon @iconName="help" class="menu-button-icon"/><span class="menu-button-typography">{{t "components.footer.problem"}}</span></RPaperButton>
+    <RPaperButton @disabled={{false}} @raised={{false}} @fab={{false}} @bubbles={{true}} @href={{href-to "acercade" }}>
+      <RPaperIcon @iconName="info" class="menu-button-icon"/><span class="menu-button-typography">{{t "components.footer.about"}}</span></RPaperButton>
   </div>
   {{/if}}
-</PaperCard>
+</RPaperCard>
