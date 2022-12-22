@@ -11,13 +11,9 @@
       @required={{ true }} />
 
     {{#if wrongLogin}}
-      <PaperCard as |card|>
-        <card.title as |title|>
-          <title.text as |text|>
-            <p>{{t "components.login.wrong"}}</p>
-          </title.text>
-        </card.title>
-      </PaperCard>
+      <RPaperCard >
+        <p>{{t "components.login.wrong"}}</p>
+      </RPaperCard>
     {{/if}}
 
     <ProgressButton type="submit" @loading={{ this.pilasBloquesApi.loading.login }}>
