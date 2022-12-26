@@ -10,7 +10,7 @@
             @onClick={{this.onClick}}
             >
                 {{#if this.icon}}
-                    {{paper-icon this.icon}}
+                    <RPaperIcon @iconName={{this.icon}}/>
                 {{else}}
                     {{#if faIcon}}
                         <i class={{faIcon}}></i>

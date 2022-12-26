@@ -2,10 +2,10 @@
     <span class="flex"></span>
     <input type='file' id="cargarActividadInput" accept=".spbq" class="hidden" />
     <a id="placeholder" class="hidden">..</a>
-    <Button @tooltip={{t "components.challengeWorkspaceButtons.open" }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}>{{paper-icon "folder"}}</Button>
-    <Button @tooltip={{t "components.challengeWorkspaceButtons.save"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}>{{paper-icon "save"}}</Button>
-    <Button @tooltip={{t "components.challengeWorkspaceButtons.delete"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (mut this.deleteDialogIsOpen) true}}>{{paper-icon "delete"}}</Button>
-    <Button @tooltip={{if this.shouldUseFloatingMode (t "components.challengeWorkspaceButtons.exit") (t "components.challengeWorkspaceButtons.fullScreen") }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{this.changeScreenMode}}>{{paper-icon (if this.shouldUseFloatingMode "fullscreen_exit" "fullscreen")}}</Button>
+    <Button @tooltip={{t "components.challengeWorkspaceButtons.open" }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}><RPaperIcon @iconName="folder"/></Button>
+    <Button @tooltip={{t "components.challengeWorkspaceButtons.save"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}><RPaperIcon @iconName="save"/></Button>
+    <Button @tooltip={{t "components.challengeWorkspaceButtons.delete"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (mut this.deleteDialogIsOpen) true}}><RPaperIcon @iconName="delete"/></Button>
+    <Button @tooltip={{if this.shouldUseFloatingMode (t "components.challengeWorkspaceButtons.exit") (t "components.challengeWorkspaceButtons.fullScreen") }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{this.changeScreenMode}}><RPaperIcon @iconName={{if this.shouldUseFloatingMode "fullscreen_exit" "fullscreen"}}></RPaperIcon></Button>
 </div>
 
 <ModalToggle @open={{this.deleteDialogIsOpen}}>

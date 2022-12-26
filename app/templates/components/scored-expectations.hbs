@@ -1,13 +1,13 @@
   <div class='expectationResults' >
     {{#each this.allPassedExpects as |result|}}
       <div class='goal passed'>
-        {{paper-icon "check-circle"}}
+        <RPaperIcon @iconName="check-circle"/>
         {{markdown-to-html result.description.asScoring}}
       </div>
     {{/each}}
     {{#each this.failedExpects as |result|}}
       <div class='goal failed'>
-        {{paper-icon "arrow-circle-right"}}
+        <RPaperIcon @iconName="arrow-circle-right"/>
         {{markdown-to-html result.description.asScoring}}
       </div>
     {{/each}}
