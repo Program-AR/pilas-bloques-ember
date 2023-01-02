@@ -6,7 +6,7 @@
     {{#each expectations as |result|}}
       <div class="goal control">
         <span class="emoji">👉</span>
-        {{markdown-to-html this.result.description.forControlGroup}}
+        {{markdown-to-html result.description.forControlGroup}}
       </div>
     {{/each}}
   </div>
