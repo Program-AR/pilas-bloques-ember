@@ -3,7 +3,12 @@ import { render } from '@ember/test-helpers'
 import hbs from 'htmlbars-inline-precompile'
 import { mockApi, setupLoggedUser, setupPBIntegrationTest } from '../../helpers/utils'
 import { actividadMock, pilasMock, createActivity } from '../../helpers/mocks'
+import { settled } from '@ember/test-helpers';
 
+/**
+ * 
+ * These tests are flaky. Apparently using settled fixes the flakyness.
+ */
 module('Integration | Component | pilas-blockly', function (hooks) {
   setupPBIntegrationTest(hooks)
   setupLoggedUser(hooks)
@@ -12,6 +17,7 @@ module('Integration | Component | pilas-blockly', function (hooks) {
 
   test('should start with code param in workspace', async function (assert) {
     await renderComponent.call(this, { code })
+    await settled()
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'ComerChurrasco')
   })
 
@@ -28,7 +34,8 @@ module('Integration | Component | pilas-blockly', function (hooks) {
 
   test('should start with api last solution in workspace', async function (assert) {
     mockApi('challenges', { program })
-    await renderComponent.call(this, { code: '' })
+    await renderComponent.call(this)
+    await settled()
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'MoverACasillaArriba')
   })
 
@@ -46,11 +53,13 @@ module('Integration | Component | pilas-blockly', function (hooks) {
   test('should start with activity initial solution in workspace', async function (assert) {
     const activityWithInitialSolution = createActivity(this.owner, { solucionInicial })
     await renderComponent.call(this, { model: activityWithInitialSolution })
+    await settled()
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'MoverACasillaAbajo')
   })
 
   test('without initial code should start only with main block', async function (assert) {
     await renderComponent.call(this, { model: createActivity(this.owner) })
+    await settled()
     assertBlockTypes(assert, 'al_empezar_a_ejecutar')
   })
 })
