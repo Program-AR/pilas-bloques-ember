@@ -28,7 +28,7 @@ module('Integration | Component | pilas-blockly', function (hooks) {
 
   test('should start with api last solution in workspace', async function (assert) {
     mockApi('challenges', { program })
-    await renderComponent.call(this)
+    await renderComponent.call(this, { code: '' })
     assertBlockTypes(assert, 'al_empezar_a_ejecutar', 'MoverACasillaArriba')
   })
 
