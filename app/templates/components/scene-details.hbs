@@ -13,18 +13,10 @@
                         </div>
                     </div>
                     <div id="statement" class="tabcontent active">
-                        <PaperCardTitle class="layout-column">
-                            <PaperCardTitleText>
-                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-description>{{markdown-to-html this.model.enunciado}}</PaperCardHeaderSubhead>
-                            </PaperCardTitleText>
-                        </PaperCardTitle>
+                        <p class="layout-column exercise-text" data-test-challenge-description>{{markdown-to-html this.model.enunciado}}</p>
                     </div>
                     <div id="clue" class="tabcontent">
-                        <PaperCardTitle class="layout-column">
-                            <PaperCardTitleText>
-                                <PaperCardHeaderSubhead class="exercise-text" data-test-challenge-clue>{{markdown-to-html this.model.consignaInicial}}</PaperCardHeaderSubhead>
-                            </PaperCardTitleText>
-                        </PaperCardTitle>
+                        <p class="layout-column exercise-text" data-test-challenge-clue>{{markdown-to-html this.model.consignaInicial}}</p>
                     </div>
                 </div>
             </div>

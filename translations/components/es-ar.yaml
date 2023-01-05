@@ -13,7 +13,7 @@ scene:
 sceneDetails:
   seeDescription: ¡Quiero ver el enunciado!
   getClue: ¡Dame una pista!
-  noClues: Este ejercicio no contiene pista alguna
+  noClues: Este ejercicio no contiene pistas
 sceneButtons:
   stepByStepRun:
     label: Paso
