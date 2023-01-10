@@ -1,7 +1,7 @@
 <RPaperTextField
   @type={{ this.type }}
   @label={{ this.stringLabel }}
-  @value={{ or this.model '' }} 
+  @value={{ this.nonNullableText }} 
   @onChange={{ action (mut this.model) }}
   @focusOut={{ this.focusOut }}
   @onKeyDown={{ this.onKeyDown }}

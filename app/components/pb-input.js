@@ -1,15 +1,18 @@
 import Component from '@ember/component';
 import ChildMixin from '../mixins/child-mixin';
-import FocusableMixin from '../mixins/focusable-mixin';
 import { computed } from '@ember/object'
 import { inject as service } from '@ember/service';
 
-export default Component.extend(FocusableMixin, ChildMixin, {
+export default Component.extend(ChildMixin, {
 
     intl: service(),
 
-    isInvalid: computed('error', function (){
-        return this.error
+    isInvalid: computed('hasError', function (){
+        return this.hasError
+    }),
+
+    nonNullableText: computed('model', function () {
+        return this.model || ''
     }),
 
     /**
