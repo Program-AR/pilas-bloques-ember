@@ -19,6 +19,18 @@ export default Component.extend(FocusableMixin, ChildMixin, {
         return this.label.toString()
     }),
 
+    customValidationErrorMessage: computed('customValidations', 'model', function () {
+        return this.customValidations?.find(validation => validation.validate(this.model))?.message.toString()
+    }),
+
+    errorMessage: computed('error', 'customValidationErrorMessage', function () {
+        return this.error?.toString() || this.customValidationErrorMessage
+    }),
+
+    hasError: computed('errorMessage', function () {
+        return !!this.errorMessage
+    }),
+
     actions : {
         onInvalid(e) {
             e.target.setCustomValidity(this.intl.t("templates.pb-input.requiredField"))

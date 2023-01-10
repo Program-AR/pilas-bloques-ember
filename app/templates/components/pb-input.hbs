@@ -3,17 +3,18 @@
   @label={{ this.stringLabel }}
   @value={{ or this.model '' }} 
   @onChange={{ action (mut this.model) }}
-  @customValidations={{ or customValidations (array) }}
   @focusOut={{ this.focusOut }}
   @onKeyDown={{ this.onKeyDown }}
   @required={{ this.required }}
   @onInvalid={{ action 'onInvalid' }}
   @onInput={{ action 'onInput' }}
+  @error={{ this.hasError }}
+  @helperText={{ this.errorMessage }}
   ...attributes >
-  {{#if this.error}}
+  {{#if this.hasError}}
     <div class="md-input-messages-animation md-auto-hide" id="ember267-error-messages">
       <div id="error-input-ember267-0" class="paper-input-error ng-enter ng-enter-active md-input-message-animation" style="opacity: 1; margin-top: 0">
-        {{ this.error }}
+        {{ this.errorMessage }}
       </div>
     </div>
   {{/if}}
