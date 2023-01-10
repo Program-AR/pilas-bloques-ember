@@ -19,7 +19,7 @@
   {{/unless}}
 
   <div class="flex layout-row">
-    <PaperCard class={{if this.shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode" "flex-grow pilas-blockly-container"}}>
+    <RPaperCard class={{if this.shouldUseFloatingMode "flex-grow pilas-blockly-container floating-mode paper-card" "flex-grow pilas-blockly-container paper-card"}}>
       <PilasBlockly
         @codigo={{this.codigo}}
         @showCode={{this.showCode}}
@@ -32,7 +32,7 @@
         @shouldUseFloatingMode={{this.shouldUseFloatingMode}}
         @changeScreenMode={{action "changeScreenMode"}}
       />
-    </PaperCard>
+    </RPaperCard>
 
     <div>
       <SceneButtons

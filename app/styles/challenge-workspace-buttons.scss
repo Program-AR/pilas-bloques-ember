@@ -13,3 +13,8 @@
 .workspace-buttons .md-button.md-fab.md-mini:focus {
     background-color: var(--theme-button-hover-background-color);
 }
+
+.workspace-buttons button{
+    display: flex;
+    justify-content: center;
+}

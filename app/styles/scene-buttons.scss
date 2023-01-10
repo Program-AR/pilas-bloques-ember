@@ -13,6 +13,11 @@
     padding-right: 2px;
 }
 
+.scene-button button{
+    display: flex;
+    justify-content: center;
+}
+
 .exercise-actions {
     position: inherit;
 }
@@ -27,7 +32,7 @@
     border-color:    #269abc;
 }
 
-.exercise-actions .step-by-step-button-container md-icon.md-default-theme {
+.exercise-actions .step-by-step-button-container span {
     color:#fff;
     margin-top : -2px;
 }
@@ -53,7 +58,7 @@
     border-color:    #d58512;
 }
 
-.exercise-actions .restart-button-container md-icon.md-default-theme {
+.exercise-actions .restart-button-container span {
     color:#fff;
     margin-top : -2px;
 }
@@ -74,7 +79,7 @@
     border-color:    #6a6c6a;
 }
 
-.exercise-actions .run-button-container md-icon.md-default-theme {
+.exercise-actions .run-button-container span {
     color:#fff;
     margin-top : -2px;
 }
