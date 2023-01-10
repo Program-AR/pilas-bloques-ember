@@ -76,7 +76,7 @@ export default Component.extend({
       Esto es lo mas que puedo hacer para evitar un refactor
       gigante.
     */
-    this.set('exerciseWorkspace', this.get('parentView').get('parentView'));
+    this.set('exerciseWorkspace', this.get('parentView'));
     this.exerciseWorkspace.setPilasBlockly(this);
 
     this.set('blockly_toolbox', this.toolboxForBlockTypes(this.challenge.bloques));
