@@ -1,12 +1,14 @@
 <RPaperTextField
+  @type={{ this.type }}
   @label={{ this.stringLabel }}
   @value={{ or this.model '' }} 
   @onChange={{ action (mut this.model) }}
-  @errorMessages={{ hash required=(t "templates.pb-input.requiredField") }}
   @customValidations={{ or customValidations (array) }}
   @focusOut={{ this.focusOut }}
   @onKeyDown={{ this.onKeyDown }}
   @required={{ this.required }}
+  @onInvalid={{ action 'onInvalid' }}
+  @onInput={{ action 'onInput' }}
   ...attributes >
   {{#if this.error}}
     <div class="md-input-messages-animation md-auto-hide" id="ember267-error-messages">
