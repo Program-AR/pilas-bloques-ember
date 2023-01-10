@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 import ChildMixin from '../mixins/child-mixin';
+import FocusableMixin from '../mixins/focusable-mixin';
 import { computed } from '@ember/object'
 
-export default Component.extend(ChildMixin, {
+export default Component.extend(FocusableMixin, ChildMixin, {
 
     isInvalid: computed('error', function (){
         return this.error

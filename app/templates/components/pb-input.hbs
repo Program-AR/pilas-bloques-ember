@@ -1,7 +1,6 @@
 <RPaperTextField
-  @type={{ this.type }} 
   @label={{ this.stringLabel }}
-  @value={{ this.model }} 
+  @value={{ or this.model '' }} 
   @onChange={{ action (mut this.model) }}
   @errorMessages={{ hash required=(t "templates.pb-input.requiredField") }}
   @customValidations={{ or customValidations (array) }}
