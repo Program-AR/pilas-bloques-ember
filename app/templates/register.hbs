@@ -1,7 +1,7 @@
 <Header/>
 
 <div class="center">
-  <PaperForm class="register-form" @onSubmit={{action "doRegister"}} as |form|>
+  <PbForm class="register-form" @onSubmit={{action "doRegister"}}>
     <img src="imagenes/session/register.png" />
     
     <PbInput 
@@ -90,6 +90,6 @@
       @loading={{ this.pilasBloquesApi.loading.register }}>
         {{t "templates.register.register"}}
     </ProgressButton>
-  </PaperForm>
+  </PbForm>
   <br><br>
 </div>

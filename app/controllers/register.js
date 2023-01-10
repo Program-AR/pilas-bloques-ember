@@ -62,8 +62,10 @@ export default Controller.extend({
     },
 
     checkUsername() {
-      this.pilasBloquesApi.userExists(this.registerData.username)
-        .then(exist => this.set("validUsername", !exist))
+      if (this.registerData.username) {
+        this.pilasBloquesApi.userExists(this.registerData.username)
+          .then(exist => this.set("validUsername", !exist))
+      }
     },
   },
 })

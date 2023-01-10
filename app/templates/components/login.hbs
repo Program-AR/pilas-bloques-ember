@@ -1,7 +1,7 @@
 <div class="login">
   <div class="login-item">
     <h3>{{t "components.login.already"}}</h3>
-  <PaperForm @onSubmit={{action "doLogin"}} as |form|>
+  <PbForm @onSubmit={{action "doLogin"}}>
     <PbInput @label={{t "components.login.username"}}
       @model={{ this.credentials.username }} 
       @required={{ true }} />
@@ -19,7 +19,7 @@
     <ProgressButton type="submit" @loading={{ this.pilasBloquesApi.loading.login }}>
       {{t "components.login.login"}}
     </ProgressButton>
-  </PaperForm>
+  </PbForm>
 
   <br>
   <Link @href={{href-to "password-recovery"}}>
