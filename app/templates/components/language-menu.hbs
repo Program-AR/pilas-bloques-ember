@@ -1,23 +1,13 @@
-<PaperMenu @offset="5 43" as |menu|>
-    <PaperTooltip>
-        {{t "changeLanguage"}}
-    </PaperTooltip>
+<RPaperButton id="language-menu" class="language-icon" @iconButton={{true}} @onClick={{action "menuToggle"}} >
+    <RPaperIcon @class='language-button' @iconName="language"/>
+</RPaperButton>
 
-    <menu.trigger>
-        <RPaperButton id="language-menu" class="language-icon" @iconButton={{true}}>
-            <RPaperIcon @class='language-button' @iconName="language"/>
-        </RPaperButton>
-    </menu.trigger>
-
-    <menu.content as |content|>
-        {{#each localeCodes as |localeCode|}}
-        <content.menu-item>
+<RPaperMenu @triggerId="language-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
+    {{#each localeCodes as |localeCode|}}
+        <RPaperMenuItem>
             <RPaperButton @onClick={{action "setLocale" localeCode }}>
                 <span class="menu-item-typography">{{compute (action languageName) localeCode}}</span>
             </RPaperButton>
-        </content.menu-item>
-        {{/each}}
-
-
-    </menu.content>
-</PaperMenu>
+        </RPaperMenuItem>
+    {{/each}}
+</RPaperMenu>
