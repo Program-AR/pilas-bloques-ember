@@ -535,9 +535,17 @@ md-menu-content > md-menu-item {
   color: inherit;
 }
 
-.paper-card{
+.themed-background{
   background-color: var(--theme-background-color) !important;
+}
+
+.paper-card{
+  @extend .themed-background;
   border-radius: 10px;
+}
+
+.paper-menu ul{
+  @extend .themed-background;
 }
 
 md-card {

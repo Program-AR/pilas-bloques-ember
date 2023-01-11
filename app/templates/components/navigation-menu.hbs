@@ -2,7 +2,7 @@
     <RPaperIcon @iconName="menu"/>
 </RPaperButton>
 
-<RPaperMenu @triggerId="navigation-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
+<RPaperMenu class="paper-menu" @triggerId="navigation-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
         {{#if this.book}}
             {{!-- Challenge book --}}
                 <RPaperMenuItem>

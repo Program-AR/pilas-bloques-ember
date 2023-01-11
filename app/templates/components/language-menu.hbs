@@ -2,7 +2,7 @@
     <RPaperIcon @class='language-button' @iconName="language"/>
 </RPaperButton>
 
-<RPaperMenu @triggerId="language-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
+<RPaperMenu class="paper-menu" @triggerId="language-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
     {{#each localeCodes as |localeCode|}}
         <RPaperMenuItem>
             <RPaperButton @onClick={{action "setLocale" localeCode }}>

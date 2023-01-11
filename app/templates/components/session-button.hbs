@@ -4,7 +4,7 @@
     <RPaperButton @iconButton={{true}} @onClick={{action "menuToggle"}}> {{ this.session.nickName }} </RPaperButton>
   </div>
   
-  <RPaperMenu @triggerId="session-button" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
+  <RPaperMenu class="paper-menu" @triggerId="session-button" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
       <RPaperMenuItem>
         <Button @onClick={{action "logout"}}> {{t "components.sessionButton.logout"}} </Button>
       </RPaperMenuItem>
