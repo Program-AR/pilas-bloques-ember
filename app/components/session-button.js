@@ -21,14 +21,13 @@ export default Component.extend({
   },
 
   actions: {
-    changeUser() {
-      this.pilasBloquesApi.logout()
-      this.updateSession()
-      this.set("openLogin", true)
-    },
     logout() {
       this.pilasBloquesApi.logout()
       document.location.reload()
     },
+
+    menuToggle() {
+      this.set("menuOpen", !this.get('menuOpen')) 
+  },
   },
 });
