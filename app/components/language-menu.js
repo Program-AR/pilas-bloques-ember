@@ -6,6 +6,8 @@ export default Component.extend({
 
     intl: service(),
     disabledLanguages: [],
+    menuOpen: false,
+    
     localeCodes: computed("intl", function () {
         return this.get('intl').get('locales').filter(localeCode => !this.disabledLanguages.includes(localeCode))
     }),

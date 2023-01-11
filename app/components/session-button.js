@@ -7,7 +7,8 @@ export default Component.extend({
   avatardb: service(),
   wrongLogin: false,
   session: null,
-
+  menuOpen: false,
+  
   randomAvatar: computed("avatardb", function() {
     return this.avatardb.randomAvatar()
   }),
