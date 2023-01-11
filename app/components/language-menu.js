@@ -5,7 +5,6 @@ import { computed } from '@ember/object';
 export default Component.extend({
 
     intl: service(),
-    menuOpen: false,
     disabledLanguages: [],
     localeCodes: computed("intl", function () {
         return this.get('intl').get('locales').filter(localeCode => !this.disabledLanguages.includes(localeCode))

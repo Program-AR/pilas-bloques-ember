@@ -1,16 +1,11 @@
-<PaperMenu @offset="5 43" as |menu|>
-    
-    <menu.trigger>
-        <RPaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}}>
-            <RPaperIcon @iconName="menu"/>
-        </RPaperButton>
-    </menu.trigger>
-    
-    <menu.content as |content|>
+<RPaperButton id="navigation-menu" class="md-menu-origin" @iconButton={{true}} @onClick={{action "menuToggle"}}>
+    <RPaperIcon @iconName="menu"/>
+</RPaperButton>
 
+<RPaperMenu @triggerId="navigation-menu" @open={{this.menuOpen}} @onClose={{action "menuToggle"}}>
         {{#if this.book}}
             {{!-- Challenge book --}}
-                <content.menu-item>
+                <RPaperMenuItem>
                     <RPaperButton 
                         @disabled={{false}} 
                         @raised={{false}} 
@@ -19,10 +14,10 @@
                         @href={{href-to "libros.verLibro" this.book.id}}>
                         <span class="menu-item-typography">{{this.book.titulo}}</span>
                     </RPaperButton>
-                </content.menu-item>
+                </RPaperMenuItem>
 
                 {{!-- Challenge chapter --}}
-                <content.menu-item>
+                <RPaperMenuItem>
                     <RPaperButton 
                         @disabled={{false}} 
                         @raised={{false}} 
@@ -31,11 +26,11 @@
                         @href={{href-to "libros.verLibro" this.book.id}}>
                         <span class="menu-item-typography">{{this.chapter.titulo}}</span>
                     </RPaperButton>
-                </content.menu-item>
+                </RPaperMenuItem>
 
                 {{!-- Challenge group --}}
                 {{#if this.challenge.grupo.titulo}}
-                    <content.menu-item>
+                    <RPaperMenuItem>
                         <RPaperButton 
                             @disabled={{false}}
                             @raised={{false}}
@@ -44,12 +39,12 @@
                             @href={{href-to "libros.verLibro" this.book.id}}>
                             <span class="menu-item-typography">{{this.group.titulo}}</span>
                         </RPaperButton>
-                    </content.menu-item>
+                    </RPaperMenuItem>
                 {{/if}}
             {{/if}}
             
             {{!-- Challenge title --}}
-            <content.menu-item>
+            <RPaperMenuItem>
                 <RPaperButton 
                     @disabled={{false}}
                     @raised={{false}}
@@ -58,7 +53,5 @@
                     >
                     <span class="menu-item-typography challenge-title">{{this.challenge.titulo}}</span>
                 </RPaperButton>
-            </content.menu-item>
-
-        </menu.content>
-</PaperMenu>
+            </RPaperMenuItem>
+</RPaperMenu>
