@@ -42,8 +42,8 @@
   height: 5px;
 }
 
-.invisible-input > input {
-  visibility: hidden;
+.invisible-input > div {
+  opacity: 0;
 }
 
 .register-form {

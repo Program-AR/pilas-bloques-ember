@@ -1,6 +1,3 @@
-/**
- * @module ember-paper
- */
 import Mixin from '@ember/object/mixin';
 
 import { computed } from '@ember/object';
@@ -12,7 +9,7 @@ import { A } from '@ember/array';
  */
 export default Mixin.create({
   childComponents: computed(function() {
-    return A();
+    return A(); // jshint ignore:line
   }),
 
   register(child) {

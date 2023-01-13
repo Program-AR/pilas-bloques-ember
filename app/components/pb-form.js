@@ -1,28 +1,32 @@
+/* jshint ignore:start */
 import Component from '@ember/component';
 import ParentMixin from '../mixins/parent-mixin';
-import { computed } from '@ember/object'
+import { computed, action } from '@ember/object'
+import { tagName } from '@ember-decorators/component';
 
-export default Component.extend(ParentMixin, {
+@tagName('form')
+export default class PbForm extends Component.extend(ParentMixin) {
 
-    isValid: computed('isInvalid', function () {
+    @computed('isInvalid')
+    get isValid() {
         return !this.isInvalid
-    }),
+    }
 
-    isInvalid: computed('childComponents.@each.isInvalid', function () {
+    @computed('childComponents.@each.isInvalid')
+    get isInvalid() {
         return this.childComponents.isAny('isInvalid')
-    }),
+    }
 
     submit() {
         this.send('localOnSubmit');
         return false;
-    },
+    }
 
-    actions: {
-        localOnSubmit() {
-            if (this.isValid) {
-                this.onSubmit()
-            }
+    @action
+    localOnSubmit() {
+        if (this.isValid) {
+            this.onSubmit()
         }
     }
-});
-
+}
+/* jshint ignore:end */

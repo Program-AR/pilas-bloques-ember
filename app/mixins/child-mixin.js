@@ -1,9 +1,5 @@
 /* eslint-disable ember/no-mixins, ember/require-computed-property-dependencies */
-/**
- * @module ember-paper
- */
 import Mixin from '@ember/object/mixin';
-
 import { computed } from '@ember/object';
 import ParentMixin from './parent-mixin';
 
