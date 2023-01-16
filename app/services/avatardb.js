@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const AVATAR_COUNT = 16
-const AVATAR_PATH = "imagenes/avatars/"
+const AVATAR_PATH = "/imagenes/avatars/"
 
 export default Ember.Service.extend({
 
