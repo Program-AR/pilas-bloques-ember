@@ -88,7 +88,9 @@ export default Component.extend({
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
     this.pilasService.on("error", ({ error }) => {
-      this.set('engineError', error);
+      if(!this.isDestroyed){
+        this.set('engineError', error);
+      }
     });
 
     $(window).trigger('resize');

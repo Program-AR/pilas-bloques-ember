@@ -148,7 +148,7 @@ export default Service.extend({
       args0: [
         {
           type: "field_image",
-          src: `iconos/${opciones.icono}`,
+          src: `/iconos/${opciones.icono}`,
           width: 16,
           height: 16,
           alt: "*"
@@ -215,7 +215,7 @@ export default Service.extend({
           "args0": [
             {
               "type": "field_image",
-              "src": `iconos/icono.DibujarLinea.png`,
+              "src": `/iconos/icono.DibujarLinea.png`,
               "width": 16,
               "height": 16,
               "alt": "*"
@@ -322,7 +322,7 @@ export default Service.extend({
   _definirBloquesAccion() {
 
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
-      icono: 'iconos.botonRojo.png',
+      icono: '/iconos.botonRojo.png',
       comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: 'BotonAnimado',
@@ -787,7 +787,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.arriba.png`,
+          "src": `/iconos/icono.arriba.png`,
           "width": 16,
           "height": 20,
           "alt": "*"
@@ -820,7 +820,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.DibujarLinea.png`,
+          "src": `/iconos/icono.DibujarLinea.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -902,7 +902,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.Girar.png`,
+          "src": `/iconos/icono.Girar.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -1143,7 +1143,7 @@ export default Service.extend({
       "args0": [
         {
           type: "field_image",
-          src: `iconos/icono.DibujarLinea.png`,
+          src: `/iconos/icono.DibujarLinea.png`,
           width: 16,
           height: 16,
           alt: "*"

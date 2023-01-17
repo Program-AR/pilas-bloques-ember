@@ -40,7 +40,7 @@ export default Model.extend({
   shouldShowMultipleScenarioHelp: attr('boolean', {defaultValue: false}),
 
   coverSrc: computed('imagen', 'nombre', 'customCover', function () {
-    return this.customCover || `imagenes/desafios/${ this.imagen || this.nombre || 'proximamente'}.png`;
+    return this.customCover || `/imagenes/desafios/${ this.imagen || this.nombre || 'proximamente'}.png`;
   }),
 
   initialWorkspace: computed("solucionInicial", function () {

@@ -7,13 +7,13 @@ module('Acceptance | clear', function (hooks) {
   setupLoggedUser(hooks)
 
   test('should clear all storage data', async function (assert) {
-    await visit('clear')
+    await visit('/clear')
     let storage = this.owner.lookup('service:storage')
     assert.notOk(storage.getUser())
   })
 
   test('should redirect to home', async function (assert) {
-    await visit('clear')
+    await visit('/clear')
     assert.equal(currentURL(), '/libros')
   })
 
