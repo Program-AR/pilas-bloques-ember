@@ -6,6 +6,8 @@ export default Component.extend({
 
     intl: service(),
     disabledLanguages: [],
+    menuOpen: false,
+    
     localeCodes: computed("intl", function () {
         return this.get('intl').get('locales').filter(localeCode => !this.disabledLanguages.includes(localeCode))
     }),
@@ -17,6 +19,10 @@ export default Component.extend({
     actions: {
         setLocale: function (selectedLocaleCode) {
             this.intl.setSelectedLocale(selectedLocaleCode)
-        }
+        },
+
+        menuToggle: function() {
+            this.set("menuOpen", !this.get('menuOpen')) 
+        },
     }
 });

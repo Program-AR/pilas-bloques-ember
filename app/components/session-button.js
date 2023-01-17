@@ -7,7 +7,8 @@ export default Component.extend({
   avatardb: service(),
   wrongLogin: false,
   session: null,
-
+  menuOpen: false,
+  
   randomAvatar: computed("avatardb", function() {
     return this.avatardb.randomAvatar()
   }),
@@ -21,14 +22,13 @@ export default Component.extend({
   },
 
   actions: {
-    changeUser() {
-      this.pilasBloquesApi.logout()
-      this.updateSession()
-      this.set("openLogin", true)
-    },
     logout() {
       this.pilasBloquesApi.logout()
       document.location.reload()
     },
+
+    menuToggle() {
+      this.set("menuOpen", !this.get('menuOpen')) 
+  },
   },
 });
