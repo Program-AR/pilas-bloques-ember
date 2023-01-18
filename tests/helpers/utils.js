@@ -197,7 +197,6 @@ export function fetchCallHeader() {
 export async function awaitChallengeLoading() {
     var timeoutInMs = 5000
     var startTimeInMs = Date.now()
-    console.log($("[data-test-challenge-description]"))
     while (($("[data-test-challenge-description]").length == 0) && (startTimeInMs + timeoutInMs > Date.now())) {
         await new Promise(r => setTimeout(r, 20))
     }
