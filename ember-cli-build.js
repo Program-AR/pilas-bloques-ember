@@ -18,6 +18,12 @@ module.exports = function (defaults) {
     },
     fingerprint: {
       enabled: false,
+    },
+    babel: {
+      plugins: [
+        'transform-class-properties',
+        'transform-react-jsx',
+      ]
     }
   });
 
@@ -37,6 +43,19 @@ module.exports = function (defaults) {
   app.import('vendor/acorn_interpreter.js');
   app.import('vendor/beautify.js');
   app.import('vendor/utilidades_de_depuracion.js');
+
+  app.import({
+    development: 'node_modules/react/umd/react.development.js',
+    production: 'node_modules/react/umd/react.production.min.js'
+  });
+
+  app.import({
+    development: 'node_modules/react-dom/umd/react-dom.development.js',
+    production: 'node_modules/react-dom/umd/react-dom.production.min.js'
+  });
+
+  app.import('vendor/shims/react.js');
+  app.import('vendor/shims/react-dom.js');
 
   const blocklyPackage = new Funnel('node_modules/blockly-package', {
     srcDir: '/',
