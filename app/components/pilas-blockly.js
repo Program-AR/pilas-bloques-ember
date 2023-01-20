@@ -21,7 +21,7 @@ export default Component.extend({
   codigoJavascript: "", // Se carga como parametro
   codigo: null,
   challenge: null,
-
+  id: null,
   highlighter: service(),
   availableBlocksValidator: service(),
   pilasBloquesApi: service(),
@@ -63,11 +63,32 @@ export default Component.extend({
     return !this.failedExpects.length
   }),
 
+  consolelog(texto) {
+    console.log(`[${this.id}] ${texto}`)
+  },
+
   didUpdateAttrs() {
+    this.consolelog('voy a updatear')
     this.didInsertElement()
   },
 
+  willDestroyElement(){
+    this.consolelog('voy a destruir')
+  },
+
+  didDestroyElement(){
+    this.consolelog('termine de destruir')
+  },
+
+  init(){
+    this._super()
+    this.set('id',Math.floor(Math.random()*100000))
+    this.consolelog('init')
+  },
+
   async didInsertElement() {
+    this.consolelog(this.get('id'))
+    this.consolelog('voy a insertear')
 
     /*
       Esta no es la forma correcta de arreglar esto.
@@ -83,8 +104,9 @@ export default Component.extend({
     this.set('blockly_comments', this.get('actividad.puedeComentar'));
     this.set('blockly_disable', this.get('actividad.puedeDesactivar'));
     this.set('blockly_duplicate', this.get('actividad.puedeDuplicar'));
+    this.consolelog('voy a settear initial_workspace')
     this.set('initial_workspace', await this.initialWorkspace())
-
+    this.consolelog('termine de settear initial_workspace')
     // Este es un hook para luego agregar a la interfaz
     // el informe deseado al ocurrir un error.
     this.pilasService.on("error", ({ error }) => {
@@ -311,7 +333,7 @@ export default Component.extend({
             hayMasParaEjecutarDespues = interpreter.run();
           }
         } catch (e) {
-          console.log(e);
+          this.consolelog(e);
           reject(e);
         }
 
@@ -454,7 +476,7 @@ export default Component.extend({
       this.showBlocksErrorExpectationFeedback()
       Blockly.Events.fireRunCode()
     } catch (e) {
-      console.log(e)
+      this.consolelog(e)
       this.set('staticAnalysisError', e.toString())
     }
   },
