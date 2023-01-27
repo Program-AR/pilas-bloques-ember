@@ -22,8 +22,12 @@ export default Component.extend(ChildMixin, {
         return this.label?.toString()
     }),
 
+    /**
+     * It is important that input does not start with an error. Otherwise, it will not be shown.
+     * This avoids errors if input is null.
+     */
     customValidationErrorMessage: computed('customValidations', 'model', function () {
-        return this.customValidations?.find(validation => !validation.validate(this.model))?.message.toString()
+        return this.model && this.customValidations?.find(validation => !validation.validate(this.model))?.message.toString()
     }),
 
     errorMessage: computed('error', 'customValidationErrorMessage', function () {
