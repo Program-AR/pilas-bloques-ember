@@ -29,7 +29,7 @@
     <PbAvatarGrid 
       @avatars={{this.avatars}} 
       @errorMessage={{ t "templates.register.errors.noAvatar" }}
-      @onClick={{action (mut this.registerData.avatarURL)}} 
+      @onClick={{fn (mut this.registerData.avatarURL)}} 
       @avatarUrl={{this.registerData.avatarURL}} />
 
     <p>{{t "templates.register.parentalConsent"}}</p>
