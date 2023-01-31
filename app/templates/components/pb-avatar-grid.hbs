@@ -1,0 +1,19 @@
+<p for="avatarURL">
+    <label>{{t "templates.register.chooseAvatar"}}:</label>
+</p>
+
+<div class="grid-container">
+    {{#each this.avatars as |avatar|}}
+        <div class="grid-item">
+            <button type="button" class="avatar" onClick={{action "localOnClick" (fn this.onClick avatar)}}>
+                <img class={{ if (not (eq this.avatarUrl avatar)) "gray" "selected" }} src={{ avatar }} />
+            </button>
+        </div>
+    {{/each}}
+</div>
+
+{{#if this.error}}
+    <div class="error-message">
+        {{ this.error }}
+    </div>
+{{/if}}

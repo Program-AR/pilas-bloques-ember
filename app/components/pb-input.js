@@ -45,6 +45,10 @@ export default Component.extend(ChildMixin, {
 
         onInput(e) {
             e.target.setCustomValidity('')
+        },
+
+        submitClicked() {
+            // Polymorphism
         }
     }
 

@@ -24,6 +24,7 @@ export default class PbForm extends Component.extend(ParentMixin) {
 
     @action
     localOnSubmit() {
+        this.childComponents.forEach(c => c.send('submitClicked'))
         if (this.isValid) {
             this.onSubmit()
         }

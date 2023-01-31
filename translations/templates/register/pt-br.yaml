@@ -22,3 +22,4 @@ errors:
   invalidMail: Este não é um email válido
   missingParentName: São necessários seu  nome e sobrenome
   invalidNumber: O DNI é inválido
+  noAvatar: You need to choose an avatar!

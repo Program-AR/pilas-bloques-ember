@@ -22,3 +22,4 @@ errors:
   invalidMail: This mail is invalid
   missingParentName: Full name is required
   invalidNumber: This number is not valid
+  noAvatar: You need to choose an avatar!

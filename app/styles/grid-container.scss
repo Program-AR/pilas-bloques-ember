@@ -1,0 +1,5 @@
+.grid-container {
+    display: inline-grid;
+    grid-template-columns: repeat(4, auto);
+    gap: 8px 8px;
+}
