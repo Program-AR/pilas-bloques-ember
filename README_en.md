@@ -12,7 +12,7 @@ _____________
 # Pilas Bloques - A tool to learn computer programming
 
 <p align="center">
-  <img src="https://pilasbloques.program.ar/online/imagenes/main-logo.png"/>
+  <img src="https://user-images.githubusercontent.com/5421992/216465215-be8ae60c-5498-42ef-acc2-1d57fa38b349.svg" width="70%" />
 </p>
 
 ## About
