@@ -116,7 +116,7 @@ Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `a
 
 ### Preparar el backend (opcional):
 
-Para tener un backend para probar funcionalidades relacionadas a usuarios y a guardar desafios es necesario tener levantado los proyectos de Pilas Bloques API, Pilas Bloques Analytics, (ambos disponibles en el proyecto [backend](https://github.com/Program-AR/pilas-bloques-backend) y una base de datos [MongoDB](https://www.mongodb.com/).
+Para tener un backend para probar funcionalidades relacionadas a usuarios y a guardar desafios es necesario tener levantado los proyectos de Pilas Bloques API, Pilas Bloques Analytics, (ambos disponibles en el proyecto [backend](https://github.com/Program-AR/pilas-bloques-backend)) y una base de datos [MongoDB](https://www.mongodb.com/).
 
 _____________
 
