@@ -6,7 +6,7 @@
 ![downloads](https://img.shields.io/github/downloads/Program-AR/pilas-bloques/total.svg)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-[:ar: Leer en español](https://github.com/Program-AR/pilas-bloques/blob/develop/README.md)
+[:argentina: Leer en español](https://github.com/Program-AR/pilas-bloques/blob/develop/README.md) 
 _____________
 
 # Pilas Bloques - A tool to learn computer programming
@@ -17,8 +17,7 @@ _____________
 
 ## About
 
-Pilas Bloques is an application to learn computer programming, specially developed for the classroom.
-We offer challenges with different levels of complexity to introduce students into the universe of computer programming with blocks.
+Pilas Bloques is an application to learn computer programming, specially developed for the classroom. We offer challenges with different levels of complexity to introduce students into the universe of computer programming with blocks. For more information read [the spanish about page](https://pilasbloques.program.ar/acerca-de-pilas-bloques/).
 
 ![](https://github.com/Program-AR/pilas-bloques/blob/master/screenshots/desafios.png)
 ![](https://github.com/Program-AR/pilas-bloques/blob/master/screenshots/editor.png)
@@ -142,7 +141,7 @@ The experiment groups are: `notAffected`, `control`, `treatment` and `autoassign
 
 ### Preparing backend (for users stuff):
 
-If you want to test users stuff or save challenges it is necessary to fulfill some requirements: [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) and a data base [MongoDB](https://www.mongodb.com/).
+If you want to test users stuff or save challenges it is necessary to fulfill some requirements: Run the apps Pilas Bloques API, Pilas Bloques Analytics (both accesible in the [backend project](https://github.com/Program-AR/pilas-bloques)) and a [MongoDB](https://www.mongodb.com/) database.
 
 ### Changeslog
 [here](notasDeVersion.md)
