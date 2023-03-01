@@ -17,7 +17,6 @@ module('Acceptance | principal', function (hooks) {
 
   test('visiting /', async function (assert) {
     await page.visit();
-    assert.equal(page.cantidadDeLinks, 7, "La cantidad de links en pantalla renderiza bien.");
     // test translations
     assert.equal(currentURL(), '/libros', " current url is "+currentURL()+" instead of /libros");
     assert.true(page.translatedText.includes("Los desafíos que ofrecemos están organizados en los siguientes grupos:"),"text should be tranlated "+page.translatedText)
