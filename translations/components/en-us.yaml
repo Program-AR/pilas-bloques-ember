@@ -46,15 +46,6 @@ simpleReadToggle:
 nightModeToggle:
   lightTheme: Activate light theme
   darkTheme: Activate dark theme
-registerDisclaimer:
-  now: Now Pilas Bloques allows you to
-  register: register
-  optional: 'Your registration is <b>completely optional</b>; it will help us improve Pilas Bloques, and will allow you to interrupt your work and resume it from where you left it.'
-programarDisclaimer:
-  entered: Did you visit
-  programar: Program.AR en casa
-  in: In
-  find: 'you will find a lot of material, many tools, and an explanation on how to use Pilas Bloques'
 challengeLink:
   soon: Very soon
 challengeWorkspaceButtons:
