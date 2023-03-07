@@ -13,7 +13,7 @@ Router.map(function () {
 
   /* Estas rutas están en los primeros cuadernillos impresos, deben seguir existiendo. */
   this.route('desafios', function () {
-    this.route('desafioPorNombre', { path:'/:nombreDelDesafio' });
+    this.route('desafioPorNombre', { path: '/:nombreDelDesafio' });
   });
 
   this.route('libros', function () {

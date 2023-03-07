@@ -14,7 +14,7 @@ module('Acceptance | puede ingresar en actividades', function (hooks) {
 
   function testSePuedeVisitar(nombreDesafio, tituloEsperado) {
     test(`Se puede visitar ${nombreDesafio}`, async function (assert) {
-      await safeVisit(`${ENV.rootURL}/desafios/${nombreDesafio}`)
+      await safeVisit(`${ENV.rootURL}desafios/${nombreDesafio}`)
       const tituloVisibleEnPantalla = $(".challenge-title").text().trim();
       assert.equal(tituloVisibleEnPantalla, tituloEsperado, "La actividad se llama " + tituloVisibleEnPantalla + " y no " + tituloEsperado);
     })
