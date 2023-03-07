@@ -1,5 +1,6 @@
 import { module, test } from 'qunit'
 import { awaitChallengeLoading, setupPBAcceptanceTest, safeVisit } from "../helpers/utils"
+import ENV from  'pilasbloques/config/environment'
 
 module('Acceptance | challenge content internationalization test', function (hooks) {
   setupPBAcceptanceTest(hooks)

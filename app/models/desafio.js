@@ -3,6 +3,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 import Ember from 'ember';
+import ENV from 'pilasbloques/config/environment';
 
 export const xmlBloqueEmpezarAEjecutar =
   `<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -40,8 +41,8 @@ export default Model.extend({
   shouldShowMultipleScenarioHelp: attr('boolean', {defaultValue: false}),
 
   coverSrc: computed('imagen', 'nombre', 'customCover', function () {
-    return this.customCover || `imagenes/desafios/${ this.imagen || this.nombre || 'proximamente'}.png`;
-  }),
+    return this.customCover || `${ENV.rootURL}imagenes/desafios/${ this.imagen || this.nombre || 'proximamente'}.png`;
+  }), 
 
   initialWorkspace: computed("solucionInicial", function () {
     return this.solucionInicial || xmlBloqueEmpezarAEjecutar

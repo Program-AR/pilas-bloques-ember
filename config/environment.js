@@ -11,6 +11,7 @@ module.exports = function (environment) {
     modulePrefix: 'pilasbloques',
     environment: environment,
     baseURL: '/',
+    rootURL: '/',
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     googleAnalyticsEnabled: false,
