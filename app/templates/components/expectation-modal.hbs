@@ -1,6 +1,6 @@
 <Modal @title={{t (compute (action textTag "title"))}} @onClose={{onClose}}>
   <PaperCard class="details-card layout-row expectationModal">
-      <img class="exercise-cover" alt="{{this.challenge.titulo}}" src={{urlWithRoot this.challenge.coverSrc}}>
+      <img class="exercise-cover" alt="{{this.challenge.titulo}}" src={{this.challenge.coverSrc}}>
       <p>{{t (compute (action textTag  "description"))}}</p>
   </PaperCard>
 
