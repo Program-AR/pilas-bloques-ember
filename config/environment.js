@@ -7,8 +7,9 @@ if (!experimentGroup) {
 }
 
 var rootURL = process.env.ROOT_URL
-if (!rootURL) {
-  rootURL = '/'
+if (rootURL === undefined || rootURL === null) {
+  rootURL = ''
+  console.log(`\nInfo: rootURL variable not set. Building Pilas Bloques in default URL: "${rootURL}".`)
 }
 else {
   console.log(`using rootURL: ${rootURL}`)
