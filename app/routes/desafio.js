@@ -8,9 +8,23 @@ export default Route.extend({
     }
   },
   pilas: service(),
+  storage: service(),
+
+  reactImportedChallenge(){
+    const challengeJson = this.storage.getImportedChallenge()
+    const id = "react-challenge"
+    challengeJson.id = id
+    this.store.createRecord("desafio", challengeJson);
+    return this.store.peekRecord('desafio', id);
+  },
 
   model(param) {
-    return this.store.peekRecord('desafio', param.desafio_id);
+    if (param.desafio_id === "react-imported-challenge"){
+      return this.reactImportedChallenge()
+    }
+    else{
+      return this.store.peekRecord('desafio', param.desafio_id);
+    }
   },
 
   actions: {

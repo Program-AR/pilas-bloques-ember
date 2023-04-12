@@ -16,6 +16,7 @@ export default Ember.Service.extend({
   SOLVED_CHALLENGES: 'PB_SOLVED_CHALLENGES',
   USER_IP: 'PB_USER_IP',
   FINGERPRINT: 'PB_FINGERPRINT',
+  IMPORTED_CHALLENGE: 'PB_IMPORTED_CHALLENGE',
 
   getUserId() {
     const user = this.getUser()
@@ -63,6 +64,8 @@ export default Ember.Service.extend({
   saveUserIp(ip) { return this._save(this.USER_IP, ip)},
 
   getUserIp() { return this._get(this.USER_IP)},
+
+  getImportedChallenge() { return this._get(this.IMPORTED_CHALLENGE)},
 
   getFingerprint() {
     if(!this._get(this.FINGERPRINT)) this._save(this.FINGERPRINT, this.newFingerprint()) 
