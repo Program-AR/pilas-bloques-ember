@@ -4,9 +4,6 @@
 
   <h1> {{t "templates.libros.ver-libro.challengesOf"}} {{this.model.titulo}}</h1>
 
-  <p><Link @href={{href-to "libros"}} @openOnNewTab={{false}}><FaIcon @icon="chevron-left"/> {{t "templates.libros.ver-libro.backBooksList"}}</Link></p>
-
-
   {{#each this.model.capitulos as |capitulo|}}
     <div data-test-book-view-chapter>
 
