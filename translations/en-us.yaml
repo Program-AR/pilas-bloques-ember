@@ -792,11 +792,11 @@ model:
       description: Tecnópolis Challenges
   chapters:
     Capítulo 3:
-      title: 'Chapter 3: Programming in your computer'
+      title: 'Programming in your computer'
     Capítulo 4:
-      title: 'Chapter 4: Repetition'
+      title: 'Repetition'
     Capítulo 5:
-      title: 'Chapter 5: Conditional alternative'
+      title: 'Conditional alternative'
     'Autómatas, comandos, procedimientos y repetición':
       title: 'Automatons, commands, procedures, and repetition'
     Alternativa condicional:

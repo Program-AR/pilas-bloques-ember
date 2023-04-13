@@ -798,11 +798,11 @@ model:
       description: Desafios de Tecnópolis 2021
   chapters:
     Capítulo 3:
-      title: 'Capítulo 3: Programando en la computadora'
+      title: 'Programando en la computadora'
     Capítulo 4:
-      title: 'Capítulo 4: Repetición'
+      title: 'Repetición'
     Capítulo 5:
-      title: 'Capítulo 5: Alternativa condicional'
+      title: 'Alternativa condicional'
     'Autómatas, comandos, procedimientos y repetición':
       title: 'Autómatas, comandos, procedimientos y repetición'
     Alternativa condicional:
