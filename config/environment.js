@@ -74,6 +74,7 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
+    ENV.baseURL = rootURL
     ENV.locationType = 'none'
     ENV.APP.autoboot = false // ember-qunit needs it to be false.
 
