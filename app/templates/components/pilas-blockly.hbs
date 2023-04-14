@@ -2,7 +2,7 @@
   <Spinner @centered={{true}} />
 {{else}}
   <EmberBlockly
-      @mediaFolder={{"media/"}}
+      @mediaFolder={{urlWithRoot "media/"}}
       @blocks={{this.blockly_toolbox}}
       @workspace={{this.initial_workspace}}
       @withZoom={{true}}

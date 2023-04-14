@@ -3,7 +3,10 @@
   <Spinner />
   {{else}}
   <div class="layout-row flex-grow">
-    <a class="program-ar-logo" href="http://program.ar" />
+    <!-- <a class="program-ar-logo" href="http://program.ar" />-->
+
+    <Link @href="http://program.ar/" class='program-ar-logo' @openOnNewTab={{true}} />
+		
     <p class="app-version"><code>{{t "components.footer.version"}}</code></p>{{version class="app-version"}}
     <span class="flex"></span>
     <PaperButton @onClick={{action this.openReportAProblemModel}} @disabled={{false}} @raised={{false}} @fab={{false}}

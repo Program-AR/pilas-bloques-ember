@@ -5,3 +5,5 @@ module.exports = {
   launch_in_ci: ['Firefox'],
   launch_in_dev: ['Firefox']
 };
+
+

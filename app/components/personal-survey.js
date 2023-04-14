@@ -1,6 +1,7 @@
 import { inject as service } from '@ember/service'
 import Component from '@ember/component'
 import Survey from 'survey-knockout'
+import ENV from 'pilasbloques/config/environment'
 
 export default Component.extend({
   pilasBloquesApi: service(),
@@ -13,7 +14,7 @@ export default Component.extend({
     {
       id: 1,
       title: "¿Nos ayudás?",
-      logo: "imagenes/surveyLogoCoty.png",
+      logo: `${ENV.rootURL}imagenes/surveyLogoCoty.png`,
       completeText: "¡Dale!",
       pages: [{
         name: "askingHelp", questions: [
@@ -24,7 +25,7 @@ export default Component.extend({
     {
       id: 2,
       title: "Edad y género",
-      logo: "imagenes/surveyLogoLita.png",
+      logo: `${ENV.rootURL}imagenes/surveyLogoLita.png`,
       pages: [{
         name: "ageAndGender", questions: [
           { type: "dropdown", choices: [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, "18 o más"], isRequired: true, name: "age", title: "¿Cuántos años tenés?" },
@@ -35,7 +36,7 @@ export default Component.extend({
     {
       id: 3,
       title: "Escuela y provincia",
-      logo: "imagenes/surveyLogoAlien.png",
+      logo: `${ENV.rootURL}imagenes/surveyLogoAlien.png`,
       pages: [{
         name: "schoolAndProvince", questions: [
           { type: "dropdown", choices: ['No estoy en Argentina', 'Ciudad Autónoma de Buenos Aires (CABA)', 'Buenos Aires', 'Catamarca', 'Chaco', 'Chubut', 'Córdoba', 'Corrientes', 'Entre Ríos', 'Formosa', 'Jujuy', 'La Pampa', 'La Rioja', 'Mendoza', 'Misiones', 'Neuquén', 'Río Negro', 'Salta', 'San Juan', 'San Luis', 'Santa Cruz', 'Santa Fe', 'Santiago del Estero', 'Tierra del Fuego, Antártida e Islas del Atlántico Sur', 'Tucumán'], isRequired: true, name: "province", title: "¿En qué provincia vivís?" },
@@ -46,7 +47,7 @@ export default Component.extend({
     {
       id: 4,
       title: "Clase o tarea",
-      logo: "imagenes/surveyLogoHeroin.png",
+      logo: `${ENV.rootURL}imagenes/surveyLogoHeroin.png`,
       pages: [{
         name: "classOrHomework", questions: [
           { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isOnSchoolTime", title: "¿Estás en horario escolar ahora?" },
@@ -58,7 +59,7 @@ export default Component.extend({
     {
       id: 5,
       title: "Escuela y compañía",
-      logo: "imagenes/surveyLogoCoty.png",
+      logo: `${ENV.rootURL}imagenes/surveyLogoCoty.png`,
       pages: [{
         name: "schoolAndCompany", questions: [
           { type: "radiogroup", choices: ["Sí", "No"], isRequired: true, name: "isAtSchool", title: "¿Estás físicamente en la escuela ahora mismo?" },

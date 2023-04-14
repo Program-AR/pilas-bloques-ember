@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import ENV from 'pilasbloques/config/environment'
 
 const AVATAR_COUNT = 16
-const AVATAR_PATH = "imagenes/avatars/"
+const AVATAR_PATH = `${ENV.rootURL}imagenes/avatars/`
 
 export default Ember.Service.extend({
 
