@@ -62,7 +62,7 @@ function getBlocksSurroundedBy(block){
 /**
  * @returns procedure block that matches a call block
  */
-function getProcedureBlock(procedureCallBlock){
+export function getProcedureBlock(procedureCallBlock){
   return declarationWithName(procedureCallBlock.getFieldValue('NAME'))
 }
 

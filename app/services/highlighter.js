@@ -1,5 +1,5 @@
 
-import { isFlying, isProcedureCall } from '../utils/blocks'
+import { isFlying, isProcedureCall, getProcedureBlock, getParams } from '../utils/blocks'
 import Service from '@ember/service'
 
 /// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
@@ -8,6 +8,7 @@ import Service from '@ember/service'
 export default Service.extend({
 
     blocks: [],
+    highlightedProcedures: [],
 
     step(blockId) {
         let block = this._workspace().getBlockById(blockId);
@@ -32,6 +33,10 @@ export default Service.extend({
 
     _lastBlock() {
         return this.blocks[this.blocks.length - 1];
+    },
+
+    _procedureCalls() {
+        return this.blocks.filter(b => isProcedureCall(b))
     },
 
     _removeLastBlockIfEndOfModule() {
@@ -63,10 +68,40 @@ export default Service.extend({
     _updateHighlight() {
         this._clearHighlight();
         this.blocks.forEach((b) => this._workspace().highlightBlock(b.id, true));
+        if (this._lastBlock()) this._updateProcedureHighlight();
+    },
+
+    _updateProcedureHighlight() {
+        const block = this._lastBlock();
+        if (!isProcedureCall(block)) return;
+        const procedureBlock = getProcedureBlock(block)
+        if (this.highlightedProcedures.includes(procedureBlock)) return;
+        const param = procedureBlock.getFieldValue("ARG0")
+        const value = block.getChildren()[0].getFieldValue("NUM")
+        const highlightedParamName = `${param} = ${value}`
+        procedureBlock.setFieldValue(highlightedParamName, "ARG0")
+        block.setFieldValue(param, "ARGNAME0")
+        this.highlightedProcedures.push(procedureBlock)
     },
 
     _clearHighlight() {
         this._workspace().highlightBlock();
+        this._clearProcedureHighlight();
+    },
+
+    _clearProcedureHighlight() {
+        const newHighlightedProcedures = []
+        for(let procedureBlock of this.highlightedProcedures) {
+            if (this._procedureCalls().some(b => getProcedureBlock(b) === procedureBlock)) {
+                newHighlightedProcedures.push(procedureBlock)
+                break;
+            }
+            const param = procedureBlock.getFieldValue("ARG0")
+            const paramName = param.split("=")[0].trim()
+            procedureBlock.setFieldValue(paramName, "ARG0")
+            
+        }
+        this.highlightedProcedures = newHighlightedProcedures
     },
 
     _workspace() {
