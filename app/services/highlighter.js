@@ -71,37 +71,63 @@ export default Service.extend({
         if (this._lastBlock()) this._updateProcedureHighlight();
     },
 
-    _updateProcedureHighlight() {
-        const block = this._lastBlock();
-        if (!isProcedureCall(block)) return;
-        const procedureBlock = getProcedureBlock(block)
-        if (this.highlightedProcedures.includes(procedureBlock)) return;
-        const param = procedureBlock.getFieldValue("ARG0")
-        const value = block.getChildren()[0].getFieldValue("NUM")
-        const highlightedParamName = `${param} = ${value}`
-        procedureBlock.setFieldValue(highlightedParamName, "ARG0")
-        block.setFieldValue(param, "ARGNAME0")
-        this.highlightedProcedures.push(procedureBlock)
-    },
-
     _clearHighlight() {
         this._workspace().highlightBlock();
         this._clearProcedureHighlight();
     },
 
+    _updateProcedureHighlight() {
+        const block = this._lastBlock();
+        if (!isProcedureCall(block)) return;
+        const procedureBlock = getProcedureBlock(block)
+        if (!getParams(procedureBlock).length) return;
+        if (this.highlightedProcedures.includes(procedureBlock)) return;
+        this._addParametersValues(procedureBlock, block)
+        this.highlightedProcedures.push(procedureBlock)
+    },
+
     _clearProcedureHighlight() {
         const newHighlightedProcedures = []
-        for(let procedureBlock of this.highlightedProcedures) {
-            if (this._procedureCalls().some(b => getProcedureBlock(b) === procedureBlock)) {
+        for (let procedureBlock of this.highlightedProcedures) {
+            if (this._hasCallOnStack(procedureBlock)) {
                 newHighlightedProcedures.push(procedureBlock)
                 break;
             }
-            const param = procedureBlock.getFieldValue("ARG0")
-            const paramName = param.split("=")[0].trim()
-            procedureBlock.setFieldValue(paramName, "ARG0")
-            
+            this._clearParametersValues(procedureBlock)
         }
         this.highlightedProcedures = newHighlightedProcedures
+    },
+
+    _addParametersValues(procedureBlock, procedureCallBlock) {
+        const renames = getParams(procedureBlock).map((paramName, i) => {
+            const value = procedureCallBlock.getChildren()[i].getFieldValue("NUM")
+            const highlightedParamName = `${paramName} = ${value}`
+            return [paramName, highlightedParamName]
+        })
+        // First rename all parameters in the procedure block
+        renames.forEach(([_, highlightedParamName], i) => {
+            procedureBlock.setFieldValue(highlightedParamName, `ARG${i}`)
+        })
+        // Then revert rename in the procedure call block
+        renames.forEach(([paramName, _], i) => {
+            // Rename all procedure calls, not only current one
+            this._workspace().getAllBlocks()
+                .filter(b => isProcedureCall(b) && getProcedureBlock(b) == procedureBlock)
+                .forEach(caller => {
+                    caller.setFieldValue(paramName, `ARGNAME${i}`)
+                })
+        })
+    },
+
+    _clearParametersValues(procedureBlock) {
+        getParams(procedureBlock).forEach((highlightedParamName, i) => {
+            const paramName = highlightedParamName.split("=")[0].trim()
+            procedureBlock.setFieldValue(paramName, `ARG${i}`)
+        })
+    },
+
+    _hasCallOnStack(procedureBlock) {
+        return this._procedureCalls().some(b => getProcedureBlock(b) === procedureBlock)
     },
 
     _workspace() {
