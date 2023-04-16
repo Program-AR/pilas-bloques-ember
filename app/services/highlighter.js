@@ -7,7 +7,7 @@ import Service from '@ember/service'
 /// No sabe nada sobre qué hacen o cuándo se ejecutará cada bloque.
 export default Service.extend({
 
-    blocks: [],
+    stack: [],
     highlightedProcedures: [],
 
     step(blockId) {
@@ -21,35 +21,34 @@ export default Service.extend({
         this._updateHighlight();
 
         if (!this._ignore(block)) {
-            this.blocks.push(block);
+            this.stack.push(block);
         }
 
         this._updateHighlight();
     },
 
     clear() {
-        this.blocks.length = 0;
+        this.stack.length = 0;
         this._clearHighlight();
     },
 
     _lastBlock() {
-        return this.blocks[this.blocks.length - 1];
+        return this.stack[this.stack.length - 1];
     },
 
     _procedureCalls() {
-        return this.blocks.filter(b => isProcedureCall(b))
+        return this.stack.filter(b => isProcedureCall(b))
     },
 
     _removeLastBlockIfEndOfModule() {
         if (this._shouldRemoveLastBlock()) {
-            this.blocks.pop();
+            this.stack.pop();
         }
     },
 
     _removePreviousBlockIfContinue(block) {
-        //while (this.blocks.includes(block.getParent())) {
-        if (block.getParent() === this._lastBlock()) {
-            this.blocks.pop();
+        while (this.stack.includes(block.getParent())) {
+            this.stack.pop();
         }
     },
 
@@ -69,7 +68,7 @@ export default Service.extend({
 
     _updateHighlight() {
         this._clearHighlight();
-        this.blocks.forEach((b) => this._workspace().highlightBlock(b.id, true));
+        this.stack.forEach((b) => this._workspace().highlightBlock(b.id, true));
         if (this._lastBlock()) this._updateProcedureHighlight();
     },
 

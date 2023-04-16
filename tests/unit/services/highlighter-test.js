@@ -272,6 +272,50 @@ module('Unit | Service | highlighter', function (hooks) {
     assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
   });
 
+  let programWithNestedProcedures = [`
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="procedures_callnoreturn">
+        <mutation name="primero"></mutation>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="primero"></mutation>
+            <next>
+              <block type="MoverA">
+                <value name="direccion">
+                  <block type="ParaLaDerecha"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" x="300" y="63">
+    <field name="NAME">primero</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn">
+        <mutation name="segundo"></mutation>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" x="319" y="213">
+    <field name="NAME">segundo</field>
+    <statement name="STACK">
+      <block type="MoverA">
+        <value name="direccion">
+          <block type="ParaLaDerecha"></block>
+        </value>
+      </block>
+    </statement>
+  </block>`
+  ]
+
+  test('When execution returns to a higher flow should remove intermediate calls from stack', function (assert) {
+    loadProgramAndSendSteps(Infinity, programWithNestedProcedures)
+    assertHighlight(assert, ['MoverA'])
+  });
 
   let programWithArgs = [`
   <block type="al_empezar_a_ejecutar">
@@ -389,7 +433,7 @@ module('Unit | Service | highlighter', function (hooks) {
   test('When procedure with args is executed should not show parameter values in procedure call blocks', function (assert) {
     loadProgramAndSendSteps(4, programWithArgs)
     assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
-    const currentProcedureCall = highlighter.blocks[0]
+    const currentProcedureCall = highlighter.stack[0]
     assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME0"), 'parámetro 1')
     assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME1"), 'parámetro 2')
     const nextProcedureCall = currentProcedureCall.getNextBlock()
@@ -464,8 +508,8 @@ module('Unit | Service | highlighter', function (hooks) {
 
   //TODO: Config assert?
   function assertHighlight(assert, expectedTypes) {
-    assertLength(assert, highlighter.blocks, expectedTypes.length)
-    assertTypes(assert, highlighter.blocks, expectedTypes)
+    assertLength(assert, highlighter.stack, expectedTypes.length)
+    assertTypes(assert, highlighter.stack, expectedTypes)
   }
 
   function assertTypes(assert, blocks, expectedTypes) {
