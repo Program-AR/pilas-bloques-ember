@@ -274,45 +274,39 @@ module('Unit | Service | highlighter', function (hooks) {
 
 
   let programWithArgs = [`
-  <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
+  <block type="al_empezar_a_ejecutar">
     <statement name="program">
       <block type="procedures_callnoreturn">
-        <mutation name="procedimiento con params">
+        <mutation name="Mover mucho">
           <arg name="parámetro 1"></arg>
           <arg name="parámetro 2"></arg>
         </mutation>
         <value name="ARG0">
-          <block type="math_number">
-            <field name="NUM">90</field>
-          </block>
+          <block type="ParaLaDerecha"></block>
         </value>
         <value name="ARG1">
-          <block type="math_number">
-            <field name="NUM">100</field>
+          <block type="Numero">
+            <field name="NUM">2</field>
           </block>
         </value>
         <next>
           <block type="procedures_callnoreturn">
-            <mutation name="procedimiento con params">
+            <mutation name="Mover mucho">
               <arg name="parámetro 1"></arg>
               <arg name="parámetro 2"></arg>
             </mutation>
             <value name="ARG0">
-              <block type="math_number">
-                <field name="NUM">90</field>
-              </block>
+              <block type="ParaLaIzquierda"></block>
             </value>
             <value name="ARG1">
-              <block type="math_number">
-                <field name="NUM">100</field>
+              <block type="Numero">
+                <field name="NUM">2</field>
               </block>
             </value>
             <next>
-              <block type="DibujarLado">
-                <value name="longitud">
-                  <block type="math_number">
-                    <field name="NUM">10</field>
-                  </block>
+              <block type="MoverA">
+                <value name="direccion">
+                  <block type="ParaLaDerecha"></block>
                 </value>
               </block>
             </next>
@@ -321,53 +315,80 @@ module('Unit | Service | highlighter', function (hooks) {
       </block>
     </statement>
   </block>`,
-    `<block type="procedures_defnoreturn" id="XuB4wFa*5LTziQzQfJ_^" x="304" y="153">
-      <mutation>
-        <arg name="parámetro 1"></arg>
-        <arg name="parámetro 2"></arg>
-      </mutation>
-      <field name="NAME">procedimiento con params</field>
-      <field name="ARG0">parámetro 1</field>
-      <field name="ARG1">parámetro 2</field>
-      <statement name="STACK">
-        <block type="GirarGrados">
-          <value name="grados">
-            <block type="variables_get">
-              <mutation var="parámetro 1" parent="XuB4wFa*5LTziQzQfJ_^"></mutation>
-            </block>
-          </value>
-          <next>
-            <block type="DibujarLado">
-              <value name="longitud">
-                <block type="variables_get">
-                  <mutation var="parámetro 2" parent="XuB4wFa*5LTziQzQfJ_^"></mutation>
-                </block>
-              </value>
-            </block>
-          </next>
-        </block>
-      </statement>
-    </block>
-  </xml>`
-  ]
+  `<block type="procedures_defnoreturn" id="procedure_with_two_params">
+    <mutation>
+      <arg name="parámetro 1"></arg>
+      <arg name="parámetro 2"></arg>
+    </mutation>
+    <field name="NAME">Mover mucho</field>
+    <field name="ARG0">parámetro 1</field>
+    <field name="ARG1">parámetro 2</field>
+    <statement name="STACK">
+      <block type="RepetirVacio">
+        <value name="count">
+          <block type="variables_get">
+            <mutation var="parámetro 2" parent="procedure_with_two_params"></mutation>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="procedures_callnoreturn">
+            <mutation name="Mover">
+              <arg name="param"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get">
+                <mutation var="parámetro 1" parent="procedure_with_two_params"></mutation>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" id="procedure_with_one_param">
+    <mutation>
+      <arg name="param"></arg>
+    </mutation>
+    <field name="NAME">Mover</field>
+    <field name="ARG0">param</field>
+    <statement name="STACK">
+      <block type="MoverA">
+        <value name="direccion">
+          <block type="variables_get">
+            <mutation var="param" parent="procedure_with_one_param"></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="MoverA">
+            <value name="direccion">
+              <block type="variables_get">
+                <mutation var="param" parent="procedure_with_one_param"></mutation>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>`
+]
 
   test('When procedure with args is executed should show parameter values', function (assert) {
     loadProgramAndSendSteps(4, programWithArgs)
-    assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
-    assert.deepEqual(highlighter.highlightedProcedures[0].getVars(), ['parámetro 1 = 90', 'parámetro 2 = 100'])
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    assert.deepEqual(highlighter.highlightedProcedures[0].getVars(), ['parámetro 1 = la derecha', 'parámetro 2 = 2'])
   });
 
   test('When procedure with args is executed should show parameter values in parameter blocks', function (assert) {
     loadProgramAndSendSteps(4, programWithArgs)
-    assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
     const paramBlock = findBlockByTypeIn(highlighter.highlightedProcedures[0], 'variables_get')
-    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 1 = 90')
-    //TODO: Test parámetro 2
+    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 2 = 2')
+    //TODO: Test parámetro 1
   });
 
   test('When procedure with args is executed should not show parameter values in procedure call blocks', function (assert) {
     loadProgramAndSendSteps(4, programWithArgs)
-    assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
     const currentProcedureCall = highlighter.blocks[0]
     assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME0"), 'parámetro 1')
     assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME1"), 'parámetro 2')
@@ -377,25 +398,38 @@ module('Unit | Service | highlighter', function (hooks) {
   });
 
 
+  test('When procedure with args is executed from other procedure should show parameter values', function (assert) {
+    loadProgramAndSendSteps(8, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn', 'MoverA'])
+    assert.deepEqual(highlighter.highlightedProcedures[1].getVars(), ['param = la derecha'])
+  });
+
+  test('When procedure with args is executed again should change parameter values', function (assert) {
+    loadProgramAndSendSteps(15, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    assert.deepEqual(highlighter.highlightedProcedures[0].getVars(), ['parámetro 1 = la izquierda', 'parámetro 2 = 2'])
+  });
+
+
   test('When procedure with args finish execution should not show parameter values', function (assert) {
     loadProgramAndSendSteps(Infinity, programWithArgs)
-    assertHighlight(assert, ['DibujarLado'])
-    const procedureBlock = Blockly.getMainWorkspace().getBlockById('XuB4wFa*5LTziQzQfJ_^')
+    assertHighlight(assert, ['MoverA'])
+    const procedureBlock = Blockly.getMainWorkspace().getBlockById('procedure_with_two_params')
     assert.deepEqual(procedureBlock.getVars(), ['parámetro 1', 'parámetro 2'])
   });
 
   test('When procedure with args finish execution should not show parameter values in parameter blocks', function (assert) {
     loadProgramAndSendSteps(Infinity, programWithArgs)
-    assertHighlight(assert, ['DibujarLado'])
-    const procedureBlock = Blockly.getMainWorkspace().getBlockById('XuB4wFa*5LTziQzQfJ_^')
+    assertHighlight(assert, ['MoverA'])
+    const procedureBlock = Blockly.getMainWorkspace().getBlockById('procedure_with_two_params')
     const paramBlock = findBlockByTypeIn(procedureBlock, 'variables_get')
-    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 1')
-    //TODO: Test parámetro 2
+    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 2')
+    //TODO: Test parámetro 1
   });
 
   test('When procedure with args finish execution should not show parameter values in procedure call blocks', function (assert) {
     loadProgramAndSendSteps(Infinity, programWithArgs)
-    assertHighlight(assert, ['DibujarLado'])
+    assertHighlight(assert, ['MoverA'])
     const procedureCallBlock = Blockly.getMainWorkspace().getTopBlocks()[0].getChildren()[0]
     assert.deepEqual(procedureCallBlock.getFieldValue("ARGNAME0"), 'parámetro 1')
     assert.deepEqual(procedureCallBlock.getFieldValue("ARGNAME1"), 'parámetro 2')
@@ -411,7 +445,7 @@ module('Unit | Service | highlighter', function (hooks) {
     let definitionBlocks = blocksAsText
       .map(Blockly.textToBlock)
 
-    let ignoredBlockTypes = ["math_number", "HayTomate"]
+    let ignoredBlockTypes = ["math_number", "Numero", "HayTomate", "ParaLaDerecha", "ParaLaIzquierda"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
     // En los procedure_call ejecuta el próximo bloque de definición
     function doStep(block) {

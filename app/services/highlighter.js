@@ -1,5 +1,5 @@
 
-import { isFlying, isProcedureCall, getProcedureBlock, getParams } from '../utils/blocks'
+import { isFlying, isProcedureCall, getProcedureBlock, getParams, asValueString } from '../utils/blocks'
 import Service from '@ember/service'
 
 /// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
@@ -18,6 +18,7 @@ export default Service.extend({
         }
         this._removeLastBlockIfEndOfModule();
         this._removePreviousBlockIfContinue(block);
+        this._updateHighlight();
 
         if (!this._ignore(block)) {
             this.blocks.push(block);
@@ -46,6 +47,7 @@ export default Service.extend({
     },
 
     _removePreviousBlockIfContinue(block) {
+        //while (this.blocks.includes(block.getParent())) {
         if (block.getParent() === this._lastBlock()) {
             this.blocks.pop();
         }
@@ -91,7 +93,7 @@ export default Service.extend({
         for (let procedureBlock of this.highlightedProcedures) {
             if (this._hasCallOnStack(procedureBlock)) {
                 newHighlightedProcedures.push(procedureBlock)
-                break;
+                continue;
             }
             this._clearParametersValues(procedureBlock)
         }
@@ -100,8 +102,8 @@ export default Service.extend({
 
     _addParametersValues(procedureBlock, procedureCallBlock) {
         const renames = getParams(procedureBlock).map((paramName, i) => {
-            const value = procedureCallBlock.getChildren()[i].getFieldValue("NUM")
-            const highlightedParamName = `${paramName} = ${value}`
+            const value = asValueString(procedureCallBlock.getChildren()[i])
+            const highlightedParamName = value ? `${paramName} = ${value}` : paramName
             return [paramName, highlightedParamName]
         })
         // First rename all parameters in the procedure block
@@ -127,7 +129,7 @@ export default Service.extend({
     },
 
     _hasCallOnStack(procedureBlock) {
-        return this._procedureCalls().some(b => getProcedureBlock(b) === procedureBlock)
+        return this._procedureCalls().some(b => getProcedureBlock(b).id === procedureBlock.id)
     },
 
     _workspace() {

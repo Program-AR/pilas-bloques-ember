@@ -267,3 +267,18 @@ function lineWrap(message) {
     [""]
   ).join('\n  ')
 }
+
+export function asValueString(block) {
+  switch(block.type) {
+    case 'Numero':
+    case 'math_number': return block.getFieldValue("NUM")
+    case 'text': return block.getFieldValue("TEXT")
+    case 'param_get': 
+    case 'variables_get': 
+      const paramValue = block.getFieldValue("VAR").split("=")[1]
+      return paramValue ? paramValue.trim() : null
+    case 'ParaLaDerecha': return "la derecha" //TODO: use translations
+    case 'ParaLaIzquierda': return "la izquierda" //TODO: use translations
+  }
+  return null
+}
