@@ -277,8 +277,10 @@ export function asValueString(block) {
     case 'variables_get': 
       const paramValue = block.getFieldValue("VAR").split("=")[1]
       return paramValue ? paramValue.trim() : null
-    case 'ParaLaDerecha': return "la derecha" //TODO: use translations
-    case 'ParaLaIzquierda': return "la izquierda" //TODO: use translations
+    case 'ParaLaDerecha': return 'blocks.right'
+    case 'ParaLaIzquierda': return 'blocks.left'
+    case 'ParaArriba': return 'blocks.up'
+    case 'ParaAbajo': return 'blocks.down'
   }
   return null
 }

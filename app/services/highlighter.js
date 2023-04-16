@@ -1,12 +1,14 @@
 
 import { isFlying, isProcedureCall, getProcedureBlock, getParams, asValueString } from '../utils/blocks'
 import Service from '@ember/service'
+import Ember from 'ember'
 
 /// Este service va recibiendo los Ids de los bloques que se ejecutan y SOLAMENTE se encarga del highlighting.
 /// Particularmente, tiene la lógica de highligh para los procedimientos.
 /// No sabe nada sobre qué hacen o cuándo se ejecutará cada bloque.
 export default Service.extend({
-
+    
+    intl: Ember.inject.service(),
     stack: [],
     highlightedProcedures: [],
 
@@ -101,7 +103,10 @@ export default Service.extend({
 
     _addParametersValues(procedureBlock, procedureCallBlock) {
         const renames = getParams(procedureBlock).map((paramName, i) => {
-            const value = asValueString(procedureCallBlock.getChildren()[i])
+            var value = asValueString(procedureCallBlock.getChildren()[i])
+            if (value && value.startsWith('blocks.')) {
+                value = this.intl.t(value)
+            }
             const highlightedParamName = value ? `${paramName} = ${value}` : paramName
             return [paramName, highlightedParamName]
         })
