@@ -83,7 +83,7 @@ export default Service.extend({
         const block = this._lastBlock();
         if (!isProcedureCall(block)) return;
         const procedureBlock = getProcedureBlock(block)
-        if (procedureBlock && !getParams(procedureBlock).length) return;
+        if (!procedureBlock || !getParams(procedureBlock).length) return;
         if (this.highlightedProcedures.includes(procedureBlock)) return;
         this._addParametersValues(procedureBlock, block)
         this.highlightedProcedures.push(procedureBlock)
