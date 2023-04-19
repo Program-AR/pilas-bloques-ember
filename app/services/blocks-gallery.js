@@ -1,6 +1,7 @@
 import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor, transparent, onChangeRequired, onChangeForTextInputBlock } from '../utils/blocks'
 import Ember from 'ember'
+import ENV from 'pilasbloques/config/environment'
 
 const original_procedure_type = 'procedures_defnoreturn'
 const procedure_alias = 'Procedimiento'
@@ -148,7 +149,7 @@ export default Service.extend({
       args0: [
         {
           type: "field_image",
-          src: `iconos/${opciones.icono}`,
+          src: `${ENV.rootURL}iconos/${opciones.icono}`,
           width: 16,
           height: 16,
           alt: "*"
@@ -215,7 +216,7 @@ export default Service.extend({
           "args0": [
             {
               "type": "field_image",
-              "src": `iconos/icono.DibujarLinea.png`,
+              "src": `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
               "width": 16,
               "height": 16,
               "alt": "*"
@@ -322,7 +323,7 @@ export default Service.extend({
   _definirBloquesAccion() {
 
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
-      icono: 'iconos.botonRojo.png',
+      icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: 'BotonAnimado',
@@ -787,7 +788,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.arriba.png`,
+          "src": `${ENV.rootURL}iconos/icono.arriba.png`,
           "width": 16,
           "height": 20,
           "alt": "*"
@@ -820,7 +821,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.DibujarLinea.png`,
+          "src": `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -902,7 +903,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.Girar.png`,
+          "src": `${ENV.rootURL}iconos/icono.Girar.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -1143,7 +1144,7 @@ export default Service.extend({
       "args0": [
         {
           type: "field_image",
-          src: `iconos/icono.DibujarLinea.png`,
+          src: `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
           width: 16,
           height: 16,
           alt: "*"

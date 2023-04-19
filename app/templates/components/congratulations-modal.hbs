@@ -1,7 +1,7 @@
 <Fireworks/>
 <Modal @title={{t "components.finishedExerciseModal.congratulationsModal.title"}} @onClose={{action this.onClose}}>
   <div class="center">
-    <img src="imagenes/libros/primer-ciclo.png" />
+    <img src={{urlWithRoot "imagenes/libros/primer-ciclo.png"}}/>
     <p>{{markdown-to-html description}}</p>
   </div>
 </Modal>

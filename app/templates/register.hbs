@@ -2,7 +2,7 @@
 
 <div class="center">
   <PaperForm class="register-form" @onSubmit={{action "doRegister"}} as |form|>
-    <img src="imagenes/session/register.png" />
+    <img src={{urlWithRoot "imagenes/session/register.png"}}>
     
     <PbInput 
       @label={{t "templates.register.username"}}
