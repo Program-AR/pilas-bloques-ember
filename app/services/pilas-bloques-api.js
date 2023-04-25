@@ -118,7 +118,7 @@ export default Service.extend({
       method,
       body: JSON.stringify(body),
       headers,
-      //credentials: true
+      credentials: 'include'
     })
       .catch(connectionErr => {
         if (critical) this._alertServerError()
