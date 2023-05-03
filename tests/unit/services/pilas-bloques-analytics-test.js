@@ -13,9 +13,9 @@ module('Unit | Service | pilas-bloques-analytics', function (hooks) {
     firstSessionId = pbAnalytics.getSession().id // Creates session
   })
 
-  test('Context saves session, online, browserId, usserId, version, experimentGroup, url, ip', async function(assert){
+  test('Context saves session, online, browserId, version, experimentGroup, url, ip', async function(assert){
     const context = await pbAnalytics.context()
-    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'userId', 'version', 'experimentGroup', 'url', 'ip')
+    assertHasProps(assert, context, 'answers', 'browserId', 'lastInteraction', 'id', 'online', 'version', 'experimentGroup', 'url', 'ip')
   })
 
   test('Should create new sessionId', function (assert) {
