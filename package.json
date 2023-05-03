@@ -52,7 +52,7 @@
     "pack:osx": "bash ./scripts/package.sh -osx",
     "pack:win32": "bash ./scripts/package.sh -win32",
     "pack:html": "bash ./scripts/package.sh -html",
-    "preinstall": "git config url.https://github.com/.insteadOf git://github.com/",
+    "preinstall": "git config url.https://github.com/.insteadOf git://github.com/ && git config --list",
     "postinstall": "node ./scripts/remove-mulang-require.js && node ./scripts/change-sass-division.js && node ./scripts/change-pilas-versions.js && node ./scripts/tryInvoke-deprecation-fix.js",
     "clean": "rm -rf node_modules dist dist_prod",
     "release": "release-it --only-version"
