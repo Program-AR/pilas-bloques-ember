@@ -63,6 +63,18 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerManzana', 'Procedimiento', 'Repetir']
   },
   {
+    id: 'nuevo5',
+    nombre: 'nuevo5',
+    escena: `new EscenaYvoty("\
+        [-,-,-,L,-,-],\
+        [-,-,L,-,-,L],\
+        [-,L,-,-,L,-],\
+        [L,-,-,L,-,-],\
+        [A,-,L,-,-,-],\
+    ")`,
+    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
+  },
+  {
     id: 5,
     nombre: 'TitoEnciendeLuces',
     escena: 'TitoEnciendeLuces',
@@ -151,6 +163,19 @@ export const desafios = [
     nombre: 'TresNaranjas',
     escena: 'TresNaranjas',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'ComerNaranja', 'Repetir', 'Si', 'SiNo', 'TocandoNaranja']
+  },
+  {
+    id: 'nuevo17',
+    nombre: 'nuevo17',
+    escena: `new EscenaYvoty("\
+        [A],\
+        [#L],\
+        [#L],\
+        [#L],\
+        [#L],\
+        [#L],\",
+        { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
+    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
   },
   {
     id: 17,

@@ -26,6 +26,10 @@ export const grupos = [
     desafioIds: [5]
   },
   {
+    id: 'nuevo5',
+    desafioIds: ['nuevo5']
+  },
+  {
     id: 'ElAlienYLasTuercas',
     desafioIds: [6]
   },
@@ -80,6 +84,10 @@ export const grupos = [
   {
     id: 'TitoRecargado',
     desafioIds: [17]
+  },
+  {
+    id: 'nuevo17',
+    desafioIds: ['nuevo17']
   },
   {
     id: 'LaberintoLargo',

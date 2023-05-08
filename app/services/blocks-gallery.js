@@ -1102,6 +1102,11 @@ export default Service.extend({
       funcionSensor: 'tocando("Lamparin")',
     });
 
+    this.crearBloqueSensor('TocandoLuciernaga', 'lampHere', {
+      icono: 'icono.LamparitaApagada.png',
+      funcionSensor: 'tocando("Luciernaga")',
+    });
+
     this.crearBloqueSensor('EsCulpable', 'frontOfGuilty', {
       id: 'Descubralculpable',
       icono: 'icono.culpable.png',
