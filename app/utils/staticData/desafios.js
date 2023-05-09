@@ -191,6 +191,16 @@ export const desafios = [
       'Repetir', 'Si', 'SiNo', 'TocandoAbajo', 'TocandoDerecha'],
   },
   {
+    id: 'nuevo19',
+    nombre: 'nuevo19',
+    escena: `new EscenaYvoty(["[A],[L]","[A],[L],[L]","[A],[L],[L],[L]", "[A],[L],[L],[L],[L]", "[A],[L],[L],[L],[L],[L]"])`,
+    bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
+      'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
     id: 19,
     nombre: 'SuperTito1',
     escena: 'SuperTito1',

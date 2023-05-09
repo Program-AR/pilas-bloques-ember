@@ -94,6 +94,10 @@ export const grupos = [
     desafioIds: [18]
   },
   {
+    id: 'nuevo19',
+    desafioIds: ['nuevo19']
+  },
+  {
     id: 'SuperTito1',
     desafioIds: [19]
   },
