@@ -340,6 +340,12 @@ export default Service.extend({
       argumentos: "{'etiqueta':'Luz'}"
     });
 
+    this.crearBloqueAccion('DespertarLuciernaga', 'turnOnTheLight', {
+      icono: 'icono.luciernaga.png',
+      comportamiento: 'SacarFoto',
+      argumentos: "{'etiqueta':'Luciernaga'}"
+    });
+
     this.crearBloqueAccion('ComerBanana', 'eatBanana', {
       icono: 'icono.banana.png',
       comportamiento: 'Recolectar',
@@ -464,6 +470,12 @@ export default Service.extend({
       icono: 'icono.estrella.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "EstrellaAnimada", "mensajeError": "Acá no hay una estrella"}',
+    });
+
+    this.crearBloqueAccion('ObservarMariposa', 'takeStar', {
+      icono: 'icono.mariposa.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
     });
 
     this.crearBloqueAccion('MorderSandia', 'eatWatermelon', {
@@ -1042,6 +1054,11 @@ export default Service.extend({
       funcionSensor: 'tocando("SandiaAnimada")'
     });
 
+    this.crearBloqueSensor('TocandoMariposa', 'starHere', {
+      icono: 'icono.mariposa.png',
+      funcionSensor: 'tocando("Mariposa")'
+    });
+
     this.crearBloqueSensor('TocandoEstrella', 'starHere', {
       icono: 'icono.estrella.png',
       funcionSensor: 'tocando("EstrellaAnimada")'
@@ -1103,7 +1120,7 @@ export default Service.extend({
     });
 
     this.crearBloqueSensor('TocandoLuciernaga', 'lampHere', {
-      icono: 'icono.LamparitaApagada.png',
+      icono: 'icono.luciernagaApagada.png',
       funcionSensor: 'tocando("Luciernaga")',
     });
 

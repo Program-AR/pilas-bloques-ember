@@ -72,7 +72,7 @@ export const desafios = [
         [L,-,-,L,-,-],\
         [A,-,L,-,-,-],\
     ")`,
-    bloques: ['EncenderLuz', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
+    bloques: ['DespertarLuciernaga', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
   },
   {
     id: 5,
@@ -175,7 +175,7 @@ export const desafios = [
         [#L],\
         [#L],\",
         { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
-    bloques: ['EncenderLuz', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
+    bloques: ['DespertarLuciernaga', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
   },
   {
     id: 17,
@@ -421,6 +421,20 @@ export const desafios = [
     nombre: 'ElFestinFrutal',
     escena: 'ElFestinFrutal',
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ComerBanana', 'ComerManzana', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoManzana', 'TocandoBanana']
+  },
+  {
+    id: 'nuevo45',
+    nombre: 'nuevo45',
+    escena: `new EscenaYvoty("\
+      [-,#M,#M,#M,#M],\
+      [-,#M,#M,#M,#M],\
+      [-,#M,#M,#M,#M],\
+      [-,-,-,-,-],\
+      [-,#M,#M,#M,#M],\
+      [-,#M,#M,#M,#M],\
+      [A,#M,#M,#M,#M],\",
+      { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 45,

@@ -154,6 +154,10 @@ export const grupos = [
     desafioIds: [44]
   },
   {
+    id: 'nuevo45',
+    desafioIds: ['nuevo45']
+  },
+  {
     id: 'RecolectorDeGalaxias',
     desafioIds: [45]
   },
