@@ -32,7 +32,7 @@ export const capitulos = [
     },
     {
         id: 'Repetición condicional',
-        grupoIds: ['nuevo19', 'SuperTito1', 'SuperTito2', 'LaberintoConQueso', 'ElDetectiveChaparro', 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
+        grupoIds: ['nuevo19', 'SuperTito1', 'nuevo20', 'SuperTito2', 'LaberintoConQueso', 'ElDetectiveChaparro', 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
     },
     {
         id: 'Sensores Numéricos',

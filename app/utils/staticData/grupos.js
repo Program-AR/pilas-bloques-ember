@@ -102,6 +102,10 @@ export const grupos = [
     desafioIds: [19]
   },
   {
+    id: 'nuevo20',
+    desafioIds: ['nuevo20']
+  },
+  {
     id: 'SuperTito2',
     desafioIds: [20]
   },

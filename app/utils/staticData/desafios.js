@@ -222,6 +222,17 @@ export const desafios = [
     }
   },
   {
+    id: 'nuevo20',
+    nombre: 'nuevo20',
+    escena: `new EscenaYvoty(["[A],[#L],[-]","[A],[#L],[#L],[-]","[A],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[#L],[-]"],
+    { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
+    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuciernaga', 'DespertarLuciernaga',
+      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
     id: 21,
     nombre: 'LaberintoConQueso',
     escena: 'LaberintoConQueso',
