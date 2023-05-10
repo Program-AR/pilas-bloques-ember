@@ -486,10 +486,18 @@ export const desafios = [
   {
     id: 'nuevo133',
     nombre: 'nuevo133',
-    escena: 'TitoCuadrado',
+    escena: `new EscenaYvoty("\
+    [A,#L,#L,#L,#L,#L,-],\
+    [#L,O,O,O,O,O,#L],\
+    [#L,O,O,O,O,O,#L],\
+    [#L,O,O,O,O,O,#L],\
+    [#L,O,O,O,O,O,#L],\
+    [#L,O,O,O,O,O,#L],\
+    [-,#L,#L,#L,#L,#L,-],\",
+    { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'TocandoLuz', 'DespertarLuciernaga', 'Numero', 'OpAritmetica'],
+      'TocandoLuciernaga', 'DespertarLuciernaga', 'Numero', 'OpAritmetica'],
   },
   {
     id: 133,
