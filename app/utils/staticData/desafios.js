@@ -169,12 +169,13 @@ export const desafios = [
     nombre: 'nuevo17',
     escena: `new EscenaYvoty("\
         [A],\
-        [#L],\
-        [#L],\
-        [#L],\
-        [#L],\
-        [#L],\",
-        { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\",
+        { coleccion: ["L"] })`,
     bloques: ['DespertarLuciernaga', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
   },
   {
@@ -193,7 +194,7 @@ export const desafios = [
   {
     id: 'nuevo19',
     nombre: 'nuevo19',
-    escena: `new EscenaYvoty(["[A],[L]","[A],[L],[L]","[A],[L],[L],[L]", "[A],[L],[L],[L],[L]", "[A],[L],[L],[L],[L],[L]"])`,
+    escena: `new EscenaYvoty(["[A],[L],[-]","[A],[L],[L],[-]","[A],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[L],[-]"])`,
     bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
@@ -436,14 +437,21 @@ export const desafios = [
     id: 'nuevo45',
     nombre: 'nuevo45',
     escena: `new EscenaYvoty("\
-      [-,#M,#M,#M,#M],\
-      [-,#M,#M,#M,#M],\
-      [-,#M,#M,#M,#M],\
+      [-,*a>M?,*a>M?,*a>M?,*a>M?],\
+      [-,*b>M?,*b>M?,*b>M?,*b>M?],\
+      [-,*c>M?,*c>M?,*c>M?,*c>M?],\
       [-,-,-,-,-],\
-      [-,#M,#M,#M,#M],\
-      [-,#M,#M,#M,#M],\
-      [A,#M,#M,#M,#M],\",
-      { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
+      [-,*d>M?,*d>M?,*d>M?,*d>M?],\
+      [-,*e>M?,*e>M?,*e>M?,*e>M?],\
+      [A,*f>M?,*f>M?,*f>M?,*f>M?],\",
+      { colecciones: {
+          a: ["M", "M"],
+          b: ["M", "M"],
+          c: ["M", "M"],
+          d: ["M", "M"],
+          e: ["M", "M"],
+          f: ["M", "M"]
+      }})`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
@@ -474,6 +482,14 @@ export const desafios = [
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'PrenderComputadora', 'EstoyEnEsquina', 'Numero',
       'OpAritmetica'],
+  },
+  {
+    id: 'nuevo133',
+    nombre: 'nuevo133',
+    escena: 'TitoCuadrado',
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'TocandoLuz', 'DespertarLuciernaga', 'Numero', 'OpAritmetica'],
   },
   {
     id: 133,
