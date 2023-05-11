@@ -439,6 +439,24 @@ export const desafios = [
     }
   },
   {
+    id: 'nuevo43',
+    nombre: 'nuevo43',
+    escena: `new EscenaYvoty("\
+      [O,P,P?,P?],\
+      [O,O,O,P?],\
+      [-,P,P?,P?],\
+      [-,O,O,O],\
+      [P,P?,P?,O],\
+      [O,O,P?,O],\
+      [P,P?,P?,O],\
+      [A,O,O,O],\",{})`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'DesbloquearCelular', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoCelular'],
+    expectations: {
+      decomposition: false,
+      decomposition9: true
+    }
+  },
+  {
     id: 43,
     nombre: 'ElPasilloCurvoDeSandias',
     escena: 'ElPasilloCurvoDeSandias',

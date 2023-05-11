@@ -478,6 +478,12 @@ export default Service.extend({
       argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
     });
 
+    this.crearBloqueAccion('DesbloquearCelular', 'takeStar', {
+      icono: 'icono.mariposa.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Celular", nombreAnimacion: "usarCelu", "mensajeError": "Acá no hay una celular"}',
+    });
+
     this.crearBloqueAccion('MorderSandia', 'eatWatermelon', {
       icono: 'icono.sandia.png',
       comportamiento: 'Recolectar',
@@ -1069,6 +1075,11 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoMariposa', 'starHere', {
       icono: 'icono.mariposa.png',
       funcionSensor: 'tocando("Mariposa")'
+    });
+
+    this.crearBloqueSensor('TocandoCelular', 'starHere', {
+      icono: 'icono.mariposa.png',
+      funcionSensor: 'tocando("Celular")'
     });
 
     this.crearBloqueSensor('TocandoEstrella', 'starHere', {
