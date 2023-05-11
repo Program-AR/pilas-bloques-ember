@@ -884,6 +884,18 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('AgarrarCargador', 'pickTomato', {
+      icono: 'icono.tomate.png',
+      comportamiento: 'Recolectar',
+      argumentos: `{ etiqueta: "Cargador" }`
+    });
+
+    this.crearBloqueAccion('CargarCelular', 'prepareSalad', {
+      icono: 'icono.ensaladera.png',
+      comportamiento: 'CargarCelular',
+      argumentos: `{ etiqueta: "Celular" }`,
+    });
+
     this.crearBloqueAccion('PrepararEnsalada', 'prepareSalad', {
       icono: 'icono.ensaladera.png',
       comportamiento: 'PrepararEnsalada',

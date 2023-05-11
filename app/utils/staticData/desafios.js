@@ -99,6 +99,16 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MorderSandia', 'Procedimiento', 'Repetir']
   },
   {
+    id: 'nuevo9',
+    nombre: 'nuevo9',
+    escena: `new EscenaYvoty("\
+    [C,C,C,C,-],\
+    [-,-,-,-,K],\
+    [-,-,-,-,-],\
+    [A,C,C,C,-],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'CargarCelular', 'AgarrarCargador', 'Procedimiento', 'Repetir']
+  },
+  {
     id: 9,
     nombre: 'AlimentandoALosPeces',
     escena: 'AlimentandoALosPeces',
@@ -498,17 +508,17 @@ export const desafios = [
     id: 'nuevo133',
     nombre: 'nuevo133',
     escena: `new EscenaYvoty("\
-    [A,#L,#L,#L,#L,#L,-],\
-    [#L,O,O,O,O,O,#L],\
-    [#L,O,O,O,O,O,#L],\
-    [#L,O,O,O,O,O,#L],\
-    [#L,O,O,O,O,O,#L],\
-    [#L,O,O,O,O,O,#L],\
-    [-,#L,#L,#L,#L,#L,-],\",
-    { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
+    [A,#M,#M,#M,#M,#M,-],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [-,#M,#M,#M,#M,#M,-],\",
+    { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'TocandoLuciernaga', 'DespertarLuciernaga', 'Numero', 'OpAritmetica'],
+      'TocandoMariposa', 'ObservarMariposa', 'Numero', 'OpAritmetica'],
   },
   {
     id: 133,
