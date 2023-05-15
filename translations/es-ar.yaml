@@ -672,7 +672,7 @@ model:
         Yvoty debe cargar con el cargador a los 7 celus que hay en esta escena. Buscá primero el cargador y luego pasá por cada celular cargandolo. Pista: ¿Cuántas partes debería tener tu estrategia?
       clue: ''
     'nuevo133':
-      title: Mariposas cuadradas
+      title: Mariposas encuadradas
       description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: ''
     'nuevo17':

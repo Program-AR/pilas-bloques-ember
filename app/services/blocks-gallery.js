@@ -336,19 +336,19 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('DesbloquearCelular', 'unlockCellphone', {
-      icono: 'icono.mariposa.png',
+      icono: 'icono.celu.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Celular", nombreAnimacion: "usarCelu", "mensajeError": "Acá no hay una celular"}',
     });
 
     this.crearBloqueAccion('AgarrarCargador', 'pickCharger', {
-      icono: 'icono.tomate.png',
+      icono: 'icono.cargador.png',
       comportamiento: 'Recolectar',
       argumentos: `{ etiqueta: "Cargador" }`
     });
 
     this.crearBloqueAccion('CargarCelular', 'chargeCellphone', {
-      icono: 'icono.ensaladera.png',
+      icono: 'icono.celu.png',
       comportamiento: 'CargarCelular',
       argumentos: `{ etiqueta: "Celular" }`,
     });

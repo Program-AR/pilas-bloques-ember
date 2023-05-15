@@ -2732,7 +2732,7 @@ export const desafios = [
   },
   {
     id: 'nuevo5',
-    nombre: 'nuevo5',
+    nombre: 'YvotyDespiertaLuciernagas',
     escena: `new EscenaYvoty("\
         [-,-,-,L,-,-],\
         [-,-,L,-,-,L],\
@@ -2744,7 +2744,7 @@ export const desafios = [
   },
   {
     id: 'nuevo9',
-    nombre: 'nuevo9',
+    nombre: 'CargandoCelus',
     escena: `new EscenaYvoty("\
     [C,C,C,C,-],\
     [-,-,-,-,K],\
@@ -2754,7 +2754,7 @@ export const desafios = [
   },
   {
     id: 'nuevo133',
-    nombre: 'nuevo133',
+    nombre: 'MariposasEncuadradas',
     escena: `new EscenaYvoty("\
     [A,#M,#M,#M,#M,#M,-],\
     [#M,O,O,O,O,O,#M],\
@@ -2770,7 +2770,7 @@ export const desafios = [
   },
   {
     id: 'nuevo17',
-    nombre: 'nuevo17',
+    nombre: 'YvotyDespiertaMasLuciernagas',
     escena: `new EscenaYvoty("\
         [A],\
         [*>L?],\
@@ -2784,7 +2784,7 @@ export const desafios = [
   },
   {
     id: 'nuevo24',
-    nombre: 'nuevo24',
+    nombre: 'PrendiendoCompusYvoty',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
@@ -2805,7 +2805,7 @@ export const desafios = [
   },
   {
     id: 'nuevo132',
-    nombre: 'nuevo132',
+    nombre: 'PrendiendoCompusParametrizadoYvoty',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
@@ -2824,7 +2824,7 @@ export const desafios = [
   },
   {
     id: 'nuevo19',
-    nombre: 'nuevo19',
+    nombre: 'SuperYvoty1',
     escena: `new EscenaYvoty(["[A],[L],[-]","[A],[L],[L],[-]","[A],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[L],[-]"])`,
     bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
@@ -2834,7 +2834,7 @@ export const desafios = [
   },
   {
     id: 'nuevo20',
-    nombre: 'nuevo20',
+    nombre: 'SuperYvoty2',
     escena: `new EscenaYvoty(["[A],[#L],[-]","[A],[#L],[#L],[-]","[A],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[#L],[-]"],
     { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuciernaga', 'DespertarLuciernaga',
@@ -2845,7 +2845,7 @@ export const desafios = [
   },
   {
     id: 'nuevo43',
-    nombre: 'nuevo43',
+    nombre: 'ElPasilloCurvoDeCelus',
     escena: `new EscenaYvoty("\
       [O,P,P?,P?],\
       [O,O,O,P?],\
@@ -2863,7 +2863,7 @@ export const desafios = [
   },
   {
     id: 'nuevo45',
-    nombre: 'nuevo45',
+    nombre: 'ObservadoraDeMariposas',
     escena: `new EscenaYvoty("\
       [-,*a>M?,*a>M?,*a>M?,*a>M?],\
       [-,*b>M?,*b>M?,*b>M?,*b>M?],\
