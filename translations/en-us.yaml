@@ -669,6 +669,42 @@ model:
       title: Square butterflies
       description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
       clue: ''
+    'nuevo17':
+      title: Yvoty awakens more fireflies
+      description: Yvoty needs to wake up all the fireflies to know the route... But they change their places each time you run the program! You can use the procedures and control blocks.
+      clue: ''
+    'nuevo24':
+      title: Powering all computers on
+      description: |
+        We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
+      clue: ''
+    'nuevo132':
+      title: Powering all computers on by using parameters
+      description: 'Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are.'
+      clue: 'The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move.'
+    'nuevo19':
+      title: Super Yvoty 1
+      description: |
+        Help Yvoty wake up all the fireflies.
+        Watch out! There’s a firefly in every cell, but you don´t know how many cells are there each time you run the program.
+      clue: There are new blocks that can help you solve this challenge very easily. Use them!
+    'nuevo20':
+      title: Super Yvoty 2
+      description: |
+        Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
+      clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
+    'nuevo43':
+      title: |
+        The cell phones curve aisle
+      description: |
+        Yvoty found an aisle full of cell phones! The only problem is that the aisle turns several times and the cell phones are right there... Will Yvoty be able to unlock all the cell phones in this aisle?
+      clue: The cell phones are found right in the curves of the aisle. A strategy to unlock the cell phones in a curve would be an excellent help.
+    'nuevo45':
+      title: |
+        Butterflies observer
+      description: |
+        The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
+      clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
   groups:
     AlienTocaBoton:
       title: ''    

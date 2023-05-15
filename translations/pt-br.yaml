@@ -659,6 +659,42 @@ model:
       title: Mariposas cuadradas
       description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: ''
+    'nuevo17':
+      title: Yvoty despierta más luciérnagas
+      description: Yvoty necesita despertar a las luciérnagas para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
+      clue: ''
+    'nuevo24':
+      title: Prendiendo las compus
+      description: |
+        Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
+      clue: ''
+    'nuevo132':
+      title: Prendiendo las compus parametrizado
+      description: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.'
+      clue: 'Los parámetros pueden ser direcciones, no siempre deben ser números. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.'
+    'nuevo19':
+      title: Súper Yvoty 1
+      description: |
+        Ayudá a Yvoty a despertar las luciérnagas.
+        ¡Ojo! En todas las celdas hay una luciérnaga, pero no sabés cuántas celdas hay en cada ejecución.
+      clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
+    'nuevo20':
+      title: Súper Yvoty 2
+      description: |
+        Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
+      clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+    'nuevo43':
+      title: |
+        El pasillo curvo de celus
+      description: |
+        ¡Yvoty encontró un pasillo lleno de celus! El único problema es que el pasillo da varias vueltas y los celus justo están ahí… ¿Podrá Yvoty desbloquear todos los celus de este pasillo?
+      clue: Los celus se encuentran justo en las curvas que da el pasillo. Una estrategia para desbloquear los celus en una curva sería una excelente ayuda.
+    'nuevo45':
+      title: |
+        Observadora de mariposas
+      description: |
+        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
+      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
   groups:
     AlienTocaBoton:
       title: ''
