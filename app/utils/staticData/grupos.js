@@ -26,10 +26,6 @@ export const grupos = [
     desafioIds: [5]
   },
   {
-    id: 'nuevo5',
-    desafioIds: ['nuevo5']
-  },
-  {
     id: 'ElAlienYLasTuercas',
     desafioIds: [6]
   },
@@ -86,24 +82,12 @@ export const grupos = [
     desafioIds: [17]
   },
   {
-    id: 'nuevo17',
-    desafioIds: ['nuevo17']
-  },
-  {
     id: 'LaberintoLargo',
     desafioIds: [18]
   },
   {
-    id: 'nuevo19',
-    desafioIds: ['nuevo19']
-  },
-  {
     id: 'SuperTito1',
     desafioIds: [19]
-  },
-  {
-    id: 'nuevo20',
-    desafioIds: ['nuevo20']
   },
   {
     id: 'SuperTito2',
@@ -160,10 +144,6 @@ export const grupos = [
   {
     id: 'ElFestinFrutal',
     desafioIds: [44]
-  },
-  {
-    id: 'nuevo45',
-    desafioIds: ['nuevo45']
   },
   {
     id: 'RecolectorDeGalaxias',

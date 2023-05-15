@@ -649,6 +649,26 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+    'nuevo10':
+      title: Installing games
+      description: |
+        Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
+      clue: ''
+    'nuevo5':
+      title: Yvoty awakens fireflies
+      description: |
+        Help Yvoty wake up all the fireflies.
+        Clue: create a procedure to wake up all the fireflies in a diagonal line.
+      clue: 'You can create a procedure once, and then use it anytime you want within the same program.'
+    'nuevo9':
+      title: Charging cell phones
+      description: |
+        Yvoty needs to charge the 7 cell phones on screen with the charger. First pick up the charger, and then go to each cell phone to charge them. Clue: How many steps should your strategy have?
+      clue: ''
+    'nuevo133':
+      title: Square butterflies
+      description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
+      clue: ''
   groups:
     AlienTocaBoton:
       title: ''    

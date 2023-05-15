@@ -639,6 +639,26 @@ model:
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
+    'nuevo10':
+      title: Instalando jogos
+      description: |
+        O Yvoty tem que instalar um jogo em 3 computadores para se divertir com os amigos. Os passos para instalá-lo em cada um são: ligue, digite a senha ("ABC"), instale o jogo e desligue a máquina. Dica: aproveite o fato de que em cada computador tem que fazer o mesmo trabalho.
+      clue: ''
+    'nuevo5':
+      title: Yvoty desperta vagalumes
+      description: |
+        Ajude Yvoty a acordar todos os vagalumes.
+        Dica: crie um procedimento para acordar todos os vagalumes na diagonal.
+      clue: Você pode criar um procedimento uma vez e usá-lo quantas vezes quiser em um programa.
+    'nuevo9':
+      title: Cargando los celus
+      description: |
+        Yvoty debe cargar con el cargador a los 7 celus que hay en esta escena. Buscá primero el cargador y luego pasá por cada celular cargandolo. Pista: ¿Cuántas partes debería tener tu estrategia?
+      clue: ''
+    'nuevo133':
+      title: Mariposas cuadradas
+      description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
+      clue: ''
   groups:
     AlienTocaBoton:
       title: ''

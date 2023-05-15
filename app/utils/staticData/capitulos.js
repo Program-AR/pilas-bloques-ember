@@ -21,18 +21,19 @@ export const capitulos = [
     },
     {
         id: 'Autómatas, comandos, procedimientos y repetición',
-        grupoIds: ['AlienTocaBoton', 'NuevosComandos', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'nuevo5','TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
+        grupoIds: ['AlienTocaBoton', 'NuevosComandos', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
         expectations: {
             simpleRepetition: true
         }
     },
     {
         id: 'Alternativa condicional',
-        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'LaberintoCorto', 'LaberintoLargo', 'TresNaranjas', 'nuevo17', 'TitoRecargado', 'ElDesiertoMultiFrutal', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'nuevo45', 'RecolectorDeGalaxias']
+        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'LaberintoCorto', 'LaberintoLargo', 'TresNaranjas',
+         'TitoRecargado', 'ElDesiertoMultiFrutal', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias']
     },
     {
         id: 'Repetición condicional',
-        grupoIds: ['nuevo19', 'SuperTito1', 'nuevo20', 'SuperTito2', 'LaberintoConQueso', 'ElDetectiveChaparro', 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
+        grupoIds: ['SuperTito1', 'SuperTito2', 'LaberintoConQueso', 'ElDetectiveChaparro', 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
     },
     {
         id: 'Sensores Numéricos',
