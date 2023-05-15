@@ -113,6 +113,14 @@ simpleRepetitionEnd: veces
 conditionalRepetition: Repetir hasta que
 simpleAlternative: Si
 completeAlternative: sino
+wakeUpFirefly: Despertar luciérnaga
+watchButterfly: Observar mariposa
+unlockCellphone: Desbloquear celular
+pickCharger: Agarrar cargador
+chargeCellphone: Cargar celular
+butterflyHere: ¿Hay una mariposa acá?
+cellphoneHere: ¿Hay un celular acá?
+fireflyHere: ¿Hay una luciérnaga acá?
 categories:
   primitives: Primitivas
   myProcedures: Mis procedimientos

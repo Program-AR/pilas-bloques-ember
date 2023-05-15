@@ -113,6 +113,14 @@ simpleRepetitionEnd: times
 conditionalRepetition: Repeat until
 simpleAlternative: If
 completeAlternative: else
+wakeUpFirefly: Wake up firefly
+watchButterfly: Watch butterfly
+unlockCellphone: Unlock cell phone
+pickCharger: Pick charger
+chargeCellphone: Charge cell phone
+butterflyHere: Is there a butterfly here?
+cellphoneHere: Is there a cell phone here?
+fireflyHere: Is there a firefly here?
 categories:
   primitives: Primitives
   myProcedures: My procedures
