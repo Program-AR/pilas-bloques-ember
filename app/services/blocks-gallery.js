@@ -338,7 +338,7 @@ export default Service.extend({
     this.crearBloqueAccion('DesbloquearCelular', 'unlockCellphone', {
       icono: 'icono.celu.png',
       comportamiento: 'Recolectar',
-      argumentos: '{etiqueta: "Celular", nombreAnimacion: "usarCelu", "mensajeError": "Acá no hay una celular"}',
+      argumentos: '{etiqueta: "Celular", nombreAnimacion: "usarCelu", "mensajeError": "Acá no hay un celular"}',
     });
 
     this.crearBloqueAccion('AgarrarCargador', 'pickCharger', {

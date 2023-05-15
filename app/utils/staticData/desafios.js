@@ -2784,7 +2784,7 @@ export const desafios = [
   },
   {
     id: 'nuevo24',
-    nombre: 'PrendiendoCompusYvoty',
+    nombre: 'PrendiendoLasCompusYvoty',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
@@ -2805,7 +2805,7 @@ export const desafios = [
   },
   {
     id: 'nuevo132',
-    nombre: 'PrendiendoCompusParametrizadoYvoty',
+    nombre: 'PrendiendoLasCompusParametrizadoYvoty',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
