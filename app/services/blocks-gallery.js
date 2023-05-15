@@ -1039,7 +1039,7 @@ export default Service.extend({
     });
 
     this.crearBloqueSensor('TocandoCelular', 'cellphoneHere', {
-      icono: 'icono.mariposa.png',
+      icono: 'icono.celu.png',
       funcionSensor: 'tocando("Celular")'
     });
 
