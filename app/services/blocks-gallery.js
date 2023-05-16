@@ -324,31 +324,31 @@ export default Service.extend({
 
 
     this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
-      icono: 'icono.luciernaga.png',
+      icono: 'icono.Lamparita.png',
       comportamiento: 'SacarFoto',
       argumentos: "{'etiqueta':'Luciernaga'}"
     });
 
     this.crearBloqueAccion('ObservarMariposa', 'watchButterfly', {
-      icono: 'icono.mariposa.png',
+      icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
     });
 
     this.crearBloqueAccion('DesbloquearCelular', 'unlockCellphone', {
-      icono: 'icono.celu.png',
+      icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Celular", nombreAnimacion: "usarCelu", "mensajeError": "Acá no hay un celular"}',
     });
 
     this.crearBloqueAccion('AgarrarCargador', 'pickCharger', {
-      icono: 'icono.cargador.png',
+      icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
       argumentos: `{ etiqueta: "Cargador" }`
     });
 
     this.crearBloqueAccion('CargarCelular', 'chargeCellphone', {
-      icono: 'icono.celu.png',
+      icono: 'icono..png',
       comportamiento: 'CargarCelular',
       argumentos: `{ etiqueta: "Celular" }`,
     });
@@ -1034,17 +1034,17 @@ export default Service.extend({
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('TocandoMariposa', 'butterflyHere', {
-      icono: 'icono.mariposa.png',
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Mariposa")'
     });
 
     this.crearBloqueSensor('TocandoCelular', 'cellphoneHere', {
-      icono: 'icono.celu.png',
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Celular")'
     });
 
     this.crearBloqueSensor('TocandoLuciernaga', 'fireflyHere', {
-      icono: 'icono.luciernagaApagada.png',
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Luciernaga")',
     });
 
