@@ -1,4 +1,4 @@
-import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
+import { moduloActividad } from '../../../helpers/actividadTest';
 
 const nombre = 'SuperYvoty2';
 
