@@ -2882,5 +2882,20 @@ export const desafios = [
       }})`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
-
+  {
+    id: 'nuevo4',
+    nombre: 'ManicEnElCielo',
+    escena: `new EscenaManic("\
+        [E,-,E,-,E],\
+        [-,-,-,-,E],\
+        [-,-,-,-,E],\
+        [A,E,E,-,-],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo7',
+    nombre: 'LaReparadoraDeTelescopios',
+    escena: 'LaReparadoraDeTelescopios',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
+  },
 ];

@@ -121,6 +121,9 @@ chargeCellphone: Charge cell phone
 butterflyHere: Is there a butterfly here?
 cellphoneHere: Is there a cell phone here?
 fireflyHere: Is there a firefly here?
+watchStar: Watch star
+watchPlanet: Watch planet
+repairTelescope: Repair telescope
 categories:
   primitives: Primitives
   myProcedures: My procedures

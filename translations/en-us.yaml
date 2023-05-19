@@ -705,6 +705,16 @@ model:
       description: |
         The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
       clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
+    'nuevo4':
+      title: Mañic in sky
+      description: |
+        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
+      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
+    'nuevo7':
+      title: The telescope repairgirl
+      description: |
+        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
+      clue: Usar muchas veces un procedimiento te ahorra trabajo.
   groups:
     AlienTocaBoton:
       title: ''    

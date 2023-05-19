@@ -353,6 +353,24 @@ export default Service.extend({
       argumentos: `{ etiqueta: "Celular" }`,
     });
 
+    this.crearBloqueAccion('ObservarEstrella', 'watchStar', {
+      icono: 'icono.estrella.png',
+      comportamiento: 'UsarCatalejo',
+      argumentos: '{etiqueta: "Estrella", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay una estrella"}',
+    });
+
+    this.crearBloqueAccion('ObservarPlaneta', 'watchPlanet', {
+      icono: 'icono.planeta.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Planeta", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay una planeta"}',
+    });
+
+    this.crearBloqueAccion('RepararTelescopio', 'repairTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'RepararTelescopio',
+      argumentos: `{ etiqueta: "Telescopio" }`,
+    });
+
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
