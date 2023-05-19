@@ -2724,5 +2724,163 @@ export const desafios = [
     </block>
   </xml>`
   },
+  {
+    id: 'nuevo10',
+    nombre: 'InstalandoJuegosYvoty',
+    escena: 'InstalandoJuegosYvoty',
+    bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
+  },
+  {
+    id: 'nuevo5',
+    nombre: 'YvotyDespiertaLuciernagas',
+    escena: `new EscenaYvoty("\
+        [-,-,-,L,-,-],\
+        [-,-,L,-,-,L],\
+        [-,L,-,-,L,-],\
+        [L,-,-,L,-,-],\
+        [A,-,L,-,-,-],\
+    ")`,
+    bloques: ['DespertarLuciernaga', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo9',
+    nombre: 'CargandoCelus',
+    escena: `new EscenaYvoty("\
+    [C,C,C,C,-],\
+    [-,-,-,-,K],\
+    [-,-,-,-,-],\
+    [A,C,C,C,-],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'CargarCelular', 'AgarrarCargador', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo133',
+    nombre: 'MariposasEncuadradas',
+    escena: `new EscenaYvoty("\
+    [A,#M,#M,#M,#M,#M,-],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [#M,O,O,O,O,O,#M],\
+    [-,#M,#M,#M,#M,#M,-],\",
+    { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'TocandoMariposa', 'ObservarMariposa', 'Numero', 'OpAritmetica'],
+  },
+  {
+    id: 'nuevo17',
+    nombre: 'YvotyDespiertaMasLuciernagas',
+    escena: `new EscenaYvoty("\
+        [A],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\
+        [*>L?],\",
+        { coleccion: ["L"] })`,
+    bloques: ['DespertarLuciernaga', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
+  },
+  {
+    id: 'nuevo24',
+    nombre: 'PrendiendoLasCompusYvoty',
+    escena: `new EscenaYvoty([
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]',
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]',
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]'
+      ])`,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'MoverACasillaDerecha', 'MoverACasillaArriba',
+      'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'PrenderComputadora', 'EstoyEnEsquina'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: 'nuevo132',
+    nombre: 'PrendiendoLasCompusParametrizadoYvoty',
+    escena: `new EscenaYvoty([
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]',
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]',
+      '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
+      '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
+      '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]'
+      ])`,
+    deshabilitado: false,
+    bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
+      'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'PrenderComputadora', 'EstoyEnEsquina', 'Numero',
+      'OpAritmetica'],
+  },
+  {
+    id: 'nuevo19',
+    nombre: 'SuperYvoty1',
+    escena: `new EscenaYvoty(["[A],[L],[-]","[A],[L],[L],[-]","[A],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[L],[-]"])`,
+    bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
+      'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: 'nuevo20',
+    nombre: 'SuperYvoty2',
+    escena: `new EscenaYvoty(["[A],[#L],[-]","[A],[#L],[#L],[-]","[A],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[#L],[-]"],
+    { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
+    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuciernaga', 'DespertarLuciernaga',
+      'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: 'nuevo43',
+    nombre: 'ElPasilloCurvoDeCelus',
+    escena: `new EscenaYvoty("\
+      [O,P,P?,P?],\
+      [O,O,O,P?],\
+      [-,P,P?,P?],\
+      [-,O,O,O],\
+      [P,P?,P?,O],\
+      [O,O,P?,O],\
+      [P,P?,P?,O],\
+      [A,O,O,O],\",{})`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'DesbloquearCelular', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoCelular'],
+    expectations: {
+      decomposition: false,
+      decomposition9: true
+    }
+  },
+  {
+    id: 'nuevo45',
+    nombre: 'ObservadoraDeMariposas',
+    escena: `new EscenaYvoty("\
+      [-,*a>M?,*a>M?,*a>M?,*a>M?],\
+      [-,*b>M?,*b>M?,*b>M?,*b>M?],\
+      [-,*c>M?,*c>M?,*c>M?,*c>M?],\
+      [-,-,-,-,-],\
+      [-,*d>M?,*d>M?,*d>M?,*d>M?],\
+      [-,*e>M?,*e>M?,*e>M?,*e>M?],\
+      [A,*f>M?,*f>M?,*f>M?,*f>M?],\",
+      { colecciones: {
+          a: ["M", "M"],
+          b: ["M", "M"],
+          c: ["M", "M"],
+          d: ["M", "M"],
+          e: ["M", "M"],
+          f: ["M", "M"]
+      }})`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
+  },
 
 ];

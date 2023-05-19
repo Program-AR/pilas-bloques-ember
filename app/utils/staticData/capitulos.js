@@ -28,7 +28,8 @@ export const capitulos = [
     },
     {
         id: 'Alternativa condicional',
-        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'LaberintoCorto', 'LaberintoLargo', 'TresNaranjas', 'TitoRecargado', 'ElDesiertoMultiFrutal', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias']
+        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'LaberintoCorto', 'LaberintoLargo', 'TresNaranjas',
+         'TitoRecargado', 'ElDesiertoMultiFrutal', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias']
     },
     {
         id: 'Repetición condicional',
