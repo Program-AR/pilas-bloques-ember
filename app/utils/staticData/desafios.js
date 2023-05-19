@@ -2724,5 +2724,63 @@ export const desafios = [
     </block>
   </xml>`
   },
+  {
+    id: 'nuevo6',
+    nombre: 'LosTrofeosDeChuy',
+    escena: `new EscenaChuy("\
+      [T,-,-,-,-,-],\
+      [-,T,-,-,-,-],\
+      [-,-,T,-,-,-],\
+      [-,-,-,T,-,-],\
+      [A,-,-,-,T,-],\
+    ")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'RecogerTrofeo', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo13',
+    nombre: 'PateandoAVeces',
+    escena: `new EscenaChuy("[A,E?]")`,
+    bloques: ['UsarPaleta', 'MoverACasillaDerecha', 'TocandoPaleta', 'Repetir', 'Procedimiento', 'Si'],
+    expectations: {
+      conditionalAlternative: true,
+      decomposition: false
+    },
+    shouldShowMultipleScenarioHelp: true
+  },
+  {
+    id: 'nuevo15',
+    nombre: 'LaberintoCortoChuy',
+    escena: `new EscenaChuy(['[A,-]', '[A],[-]'])`,
+    bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
+      'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
+    expectations: {
+      conditionalAlternative: true,
+      decomposition: false
+    }
+  },
+  {
+    id: 'nuevo26',
+    nombre: 'LaSuperMaraton',
+    escena: 'new EscenaChuy("[A]")',
+    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
+      'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      decomposition: false
+    }
+  },
+  {
+    id: 'nuevo134',
+    nombre: 'InfinitosTrofeos',
+    escena: `new EscenaChuy("\
+      [A,T,T,T,T,-],\
+      [T,O,O,O,O,T],\
+      [T,T,T,T,T,T],\
+      [T,O,O,O,O,T],\
+      [-,T,T,T,T,-],\
+    ")`,
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
+      'RecogerTrofeo', 'Numero', 'OpAritmetica']
+  },
 
 ];
