@@ -715,6 +715,11 @@ model:
       description: |
         En los caminos de Mañic suele haber muchos obstáculos que se interponen, impidiendo que pueda ir a observar su estrella favorita. Si eso pasa, debe tomar el largo y agotador camino sinuoso. Ayudá a Mañic a observar la estrella al final del camino. ¡No te olvides de descargar tu solución! (la vas a necesitar más adelante).
       clue: ¿Cuántos posibles caminos hacia la estrella existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
+    'nuevo39':
+      title: Los caminos de Mañic
+      description: |
+        Mañic escuchó la ubicación de otra hermosa estrella para observar, aunque el camino es más largo y peligroso. El camino no siempre está libre de obstáculos.
+      clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las estrellas de Mañic)? 
     'nuevo16':
       title: Tres telescopios
       description: |
