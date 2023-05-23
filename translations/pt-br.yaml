@@ -705,6 +705,27 @@ model:
       description: |
         Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
       clue: Usar muchas veces un procedimiento te ahorra trabajo.
+    'nuevo8':
+      title: Mañic y los planetas
+      description: |
+        Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+    'nuevo38':
+      title: Las estrellas de Mañic
+      description: |
+        En los caminos de Mañic suele haber muchos obstáculos que se interponen, impidiendo que pueda ir a observar su estrella favorita. Si eso pasa, debe tomar el largo y agotador camino sinuoso. Ayudá a Mañic a observar la estrella al final del camino. ¡No te olvides de descargar tu solución! (la vas a necesitar más adelante).
+      clue: ¿Cuántos posibles caminos hacia la estrella existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
+    'nuevo16':
+      title: Tres telescopios
+      description: |
+        Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
+      clue: ''
+    'nuevo44':
+      title: |
+        El festín astronómico
+      description: |
+        Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
+      clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
   groups:
     AlienTocaBoton:
       title: ''

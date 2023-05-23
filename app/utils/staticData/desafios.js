@@ -2898,4 +2898,60 @@ export const desafios = [
     escena: 'LaReparadoraDeTelescopios',
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
   },
-];
+  {
+    id: 'nuevo8',
+    nombre: 'ManicYLosPlanetas',
+    escena: `new EscenaManic("\
+    [P,P,P,P,P],\
+    [P,-,-,-,-],\
+    [P,P,P,P,P],\
+    [P,-,-,-,-],\
+    [A,P,P,P,P],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
+  },
+  {
+  id: 'nuevo38',
+  nombre: 'LasEstrellasDeManic',
+  escena: `new EscenaManic([
+    '[A,O,O,O,O],[-,O,-,-,-],[-,O,O,O,-],[E,-,-,-,-]',
+    '[A,O,O,O,O],[-,-,-,-,-],[O,O,O,O,-],[E,-,-,-,-]'])`,
+  deshabilitado: false,  
+  bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+    'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 'nuevo39',
+    nombre: 'LosCaminosDeManic',
+    escena: `new EscenaManic([
+      '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]'])`,
+    deshabilitado: false,  
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha'],
+    expectations: {
+      decomposition: false,
+      decomposition9: true
+    }
+    },
+    {
+      id: 'nuevo16',
+      nombre: 'TresTelescopios',
+      escena: `new EscenaManic("\
+      [A,T?,T?,T?],\")`,
+      bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio']
+    },
+    {
+      id: 'nuevo44',
+      nombre: 'ElFestinAstronomico',
+      escena: `new EscenaManic("\
+      [A,-,-,-,-],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
+    },];

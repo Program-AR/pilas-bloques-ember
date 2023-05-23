@@ -715,6 +715,27 @@ model:
       description: |
         Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
       clue: Usar muchas veces un procedimiento te ahorra trabajo.
+    'nuevo8':
+      title: Mañic and the planets
+      description: |
+        Mañic needs to watch all planets in the grid. Think how you could help her do it by creating the necessary blocks.
+      clue: You can also think if there is a strategy that allows you to **reuse** the same procedure several times.
+    'nuevo38':
+      title: Mañic's stars
+      description: |
+        In Mañic’s paths there are usually a lot of obstacles. Some of them get in the way to watch his favorite star. If that happens, Mañic must take the long, winding and sinuous road. Help Mañic watch the star at the end of the path. Don't forget to download your solution! (you'll need it later).
+      clue: How many roads to the banana are there? Can all of them always be traversed or does it depend on something?
+    'nuevo16':
+      title: Three telescopes
+      description: |
+        Mañic should repair all telescopes. But they neither appear always in the same places, nor the same number of telescopes! Clue: first think what procedure you should create to repair only one telescope, if it appears.
+      clue: ''
+    'nuevo44':
+      title: |
+        The astronomical fest
+      description: |
+        Mañic came to watch the planets and stars at the usual place, although he heard rumors that a great astronomical event is taking place on the sky... Today is a great day to feast!
+      clue: A normal observation is a column of 6 celestial bodies. How many columns does an astronomical event have? If you can get Mañic to watch the celestial bodies in a column, maybe you can do the same at a feast.
   groups:
     AlienTocaBoton:
       title: ''    
