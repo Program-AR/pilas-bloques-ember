@@ -1,4 +1,4 @@
-import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
 let nombre = "MariposasEncuadradas";
 
