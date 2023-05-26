@@ -2739,8 +2739,19 @@ export const desafios = [
   {
     id: 'nuevo13',
     nombre: 'PateandoAVeces',
-    escena: `new EscenaChuy("[A,E?]")`,
-    bloques: ['UsarPaleta', 'MoverACasillaDerecha', 'TocandoPaleta', 'Repetir', 'Procedimiento', 'Si'],
+    escena: `new EscenaChuy("[A,G?]",{},[1,0])`,
+    bloques: ['PatearPelota', 'MoverACasillaDerecha', 'TocandoPelota', 'Repetir', 'Procedimiento', 'Si'],
+    expectations: {
+      conditionalAlternative: true,
+      decomposition: false
+    },
+    shouldShowMultipleScenarioHelp: true
+  },
+  {
+    id: 'nuevo14',
+    nombre: 'PelotaPaleta',
+    escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
+    bloques: ['PatearPelota', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelota', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2750,7 +2761,7 @@ export const desafios = [
   {
     id: 'nuevo15',
     nombre: 'LaberintoCortoChuy',
-    escena: `new EscenaChuy(['[A,-]', '[A],[-]'])`,
+    escena: `new EscenaChuy(['[A,-]', '[A],[-]'],{}, [-1,0])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
     expectations: {
@@ -2759,13 +2770,44 @@ export const desafios = [
     }
   },
   {
-    id: 'nuevo26',
-    nombre: 'LaSuperMaraton',
-    escena: 'new EscenaChuy("[A]")',
-    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1km', 'RepetirVacio',
-      'Repetir', 'Si', 'SiNo', 'Hasta'],
+    id: 'nuevo18',
+    nombre: 'LaberintoLargoChuy',
+    escena: `new EscenaChuy([
+      '[A,O,O,O,O,O,O,O],[-,-,-,O,O,O,O,O],[O,O,-,O,O,O,O,O],[O,O,-,O,O,O,O,O],[O,O,-,-,-,-,-,O],[O,O,O,O,O,O,-,O],[O,O,O,O,O,O,-,-],[O,O,O,O,O,O,O,-]',
+      '[A,-,-,O,O,O,O,O],[O,O,-,-,-,O,O,O],[O,O,O,O,-,-,O,O],[O,O,O,O,O,-,O,O],[O,O,O,O,O,-,-,O],[O,O,O,O,O,O,-,-],[O,O,O,O,O,O,O,-],[O,O,O,O,O,O,O,-]',
+      '[A,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,-,O,O,O,O,O,O],[O,-,O,O,O,O,O,O],[O,-,-,O,O,O,O,O],[O,O,-,-,O,O,O,O],[O,O,O,-,O,O,O,O],[O,O,O,-,-,-,-,-]',
+      '[A,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,-,-,-,O,O,O,O],[O,O,O,-,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,-,-,-]',
+      '[A,-,-,-,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,-,O,O],[O,O,O,O,O,-,-,O],[O,O,O,O,O,O,-,O],[O,O,O,O,O,O,-,-]']
+      ,{},[7,7])`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+      'Repetir', 'Si', 'SiNo', 'PuedeMoverAbajo', 'PuedeMoverDerecha'],
+  },
+  {
+    id: 'nuevo21',
+    nombre: 'LaberintoConPelotas',
+    escena: `new EscenaChuy([
+     '[A,O,O,O,O],[U?,U?,O,O,O],[O,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
+     '[A,O],[U?,-]',
+     '[A,O,O],[U?,O,O],[U?,O,O],[U?,U?,O],[O,U?,U?],[O,O,-]',
+     '[A,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
+     '[A,U?,U?,U?,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,U?,O,O],[O,O,O,O,O,U?,U?,O],[O,O,O,O,O,O,U?,O],[O,O,O,O,O,O,U?,-]'
+    ],{},[-1,0])`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
+      'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
+      'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
     expectations: {
-      decomposition: false
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: 'nuevo23',
+    nombre: 'FutbolAlSur',
+    escena: 'FutbolAlSur',
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
+      'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
+      'SiNo', 'Hasta'],
+    expectations: {
+      conditionalRepetition: true,
     }
   },
   {
@@ -2782,5 +2824,4 @@ export const desafios = [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
       'RecogerTrofeo', 'Numero', 'OpAritmetica']
   },
-
 ];

@@ -337,7 +337,13 @@ export default Service.extend({
     this.crearBloqueAccion('UsarPaleta', 'eatBanana', {
       icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
-      argumentos: '{etiqueta: "Paleta", nombreAnimacion:"usarPaleta" ,"mensajeError": "Acá no hay una paleta"}',
+      argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta" ,"mensajeError": "Acá no hay una paleta"}',
+    });
+
+    this.crearBloqueAccion('PatearPulpito', 'kickBall', {
+      icono: 'icono.Lamparita.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito" ,"mensajeError": "Acá no hay una pelota"}',
     });
 
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
@@ -1020,14 +1026,14 @@ export default Service.extend({
 
   _definirBloquesSensores() {
 
-    this.crearBloqueSensor('TocandoPelotaGrande', 'bananaHere', {
+    this.crearBloqueSensor('TocandoPulpito', 'ballHere', {
       icono: 'icono.banana.png',
-      funcionSensor: 'tocando("BananaAnimada")',
+      funcionSensor: 'tocando("Pulpito")',
     });
 
-    this.crearBloqueSensor('TocandoPelotitaPingPong', 'bananaHere', {
+    this.crearBloqueSensor('TocandoPingPong', 'bananaHere', {
       icono: 'icono.banana.png',
-      funcionSensor: 'tocando("BananaAnimada")',
+      funcionSensor: 'tocando("PingPong")',
     });
 
 
@@ -1166,6 +1172,16 @@ export default Service.extend({
     this.crearBloqueSensor('HayObstaculoDerecha', 'obstacleAtRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
+    });
+
+    this.crearBloqueSensor('PuedeMoverAbajo', 'canMoveDown', {
+      icono: 'icono.abajo.png',
+      funcionSensor: 'puedeMoverseAbajo()',
+    });
+
+    this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveDownRigth', {
+      icono: 'icono.derecha.png',
+      funcionSensor: 'puedeMoverseDerecha()',
     });
 
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
