@@ -322,19 +322,13 @@ export default Service.extend({
 
   _definirBloquesAccion() {
 
-    this.crearBloqueAccion('RecogerPelota', 'eatBanana', {
-      icono: 'icono.Lamparita.png',
-      comportamiento: 'Recolectar',
-      argumentos: '{etiqueta: "Pelota", "mensajeError": "Acá no hay un pelota"}',
-    });
-
-    this.crearBloqueAccion('RecogerTrofeo', 'eatBanana', {
+    this.crearBloqueAccion('RecogerTrofeo', 'pickTrophy', {
       icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Trofeo", "mensajeError": "Acá no hay un trofeo"}',
     });
 
-    this.crearBloqueAccion('UsarPaleta', 'eatBanana', {
+    this.crearBloqueAccion('UsarPaleta', 'usePaddle', {
       icono: 'icono.Lamparita.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta" ,"mensajeError": "Acá no hay una paleta"}',
@@ -1057,19 +1051,24 @@ export default Service.extend({
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('TocandoPulpito', 'ballHere', {
-      icono: 'icono.banana.png',
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Pulpito")',
     });
 
-    this.crearBloqueSensor('TocandoPingPong', 'bananaHere', {
-      icono: 'icono.banana.png',
+    this.crearBloqueSensor('TocandoPingPong', 'ballHere', {
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("PingPong")',
     });
 
 
-    this.crearBloqueSensor('TocandoPaleta', 'bananaHere', {
-      icono: 'icono.banana.png',
+    this.crearBloqueSensor('TocandoPaleta', 'paddleHere', {
+      icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Paleta")',
+    });
+
+    this.crearBloqueSensor('TocandoPelotaChuy', 'ballHere', {
+      icono: 'icono.pelota.png',
+      funcionSensor: 'tocando("PelotaAnimada")',
     });
 
 

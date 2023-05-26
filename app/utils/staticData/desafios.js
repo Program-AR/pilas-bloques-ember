@@ -2759,10 +2759,16 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'CargarCelular', 'AgarrarCargador', 'Procedimiento', 'Repetir']
   },
   {
+    id: 'nuevo10',
+    nombre: 'InstalandoJuegosYvoty',
+    escena: 'InstalandoJuegosYvoty',
+    bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
+  },
+  {
     id: 'nuevo13',
     nombre: 'PateandoAVeces',
     escena: `new EscenaChuy("[A,G?]",{},[1,0])`,
-    bloques: ['PatearPelota', 'MoverACasillaDerecha', 'TocandoPelota', 'Repetir', 'Procedimiento', 'Si'],
+    bloques: ['PatearPelota', 'MoverACasillaDerecha', 'TocandoPelotaChuy', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2773,7 +2779,7 @@ export const desafios = [
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
     escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
-    bloques: ['PatearPelota', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelota', 'TocandoPingPong'],
+    bloques: ['PatearPelota', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2852,17 +2858,16 @@ export const desafios = [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
       'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
-    id: 'nuevo10',
-    nombre: 'InstalandoJuegosYvoty',
-    escena: 'InstalandoJuegosYvoty',
-    bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
+    expectations: {
+      conditionalRepetition: true,
+    }
   },
   {
     id: 'nuevo23',
     nombre: 'FutbolAlSur',
     escena: 'FutbolAlSur',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
-      'PatearPelota', 'TocandoInicio', 'TocandoPelota', 'Repetir', 'Si',
+      'PatearPelota', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
       'SiNo', 'Hasta'],
     expectations: {
       conditionalRepetition: true,
