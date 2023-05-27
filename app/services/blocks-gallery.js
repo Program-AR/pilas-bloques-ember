@@ -1223,7 +1223,7 @@ export default Service.extend({
       funcionSensor: 'puedeMoverseAbajo()',
     });
 
-    this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveDownRigth', {
+    this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'puedeMoverseDerecha()',
     });
