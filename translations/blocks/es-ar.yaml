@@ -130,6 +130,8 @@ watchPlanet: Observar planeta
 repairTelescope: Reparar telescopio
 pickCan: Recoger lata
 pickPaper: Recoger papel
+holdPaper: Sostener papel
+fillBin: Llenar tacho
 categories:
   primitives: Primitivas
   myProcedures: Mis procedimientos

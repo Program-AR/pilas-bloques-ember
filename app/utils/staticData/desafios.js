@@ -3034,6 +3034,6 @@ export const desafios = [
       [P,-,-,-,-,-,-,T],\
       [P,-,-,T,O,O,O,O],\
       [P,-,-,-,-,-,T,O],\")`,
-      bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'SostenerPapel', 'TirarPapel', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+      bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'SostenerPapel', 'LlenarTacho', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
     },
   ];

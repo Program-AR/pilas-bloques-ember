@@ -130,6 +130,8 @@ watchPlanet: Watch planet
 repairTelescope: Repair telescope
 pickCan: Pick can
 pickPaper: Pick paper
+holdPaper: Hold paper
+fillBin: Fill bin
 categories:
   primitives: Primitives
   myProcedures: My procedures

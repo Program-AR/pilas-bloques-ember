@@ -383,6 +383,22 @@ export default Service.extend({
       argumentos: '{etiqueta: "Papel", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una papel"}',
     });
 
+    this.crearBloqueAccion('SostenerPapel', 'holdPaper', {
+      icono: 'icono.papel.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Papel",
+        nombreAnimacion: "recoger",
+        "mensajeError": "Acá no hay una papel"
+      }`,
+    });
+    
+    this.crearBloqueAccion('LlenarTacho', 'fillBin', {
+      icono: 'icono.tacho.png',
+      comportamiento: 'LlenarTacho',
+      argumentos: `{ etiqueta: "Tacho", nombreAnimacion: "recoger" }`,
+    });
+
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
