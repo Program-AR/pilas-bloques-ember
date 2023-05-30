@@ -371,6 +371,18 @@ export default Service.extend({
       argumentos: `{ etiqueta: "Telescopio" }`,
     });
 
+    this.crearBloqueAccion('RecogerLata', 'pickCan', {
+      icono: 'icono.lata.png',
+      comportamiento: 'RecojoLata',
+      argumentos: '{etiqueta: "Lata", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una lata"}',
+    });
+
+    this.crearBloqueAccion('RecogerPapel', 'pickPaper', {
+      icono: 'icono.papel.png',
+      comportamiento: 'RecojoPapel',
+      argumentos: '{etiqueta: "Papel", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una papel"}',
+    });
+
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
@@ -1051,6 +1063,16 @@ export default Service.extend({
 
   _definirBloquesSensores() {
 
+    this.crearBloqueSensor('TocandoPapel', 'paperHere', {
+      icono: 'icono.papel.png',
+      funcionSensor: 'tocando("Papel")'
+    });
+    
+    this.crearBloqueSensor('TocandoLata', 'canHere', {
+      icono: 'icono.lata.png',
+      funcionSensor: 'tocando("Lata")'
+    });
+    
     this.crearBloqueSensor('TocandoTelescopio', 'telescopeHere', {
       icono: 'icono.telescopio.png',
       funcionSensor: 'tocando("Telescopio")'

@@ -2954,4 +2954,86 @@ export const desafios = [
       [E|P,O,E|P,E|P,E|P],\
       [E|P,O,E|P,E|P,E|P],\")`,
       bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
-    },];
+    },
+    {
+      id: 'nuevo46',
+      nombre: 'NuevosComandos',
+      escena: `new EscenaCapy("\
+      [A,-,L],\
+      [-,O,L],\
+      [-,O,O],\
+      [-,-,L],\
+      [L,O,L],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
+      expectations: {
+        simpleRepetition: false,
+        decomposition: false,
+        decomposition9: true
+      }
+    },  
+    {
+      id: 'nuevo40',
+      nombre: 'HileraDeLatas',
+      escena: `new EscenaCapy([
+        '[L,-,-,-,A],[O,O,-,O,O],[O,O,-,O,O],[O,O,-,O,O]',
+        '[L,-,L,-,A],[O,O,L,O,O],[O,O,L,O,O],[O,O,L,O,O]'])`,
+      bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'TocandoLata']
+    },
+    {
+      id: 'nuevo41',
+      nombre: 'MuchasHilerasDeLatas',
+      escena: `new EscenaCapy([
+        '[O,O,O,-,-,L,A],[L,-,-,L,O,L,O],[L,O,O,L,O,L,O],[L,O,O,L,O,L,O],[L,O,O,L,O,O,O]',
+        '[O,O,O,-,-,L,A],[-,-,-,L,O,L,O],[-,O,O,L,O,L,O],[-,O,O,L,O,L,O],[-,O,O,L,O,O,O]',
+        '[O,O,O,-,-,L,A],[L,-,-,-,O,L,O],[L,O,O,-,O,L,O],[L,O,O,-,O,L,O],[L,O,O,-,O,O,O]',
+        '[O,O,O,-,-,-,A],[L,-,-,L,O,-,O],[L,O,O,L,O,-,O],[L,O,O,L,O,-,O],[L,O,O,L,O,O,O]'])`,
+      bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'TocandoLata'],
+      expectations: {
+        decomposition: false,
+        decomposition9: true
+      }
+    },
+    {
+      id: 'nuevo42',
+      nombre: 'AVecesLatasAVecesPapeles',
+      escena: `new EscenaCapy("\
+      [A,L|P,L|P,L|P,L|P],\
+      [-,O,O,O,O],\
+      [-,L|P,L|P,L|P,L|P],\
+      [-,O,O,O,O],\
+      [-,O,O,O,O],\
+      [-,L|P,L|P,L|P,L|P],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'RecogerLata', 'RecogerPapel', 'Procedimiento', 'Repetir', 'TocandoLata', 'TocandoPapel', 'Si', 'SiNo'],
+      expectations: {
+        decomposition: false,
+        decomposition9: true
+      }
+    },
+    {
+      id: 'nuevo28',
+      nombre: 'ElPlanetaDeCapyYGuyra',
+      escena: `new EscenaCapy("\
+      [-,L,L,-,-],\
+      [-,L,L,L,L],\
+      [-,L,-,-,-],\
+      [A,L,L,L,-],\")`,
+      bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
+        'VolverAlBordeIzquierdo', 'RecogerLata', 'RepetirVacio', 'Repetir', 'Si',
+        'SiNo', 'Hasta', 'Numero'],
+      expectations: {
+        decomposition: false,
+        decomposition9: true
+      }
+    },
+    {
+      id: 'nuevo131',
+      nombre: 'ReciclandoPapeles',
+      escena: `new EscenaCapy("\
+      [A,P,-,-,T,O,O,O],\
+      [P,-,-,-,-,T,O,O],\
+      [P,-,-,-,-,-,-,T],\
+      [P,-,-,T,O,O,O,O],\
+      [P,-,-,-,-,-,T,O],\")`,
+      bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'SostenerPapel', 'TirarPapel', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+    },
+  ];
