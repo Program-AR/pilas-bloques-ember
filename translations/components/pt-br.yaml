@@ -99,6 +99,10 @@ acceptTermsAndConditions:
   termsLink: termos e condições de uso
   toUse: ' para poder usar Pilar bloques.'
   accept: termos e condições de uso
+backendOutage:
+  title: "Pilas Bloques em manutenção"
+  notice: "Estamos fazendo tarefas de melhoria em nossos servidores. Você pode enfrentar alguns inconvenientes no registro do usuário, no login ou na visualização de suas soluções anteriores. Não te preocupes! Suas soluções anteriores são seguras 😉" 
+  accept: Entendido
 finishedExerciseModal:
   congratulationsModal:
     title: Conseguiu!
