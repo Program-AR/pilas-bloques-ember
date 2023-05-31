@@ -90,6 +90,10 @@ acceptTermsAndConditions:
   termsLink: terms of use and conditions
   toUse: ' to use Pilas Bloques'
   accept: I accept the terms of use and conditions
+backendOutage:
+  title: "Pilas Bloques is under manteinance"
+  notice: "We are performing manteinance on our servers. You may face some inconveniences when registering your user, logging in or viewing your previous solutions. Don't worry! Your previous solutions are safe 😉" 
+  accept: Understood
 finishedExerciseModal:
   congratulationsModal:
     title: You did it!
