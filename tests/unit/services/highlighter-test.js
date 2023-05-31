@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 import { blocklyWorkspaceMock } from '../../helpers/mocks';
-import { setUpTestLocale } from '../../helpers/utils';
+import { setUpTestLocale, findBlockByTypeIn } from '../../helpers/utils';
 
 var highlighter;
 
@@ -162,7 +162,6 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>`,
     `<block type="procedures_defnoreturn" x="46" y="247">
       <field name="NAME">procedimiento general</field>
-      <comment pinned="false" h="80" w="160">Describe esta función...</comment>
       <statement name="STACK">
         <block type="GirarGrados">
           <value name="grados">
@@ -189,7 +188,6 @@ module('Unit | Service | highlighter', function (hooks) {
   </block>`,
     `<block type="procedures_defnoreturn" x="62" y="421">
       <field name="NAME">procedimiento especifico</field>
-      <comment pinned="false" h="80" w="160">Describe esta función...</comment>
       <statement name="STACK">
         <block type="SaltarHaciaAdelante">
           <value name="longitud">
@@ -274,6 +272,216 @@ module('Unit | Service | highlighter', function (hooks) {
     assertHighlight(assert, ['procedures_callnoreturn', 'GirarGrados'])
   });
 
+  let programWithNestedProcedures = [`
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="procedures_callnoreturn">
+        <mutation name="primero"></mutation>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="primero"></mutation>
+            <next>
+              <block type="MoverA">
+                <value name="direccion">
+                  <block type="ParaLaDerecha"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" x="300" y="63">
+    <field name="NAME">primero</field>
+    <statement name="STACK">
+      <block type="procedures_callnoreturn">
+        <mutation name="segundo"></mutation>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" x="319" y="213">
+    <field name="NAME">segundo</field>
+    <statement name="STACK">
+      <block type="MoverA">
+        <value name="direccion">
+          <block type="ParaLaDerecha"></block>
+        </value>
+      </block>
+    </statement>
+  </block>`
+  ]
+
+  test('When execution returns to a higher flow should remove intermediate calls from stack', function (assert) {
+    loadProgramAndSendSteps(Infinity, programWithNestedProcedures)
+    assertHighlight(assert, ['MoverA'])
+  });
+
+  let programWithArgs = [`
+  <block type="al_empezar_a_ejecutar">
+    <statement name="program">
+      <block type="procedures_callnoreturn">
+        <mutation name="Mover mucho">
+          <arg name="parámetro 1"></arg>
+          <arg name="parámetro 2"></arg>
+        </mutation>
+        <value name="ARG0">
+          <block type="ParaLaDerecha"></block>
+        </value>
+        <value name="ARG1">
+          <block type="Numero">
+            <field name="NUM">2</field>
+          </block>
+        </value>
+        <next>
+          <block type="procedures_callnoreturn">
+            <mutation name="Mover mucho">
+              <arg name="parámetro 1"></arg>
+              <arg name="parámetro 2"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="ParaLaIzquierda"></block>
+            </value>
+            <value name="ARG1">
+              <block type="Numero">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <next>
+              <block type="MoverA">
+                <value name="direccion">
+                  <block type="ParaLaDerecha"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" id="procedure_with_two_params">
+    <mutation>
+      <arg name="parámetro 1"></arg>
+      <arg name="parámetro 2"></arg>
+    </mutation>
+    <field name="NAME">Mover mucho</field>
+    <field name="ARG0">parámetro 1</field>
+    <field name="ARG1">parámetro 2</field>
+    <statement name="STACK">
+      <block type="RepetirVacio">
+        <value name="count">
+          <block type="variables_get">
+            <mutation var="parámetro 2" parent="procedure_with_two_params"></mutation>
+          </block>
+        </value>
+        <statement name="block">
+          <block type="procedures_callnoreturn">
+            <mutation name="Mover">
+              <arg name="param"></arg>
+            </mutation>
+            <value name="ARG0">
+              <block type="variables_get">
+                <mutation var="parámetro 1" parent="procedure_with_two_params"></mutation>
+              </block>
+            </value>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>`,
+  `<block type="procedures_defnoreturn" id="procedure_with_one_param">
+    <mutation>
+      <arg name="param"></arg>
+    </mutation>
+    <field name="NAME">Mover</field>
+    <field name="ARG0">param</field>
+    <statement name="STACK">
+      <block type="MoverA">
+        <value name="direccion">
+          <block type="variables_get">
+            <mutation var="param" parent="procedure_with_one_param"></mutation>
+          </block>
+        </value>
+        <next>
+          <block type="MoverA">
+            <value name="direccion">
+              <block type="variables_get">
+                <mutation var="param" parent="procedure_with_one_param"></mutation>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>`
+]
+
+  test('When procedure with args is executed should show parameter values', function (assert) {
+    loadProgramAndSendSteps(4, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    assert.deepEqual(highlighter.highlightedProcedures[0].getVars(), ['parámetro 1 = la derecha', 'parámetro 2 = 2'])
+  });
+
+  test('When procedure with args is executed should show parameter values in parameter blocks', function (assert) {
+    loadProgramAndSendSteps(4, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    const paramBlock = findBlockByTypeIn(highlighter.highlightedProcedures[0], 'variables_get')
+    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 2 = 2')
+    //TODO: Test parámetro 1
+  });
+
+  test('When procedure with args is executed should not show parameter values in procedure call blocks', function (assert) {
+    loadProgramAndSendSteps(4, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    const currentProcedureCall = highlighter.stack[0]
+    assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME0"), 'parámetro 1')
+    assert.deepEqual(currentProcedureCall.getFieldValue("ARGNAME1"), 'parámetro 2')
+    const nextProcedureCall = currentProcedureCall.getNextBlock()
+    assert.deepEqual(nextProcedureCall.getFieldValue("ARGNAME0"), 'parámetro 1')
+    assert.deepEqual(nextProcedureCall.getFieldValue("ARGNAME1"), 'parámetro 2')
+  });
+
+
+  test('When procedure with args is executed from other procedure should show parameter values', function (assert) {
+    loadProgramAndSendSteps(8, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'procedures_callnoreturn', 'MoverA'])
+    assert.deepEqual(highlighter.highlightedProcedures[1].getVars(), ['param = la derecha'])
+  });
+
+  test('When procedure with args is executed again should change parameter values', function (assert) {
+    loadProgramAndSendSteps(15, programWithArgs)
+    assertHighlight(assert, ['procedures_callnoreturn', 'RepetirVacio'])
+    assert.deepEqual(highlighter.highlightedProcedures[0].getVars(), ['parámetro 1 = la izquierda', 'parámetro 2 = 2'])
+  });
+
+
+  test('When procedure with args finish execution should not show parameter values', function (assert) {
+    loadProgramAndSendSteps(Infinity, programWithArgs)
+    assertHighlight(assert, ['MoverA'])
+    const procedureBlock = Blockly.getMainWorkspace().getBlockById('procedure_with_two_params')
+    assert.deepEqual(procedureBlock.getVars(), ['parámetro 1', 'parámetro 2'])
+  });
+
+  test('When procedure with args finish execution should not show parameter values in parameter blocks', function (assert) {
+    loadProgramAndSendSteps(Infinity, programWithArgs)
+    assertHighlight(assert, ['MoverA'])
+    const procedureBlock = Blockly.getMainWorkspace().getBlockById('procedure_with_two_params')
+    const paramBlock = findBlockByTypeIn(procedureBlock, 'variables_get')
+    assert.deepEqual(paramBlock.getFieldValue("VAR"), 'parámetro 2')
+    //TODO: Test parámetro 1
+  });
+
+  test('When procedure with args finish execution should not show parameter values in procedure call blocks', function (assert) {
+    loadProgramAndSendSteps(Infinity, programWithArgs)
+    assertHighlight(assert, ['MoverA'])
+    const procedureCallBlock = Blockly.getMainWorkspace().getTopBlocks()[0].getChildren()[0]
+    assert.deepEqual(procedureCallBlock.getFieldValue("ARGNAME0"), 'parámetro 1')
+    assert.deepEqual(procedureCallBlock.getFieldValue("ARGNAME1"), 'parámetro 2')
+    const nextProcedureCall = procedureCallBlock.getNextBlock()
+    assert.deepEqual(nextProcedureCall.getFieldValue("ARGNAME0"), 'parámetro 1')
+    assert.deepEqual(nextProcedureCall.getFieldValue("ARGNAME1"), 'parámetro 2')
+  });
+
 
 
   function loadProgramAndSendSteps(steps, blocksAsText) {
@@ -281,7 +489,7 @@ module('Unit | Service | highlighter', function (hooks) {
     let definitionBlocks = blocksAsText
       .map(Blockly.textToBlock)
 
-    let ignoredBlockTypes = ["math_number", "HayTomate"]
+    let ignoredBlockTypes = ["math_number", "Numero", "HayTomate", "ParaLaDerecha", "ParaLaIzquierda"]
     // Esta ejecución solamente RECORRE los bloques. ¡No tiene en cuenta la lógica!
     // En los procedure_call ejecuta el próximo bloque de definición
     function doStep(block) {
@@ -291,6 +499,7 @@ module('Unit | Service | highlighter', function (hooks) {
       if (block.defType_) { // procedure_call
         definitionIndex++
         doStep(definitionBlocks[definitionIndex])
+        definitionIndex--
       }
       block.getChildren().forEach(doStep)
     }
@@ -299,8 +508,8 @@ module('Unit | Service | highlighter', function (hooks) {
 
   //TODO: Config assert?
   function assertHighlight(assert, expectedTypes) {
-    assertLength(assert, highlighter.blocks, expectedTypes.length)
-    assertTypes(assert, highlighter.blocks, expectedTypes)
+    assertLength(assert, highlighter.stack, expectedTypes.length)
+    assertTypes(assert, highlighter.stack, expectedTypes)
   }
 
   function assertTypes(assert, blocks, expectedTypes) {

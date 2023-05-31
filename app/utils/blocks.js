@@ -62,7 +62,7 @@ function getBlocksSurroundedBy(block){
 /**
  * @returns procedure block that matches a call block
  */
-function getProcedureBlock(procedureCallBlock){
+export function getProcedureBlock(procedureCallBlock){
   return declarationWithName(procedureCallBlock.getFieldValue('NAME'))
 }
 
@@ -266,4 +266,21 @@ function lineWrap(message) {
   },
     [""]
   ).join('\n  ')
+}
+
+export function asValueString(block) {
+  switch(block.type) {
+    case 'Numero':
+    case 'math_number': return block.getFieldValue("NUM")
+    case 'text': return block.getFieldValue("TEXT")
+    case 'param_get': 
+    case 'variables_get': 
+      const paramValue = block.getFieldValue("VAR").split("=")[1]
+      return paramValue ? paramValue.trim() : null
+    case 'ParaLaDerecha': return 'blocks.right'
+    case 'ParaLaIzquierda': return 'blocks.left'
+    case 'ParaArriba': return 'blocks.up'
+    case 'ParaAbajo': return 'blocks.down'
+  }
+  return null
 }
