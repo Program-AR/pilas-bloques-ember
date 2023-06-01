@@ -3,7 +3,6 @@ import { inject as service } from '@ember/service'
 import { computed } from '@ember/object';
 
 export default Component.extend({
-  pilasBloquesApi: service(),
   storage: service(),
   shouldClose: false,
 
@@ -11,8 +10,8 @@ export default Component.extend({
     return this.storage.getOutageNoticeRead()
   }),
 
-  shouldOpen: computed('isRead', 'shouldClose', 'pilasBloquesApi.connected', function () {
-    const shouldHide = this.isRead || this.shouldClose || this.pilasBloquesApi.connected 
+  shouldOpen: computed('isRead', 'shouldClose', function () {
+    const shouldHide = this.isRead || this.shouldClose
     return !shouldHide
   }),
 
