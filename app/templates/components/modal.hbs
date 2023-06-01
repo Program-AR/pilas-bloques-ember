@@ -3,7 +3,9 @@
         <PaperToolbarTools>
             <h2>{{title}}</h2>
             <span class="flex"></span>
-            <Button @onClick={{onClose}} @isButton={{true}}>{{paper-icon "close"}}</Button>
+            {{#if showCloseIcon}}
+                <Button @onClick={{onClose}} @isButton={{true}}>{{paper-icon "close"}}</Button>
+            {{/if}}
         </PaperToolbarTools>
     </PaperToolbar>
     <PaperDialogContent class="layout-column">

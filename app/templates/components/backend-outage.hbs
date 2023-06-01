@@ -1,7 +1,10 @@
 {{#if this.shouldOpen}}
 
-<Modal @title={{t "components.backendOutage.title"}} @clickOutsideToClose={{false}}>
-  <img width="100px" src={{urlWithRoot "imagenes/toto.svg"}}>
+<Modal 
+    @title={{t "components.backendOutage.title"}} 
+    @clickOutsideToClose={{false}}
+    @showCloseIcon={{false}}>
+  <img width="100px" src={{"imagenes/toto.svg"}}>
   <div>{{t "components.backendOutage.notice"}}</div>
   <div style="text-align: right;">
     <Button @accent={{true}} @isRaised={{true}} @onClick={{action "doRead"}}> {{t "components.backendOutage.accept"}} </Button>
