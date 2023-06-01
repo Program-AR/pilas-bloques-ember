@@ -8,6 +8,7 @@ export default Ember.Service.extend({
   USER_KEY: 'PB_USER',
   ANALYTICS_KEY: 'PB_ANALYTICS_SESSION',
   TOS_ACCEPTED_KEY: 'PB_TOS_ACCEPTED',
+  OUTAGE_DATE_KEY: 'PB_OUTAGE_DATE',
   USE_NIGHT_THEME_KEY: 'PB_USE_NIGHT_THEME',
   USE_SIMPLE_READ_KEY: 'PB_USE_SIMPLE_READ',
   USE_TURBO_MODE_KEY: 'PB_USE_TURBO_MODE',
@@ -35,6 +36,14 @@ export default Ember.Service.extend({
   saveTermsAcceptance() { this._save(this.TOS_ACCEPTED_KEY, true) },
 
   termsAreAccepted() { return this._get(this.TOS_ACCEPTED_KEY) },
+
+  getOutageNoticeRead() { 
+    const whenWasRead = this._get(this.OUTAGE_DATE_KEY)
+    const today = new Date().toDateString()
+    return whenWasRead == today
+  },
+
+  setOutageNoticeRead() { this._save(this.OUTAGE_DATE_KEY, new Date().toDateString()) },
 
   getUseNightTheme() { return this._get(this.USE_NIGHT_THEME_KEY) || false },
 
