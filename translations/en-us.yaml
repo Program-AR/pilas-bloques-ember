@@ -765,9 +765,9 @@ model:
         Life on the planet can be very difficult for Capy, so running into an area full of garbage is a problem. Help Capy to collect all the cans and papers that he finds in his path.
       clue: Think of a strategy that allows Capy to go down a row and collect all the cans and papers he finds. Can the same be done in the other rows?
     'nuevo28':
-      title: Capy and Guayrá’s planet
+      title: Capy and Guyrá’s planet
       description: |
-        Help Capy and Guayrá to collect all the cans. Be careful! He cannot come down...
+        Help Capy and Guyrá to collect all the cans. Be careful! He cannot come down...
         Take into account that the scenario doesn’t change, and the cans are always in the same boxes!
       clue: |
         You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
@@ -775,7 +775,7 @@ model:
     'nuevo131':
       title: Recycling Papers
       description: |
-        Help Capy and Guayrá throw a paper in the trash bin at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
+        Help Capy and Guyrá throw a paper in the trash bin at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
       clue: ''
   groups:
     AlienTocaBoton:
