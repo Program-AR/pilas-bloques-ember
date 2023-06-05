@@ -353,6 +353,24 @@ export default Service.extend({
       argumentos: `{ etiqueta: "Celular" }`,
     });
 
+    this.crearBloqueAccion('ObservarEstrella', 'watchStar', {
+      icono: 'icono.estrella.png',
+      comportamiento: 'ObservoEstrella',
+      argumentos: '{etiqueta: "Estrella", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay una estrella"}',
+    });
+
+    this.crearBloqueAccion('ObservarPlaneta', 'watchPlanet', {
+      icono: 'icono.planeta.png',
+      comportamiento: 'ObservoPlaneta',
+      argumentos: '{etiqueta: "Planeta", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay un planeta"}',
+    });
+
+    this.crearBloqueAccion('RepararTelescopio', 'repairTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'RepararTelescopio',
+      argumentos: `{ etiqueta: "Telescopio" }`,
+    });
+
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
       icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
@@ -1033,6 +1051,21 @@ export default Service.extend({
 
   _definirBloquesSensores() {
 
+    this.crearBloqueSensor('TocandoTelescopio', 'telescopeHere', {
+      icono: 'icono.telescopio.png',
+      funcionSensor: 'tocando("Telescopio")'
+    });
+    
+    this.crearBloqueSensor('TocandoEstrellaManic', 'starHere', {
+      icono: 'icono.estrella.png',
+      funcionSensor: 'tocando("Estrella")'
+    });
+    
+    this.crearBloqueSensor('TocandoPlaneta', 'planetHere', {
+      icono: 'icono.planeta.png',
+      funcionSensor: 'tocando("Planeta")'
+    });
+    
     this.crearBloqueSensor('TocandoMariposa', 'butterflyHere', {
       icono: 'icono.Lamparita.png',
       funcionSensor: 'tocando("Mariposa")'
