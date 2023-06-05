@@ -2902,11 +2902,11 @@ export const desafios = [
     id: 'nuevo8',
     nombre: 'ManicYLosPlanetas',
     escena: `new EscenaManic("\
-    [P,P,P,P,P],\
-    [P,-,-,-,-],\
-    [P,P,P,P,P],\
-    [P,-,-,-,-],\
-    [A,P,P,P,P],\")`,
+    [P,P,P,P,P,P],\
+    [P,-,-,-,-,-],\
+    [P,P,P,P,P,P],\
+    [P,-,-,-,-,-],\
+    [A,P,P,P,P,P],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
   },
   {
