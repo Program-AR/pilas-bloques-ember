@@ -3025,15 +3025,4 @@ export const desafios = [
         decomposition9: true
       }
     },
-    {
-      id: 'nuevo131',
-      nombre: 'ReciclandoPapeles',
-      escena: `new EscenaCapy("\
-      [A,P,-,-,T,O,O,O],\
-      [P,-,-,-,-,T,O,O],\
-      [P,-,-,-,-,-,-,T],\
-      [P,-,-,T,O,O,O,O],\
-      [P,-,-,-,-,-,T,O],\")`,
-      bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'SostenerPapel', 'LlenarTacho', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
-    },
   ];
