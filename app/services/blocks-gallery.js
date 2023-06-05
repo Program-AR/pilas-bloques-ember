@@ -324,19 +324,19 @@ export default Service.extend({
 
 
     this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.luciernaga-prendida.png',
       comportamiento: 'SacarFoto',
       argumentos: "{'etiqueta':'Luciernaga'}"
     });
 
     this.crearBloqueAccion('ObservarMariposa', 'watchButterfly', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.mariposa.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
     });
 
     this.crearBloqueAccion('DesbloquearCelular', 'unlockCellphone', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.celular-prendido.png',
       comportamiento: 'Recolectar',
       argumentos: `{
         etiqueta: "Celular",
@@ -347,13 +347,13 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('AgarrarCargador', 'pickCharger', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.cargador.png',
       comportamiento: 'Recolectar',
       argumentos: `{ etiqueta: "Cargador" }`
     });
 
     this.crearBloqueAccion('CargarCelular', 'chargeCellphone', {
-      icono: 'icono..png',
+      icono: 'icono.celular-prendido.png',
       comportamiento: 'CargarCelular',
       argumentos: `{ etiqueta: "Celular", animacionInteractuadoMientras: "desaparecer" }`,
     });
@@ -1039,17 +1039,17 @@ export default Service.extend({
   _definirBloquesSensores() {
 
     this.crearBloqueSensor('TocandoMariposa', 'butterflyHere', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.mariposa.png',
       funcionSensor: 'tocando("Mariposa")'
     });
 
     this.crearBloqueSensor('TocandoCelular', 'cellphoneHere', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.celular-prendido.png',
       funcionSensor: 'tocando("Celular")'
     });
 
     this.crearBloqueSensor('TocandoLuciernaga', 'fireflyHere', {
-      icono: 'icono.Lamparita.png',
+      icono: 'icono.luciernaga-prendida.png',
       funcionSensor: 'tocando("Luciernaga")',
     });
 
