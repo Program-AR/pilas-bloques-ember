@@ -1,12 +1,12 @@
-import { moduloActividad } from '../../../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../helpers/actividadTest';
 
 const nombre = 'YvotyDespiertaMasLuciernagas';
 
 moduloActividad(nombre, () => {
 
-	//TODO: descomentar una vez que tenga la misma solución que Tito recargado
+	//TODO: sacar el skip una vez que tenga la misma solución que Tito recargado
 
-	/* actividadTest(nombre, {
+	actividadTest(nombre, {
 		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
 	   <block type="al_empezar_a_ejecutar" id="2" deletable="false" movable="false" editable="false" x="0" y="0">
@@ -43,6 +43,7 @@ moduloActividad(nombre, () => {
 		  </statement>
 	   </block>
 	</xml>`,
+		skip: true
 	});
 
 	actividadTest(nombre, {
@@ -90,6 +91,7 @@ moduloActividad(nombre, () => {
 	   </block>
 	</xml>`,
 		resuelveDesafio: false,
-	}); */
+		skip: true
+	});
 
 });

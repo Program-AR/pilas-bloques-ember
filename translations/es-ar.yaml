@@ -711,6 +711,42 @@ model:
       description: |
         El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
       clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+    'nuevo4':
+      title: Mañic en el cielo
+      description: |
+        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
+      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
+    'nuevo7':
+      title: La Reparadora de Telescopios
+      description: |
+        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
+      clue: Usar muchas veces un procedimiento te ahorra trabajo.
+    'nuevo8':
+      title: Mañic y los planetas
+      description: |
+        Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+    'nuevo38':
+      title: Las estrellas de Mañic
+      description: |
+        En los caminos de Mañic suele haber muchos obstáculos que se interponen, impidiendo que pueda ir a observar su estrella favorita. Si eso pasa, debe tomar el largo y agotador camino sinuoso. Ayudá a Mañic a observar la estrella al final del camino. ¡No te olvides de descargar tu solución! (la vas a necesitar más adelante).
+      clue: ¿Cuántos posibles caminos hacia la estrella existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
+    'nuevo39':
+      title: Los caminos de Mañic
+      description: |
+        Mañic escuchó la ubicación de otra hermosa estrella para observar, aunque el camino es más largo y peligroso. El camino no siempre está libre de obstáculos.
+      clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las estrellas de Mañic)? 
+    'nuevo16':
+      title: Tres telescopios
+      description: |
+        Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
+      clue: ''
+    'nuevo44':
+      title: |
+        El festín astronómico
+      description: |
+        Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
+      clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
   groups:
     AlienTocaBoton:
       title: ''

@@ -2716,13 +2716,23 @@ export const desafios = [
             <block type=\"MoverLeyendoArriba\">
               <next>
                 <block type=\"MoverLeyendoDerecha\"></block>
-              </next>
-            </block>
-          </statement>
-        </block>
-      </statement>
-    </block>
-    </xml>`
+                </next>
+                </block>
+                </statement>
+                </block>
+                </statement>
+                </block>
+                </xml>`
+  },
+  {
+    id: 'nuevo4',
+    nombre: 'ManicEnElCielo',
+    escena: `new EscenaManic("\
+                    [E,-,E,-,E],\
+                    [-,-,-,-,E],\
+                    [-,-,-,-,E],\
+                    [A,E,E,-,-],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'Procedimiento', 'Repetir']
   },
   {
     id: 'nuevo5',
@@ -2749,6 +2759,23 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'RecogerTrofeo', 'Procedimiento', 'Repetir']
   },
   {
+    id: 'nuevo7',
+    nombre: 'LaReparadoraDeTelescopios',
+    escena: 'LaReparadoraDeTelescopios',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo8',
+    nombre: 'ManicYLosPlanetas',
+    escena: `new EscenaManic("\
+    [P,P,P,P,P,P],\
+    [P,-,-,-,-,-],\
+    [P,P,P,P,P,P],\
+    [P,-,-,-,-,-],\
+    [A,P,P,P,P,P],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
+  },
+  {
     id: 'nuevo9',
     nombre: 'CargandoCelus',
     escena: `new EscenaYvoty("\
@@ -2756,8 +2783,8 @@ export const desafios = [
       [-,-,-,-,K],\
       [-,-,-,-,-],\
       [A,C,C,C,-],\")`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'CargarCelular', 'AgarrarCargador', 'Procedimiento', 'Repetir']
-  },
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'CargarCelular', 'AgarrarCargador', 'Procedimiento', 'Repetir']
+    },
   {
     id: 'nuevo10',
     nombre: 'InstalandoJuegosYvoty',
@@ -2796,6 +2823,13 @@ export const desafios = [
       conditionalAlternative: true,
       decomposition: false
     }
+  },
+  {
+    id: 'nuevo16',
+    nombre: 'TresTelescopios',
+    escena: `new EscenaManic("\
+      [A,T?,T?,T?],\")`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio']
   },
   {
     id: 'nuevo17',
@@ -2858,8 +2892,8 @@ export const desafios = [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
       'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
-    expectations: {
-      conditionalRepetition: true,
+      expectations: {
+        conditionalRepetition: true,
     }
   },
   {
@@ -2867,8 +2901,8 @@ export const desafios = [
     nombre: 'FutbolAlSur',
     escena: 'FutbolAlSur',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
-      'PatearPelota', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
-      'SiNo', 'Hasta'],
+    'PatearPelota', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
+    'SiNo', 'Hasta'],
     expectations: {
       conditionalRepetition: true,
     }
@@ -2887,18 +2921,44 @@ export const desafios = [
       '[A,T,T,T,T,T,-], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [T,-,-,-,-,-,T], [-,T,T,T,T,T,-]'
     ])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'MoverACasillaDerecha', 'MoverACasillaArriba',
-      'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'PrenderComputadora', 'EstoyEnEsquina'],
+    'MoverACasillaDerecha', 'MoverACasillaArriba',
+    'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+    'PrenderComputadora', 'EstoyEnEsquina'],
     expectations: {
       conditionalRepetition: true,
+    }
+  },
+  {
+    id: 'nuevo38',
+    nombre: 'LasEstrellasDeManic',
+    escena: `new EscenaManic([
+    '[A,O,O,O,O],[-,O,-,-,-],[-,O,O,O,-],[E,-,-,-,-]',
+    '[A,O,O,O,O],[-,-,-,-,-],[O,O,O,O,-],[E,-,-,-,-]'])`,
+    deshabilitado: false,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+  },
+  {
+    id: 'nuevo39',
+    nombre: 'LosCaminosDeManic',
+    escena: `new EscenaManic([
+      '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
+      '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]'])`,
+    deshabilitado: false,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
+      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha'],
+    expectations: {
+      decomposition: false,
+      decomposition9: true
     }
   },
   {
     id: 'nuevo43',
     nombre: 'ElPasilloCurvoDeCelus',
     escena: `new EscenaYvoty("\
-      [O,P,P?,P?],\
+    [O,P,P?,P?],\
       [O,O,O,P?],\
       [-,P,P?,P?],\
       [-,O,O,O],\
@@ -2906,16 +2966,29 @@ export const desafios = [
       [O,O,P?,O],\
       [P,P?,P?,O],\
       [A,O,O,O],\",{})`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'DesbloquearCelular', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoCelular'],
-    expectations: {
-      decomposition: false,
-      decomposition9: true
-    }
-  },
-  {
-    id: 'nuevo45',
-    nombre: 'ObservadoraDeMariposas',
-    escena: `new EscenaYvoty("\
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'DesbloquearCelular', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoCelular'],
+      expectations: {
+        decomposition: false,
+        decomposition9: true
+      }
+    },
+    {
+      id: 'nuevo44',
+      nombre: 'ElFestinAstronomico',
+      escena: `new EscenaManic("\
+        [A,-,-,-,-],\
+        [E|P,O,E|P,E|P,E|P],\
+        [E|P,O,E|P,E|P,E|P],\
+        [E|P,O,E|P,E|P,E|P],\
+        [E|P,O,E|P,E|P,E|P],\
+        [E|P,O,E|P,E|P,E|P],\
+        [E|P,O,E|P,E|P,E|P],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
+    },
+    {
+      id: 'nuevo45',
+      nombre: 'ObservadoraDeMariposas',
+      escena: `new EscenaYvoty("\
       [-,*a>M?,*a>M?,*a>M?,*a>M?],\
       [-,*b>M?,*b>M?,*b>M?,*b>M?],\
       [-,*c>M?,*c>M?,*c>M?,*c>M?],\
@@ -2982,5 +3055,4 @@ export const desafios = [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
       'RecogerTrofeo', 'Numero', 'OpAritmetica']
   },
-
 ];

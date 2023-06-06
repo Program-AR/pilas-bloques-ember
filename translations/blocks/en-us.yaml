@@ -118,6 +118,8 @@ watchButterfly: Watch butterfly
 unlockCellphone: Unlock cell phone
 pickCharger: Pick charger
 chargeCellphone: Charge cell phone
+telescopeHere: Is there a telescope here?
+planetHere: Is there a planet here?
 butterflyHere: Is there a butterfly here?
 cellphoneHere: Is there a cell phone here?
 fireflyHere: Is there a firefly here?
@@ -125,6 +127,9 @@ ballHere: Is there a ball here?
 paddleHere: Is there a paddle here?
 pickTrophy: Pick trophy
 usarPaleta: Use paddle
+watchStar: Watch star
+watchPlanet: Watch planet
+repairTelescope: Repair telescope
 categories:
   primitives: Primitives
   myProcedures: My procedures
