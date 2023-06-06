@@ -755,9 +755,9 @@ model:
         La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
       clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
     'nuevo28':
-      title: El planeta de Capy y Guayrá
+      title: El planeta de Capy y Guyrá
       description: |
-        Ayudá a Capy y Guayrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
+        Ayudá a Capy y Guyrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
         ¡Tené en cuenta que el escenario no cambia, las latas están siempre en las mismas casillas!
       clue: |
         A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
@@ -765,7 +765,7 @@ model:
     'nuevo131':
       title: Reciclando papeles
       description: |
-        Ayudá a Capy y Guayrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
+        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
       clue: ''
   groups:
     AlienTocaBoton:

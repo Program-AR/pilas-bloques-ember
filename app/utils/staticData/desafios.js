@@ -3015,7 +3015,7 @@ export const desafios = [
     },
     {
       id: 'nuevo46',
-      nombre: 'NuevosComandos',
+      nombre: 'NuevosComandosCapy',
       escena: `new EscenaCapy("\
       [A,-,L],\
       [-,O,L],\
