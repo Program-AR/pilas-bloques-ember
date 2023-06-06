@@ -2895,7 +2895,11 @@ export const desafios = [
   {
     id: 'nuevo7',
     nombre: 'LaReparadoraDeTelescopios',
-    escena: 'LaReparadoraDeTelescopios',
+    escena: `new EscenaManic("\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [A,T,T,T,T],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
   },
   {
@@ -2908,6 +2912,29 @@ export const desafios = [
     [P,-,-,-,-,-],\
     [A,P,P,P,P,P],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
+  },
+  {
+    id: 'nuevo16',
+    nombre: 'TresTelescopios',
+    escena: `new EscenaManic("\
+    [A,T?,T?,T?],\")`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio']
+  },
+  {
+    id: 'nuevo28',
+    nombre: 'ElPlanetaDeCapyYGuyra',
+    escena: `new EscenaCapy("\
+    [-,L,L,-,-],\
+    [-,L,L,L,L],\
+    [-,L,-,-,-],\
+    [A,L,L,L,-],\")`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
+      'VolverAlBordeIzquierdo', 'RecogerLata', 'RepetirVacio', 'Repetir', 'Si',
+      'SiNo', 'Hasta', 'Numero'],
+    expectations: {
+      decomposition: false,
+      decomposition9: true
+    }
   },
   {
   id: 'nuevo38',
@@ -2935,42 +2962,6 @@ export const desafios = [
       decomposition9: true
     }
     },
-    {
-      id: 'nuevo16',
-      nombre: 'TresTelescopios',
-      escena: `new EscenaManic("\
-      [A,T?,T?,T?],\")`,
-      bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio']
-    },
-    {
-      id: 'nuevo44',
-      nombre: 'ElFestinAstronomico',
-      escena: `new EscenaManic("\
-      [A,-,-,-,-],\
-      [E|P,O,E|P,E|P,E|P],\
-      [E|P,O,E|P,E|P,E|P],\
-      [E|P,O,E|P,E|P,E|P],\
-      [E|P,O,E|P,E|P,E|P],\
-      [E|P,O,E|P,E|P,E|P],\
-      [E|P,O,E|P,E|P,E|P],\")`,
-      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
-    },
-    {
-      id: 'nuevo46',
-      nombre: 'NuevosComandos',
-      escena: `new EscenaCapy("\
-      [A,-,L],\
-      [-,O,L],\
-      [-,O,O],\
-      [-,-,L],\
-      [L,O,L],\")`,
-      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
-      expectations: {
-        simpleRepetition: false,
-        decomposition: false,
-        decomposition9: true
-      }
-    },  
     {
       id: 'nuevo40',
       nombre: 'HileraDeLatas',
@@ -3010,19 +3001,32 @@ export const desafios = [
       }
     },
     {
-      id: 'nuevo28',
-      nombre: 'ElPlanetaDeCapyYGuyra',
+      id: 'nuevo44',
+      nombre: 'ElFestinAstronomico',
+      escena: `new EscenaManic("\
+      [A,-,-,-,-],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\
+      [E|P,O,E|P,E|P,E|P],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
+    },
+    {
+      id: 'nuevo46',
+      nombre: 'NuevosComandos',
       escena: `new EscenaCapy("\
-      [-,L,L,-,-],\
-      [-,L,L,L,L],\
-      [-,L,-,-,-],\
-      [A,L,L,L,-],\")`,
-      bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba',
-        'VolverAlBordeIzquierdo', 'RecogerLata', 'RepetirVacio', 'Repetir', 'Si',
-        'SiNo', 'Hasta', 'Numero'],
+      [A,-,L],\
+      [-,O,L],\
+      [-,O,O],\
+      [-,-,L],\
+      [L,O,L],\")`,
+      bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
       expectations: {
+        simpleRepetition: false,
         decomposition: false,
         decomposition9: true
       }
-    },
+    },  
   ];
