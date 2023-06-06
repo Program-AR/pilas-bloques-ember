@@ -755,7 +755,7 @@ model:
         La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
       clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
     'nuevo28':
-      title: El planeta de Capy y Guayrá
+      title: El planeta de Capy y Guyrá
       description: |
         Ayudá a Capy y Guayrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
         ¡Tené en cuenta que el escenario no cambia, las latas están siempre en las mismas casillas!
@@ -765,7 +765,7 @@ model:
     'nuevo131':
       title: Reciclando papeles
       description: |
-        Ayudá a Capy y Guayrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
+        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
       clue: ''
   groups:
     AlienTocaBoton:

@@ -385,7 +385,7 @@ export default Service.extend({
     this.crearBloqueAccion('RecogerPapel', 'pickPaper', {
       icono: 'icono.papel.png',
       comportamiento: 'RecojoPapel',
-      argumentos: '{etiqueta: "Papel", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una papel"}',
+      argumentos: '{etiqueta: "Papel", nombreAnimacion: "recoger", "mensajeError": "Acá no hay un papel"}',
     });
 
     this.crearBloqueAccion('SostenerPapel', 'holdPaper', {
@@ -394,7 +394,7 @@ export default Service.extend({
       argumentos: `{
         etiqueta: "Papel",
         nombreAnimacion: "recoger",
-        "mensajeError": "Acá no hay una papel"
+        "mensajeError": "Acá no hay un papel"
       }`,
     });
     
