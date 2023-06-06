@@ -741,6 +741,42 @@ model:
       description: |
         Mañic came to watch the planets and stars at the usual place, although he heard rumors that a great astronomical event is taking place on the sky... Today is a great day to feast!
       clue: A normal observation is a column of 6 celestial bodies. How many columns does an astronomical event have? If you can get Mañic to watch the celestial bodies in a column, maybe you can do the same at a feast.
+    'nuevo46':
+      title: New commands
+      description: |
+        Now Capy needs to collect two cans to his right, then two lower ones, and one at the bottom.
+      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
+    'nuevo40':
+      title: |
+        Row of cans
+      description: |
+        "Nothing better than getting up in the morning and going out to keep the world clean", Capy thinks. Help Capy to collect all the cans he finds in his path. Don't forget to download your solution (you'll need it later).
+      clue: How can Capy easily tell if there is a row of cans? What should he does if there is no can?
+    'nuevo41':
+      title: |
+        A lot of row of cans
+      description: |
+        Today is a special day to help keep the planet clean... but there are people who throw cans on the floor. Help Capy to collect the cans from all the rows he finds in his path.
+      clue: Is there a task that Capy has to perform multiple times? Could the solution to the previous challenge (Row of Cans) help us?
+    'nuevo42':
+      title: |
+        sometimes cans, sometimes papers
+      description: |
+        Life on the planet can be very difficult for Capy, so running into an area full of garbage is a problem. Help Capy to collect all the cans and papers that he finds in his path.
+      clue: Think of a strategy that allows Capy to go down a row and collect all the cans and papers he finds. Can the same be done in the other rows?
+    'nuevo28':
+      title: Capy and Guayrá’s planet
+      description: |
+        Help Capy and Guayrá to collect all the cans. Be careful! He cannot come down...
+        Take into account that the scenario doesn’t change, and the cans are always in the same boxes!
+      clue: |
+        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
+        For adding a parameter to a new procedure, you have to click on the plus sign.
+    'nuevo131':
+      title: Recycling Papers
+      description: |
+        Help Capy and Guayrá throw a paper in the trash bin at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
+      clue: ''
   groups:
     AlienTocaBoton:
       title: ''    

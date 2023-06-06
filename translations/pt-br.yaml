@@ -731,6 +731,42 @@ model:
       description: |
         Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
       clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
+    'nuevo46':
+      title: Nuevos comandos
+      description: |
+        Ahora Capy necesita recoger dos latas a su derecha, luego dos más abajo, y una al final.
+      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
+    'nuevo40':
+      title: |
+        Hilera de latas
+      description: |
+        “Nada mejor que despertar por la mañana y salir a mantener un mundo mas limpio” piensa Capy. Ayudá a Capy a recoger todas las latas que encuentre a su paso. No te olvides de descargar tu solución (la vas a necesitar más adelante).
+      clue: ¿Cómo puede saber Capy fácilmente si hay una hilera de latas? ¿Qué debería hacer si no hay ninguna lata?
+    'nuevo41':
+      title: |
+        Muchas hileras de latas
+      description: |
+        Hoy es un día especial para ayudar a mantener el planeta mas limpio... pero hay personas que tiran las latas al piso. Ayudá a Capy a levantar las latas de todas las hileras que encuentre a su paso.
+      clue: ¿Hay alguna tarea que Capy tenga que realizar varias veces? ¿Nos podría ayudar la solución del desafío anterior (Hilera de latas)?
+    'nuevo42':
+      title: |
+        A veces latas, a veces papeles
+      description: |
+        La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
+      clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
+    'nuevo28':
+      title: El planeta de Capy y Guyrá
+      description: |
+        Ayudá a Capy y Guayrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
+        ¡Tené en cuenta que el escenario no cambia, las latas están siempre en las mismas casillas!
+      clue: |
+        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
+        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+    'nuevo131':
+      title: Reciclando papeles
+      description: |
+        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
+      clue: ''
   groups:
     AlienTocaBoton:
       title: ''
