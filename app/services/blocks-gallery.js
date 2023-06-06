@@ -389,7 +389,7 @@ export default Service.extend({
       argumentos: `{
         etiqueta: "Papel",
         nombreAnimacion: "recoger",
-        "mensajeError": "Acá no hay una papel"
+        "mensajeError": "Acá no hay un papel"
       }`,
     });
     
