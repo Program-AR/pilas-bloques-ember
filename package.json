@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.13.3",
+  "version": "1.13.7",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -65,7 +65,7 @@
     "creador-de-desafios-pilasbloques": "^1.0.1",
     "mulang": "^6.0.5",
     "pilas-bloques-ember-intl": "^1.1.2",
-    "pilas-bloques-exercises": "1.2.18",
+    "pilas-bloques-exercises": "1.2.22",
     "pilasweb": "^0.5.0",
     "proceds-blockly": "^1.1.0",
     "ramda": "^0.28.0",
