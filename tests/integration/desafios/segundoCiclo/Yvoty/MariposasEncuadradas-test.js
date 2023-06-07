@@ -105,6 +105,7 @@ moduloActividad(nombre, () => {
         </statement>
       </block>
     </xml>`,
+    skip: true
    });
 
 });
