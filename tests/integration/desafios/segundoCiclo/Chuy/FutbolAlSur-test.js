@@ -48,7 +48,7 @@ moduloActividad(nombre, () => {
 				   <block type="MoverACasillaDerecha" id="54" />
 				</statement>
 				<next>
-				   <block type="PatearPelota" id="75" />
+				   <block type="PatearPelotaChuy" id="75" />
 				</next>
 			 </block>
 		  </statement>
@@ -97,7 +97,7 @@ moduloActividad(nombre, () => {
 						<block type="MoverACasillaDerecha" id="2!~m@gW)0@Q*qNVkM3!|" />
 						</statement>
 						<next>
-						<block type="PatearPelota" id="R/25PmB,pTT*3_I)#.q_" />
+						<block type="PatearPelotaChuy" id="R/25PmB,pTT*3_I)#.q_" />
 						</next>
 					</block>
 				</statement>
