@@ -639,39 +639,46 @@ model:
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
-    'nuevo10':
-      title: Instalando jogos
+    'nuevo4':
+      title: Mañic en el cielo
       description: |
-        O Yvoty tem que instalar um jogo em 3 computadores para se divertir com os amigos. Os passos para instalá-lo em cada um são: ligue, digite a senha ("ABC"), instale o jogo e desligue a máquina. Dica: aproveite o fato de que em cada computador tem que fazer o mesmo trabalho.
-      clue: ''
+        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
+      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
     'nuevo5':
-      title: Yvoty desperta vagalumes
+      title: Yvoty despierta las luciérnagas
       description: |
-        Ajude Yvoty a acordar todos os vagalumes.
-        Dica: crie um procedimento para acordar todos os vagalumes na diagonal.
-      clue: Você pode criar um procedimento uma vez e usá-lo quantas vezes quiser em um programa.
+        Ayudá a Yvoty a despertar todas las luciérnagas.
+        Pista: creá un procedimiento para despertar todas las luciérnagas de una diagonal.
+      clue: Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
+    'nuevo7':
+      title: La Reparadora de Telescopios
+      description: |
+        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
+      clue: Usar muchas veces un procedimiento te ahorra trabajo.
+    'nuevo8':
+      title: Mañic y los planetas
+      description: |
+        Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
+      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     'nuevo9':
       title: Cargando los celus
       description: |
         Yvoty debe cargar con el cargador a los 7 celus que hay en esta escena. Buscá primero el cargador y luego pasá por cada celular cargandolo. Pista: ¿Cuántas partes debería tener tu estrategia?
       clue: ''
-    'nuevo133':
-      title: Mariposas encuadradas
-      description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
+    'nuevo10':
+      title: Instalando juegos
+      description: |
+        Yvoty tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
+      clue: ''
+    'nuevo16':
+      title: Tres telescopios
+      description: |
+        Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
       clue: ''
     'nuevo17':
       title: Yvoty despierta más luciérnagas
       description: Yvoty necesita despertar a las luciérnagas para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
       clue: ''
-    'nuevo24':
-      title: Prendiendo las compus
-      description: |
-        Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
-      clue: ''
-    'nuevo132':
-      title: Prendiendo las compus parametrizado
-      description: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.'
-      clue: 'Los parámetros pueden ser direcciones, no siempre deben ser números. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.'
     'nuevo19':
       title: Súper Yvoty 1
       description: |
@@ -683,33 +690,19 @@ model:
       description: |
         Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
-    'nuevo43':
-      title: |
-        El pasillo curvo de celus
+    'nuevo24':
+      title: Prendiendo las compus
       description: |
-        ¡Yvoty encontró un pasillo lleno de celus! El único problema es que el pasillo da varias vueltas y los celus justo están ahí… ¿Podrá Yvoty desbloquear todos los celus de este pasillo?
-      clue: Los celus se encuentran justo en las curvas que da el pasillo. Una estrategia para desbloquear los celus en una curva sería una excelente ayuda.
-    'nuevo45':
-      title: |
-        Observadora de mariposas
+        Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
+      clue: ''
+    'nuevo28':
+      title: El planeta de Capy y Guyrá
       description: |
-        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
-      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
-    'nuevo4':
-      title: Mañic en el cielo
-      description: |
-        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
-      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
-    'nuevo7':
-      title: La Reparadora de Telescopios
-      description: |
-        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
-      clue: Usar muchas veces un procedimiento te ahorra trabajo.
-    'nuevo8':
-      title: Mañic y los planetas
-      description: |
-        Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
-      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+        Ayudá a Capy y Guyrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
+        ¡Tené en cuenta que el escenario no cambia, las latas están siempre en las mismas casillas!
+      clue: |
+        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
+        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
     'nuevo38':
       title: Las estrellas de Mañic
       description: |
@@ -720,22 +713,6 @@ model:
       description: |
         Mañic escuchó la ubicación de otra hermosa estrella para observar, aunque el camino es más largo y peligroso. El camino no siempre está libre de obstáculos.
       clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las estrellas de Mañic)? 
-    'nuevo16':
-      title: Tres telescopios
-      description: |
-        Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
-      clue: ''
-    'nuevo44':
-      title: |
-        El festín astronómico
-      description: |
-        Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
-      clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
-    'nuevo46':
-      title: Nuevos comandos
-      description: |
-        Ahora Capy necesita recoger dos latas a su derecha, luego dos más abajo, y una al final.
-      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
     'nuevo40':
       title: |
         Hilera de latas
@@ -754,18 +731,41 @@ model:
       description: |
         La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
       clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
-    'nuevo28':
-      title: El planeta de Capy y Guyrá
+    'nuevo43':
+      title: |
+        El pasillo curvo de celus
       description: |
-        Ayudá a Capy y Guyrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
-        ¡Tené en cuenta que el escenario no cambia, las latas están siempre en las mismas casillas!
-      clue: |
-        A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
-        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+        ¡Yvoty encontró un pasillo lleno de celus! El único problema es que el pasillo da varias vueltas y los celus justo están ahí… ¿Podrá Yvoty desbloquear todos los celus de este pasillo?
+      clue: Los celus se encuentran justo en las curvas que da el pasillo. Una estrategia para desbloquear los celus en una curva sería una excelente ayuda.
+    'nuevo44':
+      title: |
+        El festín astronómico
+      description: |
+        Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
+      clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
+    'nuevo45':
+      title: |
+        Observadora de mariposas
+      description: |
+        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
+      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+    'nuevo46':
+      title: Nuevos comandos
+      description: |
+        Ahora Capy necesita recoger dos latas a su derecha, luego dos más abajo, y una al final.
+      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
     'nuevo131':
       title: Reciclando papeles
       description: |
         Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
+      clue: ''
+    'nuevo132':
+      title: Prendiendo las compus parametrizado
+      description: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.'
+      clue: 'Los parámetros pueden ser direcciones, no siempre deben ser números. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.'
+    'nuevo133':
+      title: Mariposas encuadradas
+      description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: ''
   groups:
     AlienTocaBoton:

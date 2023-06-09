@@ -649,39 +649,46 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
-    'nuevo10':
-      title: Installing games
+    'nuevo4':
+      title: Mañic in sky
       description: |
-        Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
-      clue: ''
+        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
+      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
     'nuevo5':
       title: Yvoty awakens fireflies
       description: |
         Help Yvoty wake up all the fireflies.
         Clue: create a procedure to wake up all the fireflies in a diagonal line.
       clue: 'You can create a procedure once, and then use it anytime you want within the same program.'
+    'nuevo7':
+      title: The telescope repairgirl
+      description: |
+        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
+      clue: Usar muchas veces un procedimiento te ahorra trabajo.
+    'nuevo8':
+      title: Mañic and the planets
+      description: |
+        Mañic needs to watch all planets in the grid. Think how you could help her do it by creating the necessary blocks.
+      clue: You can also think if there is a strategy that allows you to **reuse** the same procedure several times.
     'nuevo9':
       title: Charging cell phones
       description: |
         Yvoty needs to charge the 7 cell phones on screen with the charger. First pick up the charger, and then go to each cell phone to charge them. Clue: How many steps should your strategy have?
       clue: ''
-    'nuevo133':
-      title: Square butterflies
-      description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
+    'nuevo10':
+      title: Installing games
+      description: |
+        Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
+      clue: ''
+    'nuevo16':
+      title: Three telescopes
+      description: |
+        Mañic should repair all telescopes. But they neither appear always in the same places, nor the same number of telescopes! Clue: first think what procedure you should create to repair only one telescope, if it appears.
       clue: ''
     'nuevo17':
       title: Yvoty awakens more fireflies
       description: Yvoty needs to wake up all the fireflies to know the route... But they change their places each time you run the program! You can use the procedures and control blocks.
       clue: ''
-    'nuevo24':
-      title: Powering all computers on
-      description: |
-        We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
-      clue: ''
-    'nuevo132':
-      title: Powering all computers on by using parameters
-      description: 'Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are.'
-      clue: 'The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move.'
     'nuevo19':
       title: Super Yvoty 1
       description: |
@@ -693,33 +700,19 @@ model:
       description: |
         Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
       clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
-    'nuevo43':
-      title: |
-        The cell phones curve aisle
+    'nuevo24':
+      title: Powering all computers on
       description: |
-        Yvoty found an aisle full of cell phones! The only problem is that the aisle turns several times and the cell phones are right there... Will Yvoty be able to unlock all the cell phones in this aisle?
-      clue: The cell phones are found right in the curves of the aisle. A strategy to unlock the cell phones in a curve would be an excellent help.
-    'nuevo45':
-      title: |
-        Butterflies observer
+        We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
+      clue: ''
+    'nuevo28':
+      title: Capy and Guyrá’s planet
       description: |
-        The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
-      clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
-    'nuevo4':
-      title: Mañic in sky
-      description: |
-        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
-      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
-    'nuevo7':
-      title: The telescope repairgirl
-      description: |
-        Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
-      clue: Usar muchas veces un procedimiento te ahorra trabajo.
-    'nuevo8':
-      title: Mañic and the planets
-      description: |
-        Mañic needs to watch all planets in the grid. Think how you could help her do it by creating the necessary blocks.
-      clue: You can also think if there is a strategy that allows you to **reuse** the same procedure several times.
+        Help Capy and Guyrá to collect all the cans. Be careful! He cannot come down...
+        Take into account that the scenario doesn’t change, and the cans are always in the same boxes!
+      clue: |
+        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
+        For adding a parameter to a new procedure, you have to click on the plus sign.
     'nuevo38':
       title: Mañic's stars
       description: |
@@ -730,22 +723,6 @@ model:
       description: |
         Mañic heard about the location of another beautiful star in the sky, though the road it's longer and more dangerous. The road is not always free of obstacles.
       clue: Is there a pattern that repeats? Could the solution of the previous challenge (Mañic's stars) help us?
-    'nuevo16':
-      title: Three telescopes
-      description: |
-        Mañic should repair all telescopes. But they neither appear always in the same places, nor the same number of telescopes! Clue: first think what procedure you should create to repair only one telescope, if it appears.
-      clue: ''
-    'nuevo44':
-      title: |
-        The astronomical fest
-      description: |
-        Mañic came to watch the planets and stars at the usual place, although he heard rumors that a great astronomical event is taking place on the sky... Today is a great day to feast!
-      clue: A normal observation is a column of 6 celestial bodies. How many columns does an astronomical event have? If you can get Mañic to watch the celestial bodies in a column, maybe you can do the same at a feast.
-    'nuevo46':
-      title: New commands
-      description: |
-        Now Capy needs to collect two cans to his right, then two lower ones, and one at the bottom.
-      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
     'nuevo40':
       title: |
         Row of cans
@@ -764,18 +741,41 @@ model:
       description: |
         Life on the planet can be very difficult for Capy, so running into an area full of garbage is a problem. Help Capy to collect all the cans and papers that he finds in his path.
       clue: Think of a strategy that allows Capy to go down a row and collect all the cans and papers he finds. Can the same be done in the other rows?
-    'nuevo28':
-      title: Capy and Guyrá’s planet
+    'nuevo43':
+      title: |
+        The cell phones curve aisle
       description: |
-        Help Capy and Guyrá to collect all the cans. Be careful! He cannot come down...
-        Take into account that the scenario doesn’t change, and the cans are always in the same boxes!
-      clue: |
-        You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
-        For adding a parameter to a new procedure, you have to click on the plus sign.
+        Yvoty found an aisle full of cell phones! The only problem is that the aisle turns several times and the cell phones are right there... Will Yvoty be able to unlock all the cell phones in this aisle?
+      clue: The cell phones are found right in the curves of the aisle. A strategy to unlock the cell phones in a curve would be an excellent help.
+    'nuevo44':
+      title: |
+        The astronomical fest
+      description: |
+        Mañic came to watch the planets and stars at the usual place, although he heard rumors that a great astronomical event is taking place on the sky... Today is a great day to feast!
+      clue: A normal observation is a column of 6 celestial bodies. How many columns does an astronomical event have? If you can get Mañic to watch the celestial bodies in a column, maybe you can do the same at a feast.
+    'nuevo45':
+      title: |
+        Butterflies observer
+      description: |
+        The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
+      clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
+    'nuevo46':
+      title: New commands
+      description: |
+        Now Capy needs to collect two cans to his right, then two lower ones, and one at the bottom.
+      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
     'nuevo131':
       title: Recycling Papers
       description: |
         Help Capy and Guyrá throw a paper in the trash bin at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
+      clue: ''
+    'nuevo132':
+      title: Powering all computers on by using parameters
+      description: 'Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are.'
+      clue: 'The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move.'
+    'nuevo133':
+      title: Square butterflies
+      description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
       clue: ''
   groups:
     AlienTocaBoton:
