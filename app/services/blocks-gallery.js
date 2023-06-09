@@ -322,6 +322,23 @@ export default Service.extend({
 
   _definirBloquesAccion() {
 
+    this.crearBloqueAccion('RecogerTrofeo', 'pickTrophy', {
+      icono: 'icono.trofeo.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Trofeo", "mensajeError": "Acá no hay un trofeo"}',
+    });
+
+    this.crearBloqueAccion('UsarPaleta', 'usePaddle', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una paleta"}',
+    });
+
+    this.crearBloqueAccion('PatearPulpito', 'kickBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota"}',
+    })
 
     this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
       icono: 'icono.luciernaga-prendida.png',
@@ -813,6 +830,15 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('PatearPelotaChuy', 'kickBall', {
+      icono: 'icono.pelota.png',
+      comportamiento: 'PatearPelota',
+      argumentos: `{
+        idTransicion: "patear",
+        animacionInteractuadoMientras: "desaparecer"
+      }`,
+    });
+
     this.crearBloqueAccion('Avanzar1km', 'move1Km', {
       icono: 'icono.derecha.png',
       comportamiento: 'VolarHeroicamente',
@@ -1084,6 +1110,28 @@ export default Service.extend({
 
   _definirBloquesSensores() {
 
+    this.crearBloqueSensor('TocandoPulpito', 'ballHere', {
+      icono: 'icono.pelota-pulpo.png',
+      funcionSensor: 'tocando("Pulpito")',
+    });
+
+    this.crearBloqueSensor('TocandoPingPong', 'ballHere', {
+      icono: 'icono.pelota-pingpong.png',
+      funcionSensor: 'tocando("PingPong")',
+    });
+
+
+    this.crearBloqueSensor('TocandoPaleta', 'paddleHere', {
+      icono: 'icono.paleta.png',
+      funcionSensor: 'tocando("Paleta")',
+    });
+
+    this.crearBloqueSensor('TocandoPelotaChuy', 'ballHere', {
+      icono: 'icono.pelota.png',
+      funcionSensor: 'tocando("PelotaAnimada")',
+    });
+
+
     this.crearBloqueSensor('TocandoPapel', 'paperHere', {
       icono: 'icono.papel.png',
       funcionSensor: 'tocando("Papel")'
@@ -1253,6 +1301,16 @@ export default Service.extend({
     this.crearBloqueSensor('HayObstaculoDerecha', 'obstacleAtRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
+    });
+
+    this.crearBloqueSensor('PuedeMoverAbajo', 'canMoveDown', {
+      icono: 'icono.abajo.png',
+      funcionSensor: 'puedeMoverseAbajo()',
+    });
+
+    this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveRight', {
+      icono: 'icono.derecha.png',
+      funcionSensor: 'puedeMoverseDerecha()',
     });
 
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
