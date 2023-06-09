@@ -2761,9 +2761,13 @@ export const desafios = [
   {
     id: 'nuevo7',
     nombre: 'LaReparadoraDeTelescopios',
-    escena: 'LaReparadoraDeTelescopios',
+    escena: `new EscenaManic("\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [A,T,T,T,T],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
-  },
+  },  
   {
     id: 'nuevo8',
     nombre: 'ManicYLosPlanetas',
@@ -3062,7 +3066,7 @@ export const desafios = [
   },
   {
     id: 'nuevo46',
-    nombre: 'NuevosComandos',
+    nombre: 'NuevosComandosCapy',
     escena: `new EscenaCapy("\
       [A,-,L],\
       [-,O,L],\
@@ -3075,16 +3079,6 @@ export const desafios = [
       decomposition: false,
       decomposition9: true
     }
-  },
-  {
-    id: 'nuevo7',
-    nombre: 'LaReparadoraDeTelescopios',
-    escena: `new EscenaManic("\
-        [-,T,T,T,T],\
-        [-,T,T,T,T],\
-        [-,T,T,T,T],\
-        [A,T,T,T,T],\")`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
   },
   {
     id: 'nuevo132',
@@ -3223,7 +3217,7 @@ export const desafios = [
     },
     {
       id: 'nuevo46',
-      nombre: 'NuevosComandosCapy',
+      nombre: 'NuevosComandos',
       escena: `new EscenaCapy("\
       [A,-,L],\
       [-,O,L],\
