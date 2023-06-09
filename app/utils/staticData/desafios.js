@@ -2795,7 +2795,7 @@ export const desafios = [
     id: 'nuevo13',
     nombre: 'PateandoAVeces',
     escena: `new EscenaChuy("[A,G?]",{},[1,0])`,
-    bloques: ['PatearPelota', 'MoverACasillaDerecha', 'TocandoPelotaChuy', 'Repetir', 'Procedimiento', 'Si'],
+    bloques: ['PatearPelotaChuy', 'MoverACasillaDerecha', 'TocandoPelotaChuy', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2806,7 +2806,7 @@ export const desafios = [
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
     escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
-    bloques: ['PatearPelota', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
+    bloques: ['PatearPelotaChuy', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2901,7 +2901,7 @@ export const desafios = [
     nombre: 'FutbolAlSur',
     escena: 'FutbolAlSur',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
-      'PatearPelota', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
+      'PatearPelotaChuy', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
       'SiNo', 'Hasta'],
     expectations: {
       conditionalRepetition: true,
