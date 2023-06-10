@@ -47,23 +47,7 @@ export const capitulos = [
         }
     },
     {
-        id: 'Tecnopolis 2021 Ejercicio Modelo',
-        grupoIds: ['tecnopolis2021EjercicioModelo']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Duba',
-        grupoIds: ['tecnopolis2021ConDuba']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Lita',
-        grupoIds: ['tecnopolis2021ConLita']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Coty',
-        grupoIds: ['tecnopolis2021ConCoty']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Toto',
-        grupoIds: ['tecnopolis2021ConToto']
+        id: 'Desafios complementarios',
+        grupoIds: ['tecnopolis2021EjercicioModelo', 'tecnopolis2021ConDuba', 'tecnopolis2021ConLita', 'tecnopolis2021ConCoty', 'tecnopolis2021ConToto']
     }
 ];
