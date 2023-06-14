@@ -89,7 +89,7 @@ module.exports = function (/* environment */) {
      * @default "function(key,locale) { return true }"
      */
     requiresTranslation(key, locale) {
-      const completeLocales = ['es-ar']
+      const completeLocales = ['es-ar', 'en-us']
       return completeLocales.includes(locale);
     }
   };
