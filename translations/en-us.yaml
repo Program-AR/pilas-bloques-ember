@@ -899,15 +899,15 @@ model:
     manual1cPrimariaOtros:
       title: Others
     tecnopolis2021EjercicioModelo:
-      title: ''
+      title: 'Sample Exercise'
     tecnopolis2021ConDuba:
-      title: ''
+      title: 'With Duba'
     tecnopolis2021ConLita:
-      title: ''
+      title: 'With Lita'
     tecnopolis2021ConCoty:
-      title: ''
+      title: 'With Coty'
     tecnopolis2021ConToto:
-      title: ''
+      title: 'With Toto'
   books:
     '1':
       title: First Cycle
@@ -918,6 +918,10 @@ model:
     '100':
       title: Tecnópolis
       description: Tecnópolis Challenges
+    '3':
+      title: Advanced
+      description: aAvanced challenges
+
   chapters:
     Capítulo 3:
       title: 'Programming in your computer'
@@ -935,13 +939,5 @@ model:
       title: Numerical sensors
     Parametrización de soluciones:
       title: Solutions parameterizing
-    Tecnopolis 2021 Ejercicio Modelo:
-      title: Sample Exercise
-    Tecnopolis 2021 Con Duba:
-      title: With Duba
-    Tecnopolis 2021 Con Lita:
-      title: With Lita
-    Tecnopolis 2021 Con Coty:
-      title: With Coty
-    Tecnopolis 2021 Con Toto:
-      title: With Toto
+    Desafios complementarios:
+      title: Complementary challenges
