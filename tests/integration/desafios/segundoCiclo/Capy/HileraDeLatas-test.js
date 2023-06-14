@@ -1,4 +1,4 @@
-import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
 const nombre = 'HileraDeLatas';
 
@@ -9,15 +9,15 @@ moduloActividad(nombre, () => {
 	});
 
 	actividadTest(nombre, {
-		descripcionAdicional: 'Da error al querer avanzar hacia una casilla sin arena',
+		descripcionAdicional: 'Da error al querer avanzar hacia una casilla con obstaculos',
 		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"NM_JO$8pGwA`|zV5gLT4\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"?,iVo5gL9O{y48Joxs]Z\"></shadow><block type=\"MoverACasillaAbajo\" id=\"u2Icda]N(xCSyjOa7Q:I\"></block></statement></block></xml>',
 		errorEsperado: 'No puedo ir para abajo',
 	});
 
 	actividadTest(nombre, {
-		descripcionAdicional: 'Da error al querer explotar un globo donde no hay',
+		descripcionAdicional: 'Da error al querer recoger una lata donde no hay',
 		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"3etCqS}C/PQNXxLJF9F(\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"`:U)KB4!86=SoJ5B{wE}\"></shadow><block type=\"ExplotarGlobo\" id=\"ttyewTQUyBGZ.sBV7*aV\"></block></statement></block></xml>',
-		errorEsperado: '¡Acá no hay globo!',
+		errorEsperado: 'Acá no hay una lata',
 	});
 
 });
