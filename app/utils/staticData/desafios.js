@@ -2809,7 +2809,7 @@ export const desafios = [
   {
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
-    escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[3,0])`,
+    escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
     bloques: ['PatearPelotaChuy', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
