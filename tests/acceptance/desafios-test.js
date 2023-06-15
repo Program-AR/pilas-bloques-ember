@@ -19,13 +19,13 @@ module('Acceptance | desafios', function (hooks) {
   setupApplicationTest(hooks);
 
   test('La cantidad de desafíos que se muestra en la pagina 1 es correcta', async function (assert) {
-    let cantidadDesafiosEsperada = 55;
+    let cantidadDesafiosEsperada = 89;
     await page1.visit();
     assert.equal(page.cantidadDeDesafiosDisponibles, cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
   });
 
   test('La cantidad de desafíos que se muestra en la pagina 2 es correcta', async function (assert) {
-    let cantidadDesafiosEsperada = 53;
+    let cantidadDesafiosEsperada = 36;
     await page2.visit();
     assert.equal(page.cantidadDeDesafiosDisponibles, cantidadDesafiosEsperada, `Hay exactamente ${cantidadDesafiosEsperada} desafios habilitados para utilizar.`);
   });
