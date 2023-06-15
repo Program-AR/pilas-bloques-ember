@@ -2761,9 +2761,13 @@ export const desafios = [
   {
     id: 'nuevo7',
     nombre: 'LaReparadoraDeTelescopios',
-    escena: 'LaReparadoraDeTelescopios',
+    escena: `new EscenaManic("\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [-,T,T,T,T],\
+        [A,T,T,T,T],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'RepararTelescopio', 'Procedimiento', 'Repetir']
-  },
+  },  
   {
     id: 'nuevo8',
     nombre: 'ManicYLosPlanetas',
@@ -2823,6 +2827,12 @@ export const desafios = [
       conditionalAlternative: true,
       decomposition: false
     }
+  },
+  {
+    id: 'nuevo16',
+    nombre: 'TresTelescopios',
+    escena: `new EscenaManic("[A,T?,T?,T?]",{},[3,0])`,
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio'],
   },
   {
     id: 'nuevo17',
@@ -3055,7 +3065,7 @@ export const desafios = [
   },
   {
     id: 'nuevo46',
-    nombre: 'NuevosComandos',
+    nombre: 'NuevosComandosCapy',
     escena: `new EscenaCapy("\
       [A,-,L],\
       [-,O,L],\
@@ -3104,14 +3114,7 @@ export const desafios = [
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoMariposa', 'ObservarMariposa', 'Numero', 'OpAritmetica'],
   },
-  {
-    id: 'nuevo16',
-    nombre: 'TresTelescopios',
-    escena: `new EscenaManic("\
-    [A,T?,T?,T?],\")`,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio']
-  }, 
-  {
+   {
     id: 'nuevo134',
     nombre: 'InfinitosTrofeos',
     escena: `new EscenaChuy("\

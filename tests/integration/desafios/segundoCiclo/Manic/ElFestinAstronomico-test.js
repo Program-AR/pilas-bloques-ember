@@ -1,4 +1,4 @@
-import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
+import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
 const nombre = "ElFestinAstronomico";
 
@@ -17,7 +17,7 @@ moduloActividad(nombre, () => {
 	actividadTest(nombre, {
 		descripcionAdicional: 'Da error querer observar un astro donde no hay',
 		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"te(fxhcv2r6N0lRb;hD=\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"#_A9.lrLzrUgmMEz$Bil\"></shadow><block type=\"ObservarEstrella\" id=\"EDt}O2P#3zZ*wWcZYIx~\"></block></statement></block></xml>',
-		errorEsperado: '¡Acá no hay una estrella!',
+		errorEsperado: 'Acá no hay una estrella',
 	});
 
 });
