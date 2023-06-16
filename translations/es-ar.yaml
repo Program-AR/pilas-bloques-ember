@@ -927,7 +927,9 @@ model:
     '3':
       title: Avanzado
       description: Desafios avanzados
-    
+    '400':
+      title: Nuevos personajes
+      description: TEMPORAL - SE BORRARÁ
   chapters:
     Capítulo 3:
       title: 'Programando en la computadora'

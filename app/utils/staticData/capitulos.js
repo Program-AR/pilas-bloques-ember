@@ -49,5 +49,9 @@ export const capitulos = [
     {
         id: 'Desafios complementarios',
         grupoIds: ['tecnopolis2021EjercicioModelo', 'tecnopolis2021ConDuba', 'tecnopolis2021ConLita', 'tecnopolis2021ConCoty', 'tecnopolis2021ConToto']
-    }
+    },
+    {
+        id: 'capiTemporal',
+        grupoIds: ['grupoTemporal']
+    },
 ];

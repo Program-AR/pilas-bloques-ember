@@ -15,7 +15,7 @@
       </p>
 
       {{#each this.model as |book|}}
-        {{#unless book.oculto}}
+        {{#unless book.hide}}
           {{challenges-book book=book}}
         {{/unless}}
       {{/each}}
