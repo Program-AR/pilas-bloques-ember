@@ -4,12 +4,10 @@
 
   <div class="box">
 
-    <p><img class='main-logo' src='imagenes/main-logo.png' width="468" height="262"></p>
+    <p><img class='main-logo' src=<img src={{urlWithRoot "imagenes/main-logo.png"}} width="468" height="262"></p>
     <p>
     {{t "templates.libros.index.welcome"}}
     </p>
-
-    <DisclaimerPrincipal/>
 
     <div class="jumbotron center">
       <p>
@@ -17,7 +15,7 @@
       </p>
 
       {{#each this.model as |book|}}
-        {{#unless book.oculto}}
+        {{#unless book.hide}}
           {{challenges-book book=book}}
         {{/unless}}
       {{/each}}

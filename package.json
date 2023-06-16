@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.13.7",
+  "version": "1.14.0",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -45,9 +45,6 @@
     "pilasweb:build": "cd ../pilasweb; make build; cd ../pilas-bloques; cp -rf ../pilasweb node_modules/pilasweb/",
     "exercises:watch": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch",
     "exercises:build": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt;cd ../pilas-bloques ;cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises",
-    "release:patch": "ember release",
-    "release:major": "ember release --major",
-    "release:minor": "ember release --minor",
     "pack:linux_x64_deb": "bash ./scripts/package.sh -linux_x64_deb",
     "pack:linux_ia32_zip": "bash ./scripts/package.sh -linux_ia32_zip",
     "pack:linux_x64_zip": "bash ./scripts/package.sh -linux_x64_zip",
@@ -55,9 +52,9 @@
     "pack:osx": "bash ./scripts/package.sh -osx",
     "pack:win32": "bash ./scripts/package.sh -win32",
     "pack:html": "bash ./scripts/package.sh -html",
-    "preinstall": "git config url.https://github.com/.insteadOf git://github.com/",
     "postinstall": "node ./scripts/remove-mulang-require.js && node ./scripts/change-sass-division.js && node ./scripts/change-pilas-versions.js && node ./scripts/tryInvoke-deprecation-fix.js",
-    "clean": "rm -rf node_modules dist dist_prod"
+    "clean": "rm -rf node_modules dist dist_prod",
+    "release": "release-it --only-version"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
@@ -68,7 +65,7 @@
     "creador-de-desafios-pilasbloques": "^1.0.1",
     "mulang": "^6.0.5",
     "pilas-bloques-ember-intl": "^1.1.2",
-    "pilas-bloques-exercises": "1.2.17",
+    "pilas-bloques-exercises": "1.2.24",
     "pilasweb": "^0.5.0",
     "proceds-blockly": "^1.1.0",
     "ramda": "^0.28.0",
@@ -102,7 +99,6 @@
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-jshint": "^2.0.1",
     "ember-cli-page-object": "^1.17.11",
-    "ember-cli-release": "^1.0.0-beta.2",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-showdown": "^6.0.1",
     "ember-cli-sri": "^2.1.1",
@@ -136,12 +132,13 @@
     "prettier": "^2.3.2",
     "qunit": "^2.16.0",
     "qunit-dom": "1.6.0",
+    "release-it": "^15.6.0",
     "sass": "^1.26.9",
     "sass-migrator": "^1.5.4",
     "shelljs": "^0.8.5"
   },
   "optionalDependencies": {
-    "electron-installer-debian": "3.1.0"
+    "electron-installer-debian": "git+https://github.com/Program-AR/electron-installer-debian.git"
   },
   "main": "electron.js",
   "ember": {
@@ -186,6 +183,17 @@
       "OriginalFilename": null,
       "ProductName": null,
       "InternalName": null
+    }
+  },
+  "release-it": {
+    "github": {
+      "release": true,
+      "tag": true,
+      "commit": true,
+      "push": true
+    },
+    "npm": {
+      "publish": false
     }
   }
 }

@@ -6,11 +6,20 @@ if (!experimentGroup) {
   console.log(`\nInfo: EXPERIMENT_GROUP variable not set. Building Pilas Bloques in default mode: ${experimentGroup}. See README.md for valid EXPERIMENT_GROUP values`)
 }
 
+var rootURL = process.env.ROOT_URL
+if (rootURL === undefined || rootURL === null) {
+  rootURL = ''
+  console.log(`\nInfo: rootURL variable not set. Building Pilas Bloques in default URL: "${rootURL}".`)
+}
+else {
+  console.log(`using rootURL: ${rootURL}`)
+}
+
 module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'pilasbloques',
     environment: environment,
-    baseURL: '/',
+    rootURL: rootURL,
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
     googleAnalyticsEnabled: false,
@@ -65,7 +74,7 @@ module.exports = function (environment) {
 
   if (environment === 'test') {
     // Testem prefers this...
-    ENV.baseURL = '/'
+    ENV.baseURL = rootURL
     ENV.locationType = 'none'
     ENV.APP.autoboot = false // ember-qunit needs it to be false.
 

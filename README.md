@@ -12,46 +12,21 @@ _____________
 # Pilas Bloques - Una herramienta para aprender a programar
 
 <p align="center">
-  <img src="https://pilasbloques.program.ar/online/imagenes/main-logo.png"/>
+  <img src="https://user-images.githubusercontent.com/5421992/216465215-be8ae60c-5498-42ef-acc2-1d57fa38b349.svg" width="70%" />
 </p>
 
 ## Sobre la aplicación
 
-Pilas Bloques es una aplicación para aprender a programar, desarrollada especialmente para el aula. 
-Se proponen desafíos con diversos niveles de dificultad para acercar a las y los estudiantes al mundo de la programación por medio de bloques. 
+Pilas Bloques es una aplicación para enseñar y aprender a programar, desarrollada especialmente para el aula. Se proponen desafíos con diversos niveles de dificultad para acercar a las y los estudiantes al mundo de la programación por medio de bloques. Para más información, ver el [Acerca De](https://pilasbloques.program.ar/acerca-de-pilas-bloques/) de Pilas Bloques.
 
 ![](https://github.com/Program-AR/pilas-bloques/blob/master/screenshots/desafios.png)
 ![](https://github.com/Program-AR/pilas-bloques/blob/master/screenshots/editor.png)
 
-### ¿Qué es programar por medio de bloques? 
-
-Es desarrollar programas con acciones e instrucciones incorporadas en bloques o piezas prediseñadas. El resultado de encastrar los bloques entre sí es el programa que resuelve el problema ó desafío planteado. 
-
-### ¿Por qué es positiva esta modalidad de aprendizaje? 
-
-* Porque cada **concepto** abstracto asociado a la programación tiene su representación **visual**.
-* Porque ahorra las **dificultades** que genera la sintaxis formal de un lenguaje **escrito** (¡y la frustración cuando cometemos un error al escribir!). Los bloques se seleccionan, arrastran, encastran y listo.
-
-### ¿En qué se diferencia Pilas Bloques de otras herramientas? 
-
-La principal diferencia es que esta plataforma fue pensada para acompañar una **secuencia didáctica** para el aprendizaje de la programación en la escuela. 
-
-### ¿Qué es una secuencia didáctica?
-
-Es el plan mediante el cual se propone aprender un tema. La secuencia didáctica de Pilas Bloques fue ideada y probada por docentes e investigadores argentinos. Hoy en día, esta propuesta se está profundizando y ampliando. Conocé más sobre las iniciativas que estamos abordando [acá](https://program.ar/mision/). 
-
-### ¿Quién puede hacer los desafíos de Pilas Bloques? 
-
-Los desafíos pueden ser realizados por niños de 3 a 99 años ;) . Sin embargo, actualmente poseemos acompañan dos manuales para docentes orientados a la **primaria**, por lo que los niños entre 5 y 8 años podrán aprovechar mejor las actividades del Primer Ciclo, y los niños entre 9 y 12 años podrán aprovechar mejor las actividades del Segundo Ciclo. 
-
-### ¿Y cualquiera puede hacer los desafíos por su cuenta?
-
-La herramienta está pensada como **ayuda al docente y al alumno** en el proceso de aprendizaje de la programación en un entorno escolar. En la secuencia didáctica que se plantea, la **indagación** autodidacta es fundamental. Nuestra recomendación, no obstante, es que el docente sea el que **guíe** y asista el proceso de aprendizaje del alumno. 
 
 
 ## Cómo contribuír
 
-En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/develop/CONTRIBUTING.md) tenes toda la informacion necesaria para contribuir al proyecto!
+¡En la guia de [CONTRIBUTING](https://github.com/Program-AR/pilas-bloques/blob/develop/CONTRIBUTING.md) tenés toda la informacion necesaria para contribuir al proyecto!
 
 ## Cómo instalar el entorno de desarrollo
 
@@ -141,7 +116,7 @@ Los grupos experimentales pueden ser: `notAffected`, `control`, `treatment` y `a
 
 ### Preparar el backend (opcional):
 
-Para tener un backend para probar funcionalidades relacionadas a usuarios y a guardar desafios es necesario tener levantado los proyectos de [Pilas Bloques API](https://github.com/Program-AR/pilas-bloques-api), [Pilas Bloques Analytics](https://github.com/Program-AR/pilas-bloques-analytics) y una base de datos [MongoDB](https://www.mongodb.com/).
+Para tener un backend para probar funcionalidades relacionadas a usuarios y a guardar desafios es necesario tener levantado los proyectos de Pilas Bloques API, Pilas Bloques Analytics, (ambos disponibles en el proyecto [backend](https://github.com/Program-AR/pilas-bloques-backend)) y una base de datos [MongoDB](https://www.mongodb.com/).
 
 _____________
 

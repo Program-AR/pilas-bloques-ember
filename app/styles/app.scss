@@ -11,7 +11,6 @@
 @import "challenge-workspace-buttons.scss";
 @import 'challenges-book.scss';
 @import "congratulations-modal.scss";
-@import "disclaimer-principal.scss";
 @import "expectation-modal.scss";
 @import "fireworks.scss";
 @import "footer.scss";
@@ -509,16 +508,6 @@ a:hover {
 
 .left {
   text-align: left;
-}
-
-.disclaimer-container {
-  display: flex;
-  justify-content: space-between;
-  text-align: center;
-}
-
-.disclaimer {
-  padding: 0.5em;
 }
 
 .simple-read-mode,

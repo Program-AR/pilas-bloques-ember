@@ -1,6 +1,7 @@
 import Service, { inject as service } from '@ember/service'
 import { isInsideProcedureDef, hasParam, isFlying, getName, requiredAllInputs, addError, clearValidationsFor, transparent, onChangeRequired, onChangeForTextInputBlock } from '../utils/blocks'
 import Ember from 'ember'
+import ENV from 'pilasbloques/config/environment'
 
 const original_procedure_type = 'procedures_defnoreturn'
 const procedure_alias = 'Procedimiento'
@@ -148,7 +149,7 @@ export default Service.extend({
       args0: [
         {
           type: "field_image",
-          src: `iconos/${opciones.icono}`,
+          src: `${ENV.rootURL}iconos/${opciones.icono}`,
           width: 16,
           height: 16,
           alt: "*"
@@ -215,7 +216,7 @@ export default Service.extend({
           "args0": [
             {
               "type": "field_image",
-              "src": `iconos/icono.DibujarLinea.png`,
+              "src": `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
               "width": 16,
               "height": 16,
               "alt": "*"
@@ -321,8 +322,107 @@ export default Service.extend({
 
   _definirBloquesAccion() {
 
+    this.crearBloqueAccion('RecogerTrofeo', 'pickTrophy', {
+      icono: 'icono.trofeo.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Trofeo", "mensajeError": "Acá no hay un trofeo"}',
+    });
+
+    this.crearBloqueAccion('UsarPaleta', 'usePaddle', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una paleta"}',
+    });
+
+    this.crearBloqueAccion('PatearPulpito', 'kickBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota"}',
+    })
+
+    this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
+      icono: 'icono.luciernaga-prendida.png',
+      comportamiento: 'SacarFoto',
+      argumentos: "{'etiqueta':'Luciernaga'}"
+    });
+
+    this.crearBloqueAccion('ObservarMariposa', 'watchButterfly', {
+      icono: 'icono.mariposa.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
+    });
+
+    this.crearBloqueAccion('DesbloquearCelular', 'unlockCellphone', {
+      icono: 'icono.celular-prendido.png',
+      comportamiento: 'Recolectar',
+      argumentos: `{
+        etiqueta: "Celular",
+        nombreAnimacion: "usarCelu",
+        "mensajeError": "Acá no hay un celular",
+        animacionInteractuadoMientras: "desaparecer"
+      }`,
+    });
+
+    this.crearBloqueAccion('AgarrarCargador', 'pickCharger', {
+      icono: 'icono.cargador.png',
+      comportamiento: 'Recolectar',
+      argumentos: `{ etiqueta: "Cargador" }`
+    });
+
+    this.crearBloqueAccion('CargarCelular', 'chargeCellphone', {
+      icono: 'icono.celular-prendido.png',
+      comportamiento: 'CargarCelular',
+      argumentos: `{ etiqueta: "Celular", animacionInteractuadoMientras: "desaparecer" }`,
+    });
+
+    this.crearBloqueAccion('ObservarEstrella', 'watchStar', {
+      icono: 'icono.estrella.png',
+      comportamiento: 'ObservoEstrella',
+      argumentos: '{etiqueta: "Estrella", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay una estrella"}',
+    });
+
+    this.crearBloqueAccion('ObservarPlaneta', 'watchPlanet', {
+      icono: 'icono.planeta.png',
+      comportamiento: 'ObservoPlaneta',
+      argumentos: '{etiqueta: "Planeta", nombreAnimacion: "usarCatalejo", "mensajeError": "Acá no hay un planeta"}',
+    });
+
+    this.crearBloqueAccion('RepararTelescopio', 'repairTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'RepararTelescopio',
+      argumentos: `{ etiqueta: "Telescopio" }`,
+    });
+
+    this.crearBloqueAccion('RecogerLata', 'pickCan', {
+      icono: 'icono.lata.png',
+      comportamiento: 'RecojoLata',
+      argumentos: '{etiqueta: "Lata", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una lata"}',
+    });
+
+    this.crearBloqueAccion('RecogerPapel', 'pickPaper', {
+      icono: 'icono.papel.png',
+      comportamiento: 'RecojoPapel',
+      argumentos: '{etiqueta: "Papel", nombreAnimacion: "recoger", "mensajeError": "Acá no hay un papel"}',
+    });
+
+    this.crearBloqueAccion('SostenerPapel', 'holdPaper', {
+      icono: 'icono.papel.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Papel",
+        nombreAnimacion: "recoger",
+        "mensajeError": "Acá no hay un papel"
+      }`,
+    });
+    
+    this.crearBloqueAccion('LlenarTacho', 'fillBin', {
+      icono: 'icono.tacho.png',
+      comportamiento: 'LlenarTacho',
+      argumentos: `{ etiqueta: "Tacho", nombreAnimacion: "recoger" }`,
+    });
+
     this.crearBloqueAccion('ApretarBoton', 'pushButton', {
-      icono: 'iconos.botonRojo.png',
+      icono: `${ENV.rootURL}iconos.botonRojo.png`,
       comportamiento: 'Interactuar',
       argumentos: `{
         etiqueta: 'BotonAnimado',
@@ -730,6 +830,15 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('PatearPelotaChuy', 'kickBall', {
+      icono: 'icono.pelota.png',
+      comportamiento: 'PatearPelota',
+      argumentos: `{
+        idTransicion: "patear",
+        animacionInteractuadoMientras: "desaparecer"
+      }`,
+    });
+
     this.crearBloqueAccion('Avanzar1km', 'move1Km', {
       icono: 'icono.derecha.png',
       comportamiento: 'VolarHeroicamente',
@@ -787,7 +896,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.arriba.png`,
+          "src": `${ENV.rootURL}iconos/icono.arriba.png`,
           "width": 16,
           "height": 20,
           "alt": "*"
@@ -820,7 +929,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.DibujarLinea.png`,
+          "src": `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -902,7 +1011,7 @@ export default Service.extend({
       args0: [
         {
           "type": "field_image",
-          "src": `iconos/icono.Girar.png`,
+          "src": `${ENV.rootURL}iconos/icono.Girar.png`,
           "width": 16,
           "height": 16,
           "alt": "*"
@@ -1000,6 +1109,68 @@ export default Service.extend({
   },
 
   _definirBloquesSensores() {
+
+    this.crearBloqueSensor('TocandoPulpito', 'ballHere', {
+      icono: 'icono.pelota-pulpo.png',
+      funcionSensor: 'tocando("Pulpito")',
+    });
+
+    this.crearBloqueSensor('TocandoPingPong', 'ballHere', {
+      icono: 'icono.pelota-pingpong.png',
+      funcionSensor: 'tocando("PingPong")',
+    });
+
+
+    this.crearBloqueSensor('TocandoPaleta', 'paddleHere', {
+      icono: 'icono.paleta.png',
+      funcionSensor: 'tocando("Paleta")',
+    });
+
+    this.crearBloqueSensor('TocandoPelotaChuy', 'ballHere', {
+      icono: 'icono.pelota.png',
+      funcionSensor: 'tocando("PelotaAnimada")',
+    });
+
+
+    this.crearBloqueSensor('TocandoPapel', 'paperHere', {
+      icono: 'icono.papel.png',
+      funcionSensor: 'tocando("Papel")'
+    });
+    
+    this.crearBloqueSensor('TocandoLata', 'canHere', {
+      icono: 'icono.lata.png',
+      funcionSensor: 'tocando("Lata")'
+    });
+    
+    this.crearBloqueSensor('TocandoTelescopio', 'telescopeHere', {
+      icono: 'icono.telescopio.png',
+      funcionSensor: 'tocando("Telescopio")'
+    });
+    
+    this.crearBloqueSensor('TocandoEstrellaManic', 'starHere', {
+      icono: 'icono.estrella.png',
+      funcionSensor: 'tocando("Estrella")'
+    });
+    
+    this.crearBloqueSensor('TocandoPlaneta', 'planetHere', {
+      icono: 'icono.planeta.png',
+      funcionSensor: 'tocando("Planeta")'
+    });
+    
+    this.crearBloqueSensor('TocandoMariposa', 'butterflyHere', {
+      icono: 'icono.mariposa.png',
+      funcionSensor: 'tocando("Mariposa")'
+    });
+
+    this.crearBloqueSensor('TocandoCelular', 'cellphoneHere', {
+      icono: 'icono.celular-prendido.png',
+      funcionSensor: 'tocando("Celular")'
+    });
+
+    this.crearBloqueSensor('TocandoLuciernaga', 'fireflyHere', {
+      icono: 'icono.luciernaga-prendida.png',
+      funcionSensor: 'tocando("Luciernaga")',
+    });
 
     this.crearBloqueSensor('TocandoBanana', 'bananaHere', {
       icono: 'icono.banana.png',
@@ -1132,6 +1303,16 @@ export default Service.extend({
       funcionSensor: 'tieneEnLaCasillaASuDerecha("Obstaculo")',
     });
 
+    this.crearBloqueSensor('PuedeMoverAbajo', 'canMoveDown', {
+      icono: 'icono.abajo.png',
+      funcionSensor: 'puedeMoverseAbajo()',
+    });
+
+    this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveRight', {
+      icono: 'icono.derecha.png',
+      funcionSensor: 'puedeMoverseDerecha()',
+    });
+
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
       icono: 'icono.charco.png',
       funcionSensor: 'hayEnEscena("Charco")',
@@ -1143,7 +1324,7 @@ export default Service.extend({
       "args0": [
         {
           type: "field_image",
-          src: `iconos/icono.DibujarLinea.png`,
+          src: `${ENV.rootURL}iconos/icono.DibujarLinea.png`,
           width: 16,
           height: 16,
           alt: "*"

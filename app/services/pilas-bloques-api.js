@@ -117,7 +117,8 @@ export default Service.extend({
     return this._doFetch(url, {
       method,
       body: JSON.stringify(body),
-      headers
+      headers,
+      credentials: 'include'
     })
       .catch(connectionErr => {
         if (critical) this._alertServerError()

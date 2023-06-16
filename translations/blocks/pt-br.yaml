@@ -113,6 +113,29 @@ simpleRepetitionEnd: vezes
 conditionalRepetition: Repetir até que
 simpleAlternative: Si
 completeAlternative: senão
+wakeUpFirefly: Despertar luciérnaga
+watchButterfly: Observar mariposa
+unlockCellphone: Desbloquear celular
+pickCharger: Agarrar cargador
+chargeCellphone: Cargar celular
+telescopeHere: ¿Hay un telescopio acá?
+planetHere: ¿Hay un planeta acá?
+canHere: ¿Hay una lata acá?
+paperHere: ¿Hay un papel acá?
+butterflyHere: ¿Hay una mariposa acá?
+cellphoneHere: ¿Hay un celular acá?
+fireflyHere: ¿Hay una luciérnaga acá?
+ballHere: ¿Hay una pelota acá?
+paddleHere: ¿Hay una paleta acá?
+pickTrophy: Agarrar trofeo
+usePaddle: Usar paleta
+watchStar: Observar estrella
+watchPlanet: Observar planeta
+repairTelescope: Reparar telescopio
+pickCan: Recoger lata
+pickPaper: Recoger papel
+holdPaper: Sostener papel
+fillBin: Llenar tacho
 categories:
   primitives: Primitivas
   myProcedures: Meus procedimentos

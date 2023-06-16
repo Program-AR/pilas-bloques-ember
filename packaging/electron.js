@@ -8,7 +8,7 @@ function createWindow() {
   const win = new BrowserWindow()
 
   win.setMenuBarVisibility(false)
-  win.setMenu(null)
+  //win.setMenu(null)
   win.setMinimumSize(800, 600)
   win.setSize(1024, 600, true)
   win.maximize()

@@ -33,7 +33,7 @@ export default Service.extend({
       ...session,
       online,
       browserId: fingerprint,
-      userId: userId || fingerprint,
+      userId: userId,
       version,
       experimentGroup,
       url: window.location.href,

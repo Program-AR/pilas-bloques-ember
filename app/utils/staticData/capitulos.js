@@ -28,7 +28,8 @@ export const capitulos = [
     },
     {
         id: 'Alternativa condicional',
-        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LaberintoCorto', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'TresNaranjas', 'TitoRecargado', 'LaberintoLargo', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias', 'ElDesiertoMultiFrutal']
+        grupoIds: ['ElMonoYLasBananas', 'LaEleccionDelMono', 'LasRocasDeNano', 'LosCaminosDeNano', 'UnaFiestaArruinada', 'RedecorandoFiestas', 'LaberintoCorto', 'LaberintoLargo', 'TresNaranjas',
+         'TitoRecargado', 'ElDesiertoMultiFrutal', 'ElPasilloCurvoDeSandias', 'ElFestinFrutal', 'RecolectorDeGalaxias']
     },
     {
         id: 'Repetición condicional',
@@ -46,23 +47,11 @@ export const capitulos = [
         }
     },
     {
-        id: 'Tecnopolis 2021 Ejercicio Modelo',
-        grupoIds: ['tecnopolis2021EjercicioModelo']
+        id: 'Desafios complementarios',
+        grupoIds: ['tecnopolis2021EjercicioModelo', 'tecnopolis2021ConDuba', 'tecnopolis2021ConLita', 'tecnopolis2021ConCoty', 'tecnopolis2021ConToto']
     },
     {
-        id: 'Tecnopolis 2021 Con Duba',
-        grupoIds: ['tecnopolis2021ConDuba']
+        id: 'capiTemporal',
+        grupoIds: ['grupoTemporal']
     },
-    {
-        id: 'Tecnopolis 2021 Con Lita',
-        grupoIds: ['tecnopolis2021ConLita']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Coty',
-        grupoIds: ['tecnopolis2021ConCoty']
-    },
-    {
-        id: 'Tecnopolis 2021 Con Toto',
-        grupoIds: ['tecnopolis2021ConToto']
-    }
 ];

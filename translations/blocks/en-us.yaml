@@ -113,6 +113,29 @@ simpleRepetitionEnd: times
 conditionalRepetition: Repeat until
 simpleAlternative: If
 completeAlternative: else
+wakeUpFirefly: Wake up firefly
+watchButterfly: Watch butterfly
+unlockCellphone: Unlock cell phone
+pickCharger: Pick charger
+chargeCellphone: Charge cell phone
+telescopeHere: Is there a telescope here?
+planetHere: Is there a planet here?
+canHere: Is there a can here?
+paperHere: Is there a paper here ?
+butterflyHere: Is there a butterfly here?
+cellphoneHere: Is there a cell phone here?
+fireflyHere: Is there a firefly here?
+ballHere: Is there a ball here?
+paddleHere: Is there a paddle here?
+pickTrophy: Pick trophy
+usePaddle: Use paddle
+watchStar: Watch star
+watchPlanet: Watch planet
+repairTelescope: Repair telescope
+pickCan: Pick can
+pickPaper: Pick paper
+holdPaper: Hold paper
+fillBin: Fill bin
 categories:
   primitives: Primitives
   myProcedures: My procedures

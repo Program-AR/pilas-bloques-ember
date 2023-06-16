@@ -46,15 +46,6 @@ simpleReadToggle:
 nightModeToggle:
   lightTheme: Activar modo claro
   darkTheme: Activar modo oscuro
-registerDisclaimer:
-  now: ¡ Ahora Pilas Bloques permite
-  register: registrarse
-  optional: 'Hacerlo es <b>completamente opcional</b>, nos ayuda para poder mejorar Pilas Bloques y te permite suspender tu trabajo y retomarlo desde donde lo habías dejado.'
-programarDisclaimer:
-  entered: ¿ Entraste a
-  programar: Program.AR en casa
-  in: En
-  find: 'encontrarás mucho material, muchas herramientas y una explicación de cómo usar Pilas Bloques'
 challengeLink:
   soon: Muy pronto
 challengeWorkspaceButtons:

@@ -2,6 +2,7 @@
     "src": "binaries/pilasbloques-linux-x64/",
     "dest": "binaries/",
     "icon": "packaging/icono.ico",
+    "compression": "xz",
     "categories": [
         "Development",
         "Education"
