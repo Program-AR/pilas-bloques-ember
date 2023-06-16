@@ -23,6 +23,14 @@ export const libros = [
     expectations: {
       decomposition: true
     }
-
+  },
+  { id: 400,
+    capituloIds:['capiTemporal'],
+    imagen: 'nuevos_personajes.png',
+    modoLecturaSimple: false,
+    expectations: {
+      decomposition: true
+    },
+    oculto: true
   }
 ];

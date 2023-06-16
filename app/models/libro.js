@@ -3,6 +3,7 @@ import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 import { computed } from '@ember/object';
 import Ember from 'ember';
+import ENV from 'pilasbloques/config/environment'
 
 export default Model.extend({
   intl: Ember.inject.service(),
@@ -20,4 +21,8 @@ export default Model.extend({
   oculto: attr('boolean'),
   capitulos: hasMany('capitulo'),
   expectations: attr(),
+
+  hide: computed('oculto', function (){
+    return this.oculto && ENV.environment === 'production'
+  })
 });
