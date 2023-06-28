@@ -2777,7 +2777,7 @@ export const desafios = [
     [P,P,P,P,P,P],\
     [P,-,-,-,-,-],\
     [A&P,P,P,P,P,P],\")`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
   },
   {
     id: 'nuevo9',
@@ -2845,7 +2845,7 @@ export const desafios = [
         [*>L?],\
         [*>L?],\
         [-],\",
-        { coleccion: ["L"] })`,
+        { coleccion: ["L"] }, [0,6])`,
     bloques: ['DespertarLuciernaga', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
   },
   {
