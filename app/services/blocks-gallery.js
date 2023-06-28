@@ -1110,12 +1110,12 @@ export default Service.extend({
 
   _definirBloquesSensores() {
 
-    this.crearBloqueSensor('TocandoPulpito', 'ballHere', {
+    this.crearBloqueSensor('TocandoPulpito', 'pulpitoBallHere', {
       icono: 'icono.pelota-pulpo.png',
       funcionSensor: 'tocando("Pulpito")',
     });
 
-    this.crearBloqueSensor('TocandoPingPong', 'ballHere', {
+    this.crearBloqueSensor('TocandoPingPong', 'pingPongBallHere', {
       icono: 'icono.pelota-pingpong.png',
       funcionSensor: 'tocando("PingPong")',
     });
@@ -1126,7 +1126,7 @@ export default Service.extend({
       funcionSensor: 'tocando("Paleta")',
     });
 
-    this.crearBloqueSensor('TocandoPelotaChuy', 'ballHere', {
+    this.crearBloqueSensor('TocandoPelotaChuy', 'footBallHere', {
       icono: 'icono.pelota.png',
       funcionSensor: 'tocando("PelotaAnimada")',
     });
