@@ -658,8 +658,8 @@ model:
     'nuevo4':
       title: Mañic en el cielo
       description: |
-        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
-      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
+        Mañic está fascinado con el cielo, le encanta observarlo. Sus astros preferidos son las estrellas. Ayudalo a observarlas a todas. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
+      clue: 'Hay muchas formas de observar estrellas: podés empezar por las de la derecha o podés empezar por arriba... ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
     'nuevo5':
       title: Yvoty despierta las luciérnagas
       description: |
@@ -776,8 +776,8 @@ model:
     'nuevo46':
       title: Nuevos comandos
       description: |
-        Ahora Capy necesita recoger dos latas a su derecha, luego dos más abajo, y una al final.
-      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
+        Los inseparables Capy y Guayrá necesitan limpiar su estero. Para eso se propusieron recoger primero las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. ¿Los ayudás con esta tarea y así cuidar su humedal?
+      clue: ¿Viste los **procedimientos**? Combinando primitivas podés **crear nuevos comandos** para luego usarlos **cuantas veces quieras.**
     'nuevo131':
       title: Reciclando papeles
       description: |
