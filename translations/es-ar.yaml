@@ -674,22 +674,22 @@ model:
       title: La Reparadora de Telescopios
       description: |
         Mañic mantiene sus elementos de astronomía en excelente estado. Ahora mismo necesita reparar todos los telescopios y dejarlos listos para la próxima observación. Cuenta con vos para hacerlo.
-      clue: Si hacés un procedimiento que recorra y repare una fila de telescopios luego podrías replicar eso en cada fila, ¿Te parece una buena estrategia?. 
+      clue: Si hacés un procedimiento que recorra y repare una fila de telescopios luego podrías replicar eso en cada fila, ¿No te parece una buena estrategia?. 
     'nuevo8':
       title: Mañic y los planetas
       description: |
-        Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
-      clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+        Es una noche límpida, ideal para que Mañic pueda observar todos los planetas de la cuadrícula. Acompañala recorriendo todos y observándolos con el telescopio.
+      clue: Ayudaría mucho que puedas encontrar una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     'nuevo9':
       title: Cargando los celus
       description: |
-        Yvoty debe cargar con el cargador a los 7 celus que hay en esta escena. Buscá primero el cargador y luego pasá por cada celular cargandolo. Pista: ¿Cuántas partes debería tener tu estrategia?
-      clue: ''
+        Yvoty se comprometió a cargar siete celus de sus amigxs pero cuenta solo con un cargador. Programá una solución que haga que vaya primero a buscar el cargador y luego pase por cada uno de los celulares para poder cargarlos.
+      clue: 'Fijate bien en cuántas partes te conviene dividir tu estrategia...'
     'nuevo10':
       title: Instalando juegos
       description: |
-        Yvoty tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
-      clue: ''
+        Hoy hay noche gamer y por eso Yvoty tiene que instalar un juego en 3 compus para ella sus amigos. Para instalarlo hay que: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. 
+      clue: 'Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo...'
     'nuevo16':
       title: Tres telescopios
       description: |
