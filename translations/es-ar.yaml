@@ -658,12 +658,12 @@ model:
     'nuevo4':
       title: Mañic en el cielo
       description: |
-        Mañic está fascinada con el cielo, le encanta observarlo. Sus astros preferidos son las estrellas. Ayudala a observarlas a todas. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
+        La ñandú Mañic está fascinada con el cielo, le encanta observarlo. Sus astros preferidos son las estrellas. Ayudala a observarlas a todas con su mirada científica. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
       clue: 'Hay muchas formas de observar las estrellas: podés empezar por las de la derecha... o podés arrancar por arriba... ¿Se te ocurre otra estrategia? Pensala siempre **antes** de programar!'
     'nuevo5':
       title: Yvoty despierta a las luciérnagas
       description: |
-        Yvoty se propuso, cada mañana, despertar a sus amigas las luciérnagas. Son tantas que necesita una manera eficiente de visitarlas y despertarlas una por una. 
+        La yaguareté Yvoty se propuso, cada mañana, despertar a sus amigas las luciérnagas. Son tantas que necesita una manera eficiente de visitarlas y despertarlas una por una. 
       clue: Mirá las diagonales que forman las luciérnagas... ¿Ves algo en común? ¿En qué te ayudaría un procedimiento?. Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
     'nuevo6':
       title: Chuy, campeone desordenade 
