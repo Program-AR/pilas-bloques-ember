@@ -683,13 +683,23 @@ model:
     'nuevo9':
       title: Cargando los celus
       description: |
-        Yvoty se comprometió a cargar siete celus de sus amigxs pero cuenta solo con un cargador. Programá una solución que haga que vaya primero a buscar el cargador y luego pase por cada uno de los celulares para poder cargarlos.
+        Yvoty se comprometió a cargar siete celus de sus amigues pero cuenta solo con un cargador. Programá una solución que haga que vaya primero a buscar el cargador y luego pase por cada uno de los celulares para poder cargarlos.
       clue: 'Fijate bien en cuántas partes te conviene dividir tu estrategia...'
     'nuevo10':
       title: Instalando juegos
       description: |
         Hoy hay noche gamer y por eso Yvoty tiene que instalar un juego en 3 compus para ella sus amigos. Para instalarlo hay que: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. 
       clue: 'Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo...'
+    'nuevo13':
+      title: Chuy y la pelota indecisa
+      description: |
+        Chuy quedó emocionade del Mundial de fútbol y quiere emular a sus héroes practicando tiros libres. Pero la pelota posee magia extra y a veces decide desaparecer. Hacé que Chuy pueda patear la pelota según ésta aparezca o no en la casilla de la derecha.  
+      clue: 'Antes que nada, apretá varias veces el botón **Ejecutar** y fijate cómo cambia el escenario. Para patear la pelota, Chuy debe estar en la misma casilla que aquella.'
+    'nuevo14':
+      title: ¿Pelota o paleta?
+      description: |
+        Sabemos que Chuy gusta de todos los deportes, pero esto ya es demasiado! :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
+      clue: 'Las opciones posible son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
     'nuevo16':
       title: Tres telescopios
       description: |
@@ -780,7 +790,7 @@ model:
     'nuevo46':
       title: Nuevos comandos
       description: |
-        Los inseparables Capy y Guayrá necesitan limpiar su estero. Para eso se propusieron recoger primero las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. ¿Los ayudás con esta tarea y así cuidar su humedal?
+        Los inseparables Capy y Guyrá necesitan limpiar su estero. Para eso se propusieron recoger primero las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. ¿Los ayudás con esta tarea y así cuidar su humedal?
       clue: ¿Viste los **procedimientos**? Combinando primitivas podés **crear nuevos comandos** para luego usarlos **cuantas veces quieras.**
     'nuevo131':
       title: Reciclando papeles
