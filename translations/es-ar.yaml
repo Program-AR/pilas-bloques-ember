@@ -743,18 +743,19 @@ model:
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
     'nuevo38':
       title: Las estrellas de Mañic
-      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
-      clue: ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cosa cambia en cada uno de ellos?
+      description: |
+        La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.  
+      clue: ¿Cuántos caminos posibles existen para llegar a la estrella?. ¿Qué cambia en cada uno de ellos?
     'nuevo39':
       title: La estrella más bella
       description: |
-        Mañic encontró la ubicación de otra hermosa estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
+        Mañic encontró la ubicación de una hermosa estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
       clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (Las estrellas de Mañic)? 
     'nuevo40':
       title: |
         Hilera de latas
       description: |
-        “Nada mejor que despertar por la mañana y salir a dejar el mundo más limpio”, le comenta Capy a Guyrá. Ayudalos a recoger todas las latas que encuentren a su paso. No te olvides de descargar la solución ya que la vas a necesitar en otro desafío.
+        “Nada mejor que salir cada mañana a dejar el mundo más limpio”, le comenta Capy a Guyrá. Ayudalos a recoger todas las latas que encuentren a su paso. No te olvides de descargar la solución ya que la vas a necesitar en otro desafío.
       clue: ¿Cómo pueden saber si hay una hilera de latas? ¿Qué deberían hacer si no hay ninguna lata?
     'nuevo41':
       title: |
