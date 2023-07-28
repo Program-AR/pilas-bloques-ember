@@ -700,6 +700,11 @@ model:
       description: |
         Sabemos que Chuy gusta de todos los deportes, pero esto ya es demasiado! :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
       clue: 'Las opciones posible son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
+    'nuevo15':
+      title: Chuy juega por toda la cancha
+      description: |
+        A Chuy le encanta involucrarse en todas las jugadas de sus equipos, participando tanto si están armando un movimiento en horizontal o en vertical. 
+      clue: 'Las opciones posible son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
     'nuevo16':
       title: Tres telescopios
       description: |
