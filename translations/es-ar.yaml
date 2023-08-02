@@ -668,7 +668,7 @@ model:
     'nuevo5':
       title: Yvoty despierta a las luciérnagas
       description: |
-        La yaguareté Yvoty se propuso, cada mañana, despertar a sus amigas las luciérnagas. Son tantas que necesita una manera eficiente de visitarlas y despertarlas una por una. 
+        Para sacar buenas fotos se necesita una excelente luz natural. Ivoty cuenta con sus amigas las luciérnagas, que le iluminan cualquier escenario... siempre y cuando estén despiertas!. Proponé una solución para que nuestra amiga pueda ir y despertar a todas las luciérnagas, una por una. 
       clue: Mirá las diagonales que forman las luciérnagas... ¿Ves algo en común? ¿En qué te ayudaría un procedimiento?. Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
     'nuevo6':
       title: Chuy, campeone desordenade 
@@ -705,47 +705,26 @@ model:
       description: |
         Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez! :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
       clue: 'Las opciones posible son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
-    'nuevo38':
-      title: Las estrellas de Mañic
-      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
-      clue: ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cosa cambia en cada uno de ellos?
-    'nuevo39':
-      title: La estrella más bella
-      description: |
-        Mañic encontró la ubicación de otra hermosa estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
-      clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (Las estrellas de Mañic)? 
-    'nuevo40':
-      title: |
-        Hilera de latas
-      description: |
-        “Nada mejor que despertar por la mañana y salir a dejar el mundo más limpio”, le comenta Capy a Guyrá. Ayudalos a recoger todas las latas que encuentren a su paso. No te olvides de descargar la solución ya que la vas a necesitar en otro desafío.
-      clue: ¿Cómo pueden saber si hay una hilera de latas? ¿Qué deberían hacer si no hay ninguna lata?
-    'nuevo41':
-      title: |
-        Turistas latosos
-      description: |
-        Increíblmente, la cantidad de latas desechadas por les turistas aumenta constantemente. Capy y Guyrá tienen cada día más trabajo para mantener su hábitat en condiciones. Dales una mano concientizando sobre este daño y además acompañándolos en la tarea de limpieza.
-      clue: ¿Hay alguna tarea que nuestros amigos tengan que realizar repetitivamente? ¿Te puede ayudar la solución del desafío anterior (Hilera de latas)?
     'nuevo15':
       title: |
         Chuy, jugadore de toda la cancha
       description: |
         Ya sabés que Chuy no se quiere perder ni una jugada. Siempre participa del juego, no importa si su equipo esté yendo hacia adelante o trabajando en línea. Acompañale haciendo que se mueva para la derecha o para abajo según se presente la posibilidad. 
       clue: Cada vez que aprietes el botón **Ejecutar** se generará una nueva jugada que puede ser para la derecha o para abajo. Tiene que haber alguna manera de que Chuy pueda **sensar** si la jugada es de un tipo o de otra... 
+    'nuevo16':
+      title: Alineando telescopios
+      description: |
+        Para observar bien las estrellas, los telescopios de Mañic deben estar bien alineados con los astros. No es tarea fácil porque cada vez se ubican en diferentes lugares y también varía la cantidad de telescopios. Acompañá a nuestra científica amiga en la tarea de alinear los telescopios que encuentre en su camino.
+      clue: 'Fijate primero cómo hacer un procedimiento para **alinear telescopio si es que lo hay**'
+    'nuevo17':
+      title: Yvoty saca buenas fotos.
+      description: Como buena fotógrafa, Yvoty es cuidadosa de la iluminación en cada paisaje que retrata. Para ello prueba varias combinaciones de luces, modificando la posición y cantidad de luciérnagas en cada toma. Este desafío te propone trabajar con ella de manera de recorrer la hilera y despertar a la luciérnaga que encuentre, para que pueda iluminar el sendero. 
+      clue: '¿Qué es lo que varía y qué es lo que se mantiene constante en cada ejecución?'
     'nuevo18':
       title: Barrilete cósmico
       description: |
         Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Siempre se las ingenia para esquivar y encontrar un camino que le permita continuar su carrera. Programá su recorrido para que llegue a la casilla de abajo a la derecha esquivando los obstáculos que se le presenten. Recordá que en cada ejecución tendrás un escenario distinto.  
       clue: 'Los diferentes caminos posibles... tienen el mismo o distinto largo?'
-    'nuevo16':
-      title: Tres telescopios
-      description: |
-        Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
-      clue: ''
-    'nuevo17':
-      title: Yvoty despierta más luciérnagas
-      description: Yvoty necesita despertar a las luciérnagas para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
-      clue: ''
     'nuevo19':
       title: Súper Yvoty 1
       description: |
@@ -778,6 +757,27 @@ model:
       clue: |
         A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+    'nuevo38':
+      title: Las estrellas de Mañic
+      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
+      clue: ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cosa cambia en cada uno de ellos?
+    'nuevo39':
+      title: La estrella más bella
+      description: |
+        Mañic encontró la ubicación de otra hermosa estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
+      clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (Las estrellas de Mañic)? 
+    'nuevo40':
+      title: |
+        Hilera de latas
+      description: |
+        “Nada mejor que despertar por la mañana y salir a dejar el mundo más limpio”, le comenta Capy a Guyrá. Ayudalos a recoger todas las latas que encuentren a su paso. No te olvides de descargar la solución ya que la vas a necesitar en otro desafío.
+      clue: ¿Cómo pueden saber si hay una hilera de latas? ¿Qué deberían hacer si no hay ninguna lata?
+    'nuevo41':
+      title: |
+        Turistas latosos
+      description: |
+        Increíblmente, la cantidad de latas desechadas por les turistas aumenta constantemente. Capy y Guyrá tienen cada día más trabajo para mantener su hábitat en condiciones. Dales una mano concientizando sobre este daño y además acompañándolos en la tarea de limpieza.
+      clue: ¿Hay alguna tarea que nuestros amigos tengan que realizar repetitivamente? ¿Te puede ayudar la solución del desafío anterior (Hilera de latas)?
     'nuevo42':
       title: |
         A veces latas, a veces papeles
