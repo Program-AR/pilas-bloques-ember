@@ -718,7 +718,7 @@ model:
       clue: 'Fijate primero cómo hacer un procedimiento para **alinear telescopio si es que lo hay**'
     'nuevo17':
       title: Yvoty saca buenas fotos.
-      description: Como buena fotógrafa, Yvoty es cuidadosa de la iluminación en cada paisaje que retrata. Para ello prueba varias combinaciones de luces, modificando la posición y cantidad de luciérnagas en cada toma. Este desafío te propone trabajar con ella de manera de recorrer la hilera y despertar a la luciérnaga que encuentre, para que pueda iluminar el sendero. 
+      description: Como buena fotógrafa, Yvoty es cuidadosa de la iluminación en cada paisaje que retrata. Para ello prueba varias combinaciones de luces, modificando la posición y cantidad de luciérnagas en cada toma. Este desafío te propone trabajar con ella de manera de recorrer la hilera y despertar a la luciérnaga que encuentre, para que pueda iluminar el sendero y sacar las mejores fotos con su celular. 
       clue: '¿Qué es lo que varía y qué es lo que se mantiene constante en cada ejecución?'
     'nuevo18':
       title: Barrilete cósmico
@@ -726,11 +726,10 @@ model:
         Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Siempre se las ingenia para esquivar y encontrar un camino que le permita continuar su carrera. Programá su recorrido para que llegue a la casilla de abajo a la derecha esquivando los obstáculos que se le presenten. Recordá que en cada ejecución tendrás un escenario distinto.  
       clue: 'Los diferentes caminos posibles... tienen el mismo o distinto largo?'
     'nuevo19':
-      title: Súper Yvoty 1
+      title: Super Yvoty 1
       description: |
-        Ayudá a Yvoty a despertar las luciérnagas.
-        ¡Ojo! En todas las celdas hay una luciérnaga, pero no sabés cuántas celdas hay en cada ejecución.
-      clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
+        Nuevamente el desafío es ayudar a Yvoty en su tarea de despertar las luciérnagas para tener una buena iluminación... pero, ¡Ojo!, si bien en todas las celdas hay una luciérnaga no sabés cuántas celdas hay en cada ejecución.
+      clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!.
     'nuevo20':
       title: Súper Yvoty 2
       description: |
