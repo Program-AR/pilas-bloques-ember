@@ -106,16 +106,16 @@ model:
         Ayudá al ratón a salir del laberinto. A diferencia del laberinto anterior, aquí la cantidad de casillas que debe avanzar son muchas. ¿Cuántas? ¿Es siempre la misma? Pista: pensá primero cómo avanzar una sola casilla.
       clue: ''
     '19':
-      title: Súper Tito 1
+      title: Super Tito 1
       description: |
         Ayudá a Tito a encender las luces.
         ¡Ojo! En todas las celdas hay una luz, pero no sabés cuántas celdas hay en cada ejecución.
       clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
     '20':
-      title: Súper Tito 2
+      title: Super Tito 2
       description: |
-        Súper Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Súper Tito 1?
-      clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+        Super Tito debe encender todas las luces, pero a diferencia del desafío anterior, hay celdas sin luz. ¿Podrás utilizar el mismo procedimiento que en Super Tito 1?
+      clue: El bloque **"repetir hasta que"** repite una secuencia de acciones hasta que se cumple una condición. Esto se llama **"repetición condicional"**.
     '21':
       title: Laberinto con queso
       description: |
@@ -728,13 +728,13 @@ model:
     'nuevo19':
       title: Super Yvoty 1
       description: |
-        Nuevamente el desafío es ayudar a Yvoty en su tarea de despertar las luciérnagas para tener una buena iluminación... pero, ¡Ojo!, si bien en todas las celdas hay una luciérnaga no sabés cuántas celdas hay en cada ejecución.
+        Nuevamente el desafío es ayudar a Yvoty en su tarea de despertar las luciérnagas para tener una buena iluminación... pero, ¡ojo!, si bien en todas las celdas hay una luciérnaga no sabés cuántas celdas hay en total en cada ejecución.
       clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!.
     'nuevo20':
-      title: Súper Yvoty 2
+      title: Super Yvoty 2
       description: |
-        Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
-      clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+        En este caso, Yvoty también debe despertar a todas las luciérnagas que encuentre para iluminar bien el paisaje, pero ahora se suma la complicación que aparecen celdas sin luciérnagas. ¿Se podrá utilizar el mismo procedimiento que en "Super Yvoty 1"?
+      clue: El bloque **"repetir hasta que"** repite una secuencia de acciones **hasta que se cumpla una condición**. Esto se llama **"repetición condicional"**.
     'nuevo21':
       title: Laberinto con pelotas
       description: |
