@@ -738,11 +738,13 @@ model:
     'nuevo21':
       title: Laberinto con pelotas
       description: |
-        Laberinto con _pelotas_. **Chuy** debe patear [la pelota con link](https://es.wikipedia.org/wiki/Spheniscus_magellanicus)
-        * item 1
-        * item 2
-        * Pruebo :wink: un emoji.
-      clue: ''
+        Ya vimos a Chuy corriendo con la pelota en la mano por escenarios diversos. Ahora, una nueva alternativa nos espera para resolverla juntes. Además de sortear los obstáculos que se presentan, deberá patear una pelota de goma si es que esta aparece. Como era de esperarse, nunca es la misma cantidad de pelotas y el formato del terreno a sortear también es diferente en cada ejecución. 
+      clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y, luego, si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
+    'nuevo23':
+      title: Fútbol al sur
+      description: |
+        ¿Es el fútbol el deporte favorito de Chuy?. No lo sabemos ciertamente, pero lo que sí es seguro es que nuestre amigue no se pierde un solo partido!. En esta oportunidad debe patear todas las pelotas de fútbol que encuentre **al final de cada fila**. Para ello deberá recorrer cada fila y al llegar a la pelota, patearla para repetir este procedimiento en cada una de ellas. 
+      clue: 'La cantidad de filas es constante, pero la longitud de cada una es variable. Fijate como manejar estos dos datos para recorrer las mismas y llegar a cada una de las pelotas de fútbol. Una buena idea es hacer un procedimiento que resuelva una fila, ¿no te parece?'
     'nuevo24':
       title: Prendiendo las compus
       description: |
