@@ -748,8 +748,8 @@ model:
     'nuevo24':
       title: Prendiendo las compus
       description: |
-        Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
-      clue: ''
+        Nuestra amiga Ivoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender las computadoras de todas las aulas de la escuela de su barrio. La dificultad reside en que las aulas tienen todas distinto tamaño, deberemos programar una manera de recorrer cada aula prendiendo las compus sin importar cuántas haya. 
+      clue: 'Pensá cómo poder prender todo un lado del rectángulo del aula, y luego repertilo en cada tramo'
     'nuevo28':
       title: El planeta de Capy y Guyrá
       description: |
