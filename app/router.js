@@ -26,13 +26,4 @@ Router.map(function () {
   this.route('clear');
 });
 
-Router.reopen({
-  notifyGoogleAnalytics: on("didTransition", function () {
-    if (ga && config.googleAnalyticsEnabled) {
-      let url = this.url;
-      ga('send', 'pageview', { page: url, title: url });
-    }
-  })
-});
-
 export default Router;
