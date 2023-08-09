@@ -1,4 +1,3 @@
-import { on } from '@ember/object/evented';
 import EmberRouter from '@ember/routing/router';
 import config from 'pilasbloques/config/environment';
 
