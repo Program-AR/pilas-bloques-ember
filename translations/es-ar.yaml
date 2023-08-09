@@ -748,7 +748,7 @@ model:
     'nuevo24':
       title: Prendiendo las compus
       description: |
-        Nuestra amiga Ivoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender las computadoras de todas las aulas de la escuela de su barrio. La dificultad reside en que las aulas tienen todas distinto tamaño, deberemos programar una manera de recorrer cada aula prendiendo las compus sin importar cuántas haya. 
+        Nuestra amiga Ivoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender todas las computadoras de la escuela de su barrio. La dificultad reside en que como las aulas tienen todas distinto tamaño, deberemos programar una manera de recorrer cada una prendiendo las compus sin importar cuántas hubiere. 
       clue: 'Pensá cómo poder prender todo un lado del rectángulo del aula, y luego repertilo en cada tramo'
     'nuevo28':
       title: El planeta de Capy y Guyrá
