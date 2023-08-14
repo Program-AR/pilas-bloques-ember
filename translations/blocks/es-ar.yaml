@@ -47,6 +47,8 @@ countBanana: Contar una banana
 countApple: Contar una manzana
 blowUpBallon: Explotar globo
 kickBall: Patear pelota
+kickFootballBall: Patear pelota de fútbol
+bounceRubberBall: Rebotar pelota pulpito
 move1Km: Avanzar 1 Km
 changeLightColor: Cambiar color del foco
 moveNextLight: Pasar al siguiente foco

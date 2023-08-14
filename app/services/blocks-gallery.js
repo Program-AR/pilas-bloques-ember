@@ -334,7 +334,7 @@ export default Service.extend({
       argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una paleta"}',
     });
 
-    this.crearBloqueAccion('PatearPulpito', 'kickBall', {
+    this.crearBloqueAccion('PatearPulpito', 'bounceRubberBall', {
       icono: 'icono.pelota-pulpo.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota"}',
@@ -830,7 +830,7 @@ export default Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('PatearPelotaChuy', 'kickBall', {
+    this.crearBloqueAccion('PatearPelotaChuy', 'kickFootballBall', {
       icono: 'icono.pelota.png',
       comportamiento: 'PatearPelota',
       argumentos: `{
