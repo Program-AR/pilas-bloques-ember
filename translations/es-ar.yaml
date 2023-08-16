@@ -663,17 +663,17 @@ model:
     'nuevo4':
       title: Mañic en el cielo
       description: |
-        La ñandú Mañic está fascinada con el cielo, le encanta observarlo. Sus astros preferidos son las estrellas. Ayudala a observarlas a todas con su mirada científica. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
+        La ñandú Mañic está fascinada con el cielo, le encanta observarlo y estudiarlo. Sus astros preferidos son las estrellas. Ayudala a observarlas a todas con su mirada científica. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
       clue: 'Hay muchas formas de observar las estrellas: podés empezar por las de la derecha... o podés arrancar por arriba... ¿Se te ocurre otra estrategia? Pensala siempre **antes** de programar!'
     'nuevo5':
       title: Yvoty despierta a las luciérnagas
       description: |
-        Para sacar buenas fotos se necesita una excelente luz natural. Ivoty cuenta con sus amigas las luciérnagas, que le iluminan cualquier escenario... siempre y cuando estén despiertas!. Proponé una solución para que nuestra amiga pueda ir y despertar a todas las luciérnagas, una por una. 
-      clue: Mirá las diagonales que forman las luciérnagas... ¿Ves algo en común? ¿En qué te ayudaría un procedimiento?. Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
+        Para sacar buenas fotos se necesita una excelente luz natural. Yvoty cuenta con sus amigas las luciérnagas, que le iluminan cualquier escenario... ¡siempre y cuando estén despiertas!. Proponé una solución para que nuestra amiga pueda ir y despertar a todas las luciérnagas, una por una. 
+      clue: Mirá las diagonales que forman las luciérnagas... ¿Ves algo en común? ¿En qué te ayudaría un procedimiento?. Se puede crear un procedimiento una vez y usarlo **todas las veces que quieras** dentro de un programa.
     'nuevo6':
       title: Chuy, campeone desordenade 
       description: |
-        Nuestre amigue Chuy practica muchos deportes y ha logrado una gran cantidad de victorias, tantas que tiene desparramados sus trofeos por varios lugares. Te pedimos que le ayudes a recogerlos uno por uno.
+        Nuestre amigue Chuy practica muchos deportes y ha logrado una gran cantidad de victorias, tantas son que tiene desparramados sus trofeos por varios lugares. Te pedimos que le ayudes a recogerlos uno por uno.
       clue: ¿Hay tareas repetitivas? ¿Qué bloques te ayudan a resolver estas cuestiones comunes?.
     'nuevo7':
       title: La reparadora de telescopios
@@ -693,7 +693,7 @@ model:
     'nuevo10':
       title: Instalando juegos
       description: |
-        Hoy hay noche gamer!... Yvoty debe instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para jugar. El procedimiento completo de instalación comprende: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. 
+        ¡Hoy hay noche gamer!... Yvoty debe instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para divertirse. El procedimiento completo de instalación comprende: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. 
       clue: 'Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo...'
     'nuevo13':
       title: Chuy y la pelota indecisa
@@ -703,8 +703,8 @@ model:
     'nuevo14':
       title: ¿Pelota o paleta?
       description: |
-        Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez! :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
-      clue: 'Las opciones posible son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
+        Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
+      clue: 'Las opciones posibles son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
     'nuevo15':
       title: |
         Chuy, jugadore de toda la cancha
@@ -723,8 +723,8 @@ model:
     'nuevo18':
       title: Barrilete cósmico
       description: |
-        Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Siempre se las ingenia para esquivar y encontrar un camino que le permita continuar su carrera. Programá su recorrido para que llegue a la casilla de abajo a la derecha esquivando los obstáculos que se le presenten. Recordá que en cada ejecución tendrás un escenario distinto.  
-      clue: 'Los diferentes caminos posibles... tienen el mismo o distinto largo?'
+        Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Siempre se las ingenia para esquivar y encontrar un camino que le permita continuar su carrera. Programá su recorrido para que llegue a la casilla de abajo a la derecha esquivando los obstáculos que se le presenten. Recordá que en cada ejecución te encontrarás con un escenario distinto.  
+      clue: 'Los diferentes caminos posibles... ¿tienen el mismo o distinto largo?'
     'nuevo19':
       title: Super Yvoty 1
       description: |
@@ -739,32 +739,32 @@ model:
       title: Laberinto con pelotas
       description: |
         Ya vimos a Chuy corriendo con la pelota en la mano por escenarios diversos. Ahora, una nueva alternativa nos espera para resolverla juntes. Además de sortear los obstáculos que se presentan, deberá patear una pelota de goma si es que esta aparece. Como era de esperarse, nunca es la misma cantidad de pelotas y el formato del terreno a sortear también es diferente en cada ejecución. 
-      clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y, luego, si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
+      clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
     'nuevo23':
       title: Fútbol al sur
       description: |
-        ¿Es el fútbol el deporte favorito de Chuy?. No lo sabemos ciertamente, pero lo que sí es seguro es que nuestre amigue no se pierde un solo partido!. En esta oportunidad debe patear todas las pelotas de fútbol que encuentre **al final de cada fila**. Para ello deberá recorrer cada fila y al llegar a la pelota, patearla para repetir este procedimiento en cada una de ellas. 
+        ¿Es el fútbol el deporte favorito de Chuy?. No lo sabemos ciertamente, pero lo que sí es seguro es que nuestre amigue no se pierde un solo partido. En esta oportunidad deberá patear todas las pelotas de fútbol que encuentre **al final de cada fila**. Para ello deberá recorrer cada fila y al llegar a la pelota, patearla para repetir este procedimiento en cada una de ellas. 
       clue: 'La cantidad de filas es constante, pero la longitud de cada una es variable. Fijate como manejar estos dos datos para recorrer las mismas y llegar a cada una de las pelotas de fútbol. Una buena idea es hacer un procedimiento que resuelva una fila, ¿no te parece?'
     'nuevo24':
       title: Prendiendo las compus
       description: |
-        Nuestra amiga Ivoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender todas las computadoras de la escuela de su barrio. La dificultad reside en que como las aulas tienen todas distinto tamaño, deberemos programar una manera de recorrer cada una prendiendo las compus sin importar cuántas hubiere. 
+        Nuestra amiga Yvoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender todas las computadoras de la escuela de su barrio. La dificultad reside en que como las aulas tienen todas distinto tamaño, se necesita programar una manera de recorrer cada una prendiendo las compus sin importar cuántas hubiere. 
       clue: 'Pensá cómo poder prender todo un lado del rectángulo del aula, y luego repertilo en cada tramo'
     'nuevo28':
       title: El humedal de Capy y Guyrá
       description: |
-        Nuestros amigos siguen limpiando su estero y necesitan nuevamente tu ayuda para recoger todas las latas. Pero ahora hay una dificultad extra: no se puede bajar, así es que deberás ordenar de cierta manera el trayecto para no dejar ninguna lata ensuciando el humedal. La buena noticia es que las latas están siempre en el mismo lugar.
+        Nuestros amigos siguen limpiando su estero y necesitan nuevamente tu ayuda para recoger todas las latas. Pero ahora se ha presentado una nueva dificultad: no se puede bajar, así es que deberás ordenar de cierta manera el trayecto para no dejar ninguna lata ensuciando el humedal. La buena noticia es que las latas están siempre en el mismo lugar.
       clue: |
         A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría "Recoger latas a la derecha con [cantidad]" y se reemplaza el **parámetro** [cantidad] por 2, 3 o 4 en cada caso.
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
     'nuevo38':
       title: Las estrellas de Mañic
-      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
+      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone en la alineación del telescopio. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
       clue: ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cosa cambia en cada uno de ellos?
     'nuevo39':
-      title: La estrella más bella
+      title: La estrella interesante
       description: |
-        Mañic encontró la ubicación de otra hermosa estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
+        Mañic encontró la ubicación de una interesante estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
       clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (Las estrellas de Mañic)? 
     'nuevo40':
       title: |
