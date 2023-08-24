@@ -703,8 +703,8 @@ model:
     'nuevo14':
       title: ¿Pelota o paleta?
       description: |
-        Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez :smile:. Según aparezca una pelota de fútbol o una de goma, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
-      clue: 'Las opciones posibles son solo dos: **si no** aparece una pelota de fútbol, será una de pelota paleta.'
+        Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez :smile:. Según aparezca una pelota de fútbol o una de ping-pong, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
+      clue: 'Las opciones posibles son solo dos: **si no** aparece una pelota de fútbol, será una de ping-pong.'
     'nuevo15':
       title: |
         Chuy, jugadore de toda la cancha
@@ -782,26 +782,26 @@ model:
       title: |
         A veces latas, a veces papeles
       description: |
-        La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
-      clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
+        Es un día particularmente complejo en el humedal. La cantidad de desechos que dejaron les turistas es tan enorme como triste. Ayudá a Capy y Guyrá a recoger todas las latas y papales que encuentren a su paso.
+      clue: Pensá una estrategia que permita que nuestros amigos recorran una fila y recojan todas las latas y papeles que encuentren. Luego... ¿se podrá hacer lo mismo en las demás filas? 
     'nuevo43':
       title: |
         El pasillo curvo de celus
       description: |
-        ¡Yvoty encontró un pasillo lleno de celus! El único problema es que el pasillo da varias vueltas y los celus justo están ahí… ¿Podrá Yvoty desbloquear todos los celus de este pasillo?
-      clue: Los celus se encuentran justo en las curvas que da el pasillo. Una estrategia para desbloquear los celus en una curva sería una excelente ayuda.
+        Yvoty tiene mucho, mucho trabajo esta mañana. Sus amigues la llamaron porque todos los celus de la selva se bloquearon y necesitan que ella, con su conocimiento, los desbloquee. Guiala para recorrer el intrincado camino selvático y además desbloquear todos los teléfonos de la selva que vaya encontrando. 
+      clue: Como en otros desafíos, buscá los patrones, las cosas que son iguales para resolver ese patrón y luego replicar. Por ejemplo, las curvas del sendero, ¿son iguales entre sí? 
     'nuevo44':
       title: |
         El festín astronómico
       description: |
-        Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
-      clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
+        Mañic está de fiesta. Los astros están más brillantes e interesantes que nunca. La visibilidad es óptima y la noche está para disfrutarla observando este fenómeno que no se da muy seguido. Acompañala en esta observación especial, recorriendo todo el campo y alineando el telescopio con cada astro para que la observación sea perfecta y Mañic pueda estudiar a cada uno.  
+      clue: Una observacion habitual de Mañic es una columna de seis astros alineados. ¿Cuántas columnas tiene el evento astronómico? Si lográs hacer que Mañic observe los astros de una columna y luego replicar esta acción en cada una de ellas... ¡Cuidado con las tranqueras y los obstáculos!
     'nuevo45':
       title: |
-        Observadora de mariposas
+        Fotografiando mariposas
       description: |
-        El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
-      clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+        El nuevo celu de Yvoty tiene una muy buena cámara para fotografiar objetos cercanos. Nada mejor que probarlo sacando fotos a las coloridas mariposas de la selva misionera. Las mariposas aparecen por todos lados, a veces más y a veces menos. En cualquier caso, Yvoty deberá ir una por una y sacarle una foto desde muy corta distancia. 
+      clue: Parece haber unos sectores por los que las mariposas no vuelan. Ese dato puede servirte para armar una secuencia de recorrido, ¿no te parece? 
     'nuevo46':
       title: Nuevos comandos
       description: |
