@@ -12,6 +12,7 @@ export default Component.extend({
   deleteDialogIsOpen: false,
   platform: service(),
   intl: service(),
+  storage: service(),
 
   version() {
     return VERSION_DEL_FORMATO_DE_ARCHIVO;
@@ -90,6 +91,12 @@ export default Component.extend({
 
     guardarSolucion() {
       let activityName = this.get("actividad.nombre");
+      if( activityName === undefined ) {
+        const challengeJson = this.storage.getImportedChallenge()
+        if (challengeJson)
+          activityName = challengeJson.titulo
+      }
+
       let fileName = `${activityName}.spbq`;
 
       let contenido = {
