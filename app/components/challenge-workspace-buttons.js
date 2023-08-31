@@ -90,12 +90,7 @@ export default Component.extend({
     },
 
     guardarSolucion() {
-      let activityName = this.get("actividad.nombre");
-      if( activityName === undefined ) {
-        const challengeJson = this.storage.getImportedChallenge()
-        if (challengeJson)
-          activityName = challengeJson.titulo || 'sin titulo'
-      }
+      let activityName = this.get("actividad.nombre") || this.storage.getImportedChallenge()?.titulo || "Sin título"
 
       let fileName = `${activityName}.spbq`;
 
