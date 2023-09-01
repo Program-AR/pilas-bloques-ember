@@ -2776,8 +2776,8 @@ export const desafios = [
     [P,-,-,-,-,-],\
     [P,P,P,P,P,P],\
     [P,-,-,-,-,-],\
-    [A,P,P,P,P,P],\")`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'VolverABordeIzquierdo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
+    [A&P,P,P,P,P,P],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarPlaneta', 'Procedimiento', 'Repetir']
   },
   {
     id: 'nuevo9',
@@ -2810,7 +2810,7 @@ export const desafios = [
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
     escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
-    bloques: ['PatearPelotaChuy', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
+    bloques: ['PatearPelotaChuy', 'RebotarPingPong', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -2838,14 +2838,14 @@ export const desafios = [
     id: 'nuevo17',
     nombre: 'YvotyDespiertaMasLuciernagas',
     escena: `new EscenaYvoty("\
-        [A],\
+        [A&(*>L?)],\
         [*>L?],\
         [*>L?],\
         [*>L?],\
         [*>L?],\
         [*>L?],\
-        [*>L?],\",
-        { coleccion: ["L"] })`,
+        [-],\",
+        { coleccion: ["L"] }, [0,6])`,
     bloques: ['DespertarLuciernaga', 'MoverACasillaAbajo', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoLuciernaga']
   },
   {
@@ -2864,7 +2864,7 @@ export const desafios = [
   {
     id: 'nuevo19',
     nombre: 'SuperYvoty1',
-    escena: `new EscenaYvoty(["[A],[L],[-]","[A],[L],[L],[-]","[A],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[-]", "[A],[L],[L],[L],[L],[L],[-]"])`,
+    escena: `new EscenaYvoty(["[A&L],[L],[-]","[A&L],[L],[L],[-]","[A&L],[L],[L],[L],[-]", "[A&L],[L],[L],[L],[L],[-]", "[A&L],[L],[L],[L],[L],[L],[-]"])`,
     bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
       'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
@@ -2874,7 +2874,7 @@ export const desafios = [
   {
     id: 'nuevo20',
     nombre: 'SuperYvoty2',
-    escena: `new EscenaYvoty(["[A],[#L],[-]","[A],[#L],[#L],[-]","[A],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[-]", "[A],[#L],[#L],[#L],[#L],[#L],[-]"],
+    escena: `new EscenaYvoty(["[A&(#L)],[#L],[-]","[A&(#L)],[#L],[#L],[-]","[A&(#L)],[#L],[#L],[#L],[-]", "[A&(#L)],[#L],[#L],[#L],[#L],[-]", "[A&(#L)],[#L],[#L],[#L],[#L],[#L],[-]"],
       { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
     bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuciernaga', 'DespertarLuciernaga',
       'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
@@ -2886,11 +2886,11 @@ export const desafios = [
     id: 'nuevo21',
     nombre: 'LaberintoConPelotas',
     escena: `new EscenaChuy([
-     '[A,O,O,O,O],[U?,U?,O,O,O],[O,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
-     '[A,O],[U?,-]',
-     '[A,O,O],[U?,O,O],[U?,O,O],[U?,U?,O],[O,U?,U?],[O,O,-]',
-     '[A,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
-     '[A,U?,U?,U?,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,U?,O,O],[O,O,O,O,O,U?,U?,O],[O,O,O,O,O,O,U?,O],[O,O,O,O,O,O,U?,-]'
+     '[A&(U?),O,O,O,O],[U?,U?,O,O,O],[O,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
+     '[A&(U?),O],[U?,-]',
+     '[A&(U?),O,O],[U?,O,O],[U?,O,O],[U?,U?,O],[O,U?,U?],[O,O,-]',
+     '[A&(U?),U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
+     '[A&(U?),U?,U?,U?,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,U?,O,O],[O,O,O,O,O,U?,U?,O],[O,O,O,O,O,O,U?,O],[O,O,O,O,O,O,U?,-]'
     ],{},[-1,0])`,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
@@ -2999,12 +2999,12 @@ export const desafios = [
     id: 'nuevo42',
     nombre: 'AVecesLatasAVecesPapeles',
     escena: `new EscenaCapy("\
-        [A,L|P,L|P,L|P,L|P],\
+        [A,L|P|-,L|P|-,L|P|-,L|P|-],\
         [-,O,O,O,O],\
-        [-,L|P,L|P,L|P,L|P],\
+        [-,L|P|-,L|P|-,L|P|-,L|P|-],\
         [-,O,O,O,O],\
         [-,O,O,O,O],\
-        [-,L|P,L|P,L|P,L|P],\")`,
+        [-,L|P|-,L|P|-,L|P|-,L|P|-],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'RecogerLata', 'RecogerPapel', 'Procedimiento', 'Repetir', 'TocandoLata', 'TocandoPapel', 'Si', 'SiNo'],
     expectations: {
       decomposition: false,
@@ -3061,7 +3061,7 @@ export const desafios = [
           e: ["M", "M"],
           f: ["M", "M"]
       }})`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'nuevo46',
@@ -3112,7 +3112,7 @@ export const desafios = [
     { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'TocandoMariposa', 'ObservarMariposa', 'Numero', 'OpAritmetica'],
+      'TocandoMariposa', 'FotografiarMariposa', 'Numero', 'OpAritmetica'],
   },
    {
     id: 'nuevo134',

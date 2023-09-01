@@ -4,8 +4,6 @@ const nombre = 'YvotyDespiertaMasLuciernagas';
 
 moduloActividad(nombre, () => {
 
-	//TODO: sacar el skip una vez que tenga la misma solución que Tito recargado
-
 	actividadTest(nombre, {
 		solucion: `<?xml version="1.0" encoding="UTF-8"?>
 	<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -42,8 +40,7 @@ moduloActividad(nombre, () => {
 			 </block>
 		  </statement>
 	   </block>
-	</xml>`,
-		skip: true
+	</xml>`
 	});
 
 	actividadTest(nombre, {

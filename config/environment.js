@@ -22,7 +22,6 @@ module.exports = function (environment) {
     rootURL: rootURL,
     locationType: 'hash',
     versionURL: 'https://api.github.com/repos/Program-AR/pilas-bloques/releases/latest',
-    googleAnalyticsEnabled: false,
     linkDeDescarga: 'http://pilasbloques.program.ar/',
     contentSecurityPolicy: { 'style-src': "'self' 'unsafe-inline'" },
     enableChallengeCreator: false,
@@ -89,7 +88,6 @@ module.exports = function (environment) {
   // We use this for staging as well
   if (environment === 'production') {
     ENV.enableChallengeCreator = false
-    ENV.googleAnalyticsEnabled = true
     // The baseURL is replaced in production and staging during deploy
     // However, we need this here because it is used when packaging the app.
     ENV.pbApi.baseURL = 'https://pilasbloques.program.ar/api'

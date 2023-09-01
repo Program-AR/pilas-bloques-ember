@@ -99,7 +99,7 @@ moduloActividad(nombre, () => {
             </value>
             <statement name="block">
               <shadow type="required_statement" id="^Dx\`KpAK\`MbXQ(@eatkT"></shadow>
-              <block type="ObservarMariposa" id="31"></block>
+              <block type="FotografiarMariposa" id="31"></block>
             </statement>
           </block>
         </statement>

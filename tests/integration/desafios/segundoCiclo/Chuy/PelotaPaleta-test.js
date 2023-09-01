@@ -19,7 +19,7 @@ moduloActividad(nombre, () => {
                        <block type="PatearPelotaChuy" id="26" />
                     </statement>
                     <statement name="block2">
-                       <block type="UsarPaleta" id="34" />
+                       <block type="RebotarPingPong" id="34" />
                     </statement>
                  </block>
               </next>

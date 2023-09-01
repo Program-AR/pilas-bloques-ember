@@ -706,6 +706,14 @@ model:
       description: |
         Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+    'nuevo21':
+      title: Laberinto con pelotas
+      description: |
+        Laberinto con _pelotas_. **Chuy** debe patear [la pelota con link](https://es.wikipedia.org/wiki/Spheniscus_magellanicus)
+        * item 1
+        * item 2
+        * Pruebo :wink: un emoji.
+      clue: ''
     'nuevo24':
       title: Prendiendo las compus
       description: |
