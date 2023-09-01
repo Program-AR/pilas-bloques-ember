@@ -328,10 +328,16 @@ export default Service.extend({
       argumentos: '{etiqueta: "Trofeo", "mensajeError": "Acá no hay un trofeo"}',
     });
 
-    this.crearBloqueAccion('UsarPaleta', 'usePaddle', {
+    this.crearBloqueAccion('RecogerPaleta', 'pickPaddle', {
       icono: 'icono.paleta.png',
       comportamiento: 'Recolectar',
-      argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una paleta"}',
+      argumentos: '{etiqueta: "Paleta", "mensajeError": "Acá no hay una paleta"}',
+    });
+
+    this.crearBloqueAccion('RebotarPingPong', 'bouncePingPong', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota de ping pong"}',
     });
 
     this.crearBloqueAccion('PatearPulpito', 'bounceRubberBall', {
@@ -346,7 +352,7 @@ export default Service.extend({
       argumentos: "{'etiqueta':'Luciernaga'}"
     });
 
-    this.crearBloqueAccion('ObservarMariposa', 'watchButterfly', {
+    this.crearBloqueAccion('FotografiarMariposa', 'photographButterfly', {
       icono: 'icono.mariposa.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "Mariposa", nombreAnimacion: "sacarFoto", "mensajeError": "Acá no hay una mariposa"}',
@@ -388,6 +394,12 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('RepararTelescopio', 'repairTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'RepararTelescopio',
+      argumentos: `{ etiqueta: "Telescopio" }`,
+    });
+
+    this.crearBloqueAccion('AlinearTelescopio', 'repairTelescope', {
       icono: 'icono.telescopio.png',
       comportamiento: 'RepararTelescopio',
       argumentos: `{ etiqueta: "Telescopio" }`,
@@ -983,7 +995,7 @@ export default Service.extend({
     this.crearBloqueAccion('PrepararEnsalada', 'prepareSalad', {
       icono: 'icono.ensaladera.png',
       comportamiento: 'PrepararEnsalada',
-      argumentos: `{}`,
+      argumentos: `{etiqueta:"Ensaladera"}`,
     });
 
     // Para los desafíos de escribir y leer letras
@@ -1357,6 +1369,21 @@ export default Service.extend({
     this.crearBloqueSensor('HayTomate', 'tomatoHere', {
       icono: 'icono.tomate.png',
       funcionSensor: 'tocando("Tomate")',
+    });
+
+    this.crearBloqueSensor('HayCargador', 'chargerHere', {
+      icono: 'icono.cargador.png',
+      funcionSensor: 'tocando("Cargador")',
+    });
+
+    this.crearBloqueSensor('HayEnsaladera', 'saladBowlHere', {
+      icono: 'icono.ensaladera.png',
+      funcionSensor: 'tocando("Ensaladera")',
+    });
+
+    this.crearBloqueSensor('HayTrofeo', 'trophyHere', {
+      icono: 'icono.trofeo.png',
+      funcionSensor: 'tocando("Trofeo")',
     });
 
   },

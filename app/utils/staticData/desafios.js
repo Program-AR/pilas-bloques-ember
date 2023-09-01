@@ -2810,7 +2810,7 @@ export const desafios = [
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
     escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
-    bloques: ['PatearPelotaChuy', 'UsarPaleta', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
+    bloques: ['PatearPelotaChuy', 'RebotarPingPong', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
       decomposition: false
@@ -3061,7 +3061,7 @@ export const desafios = [
           e: ["M", "M"],
           f: ["M", "M"]
       }})`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'ObservarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
     id: 'nuevo46',
@@ -3112,7 +3112,7 @@ export const desafios = [
     { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
     bloques: ['ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo',
       'MoverA', 'Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
-      'TocandoMariposa', 'ObservarMariposa', 'Numero', 'OpAritmetica'],
+      'TocandoMariposa', 'FotografiarMariposa', 'Numero', 'OpAritmetica'],
   },
    {
     id: 'nuevo134',

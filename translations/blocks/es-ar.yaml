@@ -116,7 +116,7 @@ conditionalRepetition: Repetir hasta que
 simpleAlternative: Si
 completeAlternative: sino
 wakeUpFirefly: Despertar luciérnaga
-watchButterfly: Observar mariposa
+photographButterfly: Fotografiar mariposa
 unlockCellphone: Desbloquear celular
 pickCharger: Agarrar cargador
 chargeCellphone: Cargar celular
@@ -131,11 +131,13 @@ pulpitoBallHere: ¿Hay una pelota pulpito acá?
 pingPongBallHere: ¿Hay una pelota de ping pong acá?
 footBallHere: ¿Hay una pelota de fútbol acá?
 paddleHere: ¿Hay una paleta acá?
-pickTrophy: Agarrar trofeo
-usePaddle: Usar paleta
+pickTrophy: Recoger trofeo
+pickPaddle: Recoger paleta
+bouncePingPong: Rebotar pelota de ping pong
 watchStar: Observar estrella
 watchPlanet: Observar planeta
 repairTelescope: Reparar telescopio
+alignTelescope: Alinear telescopio
 pickCan: Recoger lata
 pickPaper: Recoger papel
 holdPaper: Sostener papel

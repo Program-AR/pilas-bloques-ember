@@ -116,7 +116,7 @@ conditionalRepetition: Repeat until
 simpleAlternative: If
 completeAlternative: else
 wakeUpFirefly: Wake up firefly
-watchButterfly: Watch butterfly
+photographButterfly: Photograph butterfly
 unlockCellphone: Unlock cell phone
 pickCharger: Pick charger
 chargeCellphone: Charge cell phone
@@ -132,10 +132,12 @@ pingPongBallHere: Is there a ping pong ball here?
 footBallHere: Is there a soccer ball here?
 paddleHere: Is there a paddle here?
 pickTrophy: Pick trophy
-usePaddle: Use paddle
+pickPaddle: Pick paddle
+bouncePingPong: Bounce ping pong ball
 watchStar: Watch star
 watchPlanet: Watch planet
 repairTelescope: Repair telescope
+alignTelescope: Align telescope
 pickCan: Pick can
 pickPaper: Pick paper
 holdPaper: Hold paper
