@@ -328,6 +328,12 @@ export default Service.extend({
       argumentos: '{etiqueta: "Trofeo", "mensajeError": "Acá no hay un trofeo"}',
     });
 
+    this.crearBloqueAccion('RecogerPaleta', 'pickPaddle', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'Recolectar',
+      argumentos: '{etiqueta: "Paleta", "mensajeError": "Acá no hay una paleta"}',
+    });
+
     this.crearBloqueAccion('RebotarPingPong', 'bouncePingPong', {
       icono: 'icono.paleta.png',
       comportamiento: 'Recolectar',
