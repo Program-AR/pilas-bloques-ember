@@ -190,6 +190,10 @@ export function addError(block, message, index) {
   addWarningToBlock(block, '★', message, index, 'red')
 }
 
+export function changeWarningVisibility(visible) {
+  Blockly.getMainWorkspace().getAllBlocks().forEach(b => b.warning && b.warning.setVisible(visible))
+}
+
 function textWasChanged(fieldName, event) {
   return event.element === 'field' && event.name === fieldName && (event.oldValue !== event.newValue)
 }

@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
+import { changeWarningVisibility } from '../utils/blocks';
 
 const VERSION_DEL_FORMATO_DE_ARCHIVO = 2;
 
@@ -10,6 +11,7 @@ export default Component.extend({
   xml: null,
   store: service(),
   deleteDialogIsOpen: false,
+  warningsDisabled: true,
   platform: service(),
   intl: service(),
 
@@ -86,6 +88,11 @@ export default Component.extend({
   actions: {
     abrirSolucion() {
       this.fileInput().click();
+    },
+
+    changeWarningVisibility() {
+      changeWarningVisibility(!this.get('warningsDisabled'))
+      this.set('warningsDisabled', !this.get('warningsDisabled'))
     },
 
     guardarSolucion() {
