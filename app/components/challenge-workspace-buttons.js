@@ -11,7 +11,6 @@ export default Component.extend({
   xml: null,
   store: service(),
   deleteDialogIsOpen: false,
-  warningsDisabled: true,
   platform: service(),
   intl: service(),
 
@@ -85,14 +84,22 @@ export default Component.extend({
     input.value = null;
   },
 
+  changeWarningVisibility(visible) {
+    changeWarningVisibility(visible)
+    this.set('warningsVisible', visible)
+  },
+
   actions: {
     abrirSolucion() {
       this.fileInput().click();
     },
+    
+    enableWarnings() {
+      this.changeWarningVisibility(true)
+    },
 
-    changeWarningVisibility() {
-      changeWarningVisibility(!this.get('warningsDisabled'))
-      this.set('warningsDisabled', !this.get('warningsDisabled'))
+    disableWarnings() {
+      this.changeWarningVisibility(false)
     },
 
     guardarSolucion() {

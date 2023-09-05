@@ -175,19 +175,20 @@ const setWarningBubbleColour = (block, colour) => {
   block.warning.setVisible = (visible) => { boundedSetVisible(visible); if (visible) block.warning.bubble_.setColour(colour) }
 }
 
-const addWarningToBlock = (block, itemChar, message, index, bubbleColour) => {
+const addWarningToBlock = (block, itemChar, message, index, bubbleColour, visible = true) => {
   const text = `${itemChar} ${lineWrap(message)}`
   block.setWarningText(text, index)
   setWarningBubbleColour(block, bubbleColour)
-  block.warning.setVisible(true)
+  block.warning.setVisible(visible)
 }
 
-export function addWarning(block, message, index) {
-  addWarningToBlock(block, '☆', message, index, 'yellow')
+export function addWarning(block, message, index, visible) {
+  addWarningToBlock(block, '☆', message, index, 'yellow', visible)
 }
 
-export function addError(block, message, index) {
-  addWarningToBlock(block, '★', message, index, 'red')
+export function addError(block, message, index, visible) {
+  console.log(visible)
+  addWarningToBlock(block, '★', message, index, 'red', visible)
 }
 
 export function changeWarningVisibility(visible) {
