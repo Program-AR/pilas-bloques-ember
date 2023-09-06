@@ -658,7 +658,7 @@ model:
     'nuevo1':
       title: Capy y Guyrá
       description: |
-        El carpincho Capy y su inseparable amigo Guyrá tienen una forma muy particular de recorrer los esteros: Guyrá está siempre sobre la cabeza de Capy. En esta oportunidad, te toca a vos hacer que Capy pase a buscar a su amigo y lo suba para emprender juntos una nueva aventura.        
+        El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros: Guyrá está siempre sobre la cabeza de Capy. En esta oportunidad, te toca a vos hacer que Capy pase a buscar a su amigo y lo suba para emprender juntos una nueva aventura.        
       clue: 'Fijate bien el orden de las primitivas, qué cosa tenés que hacer primero y qué cosa va después'
     'nuevo4':
       title: Mañic en el cielo
@@ -669,7 +669,7 @@ model:
       title: Yvoty despierta a las luciérnagas
       description: |
         Para sacar buenas fotos se necesita una excelente luz natural. Yvoty cuenta con sus amigas las luciérnagas, que le iluminan cualquier escenario... ¡siempre y cuando estén despiertas!. Proponé una solución para que nuestra amiga pueda ir y despertar a todas las luciérnagas, una por una. 
-      clue: Mirá las diagonales que forman las luciérnagas... ¿Ves algo en común? ¿En qué te ayudaría un procedimiento?. Se puede crear un procedimiento una vez y usarlo **todas las veces que quieras** dentro de un programa.
+      clue: Mirá las diagonales que forman las luciérnagas... ¿Podés identificar un patrón en común? ¿En qué te ayudaría crear un procedimiento?. Se puede definir un procedimiento una vez y usarlo **todas las veces que quieras** dentro de un programa.
     'nuevo6':
       title: Chuy, campeone desordenade 
       description: |
@@ -678,28 +678,28 @@ model:
     'nuevo7':
       title: La reparadora de telescopios
       description: |
-        Mañic mantiene sus elementos de astronomía en excelente estado. Ahora mismo necesita reparar todos los telescopios y dejarlos listos para la próxima observación. Cuenta con vos para que pueda hacerlo de manera eficaz.
-      clue: Si hacés un procedimiento que recorra y repare una fila de telescopios, luego podrías replicar eso en cada fila, ¿No te parece una buena estrategia?. 
+        A Mañic le gusta mantener sus elementos de astronomía en excelente estado, así que se dispone a reparar todos los telescopios y dejarlos listos para la próxima observación. Acompañala a cumplir su objetivo.
+      clue: ¿Sería una buena estrategia crear un procedimiento que recorra y repare una fila de telescopios para luego repetirlo en cada fila?  
     'nuevo8':
       title: Mañic y los planetas
       description: |
-        Es una noche límpida, ideal para que Mañic pueda observar todos los planetas que se ven desde su campo. Acompañala recorriendo todos y observándolos con el telescopio.
+        Es una noche límpida, ideal para observar todos los planetas que se ven desde el campo en el que está Mañic. Ella se prepara para observar uno a uno todos los planetas con su telescopio. Tu desafío es hacer que Mañic pueda alinear y observar cada uno de los astros.  
       clue: Ayudaría mucho que puedas encontrar una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
     'nuevo9':
       title: Cargando los celus
       description: |
-        Yvoty se comprometió a cargar siete celus de sus amigues pero cuenta solo con un cargador. Programá una solución que haga que vaya primero a buscar el cargador y luego pase por cada uno de los celulares para poder cargarlos.
-      clue: 'Fijate bien en cuántas partes te conviene dividir tu estrategia...'
+      Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
+      clue: '¿En cuántas partes te conviene dividir tu estrategia?'
     'nuevo10':
       title: Instalando juegos
       description: |
-        ¡Hoy hay noche gamer!... Yvoty debe instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para divertirse. El procedimiento completo de instalación comprende: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. 
-      clue: 'Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo...'
+        ¡Hoy es noche gamer!... Yvoty va a instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para divertirse. El proceso de instalación es: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Necesita de tu ayuda para completar la instalación en las tres computadoras.  
+      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Para qué sirve tener eso en cuenta?' 
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
-        Chuy quedó emocionade del Mundial de fútbol y quiere emular a sus héroes practicando tiros libres. Pero la pelota posee magia extra y a veces decide desaparecer. Hacé que Chuy pueda patear la pelota según esta aparezca o no en la casilla de la derecha.  
-      clue: 'Antes que nada, apretá varias veces el botón **Ejecutar** y fijate cómo cambia el escenario. Para patear la pelota, Chuy debe estar en la misma casilla que aquella.'
+        Chuy quedó emocionade del Mundial de fútbol femenino y quiere emular a sus heroínas practicando tiros libres, pero su pelota no es una pelota común. A veces decide desaparecer. Hacé que Chuy pueda patear la pelota si esta aparece en la casilla de la derecha.  
+      clue: 'Antes que nada, apretá varias veces el botón **Ejecutar** y fijate cómo cambia el escenario. Para patear, Chuy debe estar en la misma casilla que la pelota.'
     'nuevo14':
       title: ¿Pelota o paleta?
       description: |
