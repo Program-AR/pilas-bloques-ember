@@ -85,7 +85,7 @@
     "broccoli-asset-rev": "^3.0.0",
     "broccoli-funnel": "^2.0.2",
     "broccoli-merge-trees": "^4.2.0",
-    "electron": "17.4.11",
+    "electron": "22.3.21",
     "electron-packager": "15.1.0",
     "electron-rebuild": "2.0.0",
     "ember-ajax": "^5.0.0",
