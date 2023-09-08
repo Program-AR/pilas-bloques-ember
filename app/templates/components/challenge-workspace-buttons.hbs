@@ -2,7 +2,7 @@
     <span class="flex"></span>
     <input type='file' id="cargarActividadInput" accept=".spbq" class="hidden" />
     <a id="placeholder" class="hidden">..</a>
-    <Button id="warnings-button" @tooltip={{if this.warningsVisible (t "components.challengeWorkspaceButtons.warnings.disable") (t "components.challengeWorkspaceButtons.warnings.enable")}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (if this.warningsVisible "disableWarnings" "enableWarnings")}}>{{t "components.challengeWorkspaceButtons.warnings.suggestions"}} {{paper-icon (if this.warningsVisible "speaker_notes_off" "speaker_notes")}}</Button>
+    <Button id="warnings-button" @tooltip={{if this.warningsVisible (t "components.challengeWorkspaceButtons.warnings.disable") (t "components.challengeWorkspaceButtons.warnings.enable")}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (if this.warningsVisible "disableWarnings" "enableWarnings")}}>{{paper-icon (if this.warningsVisible "speaker_notes_off" "speaker_notes")}} {{t "components.challengeWorkspaceButtons.warnings.suggestions"}}</Button>
     <Button @tooltip={{t "components.challengeWorkspaceButtons.open" }} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "abrirSolucion"}}>{{paper-icon "folder"}}</Button>
     <Button @tooltip={{t "components.challengeWorkspaceButtons.save"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action "guardarSolucion"}}>{{paper-icon "save"}}</Button>
     <Button @tooltip={{t "components.challengeWorkspaceButtons.delete"}} @isMini={{true}} @isFab={{true}} @isRaised={{true}} @onClick={{action (mut this.deleteDialogIsOpen) true}}>{{paper-icon "delete"}}</Button>
