@@ -59,8 +59,9 @@ challengeWorkspaceButtons:
   wrongActivity: 'Be careful! The file indicates that it is from another challenge ({activity}). It will be loaded anyways, but it could fail.'
   oldVersion: 'Be careful! The file indicates that it is from an older version. It will be loaded anyways, but we suggest that you solve the challenge again and save the solution in a new file.'
   warnings:
-    disable: 'Disable warnings'
-    enable: 'Enable warnings'
+    disable: 'Disable suggestions'
+    enable: 'Enable suggestions'
+    suggestions: 'Suggestions'
 footer:
   version: 'Version:'
   problem: Any problem with this exercise?
