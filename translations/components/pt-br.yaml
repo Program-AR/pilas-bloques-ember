@@ -58,6 +58,10 @@ challengeWorkspaceButtons:
   notASolution: Este arquivo não tem uma solução da Pilas Blocos.
   wrongActivity: Cuidado! O arquivo indica que é para outra atividade ({activity}). Será carregado de cualquer forma, mas pode falhar.
   oldVersion: Cuidado! O arquivo indica que é de uma versão anterior. Será carregado de qualquer forma, mas sugerimos que resolva novamente o exercício e guarde um novo arquivo.
+  warnings:
+    disable: 'Desativar sugestões'
+    enable: 'Ativar sugestões'
+    suggestions: 'Sugestões'
 footer:
   version: 'Versão:'
   problem: Problemas com este exercício?
