@@ -169,26 +169,47 @@ export function clearValidationsFor(block) {
   block.setWarningText(null)
 }
 
-const setWarningBubbleColour = (block, colour) => {
+const setWarningColour = (block, colour, secondaryColour) => {
   const unBoundedSetVisible = Blockly.Warning.prototype.setVisible
   const boundedSetVisible = unBoundedSetVisible.bind(block.warning)
   block.warning.setVisible = (visible) => { boundedSetVisible(visible); if (visible) block.warning.bubble_.setColour(colour) }
+  drawWarningIcon(block.warning.iconGroup_, colour, secondaryColour)
 }
 
-const addWarningToBlock = (block, itemChar, message, index, bubbleColour, visible = true) => {
+const drawWarningIcon = (group, colour, secondaryColour) => {
+  Blockly.utils.createSvgElement('path',
+      {
+        'd': 'M2,15Q-1,15 0.5,12L6.5,1.7Q8,-1 9.5,1.7L15.5,12Q17,15 14,15z',
+        'fill': colour
+      },
+      group);
+  Blockly.utils.createSvgElement('path',
+      {
+        'd': 'm7,4.8v3.16l0.27,2.27h1.46l0.27,-2.27v-3.16z',
+        'fill': secondaryColour
+      },
+      group);
+  Blockly.utils.createSvgElement('rect',
+      {
+        'fill': secondaryColour,
+        'x': '7', 'y': '11', 'height': '2', 'width': '2'
+      },
+      group);
+};
+
+const addWarningToBlock = (block, itemChar, message, index, colour, secondaryColour, visible = true) => {
   const text = `${itemChar} ${lineWrap(message)}`
   block.setWarningText(text, index)
-  setWarningBubbleColour(block, bubbleColour)
+  setWarningColour(block, colour, secondaryColour)
   block.warning.setVisible(visible)
 }
 
 export function addWarning(block, message, index, visible) {
-  addWarningToBlock(block, '☆', message, index, 'yellow', visible)
+  addWarningToBlock(block, '☆', message, index, 'yellow', 'black', visible)
 }
 
 export function addError(block, message, index, visible) {
-  console.log(visible)
-  addWarningToBlock(block, '★', message, index, 'red', visible)
+  addWarningToBlock(block, '★', message, index, 'red', 'white', visible)
 }
 
 export function changeWarningVisibility(visible) {
