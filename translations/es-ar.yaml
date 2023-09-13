@@ -688,8 +688,8 @@ model:
     'nuevo9':
       title: Cargando los celus
       description: |
-      Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
-      clue: '¿En cuántas partes te conviene dividir tu estrategia?'
+        Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
+      clue: ¿En cuántas partes te conviene dividir tu estrategia?
     'nuevo10':
       title: Instalando juegos
       description: |
@@ -820,6 +820,10 @@ model:
       title: Mariposas encuadradas
       description: Yvoty quiere fotografiar todas las mariposas que encuentre en su recorrido habitual por la selva. Tené en cuenta que en cada ejecución las mariposas aparecen en lugares distintos. 
       clue: 'Dos datos importantes: las mariposas nunca se posan en las casillas de la esquina y el sendero que recorre Yvoty siempre es el mismo'
+    'nuevo134':
+      title: Trofeos y más trofeos
+      description: La colección de trofeos de Chuy crece día a día. Acompañale a recogerlos. Tené en cuenta que la posición de los mismos no cambia y que tanto las direcciones como la cantidad de trofeos podrían ser parámetros...  
+      clue: Una característica muy útil es que podés combinar parámetros numéricos (cantidades, medidas) con parámetros de texto (direcciones, nombres). ¡Aprovechala! 
   groups:
     AlienTocaBoton:
       title: ''
