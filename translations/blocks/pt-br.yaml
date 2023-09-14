@@ -115,6 +115,36 @@ simpleRepetitionEnd: vezes
 conditionalRepetition: Repetir até que
 simpleAlternative: Si
 completeAlternative: senão
+wakeUpFirefly: Acordar vaga-lume
+photographButterfly: Fotografar borboleta
+unlockCellphone: Desbloquear celular
+pickCharger: Pegar cargador
+chargeCellphone: Carregar celular
+telescopeHere: Há um telescópio aqui?
+planetHere: Há um planeta aqui?
+canHere: Há uma lata aqui?
+paperHere: Há um papel aqui?
+butterflyHere: Há uma borboleta aqui?
+cellphoneHere: Há um celular aqui?
+fireflyHere: Há uma vaga-lume aqui?
+pulpitoBallHere: Há uma bola pulpito aqui?
+pingPongBallHere: Há uma bola de pingue-pongue aqui?
+footBallHere: Há uma bola de futebol aqui?
+paddleHere: Há uma paleta aqui?
+pickTrophy: Pegar trofeo
+pickPaddle: Pegar paleta
+bouncePingPong: Rebotar bola de pingue-pongue
+watchStar: Perceber estrela
+watchPlanet: Perceber planeta
+repairTelescope: Consertar telescópio
+alignTelescope: Alinhar telescópio
+pickCan: Pegar lata
+pickPaper: Pegar papel
+holdPaper: Segurar papel
+fillBin: Encher taco
+chargerHere: Há um cargador aqui?
+trophyHere: Há um trofeo aqui?
+saladBowlHere: Há uma tigela de salada aqui?
 categories:
   primitives: Primitivas
   myProcedures: Meus procedimentos
@@ -158,3 +188,4 @@ errors:
   nonAvailableBlock: Este bloco não está disponível nesta atividade.
   wrongParameter: Este bloco não pode ser usado aqui. É um parâmetro que só pode ser usado no procedimento "{procedure}"
   deletedParameter: Este bloco já não pode ser usado, o parâmetro foi eliminado.
+  missingTextInput: Você tem que escolher uma letra!
