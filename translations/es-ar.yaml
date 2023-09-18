@@ -658,168 +658,170 @@ model:
     'nuevo1':
       title: Capy y Guyrá
       description: |
-        El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros: Guyrá está siempre sobre la cabeza de Capy. En esta oportunidad, te toca a vos hacer que Capy pase a buscar a su amigo y lo suba para emprender juntos una nueva aventura.        
-      clue: 'Fijate bien el orden de las primitivas, qué cosa tenés que hacer primero y qué cosa va después'
+        El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
+      clue: 'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.'
     'nuevo4':
       title: Mañic en el cielo
       description: |
-        La ñandú Mañic está fascinada con el cielo, le encanta observarlo y estudiarlo. Sus astros preferidos son las estrellas. Ayudala a observarlas a todas con su mirada científica. Una buena estrategia puede ser crear un procedimiento para cada bloque de estrellas.
-      clue: 'Hay muchas formas de observar las estrellas: podés empezar por las de la derecha... o podés arrancar por arriba... ¿Se te ocurre otra estrategia? Pensala siempre **antes** de programar!'
+        La ñandú Mañic está fascinada con el cielo, le encanta observarlo y estudiarlo. Sus astros preferidos son las estrellas y hay muchas formas de observarlas. Ayudala a observar todas las estrellas con su telescopio.
+      clue: 'Una estrategia puede ser empezar por las estrellas de la derecha... o podés arrancar por las de arriba... ¿Se te ocurre otra estrategia? Pensala siempre **antes** de programar!'
     'nuevo5':
       title: Yvoty despierta a las luciérnagas
       description: |
-        Para sacar buenas fotos se necesita una excelente luz natural. Yvoty cuenta con sus amigas las luciérnagas, que le iluminan cualquier escenario... ¡siempre y cuando estén despiertas!. Proponé una solución para que nuestra amiga pueda ir y despertar a todas las luciérnagas, una por una. 
-      clue: Mirá las diagonales que forman las luciérnagas... ¿Podés identificar un patrón en común? ¿En qué te ayudaría crear un procedimiento?. Se puede definir un procedimiento una vez y usarlo **todas las veces que quieras** dentro de un programa.
+        Para sacar buenas fotos se necesita buena luz. La yaguareté Yvoty cuenta con las luciérnagas, que iluminan cualquier escenario... ¡siempre y cuando estén despiertas! Ayudá a Yvoty a despertar a todas las luciérnagas. 
+      clue: Mirá las diagonales que forman las luciérnagas... ¿Podés identificar un patrón en común? ¿Podría ayudarte crear un procedimiento? Los procedimientos se crean una vez y se pueden usar **todas las veces que quieras** dentro de un programa.
     'nuevo6':
       title: Chuy, campeone desordenade 
       description: |
-        Nuestre amigue Chuy practica muchos deportes y ha logrado una gran cantidad de victorias, tantas son que tiene desparramados sus trofeos por varios lugares. Te pedimos que le ayudes a recogerlos uno por uno.
-      clue: ¿Hay tareas repetitivas? ¿Qué bloques te ayudan a resolver estas cuestiones comunes?.
+        Le pingüine Chuy es fan de todos los deportes y ha logrado una gran cantidad de victorias, tantas son que tiene desparramados sus trofeos por varios lugares. Ayudá a Chuy a recoger todos los trofeos.
+      clue: Pensá en cómo resolverás el problema. Identificá si hay tareas repetitivas. ¿Qué bloques te podrían ayudar a resolver estas tareas?
     'nuevo7':
       title: La reparadora de telescopios
       description: |
-        A Mañic le gusta mantener sus elementos de astronomía en excelente estado, así que se dispone a reparar todos los telescopios y dejarlos listos para la próxima observación. Acompañala a cumplir su objetivo.
-      clue: ¿Sería una buena estrategia crear un procedimiento que recorra y repare una fila de telescopios para luego repetirlo en cada fila?  
+        A Mañic le gusta mantener sus elementos de astronomía en excelente estado, así que se dispone a reparar los telescopios y dejarlos listos para la próxima observación. Ayudala a reparar todos los telescopios.
+      clue: ¿Sería una buena estrategia crear un procedimiento que recorra y repare una fila de telescopios, luego repetirlo en cada fila?   
     'nuevo8':
       title: Mañic y los planetas
       description: |
-        Es una noche límpida, ideal para observar todos los planetas que se ven desde el campo en el que está Mañic. Ella se prepara para observar uno a uno todos los planetas con su telescopio. Tu desafío es hacer que Mañic pueda alinear y observar cada uno de los astros.  
-      clue: Ayudaría mucho que puedas encontrar una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
+        Es una noche sin nubes, ideal para observar todos los planetas que se ven desde el campo en el que está Mañic. Ayudala a observar todos los planetas con su telescopio.   
+      clue: ¿Sería posible crear una estrategia que te permita **reutilizar** un mismo procedimiento varias veces?
     'nuevo9':
       title: Cargando los celus
       description: |
-        Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
+        Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador, y luego ir a cargar cada uno de los celulares. ¿Cómo podrías ayudarla?
       clue: ¿En cuántas partes te conviene dividir tu estrategia?
     'nuevo10':
       title: Instalando juegos
       description: |
-        ¡Hoy es noche gamer!... Yvoty va a instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para divertirse. El proceso de instalación es: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Necesita de tu ayuda para completar la instalación en las tres computadoras.  
-      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Para qué sirve tener eso en cuenta?' 
+        Yvoty va a instalar un juego en tres computadoras para que ella y sus amigas tengan todo listo para divertirse esta noche. Los pasos para instalarlo son: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Ayudala a completar la instalación de las tres compus.  
+      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?' 
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
-        Chuy quedó emocionade del Mundial de fútbol femenino y quiere emular a sus heroínas practicando tiros libres, pero su pelota no es una pelota común. A veces decide desaparecer. Hacé que Chuy pueda patear la pelota si esta aparece en la casilla de la derecha.  
-      clue: 'Antes que nada, apretá varias veces el botón **Ejecutar** y fijate cómo cambia el escenario. Para patear, Chuy debe estar en la misma casilla que la pelota.'
+        Chuy quedó emocionade con el campeonato de fútbol femenino y quiere imitar a sus heroínas practicando tiros libres con su pelota. Para eso, debe correr hacia ella y patearla **sólo si hay una pelota**. Si no, no hace nada. Ayudá a Chuy a hacer sus tiros libres, pateando todas las pelotas.  
+      clue: 'Antes que nada, apretá varias veces el botón **Ejecutar** y fijate cómo cambia el escenario. Para patear, Chuy y la pelota deben estar en la misma casilla.'
     'nuevo14':
       title: ¿Pelota o paleta?
       description: |
-        Sabemos que Chuy gusta de todos los deportes, nunca son demasiados para jugarlos a la vez :smile:. Según aparezca una pelota de fútbol o una de ping-pong, Chuy deberá patearla o tomar la paleta y darle con fuerza. ¡Adelante con la programación que los Juegos Olímpicos no esperan!   
-      clue: 'Las opciones posibles son solo dos: **si no** aparece una pelota de fútbol, será una de ping-pong.'
+        Sabemos que a Chuy le gustan todos los deportes, nunca son demasiados y se dispone a jugar varios a la vez :smile:. Según aparezca una pelota de fútbol o una de ping-pong, Chuy deberá patearla o rebotarla en la paleta. Ayudá a Chuy a practicar estos deportes.   
+      clue: 'Cuando sólo hay 2 opciones (en este caso puede haber una pelota de fútbol o una pelota de ping pong), alcanza con hacer una sola pregunta. Para estas situaciones se puede usar el bloque `Si… si no`.'
     'nuevo15':
       title: |
         Chuy, jugadore de toda la cancha
       description: |
-        Ya sabés que Chuy no se quiere perder ni una jugada. Siempre participa del juego, no importa si su equipo esté yendo hacia adelante o trabajando en línea. Acompañale haciendo que se mueva para la derecha o para abajo según se presente la posibilidad. 
-      clue: Cada vez que aprietes el botón **Ejecutar** se generará una nueva jugada que puede ser para la derecha o para abajo. Tiene que haber alguna manera de que Chuy pueda **sensar** si la jugada es de un tipo o de otra... 
+        ¡Chuy no se quiere perder ninguna jugada! Esta vez está practicando sus movimientos rápidos hacia abajo y hacia la derecha, según se presente la posibilidad. ¡Ayudale a practicar! 
+      clue: Hay que encontrar una manera de que Chuy pueda **sensar** si debe moverse hacia la derecha o hacia abajo ya que el escenario no siempre es el mismo. 
     'nuevo16':
       title: Alineando telescopios
       description: |
-        Para observar bien las estrellas, los telescopios de Mañic deben estar bien alineados con los astros. No es tarea fácil porque cada vez se ubican en diferentes lugares y también varía la cantidad de telescopios. Acompañá a nuestra científica amiga en la tarea de alinear los telescopios que encuentre en su camino.
-      clue: 'Fijate primero cómo hacer un procedimiento para **alinear telescopio si es que lo hay**'
+        Para observar correctamente a las estrellas, los telescopios de Mañic deben estar bien alineados con los astros. Ayudá a nuestra científica amiga a alinear los telescopios que encuentre en su camino.
+      clue: 'Fijate primero cómo hacer un procedimiento para **alinear telescopio si es que lo hay**.'
     'nuevo17':
-      title: Yvoty saca buenas fotos.
-      description: Como buena fotógrafa, Yvoty es cuidadosa de la iluminación en cada paisaje que retrata. Para ello prueba varias combinaciones de luces, modificando la posición y cantidad de luciérnagas en cada toma. Este desafío te propone trabajar con ella de manera de recorrer la hilera y despertar a la luciérnaga que encuentre, para que pueda iluminar el sendero y sacar las mejores fotos con su celular. 
+      title: Yvoty saca buenas fotos
+      description: Como fotógrafa, Yvoty es cuidadosa de la iluminación en cada paisaje que retrata. Para ello, en cada toma, prueba varias combinaciones de luces con la ayuda de las luciérnagas. ¿Cómo podría Yvoty despertar a todas las luciérnagas teniendo en cuenta que cambian de lugar? ¡Ayudala! 
       clue: '¿Qué es lo que varía y qué es lo que se mantiene constante en cada ejecución?'
     'nuevo18':
       title: Barrilete cósmico
       description: |
-        Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Siempre se las ingenia para esquivar y encontrar un camino que le permita continuar su carrera. Programá su recorrido para que llegue a la casilla de abajo a la derecha esquivando los obstáculos que se le presenten. Recordá que en cada ejecución te encontrarás con un escenario distinto.  
-      clue: 'Los diferentes caminos posibles... ¿tienen el mismo o distinto largo?'
+        Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Ayudale a encontrar el recorrido para llegar a la esquina inferior derecha de la cancha, esquivando los obstáculos que se le presenten.  
+      clue: 'Los diferentes caminos posibles... ¿tienen el mismo o distinto largo? Recordá que en cada ejecución te encontrarás con un escenario distinto.'
     'nuevo19':
       title: Super Yvoty 1
       description: |
-        Nuevamente el desafío es ayudar a Yvoty en su tarea de despertar las luciérnagas para tener una buena iluminación... pero, ¡ojo!, si bien en todas las celdas hay una luciérnaga no sabés cuántas celdas hay en total en cada ejecución.
-      clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!.
+        ¡Yvoty continúa tomando fotos! Por lo que sigue necesitando la ayuda de las luciérnagas para tener una buena iluminación. Ayudala a despertar a todas las luciérnagas teniendo en cuenta que el camino que recorre puede ser más corto o más largo.
+      clue: Aprovechá los nuevos bloques, pueden ayudarte a resolver el desafío de manera muy sencilla.
     'nuevo20':
       title: Super Yvoty 2
       description: |
-        En este caso, Yvoty también debe despertar a todas las luciérnagas que encuentre para iluminar bien el paisaje, pero ahora se suma la complicación que aparecen celdas sin luciérnagas. ¿Se podrá utilizar el mismo procedimiento que en "Super Yvoty 1"?
-      clue: El bloque **"repetir hasta que"** repite una secuencia de acciones **hasta que se cumpla una condición**. Esto se llama **"repetición condicional"**.
+        En este caso, Yvoty también debe despertar a todas las luciérnagas que encuentre para iluminar bien el paisaje, pero ahora no sólo no se conoce el largo del camino… ¡sino que tampoco se sabe si habrá o no luciérnagas en cada paso! ¿Servirá la misma ayuda que le diste en "Super Yvoty 1"?
+      clue: El bloque `repetir hasta que` repite una secuencia de acciones **hasta que se cumpla una condición**. Esto se llama **repetición condicional**.
     'nuevo21':
       title: Laberinto con pelotas
       description: |
-        Ya vimos a Chuy corriendo con la pelota en la mano por escenarios diversos. Ahora, una nueva alternativa nos espera para resolverla juntes. Además de sortear los obstáculos que se presentan, deberá patear una pelota de goma si es que esta aparece. Como era de esperarse, nunca es la misma cantidad de pelotas y el formato del terreno a sortear también es diferente en cada ejecución. 
+        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
     'nuevo23':
       title: Fútbol al sur
       description: |
-        ¿Es el fútbol el deporte favorito de Chuy?. No lo sabemos ciertamente, pero lo que sí es seguro es que nuestre amigue no se pierde un solo partido. En esta oportunidad deberá patear todas las pelotas de fútbol que encuentre **al final de cada fila**. Para ello deberá recorrer cada fila y al llegar a la pelota, patearla para repetir este procedimiento en cada una de ellas. 
-      clue: 'La cantidad de filas es constante, pero la longitud de cada una es variable. Fijate como manejar estos dos datos para recorrer las mismas y llegar a cada una de las pelotas de fútbol. Una buena idea es hacer un procedimiento que resuelva una fila, ¿no te parece?'
+        ¿Es el fútbol el deporte favorito de Chuy? No lo sabemos ciertamente, pero lo que sí es seguro es que no se pierde un solo partido. En esta oportunidad, ayudá a Chuy a patear todas las pelotas.  
+      clue: 'La cantidad de filas es constante, pero la longitud de cada una es variable. Fijate cómo manejar estos dos datos para recorrer las mismas y llegar a cada una de las pelotas de fútbol. Una buena idea es hacer un procedimiento que resuelva una fila, ¿no te parece?'
     'nuevo24':
       title: Prendiendo las compus
       description: |
-        Nuestra amiga Yvoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender todas las computadoras de la escuela de su barrio. La dificultad reside en que como las aulas tienen todas distinto tamaño, se necesita programar una manera de recorrer cada una prendiendo las compus sin importar cuántas hubiere. 
-      clue: 'Pensá cómo poder prender todo un lado del rectángulo del aula, y luego repertilo en cada tramo'
+        Yvoty siempre está predispuesta a resolver cuestiones técnicas. En este caso, la escuela le pidió ayuda para encender las computadoras de todas las aulas. El desafío es que las aulas tienen diferentes tamaños… ¡Ayudala a prender todas las computadoras!  
+      clue: '¿Sería posible prender todo un lado del rectángulo del aula, y luego repetirlo en cada tramo?'
     'nuevo28':
       title: El humedal de Capy y Guyrá
       description: |
-        Nuestros amigos siguen limpiando su estero y necesitan nuevamente tu ayuda para recoger todas las latas. Pero ahora se ha presentado una nueva dificultad: no se puede bajar, así es que deberás ordenar de cierta manera el trayecto para no dejar ninguna lata ensuciando el humedal. La buena noticia es que las latas están siempre en el mismo lugar.
+        Los amigos, Capy y Guyrá, siguen limpiando el humedal. Pero esta vez la situación es un poco más complicada… ¡no se pueden mover hacia abajo! :scream: La buena noticia es que los desechos que deben limpiar están siempre en el mismo lugar. Ayudalos a recoger todas las latas.
       clue: |
-        A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría "Recoger latas a la derecha con [cantidad]" y se reemplaza el **parámetro** [cantidad] por 2, 3 o 4 en cada caso.
-        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+        A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos `Recoger 2 latas a la derecha`, `Recoger 3 latas a la derecha` y `Recoger 4 latas a la derecha`, podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría `Recoger latas a la derecha con [cantidad]` y se reemplaza el **parámetro** `[cantidad]` por 2, 3 o 4 en cada caso.
+        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el **+** que aparece al lado del nombre en el bloque `Definir`.
     'nuevo38':
       title: Las estrellas de Mañic
-      description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone en la alineación del telescopio. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
-      clue: ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cosa cambia en cada uno de ellos?
+      description: | 
+        Mañic conoce el lugar ideal para observar su estrella favorita. Pero a veces le es difícil llegar porque hay obstáculos que se interponen en su camino, haciéndolo más largo. Ayudá a Mañic a observar la estrella, esquivando los obstáculos. ¡No te olvides de guardar la solución! La necesitarás más adelante. :wink:
+      clue: |
+        ¿Cuántos caminos posibles existen para llegar a la estrella? ¿Qué cambia en cada uno de ellos?
     'nuevo39':
       title: La estrella interesante
       description: |
-        Mañic encontró la ubicación de una interesante estrella para observar, aunque el camino es aún más largo y peligroso que los anteriores. Acompañá a Mañic en tal compleja travesía.
-      clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (Las estrellas de Mañic)? 
+        ¡Le avisaron a Mañic sobre una nueva estrella! El punto de observación está al final de un sendero largo y peligroso. Ayudala a llegar y observar la estrella esquivando todo los obstáculos.
+      clue: ¿Existe algún patrón que se repita? ¿Podría ayudar en algo la solución del desafío anterior (“Las estrellas de Mañic”)? 
     'nuevo40':
       title: |
         Hilera de latas
       description: |
-        “Nada mejor que despertar por la mañana y salir a dejar el mundo más limpio”, le comenta Capy a Guyrá. Ayudalos a recoger todas las latas que encuentren a su paso. No te olvides de descargar la solución ya que la vas a necesitar en otro desafío.
+        _“No hay mejor plan que despertar por la mañana para mejorar un poco el mundo”_, le comenta Capy a Guyrá. Ayudalos a encontrar el recorrido para recoger todas las latas que hallen a su paso. ¡No te olvides de guardar la solución! La necesitarás más adelante. :wink:
       clue: ¿Cómo pueden saber si hay una hilera de latas? ¿Qué deberían hacer si no hay ninguna lata?
     'nuevo41':
       title: |
         Turistas latosos
       description: |
-        La cantidad de latas desechadas por les turistas aumenta constantemente. Cada día, Capy y Guyrá necesitan trabajar más para mantener su hábitat en condiciones. Dales una mano concientizando sobre este daño y además acompañándolos en la tarea de limpieza, recogiendo todas las latas desechadas en lugares inapropiados.
-      clue: ¿Hay alguna tarea que nuestros amigos tengan que realizar repetitivamente? ¿Te puede ayudar la solución del desafío anterior (Hilera de latas)?
+        Lamentablemente, la cantidad de latas desechadas por turistas aumenta constantemente :pensive:. Por eso Capy y Guyrá necesitan trabajar cada día más para mantener el humedal sin residuos. ¿Qué recorrido deberían hacer para recoger todas las latas?
+      clue: ¿Hay alguna tarea que Capy y Guyrá tengan que realizar repetitivamente? ¿De qué forma la solución del desafío anterior (“Hilera de latas”) podría ser de ayuda?
     'nuevo42':
       title: |
         A veces latas, a veces papeles
       description: |
-        Es un día particularmente complejo en el humedal. La cantidad de desechos que dejaron les turistas es tan enorme como triste. Ayudá a Capy y Guyrá a recoger todas las latas y papales que encuentren a su paso.
-      clue: Pensá una estrategia que permita que nuestros amigos recorran una fila y recojan todas las latas y papeles que encuentren. Luego... ¿se podrá hacer lo mismo en las demás filas? 
+        Es un día particularmente difícil en el humedal. La cantidad de residuos que dejaron les turistas es tan enorme como triste. Ayudá a Capy y Guyrá a recoger todas las latas y papeles que encuentren a su paso.
+      clue: Pensá una estrategia que permita recorrer una fila y recoger todas las latas y papeles. Luego... ¿se podría hacer lo mismo en las demás filas? 
     'nuevo43':
       title: |
         El pasillo curvo de celus
       description: |
-        Yvoty tiene mucho, mucho trabajo esta mañana. Sus amigues la llamaron porque todos los celus de la selva se bloquearon y necesitan que ella, con su conocimiento, los desbloquee. Guiala para recorrer el intrincado camino selvático y además desbloquear todos los teléfonos de la selva que vaya encontrando. 
+        Yvoty tiene mucho trabajo esta mañana. Sus amigues la llamaron porque todos los celus de la selva se bloquearon y necesitan que ella, con su conocimiento, los desbloquee. Ayudala a desbloquear todos los teléfonos que vaya encontrando. 
       clue: Como en otros desafíos, buscá los patrones, las cosas que son iguales para resolver ese patrón y luego replicar. Por ejemplo, las curvas del sendero, ¿son iguales entre sí? 
     'nuevo44':
       title: |
         El festín astronómico
       description: |
-        Mañic está de fiesta. Los astros están más brillantes e interesantes que nunca. La visibilidad es óptima y la noche está para disfrutarla observando este fenómeno que no se da muy seguido. Acompañala en esta observación especial, recorriendo todo el campo y alineando el telescopio con cada astro para que la observación sea perfecta y Mañic pueda estudiar a cada uno.  
-      clue: Una observacion habitual de Mañic es una columna de seis astros alineados. ¿Cuántas columnas tiene el evento astronómico? Si lográs hacer que Mañic observe los astros de una columna y luego replicar esta acción en cada una de ellas... ¡Cuidado con las tranqueras y los obstáculos!
+        Mañic está de fiesta. Los astros están más brillantes que nunca. La visibilidad es óptima y la noche está para disfrutarla investigando este fenómeno que no sucede seguido. ¿Qué recorrido debería hacer Mañic para observar todas las estrellas y planetas?  
+      clue: Una observación habitual de Mañic es una columna de seis astros alineados. ¿Cuántas columnas tiene el evento astronómico? Si lográs hacer que Mañic observe los astros de una columna y luego replicar esta acción en cada una de ellas... ¡Cuidado con los obstáculos!
     'nuevo45':
       title: |
         Fotografiando mariposas
       description: |
-        El nuevo celu de Yvoty tiene una muy buena cámara para fotografiar objetos cercanos. Nada mejor que probarlo sacando fotos a las coloridas mariposas de la selva misionera. Las mariposas aparecen por todos lados, a veces más y a veces menos. En cualquier caso, Yvoty deberá ir una por una y sacarle una foto desde muy corta distancia. 
-      clue: Parece haber unos sectores por los que las mariposas no vuelan. Ese dato puede servirte para armar una secuencia de recorrido, ¿no te parece? 
+        Yvoty se descargó una nueva aplicación para fotografiar objetos cercanos. Nada mejor que probarla sacando fotos a las coloridas mariposas de la selva misionera. Las mariposas aparecen por todos lados, a veces más y a veces menos. Ayudá a Yvoty a fotografiar a todas las mariposas. 
+      clue: 'Parece haber unos sectores por los que las mariposas no vuelan. Ese dato puede servirte para armar una secuencia de recorrido. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero una casilla, luego una fila o columna, y finalmente un grupo de mariposas.' 
     'nuevo46':
       title: Nuevos comandos
       description: |
-        Los inseparables Capy y Guyrá necesitan limpiar su estero. Para eso se propusieron recoger primero las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. ¿Los ayudás con esta tarea y así cuidar su humedal?
+        Capy y Guyrá quieren cuidar su estero. Para lograrlo van a limpiar los desechos tirados por turistas. Empiezan por las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. Ayudalos a recoger todas las latas.
       clue: ¿Viste los **procedimientos**? Combinando primitivas podés **crear nuevos comandos** para luego usarlos **cuantas veces quieras.**
     'nuevo131':
       title: Reciclando papeles
       description: |
-        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
-      clue: ''
+        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! 
+      clue: 'Si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?'
     'nuevo132':
       title: Prendiendo las compus parametrizado
-      description: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.'
-      clue: 'Los parámetros pueden ser direcciones, no siempre deben ser números. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.'
+      description: 'Yvoty es tan hábil con la tecnología que le volvieron a pedir ayuda desde la escuela para encender las computadoras de todas las aulas. Si bien las aulas siguen teniendo diferentes tamaños, Yvoty aprendió cosas nuevas que van a hacer esta tarea más rápida. ¡Ayudá a Yvoty a prender todas las computadoras!'
+      clue: 'Podés definir un único procedimiento con un parámetro para prender las computadoras de cualquier fila o columna. En este caso, el parámetro será la dirección en que debe moverse Yvoty (¡no siempre deben ser números!)'
     'nuevo133':
       title: Mariposas encuadradas
-      description: Yvoty quiere fotografiar todas las mariposas que encuentre en su recorrido habitual por la selva. Tené en cuenta que en cada ejecución las mariposas aparecen en lugares distintos. 
-      clue: 'Dos datos importantes: las mariposas nunca se posan en las casillas de la esquina y el sendero que recorre Yvoty siempre es el mismo'
+      description: Yvoty salió a recorrer la selva misionera y se encontró con un grupo de mariposas… ¡Una hermosa escena para fotografiar! La dificultad está en que las mariposas están en constante movimiento, por lo que no siempre se quedan en el mismo lugar. Ayudala a fotografiar a todas las mariposas. 
+      clue: 'Dos datos importantes: las mariposas nunca se posan en las casillas de la esquina y el sendero que recorre Yvoty siempre es el mismo.'
     'nuevo134':
       title: Trofeos y más trofeos
       description: La colección de trofeos de Chuy crece día a día. Acompañale a recogerlos. Tené en cuenta que la posición de los mismos no cambia y que tanto las direcciones como la cantidad de trofeos podrían ser parámetros...  
