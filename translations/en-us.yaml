@@ -910,7 +910,7 @@ model:
       title: 'With Toto'
   books:
     '1':
-      title: Initial Level
+      title: Beginner Level
       description: 'Challenges of Teachers’ Handbook "Computer Science in the classroom, 1st cycle of elementary school"'
     '2':
       title: Intermediate Level

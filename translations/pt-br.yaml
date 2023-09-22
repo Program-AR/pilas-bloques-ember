@@ -898,7 +898,7 @@ model:
       title: 'Com Toto'
   books:
     '1':
-      title: Nível Inicial
+      title: Nível Principiante
       description: Desafios do manual para professores "Informática para a sala de aula, 1º ciclo do ensino básico"
     '2':
       title: Nível Intermédio

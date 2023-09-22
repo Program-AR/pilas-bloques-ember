@@ -959,7 +959,7 @@ model:
       title: 'Con Toto'
   books:
     '1':
-      title: Nivel Inicial
+      title: Nivel Principiante
       description: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"'
     '2':
       title: Nivel Intermedio
