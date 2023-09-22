@@ -146,7 +146,7 @@ export default Service.extend({
   _alertServerError() {
     this.paperToaster.show("Problemas con el servidor, intentar más tarde", {
       duration: 4000,
-      position: "top"
+      position: "bottom"
     })
   },
 

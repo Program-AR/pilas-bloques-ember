@@ -959,16 +959,16 @@ model:
       title: 'Con Toto'
   books:
     '1':
-      title: Primer Ciclo
+      title: Nivel Principiante
       description: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"'
     '2':
-      title: Segundo Ciclo
+      title: Nivel Intermedio
       description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR", para 2° ciclo de primaria en adelante.
     '100':
       title: Tecnópolis 2021
       description: Desafios de Tecnópolis 2021
     '3':
-      title: Avanzado
+      title: Nivel Avanzado
       description: Desafios avanzados
     '400':
       title: Nuevos personajes

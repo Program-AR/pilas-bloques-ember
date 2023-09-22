@@ -910,16 +910,16 @@ model:
       title: 'With Toto'
   books:
     '1':
-      title: First Cycle
+      title: Beginner Level
       description: 'Challenges of Teachers’ Handbook "Computer Science in the classroom, 1st cycle of elementary school"'
     '2':
-      title: Second Cycle
+      title: Intermediate Level
       description: 'Challenges of Teachers’ Book "Activities to learn how to Program.AR" for the 2nd cycle of elementary school, and beyond.'
     '100':
       title: Tecnópolis
       description: Tecnópolis Challenges
     '3':
-      title: Advanced
+      title: Advanced Level
       description: aAvanced challenges
 
   chapters:
