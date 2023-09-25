@@ -40,6 +40,12 @@ export default Service.extend({
     this._send('PUT', `solutions/${solutionId}`, { staticAnalysis, executionResult }, false).catch(logger('executionFinished'))
   },
 
+  isCreatorURL(){
+    const currentURL = window.location.href
+    const creatorURLs = ['react-imported-challenge']
+    return creatorURLs.some(url => currentURL.includes(url))
+  },
+
   // LOGIN - REGISTER
   async login(credentials) {
     return this._send('POST', 'login', credentials)
@@ -99,6 +105,8 @@ export default Service.extend({
   },
 
   async _send(method, resource, body, critical = true) {
+    if(resource.includes('solution') && this.isCreatorURL()) return //Should not send or get solution when using the creator
+    
     const user = this.getUser()
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
