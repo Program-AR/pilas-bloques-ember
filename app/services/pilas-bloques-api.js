@@ -16,17 +16,15 @@ export default Service.extend({
 
   // SOLUTIONS
   openChallenge(challengeId) {
-    if(this.isCreatorURL()) return
     this._send('POST', 'challenges', { challengeId }, false).catch(logger('openChallenge'))
   },
 
   lastSolution(challengeId) {
-    if (!this.getUser() || this.isCreatorURL()) return null
+    if (!this.getUser()) return null
     return this._send('GET', `challenges/${challengeId}/solution`, undefined, false).catch(() => null)
   },
 
   runProgram(challengeId, metadata) {
-    if(this.isCreatorURL()) return null
     const solutionId = uuidv4()
     const data = {
       challengeId,
@@ -39,14 +37,13 @@ export default Service.extend({
   },
 
   executionFinished(solutionId, staticAnalysis, executionResult) {
-    if(this.isCreatorURL()) return
     this._send('PUT', `solutions/${solutionId}`, { staticAnalysis, executionResult }, false).catch(logger('executionFinished'))
   },
 
   isCreatorURL(){
     const currentURL = window.location.href
-    const creatorURLs = ['creador/ver', 'desafioImportado']
-    return !creatorURLs.some(url => currentURL.includes(url))
+    const creatorURLs = ['react-imported-challenge']
+    return creatorURLs.some(url => currentURL.includes(url))
   },
 
   // LOGIN - REGISTER
@@ -108,6 +105,8 @@ export default Service.extend({
   },
 
   async _send(method, resource, body, critical = true) {
+    if(resource.includes('solutions') && this.isCreatorURL()) return //Should not send or get solution when using the creator
+    
     const user = this.getUser()
     const url = `${baseURL}/${resource}`
     const flag = `loading.${resource.split('?')[0].replace('/', '-')}`
