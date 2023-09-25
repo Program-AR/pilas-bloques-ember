@@ -3068,10 +3068,10 @@ export const desafios = [
     nombre: 'NuevosComandosCapy',
     escena: `new EscenaCapy("\
       [A,-,L],\
-      [-,_,L],\
-      [-,_,_],\
+      [-,O,L],\
+      [-,O,O],\
       [-,-,L],\
-      [L,_,L],\")`,
+      [L,O,L],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
     expectations: {
       simpleRepetition: false,
