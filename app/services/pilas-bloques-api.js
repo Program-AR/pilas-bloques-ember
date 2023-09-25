@@ -105,7 +105,7 @@ export default Service.extend({
   },
 
   async _send(method, resource, body, critical = true) {
-    if(resource.includes('solutions') && this.isCreatorURL()) return //Should not send or get solution when using the creator
+    if(resource.includes('solution') && this.isCreatorURL()) return //Should not send or get solution when using the creator
     
     const user = this.getUser()
     const url = `${baseURL}/${resource}`
