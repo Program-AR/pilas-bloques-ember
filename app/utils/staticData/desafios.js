@@ -2852,11 +2852,11 @@ export const desafios = [
     id: 'nuevo18',
     nombre: 'LaberintoLargoChuy',
     escena: `new EscenaChuy([
-      '[A,O,O,O,O,O,O,O],[-,-,-,O,O,O,O,O],[O,O,-,O,O,O,O,O],[O,O,-,O,O,O,O,O],[O,O,-,-,-,-,-,O],[O,O,O,O,O,O,-,O],[O,O,O,O,O,O,-,-],[O,O,O,O,O,O,O,-]',
-      '[A,-,-,O,O,O,O,O],[O,O,-,-,-,O,O,O],[O,O,O,O,-,-,O,O],[O,O,O,O,O,-,O,O],[O,O,O,O,O,-,-,O],[O,O,O,O,O,O,-,-],[O,O,O,O,O,O,O,-],[O,O,O,O,O,O,O,-]',
-      '[A,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,-,O,O,O,O,O,O],[O,-,O,O,O,O,O,O],[O,-,-,O,O,O,O,O],[O,O,-,-,O,O,O,O],[O,O,O,-,O,O,O,O],[O,O,O,-,-,-,-,-]',
-      '[A,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,O,O,O,O,O,O,O],[-,-,-,-,O,O,O,O],[O,O,O,-,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,-,-,-]',
-      '[A,-,-,-,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,O,O,O],[O,O,O,O,-,-,O,O],[O,O,O,O,O,-,-,O],[O,O,O,O,O,O,-,O],[O,O,O,O,O,O,-,-]']
+      '[A,_,_,_,_,_,_,_],[-,-,-,_,_,_,_,_],[_,_,-,_,_,_,_,_],[_,_,-,_,_,_,_,_],[_,_,-,-,-,-,-,_],[_,_,_,_,_,_,-,_],[_,_,_,_,_,_,-,-],[_,_,_,_,_,_,_,-]',
+      '[A,-,-,_,_,_,_,_],[_,_,-,-,-,_,_,_],[_,_,_,_,-,-,_,_],[_,_,_,_,_,-,_,_],[_,_,_,_,_,-,-,_],[_,_,_,_,_,_,-,-],[_,_,_,_,_,_,_,-],[_,_,_,_,_,_,_,-]',
+      '[A,_,_,_,_,_,_,_],[-,_,_,_,_,_,_,_],[-,-,_,_,_,_,_,_],[_,-,_,_,_,_,_,_],[_,-,-,_,_,_,_,_],[_,_,-,-,_,_,_,_],[_,_,_,-,_,_,_,_],[_,_,_,-,-,-,-,-]',
+      '[A,_,_,_,_,_,_,_],[-,_,_,_,_,_,_,_],[-,_,_,_,_,_,_,_],[-,_,_,_,_,_,_,_],[-,-,-,-,_,_,_,_],[_,_,_,-,-,_,_,_],[_,_,_,_,-,_,_,_],[_,_,_,_,-,-,-,-]',
+      '[A,-,-,-,-,_,_,_],[_,_,_,_,-,_,_,_],[_,_,_,_,-,_,_,_],[_,_,_,_,-,_,_,_],[_,_,_,_,-,-,_,_],[_,_,_,_,_,-,-,_],[_,_,_,_,_,_,-,_],[_,_,_,_,_,_,-,-]']
       ,{},[7,7])`,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'Repetir', 'Si', 'SiNo', 'PuedeMoverAbajo', 'PuedeMoverDerecha'],
@@ -2886,12 +2886,12 @@ export const desafios = [
     id: 'nuevo21',
     nombre: 'LaberintoConPelotas',
     escena: `new EscenaChuy([
-     '[A&(U?),O,O,O,O],[U?,U?,O,O,O],[O,U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
-     '[A&(U?),O],[U?,-]',
-     '[A&(U?),O,O],[U?,O,O],[U?,O,O],[U?,U?,O],[O,U?,U?],[O,O,-]',
-     '[A&(U?),U?,U?,O,O],[O,O,U?,O,O],[O,O,U?,U?,-]',
-     '[A&(U?),U?,U?,U?,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,O,O,O],[O,O,O,O,U?,U?,O,O],[O,O,O,O,O,U?,U?,O],[O,O,O,O,O,O,U?,O],[O,O,O,O,O,O,U?,-]'
-    ],{},[-1,0])`,
+      '[A&(U?),_,_,_,_],[U?,U?,_,_,_],[_,U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,-]',
+      '[A&(U?),_],[U?,-]',
+      '[A&(U?),_,_],[U?,_,_],[U?,_,_],[U?,U?,_],[_,U?,U?],[_,_,-]',
+      '[A&(U?),U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,-]',
+      '[A&(U?),U?,U?,U?,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,U?,_,_],[_,_,_,_,_,U?,U?,_],[_,_,_,_,_,_,U?,_],[_,_,_,_,_,_,U?,-]'
+     ],{},[-1,0])`,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
       'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
@@ -2951,8 +2951,8 @@ export const desafios = [
     id: 'nuevo38',
     nombre: 'LasEstrellasDeManic',
     escena: `new EscenaManic([
-      '[A,O,O,O,O],[-,O,-,-,-],[-,O,O,O,-],[E,-,-,-,-]',
-      '[A,O,O,O,O],[-,-,-,-,-],[O,O,O,O,-],[E,-,-,-,-]'])`,
+      '[A,_,_,_,_],[-,_,-,-,-],[-,_,_,_,-],[E,-,-,-,-]',
+      '[A,_,_,_,_],[-,-,-,-,-],[_,_,_,_,-],[E,-,-,-,-]'])`,
     deshabilitado: false,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
       'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
@@ -2961,10 +2961,10 @@ export const desafios = [
     id: 'nuevo39',
     nombre: 'LosCaminosDeManic',
     escena: `new EscenaManic([
-        '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
-        '[A,O,O,O,O,O],[-,O,-,-,-,O],[-,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]',
-        '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,O,-,-,-],[O,-,O,O,O,-],[O,E,-,-,-,-]',
-        '[A,O,O,O,O,O],[-,-,-,-,-,O],[O,O,O,O,-,O],[-,-,-,-,-,O],[-,O,O,O,O,O],[-,-,-,-,-,-],[O,O,O,O,O,-],[O,E,-,-,-,-]'])`,
+      '[A,_,_,_,_,_],[-,_,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,_,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,_,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,_,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,-,-,-,-,_],[_,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,_,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,-,-,-,-,_],[_,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,_,_,_,_,-],[_,E,-,-,-,-]'])`,
     deshabilitado: false,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
       'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha'],
@@ -2977,18 +2977,18 @@ export const desafios = [
     id: 'nuevo40',
     nombre: 'HileraDeLatas',
     escena: `new EscenaCapy([
-            '[L,-,-,-,A],[O,O,-,O,O],[O,O,-,O,O],[O,O,-,O,O]',
-            '[L,-,L,-,A],[O,O,L,O,O],[O,O,L,O,O],[O,O,L,O,O]'])`,
+      '[L,-,-,-,A],[_,_,-,_,_],[_,_,-,_,_],[_,_,-,_,_]',
+      '[L,-,L,-,A],[_,_,L,_,_],[_,_,L,_,_],[_,_,L,_,_]'])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'TocandoLata']
   },
   {
     id: 'nuevo41',
     nombre: 'MuchasHilerasDeLatas',
     escena: `new EscenaCapy([
-          '[O,O,O,-,-,L,A],[L,-,-,L,O,L,O],[L,O,O,L,O,L,O],[L,O,O,L,O,L,O],[L,O,O,L,O,O,O]',
-          '[O,O,O,-,-,L,A],[-,-,-,L,O,L,O],[-,O,O,L,O,L,O],[-,O,O,L,O,L,O],[-,O,O,L,O,O,O]',
-          '[O,O,O,-,-,L,A],[L,-,-,-,O,L,O],[L,O,O,-,O,L,O],[L,O,O,-,O,L,O],[L,O,O,-,O,O,O]',
-          '[O,O,O,-,-,-,A],[L,-,-,L,O,-,O],[L,O,O,L,O,-,O],[L,O,O,L,O,-,O],[L,O,O,L,O,O,O]'])`,
+      '[_,_,_,-,-,L,A],[L,-,-,L,_,L,_],[L,_,_,L,_,L,_],[L,_,_,L,_,L,_],[L,_,_,L,_,_,_]',
+      '[_,_,_,-,-,L,A],[-,-,-,L,_,L,_],[-,_,_,L,_,L,_],[-,_,_,L,_,L,_],[-,_,_,L,_,_,_]',
+      '[_,_,_,-,-,L,A],[L,-,-,-,_,L,_],[L,_,_,-,_,L,_],[L,_,_,-,_,L,_],[L,_,_,-,_,_,_]',
+      '[_,_,_,-,-,-,A],[L,-,-,L,_,-,_],[L,_,_,L,_,-,_],[L,_,_,L,_,-,_],[L,_,_,L,_,_,_]'])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'TocandoLata'],
     expectations: {
       decomposition: false,
@@ -2999,12 +2999,12 @@ export const desafios = [
     id: 'nuevo42',
     nombre: 'AVecesLatasAVecesPapeles',
     escena: `new EscenaCapy("\
-        [A,L|P|-,L|P|-,L|P|-,L|P|-],\
-        [-,O,O,O,O],\
-        [-,L|P|-,L|P|-,L|P|-,L|P|-],\
-        [-,O,O,O,O],\
-        [-,O,O,O,O],\
-        [-,L|P|-,L|P|-,L|P|-,L|P|-],\")`,
+      [A,L|P|-,L|P|-,L|P|-,L|P|-],\
+      [-,_,_,_,_],\
+      [-,L|P|-,L|P|-,L|P|-,L|P|-],\
+      [-,_,_,_,_],\
+      [-,_,_,_,_],\
+      [-,L|P|-,L|P|-,L|P|-,L|P|-],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'RecogerLata', 'RecogerPapel', 'Procedimiento', 'Repetir', 'TocandoLata', 'TocandoPapel', 'Si', 'SiNo'],
     expectations: {
       decomposition: false,
@@ -3015,14 +3015,14 @@ export const desafios = [
     id: 'nuevo43',
     nombre: 'ElPasilloCurvoDeCelus',
     escena: `new EscenaYvoty("\
-    [O,P,P?,P?],\
-      [O,O,O,P?],\
+    [_,P,P?,P?],\
+      [_,_,_,P?],\
       [-,P,P?,P?],\
-      [-,O,O,O],\
-      [P,P?,P?,O],\
-      [O,O,P?,O],\
-      [P,P?,P?,O],\
-      [A,O,O,O],\",{})`,
+      [-,_,_,_],\
+      [P,P?,P?,_],\
+      [_,_,P?,_],\
+      [P,P?,P?,_],\
+      [A,_,_,_],\",{})`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'DesbloquearCelular', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoCelular'],
     expectations: {
       decomposition: false,
@@ -3033,13 +3033,13 @@ export const desafios = [
     id: 'nuevo44',
     nombre: 'ElFestinAstronomico',
     escena: `new EscenaManic("\
-        [A,-,-,-,-],\
-        [E|P,O,E|P,E|P,E|P],\
-        [E|P,O,E|P,E|P,E|P],\
-        [E|P,O,E|P,E|P,E|P],\
-        [E|P,O,E|P,E|P,E|P],\
-        [E|P,O,E|P,E|P,E|P],\
-        [E|P,O,E|P,E|P,E|P],\")`,
+    [A,-,-,-,-],\
+    [E|P,_,E|P,E|P,E|P],\
+    [E|P,_,E|P,E|P,E|P],\
+    [E|P,_,E|P,E|P,E|P],\
+    [E|P,_,E|P,E|P,E|P],\
+    [E|P,_,E|P,E|P,E|P],\
+    [E|P,_,E|P,E|P,E|P],\")`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'ObservarEstrella', 'ObservarPlaneta', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoEstrellaManic', 'TocandoPlaneta']
   },
   {
@@ -3104,9 +3104,9 @@ export const desafios = [
     escena: `new EscenaYvoty("\
     [A,#M,#M,#M,#M,#M,-],\
     [#M,O,O,O,O,O,#M],\
-    [#M,O,O,O,O,O,#M],\
-    [#M,O,O,O,O,O,#M],\
-    [#M,O,O,O,O,O,#M],\
+    [#M,O,_,_,_,O,#M],\
+    [#M,O,_,_,_,O,#M],\
+    [#M,O,_,_,_,O,#M],\
     [#M,O,O,O,O,O,#M],\
     [-,#M,#M,#M,#M,#M,-],\",
     { macros: { "M": "*>M?" }, coleccion: ["M"] })`,
@@ -3118,11 +3118,11 @@ export const desafios = [
     id: 'nuevo134',
     nombre: 'InfinitosTrofeos',
     escena: `new EscenaChuy("\
-      [A,T,T,T,T,-],\
-      [T,O,O,O,O,T],\
-      [T,T,T,T,T,T],\
-      [T,O,O,O,O,T],\
-      [-,T,T,T,T,-],\
+    [A,T,T,T,T,-],\
+    [T,_,_,_,_,T],\
+    [T,T,T,T,T,T],\
+    [T,_,_,_,_,T],\
+    [-,T,T,T,T,-],\
     ")`,
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
