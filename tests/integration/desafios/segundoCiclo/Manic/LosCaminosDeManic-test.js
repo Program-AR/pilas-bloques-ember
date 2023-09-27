@@ -111,6 +111,6 @@ moduloActividad(nombre, () => {
       </statement>
     </block>
   </xml>`,
-  });
-
+  errorEsperado: '¡No hay nada para ver abajo!'
+});
 });
