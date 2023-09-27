@@ -660,6 +660,16 @@ model:
       description: |
         El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros: Guyrá está siempre sobre la cabeza de Capy. En esta oportunidad, te toca a vos hacer que Capy pase a buscar a su amigo y lo suba para emprender juntos una nueva aventura.        
       clue: 'Fijate bien el orden de las primitivas, qué cosa tenés que hacer primero y qué cosa va después'
+    'nuevo2':
+      title: Chuy hace jueguito
+      description: |
+        El calentamiento previo es fundamental para une deportiste, sobre todo hoy que se viene un partido complicado. Hacé que Chuy **avance**, **caliente**, **haga jueguito** y **retroceda** para ponerse a punto antes de la competencia.
+      clue: **Calentar** y **Hacer jueguito** no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles?
+    'nuevo3':
+      title: No me canso de rebotar
+      description: |
+        La única manera de adquirir confianza con la paleta es practicar y practicar... Ayudá a Chuy en este objetivo haciendo que paletee 30 veces seguidas sin que se le caiga la pelotita.
+      clue: Este desafío se puede resolver con mucho menos de 30 bloques... Fijate atentamente, hay nuevas herramientas disponibles. 
     'nuevo4':
       title: Mañic en el cielo
       description: |
