@@ -2951,23 +2951,25 @@ export const desafios = [
     id: 'nuevo38',
     nombre: 'LasEstrellasDeManic',
     escena: `new EscenaManic([
-      '[A,_,_,_,_],[-,_,-,-,-],[-,_,_,_,-],[E,-,-,-,-]',
-      '[A,_,_,_,_],[-,-,-,-,-],[_,_,_,_,-],[E,-,-,-,-]'])`,
+      '[A,_,_,_,_],[-,O,-,-,-],[-,_,_,_,-],[E,-,-,-,-]',
+      '[A,_,_,_,_],[-,-,-,-,-],[O,_,_,_,-],[E,-,-,-,-]'])`,
     deshabilitado: false,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
+      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 
+      'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha']
   },
   {
     id: 'nuevo39',
     nombre: 'LosCaminosDeManic',
     escena: `new EscenaManic([
-      '[A,_,_,_,_,_],[-,_,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,_,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
-      '[A,_,_,_,_,_],[-,_,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,_,_,_,_,-],[_,E,-,-,-,-]',
-      '[A,_,_,_,_,_],[-,-,-,-,-,_],[_,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,_,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
-      '[A,_,_,_,_,_],[-,-,-,-,-,_],[_,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,_,_,_,_,-],[_,E,-,-,-,-]'])`,
+      '[A,_,_,_,_,_],[-,O,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,O,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,O,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,O,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,-,-,-,-,_],[O,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,O,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
+      '[A,_,_,_,_,_],[-,-,-,-,-,_],[O,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,O,_,_,_,-],[_,E,-,-,-,-]'])`,
     deshabilitado: false,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'MoverACasillaIzquierda',
-      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha'],
+      'ObservarEstrella', 'Repetir', 'Si', 'SiNo', 
+      'HayObstaculoArriba', 'HayObstaculoAbajo', 'HayObstaculoIzquierda', 'HayObstaculoDerecha'],
     expectations: {
       decomposition: false,
       decomposition9: true

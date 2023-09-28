@@ -111,5 +111,5 @@ moduloActividad(nombre, () => {
       </statement>
     </block>
   </xml>`,
-});
+  });
 });
