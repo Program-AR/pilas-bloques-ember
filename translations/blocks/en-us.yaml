@@ -87,6 +87,8 @@ atColumnEnd: Am I at the end of the column?
 currentColumnLength: Current column length
 canMoveDown: Can I move down?
 canMoveRight: Can I move to the right?
+canMoveUp: Can I move up?
+canMoveLeft: Can I move to the left?
 reachedGoal: Did I reach the finish line?
 cheeseHere: Is there cheese here?
 lampHere: Is there a spotlight here?

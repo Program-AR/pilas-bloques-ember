@@ -1269,6 +1269,16 @@ export default Service.extend({
       funcionSensor: 'tocandoFlechaDerecha()',
     });
 
+    this.crearBloqueSensor('TocandoArriba', 'canMoveUp', {
+      icono: 'icono.arriba.png',
+      funcionSensor: 'tocandoFlechaArriba()',
+    });
+
+    this.crearBloqueSensor('TocandoIzquierda', 'canMoveLeft', {
+      icono: 'icono.izquierda.png',
+      funcionSensor: 'tocandoFlechaIzquierda()',
+    });
+
     this.crearBloqueSensor('TocandoFinCamino', 'reachedGoal', {
       icono: 'icono.finCamino.png',
       funcionSensor: 'alFinalDelCamino()',
@@ -1323,6 +1333,16 @@ export default Service.extend({
     this.crearBloqueSensor('PuedeMoverDerecha', 'canMoveRight', {
       icono: 'icono.derecha.png',
       funcionSensor: 'puedeMoverseDerecha()',
+    });
+
+    this.crearBloqueSensor('PuedeMoverArriba', 'canMoveUp', {
+      icono: 'icono.arriba.png',
+      funcionSensor: 'puedeMoverseArriba()',
+    });
+
+    this.crearBloqueSensor('PuedeMoverIzquierda', 'canMoveLeft', {
+      icono: 'icono.izquierda.png',
+      funcionSensor: 'puedeMoverseIzquierda()',
     });
 
     this.crearBloqueSensor('HayCharco', 'puddleHere', {
