@@ -1,9 +1,19 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'pilasbloques/config/environment';
 
+
+function sendRouteToParent(route) {
+  if (!route.includes('react-imported-challenge')) window.parent.postMessage({ route }, '*');
+}
+
 const Router = EmberRouter.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
+
+  didTransition() {
+    sendRouteToParent(window.location.hash);
+    this._super(...arguments);
+  }
 });
 
 Router.map(function () {
