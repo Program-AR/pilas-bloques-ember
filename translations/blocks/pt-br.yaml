@@ -87,6 +87,8 @@ atColumnEnd: Estou no final da coluna?
 currentColumnLength: Comprimento da coluna atual
 canMoveDown: Posso mover para baixo?
 canMoveRight: Posso mover para direita?
+canMoveUp: Posso mover para acima?
+canMoveLeft: Posso mover para esquerda?
 reachedGoal: Alcançou a meta?
 cheeseHere: Há queijo aqui?
 lampHere: Há uma lâmpada aqui?

@@ -11,7 +11,7 @@ moduloActividad(nombre, () => {
 	actividadTest(nombre, {
 		descripcionAdicional: 'Da error al querer avanzar hacia una dirección sin casillero',
 		solucion: '<xml xmlns=\"http://www.w3.org/1999/xhtml\"><variables></variables><block type=\"al_empezar_a_ejecutar\" id=\"o}Nru3:5z?7mC$~mS?n@\" deletable=\"false\" movable=\"false\" editable=\"false\" x=\"15\" y=\"15\"><statement name=\"program\"><shadow type=\"required_statement\" id=\"tb=/CiRc,Q-d}PtH)ggS\"></shadow><block type=\"MoverACasillaDerecha\" id=\"}!/p-d7I8s^1YguTtrtU\"><next><block type=\"MoverACasillaAbajo\" id=\"ONP;ZMFL::pjs7SpPANm\"></block></next></block></statement></block></xml>',
-		errorEsperado: '¡Hay un obstáculo!',
+		errorEsperado: 'No puedo ir para abajo',
 	});
 
 	actividadTest(nombre, {
