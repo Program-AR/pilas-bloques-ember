@@ -905,6 +905,8 @@ model:
       title: 'Com Coty'
     tecnopolis2021ConToto:
       title: 'Com Toto'
+    grupoTemporal:
+      title: 'Grupo temporário'
   books:
     '1':
       title: Nível Principiante
@@ -938,3 +940,5 @@ model:
       title: Parametrização de Soluções
     Desafios complementarios:
       title: Desafios complementares
+    capiTemporal:
+      title: Desafios temporários

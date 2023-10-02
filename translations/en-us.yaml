@@ -917,6 +917,8 @@ model:
       title: 'With Coty'
     tecnopolis2021ConToto:
       title: 'With Toto'
+    grupoTemporal:
+      title: 'Temporary Group'
   books:
     '1':
       title: Beginner Level
@@ -950,3 +952,5 @@ model:
       title: Solutions parameterizing
     Desafios complementarios:
       title: Complementary challenges
+    capiTemporal:
+      title: Temporary challenges
