@@ -2933,16 +2933,26 @@ export const desafios = [
   },
   {
     id: 'nuevo25',
-    nombre: 'ContandoPlanetasYEstrellas',
+    nombre: 'ContandoPlanetasYEstrellas',    
     escena: 'ContandoPlanetasYEstrellas',
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarPlaneta', 'ContarEstrella',
-      'TocandoPlaneta', 'TocandoEstrella', 'Repetir', 'Si', 'SiNo',
-      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal'],
+      'TocandoPlaneta', 'TocandoEstrellaManic', 'Repetir', 'Si', 'SiNo',
+      'Hasta', 'EstoySobreElInicioManic', 'EstoySobreElFinalManic'],
     expectations: {
       conditionalRepetition: true,
     }
   },
+  {
+    id: 'nuevo27',
+    nombre: 'ContandoDeNuevoManic',
+    escena: 'ContandoDeNuevoManic',
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+      'SiguienteColumna',
+      'ContarPlaneta', 'ContarEstrella', 'TocandoPlaneta',
+      'TocandoEstrellaManic', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'EstoySobreElInicioManic', 'LargoColumnaActual']
+  },  
   {
     id: 'nuevo28',
     nombre: 'ElPlanetaDeCapyYGuyra',

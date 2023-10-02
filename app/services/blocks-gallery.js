@@ -1266,6 +1266,16 @@ export default Service.extend({
       funcionSensor: 'casillaActual().esFin()',
     });
 
+    this.crearBloqueSensor('EstoySobreElInicioManic', 'atColumnBeginning', {
+      icono: 'icono.casillainiciomanic.png',
+      funcionSensor: 'casillaActual().esInicio()',
+    }); 
+
+    this.crearBloqueSensor('EstoySobreElFinalManic', 'atColumnEnd', {
+      icono: 'icono.casillafinmanic.png',    
+      funcionSensor: 'casillaActual().esFin()',
+    });
+    
     this.crearBloqueSensor('LargoColumnaActual', 'currentColumnLength', {
       icono: 'icono.largoCol.png',
       funcionSensor: 'largoColumnaActual()-1',

@@ -42,7 +42,7 @@ moduloActividad(nombre, () => {
       <statement name="STACK">
          <block type="hasta" id="114" inline="true">
             <value name="condition">
-               <block type="EstoySobreElFinal" id="129" />
+               <block type="EstoySobreElFinalManic" id="129" />
             </value>
             <statement name="block">
                <block type="MoverACasillaAbajo" id="146">
@@ -67,7 +67,7 @@ moduloActividad(nombre, () => {
       <statement name="STACK">
          <block type="si" id="202" inline="true">
             <value name="condition">
-               <block type="TocandoEstrella" id="217" />
+               <block type="TocandoEstrellaManic" id="217" />
             </value>
             <statement name="block">
                <block type="ContarEstrella" id="228" />
@@ -95,7 +95,7 @@ moduloActividad(nombre, () => {
       <statement name="STACK">
          <block type="hasta" id="251" inline="true">
             <value name="condition">
-               <block type="EstoySobreElInicio" id="256" />
+               <block type="EstoySobreElInicioManic" id="256" />
             </value>
             <statement name="block">
                <block type="MoverACasillaArriba" id="262" />

@@ -705,6 +705,15 @@ model:
       description: |
         We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
       clue: ''
+    'nuevo25':
+      title: Counting planets and stars
+      description: |
+        Mañic should visit all boxes and count how many planets and stars are there in total. Clue: first think how you could count whether there is any planet or star in a particular box. Then think how you could count all celestial bodies in only one particular column.
+      clue: 'Splitting a big problem into several little problems can help you better understand each one of its parts. At the same time, this will allow us to focus on solving easier challenges if compared to the original one.'
+    'nuevo27':
+      title: Mañic counts again
+      description: 'Mañic needs to count the celestial bodies again, but now she cannot check whether she reached the end of the column! Is there any sensor to help her?'
+      clue: 'A sensor will allow us to get information that can change each time you run the program, even during the same run. For example, the length of a column changes depending on the column on which Mañic is standing.'
     'nuevo28':
       title: Capy and Guyrá’s planet
       description: |
