@@ -2932,6 +2932,18 @@ export const desafios = [
     }
   },
   {
+    id: 'nuevo25',
+    nombre: 'ContandoPlanetasYEstrellas',
+    escena: 'ContandoPlanetasYEstrellas',
+    bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
+      'SiguienteColumna', 'ContarPlaneta', 'ContarEstrella',
+      'TocandoPlaneta', 'TocandoEstrella', 'Repetir', 'Si', 'SiNo',
+      'Hasta', 'EstoySobreElInicio', 'EstoySobreElFinal'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
     id: 'nuevo28',
     nombre: 'ElPlanetaDeCapyYGuyra',
     escena: `new EscenaCapy("\

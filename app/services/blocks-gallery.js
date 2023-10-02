@@ -801,6 +801,18 @@ export default Service.extend({
       argumentos: '{etiqueta: "ManzanaAnimada", nombreAnimacion: "comerManzana"}',
     });
 
+    this.crearBloqueAccion('ContarPlaneta', 'countPlanet', {
+      icono: 'icono.planeta.png',
+      comportamiento: 'Contar',
+      argumentos: '{etiqueta: "Planeta", nombreAnimacion: "usarCatalejo"}',
+    });
+
+    this.crearBloqueAccion('ContarEstrella', 'countStar', {
+      icono: 'icono.estrella.png',
+      comportamiento: 'Contar',
+      argumentos: '{etiqueta: "Estrella", nombreAnimacion: "usarCatalejo"}',
+    });
+
     this.crearBloqueAccion('ExplotarGlobo', 'blowUpBallon', {
       icono: 'icono.globo.png',
       comportamiento: 'Interactuar',
