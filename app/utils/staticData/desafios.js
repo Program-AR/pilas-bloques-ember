@@ -18,7 +18,7 @@
 
 export const desafios = [
   {
-    id: 1,
+    id: "viejo1",
     nombre: 'AlienTocaBoton',
     escena: 'AlienInicial',
     bloques: ['MoverACasillaDerecha', 'ApretarBoton'],
@@ -28,7 +28,7 @@ export const desafios = [
     }
   },
   {
-    id: "nuevo1",
+    id: 1,
     nombre: 'CapyYGuyra',
     escena: `new EscenaCapySolo("[A,-,-,G]")`,
     bloques: ['MoverACasillaDerecha', 'SubirPajarito'],
@@ -207,7 +207,7 @@ export const desafios = [
     }
   },
   {
-    id: 22,
+    id: "viejo22",
     nombre: 'ElDetectiveChaparro',
     escena: 'ElDetectiveChaparro',
     bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
@@ -218,7 +218,7 @@ export const desafios = [
     }
   },
   {
-    id: "nuevo22",
+    id: 22,
     nombre: 'CapyBuscaAGuyra',
     escena: `new EscenaCapySolo("\
         [*,*,*,*,*],\

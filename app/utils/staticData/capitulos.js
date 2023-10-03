@@ -21,7 +21,7 @@ export const capitulos = [
     },
     {
         id: 'Autómatas, comandos, procedimientos y repetición',
-        grupoIds: ['AlienTocaBoton', 'NuevosComandos', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
+        grupoIds: ['CapyYGuyra', 'NuevosComandos', 'ElGatoEnLaCalle', 'NoMeCansoDeSaltar', 'ElMarcianoEnElDesierto', 'TitoEnciendeLuces', 'ElAlienYLasTuercas', 'ElRecolectorDeEstrellas', 'MariaLaComeSandias', 'AlimentandoALosPeces', 'InstalandoJuegos', 'LaGranAventuraDelMarEncantado', 'ReparandoLaNave'],
         expectations: {
             simpleRepetition: true
         }
@@ -33,7 +33,7 @@ export const capitulos = [
     },
     {
         id: 'Repetición condicional',
-        grupoIds: ['SuperTito1', 'SuperTito2', 'LaberintoConQueso', 'ElDetectiveChaparro', 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
+        grupoIds: ['SuperTito1', 'SuperTito2', 'LaberintoConQueso', 'CapyBuscaAGuyra' , 'FutbolRobots', 'PrendiendoLasCompus', 'ElMonoQueSabeContar']
     },
     {
         id: 'Sensores Numéricos',

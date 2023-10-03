@@ -2,7 +2,7 @@ localeName: Português
 changeLanguage: Mudar idioma
 model:
   challenges:
-    '1':
+    'viejo1':
       title: O alienígena toca o botão
       description: |
         Ajude nosso alienígena a apertar o botão de seu laboratório.
@@ -121,7 +121,7 @@ model:
       description: |
         O rato está com mais fome do que nunca! Guie-o pelo labirinto para que ele coma todos os pedaços de queijo. Dica: antes de começar, pressione o botão Executar várias vezes para ver como o cenário varia.
       clue: É importante pensar se a condição do bloco "Repetir até que" é atendida a algum momento. Do contrário, o programa pode nunca terminar!
-    '22':
+    'viejo22':
       title: Detetive Chaparro
       description: O detetive deve descobrir o culpado de um crime. Começando com o primeiro à esquerda, questione cada suspeito até encontrar o culpado!
       clue: O bloco "Repetir até que" nos permite encerrar o programa quando encontramos o culpado, sem ter que interrogar todos os suspeitos na fila.
@@ -769,6 +769,10 @@ model:
       clue: ''
   groups:
     AlienTocaBoton:
+      title: ''
+    CapyYGuyra:
+      title: ''
+    CapyBuscaAGuyra:
       title: ''
     NuevosComandos:
       title: ''
