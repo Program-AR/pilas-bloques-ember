@@ -709,7 +709,7 @@ model:
       title: Counting planets and stars
       description: |
         Mañic should visit all boxes and count how many planets and stars are there in total. Clue: first think how you could count whether there is any planet or star in a particular box. Then think how you could count all celestial bodies in only one particular column.
-      clue: 'Splitting a big problem into several little problems can help you better understand each one of its parts. At the same time, this will allow us to focus on solving easier challenges if compared to the original one.'
+      clue: 'Splitting a big problem into several little problems can help you better understand each of its parts. Even better: you can focus on solving smaller and easier parts!'
     'nuevo27':
       title: Mañic counts again
       description: 'Mañic needs to count the celestial bodies again, but now she cannot check whether she reached the end of the column! Is there any sensor to help her?'
