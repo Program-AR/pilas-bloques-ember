@@ -291,6 +291,8 @@ export const grupos = [
       'nuevo21',
       'nuevo23',
       'nuevo24',
+      'nuevo25',
+      'nuevo27',
       'nuevo28',
       'nuevo132',
       'nuevo133',

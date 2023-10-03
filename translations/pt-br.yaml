@@ -695,6 +695,15 @@ model:
       description: |
         Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
       clue: ''
+    'nuevo25':
+      title: Contando planetas e estrelas
+      description: |
+        Mañic deve passar por todos os quadrados e contar quantas estrelas e planetas existem no total. Dica: primeiro pense em como você contaria se houvesse uma estrela ou um planeta em um determinado quadrado. Em seguida, pense em como você faria para contar todos os corpos celestiais em uma única coluna.
+      clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
+    'nuevo27':
+      title: Mañic conta novamente
+      description: Mañic tem que contar os astros novamente, mas agora ela não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-la?
+      clue: Um sensor nos permite obter informações que podem mudar a cada execução do programa, até na mesma execução. Por exemplo, o comprimento de cada coluna varia dependendo da coluna em que Mañic está.
     'nuevo28':
       title: El planeta de Capy y Guyrá
       description: |
@@ -896,6 +905,8 @@ model:
       title: 'Com Coty'
     tecnopolis2021ConToto:
       title: 'Com Toto'
+    grupoTemporal:
+      title: 'Grupo temporário'
   books:
     '1':
       title: Nível Principiante
@@ -929,3 +940,5 @@ model:
       title: Parametrização de Soluções
     Desafios complementarios:
       title: Desafios complementares
+    capiTemporal:
+      title: Desafios temporários
