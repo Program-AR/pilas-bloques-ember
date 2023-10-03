@@ -125,6 +125,7 @@ chargeCellphone: Charge cell phone
 telescopeHere: Is there a telescope here?
 planetHere: Is there a planet here?
 canHere: Is there a can here?
+guyraHere: Is Guyra here?
 paperHere: Is there a paper here ?
 butterflyHere: Is there a butterfly here?
 cellphoneHere: Is there a cell phone here?
@@ -144,6 +145,7 @@ watchPlanet: Watch planet
 repairTelescope: Repair telescope
 alignTelescope: Align telescope
 pickCan: Pick can
+pickBird: Pick bird
 pickPaper: Pick paper
 holdPaper: Hold paper
 fillBin: Fill bin
