@@ -125,7 +125,7 @@ model:
       title: Capy looks for Guyra
       description: Help Capy to find Guyra
       clue: ''
-    'viejo22':
+    '22':
       title: Detective Chaparro
       description: 'The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!'
       clue: 'The "Repeat until" block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row.'
