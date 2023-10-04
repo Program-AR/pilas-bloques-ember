@@ -2,7 +2,7 @@ localeName: Español
 changeLanguage: Cambiar idioma
 model:
   challenges:
-    '1':
+    'viejo1':
       title: El alien toca el botón
       description: |
         Ayudá a nuestro Alien a presionar el botón de su laboratorio.
@@ -655,11 +655,11 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
-    'nuevo1':
+    1:
       title: Capy y Guyrá
       description: |
         El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
-      clue: 'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.'
+      clue: 'Fijate bien el orden de las _primitivas_: qué cosa tenés que hacer primero y qué cosa va después.'
     'nuevo4':
       title: Mañic en el cielo
       description: |
@@ -740,6 +740,11 @@ model:
       description: |
         Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
+    'nuevo22':
+      title: Capy busca a Guyrá
+      description: |
+        Ayuda a Capy a encontrar a Guyrá
+      clue: ''
     'nuevo23':
       title: Fútbol al sur
       description: |
@@ -838,7 +843,13 @@ model:
   groups:
     AlienTocaBoton:
       title: ''
+    CapyYGuyra:
+      title: ''
+    CapyBuscaAGuyra:
+      title: ''
     NuevosComandos:
+      title: ''
+    NuevosComandosCapy:
       title: ''
     ElGatoEnLaCalle:
       title: ''
