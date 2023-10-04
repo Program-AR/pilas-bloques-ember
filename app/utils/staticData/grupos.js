@@ -98,7 +98,7 @@ export const grupos = [
     desafioIds: [21]
   },
   {
-    id: 'CapyBuscaAGuyra',
+    id: 'ElDetectiveChaparro',
     desafioIds: [22]
   },
   {
