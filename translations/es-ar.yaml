@@ -704,7 +704,12 @@ model:
       title: Instalando juegos
       description: |
         ¡Hoy es noche gamer!... Yvoty va a instalar un juego en 3 compus para que ella y sus amigas tengan todo listo para divertirse. El proceso de instalación es: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Necesita de tu ayuda para completar la instalación en las tres computadoras.  
-      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Para qué sirve tener eso en cuenta?' 
+      clue: ¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Para qué te sirve considerar eso? 
+    'nuevo11':
+      title: Gran juntada de amigues
+      description: |
+        Todos los amigues de Pilas Bloques están preparando una juntada, y cada une tiene sus elementos representativos.  
+      clue: No pienses el desafío como un todo. Acordate de separar el problema grande en pequeños problemas e ir resolviendo cada uno tranquilamente. 
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
