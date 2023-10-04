@@ -10,6 +10,10 @@ export const grupos = [
     desafioIds: [46]
   },
   {
+    id: 'NuevosComandosCapy',
+    desafioIds: ["nuevo46"]
+  },
+  {
     id: 'ElGatoEnLaCalle',
     desafioIds: [2]
   },
@@ -264,7 +268,6 @@ export const grupos = [
   {
     id: 'grupoTemporal',
     desafioIds: [
-      'nuevo46',
       'nuevo4',
       'nuevo5',
       'nuevo6',
