@@ -207,7 +207,7 @@ export const desafios = [
     }
   },
   {
-    id: "viejo22",
+    id: 22,
     nombre: 'ElDetectiveChaparro',
     escena: 'ElDetectiveChaparro',
     bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
@@ -218,7 +218,7 @@ export const desafios = [
     }
   },
   {
-    id: 22,
+    id: "nuevo22",
     nombre: 'CapyBuscaAGuyra',
     escena: `new EscenaCapySolo("\
         [*,*,*,*,*],\
