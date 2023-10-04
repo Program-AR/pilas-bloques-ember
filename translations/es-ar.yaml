@@ -740,7 +740,7 @@ model:
       description: |
         Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
-    '22':
+    'nuevo22':
       title: Capy busca a Guyra
       description: |
         Ayuda a Capy a encontrar a Guyra
