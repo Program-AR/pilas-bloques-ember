@@ -690,6 +690,11 @@ model:
       description: |
         Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
+    'nuevo22':
+      title: Capy busca a Guyrá
+      description: |
+        Ayuda a Capy a encontrar a Guyrá
+      clue: ''
     'nuevo24':
       title: Prendiendo las compus
       description: |

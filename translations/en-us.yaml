@@ -122,8 +122,8 @@ model:
         The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
       clue: 'It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!'
     'nuevo22':
-      title: Capy looks for Guyra
-      description: Help Capy to find Guyra
+      title: Capy looks for Guyrá
+      description: Help Capy to find Guyrá
       clue: ''
     '22':
       title: Detective Chaparro
