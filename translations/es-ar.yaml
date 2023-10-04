@@ -664,7 +664,7 @@ model:
       title: Chuy hace jueguito
       description: |
         El calentamiento previo es fundamental para une deportiste, sobre todo hoy que se viene un partido complicado. Hacé que Chuy **avance**, **caliente**, **haga jueguito** y **retroceda** para ponerse a punto antes de la competencia.
-      clue: **Calentar** y **Hacer jueguito** no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles?
+      clue: Calentar y Hacer jueguito no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles?
     'nuevo3':
       title: No me canso de rebotar
       description: |
@@ -698,7 +698,7 @@ model:
     'nuevo9':
       title: Cargando los celus
       description: |
-      Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
+        Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador y luego ir a cargar cada uno de los celulares.  Programá una solución para que pueda lograrlo.
       clue: '¿En cuántas partes te conviene dividir tu estrategia?'
     'nuevo10':
       title: Instalando juegos
