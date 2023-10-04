@@ -30,9 +30,9 @@ module('Acceptance | challenge content internationalization test', function (hoo
 
   // Second book challenge:
   testCanVisit(1,
-    'El alien toca el botón',
-    'Ayudá a nuestro Alien a presionar el botón de su laboratorio. Pistas: mirá las primitivas disponibles. ¡Vas a tener que avanzar varias veces! 😉',
-    'Los bloques te permiten formar secuencias de acciones para resolver los desafíos que te proponemos en Pilas Bloques.')
+    'Capy y Guyrá',
+    'El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.',
+    'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.')
 
   // Conditional Alternative:
   // Because markdown is being used, the clue of this challenge uses the caracter '…', which is different from '...' (three dot characters).

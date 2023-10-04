@@ -52,6 +52,6 @@ export const capitulos = [
     },
     {
         id: 'capiTemporal',
-        grupoIds: ['grupoTemporal']
+        grupoIds: ['grupoTemporal', 'NuevosComandos']
     },
 ];

@@ -659,7 +659,7 @@ model:
       title: Capy y Guyrá
       description: |
         El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
-      clue: 'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.'
+      clue: 'Fijate bien el orden de las _primitivas_: qué cosa tenés que hacer primero y qué cosa va después.'
     'nuevo4':
       title: Mañic en el cielo
       description: |
