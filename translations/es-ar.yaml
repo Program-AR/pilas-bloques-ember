@@ -147,7 +147,7 @@ model:
     '27':
       title: El mono cuenta de nuevo
       description: 'El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?'
-      clue: 'Una sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
+      clue: 'Un sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
     '28':
       title: El planeta de Nano
       description: |
@@ -755,6 +755,15 @@ model:
       description: |
         Yvoty siempre está predispuesta a resolver cuestiones técnicas. En este caso, la escuela le pidió ayuda para encender las computadoras de todas las aulas. El desafío es que las aulas tienen diferentes tamaños… ¡Ayudala a prender todas las computadoras!  
       clue: '¿Sería posible prender todo un lado del rectángulo del aula, y luego repetirlo en cada tramo?'
+    'nuevo25':
+      title: Contando planetas y estrellas
+      description: |
+        Mañic debe recorrer todas las casillas y contar cuántas estrellas y planetas hay en total. Pista: primero pensá cómo contarías si hay una estrella o un planeta en una casilla determinada. Luego pensá cómo harías para contar todos los astros de una sola columna.
+      clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
+    'nuevo27':
+      title: Mañic cuenta de nuevo
+      description: 'Mañic tiene que contar otra vez los astros, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que la pueda ayudar?'
+      clue: 'Un sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parada Mañic.'
     'nuevo28':
       title: El humedal de Capy y Guyrá
       description: |
@@ -968,6 +977,8 @@ model:
       title: 'Con Coty'
     tecnopolis2021ConToto:
       title: 'Con Toto'
+    grupoTemporal:
+      title: 'Grupo temporal'  
   books:
     '1':
       title: Nivel Principiante
@@ -1003,3 +1014,5 @@ model:
       title: Parametrización de soluciones
     Desafios complementarios:
       title: Desafios complementarios
+    capiTemporal:
+      title: Desafíos temporales

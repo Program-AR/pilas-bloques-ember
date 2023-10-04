@@ -45,6 +45,8 @@ nextLine: Pasar a la siguiente fila
 nextColumn: Pasar a la siguiente columna
 countBanana: Contar una banana
 countApple: Contar una manzana
+countPlanet: Contar un planeta
+countStar: Contar una estrella
 blowUpBallon: Explotar globo
 kickBall: Patear pelota
 kickFootballBall: Patear pelota de fútbol
