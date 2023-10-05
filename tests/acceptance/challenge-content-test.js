@@ -29,7 +29,7 @@ module('Acceptance | challenge content internationalization test', function (hoo
   }
 
   // Second book challenge:
-  testCanVisit(1,
+  testCanVisit(1001,
     'Capy y Guyrá',
     'El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.',
     'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.')
