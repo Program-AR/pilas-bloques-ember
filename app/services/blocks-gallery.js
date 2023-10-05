@@ -362,7 +362,7 @@ export default Service.extend({
       icono: 'icono.pelota-pulpo.png',
       comportamiento: 'Interactuar',
       argumentos: '{etiqueta: "Pulpito", nombreAnimacion: "recoger", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota", idTransicion: "recoger"}',
-    })
+    }) 
 
     this.crearBloqueAccion('RebotarUnaVezPingPong', 'bouncePingPong', {
       icono: 'icono.paleta.png',
