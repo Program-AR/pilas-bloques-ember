@@ -2,7 +2,7 @@ localeName: English
 changeLanguage: Change language
 model:
   challenges:
-    'viejo1':
+    '1':
       title: The alien pushes the button
       description: |
         Help our Alien push the button of his lab.
@@ -512,6 +512,16 @@ model:
       title: Coty practices free drawing!
       description: In this activity you’ll be able to draw whatever you like.
       clue: 'We’ve included all blocks possible, so that you can unleash your creativity.'
+    '1001':
+      title: Capy and Guyrá
+      description: |
+        The capybara Capy and his inseparable friend, the Guyrá oxpecker, have a very particular way of traveling through the estuaries. Help Capy pick up his friend to put him on his head and thus embark on a new adventure together.         
+      clue: 'Pay attention to the order of the _primitives_: what you have to do first and what comes next.'
+    '1046':
+      title: New commands
+      description: |
+        Now Capy needs to collect two cans to his right, then two lower ones, and one at the bottom.
+      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
     '202101':
       title: Introduction
       description: Help Duba pick all beefsteaks up.
@@ -772,11 +782,6 @@ model:
       description: |
         The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
       clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
-    'nuevo46':
-      title: New commands
-      description: |
-        Now Capy needs to collect two cans to his right, then two lower ones, and one at the bottom.
-      clue: Did you see the procedures? They can help you **create new commands** to use **as many times as you want.**   
     'nuevo131':
       title: Recycling Papers
       description: |

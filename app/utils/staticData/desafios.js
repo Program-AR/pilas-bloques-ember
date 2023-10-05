@@ -18,7 +18,7 @@
 
 export const desafios = [
   {
-    id: "viejo1",
+    id: 1,
     nombre: 'AlienTocaBoton',
     escena: 'AlienInicial',
     bloques: ['MoverACasillaDerecha', 'ApretarBoton'],
@@ -26,16 +26,6 @@ export const desafios = [
       decomposition: false,
       simpleRepetition: false
     }
-  },
-  {
-    id: 1,
-    nombre: 'CapyYGuyra',
-    escena: `new EscenaCapySolo("[A,-,-,G]")`,
-    bloques: ['MoverACasillaDerecha', 'SubirPajarito'],
-    expectations: {
-        decomposition: false,
-        simpleRepetition: false
-      }
   },
   {
     id: 46,
@@ -1935,6 +1925,33 @@ export const desafios = [
     bloques: [
       'MoverArribaDibujando', 'MoverAbajoDibujando', 'MoverDerechaDibujando', 'MoverIzquierdaDibujando', 'SaltarAbajo', 'SaltarArriba', 'SaltarDerecha', 'SaltarIzquierda', 'Repetir', 'DibujarLado', 'GirarGrados', 'Numero', 'OpAritmetica']
   },
+  // Nuevos renumerados
+  {
+    id: 1001,
+    nombre: 'CapyYGuyra',
+    escena: `new EscenaCapySolo("[A,-,-,G]")`,
+    bloques: ['MoverACasillaDerecha', 'SubirPajarito'],
+    expectations: {
+        decomposition: false,
+        simpleRepetition: false
+      }
+  },
+  {
+    id: 1046,
+    nombre: 'NuevosComandosCapy',
+    escena: `new EscenaCapy("\
+      [A,-,L],\
+      [-,_,L],\
+      [-,_,_],\
+      [-,-,L],\
+      [L,_,L],\")`,
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
+    expectations: {
+      simpleRepetition: false,
+      decomposition: false,
+      decomposition9: true
+    }
+  },
   //Tecnopolis
   {
     id: 202101,
@@ -3108,22 +3125,6 @@ export const desafios = [
           f: ["M", "M"]
       }})`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
-  },
-  {
-    id: 'nuevo46',
-    nombre: 'NuevosComandosCapy',
-    escena: `new EscenaCapy("\
-      [A,-,L],\
-      [-,_,L],\
-      [-,_,_],\
-      [-,-,L],\
-      [L,_,L],\")`,
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaAbajo', 'MoverACasillaArriba', 'RecogerLata', 'Procedimiento'],
-    expectations: {
-      simpleRepetition: false,
-      decomposition: false,
-      decomposition9: true
-    }
   },
   {
     id: 'nuevo132',
