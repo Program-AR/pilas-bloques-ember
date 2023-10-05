@@ -131,6 +131,7 @@ chargeCellphone: Cargar celular
 telescopeHere: ¿Hay un telescopio acá?
 planetHere: ¿Hay un planeta acá?
 canHere: ¿Hay una lata acá?
+guyraHere: ¿Guyrá está acá?
 paperHere: ¿Hay un papel acá?
 butterflyHere: ¿Hay una mariposa acá?
 cellphoneHere: ¿Hay un celular acá?
@@ -150,6 +151,7 @@ watchPlanet: Observar planeta
 repairTelescope: Reparar telescopio
 alignTelescope: Alinear telescopio
 pickCan: Recoger lata
+pickBird: Subir a Guyrá
 pickPaper: Recoger papel
 holdPaper: Sostener papel
 fillBin: Llenar tacho

@@ -2,7 +2,7 @@ localeName: English
 changeLanguage: Change language
 model:
   challenges:
-    '1':
+    'viejo1':
       title: The alien pushes the button
       description: |
         Help our Alien push the button of his lab.
@@ -121,6 +121,10 @@ model:
       description: |
         The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
       clue: 'It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!'
+    'nuevo22':
+      title: Capy looks for Guyrá
+      description: Help Capy to find Guyrá
+      clue: ''
     '22':
       title: Detective Chaparro
       description: 'The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!'
@@ -798,6 +802,12 @@ model:
   groups:
     AlienTocaBoton:
       title: ''    
+    CapyYGuyra:
+      title: ''
+    NuevosComandosCapy:
+      title: ''
+    CapyBuscaAGuyra:
+      title: ''
     NuevosComandos:
       title: ''
     ElGatoEnLaCalle:

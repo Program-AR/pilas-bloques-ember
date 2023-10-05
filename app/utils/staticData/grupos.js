@@ -2,12 +2,16 @@
 
 export const grupos = [
   {
-    id: 'AlienTocaBoton',
+    id: 'CapyYGuyra',
     desafioIds: [1]
   },
   {
     id: 'NuevosComandos',
     desafioIds: [46]
+  },
+  {
+    id: 'NuevosComandosCapy',
+    desafioIds: ["nuevo46"]
   },
   {
     id: 'ElGatoEnLaCalle',

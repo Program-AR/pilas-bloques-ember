@@ -435,6 +435,12 @@ export default Service.extend({
       argumentos: '{etiqueta: "Lata", nombreAnimacion: "recoger", "mensajeError": "Acá no hay una lata"}',
     });
 
+    this.crearBloqueAccion('SubirPajarito', 'pickBird', {
+      icono: 'icono.guyra.png',
+      comportamiento: 'SubirPajarito',
+      argumentos: '{etiqueta: "Guyra", nombreAnimacion: "recoger", "mensajeError": "Guyra no está aca"}',
+    });
+
     this.crearBloqueAccion('RecogerPapel', 'pickPaper', {
       icono: 'icono.papel.png',
       comportamiento: 'RecojoPapel',
@@ -1194,6 +1200,11 @@ export default Service.extend({
     this.crearBloqueSensor('TocandoLata', 'canHere', {
       icono: 'icono.lata.png',
       funcionSensor: 'tocando("Lata")'
+    });
+
+    this.crearBloqueSensor('TocandoGuyra', 'guyraHere', {
+      icono: 'icono.guyra.png',
+      funcionSensor: 'tocando("Guyra")'
     });
     
     this.crearBloqueSensor('TocandoTelescopio', 'telescopeHere', {

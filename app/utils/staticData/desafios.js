@@ -18,7 +18,7 @@
 
 export const desafios = [
   {
-    id: 1,
+    id: "viejo1",
     nombre: 'AlienTocaBoton',
     escena: 'AlienInicial',
     bloques: ['MoverACasillaDerecha', 'ApretarBoton'],
@@ -26,6 +26,16 @@ export const desafios = [
       decomposition: false,
       simpleRepetition: false
     }
+  },
+  {
+    id: 1,
+    nombre: 'CapyYGuyra',
+    escena: `new EscenaCapySolo("[A,-,-,G]")`,
+    bloques: ['MoverACasillaDerecha', 'SubirPajarito'],
+    expectations: {
+        decomposition: false,
+        simpleRepetition: false
+      }
   },
   {
     id: 46,
@@ -203,6 +213,18 @@ export const desafios = [
     bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
       'IrAlPrimerSospechoso', 'IrAlSiguienteSospechoso', 'InterrogarSospechoso',
       'EsCulpable'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: "nuevo22",
+    nombre: 'CapyBuscaAGuyra',
+    escena: `new EscenaCapySolo("\
+        [*,*,*,*,*],\
+      ", { coleccion: ["G", "A"] })`,
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
+      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
     expectations: {
       conditionalRepetition: true,
     }
