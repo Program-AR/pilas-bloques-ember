@@ -2725,6 +2725,24 @@ export const desafios = [
                 </xml>`
   },
   {
+    id: 'nuevo2',
+    nombre: 'ChuyHaciendoJueguito', 
+    escena: 'ChuyHaciendoJueguito',
+    bloques: ['Avanzar', 'Volver', 'Retroceder', 'RecogerPulpito', 'RebotarPiePulpito', 'RevolearPulpito', 'Repetir', 'Procedimiento'],
+    expectations: {
+      simpleRepetition: false
+    }
+  },  
+  {
+    id: 'nuevo3',
+    nombre: 'NoMeCansoDeRebotar',
+    escena: 'NoMeCansoDeRebotar',
+    bloques: ['RebotarUnaVezPingPong', 'Procedimiento', 'Repetir'],
+    expectations: {
+      decomposition: false
+    }
+  },
+    {
     id: 'nuevo4',
     nombre: 'ManicEnElCielo',
     escena: `new EscenaManic("\

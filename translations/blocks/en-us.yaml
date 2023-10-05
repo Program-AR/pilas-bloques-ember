@@ -16,6 +16,7 @@ lie: Lie down
 standUp: Stand up
 return: Return
 advance: Move forward
+back: Move backward
 dream: Dream
 jump: Jump
 goToLeftBorder: Go to left border
@@ -51,6 +52,9 @@ blowUpBallon: Pinch the balloon
 kickBall: Kick the ball
 kickFootballBall: Kick the football ball
 bounceRubberBall: Bounce the rubber ball
+volleyRubberBall: Volley the rubber ball
+pickRubberBall: Pick the rubber ball
+bounceFootRubberBall: Bounce with foot the rubber ball
 move1Km: Move 1 Km forward
 changeLightColor: Change spotlight color
 moveNextLight: Move to next spotlight

@@ -660,6 +660,15 @@ model:
       description: |
         El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
       clue: 'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.'
+    'nuevo2':
+      title: Chuy haciendo jueguito
+      description: 'Hacé que Chuy avance un paso, entre en calor avanzando y retrocediendo, recoja la pelota pulpito, haga jueguito revoleando la pelota y rebotandola con el pie y por ultimo vuelva a su lugar.'
+      clue: Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.
+    'nuevo3':
+      title: No me canso de rebotar
+      description: |
+        Ayudá a Chuy a hacer rebotar la pelota de ping pong 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.
+      clue: El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".
     'nuevo4':
       title: Mañic en el cielo
       description: |

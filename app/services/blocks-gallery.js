@@ -346,6 +346,30 @@ export default Service.extend({
       argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota"}',
     })
 
+    this.crearBloqueAccion('RevolearPulpito', 'volleyRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"revolearPulpito", "mensajeError": "Acá no hay una pelota", idTransicion: "revolearPulpito"}',
+    })
+
+    this.crearBloqueAccion('RebotarPiePulpito', 'bounceFootRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", "mensajeError": "Acá no hay una pelota", idTransicion: "rebotarPiePulpito"}',
+    })
+
+    this.crearBloqueAccion('RecogerPulpito', 'pickRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion: "recoger", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota", idTransicion: "recoger"}',
+    })
+
+    this.crearBloqueAccion('RebotarUnaVezPingPong', 'bouncePingPong', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'PingPongAnimado',
+      argumentos: '{mensaje: "Rebotando...", etiqueta: "PingPong", nombreAnimacion:"usarPaletaUnaVez", animacionInteractuadoMientras: "desaparecer" }',
+    });
+
     this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
       icono: 'icono.luciernaga-prendida.png',
       comportamiento: 'SacarFoto',
@@ -546,6 +570,12 @@ export default Service.extend({
       icono: 'icono.derecha.png',
       comportamiento: 'MovimientoAnimado',
       argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
+    });
+
+    this.crearBloqueAccion('Retroceder', 'back', {
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MovimientoAnimado',
+      argumentos: '{direccion: [-1,0], distancia: 50, idTransicion: "retroceder"}',
     });
 
     this.crearBloqueAccion('Soniar', 'dream', {
