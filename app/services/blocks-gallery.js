@@ -875,6 +875,12 @@ export default Service.extend({
       argumentos: '{}',
     });
 
+    this.crearBloqueAccion('Avanzar1kmChuy', 'move1Km', {
+      icono: 'icono.derecha.png',
+      comportamiento: 'CorrerHeroicamente',
+      argumentos: '{}',
+    });
+
     this.crearBloqueAccion('CambiarColor', 'changeLightColor', {
       icono: 'icono.cambiar.color.png',
       comportamiento: 'CambiarColor',

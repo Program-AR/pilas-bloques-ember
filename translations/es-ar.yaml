@@ -765,6 +765,11 @@ model:
       description: |
         Mañic debe recorrer todas las casillas y contar cuántas estrellas y planetas hay en total. Pista: primero pensá cómo contarías si hay una estrella o un planeta en una casilla determinada. Luego pensá cómo harías para contar todos los astros de una sola columna.
       clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
+    'nuevo26':
+      title: La Supermaratón
+      description: |
+        Chuy debe realizar su rutina matutina que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que Chuy llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.
+      clue: Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor
     'nuevo27':
       title: Mañic cuenta de nuevo
       description: 'Mañic tiene que contar otra vez los astros, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que la pueda ayudar?'
