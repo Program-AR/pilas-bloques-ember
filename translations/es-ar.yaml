@@ -710,6 +710,11 @@ model:
       description: |
         Todos los amigues de Pilas Bloques están preparando una juntada, y cada une debe tener sus objetos favoritos. Capy y Guyrá son los encargados de buscar a cada personaje y entregarle el utensilio respectivo y de esa manera cada personaje se sumará al grupo. Al completar el recorrido, se irán todos a pasear en yacaré.  
       clue: No pienses el desafío como un todo. Acordate de separar el problema grande en pequeños problemas e ir resolviendo cada uno tranquilamente. 
+    'nuevo12':
+      title: Limpiando el humedal
+      description: |
+        Limpiar no es tarea fácil. Hay que separar los residuos para facilitar su reciclado. Ayudá a nuestros amigos a recoger todos los papeles y las latas pero, atención, que cada tipo de residuo sea tirado en el tacho correspondiente. 
+      clue: Son 3 latas y 3 papeles. Fijate cómo podés automatizar el proceso de recolección. Y... ¡no olvides que hay que partir en yacaré al terminar el trabajo!.
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
@@ -755,6 +760,11 @@ model:
       description: |
         Ya vimos a Chuy corriendo con la pelota en la mano por escenarios diversos. Ahora, una nueva alternativa nos espera para resolverla juntes. Además de sortear los obstáculos que se presentan, deberá patear una pelota de goma si es que esta aparece. Como era de esperarse, nunca es la misma cantidad de pelotas y el formato del terreno a sortear también es diferente en cada ejecución. 
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
+    'nuevo22':
+      title: Encontrando el principio
+      description: |
+       Esta descripción no la entendí bien. 
+      clue: Esperar aclaración 
     'nuevo23':
       title: Fútbol al sur
       description: |
@@ -765,6 +775,16 @@ model:
       description: |
         Nuestra amiga Yvoty siempre está colaborando con las cuestiones técnicas... en este caso tiene como tarea prender todas las computadoras de la escuela de su barrio. La dificultad reside en que como las aulas tienen todas distinto tamaño, se necesita programar una manera de recorrer cada una prendiendo las compus sin importar cuántas hubiere. 
       clue: 'Pensá cómo poder prender todo un lado del rectángulo del aula, y luego repertilo en cada tramo'
+    'nuevo25':
+      title: Contando planetas y estrellas 
+      description: |
+        Es una noche clara, ideal para la observación de astros. Recorré el campo y contá junto con Mañic la cantidad de planetas y de estrellas que se vean en el firmamento. 
+      clue: Una estrategia posible podría ser contar los astros que se vean en una columna y luego replicarlo. ¿Qué te parece a vos?
+    'nuevo26':
+      title: El entrenamiento de Chuy 
+      description: |
+        Al comenzar el entrenamiento diario, el primer desafío de Chuy es correr una distancia variable, según lo indique su preparadora física. Es muy importante que Chuy recorra exactamente esa distancia, cuenta con vos para ayudarle a realizar ese exigente entrenamiento.  
+      clue: ¿Te fijaste en la categoría **sensores**? ¿Hay algún bloque que te pueda servir para controlar exactamente la distancia recorrida?
     'nuevo28':
       title: El humedal de Capy y Guyrá
       description: |
