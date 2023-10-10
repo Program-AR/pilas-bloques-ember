@@ -708,7 +708,7 @@ model:
     'nuevo11':
       title: Gran juntada de amigues
       description: |
-        Todos los amigues de Pilas Bloques están preparando una juntada, y cada une tiene sus elementos representativos.  
+        Todos los amigues de Pilas Bloques están preparando una juntada, y cada une debe tener sus objetos favoritos. Capy y Guyrá son los encargados de buscar a cada personaje y entregarle el utensilio respectivo y de esa manera cada personaje se sumará al grupo. Al completar el recorrido, se irán todos a pasear en yacaré.  
       clue: No pienses el desafío como un todo. Acordate de separar el problema grande en pequeños problemas e ir resolviendo cada uno tranquilamente. 
     'nuevo13':
       title: Chuy y la pelota indecisa
