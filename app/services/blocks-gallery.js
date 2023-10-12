@@ -1742,7 +1742,10 @@ export default Service.extend({
     Blockly.MyLanguage.Hasta = function (block) {
       var condition = Blockly.MyLanguage.valueToCode(block, 'condition', Blockly.MyLanguage.ORDER_ASSIGNMENT) || 'false';
       var contenido = Blockly.MyLanguage.statementToCode(block, 'block');
-      return `while (!${condition}) {
+
+      const highlightCondition = `highlightBlock(${JSON.stringify(block.getInputTargetBlock("condition").id)})`
+
+      return `while (${highlightCondition}, !${condition}) {
         ${contenido}
       }`;
     };

@@ -18,6 +18,7 @@ export default Service.extend({
             console.warn(`Couldn't highlight block id: ${blockId}`);
             return;
         }
+
         this._removeLastBlockIfEndOfModule();
         this._removePreviousBlockIfContinue(block);
         this._updateHighlight();
@@ -27,6 +28,8 @@ export default Service.extend({
         }
 
         this._updateHighlight();
+
+        if (block.categoryId == "sensors") { alert("espera") } //cambiar esto por un sleep. Es lo que hace que se espere y se vea el highlight
     },
 
     clear() {
