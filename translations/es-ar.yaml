@@ -702,7 +702,7 @@ model:
       clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?' 
     'nuevo12':
       title: Limpiando el humedal
-      description: 'Capy necesita limpiar el humedal antes de ir a surfear. Para lograrlo, Capy necesita agarrar 3 latas y 3 papeles y llevarlos hasta el tacho, pero no puede tirar más de uno a la vez.'
+      description: 'Capy necesita limpiar el humedal antes de ir a surfear. Para lograrlo, Capy necesita agarrar 3 latas y 3 papeles y llevarlos hasta el tacho, pero no puede tirar más de uno a la vez. Luego, se sube al yacaré y se va a surfear!'
       clue: ''
     'nuevo13':
       title: Chuy y la pelota indecisa

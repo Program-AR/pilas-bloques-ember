@@ -9,15 +9,15 @@ moduloActividad(nombre, () => {
 	});
 
 	actividadTest(nombre, {
-		descripcionAdicional: 'Da error al querer irse sin limpiar el humedal',
+		descripcionAdicional: 'Da error al tirar en el tacho cuando no tengo nada',
 		solucion:'<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="J;fm@E$*cAyjoQ^q-(]#" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><shadow type="required_statement" id="-8!hD4cmMC#/Tt`z`oCm"></shadow><block type="Colocar" id="^7J6N9H`ifIJ[+gs|S5H"></block></statement></block></xml>',
-		errorEsperado: 'Para irse hace falta un transporte'
+		errorEsperado: 'No tengo nada en la mano'
 	});
 
 	actividadTest(nombre, {
-		descripcionAdicional: 'Da error al tirar en el tacho cuando no tengo nada',
+		descripcionAdicional: ' Da error al querer irse sin limpiar el humedal',
 		solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="J;fm@E$*cAyjoQ^q-(]#" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><shadow type="required_statement" id="oUIZyToTrw6};w;Jsy/7"></shadow><block type="IrseEnYacare" id="JF/iM)gS/BDtVhDC0Jr*"></block></statement></block></xml>',
-		errorEsperado: 'No tengo nada en la mano'
+		errorEsperado: 'Para irse hace falta un transporte'		
 	});
 
 });
