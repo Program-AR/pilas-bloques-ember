@@ -15,7 +15,7 @@ _____________
   <img src="https://user-images.githubusercontent.com/5421992/216465215-be8ae60c-5498-42ef-acc2-1d57fa38b349.svg" width="70%" />
 </p>
 
-## Sobre la aplicación
+## Sobre la aplicación 
 
 Pilas Bloques es una aplicación para enseñar y aprender a programar, desarrollada especialmente para el aula. Se proponen desafíos con diversos niveles de dificultad para acercar a las y los estudiantes al mundo de la programación por medio de bloques. Para más información, ver el [Acerca De](https://pilasbloques.program.ar/acerca-de-pilas-bloques/) de Pilas Bloques.
 
