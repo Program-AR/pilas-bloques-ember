@@ -40,6 +40,10 @@ pickIron: Pick iron
 pickCarbon: Pick carbon
 lightCampfire: Light the campfire
 putIntoTheShip: Put into the spaceship
+goInAlligator: Go in alligator
+takeCan: Take can
+takePaper: Take paper
+putIntoTheTrash: Put into the trash
 leavePresent: Leave a present
 nextLine: Go to the next line
 nextColumn: Go to the next column

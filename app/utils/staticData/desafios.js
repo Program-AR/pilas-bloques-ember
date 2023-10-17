@@ -207,7 +207,13 @@ export const desafios = [
       conditionalRepetition: true,
     }
   },
-  {
+{
+    id: 'nuevo12',
+    nombre: 'LimpiandoElHumedal',
+    escena: 'LimpiandoElHumedal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+  },
+    {
     id: "nuevo22",
     nombre: 'CapyBuscaAGuyra',
     escena: `new EscenaCapySolo("\
