@@ -680,6 +680,10 @@ model:
       description: |
         Yvoty tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
       clue: ''
+    'nuevo12':
+      title: Limpando o pantanal
+      description: 'Capy precisa limpar o pântano antes de surfar. Para conseguir isso, Capy precisa pegar 3 latas e 3 pedaços de papel e levá-los para o lixo, mas não pode jogar mais de um de cada vez.'
+      clue: ''
     'nuevo16':
       title: Tres telescopios
       description: |

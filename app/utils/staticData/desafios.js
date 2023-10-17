@@ -207,24 +207,6 @@ export const desafios = [
       conditionalRepetition: true,
     }
   },
-{
-    id: 'nuevo12',
-    nombre: 'LimpiandoElHumedal',
-    escena: 'LimpiandoElHumedal',
-    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
-  },
-    {
-    id: "nuevo22",
-    nombre: 'CapyBuscaAGuyra',
-    escena: `new EscenaCapySolo("\
-        [*,*,*,*,*],\
-      ", { coleccion: ["G", "A"] })`,
-    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
-      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
-    expectations: {
-      conditionalRepetition: true,
-    }
-  },
   {
     id: 23,
     nombre: 'FutbolRobots',
@@ -2841,6 +2823,12 @@ export const desafios = [
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
+    id: 'nuevo12',
+    nombre: 'LimpiandoElHumedal',
+    escena: 'LimpiandoElHumedal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+  },
+  {
     id: 'nuevo13',
     nombre: 'PateandoAVeces',
     escena: `new EscenaChuy("[A,G?]",{},[1,0])`,
@@ -2940,6 +2928,18 @@ export const desafios = [
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
       'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
+    id: "nuevo22",
+    nombre: 'CapyBuscaAGuyra',
+    escena: `new EscenaCapySolo("\
+        [*,*,*,*,*],\
+      ", { coleccion: ["G", "A"] })`,
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
+      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
     expectations: {
       conditionalRepetition: true,
     }

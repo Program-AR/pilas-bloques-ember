@@ -121,10 +121,6 @@ model:
       description: |
         The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
       clue: 'It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!'
-    'nuevo22':
-      title: Capy looks for Guyrá
-      description: Help Capy to find Guyrá
-      clue: ''
     '22':
       title: Detective Chaparro
       description: 'The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!'
@@ -694,6 +690,10 @@ model:
       description: |
         Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ''
+    'nuevo12':
+      title: cleaning the wetland
+      description: 'Capy needs to clean the wetland to go surfing. To achieve this, Capy needs to carry 3 cans and 3 papers to the trash, but Capy cannot throw more than one at a time.'
+      clue: ''
     'nuevo16':
       title: Three telescopes
       description: |
@@ -714,6 +714,10 @@ model:
       description: |
         Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
       clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
+    'nuevo22':
+      title: Capy looks for Guyrá
+      description: Help Capy to find Guyrá
+      clue: ''
     'nuevo24':
       title: Powering all computers on
       description: |

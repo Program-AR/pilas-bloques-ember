@@ -700,6 +700,10 @@ model:
       description: |
         Yvoty va a instalar un juego en tres computadoras para que ella y sus amigas tengan todo listo para divertirse esta noche. Los pasos para instalarlo son: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Ayudala a completar la instalación de las tres compus.  
       clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?' 
+    'nuevo12':
+      title: Limpiando el humedal
+      description: 'Capy necesita limpiar el humedal antes de ir a surfear. Para lograrlo, Capy necesita agarrar 3 latas y 3 papeles y llevarlos hasta el tacho, pero no puede tirar más de uno a la vez.'
+      clue: ''
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
