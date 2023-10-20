@@ -784,6 +784,43 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('Colocar', 'putIntoTheTrash', {
+      icono: 'icono.tacho.png',
+      comportamiento: 'Soltar',
+      argumentos: `{
+        idTransicion: "colocar",
+        etiqueta: "Tacho",
+      }`,
+    });
+
+    this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
+      icono: 'icono.yacare.png',
+      comportamiento: 'Irse',
+      argumentos: `{
+        irseCon: "yacare",
+        nombreAnimacion: "surfear"
+      }`,
+    });
+
+    this.crearBloqueAccion('TomarLata', 'takeCan', {
+      icono: 'icono.lata.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Lata",
+        nombreAnimacion: "recoger"
+      }`,
+    });
+
+    this.crearBloqueAccion('TomarPapel', 'takePaper', {
+      id: 'TomarPapel',
+      icono: 'icono.papel.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Papel",
+        nombreAnimacion: "recoger"
+      }`,
+    });
+
     this.crearBloqueAccion('AvanzarMono', 'moveRight', {
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',

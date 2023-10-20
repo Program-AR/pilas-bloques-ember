@@ -2841,6 +2841,12 @@ export const desafios = [
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
+    id: 'nuevo12',
+    nombre: 'LimpiandoElHumedal',
+    escena: 'LimpiandoElHumedal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+  },
+  {
     id: 'nuevo13',
     nombre: 'PateandoAVeces',
     escena: `new EscenaChuy("[A,G?]",{},[1,0])`,

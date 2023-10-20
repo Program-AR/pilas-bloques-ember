@@ -699,6 +699,10 @@ model:
       description: |
         Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ''
+    'nuevo12':
+      title: Cleaning the wetland
+      description: 'Capy needs to clean the wetland to go surfing. To achieve this, Capy needs to carry 3 cans and 3 papers to the trash, but Capy cannot throw more than one at a time. Then, Capy gets on the alligator and finally goes surfing!'
+      clue: ''
     'nuevo16':
       title: Three telescopes
       description: |
