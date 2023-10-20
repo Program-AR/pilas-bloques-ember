@@ -208,18 +208,6 @@ export const desafios = [
     }
   },
   {
-    id: "nuevo22",
-    nombre: 'CapyBuscaAGuyra',
-    escena: `new EscenaCapySolo("\
-        [*,*,*,*,*],\
-      ", { coleccion: ["G", "A"] })`,
-    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
-      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
-    expectations: {
-      conditionalRepetition: true,
-    }
-  },
-  {
     id: 23,
     nombre: 'FutbolRobots',
     escena: 'FutbolRobots',
@@ -2957,6 +2945,18 @@ export const desafios = [
     }
   },
   {
+    id: "nuevo22",
+    nombre: 'CapyBuscaAGuyra',
+    escena: `new EscenaCapySolo("\
+        [*,*,*,*,*],\
+      ", { coleccion: ["G", "A"] })`,
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
+      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
     id: 'nuevo23',
     nombre: 'FutbolAlSur',
     escena: 'FutbolAlSur',
@@ -3000,6 +3000,16 @@ export const desafios = [
       conditionalRepetition: true,
     }
   },
+  {
+    id: 'nuevo26',
+    nombre: 'LaSupermaraton',
+    escena: 'SuperMaraton',
+    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1kmChuy', 'RepetirVacio',
+      'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      decomposition: false
+    }
+  },  
   {
     id: 'nuevo27',
     nombre: 'ContandoDeNuevoManic',

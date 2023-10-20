@@ -724,6 +724,11 @@ model:
       description: |
         Mañic deve passar por todos os quadrados e contar quantas estrelas e planetas existem no total. Dica: primeiro pense em como você contaria se houvesse uma estrela ou um planeta em um determinado quadrado. Em seguida, pense em como você faria para contar todos os corpos celestiais em uma única coluna.
       clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
+    'nuevo26':
+      title: A Supermaratona
+      description: |
+        Chuy deve realizar sua caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que Chuy sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
+      clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor
     'nuevo27':
       title: Mañic conta novamente
       description: Mañic tem que contar os astros novamente, mas agora ela não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-la?
