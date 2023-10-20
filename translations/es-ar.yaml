@@ -783,8 +783,13 @@ model:
     'nuevo26':
       title: El entrenamiento de Chuy 
       description: |
-        Al comenzar el entrenamiento diario, el primer desafío de Chuy es correr una distancia variable, según lo indique su preparadora física. Es muy importante que Chuy recorra exactamente esa distancia, cuenta con vos para ayudarle a realizar ese exigente entrenamiento.  
-      clue: ¿Te fijaste en la categoría **sensores**? ¿Hay algún bloque que te pueda servir para controlar exactamente la distancia recorrida?
+        Al comenzar el entrenamiento diario, el primer ejercicio de Chuy es correr una distancia variable, según lo indique su preparadora física. Es muy importante que Chuy recorra exactamente esa distancia, cuenta con vos para ayudarle a realizar ese exigente entrenamiento.  
+      clue: ¿Te fijaste en la categoría **sensores**? ¿Hay algún bloque que te pueda servir para medir exactamente la distancia recorrida?
+    'nuevo27':
+      title: Contando de nuevo 
+      description: |
+        Mañic está de suerte, el cielo está límpido y se muestra plagado de estrellas y planetas. Para documentar su observación, Mañic necesita contar cuántas estrellas y cuántos planetas están visibles. Ayudala a tomar nota de las cantidades pasando por todos los astros visibles.  
+      clue: En esta oportunidad, Mañic no puede verificar si llegó al fin de una columna, pero seguramente en la categoría "sensores" podrás encontrar recursos para compensar esta falencia. 
     'nuevo28':
       title: El humedal de Capy y Guyrá
       description: |
