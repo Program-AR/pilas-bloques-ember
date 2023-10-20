@@ -649,6 +649,15 @@ model:
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
+    'nuevo2':
+      title: Chuy joga uma embaixadinha
+      description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás, pegue a bola pulpito, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
+      clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
+    'nuevo3':
+      title: Eu adoro quicar a bola de pingue-pongue
+      description: |
+        Ajude Chuy a quicar a bola de pingue-pongue 30 vezes seguidas. Dica: pode ser resolvido com menos de 30 blocos.
+      clue: O bloco Repetir permite que você escolha o número de vezes que deseja repetir uma sequência de ações. Isso é chamado de "Repetição Simples".
     'nuevo4':
       title: Mañic en el cielo
       description: |

@@ -663,6 +663,15 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+    'nuevo2':
+      title: Chuy keepie-uppie
+      description: 'Make Chuy take a step forward, warm up moving back and forth, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
+      clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
+    'nuevo3':
+      title: I love bouncing the ping pong ball
+      description: |
+        Help Chuy bounce the ping pong ball 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks.
+      clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called "Simple repetition".
     'nuevo4':
       title: Mañic in sky
       description: |

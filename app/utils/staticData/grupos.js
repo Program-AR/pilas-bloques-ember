@@ -272,6 +272,8 @@ export const grupos = [
   {
     id: 'grupoTemporal',
     desafioIds: [
+      'nuevo2',
+      'nuevo3',
       'nuevo4',
       'nuevo5',
       'nuevo6',
