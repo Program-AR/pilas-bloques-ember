@@ -1636,7 +1636,7 @@ export const desafios = [
   {
     id: 242,
     nombre: '5.1.3a',
-    escena: `new EscenaDuba("[A,P?(0.6)]", {}, [0,1])`,
+    escena: `new EscenaDuba("[A,P?(0.6)]", {}, [1,0])`,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1655,7 +1655,7 @@ export const desafios = [
   {
     id: 243,
     nombre: '5.1.3b',
-    escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [0,2])`,
+    escena: `new EscenaDuba(["[A,-,-]","[A,P,-]","[A,-,P]","[A,P,P]"], {}, [2,0])`,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1776,7 +1776,7 @@ export const desafios = [
   {
     id: 248,
     nombre: '5.2.1a',
-    escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [0,7])`,
+    escena: `new EscenaDuba("[A,-,-,-,-,-,-,P?]", {}, [7,0])`,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
@@ -1794,7 +1794,7 @@ export const desafios = [
   {
     id: 249,
     nombre: '5.2.1b',
-    escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [0,7])`,
+    escena: `new EscenaDuba("[A,#P,#P,#P,#P,#P,#P,#P]", { macros: { "P": "*>P?" }, coleccion: ["P"] }, [7,0])`,
     estiloToolbox: 'sinCategorias',
     bloques: [
       'MoverACasillaAbajo',
