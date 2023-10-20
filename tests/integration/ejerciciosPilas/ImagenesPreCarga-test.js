@@ -16,17 +16,61 @@ moduloEjerciciosPilas('Imagenes Pre-carga', () => {
 
   testDePrecarga('EscenaDuba', `new EscenaDuba("[O,-,A,P,*]")`,
     [
-      "fondo.duba.png", "actor.duba.png", "actor.churrasco.png",
-      "casillas.duba.png", "obstaculo.duba1.png",
-      "obstaculo.duba2.png", "obstaculo.duba3.png", "obstaculo.duba4.png"
+      "fondo.duba.png",
+      "actor.duba.png", "actor.churrasco.png",
+      "marcador-duba.png",
+      "obstaculo.duba1.png", "obstaculo.duba2.png", "obstaculo.duba3.png", "obstaculo.duba4.png",
+      "casillas.duba.png"
     ]
   )
 
   testDePrecarga('EscenaLita', `new EscenaLita("[O,-,A,T,L,E]")`,
     [
-      "fondo.lita.png", "actor.lita.png", "actor.ensaladera.png", "actor.tomate.png", "actor.lechuga.png",
-      "casillas.lita.png", "obstaculo.lita1.png",
-      "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png"
+      "fondo.lita.png",
+      "actor.lita.png", "actor.ensaladera.png", "actor.tomate.png", "actor.lechuga.png",
+      "marcador-lita.png",
+      "obstaculo.lita1.png", "obstaculo.lita2.png", "obstaculo.lita3.png", "obstaculo.lita4.png",
+      "casillas.lita.png"
+    ]
+  )
+
+  testDePrecarga('EscenaChuy', `new EscenaChuy("[O,-,A,T,E,U,P,G]")`,
+    [
+      "fondo.chuy.png",
+      "actor.chuy.png", "actor.trofeo.png", "actor.paleta.png", 'pelotaAnimada.png', "actor.pelota.png", 'actor.pelotita.png',
+      "marcador-chuy.png",
+      "obstaculo.chuy1.png", "obstaculo.chuy2.png", "obstaculo.chuy3.png", "obstaculo.chuy4.png",
+      "casillas.chuy.png"
+    ]
+  )
+
+  testDePrecarga('EscenaCapy', `new EscenaCapy("[O,-,A,T,Y,L,P]")`,
+    [
+      "fondo.capy.png",
+      "actor.capy.png", "actor.tacho.png", "actor.lata.png", "actor.papel.png",
+      "marcador-capy.png",
+      "obstaculo.capy1.png", "obstaculo.capy2.png", "obstaculo.capy3.png", "obstaculo.capy4.png",
+      "casillas.capy.png"
+    ]
+  )
+
+  testDePrecarga('EscenaManic', `new EscenaManic("[O,-,A,T,R,E,P]")`,
+    [
+      "fondo.manic.png",
+      "actor.manic.png", "actor.telescopio.png", "actor.estrella.png", "actor.planeta.png",
+      "marcador-manic.png",
+      "obstaculo.manic1.png", "obstaculo.manic2.png", "obstaculo.manic3.png", "obstaculo.manic4.png",
+      "casillas.manic.png"
+    ]
+  )
+
+  testDePrecarga('EscenaYvoty', `new EscenaYvoty("[O,-,A,C,P,K,L,M,T]")`,
+    [
+      "fondo.yvoty.png",
+      "actor.yvoty.png", "actor.celular.png", "actor.luciernaga.png", "actor.cargador.png", "actor.mariposa.png", "compu_animada.png",
+      "marcador-yvoty.png",
+      "obstaculo.yvoty1.png", "obstaculo.yvoty2.png", "obstaculo.yvoty3.png", "obstaculo.yvoty4.png",
+      "casillas.yvoty.png"
     ]
   )
 
