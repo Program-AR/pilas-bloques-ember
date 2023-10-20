@@ -2750,7 +2750,7 @@ export const desafios = [
     id: 'nuevo2',
     nombre: 'ChuyHaciendoJueguito', 
     escena: 'ChuyHaciendoJueguito',
-    bloques: ['Avanzar', 'Volver', 'Retroceder', 'RecogerPulpito', 'RebotarPiePulpito', 'RevolearPulpito', 'Repetir', 'Procedimiento'],
+    bloques: ['Avanzar', 'Retroceder', 'RecogerPulpito', 'RebotarPiePulpito', 'RevolearPulpito', 'Repetir', 'Procedimiento'],
     expectations: {
       simpleRepetition: false
     }
