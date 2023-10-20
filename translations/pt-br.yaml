@@ -2,7 +2,7 @@ localeName: Português
 changeLanguage: Mudar idioma
 model:
   challenges:
-    'viejo1':
+    '1':
       title: O alienígena toca o botão
       description: |
         Ajude nosso alienígena a apertar o botão de seu laboratório.
@@ -492,6 +492,16 @@ model:
       title: ¡Coty desenha livremente!
       description: Nesta atividade você poderá fazer o desenho que mais goste
       clue: Incluímos todos os blocos possíveis, para que você possa libertar seu conhecimento.
+    '1001':
+      title: Capy e Guyrá
+      description: |
+        A capivara Capy e seu amigo inseparável, o pica-boi Guyrá, têm um jeito muito particular de viajar pelos estuários. Ajude Capy a pegar seu amigo para colocá-lo na cabeça e assim embarcar em uma nova aventura juntos.
+      clue: 'Preste atenção na ordem dos _primitivos_: o que você tem que fazer primeiro e o que vem a seguir.'
+    '1046':
+      title: Novos comandos
+      description: |
+        Agora Capy precisa pegar duas latas à sua direita, depois duas mais abaixo e uma no final.
+      clue: Você viu os procedimentos? Eles podem ajudá-lo a **criar novos comandos** para usar **quantas vezes quiser.**
     '202101':
       title: Introducción
       description: |
@@ -772,11 +782,6 @@ model:
       description: |
         El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
       clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
-    'nuevo46':
-      title: Nuevos comandos
-      description: |
-        Ahora Capy necesita recoger dos latas a su derecha, luego dos más abajo, y una al final.
-      clue: ¿Viste los procedimientos? Te pueden ayudar a **crear nuevos comandos** para usar **cuantas veces quieras.**
     'nuevo131':
       title: Reciclando papeles
       description: |

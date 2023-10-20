@@ -2,16 +2,12 @@
 
 export const grupos = [
   {
-    id: 'CapyYGuyra',
+    id: 'AlienTocaBoton',
     desafioIds: [1]
   },
   {
     id: 'NuevosComandos',
     desafioIds: [46]
-  },
-  {
-    id: 'NuevosComandosCapy',
-    desafioIds: ["nuevo46"]
   },
   {
     id: 'ElGatoEnLaCalle',
@@ -244,6 +240,14 @@ export const grupos = [
   {
     id: 'manual1cPrimariaOtros',
     desafioIds: [255]
+  },
+  {
+    id: 'CapyYGuyra',
+    desafioIds: [1001]
+  },
+  {
+    id: 'NuevosComandosCapy',
+    desafioIds: [1046]
   },
   {
     id: 'tecnopolis2021EjercicioModelo',

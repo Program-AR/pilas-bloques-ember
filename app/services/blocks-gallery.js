@@ -1286,6 +1286,11 @@ export default Service.extend({
       icono: 'icono.titoFinalizacion.png',
       funcionSensor: 'estoyUltimaFila()',
     });
+    
+    this.crearBloqueSensor('TocandoMeta', 'comeToTheEnd', {
+      icono: 'icono.marcadorBlanco.png',
+      funcionSensor: 'tocando("MetaFinal")',
+    });
 
     this.crearBloqueSensor('KmsTotales', 'kmToTravel', {
       icono: 'icono.kms.png',
