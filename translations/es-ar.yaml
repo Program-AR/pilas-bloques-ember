@@ -797,6 +797,13 @@ model:
       clue: |
         A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría "Recoger latas a la derecha con [cantidad]" y se reemplaza el **parámetro** [cantidad] por 2, 3 o 4 en cada caso.
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
+    'nuevo29':
+      title: Constelación cuadrada. 
+      description: |
+        Será que se ven las estrellas y podemos armar un cuadrado? (verificar) 
+      clue: |
+        A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría "Recoger latas a la derecha con [cantidad]" y se reemplaza el **parámetro** [cantidad] por 2, 3 o 4 en cada caso.
+        Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
     'nuevo38':
       title: Las estrellas de Mañic
       description: La observación de estrellas no siempre es fácil. A veces, Mañic debe tomar un trayecto más largo porque algo se le interpone en la alineación del telescopio. Es tu tarea lograr que llegue a observar la estrella, esquivando los obstáculos. No te olvides de guardar la solución ya que la necesitarás más adelante.
