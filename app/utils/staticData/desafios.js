@@ -3161,6 +3161,12 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
+    id: 'nuevo131',
+    nombre: 'ReciclandoPapeles',
+    escena: 'ReciclandoPapeles',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'TomarPapel', 'Colocar', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
+  },
+  {
     id: 'nuevo132',
     nombre: 'PrendiendoLasCompusParametrizadoYvoty',
     escena: `new EscenaYvoty([
