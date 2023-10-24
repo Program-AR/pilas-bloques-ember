@@ -108,6 +108,15 @@ export const desafios = [
     },
   },
   {
+    id: "nuevo11",
+    nombre: 'EscapeEnYacare',
+    escena: 'EscapeEnYacare',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarTelescopio', 'EntregarTelescopio', 'EntregarPelota', 'EntregarCargador', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+    expectations: {
+      decomposition: true,
+    },
+  },
+  {
     id: 12,
     nombre: 'ReparandoLaNave',
     escena: 'ReparandoLaNave',
