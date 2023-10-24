@@ -31,4 +31,35 @@ moduloActividad(nombre, () => {
   </xml>`,
   });
 
+  
+  actividadTest(nombre, {
+    descripcionAdicional: 'Debe moverse a la posición final para que esté resuelto',
+    resuelveDesafio: false,
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="0" y="0">
+      <statement name="program">
+        <shadow type="required_statement"></shadow>
+        <block type="procedures_callnoreturn">
+          <mutation name="Patear pelota si hay"></mutation>
+        </block>
+      </statement>
+    </block>
+    <block type="procedures_defnoreturn" x="18" y="178">
+      <field name="NAME">Patear pelota si hay</field>
+      <statement name="STACK">
+        <block type="si">
+          <value name="condition">
+            <shadow type="required_value"></shadow>
+            <block type="TocandoPelotaChuy"></block>
+          </value>
+          <statement name="block">
+            <shadow type="required_statement"></shadow>
+            <block type="PatearPelotaChuy"></block>
+          </statement>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  })
 });

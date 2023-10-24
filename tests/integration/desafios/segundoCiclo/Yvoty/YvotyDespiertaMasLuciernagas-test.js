@@ -88,7 +88,6 @@ moduloActividad(nombre, () => {
 	   </block>
 	</xml>`,
 		resuelveDesafio: false,
-		skip: true
 	});
 
 });
