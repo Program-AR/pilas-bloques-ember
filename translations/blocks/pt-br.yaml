@@ -16,6 +16,7 @@ lie: 'Deitar-se '
 standUp: Levantar-se
 return: Retornar
 advance: Avançar
+back: Votar
 dream: Sonhar
 jump: Saltar
 goToLeftBorder: Ir para a borda esquerda
@@ -40,6 +41,10 @@ pickIron: Pegar ferro
 pickCarbon: Pegar carvão
 lightCampfire: Acender fogueira
 putIntoTheShip: Colocar no navio
+goInAlligator: Vai em jacaré
+takeCan: Pegar a lata
+takePaper: Pegar um papel
+putIntoTheTrash: colocar na lata de lixo
 leavePresent: Deixar presente
 nextLine: Ir para a próxima linha
 nextColumn: Ir para a linha anterior
@@ -51,6 +56,9 @@ blowUpBallon: Explodir balão
 kickBall: Chutar bola
 kickFootballBall: Chutar bola de futebol
 bounceRubberBall: Chutar bola pulpito
+volleyRubberBall: Voleio uma bola pulpito
+pickRubberBall: Pegar uma bola pulpito
+bounceFootRubberBall: Chutar com ó pe uma bola pulpito
 move1Km: Avançar 1 Km
 changeLightColor: Mudar a cor da lâmpada
 moveNextLight: Ir para a próxima lâmpada

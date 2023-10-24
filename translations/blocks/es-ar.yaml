@@ -16,6 +16,7 @@ lie: Acostarse
 standUp: Pararse
 return: Volver
 advance: Avanzar
+back: Retroceder
 dream: Soñar
 jump: Saltar
 goToLeftBorder: Ir al borde izquierdo
@@ -40,6 +41,10 @@ pickIron: Agarrar hierro
 pickCarbon: Agarrar carbón
 lightCampfire: Prender fogata
 putIntoTheShip: Poner en la nave
+goInAlligator: Irse en yacaré
+takeCan: Agarrar lata
+takePaper: Agarrar papel
+putIntoTheTrash: Poner en el tacho
 leavePresent: Dejar un regalo
 nextLine: Pasar a la siguiente fila
 nextColumn: Pasar a la siguiente columna
@@ -51,6 +56,9 @@ blowUpBallon: Explotar globo
 kickBall: Patear pelota
 kickFootballBall: Patear pelota de fútbol
 bounceRubberBall: Rebotar pelota pulpito
+volleyRubberBall: Revolear pelota pulpito
+pickRubberBall: Agarrar pelota pulpito
+bounceFootRubberBall: Rebotar con el pie la pelota pulpito
 move1Km: Avanzar 1 Km
 changeLightColor: Cambiar color del foco
 moveNextLight: Pasar al siguiente foco

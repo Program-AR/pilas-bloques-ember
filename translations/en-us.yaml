@@ -121,10 +121,6 @@ model:
       description: |
         The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
       clue: 'It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!'
-    'nuevo22':
-      title: Capy looks for Guyrá
-      description: Help Capy to find Guyrá
-      clue: ''
     '22':
       title: Detective Chaparro
       description: 'The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!'
@@ -663,6 +659,15 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+    'nuevo2':
+      title: Chuy keepie-uppie
+      description: 'Make Chuy take a step forward, warm up moving back and forth, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
+      clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
+    'nuevo3':
+      title: I love bouncing the ping pong ball
+      description: |
+        Help Chuy bounce the ping pong ball 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks.
+      clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called "Simple repetition".
     'nuevo4':
       title: Mañic in sky
       description: |
@@ -694,6 +699,10 @@ model:
       description: |
         Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ''
+    'nuevo12':
+      title: Cleaning the wetland
+      description: 'Capy needs to clean the wetland to go surfing. To achieve this, Capy needs to carry 3 cans and 3 papers to the trash, but Capy cannot throw more than one at a time. Then, Capy gets on the alligator and finally goes surfing!'
+      clue: ''
     'nuevo16':
       title: Three telescopes
       description: |
@@ -714,6 +723,10 @@ model:
       description: |
         Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
       clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
+    'nuevo22':
+      title: Capy looks for Guyrá
+      description: Help Capy to find Guyrá
+      clue: ''
     'nuevo24':
       title: Powering all computers on
       description: |
@@ -724,6 +737,11 @@ model:
       description: |
         Mañic should visit all boxes and count how many planets and stars are there in total. Clue: first think how you could count whether there is any planet or star in a particular box. Then think how you could count all celestial bodies in only one particular column.
       clue: 'Splitting a big problem into several little problems can help you better understand each of its parts. Even better: you can focus on solving smaller and easier parts!'
+    'nuevo26':
+      title: Supermarathon
+      description: |
+        Chuy must carry out his morning routine, which consists of running a certain number of kilometers that varies day by day (between 15 and 45 km). Make Chuy always reach his destination without going over! Clue: look in the "Sensors" category if there is something that can help you.
+      clue: A "Repeat" block can be used with the value of a sensor. This allows a code sequence to be repeated the number of times indicated by the sensor
     'nuevo27':
       title: Mañic counts again
       description: 'Mañic needs to count the celestial bodies again, but now she cannot check whether she reached the end of the column! Is there any sensor to help her?'
