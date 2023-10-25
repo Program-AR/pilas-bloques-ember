@@ -24,7 +24,7 @@ export const libros = [
       decomposition: true
     }
   },
-  { id: 400,
+  { id: 1000,
     capituloIds:['capiTemporal'],
     imagen: 'nuevos_personajes.png',
     modoLecturaSimple: false,
