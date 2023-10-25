@@ -665,6 +665,15 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+    'nuevo2':
+      title: Chuy haciendo jueguito
+      description: 'Hacé que Chuy avance un paso, entre en calor avanzando y retrocediendo, recoja la pelota pulpito, haga jueguito revoleando la pelota y rebotandola con el pie y por ultimo vuelva a su lugar.'
+      clue: Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.
+    'nuevo3':
+      title: No me canso de rebotar
+      description: |
+        Ayudá a Chuy a hacer rebotar la pelota de ping pong 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.
+      clue: El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".
     'nuevo4':
       title: Mañic en el cielo
       description: |
@@ -700,6 +709,10 @@ model:
       description: |
         Yvoty va a instalar un juego en tres computadoras para que ella y sus amigas tengan todo listo para divertirse esta noche. Los pasos para instalarlo son: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Ayudala a completar la instalación de las tres compus.  
       clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?' 
+    'nuevo12':
+      title: Limpiando el humedal
+      description: 'Capy necesita limpiar el humedal antes de ir a surfear. Para lograrlo, Capy necesita agarrar 3 latas y 3 papeles y llevarlos hasta el tacho, pero no puede tirar más de uno a la vez. Luego, se sube al yacaré y se va a surfear!'
+      clue: ''
     'nuevo13':
       title: Chuy y la pelota indecisa
       description: |
@@ -765,6 +778,11 @@ model:
       description: |
         Mañic debe recorrer todas las casillas y contar cuántas estrellas y planetas hay en total. Pista: primero pensá cómo contarías si hay una estrella o un planeta en una casilla determinada. Luego pensá cómo harías para contar todos los astros de una sola columna.
       clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
+    'nuevo26':
+      title: La Supermaratón
+      description: |
+        Chuy debe realizar su rutina matutina que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que Chuy llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.
+      clue: Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor
     'nuevo27':
       title: Mañic cuenta de nuevo
       description: 'Mañic tiene que contar otra vez los astros, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que la pueda ayudar?'

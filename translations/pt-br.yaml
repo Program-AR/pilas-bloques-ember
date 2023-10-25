@@ -649,6 +649,15 @@ model:
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
+    'nuevo2':
+      title: Chuy joga uma embaixadinha
+      description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás, pegue a bola pulpito, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
+      clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
+    'nuevo3':
+      title: Eu adoro quicar a bola de pingue-pongue
+      description: |
+        Ajude Chuy a quicar a bola de pingue-pongue 30 vezes seguidas. Dica: pode ser resolvido com menos de 30 blocos.
+      clue: O bloco Repetir permite que você escolha o número de vezes que deseja repetir uma sequência de ações. Isso é chamado de "Repetição Simples".
     'nuevo4':
       title: Mañic en el cielo
       description: |
@@ -679,6 +688,10 @@ model:
       title: Instalando juegos
       description: |
         Yvoty tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
+      clue: ''
+    'nuevo12':
+      title: Limpando o pantanal
+      description: 'Capy precisa limpar o pântano antes de surfar. Para conseguir isso, Capy precisa pegar 3 latas e 3 pedaços de papel e levá-los para o lixo, mas não pode jogar mais de um de cada vez. Aí ele sobe no jacaré e finalmente a surfar!'
       clue: ''
     'nuevo16':
       title: Tres telescopios
@@ -715,6 +728,11 @@ model:
       description: |
         Mañic deve passar por todos os quadrados e contar quantas estrelas e planetas existem no total. Dica: primeiro pense em como você contaria se houvesse uma estrela ou um planeta em um determinado quadrado. Em seguida, pense em como você faria para contar todos os corpos celestiais em uma única coluna.
       clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
+    'nuevo26':
+      title: A Supermaratona
+      description: |
+        Chuy deve realizar sua caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que Chuy sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
+      clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor
     'nuevo27':
       title: Mañic conta novamente
       description: Mañic tem que contar os astros novamente, mas agora ela não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-la?

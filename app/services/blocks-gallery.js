@@ -346,6 +346,30 @@ export default Service.extend({
       argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota"}',
     })
 
+    this.crearBloqueAccion('RevolearPulpito', 'volleyRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"revolearPulpito", "mensajeError": "Acá no hay una pelota", idTransicion: "revolearPulpito"}',
+    })
+
+    this.crearBloqueAccion('RebotarPiePulpito', 'bounceFootRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion:"rebotarPulpito", "mensajeError": "Acá no hay una pelota", idTransicion: "rebotarPiePulpito"}',
+    })
+
+    this.crearBloqueAccion('RecogerPulpito', 'pickRubberBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'Interactuar',
+      argumentos: '{etiqueta: "Pulpito", nombreAnimacion: "recoger", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota", idTransicion: "recoger"}',
+    }) 
+
+    this.crearBloqueAccion('RebotarUnaVezPingPong', 'bouncePingPong', {
+      icono: 'icono.paleta.png',
+      comportamiento: 'PingPongAnimado',
+      argumentos: '{mensaje: "Rebotando...", etiqueta: "PingPong", nombreAnimacion:"usarPaletaUnaVez", animacionInteractuadoMientras: "desaparecer" }',
+    });
+
     this.crearBloqueAccion('DespertarLuciernaga', 'wakeUpFirefly', {
       icono: 'icono.luciernaga-prendida.png',
       comportamiento: 'SacarFoto',
@@ -554,6 +578,12 @@ export default Service.extend({
       argumentos: '{direccion: [1,0], distancia: 50, idTransicion: "avanzar"}',
     });
 
+    this.crearBloqueAccion('Retroceder', 'back', {
+      icono: 'icono.izquierda.png',
+      comportamiento: 'MovimientoAnimado',
+      argumentos: '{direccion: [-1,0], distancia: 50, idTransicion: "retroceder"}',
+    });
+
     this.crearBloqueAccion('Soniar', 'dream', {
       icono: 'icono.soniar.png',
       comportamiento: 'Pensar',
@@ -754,6 +784,43 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('Colocar', 'putIntoTheTrash', {
+      icono: 'icono.tacho.png',
+      comportamiento: 'Soltar',
+      argumentos: `{
+        idTransicion: "colocar",
+        etiqueta: "Tacho",
+      }`,
+    });
+
+    this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
+      icono: 'icono.yacare.png',
+      comportamiento: 'Irse',
+      argumentos: `{
+        irseCon: "yacare",
+        nombreAnimacion: "surfear"
+      }`,
+    });
+
+    this.crearBloqueAccion('TomarLata', 'takeCan', {
+      icono: 'icono.lata.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Lata",
+        nombreAnimacion: "recoger"
+      }`,
+    });
+
+    this.crearBloqueAccion('TomarPapel', 'takePaper', {
+      id: 'TomarPapel',
+      icono: 'icono.papel.png',
+      comportamiento: 'Sostener',
+      argumentos: `{
+        etiqueta: "Papel",
+        nombreAnimacion: "recoger"
+      }`,
+    });
+
     this.crearBloqueAccion('AvanzarMono', 'moveRight', {
       icono: 'icono.derecha.png',
       comportamiento: 'MoverACasillaDerecha',
@@ -872,6 +939,12 @@ export default Service.extend({
     this.crearBloqueAccion('Avanzar1km', 'move1Km', {
       icono: 'icono.derecha.png',
       comportamiento: 'VolarHeroicamente',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('Avanzar1kmChuy', 'move1Km', {
+      icono: 'icono.derecha.png',
+      comportamiento: 'CorrerHeroicamente',
       argumentos: '{}',
     });
 

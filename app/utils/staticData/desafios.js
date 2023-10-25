@@ -208,18 +208,6 @@ export const desafios = [
     }
   },
   {
-    id: "nuevo22",
-    nombre: 'CapyBuscaAGuyra',
-    escena: `new EscenaCapySolo("\
-        [*,*,*,*,*],\
-      ", { coleccion: ["G", "A"] })`,
-    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
-      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
-    expectations: {
-      conditionalRepetition: true,
-    }
-  },
-  {
     id: 23,
     nombre: 'FutbolRobots',
     escena: 'FutbolRobots',
@@ -2764,6 +2752,24 @@ export const desafios = [
                 </xml>`
   },
   {
+    id: 'nuevo2',
+    nombre: 'ChuyHaciendoJueguito', 
+    escena: 'ChuyHaciendoJueguito',
+    bloques: ['Avanzar', 'Retroceder', 'RecogerPulpito', 'RebotarPiePulpito', 'RevolearPulpito', 'Repetir', 'Procedimiento'],
+    expectations: {
+      simpleRepetition: false
+    }
+  },  
+  {
+    id: 'nuevo3',
+    nombre: 'NoMeCansoDeRebotar',
+    escena: 'NoMeCansoDeRebotar',
+    bloques: ['RebotarUnaVezPingPong', 'Procedimiento', 'Repetir'],
+    expectations: {
+      decomposition: false
+    }
+  },
+    {
     id: 'nuevo4',
     nombre: 'ManicEnElCielo',
     escena: `new EscenaManic("\
@@ -2833,6 +2839,12 @@ export const desafios = [
     nombre: 'InstalandoJuegosYvoty',
     escena: 'InstalandoJuegosYvoty',
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
+  },
+  {
+    id: 'nuevo12',
+    nombre: 'LimpiandoElHumedal',
+    escena: 'LimpiandoElHumedal',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
   },
   {
     id: 'nuevo13',
@@ -2939,6 +2951,18 @@ export const desafios = [
     }
   },
   {
+    id: "nuevo22",
+    nombre: 'CapyBuscaAGuyra',
+    escena: `new EscenaCapySolo("\
+        [*,*,*,*,*],\
+      ", { coleccion: ["G", "A"] })`,
+    bloques: ['Repetir', 'Si', 'SiNo', 'Hasta', 'Procedimiento',
+      'VolverAlBordeIzquierdo', 'MoverACasillaDerecha', 'TocandoGuyra','SubirPajarito'],
+    expectations: {
+      conditionalRepetition: true,
+    }
+  },
+  {
     id: 'nuevo23',
     nombre: 'FutbolAlSur',
     escena: 'FutbolAlSur',
@@ -2982,6 +3006,16 @@ export const desafios = [
       conditionalRepetition: true,
     }
   },
+  {
+    id: 'nuevo26',
+    nombre: 'LaSupermaraton',
+    escena: 'SuperMaraton',
+    bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1kmChuy', 'RepetirVacio',
+      'Repetir', 'Si', 'SiNo', 'Hasta'],
+    expectations: {
+      decomposition: false
+    }
+  },  
   {
     id: 'nuevo27',
     nombre: 'ContandoDeNuevoManic',

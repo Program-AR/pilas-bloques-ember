@@ -16,6 +16,7 @@ lie: Lie down
 standUp: Stand up
 return: Return
 advance: Move forward
+back: Move backward
 dream: Dream
 jump: Jump
 goToLeftBorder: Go to left border
@@ -40,6 +41,10 @@ pickIron: Pick iron
 pickCarbon: Pick carbon
 lightCampfire: Light the campfire
 putIntoTheShip: Put into the spaceship
+goInAlligator: Go in alligator
+takeCan: Take can
+takePaper: Take paper
+putIntoTheTrash: Put into the trash
 leavePresent: Leave a present
 nextLine: Go to the next line
 nextColumn: Go to the next column
@@ -51,6 +56,9 @@ blowUpBallon: Pinch the balloon
 kickBall: Kick the ball
 kickFootballBall: Kick the football ball
 bounceRubberBall: Bounce the rubber ball
+volleyRubberBall: Volley the rubber ball
+pickRubberBall: Pick the rubber ball
+bounceFootRubberBall: Bounce with foot the rubber ball
 move1Km: Move 1 Km forward
 changeLightColor: Change spotlight color
 moveNextLight: Move to next spotlight
