@@ -11,7 +11,7 @@ moduloActividad(nombre, () => {
       <statement name="program">
          <block type="hasta" id="51" inline="true">
             <value name="condition">
-               <block type="TocandoFinCamino" id="61" />
+               <block type="TocandoMeta" id="61" />
             </value>
             <statement name="block">
                <block type="si" id="74" inline="true">

@@ -2860,7 +2860,7 @@ export const desafios = [
   {
     id: 'nuevo14',
     nombre: 'PelotaPaleta',
-    escena: `new EscenaChuy(["[A,P]", "[A,G]"],{},[1,0])`,
+    escena: `new EscenaChuy(["[A,P]", "[A,G]"])`,
     bloques: ['PatearPelotaChuy', 'RebotarPingPong', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
       conditionalAlternative: true,
@@ -2871,7 +2871,7 @@ export const desafios = [
   {
     id: 'nuevo15',
     nombre: 'LaberintoCortoChuy',
-    escena: `new EscenaChuy(['[A,-]', '[A],[-]'],{}, [-1,0])`,
+    escena: `new EscenaChuy(['[A,+]', '[A],[+]'])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
     expectations: {
@@ -2915,9 +2915,9 @@ export const desafios = [
   {
     id: 'nuevo19',
     nombre: 'SuperYvoty1',
-    escena: `new EscenaYvoty(["[A&L],[L],[-]","[A&L],[L],[L],[-]","[A&L],[L],[L],[L],[-]", "[A&L],[L],[L],[L],[L],[-]", "[A&L],[L],[L],[L],[L],[L],[-]"])`,
+    escena: `new EscenaYvoty(["[A&L],[L],[+]","[A&L],[L],[L],[+]","[A&L],[L],[L],[L],[+]", "[A&L],[L],[L],[L],[L],[+]", "[A&L],[L],[L],[L],[L],[L],[+]"])`,
     bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
-      'TocandoFinal', 'Repetir', 'Si', 'SiNo', 'Hasta'],
+      'TocandoMeta', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
       conditionalRepetition: true,
     }
@@ -2925,9 +2925,9 @@ export const desafios = [
   {
     id: 'nuevo20',
     nombre: 'SuperYvoty2',
-    escena: `new EscenaYvoty(["[A&(#L)],[#L],[-]","[A&(#L)],[#L],[#L],[-]","[A&(#L)],[#L],[#L],[#L],[-]", "[A&(#L)],[#L],[#L],[#L],[#L],[-]", "[A&(#L)],[#L],[#L],[#L],[#L],[#L],[-]"],
+    escena: `new EscenaYvoty(["[A&(#L)],[#L],[+]","[A&(#L)],[#L],[#L],[+]","[A&(#L)],[#L],[#L],[#L],[+]", "[A&(#L)],[#L],[#L],[#L],[#L],[+]", "[A&(#L)],[#L],[#L],[#L],[#L],[#L],[+]"],
       { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
-    bloques: ['Procedimiento', 'TocandoFinal', 'TocandoLuciernaga', 'DespertarLuciernaga',
+    bloques: ['Procedimiento', 'TocandoMeta', 'TocandoLuciernaga', 'DespertarLuciernaga',
       'MoverACasillaAbajo', 'Repetir', 'Si', 'SiNo', 'Hasta'],
     expectations: {
       conditionalRepetition: true,
@@ -2937,15 +2937,15 @@ export const desafios = [
     id: 'nuevo21',
     nombre: 'LaberintoConPelotas',
     escena: `new EscenaChuy([
-      '[A&(U?),_,_,_,_],[U?,U?,_,_,_],[_,U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,-]',
-      '[A&(U?),_],[U?,-]',
-      '[A&(U?),_,_],[U?,_,_],[U?,_,_],[U?,U?,_],[_,U?,U?],[_,_,-]',
-      '[A&(U?),U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,-]',
-      '[A&(U?),U?,U?,U?,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,U?,_,_],[_,_,_,_,_,U?,U?,_],[_,_,_,_,_,_,U?,_],[_,_,_,_,_,_,U?,-]'
-     ],{},[-1,0])`,
+      '[A&(U?),_,_,_,_],[U?,U?,_,_,_],[_,U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,+]',
+      '[A&(U?),_],[U?,+]',
+      '[A&(U?),_,_],[U?,_,_],[U?,_,_],[U?,U?,_],[_,U?,U?],[_,_,+]',
+      '[A&(U?),U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,+]',
+      '[A&(U?),U?,U?,U?,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,_,_,_],[_,_,_,_,U?,U?,_,_],[_,_,_,_,_,U?,U?,_],[_,_,_,_,_,_,U?,_],[_,_,_,_,_,_,U?,+]'
+     ],{})`,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaAbajo',
       'PatearPulpito', 'Repetir', 'Si', 'SiNo', 'Hasta', 'PuedeMoverAbajo',
-      'PuedeMoverDerecha', 'TocandoFinCamino', 'TocandoPulpito'],
+      'PuedeMoverDerecha', 'TocandoMeta', 'TocandoPulpito'],
     expectations: {
       conditionalRepetition: true,
     }
