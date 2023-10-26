@@ -281,6 +281,8 @@ export const grupos = [
       'nuevo8',
       'nuevo9',
       'nuevo10',
+      'nuevo11',
+      'nuevo12',
       'nuevo13',
       'nuevo14',
       'nuevo15',
