@@ -3209,4 +3209,15 @@ export const desafios = [
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo', 'MoverA',
       'RecogerTrofeo', 'Numero', 'OpAritmetica']
   },
+  {
+    id: 'nuevo135',
+    nombre: 'PaleteandoConParametros',
+    escena: 'PaleteandoConParametros',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
+      'TocandoPingPong', 'RebotarPingPong',
+      'MoverACasillaAbajo', 'MoverACasillaArriba', 'MoverACasillaIzquierda', 'MoverACasillaDerecha',
+      'Numero', 'OpComparacion', 'OpAritmetica',
+      'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
+    ]
+  },
 ];
