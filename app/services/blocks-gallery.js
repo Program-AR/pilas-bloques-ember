@@ -793,13 +793,11 @@ export default Service.extend({
       }`,
     });
 
+
     this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
       icono: 'icono.yacare.png',
-      comportamiento: 'Irse',
-      argumentos: `{
-        irseCon: "yacare",
-        nombreAnimacion: "surfear"
-      }`,
+      comportamiento: 'IrseEnYacare',
+      argumentos: `{}`,
     });
 
     this.crearBloqueAccion('TomarLata', 'takeCan', {
