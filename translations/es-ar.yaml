@@ -858,6 +858,10 @@ model:
       title: Trofeos y más trofeos
       description: La colección de trofeos de Chuy crece día a día. Acompañale a recogerlos. Tené en cuenta que la posición de los mismos no cambia y que tanto las direcciones como la cantidad de trofeos podrían ser parámetros...  
       clue: Una característica muy útil es que podés combinar parámetros numéricos (cantidades, medidas) con parámetros de texto (direcciones, nombres). ¡Aprovechala! 
+    'nuevo135':
+      title: Paleteando con parámetros
+      description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
+      clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
   groups:
     AlienTocaBoton:
       title: ''
