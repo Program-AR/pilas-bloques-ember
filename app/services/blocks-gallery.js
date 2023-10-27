@@ -793,7 +793,6 @@ export default Service.extend({
       }`,
     });
 
-
     this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
       icono: 'icono.yacare.png',
       comportamiento: 'IrseEnYacare',
