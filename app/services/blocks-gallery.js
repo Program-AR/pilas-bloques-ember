@@ -784,7 +784,7 @@ export default Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Colocar', 'putIntoTheTrash', {
+    this.crearBloqueAccion('Colocar', 'putIntoTheTrashBin', {
       icono: 'icono.tacho.png',
       comportamiento: 'Soltar',
       argumentos: `{
