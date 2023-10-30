@@ -2841,6 +2841,15 @@ export const desafios = [
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
+    id: "nuevo11",
+    nombre: 'EscapeEnYacare',
+    escena: 'EscapeEnYacare',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarTelescopio', 'EntregarTelescopio', 'EntregarPelota', 'EntregarCargador', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+    expectations: {
+      decomposition: true,
+    },
+  },
+  {
     id: 'nuevo12',
     nombre: 'LimpiandoElHumedal',
     escena: 'LimpiandoElHumedal',

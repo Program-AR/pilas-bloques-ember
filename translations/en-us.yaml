@@ -68,6 +68,15 @@ model:
         4) Fighting against the dark knight using her sword.
         5) Running away riding a unicorn.
       clue: ''
+    'nuevo11':
+      title: The great escape on alligator
+      description: |
+        Help Capy:
+        1) Search for the telescope 
+        2) Give the telescope to Mañic
+        3) Bring the ball to Chuy
+        4) Bring the charger to Yvoty
+        5) Leave on the alligator.
     '12':
       title: Repairing the spaceship
       description: 'The Martian needs to repair his spaceship to get back home. To achieve this, he needs to carry 3 units of carbon and 3 units of iron to the spaceship, but he cannot load more than one unit at a time.'
