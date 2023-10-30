@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.16.1",
+  "version": "1.16.2",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -44,7 +44,7 @@
     "build:prod": "ember build --environment=production --output-path dist_prod",
     "pilasweb:build": "cd ../pilasweb; make build; cd ../pilas-bloques; cp -rf ../pilasweb node_modules/pilasweb/",
     "exercises:watch": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt watch",
-    "exercises:build": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt;cd ../pilas-bloques ;cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises",
+    "exercises:build": "cd ../pilas-bloques-exercises; node_modules/grunt-cli/bin/grunt run:build ;cd ../pilas-bloques ;cp -rf ../pilas-bloques-exercises/dist node_modules/pilas-bloques-exercises",
     "pack:linux_x64_deb": "bash ./scripts/package.sh -linux_x64_deb",
     "pack:linux_ia32_zip": "bash ./scripts/package.sh -linux_ia32_zip",
     "pack:linux_x64_zip": "bash ./scripts/package.sh -linux_x64_zip",

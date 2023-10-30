@@ -1020,7 +1020,7 @@ model:
     '3':
       title: Nivel Avanzado
       description: Desafios avanzados
-    '400':
+    '1000':
       title: Nuevos personajes
       description: TEMPORAL - SE BORRARÁ
   chapters:
