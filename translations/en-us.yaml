@@ -25,7 +25,7 @@ model:
     '4':
       title: The Martian in the desert
       description: |
-        The Martian is lost in the desert and needs to eat his favorite food: apples! Help him meet his goal. Clue: Create a procedure (block) for each group of apples
+        The Martian is lost in the desert and needs to eat his favorite food: apples! Help him meet his goal. Clue: Create a procedure (block) for each group of apples.
       clue: 'There are many ways to eat the apples. You can start by eating the apples on the right, or you can start from top to bottom! Can you figure out another strategy? Consider it always before programming.'
     '5':
       title: Tito turns the lights on
@@ -51,7 +51,7 @@ model:
     '9':
       title: Feeding the fishes
       description: |
-        Our diver needs to feed the 7 fishes on screen with worms. First pick up the worms, and then go to each fish to feed them. Clue: How many steps should your strategy have?
+        Our diver needs to feed the 7 fishes on screen with worms. First pick up the worms, and then go to feed each fish. Clue: How many steps should your strategy have?
       clue: ''
     '10':
       title: Installing games
@@ -61,7 +61,7 @@ model:
     '11':
       title: The great adventure of the enchanted sea
       description: |
-        Help the heroine rescue her prince. To achieve this, she needs to overcome the following challenges one after the other:
+        Help the heroine rescue her prince. To achieve this, she needs to overcome the following challenges in order:
         1) Finding the key.
         2) Opening the chest with the key, and then taking the magic hat that’s inside.
         3) Giving the hat to the magician to receive the sword in return.
@@ -112,7 +112,7 @@ model:
     '18':
       title: Long maze
       description: |
-        Help the mouse get out of the maze. Opposite to the previous maze, here the mouse needs to move forward a lot of boxes. How many? Is it always the same number? Clue: first think how to move forward one single box.
+        Help the mouse get out of the maze. Opposite to the previous maze, here the mouse needs to move forward a lot of boxes. How many? Is it always the same number? Clue: first think how to move forward by a single box.
       clue: ''
     '19':
       title: Super Tito 1
@@ -128,12 +128,12 @@ model:
     '21':
       title: Maze with cheese
       description: |
-        The mouse is hungrier than ever! Guide him along the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
+        The mouse is hungrier than ever! Guide him through the maze so that he can eat all pieces of cheese. Clue: before starting, push the “Run” button several times to learn how the scenario changes.
       clue: 'It is important to consider if the block’s condition called "Repeat until" is met at any given time. Otherwise, the program might never end!'
     '22':
       title: Detective Chaparro
-      description: 'The detective should discover the guilty of a crime. Starting by the first on the left, interrogate each one of the suspects until you find the guilty party!'
-      clue: 'The "Repeat until" block allows us to finish the program when we finally find the guilty party, without need to interrogate all suspects in the row.'
+      description: 'The detective should discover the guilty of a crime. Starting from the first on the left, interrogate each one of the suspects until you find the guilty party!'
+      clue: 'The "Repeat until" block allows us to finish the program when we finally find the guilty party, without the need to interrogate all suspects in the row.'
     '23':
       title: Football for robots
       description: Help our football player robot kick all balls. Always remember that a proper task division using procedures can help you face the challenge better.
@@ -141,7 +141,7 @@ model:
     '24':
       title: Powering all computers on
       description: |
-        We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
+        We should power all computers on, taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
       clue: ''
     '25':
       title: The monkey who knows how to count
@@ -151,12 +151,12 @@ model:
     '26':
       title: The Supertrip
       description: |
-        Our superhero should complete his morning supertrip, which consists of going through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the "Sensors" category to see if there is something useful for you there.
+        Our superhero should complete his morning supertrip, which consists of travelling through a certain distance that changes from day to day (between 15 and 45 km). Help our superhero reach his destination every day without going past! Clue: look at the "Sensors" category to see if there is something useful for you there.
       clue: You can use the "Repeat" block with the value of a sensor. This will allow you to repeat a code sequence the number of times mentioned by the sensor.
     '27':
       title: The monkey counts again
       description: 'The monkey needs to count the fruits again, but now he cannot check whether he reached the end of the column! Is there any sensor to help him?'
-      clue: 'A sensor will allow us to get information that can change each time you run the program, even during the same run. For example, the length of a column changes depending on the column on which the monkey is standing.'
+      clue: 'A sensor allows to get information that can change each time you run the program, or even during the same run. For example, the length of a column changes depending on the column on which the monkey is standing.'
     '28':
       title: Nano’s planet
       description: |
@@ -202,7 +202,7 @@ model:
       title: |
         Drawing: Inverted pyramid
       description: |
-        Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: consider if there exists a relationship between the different angles and the number of sides.
+        Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: check if there exists a relationship between the different angles and the number of sides.
       clue: 'In polygons, the sum of all exterior angles is equal to 360'
     '36':
       title: |
@@ -225,7 +225,7 @@ model:
     '39':
       title: Nano’s paths
       description: |
-        Nano heard about the location of another delicious fruit in their rocky planet, though the road it's longer and more dangerous. The green road is the safest but it's not always free of rocks.
+        Nano heard about the location of another delicious fruit in their rocky planet, but the road is longer and more dangerous. The green road is the safest but it's not always free of rocks.
       clue: Is there a pattern that repeats? Could the solution of the previous challenge (Nano's rocks) help us?
     '40':
       title: |
@@ -376,7 +376,7 @@ model:
       clue: ''
     '221':
       title: Challenge 2
-      description: What happens with Duba that she can’t eat her food? Correct the program and help the puma satisfy her hunger.
+      description: Why can’t Duba eat her food? Correct the program and help the puma satisfy her hunger.
       clue: ''
     '222':
       title: Challenge 3
@@ -427,7 +427,7 @@ model:
     '233':
       title: Challenge 1
       description: The llama wants to draw four lines. What’s the repeated item this time?
-      clue: I may be more than one block within the Repeat block
+      clue: I may be more than one block within the Repeat block.
     '234':
       title: Challenge 2
       description: 'Now, in addition, you have to draw downwards! Will this be as easy as adding a block to what you did before? How many repetitions are needed now?'
@@ -439,7 +439,7 @@ model:
     '236':
       title: Challenge 1
       description: 'Great, you found the solution! Will you test it?'
-      clue: You can test the programs step by step to find out the errors
+      clue: You can test the programs step by step to find out the errors.
     '237':
       title: Challenge 2
       description: 'What happens with Duba that she can’t eat her favorite dish? Remove, modify and/or add the missing blocks so that she can meet her goal.'
@@ -508,7 +508,7 @@ model:
       title: Challenge 3
       description: |
         Toto likes playing with the letters: make him copy the word, but make him add "ICH" when he reaches the M.
-      clue: 'When he copies "Cement", he will write "Cemichent"'
+      clue: 'When he copies "Cement", he will write "Cemichent".'
     '254':
       title: Challenge 4
       description: 'Make Toto copy the word in Jeringozo language. If the word were "DUBA", he will have to copy "DUPUBAPA"'
@@ -613,11 +613,11 @@ model:
       clue: ''
     '2021204':
       title: Level 4
-      description: La llama quiere dibujar cuatro líneas. ¿Qué es lo que se repite esta vez?
-      clue: Puede haber más de un bloque dentro del Repetir
+      description: The llama now wants to draw 4 lines. What’s the repeating pattern here?
+      clue: The REPEAT block may contain more than one block.
     '2021205':
       title: Level 5
-      description: Coty tiene ganas de dibujar una escalera. ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?
+      description: Coty wants to draw a staircase. Can you see the repeating pattern? How many times does it repeat?
       clue: ''
     '2021206':
       title: Level 6
@@ -625,7 +625,7 @@ model:
       clue: ''
     '2021207':
       title: Level 7
-      description: ¿Encontrás el patrón que se repite? ¿Cuántas veces se repite?
+      description: Can you see the repeating pattern? How many times does it repeat?
       clue: ''
     '2021301':
       title: Level 1
@@ -643,31 +643,31 @@ model:
       clue: ''
     '2021304':
       title: Level 4
-      description: Arreglá el programa para que Toto pueda leer un día de la semana.
-      clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+      description: Fix the program so that Toto can read a day of the week.
+      clue: Toto can execute instructions one-at-the-time with the 'STEP' button.
     '2021305':
       title: Level 5
-      description: Toto tiene que leer una palabra. ¿En dónde hay un stand de Pilas Bloques? ¡En Tec....!
+      description: Toto has to read a word. Where can he find a Pilas Bloques stand? In Tec....!
       clue: ''
     '2021306':
       title: Level 6
-      description: Toto tiene que leer el nombre de una provincia que se lee igual al derecho que al revés. ¿Sabés cuál es?
-      clue: ¡Apareció el bloque Repetir para ayudarnos a resolver el desafío!
+      description: Toto has to read the name of a palindromic province. Which one is it?
+      clue: The REPEAT block comes in clutch!
     '2021307':
       title: Level 7
       description: |
-        Toto tiene que volver a leer Neuquén. ¡Recordá que se puede leer igual al derecho que al revés! :wink: 
+        Toto needs to read Neuquén again. Remember it's spelled the same both ways! :wink: 
       clue: ''
     '2021308':
       title: Level 8
-      description: Ayudalo a Toto a leer SANTA CRUZ. ¡Pero esta vez usando el bloque repetición!
-      clue: ¿Sabías que dentro de un bloque repetir pueden ponerse muchos bloques?
+      description: Help Toto read SANTA CRUZ. This time, use the REPEAT block!
+      clue: Did you know a single REPEAT block can hold many other blocks inside?
     '2021309':
       title: Level 9
       description: |
-        Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
-        Fijate si funciona o qué hay que arreglar.
-      clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+        This program suggests Toto can now read the name of the province south of rio negro.
+        Does it work or should we fix anything?
+      clue: Toto can execute the instructions one-at-the-time with the 'STEP' button.
     'nuevo2':
       title: Chuy keepie-uppie
       description: 'Make Chuy take a step forward, warm up moving back and forth, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
@@ -680,8 +680,8 @@ model:
     'nuevo4':
       title: Mañic in sky
       description: |
-        Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
-      clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
+        Mañic is obsessed with the sky, and she particularly loves stargazing! Help her do so. Clue: Create a procedure for each block of stars.
+      clue: 'There are many ways to stargaze. You may start from the right side, or maybe even from the top! Are there any other strategies? Consider the options before programming them.'
     'nuevo5':
       title: Yvoty awakens fireflies
       description: |
