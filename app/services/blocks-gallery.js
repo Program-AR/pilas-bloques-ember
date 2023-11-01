@@ -1018,7 +1018,7 @@ export default Service.extend({
       argumentos: '{}',
     });
 
-    this.crearBloqueAccion('ObservarConAmigos', 'watchWithFriends', {
+    this.crearBloqueAccion('ObservarConAmigos', 'lookWithFriends', {
       icono: 'icono.todos.observando.png',
       comportamiento: 'TodosObservando',
       argumentos: '{idTransicion: "observarConAmigos"}',
