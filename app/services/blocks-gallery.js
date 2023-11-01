@@ -1006,6 +1006,24 @@ export default Service.extend({
       argumentos: '{idTransicion: "empezarFiesta"}',
     });
 
+    this.crearBloqueAccion('MoverTelescopio', 'moveTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'MoverTelescopio',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('SiguienteTelescopio', 'moveNextTelescope', {
+      icono: 'icono.derecha.png',
+      comportamiento: 'MoverACasillaDerecha',
+      argumentos: '{}',
+    });
+
+    this.crearBloqueAccion('ObservarConAmigos', 'watchWithFriends', {
+      icono: 'icono.todos.observando.png',
+      comportamiento: 'TodosObservando',
+      argumentos: '{idTransicion: "observarConAmigos"}',
+    });
+
     this.crearBloqueAccion('VolverAlBordeIzquierdo', 'backToLeftBorder', {
       icono: 'icono.izquierdaTope.png',
       comportamiento: 'MoverTodoAIzquierda',
