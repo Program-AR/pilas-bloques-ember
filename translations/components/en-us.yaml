@@ -125,7 +125,7 @@ spects:
     # For each procedure:
     do_something: This procedure is empty and thus does nothing. Add blocks to it so it can work.
     name_was_changed: "You can name this procedure. A good idea for any procedure's name is to think: What does it do?"
-    is_used: This procedure is not being used by any part of the programa. Click on the hand to create a functional command to use.
+    is_used: This procedure is not being used by any part of the program. Click on the hand to create a functional command to use.
     is_used_from_main: This procedure is being used by another one, but that one is not being called by the main program. Check for errors to make it work.
     does_not_use_recursion: Be Careful! This procedure is trying to call itself! Try to tackle this challenge in a different way.
     does_not_nest_control_structures: "This block could be inside a procedure which's name describes what it does."
@@ -174,7 +174,7 @@ spects:
   control_group:
     solution_works: "Your solution _works_!"
     uses_simple_repetition: You should use simple repetition for the repeating parts of your program.
-    uses_conditional_alternative: You should use conditional alternative to consider all possible scenarios..
+    uses_conditional_alternative: You should use conditional alternative to consider all possible scenarios.
     uses_conditional_repetition: You should use conditional repetition to consider all scenarios.
     main_too_long: The main program should be subdivided into simpler pieces of work using procedures.
     too_long: Your procedures should not be that long, they may also be subdivided into simpler pieces of work (procedures).
