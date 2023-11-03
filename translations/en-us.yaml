@@ -68,7 +68,7 @@ model:
         4) Fighting against the dark knight using her sword.
         5) Running away riding a unicorn.
       clue: ''
-    'nuevo11':
+    '1011':
       title: The great escape on alligator
       description: |
         Help Capy:
@@ -668,94 +668,94 @@ model:
         This program suggests Toto can now read the name of the province south of rio negro.
         Does it work or should we fix anything?
       clue: Toto can execute the instructions one-at-the-time with the 'STEP' button.
-    'nuevo2':
+    '1002':
       title: Chuy keepie-uppie
       description: 'Make Chuy take a step forward, warm up moving back and forth, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
       clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
-    'nuevo3':
+    '1003':
       title: I love bouncing the ping pong ball
       description: |
         Help Chuy bounce the ping pong ball 30 times non-stop. Clue: you can solve this challenge with less than 30 blocks.
       clue: The Repeat block allows you to select the number of times you want to repeat a sequence of actions. This is called "Simple repetition".
-    'nuevo4':
+    '1004':
       title: Mañic in sky
       description: |
         Mañic is obsessed with the sky, and she particularly loves stargazing! Help her do so. Clue: Create a procedure for each block of stars.
       clue: 'There are many ways to stargaze. You may start from the right side, or maybe even from the top! Are there any other strategies? Consider the options before programming them.'
-    'nuevo5':
+    '1005':
       title: Yvoty awakens fireflies
       description: |
         Help Yvoty wake up all the fireflies.
         Clue: create a procedure to wake up all the fireflies in a diagonal line.
       clue: 'You can create a procedure once, and then use it anytime you want within the same program.'
-    'nuevo7':
+    '1007':
       title: The telescope repairgirl
       description: |
         Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
       clue: Usar muchas veces un procedimiento te ahorra trabajo.
-    'nuevo8':
+    '1008':
       title: Mañic and the planets
       description: |
         Mañic needs to watch all planets in the grid. Think how you could help her do it by creating the necessary blocks.
       clue: You can also think if there is a strategy that allows you to **reuse** the same procedure several times.
-    'nuevo9':
+    '1009':
       title: Charging cell phones
       description: |
         Yvoty needs to charge the 7 cell phones on screen with the charger. First pick up the charger, and then go to each cell phone to charge them. Clue: How many steps should your strategy have?
       clue: ''
-    'nuevo10':
+    '1010':
       title: Installing games
       description: |
         Yvoty needs to install a game in 3 different computers to have fun with his friends. The steps to install the game in each computer are: powering the computer on, writing the password ("ABC"), installing the game, and finally powering the computer off. Clue: make the most of the fact that you have to do the same work in each computer.
       clue: ''
-    'nuevo12':
+    '1012':
       title: Cleaning the wetland
       description: 'Capy needs to clean the wetland to go surfing. To achieve this, Capy needs to carry 3 cans and 3 papers to the trash, but Capy cannot throw more than one at a time. Then, Capy gets on the alligator and finally goes surfing!'
       clue: ''
-    'nuevo16':
+    '1016':
       title: Three telescopes
       description: |
         Mañic should repair all telescopes. But they neither appear always in the same places, nor the same number of telescopes! Clue: first think what procedure you should create to repair only one telescope, if it appears.
       clue: ''
-    'nuevo17':
+    '1017':
       title: Yvoty awakens more fireflies
       description: Yvoty needs to wake up all the fireflies to know the route... But they change their places each time you run the program! You can use the procedures and control blocks.
       clue: ''
-    'nuevo19':
+    '1019':
       title: Super Yvoty 1
       description: |
         Help Yvoty wake up all the fireflies.
         Watch out! There’s a firefly in every cell, but you don´t know how many cells are there each time you run the program.
       clue: There are new blocks that can help you solve this challenge very easily. Use them!
-    'nuevo20':
+    '1020':
       title: Super Yvoty 2
       description: |
         Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
       clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
-    'nuevo22':
+    '1022':
       title: Capy looks for Guyrá
       description: Help Capy to find Guyrá
       clue: ''
-    'nuevo24':
+    '1024':
       title: Powering all computers on
       description: |
         We should power all computers on taking into account that the scenario width and height change each time you run the program. Clue: think how you could turn on all computers from only one rectangle, and then repeat the same action for the rest of the sides.
       clue: ''
-    'nuevo25':
+    '1025':
       title: Counting planets and stars
       description: |
         Mañic should visit all boxes and count how many planets and stars are there in total. Clue: first think how you could count whether there is any planet or star in a particular box. Then think how you could count all celestial bodies in only one particular column.
       clue: 'Splitting a big problem into several little problems can help you better understand each of its parts. Even better: you can focus on solving smaller and easier parts!'
-    'nuevo26':
+    '1026':
       title: Supermarathon
       description: |
         Chuy must carry out his morning routine, which consists of running a certain number of kilometers that varies day by day (between 15 and 45 km). Make Chuy always reach his destination without going over! Clue: look in the "Sensors" category if there is something that can help you.
       clue: A "Repeat" block can be used with the value of a sensor. This allows a code sequence to be repeated the number of times indicated by the sensor
-    'nuevo27':
+    '1027':
       title: Mañic counts again
       description: 'Mañic needs to count the celestial bodies again, but now she cannot check whether she reached the end of the column! Is there any sensor to help her?'
       clue: 'A sensor will allow us to get information that can change each time you run the program, even during the same run. For example, the length of a column changes depending on the column on which Mañic is standing.'
-    'nuevo28':
+    '1028':
       title: Capy and Guyrá’s planet
       description: |
         Help Capy and Guyrá to collect all the cans. Be careful! He cannot come down...
@@ -763,62 +763,62 @@ model:
       clue: |
         You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
         For adding a parameter to a new procedure, you have to click on the plus sign.
-    'nuevo38':
+    '1038':
       title: Mañic's stars
       description: |
         In Mañic’s paths there are usually a lot of obstacles. Some of them get in the way to watch her favorite star. If that happens, Mañic must take the long, winding and sinuous road. Help Mañic watch the star at the end of the path. Don't forget to download your solution! (you'll need it later).
       clue: How many roads to the stars are there? Can all of them always be traversed or does it depend on something?
-    'nuevo39':
+    '1039':
       title: Mañic paths
       description: |
         Mañic heard about the location of another beautiful star in the sky, though the road it's longer and more dangerous. The road is not always free of obstacles.
       clue: Is there a pattern that repeats? Could the solution of the previous challenge (Mañic's stars) help us?
-    'nuevo40':
+    '1040':
       title: |
         Row of cans
       description: |
         "Nothing better than getting up in the morning and going out to keep the world clean", Capy thinks. Help Capy to collect all the cans he finds in his path. Don't forget to download your solution (you'll need it later).
       clue: How can Capy easily tell if there is a row of cans? What should he does if there is no can?
-    'nuevo41':
+    '1041':
       title: |
         A lot of row of cans
       description: |
         Today is a special day to help keep the planet clean... but there are people who throw cans on the floor. Help Capy to collect the cans from all the rows he finds in his path.
       clue: Is there a task that Capy has to perform multiple times? Could the solution to the previous challenge (Row of Cans) help us?
-    'nuevo42':
+    '1042':
       title: |
         sometimes cans, sometimes papers
       description: |
         Life on the planet can be very difficult for Capy, so running into an area full of garbage is a problem. Help Capy to collect all the cans and papers that he finds in his path.
       clue: Think of a strategy that allows Capy to go down a row and collect all the cans and papers he finds. Can the same be done in the other rows?
-    'nuevo43':
+    '1043':
       title: |
         The cell phones curve aisle
       description: |
         Yvoty found an aisle full of cell phones! The only problem is that the aisle turns several times and the cell phones are right there... Will Yvoty be able to unlock all the cell phones in this aisle?
       clue: The cell phones are found right in the curves of the aisle. A strategy to unlock the cell phones in a curve would be an excellent help.
-    'nuevo44':
+    '1044':
       title: |
         The astronomical fest
       description: |
         Mañic came to watch the planets and stars at the usual place, although he heard rumors that a great astronomical event is taking place on the sky... Today is a great day to feast!
       clue: A normal observation is a column of 6 celestial bodies. How many columns does an astronomical event have? If you can get Mañic to watch the celestial bodies in a column, maybe you can do the same at a feast.
-    'nuevo45':
+    '1045':
       title: |
         Butterflies observer
       description: |
         The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
       clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
-    'nuevo131':
+    '1131':
       title: Recycling Papers
       description: |
         Help Capy and Guyrá throw a paper in the trash bin at the end of each row. Please take into account that the scenario doesn’t change each time you run the program! Clue: if you have to choose a parameter for your procedure... Which one would you choose? What’s the variation from row to row?
       clue: ''
-    'nuevo132':
+    '1132':
       title: Powering all computers on by using parameters
       description: 'Just like before, we need to power all computers on. But this time you have to define a unique procedure to power them on, whichever side they are.'
       clue: 'The parameters can be directions; they don’t always need to be numbers. For example, a parameter could be the direction in which the robot should move.'
-    'nuevo133':
+    '1133':
       title: Square butterflies
       description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
       clue: ''
