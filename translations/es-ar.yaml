@@ -664,7 +664,7 @@ model:
       title: Chuy hace jueguito
       description: |
         El calentamiento previo es fundamental para une deportiste, sobre todo hoy que se viene un partido complicado. Hacé que Chuy **avance**, **caliente**, **haga jueguito** y **retroceda** para ponerse a punto antes de la competencia.
-      clue: Calentar y Hacer jueguito no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles?
+      clue: Calentar y Hacer jueguito no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles?. Tené en cuenta que "calentar" implica avanzar y retroceder un par de veces. Y, por otro lado, "hacer jueguito" comprende tomar la pelota, lanzarla al aire y hacerla rebotar en el pie dos veces. ¡Hay mucho para hacer! 
     'nuevo3':
       title: No me canso de rebotar
       description: |
