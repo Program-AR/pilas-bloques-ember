@@ -95,8 +95,8 @@ acceptTermsAndConditions:
   toUse: ' to use Pilas Bloques'
   accept: I accept the terms of use and conditions
 backendOutage:
-  title: "Pilas Bloques is under manteinance"
-  notice: "We are performing manteinance on our servers. You may face some inconveniences when registering your user, logging in or viewing your previous solutions. Don't worry! Your previous solutions are safe 😉" 
+  title: "Pilas Bloques is under maintenance"
+  notice: "We are performing maintenance on our servers. You may face some inconveniences when registering your user, logging in or viewing your previous solutions. Don't worry! Your previous solutions are safe 😉" 
   accept: Understood
 finishedExerciseModal:
   congratulationsModal:
@@ -118,7 +118,7 @@ spects:
     # For the program:
     uses_simple_repetition: Remember to use REPETITION to do something multiple times, instead of many equal blocks!
     # For program or procedure:
-    uses_conditional_alternative: ¿Does your program work only sometimes? You could use conditional alternatives to check for all possible scenarios.
+    uses_conditional_alternative: Does your program work only sometimes? You could use conditional alternatives to check for all possible scenarios.
     uses_conditional_repetition: You can use conditional repetition if you need to repeat something until the condition is met.
     main_too_long: Main program is too long and hard to read. Try divinding it into simpler pieces of work using procedures.
     too_long: This procedure is too long and hard to read. Try divinding it into simpler pieces of work using procedures.
@@ -177,7 +177,7 @@ spects:
     uses_conditional_alternative: You should use conditional alternative to consider all possible scenarios.
     uses_conditional_repetition: You should use conditional repetition to consider all scenarios.
     main_too_long: The main program should be subdivided into simpler pieces of work using procedures.
-    too_long: Your procedures should not be that long, they may also be subdivided into simpler pieces of work (procedures).
-    do_something: You should not have empty procedures, with no blocks.
-    name_was_changed: You should choose a great name for each one of your procedures.
-    does_not_nest_control_structures: You may also divide your repetitions and alternatives into simpler pieces of work using procedures.
+    too_long: Your procedures should not be long, they should also be subdivided into simpler pieces of work (procedures).
+    do_something: You should not have empty procedures with no blocks.
+    name_was_changed: You should choose a good name for each one of your procedures.
+    does_not_nest_control_structures: You should also divide your repetitions and alternatives into simpler pieces of work using procedures.
