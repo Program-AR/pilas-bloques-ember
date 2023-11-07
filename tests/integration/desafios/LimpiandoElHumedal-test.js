@@ -16,24 +16,8 @@ moduloActividad(nombre, () => {
 
 	actividadTest(nombre, {
 		descripcionAdicional: ' Da error al querer irse sin limpiar el humedal',
-		solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
-		<variables></variables>
-		<block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="15" y="15">
-		  <statement name="program">
-			<shadow type="required_statement"></shadow>
-			<block type="MoverACasillaDerecha">
-			  <next>
-				<block type="MoverACasillaDerecha">
-				  <next>
-					<block type="IrseEnYacare"></block>
-				  </next>
-				</block>
-			  </next>
-			</block>
-		  </statement>
-		</block>
-	  </xml>`,
-		errorEsperado: '¡No puedo irme sin antes haber limpiado el humedal!'		
+		solucion: '<xml xmlns="http://www.w3.org/1999/xhtml"><variables></variables><block type="al_empezar_a_ejecutar" id="J;fm@E$*cAyjoQ^q-(]#" deletable="false" movable="false" editable="false" x="15" y="15"><statement name="program"><shadow type="required_statement" id="oUIZyToTrw6};w;Jsy/7"></shadow><block type="IrseEnYacare" id="JF/iM)gS/BDtVhDC0Jr*"></block></statement></block></xml>',
+		errorEsperado: 'Para escapar hace falta un transporte'		
 	});
 
 });

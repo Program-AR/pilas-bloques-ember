@@ -780,12 +780,6 @@ export default Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
-      icono: 'icono.yacare.png',
-      comportamiento: 'IrseEnYacare',
-      argumentos: `{}`,
-    });
-
     this.crearBloqueAccion('Escapar', 'escape', {
       icono: 'icono.escapar.png',
       comportamiento: 'Escapar',
@@ -840,6 +834,12 @@ export default Service.extend({
         idTransicion: "colocar",
         etiqueta: "Tacho",
       }`,
+    });
+ 
+    this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
+      icono: 'icono.yacare.png',
+      comportamiento: 'IrseEnYacare',
+      argumentos: `{}`,
     });
 
     this.crearBloqueAccion('TomarLata', 'takeCan', {

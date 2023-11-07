@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.16.2",
+  "version": "1.16.3",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -26,7 +26,9 @@
     "Nahuel Palumbo <nahuel.palumbo@gmail.com> (https://github.com/PalumboN)",
     "Diana López Alvas <dlopezalvas@gmail.com> (https://github.com/dlopezalvas)",
     "Tomás Floxo Lodeiro <tomasfloxolodeiro@gmail.com> (https://github.com/tfloxolodeiro)",
-    "Ezequiel Pereyra <pereyra.ezequielh@gmail.com> (https://github.com/ezequielPereyra)"
+    "Ezequiel Pereyra <pereyra.ezequielh@gmail.com> (https://github.com/ezequielPereyra)",
+    "Daniel Ferro <danieloscarferro@gmail.com> (https://github.com/danielferro69)",
+    "Rocío González <rgonzalezt94@gmail.com> (https://github.com/rgonzalezt)"
   ],
   "private": true,
   "directories": {

@@ -33,7 +33,11 @@ moduloActividad("Duba - Alternativa condicional", () => {
     <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="300" y="15">
       <statement name="program">
         <shadow type="required_statement"></shadow>
-        <block type="MoverACasillaDerecha"></block>
+        <block type="MoverACasillaDerecha">
+          <next>
+            <block type="MoverACasillaIzquierda"></block>
+          </next>
+        </block>
       </statement>
     </block>
   </xml>`
