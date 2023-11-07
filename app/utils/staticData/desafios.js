@@ -2841,6 +2841,15 @@ export const desafios = [
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
+    id: "nuevo11",
+    nombre: 'EscapeEnYacare',
+    escena: 'EscapeEnYacare',
+    bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarTelescopio', 'EntregarTelescopio', 'EntregarPelota', 'EntregarCargador', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
+    expectations: {
+      decomposition: true,
+    },
+  },
+  {
     id: 'nuevo12',
     nombre: 'LimpiandoElHumedal',
     escena: 'LimpiandoElHumedal',
@@ -3159,6 +3168,12 @@ export const desafios = [
           f: ["M", "M"]
       }})`,
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
+  },
+  {
+    id: 'nuevo131',
+    nombre: 'ReciclandoPapeles',
+    escena: 'ReciclandoPapeles',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'TomarPapel', 'Colocar', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
     id: 'nuevo132',

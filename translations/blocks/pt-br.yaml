@@ -44,7 +44,7 @@ putIntoTheShip: Colocar no navio
 goInAlligator: Vai em jacaré
 takeCan: Pegar a lata
 takePaper: Pegar um papel
-putIntoTheTrash: colocar na lata de lixo
+putIntoTheTrashBin: colocar na lata de lixo
 leavePresent: Deixar presente
 nextLine: Ir para a próxima linha
 nextColumn: Ir para a linha anterior

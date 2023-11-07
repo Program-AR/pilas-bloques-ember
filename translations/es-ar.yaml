@@ -68,6 +68,16 @@ model:
         4) Luchar con la espada contra el caballero oscuro.
         5) Escapar en unicornio.
       clue: ''
+    'nuevo11':
+      title: El gran escape en yacaré
+      description: |
+        Ayuda Capy:
+        1) Buscar el telescopio
+        2) Dar el telescopio a Mañic
+        3) Llevar la pelota a Chuy
+        4) Llevar el cargador a Yvoty
+        5) Irse en Yacare.
+      clue: ''
     '12':
       title: Reparando la nave
       description: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.'

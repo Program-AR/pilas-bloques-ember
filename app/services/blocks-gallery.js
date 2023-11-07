@@ -682,6 +682,16 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('AgarrarTelescopio', 'takeTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'AgregarASeguidores',
+      argumentos: `{
+        etiqueta: "TelescopioEntregable",
+        nombreAnimacion: "recoger",
+        idTransicion: "agarrarTelescopio"
+      }`,
+    });
+
     this.crearBloqueAccion('AbrirCofre', 'openSafeBoxTakeHat', {
       icono: 'icono.cofreConSombrero.png',
       comportamiento: 'Soltar',
@@ -693,6 +703,17 @@ export default Service.extend({
       }`,
     });
 
+    this.crearBloqueAccion('EntregarTelescopio', 'giveTelescope', {
+      icono: 'icono.telescopio.png',
+      comportamiento: 'AgregarASeguidores',
+      argumentos: `{
+        etiqueta: "ManicConPelota",
+        queSoltar: "TelescopioEntregable",
+        nombreAnimacion: "recoger",
+        idTransicion: "entregarTelescopio"
+      }`,
+    });
+
     this.crearBloqueAccion('DarSombrero', 'leaveHat', {
       icono: 'icono.sombrero.png',
       comportamiento: 'Interactuar',
@@ -701,6 +722,28 @@ export default Service.extend({
         nombreAnimacion: "cambiarSombreroPorEspada",
         animacionInteractuadoMientras: "darEspada",
         idTransicion: "darSombrero"
+      }`,
+    });
+
+    this.crearBloqueAccion('EntregarPelota', 'giveBall', {
+      icono: 'icono.pelota-pulpo.png',
+      comportamiento: 'AgregarASeguidores',
+      argumentos: `{
+        etiqueta: "ChuyConCargador",
+        queSoltar: "Pulpito",
+        nombreAnimacion: "recoger",
+        idTransicion: "entregarPelota"
+      }`,
+    });
+    
+    this.crearBloqueAccion('EntregarCargador', 'giveCharger', {
+      icono: 'icono.cargador.png',
+      comportamiento: 'AgregarASeguidores',
+      argumentos: `{
+        etiqueta: "YvotySinEntregable",
+        queSoltar: "Cargador",
+        nombreAnimacion: "recoger",
+        idTransicion: "entregarCargador"
       }`,
     });
 
@@ -784,7 +827,7 @@ export default Service.extend({
       }`,
     });
 
-    this.crearBloqueAccion('Colocar', 'putIntoTheTrash', {
+    this.crearBloqueAccion('Colocar', 'putIntoTheTrashBin', {
       icono: 'icono.tacho.png',
       comportamiento: 'Soltar',
       argumentos: `{
@@ -792,7 +835,7 @@ export default Service.extend({
         etiqueta: "Tacho",
       }`,
     });
-
+ 
     this.crearBloqueAccion('IrseEnYacare', 'goInAlligator', {
       icono: 'icono.yacare.png',
       comportamiento: 'IrseEnYacare',

@@ -33,6 +33,10 @@ writeB: Escribir "B"
 writeC: Escribir "C"
 takeKey: Tomar la llave
 openSafeBoxTakeHat: Abrir el cofre y tomar sombrero
+giveTelescope: Dar telescopio y agarrar pelota
+takeTelescope: Agarrar telescopio
+giveBall: Dar pelota y agarrar cargador
+giveCharger: Dar cargador
 leaveHat: Dar el sombrero
 attackWithSword: Atacar con la espada
 unicornEscape: Escapar en unicornio
@@ -44,7 +48,7 @@ putIntoTheShip: Poner en la nave
 goInAlligator: Irse en yacaré
 takeCan: Agarrar lata
 takePaper: Agarrar papel
-putIntoTheTrash: Poner en el tacho
+putIntoTheTrashBin: Poner en el tacho
 leavePresent: Dejar un regalo
 nextLine: Pasar a la siguiente fila
 nextColumn: Pasar a la siguiente columna
