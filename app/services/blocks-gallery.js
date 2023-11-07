@@ -1082,7 +1082,7 @@ export default Service.extend({
           "name": "longitud",
         }
       ],
-      code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60});'
+      code: 'hacer(actor_id, "DibujarHaciaAdelante", {distancia: $longitud, voltearAlIrAIzquierda: false, velocidad: 60, nombreAnimacion: "dibujar"});'
     });
 
     Blockly.Blocks.DibujarLado.toolbox = `

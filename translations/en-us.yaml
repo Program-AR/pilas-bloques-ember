@@ -763,6 +763,11 @@ model:
       clue: |
         You can add parameters to the procedures, so that they become more general. For instance, if we create the following procedures: "Collect 2 cans on the right", "Collect 3 cans on the right", and "Collect 4 cans on the right", we can replace these three procedures with one procedure with a parameter stating the number of cans we want to collect on the right: "Collect on the right the following number: [number]".
         For adding a parameter to a new procedure, you have to click on the plus sign.
+    '1029':
+      title: |
+        Drawing: Squares
+      description: Draw a square where each side's length is 100.
+      clue: ''
     'nuevo38':
       title: Mañic's stars
       description: |
