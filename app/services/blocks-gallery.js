@@ -1180,25 +1180,25 @@ export default Service.extend({
     this.crearBloqueAccion('MoverArribaDibujando', 'moveAndDrawUp', {
       icono: 'icono.arribaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{direccion: [0,1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,1], nombreAnimacion: "dibujar", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverAbajoDibujando', 'moveAndDrawDown', {
       icono: 'icono.abajoDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{direccion: [0,-1], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [0,-1], nombreAnimacion: "dibujar", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverDerechaDibujando', 'moveAndDrawRight', {
       icono: 'icono.derechaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{direccion: [1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [1,0], nombreAnimacion: "dibujar", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('MoverIzquierdaDibujando', 'moveAndDrawLeft', {
       icono: 'icono.izquierdaDibujando.png',
       comportamiento: 'DibujarLinea',
-      argumentos: '{direccion: [-1,0], nombreAnimacion: "correrDibujando", dibujarPuntos: true}',
+      argumentos: '{direccion: [-1,0], nombreAnimacion: "dibujar", dibujarPuntos: true}',
     });
 
     this.crearBloqueAccion('SaltarArriba', 'jumpUp', {
