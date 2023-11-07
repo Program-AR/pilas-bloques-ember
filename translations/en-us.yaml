@@ -809,6 +809,11 @@ model:
       description: |
         The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
       clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
+    'nuevo130':
+      title: Searching for the stars
+      description: |
+        In order for Mañic to invite his friends to observe the stars, she has to arrange the three telescopes by moving them a certain number of times until they are positioned correctly.
+      clue: 'Guide yourself by the shadows of the telescopes to know how far to move them'
     'nuevo131':
       title: Recycling Papers
       description: |
