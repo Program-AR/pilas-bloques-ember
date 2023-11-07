@@ -3052,6 +3052,13 @@ export const desafios = [
     }
   },
   {
+    id: 1029,
+    nombre: 'DibujandoCuadradoManic',
+    escena: 'DibujandoCuadradoManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero']
+  },
+  {
     id: 1038,
     nombre: 'LasEstrellasDeManic',
     escena: `new EscenaManic([

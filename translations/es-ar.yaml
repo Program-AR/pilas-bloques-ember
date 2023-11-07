@@ -804,6 +804,11 @@ model:
       clue: |
         A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos `Recoger 2 latas a la derecha`, `Recoger 3 latas a la derecha` y `Recoger 4 latas a la derecha`, podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría `Recoger latas a la derecha con [cantidad]` y se reemplaza el **parámetro** `[cantidad]` por 2, 3 o 4 en cada caso.
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el **+** que aparece al lado del nombre en el bloque `Definir`.
+    '1029':
+      title: |
+        Dibujando: Al cuadrado
+      description: Dibujá un cuadrado que tenga 100 de lado.
+      clue: ''
     '1038':
       title: Las estrellas de Mañic
       description: | 
