@@ -827,6 +827,10 @@ model:
       title: Square butterflies
       description: 'Yvoty should watch on all butterflies in the square, but they are distributed in a different way each time you run the program. Take into account that the butterflies are never in the boxes in the corner, and that the size of the square doesn''t change each time you run the program.'
       clue: ''
+    'nuevo135':
+      title: Bouncing the ping pong ball using parameters
+      description: 'In this case we must bounce all the ping pong balls in the square with the paddle, but in each execution they are distributed in a different way. Take into account that the boxes in the corner will never have a ping pong ball, and that the size of the square doesn´t change each time you run the program.'
+      clue: If you don´t have a procedure with parameters to move in any direction... You can create it!
   groups:
     AlienTocaBoton:
       title: ''    

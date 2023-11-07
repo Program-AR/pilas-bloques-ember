@@ -309,6 +309,7 @@ export const grupos = [
       'nuevo132',
       'nuevo133',
       'nuevo134',
+      'nuevo135'
     ]
   }
 ];
