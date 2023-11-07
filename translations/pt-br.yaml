@@ -804,6 +804,10 @@ model:
       title: Mariposas encuadradas
       description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: ''
+    'nuevo135':
+      title: Paleteando con parámetros
+      description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
+      clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
   groups:
     AlienTocaBoton:
       title: ''
