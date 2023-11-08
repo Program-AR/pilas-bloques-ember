@@ -3059,6 +3059,62 @@ export const desafios = [
       'GirarGrados', 'Numero']
   },
   {
+    id: 1030,
+    nombre: 'DibujandoRayuelaRoboticaManic',
+    escena: 'Dibujando5CuadradosHorizontalManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1031,
+    nombre: 'DibujandoCortoPorLaDiagonalManic',
+    escena: 'Dibujando5CuadradosDiagonalManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1032,
+    nombre: 'DibujandoMamushkaCuadradaManic',
+    escena: 'Dibujando4CuadradosInterioresManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1033,
+    nombre: 'DibujandoEscaleraCuadradaManic',
+    escena: 'DibujandoCabezaElefanteManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1034,
+    nombre: 'DibujandoHexagonoManic',
+    escena: 'DibujandoHexagonoManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1035,
+    nombre: 'DibujandoPiramideInvertidaManic',
+    escena: 'DibujandoTrianguloEquilateroManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1036,
+    nombre: 'DibujandoFigurasDentroDeFigurasManic',
+    escena: 'DibujandoPoligonosInterioresManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
+  {
+    id: 1037,
+    nombre: 'DibujandoLaCuevaDeEstalagtitasManic',
+    escena: 'DibujandoCuevaEstalagtitasManic',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
+  },
+  {
     id: 1038,
     nombre: 'LasEstrellasDeManic',
     escena: `new EscenaManic([
@@ -3241,5 +3297,17 @@ export const desafios = [
       'Numero', 'OpComparacion', 'OpAritmetica',
       'ParaLaDerecha', 'ParaLaIzquierda', 'ParaArriba', 'ParaAbajo'
     ]
+  },
+  {
+    id: 1136,
+    nombre: 'DibujoLibreManic',
+    escena: `DibujandoLibrementeManic`,
+    hasAutomaticGrading: false,
+    bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
+      'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante'],
+    expectations: {
+      decomposition: false,
+      simpleRepetition: false
+    }
   },
 ];
