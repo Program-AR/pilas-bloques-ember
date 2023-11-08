@@ -750,6 +750,53 @@ model:
         Desenho: Quadrado
       description: Desenhe um quadrado com 100 de cada lado.
       clue: ''
+    '1030':
+      title: |
+        Desenho: amarelinha robótica
+      description: Desenhe 5 quadrados em uma linha, cada um com um lado de 50, como mostrado na figura sombreada.
+      clue: ''
+    '1031':
+      title: |
+        Desenho: Curto na diagonal
+      description: Desenhe 5 quadrados na diagonal, cada um com o lado 50, como mostrado na figura sombreada.
+      clue: ''
+    '1032':
+      title: |
+        Desenho: Mamushka quadrada
+      description: |
+        Desenhe 4 quadrados com lados 50, 100, 150 e 200, como mostrado na figura sombreada. Dica: Crie um novo procedimento para desenhar quadrados de qualquer comprimento de lado.
+      clue: Incluir parâmetros em procedimentos permite generalizar um conceito. Por exemplo, o comprimento do lado de um quadrado.
+    '1033':
+      title: |
+        Desenho: Escada quadrada
+      description: |
+        Desenhe 5 quadrados: 4 de lado 50 e um de 100, como visto na figura sombreada..
+      clue: Ao criar um procedimento parametrizado, seus valores são indefinidos (por exemplo, "comprimento lateral"). Ao usar os procedimentos, esses parâmetros devem receber um valor específico (50, 100, etc.).
+    '1034':
+      title: |
+        Desenho: Hexágono
+      description: |
+        Desenhe um hexágono de lado 100, como mostrado na figura sombreada. Dica: pense em quantos graus o robô deve girar sabendo qual é o comprimento dos ângulos internos do hexágono.
+      clue: Nos polígonos, o valor de um ângulo externo é igual a 180 menos o valor de um ângulo interno.
+    '1035':
+      title: |
+        Desenho: Pirâmide invertida
+      description: |
+        Desenhe um triângulo equilátero de lado 100, como mostrado na figura sombreada. Dica: Pense se existe uma relação entre os ângulos e o número de lados.
+      clue: Em polígonos, a adición de todos os ângulos externos é 360
+    '1036':
+      title: |
+        Desenho: Figuras dentro de figuras
+      description: |
+        Desenhe um triângulo, um quadrado e um pentágono de lado 100, como mostrado na figura sombreada. Dica: Crie um procedimento com um parâmetro para o número de lados.
+      clue: |
+        Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
+    '1037':
+      title: |
+        Desenho: A caverna das estalactites
+      description: |
+        Desenhe 3 triângulos com lados 40, 60 e 100 e um quadrado com lados 200, como mostrado na figura sombreada. Dica: Crie um procedimento com 2 parâmetros, um para o número de lados e outro para o comprimento dos lados.
+      clue: Para poder utilizar os parâmetros em um novo procedimento, deve-se clicar com o botão direito do mouse no bloco que define o referido procedimento.
     '1038':
       title: Las estrellas de Mañic
       description: |
@@ -813,6 +860,10 @@ model:
       title: Paleteando con parámetros
       description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
+    '1136':
+      title: ¡Desenho livre!
+      description: Nesta atividade você poderá fazer o desenho que mais gosta
+      clue: Incluímos todos os blocos possíveis, para que você possa liberar seu conhecimento.
   groups:
     AlienTocaBoton:
       title: ''
