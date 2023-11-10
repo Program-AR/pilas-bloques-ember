@@ -649,95 +649,95 @@ model:
         Já temos um programa feito para o Toto ler a província que fica ao sul do Rio Negro.
         Veja se funciona ou o que precisa ser corrigido.
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
-    'nuevo2':
+    '1002':
       title: Chuy joga uma embaixadinha
       description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás, pegue a bola pulpito, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
       clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
-    'nuevo3':
+    '1003':
       title: Eu adoro quicar a bola de pingue-pongue
       description: |
         Ajude Chuy a quicar a bola de pingue-pongue 30 vezes seguidas. Dica: pode ser resolvido com menos de 30 blocos.
       clue: O bloco Repetir permite que você escolha o número de vezes que deseja repetir uma sequência de ações. Isso é chamado de "Repetição Simples".
-    'nuevo4':
+    '1004':
       title: Mañic en el cielo
       description: |
         Mañic está facinado con el cielo y le encanta observar todo, principalmente: ¡las estrellas! Ayudalo a cumplir su objetivo. Pista: Crear un procedimiento (bloque) para cada conjunto de estrellas
       clue: 'Hay muchas formas de observar estrellas. Podés empezar por las de la derecha, ¡o podés empezar por arriba! ¿Se te ocurre otra estrategia? Pensala siempre antes de programar'
-    'nuevo5':
+    '1005':
       title: Yvoty despierta las luciérnagas
       description: |
         Ayudá a Yvoty a despertar todas las luciérnagas.
         Pista: creá un procedimiento para despertar todas las luciérnagas de una diagonal.
       clue: Se puede crear un procedimiento una vez y usarlo todas las veces que quieras dentro de un programa.
-    'nuevo7':
+    '1007':
       title: La Reparadora de Telescopios
       description: |
         Ayudá a Mañic a reparar todos los telescopios. Pista: podés hacer un procedimiento que tome una fila de telescopios.
       clue: Usar muchas veces un procedimiento te ahorra trabajo.
-    'nuevo8':
+    '1008':
       title: Mañic y los planetas
       description: |
         Mañic tiene que observar todos los planetas de la cuadrícula. Pensá de qué manera puede hacerlo creando los bloques necesarios.
       clue: Podés también pensar si existe una estrategia que te permita **reutilizar** un mismo procedimiento varias veces.
-    'nuevo9':
+    '1009':
       title: Cargando los celus
       description: |
         Yvoty debe cargar con el cargador a los 7 celus que hay en esta escena. Buscá primero el cargador y luego pasá por cada celular cargandolo. Pista: ¿Cuántas partes debería tener tu estrategia?
       clue: ''
-    'nuevo10':
+    '1010':
       title: Instalando juegos
       description: |
         Yvoty tiene que instalar un juego en 3 compus para divertirse con sus amigos. Los pasos para instalarlo en cada una son: encenderla, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Pista: aprovechá que en cada compu hay que hacer el mismo trabajo.
       clue: ''
-    'nuevo12':
+    '1012':
       title: Limpando o pantanal
       description: 'Capy precisa limpar o pântano antes de surfar. Para conseguir isso, Capy precisa pegar 3 latas e 3 pedaços de papel e levá-los para o lixo, mas não pode jogar mais de um de cada vez. Aí ele sobe no jacaré e finalmente a surfar!'
       clue: ''
-    'nuevo16':
+    '1016':
       title: Tres telescopios
       description: |
         Mañic debe reparar todos los telescopios rotos que aparezcan en las casillas. ¡Pero no siempre aparecen en los mismos lugares ni la misma cantidad de telescopios! Pista: pensá primero cómo harías un procedimiento para reparar un solo telescopio si es que lo hay.
       clue: ''
-    'nuevo17':
+    '1017':
       title: Yvoty despierta más luciérnagas
       description: Yvoty necesita despertar a las luciérnagas para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
       clue: ''
-    'nuevo19':
+    '1019':
       title: Súper Yvoty 1
       description: |
         Ayudá a Yvoty a despertar las luciérnagas.
         ¡Ojo! En todas las celdas hay una luciérnaga, pero no sabés cuántas celdas hay en cada ejecución.
       clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
-    'nuevo20':
+    '1020':
       title: Súper Yvoty 2
       description: |
         Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
-    'nuevo22':
+    '1022':
       title: Capy busca a Guyrá
       description: |
         Ayuda a Capy a encontrar a Guyrá
       clue: ''
-    'nuevo24':
+    '1024':
       title: Prendiendo las compus
       description: |
         Debemos prender todas las compus teniendo en cuenta que el ancho y el alto del escenario cambian en cada ejecución. Pista: pensá cómo harías para prender las compus de un solo lado del rectángulo y después repetilo para el resto de los lados.
       clue: ''
-    'nuevo25':
+    '1025':
       title: Contando planetas e estrelas
       description: |
         Mañic deve passar por todos os quadrados e contar quantas estrelas e planetas existem no total. Dica: primeiro pense em como você contaria se houvesse uma estrela ou um planeta em um determinado quadrado. Em seguida, pense em como você faria para contar todos os corpos celestiais em uma única coluna.
       clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
-    'nuevo26':
+    '1026':
       title: A Supermaratona
       description: |
         Chuy deve realizar sua caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que Chuy sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
       clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor
-    'nuevo27':
+    '1027':
       title: Mañic conta novamente
       description: Mañic tem que contar os astros novamente, mas agora ela não pode verificar se já atingiu o fim de uma coluna! Existe um sensor que pode ajudá-la?
       clue: Um sensor nos permite obter informações que podem mudar a cada execução do programa, até na mesma execução. Por exemplo, o comprimento de cada coluna varia dependendo da coluna em que Mañic está.
-    'nuevo28':
+    '1028':
       title: El planeta de Capy y Guyrá
       description: |
         Ayudá a Capy y Guyrá a recoger todas las latas. ¡Cuidado! No se puede bajar...
@@ -745,74 +745,130 @@ model:
       clue: |
         A los procedimientos se les pueden agregar parámetros para que resulten más generales. Por ejemplo, si creamos los procedimientos "Recoger 2 latas a la derecha", "Recoger 3 latas a la derecha" y "Recoger 4 latas a la derecha", podemos reemplazar a los tres por un solo procedimiento que reciba como parámetro la cantidad de latas que queremos recoger a la derecha: "Recoger a la derecha esta cantidad: [cantidad]".
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el + que aparece al lado del nombre en el bloque "Definir".
-    'nuevo38':
+    '1029':
+      title: |
+        Desenho: Quadrado
+      description: Desenhe um quadrado com 100 de cada lado.
+      clue: ''
+    '1030':
+      title: |
+        Desenho: amarelinha robótica
+      description: Desenhe 5 quadrados em uma linha, cada um com um lado de 50, como mostrado na figura sombreada.
+      clue: ''
+    '1031':
+      title: |
+        Desenho: Curto na diagonal
+      description: Desenhe 5 quadrados na diagonal, cada um com o lado 50, como mostrado na figura sombreada.
+      clue: ''
+    '1032':
+      title: |
+        Desenho: Mamushka quadrada
+      description: |
+        Desenhe 4 quadrados com lados 50, 100, 150 e 200, como mostrado na figura sombreada. Dica: Crie um novo procedimento para desenhar quadrados de qualquer comprimento de lado.
+      clue: Incluir parâmetros em procedimentos permite generalizar um conceito. Por exemplo, o comprimento do lado de um quadrado.
+    '1033':
+      title: |
+        Desenho: Escada quadrada
+      description: |
+        Desenhe 5 quadrados: 4 de lado 50 e um de 100, como visto na figura sombreada..
+      clue: Ao criar um procedimento parametrizado, seus valores são indefinidos (por exemplo, "comprimento lateral"). Ao usar os procedimentos, esses parâmetros devem receber um valor específico (50, 100, etc.).
+    '1034':
+      title: |
+        Desenho: Hexágono
+      description: |
+        Desenhe um hexágono de lado 100, como mostrado na figura sombreada. Dica: pense em quantos graus o robô deve girar sabendo qual é o comprimento dos ângulos internos do hexágono.
+      clue: Nos polígonos, o valor de um ângulo externo é igual a 180 menos o valor de um ângulo interno.
+    '1035':
+      title: |
+        Desenho: Pirâmide invertida
+      description: |
+        Desenhe um triângulo equilátero de lado 100, como mostrado na figura sombreada. Dica: Pense se existe uma relação entre os ângulos e o número de lados.
+      clue: Em polígonos, a adición de todos os ângulos externos é 360
+    '1036':
+      title: |
+        Desenho: Figuras dentro de figuras
+      description: |
+        Desenhe um triângulo, um quadrado e um pentágono de lado 100, como mostrado na figura sombreada. Dica: Crie um procedimento com um parâmetro para o número de lados.
+      clue: |
+        Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
+    '1037':
+      title: |
+        Desenho: A caverna das estalactites
+      description: |
+        Desenhe 3 triângulos com lados 40, 60 e 100 e um quadrado com lados 200, como mostrado na figura sombreada. Dica: Crie um procedimento com 2 parâmetros, um para o número de lados e outro para o comprimento dos lados.
+      clue: Para poder utilizar os parâmetros em um novo procedimento, deve-se clicar com o botão direito do mouse no bloco que define o referido procedimento.
+    '1038':
       title: Las estrellas de Mañic
       description: |
         En los caminos de Mañic suele haber muchos obstáculos que se interponen, impidiendo que pueda ir a observar su estrella favorita. Si eso pasa, debe tomar el largo y agotador camino sinuoso. Ayudá a Mañic a observar la estrella al final del camino. ¡No te olvides de descargar tu solución! (la vas a necesitar más adelante).
       clue: ¿Cuántos posibles caminos hacia la estrella existen? ¿Todos ellos se pueden recorrer siempre o depende de algo?
-    'nuevo39':
+    '1039':
       title: Los caminos de Mañic
       description: |
         Mañic escuchó la ubicación de otra hermosa estrella para observar, aunque el camino es más largo y peligroso. El camino no siempre está libre de obstáculos.
       clue: ¿Hay algún patrón que se repita? ¿Nos podría ayudar la solución del desafío anterior (Las estrellas de Mañic)? 
-    'nuevo40':
+    '1040':
       title: |
         Hilera de latas
       description: |
         “Nada mejor que despertar por la mañana y salir a mantener un mundo mas limpio” piensa Capy. Ayudá a Capy a recoger todas las latas que encuentre a su paso. No te olvides de descargar tu solución (la vas a necesitar más adelante).
       clue: ¿Cómo puede saber Capy fácilmente si hay una hilera de latas? ¿Qué debería hacer si no hay ninguna lata?
-    'nuevo41':
+    '1041':
       title: |
         Muchas hileras de latas
       description: |
         Hoy es un día especial para ayudar a mantener el planeta mas limpio... pero hay personas que tiran las latas al piso. Ayudá a Capy a levantar las latas de todas las hileras que encuentre a su paso.
       clue: ¿Hay alguna tarea que Capy tenga que realizar varias veces? ¿Nos podría ayudar la solución del desafío anterior (Hilera de latas)?
-    'nuevo42':
+    '1042':
       title: |
         A veces latas, a veces papeles
       description: |
         La vida en el planeta puede ser muy difícil para Capy, así que toparse con un área llena de basura es todo un problema. Ayudá a Capy a recoger todas las latas y papales que encuentre a su paso.
       clue: Pensá una estrategia que permita que Capy recorra una fila y recoja todas las latas y papeles que encuentre. ¿Se podrá hacer lo mismo en las demás filas? 
-    'nuevo43':
+    '1043':
       title: |
         El pasillo curvo de celus
       description: |
         ¡Yvoty encontró un pasillo lleno de celus! El único problema es que el pasillo da varias vueltas y los celus justo están ahí… ¿Podrá Yvoty desbloquear todos los celus de este pasillo?
       clue: Los celus se encuentran justo en las curvas que da el pasillo. Una estrategia para desbloquear los celus en una curva sería una excelente ayuda.
-    'nuevo44':
+    '1044':
       title: |
         El festín astronómico
       description: |
         Mañic vino a observar los astros al lugar de siempre, aunque escuchó rumores que se está dando un gran evento astronómico en el cielo… ¡Hoy es un gran día para darse un festín!
       clue: Una observacion habitual de Mañic es una columna de 6 astros. ¿Cuántas columnas tiene un evento astronómico? Si lográs hacer que Mañic observe los astros de una columna tal vez puedas hacer lo mismo en un evento.
-    'nuevo45':
+    '1045':
       title: |
         Observadora de mariposas
       description: |
         El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
       clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
-    'nuevo130':
+    '1130':
       title: Procurando pela estrelas
       description: |
         Para que Mañic convide seus amigos para observar as estrelas, ela deve organizar os três telescópios movendo-os um certo número de vezes até que estejam posicionados corretamente.
       clue: 'Guie-se pelas sombras dos telescópios para saber até onde movê-los'
-    'nuevo131':
+    '1131':
       title: Reciclando papeles
       description: |
         Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Pista: si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?
       clue: ''
-    'nuevo132':
+    '1132':
       title: Prendiendo las compus parametrizado
       description: 'Al igual que antes, debemos prender todas las compus. Pero esta vez tenés que definir un único procedimiento que prenda cualquiera de los lados.'
       clue: 'Los parámetros pueden ser direcciones, no siempre deben ser números. Por ejemplo, un parámetro podría ser la dirección en que el autómata debe moverse.'
-    'nuevo133':
+    '1133':
       title: Mariposas encuadradas
       description: Yvoty debe observar todas las mariposas del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que las casillas de la esquina nunca tienen mariposas y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: ''
-    'nuevo135':
+    '1135':
       title: Paleteando con parámetros
       description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
+    '1136':
+      title: ¡Desenho livre!
+      description: Nesta atividade você poderá fazer o desenho que mais gosta
+      clue: Incluímos todos os blocos possíveis, para que você possa liberar seu conhecimento.
   groups:
     AlienTocaBoton:
       title: ''

@@ -3,7 +3,7 @@
   "productName": "Pilas Bloques",
   "genericName": "Programacion con bloques",
   "description": "Una herramienta para aprender a programar utilizando bloques",
-  "version": "1.16.2",
+  "version": "1.16.3",
   "homepage": "http://pilasbloques.program.ar",
   "author": {
     "name": "Program.AR",
@@ -27,7 +27,8 @@
     "Diana López Alvas <dlopezalvas@gmail.com> (https://github.com/dlopezalvas)",
     "Tomás Floxo Lodeiro <tomasfloxolodeiro@gmail.com> (https://github.com/tfloxolodeiro)",
     "Ezequiel Pereyra <pereyra.ezequielh@gmail.com> (https://github.com/ezequielPereyra)",
-    "Daniel Ferro <danieloscarferro@gmail.com> (https://github.com/danielferro69)"
+    "Daniel Ferro <danieloscarferro@gmail.com> (https://github.com/danielferro69)",
+    "Rocío González <rgonzalezt94@gmail.com> (https://github.com/rgonzalezt)"
   ],
   "private": true,
   "directories": {
@@ -66,7 +67,7 @@
     "creador-de-desafios-pilasbloques": "^1.0.1",
     "mulang": "^6.0.5",
     "pilas-bloques-ember-intl": "^1.1.2",
-    "pilas-bloques-exercises": "1.4.21",
+    "pilas-bloques-exercises": "1.4.24",
     "pilasweb": "^0.5.0",
     "proceds-blockly": "^1.1.0",
     "ramda": "^0.28.0",
