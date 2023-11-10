@@ -3233,6 +3233,13 @@ export const desafios = [
     bloques: ['MoverACasillaDerecha', 'MoverACasillaArriba', 'VolverABordeIzquierdo', 'FotografiarMariposa', 'TocandoMariposa', 'Procedimiento', 'Repetir', 'Si', 'SiNo']
   },
   {
+    id: 1130,
+    nombre: 'BuscandoLasEstrellas',
+    escena: 'BuscandoLasEstrellas',
+    bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero',
+      'OpAritmetica', 'MoverTelescopio', 'SiguienteTelescopio', 'ObservarConAmigos'],
+  },
+  {
     id: 1131,
     nombre: 'ReciclandoPapeles',
     escena: 'ReciclandoPapeles',

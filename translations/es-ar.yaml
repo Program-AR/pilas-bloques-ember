@@ -903,6 +903,11 @@ model:
       description: |
         Yvoty se descargó una nueva aplicación para fotografiar objetos cercanos. Nada mejor que probarla sacando fotos a las coloridas mariposas de la selva misionera. Las mariposas aparecen por todos lados, a veces más y a veces menos. Ayudá a Yvoty a fotografiar a todas las mariposas. 
       clue: 'Parece haber unos sectores por los que las mariposas no vuelan. Ese dato puede servirte para armar una secuencia de recorrido. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero una casilla, luego una fila o columna, y finalmente un grupo de mariposas.' 
+    '1130':
+      title: Buscando las estrellas
+      description: |
+        Para que Mañic pueda invitar a sus amigos a observar las estrellas, tiene que acomodar los tres telescopios moviéndolos una cierta cantidad de veces hasta ubicarlos correctamente.
+      clue: 'Guiate por las sombras de los telescopios para saber hasta donde moverlos'
     '1131':
       title: Reciclando papeles
       description: |

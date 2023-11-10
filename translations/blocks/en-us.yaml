@@ -67,6 +67,9 @@ move1Km: Move 1 Km forward
 changeLightColor: Change spotlight color
 moveNextLight: Move to next spotlight
 startParty: Start the party
+moveTelescope: Move telescope
+moveNextTelescope: Move to next telescope
+lookWithFriends: Look at the sky with friends
 backToLeftBorder: Get back to the left border
 goToFirstSuspect: Go to the first suspect
 nextSuspect: Go to next suspect

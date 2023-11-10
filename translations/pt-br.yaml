@@ -843,6 +843,11 @@ model:
       description: |
         El universo tiene millones y millones de galaxias; por suerte para el recolector de estrellas, hoy debe recolectar solamente dos galaxias muy pequeñas.
       clue: 'Cada galaxia es un grupo de estrellas distribuidas de forma diferente pero siempre en un mismo espacio. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero un casillero, luego una fila o columna, y finalmente una galaxia.'
+    '1130':
+      title: Procurando pela estrelas
+      description: |
+        Para que Mañic convide seus amigos para observar as estrelas, ela deve organizar os três telescópios movendo-os um certo número de vezes até que estejam posicionados corretamente.
+      clue: 'Guie-se pelas sombras dos telescópios para saber até onde movê-los'
     '1131':
       title: Reciclando papeles
       description: |
