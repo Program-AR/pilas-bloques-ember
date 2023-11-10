@@ -809,6 +809,53 @@ model:
         Dibujando: Al cuadrado
       description: Dibujá un cuadrado que tenga 100 de lado.
       clue: ''
+    '1030':
+      title: |
+        Dibujando: Rayuela robótica
+      description: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.'
+      clue: ''
+    '1031':
+      title: |
+        Dibujando: Corto por la diagonal
+      description: 'Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.'
+      clue: ''
+    '1032':
+      title: |
+        Dibujando: Mamushka cuadrada
+      description: |
+        Dibujá 4 cuadrados de lados 50, 100, 150 y 200, como muestra la figura sombreada. Pista: creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado.
+      clue: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.'
+    '1033':
+      title: |
+        Dibujando: Escalera cuadrada
+      description: |
+        Dibujá 5 cuadrados: 4 de lado 50 y uno de 100, como muestra la figura sombreada.
+      clue: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).'
+    '1034':
+      title: |
+        Dibujando: Hexágono
+      description: |
+        Dibujá un hexágono de lado 100, como muestra la figura sombreada. Pista: pensá cuántos grados debe girar el robot sabiendo cuánto miden los ángulos internos del hexágono.
+      clue: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.'
+    '1035':
+      title: |
+        Dibujando: Pirámide invertida
+      description: |
+        Dibujá un triángulo equilátero de lado 100, como muestra la figura sombreada. Pista: pensá si existe una relación entre los ángulos y la cantidad de lados.
+      clue: 'En los polígonos, la suma de todos los ángulos externos es 360'
+    '1036':
+      title: |
+        Dibujando: Figuras dentro de figuras
+      description: |
+        Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados.
+      clue: |
+        Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
+    '1037':
+      title: |
+        Dibujando: La cueva de estalactitas
+      description: |
+        Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.
+      clue: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.'
     '1038':
       title: Las estrellas de Mañic
       description: | 
@@ -877,6 +924,10 @@ model:
       title: Paleteando con parámetros
       description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
       clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
+    '1136':
+      title: ¡Dibujo libre!
+      description: En esta actividad vas a poder realizar el dibujo que más te guste
+      clue: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.'
   groups:
     AlienTocaBoton:
       title: ''
