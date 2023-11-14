@@ -768,6 +768,53 @@ model:
         Drawing: Squares
       description: Draw a square where each side's length is 100.
       clue: ''
+    '1030':
+      title: |
+        Drawing: Robotic hopscotch
+      description: 'Draw 5 squares in a row, where each side''s length is 50, as shown by the shaded figure below.'
+      clue: ''
+    '1031':
+      title: |
+        Drawing: Cutting through the diagonal line
+      description: 'Draw 5 squares in a diagonal line, where each side''s length is 50, as shown by the shaded figure below.'
+      clue: ''
+    '1032':
+      title: |
+        Drawing: Squared mamushkas
+      description: |
+        Draw 4 squares, where each side's length is 50, 100, 150, and 200 respectively, as shown by the shaded figure below. Clue: create a new procedure for drawing different squares with different side’s length.
+      clue: 'Including parameters in the procedures will allow you to generalize a concept. For example, the side’s length of a square.'
+    '1033':
+      title: |
+        Drawing: Squared stairs
+      description: |
+        Draw 5 squares. 4 of them where each side's length is 50, and 1 of them where each side’s length is 100, as shown by the shaded figure below.
+      clue: 'When creating a procedure with parameters, their values are not defined (for example: "side''s length"). When you use the procedures, you have to set a particular value for such parameters (50, 100, etc.).'
+    '1034':
+      title: |
+        Drawing: Hexagon
+      description: |
+        Draw a hexagon, where each side's length is 100, as shown by the shaded figure below. Clue: think how many degrees the robot needs to rotate considering the interior angles of the hexagon.
+      clue: 'In polygons, the exterior angle value is equal to 180 degrees, less the interior angle value.'
+    '1035':
+      title: |
+        Drawing: Inverted pyramid
+      description: |
+        Draw an equilateral triangle, where each side's length is 100, as shown by the shaded figure below. Clue: check if there exists a relationship between the different angles and the number of sides.
+      clue: 'In polygons, the sum of all exterior angles is equal to 360'
+    '1036':
+      title: |
+        Drawing: Figures inside figures
+      description: |
+        Draw a triangle, a square, and a pentagon, where each side's length is 100, as shown by the shaded figure below. Clue: create a procedure with a parameter for the number of sides.
+      clue: |
+        Now we have the Operators: these blocks will allow us to do the numbers automatically, like a calculator!... How many degrees is a full circle rotation? What number should we divide this by?
+    '1037':
+      title: |
+        Drawing: The cave of stalactites
+      description: |
+        Draw 3 triangles, where each side's length is 40, 60, and 100 respectively, and a square where each side’s length is 200, as shown by the shaded figure below. Clue: create a procedure with 2 parameters, one for the number of sides and the other for their length.
+      clue: 'In order to use the parameters in a new procedure, you have to right click on the block that defines such procedure.'
     '1038':
       title: Mañic's stars
       description: |
@@ -814,6 +861,11 @@ model:
       description: |
         The universe has millions and millions of galaxies; luckily for the star collector, today he must collect only two very small galaxies.
       clue: 'Each galaxy is a group of stars distributed differently but always in the same space. Think of a strategy that goes from the simplest to the most complex: first a box, then a row or column, and finally a galaxy.'
+    '1130':
+      title: Searching for the stars
+      description: |
+        In order for Mañic to invite his friends to observe the stars, she has to arrange the three telescopes by moving them a certain number of times until they are positioned correctly.
+      clue: 'Guide yourself by the shadows of the telescopes to know how far to move them'
     '1131':
       title: Recycling Papers
       description: |
@@ -831,6 +883,10 @@ model:
       title: Bouncing the ping pong ball using parameters
       description: 'In this case we must bounce all the ping pong balls in the square with the paddle, but in each execution they are distributed in a different way. Take into account that the boxes in the corner will never have a ping pong ball, and that the size of the square doesn´t change each time you run the program.'
       clue: If you don´t have a procedure with parameters to move in any direction... You can create it!
+    '1136':
+      title: Free drawing!
+      description: In this activity you’ll be able to draw whatever you like.
+      clue: 'We’ve included all blocks possible, so that you can unleash your creativity.'
   groups:
     AlienTocaBoton:
       title: ''    

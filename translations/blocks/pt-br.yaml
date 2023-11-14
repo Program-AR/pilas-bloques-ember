@@ -63,6 +63,9 @@ move1Km: Avançar 1 Km
 changeLightColor: Mudar a cor da lâmpada
 moveNextLight: Ir para a próxima lâmpada
 startParty: Começar a festa
+moveTelescope: Mover telescópio
+moveNextTelescope: Ir para a próximo telescópio
+lookWithFriends: Perceber o céu com amigos
 backToLeftBorder: Voltar para a margem esquerda
 goToFirstSuspect: Ir para o primeiro suspeito
 nextSuspect: Ir para o próximo suspeito
