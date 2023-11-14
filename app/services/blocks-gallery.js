@@ -704,7 +704,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('EntregarTelescopio', 'giveTelescope', {
-      icono: 'icono.telescopio.png',
+      icono: 'icono.pelota-pulpo.png',
       comportamiento: 'AgregarASeguidores',
       argumentos: `{
         etiqueta: "ManicConPelota",
@@ -726,7 +726,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('EntregarPelota', 'giveBall', {
-      icono: 'icono.pelota-pulpo.png',
+      icono: 'icono.cargador.png',
       comportamiento: 'AgregarASeguidores',
       argumentos: `{
         etiqueta: "ChuyConCargador",
@@ -737,7 +737,7 @@ export default Service.extend({
     });
     
     this.crearBloqueAccion('EntregarCargador', 'giveCharger', {
-      icono: 'icono.cargador.png',
+      icono: 'icono.yvoty.png',
       comportamiento: 'AgregarASeguidores',
       argumentos: `{
         etiqueta: "YvotySinEntregable",
