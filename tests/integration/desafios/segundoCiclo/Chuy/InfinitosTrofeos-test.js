@@ -6,25 +6,19 @@ moduloActividad(nombre, () => {
 
 	actividadTest(nombre, {
 		solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
-		<variables>
-		  <variable type="math_number" id=".~:L;MZH3#_ch^(xj6@4">cantidad</variable>
-		</variables>
 		<block type="al_empezar_a_ejecutar" id="115" deletable="false" movable="false" editable="false" x="0" y="0">
 		  <statement name="program">
-			<shadow type="required_statement" id="oDul2_6$rV7|OIOxg0l"></shadow>
 			<block type="procedures_callnoreturn" id="308">
 			  <mutation name="Agarrar trofeos hacia">
 				<arg name="cantidad"></arg>
 				<arg name="direccion"></arg>
 			  </mutation>
 			  <value name="ARG0">
-				<shadow xmlns="" type="required_value"/>
 				<block type="math_number" id="320">
 				  <field name="NUM">4</field>
 				</block>
 			  </value>
 			  <value name="ARG1">
-				<shadow xmlns="" type="required_value"/>
 				<block type="ParaLaDerecha" id="314"></block>
 			  </value>
 			  <next>
@@ -34,13 +28,11 @@ moduloActividad(nombre, () => {
 					<arg name="direccion"></arg>
 				  </mutation>
 				  <value name="ARG0">
-					<shadow xmlns="" type="required_value"/>
 					<block type="math_number" id="192">
 					  <field name="NUM">3</field>
 					</block>
 				  </value>
 				  <value name="ARG1">
-					<shadow xmlns="" type="required_value"/>
 					<block type="ParaAbajo" id="275"></block>
 				  </value>
 				  <next>
@@ -50,13 +42,11 @@ moduloActividad(nombre, () => {
 						<arg name="direccion"></arg>
 					  </mutation>
 					  <value name="ARG0">
-						<shadow xmlns="" type="required_value"/>
 						<block type="math_number" id="198">
 						  <field name="NUM">4</field>
 						</block>
 					  </value>
 					  <value name="ARG1">
-						<shadow xmlns="" type="required_value"/>
 						<block type="ParaLaIzquierda" id="284"></block>
 					  </value>
 					  <next>
@@ -66,13 +56,11 @@ moduloActividad(nombre, () => {
 							<arg name="direccion"></arg>
 						  </mutation>
 						  <value name="ARG0">
-							<shadow xmlns="" type="required_value"/>
 							<block type="math_number" id="205">
 							  <field name="NUM">3</field>
 							</block>
 						  </value>
 						  <value name="ARG1">
-							<shadow xmlns="" type="required_value"/>
 							<block type="ParaArriba" id="290"></block>
 						  </value>
 						  <next>
@@ -112,7 +100,6 @@ moduloActividad(nombre, () => {
 					</block>
 				  </value>
 				  <statement name="block">
-					<shadow type="required_statement" id="##,3~5b4!+Se54x#ge.D"></shadow>
 					<block type="RecogerTrofeo" id="160">
 					  <next>
 						<block type="MoverA" id="157">
@@ -135,16 +122,13 @@ moduloActividad(nombre, () => {
 		  <statement name="STACK">
 			<block type="Repetir" id="234">
 			  <value name="count">
-				<shadow type="required_value" id="D4m!h{+@gO2c1BrzkTMp"></shadow>
 				<block type="math_number" id="235">
 				  <field name="NUM">2</field>
 				</block>
 			  </value>
 			  <statement name="block">
-				<shadow type="required_statement" id="%,0:y*ZK+a_07o*/D~1V"></shadow>
 				<block type="MoverA" id="210">
 				  <value name="direccion">
-					<shadow type="required_value" id="K[WegV(@8ZcHAa[08c4)"></shadow>
 					<block type="ParaAbajo" id="241"></block>
 				  </value>
 				</block>
@@ -156,13 +140,11 @@ moduloActividad(nombre, () => {
 					<arg name="direccion"></arg>
 				  </mutation>
 				  <value name="ARG0">
-					<shadow xmlns="" type="required_value"/>
 					<block type="math_number" id="269">
 					  <field name="NUM">4</field>
 					</block>
 				  </value>
 				  <value name="ARG1">
-					<shadow xmlns="" type="required_value"/>
 					<block type="ParaLaDerecha" id="263"></block>
 				  </value>
 				</block>
