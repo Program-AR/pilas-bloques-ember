@@ -133,7 +133,7 @@ export default Service.extend({
     },
 
     _hasCallOnStack(procedureBlock) {
-        return this._procedureCalls().some(b => getProcedureBlock(b).id === procedureBlock.id)
+        return this._procedureCalls().some(b => getProcedureBlock(b)?.id === procedureBlock?.id)
     },
 
     _workspace() {
