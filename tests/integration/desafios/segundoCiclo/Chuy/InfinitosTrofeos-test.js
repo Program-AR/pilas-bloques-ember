@@ -6,65 +6,65 @@ moduloActividad(nombre, () => {
 
 	actividadTest(nombre, {
 		solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
-			<block type="al_empezar_a_ejecutar" id="115" deletable="false" movable="false" editable="false" x="0" y="0">
+			<block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="0" y="0">
 				<statement name="program">
-					<block type="procedures_callnoreturn" id="308" inline="true">
+					<block type="procedures_callnoreturn" inline="true">
 						<mutation name="Agarrar trofeos hacia">
 							<arg name="cantidad"></arg>
 							<arg name="direccion"></arg>
 						</mutation>
 						<value name="ARG0">
-							<block type="math_number" id="320">
+							<block type="math_number">
 								<field name="NUM">4</field>
 							</block>
 						</value>
 						<value name="ARG1">
-							<block type="ParaLaDerecha" id="314"></block>
+							<block type="ParaLaDerecha"></block>
 						</value>
 						<next>
-							<block type="procedures_callnoreturn" id="180" inline="true">
+							<block type="procedures_callnoreturn" inline="true">
 								<mutation name="Agarrar trofeos hacia">
 									<arg name="cantidad"></arg>
 									<arg name="direccion"></arg>
 								</mutation>
 								<value name="ARG0">
-									<block type="math_number" id="192">
+									<block type="math_number">
 										<field name="NUM">3</field>
 									</block>
 								</value>
 								<value name="ARG1">
-									<block type="ParaAbajo" id="275"></block>
+									<block type="ParaAbajo"></block>
 								</value>
 								<next>
-								<block type="procedures_callnoreturn" id="186" inline="true">
+								<block type="procedures_callnoreturn" inline="true">
 								<mutation name="Agarrar trofeos hacia">
 									<arg name="cantidad"></arg>
 									<arg name="direccion"></arg>
 								</mutation>
 								<value name="ARG0">
-									<block type="math_number" id="198">
+									<block type="math_number">
 										<field name="NUM">4</field>
 									</block>
 								</value>
 								<value name="ARG1">
-									<block type="ParaLaIzquierda" id="284"></block>
+									<block type="ParaLaIzquierda"></block>
 								</value>
 								<next>
-								<block type="procedures_callnoreturn" id="183" inline="true">
+								<block type="procedures_callnoreturn" inline="true">
 								<mutation name="Agarrar trofeos hacia">
 									<arg name="cantidad"></arg>
 									<arg name="direccion"></arg>
 								</mutation>
 								<value name="ARG0">
-									<block type="math_number" id="205">
+									<block type="math_number">
 										<field name="NUM">3</field>
 									</block>
 								</value>
 								<value name="ARG1">
-									<block type="ParaArriba" id="290"></block>
+									<block type="ParaArriba"></block>
 								</value>
 								<next>
-								<block type="procedures_callnoreturn" id="299">
+								<block type="procedures_callnoreturn">
 									<mutation name="Agarrar trofeos centro">
 									</mutation>
 								</block>
@@ -78,32 +78,32 @@ moduloActividad(nombre, () => {
 					</block>
 				</statement>
 			</block>
-			<block type="procedures_defnoreturn" id="126" x="20" y="230">
+			<block type="procedures_defnoreturn" x="20" y="230">
 				<mutation>
 					<arg name="cantidad"></arg>
 					<arg name="direccion"></arg>
 				</mutation>
 				<field name="NAME">Agarrar trofeos hacia</field>
 				<statement name="STACK">
-					<block type="MoverA" id="323" inline="true">
+					<block type="MoverA" inline="true">
 						<value name="direccion">
-							<block type="param_get" id="328">
+							<block type="param_get">
 								<field name="VAR">direccion</field>
 							</block>
 						</value>
 						<next>
-						<block type="Repetir" id="141" inline="true">
+						<block type="Repetir" inline="true">
 							<value name="count">
-								<block type="param_get" id="147">
+								<block type="param_get">
 									<field name="VAR">cantidad</field>
 								</block>
 							</value>
 							<statement name="block">
-								<block type="RecogerTrofeo" id="160">
+								<block type="RecogerTrofeo">
 									<next>
-									<block type="MoverA" id="157" inline="true">
+									<block type="MoverA" inline="true">
 										<value name="direccion">
-											<block type="param_get" id="152">
+											<block type="param_get">
 												<field name="VAR">direccion</field>
 											</block>
 										</value>
@@ -116,36 +116,36 @@ moduloActividad(nombre, () => {
 					</block>
 				</statement>
 			</block>
-			<block type="procedures_defnoreturn" id="221" x="40" y="399">
+			<block type="procedures_defnoreturn" x="40" y="399">
 				<mutation></mutation>
 				<field name="NAME">Agarrar trofeos centro</field>
 				<statement name="STACK">
-					<block type="Repetir" id="234" inline="true">
+					<block type="Repetir" inline="true">
 						<value name="count">
-							<block type="math_number" id="235">
+							<block type="math_number">
 								<field name="NUM">2</field>
 							</block>
 						</value>
 						<statement name="block">
-							<block type="MoverA" id="210" inline="true">
+							<block type="MoverA" inline="true">
 								<value name="direccion">
-									<block type="ParaAbajo" id="241"></block>
+									<block type="ParaAbajo"></block>
 								</value>
 							</block>
 						</statement>
 						<next>
-						<block type="procedures_callnoreturn" id="257" inline="true">
+						<block type="procedures_callnoreturn" inline="true">
 							<mutation name="Agarrar trofeos hacia">
 								<arg name="cantidad"></arg>
 								<arg name="direccion"></arg>
 							</mutation>
 							<value name="ARG0">
-								<block type="math_number" id="269">
+								<block type="math_number">
 									<field name="NUM">4</field>
 								</block>
 							</value>
 							<value name="ARG1">
-								<block type="ParaLaDerecha" id="263"></block>
+								<block type="ParaLaDerecha"></block>
 							</value>
 						</block>
 						</next>

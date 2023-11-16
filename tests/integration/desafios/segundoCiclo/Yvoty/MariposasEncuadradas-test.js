@@ -7,38 +7,38 @@ moduloActividad(nombre, () => {
    actividadTest(nombre, {
       solucion: `<?xml version="1.0" encoding="UTF-8"?>
         <xml xmlns="http://www.w3.org/1999/xhtml">
-         <block type="al_empezar_a_ejecutar" id="12" deletable="false" movable="false" editable="false" x="0" y="0">
+         <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="0" y="0">
             <statement name="program">
-               <block type="procedures_callnoreturn" id="14" inline="true">
+               <block type="procedures_callnoreturn" inline="true">
                   <mutation name="Observar mariposas hacia">
                      <arg name="direccion" />
                   </mutation>
                   <value name="ARG0">
-                     <block type="ParaLaDerecha" id="15" />
+                     <block type="ParaLaDerecha"/>
                   </value>
                   <next>
-                     <block type="procedures_callnoreturn" id="20" inline="true">
+                     <block type="procedures_callnoreturn" inline="true">
                         <mutation name="Observar mariposas hacia">
                            <arg name="direccion" />
                         </mutation>
                         <value name="ARG0">
-                           <block type="ParaAbajo" id="21" />
+                           <block type="ParaAbajo"/>
                         </value>
                         <next>
-                           <block type="procedures_callnoreturn" id="16" inline="true">
+                           <block type="procedures_callnoreturn" inline="true">
                               <mutation name="Observar mariposas hacia">
                                  <arg name="direccion" />
                               </mutation>
                               <value name="ARG0">
-                                 <block type="ParaLaIzquierda" id="17" />
+                                 <block type="ParaLaIzquierda"/>
                               </value>
                               <next>
-                                 <block type="procedures_callnoreturn" id="18" inline="true">
+                                 <block type="procedures_callnoreturn" inline="true">
                                     <mutation name="Observar mariposas hacia">
                                        <arg name="direccion" />
                                     </mutation>
                                     <value name="ARG0">
-                                       <block type="ParaArriba" id="19" />
+                                       <block type="ParaArriba"/>
                                     </value>
                                  </block>
                               </next>
@@ -49,27 +49,27 @@ moduloActividad(nombre, () => {
                </block>
             </statement>
          </block>
-         <block type="procedures_defnoreturn" id="22" x="0" y="196">
+         <block type="procedures_defnoreturn" x="0" y="196">
             <mutation>
                <arg name="direccion" />
             </mutation>
             <field name="NAME">Observar mariposas hacia</field>
             <statement name="STACK">
-               <block type="Repetir" id="23" inline="true">
+               <block type="Repetir" inline="true">
                   <value name="count">
-                     <block type="math_number" id="24">
+                     <block type="math_number">
                         <field name="NUM">6</field>
                      </block>
                   </value>
                   <statement name="block">
-                     <block type="MoverA" id="25" inline="true">
+                     <block type="MoverA" inline="true">
                         <value name="direccion">
-                           <block type="param_get" id="26">
+                           <block type="param_get">
                               <field name="VAR">direccion</field>
                            </block>
                         </value>
                         <next>
-                           <block type="procedures_callnoreturn" id="27">
+                           <block type="procedures_callnoreturn">
                               <mutation name="Prender luz si hay" />
                            </block>
                         </next>
@@ -78,16 +78,16 @@ moduloActividad(nombre, () => {
                </block>
             </statement>
          </block>
-         <block type="procedures_defnoreturn" id="28" x="2" y="363">
+         <block type="procedures_defnoreturn" x="2" y="363">
             <mutation />
             <field name="NAME">Prender luz si hay</field>
             <statement name="STACK">
-               <block type="si" id="29" inline="true">
+               <block type="si" inline="true">
                   <value name="condition">
-                    <block type="TocandoMariposa" id="30"></block>
+                    <block type="TocandoMariposa"></block>
                   </value>
                   <statement name="block">
-                    <block type="FotografiarMariposa" id="31"></block>
+                    <block type="FotografiarMariposa"></block>
                   </statement>
                </block>
             </statement>
