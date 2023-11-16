@@ -7,7 +7,7 @@ moduloActividad(nombre, () => {
    actividadTest(nombre, {
       solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
       <variables>
-        <variable type="" id=";Hpnm3IaG$0W5,m[@zX/">direccion</variable>
+        <variable type="math_number" id=";Hpnm3IaG$0W5,m[@zX/">direccion</variable>
       </variables>
       <block type="al_empezar_a_ejecutar" id="13" deletable="false" movable="false" editable="false" x="0" y="0">
         <statement name="program">
@@ -73,12 +73,11 @@ moduloActividad(nombre, () => {
             <statement name="block">
               <shadow type="required_statement" id="o2C:cvl~r3@y,AQr;B+]"></shadow>
               <block type="MoverA" id="25">
-                <value name="direccion">
-                  <shadow type="required_value" id="4$-aX;}BR1@|Y\`B@]FP0"></shadow>
-                  <block type="variables_get" id="ox1nJ+c8Hl1(LpwS]_TK">
-                    <mutation var="direccion" parent="22"></mutation>
-                  </block>
-                </value>
+                  <value name="direccion">
+                    <block type="param_get" id="26">
+                      <field name="VAR">direccion</field>
+                    </block>
+                  </value>
                 <next>
                   <block type="procedures_callnoreturn" id="27">
                     <mutation name="Observar mariposa si hay"></mutation>
@@ -104,8 +103,7 @@ moduloActividad(nombre, () => {
           </block>
         </statement>
       </block>
-    </xml>`,
-    skip: true
+    </xml>`
    });
 
 });
