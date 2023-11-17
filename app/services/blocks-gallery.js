@@ -335,7 +335,7 @@ export default Service.extend({
     });
 
     this.crearBloqueAccion('RebotarPingPong', 'bouncePingPong', {
-      icono: 'icono.paleta.png',
+      icono: 'icono.pelota-pingpong.png',
       comportamiento: 'Recolectar',
       argumentos: '{etiqueta: "PingPong", nombreAnimacion:"usarPaleta", animacionInteractuadoMientras: "desaparecer", "mensajeError": "Acá no hay una pelota de ping pong"}',
     });
