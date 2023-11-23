@@ -651,7 +651,7 @@ model:
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
     '1002':
       title: Chuy joga uma embaixadinha
-      description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás, pegue a bola pulpito, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
+      description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás duas vezes, pegue a bola de borracha, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
       clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
     '1003':
       title: Eu adoro quicar a bola de pingue-pongue
@@ -729,7 +729,7 @@ model:
         Mañic deve passar por todos os quadrados e contar quantas estrelas e planetas existem no total. Dica: primeiro pense em como você contaria se houvesse uma estrela ou um planeta em um determinado quadrado. Em seguida, pense em como você faria para contar todos os corpos celestiais em uma única coluna.
       clue: Subdividir um grande problema em problemas menores ajuda a compreender melhor cada uma de suas partes componentes. Também nos permite focar na solução de questões mais simples do problema original.
     '1026':
-      title: A Supermaratona
+      title: Chuy vai correr
       description: |
         Chuy deve realizar sua caminhada matinal, que consiste em percorrer um determinado número de quilômetros que varia de dia para dia (entre 15 e 45 km). Certifique-se de que Chuy sempre chegue ao destino sem exagerar! Dica: procure na categoria "Sensores" se há algo que pode ajudar-te.
       clue: Você pode usar um bloco "Repetir" com o valor de um sensor. Isso permite que uma sequência de código seja repetida o número de vezes indicado pelo sensor

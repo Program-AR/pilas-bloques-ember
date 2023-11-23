@@ -59,10 +59,10 @@ countStar: Contar una estrella
 blowUpBallon: Explotar globo
 kickBall: Patear pelota
 kickFootballBall: Patear pelota de fútbol
-bounceRubberBall: Rebotar pelota pulpito
-volleyRubberBall: Revolear pelota pulpito
-pickRubberBall: Agarrar pelota pulpito
-bounceFootRubberBall: Rebotar con el pie la pelota pulpito
+bounceRubberBall: Rebotar pelota de goma
+volleyRubberBall: Lanzar al aire la pelota de goma
+pickRubberBall: Agarrar pelota de goma
+bounceFootRubberBall: Rebotar con el pie la pelota de goma
 move1Km: Avanzar 1 Km
 changeLightColor: Cambiar color del foco
 moveNextLight: Pasar al siguiente foco
@@ -147,7 +147,7 @@ paperHere: ¿Hay un papel acá?
 butterflyHere: ¿Hay una mariposa acá?
 cellphoneHere: ¿Hay un celular acá?
 fireflyHere: ¿Hay una luciérnaga acá?
-pulpitoBallHere: ¿Hay una pelota pulpito acá?
+pulpitoBallHere: ¿Hay una pelota de goma acá?
 pingPongBallHere: ¿Hay una pelota de ping pong acá?
 footBallHere: ¿Hay una pelota de fútbol acá?
 paddleHere: ¿Hay una paleta acá?
