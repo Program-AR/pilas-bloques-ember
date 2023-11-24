@@ -104,7 +104,7 @@ export default Component.extend({
     },
 
     guardarSolucion() {
-      let activityName = this.get("actividad.nombre") || this.storage.getImportedChallenge()?.titulo || "Sin título"
+      let activityName = this.get("actividad.nombre") || "SinTitulo"
 
       let fileName = `${activityName}.spbq`;
 
