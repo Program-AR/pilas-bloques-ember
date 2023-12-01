@@ -670,7 +670,7 @@ model:
       clue: Toto can execute the instructions one-at-the-time with the 'STEP' button.
     '1002':
       title: Chuy keepie-uppie
-      description: 'Make Chuy take a step forward, warm up moving back and forth, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
+      description: 'Make Chuy take a step forward, warm up moving back and forth twice, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
       clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
     '1003':
       title: I love bouncing the ping pong ball
@@ -747,7 +747,7 @@ model:
         Mañic should visit all boxes and count how many planets and stars are there in total. Clue: first think how you could count whether there is any planet or star in a particular box. Then think how you could count all celestial bodies in only one particular column.
       clue: 'Splitting a big problem into several little problems can help you better understand each of its parts. Even better: you can focus on solving smaller and easier parts!'
     '1026':
-      title: Supermarathon
+      title: Chuy goes running
       description: |
         Chuy must carry out his morning routine, which consists of running a certain number of kilometers that varies day by day (between 15 and 45 km). Make Chuy always reach his destination without going over! Clue: look in the "Sensors" category if there is something that can help you.
       clue: A "Repeat" block can be used with the value of a sensor. This allows a code sequence to be repeated the number of times indicated by the sensor

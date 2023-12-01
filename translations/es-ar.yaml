@@ -677,7 +677,7 @@ model:
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
     '1002':
       title: Chuy haciendo jueguito
-      description: 'Hacé que Chuy avance un paso, entre en calor avanzando y retrocediendo, recoja la pelota pulpito, haga jueguito revoleando la pelota y rebotandola con el pie y por ultimo vuelva a su lugar.'
+      description: 'Hacé que Chuy avance un paso, entre en calor (avance y retroceda dos veces), recoja la pelota de goma, haga jueguito lanzando al aire la pelota y rebotándola con el pie y por último vuelva a su lugar.'
       clue: Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.
     '1003':
       title: No me canso de rebotar
@@ -766,7 +766,7 @@ model:
     '1021':
       title: Laberinto con pelotas
       description: |
-        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
+        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota de goma. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas de goma!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
     '1022':
       title: Capy busca a Guyrá
@@ -789,7 +789,7 @@ model:
         Mañic debe recorrer todas las casillas y contar cuántas estrellas y planetas hay en total. Pista: primero pensá cómo contarías si hay una estrella o un planeta en una casilla determinada. Luego pensá cómo harías para contar todos los astros de una sola columna.
       clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
     '1026':
-      title: La Supermaratón
+      title: Chuy sale a correr
       description: |
         Chuy debe realizar su rutina matutina que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que Chuy llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.
       clue: Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor

@@ -55,10 +55,10 @@ countStar: Contar uma estrela
 blowUpBallon: Explodir balão
 kickBall: Chutar bola
 kickFootballBall: Chutar bola de futebol
-bounceRubberBall: Chutar bola pulpito
-volleyRubberBall: Voleio uma bola pulpito
-pickRubberBall: Pegar uma bola pulpito
-bounceFootRubberBall: Chutar com ó pe uma bola pulpito
+bounceRubberBall: Chutar bola de borracha
+volleyRubberBall: Lançar ao ar a bola de borracha
+pickRubberBall: Pegar uma bola de borracha
+bounceFootRubberBall: Chutar com ó pe uma bola de borracha
 move1Km: Avançar 1 Km
 changeLightColor: Mudar a cor da lâmpada
 moveNextLight: Ir para a próxima lâmpada
@@ -142,7 +142,7 @@ paperHere: Há um papel aqui?
 butterflyHere: Há uma borboleta aqui?
 cellphoneHere: Há um celular aqui?
 fireflyHere: Há uma vaga-lume aqui?
-pulpitoBallHere: Há uma bola pulpito aqui?
+pulpitoBallHere: Há uma bola de borracha aqui?
 pingPongBallHere: Há uma bola de pingue-pongue aqui?
 footBallHere: Há uma bola de futebol aqui?
 paddleHere: Há uma paleta aqui?
