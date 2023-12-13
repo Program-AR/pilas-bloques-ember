@@ -1916,7 +1916,7 @@ export const desafios = [
   // Nuevos renumerados
   {
     id: 1001,
-    nombre: 'CapyYGuyra',
+    nombre: '1001',
     escena: `new EscenaCapySolo("[A,-,-,G]")`,
     bloques: ['MoverACasillaDerecha', 'SubirPajarito'],
     expectations: {
@@ -1926,7 +1926,7 @@ export const desafios = [
   },
   {
     id: 1046,
-    nombre: 'NuevosComandosCapy',
+    nombre: '1046',
     escena: `new EscenaCapy("\
       [A,-,L],\
       [-,_,L],\
@@ -2753,7 +2753,7 @@ export const desafios = [
   },
   {
     id: 1002,
-    nombre: 'ChuyHaciendoJueguito', 
+    nombre: '1002', 
     escena: 'ChuyHaciendoJueguito',
     bloques: ['Avanzar', 'Retroceder', 'RecogerPulpito', 'RebotarPiePulpito', 'RevolearPulpito', 'Procedimiento'],
     expectations: {
@@ -2762,7 +2762,7 @@ export const desafios = [
   },  
   {
     id: 1003,
-    nombre: 'NoMeCansoDeRebotar',
+    nombre: '1003',
     escena: 'NoMeCansoDeRebotar',
     bloques: ['RebotarUnaVezPingPong', 'Procedimiento', 'Repetir'],
     expectations: {
@@ -2771,7 +2771,7 @@ export const desafios = [
   },
     {
     id: 1004,
-    nombre: 'ManicEnElCielo',
+    nombre: '1004',
     escena: `new EscenaManic("\
                     [E,-,E,-,E],\
                     [-,-,-,-,E],\
@@ -2781,7 +2781,7 @@ export const desafios = [
   },
   {
     id: 1005,
-    nombre: 'YvotyDespiertaLuciernagas',
+    nombre: '1005',
     escena: `new EscenaYvoty("\
     [-,-,-,L,-,-],\
     [-,-,L,-,-,L],\
@@ -2793,7 +2793,7 @@ export const desafios = [
   },
   {
     id: 1006,
-    nombre: 'LosTrofeosDeChuy',
+    nombre: '1006',
     escena: `new EscenaChuy("\
       [T,-,-,-,-,-],\
       [-,T,-,-,-,-],\
@@ -2805,7 +2805,7 @@ export const desafios = [
   },
   {
     id: 1007,
-    nombre: 'LaReparadoraDeTelescopios',
+    nombre: '1007',
     escena: `new EscenaManic("\
         [-,T,T,T,T],\
         [-,T,T,T,T],\
@@ -2815,7 +2815,7 @@ export const desafios = [
   },  
   {
     id: 1008,
-    nombre: 'ManicYLosPlanetas',
+    nombre: '1008',
     escena: `new EscenaManic("\
     [P,P,P,P,P,P],\
     [P,-,-,-,-,-],\
@@ -2826,7 +2826,7 @@ export const desafios = [
   },
   {
     id: 1009,
-    nombre: 'CargandoCelus',
+    nombre: '1009',
     escena: `new EscenaYvoty("\
       [C,C,C,C,-],\
       [-,-,-,-,K],\
@@ -2836,13 +2836,13 @@ export const desafios = [
   },
   {
     id: 1010,
-    nombre: 'InstalandoJuegosYvoty',
+    nombre: '1010',
     escena: 'InstalandoJuegosYvoty',
     bloques: ['PasarASiguienteComputadora', 'PrenderComputadora', 'ApagarComputadora', 'EscribirC', 'EscribirB', 'EscribirA', 'InstalarJuego', 'Repetir', 'Procedimiento'],
   },
   {
     id: 1011,
-    nombre: 'EscapeEnYacare',
+    nombre: '1011',
     escena: 'EscapeEnYacare',
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'AgarrarTelescopio', 'EntregarTelescopio', 'EntregarPelota', 'EntregarCargador', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
     expectations: {
@@ -2851,13 +2851,13 @@ export const desafios = [
   },
   {
     id: 1012,
-    nombre: 'LimpiandoElHumedal',
+    nombre: '1012',
     escena: 'LimpiandoElHumedal',
     bloques: ['MoverACasillaDerecha', 'MoverACasillaIzquierda', 'MoverACasillaArriba', 'MoverACasillaAbajo', 'TomarLata', 'TomarPapel', 'Colocar', 'IrseEnYacare', 'Repetir', 'Procedimiento'],
   },
   {
     id: 1013,
-    nombre: 'PateandoAVeces',
+    nombre: '1013',
     escena: `new EscenaChuy("[A,G?]",{},[1,0])`,
     bloques: ['PatearPelotaChuy', 'MoverACasillaDerecha', 'TocandoPelotaChuy', 'Repetir', 'Procedimiento', 'Si'],
     expectations: {
@@ -2868,7 +2868,7 @@ export const desafios = [
   },
   {
     id: 1014,
-    nombre: 'PelotaPaleta',
+    nombre: '1014',
     escena: `new EscenaChuy(["[A,P]", "[A,G]"])`,
     bloques: ['PatearPelotaChuy', 'RebotarPingPong', 'MoverACasillaDerecha', 'Procedimiento', 'Repetir', 'Si', 'SiNo', 'TocandoPelotaChuy', 'TocandoPingPong'],
     expectations: {
@@ -2879,7 +2879,7 @@ export const desafios = [
   },
   {
     id: 1015,
-    nombre: 'LaberintoCortoChuy',
+    nombre: '1015',
     escena: `new EscenaChuy(['[A,+]', '[A],[+]'])`,
     bloques: ['Procedimiento', 'Repetir', 'Si', 'SiNo', 'MoverACasillaDerecha',
       'MoverACasillaAbajo', 'TocandoAbajo', 'TocandoDerecha'],
@@ -2890,13 +2890,13 @@ export const desafios = [
   },
   {
     id: 1016,
-    nombre: 'TresTelescopios',
+    nombre: '1016',
     escena: `new EscenaManic("[A,T?,T?,T?]",{},[3,0])`,
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio'],
   },
   {
     id: 1017,
-    nombre: 'YvotyDespiertaMasLuciernagas',
+    nombre: '1017',
     escena: `new EscenaYvoty("\
         [A&(*>L?)],\
         [*>L?],\
@@ -2910,7 +2910,7 @@ export const desafios = [
   },
   {
     id: 1018,
-    nombre: 'LaberintoLargoChuy',
+    nombre: '1018',
     escena: `new EscenaChuy([
       '[A,_,_,_,_,_,_,_],[-,-,-,_,_,_,_,_],[_,_,-,_,_,_,_,_],[_,_,-,_,_,_,_,_],[_,_,-,-,-,-,-,_],[_,_,_,_,_,_,-,_],[_,_,_,_,_,_,-,-],[_,_,_,_,_,_,_,-]',
       '[A,-,-,_,_,_,_,_],[_,_,-,-,-,_,_,_],[_,_,_,_,-,-,_,_],[_,_,_,_,_,-,_,_],[_,_,_,_,_,-,-,_],[_,_,_,_,_,_,-,-],[_,_,_,_,_,_,_,-],[_,_,_,_,_,_,_,-]',
@@ -2923,7 +2923,7 @@ export const desafios = [
   },
   {
     id: 1019,
-    nombre: 'SuperYvoty1',
+    nombre: '1019',
     escena: `new EscenaYvoty(["[A&L],[L],[+]","[A&L],[L],[L],[+]","[A&L],[L],[L],[L],[+]", "[A&L],[L],[L],[L],[L],[+]", "[A&L],[L],[L],[L],[L],[L],[+]"])`,
     bloques: ['Procedimiento', 'DespertarLuciernaga', 'MoverACasillaAbajo',
       'TocandoMeta', 'Repetir', 'Si', 'SiNo', 'Hasta'],
@@ -2933,7 +2933,7 @@ export const desafios = [
   },
   {
     id: 1020,
-    nombre: 'SuperYvoty2',
+    nombre: '1020',
     escena: `new EscenaYvoty(["[A&(#L)],[#L],[+]","[A&(#L)],[#L],[#L],[+]","[A&(#L)],[#L],[#L],[#L],[+]", "[A&(#L)],[#L],[#L],[#L],[#L],[+]", "[A&(#L)],[#L],[#L],[#L],[#L],[#L],[+]"],
       { macros: { "L": "*>L?" }, coleccion: ["L"] })`,
     bloques: ['Procedimiento', 'TocandoMeta', 'TocandoLuciernaga', 'DespertarLuciernaga',
@@ -2944,7 +2944,7 @@ export const desafios = [
   },
   {
     id: 1021,
-    nombre: 'LaberintoConPelotas',
+    nombre: '1021',
     escena: `new EscenaChuy([
       '[A&(U?),_,_,_,_],[U?,U?,_,_,_],[_,U?,U?,_,_],[_,_,U?,_,_],[_,_,U?,U?,+]',
       '[A&(U?),_],[U?,+]',
@@ -2961,7 +2961,7 @@ export const desafios = [
   },
   {
     id: 1022,
-    nombre: 'CapyBuscaAGuyra',
+    nombre: '1022',
     escena: `new EscenaCapySolo("\
         [*,*,*,*,*],\
       ", { coleccion: ["G", "A"] })`,
@@ -2973,7 +2973,7 @@ export const desafios = [
   },
   {
     id: 1023,
-    nombre: 'FutbolAlSur',
+    nombre: '1023',
     escena: 'FutbolAlSur',
     bloques: ['Procedimiento', 'MoverACasillaDerecha', 'MoverACasillaIzquierda', 'SiguienteFila',
       'PatearPelotaChuy', 'TocandoInicio', 'TocandoPelotaChuy', 'Repetir', 'Si',
@@ -2984,7 +2984,7 @@ export const desafios = [
   },
   {
     id: 1024,
-    nombre: 'PrendiendoLasCompusYvoty',
+    nombre: '1024',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
@@ -3005,7 +3005,7 @@ export const desafios = [
   },
   {
     id: 1025,
-    nombre: 'ContandoPlanetasYEstrellas',    
+    nombre: '1025',    
     escena: 'ContandoPlanetasYEstrellas',
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna', 'ContarPlaneta', 'ContarEstrella',
@@ -3017,7 +3017,7 @@ export const desafios = [
   },
   {
     id: 1026,
-    nombre: 'LaSupermaraton',
+    nombre: '1026',
     escena: 'SuperMaraton',
     bloques: ['Procedimiento', 'KmsTotales', 'Avanzar1kmChuy', 'RepetirVacio',
       'Repetir', 'Si', 'SiNo', 'Hasta'],
@@ -3027,7 +3027,7 @@ export const desafios = [
   },  
   {
     id: 1027,
-    nombre: 'ContandoDeNuevoManic',
+    nombre: '1027',
     escena: 'ContandoDeNuevoManic',
     bloques: ['Procedimiento', 'MoverACasillaArriba', 'MoverACasillaAbajo',
       'SiguienteColumna',
@@ -3037,7 +3037,7 @@ export const desafios = [
   },  
   {
     id: 1028,
-    nombre: 'ElPlanetaDeCapyYGuyra',
+    nombre: '1028',
     escena: `new EscenaCapy("\
         [-,L,L,-,-],\
         [-,L,L,L,L],\
@@ -3053,70 +3053,70 @@ export const desafios = [
   },
   {
     id: 1029,
-    nombre: 'DibujandoCuadradoManic',
+    nombre: '1029',
     escena: 'DibujandoCuadradoManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero']
   },
   {
     id: 1030,
-    nombre: 'DibujandoRayuelaRoboticaManic',
+    nombre: '1030',
     escena: 'Dibujando5CuadradosHorizontalManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 1031,
-    nombre: 'DibujandoCortoPorLaDiagonalManic',
+    nombre: '1031',
     escena: 'Dibujando5CuadradosDiagonalManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 1032,
-    nombre: 'DibujandoMamushkaCuadradaManic',
+    nombre: '1032',
     escena: 'Dibujando4CuadradosInterioresManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 1033,
-    nombre: 'DibujandoEscaleraCuadradaManic',
+    nombre: '1033',
     escena: 'DibujandoCabezaElefanteManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'SaltarHaciaAdelante']
   },
   {
     id: 1034,
-    nombre: 'DibujandoHexagonoManic',
+    nombre: '1034',
     escena: 'DibujandoHexagonoManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 1035,
-    nombre: 'DibujandoPiramideInvertidaManic',
+    nombre: '1035',
     escena: 'DibujandoTrianguloEquilateroManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 1036,
-    nombre: 'DibujandoFigurasDentroDeFigurasManic',
+    nombre: '1036',
     escena: 'DibujandoPoligonosInterioresManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 1037,
-    nombre: 'DibujandoLaCuevaDeEstalagtitasManic',
+    nombre: '1037',
     escena: 'DibujandoCuevaEstalagtitasManic',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'DibujarLado',
       'GirarGrados', 'Numero', 'OpAritmetica', 'SaltarHaciaAdelante']
   },
   {
     id: 1038,
-    nombre: 'LasEstrellasDeManic',
+    nombre: '1038',
     escena: `new EscenaManic([
       '[A,_,_,_,_],[-,O,-,-,-],[-,_,_,_,-],[E,-,-,-,-]',
       '[A,_,_,_,_],[-,-,-,-,-],[O,_,_,_,-],[E,-,-,-,-]'])`,
@@ -3127,7 +3127,7 @@ export const desafios = [
   },
   {
     id: 1039,
-    nombre: 'LosCaminosDeManic',
+    nombre: '1039',
     escena: `new EscenaManic([
       '[A,_,_,_,_,_],[-,O,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,O,-,-,-],[_,-,_,_,_,-],[_,E,-,-,-,-]',
       '[A,_,_,_,_,_],[-,O,-,-,-,_],[-,_,_,_,-,_],[-,-,-,-,-,_],[-,_,_,_,_,_],[-,-,-,-,-,-],[_,O,_,_,_,-],[_,E,-,-,-,-]',
@@ -3144,7 +3144,7 @@ export const desafios = [
   },
   {
     id: 1040,
-    nombre: 'HileraDeLatas',
+    nombre: '1040',
     escena: `new EscenaCapy([
       '[L,-,-,-,A],[_,_,-,_,_],[_,_,-,_,_],[_,_,-,_,_]',
       '[L,-,L,-,A],[_,_,L,_,_],[_,_,L,_,_],[_,_,L,_,_]'])`,
@@ -3152,7 +3152,7 @@ export const desafios = [
   },
   {
     id: 1041,
-    nombre: 'MuchasHilerasDeLatas',
+    nombre: '1041',
     escena: `new EscenaCapy([
       '[_,_,_,-,-,L,A],[L,-,-,L,_,L,_],[L,_,_,L,_,L,_],[L,_,_,L,_,L,_],[L,_,_,L,_,_,_]',
       '[_,_,_,-,-,L,A],[-,-,-,L,_,L,_],[-,_,_,L,_,L,_],[-,_,_,L,_,L,_],[-,_,_,L,_,_,_]',
@@ -3166,7 +3166,7 @@ export const desafios = [
   },
   {
     id: 1042,
-    nombre: 'AVecesLatasAVecesPapeles',
+    nombre: '1042',
     escena: `new EscenaCapy("\
       [A,L|P|-,L|P|-,L|P|-,L|P|-],\
       [-,_,_,_,_],\
@@ -3182,7 +3182,7 @@ export const desafios = [
   },
   {
     id: 1043,
-    nombre: 'ElPasilloCurvoDeCelus',
+    nombre: '1043',
     escena: `new EscenaYvoty("\
     [_,P,P?,P?],\
       [_,_,_,P?],\
@@ -3200,7 +3200,7 @@ export const desafios = [
   },
   {
     id: 1044,
-    nombre: 'ElFestinAstronomico',
+    nombre: '1044',
     escena: `new EscenaManic("\
     [A,-,-,-,-],\
     [E|P,_,E|P,E|P,E|P],\
@@ -3213,7 +3213,7 @@ export const desafios = [
   },
   {
     id: 1045,
-    nombre: 'ObservadoraDeMariposas',
+    nombre: '1045',
     escena: `new EscenaYvoty("\
       [-,*a>M?,*a>M?,*a>M?,*a>M?],\
       [-,*b>M?,*b>M?,*b>M?,*b>M?],\
@@ -3234,20 +3234,20 @@ export const desafios = [
   },
   {
     id: 1130,
-    nombre: 'BuscandoLasEstrellas',
+    nombre: '1130',
     escena: 'BuscandoLasEstrellas',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'Numero',
       'OpAritmetica', 'MoverTelescopio', 'SiguienteTelescopio', 'ObservarConAmigos'],
   },
   {
     id: 1131,
-    nombre: 'ReciclandoPapeles',
+    nombre: '1131',
     escena: 'ReciclandoPapeles',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta', 'MoverACasillaDerecha', 'TomarPapel', 'Colocar', 'SiguienteFilaTotal', 'Numero', 'OpAritmetica'],
   },
   {
     id: 1132,
-    nombre: 'PrendiendoLasCompusParametrizadoYvoty',
+    nombre: '1132',
     escena: `new EscenaYvoty([
       '[A,T,T,T,-], [T,-,-,-,T], [T,-,-,-,T], [T,-,-,-,T], [-,T,T,T,-]',
       '[A,T,T,T,T,-], [T,-,-,-,-,T], [T,-,-,-,-,T], [T,-,-,-,-,T], [-,T,T,T,T,-]',
@@ -3266,7 +3266,7 @@ export const desafios = [
   },
   {
     id: 1133,
-    nombre: 'MariposasEncuadradas',
+    nombre: '1133',
     escena: `new EscenaYvoty("\
     [A,#M,#M,#M,#M,#M,-],\
     [#M,O,O,O,O,O,#M],\
@@ -3282,7 +3282,7 @@ export const desafios = [
   },
    {
     id: 1134,
-    nombre: 'InfinitosTrofeos',
+    nombre: '1134',
     escena: `new EscenaChuy("\
     [A,T,T,T,T,-],\
     [T,_,_,_,_,T],\
@@ -3296,7 +3296,7 @@ export const desafios = [
   },
   {
     id: 1135,
-    nombre: 'PaleteandoConParametros',
+    nombre: '1135',
     escena: 'PaleteandoConParametros',
     bloques: ['Procedimiento', 'RepetirVacio', 'Repetir', 'Si', 'SiNo', 'Hasta',
       'TocandoPingPong', 'RebotarPingPong',
@@ -3307,7 +3307,7 @@ export const desafios = [
   },
   {
     id: 1136,
-    nombre: 'DibujoLibreManic',
+    nombre: '1136',
     escena: `DibujandoLibrementeManic`,
     hasAutomaticGrading: false,
     bloques: ['Procedimiento', 'Repetir', 'DibujarLado',
