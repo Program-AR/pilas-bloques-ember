@@ -1,6 +1,6 @@
 import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
-let nombre = "MariposasEncuadradas";
+let nombre = "1133";
 
 moduloActividad(nombre, () => {
 

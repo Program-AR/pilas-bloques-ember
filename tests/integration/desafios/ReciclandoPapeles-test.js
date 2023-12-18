@@ -1,6 +1,6 @@
 import { moduloActividad, actividadTest } from '../../helpers/actividadTest';
 
-const nombre = "ReciclandoPapeles";
+const nombre = "1131";
 
 moduloActividad(nombre, () => {
 
