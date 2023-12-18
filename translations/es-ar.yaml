@@ -700,7 +700,7 @@ model:
       description: |
         Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador, y luego ir a cargar cada uno de los celulares. ¿Cómo podrías ayudarla?
       clue: ¿En cuántas partes te conviene dividir tu estrategia?
-    '10010':
+    '1010':
       title: Instalando juegos
       description: |
         Yvoty va a instalar un juego en tres computadoras para que ella y sus amigas tengan todo listo para divertirse esta noche. Los pasos para instalarlo son: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Ayudala a completar la instalación de las tres compus.  
