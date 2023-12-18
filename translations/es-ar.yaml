@@ -147,7 +147,7 @@ model:
     '27':
       title: El mono cuenta de nuevo
       description: 'El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?'
-      clue: 'Una sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
+      clue: 'Un sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
     '28':
       title: El planeta de Nano
       description: |
@@ -929,7 +929,13 @@ model:
   groups:
     AlienTocaBoton:
       title: ''
+    CapyYGuyra:
+      title: ''
+    CapyBuscaAGuyra:
+      title: ''
     NuevosComandos:
+      title: ''
+    NuevosComandosCapy:
       title: ''
     ElGatoEnLaCalle:
       title: ''
@@ -1057,20 +1063,22 @@ model:
       title: 'Con Coty'
     tecnopolis2021ConToto:
       title: 'Con Toto'
+    grupoTemporal:
+      title: 'Grupo temporal'  
   books:
     '1':
-      title: Primer Ciclo
+      title: Nivel Principiante
       description: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"'
     '2':
-      title: Segundo Ciclo
+      title: Nivel Intermedio
       description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR", para 2° ciclo de primaria en adelante.
     '100':
       title: Tecnópolis 2021
       description: Desafios de Tecnópolis 2021
     '3':
-      title: Avanzado
+      title: Nivel Avanzado
       description: Desafios avanzados
-    '400':
+    '1000':
       title: Nuevos personajes
       description: TEMPORAL - SE BORRARÁ
   chapters:
@@ -1092,3 +1100,5 @@ model:
       title: Parametrización de soluciones
     Desafios complementarios:
       title: Desafios complementarios
+    capiTemporal:
+      title: Desafíos temporales
