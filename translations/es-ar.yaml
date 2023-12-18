@@ -68,16 +68,6 @@ model:
         4) Luchar con la espada contra el caballero oscuro.
         5) Escapar en unicornio.
       clue: ''
-    '1011':
-      title: El gran escape en yacaré
-      description: |
-        Ayuda Capy:
-        1) Buscar el telescopio
-        2) Dar el telescopio a Mañic
-        3) Llevar la pelota a Chuy
-        4) Llevar el cargador a Yvoty
-        5) Irse en Yacare.
-      clue: ''
     '12':
       title: Reparando la nave
       description: 'El marciano debe arreglar su nave para poder volver a su hogar. Para lograrlo debe llevar 3 unidades de carbón y 3 de hierro a la nave, pero no puede cargar más de una unidad a la vez.'
@@ -157,7 +147,7 @@ model:
     '27':
       title: El mono cuenta de nuevo
       description: 'El mono tiene que contar otra vez las frutas, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que lo pueda ayudar?'
-      clue: 'Un sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
+      clue: 'Una sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parado el mono.'
     '28':
       title: El planeta de Nano
       description: |
@@ -518,16 +508,6 @@ model:
       title: ¡Coty dibuja libre!
       description: En esta actividad vas a poder realizar el dibujo que más te guste
       clue: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.'
-    '1001':
-      title: Capy y Guyrá
-      description: |
-        El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
-      clue: 'Fijate bien el orden de las _primitivas_: qué cosa tenés que hacer primero y qué cosa va después.'
-    '1046':
-      title: Nuevos comandos
-      description: |
-        Capy y Guyrá quieren cuidar su estero. Para lograrlo van a limpiar los desechos tirados por turistas. Empiezan por las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. Ayudalos a recoger todas las latas.
-      clue: ¿Viste los **procedimientos**? Combinando primitivas podés **crear nuevos comandos** para luego usarlos **cuantas veces quieras.**
     '202101':
       title: Introducción
       description: |
@@ -675,15 +655,21 @@ model:
         Tenemos un programa ya hecho para que toto lea la provincia que está al sur de rio negro.
         Fijate si funciona o qué hay que arreglar.
       clue: Con el botón 'PASO' Toto puede ir realizando las instrucciones una por una
+    '1001':
+      title: Capy y Guyrá
+      description: |
+        El carpincho Capy y su inseparable amigo, el picabuey Guyrá, tienen una forma muy particular de recorrer los esteros. Ayudá a Capy a pasar a buscar a su amigo para subirlo a su cabeza y así emprender juntos una nueva aventura.         
+      clue: 'Fijate bien el orden de las primitivas: qué cosa tenés que hacer primero y qué cosa va después.'
     '1002':
-      title: Chuy haciendo jueguito
-      description: 'Hacé que Chuy avance un paso, entre en calor (avance y retroceda dos veces), recoja la pelota de goma, haga jueguito lanzando al aire la pelota y rebotándola con el pie y por último vuelva a su lugar.'
-      clue: Se pueden crear nuevas acciones en Procedimientos definiendo nuevos bloques que incluyan otras acciones.
+      title: Chuy hace jueguito
+      description: |
+        Hacé que Chuy avance un paso, entre en calor (avance y retroceda dos veces), recoja la pelota de goma, haga jueguito lanzando al aire la pelota y rebotándola con el pie y, por último, vuelva a su lugar.
+      clue: '`Calentar` y `Hacer jueguito` no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles? Tené en cuenta que "calentar" implica avanzar y retroceder dos veces. Y, por otro lado, "hacer jueguito" comprende tomar la pelota, lanzarla al aire y hacerla rebotar en el pie dos veces. ¡Hay mucho para hacer!'
     '1003':
       title: No me canso de rebotar
       description: |
-        Ayudá a Chuy a hacer rebotar la pelota de ping pong 30 veces seguidas. Pista: se puede resolver con menos de 30 bloques.
-      clue: El bloque Repetir permite elegir la cantidad de veces que se desea repetir una secuencia de acciones. Esto se llama "Repetición simple".
+        La única manera de adquirir confianza con la paleta es practicar y practicar... Ayudá a Chuy en este objetivo haciendo que paletee 30 veces seguidas sin que se le caiga la pelotita.
+      clue: Este desafío se puede resolver con mucho menos de 30 bloques... Fijate atentamente, ¡hay nuevas herramientas disponibles!
     '1004':
       title: Mañic en el cielo
       description: |
@@ -714,15 +700,21 @@ model:
       description: |
         Yvoty es experta en tecnología y se comprometió a cargar los celus de siete amigues. ¡Pero cuenta solo con un cargador! Tiene que buscar el cargador, y luego ir a cargar cada uno de los celulares. ¿Cómo podrías ayudarla?
       clue: ¿En cuántas partes te conviene dividir tu estrategia?
-    '1010':
+    '10010':
       title: Instalando juegos
       description: |
         Yvoty va a instalar un juego en tres computadoras para que ella y sus amigas tengan todo listo para divertirse esta noche. Los pasos para instalarlo son: encender la computadora, escribir la contraseña ("ABC"), instalar el juego y apagar la máquina. Ayudala a completar la instalación de las tres compus.  
-      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?' 
+      clue: '¿Hay algo que se repita? Seguramente te diste cuenta que en cada computadora hay que hacer exactamente el mismo trabajo. ¿Cómo podría ayudarte tener en cuenta eso?'
+    '1011':
+      title: El gran escape en yacaré
+      description: |
+        Capy y Guyrá están planeando escapar en yacaré junto a Yvoty, Chuy y Mañic. Para lograrlo, necesitan recuperar ciertos objetos, ¡pero en un orden específico! Primero deberán agarrar el telescopio para luego intercambiarlo por la pelota que tiene Mañic, así después pueden intercambiar la pelota por el cargador que tiene Chuy y, por último, darle el cargador a Yvoty para finalmente escapar en el yacaré. Ayuda a Capy y Guyrá en esta aventura.
+      clue: No pienses el desafío como un todo. Acordate de separar el problema grande en pequeños problemas e ir resolviendo cada uno tranquilamente. 
     '1012':
       title: Limpiando el humedal
-      description: 'Capy necesita limpiar el humedal antes de ir a surfear. Para lograrlo, Capy necesita agarrar 3 latas y 3 papeles y llevarlos hasta el tacho, pero no puede tirar más de uno a la vez. Luego, se sube al yacaré y se va a surfear!'
-      clue: ''
+      description: |
+        Antes de irse de paseo en yacaré, Capy y Guyrá deben separar los residuos para facilitar su reciclado. Ayudalos a recoger todos los papeles y las latas tirando cada tipo de residuo en el tacho correspondiente.
+      clue: Son 3 latas y 3 papeles. Fijate cómo podés automatizar el proceso de recolección. Y... ¡no olvides que hay que irse en yacaré al terminar el trabajo!   
     '1013':
       title: Chuy y la pelota indecisa
       description: |
@@ -766,13 +758,13 @@ model:
     '1021':
       title: Laberinto con pelotas
       description: |
-        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota de goma. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas de goma!
+        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
     '1022':
-      title: Capy busca a Guyrá
+      title: Encontrando el principio
       description: |
-        Ayuda a Capy a encontrar a Guyrá
-      clue: ''
+       Capy tiene que pasar a buscar a Guyrá para hacer su recorrida por los humedales. Ayudalo a subir a Guyrá a su cabeza. 
+      clue: Guyrá no siempre aparece en el mismo casillero… ¿Qué bloque deberías utilizar?  
     '1023':
       title: Fútbol al sur
       description: |
@@ -784,19 +776,20 @@ model:
         Yvoty siempre está predispuesta a resolver cuestiones técnicas. En este caso, la escuela le pidió ayuda para encender las computadoras de todas las aulas. El desafío es que las aulas tienen diferentes tamaños… ¡Ayudala a prender todas las computadoras!  
       clue: '¿Sería posible prender todo un lado del rectángulo del aula, y luego repetirlo en cada tramo?'
     '1025':
-      title: Contando planetas y estrellas
+      title: Contando planetas y estrellas 
       description: |
-        Mañic debe recorrer todas las casillas y contar cuántas estrellas y planetas hay en total. Pista: primero pensá cómo contarías si hay una estrella o un planeta en una casilla determinada. Luego pensá cómo harías para contar todos los astros de una sola columna.
-      clue: Subdividir un problema grande en problemas más pequeños ayuda a comprender mejor cada una de las partes que lo componen. Además nos permite concentrarnos en resolver cuestiones más sencillas al problema original.
+        Es una noche clara, ideal para la observación de astros. Mañic debe recorrer el campo y contar la cantidad de planetas y de estrellas que encuentre. ¡Ayudala! 
+      clue: Una estrategia posible podría ser contar los astros que se vean en una columna y luego replicarlo. ¿Qué te parece a vos?
     '1026':
-      title: Chuy sale a correr
+      title: Chuy sale a correr 
       description: |
-        Chuy debe realizar su rutina matutina que consiste en recorrer una cierta cantidad de kilómetros que varía día a día (entre 15 y 45 km). ¡Lográ que Chuy llegue siempre a destino sin pasarse! Pista: mirá en la categoría "Sensores" si hay algo que te pueda servir.
-      clue: Se puede usar un bloque "Repetir" con el valor de un sensor. Esto permite repetir una secuencia de código la cantidad de veces que indique el sensor
+        Al comenzar el entrenamiento diario, el primer ejercicio de Chuy es correr una distancia variable, según lo indique su preparadora física. Ayudá a Chuy a recorrer exactamente esa distancia.  
+      clue: ¿Te fijaste en la categoría **sensores**? ¿Hay algún bloque que te pueda servir para medir exactamente la distancia recorrida?
     '1027':
-      title: Mañic cuenta de nuevo
-      description: 'Mañic tiene que contar otra vez los astros, ¡pero ahora no puede verificar si ya llegó al final de una columna! ¿Habrá algún sensor que la pueda ayudar?'
-      clue: 'Un sensor nos permite obtener información que puede cambiar en cada ejecución del programa, incluso en una misma ejecución. Por ejemplo, el largo de cada columna varía dependiendo en qué columna esté parada Mañic.'
+      title: Contando de nuevo 
+      description: |
+        Mañic está de suerte, el cielo está descubierto y lleno de estrellas y planetas. Para documentar su observación, Mañic necesita contar cuántas estrellas y cuántos planetas están visibles. Ayudala a tomar nota de las cantidades pasando por todos los astros visibles.  
+      clue: En esta oportunidad, Mañic no puede verificar si llegó al fin de una columna, pero seguramente en la categoría **sensores** podrás encontrar recursos para compensar esta falencia.   
     '1028':
       title: El humedal de Capy y Guyrá
       description: |
@@ -805,57 +798,50 @@ model:
         A los procedimientos se les pueden agregar **parámetros** para que resulten más generales. Por ejemplo: si creamos los procedimientos `Recoger 2 latas a la derecha`, `Recoger 3 latas a la derecha` y `Recoger 4 latas a la derecha`, podemos reemplazarlos por un solo procedimiento que reciba como **parámetro** la cantidad de latas que queremos recoger. La definicioń quedaría `Recoger latas a la derecha con [cantidad]` y se reemplaza el **parámetro** `[cantidad]` por 2, 3 o 4 en cada caso.
         Para agregar un parámetro a un procedimiento nuevo, hay que hacer clic en el **+** que aparece al lado del nombre en el bloque `Definir`.
     '1029':
-      title: |
-        Dibujando: Al cuadrado
-      description: Dibujá un cuadrado que tenga 100 de lado.
+      title: Constelación cuadrada
+      description: |
+        Mañic debe dibujar una constelación cuadrada con un largo de 100 en cada lado del cuadrado. ¡Ayudala!
       clue: ''
     '1030':
-      title: |
-        Dibujando: Rayuela robótica
-      description: 'Dibujá 5 cuadrados en fila, cada uno de lado 50, como muestra la figura sombreada.'
+      title: Constelación rayuela 
+      description: | 
+        Mañic descubrió una constelación que se parece a una rayuela. Son 5 cuadrados en fila con un lado de 50 cada uno. Ayudá a Mañic a dibujarla.
       clue: ''
     '1031':
-      title: |
-        Dibujando: Corto por la diagonal
-      description: 'Dibujá 5 cuadrados en diagonal, cada uno de lado 50, como muestra la figura sombreada.'
+      title: Constelación diagonal 
+      description: | 
+        Ayudá a Mañic a repasar la constelación diagonal dibujando 5 cuadrados con un lado de 50 cada uno
       clue: ''
     '1032':
-      title: |
-        Dibujando: Mamushka cuadrada
-      description: |
-        Dibujá 4 cuadrados de lados 50, 100, 150 y 200, como muestra la figura sombreada. Pista: creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado.
-      clue: 'Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.'
+      title: Constelación Mamushka 
+      description: | 
+        Mañic descubrió una constelación que tiene 4 cuadrados de lados 50, 100, 150 y 200. ¡Ayudala a dibujarla!
+      clue: 'Creá un procedimiento nuevo para dibujar cuadrados de cualquier longitud de lado. Incluir parámetros en los procedimientos permite generalizar un concepto. Por ejemplo, la longitud del lado de un cuadrado.'
     '1033':
-      title: |
-        Dibujando: Escalera cuadrada
-      description: |
-        Dibujá 5 cuadrados: 4 de lado 50 y uno de 100, como muestra la figura sombreada.
-      clue: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ej. "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros (50, 100, etc.).'
+      title: Constelación escalera 
+      description: | 
+        ¡Mañic encontró una escalera en el cielo! Ayudala a repasar la constelación, dibujando 5 cuadrados: 4 de lado 50 y uno de 100. 
+      clue: 'Al crear un procedimiento con parámetros, sus valores no están definidos (por ejemplo, "longitud de lado"). Al usar los procedimientos hay que darles un valor concreto a esos parámetros como 50, 100 u otro número.'
     '1034':
-      title: |
-        Dibujando: Hexágono
-      description: |
-        Dibujá un hexágono de lado 100, como muestra la figura sombreada. Pista: pensá cuántos grados debe girar el robot sabiendo cuánto miden los ángulos internos del hexágono.
-      clue: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno.'
+      title: Constelación hexágono 
+      description: | 
+        Ayudá a Mañic a dibujar la constelación hexágono, de lado 100.
+      clue: 'En los polígonos, el valor de un ángulo externo es igual a 180 menos el valor de un ángulo interno. Pensá cuántos grados debe girar el robot sabiendo cuánto miden los ángulos internos del hexágono.'
     '1035':
-      title: |
-        Dibujando: Pirámide invertida
-      description: |
-        Dibujá un triángulo equilátero de lado 100, como muestra la figura sombreada. Pista: pensá si existe una relación entre los ángulos y la cantidad de lados.
-      clue: 'En los polígonos, la suma de todos los ángulos externos es 360'
+      title: Constelación triángulo 
+      description: | 
+        Ayudá a Mañic a dibujar la constelación triángulo equilátero, de lado 100. 
+      clue: 'Pensá si existe una relación entre los ángulos y la cantidad de lados. En los polígonos, la suma de todos los ángulos externos es 360.'
     '1036':
-      title: |
-        Dibujando: Figuras dentro de figuras
-      description: |
-        Dibujá un triángulo, un cuadrado y un pentágono de lado 100, como muestra la figura sombreada. Pista: creá un procedimiento con un parámetro para la cantidad de lados.
-      clue: |
-        Ahora tenemos Operadores: estos bloques nos van a permitir realizar algunas cuentas automáticamente ¡Como una calculadora!... ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?
+      title: Constelación dentro de constelación 
+      description: | 
+        ¡Mañic descubrió una combinación de constelaciones! Ayudala a dibujar la constelación triángulo, la constelación cuadrado y la constelación pentágono, una dentro de la otra y cada una de lado 100. 
+      clue: 'Creá un procedimiento con un parámetro para la cantidad de lados. Además, ahora tenemos **operadores**: estos bloques nos van a permitir realizar algunas cuentas automáticamente… ¡Como una calculadora! Para pensar: ¿Cuántos grados tiene un giro completo? ¿Por qué número debemos dividirlo?'
     '1037':
-      title: |
-        Dibujando: La cueva de estalactitas
-      description: |
-        Dibujá 3 triángulos de lados 40, 60 y 100, y un cuadrado de lado 200, como muestra la figura sombreada. Pista: creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados.
-      clue: 'Para poder usar los parámetros en un nuevo procedimiento, hay que hacer clic derecho en el bloque que define dicho procedimiento.'
+      title: Constelación estalactita 
+      description: | 
+       Ayudá a Mañic a dibujar la constelación estalactita compuesta por 3 triángulos de lados 40, 60 y 100, dentro un cuadrado de lado 200.
+      clue: 'Creá un procedimiento con 2 parámetros, uno para la cantidad de lados y otro para la longitud de los lados. Para poder usar los parámetros en un nuevo procedimiento, hay que hacer **clic derecho** en el bloque que define dicho procedimiento.'    
     '1038':
       title: Las estrellas de Mañic
       description: | 
@@ -903,16 +889,21 @@ model:
       description: |
         Yvoty se descargó una nueva aplicación para fotografiar objetos cercanos. Nada mejor que probarla sacando fotos a las coloridas mariposas de la selva misionera. Las mariposas aparecen por todos lados, a veces más y a veces menos. Ayudá a Yvoty a fotografiar a todas las mariposas. 
       clue: 'Parece haber unos sectores por los que las mariposas no vuelan. Ese dato puede servirte para armar una secuencia de recorrido. Pensá una estrategia que vaya de lo más simple a lo más complejo: primero una casilla, luego una fila o columna, y finalmente un grupo de mariposas.' 
-    '1130':
-      title: Buscando las estrellas
+    '1046':
+      title: Nuevos comandos
       description: |
-        Para que Mañic pueda invitar a sus amigos a observar las estrellas, tiene que acomodar los tres telescopios moviéndolos una cierta cantidad de veces hasta ubicarlos correctamente.
-      clue: 'Guiate por las sombras de los telescopios para saber hasta donde moverlos'
+        Capy y Guyrá quieren cuidar su estero. Para lograrlo van a limpiar los desechos tirados por turistas. Empiezan por las dos latas a su derecha, luego las dos de más abajo, dejando una para el final. Ayudalos a recoger todas las latas.
+      clue: ¿Viste los **procedimientos**? Combinando primitivas podés **crear nuevos comandos** para luego usarlos **cuantas veces quieras.**
+    '1130':
+      title: Buscando las estrellas 
+      description: | 
+       Mañic está buscando 3 nuevas estrellas y, para eso, tiene que acomodar los tres telescopios. Ayudala a moverlos una cierta cantidad de veces hasta ubicarlos correctamente.
+      clue: 'Guiate por las sombras de los telescopios para saber hasta donde moverlos.'
     '1131':
       title: Reciclando papeles
-      description: |
-        Ayudá a Capy y Guyrá a dejar un papel en el tacho al final de cada fila. ¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! 
-      clue: 'Si tuvieses que elegir un parámetro para tu procedimiento... ¿Cuál eligirías? ¿Qué varía de fila a fila?'
+      description: | 
+       Capy y Guyrá están reciclando por lo que deben agarrar los papeles que están tirados en el humedal y ponerlos en cada tacho. ¡Ayudalos a reciclar! 
+      clue: '¡Tené en cuenta que el escenario no cambia de una ejecución a la otra! Y si tuvieses que elegir un parámetro para tu procedimiento… ¿Cuál elegirías? ¿Qué varía de fila a fila?'
     '1132':
       title: Prendiendo las compus parametrizado
       description: 'Yvoty es tan hábil con la tecnología que le volvieron a pedir ayuda desde la escuela para encender las computadoras de todas las aulas. Si bien las aulas siguen teniendo diferentes tamaños, Yvoty aprendió cosas nuevas que van a hacer esta tarea más rápida. ¡Ayudá a Yvoty a prender todas las computadoras!'
@@ -924,25 +915,21 @@ model:
     '1134':
       title: Trofeos y más trofeos
       description: La colección de trofeos de Chuy crece día a día. Acompañale a recogerlos. Tené en cuenta que la posición de los mismos no cambia y que tanto las direcciones como la cantidad de trofeos podrían ser parámetros...  
-      clue: Una característica muy útil es que podés combinar parámetros numéricos (cantidades, medidas) con parámetros de texto (direcciones, nombres). ¡Aprovechala! 
+      clue: Una característica muy útil es que podés combinar parámetros numéricos (cantidades, medidas) con parámetros de texto (direcciones, nombres). ¡Aprovechala!
     '1135':
       title: Paleteando con parámetros
-      description: En este caso debemos rebotar con la paleta todas las pelotas de ping pong del cuadrado pero en cada ejecución están distribuidas de una manera diferente. Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del cuadrado no varía de una ejecución a la otra.
-      clue: Si no tenés un procedimiento con parámetros para mover en cualquier direccion... ¡Podés crearlo!
+      description: | 
+       Chuy está entrenando para el próximo torneo de ping pong. Para probar su destreza, se armó un recorrido en donde a veces puede haber pelotas de ping pong y a veces no. Le recomendaron que deje las esquinas libres para practicar mejor. Ayudá a Chuy a entrenar.
+      clue: 'Tené en cuenta que en las casillas de la esquina nunca habrá una pelota de ping pong y que el tamaño del escenario no varía de una ejecución a la otra pero sí variará la distribución de las pelotas de ping pong en las casillas. Si no tenés un procedimiento con parámetros para moverte en cualquier dirección… ¡Podés crearlo!'
     '1136':
-      title: ¡Dibujo libre!
-      description: En esta actividad vas a poder realizar el dibujo que más te guste
-      clue: 'Incluímos todos los bloques posibles, para que puedas dar rienda suelta a tus conocimientos.'
+      title: ¡Tu propia constelación!
+      description: | 
+       ¡Ahora te toca a vos! Con la ayuda de Mañic, realizá el dibujo que más te guste.
+      clue: 'Vas a encontrar todos los bloques posibles para que puedas dar rienda suelta a tus conocimientos.' 
   groups:
     AlienTocaBoton:
       title: ''
-    CapyYGuyra:
-      title: ''
-    CapyBuscaAGuyra:
-      title: ''
     NuevosComandos:
-      title: ''
-    NuevosComandosCapy:
       title: ''
     ElGatoEnLaCalle:
       title: ''
@@ -1070,22 +1057,20 @@ model:
       title: 'Con Coty'
     tecnopolis2021ConToto:
       title: 'Con Toto'
-    grupoTemporal:
-      title: 'Grupo temporal'  
   books:
     '1':
-      title: Nivel Principiante
+      title: Primer Ciclo
       description: 'Desafíos del manual para docentes "Ciencias de la Computación para el aula, 1° ciclo de primaria"'
     '2':
-      title: Nivel Intermedio
+      title: Segundo Ciclo
       description: Desafíos del cuaderno para docentes "Actividades para aprender a Program.AR", para 2° ciclo de primaria en adelante.
     '100':
       title: Tecnópolis 2021
       description: Desafios de Tecnópolis 2021
     '3':
-      title: Nivel Avanzado
+      title: Avanzado
       description: Desafios avanzados
-    '1000':
+    '400':
       title: Nuevos personajes
       description: TEMPORAL - SE BORRARÁ
   chapters:
@@ -1107,5 +1092,3 @@ model:
       title: Parametrización de soluciones
     Desafios complementarios:
       title: Desafios complementarios
-    capiTemporal:
-      title: Desafíos temporales
