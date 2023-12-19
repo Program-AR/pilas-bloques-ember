@@ -758,7 +758,7 @@ model:
     '1021':
       title: Laberinto con pelotas
       description: |
-        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota pulpito. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas pulpito!
+        Chuy preparó diferentes recorridos, en diferentes terrenos, para practicar rebotar la pelota de goma. El terreno puede ser más chico o más grande y la pelota puede que esté o no… ¡Ayudale a rebotar todas las pelotas de goma!
       clue: 'Es fundamental saber, antes de moverse, dónde está la próxima casilla libre y si hay una pelota en la misma. ¿Qué herramientas te sirven para esas comprobaciones?'
     '1022':
       title: Encontrando el principio
