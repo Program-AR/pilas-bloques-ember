@@ -53,16 +53,19 @@ module('Unit | Service | experiments', function (hooks) {
 
   //Show non scored expects
 
-  testShouldShowScoredExpectations('control', 'enabled', false)
-  testShouldShowScoredExpectations('treatment', 'enabled', true)
-  testShouldShowScoredExpectations('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
+  testShouldShowScoredExpectations('control', false)
+  testShouldShowScoredExpectations('treatment', true)
+  testShouldShowScoredExpectations('treatment', false, solvedChallengesFeedbackDisabled)
+  testShouldShowScoredExpectations('off', true)
+  testShouldShowScoredExpectations('off', true, solvedChallengesFeedbackDisabled)
 
   //Show feedback expectations (bubbles)
 
-  testShouldShowBlocksWarningExpectationsFeedback('control', 'enabled', false)
-  testShouldShowBlocksWarningExpectationsFeedback('treatment', 'enabled', true)
-  testShouldShowBlocksWarningExpectationsFeedback('treatment', 'disabled', false, solvedChallengesFeedbackDisabled)
-
+  testShouldShowBlocksWarningExpectationsFeedback('control', false)
+  testShouldShowBlocksWarningExpectationsFeedback('treatment', true)
+  testShouldShowBlocksWarningExpectationsFeedback('treatment', false, solvedChallengesFeedbackDisabled)
+  testShouldShowBlocksWarningExpectationsFeedback('off', true)
+  testShouldShowBlocksWarningExpectationsFeedback('off', true, solvedChallengesFeedbackDisabled)
 
   //Congratulations modal
 
@@ -167,15 +170,16 @@ module('Unit | Service | experiments', function (hooks) {
     assert.ok(pilasBloquesApiMock.saveExperimentGroup.called)
   })
 
-  function testShouldShowScoredExpectations(group, feedback, shouldShow, solvedChallenges) {
-    testShouldShow('scored expects', group, feedback, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
+  function testShouldShowScoredExpectations(group, shouldShow, solvedChallenges) {
+    testShouldShow('scored expects', group, shouldShow, (() => experiments.shouldShowScoredExpectations()), solvedChallenges)
   }
 
-  function testShouldShowBlocksWarningExpectationsFeedback(group, feedback, shouldShow, solvedChallenges) {
-    testShouldShow('blocks warning expectation feedback', group, feedback, shouldShow, (() => experiments.shouldShowBlocksWarningExpectationFeedback()), solvedChallenges)
+  function testShouldShowBlocksWarningExpectationsFeedback(group, shouldShow, solvedChallenges) {
+    testShouldShow('blocks warning expectation feedback', group, shouldShow, (() => experiments.shouldShowBlocksWarningExpectationFeedback()), solvedChallenges)
   }
 
-  function testShouldShow(name, group, feedback, shouldShow, callback, solvedChallenges = []) {
+  function testShouldShow(name, group, shouldShow, callback, solvedChallenges = []) {
+    const feedback = solvedChallenges.length == 0 ? 'enabled' : 'disabled'
     test(`Should ${shouldShow ? "" : "NOT"} show ${name} - ${group} group and feedback ${feedback}`, function (assert) {
       storageMock.solvedChallenges = solvedChallenges
       experiments.set('groupSelectionStrategy', group)

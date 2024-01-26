@@ -114,12 +114,13 @@ In Windows this is done with:
 SET "EXPERIMENT_GROUP=treatment" && npm run start
 ```
 
-The experiment groups are: `notAffected`, `control`, `treatment` and `autoassign`.
+The experiment groups are: `notAffected`, `control`, `treatment`, `autoassign` and `off`.
 
 - `notAffected`: (default) it does not show any feedback on current solution, just challenge completion.
 - `control`: after completing a challenge its expectations are shown, but with no information regarding whether they were fulfilled.
 - `treatment`: this one has a training period. During this time expectations are shown for each challenge, alongside a progress bar that awards points for each passed expectation. Blocks in the workspace have their own feedback too. Once the training period is over, the app behavior changes to *control*.
 - `autoassign`: randomly assigns an experiment group at run time (between `control` and `treatment`).
+- `off`: always shows expectations and points. Doesn't show survey questions to the user.
 
 ### Packing installers:
 
