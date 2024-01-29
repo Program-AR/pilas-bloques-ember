@@ -37,7 +37,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version-file: '.nvmrc'
-      - run: echo "EXPERIMENT_GROUP=autoassign" >> $GITHUB_ENV
+      - run: echo "EXPERIMENT_GROUP=off" >> $GITHUB_ENV
       - run: npm install
       - run: npm run build:prod
       - run: npm run pack:html
