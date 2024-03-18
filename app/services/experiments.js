@@ -27,11 +27,11 @@ export default Service.extend({
   },
 
   isNotAffected() {
-    return !(this.isTreatmentGroup() || this.isControlGroup())
+    return this.experimentGroup() === this.possibleGroups[2]
   },
 
   isOff(){
-    return this.experimentGroup() === "off"
+    return this.experimentGroup() === this.possibleGroups[3]
   },
 
   isAutoAssignStrategy() {
