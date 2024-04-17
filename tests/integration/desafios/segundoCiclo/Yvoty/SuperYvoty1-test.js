@@ -1,6 +1,6 @@
 import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
-const nombre = 'SuperYvoty1';
+const nombre = '1019';
 
 moduloActividad(nombre, () => {
 
@@ -11,7 +11,7 @@ moduloActividad(nombre, () => {
 		  <statement name="program">
 			 <block type="hasta" id="21" inline="true">
 				<value name="condition">
-				   <block type="TocandoFinal" id="24" />
+				   <block type="TocandoMeta" id="24" />
 				</value>
 				<statement name="block">
 				   <block type="DespertarLuciernaga" id="27">

@@ -7,6 +7,7 @@ export default Component.extend({
   pilasBloquesApi: service(),
   pilasBloquesAnalytics: service(),
   paperToaster: service(),
+  experiments: service(),
 
   /** Dialog descriptions according to SurveyJS library.
    ** Additional field: askEachSession, which tells the app to ask the question each time*/
@@ -71,7 +72,7 @@ export default Component.extend({
   ],
 
   didInsertElement() {
-    if (this.pilasBloquesApi.isConnected()) this.showNextQuestion()
+    if (!this.experiments.isOff() && this.pilasBloquesApi.isConnected()) this.showNextQuestion()
   },
 
   showNextQuestion() {

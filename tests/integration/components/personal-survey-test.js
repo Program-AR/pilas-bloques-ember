@@ -6,7 +6,7 @@ import { setupLoggedUser, setUpTestLocale } from '../../helpers/utils'
 import fetchMock from 'fetch-mock'
 
 module('Integration | Component | survey-window', function (hooks) {
-  var api
+  var api, experiments
 
   setupRenderingTest(hooks)
   setupLoggedUser(hooks)
@@ -14,6 +14,8 @@ module('Integration | Component | survey-window', function (hooks) {
 
   hooks.beforeEach(function () {
     api = this.owner.lookup('service:pilas-bloques-api')
+    experiments = this.owner.lookup('service:experiments')
+    experiments.set('groupSelectionStrategy', 'notAffected')
   })
 
   hooks.afterEach(function () {
@@ -43,6 +45,12 @@ module('Integration | Component | survey-window', function (hooks) {
 
   test('When the user is logged in and the api is not accessible, should not show questions', async function (assert) {
     api.connected = false
+    await render(hbs`<SessionButton />`)
+    assert.notOk(surveyExists())
+  })
+
+  test('When experiments are off, survey doesnt show', async function (assert) {
+    experiments.set('groupSelectionStrategy', 'off')
     await render(hbs`<SessionButton />`)
     assert.notOk(surveyExists())
   })

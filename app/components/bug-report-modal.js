@@ -5,7 +5,7 @@ export default Component.extend({
     actions: {
         // Only used with alternative version with github integration.
         createIssue() {
-            fetch('https://api.github.com/repos/Program-AR/pilas-bloques/issues', {
+            fetch('https://api.github.com/repos/Program-AR/pilas-bloques-app/issues', {
                 method: 'POST',
                 headers: {
                     'Authorization': 'token githubFakeToken'

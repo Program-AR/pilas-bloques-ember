@@ -1,6 +1,7 @@
 import { inject as service } from '@ember/service'
 import { computed } from '@ember/object'
 import Controller from '@ember/controller'
+import { sendRouteToParent } from '../router'
 
 export default Controller.extend({
   avatardb: service(),
@@ -58,7 +59,7 @@ export default Controller.extend({
   actions: {
     doRegister() {
       this.pilasBloquesApi.register(this.registerData)
-        .then(() => this.transitionToRoute("/"))
+        .then(() => sendRouteToParent())
     },
 
     checkUsername() {

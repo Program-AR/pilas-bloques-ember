@@ -1,6 +1,6 @@
 import { moduloActividad, actividadTest } from '../../../../helpers/actividadTest';
 
-const nombre = 'YvotyDespiertaMasLuciernagas';
+const nombre = '1017';
 
 moduloActividad(nombre, () => {
 
@@ -88,7 +88,6 @@ moduloActividad(nombre, () => {
 	   </block>
 	</xml>`,
 		resuelveDesafio: false,
-		skip: true
 	});
 
 });

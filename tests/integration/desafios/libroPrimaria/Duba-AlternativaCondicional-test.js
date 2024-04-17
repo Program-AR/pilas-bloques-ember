@@ -25,6 +25,25 @@ moduloActividad("Duba - Alternativa condicional", () => {
   </xml>`
   });
 
+  actividadTest("5.1.3a", {
+    descripcionAdicional: "5.1.3a: Debe estar en la posición final para resolver el desafío",
+    resuelveDesafio: false,
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="300" y="15">
+      <statement name="program">
+        <shadow type="required_statement"></shadow>
+        <block type="MoverACasillaDerecha">
+          <next>
+            <block type="MoverACasillaIzquierda"></block>
+          </next>
+        </block>
+      </statement>
+    </block>
+  </xml>`
+  });
+
+
   actividadTest("5.1.3b", {
     descripcionAdicional: "5.1.3b: Se puede resolver",
     solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
@@ -59,6 +78,20 @@ moduloActividad("Duba - Alternativa condicional", () => {
       </next>
       </block>
     </statement>
+    </block>
+  </xml>`
+  });
+
+  actividadTest("5.1.3b", {
+    descripcionAdicional: "5.1.3b: Debe estar en la posición final para resolver el desafío",
+    resuelveDesafio: false,
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="300" y="15">
+      <statement name="program">
+        <shadow type="required_statement"></shadow>
+        <block type="MoverACasillaDerecha"></block>
+      </statement>
     </block>
   </xml>`
   });
@@ -212,6 +245,20 @@ moduloActividad("Duba - Alternativa condicional", () => {
       </next>
       </block>
     </statement>
+    </block>
+  </xml>`
+  });
+
+  actividadTest("5.2.1a", {
+    descripcionAdicional: "5.2.1a: Debe estar en la posición final para resolver el desafío",
+    resuelveDesafio: false,
+    solucion: `<xml xmlns="http://www.w3.org/1999/xhtml">
+    <variables></variables>
+    <block type="al_empezar_a_ejecutar" deletable="false" movable="false" editable="false" x="300" y="15">
+      <statement name="program">
+        <shadow type="required_statement"></shadow>
+        <block type="MoverACasillaDerecha"></block>
+      </statement>
     </block>
   </xml>`
   });

@@ -21,6 +21,7 @@ export default Component.extend({
   codigoJavascript: "", // Se carga como parametro
   codigo: null,
   challenge: null,
+  warningsVisible: true,
 
   highlighter: service(),
   availableBlocksValidator: service(),
@@ -436,7 +437,7 @@ export default Component.extend({
       .filter(condition)
       .forEach(({ declaration, description }, i) => {
         getBlocks(declaration)
-          .forEach(block => addFeedback(block, description.asSuggestion, -i))
+          .forEach(block => addFeedback(block, description.asSuggestion, -i, this.get('warningsVisible')))
       })
   },
 

@@ -16,6 +16,7 @@ lie: 'Deitar-se '
 standUp: Levantar-se
 return: Retornar
 advance: Avançar
+back: Votar
 dream: Sonhar
 jump: Saltar
 goToLeftBorder: Ir para a borda esquerda
@@ -40,19 +41,31 @@ pickIron: Pegar ferro
 pickCarbon: Pegar carvão
 lightCampfire: Acender fogueira
 putIntoTheShip: Colocar no navio
+goInAlligator: Vai em jacaré
+takeCan: Pegar a lata
+takePaper: Pegar um papel
+putIntoTheTrashBin: colocar na lata de lixo
 leavePresent: Deixar presente
 nextLine: Ir para a próxima linha
 nextColumn: Ir para a linha anterior
 countBanana: Contar uma banana
 countApple: Contar uma maçã
+countPlanet: Contar um planeta
+countStar: Contar uma estrela
 blowUpBallon: Explodir balão
 kickBall: Chutar bola
 kickFootballBall: Chutar bola de futebol
-bounceRubberBall: Chutar bola pulpito
+bounceRubberBall: Chutar bola de borracha
+volleyRubberBall: Lançar ao ar a bola de borracha
+pickRubberBall: Pegar uma bola de borracha
+bounceFootRubberBall: Chutar com ó pe uma bola de borracha
 move1Km: Avançar 1 Km
 changeLightColor: Mudar a cor da lâmpada
 moveNextLight: Ir para a próxima lâmpada
 startParty: Começar a festa
+moveTelescope: Mover telescópio
+moveNextTelescope: Ir para a próximo telescópio
+lookWithFriends: Perceber o céu com amigos
 backToLeftBorder: Voltar para a margem esquerda
 goToFirstSuspect: Ir para o primeiro suspeito
 nextSuspect: Ir para o próximo suspeito
@@ -87,6 +100,8 @@ atColumnEnd: Estou no final da coluna?
 currentColumnLength: Comprimento da coluna atual
 canMoveDown: Posso mover para baixo?
 canMoveRight: Posso mover para direita?
+canMoveUp: Posso mover para acima?
+canMoveLeft: Posso mover para esquerda?
 reachedGoal: Alcançou a meta?
 cheeseHere: Há queijo aqui?
 lampHere: Há uma lâmpada aqui?
@@ -114,7 +129,37 @@ simpleRepetitionBeginning: Repetir
 simpleRepetitionEnd: vezes
 conditionalRepetition: Repetir até que
 simpleAlternative: Si
-completeAlternative: senão
+completeAlternative: se não
+wakeUpFirefly: Acordar vaga-lume
+photographButterfly: Fotografar borboleta
+unlockCellphone: Desbloquear celular
+pickCharger: Pegar cargador
+chargeCellphone: Carregar celular
+telescopeHere: Há um telescópio aqui?
+planetHere: Há um planeta aqui?
+canHere: Há uma lata aqui?
+paperHere: Há um papel aqui?
+butterflyHere: Há uma borboleta aqui?
+cellphoneHere: Há um celular aqui?
+fireflyHere: Há uma vaga-lume aqui?
+pulpitoBallHere: Há uma bola de borracha aqui?
+pingPongBallHere: Há uma bola de pingue-pongue aqui?
+footBallHere: Há uma bola de futebol aqui?
+paddleHere: Há uma paleta aqui?
+pickTrophy: Pegar trofeo
+pickPaddle: Pegar paleta
+bouncePingPong: Rebotar bola de pingue-pongue
+watchStar: Perceber estrela
+watchPlanet: Perceber planeta
+repairTelescope: Consertar telescópio
+alignTelescope: Alinhar telescópio
+pickCan: Pegar lata
+pickPaper: Pegar papel
+holdPaper: Segurar papel
+fillBin: Encher taco
+chargerHere: Há um cargador aqui?
+trophyHere: Há um trofeo aqui?
+saladBowlHere: Há uma tigela de salada aqui?
 categories:
   primitives: Primitivas
   myProcedures: Meus procedimentos
@@ -158,3 +203,4 @@ errors:
   nonAvailableBlock: Este bloco não está disponível nesta atividade.
   wrongParameter: Este bloco não pode ser usado aqui. É um parâmetro que só pode ser usado no procedimento "{procedure}"
   deletedParameter: Este bloco já não pode ser usado, o parâmetro foi eliminado.
+  missingTextInput: Você tem que escolher uma letra!

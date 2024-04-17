@@ -2,7 +2,7 @@
 
 var experimentGroup = process.env.EXPERIMENT_GROUP
 if (!experimentGroup) {
-  experimentGroup = 'notAffected'
+  experimentGroup = 'off'
   console.log(`\nInfo: EXPERIMENT_GROUP variable not set. Building Pilas Bloques in default mode: ${experimentGroup}. See README.md for valid EXPERIMENT_GROUP values`)
 }
 

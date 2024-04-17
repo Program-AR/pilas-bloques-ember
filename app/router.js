@@ -1,9 +1,21 @@
 import EmberRouter from '@ember/routing/router';
 import config from 'pilasbloques/config/environment';
 
+
+export function sendRouteToParent(hash) {
+  const route = hash ? hash : '#/' 
+  //The if is necessary so that imported challenges do not redirect to desafio/react-imported-challenge on react
+  if (!route.includes('react-imported-challenge')) window.parent.postMessage({ route }, '*');
+}
+
 const Router = EmberRouter.extend({
   location: config.locationType,
-  rootURL: config.rootURL
+  rootURL: config.rootURL,
+
+  didTransition() {
+    sendRouteToParent(window.location.hash);
+    this._super(...arguments);
+  }
 });
 
 Router.map(function () {

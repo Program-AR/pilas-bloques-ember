@@ -16,6 +16,7 @@ lie: Lie down
 standUp: Stand up
 return: Return
 advance: Move forward
+back: Move backward
 dream: Dream
 jump: Jump
 goToLeftBorder: Go to left border
@@ -32,6 +33,10 @@ writeB: Write "B"
 writeC: Write "C"
 takeKey: Take the key
 openSafeBoxTakeHat: Open the safe box and take the hat
+giveTelescope: Give telescope and take ball
+takeTelescope: Take telescope
+giveBall: Give ball and take charger
+giveCharger: Give charger and invite Yvoty
 leaveHat: Leave the hat
 attackWithSword: Attack with the sword
 unicornEscape: Run away riding a unicorn
@@ -40,19 +45,31 @@ pickIron: Pick iron
 pickCarbon: Pick carbon
 lightCampfire: Light the campfire
 putIntoTheShip: Put into the spaceship
+goInAlligator: Go in alligator
+takeCan: Take can
+takePaper: Take paper
+putIntoTheTrashBin: Put into the trash bin
 leavePresent: Leave a present
 nextLine: Go to the next line
 nextColumn: Go to the next column
 countBanana: Count a banana
 countApple: Count an apple
+countPlanet: Count a planet
+countStar: Count a star
 blowUpBallon: Pinch the balloon
 kickBall: Kick the ball
 kickFootballBall: Kick the football ball
 bounceRubberBall: Bounce the rubber ball
+volleyRubberBall: Volley the rubber ball
+pickRubberBall: Pick the rubber ball
+bounceFootRubberBall: Bounce with foot the rubber ball
 move1Km: Move 1 Km forward
 changeLightColor: Change spotlight color
 moveNextLight: Move to next spotlight
 startParty: Start the party
+moveTelescope: Move telescope
+moveNextTelescope: Move to next telescope
+lookWithFriends: Look at the sky with friends
 backToLeftBorder: Get back to the left border
 goToFirstSuspect: Go to the first suspect
 nextSuspect: Go to next suspect
@@ -87,6 +104,8 @@ atColumnEnd: Am I at the end of the column?
 currentColumnLength: Current column length
 canMoveDown: Can I move down?
 canMoveRight: Can I move to the right?
+canMoveUp: Can I move up?
+canMoveLeft: Can I move to the left?
 reachedGoal: Did I reach the finish line?
 cheeseHere: Is there cheese here?
 lampHere: Is there a spotlight here?
@@ -123,6 +142,7 @@ chargeCellphone: Charge cell phone
 telescopeHere: Is there a telescope here?
 planetHere: Is there a planet here?
 canHere: Is there a can here?
+guyraHere: Is Guyrá here?
 paperHere: Is there a paper here ?
 butterflyHere: Is there a butterfly here?
 cellphoneHere: Is there a cell phone here?
@@ -131,6 +151,9 @@ pulpitoBallHere: Is there a red ball here?
 pingPongBallHere: Is there a ping pong ball here?
 footBallHere: Is there a soccer ball here?
 paddleHere: Is there a paddle here?
+chargerHere: Is there a charger here?
+trophyHere: Is there a trophy here?
+saladBowlHere: Is there a salad bowl here?
 pickTrophy: Pick trophy
 pickPaddle: Pick paddle
 bouncePingPong: Bounce ping pong ball
@@ -139,6 +162,7 @@ watchPlanet: Watch planet
 repairTelescope: Repair telescope
 alignTelescope: Align telescope
 pickCan: Pick can
+pickBird: Pick Guyrá
 pickPaper: Pick paper
 holdPaper: Hold paper
 fillBin: Fill bin

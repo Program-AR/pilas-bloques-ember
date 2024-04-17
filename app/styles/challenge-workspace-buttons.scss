@@ -13,3 +13,17 @@
 .workspace-buttons .md-button.md-fab.md-mini:focus {
     background-color: var(--theme-button-hover-background-color);
 }
+
+#warnings-button .md-button{
+    width: 100%;
+    display: flex;
+    text-transform: none;
+    border-radius: 20px;
+    margin: 4px;
+    color: var(--theme-font-color);
+}
+
+#warnings-button{
+    margin-top: 3px;
+    margin-right: 8px;
+}

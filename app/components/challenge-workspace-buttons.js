@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
+import { changeWarningVisibility } from '../utils/blocks';
 
 const VERSION_DEL_FORMATO_DE_ARCHIVO = 2;
 
@@ -12,6 +13,7 @@ export default Component.extend({
   deleteDialogIsOpen: false,
   platform: service(),
   intl: service(),
+  storage: service(),
 
   version() {
     return VERSION_DEL_FORMATO_DE_ARCHIVO;
@@ -83,13 +85,27 @@ export default Component.extend({
     input.value = null;
   },
 
+  changeWarningVisibility(visible) {
+    changeWarningVisibility(visible)
+    this.set('warningsVisible', visible)
+  },
+
   actions: {
     abrirSolucion() {
       this.fileInput().click();
     },
+    
+    enableWarnings() {
+      this.changeWarningVisibility(true)
+    },
+
+    disableWarnings() {
+      this.changeWarningVisibility(false)
+    },
 
     guardarSolucion() {
-      let activityName = this.get("actividad.nombre");
+      let activityName = this.get("actividad.nombre") || "SinTitulo"
+
       let fileName = `${activityName}.spbq`;
 
       let contenido = {

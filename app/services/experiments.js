@@ -11,7 +11,7 @@ export default Service.extend({
   challengeExpectations: service(),
 
   //This order is important, do NOT change
-  possibleGroups: ["treatment", "control", "notAffected"],
+  possibleGroups: ["treatment", "control", "notAffected", "off"],
   decompositionTreatmentLength: ENV.decompositionTreatmentLength,
 
   solvedChallenges: computed('storage', function () {
@@ -27,7 +27,11 @@ export default Service.extend({
   },
 
   isNotAffected() {
-    return !(this.isTreatmentGroup() || this.isControlGroup())
+    return this.experimentGroup() === this.possibleGroups[2]
+  },
+
+  isOff(){
+    return this.experimentGroup() === this.possibleGroups[3]
   },
 
   isAutoAssignStrategy() {
@@ -102,11 +106,11 @@ export default Service.extend({
   },
 
   shouldShowBlocksWarningExpectationFeedback() {
-    return this.isTreatmentGroup() && !this.feedbackIsDisabled()
+    return this.isOff() || this.isTreatmentGroup() && !this.feedbackIsDisabled()
   },
 
   shouldShowScoredExpectations() {
-    return !(this.isControlGroup() || this.feedbackIsDisabled())
+    return this.isOff() || !(this.isControlGroup() || this.feedbackIsDisabled())
   },
 
   feedbackIsDisabled() {
