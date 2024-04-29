@@ -2892,7 +2892,7 @@ export const desafios = [
     id: 1016,
     nombre: '1016',
     escena: `new EscenaManic("[A,T?,T?,T?]",{},[3,0])`,
-    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'RepararTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio'],
+    bloques: ['Procedimiento', 'MoverACasillaDerecha', 'AlinearTelescopio', 'Repetir', 'Si', 'SiNo', 'TocandoTelescopio'],
   },
   {
     id: 1017,

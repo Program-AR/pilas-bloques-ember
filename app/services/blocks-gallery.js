@@ -423,7 +423,7 @@ export default Service.extend({
       argumentos: `{ etiqueta: "Telescopio" }`,
     });
 
-    this.crearBloqueAccion('AlinearTelescopio', 'repairTelescope', {
+    this.crearBloqueAccion('AlinearTelescopio', 'alignTelescope', {
       icono: 'icono.telescopio.png',
       comportamiento: 'RepararTelescopio',
       argumentos: `{ etiqueta: "Telescopio" }`,
