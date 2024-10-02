@@ -1580,7 +1580,7 @@ export default Service.extend({
       funcionSensor: 'enBordeDerecho()',
     });
 
-    this.crearBloqueSensor('BordeIzquiero', 'leftBorder', {
+    this.crearBloqueSensor('BordeIzquierdo', 'leftBorder', {
       icono: 'icono.izquierda.png',
       funcionSensor: 'enBordeIzquierdo()',
     });
