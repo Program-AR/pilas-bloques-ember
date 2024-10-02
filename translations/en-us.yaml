@@ -670,7 +670,7 @@ model:
       clue: Toto can execute the instructions one-at-the-time with the 'STEP' button.
     '1002':
       title: Chuy keepie-uppie
-      description: 'Make Chuy take a step forward, warm up moving back and forth twice, pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
+      description: 'Make Chuy take a step forward, warm up (moving back and forth, twice), pick up the rubber ball, do keepie-uppie flipping the ball and bouncing it with the foot and finally come back to the original place.'
       clue: You can create new actions in _My procedures_ by defining new blocks including other actions.
     '1003':
       title: I love bouncing the ping pong ball
@@ -722,15 +722,15 @@ model:
       description: Yvoty needs to wake up all the fireflies to know the route... But they change their places each time you run the program! You can use the procedures and control blocks.
       clue: ''
     '1019':
-      title: Super Yvoty 1
+      title: Changing lengths
       description: |
         Help Yvoty wake up all the fireflies.
         Watch out! There’s a firefly in every cell, but you don´t know how many cells are there each time you run the program.
       clue: There are new blocks that can help you solve this challenge very easily. Use them!
     '1020':
-      title: Super Yvoty 2
+      title: Changing lights
       description: |
-        Super Yvoty should wake up all the fireflies, but opposite to the previous challenge, there are cells without any firefly here. Could you use the same procedure you used in Super Tito 1?
+        In this case, Yvoty must also wake up all the lights she finds to illuminate the landscape well, but right now she doesn't know the length of the path... but she also doesn't know if there will be lights at every step! Will the same help you said in "Changing lengths" help you?
       clue: The "Repeat until" block will repeat a sequence of actions until one condition is met. This is called "Conditional repetition".
     '1022':
       title: Capy looks for Guyrá
