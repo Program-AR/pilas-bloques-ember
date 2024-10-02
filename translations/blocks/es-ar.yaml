@@ -153,6 +153,10 @@ footBallHere: ¿Hay una pelota de fútbol acá?
 paddleHere: ¿Hay una paleta acá?
 chargerHere: ¿Hay un cargador acá?
 trophyHere: ¿Hay un trofeo acá?
+leftBorder: ¿Estoy en el borde de la izquierda?
+rightBorder: ¿Estoy en el borde de la derecha?
+bottomBorder: ¿Estoy en el borde de abajo?
+topBorder: ¿Estoy en el borde de arriba?
 saladBowlHere: ¿Hay una ensaladera acá?
 pickTrophy: Recoger trofeo
 pickPaddle: Recoger paleta
