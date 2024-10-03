@@ -651,7 +651,7 @@ model:
       clue: A província é Chubut. Com o botão 'PASSO' o Toto pode executar as instruções uma a uma
     '1002':
       title: Chuy joga uma embaixadinha
-      description: Faça que Chuy dê um passo à frente, aqueça-se movendo-se para frente e para trás duas vezes, pegue a bola de borracha, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
+      description: Faça que Chuy dê um passo à frente, aqueça-se (movendo-se para frente e para trás, duas vezes), pegue a bola de borracha, jogue uma embaixadinha virando a bola e quicando-a com o pé e, finalmente, retorne ao seu lugar.
       clue: Novas ações podem ser criadas em Procedimentos definindo novos blocos que incluem outras ações.
     '1003':
       title: Eu adoro quicar a bola de pingue-pongue
@@ -703,15 +703,15 @@ model:
       description: Yvoty necesita despertar a las luciérnagas para poder conocer el camino... ¡Pero en cada ejecución cambian de lugar! Podés utlizar los procedimientos y bloques de control.
       clue: ''
     '1019':
-      title: Súper Yvoty 1
+      title: Mudando comprimentos
       description: |
         Ayudá a Yvoty a despertar las luciérnagas.
         ¡Ojo! En todas las celdas hay una luciérnaga, pero no sabés cuántas celdas hay en cada ejecución.
       clue: Hay nuevos bloques que pueden ayudarte a resolver el desafío de manera muy sencilla. ¡Aprovechalos!
     '1020':
-      title: Súper Yvoty 2
+      title: Mudando luzes
       description: |
-        Súper Yvoty debe despertar a todas las luciérnagas, pero a diferencia del desafío anterior, hay celdas sin luciérnagas. ¿Podrás utilizar el mismo procedimiento que en Súper Yvoty 1?
+        Neste caso, Yvoty também deve acordar todas as luzes que encontrar para iluminar bem a paisagem, mas no momento ela não sabe a extensão do caminho... mas também não sabe se haverá luzes em cada etapa! A mesma ajuda que você disse em “Mudando comprimentos” irá ajudá-lo?
       clue: El bloque "repetir hasta que" repite una secuencia de acciones hasta que se cumple una condición. Esto se llama "repetición condicional".
     '1022':
       title: Capy busca a Guyrá

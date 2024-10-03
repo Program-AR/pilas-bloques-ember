@@ -1575,6 +1575,26 @@ export default Service.extend({
       funcionSensor: 'tocando("Trofeo")',
     });
 
+    this.crearBloqueSensor('BordeDerecho', 'rightBorder', {
+      icono: 'icono.derecha.png',
+      funcionSensor: 'enBordeDerecho()',
+    });
+
+    this.crearBloqueSensor('BordeIzquierdo', 'leftBorder', {
+      icono: 'icono.izquierda.png',
+      funcionSensor: 'enBordeIzquierdo()',
+    });
+
+    this.crearBloqueSensor('BordeArriba', 'topBorder', {
+      icono: 'icono.arriba.png',
+      funcionSensor: 'enBordeArriba()',
+    });
+
+    this.crearBloqueSensor('BordeAbajo', 'bottomBorder', {
+      icono: 'icono.abajo.png',
+      funcionSensor: 'enBordeAbajo()',
+    });
+
   },
 
   _definirBloquesQueRepresentanValores() {

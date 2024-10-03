@@ -159,6 +159,10 @@ holdPaper: Segurar papel
 fillBin: Encher taco
 chargerHere: Há um cargador aqui?
 trophyHere: Há um trofeo aqui?
+leftBorder: Estou na borda esquerda?
+rightBorder: Estou na borda direita?
+bottomBorder: Estou na borda inferior?
+topBorder: Estou na borda superior?
 saladBowlHere: Há uma tigela de salada aqui?
 categories:
   primitives: Primitivas

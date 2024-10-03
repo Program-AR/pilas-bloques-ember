@@ -153,6 +153,10 @@ footBallHere: Is there a soccer ball here?
 paddleHere: Is there a paddle here?
 chargerHere: Is there a charger here?
 trophyHere: Is there a trophy here?
+leftBorder: Am I on the left edge?
+rightBorder: Am I on the right edge?
+bottomBorder: Am I on the bottom edge?
+topBorder: Am I on the top edge?
 saladBowlHere: Is there a salad bowl here?
 pickTrophy: Pick trophy
 pickPaddle: Pick paddle

@@ -663,7 +663,7 @@ model:
     '1002':
       title: Chuy hace jueguito
       description: |
-        Hacé que Chuy avance un paso, entre en calor (avance y retroceda dos veces), recoja la pelota de goma, haga jueguito lanzando al aire la pelota y rebotándola con el pie y, por último, vuelva a su lugar.
+        Hacé que Chuy avance un paso, entre en calor (avance y retroceda, dos veces), recoja la pelota de goma, haga jueguito lanzando al aire la pelota y rebotándola con el pie y, por último, vuelva a su lugar.
       clue: '`Calentar` y `Hacer jueguito` no están como primitivas... ¿Cómo podés armar esas acciones con las primitivas disponibles? Tené en cuenta que "calentar" implica avanzar y retroceder dos veces. Y, por otro lado, "hacer jueguito" comprende tomar la pelota, lanzarla al aire y hacerla rebotar en el pie dos veces. ¡Hay mucho para hacer!'
     '1003':
       title: No me canso de rebotar
@@ -746,14 +746,14 @@ model:
         Cuando Chuy lleva la pelota, no hay obstáculo que pueda detenerle. Ayudale a encontrar el recorrido para llegar a la esquina inferior derecha de la cancha, esquivando los obstáculos que se le presenten.  
       clue: 'Los diferentes caminos posibles... ¿tienen el mismo o distinto largo? Recordá que en cada ejecución te encontrarás con un escenario distinto.'
     '1019':
-      title: Super Yvoty 1
+      title: Largos cambiantes
       description: |
         ¡Yvoty continúa tomando fotos! Por lo que sigue necesitando la ayuda de las luciérnagas para tener una buena iluminación. Ayudala a despertar a todas las luciérnagas teniendo en cuenta que el camino que recorre puede ser más corto o más largo.
       clue: Aprovechá los nuevos bloques, pueden ayudarte a resolver el desafío de manera muy sencilla.
     '1020':
-      title: Super Yvoty 2
+      title: Luces cambiantes
       description: |
-        En este caso, Yvoty también debe despertar a todas las luciérnagas que encuentre para iluminar bien el paisaje, pero ahora no sólo no se conoce el largo del camino… ¡sino que tampoco se sabe si habrá o no luciérnagas en cada paso! ¿Servirá la misma ayuda que le diste en "Super Yvoty 1"?
+        En este caso, Yvoty también debe despertar a todas las luciérnagas que encuentre para iluminar bien el paisaje, pero ahora no sólo no se conoce el largo del camino… ¡sino que tampoco se sabe si habrá o no luciérnagas en cada paso! ¿Servirá la misma ayuda que le diste en "Largos cambiantes"?
       clue: El bloque `repetir hasta que` repite una secuencia de acciones **hasta que se cumpla una condición**. Esto se llama **repetición condicional**.
     '1021':
       title: Laberinto con pelotas
